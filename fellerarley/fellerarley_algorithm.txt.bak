@@ -1,0 +1,26 @@
+<font size="4" face="sans serif">
+<p>The population change rate is:</p>
+<p>&nbsp;</p>
+<img src = "/images/latex/fellerarley/fellerarley_1.png">
+
+<p>&nbsp;</p>
+<p><br>In the perspective of probability, the chance of remaining population N at time t + &#916;t</br>
+<br>needs to meet one of the following three conditions:</br></p>
+
+<p>&nbsp;</p>
+<li>N<sub>(t-1)</sub>=N-1, and exactly one birth within the interval (t, t + &#916;):</li><br>
+
+<img src = "/images/latex/fellerarley/fellerarley_2.png" style="margin:auto;display:block;"><br>
+
+<li>N<sub>(t-1)</sub>=N+1, and exactly one death within the interval (t, t + &#916;):</li><br>
+<img src = "/images/latex/fellerarley/fellerarley_3.png" style="margin:auto;display:block;"><br>
+
+<li>N<sub>(t-1)</sub>=N, and neither birth or death occur within the interval:</li><br>
+<img src = "/images/latex/fellerarley/fellerarley_4.png" style="margin:auto;display:block;"><br>
+
+<p>Combining the above three probabilities: </p><br>
+<img src = "/images/latex/fellerarley/fellerarley_5.png" style="margin:auto;display:block;"><br>
+
+<p>The change of probability becomes: </p><br>
+
+</font>

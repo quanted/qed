@@ -1,0 +1,66 @@
+\documentclass[12pt, A4]{article}
+\usepackage{graphicx}
+\usepackage{endfloat}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage[margin = 1in]{geometry}
+
+
+
+
+
+\begin{document}
+
+\title{SIP}
+
+\author{Justley Harston}
+
+
+\maketitle
+
+%\doublespacing
+
+Daily Water Intake Rate for Birds
+
+\begin{align}
+Flux_{water} & = \frac{1.180 x BW^0.874}{1000} \nonumber \\
+&    \hspace{-1.3in}  \text{where:} \nonumber \\
+Flux_{water} & = \text{daily water flux requirement [L]} \nonumber \\
+BW & = \text{body weight of bird [g]}  \nonumber \\
+\end{align} 
+
+\begin{align}
+Flux_{water} & = \frac{0.708 \times BW^{0.795}}{1000} \nonumber \\
+&    \hspace{-1.3in}  \text{where:} \nonumber \\
+Flux_{water} & = \text{daily water flux requirement [L]} \nonumber \\
+BW & = \text{body weight of mammal [g]}  \nonumber  
+\end{align}  
+
+\begin{align}
+Dose & = \frac{Flux_{water} \times Solubility}{BW} \nonumber \\
+&    \hspace{-1.3in}  \text{where:} \nonumber \\
+Dose & =\text{upper bound estimate of exposure in drinking water [mg/kg-bw]} \nonumber \\
+Flux_{water} & = \text{daily water flux requirement [L]} \nonumber \\
+Solubility & = \text{chemical solubility [mg/L]} \nonumber \\
+BW & = \text{body weight of assessed animal [kg]}  \nonumber  
+\end{align}  
+ 
+ \begin{align}
+AT_{bird} & = LD_{50} \times \left (\frac{AW}{TW} \right )^{x-1} \nonumber \\
+&    \hspace{-1.3in}  \text{where:} \nonumber \\
+AT_{bird} & = \text{adjusted acute toxicity value for birds [mg/kg-bw]} \nonumber \\
+LD_{50} & =\text{endpoint reported by toxicity study [mg/kg-bw]} \nonumber \\
+AW & = \text{body weight of assessed bird [g]} \nonumber \\
+TW & = \text{body weight of tested bird [g]} \nonumber \\
+x & = \text{Mineau scaling factor} \nonumber
+\end{align}  
+
+\begin{align}
+AT_{mammal} & = LD_{50} \times \left (\frac{TW}{AW} \right )^{0.25} \nonumber \\
+&    \hspace{-1.3in}  \text{where:} \nonumber \\
+AT_{mammal} & = \text{adjusted acute toxicity value for mammals [mg/kg-bw]} \nonumber \\
+LD_{50} & =\text{endpoint reported by toxicity study [mg/kg-bw]} \nonumber \\
+AW & = \text{body weight of assessed mammal [g]} \nonumber \\
+TW & = \text{body weight of tested mammal [g]} \nonumber 
+\end{align} 

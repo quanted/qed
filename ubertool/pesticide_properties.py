@@ -1,0 +1,22 @@
+import google.appengine.ext.db as db
+
+class PesticideProperties(db.Model):
+    config_name = db.StringProperty()
+    user = db.UserProperty()
+    molecular_weight = db.FloatProperty()
+    henrys_law_constant = db.FloatProperty()
+    vapor_pressure = db.FloatProperty()
+    solubility = db.FloatProperty()
+    Kd = db.FloatProperty()
+    Koc = db.FloatProperty() 
+    photolysis = db.FloatProperty()
+    aerobic_aquatic_metabolism = db.FloatProperty()
+    anaerobic_aquatic_metabolism = db.FloatProperty()
+    aerobic_soil_metabolism = db.FloatProperty() 
+    hydrolysis_ph5 = db.FloatProperty()
+    hydrolysis_ph7 = db.FloatProperty()
+    hydrolysis_ph9 = db.FloatProperty()
+    foliar_extraction = db.FloatProperty()
+    foliar_decay_rate = db.FloatProperty()
+    foliar_dissipation_half_life = db.FloatProperty()
+    created = db.DateTimeProperty(auto_now_add=True)

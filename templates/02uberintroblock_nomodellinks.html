@@ -1,0 +1,35 @@
+<!--start 02uberintroblock_nomodellinks-->
+
+<!-- "Click" Menus -->
+  <script type="text/javascript">
+    var pathArray = window.location.pathname.split( '/' );
+    var pathLink = pathArray[1];
+    var pathSlice = pathLink.slice(0, -5);
+    var pathId = pathSlice.slice(-4);
+    $( document ).ready(function() {
+      $('a#{{model}}').addClass('aSelected');
+      $('li#' + pathId).addClass('liSelected');
+    });
+  </script>
+
+<!-- Header Menu Bar -->
+<!--<div id="header_menu_l"></div>-->
+<div id="header_menu_c">
+  <ul>
+  </ul>
+</div>      
+<div id="header_menu_r">
+  <ul>
+    <li><a href="http://ubertool.github.com/" target="_blank">BLOG</a></li>
+	<li>|</li>
+    <li><a href="contactus_input.html">Contact Us</a></li>
+  </ul>
+</div>
+
+<!-- Spacer -->
+<div id="spacer"></div>
+
+<table width=1024px bgcolor=#F4F7ED border-style=none>
+  <tr VALIGN=TOP>
+    <td width=182px>
+<!--end 02hh_uberintroblock_nomodellinks-->

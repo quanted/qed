@@ -1,0 +1,30 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{endfloat}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage[margin = 1in]{geometry}
+
+
+\begin{document}
+
+\begin{align}
+\dfrac{dN_{t}}{dt} & = r_{0}\ln \frac{K}{N_{t}}N_{t}-qEN_{t} \nonumber \\
+&    \hspace{-1.3in}  \text{where:} \nonumber \\
+N_{t} & = \text{the population size at time t} \nonumber \\
+r_{0} & = \text{maximum growth rate [1/time step]} \nonumber \\
+K & = \text{carrying capacity} \nonumber\\
+E & = \text{catching effort} \nonumber\\
+q & = \text{catchability coefficient} \nonumber \\
+\nonumber \\
+&    \hspace{-1.3in}  \text{whose solution is:} \nonumber \\ 
+\ln N_{t} & = ln K - \frac{1}{r} qE (1-e^{-rt}) + \ln K e^{-rt} \nonumber
+\end{align} 
+
+
+
+
+\end{document}
+
+

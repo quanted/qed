@@ -1,0 +1,37 @@
+<script type="text/javascript" src=" ../stylesheets/jquery-1.7.2.js"></script> 
+
+<script>
+$(document).ready(function() {
+	$('#id_aerial_size_dist').attr('id', 'id_a').closest('tr').addClass('method_options').hide();
+    $('#id_ground_spray_type').attr('id', 'id_b').closest('tr').addClass('method_options').hide();
+    $('#id_airblast_type').attr('id', 'id_c').closest('tr').addClass('method_options').hide();
+    $('#id_spray_quality').closest('tr').addClass('method_options').hide();
+    $('#id_incorporation_depth').closest('tr').addClass('method_options').hide();
+    $('#id_hydrolysis').closest('tr').addClass('method_options').hide();
+
+    $('#id_application_method').change(function() {
+	$('tr.method_options').hide();
+	
+	if ($(this).val() == "b"){
+		$('#id_' + $(this).val()).closest('tr').show();
+		$('#id_spray_quality').closest('tr').show();
+		$('#id_incorporation_depth').closest('tr').show();}	
+	
+	else if ($(this).val() == "d"){
+		$('#id_incorporation_depth').closest('tr').show();
+		$('#id_no_spray_drift').closest('tr').addClass('method_options').hide();}
+	
+	else{
+		$('#id_' + $(this).val()).closest('tr').show();}
+	});
+	
+	$('#id_aerobic_aquatic_metabolism').change(function() {
+	
+	if ($(this).val() <0){
+		$('#id_hydrolysis').closest('tr').show();}
+	else{
+		}
+	});
+
+	});
+</script>

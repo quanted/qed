@@ -1,0 +1,90 @@
+\documentclass[12pt, A4]{article}
+\usepackage{graphicx}
+\usepackage{endfloat}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage[margin = 1in]{geometry}
+
+
+
+
+
+\begin{document}
+
+\title{Tier I Rice Model v1.0}
+
+\author{Justley Harston}
+
+
+\maketitle
+
+%\doublespacing
+
+The Formula of the Tier I Rice Model v1.0:
+
+\begin{align}
+C_w & = \frac{m_{ai}^\prime}{0.00105 + 0.00013K_d} \nonumber \\
+\text{and, if appropriate:} \nonumber \\
+K_d & = 0.01K_{oc} \nonumber \\
+&    \hspace{-1.3in}  \text{where:} \nonumber \\
+C_w & = \text{water concentration [$\mu$g/L]}  \nonumber \\
+m_{ai}^\prime & = \text{mass of active ingredient applied per unit area [kg/ha]}  \nonumber \\
+K_d & = \text{water-sediment partitioning coefficient [L/kg]} \nonumber \\
+K_{oc} & = \text{organic carbon partitioning coefficient [L/kg]} \nonumber
+\end{align} 
+
+The Tier I Rice Conceptual Model:
+
+\begin{align}
+ \hspace{1.3in} C_w & = \frac{m_{ai}}{V_w + m_{sed}K_d}  \\
+  &    \hspace{-1.3in}  \text{where:} \nonumber \\
+C_w & = \text{water concentration [mass/volume]}  \nonumber \\
+m_{ai} & = \text{mass of active ingredient applied to paddy [mass]}  \nonumber \\
+V_w & = \text{volume of water column plus pore water [volume]}  \nonumber \\
+m_{sed} & = \text{mass of sediment at equlibrium with water column [mass]} \nonumber \\
+K_d & = \text{water-sediment partitioning coefficient [volume/mass]} \nonumber 
+\end{align}
+
+It is more customary to describe a rice paddy in terms of depth rather than volume or mass. Therefore, the following equations are defined:
+
+\begin{align}
+m_{sed} & = d_{sed} A \rho_b    \\ \nonumber \\
+V_w & = d_w A + d_{sed} \theta_{sed}  A    \\ 
+ &    \hspace{-1.3in}  \text{where:} \nonumber \\
+d_{sed} & = \text{sediment depth [length]}  \nonumber \\
+d_w & = \text{ water column depth [length]} \nonumber \\
+A & = \text{area of the rice paddy [area]} \nonumber \\
+\theta_{sed} & = \text{porosity of sediment [-]} \nonumber \\
+\rho_b & = \text{bulk density of sediment [mass/volume] }\nonumber 
+\end{align}
+
+\begin{align}
+m_{ai}^\prime  & =  \frac{m_{ai}}{A}    \\
+ &    \hspace{-1.3in}  \text{where:} \nonumber \\
+m_{ai}^\prime & = \text{mass applied per unit area [mass/area]} \nonumber
+\end{align}
+
+\begin{align}
+ \hspace{1.3in} C_w =     \frac{m_{ai}^\prime}{d_w + d_{sed}  ( \theta_{sed}+ \rho_b K_d  )} 
+\end{align}
+
+
+JUST FOR LEARNING:  THIS IS T-REX
+\begin{align}
+C_t & = C_n e^{-kt} \\ \nonumber  \\
+&    \hspace{-1.3in} \text{or in natural log form:} \nonumber \\ \nonumber \\
+\text{ln}(C_t) & = \text{ln}(C_0) - kt
+\end{align}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

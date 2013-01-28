@@ -1,0 +1,21 @@
+<font size="4" face="sans serif">
+<br>
+<font size="5" face="sans serif"><p>WK 2 - Python for Ecology</p></font><br>
+<p>Time: Saturday, August 4, 2012: 8:00 AM-5:00 PM</p><br>
+<p>Location: D137, Oregon Convention Center</p><br>
+<p><a href="http://eco.confex.com/eco/2012/webprogram/Session8061.html">Detail information</a></p>
+
+<br>
+<p>Software requirements:</p><br>
+<li>Python 2.7 (suggested) <a href="http://www.python.org/download/">link</a></li><br>
+
+
+<li>Numpy <a href="http://sourceforge.net/projects/numpy/files/NumPy/1.6.2/">link</a></li><br>
+
+<li>Matplotlib <a href="http://sourceforge.net/projects/matplotlib/files/matplotlib/matplotlib-1.1.1/">link</a></li><br>
+
+<p>The workshop materials are available here:</p><br>
+<a href="/images/esa_workshop/esa_python_handouts_all.pdf">ESA Python Handouts</a><br>
+<a href="/images/esa_workshop/scripts.zip">Exercises</a><br>
+
+</font>

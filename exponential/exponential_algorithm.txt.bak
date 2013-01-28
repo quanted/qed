@@ -1,0 +1,21 @@
+<p><font size="4" face="sans serif">The population change rate is:</p>
+<p>&nbsp;</p>
+<img src = "/images/latex/exponential/exp_1.png">
+
+<p>&nbsp;</p>
+<p><font size="4" face="sans serif">
+If r is constant, the model is known as exponential growth model.
+</p>
+
+<p>&nbsp;</p>
+<p><font size="4" face="sans serif">Integrate both sides of the above equation:</p>
+<p>&nbsp;</p>
+<img src = "/images/latex/exponential/exp_2.png">
+
+
+<li>If r<0, population exponentially declines</li>
+<p>&nbsp;</p>
+<li>If r>0, population exponentially increases</li>
+<p>&nbsp;</p>
+<li>If r=0, population does not change</li>
+</font>

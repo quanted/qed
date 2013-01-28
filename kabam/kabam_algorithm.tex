@@ -1,0 +1,203 @@
+\documentclass[10pt]{article}
+\usepackage{graphicx}
+\usepackage{endfloat}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage[scientific-notation=true]{siunitx}
+\usepackage[margin = 1in]{geometry}
+\hoffset = -1.3in %set margin offset horizontally for the document
+\allowdisplaybreaks
+\begin{document}
+\begin{align*}
+& \hspace{-0.75in}  \text{Pesticide tissue residue for single trophic levels:} \nonumber \\
+C_{B} & = \frac{k_{1} * (m_{o}*\phi*C_{wto} +m_{p}*C_{wdp})+k_{D}*\sum(P_{i}C_{Di})}{k_{2}+k_{E}+k_{G}+k_{M}} \nonumber \\
+&    \hspace{-.75in}  \text{parameters:} \nonumber \\
+k_{1} & = \text{pesticide uptake rate constant through respiratory area} \nonumber \\
+k_{2} & = \text{rate constant for elimination of the pesticide through the}\nonumber \\ &\hspace{1.3em} \text{respiratory area} \nonumber \\
+k_{D} & = \text{pesticide uptake rate constant for uptake through ingestion}\nonumber \\ &\hspace{1.3em} \text{of food} \nonumber\\
+k_{E} & = \text{rate constant for elimination of the pesticide through}\nonumber \\ &\hspace{1.3em} \text{excretion of contaminated feces} \nonumber \\
+k_{G} & = \text{organism growth rate constant} \nonumber \\
+k_{M} & = \text{rate constant for pesticide metabolic transformation} \nonumber \\
+m_{o} & = \text{fraction of respiratory ventilation involving overlying water} \nonumber \\
+P_{i} & = \text{fraction of diet containing i (prey item)} \nonumber \\
+\phi & = \text{fraction of the overlying water concentration of the pesticide}\nonumber \\ &\hspace{1.3em} \text{that is freely dissolved} \nonumber \\
+&    \hspace{-.75in}  \text{Calculation of available pesticide fraction in water:} \nonumber \\ 
+\phi & = \frac{1}{1+(X_{POC}*\alpha_{POC}*K_{OW})+(X_{DOC}*\alpha_{DOC}*K_{OW})} \nonumber \\
+&    \hspace{-.75in}  \text{parameters:} \nonumber \\
+X_{POC} & = \text{concentration of particulate organic carbon in water} \nonumber \\
+X_{DOC} & = \text{concentration of dissolved organic carbon in water} \nonumber \\
+\alpha_{POC} & = \text{proportionality constant to describe the similiarity of}\nonumber\\ &\hspace{1.3em} \text{phase partitioning of POC in relation to octanol}\nonumber\\
+\alpha_{DOC} & = \text{proportionality constant to describe the similiarity of}\nonumber\\ &\hspace{1.3em} \text{phase partitioning of DOC in relation to octanol}\nonumber\\
+&    \hspace{-.75in}  \text{Calculation of pesticide concentration in the solid portion of the sediment:} \nonumber \\
+C_{s} & = C_{SOC} * OC \nonumber \\
+&    \hspace{-.75in}  \text{where:} \nonumber \\
+C_{SOC} & = C_{WDP} * K_{OC}\nonumber \\
+&    \hspace{-.75in}  \text{parameters:} \nonumber \\
+C_{SOC} & = \text{normalized (for OC content) pesticide concentration in}\nonumber \\ &\hspace{1.3em} \text{sediment} \nonumber \\
+C_{WDP} & = \text{freely dissolved pesticide concentration in pore water} \nonumber \\
+K_{OC} & = \text{organic carbon partition coefficient} \nonumber\\
+OC & = \text{percent organic carbon in sediment} \nonumber\\
+%\end{align*}
+%\begin{align*}
+&    \hspace{-.75in}  \text{Equations associated with the calculation of pesticide clearance through the}\nonumber\\ &\hspace{-0.75in} \text{respiratory system:}\nonumber\\ 
+&    \hspace{-.75in}  \text{For phytoplankton:} \nonumber \\
+k_{1} & = \frac{1}{A +\frac{B}{K_{OW}}} \nonumber \\
+&    \hspace{-.750in}  \text{For animals:} \nonumber \\
+k_{1} & = \frac{E_{W}*G_{V}}{W_{B}} \nonumber \\
+&    \hspace{-.75in}  \text{where:} \nonumber \\
+E_{W} & = \left(1.85+\frac{155}{K_{OW}}\right)^{-1} \nonumber \\
+G_{V} & = 1400 * \left(\frac{W_{B}^{0.65}}{C_{OX}}\right) \nonumber \\
+&    \hspace{-.75in}  \text{parameters:} \nonumber \\
+A & = \text{constant related to the resistance to pesticide uptake}\nonumber \\ &\hspace{1.3em} \text{through the aqueous phase of plant} \nonumber \\
+B & = \text{constant related to the resistance to pesticide uptake}\nonumber \\ &\hspace{1.3em} \text{through the organic phase of plant} \nonumber \\
+C_{ox} & = \text{concentration of dissolved oxygen} \nonumber\\
+E_{W} & = \text{pesticide uptake efficiency by gills} \nonumber\\
+G_{V} & = \text{ventilation rate of fish, invertebrates, zooplankton} \nonumber\\
+K_{OW} & = \text{octanol water partition coefficient} \nonumber\\
+W_{B} & = \text{wet weight of the organism} \nonumber\\
+&    \hspace{-.75in}  \text{Equations associated with the calculation of the respiratory elimination rate constant:} \nonumber \\
+k_{2} & = \frac{k_{1}}{k_{BW}} \nonumber \\
+&    \hspace{-.75in}  \text{where:} \nonumber \\
+k_{B} & = V_{LB}*K_{OW}+V_{NB}*\beta*K_{OW}+V_{WB} \nonumber \\
+k_{1} & = \text{pesticide uptake rate constant for chemical uptake through}\nonumber \\ &\hspace{1.3em} \text{respiratory area} \nonumber\\
+K_{BW} & = \text{organism-water partition coefficient (based on wet weight)} \nonumber\\
+V_{LB} & = \text{lipid fraction of organism} \nonumber\\
+V_{NB} & = \text{Non Lipid organic matter fraction of animals, Non lipid organic}\nonumber \\ &\hspace{1.3em} \text{carbon of plants} \nonumber\\
+V_{WB} & = \text{water content of the organism} \nonumber\\
+\beta & = \text{proportionality constant expressing the sorption capacity of}\nonumber \\ &\hspace{1.3em} \text{NLOM or NLOC to that of octanol} \nonumber\\
+&    \hspace{-.75in}  \text{Equations involving the calculation of the growth rate constant:}\nonumber \\
+&    \hspace{-.75in}  \text{where temperature less than 17.5 degrees C:} \nonumber \\
+k_{G} & = 0.0005*W_{B}^{-0.2}\nonumber \\
+&    \hspace{-.75in}  \text{where temperature is greater than or equal to 17.5 degrees C:} \nonumber \\
+k_{G} & = 0.000251*W_{B}^{-0.2}\nonumber \\
+W_{B} & = \text{wet weight of the organism} \nonumber\\
+&    \hspace{-.75in}  \text{Equations associated with the calculation of the pesticide clearance rate constant}\nonumber \\ &\hspace{-0.75in} \text{through diet:} \nonumber \\
+k_{D} & = E_{D}*\frac{G_{D}}{W_{B}} \nonumber \\
+&    \hspace{-.75in}  \text{where:} \nonumber \\
+E_{D} & = (\num{.0000003}*G_{OW}+2.0)^{-1} \nonumber \\
+&    \hspace{-.75in}  \text{For animals except filter feeders:} \nonumber \\
+G_{D} & = 0.022*W_{B}^{0.85}*exp(0.06*T) \nonumber \\
+&    \hspace{-.75in}  \text{For filter feeders:} \nonumber \\
+G_{D} & = G_{V}*C_{SS}*\sigma \nonumber \\
+G_{V} & = 1400*\left(\frac{W_{B}^{0.65}}{C_{ox}}\right) \nonumber \\
+C_{ox} & = \text{concentration of dissolved oxygen} \nonumber\\
+C_{SS} & = \text{concentration of suspended solids} \nonumber\\
+E_{D} & = \text{dietary pesticide transfer efficiency} \nonumber\\
+G_{D} & = \text{feeding rate of organism} \nonumber\\
+G_{V} & = \text{ventilation rate of gills} \nonumber\\
+%\end{align*}}
+%\begin{align*}
+K_{OW} & = \text{octanol water partition coefficient} \nonumber\\
+T & = \text{temperature } \nonumber\\
+W_{B} & = \text{wet weight of the organism} \nonumber\\
+\sigma & = \text{efficiency of scavenging of particles absorbed from water} \nonumber\\
+&    \hspace{-.75in}  \text{Equations associated with the calculation of the fecal elimination rate constant:} \nonumber \\
+k_{E} & = G_{F}*E_{D}*\frac{K_{GB}}{W_{B}}\nonumber \\
+&    \hspace{-.75in}  \text{where:} \nonumber \\
+E_{D} & = (\num{.0000003}*K_{OW}+2.0)^{-1} \nonumber \\
+K_{GB} & = \frac{(V_{LG}*K_{OW}+V_{NG}*\beta*K_{OW}+V_{WG})}{V_{LB}*K_{OW}+V_{NB}*\beta*K_{OW}+V_{WB}}\nonumber \\
+V_{LG} & = \frac{(1-\varepsilon_{L})*V_{LD}}{(1-\varepsilon_{L})*V_{LD}+(1-\varepsilon_{N})*V_{ND}+(1-\varepsilon_{W})*V_{WD}}\nonumber \\
+V_{NG} & = \frac{(1-\varepsilon_{L})*V_{ND}}{(1-\varepsilon_{L})*V_{LD}+(1-\varepsilon_{N})*V_{ND}+(1-\varepsilon_{W})*V_{WD}}\nonumber \\
+V_{WG} & = \frac{(1-\varepsilon_{L})*V_{WD}}{(1-\varepsilon_{L})*V_{LD}+(1-\varepsilon_{N})*V_{ND}+(1-\varepsilon_{W})*V_{WD}}\nonumber \\
+G_{F} & = [(1-\varepsilon_{L})*V_{LD}+(1-\varepsilon_{N})*V_{ND}+(1-\varepsilon_{w})*V_{WD}]*G_{D} \nonumber \\
+&    \hspace{-.75in}  \text{For animals except filter feeders:} \nonumber \\
+G_{D} & = 0.022*W_{B}^{0.85}*exp(0.06*T) \nonumber \\
+&    \hspace{-.75in}  \text{For filter feeders:} \nonumber \\
+G_{D} & = G_{V}*C_{SS}*\sigma \nonumber \\
+G_{V} & = 1400*\left(\frac{W_{B}^{0.65}}{C_{ox}}\right) \nonumber \\
+& \hspace{-.75in} \text{Parameters:} \nonumber \\
+C_{ox} & = \text{concentration of dissolved oxygen} \nonumber \\
+C_{SS} & = \text{concentration of suspended solids} \nonumber \\
+E_{D} & = \text{dietary pesticide transfer efficiency} \nonumber \\
+G_{D} & = \text{feeding rate of organism} \nonumber \\
+G_{F} & = \text{egesion rate of fecal matter} \nonumber\\
+G_{V} & = \text{ventilation rate of gills} \nonumber\\
+k_{E} & = \text{rate constant for elimination of the pesticide through excretion} \nonumber \\ &\hspace{1.3em} \text{of contaminated feces} \nonumber\\
+K_{GB} & = \text{partition coefficient of the pesticide between the gastrointestinal} \nonumber \\ &\hspace{1.3em} \text{tract and the organism} \nonumber\\
+K_{OW} & = \text{octanol water partition coefficient} \nonumber\\
+T & = \text{temperature} \nonumber\\
+V_{LB} & = \text{lipid fraction of organism} \nonumber\\
+V_{LD} & = \text{overall lipid content of diet} \nonumber\\
+V_{LG} & = \text{lipid content in the gut} \nonumber\\
+V_{NB} & = \text{NLOM fraction of animals, NLOC of plants} \nonumber\\
+V_{ND} & = \text{overall NLOM content of diet} \nonumber \\
+V_{NG} & = \text{NLOM content in the gut} \nonumber \\
+V_{WB} & = \text{water content of the organism} \nonumber \\
+V_{WD} & = \text{overall water content of diet} \nonumber \\
+V_{WG} & = \text{water content in the gut} \nonumber \\
+W_{B} & = \text{wet weight of the organism} \nonumber \\
+\beta & = \text{proportionality constant expressing the sorption capacity} \nonumber\\ &\hspace{1.3em} \text{of NLOM to that of octanol} \nonumber \\
+\varepsilon_{L} & = \text{dietary assimilation rate of lipids} \nonumber \\
+\varepsilon_{N} & = \text{dietary assimilation rate of NLOM} \nonumber \\
+%\end{align*}
+%\begin{align*}
+\varepsilon_{W} & = \text{dietary assimilation rate of water} \nonumber \\
+&    \hspace{-.75in}  \text{Equations associated with the calculation of the bioconcentration:}\nonumber \\ 
+&    \hspace{-.75in}  \text{where } C_{B} = C_{BCF} \text{ when } k_{D}=k_{E}=k_{G}=k_{M}=0:\nonumber \\
+&    \hspace{-.75in}  \text{Calculation of total bioconcentration factor:}\nonumber \\
+Total BCF & = \frac{C_{BCF}}{C_{WTO}}\nonumber \\
+&    \hspace{-.75in}  \text{where:}\nonumber \\
+&    \hspace{-.75in}  \text{Equations associated with the calculation of the lipid normalized bioconcentration factor:}\nonumber \\
+&    \hspace{-0.75in} \text{Lipid normalized:}\nonumber \\ 
+BCF & = \frac{C_{BCF}/{V_{LB}}}{C_{WTO}*\phi}\nonumber \\
+&    \hspace{-.75in}  \text{Equations associated with the calculation of the bioaccumulation:}\nonumber \\
+Total BAF & = \frac{C_{B}}{C_{WTO}}\nonumber \\
+&    \hspace{-.75in}  \text{Equations associated with the calculation of the lipid normalized bioaccumulation factor:}\nonumber \\
+&    \hspace{-0.75in} \text{Lipid normalized:}\nonumber \\
+BAF & = \frac{C_{B}/{V_{LB}}}{C_{WTO}*\phi}\nonumber \\
+&    \hspace{-.75in}  \text{Equations associated with the calculation of the biomagnification factor:}\nonumber \\
+BMF & = \frac{C_{B}/V_{LB}}{\sum\left[(P_{i}*C_{Di})/V_{LBi}\right]}\nonumber \\
+&    \hspace{-.75in}  \text{Parameters associated with the calculation of the bioaccumulation, bioconcentration,} \nonumber\\ &\hspace{-0.75in} \text{or biomagnification factors:}\nonumber \\
+C_{B} & = \text{Concentration of pesticide in tissues in a trophic level}\nonumber \\
+C_{WTO} & = \text{total chemical concentration in the water column above the sediment}\nonumber \\
+V_{LB} & = \text{lipid fraction of organism} \nonumber\\
+P_{i} & = \text{fraction of diet containing prey item \it{i}}\\
+C_{Di} & = \text{concentration of the pesticide in prey item \it{i}}\\
+V_{LBi} & = \text{fraction of lipid in the body of the prey item \it{i}}\\
+&    \hspace{-.75in}  \text{Equations associated with the calculation of dry food ingestion rates:}\nonumber \\
+&    \hspace{-0.75in} \text{mammals:}\nonumber \\
+FI_{dry} & = \frac{(0.0687*BW^{0.822})}{BW}\\
+&    \hspace{-0.75in} \text{birds:}\nonumber \\
+FI_{dry} & = \frac{(0.0582*BW^{0.651})}{BW}\\
+&    \hspace{-.75in}  \text{Equations associated with the calculation of wet food ingestion rates:}\nonumber \\
+FI_{wet} & = \frac{FI_{dry}}{[1-\sum(P_{i}*V_{WBi})]}\\
+&    \hspace{-.75in}  \text{Parameters associated with the calculation of food ingestion rates:}\nonumber \\
+BW & = \text{animal body weight}\\
+P_{i} & = \text{fraction of diet containing prey item \it{i}}\\
+V_{WBi} & = \text{fraction of water in the body of the prey item \it{i}}\\
+&    \hspace{-.75in}  \text{Equations associated with the calculation of drinking water ingestion rates:}\nonumber \\
+&    \hspace{-0.75in} \text{mammals:}\nonumber \\
+DW & = (0.099 * BW^{0.90})\\
+&    \hspace{-0.75in} \text{birds:}\nonumber \\
+DW & = (0.05 * BW^{0.67})\\
+&    \hspace{-0.75in} \text{Parameters:}\nonumber \\
+BW & = \text{Body weight of the animal being assessed}\\
+&    \hspace{-.75in}  \text{Equations associated with the calculation of EECs:}\nonumber \\
+&    \hspace{-0.75in} \text{dose-based:}\nonumber \\
+EEC & = \sum(P_{i}*C_{Bi})*FI_{wet}+\frac{(C_{WTO}*DW)}{BW}\\
+&    \hspace{-.75in}  \text{dietary-based:}\nonumber \\
+EEC & = \sum(P_{i}*C_{Bi})\\
+P_{i} & = \text{fraction of diet containing prey item \it{i}}\\
+C_{Bi} & = \text{pesticide tissue residue concentration of each prey item}\\
+FI_{wet} & = \text{wet food ingestion rate}\\
+C_{WTO} & = \text{total chemical concentration in the water column above the sediment}\nonumber \\
+DW & = \text{drinking water ingestion rate}\\
+BW & = \text{Body weight of the animal being assessed}\\
+&    \hspace{-.75in}  \text{Equations associated with the calculation of adjusted dose-based EECs:}\nonumber \\
+&    \hspace{-.75in}  \text{mammals:}\nonumber \\
+AT & = (LD_{50} \text{or} NOAEL)*\left(\frac{TW}{AW}\right)^{0.25}\\
+&    \hspace{-.75in}  \text{birds:}\nonumber \\
+AT & = LD_{50}*\left(\frac{AW}{TW}\right)^{(x-1)}\\
+&    \hspace{-.75in}  \text{Parameters:}\nonumber \\
+LD_{50} & = \text{endpoint reported by toxicity study}\\
+NOAEL & = \text{endpoint reported by toxicity study}\\
+TW & = \text{body weight of tested animal}\\
+AW & = \text{body weight of assessed mammal}\\
+x & = \text{Mineau scaling factor}\\
+\end{align*} 
+\end{document}
+
+
+
+

@@ -1,0 +1,47 @@
+<script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+
+
+
+<script type='text/javascript'> 
+
+$(document).ready(function(){
+	
+		var noa = $.parseJSON($('#noa').text());
+		var Apt_p = $.parseJSON($('#Apt_p_j').attr('data-val'));
+
+		var DayRe = $.parseJSON($('#DayRe_j').attr('data-val'));
+		var Ap_mp = $.parseJSON($('#Ap_mp_j').attr('data-val'));
+		var Ar = $.parseJSON($('#Ar_j').attr('data-val'));
+		var Unit_p = $.parseJSON($('#Unit_p_j').attr('data-val'));
+		var CAM_f_p = $.parseJSON($('#CAM_f_p_j').attr('data-val'));
+		var EFF_p = $.parseJSON($('#EFF_p_j').attr('data-val'));
+		var Drft_p = $.parseJSON($('#Drft_p_j').attr('data-val'));
+		var DEPI_p = $.parseJSON($('#DEPI_p_j').attr('data-val'));
+		
+		app_i=1
+		
+		while (app_i <= noa){
+			$('<tr><th colspan=3><div align="center">Application '+app_i+'</div></th></tr>').appendTo('.app');	
+			$('<tr><th scope="col">Inputs</th><th scope="col">Unit</th> <th scope="col">Value</th><tr>').appendTo('.app')	
+			$('<tr><td>Application timing</td><td>&nbsp</td><td>'+Apt_p[app_i-1]+'</td><tr>').appendTo('.app')	
+			$('<tr><td>Days relevant to the application</td><td>days</td><td>'+DayRe[app_i-1]+'</td></tr>').appendTo('.app')	
+			$('<tr><td>Application method</td><td>&nbsp</td><td>'+Ap_mp[app_i-1]+'</td></tr>').appendTo('.app')	
+			$('<tr><td>Application rate</td><td>'+Unit_p+'</td><td>'+Ar[app_i-1]+'</td></tr>').appendTo('.app')	
+			$('<tr><td>Chemical application Method</td><td>&nbsp</td><td>'+CAM_f_p[app_i-1]+'</td></tr>').appendTo('.app')
+			$('<tr><td>Efficiency</td><td>&nbsp</td><td>'+EFF_p[app_i-1]+'</td></tr>').appendTo('.app')	
+			$('<tr><td>Drift pond</td><td>&nbsp</td><td>'+Drft_p[app_i-1]+'</td></tr>').appendTo('.app')	
+			$('<tr><td>Incorporation depth (DEPI)</td><td>cm</td><td>'+DEPI_p[app_i-1]+'</td></tr>').appendTo('.app')	
+			app_i=app_i+1}
+		$('</table>').appendTo('.app')
+
+
+ 
+	
+    })
+</script>
+
+
+  
+
+
+

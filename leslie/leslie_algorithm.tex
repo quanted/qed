@@ -1,0 +1,115 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{endfloat}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage[margin = 1in]{geometry}
+
+
+\begin{document}
+
+\begin{align}
+\textbf{$\textit{N}_{k}$} & = \textbf{$\textit{L}$} \textbf{$\textit{N}_{k-1}$} \nonumber
+\end{align} 
+
+\begin{align}
+\begin{bmatrix}
+n_{0} 
+\\n_{1} 
+\\\vdots
+\\n_{k}  
+\end{bmatrix}_{t+1}
+=
+\begin{bmatrix}
+ F_{0} & F_{1} & \dots & F_{k} \\ 
+ S_{0} & 0 & \dots & 0 \\ 
+ 0 & \ddots & \dots & 0 \\ 
+ 0 & 0 & S_{k-1} & 0 \\ 
+\end{bmatrix}
+\begin{bmatrix}
+n_{0} 
+\\n_{1} 
+\\\vdots
+\\n_{k}  
+\end{bmatrix}_{t} \nonumber \\
+&    \hspace{-4.0in}  \text{where:} \nonumber \\
+& \hspace{-2.5in}  \textit{n}_{k, t+1} = \text{number of organisms in age class k at time t+1} \nonumber \\
+& \hspace{-2.3in} F_{k} = \text{fecundity, the per capita average number of female} \nonumber \\
+& \hspace{-1.9in} \text{offspring born from mother of the age class k} \nonumber \\
+& \hspace{-2.3in} S_{k} = \text{the fraction of individuals that survives from} \nonumber \\
+& \hspace{-1.9in} \text{age class t to age class t+1} \nonumber
+\end{align} 
+
+\begin{align}
+& \hspace{-2.5in}  \textit{n}_{k, t+1} = \text{number of organisms in age class k at time t+1} \nonumber \\
+& \hspace{-2.3in} F_{k} = \text{fecundity, the per capita average number of female} \nonumber \\
+& \hspace{-1.9in} \text{offspring born from mother of the age class k} \nonumber \\
+& \hspace{-2.3in} S_{k} = \text{the fraction of individuals that survives from} \nonumber \\
+& \hspace{-1.9in} \text{age class t to age class t+1} \nonumber
+\end{align} 
+
+\begin{align}
+F_{k} & = S_{k} \textit{B}_{k+1} \nonumber 
+\end{align} 
+
+\begin{align}
+\textit{n}_{0, t+1} & = F_{0} \textit{n}_{0, t}+F_{1} \textit{n}_{1, t}+ \dots + F_{k} \textit{n}_{k, t} \\
+\textit{n}_{k, t+1} & = S_{k-1} \textit{n}_{k-1, t}
+\end{align} 
+
+\begin{align}
+\begin{bmatrix}
+n_{0} 
+\\n_{1} 
+\\\vdots
+\\n_{k}  
+\end{bmatrix}_{t+1}
+=
+\begin{bmatrix}
+ F_{0} & F_{1} & \dots & F_{k} \\ 
+ S_{0} & 0 & \dots & 0 \\ 
+ 0 & \ddots & \dots & 0 \\ 
+ 0 & 0 & S_{k-1} & 0 \\ 
+\end{bmatrix}
+\begin{bmatrix}
+n_{0} 
+\\n_{1} 
+\\\vdots
+\\n_{k}  
+\end{bmatrix}_{t} \nonumber
+\end{align} 
+
+\begin{align}
+\textbf{$\textit{N}_{k}$} & = \textbf{$\textit{L}$} \textbf{$\textit{N}_{k-1}$} \nonumber \\
+& = \textbf{$\textit{L}$}^{k} \textbf{$\textit{N}_{0}$}
+\end{align} 
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

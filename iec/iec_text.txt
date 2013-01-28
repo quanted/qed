@@ -1,0 +1,7 @@
+
+<p>This is based on the formula logLC<sub>k</sub> = logLC<sub>50</sub>+(z/b)</p>
+<p>Where: z is the standard normal deviate and b equals slope</p>
+<p>&nbsp;</p>
+<p>Works for dose-response models based on a probit assumption (i.e. log normal distribution of individual sensitivity)</p>
+<p>&nbsp;</p>
+<p>Ed Odenkirchen, June  22, 2004  EFED/OPP/USEPA</p>

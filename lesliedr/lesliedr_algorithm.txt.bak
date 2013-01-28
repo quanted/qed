@@ -1,0 +1,20 @@
+<font size="4" face="sans serif">
+
+
+<p>Ideally, individuals' survival and fertility rates can be treated as constants over time:</p><br>
+
+<img src = "/images/latex/lesliedr/lesliedr_1.png" style="margin:auto;display:block;"><br>
+
+<p>When taking account the reduction of fertility due to the increased population size,</p><br>
+<p>the fertility is modified into:</p>
+<br>
+<img src = "/images/latex/lesliedr/lesliedr_2.png" style="margin:auto;display:block;"><br>
+
+<p>When considering the impacts from chemical exposure the fertility is modified into:</p><br>
+<br>
+<img src = "/images/latex/lesliedr/lesliedr_3.png" style="margin:auto;display:block;"><br>
+
+<p>The logistic dose response model is given::</p><br>
+<br>
+<img src = "/images/latex/lesliedr/lesliedr_4.png" style="margin:auto;display:block;"><br>
+</font>

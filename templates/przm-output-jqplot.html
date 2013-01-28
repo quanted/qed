@@ -1,0 +1,118 @@
+                         
+<script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+<link rel="stylesheet" type="text/css" href="http://www.prioritymarketers.com/jqplot/src/jquery.jqplot.css"> 
+<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/jquery.jqplot.js"></script> 
+<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.barRenderer.js"></script>
+<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.categoryAxisRenderer.js"></script>
+<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.pointLabels.js"></script>
+<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.cursor.js"></script>
+<script type="text/javascript" src="https://bitbucket.org/cleonello/jqplot/raw/b5a7796a9ebf/src/plugins/jqplot.canvasTextRenderer.js"></script>
+<script type="text/javascript" src="https://bitbucket.org/cleonello/jqplot/raw/b5a7796a9ebf/src/plugins/jqplot.canvasAxisLabelRenderer.js"></script>
+
+<!--[if lt IE 9]>
+<script src="http://www.prioritymarketers.com/jqplot/src/excanvas.min.js"></script>
+<![endif]-->
+
+<div id="chart1" style="margin-top:20px; margin-left:20px; width:600px; height:400px;"></div>
+
+
+<script type='text/javascript'> 
+
+$(document).ready(function(){
+    	
+
+		
+        $.jqplot.config.enablePlugins = true;
+    	//$('#x_pre_irr').closest('tr').hide();
+    	var s1 = $.parseJSON($('#x_pre_irr_val').text());
+         
+        $.jqplot('chart1', [s1], {
+            seriesDefaults:{
+                renderer:$.jqplot.BarRenderer,
+                pointLabels: { show: true },
+				rendererOptions: {
+				barWidth: 3,
+				barPadding: -40,
+				barMargin: 100
+				}
+            },
+			series:[
+			{label:'Prepip.+Irrig'}
+			],
+			axes: {
+      			xaxis: {
+          			renderer: $.jqplot.CategoryAxisRenderer,
+					label :'Period'
+
+      				},
+      			yaxis: {
+        			label: 'Prepip.+Irrig (cm)',
+					labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+
+      				}
+    		},
+			 legend: {
+      			show: true,
+      			location: 'ne',
+      			placement: 'inside',
+				fontSize: '11px'
+    		} 
+        })   
+    })
+</script>
+
+<div id="chart2" style="margin-top:20px; margin-left:20px; width:600px; height:400px;"></div>
+
+<script type='text/javascript'> 
+$(document).ready(function(){
+        $.jqplot.config.enablePlugins = true;
+		//$('#x_leachate').closest('tr').hide();
+	
+    	var s2 = $.parseJSON($('#x_leachate_val').text());
+		$('#x_et').closest('tr').hide();
+    	var s3 = $.parseJSON($('#x_et_val').text());
+		$('#x_runoff').closest('tr').hide();
+    	var s4 = $.parseJSON($('#x_runoff_val').text());		
+		         
+        $.jqplot('chart2', [s2, s3, s4], {
+            stackSeries: true,
+
+			seriesDefaults:{
+                renderer:$.jqplot.BarRenderer,
+                pointLabels: { show: false },
+				rendererOptions: {
+					barWidth: 4
+					}
+            },
+			
+			series:[
+			{label:'Leachate'},{label:'Evapo-Transp.'},{label:'Runoff'}
+			],
+			axes: {
+      			xaxis: {
+          			renderer: $.jqplot.CategoryAxisRenderer,
+					label :'Period'
+      				},
+      			yaxis: {
+        			label: 'Water Balance (cm)',
+					labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+      				}
+    		},
+			 legend: {
+      			show: true,
+      			location: 'ne',
+      			placement: 'inside',
+				fontSize: '11px'
+    		} 
+			
+			
+			
+			
+        })   
+    })
+</script>
+
+  
+
+
+

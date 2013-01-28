@@ -1,0 +1,58 @@
+                         
+<script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+<link rel="stylesheet" type="text/css" href="http://www.prioritymarketers.com/jqplot/src/jquery.jqplot.css"> 
+<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/jquery.jqplot.js"></script> 
+<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.barRenderer.js"></script>
+<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.categoryAxisRenderer.js"></script>
+<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.pointLabels.js"></script>
+<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.cursor.js"></script>
+<script type="text/javascript" src="https://bitbucket.org/cleonello/jqplot/raw/b5a7796a9ebf/src/plugins/jqplot.canvasTextRenderer.js"></script>
+<script type="text/javascript" src="https://bitbucket.org/cleonello/jqplot/raw/b5a7796a9ebf/src/plugins/jqplot.canvasAxisLabelRenderer.js"></script>
+
+
+<!--[if lt IE 9]>
+<script src="http://www.prioritymarketers.com/jqplot/src/excanvas.min.js"></script>
+<![endif]-->
+
+<div id="chart1" style="margin-top:20px; margin-left:20px; width:650px; height:400px;"></div>
+
+
+<script type='text/javascript'> 
+
+$(document).ready(function(){
+        $.jqplot.config.enablePlugins = true;
+    	var s1 = $.parseJSON($('#x_indi_val').text());
+
+        $.jqplot('chart1', [s1], {
+			
+			seriesDefaults: { 
+        	showMarker:false,
+         	pointLabels: { show:false }
+      		},
+			
+			series:[
+			{label:'Individuals'}
+			],
+			axes: {
+      			xaxis: {
+					label :'Time units',
+					pad: 0
+      				},
+      			yaxis: {
+        			label: 'Number of individuals',
+					labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+					pad: 0
+      				}
+    		},
+			 legend: {
+      			show: true,
+      			location: 'ne',
+      			placement: 'inside',
+				fontSize: '11px'
+    		} 
+        })   
+    })
+</script>
+
+
+

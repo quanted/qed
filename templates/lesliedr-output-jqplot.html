@@ -1,0 +1,117 @@
+                         
+<script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+<link rel="stylesheet" type="text/css" href="http://www.prioritymarketers.com/jqplot/src/jquery.jqplot.css"> 
+<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/jquery.jqplot.js"></script> 
+<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.barRenderer.js"></script>
+<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.categoryAxisRenderer.js"></script>
+<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.pointLabels.js"></script>
+<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.cursor.js"></script>
+<script type="text/javascript" src="https://bitbucket.org/cleonello/jqplot/raw/b5a7796a9ebf/src/plugins/jqplot.canvasTextRenderer.js"></script>
+<script type="text/javascript" src="https://bitbucket.org/cleonello/jqplot/raw/b5a7796a9ebf/src/plugins/jqplot.canvasAxisLabelRenderer.js"></script>
+<script type="text/javascript" src="https://bitbucket.org/cleonello/jqplot/raw/bd3ca463590c/src/plugins/jqplot.logAxisRenderer.js"></script>
+
+<!--[if lt IE 9]>
+<script src="http://www.prioritymarketers.com/jqplot/src/excanvas.min.js"></script>
+<![endif]-->
+
+<div id="chart1" style="margin-top:20px; margin-left:20px; width:650px; height:400px;"></div>
+
+
+<script type='text/javascript'> 
+
+$(document).ready(function(){    
+    	var ms = $.parseJSON($('#MS').text());
+    	var lm = $.parseJSON($('#LM').text());
+    	var ii = $.parseJSON($('#IN').text());
+    	var sd = $.parseJSON($('#sd').text());		
+    	var s1 = eval($('#final').text());
+    	var s = $.parseJSON($('#final_f').text());
+    	//var s = eval($('#final_f').text());
+		$('<tr><th colspan='+ms+1+'><div align="center">Leslie Matrix</div></th></tr>').appendTo('.lm');	
+		$('<tr><th><div align="center">Initial Individuals</div></th></tr>').appendTo('.ii');	
+		$('<tr><th colspan='+ms+1+'><div align="center">Individuals Over Time</div></th></tr>').appendTo('.it');	
+		
+		i=0
+		while (i < ms){
+			i1=i+1
+		$('<tr><td width=60><div align="center">C'+i1+'</div></td>').appendTo('.lm')
+		
+		var j=0
+			while (j < ms) {	
+			$('<td width=60><div align="center">'+lm[i][j]+'</div></td>').appendTo('.lm tr:last')
+  			j=j+1
+			}
+		$('</tr>').appendTo('.lm')
+		i=i+1			
+		}
+		$('</table>').appendTo('.lm')
+		$('<p>&nbsp;</p>').insertAfter('.lm')
+
+		p=0
+		$('<tr><td width=60><div align="center">Time Steps</div></td></tr>').appendTo('.it')
+		while (p < ms){
+			p=p+1
+			$('<td width=60><div align="center">C'+p+'</div></td>').appendTo('.it tr:last')
+		}
+		$('</tr>').appendTo('.it')
+		
+		
+		l=0
+		while (l < sd+1){	//time step, row
+		$('<tr><td width=60><div align="center">T='+l+'</div></td>').appendTo('.it')
+		var k=0
+			while (k < ms) {	//age class, col
+			$('<td width=60><div align="center">'+s1[k][l]+'</div></td>').appendTo('.it tr:last')
+  			k=k+1
+			}
+		$('</tr>').appendTo('.it')
+		l=l+1			
+		}
+		$('</table>').appendTo('.it')
+
+
+
+		
+		$.jqplot.config.enablePlugins = true;
+		
+		L=[{label:'Age class 1'}];
+		
+		var i=2
+		while(i<=ms)
+			{
+				L.push({label:'Age class'+i});
+				i++;
+			}		
+		
+        $.jqplot('chart1', s, {
+			
+			seriesDefaults: { 
+        	showMarker:false,
+         	pointLabels: {show:false }
+      		},
+			
+			series:L,
+			axes: {
+      			xaxis: {
+					label :'Time units',
+					pad: 0
+      				},
+      			yaxis: {
+        			label: 'Number of individuals',
+					labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+					//renderer: $.jqplot.LogAxisRenderer,
+					pad: 0
+      				}
+    		},
+			 legend: {
+      			show: true,
+      			location: 'nw',
+      			placement: 'inside',
+				fontSize: '11px'
+    		} 
+        })   
+    })
+</script>
+
+
+

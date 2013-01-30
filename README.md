@@ -8,3 +8,5 @@ Files have been removed include:
 1. geneec/publish_fortran.py
 
 2. przm/tttttest.py
+
+3. przm/output.py

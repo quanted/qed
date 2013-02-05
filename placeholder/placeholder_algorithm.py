@@ -12,13 +12,18 @@ import os
 
 class placeholderAlgorithmPage(webapp.RequestHandler):
     def get(self):
+        text_file1 = open('placeholder/placeholder_algorithm.txt','r')
+        x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01hh_uberheader.html', {'title'})
         html = html + template.render(templatepath + '02hh_uberintroblock_wmodellinks.html', {'model':'placeholder'})
         html = html + template.render(templatepath + '03hh_ubertext_links_left.html', {})                       
-        html = html + template.render(templatepath + '04ubertext_start.html', {})
+        html = html + template.render(templatepath + '04uberalgorithm_start.html', {
+                'model':'plcaeholder', 
+                'model_attributes':'Placeholder Algorithms', 
+                'text_paragraph':x})
         html = html + template.render(templatepath + '04ubertext_end.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05hh_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06hh_uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

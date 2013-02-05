@@ -16,7 +16,9 @@ class beekhouryInputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'beekhoury'})
         html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {'model':'beekhoury'})
+        html = html + template.render(templatepath + '04uberinput_start.html', {
+                'model':'beekhoury', 
+                'model_attributes':'Khoury Inputs'})
         html = html + str(beekhourydb.beekhouryInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})

@@ -21,9 +21,10 @@ class placeholderPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '03hh_ubertext_links_left.html', {})                        
         html = html + template.render (templatepath + '04ubertext_start.html', {
                 'model_page':'#',
-                'model_attributes':'Placeholder','text_paragraph':xx})
+                'model_attributes':'Placeholder', 
+                'text_paragraph':xx})
         html = html + template.render (templatepath + '04ubertext_end.html',{})
-        html = html + template.render (templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render (templatepath + '05hh_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06hh_uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

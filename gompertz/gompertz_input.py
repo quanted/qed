@@ -16,7 +16,9 @@ class genericInputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'gompertz'})
         html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {'model':'gompertz'})
+        html = html + template.render(templatepath + '04uberinput_start.html', {
+                'model':'gompertz', 
+                'model_attributes':'Gompertz Model Inputs'})
         html = html + str(gompertzdb.gompertzInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})

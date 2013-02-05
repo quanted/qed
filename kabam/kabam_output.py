@@ -1626,7 +1626,9 @@ class KabamOutputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'kabam'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberoutput_start.html', {})
+        html = html + template.render(templatepath + '04uberoutput_start.html', {
+                'model':'kabam',
+                'model_attributes':'Kabam Output'})
         html = html + """
         <table border="1">
         <tr><H3>User Inputs</H3></tr>

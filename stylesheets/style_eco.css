@@ -21,7 +21,7 @@ body {
 
 #banner {
   width: 1024px;
-  background: #FFA812;
+  background: #FFA500;
   height: 30px;
   font-size: 18px;
 }
@@ -38,44 +38,46 @@ body {
   padding: 5px;
 }
 
-#topheader {
-  width: 1024px;
-  height: 240px;
-  background: #79973F;
-}
-
 #topheader_pic {
   width: 720px;
   height: 240px;
   float: left;
   border-right: 4px solid #F4F7ED;
+  border-bottom: 4px solid #F4F7ED;
+}
+
+#topheader_pic img {
+  width: 720px;
+  height: 240px;
 }
 
 #topheader_p {
+  width: 300px;
+  height: 240px;
+  background: #79973F;
+  float: right;
   color: white;
-  padding: 5% 5%;         /* top & bottom, right & left */
   font-size: 12px;
   text-align: justify;
-  position: relative;
-  left: 2.5%;
+  border-bottom: 4px solid #F4F7ED;
 }
+
+#topheader_p p {
+  margin-left: auto;
+  margin-right: auto;
+  width: 240px;
+  padding-top: 20%;
+}
+
 
 /*
    02uberintroblock_wmodellinks.html
 */
-/*
-#header_menu_l {
-  width: 184px;
-  height: 1.64em;
-  background: orange;
-  padding: 0.25em 0 1px 0;
-  float: left;
-}
-*/
+
 #header_menu_c {
   width: 864px;
-  height: 1.64em;
-  background: orange;
+  height: 18px;
+  background: #FFA500;
   padding: 0.25em 0 1px 0;
   float: left;
 }
@@ -88,7 +90,9 @@ body {
   display: inline;
   padding: 0.5em 1em 0.25em 1em;
 /*background: #79973F;*/
-  background: orange;
+  background: #FFA500;
+  color: white;
+  cursor: pointer;
   border-top: 1.5px solid black;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
@@ -101,7 +105,7 @@ body {
   display: inline;
   margin: 0;
   padding: 0.5em 1em 0.25em 1em;
-/*background: orange;#FFC456*/
+/*background: #FFA500;#FFC456*/
   background: #79973F;
   border-top: 2px solid black;
   border-bottom: 1px solid black;
@@ -144,7 +148,7 @@ body {
 }
 #header_menu_r {
   width: 160px;
-  height: 1.64em;
+  height: 18px;
   background: orange;
   padding: 0.25em 0 1px 0;
   float: left;
@@ -161,37 +165,7 @@ body {
 #header_menu_r li a {
   color: white;
 }
-/*
-#header_menu_r li {
-  display: inline;
-  padding: 0.5em 1em 0.25em 1em;
-  background: orange;
-  border-top: 1.5px solid black;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-radius: 1em 1em 0 0;
-  -moz-border-radius: 1em 1em 0 0;
-  -webkit-border-radius: 1em 1em 0 0;
-}
-#header_menu_r li:hover {
-  display: inline;
-  margin: 0;
-  padding: 0.5em 1em 0.25em 1em;
-  background: #79973F;
-  border-top: 2px solid black;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-radius: 1em 1em 0 0;
-  -moz-border-radius: 1em 1em 0 0;
-  -webkit-border-radius: 1em 1em 0 0;
-}
-#header_menu_r li a {
-  color: white;
-  text-decoration: none;
-}
-*/
+
 
 /*
    02uberintroblock_nomodellinks.html
@@ -212,7 +186,25 @@ body {
 */
 
 
+/*
 
+   06uberfooter.html
+*/
+
+#footer {
+  clear: both;
+  background: #FFA812;
+  height: 31px;
+  padding: 4px;
+  text-align: center;
+}
+#footer li {
+  display: inline;
+}
+#footer img {
+  width: 88px;
+  height: 31px;
+}
 
 /*
    Body
@@ -270,7 +262,10 @@ img { border: none; }
   letter-spacing: -1px;
   line-height: 12px;
 }
-
+.model_header {
+  color: #79973F;
+  margin: 0.5em 0 1em 0;
+}
 #intro {
   background: #CDDDAD url(images/intro.jpg) no-repeat;
   height: 120px;
@@ -319,15 +314,6 @@ img { border: none; }
   list-style-type: square;
   padding: 5px 10px 10px 20px;
 }
-
-
-#footer {
-  text-align: center;
-  color: #333;
-  font-size: 11px;
-  padding: 0 0 0px 0;
-  margin-top: 0px;
-}
 #wrap .right .mdlinks {
   float: right;
   width: 130px;
@@ -361,12 +347,14 @@ Defining Hyperlink Colors
 */
 
 a:link {
-  color: #78AB46;
+  color: #79973F;
+  /*color: #78AB46;*/
   text-decoration: none;
 }
 
 a:visited {
-  color: #78AB46;
+  color: #79973F;
+  /*color: #78AB46;*/
   text-decoration: none;
 }
 
@@ -402,7 +390,8 @@ Moved CSS from 01uberheader.html to here:
 .urbangreymenu .headerbar{
   font: bold 11px Verdana, Arial, Helvetica;
   color: #FFFFFF;
-  background: #78AB46 no-repeat 8px 6px;
+  background: #79973F no-repeat 8px 6px;
+  /*background: #78AB46 no-repeat 8px 6px;*/
   /* background-image: url('/images/arrowstop.gif') no-repeat 8px 6px; /*last 2 values  are the x and y coordinates of bullet image*/ */
   margin-bottom: 0; /*bottom spacing between header and rest of content*/
   text-transform: uppercase;
@@ -460,12 +449,11 @@ Moved CSS from 01uberheader.html to here:
   color:#333333;
   background-color:#C9E0B3;
   padding-left:8px;
-  cursor:pointer;
 }
 #l_menu ul li a:hover {
   color:#FFFFFF;
   background-color:#FFC456;
-}                            /* "mouseover", not dependant on scripts.js*/
+}                            /* "mouseover", NOT dependant on scripts.js*/
 #l_menu ul li a.aSelected {
   display:block;
   text-decoration:none;

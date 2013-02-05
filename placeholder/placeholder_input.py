@@ -8,7 +8,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import django
 from django import forms
-from generic import placeholderdb
+from placeholder import placeholderdb
 
 class placeholderInputPage(webapp.RequestHandler):
     def get(self):
@@ -18,10 +18,12 @@ class placeholderInputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01hh_uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02hh_uberintroblock_wmodellinks.html', {'model':'placeholder'})
         html = html + template.render (templatepath + '03hh_ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {})
+        html = html + template.render(templatepath + '04uberinput_start.html', {
+                'model':'placeholder', 
+                'model_attributes':'Placeholder Inputs'})
         html = html + str(placeholderdb.placeholderInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05hh_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06hh_uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

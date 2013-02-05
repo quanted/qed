@@ -17,7 +17,9 @@ class AgDriftInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'agdrift-jQuery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'agdrift'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {})
+        html = html + template.render(templatepath + '04uberinput_start.html', {
+                'model':'agdrift', 
+                'model_attributes':'AgDrift Inputs'})
         html = html + str(agdriftdb.agdriftInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})

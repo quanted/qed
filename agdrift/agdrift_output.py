@@ -6,7 +6,7 @@ Created on Fri Jan 18 11:50:49 2013
 """
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
-from agdrift import agDriftdb
+from agdrift import agdriftdb
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
@@ -509,78 +509,78 @@ class agdriftOutputPage(webapp.RequestHandler):
         print "drop_size", drop_size
         print "waterbody_type", waterbody_type
         print "application_method", application_method
-        print "boom_height", boom_height
-
-        
+        print "boom_height", boom_height   
         orchard_type = form.getvalue('orchard_type')
-        if (waterbody_type == '1' and application_method == 'a' and drop_size == '1'):
+        if (waterbody_type == 'EPA Pond' and application_method == 'Aerial' and drop_size == 'Fine'):
             y = pond_aerial_vf2f
-        elif (waterbody_type == '1' and application_method == 'a' and drop_size == '2'):
+        elif (waterbody_type == 'EPA Pond' and application_method == 'Aerial' and drop_size == 'Medium'):
             y = pond_aerial_f2m
-        elif (waterbody_type == '1' and application_method == 'a' and drop_size == '3'):
+        elif (waterbody_type == 'EPA Pond' and application_method == 'Aerial' and drop_size == 'Coarse'):
             y = pond_aerial_m2c
-        elif (waterbody_type == '1' and application_method == 'a' and drop_size == '4'):
+        elif (waterbody_type == 'EPA Pond' and application_method == 'Aerial' and drop_size == 'Very Coarse'):
             y = pond_aerial_c2vc
-        elif (waterbody_type == '1' and application_method == 'b' and drop_size == '1' and boom_height == '1'):
+        elif (waterbody_type == 'EPA Pond' and application_method == 'Ground' and drop_size == 'Fine' and boom_height == 'Low'):
             y = pond_ground_low_f
-        elif (waterbody_type == '1' and application_method == 'b' and drop_size == '1' and boom_height == '2'): 
+        elif (waterbody_type == 'EPA Pond' and application_method == 'Ground' and drop_size == 'Medium' and boom_height == 'High'): 
             y = pond_ground_high_fine
-        elif (waterbody_type == '1' and application_method == 'b' and drop_size == '3' and boom_height == '1'):
+        elif (waterbody_type == 'EPA Pond' and application_method == 'Ground' and drop_size == 'Coarse' and boom_height == 'Low'):
             y = pond_ground_low_m2c
-        elif (waterbody_type == '1' and application_method == 'b' and drop_size == '3' and boom_height == '2'):
+        elif (waterbody_type == 'EPA Pond' and application_method == 'Ground' and drop_size == 'Very Coarse' and boom_height == 'High'):
             y = pond_ground_high_m2c
-        elif (waterbody_type == '1' and application_method == 'c' and orchard_type == '1'):
+        elif (waterbody_type == 'EPA Pond' and application_method == 'Orchard/Airblast' and orchard_type == 'Vineyard in leaf'):
             y = pond_vineyard
-        elif (waterbody_type == '1' and application_method == 'c' and orchard_type == '2'):
+        elif (waterbody_type == 'EPA Pond' and application_method == 'Orchard/Airblast' and orchard_type == 'Orchard or dormant vineyard'):
             y = pond_orchard
-        elif (waterbody_type == '2' and application_method == 'a' and drop_size == '1'):
+        elif (waterbody_type == 'Lake' and application_method == 'Aerial' and drop_size == 'Fine'):
             y = lake_aerial_f2vf
-        elif (waterbody_type == '2' and application_method == 'a' and drop_size == '2'):
+        elif (waterbody_type == 'Lake' and application_method == 'Aerial' and drop_size == 'Medium'):
             y = lake_aerial_f2m
-        elif (waterbody_type == '2' and application_method == 'a' and drop_size == '3'):
+        elif (waterbody_type == 'Lake' and application_method == 'Aerial' and drop_size == 'Coarse'):
             y = lake_aerial_m2c
-        elif (waterbody_type == '2' and application_method == 'a' and drop_size == '4'):
+        elif (waterbody_type == 'Lake' and application_method == 'Aerial' and drop_size == 'Very Coarse'):
             y = lake_aerial_c2vc
-        elif (waterbody_type == '2' and application_method == 'b' and drop_size == '1' and boom_height == '1'):
+        elif (waterbody_type == 'Lake' and application_method == 'Ground' and drop_size == 'Fine' and boom_height == 'Low'):
             y = lake_ground_low_f
-        elif (waterbody_type == '2' and application_method == 'b' and drop_size == '1' and boom_height == '2'): 
+        elif (waterbody_type == 'Lake' and application_method == 'Ground' and drop_size == 'Medium' and boom_height == 'High'): 
             y = lake_ground_high_f
-        elif (waterbody_type == '2' and application_method == 'b' and drop_size == '3' and boom_height == '1'):
+        elif (waterbody_type == 'Lake' and application_method == 'Ground' and drop_size == 'Coarse' and boom_height == 'Low'):
             y = lake_ground_low_m2c
-        elif (waterbody_type == '2' and application_method == 'b' and drop_size == '3' and boom_height == '2'):
+        elif (waterbody_type == 'Lake' and application_method == 'Ground' and drop_size == 'Very Coarse' and boom_height == 'High'):
             y = lake_ground_high_m2c
-        elif (waterbody_type == '2' and application_method == 'c' and orchard_type == '1'):
+        elif (waterbody_type == 'Lake' and application_method == 'Orchard/Airblast' and orchard_type == 'Vineyard in leaf'):
             y = lake_vineyard
-        elif (waterbody_type == '2' and application_method == 'c' and orchard_type == '2'):
+        elif (waterbody_type == 'Lake' and application_method == 'Orchard/Airblast' and orchard_type == 'Orchard or dormant vineyard'):
             y = lake_orchard    
-        elif (waterbody_type == '3' and application_method == 'a' and drop_size == '1'):
+        elif (waterbody_type == 'Watercourse' and application_method == 'Aerial' and drop_size == 'Fine'):
             y = stream_aerial_f2vf
-        elif (waterbody_type == '3' and application_method == 'a' and drop_size == '2'):
+        elif (waterbody_type == 'Watercourse' and application_method == 'Aerial' and drop_size == 'Medium'):
             y = stream_aerial_f2m
-        elif (waterbody_type == '3' and application_method == 'a' and drop_size == '3'):
+        elif (waterbody_type == 'Watercourse' and application_method == 'Aerial' and drop_size == 'Coarse'):
             y = stream_aerial_m2c
-        elif (waterbody_type == '3' and application_method == 'a' and drop_size == '4'):
+        elif (waterbody_type == 'Watercourse' and application_method == 'Aerial' and drop_size == 'Very Coarse'):
             y = stream_aerial_c2vc
-        elif (waterbody_type == '3' and application_method == 'b' and drop_size == '1' and boom_height == '1'):
+        elif (waterbody_type == 'Watercourse' and application_method == 'Ground' and drop_size == 'Fine' and boom_height == 'Low'):
             y = stream_ground_low_fine
-        elif (waterbody_type == '3' and application_method == 'b' and drop_size == '1' and boom_height == '2'): 
+        elif (waterbody_type == 'Watercourse' and application_method == 'Ground' and drop_size == 'Fine' and boom_height == 'High'): 
             y = stream_ground_high_fine
-        elif (waterbody_type == '3' and application_method == 'b' and drop_size == '3' and boom_height == '1'):
+        elif (waterbody_type == 'Watercourse' and application_method == 'Ground' and drop_size == 'Coarse' and boom_height == 'Low'):
             y = stream_ground_low_m2c
-        elif (waterbody_type == '3' and application_method == 'b' and drop_size == '3' and boom_height == '2'):
+        elif (waterbody_type == 'Watercourse' and application_method == 'Ground' and drop_size == 'Coarse' and boom_height == 'High'):
             y = stream_ground_high_m2c
-        elif (waterbody_type == '3' and application_method == 'c' and orchard_type == '1'):
+        elif (waterbody_type == 'Watercourse' and application_method == 'Orchard/Airblast' and orchard_type == 'Vineyard in leaf'):
             y = stream_vineyard
-        elif (waterbody_type == '3' and application_method == 'c' and orchard_type == '2'):
+        elif (waterbody_type == 'Watercourse' and application_method == 'Orchard/Airblast' and orchard_type == 'Orchard or dormant vineyard'):
             y = stream_orchard
-#        else:
-#            y = 0
+        else:
+            y = 0
         
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'agdrift'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberoutput_start.html', {})
+        html = html + template.render(templatepath + '04uberoutput_start.html', {
+                'model':'agdrift', 
+                'model_attributes':'AgDrift Output'})
         html = html + """
         <table border="1">
         <tr><H3>User Inputs</H3></tr>
@@ -600,6 +600,7 @@ class agdriftOutputPage(webapp.RequestHandler):
         </table>
         """ % (application_method, drop_size, waterbody_type)
         html = html +  """<table width="400" border="1", style="display:none">
+                          <tr><H3>Results</H3></tr>
                           <tr>
                           <td>deposition</td>
                           <td id="deposition">%s</td>

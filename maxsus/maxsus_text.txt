@@ -1,4 +1,3 @@
-<p>&nbsp;</p>
 <p>
 The maximum sustainable yield (MSY) model was developed to maintain the population size 
 at the point of maximum growth rate by harvesting the individuals that would normally be added to the population, 

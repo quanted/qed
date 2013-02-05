@@ -26,7 +26,9 @@ class DustInputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'dust'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render (templatepath + '04uberinput_start.html', {'model':'dust'})
+        html = html + template.render (templatepath + '04uberinput_start.html', {
+                'model':'dust', 
+                'model_attributes':'DUST Inputs'})
         html = html + str(Dustdb.DustInp())
         html = html + template.render (templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render (templatepath + '05ubertext_links_right.html', {})

@@ -12,13 +12,16 @@ import os
 
 class foxsurplusAlgorithmPage(webapp.RequestHandler):
     def get(self):
-        text_file2 = open('foxsurplus/foxsurplus_algorithm.txt','r')
-        xx = text_file2.read()        
+        text_file1 = open('foxsurplus/foxsurplus_algorithm.txt','r')
+        x = text_file1.read()        
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01pop_uberheader.html', {'title'})
         html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'foxsurplus'})
         html = html + template.render(templatepath + '03pop_ubertext_links_left.html', {})                       
-        html = html + template.render(templatepath + '04ubertext_start.html', {'text_paragraph':xx})
+        html = html + template.render(templatepath + '04uberalgorithm_start.html', {
+                'model':'foxsurplus', 
+                'model_attributes':'Fox Surplus Yield Model Algorithms', 
+                'text_paragraph':x})
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})

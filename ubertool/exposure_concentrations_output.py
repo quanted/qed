@@ -18,7 +18,7 @@ class UbertoolExposureConcentrationsConfigurationPage(webapp.RequestHandler):
         logger = logging.getLogger("UbertoolExposureConcentrationsConfigurationPage")
         form = cgi.FieldStorage()
         config_name = str(form.getvalue('config_name'))
-        exposure_concentrations = ExposureConcentrations(key_name="config_name")
+        exposure_concentrations = ExposureConcentrations()
         user = users.get_current_user()
         if user:
             exposure_concentrations.user = user

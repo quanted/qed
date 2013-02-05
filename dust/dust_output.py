@@ -335,7 +335,9 @@ class DUSTExecutePage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'dust'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                                
-        html = html + template.render(templatepath + '04uberoutput_start.html', {})   
+        html = html + template.render(templatepath + '04uberoutput_start.html', {
+                'model':'dust', 
+                'model_attributes':'DUST Output'})   
         html = html + """
         <table border="1">
         <tr><H3>User Inputs: Chemical Identity</H3></tr>

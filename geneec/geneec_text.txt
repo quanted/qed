@@ -1,4 +1,3 @@
-﻿
 <p>GENEEC is a screening-level aquatic exposure assessment model used in the 
 determination of the ecological risk assessment process. It works in conjunction 
 with other environmental fate and transport models such as the Pesticide Root Zone 

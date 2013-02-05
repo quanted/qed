@@ -1,0 +1,4 @@
+<b>References</b>
+<li>Bird, S.L., Perry, S.G., Ray, S.L., & Teske, M.E. 2002. Evaluation of the AgDISP aerial spray algorithms in the AgDRIFT model. Environmental Toxicology and Chemistry. 21(3):672-681</li><br>
+<li>Teske, M.E., Bird, S.L., Esterly, D.M., Curbishley, T.B., Ray, S.L., Perry, S.G. 2002. AgDrift? A model for estimating near-field spray drift from aerial applications. Environmental Toxicology and Chemistry. 21(3):659-671.</li><br>
+<li>Hewitt, A.J., Johnson, D.R., Fish, J.D., Hermansky, C.G., Valcore, D.L. 2002. Development of the spray drift task force database for aerial applications. Environmental Toxicology and Chemistry. 21(3):648-658.</li><br>

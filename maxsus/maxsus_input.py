@@ -16,7 +16,9 @@ class maxsusInputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'maxsus'})
         html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {'model':'maxsus'})
+        html = html + template.render(templatepath + '04uberinput_start.html', {
+                'model':'maxsus', 
+                'model_attributes':'Maximum Sustainable Yield Model Inputs'})
         html = html + str(maxsusdb.maxsusInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})

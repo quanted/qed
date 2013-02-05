@@ -5,51 +5,15 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
+from google.appengine.api import users
+from google.appengine.ext import db
 import numpy as np
 import cgi
 import cgitb
 cgitb.enable()
-
-#!C:\Documents and Settings\jharston\Desktop\jharston_dropbox\Dropbox\pypest\TierIRice\TierIRice.py
-
-#import csv as rice
-#import numpy as N
-#
-#TierIRiceReader = rice.reader(open('C:\Documents and Settings\jharston\Desktop\jharston_dropbox\Dropbox\pypest\TierIRice.input.csv')
-#    ,delimiter=',')
-#arr = N.loadtxt('C:\Documents and Settings\jharston\Desktop\jharston_dropbox\Dropbox\pypest\TierIRice.input.csv',dtype={'names': ('parameter', 'value', 'units'),'formats': ('c', 'f', 'c')},delimiter=',')
-
-# for row in TierIRiceReader:
-#    print ', '.join(row)
-
-#array.fromfile('C:\Documents and Settings\jharston\Desktop\jharston_dropbox\Dropbox\pypest\TierIRice.input.csv')
-
-#dsed = arr[0,][1]
-#a = arr[1,][1]
-#pb = arr[2,][1]
-#dw = arr[3,][1]
-#osed = arr[4,][1]
-#mai = arr[5,][1]
-#kd = arr[6,][1]
-#
-#
-#TierIRiceDict = dict()
-#
-#TierIRiceDict['dsed'] = arr[0,][1]
-#TierIRiceDict['a'] = arr[1,][1]
-#TierIRiceDict['pb'] = arr[2,][1]
-#TierIRiceDict['dw'] = arr[3,][1]
-#TierIRiceDict['osed'] = arr[4,][1]
-#TierIRiceDict['mai'] = arr[5,][1]
-#TierIRiceDict['kd'] = arr[6,][1]
-
-
-
-#import urllib
-#ff = urllib.urlopen("file://C:\Documents and Settings\jharston\Desktop\TierIRice.html")
-#s = ff.read()
-#ff.close()
-
+import datetime
+from rice import rice_model
+import logging
 
 
 # The mass of the sediment at equilibrium with the water column
@@ -195,41 +159,29 @@ def cw(mai1,dw,dsed,osed,pb,kd):
     return mai1 / (dw + (dsed * (osed + (pb * kd))))
 
 
-
-# Master function
-
-#def master(dsed,a,pb,dw,osed,mai,kd):
-#    return msed(dsed,a,pb)
-#    return vw(dw,a,dsed,osed)
-#    return mai1(mai,a)
-#    return cw(mai1,dw,dsed,osed,pb,kd)
-
-#f = open('C:\Documents and Settings\jharston\Desktop\jharston_dropbox\Dropbox\pypest\TierIRice.output.csv', 'wt')
-#
-#try:
-#    writer = rice.writer(f)
-#    writer.writerow( ('Parameter', 'Value', 'Units') )
-#    writer.writerow( ('Mass of the Sediment at Equilibrium with the Water Column', msed(dsed,a,pb), 'kg') )
-#    writer.writerow( ('Volume of the Water Column Plus Pore Water', vw(dw,a,dsed,osed), 'm3') )
-#    writer.writerow( ('Mass of Pesticide Applied per Unit Area', mai1(mai,a) , 'kg/ha') )
-#    writer.writerow( ('Water Concentration', cw(mai1(mai,a),dw,dsed,osed,pb,kd), 'ug/L') )
-
-#finally:
-#    f.close()
-
-#print open('C:\Documents and Settings\jharston\Desktop\jharston_dropbox\Dropbox\pypest\TierIRice.output.csv', 'rt').read()
-
 class RiceExecutePage(webapp.RequestHandler):
     def post(self):
+        logger = logging.getLogger("UbertoolUseConfigurationPage")       
         form = cgi.FieldStorage() 
-        chemical_name = form.getvalue('chemical_name')
-        mai = form.getvalue('mai')
-        dsed = form.getvalue('dsed')
-        a = form.getvalue('area')
-        pb = form.getvalue('pb')
-        dw = form.getvalue('dw')
-        osed = form.getvalue('osed')
-        kd = form.getvalue('Kd')
+        config_name = str(form.getvalue('config_name'))
+        rice = rice_model.Rice()
+        
+        user = users.get_current_user()
+        if user:
+            logger.info(user.user_id())
+            rice.user = user
+        rice.config_name = config_name        
+        rice.chemical_name = form.getvalue('chemical_name')
+        rice.mai = float(form.getvalue('mai'))
+        rice.dsed = float(form.getvalue('dsed'))
+        rice.a = float(form.getvalue('area'))
+        rice.pb = float(form.getvalue('pb'))
+        rice.dw = float(form.getvalue('dw'))
+        rice.osed = float(form.getvalue('osed'))
+        rice.kd = float(form.getvalue('Kd'))
+        rice.mai1_out=mai1(rice.mai, rice.a) 
+        rice.cw_out=cw(rice.mai1_out, rice.dw, rice.dsed, rice.osed, rice.pb, rice.kd)
+        rice.put()
             
         text_file = open('rice/rice_description.txt','r')
         x = text_file.read()
@@ -237,13 +189,21 @@ class RiceExecutePage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', {'title'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'rice'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberoutput_start.html',{})     
+        html = html + template.render(templatepath + '04uberoutput_start.html',{
+                'model':'rice', 
+                'model_attributes':'Rice Model Output'})     
         html = html + """
         <table border="1">
         <tr><H3>User Inputs</H3></tr>
         <tr>
+        <td>Input Name</td>
+        <td>Value</td>
+        <td>Unit</td>
+        </tr>        
+        <tr>
         <td>Chemical Name</td>
         <td>%s</td>
+        <td>-</td>
         </tr>
         <tr>
         <td>Mass of Applied Ingredient Applied to Paddy</td>
@@ -280,8 +240,7 @@ class RiceExecutePage(webapp.RequestHandler):
         <td>%s</td>
         <td>L/kg</td>
         </table>
-        """ % (chemical_name, mai, dsed, a, pb, dw, osed, kd)
-        #html = html + template.render(templatepath + '06uber_break.html', {})
+        """ % (rice.chemical_name, rice.mai, rice.dsed, rice.a, rice.pb, rice.dw, rice.osed, rice.kd)
         html = html + """
         <table border="1">
         <tr><H3>Rice Model Outputs</H3></tr><br>
@@ -297,7 +256,7 @@ class RiceExecutePage(webapp.RequestHandler):
         <td>%0.2E</td>
         </tr>
         </table>
-        """  % (chemical_name, mai1(mai,a), cw(mai1(mai,a),dw,dsed,osed,pb,kd))             
+        """  % (rice.chemical_name, rice.mai1_out, rice.cw_out)             
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

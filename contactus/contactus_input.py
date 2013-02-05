@@ -5,8 +5,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 
 class contactusInputPage(webapp.RequestHandler):
-    def post(self):
-        
+    def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_nomodellinks.html', {'model':'contactus'})

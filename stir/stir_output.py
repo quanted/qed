@@ -735,7 +735,9 @@ class STIRExecutePage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'stir'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberoutput_start.html', {})    
+        html = html + template.render(templatepath + '04uberoutput_start.html', {
+                'model':'stir', 
+                'model_attributes':'STIR Output'})    
         html = html + """
         <table border="1">
         <tr><H3>User Inputs</H3></tr><br>

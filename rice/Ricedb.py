@@ -9,8 +9,11 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 from django import forms
 from django.db import models
 from django.utils.safestring import mark_safe
+from google.appengine.api import users
 
 class RiceInp(forms.Form):
+    user_id = users.get_current_user().user_id()
+    config_name = forms.CharField(label="Use Configuration Name", initial="use-config-%s"%user_id)        
     chemical_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}))
     mai = forms.FloatField(required=True,label='Mass of Applied Ingredient Applied to Paddy (kg)')
     dsed = forms.FloatField(required=True,label='Sediment Depth (m)')

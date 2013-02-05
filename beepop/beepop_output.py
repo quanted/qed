@@ -34,7 +34,7 @@ for row in data:
     wspeed.append(float(row[3]))
     day_light.append(float(row[4]))
 # number of eggs layed on a day by the queen
-def Et_f(egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size):
+def Et_f(swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size):
     p_t = 0
     Et = 0
     eu = 0
@@ -48,7 +48,7 @@ def Et_f(egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adu
     total_foragers_day = []
     number_drones_day = [] 
     n_f = 0    
-    #n_a = 0  
+    n_a = 0  
     n_d = 0  
       #create matrices
     Ndays = 365  
@@ -60,12 +60,11 @@ def Et_f(egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adu
     drones_outside = np.zeros((number_of_forages-1,Ndays+1))
     forager[0, 0] = initial_colony_size * (1.0/3)
     total_foragers_day.append(initial_colony_size * (1.0/3))
-  #  print 'total_foragers_day', total_foragers_day
+#    print 'total_foragers_day', total_foragers_day
    # print forager[0,0]
    # print forager
     adults[0,0] = initial_colony_size - forager[0,0] 
-#    be_verbose = 1
-    
+#    be_verbose = 1  
   #  print forager[0,0]
     for i in range(1,Ndays,1):
  #       if be_verbose==1:
@@ -73,16 +72,9 @@ def Et_f(egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adu
  #           print 'i=', i, '<br>'
         day = i-1
         DD = (-.0006*(wspeed[day]**2)) + (.05 * wspeed[day]) + 0.021 #temperature factor calculation
-        LT = (-.00743*(day_light[day]**3)) + (0.312 * (day_light[day]**2)) - (4.04 * day_light[day]) + 16.58 #sunlight factor calculation
-#        if i == 1:
-#            nt = initial_colony_size * (9.0/10)
-#            total_foragers_day.append(initial_colony_size * (9.0/10))
-#            total_workers_day.append(initial_colony_size * (1.0/10))
-            #print total_foragers_day
-            #print total_workers_day
-       # else:   
+        LT = (-.00743*(day_light[day]**3)) + (0.312 * (day_light[day]**2)) - (4.04 * day_light[day]) + 16.58 #sunlight factor calculation 
         nt = total_foragers_day[i-1]
-       # print 'total_foragers_day', total_foragers_day[i-1]
+        #print 'total_foragers_day', total_foragers_day[i-1]
         #print 'nt=', nt
         if nt > 0:
             N = (math.log((nt * .001) + 1)) * 0.672    #foraging population size factor calculation for number of eggs laid
@@ -91,12 +83,20 @@ def Et_f(egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adu
             N= 0.1
             Ft = 0.1
         p_t = e_max + ((-.0027 * (i**2)) + (0.395 * i)) #egg laying factor depending on day of laying
-        Et = DD * LT * N * p_t #Et number of eggs laid per day
-        Et = round(Et)
-        if Et < 0: 
-            Et = 0
+#        print 'foragers=', total_foragers_day[i-1]
+#        print 'workers=', total_workers_day[i-1]
+#        print 'eggs=', eggs_laid[i-1]
+        #print 'n_a', n_a
+        if ( i >1 and ((n_a + n_f) / Et) > 3 and (n_a + n_f / Et > adult_brood_ratio) ):         
+            Et = DD * LT * N * p_t #Et number of eggs laid per day
+            Et = round(Et)
+            if Et < 0: 
+                Et = 0
+            else:
+                Et = Et
+            print 'ratio', ((n_a + n_f) / Et), '<br>'
         else:
-            Et = Et
+            Et = 0
         eggs_laid.append(Et) #list of eggs laid on each day
         st = Wt / sperm_obtained #proportion of available sperm used
         if st > 0.6:
@@ -127,7 +127,7 @@ def Et_f(egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adu
         eggs[1:days_to_adult_worker-1, i] = eggs[0:days_to_adult_worker-2, i-1]
        # print 'eggs=', eggs[0:days_to_adult_worker+2, i], '<br>'
         eggs_used.append(eu)   
-#        print 'eggs_used', eggs_used, '<br>'
+        #print 'eggs_used', eggs_used[i-1], '<br>'
         drone_eggs_list.append(Vt)
         worker_eggs.append(Wt)
         # life cycle for fertilized eggs that develop into worker bees and foragers
@@ -212,7 +212,7 @@ def Et_f(egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adu
 #            n_a = n_a + adults[p,i] #calculates number of workers per day and adds to a list        
         n_a =sum(adults[0:days_from_adult_to_forager-2, i])        
         total_workers_day.append(n_a)
-#        print 'workers_day', total_workers_day, '<br>'
+#        print 'workers_day', total_workers_day[i-1], '<br>'
         #print total_workers_day        
         # update of list tracking total foragers a day from matrix                 
         #n_f = 0         
@@ -249,6 +249,12 @@ def Et_f(egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adu
         #print n_d
         number_drones_day.append(n_d)
  #       print 'drones=', number_drones_day
+        if swarm == 'Yes' and i == swarm_date:
+            forager[0:number_of_forages,i] = 0.75 * (forager[0:number_of_forages,i])
+            adults[0:days_from_adult_to_forager-2, i] = 0.30 * (adults[0:days_from_adult_to_forager-2, i])
+            drones[1:days_to_adult_drones-1, i] = 0.95 * (drones[1:days_to_adult_drones-1, i])
+            for i in range(swarm_date+5,258,1):
+                adult_brood_ratio = 2         
     return eggs_laid, drone_eggs, worker_eggs, eggs, n_a, n_f, n_d, number_drones_day, total_foragers_day, total_workers_day    
 class beepopOutputPage(webapp.RequestHandler):
     def post(self):        
@@ -257,18 +263,25 @@ class beepopOutputPage(webapp.RequestHandler):
         sperm_obtained = float(form.getvalue('sperm_obtained'))
         egg_mortality = float(form.getvalue('egg_mortality'))
         e_max = float(form.getvalue('potential_eggs_laid'))
+        adult_brood_ratio = float(form.getvalue('adult_brood_ratio'))
       #  no_foraging_days = int(form.getvalue('no_foraging_days'))
         brood_cycles = float(form.getvalue('brood_cycles'))
         days_to_adult_worker = int(form.getvalue('days_to_adult_worker'))
         days_to_adult_drones = int(form.getvalue('days_to_adult_drones'))
         days_from_adult_to_forager = int(form.getvalue('days_from_adult_to_forager'))
         number_of_forages = int(form.getvalue('number_of_forages'))
+        swarm = (form.getvalue('swarm'))
+        stop_lay = int(form.getvalue('stop_lay'))
+        start_lay = int(form.getvalue('start_lay'))
+        lay_maximum = int(form.getvalue('lay_maximum'))
+        swarm_date = int(form.getvalue('swarm_date'))
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'beepop'})
         html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberoutput_start.html', {})
-
+        html = html + template.render(templatepath + '04uberoutput_start.html', {
+                'model':'beepop', 
+                'model_attributes':'BeePop Output'})
         html = html + """
         <table border="1">
         <tr><H3>User Inputs</H3></tr>
@@ -331,7 +344,7 @@ class beepopOutputPage(webapp.RequestHandler):
         <td>%.2f</td>
         </tr>
         </table>
-        """ % (Et_f(egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[4], Et_f(egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[5], Et_f(egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[6])
+        """ % (Et_f(swarm, swarm_date,adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[4], Et_f(swarm, swarm_date,adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[5], Et_f(swarm, swarm_date,adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[6])
         html = html +  """<table width="400" border="1", style="display:none">
                           <tr>
                             <td>hive_val_1</td>
@@ -349,7 +362,7 @@ class beepopOutputPage(webapp.RequestHandler):
                             <td>hive_val_3</td>
                             <td id="Drones">%s</td>
                           </tr>                                                     
-                          </table>"""%(Et_f(egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[0],Et_f(egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[9],Et_f(egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[8],Et_f(egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[7])        
+                          </table>"""%(Et_f(swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[0],Et_f(swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[9],Et_f(swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[8],Et_f(swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[7])        
         html = html + template.render(templatepath + 'beepop-outputjqplot.html', {})         
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})

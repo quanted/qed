@@ -12,13 +12,16 @@ import os
 
 class DUSTReferencesPage(webapp.RequestHandler):
     def get(self):
-        text_file1 = open('dust/dust_description.txt','r')
+        text_file1 = open('dust/dust_references.txt','r')
         x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'dust'})
         html = html + template.render(templatepath + '03ubertext_links_left.html', {})                        
-        html = html + template.render(templatepath + '04ubertext_start.html', {})
+        html = html + template.render(templatepath + '04uberreferences_start.html', {
+                'model':'dust', 
+                'model_attributes':'DUST References', 
+                'text_paragraph':x})
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

@@ -10,6 +10,8 @@ import cgitb
 cgitb.enable()
 import datetime
 from ubertool.use import Use
+import sys
+sys.path.append("../")
 import logging
 
 
@@ -18,7 +20,7 @@ class UbertoolUseConfigurationPage(webapp.RequestHandler):
         logger = logging.getLogger("UbertoolUseConfigurationPage")
         form = cgi.FieldStorage()
         config_name = str(form.getvalue('config_name'))
-        use = Use(key_name="config_name")
+        use = Use()
         user = users.get_current_user()
         if user:
             logger.info(user.user_id())

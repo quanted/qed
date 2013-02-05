@@ -11,11 +11,18 @@ import os
 
 class beepopDescriptionPage(webapp.RequestHandler):
     def get(self):
+        text_file1 = open('beepop/beepop_description.txt','r')
+        x = text_file1.read()
+        text_file2 = open('beepop/beepop_text.txt','r')
+        xx = text_file2.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'beepop'})
         html = html + template.render(templatepath + '03pop_ubertext_links_left.html', {})                       
-        html = html + template.render(templatepath + '04ubertext_start.html', {'text_paragraph':'Text goes here.'})
+        html = html + template.render(templatepath + '04ubertext_start.html', {
+                'model_page':'#', 
+                'model_attributes':'BeePop Overview', 
+                'text_paragraph':xx})
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})

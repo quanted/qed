@@ -1,4 +1,3 @@
-<p>&nbsp;</p>
 <p>
 Leslie matrix (model) is a discrete, non-negative, age-structured model,
 which describes the development, mortality, and reproduction of organisms over a period of time. 

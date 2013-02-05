@@ -16,7 +16,9 @@ class DDMInputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'ddm'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {})
+        html = html + template.render(templatepath + '04uberinput_start.html', {
+                'model':'ddm', 
+                'model_attributes':'DDM Inputs'})
         html = html + str(DDMdb.DDMInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})

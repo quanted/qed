@@ -18,14 +18,13 @@ from google.appengine.api import urlfetch
                                    
 class ESOutputPage(webapp.RequestHandler):
     def get(self):
-        #text_file1 = open('geneec/geneec_description.txt','r')
-        #x = text_file1.read()        
-
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'es_mapping'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberoutput_start.html', {'model':'es_mapping'})
+        html = html + template.render(templatepath + '04uberoutput_start.html', {
+            'model':'es_mapping', 
+            'model_attributes':'Endangered Species Mapper Output'})
         html = html + template.render(templatepath+'ManykmlDropbox.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})

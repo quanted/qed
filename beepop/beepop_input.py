@@ -14,9 +14,12 @@ class beepopInputPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
+        html = html + template.render(templatepath + 'beepop-jQuery.html', {})
         html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'beepop'})
         html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {'model':'beepop'})
+        html = html + template.render(templatepath + '04uberinput_start.html', {
+                'model':'beepop', 
+                'model_attributes':'BeePop Inputs'})
         html = html + str(beepopdb.beepopInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})

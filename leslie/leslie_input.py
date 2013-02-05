@@ -17,7 +17,9 @@ class leslieInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'leslie-input-jquery.html', {})
         html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'leslie'})
         html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {'model':'leslie'})
+        html = html + template.render(templatepath + '04uberinput_start.html', {
+                'model':'leslie', 
+                'model_attributes':'Leslie Matrix Inputs'})
         html = html + str(lesliedb.leslieInp())
         html = html + """<table class="leslie" border="0">"""      
         html = html + """<table class="no" border="0">"""      

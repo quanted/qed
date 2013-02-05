@@ -1,4 +1,3 @@
-<p>&nbsp;</p>
 <p>
 Based on Gompertz growth function, William W. Fox established an alternative surplus-yield model which created
 an exponential relationship between fishing effort and population size: 

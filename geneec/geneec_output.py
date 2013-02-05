@@ -171,7 +171,9 @@ class GENEECOutputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'geneec'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberoutput_start.html', {})
+        html = html + template.render(templatepath + '04uberoutput_start.html', {
+                'model':'geneec', 
+                'model_attributes':'GENEEC Output'})
         html = html + """<table width="500" border="1">
                           <tr>
                             <th scope="col" width="200">Inputs</div></th>

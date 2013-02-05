@@ -1,4 +1,3 @@
-<p>&nbsp;</p>
 <p>
 Developed by Belgian mathematician <a href="http://en.wikipedia.org/wiki/Pierre_Fran%C3%A7ois_Verhulst"> 
 Pierre Verhulst</a> (1804-1849), logistic model assumes that population change rate (r<sub>t</sub>) is not a constant.

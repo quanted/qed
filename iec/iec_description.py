@@ -20,8 +20,9 @@ class iecDescriptionPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'iec'})
         html = html + template.render(templatepath + '03ubertext_links_left.html', {})                       
         html = html + template.render(templatepath + '04ubertext_start.html', {
-			'model_page':'#',
-			'model_attributes':'IEC Overview','text_paragraph':xx})  
+                'model_page':'#', 
+                'model_attributes':'IEC Overview', 
+                'text_paragraph':xx})  
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

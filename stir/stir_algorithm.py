@@ -12,13 +12,16 @@ import os
 
 class STIRAlgorithmPage(webapp.RequestHandler):
     def get(self):
-        text_file1 = open('stir/stir_description.txt','r')
+        text_file1 = open('stir/stir_algorithm.txt','r')
         x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'stir'})
         html = html + template.render(templatepath + '03ubertext_links_left.html', {})                     
-        html = html + template.render(templatepath + '04ubertext_start.html', {})
+        html = html + template.render(templatepath + '04uberalgorithm_start.html', {
+                'model':'stir', 
+                'model_attributes':'STIR Algorithms', 
+                'text_paragraph':x})
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

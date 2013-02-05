@@ -1,4 +1,3 @@
-<p>&nbsp;</p>
 <p>
 Yule-Furry Markov process is also known as the pure birth process, which models the growth of population under 
 ideal conditions: </p>

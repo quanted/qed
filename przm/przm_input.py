@@ -14,14 +14,14 @@ from przm import przmdb
 
 class PRZMInputPage(webapp.RequestHandler):
     def get(self):
-        #text_file1 = open('geneec/geneec_description.txt','r')
-        #x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + 'przm-jQuery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'przm'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {'model':'przm'})
+        html = html + template.render(templatepath + '04uberinput_start.html', {
+                'model':'przm', 
+                'model_attributes':'PRZM Inputs'})
         html = html + str(przmdb.PRZMInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})

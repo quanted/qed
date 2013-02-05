@@ -1,4 +1,2 @@
 
-<img src = "/images/latex/trex/trex_image1.png" style="margin:auto;display:block;width:95%;">
-<img src = "/images/latex/trex/trex_image2.png" style="margin:auto;display:block;width:95%;">
-<img src = "/images/latex/trex/trex_image3.png" style="margin:auto;display:block;width:94%;">
+<p></p>

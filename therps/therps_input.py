@@ -26,7 +26,9 @@ class THerpsInputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'therps'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})        
-        html = html + template.render(templatepath + '04uberinput_start.html', {'model':'therps'})
+        html = html + template.render(templatepath + '04uberinput_start.html', {
+                'model':'therps', 
+                'model_attributes':'T-HERPS Inputs'})
         html = html + str(therpsdb.therpsInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})

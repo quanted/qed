@@ -1,0 +1,30 @@
+<script type="text/javascript" src=" ../stylesheets/jquery-1.7.2.js"> </script>
+<script>
+$(document).ready(function () {
+    $('#id_stop_lay').closest('tr').hide();
+    $('#id_start_lay').closest('tr').hide();
+    $('#id_lay_maximum').closest('tr').hide();
+    $('#id_swarm_date').closest('tr').hide()
+    $('#id_swarm').change(function () {
+        $('#id_stop_lay').closest('tr').hide();
+        $('#id_start_lay').closest('tr').hide();
+        $('#id_lay_maximum').closest('tr').hide();
+		$('#id_swarm_date').closest('tr').hide();
+        if ($(this).val() == "No") {
+            $('#id_stop_lay').closest('tr').hide();
+            $('#id_start_lay').closest('tr').hide();
+            $('#id_lay_maximum').closest('tr').hide();
+            $('#id_swarm_date').closest('tr').hide();
+        } else if ($(this).val() == "Yes") {
+            $('#id_stop_lay').closest('tr').show();
+            $('#id_start_lay').closest('tr').show();
+            $('#id_lay_maximum').closest('tr').show();
+            $('#id_swarm_date').closest('tr').show();
+        } 
+        });
+    });
+
+    $(window).bind('beforeunload', function () {
+        $(":reset").click();
+    });
+</script>

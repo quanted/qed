@@ -18,7 +18,7 @@ class UbertoolEcosystemInputsConfigurationPage(webapp.RequestHandler):
         logger = logging.getLogger("UbertoolUseConfigurationPage")
         form = cgi.FieldStorage()
         config_name = str(form.getvalue('config_name'))
-        eco_inputs = EcosystemInputs(key_name="config_name")
+        eco_inputs = EcosystemInputs()
         user = users.get_current_user()
         if user:
             logger.info(user.user_id())

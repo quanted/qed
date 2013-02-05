@@ -21,7 +21,7 @@ body {
 
 #banner {
   width: 1024px;
-  background: #04593E;
+  background: #f2c230;
   height: 30px;
   font-size: 18px;
 }
@@ -46,10 +46,15 @@ body {
   border-bottom: 4px solid #F4F7ED;
 }
 
+#topheader_pic img {
+  width: 720px;
+  height: 240px;
+}
+
 #topheader_p {
   width: 300px;
   height: 240px;
-  background: #CCB43D;
+  background: #586b73;
   float: right;
   color: white;
   font-size: 12px;
@@ -67,19 +72,11 @@ body {
 /*
    02uberintroblock_wmodellinks.html
 */
-/*
-#header_menu_l {
-  width: 184px;
-  height: 1.64em;
-  background: #A31E39;
-  padding: 0.25em 0 1px 0;
-  float: left;
-}
-*/
+
 #header_menu_c {
   width: 864px;
-  height: 1.64em;
-  background: #04593E;
+  height: 18px;
+  background: #f2c230;
   padding: 0.25em 0 1px 0;
   float: left;
 }
@@ -92,7 +89,9 @@ body {
   display: inline;
   padding: 0.5em 1em 0.25em 1em;
 /*background: #79973F;*/
-  background: #04593E;
+  background: #f2c230;
+  color: white;
+  cursor: pointer;
   border-top: 1.5px solid black;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
@@ -106,7 +105,7 @@ body {
   margin: 0;
   padding: 0.5em 1em 0.25em 1em;
 /*background: #A31E39;#FFC456*/
-  background: #CCB43D;
+  background: #586B73;
   border-top: 2px solid black;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
@@ -120,7 +119,7 @@ body {
   margin: 0;
   padding: 0.5em 1em 0.25em 1em;
 /*background: #A31E39;#FFC456*/
-  background: #CCB43D;
+  background: #586b73;
   border-top: 2px solid black;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
@@ -133,7 +132,7 @@ body {
   display: inline;
   margin: 0;
   padding: 0.5em 1em 0.25em 1em;
-  background: #CCB43D;
+  background: #586b73;
   border-top: 2px solid black;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
@@ -148,8 +147,8 @@ body {
 }
 #header_menu_r {
   width: 160px;
-  height: 1.64em;
-  background: #04593E;
+  height: 18px;
+  background: #f2c230;
   padding: 0.25em 0 1px 0;
   float: left;
 }
@@ -165,37 +164,7 @@ body {
 #header_menu_r li a {
   color: white;
  }
-/*
-#header_menu_r li {
-  display: inline;
-  padding: 0.5em 1em 0.25em 1em;
-  background: orange;
-  border-top: 1.5px solid black;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-radius: 1em 1em 0 0;
-  -moz-border-radius: 1em 1em 0 0;
-  -webkit-border-radius: 1em 1em 0 0;
-}
-#header_menu_r li:hover {
-  display: inline;
-  margin: 0;
-  padding: 0.5em 1em 0.25em 1em;
-  background: #79973F;
-  border-top: 2px solid black;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-radius: 1em 1em 0 0;
-  -moz-border-radius: 1em 1em 0 0;
-  -webkit-border-radius: 1em 1em 0 0;
-}
-#header_menu_r li a {
-  color: white;
-  text-decoration: none;
-}
-*/
+
 
 /*
    02uberintroblock_nomodellinks.html
@@ -215,8 +184,25 @@ body {
    05ubertext_links_right.html
 */
 
+/*
 
+   06uberfooter.html
+*/
 
+#footer {
+  clear: both;
+  background: #f2c230;
+  height: 31px;
+  padding: 4px;
+  text-align: center;
+}
+#footer li {
+  display: inline;
+}
+#footer img {
+  width: 88px;
+  height: 31px;
+}
 
 /*
    Body
@@ -274,7 +260,10 @@ img { border: none; }
   letter-spacing: -1px;
   line-height: 12px;
 }
-
+.model_header {
+  color: #586b73;
+  margin: 0.5em 0 1em 0;
+}
 #intro {
   background: #CDDDAD url(images/intro.jpg) no-repeat;
   height: 120px;
@@ -323,15 +312,6 @@ img { border: none; }
   list-style-type: square;
   padding: 5px 10px 10px 20px;
 }
-
-
-#footer {
-  text-align: center;
-  color: #333;
-  font-size: 11px;
-  padding: 0 0 0px 0;
-  margin-top: 0px;
-}
 #wrap .right .mdlinks {
   float: right;
   width: 130px;
@@ -365,22 +345,22 @@ Defining Hyperlink Colors
 */
 
 a:link {
-  color: #CCB43D;
+  color: #586B73;
   text-decoration: none;
 }
 
 a:visited {
-  color: #CCB43D;
+  color: #586B73;
   text-decoration: none;
 }
 
 a:active {    /* Same as "hover" for menus - doesn't work as intended */
-  color: #04593E;
+  color: #f2c230;
   text-decoration: none;
 }
 
 a:hover {
-  color: #04593E;
+  color: #f2c230;
   text-decoration: none;
 }
 
@@ -406,7 +386,7 @@ Moved CSS from 01hh_uberheader.html to here:
 .urbangreymenu .headerbar{
 font: bold 11px Verdana, Arial, Helvetica;
 color: white;
-background: #CCB43D url(arrowstop.gif) no-repeat 8px 6px; /*last 2 values are the x and y coordinates of bullet image*/
+background: #586b73; /*url(arrowstop.gif) no-repeat 8px 6px;  /*last 2 values are the x and y coordinates of bullet image*/
 margin-bottom: 0; /*bottom spacing between header and rest of content*/
 text-transform: uppercase;
 padding: 5px 5px 5px 5px; /*31px is left indentation of header text*/
@@ -471,13 +451,13 @@ background: #04593E;
 }
 #l_menu ul li a:hover {
   color:#FFFFFF;
-  background-color:#367a64;
+  background-color:#f4ce59;
 }                            /* "mouseover", not dependant on scripts.js*/
 #l_menu ul li a.aSelected {
   display:block;
   text-decoration:none;
   color:#FFFFFF;
-  background-color:#04593E;
+  background-color:#F2C230;
 }                            /* "click", dependant on scripts.js*/
 
 
@@ -503,5 +483,5 @@ background: #04593E;
 }
 #r_menu ul li a:hover {
   color:#FFFFFF;
-  background-color:#367a64;
+  background-color:#f4ce59;
 }                             /* "mouseover", not dependant on scripts.js*/

@@ -9,6 +9,8 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 from django import forms
 from django.db import models
 #Weather_scenario_CHOICES=(('','Make a selection'),('1','Midwestern'),('2','Southwestern'))
+Swarm_CHOICES=(('','Make a selection'),('Yes','Yes'),('No','No'))
+
 class beepopInp(forms.Form):
     initial_colony_size = forms.FloatField(required=True,label='Number of bees in colony', initial=30000)
 #    starting_date = forms.FloatField(required=True,label='Starting date of simulation', initial = 1)
@@ -22,6 +24,13 @@ class beepopInp(forms.Form):
     days_from_adult_to_forager = forms.FloatField(required=True,label='Number of days before adult workers develop into adult foragers', initial=21)
     number_of_forages = forms.FloatField(required=True,label='Number of days foragers can forage', initial=10)
     egg_mortality = forms.FloatField(required=True,label='Percentage of eggs surviving to adults', initial=.85)
+    adult_brood_ratio = forms.FloatField(required=True,label='Maximum ratio of adults to brood in a colony', initial=3)
+    swarm = forms.ChoiceField(required=True,label='Swarm event', choices=Swarm_CHOICES,initial='Make a selection')
+    stop_lay = forms.FloatField(required=True,label='Day Queen stops laying eggs (Jday)', initial=166)
+    start_lay = forms.FloatField(required=True,label='Day New Queen begins laying eggs (Jday)',  initial=181)
+    lay_maximum = forms.FloatField(required=True,label='Day New Queen begins laying eggs at maximum rate (Jday)',  initial=186)
+    swarm_date = forms.FloatField(required=True,label='Day of swarm (Jday)',  initial=168)
+
 
   
 

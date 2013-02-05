@@ -16,7 +16,9 @@ class fellerarleyInputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'fellerarley'})
         html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {'model':'fellerarley'})
+        html = html + template.render(templatepath + '04uberinput_start.html', {
+                'model':'fellerarley', 
+                'model_attributes':'Feller-Arley Markov Process Inputs'})
         html = html + str(fellerarleydb.fellerarleyInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})

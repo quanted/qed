@@ -1,0 +1,29 @@
+\documentclass[10pt]{article}
+\usepackage{graphicx}
+\usepackage{endfloat}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage[scientific-notation=true]{siunitx}
+\usepackage[margin = 1in]{geometry}
+\hoffset = -1.3in %set margin offset horizontally for the document
+\allowdisplaybreaks
+\begin{document}
+\begin{align*}
+& \hspace{-0.75in}  \text{Tier I Ground Sprayer Assessment Methodology for low boom height} \nonumber \\  & \hspace{-0.75in} \text{and orchard/airblast scenarios:}\nonumber \\
+& \hspace{-0.75in}  \text{(Based on SDTF field trials)} \nonumber \\
+D_{x} & = \frac{c}{\left(1+ax\right)^{b}} \nonumber \\
+&    \hspace{-.75in}  \text{Curve shape parameters were estimated using least-squares analysis.} \nonumber \\
+&    \hspace{-.75in}  \text{parameters:} \nonumber \\
+D_{x} & = \text{Deposition level relative to the nominal application rate} \nonumber \\
+x & = \text{downwind distance} \nonumber \\
+a,b,c & = \text{curve shape parameters} \nonumber \\
+& \hspace{-0.75in}  \text{A high boom model was developed by extending the low boom model.} \nonumber \\
+& \hspace{-0.75in}  \text{Ground sprayer assessment methodology for high boom height:} \nonumber \\
+D_{x} & = \frac{c}{\left(1+ax\right)^{b}}\left(1 + A * exp\left( -Bx\right)\right) \nonumber \\
+D_{x} & = \text{Deposition level relative to the nominal application rate} \nonumber \\
+x & = \text{downwind distance} \nonumber \\
+a,b,c & = \text{curve shape parameters} \nonumber \\
+A, B & = \text{determined by matching the high boom data with at 25 ft} \nonumber \\ &\hspace{1.3em} \text{and assuming that high boom deposition is ten percent} \nonumber\\&\hspace{1.3em}\text{higher than low boom deposition at 2600 ft} \nonumber \\
+\end{align*} 
+\end{document}

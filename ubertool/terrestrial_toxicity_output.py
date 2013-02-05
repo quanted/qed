@@ -18,7 +18,7 @@ class UbertoolTerrestrialToxicityConfigurationPage(webapp.RequestHandler):
         logger = logging.getLogger("UbertoolTerrestrialToxicityConfigurationPage")
         form = cgi.FieldStorage()
         config_name = str(form.getvalue('config_name'))
-        terr_tox = TerrestrialToxicity(key_name="config_name")
+        terr_tox = TerrestrialToxicity()
         user = users.get_current_user()
         if user:
             logger.info(user.user_id())

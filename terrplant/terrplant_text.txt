@@ -1,4 +1,3 @@
-﻿
 <p>TerrPLANT provides screening level estimates of exposure to terrestrial plants from single pesticide applications through runoff or drift.  Monocots and dicots found in dry or semi-aquatic habitats can be evaluated using this model.  Exposure estimates can be generated for both listed and non-listed species using TerrPLANT.</p>
 <p>&nbsp;</p>
 <p>Both dry and semi-aquatic exposure estimates include conceptual models with a target area that is adjacent to a non-target area.  Dry area estimates are determined using pesticide amounts received in the non-target area through sheet runoff from a target area equal in size.  Semi-aquatic estimates are based on pesticide amounts in channel runoff from a target area that is 10 times larger than then non-target area.</p>

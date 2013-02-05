@@ -12,7 +12,7 @@ from django import forms
 from google.appengine.api import rdbms
 import logging
 
-google_cloud_instance = "uberdb:cas"
+google_cloud_instance = "apppest:cas"
 google_cloud_database = "CAS"
 
 local_mysql_instance = "localhost"
@@ -60,6 +60,7 @@ class CASGql:
 			self.conn = rdbms.connect(instance=google_cloud_instance, database=google_cloud_database)
 		except rdbms.OperationalError:
 			try:
+				self.logger.error("Trying local MySQL db")
 				self.conn = rdbms.connect(instance=local_mysql_instance, database=local_mysql_database,user=local_mysql_user,password=local_mysql_password)
 			except:
 				self.logger.error("Either not on Google AppEngine or local MySQL db not set-up")
@@ -75,6 +76,12 @@ class CASGql:
 			cursor.execute('SELECT ChemicalName from CAS limit %s' , (max))
 		rows = cursor.fetchall()
 		return rows
+	
+	def getAllChemicalNamesUTF8(self, max=None, maxChars=None):
+		unicodeList = self.getAllChemicalNames(max)
+		utfList = self.makeChemicalNamesListUTF8(unicodeList,maxChars)
+		#self.logger.info(utfList)
+		return utfList
 
 	def getAllChemicalNamesCASNumbers(self, max=None):
 		cursor = self.conn.cursor()
@@ -89,7 +96,6 @@ class CASGql:
 		unicodeList = self.getAllChemicalNamesCASNumbers(max)
 		self.logger.debug(unicodeList)
 		utfList = self.makeListUTF8(unicodeList, macChars)
-		self.logger.debug(utfList)
 		return utfList
 
 	def getChemicalNameFromCASNumber(self, casNumber):
@@ -105,6 +111,21 @@ class CASGql:
 		casNumber = cursor.fetchone()
 		print casNumber
 		return casNumber
+	
+	def makeChemicalNamesListUTF8(self, list, maxChars=None):
+		utfList = []
+		#self.logger.info(list)
+		for item in list:
+			chemName = item[0]
+			try:
+				utfChemName = chemName.encode('UTF-8')
+				if not maxChars is None:
+					utfChemName = utfChemName[0:maxChars]
+				utfList.append(utfChemName)
+			except UnicodeDecodeError:
+				# TODO don't just drop these on the floor
+				pass
+		return utfList
 
 	def makeListUTF8(self, list, maxChars=None):
 		utfList = ()

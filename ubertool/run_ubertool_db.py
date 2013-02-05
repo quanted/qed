@@ -14,6 +14,11 @@ from CAS.CASGql import CASGql
 from google.appengine.api import users
 from google.appengine.ext import db
 from use import Use
+from pesticide_properties import PesticideProperties
+from exposure_concentrations import ExposureConcentrations
+from aquatic_toxicity import AquaticToxicity
+from terrestrial_toxicity import TerrestrialToxicity
+from ecosystem_inputs import EcosystemInputs
 import logging
 
 
@@ -25,36 +30,48 @@ class RunUbertoolInp(forms.Form):
     q = db.Query(Use)
     q.filter('user =',user)
     uses = ()
+#    uses += ((None,None),)
     for use in q:
         #logger.info(use.to_xml())
         uses += ((use.config_name,use.config_name),)
-    logger.info(uses)
     use_configuration = forms.ChoiceField(required=True, choices=uses)
-'''
-    cas = CASGql("apppest:cas","CAS")
-    cas_number = forms.ChoiceField(required=True, choices=cas.getAllChemNamesCASNumsUTF8(None,20))
-    formulated_product_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}))
-    percent_ai = forms.FloatField(label='% Active Ingredient')
-    metfile = forms.FloatField()
-    PRZM_scenario = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}))
-    EXAMS_environment_file = forms.FloatField()
-    application_method = forms.FloatField(label='Application Method (CAM)')
-    application_type = forms.ChoiceField(label='Application Type (for terrestrial)',choices=APPLICATIONTYPE, initial='broadcast')
-    app_type = forms.ChoiceField(label='Application Type (for terrestrial)',choices=APPTYPE, initial='liquid')
-    weight_of_one_granule = forms.FloatField(label='Weight of 1 granule (mg)')
-    wetted_in = forms.ChoiceField(label='Wetted In?', choices=YN, initial='Yes')
-    incorporation_depth = forms.FloatField(label='Incorporation Depth (cm)')
-    percent_incorporated = forms.FloatField(label='% Incorporated (%)')
-    application_kg_rate = forms.FloatField(label='Application rate (kg ai/ha)')
-    application_lbs_rate = forms.FloatField(label='Application rate (lbs ai/A)')
-    seed_treatment_formulation_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),label='Seed treatment formulation name')
-    density_of_product = forms.FloatField(label='Density of product (lbs/gal)')
-    maximum_seedling_rate_per_use = forms.FloatField(label='Maximum seedling rate per use (lbs/A)')
-    application_rate_per_use = forms.FloatField(label='Application rate per use (fl oz/cwt)')    
-    application_date = forms.DateField()
-    number_of_applications = forms.FloatField(label='Number of applications')
-    interval_between_applications = forms.FloatField(label='Interval between applications (days)')
-    application_efficiency = forms.FloatField(label='Application Efficiency (fraction)')
-    spray_drift = forms.FloatField(label='Spray Drift (fraction)')
-    runoff = forms.FloatField(label='Runoff (fraction)')
-'''
+    q = db.Query(PesticideProperties)
+    q.filter('user =',user)
+    pests = ()
+#    pests += ((None,None),)    
+    for pest in q:
+        #logger.info(use.to_xml())
+        pests += ((pest.config_name,pest.config_name),)
+    pest_configuration = forms.ChoiceField(required=True, choices=pests)
+    q = db.Query(ExposureConcentrations)
+    q.filter('user =',user)
+    exposures = ()
+#    exposures += ((None,None),)
+    for exposure in q:
+        #logger.info(use.to_xml())
+        exposures += ((exposure.config_name,exposure.config_name),)
+    exposures_configuration = forms.ChoiceField(required=True, choices=exposures)
+    q = db.Query(AquaticToxicity)
+    q.filter('user =',user)
+    aquatics = ()
+#    aquatics += ((None,None),)
+    for aquatic in q:
+        #logger.info(use.to_xml())
+        aquatics += ((aquatic.config_name,aquatic.config_name),)
+    aquatic_configuration = forms.ChoiceField(required=True, choices=aquatics)
+    q = db.Query(TerrestrialToxicity)
+    q.filter('user =',user)
+    terrestrials = ()
+#    terrestrials += ((None,None),)
+    for terrestrial in q:
+        #logger.info(use.to_xml())
+        terrestrials += ((terrestrial.config_name,terrestrial.config_name),)
+    terrestrial_configuration = forms.ChoiceField(required=True, choices=terrestrials)
+    q = db.Query(EcosystemInputs)
+    q.filter('user =',user)
+    ecosystems = ()
+#    ecosystems += ((None,None),)
+    for ecosystem in q:
+        #logger.info(use.to_xml())
+        ecosystems += ((ecosystem.config_name,ecosystem.config_name),)
+    ecosystems_configuration = forms.ChoiceField(required=True, choices=ecosystems)

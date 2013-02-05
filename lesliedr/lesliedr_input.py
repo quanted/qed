@@ -16,7 +16,9 @@ class lesliedrInputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'lesliedr'})
         html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {'model':'lesliedr'})
+        html = html + template.render(templatepath + '04uberinput_start.html', {
+                'model':'lesliedr', 
+                'model_attributes':'Leslie Model with Logistic Dose Response Model Inputs'})
         html = html + str(lesliedrdb.lesliedrInp())
         html = html + """<table class="leslie" border="0">"""      
         html = html + """<table class="no" border="0">"""             

@@ -22,7 +22,9 @@ class GENEECInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'geneec-jQuery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'geneec'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {'model':'geneec'})
+        html = html + template.render(templatepath + '04uberinput_start.html', {
+                'model':'geneec', 
+                'model_attributes':'GENEEC Inputs'})
         html = html + str(GENEECdb.GENEECInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})

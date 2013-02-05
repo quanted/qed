@@ -1,7 +1,9 @@
 application: pypest
-version: 1
+version: sprint1
 runtime: python27
 api_version: 1
+
+default_expiration: "5d 12h"
 
 threadsafe: false
 
@@ -75,11 +77,14 @@ handlers:
   script: \1/\1_references.py 
 #qaqc
 - url: /(.*?)_qaqc.html
-  script: \1/\1_qaqcinput.py 
-#qaqc_output
-- url: /(.*?)_qaqcoutput.html
-  script: \1/\1_qaqcoutput.py
-  
+  script: \1/\1_qaqc.py 
+#batch
+- url: /(.*?)_batchinput.html
+  script: \1/\1_batchinput.py
+#batch_output
+- url: /(.*?)_batchoutput.html
+  script: \1/\1_batchoutput.py
+      
 ##TESTED models##
 #description
 - url: /(.*?)/(.*?)_description.html
@@ -102,10 +107,25 @@ handlers:
 #qaqc_output
 - url: /(.*?)/(.*?)_qaqc_output.html
   script: \1/\2/\2_qaqc_output.py
-   
+
+
+#USER pages
+- url: /user.html
+  script: user/user_input.py   
+  login: required
+  
+- url: /user_output.html
+  script: user/user_output.py
+  login: required
+
+#select chemical
+- url: /select_chemical.html
+  script: ubertool/select_chemical_input.py
+  login: required
 #use label site data
 - url: /site_data.html
   script: ubertool/use_input.py
+  login: required
 #  login: required
 #pesticide properties
 - url: /pesticide_properties.html

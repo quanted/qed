@@ -18,7 +18,7 @@ class UbertoolAquaticToxicityConfigurationPage(webapp.RequestHandler):
         logger = logging.getLogger("UbertoolUseConfigurationPage")
         form = cgi.FieldStorage()
         config_name = str(form.getvalue('config_name'))
-        aquatic_toxicity = AquaticToxicity(key_name="config_name")
+        aquatic_toxicity = AquaticToxicity()
         user = users.get_current_user()
         if user:
             aquatic_toxicity.user = user

@@ -5,31 +5,34 @@
     var pathArray = window.location.pathname.split( '/' );
     var pathLink = pathArray[1];
     var pathSlice = pathLink.slice(0, -5);
-    var pathId = pathSlice.slice(-4);
     $( document ).ready(function() {
       $('a#{{model}}').addClass('aSelected');
-      $('li#' + pathId).addClass('liSelected');
+      $('li#' + pathSlice).addClass('liSelected');
+	  $('#{{model}}_output').css('display', (pathSlice == '{{model}}_output') ? 'inline' : 'none');
     });
   </script>
 
 <!-- Header Menu Bar -->
-<!--<div id="header_menu_l"></div>-->
 <div id="header_menu_c">
+ <!--<img src="/images/tabs/hh_tabs_test.gif" alt="tab_nav">-->
   <ul>
-    <!--<script type="text/javascript">document.write('<li id="'+pathId+'"><a href="{{model}}_description.html">Description</a></li>');</script>-->
-    <li id="tion"><a href="{{model}}_description.html">Description</a></li>
-    <li id="nput"><a href="{{model}}_input.html">Inputs</a></li>
-    <li id="thms"><a href="{{model}}_algorithms.html">Algorithms</a></li>
-    <li id="nces"><a href="{{model}}_references.html">References</a></li>
-    <li id="qaqc"><a href="{{model}}_qaqc.html">QA/QC</a></li>
-    <!--<li><script type="text/javascript">document.write(pathId);</script></li>-->
+    <li id="{{model}}_description"><a href="{{model}}_description.html">Description</a></li>
+	<li id="{{model}}_input"><a href="{{model}}_input.html">Inputs</a></li>
+	<li id="{{model}}_output">Outputs</a></li>
+	<li id="{{model}}_algorithms"><a href="{{model}}_algorithms.html">Algorithms</a></li>
+	<li id="{{model}}_references"><a href="{{model}}_references.html">References</a></li>
+	<li id="{{model}}_qaqc"><a href="{{model}}_qaqc.html">QA/QC</a></li>
+	<li id="{{model}}_batchinput"><a href="{{model}}_batchinput.html">Batch</a></li>
   </ul>
-</div>      
+    
+  
+ 
+</div>
 <div id="header_menu_r">
   <ul>
     <li><a href="http://ubertool.github.com/" target="_blank">BLOG</a></li>
 	<li>|</li>
-    <li><a href="contactus_input.html">Contact Us</a></li>
+	<li><a href="contactus_input.html">Contact Us</a></li>
   </ul>
 </div>
 

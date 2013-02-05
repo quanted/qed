@@ -41,7 +41,9 @@ class exponentialOutputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'logistic'})
         html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})
-        html = html + template.render(templatepath + '04uberoutput_start.html', {})
+        html = html + template.render(templatepath + '04uberoutput_start.html', {
+                'model':'exponential', 
+                'model_attributes':'Exponential Model Output'})
         html = html + """<table width="550" border="1">
                           <tr>
                             <th scope="col" width="250">Inputs</th>

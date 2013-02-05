@@ -20,7 +20,9 @@ class trexInputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'trex'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})        
-        html = html + template.render (templatepath + '04uberinput_start.html', {'model':'trex'})
+        html = html + template.render (templatepath + '04uberinput_start.html', {
+                'model':'trex', 
+                'model_attributes':'TREX Inputs'})
         html = html + str(trexdb.trexInp())
         html = html + template.render (templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render (templatepath + '05ubertext_links_right.html', {})

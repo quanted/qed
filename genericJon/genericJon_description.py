@@ -9,20 +9,26 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import os
 
-class genericDescriptionPage(webapp.RequestHandler):
+class genericJonDescriptionPage(webapp.RequestHandler):
     def get(self):
+        text_file1 = open('genericJon/genericJon_description.txt','r')
+        x = text_file1.read()
+        text_file2 = open('genericJon/genericJon_text.txt','r')
+        xx = text_file2.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheaderJon.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinksJon.html', {'model':'genericJon'})
-        html = html + template.render(templatepath + '03ubertext_links_leftJon.html', {})                       
-        html = html + template.render(templatepath + '04ubertext_startJon.html', {'text_paragraph':
-            "<h1>Jon's Testing Domain!</h1><br><img src=http://1.bp.blogspot.com/-xaeAJytK8Bc/T5gVt3dMKqI/AAAAAAAALj8/2x4y-laiqb8/s1600/rock.jpg>"})
-        html = html + template.render(templatepath + '04ubertext_endJon.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_rightJon.html', {})
-        html = html + template.render(templatepath + '06uberfooterJon.html', {'links': ''})
+        html = template.render(templatepath + '01hh_uberheaderJon.html', {'title':'Ubertool'})
+        html = html + template.render(templatepath + '02hh_uberintroblock_wmodellinksJon.html', {'model':'genericJon'})
+        html = html + template.render(templatepath + '03hh_ubertext_links_left.html', {})                       
+        html = html + template.render(templatepath + '04ubertext_start.html', {
+                'model_page':'#',
+                'model_attributes':"Jon's Testing Domain", 
+                'text_paragraph':xx})
+        html = html + template.render(templatepath + '04ubertext_end.html', {})
+        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '06hh_uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
-app = webapp.WSGIApplication([('/.*', genericDescriptionPage)], debug=True)
+app = webapp.WSGIApplication([('/.*', genericJonDescriptionPage)], debug=True)
 
 def main():
     run_wsgi_app(app)

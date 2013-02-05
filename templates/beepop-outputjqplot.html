@@ -20,41 +20,41 @@
 <script type='text/javascript'>
 
 $(document).ready(function(){
-$.jqplot.config.enablePlugins = true;
-var s1 = $.parseJSON($('#Eggs_laid').text());
-var s2 = $.parseJSON($('#Adult_workers').text());
-var s3 = $.parseJSON($('#Foragers').text());
-var s3 = $.parseJSON($('#Drones').text());
+        $.jqplot.config.enablePlugins = true;
+     var s1 = $.parseJSON($('#Eggs_laid').text());
+     var s2 = $.parseJSON($('#Adult_workers').text());
+     var s3 = $.parseJSON($('#Foragers').text());
+     var s4 = $.parseJSON($('#Drones').text());
 
-L=[{label:'Eggs laid', color:'blue'},{label:'Hive bees', color:'red'},{label:'Foragers', color:'black'},{label:'Drones', color:'yellow'}]
+          L=[{label:'Eggs laid', color:'blue'},{label:'Hive bees', color:'red'},{label:'Foragers', color:'black'},{label:'Drones', color:'yellow'}]
 
-$.jqplot('chart1', [s1,s2,s3,s4], {
+        $.jqplot('chart1', [s1,s2,s3,s4], {
 
-seriesDefaults: {
-showMarker:false,
-pointLabels: { show:false }
-},
+                 seriesDefaults: {
+           showMarker:false,
+           pointLabels: { show:false }
+                 },
 
-series:L,
-axes: {
-xaxis: {
-label :'Days',
-pad: 0
-},
-yaxis: {
-label: 'Number of individuals',
-labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-pad: 0
-}
-},
-legend: {
-show: true,
-location: 'nw',
-placement: 'inside',
-fontSize: '11px'
-}
-})
-})
+                 series:L,
+                 axes: {
+                       xaxis: {
+                            label :'Days',
+                            pad: 0
+                            },
+                       yaxis: {
+                            label: 'Number of individuals',
+                                 labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                                 pad: 0
+                                 }
+            },
+                 legend: {
+                     show: true,
+                     location: 'nw',
+                     placement: 'inside',
+                     fontSize: '11px'
+                         }
+              })
+            })
 </script>
 
 

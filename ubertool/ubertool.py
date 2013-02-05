@@ -1,18 +1,21 @@
 import google.appengine.ext.db as db
+from google.appengine.api import users
 import datetime
 import time
+from use import Use
+from pesticide_properties import PesticideProperties
+from aquatic_toxicity import AquaticToxicity
+from ecosystem_inputs import EcosystemInputs
+from exposure_concentrations import ExposureConcentrations
+from terrestrial_toxicity import TerrestrialToxicity
 
 class Ubertool(db.Model):
-    
-    def __init__(self, name, user, inputPageBased=True, **kwargs):
-        if inputPageBased:
-            self.initViaInputPageData(**kwargs)
-        else:
-            self.initViaConfiguration(**kwargs)
-        pass
-        
-    def initViaInputPageData(self, **kwargs):
-        pass
-    
-    def initViaConfiguration(self, **kwargs):
-        pass
+    config_name = db.StringProperty()
+    user = db.UserProperty()
+    use = db.ReferenceProperty(Use)
+    pest = db.ReferenceProperty(PesticideProperties)
+    aqua = db.ReferenceProperty(AquaticToxicity)
+    eco = db.ReferenceProperty(EcosystemInputs)
+    expo = db.ReferenceProperty(ExposureConcentrations)
+    terra = db.ReferenceProperty(TerrestrialToxicity)
+    created = db.DateTimeProperty(auto_now_add=True)

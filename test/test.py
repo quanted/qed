@@ -1,18 +1,13 @@
-import unittest
 import sys
-sys.path.append("../eco/rice")
-from rice_suite import RiceSuite
+import unittest
+sys.path.append("eco/rice_suite")
+from rice.rice_suite import RiceSuite
 
-class Test(unittest.TestSuite):
+class UbertoolTest(unittest.TestSuite):
     
-    def test(self):
-        rice_suite = RiceSuite()
-        suite = rice_suite.suite()
-        suite.run()
-        
-def main():
-    test = Test()
-    test.test()
+    def __init__(self):
+        pass
+    
 
 if __name__ == '__main__':
     main()       

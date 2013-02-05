@@ -46,6 +46,8 @@ handlers:
  
 ##UBERTOOL INPUT PAGES##
 #output
+- url: /select_chemical_output.html
+  script: ubertool/select_chemical_output.py
 - url: /use_output.html
   script: ubertool/use_output.py
 - url: /pesticide_properties_output.html

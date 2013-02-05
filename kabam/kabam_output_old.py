@@ -21,8 +21,6 @@ import json
 import base64
 import urllib2
 from google.appengine.api import urlfetch
-api_key='3355'
-api_secretkey='212ed160e3f416fdac8a3b71c90f3016722856b9'
 
 #def post(self,aaa):
     base64string = base64.standard_b64decode('%s:%s' % (api_key,api_secretkey))[:-1]

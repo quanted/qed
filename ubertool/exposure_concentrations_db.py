@@ -10,9 +10,21 @@ from django import forms
 from django.db import models
 from google.appengine.api import users
 from google.appengine.ext import db
+from exposure_concentrations import ExposureConcentrations
 
 class ECInp(forms.Form):
     user_id = users.get_current_user().user_id()
+    user = users.get_current_user()
+    user_id = user.user_id()
+    q = db.Query(ExposureConcentrations)
+    q.filter('user =',user)
+    uses = ()
+    uses += ((None,None),)
+    for use in q:
+        #logger.info(use.to_xml())
+        uses += ((use.config_name,use.config_name),)
+    user_exposure_concentrations_configuration = forms.ChoiceField(label="User Saved Exposure Concentrations Configuration",required=True, choices=uses)
+    config_name = forms.CharField(label="Use Configuration Name", initial="use-config-%s"%user_id)
     config_name = forms.CharField(label="Use Configuration Name", initial="use-config-%s"%user_id)
     one_in_ten_peak_exposure_concentration = forms.FloatField(label='Water column 1-in-10 Year EECs Peak Exposure Concentration (ug/L)')
     one_in_ten_four_day_average_exposure_concentration = forms.FloatField(label='Water column 1-in-10 Year EECs 4-Day Average Exposure Concentration (ug/L)')

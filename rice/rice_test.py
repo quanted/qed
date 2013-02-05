@@ -1,19 +1,33 @@
 import unittest
 
-class RiceTest(unittest.TestCase):
+class RiceMSEDTest(unittest.TestCase):
     
     def setUp(self):
         pass
     
-    def test_msed(self):
+    def runTest(self):
         self.fail("Failing MSED test")
         
-    def test_vw(self):
-        self.fail("Failing VW test")
-        
-    def test_mai1(self):
-        self.fail("Failing VW test")
-        
-    def test_cw(self):
-        self.fail("Failing CW test")
+class RiceVWTest(unittest.TestCase):
     
+    def setUp(self):
+        pass
+    
+    def runTest(self):
+        self.fail("Failing VW test")
+    
+class RiceMAI1Test(unittest.TestCase):
+    
+    def setUp(self):
+        pass
+            
+    def runTest(self):
+        self.fail("Failing VW test")
+        
+class RiceCWTest(unittest.TestCase):
+    
+    def setUp(self):
+        pass
+    
+    def runTest(self):
+        self.fail("Failing CW test")

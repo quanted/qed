@@ -12,11 +12,20 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 from google.appengine.api import users
 from google.appengine.ext import db
+from ecosystem_inputs import EcosystemInputs
 #YN = (('Yes','Yes'),('No','No'))
 
 class EcoInp(forms.Form):
     user = users.get_current_user()
     user_id = user.user_id()
+    q = db.Query(EcosystemInputs)
+    q.filter('user =',user)
+    uses = ()
+    uses += ((None,None),)
+    for use in q:
+        #logger.info(use.to_xml())
+        uses += ((use.config_name,use.config_name),)
+    user_ecosystem_configuration = forms.ChoiceField(label="User Saved Ecosystem Inputs Configuration",required=True, choices=uses)
     config_name = forms.CharField(label="EcosystemInputs Configuration Name", initial="ubertool-config-%s"%user_id)
     concentration_of_particulate_organic_carbon = forms.FloatField(label='Concentration of particulate organic carbon (kg OC/L)', initial='0')
     concentration_of_dissolved_organic_carbon = forms.FloatField(label='Concentration of dissolved organic carbon (kg OC/L)', initial='0')

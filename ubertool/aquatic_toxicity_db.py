@@ -10,10 +10,21 @@ from django import forms
 from django.db import models
 from google.appengine.api import users
 from google.appengine.ext import db
+from aquatic_toxicity import AquaticToxicity
 
 class ATInp(forms.Form):
     user_id = users.get_current_user().user_id()
-    config_name = forms.CharField(label="Use Configuration Name", initial="use-config-%s"%user_id)
+    user = users.get_current_user()
+    user_id = user.user_id()
+    q = db.Query(AquaticToxicity)
+    q.filter('user =',user)
+    uses = ()
+    uses += ((None,None),)
+    for use in q:
+        #logger.info(use.to_xml())
+        uses += ((use.config_name,use.config_name),)
+    user_use_configuration = forms.ChoiceField(label="Aquatic Toxicity Saved Use Configuration",required=True, choices=uses)
+    config_name = forms.CharField(label="Aquatic Toxicity Configuration Name", initial="aquatic-toxicity-config-%s"%user_id)
     acute_toxicity_target_concentration_for_freshwater_fish = forms.FloatField(label='Acute Toxicity Target Concentration For Most Sensitive Freshwater Fish')
     chronic_toxicity_target_concentration_for_freshwater_fish = forms.FloatField(label='Chronic Toxicity Target Concentration For Most Sensitive Freshwater Fish')
     acute_toxicity_target_concentration_for_freshwater_invertebrates = forms.FloatField(label='Acute Toxicity Target Concentration For Most Sensitive Freshwater Invertebrates')

@@ -1,12 +1,8 @@
 import sys
 import unittest
-<<<<<<< HEAD
-sys.path.append("eco/rice_suite")
-from rice.rice_suite import RiceSuite
-=======
+
 sys.path.append("eco")
 from eco.eco_suite import EcoSuite
->>>>>>> pascact1
 
 class UbertoolTest(unittest.TestSuite):
     

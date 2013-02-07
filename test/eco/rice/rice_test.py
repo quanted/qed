@@ -7,39 +7,6 @@ sys.path.append("./")
 from rice import rice_output
 from CSVTestParamsLoader import CSVTestParamsLoader
 
-<<<<<<< HEAD
-class RiceMSEDTest(unittest.TestCase):
-    
-    def setUp(self):
-        pass
-    
-    def runTest(self):
-        self.fail("Failing MSED test")
-        
-class RiceVWTest(unittest.TestCase):
-    
-    def setUp(self):
-        pass
-    
-    def runTest(self):
-        self.fail("Failing VW test")
-    
-class RiceMAI1Test(unittest.TestCase):
-    
-    def setUp(self):
-        pass
-            
-    def runTest(self):
-        self.fail("Failing VW test")
-        
-class RiceCWTest(unittest.TestCase):
-    
-    def setUp(self):
-        pass
-    
-    def runTest(self):
-        self.fail("Failing CW test")
-=======
 logger = logging.getLogger("RiceTest")
 
 def pytest_generate_tests(metafunc):
@@ -76,4 +43,3 @@ def get_params_matrix():
     csvTestParamsLoader.loadParamsMatrix()
     return csvTestParamsLoader.params_matrix
         
->>>>>>> pascact1

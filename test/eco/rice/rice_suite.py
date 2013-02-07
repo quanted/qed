@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import sys
 import unittest
 sys.path.append("../../../rice")
@@ -34,3 +35,8 @@ class RiceSuite(unittest.TestSuite):
 if __name__ == '__main__':
     riceSuite = RiceSuite()
     unittest.TextTestRunner(verbosity=2).run(riceSuite.suite())
+=======
+import pytest
+
+pytest.main("-s test")
+>>>>>>> pascact1

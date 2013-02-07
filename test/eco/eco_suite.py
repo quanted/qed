@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import sys
 import unittest
 sys.path.append("rice")
@@ -18,3 +19,8 @@ class EcoSuite(unittest.TestSuite):
 if __name__ == '__main__':
     ecoSuite = EcoSuite()
     unittest.TextTestRunner(verbosity=2).run(ecoSuite.suite())
+=======
+import pytest
+
+pytest.main("-s ./")
+>>>>>>> pascact1

@@ -16,7 +16,7 @@ class CSVTestParamsLoader(object):
         Constructor
         '''
         self.csv_params_file = csv_params_file
-        print self.csv_params_file
+        #print self.csv_params_file
         self.params_matrix = {}
         
     def __str__(self):

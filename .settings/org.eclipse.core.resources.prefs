@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//ubertool/aquatic_toxicity_db.py=utf-8
+encoding//ubertool/aquatic_toxicity_input.py=utf-8
 encoding//ubertool/ecosystem_inputs_db.py=utf-8
 encoding//ubertool/exposure_concentrations_db.py=utf-8
 encoding//ubertool/pesticide_properties_db.py=utf-8

@@ -10,21 +10,21 @@ from django import forms
 from django.db import models
 from django.utils.safestring import mark_safe
 
-Application_method_CHOICES=(('','Make a selection'),('a','Aerial'),('b','Ground'),('c','Orchard/Airblast'))
-Drop_size_distribution_CHOICES=(('','Make a selection'),('1','Fine'),('2','Medium'),('3','Coarse'),('4','Very Coarse'))
-Boom_height_CHOICES=(('','Make a selection'),('1','Low'),('2','High'))
-Orchard_CHOICES=(('','Make a selection'),('1','Vineyard in leaf'),('2','Orchard or dormant vineyard'))
-Waterbody_type_CHOICES=(('','Make a selection'),('1','EPA Pond'),('2', 'Lake'), ('3', 'Watercourse')) #Aquatic Assessment
+Application_method_CHOICES=(('','Make a selection'),('Aerial','Aerial'),('Ground','Ground'),('Orchard/Airblast','Orchard/Airblast'))
+Drop_size_distribution_CHOICES=(('','Make a selection'),('Fine','Fine'),('Medium','Medium'),('Coarse','Coarse'),('Very Coarse','Very Coarse'))
+Boom_height_CHOICES=(('','Make a selection'),('Low','Low'),('High','High'))
+Orchard_CHOICES=(('','Make a selection'),('Vineyard in leaf','Vineyard in leaf'),('Orchard or dormant vineyard','Orchard or dormant vineyard'))
+Waterbody_type_CHOICES=(('','Make a selection'),('EPA Pond','EPA Pond'),('Lake', 'Lake'), ('Watercourse', 'Watercourse')) #Aquatic Assessment
 #Extended_settings_CHOICES=(('','Make a selection'),('1','Use default'),('2', 'Enter number of swaths'))
 #Assessment_type_CHOICES=(('','Make a selection'),('1','None'),('2', 'Aquatic Assessment'), ('3', 'Terrestrial Assessment'), ('4', 'Spray Block'), ('5', 'Stream Assessment'), ('6', 'Multiple Applications  '))
 #Waterbody_type_CHOICES=(('','Make a selection'),('1','EPA Pond'),('2', 'EPA Wetland'), ('3', 'User-Defined'), ('4', 'Spray Block'), ('5', 'Stream Assessment'), ('6', 'Multiple Applications  ')) #Aquatic Assessment
 #Field_type_CHOICES=(('','Make a selection'),('1','Point'),('2', 'User Defined')) #Terrestrial Assessment
 #definition_CHOICES=(('','Make a selection'),('1','Deposition'),('2', 'Pond integrated deposition')) #Spray Block
 #results_CHOICES=(('','Make a selection'),('1','single point'),('2', 'Given times'), ('3','Given distances')) #Stream
-class agdriftInp(forms.Form):
-    drop_size = forms.ChoiceField(required=True,label='Drop Size Distribution', choices=Drop_size_distribution_CHOICES, initial='Make a selection')    
+class agdriftInp(forms.Form):    
     waterbody_type = forms.ChoiceField(required=True,label='Water body type', choices=Waterbody_type_CHOICES,initial='Make a selection')
     application_method = forms.ChoiceField(required=True,label='Application Method', choices=Application_method_CHOICES, initial='Make a selection')
+    drop_size = forms.ChoiceField(required=True,label='Drop Size Distribution', choices=Drop_size_distribution_CHOICES, initial='Make a selection')    
     boom_height = forms.ChoiceField(required=True,label='Boom height', choices=Boom_height_CHOICES, initial='Make a selection')
     orchard_type = forms.ChoiceField(required=True,label='Orchard type', choices=Orchard_CHOICES, initial='Make a selection')
 

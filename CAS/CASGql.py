@@ -19,39 +19,7 @@ local_mysql_instance = "localhost"
 local_mysql_database = "ubertool"
 local_mysql_user = "ubertool"
 local_mysql_password = "ubertool"
-
-
-class CASGqlPage(webapp.RequestHandler):
-	def get(self):
-		cas = CASGql()
-		results = cas.getAllChemicalNamesCASNumbers(20)
-		print results
-		print "TEST"
-		self.response.out.write("""
-		  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-		  <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-			<head>
-			   <title>My Guestbook!</title>
-			</head>
-			<body>
-			  <table style="border: 1px solid black">
-				<tbody>
-				  <tr>
-					<th width="35%" style="background-color: #CCFFCC; margin: 5px">ChemicalName</th>
-					<th style="background-color: #CCFFCC; margin: 5px">CASNumber</th>
-				  </tr>""")
-		for result in results:
-			self.response.out.write('<tr><td>')
-			self.response.out.write(cgi.escape(result[0]))
-			self.response.out.write('</td><td>')
-			self.response.out.write(result[1])
-			self.response.out.write('</td></tr>')
-		self.response.out.write("""
-		  </tbody>
-		  </body>
-		</html>""")
-		cas.closeDBConnection()
-
+		
 class CASGql:
 
 	def __init__(self, instance=google_cloud_instance, database=google_cloud_database, user=local_mysql_user, password=local_mysql_password):
@@ -146,10 +114,3 @@ class CASGql:
 		return utfList
 	
 
-app = webapp.WSGIApplication([('/.*', CASGqlPage)], debug=True)
-
-def main():
-    run_wsgi_app(app)
-
-if __name__ == '__main__':
-    main()

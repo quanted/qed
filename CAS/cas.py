@@ -1,0 +1,32 @@
+import os
+from compiler.pycodegen import EXCEPT
+os.environ['DJANGO_SETTINGS_MODULE']='settings'
+import cgi
+import cgitb
+cgitb.enable()
+import webapp2 as webapp
+from google.appengine.ext.webapp.util import run_wsgi_app
+from google.appengine.ext.webapp import template
+import django
+from django import forms
+from google.appengine.api import rdbms
+import logging
+import sys
+sys.path.append("CAS")
+from CAS.CASGql import CASGql
+
+class CASService(webapp.RequestHandler):
+    
+    def get(self,casNumber):
+        cas = CASGql()
+        results = cas.getChemicalNameFromCASNumber(casNumber)
+        self.response.clear()
+        self.response.out.write(results)
+
+app = webapp.WSGIApplication([('/cas/(.*)', CASService)], debug=True)
+
+def main():
+    run_wsgi_app(app)
+
+if __name__ == '__main__':
+    main()

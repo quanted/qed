@@ -124,6 +124,17 @@ handlers:
 - url: /select_chemical.html
   script: ubertool/select_chemical_input.py
   login: required
+  
+#use service
+- url: /use/(.*)
+  script: ubertool/use.py
+  login: required
+
+#cas service
+- url: /cas/(.*)
+  script: CAS/cas.py
+  login: required
+  
 #use label site data
 - url: /site_data.html
   script: ubertool/use_input.py

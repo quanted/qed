@@ -58,3 +58,4 @@ class UseInp(forms.Form):
     application_efficiency = forms.FloatField(label='Application Efficiency (fraction)')
     spray_drift = forms.FloatField(label='Spray Drift (fraction)')
     runoff = forms.FloatField(label='Runoff (fraction)')
+    

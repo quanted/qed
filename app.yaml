@@ -1,5 +1,5 @@
 application: pypest
-version: sprint1
+version: chance
 runtime: python27
 api_version: 1
 
@@ -128,6 +128,11 @@ handlers:
 #use service
 - url: /use/(.*)
   script: ubertool/use.py
+  login: required
+  
+#use service
+- url: /pest/(.*)
+  script: ubertool/pesticide_properties.py
   login: required
 
 #cas service

@@ -9,10 +9,12 @@ import sys
 sys.path.append("../utils")
 sys.path.append('../CAS')
 from CAS.CASGql import CASGql
+import logging
 
 class UseService(webapp.RequestHandler):
     
     def get(self, use_config_name):
+        logger = logging.getLogger("UseService")
         user = users.get_current_user()
         q = db.Query(Use)
         q.filter('user =',user)
@@ -45,8 +47,10 @@ class UseService(webapp.RequestHandler):
         use_dict['application_efficiency'] = use.application_efficiency
         use_dict['spray_drift'] = use.spray_drift 
         use_dict['runoff'] = use.runoff 
-        #use_json = simplejson.dumps(data)
-        self.response.out.write(use_dict)
+        logger.info(use_dict)
+        use_json = simplejson.dumps(use_dict)
+        self.response.headers['Content-Type'] = 'application/json'
+        self.response.out.write(use_json)
         
 
 class Use(db.Model):

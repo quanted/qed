@@ -14,121 +14,113 @@ $(document).ready(function() {
 				success: function(use_data) {
 					var chemical_name;
 					var new_use_data = {};
-					new_use_data['user_use_configuration'] = $("#id_user_use_configuration")[0].value
-					var use_data_string = use_data.substring(use_data.indexOf('{')+1,use_data.length-1);
-					var use_data_pairs = use_data_string.split(',');
-					for(i = 0; i < use_data_pairs.length; i++) {
-						var key_value_pair = use_data_pairs[i];
-						var keyValPair = key_value_pair.split(':');
-						var key = keyValPair[0];
-						key = key.trim();
-						key = key.substring(1,key.length-1);
-						var val = keyValPair[1].trim();
-						if(val.indexOf("u'") == 0)
-						{
-							val = val.substring(2,val.length-1);
+					var cas_number = use_data['cas_number'];
+					$.ajax({
+						url:"cas/"+cas_number,
+						async: false,
+						type: 'GET',
+						success: function(chem_name) {
+							chemical_name = chem_name;
 						}
-						if(key.indexOf('application_date') != -1)
-						{
-							val = val.substring(1,val.length-1);
-						}
-						if(key.indexOf("cas") != -1)
-						{
-							//val = val.substring(1,val.length-1);
-							$.ajax({
-								url:"cas/"+val,
-								async: false,
-								type: 'GET',
-								success: function(chem_name) {
-									chemical_name = chem_name.substring(0,chem_name.indexOf("Status")).trim();
-									new_use_data['chemical_name'] = chemical_name;
-								}
-							});
-						}
-						new_use_data[key] = val;
-					}
-					$("#id_config_name")[0].value = new_use_data['user_use_configuration'];
-					var s = document.getElementById('id_cas_number');
-					for(i = 0; i < s.options.length; i++)
-					{ 
-						var option = s.options[i];
-						if(option.value == new_use_data['cas_number'])
+					});
+					//TODO These dropdown being reset may be done in a better manner
+					if(cas_number != null)
+					{
+						var s = document.getElementById('id_cas_number');
+						for(i = 0; i < s.options.length; i++)
 						{ 
-							option.selected = true; 
+							var option = s.options[i];
+							if(option.value == cas_number)
+							{ 
+								option.selected = true; 
+							}
+							else
+							{
+								option.selected = false;
+							}
+							
 						}
-						else
-						{
-							option.selected = false;
-						}
-						
-					}
-					$("#id_formulated_product_name")[0].value = new_use_data['formulated_product_name'];
-					$("#id_percent_ai")[0].value = new_use_data['percent_ai'];
-					$("#id_metfile")[0].value = new_use_data['met_file'];
-					$("#id_PRZM_scenario")[0].value = new_use_data['przm_scenario'];
-					$("#id_EXAMS_environment_file")[0].value = new_use_data['exams_environment_file'];
-					$("#id_application_method")[0].value = new_use_data['application_method'];
-					// application type select dropdown
-					s = document.getElementById('id_application_type');
-					for(i = 0; i < s.options.length; i++)
-					{ 
-						var option = s.options[i];
-						if(option.value == new_use_data['application_type'])
-						{ 
-							option.selected = true; 
-						}
-						else
-						{
-							option.selected = false;
-						}
-						
 					}
 					// application type select dropdown
-					s = document.getElementById('id_app_type');
-					for(i = 0; i < s.options.length; i++)
-					{ 
-						var option = s.options[i];
-						if(option.value == new_use_data['app_type'])
+					var application_type = use_data['application_type'];
+					if(application_type != null)
+					{
+						s = document.getElementById('id_application_type');
+						for(i = 0; i < s.options.length; i++)
 						{ 
-							option.selected = true; 
-						}
-						else
-						{
-							option.selected = false;
-						}
-						
+							var option = s.options[i];
+							if(option.value == application_type)
+							{ 
+								option.selected = true; 
+							}
+							else
+							{
+								option.selected = false;
+							}
+							
 					}
-					$("#id_weight_of_one_granule")[0].value = new_use_data['weight_of_one_granule'];
-					// wetted in select dropdown
-					s = document.getElementById('id_wetted_in');
-					for(i = 0; i < s.options.length; i++)
-					{ 
-						var option = s.options[i];
-						if(option.value == new_use_data['wetted_in'])
+					}
+					// application type select dropdown
+					var app_type = use_data['app_type'];
+					if(app_type != null)
+					{
+						s = document.getElementById('id_app_type');
+						for(i = 0; i < s.options.length; i++)
 						{ 
-							option.selected = true; 
+							var option = s.options[i];
+							if(option.value == app_type)
+							{ 
+								option.selected = true; 
+							}
+							else
+							{
+								option.selected = false;
+							}
+							
 						}
-						else
-						{
-							option.selected = false;
-						}
-						
 					}
-					$("#id_incorporation_depth")[0].value = new_use_data['incorporation_depth'];
-					$("#id_percent_incorporated")[0].value = new_use_data['percent_incorporated'];
-					$("#id_application_kg_rate")[0].value = new_use_data['application_kg_rate'];
-					$("#id_application_lbs_rate")[0].value = new_use_data['application_lbs_rate'];
-					$("#id_seed_treatment_formulation_name")[0].value = new_use_data['seed_treatment_formulation_name'];
-					$("#id_density_of_product")[0].value = new_use_data['density_of_product'];
-					$("#id_maximum_seedling_rate_per_use")[0].value = new_use_data['maximum_seedling_rate_per_use'];
-					$("#id_application_rate_per_use")[0].value = new_use_data['application_rate_per_use'];
-					$("#id_formulated_product_name")[0].value = new_use_data['formulated_product_name'];
-					$("#id_application_date")[0].value = new_use_data['application_date'];
-					$("#id_number_of_applications")[0].value = new_use_data['number_of_applications'];
-					$("#id_interval_between_applications")[0].value = new_use_data['interval_between_applications'];
-					$("#id_application_efficiency")[0].value = new_use_data['application_efficiency'];
-					$("#id_spray_drift")[0].value = new_use_data['spray_drift'];
-					$("#id_runoff")[0].value = new_use_data['runoff'];					
+					var wetted_in = use_data['wetted_in'];
+					if(wetted_in != null)
+					{
+						// wetted in select dropdown
+						s = document.getElementById('id_wetted_in');
+						for(i = 0; i < s.options.length; i++)
+						{ 
+							var option = s.options[i];
+							if(option.value == wetted_in)
+							{ 
+								option.selected = true; 
+							}
+							else
+							{
+								option.selected = false;
+							}
+							
+						}
+					}
+					$("#id_config_name")[0].value = $("#id_user_use_configuration")[0].value;
+					$("#id_incorporation_depth")[0].value = use_data['incorporation_depth'];
+					$("#id_percent_incorporated")[0].value = use_data['percent_incorporated'];
+					$("#id_application_kg_rate")[0].value = use_data['application_kg_rate'];
+					$("#id_application_lbs_rate")[0].value = use_data['application_lbs_rate'];
+					$("#id_seed_treatment_formulation_name")[0].value = use_data['seed_treatment_formulation_name'];
+					$("#id_density_of_product")[0].value = use_data['density_of_product'];
+					$("#id_maximum_seedling_rate_per_use")[0].value = use_data['maximum_seedling_rate_per_use'];
+					$("#id_application_rate_per_use")[0].value = use_data['application_rate_per_use'];
+					$("#id_formulated_product_name")[0].value = use_data['formulated_product_name'];
+					$("#id_application_date")[0].value = use_data['application_date'];
+					$("#id_number_of_applications")[0].value = use_data['number_of_applications'];
+					$("#id_interval_between_applications")[0].value = use_data['interval_between_applications'];
+					$("#id_application_efficiency")[0].value = use_data['application_efficiency'];
+					$("#id_spray_drift")[0].value = use_data['spray_drift'];
+					$("#id_runoff")[0].value = use_data['runoff'];
+					$("#id_formulated_product_name")[0].value = use_data['formulated_product_name'];
+					$("#id_percent_ai")[0].value = use_data['percent_ai'];
+					$("#id_metfile")[0].value = use_data['met_file'];
+					$("#id_PRZM_scenario")[0].value = use_data['przm_scenario'];
+					$("#id_EXAMS_environment_file")[0].value = use_data['exams_environment_file'];
+					$("#id_application_method")[0].value = use_data['application_method'];
+					$("#id_weight_of_one_granule")[0].value = use_data['weight_of_one_granule'];					
 				}
 			});
 		}

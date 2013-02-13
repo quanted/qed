@@ -14,15 +14,17 @@ import logging
 import sys
 sys.path.append("CAS")
 from CAS.CASGql import CASGql
+from django.utils import simplejson
 
 class CASService(webapp.RequestHandler):
     
     def get(self,casNumber):
         cas = CASGql()
         results = cas.getChemicalNameFromCASNumber(casNumber)
-        self.response.clear()
-        self.response.out.write(results)
-
+        chem_json = simplejson.dumps({"chemical_name":results})
+        self.response.headers['Content-Type'] = 'application/json'
+        self.response.out.write(chem_json)
+        
 app = webapp.WSGIApplication([('/cas/(.*)', CASService)], debug=True)
 
 def main():

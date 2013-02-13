@@ -18,7 +18,11 @@ class UbertoolPesticidePropertiesConfigurationPage(webapp.RequestHandler):
         logger = logging.getLogger("UbertoolPesticidePropertiesConfigurationPage")
         form = cgi.FieldStorage()
         config_name = str(form.getvalue('config_name'))
-        pestProps = PesticideProperties()
+        q = db.Query(PesticideProperties)
+        q.filter("config_name =", config_name)
+        pestProps = q.get()
+        if pestProps is None:
+            pestProps = PesticideProperties()
         user = users.get_current_user()
         if user:
             pestProps.user = user

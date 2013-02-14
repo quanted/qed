@@ -12,17 +12,7 @@ $(document).ready(function() {
 				async: false,
 				type: 'GET',
 				success: function(use_data) {
-					var chemical_name;
-					var new_use_data = {};
 					var cas_number = use_data['cas_number'];
-					$.ajax({
-						url:"cas/"+cas_number,
-						async: false,
-						type: 'GET',
-						success: function(chem_name) {
-							chemical_name = chem_name;
-						}
-					});
 					//TODO These dropdown being reset may be done in a better manner
 					if(cas_number != null)
 					{

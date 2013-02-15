@@ -1,3 +1,4 @@
 #!/bin/bash
-sh /Users/pascact1/ubertool_src/code_quality/eco/eco_code_quality.sh
+echo $1 $2
+sh $1/eco/eco_code_quality.sh $1 $2
 exit 0

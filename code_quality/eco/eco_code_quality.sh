@@ -1,3 +1,3 @@
 #!/bin/bash
-sh /Users/pascact1/ubertool_src/code_quality/eco/rice/rice_code_quality.sh
-sh /Users/pascact1/ubertool_src/code_quality/eco/iec/iec_code_quality.sh
+sh $1/eco/rice/rice_code_quality.sh $2/rice $1/eco/rice/rice_code_quality.html
+sh $1/eco/iec/iec_code_quality.sh $2/rice $1/eco/rice/rice_code_quality.html

@@ -94,7 +94,7 @@ def vw(dw,a,dsed,osed):
 
 def mai1(mai,a):
     mai = float(mai)
-    a = float(a)
+    a = float(a)*1e-4
     return mai/a
 #    if a <= 0:
 #     print('The area of the rice paddy must be greater than 0 m2')
@@ -156,7 +156,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
     if kd < 0:
         raise ValueError\
         ('kd=g% is a non-physical value.' % kd)
-    return mai1 / (dw + (dsed * (osed + (pb * kd))))
+    return mai1*1e-2 / (dw + (dsed * (osed + (pb * kd*0.001))))
 
 
 class RiceExecutePage(webapp.RequestHandler):
@@ -182,12 +182,16 @@ class RiceExecutePage(webapp.RequestHandler):
         rice.mai1_out=mai1(rice.mai, rice.a) 
         rice.cw_out=cw(rice.mai1_out, rice.dw, rice.dsed, rice.osed, rice.pb, rice.kd)
         rice.put()
-            
+        q = db.Query(rice_model.Rice)
+        q.filter("user =", user)
+        q.filter("config_name =", config_name)
+        for new_use in q:
+            logger.info(new_use.to_xml())
         text_file = open('rice/rice_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title'})
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'rice'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'rice','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html',{
                 'model':'rice', 
@@ -247,7 +251,7 @@ class RiceExecutePage(webapp.RequestHandler):
         <tr>Tier I Surface Water Estimated Exposure Concentrations (EEC) of %s From Use on Rice</tr>
         <tr>
         <td>Source</td>
-        <td>Application Rate (lbs a.i./A)</td>
+        <td>Application Rate (kg a.i./A)</td>
         <td>Peak & Chronic EEC (&microg/L)</td>
         </tr>
         <tr>

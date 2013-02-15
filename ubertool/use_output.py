@@ -20,12 +20,13 @@ class UbertoolUseConfigurationPage(webapp.RequestHandler):
         logger = logging.getLogger("UbertoolUseConfigurationPage")
         form = cgi.FieldStorage()
         config_name = str(form.getvalue('config_name'))
+        user = users.get_current_user()
         q = db.Query(Use)
+        q.filter('user =',user)
         q.filter("config_name =", config_name)
         use = q.get()
         if use is None:
             use = Use()
-        user = users.get_current_user()
         if user:
             logger.info(user.user_id())
             use.user = user

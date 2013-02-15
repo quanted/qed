@@ -130,9 +130,14 @@ handlers:
   script: ubertool/use.py
   login: required
   
-#use service
+#pest service
 - url: /pest/(.*)
   script: ubertool/pesticide_properties.py
+  login: required
+  
+#terrestrial service
+- url: /terrestrial/(.*)
+  script: ubertool/terrestrial_toxicity.py
   login: required
 
 #cas service

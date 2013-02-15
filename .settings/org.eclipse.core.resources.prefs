@@ -14,6 +14,7 @@ encoding//ubertool/run_ubertool_input.py=utf-8
 encoding//ubertool/select_chemical_db.py=utf-8
 encoding//ubertool/select_chemical_input.py=utf-8
 encoding//ubertool/terrestrial_toxicity_db.py=utf-8
+encoding//ubertool/terrestrial_toxicity_input.py=utf-8
 encoding//ubertool/use_db.py=utf-8
 encoding//ubertool/use_input.py=utf-8
 encoding//user/user_input.py=utf-8

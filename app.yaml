@@ -153,21 +153,27 @@ handlers:
 #pesticide properties
 - url: /pesticide_properties.html
   script: ubertool/pesticide_properties_input.py
+  login: required
 #exposure concentrations
 - url: /exposure_concentrations.html
   script: ubertool/exposure_concentrations_input.py
+  login: required
 #aquatic toxicity
 - url: /aquatic_toxicity.html
   script: ubertool/aquatic_toxicity_input.py
+  login: required
 #terrestrial toxicity
 - url: /terrestrial_toxicity.html
   script: ubertool/terrestrial_toxicity_input.py
+  login: required
 #ecosystem inputs
 - url: /ecosystem_inputs.html
   script: ubertool/ecosystem_inputs_input.py
+  login: required
 #run ubertool
 - url: /run_ubertool.html
   script: ubertool/run_ubertool_input.py  
+  login: required
 
 #ESA workshop
 - url: /esa_workshop.html

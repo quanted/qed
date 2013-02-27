@@ -48,19 +48,29 @@ handlers:
 #output
 - url: /select_chemical_output.html
   script: ubertool/select_chemical_output.py
+  login: required 
 - url: /use_output.html
   script: ubertool/use_output.py
+  login: required 
 - url: /pesticide_properties_output.html
   script: ubertool/pesticide_properties_output.py
+  login: required 
 - url: /exposure_concentrations_output.html
   script: ubertool/exposure_concentrations_output.py
+  login: required 
 - url: /aquatic_toxicity_output.html
   script: ubertool/aquatic_toxicity_output.py
+  login: required 
 - url: /ecosystem_inputs_output.html
   script: ubertool/ecosystem_inputs_output.py
+  login: required 
 - url: /terrestrial_toxicity_output.html
   script: ubertool/terrestrial_toxicity_output.py
-   
+  login: required 
+#ubertool batch output
+- url: /run_ubertool_batchoutput.html
+  script: ubertool/run_ubertool_batch_output.py
+  login: required 
 ##UNTESTED models##
 #description
 - url: /(.*?)_description.html
@@ -174,6 +184,7 @@ handlers:
 - url: /run_ubertool.html
   script: ubertool/run_ubertool_input.py  
   login: required
+
 
 #ESA workshop
 - url: /esa_workshop.html

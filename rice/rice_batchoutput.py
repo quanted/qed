@@ -12,7 +12,7 @@ cgitb.enable()
 import unittest
 from StringIO import StringIO
 import cStringIO
-
+import logging 
 from rice import rice_output
 import csv
 import numpy
@@ -27,6 +27,8 @@ kd=[]
 ######Pre-defined outputs########
 mai1_out=[]
 cw_out=[]
+
+logger = logging.getLogger("RiceBatchOutput")
 
 
 def html_table(row_inp,iter):
@@ -115,8 +117,9 @@ def html_table(row_inp,iter):
                 
 def loop_html(thefile):
     reader = csv.reader(thefile.file.read().splitlines())
-
+    
     header = reader.next()
+    logger.info(header)
     i=1
     iter_html=""
     for row in reader:
@@ -234,7 +237,8 @@ class RiceBatchOutputPage(webapp.RequestHandler):
     def post(self):
         text_file1 = open('rice/rice_description.txt','r')
         x = text_file1.read()
-        form = cgi.FieldStorage() 
+        form = cgi.FieldStorage()
+        logger.info(form) 
         thefile = form['upfile']
         iter_html=loop_html(thefile)        
         templatepath = os.path.dirname(__file__) + '/../templates/'

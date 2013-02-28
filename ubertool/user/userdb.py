@@ -1,46 +1,31 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jan 31 11:55:40 2012
-
-@author: jharston
+@author: 
 """
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
 from django import forms
 from django.db import models
-import sys
-sys.path.append('../CAS')
-from CAS.CASGql import CASGql
 from google.appengine.api import users
 from google.appengine.ext import db
-from use import Use
-from ubertool import Ubertool
-from pesticide_properties import PesticideProperties
-from exposure_concentrations import ExposureConcentrations
-from aquatic_toxicity import AquaticToxicity
-from terrestrial_toxicity import TerrestrialToxicity
-from ecosystem_inputs import EcosystemInputs
-import logging
+import sys
+sys.path.append("../ubertool")
+from ubertool.use import Use
+from ubertool.pesticide_properties import PesticideProperties
+from ubertool.exposure_concentrations import ExposureConcentrations
+from ubertool.aquatic_toxicity import AquaticToxicity
+from ubertool.terrestrial_toxicity import TerrestrialToxicity
+from ubertool.ecosystem_inputs import EcosystemInputs
+from ubertool.ubertool import Ubertool
 
 
-class RunUbertoolInp(forms.Form):
-    logger = logging.getLogger("RunUbertoolInp")
+class UserInp(forms.Form):
     user = users.get_current_user()
     user_id = user.user_id()
-    q = db.Query(Ubertool)
-    q.filter('user =',user)
-    ubertools = ()
-    ubertools += ((None,None),)
-    logger = logging.getLogger("RunUbertoolInp")
-    for ubertool in q:
-        #logger.info(ubertool.to_xml())
-        ubertools += ((ubertool.config_name,ubertool.config_name),)
-    user_ubertool_configuration = forms.ChoiceField(label="User Saved Use Configuration",required=True, choices=ubertools)
-    config_name = forms.CharField(label="Ubertool Configuration Name", initial="ubertool-config-%s"%user_id)
     q = db.Query(Use)
     q.filter('user =',user)
     uses = ()
-#    uses += ((None,None),)
+    uses += ((None,None),)
     for use in q:
         #logger.info(use.to_xml())
         uses += ((use.config_name,use.config_name),)
@@ -48,7 +33,7 @@ class RunUbertoolInp(forms.Form):
     q = db.Query(PesticideProperties)
     q.filter('user =',user)
     pests = ()
-#    pests += ((None,None),)    
+    pests += ((None,None),)
     for pest in q:
         #logger.info(use.to_xml())
         pests += ((pest.config_name,pest.config_name),)
@@ -56,7 +41,7 @@ class RunUbertoolInp(forms.Form):
     q = db.Query(ExposureConcentrations)
     q.filter('user =',user)
     exposures = ()
-#    exposures += ((None,None),)
+    exposures += ((None,None),)
     for exposure in q:
         #logger.info(use.to_xml())
         exposures += ((exposure.config_name,exposure.config_name),)
@@ -64,7 +49,7 @@ class RunUbertoolInp(forms.Form):
     q = db.Query(AquaticToxicity)
     q.filter('user =',user)
     aquatics = ()
-#    aquatics += ((None,None),)
+    aquatics += ((None,None),)
     for aquatic in q:
         #logger.info(use.to_xml())
         aquatics += ((aquatic.config_name,aquatic.config_name),)
@@ -72,7 +57,7 @@ class RunUbertoolInp(forms.Form):
     q = db.Query(TerrestrialToxicity)
     q.filter('user =',user)
     terrestrials = ()
-#    terrestrials += ((None,None),)
+    terrestrials += ((None,None),)
     for terrestrial in q:
         #logger.info(use.to_xml())
         terrestrials += ((terrestrial.config_name,terrestrial.config_name),)
@@ -80,8 +65,18 @@ class RunUbertoolInp(forms.Form):
     q = db.Query(EcosystemInputs)
     q.filter('user =',user)
     ecosystems = ()
-#    ecosystems += ((None,None),)
+    ecosystems += ((None,None),)
     for ecosystem in q:
         #logger.info(use.to_xml())
         ecosystems += ((ecosystem.config_name,ecosystem.config_name),)
     ecosystems_configuration = forms.ChoiceField(required=True, choices=ecosystems)
+    q = db.Query(Ubertool)
+    q.filter('user =',user)
+    ubertools = ()
+    ubertools += ((None,None),)
+    for ubertool in q:
+        #logger.info(use.to_xml())
+        ubertools += ((ubertool.config_name,ubertool.config_name),)
+    ubertools_configuration = forms.ChoiceField(required=True, choices=ecosystems)
+
+    

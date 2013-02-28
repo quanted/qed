@@ -1,0 +1,131 @@
+<script type="text/javascript" src=" ../stylesheets/jquery-1.7.2.js"></script>
+<script type="text/javascript" src=" ../stylesheets/jquery.validate.js"></script>
+<script>
+$(document).ready(function() {
+	$("#id_user_ubertool_configuration").change(function(){
+		var user_ubertool_configuration = $("#id_user_ubertool_configuration")[0].value;
+
+		if(user_ubertool_configuration != 'None')
+		{
+			$.ajax({
+				url:"ubertool/"+user_ubertool_configuration,
+				async: false,
+				type: 'GET',
+				success: function(ubertool_data) {
+					// application type select dropdown
+					var use_config = ubertool_data['use'];
+					if(use_config != null)
+					{
+						s = document.getElementById('id_use_configuration');
+						for(i = 0; i < s.options.length; i++)
+						{ 
+							var option = s.options[i];
+							if(option.value == use_config)
+							{ 
+								option.selected = true; 
+							}
+							else
+							{
+								option.selected = false;
+							}
+							
+						}
+					}
+					var pest_config = ubertool_data['pest'];
+					if(pest_config != null)
+					{
+						s = document.getElementById('id_pest_configuration');
+						for(i = 0; i < s.options.length; i++)
+						{ 
+							var option = s.options[i];
+							if(option.value == pest_config)
+							{ 
+								option.selected = true; 
+							}
+							else
+							{
+								option.selected = false;
+							}
+							
+						}
+					}
+					var expo_config = ubertool_data['expo'];
+					if(expo_config != null)
+					{
+						s = document.getElementById('id_exposures_configuration');
+						for(i = 0; i < s.options.length; i++)
+						{ 
+							var option = s.options[i];
+							if(option.value == expo_config)
+							{ 
+								option.selected = true; 
+							}
+							else
+							{
+								option.selected = false;
+							}
+							
+						}
+					}
+					var aqua_config = ubertool_data['aqua'];
+					if(aqua_config != null)
+					{
+						s = document.getElementById('id_aquatic_configuration');
+						for(i = 0; i < s.options.length; i++)
+						{ 
+							var option = s.options[i];
+							if(option.value == aqua_config)
+							{ 
+								option.selected = true; 
+							}
+							else
+							{
+								option.selected = false;
+							}
+							
+						}
+					}
+					var terra_config = ubertool_data['terra'];
+					if(terra_config != null)
+					{
+						s = document.getElementById('id_terrestrial_configuration');
+						for(i = 0; i < s.options.length; i++)
+						{ 
+							var option = s.options[i];
+							if(option.value == terra_config)
+							{ 
+								option.selected = true; 
+							}
+							else
+							{
+								option.selected = false;
+							}
+							
+						}
+					}
+					var eco_config = ubertool_data['eco'];
+					if(eco_config != null)
+					{
+						s = document.getElementById('id_ecosystems_configuration');
+						for(i = 0; i < s.options.length; i++)
+						{ 
+							var option = s.options[i];
+							if(option.value == eco_config)
+							{ 
+								option.selected = true; 
+							}
+							else
+							{
+								option.selected = false;
+							}
+							
+						}
+					}
+					$("#id_config_name")[0].value = $("#id_user_ubertool_configuration")[0].value;					
+				}
+			});
+		}
+		
+	});
+})
+</script>

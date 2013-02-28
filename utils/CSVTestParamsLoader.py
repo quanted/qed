@@ -53,7 +53,7 @@ class CSVTestParamsLoader(object):
         temp_order = list(param_name_order.__reversed__())
         for param_type in param_types:
             param_name = temp_order.pop()
-            logger.info(param_name + ":" + param_type)
+            #logger.info(param_name + ":" + param_type)
             param_name_type_dict[param_name]=param_type
         for params_data_row in params_data_rows:
             temp_order = list(param_name_order.__reversed__())

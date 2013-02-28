@@ -71,6 +71,9 @@ handlers:
 - url: /run_ubertool_batchoutput.html
   script: ubertool/run_ubertool_batch_output.py
   login: required 
+- url: /run_ubertool_output.html
+  script: ubertool/run_ubertool_output.py
+  login: required 
 ##UNTESTED models##
 #description
 - url: /(.*?)_description.html
@@ -148,6 +151,11 @@ handlers:
 #terrestrial service
 - url: /terrestrial/(.*)
   script: ubertool/terrestrial_toxicity.py
+  login: required
+  
+#ubertool service
+- url: /ubertool/(.*)
+  script: ubertool/ubertool.py
   login: required
 
 #cas service

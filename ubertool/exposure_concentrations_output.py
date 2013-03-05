@@ -18,10 +18,17 @@ class UbertoolExposureConcentrationsConfigurationPage(webapp.RequestHandler):
         logger = logging.getLogger("UbertoolExposureConcentrationsConfigurationPage")
         form = cgi.FieldStorage()
         config_name = str(form.getvalue('config_name'))
-        exposure_concentrations = ExposureConcentrations()
         user = users.get_current_user()
+        q = db.Query(ExposureConcentrations)
+        q.filter('user =',user)
+        q.filter("config_name =", config_name)
+        exposure_concentrations = q.get()
+        if exposure_concentrations is None:
+            exposure_concentrations = ExposureConcentrations()
         if user:
+            logger.info(user.user_id())
             exposure_concentrations.user = user
+        exposure_concentrations = ExposureConcentrations()
         exposure_concentrations.config_name = config_name
         exposure_concentrations.one_in_ten_peak_exposure_concentration = float(form.getvalue('one_in_ten_peak_exposure_concentration'))
         exposure_concentrations.one_in_ten_four_day_average_exposure_concentration = float(form.getvalue('one_in_ten_four_day_average_exposure_concentration'))

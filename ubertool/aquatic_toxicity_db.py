@@ -33,4 +33,3 @@ class ATInp(forms.Form):
     toxicity_target_concentration_for_listed_vascular_plants = forms.FloatField(label='Toxicity Target Concentration for Most Sensitive Listed Vascular Plants')
     toxicity_target_concentration_for_duckweed = forms.FloatField(label='Toxicity Target Concentration for Duckweed')
     created = db.DateTimeProperty(auto_now_add=True)    
-    

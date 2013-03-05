@@ -22,7 +22,7 @@ class KabamInputPage(webapp.RequestHandler):
         x = text_file.read()
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + 'kabam-jQuery.html', {})
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'kabam'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'kabam','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})
         html = html + template.render(templatepath + '04uberinput_start.html', {
                 'model':'kabam', 

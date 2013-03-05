@@ -1,0 +1,54 @@
+\documentclass[10pt]{article}
+\usepackage{graphicx}
+\usepackage{endfloat}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage[scientific-notation=true]{siunitx}
+\usepackage[margin = 1in]{geometry}
+\hoffset = -1.3in %set margin offset horizontally for the document
+\allowdisplaybreaks
+\begin{document}
+\begin{align*}
+& \hspace{-0.75in}  \text{Pesticide tissue residue for single trophic levels:} \nonumber \\
+C_{B} & = \frac{k_{1} * (m_{o}*\phi*C_{wto} +m_{p}*C_{wdp})+k_{D}*\sum(P_{i}C_{Di})}{k_{2}+k_{E}+k_{G}+k_{M}} \nonumber \\
+&    \hspace{-.75in}  \text{parameters:} \nonumber \\
+k_{1} & = \text{pesticide uptake rate constant through respiratory area} \nonumber \\
+k_{2} & = \text{rate constant for elimination of the pesticide through the}\nonumber \\ &\hspace{1.3em} \text{respiratory area} \nonumber \\
+k_{D} & = \text{pesticide uptake rate constant for uptake through ingestion}\nonumber \\ &\hspace{1.3em} \text{of food} \nonumber\\
+k_{E} & = \text{rate constant for elimination of the pesticide through}\nonumber \\ &\hspace{1.3em} \text{excretion of contaminated feces} \nonumber \\
+k_{G} & = \text{organism growth rate constant} \nonumber \\
+k_{M} & = \text{rate constant for pesticide metabolic transformation} \nonumber \\
+m_{o} & = \text{fraction of respiratory ventilation involving overlying water} \nonumber \\
+P_{i} & = \text{fraction of diet containing i (prey item)} \nonumber \\
+\phi & = \text{fraction of the overlying water concentration of the pesticide}\nonumber \\ &\hspace{1.3em} \text{that is freely dissolved} \nonumber \\
+&    \hspace{-.75in}  \text{Calculation of available pesticide fraction in water:} \nonumber \\ 
+\phi & = \frac{1}{1+(X_{POC}*\alpha_{POC}*K_{OW})+(X_{DOC}*\alpha_{DOC}*K_{OW})} \nonumber \\
+&    \hspace{-.75in}  \text{parameters:} \nonumber \\
+X_{POC} & = \text{concentration of particulate organic carbon in water} \nonumber \\
+X_{DOC} & = \text{concentration of dissolved organic carbon in water} \nonumber \\
+\alpha_{POC} & = \text{proportionality constant to describe the similiarity of}\nonumber\\ &\hspace{1.3em} \text{phase partitioning of POC in relation to octanol}\nonumber\\
+\alpha_{DOC} & = \text{proportionality constant to describe the similiarity of}\nonumber\\ &\hspace{1.3em} \text{phase partitioning of DOC in relation to octanol}\nonumber\\
+&    \hspace{-.75in}  \text{Calculation of pesticide concentration in the solid portion of the sediment:} \nonumber \\
+C_{s} & = C_{SOC} * OC \nonumber \\
+&    \hspace{-.75in}  \text{where:} \nonumber \\
+C_{SOC} & = C_{WDP} * K_{OC}\nonumber \\
+&    \hspace{-.75in}  \text{parameters:} \nonumber \\
+C_{SOC} & = \text{normalized (for OC content) pesticide concentration in}\nonumber \\ &\hspace{1.3em} \text{sediment} \nonumber \\
+C_{WDP} & = \text{freely dissolved pesticide concentration in pore water} \nonumber \\
+K_{OC} & = \text{organic carbon partition coefficient} \nonumber\\
+OC & = \text{percent organic carbon in sediment} \nonumber\\
+\end{align*}
+\end{document}
+\begin{document}
+%\begin{align*}
+& \hspace{-0.75in}  \text{Pesticide tissue residue for single trophic levels:} \nonumber \\
+C_{B} & = \frac{k_{1} * (m_{o}*\phi*C_{wto} +m_{p}*C_{wdp})+k_{D}*\sum(P_{i}C_{Di})}{k_{2}+k_{E}+k_{G}+k_{M}} \nonumber \\
+&    \hspace{-.75in}  \text{parameters:} \nonumber \\
+k_{1} & = \text{pesticide uptake rate constant through respiratory area} \nonumber \\
+k_{2} & = \text{rate constant for elimination of the pesticide through the}\nonumber \\ &\hspace{1.3em} \text{respiratory area} \nonumber \\
+k_{D} & = \text{pesticide uptake rate constant for uptake through ingestion}\nonumber \\ &\hspace{1.3em} \text{of food} \nonumber\\
+\end{document}
+
+
+

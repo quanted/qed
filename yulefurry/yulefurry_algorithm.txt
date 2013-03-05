@@ -1,13 +1,5 @@
-<font size="4" face="sans serif">
 <p>The population change rate is:</p>
-<p>&nbsp;</p>
-<img src = "/images/latex/yulefurry/yulefurry_1.png">
-
-<p>&nbsp;</p>
+<img src = "/images/latex/yulefurry/yulefurry_1.png" alt="Yule-Furry_1">
 <p>In terms of probability:</p>
-<p>&nbsp;</p>
-<img src = "/images/latex/yulefurry/yulefurry_2.png">
-<img src = "/images/latex/yulefurry/yulefurry_3.png" style="margin:auto;display:block;">
-
-
-</font>
+<img src = "/images/latex/yulefurry/yulefurry_2.png" alt="Yule-Furry_2">
+<img src = "/images/latex/yulefurry/yulefurry_3.png" alt="Yule-Furry_3">

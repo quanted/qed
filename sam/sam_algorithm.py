@@ -16,7 +16,7 @@ class SAMAlgorithmPage(webapp.RequestHandler):
         x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title'})
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'sam'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'sam','page':'algorithm'})
         html = html + template.render(templatepath + '03ubertext_links_left.html', {})                       
         html = html + template.render(templatepath + '04uberalgorithm_start.html', {
                 'model':'sam', 

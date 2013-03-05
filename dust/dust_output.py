@@ -333,7 +333,7 @@ class DUSTExecutePage(webapp.RequestHandler):
 #        text_file = open('','r')
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'dust'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'dust','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'dust', 

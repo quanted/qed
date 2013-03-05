@@ -14,9 +14,11 @@ class genericInputPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'generic'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'generic','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {})
+        html = html + template.render(templatepath + '04uberinput_start.html', {
+                'model':'iec', 
+                'model_attributes':'IEC Inputs'})
         html = html + str(genericdb.genericInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})

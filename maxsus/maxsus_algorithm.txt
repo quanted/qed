@@ -1,10 +1,4 @@
-<font size="4" face="sans serif">
 <p>The population change rate is:</p>
-<p>&nbsp;</p>
-<img src = "/images/latex/maxsus/maxsus_1.png">
-
-<p>&nbsp;</p>
+<img src = "/images/latex/maxsus/maxsus_1.png" alt="Maxsus_1">
 <p>At equilibrium:</p>
-<p>&nbsp;</p>
-<img src = "/images/latex/maxsus/maxsus_2.png">
-</font>
+<img src = "/images/latex/maxsus/maxsus_2.png" alt="Maxsus_2">

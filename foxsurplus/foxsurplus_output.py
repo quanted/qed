@@ -46,7 +46,7 @@ class foxsurplusOutputPage(webapp.RequestHandler):
         x_out=foxsurplusgrow(N_o,K,rho,q,E,T)
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'foxsurplus'})
+        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'foxsurplus','page':'output'})
         html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'foxsurplus', 
@@ -98,7 +98,7 @@ class foxsurplusOutputPage(webapp.RequestHandler):
                           </table>"""%((x_out))
         html = html + template.render(templatepath + 'foxsurplus-output-jqplot.html', {})                         
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)
      

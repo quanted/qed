@@ -282,7 +282,7 @@ class beepopOutputPage(webapp.RequestHandler):
         number_of_forages = int(form.getvalue('number_of_forages'))
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'beepop'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'beepop','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {})
 
@@ -361,7 +361,7 @@ class beepopOutputPage(webapp.RequestHandler):
 #                          </table>"""%(hive(t, no, l, w, alpha, theta, mo, deltam)[0],hive(t, no, l, w, alpha, theta, mo, deltam)[1],hive(t, no, l, w, alpha, theta, mo, deltam)[2])        
         html = html + template.render(templatepath + 'beekhoury-output-jqplot.html', {})         
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
           
        

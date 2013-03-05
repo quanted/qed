@@ -1,0 +1,639 @@
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  25 FEB 2013 12:38
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**image2_template.tex
+(./image2_template.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman-x-2009-06-19, ngerman-x-2009-06-19, afrikaans, ancientgreek, ibycus, arabi
+c, armenian, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danis
+h, dutch, ukenglish, usenglishmax, esperanto, estonian, ethiopic, farsi, finnis
+h, french, galician, german, ngerman, swissgerman, monogreek, greek, hungarian,
+ icelandic, assamese, bengali, gujarati, hindi, kannada, malayalam, marathi, or
+iya, panjabi, tamil, telugu, indonesian, interlingua, irish, italian, kurmanji,
+ lao, latin, latvian, lithuanian, mongolian, mongolianlmc, bokmal, nynorsk, pol
+ish, portuguese, romanian, russian, sanskrit, serbian, serbianc, slovak, sloven
+ian, spanish, swedish, turkish, turkmen, ukrainian, uppersorbian, welsh, loaded
+.
+(/usr/local/texlive/2011/texmf-dist/tex/latex/standalone/standalone.cls
+Document Class: standalone 2011/04/07 v0.4a Class to compile TeX sub-files stan
+dalone
+(/usr/local/texlive/2011/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2010/12/23 v3.10 Keyval support for LaTeX options (HO)
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2011/04/07 v1.13 Key value parser (HO)
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
+)
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Prefix for e-TeX command names (HO)
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2011/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/standalone/standalone.cfg
+File: standalone.cfg 2011/04/07 v0.4a Default configuration file for 'standalon
+e' class
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/preview/preview.sty
+Package: preview 2010/02/14 11.86 (AUCTeX/preview-latex)
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/preview/prtightpage.def
+\PreviewBorder=\dimen103
+)
+\pr@snippet=\count87
+\pr@box=\box26
+\pr@output=\toks15
+))
+(/usr/local/texlive/2011/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+\Gread@gobject=\count88
+))
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/endfloat/endfloat.sty
+Package: endfloat 1995/10/11 v2.4i LaTeX2e package puts figures and tables at e
+nd (jdm)
+\c@postfig=\count89
+\efloat@postfff=\write3
+\@ef@fffopen=\count90
+\c@posttbl=\count91
+\efloat@postttt=\write4
+\@ef@tttopen=\count92
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2009/06/22 v3.00
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\@emptytoks=\toks16
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks17
+\ex@=\dimen106
+))
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen107
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count93
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count94
+\leftroot@=\count95
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count96
+\DOTSCASE@=\count97
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box27
+\strutbox@=\box28
+\big@size=\dimen108
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count98
+\c@MaxMatrixCols=\count99
+\dotsspace@=\muskip10
+\c@parentequation=\count100
+\dspbrk@lvl=\count101
+\tag@help=\toks18
+\row@=\count102
+\column@=\count103
+\maxfields@=\count104
+\andhelp@=\toks19
+\eqnshift@=\dimen109
+\alignsep@=\dimen110
+\tagshift@=\dimen111
+\tagwidth@=\dimen112
+\totwidth@=\dimen113
+\lineht@=\dimen114
+\@envbody=\toks20
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2000/12/01 6.7 Contributed and Supported LaTeX2e package
+
+Package: `setspace' 6.7 <2000/12/01>
+) (/usr/local/texlive/2011/texmf-dist/tex/latex/siunitx/siunitx.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/expl3.sty
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3names.sty
+Package: l3names 2011/01/08 v2122 L3 Experimental Naming Scheme for TeX Primiti
+ves
+)
+Package: expl3 2011/04/09 v2222 L3 Experimental code bundle wrapper
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/etex-pkg/etex.sty
+Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
+\et@xins=\count105
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3basics.sty
+Package: l3basics 2011/04/23 v2246 L3 Experimental basic definitions
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3expan.sty
+Package: l3expan 2011/04/09 v2223 L3 Experimental Argument Expansion module
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3tl.sty
+Package: l3tl 2011/04/09 v2223 L3 Experimental Token Lists
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3int.sty
+Package: l3int 2011/04/11 v2229 L3 Experimental Integer module
+\l_tmpa_int=\count106
+\l_tmpb_int=\count107
+\l_tmpc_int=\count108
+\g_tmpa_int=\count109
+\g_tmpb_int=\count110
+\c_max_int=\count111
+\g_tl_inline_level_int=\count112
+\g_prg_inline_level_int=\count113
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3quark.sty
+Package: l3quark 2011/04/14 v2234 L3 Experimental Quark Commands
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3seq.sty
+Package: l3seq 2011/04/21 v2245 The LaTeX3 kernel: sequences and stacks
+\g_seq_nesting_depth_int=\count114
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3toks.sty
+Package: l3toks 2011/04/09 v2223 L3 Experimental Token Registers
+\l_tmpb_toks=\toks22
+\l_tmpc_toks=\toks23
+\g_tmpa_toks=\toks24
+\g_tmpb_toks=\toks25
+\g_tmpc_toks=\toks26
+\c_empty_toks=\toks27
+\l_tl_replace_toks=\toks28
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3prg.sty
+Package: l3prg 2011/04/09 v2223 L3 Experimental control structures
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3clist.sty
+Package: l3clist 2011/04/09 v2223 L3 Experimental comma separated lists
+\g_clist_map_inline_int=\count115
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3token.sty
+Package: l3token 2011/04/09 v2223 L3 Experimental token investigation and manip
+ulation
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3prop.sty
+Package: l3prop 2011/04/09 v2223 L3 Experimental Property Lists
+\g_prop_inline_level_int=\count116
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3msg.sty
+Package: l3msg 2010/10/02 v2052 L3 Experimental LaTeX Messages module
+\l_msg_redirect_classes_prop=\toks29
+\l_msg_redirect_names_prop=\toks30
+\l_msg_redirect_fatal_prop=\toks31
+\l_msg_redirect_error_prop=\toks32
+\l_msg_redirect_warning_prop=\toks33
+\l_msg_redirect_info_prop=\toks34
+\l_msg_redirect_log_prop=\toks35
+\l_msg_redirect_trace_prop=\toks36
+\l_msg_redirect_none_prop=\toks37
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3io.sty
+Package: l3io 2010/10/03 v2063 L3 Experimental i/o module
+\g_iow_streams_prop=\toks38
+\g_ior_streams_prop=\toks39
+\l_iow_stream_int=\count117
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3skip.sty
+Package: l3skip 2011/02/15 v2149 L3 Experimental skip registers
+\l_tmpa_skip=\skip46
+\l_tmpb_skip=\skip47
+\l_tmpc_skip=\skip48
+\g_tmpa_skip=\skip49
+\g_tmpb_skip=\skip50
+\l_tmpa_dim=\dimen115
+\l_tmpb_dim=\dimen116
+\l_tmpc_dim=\dimen117
+\l_tmpd_dim=\dimen118
+\g_tmpa_dim=\dimen119
+\g_tmpb_dim=\dimen120
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3box.sty
+Package: l3box 2011/04/09 v2223 L3 Experimental Box module
+\l_tmpb_box=\box29
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3keyval.sty
+Package: l3keyval 2011/04/09 v2223 L3 Experimental keyval processing
+\l_KV_level_int=\count118
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3keys.sty
+Package: l3keys 2010/11/11 v2082 L3 Experimental key-value support
+\l_keys_choice_int=\count119
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3precom.sty
+Package: l3precom 2011/04/09 v2223 L3 Experimental precompilation module
+\g_gen_sym_int=\count120
+\g_ggen_sym_int=\count121
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3xref.sty
+Package: l3xref 2011/04/09 v2223 L3 Experimental cross referencing
+\g_xref_all_curr_immediate_fields_prop=\toks40
+\g_xref_all_curr_deferred_fields_prop=\toks41
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3file.sty
+Package: l3file 2011/04/21 v2242 The LaTeX3 kernel: file operations
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3fp.sty
+Package: l3fp 2011/03/19 v2201 L3 Experimental floating-point operations
+\c_one_million=\count122
+\c_one_hundred_million=\count123
+\c_five_hundred_million=\count124
+\c_one_thousand_million=\count125
+\c_fp_pi_by_four_decimal_int=\count126
+\c_fp_pi_by_four_extended_int=\count127
+\c_fp_pi_decimal_int=\count128
+\c_fp_pi_extended_int=\count129
+\c_fp_two_pi_decimal_int=\count130
+\c_fp_two_pi_extended_int=\count131
+\l_fp_count_int=\count132
+\l_fp_div_offset_int=\count133
+\l_fp_exp_integer_int=\count134
+\l_fp_exp_decimal_int=\count135
+\l_fp_exp_extended_int=\count136
+\l_fp_exp_exponent_int=\count137
+\l_fp_input_a_sign_int=\count138
+\l_fp_input_a_integer_int=\count139
+\l_fp_input_a_decimal_int=\count140
+\l_fp_input_a_exponent_int=\count141
+\l_fp_input_b_sign_int=\count142
+\l_fp_input_b_integer_int=\count143
+\l_fp_input_b_decimal_int=\count144
+\l_fp_input_b_exponent_int=\count145
+\l_fp_input_a_extended_int=\count146
+\l_fp_input_b_extended_int=\count147
+\l_fp_mul_a_i_int=\count148
+\l_fp_mul_a_ii_int=\count149
+\l_fp_mul_a_iii_int=\count150
+\l_fp_mul_a_iv_int=\count151
+\l_fp_mul_a_v_int=\count152
+\l_fp_mul_a_vi_int=\count153
+\l_fp_mul_b_i_int=\count154
+\l_fp_mul_b_ii_int=\count155
+\l_fp_mul_b_iii_int=\count156
+\l_fp_mul_b_iv_int=\count157
+\l_fp_mul_b_v_int=\count158
+\l_fp_mul_b_vi_int=\count159
+\l_fp_mul_output_int=\count160
+\l_fp_output_sign_int=\count161
+\l_fp_output_integer_int=\count162
+\l_fp_output_decimal_int=\count163
+\l_fp_output_exponent_int=\count164
+\l_fp_output_extended_int=\count165
+\l_fp_round_position_int=\count166
+\l_fp_round_target_int=\count167
+\l_fp_split_sign_int=\count168
+\l_fp_tmp_int=\count169
+\l_fp_trig_octant_int=\count170
+\l_fp_trig_sign_int=\count171
+\l_fp_trig_decimal_int=\count172
+\l_fp_trig_extended_int=\count173
+\l_fp_tmp_dim=\dimen121
+\l_fp_tmp_skip=\skip51
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/expl3/l3luatex.sty
+Package: l3luatex 2010/07/18 v1985 L3 Experimental LuaTeX functions
+\g_cctab_allocate_int=\count174
+\g_cctab_stack_int=\count175
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count176
+\calc@Bcount=\count177
+\calc@Adimen=\dimen122
+\calc@Bdimen=\dimen123
+\calc@Askip=\skip52
+\calc@Bskip=\skip53
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count178
+\calc@Cskip=\skip54
+))
+Package: siunitx 2011/06/15 v2.2i A comprehensive (SI) units package
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/xpackages/xbase/xparse.sty
+Package: xparse 2011/04/08 v2219 Generic document command parser
+\c_xparse_shorthands_prop=\toks42
+\l_xparse_m_args_int=\count179
+\l_xparse_mandatory_args_int=\count180
+\l_xparse_processor_int=\count181
+\l_xparse_total_args_int=\count182
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen124
+\extrarowheight=\dimen125
+\NC@list=\toks43
+\extratabsurround=\skip55
+\backup@length=\skip56
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/xpackages/xtras/l3keys2e.sty
+Package: l3keys2e 2011/05/06 v2320 Parsing LaTeX3 keyvals as LaTeX2e package op
+tions
+)
+\l_siunitx_tmp_box=\box30
+\l_siunitx_tmp_int=\count183
+\l_siunitx_number_in_prop=\toks44
+\l_siunitx_number_mantissa_length_int=\count184
+\l_siunitx_number_uncert_length_int=\count185
+\l_siunitx_round_int=\count186
+\l_siunitx_process_decimal_int=\count187
+\l_siunitx_process_uncertainty_int=\count188
+\l_siunitx_process_fixed_int=\count189
+\l_siunitx_process_integer_min_int=\count190
+\l_siunitx_process_precision_int=\count191
+\l_siunitx_number_out_prop=\toks45
+\l_siunitx_angle_marker_box=\box31
+\l_siunitx_angle_unit_box=\box32
+\l_siunitx_angle_marker_dim=\dimen126
+\l_siunitx_angle_unit_dim=\dimen127
+\l_siunitx_angle_degree_prop=\toks46
+\l_siunitx_angle_minute_prop=\toks47
+\l_siunitx_angle_second_prop=\toks48
+\l_siunitx_unit_int=\count192
+\l_siunitx_unit_prop=\toks49
+\l_siunitx_unit_denominator_int=\count193
+\l_siunitx_unit_numerator_int=\count194
+\l_siunitx_unit_prefix_int=\count195
+\l_siunitx_unit_prefix_base_int=\count196
+\l_siunitx_unit_prefix_gram_int=\count197
+\l_siunitx_number_product_int=\count198
+\c_siunitx_one_fill_skip=\skip57
+\l_siunitx_table_unit_align_skip=\skip58
+\l_siunitx_table_fill_box=\box33
+\l_siunitx_table_fill_dim=\dimen128
+\l_siunitx_table_pre_box=\box34
+\l_siunitx_table_post_box=\box35
+\l_siunitx_table_result_box=\box36
+\l_siunitx_table_comparator_dim=\dimen129
+\l_siunitx_table_decimal_dim=\dimen130
+\l_siunitx_table_exponent_dim=\dimen131
+\l_siunitx_table_integer_dim=\dimen132
+\l_siunitx_table_mantissa_dim=\dimen133
+\l_siunitx_table_marker_dim=\dimen134
+\l_siunitx_table_result_dim=\dimen135
+\l_siunitx_table_uncert_dim=\dimen136
+\l_siunitx_table_gap_dim=\dimen137
+\l_siunitx_table_model_prop=\toks50
+\l_siunitx_table_space_dim=\dimen138
+\l_siunitx_table_number_align_skip=\skip59
+\l_siunitx_table_text_align_skip=\skip60
+\l_siunitx_table_decimal_int=\count199
+\l_siunitx_table_exponent_int=\count200
+\l_siunitx_table_integer_int=\count201
+Normal \count register pool exhausted, switching to extended pool.
+\l_siunitx_table_uncert_int=\count277
+ LaTeX info: Defining document command \DeclareBinaryPrefix
+(LaTeX)  with arg. spec. 'mmm' on line 6794.
+
+ LaTeX info: Defining document command \DeclareSIPostPower
+(LaTeX)  with arg. spec. 'mm' on line 6797.
+
+ LaTeX info: Defining document command \DeclareSIPrefix
+(LaTeX)  with arg. spec. 'mmm' on line 6800.
+
+ LaTeX info: Defining document command \DeclareSIPrePower
+(LaTeX)  with arg. spec. 'mm' on line 6803.
+
+ LaTeX info: Defining document command \DeclareSIQualifier
+(LaTeX)  with arg. spec. 'mm' on line 6806.
+
+ LaTeX info: Defining document command \DeclareSIUnit
+(LaTeX)  with arg. spec. 'O{}mm' on line 6809.
+
+ LaTeX info: Defining document command \DeclareSIUnitWithOptions
+(LaTeX)  with arg. spec. 'mmm' on line 6812.
+
+ LaTeX info: Defining document command \ang
+(LaTeX)  with arg. spec. 'o>{\SplitArgument {2}{;}}m' on line 6827.
+
+ LaTeX info: Defining document command \num
+(LaTeX)  with arg. spec. 'om' on line 6834.
+
+ LaTeX info: Defining document command \numlist
+(LaTeX)  with arg. spec. 'o>{\SplitList {;}}m' on line 6841.
+
+ LaTeX info: Defining document command \numrange
+(LaTeX)  with arg. spec. 'omm' on line 6848.
+
+ LaTeX info: Defining document command \SIlist
+(LaTeX)  with arg. spec. 'o>{\SplitList {;}}mm' on line 6858.
+
+ LaTeX info: Defining document command \SIrange
+(LaTeX)  with arg. spec. 'ommm' on line 6868.
+
+ LaTeX info: Defining document command \SI
+(LaTeX)  with arg. spec. 'omom' on line 6878.
+
+ LaTeX info: Defining document command \sisetup
+(LaTeX)  with arg. spec. 'm' on line 6881.
+
+ LaTeX info: Defining document command \tablenum
+(LaTeX)  with arg. spec. 'om' on line 6892.
+
+ LaTeX info: Defining document command \si
+(LaTeX)  with arg. spec. 'om' on line 6902.
+
+ LaTeX info: Defining document command \siunitx_bookmark_num:w
+(LaTeX)  with arg. spec. 'om' on line 6939.
+
+ LaTeX info: Defining document command \siunitx_bookmark_numrange:w
+(LaTeX)  with arg. spec. 'omm' on line 6941.
+
+ LaTeX info: Defining document command \siunitx_bookmark_SI:w
+(LaTeX)  with arg. spec. 'omom' on line 6943.
+
+ LaTeX info: Defining document command \siunitx_bookmark_SIlist:w
+(LaTeX)  with arg. spec. 'omm' on line 6945.
+
+ LaTeX info: Defining document command \siunitx_bookmark_SIrange:w
+(LaTeX)  with arg. spec. 'ommm' on line 6947.
+
+ LaTeX info: Defining document command \siunitx_bookmark_si:w
+(LaTeX)  with arg. spec. 'om' on line 6948.
+
+\g_ior_tmp_stream=\read1
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/beamer/translator/translator.sty
+Package: translator 2010/06/12 ver 1.10
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/beamer/translator/translator-lang
+uage-mappings.tex)))
+
+LaTeX Warning: Unused global option(s):
+    [varwidth=TRUE].
+
+
+(/Users/puruckertom/Dropbox/apppest/images/latex/generic/.texpadtmp/image2_temp
+late.aux)
+\openout1 = `image2_template.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+
+Preview: Fontsize 10pt
+Preview: PDFoutput 1
+(/usr/local/texlive/2011/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count278
+\scratchdimen=\dimen139
+\scratchbox=\box37
+\nofMPsegments=\count279
+\nofMParguments=\count280
+\everyMPshowfont=\toks51
+\MPscratchCnt=\count281
+\MPscratchDim=\dimen140
+\MPnumerator=\count282
+\makeMPintoPDFobject=\count283
+\everyMPtoPDFconversion=\toks52
+) (/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/04/22 v0.16 Utilities of pdfTeX for LuaTeX (HO)
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Managing graphics extensions (HO)
+
+(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Defining keys (HO)
+))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+(/usr/local/texlive/2011/texmf-dist/tex/latex/beamer/translator/dicts/translato
+r-basic-dictionary/translator-basic-dictionary-English.dict
+Dictionary: translator-basic-dictionary, Language: English 
+)
+\c_siunitx_mathsf_int=\count284
+LaTeX Font Info:    Try loading font information for U+msa on input line 11.
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 11.
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+\c_siunitx_mathtt_int=\count285
+
+Preview: Tightpage -262144 -262144 262144 262144
+[1{/usr/local/texlive/2011/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+AED endfloat: Processing end Figures and Tables
+(/Users/puruckertom/Dropbox/apppest/images/latex/generic/.texpadtmp/image2_temp
+late.aux) ) 
+Here is how much of TeX's memory you used:
+ 9494 strings out of 493633
+ 199463 string characters out of 3143378
+ 191492 words of memory out of 3000000
+ 12647 multiletter control sequences out of 15000+200000
+ 6748 words of font info for 28 fonts, out of 3000000 for 9000
+ 831 hyphenation exceptions out of 8191
+ 38i,4n,33p,280b,121s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi10.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r10.pfb>
+Output written on /Users/puruckertom/Dropbox/apppest/images/latex/generic/.texp
+adtmp/image2_template.pdf (1 page, 17863 bytes).
+PDF statistics:
+ 16 PDF objects out of 1000 (max. 8388607)
+ 10 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

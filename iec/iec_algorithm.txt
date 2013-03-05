@@ -1,2 +1,3 @@
 
-<p></p>
+<p>Predictor of chance of individual effect using probit dose-response curve slope and median lethal estimate which is based on the following formula:</p>
+<img src = "/images/latex/iec/iec_image1.png">

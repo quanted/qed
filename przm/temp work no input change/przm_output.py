@@ -16,6 +16,8 @@ from google.appengine.api import urlfetch
 
 
 ############Provide the key and connect to the picloud####################
+api_key='3355'
+api_secretkey='212ed160e3f416fdac8a3b71c90f3016722856b9'
 base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
 http_headers = {'Authorization' : 'Basic %s' % base64string}
 ###########################################################################

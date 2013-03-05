@@ -16,14 +16,14 @@ class beekhouryAlgorithmPage(webapp.RequestHandler):
         x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01pop_uberheader.html', {'title'})
-        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'beekhoury'})
+        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'beekhoury','page':'algorithm'})
         html = html + template.render(templatepath + '03pop_ubertext_links_left.html', {})                       
         html = html + template.render(templatepath + '04uberalgorithm_start.html', {
                 'model':'khoury', 
                 'model_attributes':'Khoury Algorithms', 
                 'text_paragraph':x})
         html = html + template.render(templatepath + '04ubertext_end.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

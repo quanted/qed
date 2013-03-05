@@ -17,7 +17,7 @@ class trexDescriptionPage(webapp.RequestHandler):
         xx = text_file2.read()        
         templatepath = os.path.dirname(__file__) + '/../templates/'                     
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'trex'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'trex','page':'description'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                        
         html = html + template.render(templatepath + '04ubertext_start.html', {
 			'model_page':'http://www.epa.gov/oppefed1/models/terrestrial/trex/t_rex_user_guide.htm',

@@ -10,6 +10,7 @@ from django import forms
 from django.db import models
 #Weather_scenario_CHOICES=(('','Make a selection'),('1','Midwestern'),('2','Southwestern'))
 Swarm_CHOICES=(('','Make a selection'),('Yes','Yes'),('No','No'))
+Winter_kill_CHOICES=(('','Make a selection'),('Yes','Yes'),('No','No'))
 
 class beepopInp(forms.Form):
     initial_colony_size = forms.FloatField(required=True,label='Number of bees in colony', initial=30000)
@@ -30,6 +31,8 @@ class beepopInp(forms.Form):
     start_lay = forms.FloatField(required=True,label='Day New Queen begins laying eggs (Jday)',  initial=181)
     lay_maximum = forms.FloatField(required=True,label='Day New Queen begins laying eggs at maximum rate (Jday)',  initial=186)
     swarm_date = forms.FloatField(required=True,label='Day of swarm (Jday)',  initial=168)
+    winter_kill = forms.ChoiceField(required=True,label='Winter Kill Event', choices=Winter_kill_CHOICES,initial='Make a selection')
+    kill_percent = forms.FloatField(required=True,label='Percent dying during winter',  initial=15)
 
 
   

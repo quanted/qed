@@ -2,6 +2,334 @@
 <script type="text/javascript" src=" ../stylesheets/jquery.validate.js"></script>
 <script>
 $(document).ready(function() {
+	num_ubertool_runs = 1;
+	
+	$.ajax({
+		url:"ubertool",
+		async: false,
+		type: 'GET',
+		success: function(use_data) {
+			var config_names = use_data['config_names'];
+			if(config_names != null)
+			{
+				for(i = 0; i < config_names.length; i++)
+				{
+					var config_name = config_names[i];
+					if(config_name != "None" && config_name != null)
+					{
+						$("#id_user_ubertool_configuration").append(new Option(config_name, config_name));
+					}
+				}
+			}
+		}
+	});
+	
+	$.ajax({
+		url:"use-config-names",
+		async: false,
+		type: 'GET',
+		success: function(use_data) {
+			var config_names = use_data['config_names'];
+			if(config_names != null)
+			{
+				for(i = 0; i < config_names.length; i++)
+				{
+					var config_name = config_names[i];
+					if(config_name != "None")
+					{
+						$("#id_use_configuration").append(new Option(config_name, config_name));
+					}
+				}
+			}
+		}
+	});
+	
+	$.ajax({
+		url:"aqua-config-names",
+		async: false,
+		type: 'GET',
+		success: function(aqua_data) {
+			var config_names = aqua_data['config_names'];
+			if(config_names != null)
+			{
+				for(i = 0; i < config_names.length; i++)
+				{
+					var config_name = config_names[i];
+					if(config_name != "None")
+					{
+						$("#id_aquatic_configuration").append(new Option(config_name, config_name));
+					}
+				}
+			}
+		}
+	});	
+	
+	$.ajax({
+		url:"eco-config-names",
+		async: false,
+		type: 'GET',
+		success: function(eco_data) {
+			var config_names = eco_data['config_names'];
+			if(config_names != null)
+			{
+				for(i = 0; i < config_names.length; i++)
+				{
+					var config_name = config_names[i];
+					if(config_name != "None")
+					{
+						$("#id_ecosystems_configuration").append(new Option(config_name, config_name));
+					}
+				}
+			}
+		}
+	});
+	
+	$.ajax({
+		url:"expo-config-names",
+		async: false,
+		type: 'GET',
+		success: function(expo_data) {
+			var config_names = expo_data['config_names'];
+			if(config_names != null)
+			{
+				for(i = 0; i < config_names.length; i++)
+				{
+					var config_name = config_names[i];
+					if(config_name != "None")
+					{
+						$("#id_exposures_configuration").append(new Option(config_name, config_name));
+					}
+				}
+			}
+		}
+	});
+	
+	$.ajax({
+		url:"pest-config-names",
+		async: false,
+		type: 'GET',
+		success: function(pest_data) {
+			var config_names = pest_data['config_names'];
+			if(config_names != null)
+			{
+				for(i = 0; i < config_names.length; i++)
+				{
+					var config_name = config_names[i];
+					if(config_name != "None")
+					{
+						$("#id_pest_configuration").append(new Option(config_name, config_name));
+					}
+				}
+			}
+		}
+	});
+	
+	$.ajax({
+		url:"terra-config-names",
+		async: false,
+		type: 'GET',
+		success: function(terra_data) {
+			var config_names = terra_data['config_names'];
+			if(config_names != null)
+			{
+				for(i = 0; i < config_names.length; i++)
+				{
+					var config_name = config_names[i];
+					if(config_name != "None")
+					{
+						$("#id_terrestrial_configuration").append(new Option(config_name, config_name));
+					}
+				}
+			}
+		}
+	});
+	
+	$(".new_ubertool_run").click(function(){
+		//Update ubertool config with multiple selectors
+		var new_ubertool_name = "user_ubertool_configuration_"+num_ubertool_runs;
+		var id_new_ubertool_name = "id_user_ubertool_configuration_"+num_ubertool_runs;
+		var added_ubertool_select = "<select name='"  + new_ubertool_name + "' id='" + id_new_ubertool_name + "' style='width:120px'><option value='None'>None</option></select>"	
+		var ubertool_select_inner_html = $("#ubertool_select")[0].innerHTML;
+		ubertool_select_inner_html += added_ubertool_select;
+		$("#ubertool_select")[0].innerHTML = ubertool_select_inner_html;
+		$.ajax({
+			url:"ubertool",
+			async: false,
+			type: 'GET',
+			success: function(use_data) {
+				var config_names = use_data['config_names'];
+				if(config_names != null)
+				{
+					for(i = 0; i < config_names.length; i++)
+					{
+						var config_name = config_names[i];
+						if(config_name != "None" && config_name != null)
+						{
+							$("#"+id_new_ubertool_name).append(new Option(config_name, config_name));
+						}
+					}
+				}
+			}
+		});
+		var new_ubertool_input_name = "config_name_"+num_ubertool_runs;
+		var id_new_ubertool_input_name = "id_config_name_"+num_ubertool_runs;
+		var added_ubertool_input = "<input name='"  + new_ubertool_input_name + "' id='" + id_new_ubertool_input_name + "' value='ubertool-config-"+num_ubertool_runs+"' style='width:116px'/>"	
+		var ubertool_input_inner_html = $("#ubertool_input")[0].innerHTML;
+		ubertool_input_inner_html += added_ubertool_input;
+		$("#ubertool_input")[0].innerHTML = ubertool_input_inner_html;
+		var new_use_name = "use_configuration_"+num_ubertool_runs;
+		var id_new_use_name = "id_use_configuration_"+num_ubertool_runs;
+		var added_use_select = "<select name='"  + new_use_name + "' id='" + id_new_use_name + "' style='width:120px'><option value='None'>None</option></select>"	
+		var use_select_inner_html = $("#use_select")[0].innerHTML;
+		use_select_inner_html += added_use_select;
+		$("#use_select")[0].innerHTML = use_select_inner_html;
+		$.ajax({
+			url:"use-config-names",
+			async: false,
+			type: 'GET',
+			success: function(use_data) {
+				var config_names = use_data['config_names'];
+				if(config_names != null)
+				{
+					for(i = 0; i < config_names.length; i++)
+					{
+						var config_name = config_names[i];
+						if(config_name != "None")
+						{
+							$("#"+id_new_use_name).append(new Option(config_name, config_name));
+						}
+					}
+				}
+			}
+		});
+		var new_pest_name = "pest_configuration_"+num_ubertool_runs;
+		var id_new_pest_name = "id_pest_configuration_"+num_ubertool_runs;
+		var added_pest_select = "<select name='"  + new_pest_name + "' id='" + id_new_pest_name + "' style='width:120px'><option value='None'>None</option></select>"	
+		var pest_select_inner_html = $("#pest_select")[0].innerHTML;
+		pest_select_inner_html += added_pest_select;
+		$("#pest_select")[0].innerHTML = pest_select_inner_html;
+		$.ajax({
+			url:"pest-config-names",
+			async: false,
+			type: 'GET',
+			success: function(pest_data) {
+				var config_names = pest_data['config_names'];
+				if(config_names != null)
+				{
+					for(i = 0; i < config_names.length; i++)
+					{
+						var config_name = config_names[i];
+						if(config_name != "None")
+						{
+							$("#"+id_new_pest_name).append(new Option(config_name, config_name));
+						}
+					}
+				}
+			}
+		});
+		var new_exposures_name = "exposures_configuration_"+num_ubertool_runs;
+		var id_new_exposures_name = "id_exposures_configuration_"+num_ubertool_runs;
+		var added_exposures_select = "<select name='"  + new_exposures_name + "' id='" + id_new_exposures_name + "' style='width:120px'><option value='None'>None</option></select>"	
+		var exposures_select_inner_html = $("#exposure_select")[0].innerHTML;
+		exposures_select_inner_html += added_exposures_select;
+		$("#exposure_select")[0].innerHTML = exposures_select_inner_html;
+		$.ajax({
+			url:"expo-config-names",
+			async: false,
+			type: 'GET',
+			success: function(expo_data) {
+				var config_names = expo_data['config_names'];
+				if(config_names != null)
+				{
+					for(i = 0; i < config_names.length; i++)
+					{
+						var config_name = config_names[i];
+						if(config_name != "None")
+						{
+							$("#"+id_new_exposures_name).append(new Option(config_name, config_name));
+						}
+					}
+				}
+			}
+		});
+		var new_aquatic_name = "aquatic_configuration_"+num_ubertool_runs;
+		var id_new_aquatic_name = "id_aquatic_configuration_"+num_ubertool_runs;
+		var added_aquatic_select = "<select name='"  + new_aquatic_name + "' id='" + id_new_aquatic_name + "' style='width:120px'><option value='None'>None</option></select>"	
+		var aquatic_select_inner_html = $("#aquatic_select")[0].innerHTML;
+		aquatic_select_inner_html += added_aquatic_select;
+		$("#aquatic_select")[0].innerHTML = aquatic_select_inner_html;
+		$.ajax({
+			url:"aqua-config-names",
+			async: false,
+			type: 'GET',
+			success: function(aqua_data) {
+				var config_names = aqua_data['config_names'];
+				if(config_names != null)
+				{
+					for(i = 0; i < config_names.length; i++)
+					{
+						var config_name = config_names[i];
+						if(config_name != "None")
+						{
+							$("#"+id_new_aquatic_name).append(new Option(config_name, config_name));
+						}
+					}
+				}
+			}
+		});	
+		var new_terrestrial_name = "terrestrial_configuration_"+num_ubertool_runs;
+		var id_new_terrestrial_name = "id_terrestrial_configuration_"+num_ubertool_runs;
+		var added_terrestrial_select = "<select name='"  + new_terrestrial_name + "' id='" + id_new_terrestrial_name + "' style='width:120px'><option value='None'>None</option></select>"	
+		var terrestrial_select_inner_html = $("#terrestrial_select")[0].innerHTML;
+		terrestrial_select_inner_html += added_terrestrial_select;
+		$("#terrestrial_select")[0].innerHTML = terrestrial_select_inner_html;
+		$.ajax({
+			url:"terra-config-names",
+			async: false,
+			type: 'GET',
+			success: function(terra_data) {
+				var config_names = terra_data['config_names'];
+				if(config_names != null)
+				{
+					for(i = 0; i < config_names.length; i++)
+					{
+						var config_name = config_names[i];
+						if(config_name != "None")
+						{
+							$("#"+id_new_terrestrial_name).append(new Option(config_name, config_name));
+						}
+					}
+				}
+			}
+		});
+		var new_ecosystems_name = "ecosystems_configuration_"+num_ubertool_runs;
+		var id_new_ecosystems_name = "id_ecosystems_configuration_"+num_ubertool_runs;
+		var added_ecosystems_select = "<select name='"  + new_ecosystems_name + "' id='" + id_new_ecosystems_name + "' style='width:120px'><option value='None'>None</option></select>"	
+		var ecosystems_select_inner_html = $("#ecosystem_select")[0].innerHTML;
+		ecosystems_select_inner_html += added_ecosystems_select;
+		$("#ecosystem_select")[0].innerHTML = ecosystems_select_inner_html;
+		$.ajax({
+			url:"eco-config-names",
+			async: false,
+			type: 'GET',
+			success: function(eco_data) {
+				var config_names = eco_data['config_names'];
+				if(config_names != null)
+				{
+					for(i = 0; i < config_names.length; i++)
+					{
+						var config_name = config_names[i];
+						if(config_name != "None")
+						{
+							$("#"+id_new_ecosystems_name).append(new Option(config_name, config_name));
+						}
+					}
+				}
+			}
+		});
+		num_ubertool_runs += 1;
+	});
+						
 	$("#id_user_ubertool_configuration").change(function(){
 		var user_ubertool_configuration = $("#id_user_ubertool_configuration")[0].value;
 

@@ -103,6 +103,25 @@ class TerrestrialPropertiesRetrievalService(webapp.RequestHandler):
         terrestrial_dict['eat_amphibians_reptiles'] = terrestrial.eat_amphibians_reptiles
         return terrestrial_dict
 
+    
+class TerrestrialToxicityConfigNamesService(webapp.RequestHandler):
+    
+    def get(self):
+        logger = logging.getLogger("TerrestrialToxicityConfigNamesService")
+        user = users.get_current_user()
+        q = db.Query(TerrestrialToxicity)
+        q.filter('user =',user)
+        terras = q.run()
+        terra_config_names = []
+        for terra in terras:
+            terra_config_names.append(terra.config_name)
+        terra_dict = {}
+        terra_dict['config_names'] = terra_config_names
+        terra_json = simplejson.dumps(terra_dict)
+        self.response.headers['Content-Type'] = 'application/json'
+        self.response.out.write(terra_json)
+    
+
 class TerrestrialToxicity(db.Model):
     config_name = db.StringProperty()
     user = db.UserProperty()
@@ -143,7 +162,8 @@ class TerrestrialToxicity(db.Model):
     eat_amphibians_reptiles = db.StringProperty()
     created = db.DateTimeProperty(auto_now_add=True)
     
-application = webapp.WSGIApplication([('/terrestrial/(.*)', TerrestrialService)],
+application = webapp.WSGIApplication([('/terrestrial/(.*)', TerrestrialService),
+                                      ('/terra-config-names', TerrestrialToxicityConfigNamesService)],
                                       debug=True)
 
 def main():

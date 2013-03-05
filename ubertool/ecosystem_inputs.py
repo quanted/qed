@@ -1,6 +1,7 @@
 import google.appengine.ext.db as db
 import datetime
 import time
+import logging
 import webapp2 as webapp
 from django.utils import simplejson
 from google.appengine.ext.webapp.util import run_wsgi_app
@@ -16,7 +17,25 @@ class EcosystemInputs(db.Model):
     concentration_of_suspended_solids = db.FloatProperty() 
     sediment_organic_carbon = db.FloatProperty() 
     created = db.DateTimeProperty(auto_now_add=True)
+
     
+class EcosystemInputsConfigNamesService(webapp.RequestHandler):
+    
+    def get(self):
+        logger = logging.getLogger("EcosystemInputsConfigNamesService")
+        user = users.get_current_user()
+        q = db.Query(EcosystemInputs)
+        q.filter('user =',user)
+        ecos = q.run()
+        eco_config_names = []
+        for eco in ecos:
+            eco_config_names.append(eco.config_name)
+        eco_dict = {}
+        eco_dict['config_names'] = eco_config_names
+        eco_json = simplejson.dumps(eco_dict)
+        self.response.headers['Content-Type'] = 'application/json'
+        self.response.out.write(eco_json)
+
 class EcosystemInputsPropertiesRetrievalService(webapp.RequestHandler):
     
     def get(self, ecosystem_inputs_config_name):
@@ -33,3 +52,11 @@ class EcosystemInputsPropertiesRetrievalService(webapp.RequestHandler):
         eco_dict['concentration_of_suspended_solids'] = ecosystem.concentration_of_suspended_solids
         eco_dict['sediment_organic_carbon'] = ecosystem.sediment_organic_carbon
         return eco_dict
+
+application = webapp.WSGIApplication([('/eco-config-names', EcosystemInputsConfigNamesService)],
+                                      debug=True)
+def main():
+  run_wsgi_app(application)
+
+if __name__ == "__main__":
+  main()

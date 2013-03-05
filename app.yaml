@@ -146,7 +146,26 @@ handlers:
 - url: /use-config-names
   script: ubertool/use.py
   login: required
-  
+#aqua service
+- url: /aqua-config-names
+  script: ubertool/aquatic_toxicity.py
+  login: required
+#expo service
+- url: /expo-config-names
+  script: ubertool/exposure_concentrations.py
+  login: required
+#expo service
+- url: /pest-config-names
+  script: ubertool/pesticide_properties.py
+  login: required
+#eco service
+- url: /eco-config-names
+  script: ubertool/ecosystem_inputs.py
+  login: required
+#expo service
+- url: /terra-config-names
+  script: ubertool/terrestrial_toxicity.py
+  login: required
 #pest service
 - url: /pest/(.*)
   script: ubertool/pesticide_properties.py

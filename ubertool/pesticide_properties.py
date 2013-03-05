@@ -85,7 +85,26 @@ class PesticideProperties(db.Model):
     foliar_dissipation_half_life = db.FloatProperty()
     created = db.DateTimeProperty(auto_now_add=True)
 
-application = webapp.WSGIApplication([('/pest/(.*)', PestService)], debug=True)
+class PesticidePropertiesConfigNamesService(webapp.RequestHandler):
+    
+    def get(self):
+        logger = logging.getLogger("PesticidePropertiesConfigNamesService")
+        user = users.get_current_user()
+        q = db.Query(PesticideProperties)
+        q.filter('user =',user)
+        pests = q.run()
+        pest_config_names = []
+        for pest in pests:
+            pest_config_names.append(pest.config_name)
+        pest_dict = {}
+        pest_dict['config_names'] = pest_config_names
+        pest_json = simplejson.dumps(pest_dict)
+        self.response.headers['Content-Type'] = 'application/json'
+        self.response.out.write(pest_json)
+
+application = webapp.WSGIApplication([('/pest/(.*)', PestService),
+                                      ('/pest-config-names',PesticidePropertiesConfigNamesService)],
+                                     debug=True)
 
 def main():
   run_wsgi_app(application)

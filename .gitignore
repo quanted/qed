@@ -1,6 +1,5 @@
-
+*.pyc
 .DS_Store
-
-*.pyc
-
-*.pyc
+.VolumeIcon.icns
+.fseventsd
+Icon^M^M

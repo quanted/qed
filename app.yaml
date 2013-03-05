@@ -1,5 +1,5 @@
 application: pypest
-version: chance
+version: sprint2
 runtime: python27
 api_version: 1
 
@@ -18,10 +18,10 @@ libraries:
 
 handlers:
 - url: /
-  script: main.py 
-- url: /landingtest.html
   script: landingJon.py 
 - url: /index.html
+  script: landingJon.py 
+- url: /eco_index.html
   script: main.py 
 - url: /hh_index.html
   script: hh_main.py 
@@ -43,7 +43,7 @@ handlers:
 - url: /(.*\.(gif|png|jpg))
   static_files: static/\1
   upload: static/(.*\.(gif|png|jpg))
- 
+
 ##UBERTOOL INPUT PAGES##
 #output
 - url: /select_chemical_output.html
@@ -99,7 +99,7 @@ handlers:
 #batch_output
 - url: /(.*?)_batchoutput.html
   script: \1/\1_batchoutput.py
-      
+
 ##TESTED models##
 #description
 - url: /(.*?)/(.*?)_description.html
@@ -128,7 +128,7 @@ handlers:
 - url: /user.html
   script: user/user_input.py   
   login: required
-  
+
 - url: /user_output.html
   script: user/user_output.py
   login: required
@@ -137,7 +137,7 @@ handlers:
 - url: /select_chemical.html
   script: ubertool/select_chemical_input.py
   login: required
-  
+
 #use service
 - url: /use/(.*)
   script: ubertool/use.py

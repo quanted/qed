@@ -18,9 +18,9 @@ class UbertoolInputPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + 'ubertool_config_jquery.html', {})
-        html = html + template.render(templatepath + '02uberintroblock_nomodellinks.html', {'title2':'Run Ubertool'})
-        html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
+		html = html + template.render(templatepath + 'ubertool_config_jquery.html', {})
+        html = html + template.render(templatepath + '02uberintroblock_nomodellinks.html', {'title2':'Ubertool Inputs', 'model':'run_ubertool'})
+		html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberinput_start.html', {'model':'run_ubertool'})
         html = html + template.render (templatepath + 'ubertool_multiple_runs.html', {})
         #html = html + str(run_ubertool_db.RunUbertoolInp())

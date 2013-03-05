@@ -117,7 +117,6 @@ def html_table(row_inp,iter):
                 
 def loop_html(thefile):
     reader = csv.reader(thefile.file.read().splitlines())
-    
     header = reader.next()
     logger.info(header)
     i=1

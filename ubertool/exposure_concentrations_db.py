@@ -25,7 +25,6 @@ class ECInp(forms.Form):
         uses += ((use.config_name,use.config_name),)
     user_exposure_concentrations_configuration = forms.ChoiceField(label="User Saved Exposure Concentrations Configuration",required=True, choices=uses)
     config_name = forms.CharField(label="Use Configuration Name", initial="use-config-%s"%user_id)
-    config_name = forms.CharField(label="Use Configuration Name", initial="use-config-%s"%user_id)
     one_in_ten_peak_exposure_concentration = forms.FloatField(label='Water column 1-in-10 Year EECs Peak Exposure Concentration (ug/L)')
     one_in_ten_four_day_average_exposure_concentration = forms.FloatField(label='Water column 1-in-10 Year EECs 4-Day Average Exposure Concentration (ug/L)')
     one_in_ten_twentyone_day_average_exposure_concentration = forms.FloatField(label='Water column 1-in-10 Year EECs 21-Day Average Exposure Concentration (ug/L)')

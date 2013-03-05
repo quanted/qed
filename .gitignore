@@ -18,3 +18,5 @@ ubertool.github.com/
 .pydevproject
 
 .DS_Store
+
+*.pyc

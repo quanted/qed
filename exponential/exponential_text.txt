@@ -5,11 +5,9 @@ who first realized that any species can potentially increase in numbers accordin
 In 'Essay on the Principles of Pupulation', Malthus argued that in the absence of any constraints, human population will grow in a multiplicative
 manner until the depletion of food.
 </p>
-
-<p>&nbsp;</p>
-
 <p>Assumptions of Exponential Model:</p>
-
-<li>Continuous reproduction (e.g., no seasonality)</li>
-<li>All organisms are identical (e.g., no age structure)</li>
-<li>Environment is constant in space and time (e.g., resources are unlimited)</li>
+<ul class="bullet">
+  <li>Continuous reproduction (e.g., no seasonality)</li>
+  <li>All organisms are identical (e.g., no age structure)</li>
+  <li>Environment is constant in space and time (e.g., resources are unlimited)</li>
+</ul>

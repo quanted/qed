@@ -21,7 +21,7 @@ class placeholderOutputPage(webapp.RequestHandler):
         form = cgi.FieldStorage()   
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01hh_uberheader.html', {'title':'Ubertool'})        
-        html = html + template.render(templatepath + '02hh_uberintroblock_wmodellinks.html',  {'model':'placeholder'})
+        html = html + template.render(templatepath + '02hh_uberintroblock_wmodellinks.html',  {'model':'placeholder','page':'output'})
         html = html + template.render (templatepath + '03hh_ubertext_links_left.html', {})                               
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'placeholder', 
@@ -37,7 +37,7 @@ class placeholderOutputPage(webapp.RequestHandler):
         </table>
         """
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05hh_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06hh_uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

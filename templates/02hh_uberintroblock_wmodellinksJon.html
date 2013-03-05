@@ -1,59 +1,35 @@
 <!--start 02hh_uberintroblock_wmodellinks-->
 
 <!-- "Click" Menus -->
-  <script type="text/javascript">
-    var pathArray = window.location.pathname.split( '/' );
-    var pathLink = pathArray[1];
-    var pathSlice = pathLink.slice(0, -5);
+<script type="text/javascript">
     $( document ).ready(function() {
       $('a#{{model}}').addClass('aSelected');
       $('li#' + pathSlice).addClass('liSelected');
-	  $('#{{model}}_output').css('display', (pathSlice == '{{model}}_output') ? 'inline' : 'none');
+	  $('#output_tab').css('display', (pathSlice == '{{model}}_output') ? 'inline' : 'none');
     });
-  </script>
+</script>
 
-<!-- Test: Image Tabs Header Menu Bar -->
-<div id="navigation">
-	<ul>
-	<li id="{{model}}_description"><a href="{{model}}_description.html"><span>Description</span></a></li>
-	<li id="{{model}}_input"><a href="{{model}}_input.html"><span>Inputs</span></a></li>
-	<li id="{{model}}_output"><a href="#"><span>Outputs</span></a></li>
-    <li id="{{model}}_algorithms"><a href="{{model}}_algorithms.html"><span>Algorithms</span></a></li>
-    <li id="{{model}}_references"><a href="{{model}}_references.html"><span>References</span></a></li>
-    <li id="{{model}}_qaqc"><a href="{{model}}_qaqc.html"><span>QA/QC</span></a></li>
-	<li id="{{model}}_batchinput"><a href="{{model}}_batchinput.html"><span>Batch</span></a></li>
-	</ul>
-</div>  
-  
-  
-<!-- Header Menu Bar
-<div id="header_menu_c">
+<!-- Header Nav Bar -->
+<div id="header_menu_nav">
   <ul>
-    <li id="{{model}}_description"><a href="{{model}}_description.html">Description</a></li>
-    <li id="{{model}}_input"><a href="{{model}}_input.html">Inputs</a></li>
-	<li id="{{model}}_output">Outputs</a></li>
-    <li id="{{model}}_algorithms"><a href="{{model}}_algorithms.html">Algorithms</a></li>
-    <li id="{{model}}_references"><a href="{{model}}_references.html">References</a></li>
-    <li id="{{model}}_qaqc"><a href="{{model}}_qaqc.html">QA/QC</a></li>
-	<li id="{{model}}_batchinput"><a href="{{model}}_batchinput.html">Batch</a></li>
+   <li><a href="{{model}}_description.html"  onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('navbar_{{page}}_r1_c1','','/images/tabs/hh/navbar_{{page}}_r1_c1_s2.gif',1);"><img name="navbar_{{page}}_r1_c1" src="/images/tabs/hh/navbar_{{page}}_r1_c1.gif" width="110" height="24" id="{{model}}_navbar_{{page}}_r1_c1" alt="" /></a></li>
+   <li><a href="{{model}}_input.html" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('navbar_{{page}}_r1_c2','','/images/tabs/hh/navbar_{{page}}_r1_c2_s2.gif',1);"><img name="navbar_{{page}}_r1_c2" src="/images/tabs/hh/navbar_{{page}}_r1_c2.gif" width="70" height="24" id="{{model}}_navbar_{{page}}_r1_c2" alt="" /></a></li>
+   <li id="output_tab"><img name="navbar_description_r1_c7" src="/images/tabs/hh/navbar_{{page}}_r1_c7.gif" width="72" height="24" id="{{model}}_navbar_{{page}}_r1_c7" alt="" /></li>
+   <li><a href="{{model}}_algorithms.html" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('navbar_{{page}}_r1_c3','','/images/tabs/hh/navbar_{{page}}_r1_c3_s2.gif',1);"><img name="navbar_{{page}}_r1_c3" src="/images/tabs/hh/navbar_{{page}}_r1_c3.gif" width="102" height="24" id="{{model}}_navbar_{{page}}_r1_c3" alt="" /></a></li>
+   <li><a href="{{model}}_references.html" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('navbar_{{page}}_r1_c4','','/images/tabs/hh/navbar_{{page}}_r1_c4_s2.gif',1);"><img name="navbar_{{page}}_r1_c4" src="/images/tabs/hh/navbar_{{page}}_r1_c4.gif" width="104" height="24" id="{{model}}_navbar_{{page}}_r1_c4" alt="" /></a></li>
+   <li><a href="{{model}}_qaqc.html" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('navbar_{{page}}_r1_c5','','/images/tabs/hh/navbar_{{page}}_r1_c5_s2.gif',1);"><img name="navbar_{{page}}_r1_c5" src="/images/tabs/hh/navbar_{{page}}_r1_c5.gif" width="74" height="24" id="{{model}}_navbar_{{page}}_r1_c5" alt="" /></a></li>
+   <li><a href="{{model}}_batchinput.html" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('navbar_{{page}}_r1_c6','','/images/tabs/hh/navbar_{{page}}_r1_c6_s2.gif',1);"><img name="navbar_{{page}}_r1_c6" src="/images/tabs/hh/navbar_{{page}}_r1_c6.gif" width="70" height="24" id="{{model}}_navbar_{{page}}_r1_c6" alt="" /></a></li>
   </ul>
 </div>
- -->  
 
 <div id="header_menu_r">
   <ul>
-    <li><a href="http://ubertool.github.com/" target="_blank">BLOG</a></li>
+    <li><a href="http://ubertool.github.com/" target="_blank">Blog</a></li>
 	<li>|</li>
-    <li><a href="contactus_input.html">Contact Us</a></li>
+    <li><a href="contactus_hh_input.html">Contact Us</a></li>
   </ul>
 </div>
 
-<!-- Spacer -->
-<div id="spacer"></div>
-
-<table width=1024px bgcolor=#F4F7ED border-style=none>
-  <tr VALIGN=TOP>
-    <td width=182px>
 <!--end 02hh_uberintroblock_wmodellinks-->
 
 

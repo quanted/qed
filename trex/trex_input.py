@@ -18,7 +18,7 @@ class trexInputPage(webapp.RequestHandler):
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'trex'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'trex','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})        
         html = html + template.render (templatepath + '04uberinput_start.html', {
                 'model':'trex', 

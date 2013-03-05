@@ -18,8 +18,17 @@ class UbertoolTerrestrialToxicityConfigurationPage(webapp.RequestHandler):
         logger = logging.getLogger("UbertoolTerrestrialToxicityConfigurationPage")
         form = cgi.FieldStorage()
         config_name = str(form.getvalue('config_name'))
-        terr_tox = TerrestrialToxicity()
         user = users.get_current_user()
+        q = db.Query(TerrestrialToxicity)
+        q.filter('user =',user)
+        q.filter("config_name =", config_name)        
+        terr_tox = q.get()
+        if terr_tox is None:
+            terr_tox = TerrestrialToxicity()
+        if user:
+            logger.info(user.user_id())
+            terr_tox.user = user
+        terr_tox = TerrestrialToxicity()
         if user:
             logger.info(user.user_id())
             terr_tox.user = user
@@ -60,10 +69,8 @@ class UbertoolTerrestrialToxicityConfigurationPage(webapp.RequestHandler):
         terr_tox.taxonomic_group = str(form.getvalue('taxonomic_group'))
         terr_tox.eat_mammals = str(form.getvalue('eat_mammals'))
         terr_tox.eat_amphibians_reptiles = str(form.getvalue('eat_amphibians_reptiles'))
+
         terr_tox.put()
-        q = db.Query(TerrestrialToxicity)
-        for new_use in q:
-            logger.info(new_use.to_xml())
         self.redirect("ecosystem_inputs.html")
         
 app = webapp.WSGIApplication([('/.*', UbertoolTerrestrialToxicityConfigurationPage)], debug=True)

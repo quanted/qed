@@ -41,7 +41,7 @@ class gompertzOutputPage(webapp.RequestHandler):
         x_out=gompertzgrow(N_o,K,rho,T)
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'gompertz'})
+        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'gompertz','page':'output'})
         html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'gompertz', 
@@ -83,7 +83,7 @@ class gompertzOutputPage(webapp.RequestHandler):
                           </table>"""%((x_out))
         html = html + template.render(templatepath + 'gompertz-output-jqplot.html', {})                         
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)
      

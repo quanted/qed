@@ -65,7 +65,7 @@ class fellerarleyOutputPage(webapp.RequestHandler):
         
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'fellerarley'})
+        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'fellerarley','page':'output'})
         html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'fellerarley', 
@@ -116,7 +116,7 @@ class fellerarleyOutputPage(webapp.RequestHandler):
                           </table>"""%(x,x_mu)
         html = html + template.render(templatepath + 'fellerarley-output-jqplot.html', {})                         
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)
      

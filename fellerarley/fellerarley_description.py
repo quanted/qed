@@ -15,13 +15,13 @@ class fellerarleyDescriptionPage(webapp.RequestHandler):
         xx = text_file2.read()         
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'fellerarley'})
+        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'fellerarley','page':'description'})
         html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})                       
         html = html + template.render(templatepath + '04ubertext_start.html', {
             'model_page':'',
             'model_attributes':'Feller-Arley Markov Process Overview','text_paragraph':xx})
         html = html + template.render(templatepath + '04ubertext_end.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

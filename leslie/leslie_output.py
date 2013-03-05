@@ -46,7 +46,7 @@ class leslieOutputPage(webapp.RequestHandler):
         
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'leslie'})
+        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'leslie','page':'output'})
         html = html + template.render(templatepath + '03pop_ubertext_links_left.html', {})
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'leslie', 
@@ -94,7 +94,7 @@ class leslieOutputPage(webapp.RequestHandler):
                           </table>"""%(x)
         html = html + template.render(templatepath + 'leslie-output-jqplot.html', {})                         
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)
      

@@ -1,13 +1,3 @@
-<p>
-<font size="3" face="sans serif">
-The AgDRIFT model is both a mechanistic and empirical model which is used to evaluate off-site deposition of pesticides applied by aerial, ground, and orchard airblast spraying methods. For the aerial application scenarios, AgDRIFT outputs are mathematically based on a Lagrangian approach to the solution of the spray material equations of motion (see Teske et al. 2002). The Tier I aerial analysis curves are based on a user selected drop size classification, standard label assumptions and a default set of model parameters including the aircraft, aircraft operation, nozzle setup, meteorology, test substance and substance application. </font>
-</p>
-<p>&nbsp;</p>
-<p>
-<font size="3" face="sans serif">
-For Tier I ground and orchard application types the deposition curves were created from the Spray Drift Task Force field data. Equations used for calculation of deposition for ground and orchard application types are below:
-</p>
-<br></br>
-</font>
-<img src = "/images/latex/agdrift/agdrift_image1.png">
-<br></br>
+<p>The AgDRIFT model is both a mechanistic and empirical model which is used to evaluate off-site deposition of pesticides applied by aerial, ground, and orchard airblast spraying methods. For the aerial application scenarios, AgDRIFT outputs are mathematically based on a Lagrangian approach to the solution of the spray material equations of motion (see Teske et al. 2002). The Tier I aerial analysis curves are based on a user selected drop size classification, standard label assumptions and a default set of model parameters including the aircraft, aircraft operation, nozzle setup, meteorology, test substance and substance application.</p>
+<p>For Tier I ground and orchard application types the deposition curves were created from the Spray Drift Task Force field data. Equations used for calculation of deposition for ground and orchard application types are below:</p>
+<img src="/images/latex/agdrift/rice3.gif">

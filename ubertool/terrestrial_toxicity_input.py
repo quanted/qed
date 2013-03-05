@@ -17,12 +17,11 @@ import django
 from django import forms
 from ubertool import terrestrial_toxicity_db
 
-
 class TTInputPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02uberintroblock_nomodellinks.html', {'title2':'Terrestrial Toxicity'})
+        html = html + template.render(templatepath + '02uberintroblock_nomodellinks.html', {'title2':'Terrestrial Toxicity', 'model':'terrestrial_toxicity'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberinput_start.html', {'model':'terrestrial_toxicity'})
         html = html + str(terrestrial_toxicity_db.TTInp())

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import webapp2 as webapp
@@ -99,7 +101,7 @@ def html_table(row_inp,iter):
     Output_mai1="""<tr>
                     <td>Application Rate</td>
                     <td>%0.2E</td>
-                    <td>lbs a.i./A</td>
+                    <td>kg a.i./A</td>
                 </tr>""" %(mai1_temp)
     Output_cw="""<tr>
                     <td>Peak & Chronic EEC</td>
@@ -112,11 +114,8 @@ def html_table(row_inp,iter):
     return Inout_table  
                 
 def loop_html(thefile):
-#    reader = csv.reader(open(thefile.file, 'U'))
-    reader = csv.reader(thefile.file)
-    
-#    o = open(thefile.file,'rU')
-#    o.seek(0)   
+    reader = csv.reader(thefile.file.read().splitlines())
+
     header = reader.next()
     i=1
     iter_html=""
@@ -216,16 +215,14 @@ def loop_html(thefile):
                     <td>%0.2E</td>                      
                     <td id="cw_out_raw" data-val='%s' style="display: none"></td>                                                                              
                     <td>&microg/L</td>
-                    
                 </tr></table><br>""" %(numpy.mean(cw_out), numpy.std(cw_out), numpy.min(cw_out), numpy.max(cw_out), cw_out)             
     sum_fig="""<H3>Historgram</H3><br>
                <div id="calculate">
                    <div class="block">
-                        <label>How many buckets:</label>
-                        <input type="text" id="buckets" value="5"></div><br>
+                        <label>How many buckets (Default is based on Sturgis rule):</label>
+                        <input type="text" id="buckets" value=%s></div><br>
                         <button type="submit" id="calc">Calculate Historgram</button></div><br>
-                <div id="chart1"></div><br>
-    """            
+                <div id="chart1"></div><br>"""%(int(1+3.3*np.log10(len(cw_out)))) #number of bins coming from Sturgis rule         
                                      
     sum_html=sum_header+sum_mai+sum_dsed+sum_a+sum_pb+sum_dw+sum_osed+sum_kd+sum_output_header+sum_output_mai1+sum_output_cw+sum_fig    
     return sum_html+iter_html
@@ -239,29 +236,10 @@ class RiceBatchOutputPage(webapp.RequestHandler):
         x = text_file1.read()
         form = cgi.FieldStorage() 
         thefile = form['upfile']
-        a=open(thefile.file,'U',1)
-#        a=csv.reader(StringIO(thefile.file))
-        print a
-
-#        print next(a)
-#        b= csv.reader(thefile.file)
-##        c= csv.reader(open(thefile.file,'U'))
-#
-#        
-#        print 'a=',a,'b=',b
-#        
-#        for row in a:
-#            for col in row:
-#                print col
-#                        
-#        for row in b:
-#            for col in row:
-#                print col
-        
-        iter_html=loop_html(thefile)
+        iter_html=loop_html(thefile)        
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', 'title')
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'rice'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'rice','page':'batchinput'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberbatch_start.html', {})
         html = html + iter_html

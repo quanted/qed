@@ -3,23 +3,21 @@ Leslie matrix (model) is a discrete, non-negative, age-structured model,
 which describes the development, mortality, and reproduction of organisms over a period of time. 
 As one of the most popular models in population ecology, it was invented by Patrick H. Leslie in 1945.
 </p>
-
-<br>
 <p>
 A typical Leslie model is written as:
 </p>
-<br>
-<img src = "/images/latex/leslie/leslie_des_1.png" style="margin:auto;display:block;">
+<img src = "/images/latex/leslie/leslie_des_1.png" alt="Leslie Matrix_1">
 <p>
 which can be expanded into:
 </p>
-<br>
-<img src = "/images/latex/leslie/leslie_des_2.png" style="margin:auto;display:block;">
-<br>
-<p>Thus a Leslie matrix contains:
+<img src = "/images/latex/leslie/leslie_des_2.png" alt="Leslie Matrix_2">
+<p>
+Thus a Leslie matrix contains:
 </p>
-<li>age-specific fertilities in the first row</li>
-<li>age-specific survival probabilities in the subdiagonal</li>
-<li>zeros elsewhere</li>
+<ul class="bullet">
+  <li>age-specific fertilities in the first row</li>
+  <li>age-specific survival probabilities in the subdiagonal</li>
+  <li>zeros elsewhere</li>
+</ul>
 
 

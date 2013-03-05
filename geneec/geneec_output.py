@@ -16,6 +16,8 @@ from google.appengine.api import urlfetch
 
 
 ############Provide the key and connect to the picloud####################
+api_key='3355'
+api_secretkey='212ed160e3f416fdac8a3b71c90f3016722856b9'
 base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
 http_headers = {'Authorization' : 'Basic %s' % base64string}
 ###########################################################################
@@ -162,12 +164,12 @@ class GENEECOutputPage(webapp.RequestHandler):
                           aerial_size_dist, no_spray_drift, ground_spray_type, spray_quality, airblast_type,
                           incorporation_depth, solubility, aerobic_aquatic_metabolism, hydrolysis, photolysis_aquatic_half_life)
 
-        
+#        print final_res
 #        text_file = open('sip_description.txt','r')
 #        x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'geneec'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'geneec','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'geneec', 

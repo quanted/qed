@@ -25,7 +25,7 @@ class UseInputPage(webapp.RequestHandler):
         logger.info(cookies)
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02uberintroblock_nomodellinks.html', {'title2':'Use/Label/Site Data'})
+        html = html + template.render(templatepath + '02uberintroblock_nomodellinks.html', {'title2':'Use/Label/Site Data', 'model':'use'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberinput_start.html', {'model':'use'})
         html = html + str(use_db.UseInp())

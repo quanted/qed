@@ -1,43 +1,123 @@
+/* Reset */
+
+*{
+  padding: 0;
+  margin: 0 auto 0 auto;  /* changed to shorthand */
+}
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* General */
+
+body {
+  text-align: center;   /* Container: IE Hack */
+  background: #F4F7ED repeat-x;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  line-height: 18px;
+  color: #333333;;
+}
 #container {
   width: 1024px;
   margin: 0 auto;
   text-align: left;    /* IE Hack */
 }
-
-/* Container: IE Hack */
-body {
-  text-align: center;
+img {
+  border: none;
+}
+h3 {
+  margin: 1em 0;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+.model_header {
+  color: #485C5A;
+  margin-bottom: 1em;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.left {
+  float: left;
+  text-align: justify;
+  margin-top: 0;
+  display: inline;
+}
+.left h2 {
+  color: #F4F7ED;
+  font-size: 18px;
+  letter-spacing: 0;
+  font-weight: 100;
+  padding : 10px 0 15px 0;
+}
+.left ul {
+  list-style-type: square;
+  padding: 5px 10px 10px 20px;
+}
+.right {
+  float: right;
+  text-align: justify;
+  margin-top: 0;
+  display: inline;
+}
+.right h2 {
+  color: #F4F7ED;
+  font-size: 18px;
+  letter-spacing: 0;
+  font-weight: 100;
+  padding: 10px 0 15px 0;
+}
+.right ul {
+  list-style-type: square;
+  padding: 5px 10px 10px 20px;
 }
 
-/* End - Container: IE Hack */
+/* Defining Hyperlink Colors */
 
-/*
-   01uberheader.html
-*/
+a:link {
+  color: #485C5A;
+  text-decoration: none;
+}
+a:visited {
+  color: #485C5A;
+  text-decoration: none;
+}
+a:active {    /* Same as "hover" for menus - doesn't work as intended */
+  color: #A31E39;
+  text-decoration: none;
+}
+a:hover {
+  color: #A31E39;
+  text-decoration: none;
+}
 
-#spacer {
+/* 01uberheader.html */
+
+.spacer {
   margin-top: 4px;
+  clear: both;
 }
-
 #banner {
   width: 1024px;
   background: #A31E39;
-  height: 30px;
-  font-size: 18px;
+  min-height: 30px;
+  font-size: 1.6em;
 }
-
 #banner_l {
   color: white;
   float: left;
-  padding: 5px;
+  padding: 5px 0 0 0.4em;
 }
-
 #banner_r {
   color: white;
   float: right;
-  padding: 5px;
+  padding: 5px 0.4em 0 0;
 }
-
 #topheader_pic {
   width: 720px;
   height: 240px;
@@ -45,12 +125,10 @@ body {
   border-right: 4px solid #F4F7ED;
   border-bottom: 4px solid #F4F7ED;
 }
-
 #topheader_pic img {
   width: 720px;
   height: 240px;
 }
-
 #topheader_p {
   width: 300px;
   height: 240px;
@@ -61,362 +139,137 @@ body {
   text-align: justify;
   border-bottom: 4px solid #F4F7ED;
 }
-
 #topheader_p p {
   margin-left: auto;
   margin-right: auto;
   width: 240px;
-  padding-top: 25%;
+  padding-top: 25%; /* Text Positioning */
 }
 
-/*
-   02uberintroblock_.html
-*/
+/* 02uberintroblock_.html */
 
-#header_menu_c {
+/* HH Header Menu Nav Bar */
+
+#header_menu_nav {
   width: 864px;
-  height: 18px;
+  height: 24px;
   background: #A31E39;
-  padding: 0.25em 0 1px 0;
   float: left;
 }
-#header_menu_c ul {
+#header_menu_nav ul {
   padding-left: 175px;
 }
-#header_menu_c ul li {
+#header_menu_nav ul li {
   display: inline;
-  padding: 0.5em 1em 0.25em 1em;
-  background: #A31E39;
-  color: white;
-  cursor: pointer;
-  border-top: 1.5px solid black;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-radius: 1em 1em 0 0;
-  -moz-border-radius: 1em 1em 0 0;
-  -webkit-border-radius: 1em 1em 0 0;
 }
-#header_menu_c ul li:hover {
-  display: inline;
+#header_menu_nav ul li img {
   margin: 0;
-  padding: 0.5em 1em 0.25em 1em;
-  background: #485C5A;
-  border-top: 2px solid black;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-radius: 1em 1em 0 0;
-  -moz-border-radius: 1em 1em 0 0;
-  -webkit-border-radius: 1em 1em 0 0;
+  padding:0;
+  float: left;
 }
-#header_menu_c ul li:active {
-  display: inline;
-  margin: 0;
-  padding: 0.5em 1em 0.25em 1em;
-  background: #485C5A;
-  border-top: 2px solid black;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-radius: 1em 1em 0 0;
-  -moz-border-radius: 1em 1em 0 0;
-  -webkit-border-radius: 1em 1em 0 0;
+#header_menu_nav ul li#output_tab {
+  display: none;
 }
-#header_menu_c ul li.liSelected {
-  display: inline;
-  margin: 0;
-  padding: 0.5em 1em 0.25em 1em;
-  background: #485C5A;
-  border-top: 2px solid black;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-radius: 1em 1em 0 0;
-  -moz-border-radius: 1em 1em 0 0;
-  -webkit-border-radius: 1em 1em 0 0;
-}
-#header_menu_c ul li a {
-  width: 100%;
-  color: white;
-  text-decoration: none;
-}
+
+/* Header Right Side */
+
 #header_menu_r {
   width: 160px;
-  height: 18px;
+  height: 24px;
   background: #A31E39;
-  padding: 0.25em 0 1px 0;
   float: left;
 }
 #header_menu_r ul {
-  padding-left: 0px;
+  padding-left: 0;
   text-align: left;
+  margin-top: 3px;
 }
 #header_menu_r ul li {
   display: inline;
   color: white;
-  padding: 0.32em 0 0.33em 1em;
+  padding-left: 11px;
 }  
 #header_menu_r ul li a {
   color: white;
 }
 
-
-/*
-   03hh_ubertext_links_left.html
-*/
-
-
-
-
-/*
-   05hh_ubertext_links_right.html
-*/
-
-
-/*
-   06hh_uberfooter.html
-*/
-
-#footer {
-  clear: both;
-  background: #A31E39;
-  height: 31px;
-  padding: 4px;
-  text-align: center;
-}
-#footer li {
-  display: inline;
-}
-#footer img {
-  width: 88px;
-  height: 31px;
-}
-
-/*
-   Body
-*/
-
-* {                   /* What is this??? */
-  padding: 0;
-  margin-top: 0;
-  margin-right: auto;
-  margin-bottom: 0;
-  margin-left: auto;
-}
-
-body {
-  background: #F4F7ED repeat-x;
-  font-family: Verdana, Arial, Helvetica, sans-serif;
-  font-size: 11px;
-  line-height: 18px;
-  color: #333333;;
-}
-
-img { border: none; }
-
-#wrap {
-  width: 1000px;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-#header {
-  height: 60px;
-  background: #26478A url(images/header.jpg) no-repeat;
-  margin-left: 100px;
-}
-
-#header h1 {
-  font-size: 26px;
-  font-weight: 100;
-  letter-spacing: -3px;
-  padding: 12px 0 5px 10px;
-}
-#header h1 a {
-  color: #F4F7EDF;
-  text-decoration: none;
-}
-#header h1 a:hover {
-  color: #F4F7ED;
-  text-decoration: none;
-}
-#header h2 {
-  color: #F4F7ED;
-  font-size: 15px;
-  font-weight: 100;
-  padding: 0 0 0 11px;
-  letter-spacing: -1px;
-  line-height: 12px;
-}
-.model_header {
-  color: #485C5A;
-  margin: 0.5em 0 1em 0;
-}
-#intro {
-  background: #CDDDAD url(images/intro.jpg) no-repeat;
-  height: 120px;
-  margin-left: auto;
-  width: 700px;
-  padding-top: 20px;
-  padding-right: 30px;
-  padding-bottom: 20px;
-  padding-left: 30px;
-}
-
-#content {
-  padding: 10px 20px;
-}
-
-.left {
-  float: left;
-  text-align: justify;
-  margin-top: 0px;
-}
-.left h2 {
-  color: #F4F7ED;
-  font-size: 18px;
-  letter-spacing: 0px;
-  font-weight: 100;
-  padding : 10px 0 15px 0;
-}
-.left ul {
-  list-style-type: square;
-  padding: 5px 10px 10px 20px;
-}
-
-.right {
-  float: right;
-  text-align: justify;
-  margin-top: 0px;
-}
-.right h2 {
-  color: #F4F7ED;
-  font-size: 18px;
-  letter-spacing: 0px;
-  font-weight: 100;
-  padding: 10px 0 15px 0;
-}
-.right ul {
-  list-style-type: square;
-  padding: 5px 10px 10px 20px;
-}
-
-#wrap .right .mdlinks {
-  float: right;
-  width: 130px;
-  margin-left: 10px;
-}
-#wrap .left .articles {
-  width: 700px;
-  margin-right: 0px;
-  float: none;
-  margin-left: 150px;
-}
-#wrap .left .uplinks {
-  width: 700px;
-  margin-right: 0px;
-  float: none;
-  margin-left: 150px;
-  margin-bottom: 20px;
-}
-#wrap .left .mdlinks {
-  float: left;
-  width: 140px;
-  margin-right: 10px;
-  text-align: left;
-}
-
-
-/*
-
-Defining Hyperlink Colors
-
-*/
-
-a:link {
-  color: #485C5A;
-  text-decoration: none;
-}
-
-a:visited {
-  color: #485C5A;
-  text-decoration: none;
-}
-
-a:active {    /* Same as "hover" for menus - doesn't work as intended */
-  color: #A31E39;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #A31E39;
-  text-decoration: none;
-}
-
-
-/*
-
-Moved CSS from 01hh_uberheader.html to here:
-
-*/
-
-#topcontainer {
-  width: 100&#37;
-  text-align:justify;
-}
+/* Below Header */
 
 .urbangreymenu{
-    width: 160px; /*width of menu*/
-	float: left;
-	text-align: left;
-	margin-top: 0px;
+  width: 160px; /*width of menu*/
+  float: left;
+  text-align: left;
+  margin-top: 4px; /* Space bw Header */
 }
-
 .urbangreymenu .headerbar{
-font: bold 11px Verdana, Arial, Helvetica;
-color: white;
-background: #485C5A url(arrowstop.gif) no-repeat 8px 6px; /*last 2 values are the x and y coordinates of bullet image*/
-margin-bottom: 0; /*bottom spacing between header and rest of content*/
-text-transform: uppercase;
-padding: 5px 5px 5px 5px; /*31px is left indentation of header text*/
+  font: bold 11px Verdana, Arial, Helvetica;
+  color: white;
+  background: #485C5A;
+  margin: 0 0 2px 0;
+  text-transform: uppercase;
+  padding: 5px 5px 5px 5px; /*31px is left indentation of header text*/
 }
-
 .urbangreymenu .headerbar a{
-text-decoration: none;
-color: white;
-display: block;
+  text-decoration: none;
+  color: white;
+  display: block;
 }
-
 .urbangreymenu ul{
-list-style-type: none;
-margin: 0;
-padding: 0;
-margin-bottom: 0; /*bottom spacing between each UL and rest of content*/
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 0; /*bottom spacing between each UL and rest of content*/
 }
-
 .urbangreymenu ul li{
-padding-bottom: 2px; /*bottom spacing between menu items*/
+  padding-bottom: 2px; /*bottom spacing between menu items*/
 }
-
 .urbangreymenu ul li a{
-font: normal 11px Verdana, Arial, Helvetica;
-color: #485C5A;
-background: #BFCFCC;
-display: block;
-padding: 5px 0;
-line-height: 14px;
-padding-left: 8px; /*link text is indented 8px*/
-text-decoration: none;
+  font: normal 11px Verdana, Arial, Helvetica;
+  color: #485C5A;
+  background: #BFCFCC;
+  display: block;
+  padding: 5px 0;
+  line-height: 14px;
+  padding-left: 8px; /*link text is indented 8px*/
+  text-decoration: none;
 }
-
 .urbangreymenu ul li a:visited{
-color: #485C5A;
+  color: #485C5A;
 }
-
-.urbangreymenu ul li a:hover{ /*hover state CSS*/
-color: white;
-background: #A31E39;
+.urbangreymenu ul li a:hover{
+  color: white;
+  background: #A31E39;
+}
+.articles {
+  width: 670px;
+  display: inline;
+  float: left;
+  padding: 1em 1.5em;
+}
+.articles p {
+  margin: 1em 0;
+  font-size: 12px;
+}
+.articles img {
+  margin: 0 0 0 1.5em;
+  max-width: 640px;
+}
+ul.bullet {
+  padding: 0 2em;
+  font-size: 12px;
+}
+ul.nobullet {
+  list-style: none;
+  padding: 0 2em;
+  font-size: 12px;
+}
+.articles ol {
+  padding: 0 2em;
+  font-size: 12px;
+}
+.articles li {
+  margin-top: 0.5em;
+  font-size: 12px;
 }
 
 /* Left Menu - link stays higlighted ("hover persists) while on page */
@@ -447,9 +300,9 @@ background: #A31E39;
   display:block;
   text-decoration:none;
   color:#FFFFFF;
-  background-color:#A31E39;
+  /*background-color:#A31E39;*/
+  background-color: #A31E39;
 }                            /* "click", dependant on scripts.js*/
-
 
 /* Right Menu - same as above w/o "hover persists) */
 
@@ -473,5 +326,80 @@ background: #A31E39;
 }
 #r_menu ul li a:hover {
   color:#FFFFFF;
-  background-color:#B54A60;
+  background-color:#A31E39;
 }                             /* "mouseover", not dependant on scripts.js*/
+
+/* 06hh_uberfooter.html */
+
+#footer {
+  clear: both;
+  background: #A31E39;
+  width: 1016px;
+  height: 31px;
+  padding: 4px;
+  text-align: center;
+}
+#footer li {
+  display: inline;
+}
+#footer img {
+  width: 88px;
+  height: 31px;
+}
+
+/*  Contact Us */
+
+#form1 label.error {
+	width: 200px;
+	display: block;
+	float: right;
+	color: red;
+	padding-left: 10px;
+}
+#sortable {
+	list-style-type: none;
+	margin: 5px 0px 0px 16px;
+	padding: 0;
+}
+#sortable li {
+	margin: 3px 3px 3px 0;
+	padding: 1px;
+	float: left;
+	width: 35px;
+	height: 35px;
+	font-size: 20px;
+	text-align: center;
+	line-height:35px;
+	cursor:pointer;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	background:#A31E39;
+	color:#fff;
+	font-weight:normal;
+}
+.captcha_wrap{
+	border:1px solid #fff;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	float:left;
+	height:120px;
+	overflow:auto;
+	width:150px;
+	overflow:hidden;
+	margin:0px 0px 0px 210px;
+	background-color:#fff;
+}
+.captcha{
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	font-size:12px;
+	color:#BBBBBB;
+	text-align: center;
+	border-bottom:1px solid #CCC;
+	background-color:#fff;
+}

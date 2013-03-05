@@ -66,10 +66,6 @@ print final_res
 
 
 
-CAM_f=%222%22
-&run=%22CA1Wal-P.RUN%22&DD=%2225%22&inp=%22CA1Wal-P.INP%22&YY=%2261%22&met=%22W23232.DVF%22&EFF=%22.9500%22&DEPI_text=%224.000%22&Drft=%220.0500%22&Ar_text=%221.000%22&MM=%2204%22
-
-
 
 
 

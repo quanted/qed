@@ -14,14 +14,14 @@ class exponentialInputPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'exponential'})
+        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'exponential','page':'input'})
         html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberinput_start.html', {
                 'model':'exponential', 
                 'model_attributes':'Exponential Model Inputs'})
         html = html + str(exponentialdb.exponentialInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

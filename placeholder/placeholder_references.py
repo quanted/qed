@@ -16,7 +16,7 @@ class placeholderReferencesPage(webapp.RequestHandler):
         x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01hh_uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02hh_uberintroblock_wmodellinks.html', {'model':'placeholder'})
+        html = html + template.render(templatepath + '02hh_uberintroblock_wmodellinks.html', {'model':'placeholder','page':'references'})
         html = html + template.render(templatepath + '03hh_ubertext_links_left.html', {})                        
         html = html + template.render(templatepath + '04uberreferences_start.html', {
                 'model':'placeholder', 

@@ -1,5 +1,5 @@
 application: pypest
-version: sprint1
+version: sprint2
 runtime: python27
 api_version: 1
 
@@ -18,10 +18,10 @@ libraries:
 
 handlers:
 - url: /
-  script: main.py 
-- url: /landingtest.html
   script: landingJon.py 
 - url: /index.html
+  script: landingJon.py 
+- url: /eco_index.html
   script: main.py 
 - url: /hh_index.html
   script: hh_main.py 

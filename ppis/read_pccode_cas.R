@@ -72,4 +72,11 @@ colnames(formulamerge)
 length(unique(formulamerge$regnum))
 
 #write formulamerge as formulakeys
-write.csv(formulamerge,paste(pest_root,"formulakeys.csv",sep=""),row.names=FALSE)
+pr_nrows <- dim(formulamerge)[[1]] #140978
+write.csv(formulamerge[1:20000,],paste(pest_root,"formulakeys1.csv",sep=""),row.names=FALSE)
+write.csv(formulamerge[20001:40000,],paste(pest_root,"formulakeys2.csv",sep=""),row.names=FALSE)
+write.csv(formulamerge[40001:60000,],paste(pest_root,"formulakeys3.csv",sep=""),row.names=FALSE)
+write.csv(formulamerge[60001:80000,],paste(pest_root,"formulakeys4.csv",sep=""),row.names=FALSE)
+write.csv(formulamerge[80001:100000,],paste(pest_root,"formulakeys5.csv",sep=""),row.names=FALSE)
+write.csv(formulamerge[100001:120000,],paste(pest_root,"formulakeys6.csv",sep=""),row.names=FALSE)
+write.csv(formulamerge[120001:pr_nrows,],paste(pest_root,"formulakeys7.csv",sep=""),row.names=FALSE)

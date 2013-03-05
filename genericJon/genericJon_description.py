@@ -17,14 +17,14 @@ class genericJonDescriptionPage(webapp.RequestHandler):
         xx = text_file2.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01hh_uberheaderJon.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02hh_uberintroblock_wmodellinksJon.html', {'model':'genericJon'})
-        html = html + template.render(templatepath + '03hh_ubertext_links_left.html', {})                       
-        html = html + template.render(templatepath + '04ubertext_start.html', {
+        html = html + template.render(templatepath + '02hh_uberintroblock_wmodellinksJon.html', {'model':'genericJon','page':'description'})
+        html = html + template.render(templatepath + '03hh_ubertext_links_leftJon.html', {})                       
+        html = html + template.render(templatepath + '04ubertext_startJon.html', {
                 'model_page':'#',
                 'model_attributes':"Jon's Testing Domain", 
                 'text_paragraph':xx})
-        html = html + template.render(templatepath + '04ubertext_end.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '04ubertext_endJon.html', {})
+        html = html + template.render(templatepath + '05hh_ubertext_links_rightJon.html', {})
         html = html + template.render(templatepath + '06hh_uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

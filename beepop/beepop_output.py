@@ -34,7 +34,7 @@ for row in data:
     wspeed.append(float(row[3]))
     day_light.append(float(row[4]))
 # number of eggs layed on a day by the queen
-def Et_f(swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size):
+def Et_f(winter_kill, kill_percent,swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size):
     p_t = 0
     Et = 0
     eu = 0
@@ -94,7 +94,7 @@ def Et_f(swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adu
                 Et = 0
             else:
                 Et = Et
-            print 'ratio', ((n_a + n_f) / Et), '<br>'
+       #     print 'ratio', ((n_a + n_f) / Et), '<br>'
         else:
             Et = 0
         eggs_laid.append(Et) #list of eggs laid on each day
@@ -254,7 +254,22 @@ def Et_f(swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adu
             adults[0:days_from_adult_to_forager-2, i] = 0.30 * (adults[0:days_from_adult_to_forager-2, i])
             drones[1:days_to_adult_drones-1, i] = 0.95 * (drones[1:days_to_adult_drones-1, i])
             for i in range(swarm_date+5,258,1):
-                adult_brood_ratio = 2         
+                adult_brood_ratio = 2  
+        else:
+            forager[0:number_of_forages,i] = (forager[0:number_of_forages,i])
+            adults[0:days_from_adult_to_forager-2, i] = (adults[0:days_from_adult_to_forager-2, i])
+            drones[1:days_to_adult_drones-1, i] = (drones[1:days_to_adult_drones-1, i])
+#implementing winter kill equation                
+        if winter_kill == 'Yes' and i > 1 and i < 30:
+            kill_per_day = float(kill_percent) / 29            
+            per_remain_day= 1.0 - (kill_per_day / 100 ) 
+            forager[0:number_of_forages,i] = per_remain_day * (forager[0:number_of_forages,i])
+            adults[0:days_from_adult_to_forager-2, i] = per_remain_day * (adults[0:days_from_adult_to_forager-2, i])
+            drones[1:days_to_adult_drones-1, i] = per_remain_day * (drones[1:days_to_adult_drones-1, i])    
+        else:
+            forager[0:number_of_forages,i] = (forager[0:number_of_forages,i])
+            adults[0:days_from_adult_to_forager-2, i] = (adults[0:days_from_adult_to_forager-2, i])
+            drones[1:days_to_adult_drones-1, i] = (drones[1:days_to_adult_drones-1, i]) 
     return eggs_laid, drone_eggs, worker_eggs, eggs, n_a, n_f, n_d, number_drones_day, total_foragers_day, total_workers_day    
 class beepopOutputPage(webapp.RequestHandler):
     def post(self):        
@@ -275,13 +290,15 @@ class beepopOutputPage(webapp.RequestHandler):
         start_lay = int(form.getvalue('start_lay'))
         lay_maximum = int(form.getvalue('lay_maximum'))
         swarm_date = int(form.getvalue('swarm_date'))
+        kill_percent = float(form.getvalue('kill_percent'))
+        winter_kill = (form.getvalue('winter_kill'))
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'beepop'})
+        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'beepop','page':'output'})
         html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'beepop', 
-                'model_attributes':'BeePop Output'})
+                'model_attributes':'BEEPOP Output'})
         html = html + """
         <table border="1">
         <tr><H3>User Inputs</H3></tr>
@@ -332,7 +349,7 @@ class beepopOutputPage(webapp.RequestHandler):
         <table border="1">
         <tr><H3>Outputs for the last day of the model run</H3></tr>
         <tr>
-        <td>Total mortality</td>
+        <td>Worker bees</td>
         <td>%.2f</td>
         </tr>
         <tr>
@@ -340,11 +357,11 @@ class beepopOutputPage(webapp.RequestHandler):
         <td>%.2f</td>
         </tr>
         <tr>
-        <td>Hive bees</td>
+        <td>Drones bees</td>
         <td>%.2f</td>
         </tr>
         </table>
-        """ % (Et_f(swarm, swarm_date,adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[4], Et_f(swarm, swarm_date,adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[5], Et_f(swarm, swarm_date,adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[6])
+        """ % (Et_f(winter_kill, kill_percent,swarm, swarm_date,adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[4], Et_f(winter_kill, kill_percent,swarm, swarm_date,adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[5], Et_f(winter_kill, kill_percent,swarm, swarm_date,adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[6])
         html = html +  """<table width="400" border="1", style="display:none">
                           <tr>
                             <td>hive_val_1</td>
@@ -362,10 +379,10 @@ class beepopOutputPage(webapp.RequestHandler):
                             <td>hive_val_3</td>
                             <td id="Drones">%s</td>
                           </tr>                                                     
-                          </table>"""%(Et_f(swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[0],Et_f(swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[9],Et_f(swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[8],Et_f(swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[7])        
+                          </table>"""%(Et_f(winter_kill, kill_percent,swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[0],Et_f(winter_kill, kill_percent,swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[9],Et_f(winter_kill, kill_percent,swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[8],Et_f(winter_kill, kill_percent,swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[7])        
         html = html + template.render(templatepath + 'beepop-outputjqplot.html', {})         
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
           
        

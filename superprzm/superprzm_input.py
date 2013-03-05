@@ -15,7 +15,7 @@ class SuperPRZMInputPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'superprzm'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'superprzm','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberinput_start.html', {
                 'model':'superprzm', 

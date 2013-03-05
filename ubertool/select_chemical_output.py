@@ -20,9 +20,10 @@ class UbertoolSelectChemicalConfigurationPage(webapp.RequestHandler):
         if user:
             logger.info(user.user_id())
         chemical_name = form.getvalue('formulated_product_name')
-        pc_code = "123-456-789"
-        cookie_string = 'formulated_product_name=%s'%pc_code
+        cookie_string = 'formulated_product_name=%s'%chemical_name
         self.response.headers.add_header('Set-Cookie',cookie_string)
+        #self.response.out.write(self.response.cookies.get('formulated_product_name'))
+        #self.response.set_cookie('formulated_product_name',chemical_name,expires=datatime.datatime.now()+datetime.timedelta(days=1),path='/', domain='ubertool.org')
         self.redirect("site_data.html")
         
 app = webapp.WSGIApplication([('/.*', UbertoolSelectChemicalConfigurationPage)], debug=True)

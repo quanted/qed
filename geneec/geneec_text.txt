@@ -5,8 +5,6 @@ Model (PRZM) and the Exposure Analysis Modeling System (EXAMS). GENEEC is used t
 establish which chemicals were most likely to pose a higher risk and should be 
 assessed. The chemicals that GENEEC finds to be further assessed are then used in the
 labor-intensive and time consuming PRZM and EXAMS models.</p>
-<p>&nbsp;</p>
 <p>GENEEC was designed to mimic a much more sophisticated PRZM/EXAMS simulation.
 However, GENEEC requires only a few, readily available input parameters, which 
-makes it fast and easy to use.  </p>
-<p>&nbsp;</p>
+makes it fast and easy to use.</p>

@@ -1,0 +1,88 @@
+<script type="text/javascript" src=" ../stylesheets/jquery-1.7.2.js"></script>
+<script> 
+$(document).ready(function(){
+	$.ajax({
+		url:"use-config-names",
+		async: false,
+		type: 'GET',
+		success: function(use_data) {
+			var config_names = use_data['config_names'];
+			if(config_names != null)
+			{
+				for(i = 0; i < config_names.length; i++)
+				{
+					var config_name = config_names[i];
+					$("#id_user_use_configuration").append(new Option(config_name, config_name));
+				}
+			}
+		}
+	});	
+	
+	$("#id_ubertools_configuration").change(function(){
+		$("#use_config_params").css({"visibility":"hidden","height":"0px"});
+	});
+
+	$("#id_pest_configuration").change(function(){
+		$("#use_config_params").css({"visibility":"hidden","height":"0px"});
+	});
+	
+	$("#id_exposures_configuration").change(function(){
+		$("#use_config_params").css({"visibility":"hidden","height":"0px"});
+	});
+	
+	$("#id_aquatic_configuration").change(function(){
+		$("#use_config_params").css({"visibility":"hidden","height":"0px"});
+	});
+	
+	$("#id_terrestrial_configuration").change(function(){
+		$("#use_config_params").css({"visibility":"hidden","height":"0px"});
+	});
+	
+	$("#id_ecosystems_configuration").change(function(){
+		$("#use_config_params").css({"visibility":"hidden","height":"0px"});
+	});	
+	
+	$("#id_user_use_configuration").change(function(){
+		var user_use_configuration = $("#id_user_use_configuration")[0].value;
+		if(user_use_configuration != "None")
+		{
+			$("#use_config_params").css({"visibility":"visible","height":"482px"});
+			$.ajax({
+				url:"use/"+user_use_configuration,
+				async: false,
+				type: 'GET',
+				success: function(use_data) {
+					$("#cas_number")[0].innerText = use_data['cas_number'];
+					$("#formulated_product_name")[0].innerText = use_data['formulated_product_name'];
+					$("#percent_ai")[0].innerText = use_data['percent_ai'];
+					$("#met_file")[0].innerText = use_data['met_file'];
+					$("#przm_scenario")[0].innerText = use_data['przm_scenario'];
+					$("#exams_environment_file")[0].innerText = use_data['exams_environment_file'];
+					$("#application_method")[0].innerText = use_data['application_method'];
+					$("#application_type")[0].innerText = use_data['application_type'];
+					$("#app_type")[0].innerText = use_data['app_type'];
+					$("#weight_of_one_granule")[0].innerText = use_data['weight_of_one_granule'];
+					$("#wetted_in")[0].innerText = use_data['wetted_in'];
+					$("#incorporation_depth")[0].innerText = use_data['incorporation_depth'];
+					$("#percent_incorporated")[0].innerText = use_data['percent_incorporated'];
+					$("#application_kg_rate")[0].innerText = use_data['application_kg_rate'];
+					$("#application_lbs_rate")[0].innerText = use_data['application_lbs_rate'];
+					$("#seed_treatment_formulation_name")[0].innerText = use_data['seed_treatment_formulation_name'];
+					$("#density_of_product")[0].innerText = use_data['density_of_product'];
+					$("#maximum_seedling_rate_per_use")[0].innerText = use_data['maximum_seedling_rate_per_use'];
+					$("#application_date")[0].innerText = use_data['application_date'];
+					$("#number_of_applications")[0].innerText = use_data['number_of_applications'];
+					$("#interval_between_applications")[0].innerText = use_data['interval_between_applications'];
+					$("#application_efficiency")[0].innerText = use_data['application_efficiency'];
+					$("#spray_drift")[0].innerText = use_data['spray_drift'];
+					$("#runoff")[0].innerText = use_data['runoff'];
+				}
+			});
+		} else
+		{
+			$("#use_config_params").css({"visibility":"hidden","height":"0px"});
+		}
+	});
+});
+
+</script>

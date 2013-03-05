@@ -26,6 +26,7 @@ class PPInputPage(webapp.RequestHandler):
         logger.info(cookies)
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
+        html = html + template.render(templatepath + 'ubertool_pest_jquery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_nomodellinks.html', {'title2':'Pesticide Properties'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberinput_start.html', {'model':'pesticide_properties'})

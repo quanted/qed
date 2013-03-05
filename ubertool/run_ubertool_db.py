@@ -14,6 +14,7 @@ from CAS.CASGql import CASGql
 from google.appengine.api import users
 from google.appengine.ext import db
 from use import Use
+from ubertool import Ubertool
 from pesticide_properties import PesticideProperties
 from exposure_concentrations import ExposureConcentrations
 from aquatic_toxicity import AquaticToxicity
@@ -26,6 +27,15 @@ class RunUbertoolInp(forms.Form):
     logger = logging.getLogger("RunUbertoolInp")
     user = users.get_current_user()
     user_id = user.user_id()
+    q = db.Query(Ubertool)
+    q.filter('user =',user)
+    ubertools = ()
+    ubertools += ((None,None),)
+    logger = logging.getLogger("RunUbertoolInp")
+    for ubertool in q:
+        #logger.info(ubertool.to_xml())
+        ubertools += ((ubertool.config_name,ubertool.config_name),)
+    user_ubertool_configuration = forms.ChoiceField(label="User Saved Use Configuration",required=True, choices=ubertools)
     config_name = forms.CharField(label="Ubertool Configuration Name", initial="ubertool-config-%s"%user_id)
     q = db.Query(Use)
     q.filter('user =',user)

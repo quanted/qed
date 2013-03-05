@@ -1,5 +1,5 @@
 application: pypest
-version: sprint1
+version: chance
 runtime: python27
 api_version: 1
 
@@ -48,19 +48,32 @@ handlers:
 #output
 - url: /select_chemical_output.html
   script: ubertool/select_chemical_output.py
+  login: required 
 - url: /use_output.html
   script: ubertool/use_output.py
+  login: required 
 - url: /pesticide_properties_output.html
   script: ubertool/pesticide_properties_output.py
+  login: required 
 - url: /exposure_concentrations_output.html
   script: ubertool/exposure_concentrations_output.py
+  login: required 
 - url: /aquatic_toxicity_output.html
   script: ubertool/aquatic_toxicity_output.py
+  login: required 
 - url: /ecosystem_inputs_output.html
   script: ubertool/ecosystem_inputs_output.py
+  login: required 
 - url: /terrestrial_toxicity_output.html
   script: ubertool/terrestrial_toxicity_output.py
-   
+  login: required 
+#ubertool batch output
+- url: /run_ubertool_batchoutput.html
+  script: ubertool/run_ubertool_batch_output.py
+  login: required 
+- url: /run_ubertool_output.html
+  script: ubertool/run_ubertool_output.py
+  login: required 
 ##UNTESTED models##
 #description
 - url: /(.*?)_description.html
@@ -124,6 +137,65 @@ handlers:
 - url: /select_chemical.html
   script: ubertool/select_chemical_input.py
   login: required
+  
+#use service
+- url: /use/(.*)
+  script: ubertool/use.py
+  login: required
+#use service
+- url: /use-config-names
+  script: ubertool/use.py
+  login: required
+#aqua service
+- url: /aqua-config-names
+  script: ubertool/aquatic_toxicity.py
+  login: required
+#expo service
+- url: /expo-config-names
+  script: ubertool/exposure_concentrations.py
+  login: required
+#expo service
+- url: /pest-config-names
+  script: ubertool/pesticide_properties.py
+  login: required
+#eco service
+- url: /eco-config-names
+  script: ubertool/ecosystem_inputs.py
+  login: required
+#expo service
+- url: /terra-config-names
+  script: ubertool/terrestrial_toxicity.py
+  login: required
+#pest service
+- url: /pest/(.*)
+  script: ubertool/pesticide_properties.py
+  login: required
+  
+#terrestrial service
+- url: /terrestrial/(.*)
+  script: ubertool/terrestrial_toxicity.py
+  login: required
+  
+#ubertool service
+- url: /ubertool/all_props/(.*)
+  script: ubertool/ubertool_all_properties.py
+  login: required
+
+#ubertool service
+- url: /ubertool
+  script: ubertool/ubertool_all_properties.py
+  login: required
+ 
+#ubertool service
+- url: /ubertool/(.*)
+  script: ubertool/ubertool.py
+  login: required
+  
+#cas service
+- url: /cas/(.*)
+  script: CAS/cas.py
+  login: required
+  
 #use label site data
 - url: /site_data.html
   script: ubertool/use_input.py
@@ -132,21 +204,28 @@ handlers:
 #pesticide properties
 - url: /pesticide_properties.html
   script: ubertool/pesticide_properties_input.py
+  login: required
 #exposure concentrations
 - url: /exposure_concentrations.html
   script: ubertool/exposure_concentrations_input.py
+  login: required
 #aquatic toxicity
 - url: /aquatic_toxicity.html
   script: ubertool/aquatic_toxicity_input.py
+  login: required
 #terrestrial toxicity
 - url: /terrestrial_toxicity.html
   script: ubertool/terrestrial_toxicity_input.py
+  login: required
 #ecosystem inputs
 - url: /ecosystem_inputs.html
   script: ubertool/ecosystem_inputs_input.py
+  login: required
 #run ubertool
 - url: /run_ubertool.html
   script: ubertool/run_ubertool_input.py  
+  login: required
+
 
 #ESA workshop
 - url: /esa_workshop.html

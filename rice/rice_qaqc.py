@@ -139,7 +139,7 @@ class RiceQaqcPage(webapp.RequestHandler):
         x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', 'title')
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'rice'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'rice','page':'qaqc'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberinput_start.html', {'model':'rice'})
         html = html + """

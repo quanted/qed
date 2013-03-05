@@ -22,14 +22,6 @@ from ubertool.ubertool import Ubertool
 class UserInp(forms.Form):
     user = users.get_current_user()
     user_id = user.user_id()
-    q = db.Query(Use)
-    q.filter('user =',user)
-    uses = ()
-    uses += ((None,None),)
-    for use in q:
-        #logger.info(use.to_xml())
-        uses += ((use.config_name,use.config_name),)
-    use_configuration = forms.ChoiceField(required=True, choices=uses)
     q = db.Query(PesticideProperties)
     q.filter('user =',user)
     pests = ()
@@ -77,6 +69,6 @@ class UserInp(forms.Form):
     for ubertool in q:
         #logger.info(use.to_xml())
         ubertools += ((ubertool.config_name,ubertool.config_name),)
-    ubertools_configuration = forms.ChoiceField(required=True, choices=ecosystems)
+    ubertools_configuration = forms.ChoiceField(required=True, choices=ubertools)
 
     

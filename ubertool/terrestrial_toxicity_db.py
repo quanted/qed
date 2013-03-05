@@ -38,7 +38,7 @@ class TTInp(forms.Form):
     mammalian_lc50 = forms.FloatField(label='Mammalian LC50 (mg/kg-diet)')
     mammalian_inhalation_lc50 = forms.FloatField(label='Mammalian Inhalation LC50 (mg/L)')
     duration_of_rat_study = forms.FloatField(label='Duration of Rat Study (hrs)')
-    mammlian_NOAEC = forms.FloatField(label='Mammalian NOAEC (mg/kg-diet)')
+    mammalian_NOAEC = forms.FloatField(label='Mammalian NOAEC (mg/kg-diet)')
     mammalian_NOAEL = forms.FloatField(label='Mammalian NOAEL (mg/kg-bw)')
     amphibian_bw = forms.FloatField(label='Amphibian Body Weight (g)')    
     terrestrial_phase_amphibian_ld50 = forms.FloatField(label='Terrestrial phase amphibian LD50 (mg/kg-bw)')

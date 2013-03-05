@@ -16,13 +16,15 @@ class RiceInputPage(webapp.RequestHandler):
         x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', 'title')
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'rice'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'rice','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberinput_start.html', {
                 'model':'rice', 
                 'model_attributes':'Rice Model Inputs'})
+        html = html + template.render (templatepath + 'rice_ubertool_config_input.html', {})  
         html = html + str(Ricedb.RiceInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
+        html = html + template.render (templatepath + 'rice_ubertool_config.html', {})  
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

@@ -21,8 +21,10 @@ class RiceInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start.html', {
                 'model':'rice', 
                 'model_attributes':'Rice Model Inputs'})
+        html = html + template.render (templatepath + 'rice_ubertool_config_input.html', {})  
         html = html + str(Ricedb.RiceInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
+        html = html + template.render (templatepath + 'rice_ubertool_config.html', {})  
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

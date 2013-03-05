@@ -46,7 +46,7 @@ class Ubertool(db.Model):
     terra = db.ReferenceProperty(TerrestrialToxicity)
     created = db.DateTimeProperty(auto_now_add=True)
     
-application = webapp.WSGIApplication([('/ubertool/(.*)', UbertoolService)], debug=True)
+application = webapp.WSGIApplication([('/ubertool/(.*)', UbertoolService)],debug=True)
 
 def main():
   run_wsgi_app(application)

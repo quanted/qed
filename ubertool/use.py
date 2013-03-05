@@ -51,7 +51,60 @@ class UseService(webapp.RequestHandler):
         use_json = simplejson.dumps(use_dict)
         self.response.headers['Content-Type'] = 'application/json'
         self.response.out.write(use_json)
-        
+  
+class UseConfigNamesService(webapp.RequestHandler):
+    
+    def get(self):
+        logger = logging.getLogger("UseConfigNamesService")
+        user = users.get_current_user()
+        q = db.Query(Use)
+        q.filter('user =',user)
+        uses = q.run()
+        use_config_names = []
+        for use in uses:
+            use_config_names.append(use.config_name)
+        use_dict = {}
+        use_dict['config_names'] = use_config_names
+        use_json = simplejson.dumps(use_dict)
+        self.response.headers['Content-Type'] = 'application/json'
+        self.response.out.write(use_json)
+
+class UsePropertiesRetrievalService():
+    
+    def get(self, use_config_name):
+        user = users.get_current_user()
+        q = db.Query(Use)
+        q.filter('user =',user)
+        q.filter('config_name =',use_config_name)
+        use = q.get()
+        use_dict = {}
+        use_dict['cas_number'] = use.cas_number
+        cas = CASGql("apppest:cas","CAS")
+        use_dict['formulated_product_name'] = use.formulated_product_name 
+        use_dict['percent_ai'] = use.percent_ai
+        use_dict['met_file'] = use.met_file 
+        use_dict['przm_scenario'] = use.przm_scenario
+        use_dict['exams_environment_file'] = use.exams_environment_file 
+        use_dict['application_method'] = use.application_method
+        use_dict['application_type'] = use.application_type 
+        use_dict['app_type'] = use.app_type
+        use_dict['weight_of_one_granule'] = use.weight_of_one_granule 
+        use_dict['wetted_in'] = use.wetted_in
+        use_dict['incorporation_depth'] = use.incorporation_depth 
+        use_dict['percent_incorporated'] = use.percent_incorporated
+        use_dict['application_kg_rate'] = use.application_kg_rate 
+        use_dict['application_lbs_rate'] = use.application_lbs_rate
+        use_dict['seed_treatment_formulation_name'] = use.seed_treatment_formulation_name 
+        use_dict['density_of_product'] = use.density_of_product
+        use_dict['maximum_seedling_rate_per_use'] = use.maximum_seedling_rate_per_use 
+        use_dict['application_rate_per_use'] = use.application_rate_per_use
+        use_dict['application_date'] = use.application_date.__str__()
+        use_dict['number_of_applications'] = use.number_of_applications
+        use_dict['interval_between_applications'] = use.interval_between_applications 
+        use_dict['application_efficiency'] = use.application_efficiency
+        use_dict['spray_drift'] = use.spray_drift 
+        use_dict['runoff'] = use.runoff
+        return use_dict
 
 class Use(db.Model):
     config_name = db.StringProperty()
@@ -83,7 +136,9 @@ class Use(db.Model):
     runoff = db.FloatProperty()
     created = db.DateTimeProperty(auto_now_add=True)
 
-application = webapp.WSGIApplication([('/use/(.*)', UseService)], debug=True)
+application = webapp.WSGIApplication([('/use/(.*)', UseService),
+                                      ('/use-config-names', UseConfigNamesService)],
+                                      debug=True)
 
 def main():
   run_wsgi_app(application)

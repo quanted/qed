@@ -50,7 +50,7 @@ class UserOutputPage(webapp.RequestHandler):
         terrestrial_toxicity_config_name = str(form.getvalue('terrestrial_configuration'))
         q = db.Query(TerrestrialToxicity)
         q.filter("config_name =", terrestrial_toxicity_config_name)
-        terra = q.get()        
+        terra = q.get()      
         
         
 app = webapp.WSGIApplication([('/.*', UserOutputPage)], debug=True)

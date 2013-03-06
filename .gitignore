@@ -1,6 +1,14 @@
-
+*.pyc
+*.xlsx
+*.bak
+*.old
+*.doc
+*.mdb
+*.pptx
 .DS_Store
+.VolumeIcon.icns
+.fseventsd
+Icon^M^M
+.project
 
-*.pyc
-
-*.pyc
+.pydevproject

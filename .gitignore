@@ -1,6 +1,4 @@
-
 .DS_Store
-
 *.pyc
 *.bak
 *.dropbox
@@ -8,3 +6,5 @@
 .VolumeIcon.icns
 .fseventsd
 Icon^M^M
+.project
+.pydevproject

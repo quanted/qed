@@ -9,3 +9,6 @@
 .VolumeIcon.icns
 .fseventsd
 Icon^M^M
+.project
+
+.pydevproject

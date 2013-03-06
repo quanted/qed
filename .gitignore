@@ -3,4 +3,7 @@
 
 *.pyc
 
-*.pyc
+*.dropbox
+.VolumeIcon.icns
+.fseventsd
+Icon^M^M

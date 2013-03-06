@@ -6,5 +6,5 @@
   <li>Higes, Mariano, et al. 2013. Nosema ceranae (Microsporidia), a controversial 21st century honey bee pathogen. Environmental Microbiology Reports.</li>
   <li>Henry, Mickaël, et al. 2012. Response to Comment on “A Common Pesticide Decreases Foraging Success and Survival in Honey Bees”. Science 337(6101):1453-1453.</li>
   <li>Core, Andrew, et al. 2012. A new threat to honey bees, the parasitic phorid fly apocephalus borealis. PloS one 7.1, e29639.</li>
-  <li>Cresswell, James E., and Helen M. Thompson. 2012. Comment on “A Common Pesticide Decreases Foraging Success and Survival in Honey Bees”. Science 337(6101):1453-1453.</li>
+  <li>Cresswell, James E., and Helen M. Thompson. 2012.  Comment on “A Common Pesticide Decreases Foraging Success and Survival in Honey Bees”. Science 337(6101):1453-1453.</li>
 </ul>

@@ -2,7 +2,7 @@
 .DS_Store
 
 *.pyc
-
+*.bak
 *.dropbox
 .VolumeIcon.icns
 .fseventsd

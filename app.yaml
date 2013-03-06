@@ -175,6 +175,11 @@ handlers:
 - url: /terrestrial/(.*)
   script: ubertool/terrestrial_toxicity.py
   login: required
+ 
+#ecosys service
+- url: /ecosys/(.*)
+  script: ubertool/ecosystem_inputs.py
+  login: required
   
 #ubertool service
 - url: /ubertool/all_props/(.*)

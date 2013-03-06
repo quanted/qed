@@ -1,10 +1,26 @@
+<<<<<<< HEAD
 .DS_Store
 *.pyc
 *.bak
 *.dropbox
 *.yaml
+=======
+*.pyc
+*.xlsx
+*.bak
+*.old
+*.doc
+*.mdb
+*.pptx
+.DS_Store
+>>>>>>> origin/master
 .VolumeIcon.icns
 .fseventsd
 Icon^M^M
 .project
+<<<<<<< HEAD
 .pydevproject
+=======
+
+.pydevproject
+>>>>>>> origin/master

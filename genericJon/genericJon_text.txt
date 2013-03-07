@@ -1,3 +1,2 @@
 <p>Testing Below</p>
-<img src="http://1.bp.blogspot.com/-xaeAJytK8Bc/T5gVt3dMKqI/AAAAAAAALj8/2x4y-laiqb8/s1600/rock.jpg" width="493" height="500">
-<p>More Changes</p>
+<img src="http://1.bp.blogspot.com/-xaeAJytK8Bc/T5gVt3dMKqI/AAAAAAAALj8/2x4y-laiqb8/s1600/rock.jpg" width="493" height="500" alt="Doh!">

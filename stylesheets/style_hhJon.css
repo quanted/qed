@@ -162,7 +162,7 @@ a:hover {
 #header_menu_nav ul li {
   display: inline;
 }
-#header_menu_nav ul li img {
+#header_menu_nav ul li a {
   margin: 0;
   padding:0;
   float: left;
@@ -170,25 +170,141 @@ a:hover {
 #header_menu_nav ul li#output_tab {
   display: none;
 }
-.fadeThis {
+/* Fade Menus */
+.fadeDesc {
   position:relative;
-  display:block;
+  display:inline-block;
   height: 24px;
-  /*width: 250px;*/
-  background:url(images/tabs/export/navbar_description_states.fw_r1_c4_s2.gif) 0 0 no-repeat;
+  width: 110px;
+  background:url(../images/tabs/hh/export/navbar_description_r1_c1.gif) 0 0 no-repeat;
 }
-.fadeThis * {
+.fadeDesc * {
   display: none;
 }
-.fadeThis span.hover {
+.fadeDesc span.hover {
   position: absolute;
   top: 0;
   left: 0;
-  display: block;
+  display: inline-block;
   height: 24px;
-  /*width: 250px;*/
-  background:url(images/tabs/export/navbar_description_states.fw_r1_c4_s2.gif) 0 -24px no-repeat;
+  width: 110px;
+  background:url(../images/tabs/hh/export/navbar_description_r1_c1.gif) 0 -24px no-repeat;
 }
+.fadeInp {
+  position:relative;
+  display:inline-block;
+  height: 24px;
+  width: 70px;
+  background:url(../images/tabs/hh/export/navbar_description_r1_c2.gif) 0 0 no-repeat;
+}
+.fadeInp * {
+  display: none;
+}
+.fadeInp span.hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  height: 24px;
+  width: 70px;
+  background:url(../images/tabs/hh/export/navbar_description_r1_c2.gif) 0 -24px no-repeat;
+}
+.fadeAlg {
+  position:relative;
+  display:inline-block;
+  height: 24px;
+  width: 102px;
+  background:url(../images/tabs/hh/export/navbar_description_r1_c3.gif) 0 0 no-repeat;
+}
+.fadeAlg * {
+  display: none;
+}
+.fadeAlg span.hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  height: 24px;
+  width: 102px;
+  background:url(../images/tabs/hh/export/navbar_description_r1_c3.gif) 0 -24px no-repeat;
+}
+.fadeRef {
+  position:relative;
+  display:inline-block;
+  height: 24px;
+  width: 104px;
+  background:url(../images/tabs/hh/export/navbar_description_r1_c4.gif) 0 0 no-repeat;
+}
+.fadeRef * {
+  display: none;
+}
+.fadeRef span.hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  height: 24px;
+  width: 104px;
+  background:url(../images/tabs/hh/export/navbar_description_r1_c4.gif) 0 -24px no-repeat;
+}
+.fadeQAQC {
+  position:relative;
+  display:inline-block;
+  height: 24px;
+  width: 74px;
+  background:url(../images/tabs/hh/export/navbar_description_r1_c5.gif) 0 0 no-repeat;
+}
+.fadeQAQC * {
+  display: none;
+}
+.fadeQAQC span.hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  height: 24px;
+  width: 74px;
+  background:url(../images/tabs/hh/export/navbar_description_r1_c5.gif) 0 -24px no-repeat;
+}
+.fadeBat {
+  position:relative;
+  display:inline-block;
+  height: 24px;
+  width: 70px;
+  background:url(../images/tabs/hh/export/navbar_description_r1_c6.gif) 0 0 no-repeat;
+}
+.fadeBat * {
+  display: none;
+}
+.fadeBat span.hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  height: 24px;
+  width: 70px;
+  background:url(../images/tabs/hh/export/navbar_description_r1_c6.gif) 0 -24px no-repeat;
+}
+.fadeOut {
+  position:relative;
+  display:inline-block;
+  height: 24px;
+  width: 72px;
+  background:url(../images/tabs/hh/export/navbar_output_r1_c7.gif) 0 0 no-repeat;
+}
+.fadeOut * {
+  display: none;
+}
+.fadeOut span.hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  height: 24px;
+  width: 72px;
+  background:url(../images/tabs/hh/export/navbar_output_r1_c7.gif) 0 -24px no-repeat;
+}
+
 
 /* Header Right Side */
 

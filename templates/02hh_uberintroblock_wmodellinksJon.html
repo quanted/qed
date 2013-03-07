@@ -2,7 +2,7 @@
 
 <!-- "Click" Menus -->
 <script type="text/javascript">
-    $( document ).ready(function() {
+	$( document ).ready(function() {
 		$('a#{{model}}').addClass('aSelected');
 		$('li#' + pathSlice).addClass('liSelected');
 		$('#output_tab').css('display', (pathSlice == '{{model}}_output') ? 'inline' : 'none');
@@ -11,7 +11,7 @@
 
 <!-- Header Nav Bar -->
 
-<div id="header_menu_nav">
+<!--<div id="header_menu_nav">
   <ul>
    <li><a href="{{model}}_description.html"  onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('navbar_{{page}}_r1_c1','','/images/tabs/hh/navbar_{{page}}_r1_c1_s2.gif',1);"><img name="navbar_{{page}}_r1_c1" src="/images/tabs/hh/navbar_{{page}}_r1_c1.gif" width="110" height="24" id="{{model}}_navbar_{{page}}_r1_c1" alt="" /></a></li>
    <li><a href="{{model}}_input.html" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('navbar_{{page}}_r1_c2','','/images/tabs/hh/navbar_{{page}}_r1_c2_s2.gif',1);"><img name="navbar_{{page}}_r1_c2" src="/images/tabs/hh/navbar_{{page}}_r1_c2.gif" width="70" height="24" id="{{model}}_navbar_{{page}}_r1_c2" alt="" /></a></li>
@@ -21,21 +21,20 @@
    <li><a href="{{model}}_qaqc.html" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('navbar_{{page}}_r1_c5','','/images/tabs/hh/navbar_{{page}}_r1_c5_s2.gif',1);"><img name="navbar_{{page}}_r1_c5" src="/images/tabs/hh/navbar_{{page}}_r1_c5.gif" width="74" height="24" id="{{model}}_navbar_{{page}}_r1_c5" alt="" /></a></li>
    <li><a href="{{model}}_batchinput.html" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('navbar_{{page}}_r1_c6','','/images/tabs/hh/navbar_{{page}}_r1_c6_s2.gif',1);"><img name="navbar_{{page}}_r1_c6" src="/images/tabs/hh/navbar_{{page}}_r1_c6.gif" width="70" height="24" id="{{model}}_navbar_{{page}}_r1_c6" alt="" /></a></li>
   </ul>
-</div>
+</div>-->
 
-<!--  New jQuery Fade Tabs using sprites
+<!-- New jQuery Fade Tabs using sprites -->
 <div id="header_menu_nav">
   <ul>
-	<li><a class="fadeThis" href="{{model}}_description.html"><span>Description</span></li>
-	<li><a class="fadeThis" href="{{model}}_input.html"><span>Inputs</span></li>
-	<li id="output_tab"><a class="fadeThis" href=#><span>Output</span></li>
-	<li><a class="fadeThis" href="{{model}}_algorithms.html"><span>Algorithms</span></li>
-	<li><a class="fadeThis" href="{{model}}_references.html"><span>References</span></li>
-	<li><a class="fadeThis" href="{{model}}_qaqc.html"><span>QA/QC</span></li>
-	<li><a class="fadeThis" href="{{model}}_batchinput.html"><span>Batch</span></li>
+	<li><a class="fadeDesc" href="{{model}}_description.html"><span>Description</span></a></li>
+	<li><a class="fadeInp" href="{{model}}_input.html"><span>Inputs</span></a></li>
+	<li id="output_tab"><a class="fadeThis" href=#><span>Output</span></a></li>
+	<li><a class="fadeAlg" href="{{model}}_algorithms.html"><span>Algorithms</span></a></li>
+	<li><a class="fadeRef" href="{{model}}_references.html"><span>References</span></a></li>
+	<li><a class="fadeQAQC" href="{{model}}_qaqc.html"><span>QA/QC</span></a></li>
+	<li><a class="fadeBat" href="{{model}}_batchinput.html"><span>Batch</span></a></li>
   </ul>
 </div>
--->
 
 <div id="header_menu_r">
   <ul>

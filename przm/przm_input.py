@@ -16,7 +16,7 @@ class PRZMInputPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + 'przm-jQuery.html', {})
+        html = html + template.render(templatepath + 'przm-jquery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'przm','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberinput_start.html', {

@@ -70,7 +70,7 @@ class EcosystemInputsPropertiesRetrievalService(webapp.RequestHandler):
         eco_dict['sediment_organic_carbon'] = ecosystem.sediment_organic_carbon
         return eco_dict
 
-application = webapp.WSGIApplication([('/ecosys/(.*)', EcosystemsInputsService),
+application = webapp.WSGIApplication([('/ecosys/(.*)', EcosystemInputsService),
 										('/eco-config-names', EcosystemInputsConfigNamesService)],
                                       debug=True)
 def main():

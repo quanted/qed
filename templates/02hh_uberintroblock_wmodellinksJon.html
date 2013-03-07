@@ -3,22 +3,31 @@
 <!-- "Click" Menus -->
 <script type="text/javascript">
     $( document ).ready(function() {
-      $('a#{{model}}').addClass('aSelected');
-      $('li#' + pathSlice).addClass('liSelected');
-	  $('#output_tab').css('display', (pathSlice == '{{model}}_output') ? 'inline' : 'none');
-    });
+		$('a#{{model}}').addClass('aSelected');
+		$('li#' + pathSlice).addClass('liSelected');
+		$('#output_tab').css('display', (pathSlice == '{{model}}_output') ? 'inline' : 'none');
+
+		$('.fadeThis').append('<span class="hover"></span>').each(function () {
+		var $span = $('> span.hover', this).css('opacity', 0);
+		$(this).hover(function () {
+			$span.stop().fadeTo(500, 1);
+		}, function () {
+			$span.stop().fadeTo(500, 0);
+		});
+		});
+	});
 </script>
 
 <!-- Header Nav Bar -->
 <div id="header_menu_nav">
   <ul>
-   <li><a href="{{model}}_description.html"  onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('navbar_{{page}}_r1_c1','','/images/tabs/hh/navbar_{{page}}_r1_c1_s2.gif',1);"><img name="navbar_{{page}}_r1_c1" src="/images/tabs/hh/navbar_{{page}}_r1_c1.gif" width="110" height="24" id="{{model}}_navbar_{{page}}_r1_c1" alt="" /></a></li>
-   <li><a href="{{model}}_input.html" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('navbar_{{page}}_r1_c2','','/images/tabs/hh/navbar_{{page}}_r1_c2_s2.gif',1);"><img name="navbar_{{page}}_r1_c2" src="/images/tabs/hh/navbar_{{page}}_r1_c2.gif" width="70" height="24" id="{{model}}_navbar_{{page}}_r1_c2" alt="" /></a></li>
-   <li id="output_tab"><img name="navbar_description_r1_c7" src="/images/tabs/hh/navbar_{{page}}_r1_c7.gif" width="72" height="24" id="{{model}}_navbar_{{page}}_r1_c7" alt="" /></li>
-   <li><a href="{{model}}_algorithms.html" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('navbar_{{page}}_r1_c3','','/images/tabs/hh/navbar_{{page}}_r1_c3_s2.gif',1);"><img name="navbar_{{page}}_r1_c3" src="/images/tabs/hh/navbar_{{page}}_r1_c3.gif" width="102" height="24" id="{{model}}_navbar_{{page}}_r1_c3" alt="" /></a></li>
-   <li><a href="{{model}}_references.html" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('navbar_{{page}}_r1_c4','','/images/tabs/hh/navbar_{{page}}_r1_c4_s2.gif',1);"><img name="navbar_{{page}}_r1_c4" src="/images/tabs/hh/navbar_{{page}}_r1_c4.gif" width="104" height="24" id="{{model}}_navbar_{{page}}_r1_c4" alt="" /></a></li>
-   <li><a href="{{model}}_qaqc.html" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('navbar_{{page}}_r1_c5','','/images/tabs/hh/navbar_{{page}}_r1_c5_s2.gif',1);"><img name="navbar_{{page}}_r1_c5" src="/images/tabs/hh/navbar_{{page}}_r1_c5.gif" width="74" height="24" id="{{model}}_navbar_{{page}}_r1_c5" alt="" /></a></li>
-   <li><a href="{{model}}_batchinput.html" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('navbar_{{page}}_r1_c6','','/images/tabs/hh/navbar_{{page}}_r1_c6_s2.gif',1);"><img name="navbar_{{page}}_r1_c6" src="/images/tabs/hh/navbar_{{page}}_r1_c6.gif" width="70" height="24" id="{{model}}_navbar_{{page}}_r1_c6" alt="" /></a></li>
+	<li><a class="fadeThis" href="{{model}}_description.html"><span>Description</span></li>
+	<li><a class="fadeThis" href="{{model}}_input.html"><span>Inputs</span></li>
+	<li id="output_tab"><a class="fadeThis" href=#><span>Output</span></li>
+	<li><a class="fadeThis" href="{{model}}_algorithms.html"><span>Algorithms</span></li>
+	<li><a class="fadeThis" href="{{model}}_references.html"><span>References</span></li>
+	<li><a class="fadeThis" href="{{model}}_qaqc.html"><span>QA/QC</span></li>
+	<li><a class="fadeThis" href="{{model}}_batchinput.html"><span>Batch</span></li>
   </ul>
 </div>
 

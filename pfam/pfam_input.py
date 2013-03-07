@@ -21,13 +21,13 @@ class PFAMInputPage(webapp.RequestHandler):
                 'model_attributes':'PFAM Inputs'})
 
         html = html + """<table><H4  align="center" id="id_tab">
-            |<a href="#" class="Chemical"> Chemical </a>|
-             <a href="#" class="Application"> Application </a>|
-             <a href="#" class="Location"> Location </a>|
-             <a href="#" class="Floods"> Floods </a>|
-             <a href="#" class="Crop"> Crop </a>|
-             <a href="#" class="Physical"> Physical </a>|
-             <a href="#" class="Output"> Output </a>|
+            |<a class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </a>|
+             <a class="Application" style="font-weight:bold"> Application </a>|
+             <a class="Location" style="font-weight:bold"> Location </a>|
+             <a class="Floods" style="font-weight:bold"> Floods </a>|
+             <a class="Crop" style="font-weight:bold"> Crop </a>|
+             <a class="Physical" style="font-weight:bold"> Physical </a>|
+             <a class="Output" style="font-weight:bold"> Output </a>|
             </H4>"""
         html = html + """</table><br><table class="tab tab_Chemical" border="0">"""
         html = html + str(PFAMdb.PFAMInp_chem())

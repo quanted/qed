@@ -7,6 +7,7 @@
 $(document).ready(function() {
 	
     var tab_pool = ["tab_Chemical", "tab_Application", "tab_Location", "tab_Floods", "tab_Crop", "tab_Physical", "tab_Output"];
+    var uptab_pool = ["Chemical", "Application", "Location", "Floods", "Crop", "Physical", "Output"];
     var visible = $(".tab:visible").attr('class').split(" ")[1];
     var curr_ind = $.inArray(visible, tab_pool);
     $(".submit").hide();
@@ -291,16 +292,18 @@ $(document).ready(function() {
 			q10: {
                 required : true,
 				sciFormat:true
-            }		
-			
-			
-					
+            },
+            area_app: {
+                required : true,
+                sciFormat:true
+            } 		
 		}
     });
 	
 	
     $('.next').click(function () {
         var tab = $(".tab:visible");
+        console.log(curr_ind)
         var valid = true;
         $('input,select', tab).each(function(i, v){
             valid = validator.element(v) && valid;
@@ -312,8 +315,10 @@ $(document).ready(function() {
         if (curr_ind < 6) {
 			if (curr_ind == 1) {
             $(".tab:visible").hide();
+            $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
             curr_ind = curr_ind + 1;
             $("." + tab_pool[curr_ind]).show();
+            $("." + uptab_pool[curr_ind]).css({ 'color': '#FFA500'}); //highlight current tabs
             $(".tab_noa1").show();
             $(".submit").hide();
             $(".back").show();		
@@ -321,8 +326,10 @@ $(document).ready(function() {
 				
 			else{	
             $(".tab:visible").hide();
+            $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
             curr_ind = curr_ind + 1;
             $("." + tab_pool[curr_ind]).show();
+            $("." + uptab_pool[curr_ind]).css({ 'color': '#FFA500'}); //highlight current tabs
             $(".submit").hide();
             $(".back").show();
 			}
@@ -338,8 +345,10 @@ $(document).ready(function() {
 			
 			if (curr_ind == 1) {
             $(".tab:visible").hide();
+            $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
             curr_ind = curr_ind - 1;
             $("." + tab_pool[curr_ind]).show();
+            $("." + uptab_pool[curr_ind]).css({ 'color': '#FFA500'}); //highlight current tabs            
             $(".tab_noa1").show();
             $(".submit").hide();
             $(".next").show();		
@@ -347,8 +356,10 @@ $(document).ready(function() {
 				
 			else{
             $(".tab:visible").hide();
+            $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
             curr_ind = curr_ind - 1;
             $("." + tab_pool[curr_ind]).show();
+            $("." + uptab_pool[curr_ind]).css({ 'color': '#FFA500'}); //highlight current tabs            
             $(".submit").hide();
             $(".next").show();
 			}
@@ -479,16 +490,8 @@ $(document).ready(function() {
 
 </script>
 <style>
-table.tab_noa td {
-	width: 13px;
-}
-table.tab_noa th {
-	width: 13px;
-}
-table.tab_nof td {
-	width: 13px;
-}
-table.tab_nof th {
-	width: 13px;
+.error{
+    border-color: #F78181;
+    color:red;
 }
 </style>

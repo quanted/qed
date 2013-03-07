@@ -8,7 +8,7 @@ $(document).ready(function() {
 	
     var tab_pool = ["tab_Chemical", "tab_Application", "tab_Location", "tab_Floods", "tab_Crop", "tab_Physical", "tab_Output"];
     var visible = $(".tab:visible").attr('class').split(" ")[1];
-    var curr_ind = $.inArray(visible, tab_pool);
+    var curr_ind = $.inArray(visible, tab_pool); //position of current visible tab in tab_pool
     $(".submit").hide();
     $(".back").hide();
 

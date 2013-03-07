@@ -43,7 +43,7 @@ for row in reader:
     vw_out.append(float(row[8]))
     mai1_out.append(float(row[9]))
     cw_out.append(float(row[10]))
-    
+
 out_fun_Msed=[]
 out_fun_Vw=[]
 out_fun_Mai1=[]            

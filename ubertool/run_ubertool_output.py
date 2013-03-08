@@ -11,76 +11,102 @@ cgitb.enable()
 import datetime
 import sys
 sys.path.append("../ubertool")
-from ubertool.use import Use
-from ubertool.pesticide_properties import PesticideProperties
-from ubertool.aquatic_toxicity import AquaticToxicity
-from ubertool.ecosystem_inputs import EcosystemInputs
-from ubertool.exposure_concentrations import ExposureConcentrations
-from ubertool.terrestrial_toxicity import TerrestrialToxicity
+from ubertool.use import Use, UsePropertiesRetrievalService
+from ubertool.pesticide_properties import PesticideProperties, PestPropertiesRetrievalService
+from ubertool.aquatic_toxicity import AquaticToxicity, AquaticToxicityPropertiesRetrievalService
+from ubertool.ecosystem_inputs import EcosystemInputs, EcosystemInputsPropertiesRetrievalService
+from ubertool.exposure_concentrations import ExposureConcentrations, ExposureConcentrationsRetrievalService
+from ubertool.terrestrial_toxicity import TerrestrialToxicity, TerrestrialPropertiesRetrievalService
 from ubertool.ubertool import Ubertool
 import logging
 from gae_restful_lib import GAE_Connection as Connection
 
 batch_conn = Connection('http://localhost/batch')
+usePropService = UsePropertiesRetrievalService()
+pestPropService = PestPropertiesRetrievalService()
+aquaPropService = AquaticToxicityPropertiesRetrievalService()
+ecoPropService = EcosystemInputsPropertiesRetrievalService()
+expoPropService = ExposureConcentrationsRetrievalService()
+terrePropService = TerrestrialPropertiesRetrievalService()
 
 def retrieveUbertoolConfigFromForm(form,ubertool_config_key,use_config_key,pest_config_key,aquatic_config_key,ecosystems_config_key,expo_config_key,terra_config_key):
+    ubertool_dict = {}
     config_name = str(form.getvalue(ubertool_config_key))
     ubertool = Ubertool()
     ubertool.config_name = config_name
+    ubertool_dict['config_name'] = config_name
     user = users.get_current_user()
     if user:
         logger.info(user.user_id())
         ubertool.user = user
-    ubertool.use = retrieveUseConfigFromForm(form, use_config_key)
-    ubertool.pest = retrievePestConfigFromForm(form, pest_config_key)
-    ubertool.aqua = retrieveAquaConfigFromForm(form, aquatic_config_key)
-    ubertool.eco = retrieveEcoConfigFromForm(form, ecosystems_config_key)
-    ubertool.expo = retrieveExpoConfigFromForm(form, expo_config_key)
-    ubertool.terra = retrieveTerraConfigFromForm(form, terra_config_key)
+    use_tuple = retrieveUseConfigFromForm(form, use_config_key)
+    ubertool.use - use_tuple[0]
+    ubertool_dict['use'] = use_tuple[1]
+    pest_tuple = retrievePestConfigFromForm(form, pest_config_key)
+    ubertool.pest - pest_tuple[0]
+    ubertool_dict['pest'] = pest_tuple[1]
+    aqua_tuple = retrieveAquaConfigFromForm(form, aquatic_config_key)
+    ubertool.aqua = aqua_tuple[0]
+    ubertool_dict['aqua'] = aqua_tuple[1]
+    eco_tuple = retrieveEcoConfigFromForm(form, ecosystems_config_key)
+    ubertool.eco = eco_tuple[0]
+    ubertool_dict['eco'] = eco_tuple[1]
+    expo_tuple = retrieveExpoConfigFromForm(form, expo_config_key)
+    ubertool.expo = expo_tuple[0]
+    ubertool_dict['expo'] - expo_tuple[1]
+    terra_tuple = retrieveTerraConfigFromForm(form, terra_config_key)
+    ubertool.terra = terra_tuple[0]
+    ubertool_dict['terra'] = terra_tuple[1]
     ubertool.put()
-    return ubertool
+    return (ubertool,ubertool_dict)
 
 def retrieveUseConfigFromForm(form, use_config_key):
     use_config_name = str(form.getvalue(use_config_key))
     q = db.Query(Use)
     q.filter("config_name =", use_config_name)
     use = q.get()
-    return use
+    use_dict = usePropService.get()
+    return (use,use_dict)
 
 def retrievePestConfigFromForm(form, pest_config_key):
     pesticide_properties_config_name = str(form.getvalue(pest_config_key))
     q = db.Query(PesticideProperties)
     q.filter("config_name =", pesticide_properties_config_name)
     pest = q.get()
-    return pest
+    pest_dict = pestPropService.get()
+    return (pest, pest_dict)
     
 def retrieveAquaConfigFromForm(form, aquatic_config_key):
     aquatic_toxicity_config_name = str(form.getvalue(aquatic_config_key))
     q = db.Query(AquaticToxicity)
     q.filter("config_name =", aquatic_toxicity_config_name)
     aqua = q.get()
-    return aqua
+    aqua_dict = aquaPropService.get()
+    return (aqua. aqua_dict)
 
 def retrieveEcoConfigFromForm(form, ecosystems_config_key):
     ecosystem_inputs_config_name = str(form.getvalue(ecosystems_config_key))
     q = db.Query(EcosystemInputs)
     q.filter("config_name =", ecosystem_inputs_config_name)
     eco = q.get()
-    return eco
+    eco_dict = ecoPropService.get()
+    return (eco, eco_dict)
 
 def retrieveExpoConfigFromForm(form, expo_config_key):
     exposure_concentrations_config_name = str(form.getvalue(expo_config_key))
     q = db.Query(ExposureConcentrations)
     q.filter("config_name =", exposure_concentrations_config_name)
     expo = q.get()
-    return expo
+    expo_dict = expoPropService.get()
+    return (expo, expo_dict)
 
 def retrieveTerraConfigFromForm(form, terra_config_key):
     terrestrial_toxicity_config_name = str(form.getvalue(terra_config_key))
     q = db.Query(TerrestrialToxicity)
     q.filter("config_name =", terrestrial_toxicity_config_name)
     terra = q.get()
-    return terra
+    terra_dict = terrePropService.get()
+    return (terra, terra_dict)
 
 class RunUbertoolConfigurationPage(webapp.RequestHandler):
     def post(self):
@@ -88,11 +114,12 @@ class RunUbertoolConfigurationPage(webapp.RequestHandler):
         form = cgi.FieldStorage()
         keys = form.keys()
         logger.info(form)
-        ubertool = retrieveUbertoolConfigFromForm(form,'config_name','use_configuration','pest_configuration','aquatic_configuration','ecosystems_configuration','exposures_configuration','terrestrial_configuration')
-        ubertools = []
-        ubertools.append(ubertool)
-        #test if any keys exist that end in _1, _2, _3 and add to batch object
-        #test if any ubertool configs where passed
+        ubertool_tuple = retrieveUbertoolConfigFromForm(form,'config_name','use_configuration','pest_configuration','aquatic_configuration','ecosystems_configuration','exposures_configuration','terrestrial_configuration')
+        ubertool = ubertool_tuple[0]
+        uber_dict = ubertool_tuple[1]
+        ubertools_dict = []
+        ubertool_config_name = uber_dict['config_name']
+        ubertools_dict[ubertool_config_name] = uber_dict
         current_config_number = 1
         ubertool_config_name_prefix = "config_name_"
         use_config_name_prefix = "use_config_name_"
@@ -111,14 +138,17 @@ class RunUbertoolConfigurationPage(webapp.RequestHandler):
                 current_eco_config_name = eco_config_name_prefix + current_config_number
                 current_expo_config_name = expo_config_name_prefix + current_config_number
                 current_terra_config_name = terre_config_name_prefix + current_config_number
-                ubertool = retrieveUbertoolConfigFromForm(form,current_ubertool_config_name,current_use_config_name,current_pest_config_name,current_aqua_config_name,current_eco_config_name,current_expo_config_name,current_terra_config_name)
-                ubertools.append(ubertool)
+                ubertool_tuple = retrieveUbertoolConfigFromForm(form,current_ubertool_config_name,current_use_config_name,current_pest_config_name,current_aqua_config_name,current_eco_config_name,current_expo_config_name,current_terra_config_name)
+                ubertool = ubertool_tuple[0]
+                uber_dict = ubertool_tuple[1]
+                ubertool_config_name = uber_dict['config_name']
+                ubertools_dict[ubertool_config_name] = uber_dict
                 current_config_number += 1
                 current_ubertool_config_name = config_name_prefix + current_config_number
             #create Batch object
             batch = Batch(user=user,
                           completed=False,
-                          ubertools=ubertools)
+                          ubertools=ubertools_dict)
         #test if only partial configs were passed
         else:
             current_config_number = 1

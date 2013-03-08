@@ -155,48 +155,48 @@ class RunUbertoolConfigurationPage(webapp.RequestHandler):
             use_configs = []
             current_use_config_name = use_config_name_prefix + current_config_number
             while current_use_config_name in keys:
-                use = retrieveUseConfigFromForm(form, current_use_config_name)
-                use_configs.append(use)
+                use_tuple = retrieveUseConfigFromForm(form, current_use_config_name)
+                use_configs.append(use_tuple[1])
                 current_config_number += 1
                 current_use_config_name = use_config_name_prefix + current_config_number
             current_config_number = 1
             pest_configs = []
             current_pest_config_name = pest_config_name_prefix + current_config_number
             while current_pest_config_name in keys:
-                pest = retrievePestConfigFromForm(form, current_pest_config_name)
-                pest_configs.append(pest)
+                pest_tuple = retrievePestConfigFromForm(form, current_pest_config_name)
+                pest_configs.append(pest_tuple[1])
                 current_config_number += 1
                 current_pest_config_name = pest_config_name_prefix + current_config_number
             current_config_number = 1
             aqua_configs = []
             current_aqua_config_name = aqua_config_name_prefix + current_config_number
             while current_aqua_config_name in keys:
-                aqua = retrieveAquaConfigFromForm(form, current_aqua_config_name)
-                aqua_configs.append(aqua)
+                aqua_tuple = retrieveAquaConfigFromForm(form, current_aqua_config_name)
+                aqua_configs.append(aqua_tuple[1])
                 current_config_number += 1
                 current_aqua_config_name = aqua_config_name_prefix + current_config_number
             current_config_number = 1
             eco_configs = []
             current_eco_config_name = eco_config_name_prefix + current_config_number
             while current_eco_config_name in keys:
-                eco = retrieveEcoConfigFromForm(form, current_eco_config_name)
-                eco_configs.append(eco)
+                eco_tuple = retrieveEcoConfigFromForm(form, current_eco_config_name)
+                eco_configs.append(eco_tuple[1])
                 current_config_number += 1
                 current_eco_config_name = eco_config_name_prefix + current_config_number
             current_config_number = 1
             expo_configs = []
             current_expo_config_name = expo_config_name_prefix + current_config_number
             while current_expo_config_name in keys:
-                expo = retrieveExpoConfigFromForm(form, current_expo_config_name)
-                expo_configs.append(expo)
+                expo_tuple = retrieveExpoConfigFromForm(form, current_expo_config_name)
+                expo_configs.append(expo_tuple[1])
                 current_config_number += 1
                 current_expo_config_name = expo_config_name_prefix + current_config_number
             current_config_number = 1
             terra_configs = []
             current_terra_config_name = terra_config_name_prefix + current_config_number
             while current_terra_config_name in keys:
-                terra = retrieveTerraConfigFromForm(form, current_terra_config_name)
-                terra_configs.append(terra)
+                terra_tuple = retrieveTerraConfigFromForm(form, current_terra_config_name)
+                terra_configs.append(terra_tuple[1])
                 current_config_number += 1
                 current_terraa_config_name = terra_config_name_prefix + current_config_number
             #create Batch object

@@ -1,5 +1,80 @@
 <script type="text/javascript" src=" ../stylesheets/jquery-1.7.2.js"> </script>
+<script type="text/javascript" src=" ../stylesheets/jquery.validate.js"></script>
+<link type="text/css" rel="stylesheet" href="http://craigsworks.com/projects/qtip2/packages/nightly/jquery.qtip.css" />
+<script type="text/javascript" src="http://craigsworks.com/projects/qtip2/packages/nightly/jquery.qtip.js"></script>
     <script>
+$('.next').click(function () {
+
+    var tab_pool = ["tab_Chemical", "tab_Avian", "tab_Mammal", "tab_Large Fish", "tab_Medium Fish", "tab_Small Fish", "tab_Filter feeders", "Invertebrates", "Zooplankton", "Phytoplankton", "Sediment", "Constants"];
+    var visible = $(".tab:visible").attr('class').split(" ")[1];
+    var curr_ind = $.inArray(visible, tab_pool);
+    $(".submit").hide();
+    $(".back").hide();
+
+        var tab = $(".tab:visible");
+        var valid = true;
+        $('input,select', tab).each(function(i, v){
+            valid = validator.element(v) && valid;
+        });
+        if(!valid){
+            return;
+        }
+        
+        if (curr_ind < 6) {
+            if (curr_ind == 1) {
+            $(".tab:visible").hide();
+            curr_ind = curr_ind + 1;
+            $("." + tab_pool[curr_ind]).show();
+            $(".tab_noa1").show();
+            $(".submit").hide();
+            $(".back").show();      
+                }
+                
+            else{   
+            $(".tab:visible").hide();
+            curr_ind = curr_ind + 1;
+            $("." + tab_pool[curr_ind]).show();
+            $(".submit").hide();
+            $(".back").show();
+            }
+        }
+        if (curr_ind == 6) {
+            $(".submit").show();
+            $(".next").hide();
+        }
+    });
+
+    $('.back').click(function () {
+        if (curr_ind > 0) {
+            
+            if (curr_ind == 1) {
+            $(".tab:visible").hide();
+            curr_ind = curr_ind - 1;
+            $("." + tab_pool[curr_ind]).show();
+            $(".tab_noa1").show();
+            $(".submit").hide();
+            $(".next").show();      
+                }
+                
+            else{
+            $(".tab:visible").hide();
+            curr_ind = curr_ind - 1;
+            $("." + tab_pool[curr_ind]).show();
+            $(".submit").hide();
+            $(".next").show();
+            }
+        }
+        if (curr_ind == 0) {
+            $(".back").hide();
+        }
+    });
+
+
+
+
+
+//dynamic content
+
     $(document).ready(function(){
     $('#id_phyto_k1').closest('tr').addClass('method_options').hide();
     $('#id_phyto_k2').closest('tr').addClass('method_options').hide();

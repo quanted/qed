@@ -98,7 +98,7 @@ class KabamInp_ff(forms.Form):
     ff_p_phyto = forms.FloatField(required=True,label='Phytoplankton (%)', initial='33')
     ff_p_zoo = forms.FloatField(required=True,label='Zooplankton (%)', initial='33')
     ff_p_beninv = forms.FloatField(required=True,label='Benthic invertebrates (%)', initial='0')
-     char_ff = forms.ChoiceField(required=True,label='Characteristics of aquatic biota:', choices=Characteristics_of_aquatic_biota_CHOICES, initial='Filter Feeder')
+    char_ff = forms.ChoiceField(required=True,label='Characteristics of aquatic biota:', choices=Characteristics_of_aquatic_biota_CHOICES, initial='Filter Feeder')
     ff_ww = forms.FloatField(required=True, label='(kg)', initial=1.0E-3)
     ff_lipid = forms.FloatField(required=True, label='% lipids', initial=2)
     ff_NLOM = forms.FloatField(required=True, label='% NLOM', initial=13)

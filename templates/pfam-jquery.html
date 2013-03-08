@@ -140,6 +140,11 @@ $(document).ready(function() {
     },
         "Should no more than Fill Level");
 	
+    $.validator.addMethod('positiveNumber',
+        function(value) {
+            return Number(value) > 0;
+        }, 'Positive number');
+
     $.validator.messages.required = 'Required';
 
 									
@@ -151,7 +156,8 @@ $(document).ready(function() {
 			//Chemical tab//
             wat_hl: {
                 required: true,
-				sciFormat: true
+				sciFormat: true,
+                positiveNumber: true
             },
             wat_t: {
                 required : true,
@@ -159,7 +165,8 @@ $(document).ready(function() {
             },
             ben_hl: {
                 required : true,
-				sciFormat: true
+				sciFormat: true,
+                positiveNumber: true
             },			
             ben_t: {
                 required : true,
@@ -167,7 +174,8 @@ $(document).ready(function() {
             },			
             unf_hl: {
                 required : true,
-				sciFormat: true
+				sciFormat: true,
+                positiveNumber: true
             },			
             unf_t: {
                 required : true,
@@ -175,7 +183,8 @@ $(document).ready(function() {
             },			
             aqu_hl: {
                 required : true,
-				sciFormat: true
+				sciFormat: true,
+                positiveNumber: true
             },			
             aqu_t: {
                 required : true,
@@ -183,27 +192,33 @@ $(document).ready(function() {
             },			
             hyd_hl: {
                 required : true,
-				sciFormat: true
+				sciFormat: true,
+                positiveNumber: true
             },			
             mw: {
                 required : true,
-				sciFormat: true
+				sciFormat: true,
+                positiveNumber: true
             },
             vp: {
                 required : true,
-				sciFormat: true
+				sciFormat: true,
+                positiveNumber: true
             },				
             sol: {
                 required : true,
-				sciFormat: true
+				sciFormat: true,
+                positiveNumber: true
             },				
             koc: {
                 required : true,
-				sciFormat: true
+				sciFormat: true,
+                positiveNumber: true
             },				
             hea_h: {
                 required : true,
-				sciFormat: true
+				sciFormat: true,
+                min: 0
             },				
             hea_r_t: {
                 required : true,
@@ -219,6 +234,7 @@ $(document).ready(function() {
             },			
             wea_l: {
                 required : true,
+                range: [0, 90]
             },
 			///Floods//////
             nof: {
@@ -226,81 +242,99 @@ $(document).ready(function() {
             },								
 			date_f1: {
                 required : true,
-				dateFormat:true
+				dateFormat: true
             },
-			///Floods//////
+			///Crop//////
 			zero_height_ref: {
                 required : true,
-				dateFormat:true
+				dateFormat: true
             },			
 			days_zero_full: {
                 required : true,
-				sciFormat:true
+				sciFormat: true,
+                positiveNumber: true
             },				
 			days_zero_removal: {
                 required : true,
-				sciFormat:true
+				sciFormat: true,
+                positiveNumber: true
             },	
 			max_frac_cov: {
                 required : true,
-				sciFormat:true
+				sciFormat: true,
+                range: [0, 1]
             },
 			///Physical////
 			mas_tras_cof: {
                 required : true,
-				sciFormat:true
-            },       
+				sciFormat: true,
+                min: 0
+            },
 			leak: {
                 required : true,
-				sciFormat:true
-            },       			
+				sciFormat: true,
+                min: 0
+            },
 			ref_d: {
                 required : true,
-				sciFormat:true
+				sciFormat: true,
+                min: 0
             },   			
 			ben_d: {
                 required : true,
-				sciFormat:true
+				sciFormat: true,
+                min: 0
             }, 			
 			ben_por: {
                 required : true,
-				sciFormat:true
+				sciFormat: true,
+                min: 0
             }, 				
 			dry_bkd: {
                 required : true,
-				sciFormat:true
+				sciFormat: true,
+                min: 0
             }, 		
 			foc_wat: {
                 required : true,
-				sciFormat:true
+				sciFormat: true,
+                min: 0
             }, 			
 			foc_ben: {
                 required : true,
-				sciFormat:true
+				sciFormat: true,
+                min: 0
             }, 				
 			ss: {
                 required : true,
-				sciFormat:true
+				sciFormat: true,
+                min: 0
             }, 				
 			wat_c_doc: {
                 required : true,
-				sciFormat:true
+				sciFormat: true,
+                min: 0
             }, 			
 			chl: {
                 required : true,
-				sciFormat:true
+				sciFormat: true,
+                min: 0
             }, 				
 			dfac: {
                 required : true,
-				sciFormat:true
+				sciFormat: true,
+                min: 0
             }, 				
 			q10: {
                 required : true,
-				sciFormat:true
+				sciFormat: true,
+                min: 0
             },
+            ///Output//////
             area_app: {
                 required : true,
-                sciFormat:true
+                sciFormat: true,
+                positiveNumber: true
             } 		
 		}
     });
@@ -382,7 +416,7 @@ $(document).ready(function() {
 		$('tr[id*="noa_header"]').show()
 		
         while (i <= total) {
-            $('.tab_Application').append('<tr class="tab_noa1"><td><input name="jm' + i + '" type="text" size="5" value="' + i + '"/></td><td><input type="text" size="5" name="mm' + i + '" id="id_mm' + i + '"/></td><td><input type="text" size="5" name="dd' + i + '" id="id_dd' + i + '"/></td><td><input type="text" size="5" name="ma' + i + '" id="id_ma' + i + '"/></td><td><input type="text" size="5" name="sr' + i + '" id="id_sr' + i + '" value="0"/></td></tr>');
+            $('.tab_Application').append('<tr class="tab_noa1"><td><input name="jm' + i + '" type="text" size="5" value="' + i + '" disabled/></td><td><input type="text" size="5" name="mm' + i + '" id="id_mm' + i + '"/></td><td><input type="text" size="5" name="dd' + i + '" id="id_dd' + i + '"/></td><td><input type="text" size="5" name="ma' + i + '" id="id_ma' + i + '"/></td><td><input type="text" size="5" name="sr' + i + '" id="id_sr' + i + '" value="0"/></td></tr>');
             i = i + 1;
         }
         while (i-1 > total) {
@@ -412,14 +446,16 @@ $(document).ready(function() {
     $('[name*="ma"]').each(function () {
         $(this).rules('add', {
             required : true,
-			sciFormat: true
+			sciFormat: true,
+            min: 0
         });
     });
 
     $('[name*="sr"]').each(function () {
         $(this).rules('add', {
             required : true,
-            sciFormat: true
+            sciFormat: true,
+            min: 0
 		});
 
 	});
@@ -452,14 +488,16 @@ $(document).ready(function() {
 		$('[name*="nod"]').each(function () {
         $(this).rules('add', {
             required : true,
-			integer: true
+			integer: true,
+            min: 0
         });
     });
 
 		$('[name*="fl"]').each(function () {
         $(this).rules('add', {
             required : true,
-			sciFormat: true
+			sciFormat: true,
+            min: 0
         });
     });
 
@@ -467,6 +505,7 @@ $(document).ready(function() {
         $(this).rules('add', {
             required : true,
 			sciFormat: true,
+            min: 0,
 			wlflCheck: true			
         });
     });
@@ -475,22 +514,20 @@ $(document).ready(function() {
         $(this).rules('add', {
             required : true,
 			sciFormat: true,
-			mlflCheck: true			
+            min: 0,
+			mlflCheck: true
         });
     });
 
 		$('[name*="to"]').each(function () {
         $(this).rules('add', {
             required : true,
-			sciFormat: true
+			sciFormat: true,
+            min: 0
         });
     });
-					
-    })
-
-
-
-});
+    });
+    });
 
 
 </script>

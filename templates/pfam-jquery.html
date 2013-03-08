@@ -97,7 +97,7 @@ $(document).ready(function() {
 		function (value, element) {
 			return isSci(value)
 		},
-		"Please use the right numeric format"
+		"Wrong numeric format"
 	);
 	
 	$.validator.addMethod(
@@ -105,7 +105,7 @@ $(document).ready(function() {
 		function (value, element) {
 			return isDate(value)
 		},
-		"Please enter a date in the format MM/DD"
+		"Date format MM/DD"
 	);
 
     $.validator.addMethod(
@@ -113,34 +113,39 @@ $(document).ready(function() {
     function (value) {
         return mmCheck(value);
     },
-        "Please enter a right month");
+        "Wrong month");
 
     $.validator.addMethod(
         "dayCheck",
     function (value, element) {
         return ddCheck(value, element);
     },
-        "Please enter a right day");
+        "Wrong day");
 
 	$.validator.addMethod("integer", function(value, element) {
 		return this.optional(element) || /^-?\d+$/.test(value);
-	}, "A positive or negative non-decimal number please");
+	}, "Positive integer");
 
     $.validator.addMethod(
         "wlflCheck",
     function (value, element) {
         return wlflCheck(value, element);
     },
-        "Wier Level should be greater than Fill Level");
+        "Should greater than Fill Level");
 
     $.validator.addMethod(
         "mlflCheck",
     function (value, element) {
         return mlflCheck(value, element);
     },
-        "Min. Level should be less or equal than Fill Level");
-										
+        "Should no more than Fill Level");
+	
+    $.validator.messages.required = 'Required';
+
+									
     var validator = $('form').validate({
+        errorElement: "div",
+        wrapper: "div",  // a wrapper around the error message
         ignore: 'input[type="button"],input[type="submit"]',
         rules: {
 			//Chemical tab//

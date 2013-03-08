@@ -27,7 +27,7 @@ def testF8f(numiter):
     
 def testChancef(numiter):
     params_matrix = get_params_matrix()
-    output = iec_output.mai1(params_matrix.get('dose_response')[numiter],params_matrix.get('LC50')[numiter],params_matrix.get('threshold')[numiter])
+    output = iec_output.chance_f(params_matrix.get('dose_response')[numiter],params_matrix.get('LC50')[numiter],params_matrix.get('threshold')[numiter])
     print "Test of function name: %s expected: %i != calculated: %i" % ("Chance f",params_matrix.get('chance_f')[numiter],output)
     assert round(output,3) == round(params_matrix['chance_f'][numiter],3) 
     

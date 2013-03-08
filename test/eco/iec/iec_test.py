@@ -27,11 +27,9 @@ def testF8f(numiter):
     
 def testChancef(numiter):
     params_matrix = get_params_matrix()
-    print params_matrix
     output = iec_output.chance_f(params_matrix.get('dose_response')[numiter],params_matrix.get('LC50')[numiter],params_matrix.get('threshold')[numiter])
-    print output
-    print "Test of function name: %s expected: %i != calculated: %i" % ("Chance f",params_matrix.get('chance_f')[numiter],output)
-    assert round(output,3) == round(params_matrix['chance_f'][numiter],3) 
+    print "Test of function name: %s expected: %i != calculated: %i" % ("Chance f",params_matrix.get('chance_f_out')[numiter],output)
+    assert round(output,3) == round(params_matrix['chance_f_out'][numiter],3) 
     
 def get_params_matrix():
     csvTestParamsLoader = CSVTestParamsLoader('test/eco/iec/iec_unittest_inputs.csv')

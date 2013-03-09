@@ -10,6 +10,9 @@ import logging
 import cgi
 import cgitb
 cgitb.enable()
+import sys
+sys.path.append("../rice")
+from rice.rice_output import RiceBatchRun
 
 logger = logging.getLogger("BatchService")
 
@@ -22,9 +25,20 @@ def convert(input):
         return input.encode('utf-8')
     else:
         return input
-
-def processUbertoolBatchRunsIntoBatchModelRuns(data):
-    logger.info(data)
+    
+def processUbertoolBatchRunsIntoBatchModelRuns(ubertools):
+    for ubertool in ubertools:
+        combined_ubertool_props = combineUbertoolProperties(ubertool)
+        logger.info(ubertools)
+        
+def combineUbertoolProperties(ubertool):
+    combined_ubertool_props = {}
+    for key in ubertool:
+        ubertool_config = ubertool[key]
+        for config_key in ubertool_config:
+            if not config_key == "config_name":
+                combined_ubertool_props[config_key] = ubertool_config[config_key]
+    return combined_ubertool_props
     
 def processVariousBatchRunsIntoBatchModelRuns(data):
     logger.info(data)

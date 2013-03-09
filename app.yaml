@@ -171,6 +171,10 @@ handlers:
   script: ubertool/pesticide_properties.py
   login: required
   
+#Model method service for asynchronous invocation
+- url: /msed
+  script: rice/rice_output.py 
+  
 #terrestrial service
 - url: /terrestrial/(.*)
   script: ubertool/terrestrial_toxicity.py

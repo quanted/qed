@@ -14,6 +14,9 @@ cgitb.enable()
 import datetime
 from rice import rice_model
 import logging
+import sys
+sys.path.append("../utils")
+import utils.json_utils
 
 
 # The mass of the sediment at equilibrium with the water column
@@ -47,7 +50,23 @@ def msed(dsed,a,pb):
         ('pb=%g is a non-physical value.' %pb)
     return dsed * a * pb
 
+class RiceBatchRun():
+    
+    def runRiceModel(self,config_properties):
+        riceModelResults = {}
+        #this is where properties are searched, converted as needed, and any available methods are called
+        
+        return riceModelResults
 
+class MsedService(webapp.RequestHandler):
+    
+    def get(self):
+        data = simplejson.loads(self.request.body)
+        data = json_utils.convert(data)
+        msed_output = msed(data['dsed'],data['a'],data['pb'])
+        msed_json = simplejson.dumps(msed_output)
+        self.response.headers['Content-Type'] = 'application/json'
+        self.response.out.write(msed_json)
 
 
 # The volume of the water column plus pore water
@@ -266,7 +285,9 @@ class RiceExecutePage(webapp.RequestHandler):
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
-app = webapp.WSGIApplication([('/.*', RiceExecutePage)], debug=True)
+app = webapp.WSGIApplication([('/msed', MsedService),
+                              ('/.*', RiceExecutePage)],
+                              debug=True)
 
 def main():
     run_wsgi_app(app)

@@ -27,48 +27,48 @@ met_pool={'OR Hops   MLRA-2': 'W24232.dvf', 'NC Corn - W   MLRA-130 (OP)': 'W038
 inp_pool={'OR Hops   MLRA-2': 'OR1Hop-R.INP', 'NC Corn - W   MLRA-130 (OP)': 'NC2Cor-R.INP', 'GA Peach   MLRA-133A': 'GA1Pch-R.INP', 'CA Citrus   MLRA-17': 'CA1Cit-R.INP', 'NC Sweet Potato MLRA-133': 'NC1SWE-R.INP', 'CA Lettuce  MLRA-14': 'CA1Let-R.INP', 'FL Peppers MLRA-156A': 'FL1Pep-R.INP', 'ID Potato   MLRA-11B': 'ID1Pot-R.INP', 'FL Sweet Corn   MLRA-156B (OP)': 'FL1Swc-R.INP', 'OR Mint   MLRA-2': 'OR1Min-R.INP', 'FL Citrus   MLRA-156A': 'FL1Cit-R.INP', 'OR Christmas Trees  MLRA-2': 'OR1Xma-R.INP', 'OH Corn   MLRA-111': 'OH1Cor-R.INP', 'MI Asparagus MLRA-96': 'MI1Asp-R.INP', 'PR Coffee MLRA-270': 'PR1Cof-R.INP', 'FL Avocado MLRA-156A': 'FL1Avo-R.INP', 'TX Corn   MLRA-86/87 (OP)': 'TX1Cor-R.INP', 'CA Almonds MLRA-17': 'CA1Wal-R.INP', 'FL Sugarcane   MLRA-156A': 'FL1Sgc-R.INP', 'CA Grape  MLRA-17': 'CA1Gra-R.INP', 'FL Cucumber   MLRA-156A': 'FL1Cuc-R.INP', 'PA Turf  MLRA-148': 'PA1Tur-R.INP', 'TX Wheat   MLRA-86/87 (OP)': 'TX2Whe-R.INP', 'CA Corn   MLRA-17 (OP)': 'CA1Cor-R.INP', 'NC Apple   MLRA-130': 'NC1App-R.INP', 'OR Berries MLRA-2 (OP)': 'OR1Ber-R.INP', 'CA Onions MLRA-17': 'CA1Oni-R.INP', 'MN Sugarbeet   MLRA-56': 'MN1Sbe-R.INP', 'TX Cotton   MLRA-86/87 (OP)': 'TX2Ctt-R.INP', 'FL Turf  MLRA-155': 'FL1Tur-R.INP', 'MI Beans MLRA-99': 'MI1Bea-R.INP', 'OR Sweet Corn   MLRA-2 (OP)': 'OR1Scr-R.INP', 'NC Tobacco   MLRA-133A': 'NC1Tba-R.INP', 'GA Onions MLRA-153A/133A': 'GA1Oni-R.INP', 'LA Sugarcane   MLRA-131': 'LA1Sgc-R.INP', 'NC Corn - E   MLRA-153A': 'NC1Cor-R.INP', 'CA Sugarbeet  MLRA-17  (OP)': 'CA1Sbe-R.INP', 'TX Cotton   MLRA-83D (NMC)': 'TX1Ctt-R.INP', 'TX Alfalfa   MLRA-86/87 (OP)': 'TX1Alf-R.INP', 'MS Cotton   MLRA-134': 'MS1Ctt-R.INP', 'MS Soybean   MLRA-134': 'MS1Syb-R.INP', 'GA Pecan   MLRA-133A': 'GA1Pcn-R.INP', 'MN Alfalfa MLRA-56 (OP)': 'MN2Alf-R.INP', 'NC Cotton   MLRA-133A': 'NC1Ctt-R.INP', 'OR Wheat   MLRA-2 (OP)': 'OR1Whe-R.INP', 'NY Grape   MLRA-100/101': 'NY2Gra-R.INP', 'ND Corn   MLRA-56 (OP)': 'ND1Cor-R.INP', 'FL Carrots MLRA-156B': 'FL1Car-R.INP', 'ND Canola   MLRA-55A': 'ND1Cno-R.INP', 'OR Filberts   MLRA-2': 'OR1Fil-R.INP', 'FL Cabbage   MLRA-155': 'FL1Cbb-R.INP', 'TX Sorghum   MLRA-86/87 (OP)': 'TX1Srg-R.INP', 'CA Alfalfa MLRA-17 (OP)': 'CA1Alf-R.INP', 'ND Wheat   MLRA-56': 'ND1Whe-R.INP', 'CA Tomato MLRA-17': 'CA1Tma-R.INP', 'PA Corn   MLRA-148': 'PA1Cor-R.INP', 'PA Alfalfa   MLRA-148 (OP)': 'PA1Alf-R.INP', 'OR Apple   MLRA-2': 'OR1App-R.INP', 'MS Corn   MLRA-134': 'MS1Cor-R.INP', 'PA Tomato MLRA-148': 'PA1Veg-R.INP', 'MI Cherry   MLRA-96': 'MI1Che-R.INP', 'FL Tomato   MLRA-155': 'FL1Tma-R.INP', 'FL Strawberry   MLRA-155': 'FL1Str-R.INP', 'IL Corn   MLRA-108': 'IL1Cor-R.INP', 'ME Potato   MLRA-146': 'ME1Pot-R.INP', 'OR Grass Seed   MLRA-2': 'OR1Gra-R.INP', 'KS Sorghum   MLRA-112': 'KS2Srg-R.INP', 'PA Apple   MLRA-148': 'PA1App-R.INP', 'CA Cotton   MLRA-17': 'CA1Ctt-R.INP', 'NC Peanut   MLRA-153A': 'NC1Pnt-R.INP', 'NC Alfalfa   MLRA-136 (OP)': 'NC1Alf-R.INP'}
 run_pool={'OR Hops   MLRA-2': 'OR1Hop-R.RUN', 'NC Corn - W   MLRA-130 (OP)': 'NC2Cor-R.RUN', 'GA Peach   MLRA-133A': 'GA1Pch-R.RUN', 'CA Citrus   MLRA-17': 'CA1Cit-R.RUN', 'NC Sweet Potato MLRA-133': 'NC1SWE-R.RUN', 'CA Lettuce  MLRA-14': 'CA1Let-R.RUN', 'FL Peppers MLRA-156A': 'FL1Pep-R.RUN', 'ID Potato   MLRA-11B': 'ID1Pot-R.RUN', 'FL Sweet Corn   MLRA-156B (OP)': 'FL1Swc-R.RUN', 'OR Mint   MLRA-2': 'OR1Min-R.RUN', 'FL Citrus   MLRA-156A': 'FL1Cit-R.RUN', 'OR Christmas Trees  MLRA-2': 'OR1Xma-R.RUN', 'OH Corn   MLRA-111': 'OH1Cor-R.RUN', 'MI Asparagus MLRA-96': 'MI1Asp-R.RUN', 'PR Coffee MLRA-270': 'PR1Cof-R.RUN', 'FL Avocado MLRA-156A': 'FL1Avo-R.RUN', 'TX Corn   MLRA-86/87 (OP)': 'TX1Cor-R.RUN', 'CA Almonds MLRA-17': 'CA1Wal-R.RUN', 'FL Sugarcane   MLRA-156A': 'FL1Sgc-R.RUN', 'CA Grape  MLRA-17': 'CA1Gra-R.RUN', 'FL Cucumber   MLRA-156A': 'FL1Cuc-R.RUN', 'PA Turf  MLRA-148': 'PA1Tur-R.RUN', 'TX Wheat   MLRA-86/87 (OP)': 'TX2Whe-R.RUN', 'CA Corn   MLRA-17 (OP)': 'CA1Cor-R.RUN', 'NC Apple   MLRA-130': 'NC1App-R.RUN', 'OR Berries MLRA-2 (OP)': 'OR1Ber-R.RUN', 'CA Onions MLRA-17': 'CA1Oni-R.RUN', 'MN Sugarbeet   MLRA-56': 'MN1Sbe-R.RUN', 'TX Cotton   MLRA-86/87 (OP)': 'TX2Ctt-R.RUN', 'FL Turf  MLRA-155': 'FL1Tur-R.RUN', 'MI Beans MLRA-99': 'MI1Bea-R.RUN', 'OR Sweet Corn   MLRA-2 (OP)': 'OR1Scr-R.RUN', 'NC Tobacco   MLRA-133A': 'NC1Tba-R.RUN', 'GA Onions MLRA-153A/133A': 'GA1Oni-R.RUN', 'LA Sugarcane   MLRA-131': 'LA1Sgc-R.RUN', 'NC Corn - E   MLRA-153A': 'NC1Cor-R.RUN', 'CA Sugarbeet  MLRA-17  (OP)': 'CA1Sbe-R.RUN', 'TX Cotton   MLRA-83D (NMC)': 'TX1Ctt-R.RUN', 'TX Alfalfa   MLRA-86/87 (OP)': 'TX1Alf-R.RUN', 'MS Cotton   MLRA-134': 'MS1Ctt-R.RUN', 'MS Soybean   MLRA-134': 'MS1Syb-R.RUN', 'GA Pecan   MLRA-133A': 'GA1Pcn-R.RUN', 'MN Alfalfa MLRA-56 (OP)': 'MN2Alf-R.RUN', 'NC Cotton   MLRA-133A': 'NC1Ctt-R.RUN', 'OR Wheat   MLRA-2 (OP)': 'OR1Whe-R.RUN', 'NY Grape   MLRA-100/101': 'NY2Gra-R.RUN', 'ND Corn   MLRA-56 (OP)': 'ND1Cor-R.RUN', 'FL Carrots MLRA-156B': 'FL1Car-R.RUN', 'ND Canola   MLRA-55A': 'ND1Cno-R.RUN', 'OR Filberts   MLRA-2': 'OR1Fil-R.RUN', 'FL Cabbage   MLRA-155': 'FL1Cbb-R.RUN', 'TX Sorghum   MLRA-86/87 (OP)': 'TX1Srg-R.RUN', 'CA Alfalfa MLRA-17 (OP)': 'CA1Alf-R.RUN', 'ND Wheat   MLRA-56': 'ND1Whe-R.RUN', 'CA Tomato MLRA-17': 'CA1Tma-R.RUN', 'PA Corn   MLRA-148': 'PA1Cor-R.RUN', 'PA Alfalfa   MLRA-148 (OP)': 'PA1Alf-R.RUN', 'OR Apple   MLRA-2': 'OR1App-R.RUN', 'MS Corn   MLRA-134': 'MS1Cor-R.RUN', 'PA Tomato MLRA-148': 'PA1Veg-R.RUN', 'MI Cherry   MLRA-96': 'MI1Che-R.RUN', 'FL Tomato   MLRA-155': 'FL1Tma-R.RUN', 'FL Strawberry   MLRA-155': 'FL1Str-R.RUN', 'IL Corn   MLRA-108': 'IL1Cor-R.RUN', 'ME Potato   MLRA-146': 'ME1Pot-R.RUN', 'OR Grass Seed   MLRA-2': 'OR1Gra-R.RUN', 'KS Sorghum   MLRA-112': 'KS2Srg-R.RUN', 'PA Apple   MLRA-148': 'PA1App-R.RUN', 'CA Cotton   MLRA-17': 'CA1Ctt-R.RUN', 'NC Peanut   MLRA-153A': 'NC1Pnt-R.RUN', 'NC Alfalfa   MLRA-136 (OP)': 'NC1Alf-R.RUN'}
 
-def get_jid():
+# def get_jid():
 
-    url='https://api.picloud.com/r/3303/przm_s1_old' 
-    data = urllib.urlencode({})
+#     url='https://api.picloud.com/r/3303/przm_s1_old' 
+#     data = urllib.urlencode({})
 
-    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers) 
-    jid= json.loads(response.content)['jid']
-    output_st = ''
+#     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers) 
+#     jid= json.loads(response.content)['jid']
+#     output_st = ''
         
-    while output_st!="done":
-        response_st = urlfetch.fetch(url='https://api.picloud.com/job/?jids=%s&field=status' %jid, headers=http_headers)
-        output_st = json.loads(response_st.content)['info']['%s' %jid]['status']
+#     while output_st!="done":
+#         response_st = urlfetch.fetch(url='https://api.picloud.com/job/?jids=%s&field=status' %jid, headers=http_headers)
+#         output_st = json.loads(response_st.content)['info']['%s' %jid]['status']
 
-    url_val = 'https://api.picloud.com/job/result/?jid='+str(jid)
-    response_val = urlfetch.fetch(url=url_val, method=urlfetch.GET, headers=http_headers)
-    output_val = json.loads(response_val.content)['result']
-    return(jid, output_st, output_val)
+#     url_val = 'https://api.picloud.com/job/result/?jid='+str(jid)
+#     response_val = urlfetch.fetch(url=url_val, method=urlfetch.GET, headers=http_headers)
+#     output_val = json.loads(response_val.content)['result']
+#     return(jid, output_st, output_val)
 
 ########call the function################# 
-#def get_jid(met, inp, run):
-#
-#    url='https://api.picloud.com/r/3303/przm_s1' 
-#    met=json.dumps(met)
-#    inp=json.dumps(inp)
-#    run=json.dumps(run)
-#    data = urllib.urlencode({"met":met,"inp":inp,"run":run})
-##    print(data)
-##    print(type(met))
-##    print(met)
-#    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers) 
-##    print(response)   
-#    jid= json.loads(response.content)['jid']
-#    output_st = ''
-#        
-#    while output_st!="done":
-#        response_st = urlfetch.fetch(url='https://api.picloud.com/job/?jids=%s&field=status' %jid, headers=http_headers)
-#        output_st = json.loads(response_st.content)['info']['%s' %jid]['status']
-#
-#    url_val = 'https://api.picloud.com/job/result/?jid='+str(jid)
-#    response_val = urlfetch.fetch(url=url_val, method=urlfetch.GET, headers=http_headers)
-#    output_val = json.loads(response_val.content)['result']
-#    return(jid, output_st, output_val)
+def get_jid(met, inp, run):
+
+   url='https://api.picloud.com/r/3303/przm_s1' 
+   met=json.dumps(met)
+   inp=json.dumps(inp)
+   run=json.dumps(run)
+   data = urllib.urlencode({"met":met,"inp":inp,"run":run})
+#    print(data)
+#    print(type(met))
+#    print(met)
+   response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers) 
+#    print(response)   
+   jid= json.loads(response.content)['jid']
+   output_st = ''
+       
+   while output_st!="done":
+       response_st = urlfetch.fetch(url='https://api.picloud.com/job/?jids=%s&field=status' %jid, headers=http_headers)
+       output_st = json.loads(response_st.content)['info']['%s' %jid]['status']
+
+   url_val = 'https://api.picloud.com/job/result/?jid='+str(jid)
+   response_val = urlfetch.fetch(url=url_val, method=urlfetch.GET, headers=http_headers)
+   output_val = json.loads(response_val.content)['result']
+   return(jid, output_st, output_val)
 
 
 
@@ -93,7 +93,7 @@ class PRZMOutputPage(webapp.RequestHandler):
         Modeled_zones = form.getvalue('Modeled_zones')
         Number_crop = form.getvalue('Number_crop')
            
-        final_res=get_jid()
+        final_res=get_jid(met_o, inp_o, run_o)
 
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})

@@ -28,7 +28,6 @@ class UbertoolExposureConcentrationsConfigurationPage(webapp.RequestHandler):
         if user:
             logger.info(user.user_id())
             exposure_concentrations.user = user
-        exposure_concentrations = ExposureConcentrations()
         exposure_concentrations.config_name = config_name
         exposure_concentrations.one_in_ten_peak_exposure_concentration = float(form.getvalue('one_in_ten_peak_exposure_concentration'))
         exposure_concentrations.one_in_ten_four_day_average_exposure_concentration = float(form.getvalue('one_in_ten_four_day_average_exposure_concentration'))

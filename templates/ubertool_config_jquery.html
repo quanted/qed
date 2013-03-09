@@ -1,6 +1,39 @@
 <script type="text/javascript" src=" ../stylesheets/jquery-1.7.2.js"></script>
 <script type="text/javascript" src=" ../stylesheets/jquery.validate.js"></script>
 <script>
+function submitBatchConfigurations()
+{
+	var document_form = document.forms[0];
+	var batch_size = (document_form.length-3)/8;
+	var form_data = {};
+	for(i = batch_size + 1; i < document_form.length - 2; i++)
+	{
+		var id = (document_form[i].id).replace("id_","");
+		var val = document_form[i].value;
+		form_data[id] = val;
+	}
+	
+	$.ajax({
+		url:"ubertool-batch-configuration",
+		async: false,
+		type: 'POST',
+		data: JSON.stringify(form_data),
+		success: function(form_data) {
+			var test = "Test";
+			$.ajax({
+				url:"batch",
+				async: false,
+				type: 'POST',
+				data: JSON.stringify(form_data),
+				complete: function(form_data) {
+					window.location.href = "/user.html";
+				}
+			});
+		}
+	});
+}	
+</script>
+<script>
 $(document).ready(function() {
 	num_ubertool_runs = 1;
 	

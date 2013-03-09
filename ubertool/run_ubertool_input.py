@@ -21,7 +21,7 @@ class UbertoolInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'ubertool_config_jquery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_nomodellinks.html', {'title2':'Ubertool Inputs', 'model':'run_ubertool'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {'model':'run_ubertool'})
+        html = html + template.render(templatepath + '04ubertoolinput_start.html', {'model':'run_ubertool'})
         html = html + template.render (templatepath + 'ubertool_multiple_runs.html', {})
         #html = html + str(run_ubertool_db.RunUbertoolInp())
         #html = html + template.render(templatepath + '04ubertext_checkbox.html', {})

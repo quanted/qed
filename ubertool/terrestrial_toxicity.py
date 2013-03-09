@@ -15,6 +15,7 @@ class TerrestrialToxicityService(webapp.RequestHandler):
         q.filter('config_name =',terr_tox)
         terr = q.get()
         use_dict = {}
+        use_dict['config_name'] = terr.config_name
         use_dict['avian_ld50']=terr.avian_ld50
         use_dict['avian_lc50']=terr.avian_lc50
         use_dict['avian_NOAEC']=terr.avian_NOAEC

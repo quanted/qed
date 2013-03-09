@@ -1,5 +1,5 @@
 application: pypest
-version: sprint2
+version: chance
 runtime: python27
 api_version: 1
 
@@ -71,7 +71,7 @@ handlers:
 - url: /run_ubertool_batchoutput.html
   script: ubertool/run_ubertool_batch_output.py
   login: required 
-- url: /run_ubertool_output.html
+- url: /ubertool-batch-configuration
   script: ubertool/run_ubertool_output.py
   login: required 
 ##UNTESTED models##
@@ -199,6 +199,11 @@ handlers:
 #cas service
 - url: /cas/(.*)
   script: CAS/cas.py
+  login: required
+  
+#batch service
+- url: /batch
+  script: batch/batch_processor.py
   login: required
   
 #use label site data

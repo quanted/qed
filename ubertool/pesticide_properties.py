@@ -46,6 +46,7 @@ class PestPropertiesRetrievalService():
         q.filter('config_name =',pest_config_name)
         pest = q.get()
         pest_dict = {}
+        pest_dict['config_name'] = pest.config_name
         pest_dict['molecular_weight'] = pest.molecular_weight
         pest_dict['henrys_law_constant'] = pest.henrys_law_constant
         pest_dict['vapor_pressure'] = pest.vapor_pressure

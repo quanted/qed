@@ -63,6 +63,7 @@ class ExposureConcentrationsRetrievalService(webapp.RequestHandler):
         q.filter('config_name =',exposure_concentrations_config_name)
         expo = q.get()
         expo_dict = {}
+        expo_dict['config_name'] = expo.config_name
         expo_dict['one_in_ten_peak_exposure_concentration'] = expo.one_in_ten_peak_exposure_concentration
         expo_dict['one_in_ten_four_day_average_exposure_concentration'] = expo.one_in_ten_four_day_average_exposure_concentration
         expo_dict['one_in_ten_twentyone_day_average_exposure_concentration'] = expo.one_in_ten_twentyone_day_average_exposure_concentration

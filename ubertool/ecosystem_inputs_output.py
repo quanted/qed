@@ -19,16 +19,15 @@ class UbertoolEcosystemInputsConfigurationPage(webapp.RequestHandler):
         form = cgi.FieldStorage()
         config_name = str(form.getvalue('config_name'))
         user = users.get_current_user()
-        q = db.Query(ExposureConcentrations)
+        q = db.Query(EcosystemInputs)
         q.filter('user =',user)
         q.filter("config_name =", config_name)
-        ecosystem_inputs = q.get()
+        eco_inputs = q.get()
         if eco_inputs is None:
             eco_inputs = EcosystemInputs()
         if user:
             logger.info(user.user_id())
             eco_inputs.user = user
-        eco_inputs = EcosystemInputs()
         eco_inputs.config_name = config_name
         eco_inputs.concentration_of_particulate_organic_carbon = float(form.getvalue('concentration_of_particulate_organic_carbon'))
         eco_inputs.concentration_of_dissolved_organic_carbon = float(form.getvalue('concentration_of_dissolved_organic_carbon'))

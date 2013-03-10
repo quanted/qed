@@ -28,6 +28,9 @@ skip_files:
 - ^(.*/)?.*\.gz
 - ^(.*/)?.*\.bak$
 
++builtins:
++- appstats: on
+
 handlers:
 - url: /
   script: landingJon.py 

@@ -627,15 +627,15 @@ class TRexOutputPage(webapp.RequestHandler):
         #mf_w_mamm = form.getvalue('mass_fraction_of_water_in_the_mammal_food')
         #mf_w_bird = form.getvalue('mass_fraction_of_water_in_the_bird_food')
         
-        text_file = open('trex/trex_description.txt','r')
+        text_file = open('trex2/trex2_description.txt','r')
         x1 = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})        
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html',  {'model':'trex','page':'output'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html',  {'model':'trex2','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                               
         html = html + template.render(templatepath + '04uberoutput_start.html', {
-                'model':'trex', 
-                'model_attributes':'T-Rex Output'})
+                'model':'trex2', 
+                'model_attributes':'T-Rex 1.5.1 Output'})
         html = html + """<table width="600" border="1">
                           <tr>
                             <th scope="col">Inputs</div></th>

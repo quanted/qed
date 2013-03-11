@@ -12,15 +12,15 @@ import os
 
 class TRexReferencesPage(webapp.RequestHandler):
     def get(self):
-        text_file1 = open('trex/trex_references.txt','r')
+        text_file1 = open('trex2/trex2_references.txt','r')
         x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'trex2','page':'references'})
         html = html + template.render(templatepath + '03ubertext_links_left.html', {})                        
         html = html + template.render(templatepath + '04uberreferences_start.html', {
-                'model':'trex', 
-                'model_attributes':'TREX2 References', 
+                'model':'trex2', 
+                'model_attributes':'TREX 1.5.1 References', 
                 'text_paragraph':x})
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})

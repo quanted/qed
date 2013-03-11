@@ -37,7 +37,7 @@ class genericJonOutputPage(webapp.RequestHandler):
         </table>
         """
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + template.render(templatepath + '05hh_ubertext_links_right.html', {})
+#        html = html + template.render(templatepath + '05hh_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06hh_uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

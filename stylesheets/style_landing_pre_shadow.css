@@ -1,0 +1,38 @@
+#container {
+  width: 1024px;
+  margin: 0 auto;
+  text-align: left;    /* IE Hack */
+}
+
+/* Container: IE Hack */
+body {
+  text-align: center;
+  background: #F4F7ED;
+}
+
+/* End - Container: IE Hack */
+
+img {
+  border: none;
+}
+
+/*
+   Landing Page
+*/
+
+#landing_uberlogo {
+  width: 1024px;
+  margin: 0 auto;
+  border: 1px solid black;
+  margin-top: 10%;
+  margin-bottom: 5%;
+}
+#landing_links {
+  text-align: center;
+  white-space: nowrap;
+}
+.landing_links {
+  height: 334px;
+  width: 341px;
+  display: inline;
+}

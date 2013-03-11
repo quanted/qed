@@ -1,18 +1,36 @@
+/* Reset */
+
+*{
+  padding: 0;
+  margin: 0 auto 0 auto;  /* changed to shorthand */
+}
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* General */
+
+body {
+  text-align: center;   /* Container: IE Hack */
+  background: #F4F7ED repeat-x;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  line-height: 18px;
+  color: #333333;;
+}
 #container {
   width: 1024px;
-  margin: 0 auto;
+  margin: 0.5em auto 1em auto;
   text-align: left;    /* IE Hack */
 }
-
-/* Container: IE Hack */
-body {
-  text-align: center;
-  background: #F4F7ED;
+img {
+  border: none;
 }
-
-/* End - Container: IE Hack */
-
-img { border: none; }
 
 /*
    Landing Page
@@ -24,13 +42,30 @@ img { border: none; }
   border: 1px solid black;
   margin-top: 10%;
   margin-bottom: 5%;
+  /*border-radius: 2em;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;*/
+  box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;
 }
 #landing_links {
-  text-align: center;
-  white-space: nowrap;
+  width: 1023px;
+  height: 334px;
+  /*border-radius: 2em;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;*/
+  box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;
 }
-.landing_links {
+#landing_links ul li {
+  display: inline;
+}
+#landing_links ul img {
   height: 334px;
   width: 341px;
-  display: inline;
+  margin: 0;
+  padding: 0;
+  float: left;
 }

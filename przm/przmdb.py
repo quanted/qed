@@ -19,7 +19,7 @@ NOA_select =(('','Select the number of applications'),('1','1'),('2','2'),('3','
 
 
 class PRZMInp(forms.Form):
-    chemical_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}))#Alachlor
+    chemical_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2, 'readonly':'readonly'}), initial='Forchlorfenuron')#Alachlor
     Scenarios = forms.ChoiceField(required=True,choices=Scenario_select, label='Standard OPP/EFED Scenarios', initial='')
     NOA = forms.ChoiceField(required=True,choices=NOA_select, label='Number of applications', initial='')
     Unit = forms.ChoiceField(widget=forms.RadioSelect(), choices=Unit_select, label='Application unit')

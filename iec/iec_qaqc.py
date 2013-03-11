@@ -186,9 +186,12 @@ class IecQaqcPage(webapp.RequestHandler):
                 <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
             </tr>         
         </table>
-        """ % (out_fun_z_score_f[0],z_score_f_out[0],test_suite_z_score_f_1,out_fun_z_score_f[1],z_score_f_out[1],test_suite_z_score_f_2,
-               out_fun_F8_f[0],F8_f_out[0],test_suite_F8_f_1,out_fun_F8_f[1],F8_f_out[1],test_suite_F8_f_2,
-               out_fun_chance_f[0],chance_f_out[0],test_suite_chance_f_1,out_fun_chance_f[1],chance_f_out[1],test_suite_chance_f_2)
+        """ % (round(out_fun_z_score_f[0],3), round(z_score_f_out[0],3), test_suite_z_score_f_1, 
+               round(out_fun_z_score_f[1],3), round(z_score_f_out[1],3), test_suite_z_score_f_2,
+               round(out_fun_F8_f[0],3), round(F8_f_out[0],3), test_suite_F8_f_1, 
+               round(out_fun_F8_f[1],3), round(F8_f_out[1],3), test_suite_F8_f_2,
+               round(out_fun_chance_f[0],3), round(chance_f_out[0],3), test_suite_chance_f_1, 
+               round(out_fun_chance_f[1],3), round(chance_f_out[1],3), test_suite_chance_f_2)
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

@@ -254,10 +254,14 @@ class RiceQaqcPage(webapp.RequestHandler):
                 <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
             </tr>         
         </table>
-        """ % (out_fun_Msed[0],msed_out[0],test_suite_msed_1,out_fun_Msed[1],msed_out[1],test_suite_msed_2,
-               out_fun_Vw[0],vw_out[0],test_suite_vw_1,out_fun_Vw[1],vw_out[1],test_suite_vw_2,
-               out_fun_Mai1[0],mai1_out[0],test_suite_mai1_1,out_fun_Mai1[1],mai1_out[1],test_suite_mai1_2,
-               out_fun_Cw[0],cw_out[0],test_suite_cw_1,out_fun_Cw[1],cw_out[1],test_suite_cw_2)
+        """ % (out_fun_Msed[0],msed_out[0],test_suite_msed_1,
+               out_fun_Msed[1],msed_out[1],test_suite_msed_2,
+               out_fun_Vw[0],vw_out[0],test_suite_vw_1,
+               out_fun_Vw[1],vw_out[1],test_suite_vw_2,
+               out_fun_Mai1[0],mai1_out[0],test_suite_mai1_1,
+               out_fun_Mai1[1],mai1_out[1],test_suite_mai1_2,
+               out_fun_Cw[0],cw_out[0],test_suite_cw_1,
+               out_fun_Cw[1],cw_out[1],test_suite_cw_2)
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

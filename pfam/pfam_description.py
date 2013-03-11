@@ -20,9 +20,8 @@ class PFAMDescriptionPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'pfam','page':'description'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                       
         html = html + template.render(templatepath + '04ubertext_start.html', {
-                'model_page':'#', 
-                'model_attributes':'PFAM Overview', 
-                'text_paragraph':xx})
+            'model_page':'https://sites.google.com/site/pfamodel/documents', 
+            'model_attributes':'PFAM Overview', 'text_paragraph':xx})
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

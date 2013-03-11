@@ -1,7 +1,10 @@
 <script type="text/javascript" src=" ../stylesheets/jquery-1.7.2.js"></script>
 <script type="text/javascript" src=" ../stylesheets/jquery.validate.js"></script>
-<link type="text/css" rel="stylesheet" href="http://craigsworks.com/projects/qtip2/packages/nightly/jquery.qtip.css" />
+<!-- <link type="text/css" rel="stylesheet" href="http://craigsworks.com/projects/qtip2/packages/nightly/jquery.qtip.css" />
 <script type="text/javascript" src="http://craigsworks.com/projects/qtip2/packages/nightly/jquery.qtip.js"></script>
+ -->
+<link type="text/css" rel="stylesheet" href="../stylesheets/jquery.qtip.css" />
+<script type="text/javascript" src="../stylesheets/jquery.qtip.js"></script>
 
 <script>
 $(document).ready(function() {
@@ -62,7 +65,7 @@ var HArvest_pool={'NC Sweet Potato MLRA-133': '2209', 'ID Potato   MLRA-11B': '1
 			}});
 		
 	i = 1;
-	$('.articles').find('table').addClass('table');
+	$('.articles').find('table:first').addClass('table');
     $('#id_Ap_m').closest('tr').addClass('app_method');
     $('#id_Ar').closest('tr').addClass('app_rate');
     $('#id_Apt').closest('tr').addClass('app_timing');
@@ -253,12 +256,17 @@ var HArvest_pool={'NC Sweet Potato MLRA-133': '2209', 'ID Potato   MLRA-11B': '1
 			});			
 		}
 		
+		});	
+		
 		title_app_timing='The application dates should be in sequential.'
 		$('.app_timing').find('th').attr('title', title_app_timing)
 		$('.app_timing th').qtip();
-		
-		});	
 
+		title_chemical='Forchlorfenuron comes from EXPRESS standard scenarios. More scenarios are coming!'
+		$("label[for='id_chemical_name']").attr({'title': title_chemical, 'id':'id_chemical_name_title'})
+		$('#id_chemical_name_title').qtip();		
+		
+		
 //begin the form validation process////////////////////////////
 					$.validator.addMethod(
 						"apptiming",

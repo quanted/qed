@@ -28,42 +28,42 @@ class KabamInputPage(webapp.RequestHandler):
                 'model':'kabam', 
                 'model_attributes':'Kabam Inputs'})
         html = html + """<table><H4  align="center" id="id_tab">
-            |<a href="#" class="Chemical"> Chemical </a>|
-             <a href="#" class="Avian"> Application </a>|
-             <a href="#" class="Mammal"> Location </a>|
-             <a href="#" class="Large Fish"> Floods </a>|
-             <a href="#" class="Medium Fish"> Crop </a>|
-             <a href="#" class="Small Fish"> Physical </a>|
-             <a href="#" class="Filter feeders"> Output </a>|
-             <a href="#" class="Invertebrates"> Output </a>|
-             <a href="#" class="Zooplankton"> Output </a>|
-             <a href="#" class="Phytoplankton"> Output </a>|
-             <a href="#" class="Sediment"> Output </a>|
-             <a href="#" class="Constants"> Output </a>|
+            |<a class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </a>|
+             <a class="Avian" style="font-weight:bold"> Avian </a>|
+             <a class="Mammal" style="font-weight:bold"> Mammal </a>|
+             <a class="LargeFish" style="font-weight:bold"> Large Fish </a>|
+             <a class="MediumFish" style="font-weight:bold"> Medium Fish </a>|
+             <a class="SmallFish" style="font-weight:bold"> Small Fish </a>|
+             <a class="Filterfeeders" style="font-weight:bold"> Filter feeders </a>|
+             <a class="Invertebrates" style="font-weight:bold"> Invertebrates </a>|
+             <a class="Zooplankton" style="font-weight:bold"> Zooplankton </a>|
+             <a class="Phytoplankton" style="font-weight:bold"> Phytoplankton </a>|
+             <a class="Sediment" style="font-weight:bold"> Sediment </a>|
+             <a class="Constants" style="font-weight:bold"> Constants </a>|
             </H4>"""
         html = html + """</table><br><table class="tab tab_Chemical" border="0">"""
         html = html + str(Kabamdb.KabamInp_chem())
-        html = html + """</table><br><table class="tab tab_Avian" border="0">"""
+        html = html + """</table><table class="tab tab_Avian" border="0" style="display:none">"""
         html = html + str(Kabamdb.KabamInp_bird())
-        html = html + """</table><br><table class="tab tab_Mammal" border="0">"""
+        html = html + """</table><table class="tab tab_Mammal" border="0" style="display:none">"""
         html = html + str(Kabamdb.KabamInp_mammal())
-        html = html + """</table><br><table class="tab tab_Large Fish" border="0">"""
+        html = html + """</table><table class="tab tab_LargeFish" border="0" style="display:none">"""
         html = html + str(Kabamdb.KabamInp_lfish())
-        html = html + """</table><br><table class="tab tab_Medium Fish" border="0">"""
+        html = html + """</table><table class="tab tab_MediumFish" border="0" style="display:none">"""
         html = html + str(Kabamdb.KabamInp_mfish())
-        html = html + """</table><br><table class="tab tab_Small Fish" border="0">"""
+        html = html + """</table><table class="tab tab_SmallFish" border="0" style="display:none">"""
         html = html + str(Kabamdb.KabamInp_sfish())
-        html = html + """</table><br><table class="tab tab_Filter feeders" border="0">"""
+        html = html + """</table><table class="tab tab_Filterfeeders" border="0" style="display:none">"""
         html = html + str(Kabamdb.KabamInp_ff())
-        html = html + """</table><br><table class="tab tab_Invertebrates" border="0">"""
+        html = html + """</table><table class="tab tab_Invertebrates" border="0" style="display:none">"""
         html = html + str(Kabamdb.KabamInp_invert())
-        html = html + """</table><br><table class="tab tab_Zooplankton" border="0">"""
+        html = html + """</table><table class="tab tab_Zooplankton" border="0" style="display:none">"""
         html = html + str(Kabamdb.KabamInp_zoo())
-        html = html + """</table><br><table class="tab tab_Phytoplankton" border="0">"""
+        html = html + """</table><table class="tab tab_Phytoplankton" border="0" style="display:none">"""
         html = html + str(Kabamdb.KabamInp_phyto())
-        html = html + """</table><br><table class="tab tab_Sediment" border="0">"""
+        html = html + """</table><table class="tab tab_Sediment" border="0" style="display:none">"""
         html = html + str(Kabamdb.KabamInp_sed())
-        html = html + """</table><br><table class="tab tab_Constants" border="0">"""
+        html = html + """</table><table class="tab tab_Constants" border="0" style="display:none">"""
         html = html + str(Kabamdb.KabamInp_constants())
         html = html + template.render(templatepath + 'kabam_input_end.html', {'sub_title': 'Submit'})
       #  html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})

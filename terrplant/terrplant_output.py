@@ -10,6 +10,11 @@ import numpy as np
 import cgi
 import cgitb
 cgitb.enable()
+import logging
+import sys
+sys.path.append("../utils")
+import utils.json_utils
+
 
 
 #import csv as TerrPlant
@@ -662,6 +667,65 @@ def LOCldsspray(ldsRQspray):
 #
 #print open(PyPestDir+'\TerrPlant\TerrPlant.output.csv', 'rt').read()
 
+class TerrPlantBatchRunner():
+    
+    def runTerrPlantModel(self,config_properties,results_dict):
+        results_dict = {}
+        #this is where properties are searched, converted as needed, and any available methods are called
+        A = None
+        if 'application_lbs_rate' in config_properties:
+            A = config_properties['application_lbs_rate']
+        I = None
+        if 'incorporation_depth' in config_properties:
+            I = config_properties['incorporation_depth']
+        R = None
+        if 'runoff' in config_properties:
+            R = config_properties['runoff']
+        if A and I and R:
+            results_dict['EEC-dry'] = rundry(A,I,R)
+            results_dict['EEC-semi-aquatic'] = runsemi(A, I, R)
+            D = None
+            if 'spray_drift' in config_properties:
+                D = config_properties['spray_drift']
+            if D:
+                results_dict['EEC-spray-drift'] = spray(A,D)
+        if results_dict['EEC-dry'] and results_dict['EEC-spray-drift']:
+            results_dict['EEC-total-dry'] = totaldry(results_dict['EEC-dry'],results_dict['EEC-spray-drift'])
+        if results_dict['EEC-semi-aquatic'] and results_dict['EEC-spray-drift']:
+            results_dict['EEC-total-semi-aquatic'] = totalsemi(results_dict['EEC-semi-aquatic'],results_dict['EEC-spray-drift'])
+        nms = None
+        if 'EC25_for_nonlisted_seedling_emergence_monocot' in config_properties:
+            nms = config_properties['NOAEC_for_listed_seedling_emergence_monocot']
+        if results_dict['EEC-total-dry'] and nms:
+            results_dict['nmsRQdry'] = nmsRQdry(results_dict['EEC-total-dry'],nms)
+        if results_dict['EEC-total-semi-aquatic'] and nms:    
+            results_dict['nmsRQsemi'] = nmsRQsemi(results_dict['EEC-total-semi-aquatic'],nms)
+            results_dict['nmsRQspray'] = nmsRQspray(results_dict['EEC-spray-drift'],nms)
+        lms = None
+        if 'NOAEC_for_listed_seedling_emergence_monocot' in config_properties:
+            lms = config_properties['NOAEC_for_listed_seedling_emergence_monocot']
+        if results_dict['EEC-total-dry'] and lms:
+            results_dict['lmsRQdry'] = lmsRQdry(results_dict['EEC-total-dry'],lms)
+        if results_dict['EEC-total-semi-aquatic'] and lms:
+            results_dict['lmsRQsemi'] = lmsRQsemi(results_dict['EEC-total-semi-aquatic'],lms)
+            results_dict['lmsRQspray'] = lmsRQspray(results_dict['EEC-spray-drift'],lms)
+        nds = None
+        if 'EC25_for_nonlisted_seedling_emergence_dicot' in config_properties:
+            nds = config_properties['EC25_for_nonlisted_seedling_emergence_dicot']
+        if results_dict['EEC-total-dry'] and nds:
+            results_dict['ndsRQdry'] = ndsRQdry(results_dict['EEC-total-dry'],nds)
+        if results_dict['EEC-total-semi-aquatic'] and nds:    
+            results_dict['ndsRQsemi'] = ndsRQsemi(results_dict['EEC-total-semi-aquatic'],nds)
+            results_dict['ndsRQspray'] = ndsRQspray(results_dict['EEC-spray-drift'],nds)
+        lds = None
+        if 'NOAEC_for_listed_vegetative_vigor_dicot' in config_properties:
+            lds = config_properties['NOAEC_for_listed_vegetative_vigor_dicot']
+        if results_dict['EEC-total-dry'] and lds:
+            results_dict['ldsRQdry'] = ldsRQdry(results_dict['EEC-total-dry'],lds)
+        if results_dict['EEC-total-semi-aquatic'] and lds:
+            results_dict['ldsRQsemi'] = ldsRQsemi(results_dict['EEC-total-semi-aquatic'],lds)
+            results_dict['ldsRQspray'] = ldsRQspray(results_dict['EEC-spray-drift'],lds)            
+        return results_dict
 
 
 class TerrPlantExecutePage(webapp.RequestHandler):

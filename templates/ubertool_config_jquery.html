@@ -25,10 +25,14 @@ function submitBatchConfigurations()
 				async: false,
 				type: 'POST',
 				data: JSON.stringify(form_data),
-				complete: function(form_data) {
-					window.location.href = "/user.html";
+				success: function(batch_run_id) {
+					alert(batch_run_id);
 				}
 			});
+		},
+		complete: function()
+		{
+      		window.location.href="user.html";
 		}
 	});
 }	

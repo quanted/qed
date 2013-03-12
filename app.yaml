@@ -209,7 +209,17 @@ handlers:
 - url: /batch
   script: batch/batch_processor.py
   login: required
+
+#batch retrieval service
+- url: /batch_results/(.*)
+  script: batch/batch.py
+  login: required
   
+#batch retrieval service
+- url: /batch_configs
+  script: batch/batch.py
+  login: required 
+ 
 #use label site data
 - url: /site_data.html
   script: ubertool/use_input.py

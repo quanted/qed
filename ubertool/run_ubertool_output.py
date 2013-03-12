@@ -27,6 +27,7 @@ import urllib,httplib
 #batch_conn = httplib.HTTPConnection('http://localhost:8888')
 #h = httplib2.Http(".cache")
 from django.utils import simplejson
+import pickle
 
 batchProcessor = BatchService()
 usePropService = UsePropertiesRetrievalService()
@@ -142,6 +143,14 @@ def retrieveBatchUbertoolConfiguration(data):
     current_terra_config_name = terra_config_name_prefix + str(current_config_number)
     current_ubertool_config_name = ubertool_config_name_prefix + str(current_config_number)
     batch = None
+    batch_ubertool_config_names = []
+    batch_use_config_names = []
+    batch_pest_config_names = []
+    batch_aqua_config_names = []
+    batch_eco_config_names = []
+    batch_expo_config_names = []
+    batch_terra_config_names = []
+    batch_ubertool_config_names.append(ubertool_config_name)
     if current_ubertool_config_name in keys:
         while current_ubertool_config_name in keys:
             ubertool_tuple = retrieveUbertoolConfigFromForm(data,current_ubertool_config_name,current_use_config_name,current_pest_config_name,current_aqua_config_name,current_eco_config_name,current_expo_config_name,current_terra_config_name)
@@ -157,14 +166,23 @@ def retrieveBatchUbertoolConfiguration(data):
             current_expo_config_name = expo_config_name_prefix + str(current_config_number)
             current_terra_config_name = terra_config_name_prefix + str(current_config_number)
             current_ubertool_config_name = ubertool_config_name_prefix + str(current_config_number)
+            batch_ubertool_config_names.append(current_ubertool_config_name)
         #create Batch object
-        batch = Batch(user=user,
-                      completed=False,
-                      ubertools=ubertools)
-        batch_dict['id'] = batch.id
+        uber_pickle = pickle.dumps(ubertools)
+        batch = Batch()
+        batch.user=user
+        batch.ubertools=uber_pickle
+        batch.put()
+        batch_dict['id'] = batch.key.id_or_name()
         batch_dict['ubertools'] = ubertools
     #test if only partial configs were passed
     elif current_use_config_name in keys or current_pest_config_name in keys or current_aqua_config_name in keys or current_eco_config_name in keys or current_expo_config_name in keys or current_terra_config_name in keys:
+        batch_use_config_names.append(current_use_config_name)
+        batch_pest_config_names.append(current_pest_config_name)
+        batch_aqua_config_names.append(current_aqua_config_name)
+        batch_eco_config_names.append(current_eco_config_name)
+        batch_expo_config_names.append(current_expo_config_name)
+        batch_terra_config_names.append(current_terra_config_name)
         current_config_number = 1
         use_configs = []
         current_use_config_name = use_config_name_prefix + str(current_config_number)
@@ -220,28 +238,37 @@ def retrieveBatchUbertoolConfiguration(data):
             current_terraa_config_name = terra_config_name_prefix + str(current_config_number)
         batch_dict["terras"] = terra_configs
         #create Batch object
-        batch = Batch(user=user,completed=False)
+        batch = Batch()
+        batch.user=user
         if 'uses' in batch_dict:
-            batch.uses = batch_dict['uses']
+            uses_pickle = pickle.dumps(batch_ubertool_config_names)
+            batch.uses = uses_pickle
         if 'pests' in batch_dict:
-            batch.pests = batch_dict['pests']
+            pests_pickle = pickle.dumps(batch_pest_config_names)
+            batch.pests = pests_pickle
         if 'aquas' in batch_dict:
-            batch.aquas = batch_dict['aquas']
+            aquas_pickle = pickle.dumps(batch_aqua_config_names)
+            batch.aquas = aquas_pickle
         if 'ecos' in batch_dict:
-            batch.ecos = batch_dict['ecos']
+            ecos_pickle = pickle.dumps(batch_eco_config_names)
+            batch.ecos = ecos_pickle
         if 'expos' in batch_dict:
-            batch.expos = batch_dict['expos']
+            expos_pickle = pickle.dumps(batch_expo_config_names)
+            batch.expos = expos_pickle
         if 'terras' in batch_dict:
-            batch.terras = batch_dict['terras']
+            terras_pickle = pickle.dumps(batch_terra_config_names)
+            batch.terras = terras_pickle
         batch.put()
-        batch_dict['id'] = batch.id
+        batch_dict['id'] = batch.key.id_or_name()
         logger.info(batch.to_xml())
     else:
-        #create Batch object
-        batch = Batch(user=user,
-                      completed=False,
-                      ubertools=ubertools)
-        batch_dict['id'] = batch.id
+        uber_pickle = pickle.dumps(batch_ubertool_config_names)
+        batch = Batch()
+        batch.user = user
+        batch.ubertools=uber_pickle
+        batch.put()
+        logger.info(batch.user)
+        batch_dict['id'] = str(batch.key())
         batch_dict["ubertools"] = ubertools
     return batch_dict
         

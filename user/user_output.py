@@ -18,6 +18,9 @@ from ubertool.ecosystem_inputs import EcosystemInputs
 from ubertool.exposure_concentrations import ExposureConcentrations
 from ubertool.terrestrial_toxicity import TerrestrialToxicity
 from ubertool.ubertool import Ubertool
+import logging
+
+logger = logging.getLogger("UserOutput")
 
 
 class UserOutputPage(webapp.RequestHandler):

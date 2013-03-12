@@ -1,5 +1,5 @@
 application: pypest
-version: sprint3
+version: sprint2
 runtime: python27
 api_version: 1
 
@@ -27,9 +27,6 @@ skip_files:
 - ^(.*/)?\..*
 - ^(.*/)?.*\.gz
 - ^(.*/)?.*\.bak$
-
-+builtins:
-+- appstats: on
 
 handlers:
 - url: /

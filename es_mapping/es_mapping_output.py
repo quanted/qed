@@ -27,7 +27,6 @@ class ESOutputPage(webapp.RequestHandler):
             'model_attributes':'Endangered Species Mapper Output'})
         html = html + template.render(templatepath+'ManykmlDropbox.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
      

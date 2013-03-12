@@ -21,18 +21,18 @@ body {
   font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size: 11px;
   line-height: 18px;
-  color: #333333;;
+  color: #333333;
 }
 #container {
   width: 1024px;
-  margin: 0.5em auto 1em auto;
+  margin: 5px auto 5px auto;
   text-align: left;    /* IE Hack */
-  /*border-radius: 2em;
-  -webkit-border-radius: 2em;
-  -moz-border-radius: 2em;*/
-  box-shadow: 3px 3px 15px #CCC;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  /*box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
-  -moz-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;*/
 }
 img {
   border: none;
@@ -104,15 +104,18 @@ a:hover {
 
 /* 01uberheader.html */
 
-.spacer {
-  margin-top: 4px;
-  clear: both;
-}
 #banner {
   width: 1024px;
   background: #A31E39;
   min-height: 30px;
   font-size: 1.6em;
+  border-bottom: 2px solid #F4F7ED;
+  border-radius: 10px 10px 0 0;
+  -webkit-border-radius: 10px 10px 0 0;
+  -moz-border-radius: 10px 10px 0 0;
+  /*box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;*/
 }
 #banner_l {
   color: white;
@@ -129,7 +132,7 @@ a:hover {
   height: 240px;
   float: left;
   border-right: 4px solid #F4F7ED;
-  border-bottom: 4px solid #F4F7ED;
+  border-bottom: 2px solid #F4F7ED;
 }
 #topheader_pic img {
   width: 720px;
@@ -143,7 +146,7 @@ a:hover {
   color: white;
   font-size: 12px;
   text-align: justify;
-  border-bottom: 4px solid #F4F7ED;
+  border-bottom: 2px solid #F4F7ED;
 }
 #topheader_p p {
   margin-left: auto;
@@ -161,6 +164,12 @@ a:hover {
   height: 24px;
   background: #A31E39;
   float: left;
+  border-radius: 0 0 0 10px;
+  -webkit-border-radius: 0 0 0 10px;
+  -moz-border-radius: 0 0 0 10px;
+  /*box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;*/
 }
 #header_menu_nav ul {
   padding-left: 175px;
@@ -180,7 +189,7 @@ a:hover {
   display:inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/sprites/navbar_description.gif);
+  background: url(../images/tabs/hh/white/navbar_description.gif);
   background-position: 0 0;
 }
 .fadeDesc_description * {
@@ -190,14 +199,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/sprites/navbar_description.gif);
+  background: url(../images/tabs/hh/white/navbar_description.gif);
   background-position: 0 -24px;
 }
 .fadeInp_description {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background: url(../images/tabs/hh/sprites/navbar_description.gif);
+  background: url(../images/tabs/hh/white/navbar_description.gif);
   background-position: -110px 0;
 }
 .fadeInp_description * {
@@ -207,14 +216,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_description.gif);
+  background-image: url(../images/tabs/hh/white/navbar_description.gif);
   background-position: -110px -24px;
 }
 .fadeAlg_description {
   display:inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/sprites/navbar_description.gif);
+  background-image: url(../images/tabs/hh/white/navbar_description.gif);
   background-position: -180px 0;
 }
 .fadeAlg_description * {
@@ -224,14 +233,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/sprites/navbar_description.gif);
+  background-image: url(../images/tabs/hh/white/navbar_description.gif);
   background-position: -180px -24px;
 }
 .fadeRef_description {
   display:inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/sprites/navbar_description.gif);
+  background-image: url(../images/tabs/hh/white/navbar_description.gif);
   background-position: -282px 0;
 }
 .fadeRef_description * {
@@ -241,14 +250,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/sprites/navbar_description.gif);
+  background-image: url(../images/tabs/hh/white/navbar_description.gif);
   background-position: -282px -24px;
 }
 .fadeQAQC_description {
   display:inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/sprites/navbar_description.gif);
+  background-image: url(../images/tabs/hh/white/navbar_description.gif);
   background-position: -386px 0;
 }
 .fadeQAQC_description * {
@@ -258,14 +267,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/sprites/navbar_description.gif);
+  background-image: url(../images/tabs/hh/white/navbar_description.gif);
   background-position: -386px -24px;
 }
 .fadeBat_description {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_description.gif);
+  background-image: url(../images/tabs/hh/white/navbar_description.gif);
   background-position: -460px 0;
 }
 .fadeBat_description * {
@@ -275,14 +284,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_description.gif);
+  background-image: url(../images/tabs/hh/white/navbar_description.gif);
   background-position: -460px -24px;
 }
 .fadeDesc_input {
   display:inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/sprites/navbar_input.gif);
+  background: url(../images/tabs/hh/white/navbar_input.gif);
   background-position: 0 0;
 }
 .fadeDesc_input * {
@@ -292,14 +301,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/sprites/navbar_input.gif);
+  background: url(../images/tabs/hh/white/navbar_input.gif);
   background-position: 0 -24px;
 }
 .fadeInp_input {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background: url(../images/tabs/hh/sprites/navbar_input.gif);
+  background: url(../images/tabs/hh/white/navbar_input.gif);
   background-position: -110px 0;
 }
 .fadeInp_input * {
@@ -309,14 +318,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_input.gif);
+  background-image: url(../images/tabs/hh/white/navbar_input.gif);
   background-position: -110px -24px;
 }
 .fadeAlg_input {
   display:inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/sprites/navbar_input.gif);
+  background-image: url(../images/tabs/hh/white/navbar_input.gif);
   background-position: -180px 0;
 }
 .fadeAlg_input * {
@@ -326,14 +335,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/sprites/navbar_input.gif);
+  background-image: url(../images/tabs/hh/white/navbar_input.gif);
   background-position: -180px -24px;
 }
 .fadeRef_input {
   display:inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/sprites/navbar_input.gif);
+  background-image: url(../images/tabs/hh/white/navbar_input.gif);
   background-position: -282px 0;
 }
 .fadeRef_input * {
@@ -343,14 +352,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/sprites/navbar_input.gif);
+  background-image: url(../images/tabs/hh/white/navbar_input.gif);
   background-position: -282px -24px;
 }
 .fadeQAQC_input {
   display:inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/sprites/navbar_input.gif);
+  background-image: url(../images/tabs/hh/white/navbar_input.gif);
   background-position: -386px 0;
 }
 .fadeQAQC_input * {
@@ -360,14 +369,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/sprites/navbar_input.gif);
+  background-image: url(../images/tabs/hh/white/navbar_input.gif);
   background-position: -386px -24px;
 }
 .fadeBat_input {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_input.gif);
+  background-image: url(../images/tabs/hh/white/navbar_input.gif);
   background-position: -460px 0;
 }
 .fadeBat_input * {
@@ -377,14 +386,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_input.gif);
+  background-image: url(../images/tabs/hh/white/navbar_input.gif);
   background-position: -460px -24px;
 }
 .fadeDesc_algorithm {
   display:inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
+  background: url(../images/tabs/hh/white/navbar_algorithm.gif);
   background-position: 0 0;
 }
 .fadeDesc_algorithm * {
@@ -394,14 +403,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
+  background: url(../images/tabs/hh/white/navbar_algorithm.gif);
   background-position: 0 -24px;
 }
 .fadeInp_algorithm {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
+  background: url(../images/tabs/hh/white/navbar_algorithm.gif);
   background-position: -110px 0;
 }
 .fadeInp_algorithm * {
@@ -411,14 +420,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
+  background-image: url(../images/tabs/hh/white/navbar_algorithm.gif);
   background-position: -110px -24px;
 }
 .fadeAlg_algorithm {
   display:inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
+  background-image: url(../images/tabs/hh/white/navbar_algorithm.gif);
   background-position: -180px 0;
 }
 .fadeAlg_algorithm * {
@@ -428,14 +437,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
+  background-image: url(../images/tabs/hh/white/navbar_algorithm.gif);
   background-position: -180px -24px;
 }
 .fadeRef_algorithm {
   display:inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
+  background-image: url(../images/tabs/hh/white/navbar_algorithm.gif);
   background-position: -282px 0;
 }
 .fadeRef_algorithm * {
@@ -445,14 +454,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
+  background-image: url(../images/tabs/hh/white/navbar_algorithm.gif);
   background-position: -282px -24px;
 }
 .fadeQAQC_algorithm {
   display:inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
+  background-image: url(../images/tabs/hh/white/navbar_algorithm.gif);
   background-position: -386px 0;
 }
 .fadeQAQC_algorithm * {
@@ -462,14 +471,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
+  background-image: url(../images/tabs/hh/white/navbar_algorithm.gif);
   background-position: -386px -24px;
 }
 .fadeBat_algorithm {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
+  background-image: url(../images/tabs/hh/white/navbar_algorithm.gif);
   background-position: -460px 0;
 }
 .fadeBat_algorithm * {
@@ -479,14 +488,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
+  background-image: url(../images/tabs/hh/white/navbar_algorithm.gif);
   background-position: -460px -24px;
 }
 .fadeDesc_references {
   display:inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/sprites/navbar_references.gif);
+  background: url(../images/tabs/hh/white/navbar_references.gif);
   background-position: 0 0;
 }
 .fadeDesc_references * {
@@ -496,14 +505,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/sprites/navbar_references.gif);
+  background: url(../images/tabs/hh/white/navbar_references.gif);
   background-position: 0 -24px;
 }
 .fadeInp_references {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background: url(../images/tabs/hh/sprites/navbar_references.gif);
+  background: url(../images/tabs/hh/white/navbar_references.gif);
   background-position: -110px 0;
 }
 .fadeInp_references * {
@@ -513,14 +522,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_references.gif);
+  background-image: url(../images/tabs/hh/white/navbar_references.gif);
   background-position: -110px -24px;
 }
 .fadeAlg_references {
   display:inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/sprites/navbar_references.gif);
+  background-image: url(../images/tabs/hh/white/navbar_references.gif);
   background-position: -180px 0;
 }
 .fadeAlg_references * {
@@ -530,14 +539,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/sprites/navbar_references.gif);
+  background-image: url(../images/tabs/hh/white/navbar_references.gif);
   background-position: -180px -24px;
 }
 .fadeRef_references {
   display:inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/sprites/navbar_references.gif);
+  background-image: url(../images/tabs/hh/white/navbar_references.gif);
   background-position: -282px 0;
 }
 .fadeRef_references * {
@@ -547,14 +556,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/sprites/navbar_references.gif);
+  background-image: url(../images/tabs/hh/white/navbar_references.gif);
   background-position: -282px -24px;
 }
 .fadeQAQC_references {
   display:inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/sprites/navbar_references.gif);
+  background-image: url(../images/tabs/hh/white/navbar_references.gif);
   background-position: -386px 0;
 }
 .fadeQAQC_references * {
@@ -564,14 +573,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/sprites/navbar_references.gif);
+  background-image: url(../images/tabs/hh/white/navbar_references.gif);
   background-position: -386px -24px;
 }
 .fadeBat_references {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_references.gif);
+  background-image: url(../images/tabs/hh/white/navbar_references.gif);
   background-position: -460px 0;
 }
 .fadeBat_references * {
@@ -581,14 +590,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_references.gif);
+  background-image: url(../images/tabs/hh/white/navbar_references.gif);
   background-position: -460px -24px;
 }
 .fadeDesc_qaqc {
   display:inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
+  background: url(../images/tabs/hh/white/navbar_qaqc.gif);
   background-position: 0 0;
 }
 .fadeDesc_qaqc * {
@@ -598,14 +607,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
+  background: url(../images/tabs/hh/white/navbar_qaqc.gif);
   background-position: 0 -24px;
 }
 .fadeInp_qaqc {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
+  background: url(../images/tabs/hh/white/navbar_qaqc.gif);
   background-position: -110px 0;
 }
 .fadeInp_qaqc * {
@@ -615,14 +624,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
+  background-image: url(../images/tabs/hh/white/navbar_qaqc.gif);
   background-position: -110px -24px;
 }
 .fadeAlg_qaqc {
   display:inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
+  background-image: url(../images/tabs/hh/white/navbar_qaqc.gif);
   background-position: -180px 0;
 }
 .fadeAlg_qaqc * {
@@ -632,14 +641,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
+  background-image: url(../images/tabs/hh/white/navbar_qaqc.gif);
   background-position: -180px -24px;
 }
 .fadeRef_qaqc {
   display:inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
+  background-image: url(../images/tabs/hh/white/navbar_qaqc.gif);
   background-position: -282px 0;
 }
 .fadeRef_qaqc * {
@@ -649,14 +658,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
+  background-image: url(../images/tabs/hh/white/navbar_qaqc.gif);
   background-position: -282px -24px;
 }
 .fadeQAQC_qaqc {
   display:inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
+  background-image: url(../images/tabs/hh/white/navbar_qaqc.gif);
   background-position: -386px 0;
 }
 .fadeQAQC_qaqc * {
@@ -666,14 +675,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
+  background-image: url(../images/tabs/hh/white/navbar_qaqc.gif);
   background-position: -386px -24px;
 }
 .fadeBat_qaqc {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
+  background-image: url(../images/tabs/hh/white/navbar_qaqc.gif);
   background-position: -460px 0;
 }
 .fadeBat_qaqc * {
@@ -683,14 +692,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
+  background-image: url(../images/tabs/hh/white/navbar_qaqc.gif);
   background-position: -460px -24px;
 }
 .fadeDesc_batchinput {
   display:inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
+  background: url(../images/tabs/hh/white/navbar_batchinput.gif);
   background-position: 0 0;
 }
 .fadeDesc_batchinput * {
@@ -700,14 +709,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
+  background: url(../images/tabs/hh/white/navbar_batchinput.gif);
   background-position: 0 -24px;
 }
 .fadeInp_batchinput {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
+  background: url(../images/tabs/hh/white/navbar_batchinput.gif);
   background-position: -110px 0;
 }
 .fadeInp_batchinput * {
@@ -717,14 +726,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
+  background-image: url(../images/tabs/hh/white/navbar_batchinput.gif);
   background-position: -110px -24px;
 }
 .fadeAlg_batchinput {
   display:inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
+  background-image: url(../images/tabs/hh/white/navbar_batchinput.gif);
   background-position: -180px 0;
 }
 .fadeAlg_batchinput * {
@@ -734,14 +743,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
+  background-image: url(../images/tabs/hh/white/navbar_batchinput.gif);
   background-position: -180px -24px;
 }
 .fadeRef_batchinput {
   display:inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
+  background-image: url(../images/tabs/hh/white/navbar_batchinput.gif);
   background-position: -282px 0;
 }
 .fadeRef_batchinput * {
@@ -751,14 +760,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
+  background-image: url(../images/tabs/hh/white/navbar_batchinput.gif);
   background-position: -282px -24px;
 }
 .fadeQAQC_batchinput {
   display:inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
+  background-image: url(../images/tabs/hh/white/navbar_batchinput.gif);
   background-position: -386px 0;
 }
 .fadeQAQC_batchinput * {
@@ -768,14 +777,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
+  background-image: url(../images/tabs/hh/white/navbar_batchinput.gif);
   background-position: -386px -24px;
 }
 .fadeBat_batchinput {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
+  background-image: url(../images/tabs/hh/white/navbar_batchinput.gif);
   background-position: -460px 0;
 }
 .fadeBat_batchinput * {
@@ -785,14 +794,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
+  background-image: url(../images/tabs/hh/white/navbar_batchinput.gif);
   background-position: -460px -24px;
 }
 .fadeDesc_output {
   display:inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/sprites/navbar_output.gif);
+  background: url(../images/tabs/hh/white/navbar_output.gif);
   background-position: 0 0;
 }
 .fadeDesc_output * {
@@ -802,14 +811,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/sprites/navbar_output.gif);
+  background: url(../images/tabs/hh/white/navbar_output.gif);
   background-position: 0 -24px;
 }
 .fadeInp_output {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background: url(../images/tabs/hh/sprites/navbar_output.gif);
+  background: url(../images/tabs/hh/white/navbar_output.gif);
   background-position: -110px 0;
 }
 .fadeInp_output * {
@@ -819,14 +828,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
+  background-image: url(../images/tabs/hh/white/navbar_output.gif);
   background-position: -110px -24px;
 }
 .fadeOut_output {
   display:inline-block;
   height: 24px;
   width: 72px;
-  background: url(../images/tabs/hh/sprites/navbar_output.gif);
+  background: url(../images/tabs/hh/white/navbar_output.gif);
   background-position: -180px 0;
 }
 .fadeOut_output * {
@@ -836,14 +845,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 72px;
-  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
+  background-image: url(../images/tabs/hh/white/navbar_output.gif);
   background-position: -180px -24px;
 }
 .fadeAlg_output {
   display:inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
+  background-image: url(../images/tabs/hh/white/navbar_output.gif);
   background-position: -252px 0;
 }
 .fadeAlg_output * {
@@ -853,14 +862,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
+  background-image: url(../images/tabs/hh/white/navbar_output.gif);
   background-position: -252px -24px;
 }
 .fadeRef_output {
   display:inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
+  background-image: url(../images/tabs/hh/white/navbar_output.gif);
   background-position: -354px 0;
 }
 .fadeRef_output * {
@@ -870,14 +879,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
+  background-image: url(../images/tabs/hh/white/navbar_output.gif);
   background-position: -354px -24px;
 }
 .fadeQAQC_output {
   display:inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
+  background-image: url(../images/tabs/hh/white/navbar_output.gif);
   background-position: -458px 0;
 }
 .fadeQAQC_output * {
@@ -887,14 +896,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
+  background-image: url(../images/tabs/hh/white/navbar_output.gif);
   background-position: -458px -24px;
 }
 .fadeBat_output {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
+  background-image: url(../images/tabs/hh/white/navbar_output.gif);
   background-position: -532px 0;
 }
 .fadeBat_output * {
@@ -904,7 +913,7 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
+  background-image: url(../images/tabs/hh/white/navbar_output.gif);
   background-position: -532px -24px;
 }
 
@@ -915,6 +924,12 @@ a:hover {
   height: 24px;
   background: #A31E39;
   float: left;
+  border-radius: 0 0 10px 0;
+  -webkit-border-radius: 0 0 10px 0;
+  -moz-border-radius: 0 0 10px 0;
+  /*box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;*/
 }
 #header_menu_r ul {
   padding-left: 0;
@@ -933,60 +948,68 @@ a:hover {
 /* Below Header */
 
 .urbangreymenu{
-  width: 160px; /*width of menu*/
+  width: 160px;
   float: left;
   text-align: left;
-  margin-top: 4px; /* Space bw Header */
+  margin-top: 4px;
 }
-.urbangreymenu .headerbar{
-  font: bold 11px Verdana, Arial, Helvetica;
-  color: white;
+.headerbar{
+  color: #FFFFFF;
   background: #485C5A;
   margin: 0 0 2px 0;
   text-transform: uppercase;
-  padding: 5px 5px 5px 5px; /*31px is left indentation of header text*/
+  padding: 2px 0 2px 8px;
+  border-radius: 10px 10px 0 0;
+  -webkit-border-radius: 10px 10px 0 0;
+  -moz-border-radius: 10px 10px 0 0;
+  /*box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;*/
 }
-.urbangreymenu .headerbar a{
+.headerbar a{
   text-decoration: none;
-  color: white;
+  color: #FFFFFF;
   display: block;
 }
 .urbangreymenu ul{
   list-style-type: none;
   margin: 0;
   padding: 0;
-  margin-bottom: 0; /*bottom spacing between each UL and rest of content*/
 }
 .urbangreymenu ul li{
-  padding-bottom: 2px; /*bottom spacing between menu items*/
+  padding-bottom: 2px;
 }
 .urbangreymenu ul li a{
-  font: normal 11px Verdana, Arial, Helvetica;
   color: #485C5A;
   background: #BFCFCC;
   display: block;
-  padding: 5px 0;
+  padding: 5px 0 5px 8px;
   line-height: 14px;
-  padding-left: 8px; /*link text is indented 8px*/
   text-decoration: none;
 }
 .urbangreymenu ul li a:visited{
   color: #485C5A;
 }
-.urbangreymenu ul li a:hover{
-  color: white;
-  background: #A31E39;
+.submenu_last {
+  margin-bottom: 2px;
+  border-radius: 0 0 10px 10px;
+  -webkit-border-radius: 0 0 10px 10px;
+  -moz-border-radius: 0 0 10px 10px;
+  /*box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;*/
 }
 .articles {
-  width: 648px;
+  width: 662px;
   display: inline;
   float: left;
-  margin: 1em;
+  margin: 4px;
   padding: 1em 1.5em;
-  background: #FFF;
-  border-radius: 2em;
-  -webkit-border-radius: 2em;
-  -moz-border-radius: 2em;
+  /*background: #F7F9F2;*/
+  background: #F9FBF6;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
   box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;
@@ -1017,15 +1040,16 @@ ul.nobullet {
   font-size: 12px;
 }
 .articles_output {
-  width: 808px;
+  width: 822px;
   display: inline;
   float: left;
-  margin: 1em;
+  margin: 4px;
   padding: 1em 1.5em;
-  background: #FFF;
-  border-radius: 2em;
-  -webkit-border-radius: 2em;
-  -moz-border-radius: 2em;
+  /*background: #F7F9F2;*/
+  background: #F9FBF6;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
   box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;
@@ -1122,6 +1146,12 @@ ul.nobullet {
   height: 31px;
   padding: 4px;
   text-align: center;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  /*box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;*/
 }
 #footer li {
   display: inline;

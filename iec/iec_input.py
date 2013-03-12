@@ -23,7 +23,7 @@ class iecInputPage(webapp.RequestHandler):
                 'model_attributes':'IEC Inputs'})
         html = html + str(iecdb.iecInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

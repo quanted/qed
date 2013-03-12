@@ -76,7 +76,6 @@ class exponentialOutputPage(webapp.RequestHandler):
                           </table>"""%((x_out))
         html = html + template.render(templatepath + 'exponential-output-jqplot.html', {})                         
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)
      

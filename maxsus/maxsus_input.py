@@ -21,7 +21,7 @@ class maxsusInputPage(webapp.RequestHandler):
                 'model_attributes':'Maximum Sustainable Yield Model Inputs'})
         html = html + str(maxsusdb.maxsusInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05pop_ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

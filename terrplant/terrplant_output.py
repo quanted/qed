@@ -859,7 +859,6 @@ ldsRQsemi(totalsemi(runsemi(A,I,R),spray(A,D)),lds),
 ldsRQspray(spray(A,D),lds)
 )
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

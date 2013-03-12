@@ -22,7 +22,7 @@ class SuperPRZMInputPage(webapp.RequestHandler):
                 'model_attributes':'SuperPRZM Inputs'})
         html = html + str(SuperPRZMdb.SuperPRZMInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

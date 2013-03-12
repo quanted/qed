@@ -191,7 +191,6 @@ class agdriftOutputPage(webapp.RequestHandler):
                           </table>"""%(x,y)
         html = html + template.render(templatepath + 'agdrift-output-jqplot.html', {})         
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
           
        

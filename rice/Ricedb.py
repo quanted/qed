@@ -12,7 +12,7 @@ from django.utils.safestring import mark_safe
 from google.appengine.api import users
 
 class RiceInp(forms.Form):
-    user = user.get_current_user()
+    user = users.get_current_user()
     user_id = ""
     if user:
         user_id = user.user_id()

@@ -8,6 +8,7 @@
 *.doc
 *.mdb
 *.pptx
+app.yaml
 .VolumeIcon.icns
 .fseventsd
 Icon^M^M
@@ -17,4 +18,4 @@ publish_fortran.py
 geneec_output.py
 przm_output.py
 pfam_output.py
-test/eco/rice/__init__.pyc
+GA2.tif

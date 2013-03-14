@@ -120,6 +120,9 @@ def retrieveTerraConfigFromForm(data, terra_config_key):
 def retrieveBatchUbertoolConfiguration(data):
     keys = data.keys()
     user = users.get_current_user()
+    batch = Batch()
+    batch.user = user
+    logger.info(batch.to_xml())
     ubertool_tuple = retrieveUbertoolConfigFromForm(data,"config_name","use_configuration","pest_configuration","aquatic_configuration","ecosystems_configuration","exposures_configuration","terrestrial_configuration")
     ubertool = ubertool_tuple[0]
     uber_dict = ubertool_tuple[1]
@@ -142,7 +145,6 @@ def retrieveBatchUbertoolConfiguration(data):
     current_expo_config_name = expo_config_name_prefix + str(current_config_number)
     current_terra_config_name = terra_config_name_prefix + str(current_config_number)
     current_ubertool_config_name = ubertool_config_name_prefix + str(current_config_number)
-    batch = None
     batch_ubertool_config_names = []
     batch_use_config_names = []
     batch_pest_config_names = []
@@ -169,8 +171,6 @@ def retrieveBatchUbertoolConfiguration(data):
             batch_ubertool_config_names.append(current_ubertool_config_name)
         #create Batch object
         uber_pickle = pickle.dumps(ubertools)
-        batch = Batch()
-        batch.user=user
         batch.ubertools=uber_pickle
         batch.put()
         batch_dict['id'] = batch.key.id_or_name()
@@ -238,8 +238,6 @@ def retrieveBatchUbertoolConfiguration(data):
             current_terraa_config_name = terra_config_name_prefix + str(current_config_number)
         batch_dict["terras"] = terra_configs
         #create Batch object
-        batch = Batch()
-        batch.user=user
         if 'uses' in batch_dict:
             uses_pickle = pickle.dumps(batch_ubertool_config_names)
             batch.uses = uses_pickle
@@ -263,11 +261,9 @@ def retrieveBatchUbertoolConfiguration(data):
         logger.info(batch.to_xml())
     else:
         uber_pickle = pickle.dumps(batch_ubertool_config_names)
-        batch = Batch()
-        batch.user = user
         batch.ubertools=uber_pickle
         batch.put()
-        logger.info(batch.user)
+        logger.info(batch.to_xml())
         batch_dict['id'] = str(batch.key())
         batch_dict["ubertools"] = ubertools
     return batch_dict
@@ -288,11 +284,10 @@ class UbertoolBatchConfigurationService(webapp.RequestHandler):
         logger = logging.getLogger("RunUbertoolConfigurationPage")
         data = simplejson.loads(self.request.body)
         data = convert(data)
+        logger.info(data)
         batch_dict = retrieveBatchUbertoolConfiguration(data)
-        #Pass batch id to cookie so user page will be able to periodically check back to see progress of batch
-        #self.redirect("user.html")
-        #logger.info(batch_dict)
         batch_json = simplejson.dumps(batch_dict)
+        logger.info(batch_json)
         self.response.headers['Content-Type'] = 'application/json'
         self.response.out.write(batch_json)
         

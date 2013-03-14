@@ -17,7 +17,7 @@ sys.path.append("../terrplant")
 ricePlantRunner = RiceBatchRunner()
 from terrplant.terrplant_output import TerrPlantBatchRunner
 terrPlantRunner = TerrPlantBatchRunner()
-#sys.path.append("../batch")
+sys.path.append("../batch")
 from batch import Batch
 import pickle
 from django.utils import simplejson
@@ -40,11 +40,12 @@ def processUbertoolBatchRunsIntoBatchModelRuns(ubertools):
     user = users.get_current_user()
     q = db.Query(Batch)
     q.filter('user =',user)
-    q.filter('id =',batch_id)
+    q.filter('key =',batch_id)
     batch = q.get()
     if not batch:
         batch = Batch()
         batch.user = user
+    logger.info(batch.to_xml())
     ubertools_results = {}
     ubertools_data = ubertools['ubertools']
     for ubertool in ubertools_data:
@@ -53,14 +54,13 @@ def processUbertoolBatchRunsIntoBatchModelRuns(ubertools):
         ubertool_result = {}
         logger.info(combined_ubertool_props)
         ubertool_result = terrPlantRunner.runTerrPlantModel(combined_ubertool_props,ubertool_result)
-        logger.info(ubertool_result)
         #perform on all other eco models
         ubertools_results[ubertool_id]=ubertool_result
     batch.completed = db.DateTimeProperty.now()
     results_pickle = pickle.dumps(ubertools_results)
-    batch.ubertools_results = results_pickle
+    batch.ubertool_results = results_pickle
     batch.put()
-    logger.info(ubertools_results)
+    logger.info(batch.to_xml())
     
         
 def combineUbertoolProperties(ubertool):

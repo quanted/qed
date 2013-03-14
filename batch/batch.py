@@ -12,27 +12,43 @@ import cgitb
 cgitb.enable()
 from django.utils import simplejson
 import logging
+import pickle
 
 logger = logging.getLogger("Batch")
 
 class Batch(db.Expando):
-    user = db.UserProperty
+    user = db.UserProperty()
     created = db.DateTimeProperty(auto_now_add=True)
-    completed = db.DateTimeProperty
+    ubertool_results = db.TextProperty()
+    completed = db.DateTimeProperty()
     
 class BatchResultsService(webapp.RequestHandler):
     
     def get(self,batch_run_id):
         user = users.get_current_user()
+        '''
         q = db.Query(Batch)
         q.filter('user =',user)
-        q.filter('key =',batch_run_id)
-        batch = q.get()
-        batch_results['complete'] = false
+        q.filter('key = ', batch_run_id)
+        '''
+        batchs = Batch.all()
+        batch = None
+        for poss_batch in batchs:
+            if str(poss_batch.key()) == batch_run_id:
+                batch = poss_batch
+        logger.info(batch.to_xml())
+        if not batch:
+            batch = Batch()
+            batch.user = user
+            logger.info(batch.to_xml())
+        batch_results = {}
         batch_json = None
-        if batch.ubertools_results:
-            batch_results['ubertool_data'] = batch.ubertools_results
-            batch_json = simplejson.dumps(batch_results)
+        if batch.ubertool_results:
+            batch_results['ubertool_data'] = pickle.loads(batch.ubertool_results)
+            if batch.completed:
+                batch_results['completed'] = str(batch.completed)
+        batch_json = simplejson.dumps(batch_results)
+        logger.info(batch_json)
         self.response.headers['Content-Type'] = 'application/json'
         self.response.out.write(batch_json)
         
@@ -42,13 +58,13 @@ class BatchConfigurationNamesService(webapp.RequestHandler):
         batch_dict = {}
         user = users.get_current_user()
         q = db.Query(Batch)
-        #q.filter('user =',user)
+        q.filter('user =',user)
         for batch in q:
-            batch_completion = False
+            batch_completed = False
             if batch.completed:
-                batch_completion = True
-            batch_dict[batch.key()] = batch.completed
-        logger.info(batch_dict)
+                batch_completed = str(batch.completed)
+            batch_dict[str(batch.key())] = batch_completed 
+        #logger.info(batch_dict)
         batch_json = simplejson.dumps(batch_dict)
         self.response.headers['Content-Type'] = 'application/json'
         self.response.out.write(batch_json)

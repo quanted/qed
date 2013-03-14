@@ -23,6 +23,7 @@ $(document).ready(function(){
 		async: false,
 		type: 'GET',
 		success: function(batch_data) {	
+			$("#id_batch_ubertool_results").width(120);
 			for(batch_config_name in batch_data)
 			{
 				var config_label = batch_config_name + " Completed: " + batch_data[batch_config_name];
@@ -32,11 +33,12 @@ $(document).ready(function(){
 	});
 	
 	$("#id_batch_ubertool_results").change(function(){
+		var batch_configuration = $("#id_batch_ubertool_results")[0].value;		
 		$("#use_config_params").css({"visibility":"hidden","height":"0px"});
-		var batch_configuration = $("#id_batch_ubertool_results")[0].value;
-		if(user_use_configurbatch_configurationation != "None")
+		if(batch_configuration != "None")
 		{
 			$("#id_batch_results_table").css({"visibility":"visible","height":"482px"});
+			var batch_data;
 			$.ajax({
 				url:"batch_results/"+batch_configuration,
 				async: false,
@@ -52,13 +54,21 @@ $(document).ready(function(){
 						for(var ubertool_data_key in ubertools_data)
 						{
 							var ubertool_data = ubertools_data[ubertool_data_key];
-							batchTableInnerHTML += "<tr><th><label>Ubertool Id:</label></th><td>"+ubertool_data+"</td></tr>";
+							batchTableInnerHTML += "<tr><th><label>Ubertool Run Configuration Name:</label></th><td>"+ubertool_data_key+"</td></tr>";
+							for(var ubertool_run_key in ubertool_data)
+							{
+								batchTableInnerHTML += "<tr><th><label>" + ubertool_run_key + "</label></th><td>"+ubertool_data[ubertool_run_key]+"</td></tr>";								
+							}
 						}
 					}
 					batchTableInnerHTML += "</tbody></table>";
 					$("#id_batch_results_table")[0].innerHTML = batchTableInnerHTML;
 				}
 			});
+		} else
+		{
+			$("#id_batch_results_table").innerHTML = "";
+			$("#id_batch_results_table").css({"visibility":"hidden","height":"0px"});
 		}
 	});
 	

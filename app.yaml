@@ -44,6 +44,8 @@ handlers:
   script: pop_main.py 
 - url: /about.html
   script: about.py
+- url: /admin.html
+  script: admin.py
 # All URLs beginning with /stylesheets are treated as paths to static files in
 # the stylesheets/ directory. Note that static_dir handlers do not use a
 # regular expression for the URL pattern, only a prefix.

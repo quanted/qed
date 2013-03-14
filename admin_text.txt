@@ -1,0 +1,78 @@
+<ul>ubertool
+<li><a href=""></a></li>
+</ul>
+
+<ul>Google
+<li><a href="https://appengine.google.com/">GAE Admin Console</a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+
+<ul>Amazon
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+
+<ul>Cloud databases
+<li><a href="https://appengine.google.com/">GAE Admin Console</a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+
+<ul>Python
+<li><a href="http://www.python.org/">Python</a></li>
+<li><a href="https://developers.google.com/appengine/docs/python/overview">GAE Python Overview</a></li>
+<li><a href="https://developers.google.com/appengine/docs/python/gettingstartedpython27/">GAE Python 2.7 Tutorial</a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+
+<ul>JavaScript
+<li><a href="https://developer.mozilla.org/en-US/docs/JavaScript">Mozilla JavaScript</a></li>
+<li><a href="http://jquery.com/">jQuery</a></li>
+<li><a href="http://jsfiddle.net/">jsfiddle</a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+
+<ul>Fortran
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+
+<ul>Unit testing
+<li><a href="http://www.pylint.org/">pylint</a></li>
+<li><a href="http://www.sonarsource.org/">sonar</a></li>
+<li><a href="http://jenkins-ci.org/">jenkins</a></li>
+<li><a href="https://pypi.python.org/pypi/unittest2">unittest2</a></li>
+<li><a href="https://nose.readthedocs.org/en/latest/"></a>nose</li>
+<li><a href="http://webob.org/">WebOb</a></li>
+<li><a href="http://webtest.pythonpaste.org/en/latest/">WebTest</a></li>
+<li><a href="http://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a></li>
+<li><a href=""></a></li>
+</ul>
+
+<ul>IDEs
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>

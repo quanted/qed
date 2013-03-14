@@ -342,7 +342,7 @@ $(document).ready(function() {
 	
     $('.next').click(function () {
         var tab = $(".tab:visible");
-        console.log(curr_ind)
+        //console.log(curr_ind)
         var valid = true;
         $('input,select', tab).each(function(i, v){
             valid = validator.element(v) && valid;

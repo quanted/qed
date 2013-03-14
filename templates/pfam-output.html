@@ -43,46 +43,41 @@ $(document).ready(function(){
 		k=k+1
 		}
 
-
+        var x_water = $.parseJSON($('#x_water').attr('data-val'));
+        console.log(x_water);
 
 //Generate the figure
-/*		$.jqplot.config.enablePlugins = true;
-		L=[{label:'Stage 1'}];
-		
-		var i=2
-		while(i<=ms)
-			{
-				L.push({label:'Stage'+i});
-				i++;
-			}	
-$.jqplot('chart1', s1, {
+		$.jqplot.config.enablePlugins = true;
 
-    seriesDefaults: {
-        showMarker: false,
-        pointLabels: {
-            show: false
-        }
-    },
+    $.jqplot('chart1', [x_water], {
 
-    series: L,
-    axes: {
-        xaxis: {
-            label: 'Time units',
-            pad: 0
+        seriesDefaults: {
+            showMarker: false,
+            pointLabels: {show: false}
         },
-        yaxis: {
-            label: 'Number of individuals',
-            labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-            pad: 0
+
+        series:[
+            {label:'Water Concentrations'}
+        ],
+
+        axes: {
+            xaxis: {
+                label: 'Days',
+                pad: 0
+            },
+            yaxis: {
+                label: 'Water Concentrations',
+                labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                pad: 0
+            }
+        },
+        legend: {
+            show: true,
+            location: 'nw',
+            placement: 'inside',
+            fontSize: '11px'
         }
-    },
-    legend: {
-        show: true,
-        location: 'nw',
-        placement: 'inside',
-        fontSize: '11px'
-    }
-})*/
+    })
 })
 </script>
 

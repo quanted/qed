@@ -7,7 +7,8 @@
 <script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.cursor.js"></script>
 <script type="text/javascript" src="https://bitbucket.org/cleonello/jqplot/raw/b5a7796a9ebf/src/plugins/jqplot.canvasTextRenderer.js"></script>
 <script type="text/javascript" src="https://bitbucket.org/cleonello/jqplot/raw/b5a7796a9ebf/src/plugins/jqplot.canvasAxisLabelRenderer.js"></script>
-
+<script type="text/javascript" language="javascript" src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.dateAxisRenderer.js"></script>
+<script type="text/javascript" language="javascript" src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.canvasAxisTickRenderer.js"></script>
 
 <!--[if lt IE 9]>
 <script src="http://www.prioritymarketers.com/jqplot/src/excanvas.min.js"></script>
@@ -44,12 +45,17 @@ $(document).ready(function(){
 		}
 
         var x_water = $.parseJSON($('#x_water').attr('data-val'));
-        //console.log(x_water);
-
+        var x_date = $.parseJSON($('#x_date').attr('data-val'));
+        var x_date_len=x_date.length
+        var paired =[];
+        for (var i=0; i<=x_date_len; i+=1){
+            paired.push([x_date[i],x_water[i]]);
+        }
+        //alert(paired);
 //Generate the figure
 		$.jqplot.config.enablePlugins = true;
 
-    $.jqplot('chart1', [x_water], {
+    $.jqplot('chart1', [paired], {
 
         seriesDefaults: {
             showMarker: false,
@@ -59,10 +65,16 @@ $(document).ready(function(){
         series:[
             {label:'Water Concentrations'}
         ],
-
         axes: {
             xaxis: {
-                label: 'Days',
+                renderer:$.jqplot.DateAxisRenderer,
+                tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+                tickOptions:{formatString:'%#m/%#d/%Y',
+                             angle: -30
+                            },
+                min: x_date[0],
+                tickInterval:'3 month',
+                label: 'Date',
                 pad: 0
             },
             yaxis: {

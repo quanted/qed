@@ -24,18 +24,11 @@ function submitBatchConfigurations()
 				url:"batch",
 				async: false,
 				type: 'POST',
-				data: JSON.stringify(form_data),
-				success: function(batch_run_id) {
-					alert(batch_run_id);
-				}
+				data: JSON.stringify(form_data)
 			});
-		},
-		complete: function()
-		{
-      		window.location.href="user.html";
 		}
 	});
-}	
+}
 </script>
 <script>
 $(document).ready(function() {

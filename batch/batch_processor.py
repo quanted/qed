@@ -17,7 +17,6 @@ sys.path.append("../terrplant")
 ricePlantRunner = RiceBatchRunner()
 from terrplant.terrplant_output import TerrPlantBatchRunner
 terrPlantRunner = TerrPlantBatchRunner()
-sys.path.append("../batch")
 from batch import Batch
 import pickle
 from django.utils import simplejson
@@ -38,13 +37,13 @@ def processUbertoolBatchRunsIntoBatchModelRuns(ubertools):
     logger.info("Start Ubertool Batching")
     batch_id = ubertools['id']
     user = users.get_current_user()
-    q = db.Query(Batch)
-    q.filter('user =',user)
-    q.filter('key =',batch_id)
-    batch = q.get()
-    if not batch:
-        batch = Batch()
-        batch.user = user
+    batchs = Batch.all()
+    batch = None
+    for poss_batch in batchs:
+        logger.info(batch_id)
+        logger.info(str(poss_batch.key()))
+        if str(poss_batch.key()) == batch_id:
+            batch = poss_batch
     logger.info(batch.to_xml())
     ubertools_results = {}
     ubertools_data = ubertools['ubertools']
@@ -89,6 +88,7 @@ class BatchService(webapp.RequestHandler):
         else:
             processVariousBatchRunsIntoBatchModelRuns(data)
         batch_json = simplejson.dumps(data['id'])
+        logger.info(batch_json)
         self.response.headers['Content-Type'] = 'application/json'
         self.response.out.write(batch_json)
         

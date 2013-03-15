@@ -20,6 +20,7 @@ class Batch(db.Expando):
     user = db.UserProperty()
     created = db.DateTimeProperty(auto_now_add=True)
     ubertool_results = db.TextProperty()
+    ubertools = db.TextProperty()
     completed = db.DateTimeProperty()
     
 class BatchResultsService(webapp.RequestHandler):
@@ -34,8 +35,9 @@ class BatchResultsService(webapp.RequestHandler):
         batchs = Batch.all()
         batch = None
         for poss_batch in batchs:
-            if str(poss_batch.key()) == batch_run_id:
+            if str(poss_batch.key()) == batch_run_id and str(poss_batch.user) == str(user):
                 batch = poss_batch
+                batch.user = user
         logger.info(batch.to_xml())
         if not batch:
             batch = Batch()

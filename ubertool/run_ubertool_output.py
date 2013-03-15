@@ -173,7 +173,7 @@ def retrieveBatchUbertoolConfiguration(data):
         uber_pickle = pickle.dumps(ubertools)
         batch.ubertools=uber_pickle
         batch.put()
-        batch_dict['id'] = batch.key.id_or_name()
+        batch_dict['id'] = str(batch.key())
         batch_dict['ubertools'] = ubertools
     #test if only partial configs were passed
     elif current_use_config_name in keys or current_pest_config_name in keys or current_aqua_config_name in keys or current_eco_config_name in keys or current_expo_config_name in keys or current_terra_config_name in keys:
@@ -257,7 +257,7 @@ def retrieveBatchUbertoolConfiguration(data):
             terras_pickle = pickle.dumps(batch_terra_config_names)
             batch.terras = terras_pickle
         batch.put()
-        batch_dict['id'] = batch.key.id_or_name()
+        batch_dict['id'] = str(batch.key())
         logger.info(batch.to_xml())
     else:
         uber_pickle = pickle.dumps(batch_ubertool_config_names)

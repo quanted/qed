@@ -27,7 +27,10 @@ $(document).ready(function(){
 			for(batch_config_name in batch_data)
 			{
 				var config_label = batch_config_name + " Completed: " + batch_data[batch_config_name];
-				$("#id_batch_ubertool_results").append(new Option(config_label, batch_config_name));
+				if(batch_data[batch_config_name] != false)
+				{
+					$("#id_batch_ubertool_results").append(new Option(config_label, batch_config_name));
+				}
 			}
 		}
 	});

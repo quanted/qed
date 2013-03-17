@@ -112,7 +112,6 @@ class RunUbertoolBatchPage(webapp.RequestHandler):
         form = cgi.FieldStorage()
         thefile = form['upfile1']
         loop_batch_file(thefile)
-        ubertoolInputPage = UbertoolInputPage()
 
 app = webapp.WSGIApplication([('/.*', RunUbertoolBatchPage)], debug=True)
 

@@ -15,7 +15,6 @@
 <![endif]-->
 
      
-<div id="chart1" style="margin-top:20px; margin-left:20px; width:650px; height:400px;"></div>
 
 
 <script type='text/javascript'> 
@@ -53,43 +52,59 @@ $(document).ready(function(){
         }
         //alert(paired);
 //Generate the figure
+        
+        $('#calc').click(function () {
+        var range_min = $("#range_min").val();
+        var range_max = $("#range_max").val();
+        var range_interval = $("#range_interval").val();
+        //alert(range_interval)
+        createit(paired, range_min, range_max, range_interval);
+        //console.log(x_date[0])
+        //console.log(range_min)
+        //return false;
+        })
+
+        function createit(data, range_min, range_max, range_interval) {
+
 		$.jqplot.config.enablePlugins = true;
+        $('#chart1').empty();
+        $.jqplot('chart1', [data], {
 
-    $.jqplot('chart1', [paired], {
-
-        seriesDefaults: {
-            showMarker: false,
-            pointLabels: {show: false}
-        },
-
-        series:[
-            {label:'Water Concentrations'}
-        ],
-        axes: {
-            xaxis: {
-                renderer:$.jqplot.DateAxisRenderer,
-                tickRenderer: $.jqplot.CanvasAxisTickRenderer,
-                tickOptions:{formatString:'%#m/%#d/%Y',
-                             angle: -30
-                            },
-                min: x_date[0],
-                tickInterval:'3 month',
-                label: 'Date',
-                pad: 0
+            seriesDefaults: {
+                showMarker: false,
+                pointLabels: {show: false}
             },
-            yaxis: {
-                label: 'Water Concentrations',
-                labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-                pad: 0
+
+            series:[
+                {label:'Water Concentrations'}
+            ],
+            axes: {
+                xaxis: {
+                    renderer:$.jqplot.DateAxisRenderer,
+                    tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+                    tickOptions:{formatString:'%#m/%#d/%Y',
+                                 angle: -30
+                                },
+                    min: range_min,//x_date[0],
+                    max: range_max,//x_date[20],
+                    tickInterval: range_interval,//range_interval,//'3 month',
+                    label: 'Date',
+                    pad: 0
+                },
+                yaxis: {
+                    label: 'Water Concentrations',
+                    labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                    pad: 0
+                }
+            },
+            legend: {
+                show: true,
+                location: 'nw',
+                placement: 'inside',
+                fontSize: '11px'
             }
-        },
-        legend: {
-            show: true,
-            location: 'nw',
-            placement: 'inside',
-            fontSize: '11px'
-        }
-    })
+        })
+    }
 })
 </script>
 

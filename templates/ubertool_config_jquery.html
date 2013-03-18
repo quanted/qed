@@ -14,7 +14,7 @@ function submitBatchConfigurations()
 	}
 	
 	$.ajax({
-		url:"{{ ubertool_server }}/ubertool-batch-configuration",
+		url:"ubertool-batch-configuration",
 		async: false,
 		type: 'POST',
 		data: JSON.stringify(form_data),
@@ -23,8 +23,12 @@ function submitBatchConfigurations()
 			$.ajax({
 				url:"{{ ubertool_server }}/batch",
 				async: false,
+				contentType:"application/json; charset=utf-8",
 				type: 'POST',
-				data: JSON.stringify(form_data)
+				data: JSON.stringify(form_data),
+				success: function(batch_data) {
+					var test2 = "Test2";
+				}
 			});
 		}
 	});

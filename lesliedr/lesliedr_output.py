@@ -77,7 +77,7 @@ class lesliedrOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '03pop_ubertext_links_left.html', {})
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'lesliedr', 
-                'model_attributes':'Leslie Model with Logistic Dose Response Model Inputs'})
+                'model_attributes':'Leslie Model with Logistic Dose Response Output'})
         html = html + """<table class="out-in" width="550" border="1">
                           <tr>
                             <th scope="col" width="250"><div align="center">Inputs</div></th>

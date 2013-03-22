@@ -1,12 +1,21 @@
 <!--start 02hh_uberintroblock_nomodellinks-->
 
 <!-- "Click" Menus -->
-  <script type="text/javascript">
-    $( document ).ready(function() {
-      $('a#{{model}}').addClass('aSelected');
-      $('li#' + pathId).addClass('liSelected');
-    });
-  </script>
+<script type="text/javascript">
+$( document ).ready(function() {
+	$('.articles a').hover(function(){
+			$(this).stop().animate({ color:'#A31E39' },500);
+		}, function(){
+			$(this).stop().animate({ color:'#485C5A' },500);
+	});
+	
+	$('.fadeMenu').hover(function(){
+		$(this).stop().animate({ backgroundColor:'rgb(163,30,57)', color:'#FFFFFF'},500);
+	}, function(){
+		$(this).stop().animate({ backgroundColor:'rgb(197,207,204)', color:'#485C5A'},500);
+	});
+});
+</script>
 
 <!-- Header Menu Bar -->
 <div id="header_menu_nav">

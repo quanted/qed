@@ -1,8 +1,4 @@
 $( document ).ready(function() {
-	$('div#l_menu ul li a:not(aSelected)').bind('click', function(){
-		$('div#l_menu ul li a.aSelected').removeClass('aSelected');
-		$(this).addClass('aSelected');
-	});
 
 	$('.fadeDesc_description').append('<span class="hover"></span>').each(function () {
 		var $span = $('> span.hover', this).css('opacity', 0);

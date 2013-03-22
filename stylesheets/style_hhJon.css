@@ -27,9 +27,9 @@ body {
   width: 1024px;
   margin: 5px auto 5px auto;
   text-align: left;    /* IE Hack */
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   /*box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;*/
@@ -48,40 +48,6 @@ h3 {
   font-size: 1.5em;
   font-weight: bold;
 }
-.left {
-  float: left;
-  text-align: justify;
-  margin-top: 0;
-  display: inline;
-}
-.left h2 {
-  color: #F4F7ED;
-  font-size: 18px;
-  letter-spacing: 0;
-  font-weight: 100;
-  padding : 10px 0 15px 0;
-}
-.left ul {
-  list-style-type: square;
-  padding: 5px 10px 10px 20px;
-}
-.right {
-  float: right;
-  text-align: justify;
-  margin-top: 0;
-  display: inline;
-}
-.right h2 {
-  color: #F4F7ED;
-  font-size: 18px;
-  letter-spacing: 0;
-  font-weight: 100;
-  padding: 10px 0 15px 0;
-}
-.right ul {
-  list-style-type: square;
-  padding: 5px 10px 10px 20px;
-}
 
 /* Defining Hyperlink Colors */
 
@@ -93,12 +59,8 @@ a:visited {
   color: #485C5A;
   text-decoration: none;
 }
-a:active {    /* Same as "hover" for menus - doesn't work as intended */
-  color: #A31E39;
-  text-decoration: none;
-}
 a:hover {
-  color: #A31E39;
+  color: #485C5A;
   text-decoration: none;
 }
 
@@ -110,9 +72,9 @@ a:hover {
   min-height: 30px;
   font-size: 1.6em;
   border-bottom: 2px solid #F4F7ED;
-  border-radius: 10px 10px 0 0;
-  -webkit-border-radius: 10px 10px 0 0;
-  -moz-border-radius: 10px 10px 0 0;
+  border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
   /*box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;*/
@@ -164,9 +126,9 @@ a:hover {
   height: 24px;
   background: #A31E39;
   float: left;
-  border-radius: 0 0 0 10px;
-  -webkit-border-radius: 0 0 0 10px;
-  -moz-border-radius: 0 0 0 10px;
+  border-radius: 0 0 0 4px;
+  -webkit-border-radius: 0 0 0 4px;
+  -moz-border-radius: 0 0 0 4px;
   /*box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;*/
@@ -189,7 +151,7 @@ a:hover {
   display:inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/white/navbar_description.gif);
+  background: url(../images/tabs/hh/sprites/navbar_description.gif);
   background-position: 0 0;
 }
 .fadeDesc_description * {
@@ -199,14 +161,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/white/navbar_description.gif);
+  background: url(../images/tabs/hh/sprites/navbar_description.gif);
   background-position: 0 -24px;
 }
 .fadeInp_description {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background: url(../images/tabs/hh/white/navbar_description.gif);
+  background: url(../images/tabs/hh/sprites/navbar_description.gif);
   background-position: -110px 0;
 }
 .fadeInp_description * {
@@ -216,14 +178,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_description.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_description.gif);
   background-position: -110px -24px;
 }
 .fadeAlg_description {
   display:inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/white/navbar_description.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_description.gif);
   background-position: -180px 0;
 }
 .fadeAlg_description * {
@@ -233,14 +195,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/white/navbar_description.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_description.gif);
   background-position: -180px -24px;
 }
 .fadeRef_description {
   display:inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/white/navbar_description.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_description.gif);
   background-position: -282px 0;
 }
 .fadeRef_description * {
@@ -250,14 +212,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/white/navbar_description.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_description.gif);
   background-position: -282px -24px;
 }
 .fadeQAQC_description {
   display:inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/white/navbar_description.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_description.gif);
   background-position: -386px 0;
 }
 .fadeQAQC_description * {
@@ -267,14 +229,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/white/navbar_description.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_description.gif);
   background-position: -386px -24px;
 }
 .fadeBat_description {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_description.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_description.gif);
   background-position: -460px 0;
 }
 .fadeBat_description * {
@@ -284,14 +246,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_description.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_description.gif);
   background-position: -460px -24px;
 }
 .fadeDesc_input {
   display:inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/white/navbar_input.gif);
+  background: url(../images/tabs/hh/sprites/navbar_input.gif);
   background-position: 0 0;
 }
 .fadeDesc_input * {
@@ -301,14 +263,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/white/navbar_input.gif);
+  background: url(../images/tabs/hh/sprites/navbar_input.gif);
   background-position: 0 -24px;
 }
 .fadeInp_input {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background: url(../images/tabs/hh/white/navbar_input.gif);
+  background: url(../images/tabs/hh/sprites/navbar_input.gif);
   background-position: -110px 0;
 }
 .fadeInp_input * {
@@ -318,14 +280,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_input.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_input.gif);
   background-position: -110px -24px;
 }
 .fadeAlg_input {
   display:inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/white/navbar_input.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_input.gif);
   background-position: -180px 0;
 }
 .fadeAlg_input * {
@@ -335,14 +297,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/white/navbar_input.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_input.gif);
   background-position: -180px -24px;
 }
 .fadeRef_input {
   display:inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/white/navbar_input.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_input.gif);
   background-position: -282px 0;
 }
 .fadeRef_input * {
@@ -352,14 +314,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/white/navbar_input.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_input.gif);
   background-position: -282px -24px;
 }
 .fadeQAQC_input {
   display:inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/white/navbar_input.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_input.gif);
   background-position: -386px 0;
 }
 .fadeQAQC_input * {
@@ -369,14 +331,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/white/navbar_input.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_input.gif);
   background-position: -386px -24px;
 }
 .fadeBat_input {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_input.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_input.gif);
   background-position: -460px 0;
 }
 .fadeBat_input * {
@@ -386,14 +348,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_input.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_input.gif);
   background-position: -460px -24px;
 }
 .fadeDesc_algorithm {
   display:inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/white/navbar_algorithm.gif);
+  background: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
   background-position: 0 0;
 }
 .fadeDesc_algorithm * {
@@ -403,14 +365,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/white/navbar_algorithm.gif);
+  background: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
   background-position: 0 -24px;
 }
 .fadeInp_algorithm {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background: url(../images/tabs/hh/white/navbar_algorithm.gif);
+  background: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
   background-position: -110px 0;
 }
 .fadeInp_algorithm * {
@@ -420,14 +382,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_algorithm.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
   background-position: -110px -24px;
 }
 .fadeAlg_algorithm {
   display:inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/white/navbar_algorithm.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
   background-position: -180px 0;
 }
 .fadeAlg_algorithm * {
@@ -437,14 +399,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/white/navbar_algorithm.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
   background-position: -180px -24px;
 }
 .fadeRef_algorithm {
   display:inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/white/navbar_algorithm.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
   background-position: -282px 0;
 }
 .fadeRef_algorithm * {
@@ -454,14 +416,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/white/navbar_algorithm.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
   background-position: -282px -24px;
 }
 .fadeQAQC_algorithm {
   display:inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/white/navbar_algorithm.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
   background-position: -386px 0;
 }
 .fadeQAQC_algorithm * {
@@ -471,14 +433,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/white/navbar_algorithm.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
   background-position: -386px -24px;
 }
 .fadeBat_algorithm {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_algorithm.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
   background-position: -460px 0;
 }
 .fadeBat_algorithm * {
@@ -488,14 +450,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_algorithm.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_algorithm.gif);
   background-position: -460px -24px;
 }
 .fadeDesc_references {
   display:inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/white/navbar_references.gif);
+  background: url(../images/tabs/hh/sprites/navbar_references.gif);
   background-position: 0 0;
 }
 .fadeDesc_references * {
@@ -505,14 +467,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/white/navbar_references.gif);
+  background: url(../images/tabs/hh/sprites/navbar_references.gif);
   background-position: 0 -24px;
 }
 .fadeInp_references {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background: url(../images/tabs/hh/white/navbar_references.gif);
+  background: url(../images/tabs/hh/sprites/navbar_references.gif);
   background-position: -110px 0;
 }
 .fadeInp_references * {
@@ -522,14 +484,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_references.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_references.gif);
   background-position: -110px -24px;
 }
 .fadeAlg_references {
   display:inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/white/navbar_references.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_references.gif);
   background-position: -180px 0;
 }
 .fadeAlg_references * {
@@ -539,14 +501,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/white/navbar_references.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_references.gif);
   background-position: -180px -24px;
 }
 .fadeRef_references {
   display:inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/white/navbar_references.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_references.gif);
   background-position: -282px 0;
 }
 .fadeRef_references * {
@@ -556,14 +518,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/white/navbar_references.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_references.gif);
   background-position: -282px -24px;
 }
 .fadeQAQC_references {
   display:inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/white/navbar_references.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_references.gif);
   background-position: -386px 0;
 }
 .fadeQAQC_references * {
@@ -573,14 +535,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/white/navbar_references.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_references.gif);
   background-position: -386px -24px;
 }
 .fadeBat_references {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_references.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_references.gif);
   background-position: -460px 0;
 }
 .fadeBat_references * {
@@ -590,14 +552,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_references.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_references.gif);
   background-position: -460px -24px;
 }
 .fadeDesc_qaqc {
   display:inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/white/navbar_qaqc.gif);
+  background: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
   background-position: 0 0;
 }
 .fadeDesc_qaqc * {
@@ -607,14 +569,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/white/navbar_qaqc.gif);
+  background: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
   background-position: 0 -24px;
 }
 .fadeInp_qaqc {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background: url(../images/tabs/hh/white/navbar_qaqc.gif);
+  background: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
   background-position: -110px 0;
 }
 .fadeInp_qaqc * {
@@ -624,14 +586,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_qaqc.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
   background-position: -110px -24px;
 }
 .fadeAlg_qaqc {
   display:inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/white/navbar_qaqc.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
   background-position: -180px 0;
 }
 .fadeAlg_qaqc * {
@@ -641,14 +603,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/white/navbar_qaqc.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
   background-position: -180px -24px;
 }
 .fadeRef_qaqc {
   display:inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/white/navbar_qaqc.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
   background-position: -282px 0;
 }
 .fadeRef_qaqc * {
@@ -658,14 +620,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/white/navbar_qaqc.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
   background-position: -282px -24px;
 }
 .fadeQAQC_qaqc {
   display:inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/white/navbar_qaqc.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
   background-position: -386px 0;
 }
 .fadeQAQC_qaqc * {
@@ -675,14 +637,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/white/navbar_qaqc.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
   background-position: -386px -24px;
 }
 .fadeBat_qaqc {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_qaqc.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
   background-position: -460px 0;
 }
 .fadeBat_qaqc * {
@@ -692,14 +654,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_qaqc.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_qaqc.gif);
   background-position: -460px -24px;
 }
 .fadeDesc_batchinput {
   display:inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/white/navbar_batchinput.gif);
+  background: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
   background-position: 0 0;
 }
 .fadeDesc_batchinput * {
@@ -709,14 +671,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/white/navbar_batchinput.gif);
+  background: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
   background-position: 0 -24px;
 }
 .fadeInp_batchinput {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background: url(../images/tabs/hh/white/navbar_batchinput.gif);
+  background: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
   background-position: -110px 0;
 }
 .fadeInp_batchinput * {
@@ -726,14 +688,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_batchinput.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
   background-position: -110px -24px;
 }
 .fadeAlg_batchinput {
   display:inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/white/navbar_batchinput.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
   background-position: -180px 0;
 }
 .fadeAlg_batchinput * {
@@ -743,14 +705,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/white/navbar_batchinput.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
   background-position: -180px -24px;
 }
 .fadeRef_batchinput {
   display:inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/white/navbar_batchinput.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
   background-position: -282px 0;
 }
 .fadeRef_batchinput * {
@@ -760,14 +722,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/white/navbar_batchinput.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
   background-position: -282px -24px;
 }
 .fadeQAQC_batchinput {
   display:inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/white/navbar_batchinput.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
   background-position: -386px 0;
 }
 .fadeQAQC_batchinput * {
@@ -777,14 +739,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/white/navbar_batchinput.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
   background-position: -386px -24px;
 }
 .fadeBat_batchinput {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_batchinput.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
   background-position: -460px 0;
 }
 .fadeBat_batchinput * {
@@ -794,14 +756,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_batchinput.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_batchinput.gif);
   background-position: -460px -24px;
 }
 .fadeDesc_output {
   display:inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/white/navbar_output.gif);
+  background: url(../images/tabs/hh/sprites/navbar_output.gif);
   background-position: 0 0;
 }
 .fadeDesc_output * {
@@ -811,14 +773,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 110px;
-  background: url(../images/tabs/hh/white/navbar_output.gif);
+  background: url(../images/tabs/hh/sprites/navbar_output.gif);
   background-position: 0 -24px;
 }
 .fadeInp_output {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background: url(../images/tabs/hh/white/navbar_output.gif);
+  background: url(../images/tabs/hh/sprites/navbar_output.gif);
   background-position: -110px 0;
 }
 .fadeInp_output * {
@@ -828,14 +790,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_output.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
   background-position: -110px -24px;
 }
 .fadeOut_output {
   display:inline-block;
   height: 24px;
   width: 72px;
-  background: url(../images/tabs/hh/white/navbar_output.gif);
+  background: url(../images/tabs/hh/sprites/navbar_output.gif);
   background-position: -180px 0;
 }
 .fadeOut_output * {
@@ -845,14 +807,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 72px;
-  background-image: url(../images/tabs/hh/white/navbar_output.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
   background-position: -180px -24px;
 }
 .fadeAlg_output {
   display:inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/white/navbar_output.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
   background-position: -252px 0;
 }
 .fadeAlg_output * {
@@ -862,14 +824,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 102px;
-  background-image: url(../images/tabs/hh/white/navbar_output.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
   background-position: -252px -24px;
 }
 .fadeRef_output {
   display:inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/white/navbar_output.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
   background-position: -354px 0;
 }
 .fadeRef_output * {
@@ -879,14 +841,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 104px;
-  background-image: url(../images/tabs/hh/white/navbar_output.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
   background-position: -354px -24px;
 }
 .fadeQAQC_output {
   display:inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/white/navbar_output.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
   background-position: -458px 0;
 }
 .fadeQAQC_output * {
@@ -896,14 +858,14 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 74px;
-  background-image: url(../images/tabs/hh/white/navbar_output.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
   background-position: -458px -24px;
 }
 .fadeBat_output {
   display:inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_output.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
   background-position: -532px 0;
 }
 .fadeBat_output * {
@@ -913,7 +875,7 @@ a:hover {
   display: inline-block;
   height: 24px;
   width: 70px;
-  background-image: url(../images/tabs/hh/white/navbar_output.gif);
+  background-image: url(../images/tabs/hh/sprites/navbar_output.gif);
   background-position: -532px -24px;
 }
 
@@ -924,9 +886,9 @@ a:hover {
   height: 24px;
   background: #A31E39;
   float: left;
-  border-radius: 0 0 10px 0;
-  -webkit-border-radius: 0 0 10px 0;
-  -moz-border-radius: 0 0 10px 0;
+  border-radius: 0 0 4px 0;
+  -webkit-border-radius: 0 0 4px 0;
+  -moz-border-radius: 0 0 4px 0;
   /*box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;*/
@@ -947,6 +909,40 @@ a:hover {
 
 /* Below Header */
 
+.left {
+  float: left;
+  text-align: justify;
+  margin-top: 0;
+  display: inline;
+}
+.left h2 {
+  color: #F4F7ED;
+  font-size: 18px;
+  letter-spacing: 0;
+  font-weight: 100;
+  padding : 10px 0 15px 0;
+}
+.left ul {
+  list-style-type: square;
+  padding: 5px 10px 10px 20px;
+}
+.right {
+  float: right;
+  text-align: justify;
+  margin-top: 0;
+  display: inline;
+}
+.right h2 {
+  color: #F4F7ED;
+  font-size: 18px;
+  letter-spacing: 0;
+  font-weight: 100;
+  padding: 10px 0 15px 0;
+}
+.right ul {
+  list-style-type: square;
+  padding: 5px 10px 10px 20px;
+}
 .urbangreymenu{
   width: 160px;
   float: left;
@@ -954,20 +950,20 @@ a:hover {
   margin-top: 4px;
 }
 .headerbar{
+  font-size: 11px;
   color: #FFFFFF;
   background: #485C5A;
   margin: 0 0 2px 0;
   text-transform: uppercase;
-  padding: 2px 0 2px 8px;
-  border-radius: 10px 10px 0 0;
-  -webkit-border-radius: 10px 10px 0 0;
-  -moz-border-radius: 10px 10px 0 0;
+  padding: 5px 0 5px 8px;
+  border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
   /*box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;*/
 }
 .headerbar a{
-  text-decoration: none;
   color: #FFFFFF;
   display: block;
 }
@@ -979,37 +975,43 @@ a:hover {
 .urbangreymenu ul li{
   padding-bottom: 2px;
 }
-.urbangreymenu ul li a{
-  color: #485C5A;
-  background: #BFCFCC;
+.urbangreymenu a {
   display: block;
   padding: 5px 0 5px 8px;
   line-height: 14px;
-  text-decoration: none;
 }
-.urbangreymenu ul li a:visited{
+.urbangreymenu a:hover {
   color: #485C5A;
+}
+.fadeMenu {
+  color: #485C5A;
+  background: rgb(197,207,204);
+}
+.urbangreymenu ul li a.aSelected {
+  display: block;
+  color: #FFFFFF;
+  background-color: #A31E39;
 }
 .submenu_last {
   margin-bottom: 2px;
-  border-radius: 0 0 10px 10px;
-  -webkit-border-radius: 0 0 10px 10px;
-  -moz-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 4px 4px;
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
   /*box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;*/
 }
 .articles {
-  width: 662px;
+  width: 654px;
   display: inline;
   float: left;
-  margin: 4px;
+  margin: 8px;
   padding: 1em 1.5em;
   /*background: #F7F9F2;*/
   background: #F9FBF6;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;
@@ -1020,7 +1022,7 @@ a:hover {
 }
 .articles img {
   margin: 0 0 0 1.5em;
-  max-width: 640px;
+  max-width: 635px;
 }
 ul.bullet {
   padding: 0 2em;
@@ -1043,13 +1045,13 @@ ul.nobullet {
   width: 822px;
   display: inline;
   float: left;
-  margin: 4px;
+  margin: 8px 0 8px 8px;
   padding: 1em 1.5em;
   /*background: #F7F9F2;*/
   background: #F9FBF6;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;
@@ -1080,63 +1082,6 @@ ul.nobullet {
   font-size: 12px;
 }
 
-/* Left Menu - link stays higlighted ("hover persists) while on page */
-
-#l_menu {
-  width:160px;
-  font-family:Verdana, Arial, Helvetica, serif;
-  font-size:11px;
-}
-#l_menu ul {
-  list-style: none;
-}
-#l_menu ul li {
-}
-#l_menu ul li a {
-  display:block;
-  text-decoration:none;
-  color:#485C5A;
-  background-color:#BFCFCC;
-  padding-left:8px;
-  cursor:pointer;
-}
-#l_menu ul li a:hover {
-  color:#FFFFFF;
-  background-color:#B54A60;
-}                            /* "mouseover", not dependant on scripts.js*/
-#l_menu ul li a.aSelected {
-  display:block;
-  text-decoration:none;
-  color:#FFFFFF;
-  /*background-color:#A31E39;*/
-  background-color: #A31E39;
-}                            /* "click", dependant on scripts.js*/
-
-/* Right Menu - same as above w/o "hover persists) */
-
-#r_menu {
-  width:160px;
-  font-family:Verdana, Arial, Helvetica, serif;
-  font-size:11px;
-}
-#r_menu ul {
-  list-style: none;
-}
-#r_menu ul li {
-}
-#r_menu ul li a {
-  display:block;
-  text-decoration:none;
-  color:#485C5A;
-  background-color:#BFCFCC;
-  padding-left:8px;
-  cursor:pointer;
-}
-#r_menu ul li a:hover {
-  color:#FFFFFF;
-  background-color:#A31E39;
-}                             /* "mouseover", not dependant on scripts.js*/
-
 /* 06hh_uberfooter.html */
 
 #footer {
@@ -1146,9 +1091,9 @@ ul.nobullet {
   height: 31px;
   padding: 4px;
   text-align: center;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   /*box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;*/

@@ -27,9 +27,9 @@ body {
   width: 1024px;
   margin: 5px auto 5px auto;
   text-align: left;    /* IE Hack */
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   /*box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;*/
@@ -48,40 +48,6 @@ h3 {
   font-size: 1.5em;
   font-weight: bold;
 }
-.left {
-  float: left;
-  text-align: justify;
-  margin-top: 0;
-  display: inline;
-}
-.left h2 {
-  color: #F4F7ED;
-  font-size: 18px;
-  letter-spacing: 0;
-  font-weight: 100;
-  padding : 10px 0 15px 0;
-}
-.left ul {
-  list-style-type: square;
-  padding: 5px 10px 10px 20px;
-}
-.right {
-  float: right;
-  text-align: justify;
-  margin-top: 0;
-  display: inline;
-}
-.right h2 {
-  color: #F4F7ED;
-  font-size: 18px;
-  letter-spacing: 0;
-  font-weight: 100;
-  padding: 10px 0 15px 0;
-}
-.right ul {
-  list-style-type: square;
-  padding: 5px 10px 10px 20px;
-}
 
 /* Defining Hyperlink Colors */
 
@@ -93,12 +59,8 @@ a:visited {
   color: #485C5A;
   text-decoration: none;
 }
-a:active {    /* Same as "hover" for menus - doesn't work as intended */
-  color: #A31E39;
-  text-decoration: none;
-}
 a:hover {
-  color: #A31E39;
+  color: #485C5A;
   text-decoration: none;
 }
 
@@ -110,9 +72,9 @@ a:hover {
   min-height: 30px;
   font-size: 1.6em;
   border-bottom: 2px solid #F4F7ED;
-  border-radius: 10px 10px 0 0;
-  -webkit-border-radius: 10px 10px 0 0;
-  -moz-border-radius: 10px 10px 0 0;
+  border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
   /*box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;*/
@@ -164,9 +126,9 @@ a:hover {
   height: 24px;
   background: #A31E39;
   float: left;
-  border-radius: 0 0 0 10px;
-  -webkit-border-radius: 0 0 0 10px;
-  -moz-border-radius: 0 0 0 10px;
+  border-radius: 0 0 0 4px;
+  -webkit-border-radius: 0 0 0 4px;
+  -moz-border-radius: 0 0 0 4px;
   /*box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;*/
@@ -924,9 +886,9 @@ a:hover {
   height: 24px;
   background: #A31E39;
   float: left;
-  border-radius: 0 0 10px 0;
-  -webkit-border-radius: 0 0 10px 0;
-  -moz-border-radius: 0 0 10px 0;
+  border-radius: 0 0 4px 0;
+  -webkit-border-radius: 0 0 4px 0;
+  -moz-border-radius: 0 0 4px 0;
   /*box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;*/
@@ -947,6 +909,40 @@ a:hover {
 
 /* Below Header */
 
+.left {
+  float: left;
+  text-align: justify;
+  margin-top: 0;
+  display: inline;
+}
+.left h2 {
+  color: #F4F7ED;
+  font-size: 18px;
+  letter-spacing: 0;
+  font-weight: 100;
+  padding : 10px 0 15px 0;
+}
+.left ul {
+  list-style-type: square;
+  padding: 5px 10px 10px 20px;
+}
+.right {
+  float: right;
+  text-align: justify;
+  margin-top: 0;
+  display: inline;
+}
+.right h2 {
+  color: #F4F7ED;
+  font-size: 18px;
+  letter-spacing: 0;
+  font-weight: 100;
+  padding: 10px 0 15px 0;
+}
+.right ul {
+  list-style-type: square;
+  padding: 5px 10px 10px 20px;
+}
 .urbangreymenu{
   width: 160px;
   float: left;
@@ -959,18 +955,13 @@ a:hover {
   background: #485C5A;
   margin: 0 0 2px 0;
   text-transform: uppercase;
-  padding: 2px 0 2px 8px;
-  border-radius: 10px 10px 0 0;
-  -webkit-border-radius: 10px 10px 0 0;
-  -moz-border-radius: 10px 10px 0 0;
+  padding: 5px 0 5px 8px;
+  border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
   /*box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;*/
-}
-.urbangreymenu .headerbar a{
-  text-decoration: none;
-  color: #FFFFFF;
-  display: block;
 }
 .urbangreymenu ul{
   list-style-type: none;
@@ -980,37 +971,44 @@ a:hover {
 .urbangreymenu ul li{
   padding-bottom: 2px;
 }
-.urbangreymenu ul li a{
-  color: #485C5A;
-  background: #BFCFCC;
+.urbangreymenu a{
   display: block;
   padding: 5px 0 5px 8px;
   line-height: 14px;
-  text-decoration: none;
 }
-.urbangreymenu ul li a:visited{
+.urbangreymenu a:hover {
   color: #485C5A;
+}
+.fadeMenu {
+  color: #485C5A;
+  background: rgb(197,207,204);
+}
+.urbangreymenu a.aSelected {
+  display: block;
+  text-decoration: none;
+  color: #FFFFFF;
+  background-color: #A31E39;
 }
 .submenu_last {
   margin-bottom: 2px;
-  border-radius: 0 0 10px 10px;
-  -webkit-border-radius: 0 0 10px 10px;
-  -moz-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 4px 4px;
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
   /*box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;*/
 }
 .articles {
-  width: 662px;
+  width: 654px;
   display: inline;
   float: left;
-  margin: 4px;
-  padding: 4px 1.5em;
+  margin: 8px;
+  padding: 1em 1.5em;
   /*background: #F7F9F2;*/
   background: #F9FBF6;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;
@@ -1044,13 +1042,13 @@ ul.nobullet {
   width: 822px;
   display: inline;
   float: left;
-  margin: 4px;
+  margin: 8px 0 8px 8px;
   padding: 1em 1.5em;
   /*background: #F7F9F2;*/
   background: #F9FBF6;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;
@@ -1081,63 +1079,6 @@ ul.nobullet {
   font-size: 12px;
 }
 
-/* Left Menu - link stays higlighted ("hover persists) while on page */
-
-#l_menu {
-  width:160px;
-  font-family:Verdana, Arial, Helvetica, serif;
-  font-size:11px;
-}
-#l_menu ul {
-  list-style: none;
-}
-#l_menu ul li {
-}
-#l_menu ul li a {
-  display:block;
-  text-decoration:none;
-  color:#485C5A;
-  background-color:#BFCFCC;
-  padding-left:8px;
-  cursor:pointer;
-}
-#l_menu ul li a:hover {
-  color:#FFFFFF;
-  background-color:#B54A60;
-}                            /* "mouseover", not dependant on scripts.js*/
-#l_menu ul li a.aSelected {
-  display:block;
-  text-decoration:none;
-  color:#FFFFFF;
-  /*background-color:#A31E39;*/
-  background-color: #A31E39;
-}                            /* "click", dependant on scripts.js*/
-
-/* Right Menu - same as above w/o "hover persists) */
-
-#r_menu {
-  width:160px;
-  font-family:Verdana, Arial, Helvetica, serif;
-  font-size:11px;
-}
-#r_menu ul {
-  list-style: none;
-}
-#r_menu ul li {
-}
-#r_menu ul li a {
-  display:block;
-  text-decoration:none;
-  color:#485C5A;
-  background-color:#BFCFCC;
-  padding-left:8px;
-  cursor:pointer;
-}
-#r_menu ul li a:hover {
-  color:#FFFFFF;
-  background-color:#A31E39;
-}                             /* "mouseover", not dependant on scripts.js*/
-
 /* 06hh_uberfooter.html */
 
 #footer {
@@ -1147,9 +1088,9 @@ ul.nobullet {
   height: 31px;
   padding: 4px;
   text-align: center;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   /*box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;*/

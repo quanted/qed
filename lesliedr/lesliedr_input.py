@@ -18,7 +18,7 @@ class lesliedrInputPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberinput_start.html', {
                 'model':'lesliedr', 
-                'model_attributes':'Leslie Model with Logistic Dose Response Model Inputs'})
+                'model_attributes':'Leslie Model with Logistic Dose Response Inputs'})
         html = html + str(lesliedrdb.lesliedrInp())
         html = html + """<table class="leslie" border="0">"""      
         html = html + """<table class="no" border="0">"""             

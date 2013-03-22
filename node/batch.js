@@ -1,4 +1,5 @@
 var restify = require('restify');
+var rabbitmq = require('./rabbitmq.js');
 
 function sayHello(req, res, next) {
   res.send('hello ');
@@ -23,6 +24,7 @@ function submitBatch(req, res, next)
     {
         var json = JSON.parse(body);
         console.log(JSON.stringify(json)); 
+        var results = rabbitmq.submitUbertoolBatchRequest(json);
     });
     res.send("Submitting Batch.\n");
 }

@@ -221,6 +221,8 @@ def C_t(C_ini, h_l):
         ('The foliar dissipation half life=%g is a non-physical value.' % h_l)        
     return (C_ini*np.exp(-(np.log(2)/h_l)*1))
     
+# concentration over time if application rate or time interval is variable
+
 #Dietary based EECs
 
 def EEC_diet(C_0, n_a, i_a, a_r, a_i, para, h_l):
@@ -588,7 +590,7 @@ class TRexOutputPage(webapp.RequestHandler):
         elif a_t=='Fruits/pods/seeds/large insects':
            para=15
         elif a_t=='Arthropods': #new coefficient for Arthropods
-           para==94
+           para=94
         i_a = form.getvalue('interval_between_applications')
         h_l = form.getvalue('Foliar_dissipation_half_life')
         ld50_bird = form.getvalue('avian_ld50')

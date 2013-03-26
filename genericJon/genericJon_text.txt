@@ -1,2 +1,14 @@
 <p>Testing Below</p>
+
+<script type="text/javascript">
+$(document).ready(function() {	
+	$('.popup').click(function(event) {
+		var url = $(this).attr("href");
+		window.open(url, "popUp", "width=300, height=300")
+		event.preventDefault();
+	});
+});
+</script>
+
+<p><a href="/images/popup.html" class="popup">Pop Up Test</a></p>
 <img src="http://1.bp.blogspot.com/-xaeAJytK8Bc/T5gVt3dMKqI/AAAAAAAALj8/2x4y-laiqb8/s1600/rock.jpg" width="493" height="500" alt="Doh!">

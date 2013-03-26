@@ -959,9 +959,9 @@ a:hover {
   border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
-  /*box-shadow: 3px 3px 15px #CCC;
-  -webkit-box-shadow: 3px 3px 15px #CCC;
-  -moz-box-shadow: 3px 3px 15px #CCC;*/
+  /*box-shadow: 3px 0 15px #CCC;
+  -webkit-box-shadow: 3px 0 15px #CCC;
+  -moz-box-shadow: 3px 0 15px #CCC;*/
 }
 .headerbar a{
   color: #FFFFFF;
@@ -979,6 +979,9 @@ a:hover {
   display: block;
   padding: 5px 0 5px 8px;
   line-height: 14px;
+  /*box-shadow: 3px 0 15px #CCC;
+  -webkit-box-shadow: 3px 0 15px #CCC;
+  -moz-box-shadow: 3px 0 15px #CCC;*/
 }
 .urbangreymenu a:hover {
   color: #485C5A;
@@ -997,9 +1000,9 @@ a:hover {
   border-radius: 0 0 4px 4px;
   -webkit-border-radius: 0 0 4px 4px;
   -moz-border-radius: 0 0 4px 4px;
-  /*box-shadow: 3px 3px 15px #CCC;
-  -webkit-box-shadow: 3px 3px 15px #CCC;
-  -moz-box-shadow: 3px 3px 15px #CCC;*/
+  box-shadow: 0 3px 15px -7px #000;
+  -webkit-box-shadow: 0 3px 15px -7px #000;
+  -moz-box-shadow: 0 3px 15px -7px #000;
 }
 .articles {
   width: 654px;
@@ -1094,9 +1097,9 @@ ul.nobullet {
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  /*box-shadow: 3px 3px 15px #CCC;
+  box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
-  -moz-box-shadow: 3px 3px 15px #CCC;*/
+  -moz-box-shadow: 3px 3px 15px #CCC;
 }
 #footer li {
   display: inline;

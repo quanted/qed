@@ -7,3 +7,7 @@ def convert(input):
         return input.encode('utf-8')
     else:
         return input
+    
+def ascii_encode_dict(data):
+    ascii_encode = lambda x: x.encode('ascii')
+    return dict(map(ascii_encode, pair) for pair in data.items())

@@ -1,102 +1,123 @@
+var Db = require('mongodb').Db,
+  Connection = require('mongodb').Connection,
+  Server = require('mongodb').Server,
+  ObjectId = require('mongodb').ObjectId,
+  Timestamp = require('mongodb').Timestamp;
 
-/**
- * Module dependencies.
- */
+var host = process.env['MONGO_NODE_DRIVER_HOST'] != null ? process.env['MONGO_NODE_DRIVER_HOST'] : 'localhost';
+var port = process.env['MONGO_NODE_DRIVER_PORT'] != null ? process.env['MONGO_NODE_DRIVER_PORT'] : Connection.DEFAULT_PORT;
 
-var mongoose = require('mongoose')
-  , Schema = mongoose.Schema;
+console.log("Connecting to " + host + ":" + port);
+var db = new Db('ubertool', new Server(host, port, {}), {native_parser:true});
 
-/**
- * Schema definition
- */
-
-// recursive embedded-document schema
-
-var Comment = new Schema();
-
-Comment.add({
-    title     : { type: String, index: true }
-  , date      : Date
-  , body      : String
-  , comments  : [Comment]
+db.open(function(err, db) {
+  console.log('Opened MongoDb connection.');
 });
 
-var BlogPost = new Schema({
-    title     : { type: String, index: true }
-  , slug      : { type: String, lowercase: true, trim: true }
-  , date      : Date
-  , buf       : Buffer
-  , comments  : [Comment]
-  , creator   : Schema.ObjectId
-});
-
-var Person = new Schema({
-    name: {
-        first: String
-      , last : String
-    }
-  , email: { type: String, required: true, index: { unique: true, sparse: true } }
-  , alive: Boolean
-});
-
-/**
- * Accessing a specific schema type by key
- */
-
-BlogPost.path('date')
-.default(function(){
-   return new Date()
- })
-.set(function(v){
-   return v == 'now' ? new Date() : v;
- });
-
-/**
- * Pre hook.
- */
-
-BlogPost.pre('save', function(next, done){
-  emailAuthor(done); // some async function
-  next();
-});
-
-/**
- * Methods
- */
-
-BlogPost.methods.findCreator = function (callback) {
-  return this.db.model('Person').findById(this.creator, callback);
+exports.createNewBatch = function(batch_id, data)
+{
+  db.collection('Batch', function(err,collection){
+    collection.insert({batchId:batch_id,ubertool_runs:{}});
+  });
 }
 
-BlogPost.statics.findByTitle = function (title, callback) {
-  return this.find({ title: title }, callback);
-}
-
-BlogPost.methods.expressiveQuery = function (creator, date, callback) {
-  return this.find('creator', creator).where('date').gte(date).run(callback);
-}
-
-/**
- * Plugins
- */
-
-function slugGenerator (options){
-  options = options || {};
-  var key = options.key || 'title';
-
-  return function slugGenerator(schema){
-    schema.path(key).set(function(v){
-      this.slug = v.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/-+/g, '');
-      return v;
+exports.updateUbertoolRun = function(config_name,batch_id,data)
+{
+  db.collection('Batch', function(err,collection){
+    collection.findOne({batchId:batch_id}, function(err, batch) {
+      if(batch != null) {
+        var isCompleted = true;
+        var ubertool_runs = batch.ubertool_runs;
+        if(ubertool_runs != null && Object.keys(ubertool_runs).length != 0)
+        {
+          for(var ubertool_run in ubertool_runs)
+          {
+            var tempIsCompleted = updateUbertoolRun(batch,ubertool_runs[ubertool_run],config_name,data);
+            isCompleted = isCompleted ? tempIsCompleted: isCompleted;
+          }
+        } else {
+          addNewUbertoolRunToBatch(batch,collection,config_name);
+          var ubertool_runs = batch.ubertool_runs;
+          var isCompleted = true;
+          if(ubertool_runs != null)
+          {
+            for(var ubertool_run in ubertool_runs)
+            {
+              var tempIsCompleted = updateUbertoolRun(batch,ubertool_run,config_name,data);
+              isCompleted = isCompleted ? tempIsCompleted: isCompleted;
+            }
+          }
+        }
+        if(isCompleted)
+        {
+          var objId = batch._id;
+          var createdTimestamp = objId.getTimestamp();
+          batch.completed = createdTimestamp;
+        }
+        collection.save(batch);
+      } else {
+        createBatch(batch_id,collection);
+        collection.findOne({batchId:batch_id}, function(err, batch) {
+          addNewUbertoolRunToBatch(batch,collection,config_name);
+        });
+      }
     });
-  };
-};
+  });
+}
 
-BlogPost.plugin(slugGenerator());
+function updateUbertoolRun(batch,ubertool_run,config_name,data )
+{
+  var isCompleted = true;
+  var ubertool_run_config_name = ubertool_run['config_name'];
+  if(ubertool_run_config_name == config_name)
+  {
+    var ubertoolRunData = {};
+    var objId = batch._id;
+    var ubertoolCompleted = objId.getTimestamp();
+    ubertoolRunData.config_name = config_name;
+    if(data != null)
+    {
+      ubertoolRunData.data = data;
+      ubertoolRunData.completed = ubertoolCompleted;
+    }
+    else {
+      ubertoolRunData.data = null;
+      ubertoolRunData.completed = false;
+      isCompleted = false;
+    }
+    ubertool_run[config_name] = ubertoolRunData;
+  } else {
+    var ubertoolRunCompleted = ubertool_run.completed;
+    if(ubertoolRunCompleted == null || ubertoolRunCompleted == false)
+    {
+      isCompleted = false;
+    }
+  }
+  return isCompleted;
+}
 
-/**
- * Define model.
- */
+function createBatch(batch_id,collection)
+{
+  collection.insert({batchId:batch_id,ubertool_runs:{}});
+  collection.findOne({batchId:batch_id}, function(err, batch) {
+    if(batch != null) {
+      var objId = batch._id;
+      var createdTimestamp = objId.getTimestamp();
+      batch.created = createdTimestamp;
+      collection.save(batch);
+    }
+  });
+}
 
-mongoose.model('BlogPost', BlogPost);
-mongoose.model('Person', Person);
+function addNewUbertoolRunToBatch(batch,collection,config_name)
+{
+  var ubertool_run = {}
+  var objId = batch._id;
+  var createdTimestamp = objId.getTimestamp();
+  ubertool_run.created = createdTimestamp;
+  ubertool_run.config_name = config_name;
+  var ubertool_runs = {};
+  ubertool_runs[config_name] = ubertool_run;
+  batch.ubertool_runs = ubertool_runs;
+  collection.save(batch);
+}

@@ -1,5 +1,6 @@
 var restify = require('restify');
 var rabbitmq = require('./rabbitmq.js');
+var mongodb = require('./mongodb.js');
 
 function sayHello(req, res, next) {
   res.send('hello ');
@@ -14,6 +15,7 @@ function getAvailableBatchNames(req, res, next)
 
 function submitBatch(req, res, next)
 {
+    console.log("Batch Submitted to Node.js server.");
     var body = '';
     req.on('data', function (data)
     {
@@ -35,6 +37,7 @@ function getBatchResults(req, res, next)
     res.send("Getting Batch Results.\n");
     return next();
 }
+
 
 var server = restify.createServer();
 server.get('/batch_configs', getAvailableBatchNames);

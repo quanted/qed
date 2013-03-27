@@ -147,6 +147,10 @@ a:hover {
 #header_menu_nav ul li#output_tab {
   display: none;
 }
+span {
+  cursor: hand; 
+  cursor: pointer;
+}
 .fadeDesc_description {
   display:inline-block;
   height: 24px;
@@ -1000,9 +1004,9 @@ a:hover {
   border-radius: 0 0 4px 4px;
   -webkit-border-radius: 0 0 4px 4px;
   -moz-border-radius: 0 0 4px 4px;
-  /*box-shadow: 3px 3px 15px #CCC;
-  -webkit-box-shadow: 3px 3px 15px #CCC;
-  -moz-box-shadow: 3px 3px 15px #CCC;*/
+  box-shadow: 0 3px 15px -7px #000;
+  -webkit-box-shadow: 0 3px 15px -7px #000;
+  -moz-box-shadow: 0 3px 15px -7px #000;
 }
 .articles {
   width: 654px;
@@ -1097,9 +1101,9 @@ ul.nobullet {
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  /*box-shadow: 3px 3px 15px #CCC;
+  box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
-  -moz-box-shadow: 3px 3px 15px #CCC;*/
+  -moz-box-shadow: 3px 3px 15px #CCC;
 }
 #footer li {
   display: inline;

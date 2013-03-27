@@ -1,5 +1,43 @@
 <!--start 04uberoutput_end-->
 
 </form>
+<script type="text/javascript">
+$( document ).ready(function() {
+	$('#fadeExport_pdf').append('<span class="hover"></span>').each(function () {
+		var $span = $('> span.hover', this).css('opacity', 0);
+		$(this).hover(function () {
+			$span.stop().fadeTo(500, 1);
+		}, function () {
+			$span.stop().fadeTo(500, 0);
+		});
+	});
+	
+	$('#fadeExport_html').append('<span class="hover"></span>').each(function () {
+		var $span = $('> span.hover', this).css('opacity', 0);
+		$(this).hover(function () {
+			$span.stop().fadeTo(500, 1);
+		}, function () {
+			$span.stop().fadeTo(500, 0);
+		});
+	});
+	
+	$('#fadeExport_doc').append('<span class="hover"></span>').each(function () {
+		var $span = $('> span.hover', this).css('opacity', 0);
+		$(this).hover(function () {
+			$span.stop().fadeTo(500, 1);
+		}, function () {
+			$span.stop().fadeTo(500, 0);
+		});
+	});
+});
+</script>
+<div id="export_menu">
+  <ul>
+	<li><a href="#" id="fadeExport_pdf"><span></span></a></li>
+	<li><a href="#" id="fadeExport_html"></a><span></span></li>
+	<li><a href="#" id="fadeExport_doc"></a><span></span></li>
+  </ul>
+</div> <!-- End "export_menu" div -->
 </div> <!-- End "articles_output" div -->
+
 <!--end 04uberoutput_end-->

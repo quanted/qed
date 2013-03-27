@@ -147,6 +147,10 @@ a:hover {
 #header_menu_nav ul li#output_tab {
   display: none;
 }
+span {
+  cursor: hand; 
+  cursor: pointer;
+}
 .fadeDesc_description {
   display:inline-block;
   height: 24px;
@@ -1046,11 +1050,12 @@ ul.nobullet {
 }
 .articles_output {
   width: 822px;
+  min-height: 202px;
   display: inline;
   float: left;
+  position: relative;
   margin: 8px 0 8px 8px;
   padding: 1em 1.5em;
-  /*background: #F7F9F2;*/
   background: #F9FBF6;
   border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -1084,6 +1089,104 @@ ul.nobullet {
   margin-top: 0.5em;
   font-size: 12px;
 }
+#export_menu {
+  /*min-width: 100px;*/
+  /*min-height: 194px;*/
+  /*min-height: 32px;*/
+  top: 8px;
+  right: 8px;
+  padding-left: 3px;
+  /* background-color: #F4F7ED; */
+  /* color: #fff; */
+  /* border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC; */
+  position: absolute;
+  z-index: 999;
+}
+#export_menu ul li{
+  display: inline;
+  float: left;
+}
+#export_menu ul li img {
+  margin: 0;
+  padding: 0;
+}
+#fadeExport_pdf {
+  display: inline-block;
+  height: 38px;
+  width: 35px;
+  background: url(../images/export/export_sprite_small_hort.jpg) no-repeat;
+  background-position: 0 0;
+}
+#fadeExport_pdf * {
+  display: none;
+}
+#fadeExport_pdf span.hover {
+  display: inline-block;
+  height: 38px;
+  width: 35px;
+  background: url(../images/export/export_sprite_small_hort.jpg) no-repeat;
+  background-position: 0 -38px;
+}
+#fadeExport_html {
+  display: inline-block;
+  height: 38px;
+  width: 34px;
+  background: url(../images/export/export_sprite_small_hort.jpg) no-repeat;
+  background-position: -35px 0;
+}
+#fadeExport_html * {
+  display: none;
+}
+#fadeExport_html span.hover {
+  display: inline-block;
+  height: 38px;
+  width: 34px;
+  background: url(../images/export/export_sprite_small_hort.jpg) no-repeat;
+  background-position: -35px -38px;
+}
+#fadeExport_doc {
+  display: inline-block;
+  height: 38px;
+  width: 35px;
+  background: url(../images/export/export_sprite_small_hort.jpg) no-repeat;
+  background-position: -69px 0;
+}
+#fadeExport_doc * {
+  display: none;
+}
+#fadeExport_doc span.hover {
+  display: inline-block;
+  height: 38px;
+  width: 35px;
+  background: url(../images/export/export_sprite_small_hort.jpg) no-repeat;
+  background-position: -69px -38px;
+}
+/*#export_pdf {
+  display: inline-block;
+  height: 65px;
+  width: 67px;
+  background: url(../images/export/export_sprite_hort.jpg) no-repeat;
+  background-position: 0 0;
+}
+#export_html {
+  display: inline-block;
+  height: 65px;
+  width: 63px;
+  background: url(../images/export/export_sprite_hort.jpg) no-repeat;
+  background-position: -67px 0;
+}
+#export_doc {
+  display: inline-block;
+  height: 65px;
+  width: 64px;
+  background: url(../images/export/export_sprite_hort.jpg) no-repeat;
+  background-position: -130px 0;
+}*/
 
 /* 06hh_uberfooter.html */
 

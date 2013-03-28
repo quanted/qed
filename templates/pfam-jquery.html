@@ -52,16 +52,16 @@ $(document).ready(function() {
 	}	
 
     function mmCheck(value) {
-        var mmValue = value;
+        var mmValue = Number(value);
         if (mmValue < 1 || mmValue > 12) 
 			return false;
         return true;
     }
 
     function ddCheck(value, element) {
-        var mmValue1 = $(element).parent().prev('td').children('input').val();
+        var mmValue1 = Number($(element).parent().prev('td').children('input').val());
 		//console.log(mmValue1);
-        var ddValue1 = value;
+        var ddValue1 = Number(value);
 		//console.log(value);
         if (ddValue1 < 1 || ddValue1 > 31) 
 			return false;
@@ -73,9 +73,9 @@ $(document).ready(function() {
     }
 
     function wlflCheck(value, element) {
-        var flValue1 = $(element).parent().prev('td').children('input').val();
+        var flValue1 = Number($(element).parent().prev('td').children('input').val());
 		//console.log(flValue1);
-        var wlValue1 = value;
+        var wlValue1 = Number(value);
 		//console.log(wlValue1);
         if (flValue1 >wlValue1) 
 			return false;
@@ -83,9 +83,9 @@ $(document).ready(function() {
     }
 
     function mlflCheck(value, element) {
-        var flValue1 = $(element).parent().prev('td').prev('td').children('input').val();
+        var flValue1 = Number($(element).parent().prev('td').prev('td').children('input').val());
 		//console.log(flValue1);
-        var mlValue1 = value;
+        var mlValue1 = Number(value);
 		//console.log(mlValue1);
         if (mlValue1 >flValue1) 
 			return false;
@@ -145,24 +145,26 @@ $(document).ready(function() {
             return Number(value) > 0;
         }, 'Positive number');
 
+
     $.validator.addMethod("mtp", function (value, element) {
-        var pre_val = $(element).parent().parent().prev('tr').find('td:nth-child(2)').children('input').val();
-        var cur_app_val = $(element).parent().prev('td').children('input').val();
-        var cur_val = value;
-        
-        //console.log(pre_val);
-        //console.log(cur_app_val);
-        if (cur_app_val == 1) {
-            return true;
-        }
-        else if (pre_val>cur_val){
-            return false;
-        }
+        var pre_val = Number($(element).parent().parent().prev('tr').find('td:nth-child(2)').children('input').val());
+        var cur_app_val = Number($(element).parent().prev('td').children('input').val());
+        var cur_val = Number(value);
+        // console.log("cur_app_val=", cur_app_val);
+        // console.log("pre_val=", pre_val);
+        // console.log("cur_val=", cur_val);
+
+        if (cur_app_val == 1)
+                return true;
+        else if (cur_val<pre_val)
+                return false;
         return true;
 
     }, "In an increasing order");
 
     $.validator.messages.required = 'Required';
+
+
 
 									
     var validator = $('form').validate({

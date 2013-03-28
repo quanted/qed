@@ -14,78 +14,109 @@ db.open(function(err, db) {
   console.log('Opened MongoDb connection.');
 });
 
+exports.getBatchNames = function(callback)
+{ 
+  var completedBatchNames = {};
+  db.collection('Batch', function(err,collection){
+    collection.find({completed:{$exists:true}}).toArray(function(err,items) {
+      for(var i=0; i < items.length; i++)
+      {
+        var item = items[i];
+        completedBatchNames[item.batchId]=item.completed.toString();
+      }
+      callback(null,completedBatchNames);
+    });
+  });
+}
+
+exports.getBatchResults = function(batch_id,callback)
+{ 
+  db.collection('Batch', function(err,collection){
+    collection.findOne({batchId:batch_id},function(err,batch) {
+      //console.log(batch);
+      var new_batch = {};
+      new_batch.completed = batch.completed;
+      new_batch.ubertool_data = batch.ubertool_data;
+      new_batch.batchId = batch.batchId;
+      callback(null,new_batch);
+    });
+  });
+}
+
 exports.createNewBatch = function(batch_id, data)
 {
   db.collection('Batch', function(err,collection){
-    collection.insert({batchId:batch_id,ubertool_runs:{}});
+    collection.insert({batchId:batch_id,ubertool_data:{}});
+    collection.findOne({batchId:batch_id}, function(err, batch) {
+      var objId = batch._id;
+      var createdTimestamp = objId.getTimestamp();
+      batch.created = createdTimestamp;
+      collection.save(batch);
+    });
+  });
+}
+
+exports.addEmptyUbertoolRun = function(config_name,batch_id)
+{
+  db.collection('Batch', function(err,collection){
+    collection.findOne({batchId:batch_id}, function(err, batch) {
+      console.log("addEmptyUbertoolRun  ");
+      var ubertool_run = {};
+      var objId = batch._id;
+      var createdTimestamp = objId.getTimestamp();
+      ubertool_run.created = createdTimestamp;
+      ubertool_run.config_name = config_name;
+      var ubertool_data = batch.ubertool_data;
+      if(ubertool_data == null)
+      {
+        ubertool_data = {};
+      }
+      ubertool_data[config_name] = ubertool_run;
+      batch.ubertool_data = ubertool_data;
+      collection.save(batch);
+    });
   });
 }
 
 exports.updateUbertoolRun = function(config_name,batch_id,data)
 {
+
   db.collection('Batch', function(err,collection){
     collection.findOne({batchId:batch_id}, function(err, batch) {
-      if(batch != null) {
-        var isCompleted = true;
-        var ubertool_runs = batch.ubertool_runs;
-        if(ubertool_runs != null && Object.keys(ubertool_runs).length != 0)
-        {
-          for(var ubertool_run in ubertool_runs)
-          {
-            var tempIsCompleted = updateUbertoolRun(batch,ubertool_runs[ubertool_run],config_name,data);
-            isCompleted = isCompleted ? tempIsCompleted: isCompleted;
-          }
-        } else {
-          addNewUbertoolRunToBatch(batch,collection,config_name);
-          var ubertool_runs = batch.ubertool_runs;
-          var isCompleted = true;
-          if(ubertool_runs != null)
-          {
-            for(var ubertool_run in ubertool_runs)
-            {
-              var tempIsCompleted = updateUbertoolRun(batch,ubertool_run,config_name,data);
-              isCompleted = isCompleted ? tempIsCompleted: isCompleted;
-            }
-          }
-        }
-        if(isCompleted)
-        {
-          var objId = batch._id;
-          var createdTimestamp = objId.getTimestamp();
-          batch.completed = createdTimestamp;
-        }
-        collection.save(batch);
-      } else {
-        createBatch(batch_id,collection);
-        collection.findOne({batchId:batch_id}, function(err, batch) {
-          addNewUbertoolRunToBatch(batch,collection,config_name);
-        });
+      var isCompleted = true;
+      var ubertool_data = batch.ubertool_data;
+      for(var ubertool_run in ubertool_data)
+      {
+        var tempIsCompleted = updateUbertoolRun(collection,batch,ubertool_data[ubertool_run],config_name,data)
+        isCompleted = isCompleted ? tempIsCompleted: isCompleted;
       }
+      if(isCompleted)
+      {
+        var objId = batch._id;
+        var createdTimestamp = objId.getTimestamp();
+        batch.completed = createdTimestamp;
+      }
+      collection.save(batch);
     });
   });
 }
 
-function updateUbertoolRun(batch,ubertool_run,config_name,data )
+function updateUbertoolRun(collection,batch,ubertool_run,config_name,data )
 {
   var isCompleted = true;
-  var ubertool_run_config_name = ubertool_run['config_name'];
+  var ubertool_run_config_name = ubertool_run.config_name;
+  console.log("updateUbertoolRun: " + ubertool_run_config_name);
   if(ubertool_run_config_name == config_name)
   {
-    var ubertoolRunData = {};
     var objId = batch._id;
     var ubertoolCompleted = objId.getTimestamp();
-    ubertoolRunData.config_name = config_name;
-    if(data != null)
+    for(var datum in data)
     {
-      ubertoolRunData.data = data;
-      ubertoolRunData.completed = ubertoolCompleted;
+      ubertool_run[datum] = data[datum];
     }
-    else {
-      ubertoolRunData.data = null;
-      ubertoolRunData.completed = false;
-      isCompleted = false;
-    }
-    ubertool_run[config_name] = ubertoolRunData;
+//    ubertool_run.data = data;
+    ubertool_run.completed = ubertoolCompleted;
+    collection.save(batch);
   } else {
     var ubertoolRunCompleted = ubertool_run.completed;
     if(ubertoolRunCompleted == null || ubertoolRunCompleted == false)
@@ -94,30 +125,4 @@ function updateUbertoolRun(batch,ubertool_run,config_name,data )
     }
   }
   return isCompleted;
-}
-
-function createBatch(batch_id,collection)
-{
-  collection.insert({batchId:batch_id,ubertool_runs:{}});
-  collection.findOne({batchId:batch_id}, function(err, batch) {
-    if(batch != null) {
-      var objId = batch._id;
-      var createdTimestamp = objId.getTimestamp();
-      batch.created = createdTimestamp;
-      collection.save(batch);
-    }
-  });
-}
-
-function addNewUbertoolRunToBatch(batch,collection,config_name)
-{
-  var ubertool_run = {}
-  var objId = batch._id;
-  var createdTimestamp = objId.getTimestamp();
-  ubertool_run.created = createdTimestamp;
-  ubertool_run.config_name = config_name;
-  var ubertool_runs = {};
-  ubertool_runs[config_name] = ubertool_run;
-  batch.ubertool_runs = ubertool_runs;
-  collection.save(batch);
 }

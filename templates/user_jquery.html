@@ -19,8 +19,7 @@ $(document).ready(function(){
 	});	
 	
 	$.ajax({
-		url:"/batch_configs",
-		async: false,
+		url:"{{ ubertool_server }}/batch_configs",
 		type: 'GET',
 		success: function(batch_data) {	
 			$("#id_batch_ubertool_results").width(120);
@@ -43,7 +42,7 @@ $(document).ready(function(){
 			$("#id_batch_results_table").css({"visibility":"visible","height":"auto"});
 			var batch_data;
 			$.ajax({
-				url:"batch_results/"+batch_configuration,
+				url:"{{ ubertool_server }}/batch_results/"+batch_configuration,
 				async: false,
 				type: 'GET',
 				success: function(batch_data) {

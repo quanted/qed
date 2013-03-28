@@ -19,13 +19,13 @@ exports.submitUbertoolBatchRequest = function (msg)
   var ubertools = msg['ubertools'];
   var batchId = msg['id'];
   mongodb.createNewBatch(batchId,ubertools);
-  var results = [];
   for(var index = 0; index < ubertools.length; index++)
   {
+    console.log("Ubertools index: " + index);
     var ubertoolRunData = ubertools[index];
     ubertoolRunData['batchId'] = batchId;
     var config_name = ubertoolRunData['config_name'];
-    mongodb.updateUbertoolRun(config_name,batchId,null);
+    mongodb.addEmptyUbertoolRun(config_name,batchId);
     exchange.publish('UbertoolBatchSubmissionQueue',{message:JSON.stringify(ubertools[index])});
   }
 }

@@ -1,4 +1,50 @@
     <script>
+
+
+$(document).ready(function() {
+
+    $('#id_seed_treatment_formulation_name').closest('tr').hide();
+    $('#id_maximum_seedling_rate_per_use').closest('tr').hide();
+    $('#id_seed_crop').closest('tr').hide();
+    $('#id_bandwidth').closest('tr').hide();
+    $('#id_row_sp').closest('tr').hide();
+
+
+    $('#id_Application_type').change(function() { 
+        if ($(this).val() == 'Seed Treatment'){
+            $('#id_seed_treatment_formulation_name').closest('tr').show(); 
+            $('#id_id_maximum_seedling_rate_per_use').closest('tr').show();
+            $('#id_seed_crop').closest('tr').show();
+            $('#id_Application_target').closest('tr').hide();
+             $('#id_bandwidth').closest('tr').hide();
+            $('#id_row_sp').closest('tr').hide();
+        }
+        else if ($(this).val() == 'Row/Band/In-furrow-Granular'){
+            $('#id_seed_treatment_formulation_name').closest('tr').hide(); 
+            $('#id_id_maximum_seedling_rate_per_use').closest('tr').hide();
+            $('#id_seed_crop').closest('tr').hide();
+            $('#id_Application_target').closest('tr').show();
+            $('#id_bandwidth').closest('tr').show();
+            $('#id_row_sp').closest('tr').show();
+        }
+         else if ($(this).val() == 'Row/Band/In-furrow-Liquid'){
+            $('#id_seed_treatment_formulation_name').closest('tr').hide(); 
+            $('#id_id_maximum_seedling_rate_per_use').closest('tr').hide();
+            $('#id_seed_crop').closest('tr').hide();
+            $('#id_Application_target').closest('tr').show();
+            $('#id_bandwidth').closest('tr').show();
+            $('#id_row_sp').closest('tr').show();
+        }
+        else{
+            $('#id_seed_treatment_formulation_name').closest('tr').hide(); 
+            $('#id_id_maximum_seedling_rate_per_use').closest('tr').hide();
+            $('#id_seed_crop').closest('tr').hide();
+            $('#id_bandwidth').closest('tr').hide();
+            $('#id_Application_target').closest('tr').show();
+            $('#id_row_sp').closest('tr').hide();
+       }
+    });    
+
     var i = 1
     $('.tab_Application').append('<tr id="noa_header" style="display:none"><th width="18%">App#</th><th width="18%">Rate</th><th width="18%">Number of Day</th></tr>');
 
@@ -27,4 +73,7 @@
     	}
     	$('</table>').appendTo('.tab_Application');
     })
+
+    
+});
     </script>

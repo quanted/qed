@@ -232,39 +232,28 @@ def EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day):
     n_a_temp = 0  #number of existing applications
     dayt = 0
 #trex1.5.1
-    for i in range (0,365):
-        if i==0:  #first day of application
-            a_p_temp=0
-            n_a_temp=n_a_temp+1
-            C_temp[i]=C_0(a_r[0], a_i, para)
-            dayt = dayt + 1
-        elif i==day[dayt] and n_a_temp<n_a: # next application day
-            n_a_temp=n_a_temp+1
-            C_temp[i]=C_t(C_temp[i-1], h_l)+C_0(a_r[dayt], a_i, para)
-            dayt = dayt + 1        
+    if n_a == 1:
+        C_temp = C_0(a_r[0], a_i, para)
+        return C_temp
+    
+    else:
+        for i in range (0,365):
+            if i==0:  #first day of application
+                a_p_temp = 0
+                n_a_temp = n_a_temp + 1
+                C_temp[i] = C_0(a_r[0], a_i, para)
+                dayt = dayt + 1
+            elif i==day[dayt] and n_a_temp<=n_a: # next application day
+                n_a_temp = n_a_temp + 1
+                C_temp[i] = C_t(C_temp[i-1], h_l) + C_0(a_r[dayt], a_i, para)
+                dayt = dayt + 1        
         # elif a_p_temp<(i_a-1) and n_a_temp<=n_a: #
         #     a_p_temp=a_p_temp+1
         #     C_temp[i]=C_t(C_temp[i-1], h_l)        
-        else : #not an application day just degredation of existing concentration
-            C_temp[i]=C_t(C_temp[i-1], h_l) 
-    return (max(C_temp))
+            else : #not an application day just degredation of existing concentration
+                C_temp[i]=C_t(C_temp[i-1], h_l) 
+        return (max(C_temp))
 
-#trex1.4.1    
-    # for i in range (0,365):
-    #     if i==0: 
-    #         a_p_temp=0
-    #         n_a_temp=n_a_temp+1
-    #         C_temp[i]=C_0
-    #     elif a_p_temp==(i_a-1) and n_a_temp<n_a:
-    #         a_p_temp=0
-    #         n_a_temp=n_a_temp+1
-    #         C_temp[i]=C_t(C_temp[i-1], h_l)+C_0        
-    #     elif a_p_temp<(i_a-1) and n_a_temp<=n_a:
-    #         a_p_temp=a_p_temp+1
-    #         C_temp[i]=C_t(C_temp[i-1], h_l)        
-    #     else :
-    #         C_temp[i]=C_t(C_temp[i-1], h_l) 
-    # return (max(C_temp))
 
 # Dose based EECs for birds
 
@@ -463,7 +452,7 @@ def LD50_rl_mamm(Application_type, a_r_l, a_i, p_i, b_w, aw_mamm, at_mamm, ld50_
         
 # LD50ft-2 for broadcast granular birds
 
-def LD50_bg_bird(Application_type, a_r, a_i, p_i, b_w, aw_bird, at_bird, ld50_bird, tw_bird,x):
+def LD50_bg_bird(Application_type, a_r, a_i, p_i, aw_bird, at_bird, ld50_bird, tw_bird,x):
     if Application_type=='Broadcast-Granular':    
         at_bird=at_bird(ld50_bird,aw_bird,tw_bird,x)
         expo_bg_bird=((a_r*a_i*453590)/43560)*(1-p_i)
@@ -473,7 +462,7 @@ def LD50_bg_bird(Application_type, a_r, a_i, p_i, b_w, aw_bird, at_bird, ld50_bi
         
 # LD50ft-2 for broadcast liquid birds
 
-def LD50_bl_bird(Application_type, a_r_l, a_i, p_i, b_w, aw_bird, at_bird, ld50_bird, tw_bird,x):
+def LD50_bl_bird(Application_type, a_r_l, a_i, p_i, aw_bird, at_bird, ld50_bird, tw_bird,x):
     if Application_type=='Broadcast-Liquid':   
         at_bird=at_bird(ld50_bird,aw_bird,tw_bird,x)
         expo_bl_bird=((a_r_l*28349*a_i)/43560)*(1-p_i)
@@ -483,7 +472,7 @@ def LD50_bl_bird(Application_type, a_r_l, a_i, p_i, b_w, aw_bird, at_bird, ld50_
         
 # LD50ft-2 for broadcast granular mammals
 
-def LD50_bg_mamm(Application_type, a_r, a_i, p_i, b_w, aw_mamm, at_mamm, ld50_mamm, tw_mamm):
+def LD50_bg_mamm(Application_type, a_r, a_i, p_i, aw_mamm, at_mamm, ld50_mamm, tw_mamm):
     if Application_type=='Broadcast-Granular':    
         at_mamm=at_mamm(ld50_mamm,aw_mamm,tw_mamm) 
         expo_bg_mamm=((a_r*a_i*453590)/43560)*(1-p_i)
@@ -493,7 +482,7 @@ def LD50_bg_mamm(Application_type, a_r, a_i, p_i, b_w, aw_mamm, at_mamm, ld50_ma
         
 # LD50ft-2 for broadcast liquid mammals
 
-def LD50_bl_mamm(Application_type, a_r_l, a_i, p_i, b_w, aw_mamm, at_mamm, ld50_mamm, tw_mamm):
+def LD50_bl_mamm(Application_type, a_r_l, a_i, p_i, aw_mamm, at_mamm, ld50_mamm, tw_mamm):
     if Application_type=='Broadcast-Liquid':    
         at_mamm=at_mamm(ld50_mamm,aw_mamm,tw_mamm)
         expo_bl_mamm=((a_r_l*28349*a_i)/43560)*(1-p_i)
@@ -557,6 +546,7 @@ class TRexOutputPage(webapp.RequestHandler):
         a_i = form.getvalue('percent_ai')
         a_i = float(a_i)/100
         Application_type = form.getvalue('Application_type')
+        seed_crop = form.getvalue('seed_crop')
         p_i = form.getvalue('percent_incorporated')
         p_i = float(p_i)/100
       #  a_r = form.getvalue('application_rate')
@@ -618,6 +608,12 @@ class TRexOutputPage(webapp.RequestHandler):
         elif a_t=='Arthropods': #new coefficient for Arthropods
            para=94
         # i_a = form.getvalue('interval_between_applications')
+        
+        if Application_type=='Seed Treatment':
+           a_r_p=rate_out[0]       #coefficient used to estimate initial conc.
+        else:
+           a_r_p=0
+        print 'a_r_p', a_r_p
         h_l = form.getvalue('Foliar_dissipation_half_life')
         ld50_bird = form.getvalue('avian_ld50')
         lc50_bird = form.getvalue('avian_lc50')
@@ -893,9 +889,9 @@ class TRexOutputPage(webapp.RequestHandler):
         #                               a_t, ARQ_diet_mamm(EEC_diet, lc50_mamm, C_0, n_a, i_a, a_r, a_i, para, h_l),
         #                               a_t, CRQ_diet_mamm(EEC_diet, NOAEC_mamm, C_0, n_a, i_a, a_r, a_i, para, h_l),
         #                               LD50_rg_bird(Application_type, a_r, a_i, p_i, r_s, b_w, aw_bird, at_bird, ld50_bird, tw_bird, x), LD50_rl_bird(Application_type, a_r_l, a_i, p_i, b_w, aw_bird, at_bird, ld50_bird, tw_bird, x),
-        #                               LD50_bg_bird(Application_type, a_r, a_i, p_i, b_w, aw_bird, at_bird, ld50_bird, tw_bird,x),LD50_bl_bird(Application_type, a_r_l, a_i, p_i, b_w, aw_bird, at_bird, ld50_bird, tw_bird,x),
+        #                               LD50_bg_bird(Application_type, a_r, a_i, p_i, aw_bird, at_bird, ld50_bird, tw_bird,x),LD50_bl_bird(Application_type, a_r_l, a_i, p_i,  aw_bird, at_bird, ld50_bird, tw_bird,x),
         #                               LD50_rg_mamm(Application_type, a_r, a_i, p_i, r_s, b_w, aw_mamm, at_mamm, ld50_mamm, tw_mamm), LD50_rl_mamm(Application_type, a_r_l, a_i, p_i, b_w, aw_mamm, at_mamm, ld50_mamm, tw_mamm),
-        #                               LD50_bg_mamm(Application_type, a_r, a_i, p_i, b_w, aw_mamm, at_mamm, ld50_mamm, tw_mamm),LD50_bl_mamm(Application_type, a_r_l, a_i, p_i, b_w, aw_mamm, at_mamm, ld50_mamm, tw_mamm),
+        #                               LD50_bg_mamm(Application_type, a_r, a_i, p_i, aw_mamm, at_mamm, ld50_mamm, tw_mamm),LD50_bl_mamm(Application_type, a_r_l, a_i, p_i, aw_mamm, at_mamm, ld50_mamm, tw_mamm),
         #                               sa_bird_1(a_r_p, a_i, den, at_bird,fi_bird, ld50_bird, aw_bird, tw_bird, x),sa_bird_2(a_r_p, a_i, den, m_s_r_p, at_bird, ld50_bird, aw_bird, tw_bird, x),
         #                               sc_bird(a_r_p, a_i, den, NOAEC_bird),sa_mamm_1(a_r_p, a_i, den, at_mamm, fi_mamm, ld50_mamm, aw_mamm, tw_mamm),
         #                               sa_mamm_2(a_r_p, a_i, den, m_s_r_p, at_mamm, ld50_mamm, aw_mamm, tw_mamm),sc_mamm(a_r_p, a_i, den, NOAEC_mamm))

@@ -145,6 +145,23 @@ $(document).ready(function() {
             return Number(value) > 0;
         }, 'Positive number');
 
+    $.validator.addMethod("mtp", function (value, element) {
+        var pre_val = $(element).parent().parent().prev('tr').find('td:nth-child(2)').children('input').val();
+        var cur_app_val = $(element).parent().prev('td').children('input').val();
+        var cur_val = value;
+        
+        //console.log(pre_val);
+        //console.log(cur_app_val);
+        if (cur_app_val == 1) {
+            return true;
+        }
+        else if (pre_val>cur_val){
+            return false;
+        }
+        return true;
+
+    }, "In an increasing order");
+
     $.validator.messages.required = 'Required';
 
 									
@@ -489,7 +506,8 @@ $(document).ready(function() {
         $(this).rules('add', {
             required : true,
 			integer: true,
-            min: 0
+            min: 0,
+            mtp : true
         });
     });
 

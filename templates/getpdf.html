@@ -1,0 +1,17 @@
+<script>
+$(document).ready(function () {
+  var jq_html = $("div.articles").html();
+  console.log(jq_html);
+
+$('<tr style="display:none"><td><input type="hidden" name="extract"></td></tr>')
+    .appendTo('.getpdf')
+    .find('input')
+    .val(jq_html);
+
+
+$('.getpdf').append('<tr><td><input type="submit" value="Generate PDF"/></td></tr>');
+
+          
+
+})
+</script>

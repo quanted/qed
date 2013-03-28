@@ -89,6 +89,14 @@ class IecOutputPage(webapp.RequestHandler):
         </table>
         """%(z_score_f(dose_response, LC50, threshold), F8_f(dose_response, LC50, threshold),chance_f(dose_response, LC50, threshold))
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
+        html = html + """
+          <form method="post" target="_blank" action=pdf.html>
+            <table align="center" class="getpdf">
+            </table>
+          </form>
+        """
+
+        html = html + template.render(templatepath + 'getpdf.html', {})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

@@ -26,6 +26,20 @@ class trexInputPage(webapp.RequestHandler):
         html = html + """<a href="trex_input.html" class="TREX1"> Want to Use TREX 1.4.1?</a>
         """
         html = html + str(trexdb2.trexInp())
+        html = html + """</table><table class="tab tab_Application" border="0">
+                                    <tr><th colspan="2" scope="col"><label for="id_noa">Number of Applications:</label></th>
+                                        <td colspan="3" scope="col"><select name="noa" id="id_noa">
+                                            <option value="">Make a selection</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option></select>
+                                        </td>
+                                    </tr>""" 
+
+        # html = html + str(trexdb2.trexApp())
+        html = html + """</table><table class="tab tab_Animal" border="0">"""         
+        html = html + str(trexdb2.trexAnimal())
+        html = html + template.render (templatepath + 'trex2-jquery.html', {})
         html = html + template.render (templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render (templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

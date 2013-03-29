@@ -3,8 +3,8 @@ import sys
 import json
 import pickle
 import logging
-sys.path.append("../terrplant")
-import terrplant_model
+sys.path.append("terrplant")
+from terrplant import terrplant_model
 from terrplant.terrplant_runner import TerrPlantBatchRunner
 terrPlantRunner = TerrPlantBatchRunner()
 

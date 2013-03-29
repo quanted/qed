@@ -5,7 +5,7 @@ import pickle
 import logging
 sys.path.append("terrplant")
 import terrplant_model
-from terrplant.terrplant_runner import TerrPlantBatchRunner
+from terrplant_runner import TerrPlantBatchRunner
 terrPlantRunner = TerrPlantBatchRunner()
 
 logger = logging.getLogger("BatchWorker")

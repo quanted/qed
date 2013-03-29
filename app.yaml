@@ -16,7 +16,7 @@ libraries:
   version: "1.3"
   
 env_variables:
-  UBERTOOL_BATCH_SERVER: 'http://www.chancedelphia.com:8886/'
+  UBERTOOL_BATCH_SERVER: ''
 
 
 handlers:

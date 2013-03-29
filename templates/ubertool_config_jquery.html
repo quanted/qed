@@ -82,13 +82,12 @@ function insertUbertoolResultsTable(batch_configuration)
 				}
 			}
 			batchTableInnerHTML += "</tbody></table>";
-			$("#id_batch_results_table")[0].innerHTML = batchTableInnerHTML;
-			$("#id_batch_results_table").css({"visibility":"visible","height":"auto"});
-			window.alert(batchTableInnerHTML);
 			$(".fancybox").fancybox({
 				type: 'html',
 				content: batchTableInnerHTML
 			});
+			$("#id_batch_results_table")[0].innerHTML = batchTableInnerHTML;
+			$("#id_batch_results_table").css({"visibility":"visible","height":"auto"});
 		}
 	});
 }

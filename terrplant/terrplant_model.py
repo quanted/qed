@@ -1,8 +1,6 @@
 import numpy as np
 import logging
 import sys
-sys.path.append("../utils")
-import utils.json_utils
 
 def rundry(A,I,R):
     try:

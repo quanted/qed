@@ -4,7 +4,7 @@ import json
 import pickle
 import logging
 sys.path.append("terrplant")
-from terrplant import terrplant_model
+import terrplant_model
 from terrplant.terrplant_runner import TerrPlantBatchRunner
 terrPlantRunner = TerrPlantBatchRunner()
 

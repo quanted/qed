@@ -14,8 +14,8 @@ import logging
 import sys
 sys.path.append("../utils")
 import utils.json_utils
-sys.path.append("./terrplant_model")
-import terrplant_model
+sys.path.append("../terrplant")
+from terrplant import terrplant_model
 
 class TerrPlantExecutePage(webapp.RequestHandler):
     def post(self):

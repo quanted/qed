@@ -15,7 +15,7 @@ sys.path.append("../rice")
 from rice.rice_output import RiceBatchRunner
 sys.path.append("../terrplant")
 ricePlantRunner = RiceBatchRunner()
-from terrplant.terrplant_output import TerrPlantBatchRunner
+from terrplant.terrplant_runner import TerrPlantBatchRunner
 terrPlantRunner = TerrPlantBatchRunner()
 from batch import Batch
 import pickle

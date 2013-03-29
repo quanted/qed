@@ -3,8 +3,9 @@ import sys
 import json
 import pickle
 import logging
-sys.path.append("../")
-from terrplant.terrplant_output import TerrPlantBatchRunner
+sys.path.append("../terrplant")
+from terrplant import terrplant_model
+from terrplant.terrplant_runner import TerrPlantBatchRunner
 terrPlantRunner = TerrPlantBatchRunner()
 
 logger = logging.getLogger("BatchWorker")

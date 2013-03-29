@@ -60,10 +60,12 @@ def on_connected(connection):
     """Called when we are fully connected to RabbitMQ"""
     # Open a channel
     connection.channel(on_channel_open)
+    logger.info("On Connected")
 
 # Step #3
 def on_channel_open(new_channel):
     """Called when our channel has opened"""
+    logger.info("On Channel Open")
     global channel,results_channel
     channel = new_channel
     channel.queue_declare(queue="UbertoolBatchSubmissionQueue", durable=True, exclusive=False, auto_delete=False, callback=on_queue_declared)
@@ -73,12 +75,14 @@ def on_channel_open(new_channel):
 # Step #4
 def on_queue_declared(frame):
     """Called when RabbitMQ has told us our Queue has been declared, frame is the response from RabbitMQ"""
+    logger.info("On Queue Declare")
     channel.basic_consume(handle_delivery, queue='UbertoolBatchSubmissionQueue')
 
 # Step #5
 def handle_delivery(channel, method, header, body):
     """Called when we receive a message from RabbitMQ"""
-    #print body
+    logger.info("Handling message delivery")
+    print body
     channel.basic_ack(delivery_tag = method.delivery_tag)
     data = json.loads(body, object_hook=ascii_encode_dict)
     messageData = data['message']

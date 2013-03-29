@@ -1,5 +1,20 @@
 <script type="text/javascript" src=" ../stylesheets/jquery-1.7.2.js"></script>
 <script type="text/javascript" src=" ../stylesheets/jquery.validate.js"></script>
+<!-- Add jQuery library -->
+<!-- Add mousewheel plugin (this is optional) -->
+<script type="text/javascript" src="../fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="../fancybox/source/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+<script type="text/javascript" src="../fancybox/source/jquery.fancybox.pack.js?v=2.1.4"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="../fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.5"></script>
+
+<link rel="stylesheet" href="../fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
 <script>
 function submitBatchConfigurations()
 {
@@ -22,43 +37,60 @@ function submitBatchConfigurations()
 			batch_config_props = form_data
 		}
 	});
+	var batch_config_name = null
 	if(batch_config_props != null)
 	{
 		$.ajax({
 			url:"{{ ubertool_server }}batch",
-			async: true,
+			async: false,
 			contentType:"application/json; charset=utf-8",
 			type: 'POST',
 			data: JSON.stringify(batch_config_props),
 			success: function(batch_data) {
-				insertUbertoolResultsTable(batch_data);
+				batch_config_name = batch_data;
 			}
 		});
 	}
+	if(batch_config_name != null)
+	{
+		insertUbertoolResultsTable(batch_config_name);
+	}
 }
 
-function insertUbertoolResultsTable(batch_data)
+function insertUbertoolResultsTable(batch_configuration)
 {
-	var batch_completed = batch_data['completed'];
-	var batchTableInnerHTML = "<table><tbody>";
-	batchTableInnerHTML += "<tr><th><label>Batch Id:</label></th><td>"+batch_configuration+"</td></tr>";
-	batchTableInnerHTML += "<tr><th><label>Completed:</label></th><td>"+batch_completed+"</td></tr>";
-	if("ubertool_data" in batch_data)
-	{
-		var ubertools_data = batch_data['ubertool_data'];
-		for(var ubertool_data_key in ubertools_data)
-		{
-			var ubertool_data = ubertools_data[ubertool_data_key];
-			batchTableInnerHTML += "<tr><th><label>Ubertool Run Configuration Name:</label></th><td>"+ubertool_data_key+"</td></tr>";
-			for(var ubertool_run_key in ubertool_data)
+	$.ajax({
+		url:"{{ ubertool_server }}/batch_results/"+batch_configuration,
+		async: false,
+		type: 'GET',
+		success: function(batch_data) {
+			var batch_completed = batch_data['completed'];
+			var batchTableInnerHTML = "<table><tbody>";
+			batchTableInnerHTML += "<tr><th><label>Batch Id:</label></th><td>"+batch_configuration+"</td></tr>";
+			batchTableInnerHTML += "<tr><th><label>Completed:</label></th><td>"+batch_completed+"</td></tr>";
+			if("ubertool_data" in batch_data)
 			{
-				batchTableInnerHTML += "<tr><th><label>" + ubertool_run_key + "</label></th><td>"+ubertool_data[ubertool_run_key]+"</td></tr>";								
+				var ubertools_data = batch_data['ubertool_data'];
+				for(var ubertool_data_key in ubertools_data)
+				{
+					var ubertool_data = ubertools_data[ubertool_data_key];
+					batchTableInnerHTML += "<tr><th><label>Ubertool Run Configuration Name:</label></th><td>"+ubertool_data_key+"</td></tr>";
+					for(var ubertool_run_key in ubertool_data)
+					{
+						batchTableInnerHTML += "<tr><th><label>" + ubertool_run_key + "</label></th><td>"+ubertool_data[ubertool_run_key]+"</td></tr>";								
+					}
+				}
 			}
+			batchTableInnerHTML += "</tbody></table>";
+			$("#id_batch_results_table")[0].innerHTML = batchTableInnerHTML;
+			$("#id_batch_results_table").css({"visibility":"visible","height":"auto"});
+			window.alert(batchTableInnerHTML);
+			$(".fancybox").fancybox({
+				type: 'html',
+				content: batchTableInnerHTML
+			});
 		}
-	}
-	batchTableInnerHTML += "</tbody></table>";
-	$("#id_batch_results_table")[0].innerHTML = batchTableInnerHTML;
-	$("#id_batch_results_table").css({"visibility":"visible","height":"auto"});
+	});
 }
 function endsInInteger(str)
 {

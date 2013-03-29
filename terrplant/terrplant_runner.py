@@ -1,7 +1,7 @@
 import numpy as np
 import logging
 import sys
-sys.path.append("../utils")
+sys.path.append("utils")
 import utils.json_utils
 sys.path.append("./terrplant_model")
 import terrplant_model

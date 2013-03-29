@@ -80,6 +80,7 @@ def processVariousBatchRunsIntoBatchModelRuns(data):
 class BatchService(webapp.RequestHandler):
         
     def post(self):
+        logger.info("BatchService")
         data = json.loads(self.request.body)
         data = convert(data)
         logger.info(data)

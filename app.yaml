@@ -16,7 +16,7 @@ libraries:
   version: "1.3"
   
 env_variables:
-  UBERTOOL_BATCH_SERVER: 'http://localhost:8887'
+  UBERTOOL_BATCH_SERVER: ''
 
 
 handlers:

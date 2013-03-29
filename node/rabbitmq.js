@@ -19,6 +19,7 @@ exports.submitUbertoolBatchRequest = function (msg)
   var ubertools = msg['ubertools'];
   var batchId = msg['id'];
   mongodb.createNewBatch(batchId,ubertools);
+  var results = [];
   for(var index = 0; index < ubertools.length; index++)
   {
     console.log("Ubertools index: " + index);

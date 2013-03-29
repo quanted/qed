@@ -12,26 +12,53 @@ function submitBatchConfigurations()
 		var val = document_form[i].value;
 		form_data[id] = val;
 	}
-	
+	var batch_config_props = null;
 	$.ajax({
 		url:"ubertool-batch-configuration",
 		async: false,
 		type: 'POST',
 		data: JSON.stringify(form_data),
 		success: function(form_data) {
-			var test = "Test";
-			$.ajax({
-				url:"{{ ubertool_server }}/batch",
-				async: false,
-				contentType:"application/json; charset=utf-8",
-				type: 'POST',
-				data: JSON.stringify(form_data),
-				success: function(batch_data) {
-					var test2 = "Test2";
-				}
-			});
+			batch_config_props = form_data
 		}
 	});
+	if(batch_config_props != null)
+	{
+		$.ajax({
+			url:"{{ ubertool_server }}batch",
+			async: true,
+			contentType:"application/json; charset=utf-8",
+			type: 'POST',
+			data: JSON.stringify(batch_config_props),
+			success: function(batch_data) {
+				insertUbertoolResultsTable(batch_data);
+			}
+		});
+	}
+}
+
+function insertUbertoolResultsTable(batch_data)
+{
+	var batch_completed = batch_data['completed'];
+	var batchTableInnerHTML = "<table><tbody>";
+	batchTableInnerHTML += "<tr><th><label>Batch Id:</label></th><td>"+batch_configuration+"</td></tr>";
+	batchTableInnerHTML += "<tr><th><label>Completed:</label></th><td>"+batch_completed+"</td></tr>";
+	if("ubertool_data" in batch_data)
+	{
+		var ubertools_data = batch_data['ubertool_data'];
+		for(var ubertool_data_key in ubertools_data)
+		{
+			var ubertool_data = ubertools_data[ubertool_data_key];
+			batchTableInnerHTML += "<tr><th><label>Ubertool Run Configuration Name:</label></th><td>"+ubertool_data_key+"</td></tr>";
+			for(var ubertool_run_key in ubertool_data)
+			{
+				batchTableInnerHTML += "<tr><th><label>" + ubertool_run_key + "</label></th><td>"+ubertool_data[ubertool_run_key]+"</td></tr>";								
+			}
+		}
+	}
+	batchTableInnerHTML += "</tbody></table>";
+	$("#id_batch_results_table")[0].innerHTML = batchTableInnerHTML;
+	$("#id_batch_results_table").css({"visibility":"visible","height":"auto"});
 }
 function endsInInteger(str)
 {

@@ -114,7 +114,6 @@ function updateUbertoolRun(collection,batch,ubertool_run,config_name,data )
     {
       ubertool_run[datum] = data[datum];
     }
-//    ubertool_run.data = data;
     ubertool_run.completed = ubertoolCompleted;
     collection.save(batch);
   } else {

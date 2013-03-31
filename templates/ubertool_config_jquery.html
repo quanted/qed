@@ -83,8 +83,8 @@ function insertUbertoolResultsTable(batch_configuration)
 			}
 			batchTableInnerHTML += "</tbody></table>";
 			$(".fancybox").fancybox({
-				type: 'html',
-				content: batchTableInnerHTML
+				type: 'json',
+				content: batch_data
 			});
 			$("#id_batch_results_table")[0].innerHTML = batchTableInnerHTML;
 			$("#id_batch_results_table").css({"visibility":"visible","height":"auto"});

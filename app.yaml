@@ -37,6 +37,8 @@ handlers:
 # regular expression for the URL pattern, only a prefix.
 - url: /stylesheets
   static_dir: stylesheets
+- url: /raphael
+  static_dir: raphael
 - url: /images
   static_dir: images
 - url: /pdfs
@@ -203,7 +205,9 @@ handlers:
 - url: /ubertool/(.*)
   script: ubertool/ubertool.py
   login: required
-  
+- url: /ubertool-stats
+  script: ubertool/ubertool.py
+  login: required
 #cas service
 - url: /cas/(.*)
   script: CAS/cas.py

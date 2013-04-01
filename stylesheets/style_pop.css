@@ -123,7 +123,7 @@ a:hover {
 
 #header_menu_nav {
   width: 864px;
-  height: 24px;
+  height: 30px;
   background: #586b73;
   float: left;
   border-radius: 0 0 0 4px;
@@ -134,7 +134,7 @@ a:hover {
   -moz-box-shadow: 3px 3px 15px #CCC;*/
 }
 #header_menu_nav ul {
-  padding-left: 175px;
+  padding-left: 170px;
 }
 #header_menu_nav ul li {
   display: inline;
@@ -153,9 +153,9 @@ span {
 }
 .fadeDesc_description {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 110px;
-  background: url(../images/tabs/pop/sprites/navbar_description.gif);
+  background: url(../images/tabs/pop/sprites/description.gif);
   background-position: 0 0;
 }
 .fadeDesc_description * {
@@ -163,16 +163,16 @@ span {
 }
 .fadeDesc_description span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 110px;
-  background: url(../images/tabs/pop/sprites/navbar_description.gif);
-  background-position: 0 -24px;
+  background: url(../images/tabs/pop/sprites/description.gif);
+  background-position: 0 -30px;
 }
 .fadeInp_description {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background: url(../images/tabs/pop/sprites/navbar_description.gif);
+  background: url(../images/tabs/pop/sprites/description.gif);
   background-position: -110px 0;
 }
 .fadeInp_description * {
@@ -180,16 +180,16 @@ span {
 }
 .fadeInp_description span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_description.gif);
-  background-position: -110px -24px;
+  background-image: url(../images/tabs/pop/sprites/description.gif);
+  background-position: -110px -30px;
 }
 .fadeAlg_description {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 102px;
-  background-image: url(../images/tabs/pop/sprites/navbar_description.gif);
+  background-image: url(../images/tabs/pop/sprites/description.gif);
   background-position: -180px 0;
 }
 .fadeAlg_description * {
@@ -197,16 +197,16 @@ span {
 }
 .fadeAlg_description span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 102px;
-  background-image: url(../images/tabs/pop/sprites/navbar_description.gif);
-  background-position: -180px -24px;
+  background-image: url(../images/tabs/pop/sprites/description.gif);
+  background-position: -180px -30px;
 }
 .fadeRef_description {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 104px;
-  background-image: url(../images/tabs/pop/sprites/navbar_description.gif);
+  background-image: url(../images/tabs/pop/sprites/description.gif);
   background-position: -282px 0;
 }
 .fadeRef_description * {
@@ -214,16 +214,16 @@ span {
 }
 .fadeRef_description span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 104px;
-  background-image: url(../images/tabs/pop/sprites/navbar_description.gif);
-  background-position: -282px -24px;
+  background-image: url(../images/tabs/pop/sprites/description.gif);
+  background-position: -282px -30px;
 }
 .fadeQAQC_description {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 74px;
-  background-image: url(../images/tabs/pop/sprites/navbar_description.gif);
+  background-image: url(../images/tabs/pop/sprites/description.gif);
   background-position: -386px 0;
 }
 .fadeQAQC_description * {
@@ -231,16 +231,16 @@ span {
 }
 .fadeQAQC_description span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 74px;
-  background-image: url(../images/tabs/pop/sprites/navbar_description.gif);
-  background-position: -386px -24px;
+  background-image: url(../images/tabs/pop/sprites/description.gif);
+  background-position: -386px -30px;
 }
 .fadeBat_description {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_description.gif);
+  background-image: url(../images/tabs/pop/sprites/description.gif);
   background-position: -460px 0;
 }
 .fadeBat_description * {
@@ -248,16 +248,16 @@ span {
 }
 .fadeBat_description span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_description.gif);
-  background-position: -460px -24px;
+  background-image: url(../images/tabs/pop/sprites/description.gif);
+  background-position: -460px -30px;
 }
 .fadeDesc_input {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 110px;
-  background: url(../images/tabs/pop/sprites/navbar_input.gif);
+  background: url(../images/tabs/pop/sprites/input.gif);
   background-position: 0 0;
 }
 .fadeDesc_input * {
@@ -265,16 +265,16 @@ span {
 }
 .fadeDesc_input span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 110px;
-  background: url(../images/tabs/pop/sprites/navbar_input.gif);
-  background-position: 0 -24px;
+  background: url(../images/tabs/pop/sprites/input.gif);
+  background-position: 0 -30px;
 }
 .fadeInp_input {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background: url(../images/tabs/pop/sprites/navbar_input.gif);
+  background: url(../images/tabs/pop/sprites/input.gif);
   background-position: -110px 0;
 }
 .fadeInp_input * {
@@ -282,16 +282,16 @@ span {
 }
 .fadeInp_input span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_input.gif);
-  background-position: -110px -24px;
+  background-image: url(../images/tabs/pop/sprites/input.gif);
+  background-position: -110px -30px;
 }
 .fadeAlg_input {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 102px;
-  background-image: url(../images/tabs/pop/sprites/navbar_input.gif);
+  background-image: url(../images/tabs/pop/sprites/input.gif);
   background-position: -180px 0;
 }
 .fadeAlg_input * {
@@ -299,16 +299,16 @@ span {
 }
 .fadeAlg_input span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 102px;
-  background-image: url(../images/tabs/pop/sprites/navbar_input.gif);
-  background-position: -180px -24px;
+  background-image: url(../images/tabs/pop/sprites/input.gif);
+  background-position: -180px -30px;
 }
 .fadeRef_input {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 104px;
-  background-image: url(../images/tabs/pop/sprites/navbar_input.gif);
+  background-image: url(../images/tabs/pop/sprites/input.gif);
   background-position: -282px 0;
 }
 .fadeRef_input * {
@@ -316,16 +316,16 @@ span {
 }
 .fadeRef_input span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 104px;
-  background-image: url(../images/tabs/pop/sprites/navbar_input.gif);
-  background-position: -282px -24px;
+  background-image: url(../images/tabs/pop/sprites/input.gif);
+  background-position: -282px -30px;
 }
 .fadeQAQC_input {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 74px;
-  background-image: url(../images/tabs/pop/sprites/navbar_input.gif);
+  background-image: url(../images/tabs/pop/sprites/input.gif);
   background-position: -386px 0;
 }
 .fadeQAQC_input * {
@@ -333,16 +333,16 @@ span {
 }
 .fadeQAQC_input span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 74px;
-  background-image: url(../images/tabs/pop/sprites/navbar_input.gif);
-  background-position: -386px -24px;
+  background-image: url(../images/tabs/pop/sprites/input.gif);
+  background-position: -386px -30px;
 }
 .fadeBat_input {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_input.gif);
+  background-image: url(../images/tabs/pop/sprites/input.gif);
   background-position: -460px 0;
 }
 .fadeBat_input * {
@@ -350,16 +350,16 @@ span {
 }
 .fadeBat_input span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_input.gif);
-  background-position: -460px -24px;
+  background-image: url(../images/tabs/pop/sprites/input.gif);
+  background-position: -460px -30px;
 }
 .fadeDesc_algorithm {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 110px;
-  background: url(../images/tabs/pop/sprites/navbar_algorithm.gif);
+  background: url(../images/tabs/pop/sprites/algorithm.gif);
   background-position: 0 0;
 }
 .fadeDesc_algorithm * {
@@ -367,16 +367,16 @@ span {
 }
 .fadeDesc_algorithm span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 110px;
-  background: url(../images/tabs/pop/sprites/navbar_algorithm.gif);
-  background-position: 0 -24px;
+  background: url(../images/tabs/pop/sprites/algorithm.gif);
+  background-position: 0 -30px;
 }
 .fadeInp_algorithm {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background: url(../images/tabs/pop/sprites/navbar_algorithm.gif);
+  background: url(../images/tabs/pop/sprites/algorithm.gif);
   background-position: -110px 0;
 }
 .fadeInp_algorithm * {
@@ -384,16 +384,16 @@ span {
 }
 .fadeInp_algorithm span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_algorithm.gif);
-  background-position: -110px -24px;
+  background-image: url(../images/tabs/pop/sprites/algorithm.gif);
+  background-position: -110px -30px;
 }
 .fadeAlg_algorithm {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 102px;
-  background-image: url(../images/tabs/pop/sprites/navbar_algorithm.gif);
+  background-image: url(../images/tabs/pop/sprites/algorithm.gif);
   background-position: -180px 0;
 }
 .fadeAlg_algorithm * {
@@ -401,16 +401,16 @@ span {
 }
 .fadeAlg_algorithm span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 102px;
-  background-image: url(../images/tabs/pop/sprites/navbar_algorithm.gif);
-  background-position: -180px -24px;
+  background-image: url(../images/tabs/pop/sprites/algorithm.gif);
+  background-position: -180px -30px;
 }
 .fadeRef_algorithm {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 104px;
-  background-image: url(../images/tabs/pop/sprites/navbar_algorithm.gif);
+  background-image: url(../images/tabs/pop/sprites/algorithm.gif);
   background-position: -282px 0;
 }
 .fadeRef_algorithm * {
@@ -418,16 +418,16 @@ span {
 }
 .fadeRef_algorithm span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 104px;
-  background-image: url(../images/tabs/pop/sprites/navbar_algorithm.gif);
-  background-position: -282px -24px;
+  background-image: url(../images/tabs/pop/sprites/algorithm.gif);
+  background-position: -282px -30px;
 }
 .fadeQAQC_algorithm {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 74px;
-  background-image: url(../images/tabs/pop/sprites/navbar_algorithm.gif);
+  background-image: url(../images/tabs/pop/sprites/algorithm.gif);
   background-position: -386px 0;
 }
 .fadeQAQC_algorithm * {
@@ -435,16 +435,16 @@ span {
 }
 .fadeQAQC_algorithm span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 74px;
-  background-image: url(../images/tabs/pop/sprites/navbar_algorithm.gif);
-  background-position: -386px -24px;
+  background-image: url(../images/tabs/pop/sprites/algorithm.gif);
+  background-position: -386px -30px;
 }
 .fadeBat_algorithm {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_algorithm.gif);
+  background-image: url(../images/tabs/pop/sprites/algorithm.gif);
   background-position: -460px 0;
 }
 .fadeBat_algorithm * {
@@ -452,16 +452,16 @@ span {
 }
 .fadeBat_algorithm span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_algorithm.gif);
-  background-position: -460px -24px;
+  background-image: url(../images/tabs/pop/sprites/algorithm.gif);
+  background-position: -460px -30px;
 }
 .fadeDesc_references {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 110px;
-  background: url(../images/tabs/pop/sprites/navbar_references.gif);
+  background: url(../images/tabs/pop/sprites/references.gif);
   background-position: 0 0;
 }
 .fadeDesc_references * {
@@ -469,16 +469,16 @@ span {
 }
 .fadeDesc_references span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 110px;
-  background: url(../images/tabs/pop/sprites/navbar_references.gif);
-  background-position: 0 -24px;
+  background: url(../images/tabs/pop/sprites/references.gif);
+  background-position: 0 -30px;
 }
 .fadeInp_references {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background: url(../images/tabs/pop/sprites/navbar_references.gif);
+  background: url(../images/tabs/pop/sprites/references.gif);
   background-position: -110px 0;
 }
 .fadeInp_references * {
@@ -486,16 +486,16 @@ span {
 }
 .fadeInp_references span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_references.gif);
-  background-position: -110px -24px;
+  background-image: url(../images/tabs/pop/sprites/references.gif);
+  background-position: -110px -30px;
 }
 .fadeAlg_references {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 102px;
-  background-image: url(../images/tabs/pop/sprites/navbar_references.gif);
+  background-image: url(../images/tabs/pop/sprites/references.gif);
   background-position: -180px 0;
 }
 .fadeAlg_references * {
@@ -503,16 +503,16 @@ span {
 }
 .fadeAlg_references span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 102px;
-  background-image: url(../images/tabs/pop/sprites/navbar_references.gif);
-  background-position: -180px -24px;
+  background-image: url(../images/tabs/pop/sprites/references.gif);
+  background-position: -180px -30px;
 }
 .fadeRef_references {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 104px;
-  background-image: url(../images/tabs/pop/sprites/navbar_references.gif);
+  background-image: url(../images/tabs/pop/sprites/references.gif);
   background-position: -282px 0;
 }
 .fadeRef_references * {
@@ -520,16 +520,16 @@ span {
 }
 .fadeRef_references span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 104px;
-  background-image: url(../images/tabs/pop/sprites/navbar_references.gif);
-  background-position: -282px -24px;
+  background-image: url(../images/tabs/pop/sprites/references.gif);
+  background-position: -282px -30px;
 }
 .fadeQAQC_references {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 74px;
-  background-image: url(../images/tabs/pop/sprites/navbar_references.gif);
+  background-image: url(../images/tabs/pop/sprites/references.gif);
   background-position: -386px 0;
 }
 .fadeQAQC_references * {
@@ -537,16 +537,16 @@ span {
 }
 .fadeQAQC_references span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 74px;
-  background-image: url(../images/tabs/pop/sprites/navbar_references.gif);
-  background-position: -386px -24px;
+  background-image: url(../images/tabs/pop/sprites/references.gif);
+  background-position: -386px -30px;
 }
 .fadeBat_references {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_references.gif);
+  background-image: url(../images/tabs/pop/sprites/references.gif);
   background-position: -460px 0;
 }
 .fadeBat_references * {
@@ -554,16 +554,16 @@ span {
 }
 .fadeBat_references span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_references.gif);
-  background-position: -460px -24px;
+  background-image: url(../images/tabs/pop/sprites/references.gif);
+  background-position: -460px -30px;
 }
 .fadeDesc_qaqc {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 110px;
-  background: url(../images/tabs/pop/sprites/navbar_qaqc.gif);
+  background: url(../images/tabs/pop/sprites/qaqc.gif);
   background-position: 0 0;
 }
 .fadeDesc_qaqc * {
@@ -571,16 +571,16 @@ span {
 }
 .fadeDesc_qaqc span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 110px;
-  background: url(../images/tabs/pop/sprites/navbar_qaqc.gif);
-  background-position: 0 -24px;
+  background: url(../images/tabs/pop/sprites/qaqc.gif);
+  background-position: 0 -30px;
 }
 .fadeInp_qaqc {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background: url(../images/tabs/pop/sprites/navbar_qaqc.gif);
+  background: url(../images/tabs/pop/sprites/qaqc.gif);
   background-position: -110px 0;
 }
 .fadeInp_qaqc * {
@@ -588,16 +588,16 @@ span {
 }
 .fadeInp_qaqc span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_qaqc.gif);
-  background-position: -110px -24px;
+  background-image: url(../images/tabs/pop/sprites/qaqc.gif);
+  background-position: -110px -30px;
 }
 .fadeAlg_qaqc {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 102px;
-  background-image: url(../images/tabs/pop/sprites/navbar_qaqc.gif);
+  background-image: url(../images/tabs/pop/sprites/qaqc.gif);
   background-position: -180px 0;
 }
 .fadeAlg_qaqc * {
@@ -605,16 +605,16 @@ span {
 }
 .fadeAlg_qaqc span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 102px;
-  background-image: url(../images/tabs/pop/sprites/navbar_qaqc.gif);
-  background-position: -180px -24px;
+  background-image: url(../images/tabs/pop/sprites/qaqc.gif);
+  background-position: -180px -30px;
 }
 .fadeRef_qaqc {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 104px;
-  background-image: url(../images/tabs/pop/sprites/navbar_qaqc.gif);
+  background-image: url(../images/tabs/pop/sprites/qaqc.gif);
   background-position: -282px 0;
 }
 .fadeRef_qaqc * {
@@ -622,16 +622,16 @@ span {
 }
 .fadeRef_qaqc span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 104px;
-  background-image: url(../images/tabs/pop/sprites/navbar_qaqc.gif);
-  background-position: -282px -24px;
+  background-image: url(../images/tabs/pop/sprites/qaqc.gif);
+  background-position: -282px -30px;
 }
 .fadeQAQC_qaqc {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 74px;
-  background-image: url(../images/tabs/pop/sprites/navbar_qaqc.gif);
+  background-image: url(../images/tabs/pop/sprites/qaqc.gif);
   background-position: -386px 0;
 }
 .fadeQAQC_qaqc * {
@@ -639,16 +639,16 @@ span {
 }
 .fadeQAQC_qaqc span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 74px;
-  background-image: url(../images/tabs/pop/sprites/navbar_qaqc.gif);
-  background-position: -386px -24px;
+  background-image: url(../images/tabs/pop/sprites/qaqc.gif);
+  background-position: -386px -30px;
 }
 .fadeBat_qaqc {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_qaqc.gif);
+  background-image: url(../images/tabs/pop/sprites/qaqc.gif);
   background-position: -460px 0;
 }
 .fadeBat_qaqc * {
@@ -656,16 +656,16 @@ span {
 }
 .fadeBat_qaqc span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_qaqc.gif);
-  background-position: -460px -24px;
+  background-image: url(../images/tabs/pop/sprites/qaqc.gif);
+  background-position: -460px -30px;
 }
 .fadeDesc_batchinput {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 110px;
-  background: url(../images/tabs/pop/sprites/navbar_batchinput.gif);
+  background: url(../images/tabs/pop/sprites/batchinput.gif);
   background-position: 0 0;
 }
 .fadeDesc_batchinput * {
@@ -673,16 +673,16 @@ span {
 }
 .fadeDesc_batchinput span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 110px;
-  background: url(../images/tabs/pop/sprites/navbar_batchinput.gif);
-  background-position: 0 -24px;
+  background: url(../images/tabs/pop/sprites/batchinput.gif);
+  background-position: 0 -30px;
 }
 .fadeInp_batchinput {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background: url(../images/tabs/pop/sprites/navbar_batchinput.gif);
+  background: url(../images/tabs/pop/sprites/batchinput.gif);
   background-position: -110px 0;
 }
 .fadeInp_batchinput * {
@@ -690,16 +690,16 @@ span {
 }
 .fadeInp_batchinput span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_batchinput.gif);
-  background-position: -110px -24px;
+  background-image: url(../images/tabs/pop/sprites/batchinput.gif);
+  background-position: -110px -30px;
 }
 .fadeAlg_batchinput {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 102px;
-  background-image: url(../images/tabs/pop/sprites/navbar_batchinput.gif);
+  background-image: url(../images/tabs/pop/sprites/batchinput.gif);
   background-position: -180px 0;
 }
 .fadeAlg_batchinput * {
@@ -707,16 +707,16 @@ span {
 }
 .fadeAlg_batchinput span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 102px;
-  background-image: url(../images/tabs/pop/sprites/navbar_batchinput.gif);
-  background-position: -180px -24px;
+  background-image: url(../images/tabs/pop/sprites/batchinput.gif);
+  background-position: -180px -30px;
 }
 .fadeRef_batchinput {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 104px;
-  background-image: url(../images/tabs/pop/sprites/navbar_batchinput.gif);
+  background-image: url(../images/tabs/pop/sprites/batchinput.gif);
   background-position: -282px 0;
 }
 .fadeRef_batchinput * {
@@ -724,16 +724,16 @@ span {
 }
 .fadeRef_batchinput span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 104px;
-  background-image: url(../images/tabs/pop/sprites/navbar_batchinput.gif);
-  background-position: -282px -24px;
+  background-image: url(../images/tabs/pop/sprites/batchinput.gif);
+  background-position: -282px -30px;
 }
 .fadeQAQC_batchinput {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 74px;
-  background-image: url(../images/tabs/pop/sprites/navbar_batchinput.gif);
+  background-image: url(../images/tabs/pop/sprites/batchinput.gif);
   background-position: -386px 0;
 }
 .fadeQAQC_batchinput * {
@@ -741,16 +741,16 @@ span {
 }
 .fadeQAQC_batchinput span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 74px;
-  background-image: url(../images/tabs/pop/sprites/navbar_batchinput.gif);
-  background-position: -386px -24px;
+  background-image: url(../images/tabs/pop/sprites/batchinput.gif);
+  background-position: -386px -30px;
 }
 .fadeBat_batchinput {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_batchinput.gif);
+  background-image: url(../images/tabs/pop/sprites/batchinput.gif);
   background-position: -460px 0;
 }
 .fadeBat_batchinput * {
@@ -758,16 +758,16 @@ span {
 }
 .fadeBat_batchinput span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_batchinput.gif);
-  background-position: -460px -24px;
+  background-image: url(../images/tabs/pop/sprites/batchinput.gif);
+  background-position: -460px -30px;
 }
 .fadeDesc_output {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 110px;
-  background: url(../images/tabs/pop/sprites/navbar_output.gif);
+  background: url(../images/tabs/pop/sprites/output.gif);
   background-position: 0 0;
 }
 .fadeDesc_output * {
@@ -775,16 +775,16 @@ span {
 }
 .fadeDesc_output span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 110px;
-  background: url(../images/tabs/pop/sprites/navbar_output.gif);
-  background-position: 0 -24px;
+  background: url(../images/tabs/pop/sprites/output.gif);
+  background-position: 0 -30px;
 }
 .fadeInp_output {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background: url(../images/tabs/pop/sprites/navbar_output.gif);
+  background: url(../images/tabs/pop/sprites/output.gif);
   background-position: -110px 0;
 }
 .fadeInp_output * {
@@ -792,16 +792,16 @@ span {
 }
 .fadeInp_output span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_output.gif);
-  background-position: -110px -24px;
+  background-image: url(../images/tabs/pop/sprites/output.gif);
+  background-position: -110px -30px;
 }
 .fadeOut_output {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 72px;
-  background: url(../images/tabs/pop/sprites/navbar_output.gif);
+  background: url(../images/tabs/pop/sprites/output.gif);
   background-position: -180px 0;
 }
 .fadeOut_output * {
@@ -809,16 +809,16 @@ span {
 }
 .fadeOut_output span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 72px;
-  background-image: url(../images/tabs/pop/sprites/navbar_output.gif);
-  background-position: -180px -24px;
+  background-image: url(../images/tabs/pop/sprites/output.gif);
+  background-position: -180px -30px;
 }
 .fadeAlg_output {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 102px;
-  background-image: url(../images/tabs/pop/sprites/navbar_output.gif);
+  background-image: url(../images/tabs/pop/sprites/output.gif);
   background-position: -252px 0;
 }
 .fadeAlg_output * {
@@ -826,16 +826,16 @@ span {
 }
 .fadeAlg_output span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 102px;
-  background-image: url(../images/tabs/pop/sprites/navbar_output.gif);
-  background-position: -252px -24px;
+  background-image: url(../images/tabs/pop/sprites/output.gif);
+  background-position: -252px -30px;
 }
 .fadeRef_output {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 104px;
-  background-image: url(../images/tabs/pop/sprites/navbar_output.gif);
+  background-image: url(../images/tabs/pop/sprites/output.gif);
   background-position: -354px 0;
 }
 .fadeRef_output * {
@@ -843,16 +843,16 @@ span {
 }
 .fadeRef_output span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 104px;
-  background-image: url(../images/tabs/pop/sprites/navbar_output.gif);
-  background-position: -354px -24px;
+  background-image: url(../images/tabs/pop/sprites/output.gif);
+  background-position: -354px -30px;
 }
 .fadeQAQC_output {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 74px;
-  background-image: url(../images/tabs/pop/sprites/navbar_output.gif);
+  background-image: url(../images/tabs/pop/sprites/output.gif);
   background-position: -458px 0;
 }
 .fadeQAQC_output * {
@@ -860,16 +860,16 @@ span {
 }
 .fadeQAQC_output span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 74px;
-  background-image: url(../images/tabs/pop/sprites/navbar_output.gif);
-  background-position: -458px -24px;
+  background-image: url(../images/tabs/pop/sprites/output.gif);
+  background-position: -458px -30px;
 }
 .fadeBat_output {
   display:inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_output.gif);
+  background-image: url(../images/tabs/pop/sprites/output.gif);
   background-position: -532px 0;
 }
 .fadeBat_output * {
@@ -877,17 +877,17 @@ span {
 }
 .fadeBat_output span.hover {
   display: inline-block;
-  height: 24px;
+  height: 30px;
   width: 70px;
-  background-image: url(../images/tabs/pop/sprites/navbar_output.gif);
-  background-position: -532px -24px;
+  background-image: url(../images/tabs/pop/sprites/output.gif);
+  background-position: -532px -30px;
 }
 
 /* Header Right Side */
 
 #header_menu_r {
   width: 160px;
-  height: 24px;
+  height: 30px;
   background: #586b73;
   float: left;
   border-radius: 0 0 4px 0;
@@ -900,7 +900,7 @@ span {
 #header_menu_r ul {
   padding-left: 0;
   text-align: left;
-  margin-top: 3px;
+  margin-top: 7px;
 }
 #header_menu_r li {
   display: inline;
@@ -1052,9 +1052,9 @@ ul.nobullet {
   width: 822px;
   display: inline;
   float: left;
+  position: relative;
   margin: 8px 0 8px 8px;
   padding: 1em 1.5em;
-  /*background: #F7F9F2;*/
   background: #F9FBF6;
   border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -1087,6 +1087,74 @@ ul.nobullet {
 .articles_output li {
   margin-top: 0.5em;
   font-size: 12px;
+}
+#export_menu {
+  top: 8px;
+  right: 8px;
+  padding-left: 3px;
+  position: absolute;
+  z-index: 999;
+}
+#export_menu ul li{
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#export_menu ul li img {
+  margin: 0;
+  padding: 0;
+}
+#fadeExport_pdf {
+  display: inline-block;
+  height: 38px;
+  width: 34px;
+  background: url(../images/export/export_sprite_small_hort.gif) no-repeat;
+  background-position: 0 0;
+}
+#fadeExport_pdf * {
+  display: none;
+}
+#fadeExport_pdf span.hover {
+  display: inline-block;
+  height: 38px;
+  width: 34px;
+  background: url(../images/export/export_sprite_small_hort.gif) no-repeat;
+  background-position: 0 -38px;
+}
+#fadeExport_html {
+  display: inline-block;
+  height: 38px;
+  width: 34px;
+  background: url(../images/export/export_sprite_small_hort.gif) no-repeat;
+  background-position: -34px 0;
+}
+#fadeExport_html * {
+  display: none;
+}
+#fadeExport_html span.hover {
+  display: inline-block;
+  height: 38px;
+  width: 34px;
+  background: url(../images/export/export_sprite_small_hort.gif) no-repeat;
+  background-position: -34px -38px;
+}
+#fadeExport_doc {
+  display: inline-block;
+  height: 38px;
+  width: 34px;
+  background: url(../images/export/export_sprite_small_hort.gif) no-repeat;
+  background-position: -68px 0;
+}
+#fadeExport_doc * {
+  display: none;
+}
+#fadeExport_doc span.hover {
+  display: inline-block;
+  height: 38px;
+  width: 34px;
+  background: url(../images/export/export_sprite_small_hort.gif) no-repeat;
+  background-position: -68px -38px;
 }
 
 /* 06uberfooter.html */

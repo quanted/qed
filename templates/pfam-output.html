@@ -102,6 +102,15 @@ $(document).ready(function(){
         }]
       });
 
+          var values_min = $("#date_range_slider_1").dateRangeSlider("values").min;
+          var values_max = $("#date_range_slider_1").dateRangeSlider("values").max;
+          var range_interval = $("#display_interval_1").val();
+          
+          createplot1(paired, paired2, values_min, values_max, range_interval);
+          createplot2(paired3, paired4, values_min, values_max, range_interval);
+          createplot3(paired5, paired6, values_min, values_max, range_interval)
+
+
         $('#calc1').click(function () {
           var values_min = $("#date_range_slider_1").dateRangeSlider("values").min;
           var values_max = $("#date_range_slider_1").dateRangeSlider("values").max;

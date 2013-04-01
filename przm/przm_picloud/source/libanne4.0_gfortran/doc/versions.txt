@@ -1,0 +1,172 @@
+
+libanne files that differ by OS or compiler
+
+________________________________________________________________________________
+
+Table 1.--Files that contain variables that may need to be modified and a
+          description of those variables.
+
+________________________________________________________________________________
+
+                       variables may need to be modified, see below for details
+                       ---------------------------------------------------------
+file name              version   lib archive  compiler flags & name     shell
+---------------------  -------  ------------  ---------------------  -----------
+src/Makefile           SeqVrsn                                       SHELL shCmd
+    util/makefile      ObjVrsn  SymTbl ArOpt  FFLAGS FC   CFLAGS CC  SHELL
+                                              FFVrsn
+    adwdm/makefile     ObjVrsn  SymTbl ArOpt  FFLAGS FC              SHELL
+                                              FFVrsn
+          fmsgwd.inc   WDNAME
+    wdm/makefile                SymTbl ArOpt  FFLAGS FC              SHELL
+                                              FFVrsn
+    aide/makefile      ObjVrsn  SymTbl ArOpt  FFLAGS FC              SHELL
+                                              FFVrsn
+         fmsgwd.inc    WDNAME
+    awstat/makefile             SymTbl ArOpt  FFLAGS FC              SHELL
+                                              FFVrsn
+    graph/makefile     ObjVrsn  SymTbl ArOpt  FFLAGS FC              SHELL
+                                              FFVrsn
+    stats/makefile              SymTbl ArOpt  FFLAGS FC              SHELL
+                                              FFVrsn
+    waide/makefile              SymTbl ArOpt  FFLAGS FC              SHELL
+                                              FFVrsn
+    ann/makefile                SymTbl ArOpt  FFLAGS FC              SHELL
+                                              FFVrsn
+    wdimex/makefile             SymTbl ArOpt  FFLAGS FC              SHELL
+                                              FFVrsn
+                                              LdA    LdB
+    wdmrx/makefile              SymTbl ArOpt  FFLAGS FC              SHELL
+                                              FFVrsn
+                                              LdA    LdB
+          wdmrx.f      RECL
+msg/wdimex.sh          Vers
+________________________________________________________________________________
+
+variable   current value         description
+--------   --------------------  -----------------------------------------------
+SeqVrsn    $(SeqGli)             The parm__.seq file defines parameters that
+                                 are specific to the the platform and the GKS
+                                 library being used:
+                                   gli - Unix & GliGKS version
+                                  xgks - Unix & Xgks
+                                   dg - Data General Unix with Prior GKS
+                                   pc - pc version with Lahey & Interacter
+                                 See doc/config.txt for more details on using
+                                 the optimal values and on customizing this
+                                 file.
+ObjVrsn    $(ObjUnix)            There are a few code groups that may be system
+           $(ObjSun)             specific.  With the exception of the util
+                                 makefile,  assumes generic Unix.  util uses
+                                 calls to system date and time routines; a
+                                 Fortran 90 version is provided as well as
+                                 several platform-specific Fortran 77 versions.
+                                 See below for a description of the variations.
+WDNAME     /usr/opt/wrdapp       Path name of directory containing the
+               /libanne4.0/...   required message file, immediately followed
+                                 by the directory name and file name.
+                                 This is usually the last line in the file.
+RECL       2048 bytes            The units used for the record length in an
+                                 open statement for a binary direct access
+                                 file vary between operating systems, and even
+                                 between compilers on the same operating system.
+                                 The record length of a WDM file is 512 words,
+                                 adjust RECL as appropriate for the compiler.
+                                 512 words = 1024 half words = 2048 bytes.
+SymTbl     $(BSD)                System V library archive automatically
+                                 builds a symbol table.  When BSD is used,
+                                 the symbol table must be explicitly built,
+                                 set SymTbl to $(BSD).
+ArOpt      rv                    Library archive options.
+FFLAGS     $(OptM) $(FFVrsn)     Fortran compiler flags
+                                 NOTE:  The names of the C functions in the
+                                        library code end in an underscore, but
+                                        the underscore is omitted when the
+                                        functions are invoked.  You may need
+                                        to include a linker option in FFLAGS
+                                        which will cause compiler-generated
+                                        external names to be postfixed with an
+                                        underscore.
+                                 NOTE:  Compile options may need to be changed
+                                        if you change compilers (FC).  Current
+                                        options are for Sun Solaris f77.
+FC         f77                   Fortran compiler name
+FFVrsn     $(FFUnix)             Target operating system.  Specifies any
+                                 platform and (or) compiler specific
+                                 compile options; assumes generic Unix.
+                                 FFAIX provided.  Use FFSun, FFDG, FFDec,
+                                 FFLinux, or FFHP to add specific options.
+CFLAGS     $(OptC)               C compiler flags.
+CC         gcc                   C compiler name.
+LdA        $(LdSunA)             Load options combined with LdB.  Use LdUnixA
+                                 for system defaults.  LdSunA will create a
+                                 static executable on the Sun.
+LdB        $(LdSunB)             Load options combined with LdA.  Use LdUnixB
+                                 for system defaults.  LdSunB will create a
+                                 static executable on the Sun.
+SHELL      /bin/sh               The make file(s) contain commands for the
+                                 Bourne shell, sh.  This will override
+                                 implementations of make that use the
+                                 SHELL environment variable.  If this is
+                                 changed, additional changes will probably
+                                 have to be made in the make file(s).
+shCmd      sh                    The shell command is sh.  If SHELL is
+                                 changed, this may need to be modified.
+Vers       gli                   Usually passed from src/Makefile,
+                                 the parm__.seq file defines the parameters
+                                 that are specific to the platform and the
+                                 GKS library being used:
+                                   gli - Unix & GliGKS version
+                                  xgks - Unix & Xgks
+                                   dg - Data General Unix with Prior GKS
+                                   pc - pc version with Interacter
+                                 See doc/config.txt for details.
+________________________________________________________________________________
+
+
+
+Table 2.--Brief description of source code files that are system specific.
+_______________________________________________________________________________
+
+directory  file         description (default marked with *)
+---------  --------     -------------------------------------------------------
+  util     utcp__._     utilities for copying arrays (fortran and c versions)
+                        *  c.c - c versions, developed for speed
+                          90.f - Fortran 90 version 
+                          gn.f - original fortran 77 versions
+           dttm__.f     date and time routines, you may need to write your own
+                        or provide dummy routines.
+                        * sn - sun os version
+                          90 - Fortran 90 version
+                          dg - Data General version
+                          pc - pc version, Lahey compiler
+                          sg - Silicon Graphics version
+                          dc - DEC5000/25 version
+           ckfsdg.f     wild card file name matching
+                        * dg - data general version
+           uscn__.f     screen addressing
+                        * vt - assumes vt100 emulation
+                          ux - uses curses
+                          pc - pc, generic
+           utsc__.f     get/put single character from/to screen
+                        * dg - data general version
+           ttyux.c      get/put single character, used with utscdg.f
+  adwdm    wdop__.f     open binary direct access wdm file.  It
+                        is important that wdm files be opened with
+                        the correct record length.  The units used
+                        in an open statement vary between platforms
+                        and even between compilers on the same plat-
+                        form.  The record length of a wdm file is
+                        512 words.
+                        * ux - unix version
+                          vx - vax version
+           usys__.f     Miscellaneous routines
+                        * ux - unix version
+                          vx - vax version
+  aide     zsys__.f     code for screen io
+                        * dg - unix version
+  graph    grsy__.f     code dependent on version GKS being used
+                        * ux - using GliGKS or Xgks library
+                          dg - using Prior GKS library
+_____________________________________________________________________________
+

@@ -1,0 +1,3161 @@
+
+
+ ADCOMA                                                                                  ADCOMA  
+
+ This SUBROUTINE is number 41 in file utchar. 
+
+ This routine places a comma(s) in the real number in the string       
+ every 3 digits.  String may include sign, decimal point, and          
+ decimal digits.  If there is not enough room in the string, the       
+ string is returned as it was entered.                                 
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    length of the string                                      
+    2    STR      C*1 (V)        M    character string of a decimal number                      
+ 
+ CALLS:
+
+  routine
+  -------
+  COPYC       LENSTR      LFTSTR      RHTSTR      STRFND      ZIPC    
+
+ CALLED BY:
+
+  unknown
+
+
+ ASRTC                                                                                   ASRTC   
+
+ This SUBROUTINE is number 1 in file utsort. 
+
+ utsort.f 2.1 9/4/91                                                   
+ sorts character strings                                               
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    OPT      I*4            I    sort option                                               
+                                      0 - sort in place                                         
+                                      1 - move values in array to sorted position               
+    2    LEN      I*4            I    length of string to sort                                  
+    3    CNT      I*4            I    count of string to sort                                   
+    4    CVAL     C*1 (V,V)      M    array of character strings to sort                        
+    5    POS      I*4 (V)        O    array containing sorted order of strings                  
+ 
+ CALLS:
+
+  routine
+  -------
+  CHRCHR  
+
+ CALLED BY:
+
+  unknown
+
+
+ ASRTD                                                                                   ASRTD   
+
+ This SUBROUTINE is number 6 in file utsort. 
+
+ sorts double precision numbers                                        
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    OPT      I*4            I    sort option                                               
+                                      0 - sort in place                                         
+                                      1 - move values in array to sorted position               
+                                      2 - sort in place, quick move of zero to                  
+                                          first position                                        
+    2    CNT      I*4            I    count of dprec numbers to sort                            
+    3    DVAL     D   (V)        M    array of dprec numbers to sort                            
+    4    POS      I*4 (V)        O    array containing sorted order of dprec numbers            
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ ASRTDP                                                                                  ASRTDP  
+
+ This SUBROUTINE is number 7 in file utsort. 
+
+ sorts double precision numbers in their array                         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    CNT      I*4            I    count of decimal numbers to sort                          
+    2    DVAL     D   (V)        M    array of dprec numbers to sort                            
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ ASRTI                                                                                   ASRTI   
+
+ This SUBROUTINE is number 2 in file utsort. 
+
+ sorts integers                                                        
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    OPT      I*4            I    sort option                                               
+                                      0 - sort in place                                         
+                                      1 - move values in array to sorted position               
+    2    CNT      I*4            I    count of integers to sort                                 
+    3    IVAL     I*4 (V)        M    array of integers to sort                                 
+    4    POS      I*4 (V)        O    array containing sorted order of integers                 
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ ASRTIP                                                                                  ASRTIP  
+
+ This SUBROUTINE is number 3 in file utsort. 
+
+ sorts integers in their array                                         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    CNT      I*4            I    count of integers to sort                                 
+    2    IVAL     I*4 (V)        M    array of integers to sort                                 
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ ASRTR                                                                                   ASRTR   
+
+ This SUBROUTINE is number 4 in file utsort. 
+
+ sorts decimal numbers                                                 
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    OPT      I*4            I    sort option                                               
+                                      0 - sort in place                                         
+                                      1 - move values in array to sorted position               
+    2    CNT      I*4            I    count of decimal numbers to sort                          
+    3    RVAL     R   (V)        M    array of decimal numbers to sort                          
+    4    POS      I*4 (V)        O    array containing sorted order of decimal numbers          
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ ASRTRP                                                                                  ASRTRP  
+
+ This SUBROUTINE is number 5 in file utsort. 
+
+ sorts decimal numbers in their array                                  
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    CNT      I*4            I    count of decimal numbers to sort                          
+    2    RVAL     R   (V)        M    array of decimal numbers to sort                          
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ C1IN                                                                                    C1IN    
+
+ This SUBROUTINE is number 3 in file utscdg. 
+
+ get a single character with no carriage return                        
+ *** DG specific ***                                                   
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    I2CHAR   I*2            O    integer*2 equivalent of keyboard response                 
+ 
+ CALLS:
+
+  routine
+  -------
+  ICHAR       TTYKEY  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utscxx    QCHR    
+
+
+ C1INT                                                                                   C1INT   
+
+ This SUBROUTINE is number 4 in file utscdg. 
+
+ get a single character with no carriage return, time out if not there 
+ *** DG specific ***                                                   
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    I2CHAR   I*2            O    integer*2 equivalent of keyboard response                 
+ 
+ CALLS:
+
+  routine
+  -------
+  ICHAR       TTYTIM  
+
+ CALLED BY:
+
+  unknown
+
+
+ CARVAR                                                                                  CARVAR  
+
+ This SUBROUTINE is number 1 in file utchar. 
+
+ utchar.f 2.1 9/4/91                                                   
+ Convert a character*1 array of size LENA                              
+ to a character variable of length LEN.                                
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LENA     I*4            I    size of input character*1 array                           
+    2    CARY     C*1 (V)        I    input character array of size LENA                        
+    3    LENV     I*4            I    length of output character variable                       
+    4    CVAR     C*V            O    output character variable of length LENV                  
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ CHDECE                                                                                  CHDECE  
+
+ This SUBROUTINE is number 2 in file utchar. 
+
+ Convert a character array to its real equivalent.  The                
+ real is expected to be right justified in STR.  For an                
+ invalid real, ERRFLG is set to 1.  Valid characters are               
+ '0' - '9', '+', '-', '.', 'D', and 'E'.                               
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of character array                                   
+    2    STR      C*1 (V)        I    character array containing real value                     
+    3    RVAL     R              O    real value                                                
+    4    ERRFLG   I*4            O    flag indicating success of conversion                     
+                                      0 - successful                                            
+                                      1 - unsuccessful                                          
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  RCONST  R0MAX      I
+
+ CALLS:
+
+  routine
+  -------
+  CHRDEC      NUMINI  
+
+ CALLED BY:
+
+  unknown
+
+
+ CHINTE                                                                                  CHINTE  
+
+ This SUBROUTINE is number 3 in file utchar. 
+
+ Convert a character array to its integer equivalent.                  
+ The integer is expected to be right justified in STR.                 
+ For an invalid integer, ERRFLG is set to 1.                           
+ Valid characters are '0' - '9', '+', and '-'.                         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of character array                                   
+    2    STR      C*1 (V)        I    character array containing an integer value               
+    3    IVAL     I*4            O    integer value                                             
+    4    ERRFLG   I*4            O    flag indicating success of conversion                     
+                                      0 - successful                                            
+                                      1 - unsuccessful                                          
+ 
+ CALLS:
+
+  routine
+  -------
+  CHRDIG  
+
+ CALLED BY:
+
+  unknown
+
+
+ CHKDPR                                                                                  CHKDPR  
+
+ This SUBROUTINE is number 3 in file utnumb. 
+
+ Check the double precision DVAL against the minimum (DMIN)            
+ and maximum (DMAX) values.  DVAL is set to the                        
+ default (DDEF) if DVAL is zero.                                       
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DMIN     D              I    minimum allowable value, -999. if there is no minimum     
+    2    DMAX     D              I    maximum allowable value, -999. if there is no maximum     
+    3    DDEF     D              I    default value, or -999. if there is no default            
+    4    DVAL     D              M    value to be checked                                       
+    5    DCHK     I*4            O    indicator flag for valid DVAL                             
+                                      0 - invalid DVAL                                          
+                                      1 - valid DVAL                                            
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  DCONST  D0MIN      I
+  DCONST  DP1MIN     A
+
+ CALLS:
+
+  routine
+  -------
+  ABS         NUMINI  
+
+ CALLED BY:
+
+  unknown
+
+
+ CHKINT                                                                                  CHKINT  
+
+ This SUBROUTINE is number 1 in file utnumb. 
+
+ utnumb.f 2.1 9/4/91                                                   
+ Check the integer IVAL against the minimum (IMIN)                     
+ and maximum (IMAX) values.  IVAL is set to the                        
+ default (IDEF) if IVAL is zero.                                       
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    IMIN     I*4            I    minimum allowable value, -999 if there is no minimum      
+    2    IMAX     I*4            I    maximum allowable value, -999 if there is no maximum      
+    3    IDEF     I*4            I    default value, or -999 if there is no default             
+    4    IVAL     I*4            M    value to be checked                                       
+    5    ICHK     I*4            O    indicator flag for valid IVAL                             
+                                      0 - invalid IVAL                                          
+                                      1 - valid IVAL                                            
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ CHKREA                                                                                  CHKREA  
+
+ This SUBROUTINE is number 2 in file utnumb. 
+
+ Check the real RVAL against the minimum (RMIN)                        
+ and maximum (RMAX) values.  RVAL is set to the                        
+ default (RDEF) if RVAL is zero.                                       
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    RMIN     R              I    minimum allowable value, -999. if there is no minimum     
+    2    RMAX     R              I    maximum allowable value, -999. if there is no maximum     
+    3    RDEF     R              I    default value, or -999. if there is no default            
+    4    RVAL     R              M    value to be checked                                       
+    5    RCHK     I*4            O    indicator flag for valid RVAL                             
+                                      0 - invalid RVAL                                          
+                                      1 - valid RVAL                                            
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  RCONST  R0MIN      I
+  RCONST  RP1MIN     A
+
+ CALLS:
+
+  routine
+  -------
+  ABS         NUMINI  
+
+ CALLED BY:
+
+  unknown
+
+
+ CHKSTR                                                                                  CHKSTR  
+
+ This INTEGER FUNCTION is number 4 in file utchar. 
+
+ Search thru STR2 for a match to the character array STR1.             
+ Return the array location of the match, or a zero if there            
+ is no match.                                                          
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of character array                                   
+    2    NSTR     I*4            I    number of strings to be compared                          
+    3    STR1     C*1 (V)        I    character array of size LEN to search for                 
+    4    STR2     C*1 (V,V)      I    character array of size LEN,NSTR                          
+                                      to be searched for a match                                
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ CHRCHR                                                                                  CHRCHR  
+
+ This SUBROUTINE is number 5 in file utchar. 
+
+ Copy LEN characters from array STR1 to array STR2.                    
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of character arrays                                  
+    2    STR1     C*1 (V)        I    input character array                                     
+    3    STR2     C*1 (V)        O    output character array                                    
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  ckfsdg    CKFSPC  
+  utchar    DATLST      DECCHX  
+  utsort    ASRTC   
+
+
+ CHRDEC                                                                                  CHRDEC  
+
+ This REAL FUNCTION is number 6 in file utchar. 
+
+ Convert a character array to its real equivalent.  Return             
+ a -R0MAX for an invalid array.  The real is expected to               
+ be right justified in the array.  Leading blanks are ignored.         
+ Trailing blanks are treated as a zero.                                
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of array                                             
+    2    STR      C*1 (V)        I    character array containing a real value                   
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  RCONST  R0MAX      I
+
+ CALLS:
+
+  routine
+  -------
+  CHRDIG      NUMINI  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utchar    CHDECE  
+  utnumb    DECPRC  
+
+
+ CHRDEL                                                                                  CHRDEL  
+
+ This SUBROUTINE is number 8 in file utchar. 
+
+ Delete the character in array position POS and shift                  
+ the rest of the array left one position.  The last                    
+ character in the array is set to blank.                               
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of character array                                   
+    2    POS      I*4            I    array position of the character to be deleted from STRING 
+    3    STRING   C*1 (V)        M    character array of size LEN                               
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utchar    DECCHX  
+
+
+ CHRDIG                                                                                  CHRDIG  
+
+ This INTEGER FUNCTION is number 9 in file utchar. 
+
+ Convert a single character to an integer. Valid characters            
+ are '0' - '9'.  Return -1 for an invalid character.                   
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    CHR      C*1            I    a single character                                        
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utchar    CHINTE      CHRDEC      CHRDPR      CRINTE      DECCHX  
+
+
+ CHRDPR                                                                                  CHRDPR  
+
+ This DOUBLE PRECISION FUNCTION is number 7 in file utchar. 
+
+ Convert a character array to its double precision equivalent.         
+ Return a -D0MAX for an invalid array.  The double precision           
+ is expected to be right justified in the array.  Leading blanks       
+ are ignored.  Trailing blanks are treated as a zero.                  
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of array                                             
+    2    STR      C*1 (V)        I    character array containing a real value                   
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  DCONST  D0MAX      I
+
+ CALLS:
+
+  routine
+  -------
+  CHRDIG      NUMINI  
+
+ CALLED BY:
+
+  unknown
+
+
+ CHRINS                                                                                  CHRINS  
+
+ This SUBROUTINE is number 10 in file utchar. 
+
+ Insert the character CHAR into position COL in the                    
+ array STRING.  First shift the characters in                          
+ positions COL thru LEN-1 one position to the right.                   
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    output length of character string                         
+    2    COL      I*4            I    position in STRING that CHAR is to be inserted            
+    3    CHAR     C*1            I    character to be inserted in STRING                        
+    4    STRING   C*1 (V)        M    character string                                          
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utchar    DECCHX  
+
+
+ CHRINT                                                                                  CHRINT  
+
+ This INTEGER FUNCTION is number 11 in file utchar. 
+
+ Convert a character array to its integer equivalent.  Return          
+ a 0 for an invalid array.  The integer is expected to be              
+ right justified in the array.  Leading blanks are ignored.            
+ Trailing blanks are treated as a zero.                                
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of character array                                   
+    2    STR      C*1 (V)        I    character array containing an integer value               
+ 
+ CALLS:
+
+  routine
+  -------
+  CRINTE  
+
+ CALLED BY:
+
+  unknown
+
+
+ CKDATE                                                                                  CKDATE  
+
+ This SUBROUTINE is number 1 in file utdate. 
+
+ utdate.f 2.1 9/4/91                                                   
+ Determine the calendar order of two dates.  The dates are             
+ assumed to be valid.                                                  
+ Examples:      DATE1               DATE2         FLAG                 
+          1980/10/1 00:00:00  1980/10/1 24:00:00   -1                  
+          1980/10/1 24:00:00  1980/10/1 00:00:00    1                  
+          1980/10/1 24:00:00  1980/10/2 00:00:00   -1                  
+          1980/10/2 00:00:00  1980/10/1 24:00:00    1                  
+          1980/10/1 24:00:00  1980/10/1 24:00:00    0                  
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DATE1    I*4 (6)        I    first date                                                
+    2    DATE2    I*4 (6)        I    second date                                               
+    3    FLAG     I*4            O    flag indicating order of dates                            
+                                       1 - DATE1 follows DATE2                                  
+                                       0 - DATE1 is the same date as DATE2                      
+                                      -1 - DATE2 follows DATE1                                  
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utdate    DLIMIT      NUMPTS      DATCMN  
+
+
+ CKFSPC                                                                                  CKFSPC  
+
+ This SUBROUTINE is number 1 in file ckfsdg. 
+
+ Compare user-entered string for a file name with                      
+ any file specifications for the file field and                        
+ return all files which meet the criteria.                             
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    TLEN     I*4            I    length of user input string                               
+    2    TSTR     C*78           I    user input string                                         
+    3    NAMLEN   I*4            I    length of file name specifications                        
+    4    NAMES    C*80           I    character string of file name specifications              
+    5    MXSTLN   I*4            I    max length of string containing matching names            
+    6    FLNLEN   I*4            I    available length for file names                           
+    7    OLEN     I*4            O    output length of matching names string                    
+    8    NFILES   I*4            O    number of files matching criteria                         
+    9    STRMAT   C*1 (V)        O    character array containing matching names                 
+ 
+ CALLS:
+
+  routine
+  -------
+  CHRCHR      CVARAR      DIRLIS      GETDIR      INDEX       QFDPRS      STRFND      ZIPC    
+  ZLNTXT  
+
+ CALLED BY:
+
+  unknown
+
+
+ CKNBLK                                                                                  CKNBLK  
+
+ This INTEGER FUNCTION is number 12 in file utchar. 
+
+ Check character array CBUF for all blanks.  Return                    
+ a zero if all blanks, otherwise return a one.                         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of character array                                   
+    2    CBUF     C*1 (V)        I    character array                                           
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ CKNBLV                                                                                  CKNBLV  
+
+ This INTEGER FUNCTION is number 39 in file utchar. 
+
+ Check character array CBUF for all blanks.  Return                    
+ a zero if all blanks, otherwise return position in                    
+ character array of first non-blank character.                         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of character array                                   
+    2    CBUF     C*1 (V)        I    character array                                           
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ CMPTIM                                                                                  CMPTIM  
+
+ This SUBROUTINE is number 2 in file utdate. 
+
+ Compare one time unit and step to a second time unit and              
+ step.  Two flags are returned.  The first flag indicates              
+ compatible/incompatible time steps.  The second flag                  
+ indicates which time step is smaller.  Time steps are                 
+ considered compatible if one is an even multiple of the               
+ other.  One hour and 30 minutes are compatible; one hour              
+ and 90 minutes are incompatible.  Comparison of time units            
+ and time steps which cross the day-month boundry are handled          
+ a little different.  If the smaller time step is a day or             
+ less and is compatible with 1 day and the larger time step            
+ is compatible with one month, than the smaller and the                
+ larger time steps are considered to be compatible.  The time          
+ step of a day or less will be considered to be the smaller            
+ time step.                                                            
+ EXAMPLES:  TCODE1 TSTEP1 TCODE2 TSTEP2 TSTEPF TCDCMP                  
+              3      1      2      60     0      0                     
+              3      1      2      90     1      1                     
+              3      1      2      30     0      2                     
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    TCODE1   I*4            I    time units code                                           
+                                      1 - second    4 - day                                     
+                                      2 - minute    5 - month                                   
+                                      3 - hour      6 - year                                    
+    2    TSTEP1   I*4            I    time step, in TCODE1 units                                
+    3    TCODE2   I*4            I    time units code                                           
+                                      1 - second    4 - day                                     
+                                      2 - minute    5 - month                                   
+                                      3 - hour      6 - year                                    
+    4    TSTEP2   I*4            I    time step in TCODE2 units                                 
+    5    TSTEPF   I*4            O    time step compatability flag                              
+                                      0 - compatible time steps                                 
+                                      1 - incompatible time steps                               
+    6    TCDCMP   I*4            O    flag indicating order of time steps                       
+                                       0 - time steps are the same                              
+                                       1 - first time step is smaller                           
+                                       2 - second time step is smaller                          
+                                      -1 - time units span day-month boundry                    
+ 
+ CALLS:
+
+  routine
+  -------
+  CMPTM2  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utdate    DTMCMN  
+
+
+ CMPTM2                                                                                  CMPTM2  
+
+ This SUBROUTINE is number 3 in file utdate. 
+
+ This routine compares one time unit and step to a second time         
+ unit and step.  Two flags are returned.  The first flag               
+ indicates compatible/incompatible time steps.  The second flag        
+ indicates which timestep is smaller.                                  
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    TC1      I*4            M    time units code                                           
+                                      1 - second    4 - day                                     
+                                      2 - minute    5 - month                                   
+                                      3 - hour      6 - year                                    
+    2    TS1      I*4            M    time step, in TC1 units                                   
+    3    TC2      I*4            M    time units code, see TC1                                  
+    4    TS2      I*4            M    time step, in TC2 units                                   
+    5    TSTEPF   I*4            O    time step compatability flag                              
+                                      0 - compatible time series                                
+                                      1 - incompatible time steps                               
+    6    TCDCMP   I*4            O    flag indicating order of time steps                       
+                                       0 - time steps are the same                              
+                                       1 - first time step is smaller                           
+                                       2 - second time step is smaller                          
+                                      -1 - time units span day-month boundry                    
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD     
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utdate    CMPTIM  
+
+
+ CNVTDG                                                                                  CNVTDG  
+
+ This REAL FUNCTION is number 1 in file utgnrl. 
+
+ This routine computes latitude or longitude in degrees                
+ from an integer representation of degrees-minutes-seconds.            
+ Examples:                                                             
+           593000 is converted to 59.5                                 
+          -723015 is converted to -72.5042                             
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LATLNG   I*4            I    latitude or longitude in degrees, minutes, seconds        
+ 
+ CALLS:
+
+  routine
+  -------
+  REAL    
+
+ CALLED BY:
+
+  unknown
+
+
+ COLGET                                                                                  COLGET  
+
+ This SUBROUTINE is number 6 in file utscxx. 
+
+ routine to return the current values of the fore- and background      
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    FOR      I*4            O    current foreground color                                  
+    2    BAC      I*4            O    current background color                                  
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  COLOR   BACK       I
+  COLOR   COLARR     I
+  COLOR   FORE       I
+
+ CALLS:
+
+  routine
+  -------
+
+ CALLED BY:
+
+  unknown
+
+
+ COLSET                                                                                  COLSET  
+
+ This SUBROUTINE is number 5 in file utscxx. 
+
+ routine to set the foreground and background colors                   
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    FOR      I*4            I    color to set foreground to                                
+    2    BAC      I*4            I    color to set background to                                
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  COLOR   BACK       O
+  COLOR   COLARR     I
+  COLOR   FORE       O
+
+ CALLS:
+
+  routine
+  -------
+  SCPRBF  
+
+ CALLED BY:
+
+  unknown
+
+
+ COPYC                                                                                   COPYC   
+
+ This SUBROUTINE is number 13 in file utchar. 
+
+ Copy the character array ZIP of size LEN to                           
+ the character array X of size LEN.                                    
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of character arrays                                  
+    2    ZIP      C*1 (V)        I    input character array                                     
+    3    X        C*1 (V)        O    output character array                                    
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utchar    INTCHR      ADCOMA  
+  utscxx    SCPRBF  
+
+
+ COPYD                                                                                   COPYD   
+
+ This SUBROUTINE is number 1 in file utcpgn. 
+
+ Copy the double precision array ZIP of size LEN                       
+ to the double precision array X.                                      
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of arrays                                            
+    2    ZIP      D   (V)        I    input array of size LEN                                   
+    3    X        D   (V)        O    output array of size LEN                                  
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ COPYI                                                                                   COPYI   
+
+ This SUBROUTINE is number 2 in file utcpgn. 
+
+ Copy the integer array ZIP of size LEN to                             
+ the integer array X.                                                  
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of arrays                                            
+    2    ZIP      I*4 (V)        I    input array of size LEN                                   
+    3    X        I*4 (V)        O    output array of size LEN                                  
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utdate    DLIMIT      DATCMN      TIMCHK      TIMDIF      DBNDRY      DHBEGN  
+
+
+ COPYR                                                                                   COPYR   
+
+ This SUBROUTINE is number 3 in file utcpgn. 
+
+ Copy the real array ZIP of size LEN to the                            
+ real array X.                                                         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of arrays                                            
+    2    ZIP      R   (V)        I    input array of size LEN                                   
+    3    X        R   (V)        O    output array of size LEN                                  
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ CRINTE                                                                                  CRINTE  
+
+ This INTEGER FUNCTION is number 14 in file utchar. 
+
+ Convert a character array to its integer equivalent.                  
+ The integer is expected to be right justified in STR.                 
+ For an invalid integer, return ERRINT.  Valid characters              
+ are '0' - '9', '+', '-', '.', 'D', and 'E'.  Leading                  
+ blanks are ignored.  Trailing blanks are treated as 0.                
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    ERRINT   I*4            I    value to be returned fo an invalid array                  
+    2    LEN      I*4            I    size of character array                                   
+    3    STR      C*1 (V)        I    character array containing an integer value               
+ 
+ CALLS:
+
+  routine
+  -------
+  CHRDIG  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utchar    CHRINT      CRINTX  
+
+
+ CRINTX                                                                                  CRINTX  
+
+ This INTEGER FUNCTION is number 15 in file utchar. 
+
+ Convert a character array to its integer equivalent.                  
+ The integer is expected to be right justified in STR.                 
+ For an invalid integer, -999 is returned.  Valid characters           
+ are '0' - '9', '+', and '-' .  Leading blanks are ignored.            
+ Trailing blanks are treated as 0.                                     
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of character array                                   
+    2    STR      C*1 (V)        I    character array                                           
+ 
+ CALLS:
+
+  routine
+  -------
+  CRINTE  
+
+ CALLED BY:
+
+  unknown
+
+
+ CTRSTR                                                                                  CTRSTR  
+
+ This SUBROUTINE is number 16 in file utchar. 
+
+ Center the characters within the array TITLE.                         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of character array, 1 <= LEN <= 132                  
+    2    TITLE    C*1 (V)        M    character array                                           
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ CVARAR                                                                                  CVARAR  
+
+ This SUBROUTINE is number 17 in file utchar. 
+
+ Convert a character variable of length LENV to                        
+ a character array of size LENA.                                       
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LENV     I*4            I    length of input character variable                        
+    2    CVAR     C*V            I    input character variable of length LENV                   
+    3    LENA     I*4            I    size of output character array                            
+    4    CARY     C*1 (V)        O    output character array of size LENA                       
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  ckfsdg    CKFSPC  
+
+
+ DATCHK                                                                                  DATCHK  
+
+ This SUBROUTINE is number 4 in file utdate. 
+
+ Check DATE for valid entries.  For each valid element in              
+ DATE, the corresponding element in ERROR is set to zero.              
+ For each invalid element in DATE, the corresponding element           
+ in ERROR is set to one.                                               
+ Valid date elements are:                                              
+   1800 <= year   <= 2080                                              
+     1  <= month  <= 12                                                
+     1  <= day    <= 31 or as appropriate for month and year           
+     0  <= hour   <= 24                                                
+     0  <= minute <= 60                                                
+     0  <= second <= 60                                                
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DATE     I*4 (6)        I    Date to be checked                                        
+    2    ERROR    I*4 (6)        O    Array containing flags for valid DATE elements:           
+                                      0 - good, 1 - invalid                                     
+ 
+ CALLS:
+
+  routine
+  -------
+  DAYMON      ZIPI    
+
+ CALLED BY:
+
+  unknown
+
+
+ DATCHR                                                                                  DATCHR  
+
+ This SUBROUTINE is number 18 in file utchar. 
+
+ Put a date into a character array.                                    
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    YR       I*4            I    year                                                      
+    2    MO       I*4            I    month                                                     
+    3    DY       I*4            I    day                                                       
+    4    OLEN     I*4            O    actual output size of character array                     
+    5    DBUFF    C*1 (10)       O    output character array                                    
+ 
+ CALLS:
+
+  routine
+  -------
+  INTCHR      ZIPC    
+
+ CALLED BY:
+
+  unknown
+
+
+ DATCMN                                                                                  DATCMN  
+
+ This SUBROUTINE is number 18 in file utdate. 
+
+ Determine the time period common to a number of pairs of dates.       
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    NDAT     I*4            I    number of pairs of dates                                  
+    2    STRT     I*4 (6,V)      I    array of beginning dates                                  
+    3    STOP     I*4 (6,V)      I    array of ending dates                                     
+    4    SDAT     I*4 (6)        O    common starting data                                      
+    5    EDAT     I*4 (6)        O    common ending date                                        
+    6    RETCOD   I*4            O    return code                                               
+                                       0 - there is a common time period                        
+                                      -1 - there is no common time period                       
+ 
+ CALLS:
+
+  routine
+  -------
+  CKDATE      COPYI       DLIMIT      ZIPI    
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utdate    DTMCMN  
+
+
+ DATLST                                                                                  DATLST  
+
+ This SUBROUTINE is number 19 in file utchar. 
+
+ Put DATE into the character array DSTRNG in the                       
+ format 1986 FEB. 14 10:30:00.  If hours, minutes,                     
+ and seconds are all zero, the format is 1986 FEB. 14.                 
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DATE     I*4 (6)        I    date                                                      
+    2    DSTRNG   C*1 (21)       O    output character array                                    
+    3    LEN      I*4            O    actual number of characters output to character array     
+    4    ERRCOD   I*4            O    flag indicating valid date                                
+                                      0 - valid date                                            
+                                      1 - invalid year                                          
+                                      2 - invalid month                                         
+                                      3 - invalid day                                           
+                                      4 - invalid hour                                          
+                                      5 - invalid minute                                        
+                                      6 - invalid second                                        
+                                      the ERRCOD for the smallest invalid date element is       
+                                      returned, if day and hour are both invalid, a 4 is        
+                                      returned                                                  
+ 
+ CALLS:
+
+  routine
+  -------
+  CHRCHR      DAYMON      INTCHR      ZIPC    
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utchar    PRTLIN      PRTLNO  
+
+
+ DATNXT                                                                                  DATNXT  
+
+ This SUBROUTINE is number 5 in file utdate. 
+
+ Based on the value of UPBACK, this routine adds or subtracts          
+ the time interval INTRVL from the current date and time DATE.         
+ The time convention has midnite as 24:00 of previous day, not         
+ as 00:00 of next day.                                                 
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    INTRVL   I*4            I    time step, in minutes                                     
+    2    UPBACK   I*4            I    flag indicating direction in time to move:                
+                                      >0  - move forward in time                                
+                                      <=0 - move back in time                                   
+    3    DATE     I*4 (6)        M    date to be modified                                       
+ 
+ CALLS:
+
+  routine
+  -------
+  DAYMON      MOD     
+
+ CALLED BY:
+
+  unknown
+
+
+ DAYMON                                                                                  DAYMON  
+
+ This INTEGER FUNCTION is number 6 in file utdate. 
+
+ Return the number of days in the given month for the given            
+ year, with leap year taken into account.  For an invalid              
+ month, -1 is returned.  For an invalid year and a valid month,        
+ the correct number of days is returned, with February = 28.           
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    YR       I*4            I    year, valid range is 1 - 2080                             
+    2    MON      I*4            I    month, valid range is 1 - 12                              
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD     
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utchar    DATLST  
+  utdate    DATCHK      DATNXT      NUMPTS      TIMADD      TIMBAK      TIMCNV      TIMCVT  
+            TIMDIF      DHBEGN  
+
+
+ DBNDRY                                                                                  DBNDRY  
+
+ This SUBROUTINE is number 23 in file utdate. 
+
+ Force a date to a day boundary                                        
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    FWDBAK   I*4            I    indicator flag for action to be taken is not day boundary 
+                                      1 - move forward to next day                              
+                                      2 - move back to previous day                             
+    2    DATE     I*4 (6)        M    date (year,month,day,hour,minute,second)                  
+ 
+ CALLS:
+
+  routine
+  -------
+  COPYI       TIMADD      TIMBAK  
+
+ CALLED BY:
+
+  unknown
+
+
+ DECCHR                                                                                  DECCHR  
+
+ This SUBROUTINE is number 20 in file utchar. 
+
+ This routine converts a real number to a character string.            
+ The number is right justified in the string if the flag               
+ JUST is zero or if the number requires an exponent,                   
+ otherwise it is left justified.                                       
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    REAIN    R              I    real value to be converted to a character string          
+    2    LENGTH   I*4            I    available length for output character string              
+    3    JUST     I*4            M    output justification                                      
+                                      0 - right justified                                       
+                                      1 - left justified                                        
+                                      will be forced to 0 if an exponent is required            
+    4    JLEN     I*4            O    actual length of output character string                  
+    5    STR      C*1 (V)        O    output character string                                   
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  ICONST  RPREC      I
+
+  RCONST  R0MIN      I
+  RCONST  RP1MIN     A
+
+ CALLS:
+
+  routine
+  -------
+  ABS         AINT        ALOG10      ANINT       IABS        INDEX       INT         INTCHR  
+  LEN         NINT        NUMINI      REAL        RWDIGS  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utchar    PRTLIN      PRTLNO  
+
+
+ DECCHX                                                                                  DECCHX  
+
+ This SUBROUTINE is number 24 in file utchar. 
+
+ Right justifies the real number REAIN into the                        
+ character array STR of size LEN.  The number will have                
+ SIGDIG significant digits and DECPLA decimal places.                  
+ If the number will not fit into STR as specified, it                  
+ will be output using an exponent.                                     
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    REAIN    R              I    real value to be converted to a character array           
+    2    LEN      I*4            I    available size for output character array                 
+    3    SIGDIG   I*4            I    significant digits for output                             
+    4    DECPLA   I*4            I    number of decimal places for output                       
+                                       0 - no decimal places                                    
+                                      <0 - force exponential output                             
+    5    STR      C*1 (V)        O    output character array                                    
+ 
+ CALLS:
+
+  routine
+  -------
+  ABS         CHRCHR      CHRDEL      CHRDIG      CHRINS      DIGCHR      INTCHR  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utchar    PRTLIN      PRTLNO  
+  utnumb    DECPRC  
+
+
+ DECPRC                                                                                  DECPRC  
+
+ This SUBROUTINE is number 8 in file utnumb. 
+
+ Adjust a real value to contain a specified                            
+ number of significant digits and decimal places.                      
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    SIGDIG   I*4            I    desired number of significant digits                      
+    2    DECPLA   I*4            I    desired number of decimal places                          
+    3    RVAL     R              M    real value                                                
+ 
+ CALLS:
+
+  routine
+  -------
+  CHRDEC      DECCHX      LENSTR  
+
+ CALLED BY:
+
+  unknown
+
+
+ DHBEGN                                                                                  DHBEGN  
+
+ This SUBROUTINE is number 21 in file utdate. 
+
+ Given a period of record and the beginning and ending months of       
+ the season to be analyzed, determine the start and end dates          
+ of the first season.  Assumptions:  (1) the dates in                  
+ are valid, (2) the STMO and EDMO months define a season               
+ equal to or shorter than a full year, (3) full months are             
+ used, and (4) the fist season will end at the end of the season.      
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DATBGN   I*4 (6)        I    beginning date of time series                             
+    2    DATEND   I*4 (6)        I    ending date of time series                                
+    3    STMO     I*4            I    beginning month of season                                 
+    4    EDMO     I*4            I    ending month of season                                    
+    5    SEASON   I*4 (12)       O    available begin date and end date for first season        
+    6    SEASBG   I*4 (6)        O    start date for first season                               
+    7    SEASND   I*4 (6)        O    start date for last season                                
+    8    IPT      I*4            O    pointer to position in time series for first data         
+                                      value in first season                                     
+ 
+ CALLS:
+
+  routine
+  -------
+  COPYI       DAYMON      TIMDIF  
+
+ CALLED BY:
+
+  unknown
+
+
+ DHINCR                                                                                  DHINCR  
+
+ This SUBROUTINE is number 22 in file utdate. 
+
+ Increment begin and end dates to next season.  Assumes that a         
+ season is one year or shorter in length.                              
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    SEASBG   I*4 (6)        I    start date for first season                               
+    2    SEASND   I*4 (6)        I    start date for last season                                
+    3    DATBGN   I*4 (6)        I    beginning date of time series                             
+    4    DATEND   I*4 (6)        I    ending date of time series                                
+    5    SEASON   I*4 (12)       M    input as previous time period, incremented to next        
+    6    MORE     I*4            M    indicator for time period                                 
+                                      -1 - new time period defined                              
+                                       0 - already at end of time period                        
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ DHLEAP                                                                                  DHLEAP  
+
+ This SUBROUTINE is number 20 in file utdate. 
+
+ Given a starting date and the season begin and end months,            
+ determine where leap day occurs in the series and determine           
+ when the the first leap year occurs.  Assumptions: (1) datbgn         
+ is a valid date and (2) the STMO and EDMO months define a season      
+ equal to or shorter than a full year.                                 
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DATBGN   I*4 (6)        I    beginning date                                            
+    2    STMO     I*4            I    beginning month of season                                 
+    3    EDMO     I*4            I    ending month of season                                    
+    4    LPDAY    I*4            O    postion in season where leap day occurs                   
+    5    LPYRS    I*4            O    offset to first leap year in time series                  
+                                      0 - current years is a leap year                          
+                                      1 - second year in series will be a leap year             
+                                      2 - third year in series will be a leap year              
+                                      3 - fourth year in series will be a leap year             
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD         TIMDIF  
+
+ CALLED BY:
+
+  unknown
+
+
+ DIGCHR                                                                                  DIGCHR  
+
+ This CHARACTER FUNCTION is number 25 in file utchar. 
+
+ Convert a single digit to a character.                                
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DIG      I*4            I    digit to be converted to a character                      
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utchar    DECCHX      INTCHR  
+
+
+ DLIMIT                                                                                  DLIMIT  
+
+ This SUBROUTINE is number 7 in file utdate. 
+
+ Depending on the value of FSLS, find the earliest or                  
+ latest date in the array of dates DATES.  CKDATE is                   
+ used to determine the calendar order between dates.                   
+ The dates are assumed to be valid.                                    
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DATES    I*4 (6,V)      I    array of NDSN dates                                       
+    2    NDSN     I*4            I    number of dates                                           
+    3    FSLS     I*4            I    indicator for type of date to look for                    
+                                      1 - finds first date                                      
+                                      2 - finds last date                                       
+    4    DATE     I*4 (6)        O    depending on the value of FSLS, the first or last         
+                                      date in DATES                                             
+ 
+ CALLS:
+
+  routine
+  -------
+  CKDATE      COPYI   
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utdate    DATCMN  
+
+
+ DPRCHR                                                                                  DPRCHR  
+
+ This SUBROUTINE is number 21 in file utchar. 
+
+ This routine converts a double precision number to a                  
+ character string.  The number is right justified in the               
+ string if the flag JUST is zero or if the number requires             
+ an exponent, otherwise it is left justified.                          
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DPRIN    D              I    double precision value to be converted to a character str 
+    2    LENGTH   I*4            I    available length for output character string              
+    3    JUST     I*4            M    output justification                                      
+                                      0 - right justified                                       
+                                      1 - left justified                                        
+                                      will be forced to 0 if an exponent is required            
+    4    JLEN     I*4            O    actual length of output character string                  
+    5    STR      C*1 (V)        O    output character string                                   
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  DCONST  D0MIN      I
+  DCONST  DP1MIN     A
+
+  ICONST  DPREC      I
+
+ CALLS:
+
+  routine
+  -------
+  DABS        DBLE        DINT        DLOG10      DNINT       DWDIGS      IABS        IDINT   
+  IDNINT      INDEX       INTCHR      LEN         NUMINI  
+
+ CALLED BY:
+
+  unknown
+
+
+ DTMCMN                                                                                  DTMCMN  
+
+ This SUBROUTINE is number 17 in file utdate. 
+
+ Determine the time period common to a number of pairs of dates.       
+ Determine the smallest common time step and unit.                     
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    NDAT     I*4            I    number of pairs of dates                                  
+    2    STRT     I*4 (6,V)      I    array of beginning dates                                  
+    3    STOP     I*4 (6,V)      I    array of ending dates                                     
+    4    TSTEP    I*4 (V)        I    array of time steps                                       
+    5    TCODE    I*4 (V)        I    array of time units codes                                 
+                                      1 - second        4 - day                                 
+                                      2 - minute        5 - month                               
+                                      3 - hour          6 - year                                
+    6    SDAT     I*4 (6)        O    common starting data                                      
+    7    EDAT     I*4 (6)        O    common ending date                                        
+    8    TS       I*4            O    smallest common time step                                 
+    9    TC       I*4            O    smallest common time units                                
+                                      1 - second        4 - day                                 
+                                      2 - minute        5 - month                               
+                                      3 - hour          6 - year                                
+   10    RETCOD   I*4            O    return code                                               
+                                       0 - there is a common time period and time step and unit 
+                                      -1 - there is no common time period                       
+                                      -2 - there is a common time period, but the time step and 
+                                            time units are not compatible                       
+ 
+ CALLS:
+
+  routine
+  -------
+  CMPTIM      DATCMN      ZIPI    
+
+ CALLED BY:
+
+  unknown
+
+
+ DWDIGS                                                                                  DWDIGS  
+
+ This INTEGER FUNCTION is number 23 in file utchar. 
+
+ Determines number of whole digits in input argument.  Used            
+ for double precision values greater than zero.                        
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DVAL     D              I    double precision value                                    
+ 
+ CALLS:
+
+  routine
+  -------
+  DLOG10      IDINT   
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utchar    DPRCHR  
+
+
+ GETKEY                                                                                  GETKEY  
+
+ This SUBROUTINE is number 1 in file utscdg. 
+
+ *** DG SPECIFIC ***                                                   
+ assign function code to each key interrupt                            
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    GROUP    I*4            O    key group number:                                         
+                                      =0 for failure                                            
+                                      =1 printable character                                    
+                                      =2 unprintable keys                                       
+                                      =3 arrow keys                                             
+                                         CODE=1,2,3,4 for UP,DOWN,RIGHT,LEFT                    
+                                              5 - home                                          
+                                              6 - end                                           
+                                              7 - page up                                       
+                                              8 - page down                                     
+                                             10 - insert                                        
+                                      =4 function keys                                          
+    2    CODE     I*4            O    ASCII code or function key number                         
+ 
+ CALLS:
+
+  routine
+  -------
+  ICHAR       MOD         QCHR    
+
+ CALLED BY:
+
+  unknown
+
+
+ GTMONC                                                                                  GTMONC  
+
+ This SUBROUTINE is number 19 in file utdate. 
+
+ Given the number of the month and a length, returns the               
+ character string for that month.                                      
+ For LEN >= 9, the full month is returned.                             
+ For LEN  = 3, the standard 3-character abbreviation is returned.      
+ For LEN  = 1, the first character of the month is returned            
+ For LEN  = 2, the first 2 characters of the standard 3-character      
+               abbreviation are returned                               
+ For LEN < 9 & > 4, the first LEN characters of the full month         
+               are returned.                                           
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    INDX     I*4            I    index number of the month (1-jan,2-feb,...,12-dec)        
+    2    LEN      I*4            I    available length for month                                
+    3    LORU     I*4            I    flag for case                                             
+                                      1 - first letter upper case, remaining letters lower case 
+                                      2 - all letters upper case                                
+    4    LENO     I*4            M    actual characters in month                                
+                                      returns 0 if indx not a valid month or len < 1            
+    5    MONTH    C*1 (V)        M    character string of lenght LEN containing name of month   
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ INTCHR                                                                                  INTCHR  
+
+ This SUBROUTINE is number 26 in file utchar. 
+
+ Convert the integer number INTIN to a character array.                
+ The number will be right justified in the array if the                
+ flag JUST is zero, otherwise is will be left justified.               
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    INTIN    I*4            I    integer value to be converted to a character array        
+    2    LENA     I*4            I    available size for output character array                 
+    3    JUST     I*4            I    output justification                                      
+                                      0 - right justified in the field                          
+                                      1 - left justified in the field                           
+    4    JLEN     I*4            O    actual number of characters output to character array     
+    5    STRNG    C*1 (V)        O    output character array                                    
+ 
+ CALLS:
+
+  routine
+  -------
+  ALOG10      COPYC       DIGCHR      INT         MOD         REAL        ZIPC    
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  uscnvt    SCCUMV      SCCURM  
+  utchar    DATCHR      DATLST      DECCHR      DECCHX      DPRCHR  
+
+
+ JDMODY                                                                                  JDMODY  
+
+ This SUBROUTINE is number 8 in file utdate. 
+
+ Convert a julian day to month and day, leap year taken                
+ into account.  YEAR and JDAY are assumed to be valid.                 
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    YEAR     I*4            I    year                                                      
+    2    JDAY     I*4            I    julian date                                               
+    3    MON      I*4            O    month                                                     
+    4    DAY      I*4            O    day                                                       
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD     
+
+ CALLED BY:
+
+  unknown
+
+
+ LENSTR                                                                                  LENSTR  
+
+ This INTEGER FUNCTION is number 27 in file utchar. 
+
+ Return the actual length of the character array,                      
+ excluding trailing blanks.                                            
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of character array                                   
+    2    STR      C*1 (V)        I    character array                                           
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utchar    PRTSTR      ADCOMA  
+  utnumb    DECPRC  
+
+
+ LFTSTR                                                                                  LFTSTR  
+
+ This SUBROUTINE is number 28 in file utchar. 
+
+ Left justify characters in the array TITLE.                           
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of character array, 1 <= LEN <= 132                  
+    2    TITLE    C*1 (V)        M    character array                                           
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utchar    ADCOMA  
+
+
+ NUMINI                                                                                  NUMINI  
+
+ This SUBROUTINE is number 4 in file utnumb. 
+
+ Initialize machine dependent floating point constants.                
+
+ ARGUMENTS:
+
+  none
+
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  DCONST  D0MAX      O
+  DCONST  D0MIN      O
+  DCONST  DP1MIN     M
+
+  ICONST  DPREC      M
+  ICONST  RPREC      O
+
+  RCONST  R0MAX      O
+  RCONST  R0MIN      O
+  RCONST  RP1MIN     M
+
+ CALLS:
+
+  routine
+  -------
+  INT         LOG10   
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utchar    CHDECE      CHRDEC      CHRDPR      DECCHR      DPRCHR  
+  utnumb    CHKDPR      CHKREA  
+
+
+ NUMPTS                                                                                  NUMPTS  
+
+ This SUBROUTINE is number 9 in file utdate. 
+
+ Calculate the number of time steps between two dates.                 
+ If the second date is before the first date, a zero is                
+ returned.  The first date is assumed to be at the end                 
+ of the first time step.  The dates are assumed to be valid.           
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DATE1    I*4 (6)        I    first (start) date                                        
+    2    DATE2    I*4 (6)        I    second (end) date                                         
+    3    DELT     I*4            I    time step, in minutes                                     
+    4    NPTS     I*4            O    number of time steps between first and second date        
+ 
+ CALLS:
+
+  routine
+  -------
+  CKDATE      DAYMON  
+
+ CALLED BY:
+
+  unknown
+
+
+ PRTLIN                                                                                  PRTLIN  
+
+ This SUBROUTINE is number 29 in file utchar. 
+
+ Convert DATE and an array of real numbers into a character array.     
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DATE     I*4 (6)        I    date                                                      
+    2    NUMDSN   I*4            I    number of data values to output ( 1 <= NUMDSN <= 30 )     
+    3    DATA     R   (V)        I    array of NUMDSN data values to be output                  
+    4    WDTH     I*4            I    output width ( <= 250 )                                   
+    5    SGFD     I*4            I    significant digits for output                             
+    6    DPLA     I*4            I    number of decimal places for output                       
+    7    THRSH    R   (2)        I    limits for output                                         
+                                      (1) - minimum value                                       
+                                      (2) - maximum value                                       
+    8    OLEN     I*4            O    actual number of characters output to TBUFF               
+    9    TBUFF    C*1 (250)      O    output character array                                    
+ 
+ CALLS:
+
+  routine
+  -------
+  DATLST      DECCHR      DECCHX  
+
+ CALLED BY:
+
+  unknown
+
+
+ PRTLNO                                                                                  PRTLNO  
+
+ This SUBROUTINE is number 30 in file utchar. 
+
+ Convert DATE and an array of real numbers into a character array.     
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DATE     I*4 (6)        I    date                                                      
+    2    NUMDSN   I*4            I    number of data values to output ( 1 <= NUMDSN <= 30 )     
+    3    DATA     R   (V)        I    array of NUMDSN data values to be output                  
+    4    WDTH     I*4            I    output width ( <= 250 )                                   
+    5    SGFD     I*4            I    significant digits for output                             
+    6    DPLA     I*4            I    number of decimal places for output                       
+    7    DTFG     I*4 (V)        I    array of indicator flag to include data value             
+                                      0 - leave field blank                                     
+                                      1 - convert data to character                             
+    8    OLEN     I*4            O    actual number of characters output to TBUFF               
+    9    TBUFF    C*1 (250)      O    output character array                                    
+ 
+ CALLS:
+
+  routine
+  -------
+  DATLST      DECCHR      DECCHX      ZIPC    
+
+ CALLED BY:
+
+  unknown
+
+
+ PRTSTR                                                                                  PRTSTR  
+
+ This SUBROUTINE is number 35 in file utchar. 
+
+ Write a character array to the given file unit.                       
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    FUNIT    I*4            I    Fortran unit number for output                            
+    2    LEN      I*4            I    size of character array                                   
+    3    STR      C*1 (V)        I    character array                                           
+ 
+ CALLS:
+
+  routine
+  -------
+  LENSTR  
+
+ CALLED BY:
+
+  unknown
+
+
+ QCHR                                                                                    QCHR    
+
+ This SUBROUTINE is number 1 in file utscxx. 
+
+ gets a single character from a terminal                               
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    CHR      C*1            O    character typed at terminal                               
+    2    ICHR     I*4            O    ASCII integer code for character                          
+ 
+ CALLS:
+
+  routine
+  -------
+  C1IN        CHAR        MOD     
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utscdg    GETKEY  
+
+
+ QUPCAS                                                                                  QUPCAS  
+
+ This SUBROUTINE is number 38 in file utchar. 
+
+ To convert a character string from lower case to upper case           
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    length of character string                                
+    2    STRING   C*1 (V)        M    character string to be made upper case                    
+ 
+ CALLS:
+
+  routine
+  -------
+  CHAR        ICHAR       MOD     
+
+ CALLED BY:
+
+  unknown
+
+
+ RHTSTR                                                                                  RHTSTR  
+
+ This SUBROUTINE is number 40 in file utchar. 
+
+ Right justify characters in the array TITLE.                          
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of character array, 1 <= LEN <= 132                  
+    2    TITLE    C*1 (V)        M    character array                                           
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utchar    ADCOMA  
+
+
+ RWDIGS                                                                                  RWDIGS  
+
+ This INTEGER FUNCTION is number 22 in file utchar. 
+
+ Determines number of whole digits in input argument.  Used            
+ for real values greater than zero.                                    
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    RVAL     R              I    real value                                                
+ 
+ CALLS:
+
+  routine
+  -------
+  ALOG10      INT     
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utchar    DECCHR  
+
+
+ SCCLAL                                                                                  SCCLAL  
+
+ This SUBROUTINE is number 1 in file uscnvt. 
+
+ homes the cursor and clears the screen                                
+ *** ASCII STANDARD- TESTED ON VT100 ***                               
+
+ ARGUMENTS:
+
+  none
+
+ 
+ CALLS:
+
+  routine
+  -------
+  CHAR        SCPRST  
+
+ CALLED BY:
+
+  unknown
+
+
+ SCCLR                                                                                   SCCLR   
+
+ This SUBROUTINE is number 2 in file uscnvt. 
+
+ clears the screen                                                     
+ *** ASCII STANDARD- TESTED ON VT100 ***                               
+
+ ARGUMENTS:
+
+  none
+
+ 
+ CALLS:
+
+  routine
+  -------
+  CHAR        SCPRST  
+
+ CALLED BY:
+
+  unknown
+
+
+ SCCUHM                                                                                  SCCUHM  
+
+ This SUBROUTINE is number 2 in file utscxx. 
+
+ moves the cursor home (1,1)                                           
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    CROW     I*4            O    cursor ending row=1                                       
+    2    CCOL     I*4            O    cursor ending column=1                                    
+ 
+ CALLS:
+
+  routine
+  -------
+  SCCUMV  
+
+ CALLED BY:
+
+  unknown
+
+
+ SCCUMV                                                                                  SCCUMV  
+
+ This SUBROUTINE is number 3 in file uscnvt. 
+
+ moves cursor to the absolute row and column specified                 
+ *** ASCII STANDARD- TESTED ON VT100 ***                               
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    CROW     I*4            I    row to move cursor to                                     
+    2    CCOL     I*4            I    column to move cursor to                                  
+ 
+ CALLS:
+
+  routine
+  -------
+  CHAR        INTCHR      SCPRST  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utscxx    SCCUHM      ZWRSCR  
+
+
+ SCCURM                                                                                  SCCURM  
+
+ This SUBROUTINE is number 4 in file uscnvt. 
+
+ moves the cursor to the relative row and column specified             
+ *** ASCII STANDARD- TESTED ON VT100 ***                               
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    CROW     I*4            I    number of rows to move                                    
+    2    CCOL     I*4            I    number of columns to move                                 
+ 
+ CALLS:
+
+  routine
+  -------
+  ABS         CHAR        INTCHR      SCPRST  
+
+ CALLED BY:
+
+  unknown
+
+
+ SCPRBF                                                                                  SCPRBF  
+
+ This SUBROUTINE is number 4 in file utscxx. 
+
+ builds an output string buffer and writes it out                      
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    length of string to write                                 
+    2    RMFLG    I*4            I    relative movement flag 0-check, 1-yes                     
+    3    CRFLG    I*4            I    carriage return/line feed flag, 0-dont,                   
+                                      0 - don't                                                 
+                                      1 - do always                                             
+                                      2 - do if something in buffer                             
+    4    STR      C*1 (V)        I    string to write(or store in buffer)                       
+ 
+ CALLS:
+
+  routine
+  -------
+  COPYC       ICHAR       SCPRBN  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utscxx    COLSET      SCPRST      ZFMTWR  
+
+
+ SCPRBN                                                                                  SCPRBN  
+
+ This SUBROUTINE is number 2 in file utscdg. 
+
+ prints a string to the terminal with no cr/lf                         
+ *** UNIX SPECIFIC ***                                                 
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    len of string to write (characters)                       
+    2    RMFLG    I*4            I    relative movement flag                                    
+    3    CRFLG    I*4            I    carriage return flag 0                                    
+                                      0 - no                                                    
+                                      1 - yes                                                   
+    4    STR      C*1 (V)        I    characters to write                                       
+ 
+ CALLS:
+
+  routine
+  -------
+  CHAR        TTYPUT  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utscxx    SCPRBF  
+
+
+ SCPRST                                                                                  SCPRST  
+
+ This SUBROUTINE is number 3 in file utscxx. 
+
+ prints a string to the terminal with no cr/lf                         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    length of string to write (characters)                    
+    2    STR      C*1 (256)      I    characters to write                                       
+ 
+ CALLS:
+
+  routine
+  -------
+  SCPRBF  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  uscnvt    SCCLAL      SCCLR       SCCUMV      SCCURM  
+
+
+ SHIFTD                                                                                  SHIFTD  
+
+ This SUBROUTINE is number 9 in file utnumb. 
+
+ Moves all array elements equal to VAL to end of array,                
+ shifting remaining elements forward, preserving their order.          
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    array length                                              
+    2    VAL      D              I    value to be moved to end of array                         
+    3    VALTOL   D              I    tolerance for determining how close array elements        
+                                      need to be to VAL to be moved to end of array             
+    4    X        D   (V)        M    double precision array                                    
+    5    IPOS     I*4            O    position of last "good" value, when all VALs moved to end 
+ 
+ CALLS:
+
+  routine
+  -------
+  ABS     
+
+ CALLED BY:
+
+  unknown
+
+
+ SHIFTI                                                                                  SHIFTI  
+
+ This SUBROUTINE is number 10 in file utnumb. 
+
+ Moves all array elements equal to VAL to end of array,                
+ shifting remaining elements forward, preserving their order.          
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    array length                                              
+    2    VAL      I*4            I    value to be moved to end of array                         
+    3    VALTOL   I*4            I    tolerance for determining how close array elements        
+                                      need to be to VAL to be moved to end of array             
+    4    X        I*4 (V)        M    integer array                                             
+    5    IPOS     I*4            O    position of last "good" value, when all VALs moved to end 
+ 
+ CALLS:
+
+  routine
+  -------
+  ABS     
+
+ CALLED BY:
+
+  unknown
+
+
+ SHIFTR                                                                                  SHIFTR  
+
+ This SUBROUTINE is number 11 in file utnumb. 
+
+ Moves all array elements equal to VAL to end of array,                
+ shifting remaining elements forward, preserving their order.          
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    array length                                              
+    2    VAL      R              I    value to be moved to end of array                         
+    3    VALTOL   R              I    tolerance for determining how close array elements        
+                                      need to be to VAL to be moved to end of array             
+    4    X        R   (V)        M    real array                                                
+    5    IPOS     I*4            O    position of last "good" value, when all VALs moved to end 
+ 
+ CALLS:
+
+  routine
+  -------
+  ABS     
+
+ CALLED BY:
+
+  unknown
+
+
+ STRFND                                                                                  STRFND  
+
+ This INTEGER FUNCTION is number 31 in file utchar. 
+
+ Return the position in the array STR of size LEN that                 
+ the array FSTR of size FLEN occurs.  If FSTR is not                   
+ found, a zero is returned.                                            
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of character array being searched                    
+    2    STR      C*1 (V)        I    character array to be searched                            
+    3    FLEN     I*4            I    size of character array to search for                     
+    4    FSTR     C*1 (V)        I    character array to be searched for                        
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  ckfsdg    CKFSPC  
+  utchar    ADCOMA  
+
+
+ STRLNX                                                                                  STRLNX  
+
+ This INTEGER FUNCTION is number 32 in file utchar. 
+
+ Return the number of characters in the array BUFF, including          
+ imbedded blanks and excluding leading and trailing blanks.            
+ A value of 1 is returned for all blanks.                              
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    NPTS     I*4            I    size of the character array                               
+    2    BUFF     C*1 (V)        I    character array                                           
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ SYDATE                                                                                  SYDATE  
+
+ This SUBROUTINE is number 2 in file dttmsn. 
+
+ This subroutine is used to retrieve the system date.                  
+ This version of SYDATE calls the standard SUN OS system               
+ subroutine IDATE.  Note that the SUN VMS version of                   
+ IDATE is call idate ( m, d, y )                                       
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    YR       I*4            O    year                                                      
+    2    MO       I*4            O    month                                                     
+    3    DA       I*4            O    day                                                       
+ 
+ CALLS:
+
+  routine
+  -------
+  IDATE   
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  dttmsn    SYDATM  
+
+
+ SYDATM                                                                                  SYDATM  
+
+ This SUBROUTINE is number 1 in file dttmsn. 
+
+ Returns the current date and time.  Calls the system dependent        
+ subroutines SYDATE for the date and SYTIME for the time.              
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    YR       I*4            O    year                                                      
+    2    MO       I*4            O    month                                                     
+    3    DY       I*4            O    day                                                       
+    4    HR       I*4            O    hour                                                      
+    5    MN       I*4            O    minute                                                    
+    6    SC       I*4            O    second                                                    
+ 
+ CALLS:
+
+  routine
+  -------
+  SYDATE      SYTIME  
+
+ CALLED BY:
+
+  unknown
+
+
+ SYTIME                                                                                  SYTIME  
+
+ This SUBROUTINE is number 3 in file dttmsn. 
+
+ This subroutine is used to retrieve the system time.                  
+ This version of SYTIME calls the standard SUN OS system               
+ subroutine  ITIME.                                                    
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    HR       I*4            O    Number of hours since midnight                            
+    2    MN       I*4            O    Number of minutes since hour                              
+    3    SC       I*4            O    Number of seconds since minute                            
+ 
+ CALLS:
+
+  routine
+  -------
+  ITIME   
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  dttmsn    SYDATM  
+
+
+ TIMADD                                                                                  TIMADD  
+
+ This SUBROUTINE is number 10 in file utdate. 
+
+ Add NVALS time steps to first date to compute second date.            
+ The first date is assumed to be valid.                                
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DATE1    I*4 (6)        I    starting date                                             
+    2    TCODE    I*4            I    time units                                                
+                                      1 - second          5 - month                             
+                                      2 - minute          6 - year                              
+                                      3 - hour            7 - century                           
+                                      4 - day                                                   
+    3    TSTEP    I*4            I    time step in TCODE units                                  
+    4    NVALS    I*4            I    number of time steps to be added                          
+    5    DATE2    I*4 (6)        O    new date                                                  
+ 
+ CALLS:
+
+  routine
+  -------
+  DAYMON  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utdate    TIMDFX      TIMDIF      DBNDRY  
+
+
+ TIMBAK                                                                                  TIMBAK  
+
+ This SUBROUTINE is number 11 in file utdate. 
+
+ Subtract one time interval at the given units TCODE from DATE.        
+ The date is assumed to be valid.                                      
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    TCODE    I*4            I    time units code                                           
+                                      1 - seconds            5 - months                         
+                                      2 - minutes            6 - years                          
+                                      3 - hours              7 - centuries                      
+                                      4 - days                                                  
+    2    DATE     I*4 (6)        M    date                                                      
+ 
+ CALLS:
+
+  routine
+  -------
+  DAYMON  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utdate    DBNDRY  
+
+
+ TIMCHK                                                                                  TIMCHK  
+
+ This INTEGER FUNCTION is number 12 in file utdate. 
+
+ Determine the calendar order of two dates.                            
+ The dates are assumed to be valid.                                    
+ TIMCHK = 1 if DATE1 < DATE2                                           
+        = 0 if DATE1 = DATE2                                           
+        =-1 if DATE1 > DATE2                                           
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DATE1    I*4 (6)        I    first date                                                
+    2    DATE2    I*4 (6)        I    second date                                               
+ 
+ CALLS:
+
+  routine
+  -------
+  COPYI       TIMCNV  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utdate    TIMDFX      TIMDIF  
+
+
+ TIMCNV                                                                                  TIMCNV  
+
+ This SUBROUTINE is number 13 in file utdate. 
+
+ Convert a date that uses the midnight convention of 00:00             
+ to the convention 24:00.  For example, 1982/10/01 00:00:00            
+ would be converted to the date 1982/09/30 24:00:00.                   
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DATE     I*4 (6)        M    date being converted                                      
+ 
+ CALLS:
+
+  routine
+  -------
+  DAYMON  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utdate    TIMCHK      TIMDIF  
+
+
+ TIMCVT                                                                                  TIMCVT  
+
+ This SUBROUTINE is number 14 in file utdate. 
+
+ Convert a date that uses the midnight convention of 24:00             
+ to the convention 00:00.  For example, 1982/09/30 24:00:00            
+ would be converted to the date 1982/10/01 00:00:00.                   
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DATE     I*4 (6)        M    date being converted                                      
+ 
+ CALLS:
+
+  routine
+  -------
+  DAYMON  
+
+ CALLED BY:
+
+  unknown
+
+
+ TIMDFX                                                                                  TIMDFX  
+
+ This SUBROUTINE is number 16 in file utdate. 
+
+ Calculate the number of values between two dates, including           
+ units and time step.  First tries at one year time step, then         
+ TCODE is decreased by one and tried again until the exact             
+ time difference is determined.  Dates are assumed to be valid.        
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DATE1    I*4 (6)        I    first (starting) date                                     
+    2    DATE2    I*4 (6)        I    second (ending) date                                      
+    3    NVALS    I*4            O    number of values at the output TSTEP and TCODE            
+    4    TCODE    I*4            O    time units code                                           
+                                      1 - seconds     5 - months                                
+                                      2 - minutes     6 - years                                 
+                                      3 - hours       7 - centuries                             
+                                      4 - days                                                  
+    5    TSTEP    I*4            O    time step in TCODE units                                  
+ 
+ CALLS:
+
+  routine
+  -------
+  TIMADD      TIMCHK      TIMDIF  
+
+ CALLED BY:
+
+  unknown
+
+
+ TIMDIF                                                                                  TIMDIF  
+
+ This SUBROUTINE is number 15 in file utdate. 
+
+ Calculate the number of time steps between two dates.  Part           
+ intervals at a time step less than TCODE and TSSTEP are not           
+ included.  If the second date is before the first date, or the        
+ second date is the same as the first date, the number of time         
+ steps will be returned as 0.  Dates are assumed to be valid.          
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DATE1    I*4 (6)        I    first (starting) date                                     
+    2    DATE2    I*4 (6)        I    second (ending) date                                      
+    3    TCODE    I*4            I    time units code                                           
+                                      1 - seconds     5 - months                                
+                                      2 - minutes     6 - years                                 
+                                      3 - hours       7 - centuries                             
+                                      4 - days                                                  
+    4    TSTEP    I*4            I    time step in TCODE units                                  
+    5    NVALS    I*4            O    number of time steps between DATE1 and DATE2              
+ 
+ CALLS:
+
+  routine
+  -------
+  COPYI       DAYMON      TIMADD      TIMCHK      TIMCNV  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utdate    TIMDFX      DHBEGN      DHLEAP  
+
+
+ UTVRSN                                                                                  UTVRSN  
+
+ This SUBROUTINE is number 12 in file utnumb. 
+
+ Dummy routine to include unix what version information for the        
+ util library.                                                         
+
+ ARGUMENTS:
+
+  none
+
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ ZBEEP                                                                                   ZBEEP   
+
+ This SUBROUTINE is number 7 in file utscxx. 
+
+ ring terminal bell                                                    
+
+ ARGUMENTS:
+
+  none
+
+ 
+ CALLS:
+
+  routine
+  -------
+  CHAR        ZFMTWR  
+
+ CALLED BY:
+
+  unknown
+
+
+ ZFMTWR                                                                                  ZFMTWR  
+
+ This SUBROUTINE is number 8 in file utscxx. 
+
+ write string using a language-dependent format statement              
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    STRING   C*V            I    character string to write                                 
+ 
+ CALLS:
+
+  routine
+  -------
+  LEN         SCPRBF  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utscxx    ZBEEP       ZWRSCR  
+
+
+ ZIPC                                                                                    ZIPC    
+
+ This SUBROUTINE is number 33 in file utchar. 
+
+ Fill the character array X of size LEN with                           
+ the given value ZIP.                                                  
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of character array                                   
+    2    ZIP      C*1            I    character to fill array                                   
+    3    X        C*1 (V)        O    character array to be filled                              
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  ckfsdg    CKFSPC  
+  utchar    DATCHR      DATLST      INTCHR      PRTLNO      ADCOMA  
+
+
+ ZIPD                                                                                    ZIPD    
+
+ This SUBROUTINE is number 5 in file utnumb. 
+
+ Fill the double precision array X of size LEN                         
+ with the given value ZIP.                                             
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of array                                             
+    2    ZIP      D              I    value to fill array                                       
+    3    X        D   (V)        O    output array of size LEN                                  
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ ZIPI                                                                                    ZIPI    
+
+ This SUBROUTINE is number 6 in file utnumb. 
+
+ Fill the integer array X of size LEN with                             
+ the given value ZIP.                                                  
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of array                                             
+    2    ZIP      I*4            I    value to fill array                                       
+    3    X        I*4 (V)        O    output array of size LEN                                  
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utdate    DATCHK      DATCMN      DTMCMN  
+
+
+ ZIPR                                                                                    ZIPR    
+
+ This SUBROUTINE is number 7 in file utnumb. 
+
+ Fill the real array X of size LEN with the                            
+ given value ZIP.                                                      
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LEN      I*4            I    size of array                                             
+    2    ZIP      R              I    value to fill array                                       
+    3    X        R   (V)        O    output array of size LEN                                  
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ ZLJUST                                                                                  ZLJUST  
+
+ This SUBROUTINE is number 34 in file utchar. 
+
+ Remove leading blanks from a character variable.                      
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    STRING   C*V            M    character variable to left jusfify                        
+ 
+ CALLS:
+
+  routine
+  -------
+  LEN     
+
+ CALLED BY:
+
+  unknown
+
+
+ ZLNTXT                                                                                  ZLNTXT  
+
+ This INTEGER FUNCTION is number 36 in file utchar. 
+
+ Determine length of text in a character variable,                     
+ i.e., the index of the last non-blank or non-null character.          
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    STRING   C*V            I    character variable                                        
+ 
+ CALLS:
+
+  routine
+  -------
+  CHAR        LEN     
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  ckfsdg    CKFSPC  
+
+
+ ZTRIM                                                                                   ZTRIM   
+
+ This SUBROUTINE is number 37 in file utchar. 
+
+ Remove embeded blanks in a character variable                         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    STRING   C*V            M    character variable having blanks removed                  
+ 
+ CALLS:
+
+  routine
+  -------
+  LEN     
+
+ CALLED BY:
+
+  unknown
+
+
+ ZWRSCR                                                                                  ZWRSCR  
+
+ This SUBROUTINE is number 9 in file utscxx. 
+
+ write a string to specific screen position                            
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    STRING   C*V            I    character string to write                                 
+    2    LINE     I*4            I    starting line number to write                             
+    3    COLUMN   I*4            I    starting column number to write                           
+ 
+ CALLS:
+
+  routine
+  -------
+  LEN         SCCUMV      ZFMTWR  
+
+ CALLED BY:
+
+  unknown

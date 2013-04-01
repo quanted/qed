@@ -1,0 +1,323 @@
+config.txt
+
+Customizing the AIDE interface configuration
+--------------------------------------------
+
+Programs that use the libanne libraries are using the ANNIE Interactive
+Development Environment (AIDE), and/or the Watershed Data Management
+(WDM) file system, and/or the graphics system.  These systems use a
+number of parameters that define the configuration of the user's computer
+system as well as the user's preferences.  These parameters are defined in
+the libanne file msg/aide/parm__.seq.  The contents of this file are
+included in the message files used by the various programs.  Several
+versions of this file are provided:  Unix & GliGKS (gli), Unix and XGKS
+(XGKS), Data General and Prior GKS (dg), and PC using Interacter (pc).
+The user may override the default values set in the parm__.seq file by
+including the parameter in a TERM.DAT file in the directory in which
+the program is run.  The programs will be easier to use if the default
+values in parm__.seq are appropriate and the user does not need to use
+a TERM.DAT file.  There are 109 parameters defined between lines 18 and
+126 in parm__.seq but you need only be concerned with a few of them.
+The steps to follow in determining the optimal values for the parameters,
+a short description of parameters that may need to be changed, and
+details for making changes follow.
+
+
+An AIDE screen is 80 characters wide by 24 characters high and looks
+something like this:
+
+ +-screen name (path)------------------------program name and version-+
+ |                                                                    |
+ |                                                                    |
+ |                                                                    |
+ |                                                                    |
+ |                            Data panel                              |
+ |                                                                    |
+ |                                                                    |
+ |                                                                    |
+ |                                                                    |
+ |                                                                    |
+ +--------------------------------------------------------------------+
+ +-assistance type----------------------------------------------------+
+ |                                                                    |
+ |                         Assistance panel                           |
+ |                                                                    |
+ |                                                                    |
+ +--------------------------------------------------------------------+
+ +-instruction type---------------------------------------------------+
+ |                                                                    |
+ |                         Instruction panel                          |
+ |                                                                    |
+ +--------------------------------------------------------------------+
+ Help:F1  Accept:F2  Prev:F4  Limits:F5  Quiet:F8  Cmhlp  Oops
+
+
+
+
+config.txt                             2                            (continued)
+_______________________________________________________________________________
+
+Steps for determining the optimal values for system parameters
+--------------------------------------------------------------
+
+The following steps are suggested for determining optimal parameter values:
+
+  A.  Using the most appropriate parm__.seq (probably parmgli.seq or
+      parmxgks.seq), make any corrections or changes that may be needed or
+      desired.  See the table below for details on selected parameters.
+
+      Following the instructions in README.TXT, build the libanne libraries.
+      If you are not using parmgli.seq, modify the Makefile in the main
+      libanne directory, setting SeqVrsn to the appropriate variable.
+
+  B.  Select a program to use to test the library installation.  The
+      ANNIE program is recommended because it contains test data sets
+      that can be used to verify that the aide, wdm, and graphics
+      libraries are correctly installed.  Follow the instructions in
+      the annie README.TXT file to make the annie program.  Once this
+      program is working and the system has been fine-tuned, you should
+      have no trouble installing the rest of the programs.
+
+  C.  Run the test scripts in the annie test directory.  Start with test.sh
+      to verify that the wdm file is being opened correctly and the user
+      interface parameters are reasonable.  When you are satisfied with the
+      results for test.sh, then try graph.sh to fine tune the graphics.
+
+  D.  Evaluate the results
+
+      1.  If everything checks out ok and you are satisfied with the way
+          the program works and how the graphics look...
+
+          a.  If this is your first iteration, congratulations and now
+              continue with compilation of the remaining software.
+
+          b.  If you worked with a TERM.DAT file, update the parm__.seq
+              file in msg/aide using the values from the TERM.DAT
+              file.  Rerun make in the libanne and annie src directories
+              and continue with compilation of the remaining software.
+
+      2.  If the tests do not run successfully:
+
+          a.  Create/modify a TERM.DAT file.  Try different values for the
+              likely parameters (see table below).
+
+              o If the program doesn't work at all, check that the correct
+                record length is being used to open wdm files (wdop__.f
+                in libanne directory src/adwdm, wdmrx.f in src/wdmrx, and
+                RECTYP in msg/aide/parm__.seq).
+
+              o If the program works, but the screens are a mess, are you
+                emulating a vt100 terminal?
+
+              o If the program works, but those nice lines are not being drawn
+                around the different panels on the screen, try a different
+                font or a different size font.  For X Window System users,
+                most of the X Window miscellaneous fixed fonts work well, in
+                particular 8x13 bold, 9x15 bold, and 10x20.
+
+                Note also that the window needs to be at least 80 characters
+                wide by 24 rows (making the window larger than 80x24 will
+                not make the program screen any larger.)
+
+          b.  Repeat steps C and D above.
+
+
+
+config.txt                             3                            (continued)
+_______________________________________________________________________________
+
+ AIDE system parameters you may need or want to modify
+ ------------------------------------------------------------------------------
+      name and    default
+ no.    type *     value +   explanation and valid range
+ ---  --------  -----------  --------------------------------------------------
+   1  CMPTYP C  5 (UNIX/     Computer type,  do NOT add a new type,
+                   gligks)   1-PC, 2-PRIME, 3-VAX, 4-UNIX using Xgks
+                             5-UNIX using gligks
+   2  TRMTYP C  2 (VT100)    Terminal type.
+                             1-PC, 2-VT100, 3-OTHER
+   3  TRMINP I  5            Fortran unit number for reading from terminal.
+                             0 <= TRMINP <= 10
+   4  TRMOUT I  6            Fortran unit number for writing to terminal.
+                             0 <= TRMOUT <= 10
+   9  MENCRA C  3 (NEXT)     Program response when Enter key is pressed
+                             (see below for more details).
+                             1-NONE, 2-DOWN, 3-NEXT
+  13  FILMAX I  15           Maximum number of files that can be open
+                             at one time.
+                             10 <= FILMAX <= 99
+  14  FILUNI I  30           Starting Fortran unit number for files opened
+                             during program execution.  If your system has
+                             I/O units (such as tape drives) "hard coded" to
+                             a particular unit number or range of unit numbers
+                             this number should be greater than that.
+                             7 <= FILUNI <= 99
+  15  RECTYP C  4 (UNKNOWN)  Units for specifying record length when using a
+                             Fortran OPEN statement for an unformatted, direct
+                             access file.
+                             1-WORD, 2-HWORD (half word), 3-BYTE, 4-UNKNOWN
+  40  GKSDIS I  4 **         Code number for display terminal.
+                             0 <= GKSDIS <= 9999
+                               gligks:   210 - screen
+                             PriorGks:  1100 - screen
+                                 XGKS:     4 - screen
+  41  GKSPRT I  4 **         Code number for printer output.
+                             0 <= GKSPRT <= 9999
+                               gligks:    62 - postscript file
+                             PriorGks:   102 - black & white postscript file
+                                         101 - color postscript file
+                                 XGKS:     4 - screen
+  42  GKSPLT I  4 **         Code number for plotter output.
+                             0 <= GKSPLT <= 9999
+                               gligks:    53 - plotter
+                             PriorGks:  7475 - hp 7474 pen plotter
+                                 XGKS:     4 - screen
+  43  GKSMET I  4 **         Code number for meta file output.
+                             0 <= GKSMET <= 9999
+                               gligks:     8 - meta file
+                             PriorGks:    24 - cgmibe (binary encoding)
+                                          25 - cgmict (clear text)
+                                 XGKS:     4 - screen
+  47  GKPREC C  2 (CHAR) **  text precision
+                             1-STRING, 2-CHAR, 3-STROKE
+  49  GKPRFT I  1 **         printer font
+                             -9999<= GKPRFT <= 9999
+                               gligks:     1
+                             PriorGks: -2808
+ 101  BCOLOR C  2 (WHITE) ** Background color
+                             1-BLACK, 2-WHITE, 3-OTHER
+                               gligks:     2
+                             PriorGks:     1
+ 102  SYMSIZ I  100 **       symbol size
+                             1 <= SYSMIZ <= 10000
+
+  * Parameter types are character (C) and integer (I).
+  + Default values as defined in parmux.seq.
+ ** Code number for output device (workstation) depends on the GKS package
+    being used.  The defaults for the graphics parameters in parmgli.seq are
+    set for the GLIGKS library.  The defaults for the graphics parameters in
+    parmxgks.seq are set for the XGKS library.  The XGKS library uses 4 for
+    screen output.  Output to printers and plotters is not available and we
+    have not had success with the meta file.  So, all graphical output is
+    set for screen.  For other GKS packages, see the documentation for that
+    package for the code numbers used to define the workstation types.
+
+
+config.txt                             4                            (continued)
+_______________________________________________________________________________
+
+ Description of a TERM.DAT file
+
+ The TERM.DAT (upper case) file is used to override the default system
+ parameters.  It is located in the directory where the user is running
+ the program.  The same TERM.DAT file may be used by any program that
+ uses the libanne libraries.  The example shows a TERM.DAT file that is
+ set up with the parmux.seq defaults, it might be used as a starting
+ point for determining the optimal set of parameters when installing the
+ programs:
+
+        +-- parameter name (one parameter per line)
+        |
+        |  +-- one or more spaces separate the name and the value
+        |  |
+        |  |  +-- value to be used (use the option name for character)
+        |  |  |
+     ------ --------
+     CMPTYP UNIX
+     TRMTYP 2
+     TRMINP 5
+     TRMOUT 6
+     MENCRA NEXT
+     RECTYP UNKNOWN
+     GKSDIS 4
+_______________________________________________________________________________
+
+ Notes on editing parm__.seq files:
+
+ o  This is a formatted file, do not add or remove spaces or lines.
+ o  The only field that should be modified is the system default value,
+    do not add, remove, or reorder the valid values or the length.
+ o  The format of the parameter records in the parm__.seq file looks like:
+
+       +-- parameter index number
+       |
+       |   +-- parameter name
+       |   |
+       |   |    +-- parameter type: integer (I) or character (C)
+       |   |    |
+       |   |    |     +-- length of longest option (character parameters
+       |   |    |     |   only, may include trailing blanks)
+       |   |    |     |
+       |   |    |     |    +-- system default
+       |   |    |     |    |     integer - the value to be used
+       |   |    |     |    |     character - order number of option to be used
+       |   |    |     |    |
+       |   |    |     |    |         +-- Valid entries
+       |   |    |     |    |         |     integer - min and max range
+       |   |    |     |    |         |     character - ordered options
+       |   |    |     |    |         |
+       |   |    |     |    | ----------------------------------
+     --- ------ -    -- ----       ----      ----
+       3 TRMINP I          5          0        10
+       9 MENCRA C     5    3 NONE DOWN NEXT
+
+
+config.txt                             5                            (continued)
+_______________________________________________________________________________
+
+MENCRA - program response to Enter key
+--------------------------------------
+
+The MENCRA parameter controls how programs that use the AIDE interface
+respond when the Enter key is pressed.  There is no one way that the
+Enter key _should_ respond--it's a matter of each user's preference.
+It may be best to leave the default value as shown above and leave it
+up to the end user to provide an alternate value in a TERM.DAT file as
+suits their preference.  The default for the MENCRA parameter is
+currently set to NEXT (3).
+
+The description below refers to the four types of screens that may be
+displayed:  menu, form fill-in, file name, and text screens.
+
+ MENCRA    screen type   response when Enter is pressed
+ --------  ------------  --------------------------------------------------
+ NEXT (3)  menu          Same as Accept (F2), the highlighted menu
+                         option is selected and the program advances to
+                         the next screen.
+           form fill-in  For all but the last field on the form, causes
+                         the  cursor to advance to the next field.
+                         For the last field on the form the response
+                         is the same as for Accept (F2), all data values
+                         are entered and the program advances to the
+                         next screen.  (Note, usually the right-most,
+                         lowest field is the "last" field in the form.
+                         Occasionally, however, it is not!)
+           file name     Same as Accept (F2), the file name is entered
+                         and the program advances to the next screen.
+           text          Same as Accept (F2), the program advances to
+                         the next screen.
+ NONE (1)  menu          No effect, it is ignored.
+           form fill-in  Cursor is advanced to the next field.  When 
+                         the cursor is in the last field, the cursor
+                         is moved to the first field.
+           file name     No effect, it is ignored.
+           text          No effect, it is ignored.
+ DOWN (2)  menu          Functions as if the down arrow were pressed,
+                         moves the highlight bar to the next menu option.
+                         When the highlight bar is on the last menu option,
+                         it is moved to the first menu option.
+           form fill-in  Cursor is advanced to the next field.  When 
+                         the cursor is in the last field, the cursor
+                         is moved to the first field.
+           file name     No effect, it is ignored.
+           text          No effect, it is ignored.
+
+_______________________________________________________________________________
+
+References:
+-----------
+
+Kittle, J.L., Jr., Hummel, P.R., and Imhoff, J.C., 1989, ANNIE-IDE,
+     A system for developing interactive user interfaces for
+     environmental models (Programmers Guide):  U.S. Environmental
+     Protection Agency, EPA/600/3-89/034, 166p.

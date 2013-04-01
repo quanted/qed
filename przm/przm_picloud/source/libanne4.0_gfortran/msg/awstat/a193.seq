@@ -1,0 +1,868 @@
+DATE
+WDMSFL
+SYSTEM
+CLU          153    TYPE  MESS   NDN  10   NUP  20   NSA  20   NSP  50   NDP 200
+  LABEL
+    GRPNAM  A193
+  END LABEL
+  DATA   CLU   153
+#GROUP    1  TYPE MENU
+$WINDOW Frequency (&F)
+$SCREEN
+Choose a Frequency option.
+  @Select  - data sets for Frequency analysis
+  @Options - to change defaults for parameters and options
+  @Analyze - perform Frequency analysis
+  @Return  - to the Statistics screen
+$DEFAULT    1
+$LENGTH    8
+$OPTION Select
+_HELP
+This option provides standard procedures for selecting data sets from a 
+WDM file.  Data sets containing table (input form PEAKFQ) or annual time
+series can be selected for processing.
+$OPTION Options
+_HELP
+Use this option to change the name of the output file, select log 
+transformations, set period of record to analyze, and direct output
+to the screen and/or WDM file data-set attributes.
+$OPTION Analyze
+_HELP
+Select this option to perform the analysis as specified.
+$OPTION Return
+_HELP
+Choose Return when finished processing all data for a frequency analysis.
+#GROUP    2  TYPE PRM1
+$WINDOW Output (&FO)
+$SCREEN
+
+Modify output parameters and options as needed.
+
+File name  [@OUTFILE........................................................]
+
+  Generate frequency plots?         [@PLT] (Yes, No)
+  Put statistics on the WDM file?   [@WDM] (Yes, No)
+  Screen output?                    [@SCN] (Yes, No)
+  Period of record?             [@PERIOD.] (Full, Common, Specify)
+  Log transformation?               [@LOG] (Yes, No)
+$FIELD @OUTFILE
+_TYPE CHARACTER
+_HELP
+Enter the name of the file to which statistical analysis will be put.
+$FIELD @PLT
+_TYPE CHARACTER
+_PROTECT CORRECT
+_VALID NO, YES
+_DEFAULT YES
+_HELP
+ Enter YES to produce plots for output on graphics device.
+$FIELD @WDM
+_TYPE CHARACTER
+_PROTECT CORRECT
+_VALID NO, YES
+_DEFAULT YES
+_HELP
+Enter YES to put mean, standard deviation, skew, and n-year
+recurrence intervals on the WDM file data sets as attributes.
+This is specifically needed for Generalized Least Squares
+analysis, but may be useful for other uses.
+$FIELD @SCN
+_TYPE CHARACTER
+_PROTECT CORRECT
+_VALID NO, YES
+_DEFAULT YES
+_HELP
+Select YES to get summary of results placed on the screen.  NO is usually
+selected when a large number of stations are being processed.
+$FIELD @PERIOD
+_TYPE CHARACTER
+_PROTECT CORRECT
+_VALID FULL, COMMON, SPECIFY
+_DEFAULT FULL
+_HELP
+ Enter FULL to use the available period of record for each data set.
+ Enter COMMON to specify a common period of record for each data set.
+ Enter SPECIFY to be given the oportunity to modify the start
+ and end dates for each data set (during analysis).
+$FIELD @LOG
+_TYPE CHARACTER
+_PROTECT CORRECT
+_VALID YES, NO
+_DEFAULT YES
+_HELP
+ Analysis is usually done on logarithmic transformations of the data,
+ ie Log Pearson Type III.  Enter NO to get a Pearson Type III analysis.
+#GROUP    3  TYPE FILE
+$WINDOW Output file (&FO)
+$SCREEN
+
+                        Name of output file?
+
+ [@FILE...........................................................]
+$NAME @FILE
+$STATUS UNKNOWN
+$ACCESS SEQUENTIAL
+$FORM FORMATTED
+#GROUP    4  TYPE TEXT
+$WINDOW Output (&FO) Problem
+$TEXT
+Unable to open specified file for statistical output.
+
+Use the 'Prev'ious command to go back to the Output screen
+and specify another file for output,
+
+OR
+
+Use the 'Accept' command to continue and output
+statistics to the default file FRQNCY.OUT.
+#GROUP    5  TYPE PRM1
+$WINDOW Output-2 (&FO)
+$SCREEN
+
+       Enter the common time period for analysis of data sets.
+
+                      Starting year  [@SYR.]
+  
+                      Ending year    [@EYR.]
+
+(Note: You should be sure any data sets added after specifying this common
+       period fall within the common period.  You may want to come through
+       this screen again, otherwise errors may result during analysis.)
+$FIELD @SYR.
+_TYPE INTEGER
+_PROTECT CORRECT
+_RANGE       1800:      9999
+_DEFAULT       1942
+_HELP
+ Enter the year.
+$FIELD @EYR.
+_TYPE INTEGER
+_PROTECT CORRECT
+_RANGE       1801:      9999
+_DEFAULT       1990
+_HELP
+ Enter the year.
+#GROUP    6  TYPE TEXT
+$WINDOW Output-2 (&FO) No common period
+$TEXT
+Unable to determine common period for data sets
+being analyzed as no data sets have been selected.
+
+To select data sets for analysis, choose the
+Select option from the Frequency screen.
+#GROUP    7  TYPE TEXT
+$WINDOW Output-2 (&FO) Begin after end
+$TEXT
+The starting year must preceed the ending year
+for the common period of analysis.
+
+These values must be entered correctly.
+#GROUP    8  TYPE TEXT
+$WINDOW Output (&FO) No common period
+$TEXT
+Unable to determine a comon period for the data sets
+being analyzed as no common period could be found for them.
+
+Currently, the method for determining the period of analysis
+has been set to use the Full period for each data set.
+
+If you want to change this method, select the Output option from the
+Frequency screen and modify the field for determining the period of record,
+OR
+Choose the Select option to get data sets with a common period.
+#GROUP    9  TYPE PRM1
+$WINDOW Analyze (&FA)
+$SCREEN
+
+  The available record for data set @dsn. is @abg - @and
+  Enter the time period to be used for this analysis
+
+                  Starting year  [@SYR.]
+                  Ending year    [@EYR.]
+
+  (Note:  a minimum of 4 years is required for analysis.)
+$FIELD @SYR.
+_TYPE INTEGER
+_PROTECT CORRECT
+_RANGE       1800:      9999
+_DEFAULT       1942
+_HELP
+ year to begin analysis
+$FIELD @EYR.
+_TYPE INTEGER
+_PROTECT CORRECT
+_RANGE       1801:      9999
+_DEFAULT       1990
+_HELP
+ year to end analysis
+$FIELD @dsn
+_TYPE INTEGER
+_PROTECT PROTECT
+_RANGE       1 : 32000
+_HELP
+ Number of the data set currently being analyzed.
+$FIELD @abg
+_TYPE INTEGER
+_PROTECT PROTECT
+_RANGE 1 : 9999
+_HELP
+actual starting year of data
+$FIELD @and
+_TYPE INTEGER
+_PROTECT PROTECT
+_RANGE 1 : 9999
+_HELP
+actual ending year of data
+#GROUP   10  TYPE PRM1
+$WINDOW Analyze (&FA) No duration
+$SCREEN
+
+  For dsn @dsn.
+  Attribute TSTYPE does not contain the expected
+  statistic type and duration information.
+
+  Please specify:
+
+           Duration, in days [@ndy]
+              Flow statistic [@hlo]  (High or Low)
+
+$FIELD @ndy
+_TYPE INTEGER
+_PROTECT CORRECT
+_RANGE    1 : 365
+_DEFAULT  7
+_HELP
+ Duration, in days, used to compute the event statistic,
+ this is the 'n' in n-day high or low flow.
+$FIELD @hlo
+_TYPE CHARACTER
+_PROTECT CORRECT
+_VALID HIGH, LOW
+_DEFAULT HIGH
+_HELP
+ Does the data set contain an annual series of HIGH flow events
+ or LOW flow events?
+$FIELD @dsn
+_TYPE INTEGER
+_PROTECT PROTECT
+_RANGE       1 : 32000
+_HELP 
+ Number of the data set currently being analyzed.
+#GROUP   12  TYPE TEXT
+$WINDOW Analyze (&FA) No data
+$TEXT
+Could not get data for data-set &. Skipping analysis.
+#GROUP   13  TYPE TEXT
+$WINDOW Analyze (&FA)
+$TEXT
+  For data-set number &,
+#GROUP   14  TYPE TEXT
+$WINDOW Analyze (&FA) No write
+$TEXT
+Unable to write attribute & to WDM file.  Return code is &.
+#GROUP   15  TYPE PRM1
+$WINDOW Analyze (&FA) Results
+$SCREEN
+ The following & flow statistics were written as data-set attributes:
+
+ Data-set number: @dsn.
+        
+      Attributes: @atr01 @atr02 @atr03 @atr04 @atr05 @atr06
+                  @atr07 @atr08 @atr09 @atr10 @atr11 @atr12
+                  @atr13 @atr14 @atr15 @atr16 @atr17 @atr18
+                  @atr19
+$HELP
+ Values for the listed attributes have been written to the
+ indicated data set number.  For a description of the attributes,
+ see the ANNIE user's manual.
+$FIELD @dsn
+_TYPE INTEGER
+_PROTECT PROTECT
+_RANGE       1 : 32000
+_HELP
+ Number of the data set analyzed.
+$FIELD @atr01
+_TYPE CHARACTER
+_PROTECT PROTECT
+$FIELD @atr02
+_TYPE CHARACTER
+_PROTECT PROTECT
+$FIELD @atr03
+_TYPE CHARACTER
+_PROTECT PROTECT
+$FIELD @atr04
+_TYPE CHARACTER
+_PROTECT PROTECT
+$FIELD @atr05
+_TYPE CHARACTER
+_PROTECT PROTECT
+$FIELD @atr06
+_TYPE CHARACTER
+_PROTECT PROTECT
+$FIELD @atr07
+_TYPE CHARACTER
+_PROTECT PROTECT
+$FIELD @atr08
+_TYPE CHARACTER
+_PROTECT PROTECT
+$FIELD @atr09
+_TYPE CHARACTER
+_PROTECT PROTECT
+$FIELD @atr10
+_TYPE CHARACTER
+_PROTECT PROTECT
+$FIELD @atr11
+_TYPE CHARACTER
+_PROTECT PROTECT
+$FIELD @atr12
+_TYPE CHARACTER
+_PROTECT PROTECT
+$FIELD @atr13
+_TYPE CHARACTER
+_PROTECT PROTECT
+$FIELD @atr14
+_TYPE CHARACTER
+_PROTECT PROTECT
+$FIELD @atr15
+_TYPE CHARACTER
+_PROTECT PROTECT
+$FIELD @atr16
+_TYPE CHARACTER
+_PROTECT PROTECT
+$FIELD @atr17
+_TYPE CHARACTER
+_PROTECT PROTECT
+$FIELD @atr18
+_TYPE CHARACTER
+_PROTECT PROTECT
+$FIELD @atr19
+_TYPE CHARACTER
+_PROTECT PROTECT
+#GROUP   16  TYPE TEXT
+$WINDOW Analyze (&FA) No data
+$TEXT
+Could not get data for data-set number &. Skipping analysis.
+#GROUP   17  TYPE TEXT
+$WINDOW Analyze (&FA) Time step not year
+$TEXT
+Skipping anaylsis for data set &.
+
+   An annual time series is required.  Select the N-day option
+   from the Statistics screen to create an annual time series
+   from a time series with a smaller time step.
+#GROUP   18  TYPE TEXT
+$WINDOW Analyze (&FA) No data set
+$TEXT
+Unable to perform statistical Analysis as there are
+no data sets with which to work.
+
+To select data sets for use, choose the
+Select option from the Frequency screen.
+#GROUP   20  TYPE MENU
+$WINDOW Analyze-Plot (&FA)
+$SCREEN
+Select a Plotting option:
+  @Plot    - to the specified output device
+  @Modify  - plotting parameters
+  @Return  - from plotting to the Analysis
+$DEFAULT    1
+$LENGTH     6
+$OPTION Plot
+$OPTION Modify
+$OPTION Return
+$HELP
+ Select Plot to generate the graphic output to the selected device (or
+ default device). You may select Plot and Modify as many times as you 
+ want.  When finished, select Return. The Modify option will let you 
+ change titles, axis types, symbol type, line type, scales, and sizes. 
+#GROUP   21  TYPE TEXT
+$TEXT
+FLOW CHARACTERISTIC, IN CUBIC FEET PER SECOND
+#GROUP   24  TYPE TEXT
+$TEXT
+Calc std deviates   Estimated flow      Assigned std deviateObserved flow
+#GROUP   25  TYPE TEXT
+$TEXT
+                    Log-Pearson Type III
+#GROUP   26  TYPE TEXT
+$WINDOW Output (&FO) No graphic device
+$TEXT
+You have specified to output frequency plots to a graphics device.
+
+However, graphics is not currently available,
+thus no frequency plots will be generated.
+
+If you have GKS graphics available on your system,
+add the line "GRAPHS YES" (no quotes) to your TERM.DAT
+file to make graphics available to ANNIE/AIDE.
+#GROUP   27  TYPE PRM1
+$WINDOW Analyze (&FA) Time span
+$SCREEN
+
+  NOTICE:  Requested period for analysis (@bst - @bnd) is
+           outside the available record  (@gst - @gnd)
+           for data set @dsn.
+
+  What would you like to do? [@Action]
+
+           Reenter - dates for this data set
+              Skip - analysis of this data set
+           Abandon - analysis of this and remaining data sets
+$FIELD @Action
+_TYPE CHARACTER
+_PROTECT CORRECT
+_VALID REENTER, SKIP, ABANDON
+_DEFAULT REENTER
+_HELP
+Specify: Reenter to specify valid dates.
+            Skip to skip analysis of this data set and move on to
+                 analysis of the rest of the selected data sets.
+         Abandon to discontinue analysis of this and remaining data sets.
+$FIELD @gst
+_TYPE INTEGER
+_PROTECT PROTECT
+_RANGE 1 : 9999
+_HELP
+actual starting year of data
+$FIELD @gnd
+_TYPE INTEGER
+_PROTECT PROTECT
+_RANGE 1 : 9999
+_HELP
+actual ending year of data
+$FIELD @dsn
+_TYPE INTEGER
+_PROTECT PROTECT
+_RANGE 1 : 32000
+_HELP
+selected data set
+$FIELD @bst
+_TYPE INTEGER
+_PROTECT PROTECT
+_RANGE 1 : 9999
+_HELP
+requested starting year
+$FIELD @bnd
+_TYPE INTEGER
+_PROTECT PROTECT
+_RANGE 1 : 9999
+_HELP
+requested ending year
+#GROUP   28  TYPE PRM1
+$WINDOW Analyze (&FA) Time span
+$SCREEN
+
+  NOTICE:  Requested period of analysis is too short (< 4 years).
+           The available record for data set @dsn. is @gst - @gnd
+           The requested period for analysis was @bst - @bnd
+
+  What would you like to do? [@Action]
+
+           Reenter - dates for this data set
+              Skip - analysis of this data set
+           Abandon - analysis of this and remaining data sets
+$FIELD @Action
+_TYPE CHARACTER
+_PROTECT CORRECT
+_VALID REENTER, SKIP, ABANDON
+_DEFAULT REENTER
+_HELP
+Specify: Reenter to specify valid dates.
+            Skip to skip analysis of this data set and move on to
+                 analysis of the rest of the selected data sets.
+         Abandon to discontinue analysis of this and remaining data sets.
+$FIELD @gst
+_TYPE INTEGER
+_PROTECT PROTECT
+_RANGE 1 : 9999
+_HELP
+actual starting year of data
+$FIELD @gnd
+_TYPE INTEGER
+_PROTECT PROTECT
+_RANGE 1 : 9999
+_HELP
+actual ending year of data
+$FIELD @dsn
+_TYPE INTEGER
+_PROTECT PROTECT
+_RANGE 1 : 32000
+_HELP
+selected data set
+$FIELD @bst
+_TYPE INTEGER
+_PROTECT PROTECT
+_RANGE 1 : 9999
+_HELP
+requested starting year
+$FIELD @bnd
+_TYPE INTEGER
+_PROTECT PROTECT
+_RANGE 1 : 9999
+_HELP
+requested ending year
+#GROUP   29  TYPE TEXT
+$WINDOW Analyze (&FA) Record too short
+$TEXT
+Period of record for this data set is too short.
+It must span at least 4 years, thus this data set may not be analyzed.
+
+To skip this data set and continue analyzing any
+remaining data sets, use the 'Accept' command.
+
+If you wish to stop analyzing completely,
+use the 'Prev' command to return to the main Frequency menu.
+#GROUP   31  TYPE PRM1
+$SCREEN
+  For dsn @dsn.
+  Attributes SEASBG, SEADBG, SEASND, and SEADND were not found.
+  They define the season or year of the annual time series.
+
+  Please specify:
+
+            Beginning month and day [@begmonth] [@bd]
+               Ending month and day [@endmonth] [@ed]
+
+        Add attributes to data set? [@yn] (Yes or No)
+$FIELD @begmonth
+_TYPE CHARACTER
+_VALID JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER,
+   OCTOBER, NOVEMBER, DECEMBER
+_DEFAULT JANUARY
+_HELP
+ The beginning month of the season or year.  The climatic year, April
+ thru March, is commonly used for low flows.  The water year, October
+ thru September, is commonly used for high flows.
+$FIELD @bd
+_TYPE INTEGER
+_PROTECT CORRECT
+_RANGE 1 : 31
+_HELP
+ The beginning day of the season or year.
+$FIELD @endmonth
+_TYPE CHARACTER
+_VALID JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER,
+   OCTOBER, NOVEMBER, DECEMBER
+_DEFAULT DECEMBER
+_HELP
+ The ending month of the season or year.  The climatic year, April
+ thru March, is commonly used for low flows.  The water year, October
+ thru September, is commonly used for high flows.
+$FIELD @ed
+_TYPE INTEGER
+_PROTECT CORRECT
+_RANGE 1 : 31
+_HELP
+ The ending day of the season or year
+$FIELD @yn
+_TYPE CHARACTER
+_VALID YES, NO
+_DEFAULT NO
+_HELP
+ Enter YES to have the beginning and ending months of the season or year
+           of the annual time series added to the data set as attributes
+           SEASBG and SEASND.
+ Enter NO if you do not want the attributes added to the data set.
+$FIELD @dsn
+_TYPE INTEGER
+_PROTECT PROTECT
+_RANGE       1 : 32000
+_HELP
+ Number of the data set currently being analyzed.
+#GROUP   32  TYPE TEXT
+$TEXT
+                      Pearson Type III
+#GROUP   33  TYPE TEXT
+$WINDOW Analyze (&FA) No data
+$TEXT
+
+   Could not get data for dataset &.
+
+   WDM error code &.
+
+   Dataset will not be processed.
+#GROUP   34  TYPE TEXT
+$WINDOW Analyze (&FA)
+$TEXT
+Processing data-set number &.
+#GROUP   40  TYPE PRM1
+$WINDOW Results (&FAR)
+$SCREEN
+        Recurrence    Parameter         Recurrence    Parameter
+         interval       value            interval       value
+        ----------    ---------         ----------    ---------
+        @PRM01....      @PRM12          @PRM07....      @PRM18
+        @PRM02....      @PRM13          @PRM08....      @PRM19
+        @PRM03....      @PRM14          @PRM09....      @PRM20
+        @PRM04....      @PRM15          @PRM10....      @PRM21
+        @PRM05....      @PRM16          @PRM11....      @PRM22
+        @PRM06....      @PRM17 
+$FIELD @PRM01
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM02
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM03
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM04
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM05
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM06
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM07
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM08
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM09
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM10
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM11
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM12
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM13
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM14
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM15
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM16
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM17
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM18
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM19
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM20
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM21
+_TYPE REAL
+_PROTECT PROTECTED
+$FIELD @PRM22
+_TYPE REAL
+_PROTECT PROTECTED
+$HELP
+ These are the results for the indicated recurrence intervals.  These
+ values have not been adjusted for zero events.
+#GROUP   43  TYPE TEXT
+$TEXT
+ANNUAL NONEXCEEDANCE PROBABILITY, IN PERCENT
+#GROUP   44  TYPE TEXT
+$TEXT
+RECURRENCE INTERVAL IN YEARS
+#GROUP   45  TYPE TEXT
+$TEXT
+ANNUAL NONEXCEEDANCE PROBABILITY
+#GROUP   46  TYPE TEXT
+$TEXT
+ANNUAL EXCEEDANCE PROBABILITY, IN PERCENT
+#GROUP   47  TYPE TEXT
+$TEXT
+RECURRENCE INTERVAL IN YEARS
+#GROUP   48  TYPE TEXT
+$TEXT
+ANNUAL EXCEEDANCE PROBABILITY
+#GROUP   51  TYPE PRM2
+$WINDOW Analyze (&FA) Error
+$HEADER
+      Problem adding one or more attributes to the data set listed below.
+      Attributes with a 0 value were successfully added.  The most common
+      error is that there is not enough room in the data set (-103).
+
+                    dsn    MEANND    SDND   SKWND
+                  -----    ------  ------  ------
+$HELP
+MEANND - mean of logarithms, base 10, annual n-day high/low flow statistic
+  SDND - stand dev of logs,  base 10, annual n-day high/low flow statistic
+ SKWND - skew of logarithms, base 10, annual n-day high/low flow statistic
+$FIELD FIELD1
+_WIDTH  5
+_COLUMN 19
+_TYPE INTEGER
+_PROTECT PROTECTED
+$FIELD FIELD2
+_WIDTH  5
+_COLUMN 28
+_TYPE INTEGER
+_PROTECT PROTECTED
+$FIELD FIELD3
+_WIDTH  5
+_COLUMN 37
+_TYPE INTEGER
+_PROTECT PROTECTED
+$FIELD FIELD4
+_WIDTH  5
+_COLUMN 45
+_TYPE INTEGER
+_PROTECT PROTECTED
+#GROUP   52  TYPE PRM2
+$WINDOW Analyze (&FA) Error
+$HEADER
+      Problem adding one or more attributes to the data set listed below.
+      Attributes with a 0 value were successfully added.  The most common
+      error is that there is not enough room in the data set (-103).
+
+                    dsn    MEANVL  STDDEV  SKEWCF
+                  -----    ------  ------  ------
+$HELP
+MEANVL - mean, annual n-day high/low flow statistic
+STDDEV - standard deviation, annual n-day high/low flow statistic
+SKEWCF - skew, annual n-day high/low flow statistic
+$FIELD FIELD1
+_WIDTH  5
+_COLUMN 19
+_TYPE INTEGER
+_PROTECT PROTECTED
+$FIELD FIELD2
+_WIDTH  5
+_COLUMN 28
+_TYPE INTEGER
+_PROTECT PROTECTED
+$FIELD FIELD3
+_WIDTH  5
+_COLUMN 37
+_TYPE INTEGER
+_PROTECT PROTECTED
+$FIELD FIELD4
+_WIDTH  5
+_COLUMN 45
+_TYPE INTEGER
+_PROTECT PROTECTED
+#GROUP   53  TYPE PRM2
+$WINDOW Analyze (&FA) Error
+$HEADER
+      Problem adding one or more attributes to the data set listed below.
+      Attributes with a 0 value were successfully added.  The most common
+      error is that there is not enough room in the data set (-103).
+
+                            dsn    NUMZRO  NONZRO
+                          -----    ------  ------
+$HELP
+NUMZRO - number of zero values in the time series
+NONZRO - number of non-zero values in the time series
+$FIELD FIELD1
+_WIDTH  5
+_COLUMN 27
+_TYPE INTEGER
+_PROTECT PROTECTED
+$FIELD FIELD2
+_WIDTH  5
+_COLUMN 36
+_TYPE INTEGER
+_PROTECT PROTECTED
+$FIELD FIELD3
+_WIDTH  5
+_COLUMN 44
+_TYPE INTEGER
+_PROTECT PROTECTED
+#GROUP   54  TYPE PRM2
+$WINDOW Analyze (&FA) Error
+$HEADER
+      Problem adding one or more attributes to the data set listed below.
+      Attributes with a 0 value were successfully added.  The most common
+      error is that there is not enough room in the data set (-103).
+
+                            dsn     LDIST
+                          -----    ------
+$HELP
+LDIST - Type of distribution
+        LP3 - log Pearson type III
+        LP  - Pearson type III
+$FIELD FIELD1
+_WIDTH  5
+_COLUMN 27
+_TYPE INTEGER
+_PROTECT PROTECTED
+$FIELD FIELD2
+_WIDTH  5
+_COLUMN 36
+_TYPE INTEGER
+_PROTECT PROTECTED
+#GROUP   55  TYPE PRM2
+$WINDOW Analyze (&FA) Error
+$HEADER
+      Problem adding one or more attributes to the data set listed below.
+      Attributes with a 0 value were successfully added.  The most common
+      error is that there is not enough room in the data set (-103).
+
+                     dsn    SEASBG  SEADBG  SEASND  SEADND
+                   -----    ------  ------  ------  ------
+$HELP
+SEASBG - Beginning month of a user-defined season or year
+SEADBG - Beginning day of a user-defied season or year
+SEASND - Ending month of a user-defined season or year
+SEADND - Ending day of a user-defined season or year
+$FIELD FIELD1
+_WIDTH  5
+_COLUMN 20
+_TYPE INTEGER
+_PROTECT PROTECTED
+$FIELD FIELD2
+_WIDTH  5
+_COLUMN 29
+_TYPE INTEGER
+_PROTECT PROTECTED
+$FIELD FIELD3
+_WIDTH  5
+_COLUMN 37
+_TYPE INTEGER
+_PROTECT PROTECTED
+$FIELD FIELD4
+_WIDTH  5
+_COLUMN 45
+_TYPE INTEGER
+_PROTECT PROTECTED
+$FIELD FIELD5
+_WIDTH  5
+_COLUMN 53
+_TYPE INTEGER
+_PROTECT PROTECTED
+#GROUP   60  TYPE PRM2
+$WINDOW Analyze (&FA) Error
+$HEADER
+      Problem adding one or more attributes to the data set listed below.
+      The most common error is not enough room in the data set (-103).
+
+                            dsn     name   retcod
+                          -----    ------  ------
+$HELP
+See appendix A in the ANNIE manual for a description of the attributes.
+$FIELD FIELD1
+_WIDTH  5
+_COLUMN 27
+_TYPE INTEGER
+_PROTECT PROTECTED
+$FIELD FIELD2
+_WIDTH  6
+_COLUMN 36
+_TYPE CHARACTER
+_PROTECT PROTECTED
+$FIELD FIELD3
+_WIDTH  5
+_COLUMN 44
+_TYPE INTEGER
+_PROTECT PROTECTED
+  END DATA
+END CLU

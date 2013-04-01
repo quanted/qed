@@ -1,0 +1,132 @@
+
+
+
+U.S. Geological Survey                                   graph(1)
+
+
+
+NAME
+     graph - Interface to Graphical Kernel System (GKS)
+
+ABSTRACT
+     The GRAPH library contains a set of routines that have been
+     used to generate a range of plots in hydrologic
+     applications.  Graphics include time plots at scales of
+     minutes to years, x-y plots, and probability plots.  Non-
+     time axes can be arithmetic, logarithmic, or probability.
+     Probability plots with Gaussian transformations can be
+     fraction, percent, or recurrence interval.  The library was
+     developed using the Graphical Kernel System (GKS) standard
+     to provide portability.  The GRAPH library is used by ANNIE,
+     GLSNET, HSPEXP, HYSEP, PEAKFQ, SWSTAT, and other programs.
+
+     The GRAPH library is included in the LIBANNE distribution.
+     It requires the UTIL and STATS libraries from the LIBANNE
+     distribution.
+
+HISTORY
+     Version 4.0 2002/02/25 - The name of the lib library
+        distribution changed to libanne.  See libanne
+        documentation for details.
+
+     Version 3.1 1996/12/11 - Updates
+
+     Version 3.0 1996/03/01 - Include file names changed to lower
+        case.
+
+     Version 2.1 1994/08/11 - Updates
+
+     Version 2.0 1994/05/27 - General release
+
+     Version 1.0 1992 - General release, ported to UNIX platform.
+
+     NOTE: Version numbers and dates are for the entire LIBANNE
+           set of libraries.  A new version does not necessarily
+           indicate that all of the libraries have changed.
+
+SYSTEM REQUIREMENTS
+     GRAPH is written in Fortran 77 with the following extension:
+     use of include files. The GRAPH library requires STATS and
+     UTIL libraries.
+
+DOCUMENTATION
+     A subroutine reference guide is provided in the
+     distribution.
+
+SUPPORTING SOFTWARE
+     The  GRAPH library is written using the GKS standard.  A set
+     of routines that translates GKS calls to Interactive
+     Software Service's INTERACTER calls is included.  An
+
+
+
+                  Last change: 25 February 2002                 1
+
+
+
+
+
+
+U.S. Geological Survey                                   graph(1)
+
+
+
+     implementation of either GKS or INTERACTER is required to
+     use the libanne GRAPH library.
+
+     GKS libraries are available from a number of vendors.  Free
+     or shareware versions are available via anonymous ftp to:
+
+        ftp.zam.kfa-juelich.de in /pub/unix/graphics/gligks
+                                   gligks-4.5.[17 18].tar.gz
+
+                      (works under linux, sun, aix, osf, and
+                                   pc (Lahey FORTRAN))
+
+        unidata.ucar.edu in /pub/xgks
+
+CONTACTS
+     Operation and Distribution:
+        U.S. Geological Survey
+        Hydrologic Analysis Software Support Program
+        437 National Center
+        Reston, VA 20192
+
+        h2osoft@usgs.gov
+
+     Official versions of U.S. Geological Survey water-resources
+     analysis software are available for electronic retrieval via
+     the World Wide Web (WWW) at:
+
+                http://water.usgs.gov/software/
+
+     and via anonymous File Transfer Protocol (FTP) from:
+
+                water.usgs.gov (path: /pub/software).
+
+     The WWW page and anonymous FTP directory from which the
+     LIBANNE software can be retrieved are, respectively:
+
+                http://water.usgs.gov/software/libanne.html
+                              --and--
+                /pub/software/general/libanne
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  Last change: 25 February 2002                 2
+
+
+

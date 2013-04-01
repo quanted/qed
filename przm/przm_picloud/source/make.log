@@ -1,0 +1,1316 @@
+gfortran -g  -c general.f90 -o general.o
+gfortran -g  -c i_errchk.f90 -o i_errchk.o
+gfortran -g  -c wind.f90 -o wind.o
+gfortran -g  -c canopy.f90 -o canopy.o
+gfortran -g  -c chem.f90 -o chem.o
+ In file CPEST.INC:63
+
+     Included at chem.f90:17
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   &
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at chem.f90:17
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   &
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at chem.f90:17
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   &
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at chem.f90:17
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   &
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+gfortran -g  -c m_readvars.f90 -o m_readvars.o
+gfortran -g  -c cnfuns.f90 -o cnfuns.o
+gfortran -g  -c datemod.f90 -o datemod.o
+gfortran -g  -c debug.f90 -o debug.o
+gfortran -g  -c cropdate.f90 -o cropdate.o
+gfortran -g  -c debug_cn.f90 -o debug_cn.o
+gfortran -g  -c f2kcli.f90 -o f2kcli.o
+gfortran -g  -c floatcmp.f90 -o floatcmp.o
+gfortran -g  -c lambertw.f90 -o lambertw.o
+gfortran -g  -c furrow.f90 -o furrow.o
+gfortran -g  -c infnan.f90 -o infnan.o
+gfortran -g  -c inivar.f90 -o inivar.o
+gfortran -g  -c ioluns.f90 -o ioluns.o
+gfortran -g  -c iosubs.f90 -o iosubs.o
+gfortran -g  -c utils.f90 -o utils.o
+gfortran -g  -c fcscnc.f -o fcscnc.o
+ In file CPEST.INC:63
+
+     Included at fcscnc.f:14
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at fcscnc.f:14
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at fcscnc.f:14
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at fcscnc.f:14
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at fcscnc.f:64
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at fcscnc.f:64
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at fcscnc.f:64
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at fcscnc.f:64
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+gfortran -g  -c przm3.f -o przm3.o
+gfortran -g  -c rsexec.f -o rsexec.o
+gfortran -g  -c rsinp1.f -o rsinp1.o
+ In file rsinp1.f:2368
+
+          IF(I-J) 90,20,40                                              
+                                                                       1
+Warning: Obsolete: arithmetic IF statement at (1)
+ In file rsinp1.f:2380
+
+            IF(BBT(I,J)-P) 72,71,71                                     
+                                                                       1
+Warning: Obsolete: arithmetic IF statement at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp1.f:2529
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp1.f:2529
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp1.f:2529
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp1.f:2529
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+gfortran -g  -c rsinp2.f -o rsinp2.o
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:307
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:307
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:307
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:307
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:1633
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:1633
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:1633
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:1633
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:1834
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:1834
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:1834
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:1834
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:1902
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:1902
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:1902
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:1902
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:2511
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:2511
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:2511
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:2511
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:2639
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:2639
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:2639
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:2639
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:3365
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:3365
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:3365
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:3365
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:3662
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:3662
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:3662
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:3662
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:3970
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:3970
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:3970
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:3970
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:4279
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:4279
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:4279
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:4279
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:4611
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:4611
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:4611
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsinp2.f:4611
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+gfortran -g  -c rsinp3.f -o rsinp3.o
+gfortran -g  -c rsmcar.f -o rsmcar.o
+gfortran -g  -c rsmisc.f -o rsmisc.o
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:83
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:83
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:83
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:83
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:241
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:241
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:241
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:241
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:555
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:555
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:555
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:555
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:684
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:684
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:684
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:684
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:815
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:815
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:815
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsmisc.f:815
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+gfortran -g  -c rsprz1.f -o rsprz1.o
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:67
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:67
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:67
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:67
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file rsprz1.f:829
+
+   4  IF  (SAYR - IY)     820, 6,900                                    
+                                                                       1
+Warning: Obsolete: arithmetic IF statement at (1)
+ In file rsprz1.f:830
+
+   6  IF (SAVAL - JULDAY) 820,10,900                                    
+                                                                       1
+Warning: Obsolete: arithmetic IF statement at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:771
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:771
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:771
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:771
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:1395
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:1395
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:1395
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:1395
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2084
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2084
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2084
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2084
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2150
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2150
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2150
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2150
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2297
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2297
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2297
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2297
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2537
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2537
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2537
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2537
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2900
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2900
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2900
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz1.f:2900
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+gfortran -g  -c rsprz2.f -o rsprz2.o
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:134
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:134
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:134
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:134
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:419
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:419
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:419
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:419
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:692
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:692
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:692
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:692
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:985
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:985
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:985
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:985
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:1259
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:1259
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:1259
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:1259
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:1762
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:1762
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:1762
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:1762
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:1904
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:1904
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:1904
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:1904
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:1970
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:1970
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:1970
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:1970
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:2064
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:2064
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:2064
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz2.f:2064
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+make: Circular rsprz3.o <- rsprz3.o dependency dropped.
+gfortran -g  -c rsprz3.f -o rsprz3.o
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:36
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:36
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:36
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:36
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:641
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:641
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:641
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:641
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:733
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:733
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:733
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:733
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:870
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:870
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:870
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:870
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:1901
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:1901
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:1901
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:1901
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:2509
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:2509
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:2509
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprz3.f:2509
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+gfortran -g  -c rsprzn.f -o rsprzn.o
+ In file CPEST.INC:63
+
+     Included at rsprzn.f:1979
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprzn.f:1979
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprzn.f:1979
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprzn.f:1979
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprzn.f:2997
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'roflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprzn.f:2997
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'rzflux' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprzn.f:2997
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'ttrflx' in COMMON 'pstr41' at (1)
+ In file CPEST.INC:63
+
+     Included at rsprzn.f:2997
+
+      COMMON /PSTR41/ PLDkrt(3) , FEXtrc(3) , ELTerm(3) , FOLpst(3) ,   
+                    1
+Warning: Padding of 4 bytes required before 'latflx' in COMMON 'pstr41' at (1)
+gfortran -g  -c rsutil.f -o rsutil.o
+gfortran -g  -c rsvado.f -o rsvado.o
+gfortran  -o przm3123.exe canopy.o chem.o cnfuns.o cropdate.o datemod.o debug.o debug_cn.o f2kcli.o floatcmp.o furrow.o general.o i_errchk.o infnan.o inivar.o ioluns.o iosubs.o lambertw.o m_readvars.o utils.o wind.o fcscnc.o przm3.o rsexec.o rsinp1.o rsinp2.o rsinp3.o rsmcar.o rsmisc.o rsprz1.o rsprz2.o rsprz3.o rsprzn.o rsutil.o rsvado.o -L../libanne4.0_gfortran/lib -lwdm -ladwdm -lutil

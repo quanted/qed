@@ -1,0 +1,295 @@
+
+ parm__.seq version: parmgli.seq
+ building wdm files: message
+
+
+ building the generic message file message.wdm
+
+ Enter the wdm file name:
+
+ Could not open file message.wdm                                                     
+ Do you want to: Create it, 
+                 Retry providing the name, or
+                 Quit?
+ Enter C, R, or Q:
+
+ Successful creation of WDM file message.wdm                                                     
+
+
+ Generally, attribute data sets are found in 
+ message wdm files, not in user's data wdm
+ files.  Do you want to include attribute 
+ data sets in message.wdm                                                     
+                 Yes - include attributes
+                  No - do not include attributes
+ Enter Y or N:
+
+ Enter the path name of the directory that
+ contains the attribute sequential files:
+ 
+ Importing attribute file adwdm/attr001.seq                                               
+ General information from the IMPORT file:
+ DATE
+ WDMSFL
+ SYSTEM
+ COMMENT
+   test export
+ END COMMENT
+
+ Importing DSN/CLU number     5.
+           attributes complete
+
+ *** ERROR:  problems with import, return code =  -151
+             Review file ERROR.FIL for details.
+
+ Import of DSN/CLUs complete.
+
+ Importing attribute file adwdm/attr051.seq                                               
+ General information from the IMPORT file:
+ DATE
+ WDMSFL
+ SYSTEM
+ COMMENT
+   attributes 51 - 100
+ END COMMENT
+
+ Importing DSN/CLU number     6.
+           attributes complete
+           data complete -- no problems 
+
+ Import of DSN/CLUs complete.
+
+ Importing attribute file adwdm/attr101.seq                                               
+ General information from the IMPORT file:
+ DATE
+ WDMSFL
+ SYSTEM
+ COMMENT
+   attributes 101 - 150
+ END COMMENT
+
+ Importing DSN/CLU number     7.
+           attributes complete
+           data complete -- no problems 
+
+ Import of DSN/CLUs complete.
+
+ Importing attribute file adwdm/attr151.seq                                               
+ General information from the IMPORT file:
+ DATE
+ WDMSFL
+ SYSTEM
+ COMMENT
+   attributes 151 - 200
+ END COMMENT
+
+ Importing DSN/CLU number     8.
+           attributes complete
+           data complete -- no problems 
+
+ Import of DSN/CLUs complete.
+
+ Importing attribute file adwdm/attr201.seq                                               
+ General information from the IMPORT file:
+ DATE
+ WDMSFL
+ SYSTEM
+ COMMENT
+   attributes 201 - 250
+ END COMMENT
+
+ Importing DSN/CLU number     9.
+           attributes complete
+           data complete -- no problems 
+
+ Import of DSN/CLUs complete.
+
+ Importing attribute file adwdm/attr251.seq                                               
+ General information from the IMPORT file:
+ DATE
+ WDMSFL
+ SYSTEM
+ COMMENT
+   attributes 251 - 300
+ END COMMENT
+
+ Importing DSN/CLU number    10.
+           attributes complete
+           data complete -- no problems 
+
+ Import of DSN/CLUs complete.
+
+ Importing attribute file adwdm/attr301.seq                                               
+ General information from the IMPORT file:
+ DATE
+ WDMSFL
+ SYSTEM
+ COMMENT
+   attributes 301 - 350
+ END COMMENT
+
+ Importing DSN/CLU number    11.
+           attributes complete
+           data complete -- no problems 
+
+ Import of DSN/CLUs complete.
+
+ Importing attribute file adwdm/attr351.seq                                               
+ General information from the IMPORT file:
+ DATE
+ WDMSFL
+ SYSTEM
+ COMMENT
+   attributes 351 - 400
+ END COMMENT
+
+ Importing DSN/CLU number    12.
+           attributes complete
+           data complete -- no problems 
+
+ Import of DSN/CLUs complete.
+
+ Importing attribute file adwdm/attr401.seq                                               
+ General information from the IMPORT file:
+ DATE
+ WDMSFL
+ SYSTEM
+ COMMENT
+   attributes 401 - 426
+ END COMMENT
+
+ Importing DSN/CLU number    13.
+           attributes complete
+           data complete -- no problems 
+
+ Import of DSN/CLUs complete.
+
+
+ Do you want to: Import data to your wdm file,
+                 Export data from your wdm file, or
+                 Return to the operating system?
+ Enter I, E, or R:
+
+ Enter name of existing archive file to be imported:
+
+ Importing from file aide/message.seq                                                
+
+ General information from the IMPORT file:
+ DATE
+ WDMSFL
+ SYSTEM
+ COMMENT
+   General information and parameter groups for ANNIE-IDE utilities
+ END COMMENT
+
+ Importing DSN/CLU number     1.
+           attributes complete
+           data complete -- no problems 
+ Importing DSN/CLU number     2.
+           attributes complete
+           data complete -- no problems 
+
+ Import of DSN/CLUs complete.
+
+
+ Do you want to: Import data to your wdm file,
+                 Export data from your wdm file, or
+                 Return to the operating system?
+ Enter I, E, or R:
+
+ Enter name of existing archive file to be imported:
+
+ Importing from file waide/awfeb.seq                                                 
+
+ General information from the IMPORT file:
+ DATE
+ WDMSFL
+ SYSTEM
+ COMMENT
+   Message file clusters for find/edit data-set buffer utilities (AWFEB.F77)
+ END COMMENT
+
+ Importing DSN/CLU number    24.
+           attributes complete
+           data complete -- no problems 
+
+ Import of DSN/CLUs complete.
+
+
+ Do you want to: Import data to your wdm file,
+                 Export data from your wdm file, or
+                 Return to the operating system?
+ Enter I, E, or R:
+
+ Enter name of existing archive file to be imported:
+
+ Importing from file waide/prwfil.seq                                                
+
+ General information from the IMPORT file:
+ DATE
+ WDMSFL
+ SYSTEM
+ COMMENT
+   Message file clusters used by code group PRWFIL.F77
+ END COMMENT
+
+ Importing DSN/CLU number    25.
+           attributes complete
+           data complete -- no problems 
+
+ Import of DSN/CLUs complete.
+
+
+ Do you want to: Import data to your wdm file,
+                 Export data from your wdm file, or
+                 Return to the operating system?
+ Enter I, E, or R:
+
+ Enter name of existing archive file to be imported:
+
+ Importing from file waide/atinfo.seq                                                
+
+ General information from the IMPORT file:
+
+ Importing DSN/CLU number    29.
+           attributes complete
+           data complete -- no problems 
+
+ Import of DSN/CLUs complete.
+
+
+ Do you want to: Import data to your wdm file,
+                 Export data from your wdm file, or
+                 Return to the operating system?
+ Enter I, E, or R:
+
+ Enter name of existing archive file to be imported:
+
+ Importing from file aide/parmgli.seq                                                
+
+ General information from the IMPORT file:
+ DATE
+ WDMSFL
+ SYSTEM
+ COMMENT
+   clu  grpnam  description
+   ___  ______  ___________________________________________
+     3  uparms  term.dat parameters for computer type UNIX
+                using gligks
+     4  emife   instruct window and command line text
+ END COMMENT
+
+ Importing DSN/CLU number     3.
+           attributes complete
+           data complete -- no problems 
+ Importing DSN/CLU number     4.
+           attributes complete
+           data complete -- no problems 
+
+ Import of DSN/CLUs complete.
+
+
+ Do you want to: Import data to your wdm file,
+                 Export data from your wdm file, or
+                 Return to the operating system?
+ Enter I, E, or R:

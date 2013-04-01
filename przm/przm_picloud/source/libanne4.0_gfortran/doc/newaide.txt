@@ -1,0 +1,2149 @@
+                                                         January 25, 1996
+                                                         September 26, 1997
+
+   Enhancements to the ANNIE Interactive Development Environment (AIDE)
+
+
+This file documents new features that have been added to the ANNIE
+Interactive Development Environment (AIDE) library.  These features
+are not contained in the original documentation of AIDE:
+
+Kittle, J.L. Jr., Hummel, P.R., and Imhoff, J.C., 1989, ANNIE-IDE, A
+   system for developing interactive user interfaces for environmental
+   models (Programmers Guide):  Environmental  Research Laboratory,
+   U.S Environmental Protection Agency, Athens, GA, EPA/600/3-89/034,
+   166 p.
+
+=================================================================== newaide_1
+
+             New features added to AIDE from 12/91 to 1/92
+
+
+During the months of December 1991 and January 1992, four significant features
+were added to the AIDE library.  The first is the ability to define a menu
+screen in the same manner as a data screen, that is, position options and
+additional text anywhere on the screen.  The second is the addition of an
+'option' type data field which may be toggled on and off.  The third is a new
+method for coding 1-dimensional data screens.  The fourth is enhancements to
+the tutorial interaction capabilities.  Each feature will be discussed in
+detail and documentation of application programmer interface (new and modified
+subroutines), sequential file definition, and data structure modifications will
+be included.
+
+
+New Menu Screens
+----------------
+
+Original Method
+
+The original method of menu screen definition had the application programmer
+define a title and the menu option keywords (with optional descriptions).  AIDE
+then took this information and built the screen with the title in the first
+row, a blank line, and then the option keywords placed in one or more columns
+(depending on the number of options) on ensuing rows.  Any additional text
+could only be placed above the title and options and had to be provided by a
+separate call to a print text type routine (with its separate cluster and group
+numbers) and a call to ZMNSST to save the existing text before generating the
+menu screen.
+
+
+Enhanced Method
+
+This new feature allows the application programmer to define the screen in the
+same manner as a 1-dimensional data screen.  Thus, text may be placed anywhere
+on the screen (rows 1 through 16) and options may be positioned in any way
+desired (rows 1 through 10).
+
+
+Application Programmer Interface
+
+The application programmer interface for menu screens remains the same.  Thus,
+a call to QRESP with the same arguments will return the order number of the
+menu option selected and a call to QRESPS will return the order number and the
+name of the menu option selected.
+
+
+Screen Definition Changes
+
+The major change is in the screen definition (sequential) file.  In place of
+the $TITLE directive, the application programmer may now use the $SCREEN
+directive.  Only one of these two directives may be used (if both are in the
+sequential file, MESSIE or WDIMEX will use the first one encountered).  Text
+may be placed anywhere on records 1 through 16.  Options may be placed anywhere
+on records 1 through 10 (this due to the fact that on a small data window only
+10 records are displayed and any highlighting must be contained within the data
+window).  To position an option, place the option in the desired location with
+the @ character preceding it to indicate that this is a menu option.  Since
+the @ character will not appear on the screen during run-time, this character
+represents the actual start of the option field (i.e. the option name will be
+moved left one character to overwrite the @ character).
+
+
+Overall Screen Definition
+
+To minimize the number of changes, the remainder of the menu screen definition
+is the same as the original method.  Thus, options are defined using the
+$OPTION directive with the option name following on the same record (the
+preceeding @ character is not required in the OPTION directive).  Descriptions
+for the options may still be provided using the _DESC subdirective.  If
+provided, descriptions will be filled in on the screen text as available (i.e.
+no existing screen text in the $SCREEN directive will be overwrote by a
+description from the _DESC subdirective).  The $LENGTH directive is still
+required to define the space needed in the response buffer to store the options
+and to define where the option description (if provided) should be placed
+(option description starts $LENGTH characters after the option keyword).
+Should the application programmer wish to override where the option description
+is placed, they may do so by placing an ! character in the position they wish
+the description to start.  The $DEFAULT directive is still valid, but the
+$COLENGTH and $WIDTH directives are not valid for the new type of menu screen.
+
+
+Sample Screen Definition
+
+The following is an example of a sequential file for the new menu screen
+definition:
+
+#GROUP    1  TYPE MENU
+$SCREEN
+                                  ANNIE/WDM
+                        November 1991 <beta> version
+  Select an option.
+
+                     @File   !
+
+  @Graphics                              @Datasets
+  @Statistics                            @Archive
+
+                     @Return !
+$DEFAULT   1
+$LENGTH   10
+$OPTION File
+_DESC - operate on WDM file
+$OPTION Graphics
+_DESC - plot WDM or other data
+$OPTION Statistics
+_DESC - do selected analyses
+$OPTION Datasets
+_DESC - work with WDM data sets
+$OPTION Archive
+_DESC - import/export WDM data
+$OPTION Return
+_DESC - to operating system
+$HELP
+  If you encounter bugs or problems, send a complete
+  description of the problem to Kate Flynn and/or Alan Lumb,
+  USGS, 415 National Center, Reston VA 22092.
+  (KMFLYNN or AMLUMB if on the USGS PRIME)
+$WINDOW Opening screen
+
+
+Resulting Screen
+
+The following is what would appear in the data window if the above sample
+screen definition were used for a menu screen:
+
++-Opening screen---------------------------------------------------------------+
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                  ANNIE/WDM                                   |
+|                        November 1991 <beta> version                          |
+|  Select an option.                                                           |
+|                                                                              |
+|                     File   - operate on WDM file                             |
+|                                                                              |
+|  Graphics   - plot WDM or other data    Datasets   - work with WDM data sets |
+|  Statistics - do selected analyses      Archive    - import/export WDM data  |
+|                                                                              |
+|                     Return - to operating system                             |
+|                                                                              |
+|                                                                              |
+|                                                                              |
++------------------------------------------------------------------------------+
+
+
+In the above example, the use of the ! character lines up the descriptions for
+the File and Return options and the space between the option keyword and the
+description is less than the space that would exist if the description were
+positioned automatically.
+
+
+Transition to Enhanced Menu Screen
+
+All of the enhanced code related to menu screens is completely upward
+compatible and requires no changes to existing application code or screen
+definition files.  Changes to the screen definition file are required if the
+application programmer desires to use an enhanced menu screen.
+
+
+Suggested Uses
+
+There are a number of uses for the new type of menu screen which will help to
+improve interaction with menu screens.  One is the ability to add text anywhere
+on the menu screen to further clarify the screen as a whole or options on the
+screen.  Another is the ability to group (or cluster) related menu options.
+This may be used to indicate a group of options performs tasks which are
+different from other options.  For example, a menu screen might contain some
+options which must be selected before other options.  Grouping the required
+options together and labeling them with text indicating they are required
+would make the menu much clearer to a user unfamiliar with the program.
+
+
+Data Structure Changes
+
+The following variables have been added to the common block CQRSPI which
+resides in the include file CQRSP.INC:
+
+ Variable    Type/Size       Description
+ --------    ---------       -----------
+ ZOPLIN      Int array (64)  Line number in screen text for each menu option
+ ZOPCOL      Int array (64)  Column number in screen text for each menu option
+ ZOPLEN      Int array (64)  Length to highlight for each menu option
+
+
+
+
+Option Type Data Fields
+-----------------------
+
+General Description
+
+A data field of type option is one which has only two possible values: on or
+off.  When editing, the field may be toggled between these two values by
+pressing the space bar.  The option fields on a screen are grouped together in
+one or more Sets.  The application programmer defines how many (or how few)
+option fields may be selected (toggled on) within a set.  Set numbers must be
+ordered sequentially 1 through n, where n is the total number of sets on a
+screen.  If an option field is toggled on, its order number within the set is
+returned to the application program.
+
+
+Conditionals
+
+The application programmer may specify 'conditionals' for the option fields.  A
+conditional sets the values of other option fields (to a specified value) based
+on the value of the current option field.  For example, it could be defined
+that if option field number 1 is toggled on, option field number 2 should also
+be toggled on and option field number 3 should be toggled off.  This feature
+produces the ability to define 'All' option fields.  An All field can be
+defined to turn on all of the option fields within a set (or the whole screen).
+Although an All field is an actual data field, it can be defined so that no
+value is ever returned from it to the application program.  This is done by
+assigning All fields a set number of 0.
+
+
+Hidden Fields
+
+Option type fields may also be associated with hidden fields.  The application
+programmer may specify that if an option field has a specified value, another
+field (of any type) on the screen should be hidden.  The application programmer
+must define a box which encompasses the data field and its associated text.
+This portion of the screen will then be hidden or displayed depending on the
+option field's value.
+
+
+Application Programmer Interface
+
+To combine option type fields with other type fields, the new method of coding
+a 1-dimensional data screen must be used.  This method is described in the
+third feature section.  The routine to edit a screen of only option type fields
+is as follows:
+
+      SUBROUTINE   QRESPO
+     I                   (MESSFL,SCLU,SGRP,OPCNT,OPLEN,MXSEL,MNSEL,
+     M                    OPVAL)
+C
+C     + + + PURPOSE + + +
+C     Perform option type field only data screen.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   MESSFL,SCLU,SGRP,OPCNT,OPLEN,
+     1          MXSEL(OPCNT),MNSEL(OPCNT),OPVAL(OPLEN)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     MESSFL - Fortran unit number for message file
+C     SCLU   - cluster number on message file
+C     SGRP   - group number on message file
+C     OPCNT  - number of sets of options on screen
+C     OPLEN  - total number of options which may be selected from screen
+C     MXSEL  - maximum number of options which may be selected per set
+C     MNSEL  - minimum number of options which may be selected per set
+C     OPVAL  - array of order numbers, within sets, of selected fields
+
+For each set of option fields, a maximum and minimum number of selections
+(fields toggled on) is specified.  OPLEN is the summation of the maximum number
+of selections for each set.  The OPVAL array contains the order number within
+the set of the option fields selected.  For example, say fields 1 through 4 are
+in set number 1 and fields 5 through 10 are in set number 2 and that up to
+three options may be selected from each set.  If fields 1, 3, 6, 8, and 10 are
+toggled on, the OPVAL array would be returned as follows:
+
+  OPVAL(1)= 1
+  OPVAL(2)= 3
+  OPVAL(3)= 0
+  OPVAL(4)= 2
+  OPVAL(5)= 4
+  OPVAL(6)= 6
+
+
+Sample Application
+
+The following is a sample of code using the routine described above (QRESPO) to
+generate a screen of option fields:
+
+C     set number of option sets
+      OPCNT= 2
+C     set number of allowable option responses
+      OPLEN= 6
+C     set min and max number of options to select for each set
+      I= 1
+      CALL ZIPI (OPCNT,I,MNSEL)
+      I= 3
+      CALL ZIPI (OPCNT,I,MXSEL)
+C     set current value of options fields,
+C     start with field 1 of each set toggled on
+      OPVAL(1)= 1
+      OPVAL(2)= 0
+      OPVAL(3)= 0
+      OPVAL(4)= 1
+      OPVAL(5)= 0
+      OPVAL(6)= 0
+      SCLU = 24
+      SGRP = 2
+      CALL QRESPO (MESSFL,SCLU,SGRP,OPCNT,OPLEN,MXSEL,MNSEL,
+     M             OPVAL)
+
+
+Screen Definition Changes
+
+Many new screen definition subdirectives (under the $FIELD directive) have been
+added to implement the option type field features.  The _TYPE and _DEFAULT
+subdirectives are still used to specify the field type and default value,
+respectively. New keywords following them are used to specify new interactions.
+The _SET, _WIDTH, _BOX, _ONOFF, _ONON, _OFFON, _OFFOFF, and _HIDE subdirectives
+are all new for 1-dimensional data screens.  The modified and new subdirectives
+are defined in the table that follows.
+
+  POS indicates where to specify value for directive as follows:
+       1) nxt - on following records
+       2) aft - text after directive (same record)
+       3) afi - integer after directive (same record)
+       4) flg - flag, no value needed
+
+  ID calculated by MESSIE (WDIMEX), not specified by the application programmer.
+
+  KEYWORD   POS ID    NOTES
+  -------   --- --    -----
+  $FIELD    aft  2    name of field, must match name in $SCREEN (including '@',
+                      excluding '.'), maximum recognized field name length is
+                      8 characters
+
+  _TYPE     aft  3    data type - valid values are INTEGER, REAL, DOUBLE
+                      PRECISION, CHARACTER, and OPTION (type must be specified
+                      before any other subdirectives under $FIELD)
+
+  _SET      afi 21a   set number to which this option belongs, required for
+                      OPTION type fields, use 0 for field which will not return
+                      a value (All field), otherwise set numbers must be ordered
+                      sequentially from 1 to number of sets for the screen
+
+  _WIDTH    afi 21d   for OPTION type field only, width of text to highlight for
+                      this field, useful if text desired to highlight is longer
+                      than field name, addition of the keyword QUIET (ID 21e)
+                      after the integer value will keep the field name from
+                      being displayed
+
+  _BOX      flg 21f   for OPTION type field only, highlight character position
+                      where on/off toggle is indicated (whether editing this
+                      field or not)
+
+  * Note: the following subdirectives should be specified after the above
+          subdirectives
+
+  _ONOFF    aft 22    for OPTION type field only, names of other option type
+                      fields (including '@') which are to be toggle off if
+                      this field is toggled on
+
+  _ONON     aft 22    for OPTION type field only, names of other option type
+                      fields (including '@') which are to be toggle on if
+                      this field is toggled on
+
+  _OFFON    aft 22    for OPTION type field only, names of other option type
+                      fields (including '@') which are to be toggle on if
+                      this field is toggled off
+
+  _OFFOFF   aft 22    for OPTION type field only, names of other option type
+                      fields (including '@') which are to be toggle off if
+                      this field is toggled off
+
+  _HIDE     aft 23    line of text containing the following (in order given):
+                      condition of this field (either ON or OFF) for which
+                      other field is to be hidden, name of other field to be
+                      hidden (including '@'), 4 integer values defining the box
+                      of text to hide (in this order) - upper left corner row
+                      number, upper left corner column number, lower right
+                      corner row number, lower right corner column number
+
+
+Sample Screen Definition
+
+#GROUP    2  TYPE PRM1
+$SCREEN
+
+  Select a plot type.              Select a plotting device.       @ All
+    @ Logarithmic                    @ Screen
+    @ Arithmetic                     @ Printer
+    @ Other                          @ Plotter
+
+    @ Auxiliary axis
+
+
+$FIELD @ Log
+_TYPE OPTION
+_SET 1
+_WIDTH 13
+_ONOFF  @ Arith
+_OFFON  @ Arith
+$FIELD @ Arith
+_TYPE OPTION
+_SET 1
+_WIDTH 12
+_ONOFF  @ Log
+_OFFON  @ Log
+_HIDE OFF @Aux 7 5 7 21
+$FIELD @ Other
+_TYPE OPTION
+_SET 1
+$FIELD @ Aux
+_TYPE OPTION
+_SET 1
+_WIDTH 17
+$FIELD @ All
+_TYPE OPTION
+_SET 0
+_BOX
+_ONON @ Screen, @ Print, @ Plot
+$FIELD @ Screen
+_TYPE OPTION
+_SET 2
+_OFFOFF @ All
+$FIELD @ Print
+_TYPE OPTION
+_SET 2
+_WIDTH 9
+_OFFOFF @ All
+$FIELD @ Plot
+_TYPE OPTION
+_SET 2
+_WIDTH 9
+_OFFOFF @ All
+$WINDOW Plot Test
+
+
+Resulting Sample Screen
+
+The following is what would appear in the data window if the above sample
+code and screen definition were used for an option only data screen:
+
++-Plot Test--------------------------------------------------------------------+
+|                                                                              |
+| Select a plot type.              Select a plotting device.       _ All       |
+|   # Logarithmic                    # Screen                                  |
+|   _ Arithmetic                     _ Printer                                 |
+|   _ Other                          _ Plotter                                 |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
++------------------------------------------------------------------------------+
+
+Should the user toggle the Arithmetic field on, the Logarithmic field would be
+toggled off and the Auxilliary axis field would be displayed.  If the user
+toggles on the All field, the Screen, Printer, and Plotter fields would all be
+toggled on.  The _BOX subdirective for the All field dictates that the
+character where the on/off toggle is indicated will always be highlighted.
+
+
+Data Structure Changes
+
+The following changes have been made to the common block CSCREC which resides
+in include file CSCREN.INC:
+
+ Variable    Type/Size     Change   Description
+ --------    ---------     ------   -----------
+ FDNAME      C*8 arr (30)  Removed  names for data fields, variable removed
+ FTO         C*1           Added    constant indicating option type data field
+
+The following describes the contents of new include file CZOPTN.INC:
+
+     Common variables for Option type data fields
+
+ Parameters
+   MXCON   value = 50   maximum number of conditionals for a screen
+
+ Variables for common block CZOPTN:
+ Variable    Type/Size       Description
+ --------    ---------       -----------
+ OPSET       Int arr (30)    Set number for field
+ OPSTNO      Int arr (30)    Order number within set for field
+ OPDEF       Int arr (30)    Default value (0 or 1) for field
+ OPBOX       Int arr (30)    Flag indicating to highlight toggle character
+ OPMXSL      Int arr (30)    Maximum number of selections for each set
+ OPMNSL      Int arr (30)    Minimum number of selections for each set
+ OPSVAL      Int arr (30)    Array of options selected
+ CURSEL      Int arr (30)    Number of options selected for each set
+ OPONOF      Int arr (30)    Array of conditional counters/pointers for field
+ ONFTFL      Int arr(MXCON)  Array of target fields for conditionals
+ ONFTVL      Int arr(MXCON)  Array of target field values for conditionals
+
+
+The following describes the contents of new include file CZHIDE.INC:
+
+     Common variables for hiding data fields based on other fields values
+
+ Parameters
+      INTEGER    MXHID
+      PARAMETER (MXHID=10)
+
+ Variables for common block CZHIDE:
+ Variable    Type/Size       Description
+ --------    ---------       -----------
+ NUMHID      Int             Number of hidden fields
+ HIDFLD      Int arr(MXHID)  Source field number upon which hiding is based
+ HIDBOX      Int arr(MXHID)  Word containing upper left and lower right corners
+                             of box to hide
+ HIDVAL      Int arr(MXHID)  Value of source field for hiding other field
+ HIDTFL      Int arr(MXHID)  Target field to hide
+ HIDFLG      Int arr(MXHID)  array of flags indicating if field is hidden or not
+
+
+
+
+New Method for Coding 1-Dimensional Data Screens
+------------------------------------------------
+
+Original Method
+
+The original method of coding a 1-dimensional data screen involves calling one
+of a large family of routines with arguments for a combination of integer,
+real, double precision (sometimes), and character data.  A text buffer of 80
+characters is also passed as an argument to supply and retrieve values.  If the
+sum of all of the field lengths on the screen exceeds 80, a special version of
+the above routines has to be called to dimension the text buffer.  One call to
+these routines handles four basic functions:  retrieving the screen information
+from the message file, supplying the initial data values to the screen, allow
+editing the screen of data, and retrieving the edited values from the screen.
+However, in exchange for handling several functions with one call, the
+programmer often sacrifices good coding style and clarity.  For example, if a
+screen contains only integer and character data, the programmer must supply
+'dummy' versions of the arguments for the number of double precision and
+character fields and their value arrays (even though there are no character or
+double precision fields).
+
+
+Enhanced Method
+
+The new method of coding a 1-dimensional data screen involves making separate
+calls to perform each of the four functions (discussed above) that the original
+routines performed.  Thus, separate routines have been developed to retrieve the
+screen information from the message file (Q1INIT), supply the initial data
+values to the screen (QSETI, QSETR, etc..), allow editing of the screen of data
+values (Q1EDIT), and retrieve the edited values from the screen (QGETI, QGETR,
+etc..).  Although this will often increase the amount of code, the code will be
+significantly clearer and unused ('dummy') arguments will no longer exist.  The
+routines to set the initial data values and retrieve the edited values reside
+in a new code group called QTSTGT.F77.  The new routines for retrieving the
+screen information from the message file and allowing editing of the screen of
+data values have been placed in the existing code group Z0UTIL.F77.
+
+
+Application Programmer Interface
+
+Retrieve Screen Information
+
+The routine to retrieve the screen information from the message file must be
+the first call made when coding for a 1-dimensional data screen.  The new
+routine is as follows:
+
+C
+C
+C
+      SUBROUTINE   Q1INIT
+     I                   (MESSFL,SCLU,SGRP)
+C
+C     + + + PURPOSE + + +
+C     Set values in common for a 1-dimensional data screen
+C     from information off the message file.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   MESSFL,SCLU,SGRP
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     MESSFL - Fortran unit number for message file
+C     SCLU   - cluster number on message file
+C     SGRP   - group number on message file
+
+
+Set Initial Values
+
+The next call (or calls) for coding a 1-dimensional data screen is to set the
+initial values for the data fields.  A separate call is required for each type
+of data field on the screen (e.g. if screen contains integer and real data, two
+calls must be made to set the integer and real values).  Unlike the other 3
+functions involved in coding a 1-dimensional data screen, the programmer is not
+required to make the calls to set the initial data values.  If these calls are
+omitted, the default values from the screen definition file are used as the
+initial data values.
+
+
+Set Initial Values - Numeric
+
+For numeric data (integer, real, double precision), a set of two routines exist
+for each type of data.  The integer versions of these two routines are as
+follows:
+
+C
+C
+C
+      SUBROUTINE   QSETI
+     I                  (INUM,IVAL)
+C
+C     + + + PURPOSE + + +
+C     Set the values for integer fields
+C     on a data screen prior to editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   INUM,IVAL(INUM)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     INUM   - number of integer fields for which to set values
+C     IVAL   - array of integer values
+
+
+C
+C
+C
+      SUBROUTINE   QSETIB
+     I                   (INUM,IBAS,IVAL)
+C
+C     + + + PURPOSE + + +
+C     Set the values for integer fields
+C     on a data screen prior to editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   INUM,IBAS,IVAL(INUM)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     INUM   - number of integer fields for which to set values
+C     IBAS   - base position within integer fields to begin setting values
+C     IVAL   - array of integer values
+
+The first of these routines (QSETI) calls the second (QSETIB) with a value of
+1 for the argument IBAS.  Corresponding routines exist for real (QSETR, QSETRB)
+and double precision (QSETD, QSETDB) data.
+
+
+Set Initial Values - Character
+
+Two sets of routines exist for setting character field initial values.  The
+first set is for character fields which contain valid responses. The order
+number of the initial response is passed as an argument.  The two routines
+which perform this function are as follows:
+
+C
+C
+C
+      SUBROUTINE   QSETCO
+     I                   (CNUM,CVAL)
+C
+C     + + + PURPOSE + + +
+C     Set the values for character fields with valid
+C     responses on a data screen prior to editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   CNUM,CVAL(CNUM)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to set values
+C     CVAL   - array of order numbers for character responses
+
+
+C
+C
+C
+      SUBROUTINE   QSTCOB
+     I                   (CNUM,CBAS,CVAL)
+C
+C     + + + PURPOSE + + +
+C     Set the values for character fields with valid
+C     responses on a data screen prior to editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   CNUM,CBAS,CVAL(CNUM)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to set values
+C     CBAS   - base position within character fields to begin setting values
+C     CVAL   - array of order numbers for character responses
+
+The first of these routines (QSETCO) calls the second (QSTCOB) with a value of
+1 for the argument CBAS.
+
+The second set of character routines is for setting the initial value of
+character fields without valid responses.  There are three routines which
+perform this function and they are as follows:
+
+C
+C
+C
+      SUBROUTINE   QSETCT
+     I                   (CNUM,CLEN,TLEN,CTXT)
+C
+C     + + + PURPOSE + + +
+C     Set the values for character fields with no valid
+C     responses (plain text) on a data screen prior to editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER     CNUM,CLEN(CNUM),TLEN
+      CHARACTER*1 CTXT(TLEN)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to set values
+C     CLEN   - array of lengths of text strings for each field
+C     TLEN   - total length of character strings (sum of CLEN array)
+C     CTXT   - array of character strings for each field
+
+
+C
+C
+C
+      SUBROUTINE   QSTCTF
+     I                   (CIND,CLEN,CTXT)
+C
+C     + + + PURPOSE + + +
+C     Set the value for one character field with no valid
+C     responses (plain text) on a data screen prior to editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER     CIND,CLEN
+      CHARACTER*1 CTXT(CLEN)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CIND   - character field number for which to set value
+C     CLEN   - length of text string for field
+C     CTXT   - character string for field
+
+
+C
+C
+C
+      SUBROUTINE   QSTCTB
+     I                   (CNUM,CLEN,TLEN,CBAS,CTXT)
+C
+C     + + + PURPOSE + + +
+C     Set the values for character fields with no valid
+C     responses (plain text) on a data screen prior to editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER     CNUM,CLEN(CNUM),TLEN,CBAS
+      CHARACTER*1 CTXT(TLEN)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to set values
+C     CLEN   - array of lengths of text strings for each field
+C     TLEN   - total length of character strings (sum of CLEN array)
+C     CBAS   - base field within character fields to begin setting values
+C     CTXT   - array of character strings for each field
+
+The first (QSETCT) and third (QSTCTB) routines set values for multiple
+character fields and both the array of lengths (CLEN) for these fields and the
+total of these lengths (TLEN) must be supplied.  The second routine (QSTCTF)
+sets the value for one character field and the index of that character field
+(CIND) must be supplied.  The first routine calls the third with a value of 1
+for the argument CBAS.  The second routine calls the third with a value of 1
+for CNUM and the value of CIND passed for CBAS.
+
+
+Set Initial Values - Option
+
+For Option type data fields, all parameters related to the option fields must
+be set in one call.  The routine to set the values for these parameters and the
+initial options selected is as follows:
+
+C
+C
+C
+      SUBROUTINE   QSETOP
+     I                   (OPCNT,OPLEN,MXSEL,MNSEL,OPVAL)
+C
+C     + + + PURPOSE + + +
+C     Set common block parameters for option type data fields
+C     based on supplied arguments.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   OPCNT,OPLEN,MXSEL(OPCNT),MNSEL(OPCNT),OPVAL(OPLEN)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     OPCNT  - number of sets of options on screen
+C     OPLEN  - total number of options which may be selected from screen
+C     MXSEL  - maximum number of options which may be selected per set
+C     MNSEL  - minimum number of options which may be selected per set
+C     OPVAL  - array of order numbers, within sets, of selected fields
+
+
+Edit the Screen of Values
+
+The next routine to call in coding a 1-dimensional data screen allows the user
+to edit values on the screen and is as follows:
+
+C
+C
+C
+      SUBROUTINE   Q1EDIT
+     O                   (IRET)
+C
+C     + + + PURPOSE + + +
+C     Edit screen of 1-dimensional data.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   IRET
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     IRET   - value of user exit command
+C              1 - Accept - go to next screen
+C              2 - Prev - go to previous screen
+C              3 - Begin - go to first screen
+C              4 - Goto - go to screen to be specified
+C              5 - Exit - clean up and return to operating system
+C              6 - Abort - stop everything quickly
+C              7 - Intrpt - stop current activity
+
+Note that the user exit command value is returned in the argument IRET, thus
+removing the need for a separate call to retrieve this value (original routine
+ZGTRET).
+
+
+Retrieve the Edited Values
+
+The final call (or calls) for coding a 1-dimensional data screen is to get the
+edited values for the data fields.  A separate call is required for each type
+of data field on the screen (e.g. if screen contains integer and real data, two
+call must be made to get the integer and real values).
+
+
+Retrieve the Edited Values - Numeric
+
+For numeric data (integer, real, double precision), a set of two routines exist
+for retrieving each type of data.  The integer versions of these two routines
+are as follows:
+
+C
+C
+C
+      SUBROUTINE   QGETI
+     I                  (INUM,
+     O                   IVAL)
+C
+C     + + + PURPOSE + + +
+C     Get the values for integer fields
+C     on a data screen after editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   INUM,IVAL(INUM)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     INUM   - number of integer fields for which to get values
+C     IVAL   - array of integer values
+
+
+C
+C
+C
+      SUBROUTINE   QGETIB
+     I                   (INUM,IBAS,
+     O                    IVAL)
+C
+C     + + + PURPOSE + + +
+C     Get the values for integer fields
+C     on a data screen after editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   INUM,IBAS,IVAL(INUM)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     INUM   - number of integer fields for which to get values
+C     IBAS   - base position within integer fields to begin getting values
+C     IVAL   - array of integer values
+
+The first of these routines (QGETI) calls the second (QGETIB) with a value of
+1 for the argument IBAS.  Corresponding routines exist for real (QGETR, QGETRB)
+and double precision (QGETD, QGETDB) data.
+
+
+Retrieve the Edited Values - Character
+
+Two sets of routines exist for retrieving character field edited values.  The
+first set is for character fields which contain valid responses.  The order
+number of the edited response is returned as an argument.  The two routines
+which perform this function are as follows:
+
+C
+C
+C
+      SUBROUTINE   QGETCO
+     I                   (CNUM,
+     O                    CVAL)
+C
+C     + + + PURPOSE + + +
+C     Get the values for character fields with valid
+C     responses on a data screen after editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   CNUM,CVAL(CNUM)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to get values
+C     CVAL   - array of order numbers for character responses
+
+
+C
+C
+C
+      SUBROUTINE   QGTCOB
+     I                   (CNUM,CBAS,
+     O                    CVAL)
+C
+C     + + + PURPOSE + + +
+C     Get the values for character fields with valid
+C     responses on a data screen after editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   CNUM,CBAS,CVAL(CNUM)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to get values
+C     CBAS   - base position within character fields to begin getting values
+C     CVAL   - array of order numbers for character responses
+
+The first of these routines (QGETCO) calls the second (QGTCOB) with a value of
+1 for the argument CBAS.
+
+The second set of character routines is for retrieving the edited value of
+character fields without valid responses.  There are three routines which
+perform this function and they are as follows:
+
+C
+C
+C
+      SUBROUTINE   QGETCT
+     I                   (CNUM,CLEN,TLEN,
+     O                    CTXT)
+C
+C     + + + PURPOSE + + +
+C     Get the values for character fields with no valid
+C     responses (plain text) on a data screen after editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER     CNUM,CLEN(CNUM),TLEN
+      CHARACTER*1 CTXT(TLEN)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to get values
+C     CLEN   - array of lengths of text strings for each field
+C     TLEN   - total length of character strings (sum of CLEN array)
+C     CTXT   - array of character strings for each field
+
+
+C
+C
+C
+      SUBROUTINE   QGTCTF
+     I                   (CIND,CLEN,
+     O                    CTXT)
+C
+C     + + + PURPOSE + + +
+C     Get the value for one character field with no valid
+C     responses (plain text) on a data screen after editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER     CIND,CLEN
+      CHARACTER*1 CTXT(CLEN)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CIND   - character field number for which to set value
+C     CLEN   - length of text string for field
+C     CTXT   - character string for field
+
+
+C
+C
+C
+      SUBROUTINE   QGTCTB
+     I                   (CNUM,CLEN,TLEN,CBAS,
+     O                    CTXT)
+C
+C     + + + PURPOSE + + +
+C     Get the values for character fields with no valid
+C     responses (plain text) on a data screen after editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER     CNUM,CLEN,TLEN,CBAS
+      CHARACTER*1 CTXT(TLEN)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to set values
+C     CLEN   - array of lengths of text strings for each field
+C     TLEN   - total length of character strings (sum of CLEN array)
+C     CBAS   - base field within character fields to begin setting values
+C     CTXT   - array of character strings for each field
+
+The first (QGETCT) and third (QGTCTB) routines retrieve values for multiple
+character fields and both the array of lengths (CLEN) for these fields and the
+total of these lengths (TLEN) must be supplied.  The second routine (QGTCTF)
+retrieves the value for one character field and the index of that character
+field (CIND) must be supplied.  The first routine calls the third with a value
+of 1 for the argument CBAS.  The second routine calls the third with a value of
+1 for CNUM and the value of CIND passed for CBAS.
+
+
+Retrieve the Edited Values - Option
+
+For Option type fields, the routine to retrieve the array of options selected
+is as follows:
+
+C
+C
+C
+      SUBROUTINE   QGETOP
+     I                   (OPLEN,
+     O                    OPVAL)
+C
+C     + + + PURPOSE + + +
+C     Get options selected array values from common and
+C     return values in supplied argument array.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   OPLEN,OPVAL(OPLEN)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     OPLEN  - total number of options which may be selected from screen
+C     OPVAL  - array of order numbers, within sets, of selected fields
+
+
+
+Screen Definition Changes
+
+There are no changes involved in screen definition for this new method of
+coding a 1-dimensional data screen.
+
+
+Data Structure Changes
+
+No changes were made to any common blocks for this new method of coding a
+1-dimensional data screen.
+
+
+Sample Application
+
+The following code executes a 1-dimensional data screen which contains starting
+and ending dates (6 integer values each) and an axis type (character type with
+valid responses):
+
+C     do 1-d parm screen
+C     start by initializing parms for screen off message file
+      SCLU= 24
+      SGRP= 3
+      CALL Q1INIT (MESSFL,SCLU,SGRP)
+C     set current value of integer fields
+      INUM= 6
+C     first supply initial starting date
+      I= 1
+      CALL QSETIB (INUM,I,LSTART)
+C     now supply initial ending date
+      I= 7
+      CALL QSETIB (INUM,I,LSTART)
+C     also set y-axis type, use character field with order numbers
+      CNUM= 1
+      CALL QSETCO (CNUM,YAXTYP)
+C     now edit the values on the screen
+      CALL Q1EDIT (IRET)
+      IF (IRET.EQ.1) THEN
+C       user wants to continue
+C       get value of integer fields, first get starting date
+        I= 1
+        CALL QGETIB (INUM,I,LSTART)
+C       now get ending date
+        I= 7
+        CALL QGETIB (INUM,I,LEND)
+C       get y-axis type
+        CALL QGETCO (CNUM,YAXTYP)
+      END IF
+
+=================================================================== newaide_2
+
+New Method for Coding 2-Dimensional Data Screens
+------------------------------------------------
+
+Original Method
+
+The original method of coding a 2-dimensional data screen involves
+calling one of a large family of routines with arguments for a
+combination of integer, real, double precision (sometimes), and
+character data.  A text buffer of 80 characters is also passed as
+an argument to supply and retrieve values.  This method is similar
+to the original method for coding 1-dimensional data screens, except
+for 2-dimensional screens these arguments are dimensioned by the
+maximum possible number of rows on the data screen as well.  As with
+1-dimensional data screens, one call to these routines handles four
+basic functions:  retrieving the screen information from the message
+file, supplying the initial data values to the screen, allow editing
+the screen of data, and retrieving the edited values from the screen.
+The programmer often sacrifices good coding style and clarity with
+this method, since 'dummy' versions of arguments dimensioned by the
+number of rows on the screen must be supplied for variable types not
+used on that particular screen.  Also, if the programmer wants any
+initial character values to be displayed on the screen, the initial
+values must be put into the character buffer.
+
+
+Enhanced Method
+
+The new method of coding a 2-dimensional data screen involves a process
+similar to the one for coding a 1-dimensional data screen.  In this
+case the routine used to get the screen information from the message
+file is called Q2INIT, and the routine used to allow editing of the
+data screen is called Q2EDIT.  The initial data values are supplied
+to the screen by a series of routines called Q2SETI, Q2SETR, etc., and
+the values are retrieved from the screen by a series of routines called
+Q2GETI, Q2GETR, etc.  The routines to set the initial values and
+retrieve the edited values reside in the code group QTSTGT.FOR, and
+Q2INIT and Q2EDIT reside in the code group Z1UTIL.FOR.
+
+
+Application Programmer Interface
+
+Retrieve Screen Information
+
+The routine to retrieve the screen information from the message file
+must be the first call made when coding for a 2-dimensional data
+screen.  The new routine is as follows:
+
+C
+C
+C
+      SUBROUTINE   Q2INIT
+     I                   (MESSFL,SCLU,SGRP)
+C
+C     + + + PURPOSE + + +
+C     Set values in common for a 2-dimensional data screen
+C     from information off the message file.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   MESSFL,SCLU,SGRP
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     MESSFL - Fortran unit number for message file
+C     SCLU   - cluster number on message file
+C     SGRP   - group number on message file
+
+
+Set Initial Values
+
+The next call for coding a 2-dimensional data screen is to set
+the initial values for the data fields.  Like 1-dimensional data
+screens, a separate call is required for each type of data field
+on the screen.  If these calls are omitted, the default values
+from the screen definition file are used as the initial data values.
+
+
+Set Initial Values - Numeric
+
+For numeric data (integer, real, double precision), a set of three
+routines exist for each type of data.  The integer versions of
+these three routines are as follows:
+
+C
+C
+C
+      SUBROUTINE   Q2SETI
+     I                   (INUM,NROW,IVAL)
+C
+C     + + + PURPOSE + + +
+C     Set the values for all integer fields and all data rows
+C     on a 2-dimensional data screen prior to editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   INUM,NROW,IVAL(INUM,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     INUM   - number of integer fields for which to set values
+C     NROW   - number of rows of data
+C     IVAL   - array of integer values
+
+
+C
+C
+C
+      SUBROUTINE   Q2STIB
+     I                   (INUM,IBAS,NROW,IVAL)
+C
+C     + + + PURPOSE + + +
+C     Set the values for integer fields, starting at integer field IBAS,
+C     and all data rows on a 2-dimensional data screen prior to editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   INUM,IBAS,NROW,IVAL(INUM,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     INUM   - number of integer fields for which to set values
+C     IBAS   - base position within integer fields to begin setting values
+C     NROW   - number of rows of data
+C     IVAL   - array of integer values
+
+
+C
+C
+C
+      SUBROUTINE   Q2SIBR
+     I                   (INUM,IBAS,NROW,BROW,IVAL)
+C
+C     + + + PURPOSE + + +
+C     Set the values for integer fields, starting at integer field IBAS
+C     and data row BROW, on a 2-dimensional data screen prior to editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   INUM,IBAS,NROW,BROW,IVAL(INUM,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     INUM   - number of integer fields for which to set values
+C     IBAS   - base position within integer fields to begin setting values
+C     NROW   - number of rows of data
+C     BROW   - base row within data rows to begin setting values
+C     IVAL   - array of integer values
+
+The first of these routines (Q2SETI) calls the second (Q2STIB) with
+a value of 1 for the argument IBAS.  The second of these routines
+(Q2STIB) calls the third (Q2SIBR) with a value of 1 for the argument
+BROW.  Corresponding routines exist for real (Q2SETR, Q2STRB, Q2SRBR)
+and double precision (Q2SETD, Q2STDB, Q2SDBR) data.
+
+
+Set Initial Values - Character
+
+Two sets of routines exist for setting character field initial values.
+The first set is for character fields which contain valid responses.
+The order number of the initial response is passed as an argument.
+The three routines which perform this function are as follows:
+
+C
+C
+C
+      SUBROUTINE   Q2STCO
+     I                   (CNUM,NROW,CVAL)
+C
+C     + + + PURPOSE + + +
+C     Set the values for all character fields w/valids and all data rows
+C     on a 2-dimensional data screen prior to editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   CNUM,NROW,CVAL(CNUM,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to set values
+C     NROW   - number of rows of data
+C     CVAL   - array of character order values
+
+
+C
+C
+C
+      SUBROUTINE   Q2SCOB
+     I                   (CNUM,CBAS,NROW,CVAL)
+C
+C     + + + PURPOSE + + +
+C     Set the values for character fields w/valids,
+C     starting at character field CBAS, and all data
+C     rows on a 2-dimensional data screen prior to editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   CNUM,CBAS,NROW,CVAL(CNUM,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to set values
+C     CBAS   - base position within character fields to begin setting values
+C     NROW   - number of rows of data
+C     CVAL   - array of character order values
+
+
+C
+C
+C
+      SUBROUTINE   Q2SCOX
+     I                   (CNUM,CBAS,NROW,BROW,CVAL)
+C
+C     + + + PURPOSE + + +
+C     Set the values for character fields w/valids,
+C     starting at character field CBAS and data row BROW,
+C     on a 2-dimensional data screen prior to editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   CNUM,CBAS,NROW,BROW,CVAL(CNUM,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to set values
+C     CBAS   - base position within character fields to begin setting values
+C     NROW   - number of rows of data
+C     BROW   - base row within data rows to begin setting values
+C     CVAL   - array of character order values
+
+The first of these routines (Q2STCO) calls the second (Q2SCOB) with
+a value of 1 for the argument IBAS.  The second of these routines
+(Q2SCOB) calls the third (Q2SCOX) with a value of 1 for the argument
+BROW.
+
+The second set of character routines is for setting the initial values
+of character fields without valid responses.  There are four routines
+which perform this function and they are as follows:
+
+C
+C
+C
+      SUBROUTINE   Q2STCT
+     I                   (CNUM,CLEN,TLEN,NROW,CTXT)
+C
+C     + + + PURPOSE + + +
+C     Set the values for all character fields with no
+C     valid responses (plain text) and all data rows
+C     on a 2-dimensional data screen prior to editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER     CNUM,CLEN(CNUM),TLEN,NROW
+      CHARACTER*1 CTXT(TLEN,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to set values
+C     CLEN   - array of lengths of text strings for each field
+C     TLEN   - total length of character strings per data row
+C     NROW   - number of rows of data
+C     CTXT   - array of character strings for each field
+
+
+C
+C
+C
+      SUBROUTINE   Q2SCTF
+     I                   (CIND,CLEN,NROW,CTXT)
+C
+C     + + + PURPOSE + + +
+C     Set the values for one character field with no
+C     valid responses (plain text) and all data rows
+C     on a 2-dimensional data screen prior to editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER     CIND,CLEN,NROW
+      CHARACTER*1 CTXT(CLEN,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CIND   - character field number for which to set values
+C     CLEN   - length of text string for field
+C     NROW   - number of rows of data
+C     CTXT   - array of character strings for field
+
+
+C
+C
+C
+      SUBROUTINE   Q2SCTB
+     I                   (CNUM,CLEN,TLEN,CBAS,NROW,CTXT)
+C
+C     + + + PURPOSE + + +
+C     Set the values for character fields with no valid
+C     responses (plain text), starting at character field CBAS,
+C     and all data rows on a 2-dimensional data screen prior to editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER     CNUM,CLEN(CNUM),TLEN,CBAS,NROW
+      CHARACTER*1 CTXT(TLEN,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to set values
+C     CLEN   - array of lengths of text strings for each field
+C     TLEN   - total length of character strings per data row
+C     CBAS   - base position within character fields to begin setting values
+C     NROW   - number of rows of data
+C     CTXT   - array of character strings for each field
+
+
+C
+C
+C
+      SUBROUTINE   Q2SCTX
+     I                   (CNUM,CLEN,TLEN,CBAS,NROW,BROW,CTXT)
+C
+C     + + + PURPOSE + + +
+C     Set the values for character fields with no valid responses
+C     (plain text), starting at character field CBAS and data row BROW,
+C     on a 2-dimensional data screen prior to editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER     CNUM,CLEN(CNUM),TLEN,CBAS,NROW,BROW
+      CHARACTER*1 CTXT(TLEN,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to set values
+C     CLEN   - array of lengths of text strings for each field
+C     TLEN   - total length of character strings (sum of CLEN array)
+C     CBAS   - base field within character fields to begin setting values
+C     NROW   - number of rows of data
+C     BROW   - base row within data rows to begin setting values
+C     CTXT   - array of character strings for each field
+
+The first (Q2STCT), third (Q2SCTB), and fourth (Q2SCTX) routines set
+values for multiple character fields and both the array of lengths
+(CLEN) for these fields and the total of these lengths (TLEN) must
+be supplied.  The second routine (Q2SCTF) sets the value for one
+character field and the index of that character field (CIND) must
+be supplied.  The first routine calls the third with a value of 1
+for the argument CBAS.  The second routine calls the third with
+a value of 1 for CNUM and the value of CIND passed for CBAS.  The
+third routine calls the fourth with a value of 1 for the argument
+BROW.
+
+
+Edit the Screen of Values
+
+The next routine to call in coding a 2-dimensional data screen allows
+the user to edit values on the screen and is as follows:
+
+C
+C
+C
+      SUBROUTINE   Q2EDIT
+     I                   (NROW,
+     O                    IRET)
+C
+C     + + + PURPOSE + + +
+C     Edit screen of 2-dimensional data.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   NROW,IRET
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     NROW   - number of rows of data values
+C     IRET   - value of user exit command
+
+Note that the user exit command value is returned in the argument
+IRET, thus removing the need for a separate call to retrieve this
+value (original routine ZGTRET).
+
+
+Retrieve the Edited Values
+
+The final call (or calls) for coding a 2-dimensional data screen
+is to get the edited values for the data fields.  A separate call
+is required for each type of data field on the screen (e.g. if
+screen contains integer and real data, two calls must be made to
+get the integer and real values).
+
+
+Retrieve the Edited Values - Numeric
+
+For numeric data (integer, real, double precision), a set of three
+routines exist for retrieving each type of data.  The integer
+versions of these three routines are as follows:
+
+C
+C
+C
+      SUBROUTINE   Q2GETI
+     I                   (INUM,NROW,
+     O                    IVAL)
+C
+C     + + + PURPOSE + + +
+C     Get the values for all integer fields and all data rows
+C     on a 2-dimensional data screen after editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   INUM,NROW,IVAL(INUM,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     INUM   - number of integer fields for which to get values
+C     NROW   - number of rows of data
+C     IVAL   - array of integer values
+
+
+C
+C
+C
+      SUBROUTINE   Q2GTIB
+     I                   (INUM,IBAS,NROW,
+     O                    IVAL)
+C
+C     + + + PURPOSE + + +
+C     Get the values for integer fields, starting at integer field IBAS,
+C     and all data rows on a 2-dimensional data screen after editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   INUM,IBAS,NROW,IVAL(INUM,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     INUM   - number of integer fields for which to get values
+C     IBAS   - base position within integer fields to begin getting values
+C     NROW   - number of rows of data
+C     IVAL   - array of integer values
+
+
+C
+C
+C
+      SUBROUTINE   Q2GIBR
+     I                   (INUM,IBAS,NROW,BROW,
+     O                    IVAL)
+C
+C     + + + PURPOSE + + +
+C     Get the values for integer fields, starting at integer field IBAS
+C     and data row BROW, on a 2-dimensional data screen after editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   INUM,IBAS,NROW,BROW,IVAL(INUM,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     INUM   - number of integer fields for which to get values
+C     IBAS   - base position within integer fields to begin getting values
+C     NROW   - number of rows of data
+C     BROW   - base row within data rows to begin getting values
+C     IVAL   - array of integer values
+
+The first of these routines (Q2GETI) calls the second (Q2GTIB) with
+a value of 1 for the argument IBAS.  The second of these routines
+(Q2GTIB) calls the third (Q2GIBR) with a value of 1 for the argument
+BROW.  Corresponding routines exist for real (Q2GETR, Q2GTRB, Q2GRBR)
+and double precision (Q2GETD, Q2GTDB, Q2GDBR) data.
+
+
+Retrieve the Edited Values - Character
+
+Two sets of routines exist for retrieving character field edited
+values.  The first set is for character fields which contain valid
+responses.  The order number of the initial response is returned
+as an argument.  The three routines which perform this function
+are as follows:
+
+C
+C
+C
+      SUBROUTINE   Q2GTCO
+     I                   (CNUM,NROW,
+     O                    CVAL)
+C
+C     + + + PURPOSE + + +
+C     Get the values for all character fields w/valids and all data rows
+C     on a 2-dimensional data screen after editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   CNUM,NROW,CVAL(CNUM,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to get values
+C     NROW   - number of rows of data
+C     CVAL   - array of character order values
+
+
+C
+C
+C
+      SUBROUTINE   Q2GCOB
+     I                   (CNUM,CBAS,NROW,
+     O                    CVAL)
+C
+C     + + + PURPOSE + + +
+C     Get the values for character fields w/valids,
+C     starting at character field CBAS, and all data
+C     rows on a 2-dimensional data screen after editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   CNUM,CBAS,NROW,CVAL(CNUM,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to get values
+C     CBAS   - base position within character fields to begin getting values
+C     NROW   - number of rows of data
+C     CVAL   - array of character order values
+
+
+C
+C
+C
+      SUBROUTINE   Q2GCOX
+     I                   (CNUM,CBAS,NROW,BROW,
+     O                    CVAL)
+C
+C     + + + PURPOSE + + +
+C     Get the values for character fields w/valids,
+C     starting at character field CBAS and data row BROW,
+C     on a 2-dimensional data screen after editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER   CNUM,CBAS,NROW,BROW,CVAL(CNUM,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to get values
+C     CBAS   - base position within character fields to begin getting values
+C     NROW   - number of rows of data
+C     BROW   - base row within data rows to begin getting values
+C     CVAL   - array of character order values
+
+The first of these routines (Q2GTCO) calls the second (Q2GCOB) with
+a value of 1 for the argument IBAS.  The second of these routines
+(Q2GCOB) calls the third (Q2GCOX) with a value of 1 for the argument
+BROW.
+
+The second set of character routines is for retrieving the edited
+values of character fields without valid responses.  There are four
+routines which perform this function and they are as follows:
+
+C
+C
+C
+      SUBROUTINE   Q2GTCT
+     I                   (CNUM,CLEN,TLEN,NROW,
+     O                    CTXT)
+C
+C     + + + PURPOSE + + +
+C     Get the values for all character fields with no
+C     valid responses (plain text) and all data rows
+C     on a 2-dimensional data screen after editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER     CNUM,CLEN(CNUM),TLEN,NROW
+      CHARACTER*1 CTXT(TLEN,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to get values
+C     CLEN   - array of lengths of text strings for each field
+C     TLEN   - total length of character strings per data row
+C     NROW   - number of rows of data
+C     CTXT   - array of character strings for each field
+
+
+C
+C
+C
+      SUBROUTINE   Q2GCTF
+     I                   (CIND,CLEN,NROW,CTXT)
+C
+C     + + + PURPOSE + + +
+C     Get the values for one character field with no
+C     valid responses (plain text) and all data rows
+C     on a 2-dimensional data screen after editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER     CIND,CLEN,NROW
+      CHARACTER*1 CTXT(CLEN,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CIND   - character field number for which to get values
+C     CLEN   - length of text string for field
+C     NROW   - number of rows of data
+C     CTXT   - array of character strings for field
+
+
+C
+C
+C
+      SUBROUTINE   Q2GCTB
+     I                   (CNUM,CLEN,TLEN,CBAS,NROW,
+     O                    CTXT)
+C
+C     + + + PURPOSE + + +
+C     Get the values for character fields with no valid
+C     responses (plain text), starting at character field CBAS,
+C     and all data rows on a 2-dimensional data screen after editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER     CNUM,CLEN(CNUM),TLEN,CBAS,NROW
+      CHARACTER*1 CTXT(TLEN,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to get values
+C     CLEN   - array of lengths of text strings for each field
+C     TLEN   - total length of character strings per data row
+C     CBAS   - base position within character fields to begin getting values
+C     NROW   - number of rows of data
+C     CTXT   - array of character strings for each field
+
+
+C
+C
+C
+      SUBROUTINE   Q2GCTX
+     I                   (CNUM,CLEN,TLEN,CBAS,NROW,BROW,
+     O                    CTXT)
+C
+C     + + + PURPOSE + + +
+C     Get the values for character fields with no valid responses
+C     (plain text), starting at character field CBAS and data row BROW,
+C     on a 2-dimensional data screen after editing.
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER     CNUM,CLEN(CNUM),TLEN,CBAS,NROW,BROW
+      CHARACTER*1 CTXT(TLEN,NROW)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields for which to set values
+C     CLEN   - array of lengths of text strings for each field
+C     TLEN   - total length of character strings (sum of CLEN array)
+C     CBAS   - base field within character fields to begin setting values
+C     NROW   - number of rows of data
+C     BROW   - base row within data rows to begin setting values
+C     CTXT   - array of character strings for each field
+
+The first (Q2GTCT), third (Q2GCTB), and fourth (Q2GCTX) routines
+retrieve values for multiple character fields and both the array of
+lengths (CLEN) for these fields and the total of these lengths
+(TLEN) must be supplied.  The second routine (Q2GCTF) retrieves
+the value for one character field and the index of that character
+field (CIND) must be supplied.  The first routine calls the third
+with a value of 1 for the argument CBAS.  The second routine calls
+the third with a value of 1 for CNUM and the value of CIND passed
+for CBAS.  The third routine calls the fourth with a value of 1 for
+the argument BROW.
+
+
+Screen Definition Changes
+
+There are no changes involved in screen definition for this new
+method of coding a 2-dimensional data screen.
+
+
+Data Structure Changes
+
+No changes were made to any common blocks for this new method of
+coding a 2-dimensional data screen.
+
+
+Sample Application
+
+The following code executes a 2-dimensional data screen which
+contains starting and ending years (one integer values each),
+starting and ending months (character type with valid responses),
+and the corresponding data set number (one integer value):
+
+C     do 2-d parm screen
+C     init screen parameters
+      SGRP= 25
+      CALL Q2INIT (MESSFL,SCLU,SGRP)
+C     set integer field values
+      INUM= 3
+      CALL Q2SETI (INUM,DSNCNT,IVAL2)
+C     set character fields
+      CNUM= 2
+      CALL Q2STCO (CNUM,DSNCNT,CVAL2)
+C     perform editing of dates
+      CALL Q2EDIT (DSNCNT,
+     O             IRET)
+C
+      IF (IRET.EQ.1) THEN
+C       user wants to continue, get edited values
+        CALL Q2GETI (INUM,DSNCNT,
+     O               IVAL2)
+        CALL Q2GTCO (CNUM,DSNCNT,
+     O               CVAL2)
+      END IF
+
+=================================================================== newaide_3
+
+New method for setting min/max/default, valid/invalid, and initial
+values for AIDE screens from code (replacing calls to QSCSET)
+------------------------------------------------------------------
+
+Original Method
+
+The original method of setting min/max/default values, valid/invalid
+values, and initial values for both 1 and 2 dimensional AIDE screens
+involved calling the routine QSCSET.  This routine proved difficult
+for application programmers to call directly because of the large
+number of arguments, many of which were often set to dummy values.
+
+
+Enhanced Method
+
+The new method of setting these values involves calling any combination
+of five routines, each of which has a more narrowly defined purpose
+than the general QSCSET.
+
+The first three routines, QSCSTI, QSCSTR, and QSCSTD set minimum,
+maximum, and default values for integer, real, and double precision
+fields, respectively.  The offset position would be set to a value
+of 1 except in the case where some fields on a screen are to be set
+from the message file.  In those cases this value should be set to
+the field number corresponding to the first field the programmer wants
+set from the source code.
+
+C
+C
+C
+      SUBROUTINE   QSCSTI
+     I                    (INUM,IPOS,UIMIN,UIMAX,UIDEF)
+C
+C     + + + PURPOSE + + +
+C     Set common block Integer values for full screen limits as
+C     defined by user (bypassing assignment from message file).
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER     INUM,IPOS,UIMIN(INUM),UIMAX(INUM),UIDEF(INUM)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     INUM   - number of integer fields
+C     IPOS   - offset position within integer fields to set parameters
+C     UIMIN  - array of user-defined integer minimum values
+C     UIMAX  - array of user-defined integer maximum values
+C     UIDEF  - array of user-defined integer default values
+
+
+C
+C
+C
+      SUBROUTINE   QSCSTR
+     I                    (RNUM,RPOS,URMIN,URMAX,URDEF)
+C
+C     + + + PURPOSE + + +
+C     Set common block Real values for full screen limits as
+C     defined by user (bypassing assignment from message file).
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER     RNUM,RPOS
+      REAL        URMIN(RNUM),URMAX(RNUM),URDEF(RNUM)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     RNUM   - number of real fields
+C     RPOS   - offset position within real fields to set parameters
+C     URMIN  - array of user-defined real minimum values
+C     URMAX  - array of user-defined real maximum values
+C     URDEF  - array of user-defined real default values
+
+
+C
+C
+C
+      SUBROUTINE   QSCSTD
+     I                    (DNUM,DPOS,UDMIN,UDMAX,UDDEF)
+C
+C     + + + PURPOSE + + +
+C     Set common block Double Precision values for full screen limits as
+C     defined by user (bypassing assignment from message file).
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER     DNUM,DPOS
+      DOUBLE PRECISION UDMIN(DNUM),UDMAX(DNUM),UDDEF(DNUM)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     DNUM   - number of double precision fields
+C     DPOS   - offset position within double precision fields to set parameters
+C     UDMIN  - array of user-defined double precision minimum values
+C     UDMAX  - array of user-defined double precision maximum values
+C     UDDEF  - array of user-defined double precision default values
+
+
+The next routine, QSCSTC, sets default values for character fields.
+The offset position would be set to a value of 1 except in the case
+where some fields on a screen are to be set from the message file.
+In those cases this value should be set to the field number corresponding
+to the first field the programmer wants set from the source code.
+
+C
+C
+C
+      SUBROUTINE   QSCSTC
+     I                    (CNUM,CPOS,UCDEF)
+C
+C     + + + PURPOSE + + +
+C     Set common block Character values for full screen limits as
+C     defined by user (bypassing assignment from message file).
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER     CNUM,CPOS,UCDEF(CNUM)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     CNUM   - number of character fields
+C     CPOS   - offset position within character fields to set parameters
+C     UCDEF  - array of user-defined character default values
+
+
+The last of these routines, QSCSTV, sets valid/invalid character
+responses.  Again, the offset position would be set to a value of 1
+except in the case where some fields on a screen are to be set from
+the message file.  In those cases this value should be set to the
+field number corresponding to the first field for which the programmer
+wants to set valid values from the source code.
+
+C
+C
+C
+      SUBROUTINE   QSCSTV
+     I                    (NMFLDS,FPOS,VLINFG,UCCNT,
+     I                     USTRLN,URSPLN,URSPST)
+C
+C     + + + PURPOSE + + +
+C     Set valid/invalid common block values for full screen limits as
+C     defined by user (bypassing assignment from message file).
+C
+C     + + + DUMMY ARGUMENTS + + +
+      INTEGER     NMFLDS,FPOS,VLINFG(NMFLDS),UCCNT(NMFLDS),
+     $            USTRLN(NMFLDS),URSPLN
+      CHARACTER*1 URSPST(URSPLN)
+C
+C     + + + ARGUMENT DEFINITIONS + + +
+C     NMFLDS - number of fields for this screen
+C     FPOS   - offset position within all fields on screen
+C     VLINFG - valid/invalid flag, 1- valid, 2- invalid, (0- none)
+C     UCCNT  - array of user-defined valid responses for each field
+C     USTRLN - array of user-defined lengths of responses
+C     URSPLN - total length of user-defined valid responses
+C     URSPST - user-defined string of valid responses
+
+
+Additionally, the programmer used to be limited to 960 characters
+of valid values.  Now this value has been moved to a parameter
+statement and can be modified easily.
+
+
+The calls to any of these five routines should be made only after
+a call to Q1INIT.  A typical call sequence would be to call Q1INIT,
+then use a routine from this family such as QSCSTI, then call
+QSETI.
+
+=================================================================== newaide_4
+
+
+                         File type data fields in AIDE
+                              January, 1995
+
+
+
+Original Method
+----------------
+
+Originally, there were two methods of opening a file within an AIDE application.
+The first method involved calling the routine QFOPEN and using a FILE type
+screen in the message file.  In using QFOPEN, file validity checking
+and error message generation were handled by the AIDE library code (not by the
+application programmer).  However, the screen could only contain one data field
+(for entering the file name).  This limitation could be avoided by using the
+second method which was to have the user enter the file name in a plain text
+field.  Thus, other data fields could be placed on the same screen.  However,
+this put the burden of checking file validity and displaying error messages on
+the application programmer.  Additionally, neither method allowed the use of
+wild card characters to determine files existing on the operating system.
+
+
+
+Enhanced Method
+----------------
+
+The new File type data field combines the positive aspects of the two original
+methods.  File validity and error handling is performed by the library code (not
+the application programmer) and other data fields (including other File type
+fields) may be included on the same screen.  In developing File type fields, the
+use of wild card characters to display valid files has also been implemented.
+
+
+
+Application Programmer Interface
+---------------------------------
+
+Source Code
+
+Coding for File type data fields is performed using the same types of calls as
+with other type data fields.  The call to retrieve the screen information from
+the message file remains the same (Q1INIT for 1-dimensional screens, Q2INIT for
+2-dimensional screens).
+
+A set of routines for setting the initial values of the File type fields is
+provided:
+
+   SUBROUTINE   QSETFN (FNUM,FLNAME)
+     Set the file names for all file type data fields on a 1-dimensional data
+     screen prior to editing.
+
+   SUBROUTINE   QSTFNB (FNUM,FBAS,FLNAME)
+     Set the file names for file type data fields, starting at file field FBAS,
+     on a 1-dimensional data screen prior to editing.
+
+   SUBROUTINE   Q2STFN (FNUM,NROW,FLNAME)
+     Set the file names for all file fields and all data rows on a 2-dimensional
+     data screen prior to editing.
+
+   SUBROUTINE   Q2SFNB (FNUM,FBAS,NROW,FLNAME)
+     Set the file names for file fields, starting at file field FBAS, and all
+     data rows on a 2-dimensional data screen prior to editing.
+
+   SUBROUTINE   Q2SFNX (FNUM,FBAS,NROW,BROW,FLNAME)
+     Set the file names for file fields, starting at file field FBAS and data
+     row BROW, on a 2-dimensional data screen prior to editing.
+
+A call to set the initial values of File type fields is not needed if initial
+file names are not desired.  The fields will be set to blank if no call is
+made to initialize the File type fields.
+
+Editing of File type fields is handled the same way as other field types.  A
+call to Q1EDIT is made for 1-dimensional screens and a call to Q2EDIT is made
+for 2-dimensional screens.
+
+As an application is most likely to make use of file unit numbers rather than
+file names, the unit numbers for the files entered on the screen are returned.
+Should the application need the file name, an INQUIRE statement would be as
+straight forward as another subroutine call.  A set of routines, similar in
+design to those for setting the initial File field values, is provided for
+retrieving the unit numbers:
+
+      SUBROUTINE   QGETF (FNUM,
+     O                    FILUN)
+        Get the unit numbers for all file type data fields on a 1-dimensional
+        data screen after editing.
+
+      SUBROUTINE   QGETFB (FNUM,FBAS,
+     O                     FILUN)
+        Get the unit numbers for file type data fields, starting at file field
+        FBAS, on a 1-dimensional data screen after editing.
+
+      SUBROUTINE   Q2GETF (FNUM,NROW,
+     O                     FILUN)
+        Get the unit numbers for all file fields and all data rows on a
+        2-dimensional data screen after editing.
+
+      SUBROUTINE   Q2GTFB (FNUM,FBAS,NROW,
+     O                     FILUN)
+        Get the unit numbers for file fields, starting at file field FBAS, and
+        all data rows on a 2-dimensional data screen after editing.
+
+      SUBROUTINE   Q2GFBR (FNUM,FBAS,NROW,BROW,
+     O                     FILUN)
+        Get the unit numbers for file fields, starting at file field FBAS and
+        data row BROW, on a 2-dimensional data screen after editing.
+
+
+Message File
+
+A File type data field is defined on the message file in the same manner as
+other data field types, by using the $FIELD directive.  The field is specified
+as a File type field by using the _TYPE subdirective (i.e. "_TYPE FILE").
+Specifications for the file are defined using the _VALID subdirective.  To
+override default file specifications (STATUS='UNKNOWN',ACCESS='SEQUENTIAL',
+FORM='FORMATTED'), follow the FORTRAN specification keyword with a colon and
+its value.  As many specifications as needed may be put, separated by commas, on
+the _VALID subdirective.  The record length may be specified in the same way by
+including "RECL: xxx" with the specifications.  For a WDM file, follow RECL:
+with the letters WDM instead of a number.  This will assure the WDM file is
+opened with the proper length as this number is machine variable.  For example,
+to specify that a file must be an existing WDM file, the _VALID subdirective
+would look like this:
+
+_VALID  STATUS: OLD, ACCESS: DIRECT, RECL: WDM
+
+A final non-FORTRAN specification may be made on the _VALID subdirective.  This
+is a list of file name restrictions which the file name entered must meet.  It
+may be a list of complete file names or a wild card criteria (i.e. *.OUT).  To
+specify such a list, follow the NAME keyword with a colon and the list of names
+or criteria separated by commas.  For example, to make the example above even
+more restrictive one could do the following:
+
+_VALID  STATUS: OLD, ACCESS: DIRECT, RECL: WDM, NAME: *.WDM
+
+or
+
+_VALID  STATUS: OLD, ACCESS: DIRECT, RECL: WDM, NAME: TEST1.WDM, TEST2.WDM
+
+
+
+User Interaction
+-----------------
+
+As mentioned previously, wild card characters may be used during application
+interaction.  If the Limits window is displayed, the file names from the
+operating system which match what the user has entered so far will be displayed.
+If the application is looking for specific names (i.e. the NAME specification
+was made on the _VALID subdirective), a list of file names which match both the
+user's entry and the NAME specification criteria will be displayed.
+
+The user may not leave a screen using the Accept command if a File type field
+does not have a valid file name entered in it.  Error messages specific to file
+specification problems are displayed in the bottom window of the AIDE screen.
+
+
+
+
+Example
+--------
+
+The following source code and message file segments demonstrate the use of File
+type data fields:
+
+
+C         get the screen info
+          SGRP= 20
+          CALL Q1INIT (MESSFL,SCLU,SGRP)
+C
+C         set the output file name
+          FLNAME(1) = 'DURANL.OUT'
+          CALL QSETFN (I1,FLNAME)
+C
+C         set the integer values for output levels
+          INUM= 2
+          IVAL(1) = PRFG
+          IVAL(2) = LCOUT
+          CALL QSETI (INUM,IVAL)
+C
+C         edit this screen
+          CALL Q1EDIT (IRET)
+C
+          IF (IRET.EQ.1) THEN
+C           user wants to continue, get file unit number
+            CALL QGETF (I1,PUNIT)
+C           get output levels
+            CALL QGETI (INUM,IVAL)
+            PRFG = IVAL(1)
+            LCOUT= IVAL(2)
+          END IF
+
+
+
+#GROUP   20  TYPE PRM1
+$WINDOW Output (DO)
+$SCREEN
+
+ Specify file for duration analysis output:
+
+ File name [@OUTFILE........................................................]
+
+ Output Level [@OUTLEV]             Lethality Analysis Output Level [@CROUT.]
+
+$FIELD @OUTFILE
+_TYPE FILE
+_VALID STATUS: UNKNOWN
+_HELP
+ Enter the name of the file for Duration analysis output.
+$FIELD @OUTLEV
+_TYPE INTEGER
+_PROTECT CORRECT
+_RANGE 0:7
+_DEFAULT 7
+_HELP
+ Enter the desired output level for the basic duration analysis.
+ 0-basic table only, 1-fraction of time, 2-relative fraction of time,
+ 3-time spent, 4-number of events, 5-average duration,
+ 6-std dev of durations, 7-fraction events.
+$FIELD @CROUT
+_TYPE INTEGER
+_PROTECT CORRECT
+_RANGE 0:3
+_DEFAULT 3
+_HELP
+ Enter the desired level of lethal level output.

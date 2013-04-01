@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Jan 03 13:30:41 2012
-@author: jharston
+@author: tao.hong
 """
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
@@ -20,21 +20,24 @@ import urllib
 from google.appengine.api import urlfetch
 from datetime import datetime,timedelta
 
+import sys
+lib_path = os.path.abspath('..')
+sys.path.append(lib_path)
+from ubertool_src import keys_Picloud_S3
+
 ############Provide the key and connect to the picloud####################
-api_key='3355'
-api_secretkey='212ed160e3f416fdac8a3b71c90f3016722856b9'
+api_key=keys_Picloud_S3.picloud_api_key
+api_secretkey=keys_Picloud_S3.picloud_api_secretkey
 base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
 http_headers = {'Authorization' : 'Basic %s' % base64string}
 ###########################################################################  
 
-def get_jid(input_str):
+def get_jid(pdf_t, pdf_nop, pdf_p):
 
     url='https://api.picloud.com/r/3303/generatepdf_pi_s1'
-
+    input_str=[pdf_t, pdf_nop, pdf_p]
     input_str=json.dumps(input_str)
-
     data = urllib.urlencode({"input_str":input_str})
-
     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers) 
     jid= json.loads(response.content)['jid']
     output_st = ''
@@ -49,14 +52,14 @@ def get_jid(input_str):
     return(jid, output_st, output_val)
 
 
-
 class pdfPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()   
-        extract = form.getvalue('extract')
-        # extract_json = json.dumps(extract)
-        final_res=get_jid(extract)[2]
-               
+        pdf_t = form.getvalue('pdf_t')
+        pdf_nop = form.getvalue('pdf_nop')
+        pdf_p = json.loads(form.getvalue('pdf_p'))
+
+        final_res=get_jid(pdf_t, pdf_nop, pdf_p)[2]
         text_file2 = open('about_text.txt','r')
         xx = text_file2.read()
         templatepath = os.path.dirname(__file__) + '/templates/'                     
@@ -66,7 +69,14 @@ class pdfPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04ubertext_start.html', {
             'model_page':final_res,
             'model_attributes':'Please download your PDF here','text_paragraph':''})
-        html = html + extract
+        # html = html + extract
+        # html = html + """<img id="imgChart1" src="%s" />
+        # """%(extract1[0])
+        # html = html + """<img id="imgChart1" src="%s" />
+        # """%(extract1[1])
+        # html = html + """<img id="imgChart1" src="%s" />
+        # """%(extract1[2])
+
         html = html + template.render (templatepath+'04ubertext_end.html',{})
         html = html + template.render (templatepath+'05ubertext_links_right.html', {})
         html = html + template.render(templatepath+'06uberfooter.html', {'links': ''})

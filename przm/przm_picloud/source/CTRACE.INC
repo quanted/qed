@@ -1,0 +1,6 @@
+!     cTRACE.inc
+      INTEGER MAXSUB , MAXLIN
+      INTEGER TRClvl , SUBlvl
+      PARAMETER (MAXSUB=50,MAXLIN=10)
+      CHARACTER*80 LOCatn(MAXSUB) , OUTstr(MAXLIN)
+      COMMON /TRACE / TRClvl , SUBlvl

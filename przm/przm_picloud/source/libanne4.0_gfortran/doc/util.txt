@@ -1,0 +1,132 @@
+
+
+
+U.S. Geological Survey                                    util(1)
+
+
+
+NAME
+     util - Manipulating character strings, numbers, and dates
+
+ABSTRACT
+     Over 100 routines are contained in the UTIL library.
+     Routines from this library are currently used by more than
+     25 programs. The library contains a mix of basic utility
+     routines for manipulating character strings, retrieving and
+     calculating various items associated with dates and time,
+     sorting arrays, copying arrays, writing text to the screen,
+     and reading text from the screen. This code is generally
+     well documented, both internally and in separate
+     documentation.
+
+     The UTIL library is included in the LIBANNE distribution.
+
+HISTORY
+     Version 4.0 2002/02/25 - The name of the lib library
+        distribution changed to libanne.  See libanne
+        documentation for details.
+
+     Version 3.1 1996/12/11 - Corrected how function CNVTDG
+        converted degree-minute-second latitudes and longitudes
+        to decimal degrees.
+
+     Version 3.0 1996/03/01 - Include file names changed to lower
+        case.  Renamed routines that return current date and
+        time, date, and time to SYDATM, SYDATE, and SYTIME,
+        respectively (had been DATNOW, JULDAT, and GETIME).
+
+     Version 2.1 1994/08/11 - Updates
+
+     Version 2.0 1994/05/27 - General release
+
+     Version 1.0 1992 - General release, ported to UNIX platform.
+
+     NOTE: Version numbers and dates are for the entire LIBANNE
+           set of libraries.  A new version does not necessarily
+           indicate that all of the libraries have changed.
+
+SYSTEM REQUIREMENTS
+     UTIL is written in Fortran 77 with the following extension:
+     use of include files. UTIL contains three routines that call
+     system date and (or) time routines.  Versions are provided
+     for Data General, Sun, PC (Lahey), Silicon Graphics, DEC,
+     and Prime.
+
+DOCUMENTATION
+     A subroutine reference guide is provided in the
+     distribution.
+
+
+
+
+
+                  Last change: 25 February 2002                 1
+
+
+
+
+
+
+U.S. Geological Survey                                    util(1)
+
+
+
+CONTACTS
+     Operation and Distribution:
+        U.S. Geological Survey
+        Hydrologic Analysis Software Support Program
+        437 National Center
+        Reston, VA 20192
+
+        h2osoft@usgs.gov
+
+     Official versions of U.S. Geological Survey water-resources
+     analysis software are available for electronic retrieval via
+     the World Wide Web (WWW) at:
+
+                http://water.usgs.gov/software/
+
+     and via anonymous File Transfer Protocol (FTP) from:
+
+                water.usgs.gov (path: /pub/software).
+
+     The WWW page and anonymous FTP directory from which the
+     LIBANNE software can be retrieved are, respectively:
+
+                http://water.usgs.gov/software/libanne.html
+                              --and--
+                /pub/software/general/libanne
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  Last change: 25 February 2002                 2
+
+
+

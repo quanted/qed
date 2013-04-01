@@ -26,7 +26,11 @@ skip_files:
 - ^(.*/)?.*/RCS/.*
 - ^(.*/)?\..*
 - ^(.*/)?.*\.gz
-- ^(.*/)?.*\.bak$
+- ^(.*/)?.*\.bak
+- ^(geneec/geneec_picloud/.*)
+- ^(przm/przm_picloud/.*)
+- ^(pfam/pfam_picloud/.*)
+- ^(generatepdf/generatepdf_picloud/.*)$
 
 handlers:
 - url: /
@@ -41,10 +45,12 @@ handlers:
   script: pop_main.py 
 - url: /about.html
   script: about.py
-- url: /pdf.html
-  script: genepdf.py
+- url: /pdf_iec.html
+  script: genepdf_iec.py
 - url: /pdf_exp.html
   script: genepdf_exp.py
+- url: /pdf.html
+  script: genepdf.py  
 # All URLs beginning with /stylesheets are treated as paths to static files in
 # the stylesheets/ directory. Note that static_dir handlers do not use a
 # regular expression for the URL pattern, only a prefix.

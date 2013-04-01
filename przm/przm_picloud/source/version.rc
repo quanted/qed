@@ -1,0 +1,130 @@
+#ifndef XLIB
+/////////////////////////////////////////////////////////////////////////////
+// Version Stuff
+// * this section gotten from the resource file of a C application.
+//
+// * Version info is only available for Windows. "XLIB" above is predefined
+//   for Linux, therefore this section of code is active only if not-Linux
+//
+// * FILEVERSION and VALUE "FileVersion" should have the same value
+//
+// * I cannot see where "PRODUCTVERSION" is displayed, but I would assume
+//     that PRODUCTVERSION and VALUE "ProductVersion" should have the same value
+//
+// * Empty fields: "\0"
+//
+// * Some fields can be missing without problems. For other fields, their
+//   absence causes a fatal compilation error. See
+//   [1] http://msdn.microsoft.com/library/default.asp?url=/library/en-us/tools/tools/versioninfo_resource.asp
+//   [2] http://msdn.microsoft.com/library/default.asp?url=/library/en-us/tools/tools/resource_compiler.asp
+//   [3] http://support.microsoft.com/view/dev.asp?kb=237870 -- Increment Version Information After Each Build
+//   [4] file://E:\5\Fortran\Version.Numbers\Docs\
+//
+// The text below was taken from Ref[1]
+// Comments        Additional information that should be displayed for diagnostic
+//                 purposes.
+//
+// CompanyName     Company that produced the file for example,
+//                 "Microsoft Corporation" or "Standard Microsystems Corporation, Inc."
+//                 This string is required.
+//
+// FileDescription File description to be presented to users. This string may be
+//                 displayed in a list box when the user is choosing files to install
+//                 for example, "Keyboard Driver for AT-Style Keyboards". This string is
+//                 required.
+//
+// FileVersion     Version number of the file for example, "3.10" or "5.00.RC2".
+//                 This string is required.
+//
+// InternalName    Internal name of the file, if one exists for example, a module name
+//                 if the file is a dynamic-link library. If the file has no internal
+//                 name, this string should be the original filename, without extension.
+//                 This string is required.
+//
+// LegalCopyright  Copyright notices that apply to the file. This should include the full
+//                 text of all notices, legal symbols, copyright dates, and so on for
+//                 example, "Copyright© Microsoft Corporation 1990–1999".
+//                 This string is optional.
+//
+// LegalTrademarks Trademarks and registered trademarks that apply to the file. This
+//                 should include the full text of all notices, legal symbols, trademark
+//                 numbers, and so on. This string is optional.
+//
+// OriginalFilename Original name of the file, not including a path. This information
+//                 enables an application to determine whether a file has been renamed
+//                 by a user. The format of the name depends on the file system for
+//                 which the file was created. This string is required.
+//
+// PrivateBuild    Information about a private version of the file for example,
+//                 "Built by TESTER1 on \TESTBED". This string should be present only if
+//                 VS_FF_PRIVATEBUILD is specified in the fileflags parameter of the root block.
+//
+// ProductName     Name of the product with which the file is distributed. This string is required.
+//
+// ProductVersion  Version of the product with which the file is distributed for example,
+//                 "3.10" or "5.00.RC2". This string is required.
+//
+// SpecialBuild    Text that indicates how this version of the file differs from the standard
+//                 version for example, "Private build for TESTER1 solving mouse problems on M250 and M250E computers".
+//                 This string should be present only if VS_FF_SPECIALBUILD is specified in
+//                 the fileflags parameter of the root block.
+//
+
+// F:\Program Files\Lahey-Fujitsu Fortran\v7.0\Win32\Include\winver.h
+#include "winver.h"
+
+// o Propagate changes below to "general.90x" and "version.rcx"
+// o The version resource will always generate a four-field
+//   version number. Example: "3, 12, 2" and "3, 12, 2, 0"
+//   will generate the same version number, namely "3.12.2.0"
+
+#define vName            "PRZM"
+#define Build_Dir        "E:\\5\\3przm\\7.src\\\0"
+
+#define Version_numbers   3, 12, 3
+#define Version_String   "3.12.3"
+#define Vdate            "PRZM " Version_String " (May 2006)\0"
+#define Build_Text       "przm v "  Version_String  " [0], build of 2006-05-16 09:17:36.\0"
+
+//icon1                    ICON DISCARDABLE "C:/OldComputerSetup/921573/e/5/3przm/7.src/build.ico"
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION  Version_numbers
+ PRODUCTVERSION Version_numbers
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "CEAM Release\0"
+            VALUE "CompanyName", "U.S. Environmental Protection Agency, Office of Research and Development\0"
+            VALUE "FileDescription", "Pesticide and Nitrogen Fate in the Crop Root and Unsaturated Soil Zones.\0"
+            VALUE "FileVersion", Version_String
+            VALUE "InternalName", "PRZM\0"
+            VALUE "LegalCopyright", "Public Domain\0"
+            VALUE "LegalTrademarks", "Product of United States Government\0"
+            VALUE "OriginalFilename", "przm3123.exe\0"
+            VALUE "PrivateBuild", Build_Text
+            VALUE "ProductName", "Pesticide Root Zone Model\0"
+            VALUE "ProductVersion", Build_Text
+            VALUE "SpecialBuild", "Lahey/Fujitsu Fortran 95 Compiler Release 7.10.02\0"
+//            VALUE "SpecialBuild", "Lahey/Fujitsu Fortran 95 Compiler Release 7.10.02; Compiler Options: ?f95flags?\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // XLIB
+

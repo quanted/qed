@@ -1,0 +1,198 @@
+
+
+
+U.S. Geological Survey                                     wdm(1)
+
+
+
+NAME
+     wdm - Watershed Data Management file system
+
+ABSTRACT
+     The Watershed Data Management (WDM) system provides a
+     systematic approach to the storage and retrieval of data
+     required to operate hydrologic, hydraulic, and water-quality
+     models.  The WDM system uses a well-defined binary, direct-
+     access file structure accessed through a library of routines
+     to create a file, add data to the file, replace data in the
+     file, get data from the file and delete data from the file.
+     Five categories of data may be stored in WDM file data sets:
+     time series, tables, text, vectors, and space-time.  A
+     comprehensive set of attributes is available for documenting
+     and describing individual data sets.
+
+     The WDM library of routines enables expedient input, update,
+     and output of data.  WDM files allow comprehensive
+     specification of data attributes, multiple time steps in
+     single time-series data sets, user-defined formats for data
+     stored as tables, compression of data, improved speed and
+     flexibility of interaction between a model and its data
+     base, and automatic file maintenance as the user adds,
+     modifies, or deletes data sets.  The WDM system allows
+     multiple models, requiring different data types and data
+     with different time steps, to use a common data base.
+
+     The WDM library is included in the LIBANNE distribution.  It
+     requires the UTIL and ADWDM libraries from the LIBANNE
+     distribution.
+
+METHOD
+     A WDM file is a binary, direct-access file used to store
+     hydrologic, hydraulic, meteorologic, water-quality, and
+     physiographic data.  The WDM file is organized into data
+     sets.  Each data set contains a specific type of data, such
+     as streamflow at a specific site or air temperature at a
+     weather station.  Each data set contains attributes that
+     describe the data, such as station identification number,
+     time step of data, latitude, and longitude.  A WDM file may
+     contain a single data set or as many as 200,000 data sets.
+     A data set may be described by a few attributes or by
+     hundreds of attributes.  Data can be added, deleted, and
+     modified without restructuring the data in the file.  Space
+     from deleted data sets is reused.
+
+HISTORY
+     The original design and implementation of time-series data
+     sets in the WDM file was a cooperative effort between the
+     USGS and the Soil Conservation Service in 1983.  The USGS
+     and EPA have implemented the tables, text, vectors, and
+     space-time data sets since then.  Originally implemented on
+
+
+
+                  Last change: 25 February 2002                 1
+
+
+
+
+
+
+U.S. Geological Survey                                     wdm(1)
+
+
+
+     Prime and Vax minicomputers and MS-DOS compatible personal
+     computers (1983-1991).
+
+     Version 4.0  2002/02/25 - The name of the lib library
+        distribution changed to libanne.  See libanne
+        documentation for details.
+
+     Version 3.1 1996/12/11 - Added new subroutine WDBSGL to
+        retrieve latitude and longitude from a data set.
+
+     Version 3.0 1996/03/01 - Include file names changed to lower
+        case.  Corrected the valid minimum for attribute JANMIN
+        (changed from 0.0 to no lower limit).
+
+     Version 2.1 1994/08/11 - Updates
+
+     Version 2.0 1994/05/27 - General release
+
+     Version 1.0 1992 - General release, ported to UNIX platform.
+
+     NOTE:  Version numbers and dates are for the entire set of
+           libraries.  A new version does not necessarily
+           indicate that the WDM library has been changed.
+
+SYSTEM REQUIREMENTS
+     WDM is written in Fortran 77 with the following extension:
+     use of include files. The WDM library requires the ADWDM and
+     UTIL libraries.
+
+APPLICATIONS
+     The WDM file was initially created for use by the program
+     ANNIE for storage, manipulation, graphical display, and
+     statistical analysis of watershed data.  With the
+     implementation of other programs capable of accessing data
+     stored in WDM files, each WDM file serves as a common data
+     base from which data are shared among multiple applications
+     and across different computer platforms.  Examples of
+     programs using WDM files include DR3M, HSPF, PRMS, and
+     SWSTAT, which performs the statistical analyses previously
+     found in ANNIE.
+
+DOCUMENTATION
+     A subroutine reference guide is provided with the
+     distribution.
+
+     Lumb, A.M., Carsel, R.F., and Kittle, J.L., Jr., 1988, Data
+        management for water-quality modeling development and
+        use:  Proceedings of the International Conference on
+        Interactive Information and Processing Systems for
+        Meteorology, Oceanography, and Hydrology.
+
+
+
+
+
+                  Last change: 25 February 2002                 2
+
+
+
+
+
+
+U.S. Geological Survey                                     wdm(1)
+
+
+
+REFERENCES
+     Flynn, K.M., Hummel, P.R., Lumb, A.M., and Kittle, J.L.,
+        Jr., 1995, User's manual for ANNIE, version 2, a computer
+        program for interactive hydrologic data management:  U.S.
+        Geological Survey Water-Resources Investigations Report
+        95-4085, 211 p.
+
+     Landers, M.N., Mueller, D.S., and Martin, G.R., 1996, Bridge
+        scour data management system user's manual: U.S.
+        Geological Survey Open-File Report 95-754, 72 p.
+
+     Lumb, A.M., McCammon, R.B., and Kittle, J.L., Jr., 1994,
+        Users manual for an expert system (HSPEXP) for
+        calibration of the Hydrologic Simulation
+        Program--Fortran:  U.S. Geological Survey Water-Resources
+        Investigations Report 94-4168, 102 p.
+
+CONTACTS
+     Operation and Distribution:
+        U.S. Geological Survey
+        Hydrologic Analysis Software Support Program
+        437 National Center
+        Reston, VA 20192
+
+        h2osoft@usgs.gov
+
+     Official versions of U.S. Geological Survey water-resources
+     analysis software are available for electronic retrieval via
+     the World Wide Web (WWW) at:
+
+                http://water.usgs.gov/software/
+
+     and via anonymous File Transfer Protocol (FTP) from:
+
+                water.usgs.gov (path: /pub/software).
+
+     The WWW page and anonymous FTP directory from which the
+     LIBANNE software can be retrieved are, respectively:
+
+                http://water.usgs.gov/software/libanne.html
+                              --and--
+                /pub/software/general/libanne
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  Last change: 25 February 2002                 3
+
+
+

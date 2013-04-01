@@ -1,0 +1,300 @@
+
+ Version    Date    Description
+ -------  --------  ---------------------------------------------------------
+   4.0    02/02/25  Changes and corrections in graphics related to font
+                    and color. Added new fonts for the PC version (gksint.f
+                    and parmpc.seq).  Corrected how code determined the
+                    font that would be used for the screen and plotter
+                    (agplot.f).  Corrections in awstat for problems in
+                    frequency computations when season attributes were
+                    missing from data set, TSTYPE was missing or not
+                    recognized, and negative parameter values were being
+                    reported for low flows.  Frequency computations were
+                    enhanced to compute the 3-year recurrance interval
+                    and to optionally save new attributes L07050, L07100,
+                    and L04003 to the WDM file.
+
+          01/05/29  Corrected calculations for last available group for
+                    attribute data and time series data.  User-specified
+                    min and max for a probability axes will now be
+                    forced to be symetrical about 0; addtional help
+                    information added for min and max fields.  Miscellaneous
+                    spelling corrections.
+
+                    Code group wdmess was modified to correctly
+                    recognize that there was still available space
+                    to add an attribute value to a data set.  Code
+                    group wdtms1 was modified so that the last data
+                    group in a time series data set was recognized
+                    and to retrieve the data from that group; earlier
+                    version correctly stored data in the last group
+                    but would not retrieve it using the wdtget
+                    routine (data could be exported).
+
+                    Code group agplot modified to force user-specified
+                    limits for probablility axis to be symetrical about
+                    0, with the maximum value equal to the maximum of
+                    the absolute values of minimum and maximum and the
+                    minimum the negative of the maximum.
+
+          01/01/16  Added attributes DATCRE, DATMOD, P1.5, and P2.33.
+                    All wdm data sets will now contain the date the data
+                    set was created and the date it was last modified.
+                    Resolved conflict introduced by GenScn program
+                    between index numbers used for DATCRE and DATMOD and
+                    for SEADBG and SEADND.  Fixed problems in frequency
+                    code with maximum number of plot files that can be
+                    produced and with images being drawn too big for the
+                    page.  wdmrx enhanced to check for problems in wdm
+                    files and, when possible, to resolve them.
+
+                    In version 3.2, two new attributes were introduced.
+                    they are used by the SWSTAT program.  SEADBG (443)
+                    is the starting day of a season and SEADND (444)
+                    is the ending day of a season.  They are used in
+                    combination with SEASBG AND SEASND.  The index
+                    numbers used for these attributes conflicted with
+                    attributes DATCRE and DATMOD which were added for
+                    GenScn to document the dates a data set was created
+                    and last modified, respectively.  The index numbers
+                    for SEADBG and SEADND are now 446 and 447.  If you
+                    have wdm files that were created using version 3.2
+                    of swstat, you will need to run the wdmrx program
+                    to correct these attributes before you use any other
+                    applications to analyze the data sets.  The wdmrx
+                    program is a part of the libanne distribution.   For
+                    convenience, wdmrx is also included in the swstat
+                    and annie distributions, see swstat or annie at
+                    http://water.usgs.gov/software/.
+
+          99/07/30  The name of the lib library distribution changed to
+                    libanne.  The libraries specific to hspf (hspf, newaqt,
+                    and hspnodss) that were a part of lib are now found in
+                    the libhsp distribution.  A problem with small negative
+                    numbers in export files has been resolved.  A few minor
+                    changes were made in the code with respect to Y2K.  Some
+                    new routines added to library and some code rearranged.
+                    Miscellaneous minor corrections and cleanups.
+
+                    Corrected problem introduced with June 29, 1998 revision
+                    in wdexpt.f, which caused some small negative numbers to
+                    be exported as "*****".
+
+                    In adwdm/utwdt1.f, prec was incorrectly checked for a
+                    maximum of 200,000 as the maximum number of data sets.
+                    Since 200,000 is actually a hex constant, the code was
+                    updated to a value of 2,097,152. (jlk)
+
+                    There were a number of changes made in awstat/a193.f to
+                    clarify the code.  Subroutine pra193 was reorganized
+                    into subroutines pra193, lgpfit, lgpst1, lgpst2, and
+                    lgpplt.  
+
+                    In awstat/stutil.f, the routines dsinf1, dsinf2, and
+                    gtinfo were added.
+
+                    There were a couple of changes in graph.  In grgks.f,
+                    removed call to gqchb; this was informational and is
+                    not found in gligks.  In grsyux.f, commented out call
+                    to gesc and added dummy gprec routine for gligks.
+
+                    In util/utdate.f, added routines gtmonc, dhleap, dhbegn,
+                    dhincr, and dbndry.  In util/utscdg.f, changed key,
+                    escape, arrow, and keypad from integer*2 to integer.
+
+                    In waide/qtfils.f added reopen and stflop.  In
+                    waide/tstabl, changed declaration of bad from integer
+                    to real in tbspec.  Added new code group atsave.f.
+
+                    In wdm/wdexpt.f, changed export format from 1pg12.6 to
+                    g12.6.  In wdm/wdtms3.f, changed zipr to zipi to
+                    initialize qval in wdtgtq.
+
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ NOTE:  In July, 1999, the name of the library distribution changed from 
+        lib to libanne.  The hspf, newaqt, and hspnodss libraries used by
+        the hspf model are now found in the libhsp distribution.
+
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   3.2    98/06/29  Corrected problem introduced with April 6, 1998 revision
+                    in wdexpt.f, which increased the precision of data values
+                    exported from wdm time-series data sets.  wdimpt.f has
+                    been modified to correctly read the exported data values.
+                    In some cases the leftmost significant digit of data
+                    values was not read (for example, 0.01 may have been
+                    read as 0.0).
+
+   3.2    98/03/06  Modified util/utdate.f to correct problem with determining
+                    the earliest or latest date from an array of dates.
+                    Modified wdm/wdimpt.f to clarify a warning message.
+                    Modified hspf/posvm.inc, which had a dimension that limited
+                    the number of quality constituents that could be modeled
+                    Modified adwdm/attr251.seq and attr401.seq for changes
+                    related to swstat program.  Modified wdm/wdexpt.f to
+                    change the precision of data values exported from wdm
+                    time-series data sets.  Modified awstat/tscmpr.f to
+                    correctly calculate total mean absolute error and root
+                    mean square error (both percents.)
+
+                    In utdate.f, the subroutine dlimit was incorrectly finding
+                    the earliest (or latest) date in an array of dates.  The
+                    correct value was returned only if it happened to be the
+                    first or last date in the array.  This is now corrected to
+                    find the date anywhere in the array.  This change will 
+                    affect any program that used this subroutine, in particular
+                    annie and swstat.
+
+                    In wdimpt.f, subroutine prwmti, any non-zero return code
+                    would cause an error message to be printed.  In many
+                    cases, no real problem existed, so the error was changed
+                    to a warning.  This message was noticed in annie and wdimex
+                    when importing data sets into a wdm file.
+
+                    In posvm.inc, the parameter posvsz was set to 2500.  It
+                    has been increased to 6000.  When quality was being
+                    simulated, 2500 was not large enough to hold all the
+                    parameters for each rchres needed in the osvm array
+                    (cosv.inc).  This problem could be seen in the programs
+                    hspf, hspexp, and genscn.
+
+                    Added text to definition of attributes SEASBG and SEASND
+                    in attr251.seq.  Added attributes SEADBG and SEADND to
+                    attr401.seq.  SEASBG and SEASND define the start and end
+                    months of a year or season.  SEADBG and SEADND have been
+                    added to further defind the season or year to specific
+                    beginning and ending days.
+
+                    When data was being exported from time-series data sets,
+                    the precision being used was 4 significant digits.
+                    This had been adequate for the applications that used
+                    the data in the past.  Recently, some users have found
+                    that they need greater precision.  The software will
+                    now generate data to 6 significant digits.  The output
+                    format was modified in wdm/wdexpt.f
+
+                    When two time series were being compared, the total
+                    mean absolute error (percent) and root mean square
+                    error (percent) were being incorrectly computed
+                    (awstat.tscmpr.f).  It can be observed that the
+                    values originally computed were not consistent with
+                    the values computed for the individual classes.
+             
+
+   3.1    96/12/11  Modified util/utgnrl.f and wdm/wdatru.f.
+
+                    The function CNVTDG in util/utgnrl.f is used to
+                    convert degree-minute-second latitudes and longitudes
+                    to decimal degrees.  This function was calculating
+                    values that were off by a factor of 10.  The function
+                    has been re-written to correctly convert the values.
+                    This function was known to be used by the peakfq, glsnet,
+                    and metcmp programs.  However, in most cases, latitude
+                    and longitude are provided in decimal degrees, and
+                    the function was not called.  See the program-specific
+                    documentation for glsnet and peakfq for information on
+                    any problems that may need to be addressed.
+
+                    The new subroutine WDBSGL was added to wdm/wdatru.f.
+                    This subroutine can be called to retrieve the latitude
+                    and longitude from a wdm data set.  The subroutine will
+                    first attempt to retrieve decimal degrees from attributes
+                    LATDEG (54) and LNGDEG (55).  If there is a problem
+                    with either LATDEG or LNGDEG, the subroutine will look for
+                    attributes LATDMS (8) and LNGDMS (9) and convert them to
+                    decimal degrees.  If there is a problem with either LATDMS
+                    or LNGDMS, the subroutine will look for attributes LATCTR
+                    (96) and LNGCTR (97).  If none of these attributes are
+                    present, the subroutine will return 0.0 for LAT and LNG
+                    and the RETCOD from the attribute retrieval that failed.
+
+   3.0.1  96/07/12  Change made to subroutine GPM in gksint.f in graph.f.
+                    GPM used to call a routine called GMARKR, which is
+                    no longer included in newer copies of interactor.
+                    So instead of keeping two different versions of
+                    gksint.f for the two versions of interactor, calls
+                    to GMARKR have been changed to GMARK1, which is
+                    a part of code group grmark.  Note that this change
+                    is applicable only to versions of the program that
+                    use the interactor library for graphics.
+
+   3.0    04/15/96  Modified subroutine GSUTPW in grgks.f.  There was
+                    a problem with designating an output device in many
+                    applications that use graph.  If the user first drew
+                    the plot on the screen and then modified the output
+                    device to cgm, everything worked fine.  However, if
+                    the user initially selected cgm for the ouput device,
+                    there was a floating point exception and the program
+                    crashed.  The corrections were made specific to the
+                    Prior gks library on the Data General.  This problem
+                    may not exist for cgm files using other gks libraries.
+
+   3.0    03/01/96  Modified subroutine ucirea to resolve problems opening
+                    files identified in a uci file.  Code now checks to
+                    see if a file is already open, file is closed if
+                    it is open and then re-opened.  Problems had been
+                    encountered with Fortran 90 compilers that objected
+                    to opening an already open file.  The problem was
+                    only apparent in program hspexp.
+
+   3.0    01/17/96  Corrected minimum value for attribute JANMIN in
+                    attr051.seq.  Also made a couple of minor editing
+                    corrections.
+
+                    The minimum value had been defined as 0.0, this
+                    was changed to no minimum value (-999).
+
+                    NOTE:  this correction will affect message files
+                           in many programs.
+
+   3.0    08/10/95  Modified subroutine wdtput, constant ALLFLG was
+                    changed from 1 to 0.  This affects how new data
+                    overwrites existing data.
+
+                    subrroutine grsygn.f was deleted,  Uses grsyux.f
+                    instead.
+
+   3.0    06/13/95  made all include file names lower case, resolved any
+                    shared include
+
+   3.0    06/05/95  sequential files used by src/ann code groups were
+                    moved from annie to msg/ann
+
+   3.0    05/18/95  Revised how text is written to plot.
+
+   3.0    03/30/95  Correction made in hspf simulation of evapotranspiration.
+
+                    There was a problem in subroutine ETLZON with the check
+                    to see if there was enough storage in the lower zone
+                    to meet the potential.  If not, LZET had been set to
+                    the current lower zone storage (LZS), completely emptying
+                    the storage, causing an underflow to occur in subroutine
+                    SURFAC.  The code was modified to set LZET to LZS - 0.02,
+                    leaving a small amount in storage.
+
+                    Code group src/hspf/hperwat.f was modified.
+
+   3.0    11/11/94  Miscellaneous changes.
+
+                    Renamed system-dependent time routines to resolve conflict
+                    with COE library routine juldat.  The following system
+                    dependent routines are found in dttm[dc dg pc pr sg sn].f
+                    in the util directory;
+
+                              DATNOW --> SYDATM
+                              JULDAT --> SYDATE
+                              GETIME --> SYTIME
+
+                    Code group aide/qtprin.f split into aide-dependent code
+                    group aide/prtaid.f and non-aide-dependent adwdm/prtfil.f.
+
+                    Routines FLSETC, QSTBUF, QSTBFB, QGTBUF, & QGTBFB added
+                    to qtstgt.f.
+
+   3.0    10/10/94  Miscellaneous changes.
+
+                    Increased the maximum number of fields on a screen from
+                    60 to 180.
+
+                    Added new callback routines.

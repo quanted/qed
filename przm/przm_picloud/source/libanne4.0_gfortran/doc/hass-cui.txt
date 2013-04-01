@@ -1,0 +1,990 @@
+
+
+
+U.S. Geological Survey                                hass-cui(1)
+
+
+
+NAME
+     hass-cui - Character-Based User Interface Used by HASS
+
+ABSTRACT
+     A character-based user interface (CUI) has been used for
+     various programs supported by the Hydrologic Analysis
+     Software Support (HASS) Program to enhance and facilitate
+     program use.  The interface provides for consistent user
+     interaction across hydrologic applications.  The system was
+     designed for ease of programming and for portability to
+     mini-computers and PC's as well as UNIX workstations.
+
+USER INTERFACE
+     Program interaction takes place in a screen 80 characters
+     wide by 24 characters high.  Figure 1 shows the basic screen
+     layout.  Each screen consists of a list of available
+     commands displayed at the bottom of the screen and one or
+     more boxed-in areas that are referred to as panels. Commands
+     are used to obtain additional information and to move
+     between screens. There are three types of panels--data,
+     assistance, and instruction. The data panel displayed at the
+     top of the screen is always present. Data panels contain
+     menus, forms, tables, and text to permit user interaction
+     with the program. An assistance panel may be present
+     depending on user or program assignments. When present, the
+     assistance panel is displayed below the data panel (usually
+     as the middle panel) and contains textual information, such
+     as help messages, valid range of values, and details on
+     program status. The instruction panel is displayed above the
+     available commands when the user is expected to interact
+     with the program. When present, the instruction panel
+     contains information on what keystrokes are required to
+     interact with the program.
+
+     Each screen can be identified by a name and the path
+     selected to reach the screen. The screen name appears in the
+     upper left corner of the data panel, where the words "screen
+     name" appear in figure 1. The first screen displayed by the
+     program is named "Opening screen". All subsequent screens
+     are named based on the menu option or program sequence that
+     caused the current screen to be displayed. Screen names are
+     followed by "(path)", a string of characters consisting of
+     the first letter(s) of the menu options selected in order to
+     arrive at the current screen. In some cases, descriptive
+     text may follow the path to further help identify the
+     screen. The path can aid in keeping track of the position of
+     the current screen in the menu hierarchy. For example, "Open
+     (FO)" indicates that the menu option Open was selected
+     previously and that the path to this screen from the
+     "Opening screen" consisted of two menu selections--File and
+     Open.
+
+
+
+
+                     Last change: 29 May 2001                   1
+
+
+
+
+
+
+U.S. Geological Survey                                hass-cui(1)
+
+
+
+Figure 1.  Basic screen layout
++-screen name (path)------------------------program name and version-+
+|                                                                    |
+|                                                                    |
+|                                                                    |
+|                                                                    |
+|                             Data panel                             |
+|                                                                    |
+|                                                                    |
+|                                                                    |
+|                                                                    |
+|                                                                    |
++--------------------------------------------------------------------+
++-assistance type----------------------------------------------------+
+|                                                                    |
+|                          Assistance panel                          |
+|                                                                    |
+|                                                                    |
++--------------------------------------------------------------------+
++-instruction type---------------------------------------------------+
+|                                                                    |
+|                          Instruction panel                         |
+|                                                                    |
++--------------------------------------------------------------------+
+Help:F1  Accept:F2  Prev:F4  Limits:F5  Intrpt:F6  Quiet:F8  Cmhlp  Oops
+
+
+
+      Table 1. hass-cui commands
+      ----------------------------------------------------------
+                 Associated
+      Command   keystrokes* Description
+      ----------------------------------------------------------
+         Help      F1       Displays help information in the
+                   or ;h    assistance panel. The help
+                            information is updated as the user
+                            moves from field to field in the
+                            data panel or to a different
+                            screen. The program automatically
+                            closes the assistance panel if a
+                            screen is displayed for which no
+                            help information is available.
+
+        Accept     F2       Indicates that you have "accepted"
+                   or ;a    the input values, menu option
+                            currently highlighted, or text
+                            message in the data panel.
+                            Selection of this command causes
+                            program execution to continue.
+
+
+
+
+
+
+                     Last change: 29 May 2001                   2
+
+
+
+
+
+
+U.S. Geological Survey                                hass-cui(1)
+
+
+
+        Cmhlp      F3c      Displays brief descriptions of the
+                   or ;c    commands available on the screen.
+
+         Oops      F3o      Resets all data fields in an input
+                   or ;o    form to their initial values.
+
+         Dnpg      F3d      Displays next "page" of text in
+                   or ;d    data panel. Available when all of
+                            the text cannot be displayed at one
+                            time.
+
+         Uppg      F3u      Redisplays previous "page" of text
+                   or ;u    in data panel. Available after
+                            execution of Dnpg (F3d).
+
+         Prev      F4       Redisplays a previous screen. Any
+                   or ;p    modifications in the data panel are
+                            ignored. Which screen is the
+                            previous one may be ambiguous in
+                            some cases.
+
+        Limits     F5       Displays valid ranges for numeric
+                   or ;l    fields and valid responses for
+                            character fields. As with the Help
+                            command, information on field
+                            limits is updated as the user moves
+                            from field to field in the data
+                            panel or to a different screen by
+                            using the arrow keys or the Enter
+                            (Return) key.
+
+        Intrpt     F6       Interrupts current processing.
+                   or ;i    Depending on the process, returns
+                            the program to the point of
+                            execution prior to the current
+                            process or advances to the next
+                            step in the process.
+
+        Status     F7       Displays program status
+                   or ;s    information.
+
+        Quiet      F8       Closes the assistance panel.
+                   or ;q    Available when the assistance panel
+                            is open.
+
+         Xpad      F9       Opens the assistance panel as a
+                   or ;x    "scratch pad."  Text entered in the
+                            scratch pad is saved in a file
+                            called "XPAD.DAT".
+      ----------------------------------------------------------
+      * The function keys will execute the commands on most
+      computer systems. On all computer systems, the semicolon
+
+
+
+                     Last change: 29 May 2001                   3
+
+
+
+
+
+
+U.S. Geological Survey                                hass-cui(1)
+
+
+
+      key (";") followed by the first letter (upper or lower
+      case) of the command can be used to execute the commands.
+      The F3 function key may not be available on some systems.
+
+      Commands
+
+      The screen commands and their associated keystrokes are
+      described in table 1. A subset of the screen commands is
+      available for any given screen. Most commands can be
+      executed by pressing a single function key. (The
+      designation for a function key is "F#" where # is the
+      number of the function key.) All of the commands can be
+      executed in "command mode". Command mode is toggled on and
+      off by pressing the semicolon (;) key. In command mode, any
+      command can be executed by pressing the first letter of the
+      command name; for example, "o" or "O" for the Oops command.
+      When commands are discussed in this report, the command
+      name is spelled out with the function key or keystroke
+      given in parentheses. For example, Accept (F2) is the most
+      frequently used command.
+
+      Use Help (F1) and Limits (F5) to obtain additional
+      information about the current screen and use Status (F7) to
+      obtain information on the state of the program. Cmhlp (;c)
+      will display information on the available commands. Use
+      Quiet (F8) to close the assistance panel. To move between
+      screens, use Accept (F2), Prev (F4), Intrpt (F6), Dnpg
+      (;d), Uppg (;u), or Top (F10). To reset the values in the
+      data panel, use Oops (;o). Xpad (F9) is used to save typed
+      information in a file called XPAD.DAT.
+
+      Data Panel
+
+      There are four types of data panels--menu, form, table, and
+      text. Menus offer a choice of two or more options. Data
+      values are entered or modified in one or more data fields
+      of a form or table. General or specific information,
+      program progress, messages, and results of analyses may be
+      displayed in a text data panel. The data panel appears at
+      the top of the screen, as shown in figure 1. There are 16
+      rows in the data panel when the assistance panel is closed
+      and 10 rows when the assistance panel is open.
+
+      A single option is selected from a menu that consists of
+      two or more options. There are two ways to select a menu
+      option. Either press the first letter (not case sensitive)
+      of the menu option; if more than one menu option begins
+      with the same letter, press in sequence enough characters
+      to uniquely identify the option; or use the arrow keys to
+      move the cursor to the option and then execute Accept (F2).
+
+      Forms may contain any number and combination of character,
+
+
+
+                     Last change: 29 May 2001                   4
+
+
+
+
+
+
+U.S. Geological Survey                                hass-cui(1)
+
+
+
+      numeric, file name, or option fields. Character fields may
+      be a variable entry, such as a descriptive text string
+      (case sensitive), or they may require a specific entry,
+      such as "yes" or "no" (not case sensitive). The text string
+      "none" in a field indicates that the field is currently
+      undefined.  Option fields are activated and deactivated by
+      positioning the cursor in the option field and pressing any
+      key, such as the space bar. Use arrow keys to move up,
+      down, and laterally between fields. The Enter (Return) key
+      is used to move forward through fields.  Use Accept (F2) to
+      accept the entered and modified data and continue with the
+      program.  Executing Oops (;o) sets all fields in the
+      current screen to their initial values. Executing Prev (F4)
+      will cause the data values entered on the current screen to
+      be ignored and the previous screen to be redisplayed.
+
+      Tables may contain any number and combination of character,
+      numeric, and file name columns. As with forms, character
+      fields may require a specific entry or a variable entry.
+      Use arrow keys to move up, down, and laterally between
+      fields. The Enter (Return) key is used to move forward
+      across rows and to the next row. Some tables may contain
+      more rows than can be displayed in the 10 or 16 rows of the
+      data panel. In these cases, the table is divided into
+      multiple screens. Use Accept (F2) to move forward through
+      each of the screens for the table and to continue with the
+      program after the last screen of the table. Executing Oops
+      (;o) sets all fields in the current screen to their initial
+      values.  Executing Prev (F4) will cause the data values
+      entered on the current screen to be ignored and the
+      previous screen to be redisplayed. Executing Intrpt (F6)
+      will cause the data values entered on the current screen to
+      be ignored and the remaining screens in the table to be
+      skipped. Use Quiet (F8) to close the assistance panel and
+      view the 16 lines of the data panel.
+
+      A text data panel may contain a warning or error message, a
+      tabular list of data, a progress message for an activity
+      that may take more than a few seconds, or other general
+      information. Execute Accept (F2) to continue to the next
+      screen. In cases where the displayed text requires more
+      lines than the number available in the data panel, the Prev
+      (F4), Dnpg (;d), and Uppg (;u) commands may be available to
+      move forward and backward (scroll) through the screens.
+      Note that the up and down arrows also may be used to move
+      through the screens. Intrpt (F6) may be available to permit
+      skipping the remaining screens of text.
+
+      Assistance Panel
+
+      The assistance panel provides information to help the user
+      enter data in the data panel or to allow note taking during
+
+
+
+                     Last change: 29 May 2001                   5
+
+
+
+
+
+
+U.S. Geological Survey                                hass-cui(1)
+
+
+
+      a program session. The panel appears in the middle of the
+      screen below the data panel. A name corresponding to the
+      type of assistance being provided displays in the upper
+      left corner of the panel, where the words "assistance type"
+      appear in figure 1. The Help (F1), Limits (F5), Status
+      (F7), Cmhlp (;c), and Xpad (F9) commands open the
+      assistance panel. The program may open the assistance panel
+      to display status information. Help and Limits provide
+      information about the current screen and data fields;
+      Status provides information about the current process;
+      Cmhlp provides information about the available commands;
+      and Xpad provides a "note pad" for making notes in the file
+      XPAD.DAT. Use Quiet (F8) to close the assistance panel.
+
+      Assistance panels display four lines at a time. In cases
+      where the assistance information is greater than four
+      lines, the cursor moves into the assistance panel. Use the
+      up and down arrow keys to scroll through the information.
+      If available, the Page Down and Page Up keys may be used to
+      page through the information. Use the command mode toggle
+      (;) to put the cursor back in the data panel.
+
+      Instruction Panel
+
+      The instruction panel provides information on how to
+      interact with the current screen, such as how to enter data
+      or how to advance to another screen. This panel appears at
+      the bottom of the screen just above the screen commands
+      (fig. 1). The instruction panel is present whenever the
+      program requires input from the user. Up to four lines of
+      text are displayed in an instruction panel. If an invalid
+      keystroke is entered, the information in the instruction
+      panel is replaced with an error message. In this case, the
+      panel name (upper left hand corner) changes from the usual
+      "INSTRUCT" to "ERROR." Once a valid keystroke is entered,
+      the Instruct panel is redisplayed.
+
+
+SPECIAL FILES
+     Three files are associated with the interaction between the
+     user and the program. System defaults that control how the
+     program operates can be overridden by setting parameters in
+     the optional TERM.DAT file. A session record is written to
+     the PROGRAM_NAME.LOG file each time the program is run; all
+     or portions of this file can be used as input to the program
+     at a later time. Error and warning messages, as well as some
+     additional information, may be written to the file
+     ERROR.FIL.
+
+     System Defaults--TERM.DAT
+
+     Certain aspects of the appearance and operation of the
+
+
+
+                     Last change: 29 May 2001                   6
+
+
+
+
+
+
+U.S. Geological Survey                                hass-cui(1)
+
+
+
+     program are controlled by parameters within the program.
+     These parameters specify things such as the computer system
+     type, graphic output type, terminal type, program response
+     to the Enter key, and colors. Each parameter is set based on
+     the preferences of users who tested the program.  The preset
+     values can be overridden by creating a TERM.DAT file in the
+     directory where the program is initiated (the current
+     working directory). The available parameters and the format
+     of the TERM.DAT file are described in Appendix B. If a
+     TERM.DAT file does not exist in the current directory, the
+     message "optional TERM.DAT file not opened, defaults will be
+     used" is displayed briefly when the program starts. If the
+     TERM.DAT file is present, the message "reading users system
+     parameters from TERM.DAT" is displayed.
+
+     Session Record--PROGRAM_NAME.LOG
+
+     The keystrokes entered during a program session are recorded
+     in the PROGRAM_NAME.LOG file.  Each time the program is run,
+     an PROGRAM_NAME.LOG file is created; if one already exists
+     in the current directory, it is overwritten. All or part of
+     this file can be used as input to the program as a means of
+     repeating the same or similar tasks. To do this, first save
+     the PROGRAM_NAME.LOG file under a different name. Modify the
+     file to contain only the sequence of commands that need to
+     be repeated. Then, at any point in a subsequent program
+     session, press "@"; a small file name panel appears; type
+     the name of the log file and press the Enter key. Appendix B
+     describes the use and format of the PROGRAM_NAME.LOG file.
+
+     Error and Warning Messages--ERROR.FIL
+
+     Any error or warning messages produced during a program
+     session are written to the ERROR.FIL file. Each time the
+     program is run, an ERROR.FIL file is created; if one already
+     exists in the current directory, it is overwritten.
+     Diagnostic and summary reports also may be written to this
+     file. Examine ERROR.FIL if an unexpected program response is
+     encountered.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                     Last change: 29 May 2001                   7
+
+
+
+
+
+
+U.S. Geological Survey                                hass-cui(1)
+
+
+
+     Table 2.1. MENCRA values and corresponding program
+                response
+     ------------------------------------------------------------
+     MENCRA   Data panel             Program response
+               contents            when Enter is pressed
+     ------------------------------------------------------------
+     NEXT   menu           Same as if Accept (F2) were executed:
+                           the highlighted menu option is
+                           selected and the program advances to
+                           the next screen.
+
+            form           For all but the last field on the
+                           form, causes the cursor to advance to
+                           the next field. For the last field on
+                           the form, the response is the same as
+                           for Accept (F2)--the program advances
+                           to the next screen. (Note: usually
+                           the rightmost, lowest field is the
+                           "last" field in the form.
+                           Occasionally, however, it is not!)
+
+            table          For each row, the cursor advances
+                           across the fields in the row. For all
+                           but the last row, the cursor advances
+                           from the last field in the row to the
+                           first field of the next row. For the
+                           last row, the cursor advances to the
+                           beginning of the last row. (Use
+                           Accept (F2) to advance to the next
+                           page of the table.)
+
+            text           Same as if Accept (F2) were
+                           executed--the program advances to the
+                           next screen.
+
+     NONE   menu           No effect--it is ignored.
+
+            form           Cursor is advanced to the next field.
+                           When the cursor is in the last field,
+                           the cursor cycles back to the first
+                           field.
+
+            table          For each row, the cursor advances
+                           across the fields in the row. For all
+                           but the last row, the cursor advances
+                           from the last field in the row to the
+                           first field of the next row. For the
+                           last row, the cursor advances to the
+                           beginning of the last row. (Use
+                           Accept (F2) to advance to the next
+                           page of the table.)
+
+
+
+
+                     Last change: 29 May 2001                   8
+
+
+
+
+
+
+U.S. Geological Survey                                hass-cui(1)
+
+
+
+
+            text           No effect--it is ignored.
+
+     DOWN   menu           Same as if the down arrow were
+                           pressed: the highlight bar moves to
+                           the next menu option. When the
+                           highlight bar is on the last menu
+                           option, it returns to the first menu
+                           option.
+
+            form           Cursor is advanced to the next field.
+                           When the cursor is in the last field,
+                           the cursor cycles back to the first
+                           field.
+
+            table          For each row, the cursor advances
+                           across the fields in the row. For all
+                           but the last row, the cursor advances
+                           from the last field in the row to the
+                           first field of the next row. For the
+                           last row, the cursor advances to the
+                           beginning of the last row. (Use
+                           Accept (F2) to advance to the next
+                           page of the table.)
+
+            text           No effect--it is ignored.
+     ------------------------------------------------------------
+
+     Many of the TERM.DAT parameters control graphical output and
+     give the user the opportunity to change graphics devices,
+     text fonts, symbol sizes, and background color. The values
+     assigned to the graphics parameters depend on the software
+     library used for graphics generation. On UNIX-based
+     computers, the Graphical Kernel System (GKS) is used. The
+     user should note that the graphics parameter values used for
+     GKS as supplied by different vendors will not be the same;
+     the documentation for the user's implementation of GKS
+     should be consulted. On DOS-based computers, the INTERACTER
+     graphics library from Interactive Software Services is used
+     for graphics generation. See the README file distributed
+     with the program for the most current information on
+     producing graphical output using INTERACTER.
+
+     Table 2.2 lists TERM.DAT parameters with their allowable
+     values and their default values when using the program on a
+     DOS-based computer, on a Data General computer under DG/UX,
+     and on other UNIX-based computers. Table 2.3 lists TERM.DAT
+     parameters specific to screen color assignment on DOS-based
+     computers. The final table, 2.4, shows an example TERM.DAT
+     file that modifies the background color of the graphics
+     screen display from the default of black to a shade of
+     purple.
+
+
+
+                     Last change: 29 May 2001                   9
+
+
+
+
+
+
+U.S. Geological Survey                                hass-cui(1)
+
+
+
+     Table 2.2. TERM.DAT parameters
+     ------------------------------------------------------------------
+                Default values
+              -------------------
+     Parameter DOS  DG/UX Other  Valid
+      keyword              UNIX  values          Description
+     ------------------------------------------------------------------
+     TRMTYP   PC    VT100 VT100 PC      Terminal type.
+                                VT100
+                                OTHER
+
+     MENCRA   NEXT  NEXT  NEXT  NONE    Program response to Enter key.
+                                DOWN
+                                NEXT
+
+     USRLEV   0     0     0     0 to 2  User experience level: 0=lots,
+                                        1=some, 2=none.
+
+     GRAPHS   YES   YES   YES   NO      Is a software library for
+                                YES     graphics generation available?
+
+     GKSDIS   1     1100  4     any     GKS code number for
+                                        workstation type for display
+                                        terminal.
+
+     GKSPRT   2     102   4     0-9999* GKS code number for
+                                        workstation type for printer
+                                        device.
+
+     GKSPLT   3     7475  4     0-9999* GKS code number for
+                                        workstation type for pen
+                                        plotter.
+
+     GKSMET   4     24    4     0-9999* GKS code number for metafile.
+
+     GKPREC   CHAR  STROKECHAR  STRING  Text precision.
+                                CHAR
+                                STROKE
+
+     GKSCFT   1     1     1     -9999 toText font for screen.
+                                 9999*
+
+     GKPRFT   1     -2808 1     -9999 toText font for printer.
+                                 9999*
+
+     GKPLFT   1     1     1     -9999 toText font for plotter.
+                                 9999*
+
+     BCOLOR   BLACK BLACK BLACK WHITE   Background color of graphics
+                                BLACK   screen display.
+                                OTHER
+
+
+
+
+                     Last change: 29 May 2001                  10
+
+
+
+
+
+
+U.S. Geological Survey                                hass-cui(1)
+
+
+
+
+     BGRED    0     0     0     0 to 100Percent red for background of
+                                        graphics screen display if
+                                        BCOLOR=OTHER.
+
+     BGREEN   0     0     0     0 to 100Percent green for background
+                                        of graphics screen display if
+                                        BCOLOR=OTHER.
+
+     BGBLUE   0     0     0     0 to 100Percent blue for background of
+                                        graphics screen display if
+                                        BCOLOR=OTHER.
+
+     SYMSIZ   100   100   100   1 to    Symbol size ratio in
+                                10000   hundredths.
+
+     TXTEXF   133   100   100   0 to 200Text expansion factor in
+                                        hundredths.
+
+     TXTCHS   0     0     0     0 to 200Text character spacing in
+                                        hundredths.
+     ------------------------------------------------------------------
+     * Refer to GKS documentation and README file supplied with
+     the program to determine valid values for these parameters.
+
+     Table 2.3. TERM.DAT parameters for color display
+                (DOS-based computers)
+     -------------------------------------------------------------
+     Parameter   Default   Allowable
+      keyword     value     values*    Description
+     -------------------------------------------------------------
+      CLRFRS       15       0 to 15    Standard foreground color.
+
+      CLRBKS        1       0 to 15    Standard background color.
+
+      CLRFRE        7       0 to 15    Foreground color for error
+                                       messages in instruction
+                                       panel.
+
+      CLRBKE        4       0 to 15    Background color for error
+                                       messages in instruction
+                                       panel.
+
+      CLRFRD       14       0 to 15    Color of first letter of
+                                       commands in command mode.
+     -------------------------------------------------------------
+     * 0-black, 1-blue, 2-green, 3-cyan, 4-red, 5-magenta,
+     6-brown, 7-light gray, 8-dark gray, 9-bright blue, 10-bright
+     green, 11-bright cyan, 12-bright red, 13-bright magenta,
+     14-yellow, 15-white
+
+
+
+
+
+                     Last change: 29 May 2001                  11
+
+
+
+
+
+
+U.S. Geological Survey                                hass-cui(1)
+
+
+
+                      Figure 2. Example TERM.DAT
+                      ---------------------------
+                      BCOLOR OTHER
+
+                      BGRED  40
+
+                      BGREEN 0
+
+                      BGBLUE 60
+                      ---------------------------
+
+     Special files
+
+     Each time the program is run, two files are produced that
+     aid in troubleshooting and in future program
+     execution--ERROR.FIL and PROGRAM_NAME.LOG.
+
+     The ERROR.FIL file contains any error messages produced
+     while running the program.  Diagnostic and progress messages
+     may be written to this file to aid in debugging.  This file
+     should be consulted if an unexpected program response is
+     encountered.
+
+     The PROGRAM_NAME.LOG file contains a log of all keystrokes
+     made while running the program.  This record of keystrokes
+     is helpful when the program is repeatedly used to perform
+     the same functions.  The file can be used as input to the
+     program; the keystrokes are read from the file as if they
+     were typed in.  To use the file in this way, first change
+     its name to something other than PROGRAM_NAME.LOG to prevent
+     the file from being overwritten the next time the program is
+     started.  On any screen within the program, type "@" to be
+     prompted for the log file name.  The contents of the file
+     will be read and executed as appropriate.
+
+     The first line in the log file should be an appropriate
+     response to the screen where the name of the log file is
+     provided. Occasionally, the log file contents will get out
+     of sync with the input expected by the program.  When this
+     happens, the program should be terminated and the log file
+     should be edited to correctly order the responses.
+
+     Log files are most easily created by using the program for
+     the processes to be repeated and then modifying the log file
+     for future program execution.  Alphabetic keys pressed will
+     be recorded in the log file in the manner in which they were
+     typed.  Nonprinting keys that are pressed, such as the
+     function keys, the semicolon, the arrow keys, or the Page Up
+     and Page Down keys, will be represented in the log file by a
+     unique code number preceded by a pound sign ("#").  These
+     code numbers are listed in the table below.  When planning
+     to use a log file, you will discover it is easier to
+
+
+
+                     Last change: 29 May 2001                  12
+
+
+
+
+
+
+U.S. Geological Survey                                hass-cui(1)
+
+
+
+     interpret the file when a menu option is chosen by entering
+     the first letter of the menu option instead of by pressing
+     the Enter or F2 key.
+
+            Table 3. Codes used for nonprinting characters
+                     in a log file
+            -----------------------------------------------
+            Code    User's keystroke   Associated command
+            -----------------------------------------------
+            #227       ; or Esc*
+            #208       Backspace
+            #213    Return or Enter
+            #301        Up Arrow
+            #302       Down Arrow
+            #303      Right Arrow
+            #304       Left Arrow
+            #307        Page Up
+            #308       Page Down
+            #401           F1                 Help
+            #402           F2                Accept
+            #403           F3
+            #404           F4                 Prev
+            #405           F5                Limits
+            #406           F6                Intrpt
+            #407           F7                Status
+            #408           F8                 Quiet
+            #409           F9                 Xpad
+            #410          F10                  Top
+            -----------------------------------------------
+          * The Escape key is only functional on DOS-based
+     computers.
+
+
+METHOD
+     The user interface was developed under the guidance of Dr.
+     Albert Badre of the Georgia Institute of Technology who
+     provided expertise on human-computer interaction.  The
+     established theory and practice of user interfaces were
+     used.
+
+HISTORY
+     Significant enhancements to the published version referenced
+     below have been made by the U.S. Geological Survey (USGS)
+     and Environmental Protection Agency.  The USGS maintains the
+     latest version.
+
+DATA REQUIREMENTS
+     The sole input requirement for a user of the interface is a
+     keyboard with or without function keys and arrow keys.  A
+     mouse is not used with the interface.  The input
+     requirements for a programmer adding the interface to an
+     existing application are an ASCII file of screen directives
+
+
+
+                     Last change: 29 May 2001                  13
+
+
+
+
+
+
+U.S. Geological Survey                                hass-cui(1)
+
+
+
+     that describe the contents, layout, and help information for
+     each screen, and the corresponding Fortran subroutine calls
+     for display of the screens.
+
+SYSTEM REQUIREMENTS
+     UNIX-based computers (supported:  Data General AViiON and
+     Sun SPARCstation).
+
+     DOS-based computers having a math coprocessor and 4 mb of
+     memory (supported: IBM-compatible computers with a 386 or
+     greater processor).
+
+     HASS-CUI is written in Fortran and C.  Generally, HASS-CUI
+     applications are easily installed on other platforms.
+
+APPLICATIONS
+     HASS-CUI is the user interface for a number of USGS
+     supported programs, including:
+
+     ANNIE - Program to list, table, plot data in a WDM file
+     GLSNET - Regional hydrologic regression and network
+              analysis using generalized least squares
+     HSPEXP - Expert system for calibration of HSPF
+     IOWDM - Program to store time-series data in a WDM file
+     PEAKFQ - Flood-frequency analysis based on Bulletin 17B
+     SWSTAT - Surface-Water Statistics
+
+     HASS-CUI is also used in a number of programs supported by
+     the Environmental Protection Agency.
+
+DOCUMENTATION
+     Kittle, J.L., Jr., Hummel, P.R., and Imhoff, J.C., 1989,
+        ANNIE-IDE, A system for developing interactive user
+        interfaces for environmental models (programmers guide):
+        U.S. Environmental Protection Agency, EPA/600/3-89/034,
+        Environmental Research Laboratory, Athens, Ga., 166 p.
+
+CONTACTS
+     Operation and Distribution:
+        U.S. Geological Survey
+        Hydrologic Analysis Software Support Program
+        437 National Center
+        Reston, VA 20192
+
+        h2osoft@usgs.gov
+
+     Official versions of U.S. Geological Survey water-resources
+     analysis software are available for electronic retrieval via
+     the World Wide Web (WWW) at:
+
+                http://water.usgs.gov/software/
+
+
+
+
+                     Last change: 29 May 2001                  14
+
+
+
+
+
+
+U.S. Geological Survey                                hass-cui(1)
+
+
+
+     and via anonymous File Transfer Protocol (FTP) from:
+
+                water.usgs.gov (path: /pub/software).
+
+     The WWW page and anonymous FTP directory from which the
+     LIBANNE software can be retrieved are, respectively:
+
+                http://water.usgs.gov/software/libanne.html
+                              --and--
+                /pub/software/general/libanne
+
+WARNINGS
+     On UNIX-based computers, a monospaced font with a vt100
+     line-drawing set must be used in order for all panel borders
+     to be displayed properly.  For X Window System users, most
+     of the X Window miscellaneous fixed fonts will work well, in
+     particular 8x13bold, 9x15bold, and 10x20.
+
+     Users of DOS-based computers must load ANSI.SYS in their
+     CONFIG.SYS file for panel borders and text to be displayed
+     properly.
+
+SEE ALSO
+     aide(1) - for programmer information on adding HASS-CUI to
+               an existing application
+
+     peakfq(1) - Flood-frequency analysis based on Bulletin 17B
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                     Last change: 29 May 2001                  15
+
+
+

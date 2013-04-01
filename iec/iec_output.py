@@ -48,7 +48,7 @@ class IecOutputPage(webapp.RequestHandler):
                 'model':'iec', 
                 'model_attributes':'IEC Output'})
         html = html + """
-        <table width="600" border="1">
+        <table width="600" border="1" class="out_1">
           <tr>
             <th width="300" scope="col">User Inputs</div></th>
             <th width="300" scope="col">Values</div></th>
@@ -69,7 +69,7 @@ class IecOutputPage(webapp.RequestHandler):
         <p>&nbsp;</p>                     
         """%(LC50, threshold, dose_response)                   
         html = html + """
-        <table width="600" border="1">
+        <table width="600" border="1" class="out_2">
           <tr>
             <th width="300" scope="col">IEC Outputs</div></th>
             <th width="300" scope="col">Values</div></th>
@@ -96,7 +96,7 @@ class IecOutputPage(webapp.RequestHandler):
           </form>
         """
 
-        html = html + template.render(templatepath + 'getpdf.html', {})
+        html = html + template.render(templatepath + 'getpdf_jquery.html', {})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

@@ -1,0 +1,264 @@
+
+
+
+U.S. Geological Survey                                 libanne(1)
+
+
+
+NAME
+     libanne - A collection of related libraries for use in
+           hydrologic applications
+
+           See these individual libraries for more information:
+
+           aide(1)  - ANNIE Interactive Development Environment
+                      (character based)
+           graph(1) - interface to Graphical Kernel System (GKS)
+           util(1)  - manipulating character strings, numbers,
+           and dates
+           wdm(1)   - Watershed Data Management (WDM) file system
+
+
+ABSTRACT
+     A collection of related libraries that provides a data base
+     (WDM), graphics, and interactive user interface (AIDE) for
+     hydrologic applications.  These libraries have been used
+     with a number of applications, including BRANCH, DAFLOW,
+     DR3M, HSPF, PRMS (WDM and UTIL), ANNIE, GLSNET, HSPEXP,
+     PEAKFQ, SWSTAT (AIDE, WDM, GRAPH, and UTIL), and IOWDM
+     (AIDE, WDM, and UTIL).  The ADWDM library contains routines
+     shared by the WDM and AIDE libraries.
+
+     Routines for interactively displaying, manipulating, and
+     statistically analyzing data stored in WDM files are
+     contained in the WAIDE, ANN, STATS, and AWSTAT libraries.
+     These libraries, previously distributed as part of the lib
+     library distribution, are now distributed as libanne.
+
+     Routines for HSPEXP, HSPF, and other programs are contained
+     in the HSPF, NEWAQT, and HSPNODSS libraries.  These
+     libraries, previously distributed as part of the lib library
+     distribution, are now distributed as libhsp.  Libraries
+     contained in the libanne distribution are still needed for
+     these programs.
+
+
+HISTORY
+     Version 4.0 2002/02/25 - The name of the lib library
+        distribution changed to libanne.  The libraries specific
+        to hspf (hspf, newaqt, and hspnodss) that were a part of
+        lib are now found in the libhsp distribution.  A problem
+        with small negative numbers in export files has been
+        resolved.  Some new routines added to library and some
+        code rearranged.  Miscellaneous minor corrections and
+        cleanups.  Added attributes DATCRE, DATMOD, P1.5, P2.33,
+        L07050, L07100, and L04003.  All wdm data sets will now
+        contain the date the data set was created and the date it
+        was last modified.  Resolved conflict introduced by
+        GenScn program between index numbers used for DATCRE and
+        DATMOD and for SEADBG and SEADND.  Fixed problems in
+
+
+
+                  Last change: 02 February 2002                 1
+
+
+
+
+
+
+U.S. Geological Survey                                 libanne(1)
+
+
+
+        frequency code with maximum number of plot files that can
+        be produced and with images being drawn too big for the
+        page.  wdmrx enhanced to check for problems in wdm files
+        and, when possible, to resolve them.  For time series
+        data sets where data was stored in the last data group,
+        some applications were unable to read that data, this has
+        been corrected.  For any type of data set, when any
+        application attempted to store an attribute value in the
+        last available space in the data set, the library was
+        incorrectly reporting no available space, this has been
+        corrected.
+
+
+
+     Version 3.2 1998/06/29 - Modified import utility (wdimpt.f)
+        to correctly read in export files.  With version 3.2
+        dated 1998/03/06, exported data files could have data
+        values in 12-character fields, but only 11 of these
+        characters were being read.  This has been fixed.
+
+     Version 3.2 1998/03/06 - Modified util/utdate.f to correct
+        problem with determining the earliest or latest date from
+        an array of dates.  Modified wdm/wdimpt.f to clarify a
+        warning message.  Modified hspf/posvm.inc, which had a
+        dimension that limited the number of quality constituents
+        that could be modeled.  Modified adwdm/attr251.seq and
+        attr401.seq for changes related to swstat program.
+        Modified wdm/wdexpt.f to change the precision of data
+        values exported from wdm time-series data sets.  Modified
+        awstat/tscmpr.f to correctly calculate total mean
+        absolute error and root mean square error (both
+        percents).
+
+     Version 3.1 1996/12/11 - In UTIL, corrected how function
+        CNVTDG converted degree-minute-second latitudes and
+        longitudes to decimal degrees.  In WDM, added new
+        subroutine WDBSGL to retrieve latitude and longitude from
+        a data set.
+
+     Version 3.0 1996/03/01 - Include file names changed to lower
+        case.  In UTIL, renamed routines that return current date
+        and time, date, and time to SYDATM, SYDATE, and SYTIME,
+        respectively (had been DATNOW, JULDAT, and GETIME). In
+        WDM, corrected the valid minimum for attribute JANMIN
+        (changed from 0.0 to no lower limit). In AIDE, increased
+        maximum number of fields on a screen from 60 to 180.
+        File type data field added.
+
+     Version 2.1 1994/08/11 - Updates.
+
+     Version 2.0 1994/05/27 - General release.
+
+
+
+
+                  Last change: 02 February 2002                 2
+
+
+
+
+
+
+U.S. Geological Survey                                 libanne(1)
+
+
+
+     Version 1.0 1992 - General release, ported to UNIX platform.
+
+     NOTE: Version numbers and dates are for the entire LIBANNE
+           set of libraries.  A new version does not necessarily
+           indicate that all of the libraries have changed.
+
+SYSTEM REQUIREMENTS
+     UTIL, ADWDM, WDM, AIDE, STATS, and GRAPH are written in
+     Fortran 77 with the following extension: use of include
+     files. A few routines used for screen addressing and file
+     access are platform specific (AIDE, ADWDM, and UTIL); these
+     routines use Posix-compliant (ANSI C and (or) compiler-
+     supplied extensions to Fortran (Lahey and OTG versions
+     provided). The UTIL library contains three routines that
+     call date and (or) time routines, versions for several
+     compilers are provided.
+
+     The graph library is written using the Graphical Kernel
+     System (GKS); a user-supplied GKS library is required to
+     build the library. A set of routines that translates the GKS
+     calls to Interactive Software Services' INTERACTER calls is
+     provided.
+
+     The WDM and AIDE libraries require the ADWDM and UTIL
+     libraries.  The GRAPH library requires STATS and UTIL
+     libraries.
+
+     ANN, AWSTAT, and WAIDE are written in Fortran 77 with the
+     following extension: use of include files.  These libraries
+     require the GRAPH, STATS, AIDE, WDM, ADWDM, and UTIL
+     libraries in LIBANNE.
+
+     HSPF, NEWAQT, and HSPNODSS are written in Fortran 77 with
+     the following extension: use of include files. The HSPF
+     library requires the WDM, ADWDM, UTIL, and HSPNODSS
+     libraries in LIBANNE. The HSPNODSS library requires the HSPF
+     library. The NEWAQT library requires the HSPF, AWSTAT, ANN,
+     WAIDE, GRAPH, WDM, ADWDM, and UTIL libraries.
+
+DOCUMENTATION
+     Subroutine reference guides are provided in the
+     distribution.
+
+     Kittle, J.L., Jr., Hummel, P.R., and Imhoff, J.C., 1989,
+        ANNIE-IDE, A system for developing interactive user
+        interfaces for environmental models (programmers guide):
+        U.S. Environmental Protection Agency, EPA/600/3-89/034,
+        Environmental Research Laboratory, Athens, Ga., 166 p.
+
+SUPPORTING SOFTWARE
+     The GRAPH library is written using the GKS standard.  An
+     implementation of GKS is required for the UNIX platform.
+
+
+
+                  Last change: 02 February 2002                 3
+
+
+
+
+
+
+U.S. Geological Survey                                 libanne(1)
+
+
+
+     The PC version includes a set of routines that translate GKS
+     calls to Interactive Software Services's INTERACTER calls.
+
+     GKS libraries are available from a number of vendors.  Free
+     or shareware versions are available via anonymous ftp to:
+
+        ftp.zam.kfa-juelich.de in /pub/unix/graphics/gligks
+                                   gligks-4.5.[17 18].tar.gz
+                                  (works under linux, sun, aix,
+     osf,
+                                   pc (Lahey FORTRAN))
+
+        unidata.ucar.edu in /pub/xgks
+
+
+CONTACTS
+     Operation and Distribution:
+        U.S. Geological Survey
+        Hydrologic Analysis Software Support Program
+        437 National Center
+        Reston, VA 20192
+
+        h2osoft@usgs.gov
+
+     Official versions of U.S. Geological Survey water-resources
+     analysis software are available for electronic retrieval via
+     the World Wide Web (WWW) at:
+
+                http://water.usgs.gov/software/
+
+     and via anonymous File Transfer Protocol (FTP) from:
+
+                water.usgs.gov (path: /pub/software).
+
+     The WWW page and anonymous FTP directory from which the
+     LIBANNE software can be retrieved are, respectively:
+
+                http://water.usgs.gov/software/libanne.html
+                              --and--
+                /pub/software/general/libanne
+
+     The U.S. Environmental Protection Agency documentation is
+     available from:
+        National Center for Environmental Publications
+           and Information (NCEPI)
+        P.O. Box 42419
+        Cincinnati, OH 45242
+        (513) 489-8190
+        (513) 489-8695 (Fax)
+
+
+
+
+
+
+                  Last change: 02 February 2002                 4
+
+
+

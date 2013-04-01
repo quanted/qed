@@ -1,0 +1,198 @@
+
+
+
+U.S. Geological Survey                                    aide(1)
+
+
+
+NAME
+     aide - ANNIE Interaction Development Environment
+
+ABSTRACT
+     AIDE provides a consistent methodology for building
+     character-based user interfaces for environmental software.
+     Potential applications range from generating input files
+     from user-supplied data for already existing scientific or
+     environmental models to allowing user access to data bases
+     for the purpose of searching, analyzing, or displaying data
+     values.  AIDE provides applications programmers with the
+     tools needed to build and store a convenient user interface
+     whenever and wherever there is a need to perform one or more
+     of the following operations:
+
+         o  display text
+         o  prompt the user to select a menu option
+         o  prompt the user to input or edit data fields
+         o  open a file to store or retrieve text and other
+     information
+
+     The advantages gained by using AIDE for interface
+     development center on four concepts:  modularity,
+     consistency, portability, and ease of application.  The
+     system utilizes a library of routines to perform the basic
+     communications functions between the user and the program.
+     Repeated use of these subroutines allows the programmer to
+     focus attention on designing an effective sequence of
+     interactions while minimizing the effort needed to program
+     the more mechanical aspects of the interface.  At the same
+     time, the repeated use of modular routines decreases the
+     likelihood of introducing programming errors.
+
+     The AIDE library is included in the LIBANNE distribution.
+     It requires the util and adwdm libraries from the LIBANNE
+     distribution.
+
+METHOD
+     The user interface was developed under the guidance of Dr.
+     Albert Badre of the Georgia Institute of Technology who
+     provided expertise on human-computer interaction.  The
+     established theory and practice of user interfaces were
+     used.
+
+HISTORY
+     AIDE is a redesign of the interfaces from the original ANNIE
+     program and the Environmental Model Input File Editor
+     (EMIFE).  The AIDE user interface was developed under the
+     guidance of Dr.  Albert Badre of the Georgia Institute of
+     Technology who provided expertise on human-computer
+     interaction.  The established theory and practice of user
+     interfaces were used.  The original AIDE implementation was
+
+
+
+                  Last change: 25 February 2002                 1
+
+
+
+
+
+
+U.S. Geological Survey                                    aide(1)
+
+
+
+     funded by EPA (1989).  Additional features were added by the
+     USGS (1992).
+
+     Version 4.0 2002/02/25 - The name of the lib library
+        distribution changed to libanne.  See libanne
+        documentation for details.
+
+     Version 3.2 1998/06/29 - Updates
+
+     Version 3.2 1998/03-06 - Updates
+
+     Version 3.1 1996/12/11 - Updates
+
+     Version 3.0 1996/03/01 - Include file names changed to lower
+        case.  Increased maximum number of fields on a screen
+        from 60 to 180.  File type data field added.
+
+     Version 2.1 1994/08/11 - Updates
+
+     Version 2.0 1994/05/27 - General release
+
+     Version 1.0 1992 - General release, ported to UNIX platform.
+
+     NOTE:  Version numbers and dates are for the entire set of
+           libraries.  A new version does not necessarily
+           indicate that the AIDE library has been changed.
+
+SYSTEM REQUIREMENTS
+     AIDE is written in Fortran 77 with the following extension:
+     use of include files. The AIDE library requires the ADWDM
+     and UTIL libraries.
+
+DOCUMENTATION
+     A subroutine reference guide is provided in the
+     distribution.
+
+     Kittle, J.L., Jr., Hummel, P.R., and Imhoff, J.C., 1989,
+        ANNIE-IDE, a system for developing interactive user
+        interfaces for environmental models (programmers guide):
+        U.S. Environmental Protection Agency, EPA/600/3-89/034,
+        Environmental Research Laboratory, Athens, Ga., 166 p.
+
+REFERENCES
+     Flynn, K.M., Hummel, P.R., Lumb, A.M., and Kittle, J.L.,
+        Jr., 1995, User's manual for ANNIE, version 2, a computer
+        program for interactive hydrologic data management:  U.S.
+        Geological Survey Water-Resources Investigations Report
+        95-4085, 211 p.
+
+     General Sciences Corporation, 1987, EMIFE--Environmental
+        Model Input File Editor Fortran Utilities--Preliminary
+        Documentation: U.S. Environmental Protection Agency,
+
+
+
+                  Last change: 25 February 2002                 2
+
+
+
+
+
+
+U.S. Geological Survey                                    aide(1)
+
+
+
+        Office of Toxic Substances, Washington, D.C.
+
+     Landers, M.N., Mueller, D.S., and Martin, G.R., 1996, Bridge
+        scour data management system user's manual: U.S.
+        Geological Survey Open-File Report 95-754, 72 p.
+
+     Lumb, A.M., Kittle, J.L., Jr., and Flynn, K.M., 1990, Users
+        manual for ANNIE, a computer program for interactive
+        hydrologic analyses and data management: U.S. Geological
+        Survey Water-Resources Investigations Report 89-4080, 236
+        p.
+
+     Lumb, A.M., McCammon, R.B., and Kittle, J.L., Jr., 1994,
+        Users manual for an expert system (HSPEXP) for
+        calibration of the Hydrologic Simulation
+        Program--Fortran:  U.S. Geological Survey Water-Resources
+        Investigations Report 94-4168, 102 p.
+
+CONTACTS
+     Operation and Distribution:
+        U.S. Geological Survey
+        Hydrologic Analysis Software Support Program
+        437 National Center
+        Reston, VA 20192
+
+        h2osoft@usgs.gov
+
+     Official versions of U.S. Geological Survey water-resources
+     analysis software are available for electronic retrieval via
+     the World Wide Web (WWW) at:
+
+                http://water.usgs.gov/software/
+
+     and via anonymous File Transfer Protocol (FTP) from:
+
+                water.usgs.gov (path: /pub/software).
+
+     The WWW page and anonymous FTP directory from which the
+     LIBANNE software can be retrieved are, respectively:
+
+                http://water.usgs.gov/software/libanne.html
+                              --and--
+                /pub/software/general/libanne
+
+     The U.S. Environmental Protection Agency documentation is
+     available from:
+        National Center for Environmental Publications
+           and Information (NCEPI)
+        P.O. Box 42419
+        Cincinnati, OH 45242
+        (513) 489-8190
+        (513) 489-8695 (Fax)
+
+
+
+                  Last change: 25 February 2002                 3
+
+
+

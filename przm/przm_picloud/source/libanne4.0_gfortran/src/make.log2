@@ -1,0 +1,416 @@
+make[1]: Entering directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/util'
+gfortran -O3 -fPIC  -c -o utchar.o utchar.f
+gfortran -O3 -fPIC  -c -o utdate.o utdate.f
+gfortran -O3 -fPIC  -c -o utgnrl.o utgnrl.f
+gfortran -O3 -fPIC  -c -o utnumb.o utnumb.f
+gfortran -O3 -fPIC  -c -o utsort.o utsort.f
+gfortran -O3 -fPIC  -c -o utscxx.o utscxx.f
+gcc -O3 -fPIC   -c -o utcpc.o utcpc.c
+gfortran -O3 -fPIC  -c -o dttmsn.o dttmsn.f
+gfortran -O3 -fPIC  -c -o uscnvt.o uscnvt.f
+gfortran -O3 -fPIC  -c -o utscdg.o utscdg.f
+gcc -O3 -fPIC   -c -o ttyux.o ttyux.c
+ttyux.c: In function 'handlr':
+ttyux.c:215: warning: incompatible implicit declaration of built-in function 'exit'
+gfortran -O3 -fPIC  -c -o ckfsdg.o ckfsdg.f
+gcc -O3 -fPIC   -c -o dirlis_.o dirlis_.c
+dirlis_.c: In function 'dirlis_':
+dirlis_.c:60: warning: cast to pointer from integer of different size
+gcc -O3 -fPIC   -c -o getdir_.o getdir_.c
+gcc -O3 -fPIC   -c -o Malloc.o Malloc.c
+gcc -O3 -fPIC   -c -o FileName.o FileName.c
+***
+*** making ../../lib/utillib.a
+***
+ar rv ../../lib/utillib.a utchar.o utdate.o utgnrl.o utnumb.o utsort.o utscxx.o utcpc.o dttmsn.o uscnvt.o utscdg.o ttyux.o ckfsdg.o dirlis_.o getdir_.o Malloc.o FileName.o
+ar: creating ../../lib/utillib.a
+a - utchar.o
+a - utdate.o
+a - utgnrl.o
+a - utnumb.o
+a - utsort.o
+a - utscxx.o
+a - utcpc.o
+a - dttmsn.o
+a - uscnvt.o
+a - utscdg.o
+a - ttyux.o
+a - ckfsdg.o
+a - dirlis_.o
+a - getdir_.o
+a - Malloc.o
+a - FileName.o
+ranlib ../../lib/utillib.a            
+***
+*** Done making all for utillib.a, files are now up-to-date.
+***
+make[1]: Leaving directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/util'
+make[1]: Entering directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/adwdm'
+gfortran -O3 -fPIC  -c -o utwdmd.o utwdmd.f
+gfortran -O3 -fPIC  -c -o utwdmf.o utwdmf.f
+gfortran -O3 -fPIC  -c -o utwdt1.o utwdt1.f
+gfortran -O3 -fPIC  -c -o wdmess.o wdmess.f
+gfortran -O3 -fPIC  -c -o wdatm1.o wdatm1.f
+gfortran -O3 -fPIC  -c -o msimpt.o msimpt.f
+gfortran -O3 -fPIC  -c -o msexpt.o msexpt.f
+gfortran -O3 -fPIC  -c -o msopen.o msopen.f
+gfortran -O3 -fPIC  -c -o prtfil.o prtfil.f
+gfortran -O3 -fPIC  -c -o ztwdmf.o ztwdmf.f
+gfortran -O3 -fPIC  -c -o adutil.o adutil.f
+gfortran -O3 -fPIC  -c -o wdmchk.o wdmchk.f
+gfortran -O3 -fPIC  -c -o usysux.o usysux.f
+gfortran -O3 -fPIC  -c -o wdopux.o wdopux.f
+***
+*** making ../../lib/adwdmlib.a
+***
+ar rv ../../lib/adwdmlib.a utwdmd.o utwdmf.o utwdt1.o wdmess.o wdatm1.o msimpt.o msexpt.o msopen.o prtfil.o ztwdmf.o adutil.o wdmchk.o usysux.o wdopux.o
+ar: creating ../../lib/adwdmlib.a
+a - utwdmd.o
+a - utwdmf.o
+a - utwdt1.o
+a - wdmess.o
+a - wdatm1.o
+a - msimpt.o
+a - msexpt.o
+a - msopen.o
+a - prtfil.o
+a - ztwdmf.o
+a - adutil.o
+a - wdmchk.o
+a - usysux.o
+a - wdopux.o
+ranlib ../../lib/adwdmlib.a            
+***
+*** Done making all for adwdmlib.a, files are now up-to-date.
+***
+make[1]: Leaving directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/adwdm'
+make[1]: Entering directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/wdm'
+gfortran -O3 -fPIC  -c -o wdbtch.o wdbtch.f
+gfortran -O3 -fPIC  -c -o wdatrb.o wdatrb.f
+gfortran -O3 -fPIC  -c -o wdatm2.o wdatm2.f
+gfortran -O3 -fPIC  -c -o wdsptm.o wdsptm.f
+gfortran -O3 -fPIC  -c -o wdimpt.o wdimpt.f
+gfortran -O3 -fPIC  -c -o wdexpt.o wdexpt.f
+gfortran -O3 -fPIC  -c -o wdtms2.o wdtms2.f
+gfortran -O3 -fPIC  -c -o wdtms1.o wdtms1.f
+gfortran -O3 -fPIC  -c -o wdtble.o wdtble.f
+gfortran -O3 -fPIC  -c -o wdtbl2.o wdtbl2.f
+gfortran -O3 -fPIC  -c -o wddlg.o wddlg.f
+gfortran -O3 -fPIC  -c -o wdatru.o wdatru.f
+gfortran -O3 -fPIC  -c -o tsbufr.o tsbufr.f
+gfortran -O3 -fPIC  -c -o wdtms3.o wdtms3.f
+gfortran -O3 -fPIC  -c -o wdmid.o wdmid.f
+***
+*** making ../../lib/wdmlib.a
+***
+ar rv ../../lib/wdmlib.a wdbtch.o wdatrb.o wdatm2.o wdsptm.o wdimpt.o wdexpt.o wdtms2.o wdtms1.o wdtble.o wdtbl2.o wddlg.o wdatru.o tsbufr.o wdtms3.o wdmid.o
+ar: creating ../../lib/wdmlib.a
+a - wdbtch.o
+a - wdatrb.o
+a - wdatm2.o
+a - wdsptm.o
+a - wdimpt.o
+a - wdexpt.o
+a - wdtms2.o
+a - wdtms1.o
+a - wdtble.o
+a - wdtbl2.o
+a - wddlg.o
+a - wdatru.o
+a - tsbufr.o
+a - wdtms3.o
+a - wdmid.o
+ranlib ../../lib/wdmlib.a            
+***
+*** Done making all for wdmlib.a, files are now up-to-date.
+***
+make[1]: Leaving directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/wdm'
+make[1]: Entering directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/aide'
+gfortran -O3 -fPIC  -c -o aninit.o aninit.f
+gfortran -O3 -fPIC  -c -o qtchar.o qtchar.f
+gfortran -O3 -fPIC  -c -o qtfile.o qtfile.f
+gfortran -O3 -fPIC  -c -o qtnumb.o qtnumb.f
+gfortran -O3 -fPIC  -c -o qtnums.o qtnums.f
+gfortran -O3 -fPIC  -c -o prtaid.o prtaid.f
+gfortran -O3 -fPIC  -c -o qtscn1.o qtscn1.f
+gfortran -O3 -fPIC  -c -o utmisc.o utmisc.f
+gfortran -O3 -fPIC  -c -o utuprm.o utuprm.f
+gfortran -O3 -fPIC  -c -o z0util.o z0util.f
+gfortran -O3 -fPIC  -c -o z1util.o z1util.f
+gfortran -O3 -fPIC  -c -o z4util.o z4util.f
+gfortran -O3 -fPIC  -c -o ztscn1.o ztscn1.f
+gfortran -O3 -fPIC  -c -o zutil.o zutil.f
+gfortran -O3 -fPIC  -c -o zutilx.o zutilx.f
+gfortran -O3 -fPIC  -c -o zutily.o zutily.f
+gfortran -O3 -fPIC  -c -o qtstgt.o qtstgt.f
+gfortran -O3 -fPIC  -c -o zclbak.o zclbak.f
+gfortran -O3 -fPIC  -c -o zcbch1.o zcbch1.f
+gfortran -O3 -fPIC  -c -o zcbch2.o zcbch2.f
+gfortran -O3 -fPIC  -c -o zcbch3.o zcbch3.f
+gfortran -O3 -fPIC  -c -o zcbch4.o zcbch4.f
+gfortran -O3 -fPIC  -c -o zcbch5.o zcbch5.f
+gfortran -O3 -fPIC  -c -o zcbch6.o zcbch6.f
+gfortran -O3 -fPIC  -c -o zcbch7.o zcbch7.f
+gfortran -O3 -fPIC  -c -o zcbch8.o zcbch8.f
+gfortran -O3 -fPIC  -c -o zcbch9.o zcbch9.f
+gfortran -O3 -fPIC  -c -o zcbfl1.o zcbfl1.f
+gfortran -O3 -fPIC  -c -o zcbfl2.o zcbfl2.f
+gfortran -O3 -fPIC  -c -o zcbfl3.o zcbfl3.f
+gfortran -O3 -fPIC  -c -o zcbfl4.o zcbfl4.f
+gfortran -O3 -fPIC  -c -o zcbfl5.o zcbfl5.f
+gfortran -O3 -fPIC  -c -o zcbfl6.o zcbfl6.f
+gfortran -O3 -fPIC  -c -o zcbfl7.o zcbfl7.f
+gfortran -O3 -fPIC  -c -o zcbfl8.o zcbfl8.f
+gfortran -O3 -fPIC  -c -o zcbfl9.o zcbfl9.f
+gfortran -O3 -fPIC  -c -o zcbex1.o zcbex1.f
+gfortran -O3 -fPIC  -c -o zcbex2.o zcbex2.f
+gfortran -O3 -fPIC  -c -o zcbex3.o zcbex3.f
+gfortran -O3 -fPIC  -c -o zcbex4.o zcbex4.f
+gfortran -O3 -fPIC  -c -o zcbex5.o zcbex5.f
+gfortran -O3 -fPIC  -c -o zcbex6.o zcbex6.f
+gfortran -O3 -fPIC  -c -o zcbex7.o zcbex7.f
+gfortran -O3 -fPIC  -c -o zcbex8.o zcbex8.f
+gfortran -O3 -fPIC  -c -o zcbex9.o zcbex9.f
+gfortran -O3 -fPIC  -c -o zsysdg.o zsysdg.f
+***
+*** making ../../lib/aidelib.a
+***
+ar rv ../../lib/aidelib.a aninit.o qtchar.o qtfile.o qtnumb.o qtnums.o prtaid.o qtscn1.o utmisc.o utuprm.o z0util.o z1util.o z4util.o ztscn1.o zutil.o zutilx.o zutily.o qtstgt.o zclbak.o zcbch1.o zcbch2.o zcbch3.o zcbch4.o zcbch5.o zcbch6.o zcbch7.o zcbch8.o zcbch9.o zcbfl1.o zcbfl2.o zcbfl3.o zcbfl4.o zcbfl5.o zcbfl6.o zcbfl7.o zcbfl8.o zcbfl9.o zcbex1.o zcbex2.o zcbex3.o zcbex4.o zcbex5.o zcbex6.o zcbex7.o zcbex8.o zcbex9.o zsysdg.o
+ar: creating ../../lib/aidelib.a
+a - aninit.o
+a - qtchar.o
+a - qtfile.o
+a - qtnumb.o
+a - qtnums.o
+a - prtaid.o
+a - qtscn1.o
+a - utmisc.o
+a - utuprm.o
+a - z0util.o
+a - z1util.o
+a - z4util.o
+a - ztscn1.o
+a - zutil.o
+a - zutilx.o
+a - zutily.o
+a - qtstgt.o
+a - zclbak.o
+a - zcbch1.o
+a - zcbch2.o
+a - zcbch3.o
+a - zcbch4.o
+a - zcbch5.o
+a - zcbch6.o
+a - zcbch7.o
+a - zcbch8.o
+a - zcbch9.o
+a - zcbfl1.o
+a - zcbfl2.o
+a - zcbfl3.o
+a - zcbfl4.o
+a - zcbfl5.o
+a - zcbfl6.o
+a - zcbfl7.o
+a - zcbfl8.o
+a - zcbfl9.o
+a - zcbex1.o
+a - zcbex2.o
+a - zcbex3.o
+a - zcbex4.o
+a - zcbex5.o
+a - zcbex6.o
+a - zcbex7.o
+a - zcbex8.o
+a - zcbex9.o
+a - zsysdg.o
+ranlib ../../lib/aidelib.a            
+***
+*** Done making all for aide, files are now up-to-date.
+***
+make[1]: Leaving directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/aide'
+make[1]: Entering directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/graph'
+gfortran -O3 -fPIC  -c -o grcomn.o grcomn.f
+gfortran -O3 -fPIC  -c -o grutil.o grutil.f
+gfortran -O3 -fPIC  -c -o grdata.o grdata.f
+gfortran -O3 -fPIC  -c -o graxis.o graxis.f
+gfortran -O3 -fPIC  -c -o grtext.o grtext.f
+gfortran -O3 -fPIC  -c -o grgks.o grgks.f
+gfortran -O3 -fPIC  -c -o grcaxe.o grcaxe.f
+gfortran -O3 -fPIC  -c -o grccrv.o grccrv.f
+gfortran -O3 -fPIC  -c -o grclay.o grclay.f
+gfortran -O3 -fPIC  -c -o grcmeg.o grcmeg.f
+gfortran -O3 -fPIC  -c -o grcvar.o grcvar.f
+gfortran -O3 -fPIC  -c -o grmark.o grmark.f
+gfortran -O3 -fPIC  -c -o grdump.o grdump.f
+gfortran -O3 -fPIC  -c -o grsyux.o grsyux.f
+***
+*** making ../../lib/graphlib.a
+***
+ar rv ../../lib/graphlib.a grcomn.o grutil.o grdata.o graxis.o grtext.o grgks.o grcaxe.o grccrv.o grclay.o grcmeg.o grcvar.o grmark.o grdump.o grsyux.o
+ar: creating ../../lib/graphlib.a
+a - grcomn.o
+a - grutil.o
+a - grdata.o
+a - graxis.o
+a - grtext.o
+a - grgks.o
+a - grcaxe.o
+a - grccrv.o
+a - grclay.o
+a - grcmeg.o
+a - grcvar.o
+a - grmark.o
+a - grdump.o
+a - grsyux.o
+ranlib ../../lib/graphlib.a            
+***
+*** Done making all for graphlib.a, files are now up-to-date.
+***
+make[1]: Leaving directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/graph'
+make[1]: Entering directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/stats'
+gfortran -O3 -fPIC  -c -o utstat.o utstat.f
+gfortran -O3 -fPIC  -c -o utj407.o utj407.f
+gfortran -O3 -fPIC  -c -o stgaus.o stgaus.f
+***
+*** making ../../lib/statslib.a
+***
+ar rv ../../lib/statslib.a utstat.o utj407.o stgaus.o
+ar: creating ../../lib/statslib.a
+a - utstat.o
+a - utj407.o
+a - stgaus.o
+ranlib ../../lib/statslib.a            
+***
+*** Done making all for statslib.a, files are now up-to-date.
+***
+make[1]: Leaving directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/stats'
+make[1]: Entering directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/waide'
+gfortran -O3 -fPIC  -c -o agplot.o agplot.f
+gfortran -O3 -fPIC  -c -o agterm.o agterm.f
+gfortran -O3 -fPIC  -c -o atinfo.o atinfo.f
+gfortran -O3 -fPIC  -c -o prwfil.o prwfil.f
+gfortran -O3 -fPIC  -c -o qtdate.o qtdate.f
+gfortran -O3 -fPIC  -c -o qtfils.o qtfils.f
+gfortran -O3 -fPIC  -c -o wdpeak.o wdpeak.f
+gfortran -O3 -fPIC  -c -o awfeb.o awfeb.f
+gfortran -O3 -fPIC  -c -o wdsnad.o wdsnad.f
+gfortran -O3 -fPIC  -c -o agpltx.o agpltx.f
+gfortran -O3 -fPIC  -c -o tslist.o tslist.f
+gfortran -O3 -fPIC  -c -o tstabl.o tstabl.f
+gfortran -O3 -fPIC  -c -o tslign.o tslign.f
+gfortran -O3 -fPIC  -c -o tslegn.o tslegn.f
+gfortran -O3 -fPIC  -c -o atsave.o atsave.f
+***
+*** making ../../lib/waidelib.a
+***
+ar rv ../../lib/waidelib.a agplot.o agterm.o atinfo.o prwfil.o qtdate.o qtfils.o wdpeak.o awfeb.o wdsnad.o agpltx.o tslist.o tstabl.o tslign.o tslegn.o atsave.o
+ar: creating ../../lib/waidelib.a
+a - agplot.o
+a - agterm.o
+a - atinfo.o
+a - prwfil.o
+a - qtdate.o
+a - qtfils.o
+a - wdpeak.o
+a - awfeb.o
+a - wdsnad.o
+a - agpltx.o
+a - tslist.o
+a - tstabl.o
+a - tslign.o
+a - tslegn.o
+a - atsave.o
+ranlib ../../lib/waidelib.a            
+***
+*** Done making all for waidelib.a, files are now up-to-date.
+***
+make[1]: Leaving directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/waide'
+make[1]: Entering directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/awstat'
+gfortran -O3 -fPIC  -c -o stutil.o stutil.f
+gfortran -O3 -fPIC  -c -o profdr.o profdr.f
+gfortran -O3 -fPIC  -c -o tscmpr.o tscmpr.f
+gfortran -O3 -fPIC  -c -o tscbat.o tscbat.f
+gfortran -O3 -fPIC  -c -o a193.o a193.f
+gfortran -O3 -fPIC  -c -o a193ut.o a193ut.f
+gfortran -O3 -fPIC  -c -o a193io.o a193io.f
+gfortran -O3 -fPIC  -c -o a193pl.o a193pl.f
+gfortran -O3 -fPIC  -c -o pkplot.o pkplot.f
+***
+*** making ../../lib/awstatlib.a
+***
+ar rv ../../lib/awstatlib.a stutil.o profdr.o tscmpr.o tscbat.o a193.o a193ut.o a193io.o a193pl.o pkplot.o
+ar: creating ../../lib/awstatlib.a
+a - stutil.o
+a - profdr.o
+a - tscmpr.o
+a - tscbat.o
+a - a193.o
+a - a193ut.o
+a - a193io.o
+a - a193pl.o
+a - pkplot.o
+ranlib ../../lib/awstatlib.a            
+***
+*** Done making all for awstatlib.a, files are now up-to-date.
+***
+make[1]: Leaving directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/awstat'
+make[1]: Entering directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/ann'
+gfortran -O3 -fPIC  -c -o wdplot.o wdplot.f
+gfortran -O3 -fPIC  -c -o dswork.o dswork.f
+gfortran -O3 -fPIC  -c -o prwarc.o prwarc.f
+gfortran -O3 -fPIC  -c -o dsbld.o dsbld.f
+gfortran -O3 -fPIC  -c -o atwork.o atwork.f
+gfortran -O3 -fPIC  -c -o atdisp.o atdisp.f
+gfortran -O3 -fPIC  -c -o tswork.o tswork.f
+gfortran -O3 -fPIC  -c -o qtprnt.o qtprnt.f
+gfortran -O3 -fPIC  -c -o pgener.o pgener.f
+gfortran -O3 -fPIC  -c -o algebr.o algebr.f
+gfortran -O3 -fPIC  -c -o pgebat.o pgebat.f
+***
+*** making ../../lib/annlib.a
+***
+ar rv ../../lib/annlib.a wdplot.o dswork.o prwarc.o dsbld.o atwork.o atdisp.o tswork.o qtprnt.o pgener.o algebr.o pgebat.o
+ar: creating ../../lib/annlib.a
+a - wdplot.o
+a - dswork.o
+a - prwarc.o
+a - dsbld.o
+a - atwork.o
+a - atdisp.o
+a - tswork.o
+a - qtprnt.o
+a - pgener.o
+a - algebr.o
+a - pgebat.o
+ranlib ../../lib/annlib.a            
+***
+*** Done making all for annlib.a, files are now up-to-date.
+***
+make[1]: Leaving directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/ann'
+make[1]: Entering directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/wdimex'
+gfortran -O3 -fPIC  -c -o wdimex.o wdimex.f
+gfortran -O3 -fPIC  -c -o wdimez.o wdimez.f
+***
+*** making ../../bin/wdimex
+***
+gfortran wdimex.o wdimez.o ../../lib/wdmlib.a ../../lib/adwdmlib.a ../../lib/utillib.a  -o ../../bin/wdimex
+strip ../../bin/wdimex        
+***
+*** Done making all for wdimex, files are now up to date.
+***
+make[1]: Leaving directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/wdimex'
+make[1]: Entering directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/wdmrx'
+gfortran -O3 -fPIC  -c -o wdmrx.o wdmrx.f
+gfortran -O3 -fPIC  -c -o patch1.o patch1.f
+***
+*** making ../../bin/wdmrx
+***
+gfortran wdmrx.o patch1.o ../../lib/wdmlib.a ../../lib/adwdmlib.a ../../lib/utillib.a  -o ../../bin/wdmrx
+strip ../../bin/wdmrx        
+***
+*** Done making all for wdmrx, files are now up to date.
+***
+make[1]: Leaving directory `/work/STAFF/dle/PRZM/libanne4.0_gfortran/src/wdmrx'
+***
+*** Done making message file.
+***

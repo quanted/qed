@@ -1,0 +1,3 @@
+!       TRANSIENT BOUNDARY CONDITION
+      REAL*8 TMVex1 , TMVex2 , TMVec1 , TMVec2
+      COMMON /TRANBC/ TMVex1 , TMVex2 , TMVec1 , TMVec2

@@ -1,0 +1,31 @@
+
+libanne - documentation files
+
+file name         file contents
+----------------  --------------------------------------------------------
+README.TXT        installation instructions
+RELEASE.TXT       release notes
+NOTICE.TXT        user rights notice
+
+doc/Contents.txt  this file
+    versions.txt  description of files that differ by OS or compiler
+    config.txt    customizing the AIDE interface configuration
+    libanne.txt   text version of man page
+    aide.txt      text version of aide man page
+    graph.txt     text version of graph man page
+    util.txt      text version of util man page
+    wdm.txt       text version of wdm man page
+    hass-cui.txt  text version of user interface man page
+    newaide.txt   enhancements to the ANNIE Interactive Development
+                  Environment (AIDE) since 1989
+    adwdmlib.txt  computer generated documentation for adwdm library
+    aidelib.txt   computer generated documentation for aide library
+    graphlib.txt  computer generated documentation for graph library
+    utillib.txt   computer generated documentation for util library
+    wdmlib.txt    computer generated documentation for wdm library
+--------------------------------------------------------------------------
+
+Kittle, J.L., Jr., Hummel, P.R., and Imhoff, J.C., 1989, ANNIE-IDE,
+   a system for developing interactive user interfaces for environmental
+   models (programmers guide): U.S. Environmental Protection Agency,
+   EPA/600/3-89/034, Environmental Research Laboratory, Athens, Ga., 166 p.

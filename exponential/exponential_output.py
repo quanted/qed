@@ -44,7 +44,7 @@ class exponentialOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'exponential', 
                 'model_attributes':'Exponential Model Output'})
-        html = html + """<table width="550" border="1" class="output_table">
+        html = html + """<table width="550" border="1" class="out_table">
                           <tr>
                             <th scope="col" width="250">Inputs</th>
                             <th scope="col" width="150">Unit</th>                            
@@ -79,14 +79,14 @@ class exponentialOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
 
         html = html + """
-          <form method="post" target="_blank" action=pdf_exp.html>
+          <form method="post" target="_blank" action=pdf.html>
             <table align="center" class="getpdf">
             </table>
           </form>
         """
 
         html = html + template.render(templatepath + 'exponential-output-jqplot.html', {})
-        html = html + template.render(templatepath + 'getpdf_exp.html', {})
+        html = html + template.render(templatepath + 'getpdf_jquery.html', {})
         html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)

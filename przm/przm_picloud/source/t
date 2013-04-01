@@ -1,0 +1,143 @@
+make: Circular rsprz3.o <- rsprz3.o dependency dropped.
+libanne4.0_gfortran/lib/libwdm.a(wdbtch.o): In function `wdbsgc_':
+wdbtch.f:(.text+0x2df): undefined reference to `_gfortran_transfer_integer_write'
+libanne4.0_gfortran/lib/libwdm.a(wdatrb.o): In function `wdbsac_':
+wdatrb.f:(.text+0xdf2): undefined reference to `_gfortran_transfer_character_write'
+wdatrb.f:(.text+0xe0d): undefined reference to `_gfortran_transfer_character_write'
+wdatrb.f:(.text+0xe28): undefined reference to `_gfortran_transfer_character_write'
+wdatrb.f:(.text+0xe43): undefined reference to `_gfortran_transfer_character_write'
+libanne4.0_gfortran/lib/libwdm.a(wdtms1.o): In function `wtptvl_':
+wdtms1.f:(.text+0xc82): undefined reference to `_gfortran_transfer_character_write'
+wdtms1.f:(.text+0xc9c): undefined reference to `_gfortran_transfer_integer_write'
+wdtms1.f:(.text+0xcff): undefined reference to `_gfortran_transfer_character_write'
+wdtms1.f:(.text+0xd19): undefined reference to `_gfortran_transfer_integer_write'
+wdtms1.f:(.text+0xd82): undefined reference to `_gfortran_transfer_character_write'
+wdtms1.f:(.text+0xd97): undefined reference to `_gfortran_transfer_integer_write'
+wdtms1.f:(.text+0xdfa): undefined reference to `_gfortran_transfer_character_write'
+wdtms1.f:(.text+0xe0f): undefined reference to `_gfortran_transfer_integer_write'
+libanne4.0_gfortran/lib/libwdm.a(wdtms1.o): In function `wtgtvl_':
+wdtms1.f:(.text+0x2951): undefined reference to `_gfortran_transfer_character_write'
+wdtms1.f:(.text+0x296b): undefined reference to `_gfortran_transfer_real_write'
+wdtms1.f:(.text+0x2985): undefined reference to `_gfortran_transfer_integer_write'
+wdtms1.f:(.text+0x29e8): undefined reference to `_gfortran_transfer_character_write'
+wdtms1.f:(.text+0x2a02): undefined reference to `_gfortran_transfer_integer_write'
+wdtms1.f:(.text+0x2a18): undefined reference to `_gfortran_transfer_integer_write'
+wdtms1.f:(.text+0x2a2e): undefined reference to `_gfortran_transfer_integer_write'
+wdtms1.f:(.text+0x2a91): undefined reference to `_gfortran_transfer_character_write'
+wdtms1.f:(.text+0x2aab): undefined reference to `_gfortran_transfer_integer_write'
+wdtms1.f:(.text+0x2ac5): undefined reference to `_gfortran_transfer_integer_write'
+wdtms1.f:(.text+0x2b28): undefined reference to `_gfortran_transfer_character_write'
+wdtms1.f:(.text+0x2b8c): undefined reference to `_gfortran_transfer_array_write'
+wdtms1.f:(.text+0x2bef): undefined reference to `_gfortran_transfer_character_write'
+wdtms1.f:(.text+0x2c57): undefined reference to `_gfortran_transfer_array_write'
+wdtms1.f:(.text+0x2cba): undefined reference to `_gfortran_transfer_character_write'
+wdtms1.f:(.text+0x2d22): undefined reference to `_gfortran_transfer_array_write'
+wdtms1.f:(.text+0x2d85): undefined reference to `_gfortran_transfer_character_write'
+wdtms1.f:(.text+0x2ded): undefined reference to `_gfortran_transfer_array_write'
+wdtms1.f:(.text+0x2e50): undefined reference to `_gfortran_transfer_character_write'
+wdtms1.f:(.text+0x2eb8): undefined reference to `_gfortran_transfer_array_write'
+libanne4.0_gfortran/lib/libwdm.a(wdtms2.o): In function `wtfndt_':
+wdtms2.f:(.text+0x8d0): undefined reference to `_gfortran_transfer_character_write'
+wdtms2.f:(.text+0x8e7): undefined reference to `_gfortran_transfer_integer_write'
+wdtms2.f:(.text+0x8fe): undefined reference to `_gfortran_transfer_integer_write'
+wdtms2.f:(.text+0x915): undefined reference to `_gfortran_transfer_integer_write'
+wdtms2.f:(.text+0x927): undefined reference to `_gfortran_transfer_integer_write'
+wdtms2.f:(.text+0x939): undefined reference to `_gfortran_transfer_integer_write'
+libanne4.0_gfortran/lib/libwdm.a(wdtms2.o): In function `wtdscu_':
+wdtms2.f:(.text+0x1b17): undefined reference to `_gfortran_transfer_character_write'
+wdtms2.f:(.text+0x1b7a): undefined reference to `_gfortran_transfer_character_write'
+libanne4.0_gfortran/lib/libadwdm.a(utwdmd.o): In function `wdrcgo_':
+utwdmd.f:(.text+0xc6): undefined reference to `_gfortran_transfer_integer_write'
+utwdmd.f:(.text+0xdb): undefined reference to `_gfortran_transfer_integer_write'
+utwdmd.f:(.text+0xf0): undefined reference to `_gfortran_transfer_integer_write'
+utwdmd.f:(.text+0x10d): undefined reference to `_gfortran_transfer_integer_write'
+utwdmd.f:(.text+0x11d): undefined reference to `_gfortran_transfer_integer_write'
+libanne4.0_gfortran/lib/libadwdm.a(utwdmd.o):utwdmd.f:(.text+0x132): more undefined references to `_gfortran_transfer_integer_write' follow
+libanne4.0_gfortran/lib/libadwdm.a(utwdmd.o): In function `wdrcup_':
+utwdmd.f:(.text+0x643): undefined reference to `_gfortran_transfer_character_write'
+utwdmd.f:(.text+0x658): undefined reference to `_gfortran_transfer_integer_write'
+utwdmd.f:(.text+0x668): undefined reference to `_gfortran_transfer_integer_write'
+libanne4.0_gfortran/lib/libadwdm.a(utwdmd.o): In function `wdgcvl_':
+utwdmd.f:(.text+0x19e3): undefined reference to `_gfortran_transfer_integer_write'
+libanne4.0_gfortran/lib/libadwdm.a(utwdmf.o): In function `wmsfbc_':
+utwdmf.f:(.text+0x41d): undefined reference to `_gfortran_transfer_character_write'
+utwdmf.f:(.text+0x42d): undefined reference to `_gfortran_transfer_integer_write'
+utwdmf.f:(.text+0x43d): undefined reference to `_gfortran_transfer_integer_write'
+utwdmf.f:(.text+0x44d): undefined reference to `_gfortran_transfer_integer_write'
+utwdmf.f:(.text+0x462): undefined reference to `_gfortran_transfer_integer_write'
+libanne4.0_gfortran/lib/libadwdm.a(utwdmf.o): In function `wmsgte_':
+utwdmf.f:(.text+0x622): undefined reference to `_gfortran_transfer_integer_write'
+libanne4.0_gfortran/lib/libadwdm.a(utwdmf.o):utwdmf.f:(.text+0x754): more undefined references to `_gfortran_transfer_integer_write' follow
+libanne4.0_gfortran/lib/libadwdm.a(utwdmf.o): In function `wmsgto_':
+utwdmf.f:(.text+0x1494): undefined reference to `_gfortran_transfer_character_write'
+libanne4.0_gfortran/lib/libadwdm.a(utwdmf.o): In function `wmsbcx_':
+utwdmf.f:(.text+0x15d7): undefined reference to `_gfortran_transfer_character_write'
+libanne4.0_gfortran/lib/libadwdm.a(utwdt1.o): In function `wdptsp_':
+utwdt1.f:(.text+0x14f): undefined reference to `_gfortran_transfer_character_write'
+utwdt1.f:(.text+0x15f): undefined reference to `_gfortran_transfer_integer_write'
+utwdt1.f:(.text+0x16f): undefined reference to `_gfortran_transfer_integer_write'
+utwdt1.f:(.text+0x17f): undefined reference to `_gfortran_transfer_integer_write'
+utwdt1.f:(.text+0x1c6): undefined reference to `_gfortran_transfer_character_write'
+utwdt1.f:(.text+0x1d6): undefined reference to `_gfortran_transfer_integer_write'
+utwdt1.f:(.text+0x1e6): undefined reference to `_gfortran_transfer_integer_write'
+utwdt1.f:(.text+0x1f6): undefined reference to `_gfortran_transfer_integer_write'
+libanne4.0_gfortran/lib/libadwdm.a(wdatm1.o): In function `wdsetd_':
+wdatm1.f:(.text+0x1db): undefined reference to `_gfortran_transfer_character_write'
+wdatm1.f:(.text+0x1eb): undefined reference to `_gfortran_transfer_integer_write'
+wdatm1.f:(.text+0x1fb): undefined reference to `_gfortran_transfer_integer_write'
+wdatm1.f:(.text+0x210): undefined reference to `_gfortran_transfer_integer_write'
+wdatm1.f:(.text+0x225): undefined reference to `_gfortran_transfer_integer_write'
+libanne4.0_gfortran/lib/libadwdm.a(wdmchk.o): In function `wdmchk_':
+wdmchk.f:(.text+0x103): undefined reference to `_gfortran_transfer_integer_write'
+libanne4.0_gfortran/lib/libadwdm.a(wdmchk.o):wdmchk.f:(.text+0x11b): more undefined references to `_gfortran_transfer_integer_write' follow
+libanne4.0_gfortran/lib/libadwdm.a(wdmchk.o): In function `wdmchk_':
+wdmchk.f:(.text+0x611): undefined reference to `_gfortran_transfer_character_write'
+wdmchk.f:(.text+0x626): undefined reference to `_gfortran_transfer_character_write'
+wdmchk.f:(.text+0x6d9): undefined reference to `_gfortran_transfer_integer_write'
+wdmchk.f:(.text+0x798): undefined reference to `_gfortran_transfer_character_write'
+wdmchk.f:(.text+0x7ad): undefined reference to `_gfortran_transfer_character_write'
+libanne4.0_gfortran/lib/libadwdm.a(wdmchk.o): In function `wdatfx_':
+wdmchk.f:(.text+0xb79): undefined reference to `_gfortran_transfer_integer_write'
+wdmchk.f:(.text+0xb8e): undefined reference to `_gfortran_transfer_integer_write'
+wdmchk.f:(.text+0xba3): undefined reference to `_gfortran_transfer_integer_write'
+wdmchk.f:(.text+0xc34): undefined reference to `_gfortran_transfer_integer_write'
+wdmchk.f:(.text+0xc49): undefined reference to `_gfortran_transfer_integer_write'
+libanne4.0_gfortran/lib/libadwdm.a(wdmchk.o):wdmchk.f:(.text+0xc5e): more undefined references to `_gfortran_transfer_integer_write' follow
+libanne4.0_gfortran/lib/libutil.a(utchar.o): In function `decchx_':
+utchar.f:(.text+0xe51): undefined reference to `_gfortran_transfer_real_write'
+utchar.f:(.text+0x10d1): undefined reference to `_gfortran_transfer_real_write'
+libanne4.0_gfortran/lib/libutil.a(utchar.o): In function `decchr_':
+utchar.f:(.text+0x1ede): undefined reference to `_gfortran_transfer_real_write'
+libanne4.0_gfortran/lib/libutil.a(utchar.o): In function `dprchr_':
+utchar.f:(.text+0x403e): undefined reference to `_gfortran_transfer_real_write'
+utchar.f:(.text+0x45cc): undefined reference to `_gfortran_transfer_character_write'
+utchar.f:(.text+0x45e3): undefined reference to `_gfortran_transfer_real_write'
+utchar.f:(.text+0x4631): undefined reference to `_gfortran_transfer_character_write'
+utchar.f:(.text+0x4643): undefined reference to `_gfortran_transfer_integer_write'
+utchar.f:(.text+0x4691): undefined reference to `_gfortran_transfer_character_write'
+utchar.f:(.text+0x46a8): undefined reference to `_gfortran_transfer_integer_write'
+utchar.f:(.text+0x46f6): undefined reference to `_gfortran_transfer_character_write'
+utchar.f:(.text+0x472a): undefined reference to `_gfortran_transfer_real_write'
+utchar.f:(.text+0x4778): undefined reference to `_gfortran_transfer_character_write'
+utchar.f:(.text+0x47b5): undefined reference to `_gfortran_transfer_real_write'
+utchar.f:(.text+0x4803): undefined reference to `_gfortran_transfer_character_write'
+utchar.f:(.text+0x4845): undefined reference to `_gfortran_transfer_real_write'
+utchar.f:(.text+0x4893): undefined reference to `_gfortran_transfer_character_write'
+utchar.f:(.text+0x48e1): undefined reference to `_gfortran_transfer_character_write'
+libanne4.0_gfortran/lib/libutil.a(utchar.o): In function `prtstr_':
+utchar.f:(.text+0x50f5): undefined reference to `_gfortran_transfer_character_write'
+libanne4.0_gfortran/lib/libutil.a(utdate.o): In function `timdfx_':
+utdate.f:(.text+0x1a16): undefined reference to `_gfortran_transfer_character_write'
+utdate.f:(.text+0x1a71): undefined reference to `_gfortran_transfer_array_write'
+utdate.f:(.text+0x1acc): undefined reference to `_gfortran_transfer_array_write'
+libanne4.0_gfortran/lib/libutil.a(utdate.o): In function `dcalct_':
+utdate.f:(.text+0x2500): undefined reference to `_gfortran_transfer_array_write'
+libanne4.0_gfortran/lib/libutil.a(dttmsn.o): In function `wdsysd_':
+dttmsn.f:(.text+0x24c): undefined reference to `_gfortran_transfer_integer_write'
+dttmsn.f:(.text+0x261): undefined reference to `_gfortran_transfer_integer_write'
+dttmsn.f:(.text+0x276): undefined reference to `_gfortran_transfer_integer_write'
+dttmsn.f:(.text+0x28b): undefined reference to `_gfortran_transfer_integer_write'
+dttmsn.f:(.text+0x2a0): undefined reference to `_gfortran_transfer_integer_write'
+libanne4.0_gfortran/lib/libutil.a(dttmsn.o):dttmsn.f:(.text+0x2b5): more undefined references to `_gfortran_transfer_integer_write' follow
+collect2: ld returned 1 exit status
+make: *** [przm3123.exe] Error 1

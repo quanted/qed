@@ -1,0 +1,5 @@
+
+!     include file PMXNOD.INC
+      INTEGER MXNOD
+!      PARAMETER (MXNOD=100)
+      PARAMETER (MXNOD=400)

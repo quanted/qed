@@ -1,0 +1,4387 @@
+
+
+ AWVRSN                                                                                  AWVRSN  
+
+ This SUBROUTINE is number 21 in file utwdmd. 
+
+ Dummy routine to include unix what version information for the        
+ adwdm library.                                                        
+
+ ARGUMENTS:
+
+  none
+
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ FSPARS                                                                                  FSPARS  
+
+ This SUBROUTINE is number 7 in file msimpt. 
+
+ Parse _VALID subdirective for a File type data field                  
+ into file elements needed to perform Open.                            
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    FSPTXT   C*V            I    character array of _VALID subdirective text               
+    2    CSTAT    C*7            M    character string containing file STATUS                   
+    3    CACCES   C*10           M    character string containing file ACCESS                   
+    4    CFORM    C*11           M    character string containing file FORMAT                   
+    5    IRECL    I*4            M    length of record for direct access file                   
+    6    NAMES    C*80           O    character array of valid file names                       
+    7    WDMFLG   I*4            O    WDM file indicator, for use when opening file             
+                                      0 - not a WDM file                                        
+                                      1 - WDM file                                              
+    8    RETCOD   I*4            O    return code, 0 - all specs ok                             
+                                                -150 - specification mismatch                   
+ 
+ CALLS:
+
+  routine
+  -------
+  INDEX       ZLJUST      ZLNTXT  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msimpt    PRMSPA  
+
+
+ GGTGLA                                                                                  GGTGLA  
+
+ This SUBROUTINE is number 5 in file adutil. 
+
+ get global response associated value for a given id and index         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    GLNAM    C*8            I    global value name                                         
+    2    GLIND    I*4            I    global value index number                                 
+    3    GLAVAL   I*4            O    global value assoc value                                  
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CZGLVC  ZGLNAM     I
+  CZGLVC  ZGLVAL     I
+
+  CZGLVL  ZGLAVL     I
+  CZGLVL  ZGLCNT     I
+
+ CALLS:
+
+  routine
+  -------
+
+ CALLED BY:
+
+  unknown
+
+
+ GGTGLV                                                                                  GGTGLV  
+
+ This SUBROUTINE is number 4 in file adutil. 
+
+ get global responses for a given id                                   
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    FLEN     I*4            I    field length of this global response                      
+    2    ISGLVL   I*4            I    get only the single value specified                       
+    3    STRIN1   C*1 (V)        M    this global response                                      
+    4    ILEN     I*4            O    total length of this global response                      
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CZGLVC  ZGLNAM     I
+  CZGLVC  ZGLVAL     I
+
+  CZGLVL  ZGLCNT     I
+  CZGLVL  ZGLFCT     I
+  CZGLVL  ZGLFLN     I
+  CZGLVL  ZGLPOS     I
+
+ CALLS:
+
+  routine
+  -------
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  adutil    ZCHKST  
+
+
+ GSTGLV                                                                                  GSTGLV  
+
+ This SUBROUTINE is number 3 in file adutil. 
+
+ set global responses for use in a number of aide screens              
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    GLOID    C*8            I    global response id                                        
+    2    FLEN     I*4            I    field length of this global response                      
+    3    ILEN     I*4            I    total length of this global response                      
+    4    STRIN1   C*1 (V)        I    this global response                                      
+    5    ICNT     I*4            I    count of global response values                           
+    6    IVAL     I*4 (V)        I    values associated with global response                    
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CZGLVC  ZGLNAM     M
+  CZGLVC  ZGLVAL     M
+
+  CZGLVL  ZGLAVL     I
+  CZGLVL  ZGLCNT     M
+  CZGLVL  ZGLFCT     M
+  CZGLVL  ZGLFLN     M
+  CZGLVL  ZGLLEN     M
+  CZGLVL  ZGLPOS     M
+
+ CALLS:
+
+  routine
+  -------
+
+ CALLED BY:
+
+  unknown
+
+
+ PMXTFC                                                                                  PMXTFC  
+
+ This SUBROUTINE is number 3 in file prtfil. 
+
+ This routine prints text from a message file to an output file.       
+ It fills in values from CVAL whenever a delimeter is found.           
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    UMESFL   I*4            I    Fortran unit number of message file containing text       
+    2    FUNIT    I*4            I    Fortran unit number of output file                        
+    3    SCLU     I*4            I    screen cluster number on WDM-message file                 
+    4    SGRP     I*4            I    screen group number in cluster                            
+    5    CNUM     I*4            I    number of characters to include in message                
+    6    CLEN     I*4 (V)        I    array of lengths of character strings                     
+    7    CVAL     C*1 (V)        I    array containing characters to be included in text        
+ 
+ CALLS:
+
+  routine
+  -------
+  PMXTXF  
+
+ CALLED BY:
+
+  unknown
+
+
+ PMXTFI                                                                                  PMXTFI  
+
+ This SUBROUTINE is number 1 in file prtfil. 
+
+ This routine prints text form a message file to an output file.       
+ It fills in values from IVAL whenever a delimeter is found.           
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    UMESFL   I*4            I    Fortran unit number of message file containing text       
+    2    FUNIT    I*4            I    Fortran unit number of output file                        
+    3    SCLU     I*4            I    screen cluster number on WDM-message file                 
+    4    SGRP     I*4            I    screen group number in cluster                            
+    5    INUM     I*4            I    number of integers to include in message                  
+    6    IVAL     I*4 (V)        I    array containing integers to pe included in text          
+ 
+ CALLS:
+
+  routine
+  -------
+  PMXTXF  
+
+ CALLED BY:
+
+  unknown
+
+
+ PMXTFR                                                                                  PMXTFR  
+
+ This SUBROUTINE is number 2 in file prtfil. 
+
+ This routine prints text from a message file to an output file.       
+ It fills in values from RVAL whenever a delimeter is found.           
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    UMESFL   I*4            I    Fortran unit number of message file containing text       
+    2    FUNIT    I*4            I    Fortran unit number of output file                        
+    3    SCLU     I*4            I    screen cluster number on WDM-message file                 
+    4    SGRP     I*4            I    screen group number in cluster                            
+    5    RNUM     I*4            I    number of reals to include in message                     
+    6    RVAL     R   (V)        I    array containing reals to be included in text             
+ 
+ CALLS:
+
+  routine
+  -------
+  PMXTXF  
+
+ CALLED BY:
+
+  unknown
+
+
+ PMXTFT                                                                                  PMXTFT  
+
+ This SUBROUTINE is number 5 in file prtfil. 
+
+ Print text from a message file to an output file.  Maximum            
+ length of a line is 150 characters.                                   
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    MESSFL   I*4            I    Fortran unit number of message file containing text       
+    2    FUNIT    I*4            I    Fortran unit number of output file                        
+    3    SCLU     I*4            I    screen cluster number on WDM-message file                 
+    4    SGRP     I*4            I    screen group number in cluster                            
+ 
+ CALLS:
+
+  routine
+  -------
+  COLSET      SCPRBF      WMSGTT  
+
+ CALLED BY:
+
+  unknown
+
+
+ PMXTXF                                                                                  PMXTXF  
+
+ This SUBROUTINE is number 4 in file prtfil. 
+
+ This routine prints text from a message file to a user file.  It      
+ fills in values from IVAL, RVAL, DVAL, and CVAL arrays whenever       
+ a delimeter is found.                                                 
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    UMESFL   I*4            I    Fortran unit number of user's message file                
+    2    FUNIT    I*4            I    Fortran unit number of output file                        
+    3    SCLU     I*4            I    screen cluster number on WDM-message file                 
+    4    SGRP     I*4            I    screen group number in cluster                            
+    5    ONUM     I*4            I    number of variables to be added to the text               
+    6    OTYP     I*4 (V)        I    array of types for variables to be added to text          
+    7    IVAL     I*4 (V)        I    array containing integer values to include                
+    8    RVAL     R   (V)        I    array containing real values to include                   
+    9    DVAL     D   (V)        I    array containing double precision values to include       
+   10    CLEN     I*4 (V)        I    array of lengths of character strings to include          
+   11    CVAL     C*1 (V)        I    array of character strings to include                     
+ 
+ CALLS:
+
+  routine
+  -------
+  COLSET      LENSTR      PRTSTR      SCPRBF      TXMULT      WMSGTT  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  prtfil    PMXTFC      PMXTFI      PMXTFR  
+
+
+ PRMSFE                                                                                  PRMSFE  
+
+ This SUBROUTINE is number 5 in file msexpt. 
+
+ Export file type group.                                               
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    SUCIFL   I*4            I    Fortran unit number for export file                       
+    3    DREC     I*4            M    record on WDM file                                        
+    4    DPOS     I*4            M    position on record                                        
+    5    CLASS    I*4            M    class of block                                            
+    6    ID       I*4            M    identifier of block                                       
+    7    ORDER    I*4            M    order of block                                            
+    8    TLEN     I*4            M    total length of block                                     
+ 
+ CALLS:
+
+  routine
+  -------
+  CHRCHR      INTCHR      PRMSTA      PRTSTR      WDNXDV      WMSBCS      WMSGTO  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msexpt    PRWMME  
+
+
+ PRMSFI                                                                                  PRMSFI  
+
+ This SUBROUTINE is number 5 in file msimpt. 
+
+ Import file type group.                                               
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    CLU      I*4            I    cluster number on  WDM file                               
+    3    GNUM     I*4            I    group number to put on WDM file                           
+    4    SUCIFL   I*4            I    Fortran unit number for sequential message file           
+    5    OBUFF    C*40           M    output buffer, returns last line read to calling routine  
+    6    CONT     I*4            M    indicator to continue reading sequential file             
+                                      0 - end of cluster                                        
+                                      1 - more groups to import                                 
+    7    RETCOD   I*4            M    return code -  0 - no problem,                            
+                                                  -150 - errors found and reported on unit 99   
+ 
+ CALLS:
+
+  routine
+  -------
+  CHRINT      LENSTR      PRMSIT      STRFND      WMSADI      ZLJUST  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msimpt    PRWMSI  
+
+
+ PRMSIT                                                                                  PRMSIT  
+
+ This SUBROUTINE is number 6 in file msimpt. 
+
+ Put text from any ID of information on WDM file.                      
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    SUCIFL   I*4            I    Fortran unit number for import file                       
+    2    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    3    CLU      I*4            I    cluster number on  WDM file                               
+    4    GNUM     I*4            I    group number to put on WDM file                           
+    5    CLASS    I*4            I    class of information being stored                         
+    6    ID       I*4            I    id for portion of group being stored                      
+    7    ORDER    I*4            I    order of information being stored                         
+    8    ILEN     I*4            I    length of buffer being stored                             
+    9    IBUF1    C*1 (V)        M    character array of size ILEN to store                     
+   10    NXTFG    I*4            M    indicator to calling program that buffer                  
+                                      contains new information to process                       
+ 
+ CALLS:
+
+  routine
+  -------
+  LENSTR      STRFND      WMSADI  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msimpt    PRMSFI      PRMSMI      PRMSPA      PRMSTI  
+
+
+ PRMSME                                                                                  PRMSME  
+
+ This SUBROUTINE is number 4 in file msexpt. 
+
+ Export menu type group.                                               
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    SUCIFL   I*4            I    Fortran unit number for export file                       
+    3    DREC     I*4            M    record on WDM file                                        
+    4    DPOS     I*4            M    position on record                                        
+    5    CLASS    I*4            M    class of block                                            
+    6    ID       I*4            M    identifier of block                                       
+    7    ORDER    I*4            M    order of block                                            
+    8    TLEN     I*4            M    total length of block                                     
+ 
+ CALLS:
+
+  routine
+  -------
+  CHRCHR      INTCHR      PRMSTA      PRTSTR      WDNXDV      WMSBCS      WMSGTO      WMSMNS  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msexpt    PRWMME  
+
+
+ PRMSMI                                                                                  PRMSMI  
+
+ This SUBROUTINE is number 4 in file msimpt. 
+
+ Import menu type group.                                               
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    CLU      I*4            I    cluster number on  WDM file                               
+    3    GNUM     I*4            I    group number to put on WDM file                           
+    4    SUCIFL   I*4            I    Fortran unit number for sequential message file           
+    5    OBUFF    C*40           M    output buffer, returns last line read to calling routine  
+    6    CONT     I*4            M    indicator to continue reading sequential file             
+                                      0 - end of cluster                                        
+                                      1 - more groups to import to read                         
+    7    RETCOD   I*4            M    return code -  0 - no problem,                            
+                                                  -150 - errors found and reported on unit 99   
+ 
+ CALLS:
+
+  routine
+  -------
+  CHRINT      LENSTR      PRMSIT      STRFND      WMSADI      WMSMNV      ZIPI        ZLJUST  
+  ZLNTXT  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msimpt    PRWMSI  
+
+
+ PRMSPA                                                                                  PRMSPA  
+
+ This SUBROUTINE is number 2 in file msimpt. 
+
+ Import 1-dimensional and 2-dimensional type groups.                   
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    CLU      I*4            I    cluster number on WDM file                                
+    3    GNUM     I*4            I    group number to put on WDM file                           
+    4    SUCIFL   I*4            I    Fortran unit number for import file                       
+    5    CLASS    I*4            I    class of question being imported                          
+                                      1 - 1-dimensional                                         
+                                      2 - 2-dimensional                                         
+    6    OBUFF    C*40           M    output buffer, returns last line read to calling routine  
+    7    CONT     I*4            M    indicator to continue reading sequential file             
+                                      0 - end of cluster                                        
+                                      1 - more groups to import                                 
+    8    RETCOD   I*4            M    return code -  0 - no problem,                            
+                                                  -150 - errors found and reported on unit 99   
+ 
+ CALLS:
+
+  routine
+  -------
+  CHRDEC      CHRINT      CKNBLV      FSPARS      INDEX       LENSTR      PRMSIT      STRFND  
+  WMSADI      WMSP2V      WMSPIV      WMSPOV      ZLJUST      ZLNTXT      ZTRIM   
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msimpt    PRWMSI  
+
+
+ PRMSPE                                                                                  PRMSPE  
+
+ This SUBROUTINE is number 2 in file msexpt. 
+
+ Export 1-dimensional and 2-dimensional type groups.                   
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    SUCIFL   I*4            I    Fortran unit number for export file                       
+    3    DREC     I*4            M    record on WDM file                                        
+    4    DPOS     I*4            M    position on record                                        
+    5    CLASS    I*4            M    class of block                                            
+    6    ID       I*4            M    identifier of block                                       
+    7    ORDER    I*4            M    order of block                                            
+    8    TLEN     I*4            M    total length of block                                     
+ 
+ CALLS:
+
+  routine
+  -------
+  CHRCHR      DECCHX      INTCHR      PRMSTA      PRTSTR      WDNXDV      WMSBCS      WMSGTO  
+  WMSP2S      WMSPIS      WMSPOS      ZIPC    
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msexpt    PRWMME  
+
+
+ PRMSTA                                                                                  PRMSTA  
+
+ This SUBROUTINE is number 6 in file msexpt. 
+
+ export block with header (CHDR) and information on same line          
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    SUCIFL   I*4            I    Fortran unit number for export file                       
+    3    ILEN     I*4            I    length of header                                          
+    4    CHDR     C*1 (V)        I    header for info being exported                            
+    5    TLEN     I*4            I    total length of information                               
+    6    DREC     I*4            M    record number on WDM file                                 
+    7    DPOS     I*4            M    position on record                                        
+ 
+ CALLS:
+
+  routine
+  -------
+  CHRINS      LENSTR      PRTSTR      WMSGTE  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msexpt    PRMSFE      PRMSME      PRMSPE      PRMSTE  
+
+
+ PRMSTE                                                                                  PRMSTE  
+
+ This SUBROUTINE is number 3 in file msexpt. 
+
+ Export text type group.                                               
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    SUCIFL   I*4            I    Fortran unit number for export file                       
+    3    DREC     I*4            M    record on WDM file                                        
+    4    DPOS     I*4            M    position of block control word on WDM file record         
+    5    CLASS    I*4            M    class of block                                            
+    6    ID       I*4            M    identifier of block                                       
+    7    ORDER    I*4            M    order of block                                            
+    8    TLEN     I*4            M    length of block                                           
+ 
+ CALLS:
+
+  routine
+  -------
+  PRMSTA      PRTSTR      WDNXDV      WMSBCS      WMSGTO  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msexpt    PRWMME  
+
+
+ PRMSTI                                                                                  PRMSTI  
+
+ This SUBROUTINE is number 3 in file msimpt. 
+
+ Import text type group.                                               
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    CLU      I*4            I    cluster number on WDM file                                
+    3    GNUM     I*4            I    group number to put on WDM file                           
+    4    SUCIFL   I*4            I    Fortran unit number for sequential message file           
+    5    OBUFF    C*40           M    output buffer, returns last line read to calling routine  
+    6    CONT     I*4            M    indicator to continue reading sequential file             
+                                      0 - end of cluster                                        
+                                      1 - more groups to import                                 
+    7    RETCOD   I*4            M    return code -  0 - no problem,                            
+                                                  -150 - errors found and reported on unit 99   
+ 
+ CALLS:
+
+  routine
+  -------
+  PRMSIT      STRFND      WMSADI      ZLJUST  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msimpt    PRWMSI  
+
+
+ PRWMME                                                                                  PRWMME  
+
+ This SUBROUTINE is number 1 in file msexpt. 
+
+ Export message file clusters (data sets)                              
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    SUCIFL   I*4            I    Fortran unit number for output file                       
+    3    CLU      I*4            I    cluster number being exported from WDM file               
+ 
+ CALLS:
+
+  routine
+  -------
+  PRMSFE      PRMSME      PRMSPE      PRMSTE      WDSCHK      WMSBCS      WMSFBC      WMSQCK  
+
+ CALLED BY:
+
+  unknown
+
+
+ PRWMSI                                                                                  PRWMSI  
+
+ This SUBROUTINE is number 1 in file msimpt. 
+
+ Import message file clusters (data sets)                              
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    SUCIFL   I*4            I    Fortran unit number for input file                        
+    3    CLU      I*4            I    cluster number being imported to WDM file                 
+    4    RETCOD   I*4            O    return code -  0 - no problem,                            
+                                                  -150 - errors found and reported on unit 99   
+ 
+ CALLS:
+
+  routine
+  -------
+  CHRINT      LENSTR      PRMSFI      PRMSMI      PRMSPA      PRMSTI      STRFND      WMSQCK  
+  ZIPC        ZLJUST  
+
+ CALLED BY:
+
+  unknown
+
+
+ TXMULT                                                                                  TXMULT  
+
+ This SUBROUTINE is number 6 in file prtfil. 
+
+ This routine fills in values from the IVAL, RVAL, DVAL, and           
+ CVAL arrays whenever a delimeter is found in TXT.                     
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    ONUM     I*4            I    number of variables to be output in text buffer           
+    2    OTYP     I*4 (V)        I    array of variable types                                   
+    3    IVAL     I*4 (V)        I    array of integer variables                                
+    4    RVAL     R   (V)        I    array of real variables                                   
+    5    DVAL     D   (V)        I    array of double precision variables                       
+    6    CLEN     I*4 (V)        I    array of character variable lengths                       
+    7    CVAL     C*1 (V)        I    array of character variables                              
+    8    DELIM    C*1 (1)        I    character indicating where variable are to be placed in t 
+    9    ILEN     I*4            I    ** Need Argument Definition ***                           
+   10    OCNT     I*4            M    current count of variables output in text buffer          
+   11    ICNT     I*4            M    current count of integer variables output                 
+   12    RCNT     I*4            M    current count of real variables output                    
+   13    DCNT     I*4            M    current count of double precision variables output        
+   14    CCNT     I*4            M    current count of character variables output               
+   15    OPOS     I*4            M    position within character array of next character variabl 
+   16    TXT      C*1 (V)        M    current text buffer line                                  
+   17    CONT     I*4            M    continue outputing text flag,                             
+                                      0 - do not continue, 1 - continue                         
+   18    DONFG    I*4            O    flag indicating all variables put in text,                
+                                      0 - not all variables in text, 1 - all variables in text  
+ 
+ CALLS:
+
+  routine
+  -------
+  ABS         CHRCHR      CHRDEL      CHRINS      DECCHR      DPRCHR      INTCHR      STRFND  
+  ZIPC    
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  prtfil    PMXTXF  
+
+
+ WADADI                                                                                  WADADI  
+
+ This SUBROUTINE is number 3 in file wdatm1. 
+
+ put attribute data set information on WDM message file                
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    MESSFL   I*4            I    Fortran unit number for WDM message file                  
+    2    DSN      I*4            I    data-set number on WDM file                               
+    3    ATIND    I*4            I    question number being added                               
+    4    ID       I*4            I    id for portion of attribute being stored                  
+    5    ILEN     I*4            I    length of input buffer                                    
+    6    IBUFF    C*1 (V)        I    input buffer of character data to store                   
+    7    INUM     I*4            I    number of integer values to store                         
+    8    IVAL     I*4 (V)        I    input buffer of integer parameters to store               
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  RECNO      I
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  LENSTR      WATWDC      WDNXPS      WDPTCL      WDPTSP      WDRCGO      WDRCGX      WDRCUP  
+  WDSCHK      WMSPTE  
+
+ CALLED BY:
+
+  unknown
+
+
+ WADDSI                                                                                  WADDSI  
+
+ This SUBROUTINE is number 5 in file wdatm1. 
+
+ determine the data-set numbers containing the attribute data sets     
+ and the first and last attributes on each data set                    
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    MESSFL   I*4            I    Fortran unit number for WDM message file                  
+    2    DSNMAX   I*4            I    maximum number of attribute data sets                     
+    3    DSNCNT   I*4            O    number of data sets containing attributes                 
+    4    DSN      I*4 (V)        O    array of data-set numbers containing attributes           
+    5    ATTIND   I*4 (2,V)      O    array of first and last attributes on each data set       
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CDRLOC  PTSNUM     I
+
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WATWDS      WDDSCK      WDRCGO      ZIPI    
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  wdatm1    WADNSA  
+
+
+ WADGTL                                                                                  WADGTL  
+
+ This SUBROUTINE is number 4 in file wdatm1. 
+
+ given attribute index, get type, length, data set usage,              
+ and update flag as well as starting pos of other data                 
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    MESSFL   I*4            I    Fortran unit number for WDM message file                  
+    2    DSN      I*4            I    data-set number on WDM file                               
+    3    ATIND    I*4            I    attribute index                                           
+    4    ATNAM    C*1 (6)        O    attribute name                                            
+    5    DPTR     I*4            O    pointer to start of other attribute data                  
+    6    ATTYP    I*4            O    attribute typ                                             
+    7    ATLEN    I*4            O    attribute length                                          
+    8    ATUSWD   I*4            O    integer word of required and optional data set usage      
+    9    ATUPD    I*4            O    attribute update flag                                     
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  CHAR        MOD         WATTSP      WATWDS      WDDSCK      WDRCGO  
+
+ CALLED BY:
+
+  unknown
+
+
+ WADNSA                                                                                  WADNSA  
+
+ This SUBROUTINE is number 2 in file wdatm1. 
+
+ given a search attribute index, determine if it exists                
+ on the message file, if not return the next existing                  
+ index or value of 0 for no more attributes                            
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    MESSFL   I*4            I    Fortran unit number for message file                      
+    2    DSINIT   I*4            I    flag indicating if data-set buffer is to be updated       
+    3    SAIND    I*4            M    attribute index                                           
+ 
+ CALLS:
+
+  routine
+  -------
+  WADDSI      WADQCK  
+
+ CALLED BY:
+
+  unknown
+
+
+ WADQCK                                                                                  WADQCK  
+
+ This SUBROUTINE is number 1 in file wdatm1. 
+
+ given attribute offset for this data set check to see                 
+ if the attribute already exists on WDM file, return                   
+ 0 if not exist, otherwise return absolute index number                
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    MESSFL   I*4            I    Fortran unit number for WDM message file                  
+    2    DSN      I*4            I    data-set number on WDM file                               
+    3    ATIND    I*4            I    attribute number being checked                            
+    4    ATCHK    I*4            O    flag indicating attribute existance,                      
+                                      0 - doesnt exist, 1 - exists, (-) - bad return code value 
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WATWDS      WDRCGO      WDSCHK  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  wdatm1    WADNSA  
+
+
+ WATTCL                                                                                  WATTCL  
+
+ This INTEGER FUNCTION is number 24 in file utwdt1. 
+
+ Calculate a word containing parameters for attribute type             
+ data set.  Return a 0 if any one of the components is invalid.        
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    ATTYP    I*4            I    attribute type, 0 <= ATTYP <= 8                           
+                                      1- integer                                                
+                                      2- real                                                   
+                                      3- character                                              
+    2    ATLEN    I*4            I    attribute length, 1 <= ATLEN <= 128                       
+                                      ATTYP= 1 or 2 - number of words                           
+                                      ATTYP= 3 - number of characters                           
+    3    ATUSE    I*4 (10)       I    array of indicator flags for data-set                     
+                                      attribute usage, ATUSE(n) = 0, 1, or 2                    
+                                      0 - attribute not allowed for data-set type               
+                                      1 - attribute optional for data-set type                  
+                                      2 - attribute required for data-set type                  
+    4    ATUPD    I*4            I    attribute update flag, ATPUD = 0 or 1                     
+                                      0 - don't update attribute                                
+                                      1 - update attribute if data exists                       
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ WATTSP                                                                                  WATTSP  
+
+ This SUBROUTINE is number 25 in file utwdt1. 
+
+ Split up a word containing parameters for                             
+ attribute type data set.                                              
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    IATVL    I*4            I    attribute parameters integer word                         
+    2    ATTYP    I*4            O    attribute type                                            
+                                      1- integer                                                
+                                      2- real                                                   
+                                      3- character                                              
+    3    ATLEN    I*4            O    attribute length                                          
+                                      ATTYP= 1 or 2 - number of words                           
+                                      ATTYP= 3 - number of characters                           
+    4    ATUSE    I*4            O    array of indicator flags for data-set attribute usage     
+                                      0 - attribute not allowed for data-set type               
+                                      1 - attribute optional for data-set type                  
+                                      2 - attribute required for data-set type                  
+    5    ATUPD    I*4            O    attribute update flag                                     
+                                      0 - don't update attribute                                
+                                      1 - update attribute if data exists                       
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD     
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  wdatm1    WADGTL  
+
+
+ WATTUS                                                                                  WATTUS  
+
+ This SUBROUTINE is number 26 in file utwdt1. 
+
+ Split up word containing array of indicator flags                     
+ for dataset attribute usage.                                          
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    ATUSWD   I*4            I    attribute usage word                                      
+    2    ATUSE    I*4 (10)       O    array of indicator flags for data-set attribute usage     
+                                      0 - attribute not allowed for data-set type               
+                                      1 - attribute optional for data-set type                  
+                                      2 - attribute required for data-set type                  
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD     
+
+ CALLED BY:
+
+  unknown
+
+
+ WATWDC                                                                                  WATWDC  
+
+ This INTEGER FUNCTION is number 27 in file utwdt1. 
+
+ Calculate a word containing parameters                                
+ for attribute type data set.                                          
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    IVAL1    I*4            I    either last 2 characters of name or                       
+                                      id of info, 0 <= IVAL1 <= 4194304                         
+    2    IVAL2    I*4            I    either attribute index or                                 
+                                      length of info, 0 <= IVAL2 <= 512                         
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  wdatm1    WADADI  
+
+
+ WATWDS                                                                                  WATWDS  
+
+ This SUBROUTINE is number 28 in file utwdt1. 
+
+ Split up a word containing parameters for attribute type data set.    
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    IWORD    I*4            I    attribute parameters integer word                         
+    2    IVAL1    I*4            O    either last 2 characters of name or id of info            
+    3    IVAL2    I*4            O    either attribute index or length of info                  
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD     
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  wdatm1    WADDSI      WADGTL      WADQCK  
+
+
+ WBCWCL                                                                                  WBCWCL  
+
+ This INTEGER FUNCTION is number 4 in file utwdt1. 
+
+ Calculate a block control word for time-series type data.             
+ Returns a 0 if any one of the components is invalid.                  
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    NOV      I*4            I    number of data values in the block                        
+    2    TSTEP    I*4            I    time step of data block in TCODE units                    
+    3    TCODE    I*4            I    time units code                                           
+                                      1 - second    4 - day                                     
+                                      2 - minute    5 - month                                   
+                                      3 - hour      6 - year                                    
+                                                    7 - century                                 
+    4    COMPCD   I*4            I    compression code                                          
+                                      1 - compressed block of data                              
+                                      2 - uncompressed block of data                            
+    5    QUALCD   I*4            I    quality code, 0 <= QUALCD <= 31                           
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ WBCWSP                                                                                  WBCWSP  
+
+ This SUBROUTINE is number 3 in file utwdt1. 
+
+ Split up a block control word for a time-series type data set         
+ to determine the information stored in it.                            
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    BCW      I*4            I    block control word                                        
+    2    NOV      I*4            O    number of data values in the block                        
+    3    TSTEP    I*4            O    time step of data block in TCODE units                    
+    4    TCODE    I*4            O    time units code                                           
+                                      1 - second    4 - day                                     
+                                      2 - minute    5 - month                                   
+                                      3 - hour      6 - year                                    
+                                                    7 - century                                 
+    5    COMPCD   I*4            O    compression code                                          
+                                      1 - compressed block of data                              
+                                      2 - uncompressed block of data                            
+    6    QUALCD   I*4            O    quality code, 0 <= QUALCD <= 31                           
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD     
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utwdt1    WBCWSQ  
+
+
+ WBCWSQ                                                                                  WBCWSQ  
+
+ This SUBROUTINE is number 11 in file utwdt1. 
+
+ Split up a block control word for time-series type data set.          
+ Adjusts TSTEP and NOV for faster operation, if possible.              
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    BCW      I*4            I    block control word                                        
+    2    NOV      I*4            O    number of data values in the block                        
+    3    TSTEP    I*4            O    time step of data block in TCODE units                    
+    4    TCODE    I*4            O    time units code                                           
+                                      1 - second    4 - day                                     
+                                      2 - minute    5 - month                                   
+                                      3 - hour      6 - year                                    
+                                                    7 - century                                 
+    5    COMPCD   I*4            O    compression code                                          
+                                      1 - compressed block of data                              
+                                      2 - uncompressed block of data                            
+    6    QUALCD   I*4            O    quality code, 0 <= QUALCD <= 31                           
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD         WBCWSP  
+
+ CALLED BY:
+
+  unknown
+
+
+ WDATCL                                                                                  WDATCL  
+
+ This INTEGER FUNCTION is number 6 in file utwdt1. 
+
+ Calculate a date in compressed format from                            
+ its components (year- hour).  Returns a 0 if                          
+ any one of the components is invalid.                                 
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DAT      I*4 (4)        I    date (year, month, day, hour)                             
+                                      0 <= hour <= 24                                           
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ WDATSP                                                                                  WDATSP  
+
+ This SUBROUTINE is number 5 in file utwdt1. 
+
+ Split up a WDMS date word.                                            
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DATWRD   I*4            I    date in compressed format                                 
+    2    DAT      I*4 (4)        O    date (year, month, day, hour)                             
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD     
+
+ CALLED BY:
+
+  unknown
+
+
+ WDBFIN                                                                                  WDBFIN  
+
+ This SUBROUTINE is number 13 in file utwdmd. 
+
+ Initialize pointers and counters for WDM buffer of records.           
+
+ ARGUMENTS:
+
+  none
+
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CDRLOC  PDIRPT     O
+  CDRLOC  PFNAME     O
+  CDRLOC  PFRREC     O
+  CDRLOC  PMXREC     O
+  CDRLOC  PTSNUM     O
+
+  CFBUFF  FREPOS     O
+  CFBUFF  MAXREC     O
+  CFBUFF  NXTPOS     O
+  CFBUFF  PREPOS     O
+  CFBUFF  RECNO      O
+  CFBUFF  WDMCNT     O
+  CFBUFF  WDMFUN     O
+  CFBUFF  WDMOPN     O
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  wdopux    WDBOPN  
+
+
+ WDBOPN                                                                                  WDBOPN  
+
+ This SUBROUTINE is number 1 in file wdopux. 
+
+ Open a WDM file.  File is opened as new or old, depending on          
+ the value of RONWFG.  The common block related to the WDM record      
+ buffer are initialized the first time this routine is called.         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of the WDM file                       
+    2    WDNAME   C*64           I    name of the WDM file                                      
+    3    RONWFG   I*4            I    read only/new file flag                                   
+                                      0- normal open of existing WDM file,                      
+                                      1- open WDM file as read only (system dependent),         
+                                      2- open new WDM file                                      
+    4    RETCOD   I*4            O    return code                                               
+                                       0 - successful open                                      
+                                       1 - successful open, but invalid WDM file                
+                                      <0 - error on open, -IOSTAT, compiler specific            
+ 
+ CALLS:
+
+  routine
+  -------
+  WDBFIN      WDCREA      WDFLCK  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msopen    WMSGOP  
+
+
+ WDCKDT                                                                                  WDCKDT  
+
+ This INTEGER FUNCTION is number 11 in file utwdmd. 
+
+ Check data set for existance and type, returns:                       
+     0 - data set does not exist                                       
+ or data-set type                                                      
+     1 - time series      6 - rastor                                   
+     2 - table            7 - space-time                               
+     3 - schematic        8 - attribute                                
+     4 - project          9 - message                                  
+     5 - vector                                                        
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of WDM file                           
+    2    DSN      I*4            I    data-set number to be checked                             
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDDSCK      WDRCGO  
+
+ CALLED BY:
+
+  unknown
+
+
+ WDCREA                                                                                  WDCREA  
+
+ This SUBROUTINE is number 14 in file utwdmd. 
+
+ Adds directory record and 19 empty records to a new WDM file.         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of WDM file                           
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CDRLOC  PMXREC     I
+
+  CFBUFF  MAXREC     O
+  CFBUFF  WDMCNT     M
+  CFBUFF  WDMOPN     M
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDRCAD      WDRCGO      WDRCUP  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  wdopux    WDBOPN  
+
+
+ WDDRRC                                                                                  WDDRRC  
+
+ This INTEGER FUNCTION is number 8 in file utwdmd. 
+
+ Determine WDM file directory record number for data-set               
+ number DSN.                                                           
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of WDM file                           
+    2    DSN      I*4            I    data-set number                                           
+    3    OPT      I*4            I    option flag                                               
+                                      1 - add a directory record                                
+                                      2 - delete a directory record                             
+                                      other (0) - neither                                       
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CDRLOC  PDIRPT     I
+
+  CFBUFF  RECNO      I
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDRCGO      WDRCGX      WDRCUP  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utwdmd    WDDSCK      WDDSNP  
+  wdmess    WDFDUP  
+
+
+ WDDSCK                                                                                  WDDSCK  
+
+ This SUBROUTINE is number 12 in file utwdmd. 
+
+ Check data set for existance and return record number of              
+ first record in data set (contains label)                             
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of WDM file                           
+    2    DSN      I*4            I    data-set number to be checked                             
+    3    DREC     I*4            O    record number of first record in data set                 
+    4    RETCOD   I*4            O    return code                                               
+                                        0 - data set exists                                     
+                                      -81 - data set does not exist                             
+                                      -84 - data set number out of range                        
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  MOD         WDDRRC      WDRCGO  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utwdmd    WDCKDT      WDSCHA  
+  utwdmf    WMSFBC  
+  wdatm1    WADDSI      WADGTL  
+  wdmess    WDDSDL      WDFCUP      WDRCDL  
+
+
+ WDDSDL                                                                                  WDDSDL  
+
+ This SUBROUTINE is number 1 in file wdmess. 
+
+ routine to delete a data set from the WDMSFL with no user interaction 
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of WDM file                           
+    2    DSN      I*4            I    dataser number to be deleted                              
+    3    RETCOD   I*4            O    return code                                               
+                                         0 - data set successfully deleted                      
+                                       -81 - data set does not exist                            
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDDSCK      WDFCUP      WDFDUP      WDRCDL      WDRCGO  
+
+ CALLED BY:
+
+  unknown
+
+
+ WDDSNP                                                                                  WDDSNP  
+
+ This SUBROUTINE is number 22 in file utwdmd. 
+
+ Checks the wdm file directory records for existing data sets.         
+ Beginning with data set DSN, and incrementing or decrementing by      
+ INCR, the directory records are checked for an existing data set.     
+ The first existing data set is returned in DSN.  If no data set       
+ greater than or equal to (or less than or equal to) the input DSN     
+ is found, a value of -1 is returned for DSN.                          
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of WDM file                           
+    2    INCR     I*4            I    value by which DSN is incremented/decremented in looking  
+                                      for next/previous data set                                
+    3    DSN      I*4            M    input:  first data set to be checked                      
+                                              valid range is 1 to 32000, inclusive              
+                                      output: -1 if the input DSN is outside the valid range    
+                                          or, the input DSN if it exists                        
+                                          or, the next existing data set after/before DSN       
+                                          or, -1 if no data sets >= (or <=) the input DSN exist 
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  MOD         WDDRRC      WDRCGO  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utwdmd    WDDSNX  
+
+
+ WDDSNX                                                                                  WDDSNX  
+
+ This SUBROUTINE is number 20 in file utwdmd. 
+
+ Calls WDDSNP to search for the next data set greater than             
+ or equal to DSN.                                                      
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of WDM file                           
+    2    DSN      I*4            M    input:  first data set to be checked                      
+                                              valid range is 1 to 32000, inclusive              
+                                      output: -1 if the input DSN is outside the valid range    
+                                          or, the input DSN if it exists                        
+                                          or, the next existing data set after DSN              
+                                          or, -1 if no data sets >= the input DSN exist         
+ 
+ CALLS:
+
+  routine
+  -------
+  WDDSNP  
+
+ CALLED BY:
+
+  unknown
+
+
+ WDDTFG                                                                                  WDDTFG  
+
+ This INTEGER FUNCTION is number 3 in file wdmess. 
+
+ determines if data is present in a WDMS data set,                     
+   returns 1 for yes, 0 for no                                         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    DREC     I*4            I    label record number                                       
+    2    TIBUFF   I*4 (512)      I    array containing data-set label information               
+ 
+ CALLS:
+
+  routine
+  -------
+  WDPTSP  
+
+ CALLED BY:
+
+  unknown
+
+
+ WDFCUP                                                                                  WDFCUP  
+
+ This SUBROUTINE is number 5 in file wdmess. 
+
+ updates file defintions record data set counters and                  
+ pointers, also prev and next record pointers in dsn recs are          
+ updated.                                                              
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    watershed data management file unit number                
+    2    DSTYPE   I*4            I    type of DSN                                               
+    3    DSN      I*4            I    data set number                                           
+    4    OPT      I*4            I    option, 1=add, 2= delete DSN                              
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CDRLOC  PTSNUM     I
+
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDDSCK      WDRCGO      WDRCUP  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  wdmess    WDDSDL      WDLBAX  
+
+
+ WDFDUP                                                                                  WDFDUP  
+
+ This SUBROUTINE is number 4 in file wdmess. 
+
+ updates a WDMS file directory record,                                 
+ adds value if DSFREC> 0, deletes if DSFREC<=0                         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    watershed data management file unit number                
+    2    DSN      I*4            I    data-set number                                           
+    3    DSFREC   I*4            I    data-set first record number, <0 for delete               
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  RECNO      A
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  MOD         WDDRRC      WDRCDL      WDRCGO      WDRCUP  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  wdmess    WDDSDL      WDLBAX  
+
+
+ WDFLCK                                                                                  WDFLCK  
+
+ This SUBROUTINE is number 2 in file utwdmd. 
+
+ Check directory of WDM for major errors.  Checks version number       
+ and updates old version of WDM file to current version, when required.
+ Determines the number of records in the WDM file and adds that        
+ value to the common block CFBUFF.                                     
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of WDM file                           
+    2    RETCOD   I*4            O    return code                                               
+                                       0 - everything ok                                        
+                                      89 - WDM file is invalid                                  
+                                      88 - no room for another WDM file                         
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CDRLOC  PMXREC     I
+
+  CFBUFF  MAXREC     O
+  CFBUFF  WDMCNT     M
+  CFBUFF  WDMOPN     M
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDRCGO      WDRCUP  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  wdopux    WDBOPN  
+
+
+ WDFLCL                                                                                  WDFLCL  
+
+ This SUBROUTINE is number 3 in file utwdmd. 
+
+ Remove a WDM file from the open WDM buffer and adjust                 
+ buffer accordingly.                                                   
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of WDM file                           
+    2    RETCOD   I*4            O    return code                                               
+                                        0 - everything ok                                       
+                                      -87 - can't remove message WDM file from buffer           
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  MAXREC     M
+  CFBUFF  WDMCNT     M
+  CFBUFF  WDMFUN     M
+  CFBUFF  WDMOPN     M
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+
+ CALLED BY:
+
+  unknown
+
+
+ WDGCVL                                                                                  WDGCVL  
+
+ This CHARACTER FUNCTION is number 18 in file utwdmd. 
+
+ Returns the character value stored in the WDM                         
+ file at the specified position.                                       
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of the WDM file                       
+    2    REC      I*4            I    record number                                             
+    3    POS      I*4            I    position within record                                    
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDRCGO  
+
+ CALLED BY:
+
+  unknown
+
+
+ WDGDRT                                                                                  WDGDRT  
+
+ This SUBROUTINE is number 19 in file utwdmd. 
+
+ returns pointer to position where count of timeseries datasets        
+ is stored in WDM file                                                 
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    LPTSNM   I*4            O    value of pointer                                          
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CDRLOC  PTSNUM     I
+
+ CALLS:
+
+  routine
+  -------
+
+ CALLED BY:
+
+  unknown
+
+
+ WDGIVL                                                                                  WDGIVL  
+
+ This INTEGER FUNCTION is number 16 in file utwdmd. 
+
+ Returns the integer value stored in the WDM                           
+ file at the specified position.                                       
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of the WDM file                       
+    2    REC      I*4            I    record number                                             
+    3    POS      I*4            I    position within record                                    
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDRCGO  
+
+ CALLED BY:
+
+  unknown
+
+
+ WDGRVL                                                                                  WDGRVL  
+
+ This REAL FUNCTION is number 17 in file utwdmd. 
+
+ Returns the real value stored in the WDM                              
+ file at the specified position.                                       
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of the WDM file                       
+    2    REC      I*4            I    record number                                             
+    3    POS      I*4            I    position within record                                    
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDRCGO  
+
+ CALLED BY:
+
+  unknown
+
+
+ WDLBAX                                                                                  WDLBAX  
+
+ This SUBROUTINE is number 7 in file wdmess. 
+
+ add a new data-set label, but no search attributes or data.           
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    watershed data management file unit number                
+    2    DSN      I*4            I    data-set number                                           
+    3    DSTYPE   I*4            I    type of data set                                          
+    4    NDN      I*4            I    number of down pointers                                   
+    5    NUP      I*4            I    number of up pointers                                     
+    6    NSA      I*4            I    number of search attributes                               
+    7    NSASP    I*4            I    amount of search attribute space                          
+    8    NDP      I*4            I    number of data pointers                                   
+    9    PSA      I*4            O    pointer to search attribute space                         
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  RECNO      A
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDFCUP      WDFDUP      WDPTCL      WDRCGO      WDRCGX      WDRCUP  
+
+ CALLED BY:
+
+  unknown
+
+
+ WDLBCV                                                                                  WDLBCV  
+
+ This INTEGER FUNCTION is number 22 in file utwdt1. 
+
+ Calculate a block control word for vector (DLG) type data set.        
+ Return a 0 if any one of the components is invalid.                   
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    ID       I*4            I    block type, 0 <= ID <= 15                                 
+                                      1- integer number                                         
+                                      2- coordinatess                                           
+                                      3- associated table                                       
+    2    DTYPE    I*4            I    vector (DLG) data type, 0 <= DTYPE <= 3                   
+                                      1- line                                                   
+                                      2- area                                                   
+                                      3- node                                                   
+    3    INUM     I*4            I    internal number, 0 <= INUM <= 4095                        
+    4    ILEN     I*4            I    length of information in block, 0 <= INUM <= 8191         
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ WDLBSP                                                                                  WDLBSP  
+
+ This SUBROUTINE is number 23 in file utwdt1. 
+
+ Split up a block control word for vector (DLG) type data set.         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    BWORD    I*4            I    block control word                                        
+    2    ID       I*4            O    block type                                                
+                                      1- integer number                                         
+                                      2- coordinates                                            
+                                      3- associated table                                       
+    3    DTYPE    I*4            O    vector (DLG) data type                                    
+                                      1- line                                                   
+                                      2- area                                                   
+                                      3- node                                                   
+    4    INUM     I*4            O    internal number                                           
+    5    ILEN     I*4            O    length of information in block                            
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD     
+
+ CALLED BY:
+
+  unknown
+
+
+ WDLICV                                                                                  WDLICV  
+
+ This INTEGER FUNCTION is number 20 in file utwdt1. 
+
+ Calculate a word containing parameters for                            
+ a vector (DLG) type data set.  Return a 0                             
+ if any one of the components is invalid.                              
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    ITYPE    I*4            I    vector (DLG) data type, 0 <= ITYPE <= 3                   
+                                      1- Line                                                   
+                                      2- Area                                                   
+                                      3- Node                                                   
+    2    ATT1     I*4            I    major attribute, 0 <= ATT1 <= 1023                        
+    3    ATT2     I*4            I    minor attribute, 0 <= ATT2 <= 2047                        
+    4    BLCNT    I*4            I    number of blocks in group, 0 <= BLCNT <= 255              
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ WDLISP                                                                                  WDLISP  
+
+ This SUBROUTINE is number 21 in file utwdt1. 
+
+ Split up a word containing parameters for                             
+ a vector (DLG) type data set.                                         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    IWORD    I*4            I    DLG parameters integer word                               
+    2    ITYPE    I*4            O    DLG data type                                             
+                                      1- Line                                                   
+                                      2- Area                                                   
+                                      3- Node                                                   
+    3    ATT1     I*4            O    major attribute                                           
+    4    ATT2     I*4            O    minor attribute                                           
+    5    BLCNT    I*4            O    count of blocks                                           
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD     
+
+ CALLED BY:
+
+  unknown
+
+
+ WDNXDV                                                                                  WDNXDV  
+
+ This SUBROUTINE is number 5 in file utwdmf. 
+
+ Move to the next data position and return the                         
+ integer equivalent of the data value.                                 
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    DREC     I*4            M    record number of data on WDM file                         
+    3    DPOS     I*4            M    position of data on data record (both DREC and DIND)      
+    4    DVAL     I*4            O    data value on WDM file                                    
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDNXPS  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msexpt    PRMSFE      PRMSME      PRMSPE      PRMSTE  
+  utwdmf    WMSIDP  
+  ztwdmf    WMSGTF      WMSGTM      WMSGTP  
+
+
+ WDNXPS                                                                                  WDNXPS  
+
+ This SUBROUTINE is number 4 in file utwdmf. 
+
+ Get the next data position on a WDM file.  If RDWRFG is 1 and         
+ a new record is needed, the next data record is brought into          
+ the WDM buffer of records.  If RDWRFG is 2 and a new record           
+ is needed, the current record is updated and the next free            
+ record is brought into the WDM buffer of records.                     
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    RDWRFG   I*4            I    read/write flag (1- read, 2- write)                       
+    3    DREC     I*4            M    record number of data on WDM file                         
+    4    DPOS     I*4            M    position of data on data record (both DREC and DIND)      
+    5    DIND     I*4            O    index of record in WDM buffer of records                  
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  RECNO      I
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDRCGO      WDRCGX      WDRCUP  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utwdmf    WDNXDV      WMSADI      WMSGTE      WMSPTE      WMSIDP      WMSSKB  
+  wdatm1    WADADI  
+  ztwdmf    WMSCON      WMSGTF      WMSGTM      WMSGTP      WMSGTT  
+
+
+ WDPRPS                                                                                  WDPRPS  
+
+ This SUBROUTINE is number 6 in file utwdmf. 
+
+ Get the previous data position on a WDM file.                         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    DREC     I*4            M    record number of data on WDM file                         
+    3    DPOS     I*4            M    position of data on data record (both DREC and DIND)      
+    4    DIND     I*4            O    index of record in WDM buffer of records                  
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDRCGO  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utwdmf    WMSBTR  
+
+
+ WDPTCL                                                                                  WDPTCL  
+
+ This INTEGER FUNCTION is number 1 in file utwdt1. 
+
+ utwdt1.f 2.1 9/4/91                                                   
+ Calculate a pointer value from record number                          
+ and the offset within the record.                                     
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    PREC     I*4            I    record number                                             
+    2    POFF     I*4            I    offset within the record                                  
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utwdmf    WMSADI      WMSANG  
+  wdatm1    WADADI  
+  wdmess    WDLBAX  
+  ztwdmf    WMSGTF      WMSGTM      WMSGTP      WMSGTT  
+
+
+ WDPTSP                                                                                  WDPTSP  
+
+ This SUBROUTINE is number 2 in file utwdt1. 
+
+ split up a pointer into record number and offset within record.       
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    PTR      I*4            I    pointer value                                             
+    2    PREC     I*4            O    record number                                             
+    3    POFF     I*4            O    offset within the record                                  
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD     
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utwdmf    WMSANG      WMSBCX      WMSFBC  
+  wdatm1    WADADI  
+  wdmess    WDDTFG  
+
+
+ WDRCAD                                                                                  WDRCAD  
+
+ This SUBROUTINE is number 7 in file utwdmd. 
+
+ Add NUMADD records to the WDM file.  Update directory                 
+ record on the WDM file (record 1).  Returns record number             
+ of the first free record in the WDM file.                             
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of WDM file                           
+    2    NUMADD   I*4            I    number of records to add                                  
+    3    FREREC   I*4            O    record number of first free record in the WDM file        
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CDRLOC  PFRREC     I
+  CDRLOC  PMXREC     I
+
+  CFBUFF  MAXREC     O
+  CFBUFF  RECNO      I
+  CFBUFF  WDMCNT     I
+  CFBUFF  WDMOPN     I
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDRCGO      WDRCUP  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utwdmd    WDRCGX      WDCREA  
+
+
+ WDRCDL                                                                                  WDRCDL  
+
+ This INTEGER FUNCTION is number 6 in file wdmess. 
+
+ deletes a record in the WDMSFL and updates pointers as required       
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    watershed data management file unit number                
+    2    DREC     I*4            I    record to delete                                          
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CDRLOC  PFRREC     I
+
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDDSCK      WDRCGO      WDRCUP  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  wdmess    WDDSDL      WDFDUP  
+
+
+ WDRCGN                                                                                  WDRCGN  
+
+ This INTEGER FUNCTION is number 5 in file utwdmd. 
+
+ Get the next free record from the WDM file and add it to              
+ the WDM buffer of records.  Update pointers on WDM file for           
+ primary and secondary records and initialize new record pointers.     
+ Returns index number in WDM buffer of records.  Returns 0 if no       
+ record available.                                                     
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of WDM file                           
+    2    PRPRRC   I*4            I    primary record pointer                                    
+    3    SCPRRC   I*4            I    secondary record pointer                                  
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CDRLOC  PFRREC     I
+
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  IABS        WDRCGO      WDRCUP  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utwdmd    WDRCGX  
+
+
+ WDRCGO                                                                                  WDRCGO  
+
+ This INTEGER FUNCTION is number 1 in file utwdmd. 
+
+ utwdmd.f 2.1 9/4/91                                                   
+ Determine the index of the user requested record within               
+ the WDM in memory buffer of records.  The record is read              
+ from the WDM file and pointers are updated, as required.              
+ If the record is already in the buffer, the index is returned.        
+ If the record is not in the buffer, the oldest record in              
+ the buffer is replaced with the record read from the WDM file.        
+ For a negative RREC, the index of an empty record is returned.        
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of the WDM file                       
+    2    RREC     I*4            I    record number to find and place in buffer                 
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  FREPOS     M
+  CFBUFF  MAXREC     I
+  CFBUFF  NXTPOS     M
+  CFBUFF  PREPOS     M
+  CFBUFF  RECNO      M
+  CFBUFF  WDMCNT     I
+  CFBUFF  WDMFUN     M
+  CFBUFF  WDMOPN     I
+  CFBUFF  WIBUFF     O
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  IABS    
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utwdmd    WDDRRC      WDFLCK      WDRCAD      WDRCGN      WDCKDT      WDCREA      WDDSCK  
+            WDGCVL      WDGIVL      WDGRVL      WDSCHA      WDDSNP  
+  utwdmf    WDNXPS      WDPRPS      WMSADI      WMSANG      WMSBTR      WMSGTE      WMSQCK  
+            WMSBCX      WMSFBC  
+  wdatm1    WADADI      WADDSI      WADGTL      WADQCK  
+  wdmess    WDDSDL      WDFCUP      WDFDUP      WDLBAX      WDRCDL  
+  ztwdmf    WMSCON      WMSGTF      WMSGTM      WMSGTP      WMSGTT  
+
+
+ WDRCGX                                                                                  WDRCGX  
+
+ This INTEGER FUNCTION is number 6 in file utwdmd. 
+
+ Get the next free record from the WDM file. If no free records        
+ are available, add twenty records to the WDM file.  Add free          
+ record to the WDM buffer of records.  Update pointers on WDM file     
+ for primary and secondary records and initialize new record pointers. 
+ Returns index number in WDM buffer of records.  Returns 0 if no       
+ record available.                                                     
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of WDM file                           
+    2    PRPRRC   I*4            I    primary record pointer                                    
+    3    SCPRRC   I*4            I    secondary record pointer                                  
+ 
+ CALLS:
+
+  routine
+  -------
+  WDRCAD      WDRCGN  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utwdmd    WDDRRC  
+  utwdmf    WDNXPS      WMSANG  
+  wdatm1    WADADI  
+  wdmess    WDLBAX  
+
+
+ WDRCUP                                                                                  WDRCUP  
+
+ This SUBROUTINE is number 4 in file utwdmd. 
+
+ Write record index number RIND from the buffer of records             
+ to the WDM file.                                                      
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of WDM file                           
+    2    RIND     I*4            I    buffer index number of record to write                    
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  RECNO      I
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utwdmd    WDDRRC      WDFLCK      WDRCAD      WDRCGN      WDCREA  
+  utwdmf    WDNXPS      WMSADI  
+  wdatm1    WADADI  
+  wdmess    WDFCUP      WDFDUP      WDLBAX      WDRCDL  
+
+
+ WDSASP                                                                                  WDSASP  
+
+ This SUBROUTINE is number 2 in file wdmess. 
+
+ adds space for search attribute on a dsn label if not present on it   
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    SAIND    I*4            I    index number of search attribute to look for              
+    2    SALEN    I*4            I    length of search attribute                                
+    3    SATYP    I*4            I    type of search attribute                                  
+    4    TIBUFF   I*4 (512)      M    array containing data-set label                           
+    5    PSAVAL   I*4            O    pointer to search attribute information if available      
+    6    RETCOD   I*4            O    flag indicating status of search attribute locate         
+                                         0 - attribute space added                              
+                                      -102 - attribute already on label                         
+                                      -103 - no space for this attribute                        
+ 
+ CALLS:
+
+  routine
+  -------
+  WDSASV  
+
+ CALLED BY:
+
+  unknown
+
+
+ WDSASV                                                                                  WDSASV  
+
+ This INTEGER FUNCTION is number 15 in file utwdmd. 
+
+ determines where values for particular search attribute               
+ start within data-set label, returns 0 if attribute is                
+ not present                                                           
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    SAIND    I*4            ?    index of particular search attribute                      
+    2    TIBUFF   I*4 (512)      ?    buffer of search attributes                               
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utwdmd    WDSCHA  
+  wdmess    WDSASP  
+
+
+ WDSCHA                                                                                  WDSCHA  
+
+ This SUBROUTINE is number 10 in file utwdmd. 
+
+ Check WDM data set existance, type and ability to update.             
+ Return first record number and number of groups in data set.          
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of WDM file                           
+    2    DSN      I*4            I    data-set number                                           
+    3    DSTYP    I*4            I    data-set type                                             
+                                      1 - time series      6 - rastor                           
+                                      2 - table            7 - space-time                       
+                                      3 - schematic        8 - attribute                        
+                                      4 - project          9 - message                          
+                                      5 - vector                                                
+    4    GPFLG    I*4            I    read(1)/write(2) flag                                     
+    5    LREC     I*4            O    record number of first record in data set (contains label 
+    6    GRCNT    I*4            O    number of groups in data set                              
+    7    RETCOD   I*4            O    return code                                               
+                                        0 - data set exists and is correct DSTYP                
+                                      -81 - data set does not exist                             
+                                      -82 - data set exists, but is wrong DSTYP                 
+                                      -84 - data set number out of range                        
+                                      -85 - trying to write to a read-only data set             
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     A
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDDSCK      WDRCGO      WDSASV  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utwdmd    WDSCHK  
+
+
+ WDSCHK                                                                                  WDSCHK  
+
+ This SUBROUTINE is number 9 in file utwdmd. 
+
+ Check WDM data set existance and type.  Return first                  
+ record number and number of groups in data set.                       
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of WDM file                           
+    2    DSN      I*4            I    data-set number                                           
+    3    DSTYP    I*4            I    data-set type                                             
+                                      1 - time series      6 - rastor                           
+                                      2 - table            7 - space-time                       
+                                      3 - schematic        8 - attribute                        
+                                      4 - project          9 - message                          
+                                      5 - vector                                                
+    4    LREC     I*4            O    record number of first record in data set (contains label 
+    5    GRCNT    I*4            O    number of groups in data set                              
+    6    RETCOD   I*4            O    return code                                               
+                                        0 - data set exists and is correct DSTYP                
+                                      -81 - data set does not exist                             
+                                      -82 - data set exists, but is wrong DSTYP                 
+                                      -84 - data set number out of range                        
+ 
+ CALLS:
+
+  routine
+  -------
+  WDSCHA  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msexpt    PRWMME  
+  utwdmf    WMSANG      WMSQCK  
+  wdatm1    WADADI      WADQCK  
+
+
+ WMSADI                                                                                  WMSADI  
+
+ This SUBROUTINE is number 3 in file utwdmf. 
+
+ Add portion of group-number GNUM information to DSN.                  
+ Will be called more than once to define a given group.                
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    DSN      I*4            I    data-set number on WDM file,                              
+                                      negative value indicates termination of group             
+                                      and updating of label                                     
+    3    GNUM     I*4            I    group number being added                                  
+    4    CLASS    I*4            I    class of information being added                          
+                                      1 - 1-dimensional parameter      4 - menu                 
+                                      2 - 2-dimensional parameter      5 - file                 
+                                      3 - text                                                  
+    5    ID       I*4            I    id for portion of group being added                       
+                                      examples:  CLASS  ID  Description                         
+                                                   1     4  default value for parameter field   
+                                                   4     6  help for menu screen                
+                                                   5     3  status of file                      
+    6    ORDER    I*4            I    order of information being added                          
+    7    ILEN     I*4            I    length of input buffer (minimum of 1)                     
+    8    IBUFF    C*1 (V)        I    input buffer of character data to add                     
+    9    INUM     I*4            I    number of integer values to add (minimum of 1)            
+   10    IVAL     I*4 (V)        I    input buffer of integer parameters to add                 
+   11    IFLG     I*4            I    flag indicating type of data being added                  
+                                      0 - character data                                        
+                                      1 - integer data                                          
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  LENSTR      WDNXPS      WDPTCL      WDRCGO      WDRCUP      WMSANG      WMSBCV      WMSPTE  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msimpt    PRMSFI      PRMSIT      PRMSMI      PRMSPA      PRMSTI  
+
+
+ WMSANG                                                                                  WMSANG  
+
+ This SUBROUTINE is number 2 in file utwdmf. 
+
+ Check that data-set DSN exists and that there is space                
+ in the data set for a new group.  Determines pointers                 
+ to start of new group.                                                
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    DSN      I*4            I    data-set number on WDM file                               
+    3    GNUM     I*4            I    group number in data set                                  
+    4    LREC     I*4            O    first record number of DSN on WDM file (contains label)   
+    5    DREC     I*4            O    record number on WDM file for start of group-number GNUM  
+    6    DPOS     I*4            O    position on DREC for start of group-number GNUM           
+    7    GRCNT    I*4            O    counter for number of groups on data set (including this  
+    8    PDAT     I*4            O    pointer to the start of group pointers                    
+    9    PDATVL   I*4            O    pointer to beginning of data for this group               
+   10    RETCOD   I*4            O    return code                                               
+                                        0 - group successfully added to data set                
+                                        1 - exists                                              
+                                       -3 - data set does not exist                             
+                                      -22 - data set exists, but is not message data-set type   
+                                      -26 - no room for another group on data set               
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  RECNO      I
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDPTCL      WDPTSP      WDRCGO      WDRCGX      WDSCHK  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utwdmf    WMSADI  
+
+
+ WMSBCS                                                                                  WMSBCS  
+
+ This SUBROUTINE is number 13 in file utwdt1. 
+
+ Split up a block control word for a message                           
+ type data set into its components.                                    
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    QWORD    I*4            I    message type dataset block control word                   
+    2    CLASS    I*4            O    class of information                                      
+                                      1 - 1-dimensional parameter      4 - menu                 
+                                      2 - 2-dimensional parameter      5 - file                 
+                                      3 - text                                                  
+    3    ID       I*4            O    id for portion of group                                   
+                                      examples:  CLASS  ID  Description                         
+                                                   1     4  default value for parameter field   
+                                                   4     6  help for menu screen                
+                                                   5     3  status of file                      
+    4    ORDER    I*4            O    order of information                                      
+    5    TLEN     I*4            O    total number of characters in the block                   
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD     
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msexpt    PRMSFE      PRMSME      PRMSPE      PRMSTE      PRWMME  
+  utwdmf    WMSBCX      WMSIDP  
+  ztwdmf    WMSCON      WMSGTF      WMSGTM      WMSGTP      WMSGTT  
+
+
+ WMSBCV                                                                                  WMSBCV  
+
+ This INTEGER FUNCTION is number 12 in file utwdt1. 
+
+ Calculate a block control word for message type data set.             
+ Returns a 0 if any one of the components is invalid.                  
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    CLASS    I*4            I    class of information                                      
+                                      1 - 1-dimensional parameter      4 - menu                 
+                                      2 - 2-dimensional parameter      5 - file                 
+                                      3 - text                                                  
+    2    ID       I*4            I    id for portion of group                                   
+                                      examples:  CLASS  ID  Description                         
+                                                   1     4  default value for parameter field   
+                                                   4     6  help for menu screen                
+                                                   5     3  status of file                      
+    3    ORDER    I*4            I    order of information                                      
+    4    TLEN     I*4            I    total number of characters in the block                   
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utwdmf    WMSADI  
+
+
+ WMSBCX                                                                                  WMSBCX  
+
+ This SUBROUTINE is number 11 in file utwdmf. 
+
+ Given pointer to a block control word, return its                     
+ record number and position, and the information                       
+ stored there (CLASS,ID,ORDER,TLEN).  Usually used                     
+ to find start of help information.                                    
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    BCWPTR   I*4            I    pointer to block control word                             
+    3    DREC     I*4            O    record number of data on WDM file                         
+    4    DPOS     I*4            O    position of data on data record                           
+    5    CLASS    I*4            O    class of information being added                          
+                                      1 - 1-dimensional parameter      4 - menu                 
+                                      2 - 2-dimensional parameter      5 - file                 
+                                      3 - text                                                  
+    6    ID       I*4            O    id for portion of group being added                       
+                                      examples:  CLASS  ID  Description                         
+                                                   1     4  default value for parameter field   
+                                                   4     6  help for menu screen                
+                                                   5     3  status of file                      
+    7    ORDER    I*4            O    order of information                                      
+    8    TLEN     I*4            O    total number of characters in the block                   
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     A
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDPTSP      WDRCGO      WMSBCS  
+
+ CALLED BY:
+
+  unknown
+
+
+ WMSBTR                                                                                  WMSBTR  
+
+ This SUBROUTINE is number 9 in file utwdmf. 
+
+ Back up NREC text records in a text group and reset the               
+ pointers for that record.  Usually used in conjunction                
+ with WMSGTE for reviewing text in a scrolling window.                 
+ Input values of GLEN and MLEN are set by previous call                
+ to WMSGTE.                                                            
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    NREC     I*4            I    number of records to back up                              
+    3    DREC     I*4            M    record number of data on WDM file                         
+    4    DPOS     I*4            M    position of data on data record                           
+    5    MLEN     I*4            M    number of characters retrieved so far (must be <= TLEN)   
+    6    GLEN     I*4            M    counter to keep track of when to read off WDM file        
+    7    TOPFG    I*4            O    indicator flag for beginning of group                     
+                                      0 - not the beginning of the group                        
+                                      1 - beginning of group reached                            
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  ICHAR       MOD         WDPRPS      WDRCGO  
+
+ CALLED BY:
+
+  unknown
+
+
+ WMSCON                                                                                  WMSCON  
+
+ This SUBROUTINE is number 7 in file ztwdmf. 
+
+ Fill in arrays for option type field conditionals.                    
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for message file                      
+    2    DSN      I*4            I    data-set (group) number on message file                   
+    3    GNUM     I*4            I    group (cluster) number on message file                    
+    4    NFLDS    I*4            I    number of fields on this screen                           
+    5    FDNAME   C*8 (V)        I    array of field names                                      
+    6    MXCON    I*4            I    maximum number of conditionals                            
+    7    OPONOF   I*4 (V)        O    array of pointers/counters for conditional arrays for eac 
+    8    ONFTFL   I*4 (V)        O    array of target field numbers for conditionals            
+    9    ONFTVL   I*4 (V)        O    values of target fields for conditionals                  
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  CARVAR      CKNBLV      INT         LENSTR      STRFND      WDNXPS      WDRCGO      WMSBCS  
+  WMSFBC      WMSGTE      WMSSKB      WOPWDC      ZIPI    
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  ztwdmf    WMSGTP  
+
+
+ WMSDLM                                                                                  WMSDLM  
+
+ This SUBROUTINE is number 8 in file ztwdmf. 
+
+ Fill in delimeters in screen name with text                           
+ provided from application.                                            
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    SCNOPT   C*8 (6)        I    text provided from application to fill in delimeters      
+    2    ILEN     I*4            I    length of string containing screen name                   
+    3    TBUFF    C*1 (V)        M    screen name                                               
+ 
+ CALLS:
+
+  routine
+  -------
+  CHRDEL      CHRINS      CVARAR      STRFND      ZLNTXT  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  ztwdmf    WMSGTM      WMSGTP      WMSGTT  
+
+
+ WMSFBC                                                                                  WMSFBC  
+
+ This SUBROUTINE is number 12 in file utwdmf. 
+
+ Get first block control word and its position                         
+ for group GNUM in a message data set.                                 
+ A STOP is encountered when group GNUM does not exist.                 
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    DSN      I*4            I    data-set number                                           
+    3    GNUM     I*4            I    group number                                              
+    4    DREC     I*4            O    record number of block control word on WDM file           
+    5    DPOS     I*4            O    position of block control word on DREC                    
+    6    BCWORD   I*4            O    block control word                                        
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     A
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDDSCK      WDPTSP      WDRCGO      WMSQCK  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msexpt    PRWMME  
+  utwdmf    WMSIDP  
+  ztwdmf    WMSCON      WMSGTF      WMSGTM      WMSGTP      WMSGTT  
+
+
+ WMSGOP                                                                                  WMSGOP  
+
+ This SUBROUTINE is number 1 in file msopen. 
+
+ Opens the message file containing the standard set of clusters.       
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number of the WDM file                       
+    2    RETCOD   I*4            O    return code                                               
+                                       0 - successful open                                      
+                                       1 - successful open, but invalid WDM file                
+                                      <0 - error on open, -IOSTAT, compiler specific            
+ 
+ CALLS:
+
+  routine
+  -------
+  WDBOPN  
+
+ CALLED BY:
+
+  unknown
+
+
+ WMSGTE                                                                                  WMSGTE  
+
+ This SUBROUTINE is number 8 in file utwdmf. 
+
+ Get one record of text off WDM file.                                  
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    TLEN     I*4            I    total length of text (may be more than one record)        
+    3    LLEN     I*4            I    maximum size of record to get                             
+    4    DREC     I*4            M    record number of data on WDM file                         
+    5    DPOS     I*4            M    position of data on data record                           
+    6    GLEN     I*4            M    counter to keep track of when to read off WDM file        
+                                      should be initialized to 0 for first call                 
+    7    MLEN     I*4            M    number of characters retrieved so far (must be <= TLEN)   
+                                      should be initialized to 0 for first call                 
+    8    OLEN     I*4            O    actual size of record retreived                           
+    9    OBUFF    C*1 (V)        O    array of size LLEN containing OLEN characters retrieved   
+   10    CONT     I*4            O    indicator flag for text                                   
+                                      0 - no more text available                                
+                                      1 - more text available                                   
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  ICHAR       MOD         WDNXPS      WDRCGO      ZIPC    
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msexpt    PRMSTA  
+  utwdmf    WMSGTO  
+  ztwdmf    WMSCON      WMSGTF      WMSGTM      WMSGTP      WMSGTT  
+
+
+ WMSGTF                                                                                  WMSGTF  
+
+ This SUBROUTINE is number 4 in file ztwdmf. 
+
+ get message file dataset file info from WDM file                      
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    DSN      I*4            I    dataset number                                            
+    3    QNUM     I*4            I    question number to get                                    
+    4    QFLG     I*4            O    question flag (0- file name already specified,            
+                                                     1- ask user for file name)                 
+    5    FLNAME   C*64           O    file name to be opened                                    
+    6    STATF    C*7            O    file status                                               
+    7    ACCD     C*10           O    file access type                                          
+    8    FMTD     C*11           O    file format                                               
+    9    TRECL    I*4            O    direct file record length                                 
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+  ZCNTL1  GPTR       O
+  ZCNTL1  HPINIT     M
+
+ CALLS:
+
+  routine
+  -------
+  WDNXDV      WDNXPS      WDPTCL      WDRCGO      WMSBCS      WMSFBC      WMSGTE      WMSSKB  
+
+ CALLED BY:
+
+  unknown
+
+
+ WMSGTM                                                                                  WMSGTM  
+
+ This SUBROUTINE is number 3 in file ztwdmf. 
+
+ get message file dataset menu info from WDM file                      
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    DSN      I*4            I    dataset number                                            
+    3    QNUM     I*4            I    question number to get                                    
+    4    NUMB     I*4            O    number option flag (0- no numbers, 1- numbers)            
+    5    WIDTH    I*4            O    column width                                              
+    6    CLEN     I*4            O    column length                                             
+    7    RETCOD   I*4            O    return code                                               
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+  CQRSPC  QUEST      A
+  CQRSPC  TANS       A
+
+  CQRSPI  DANS       A
+  CQRSPI  LANS       M
+  CQRSPI  NANS       M
+  CQRSPI  QUINIT     I
+  CQRSPI  RSINIT     I
+  CQRSPI  ZOPCOL     M
+  CQRSPI  ZOPLEN     M
+  CQRSPI  ZOPLIN     M
+
+  ZCNTL1  GPTR       O
+  ZCNTL1  HPINIT     I
+  ZCNTL1  HPTR       M
+  ZCNTL1  ZCLEN      M
+  ZCNTL1  ZCWID      M
+  ZCNTL1  ZHLCOL     A
+  ZCNTL1  ZHLLEN     A
+  ZCNTL1  ZHLLIN     A
+  ZCNTL1  ZMNLEN     M
+
+  ZCNTL2  ZMNTX1     A
+  ZCNTL2  ZMNTXT     M
+  ZCNTL2  ZSCNAM     M
+  ZCNTL2  ZSCNOP     A
+
+  ZCNTL3  ZB1N       A
+  ZCNTL3  ZMNLNI     M
+  ZCNTL3  ZMNNLI     M
+  ZCNTL3  ZWNFLG     M
+
+ CALLS:
+
+  routine
+  -------
+  CARVAR      CHRCHR      CHRDEL      CKNBLV      INT         LENSTR      MOD         QUPCAS  
+  STRFND      WDNXDV      WDNXPS      WDPTCL      WDRCGO      WMSBCS      WMSDLM      WMSFBC  
+  WMSGTE      WMSMNS      WMSSKB      WMSSPS      ZCNTER      ZIPC        ZIPI        ZLNTXT  
+  ZSCINI      ZSTCMA  
+
+ CALLED BY:
+
+  unknown
+
+
+ WMSGTO                                                                                  WMSGTO  
+
+ This SUBROUTINE is number 10 in file utwdmf. 
+
+ Starting at the input DREC and DPOS, get and write text to a          
+ sequential file until end of text is reached.  DREC and DPOS          
+ are output as the position at the end of the text.  Usually           
+ used to export text portions of message data-set groups.              
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    SUCIFL   I*4            I    Fortran unit number for output file                       
+    3    TLEN     I*4            I    total length of text                                      
+    4    DREC     I*4            M    record number of data on WDM file                         
+    5    DPOS     I*4            M    position of data on data record                           
+ 
+ CALLS:
+
+  routine
+  -------
+  LENSTR      WMSGTE  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msexpt    PRMSFE      PRMSME      PRMSPE      PRMSTE  
+
+
+ WMSGTP                                                                                  WMSGTP  
+
+ This SUBROUTINE is number 1 in file ztwdmf. 
+
+ ztwdmf.f 2.1 9/4/91                                                   
+ get message file dataset parameter info from WDM file                 
+ (gets both PRM1 and PRM2 class info)                                  
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    DSN      I*4            I    dataset number                                            
+    3    GNUM     I*4            I    question number to get                                    
+    4    CLASS    I*4            O    class of info (1- PRM1, 2- PRM2)                          
+    5    RETCOD   I*4            O    return code                                               
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CCLBAC  CLBSTR     I
+
+  CCLBAK  CBCHID     O
+  CCLBAK  CBEXID     O
+  CCLBAK  CBFLID     O
+
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+  CSCREC  ASDSFG     O
+  CSCREC  BLNK       M
+  CSCREC  FDFMT      M
+  CSCREC  FTC        M
+  CSCREC  FTD        M
+  CSCREC  FTF        M
+  CSCREC  FTI        M
+  CSCREC  FTO        M
+  CSCREC  FTR        M
+  CSCREC  FTYP       M
+  CSCREC  HELP       O
+
+  CSCRED  DDEF       M
+  CSCRED  DMAX       O
+  CSCRED  DMIN       O
+
+  CSCREN  APOS       O
+  CSCREN  CCNT       M
+  CSCREN  CDEF       M
+  CSCREN  CFLD       M
+  CSCREN  CROW       O
+  CSCREN  FDINV      O
+  CSCREN  FDVAL      M
+  CSCREN  FLEN       M
+  CSCREN  FLIN       A
+  CSCREN  FPROT      M
+  CSCREN  FREC       M
+  CSCREN  FSLOT      M
+  CSCREN  IDEF       M
+  CSCREN  IMAX       O
+  CSCREN  IMIN       O
+  CSCREN  NFLDS      M
+  CSCREN  NMHDRW     M
+  CSCREN  QFLAG      O
+  CSCREN  RDEF       M
+  CSCREN  RMAX       O
+  CSCREN  RMIN       O
+  CSCREN  SCOL       M
+  CSCREN  SPINIT     M
+  CSCREN  ZFILUN     O
+
+  CZHIDE  HIDBOX     O
+  CZHIDE  HIDFLD     O
+  CZHIDE  HIDTFL     O
+  CZHIDE  HIDVAL     O
+  CZHIDE  NUMHID     M
+
+  CZOPTN  ONFTFL     A
+  CZOPTN  ONFTVL     A
+  CZOPTN  OPBOX      M
+  CZOPTN  OPDEF      A
+  CZOPTN  OPONOF     A
+  CZOPTN  OPSET      A
+  CZOPTN  OPSTNO     A
+
+  ZCNTL1  GPTR       O
+  ZCNTL1  HPINIT     M
+  ZCNTL1  HPTR       M
+  ZCNTL1  ZCRCOL     O
+  ZCNTL1  ZCRLIN     O
+  ZCNTL1  ZDTYP      O
+  ZCNTL1  ZHLCOL     M
+  ZCNTL1  ZHLLEN     O
+  ZCNTL1  ZHLLIN     M
+  ZCNTL1  ZMNLEN     O
+
+  ZCNTL2  RSPSTR     M
+  ZCNTL2  ZMNTX1     A
+  ZCNTL2  ZMNTXT     M
+  ZCNTL2  ZSCNAM     M
+  ZCNTL2  ZSCNOP     A
+
+  ZCNTL3  ZMNNLI     M
+  ZCNTL3  ZWNFLG     M
+
+ CALLS:
+
+  routine
+  -------
+  CARVAR      CHRCHR      CHRDEC      CHRDPR      CHRINT      CKNBLV      INDEX       LENSTR  
+  STRFND      WDNXDV      WDNXPS      WDPTCL      WDRCGO      WMSBCS      WMSCON      WMSDLM  
+  WMSFBC      WMSGTE      WMSP2S      WMSPIS      WMSPIV      WMSPOS      WMSSKB      WMSSPS  
+  WOPWDC      ZCHKST      ZIPC        ZIPI        ZLJUST      ZLNTXT      ZSCINI      ZSTCMA  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  ztwdmf    WMSGTX  
+
+
+ WMSGTT                                                                                  WMSGTT  
+
+ This SUBROUTINE is number 2 in file ztwdmf. 
+
+ get message file dataset text from WDM file                           
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    DSN      I*4            I    dataset number                                            
+    3    GNUM     I*4            I    question number to get                                    
+    4    INITFG   I*4            I    flag indicating start a new question                      
+                                      0 - continue question, 1 - start new question             
+    5    OLEN     I*4            M    length of text                                            
+    6    OBUFF    C*1 (V)        O    output buffer of retrieved text                           
+    7    CONT     I*4            O    continuation flag, 1 - more text to read                  
+                                                         0 - end of text                        
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+  ZCNTL1  GPTR       O
+  ZCNTL1  HPINIT     M
+
+  ZCNTL2  ZSCNAM     M
+  ZCNTL2  ZSCNOP     A
+
+  ZCNTL3  ZWNFLG     M
+
+ CALLS:
+
+  routine
+  -------
+  LENSTR      WDNXPS      WDPTCL      WDRCGO      WMSBCS      WMSDLM      WMSFBC      WMSGTE  
+  WMSSKB      ZSTCMA  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  prtfil    PMXTFT      PMXTXF  
+
+
+ WMSGTX                                                                                  WMSGTX  
+
+ This SUBROUTINE is number 5 in file ztwdmf. 
+
+ Get selected information about a table dataset 2d parm screen.        
+ * * * This routine is specific to the HSPF Expert System  * * *       
+ * * * program and resides here to keep AIDE common blocks * * *       
+ * * * within the same code group.                         * * *       
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    MESSFL   I*4            I    Fortran unit number for message file                      
+    2    SCLU     I*4            I    cluster number on message file                            
+    3    SGRP     I*4            I    group number in cluster of screen                         
+    4    LNFLDS   I*4            O    number of fields for this table                           
+    5    LSCOL    I*4 (30)       O    integer array of starting columns for fields              
+    6    LFLEN    I*4 (30)       O    integer array of field lengths                            
+    7    LFTYP    C*1 (30)       O    character array of field types (I,R,C)                    
+    8    LAPOS    I*4 (30)       O    position in field type specific arrays of that type       
+    9    LIMIN    I*4 (30)       O    integer array of minimum values for integer fields        
+   10    LIMAX    I*4 (30)       O    integer array of maximum values for integer fields        
+   11    LIDEF    I*4 (30)       O    integer array of defaults for integer fields              
+   12    LRMIN    R   (30)       O    real array of minimum values for real fields              
+   13    LRMAX    R   (30)       O    real array of maximum values for real fields              
+   14    LRDEF    R   (30)       O    real array of defaults for real fields                    
+   15    LNMHDR   I*4            O    number of header rows                                     
+   16    HDRBUF   C*1 (78,5)     O    character array of headers for tables                     
+   17    RETCOD   I*4            O    return code                                               
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CSCREC  FTYP       I
+
+  CSCREN  APOS       I
+  CSCREN  FLEN       I
+  CSCREN  IDEF       I
+  CSCREN  IMAX       I
+  CSCREN  IMIN       I
+  CSCREN  NFLDS      I
+  CSCREN  NMHDRW     I
+  CSCREN  RDEF       I
+  CSCREN  RMAX       I
+  CSCREN  RMIN       I
+  CSCREN  SCOL       I
+
+  ZCNTL2  ZMNTX1     A
+
+ CALLS:
+
+  routine
+  -------
+  CHRCHR      WMSGTP  
+
+ CALLED BY:
+
+  unknown
+
+
+ WMSIDP                                                                                  WMSIDP  
+
+ This SUBROUTINE is number 13 in file utwdmf. 
+
+ Return the record number and position on the WDM                      
+ file for the given ID.                                                
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    DSN      I*4            I    data-set number on WDM file                               
+    3    GNUM     I*4            I    group number in data set                                  
+    4    ID       I*4            I    identification of information                             
+    5    DREC     I*4            O    record number on WDM file (0 returned if no match)        
+    6    DPOS     I*4            O    position on record (0 returned if no match)               
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD         WDNXDV      WDNXPS      WMSBCS      WMSFBC  
+
+ CALLED BY:
+
+  unknown
+
+
+ WMSMNS                                                                                  WMSMNS  
+
+ This SUBROUTINE is number 15 in file utwdt1. 
+
+ Split up a word containing integer parameters                         
+ for a message type data-set menu.                                     
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    IMNVAL   I*4            I    the word                                                  
+    2    IDEF     I*4            O    default response value                                    
+    3    ILEN     I*4            O    response length                                           
+    4    INNU     I*4            O    nonumber option                                           
+                                      0 - no numbers                                            
+                                      1 - numbers                                               
+    5    IWID     I*4            O    width of columns                                          
+    6    ICOL     I*4            O    length of columns                                         
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD     
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msexpt    PRMSME  
+  ztwdmf    WMSGTM  
+
+
+ WMSMNV                                                                                  WMSMNV  
+
+ This INTEGER FUNCTION is number 14 in file utwdt1. 
+
+ Calculate a word containing parameters for a message                  
+ type data-set menu.  Returns a 0 if any one of the                    
+ components is invalid.                                                
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    IVAL     I*4 (5)        I    components of the word                                    
+                                      (1)- default response value, 0 < IVAL(1) <= 64            
+                                      (2)- response length, 0 < IVAL(2) <= 64                   
+                                      (3)- number menu options flag                             
+                                           0 - no numbers                                       
+                                           1 - numbers                                          
+                                      (4)- width of columns, 0 < IVAL(4) <= 128                 
+                                      (5)- length of columns, 0 < IVAL(5) <= 16                 
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msimpt    PRMSMI  
+
+
+ WMSP2S                                                                                  WMSP2S  
+
+ This SUBROUTINE is number 19 in file utwdt1. 
+
+ Split up a word containing integer parameters for                     
+ a message type data-set PRM2 screen.                                  
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    IP2VAL   I*4            I    the word                                                  
+    2    FTYP     I*4            O    data field type                                           
+    3    FLEN     I*4            O    data field length                                         
+    4    FORDER   I*4            O    data field ordering                                       
+    5    FPROT    I*4            O    data field protection                                     
+    6    FCOL     I*4            O    data field starting column                                
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD     
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msexpt    PRMSPE  
+  ztwdmf    WMSGTP  
+
+
+ WMSP2V                                                                                  WMSP2V  
+
+ This INTEGER FUNCTION is number 18 in file utwdt1. 
+
+ Calculate a word containing parameters for a message                  
+ type data-set PRM2 class screen.  Return a 0 if any                   
+ one of the components is invalid.                                     
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    FTYP     I*4            I    data field type, 0 <= FTYP <= 16                          
+                                      1 - integer                                               
+                                      2 - real                                                  
+                                      3 - double precision                                      
+                                      4 - character                                             
+    2    FLEN     I*4            I    data field length, 0 <= FLEN <= 128                       
+    3    FORDER   I*4            I    data field ordering, 0 <= FORDER <= 4                     
+                                      0 - no ordering                                           
+                                      1 - ascending order                                       
+                                      2 - descending order                                      
+    4    FPROT    I*4            I    data field protection, 0 <= FPROT <= 4                    
+                                      0 - no protection                                         
+                                      1 - value must be in specified range                      
+                                      2 - value may not be modified                             
+    5    FCOL     I*4            I    data field starting column, 0 <= FCOL <= 128              
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msimpt    PRMSPA  
+
+
+ WMSPIS                                                                                  WMSPIS  
+
+ This SUBROUTINE is number 17 in file utwdt1. 
+
+ Split up a word into two integer values.                              
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    IVAL     I*4            I    the word                                                  
+    2    IVL1     I*4            O    1st integer value                                         
+    3    IVL2     I*4            O    2nd integer value                                         
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD     
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msexpt    PRMSPE  
+  ztwdmf    WMSGTP  
+
+
+ WMSPIV                                                                                  WMSPIV  
+
+ This INTEGER FUNCTION is number 16 in file utwdt1. 
+
+ Calculate a word from two integer values                              
+ (1st value- 16 bits, 2nd- 15 bits).                                   
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    IVL1     I*4            I    first integer value, 0 <= IVL1 <= 65536                   
+    2    IVL2     I*4            I    second integer value, 0 <= IVL2 <= 32768                  
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msimpt    PRMSPA  
+  ztwdmf    WMSGTP  
+
+
+ WMSPOS                                                                                  WMSPOS  
+
+ This SUBROUTINE is number 32 in file utwdt1. 
+
+ Split up a word containing integer parameters for                     
+ a message type data-set PRM1 screen option type field.                
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    IOPVAL   I*4            I    the word                                                  
+    2    OPSET    I*4            O    set number for this option field                          
+    3    OPSTNO   I*4            O    order number within set of this field, 0 <= OPSTNO <= 64  
+    4    OPDEF    I*4            O    default value of option field                             
+                                      0 - OFF, 1 - ON                                           
+    5    OPWID    I*4            O    width of field to highlight                               
+    6    OPHIDE   I*4            O    flag indicating field is to be hidden on output,          
+                                      0 - don't hide field                                      
+                                      1 - hide field                                            
+    7    OPBOX    I*4            O    flag indicating to draw box next to field,                
+                                      0 - do not draw box                                       
+                                      1 - draw box to left of option field                      
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD     
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msexpt    PRMSPE  
+  ztwdmf    WMSGTP  
+
+
+ WMSPOV                                                                                  WMSPOV  
+
+ This INTEGER FUNCTION is number 31 in file utwdt1. 
+
+ Calculate a word containing parameters for a message                  
+ type data-set PRM1 screen data field of type Option.                  
+ Return a 0 if any one of the components is invalid.                   
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    OPSET    I*4            I    set number for this option field, 0 <= OPSET <= 64        
+    2    OPSTNO   I*4            I    order number within set of this field, 0 <= OPSTNO <= 64  
+    3    OPDEF    I*4            I    default value of option field, 0 <= OPDEF <= 1            
+                                      0 - OFF, 1 - ON                                           
+    4    OPWID    I*4            I    width of field to highlight, 0 <= OPWID <= 128            
+    5    OPHIDE   I*4            I    flag indicating field is to be hidden on output, 0 <= OPH 
+    6    OPBOX    I*4            I    flag indicating to draw box next to field, 0 <= OPBOX <=  
+                                      0 - do not draw box                                       
+                                      1 - draw box to left of option field                      
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msimpt    PRMSPA  
+
+
+ WMSPTE                                                                                  WMSPTE  
+
+ This SUBROUTINE is number 7 in file utwdmf. 
+
+ Add one record of text to WDM file.  May be called more               
+ than once if text is multiple lines (e.g. help information).          
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    CTLEN    I*4            I    text length being added this call (minimum of 1)          
+    3    IBUFF    C*1 (V)        I    array of size CTLEN to be put on WDM file                 
+    4    DREC     I*4            M    record number of data on WDM file                         
+    5    DPOS     I*4            M    position of data on data record                           
+    6    GLEN     I*4            M    counter to keep track of when to write to WDM file        
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     O
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  CHAR        MOD         WDNXPS  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  utwdmf    WMSADI  
+  wdatm1    WADADI  
+
+
+ WMSQCK                                                                                  WMSQCK  
+
+ This SUBROUTINE is number 1 in file utwdmf. 
+
+ utwdmf.f 2.1 9/4/91                                                   
+ Check to see if a group already exists in a data set on WDM file.     
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    DSN      I*4            I    data-set number on WDM file                               
+    3    GNUM     I*4            I    group number being checked                                
+    4    QCHK     I*4            O    flag indicating existance,                                
+                                        0 - data set does not exist or bad group number         
+                                        1 - group exists                                        
+                                      -81 - data set does not exist                             
+                                      -82 - data set exists, but is not a message type data set 
+                                      -84 - data set number out of range                        
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  CFBUFF  WIBUFF     I
+  CFBUFF  WRBUFF     I
+
+ CALLS:
+
+  routine
+  -------
+  WDRCGO      WDSCHK  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  msexpt    PRWMME  
+  msimpt    PRWMSI  
+  utwdmf    WMSFBC  
+
+
+ WMSSKB                                                                                  WMSSKB  
+
+ This SUBROUTINE is number 14 in file utwdmf. 
+
+ Position DREC and DPOS at the end of the current data block.          
+ DREC and DPOS are assumed to be input as the start of the block.      
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDMSFL   I*4            I    Fortran unit number for WDM file                          
+    2    TLEN     I*4            I    total number of characters to skip                        
+    3    DREC     I*4            M    record number on WDM file                                 
+    4    DPOS     I*4            M    position on record DREC                                   
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD         WDNXPS  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  ztwdmf    WMSCON      WMSGTF      WMSGTM      WMSGTP      WMSGTT  
+
+
+ WMSSPS                                                                                  WMSSPS  
+
+ This SUBROUTINE is number 6 in file ztwdmf. 
+
+ Determine the position within the screen text buffer                  
+ of either a data field or menu option.                                
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    ZMNNLI   I*4            I    number of lines in screen text buffer                     
+    2    FOLEN    I*4            I    length of field/option name                               
+    3    FONAM    C*1 (V)        I    field/option name                                         
+    4    ZMNTXT   C*78 (V)       M    screen text buffer                                        
+    5    LINE     I*4            M    line number in screen text buffer of field/option         
+    6    COLUMN   I*4            M    starting column in screen text buffer of field/option     
+    7    LENGTH   I*4            M    length of file/option                                     
+    8    RETCOD   I*4            M    return code                                               
+ 
+ CALLS:
+
+  routine
+  -------
+  CARVAR      INDEX   
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  ztwdmf    WMSGTM      WMSGTP  
+
+
+ WOPWDC                                                                                  WOPWDC  
+
+ This INTEGER FUNCTION is number 33 in file utwdt1. 
+
+ Calculate a word containing parameters for conditionals on            
+ option type data fields (generic for 4 values of 7 bits each).        
+ Return a 0 if any one of the components is invalid.                   
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    IVAL1    I*4            I    first value in word, 0 <= IVAL1 <= 128                    
+    2    IVAL2    I*4            I    second value in word, 0 <= IVAL2 <= 128                   
+    3    IVAL3    I*4            I    third value in word, 0 <= IVAL3 <= 128                    
+    4    IVAL4    I*4            I    fourth value in word, 0 <= IVAL4 <= 128                   
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  ztwdmf    WMSCON      WMSGTP  
+
+
+ WOPWDS                                                                                  WOPWDS  
+
+ This SUBROUTINE is number 34 in file utwdt1. 
+
+ Split up a word containing integer parameters for conditionals        
+ for option type data fields (generic for 4 values of 7 bits each).    
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    OPWORD   I*4            I    the word                                                  
+    2    IVAL1    I*4            O    first value in word, 0 <= IVAL1 <= 128                    
+    3    IVAL2    I*4            O    second value in word, 0 <= IVAL2 <= 128                   
+    4    IVAL3    I*4            O    third value in word, 0 <= IVAL3 <= 128                    
+    5    IVAL4    I*4            O    fourth value in word, 0 <= IVAL4 <= 128                   
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD     
+
+ CALLED BY:
+
+  unknown
+
+
+ WSTGCL                                                                                  WSTGCL  
+
+ This INTEGER FUNCTION is number 29 in file utwdt1. 
+
+ Calculate a block control word for space-time type data set.          
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    STMIN    I*4            I    starting time of group-minutes, 0 <= STMIN <= 60          
+    2    STSEC    I*4            I    starting time of group-seconds, 0 <= STSEC <= 60          
+    3    TUNITS   I*4            I    time units of group, 0 <= TUNITS <= 7                     
+    4    TSTEP    I*4            I    time step of group, 0 <= STMIN <= 63                      
+    5    NOV      I*4            I    number of values in group, 0 < STMIN <= 1023              
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ WSTGSP                                                                                  WSTGSP  
+
+ This SUBROUTINE is number 30 in file utwdt1. 
+
+ Split up a block control word for space-time type data set.           
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    GCW      I*4            I    block control word                                        
+    2    STMIN    I*4            O    starting time of group-minutes                            
+    3    STSEC    I*4            O    starting time of group-seconds                            
+    4    TUNITS   I*4            O    time units of group                                       
+    5    TSTEP    I*4            O    time step of group                                        
+    6    NOV      I*4            O    number of values in group                                 
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD     
+
+ CALLED BY:
+
+  unknown
+
+
+ WTBDCL                                                                                  WTBDCL  
+
+ This INTEGER FUNCTION is number 9 in file utwdt1. 
+
+ Calculate the table dimension for a table type data set.              
+ Returns a 0 if any one of the components is invalid.                  
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    TABIND   I*4            I    table index number, 0 < TABIND <= 128                     
+    2    NROW     I*4            I    number of rows in table, 0 < NROW <= 512                  
+    3    NCOL     I*4            I    space for each column(words), 0 < NCOL <= 128             
+    4    NEXT     I*4            I    amount of table extension space (words), 0 < NEXT <= 255  
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ WTBDSP                                                                                  WTBDSP  
+
+ This SUBROUTINE is number 10 in file utwdt1. 
+
+ Split up dimension variable for table type                            
+ data set into its components.                                         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    TABDIM   I*4            I    table dimension variable                                  
+    2    TABIND   I*4            O    table index number                                        
+    3    NROW     I*4            O    number of rows in table                                   
+    4    NCOL     I*4            O    space for each column(words)                              
+    5    NEXT     I*4            O    amount of table extension space (words)                   
+ 
+ CALLS:
+
+  routine
+  -------
+  MOD     
+
+ CALLED BY:
+
+  unknown
+
+
+ WTBICL                                                                                  WTBICL  
+
+ This INTEGER FUNCTION is number 7 in file utwdt1. 
+
+ Calculate the identifier for a table type data set.                   
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    MSFLID   C*1 (2)        I    message file name id                                      
+    2    MCLU     I*4            I    message file cluster for table                            
+    3    MGRP     I*4            I    message file group number for table                       
+ 
+ CALLS:
+
+  routine
+  -------
+  ICHAR   
+
+ CALLED BY:
+
+  unknown
+
+
+ WTBISP                                                                                  WTBISP  
+
+ This SUBROUTINE is number 8 in file utwdt1. 
+
+ Split up an identifier for a table type                               
+ data set into its components.                                         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    TABID    I*4            I    table identifier                                          
+    2    MSFLID   C*1 (2)        O    message file name id                                      
+    3    MCLU     I*4            O    message file cluster for table                            
+    4    MGRP     I*4            O    message file group number for table                       
+ 
+ CALLS:
+
+  routine
+  -------
+  CHAR        MOD     
+
+ CALLED BY:
+
+  unknown
+
+
+ XCLRSC                                                                                  XCLRSC  
+
+ This SUBROUTINE is number 4 in file usysux. 
+
+ clear screen for hspf run                                             
+ dummy in unix version                                                 
+
+ ARGUMENTS:
+
+  none
+
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ XGTARG                                                                                  XGTARG  
+
+ This SUBROUTINE is number 2 in file usysux. 
+
+ Get the name of the input file from the user.  If not                 
+ entered, use default.                                                 
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    FNAME    C*64           M    Name of input file                                        
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ XGTCHR                                                                                  XGTCHR  
+
+ This SUBROUTINE is number 3 in file usysux. 
+
+ get characters for screen display                                     
+ unix specific                                                         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    CH1      C*1            O    character for hspf screen output                          
+    2    CH2      C*1            O    character for hspf screen output                          
+    3    CH3      C*1            O    character for hspf screen output                          
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ XGTRCL                                                                                  XGTRCL  
+
+ This SUBROUTINE is number 5 in file usysux. 
+
+ get record length                                                     
+ unix specific                                                         
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    BASE     I*4            I    ** Need Argument Definition ***                           
+    2    RCL      I*4            O    ** Need Argument Definition ***                           
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ XOSVAR                                                                                  XOSVAR  
+
+ This SUBROUTINE is number 1 in file usysux. 
+
+ dummy routine to check for operating system variable.                 
+ just returns name of wdm file in this version.                        
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    WDNAME   C*64           I    name of the WDM file                                      
+    2    FILNAM   C*64           O    output name from operating system                         
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ XPLFRM                                                                                  XPLFRM  
+
+ This SUBROUTINE is number 6 in file usysux. 
+
+ get frm for pltgen                                                    
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    FRM      C*30           O    format needed for pltgen                                  
+ 
+ CALLS:
+
+  none
+
+ CALLED BY:
+
+  unknown
+
+
+ ZCHKST                                                                                  ZCHKST  
+
+ This INTEGER FUNCTION is number 6 in file adutil. 
+
+ check a string, using a global value if needed                        
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    ILEN     I*4            I    ** Need Argument Definition ***                           
+    2    ICNT     I*4            I    ** Need Argument Definition ***                           
+    3    OBUFF    C*1 (V)        I    ** Need Argument Definition ***                           
+    4    LRSPST   C*1 (V,V)      I    ** Need Argument Definition ***                           
+ 
+ CALLS:
+
+  routine
+  -------
+  CHKSTR      CHRCHR      GGTGLV  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  ztwdmf    WMSGTP  
+
+
+ ZCNTER                                                                                  ZCNTER  
+
+ This SUBROUTINE is number 7 in file adutil. 
+
+ center menu text                                                      
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    ZBN      I*4            I    box length                                                
+    2    ZHLLEN   I*4            I    highlight length                                          
+    3    ZMNNLI   I*4            M    number of lines in menu                                   
+    4    ZMNTXT   C*78 (V)       M    text of menu                                              
+    5    ZMNLEN   I*4 (V)        M    length of text lines                                      
+    6    ZHLLIN   I*4            M    highlighted line number                                   
+    7    ZHLCOL   I*4            M    highlighted column number                                 
+    8    ZCLEN    I*4            O    number of lines moved to center                           
+    9    ZCWID    I*4            O    number of characters moved to center                      
+ 
+ CALLS:
+
+  routine
+  -------
+  ZLNTXT  
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  ztwdmf    WMSGTM  
+
+
+ ZSCINI                                                                                  ZSCINI  
+
+ This SUBROUTINE is number 2 in file adutil. 
+
+ initialize screen for a new menu                                      
+
+ ARGUMENTS:
+
+  none
+
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  ZCNTL1  ZB2LEN     O
+  ZCNTL1  ZCLEN      O
+  ZCNTL1  ZCWID      O
+  ZCNTL1  ZERR       O
+  ZCNTL1  ZESCST     O
+  ZCNTL1  ZHLCOL     O
+  ZCNTL1  ZHLLEN     O
+  ZCNTL1  ZHLLIN     O
+  ZCNTL1  ZMNLEN     O
+  ZCNTL1  ZMNSAV     I
+  ZCNTL1  ZMSLEN     O
+  ZCNTL1  ZRET       O
+  ZCNTL1  ZWLDFL     M
+  ZCNTL1  ZWLDLI     I
+  ZCNTL1  ZWN2ID     I
+
+  ZCNTL2  ZMNTXT     O
+
+  ZCNTL3  ZB2N       I
+  ZCNTL3  ZB3N       I
+  ZCNTL3  ZMNCSL     O
+  ZCNTL3  ZMNNLI     M
+
+ CALLS:
+
+  routine
+  -------
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  ztwdmf    WMSGTM      WMSGTP  
+
+
+ ZSTCMA                                                                                  ZSTCMA  
+
+ This SUBROUTINE is number 1 in file adutil. 
+
+ set command availability                                              
+
+ ARGUMENTS:
+                 declaration
+  order   name   type  size   status  explanation
+  -----  ------  -----------  ------  ---------------------------------------------------------
+    1    ICMD     I*4            I    command id number                                         
+    2    IAV      I*4            I    availability code =0 - NO, 1 - YES                        
+
+ COMMON USAGE:
+
+  block    name   status
+  ------  ------  ------
+  ZCNTL1  ZCMDAV     O
+  ZCNTL1  ZCMDST     O
+
+ CALLS:
+
+  routine
+  -------
+
+ CALLED BY:
+
+  group     routine
+  --------  -------
+  ztwdmf    WMSGTM      WMSGTP      WMSGTT  

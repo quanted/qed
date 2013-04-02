@@ -50,13 +50,14 @@ img {
   -moz-box-shadow: 3px 3px 15px #CCC;
 }
 #landing_links {
-  width: 690px;
+  width: 680px;
 }
 #eco {
   width: 334px;
   height: 334px;
   float: left;
   background: url(/images/eco.gif);
+  margin-right: 10px;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -88,11 +89,10 @@ img {
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;
 }*/
-#nav-shadow {
+ul {
   list-style: none;
 }
-#nav-shadow a, #nav-shadow a:visited, #nav-shadow a, #nav-shadow a:hover {
-  display: inline-block;
+ul li {
+  display: inline;
   position: relative;
-  margin: 0 5.5px;
 }

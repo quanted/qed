@@ -1,5 +1,5 @@
 $( document ).ready(function() { 
-	$("#nav-shadow li").hover(function() {
+	$("ul li").hover(function() {
 		var e = this;
 		$(e).find("a").stop().animate({ marginTop: "-10px" }, 350, function() {
 			$(e).find("a").animate({ marginTop: "-6px" }, 350);

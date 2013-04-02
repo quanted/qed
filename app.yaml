@@ -16,7 +16,10 @@ libraries:
   version: "1.3"
 - name: PIL
   version: latest
-  
+
+env_variables:
+  UBERTOOL_BATCH_SERVER: ''
+
 skip_files:
 - ^(.*/)?app\.yaml
 - ^(.*/)?app\.yml
@@ -48,6 +51,8 @@ handlers:
 # regular expression for the URL pattern, only a prefix.
 - url: /stylesheets
   static_dir: stylesheets
+- url: /raphael
+  static_dir: raphael
 - url: /images
   static_dir: images
 - url: /pdfs
@@ -84,6 +89,9 @@ handlers:
 #ubertool batch output
 - url: /run_ubertool_batchoutput.html
   script: ubertool/run_ubertool_batch_output.py
+  login: required
+- url: /ubertool-batch-configuration
+  script: ubertool/run_ubertool_output.py
   login: required 
 - url: /run_ubertool_output.html
   script: ubertool/run_ubertool_output.py
@@ -183,11 +191,22 @@ handlers:
 - url: /pest/(.*)
   script: ubertool/pesticide_properties.py
   login: required
+  
+#Model method service for asynchronous invocation
+- url: /msed
+  script: rice/rice_output.py 
 
 #terrestrial service
 - url: /terrestrial/(.*)
   script: ubertool/terrestrial_toxicity.py
   login: required
+
+#ecosys service
+- url: /ecosys/(.*)
+  script: ubertool/ecosystem_inputs.py
+  login: required
+  
+
 
 #ubertool service
 - url: /ubertool/all_props/(.*)
@@ -203,11 +222,28 @@ handlers:
 - url: /ubertool/(.*)
   script: ubertool/ubertool.py
   login: required
-
+- url: /ubertool-stats
+  script: ubertool/ubertool.py
+  login: required
 #cas service
 - url: /cas/(.*)
   script: CAS/cas.py
   login: required
+
+#batch service
+- url: /batch
+  script: batch/batch_processor.py
+  login: required
+
+#batch retrieval service
+- url: /batch_results/(.*)
+  script: batch/batch.py
+  login: required
+  
+#batch retrieval service
+- url: /batch_configs
+  script: batch/batch.py
+  login: required 
 
 #use label site data
 - url: /site_data.html

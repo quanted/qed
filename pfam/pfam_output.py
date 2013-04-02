@@ -20,7 +20,7 @@ from datetime import datetime,timedelta
 import sys
 lib_path = os.path.abspath('..')
 sys.path.append(lib_path)
-from ubertool_src import keys_Picloud_S3
+import keys_Picloud_S3
 
 ############Provide the key and connect to the picloud####################
 api_key=keys_Picloud_S3.picloud_api_key

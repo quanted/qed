@@ -7,7 +7,7 @@ import os
 import csv
 
 
-data = csv.reader(open('C:/Users/th/Desktop/trex2.csv'))
+data = csv.reader(open('C:/github/ubertool_src/trex2/trex2_seed.csv'))
 crop_type = []
 max_rate = []
 
@@ -19,7 +19,7 @@ for row in data:
     crop_type.append(crop_type_temp)
     max_rate.append(max_rate_temp)
 
-final_dict=zip(crop_type,max_rate)
+final_dict=zip(max_rate,crop_type)
 
 
 print final_dict

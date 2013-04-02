@@ -14,6 +14,7 @@ libraries:
   version: latest
 - name: django
   version: "1.3"
+
 - name: PIL
   version: latest
 
@@ -54,6 +55,7 @@ handlers:
   script: about.py
 - url: /pdf.html
   script: pdf_output.py  
+
 # All URLs beginning with /stylesheets are treated as paths to static files in
 # the stylesheets/ directory. Note that static_dir handlers do not use a
 # regular expression for the URL pattern, only a prefix.
@@ -251,11 +253,10 @@ handlers:
   script: ubertool/run_ubertool_input.py  
   login: required
 
-
 #ESA workshop
 - url: /esa_workshop.html
   script: esa_workshop/esa_workshop.py  
    
 #file not found
 - url: /.*
-
+  script: file_not_found.py

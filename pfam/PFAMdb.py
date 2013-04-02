@@ -68,4 +68,3 @@ class PFAMInp_phy(forms.Form):
     q10 = forms.FloatField(required=True,label='Q10', initial=2)
 class PFAMInp_out(forms.Form):
     area_app = forms.FloatField(required=True,label=mark_safe('Area of Application (m<sup>2</sup>)'), initial=1.0)
-

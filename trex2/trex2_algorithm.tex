@@ -1,0 +1,138 @@
+\documentclass[10pt]{article}
+\usepackage{graphicx}
+\usepackage{endfloat}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage[scientific-notation=true]{siunitx}
+\usepackage[margin = 1in]{geometry}
+\hoffset = -1.3in %set margin offset horizontally for the document
+\newcommand{\subscript}[1]{\ensuremath{_{\textrm{#1}}}}
+\allowdisplaybreaks
+\begin{document}
+\begin{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+\\\boldsymbol{Seed \:  Treatments}
+\\\boldsymbol{Maximum\;  Seed \;Application\; Rate \;(mg \;a.i./kg\; seed)} = (Application\; rate\; \times  2.2 \; 106)
+ / (100 \times 2.2) = (Application \; rate  \times 10,000)\\
+
+Application\; Rate\; (lbs \;a.i./cwt) = (Application \;rate\; (fl\; oz/cwt) \times decimal\; \% \;of\; a.i.\; 
+in \;formulation) / 128\; fl \;oz/\;gallon) \times density\; of\; product \;(lbs/gallon)\\
+Maximum\; Application \;Rate (lbs\; a.i./A) = (Maximum \;seeding\; rate \times application \;rate (lbs\; a.i./cwt)) 
+/ 100 \;lbs/cwt
+
+\\\boldsymbol{Avian\;  and \;Mammalian \;Nagy \;Dose \;(mg \;a.i.\;/kg-bw)} = (daily\; food\; intake\; g/day \times 0.001 \;
+kg/g\; \times\; maximum \;seed \;application\; rate (mg/kg-seed) / body\; weight\;of \;animal\;(kg)
+
+\\Available \;a.i.\; (mg \;a.i.\;/ft^{2}) = The\; amount \;of \;available \;pesticide \;is \;calculated\; by \;converting \;
+the \;maximum \;application\; \\rate \;in \;lbs \;acre^{-1} \;to\; mg \;a.i./ft^{2}, using\; the\; following \;equation:\
+
+(Maximum\; application\; rate (lbs/Acre)\times \;10^{6} \;mg/kg) / (43,560 \;square \;feet/acre\times 2.2 \;lb/kg)\\
+
+
+
+
+
+\\\mathbf{Acute\;  and\; Chronic\; RQs}
+
+\\Acute\; RQ\; \sharp \;1 = (Avian \;or\; Mammal)\; Nagy\; Dose\; / (adjusted\; LD50)
+
+\\Acute\; RQ \;\sharp \;2 = Available\; a.i. / (Adjusted \;LD50* kg \;body \;weight)
+
+***************************************************************************************
+\\\mathbf{Calculation \; of\;  Dietary \; Concentrations\;  on \; Selected\;  Food \; Items}
+
+\\C_{t} = C_{0}e^{-kt}
+
+\\or\;  in\; natural\; log\; form:
+
+\\ln(C_{t}) = ln(C_{0})(- kt) 
+
+\\Where:
+
+\\C_{t} = concentration, \;parts \;per\; million\; (ppm), at\; time\; T.
+
+\\C_{0} = concentration\; (ppm), present \;initially \;(on\; day\; zero)\; on \;the \;surface\; of\; selected\; food\; items. 
+
+
+
+
+\\ \mathbf{Calculating\;  EEC \;Equivalent\; Dose\;s Based \;on \;Estimated \;Dietary \;Concentrations\; on\; Selected\; Avian \;and\; Mammalian\; Food\;
+ Items}
+\\\mathbf{Calculating\;  Food\; Intake\; for\; Different\; Size\; Classes\; of\; Birds\; and\; Mammals}
+
+\\\mathbf{Avian \;consumption}
+
+\\F = (0.648 * BW^{0.651}) / (1-W)
+
+\\where:
+
+\\F = food \; intake \; in \; grams  \;of \; fresh  \;weight \; per \; day  \;(g/day)
+
+\\BW = body  \;mass  \;of \; animal \; (g)
+
+\\W = mass \; fraction \; of  \;water \; in \; the \; food \; (EFED  \;value = 0.8  \;for  \;herbivores \; and  \;insectivores, 0.1 \; for  \;granivores)
+
+
+
+
+
+\\\mathbf{Mammalian \; food  \;consumption  \;(g/day)}
+
+\\F = (0.621 * BW^{0.564}) / (1 - W)
+
+\\where:
+
+\\F = food\; intake\; in\; grams\; of \;fresh\;weight\; per \;day (g/day)
+
+\\BW = body\; mass\; of \;animal (g)
+
+\\W = mass \;fraction\; of\; water \;in\; the\; food\; (EFED\; value = 0.8 \;for \;herbivores\; and\; insectivores, 0.1 \;for \;granivores)
+
+
+
+
+\\\mathbf{Calculating \; Adjusted \;Toxicity\; Values}
+\\Adjusted \;avian \;LD_{50}:
+
+\\Adj. \; LD_{50} = LD_{50} (AW / TW)^{(x-1)}
+
+\\where:
+
+\\Adj. \; LD_{50} = adjusted  \;LD_{50} \; (mg/kg-bw)  \;calculated \; by \; the  \;equation
+
+\\LD_{50} = endpoint\; reported\; from\; bird\; study \;(mg/kg-bw)
+
+\\TW = body \;weight\; of \;tested\; animal (178g\; bobwhite; 1580g\; mallard)
+
+\\AW = body\; weight\; of \;assessed\; animal (avian:\; 20g,\; 100g, \;and \;1000g)
+
+\\x = Mineau\; scaling \;factor\; for\; birds; EFED\; default \;1.15
+
+\\Adjusted\; mammalian\; NOAELs \;and \;LD_{50s} \;(note \;that \;the\; same equation\; is \;used\; to\; adjust \;the \;NOAEL):
+
+
+\\Adj.\; NOAEL\; or \;LD_{50}= NOAEL \;or \;LD_{50} (TW / AW)(0.25)
+
+\\where:
+
+\\Adj.\;  NOAEL\; \; or\; LD_{50}= adjusted\; NOAEL \;or \;LD_{50} \;(mg/kg-bw)
+
+\\NOAEL \;or \;LD_{50} = endpoint \;reported\; from \;mammal\; study\; (mg/kg-bw)
+
+\\TW = body \;weight \;of \;tested\; animal\; (350g\; rat)
+
+\\AW = body \;weight \;of\;assessed\; animal\; (15g, 35g, 1000g)
+\end{align*}
+\end{document}

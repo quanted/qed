@@ -1,0 +1,79 @@
+\documentclass[10pt]{article}
+\usepackage{graphicx}
+\usepackage{endfloat}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage[scientific-notation=true]{siunitx}
+\usepackage[margin = 1in]{geometry}
+\hoffset = -1.0in %set margin offset horizontally for the document
+\newcommand{\subscript}[1]{\ensuremath{_{\textrm{#1}}}}
+\allowdisplaybreaks
+\begin{document}
+\begin{align*}
+& \hspace{-0.75in}  \text{Adjusted LD}_{50}\text{:} \nonumber \\
+& \hspace{-0.75in}  \text{Avian LD}_{50}\text{:} \nonumber \\
+\text{Adj. } LD_{50} & = LD_{50}*(AW / TW)^{(x-1)} \nonumber \\
+& \hspace{-0.75in}  \text{Mammal LD}_{50}\text{:} \nonumber \\
+\text{Adj. } LD_{50} & = LD_{50}*(TW / AW)^{(0.25)}\\
+& \hspace{-0.75in}  \text{Mammal NOAEL:}\nonumber \\
+\text{Adj. } NOAEL & = NOAEL*(TW / AW)^{(0.25)}\\
+& \hspace{-0.75in}  \text{Where:} \nonumber \\
+\text{Adj. }LD_{50} & = \text{adjusted LD}_{50}\\
+LD_{50} & = \text{acute endpoint reported from bird or mammal study}\\ 
+TW & = \text{body weight of tested animal (e.g. 178 g bobwhite, 1580 g mallard, 350 g rat)}\\
+AW & = \text{body weight of assessed animal (e.g. star=nosed mole, heron, etc.)}\\
+x & = \text{Mineau scaling factor for birds EFED (default=1.15)}\\
+& \hspace{-0.75in}  \text{Scaling Factors used in consumption weight EECs:} \nonumber \\
+& \hspace{-0.75in}  \text{Avian consumption:} \nonumber \\
+F & = (0.648 * BW^{0.651}) / (1 - W )\\
+& \hspace{-0.75in}  \text{Mammal consumption:} \nonumber \\
+F & = (0.621 * BW^{0.564}) / (1 - W )\\ 
+& \hspace{-0.75in}  \text{where:} \nonumber \\
+F & = \text{food intake in grams of fresh weight per day}\\
+BW & = \text{body mass of animal (avian: 20 g, 100 g, 1000 g; mammal: 15 g, 35 g, 1000 g)}\\
+W & = \text{mass fraction of water in the food (0.8 for herbivores and insectivores, 0.1 for}\\ &\hspace{1.3em}\text{granivores)}\nonumber \\
+& \hspace{-0.75in}  \text{RQ Formulas using upper bound kenaga (EEC (mg/kg-bw)) residues or mean kenaga residues:} \nonumber \\
+\text{EEC dose} & = \text{upper bound EEC}* \% \text{ (body weight consumed}/100)\\
+& \hspace{-0.75in} \text{Avian and Mammalian:}\\
+& \hspace{-0.75in} \text{Dose-based:}\\
+RQs & = \text{EEC equivalent dose} / \text{adjusted LD}_{50}\\
+& \hspace{-0.75in} \text{Diet-based:}\\
+\text{Acute } RQs & = EEC / LC_{50}\\
+\text{Chronic } RQs & = EEC / NOAEC\\
+& \hspace{-0.75in}  \text{LD}_{50}\text{ft}^{-2} \nonumber \\
+& \hspace{-0.75in}  \text{Exposure Values} \nonumber \\
+& \hspace{-0.75in}  \text{Banded granular applications:} \nonumber \\
+\text{mga.i.ft}^{-2} & = \frac{\text{application rate}*\% a.i.*453,590}{\text{no. of rows} * A^{-1}*\text{row length}*\text{bandwidth}}\\
+\text{Exposed mg a.i. ft}^{-2} & = \text{mg a.i. ft}^{-2} * \% \text{ unincorporation}\\
+& \hspace{-0.75in}  \text{Banded liquid applications:} \nonumber \\
+\text{mg a.i. ft}^{-2} & = (\text{mg a.i.1000ft}^{-1}\text{row}) / (1000 \text{ ft}*\text{bandwidth})\\
+\text{Exposed mg a.i.ft}^{-2} & = \text{mg a.i. ft}^{-2}*\%\text{ unincorporation}\\
+& \hspace{-0.75in}  \text{Broadcast granular applications:} \nonumber \\
+\text{mg a.i. ft}^{-2} & = \text{(application rate}*{\% \text{a.i.}}* 453590 \text{mg/lb}) / 43560 \text{ ft}^{-2}\text{acre}^{-1}\\
+& \hspace{-0.75in}  \text{Broadcast liquid applications:} \nonumber \\
+\text{mg a.i. ft}^{-2} & = \text{(fl oz product A}^{-1} * 28349 \text{mg oz}^{-1} * \% \text{a.i.}) / 43560 \text{ ft}^{-2}\text{acre}^{-1}\\
+& \hspace{-0.75in}  \text{LD}_{50}\text{ft}^{-2}\text{Calculations:} \nonumber \\
+& \hspace{-0.75in} \text{Avian:}\\
+LD_{50} \text{ ft}^{-2} & = (\text{Exposed mg a.i. ft}^{-2}) / (\text{Adjusted LD}_{50}*0.02)\\
+& \hspace{-0.75in} \text{Mammal:}\\
+LD_{50} \text{ ft}^{-2} & =(\text{Exposed mg a.i. ft}^{-2}) / (\text{AdjustedLD}_{50}*0.015)\\
+& \hspace{-0.75in} \text{Seed Treatments:}\\
+& \hspace{-0.75in} \text{Maximum seed application rate (MSAR) (mg a.i./kg seed):}\\  
+\text{MSAR} & = (\text{Application rate} *  0.000002) / (100 * 2.2)\\
+& \hspace{-0.75in} \text{Where:}\\
+\text{AR} & = \frac{\text{(Application rate (fl oz/cwt)} * \text{decimal \% of a.i. in formulation)}}{(128 \text{ fl oz gallon)} * \text{density of product (lbs/gallon)}}\\
+\text{MAR} & = \frac{\text{(Maximum seeding rate * application rate (lbs a.i. cwt))}}{ 100 \text{(lbs/cwt)}}\\
+\text{MAR} & = \text{Maximum Application Rate (lbs a.i. /A)}\\
+\text{AR} & = \text{Application Rate (lbs a.i. /cwt)}\\
+& \hspace{-0.75in} \text{Avian and Mammalian Nagy Dose (mg a.i./kg-bw):}\\
+\text{Nagy Dose} & = \frac{\text{(Daily food intake (g/day)} * 0.001 * MSAR\text{ (mg/kg-seed)}}{\text{body weight of animal (kg)}}\\
+& \hspace{-0.75in}  \text{The amount of available pesticide:}\\
+\text{Available a.i.} & = \frac{\text{Maximum application rate (lbs/acre)} * 10^{6}}{43,560 \text{ (ft}^{2}\text{/acre}) * 2.2 \text{ (lb/kg)}}\\
+& \hspace{-0.75in}  \text{Acute and Chronic RQs:}\\
+& \hspace{-0.75in}  \text{Animal or Mammal:}\\
+\text{Acute RQ } \sharp 1 & = \frac{\text{Nagy Dose}}{\text{Adjusted} LD_{50}}\\
+\text{Acute RQ } \sharp 2 & = \frac{\text{Available a.i.}}{\text{ Adjusted} LD_{50} * \text{kg body weight}}\\
+\text{Chronic RQ} & = \frac{\text{Maximum seed application Rate}}{\text{NOAEC}}\\
+\end{align*}
+\end{document}

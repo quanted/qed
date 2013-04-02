@@ -1,2 +1,18 @@
+<p>TerrPlant derives estimated exposure concentrations (EECs) of pesticide in runoff and in drift. From the derived EECs TerrPlant develops risk quotients (RQs) are developed for non-listed and listed species of monocots and dicots inhabiting dry and semi-aquatic areas adjacent to treatment sites using the equations below.</p>
+<p>Runoff to dry areas:</p>
+<img src = "/images/latex/terrplant/terrplant_image1.png" alt="Terrplant_1">
 
-<p></p>
+<p>Runoff to semi-aquatic areas:</p>
+<img src = "/images/latex/terrplant/terrplant_image2.png" alt="Terrplant_2">
+
+<p>Spray drift:</p>
+<img src = "/images/latex/terrplant/terrplant_image3.png" alt="Terrplant_3">
+<p>Total for dry areas:</p>
+<img src = "/images/latex/terrplant/terrplant_image4.png" alt="Terrplant_4">
+<p>Total for semi-aquatic areas:</p>
+<img src = "/images/latex/terrplant/terrplant_image5.png" alt="Terrplant_5">
+<p>To calculate RQ values plant survival and growth data (EC<sub>25</sub>, NOAEC) input by the user for seedling emergence and vegetative vigor is divided into the total EEC for each scenario (total dry, total semi-aquatic, total drift) and plant type (monocot and dicot). For the non-listed species the EC<sub>25</sub> values are used and for listed species the NOAEC values are used. For spray drift RQ calculation the most sensitive measure of effect (seedling emergence or vegetative vigor) is used. </p>
+<p>Risk quotient calculation for non-listed species:</p>
+<img src = "/images/latex/terrplant/terrplant_image6.png" alt="Terrplant_6">
+<p>Risk quotient calculation for listed species:</p>
+<img src = "/images/latex/terrplant/terrplant_image7.png" alt="Terrplant_7">

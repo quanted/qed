@@ -56,7 +56,7 @@ img {
   width: 334px;
   height: 334px;
   float: left;
-  background: url(/images/eco.png);
+  background: url(/images/eco.gif);
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -68,7 +68,7 @@ img {
   width: 334px;
   height: 334px;
   float: left;
-  background: url(/images/hh.png);
+  background: url(/images/hh.gif);
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -80,7 +80,7 @@ img {
   width: 334px;
   height: 334px;
   float: left;
-  background: url(/images/pop2.png);
+  background: url(/images/pop.gif);
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;

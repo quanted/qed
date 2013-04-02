@@ -25,7 +25,7 @@ body {
 }
 #container {
   width: 1024px;
-  margin: 5px auto 5px auto;
+  margin: 4px auto 18px auto;
   text-align: left;    /* IE Hack */
   border-radius: 4px;
   -webkit-border-radius: 4px;

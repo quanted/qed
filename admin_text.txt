@@ -1,0 +1,131 @@
+<ul>ubertool
+<li><a href="https://groups.google.com/forum/?fromgroups=#!forum/ubertool-dev">ubertool-dev google group</a></li>
+<li><a href="https://dnsimple.com/">dnsimple</a></li>
+<li><a href="https://console.aws.amazon.com/console/home?#">AWS login</a></li>
+<li><a href="/_ah/stats/">app stats</a></li>
+</ul>
+
+<ul>Google App Engine
+<li><a href="https://code.google.com/status/appengine">gae status</a></li>
+<li><a href="https://appengine.google.com/">GAE Admin Console</a></li>
+<li><a href="http://googleappengine.blogspot.com/">gae blog</a></li>
+<li><a href="https://cloud.google.com/pricing/">gae pricing</a></li>
+<li><a href="https://developers.google.com/open-source/soc/">google summer of code</a></li>
+<li><a href="http://shell.appspot.com/">gae shell</a></li>
+<li><a href="http://www.google.com/analytics/">analytics</a></li>
+</ul>
+
+<ul>Amazon
+<li><a href="http://aws.amazon.com/">amazon web services</a></li>
+<li><a href="http://aws.amazon.com/ec2/">ec2</a></li>
+<li><a href="http://aws.amazon.com/s3/">s3</a></li>
+<li><a href="http://aws.amazon.com/tools/">sdks</a></li>
+<li><a href="http://www.picloud.com/">picloud</a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+
+<ul>Cloud databases
+<li><a href="https://code.google.com/apis/console/b/0/?pli=1#project:440959486082">uberdb api</a></li>
+<li><a href="http://aws.amazon.com/s3/">s3</a></li>
+<li><a href="https://mongolab.com/welcome/">mongolab</a></li>
+<li><a href="http://www.mongodb.org/">mongodb</a></li>
+<li><a href="https://developers.google.com/cloud-sql/docs/introduction">google cloud sql</a></li>
+<li><a href="http://www.convertcsvtomysql.com/#">convert csv to sql</a></li>
+<li><a href="https://developers.google.com/appengine/docs/python/datastore/">google datastore</a></li>
+<li><a href="http://stackoverflow.com/questions/13342980/google-datastore">stackoverflow gae datastore</a></li>
+<li><a href="http://www.postgresql.org/">postgresql</a></li>
+<li><a href=""></a></li>
+</ul>
+
+<ul>Python
+<li><a href="http://www.python.org/">Python</a></li>
+<li><a href="https://developers.google.com/appengine/docs/python/overview">GAE Python Overview</a></li>
+<li><a href="https://developers.google.com/appengine/docs/python/gettingstartedpython27/">GAE Python 2.7 Tutorial</a></li>
+<li><a href="http://stackoverflow.com/questions/tagged/python">stackoverflow</a></li>
+<li><a href="http://aws.amazon.com/python/">aws python</a></li>
+<li><a href="http://boto.readthedocs.org/en/latest/">boto</a></li>
+<li><a href="http://www.numpy.org/">numpy</a></li>
+</ul>
+
+<ul>JavaScript
+<li><a href="https://developer.mozilla.org/en-US/docs/JavaScript">Mozilla JavaScript</a></li>
+<li><a href="http://jsfiddle.net/">jsfiddle</a></li>
+<li><a href="http://stackoverflow.com/questions/tagged/javascript">stackoverflow</a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+
+<ul>JQuery
+<li><a href="http://jquery.com/">jQuery</a></li>
+<li><a href="http://stackoverflow.com/questions/tagged/jquery">stackoverflow</a></li>
+<li><a href="http://jqueryui.com/">jqueryui</a></li>
+<li><a href="http://docs.jquery.com/">wiki</a></li>
+<li><a href="https://github.com/jquery/jquery">github</a></li>
+<li><a href="http://jquerytools.org/">jquerytools</a></li>
+<li><a href="http://speckyboy.com/2012/10/22/how-to-create-a-basic-jquery-tool-tip-plugin/#">tool tips</a></li>
+<li><a href="http://www.jensbits.com/2011/09/06/using-jquery-datepicker-and-dialog-box-to-select-date-range-2/">date picker</a></li>
+</ul>
+
+<ul>JSON
+<li><a href="http://www.json.org/">JSON</a></li>
+<li><a href="http://stackoverflow.com/questions/tagged/json">stackoverflow</a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+
+<ul>Fortran
+<li><a href="http://gcc.gnu.org/fortran/">gcc fortran</a></li>
+<li><a href="http://www.ucs.cam.ac.uk/docs/course-notes/unix-courses/pythonfortran">fortran w python</a></li>
+<li><a href="http://cens.ioc.ee/projects/f2py2e/">f2py</a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+
+<ul>Unit testing
+<li><a href="http://www.pylint.org/">pylint</a></li>
+<li><a href="http://www.sonarsource.org/">sonar</a></li>
+<li><a href="http://jenkins-ci.org/">jenkins</a></li>
+<li><a href="https://pypi.python.org/pypi/unittest2">unittest2</a></li>
+<li><a href="https://nose.readthedocs.org/en/latest/"></a>nose</li>
+<li><a href="http://webob.org/">WebOb</a></li>
+<li><a href="http://webtest.pythonpaste.org/en/latest/">WebTest</a></li>
+<li><a href="http://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a></li>
+<li><a href=""></a></li>
+</ul>
+
+<ul>html
+<li><a href="http://tools.pingdom.com/fpt/">check loading speed</a></li>
+<li><a href="https://kuler.adobe.com/#themes/rating?time=30">kuler color picker</a></li>
+<li><a href="http://www.sumopaint.com/app/">sumopaint</a></li>
+<li><a href="http://www.html5rocks.com/en/">html5 rocks</a></li>
+<li><a href="http://www.w3.org/html/wg/drafts/html/master/">w3c html 5</a></li>
+<li><a href="http://html5test.com/">html5 browser test</a></li>
+<li><a href="http://www.w3schools.com/html/html5_intro.asp">html5 intro</a></li>
+dataurl
+</ul>
+
+<ul>IDEs
+<li><a href="http://www.sublimetext.com/2">sublime</a></li>
+<li><a href="http://www.youtube.com/watch?v=TZ-bgcJ6fQo">sublime tutorial</a></li>
+<li><a href="http://pydev.org/">pydev</a></li>
+<li><a href="http://pythonhosted.org/spyder/">spyder</a></li>
+<li><a href="https://code.google.com/p/pythonxy/">pythonxy</a></li>
+<li><a href=""></a></li>
+</ul>
+
+<ul>node.js
+<li><a href="http://nodejs.org/">node.js</a></li>
+<li><a href="http://www.nodebeginner.org/">node tutorial</a></li>
+<li><a href="http://stackoverflow.com/questions/2353818/how-do-i-get-started-with-node-js">getting started</a></li>
+<li><a href="http://jsapp.us/">jsapp (jsfiddle for node)</a></li>
+</ul>
+
+<ul>rabbitmq
+<li><a href="http://www.rabbitmq.com/">rabbitmq</a></li>
+<li><a href="https://github.com/rabbitmq">github</a></li>
+<li><a href="http://docs.celeryproject.org/en/latest/getting-started/brokers/rabbitmq.html">using rabbitmq</a></li>
+<li><a href="http://jsapp.us/">jsapp (jsfiddle for node)</a></li>
+</ul>

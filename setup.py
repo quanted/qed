@@ -11,8 +11,8 @@ setup(
         name            = 'ubertool',
         version         = '1.0.0',
         py_modules      = ['ubertool'],
-        author          = 'USEPA ERD Athens',
-        author_email    = 'purucker.tom@epa.gov',
+        author          = 'ubertool development',
+        author_email    = 'ecoubertool@gmail.com',
         url             = 'http://www.ubertool.org',
-        description     = 'Ubertool for EFED ecological risk modules',
+        description     = '&uuml;bertool for EFED ecological risk modules',
         )

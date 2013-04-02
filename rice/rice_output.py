@@ -14,6 +14,9 @@ cgitb.enable()
 import datetime
 from rice import rice_model
 import logging
+import sys
+sys.path.append("../utils")
+import utils.json_utils
 
 
 # The mass of the sediment at equilibrium with the water column
@@ -47,7 +50,32 @@ def msed(dsed,a,pb):
         ('pb=%g is a non-physical value.' %pb)
     return dsed * a * pb
 
+class RiceBatchRunner():
+    
+    def runRiceModel(self,config_properties):
+        riceModelResults = {}
+        #this is where properties are searched, converted as needed, and any available methods are called
+        if 'application_kg_rate' in config_properties:
+            if 'area_of_the_rice_paddy' in config_properties:
+                riceModelResults['mai1']=mai1(config_properties['application_kg_rate'], config_properties['area_of_the_rice_paddy'])
+                if riceModelResults['mai1']:
+                    if 'water_column_depth' in config_properties:
+                        if 'sediment_depth' in config_properties:
+                            if 'porosity_of_sediment' in config_properties:
+                                if 'bulk_density_of_sediment' in config_properties:
+                                    if 'Kd' in config_properties:
+                                        riceModelResults['cw']=cw(riceModelResults['mai1'], config_properties['water_column_depth'], config_properties['sediment_depth'], config_properties['porosity_of_sediment'], config_properties['bulk_density_of_sediment'], config_properties['Kd'])
+        return riceModelResults
 
+class MsedService(webapp.RequestHandler):
+    
+    def get(self):
+        data = simplejson.loads(self.request.body)
+        data = json_utils.convert(data)
+        msed_output = msed(data['dsed'],data['a'],data['pb'])
+        msed_json = simplejson.dumps(msed_output)
+        self.response.headers['Content-Type'] = 'application/json'
+        self.response.out.write(msed_json)
 
 
 # The volume of the water column plus pore water
@@ -265,7 +293,9 @@ class RiceExecutePage(webapp.RequestHandler):
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
-app = webapp.WSGIApplication([('/.*', RiceExecutePage)], debug=True)
+app = webapp.WSGIApplication([('/msed', MsedService),
+                              ('/.*', RiceExecutePage)],
+                              debug=True)
 
 def main():
     run_wsgi_app(app)

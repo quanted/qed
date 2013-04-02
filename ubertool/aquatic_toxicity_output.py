@@ -19,7 +19,7 @@ class UbertoolAquaticToxicityConfigurationPage(webapp.RequestHandler):
         form = cgi.FieldStorage()
         config_name = str(form.getvalue('config_name'))
         user = users.get_current_user()
-        q = db.Query(ExposureConcentrations)
+        q = db.Query(AquaticToxicity)
         q.filter('user =',user)
         q.filter("config_name =", config_name)
         aquatic_toxicity = q.get()
@@ -28,7 +28,6 @@ class UbertoolAquaticToxicityConfigurationPage(webapp.RequestHandler):
         if user:
             logger.info(user.user_id())
             aquatic_toxicity.user = user
-        aquatic_toxicity = AquaticToxicity()
         aquatic_toxicity.config_name = config_name
         aquatic_toxicity.acute_toxicity_target_concentration_for_freshwater_fish = float(form.getvalue('acute_toxicity_target_concentration_for_freshwater_fish'))
         aquatic_toxicity.chronic_toxicity_target_concentration_for_freshwater_fish = float(form.getvalue('chronic_toxicity_target_concentration_for_freshwater_fish'))

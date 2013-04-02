@@ -72,12 +72,15 @@ class UseConfigNamesService(webapp.RequestHandler):
 class UsePropertiesRetrievalService():
     
     def get(self, use_config_name):
+        logger = logging.getLogger("UsePropertiesRetrievalService")
+        logger.info(use_config_name)
         user = users.get_current_user()
         q = db.Query(Use)
         q.filter('user =',user)
         q.filter('config_name =',use_config_name)
         use = q.get()
         use_dict = {}
+        use_dict['config_name'] = use.config_name
         use_dict['cas_number'] = use.cas_number
         cas = CASGql("apppest:cas","CAS")
         use_dict['formulated_product_name'] = use.formulated_product_name 

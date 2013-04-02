@@ -62,6 +62,7 @@ class EcosystemInputsPropertiesRetrievalService(webapp.RequestHandler):
         q.filter('config_name =',ecosystem_inputs_config_name)
         ecosystem = q.get()
         eco_dict = {}
+        eco_dict['config_name'] = ecosystem.config_name
         eco_dict['concentration_of_particulate_organic_carbon'] = ecosystem.concentration_of_particulate_organic_carbon
         eco_dict['concentration_of_dissolved_organic_carbon'] = ecosystem.concentration_of_dissolved_organic_carbon
         eco_dict['concentration_of_dissolved_oxygen'] = ecosystem.concentration_of_dissolved_oxygen
@@ -71,10 +72,10 @@ class EcosystemInputsPropertiesRetrievalService(webapp.RequestHandler):
         return eco_dict
 
 application = webapp.WSGIApplication([('/ecosys/(.*)', EcosystemInputsService),
-										('/eco-config-names', EcosystemInputsConfigNamesService)],
-                                      debug=True)
+                                        ('/eco-config-names', EcosystemInputsConfigNamesService)],
+                                        debug=True)
 def main():
     run_wsgi_app(application)
 
 if __name__ == "__main__":
-  	main()
+    main()

@@ -1,7 +1,8 @@
 import sys
 import unittest
-sys.path.append("eco/rice_suite")
-from rice.rice_suite import RiceSuite
+
+sys.path.append("eco")
+from eco.eco_suite import EcoSuite
 
 class UbertoolTest(unittest.TestSuite):
     
@@ -10,6 +11,5 @@ class UbertoolTest(unittest.TestSuite):
     
 
 if __name__ == '__main__':
-    main()       
-
+    main() 
         

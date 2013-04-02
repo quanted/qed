@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # -*- coding: utf-8 -*-
 """
 Created on Tue Jan 31 11:55:40 2012
@@ -32,7 +33,7 @@ class PPInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start.html', {'model':'pesticide_properties'})
         html = html + str(pesticide_properties_db.PPInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
@@ -43,5 +44,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
-    

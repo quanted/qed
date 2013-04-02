@@ -1,0 +1,9 @@
+{
+	"name": "batch",
+	"version": "0.0.1",
+	"description": "Node.js-based ubertool batch controller",
+	"dependencies": {
+		"socket.io": "~0.9.6",
+        "nimble": ">= 0.0.0"
+    }
+}

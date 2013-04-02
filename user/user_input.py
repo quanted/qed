@@ -19,6 +19,7 @@ from user import userdb
 
 class UserInputPage(webapp.RequestHandler):
     def get(self):
+        ubertool_batch_server = os.environ['UBERTOOL_BATCH_SERVER']
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'User'})
         html = html + template.render(templatepath + '02uberintroblock_nomodellinks.html', {'title2':'Update User Ubertool Configurations'})
@@ -27,7 +28,7 @@ class UserInputPage(webapp.RequestHandler):
         html = html + str(userdb.UserInp())
         html = html + template.render (templatepath + '04user_assessment_history.html', {})  
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render(templatepath + 'user_jquery.html', {})
+        html = html + template.render(templatepath + 'user_jquery.html', {'ubertool_server':ubertool_batch_server})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

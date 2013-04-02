@@ -65,6 +65,7 @@ class AquaticToxicityPropertiesRetrievalService(webapp.RequestHandler):
         q.filter('config_name =',aquatic_toxicity_config_name)
         aquatic = q.get()
         aquatic_dict = {}
+        aquatic_dict['config_name'] = aquatic.config_name
         aquatic_dict['acute_toxicity_target_concentration_for_freshwater_fish'] = aquatic.acute_toxicity_target_concentration_for_freshwater_fish
         aquatic_dict['chronic_toxicity_target_concentration_for_freshwater_fish'] = aquatic.chronic_toxicity_target_concentration_for_freshwater_fish
         aquatic_dict['acute_toxicity_target_concentration_for_freshwater_invertebrates'] = aquatic.acute_toxicity_target_concentration_for_freshwater_invertebrates

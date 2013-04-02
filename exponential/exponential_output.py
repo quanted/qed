@@ -87,7 +87,6 @@ class exponentialOutputPage(webapp.RequestHandler):
 
         html = html + template.render(templatepath + 'exponential-output-jqplot.html', {})
         html = html + template.render(templatepath + 'getpdf_jquery.html', {})
-        html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)
      

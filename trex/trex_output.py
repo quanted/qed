@@ -885,7 +885,6 @@ class TRexOutputPage(webapp.RequestHandler):
                                       sa_mamm_2(a_r_p, a_i, den, m_s_r_p, at_mamm, ld50_mamm, aw_mamm, tw_mamm),sc_mamm(a_r_p, a_i, den, NOAEC_mamm))
    
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

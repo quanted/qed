@@ -22,7 +22,7 @@ class beepopInputPage(webapp.RequestHandler):
                 'model_attributes':'BEEPOP Inputs'})
         html = html + str(beepopdb.beepopInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05pop_ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

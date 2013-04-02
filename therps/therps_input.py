@@ -28,10 +28,10 @@ class THerpsInputPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})        
         html = html + template.render(templatepath + '04uberinput_start.html', {
                 'model':'therps', 
-                'model_attributes':'T-HERPS Inputs'})
+                'model_attributes':'T-Herps Inputs'})
         html = html + str(therpsdb.therpsInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

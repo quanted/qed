@@ -110,7 +110,9 @@ class IecQaqcPage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', 'title')
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'iec','page':'qaqc'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {'model':'iec'})
+        html = html + template.render(templatepath + '04uberinput_start.html', {
+                'model':'iec',
+                'model_attributes':'IEC QAQC'})
         html = html + """
         <table border="1">
         <tr><H3>Model Validation Inputs</H3></tr><br>

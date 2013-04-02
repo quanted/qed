@@ -205,7 +205,6 @@ class beekhouryOutputPage(webapp.RequestHandler):
                           </table>"""%(hive(t, no, l, w, alpha, theta, mo, deltam)[0],hive(t, no, l, w, alpha, theta, mo, deltam)[1],hive(t, no, l, w, alpha, theta, mo, deltam)[2])        
         html = html + template.render(templatepath + 'beekhoury-output-jqplot.html', {})         
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
           
        

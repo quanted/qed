@@ -19,7 +19,7 @@ class lesliedrDescriptionPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})                       
         html = html + template.render(templatepath + '04ubertext_start.html', {
             'model_page':'',
-            'model_attributes':'Leslie Model with Logistic Dose Response Model Overview','text_paragraph':xx}) 
+            'model_attributes':'Leslie Model with Logistic Dose Response Overview','text_paragraph':xx}) 
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})

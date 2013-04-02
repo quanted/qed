@@ -35,11 +35,8 @@ class contactusOutputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_nomodellinks.html', {'model':''})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})
-        html = html + template.render(templatepath + '04uberoutput_start.html', {'model':''})
-        html = html +  """<table width="400" border="0">
-                            <tr><td><h3>Your message has been successfully submitted!</h3></td></tr>
-                          </table>"""       
-        html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
+        html = html + template.render(templatepath + '04ubercontact_start.html', {'model':''})
+        html = html + template.render(templatepath + '04ubercontact_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

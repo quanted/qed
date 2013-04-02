@@ -587,7 +587,6 @@ LOC_bgs_amp(ratio_bgs_amp(bgs_repamp_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface
 ratio_bgs_mam(bgs_mam_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),mam_derm_ld50(mam_acute_derm_ld50,test_mam_bw)),
 LOC_bgs_mam(ratio_bgs_mam(bgs_mam_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),mam_derm_ld50(mam_acute_derm_ld50,test_mam_bw)))  )
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

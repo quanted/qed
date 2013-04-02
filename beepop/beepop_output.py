@@ -382,7 +382,6 @@ class beepopOutputPage(webapp.RequestHandler):
                           </table>"""%(Et_f(winter_kill, kill_percent,swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[0],Et_f(winter_kill, kill_percent,swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[9],Et_f(winter_kill, kill_percent,swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[8],Et_f(winter_kill, kill_percent,swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[7])        
         html = html + template.render(templatepath + 'beepop-outputjqplot.html', {})         
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
           
        

@@ -29,7 +29,7 @@ class KabamInputPage(webapp.RequestHandler):
                 'model_attributes':'Kabam Inputs'})
         html = html + str(Kabamdb.KabamInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

@@ -432,7 +432,7 @@ class THerpsOutputPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                        
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'therps', 
-                'model_attributes':'T-HERPS Output'})
+                'model_attributes':'T-Herps Output'})
 
         html = html + """<table width="600" border="1">
                           <tr>
@@ -746,7 +746,6 @@ class THerpsOutputPage(webapp.RequestHandler):
         
 #        
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

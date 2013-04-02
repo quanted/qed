@@ -1,5 +1,8 @@
+
+<!DOCTYPE html>
 <!-- Ubertool Landing Page -->
-<html>
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">-->
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
   <title> &uuml;bertool </title>
@@ -21,27 +24,27 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
+<!-- Import jQuery library -->
+  <script src="/stylesheets/jquery-1.7.2.js" type="text/javascript"></script>
+<!-- import Javascripts -->
+  <script src="/stylesheets/scripts_landing.js" type="text/javascript"></script>  
 <!-- Browser FAVICON -->
-  <LINK REL="SHORTCUT ICON" HREF="http://www.ubertool.org/images/favicon/landing/favicon.ico" />
+  <LINK REL="SHORTCUT ICON" HREF="http://www.ubertool.org/images/favicon/landing/favicon.ico">
 </head>
   
 <body>
   <div id="container">
-    <div id="landing_uberlogo">
-      <img src="/images/logo.png" alt="&uuml;bertool" id="logo">
+	<div id="landing_uberlogo">
+		<img src="/images/logo.png" alt="&uuml;bertool" id="logo">
 	</div> <!-- Uberlogo -->
-	<div id="landing_links">  
-	  <div class="landing_links">
-	    <a href="/eco_index.html"><img src="/images/eco.png" alt="eco"></a>
-	  </div>
-	  <div class="landing_links">
-	    <a href="/hh_index.html"><img src="/images/hh.png" alt="hh"></a>
-	  </div>
-      <div class="landing_links">
-	    <a href="/pop_index.html"><img src="/images/pop2.png" alt="pop"></a>
-	  </div>
-	</div> <!-- Links -->
+	<div id="landing_links">
+		<ul>
+			<li><a href="/eco_index.html" id="eco"></a></li>
+			<li><a href="/hh_index.html" id="hh"></a></li>
+		</ul>
+	</div> <!-- Landing Links -->
   </div> <!-- Container -->
+
 </body>
   
 </html>

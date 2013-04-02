@@ -20,7 +20,7 @@ class THerpsReferencesPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '03ubertext_links_left.html', {})                        
         html = html + template.render(templatepath + '04uberreferences_start.html', {
                 'model':'therp', 
-                'model_attributes':'T-HERPS References', 
+                'model_attributes':'T-Herps References', 
                 'text_paragraph':x})
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})

@@ -20,7 +20,7 @@ class lesliedrReferencesPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '03pop_ubertext_links_left.html', {})                        
         html = html + template.render(templatepath + '04uberreferences_start.html', {
                 'model':'lesliedr', 
-                'model_attributes':'Leslie Model with Logistic Dose Response Model References', 
+                'model_attributes':'Leslie Model with Logistic Dose Response References', 
                 'text_paragraph':x})
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})

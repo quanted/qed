@@ -682,7 +682,6 @@ chron_bird(dose_bird(fw_bird(bw_bird),sol,bw_bird),det(noaec,fi_bird(bw_bird),bw
 acuconb(acute_bird(dose_bird(fw_bird(bw_bird),sol,bw_bird),at_bird(ld50,aw_bird,tw_bird,mineau))),             
 chronconb(chron_bird(dose_bird(fw_bird(bw_bird),sol,bw_bird),det(noaec,fi_bird(bw_bird),bw_bird))))             
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

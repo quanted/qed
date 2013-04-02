@@ -21,7 +21,7 @@ class inertsInputPage(webapp.RequestHandler):
                 'model_attributes':'Inerts Hazard Model Inputs'})
         html = html + str(inertsdb.inertsInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render(templatepath + '05hh_ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '05hh_ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06hh_uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

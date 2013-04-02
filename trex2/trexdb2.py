@@ -56,7 +56,10 @@ class trexAnimal(forms.Form):
     avian_NOAEC = forms.FloatField(required=True,label='Avian NOAEC (mg/kg-diet)', initial=50)
     avian_NOAEL = forms.FloatField(required=True, label='Avian NOAEL (mg/kg-bw)', initial=10)
    # Bird_type = forms.CharField(required=True, choices=_Bird_type, initial='Herbivores and insectivores')    
-    body_weight_of_the_assessed_bird = forms.FloatField(required=True,label='Body weight of assessed bird (g)',initial=20)
+    body_weight_of_the_assessed_bird_small = forms.FloatField(required=True,label='Body weight of assessed bird small (g)',initial=20)
+    body_weight_of_the_assessed_bird_medium = forms.FloatField(required=True,label='Body weight of assessed bird medium (g)',initial=100)
+    body_weight_of_the_assessed_bird_large = forms.FloatField(required=True,label='Body weight of assessed bird large (g)',initial=1000)
+
     Species_of_the_tested_bird = forms.ChoiceField(required=True,label='Species of the tested bird', choices=Species_of_the_tested_bird_CHOICES, initial='Bobwhite quail')
 
     def get_STB_choices(Species_of_the_tested_bird):
@@ -77,7 +80,10 @@ class trexAnimal(forms.Form):
     mammalian_NOAEC = forms.FloatField(required=True, label='Mammalian NOAEC (mg/kg-diet)', initial=30)
     mammalian_NOAEL = forms.FloatField(required=True, label='Mammalian NOAEL (mg/kg-bw)', initial=1.5)
   #  Mammal_type = forms.CharField(required=True, choices=_Mammal_type, initial='Herbivores and insectivores')         
-    body_weight_of_the_assessed_mammal = forms.FloatField(required=True,label='Body weight of assessed mammal (g)', initial=15)
+    body_weight_of_the_assessed_mammal_small = forms.FloatField(required=True,label='Body weight of assessed mammal small (g)', initial=15)
+    body_weight_of_the_assessed_mammal_medium = forms.FloatField(required=True,label='Body weight of assessed mammal medium (g)', initial=35)
+    body_weight_of_the_assessed_mammal_large = forms.FloatField(required=True,label='Body weight of assessed mammal large (g)', initial=1000)
+
     body_weight_of_the_tested_mammal = forms.FloatField(required=True,label='Body weight of tested mammal (g)', initial=350)    
     # mass_fraction_of_water_in_the_mammal_food = db.StringProperty(required=True,label='Mass fraction of water in the bird food', initial = 0.5)
     # mass_fraction_of_water_in_the_bird_food = db.StringProperty(required=True,label='Mass fraction of water in the mammal food',initial=0.5)

@@ -231,7 +231,7 @@ def EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day):
     a_p_temp = 0  #application period temp  
     n_a_temp = 0  #number of existing applications
     dayt = 0
-#trex1.5.1
+#new in trex1.5.1
     if n_a == 1:
         C_temp = C_0(a_r[0], a_i, para)
         return C_temp
@@ -432,7 +432,8 @@ def LD50_rl_bird(Application_type, a_r_l, a_i, p_i, b_w, aw_bird, at_bird, ld50_
 # LD50ft-2 for row/band/in-furrow granular mammals
 
 def LD50_rg_mamm(Application_type, a_r, a_i, p_i, r_s, b_w, aw_mamm, at_mamm, ld50_mamm, tw_mamm):
-    if Application_type=='Row/Band/In-furrow-Granular':    
+    if Application_type=='Row/Band/In-furrow-Granular':  
+       # a_r = max(rate_out)  
         at_mamm=at_mamm(ld50_mamm,aw_mamm,tw_mamm)
         n_r=(43560**0.5)/(r_s)
         expo_rg_mamm=(a_r*a_i*453590)/(n_r*(43560**0.5)*b_w)*(1-p_i)
@@ -535,8 +536,8 @@ def sa_mamm_2(a_r_p, a_i, den, m_s_r_p, at_mamm, ld50_mamm, aw_mamm, tw_mamm):
 def sc_mamm(a_r_p, a_i, den, NOAEC_mamm):
     m_s_a_r=((a_r_p*a_i)/128)*den*10000    #maximum seed application rate=application rate*10000
     return (m_s_a_r/NOAEC_mamm)          
+
     
- 
 class TRexOutputPage(webapp.RequestHandler):
     def post(self):        
         form = cgi.FieldStorage()   
@@ -558,8 +559,8 @@ class TRexOutputPage(webapp.RequestHandler):
         den = float(den)
         m_s_r_p = form.getvalue('maximum_seedling_rate_per_use')
         m_s_r_p = float(m_s_r_p)
-        # a_r_p = form.getvalue('application_rate_per_use')
-        # a_r_p = float(a_r_p)
+        #a_r_p = form.getvalue('application_rate_per_use')
+        #a_r_p = float(a_r_p)
         r_s = form.getvalue('row_sp') 
         r_s=float(r_s)
         b_w = form.getvalue('bandwidth')   #convert to ft
@@ -596,17 +597,17 @@ class TRexOutputPage(webapp.RequestHandler):
         print 'day', day_out
 
 
-        a_t = form.getvalue('Application_target')
-        if a_t=='Short grass':
-           para=240       #coefficient used to estimate initial conc.
-        elif a_t=='Tall grass':
-           para=110
-        elif a_t=='Broad-leafed plants/small insects':
-           para=135
-        elif a_t=='Fruits/pods/seeds/large insects':
-           para=15
-        elif a_t=='Arthropods': #new coefficient for Arthropods
-           para=94
+        # a_t = form.getvalue('Application_target')
+        # if a_t=='Short grass':
+        #    para=240       #coefficient used to estimate initial conc.
+        # elif a_t=='Tall grass':
+        #    para=110
+        # elif a_t=='Broad-leafed plants/small insects':
+        #    para=135
+        # elif a_t=='Fruits/pods/seeds/large insects':
+        #    para=15
+        # elif a_t=='Arthropods': #new coefficient for Arthropods
+        #    para=94
         # i_a = form.getvalue('interval_between_applications')
         
         if Application_type=='Seed Treatment':
@@ -614,6 +615,10 @@ class TRexOutputPage(webapp.RequestHandler):
         else:
            a_r_p=0
         print 'a_r_p', a_r_p
+        
+        a_r=rate_out[0]
+               
+
         h_l = form.getvalue('Foliar_dissipation_half_life')
         ld50_bird = form.getvalue('avian_ld50')
         lc50_bird = form.getvalue('avian_lc50')
@@ -623,8 +628,12 @@ class TRexOutputPage(webapp.RequestHandler):
         NOAEL_bird = float(NOAEL_bird)
         
 #        bird_type = form.getvalue('Bird_type')        
-        aw_bird = form.getvalue('body_weight_of_the_assessed_bird')
-        aw_bird = float(aw_bird)        
+        aw_bird_sm = form.getvalue('body_weight_of_the_assessed_bird_small')
+        aw_bird_sm = float(aw_bird)  
+        aw_bird_md = form.getvalue('body_weight_of_the_assessed_bird_medium')
+        aw_bird_md = float(aw_bird) 
+        aw_bird_lg = form.getvalue('body_weight_of_the_assessed_bird_large')
+        aw_bird_lg = float(aw_bird)       
         tw_bird = form.getvalue('body_weight_of_the_tested_bird')
         tw_bird = float(tw_bird)        
         x = form.getvalue('mineau_scaling_factor')
@@ -643,8 +652,12 @@ class TRexOutputPage(webapp.RequestHandler):
 #           mf_w_bird=0.8       #coefficient used to estimate initial conc.
 #        elif bird_type=='Granivores':
 #           mf_w_bird=0.1            
-        aw_mamm = form.getvalue('body_weight_of_the_assessed_mammal')
-        aw_mamm = float(aw_mamm)                
+        aw_mamm_sm = form.getvalue('body_weight_of_the_assessed_mammal_small')
+        aw_mamm_sm = float(aw_mamm)  
+        aw_mamm_md = form.getvalue('body_weight_of_the_assessed_mammal_medium')
+        aw_mamm_md = float(aw_mamm) 
+        aw_mamm_lg = form.getvalue('body_weight_of_the_assessed_mammal_large')
+        aw_mamm_lg = float(aw_mamm)               
         tw_mamm = form.getvalue('body_weight_of_the_tested_mammal')
         tw_mamm = float(tw_mamm) 
         
@@ -660,6 +673,22 @@ class TRexOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'trex2', 
                 'model_attributes':'T-Rex 1.5.1 Output'})
+
+
+
+        if Application_type != '5':
+            seed_1 = (chem_name, use, formu_name, 100*a_i, Application_type, 100*p_i, a_r, a_r_l, seed_treatment_formulation_name, den, m_s_r_p, a_r_p, 
+            r_s, b_w, n_a, a_t, i_a, h_l, ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird, tw_bird, x, ld50_mamm, 
+            lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm, tw_mamm)      
+            test_final = seed_1
+
+
+        else:
+            other_1 = (chem_name, use, formu_name, 100*a_i, Application_type, 100*p_i, seed_treatment_formulation_name, den, m_s_r_p, 
+            b_w, n_a, a_t, h_l, ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird, tw_bird, x, ld50_mamm, 
+            lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm, tw_mamm) 
+            test_final = other_1
+
         html = html + """<table width="600" border="1">
                           <tr>
                             <th scope="col">Inputs</div></th>
@@ -751,10 +780,9 @@ class TRexOutputPage(webapp.RequestHandler):
                           </tr>                                                              
                         </table>
                         <p>&nbsp;</p>                     
-                        """%(chem_name, use, formu_name, 100*a_i, Application_type, 100*p_i, seed_treatment_formulation_name, den, m_s_r_p, 
-                                b_w, n_a, a_t, h_l, ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird, tw_bird, x, ld50_mamm, 
-                               lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm, tw_mamm)                          
+                        """%(test_final)                        
         print EEC_diet(C_0, n_a, rate_out, a_i, para, h_l, day_out)
+       # print LD50_rg_mamm(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_mamm, at_mamm, ld50_mamm, tw_mamm):
         # html = html +  """<table width="600" border="1">
         #                   <tr>
         #                     <th scope="col">Outputs</div></th>

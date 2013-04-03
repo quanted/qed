@@ -1,5 +1,5 @@
 application: pypest
-version: sprint2
+version: chance
 runtime: python27
 api_version: 1
 
@@ -19,7 +19,7 @@ libraries:
   version: latest
 
 env_variables:
-  UBERTOOL_BATCH_SERVER: ''
+  UBERTOOL_BATCH_SERVER: 'http://www.chancedelphia.com:8887/'
  
 skip_files:
 - ^(.*/)?app\.yaml

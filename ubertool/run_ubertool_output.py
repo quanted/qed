@@ -75,6 +75,7 @@ def retrieveUseConfigFromForm(data, use_config_key):
     q.filter("config_name =", use_config_name)
     use = q.get()
     use_dict = usePropService.get(use_config_name)
+    logger.info(use_dict)
     return (use,use_dict)
 
 def retrievePestConfigFromForm(data, pest_config_key):

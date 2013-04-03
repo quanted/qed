@@ -19,11 +19,13 @@ exports.getBatchNames = function(callback)
   var completedBatchNames = {};
   db.collection('Batch', function(err,collection){
     collection.find({completed:{$exists:true}}).toArray(function(err,items) {
+      console.log("Getting Batch Names");
       for(var i=0; i < items.length; i++)
       {
         var item = items[i];
         completedBatchNames[item.batchId]=item.completed.toString();
       }
+      console.log(completedBatchNames);
       callback(null,completedBatchNames);
     });
   });
@@ -33,14 +35,8 @@ exports.getBatchResults = function(batch_id,callback)
 { 
   db.collection('Batch', function(err,collection){
     collection.findOne({batchId:batch_id},function(err,batch) {
+      console.log("getBatchResults");
       console.log(batch);
-      /**
-      var new_batch = {};
-      if('completed' )
-      new_batch.completed = batch.completed;
-      new_batch.ubertool_data = batch.ubertool_data;
-      new_batch.batchId = batch.batchId;
-      **/
       callback(null,batch);
     });
   });
@@ -78,19 +74,24 @@ exports.addEmptyUbertoolRun = function(config_name,batch_id)
       batch.ubertool_data = ubertool_data;
       collection.save(batch);
     });
-  });
+    collection.findOne({batchId:batch_id},function(err, batch) {
+      console.log("Looking at updated ubertool run");
+      console.log(batch);
+    });
+  }); 
 }
 
-exports.updateUbertoolRun = function(config_name,batch_id,data)
+exports.updateUbertoolRun = function(config_name,batch_id,data,callback)
 {
-
   db.collection('Batch', function(err,collection){
     collection.findOne({batchId:batch_id}, function(err, batch) {
+      console.log("Finding One batch for update.");
+      console.log(batch);
       var isCompleted = true;
       var ubertool_data = batch.ubertool_data;
       for(var ubertool_run in ubertool_data)
       {
-        var tempIsCompleted = updateUbertoolRun(collection,batch,ubertool_data[ubertool_run],config_name,data)
+        var tempIsCompleted = updateCompletedUbertoolRun(collection,batch,ubertool_data[ubertool_run],config_name,data)
         isCompleted = isCompleted ? tempIsCompleted: isCompleted;
       }
       if(isCompleted)
@@ -100,11 +101,12 @@ exports.updateUbertoolRun = function(config_name,batch_id,data)
         batch.completed = createdTimestamp;
       }
       collection.save(batch);
+      callback(batch);
     });
   });
 }
 
-function updateUbertoolRun(collection,batch,ubertool_run,config_name,data )
+function updateCompletedUbertoolRun(collection,batch,ubertool_run,config_name,data )
 {
   var isCompleted = true;
   var ubertool_run_config_name = ubertool_run.config_name;

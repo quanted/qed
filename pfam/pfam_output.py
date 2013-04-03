@@ -508,8 +508,6 @@ class PFAMOutputPage(webapp.RequestHandler):
         """
 
         html = html + template.render(templatepath + 'getpdf_jquery.html', {})
-
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

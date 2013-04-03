@@ -35,9 +35,14 @@ exports.getBatchResults = function(batch_id,callback)
 { 
   db.collection('Batch', function(err,collection){
     collection.findOne({batchId:batch_id},function(err,batch) {
-      console.log("getBatchResults");
       console.log(batch);
-      // var new_batch = {};
+      /**
+      var new_batch = {};
+      if('completed' )
+      new_batch.completed = batch.completed;
+      new_batch.ubertool_data = batch.ubertool_data;
+      new_batch.batchId = batch.batchId;
+      **/
       callback(null,batch);
     });
   });

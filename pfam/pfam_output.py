@@ -481,20 +481,10 @@ class PFAMOutputPage(webapp.RequestHandler):
 
         html = html +"""
         <div id="date_range_slider_1"></div>
-        <div>
-            <div style="float:left">Display interval:</div>
-            <div style="float:left"><select id="display_interval_1">
-                                        <option value="1 month">1 month</option>
-                                        <option value="3 month" selected>3 month</option>
-                                        <option value="6 month">6 month</option>
-                                        <option value="1 year">1 year</option>
-                                    </select>
-            </div>
-        </div>
         <div><button type="button" id="calc1">Generate</button></div>
-        <div id="chart1" style="margin-top:20px; margin-left:20px; width:650px; height:400px;"></div>
-        <div id="chart2" style="margin-top:20px; margin-left:20px; width:650px; height:400px;"></div>
-        <div id="chart3" style="margin-top:20px; margin-left:20px; width:650px; height:400px;"></div>        
+        <div id="chart1" style="margin-top:20px; margin-left:90px; width:650px; height:400px;"></div>
+        <div id="chart2" style="margin-top:20px; margin-left:90px; width:650px; height:400px;"></div>
+        <div id="chart3" style="margin-top:20px; margin-left:90px; width:650px; height:400px;"></div>        
         """
 
         html = html + template.render(templatepath + 'pfam-output.html', {})                                 

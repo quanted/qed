@@ -1,6 +1,6 @@
 <script>
 $(document).ready(function () {
-var jq_html = $('<div />').append($("div.articles").children('table[class*=out_]:not(div#chart1,table:hidden)').clone()).html();
+var jq_html = $('<div />').append($("div.articles_output").children('table[class*=out_]:not(div#chart1,table:hidden)').clone()).html();
 var n_plot=$('div[id^="chart"]').size()
 
 i=1;
@@ -11,9 +11,11 @@ while(i <= n_plot){
 }
 imgData_json = JSON.stringify(imgData)
 
-// var imgData = $('#chart'+1).jqplotToImageStr({})
-console.log(jq_html)
-console.log(n_plot)
+// var jq_html = ($("div.articles_output").clone()).html();
+
+
+// console.log(jq_html)
+// console.log(n_plot)
 
 
 $('<tr style="display:none"><td><input type="hidden" name="pdf_t"></td></tr>')

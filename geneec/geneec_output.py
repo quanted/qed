@@ -317,7 +317,6 @@ class GENEECOutputPage(webapp.RequestHandler):
 #     });
  
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

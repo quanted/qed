@@ -1,9 +1,5 @@
 application: pypest
-<<<<<<< HEAD
-version: jon
-=======
 version: sprint2
->>>>>>> Fixing some issues with prior merge
 runtime: python27
 api_version: 1
 

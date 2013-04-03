@@ -50,8 +50,8 @@ class IecOutputPage(webapp.RequestHandler):
         html = html + """
         <table width="600" border="1" class="out_1">
           <tr>
-            <th width="300" scope="col">User Inputs</div></th>
-            <th width="300" scope="col">Values</div></th>
+            <th width="300" scope="col">User Inputs</th>
+            <th width="300" scope="col">Values</th>
           </tr>
           <tr>
             <td>LC50 or LD50</td>
@@ -71,13 +71,13 @@ class IecOutputPage(webapp.RequestHandler):
         html = html + """
         <table width="600" border="1" class="out_2">
           <tr>
-            <th width="300" scope="col">IEC Outputs</div></th>
-            <th width="300" scope="col">Values</div></th>
+            <th width="300" scope="col">IEC Outputs</th>
+            <th width="300" scope="col">Values</th>
           </tr>
+          <tr>
             <td>Z Score</td>
             <td>%.2f</td>
           </tr>           
-          <tr>
           <tr>
             <td>"F8"</td>
             <td>%.8f</td>

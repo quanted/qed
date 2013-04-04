@@ -1,3 +1,4 @@
+var flow = require('nimble');
 var http = require('http');
 var amqp = require('amqp');
 var URL = require('url');
@@ -10,27 +11,28 @@ var mongodb = require('./mongodb.js');
 var port = process.env.VCAP_APP_PORT || 3000;
 
 function setup() {
-  console.log("Node.js connected to RabbitMQ!");
-  exchange = conn.exchange('UbertoolBatchSubmissionExchange',options={type:'topic',durable:true});
+    console.log("Node.js connected to RabbitMQ!");
+    exchange = conn.exchange('UbertoolBatchSubmissionExchange',options={type:'topic',durable:true});
 }
 
 exports.submitUbertoolBatchRequest = function (msg)
 {
-  var ubertools = msg['ubertools'];
-  var batchId = msg['id'];
-  console.log("SubmitUbertoolBatchRequest");
-  console.log(msg);
-  mongodb.createNewBatch(batchId,ubertools);
-  var results = [];
-  for(var index = 0; index < ubertools.length; index++)
-  {
-    console.log("Ubertools index: " + index);
-    var ubertoolRunData = ubertools[index];
-    ubertoolRunData['batchId'] = batchId;
-    var config_name = ubertoolRunData['config_name'];
-    mongodb.addEmptyUbertoolRun(config_name,batchId);
-    exchange.publish('UbertoolBatchSubmissionQueue',{message:JSON.stringify(ubertools[index])});
-  }
+    var ubertools = msg['ubertools'];
+    var batchId = msg['id'];
+    console.log("SubmitUbertoolBatchRequest");
+    console.log(msg);
+    mongodb.createNewBatch(batchId,ubertools, function(batchId,ubertools){
+        for(var index = 0; index < ubertools.length; index++)
+        {
+            console.log("Ubertools index: " + index);
+            var ubertoolRunData = ubertools[index];
+            ubertoolRunData['batchId'] = batchId;
+            var config_name = ubertoolRunData['config_name'];
+            mongodb.addEmptyUbertoolRun(config_name,batchId,ubertoolRunData,function(ubertoolRunData){ 
+                exchange.publish('UbertoolBatchSubmissionQueue',{message:JSON.stringify(ubertoolRunData)});
+            });
+        }
+    });
 }
 
 

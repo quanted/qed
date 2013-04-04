@@ -2,6 +2,7 @@
 <script type="text/javascript" src=" ../stylesheets/jquery.validate.js"></script>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <link type="text/css" rel="stylesheet" href="../stylesheets/jquery.qtip.css" />
 <script type="text/javascript" src="../stylesheets/jquery.qtip.js"></script>
 =======
@@ -16,11 +17,16 @@
 <script type="text/javascript" src="../stylesheets/jquery.qtip.js"></script>
 >>>>>>> origin/tao
 >>>>>>> origin/master
+=======
+<link type="text/css" rel="stylesheet" href="../stylesheets/jquery.qtip.css" />
+<script type="text/javascript" src="../stylesheets/jquery.qtip.js"></script>
+>>>>>>> origin/master
 
 <script>
 $(document).ready(function() {
 	
     var tab_pool = ["tab_Chemical", "tab_Application", "tab_Location", "tab_Floods", "tab_Crop", "tab_Physical", "tab_Output"];
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     var uptab_pool = ["Chemical", "Application", "Location", "Floods", "Crop", "Physical", "Output"];
@@ -30,6 +36,9 @@ $(document).ready(function() {
 =======
     var uptab_pool = ["Chemical", "Application", "Location", "Floods", "Crop", "Physical", "Output"];
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
+    var uptab_pool = ["Chemical", "Application", "Location", "Floods", "Crop", "Physical", "Output"];
 >>>>>>> origin/master
     var visible = $(".tab:visible").attr('class').split(" ")[1];
     var curr_ind = $.inArray(visible, tab_pool);
@@ -77,6 +86,7 @@ $(document).ready(function() {
     function mmCheck(value) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         var mmValue = Number(value);
 =======
         var mmValue = value;
@@ -87,12 +97,16 @@ $(document).ready(function() {
         var mmValue = Number(value);
 >>>>>>> origin/tao
 >>>>>>> origin/master
+=======
+        var mmValue = Number(value);
+>>>>>>> origin/master
         if (mmValue < 1 || mmValue > 12) 
 			return false;
         return true;
     }
 
     function ddCheck(value, element) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         var mmValue1 = Number($(element).parent().prev('td').children('input').val());
@@ -112,6 +126,11 @@ $(document).ready(function() {
 		//console.log(mmValue1);
         var ddValue1 = Number(value);
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
+        var mmValue1 = Number($(element).parent().prev('td').children('input').val());
+		//console.log(mmValue1);
+        var ddValue1 = Number(value);
 >>>>>>> origin/master
 		//console.log(value);
         if (ddValue1 < 1 || ddValue1 > 31) 
@@ -126,6 +145,7 @@ $(document).ready(function() {
     function wlflCheck(value, element) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         var flValue1 = Number($(element).parent().prev('td').children('input').val());
 		//console.log(flValue1);
         var wlValue1 = Number(value);
@@ -144,6 +164,11 @@ $(document).ready(function() {
         var wlValue1 = Number(value);
 >>>>>>> origin/tao
 >>>>>>> origin/master
+=======
+        var flValue1 = Number($(element).parent().prev('td').children('input').val());
+		//console.log(flValue1);
+        var wlValue1 = Number(value);
+>>>>>>> origin/master
 		//console.log(wlValue1);
         if (flValue1 >wlValue1) 
 			return false;
@@ -151,6 +176,7 @@ $(document).ready(function() {
     }
 
     function mlflCheck(value, element) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         var flValue1 = Number($(element).parent().prev('td').prev('td').children('input').val());
@@ -170,6 +196,11 @@ $(document).ready(function() {
 		//console.log(flValue1);
         var mlValue1 = Number(value);
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
+        var flValue1 = Number($(element).parent().prev('td').prev('td').children('input').val());
+		//console.log(flValue1);
+        var mlValue1 = Number(value);
 >>>>>>> origin/master
 		//console.log(mlValue1);
         if (mlValue1 >flValue1) 
@@ -184,6 +215,7 @@ $(document).ready(function() {
 		},
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		"Wrong numeric format"
 =======
 		"Please use the right numeric format"
@@ -193,6 +225,9 @@ $(document).ready(function() {
 =======
 		"Wrong numeric format"
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
+		"Wrong numeric format"
 >>>>>>> origin/master
 	);
 	
@@ -203,6 +238,7 @@ $(document).ready(function() {
 		},
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		"Date format MM/DD"
 =======
 		"Please enter a date in the format MM/DD"
@@ -212,6 +248,9 @@ $(document).ready(function() {
 =======
 		"Date format MM/DD"
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
+		"Date format MM/DD"
 >>>>>>> origin/master
 	);
 
@@ -222,6 +261,7 @@ $(document).ready(function() {
     },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         "Wrong month");
 =======
         "Please enter a right month");
@@ -231,6 +271,9 @@ $(document).ready(function() {
 =======
         "Wrong month");
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
+        "Wrong month");
 >>>>>>> origin/master
 
     $.validator.addMethod(
@@ -240,6 +283,7 @@ $(document).ready(function() {
     },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         "Wrong day");
 
 	$.validator.addMethod("integer", function(value, element) {
@@ -259,12 +303,17 @@ $(document).ready(function() {
 		return this.optional(element) || /^-?\d+$/.test(value);
 	}, "A positive or negative non-decimal number please");
 =======
+=======
+>>>>>>> origin/master
         "Wrong day");
 
 	$.validator.addMethod("integer", function(value, element) {
 		return this.optional(element) || /^-?\d+$/.test(value);
 	}, "Positive integer");
+<<<<<<< HEAD
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 
     $.validator.addMethod(
@@ -274,6 +323,7 @@ $(document).ready(function() {
     },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         "Should greater than Fill Level");
 =======
         "Wier Level should be greater than Fill Level");
@@ -284,6 +334,9 @@ $(document).ready(function() {
         "Should greater than Fill Level");
 >>>>>>> origin/tao
 >>>>>>> origin/master
+=======
+        "Should greater than Fill Level");
+>>>>>>> origin/master
 
     $.validator.addMethod(
         "mlflCheck",
@@ -292,10 +345,13 @@ $(document).ready(function() {
     },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         "Min. Level should be less or equal than Fill Level");
 										
     var validator = $('form').validate({
+=======
+>>>>>>> origin/master
 =======
 >>>>>>> origin/master
         "Should no more than Fill Level");
@@ -331,6 +387,7 @@ $(document).ready(function() {
         errorElement: "div",
         wrapper: "div",  // a wrapper around the error message
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         "Min. Level should be less or equal than Fill Level");
 										
@@ -339,11 +396,14 @@ $(document).ready(function() {
 =======
 >>>>>>> origin/tao
 >>>>>>> origin/master
+=======
+>>>>>>> origin/master
         ignore: 'input[type="button"],input[type="submit"]',
         rules: {
 			//Chemical tab//
             wat_hl: {
                 required: true,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 				sciFormat: true,
@@ -357,6 +417,10 @@ $(document).ready(function() {
 				sciFormat: true,
                 positiveNumber: true
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
+				sciFormat: true,
+                positiveNumber: true
 >>>>>>> origin/master
             },
             wat_t: {
@@ -367,6 +431,7 @@ $(document).ready(function() {
                 required : true,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				sciFormat: true,
                 positiveNumber: true
 =======
@@ -378,6 +443,10 @@ $(document).ready(function() {
 				sciFormat: true,
                 positiveNumber: true
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
+				sciFormat: true,
+                positiveNumber: true
 >>>>>>> origin/master
             },			
             ben_t: {
@@ -388,6 +457,7 @@ $(document).ready(function() {
                 required : true,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				sciFormat: true,
                 positiveNumber: true
 =======
@@ -399,6 +469,10 @@ $(document).ready(function() {
 				sciFormat: true,
                 positiveNumber: true
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
+				sciFormat: true,
+                positiveNumber: true
 >>>>>>> origin/master
             },			
             unf_t: {
@@ -409,6 +483,7 @@ $(document).ready(function() {
                 required : true,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				sciFormat: true,
                 positiveNumber: true
 =======
@@ -421,6 +496,10 @@ $(document).ready(function() {
                 positiveNumber: true
 >>>>>>> origin/tao
 >>>>>>> origin/master
+=======
+				sciFormat: true,
+                positiveNumber: true
+>>>>>>> origin/master
             },			
             aqu_t: {
                 required : true,
@@ -428,6 +507,7 @@ $(document).ready(function() {
             },			
             hyd_hl: {
                 required : true,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 				sciFormat: true,
@@ -503,6 +583,8 @@ $(document).ready(function() {
                 required : true,
 				sciFormat: true
 =======
+=======
+>>>>>>> origin/master
 				sciFormat: true,
                 positiveNumber: true
             },			
@@ -530,7 +612,10 @@ $(document).ready(function() {
                 required : true,
 				sciFormat: true,
                 min: 0
+<<<<<<< HEAD
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
             },				
             hea_r_t: {
@@ -545,6 +630,7 @@ $(document).ready(function() {
             weather: {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 required : true
             },			
             wea_l: {
@@ -640,6 +726,8 @@ $(document).ready(function() {
                 required : true,
 				sciFormat:true
 =======
+=======
+>>>>>>> origin/master
                 required : true
             },			
             wea_l: {
@@ -673,7 +761,10 @@ $(document).ready(function() {
                 required : true,
 				sciFormat: true,
                 range: [0, 1]
+<<<<<<< HEAD
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
             },
 			///Physical////
@@ -681,6 +772,7 @@ $(document).ready(function() {
                 required : true,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				sciFormat: true,
                 min: 0
             },
@@ -860,6 +952,8 @@ $(document).ready(function() {
 			
 					
 =======
+=======
+>>>>>>> origin/master
 				sciFormat: true,
                 min: 0
             },
@@ -929,7 +1023,10 @@ $(document).ready(function() {
                 sciFormat: true,
                 positiveNumber: true
             } 		
+<<<<<<< HEAD
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 		}
     });
@@ -939,6 +1036,7 @@ $(document).ready(function() {
         var tab = $(".tab:visible");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         //console.log(curr_ind)
 =======
 >>>>>>> PPFAM jQuery page
@@ -946,6 +1044,9 @@ $(document).ready(function() {
 =======
         //console.log(curr_ind)
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
+        //console.log(curr_ind)
 >>>>>>> origin/master
         var valid = true;
         $('input,select', tab).each(function(i, v){
@@ -960,6 +1061,7 @@ $(document).ready(function() {
             $(".tab:visible").hide();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
             curr_ind = curr_ind + 1;
             $("." + tab_pool[curr_ind]).show();
@@ -972,11 +1074,16 @@ $(document).ready(function() {
             curr_ind = curr_ind + 1;
             $("." + tab_pool[curr_ind]).show();
 =======
+=======
+>>>>>>> origin/master
             $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
             curr_ind = curr_ind + 1;
             $("." + tab_pool[curr_ind]).show();
             $("." + uptab_pool[curr_ind]).css({ 'color': '#FFA500'}); //highlight current tabs
+<<<<<<< HEAD
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
             $(".tab_noa1").show();
             $(".submit").hide();
@@ -987,6 +1094,7 @@ $(document).ready(function() {
             $(".tab:visible").hide();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
             curr_ind = curr_ind + 1;
             $("." + tab_pool[curr_ind]).show();
@@ -999,11 +1107,16 @@ $(document).ready(function() {
             curr_ind = curr_ind + 1;
             $("." + tab_pool[curr_ind]).show();
 =======
+=======
+>>>>>>> origin/master
             $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
             curr_ind = curr_ind + 1;
             $("." + tab_pool[curr_ind]).show();
             $("." + uptab_pool[curr_ind]).css({ 'color': '#FFA500'}); //highlight current tabs
+<<<<<<< HEAD
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
             $(".submit").hide();
             $(".back").show();
@@ -1022,6 +1135,7 @@ $(document).ready(function() {
             $(".tab:visible").hide();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
             curr_ind = curr_ind - 1;
             $("." + tab_pool[curr_ind]).show();
@@ -1034,11 +1148,16 @@ $(document).ready(function() {
             curr_ind = curr_ind - 1;
             $("." + tab_pool[curr_ind]).show();
 =======
+=======
+>>>>>>> origin/master
             $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
             curr_ind = curr_ind - 1;
             $("." + tab_pool[curr_ind]).show();
             $("." + uptab_pool[curr_ind]).css({ 'color': '#FFA500'}); //highlight current tabs            
+<<<<<<< HEAD
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
             $(".tab_noa1").show();
             $(".submit").hide();
@@ -1049,6 +1168,7 @@ $(document).ready(function() {
             $(".tab:visible").hide();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
             curr_ind = curr_ind - 1;
             $("." + tab_pool[curr_ind]).show();
@@ -1061,11 +1181,16 @@ $(document).ready(function() {
             curr_ind = curr_ind - 1;
             $("." + tab_pool[curr_ind]).show();
 =======
+=======
+>>>>>>> origin/master
             $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
             curr_ind = curr_ind - 1;
             $("." + tab_pool[curr_ind]).show();
             $("." + uptab_pool[curr_ind]).css({ 'color': '#FFA500'}); //highlight current tabs            
+<<<<<<< HEAD
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
             $(".submit").hide();
             $(".next").show();
@@ -1086,6 +1211,7 @@ $(document).ready(function() {
         while (i <= total) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             $('.tab_Application').append('<tr class="tab_noa1"><td><input name="jm' + i + '" type="text" size="5" value="' + i + '" disabled/></td><td><input type="text" size="5" name="mm' + i + '" id="id_mm' + i + '"/></td><td><input type="text" size="5" name="dd' + i + '" id="id_dd' + i + '"/></td><td><input type="text" size="5" name="ma' + i + '" id="id_ma' + i + '"/></td><td><input type="text" size="5" name="sr' + i + '" id="id_sr' + i + '" value="0"/></td></tr>');
 =======
             $('.tab_Application').append('<tr class="tab_noa1"><td><input name="jm' + i + '" type="text" size="5" value="' + i + '"/></td><td><input type="text" size="5" name="mm' + i + '" id="id_mm' + i + '"/></td><td><input type="text" size="5" name="dd' + i + '" id="id_dd' + i + '"/></td><td><input type="text" size="5" name="ma' + i + '" id="id_ma' + i + '"/></td><td><input type="text" size="5" name="sr' + i + '" id="id_sr' + i + '" value="0"/></td></tr>');
@@ -1095,6 +1221,9 @@ $(document).ready(function() {
 =======
             $('.tab_Application').append('<tr class="tab_noa1"><td><input name="jm' + i + '" type="text" size="5" value="' + i + '" disabled/></td><td><input type="text" size="5" name="mm' + i + '" id="id_mm' + i + '"/></td><td><input type="text" size="5" name="dd' + i + '" id="id_dd' + i + '"/></td><td><input type="text" size="5" name="ma' + i + '" id="id_ma' + i + '"/></td><td><input type="text" size="5" name="sr' + i + '" id="id_sr' + i + '" value="0"/></td></tr>');
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
+            $('.tab_Application').append('<tr class="tab_noa1"><td><input name="jm' + i + '" type="text" size="5" value="' + i + '" disabled/></td><td><input type="text" size="5" name="mm' + i + '" id="id_mm' + i + '"/></td><td><input type="text" size="5" name="dd' + i + '" id="id_dd' + i + '"/></td><td><input type="text" size="5" name="ma' + i + '" id="id_ma' + i + '"/></td><td><input type="text" size="5" name="sr' + i + '" id="id_sr' + i + '" value="0"/></td></tr>');
 >>>>>>> origin/master
             i = i + 1;
         }
@@ -1127,6 +1256,7 @@ $(document).ready(function() {
             required : true,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 			sciFormat: true,
             min: 0
 =======
@@ -1139,12 +1269,17 @@ $(document).ready(function() {
             min: 0
 >>>>>>> origin/tao
 >>>>>>> origin/master
+=======
+			sciFormat: true,
+            min: 0
+>>>>>>> origin/master
         });
     });
 
     $('[name*="sr"]').each(function () {
         $(this).rules('add', {
             required : true,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
             sciFormat: true,
@@ -1158,6 +1293,10 @@ $(document).ready(function() {
             sciFormat: true,
             min: 0
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
+            sciFormat: true,
+            min: 0
 >>>>>>> origin/master
 		});
 
@@ -1193,6 +1332,7 @@ $(document).ready(function() {
             required : true,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 			integer: true,
             min: 0,
             mtp : true
@@ -1207,12 +1347,18 @@ $(document).ready(function() {
             mtp : true
 >>>>>>> origin/tao
 >>>>>>> origin/master
+=======
+			integer: true,
+            min: 0,
+            mtp : true
+>>>>>>> origin/master
         });
     });
 
 		$('[name*="fl"]').each(function () {
         $(this).rules('add', {
             required : true,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 			sciFormat: true,
@@ -1226,6 +1372,10 @@ $(document).ready(function() {
 			sciFormat: true,
             min: 0
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
+			sciFormat: true,
+            min: 0
 >>>>>>> origin/master
         });
     });
@@ -1236,6 +1386,7 @@ $(document).ready(function() {
 			sciFormat: true,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             min: 0,
 =======
 >>>>>>> PPFAM jQuery page
@@ -1243,6 +1394,9 @@ $(document).ready(function() {
 =======
             min: 0,
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
+            min: 0,
 >>>>>>> origin/master
 			wlflCheck: true			
         });
@@ -1254,6 +1408,7 @@ $(document).ready(function() {
 			sciFormat: true,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             min: 0,
 			mlflCheck: true
 =======
@@ -1266,12 +1421,17 @@ $(document).ready(function() {
 			mlflCheck: true
 >>>>>>> origin/tao
 >>>>>>> origin/master
+=======
+            min: 0,
+			mlflCheck: true
+>>>>>>> origin/master
         });
     });
 
 		$('[name*="to"]').each(function () {
         $(this).rules('add', {
             required : true,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 			sciFormat: true,
@@ -1296,18 +1456,24 @@ $(document).ready(function() {
 >>>>>>> PPFAM jQuery page
 =======
 =======
+=======
+>>>>>>> origin/master
 			sciFormat: true,
             min: 0
         });
     });
     });
     });
+<<<<<<< HEAD
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 
 
 </script>
 <style>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 .error{
@@ -1335,6 +1501,11 @@ table.tab_nof th {
     border-color: #F78181;
     color:red;
 >>>>>>> origin/tao
+>>>>>>> origin/master
+=======
+.error{
+    border-color: #F78181;
+    color:red;
 >>>>>>> origin/master
 }
 </style>

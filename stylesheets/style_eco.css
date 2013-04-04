@@ -1096,14 +1096,10 @@ ul.nobullet {
   z-index: 999;
 }
 #export_menu ul li{
-  display: block;
+  display: inline;
   list-style: none;
   padding: 0;
   margin: 0;
-}
-#export_menu ul li img {
-  margin: 0;
-  padding: 0;
 }
 #fadeExport_pdf {
   display: inline-block;

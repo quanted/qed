@@ -48,10 +48,10 @@ class IecOutputPage(webapp.RequestHandler):
                 'model':'iec', 
                 'model_attributes':'IEC Output'})
         html = html + """
-        <table width="600" border="1" class="out_1">
+        <table width="400" border="1" class="out_1">
           <tr>
-            <th width="300" scope="col">User Inputs</th>
-            <th width="300" scope="col">Values</th>
+            <th width="200" scope="col">User Inputs</th>
+            <th width="200" scope="col">Values</th>
           </tr>
           <tr>
             <td>LC50 or LD50</td>
@@ -69,10 +69,10 @@ class IecOutputPage(webapp.RequestHandler):
         <p>&nbsp;</p>                     
         """%(LC50, threshold, dose_response)                   
         html = html + """
-        <table width="600" border="1" class="out_2">
+        <table width="400" border="1" class="out_2">
           <tr>
-            <th width="300" scope="col">IEC Outputs</th>
-            <th width="300" scope="col">Values</th>
+            <th width="200" scope="col">IEC Outputs</th>
+            <th width="200" scope="col">Values</th>
           </tr>
           <tr>
             <td>Z Score</td>
@@ -88,15 +88,8 @@ class IecOutputPage(webapp.RequestHandler):
           </tr>          
         </table>
         """%(z_score_f(dose_response, LC50, threshold), F8_f(dose_response, LC50, threshold),chance_f(dose_response, LC50, threshold))
+        html = html + template.render(templatepath + 'getpdf_jon.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + """
-          <form method="post" target="_blank" action=pdf.html>
-            <table align="center" class="getpdf">
-            </table>
-          </form>
-        """
-
-        html = html + template.render(templatepath + 'getpdf_jquery.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

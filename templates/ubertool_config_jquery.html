@@ -38,45 +38,9 @@ function submitBatchConfigurations()
 		});
 	}
 	window.location = "user.html";
-	/**
-	if(batch_config_name != null)
-	{
-		insertUbertoolResultsTable(batch_config_name);
-	}
-	**/
+
 }
 
-function insertUbertoolResultsTable(batch_configuration)
-{
-	$.ajax({
-		url:"{{ ubertool_server }}/batch_results/"+batch_configuration,
-		async: false,
-		type: 'GET',
-		success: function(batch_data) {
-			var batch_completed = batch_data['completed'];
-			var batchTableInnerHTML = "<table><tbody>";
-			batchTableInnerHTML += "<tr><th><label>Batch Id:</label></th><td>"+batch_configuration+"</td></tr>";
-			batchTableInnerHTML += "<tr><th><label>Completed:</label></th><td>"+batch_completed+"</td></tr>";
-			if("ubertool_data" in batch_data)
-			{
-				var ubertools_data = batch_data['ubertool_data'];
-				for(var ubertool_data_key in ubertools_data)
-				{
-					var ubertool_data = ubertools_data[ubertool_data_key];
-					batchTableInnerHTML += "<tr><th><label>Ubertool Run Configuration Name:</label></th><td>"+ubertool_data_key+"</td></tr>";
-					for(var ubertool_run_key in ubertool_data)
-					{
-						batchTableInnerHTML += "<tr><th><label>" + ubertool_run_key + "</label></th><td>"+ubertool_data[ubertool_run_key]+"</td></tr>";								
-					}
-				}
-			}
-			batchTableInnerHTML += "</tbody></table>";
-			$("#id_batch_results_table")[0].innerHTML = batchTableInnerHTML;
-			$("#id_batch_results_table").css({"visibility":"visible","height":"auto"});
-		}
-	});
-	window.location = "http://www.ubertool.org/user.html";
-}
 function endsInInteger(str)
 {
 	var lastChar = str.charCodeAt(str.length-1);

@@ -536,152 +536,173 @@ class SIPExecutePage(webapp.RequestHandler):
                 'model':'sip', 
                 'model_attributes':'SIP Output'})   
         html = html + """
-        <table border="1">
-        <tr><H3>User Inputs</H3></tr>
+        <table border="1" class="out_1">
         <tr>
-        <td>Chemical Name</td>
-        <td>%s</td>
+            <th>User Inputs</th>
+            <th>Values</th>
+            <th>Units</th>
         </tr>
         <tr>
-        <td>Receptor Selected</td>
-        <td>%s</td>
+            <td>Chemical Name</td>
+            <td>%s</td>
+            <td></td>
         </tr>
         <tr>
-        <td>Body Weight of Bird</td>
-        <td>%s</td>
-        <td>kg</td>
+            <td>Receptor Selected</td>
+            <td>%s</td>
+            <td></td>
         </tr>
         <tr>
-        <td>Body Weight of Mammal</td>
-        <td>%s</td>
-        <td>kg</td>
+            <td>Body Weight of Bird</td>
+            <td>%s</td>
+            <td>kg</td>
         </tr>
         <tr>
-        <td>Solubility</td>
-        <td>%s</td>
-        <td>mg/L</td>
+            <td>Body Weight of Mammal</td>
+            <td>%s</td>
+            <td>kg</td>
         </tr>
         <tr>
-        <td>LD<sub>50</sub></td>
-        <td>%s</td>
-        <td>mg/kg</td>
+            <td>Solubility</td>
+            <td>%s</td>
+            <td>mg/L</td>
         </tr>
         <tr>
-        <td>Body Weight of Assessed Bird</td>
-        <td>%s</td>
-        <td>kg</td>
+            <td>LD<sub>50</sub></td>
+            <td>%s</td>
+            <td>mg/kg</td>
         </tr>
         <tr>
-        <td>Body Weight of Tested Bird</td>
-        <td>%s</td>
-        <td>kg</td>
+            <td>Body Weight of Assessed Bird</td>
+            <td>%s</td>
+            <td>kg</td>
         </tr>
         <tr>
-        <td>Body Weight of Assessed Mammal</td>
-        <td>%s</td>
-        <td>kg</td>
+            <td>Body Weight of Tested Bird</td>
+            <td>%s</td>
+            <td>kg</td>
         </tr>
         <tr>
-        <td>Body Weight of Tested Mammal</td>
-        <td>%s</td>
-        <td>kg</td>
+            <td>Body Weight of Assessed Mammal</td>
+            <td>%s</td>
+            <td>kg</td>
         </tr>
         <tr>
-        <td>Mineau Scaling Factor</td>
-        <td>%s</td>
+            <td>Body Weight of Tested Mammal</td>
+            <td>%s</td>
+            <td>kg</td>
         </tr>
         <tr>
-        <td>NOAEC</td>
-        <td>%s</td>
-        <td>mg/kg</td>
+            <td>Mineau Scaling Factor</td>
+            <td>%s</td>
+            <td></td>
         </tr>
         <tr>
-        <td>NOAEL</td>
-        <td>%s</td>
-        <td>mg/kg</td>
+            <td>NOAEC</td>
+            <td>%s</td>
+            <td>mg/kg</td>
+        </tr>
+        <tr>
+            <td>NOAEL</td>
+            <td>%s</td>
+            <td>mg/kg</td>
         </tr>
         </table>
-		<br><br>
+		<br>
         """ % (chemical_name, select_receptor, bw_bird, bw_mamm, sol, ld50, aw_bird, tw_bird, aw_mamm, tw_mamm, mineau, noaec, noael)
 
         html = html + """
-        <table border="1">
-        <tr><H3>SIP Outputs</H3></tr><br>
-        <tr><H4>Mammalian Results (%s kg)</H4></tr>
+        <table border="1" class="out_2">
         <tr>
-        <td>Parameter</td>
-        <td>Acute</td>
-        <td>Chronic</td>
+            <th>SIP Outputs</th>
+            <th>Mammalian Results (%s kg)</th>
+            <th></th>
         </tr>
         <tr>
-        <td>Upper Bound Exposure</td>
-        <td>%0.2E mg/kg-bw</td>
-        <td>%0.2E mg/kg-bw</td>
+            <td>Parameter</td>
+            <td>Acute</td>
+            <td>Chronic</td>
         </tr>
         <tr>
-        <td>Adjusted Toxicity Value</td>
-        <td>%0.2E mg/kg-bw</td>
-        <td>%0.2E mg/kg-bw</td>
+            <td>Upper Bound Exposure</td>
+            <td>%0.2E mg/kg-bw</td>
+            <td>%0.2E mg/kg-bw</td>
         </tr>
         <tr>
-        <td>Ratio of Exposure to Toxicity</td>
-        <td>%0.2E</td>
-        <td>%0.2E</td>
+            <td>Adjusted Toxicity Value</td>
+            <td>%0.2E mg/kg-bw</td>
+            <td>%0.2E mg/kg-bw</td>
         </tr>
         <tr>
-        <td>Conclusion</td>
-        <td><font color="red">%s</font></td>
-        <td><font color="red">%s</font></td>
+            <td>Ratio of Exposure to Toxicity</td>
+            <td>%0.2E</td>
+            <td>%0.2E</td>
+        </tr>
+        <tr>
+            <td>Conclusion</td>
+            <td><font color="red">%s</font></td>
+            <td><font color="red">%s</font></td>
         </tr>
         </table><br>
         
-        <table border="1">
-        <tr><H4>Avian Results (%s kg)</H4></tr>
+        <table border="1" class="out_3">
         <tr>
-        <td>Parameter</td>
-        <td>Acute</td>
-        <td>Chronic</td>
+            <th>SIP Outputs</th>
+            <th>>Avian Results (%s kg)</th>
+            <th></th>
         </tr>
         <tr>
-        <td>Upper Bound Exposure</td>
-        <td>%0.2E mg/kg-bw</td>
-        <td>%0.2E mg/kg-bw</td>
+            <td>Parameter</td>
+            <td>Acute</td>
+            <td>Chronic</td>
         </tr>
         <tr>
-        <td>Adjusted Toxicity Value</td>
-        <td>%0.2E mg/kg-bw</td>
-        <td>%0.2E mg/kg-bw</td>
+            <td>Upper Bound Exposure</td>
+            <td>%0.2E mg/kg-bw</td>
+            <td>%0.2E mg/kg-bw</td>
         </tr>
         <tr>
-        <td>Ratio of Exposure to Toxicity</td>
-        <td>%0.2E</td>
-        <td>%0.2E</td>
+            <td>Adjusted Toxicity Value</td>
+            <td>%0.2E mg/kg-bw</td>
+            <td>%0.2E mg/kg-bw</td>
         </tr>
         <tr>
-        <td>Conclusion</td>
-        <td><font color="red">%s</font></td>
-        <td><font color="red">%s</font></td>
+            <td>Ratio of Exposure to Toxicity</td>
+            <td>%0.2E</td>
+            <td>%0.2E</td>
+        </tr>
+        <tr>
+            <td>Conclusion</td>
+            <td><font color="red">%s</font></td>
+            <td><font color="red">%s</font></td>
         </tr>
         </table>
         """  % (aw_mamm,
-dose_mamm(fw_mamm(bw_mamm),sol,bw_mamm),
-dose_mamm(fw_mamm(bw_mamm),sol,bw_mamm),
-at_mamm(ld50,aw_mamm,tw_mamm),
-act(noael,tw_mamm,aw_mamm),
-acute_mamm(dose_mamm(fw_mamm(bw_mamm),sol,bw_mamm),at_mamm(ld50,aw_mamm,tw_mamm)),
-chron_mamm(dose_mamm(fw_mamm(bw_mamm),sol,bw_mamm),act(noael,tw_mamm,aw_mamm)),
-acuconm(acute_mamm(dose_mamm(fw_mamm(bw_mamm),sol,bw_mamm),at_mamm(ld50,aw_mamm,tw_mamm))),
-chronconm(chron_mamm(dose_mamm(fw_mamm(bw_mamm),sol,bw_mamm),act(noael,tw_mamm,aw_mamm))),
-aw_bird,
-dose_bird(fw_bird(bw_bird),sol,bw_bird), 
-dose_bird(fw_bird(bw_bird),sol,bw_bird), 
-at_bird(ld50,aw_bird,tw_bird,mineau),
-det(noaec,fi_bird(bw_bird),bw_bird),
-acute_bird(dose_bird(fw_bird(bw_bird),sol,bw_bird),at_bird(ld50,aw_bird,tw_bird,mineau)),
-chron_bird(dose_bird(fw_bird(bw_bird),sol,bw_bird),det(noaec,fi_bird(bw_bird),bw_bird)),
-acuconb(acute_bird(dose_bird(fw_bird(bw_bird),sol,bw_bird),at_bird(ld50,aw_bird,tw_bird,mineau))),             
-chronconb(chron_bird(dose_bird(fw_bird(bw_bird),sol,bw_bird),det(noaec,fi_bird(bw_bird),bw_bird))))             
+                dose_mamm(fw_mamm(bw_mamm),sol,bw_mamm),
+                dose_mamm(fw_mamm(bw_mamm),sol,bw_mamm),
+                at_mamm(ld50,aw_mamm,tw_mamm),
+                act(noael,tw_mamm,aw_mamm),
+                acute_mamm(dose_mamm(fw_mamm(bw_mamm),sol,bw_mamm),at_mamm(ld50,aw_mamm,tw_mamm)),
+                chron_mamm(dose_mamm(fw_mamm(bw_mamm),sol,bw_mamm),act(noael,tw_mamm,aw_mamm)),
+                acuconm(acute_mamm(dose_mamm(fw_mamm(bw_mamm),sol,bw_mamm),at_mamm(ld50,aw_mamm,tw_mamm))),
+                chronconm(chron_mamm(dose_mamm(fw_mamm(bw_mamm),sol,bw_mamm),act(noael,tw_mamm,aw_mamm))),
+                aw_bird,
+                dose_bird(fw_bird(bw_bird),sol,bw_bird), 
+                dose_bird(fw_bird(bw_bird),sol,bw_bird), 
+                at_bird(ld50,aw_bird,tw_bird,mineau),
+                det(noaec,fi_bird(bw_bird),bw_bird),
+                acute_bird(dose_bird(fw_bird(bw_bird),sol,bw_bird),at_bird(ld50,aw_bird,tw_bird,mineau)),
+                chron_bird(dose_bird(fw_bird(bw_bird),sol,bw_bird),det(noaec,fi_bird(bw_bird),bw_bird)),
+                acuconb(acute_bird(dose_bird(fw_bird(bw_bird),sol,bw_bird),at_bird(ld50,aw_bird,tw_bird,mineau))),             
+                chronconb(chron_bird(dose_bird(fw_bird(bw_bird),sol,bw_bird),det(noaec,fi_bird(bw_bird),bw_bird))))             
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
+        html = html + """
+          <form method="post" target="_blank" action=pdf.html>
+            <table align="center" class="getpdf">
+            </table>
+          </form>
+        """
+        html = html + template.render(templatepath + 'getpdf_jquery.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

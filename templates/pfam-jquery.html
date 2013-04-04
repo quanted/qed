@@ -1,13 +1,21 @@
 <script type="text/javascript" src=" ../stylesheets/jquery-1.7.2.js"></script>
 <script type="text/javascript" src=" ../stylesheets/jquery.validate.js"></script>
+<<<<<<< HEAD
 <link type="text/css" rel="stylesheet" href="../stylesheets/jquery.qtip.css" />
 <script type="text/javascript" src="../stylesheets/jquery.qtip.js"></script>
+=======
+<link type="text/css" rel="stylesheet" href="http://craigsworks.com/projects/qtip2/packages/nightly/jquery.qtip.css" />
+<script type="text/javascript" src="http://craigsworks.com/projects/qtip2/packages/nightly/jquery.qtip.js"></script>
+>>>>>>> PPFAM jQuery page
 
 <script>
 $(document).ready(function() {
 	
     var tab_pool = ["tab_Chemical", "tab_Application", "tab_Location", "tab_Floods", "tab_Crop", "tab_Physical", "tab_Output"];
+<<<<<<< HEAD
     var uptab_pool = ["Chemical", "Application", "Location", "Floods", "Crop", "Physical", "Output"];
+=======
+>>>>>>> PPFAM jQuery page
     var visible = $(".tab:visible").attr('class').split(" ")[1];
     var curr_ind = $.inArray(visible, tab_pool);
     $(".submit").hide();
@@ -52,16 +60,26 @@ $(document).ready(function() {
 	}	
 
     function mmCheck(value) {
+<<<<<<< HEAD
         var mmValue = Number(value);
+=======
+        var mmValue = value;
+>>>>>>> PPFAM jQuery page
         if (mmValue < 1 || mmValue > 12) 
 			return false;
         return true;
     }
 
     function ddCheck(value, element) {
+<<<<<<< HEAD
         var mmValue1 = Number($(element).parent().prev('td').children('input').val());
 		//console.log(mmValue1);
         var ddValue1 = Number(value);
+=======
+        var mmValue1 = $(element).parent().prev('td').children('input').val();
+		//console.log(mmValue1);
+        var ddValue1 = value;
+>>>>>>> PPFAM jQuery page
 		//console.log(value);
         if (ddValue1 < 1 || ddValue1 > 31) 
 			return false;
@@ -73,9 +91,15 @@ $(document).ready(function() {
     }
 
     function wlflCheck(value, element) {
+<<<<<<< HEAD
         var flValue1 = Number($(element).parent().prev('td').children('input').val());
 		//console.log(flValue1);
         var wlValue1 = Number(value);
+=======
+        var flValue1 = $(element).parent().prev('td').children('input').val();
+		//console.log(flValue1);
+        var wlValue1 = value;
+>>>>>>> PPFAM jQuery page
 		//console.log(wlValue1);
         if (flValue1 >wlValue1) 
 			return false;
@@ -83,9 +107,15 @@ $(document).ready(function() {
     }
 
     function mlflCheck(value, element) {
+<<<<<<< HEAD
         var flValue1 = Number($(element).parent().prev('td').prev('td').children('input').val());
 		//console.log(flValue1);
         var mlValue1 = Number(value);
+=======
+        var flValue1 = $(element).parent().prev('td').prev('td').children('input').val();
+		//console.log(flValue1);
+        var mlValue1 = value;
+>>>>>>> PPFAM jQuery page
 		//console.log(mlValue1);
         if (mlValue1 >flValue1) 
 			return false;
@@ -97,7 +127,11 @@ $(document).ready(function() {
 		function (value, element) {
 			return isSci(value)
 		},
+<<<<<<< HEAD
 		"Wrong numeric format"
+=======
+		"Please use the right numeric format"
+>>>>>>> PPFAM jQuery page
 	);
 	
 	$.validator.addMethod(
@@ -105,7 +139,11 @@ $(document).ready(function() {
 		function (value, element) {
 			return isDate(value)
 		},
+<<<<<<< HEAD
 		"Date format MM/DD"
+=======
+		"Please enter a date in the format MM/DD"
+>>>>>>> PPFAM jQuery page
 	);
 
     $.validator.addMethod(
@@ -113,31 +151,48 @@ $(document).ready(function() {
     function (value) {
         return mmCheck(value);
     },
+<<<<<<< HEAD
         "Wrong month");
+=======
+        "Please enter a right month");
+>>>>>>> PPFAM jQuery page
 
     $.validator.addMethod(
         "dayCheck",
     function (value, element) {
         return ddCheck(value, element);
     },
+<<<<<<< HEAD
         "Wrong day");
 
 	$.validator.addMethod("integer", function(value, element) {
 		return this.optional(element) || /^-?\d+$/.test(value);
 	}, "Positive integer");
+=======
+        "Please enter a right day");
+
+	$.validator.addMethod("integer", function(value, element) {
+		return this.optional(element) || /^-?\d+$/.test(value);
+	}, "A positive or negative non-decimal number please");
+>>>>>>> PPFAM jQuery page
 
     $.validator.addMethod(
         "wlflCheck",
     function (value, element) {
         return wlflCheck(value, element);
     },
+<<<<<<< HEAD
         "Should greater than Fill Level");
+=======
+        "Wier Level should be greater than Fill Level");
+>>>>>>> PPFAM jQuery page
 
     $.validator.addMethod(
         "mlflCheck",
     function (value, element) {
         return mlflCheck(value, element);
     },
+<<<<<<< HEAD
         "Should no more than Fill Level");
 	
     $.validator.addMethod('positiveNumber',
@@ -170,13 +225,22 @@ $(document).ready(function() {
     var validator = $('form').validate({
         errorElement: "div",
         wrapper: "div",  // a wrapper around the error message
+=======
+        "Min. Level should be less or equal than Fill Level");
+										
+    var validator = $('form').validate({
+>>>>>>> PPFAM jQuery page
         ignore: 'input[type="button"],input[type="submit"]',
         rules: {
 			//Chemical tab//
             wat_hl: {
                 required: true,
+<<<<<<< HEAD
 				sciFormat: true,
                 positiveNumber: true
+=======
+				sciFormat: true
+>>>>>>> PPFAM jQuery page
             },
             wat_t: {
                 required : true,
@@ -184,8 +248,12 @@ $(document).ready(function() {
             },
             ben_hl: {
                 required : true,
+<<<<<<< HEAD
 				sciFormat: true,
                 positiveNumber: true
+=======
+				sciFormat: true
+>>>>>>> PPFAM jQuery page
             },			
             ben_t: {
                 required : true,
@@ -193,8 +261,12 @@ $(document).ready(function() {
             },			
             unf_hl: {
                 required : true,
+<<<<<<< HEAD
 				sciFormat: true,
                 positiveNumber: true
+=======
+				sciFormat: true
+>>>>>>> PPFAM jQuery page
             },			
             unf_t: {
                 required : true,
@@ -202,8 +274,12 @@ $(document).ready(function() {
             },			
             aqu_hl: {
                 required : true,
+<<<<<<< HEAD
 				sciFormat: true,
                 positiveNumber: true
+=======
+				sciFormat: true
+>>>>>>> PPFAM jQuery page
             },			
             aqu_t: {
                 required : true,
@@ -211,6 +287,7 @@ $(document).ready(function() {
             },			
             hyd_hl: {
                 required : true,
+<<<<<<< HEAD
 				sciFormat: true,
                 positiveNumber: true
             },			
@@ -238,6 +315,29 @@ $(document).ready(function() {
                 required : true,
 				sciFormat: true,
                 min: 0
+=======
+				sciFormat: true
+            },			
+            mw: {
+                required : true,
+				sciFormat: true
+            },
+            vp: {
+                required : true,
+				sciFormat: true
+            },				
+            sol: {
+                required : true,
+				sciFormat: true
+            },				
+            koc: {
+                required : true,
+				sciFormat: true
+            },				
+            hea_h: {
+                required : true,
+				sciFormat: true
+>>>>>>> PPFAM jQuery page
             },				
             hea_r_t: {
                 required : true,
@@ -249,6 +349,7 @@ $(document).ready(function() {
             },			
 			///Location//////
             weather: {
+<<<<<<< HEAD
                 required : true
             },			
             wea_l: {
@@ -282,10 +383,42 @@ $(document).ready(function() {
                 required : true,
 				sciFormat: true,
                 range: [0, 1]
+=======
+                required : true,
+            },			
+            wea_l: {
+                required : true,
+            },
+			///Floods//////
+            nof: {
+                required : true,
+            },								
+			date_f1: {
+                required : true,
+				dateFormat:true
+            },
+			///Floods//////
+			zero_height_ref: {
+                required : true,
+				dateFormat:true
+            },			
+			days_zero_full: {
+                required : true,
+				sciFormat:true
+            },				
+			days_zero_removal: {
+                required : true,
+				sciFormat:true
+            },	
+			max_frac_cov: {
+                required : true,
+				sciFormat:true
+>>>>>>> PPFAM jQuery page
             },
 			///Physical////
 			mas_tras_cof: {
                 required : true,
+<<<<<<< HEAD
 				sciFormat: true,
                 min: 0
             },
@@ -355,13 +488,71 @@ $(document).ready(function() {
                 sciFormat: true,
                 positiveNumber: true
             } 		
+=======
+				sciFormat:true
+            },       
+			leak: {
+                required : true,
+				sciFormat:true
+            },       			
+			ref_d: {
+                required : true,
+				sciFormat:true
+            },   			
+			ben_d: {
+                required : true,
+				sciFormat:true
+            }, 			
+			ben_por: {
+                required : true,
+				sciFormat:true
+            }, 				
+			dry_bkd: {
+                required : true,
+				sciFormat:true
+            }, 		
+			foc_wat: {
+                required : true,
+				sciFormat:true
+            }, 			
+			foc_ben: {
+                required : true,
+				sciFormat:true
+            }, 				
+			ss: {
+                required : true,
+				sciFormat:true
+            }, 				
+			wat_c_doc: {
+                required : true,
+				sciFormat:true
+            }, 			
+			chl: {
+                required : true,
+				sciFormat:true
+            }, 				
+			dfac: {
+                required : true,
+				sciFormat:true
+            }, 				
+			q10: {
+                required : true,
+				sciFormat:true
+            }		
+			
+			
+					
+>>>>>>> PPFAM jQuery page
 		}
     });
 	
 	
     $('.next').click(function () {
         var tab = $(".tab:visible");
+<<<<<<< HEAD
         //console.log(curr_ind)
+=======
+>>>>>>> PPFAM jQuery page
         var valid = true;
         $('input,select', tab).each(function(i, v){
             valid = validator.element(v) && valid;
@@ -373,10 +564,15 @@ $(document).ready(function() {
         if (curr_ind < 6) {
 			if (curr_ind == 1) {
             $(".tab:visible").hide();
+<<<<<<< HEAD
             $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
             curr_ind = curr_ind + 1;
             $("." + tab_pool[curr_ind]).show();
             $("." + uptab_pool[curr_ind]).css({ 'color': '#FFA500'}); //highlight current tabs
+=======
+            curr_ind = curr_ind + 1;
+            $("." + tab_pool[curr_ind]).show();
+>>>>>>> PPFAM jQuery page
             $(".tab_noa1").show();
             $(".submit").hide();
             $(".back").show();		
@@ -384,10 +580,15 @@ $(document).ready(function() {
 				
 			else{	
             $(".tab:visible").hide();
+<<<<<<< HEAD
             $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
             curr_ind = curr_ind + 1;
             $("." + tab_pool[curr_ind]).show();
             $("." + uptab_pool[curr_ind]).css({ 'color': '#FFA500'}); //highlight current tabs
+=======
+            curr_ind = curr_ind + 1;
+            $("." + tab_pool[curr_ind]).show();
+>>>>>>> PPFAM jQuery page
             $(".submit").hide();
             $(".back").show();
 			}
@@ -403,10 +604,15 @@ $(document).ready(function() {
 			
 			if (curr_ind == 1) {
             $(".tab:visible").hide();
+<<<<<<< HEAD
             $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
             curr_ind = curr_ind - 1;
             $("." + tab_pool[curr_ind]).show();
             $("." + uptab_pool[curr_ind]).css({ 'color': '#FFA500'}); //highlight current tabs            
+=======
+            curr_ind = curr_ind - 1;
+            $("." + tab_pool[curr_ind]).show();
+>>>>>>> PPFAM jQuery page
             $(".tab_noa1").show();
             $(".submit").hide();
             $(".next").show();		
@@ -414,10 +620,15 @@ $(document).ready(function() {
 				
 			else{
             $(".tab:visible").hide();
+<<<<<<< HEAD
             $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
             curr_ind = curr_ind - 1;
             $("." + tab_pool[curr_ind]).show();
             $("." + uptab_pool[curr_ind]).css({ 'color': '#FFA500'}); //highlight current tabs            
+=======
+            curr_ind = curr_ind - 1;
+            $("." + tab_pool[curr_ind]).show();
+>>>>>>> PPFAM jQuery page
             $(".submit").hide();
             $(".next").show();
 			}
@@ -435,7 +646,11 @@ $(document).ready(function() {
 		$('tr[id*="noa_header"]').show()
 		
         while (i <= total) {
+<<<<<<< HEAD
             $('.tab_Application').append('<tr class="tab_noa1"><td><input name="jm' + i + '" type="text" size="5" value="' + i + '" disabled/></td><td><input type="text" size="5" name="mm' + i + '" id="id_mm' + i + '"/></td><td><input type="text" size="5" name="dd' + i + '" id="id_dd' + i + '"/></td><td><input type="text" size="5" name="ma' + i + '" id="id_ma' + i + '"/></td><td><input type="text" size="5" name="sr' + i + '" id="id_sr' + i + '" value="0"/></td></tr>');
+=======
+            $('.tab_Application').append('<tr class="tab_noa1"><td><input name="jm' + i + '" type="text" size="5" value="' + i + '"/></td><td><input type="text" size="5" name="mm' + i + '" id="id_mm' + i + '"/></td><td><input type="text" size="5" name="dd' + i + '" id="id_dd' + i + '"/></td><td><input type="text" size="5" name="ma' + i + '" id="id_ma' + i + '"/></td><td><input type="text" size="5" name="sr' + i + '" id="id_sr' + i + '" value="0"/></td></tr>');
+>>>>>>> PPFAM jQuery page
             i = i + 1;
         }
         while (i-1 > total) {
@@ -465,16 +680,24 @@ $(document).ready(function() {
     $('[name*="ma"]').each(function () {
         $(this).rules('add', {
             required : true,
+<<<<<<< HEAD
 			sciFormat: true,
             min: 0
+=======
+			sciFormat: true
+>>>>>>> PPFAM jQuery page
         });
     });
 
     $('[name*="sr"]').each(function () {
         $(this).rules('add', {
             required : true,
+<<<<<<< HEAD
             sciFormat: true,
             min: 0
+=======
+            sciFormat: true
+>>>>>>> PPFAM jQuery page
 		});
 
 	});
@@ -507,17 +730,25 @@ $(document).ready(function() {
 		$('[name*="nod"]').each(function () {
         $(this).rules('add', {
             required : true,
+<<<<<<< HEAD
 			integer: true,
             min: 0,
             mtp : true
+=======
+			integer: true
+>>>>>>> PPFAM jQuery page
         });
     });
 
 		$('[name*="fl"]').each(function () {
         $(this).rules('add', {
             required : true,
+<<<<<<< HEAD
 			sciFormat: true,
             min: 0
+=======
+			sciFormat: true
+>>>>>>> PPFAM jQuery page
         });
     });
 
@@ -525,7 +756,10 @@ $(document).ready(function() {
         $(this).rules('add', {
             required : true,
 			sciFormat: true,
+<<<<<<< HEAD
             min: 0,
+=======
+>>>>>>> PPFAM jQuery page
 			wlflCheck: true			
         });
     });
@@ -534,26 +768,56 @@ $(document).ready(function() {
         $(this).rules('add', {
             required : true,
 			sciFormat: true,
+<<<<<<< HEAD
             min: 0,
 			mlflCheck: true
+=======
+			mlflCheck: true			
+>>>>>>> PPFAM jQuery page
         });
     });
 
 		$('[name*="to"]').each(function () {
         $(this).rules('add', {
             required : true,
+<<<<<<< HEAD
 			sciFormat: true,
             min: 0
         });
     });
     });
     });
+=======
+			sciFormat: true
+        });
+    });
+					
+    })
+
+
+
+});
+>>>>>>> PPFAM jQuery page
 
 
 </script>
 <style>
+<<<<<<< HEAD
 .error{
     border-color: #F78181;
     color:red;
+=======
+table.tab_noa td {
+	width: 13px;
+}
+table.tab_noa th {
+	width: 13px;
+}
+table.tab_nof td {
+	width: 13px;
+}
+table.tab_nof th {
+	width: 13px;
+>>>>>>> PPFAM jQuery page
 }
 </style>

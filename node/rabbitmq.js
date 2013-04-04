@@ -22,19 +22,27 @@ exports.submitUbertoolBatchRequest = function (msg)
     console.log("SubmitUbertoolBatchRequest");
     console.log(msg);
     mongodb.createNewBatch(batchId,ubertools, function(batchId,ubertools){
-        for(var index = 0; index < ubertools.length; index++)
-        {
-            console.log("Ubertools index: " + index);
-            var ubertoolRunData = ubertools[index];
-            ubertoolRunData['batchId'] = batchId;
-            var config_name = ubertoolRunData['config_name'];
-            mongodb.addEmptyUbertoolRun(config_name,batchId,ubertoolRunData,function(ubertoolRunData){ 
-                exchange.publish('UbertoolBatchSubmissionQueue',{message:JSON.stringify(ubertoolRunData)});
-            });
-        }
+        submitNextUbertoolRun(ubertools,batchId,0,submitNextUbertoolRun); 
     });
 }
 
+function submitNextUbertoolRun(ubertools,batchId,index,callback){
+    if(index < ubertools.length)
+    {
+        console.log("Ubertools index: " + index);
+        var ubertoolRunData = ubertools[index];
+        ubertoolRunData['batchId'] = batchId;
+        var config_name = ubertoolRunData['config_name'];
+        mongodb.addEmptyUbertoolRun(config_name,batchId,ubertoolRunData,function(ubertoolRunData){ 
+            exchange.publish('UbertoolBatchSubmissionQueue',{message:JSON.stringify(ubertoolRunData)});
+            if(index + 1 < ubertools.length)
+            {
+                index++;
+                callback(ubertools,batchId,index,callback);
+            }
+        });
+    }
+}
 
 conn.addListener('ready', function () {
     var q = conn.queue('UbertoolBatchResultsQueue', {

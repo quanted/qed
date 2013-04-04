@@ -15,7 +15,7 @@ import sys
 sys.path.append("../utils")
 import utils.json_utils
 sys.path.append("../terrplant")
-from terrplant import terrplant_model
+import terrplant import terrplant
 
 class TerrPlantExecutePage(webapp.RequestHandler):
     def post(self):
@@ -204,20 +204,20 @@ class TerrPlantExecutePage(webapp.RequestHandler):
         </table>
         """ % (chemical_name, pc_code, use, application_method, application_form, solubility,
                I, A, D, R, 
-               terrplant_model.rundry(A,I,R), terrplant_model.runsemi(A,I,R), terrplant_model.spray(A,D), terrplant_model.totaldry(terrplant_model.rundry(A,I,R), terrplant_model.spray(A,D)), terrplant_model.totalsemi(terrplant_model.runsemi(A,I,R),terrplant_model.spray(A,D)),
+               terrplant.rundry(A,I,R), terrplant.runsemi(A,I,R), terrplant.spray(A,D), terrplant.totaldry(terrplant.rundry(A,I,R), terrplant.spray(A,D)), terrplant.totalsemi(terrplant.runsemi(A,I,R),terrplant.spray(A,D)),
                nms, lms, nmv, lmv, nds, lds, ndv, ldv,
-               terrplant_model.nmsRQdry(terrplant_model.totaldry(terrplant_model.rundry(A,I,R),terrplant_model.spray(A,D)),nms), 
-terrplant_model.nmsRQsemi(terrplant_model.totalsemi(terrplant_model.runsemi(A,I,R),terrplant_model.spray(A,D)),nms), 
-terrplant_model.nmsRQspray(terrplant_model.spray(A,D),nms), 
-terrplant_model.lmsRQdry(terrplant_model.totaldry(terrplant_model.rundry(A,I,R),terrplant_model.spray(A,D)),lms), 
-terrplant_model.lmsRQsemi(terrplant_model.totalsemi(terrplant_model.runsemi(A,I,R),terrplant_model.spray(A,D)),lms), 
-terrplant_model.lmsRQspray(terrplant_model.spray(A,D),lms),
-terrplant_model.ndsRQdry(terrplant_model.totaldry(terrplant_model.rundry(A,I,R),terrplant_model.spray(A,D)),nds), 
-terrplant_model.ndsRQsemi(terrplant_model.totalsemi(terrplant_model.runsemi(A,I,R),terrplant_model.spray(A,D)),nds), 
-terrplant_model.ndsRQspray(terrplant_model.spray(A,D),nds), 
-terrplant_model.ldsRQdry(terrplant_model.totaldry(terrplant_model.rundry(A,I,R),terrplant_model.spray(A,D)),lds), 
-terrplant_model.ldsRQsemi(terrplant_model.totalsemi(terrplant_model.runsemi(A,I,R),terrplant_model.spray(A,D)),lds), 
-terrplant_model.ldsRQspray(terrplant_model.spray(A,D),lds)
+               terrplant.nmsRQdry(terrplant.totaldry(terrplant.rundry(A,I,R),terrplant.spray(A,D)),nms), 
+terrplant.nmsRQsemi(terrplant.totalsemi(terrplant.runsemi(A,I,R),terrplant.spray(A,D)),nms), 
+terrplant.nmsRQspray(terrplant.spray(A,D),nms), 
+terrplant.lmsRQdry(terrplant.totaldry(terrplant.rundry(A,I,R),terrplant.spray(A,D)),lms), 
+terrplant.lmsRQsemi(terrplant.totalsemi(terrplant.runsemi(A,I,R),terrplant.spray(A,D)),lms), 
+terrplant.lmsRQspray(terrplant.spray(A,D),lms),
+terrplant.ndsRQdry(terrplant.totaldry(terrplant.rundry(A,I,R),terrplant.spray(A,D)),nds), 
+terrplant.ndsRQsemi(terrplant.totalsemi(terrplant.runsemi(A,I,R),terrplant.spray(A,D)),nds), 
+terrplant.ndsRQspray(terrplant.spray(A,D),nds), 
+terrplant.ldsRQdry(terrplant.totaldry(terrplant.rundry(A,I,R),terrplant.spray(A,D)),lds), 
+terrplant.ldsRQsemi(terrplant.totalsemi(terrplant.runsemi(A,I,R),terrplant.spray(A,D)),lds), 
+terrplant.ldsRQspray(terrplant.spray(A,D),lds)
 )
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + """

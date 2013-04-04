@@ -13,63 +13,6 @@ import cgitb
 cgitb.enable()
 
 
-#PyPestDir = 'C:\\Documents and Settings\\jharston\\Desktop\\jharston_dropbox\\Dropbox\\pypest'
-#PyPestDir = 'C:\\Dropbox\\Dropbox\\pypest'
-
-#STIRReader = stir.reader(open(PyPestDir+'\STIR\STIR.input.csv')
-#    ,delimiter=',')
-#arra = N.loadtxt(PyPestDir+'\STIR\STIR.input.csv',dtype={'names': ('parameter', 'value', 'units'),'formats': ('c', 'f', 'c')},delimiter=',')
-
-#vp = arra[0,][1]
-#mw = arra[1,][1]
-#vm = arra[2,][1]
-#aw_avian = arra[3,][1]
-#a = arra[4,][1]
-#d = arra[5,][1]
-#aw_mammal = arra[6,][1]
-#ar2 = arra[7,][1]
-#h = arra[8,][1]
-#f_inhaled = arra[9,][1]
-#lc50 = arra[10,][1]
-#ab = arra[11,][1]
-#cf = arra[12,][1]
-#dur = arra[13,][1]
-#act = arra[14,][1]
-#tw_mammal = arra[15,][1]
-#ld50ao = arra[16,][1]
-#ld50ri = arra[17,][1]
-#ld50ro = arra[18,][1]
-#tw_avian = arra[19,][1]
-#x = arra[20,][1]
-
-
-#STIRDict = dict()
-
-#STIRDict['vp'] = arra[0,][1]
-#STIRDict['mw'] = arra[1,][1]
-#STIRDict['vm'] = arra[2,][1]
-#STIRDict['aw_avian'] = arra[3,][1]
-#STIRDict['a'] = arra[4,][1]
-#STIRDict['d'] = arra[5,][1]
-#STIRDict['aw_mammal'] = arra[6,][1]
-#STIRDict['ar2'] = arra[7,][1]
-#STIRDict['h'] = arra[8,][1]
-#STIRDict['f_inhaled'] = arra[9,][1]
-#STIRDict['lc50'] = arra[10,][1]
-#STIRDict['ab'] = arra[11,][1]
-#STIRDict['cf'] = arra[12,][1]
-#STIRDict['dur'] = arra[13,][1]
-#STIRDict['act'] = arra[14,][1]
-#STIRDict['tw_mammal'] = arra[15,][1]
-#STIRDict['ld50ao'] = arra[16,][1]
-#STIRDict['ld50ri'] = arra[17,][1]
-#STIRDict['ld50ro'] = arra[18,][1]
-#STIRDict['tw_avian'] = arra[19,][1]
-#STIRDict['x'] = arra[20,][1]
-
-
-# Saturated air concentration of a pesticide
-
 def cs(vp,mw):
     try:
         vp = float(vp)
@@ -672,41 +615,6 @@ def LOC_sid_mammal(ratio_sid_mammal):
         return ('Proceed to Refinements')
 
 
-
-#f = open(PyPestDir+'\STIR\STIR.output.csv', 'wt')
-
-#try:
-#    writer = stir.writer(f)
-#    writer.writerow( ('Parameter', 'Value', 'Units') )
-#    writer.writerow( ('Vapor Air Concentration of a Pesticide at Saturation', cs(vp,mw,vm), 'mg/m3') )
-#    writer.writerow( ('Inhalation Rate of Assessed Bird', ir_avian(aw_avian,a), 'cm3/hr') )
-#    writer.writerow( ('Maximum Avian Inhalation Dose', vid_avian(cs(vp,mw,vm),ir_avian(aw_avian,a),d,aw_avian) , 'mg/kg') )
-#    writer.writerow( ('Inhalation Rate of Assessed Mammal', ir_mammal(aw_mammal,a), 'cm3/hr') )
-#    writer.writerow( ('Maximum Mammalian Inhalation Dose', vid_mammal (cs(vp,mw,vm),ir_mammal(aw_mammal,a),d,aw_mammal), 'mg/kg') )
-#    writer.writerow( ('Droplet Concentration of the Pesticide in the Air Column', c_air(ar2,h), 'mg/cm3') )
-#    writer.writerow( ('Spray Droplet Inhalation Dose of Assessed Bird', sid_avian(c_air(ar2,h),ir_avian(aw_avian,a),d,f_inhaled,aw_avian), 'mg/kg') )
-#    writer.writerow( ('Spray Droplet Inhalation Dose of Assessed Mammal', sid_mammal(c_air(ar2,h),ir_mammal(aw_mammal,a),d,f_inhaled,aw_mammal), 'mg/kg') )
-#    writer.writerow( ('Mammalian Median Lethal Dose of a Substance', ld50(lc50,ab,cf,dur,act), 'mg/kg') )
-#    writer.writerow( ('Adjusted Mammalian Inhalation LD50', ld50adj_mammal(ld50(lc50,ab,cf,dur,act),tw_mammal,aw_mammal), 'mg/kg') )
-#    writer.writerow( ('Estimated Avian Inhalation LD50', ld50est(ld50ao,ld50ri,ld50ro), 'mg/kg') )
-#    writer.writerow( ('Adjusted Avian Inhalation LD50', ld50adj_avian(ld50est(ld50ao,ld50ri,ld50ro),aw_avian,tw_avian,x), 'mg/kg') )
-#    writer.writerow( ('Ratio of avian vapor dose to adjusted inhalation LD50', ratio_vd_avian(vid_avian(cs(vp,mw,vm),ir_avian(aw_avian,a),d,aw_avian),ld50adj_avian(ld50est(ld50ao,ld50ri,ld50ro),aw_avian,tw_avian,x)), '') )
-#    writer.writerow( ('Level of Concern for avian vapor phase risk', LOC_vd_avian(ratio_vd_avian(vid_avian(cs(vp,mw,vm),ir_avian(aw_avian,a),d,aw_avian),ld50adj_avian(ld50est(ld50ao,ld50ri,ld50ro),aw_avian,tw_avian,x))),'') )
-#    writer.writerow( ('Ratio of avian droplet inhalation dose to adjusted inhalation LD50', ratio_sid_avian(sid_avian(c_air(ar2,h),ir_avian(aw_avian,a),d,f_inhaled,aw_avian),ld50adj_avian(ld50est(ld50ao,ld50ri,ld50ri),aw_avian,tw_avian,x)), '') )
-#    writer.writerow( ('Level of Concern for avian droplet inhalation risk', LOC_sid_avian(ratio_sid_avian(sid_avian(c_air(ar2,h),ir_avian(aw_avian,a),d,f_inhaled,aw_avian),ld50adj_avian(ld50est(ld50ao,ld50ri,ld50ro),aw_avian,tw_avian,x))),'') )
-#    writer.writerow( ('Ratio of mammalian vapor dose to adjusted inhalation LD50', ratio_vd_mammal(vid_mammal(cs(vp,mw,vm),ir_mammal(aw_mammal,a),d,aw_mammal),ld50adj_mammal(ld50(lc50,ab,cf,dur,act),tw_mammal,aw_mammal)), '') )
-#    writer.writerow( ('Level of Concern for mammalian vapor phase risk', LOC_vd_mammal(ratio_vd_mammal(vid_mammal(cs(vp,mw,vm),ir_mammal(aw_mammal,a),d,aw_mammal),ld50adj_mammal(ld50(lc50,ab,cf,dur,act),tw_mammal,aw_mammal))),'') )
-#    writer.writerow( ('Ratio of mammalian droplet inhalation dose to adjusted inhalation LD50', ratio_sid_mammal(sid_mammal(c_air(ar2,h),ir_mammal(aw_mammal,a),d,f_inhaled,aw_mammal),ld50adj_mammal(ld50(lc50,ab,cf,dur,act),tw_mammal,aw_mammal)), '') )
-#    writer.writerow( ('Level of Concern for mammalian droplet inhalation risk', LOC_sid_mammal(ratio_sid_mammal(sid_mammal(c_air(ar2,h),ir_mammal(aw_mammal,a),d,f_inhaled,aw_mammal),ld50adj_mammal(ld50(lc50,ab,cf,dur,act),tw_mammal,aw_mammal))),'') )
-
-
-
-#finally:
-#    f.close()
-
-#print open(PyPestDir+'\STIR\STIR.output.csv', 'rt').read()
-
-
 class STIRExecutePage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage() 
@@ -739,178 +647,184 @@ class STIRExecutePage(webapp.RequestHandler):
                 'model':'stir', 
                 'model_attributes':'STIR Output'})    
         html = html + """
-        <table border="1">
-        <tr><H3>User Inputs</H3></tr><br>
-        <tr>
-        <td>Chemical Name</td>
-        <td>%s</td>
-        </tr>
-        <tr>
-        <td>Receptor Selected</td>
-        <td>%s</td>
-        </tr>
-        <tr>
-        <td>Pesticide Application Rate</td>
-        <td>%s</td>
-        <td>lbs ai/A</td>
-        </tr>
-        <tr>
-        <td>Height of Sirect Spray Column</td>
-        <td>%s</td>
-        <td>m</td>
-        </tr>
-        <tr>
-        <td>Fraction of Spray Inhaled</td>
-        <td>%s</td>
-        </tr>
-        <tr>
-        <td>Duration of Direct Spray Inhalation</td>
-        <td>%s</td>
-        <td>minutes</td>
-        </tr>
-        <tr>
-        <td>Molecular Weight</td>
-        <td>%s</td>
-        <td>g/mol</td>
-        </tr>
-        <tr>
-        <td>Vapor Pressure</td>
-        <td>%s</td>
-        <td>torr</td>
-        </tr>
-        <tr>
-        <td>Avian Oral LD<sub>50</sub></td>
-        <td>%s</td>
-        <td>mg/kg-bw</td>
-        </tr>
-        <tr>
-        <td>Body Weight of Assessed Bird</td>
-        <td>%s</td>
-        <td>kg</td>
-        </tr>
-        <tr>
-        <td>Chemical Specific Mineau Scaling Factor</td>
-        <td>%s</td>
-        </tr>
-        <tr>
-        <td>Mammalian LC<sub>50</sub></td>
-        <td>%s</td>
-        <td>mg/kg-bw</td>
-        </tr>
-        <tr>
-        <td>Duration of Rat Inhalation Study</td>
-        <td>%s</td>
-        <td>hrs</td>
-        </tr>
-        <tr>
-        <td>Body Weight of Assessed Mammal</td>
-        <td>%s</td>
-        <td>kg</td>
-        </tr>
-        <tr>
-        <td>Rat Inhalation LD<sub>50</sub></td>
-        <td>%s</td>
-        <td>mg/kg-bw</td>
-        </tr>
-        <tr>
-        <td>Rat Oral LD<sub>50</sub></td>
-        <td>%s</td>
-        <td>mg/kg-bw</td>
-        </tr>
-        </table>
+        <table border="1" class="out_1>
+            <tr>
+                <th colspan="3">User Inputs</th>
+            </tr>
+            <tr>
+                <td>Chemical Name</td>
+                <td>%s</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Receptor Selected</td>
+                <td>%s</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Pesticide Application Rate</td>
+                <td>%s</td>
+                <td>lbs ai/A</td>
+            </tr>
+            <tr>
+                <td>Height of Sirect Spray Column</td>
+                <td>%s</td>
+                <td>m</td>
+            </tr>
+            <tr>
+                <td>Fraction of Spray Inhaled</td>
+                <td>%s</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Duration of Direct Spray Inhalation</td>
+                <td>%s</td>
+                <td>minutes</td>
+            </tr>
+            <tr>
+                <td>Molecular Weight</td>
+                <td>%s</td>
+                <td>g/mol</td>
+            </tr>
+            <tr>
+                <td>Vapor Pressure</td>
+                <td>%s</td>
+                <td>torr</td>
+            </tr>
+            <tr>
+                <td>Avian Oral LD<sub>50</sub></td>
+                <td>%s</td>
+                <td>mg/kg-bw</td>
+            </tr>
+            <tr>
+                <td>Body Weight of Assessed Bird</td>
+                <td>%s</td>
+                <td>kg</td>
+            </tr>
+            <tr>
+                <td>Chemical Specific Mineau Scaling Factor</td>
+                <td>%s</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Mammalian LC<sub>50</sub></td>
+                <td>%s</td>
+                <td>mg/kg-bw</td>
+            </tr>
+            <tr>
+                <td>Duration of Rat Inhalation Study</td>
+                <td>%s</td>
+                <td>hrs</td>
+            </tr>
+            <tr>
+                <td>Body Weight of Assessed Mammal</td>
+                <td>%s</td>
+                <td>kg</td>
+            </tr>
+            <tr>
+                <td>Rat Inhalation LD<sub>50</sub></td>
+                <td>%s</td>
+                <td>mg/kg-bw</td>
+            </tr>
+            <tr>
+                <td>Rat Oral LD<sub>50</sub></td>
+                <td>%s</td>
+                <td>mg/kg-bw</td>
+            </tr>
+        </table><br>
         """ % (chemical_name, select_receptor, ar2, h, f_inhaled, ddsi, mw, vp, ld50ao, aw_avian, mineau, lc50, dur, aw_mammal, ld50ri, ld50ro)
-        #html = html + template.render(templatepath + '06uber_break.html', {})
+
         html = html + """
-       <table border="1">
-        <tr><H3>STIR Outputs</H3></tr><br>
-        <tr>
-        <H4>Results Avian (%s kg)</H4>
-        </tr>
-        <tr>
-        <td>Saturated Air Concentration of Pesticide</td>
-        <td>%0.2E</td>
-        <td>mg/m<sup>3</sup></td>
-        </tr>
-        <tr>
-        <td>Avian Inhalation Rate</td>
-        <td>%0.2E</td>
-        <td>cm<sup>3</sup>/hr</td>
-        </tr>
-        <tr>
-        <td>Maximum 1-hour Avian Vapor Inhalation Dose</td>
-        <td>%0.2E</td>
-        <td>mg/kg-bw</td>
-        </tr>
-        <td>Estimated Avian Inhalation LD<sub>50</sub></td>
-        <td>%0.2E</td>
-        <td>mg/kg-bw</td>
-        </tr>
-        <tr>
-        <td>Adjusted Avian Inhalation LD<sub>50</sub></td>
-        <td>%0.2E</td>
-        <td>mg/kg-bw</td>
-        </tr>
-        <tr>
-        <td>Ratio of Vapor Dose to Adjusted Inhalation LD<sub>50</sub></td>
-        <td>%0.2E</td>
-        <td><H5><font color="red">%s</font></H5></td>
-        </tr>
-        <tr>
-        <td>Spray Droplet Inhalation Dose of Assessed Bird</td>
-        <td>%0.2E</td>
-        <td>mg/kg-bw</td>
-        </tr>
-        <tr>
-        <td>Ratio of Droplet Inhalation Dose to Adjusted Inhalation LD<sub>50</sub></td>
-        <td>%0.2E</td>
-        <td><H5><font color="red">%s</font></H5></td>
-        </tr>
-        </table>
-        <br></br>
-        <table border="1">
-        <tr>
-        <H4>Results Mammalian (%s kg)</H4>
-        </tr>
-        <tr>
-        <td>Saturated Air Concentration of Pesticide</td>
-        <td>%0.2E</td>
-        <td>mg/m<sup>3</sup></td>
-        </tr>
-        <tr>
-        <td>Mammalian Inhalation Rate</td>
-        <td>%0.2E</td>
-        <td>cm<sup>3</sup>/hr</td>
-        </tr>
-        <tr>
-        <td>Maximum 1-hour Mammalian Vapor Inhalation Dose</td> 
-        <td>%0.2E</td>
-        <td>mg/kg</td>
-        </tr>
-        <tr>
-        <td>Conversion of Mammalian Inhalation LC<sub>50</sub> to LD<sub>50</sub></td>
-        <td>%0.2E</td>
-        <td>mg/kg-bw</td>
-        </tr>
-        <tr>
-        <td>Adjusted Mammalian Inhalation LD<sub>50</sub></td>
-        <td>%0.2E</td>
-        <td>mg/kg-bw</td>
-        </tr>
-        <tr>
-        <td>Ratio of Vapor Dose to Adjusted Inhalation LD<sub>50</sub></td>
-        <td>%0.2E</td>
-        <td><H5><font color="red">%s</font></H5></td>
-        </tr>
-        <tr>
-        <td>Spray Droplet Inhalation Dose of Assessed Mammal</td>
-        <td>%0.2E</td>
-        <td>mg/kg-bw</td>
-        </tr>
-        <tr>
-        <td>Ratio of Droplet Inhalation Dose to Adjusted Inhalation LD<sub>50</sub></td>
-        <td>%0.2E</td>
-        <td><H5><font color="red">%s</font></H5></td>
-        </tr>
+        <table border="1" class="out_2">
+            <tr>
+                <th colspan="3">STIR Outputs</th>
+            </tr>
+            <tr>
+                <th colspan="3">Avian (%s kg)</th>
+            </tr>
+            <tr>
+                <td>Saturated Air Concentration of Pesticide</td>
+                <td>%0.2E</td>
+                <td>mg/m<sup>3</sup></td>
+            </tr>
+            <tr>
+                <td>Avian Inhalation Rate</td>
+                <td>%0.2E</td>
+                <td>cm<sup>3</sup>/hr</td>
+            </tr>
+            <tr>
+                <td>Maximum 1-hour Avian Vapor Inhalation Dose</td>
+                <td>%0.2E</td>
+                <td>mg/kg-bw</td>
+            </tr>
+            <tr>
+                <td>Estimated Avian Inhalation LD<sub>50</sub></td>
+                <td>%0.2E</td>
+                <td>mg/kg-bw</td>
+            </tr>
+            <tr>
+                <td>Adjusted Avian Inhalation LD<sub>50</sub></td>
+                <td>%0.2E</td>
+                <td>mg/kg-bw</td>
+            </tr>
+            <tr>
+                <td>Ratio of Vapor Dose to Adjusted Inhalation LD<sub>50</sub></td>
+                <td>%0.2E</td>
+                <td><H5><font color="red">%s</font></H5></td>
+            </tr>
+            <tr>
+                <td>Spray Droplet Inhalation Dose of Assessed Bird</td>
+                <td>%0.2E</td>
+                <td>mg/kg-bw</td>
+            </tr>
+            <tr>
+                <td>Ratio of Droplet Inhalation Dose to Adjusted Inhalation LD<sub>50</sub></td>
+                <td>%0.2E</td>
+                <td><H5><font color="red">%s</font></H5></td>
+            </tr>
+            <tr>
+                <th colspan="3">Mammalian (%s kg)</th>
+            </tr>
+            <tr>
+                <td>Saturated Air Concentration of Pesticide</td>
+                <td>%0.2E</td>
+                <td>mg/m<sup>3</sup></td>
+            </tr>
+            <tr>
+                <td>Mammalian Inhalation Rate</td>
+                <td>%0.2E</td>
+                <td>cm<sup>3</sup>/hr</td>
+            </tr>
+            <tr>
+                <td>Maximum 1-hour Mammalian Vapor Inhalation Dose</td> 
+                <td>%0.2E</td>
+                <td>mg/kg</td>
+            </tr>
+            <tr>
+                <td>Conversion of Mammalian Inhalation LC<sub>50</sub> to LD<sub>50</sub></td>
+                <td>%0.2E</td>
+                <td>mg/kg-bw</td>
+            </tr>
+            <tr>
+                <td>Adjusted Mammalian Inhalation LD<sub>50</sub></td>
+                <td>%0.2E</td>
+                <td>mg/kg-bw</td>
+            </tr>
+            <tr>
+                <td>Ratio of Vapor Dose to Adjusted Inhalation LD<sub>50</sub></td>
+                <td>%0.2E</td>
+                <td><H5><font color="red">%s</font></H5></td>
+            </tr>
+            <tr>
+                <td>Spray Droplet Inhalation Dose of Assessed Mammal</td>
+                <td>%0.2E</td>
+                <td>mg/kg-bw</td>
+            </tr>
+            <tr>
+                <td>Ratio of Droplet Inhalation Dose to Adjusted Inhalation LD<sub>50</sub></td>
+                <td>%0.2E</td>
+                <td><H5><font color="red">%s</font></H5></td>
+            </tr>
         </table>
         """ % (aw_avian, 
                cs(vp,mw), 
@@ -933,8 +847,18 @@ ratio_vd_mammal(vid_mammal(cs(vp,mw),ir_mammal(aw_mammal),aw_mammal),ld50adj_mam
 LOC_vd_mammal(ratio_vd_mammal(vid_mammal(cs(vp,mw),ir_mammal(aw_mammal),aw_mammal),ld50adj_mammal(ld50(lc50,cf(ir_mammal, aw_mammal),dur),tw_mammal,aw_mammal))), 
 sid_mammal(c_air(ar2,h),ir_mammal(aw_mammal),ddsi,f_inhaled,aw_mammal),
 ratio_sid_mammal(sid_mammal(c_air(ar2,h),ir_mammal(aw_mammal),ddsi,f_inhaled,aw_mammal),ld50adj_mammal(ld50(lc50,cf(ir_mammal, aw_mammal),dur),tw_mammal,aw_mammal)),
-LOC_sid_mammal(ratio_sid_mammal(sid_mammal(c_air(ar2,h),ir_mammal(aw_mammal),ddsi,f_inhaled,aw_mammal),ld50adj_mammal(ld50(lc50,cf(ir_mammal, aw_mammal),dur),tw_mammal,aw_mammal))))              
+LOC_sid_mammal(ratio_sid_mammal(sid_mammal(c_air(ar2,h),ir_mammal(aw_mammal),ddsi,f_inhaled,aw_mammal),ld50adj_mammal(ld50(lc50,cf(ir_mammal, aw_mammal),dur),tw_mammal,aw_mammal))))
+
+
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
+        html = html + """
+          <form method="post" target="_blank" action=pdf.html>
+            <table align="center" class="getpdf">
+            </table>
+          </form>
+        """
+
+        html = html + template.render(templatepath + 'getpdf_jquery.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

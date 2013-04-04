@@ -1,4 +1,5 @@
 <ul>ubertool
+<li><a href="https://teambox.com/#!/projects/ubertool-2/task_lists">teambox</a></li>
 <li><a href="https://groups.google.com/forum/?fromgroups=#!forum/ubertool-dev">ubertool-dev google group</a></li>
 <li><a href="https://dnsimple.com/">dnsimple</a></li>
 <li><a href="https://console.aws.amazon.com/console/home?#">AWS login</a></li>
@@ -13,6 +14,14 @@
 <li><a href="https://developers.google.com/open-source/soc/">google summer of code</a></li>
 <li><a href="http://shell.appspot.com/">gae shell</a></li>
 <li><a href="http://www.google.com/analytics/">analytics</a></li>
+</ul>
+
+<ul>git
+<li><a href="https://github.com/puruckertom/ubertool_src">ubertool_src on git</a></li>
+<li><a href="http://rogerdudler.github.com/git-guide/">simple git guide</a></li>
+<li><a href="http://gun.io/blog/how-to-github-fork-branch-and-pull-request/">git how-to</a></li>
+<li><a href="http://www.slideshare.net/onierstrasz/git-primer">git primer slideshow</a></li>
+<li><a href="http://git-scm.com/book">Pro Git book</a></li>
 </ul>
 
 <ul>Amazon

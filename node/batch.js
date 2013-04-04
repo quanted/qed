@@ -46,7 +46,7 @@ server.get('/batch_configs', function(req, res, next){
 server.post('/batch',submitBatch);
 server.get('/batch_results/:batchId', function(req, res, next){
     var batchId = req.params.batchId;
-    //console.log("BatchId: " + batchId);
+    console.log("BatchId: " + batchId);
     mongodb.getBatchResults(batchId, function(error, batch_data){
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");

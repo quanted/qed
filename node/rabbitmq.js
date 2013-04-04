@@ -18,6 +18,8 @@ exports.submitUbertoolBatchRequest = function (msg)
 {
   var ubertools = msg['ubertools'];
   var batchId = msg['id'];
+  console.log("SubmitUbertoolBatchRequest");
+  console.log(msg);
   mongodb.createNewBatch(batchId,ubertools);
   var results = [];
   for(var index = 0; index < ubertools.length; index++)
@@ -47,7 +49,9 @@ conn.addListener('ready', function () {
         delete body.config_name;
         var batch_id = body.batchId;
         delete body.batchId;
-        mongodb.updateUbertoolRun(config_name,batch_id,body);
+        mongodb.updateUbertoolRun(config_name,batch_id,body, function(error, batch_data){
+          console.log(batch_data);
+        });
     };
 
     // subscribe to the queue

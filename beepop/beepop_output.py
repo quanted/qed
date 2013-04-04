@@ -20,6 +20,7 @@ cgitb.enable()
 
 # read in weather data
 path0 = os.path.dirname(__file__)
+
 data = csv.reader(open(path0+'/athens_weather.csv'))
 #data = csv.reader(open('C:/temp/athens_weather.csv'))
 jday = []

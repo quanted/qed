@@ -10,7 +10,7 @@ from django import forms
 from django.db import models
 
 class iecInp(forms.Form):
-    LC50 = forms.FloatField(required=True,label='Enter LC50 or LD50')
-    threshold = forms.FloatField(required=True, label='Enter desired threshold')
+    LC50 = forms.FloatField(required=True,label='Enter LC50 or LD50',initial='1')
+    threshold = forms.FloatField(required=True, label='Enter desired threshold',initial='0.25')
     dose_response = forms.FloatField(required=True, label='Enter slope of does-response',initial=4.5)
     

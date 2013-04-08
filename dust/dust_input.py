@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Jan 03 13:30:41 2012
-
-@author: jharston
-"""
 
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
@@ -15,7 +10,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import django
 from django import forms
-from dust import Dustdb
+from dust import dust_parameters
 
 
 class DustInputPage(webapp.RequestHandler):
@@ -29,7 +24,7 @@ class DustInputPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '04uberinput_start.html', {
                 'model':'dust', 
                 'model_attributes':'DUST Inputs'})
-        html = html + str(Dustdb.DustInp())
+        html = html + str(dust_parameters.DustInp())
         html = html + template.render (templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render (templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

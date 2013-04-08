@@ -15,7 +15,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import django
 from django import forms
-from terrplant import terrplant_db
+from terrplant import terrplant_parameters
 
 
 class TerrPlantInputPage(webapp.RequestHandler):
@@ -29,7 +29,7 @@ class TerrPlantInputPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '04uberinput_start.html', {
                 'model':'terrplant', 
                 'model_attributes':'TerrPlant Inputs'})
-        html = html + str(terrplant_db.TerrPlantInp())
+        html = html + str(terrplant_parameters.TerrPlantInp())
         html = html + template.render (templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render (templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

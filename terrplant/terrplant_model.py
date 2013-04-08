@@ -86,12 +86,18 @@ def spray(A,D):
 # EEC total for dry areas
 
 def totaldry(rundry,spray):
+    if rundry == None or spray == None:
+        raise ValueError\
+        ('Either the rundry or spray variables equals None and therefor this function cannot be run.')
     return rundry + spray
 
 
 # EEC total for semi-aquatic areas
 
 def totalsemi (runsemi,spray):
+    if runsemi == None or spray == None:
+        raise ValueError\
+        ('Either the runsemi or spray variables equals None and therefor this function cannot be run.')
     return runsemi + spray
 
 
@@ -130,6 +136,9 @@ def nmsRQdry(totaldry,nms):
     except ZeroDivisionError:
         raise ZeroDivisionError\
         ('The EC25 for monocot seedlings must be non-zero.')
+    except TypeError:
+        raise TypeError\
+        ('Either totaldry or nms equals None and therefor this function cannot be run.')
     if totaldry < 0:
         raise ValueError\
         ('totaldry=%g is a non-physical value.' %totaldry)
@@ -143,7 +152,10 @@ def nmsRQdry(totaldry,nms):
 # Level of concern for non-listed monocot seedlings exposed to pesticide X in a dry area
 
 def LOCnmsdry(nmsRQdry):
-    if nmsRQdry >= 1.0:
+    if nmsRQdry == None:
+        raise ValueError\
+        ('nmsRQdry variable equals None and therefor this function cannot be run.')
+    elif nmsRQdry >= 1.0:
         return ('The risk quotient for non-listed monocot seedlings exposed to'\
     ' the pesticide via runoff to a dry area indicates a potential risk.')
     else:
@@ -157,6 +169,9 @@ def nmsRQsemi(totalsemi,nms):
     try:
         totalsemi = float(totalsemi)
         nms = float(nms)
+    except TypeError:
+        raise TypeError\
+        ('Either totalsemi or nms equals None and therefor this function cannot be run.')
     except IndexError:
         raise IndexError\
         ('The total amount of runoff and spray to semi-aquatic areas and/or'\
@@ -182,7 +197,10 @@ def nmsRQsemi(totalsemi,nms):
 # Level of concern for non-listed monocot seedlings exposed to pesticide X in a semi-aquatic area
 
 def LOCnmssemi(nmsRQsemi):
-    if nmsRQdry >= 1.0:
+    if nmsRQsemi == None:
+        raise ValueError\
+        ('nmsRQsemi variable equals None and therefor this function cannot be run.')
+    if nmsRQsemi >= 1.0:
         return ('The risk quotient for non-listed monocot seedlings exposed to'\
     ' the pesticide via runoff to a semi-aquatic area indicates a potential risk.')
     else:
@@ -196,6 +214,9 @@ def nmsRQspray(spray,nms):
     try:
         spray = float(spray)
         nms = float(nms)
+    except TypeError:
+        raise TypeError\
+        ('Either spray or nms equals None and therefor this function cannot be run.')
     except IndexError:
         raise IndexError\
         ('The the amount of spray drift exposure and/or EC25 for monocot'\
@@ -221,6 +242,9 @@ def nmsRQspray(spray,nms):
 # Level of concern for non-listed monocot seedlings exposed to pesticide via spray drift
 
 def LOCnmsspray(nmsRQspray):
+    if nmsRQdry == None:
+        raise ValueError\
+        ('nmsRQspray variable equals None and therefor this function cannot be run.')
     if nmsRQspray >= 1.0:
         return ('The risk quotient for non-listed monocot seedlings exposed to'\
     ' the pesticide via spray drift indicates a potential risk.')
@@ -235,6 +259,9 @@ def lmsRQdry(totaldry,lms):
     try:
         totaldry = float(totaldry)
         lms = float(lms)
+    except TypeError:
+        raise TypeError\
+        ('Either totaldry or lms equals None and therefor this function cannot be run.')
     except IndexError:
         raise IndexError\
         ('The total amount of runoff and spray to dry areas and/or NOAEC for'\
@@ -261,6 +288,9 @@ def lmsRQdry(totaldry,lms):
 #  via runoff in a dry area
 
 def LOClmsdry(lmsRQdry):
+    if lmsRQdry == None:
+        raise ValueError\
+        ('lmsRQdry variable equals None and therefor this function cannot be run.')
     if lmsRQdry >= 1.0:
         return ('The risk quotient for listed monocot seedlings exposed to'\
     ' the pesticide via runoff to a dry area indicates a potential risk.')
@@ -275,6 +305,9 @@ def lmsRQsemi(totalsemi,lms):
     try:
         totalsemi = float(totalsemi)
         lms = float(lms)
+    except TypeError:
+        raise TypeError\
+        ('Either totalsemi or lms equals None and therefor this function cannot be run.')
     except IndexError:
         raise IndexError\
         ('The total amount of runoff and spray to semi-aquatic areas and/or'\
@@ -300,6 +333,9 @@ def lmsRQsemi(totalsemi,lms):
 # Level of concern for listed monocot seedlings exposed to pesticide X in semi-aquatic areas
 
 def LOClmssemi(lmsRQsemi):
+    if lmsRQsemi == None:
+        raise ValueError\
+        ('lmsRQsemi variable equals None and therefor this function cannot be run.')
     if lmsRQsemi >= 1.0:
         return ('The risk quotient for listed monocot seedlings exposed to'\
     ' the pesticide via runoff to a semi-aquatic area indicates a potential risk.')
@@ -314,6 +350,9 @@ def lmsRQspray(spray,lms):
     try:
         spray = float(spray)
         lms = float(lms)
+    except TypeError:
+        raise TypeError\
+        ('Either spray or lms equals None and therefor this function cannot be run.')
     except IndexError:
         raise IndexError\
         ('The the amount of spray drift exposure and/or NOAEC for monocot'\
@@ -339,6 +378,9 @@ def lmsRQspray(spray,lms):
 # Level of concern for listed monocot seedlings exposed to pesticide X via spray drift
 
 def LOClmsspray(lmsRQspray):
+    if lmsRQspray == None:
+        raise ValueError\
+        ('lmsRQspray variable equals None and therefor this function cannot be run.')
     if lmsRQspray >= 1.0:
         return ('The risk quotient for listed monocot seedlings exposed to'\
     ' the pesticide via spray drift indicates a potential risk.')
@@ -353,6 +395,9 @@ def ndsRQdry(totaldry,nds):
     try:
         totaldry = float(totaldry)
         nds = float(nds)
+    except TypeError:
+        raise TypeError\
+        ('Either totaldry or nds equals None and therefor this function cannot be run.')
     except IndexError:
         raise IndexError\
         ('The total amount of runoff and spray to dry areas and/or EC25 for dicot'\
@@ -378,6 +423,9 @@ def ndsRQdry(totaldry,nds):
 # Level of concern for non-listed dicot seedlings exposed to pesticide X in dry areas
 
 def LOCndsdry(ndsRQdry):
+    if ndsRQdry == None:
+        raise ValueError\
+        ('ndsRQdry variable equals None and therefor this function cannot be run.')
     if ndsRQdry >= 1.0:
         return ('The risk quotient for non-listed monocot seedlings exposed to'\
     ' the pesticide via runoff to dry areas indicates a potential risk.')
@@ -392,6 +440,9 @@ def ndsRQsemi(totalsemi,nds):
     try:
         totalsemi = float(totalsemi)
         nds = float(nds)
+    except TypeError:
+        raise TypeError\
+        ('Either totalsemi or nds equals None and therefor this function cannot be run.')
     except IndexError:
         raise IndexError\
         ('The total amount of runoff and spray to semi-aquatic areas and/or'\
@@ -417,6 +468,9 @@ def ndsRQsemi(totalsemi,nds):
 # Level of concern for non-listed dicot seedlings exposed to pesticide X in semi-aquatic areas
 
 def LOCndssemi(ndsRQsemi):
+    if ndsRQsemi == None:
+        raise ValueError\
+        ('ndsRQsemi variable equals None and therefor this function cannot be run.')
     if ndsRQsemi >= 1.0:
         return ('The risk quotient for non-listed monocot seedlings exposed to'\
     ' the pesticide via runoff to semi-aquatic areas indicates a potential risk.')
@@ -430,6 +484,9 @@ def ndsRQspray(spray,nds):
     try:
         spray = float(spray)
         nds = float(nds)
+    except TypeError:
+        raise TypeError\
+        ('Either spray or nds equals None and therefor this function cannot be run.')
     except IndexError:
         raise IndexError\
         ('The the amount of spray drift exposure and/or EC25 for dicot'\
@@ -455,6 +512,9 @@ def ndsRQspray(spray,nds):
 # Level of concern for non-listed dicot seedlings exposed to pesticide X via spray drift
 
 def LOCndsspray(ndsRQspray):
+    if ndsRQspray == None:
+        raise ValueError\
+        ('ndsRQspray variable equals None and therefor this function cannot be run.')
     if ndsRQspray >= 1.0:
         return ('The risk quotient for non-listed monocot seedlings exposed to'\
     ' the pesticide via spray drift indicates a potential risk.')
@@ -468,6 +528,9 @@ def ldsRQdry(totaldry,lds):
     try:
         totaldry = float(totaldry)
         lds = float(lds)
+    except TypeError:
+        raise TypeError\
+        ('Either totaldry or lds equals None and therefor this function cannot be run.')
     except IndexError:
         raise IndexError\
         ('The total amount of runoff and spray to dry areas and/or NOAEC for'\
@@ -493,6 +556,9 @@ def ldsRQdry(totaldry,lds):
 # Level of concern for listed dicot seedlings exposed to pesticideX in dry areas
 
 def LOCldsdry(ldsRQdry):
+    if ldsRQdry == None:
+        raise ValueError\
+        ('ldsRQdry variable equals None and therefor this function cannot be run.')
     if ldsRQdry >= 1.0:
         return ('The risk quotient for listed monocot seedlings exposed to'\
     ' the pesticide via runoff to dry areas indicates a potential risk.')
@@ -506,6 +572,9 @@ def ldsRQsemi(totalsemi,lds):
     try:
         totalsemi = float(totalsemi)
         lds = float(lds)
+    except TypeError:
+        raise TypeError\
+        ('Either totalsemi or lds equals None and therefor this function cannot be run.')
     except IndexError:
         raise IndexError\
         ('The total amount of runoff and spray to semi-aquatic areas and/or'\
@@ -531,6 +600,9 @@ def ldsRQsemi(totalsemi,lds):
 # Level of concern for listed dicot seedlings exposed to pesticide X in dry areas
 
 def LOCldssemi(ldsRQsemi):
+    if ldsRQsemi == None:
+        raise ValueError\
+        ('ldsRQsemi variable equals None and therefor this function cannot be run.')
     if ldsRQsemi >= 1.0:
         return ('The risk quotient for listed monocot seedlings exposed to'\
     ' the pesticide via runoff to semi-aquatic areas indicates a potential risk.')
@@ -544,6 +616,9 @@ def ldsRQspray(spray,lds):
     try:
         spray = float(spray)
         lds = float(lds)
+    except TypeError:
+        raise TypeError\
+        ('Either spray or lds equals None and therefor this function cannot be run.')
     except IndexError:
         raise IndexError\
         ('The amount of spray drift exposure and/or NOAEC for dicot'\
@@ -569,6 +644,9 @@ def ldsRQspray(spray,lds):
 # Level of concern for listed dicot seedlings exposed to pesticide X via spray drift
 
 def LOCldsspray(ldsRQspray):
+    if ldsRQspray == None:
+        raise ValueError\
+        ('ldsRQspray variable equals None and therefor this function cannot be run.')
     if ldsRQspray >= 1.0:
         return ('The risk quotient for listed monocot seedlings exposed to'\
     ' the pesticide via spray drift indicates a potential risk.')

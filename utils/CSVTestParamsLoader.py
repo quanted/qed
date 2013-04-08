@@ -59,10 +59,13 @@ class CSVTestParamsLoader(object):
             temp_order = list(param_name_order.__reversed__())
             for param_data in params_data_row:
                 param_name = temp_order.pop()
-                if("float" in param_name_type_dict[param_name]):
+                if str(param_data) == "None":
+                    self.params_matrix[param_name].append(None)
+                elif("float" in param_name_type_dict[param_name]):
                     self.params_matrix[param_name].append(float(param_data))
                 elif("string" in param_name_type_dict[param_name]):
                     self.params_matrix[param_name].append(str(param_data))
+                    #print "String as input %s" % str(param_data)
                 elif("boolean" in param_name_type_dict[param_name]):
                     if param_data == "yes" or param_data == "true":
                         self.params_matrix[param_name].append(True)
@@ -71,6 +74,7 @@ class CSVTestParamsLoader(object):
                 elif("date" in param_name_type_dict[param_name]):
                     app_data_parts = param_data.split("-")
                     self.params_matrix[param_name].append(datetime.date(int(app_data_parts[0]),int(app_data_parts[1]),int(app_data_parts[2])))
+        logger.info(self.params_matrix)
     
     def getTestValuesForParam(self,paramName):
         return self.params_matrix[paramName]

@@ -15,7 +15,7 @@ import sys
 sys.path.append("../utils")
 import utils.json_utils
 sys.path.append("../terrplant")
-import terrplant import terrplant
+from terrplant import terrplant_model as terrplant
 
 class TerrPlantExecutePage(webapp.RequestHandler):
     def post(self):

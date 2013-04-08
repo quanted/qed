@@ -2,16 +2,17 @@ import unittest
 import pytest
 import logging
 import sys
+import traceback
 sys.path.append("utils")
 sys.path.append("./")
 from terrplant import terrplant_model
 from CSVTestParamsLoader import CSVTestParamsLoader
 
-logger = logging.getLogger("RiceTest")
+logger = logging.getLogger("TerrPlantTest")
 
 def pytest_generate_tests(metafunc):
     params_matrix = get_params_matrix()
-    metafunc.parametrize("numiter", range(len(params_matrix.get('a'))))
+    metafunc.parametrize("numiter", range(len(params_matrix.get('A'))))
     
 def get_params_matrix():
     csvTestParamsLoader = CSVTestParamsLoader('test/eco/terrplant/terrplant_unittest_inputs.csv')
@@ -23,14 +24,14 @@ def testRundry(numiter):
     try:
         output = terrplant_model.rundry(params_matrix.get('A')[numiter], params_matrix.get('I')[numiter], params_matrix.get('R')[numiter])
         print "Test of function name: %s expected: %i != calculated: %i" % ("rundry", params_matrix.get('rundry_out')[numiter], output)
-        assert round(output, 3) == round(params_matrix['runDry_out'][numiter], 3) 
+        assert round(output, 3) == round(params_matrix['rundry_out'][numiter], 3) 
     except ZeroDivisionError:
         if params_matrix.get('rundry_out')[numiter] == None:
             assert True
         else:
             assert False
     except ValueError:
-        if params_matrix.get('I')[numiter] == 0:
+        if params_matrix.get('A')[numiter] < 0 or params_matrix.get('I')[numiter] <= 0 or params_matrix.get('R')[numiter]:
             assert True
         else:
             assert False
@@ -41,7 +42,7 @@ def testRunSemi(numiter):
         output = terrplant_model.runsemi(params_matrix.get('A')[numiter], params_matrix.get('I')[numiter], params_matrix.get('R')[numiter])
         print "Test of function name: %s expected: %i != calculated: %i" % ("runsemi", params_matrix.get('runsemi_out')[numiter], output)
         assert round(output, 3) == round(params_matrix['runsemi_out'][numiter], 3) 
-    except Error:
+    except Exception:
         if params_matrix.get('runsemi_out')[numiter] == None:
             assert True
         else:
@@ -49,11 +50,12 @@ def testRunSemi(numiter):
 
 def testSpray(numiter):
     params_matrix = get_params_matrix()
+    logger.info(params_matrix)
     try:
         output = terrplant_model.spray(params_matrix.get('A')[numiter], params_matrix.get('D')[numiter])
         print "Test of function name: %s expected: %i != calculated: %i" % ("spray", params_matrix.get('spray_out')[numiter], output)
         assert round(output, 3) == round(params_matrix['spray_out'][numiter], 3) 
-    except Error:
+    except Exception:
         if params_matrix.get('spray_out')[numiter] == None:
             assert True
         else:
@@ -71,7 +73,7 @@ def testTotaldry(numiter):
             assert True
         else:
             assert False
-    except Error:
+    except Exception:
         print "Test threw unexpected Error"
         assert False
 
@@ -87,7 +89,7 @@ def testTotalsemi(numiter):
             assert True
         else:
             assert False
-    except Error:
+    except Exception:
         print "Test threw unexpected Error"
         assert False 
 
@@ -115,15 +117,18 @@ def testNmsRQdry(numiter):
             assert True
         else:
             assert False
-    except Error:
-        print "Test threw unexpected Error"
-        assert False 
+    except Exception:
+        if params_matrix.get('nmsRQdry_out')[numiter] == None:
+            assert True
+        else:
+            assert False
 
 def testLOCnmsdry(numiter):
     params_matrix = get_params_matrix()
+    print params_matrix
     try:
         output = terrplant_model.LOCnmsdry(params_matrix.get('nmsRQdry_out')[numiter])
-        print "Test of function name: %s expected: %i != calculated: %i" % ("LOCnmsdry", params_matrix.get('LOCnmsdry_out')[numiter], output)
+        print "Test of function name: %s expected: %s != calculated: %s" % ("LOCnmsdry", params_matrix.get('LOCnmsdry_out')[numiter], output)
         assert output == params_matrix['LOCnmsdry_out'][numiter]
     except ValueError:
         if params_matrix.get('LOCnmsdry_out')[numiter] == None:
@@ -131,22 +136,10 @@ def testLOCnmsdry(numiter):
             assert True
         else:
             assert False
-    except ZeroDivisionError:
-        if params_matrix.get('LOCnmsdry_out')[numiter] == None:
-            print "Test threw expected Error"
-            assert True
-        else:
-            assert False
-    except IndexError:
-        if params_matrix.get('LOCnmsdry_out')[numiter] == None:
-            print "Test threw expected Error"
-            assert True
-        else:
-            assert False
-    except Error:
+    except Exception:
         print "Test threw unexpected Error"
-        assert False 
-
+        traceback.print_exc(file=sys.stdout)
+        assert False
 
 def testNmsRQsemi(numiter):
     params_matrix = get_params_matrix()
@@ -172,18 +165,30 @@ def testNmsRQsemi(numiter):
             assert True
         else:
             assert False
-    except Error:
-        print "Test threw unexpected Error"
-        assert False 
+    except Exception:
+        if params_matrix.get('totalsemi_out')[numiter] == None or params_matrix.get('nms')[numiter] == None:
+            assert True
+        else:
+            print "Test threw unexpected Error"
+            traceback.print_exc(file=sys.stdout)
+            assert False 
+
 
 def testLOCnmssemi(numiter):
     params_matrix = get_params_matrix()
     try:
         output = terrplant_model.LOCnmssemi(params_matrix.get('nmsRQsemi_out')[numiter])
-        print "Test of function name: %s expected: %i != calculated: %i" % ("LOCnmssemi", params_matrix.get('LOCnmssemi_out')[numiter], output)
+        print "Test of function name: %s expected: %s != calculated: %s" % ("LOCnmssemi", params_matrix.get('LOCnmssemi_out')[numiter], output)
         assert output == params_matrix['LOCnmssemi_out'][numiter]
-    except Error:
+    except ValueError:
+        if params_matrix.get('LOCnmssemi_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            assert False
+    except Exception:
         print "Test threw unexpected Error"
+        traceback.print_exc(file=sys.stdout)
         assert False 
 
 def testNmsRQspray(numiter):
@@ -210,18 +215,28 @@ def testNmsRQspray(numiter):
             assert True
         else:
             assert False
-    except Error:
-        print "Test threw unexpected Error"
-        assert False
-
+    except Exception:
+        if params_matrix.get('nmsRQspray_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            print "Test threw unexpected Error"
+            traceback.print_exc(file=sys.stdout)
+            assert False    
 
 def testLOCnmsspray(numiter):
     params_matrix = get_params_matrix()
     try:
         output = terrplant_model.LOCnmsspray(params_matrix.get('nmsRQspray_out')[numiter])
-        print "Test of function name: %s expected: %i != calculated: %i" % ("LOCnmsspray", params_matrix.get('LOCnmsspray_out')[numiter], output)
+        print "Test of function name: %s expected: %s != calculated: %s" % ("LOCnmsspray", params_matrix.get('LOCnmsspray_out')[numiter], output)
         assert output, 3 == params_matrix['LOCnmsspray_out'][numiter]
-    except Error:
+    except ValueError:
+        if params_matrix.get('LOCnmsspray_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            assert False
+    except Exception:
         print "Test threw unexpected Error"
         assert False 
 
@@ -249,18 +264,30 @@ def testLmsRQdry(numiter):
             assert True
         else:
             assert False
-    except Error:
-        print "Test threw unexpected Error"
-        assert False
+    except Exception:
+        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            print "Test threw unexpected Error"
+            traceback.print_exc(file=sys.stdout)
+            assert False 
 
 def testLOClmsdry(numiter):
     params_matrix = get_params_matrix()
     try:
         output = terrplant_model.LOClmsdry(params_matrix.get('lmsRQdry_out')[numiter])
-        print "Test of function name: %s expected: %i != calculated: %i" % ("LOClmsdry", params_matrix.get('LOClmsdry_out')[numiter], output)
+        print "Test of function name: %s expected: %s != calculated: %s" % ("LOClmsdry", params_matrix.get('LOClmsdry_out')[numiter], output)
         assert output, 3 == params_matrix['LOClmsdry_out'][numiter]
-    except Error:
+    except ValueError:
+        if params_matrix.get('LOClmsdry_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            assert False
+    except Exception:
         print "Test threw unexpected Error"
+        traceback.print_exc(file=sys.stdout)
         assert False 
 
 def testLmsRQsemi(numiter):
@@ -270,41 +297,53 @@ def testLmsRQsemi(numiter):
         print "Test of function name: %s expected: %i != calculated: %i" % ("lmsRQsemi", params_matrix.get('lmsRQsemi_out')[numiter], output)
         assert round(output, 3) == round(params_matrix['lmsRQsemi_out'][numiter], 3)
     except ValueError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('lmsRQsemi_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
     except ZeroDivisionError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('lmsRQsemi_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
     except IndexError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('lmsRQsemi_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
-    except Error:
-        print "Test threw unexpected Error"
-        assert False
+    except Exception:
+        if params_matrix.get('lmsRQsemi_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            print "Test threw unexpected Error"
+            traceback.print_exc(file=sys.stdout)
+            assert False 
 
 def testLOClmssemi(numiter):
     params_matrix = get_params_matrix()
     try:
         output = terrplant_model.LOClmssemi(params_matrix.get('lmsRQsemi_out')[numiter])
-        print "Test of function name: %s expected: %i != calculated: %i" % ("LOClmssemi", params_matrix.get('LOClmssemi_out')[numiter], output)
+        print "Test of function name: %s expected: %s != calculated: %s" % ("LOClmssemi", params_matrix.get('LOClmssemi_out')[numiter], output)
         assert output == params_matrix['LOClmssemi_out'][numiter]
-    except Error:
+    except ValueError:
+        if params_matrix.get('LOClmssemi_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            assert False
+    except Exception:
         print "Test threw unexpected Error"
+        traceback.print_exc(file=sys.stdout)
         assert False 
 
 def testLmsRQspray(numiter):
     params_matrix = get_params_matrix()
     try:
-        output = terrplant_model.LOClmssemi(params_matrix.get('spray_out')[numiter],params_matrix.get('lms')[numiter])
+        output = terrplant_model.lmsRQspray(params_matrix.get('spray_out')[numiter],params_matrix.get('lms')[numiter])
         print "Test of function name: %s expected: %i != calculated: %i" % ("lmsRQspray", params_matrix.get('lmsRQspray_out')[numiter], output)
         assert round(output, 3) == round(params_matrix['lmsRQspray_out'][numiter], 3)
     except ValueError:
@@ -325,17 +364,28 @@ def testLmsRQspray(numiter):
             assert True
         else:
             assert False
-    except Error:
-        print "Test threw unexpected Error"
-        assert False
+    except Exception:
+        if params_matrix.get('lmsRQspray_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            print "Test threw unexpected Error"
+            traceback.print_exc(file=sys.stdout)
+            assert False 
 
 def testLOClmsspray(numiter):
     params_matrix = get_params_matrix()
     try:
         output = terrplant_model.LOClmsspray(params_matrix.get('lmsRQspray_out')[numiter])
-        print "Test of function name: %s expected: %i != calculated: %i" % ("LOClmsspray", params_matrix.get('LOClmsspray_out')[numiter], output)
+        print "Test of function name: %s expected: %s != calculated: %s" % ("LOClmsspray", params_matrix.get('LOClmsspray_out')[numiter], output)
         assert output == params_matrix['LOClmsspray_out'][numiter]
-    except Error:
+    except ValueError:
+        if params_matrix.get('LOClmsspray_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            assert False
+    except Exception:
         print "Test threw unexpected Error"
         assert False 
 
@@ -344,37 +394,47 @@ def testNdsRQdry(numiter):
     try:
         output = terrplant_model.ndsRQdry(params_matrix.get('totaldry_out')[numiter],params_matrix.get('nds')[numiter])
         print "Test of function name: %s expected: %i != calculated: %i" % ("ndsRQdry", params_matrix.get('ndsRQdry_out')[numiter], output)
-        assert round(output, 3) == round(params_matrix['LOClmsspray_out'][numiter], 3)
+        assert round(output, 3) == round(params_matrix['ndsRQdry_out'][numiter], 3)
     except ValueError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('ndsRQdry_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
     except ZeroDivisionError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('ndsRQdry_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
     except IndexError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('ndsRQdry_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
-    except Error:
-        print "Test threw unexpected Error"
-        assert False
-
+    except Exception:
+        if params_matrix.get('ndsRQdry_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            print "Test threw unexpected Error"
+            traceback.print_exc(file=sys.stdout)
+            assert False 
 
 def testLOCndsdry(numiter):
     params_matrix = get_params_matrix()
     try:
         output = terrplant_model.LOCndsdry(params_matrix.get('ndsRQdry_out')[numiter])
-        print "Test of function name: %s expected: %i != calculated: %i" % ("LOCndsdry", params_matrix.get('LOCndsdry_out')[numiter], output)
+        print "Test of function name: %s expected: %s != calculated: %s" % ("LOCndsdry", params_matrix.get('LOCndsdry_out')[numiter], output)
         assert output == params_matrix['LOCndsdry_out'][numiter]
-    except Error:
+    except ValueError:
+        if params_matrix.get('LOCndsdry_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            assert False
+    except Exception:
         print "Test threw unexpected Error"
         assert False
 
@@ -385,35 +445,48 @@ def testNdsRQsemi(numiter):
         print "Test of function name: %s expected: %i != calculated: %i" % ("ndsRQsemi", params_matrix.get('ndsRQsemi_out')[numiter], output)
         assert round(output, 3) == round(params_matrix['ndsRQsemi_out'][numiter], 3)
     except ValueError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('ndsRQsemi_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
     except ZeroDivisionError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('ndsRQsemi_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
     except IndexError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('ndsRQsemi_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
-    except Error:
-        print "Test threw unexpected Error"
-        assert False
+    except Exception:
+        if params_matrix.get('ndsRQsemi_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            print "Test threw unexpected Error"
+            traceback.print_exc(file=sys.stdout)
+            assert False 
 
 def testLOCndssemi(numiter):
     params_matrix = get_params_matrix()
     try:
-        output = terrplant_model.LOCndsRQsemi(params_matrix.get('ndsRQsemi_out')[numiter])
-        print "Test of function name: %s expected: %i != calculated: %i" % ("LOCndssemi", params_matrix.get('LOCndssemi_out')[numiter], output)
+        output = terrplant_model.LOCndssemi(params_matrix.get('ndsRQsemi_out')[numiter])
+        print "Test of function name: %s expected: %s != calculated: %s" % ("LOCndssemi", params_matrix.get('LOCndssemi_out')[numiter], output)
         assert output == params_matrix['LOCndssemi_out'][numiter]
-    except Error:
+    except ValueError:
+        if params_matrix.get('LOCndssemi_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            assert False
+    except Exception:
+        print "Test of function name: %s inputs: (%i)" % ("LOCndssemi", params_matrix.get('ndsRQsemi_out')[numiter])
         print "Test threw unexpected Error"
+        traceback.print_exc(file=sys.stdout)
         assert False
 
 def testNdsRQspray(numiter):
@@ -423,36 +496,49 @@ def testNdsRQspray(numiter):
         print "Test of function name: %s expected: %i != calculated: %i" % ("ndsRQspray", params_matrix.get('ndsRQspray_out')[numiter], output)
         assert round(output, 3) == round(params_matrix['ndsRQspray_out'][numiter], 3)
     except ValueError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('ndsRQspray_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
+            traceback.print_exc(file=sys.stdout)
             assert False
     except ZeroDivisionError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('ndsRQspray_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
     except IndexError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('ndsRQspray_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
-    except Error:
-        print "Test threw unexpected Error"
-        assert False
-    
+    except Exception:
+        if params_matrix.get('ndsRQspray_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            print "Test threw unexpected Error"
+            traceback.print_exc(file=sys.stdout)
+            assert False 
+
 def testLOCndsspray(numiter):
     params_matrix = get_params_matrix()
     try:
         output = terrplant_model.LOCndsspray(params_matrix.get('ndsRQspray_out')[numiter])
-        print "Test of function name: %s expected: %i != calculated: %i" % ("LOCndsspray", params_matrix.get('LOCndsspray_out')[numiter], output)
+        print "Test of function name: %s expected: %s != calculated: %s" % ("LOCndsspray", params_matrix.get('LOCndsspray_out')[numiter], output)
         assert output == params_matrix['LOCndsspray_out'][numiter]
-    except Error:
+    except ValueError:
+        if params_matrix.get('LOCndsspray_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            assert False 
+    except Exception:
+        print "Test of function name: %s inputs: (%i)" % ("LOCndsspray", params_matrix.get('LOCndsspray_out')[numiter])
         print "Test threw unexpected Error"
-        assert False    
+        assert False   
 
 def testLdsRQdry(numiter):
     params_matrix = get_params_matrix()
@@ -461,35 +547,48 @@ def testLdsRQdry(numiter):
         print "Test of function name: %s expected: %i != calculated: %i" % ("ldsRQdry", params_matrix.get('ldsRQdry_out')[numiter], output)
         assert round(output, 3) == round(params_matrix['ldsRQdry_out'][numiter], 3)
     except ValueError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('ldsRQdry_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
     except ZeroDivisionError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('ldsRQdry_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
     except IndexError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('ldsRQdry_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
-    except Error:
-        print "Test threw unexpected Error"
-        assert False
+    except Exception:
+        if params_matrix.get('ldsRQdry_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            print "Test threw unexpected Error"
+            traceback.print_exc(file=sys.stdout)
+            assert False 
 
 def testLOCldsdry(numiter):
     params_matrix = get_params_matrix()
     try:
-        output = terrplant_model.LOCldsRQdry(params_matrix.get('ldsRQdry_out')[numiter])
-        print "Test of function name: %s expected: %i != calculated: %i" % ("LOCldsdry", params_matrix.get('LOCldsdry_out')[numiter], output)
+        output = terrplant_model.LOCldsdry(params_matrix.get('ldsRQdry_out')[numiter])
+        print "Test of function name: %s expected: %s != calculated: %s" % ("LOCldsdry", params_matrix.get('LOCldsdry_out')[numiter], output)
         assert output == params_matrix['LOCldsdry_out'][numiter]
-    except Error:
+    except ValueError:
+        if params_matrix.get('LOCldsdry_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            assert False 
+    except Exception:
+        print "Test of function name: %s inputs: (%i)" % ("LOCldsdry", params_matrix.get('ldsRQdry_out')[numiter])
         print "Test threw unexpected Error"
+        traceback.print_exc(file=sys.stdout)
         assert False
 
 def testLdsRQsemi(numiter):
@@ -499,37 +598,49 @@ def testLdsRQsemi(numiter):
         print "Test of function name: %s expected: %i != calculated: %i" % ("ldsRQsemi", params_matrix.get('ldsRQsemi_out')[numiter], output)
         assert round(output, 3) == round(params_matrix['ldsRQsemi_out'][numiter], 3)
     except ValueError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('ldsRQsemi_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
     except ZeroDivisionError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('ldsRQsemi_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
     except IndexError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('ldsRQsemi_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
-    except Error:
-        print "Test threw unexpected Error"
-        assert False
-     
-
+    except Exception:
+        if params_matrix.get('ldsRQsemi_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            print "Test threw unexpected Error"
+            traceback.print_exc(file=sys.stdout)
+            assert False 
+    
 def testLOCldssemi(numiter):
     params_matrix = get_params_matrix()
     try:
         output = terrplant_model.LOCldssemi(params_matrix.get('ldsRQsemi_out')[numiter])
-        print "Test of function name: %s expected: %i != calculated: %i" % ("LOCldssemi", params_matrix.get('LOCldssemi_out')[numiter], output)
+        print "Test of function name: %s expected: %s != calculated: %s" % ("LOCldssemi", params_matrix.get('LOCldssemi_out')[numiter], output)
         assert output == params_matrix['LOCldssemi_out'][numiter]
-    except Error:
+    except ValueError:
+        if params_matrix.get('LOCldsdry_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            assert False 
+    except Exception:
+        print "Test of function name: %s inputs: (%i)" % ("LOCldssemi", params_matrix.get('ldsRQsemi_out')[numiter])
         print "Test threw unexpected Error"
-        assert False
+        assert False 
+
 
 def testLdsRQspray(numiter):
     params_matrix = get_params_matrix()
@@ -538,34 +649,46 @@ def testLdsRQspray(numiter):
         print "Test of function name: %s expected: %i != calculated: %i" % ("ldsRQspray", params_matrix.get('ldsRQspray_out')[numiter], output)
         assert round(output, 3) == round(params_matrix['ldsRQspray_out'][numiter], 3)
     except ValueError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('ldsRQspray_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
     except ZeroDivisionError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('ldsRQspray_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
     except IndexError:
-        if params_matrix.get('lmsRQdry_out')[numiter] == None:
+        if params_matrix.get('ldsRQspray_out')[numiter] == None:
             print "Test threw expected Error"
             assert True
         else:
             assert False
-    except Error:
-        print "Test threw unexpected Error"
-        assert False
-
+    except Exception:
+        if params_matrix.get('ldsRQspray_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            print "Test threw unexpected Error"
+            traceback.print_exc(file=sys.stdout)
+            assert False 
 
 def testLOCldsspray(numiter):
     params_matrix = get_params_matrix()
     try:
-        output = terrplant_model.LOCldsspray(params_matrix.get('ldsRQspray_out')[numiter])
-        print "Test of function name: %s expected: %i != calculated: %i" % ("LOCldsspray", params_matrix.get('LOCldsspray_out')[numiter], output)
+        output = terrplant_model.LOCldssemi(params_matrix.get('ldsRQspray_out')[numiter])
+        print "Test of function name: %s expected: %s != calculated: %s" % ("LOCldssemi", params_matrix.get('LOCldsspray_out')[numiter], output)
         assert output == params_matrix['LOCldsspray_out'][numiter]
-    except Error:
+    except ValueError:
+        if params_matrix.get('LOCldsspray_out')[numiter] == None:
+            print "Test threw expected Error"
+            assert True
+        else:
+            assert False 
+    except Exception:
+        print "Test of function name: %s inputs: (%i)" % ("LOCldsspray", params_matrix.get('ldsRQspray_out')[numiter])
         print "Test threw unexpected Error"
-        assert False
+        traceback.print_exc(file=sys.stdout)
+        assert False 

@@ -19,7 +19,7 @@ $(document).ready(function(){
 	});	
 	
 	$.ajax({
-		url:"{{ ubertool_server }}/batch_configs",
+		url:"{{ ubertool_server }}batch_configs",
 		type: 'GET',
 		success: function(batch_data) {	
 			$("#id_batch_ubertool_results").width(120);

@@ -2,7 +2,7 @@
 <body>
 <div>
 <h1>Report</h1>
-<p>781 statements analysed.</p><div>
+<p>780 statements analysed.</p><div>
 <h2>Duplication</h2>
 <table>
 <tr class="header">
@@ -19,8 +19,69 @@
 </tr>
 <tr class="odd">
 <th>percent duplicated lines</th>
-<td>34.890</td>
-<td>34.890</td>
+<td>34.822</td>
+<td>34.822</td>
+<td>=</td>
+</tr>
+</table>
+</div>
+<div>
+<h2>External dependencies</h2>
+<pre>django (ubertool_src.rice.rice_input)
+  \-db 
+  | \-models (ubertool_src.rice.Ricedb)
+  \-forms (ubertool_src.rice.Ricedb,ubertool_src.rice.rice_input)
+  \-utils 
+    \-safestring 
+      \-mark_safe (ubertool_src.rice.Ricedb)
+google 
+  \-appengine 
+    \-api 
+    | \-users (ubertool_src.rice.rice_output,ubertool_src.rice.Ricedb)
+    \-ext 
+      \-db (ubertool_src.rice.rice_output,ubertool_src.rice.rice_model,ubertool_src.rice.try)
+      \-webapp 
+        \-template (ubertool_src.rice.rice_qaqcinput,ubertool_src.rice.rice_algorithm,ubertool_src.rice.rice_batchinput,ubertool_src.rice.rice_output,ubertool_src.rice.rice_description,ubertool_src.rice.rice_qaqc,ubertool_src.rice.rice_references,ubertool_src.rice.rice_input,ubertool_src.rice.rice_batchoutput,ubertool_src.rice.rice_qaqcoutput)
+        \-util 
+          \-run_wsgi_app (ubertool_src.rice.rice_qaqcinput,ubertool_src.rice.rice_algorithm,ubertool_src.rice.rice_batchinput,ubertool_src.rice.rice_output,ubertool_src.rice.rice_description,ubertool_src.rice.rice_qaqc,ubertool_src.rice.rice_references,ubertool_src.rice.rice_input,ubertool_src.rice.rice_batchoutput,ubertool_src.rice.rice_qaqcoutput)
+numpy (ubertool_src.rice.rice_qaqcinput,ubertool_src.rice.rice_batchinput,ubertool_src.rice.rice_output,ubertool_src.rice.rice_qaqcoutput,ubertool_src.rice.rice_qaqc,ubertool_src.rice.rice_batchoutput)
+webapp2 (ubertool_src.rice.rice_qaqcinput,ubertool_src.rice.rice_algorithm,ubertool_src.rice.rice_batchinput,ubertool_src.rice.rice_output,ubertool_src.rice.rice_description,ubertool_src.rice.rice_qaqc,ubertool_src.rice.rice_references,ubertool_src.rice.rice_input,ubertool_src.rice.rice_batchoutput,ubertool_src.rice.rice_qaqcoutput)</pre></div>
+<div>
+<h2>Raw metrics</h2>
+<table>
+<tr class="header">
+<th>type</th>
+<th>number</th>
+<th>%</th>
+<th>previous</th>
+<th>difference</th>
+</tr>
+<tr class="even">
+<td>code</td>
+<td>1273</td>
+<td>85.55</td>
+<td>1273</td>
+<td>=</td>
+</tr>
+<tr class="odd">
+<td>docstring</td>
+<td>45</td>
+<td>3.02</td>
+<td>45</td>
+<td>=</td>
+</tr>
+<tr class="even">
+<td>comment</td>
+<td>62</td>
+<td>4.17</td>
+<td>62</td>
+<td>=</td>
+</tr>
+<tr class="odd">
+<td>empty</td>
+<td>108</td>
+<td>7.26</td>
+<td>108</td>
 <td>=</td>
 </tr>
 </table>
@@ -36,8 +97,8 @@
 </tr>
 <tr class="even">
 <td>convention</td>
-<td>579</td>
-<td>579</td>
+<td>574</td>
+<td>574</td>
 <td>=</td>
 </tr>
 <tr class="odd">
@@ -54,8 +115,8 @@
 </tr>
 <tr class="odd">
 <td>error</td>
-<td>51</td>
-<td>51</td>
+<td>52</td>
+<td>52</td>
 <td>=</td>
 </tr>
 </table>
@@ -72,80 +133,80 @@
 </tr>
 <tr class="even">
 <td>ubertool_src.rice.rice_qaqc</td>
-<td>39.22</td>
+<td>38.46</td>
 <td>28.21</td>
 <td>11.63</td>
-<td>24.01</td>
+<td>23.52</td>
 </tr>
 <tr class="odd">
 <td>ubertool_src.rice.rice_qaqcoutput</td>
-<td>39.22</td>
+<td>38.46</td>
 <td>26.92</td>
 <td>11.63</td>
-<td>24.01</td>
+<td>24.22</td>
 </tr>
 <tr class="even">
 <td>ubertool_src.rice.rice_output</td>
-<td>21.57</td>
+<td>21.15</td>
 <td>7.69</td>
 <td>9.30</td>
-<td>12.44</td>
+<td>12.37</td>
 </tr>
 <tr class="odd">
+<td>ubertool_src.rice.Ricedb</td>
+<td>1.92</td>
+<td>1.28</td>
+<td>2.33</td>
+<td>2.61</td>
+</tr>
+<tr class="even">
 <td>ubertool_src.rice.try</td>
 <td>0.00</td>
 <td>7.69</td>
 <td>58.14</td>
-<td>1.04</td>
+<td>1.05</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>ubertool_src.rice.rice_batchoutput</td>
 <td>0.00</td>
 <td>7.69</td>
 <td>4.65</td>
-<td>17.44</td>
+<td>17.60</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>ubertool_src.rice.rice_batchinput</td>
 <td>0.00</td>
 <td>6.41</td>
 <td>0.00</td>
-<td>2.42</td>
+<td>2.44</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>0.00</td>
 <td>5.13</td>
 <td>0.00</td>
-<td>6.56</td>
+<td>6.62</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>ubertool_src.rice.rice_input</td>
 <td>0.00</td>
 <td>5.13</td>
 <td>0.00</td>
-<td>2.59</td>
+<td>2.61</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>ubertool_src.rice.rice_model</td>
 <td>0.00</td>
 <td>2.56</td>
 <td>2.33</td>
-<td>0.69</td>
-</tr>
-<tr class="odd">
-<td>ubertool_src.rice.Ricedb</td>
-<td>0.00</td>
-<td>1.28</td>
-<td>2.33</td>
-<td>2.59</td>
+<td>0.70</td>
 </tr>
 <tr class="even">
 <td>ubertool_src.rice.rice_description</td>
 <td>0.00</td>
 <td>1.28</td>
 <td>0.00</td>
-<td>1.90</td>
+<td>1.92</td>
 </tr>
 </table>
 </div>
@@ -166,7 +227,7 @@
 </tr>
 <tr class="even">
 <td>C0301</td>
-<td>132</td>
+<td>127</td>
 </tr>
 <tr class="odd">
 <td>C0111</td>
@@ -257,6 +318,10 @@
 <td>1</td>
 </tr>
 <tr class="odd">
+<td>E1101</td>
+<td>1</td>
+</tr>
+<tr class="even">
 <td>C0323</td>
 <td>1</td>
 </tr>
@@ -264,68 +329,7 @@
 </div>
 <div>
 <h2>Global evaluation</h2>
-Your code has been rated at -2.23/10 (previous run: -2.23/10)</div>
-<div>
-<h2>Raw metrics</h2>
-<table>
-<tr class="header">
-<th>type</th>
-<th>number</th>
-<th>%</th>
-<th>previous</th>
-<th>difference</th>
-</tr>
-<tr class="even">
-<td>code</td>
-<td>1270</td>
-<td>85.52</td>
-<td>1270</td>
-<td>=</td>
-</tr>
-<tr class="odd">
-<td>docstring</td>
-<td>45</td>
-<td>3.03</td>
-<td>45</td>
-<td>=</td>
-</tr>
-<tr class="even">
-<td>comment</td>
-<td>62</td>
-<td>4.18</td>
-<td>62</td>
-<td>=</td>
-</tr>
-<tr class="odd">
-<td>empty</td>
-<td>108</td>
-<td>7.27</td>
-<td>108</td>
-<td>=</td>
-</tr>
-</table>
-</div>
-<div>
-<h2>External dependencies</h2>
-<pre>django (ubertool_src.rice.rice_input)
-  \-db 
-  | \-models (ubertool_src.rice.Ricedb)
-  \-forms (ubertool_src.rice.Ricedb,ubertool_src.rice.rice_input)
-  \-utils 
-    \-safestring 
-      \-mark_safe (ubertool_src.rice.Ricedb)
-google 
-  \-appengine 
-    \-api 
-    | \-users (ubertool_src.rice.rice_output,ubertool_src.rice.Ricedb)
-    \-ext 
-      \-db (ubertool_src.rice.rice_output,ubertool_src.rice.rice_model,ubertool_src.rice.try)
-      \-webapp 
-        \-template (ubertool_src.rice.rice_qaqcinput,ubertool_src.rice.rice_algorithm,ubertool_src.rice.rice_batchinput,ubertool_src.rice.rice_output,ubertool_src.rice.rice_description,ubertool_src.rice.rice_qaqc,ubertool_src.rice.rice_references,ubertool_src.rice.rice_input,ubertool_src.rice.rice_batchoutput,ubertool_src.rice.rice_qaqcoutput)
-        \-util 
-          \-run_wsgi_app (ubertool_src.rice.rice_qaqcinput,ubertool_src.rice.rice_algorithm,ubertool_src.rice.rice_batchinput,ubertool_src.rice.rice_output,ubertool_src.rice.rice_description,ubertool_src.rice.rice_qaqc,ubertool_src.rice.rice_references,ubertool_src.rice.rice_input,ubertool_src.rice.rice_batchoutput,ubertool_src.rice.rice_qaqcoutput)
-numpy (ubertool_src.rice.rice_qaqcinput,ubertool_src.rice.rice_batchinput,ubertool_src.rice.rice_output,ubertool_src.rice.rice_qaqcoutput,ubertool_src.rice.rice_qaqc,ubertool_src.rice.rice_batchoutput)
-webapp2 (ubertool_src.rice.rice_qaqcinput,ubertool_src.rice.rice_algorithm,ubertool_src.rice.rice_batchinput,ubertool_src.rice.rice_output,ubertool_src.rice.rice_description,ubertool_src.rice.rice_qaqc,ubertool_src.rice.rice_references,ubertool_src.rice.rice_input,ubertool_src.rice.rice_batchoutput,ubertool_src.rice.rice_qaqcoutput)</pre></div>
+Your code has been rated at -2.24/10 (previous run: -2.24/10)</div>
 <div>
 <h2>Statistics by type</h2>
 <table>
@@ -1902,7 +1906,7 @@ def html_table(row_inp,iter):
 <td>&#160;</td>
 <td>28</td>
 <td>0</td>
-<td>Line too long (87/80)</td>
+<td>Line too long (90/80)</td>
 </tr>
 <tr class="even">
 <td>C</td>
@@ -2198,17 +2202,9 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 <td>&#160;</td>
 <td>293</td>
 <td>0</td>
-<td>Line too long (87/80)</td>
-</tr>
-<tr class="even">
-<td>C</td>
-<td>ubertool_src.rice.rice_output</td>
-<td>&#160;</td>
-<td>294</td>
-<td>0</td>
 <td>Line too long (88/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>&#160;</td>
@@ -2216,7 +2212,7 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>&#160;</td>
@@ -2226,7 +2222,7 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
                                     ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>F</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>&#160;</td>
@@ -2234,7 +2230,7 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 <td>0</td>
 <td>Unable to import 'rice'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>F</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>&#160;</td>
@@ -2242,7 +2238,7 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 <td>0</td>
 <td>Unable to import 'utils.json_utils'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>msed</td>
@@ -2252,7 +2248,7 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 def msed(dsed,a,pb):
              ^^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>msed</td>
@@ -2260,7 +2256,7 @@ def msed(dsed,a,pb):
 <td>0</td>
 <td>Invalid name "a" for type argument (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>msed</td>
@@ -2268,7 +2264,7 @@ def msed(dsed,a,pb):
 <td>0</td>
 <td>Invalid name "pb" for type argument (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>msed</td>
@@ -2276,7 +2272,7 @@ def msed(dsed,a,pb):
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>msed</td>
@@ -2284,7 +2280,7 @@ def msed(dsed,a,pb):
 <td>14</td>
 <td>Invalid name "a" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>msed</td>
@@ -2292,7 +2288,7 @@ def msed(dsed,a,pb):
 <td>16</td>
 <td>Invalid name "pb" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>msed</td>
@@ -2300,7 +2296,7 @@ def msed(dsed,a,pb):
 <td>8</td>
 <td>Invalid name "a" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>msed</td>
@@ -2308,7 +2304,7 @@ def msed(dsed,a,pb):
 <td>8</td>
 <td>Invalid name "pb" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>msed</td>
@@ -2316,7 +2312,7 @@ def msed(dsed,a,pb):
 <td>9</td>
 <td>Unsupported format character 'm' (0x6d) at index 48</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>msed</td>
@@ -2324,7 +2320,7 @@ def msed(dsed,a,pb):
 <td>9</td>
 <td>Unsupported format character 'a' (0x61) at index 57</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>msed</td>
@@ -2332,7 +2328,7 @@ def msed(dsed,a,pb):
 <td>9</td>
 <td>Unsupported format character 'k' (0x6b) at index 62</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>RiceBatchRunner</td>
@@ -2340,7 +2336,7 @@ def msed(dsed,a,pb):
 <td>0</td>
 <td>Class has no __init__ method</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>RiceBatchRunner</td>
@@ -2348,7 +2344,7 @@ def msed(dsed,a,pb):
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>RiceBatchRunner.runRiceModel</td>
@@ -2358,7 +2354,7 @@ def msed(dsed,a,pb):
     def runRiceModel(self,config_properties):
                          ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>RiceBatchRunner.runRiceModel</td>
@@ -2366,7 +2362,7 @@ def msed(dsed,a,pb):
 <td>4</td>
 <td>Invalid name "runRiceModel" for type method (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>RiceBatchRunner.runRiceModel</td>
@@ -2374,7 +2370,7 @@ def msed(dsed,a,pb):
 <td>4</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>RiceBatchRunner.runRiceModel</td>
@@ -2382,7 +2378,7 @@ def msed(dsed,a,pb):
 <td>8</td>
 <td>Invalid name "riceModelResults" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>RiceBatchRunner.runRiceModel</td>
@@ -2392,7 +2388,7 @@ def msed(dsed,a,pb):
                 riceModelResults['mai1']=mai1(config_properties['application_kg_rate'], config_properties['area_of_the_rice_paddy'])
                                         ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>RiceBatchRunner.runRiceModel</td>
@@ -2402,7 +2398,7 @@ def msed(dsed,a,pb):
                                         riceModelResults['cw']=cw(riceModelResults['mai1'], config_properties['water_column_depth'], config_properties['sediment_depth'], config_properties['porosity_of_sediment'], config_properties['bulk_density_of_sediment'], config_properties['Kd'])
                                                               ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>R</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>RiceBatchRunner.runRiceModel</td>
@@ -2410,7 +2406,7 @@ def msed(dsed,a,pb):
 <td>4</td>
 <td>Method could be a function</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>R</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>RiceBatchRunner</td>
@@ -2418,7 +2414,7 @@ def msed(dsed,a,pb):
 <td>0</td>
 <td>Too few public methods (1/2)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>MsedService</td>
@@ -2426,7 +2422,7 @@ def msed(dsed,a,pb):
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>MsedService.get</td>
@@ -2434,7 +2430,7 @@ def msed(dsed,a,pb):
 <td>4</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>MsedService.get</td>
@@ -2442,7 +2438,7 @@ def msed(dsed,a,pb):
 <td>15</td>
 <td>Undefined variable 'simplejson'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>MsedService.get</td>
@@ -2450,7 +2446,7 @@ def msed(dsed,a,pb):
 <td>15</td>
 <td>Undefined variable 'json_utils'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>MsedService.get</td>
@@ -2460,7 +2456,7 @@ def msed(dsed,a,pb):
         msed_output = msed(data['dsed'],data['a'],data['pb'])
                                        ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>MsedService.get</td>
@@ -2468,7 +2464,7 @@ def msed(dsed,a,pb):
 <td>20</td>
 <td>Undefined variable 'simplejson'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>vw</td>
@@ -2478,7 +2474,7 @@ def msed(dsed,a,pb):
 def vw(dw,a,dsed,osed):
          ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>vw</td>
@@ -2486,7 +2482,7 @@ def vw(dw,a,dsed,osed):
 <td>0</td>
 <td>Invalid name "vw" for type function (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>vw</td>
@@ -2494,7 +2490,7 @@ def vw(dw,a,dsed,osed):
 <td>0</td>
 <td>Invalid name "dw" for type argument (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>vw</td>
@@ -2502,7 +2498,7 @@ def vw(dw,a,dsed,osed):
 <td>0</td>
 <td>Invalid name "a" for type argument (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>vw</td>
@@ -2510,7 +2506,7 @@ def vw(dw,a,dsed,osed):
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>vw</td>
@@ -2518,7 +2514,7 @@ def vw(dw,a,dsed,osed):
 <td>7</td>
 <td>Invalid name "dw" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>vw</td>
@@ -2526,7 +2522,7 @@ def vw(dw,a,dsed,osed):
 <td>10</td>
 <td>Invalid name "a" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>vw</td>
@@ -2534,7 +2530,7 @@ def vw(dw,a,dsed,osed):
 <td>8</td>
 <td>Invalid name "dw" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>vw</td>
@@ -2542,7 +2538,7 @@ def vw(dw,a,dsed,osed):
 <td>8</td>
 <td>Invalid name "a" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>vw</td>
@@ -2550,7 +2546,7 @@ def vw(dw,a,dsed,osed):
 <td>9</td>
 <td>Unsupported format character 'm' (0x6d) at index 52</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>vw</td>
@@ -2558,7 +2554,7 @@ def vw(dw,a,dsed,osed):
 <td>9</td>
 <td>Unsupported format character 'a' (0x61) at index 57</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>mai1</td>
@@ -2568,7 +2564,7 @@ def vw(dw,a,dsed,osed):
 def mai1(mai,a):
             ^^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>mai1</td>
@@ -2576,7 +2572,7 @@ def mai1(mai,a):
 <td>0</td>
 <td>Invalid name "a" for type argument (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>mai1</td>
@@ -2584,7 +2580,7 @@ def mai1(mai,a):
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>mai1</td>
@@ -2592,7 +2588,7 @@ def mai1(mai,a):
 <td>13</td>
 <td>Invalid name "a" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>mai1</td>
@@ -2600,7 +2596,7 @@ def mai1(mai,a):
 <td>4</td>
 <td>Invalid name "a" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>cw</td>
@@ -2610,7 +2606,7 @@ def mai1(mai,a):
 def cw(mai1,dw,dsed,osed,pb,kd):
            ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>cw</td>
@@ -2618,7 +2614,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>7</td>
 <td>Redefining name 'mai1' from outer scope (line 123)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>R</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>cw</td>
@@ -2626,7 +2622,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Too many arguments (6/5)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>cw</td>
@@ -2634,7 +2630,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Invalid name "cw" for type function (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>cw</td>
@@ -2642,7 +2638,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Invalid name "dw" for type argument (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>cw</td>
@@ -2650,7 +2646,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Invalid name "pb" for type argument (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>cw</td>
@@ -2658,7 +2654,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Invalid name "kd" for type argument (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>cw</td>
@@ -2666,7 +2662,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>cw</td>
@@ -2674,7 +2670,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>12</td>
 <td>Invalid name "dw" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>cw</td>
@@ -2682,7 +2678,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>25</td>
 <td>Invalid name "pb" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>cw</td>
@@ -2690,7 +2686,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>28</td>
 <td>Invalid name "kd" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>cw</td>
@@ -2698,7 +2694,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>8</td>
 <td>Invalid name "dw" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>cw</td>
@@ -2706,7 +2702,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>8</td>
 <td>Invalid name "pb" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>cw</td>
@@ -2714,7 +2710,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>8</td>
 <td>Invalid name "kd" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>cw</td>
@@ -2722,7 +2718,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>9</td>
 <td>Unsupported format character 'k' (0x6b) at index 73</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>cw</td>
@@ -2730,7 +2726,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>9</td>
 <td>Unsupported format character 'k' (0x6b) at index 61</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>cw</td>
@@ -2738,7 +2734,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>9</td>
 <td>Unsupported format character 'k' (0x6b) at index 72</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>R</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>cw</td>
@@ -2746,7 +2742,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Too many branches (13/12)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>RiceExecutePage</td>
@@ -2754,7 +2750,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>RiceExecutePage.post</td>
@@ -2762,7 +2758,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>4</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>RiceExecutePage.post</td>
@@ -2772,7 +2768,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
         rice.mai1_out=mai1(rice.mai, rice.a)
                      ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>RiceExecutePage.post</td>
@@ -2782,7 +2778,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
         rice.cw_out=cw(rice.mai1_out, rice.dw, rice.dsed, rice.osed, rice.pb, rice.kd)
                    ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>RiceExecutePage.post</td>
@@ -2790,7 +2786,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>8</td>
 <td>Invalid name "q" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>RiceExecutePage.post</td>
@@ -2798,7 +2794,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>8</td>
 <td>Invalid name "x" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>RiceExecutePage.post</td>
@@ -2808,7 +2804,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'rice','page':'output'})
                                                                                                          ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>RiceExecutePage.post</td>
@@ -2820,7 +2816,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
                 'model':'rice',
                 'model_attributes':'Rice Model Output'})</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>RiceExecutePage.post</td>
@@ -2828,23 +2824,23 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>8</td>
 <td>Unused variable 'x'</td>
 </tr>
-<tr class="odd">
-<td>C</td>
-<td>ubertool_src.rice.rice_output</td>
-<td>&#160;</td>
-<td>297</td>
-<td>0</td>
-<td>Invalid name "app" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
-</tr>
 <tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_output</td>
+<td>&#160;</td>
+<td>296</td>
+<td>0</td>
+<td>Invalid name "app" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>ubertool_src.rice.rice_output</td>
 <td>main</td>
-<td>301</td>
+<td>300</td>
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>&#160;</td>
@@ -2852,7 +2848,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Unused import utils</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>&#160;</td>
@@ -2860,7 +2856,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Unused import datetime</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_output</td>
 <td>&#160;</td>
@@ -2868,7 +2864,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Unused import np</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -2876,7 +2872,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -2884,7 +2880,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -2892,7 +2888,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (123/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -2900,7 +2896,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -2908,7 +2904,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (87/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -2916,7 +2912,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -2924,7 +2920,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -2932,7 +2928,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -2940,7 +2936,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (119/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -2948,7 +2944,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -2956,7 +2952,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (85/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -2964,7 +2960,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -2972,7 +2968,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -2980,7 +2976,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -2988,7 +2984,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (123/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -2996,7 +2992,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3004,7 +3000,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (87/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3012,7 +3008,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3020,7 +3016,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (132/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3028,7 +3024,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3036,7 +3032,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3044,7 +3040,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (119/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3052,7 +3048,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3060,7 +3056,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (85/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3068,7 +3064,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3076,7 +3072,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (94/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3084,7 +3080,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (94/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3092,7 +3088,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (100/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3100,7 +3096,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (100/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3108,7 +3104,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (82/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3116,7 +3112,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (82/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3124,7 +3120,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (132/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3132,7 +3128,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (132/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3140,7 +3136,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (121/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3148,7 +3144,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (103/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3156,71 +3152,39 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Line too long (96/80)</td>
 </tr>
-<tr class="even">
-<td>C</td>
-<td>ubertool_src.rice.rice_qaqc</td>
-<td>&#160;</td>
-<td>257</td>
-<td>0</td>
-<td>Line too long (107/80)</td>
-</tr>
 <tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
-<td>258</td>
-<td>0</td>
-<td>Line too long (95/80)</td>
-</tr>
-<tr class="even">
-<td>C</td>
-<td>ubertool_src.rice.rice_qaqc</td>
-<td>&#160;</td>
-<td>259</td>
-<td>0</td>
-<td>Line too long (107/80)</td>
-</tr>
-<tr class="odd">
-<td>C</td>
-<td>ubertool_src.rice.rice_qaqc</td>
-<td>&#160;</td>
-<td>260</td>
-<td>0</td>
-<td>Line too long (95/80)</td>
-</tr>
-<tr class="even">
-<td>C</td>
-<td>ubertool_src.rice.rice_qaqc</td>
-<td>&#160;</td>
-<td>261</td>
+<td>265</td>
 <td>0</td>
 <td>Line too long (96/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
-<td>262</td>
+<td>266</td>
 <td>0</td>
 <td>Line too long (87/80)</td>
 </tr>
-<tr class="even">
-<td>C</td>
-<td>ubertool_src.rice.rice_qaqc</td>
-<td>&#160;</td>
-<td>263</td>
-<td>0</td>
-<td>Line too long (88/80)</td>
-</tr>
 <tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
-<td>284</td>
+<td>267</td>
+<td>0</td>
+<td>Line too long (88/80)</td>
+</tr>
+<tr class="even">
+<td>C</td>
+<td>ubertool_src.rice.rice_qaqc</td>
+<td>&#160;</td>
+<td>288</td>
 <td>0</td>
 <td>Line too long (95/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3228,7 +3192,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3238,7 +3202,7 @@ def cw(mai1,dw,dsed,osed,pb,kd):
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
                                     ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>F</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3246,7 +3210,7 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 <td>0</td>
 <td>Unable to import 'rice'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3256,7 +3220,7 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 cwd= os.getcwd()
    ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3264,7 +3228,7 @@ cwd= os.getcwd()
 <td>0</td>
 <td>Invalid name "cwd" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3272,7 +3236,7 @@ cwd= os.getcwd()
 <td>0</td>
 <td>Invalid name "data" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3282,7 +3246,7 @@ cwd= os.getcwd()
 dsed=[]
     ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3290,7 +3254,7 @@ dsed=[]
 <td>0</td>
 <td>Invalid name "dsed" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3300,7 +3264,7 @@ dsed=[]
 a=[]
  ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3308,7 +3272,7 @@ a=[]
 <td>0</td>
 <td>Invalid name "a" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3318,7 +3282,7 @@ a=[]
 pb=[]
   ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3326,7 +3290,7 @@ pb=[]
 <td>0</td>
 <td>Invalid name "pb" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3336,7 +3300,7 @@ pb=[]
 dw=[]
   ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3344,7 +3308,7 @@ dw=[]
 <td>0</td>
 <td>Invalid name "dw" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3354,7 +3318,7 @@ dw=[]
 osed=[]
     ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3362,7 +3326,7 @@ osed=[]
 <td>0</td>
 <td>Invalid name "osed" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3372,7 +3336,7 @@ osed=[]
 mai=[]
    ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3380,7 +3344,7 @@ mai=[]
 <td>0</td>
 <td>Invalid name "mai" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3390,7 +3354,7 @@ mai=[]
 kd=[]
   ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3398,7 +3362,7 @@ kd=[]
 <td>0</td>
 <td>Invalid name "kd" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3408,7 +3372,7 @@ kd=[]
 msed_out=[]
         ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3416,7 +3380,7 @@ msed_out=[]
 <td>0</td>
 <td>Invalid name "msed_out" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3426,7 +3390,7 @@ msed_out=[]
 vw_out=[]
       ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3434,7 +3398,7 @@ vw_out=[]
 <td>0</td>
 <td>Invalid name "vw_out" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3444,7 +3408,7 @@ vw_out=[]
 mai1_out=[]
         ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3452,7 +3416,7 @@ mai1_out=[]
 <td>0</td>
 <td>Invalid name "mai1_out" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3462,7 +3426,7 @@ mai1_out=[]
 cw_out=[]
       ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3470,7 +3434,7 @@ cw_out=[]
 <td>0</td>
 <td>Invalid name "cw_out" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3480,7 +3444,7 @@ cw_out=[]
 out_fun_Msed=[]
             ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3488,7 +3452,7 @@ out_fun_Msed=[]
 <td>0</td>
 <td>Invalid name "out_fun_Msed" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3498,7 +3462,7 @@ out_fun_Msed=[]
 out_fun_Vw=[]
           ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3506,7 +3470,7 @@ out_fun_Vw=[]
 <td>0</td>
 <td>Invalid name "out_fun_Vw" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3516,7 +3480,7 @@ out_fun_Vw=[]
 out_fun_Mai1=[]
             ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3524,7 +3488,7 @@ out_fun_Mai1=[]
 <td>0</td>
 <td>Invalid name "out_fun_Mai1" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3534,7 +3498,7 @@ out_fun_Mai1=[]
 out_fun_Cw=[]
           ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -3542,7 +3506,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "out_fun_Cw" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>set_globals</td>
@@ -3550,7 +3514,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Msed</td>
@@ -3558,7 +3522,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "TestCase_Msed" for type class (should match [A-Z_][a-zA-Z0-9]+$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Msed</td>
@@ -3566,7 +3530,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Msed.setUp</td>
@@ -3574,7 +3538,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Invalid name "setUp" for type method (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Msed.setUp</td>
@@ -3584,7 +3548,7 @@ out_fun_Cw=[]
         self.dsed_in=dsed_in
                     ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Msed.setUp</td>
@@ -3592,7 +3556,7 @@ out_fun_Cw=[]
 <td>21</td>
 <td>Undefined variable 'dsed_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Msed.setUp</td>
@@ -3602,7 +3566,7 @@ out_fun_Cw=[]
         self.a_in=a_in
                  ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Msed.setUp</td>
@@ -3610,7 +3574,7 @@ out_fun_Cw=[]
 <td>18</td>
 <td>Undefined variable 'a_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Msed.setUp</td>
@@ -3620,7 +3584,7 @@ out_fun_Cw=[]
         self.pb_in=pb_in
                   ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Msed.setUp</td>
@@ -3628,7 +3592,7 @@ out_fun_Cw=[]
 <td>19</td>
 <td>Undefined variable 'pb_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Msed.setUp</td>
@@ -3638,7 +3602,7 @@ out_fun_Cw=[]
         self.msed_out_in=msed_out_in
                         ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Msed.setUp</td>
@@ -3646,7 +3610,7 @@ out_fun_Cw=[]
 <td>25</td>
 <td>Undefined variable 'msed_out_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Msed.testMsed</td>
@@ -3654,7 +3618,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Invalid name "testMsed" for type method (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Msed.testMsed</td>
@@ -3662,7 +3626,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Msed.testMsed</td>
@@ -3672,7 +3636,7 @@ out_fun_Cw=[]
             fun = rice_output.msed(self.dsed_in,self.a_in,self.pb_in)
                                                ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Msed.testMsed</td>
@@ -3682,7 +3646,7 @@ out_fun_Cw=[]
             testFailureMessage = "Test of function name: %s expected: %i != calculated: %i" % ("msed",self.msed_out_in,fun)
                                                                                                      ^^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Msed.testMsed</td>
@@ -3690,7 +3654,7 @@ out_fun_Cw=[]
 <td>12</td>
 <td>Invalid name "testFailureMessage" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Msed.testMsed</td>
@@ -3700,7 +3664,7 @@ out_fun_Cw=[]
             self.assertEqual(round(fun,3),round(self.msed_out_in,3),testFailureMessage)
                                       ^^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>R</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Msed</td>
@@ -3708,7 +3672,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Too many public methods (46/20)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw</td>
@@ -3716,7 +3680,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "TestCase_Vw" for type class (should match [A-Z_][a-zA-Z0-9]+$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw</td>
@@ -3724,7 +3688,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw.setUp</td>
@@ -3732,7 +3696,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Invalid name "setUp" for type method (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw.setUp</td>
@@ -3742,7 +3706,7 @@ out_fun_Cw=[]
         self.dw_in=dw_in
                   ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw.setUp</td>
@@ -3750,7 +3714,7 @@ out_fun_Cw=[]
 <td>19</td>
 <td>Undefined variable 'dw_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw.setUp</td>
@@ -3760,7 +3724,7 @@ out_fun_Cw=[]
         self.a_in=a_in
                  ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw.setUp</td>
@@ -3768,7 +3732,7 @@ out_fun_Cw=[]
 <td>18</td>
 <td>Undefined variable 'a_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw.setUp</td>
@@ -3778,7 +3742,7 @@ out_fun_Cw=[]
         self.dsed_in=dsed_in
                     ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw.setUp</td>
@@ -3786,7 +3750,7 @@ out_fun_Cw=[]
 <td>21</td>
 <td>Undefined variable 'dsed_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw.setUp</td>
@@ -3796,7 +3760,7 @@ out_fun_Cw=[]
         self.osed_in=osed_in
                     ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw.setUp</td>
@@ -3804,7 +3768,7 @@ out_fun_Cw=[]
 <td>21</td>
 <td>Undefined variable 'osed_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw.setUp</td>
@@ -3814,7 +3778,7 @@ out_fun_Cw=[]
         self.vw_out_in=vw_out_in
                       ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw.setUp</td>
@@ -3822,7 +3786,7 @@ out_fun_Cw=[]
 <td>23</td>
 <td>Undefined variable 'vw_out_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw.testVw</td>
@@ -3830,7 +3794,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Invalid name "testVw" for type method (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw.testVw</td>
@@ -3838,7 +3802,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw.testVw</td>
@@ -3848,7 +3812,7 @@ out_fun_Cw=[]
             fun = rice_output.vw(self.dw_in,self.a_in,self.dsed_in,self.osed_in)
                                            ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw.testVw</td>
@@ -3858,7 +3822,7 @@ out_fun_Cw=[]
             testFailureMessage = "Test of function name: %s expected: %i != calculated: %i" % ("vw",self.vw_out_in,fun)
                                                                                                    ^^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw.testVw</td>
@@ -3866,7 +3830,7 @@ out_fun_Cw=[]
 <td>12</td>
 <td>Invalid name "testFailureMessage" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw.testVw</td>
@@ -3876,7 +3840,7 @@ out_fun_Cw=[]
             self.assertEqual(round(fun,3),round(self.vw_out_in,3),testFailureMessage)
                                       ^^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>R</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Vw</td>
@@ -3884,7 +3848,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Too many public methods (46/20)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Mai1</td>
@@ -3892,7 +3856,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "TestCase_Mai1" for type class (should match [A-Z_][a-zA-Z0-9]+$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Mai1</td>
@@ -3900,7 +3864,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Mai1.setUp</td>
@@ -3908,7 +3872,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Invalid name "setUp" for type method (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Mai1.setUp</td>
@@ -3918,7 +3882,7 @@ out_fun_Cw=[]
         self.mai_in=mai_in
                    ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Mai1.setUp</td>
@@ -3926,7 +3890,7 @@ out_fun_Cw=[]
 <td>20</td>
 <td>Undefined variable 'mai_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Mai1.setUp</td>
@@ -3936,7 +3900,7 @@ out_fun_Cw=[]
         self.a_in=a_in
                  ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Mai1.setUp</td>
@@ -3944,7 +3908,7 @@ out_fun_Cw=[]
 <td>18</td>
 <td>Undefined variable 'a_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Mai1.setUp</td>
@@ -3954,7 +3918,7 @@ out_fun_Cw=[]
         self.mai1_out_in=mai1_out_in
                         ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Mai1.setUp</td>
@@ -3962,7 +3926,7 @@ out_fun_Cw=[]
 <td>25</td>
 <td>Undefined variable 'mai1_out_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Mai1.testMai1</td>
@@ -3970,7 +3934,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Invalid name "testMai1" for type method (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Mai1.testMai1</td>
@@ -3978,7 +3942,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Mai1.testMai1</td>
@@ -3988,7 +3952,7 @@ out_fun_Cw=[]
             fun = rice_output.mai1(self.mai_in,self.a_in)
                                               ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Mai1.testMai1</td>
@@ -3998,7 +3962,7 @@ out_fun_Cw=[]
             testFailureMessage = "Test of function name: %s expected: %i != calculated: %i" % ("mai1",self.mai1_out_in,fun)
                                                                                                      ^^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Mai1.testMai1</td>
@@ -4006,7 +3970,7 @@ out_fun_Cw=[]
 <td>12</td>
 <td>Invalid name "testFailureMessage" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Mai1.testMai1</td>
@@ -4016,7 +3980,7 @@ out_fun_Cw=[]
             self.assertEqual(round(fun,3),round(self.mai1_out_in,3),testFailureMessage)
                                       ^^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>R</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Mai1</td>
@@ -4024,7 +3988,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Too many public methods (46/20)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>R</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw</td>
@@ -4032,7 +3996,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Too many instance attributes (8/7)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw</td>
@@ -4040,7 +4004,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "TestCase_Cw" for type class (should match [A-Z_][a-zA-Z0-9]+$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw</td>
@@ -4048,7 +4012,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.setUp</td>
@@ -4056,7 +4020,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Invalid name "setUp" for type method (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.setUp</td>
@@ -4066,7 +4030,7 @@ out_fun_Cw=[]
         self.dsed_in=dsed_in
                     ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.setUp</td>
@@ -4074,7 +4038,7 @@ out_fun_Cw=[]
 <td>21</td>
 <td>Undefined variable 'dsed_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.setUp</td>
@@ -4084,7 +4048,7 @@ out_fun_Cw=[]
         self.pb_in=pb_in
                   ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.setUp</td>
@@ -4092,7 +4056,7 @@ out_fun_Cw=[]
 <td>19</td>
 <td>Undefined variable 'pb_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.setUp</td>
@@ -4102,7 +4066,7 @@ out_fun_Cw=[]
         self.dw_in=dw_in
                   ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.setUp</td>
@@ -4110,7 +4074,7 @@ out_fun_Cw=[]
 <td>19</td>
 <td>Undefined variable 'dw_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.setUp</td>
@@ -4120,7 +4084,7 @@ out_fun_Cw=[]
         self.osed_in=osed_in
                     ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.setUp</td>
@@ -4128,7 +4092,7 @@ out_fun_Cw=[]
 <td>21</td>
 <td>Undefined variable 'osed_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.setUp</td>
@@ -4138,7 +4102,7 @@ out_fun_Cw=[]
         self.mai_in=mai_in
                    ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.setUp</td>
@@ -4146,7 +4110,7 @@ out_fun_Cw=[]
 <td>20</td>
 <td>Undefined variable 'mai_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.setUp</td>
@@ -4156,7 +4120,7 @@ out_fun_Cw=[]
         self.kd_in=kd_in
                   ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.setUp</td>
@@ -4164,7 +4128,7 @@ out_fun_Cw=[]
 <td>19</td>
 <td>Undefined variable 'kd_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.setUp</td>
@@ -4174,7 +4138,7 @@ out_fun_Cw=[]
         self.a_in=a_in
                  ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.setUp</td>
@@ -4182,7 +4146,7 @@ out_fun_Cw=[]
 <td>18</td>
 <td>Undefined variable 'a_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.setUp</td>
@@ -4192,7 +4156,7 @@ out_fun_Cw=[]
         self.cw_out_in=cw_out_in
                       ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.setUp</td>
@@ -4200,7 +4164,7 @@ out_fun_Cw=[]
 <td>23</td>
 <td>Undefined variable 'cw_out_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.testCw</td>
@@ -4208,7 +4172,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Invalid name "testCw" for type method (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.testCw</td>
@@ -4216,7 +4180,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.testCw</td>
@@ -4226,7 +4190,7 @@ out_fun_Cw=[]
             fun = rice_output.cw(rice_output.mai1(self.mai_in,self.a_in),self.dw_in,self.dsed_in,self.osed_in,self.pb_in,self.kd_in)
                                                              ^^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.testCw</td>
@@ -4236,7 +4200,7 @@ out_fun_Cw=[]
             testFailureMessage = "Test of function name: %s expected: %d != calculated: %d" % ("cw",self.cw_out_in,fun)
                                                                                                    ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.testCw</td>
@@ -4244,7 +4208,7 @@ out_fun_Cw=[]
 <td>12</td>
 <td>Invalid name "testFailureMessage" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw.testCw</td>
@@ -4254,7 +4218,7 @@ out_fun_Cw=[]
             self.assertEqual(round(fun,3),round(self.cw_out_in,3),testFailureMessage)
                                       ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>R</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>TestCase_Cw</td>
@@ -4262,7 +4226,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Too many public methods (46/20)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>suite</td>
@@ -4270,7 +4234,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Redefining name 'suite' from outer scope (line 114)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>suite</td>
@@ -4278,7 +4242,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "TestCaseName" for type argument (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>suite</td>
@@ -4286,7 +4250,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>suite</td>
@@ -4294,7 +4258,7 @@ out_fun_Cw=[]
 <td>10</td>
 <td>Invalid name "TestCaseName" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>suite</td>
@@ -4304,7 +4268,7 @@ out_fun_Cw=[]
     test_out=stream.read()
             ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>suite</td>
@@ -4312,7 +4276,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Unused variable 'result'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -4320,7 +4284,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "test_suite_msed_1" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -4328,7 +4292,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "test_suite_msed_2" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -4336,7 +4300,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "test_suite_vw_1" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -4344,7 +4308,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "test_suite_vw_2" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -4352,7 +4316,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "test_suite_mai1_1" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -4360,7 +4324,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "test_suite_mai1_2" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -4368,7 +4332,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "test_suite_cw_1" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -4376,7 +4340,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "test_suite_cw_2" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>RiceQaqcPage</td>
@@ -4384,7 +4348,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>RiceQaqcPage.get</td>
@@ -4392,7 +4356,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>RiceQaqcPage.get</td>
@@ -4400,7 +4364,7 @@ out_fun_Cw=[]
 <td>8</td>
 <td>Invalid name "x" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>RiceQaqcPage.get</td>
@@ -4410,7 +4374,7 @@ out_fun_Cw=[]
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'rice','page':'qaqc'})
                                                                                                          ^^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>RiceQaqcPage.get</td>
@@ -4476,13 +4440,17 @@ out_fun_Cw=[]
 
 
 
-        """ % (out_fun_Msed[0],msed_out[0],test_suite_msed_1,out_fun_Msed[1],msed_out[1],test_suite_msed_2,
+        """ % (out_fun_Msed[0],msed_out[0],test_suite_msed_1,
                               ^^
-               out_fun_Vw[0],vw_out[0],test_suite_vw_1,out_fun_Vw[1],vw_out[1],test_suite_vw_2,
-               out_fun_Mai1[0],mai1_out[0],test_suite_mai1_1,out_fun_Mai1[1],mai1_out[1],test_suite_mai1_2,
-               out_fun_Cw[0],cw_out[0],test_suite_cw_1,out_fun_Cw[1],cw_out[1],test_suite_cw_2)</td>
+               out_fun_Msed[1],msed_out[1],test_suite_msed_2,
+               out_fun_Vw[0],vw_out[0],test_suite_vw_1,
+               out_fun_Vw[1],vw_out[1],test_suite_vw_2,
+               out_fun_Mai1[0],mai1_out[0],test_suite_mai1_1,
+               out_fun_Mai1[1],mai1_out[1],test_suite_mai1_2,
+               out_fun_Cw[0],cw_out[0],test_suite_cw_1,
+               out_fun_Cw[1],cw_out[1],test_suite_cw_2)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>RiceQaqcPage.get</td>
@@ -4490,23 +4458,23 @@ out_fun_Cw=[]
 <td>8</td>
 <td>Unused variable 'x'</td>
 </tr>
-<tr class="even">
-<td>C</td>
-<td>ubertool_src.rice.rice_qaqc</td>
-<td>&#160;</td>
-<td>266</td>
-<td>0</td>
-<td>Invalid name "app" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
-</tr>
 <tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqc</td>
+<td>&#160;</td>
+<td>270</td>
+<td>0</td>
+<td>Invalid name "app" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
+</tr>
+<tr class="even">
+<td>C</td>
+<td>ubertool_src.rice.rice_qaqc</td>
 <td>main</td>
-<td>268</td>
+<td>272</td>
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -4514,7 +4482,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Unused import pprint</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -4522,7 +4490,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Unused import np</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqc</td>
 <td>&#160;</td>
@@ -4530,7 +4498,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Unused import cgi</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4538,7 +4506,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Line too long (121/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4546,7 +4514,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Line too long (103/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4554,7 +4522,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Line too long (97/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4562,7 +4530,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Line too long (87/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4570,7 +4538,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Line too long (88/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4578,7 +4546,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4588,7 +4556,7 @@ out_fun_Cw=[]
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
                                     ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4598,7 +4566,7 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 cwd= os.getcwd()
    ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4606,7 +4574,7 @@ cwd= os.getcwd()
 <td>0</td>
 <td>Invalid name "cwd" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4614,7 +4582,7 @@ cwd= os.getcwd()
 <td>0</td>
 <td>Invalid name "data" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4624,7 +4592,7 @@ cwd= os.getcwd()
 dsed=[]
     ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4632,7 +4600,7 @@ dsed=[]
 <td>0</td>
 <td>Invalid name "dsed" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4642,7 +4610,7 @@ dsed=[]
 a=[]
  ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4650,7 +4618,7 @@ a=[]
 <td>0</td>
 <td>Invalid name "a" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4660,7 +4628,7 @@ a=[]
 pb=[]
   ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4668,7 +4636,7 @@ pb=[]
 <td>0</td>
 <td>Invalid name "pb" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4678,7 +4646,7 @@ pb=[]
 dw=[]
   ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4686,7 +4654,7 @@ dw=[]
 <td>0</td>
 <td>Invalid name "dw" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4696,7 +4664,7 @@ dw=[]
 osed=[]
     ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4704,7 +4672,7 @@ osed=[]
 <td>0</td>
 <td>Invalid name "osed" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4714,7 +4682,7 @@ osed=[]
 mai=[]
    ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4722,7 +4690,7 @@ mai=[]
 <td>0</td>
 <td>Invalid name "mai" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4732,7 +4700,7 @@ mai=[]
 kd=[]
   ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4740,7 +4708,7 @@ kd=[]
 <td>0</td>
 <td>Invalid name "kd" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4750,7 +4718,7 @@ kd=[]
 msed_out=[]
         ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4758,7 +4726,7 @@ msed_out=[]
 <td>0</td>
 <td>Invalid name "msed_out" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4768,7 +4736,7 @@ msed_out=[]
 vw_out=[]
       ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4776,7 +4744,7 @@ vw_out=[]
 <td>0</td>
 <td>Invalid name "vw_out" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4786,7 +4754,7 @@ vw_out=[]
 mai1_out=[]
         ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4794,7 +4762,7 @@ mai1_out=[]
 <td>0</td>
 <td>Invalid name "mai1_out" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4804,7 +4772,7 @@ mai1_out=[]
 cw_out=[]
       ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4812,7 +4780,7 @@ cw_out=[]
 <td>0</td>
 <td>Invalid name "cw_out" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>RiceQaqcInputPage</td>
@@ -4820,7 +4788,7 @@ cw_out=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>RiceQaqcInputPage.get</td>
@@ -4828,7 +4796,7 @@ cw_out=[]
 <td>4</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>RiceQaqcInputPage.get</td>
@@ -4836,7 +4804,7 @@ cw_out=[]
 <td>8</td>
 <td>Invalid name "x" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>RiceQaqcInputPage.get</td>
@@ -4846,7 +4814,7 @@ cw_out=[]
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'rice','page':'qaqc'})
                                                                                                          ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>RiceQaqcInputPage.get</td>
@@ -4854,7 +4822,7 @@ cw_out=[]
 <td>8</td>
 <td>Unused variable 'x'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4862,7 +4830,7 @@ cw_out=[]
 <td>0</td>
 <td>Invalid name "app" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>main</td>
@@ -4870,7 +4838,7 @@ cw_out=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4878,7 +4846,7 @@ cw_out=[]
 <td>0</td>
 <td>Unused import cgi</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4886,7 +4854,7 @@ cw_out=[]
 <td>0</td>
 <td>Unused import StringIO</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcinput</td>
 <td>&#160;</td>
@@ -4894,7 +4862,7 @@ cw_out=[]
 <td>0</td>
 <td>Unused import np</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -4902,7 +4870,7 @@ cw_out=[]
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -4910,7 +4878,7 @@ cw_out=[]
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -4918,7 +4886,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (123/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -4926,7 +4894,7 @@ cw_out=[]
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -4934,7 +4902,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (87/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -4942,7 +4910,7 @@ cw_out=[]
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -4950,7 +4918,7 @@ cw_out=[]
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -4958,7 +4926,7 @@ cw_out=[]
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -4966,7 +4934,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (119/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -4974,7 +4942,7 @@ cw_out=[]
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -4982,7 +4950,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (85/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -4990,7 +4958,7 @@ cw_out=[]
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -4998,7 +4966,7 @@ cw_out=[]
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5006,7 +4974,7 @@ cw_out=[]
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5014,7 +4982,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (123/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5022,7 +4990,7 @@ cw_out=[]
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5030,7 +4998,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (87/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5038,7 +5006,7 @@ cw_out=[]
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5046,7 +5014,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (132/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5054,7 +5022,7 @@ cw_out=[]
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5062,7 +5030,7 @@ cw_out=[]
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5070,7 +5038,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (119/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5078,7 +5046,7 @@ cw_out=[]
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5086,7 +5054,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (85/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5094,7 +5062,7 @@ cw_out=[]
 <td>0</td>
 <td>Bad indentation. Found 12 spaces, expected 8</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5102,7 +5070,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (94/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5110,7 +5078,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (94/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5118,7 +5086,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (100/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5126,7 +5094,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (100/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5134,7 +5102,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (82/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5142,7 +5110,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (82/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5150,7 +5118,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (132/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5158,7 +5126,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (132/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5166,7 +5134,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (121/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5174,7 +5142,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (103/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5182,7 +5150,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (96/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5190,7 +5158,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (107/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5198,7 +5166,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (95/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5206,7 +5174,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (107/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5214,7 +5182,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (95/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5222,7 +5190,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (96/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5230,7 +5198,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (87/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5238,7 +5206,7 @@ cw_out=[]
 <td>0</td>
 <td>Line too long (88/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5246,7 +5214,7 @@ cw_out=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5256,7 +5224,7 @@ cw_out=[]
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
                                     ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>F</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5264,7 +5232,7 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 <td>0</td>
 <td>Unable to import 'rice'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5274,7 +5242,7 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 dsed=[]
     ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5282,7 +5250,7 @@ dsed=[]
 <td>0</td>
 <td>Invalid name "dsed" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5292,7 +5260,7 @@ dsed=[]
 a=[]
  ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5300,7 +5268,7 @@ a=[]
 <td>0</td>
 <td>Invalid name "a" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5310,7 +5278,7 @@ a=[]
 pb=[]
   ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5318,7 +5286,7 @@ pb=[]
 <td>0</td>
 <td>Invalid name "pb" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5328,7 +5296,7 @@ pb=[]
 dw=[]
   ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5336,7 +5304,7 @@ dw=[]
 <td>0</td>
 <td>Invalid name "dw" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5346,7 +5314,7 @@ dw=[]
 osed=[]
     ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5354,7 +5322,7 @@ osed=[]
 <td>0</td>
 <td>Invalid name "osed" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5364,7 +5332,7 @@ osed=[]
 mai=[]
    ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5372,7 +5340,7 @@ mai=[]
 <td>0</td>
 <td>Invalid name "mai" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5382,7 +5350,7 @@ mai=[]
 kd=[]
   ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5390,7 +5358,7 @@ kd=[]
 <td>0</td>
 <td>Invalid name "kd" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5400,7 +5368,7 @@ kd=[]
 msed_out=[]
         ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5408,7 +5376,7 @@ msed_out=[]
 <td>0</td>
 <td>Invalid name "msed_out" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5418,7 +5386,7 @@ msed_out=[]
 vw_out=[]
       ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5426,7 +5394,7 @@ vw_out=[]
 <td>0</td>
 <td>Invalid name "vw_out" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5436,7 +5404,7 @@ vw_out=[]
 mai1_out=[]
         ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5444,7 +5412,7 @@ mai1_out=[]
 <td>0</td>
 <td>Invalid name "mai1_out" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5454,7 +5422,7 @@ mai1_out=[]
 cw_out=[]
       ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5462,7 +5430,7 @@ cw_out=[]
 <td>0</td>
 <td>Invalid name "cw_out" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5470,7 +5438,7 @@ cw_out=[]
 <td>0</td>
 <td>Invalid name "form" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5478,7 +5446,7 @@ cw_out=[]
 <td>0</td>
 <td>Invalid name "thefile" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5486,7 +5454,7 @@ cw_out=[]
 <td>0</td>
 <td>Invalid name "reader" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5494,7 +5462,7 @@ cw_out=[]
 <td>0</td>
 <td>Invalid name "header" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5504,7 +5472,7 @@ cw_out=[]
 out_fun_Msed=[]
             ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5512,7 +5480,7 @@ out_fun_Msed=[]
 <td>0</td>
 <td>Invalid name "out_fun_Msed" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5522,7 +5490,7 @@ out_fun_Msed=[]
 out_fun_Vw=[]
           ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5530,7 +5498,7 @@ out_fun_Vw=[]
 <td>0</td>
 <td>Invalid name "out_fun_Vw" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5540,7 +5508,7 @@ out_fun_Vw=[]
 out_fun_Mai1=[]
             ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5548,7 +5516,7 @@ out_fun_Mai1=[]
 <td>0</td>
 <td>Invalid name "out_fun_Mai1" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5558,7 +5526,7 @@ out_fun_Mai1=[]
 out_fun_Cw=[]
           ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -5566,7 +5534,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "out_fun_Cw" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>set_globals</td>
@@ -5574,7 +5542,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Msed</td>
@@ -5582,7 +5550,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "TestCase_Msed" for type class (should match [A-Z_][a-zA-Z0-9]+$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Msed</td>
@@ -5590,7 +5558,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Msed.setUp</td>
@@ -5598,7 +5566,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Invalid name "setUp" for type method (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Msed.setUp</td>
@@ -5608,7 +5576,7 @@ out_fun_Cw=[]
         self.dsed_in=dsed_in
                     ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Msed.setUp</td>
@@ -5616,7 +5584,7 @@ out_fun_Cw=[]
 <td>21</td>
 <td>Undefined variable 'dsed_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Msed.setUp</td>
@@ -5626,7 +5594,7 @@ out_fun_Cw=[]
         self.a_in=a_in
                  ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Msed.setUp</td>
@@ -5634,7 +5602,7 @@ out_fun_Cw=[]
 <td>18</td>
 <td>Undefined variable 'a_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Msed.setUp</td>
@@ -5644,7 +5612,7 @@ out_fun_Cw=[]
         self.pb_in=pb_in
                   ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Msed.setUp</td>
@@ -5652,7 +5620,7 @@ out_fun_Cw=[]
 <td>19</td>
 <td>Undefined variable 'pb_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Msed.setUp</td>
@@ -5662,7 +5630,7 @@ out_fun_Cw=[]
         self.msed_out_in=msed_out_in
                         ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Msed.setUp</td>
@@ -5670,7 +5638,7 @@ out_fun_Cw=[]
 <td>25</td>
 <td>Undefined variable 'msed_out_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Msed.testMsed</td>
@@ -5678,7 +5646,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Invalid name "testMsed" for type method (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Msed.testMsed</td>
@@ -5686,7 +5654,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Msed.testMsed</td>
@@ -5696,7 +5664,7 @@ out_fun_Cw=[]
             fun = rice_output.msed(self.dsed_in,self.a_in,self.pb_in)
                                                ^^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Msed.testMsed</td>
@@ -5706,7 +5674,7 @@ out_fun_Cw=[]
             testFailureMessage = "Test of function name: %s expected: %i != calculated: %i" % ("msed",self.msed_out_in,fun)
                                                                                                      ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Msed.testMsed</td>
@@ -5714,7 +5682,7 @@ out_fun_Cw=[]
 <td>12</td>
 <td>Invalid name "testFailureMessage" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Msed.testMsed</td>
@@ -5724,7 +5692,7 @@ out_fun_Cw=[]
             self.assertEqual(round(fun,3),round(self.msed_out_in,3),testFailureMessage)
                                       ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>R</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Msed</td>
@@ -5732,7 +5700,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Too many public methods (46/20)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw</td>
@@ -5740,7 +5708,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "TestCase_Vw" for type class (should match [A-Z_][a-zA-Z0-9]+$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw</td>
@@ -5748,7 +5716,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw.setUp</td>
@@ -5756,7 +5724,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Invalid name "setUp" for type method (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw.setUp</td>
@@ -5766,7 +5734,7 @@ out_fun_Cw=[]
         self.dw_in=dw_in
                   ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw.setUp</td>
@@ -5774,7 +5742,7 @@ out_fun_Cw=[]
 <td>19</td>
 <td>Undefined variable 'dw_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw.setUp</td>
@@ -5784,7 +5752,7 @@ out_fun_Cw=[]
         self.a_in=a_in
                  ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw.setUp</td>
@@ -5792,7 +5760,7 @@ out_fun_Cw=[]
 <td>18</td>
 <td>Undefined variable 'a_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw.setUp</td>
@@ -5802,7 +5770,7 @@ out_fun_Cw=[]
         self.dsed_in=dsed_in
                     ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw.setUp</td>
@@ -5810,7 +5778,7 @@ out_fun_Cw=[]
 <td>21</td>
 <td>Undefined variable 'dsed_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw.setUp</td>
@@ -5820,7 +5788,7 @@ out_fun_Cw=[]
         self.osed_in=osed_in
                     ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw.setUp</td>
@@ -5828,7 +5796,7 @@ out_fun_Cw=[]
 <td>21</td>
 <td>Undefined variable 'osed_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw.setUp</td>
@@ -5838,7 +5806,7 @@ out_fun_Cw=[]
         self.vw_out_in=vw_out_in
                       ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw.setUp</td>
@@ -5846,7 +5814,7 @@ out_fun_Cw=[]
 <td>23</td>
 <td>Undefined variable 'vw_out_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw.testVw</td>
@@ -5854,7 +5822,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Invalid name "testVw" for type method (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw.testVw</td>
@@ -5862,7 +5830,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw.testVw</td>
@@ -5872,7 +5840,7 @@ out_fun_Cw=[]
             fun = rice_output.vw(self.dw_in,self.a_in,self.dsed_in,self.osed_in)
                                            ^^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw.testVw</td>
@@ -5882,7 +5850,7 @@ out_fun_Cw=[]
             testFailureMessage = "Test of function name: %s expected: %i != calculated: %i" % ("vw",self.vw_out_in,fun)
                                                                                                    ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw.testVw</td>
@@ -5890,7 +5858,7 @@ out_fun_Cw=[]
 <td>12</td>
 <td>Invalid name "testFailureMessage" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw.testVw</td>
@@ -5900,7 +5868,7 @@ out_fun_Cw=[]
             self.assertEqual(round(fun,3),round(self.vw_out_in,3),testFailureMessage)
                                       ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>R</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Vw</td>
@@ -5908,7 +5876,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Too many public methods (46/20)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Mai1</td>
@@ -5916,7 +5884,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "TestCase_Mai1" for type class (should match [A-Z_][a-zA-Z0-9]+$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Mai1</td>
@@ -5924,7 +5892,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Mai1.setUp</td>
@@ -5932,7 +5900,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Invalid name "setUp" for type method (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Mai1.setUp</td>
@@ -5942,7 +5910,7 @@ out_fun_Cw=[]
         self.mai_in=mai_in
                    ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Mai1.setUp</td>
@@ -5950,7 +5918,7 @@ out_fun_Cw=[]
 <td>20</td>
 <td>Undefined variable 'mai_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Mai1.setUp</td>
@@ -5960,7 +5928,7 @@ out_fun_Cw=[]
         self.a_in=a_in
                  ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Mai1.setUp</td>
@@ -5968,7 +5936,7 @@ out_fun_Cw=[]
 <td>18</td>
 <td>Undefined variable 'a_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Mai1.setUp</td>
@@ -5978,7 +5946,7 @@ out_fun_Cw=[]
         self.mai1_out_in=mai1_out_in
                         ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Mai1.setUp</td>
@@ -5986,7 +5954,7 @@ out_fun_Cw=[]
 <td>25</td>
 <td>Undefined variable 'mai1_out_in'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Mai1.testMai1</td>
@@ -5994,7 +5962,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Invalid name "testMai1" for type method (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Mai1.testMai1</td>
@@ -6002,7 +5970,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Mai1.testMai1</td>
@@ -6012,7 +5980,7 @@ out_fun_Cw=[]
             fun = rice_output.mai1(self.mai_in,self.a_in)
                                               ^^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Mai1.testMai1</td>
@@ -6022,7 +5990,7 @@ out_fun_Cw=[]
             testFailureMessage = "Test of function name: %s expected: %i != calculated: %i" % ("mai1",self.mai1_out_in,fun)
                                                                                                      ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Mai1.testMai1</td>
@@ -6030,7 +5998,7 @@ out_fun_Cw=[]
 <td>12</td>
 <td>Invalid name "testFailureMessage" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Mai1.testMai1</td>
@@ -6040,7 +6008,7 @@ out_fun_Cw=[]
             self.assertEqual(round(fun,3),round(self.mai1_out_in,3),testFailureMessage)
                                       ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>R</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Mai1</td>
@@ -6048,7 +6016,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Too many public methods (46/20)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>R</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw</td>
@@ -6056,7 +6024,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Too many instance attributes (8/7)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw</td>
@@ -6064,7 +6032,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "TestCase_Cw" for type class (should match [A-Z_][a-zA-Z0-9]+$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw</td>
@@ -6072,7 +6040,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.setUp</td>
@@ -6080,7 +6048,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Invalid name "setUp" for type method (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.setUp</td>
@@ -6090,7 +6058,7 @@ out_fun_Cw=[]
         self.dsed_in=dsed_in
                     ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.setUp</td>
@@ -6098,7 +6066,7 @@ out_fun_Cw=[]
 <td>21</td>
 <td>Undefined variable 'dsed_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.setUp</td>
@@ -6108,7 +6076,7 @@ out_fun_Cw=[]
         self.pb_in=pb_in
                   ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.setUp</td>
@@ -6116,7 +6084,7 @@ out_fun_Cw=[]
 <td>19</td>
 <td>Undefined variable 'pb_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.setUp</td>
@@ -6126,7 +6094,7 @@ out_fun_Cw=[]
         self.dw_in=dw_in
                   ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.setUp</td>
@@ -6134,7 +6102,7 @@ out_fun_Cw=[]
 <td>19</td>
 <td>Undefined variable 'dw_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.setUp</td>
@@ -6144,7 +6112,7 @@ out_fun_Cw=[]
         self.osed_in=osed_in
                     ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.setUp</td>
@@ -6152,7 +6120,7 @@ out_fun_Cw=[]
 <td>21</td>
 <td>Undefined variable 'osed_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.setUp</td>
@@ -6162,7 +6130,7 @@ out_fun_Cw=[]
         self.mai_in=mai_in
                    ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.setUp</td>
@@ -6170,7 +6138,7 @@ out_fun_Cw=[]
 <td>20</td>
 <td>Undefined variable 'mai_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.setUp</td>
@@ -6180,7 +6148,7 @@ out_fun_Cw=[]
         self.kd_in=kd_in
                   ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.setUp</td>
@@ -6188,7 +6156,7 @@ out_fun_Cw=[]
 <td>19</td>
 <td>Undefined variable 'kd_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.setUp</td>
@@ -6198,7 +6166,7 @@ out_fun_Cw=[]
         self.a_in=a_in
                  ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.setUp</td>
@@ -6206,7 +6174,7 @@ out_fun_Cw=[]
 <td>18</td>
 <td>Undefined variable 'a_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.setUp</td>
@@ -6216,7 +6184,7 @@ out_fun_Cw=[]
         self.cw_out_in=cw_out_in
                       ^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>E</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.setUp</td>
@@ -6224,7 +6192,7 @@ out_fun_Cw=[]
 <td>23</td>
 <td>Undefined variable 'cw_out_in'</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.testCw</td>
@@ -6232,7 +6200,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Invalid name "testCw" for type method (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.testCw</td>
@@ -6240,7 +6208,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.testCw</td>
@@ -6250,7 +6218,7 @@ out_fun_Cw=[]
             fun = rice_output.cw(rice_output.mai1(self.mai_in,self.a_in),self.dw_in,self.dsed_in,self.osed_in,self.pb_in,self.kd_in)
                                                              ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.testCw</td>
@@ -6260,7 +6228,7 @@ out_fun_Cw=[]
             testFailureMessage = "Test of function name: %s expected: %d != calculated: %d" % ("cw",self.cw_out_in,fun)
                                                                                                    ^^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.testCw</td>
@@ -6268,7 +6236,7 @@ out_fun_Cw=[]
 <td>12</td>
 <td>Invalid name "testFailureMessage" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw.testCw</td>
@@ -6278,7 +6246,7 @@ out_fun_Cw=[]
             self.assertEqual(round(fun,3),round(self.cw_out_in,3),testFailureMessage)
                                       ^^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>R</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>TestCase_Cw</td>
@@ -6286,7 +6254,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Too many public methods (46/20)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>suite</td>
@@ -6294,7 +6262,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Redefining name 'suite' from outer scope (line 117)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>suite</td>
@@ -6302,7 +6270,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "TestCaseName" for type argument (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>suite</td>
@@ -6310,7 +6278,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>suite</td>
@@ -6318,7 +6286,7 @@ out_fun_Cw=[]
 <td>10</td>
 <td>Invalid name "TestCaseName" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>suite</td>
@@ -6328,7 +6296,7 @@ out_fun_Cw=[]
     test_out=stream.read()
             ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>suite</td>
@@ -6336,7 +6304,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Unused variable 'result'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -6344,7 +6312,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "test_suite_msed_1" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -6352,7 +6320,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "test_suite_msed_2" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -6360,7 +6328,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "test_suite_vw_1" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -6368,7 +6336,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "test_suite_vw_2" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -6376,7 +6344,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "test_suite_mai1_1" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -6384,7 +6352,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "test_suite_mai1_2" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -6392,7 +6360,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "test_suite_cw_1" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -6400,7 +6368,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "test_suite_cw_2" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>RiceQaqcOutputPage</td>
@@ -6408,7 +6376,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>RiceQaqcOutputPage.post</td>
@@ -6416,7 +6384,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>RiceQaqcOutputPage.post</td>
@@ -6424,7 +6392,7 @@ out_fun_Cw=[]
 <td>8</td>
 <td>Invalid name "x" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>RiceQaqcOutputPage.post</td>
@@ -6434,7 +6402,7 @@ out_fun_Cw=[]
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'rice','page':'qaqc'})
                                                                                                          ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>RiceQaqcOutputPage.post</td>
@@ -6506,7 +6474,7 @@ out_fun_Cw=[]
                out_fun_Mai1[0],mai1_out[0],test_suite_mai1_1,out_fun_Mai1[1],mai1_out[1],test_suite_mai1_2,
                out_fun_Cw[0],cw_out[0],test_suite_cw_1,out_fun_Cw[1],cw_out[1],test_suite_cw_2)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>RiceQaqcOutputPage.post</td>
@@ -6514,7 +6482,7 @@ out_fun_Cw=[]
 <td>8</td>
 <td>Unused variable 'x'</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -6522,7 +6490,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "app" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>main</td>
@@ -6530,7 +6498,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -6538,7 +6506,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Unused import pprint</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>W</td>
 <td>ubertool_src.rice.rice_qaqcoutput</td>
 <td>&#160;</td>
@@ -6546,7 +6514,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Unused import np</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_references</td>
 <td>&#160;</td>
@@ -6554,7 +6522,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Line too long (88/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_references</td>
 <td>&#160;</td>
@@ -6562,7 +6530,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Line too long (127/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_references</td>
 <td>&#160;</td>
@@ -6570,7 +6538,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Line too long (110/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_references</td>
 <td>&#160;</td>
@@ -6578,7 +6546,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Line too long (85/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_references</td>
 <td>&#160;</td>
@@ -6586,7 +6554,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Line too long (87/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_references</td>
 <td>&#160;</td>
@@ -6594,7 +6562,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Line too long (88/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_references</td>
 <td>RiceReferencesPage</td>
@@ -6602,7 +6570,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_references</td>
 <td>RiceReferencesPage.get</td>
@@ -6610,7 +6578,7 @@ out_fun_Cw=[]
 <td>4</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_references</td>
 <td>RiceReferencesPage.get</td>
@@ -6618,7 +6586,7 @@ out_fun_Cw=[]
 <td>8</td>
 <td>Invalid name "x" for type variable (should match [a-z_][a-z0-9_]{2,30}$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_references</td>
 <td>RiceReferencesPage.get</td>
@@ -6628,7 +6596,7 @@ out_fun_Cw=[]
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'rice','page':'references'})
                                                                                                          ^^</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.rice_references</td>
 <td>&#160;</td>
@@ -6636,7 +6604,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Invalid name "app" for type constant (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.rice_references</td>
 <td>main</td>
@@ -6644,7 +6612,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Missing docstring</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.Ricedb</td>
 <td>&#160;</td>
@@ -6652,7 +6620,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Line too long (106/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.Ricedb</td>
 <td>&#160;</td>
@@ -6660,7 +6628,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Line too long (90/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.Ricedb</td>
 <td>&#160;</td>
@@ -6668,7 +6636,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Line too long (98/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.Ricedb</td>
 <td>&#160;</td>
@@ -6676,7 +6644,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Line too long (100/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.Ricedb</td>
 <td>&#160;</td>
@@ -6684,7 +6652,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Line too long (103/80)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.Ricedb</td>
 <td>&#160;</td>
@@ -6692,7 +6660,7 @@ out_fun_Cw=[]
 <td>0</td>
 <td>Line too long (95/80)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>C</td>
 <td>ubertool_src.rice.Ricedb</td>
 <td>&#160;</td>
@@ -6702,13 +6670,21 @@ out_fun_Cw=[]
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
                                     ^</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>C</td>
 <td>ubertool_src.rice.Ricedb</td>
 <td>RiceInp</td>
 <td>14</td>
 <td>0</td>
 <td>Missing docstring</td>
+</tr>
+<tr class="even">
+<td>E</td>
+<td>ubertool_src.rice.Ricedb</td>
+<td>RiceInp</td>
+<td>18</td>
+<td>18</td>
+<td>Module 'google.appengine.api.users' has no 'user_id' member</td>
 </tr>
 <tr class="odd">
 <td>C</td>

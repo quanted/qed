@@ -3,7 +3,7 @@ import logging
 import sys
 sys.path.append("utils")
 import json_utils
-sys.path.append("./terrplant_model")
+sys.path.append("./terrplant")
 import terrplant_model
 
 class TerrPlantBatchRunner():

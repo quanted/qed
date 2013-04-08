@@ -13,7 +13,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import django
 from django import forms
-from sip import sip_db
+from sip import sip_parameters
 
 class SIPInputPage(webapp.RequestHandler):
     def get(self):
@@ -26,7 +26,7 @@ class SIPInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start.html', {
                 'model':'sip', 
                 'model_attributes':'SIP Inputs'})
-        html = html + str(sip_db.SIPInp())
+        html = html + str(sip_parameters.SIPInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

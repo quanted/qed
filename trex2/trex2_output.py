@@ -225,7 +225,7 @@ def C_t(C_ini, h_l):
 
 #Dietary based EECs
 
-def EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day):
+def EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day_out):
 
     C_temp = np.ones((365,1)) #empty array to hold the concentrations over days       
     a_p_temp = 0  #application period temp  
@@ -243,7 +243,7 @@ def EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day):
                 n_a_temp = n_a_temp + 1
                 C_temp[i] = C_0(a_r[0], a_i, para)
                 dayt = dayt + 1
-            elif i==day[dayt] and n_a_temp<=n_a: # next application day
+            elif i==day_out[dayt] and n_a_temp<=n_a: # next application day
                 n_a_temp = n_a_temp + 1
                 C_temp[i] = C_t(C_temp[i-1], h_l) + C_0(a_r[dayt], a_i, para)
                 dayt = dayt + 1        
@@ -257,95 +257,95 @@ def EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day):
 
 # Dose based EECs for birds
 
-def EEC_dose_bird(EEC_diet, aw_bird, fi_bird, mf_w_bird, C_0, n_a, i_a, a_r, a_i, para, h_l, day):
+def EEC_dose_bird(EEC_diet, aw_bird, fi_bird, mf_w_bird, C_0, n_a, a_r, a_i, para, h_l, day_out):
     n_a = float(n_a)
-    i_a = float(i_a)      
+ #   i_a = float(i_a)      
     aw_bird = float(aw_bird)
     mf_w_bird = float(mf_w_bird)
-    a_r = float(a_r)
+  #  a_r = float(a_r)
     a_i = float(a_i)
     para = float(para)
     h_l = float(h_l)
         
     fi_bird = fi_bird(aw_bird, mf_w_bird)
-    EEC_diet=EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day)
+    EEC_diet=EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day_out)
     return (EEC_diet*fi_bird/aw_bird)
 
 # Dose based EECs for granivores birds
 
-def EEC_dose_bird_g(EEC_diet, aw_bird, fi_bird, mf_w_bird, C_0, n_a, i_a, a_r, a_i, para, h_l):
-    if para==15:
-        n_a = float(n_a)
-        i_a = float(i_a)      
-        aw_bird = float(aw_bird)
-        mf_w_bird = float(mf_w_bird)
-        a_r = float(a_r)
-        a_i = float(a_i)
-        para = float(para)
-        h_l = float(h_l)        
-        fi_bird = fi_bird(aw_bird, mf_w_bird)
-        EEC_diet=EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day)
-        return (EEC_diet*fi_bird/aw_bird)
-    else:
-        return(0)
+# def EEC_dose_bird_g(EEC_diet, aw_bird, fi_bird, mf_w_bird, C_0, n_a, a_r, a_i, para, h_l):
+#     if para==15:
+#         n_a = float(n_a)
+#       #  i_a = float(i_a)      
+#         aw_bird = float(aw_bird)
+#         mf_w_bird = float(mf_w_bird)
+#         a_r = float(a_r)
+#         a_i = float(a_i)
+#         para = float(para)
+#         h_l = float(h_l)        
+#         fi_bird = fi_bird(aw_bird, mf_w_bird)
+#         EEC_diet=EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day)
+#         return (EEC_diet*fi_bird/aw_bird)
+#     else:
+#         return(0)
         
 # Dose based EECs for mammals
 
-def EEC_dose_mamm(EEC_diet, aw_mamm, fi_mamm, mf_w_mamm, C_0, n_a, i_a, a_r, a_i, para, h_l):
+def EEC_dose_mamm(EEC_diet, aw_mamm, fi_mamm, mf_w_mamm, C_0, n_a, a_r, a_i, para, h_l):
     aw_mamm = float(aw_mamm)
-    EEC_diet=EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day)
+    EEC_diet=EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day_out)
     fi_mamm = fi_mamm(aw_mamm, mf_w_mamm)
     return (EEC_diet*fi_mamm/aw_mamm)
 
 # Dose based EECs for granivores mammals
 
-def EEC_dose_mamm_g(EEC_diet, aw_mamm, fi_mamm, mf_w_mamm, C_0, n_a, i_a, a_r, a_i, para, h_l):
-    if para==15:    
-        aw_mamm = float(aw_mamm)
-        EEC_diet=EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day)
-        fi_mamm = fi_mamm(aw_mamm, mf_w_mamm)
-        return (EEC_diet*fi_mamm/aw_mamm)
-    else:
-        return(0)
+# def EEC_dose_mamm_g(EEC_diet, aw_mamm, fi_mamm, mf_w_mamm, C_0, n_a, a_r, a_i, para, h_l):
+#     if para==15:    
+#         aw_mamm = float(aw_mamm)
+#         EEC_diet=EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day)
+#         fi_mamm = fi_mamm(aw_mamm, mf_w_mamm)
+#         return (EEC_diet*fi_mamm/aw_mamm)
+#     else:
+#         return(0)
         
 # Acute dose-based risk quotients for birds
 
-def ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird, fi_bird, at_bird, ld50_bird, tw_bird, x, mf_w_bird, C_0, n_a, i_a, a_r, a_i, para, h_l):
-    EEC_dose_bird = EEC_dose_bird(EEC_diet, aw_bird, fi_bird, mf_w_bird, C_0, n_a, i_a, a_r, a_i, para, h_l)
+def ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird, fi_bird, at_bird, ld50_bird, tw_bird, x, mf_w_bird, C_0, n_a, a_r, a_i, para, h_l, day_out):
+    EEC_dose_bird = EEC_dose_bird(EEC_diet, aw_bird, fi_bird, mf_w_bird, C_0, n_a, a_r, a_i, para, h_l, day_out)
     at_bird = at_bird(ld50_bird,aw_bird,tw_bird,x)
     return (EEC_dose_bird/at_bird)
 
 # Acute dose-based risk quotients for granivores birds
 
-def ARQ_dose_bird_g(EEC_dose_bird, EEC_diet, aw_bird, fi_bird, at_bird, ld50_bird, tw_bird, x, mf_w_bird, C_0, n_a, i_a, a_r, a_i, para, h_l):
-    if para==15:
-        EEC_dose_bird = EEC_dose_bird(EEC_diet, aw_bird, fi_bird, mf_w_bird, C_0, n_a, i_a, a_r, a_i, para, h_l)
-        at_bird = at_bird(ld50_bird,aw_bird,tw_bird,x)
-        return (EEC_dose_bird/at_bird)
-    else:
-        return (0)
+# def ARQ_dose_bird_g(EEC_dose_bird, EEC_diet, aw_bird, fi_bird, at_bird, ld50_bird, tw_bird, x, mf_w_bird, C_0, n_a, a_r, a_i, para, h_l):
+#     if para==15:
+#         EEC_dose_bird = EEC_dose_bird(EEC_diet, aw_bird, fi_bird, mf_w_bird, C_0, n_a, a_r, a_i, para, h_l)
+#         at_bird = at_bird(ld50_bird,aw_bird,tw_bird,x)
+#         return (EEC_dose_bird/at_bird)
+#     else:
+#         return (0)
     
 # Acute dose-based risk quotients for mammals
 
-def ARQ_dose_mamm(EEC_dose_mamm, at_mamm, aw_mamm, ld50_mamm, tw_mamm, mf_w_mamm, C_0, n_a, i_a, a_r, a_i, para, h_l):
-    EEC_dose_mamm = EEC_dose_mamm(EEC_diet, aw_mamm, fi_mamm, mf_w_mamm, C_0, n_a, i_a, a_r, a_i, para, h_l)
+def ARQ_dose_mamm(EEC_dose_mamm, at_mamm, aw_mamm, ld50_mamm, tw_mamm, mf_w_mamm, C_0, n_a, a_r, a_i, para, h_l):
+    EEC_dose_mamm = EEC_dose_mamm(EEC_diet, aw_mamm, fi_mamm, mf_w_mamm, C_0, n_a, a_r, a_i, para, h_l)
     at_mamm = at_mamm(ld50_mamm,aw_mamm,tw_mamm)
     return (EEC_dose_mamm/at_mamm)
 
 # Acute dose-based risk quotients for granivores mammals
 
-def ARQ_dose_mamm_g(EEC_dose_mamm, at_mamm, aw_mamm, ld50_mamm, tw_mamm, mf_w_mamm, C_0, n_a, i_a, a_r, a_i, para, h_l):
-    if para==15:    
-        EEC_dose_mamm = EEC_dose_mamm(EEC_diet, aw_mamm, fi_mamm, mf_w_mamm, C_0, n_a, a_r, a_i, para, h_l)
-        at_mamm = at_mamm(ld50_mamm,aw_mamm,tw_mamm)
-        return (EEC_dose_mamm/at_mamm)
-    else:
-        return(0)
+# def ARQ_dose_mamm_g(EEC_dose_mamm, at_mamm, aw_mamm, ld50_mamm, tw_mamm, mf_w_mamm, C_0, n_a, a_r, a_i, para, h_l):
+#     if para==15:    
+#         EEC_dose_mamm = EEC_dose_mamm(EEC_diet, aw_mamm, fi_mamm, mf_w_mamm, C_0, n_a, a_r, a_i, para, h_l)
+#         at_mamm = at_mamm(ld50_mamm,aw_mamm,tw_mamm)
+#         return (EEC_dose_mamm/at_mamm)
+#     else:
+#         return(0)
         
 # Acute dietary-based risk quotients for birds
 
-def ARQ_diet_bird(EEC_diet, lc50_bird, C_0, n_a, i_a, a_r, a_i, para, h_l):
-    EEC_diet=EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day)    
+def ARQ_diet_bird(EEC_diet, lc50_bird, C_0, n_a, a_r, a_i, para, h_l):
+    EEC_diet=EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day_out)    
     try:
         lc50_bird = float(lc50_bird)      
     except IndexError:
@@ -359,14 +359,14 @@ def ARQ_diet_bird(EEC_diet, lc50_bird, C_0, n_a, i_a, a_r, a_i, para, h_l):
 
 # Acute dietary-based risk quotients for mammals
 
-def ARQ_diet_mamm(EEC_diet, lc50_mamm, C_0, n_a, i_a, a_r, a_i, para, h_l):
-    EEC_diet=EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day)    
+def ARQ_diet_mamm(EEC_diet, lc50_mamm, C_0, n_a, a_r, a_i, para, h_l):
+    EEC_diet=EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day_out)    
     return (EEC_diet/lc50_mamm)
 
 # Chronic dietary-based risk quotients for birds
 
-def CRQ_diet_bird(EEC_diet, NOAEC_bird, C_0, n_a, i_a, a_r, a_i, para, h_l):
-    EEC_diet=EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day)    
+def CRQ_diet_bird(EEC_diet, NOAEC_bird, C_0, n_a, a_r, a_i, para, h_l):
+    EEC_diet=EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day_out)    
     try:
         NOAEC_bird = float(NOAEC_bird)      
     except IndexError:
@@ -379,8 +379,8 @@ def CRQ_diet_bird(EEC_diet, NOAEC_bird, C_0, n_a, i_a, a_r, a_i, para, h_l):
 
 # Chronic dietary-based risk quotients for mammals
 
-def CRQ_diet_mamm(EEC_diet, NOAEC_mamm, C_0, n_a, i_a, a_r, a_i, para, h_l):
-    EEC_diet=EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day)
+def CRQ_diet_mamm(EEC_diet, NOAEC_mamm, C_0, n_a, a_r, a_i, para, h_l):
+    EEC_diet=EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day_out)
     try:
         NOAEC_mamm = float(NOAEC_mamm)      
     except IndexError:
@@ -393,20 +393,20 @@ def CRQ_diet_mamm(EEC_diet, NOAEC_mamm, C_0, n_a, i_a, a_r, a_i, para, h_l):
 
 # Chronic dose-based risk quotients for mammals
 
-def CRQ_dose_mamm(EEC_diet, EEC_dose_mamm, ANOAEL_mamm, NOAEL_mamm, aw_mamm, tw_mamm, mf_w_mamm, n_a, i_a, a_r, a_i, para, h_l):
+def CRQ_dose_mamm(EEC_diet, EEC_dose_mamm, ANOAEL_mamm, NOAEL_mamm, aw_mamm, tw_mamm, mf_w_mamm, n_a, a_r, a_i, para, h_l):
     ANOAEL_mamm=ANOAEL_mamm(NOAEL_mamm,aw_mamm,tw_mamm)
-    EEC_dose_mamm = EEC_dose_mamm(EEC_diet, aw_mamm, fi_mamm, mf_w_mamm, C_0, n_a, i_a, a_r, a_i, para, h_l)     
+    EEC_dose_mamm = EEC_dose_mamm(EEC_diet, aw_mamm, fi_mamm, mf_w_mamm, C_0, n_a, a_r, a_i, para, h_l)     
     return (EEC_dose_mamm/ANOAEL_mamm)
 
 # Chronic dose-based risk quotients for granviores mammals
 
-def CRQ_dose_mamm_g(EEC_diet, EEC_dose_mamm, ANOAEL_mamm, NOAEL_mamm, aw_mamm, tw_mamm, mf_w_mamm, n_a, i_a, a_r, a_i, para, h_l):
-    if para==15:    
-        ANOAEL_mamm=ANOAEL_mamm(NOAEL_mamm,aw_mamm,tw_mamm)
-        EEC_dose_mamm = EEC_dose_mamm(EEC_diet, aw_mamm, fi_mamm, mf_w_mamm, C_0, n_a, i_a, a_r, a_i, para, h_l)     
-        return (EEC_dose_mamm/ANOAEL_mamm)
-    else:
-        return (0)
+# def CRQ_dose_mamm_g(EEC_diet, EEC_dose_mamm, ANOAEL_mamm, NOAEL_mamm, aw_mamm, tw_mamm, mf_w_mamm, n_a, a_r, a_i, para, h_l):
+#     if para==15:    
+#         ANOAEL_mamm=ANOAEL_mamm(NOAEL_mamm,aw_mamm,tw_mamm)
+#         EEC_dose_mamm = EEC_dose_mamm(EEC_diet, aw_mamm, fi_mamm, mf_w_mamm, C_0, n_a, a_r, a_i, para, h_l)     
+#         return (EEC_dose_mamm/ANOAEL_mamm)
+#     else:
+#         return (0)
         
 # LD50ft-2 for row/band/in-furrow granular birds
 
@@ -597,18 +597,18 @@ class TRexOutputPage(webapp.RequestHandler):
         print 'day', day_out
 
 
-        # a_t = form.getvalue('Application_target')
-        # if a_t=='Short grass':
-        #    para=240       #coefficient used to estimate initial conc.
-        # elif a_t=='Tall grass':
-        #    para=110
-        # elif a_t=='Broad-leafed plants/small insects':
-        #    para=135
-        # elif a_t=='Fruits/pods/seeds/large insects':
-        #    para=15
-        # elif a_t=='Arthropods': #new coefficient for Arthropods
-        #    para=94
-        # i_a = form.getvalue('interval_between_applications')
+        a_t = form.getvalue('Application_target')
+        if a_t=='Short grass':
+           para=240       #coefficient used to estimate initial conc.
+        elif a_t=='Tall grass':
+           para=110
+        elif a_t=='Broad-leafed plants/small insects':
+           para=135
+        elif a_t=='Fruits/pods/seeds/large insects':
+           para=15
+        elif a_t=='Arthropods': #new coefficient for Arthropods
+           para=94
+        #i_a = form.getvalue('interval_between_applications')
         
         if Application_type=='Seed Treatment':
            a_r_p=rate_out[0]       #coefficient used to estimate initial conc.
@@ -616,7 +616,7 @@ class TRexOutputPage(webapp.RequestHandler):
            a_r_p=0
         print 'a_r_p', a_r_p
         
-        a_r=rate_out[0]
+        #a_r=rate_out[0]
                
 
         h_l = form.getvalue('Foliar_dissipation_half_life')
@@ -629,11 +629,11 @@ class TRexOutputPage(webapp.RequestHandler):
         
 #        bird_type = form.getvalue('Bird_type')        
         aw_bird_sm = form.getvalue('body_weight_of_the_assessed_bird_small')
-        aw_bird_sm = float(aw_bird)  
+        aw_bird_sm = float(aw_bird_sm)  
         aw_bird_md = form.getvalue('body_weight_of_the_assessed_bird_medium')
-        aw_bird_md = float(aw_bird) 
+        aw_bird_md = float(aw_bird_md) 
         aw_bird_lg = form.getvalue('body_weight_of_the_assessed_bird_large')
-        aw_bird_lg = float(aw_bird)       
+        aw_bird_lg = float(aw_bird_lg)       
         tw_bird = form.getvalue('body_weight_of_the_tested_bird')
         tw_bird = float(tw_bird)        
         x = form.getvalue('mineau_scaling_factor')
@@ -653,11 +653,11 @@ class TRexOutputPage(webapp.RequestHandler):
 #        elif bird_type=='Granivores':
 #           mf_w_bird=0.1            
         aw_mamm_sm = form.getvalue('body_weight_of_the_assessed_mammal_small')
-        aw_mamm_sm = float(aw_mamm)  
+        aw_mamm_sm = float(aw_mamm_sm)  
         aw_mamm_md = form.getvalue('body_weight_of_the_assessed_mammal_medium')
-        aw_mamm_md = float(aw_mamm) 
+        aw_mamm_md = float(aw_mamm_md) 
         aw_mamm_lg = form.getvalue('body_weight_of_the_assessed_mammal_large')
-        aw_mamm_lg = float(aw_mamm)               
+        aw_mamm_lg = float(aw_mamm_lg)               
         tw_mamm = form.getvalue('body_weight_of_the_tested_mammal')
         tw_mamm = float(tw_mamm) 
         
@@ -676,18 +676,18 @@ class TRexOutputPage(webapp.RequestHandler):
 
 
 
-        if Application_type != '5':
-            seed_1 = (chem_name, use, formu_name, 100*a_i, Application_type, 100*p_i, a_r, a_r_l, seed_treatment_formulation_name, den, m_s_r_p, a_r_p, 
-            r_s, b_w, n_a, a_t, i_a, h_l, ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird, tw_bird, x, ld50_mamm, 
-            lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm, tw_mamm)      
-            test_final = seed_1
+        # if Application_type != '5':
+        #     seed_1 = (chem_name, use, formu_name, 100*a_i, Application_type, 100*p_i, a_r, a_r_l, seed_treatment_formulation_name, den, m_s_r_p, a_r_p, 
+        #     r_s, b_w, n_a, a_t, i_a, h_l, ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird, tw_bird, x, ld50_mamm, 
+        #     lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm, tw_mamm)      
+        #     test_final = seed_1
 
 
-        else:
-            other_1 = (chem_name, use, formu_name, 100*a_i, Application_type, 100*p_i, seed_treatment_formulation_name, den, m_s_r_p, 
-            b_w, n_a, a_t, h_l, ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird, tw_bird, x, ld50_mamm, 
-            lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm, tw_mamm) 
-            test_final = other_1
+        # else:
+        #     other_1 = (chem_name, use, formu_name, 100*a_i, Application_type, 100*p_i, seed_treatment_formulation_name, den, m_s_r_p, 
+        #     b_w, n_a, a_t, h_l, ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird, tw_bird, x, ld50_mamm, 
+        #     lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm, tw_mamm) 
+        #     test_final = other_1
 
         html = html + """<table width="600" border="1">
                           <tr>
@@ -703,7 +703,7 @@ class TRexOutputPage(webapp.RequestHandler):
                             <td>%s</td>                          
                           </tr>
                           <tr>
-                            <td>Formulated procuct name</td>
+                            <td>Formulated product name</td>
                             <td>%s</td>
                             <td>Percentage active ingredient</td>
                             <td>%s%%</td>  
@@ -715,17 +715,9 @@ class TRexOutputPage(webapp.RequestHandler):
                             <td>%s%%</td>
                           </tr>
                           <tr>
-                            <td>Seed treatment formulation name</td>
-                            <td>%s</td>
                             <td>Density of product (lbs/gal)</td>
                             <td>%s</td>
-                          </tr>                          
-                          <tr>
-                            <td>Row spacing (inch)</td>
-                            <td>%s</td>
-                            <td>Bandwidth (inch)</td>
-                            <td>%s</td>
-                          </tr>                              
+                          </tr>                                                    
                           <tr>
                             <td>Number of applications</td>
                             <td>%s</td>
@@ -779,10 +771,130 @@ class TRexOutputPage(webapp.RequestHandler):
                             <td>&nbsp;</td>                            
                           </tr>                                                              
                         </table>
-                        <p>&nbsp;</p>                     
-                        """%(test_final)                        
-        print EEC_diet(C_0, n_a, rate_out, a_i, para, h_l, day_out)
-       # print LD50_rg_mamm(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_mamm, at_mamm, ld50_mamm, tw_mamm):
+                        #<p>&nbsp;</p>                     
+                        """%(chem_name, use, formu_name, 100*a_i, Application_type, 100*p_i, den, 
+                            n_a, a_t, h_l, ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, tw_bird, x, ld50_mamm, 
+                               lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, tw_mamm)         
+        html = html + """<table width="600" border="1">
+                          <tr>
+                            <th scope="col">Dietary based EECs (ppm)</div></th>
+                            <th scope="col">Value</div></th>                          
+                          </tr>
+                          <tr>
+                            <td>Short Grass</td>
+                            <td>%.2f</td>
+                          </tr>                           
+                          <tr>
+                            <td>Tall Grass</td>
+                            <td>%.2f</td>
+                          </tr>                           
+                          <tr>
+                            <td>Broadleaf Plants</td>
+                            <td>%.2f</td>
+                          </tr>                           
+                          <tr>
+                            <td>Fruits/Pods/Seeds</td>
+                            <td>%.2f</td>   
+                          </tr>                           
+                          <tr>
+                            <td>Arthropods</td>
+                            <td>%.2f</td>                        
+                          </tr>
+                        """%(EEC_diet(C_0, n_a, rate_out, a_i, 240, h_l, day_out),EEC_diet(C_0, n_a, rate_out, a_i, 110, h_l, day_out),EEC_diet(C_0, n_a, rate_out, a_i, 135, h_l, day_out),EEC_diet(C_0, n_a, rate_out, a_i, 15, h_l, day_out),EEC_diet(C_0, n_a, rate_out, a_i, 94, h_l, day_out))                        
+        html = html + """<table width="600" border="1">
+                          <tr>
+                            <th scope="col">Avian Dosed Based EECs</div></th>
+                            <th scope="col">Small</div></th>       
+                            <th scope="col">Mid</div></th> 
+                            <th scope="col">Large</div></th>                    
+                          </tr>
+                          <tr>
+                            <td>Short Grass</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                          </tr>   
+                            <tr>
+                            <td>Tall Grass</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                          </tr> 
+                          <tr>
+                            <td>Broadleaf Plants</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                          </tr> 
+                           <tr>
+                            <td>Fruits/Pods</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                          </tr> 
+                           <tr>
+                            <td>Arthropods</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                          </tr> 
+                            <tr>
+                            <td>Seeds</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                          </tr> 
+                        """%(EEC_dose_bird(EEC_diet, aw_bird_sm, fi_bird, 0.9, C_0, n_a, rate_out, a_i, 240, h_l, day_out), EEC_dose_bird(EEC_diet, aw_bird_md, fi_bird, 0.9, C_0, n_a, rate_out, a_i, 240, h_l, day_out), EEC_dose_bird(EEC_diet, aw_bird_lg, fi_bird, 0.9, C_0, n_a, rate_out, a_i, 240, h_l, day_out), EEC_dose_bird(EEC_diet, aw_bird_sm, fi_bird, 0.9, C_0, n_a, rate_out, a_i, 110, h_l, day_out), EEC_dose_bird(EEC_diet, aw_bird_md, fi_bird, 0.9, C_0, n_a, rate_out, a_i, 110, h_l, day_out), EEC_dose_bird(EEC_diet, aw_bird_lg, fi_bird, 0.9, C_0, n_a, rate_out, a_i, 110, h_l, day_out), EEC_dose_bird(EEC_diet, aw_bird_sm, fi_bird, 0.9, C_0, n_a, rate_out, a_i, 135, h_l, day_out), EEC_dose_bird(EEC_diet, aw_bird_md, fi_bird, 0.9, C_0, n_a, rate_out, a_i, 135, h_l, day_out), EEC_dose_bird(EEC_diet, aw_bird_lg, fi_bird, 0.9, C_0, n_a, rate_out, a_i, 135, h_l, day_out), EEC_dose_bird(EEC_diet, aw_bird_sm, fi_bird, 0.9, C_0, n_a, rate_out, a_i, 15, h_l, day_out), EEC_dose_bird(EEC_diet, aw_bird_md, fi_bird, 0.9, C_0, n_a, rate_out, a_i, 15, h_l, day_out), EEC_dose_bird(EEC_diet, aw_bird_lg, fi_bird, 0.9, C_0, n_a, rate_out, a_i, 15, h_l, day_out), EEC_dose_bird(EEC_diet, aw_bird_sm, fi_bird, 0.9, C_0, n_a, rate_out, a_i, 94, h_l, day_out), EEC_dose_bird(EEC_diet, aw_bird_md, fi_bird, 0.9, C_0, n_a, rate_out, a_i, 94, h_l, day_out), EEC_dose_bird(EEC_diet, aw_bird_lg, fi_bird, 0.9, C_0, n_a, rate_out, a_i, 94, h_l, day_out), EEC_dose_bird(EEC_diet, aw_bird_sm, fi_bird, 0.1, C_0, n_a, rate_out, a_i, 15, h_l, day_out),EEC_dose_bird(EEC_diet, aw_bird_md, fi_bird, 0.1, C_0, n_a, rate_out, a_i, 15, h_l, day_out),EEC_dose_bird(EEC_diet, aw_bird_lg, fi_bird, 0.1, C_0, n_a, rate_out, a_i, 15, h_l, day_out))                      
+        html = html + """<table width="600" border="1">
+                          <tr>
+                            <th scope="col">Avian Dosed Based RQs</div></th>
+                            <th scope="col">Small</div></th>       
+                            <th scope="col">Mid</div></th> 
+                            <th scope="col">Large</div></th>                    
+                          </tr>
+                          <tr>
+                            <td>Short Grass</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                          </tr>   
+                          <tr>
+                            <td>Tall Grass</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                          </tr>   
+                          <tr>
+                            <td>Broadleaf Plants</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                          </tr>
+                          <tr>
+                            <td>Fruits/Pods</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                          </tr>
+                          <tr>
+                            <td>Arthropods</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                          </tr>
+                          <tr>
+                            <td>Seeds</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                            <td>%.2f</td>
+                          </tr>
+                        """%(ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird_sm, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.9, C_0, n_a, rate_out, a_i, 240, h_l, day_out),ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird_md, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.9, C_0, n_a, rate_out, a_i, 240, h_l, day_out),ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird_lg, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.9, C_0, n_a, rate_out, a_i, 240, h_l, day_out),
+                            ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird_sm, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.9, C_0, n_a, rate_out, a_i, 110, h_l, day_out),ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird_md, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.9, C_0, n_a, rate_out, a_i, 110, h_l, day_out),ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird_lg, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.9, C_0, n_a, rate_out, a_i, 110, h_l, day_out),
+                            ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird_sm, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.9, C_0, n_a, rate_out, a_i, 135, h_l, day_out),ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird_md, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.9, C_0, n_a, rate_out, a_i, 135, h_l, day_out),ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird_lg, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.9, C_0, n_a, rate_out, a_i, 135, h_l, day_out),
+                            ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird_sm, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.9, C_0, n_a, rate_out, a_i, 15, h_l, day_out),ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird_md, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.9, C_0, n_a, rate_out, a_i, 15, h_l, day_out),ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird_lg, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.9, C_0, n_a, rate_out, a_i, 15, h_l, day_out),
+                            ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird_sm, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.9, C_0, n_a, rate_out, a_i, 94, h_l, day_out),ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird_md, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.9, C_0, n_a, rate_out, a_i, 94, h_l, day_out),ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird_lg, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.9, C_0, n_a, rate_out, a_i, 94, h_l, day_out),
+                            ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird_sm, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.1, C_0, n_a, rate_out, a_i, 15, h_l, day_out),ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird_md, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.1, C_0, n_a, rate_out, a_i, 15, h_l, day_out),ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird_lg, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.1, C_0, n_a, rate_out, a_i, 15, h_l, day_out))
+
         # html = html +  """<table width="600" border="1">
         #                   <tr>
         #                     <th scope="col">Outputs</div></th>
@@ -848,7 +960,28 @@ class TRexOutputPage(webapp.RequestHandler):
         #                     <td>Mammalian diet-based chronic RQs for %s (Herbivores and insectivores)</td>
         #                     <td>%0.2E</td>                            
         #                   </tr>                                                 
-        #                   <tr>                            
+                         
+        #                   </table>""" %(a_t, EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day), a_t, EEC_dose_bird(EEC_diet, aw_bird, fi_bird, 0.8, C_0, n_a, a_r, a_i, para, h_l), 
+        #                               EEC_dose_bird_g(EEC_diet, aw_bird, fi_bird, 0.1, C_0, n_a, a_r, a_i, para, h_l), a_t, 
+        #                               ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.8, C_0, n_a, a_r, a_i, para, h_l),
+        #                               ARQ_dose_bird_g(EEC_dose_bird, EEC_diet, aw_bird, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.1, C_0, n_a, a_r, a_i, para, h_l),
+        #                               a_t, ARQ_diet_bird(EEC_diet, lc50_bird, C_0, n_a, a_r, a_i, para, h_l), a_t, CRQ_diet_bird(EEC_diet, NOAEC_bird, C_0, n_a, a_r, a_i, para, h_l),
+        #                               a_t, EEC_dose_mamm(EEC_diet, aw_mamm, fi_mamm, 0.8, C_0, n_a, a_r, a_i, para, h_l), EEC_dose_mamm_g(EEC_diet, aw_mamm, fi_mamm, 0.1, C_0, n_a, a_r, a_i, para, h_l),                                      
+        #                               a_t, ARQ_dose_mamm(EEC_dose_mamm, at_mamm, aw_mamm, ld50_mamm, tw_mamm, 0.8, C_0, n_a, a_r, a_i, para, h_l),
+        #                               ARQ_dose_mamm_g(EEC_dose_mamm, at_mamm, aw_mamm, ld50_mamm, tw_mamm, 0.1, C_0, n_a, a_r, a_i, para, h_l),
+        #                               a_t, CRQ_dose_mamm(EEC_diet, EEC_dose_mamm, ANOAEL_mamm, NOAEL_mamm, aw_mamm, tw_mamm, 0.8, n_a, a_r, a_i, para, h_l),
+        #                               CRQ_dose_mamm_g(EEC_diet, EEC_dose_mamm, ANOAEL_mamm, NOAEL_mamm, aw_mamm, tw_mamm, 0.1, n_a, a_r, a_i, para, h_l),
+        #                               a_t, ARQ_diet_mamm(EEC_diet, lc50_mamm, C_0, n_a, a_r, a_i, para, h_l),
+        #                               a_t, CRQ_diet_mamm(EEC_diet, NOAEC_mamm, C_0, n_a, a_r, a_i, para, h_l),
+        #                               LD50_rg_bird(Application_type, a_r, a_i, p_i, r_s, b_w, aw_bird, at_bird, ld50_bird, tw_bird, x), LD50_rl_bird(Application_type, a_r_l, a_i, p_i, b_w, aw_bird, at_bird, ld50_bird, tw_bird, x),
+        #                               LD50_bg_bird(Application_type, a_r, a_i, p_i, aw_bird, at_bird, ld50_bird, tw_bird,x),LD50_bl_bird(Application_type, a_r_l, a_i, p_i,  aw_bird, at_bird, ld50_bird, tw_bird,x),
+        #                               LD50_rg_mamm(Application_type, a_r, a_i, p_i, r_s, b_w, aw_mamm, at_mamm, ld50_mamm, tw_mamm), LD50_rl_mamm(Application_type, a_r_l, a_i, p_i, b_w, aw_mamm, at_mamm, ld50_mamm, tw_mamm),
+        #                               LD50_bg_mamm(Application_type, a_r, a_i, p_i, aw_mamm, at_mamm, ld50_mamm, tw_mamm),LD50_bl_mamm(Application_type, a_r_l, a_i, p_i, aw_mamm, at_mamm, ld50_mamm, tw_mamm),
+        #                               sa_bird_1(a_r_p, a_i, den, at_bird,fi_bird, ld50_bird, aw_bird, tw_bird, x),sa_bird_2(a_r_p, a_i, den, m_s_r_p, at_bird, ld50_bird, aw_bird, tw_bird, x),
+        #                               sc_bird(a_r_p, a_i, den, NOAEC_bird),sa_mamm_1(a_r_p, a_i, den, at_mamm, fi_mamm, ld50_mamm, aw_mamm, tw_mamm),
+        #                               sa_mamm_2(a_r_p, a_i, den, m_s_r_p, at_mamm, ld50_mamm, aw_mamm, tw_mamm),sc_mamm(a_r_p, a_i, den, NOAEC_mamm))
+   
+                            
         #                     <td>Avian LD50<sup>-2</sup> for row/band/in-furrow granular application</td>
         #                     <td>%0.2E</td>                            
         #                   </tr>                          
@@ -904,26 +1037,8 @@ class TRexOutputPage(webapp.RequestHandler):
         #                     <td>Seed treatment mammalian chronic RQs</td>
         #                     <td>%0.2E</td>                            
         #                   </tr>                           
-        #                   </table>""" %(a_t, EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day), a_t, EEC_dose_bird(EEC_diet, aw_bird, fi_bird, 0.8, C_0, n_a, i_a, a_r, a_i, para, h_l), 
-        #                               EEC_dose_bird_g(EEC_diet, aw_bird, fi_bird, 0.1, C_0, n_a, i_a, a_r, a_i, para, h_l), a_t, 
-        #                               ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.8, C_0, n_a, i_a, a_r, a_i, para, h_l),
-        #                               ARQ_dose_bird_g(EEC_dose_bird, EEC_diet, aw_bird, fi_bird, at_bird, ld50_bird, tw_bird, x, 0.1, C_0, n_a, i_a, a_r, a_i, para, h_l),
-        #                               a_t, ARQ_diet_bird(EEC_diet, lc50_bird, C_0, n_a, i_a, a_r, a_i, para, h_l), a_t, CRQ_diet_bird(EEC_diet, NOAEC_bird, C_0, n_a, i_a, a_r, a_i, para, h_l),
-        #                               a_t, EEC_dose_mamm(EEC_diet, aw_mamm, fi_mamm, 0.8, C_0, n_a, i_a, a_r, a_i, para, h_l), EEC_dose_mamm_g(EEC_diet, aw_mamm, fi_mamm, 0.1, C_0, n_a, i_a, a_r, a_i, para, h_l),                                      
-        #                               a_t, ARQ_dose_mamm(EEC_dose_mamm, at_mamm, aw_mamm, ld50_mamm, tw_mamm, 0.8, C_0, n_a, i_a, a_r, a_i, para, h_l),
-        #                               ARQ_dose_mamm_g(EEC_dose_mamm, at_mamm, aw_mamm, ld50_mamm, tw_mamm, 0.1, C_0, n_a, i_a, a_r, a_i, para, h_l),
-        #                               a_t, CRQ_dose_mamm(EEC_diet, EEC_dose_mamm, ANOAEL_mamm, NOAEL_mamm, aw_mamm, tw_mamm, 0.8, n_a, i_a, a_r, a_i, para, h_l),
-        #                               CRQ_dose_mamm_g(EEC_diet, EEC_dose_mamm, ANOAEL_mamm, NOAEL_mamm, aw_mamm, tw_mamm, 0.1, n_a, i_a, a_r, a_i, para, h_l),
-        #                               a_t, ARQ_diet_mamm(EEC_diet, lc50_mamm, C_0, n_a, i_a, a_r, a_i, para, h_l),
-        #                               a_t, CRQ_diet_mamm(EEC_diet, NOAEC_mamm, C_0, n_a, i_a, a_r, a_i, para, h_l),
-        #                               LD50_rg_bird(Application_type, a_r, a_i, p_i, r_s, b_w, aw_bird, at_bird, ld50_bird, tw_bird, x), LD50_rl_bird(Application_type, a_r_l, a_i, p_i, b_w, aw_bird, at_bird, ld50_bird, tw_bird, x),
-        #                               LD50_bg_bird(Application_type, a_r, a_i, p_i, aw_bird, at_bird, ld50_bird, tw_bird,x),LD50_bl_bird(Application_type, a_r_l, a_i, p_i,  aw_bird, at_bird, ld50_bird, tw_bird,x),
-        #                               LD50_rg_mamm(Application_type, a_r, a_i, p_i, r_s, b_w, aw_mamm, at_mamm, ld50_mamm, tw_mamm), LD50_rl_mamm(Application_type, a_r_l, a_i, p_i, b_w, aw_mamm, at_mamm, ld50_mamm, tw_mamm),
-        #                               LD50_bg_mamm(Application_type, a_r, a_i, p_i, aw_mamm, at_mamm, ld50_mamm, tw_mamm),LD50_bl_mamm(Application_type, a_r_l, a_i, p_i, aw_mamm, at_mamm, ld50_mamm, tw_mamm),
-        #                               sa_bird_1(a_r_p, a_i, den, at_bird,fi_bird, ld50_bird, aw_bird, tw_bird, x),sa_bird_2(a_r_p, a_i, den, m_s_r_p, at_bird, ld50_bird, aw_bird, tw_bird, x),
-        #                               sc_bird(a_r_p, a_i, den, NOAEC_bird),sa_mamm_1(a_r_p, a_i, den, at_mamm, fi_mamm, ld50_mamm, aw_mamm, tw_mamm),
-        #                               sa_mamm_2(a_r_p, a_i, den, m_s_r_p, at_mamm, ld50_mamm, aw_mamm, tw_mamm),sc_mamm(a_r_p, a_i, den, NOAEC_mamm))
-   
+
+
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

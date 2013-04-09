@@ -114,7 +114,7 @@ handlers:
   script: \1/\1_input.py
 #output
 - url: /(.*?)_output.html
-  script: \1/\1_output.py  
+  script: \1/\1_output_via_tables.py  
 #algorithms
 - url: /(.*?)_algorithms.html
   script: \1/\1_algorithm.py    

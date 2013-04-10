@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title> &uuml;bertool - Generating File...</title>
+	<script src="/stylesheets/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="/stylesheets/heartcode-canvasloader-min.js" type="text/javascript"></script>
+	<style type="text/css">
+		.wrapper {
+			position:absolute;
+			top:50%;
+			left:50%;
+		}
+	</style>
+</head>
+
+<body>
+<!-- Create a div which will be the canvasloader wrapper -->	
+	<div id="canvasloader-container" class="wrapper"></div>
+		
+	<!-- This script creates a new CanvasLoader instance and places it in the wrapper div -->
+	<script type="text/javascript">
+		var cl = new CanvasLoader('canvasloader-container');
+		cl.setColor('#666666'); // default is '#000000'
+		cl.setShape('spiral'); // default is 'oval'
+		cl.setDensity(45); // default is 40
+		cl.setSpeed(1); // default is 2
+		cl.show(); // Hidden by default
+		
+		// This bit is only for positioning - not necessary
+		  var loaderObj = document.getElementById("canvasLoader");
+  		loaderObj.style.position = "absolute";
+  		loaderObj.style["top"] = cl.getDiameter() * -0.75 + "px";
+  		loaderObj.style["left"] = cl.getDiameter() * -0.5 + "px";
+    </script>
+
+</body>
+
+</html>

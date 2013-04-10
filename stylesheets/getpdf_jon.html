@@ -46,7 +46,7 @@ var winleft = (browserWidth / 2) - 225;
 var wintop = (browserHeight / 2) - 150;
 
     $('#pdfExport').click(function () {
-        var win = window.open('/templates/popup.html', 'PDF_Export', 'width=450,height=300,status=yes,resizable=yes,scrollbars=yes,left='+ winleft +',top='+ wintop +'');
+        // window.open('/images/popup.html', 'PDF_Export', 'width=450,height=300,status=yes,resizable=yes,scrollbars=yes,left='+ winleft +',top='+ wintop +'');
 
         // $.blockUI({ 
         //     message: '<h1>Loading!</h1>', 
@@ -70,8 +70,7 @@ var wintop = (browserHeight / 2) - 150;
 		});
 
         $(document).ajaxStop(function(){ 
-	        $.unblockUI();
-	        $("#test").show();
+	        $.unblockUI(); 
 		});
 
 		// $(document).ajaxStop(function(){ 
@@ -90,7 +89,7 @@ var wintop = (browserHeight / 2) - 150;
 
 			   success: function(data) {
 			   	    // var win = window.open();
-			   	    // var win = window.open('/templates/popup.html', 'PDF_Export', 'width=450,height=300,status=yes,resizable=yes,scrollbars=yes,left='+ winleft +',top='+ wintop +'');
+			   	    var win = window.open('/images/popup.html', 'PDF_Export', 'width=450,height=300,status=yes,resizable=yes,scrollbars=yes,left='+ winleft +',top='+ wintop +'');
             		win.document.write(data);
 				}
 
@@ -143,6 +142,6 @@ var wintop = (browserHeight / 2) - 150;
 
 <!-- <form id="pdf_post" method="post" action="pdf.html" target="PDF_Export"> -->
 
-<form id="pdf_post" method="post"  target="PDF_Export">
+<form id="pdf_post" method="post">
 	<table align="center" class="getpdf popup"></table>
 </form>

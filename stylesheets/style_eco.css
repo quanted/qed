@@ -1245,3 +1245,14 @@ ul.nobullet {
 	border-bottom:1px solid #CCC;
 	background-color:#fff;
 }
+
+/*  TESTING  */
+
+#test {
+  background-color: #000000;
+  color: #FFFFFF;
+  width: 300px;
+  height: 300px;
+  display: none;
+  z-index: 999999;
+}

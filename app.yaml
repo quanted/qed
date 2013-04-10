@@ -54,7 +54,7 @@ handlers:
 - url: /about.html
   script: about.py
 - url: /pdf.html
-  script: pdf_output.py  
+  script: pdf_output.py
 
 # All URLs beginning with /stylesheets are treated as paths to static files in
 # the stylesheets/ directory. Note that static_dir handlers do not use a
@@ -72,6 +72,9 @@ handlers:
 - url: /(.*\.(gif|png|jpg))
   static_files: static/\1
   upload: static/(.*\.(gif|png|jpg))
+- url: /templates/popup.html
+  static_files: templates/popup.html
+  upload: templates/popup.html
 
 ##UBERTOOL INPUT PAGES##
 #output

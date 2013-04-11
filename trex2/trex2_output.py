@@ -596,17 +596,17 @@ class TRexOutputPage(webapp.RequestHandler):
             day_temp = form.getvalue('day'+str(j))
             day_out.append(day_temp)  
 
-        a_t = form.getvalue('Application_target')
-        if a_t=='Short grass':
-           para=240       #coefficient used to estimate initial conc.
-        elif a_t=='Tall grass':
-           para=110
-        elif a_t=='Broad-leafed plants/small insects':
-           para=135
-        elif a_t=='Fruits/pods/seeds/large insects':
-           para=15
-        elif a_t=='Arthropods': #new coefficient for Arthropods
-           para=94
+        # a_t = form.getvalue('Application_target')
+        # if a_t=='Short grass':
+        #    para=240       #coefficient used to estimate initial conc.
+        # elif a_t=='Tall grass':
+        #    para=110
+        # elif a_t=='Broad-leafed plants/small insects':
+        #    para=135
+        # elif a_t=='Fruits/pods/seeds/large insects':
+        #    para=15
+        # elif a_t=='Arthropods': #new coefficient for Arthropods
+        #    para=94
         #i_a = form.getvalue('interval_between_applications')
         if Application_type=='Seed Treatment':
            a_r_p=rate_out[0]       #coefficient used to estimate initial conc.
@@ -700,8 +700,6 @@ class TRexOutputPage(webapp.RequestHandler):
                           <tr>
                             <td>Number of applications</td>
                             <td>%s</td>
-                            <td>Application target</td>
-                            <td>%s</td>
                           </tr>                              
                           <tr>                            
                             <td>Foliar dissipation half-life (days)</td>
@@ -752,7 +750,7 @@ class TRexOutputPage(webapp.RequestHandler):
                         </table>
                         #<p>&nbsp;</p>                     
                         """%(chem_name, use, formu_name, 100*a_i, Application_type, 100*p_i, den, 
-                            n_a, a_t, h_l, ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, tw_bird, x, ld50_mamm, 
+                            n_a, h_l, ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, tw_bird, x, ld50_mamm, 
                                lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, tw_mamm)         
         if Application_type == 'Seed Treatment':
             html = html + """<table width="600" border="1">

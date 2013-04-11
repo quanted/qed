@@ -360,5 +360,9 @@ if __name__ == '__main__':
     main()
 
  
+<tr><td>small</td><td>%s</td></tr>
+<tr><td>medium</td><td>%s</td></tr>
 
-    
+ trex_model.EEC_dose_bird(trex_model.EEC_diet, aw_bird_s, trex_model.fi_bird, 0.8, trex_model.C_0, n_a, i_a, a_r, a_i, para, h_l), 
+ trex_model.EEC_dose_bird(trex_model.EEC_diet, aw_bird_m, trex_model.fi_bird, 0.8, trex_model.C_0, n_a, i_a, a_r, a_i, para, h_l), 
+

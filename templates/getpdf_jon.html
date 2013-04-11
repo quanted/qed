@@ -42,11 +42,13 @@ imgData_json = JSON.stringify(imgData)
 
 var browserWidth = $(window).width();
 var browserHeight = $(window).height();
-var winleft = (browserWidth / 2) - 225;
-var wintop = (browserHeight / 2) - 150;
+var winleft = (browserWidth / 2) - 200 + "px";
+var wintop = (browserHeight / 2) - 30 + "px";
+var divTop = ($('.articles_output').height() * 0.5) - 28.5 + "px";
+var doneDiv = document.getElementById("popup");
 
     $('#pdfExport').click(function () {
-        var win = window.open('/templates/popup.html', 'PDF_Export', 'width=450,height=300,status=yes,resizable=yes,scrollbars=yes,left='+ winleft +',top='+ wintop +'');
+        // var win = window.open('/templates/popup.html', 'PDF_Export', 'width=450,height=300,status=yes,resizable=yes,scrollbars=yes,left='+ winleft +',top='+ wintop +'');
 
         // $.blockUI({ 
         //     message: '<h1>Loading!</h1>', 
@@ -63,20 +65,30 @@ var wintop = (browserHeight / 2) - 150;
 
 		// $('#pdf_post').submit();
 
-		$(document).ajaxStart(function(){ 
-
-		  // alert('Please Wait'); 
-        	$.blockUI(); 
+		$(document).ajaxStart(function(){
+			$.blockUI({
+				css:{ "top":""+wintop+"", "left":""+winleft+"", "margin-top": "4px", "padding": "30px 20px", "width": "400px", "height": "60px", "border": "0 none", "border-radius": "4px", "-webkit-border-radius": "4px", "-moz-border-radius": "4px", "box-shadow": "3px 3px 15px #333", "-webkit-box-shadow": "3px 3px 15px #333", "-moz-box-shadow": "3px 3px 15px #333" },
+				message: '<h2 class="model_header">Generating PDF...</h2><br><img src="/images/loader.gif" style="margin-top:-15px">',
+			});
 		});
 
-        $(document).ajaxStop(function(){ 
-	        $.unblockUI();
-	        $("#test").show();
+        $(document).ajaxStop(function(){
+	        $.blockUI( { message: null, fadeIn: 0, } );
+	        $("#popup").show();
+	        $("#export_link").fadeIn(500);
+	        $("#popup_pdf").css({"top":""+wintop+""});
+	        $("#export_link").click(function (){
+	        	$("#popup").hide();
+	        	$.unblockUI();
+	        });
+
 		});
 
 		// $(document).ajaxStop(function(){ 
 		//   alert('Done');
 		// });
+
+    	
 
 		$.ajax({
 
@@ -91,16 +103,11 @@ var wintop = (browserHeight / 2) - 150;
 			   success: function(data) {
 			   	    // var win = window.open();
 			   	    // var win = window.open('/templates/popup.html', 'PDF_Export', 'width=450,height=300,status=yes,resizable=yes,scrollbars=yes,left='+ winleft +',top='+ wintop +'');
-            		win.document.write(data);
+            		// doneDiv.document.write(data);
+            		doneDiv.innerHTML = data;
 				}
 
-			});
-
-
-
-
-
-	});
+		});
 
 /*
 	$('.popup').click(function(event) {
@@ -136,6 +143,8 @@ var wintop = (browserHeight / 2) - 150;
 		});
 	});
 */
+	});
+
 });
 </script>
 

@@ -26,6 +26,7 @@ body {
 #container {
   width: 1024px;
   margin: 4px auto 18px auto;
+  position: relative;
   text-align: left;    /* IE Hack */
   border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -1152,17 +1153,21 @@ ul.nobullet {
   background: url(../images/export/export_sprite_small_hort.gif) no-repeat;
   background-position: -68px -38px;
 }
-.popup_pdf {
+#popup_pdf {
+  right: auto;
+  position: fixed;
+  z-index: 9999;
   width: 400px;
-  margin: 8px;
-  padding: 1em 1.5em;
+  height: 60px;
+  text-align: center;
+  padding: 30px 20px;
   background: #F9FBF6;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  box-shadow: 3px 3px 15px #CCC;
-  -webkit-box-shadow: 3px 3px 15px #CCC;
-  -moz-box-shadow: 3px 3px 15px #CCC;
+  box-shadow: 3px 3px 15px #333;
+  -webkit-box-shadow: 3px 3px 15px #333;
+  -moz-box-shadow: 3px 3px 15px #333;
 }
 
 /* 06uberfooter.html */
@@ -1248,11 +1253,12 @@ ul.nobullet {
 
 /*  TESTING  */
 
-#test {
-  background-color: #000000;
-  color: #FFFFFF;
-  width: 300px;
-  height: 300px;
+#popup {
+  background-color: #F9FBF6;
+  margin: auto;
+  padding: 0;
+  border: 0 none;
+  width: 400px;
   display: none;
   z-index: 999999;
 }

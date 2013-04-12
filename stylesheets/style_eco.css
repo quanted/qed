@@ -1237,11 +1237,25 @@ ul.nobullet {
 	border-bottom:1px solid #CCC;
 	background-color:#fff;
 }
-#table.output{
+
+table,td
+{
+  border: 1px solid black;
   border-width: 1px;
   border-spacing: 2px;
   border-style: outset;
   border-color: white;
   border-collapse: separate;
-  background-color: rgb(255, 250, 250);
+  background-color: rgb(201,224,179);
+}
+
+table,th
+{
+  border: 1px solid black;
+  border-width: 1px;
+  border-spacing: 2px;
+  border-style: outset;
+  border-color: white;
+  border-collapse: separate;
+  background-color: rgb(201,224,179);
 }

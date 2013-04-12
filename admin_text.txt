@@ -76,6 +76,11 @@
 <li><a href="http://www.jensbits.com/2011/09/06/using-jquery-datepicker-and-dialog-box-to-select-date-range-2/">date picker</a></li>
 </ul>
 
+<ul>Django
+<lu><a href="https://www.djangoproject.com/">Django</a>
+<li><a href="http://djangosnippets.org/">Django Snippets</a>
+</ul>
+
 <ul>JSON
 <li><a href="http://www.json.org/">JSON</a></li>
 <li><a href="http://stackoverflow.com/questions/tagged/json">stackoverflow</a></li>

@@ -68,7 +68,7 @@ class IecOutputPage(webapp.RequestHandler):
           </tr>          
         </table>
         """%(iec_model.z_score_f(dose_response, LC50, threshold), iec_model.F8_f(dose_response, LC50, threshold), iec_model.chance_f(dose_response, LC50, threshold))
-        html = html + template.render(templatepath + 'getpdf_jon.html', {})
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

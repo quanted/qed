@@ -16,7 +16,7 @@ h1, h2, h3, h4, h5, h6, p {
 /* General */
 
 body {
-  text-align: center;   /* Container: IE Hack */
+  /*text-align: center; */  /* Container: IE Hack */
   background: #F4F7ED repeat-x;
   font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size: 11px;
@@ -26,7 +26,6 @@ body {
 #container {
   width: 1024px;
   margin: 4px auto 18px auto;
-  position: relative;
   text-align: left;    /* IE Hack */
   border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -1136,7 +1135,7 @@ ul.nobullet {
   background: url(../images/export/export_sprite_small_hort.gif) no-repeat;
   background-position: -34px -38px;
 }
-#fadeExport_doc {
+/*#fadeExport_doc {
   display: inline-block;
   height: 38px;
   width: 34px;
@@ -1152,9 +1151,8 @@ ul.nobullet {
   width: 34px;
   background: url(../images/export/export_sprite_small_hort.gif) no-repeat;
   background-position: -68px -38px;
-}
-#popup_pdf {
-  right: auto;
+}*/
+#popup_link {
   position: fixed;
   z-index: 9999;
   width: 400px;
@@ -1168,6 +1166,16 @@ ul.nobullet {
   box-shadow: 3px 3px 15px #333;
   -webkit-box-shadow: 3px 3px 15px #333;
   -moz-box-shadow: 3px 3px 15px #333;
+}
+.exit_button {
+  text-align: center;
+  position: absolute;
+  display: none;
+  cursor: hand; 
+  cursor: pointer;
+  padding-left: 204px;
+  margin-top: -46px;
+  z-index: 99999;
 }
 
 /* 06uberfooter.html */

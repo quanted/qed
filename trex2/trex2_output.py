@@ -413,6 +413,7 @@ def CRQ_dose_mamm(EEC_diet, EEC_dose_mamm, ANOAEL_mamm, NOAEL_mamm, aw_mamm, tw_
 def LD50_rg_bird(Application_type, a_r, a_i, p_i, r_s, b_w, aw_bird, at_bird, ld50_bird, tw_bird, x): 
     if Application_type=='Row/Band/In-furrow-Granular':     
         at_bird=at_bird(ld50_bird,aw_bird,tw_bird,x)
+        print 'r_s', r_s
         n_r=(43560**0.5)/(r_s)
         print 'n_r=', n_r
         print 'a_r=', a_r
@@ -449,7 +450,7 @@ def LD50_rg_mamm(Application_type, a_r, a_i, p_i, r_s, b_w, aw_mamm, at_mamm, ld
         
 # LD50ft-2 for row/band/in-furrow liquid mammals
 
-def LD50_rl_mamm(Application_type, a_r_l, a_i, p_i, b_w, aw_mamm, at_mamm, ld50_mamm, tw_mamm):
+def LD50_rl_mamm(Application_type, a_r, a_i, p_i, b_w, aw_mamm, at_mamm, ld50_mamm, tw_mamm):
     if Application_type=='Row/Band/In-furrow-Liquid':    
         at_mamm=at_mamm(ld50_mamm,aw_mamm,tw_mamm)    
         expo_rl_bird=((max(a_r)*28349*a_i)/(1000*b_w))*(1-p_i)
@@ -489,7 +490,7 @@ def LD50_bg_mamm(Application_type, a_r, a_i, p_i, aw_mamm, at_mamm, ld50_mamm, t
         
 # LD50ft-2 for broadcast liquid mammals
 
-def LD50_bl_mamm(Application_type, a_r_l, a_i, p_i, aw_mamm, at_mamm, ld50_mamm, tw_mamm):
+def LD50_bl_mamm(Application_type, a_r, a_i, p_i, aw_mamm, at_mamm, ld50_mamm, tw_mamm):
     if Application_type=='Broadcast-Liquid':    
         at_mamm=at_mamm(ld50_mamm,aw_mamm,tw_mamm)
         expo_bl_mamm=((max(a_r)*28349*a_i)/43560)*(1-p_i)
@@ -621,14 +622,22 @@ class TRexOutputPage(webapp.RequestHandler):
         NOAEL_bird = form.getvalue('avian_NOAEL')
         NOAEL_bird = float(NOAEL_bird)
         
-#        bird_type = form.getvalue('Bird_type')        
+#        bird_type = form.getvalue('Bird_type')    
+        Species_of_the_tested_bird = form.getvalue('Species_of_the_tested_bird')
         aw_bird_sm = form.getvalue('body_weight_of_the_assessed_bird_small')
         aw_bird_sm = float(aw_bird_sm)  
         aw_bird_md = form.getvalue('body_weight_of_the_assessed_bird_medium')
         aw_bird_md = float(aw_bird_md) 
         aw_bird_lg = form.getvalue('body_weight_of_the_assessed_bird_large')
         aw_bird_lg = float(aw_bird_lg)       
-        tw_bird = form.getvalue('body_weight_of_the_tested_bird')
+        if Species_of_the_tested_bird == 'Bobwhite quail':
+            tw_bird = form.getvalue('bw_quail')
+        elif  Species_of_the_tested_bird == 'Mallard duck':
+            tw_bird = form.getvalue('bw_duck')  
+        else:
+            tw_bird = form.getvalue('bwb_other')      
+
+        #tw_bird = form.getvalue('body_weight_of_the_tested_bird')
         tw_bird = float(tw_bird)        
         x = form.getvalue('mineau_scaling_factor')
         ld50_mamm = form.getvalue('mammalian_ld50')

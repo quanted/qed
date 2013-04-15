@@ -35,17 +35,15 @@ class trexInp_chem(forms.Form):
     density_of_product = forms.FloatField(required=True,label='Density of product (lbs/gal)',initial=8.33)
     maximum_seedling_rate_per_use = forms.FloatField(required=True, label='Maximum seeding rate per use (lbs/A)', initial=100)
     row_sp = forms.FloatField(required=True, label='Row spacing (inch)', initial=0)    
-    bandwidth = forms.FloatField(required=True, label='Bandwidth (inch)', initial=0)    
+    bandwidth = forms.FloatField(required=True, label='Bandwidth (inch)', initial=0)
+    Foliar_dissipation_half_life = forms.FloatField(required=True, label='Foliar dissipation half-life (days)', initial=35)
 # class trexApp(forms.Form):    
     # number_of_applications = forms.FloatField(required=True, label='Number of applications', initial=1)
    # application_rate = forms.FloatField(required=True, label='Granular application rate (lbs a.i./A)',initial=4)
    # application_rate_l = forms.FloatField(required=True,label='Liquid application rate (fl oz/A)', initial=36) #only for LD50-2, 
    # application_rate_per_use = forms.FloatField(required=True, label='Application rate per use (fl oz/cwt)', initial=36)
   #  interval_between_applications = forms.FloatField(required=True, label='Interval between applications (days)', initial=0)
-
-
 class trexInp_bird(forms.Form):    
-    Foliar_dissipation_half_life = forms.FloatField(required=True, label='Foliar dissipation half-life (days)', initial=35)
     avian_ld50 = forms.FloatField(required=True, label='Avian LD50 (mg/kg-bw)', initial=1499)
     avian_lc50 = forms.FloatField(required=True, label='Avian LC50 (mg/kg-diet)', initial=5620)
     avian_NOAEC = forms.FloatField(required=True,label='Avian NOAEC (mg/kg-diet)', initial=50)
@@ -64,7 +62,10 @@ class trexInp_bird(forms.Form):
         else:
             a33= 178
         return a33
-    body_weight_of_the_tested_bird=forms.FloatField(required=True, label='Body weight of the tested bird (g)', initial=get_STB_choices(Species_of_the_tested_bird))
+    bw_quail = forms.FloatField(required=True,label='Weight of the tested bird', initial= '178')
+    bw_duck = forms.FloatField(required=True,label='Weight of the tested bird', initial= '1580')
+    bwb_other = forms.FloatField(required=True,label='Weight of the tested bird', initial= '7')
+    #body_weight_of_the_tested_bird=forms.FloatField(required=True, label='Body weight of the tested bird (g)', initial=get_STB_choices(Species_of_the_tested_bird))
     mineau_scaling_factor = forms.FloatField(required=True,label='Mineau scaling factor',initial=1.15)
 class trexInp_mammal(forms.Form):  
     mammalian_ld50 = forms.FloatField(required=True, label='Mammalian LD50 (mg/kg-bw)', initial=930)

@@ -81,7 +81,7 @@ class TRexOutputPage(webapp.RequestHandler):
            a_r_p=rate_out[0]       #coefficient used to estimate initial conc.
         else:
            a_r_p=0
-        print 'a_r_p', a_r_p
+     #   print 'a_r_p', a_r_p
         h_l = form.getvalue('Foliar_dissipation_half_life')
         ld50_bird = form.getvalue('avian_ld50')
         lc50_bird = form.getvalue('avian_lc50')

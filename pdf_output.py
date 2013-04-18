@@ -40,17 +40,17 @@ def get_jid(pdf_t, pdf_nop, pdf_p):
     data = urllib.urlencode({"input_str":input_str})
     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers) 
     jid= json.loads(response.content)['jid']
-    output_st = ''
-        
+    output_st = "running"
+    
     while output_st!="done":
         response_st = urlfetch.fetch(url='https://api.picloud.com/job/?jids=%s&field=status' %jid, headers=http_headers)
         output_st = json.loads(response_st.content)['info']['%s' %jid]['status']
+    
 
     url_val = 'https://api.picloud.com/job/result/?jid='+str(jid)
     response_val = urlfetch.fetch(url=url_val, method=urlfetch.GET, headers=http_headers)
     output_val = json.loads(response_val.content)['result']
     return(jid, output_st, output_val)
-
 
 class pdfPage(webapp.RequestHandler):
     def post(self):
@@ -59,7 +59,6 @@ class pdfPage(webapp.RequestHandler):
         pdf_nop = form.getvalue('pdf_nop')
         pdf_p = json.loads(form.getvalue('pdf_p'))
 
-        final_res=get_jid(pdf_t, pdf_nop, pdf_p)[2]
         text_file2 = open('about_text.txt','r')
         xx = text_file2.read()
         templatepath = os.path.dirname(__file__) + '/templates/'                                 

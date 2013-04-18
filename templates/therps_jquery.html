@@ -1,0 +1,20 @@
+<script type="text/javascript" src=" ../stylesheets/jquery-1.7.2.js"></script>
+
+<script>
+$(document).ready(function() {
+
+$('#id_Species_of_the_tested_bird').change(function(){
+
+	if ($(this).val()=="Bobwhite quail"){
+		$('#id_body_weight_of_the_tested_bird').val("178")
+	}
+	else if ($(this).val()=="Mallard duck"){
+		$('#id_body_weight_of_the_tested_bird').val("1580")
+	}
+	else $('#id_body_weight_of_the_tested_bird').val("")
+})
+
+
+
+})
+</script>

@@ -647,7 +647,7 @@ class STIRExecutePage(webapp.RequestHandler):
                 'model':'stir', 
                 'model_attributes':'STIR Output'})    
         html = html + """
-        <table border="1" class="out_1>
+        <table border="1" class="out_1">
             <tr>
                 <th colspan="3">User Inputs</th>
             </tr>

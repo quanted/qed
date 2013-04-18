@@ -1,0 +1,20 @@
+<script src="/stylesheets/jquery-1.9.1.min.js" type="text/javascript"></script>
+<!-- Import jQueryUI library -->
+<script src="/stylesheets/jquery-ui.js" type="text/javascript"></script>
+<script src="https://raw.github.com/malsup/blockui/master/jquery.blockUI.js" type="text/javascript"></script>
+<script>
+$(document).ready(function() { 
+        $.blockUI({ 
+            message: '<h1>Loading!</h1>', 
+            timeout: 2000,
+            css: { 
+
+                backgroundColor: '#000', 
+
+                opacity: .6, 
+                color: '#fff' 
+            } 
+
+        }); 
+}); 
+</script>

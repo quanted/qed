@@ -1,0 +1,37 @@
+<!--start popup_pdf-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style type="text/css" media="screen">
+	<!--
+  	@import url(/stylesheets/style_eco.css);
+	-->
+  </style>
+<!-- Import jQuery library -->
+<script src="/stylesheets/jquery-1.9.1.min.js" type="text/javascript"></script>
+<!-- Import jQueryUI library -->
+<script src="/stylesheets/jquery-ui.js" type="text/javascript"></script>
+<!-- import Javascripts -->
+<script src="/stylesheets/scripts.js" type="text/javascript"></script>
+<script type="text/javascript">
+$( document ).ready(function() {
+	$('.popup_pdf a').hover(function(){
+		$(this).stop().animate({ color:'#FFA500' },500);
+	}, function(){
+		$(this).stop().animate({ color:'#79973F' },500);
+	});
+});
+</script>
+</head>
+
+<body>
+
+	<div class="popup_pdf">
+		<h2 class="model_header"><a href={{model_page}}>{{ model_attributes }}</a></h2>
+			{{ text_paragraph|safe }}
+	</div> <!-- End "articles" div -->
+
+</body>
+
+</html>
+<!--end popup_pdf-->

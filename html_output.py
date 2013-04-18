@@ -14,7 +14,6 @@ import cgitb
 import json
 
 cgitb.enable()
-from pfam import input_edit
 import base64
 import urllib
 from google.appengine.api import urlfetch
@@ -34,7 +33,7 @@ http_headers = {'Authorization' : 'Basic %s' % base64string}
 
 def get_jid(pdf_t, pdf_nop, pdf_p):
 
-    url='https://api.picloud.com/r/3303/generatepdf_pi_s1'
+    url='https://api.picloud.com/r/3303/generatehtml_pi_s1'
     input_str=[pdf_t, pdf_nop, pdf_p]
     input_str=json.dumps(input_str)
     data = urllib.urlencode({"input_str":input_str})
@@ -52,7 +51,7 @@ def get_jid(pdf_t, pdf_nop, pdf_p):
     output_val = json.loads(response_val.content)['result']
     return(jid, output_st, output_val)
 
-class pdfPage(webapp.RequestHandler):
+class htmlPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()   
         pdf_t = form.getvalue('pdf_t')
@@ -66,17 +65,10 @@ class pdfPage(webapp.RequestHandler):
         html = template.render(templatepath + 'popup_pdf_eco.html', {
             'title':'Ubertool',
             'model_page':final_res,
-            'model_attributes':'Please download your PDF here','text_paragraph':''})
-        # html = html + """
-        #     <div class="popup_pdf">
-        #         <h2 class="model_header"><a href=%s>Please download your PDF here</a></h2>
-        #     </div>
-        # """%(final_res)
-        # self.response.headers['Content-Type'] = 'application/pdf'
-        # self.response.headers['Content-Disposition'] = 'attachment; filename=foo.pdf'
+            'model_attributes':'Please download your HTML here','text_paragraph':''})
         self.response.out.write(html)
 
-app = webapp.WSGIApplication([('/.*', pdfPage)], debug=True)
+app = webapp.WSGIApplication([('/.*', htmlPage)], debug=True)
 
 def main():
     run_wsgi_app(app)

@@ -15,6 +15,7 @@ sys.path.append("../utils")
 import utils.json_utils
 sys.path.append("../dust")
 from dust import dust_model
+from dust import dust_parameters
 from dust import dust_tables
 from django.template import Context, Template
 

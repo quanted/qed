@@ -9,7 +9,6 @@ from django.utils.safestring import mark_safe
 SELECT_METHOD = (('Granular','Granular'),('Foliar Spray','Foliar Spray'),('Bare Ground Spray','Bare Ground Spray'))
 
 class DustInp(forms.Form):
-    headline = models.CharField(max_length=200, null=True, blank=True,help_text="Use puns liberally")
     chemical_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}), label='Chemical Name',initial='Alachlor')
     label_epa_reg_no = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),label='Label EPA Reg. No.',initial='50301')
     pest_app_method = forms.ChoiceField(choices=SELECT_METHOD, label=mark_safe('Select Pesticide Application Method'),initial='Granular')

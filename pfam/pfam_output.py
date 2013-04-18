@@ -487,17 +487,9 @@ class PFAMOutputPage(webapp.RequestHandler):
         <div id="chart3" style="margin-top:20px; margin-left:90px; width:650px; height:400px;"></div>        
         """
 
-        html = html + template.render(templatepath + 'pfam-output.html', {})                                 
+        html = html + template.render(templatepath + 'pfam-output.html', {})
+        html = html + template.render(templatepath + 'getpdf.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-
-        html = html + """
-          <form method="post" target="_blank" action=pdf.html>
-            <table align="center" class="getpdf">
-            </table>
-          </form>
-        """
-
-        html = html + template.render(templatepath + 'getpdf_jquery.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

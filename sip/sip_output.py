@@ -199,14 +199,9 @@ class SIPExecutePage(webapp.RequestHandler):
                 sip_model.chron_bird(sip_model.dose_bird(sip_model.fw_bird(bw_bird),sol,bw_bird),sip_model.det(noaec,sip_model.fi_bird(bw_bird),bw_bird)),
                 sip_model.acuconb(sip_model.acute_bird(sip_model.dose_bird(sip_model.fw_bird(bw_bird),sol,bw_bird),sip_model.at_bird(ld50,aw_bird,tw_bird,mineau))),             
                 sip_model.chronconb(sip_model.chron_bird(sip_model.dose_bird(sip_model.fw_bird(bw_bird),sol,bw_bird),sip_model.det(noaec,sip_model.fi_bird(bw_bird),bw_bird))))             
+         
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + """
-          <form method="post" target="_blank" action=pdf.html>
-            <table align="center" class="getpdf">
-            </table>
-          </form>
-        """
-        html = html + template.render(templatepath + 'getpdf_jquery.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

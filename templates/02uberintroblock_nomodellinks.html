@@ -3,12 +3,13 @@
 <!-- "Click" Menus -->
 <script type="text/javascript">
 $( document ).ready(function() {
+
 	$('.articles a').hover(function(){
-			$(this).stop().animate({ color:'#FFA500' },500);
-		}, function(){
-			$(this).stop().animate({ color:'#79973F' },500);
+		$(this).stop().animate({ color:'#FFA500' },500);
+	}, function(){
+		$(this).stop().animate({ color:'#79973F' },500);
 	});
-	
+		
 	$('.fadeMenu').hover(function(){
 		$(this).stop().animate({ backgroundColor:'rgb(255,165,0)', color:'#FFFFFF'},500);
 	}, function(){

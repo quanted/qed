@@ -16,7 +16,7 @@ h1, h2, h3, h4, h5, h6, p {
 /* General */
 
 body {
-  text-align: center;   /* Container: IE Hack */
+  /*text-align: center; */  /* Container: IE Hack */
   background: #F4F7ED repeat-x;
   font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size: 11px;
@@ -1096,14 +1096,10 @@ ul.nobullet {
   z-index: 999;
 }
 #export_menu ul li{
-  display: block;
+  display: inline;
   list-style: none;
   padding: 0;
   margin: 0;
-}
-#export_menu ul li img {
-  margin: 0;
-  padding: 0;
 }
 #fadeExport_pdf {
   display: inline-block;
@@ -1139,7 +1135,7 @@ ul.nobullet {
   background: url(../images/export/export_sprite_small_hort.gif) no-repeat;
   background-position: -34px -38px;
 }
-#fadeExport_doc {
+/*#fadeExport_doc {
   display: inline-block;
   height: 38px;
   width: 34px;
@@ -1155,6 +1151,31 @@ ul.nobullet {
   width: 34px;
   background: url(../images/export/export_sprite_small_hort.gif) no-repeat;
   background-position: -68px -38px;
+}*/
+#popup_link {
+  position: fixed;
+  z-index: 9999;
+  width: 400px;
+  height: 60px;
+  text-align: center;
+  padding: 30px 20px;
+  background: #F9FBF6;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  box-shadow: 3px 3px 15px #333;
+  -webkit-box-shadow: 3px 3px 15px #333;
+  -moz-box-shadow: 3px 3px 15px #333;
+}
+.exit_button {
+  text-align: right;
+  position: absolute;
+  display: none;
+  cursor: hand; 
+  cursor: pointer;
+  margin-left: 204px;
+  margin-top: -46px;
+  z-index: 99999;
 }
 
 /* 06uberfooter.html */
@@ -1181,7 +1202,7 @@ ul.nobullet {
   height: 31px;
 }
 
-/*  Contact Us */
+/* Contact Us */
 
 #form1 label.error {
 	width: 200px;
@@ -1258,4 +1279,15 @@ table,th
   border-color: white;
   border-collapse: separate;
   background-color: rgb(201,224,179);
+
+/*  TESTING  */
+
+#popup {
+  background-color: #F9FBF6;
+  margin: auto;
+  padding: 0;
+  border: 0 none;
+  width: 400px;
+  display: none;
+  z-index: 999999;
 }

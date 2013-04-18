@@ -47,7 +47,7 @@ class DUSTExecutePage(webapp.RequestHandler):
 
         #pre-table 1
         html = html + """
-        <table>
+        <table border="1" border="1" class="out_1">
         <tr><H3>User Inputs: Chemical Identity</H3></tr>
         <tr><H4>Application and Chemical Information</H4></tr>
         <tr></tr>
@@ -65,8 +65,8 @@ class DUSTExecutePage(webapp.RequestHandler):
         html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
 
         #pre-table 2
-        html = html + """
-        <table>
+        html = html + """        
+        <table border="1" class="out_2">
         <tr><H4>Toxicity Properties</H4></tr>
         <tr></tr>
         </table>
@@ -80,7 +80,7 @@ class DUSTExecutePage(webapp.RequestHandler):
         
         #pre-table 3
         html = html + """
-        <table>
+        <table border="1" class="out_3">
         <tr><H3>Exposure Estimates</H3></tr>
         <tr><H4>Granular Application</H4></tr>
         <tr>(contact with soil residues via dust and soil surface)</tr>
@@ -97,7 +97,7 @@ class DUSTExecutePage(webapp.RequestHandler):
 
         #pre-table 4
         html = html + """     
-        <table>
+        <table border="1" class="out_4">
         <tr><H4>Foliar Spray Application</H4></tr>
         <tr>(contact with foliar residues and directly applied spray)</tr>
         </table>
@@ -113,7 +113,7 @@ class DUSTExecutePage(webapp.RequestHandler):
 
         #pre-table 5
         html = html + """         
-        <table>
+        <table border="1" class="out_5">
         <tr><H4>Bare Ground Spray Application</H4></tr>
         <tr>(contact with soil residues and directly applied spray)</tr>
         </table>
@@ -129,7 +129,8 @@ class DUSTExecutePage(webapp.RequestHandler):
 
         #pre-table 6
         html = html + """        
-        <table>
+        <br></br>
+        <table border="1" class="out_6">
         <tr><H3>Ratio of Exposure to Toxicity</H3></tr>
         <tr><H4>Granular</H4></tr>
         </table>
@@ -150,7 +151,7 @@ class DUSTExecutePage(webapp.RequestHandler):
 
         #pre-table 7
         html = html + """         
-        <table>
+        <table border="1" class="out_7">
         <tr><H4>Foliar Spray</H4></tr>
         </table>
         """
@@ -170,7 +171,7 @@ class DUSTExecutePage(webapp.RequestHandler):
 
         #pre-table 8
         html = html + """          
-        <table>
+        <table border="1" class="out_8">
         <tr><H4>Bare Ground Spray</H4></tr>
         </table>
         """
@@ -188,6 +189,47 @@ class DUSTExecutePage(webapp.RequestHandler):
         t8rows = dust_tables.gethtmlrowsfromcols(t8data,pvrheadings)
         html = html + tmpl.render(Context(dict(data=t8rows, headings=pvrheadings)))
 
+        
+        """ % (chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, 
+               dislodge_fol_res, bird_acute_oral_study, bird_study_add_comm,
+               low_bird_acute_ld50, test_bird_bw, mineau, mamm_acute_derm_study,
+               mamm_study_add_comm, mam_acute_derm_ld50, test_mam_bw,
+               gran_bird_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface), 
+gran_repamp_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),
+gran_mam_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),
+fol_bird_ex_derm_dose(dislodge_fol_res,ar_mg(ar_lb)),
+fol_repamp_ex_derm_dose(dislodge_fol_res,ar_mg(ar_lb)),
+fol_mam_ex_derm_dose(dislodge_fol_res,ar_mg(ar_lb)),
+bgs_bird_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),
+bgs_repamp_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),
+bgs_mam_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),
+ratio_gran_bird(gran_bird_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),birdrep_derm_ld50(bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau)),
+LOC_gran_bird(ratio_gran_bird(gran_bird_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),birdrep_derm_ld50(bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau))),
+ratio_gran_rep(gran_repamp_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),birdrep_derm_ld50(bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau)),
+LOC_gran_rep(ratio_gran_rep(gran_repamp_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),birdrep_derm_ld50(bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau))),
+ratio_gran_amp(gran_repamp_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),amp_derm_ld50(low_bird_acute_ld50,test_bird_bw,mineau)),
+LOC_gran_amp(ratio_gran_amp(gran_repamp_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),amp_derm_ld50(low_bird_acute_ld50,test_bird_bw,mineau))),
+ratio_gran_mam(gran_mam_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),mam_derm_ld50(mam_acute_derm_ld50,test_mam_bw)),
+LOC_gran_mam(ratio_gran_mam(gran_mam_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),mam_derm_ld50(mam_acute_derm_ld50,test_mam_bw))),
+ratio_fol_bird(fol_bird_ex_derm_dose(dislodge_fol_res,ar_mg(ar_lb)),birdrep_derm_ld50(bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau)),
+LOC_fol_bird(ratio_fol_bird(fol_bird_ex_derm_dose(dislodge_fol_res,ar_mg(ar_lb)),birdrep_derm_ld50(bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau))),
+ratio_fol_rep(fol_repamp_ex_derm_dose(dislodge_fol_res,ar_mg(ar_lb)),birdrep_derm_ld50(bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau)),
+LOC_fol_rep(ratio_fol_rep(fol_repamp_ex_derm_dose(dislodge_fol_res,ar_mg(ar_lb)),birdrep_derm_ld50(bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau))),
+ratio_fol_amp(fol_repamp_ex_derm_dose(dislodge_fol_res,ar_mg(ar_lb)),amp_derm_ld50(low_bird_acute_ld50,test_bird_bw,mineau)),
+LOC_fol_amp(ratio_fol_amp(fol_repamp_ex_derm_dose(dislodge_fol_res,ar_mg(ar_lb)),amp_derm_ld50(low_bird_acute_ld50,test_bird_bw,mineau))),
+ratio_fol_mam(fol_mam_ex_derm_dose(dislodge_fol_res,ar_mg(ar_lb)),mam_derm_ld50(mam_acute_derm_ld50,test_mam_bw)),
+LOC_fol_mam(ratio_fol_mam(fol_mam_ex_derm_dose(dislodge_fol_res,ar_mg(ar_lb)),mam_derm_ld50(mam_acute_derm_ld50,test_mam_bw))),
+ratio_bgs_bird(bgs_bird_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),birdrep_derm_ld50(bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau)),
+LOC_bgs_bird(ratio_bgs_bird(bgs_bird_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),birdrep_derm_ld50(bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau))),
+ratio_bgs_rep(bgs_repamp_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),birdrep_derm_ld50(bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau)),
+LOC_bgs_rep(ratio_bgs_rep(bgs_repamp_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),birdrep_derm_ld50(bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau))),
+ratio_bgs_amp(bgs_repamp_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),amp_derm_ld50(low_bird_acute_ld50,test_bird_bw,mineau)),
+LOC_bgs_amp(ratio_bgs_amp(bgs_repamp_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),amp_derm_ld50(low_bird_acute_ld50,test_bird_bw,mineau))),
+ratio_bgs_mam(bgs_mam_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),mam_derm_ld50(mam_acute_derm_ld50,test_mam_bw)),
+LOC_bgs_mam(ratio_bgs_mam(bgs_mam_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),mam_derm_ld50(mam_acute_derm_ld50,test_mam_bw))))
+        
+        html = html + template.render(templatepath + 'export.html', {})
+>>>>>>> origin/jon
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

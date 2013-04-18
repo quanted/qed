@@ -588,7 +588,7 @@ def html_table(row_inp,iter):
                             <td>Reptile dietary-based chronic RQs for %s terrestrial phase amphibians </td>
                             <td>%0.2E</td>
                             <td></td>
-                          </tr>""" %(bw_range_r_temp, therps_model.CRQ_diet_tp(therps_model.EEC_diet_tp, therps_model.EEC_diet, NOAEC_bird_temp, therps_model.C_0, n_a_temp, i_a_temp, a_r_temp, a_i_temp, 135, h_l_temp, therps_model.fi_herp, c_herp_r_temp, wp_herp_r_temp))            
+                          </tr></table><br>""" %(bw_range_r_temp, therps_model.CRQ_diet_tp(therps_model.EEC_diet_tp, therps_model.EEC_diet, NOAEC_bird_temp, therps_model.C_0, n_a_temp, i_a_temp, a_r_temp, a_i_temp, 135, h_l_temp, therps_model.fi_herp, c_herp_r_temp, wp_herp_r_temp))            
 
     Inout_table = Input_table+Output_table
     return Inout_table  
@@ -1141,9 +1141,9 @@ def loop_html(thefile):
                     <td>%0.2E</td>
                     <td>%0.2E</td>                      
                     <td></td>
-                </tr>""" %(numpy.mean(rp_d_c_RQ_tpa), numpy.std(rp_d_c_RQ_tpa), numpy.min(rp_d_c_RQ_tpa), numpy.max(rp_d_c_RQ_tpa))      
+                </tr></table><br>""" %(numpy.mean(rp_d_c_RQ_tpa), numpy.std(rp_d_c_RQ_tpa), numpy.min(rp_d_c_RQ_tpa), numpy.max(rp_d_c_RQ_tpa))      
                                      
-    total_html=sum_html+iter_html    
+    total_html=sum_html+iter_html
     return total_html
 
 
@@ -1151,28 +1151,13 @@ class TherpsBatchOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()
         thefile = form['upfile']
-        # reader = csv.reader(thefile.file.read().splitlines())
-        # header = reader.next()
-        # exclud_list = ['', " ", "  ", "   ", "    ", "     ", "      ", "       ", "        ", "         ", "          "]
-        # i=1
-
-        # for row in reader:
-        #     if row[3] in exclud_list:
-        #         break
-
-            # print html_table(row,i)
-
-        # print loop_html(thefile)
-            # i=i+1
-
-        # iter_html=loop_html(thefile)        
+        iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', 'title')
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'therps','page':'batchinput'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberbatch_start.html', {})
-        html = html + loop_html(thefile)
-        # html = html + template.render(templatepath + 'rice-batchoutput-jqplot.html', {})                
+        html = html + iter_html
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

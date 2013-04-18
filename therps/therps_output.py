@@ -434,7 +434,7 @@ class THerpsOutputPage(webapp.RequestHandler):
                 'model':'therps', 
                 'model_attributes':'T-Herps Output'})
 
-        html = html + """<table width="600" border="1">
+        html = html + """<table width="600" border="1" class="out_1">
                           <tr>
                             <th width="240" scope="col">Inputs</div></th>
                             <th width="60" scope="col">Value</div></th>
@@ -534,7 +534,7 @@ class THerpsOutputPage(webapp.RequestHandler):
 
 
                              
-        html = html +  """<table width="600" border="1">
+        html = html +  """<table width="600" border="1" class="out_2">
                           <tr>
                             <th width="480" scope="col">Outputs</div></th>
                             <th width="120" scope="col">Value</div></th>                            
@@ -744,7 +744,7 @@ class THerpsOutputPage(webapp.RequestHandler):
                                        bw_range_r, CRQ_diet_mamm(EEC_diet_mamm, EEC_diet, NOAEC_bird, C_0, n_a, i_a, a_r, a_i, 15, h_l, fi_mamm, c_mamm_r, wp_mamm_r),
                                        bw_range_r, CRQ_diet_tp(EEC_diet_tp, EEC_diet, NOAEC_bird, C_0, n_a, i_a, a_r, a_i, 135, h_l, fi_herp, c_herp_r, wp_herp_r))            
         
-#        
+        html = html + template.render(templatepath + 'export.html', {})       
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

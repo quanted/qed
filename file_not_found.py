@@ -17,7 +17,7 @@ class defaultPage(webapp.RequestHandler):
         html = html + template.render('templates/02uberintroblock_nomodellinks.html', {'title2':'File not found'})
         html = html + template.render ('templates/03ubertext_links_left.html', {})                                
         html = html + template.render ('templates/04ubertext_start.html', {'text_paragraph':'File not found.'})
-        html = html + """ <style type="text/css">img {margin-left: 25px;}</style> <img src="../stylesheets/images/404error.png" width="300" height="300" />"""
+        html = html + """ <img src="../images/404error.png" width="300" height="300">"""
         html = html + template.render ('templates/04ubertext_end.html', {})
         html = html + template.render ('templates/05ubertext_links_right.html', {})
         html = html + template.render('templates/06uberfooter.html', {'links': ''})

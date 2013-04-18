@@ -386,7 +386,7 @@ $( document ).ready(function() {
 			$span.stop().fadeTo(500, 0);
 		});
 	});
-		
+
 });
 
 var pathArray = window.location.pathname.split( '/' );

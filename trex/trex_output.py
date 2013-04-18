@@ -634,7 +634,7 @@ class TRexOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'trex', 
                 'model_attributes':'T-Rex Output'})
-        html = html + """<table width="600" border="1">
+        html = html + """<table width="600" border="1" class="out_1">
                           <tr>
                             <th scope="col">Inputs</div></th>
                             <th scope="col">Value</div></th>
@@ -743,7 +743,7 @@ class TRexOutputPage(webapp.RequestHandler):
                                r_s, b_w, n_a, a_t, i_a, h_l, ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird, tw_bird, x, ld50_mamm, 
                                lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm, tw_mamm)                          
         
-        html = html +  """<table width="600" border="1">
+        html = html +  """<table width="600" border="1" class="out_2">
                           <tr>
                             <th scope="col">Outputs</div></th>
                             <th scope="col">Value</div></th>                            
@@ -884,6 +884,7 @@ class TRexOutputPage(webapp.RequestHandler):
                                       sc_bird(a_r_p, a_i, den, NOAEC_bird),sa_mamm_1(a_r_p, a_i, den, at_mamm, fi_mamm, ld50_mamm, aw_mamm, tw_mamm),
                                       sa_mamm_2(a_r_p, a_i, den, m_s_r_p, at_mamm, ld50_mamm, aw_mamm, tw_mamm),sc_mamm(a_r_p, a_i, den, NOAEC_mamm))
    
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

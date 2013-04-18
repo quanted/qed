@@ -47,11 +47,7 @@ class DUSTExecutePage(webapp.RequestHandler):
 
         #pre-table 1
         html = html + """
-        <table>
-        <tr><H3>User Inputs: Chemical Identity</H3></tr>
-        <tr><H4>Application and Chemical Information</H4></tr>
-        <tr></tr>
-        </table>
+        <p class="out_24">Table 1. User Inputs: Chemical Identity</p>
         """
 
         pvuheadings = dust_tables.getheaderpvu()
@@ -65,8 +61,8 @@ class DUSTExecutePage(webapp.RequestHandler):
         html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
 
         #pre-table 2
-        html = html + """
-        <table>
+        html = html + """       
+        <table class="out_2">
         <tr><H4>Toxicity Properties</H4></tr>
         <tr></tr>
         </table>
@@ -80,7 +76,7 @@ class DUSTExecutePage(webapp.RequestHandler):
         
         #pre-table 3
         html = html + """
-        <table>
+        <table class="out_3">
         <tr><H3>Exposure Estimates</H3></tr>
         <tr><H4>Granular Application</H4></tr>
         <tr>(contact with soil residues via dust and soil surface)</tr>
@@ -97,7 +93,7 @@ class DUSTExecutePage(webapp.RequestHandler):
 
         #pre-table 4
         html = html + """     
-        <table>
+        <table class="out_4">
         <tr><H4>Foliar Spray Application</H4></tr>
         <tr>(contact with foliar residues and directly applied spray)</tr>
         </table>
@@ -113,7 +109,7 @@ class DUSTExecutePage(webapp.RequestHandler):
 
         #pre-table 5
         html = html + """         
-        <table>
+        <table class="out_5">
         <tr><H4>Bare Ground Spray Application</H4></tr>
         <tr>(contact with soil residues and directly applied spray)</tr>
         </table>
@@ -129,7 +125,7 @@ class DUSTExecutePage(webapp.RequestHandler):
 
         #pre-table 6
         html = html + """        
-        <table>
+        <table class="out_6">
         <tr><H3>Ratio of Exposure to Toxicity</H3></tr>
         <tr><H4>Granular</H4></tr>
         </table>
@@ -150,7 +146,7 @@ class DUSTExecutePage(webapp.RequestHandler):
 
         #pre-table 7
         html = html + """         
-        <table>
+        <table class="out_7">
         <tr><H4>Foliar Spray</H4></tr>
         </table>
         """
@@ -170,7 +166,7 @@ class DUSTExecutePage(webapp.RequestHandler):
 
         #pre-table 8
         html = html + """          
-        <table>
+        <table class="out_8">
         <tr><H4>Bare Ground Spray</H4></tr>
         </table>
         """
@@ -187,7 +183,8 @@ class DUSTExecutePage(webapp.RequestHandler):
         t8data = dust_tables.gett8data(barebirdrisk,barebirdmess,barereprisk,barerepmess,bareamphibrisk,bareamphibmess,baremammrisk,baremammmess)
         t8rows = dust_tables.gethtmlrowsfromcols(t8data,pvrheadings)
         html = html + tmpl.render(Context(dict(data=t8rows, headings=pvrheadings)))
-
+        
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

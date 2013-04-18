@@ -161,7 +161,7 @@ class agdriftOutputPage(webapp.RequestHandler):
                 'model':'agdrift', 
                 'model_attributes':'AgDrift Output'})
         html = html + """
-        <table border="1">
+        <table border="1" class="out_1">
         <tr><H3>User Inputs</H3></tr>
         <tr>
         <td>Application method</td>
@@ -189,7 +189,9 @@ class agdriftOutputPage(webapp.RequestHandler):
                           <td id="deposition">%s</td>
                           </tr>
                           </table>"""%(x,y)
+        
         html = html + template.render(templatepath + 'agdrift-output-jqplot.html', {})         
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
           

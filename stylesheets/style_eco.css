@@ -1168,12 +1168,12 @@ ul.nobullet {
   -moz-box-shadow: 3px 3px 15px #333;
 }
 .exit_button {
-  text-align: center;
+  text-align: right;
   position: absolute;
   display: none;
   cursor: hand; 
   cursor: pointer;
-  padding-left: 204px;
+  margin-left: 204px;
   margin-top: -46px;
   z-index: 99999;
 }
@@ -1202,7 +1202,7 @@ ul.nobullet {
   height: 31px;
 }
 
-/*  Contact Us */
+/* Contact Us */
 
 #form1 label.error {
 	width: 200px;

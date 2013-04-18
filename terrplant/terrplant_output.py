@@ -219,15 +219,8 @@ terrplant_model.ldsRQdry(terrplant_model.totaldry(terrplant_model.rundry(A,I,R),
 terrplant_model.ldsRQsemi(terrplant_model.totalsemi(terrplant_model.runsemi(A,I,R),terrplant_model.spray(A,D)),lds), 
 terrplant_model.ldsRQspray(terrplant_model.spray(A,D),lds)
 )
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + """
-          <form method="post" target="_blank" action=pdf.html>
-            <table align="center" class="getpdf">
-            </table>
-          </form>
-        """
-
-        html = html + template.render(templatepath + 'getpdf_jquery.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

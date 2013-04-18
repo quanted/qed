@@ -339,7 +339,7 @@ class DUSTExecutePage(webapp.RequestHandler):
                 'model':'dust', 
                 'model_attributes':'DUST Output'})   
         html = html + """
-        <table border="1">
+        <table border="1" border="1" class="out_1">
         <tr><H3>User Inputs: Chemical Identity</H3></tr>
         <br></br>
         <tr><H4>Application and Chemical Information</H4></tr>
@@ -367,7 +367,7 @@ class DUSTExecutePage(webapp.RequestHandler):
         </tr>
         </table>
         
-        <table border="1">
+        <table border="1" class="out_2">
         <tr><H4>Toxicity Properties</H4></tr>
         <tr>
         <td>Bird Acute Oral Study (OCSPP 850.2100) MRID#</td>
@@ -412,7 +412,7 @@ class DUSTExecutePage(webapp.RequestHandler):
         </table>
         <br></br>
 
-        <table border="1">
+        <table border="1" class="out_3">
         <tr><H3>Exposure Estimates</H3></tr>
         <br></br>
         <tr><H4>Granular Application</H4></tr>
@@ -434,7 +434,7 @@ class DUSTExecutePage(webapp.RequestHandler):
         </tr>
         </table>
         
-        <table border="1">
+        <table border="1" class="out_4">
         <tr><H4>Foliar Spray Application</H4></tr>
         <tr>(contact with foliar residues and directly applied spray)</tr>
         <tr>
@@ -454,7 +454,7 @@ class DUSTExecutePage(webapp.RequestHandler):
         </tr>
         </table>
         
-        <table border="1">
+        <table border="1" class="out_5">
         <tr><H4>Bare Ground Spray Application</H4></tr>
         <tr>(contact with soil residues and directly applied spray)</tr>
         <tr>
@@ -475,7 +475,7 @@ class DUSTExecutePage(webapp.RequestHandler):
         </table>
         <br></br>
         
-        <table border="1">
+        <table border="1" class="out_6">
         <tr><H3>Ratio of Exposure to Toxicity</H3></tr>
         <br></br>
         <tr><H4>Granular</H4></tr>
@@ -501,7 +501,7 @@ class DUSTExecutePage(webapp.RequestHandler):
         </tr>
         </table>
         
-        <table border="1">
+        <table border="1" class="out_7">
         <tr><H4>Foliar Spray</H4></tr>
         <tr>
         <td>Bird</td>
@@ -525,7 +525,7 @@ class DUSTExecutePage(webapp.RequestHandler):
         </tr>
         </table>
         
-        <table border="1">
+        <table border="1" class="out_8">
         <tr><H4>Bare Ground Spray</H4></tr>
         <tr>
         <td>Bird</td>
@@ -585,7 +585,9 @@ LOC_bgs_rep(ratio_bgs_rep(bgs_repamp_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface
 ratio_bgs_amp(bgs_repamp_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),amp_derm_ld50(low_bird_acute_ld50,test_bird_bw,mineau)),
 LOC_bgs_amp(ratio_bgs_amp(bgs_repamp_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),amp_derm_ld50(low_bird_acute_ld50,test_bird_bw,mineau))),
 ratio_bgs_mam(bgs_mam_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),mam_derm_ld50(mam_acute_derm_ld50,test_mam_bw)),
-LOC_bgs_mam(ratio_bgs_mam(bgs_mam_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),mam_derm_ld50(mam_acute_derm_ld50,test_mam_bw)))  )
+LOC_bgs_mam(ratio_bgs_mam(bgs_mam_ex_derm_dose(ar_mg(ar_lb),frac_pest_surface),mam_derm_ld50(mam_acute_derm_ld50,test_mam_bw))))
+        
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

@@ -248,7 +248,6 @@ class RiceBatchOutputPage(webapp.RequestHandler):
         html = html + iter_html
         html = html + template.render(templatepath + 'rice-batchoutput-jqplot.html', {})                
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

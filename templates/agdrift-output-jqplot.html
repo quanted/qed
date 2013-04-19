@@ -12,9 +12,16 @@
 
 <script type='text/javascript'> 
 $(document).ready(function(){
-        $.jqplot.config.enablePlugins = true;	
-    	var s1 =  $.parseJSON($('#distance').text());
-    	var s2 = $.parseJSON($('#deposition').text());
+    $('#Orc_type').hide()
+    if ($('#app_method_val').html() == "Orchard/Airblast"){
+    $('#Orc_type').show()
+}
+
+
+
+    $.jqplot.config.enablePlugins = true;	
+    var s1 =  $.parseJSON($('#distance').text());
+    var s2 = $.parseJSON($('#deposition').text());
 		var len1 = s1.length;
 		var len2 = s2.length;
 		var paired =[];

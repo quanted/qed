@@ -28,7 +28,7 @@ $(document).ready(function(){
     	var sr_out = $.parseJSON($('#sr_out').attr('data-val'));
 		i=1
 		while (i <= noa_out){
-		$('<tr><td width=50><div align="center">Application'+i+'</div></td><td width=50><div align="center">'+mm_out[i-1]+'</div></td><td width=50><div align="center">'+dd_out[i-1]+'</div></td><td width=50><div align="center">'+ma_out[i-1]+'</div></td><td width=50><div align="center">'+sr_out[i-1]+'</div></td></tr>').appendTo('.out_application')
+		$('<tr><td>Application method</td><tr>').appendTo('.out_application')
 		i=i+1
 		}
 		

@@ -40,6 +40,10 @@ class agdriftOutputPage(webapp.RequestHandler):
         <tr><H3>User Inputs</H3></tr>
         <tr>
         <td>Application method</td>
+        <td id="app_method_val">%s</td>
+        </tr>
+        <tr id="Orc_type">
+        <td>Orchard type</td>
         <td>%s</td>
         </tr>
         <tr>
@@ -52,7 +56,7 @@ class agdriftOutputPage(webapp.RequestHandler):
         </tr>
         <tr>
         </table>
-        """ % (application_method, drop_size, ecosystem_type)
+        """ % (application_method, orchard_type, drop_size, ecosystem_type)
         html = html +  """<table width="400" border="1", style="display:none">
                           <tr><H3>Results</H3></tr>
                           <tr>

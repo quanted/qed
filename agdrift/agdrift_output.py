@@ -36,36 +36,36 @@ class agdriftOutputPage(webapp.RequestHandler):
                 'model':'agdrift', 
                 'model_attributes':'AgDrift Output'})
         html = html + """
-        <table border="1" class="out_1">
-        <tr><H3>User Inputs</H3></tr>
+        <table class="out_1">
+        <tr><Hh>User Inputs</h3></tr>
         <tr>
-        <td>Application method</td>
-        <td id="app_method_val">%s</td>
+            <td>Application method</td>
+            <td id="app_method_val">%s</td>
         </tr>
         <tr id="Orc_type">
-        <td>Orchard type</td>
-        <td>%s</td>
+            <td>Orchard type</td>
+            <td>%s</td>
         </tr>
         <tr>
-        <td>Drop size</td>
-        <td>%s</td>
+            <td>Drop size</td>
+            <td>%s</td>
         </tr>
         <tr>
-        <td>Ecosystem type</td>
-        <td>%s</td>
+            <td>Ecosystem type</td>
+            <td>%s</td>
         </tr>
         <tr>
         </table>
         """ % (application_method, orchard_type, drop_size, ecosystem_type)
-        html = html +  """<table width="400" border="1", style="display:none">
-                          <tr><H3>Results</H3></tr>
+        html = html +  """<table width="400" style="display:none;">
+                          <tr><h3>Results</h3></tr>
                           <tr>
-                          <td>distance</td>
-                          <td id="distance">%s</td>
+                            <td>distance</td>
+                            <td id="distance">%s</td>
                           </tr>
                           <tr>
-                          <td>deposition</td>
-                          <td id="deposition">%s</td>
+                            <td>deposition</td>
+                            <td id="deposition">%s</td>
                           </tr>
                           </table>"""%(results[0], results[1])
         html = html + template.render(templatepath + 'agdrift-output-jqplot.html', {})         

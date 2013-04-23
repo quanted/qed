@@ -57,11 +57,10 @@ class htmlPage(webapp.RequestHandler):
         pdf_t = form.getvalue('pdf_t')
         pdf_nop = form.getvalue('pdf_nop')
         pdf_p = json.loads(form.getvalue('pdf_p'))
-
+        final_res=get_jid(pdf_t, pdf_nop, pdf_p)[2]
         text_file2 = open('about_text.txt','r')
         xx = text_file2.read()
         templatepath = os.path.dirname(__file__) + '/templates/'
-        final_res=get_jid(pdf_t, pdf_nop, pdf_p)[2]
         html = template.render(templatepath + 'popup_eco.html', {
             'title':'Ubertool',
             'model_page':final_res,

@@ -1,0 +1,17 @@
+<!--start 04uberbatchinput-->
+	<div class="articles">
+		<ul class="bullet">
+		<li><a href="/csvs/dust_batch.xlsx">Please download and fill this EXCEL spreadsheet and upload as a CSV file for batch calculation. </a></li>
+		</ul>
+		<ul class="nobullet">
+		<li>
+			<form method="post" id="form1" enctype="multipart/form-data" action={{model}}_batchoutput.html>
+				File to upload: <input type="file" id="upfile1" name="upfile" class="required" accept=".csv"/>
+		</li>
+		<li>
+				<input type="submit" value="Submit"> Upload the file!
+			</form>
+		</li>	
+		</ul>
+                   
+<!--end 04uberbatchinput-->

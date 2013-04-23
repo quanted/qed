@@ -36,8 +36,10 @@ class agdriftOutputPage(webapp.RequestHandler):
                 'model':'agdrift', 
                 'model_attributes':'AgDrift Output'})
         html = html + """
-        <table class="out_1">
-        <tr><Hh>User Inputs</h3></tr>
+        <table border="1" class="out_1">
+        <tr>
+            <th colspan="2">Inputs: Chemical Identity</th>
+        </tr>
         <tr>
             <td>Application method</td>
             <td id="app_method_val">%s</td>
@@ -54,7 +56,6 @@ class agdriftOutputPage(webapp.RequestHandler):
             <td>Ecosystem type</td>
             <td>%s</td>
         </tr>
-        <tr>
         </table>
         """ % (application_method, orchard_type, drop_size, ecosystem_type)
         html = html +  """<table width="400" style="display:none;">

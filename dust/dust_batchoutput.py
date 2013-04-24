@@ -179,24 +179,18 @@ def loop_html(thefile):
     return sum_input_html+sum_output_html+iter_html
 
 
-
-              
 class DustBatchOutputPage(webapp.RequestHandler):
     def post(self):
-        text_file1 = open('rice/rice_description.txt','r')
-        x = text_file1.read()
         form = cgi.FieldStorage()
         thefile = form['upfile']
-
         iter_html=loop_html(thefile)        
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', 'title')
         # print baremammrisk_out
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'rice','page':'batchinput'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'dust','page':'batchinput'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberbatch_start.html', {})
         html = html + iter_html
-        html = html + template.render(templatepath + 'rice-batchoutput-jqplot.html', {})                
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

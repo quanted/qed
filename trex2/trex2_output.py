@@ -719,6 +719,7 @@ class TRexOutputPage(webapp.RequestHandler):
                                trex2_model.LD50_bl_bird(Application_type, rate_out, a_i, p_i, aw_bird_md, at_bird, ld50_bird, tw_bird,x), trex2_model.LD50_bl_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_md, at_mamm, ld50_mamm, tw_mamm),
                                trex2_model.LD50_bl_bird(Application_type, rate_out, a_i, p_i, aw_bird_lg, at_bird, ld50_bird, tw_bird,x), trex2_model.LD50_bl_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_lg, at_mamm, ld50_mamm, tw_mamm))
         
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

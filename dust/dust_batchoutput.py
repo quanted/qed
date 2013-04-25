@@ -33,8 +33,32 @@ mam_acute_derm_ld50=[]
 test_mam_bw=[]
 
 ######Pre-defined outputs########
-mai1_out=[]
-cw_out=[]
+granbirdderm_out=[]
+granherpderm_out=[]
+granmammderm_out=[]
+folbirdderm_out=[]
+folherpderm_out=[]
+folmammderm_out=[]
+barebirdderm_out=[]
+bareherpderm_out=[]
+baremammderm_out=[]
+granbirdrisk_out=[]
+granreprisk_out=[]
+granamphibrisk_out=[]
+granmammrisk_out=[]
+granbirdrisk_out=[]
+granreprisk_out=[]
+granamphibrisk_out=[]
+granmammrisk_out=[]
+folbirdrisk_out=[]
+folreprisk_out=[]
+folamphibrisk_out=[]
+folmammrisk_out=[]
+barebirdrisk_out=[]
+barereprisk_out=[]
+bareamphibrisk_out=[]
+baremammrisk_out=[]
+
 
 def html_table(row_inp,iter):
     chemical_name_temp=row_inp[0]
@@ -70,13 +94,69 @@ def html_table(row_inp,iter):
                         <tr><H3>Batch Calculation of Iteration %s</H3></tr><br>
                     </table>"""%(iter)
 
-    html_table_temp = Input_header + dust_tables.table_all(dust_tables.pvuheadings, dust_tables.pvrheadings, dust_tables.tmpl, chemical_name_temp, label_epa_reg_no_temp, ar_lb_temp, frac_pest_surface_temp, 
+    table_all_out = dust_tables.table_all(dust_tables.pvuheadings, dust_tables.pvrheadings, dust_tables.tmpl, chemical_name_temp, label_epa_reg_no_temp, ar_lb_temp, frac_pest_surface_temp, 
                                             dislodge_fol_res_temp, bird_acute_oral_study_temp, bird_study_add_comm_temp, low_bird_acute_ld50_temp, test_bird_bw_temp, mineau_temp, 
                                             mamm_acute_derm_study_temp, mamm_study_add_comm_temp, mam_acute_derm_ld50_temp, test_mam_bw_temp)
 
+    html_table_temp = Input_header + table_all_out[0]
+
+######table 3#######
+    granbirdderm_out_temp=table_all_out[1]['granbirdderm']
+    granbirdderm_out.append(granbirdderm_out_temp)
+    granherpderm_out_temp=table_all_out[1]['granherpderm']
+    granherpderm_out.append(granherpderm_out_temp)
+    granmammderm_out_temp=table_all_out[1]['granmammderm']
+    granmammderm_out.append(granmammderm_out_temp)
+
+######table 4#######
+    folbirdderm_out_temp=table_all_out[2]['folbirdderm']
+    folbirdderm_out.append(folbirdderm_out_temp)
+    folherpderm_out_temp=table_all_out[2]['folherpderm']
+    folherpderm_out.append(folherpderm_out_temp)
+    folmammderm_out_temp=table_all_out[2]['folmammderm']
+    folmammderm_out.append(folmammderm_out_temp)
+
+######table 5#######
+    barebirdderm_out_temp=table_all_out[3]['barebirdderm']
+    barebirdderm_out.append(barebirdderm_out_temp)
+    bareherpderm_out_temp=table_all_out[3]['bareherpderm']
+    bareherpderm_out.append(bareherpderm_out_temp)
+    baremammderm_out_temp=table_all_out[3]['baremammderm']
+    baremammderm_out.append(baremammderm_out_temp)
+
+######table 6#######
+    granbirdrisk_out_temp=table_all_out[4]['granbirdrisk']
+    granbirdrisk_out.append(granbirdrisk_out_temp)
+    granreprisk_out_temp=table_all_out[4]['granreprisk']
+    granreprisk_out.append(granreprisk_out_temp)
+    granamphibrisk_out_temp=table_all_out[4]['granamphibrisk']
+    granamphibrisk_out.append(granamphibrisk_out_temp)
+    granmammrisk_out_temp=table_all_out[4]['granmammrisk']
+    granmammrisk_out.append(granmammrisk_out_temp)
+
+######table 7#######
+    folbirdrisk_out_temp=table_all_out[5]['folbirdrisk']
+    folbirdrisk_out.append(folbirdrisk_out_temp)
+    folreprisk_out_temp=table_all_out[5]['folreprisk']
+    folreprisk_out.append(folreprisk_out_temp)
+    folamphibrisk_out_temp=table_all_out[5]['folamphibrisk']
+    folamphibrisk_out.append(folamphibrisk_out_temp)
+    folmammrisk_out_temp=table_all_out[5]['folmammrisk']
+    folmammrisk_out.append(folmammrisk_out_temp)
+
+######table 8#######
+    barebirdrisk_out_temp=table_all_out[6]['barebirdrisk']
+    barebirdrisk_out.append(barebirdrisk_out_temp)
+    barereprisk_out_temp=table_all_out[6]['barereprisk']
+    barereprisk_out.append(barereprisk_out_temp)
+    bareamphibrisk_out_temp=table_all_out[6]['bareamphibrisk']
+    bareamphibrisk_out.append(bareamphibrisk_out_temp)
+    baremammrisk_out_temp=table_all_out[6]['baremammrisk']
+    baremammrisk_out.append(baremammrisk_out_temp)
 
     return html_table_temp  
-                
+
+
 def loop_html(thefile):
     reader = csv.reader(thefile.file.read().splitlines())
     header = reader.next()
@@ -87,97 +167,30 @@ def loop_html(thefile):
         iter_html = iter_html +html_table(row,i)
         i=i+1
 
-    sum_html = dust_tables.table_sum_input(dust_tables.sumheadings, dust_tables.tmpl, i, ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw)
+    sum_input_html = dust_tables.table_sum_input(dust_tables.sumheadings, dust_tables.tmpl, i, ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw)
+    sum_output_html = dust_tables.table_sum_output(granbirdderm_out, granherpderm_out, granmammderm_out,
+                    folbirdderm_out, folherpderm_out, folmammderm_out,
+                    barebirdderm_out, bareherpderm_out, baremammderm_out,
+                    granbirdrisk_out, granreprisk_out, granamphibrisk_out, granmammrisk_out,
+                    folbirdrisk_out, folreprisk_out, folamphibrisk_out, folmammrisk_out,
+                    barebirdrisk_out, barereprisk_out, bareamphibrisk_out, baremammrisk_out
+                    )
 
-    # sum_html ="""<table border="1">
-    #                     <tr><H3>Summary Statistics (Iterations=%s)</H3></tr><br>
-    #                     <tr>
-    #                         <td><b>Input Name</b></td>
-    #                         <td><b>Mean</b></td>
-    #                         <td><b>Std.</b></td>
-    #                         <td><b>Min</b></td>
-    #                         <td><b>Max</b></td>                            
-    #                         <td><b>Unit</b></td>
-    #                     </tr>"""%(i-1)
-                        
-    # sum_html = sum_html + """<tr>
-    #                 <td>Maximum Single Application Rate</td>
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td>                    
-    #                 <td>lbs a.i./A</td>
-    #             </tr>""" %(numpy.mean(ar_lb), numpy.std(ar_lb), numpy.min(ar_lb), numpy.max(ar_lb)) 
+    return sum_input_html+sum_output_html+iter_html
 
 
-
-
-
-
-
-
-
-
-
-
-
- 
-                
-    # sum_output_header="""<table border="1">
-    #                     <tr>
-    #                         <td><b>Output Name</b></td>
-    #                         <td><b>Mean</b></td>
-    #                         <td><b>Std.</b></td>
-    #                         <td><b>Min</b></td>
-    #                         <td><b>Max</b></td>                             
-    #                         <td><b>Unit</b></td>
-    #                     </tr>"""
-    # sum_output_mai1="""<tr>
-    #                 <td>Application Rate</td>
-    #                 <td>%0.2E</td>
-    #                 <td>%0.2E</td>
-    #                 <td>%0.2E</td>
-    #                 <td>%0.2E</td>                      
-    #                 <td>lbs a.i./A</td>
-    #             </tr>""" %(numpy.mean(mai1_out), numpy.std(mai1_out), numpy.min(mai1_out), numpy.max(mai1_out))
-    # sum_output_cw="""<tr>
-    #                 <td>Peak & Chronic EEC</td>
-    #                 <td>%0.2E</td>
-    #                 <td>%0.2E</td> 
-    #                 <td>%0.2E</td>
-    #                 <td>%0.2E</td>                      
-    #                 <td id="cw_out_raw" data-val='%s' style="display: none"></td>                                                                              
-    #                 <td>&microg/L</td>
-    #             </tr></table><br>""" %(numpy.mean(cw_out), numpy.std(cw_out), numpy.min(cw_out), numpy.max(cw_out), cw_out)             
-    # sum_fig="""<H3>Historgram</H3><br>
-    #            <div id="calculate">
-    #                <div class="block">
-    #                     <label>How many buckets (Default is based on Sturgis rule):</label>
-    #                     <input type="text" id="buckets" value=%s></div><br>
-    #                     <button type="submit" id="calc">Calculate Historgram</button></div><br>
-    #             <div id="chart1"></div><br>"""%(int(1+3.3*np.log10(len(cw_out)))) #number of bins coming from Sturgis rule         
-                                     
-    # sum_html=sum_header+sum_mai+sum_dsed+sum_a+sum_pb+sum_dw+sum_osed+sum_kd+sum_output_header+sum_output_mai1+sum_output_cw+sum_fig    
-    return sum_html+iter_html
-
-
-
-              
 class DustBatchOutputPage(webapp.RequestHandler):
     def post(self):
-        text_file1 = open('rice/rice_description.txt','r')
-        x = text_file1.read()
         form = cgi.FieldStorage()
         thefile = form['upfile']
-
         iter_html=loop_html(thefile)        
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', 'title')
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'rice','page':'batchinput'})
+        # print baremammrisk_out
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'dust','page':'batchinput'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberbatch_start.html', {})
         html = html + iter_html
-        html = html + template.render(templatepath + 'rice-batchoutput-jqplot.html', {})                
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

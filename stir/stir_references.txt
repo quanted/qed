@@ -4,7 +4,7 @@ Specific EPA guidance and the Microsoft Excel version of the model on the STIR P
 <ul class="bullet">
   <li><a href="http://www.epa.gov/oppefed1/models/terrestrial/index.htm#stir">STIR Documentation</a></li>
   <li><a href="http://www.epa.gov/oppefed1/models/terrestrial/stir/stir_user_guide.html">User's Guide</a></li>
-  <li><a href="http://www.epa.gov/oppefed1/models/terrestrial/stir/stir_v_1_0.xls">STIR Excel Implementation</a></li>
+  <li><a href="http://www.epa.gov/oppefed1/models/terrestrial/stir/stir_version_1_0.xls">STIR Excel Implementation</a></li>
 </ul>
 <p>
 Example reports documenting the use of STIR in reregistration eligibility documents and pesticide effects determinations for federally threatened and endangered species:

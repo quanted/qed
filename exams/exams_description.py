@@ -23,7 +23,7 @@ class EXAMSDescriptionPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04ubertext_start.html', {
                 'model_page':'#', 
                 'model_attributes':'EXAMS Overview', 
-                'text_paragraph':xx})
+                'text_paragraph':x})
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

@@ -33,7 +33,7 @@ def gethtmlrowsfromcols(data, headings):
 
 def getdjtemplate():
     dj_template ="""
-    <table id="output">
+    <table class="out_">
     {# headings #}
         <tr>
         {% for heading in headings %}
@@ -218,7 +218,7 @@ def table_sum_input(sumheadings, tmpl, i, ar_lb, frac_pest_surface, dislodge_fol
         #pre-table sum_input
         html = """
         <table border="1" border="1" class="out_1">
-        <tr><H3>Summary Statistics (Iterations=%s)</H3></tr>
+        <tr><td><H3>Summary Statistics (Iterations=%s)</H3></td></tr>
         <tr></tr>
         </table>
         """%(i-1)
@@ -255,8 +255,8 @@ def table_1(pvuheadings, tmpl, chemical_name, label_epa_reg_no, ar_lb, frac_pest
         #pre-table 1
         html = """
         <table border="1" border="1" class="out_1">
-        <tr><H3>User Inputs: Chemical Identity</H3></tr>
-        <tr><H4>Application and Chemical Information</H4></tr>
+        <tr><td><H3>User Inputs: Chemical Identity</H3></td></tr>
+        <tr><td><H4>Application and Chemical Information</H4></td></tr>
         <tr></tr>
         </table>
         """
@@ -271,7 +271,7 @@ def table_2(pvuheadings, tmpl, bird_acute_oral_study, bird_study_add_comm,low_bi
         # #pre-table 2
         html = """        
         <table border="1" class="out_2">
-        <tr><H4>Toxicity Properties</H4></tr>
+        <tr><td><H4>Toxicity Properties</H4></td></tr>
         <tr></tr>
         </table>
         """
@@ -287,8 +287,8 @@ def table_3(pvuheadings, tmpl, ar_lb, frac_pest_surface):
         #pre-table 3
         html = """
         <table border="1" class="out_3">
-        <tr><H3>Exposure Estimates</H3></tr>
-        <tr><H4>Granular Application</H4></tr>
+        <tr><td><H3>Exposure Estimates</H3></td></tr>
+        <tr><td><H4>Granular Application</H4></td></tr>
         <tr>(contact with soil residues via dust and soil surface)</tr>
         </table>
         """
@@ -306,7 +306,7 @@ def table_4(pvuheadings, tmpl, ar_lb, dislodge_fol_res):
         #pre-table 4
         html = """     
         <table border="1" class="out_4">
-        <tr><H4>Foliar Spray Application</H4></tr>
+        <tr><td><H4>Foliar Spray Application</H4></td></tr>
         <tr>(contact with foliar residues and directly applied spray)</tr>
         </table>
         """
@@ -324,7 +324,7 @@ def table_5(pvuheadings, tmpl, ar_lb, frac_pest_surface):
         #pre-table 5
         html = """         
         <table border="1" class="out_5">
-        <tr><H4>Bare Ground Spray Application</H4></tr>
+        <tr><td><H4>Bare Ground Spray Application</H4></td></tr>
         <tr>(contact with soil residues and directly applied spray)</tr>
         </table>
         """
@@ -344,8 +344,8 @@ def table_6(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, te
         html = """        
         <br></br>
         <table border="1" class="out_6">
-        <tr><H3>Ratio of Exposure to Toxicity</H3></tr>
-        <tr><H4>Granular</H4></tr>
+        <tr><td><H3>Ratio of Exposure to Toxicity</H3></td></tr>
+        <tr><td><H4>Granular</H4></td></tr>
         </table>
         """
 
@@ -368,7 +368,7 @@ def table_7(pvrheadings, tmpl, ar_lb, dislodge_fol_res, low_bird_acute_ld50, tes
         #pre-table 7
         html = """         
         <table border="1" class="out_7">
-        <tr><H4>Foliar Spray</H4></tr>
+        <tr><td><H4>Foliar Spray</H4></td></tr>
         </table>
         """
 
@@ -392,7 +392,7 @@ def table_8(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, te
         #pre-table 8
         html = """          
         <table border="1" class="out_8">
-        <tr><H4>Bare Ground Spray</H4></tr>
+        <tr><td><H4>Bare Ground Spray</H4></td></tr>
         </table>
         """
 

@@ -50,8 +50,8 @@ class trexInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'trex2_input_end.html', {'sub_title': 'Submit'})
       #  html = html + str(trexdb2.trexInp())
         # html = html + str(trexdb2.trexApp())     
-        html = html + template.render (templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render (templatepath + '05ubertext_links_right.html', {})
+        # html = html + template.render (templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
+        # html = html + template.render (templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

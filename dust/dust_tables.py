@@ -218,8 +218,7 @@ def table_sum_input(sumheadings, tmpl, i, ar_lb, frac_pest_surface, dislodge_fol
         #pre-table sum_input
         html = """
         <table border="1" border="1" class="out_1">
-        <tr><H3>Summary Statistics (Iterations=%s)</H3></tr>
-        <tr></tr>
+        <tr><td>Summary Statistics (Iterations=%s)</td></tr>
         </table>
         """%(i-1)
         #table sum_input
@@ -256,8 +255,7 @@ def table_1(pvuheadings, tmpl, chemical_name, label_epa_reg_no, ar_lb, frac_pest
         html = """
         <table border="1" border="1" class="out_1">
         <tr><H3>User Inputs: Chemical Identity</H3></tr>
-        <tr><H4>Application and Chemical Information</H4></tr>
-        <tr></tr>
+        <tr><H3>Application and Chemical Information</H3></tr>
         </table>
         """
         #table 1
@@ -271,8 +269,7 @@ def table_2(pvuheadings, tmpl, bird_acute_oral_study, bird_study_add_comm,low_bi
         # #pre-table 2
         html = """        
         <table border="1" class="out_2">
-        <tr><H4>Toxicity Properties</H4></tr>
-        <tr></tr>
+        <tr><H3>Toxicity Properties</H3></tr>
         </table>
         """
 

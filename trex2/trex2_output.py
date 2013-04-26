@@ -225,7 +225,7 @@ class TRexOutputPage(webapp.RequestHandler):
                             <td>&nbsp;</td>                            
                           </tr>                                                              
                         </table>
-                        #<p>&nbsp;</p>                     
+                        <br>                     
                         """%(chem_name, use, formu_name, 100*a_i, Application_type, 100*p_i, den, 
                             n_a, h_l, ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, tw_bird, x, ld50_mamm, 
                                lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, tw_mamm)         
@@ -267,24 +267,24 @@ class TRexOutputPage(webapp.RequestHandler):
                             <td>%.2f</td>
                             <td>%.2f</td>
                           </tr> 
-                          """%(trex2_model.sa_bird_1(a_r_p, a_i, den, at_bird,trex2_model.fi_bird, ld50_bird, aw_bird_sm, tw_bird, x), 
-                               trex2_model.sa_bird_2(a_r_p, a_i, den, m_s_r_p, at_bird, ld50_bird, aw_bird_sm, tw_bird, x), 
+                          """%(trex2_model.sa_bird_1(a_r_p, a_i, den, trex2_model.at_bird,trex2_model.fi_bird, ld50_bird, aw_bird_sm, tw_bird, x), 
+                               trex2_model.sa_bird_2(a_r_p, a_i, den, m_s_r_p, trex2_model.at_bird, ld50_bird, aw_bird_sm, tw_bird, x), 
                                trex2_model.sc_bird(a_r_p, a_i, den, NOAEC_bird),
-                               trex2_model.sa_mamm_1(a_r_p, a_i, den, at_mamm, fi_mamm, ld50_mamm, aw_mamm_sm, tw_mamm),
-                               trex2_model.sa_mamm_2(a_r_p, a_i, den, m_s_r_p, at_mamm, ld50_mamm, aw_mamm_sm, tw_mamm),
-                               trex2_model.sc_mamm(a_r_p, a_i, den, NOAEL_mamm,aw_mamm_sm,tw_mamm, ANOAEL_mamm),
-                               trex2_model.sa_bird_1(a_r_p, a_i, den, at_bird,trex2_model.fi_bird, ld50_bird, aw_bird_md, tw_bird, x), 
-                               trex2_model.sa_bird_2(a_r_p, a_i, den, m_s_r_p, at_bird, ld50_bird, aw_bird_md, tw_bird, x), 
+                               trex2_model.sa_mamm_1(a_r_p, a_i, den, trex2_model.at_mamm, trex2_model.fi_mamm, ld50_mamm, aw_mamm_sm, tw_mamm),
+                               trex2_model.sa_mamm_2(a_r_p, a_i, den, m_s_r_p, trex2_model.at_mamm, ld50_mamm, aw_mamm_sm, tw_mamm),
+                               trex2_model.sc_mamm(a_r_p, a_i, den, NOAEL_mamm,aw_mamm_sm,tw_mamm, trex2_model.ANOAEL_mamm),
+                               trex2_model.sa_bird_1(a_r_p, a_i, den, trex2_model.at_bird,trex2_model.fi_bird, ld50_bird, aw_bird_md, tw_bird, x), 
+                               trex2_model.sa_bird_2(a_r_p, a_i, den, m_s_r_p, trex2_model.at_bird, ld50_bird, aw_bird_md, tw_bird, x), 
                                trex2_model.sc_bird(a_r_p, a_i, den, NOAEC_bird),
-                               trex2_model.sa_mamm_1(a_r_p, a_i, den, at_mamm, fi_mamm, ld50_mamm, aw_mamm_md, tw_mamm),
-                               trex2_model.sa_mamm_2(a_r_p, a_i, den, m_s_r_p, at_mamm, ld50_mamm, aw_mamm_md, tw_mamm),
-                               trex2_model.sc_mamm(a_r_p, a_i, den, NOAEL_mamm,aw_mamm_md,tw_mamm, ANOAEL_mamm),
-                               trex2_model.sa_bird_1(a_r_p, a_i, den, at_bird,trex2_model.fi_bird, ld50_bird, aw_bird_lg, tw_bird, x), 
-                               trex2_model.sa_bird_2(a_r_p, a_i, den, m_s_r_p, at_bird, ld50_bird, aw_bird_lg, tw_bird, x), 
+                               trex2_model.sa_mamm_1(a_r_p, a_i, den, trex2_model.at_mamm, trex2_model.fi_mamm, ld50_mamm, aw_mamm_md, tw_mamm),
+                               trex2_model.sa_mamm_2(a_r_p, a_i, den, m_s_r_p, trex2_model.at_mamm, ld50_mamm, aw_mamm_md, tw_mamm),
+                               trex2_model.sc_mamm(a_r_p, a_i, den, NOAEL_mamm,aw_mamm_md,tw_mamm, trex2_model.ANOAEL_mamm),
+                               trex2_model.sa_bird_1(a_r_p, a_i, den, trex2_model.at_bird,trex2_model.fi_bird, ld50_bird, aw_bird_lg, tw_bird, x), 
+                               trex2_model.sa_bird_2(a_r_p, a_i, den, m_s_r_p, trex2_model.at_bird, ld50_bird, aw_bird_lg, tw_bird, x), 
                                trex2_model.sc_bird(a_r_p, a_i, den, NOAEC_bird),
-                               trex2_model.sa_mamm_1(a_r_p, a_i, den, at_mamm, fi_mamm, ld50_mamm, aw_mamm_lg, tw_mamm),
-                               trex2_model.sa_mamm_2(a_r_p, a_i, den, m_s_r_p, at_mamm, ld50_mamm, aw_mamm_lg, tw_mamm),
-                               trex2_model.sc_mamm(a_r_p, a_i, den, NOAEL_mamm,aw_mamm_lg,tw_mamm, ANOAEL_mamm)) 
+                               trex2_model.sa_mamm_1(a_r_p, a_i, den, trex2_model.at_mamm, trex2_model.fi_mamm, ld50_mamm, aw_mamm_lg, tw_mamm),
+                               trex2_model.sa_mamm_2(a_r_p, a_i, den, m_s_r_p, trex2_model.at_mamm, ld50_mamm, aw_mamm_lg, tw_mamm),
+                               trex2_model.sc_mamm(a_r_p, a_i, den, NOAEL_mamm,aw_mamm_lg,tw_mamm, trex2_model.ANOAEL_mamm)) 
         else:    
             html = html + """<table width="600" border=                          <tr>
                             <th scope="col">Dietary based EECs (ppm)</div></th>
@@ -721,7 +721,6 @@ class TRexOutputPage(webapp.RequestHandler):
         
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

@@ -33,7 +33,7 @@ def gethtmlrowsfromcols(data, headings):
 
 def getdjtemplate():
     dj_template ="""
-    <table id="output">
+    <table class="out_">
     {# headings #}
         <tr>
         {% for heading in headings %}
@@ -218,7 +218,8 @@ def table_sum_input(sumheadings, tmpl, i, ar_lb, frac_pest_surface, dislodge_fol
         #pre-table sum_input
         html = """
         <table border="1" border="1" class="out_1">
-        <tr><td>Summary Statistics (Iterations=%s)</td></tr>
+        <tr><td><H3>Summary Statistics (Iterations=%s)</H3></td></tr>
+        <tr></tr>
         </table>
         """%(i-1)
         #table sum_input
@@ -253,10 +254,10 @@ def table_sum_output(granbirdderm_out, granherpderm_out, granmammderm_out,
 def table_1(pvuheadings, tmpl, chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res):
         #pre-table 1
         html = """
-        <table border="1" border="1" class="out_1">
-        <tr><H3>User Inputs: Chemical Identity</H3></tr>
-        <tr><H3>Application and Chemical Information</H3></tr>
-        </table>
+            <div class="out_1">
+              <H3>User Inputs: Chemical Identity</H3>
+              <H4>Application and Chemical Information</H4>
+            </div>
         """
         #table 1
         t1data = gett1data(chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res)
@@ -267,12 +268,11 @@ def table_1(pvuheadings, tmpl, chemical_name, label_epa_reg_no, ar_lb, frac_pest
 def table_2(pvuheadings, tmpl, bird_acute_oral_study, bird_study_add_comm,low_bird_acute_ld50, test_bird_bw, mineau, 
             mamm_acute_derm_study,mamm_study_add_comm, mam_acute_derm_ld50, test_mam_bw):
         # #pre-table 2
-        html = """        
-        <table border="1" class="out_2">
-        <tr><H3>Toxicity Properties</H3></tr>
-        </table>
+        html = """
+            <div class="out_2">
+              <H4>Toxicity Properties</H4>
+            </div>
         """
-
         #table 2
         t2data = gett2data(bird_acute_oral_study, bird_study_add_comm,low_bird_acute_ld50, test_bird_bw, mineau, 
             mamm_acute_derm_study,mamm_study_add_comm, mam_acute_derm_ld50, test_mam_bw)
@@ -283,13 +283,11 @@ def table_2(pvuheadings, tmpl, bird_acute_oral_study, bird_study_add_comm,low_bi
 def table_3(pvuheadings, tmpl, ar_lb, frac_pest_surface):
         #pre-table 3
         html = """
-        <table border="1" class="out_3">
-        <tr><H3>Exposure Estimates</H3></tr>
-        <tr><H4>Granular Application</H4></tr>
-        <tr>(contact with soil residues via dust and soil surface)</tr>
-        </table>
+            <div class="out_3">
+              <H3>Exposure Estimates</H3>
+              <H4>Granular Application</H4>
+            </div>
         """
-
         #table 3
         granbirdderm = dust_model.gran_bird_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface)
         granherpderm = dust_model.gran_repamp_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface) 
@@ -302,12 +300,11 @@ def table_3(pvuheadings, tmpl, ar_lb, frac_pest_surface):
 def table_4(pvuheadings, tmpl, ar_lb, dislodge_fol_res):
         #pre-table 4
         html = """     
-        <table border="1" class="out_4">
-        <tr><H4>Foliar Spray Application</H4></tr>
-        <tr>(contact with foliar residues and directly applied spray)</tr>
-        </table>
+            <div class="out_4">
+                <H4>Foliar Spray Application</H4>
+                <p>(contact with foliar residues and directly applied spray)</p>
+            </div>
         """
-
         #table 4
         folbirdderm = dust_model.fol_bird_ex_derm_dose(dislodge_fol_res,dust_model.ar_mg(ar_lb))
         folherpderm = dust_model.fol_repamp_ex_derm_dose(dislodge_fol_res,dust_model.ar_mg(ar_lb))
@@ -320,12 +317,11 @@ def table_4(pvuheadings, tmpl, ar_lb, dislodge_fol_res):
 def table_5(pvuheadings, tmpl, ar_lb, frac_pest_surface):
         #pre-table 5
         html = """         
-        <table border="1" class="out_5">
-        <tr><H4>Bare Ground Spray Application</H4></tr>
-        <tr>(contact with soil residues and directly applied spray)</tr>
-        </table>
+            <div class="out_5">
+                <H4>Bare Ground Spray Application</H4>
+                <p>(contact with soil residues and directly applied spray)</p>
+            </div>
         """
-
         #table 5
         barebirdderm = dust_model.bgs_bird_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface)
         bareherpderm = dust_model.bgs_repamp_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface)
@@ -339,13 +335,12 @@ def table_5(pvuheadings, tmpl, ar_lb, frac_pest_surface):
 def table_6(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw):
         #pre-table 6
         html = """        
-        <br></br>
-        <table border="1" class="out_6">
-        <tr><H3>Ratio of Exposure to Toxicity</H3></tr>
-        <tr><H4>Granular</H4></tr>
-        </table>
+            <br>
+            <div class="out_6">
+                <H3>Ratio of Exposure to Toxicity</H3>
+                <H4>Granular</H4>
+            </div>
         """
-
         #table 6
         granbirdrisk = dust_model.ratio_gran_bird(dust_model.gran_bird_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau))
         granbirdmess = dust_model.LOC_gran_bird(dust_model.ratio_gran_bird(dust_model.gran_bird_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau)))
@@ -364,11 +359,10 @@ def table_6(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, te
 def table_7(pvrheadings, tmpl, ar_lb, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw):
         #pre-table 7
         html = """         
-        <table border="1" class="out_7">
-        <tr><H4>Foliar Spray</H4></tr>
-        </table>
+            <div class="out_7">
+                <H4>Foliar Spray</H4>
+            </div>
         """
-
         #table 7
         folbirdrisk = dust_model.ratio_fol_bird(dust_model.fol_bird_ex_derm_dose(dislodge_fol_res,dust_model.ar_mg(ar_lb)),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau))
         folbirdmess = dust_model.LOC_fol_bird(dust_model.ratio_fol_bird(dust_model.fol_bird_ex_derm_dose(dislodge_fol_res,dust_model.ar_mg(ar_lb)),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau)))
@@ -388,11 +382,10 @@ def table_7(pvrheadings, tmpl, ar_lb, dislodge_fol_res, low_bird_acute_ld50, tes
 def table_8(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw):
         #pre-table 8
         html = """          
-        <table border="1" class="out_8">
-        <tr><H4>Bare Ground Spray</H4></tr>
-        </table>
+            <div class="out_8">
+                <H4>Bare Ground Spray</H4>
+            </div>
         """
-
         #table 8
         barebirdrisk = dust_model.ratio_bgs_bird(dust_model.bgs_bird_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau))
         barebirdmess = dust_model.LOC_bgs_bird(dust_model.ratio_bgs_bird(dust_model.bgs_bird_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau)))

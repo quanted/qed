@@ -3,7 +3,7 @@
 <script>
 $(document).ready(function () {
 
-var jq_html = $('<div />').append($("div.articles_output").children('table[class*=out_]:not(div#chart1,table:hidden)').clone()).html();
+var jq_html = $('<div />').append($("div.articles_output").children('table[class*=out_], div[class*=out_]:not(div#chart1,table:hidden)').clone()).html();
 var n_plot=$('div[id^="chart"]').size()
 
 i=1;

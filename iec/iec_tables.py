@@ -29,7 +29,7 @@ def gethtmlrowsfromcols(data, headings):
 
 def getdjtemplate():
     dj_template ="""
-    <table id="output" >
+    <table class="out_" >
     {# headings #}
         <tr>
         {% for heading in headings %}
@@ -58,7 +58,7 @@ def gett1data(LC50,threshold,dose_response):
 def gett2data(z_score_f,F8_f,chance_f):
     data = { 
         "IEC Output": ['Z Score', '"F8"', 'Chance of Individual Effect',],
-        "Value": ['%.2f' % z_score_f,'%.2f' % F8_f,'%.2f' % chance_f, ],
+        "Value": ['%.2f' % z_score_f,'%.2e' % F8_f,'%.2f' % chance_f, ],
     }
     return data
 
@@ -67,22 +67,20 @@ ovheadings = getheaderov()
 djtemplate = getdjtemplate()
 tmpl = Template(djtemplate)
 
-def table_all():
-    table1_out = table_1(ivheadings,tmpl,LC50,threshold,dose_response)
-    table2_out = table_2(ovheadings,tmpl,z_score_f,F8_f,chance_f)
+# def table_all():
+#     table1_out = table_1(ivheadings,tmpl,LC50,threshold,dose_response)
+#     table2_out = table_2(ovheadings,tmpl,z_score_f,F8_f,chance_f)
 
-    html_all = table_1(ivheadings,tmpl,LC50,threshold,dose_response)
-    html_all = html_all + table_2(ovheadings,tmpl,z_score_f,F8_f,chance_f)
-    return html_all, table1_out, table2_out
+#     html_all = table_1(ivheadings,tmpl,LC50,threshold,dose_response)
+#     html_all = html_all + table_2(ovheadings,tmpl,z_score_f,F8_f,chance_f)
+#     return html_all, table1_out, table2_out
 
 def table_1(ivheadings,tmpl,LC50,threshold,dose_response):
     #pre-table 1
         html = """
-        <table border="1" border="1" class="out_1">
-        <tr><H3>User Inputs: Chemical Identity</H3></tr>
-        <tr><H4>Application and Chemical Information</H4></tr>
-        <tr></tr>
-        </table>
+        <div class="out_1">
+            <H3>User Inputs</H3>
+        </div>
         """
     #table 1
         t1data = gett1data(LC50,threshold,dose_response)
@@ -93,11 +91,9 @@ def table_1(ivheadings,tmpl,LC50,threshold,dose_response):
 def table_2(ovheadings,tmpl,z_score_f,F8_f,chance_f):
     #pre-table 1
         html = """
-        <table border="1" border="1" class="out_2">
-        <tr><H3>User Inputs: Chemical Identity</H3></tr>
-        <tr><H4>Application and Chemical Information</H4></tr>
-        <tr></tr>
-        </table>
+        <div class="out_2">
+            <H3>Model Output</H3>
+        </div>
         """
     #table 2
         t2data = gett2data(z_score_f,F8_f,chance_f)

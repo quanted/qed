@@ -217,9 +217,10 @@ def table_all(pvuheadings, pvrheadings, tmpl, chemical_name, label_epa_reg_no, a
 def table_sum_input(sumheadings, tmpl, i, ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw):
         #pre-table sum_input
         html = """
-        <div class="out_1">
-            <H3>Summary Statistics (Iterations=%s)</H3>
-        </div>
+        <table border="1" border="1" class="out_1">
+        <tr><td><H3>Summary Statistics (Iterations=%s)</H3></td></tr>
+        <tr></tr>
+        </table>
         """%(i-1)
         #table sum_input
         tsuminputdata = gettsumdata(ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw)

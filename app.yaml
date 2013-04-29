@@ -20,7 +20,7 @@ libraries:
 
 env_variables:
   UBERTOOL_BATCH_SERVER: 'http://www.chancedelphia.com:8887/'
- 
+
 skip_files:
 - ^(.*/)?app\.yaml
 - ^(.*/)?app\.yml
@@ -220,7 +220,7 @@ handlers:
 - url: /terrestrial/(.*)
   script: ubertool/terrestrial_toxicity.py
   login: required
-  
+
 #ubertool service
 - url: /ubertool/all_props/(.*)
   script: ubertool/ubertool_all_properties.py
@@ -230,7 +230,7 @@ handlers:
 - url: /ubertool
   script: ubertool/ubertool_all_properties.py
   login: required
- 
+
 #ubertool service
 - url: /ubertool/(.*)
   script: ubertool/ubertool.py
@@ -254,7 +254,7 @@ handlers:
 - url: /batch_results/(.*)
   script: batch/batch.py
   login: required
-  
+
 #batch retrieval service
 - url: /batch_configs
   script: batch/batch.py
@@ -293,7 +293,7 @@ handlers:
 #ESA workshop
 - url: /esa_workshop.html
   script: esa_workshop/esa_workshop.py  
-   
+
 #file not found
 - url: /.*
   script: file_not_found.py

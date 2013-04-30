@@ -116,14 +116,19 @@ $('.next').click(function () {
     	$('</table>').appendTo('.tab_Application');
     })
 
+
+    $('#id_bw_quail').closest('tr').show();
+    $('#id_bw_duck').closest('tr').hide();
+    $('#id_bwb_other').closest('tr').hide();
+
     $('#id_Species_of_the_tested_bird').change(function() { 
        
-        if ($(this).val() == "178"){
+        if ($(this).val() == "Bobwhite quail"){
             $('#id_bw_quail').closest('tr').show();
             $('#id_bw_duck').closest('tr').hide();
             $('#id_bwb_other').closest('tr').hide();
         }
-        else if ($(this).val() == "1580"){
+        else if ($(this).val() == "Mallard duck"){
             $('#id_bw_duck').closest('tr').show();
             $('#id_bw_quail').closest('tr').hide();
             $('#id_bwb_other').closest('tr').hide();

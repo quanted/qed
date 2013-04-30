@@ -102,7 +102,7 @@ class TRexOutputPage(webapp.RequestHandler):
                 'model':'trex2', 
                 'model_attributes':'T-Rex 1.5.1 Output'})
 
-        html = html + trex2_tables.table_1(chem_name, use, formu_name, 100*a_i, Application_type, 100*p_i, den, h_l)
+        html = html + trex2_tables.table_1(chem_name, use, formu_name, 100*a_i, Application_type, r_s, 12*b_w, 100*p_i, den, h_l)
         html = html + trex2_tables.table_2(n_a, rate_out, day_out)
         html = html + trex2_tables.table_3(ld50_bird, lc50_mamm, NOAEC_bird, NOAEL_mamm, aw_bird_sm, aw_bird_md, 
                                            aw_bird_lg, Species_of_the_tested_bird, tw_bird, x)

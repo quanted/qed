@@ -120,14 +120,14 @@ def getdjtemplate_10():
     """
     return dj_template
 
-def gett1data(chemical_name, Use, Formulated_product_name, percent_ai, Application_type, percent_incorporated,
+def gett1data(chemical_name, Use, Formulated_product_name, percent_ai, Application_type, r_s, b_w, percent_incorporated,
               density_of_product, Foliar_dissipation_half_life):
     data = { 
         "Parameter": ['Chemical Name', 'Use', 'Formulated product name', 'Percentage active ingredient', 
-                      'Application type', 'Percentage incorporated', 'Density of product', 'Foliar dissipation half-life',],
+                      'Application type', 'Row spacing', 'Bandwidth', 'Percentage incorporated', 'Density of product', 'Foliar dissipation half-life',],
         "Value": ['%s' % chemical_name, '%s' % Use, '%s' % Formulated_product_name, '%s' % percent_ai, '%s' % Application_type, 
-                  '%s' % percent_incorporated, '%s' % density_of_product, '%s' % Foliar_dissipation_half_life,],
-        "Units": ['', '', '', '%', '', '%', 'lbs/gal', 'days',],
+                  '%.4s' % r_s, '%.4s' % b_w, '%s' % percent_incorporated, '%s' % density_of_product, '%s' % Foliar_dissipation_half_life,],
+        "Units": ['', '', '', '%', '', 'inch', 'inch', '%', 'lbs/gal', 'days',],
     }
     return data
 
@@ -369,7 +369,7 @@ def table_sum_output(granbirdderm_out, granherpderm_out, granmammderm_out, folbi
         html = html + tmpl.render(Context(dict(data=tsumoutputrows, headings=sumheadings)))
         return html
 
-def table_1(chemical_name, Use, Formulated_product_name, percent_ai, Application_type, percent_incorporated, density_of_product, Foliar_dissipation_half_life):
+def table_1(chemical_name, Use, Formulated_product_name, percent_ai, Application_type, r_s, b_w, percent_incorporated, density_of_product, Foliar_dissipation_half_life):
         #pre-table 1
         html = """
             <div class="out_1">
@@ -378,7 +378,7 @@ def table_1(chemical_name, Use, Formulated_product_name, percent_ai, Application
             </div>
         """
         #table 1
-        t1data = gett1data(chemical_name, Use, Formulated_product_name, percent_ai, Application_type, percent_incorporated,
+        t1data = gett1data(chemical_name, Use, Formulated_product_name, percent_ai, Application_type, r_s, b_w, percent_incorporated,
                            density_of_product, Foliar_dissipation_half_life)
         t1rows = gethtmlrowsfromcols(t1data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))

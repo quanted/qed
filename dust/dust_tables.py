@@ -27,7 +27,7 @@ def gethtmlrowsfromcols(data, headings):
 
 def getdjtemplate():
     dj_template ="""
-    <table class="out_23">
+    <table class="out_23" style="background-color:red">
     {# headings #}
         <tr>
         {% for heading in headings %}

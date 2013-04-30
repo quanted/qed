@@ -9,15 +9,7 @@ import numpy as np
 import cgi
 import cgitb
 cgitb.enable()
-import logging
-import sys
-sys.path.append("../utils")
-import utils.json_utils
-sys.path.append("../dust")
-from stir import stir_model
-from stir import stir_parameters
-from stir import stir_tables
-from django.template import Context, Template
+
 
 class STIRExecutePage(webapp.RequestHandler):
     def post(self):
@@ -51,7 +43,7 @@ class STIRExecutePage(webapp.RequestHandler):
                 'model':'stir', 
                 'model_attributes':'STIR Output'})    
         html = html + """
-        <table border="1" class="out_1">
+        <table border="1" class="out_1>
             <tr>
                 <th colspan="3">User Inputs</th>
             </tr>
@@ -71,7 +63,7 @@ class STIRExecutePage(webapp.RequestHandler):
                 <td>lbs ai/A</td>
             </tr>
             <tr>
-                <td>Height of Direct Spray Column</td>
+                <td>Height of Sirect Spray Column</td>
                 <td>%s</td>
                 <td>m</td>
             </tr>
@@ -231,29 +223,27 @@ class STIRExecutePage(webapp.RequestHandler):
             </tr>
         </table>
         """ % (aw_avian, 
-              stir_model.cs(vp,mw), 
-              stir_model.ir_avian(aw_avian), 
-              stir_model.vid_avian(stir_model.cs(vp,mw),
-              stir_model.ir_avian(aw_avian),aw_avian), 
-              stir_model.ld50est(ld50ao,ld50ri,ld50ro), 
-              stir_model.ld50adj_avian(stir_model.ld50est(ld50ao,ld50ri,ld50ro),aw_avian,tw_avian,mineau), 
-              stir_model.ratio_vd_avian(stir_model.vid_avian(stir_model.cs(vp,mw),stir_model.ir_avian(aw_avian),aw_avian),
-              stir_model.ld50adj_avian(stir_model.ld50est(ld50ao,ld50ri,ld50ro),aw_avian,tw_avian,mineau)), 
-              stir_model.LOC_vd_avian(stir_model.ratio_vd_avian(stir_model.vid_avian(stir_model.cs(vp,mw),stir_model.ir_avian(aw_avian),aw_avian),stir_model.ld50adj_avian(stir_model.ld50est(ld50ao,ld50ri,ld50ro),aw_avian,tw_avian,mineau))), 
-              stir_model.sid_avian(stir_model.c_air(ar2,h),stir_model.ir_avian(aw_avian),ddsi,f_inhaled,aw_avian),
-              stir_model.ratio_sid_avian(stir_model.sid_avian(stir_model.c_air(ar2,h),stir_model.ir_avian(aw_avian),ddsi,f_inhaled,aw_avian),stir_model.ld50adj_avian(stir_model.ld50est(ld50ao,ld50ri,ld50ro),aw_avian,tw_avian,mineau)), 
-              stir_model.LOC_sid_avian(stir_model.ratio_sid_avian(stir_model.sid_avian(stir_model.c_air(ar2,h),stir_model.ir_avian(aw_avian),ddsi,f_inhaled,aw_avian),stir_model.ld50adj_avian(stir_model.ld50est(ld50ao,ld50ri,ld50ro),aw_avian,tw_avian,mineau))), 
-              aw_mammal, 
-              stir_model.cs(vp,mw), 
-              stir_model.ir_mammal(aw_mammal), 
-              stir_model.vid_mammal(stir_model.cs(vp,mw),stir_model.ir_mammal(aw_mammal),aw_mammal), 
-              stir_model.ld50(lc50,stir_model.cf(stir_model.ir_mammal(aw_mammal),aw_mammal),dur), 
-              stir_model.ld50adj_mammal(stir_model.ld50(lc50,stir_model.cf(stir_model.ir_mammal(aw_mammal), aw_mammal),dur),tw_mammal,aw_mammal), 
-              stir_model.ratio_vd_mammal(stir_model.vid_mammal(stir_model.cs(vp,mw),stir_model.ir_mammal(aw_mammal),aw_mammal),stir_model.ld50adj_mammal(stir_model.ld50(lc50,stir_model.cf(stir_model.ir_mammal(aw_mammal), aw_mammal),dur),tw_mammal,aw_mammal)), 
-              stir_model.LOC_vd_mammal(stir_model.ratio_vd_mammal(stir_model.vid_mammal(stir_model.cs(vp,mw),stir_model.ir_mammal(aw_mammal),aw_mammal),stir_model.ld50adj_mammal(stir_model.ld50(lc50,stir_model.cf(stir_model.ir_mammal(aw_mammal), aw_mammal),dur),tw_mammal,aw_mammal))), 
-              stir_model.sid_mammal(stir_model.c_air(ar2,h),stir_model.ir_mammal(aw_mammal),ddsi,f_inhaled,aw_mammal),
-              stir_model.ratio_sid_mammal(stir_model.sid_mammal(stir_model.c_air(ar2,h),stir_model.ir_mammal(aw_mammal),ddsi,f_inhaled,aw_mammal),stir_model.ld50adj_mammal(stir_model.ld50(lc50,stir_model.cf(stir_model.ir_mammal(aw_mammal), aw_mammal),dur),tw_mammal,aw_mammal)),
-              stir_model.LOC_sid_mammal(stir_model.ratio_sid_mammal(stir_model.sid_mammal(stir_model.c_air(ar2,h),stir_model.ir_mammal(aw_mammal),ddsi,f_inhaled,aw_mammal),stir_model.ld50adj_mammal(stir_model.ld50(lc50,stir_model.cf(stir_model.ir_mammal(aw_mammal), aw_mammal),dur),tw_mammal,aw_mammal))))
+               cs(vp,mw), 
+ir_avian(aw_avian), 
+vid_avian(cs(vp,mw),ir_avian(aw_avian),aw_avian), 
+ld50est(ld50ao,ld50ri,ld50ro), 
+ld50adj_avian(ld50est(ld50ao,ld50ri,ld50ro),aw_avian,tw_avian,mineau), 
+ratio_vd_avian(vid_avian(cs(vp,mw),ir_avian(aw_avian),aw_avian),ld50adj_avian(ld50est(ld50ao,ld50ri,ld50ro),aw_avian,tw_avian,mineau)), 
+LOC_vd_avian(ratio_vd_avian(vid_avian(cs(vp,mw),ir_avian(aw_avian),aw_avian),ld50adj_avian(ld50est(ld50ao,ld50ri,ld50ro),aw_avian,tw_avian,mineau))), 
+sid_avian(c_air(ar2,h),ir_avian(aw_avian),ddsi,f_inhaled,aw_avian), 
+ratio_sid_avian(sid_avian(c_air(ar2,h),ir_avian(aw_avian),ddsi,f_inhaled,aw_avian),ld50adj_avian(ld50est(ld50ao,ld50ri,ld50ro),aw_avian,tw_avian,mineau)), 
+LOC_sid_avian(ratio_sid_avian(sid_avian(c_air(ar2,h),ir_avian(aw_avian),ddsi,f_inhaled,aw_avian),ld50adj_avian(ld50est(ld50ao,ld50ri,ld50ro),aw_avian,tw_avian,mineau))), 
+               aw_mammal, 
+               cs(vp,mw), 
+ir_mammal(aw_mammal), 
+vid_mammal(cs(vp,mw),ir_mammal(aw_mammal),aw_mammal), 
+ld50(lc50,cf(ir_mammal, aw_mammal),dur), 
+ld50adj_mammal(ld50(lc50,cf(ir_mammal, aw_mammal),dur),tw_mammal,aw_mammal), 
+ratio_vd_mammal(vid_mammal(cs(vp,mw),ir_mammal(aw_mammal),aw_mammal),ld50adj_mammal(ld50(lc50,cf(ir_mammal, aw_mammal),dur),tw_mammal,aw_mammal)), 
+LOC_vd_mammal(ratio_vd_mammal(vid_mammal(cs(vp,mw),ir_mammal(aw_mammal),aw_mammal),ld50adj_mammal(ld50(lc50,cf(ir_mammal, aw_mammal),dur),tw_mammal,aw_mammal))), 
+sid_mammal(c_air(ar2,h),ir_mammal(aw_mammal),ddsi,f_inhaled,aw_mammal),
+ratio_sid_mammal(sid_mammal(c_air(ar2,h),ir_mammal(aw_mammal),ddsi,f_inhaled,aw_mammal),ld50adj_mammal(ld50(lc50,cf(ir_mammal, aw_mammal),dur),tw_mammal,aw_mammal)),
+LOC_sid_mammal(ratio_sid_mammal(sid_mammal(c_air(ar2,h),ir_mammal(aw_mammal),ddsi,f_inhaled,aw_mammal),ld50adj_mammal(ld50(lc50,cf(ir_mammal, aw_mammal),dur),tw_mammal,aw_mammal))))
 
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})

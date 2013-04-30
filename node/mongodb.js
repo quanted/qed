@@ -15,24 +15,8 @@
       console.log('Opened MongoDb connection.');
     });
 
-<<<<<<< HEAD
-exports.getBatchResults = function(batch_id,callback)
-{ 
-  db.collection('Batch', function(err,collection){
-    collection.findOne({batchId:batch_id},function(err,batch) {
-      console.log(batch);
-      /**
-      var new_batch = {};
-      if('completed' )
-      new_batch.completed = batch.completed;
-      new_batch.ubertool_data = batch.ubertool_data;
-      new_batch.batchId = batch.batchId;
-      **/
-      callback(null,batch);
-    });
-  });
-}
-=======
+
+
     exports.getBatchNames = function(callback)
     { 
       var completedBatchNames = {};
@@ -49,7 +33,7 @@ exports.getBatchResults = function(batch_id,callback)
         });
       });
     }
->>>>>>> Making changes to node server code, still need to work ubertool batch of size more than one, but not crashing.
+
 
     exports.getBatchResults = function(batch_id,callback)
     { 

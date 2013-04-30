@@ -44,6 +44,15 @@ def generatepdf_pi(input_str):
         os.makedirs(src1)
     os.chdir(src1) 
 
+    input_css="""
+            <style>
+            table {margin-bottom:16px;}
+            th {text-align:center; padding:2px; font-size:12px;}
+            td {text-align:center; padding:2px; font-size:11px;}
+            </style>
+            """
+
+    input_str = input_css + input_str
     filename = "model.pdf"
     pdf = pisa.CreatePDF(input_str, file(filename, "wb"))
     pdf.dest.close()

@@ -3,7 +3,6 @@
 # TREX
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
-#from trex import trex_input
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
@@ -27,37 +26,19 @@ class TRexOutputPage(webapp.RequestHandler):
         seed_crop = form.getvalue('seed_crop')
         p_i = form.getvalue('percent_incorporated')
         p_i = float(p_i)/100
-      #  a_r = form.getvalue('application_rate')
-     #   a_r = float(a_r)        
-     #   a_r_l = form.getvalue('application_rate_l')
-     #   a_r_l=float(a_r_l)        
         seed_treatment_formulation_name = form.getvalue('seed_treatment_formulation_name')
         den = form.getvalue('density_of_product')
         den = float(den)
         m_s_r_p = form.getvalue('maximum_seedling_rate_per_use')
         m_s_r_p = float(m_s_r_p)
-        #a_r_p = form.getvalue('application_rate_per_use')
-        #a_r_p = float(a_r_p)
         r_s = form.getvalue('row_sp') 
         r_s=float(r_s)
         b_w = form.getvalue('bandwidth')   #convert to ft
         b_w = float(b_w)/12
         n_a = float(form.getvalue('noa'))
 
-        # rate_out = np.zeros(shape=(int(n_a),1))
-        # day_out = np.zeros(shape=(int(n_a),1))
-        
-
-        # for i in range(int(n_a)):
-        #     j=i+1
-        #     rate_temp = form.getvalue('rate'+str(j))
-        #     rate_out[i,] = int(rate_temp) 
-        #     day_temp = form.getvalue('day'+str(j))
-        #     day_out[i,] = int(day_temp)         
-            
         rate_out = []
         day_out = []
-        
 
         for i in range(int(n_a)):
             j=i+1
@@ -66,23 +47,11 @@ class TRexOutputPage(webapp.RequestHandler):
             day_temp = form.getvalue('day'+str(j))
             day_out.append(day_temp)  
 
-        # a_t = form.getvalue('Application_target')
-        # if a_t=='Short grass':
-        #    para=240       #coefficient used to estimate initial conc.
-        # elif a_t=='Tall grass':
-        #    para=110
-        # elif a_t=='Broad-leafed plants/small insects':
-        #    para=135
-        # elif a_t=='Fruits/pods/seeds/large insects':
-        #    para=15
-        # elif a_t=='Arthropods': #new coefficient for Arthropods
-        #    para=94
-        #i_a = form.getvalue('interval_between_applications')
         if Application_type=='Seed Treatment':
            a_r_p=rate_out[0]       #coefficient used to estimate initial conc.
         else:
            a_r_p=0
-     #   print 'a_r_p', a_r_p
+
         h_l = form.getvalue('Foliar_dissipation_half_life')
         ld50_bird = form.getvalue('avian_ld50')
         lc50_bird = form.getvalue('avian_lc50')
@@ -91,7 +60,6 @@ class TRexOutputPage(webapp.RequestHandler):
         NOAEL_bird = form.getvalue('avian_NOAEL')
         NOAEL_bird = float(NOAEL_bird)
         
-#        bird_type = form.getvalue('Bird_type')    
         Species_of_the_tested_bird = form.getvalue('Species_of_the_tested_bird')
         aw_bird_sm = form.getvalue('body_weight_of_the_assessed_bird_small')
         aw_bird_sm = float(aw_bird_sm)  
@@ -106,7 +74,6 @@ class TRexOutputPage(webapp.RequestHandler):
         else:
             tw_bird = form.getvalue('bwb_other')      
 
-        #tw_bird = form.getvalue('body_weight_of_the_tested_bird')
         tw_bird = float(tw_bird)        
         x = form.getvalue('mineau_scaling_factor')
         ld50_mamm = form.getvalue('mammalian_ld50')
@@ -115,15 +82,7 @@ class TRexOutputPage(webapp.RequestHandler):
         NOAEC_mamm = form.getvalue('mammalian_NOAEC')
         NOAEC_mamm = float(NOAEC_mamm)
         NOAEL_mamm = form.getvalue('mammalian_NOAEL')
-#        mammal_type = form.getvalue('Mammal_type')                
-#        if mammal_type =='Herbivores and insectivores':
-#           mf_w_mamm=0.8       #coefficient used to estimate initial conc.
-#        elif mammal_type=='Granivores':
-#           mf_w_mamm=0.1 
-#        if bird_type =='Herbivores and insectivores':
-#           mf_w_bird=0.8       #coefficient used to estimate initial conc.
-#        elif bird_type=='Granivores':
-#           mf_w_bird=0.1            
+
         aw_mamm_sm = form.getvalue('body_weight_of_the_assessed_mammal_small')
         aw_mamm_sm = float(aw_mamm_sm)  
         aw_mamm_md = form.getvalue('body_weight_of_the_assessed_mammal_medium')
@@ -132,10 +91,7 @@ class TRexOutputPage(webapp.RequestHandler):
         aw_mamm_lg = float(aw_mamm_lg)               
         tw_mamm = form.getvalue('body_weight_of_the_tested_mammal')
         tw_mamm = float(tw_mamm) 
-        
-        #mf_w_mamm = form.getvalue('mass_fraction_of_water_in_the_mammal_food')
-        #mf_w_bird = form.getvalue('mass_fraction_of_water_in_the_bird_food')
-        
+
         text_file = open('trex2/trex2_description.txt','r')
         x1 = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'

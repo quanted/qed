@@ -403,14 +403,14 @@ def CRQ_dose_mamm(EEC_diet, EEC_dose_mamm, ANOAEL_mamm, NOAEL_mamm, aw_mamm, tw_
 def LD50_rg_bird(Application_type, a_r, a_i, p_i, r_s, b_w, aw_bird, at_bird, ld50_bird, tw_bird, x): 
     if Application_type=='Row/Band/In-furrow-Granular':     
         at_bird=at_bird(ld50_bird,aw_bird,tw_bird,x)
-        print 'r_s', r_s
+        # print 'r_s', r_s
         n_r=(43560**0.5)/(r_s)
-        print 'n_r=', n_r
-        print 'a_r=', a_r
-        print 'b_w=', b_w
-        print 'p_i=', p_i
-        print 'a_i', a_i
-        print 'class a_r', type(a_r)
+        # print 'n_r=', n_r
+        # print 'a_r=', a_r
+        # print 'b_w=', b_w
+        # print 'p_i=', p_i
+        # print 'a_i', a_i
+        # print 'class a_r', type(a_r)
         expo_rg_bird=(max(a_r)*a_i*453590.0)/(n_r*(43560.0**0.5)*b_w)*(1-p_i)
         return (expo_rg_bird/(at_bird*(aw_bird/1000.0)))
     else:
@@ -490,7 +490,7 @@ def LD50_bl_mamm(Application_type, a_r, a_i, p_i, aw_mamm, at_mamm, ld50_mamm, t
         
 # Seed treatment acute RQ for birds method 1
 
-def sa_bird_1(a_r_p, a_i, den, at_bird,fi_bird, ld50_bird, aw_bird, tw_bird, x):
+def sa_bird_1(a_r_p, a_i, den, at_bird, fi_bird, ld50_bird, aw_bird, tw_bird, x):
     at_bird=at_bird(ld50_bird,aw_bird,tw_bird,x)    
     fi_bird=fi_bird(20, 0.1)    
     m_s_a_r=((a_r_p*a_i)/128)*den*10000    #maximum seed application rate=application rate*10000

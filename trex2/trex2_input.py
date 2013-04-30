@@ -10,7 +10,7 @@ cgitb.enable()
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
-from trex2 import trexdb2
+from trex2 import trex2_parameters
 from django import forms
 
 class trexInputPage(webapp.RequestHandler):
@@ -25,15 +25,14 @@ class trexInputPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '04uberinput_start.html', {
                 'model':'trex2', 
                 'model_attributes':'TREX 1.5.1 Inputs'})
-        html = html + """<a href="trex_input.html" class="TREX1"> Want to Use TREX 1.4.1?</a>
-        """
+        html = html + """<a href="trex_input.html" class="TREX1"> Want to Use TREX 1.4.1?</a>"""
         html = html + """<table><H4  align="center" id="id_tab">
             |<a class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </a>|
              <a class="Avian" style="font-weight:bold"> Avian </a>|
              <a class="Mammal" style="font-weight:bold"> Mammal </a>|
             </H4>"""
         html = html + """</table><br><table class="tab tab_Chemical" border="0">"""
-        html = html + str(trexdb2.trexInp_chem())
+        html = html + str(trex2_parameters.trexInp_chem())
         html = html + """</table><table class="tab tab_Application" border="0">
                                     <tr><th colspan="2" scope="col"><label for="id_noa">Number of Applications:</label></th>
                                         <td colspan="3" scope="col"><select name="noa" id="id_noa">
@@ -44,9 +43,9 @@ class trexInputPage(webapp.RequestHandler):
                                         </td>
                                     </tr>""" 
         html = html + """</table><table class="tab tab_Avian" border="0" style="display:none">"""
-        html = html + str(trexdb2.trexInp_bird())
+        html = html + str(trex2_parameters.trexInp_bird())
         html = html + """</table><table class="tab tab_Mammal" border="0" style="display:none">"""
-        html = html + str(trexdb2.trexInp_mammal())
+        html = html + str(trex2_parameters.trexInp_mammal())
         html = html + template.render(templatepath + 'trex2_input_end.html', {'sub_title': 'Submit'})
       #  html = html + str(trexdb2.trexInp())
         # html = html + str(trexdb2.trexApp())     

@@ -186,8 +186,14 @@ handlers:
 - url: /aqua-config-names
   script: ubertool/aquatic_toxicity.py
   login: required
+- url: /aqua/(.*)
+  script: ubertool/aquatic_toxicity.py
+  login: required
 #expo service
 - url: /expo-config-names
+  script: ubertool/exposure_concentrations.py
+  login: required
+- url: /expo/(.*)
   script: ubertool/exposure_concentrations.py
   login: required
 #expo service
@@ -202,6 +208,9 @@ handlers:
 - url: /terra-config-names
   script: ubertool/terrestrial_toxicity.py
   login: required
+- url: /terrestrial/(.*)
+  script: ubertool/terrestrial_toxicity.py
+  login: required
 #pest service
 - url: /pest/(.*)
   script: ubertool/pesticide_properties.py
@@ -209,7 +218,7 @@ handlers:
 
 #Model method service for asynchronous invocation
 - url: /msed
-  script: rice/rice_output.py 
+  script: rice/rice_model.py 
 
 #ecosys service
 - url: /ecosys/(.*)

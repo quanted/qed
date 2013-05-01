@@ -14,6 +14,7 @@ from StringIO import StringIO
 import cStringIO
 import logging 
 from rice import rice_output
+from rice import rice_model
 import csv
 import numpy
 
@@ -46,9 +47,9 @@ def html_table(row_inp,iter):
     mai.append(mai_temp)
     kd_temp=float(row_inp[6])   
     kd.append(kd_temp)
-    mai1_temp=rice_output.mai1(mai_temp, a_temp)
+    mai1_temp=rice_model.mai1(mai_temp, a_temp)
     mai1_out.append(mai1_temp)
-    cw_temp=rice_output.cw(mai1_temp,dw_temp,dsed_temp,osed_temp,pb_temp,kd_temp)
+    cw_temp=rice_model.cw(mai1_temp,dw_temp,dsed_temp,osed_temp,pb_temp,kd_temp)
     cw_out.append(cw_temp) 
     
     Input_header="""<table border="1">
@@ -248,6 +249,7 @@ class RiceBatchOutputPage(webapp.RequestHandler):
         html = html + iter_html
         html = html + template.render(templatepath + 'rice-batchoutput-jqplot.html', {})                
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
+        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
@@ -258,6 +260,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
-    
 

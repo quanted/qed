@@ -159,6 +159,9 @@ def at_mamm(ld50,aw_mamm,tw_mamm):
         ld50 = float(ld50)
         aw_mamm = float(aw_mamm)
         tw_mamm = float(tw_mamm)
+    except TypeError:
+        raise TypeError\
+        ('Either ld50, aw_mamm or tw_mamm equals None and therefor this function cannot be run.')
     except IndexError:
         raise IndexError\
         ('The lethal dose, body weight of assessed mammal, and/or body weight'\
@@ -313,6 +316,9 @@ def acute_bird(dose_bird,at_bird):
 
 
 def acuconb(acute_bird):
+    if acute_bird == None:
+        raise ValueError\
+        ('acute_bird variable equals None and therefor this function cannot be run.')
     if acute_bird < 0.1:
         return ('Drinking water exposure alone is NOT a potential concern for birds')
     else:
@@ -349,6 +355,9 @@ def acute_mamm(dose_mamm,at_mamm):
 
 
 def acuconm(acute_mamm):
+    if acute_mamm == None:
+        raise ValueError\
+        ('acute_mamm variable equals None and therefor this function cannot be run.')
     if acute_mamm < 0.1:
         return ('Drinking water exposure alone is NOT a potential concern for mammals')
     else:
@@ -361,6 +370,9 @@ def chron_bird(dose_bird,det):
     try:
         dose_bird = float(dose_bird)
         det = float(det)
+    except TypeError:
+        raise TypeError\
+        ('Either dose_bird or det equals None and therefor this function cannot be run.')
     except IndexError:
         raise IndexError\
         ('The upper bound estimate of exposure for birds, and/or the dose-'\
@@ -387,6 +399,9 @@ def chron_bird(dose_bird,det):
 
 
 def chronconb(chron_bird):
+    if chron_bird == None:
+        raise ValueError\
+        ('chron_bird variable equals None and therefor this function cannot be run.')
     if chron_bird < 1:
         return ('Drinking water exposure alone is NOT a potential concern for birds')
     else:
@@ -423,6 +438,9 @@ def chron_mamm(dose_mamm,act):
     return dose_mamm/act
 
 def chronconm(chron_mamm):
+    if chron_mamm == None:
+        raise ValueError\
+        ('chron_mamm variable equals None and therefor this function cannot be run.')
     if chron_mamm < 1:
         return ('Drinking water exposure alone is NOT a potential concern for mammals')
     else:

@@ -5,8 +5,12 @@ import pickle
 import logging
 sys.path.append("terrplant")
 import terrplant_model
-from terrplant_runner import TerrPlantBatchRunner
+from terrplant_batch_runner import TerrPlantBatchRunner
 terrPlantRunner = TerrPlantBatchRunner()
+sys.path.append("sip")
+import sip_model
+from sip_batch_runner import SIPBatchRunner
+sipRunner = SIPBatchRunner()
 
 logger = logging.getLogger("BatchWorker")
 
@@ -52,6 +56,7 @@ def processUbertoolBatchRunsIntoBatchModelRun(ubertool):
     ubertool_id = combined_ubertool_props["ubertool-config-name"]
     ubertool_result = {}
     ubertool_result = terrPlantRunner.runTerrPlantModel(combined_ubertool_props,ubertool_result)
+    ubertool_result = sipRunner.runSIPModel(combined_ubertool_props,ubertool_result)
     #perform on all other eco models
     return ubertool_result
 

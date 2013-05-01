@@ -49,6 +49,7 @@ def retrieveUbertoolConfigFromForm(data,ubertool_config_key,use_config_key,pest_
         logger.info(user.user_id())
         ubertool.user = user
     use_tuple = retrieveUseConfigFromForm(data, use_config_key)
+    logger.info(use_tuple)
     ubertool.use = use_tuple[0]
     ubertool_dict['use'] = use_tuple[1]
     pest_tuple = retrievePestConfigFromForm(data, pest_config_key)

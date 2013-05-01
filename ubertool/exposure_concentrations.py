@@ -7,6 +7,8 @@ from django.utils import simplejson
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.api import users
 
+logger = logging.getLogger('ExposureConcentrationsService')
+
 class ExposureConcentrationsService(webapp.RequestHandler):
     def get(self, expo_concentration):
         user = users.get_current_user()

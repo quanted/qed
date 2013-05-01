@@ -9,7 +9,8 @@ import terrplant_model
 class TerrPlantBatchRunner():
     
     def runTerrPlantModel(self,config_properties,results_dict):
-        results_dict = {}
+        if not results_dict:
+            results_dict = {}
         #this is where properties are searched, converted as needed, and any available methods are called
         A = None
         if 'application_lbs_rate' in config_properties:

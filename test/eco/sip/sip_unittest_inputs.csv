@@ -1,0 +1,11 @@
+bw_bird,fw_bird_out,bw_mamm,fw_mamm_out,sol,dose_bird_out,dose_mamm_out,ld50,aw_bird,tw_bird,mineau,at_bird_out,aw_mamm,tw_mamm,at_mamm_out,fi_bird_out,noaec,det_out,noael,act_out,acute_bird_out,acuconb_out,acute_mamm_out,acuconm_out,chron_bird_out,chronconb_out,chron_mamm_out,chronconm_out
+float,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float,string,float,string,float,string,float,string
+0,0,0,0,0,None,None,0,0,0,0,None,None,1,None,0,0,None,None,None,None,None,None,None,None,None,None,None
+1,0.00118,1,0.000708,0,0,0,0,0,1,0,None,1,None,None,0.058,1,0.058,1,None,None,None,None,None,0,Drinking water exposure alone is NOT a potential concern for birds,None,None
+0,0,0,0,1,None,None,0,1,1,0,None,1,0,None,0,0,None,1,None,None,None,None,None,None,None,None,None
+1,0.00118,1,0.000708,1,0.00118,0.000708,1,0,1,0,None,1,-1,None,0.058,-1,None,1,None,None,None,None,None,None,None,None,None
+0,0,0,0,0,None,None,1,1,1,1,1,-1,1,None,0,0,None,1,None,None,None,None,None,None,None,None,None
+1,0.00118,1,0.000708,0,0,0,1,1,1,2,1,1,1,1,0.058,0,0,-1,None,0,Drinking water exposure alone is NOT a potential concern for birds,0,Drinking water exposure alone is NOT a potential concern for mammals,None,None,None,None
+0,0,0,0,1,None,None,2,1,1,2,2,1,1,2,0,0,None,2,2,None,None,None,None,None,None,None,None
+1,0.00118,1,0.000708,1,0.00118,0.000708,1,2,1,2,2,2,1,1.189,0.058,2,0.116,1,0.841,0.00059,Drinking water exposure alone is NOT a potential concern for birds,0.000595458,Drinking water exposure alone is NOT a potential concern for mammals,0.010172414,Drinking water exposure alone is NOT a potential concern for birds,0.000841855,Drinking water exposure alone is NOT a potential concern for mammals
+1,0.00118,1,0.000708,1,0.00118,0.000708,1,1,2,2,0.5,2,16,0.595,0.058,None,None,1,1.682,0.00236,Drinking water exposure alone is NOT a potential concern for birds,0.001189916,Drinking water exposure alone is NOT a potential concern for mammals,None,None,0.000420927,Drinking water exposure alone is NOT a potential concern for mammals

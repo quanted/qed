@@ -1,0 +1,28 @@
+<script type="text/javascript" src=" ../stylesheets/jquery-1.7.2.js"></script>
+<script type="text/javascript" src=" ../stylesheets/jquery.validate.js"></script>
+<script>
+$(document).ready(function() {
+	$("#id_user_ecosystem_configuration").change(function(){
+		var user_ecosystem_configuration = $("#id_user_ecosystem_configuration")[0].value;
+
+		if(user_ecosystem_configuration != 'None')
+		{
+			$.ajax({
+				url:"ecosys/"+user_ecosystem_configuration,
+				async: false,
+				type: 'GET',
+				success: function(ecosys_data) {
+					$("#id_config_name")[0].value = $("#id_user_ecosystem_configuration")[0].value;
+					$("#id_concentration_of_particulate_organic_carbon")[0].value = ecosys_data['concentration_of_particulate_organic_carbon'];
+					$("#id_concentration_of_dissolved_organic_carbon")[0].value = ecosys_data['concentration_of_dissolved_organic_carbon'];
+					$("#id_concentration_of_dissolved_oxygen")[0].value = ecosys_data['concentration_of_dissolved_oxygen'];
+					$("#id_water_temperature")[0].value = ecosys_data['water_temperature'];
+					$("#id_concentration_of_suspended_solids")[0].value = ecosys_data['concentration_of_suspended_solids'];
+					$("#id_sediment_organic_carbon")[0].value = ecosys_data['sediment_organic_carbon'];
+				}
+			});
+		}
+		
+	});
+})
+</script>

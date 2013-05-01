@@ -12,7 +12,7 @@ class EcosystemInputsService(webapp.RequestHandler):
         user = users.get_current_user()
         q = db.Query(EcosystemInputs)
         q.filter('user =',user)
-        q.filter('config_name =',eco_inputs)
+        q.filter('config_name =',ecosys_inputs)
         ecosys = q.get()
         use_dict = {}
         use_dict['concentration_of_particulate_organic_carbon']=ecosys.concentration_of_particulate_organic_carbon

@@ -1,0 +1,29 @@
+<script type="text/javascript" src=" ../stylesheets/jquery-1.7.2.js"></script>
+<script type="text/javascript" src=" ../stylesheets/jquery.validate.js"></script>
+<script>
+$(document).ready(function() {
+	$("#id_user_use_configuration").change(function(){
+		var user_aqua_configuration = $("#id_user_use_configuration")[0].value;
+
+		if(user_aqua_configuration != 'None')
+		{
+			$.ajax({
+				url:"aqua/"+user_aqua_configuration,
+				async: false,
+				type: 'GET',
+				success: function(aqua_data) {
+					$("#id_config_name")[0].value = $("#id_user_use_configuration")[0].value;
+					$("#id_acute_toxicity_target_concentration_for_freshwater_fish")[0].value = aqua_data['acute_toxicity_target_concentration_for_freshwater_fish'];						
+					$("#id_chronic_toxicity_target_concentration_for_freshwater_fish")[0].value = aqua_data['chronic_toxicity_target_concentration_for_freshwater_fish'];						
+					$("#id_acute_toxicity_target_concentration_for_freshwater_invertebrates")[0].value = aqua_data['acute_toxicity_target_concentration_for_freshwater_invertebrates'];
+					$("#id_chronic_toxicity_target_concentration_for_freshwater_invertebrates")[0].value = aqua_data['chronic_toxicity_target_concentration_for_freshwater_invertebrates'];
+					$("#id_toxicity_target_concentration_for_nonlisted_vascular_plants")[0].value = aqua_data['toxicity_target_concentration_for_nonlisted_vascular_plants'];	
+					$("#id_toxicity_target_concentration_for_listed_vascular_plants")[0].value = aqua_data['toxicity_target_concentration_for_listed_vascular_plants'];						
+					$("#id_toxicity_target_concentration_for_duckweed")[0].value = aqua_data['toxicity_target_concentration_for_duckweed'];
+				}
+			});
+		}
+		
+	});
+})
+</script>

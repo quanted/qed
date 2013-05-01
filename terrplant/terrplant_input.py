@@ -29,8 +29,10 @@ class TerrPlantInputPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '04uberinput_start.html', {
                 'model':'terrplant', 
                 'model_attributes':'TerrPlant Inputs'})
+        html = html + template.render (templatepath + 'terrplant_ubertool_config_input.html', {})  
         html = html + str(terrplant_parameters.TerrPlantInp())
         html = html + template.render (templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
+        html = html + template.render (templatepath + 'terrplant_ubertool_config.html', {})          
         html = html + template.render (templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

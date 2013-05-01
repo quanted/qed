@@ -43,7 +43,7 @@ class UbertoolTerrestrialToxicityConfigurationPage(webapp.RequestHandler):
         terr_tox.mammalian_lc50 = float(form.getvalue('mammalian_lc50'))
         terr_tox.mammalian_inhalation_lc50 = float(form.getvalue('mammalian_inhalation_lc50'))
         terr_tox.duration_of_rat_study = float(form.getvalue('duration_of_rat_study'))
-        terr_tox.mammlian_NOAEC = float(form.getvalue('mammalian_NOAEC'))
+        terr_tox.mammalian_NOAEC = float(form.getvalue('mammalian_NOAEC'))
         terr_tox.mammalian_NOAEL = float(form.getvalue('mammalian_NOAEL'))
         terr_tox.amphibian_bw = float(form.getvalue('amphibian_bw'))
         terr_tox.terrestrial_phase_amphibian_ld50 = float(form.getvalue('terrestrial_phase_amphibian_ld50'))

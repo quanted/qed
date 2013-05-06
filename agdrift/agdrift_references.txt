@@ -36,7 +36,7 @@ EPA Development of Conceptual Models</a></li>
   <li><a href="http://www.agdrift.com/PDF_FILES/Ground.pdf">A Summary of Ground Application Studies</a></li>
 </ul>
 <p>
-Presentations/posters/abstracts on the subject of EPA's ecological risk assessment models, including AgDrift.
+Presentations/posters/abstracts/reports on the subject of EPA's ecological risk assessment models, including AgDrift.
 </p>
 <ul class="bullet">
   <li><a href="http://www.agrodiv.org/documents/denver11/Endangered%20Species%20Act%20and%20Regulation/AGRO219_Odenkirchen_Edward.pdf">Advancements in Endangered Species Act Effects Determination
@@ -49,6 +49,7 @@ Presentations/posters/abstracts on the subject of EPA's ecological risk assessme
   <li><a href="http://pep.wsu.edu/wrpm/WRPM_11_files/Agenda%20and%20PPT%20pdfs/13Brady5-18-11PM.pdf">Ecological Risk Assessment and Improving Evaluation Tools, Don Brady (USEPA)</a></li>
   <li><a href="www.cdpr.ca.gov/docs/enforce/drftinit/confs/2001/esterly.ppt">AgDrift Training, Dave Easterly, Environmental Focus, Inc"
   <li><a href="http://tpsalliance.org/conference/sessions/2B_Hewitt_Droplet%20Size%20Calculators.pdf">Atomization Models for Actual Tank Mixes, Andrew Hewitt, University of Queensland</a></li>
+  <li><a href="http://www.nap.edu/catalog.php?record_id=18344">Assessing Risks to Endangered and Threatened Species From Pesticides (National Academy of Sciences)</a></li>
 </ul>
 
 <p>

@@ -1,4 +1,4 @@
-# TerrPlant Version 1.2.2
+# terrplant Version 1.2.2
 
 
 import os
@@ -15,17 +15,12 @@ import sys
 sys.path.append("../utils")
 import utils.json_utils
 sys.path.append("../terrplant")
-from terrplant import terrplant_model as terrplant
+from terrplant import terrplant as terrplant_data
 
-class TerrPlantExecutePage(webapp.RequestHandler):
+class terrplantExecutePage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage() 
-        chemical_name = form.getvalue('chemical_name')
-        pc_code = form.getvalue('pc_code')
-        use = form.getvalue('use')
-        application_method = form.getvalue('application_method')
-        application_form = form.getvalue('application_form')
-        solubility = form.getvalue('solubility')
+        #Get variables needed to construct terrplant object
         I = form.getvalue('incorporation')
         A = form.getvalue('application_rate')
         D = form.getvalue('drift_fraction')
@@ -34,17 +29,36 @@ class TerrPlantExecutePage(webapp.RequestHandler):
         nds = form.getvalue('EC25_for_nonlisted_seedling_emergence_dicot')
         lms = form.getvalue('NOAEC_for_listed_seedling_emergence_monocot')
         lds = form.getvalue('NOAEC_for_listed_seedling_emergence_dicot')
+        terrplant = terrplant_data.terrplant(A,I,R,D,nms,lms,nds,lds)
+        #fill out terrplant object with yet to be used data
+        chemical_name = form.getvalue('chemical_name')
+        terrplant.chemical_name = chemical_name
+        pc_code = form.getvalue('pc_code')
+        terrplant.pc_code = pc_code
+        use = form.getvalue('use')
+        terrplant.use = use
+        application_method = form.getvalue('application_method')
+        terrplant.application_method = application_method
+        application_form = form.getvalue('application_form')
+        terrplant.application_form = application_form
+        solubility = form.getvalue('solubility')
+        terrplant.solubility = solubility
         nmv = form.getvalue('EC25_for_nonlisted_vegetative_vigor_monocot')
+        terrplant.nmv = nmv
         ndv = form.getvalue('EC25_for_nonlisted_vegetative_vigor_dicot')
+        terrplant.ndv = ndv
         lmv = form.getvalue('NOAEC_for_listed_vegetative_vigor_monocot')
+        terrplant.lmv = lmv
         ldv = form.getvalue('NOAEC_for_listed_vegetative_vigor_dicot')
+        terrplant.ldv = ldv
+
         text_file = open('terrplant/terrplant_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'terrplant','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                                
-        html = html + template.render(templatepath + '04uberoutput_start.html',{'model':'terrplant', 'model_attributes':'TerrPlant Output'})   
+        html = html + template.render(templatepath + '04uberoutput_start.html',{'model':'terrplant', 'model_attributes':'terrplant Output'})   
         html = html + """
         <table border="1" class="out_1">
             <tr><th colspan="2">Inputs: Chemical Identity</th></tr>
@@ -203,28 +217,27 @@ class TerrPlantExecutePage(webapp.RequestHandler):
                 <td colspan="5">* If RQ > 1.0, the Level of Concern is exceeded, resulting in potential risk to that plant group.<td>
         </table>
         """ % (chemical_name, pc_code, use, application_method, application_form, solubility,
-               I, A, D, R, 
-               terrplant.rundry(A,I,R), terrplant.runsemi(A,I,R), terrplant.spray(A,D), terrplant.totaldry(terrplant.rundry(A,I,R), terrplant.spray(A,D)), terrplant.totalsemi(terrplant.runsemi(A,I,R),terrplant.spray(A,D)),
-               nms, lms, nmv, lmv, nds, lds, ndv, ldv,
-               terrplant.nmsRQdry(terrplant.totaldry(terrplant.rundry(A,I,R),terrplant.spray(A,D)),nms), 
-terrplant.nmsRQsemi(terrplant.totalsemi(terrplant.runsemi(A,I,R),terrplant.spray(A,D)),nms), 
-terrplant.nmsRQspray(terrplant.spray(A,D),nms), 
-terrplant.lmsRQdry(terrplant.totaldry(terrplant.rundry(A,I,R),terrplant.spray(A,D)),lms), 
-terrplant.lmsRQsemi(terrplant.totalsemi(terrplant.runsemi(A,I,R),terrplant.spray(A,D)),lms), 
-terrplant.lmsRQspray(terrplant.spray(A,D),lms),
-terrplant.ndsRQdry(terrplant.totaldry(terrplant.rundry(A,I,R),terrplant.spray(A,D)),nds), 
-terrplant.ndsRQsemi(terrplant.totalsemi(terrplant.runsemi(A,I,R),terrplant.spray(A,D)),nds), 
-terrplant.ndsRQspray(terrplant.spray(A,D),nds), 
-terrplant.ldsRQdry(terrplant.totaldry(terrplant.rundry(A,I,R),terrplant.spray(A,D)),lds), 
-terrplant.ldsRQsemi(terrplant.totalsemi(terrplant.runsemi(A,I,R),terrplant.spray(A,D)),lds), 
-terrplant.ldsRQspray(terrplant.spray(A,D),lds)
-)
+                I, A, D, R, 
+                terrplant.rundry_results, terrplant.runsemi_results, terrplant.spray_results, terrplant.totaldry_results, terrplant.totalsemi_results,
+                nms, lms, nmv, lmv, nds, lds, ndv, ldv,
+                terrplant.nmsRQdry_results, 
+                terrplant.nmsRQsemi_results, 
+                terrplant.nmsRQspray_results, 
+                terrplant.lmsRQdry_results, 
+                terrplant.lmsRQsemi_results, 
+                terrplant.lmsRQspray_results,
+                terrplant.ndsRQdry_results, 
+                terrplant.ndsRQsemi_results, 
+                terrplant.ndsRQspray_results, 
+                terrplant.ldsRQdry_results, 
+                terrplant.ldsRQsemi_results, 
+                terrplant.ldsRQspray_results)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
-app = webapp.WSGIApplication([('/.*', TerrPlantExecutePage)], debug=True)
+app = webapp.WSGIApplication([('/.*', terrplantExecutePage)], debug=True)
 
 def main():
     run_wsgi_app(app)

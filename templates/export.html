@@ -3,6 +3,23 @@
 <script>
 $(document).ready(function () {
 
+	$.fn.slideFadeToggle = function(speed, easing, callback) {
+        return this.animate({opacity: 'toggle', height: 'toggle'}, speed, easing, callback);
+    };
+
+	$('.collapsible').collapsible({
+		defaultOpen: 'section1,section2',
+		speed: 'slow',
+        //replace the standard slideUp with custom function
+        animateOpen: function (elem, opts) {
+            elem.next().slideFadeToggle(opts.speed);
+        },
+        //replace the standard slideDown with custom function
+        animateClose: function (elem, opts) {
+            elem.next().slideFadeToggle(opts.speed);
+        }
+	});
+
 var jq_html = $('<div />').append($("div.articles_output").children('table[class*=out_], div[class*=out_]:not(div#chart1,table:hidden)').clone()).html();
 var n_plot=$('div[id^="chart"]').size()
 
@@ -13,9 +30,6 @@ while(i <= n_plot){
     i=i+1    
 }
 imgData_json = JSON.stringify(imgData)
-
-console.log(jq_html)
-console.log(imgData_json)
 
 
 	$('<tr style="display:none"><td><input type="hidden" name="pdf_t"></td></tr>')
@@ -114,5 +128,5 @@ var doneDiv = document.getElementById("popup");
 </script>
 
 <form id="pdf_post" method="post" target="PDF_Export">
-	<table align="center" class="getpdf popup"></table>
+	<table class="getpdf popup"></table>
 </form>

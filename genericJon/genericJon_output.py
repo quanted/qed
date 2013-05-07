@@ -27,15 +27,46 @@ class genericJonOutputPage(webapp.RequestHandler):
                 'model':'genericJon', 
                 'model_attributes':'GenericJon Output'})
         html = html + """
-        <table width="600" border="1">
-          
-        </table>
-        <p>&nbsp;</p>                     
+        <h3 class="collapsible" id="section1">User Inputs</h3>
+            <div class="container_output">
+                <table class="out_">
+                    <tr><th colspan="2">Inputs: Testing1</th></tr>
+                    <tr>
+                        <td>Long string.............................................</td>
+                        <td>Long string.............................................</td>
+                    </tr>
+                    <tr>
+                        <td>Long string.............................................</td>
+                        <td>Long string.............................................</td>
+                    </tr>
+                    <tr>
+                        <td>Long string.............................................</td>
+                        <td>Long string.............................................</td>
+                    </tr>
+                </table>
+            </div>
+        <br>
+
+        <h3 class="collapsible" id="section2">Model Input</h3>
+            <div class="container_output">
+                <table class="out_">
+                    <tr><th colspan="2">Inputs: Testing2</th></tr>
+                    <tr>
+                        <td>Long string.............................................</td>
+                        <td>Long string.............................................</td>
+                    </tr>
+                    <tr>
+                        <td>Long string.............................................</td>
+                        <td>Long string.............................................</td>
+                    </tr>
+                    <tr>
+                        <td>Long string.............................................</td>
+                        <td>Long string.............................................</td>
+                    </tr>
+                </table>
+            </div>
         """
-        html = html + """
-        <table width="600" border="1">
-        </table>
-        """
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06hh_uberfooter.html', {'links': ''})
         self.response.out.write(html)

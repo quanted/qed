@@ -50,9 +50,9 @@ img {
   -moz-box-shadow: 3px 3px 15px #CCC;
 }
 #landing_links {
-  width: 680px;
+  width: 334px;
 }
-#eco {
+/*#eco {
   width: 334px;
   height: 334px;
   float: left;
@@ -76,8 +76,8 @@ img {
   box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;
-}
-/*#pop {
+}*/
+#pop {
   width: 334px;
   height: 334px;
   float: left;
@@ -88,7 +88,7 @@ img {
   box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;
-}*/
+}
 ul {
   list-style: none;
 }

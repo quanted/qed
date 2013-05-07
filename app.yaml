@@ -162,9 +162,10 @@ handlers:
 
 #USER pages
 - url: /user.html
-  script: user/user_input.py   
+  script: user/user_input.py 
   login: required
-
+  secure: always
+  
 - url: /user_output.html
   script: user/user_output.py
   login: required

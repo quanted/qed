@@ -1076,7 +1076,7 @@ ul.nobullet {
 }
 h3,h4.articles_output {
   text-align: left;
-  margin: 8px 0 4px 30px;
+  margin: 8px 0 4px 14px;
 }
 .articles_output ol {
   padding: 0 2em;
@@ -1184,6 +1184,20 @@ h3,h4.articles_output {
   margin-top: -46px;
   z-index: 99999;
 }
+.collapse-open span {
+    background:url(../images/collapsible/minus.gif) center left no-repeat;
+    display: block;
+    float: left;
+    padding: 9px 8px;
+    cursor: default;
+}
+.collapse-close span {
+    background:url(../images/collapsible/plus.gif) center left no-repeat;
+    display: block;
+    float: left;
+    padding: 9px 8px;
+    cursor: default;
+}
 
 /* 06uberfooter.html */
 
@@ -1266,6 +1280,8 @@ h3,h4.articles_output {
 	background-color:#fff;
 }
 
+/* Testing */
+
 table,td
 {
   border: 1px solid black;
@@ -1277,7 +1293,7 @@ table,td
   background-color: rgb(201,224,179);
 }
 
-table,th
+table
 {
   /*border: 1px solid black;
   border-width: 1px;
@@ -1287,4 +1303,9 @@ table,th
   border-collapse: separate;*/
   background-color: rgb(201,224,179);
   border: none;
+}
+th {
+  background-color: rgb(201,224,179);
+  border: none;
+  text-align: center;
 }

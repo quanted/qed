@@ -27,7 +27,7 @@ class genericJonOutputPage(webapp.RequestHandler):
                 'model':'genericJon', 
                 'model_attributes':'GenericJon Output'})
         html = html + """
-        <h3 class="collapsible" id="section1">User Inputs</h3>
+        <h3 class="collapsible" id="section1"><span></span>User Inputs</h3>
             <div class="container_output">
                 <table class="out_">
                     <tr><th colspan="2">Inputs: Testing1</th></tr>
@@ -47,7 +47,7 @@ class genericJonOutputPage(webapp.RequestHandler):
             </div>
         <br>
 
-        <h3 class="collapsible" id="section2">Model Input</h3>
+        <h3 class="collapsible" id="section2"><span></span>Model Input</h3>
             <div class="container_output">
                 <table class="out_">
                     <tr><th colspan="2">Inputs: Testing2</th></tr>

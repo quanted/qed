@@ -1047,6 +1047,30 @@ ul.nobullet {
   margin-top: 0.5em;
   font-size: 12px;
 }
+.articles_input {
+  width: 654px;
+  display: inline;
+  float: left;
+  margin: 8px;
+  padding: 1em 1.5em;
+  background: #F9FBF6;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;
+}
+.articles_input a:hover {
+  color: #333333;
+}
+#input_nav ul {
+  text-align: center;
+}
+#input_nav li {
+  display: inline;
+  list-style: none;
+}
 .articles_output {
   width: 822px;
   display: inline;

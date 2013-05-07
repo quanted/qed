@@ -16,20 +16,24 @@ class PFAMInputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'pfam','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {
+        html = html + template.render(templatepath + '04uberinput_start_tabbed.html', {
                 'model':'pfam', 
                 'model_attributes':'PFAM Inputs'})
 
-        html = html + """<table><H4  align="center" id="id_tab">
-            |<a class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </a>|
-             <a class="Application" style="font-weight:bold"> Application </a>|
-             <a class="Location" style="font-weight:bold"> Location </a>|
-             <a class="Floods" style="font-weight:bold"> Floods </a>|
-             <a class="Crop" style="font-weight:bold"> Crop </a>|
-             <a class="Physical" style="font-weight:bold"> Physical </a>|
-             <a class="Output" style="font-weight:bold"> Output </a>|
-            </H4>"""
-        html = html + """</table><br><table class="tab tab_Chemical" border="0">"""
+        html = html + """
+        <div id="input_nav">
+            <ul>
+                <li>| <a class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </a></li>
+                <li>| <a class="Application" style="font-weight:bold"> Application </a></li>
+                <li>| <a class="Location" style="font-weight:bold"> Location </a></li>
+                <li>| <a class="Floods" style="font-weight:bold"> Floods </a></li>
+                <li>| <a class="Crop" style="font-weight:bold"> Crop </a></li>
+                <li>| <a class="Physical" style="font-weight:bold"> Physical </a></li>
+                <li>| <a class="Output" style="font-weight:bold"> Output </a>|</li>
+            </ul>
+        </div>
+        """
+        html = html + """<br><table class="tab tab_Chemical" border="0">"""
         html = html + str(PFAMdb.PFAMInp_chem())
         html = html + """</table><table class="tab tab_Application" border="0" style="display:none">
                                     <tr><th colspan="2" scope="col"><label for="id_noa">Number of Applications:</label></th>

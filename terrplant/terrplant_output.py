@@ -58,7 +58,7 @@ class terrplantExecutePage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'terrplant','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                                
-        html = html + template.render(templatepath + '04uberoutput_start.html',{'model':'terrplant', 'model_attributes':'terrplant Output'})   
+        html = html + template.render(templatepath + '04uberoutput_start.html',{'model':'terrplant', 'model_attributes':'TerrPlant Output'})   
         html = html + """
         <table border="1" class="out_1">
             <tr><th colspan="2">Inputs: Chemical Identity</th></tr>

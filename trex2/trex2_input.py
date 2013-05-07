@@ -22,7 +22,7 @@ class trexInputPage(webapp.RequestHandler):
         html = html + template.render (templatepath + 'trex2-jquery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'trex2','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})        
-        html = html + template.render (templatepath + '04uberinput_start.html', {
+        html = html + template.render (templatepath + '04uberinput_start_tabbed.html', {
                 'model':'trex2', 
                 'model_attributes':'TREX 1.5.1 Inputs'})
         html = html + """<a href="trex_input.html" class="TREX1"> Want to Use TREX 1.4.1?</a>"""

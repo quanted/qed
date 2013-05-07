@@ -29,10 +29,20 @@ class THerpsInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start.html', {
                 'model':'therps', 
                 'model_attributes':'T-Herps Inputs'})
-        html = html + str(therps_parameters.therpsInp())
-        html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render(templatepath + 'therps_jquery.html', {})
-        html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
+
+        html = html + """<table><H4  align="center" id="id_tab">
+            |<a class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </a>|
+             <a class="Avian" style="font-weight:bold"> Avian </a>|
+             <a class="Herptile" style="font-weight:bold"> Herptile </a>|
+            </H4>"""
+        html = html + """</table><br><table class="tab tab_Chemical" border="0">"""
+        html = html + str(therps_parameters.trexInp_chem())
+        html = html + """</table><table class="tab tab_Avian" border="0" style="display:none">"""
+        html = html + str(therps_parameters.trexInp_bird())
+        html = html + """</table><table class="tab tab_Herptile" border="0" style="display:none">"""
+        html = html + str(therps_parameters.trexInp_herp())
+        html = html + template.render(templatepath + 'therps_input_end.html', {'sub_title': 'Submit'})
+        html = html + template.render(templatepath + 'therps-jquery.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

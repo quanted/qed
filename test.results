@@ -1,0 +1,83 @@
+============================= test session starts ==============================
+platform darwin -- Python 2.7.3 -- pytest-2.3.4
+collected 457 items
+
+test/eco/iec/iec_test.py FFFFFF
+test/eco/rice/rice_test.py ........
+test/eco/sip/sip_test.py .........................................................................................................................................................
+test/eco/terrplant/terrplant_test.py ..................................................................................................................................................................................................................................................................................................
+
+=================================== FAILURES ===================================
+________________________________ testZScoreF[0] ________________________________
+
+numiter = 0
+
+    def testZScoreF(numiter):
+        params_matrix = get_params_matrix()
+>       output = iec_output.z_score_f(params_matrix.get('dose_response')[numiter],params_matrix.get('LC50')[numiter],params_matrix.get('threshold')[numiter])
+E       AttributeError: 'module' object has no attribute 'z_score_f'
+
+test/eco/iec/iec_test.py:18: AttributeError
+------------------------------- Captured stdout --------------------------------
+test/eco/iec/iec_unittest_inputs.csv
+________________________________ testZScoreF[1] ________________________________
+
+numiter = 1
+
+    def testZScoreF(numiter):
+        params_matrix = get_params_matrix()
+>       output = iec_output.z_score_f(params_matrix.get('dose_response')[numiter],params_matrix.get('LC50')[numiter],params_matrix.get('threshold')[numiter])
+E       AttributeError: 'module' object has no attribute 'z_score_f'
+
+test/eco/iec/iec_test.py:18: AttributeError
+------------------------------- Captured stdout --------------------------------
+test/eco/iec/iec_unittest_inputs.csv
+__________________________________ testF8f[0] __________________________________
+
+numiter = 0
+
+    def testF8f(numiter):
+        params_matrix = get_params_matrix()
+>       output = iec_output.F8_f(params_matrix.get('dose_response')[numiter],params_matrix.get('LC50')[numiter],params_matrix.get('threshold')[numiter])
+E       AttributeError: 'module' object has no attribute 'F8_f'
+
+test/eco/iec/iec_test.py:24: AttributeError
+------------------------------- Captured stdout --------------------------------
+test/eco/iec/iec_unittest_inputs.csv
+__________________________________ testF8f[1] __________________________________
+
+numiter = 1
+
+    def testF8f(numiter):
+        params_matrix = get_params_matrix()
+>       output = iec_output.F8_f(params_matrix.get('dose_response')[numiter],params_matrix.get('LC50')[numiter],params_matrix.get('threshold')[numiter])
+E       AttributeError: 'module' object has no attribute 'F8_f'
+
+test/eco/iec/iec_test.py:24: AttributeError
+------------------------------- Captured stdout --------------------------------
+test/eco/iec/iec_unittest_inputs.csv
+________________________________ testChancef[0] ________________________________
+
+numiter = 0
+
+    def testChancef(numiter):
+        params_matrix = get_params_matrix()
+>       output = iec_output.chance_f(params_matrix.get('dose_response')[numiter],params_matrix.get('LC50')[numiter],params_matrix.get('threshold')[numiter])
+E       AttributeError: 'module' object has no attribute 'chance_f'
+
+test/eco/iec/iec_test.py:30: AttributeError
+------------------------------- Captured stdout --------------------------------
+test/eco/iec/iec_unittest_inputs.csv
+________________________________ testChancef[1] ________________________________
+
+numiter = 1
+
+    def testChancef(numiter):
+        params_matrix = get_params_matrix()
+>       output = iec_output.chance_f(params_matrix.get('dose_response')[numiter],params_matrix.get('LC50')[numiter],params_matrix.get('threshold')[numiter])
+E       AttributeError: 'module' object has no attribute 'chance_f'
+
+test/eco/iec/iec_test.py:30: AttributeError
+------------------------------- Captured stdout --------------------------------
+test/eco/iec/iec_unittest_inputs.csv
+===================== 6 failed, 451 passed in 4.66 seconds =====================

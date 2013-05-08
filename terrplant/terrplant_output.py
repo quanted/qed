@@ -218,20 +218,20 @@ class terrplantExecutePage(webapp.RequestHandler):
         </table>
         """ % (chemical_name, pc_code, use, application_method, application_form, solubility,
                 I, A, D, R, 
-                terrplant.rundry_results, terrplant.runsemi_results, terrplant.spray_results, terrplant.totaldry_results, terrplant.totalsemi_results,
+                terrplant.rundry(), terrplant.runsemi(), terrplant.spray(), terrplant.totaldry(), terrplant.totalsemi(),
                 nms, lms, nmv, lmv, nds, lds, ndv, ldv,
-                terrplant.nmsRQdry_results, 
-                terrplant.nmsRQsemi_results, 
-                terrplant.nmsRQspray_results, 
-                terrplant.lmsRQdry_results, 
-                terrplant.lmsRQsemi_results, 
-                terrplant.lmsRQspray_results,
-                terrplant.ndsRQdry_results, 
-                terrplant.ndsRQsemi_results, 
-                terrplant.ndsRQspray_results, 
-                terrplant.ldsRQdry_results, 
-                terrplant.ldsRQsemi_results, 
-                terrplant.ldsRQspray_results)
+                terrplant.nmsRQdry(), 
+                terrplant.nmsRQsemi(), 
+                terrplant.nmsRQspray(), 
+                terrplant.lmsRQdry(), 
+                terrplant.lmsRQsemi(), 
+                terrplant.lmsRQspray(),
+                terrplant.ndsRQdry(), 
+                terrplant.ndsRQsemi(), 
+                terrplant.ndsRQspray(), 
+                terrplant.ldsRQdry(), 
+                terrplant.ldsRQsemi(), 
+                terrplant.ldsRQspray())
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

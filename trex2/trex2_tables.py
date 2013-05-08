@@ -372,24 +372,26 @@ def table_sum_output(granbirdderm_out, granherpderm_out, granmammderm_out, folbi
 def table_1(chemical_name, Use, Formulated_product_name, percent_ai, Application_type, r_s, b_w, percent_incorporated, density_of_product, Foliar_dissipation_half_life):
         #pre-table 1
         html = """
-            <div class="out_1">
-              <H3>User Inputs: </H3>
-              <H4>Chemical Properties</H4>
-            </div>
+        <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs:</H3>
+        <div>
+            <H4 class="out_1 collapsible" id="section2"><span></span>Chemical Properties</H4>
+                <div class="out_ container_output">
         """
         #table 1
         t1data = gett1data(chemical_name, Use, Formulated_product_name, percent_ai, Application_type, r_s, b_w, percent_incorporated,
                            density_of_product, Foliar_dissipation_half_life)
         t1rows = gethtmlrowsfromcols(t1data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
+        html = html + """
+                </div>
+        """
         return html
 
 def table_2(noa, rate_out, day_out):
         # #pre-table 2
         html = """
-            <div class="out_2">
-              <H4>Chemical Application (n=%s)</H4>
-            </div>
+            <H4 class="out_2 collapsible" id="section3"><span></span>Chemical Application (n=%s)</H4>
+                <div class="out_ container_output">
         """ %(noa)
         #table 2
         t2data_all=[]
@@ -401,43 +403,49 @@ def table_2(noa, rate_out, day_out):
         t2data = dict([(k,[t2data_ind[k][0] for t2data_ind in t2data_all]) for k in t2data_temp])
         t2rows = gethtmlrowsfromcols(t2data,pvaheadings)
         html = html + tmpl.render(Context(dict(data=t2rows, headings=pvaheadings)))
+        html = html + """
+                </div>
+        """
         return html
 
 def table_3(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s, bw_assessed_bird_m, bw_assessed_bird_l, Species_tested_bird, bw_tested_bird, mineau_scaling_factor):
         #pre-table 3
         html = """
-            <div class="out_3">
-              <H4>Toxicity Properties (Avian)</H4>
-            </div>
+            <H4 class="out_3 collapsible" id="section4"><span></span>Toxicity Properties (Avian)</H4>
+                <div class="out_ container_output">
         """
         #table 3
         t3data = gett3data(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s, bw_assessed_bird_m, 
             bw_assessed_bird_l, Species_tested_bird, bw_tested_bird, mineau_scaling_factor)
         t3rows = gethtmlrowsfromcols(t3data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t3rows, headings=pvuheadings)))
+        html = html + """
+                </div>
+        """
         return html
 
 def table_4(mammalian_ld50, mammalian_lc50, mammalian_NOAEC, mammalian_NOAEL, bw_assessed_mamm_s, bw_assessed_mamm_m, bw_assessed_mamm_l, bw_tested_mamm):
         #pre-table 4
         html = """
-            <div class="out_4">
-              <H4>Toxicity Properties (Mammal)</H4>
-            </div>
+            <H4 class="out_5 collapsible" id="section5"><span></span>Toxicity Properties (Mammal)</H4>              <div class="out_ container_output">
         """
         #table 4
         t4data = gett4data(mammalian_ld50, mammalian_lc50, mammalian_NOAEC, mammalian_NOAEL, bw_assessed_mamm_s, bw_assessed_mamm_m, 
               bw_assessed_mamm_l, bw_tested_mamm)
         t4rows = gethtmlrowsfromcols(t4data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t4rows, headings=pvuheadings)))
+        html = html + """
+                </div>
+        </div>
+        """
         return html
 
 def table_5(Application_type, a_r_p, a_i, den, ld50_bird, aw_bird_sm, tw_bird, x, m_s_r_p, NOAEC_bird, ld50_mamm, aw_mamm_sm, tw_mamm, NOAEL_mamm, aw_bird_md, aw_mamm_md, aw_bird_lg,  aw_mamm_lg):
         #pre-table 5
         html = """
-            <div class="out_5">
-              <H3>Results</H3>
-              <H3>Application Type : %s<H3>
-            </div>
+        <H3 class="out_5 collapsible" id="section6"><span></span>Results</H3>
+        <div>
+        <H3 class="out_">Application Type : %s</H3>
         """%(Application_type)
         #table 5
         sa_bird_1_s=trex2_model.sa_bird_1(a_r_p, a_i, den, trex2_model.at_bird,trex2_model.fi_bird, ld50_bird, aw_bird_sm, tw_bird, x) 

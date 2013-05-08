@@ -75,7 +75,7 @@ def table_all():
 def table_1(LC50,threshold,dose_response):
     #pre-table 1
         html = """
-        <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs</H3>
+        <H4 class="out_1 collapsible" id="section1"><span></span>User Inputs</H4>
             <div class="out_ container_output">
         """
     #table 1
@@ -90,7 +90,7 @@ def table_1(LC50,threshold,dose_response):
 def table_2(dose_response, LC50, threshold):
     #pre-table 1
         html = """
-        <H3 class="out_2 collapsible" id="section2"><span></span>Model Output</H3>
+        <H4 class="out_2 collapsible" id="section2"><span></span>Model Output</H4>
             <div class="out_ container_output">
         """
         z_score_f=iec_model.z_score_f(dose_response, LC50, threshold)

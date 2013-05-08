@@ -549,10 +549,10 @@ class terrplant:
                 raise ValueError\
                 ('ndsRQdry_results variable equals None and therefor this function cannot be run.')
             if self.ndsRQdry_results >= 1.0:
-                self.LOCndsdry_results ('The risk quotient for non-listed monocot seedlings exposed to'\
+                self.LOCndsdry_results = ('The risk quotient for non-listed monocot seedlings exposed to'\
             ' the pesticide via runoff to dry areas indicates a potential risk.')
             else:
-                self.LOCndsdry_results ('The risk quotient for non-listed monocot seedlings exposed to the'\
+                self.LOCndsdry_results = ('The risk quotient for non-listed monocot seedlings exposed to the'\
             ' pesticide via runoff to dry areas indicates that potential risk is minimal.')
         return self.LOCndsdry_results
 

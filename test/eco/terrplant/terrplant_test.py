@@ -5,7 +5,7 @@ import sys
 import traceback
 sys.path.append("utils")
 sys.path.append("./")
-from terrplant import terrplant as terrplant_data
+from terrplant import terrplant_model
 from CSVTestParamsLoader import CSVTestParamsLoader
 
 logger = logging.getLogger("TerrPlantTest")
@@ -29,7 +29,7 @@ def get_terrplant_data(numiter):
     lms =  params_matrix.get('lms')[numiter]
     nds =  params_matrix.get('nds')[numiter]
     lds =  params_matrix.get('D')[numiter]
-    terrplant = terrplant_data.terrplant(A,I,R,D,nms,lms,nds,lds)
+    terr = terrplant_model.terrplant(True,False,A,I,R,D,nms,lms,nds,lds)
     terrplant_expected_results = {}
     terrplant_expected_results['rundry_out'] = params_matrix.get('rundry_out')[numiter]
     terrplant_expected_results['runsemi_out'] = params_matrix.get('runsemi_out')[numiter]
@@ -61,7 +61,7 @@ def get_terrplant_data(numiter):
     terrplant_expected_results['LOCldssemi_out'] = params_matrix.get('LOCldssemi_out')[numiter]
     terrplant_expected_results['ldsRQspray_out'] = params_matrix.get('ldsRQspray_out')[numiter]
     terrplant_expected_results['LOCldsspray_out'] = params_matrix.get('LOCldsspray_out')[numiter]
-    return (terrplant,terrplant_expected_results)
+    return (terr,terrplant_expected_results)
 
 def testRundry(numiter):
     terrplant_data = get_terrplant_data(numiter)

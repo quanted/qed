@@ -4,7 +4,7 @@ import sys
 sys.path.append("utils")
 import json_utils
 sys.path.append("./terrplant")
-from terrplant import terrplant as terrplant_data
+from terrplant import terrplant_model
 
 class TerrPlantBatchRunner():
     
@@ -36,22 +36,22 @@ class TerrPlantBatchRunner():
         lds = None
         if 'NOAEC_for_listed_vegetative_vigor_dicot' in config_properties:
             lds = config_properties['NOAEC_for_listed_vegetative_vigor_dicot']
-        terrplant = terrplant_data.terrplant(A,I,R,D,nms,lms,nds,lds)
-        results_dict['EEC-dry'] = terrplant.rundry()
-        results_dict['EEC-semi-aquatic'] = terrplant.runsemi()
-        results_dict['EEC-spray-drift'] = terrplant.spray()
-        results_dict['EEC-total-dry'] = terrplant.totaldry()
-        results_dict['EEC-total-semi-aquatic'] = terrplant.totalsemi()
-        results_dict['nmsRQdry'] = terrplant.nmsRQdry()
-        results_dict['nmsRQsemi'] = terrplant.nmsRQsemi()
-        results_dict['nmsRQspray'] = terrplant.nmsRQspray()
-        results_dict['lmsRQdry'] = terrplant.lmsRQdry()
-        results_dict['lmsRQsemi'] = terrplant.lmsRQsemi()
-        results_dict['lmsRQspray'] = terrplant.lmsRQspray()
-        results_dict['ndsRQdry'] = terrplant.ndsRQdry()
-        results_dict['ndsRQsemi'] = terrplant.ndsRQsemi()
-        results_dict['ndsRQspray'] = terrplant.ndsRQspray()
-        results_dict['ldsRQdry'] = terrplant.ldsRQdry()
-        results_dict['ldsRQsemi'] = terrplant.ldsRQsemi()
-        results_dict['ldsRQspray'] = terrplant.ldsRQspray()            
+        terr = terrplant_model.terrplant(True,True,A,I,R,D,nms,lms,nds,lds)
+        results_dict['EEC-dry'] = terr.rundry_result
+        results_dict['EEC-semi-aquatic'] = terr.runsemi_result
+        results_dict['EEC-spray-drift'] = terr.spray_result
+        results_dict['EEC-total-dry'] = terr.totaldry_result
+        results_dict['EEC-total-semi-aquatic'] = terr.totalsemi_result
+        results_dict['nmsRQdry'] = terr.nmsRQdry_result
+        results_dict['nmsRQsemi'] = terr.nmsRQsemi_result
+        results_dict['nmsRQspray'] = terr.nmsRQspray_result
+        results_dict['lmsRQdry'] = terr.lmsRQdry_result
+        results_dict['lmsRQsemi'] = terr.lmsRQsemi_result
+        results_dict['lmsRQspray'] = terr.lmsRQspray_result
+        results_dict['ndsRQdry'] = terr.ndsRQdry_result
+        results_dict['ndsRQsemi'] = terr.ndsRQsemi_result
+        results_dict['ndsRQspray'] = terr.ndsRQspray_result
+        results_dict['ldsRQdry'] = terr.ldsRQdry_result
+        results_dict['ldsRQsemi'] = terr.ldsRQsemi_result
+        results_dict['ldsRQspray'] = terr.ldsRQspray_result 
         return results_dict

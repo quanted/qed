@@ -15,7 +15,7 @@ import sys
 sys.path.append("../utils")
 import utils.json_utils
 sys.path.append("../terrplant")
-from terrplant import terrplant as terrplant_data
+from terrplant import terrplant_model
 
 class terrplantExecutePage(webapp.RequestHandler):
     def post(self):
@@ -29,28 +29,28 @@ class terrplantExecutePage(webapp.RequestHandler):
         nds = form.getvalue('EC25_for_nonlisted_seedling_emergence_dicot')
         lms = form.getvalue('NOAEC_for_listed_seedling_emergence_monocot')
         lds = form.getvalue('NOAEC_for_listed_seedling_emergence_dicot')
-        terrplant = terrplant_data.terrplant(A,I,R,D,nms,lms,nds,lds)
+        terr = terrplant_model.terrplant(True,True,A,I,R,D,nms,lms,nds,lds)
         #fill out terrplant object with yet to be used data
         chemical_name = form.getvalue('chemical_name')
-        terrplant.chemical_name = chemical_name
+        terr.chemical_name = chemical_name
         pc_code = form.getvalue('pc_code')
-        terrplant.pc_code = pc_code
+        terr.pc_code = pc_code
         use = form.getvalue('use')
-        terrplant.use = use
+        terr.use = use
         application_method = form.getvalue('application_method')
-        terrplant.application_method = application_method
+        terr.application_method = application_method
         application_form = form.getvalue('application_form')
-        terrplant.application_form = application_form
+        terr.application_form = application_form
         solubility = form.getvalue('solubility')
-        terrplant.solubility = solubility
+        terr.solubility = solubility
         nmv = form.getvalue('EC25_for_nonlisted_vegetative_vigor_monocot')
-        terrplant.nmv = nmv
+        terr.nmv = nmv
         ndv = form.getvalue('EC25_for_nonlisted_vegetative_vigor_dicot')
-        terrplant.ndv = ndv
+        terr.ndv = ndv
         lmv = form.getvalue('NOAEC_for_listed_vegetative_vigor_monocot')
-        terrplant.lmv = lmv
+        terr.lmv = lmv
         ldv = form.getvalue('NOAEC_for_listed_vegetative_vigor_dicot')
-        terrplant.ldv = ldv
+        terr.ldv = ldv
 
         text_file = open('terrplant/terrplant_description.txt','r')
         x = text_file.read()
@@ -216,22 +216,22 @@ class terrplantExecutePage(webapp.RequestHandler):
             <tr>
                 <td colspan="5">* If RQ > 1.0, the Level of Concern is exceeded, resulting in potential risk to that plant group.<td>
         </table>
-        """ % (chemical_name, pc_code, use, application_method, application_form, solubility,
-                I, A, D, R, 
-                terrplant.rundry(), terrplant.runsemi(), terrplant.spray(), terrplant.totaldry(), terrplant.totalsemi(),
-                nms, lms, nmv, lmv, nds, lds, ndv, ldv,
-                terrplant.nmsRQdry(), 
-                terrplant.nmsRQsemi(), 
-                terrplant.nmsRQspray(), 
-                terrplant.lmsRQdry(), 
-                terrplant.lmsRQsemi(), 
-                terrplant.lmsRQspray(),
-                terrplant.ndsRQdry(), 
-                terrplant.ndsRQsemi(), 
-                terrplant.ndsRQspray(), 
-                terrplant.ldsRQdry(), 
-                terrplant.ldsRQsemi(), 
-                terrplant.ldsRQspray())
+        """ % (terr.chemical_name, terr.pc_code, terr.use, terr.application_method, terr.application_form, terr.solubility,
+                terr.I, terr.A, terr.D, terr.R, 
+                terr.rundry_results, terr.runsemi_results, terr.spray_results, terr.totaldry_results, terr.totalsemi_results,
+                terr.nms, terr.lms, terr.nmv, terr.lmv, terr.nds, terr.lds, terr.ndv, terr.ldv,
+                terr.nmsRQdry_results, 
+                terr.nmsRQsemi_results, 
+                terr.nmsRQspray_results, 
+                terr.lmsRQdry_results, 
+                terr.lmsRQsemi_results, 
+                terr.lmsRQspray_results,
+                terr.ndsRQdry_results, 
+                terr.ndsRQsemi_results, 
+                terr.ndsRQspray_results, 
+                terr.ldsRQdry_results, 
+                terr.ldsRQsemi_results, 
+                terr.ldsRQspray_results)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

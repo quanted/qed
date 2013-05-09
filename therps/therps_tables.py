@@ -453,50 +453,59 @@ def table_sum_7(bw_herp_a_sm_out, bw_herp_a_md_out, bw_herp_a_lg_out, LD50_AD_sm
 def table_1(chemical_name, Use, Formulated_product_name, percent_ai, Foliar_dissipation_half_life, number_of_applications, interval_between_applications, application_rate):
         #pre-table 1
         html = """
-            <div class="out_1">
-              <H3>User Inputs: </H3>
-              <H4>Chemical Properties</H4>
-            </div>
+        <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs:</H3>
+        <div class="out_">
+            <H4 class="out_1 collapsible" id="section2"><span></span>Chemical Properties</H4>
+                <div class="out_ container_output">
         """
         #table 1
         t1data = gett1data(chemical_name, Use, Formulated_product_name, percent_ai, Foliar_dissipation_half_life, number_of_applications, interval_between_applications, application_rate)
         t1rows = gethtmlrowsfromcols(t1data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
+        html = html + """
+                </div>
+        """
         return html
 
 def table_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, Species_of_the_tested_bird, body_weight_of_the_tested_bird, mineau_scaling_factor):
         #pre-table 2
         html = """
-            <div class="out_2">
-              <H4>Toxicity Properties</H4>
-            </div>
+            <H4 class="out_2 collapsible" id="section3"><span></span>Toxicity Properties</H4>
+                <div class="out_ container_output">
         """
         #table 2
         t2data = gett2data(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, Species_of_the_tested_bird, body_weight_of_the_tested_bird, mineau_scaling_factor)
         t2rows = gethtmlrowsfromcols(t2data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t2rows, headings=pvuheadings)))
+        html = html + """
+                </div>
+        """
         return html
 
 def table_3(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md, wp_herp_a_lg, c_mamm_a, c_herp_a):
         #pre-table 3
         html = """
-            <div class="out_3">
-              <H4>Assessed Species Inputs</H4>
-            </div>
+            <H4 class="out_3 collapsible" id="section4"><span></span>Assessed Species Inputs</H4>
+                <div class="out_ container_output">
         """
         #table 3
         t3data = gett3data(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md, wp_herp_a_lg, c_mamm_a, c_herp_a)
         t3rows = gethtmlrowsfromcols(t3data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t3rows, headings=pvuheadings)))
+        html = html + """
+                </div>
+        </div>
+        """
         return html
 
 def table_5(lc50_bird, n_a, i_a, a_r, a_i, h_l, c_mamm_a, c_herp_a, wp_herp_a_sm):
         #pre-table 5
         html = """
-            <div class="out_5">
-              <H3>Results</H3>
-              <H4>Upper Bound Kenaga, Subacute Terrestrial Herpetofauna Dietary Based Risk Quotients<H4>
-            </div>
+        <br>
+        <H3 class="out_5 collapsible" id="section5"><span></span>Results</H3>
+        <div class="out_">
+            <H4 class="out_5 collapsible" id="section6"><span></span>Upper Bound Kenaga, Subacute Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
+                <div class="out_ container_output">
         """
         #table 5
         EEC_diet_herp_BL=therps_model.EEC_diet(therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l)
@@ -513,15 +522,17 @@ def table_5(lc50_bird, n_a, i_a, a_r, a_i, h_l, c_mamm_a, c_herp_a, wp_herp_a_sm
         t5data = gett5data(lc50_bird, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_FR, EEC_ARQ_herp_FR, EEC_diet_herp_HM, EEC_ARQ_herp_HM, EEC_diet_herp_IM, EEC_ARQ_herp_IM, EEC_diet_herp_TP, EEC_ARQ_herp_TP)
         t5rows = gethtmlrowsfromcols(t5data,pv5headings[1])       
         html = html + tmpl_5.render(Context(dict(data=t5rows, l_headings=pv5headings[0][0])))
+        html = html + """
+                </div>
+        """
         return {'html':html, 'EEC_diet_herp_BL':EEC_diet_herp_BL, 'EEC_ARQ_herp_BL':EEC_ARQ_herp_BL, 'EEC_diet_herp_FR':EEC_diet_herp_FR, 'EEC_ARQ_herp_FR':EEC_ARQ_herp_FR, 
                 'EEC_diet_herp_HM':EEC_diet_herp_HM, 'EEC_ARQ_herp_HM':EEC_ARQ_herp_HM, 'EEC_diet_herp_IM':EEC_diet_herp_IM, 'EEC_ARQ_herp_IM':EEC_ARQ_herp_IM, 'EEC_diet_herp_TP':EEC_diet_herp_TP, 'EEC_ARQ_herp_TP':EEC_ARQ_herp_TP}
 
 def table_6(NOAEC_bird, n_a, i_a, a_r, a_i, h_l, c_mamm_a, c_herp_a, wp_herp_a_sm):
         #pre-table 6
         html = """
-            <div class="out_6">
-              <H4>Upper Bound Kenaga, Chronic Terrestrial Herpetofauna Dietary Based Risk Quotients<H4>
-            </div>
+            <H4 class="out_6 collapsible" id="section7"><span></span>Upper Bound Kenaga, Chronic Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
+                <div class="out_ container_output">
         """
         #table 6
         EEC_diet_herp_BL=therps_model.EEC_diet(therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l)
@@ -538,15 +549,17 @@ def table_6(NOAEC_bird, n_a, i_a, a_r, a_i, h_l, c_mamm_a, c_herp_a, wp_herp_a_s
         t6data = gett6data(NOAEC_bird, EEC_diet_herp_BL, EEC_CRQ_herp_BL, EEC_diet_herp_FR, EEC_CRQ_herp_FR, EEC_diet_herp_HM, EEC_CRQ_herp_HM, EEC_diet_herp_IM, EEC_CRQ_herp_IM, EEC_diet_herp_TP, EEC_CRQ_herp_TP)
         t6rows = gethtmlrowsfromcols(t6data,pv6headings[1])       
         html = html + tmpl_5.render(Context(dict(data=t6rows, l_headings=pv6headings[0][0])))
+        html = html + """
+                </div>
+        """
         return {'html':html, 'EEC_diet_herp_BL':EEC_diet_herp_BL, 'EEC_CRQ_herp_BL':EEC_CRQ_herp_BL, 'EEC_diet_herp_FR':EEC_diet_herp_FR, 'EEC_CRQ_herp_FR':EEC_CRQ_herp_FR, 
                 'EEC_diet_herp_HM':EEC_diet_herp_HM, 'EEC_CRQ_herp_HM':EEC_CRQ_herp_HM, 'EEC_diet_herp_IM':EEC_diet_herp_IM, 'EEC_CRQ_herp_IM':EEC_CRQ_herp_IM, 'EEC_diet_herp_TP':EEC_diet_herp_TP, 'EEC_CRQ_herp_TP':EEC_CRQ_herp_TP}
 
 def table_7(ld50_bird, tw_bird, x, n_a, i_a, a_r, a_i, h_l, c_mamm_a, c_herp_a, bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md, wp_herp_a_lg):
         #pre-table 7
         html = """
-            <div class="out_7">
-              <H4>Upper Bound Kenaga, Acute Terrestrial Herpetofauna Dose-Based Risk Quotients<H4>
-            </div>
+            <H4 class="out_7 collapsible" id="section8"><span></span>Upper Bound Kenaga, Acute Terrestrial Herpetofauna Dose-Based Risk Quotients</H4>
+                <div class="out_ container_output">
         """
         #table 7
         LD50_AD_sm=therps_model.at_bird(ld50_bird, bw_herp_a_sm, tw_bird, x)
@@ -591,6 +604,10 @@ def table_7(ld50_bird, tw_bird, x, n_a, i_a, a_r, a_i, h_l, c_mamm_a, c_herp_a, 
 
         t7rows = gethtmlrowsfromcols(t7data, pv7headings[1])       
         html = html + tmpl_5.render(Context(dict(data=t7rows, l_headings=[pv7headings[0][0][0], pv7headings[0][0][1]])))
+        html = html + """
+                </div>
+        </div>
+        """
         return {'html':html, 'LD50_AD_sm': LD50_AD_sm, 'LD50_AD_md': LD50_AD_md, 'LD50_AD_lg': LD50_AD_lg, 
                 'EEC_dose_BP_sm': EEC_dose_BP_sm, 'EEC_dose_BP_md': EEC_dose_BP_md, 'EEC_dose_BP_lg': EEC_dose_BP_lg, 
                 'ARQ_dose_BP_sm': ARQ_dose_BP_sm, 'ARQ_dose_BP_md': ARQ_dose_BP_md, 'ARQ_dose_BP_lg': ARQ_dose_BP_lg, 

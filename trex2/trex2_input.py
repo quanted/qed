@@ -26,12 +26,16 @@ class trexInputPage(webapp.RequestHandler):
                 'model':'trex2', 
                 'model_attributes':'TREX 1.5.1 Inputs'})
         html = html + """<a href="trex_input.html" class="TREX1"> Want to Use TREX 1.4.1?</a>"""
-        html = html + """<table><H4  align="center" id="id_tab">
-            |<a class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </a>|
-             <a class="Avian" style="font-weight:bold"> Avian </a>|
-             <a class="Mammal" style="font-weight:bold"> Mammal </a>|
-            </H4>"""
-        html = html + """</table><br><table class="tab tab_Chemical" border="0">"""
+        html = html + """
+        <div id="input_nav">
+            <ul>
+                <li>| <a class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </a></li>
+                <li>| <a class="Avian" style="font-weight:bold"> Avian </a></li>
+                <li>| <a class="Mammal" style="font-weight:bold"> Mammal </a>|</li>
+            </ul>
+        </div>
+        """
+        html = html + """<br><table class="tab tab_Chemical" border="0">"""
         html = html + str(trex2_parameters.trexInp_chem())
         html = html + """</table><table class="tab tab_Application tab_Chemical" border="0">
                                     <tr><th colspan="2" scope="col"><label for="id_noa">Number of Applications:</label></th>

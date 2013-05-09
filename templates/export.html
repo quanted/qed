@@ -24,8 +24,10 @@ $(document).ready(function () {
         }
 	});
 
-var jq_html = $('<div />').append($("div.articles_output").children('table[class*=out_], div[class*=out_]:not(div#chart1,table:hidden)').clone()).html();
-var n_plot=$('div[id^="chart"]').size();
+var jq_html = $('<div />').append($("div.articles_output").children('table[class*=out_], div[class*=out_], H3[class*=out_], H4[class*=out_]:not(div#chart1,table:hidden)').clone()).html();
+var n_plot = $('div[id^="chart"]').size();
+
+// console.log(jq_html);
 
 i=1;
 var imgData = [];

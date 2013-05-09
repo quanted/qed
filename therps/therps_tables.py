@@ -454,7 +454,7 @@ def table_1(chemical_name, Use, Formulated_product_name, percent_ai, Foliar_diss
         #pre-table 1
         html = """
         <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs:</H3>
-        <div>
+        <div class="out_">
             <H4 class="out_1 collapsible" id="section2"><span></span>Chemical Properties</H4>
                 <div class="out_ container_output">
         """
@@ -501,8 +501,9 @@ def table_3(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md
 def table_5(lc50_bird, n_a, i_a, a_r, a_i, h_l, c_mamm_a, c_herp_a, wp_herp_a_sm):
         #pre-table 5
         html = """
+        <br>
         <H3 class="out_5 collapsible" id="section5"><span></span>Results</H3>
-        <div>
+        <div class="out_">
             <H4 class="out_5 collapsible" id="section6"><span></span>Upper Bound Kenaga, Subacute Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
                 <div class="out_ container_output">
         """

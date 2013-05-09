@@ -255,7 +255,7 @@ def table_1(pvuheadings, tmpl, chemical_name, label_epa_reg_no, ar_lb, frac_pest
         #pre-table 1
         html = """
         <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs: Chemical Identity</H3>
-        <div>
+        <div class="out_">
             <H4 class="out_1 collapsible" id="section2"><span></span>Application and Chemical Information</H4>
                 <div class="out_ container_output">
         """
@@ -291,7 +291,7 @@ def table_3(pvuheadings, tmpl, ar_lb, frac_pest_surface):
         html = """
         <br>
         <H3 class="out_3 collapsible" id="section4"><span></span>Exposure Estimates</H3>
-        <div>
+        <div class="out_">
             <H4 class="out_3 collapsible" id="section5"><span></span>Granular Application</H4>
                 <div class="out_ container_output">
         """
@@ -350,7 +350,7 @@ def table_6(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, te
         html = """        
         <br>
         <H3 class="out_6 collapsible" id="section7"><span></span>Ratio of Exposure to Toxicity</H3>
-        <div>
+        <div class="out_">
             <H4 class="out_6 collapsible" id="section8"><span></span>Granular</H4>
                 <div class="out_ container_output">
         """

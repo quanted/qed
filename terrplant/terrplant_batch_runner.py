@@ -26,7 +26,7 @@ class TerrPlantBatchRunner():
             D = config_properties['spray_drift']
         nms = None
         if 'EC25_for_nonlisted_seedling_emergence_monocot' in config_properties:
-            nms = config_properties['NOAEC_for_listed_seedling_emergence_monocot']
+            nms = config_properties['EC25_for_nonlisted_seedling_emergence_monocot']
         lms = None
         if 'NOAEC_for_listed_seedling_emergence_monocot' in config_properties:
             lms = config_properties['NOAEC_for_listed_seedling_emergence_monocot']

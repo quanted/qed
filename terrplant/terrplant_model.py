@@ -58,6 +58,35 @@ class terrplant:
             if run_methods:
                 self.run_methods()
 
+    def __str__(self):
+        string_rep = ''
+        string_rep = string_rep + "I = %.2e" % self.I
+        string_rep = string_rep + "A = %.2e" % self.A
+        string_rep = string_rep + "D = %.2e" % self.D
+        string_rep = string_rep + "R = %.2e" % self.R
+        string_rep = string_rep + "nms = %.2e" % self.nms
+        string_rep = string_rep + "nds = %.2e" % self.nds
+        string_rep = string_rep + "lms = %.2e" % self.lms
+        string_rep = string_rep + "lds = %.2e" % self.lds
+        string_rep = string_rep + "rundry_results = %.2e" % self.rundry_results
+        string_rep = string_rep + "runsemi_results = %.2e" % self.runsemi_results
+        string_rep = string_rep + "totaldry_results = %.2e" % self.totaldry_results
+        string_rep = string_rep + "totalsemi_results = %.2e" % self.totalsemi_results
+        string_rep = string_rep + "spray_results = %.2e" % self.spray_results
+        string_rep = string_rep + "nmsRQdry_results = %.2e" % self.nmsRQdry_results
+        string_rep = string_rep + "nmsRQsemi_results = %.2e" % self.nmsRQsemi_results
+        string_rep = string_rep + "nmsRQspray_results = %.2e" % self.nmsRQspray_results
+        string_rep = string_rep + "lmsRQdry_results = %.2e" % self.lmsRQdry_results
+        string_rep = string_rep + "lmsRQsemi_results = %.2e" % self.lmsRQsemi_results
+        string_rep = string_rep + "lmsRQspray_results = %.2e" % self.lmsRQspray_results
+        string_rep = string_rep + "ndsRQdry_results = %.2e" % self.ndsRQdry_results
+        string_rep = string_rep + "ndsRQsemi_results = %.2e" % self.ndsRQsemi_results
+        string_rep = string_rep + "ndsRQspray_results = %.2e" % self.ndsRQspray_results
+        string_rep = string_rep + "ldsRQdry_results = %.2e" % self.ldsRQdry_results
+        string_rep = string_rep + "ldsRQsemi_results = %.2e" % self.ldsRQsemi_results
+        string_rep = string_rep + "ldsRQspray_results = %.2e" % self.ldsRQspray_results
+        return string_rep
+
     def set_variables(self,A,I,R,D,nms,lms,nds,lds):
         self.A = A
         self.I = I

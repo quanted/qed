@@ -557,7 +557,7 @@ def loop_html(thefile):
                     <td>-</td>
                 </tr>""" %(numpy.mean(ndsRQspray_out), numpy.std(ndsRQspray_out), numpy.min(ndsRQspray_out), numpy.max(ndsRQspray_out)) 
     sum_output_ldsRQdry="""<tr>
-                    <td>Risk Quotient for listed dicot seedlings exposed to Pesticide X in DdryRY areas</td>
+                    <td>Risk Quotient for listed dicot seedlings exposed to Pesticide X in dry areas</td>
                     <td>%5.2f</td>
                     <td>%5.2f</td> 
                     <td>%5.2f</td>

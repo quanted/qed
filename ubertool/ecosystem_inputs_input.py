@@ -27,7 +27,6 @@ class EcoInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start.html', {'model':'ecosystem_inputs'})
         html = html + str(ecosystem_inputs_db.EcoInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

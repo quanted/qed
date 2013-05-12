@@ -32,8 +32,6 @@ class UseInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start.html', {'model':'use'})
         html = html + str(use_db.UseInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
-        #html = html + template.render(templatepath + '05ubertext_links_rightchance.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

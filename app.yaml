@@ -255,6 +255,11 @@ handlers:
   script: CAS/cas.py
   login: required
 
+#cas service
+- url: /cas-all/json
+  script: CAS/cas.py
+  login: required
+
 #batch service
 - url: /batch
   script: batch/batch_processor.py

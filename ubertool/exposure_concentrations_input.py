@@ -27,6 +27,7 @@ class ECInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start.html', {'model':'exposure_concentrations'})
         html = html + str(exposure_concentrations_db.ECInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'submit'})
+        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

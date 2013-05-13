@@ -29,6 +29,7 @@ class UserInputPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '04user_assessment_history.html', {})  
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + 'user_jquery.html', {'ubertool_server':ubertool_batch_server})
+        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

@@ -27,6 +27,7 @@ class UbertoolInputPage(webapp.RequestHandler):
         #html = html + str(run_ubertool_db.RunUbertoolInp())
         #html = html + template.render(templatepath + '04ubertext_checkbox.html', {})
         html = html + template.render(templatepath + '04ubertoolinput_end.html', {'sub_title': 'Submit Batch'})
+        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

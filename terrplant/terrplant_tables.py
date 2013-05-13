@@ -277,7 +277,7 @@ def table_3(deheadings, tmpl, terrplant_obj):
 def table_4(plantec25noaecheadings, tmpl, terrplant_obj):
         #pre-table 4
         html = """     
-            <H4 class="out_4 collapsible" id="section5"><span></span>Foliar Spray Application (contact with foliar residues and directly applied spray)</H4>
+            <H4 class="out_4 collapsible" id="section6"><span></span>Foliar Spray Application (contact with foliar residues and directly applied spray)</H4>
                 <div class="out_ container_output">
         """
         #table 4
@@ -292,7 +292,7 @@ def table_4(plantec25noaecheadings, tmpl, terrplant_obj):
 def table_5(plantecdrysemisprayheadings, tmpl, terrplant_obj):
         #pre-table 5
         html = """         
-            <H4 class="out_5 collapsible" id="section6"><span></span>Bare Ground Spray Application (contact with soil residues and directly applied spray)</H4>
+            <H4 class="out_5 collapsible" id="section7"><span></span>Bare Ground Spray Application (contact with soil residues and directly applied spray)</H4>
                 <div class="out_ container_output">
         """
         #table 5

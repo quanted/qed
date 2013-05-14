@@ -20,7 +20,7 @@ import logging
 
 class UseInputPage(webapp.RequestHandler):
     def get(self):
-        cas_service_url = os.environ['CAS_SERVER']
+        cas_service_url = os.environ['UBERTOOL_MONGO_SERVER']
         logger = logging.getLogger(__name__)
         cookies = self.request.cookies
         #logger.info(cookies)

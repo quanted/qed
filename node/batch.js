@@ -2,6 +2,7 @@ var restify = require('restify');
 var rabbitmq = require('./rabbitmq.js');
 var mongodb = require('./mongodb.js');
 var cas = require('./cas_mongo.js');
+var ubertool = require('./ubertool.js');
 var flow = require('nimble');
 
 function sayHello(req, res, next) {
@@ -35,8 +36,9 @@ function getBatchResults(req, res, next)
     return next();
 }
 
-
 var server = restify.createServer();
+
+//Batch REST Services
 server.get('/batch_configs', function(req, res, next){
     mongodb.getBatchNames(function(error, batch_ids){
         res.header("Access-Control-Allow-Origin", "*");
@@ -55,6 +57,7 @@ server.get('/batch_results/:batchId', function(req, res, next){
     });
 });
 
+//CAS Services
 server.get('/cas/:cas_num', function(req, res, next){
     var cas_number = req.params.cas_num;
     console.log("Cas Number: " + cas_number);
@@ -70,6 +73,25 @@ server.get('/all-cas', function(req, res, next){
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.send(all_cas);
+    });
+});
+
+//Ubertool Services
+server.get('/aqua/config_names', function(req, res, next){
+    ubertool.getAllAquaConfigNames(function(error,config_names){
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.send(config_names);
+    });
+});
+
+server.get('/aqua/:aqua_config', function(req, res, next){
+    var aqua_config = req.params.aqua_config;
+    console.log("Aquatic Toxicity Configuration Name: " + aqua_config);
+    ubertool.getAquaConfigData(aqua_config, function(error,aqua_config_data){
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.send(aqua_config_data);
     });
 });
 

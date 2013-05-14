@@ -75,22 +75,23 @@ def table_all():
 def table_1(LC50,threshold,dose_response):
     #pre-table 1
         html = """
-            <div class="out_1">
-                <H3>User Inputs</H3>
-            </div>
+        <H4 class="out_1 collapsible" id="section1"><span></span>User Inputs</H4>
+            <div class="out_ container_output">
         """
     #table 1
         t1data = gett1data(LC50,threshold,dose_response)
         t1rows = gethtmlrowsfromcols(t1data,ivheadings)
         html = html + tmpl.render(Context(dict(data=t1rows, headings=ivheadings)))
+        html = html + """
+            </div>
+        """
         return html
 
 def table_2(dose_response, LC50, threshold):
     #pre-table 1
         html = """
-            <div class="out_2">
-                <H3>Model Output</H3>
-            </div>
+        <H4 class="out_2 collapsible" id="section2"><span></span>Model Output</H4>
+            <div class="out_ container_output">
         """
         z_score_f=iec_model.z_score_f(dose_response, LC50, threshold)
         F8_f=iec_model.F8_f(dose_response, LC50, threshold)
@@ -100,4 +101,7 @@ def table_2(dose_response, LC50, threshold):
         t2data = gett2data(z_score_f,F8_f,chance_f)
         t2rows = gethtmlrowsfromcols(t2data,ovheadings)
         html = html + tmpl.render(Context(dict(data=t2rows, headings=ovheadings)))
+        html = html + """
+            </div>
+        """
         return html

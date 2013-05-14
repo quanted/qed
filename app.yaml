@@ -1,5 +1,5 @@
 application: pypest
-version: sprint5
+version: jon
 runtime: python27
 api_version: 1
 
@@ -162,9 +162,10 @@ handlers:
 
 #USER pages
 - url: /user.html
-  script: user/user_input.py   
+  script: user/user_input.py 
   login: required
-
+  secure: always
+  
 - url: /user_output.html
   script: user/user_output.py
   login: required
@@ -251,6 +252,11 @@ handlers:
 
 #cas service
 - url: /cas/(.*)
+  script: CAS/cas.py
+  login: required
+
+#cas service
+- url: /cas-all/json
   script: CAS/cas.py
   login: required
 

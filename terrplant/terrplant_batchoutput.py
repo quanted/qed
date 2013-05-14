@@ -12,7 +12,9 @@ cgitb.enable()
 import unittest
 from StringIO import StringIO
 import cStringIO
-import logging 
+import logging
+import sys
+sys.path.append("../terrplant")
 from terrplant import terrplant_model
 import csv
 import numpy
@@ -76,64 +78,64 @@ def html_table(row_inp,iter):
     nds.append(nds_temp)
     lds_temp=float(row_inp[7])
     lds.append(lds_temp)
-
-    rundry_temp=terrplant_model.rundry(A_temp,I_temp,R_temp)
+    terr = terrplant_model.terrplant(True,True,A_temp,I_temp,R_temp,D_temp,nms_temp,lms_temp,nds_temp,lds_temp)
+    rundry_temp=terr.rundry_results
     rundry_out.append(rundry_temp)
-    runsemi_temp=terrplant_model.runsemi(A_temp,I_temp,R_temp)
+    runsemi_temp=terr.runsemi_results
     runsemi_out.append(runsemi_temp)
-    spray_temp=terrplant_model.spray(A_temp,D_temp)
+    spray_temp=terr.spray_results
     spray_out.append(spray_temp)
-    totaldry_temp=terrplant_model.totaldry(rundry_temp,spray_temp)
+    totaldry_temp=terr.totaldry_results
     totaldry_out.append(totaldry_temp)
-    totalsemi_temp=terrplant_model.totalsemi(runsemi_temp,spray_temp)
+    totalsemi_temp=terr.totalsemi_results
     totalsemi_out.append(totalsemi_temp)
-    nmsRQdry_temp=terrplant_model.nmsRQdry(totaldry_temp,nms_temp)
+    nmsRQdry_temp=terr.nmsRQdry_results
     nmsRQdry_out.append(nmsRQdry_temp)
-    LOCnmsdry_temp=terrplant_model.LOCnmsdry(nmsRQdry_temp)
+    LOCnmsdry_temp=terr.LOCnmsdry_results
     LOCnmsdry_out.append(LOCnmsdry_temp)
-    nmsRQsemi_temp=terrplant_model.nmsRQsemi(totalsemi_temp,nms_temp)
+    nmsRQsemi_temp=terr.nmsRQsemi_results
     nmsRQsemi_out.append(nmsRQsemi_temp)
-    LOCnmssemi_temp=terrplant_model.LOCnmssemi(nmsRQsemi_temp)
+    LOCnmssemi_temp=terr.LOCnmssemi_results
     LOCnmssemi_out.append(LOCnmssemi_temp)
-    nmsRQspray_temp=terrplant_model.nmsRQspray(spray_temp,nms_temp)
+    nmsRQspray_temp=terr.nmsRQspray_results
     nmsRQspray_out.append(nmsRQspray_temp)
-    LOCnmsspray_temp=terrplant_model.LOCnmsspray(nmsRQspray_temp)
+    LOCnmsspray_temp=terr.LOCnmsspray_results
     LOCnmsspray_out.append(LOCnmsspray_temp)
-    lmsRQdry_temp=terrplant_model.lmsRQdry(totaldry_temp,lms_temp)
+    lmsRQdry_temp=terr.lmsRQdry_results
     lmsRQdry_out.append(lmsRQdry_temp)
-    LOClmsdry_temp=terrplant_model.LOClmsdry(lmsRQdry_temp)
+    LOClmsdry_temp=terr.LOClmsdry_results
     LOClmsdry_out.append(LOClmsdry_temp)
-    lmsRQsemi_temp=terrplant_model.lmsRQsemi(totalsemi_temp,lms_temp)
+    lmsRQsemi_temp=terr.lmsRQsemi_results
     lmsRQsemi_out.append(lmsRQsemi_temp)
-    LOClmssemi_temp=terrplant_model.LOClmssemi(lmsRQsemi_temp)
+    LOClmssemi_temp=terr.LOClmssemi_results
     LOClmssemi_out.append(LOClmssemi_temp)
-    lmsRQspray_temp=terrplant_model.lmsRQspray(spray_temp,lms_temp)
+    lmsRQspray_temp=terr.lmsRQspray_results
     lmsRQspray_out.append(lmsRQspray_temp)
-    LOClmsspray_temp=terrplant_model.LOClmsspray(lmsRQspray_temp)
+    LOClmsspray_temp=terr.LOClmsspray_results
     LOClmsspray_out.append(LOClmsspray_temp)
-    ndsRQdry_temp=terrplant_model.ndsRQdry(totaldry_temp,nds_temp)
+    ndsRQdry_temp=terr.ndsRQdry_results
     ndsRQdry_out.append(ndsRQdry_temp)
-    LOCndsdry_temp=terrplant_model.LOCndsdry(ndsRQdry_temp)
+    LOCndsdry_temp=terr.LOCndsdry_results
     LOCndsdry_out.append(LOCndsdry_temp)
-    ndsRQsemi_temp=terrplant_model.ndsRQsemi(totalsemi_temp,nds_temp)
+    ndsRQsemi_temp=terr.ndsRQsemi_results
     ndsRQsemi_out.append(ndsRQsemi_temp)
-    LOCndssemi_temp=terrplant_model.LOCndssemi(ndsRQsemi_temp)
+    LOCndssemi_temp=terr.LOCndssemi_results
     LOCndssemi_out.append(LOCndssemi_temp)
-    ndsRQspray_temp=terrplant_model.ndsRQspray(spray_temp,nds_temp)
+    ndsRQspray_temp=terr.ndsRQspray_results
     ndsRQspray_out.append(ndsRQspray_temp)
-    LOCndsspray_temp=terrplant_model.LOCndsspray(ndsRQspray_temp)
+    LOCndsspray_temp=terr.LOCndsspray_results
     LOCndsspray_out.append(LOCndsspray_temp)
-    ldsRQdry_temp=terrplant_model.ldsRQdry(totaldry_temp,lds_temp)
+    ldsRQdry_temp=terr.ldsRQdry_results
     ldsRQdry_out.append(ldsRQdry_temp)
-    LOCldsdry_temp=terrplant_model.LOCldsdry(ldsRQdry_temp)
+    LOCldsdry_temp=terr.LOCldsdry_results
     LOCldsdry_out.append(LOCldsdry_temp)
-    ldsRQsemi_temp=terrplant_model.ldsRQsemi(totalsemi_temp,lds_temp)
+    ldsRQsemi_temp=terr.ldsRQsemi_results
     ldsRQsemi_out.append(ldsRQsemi_temp)
-    LOCldssemi_temp=terrplant_model.LOCldssemi(ldsRQsemi_temp)
+    LOCldssemi_temp=terr.LOCldssemi_results
     LOCldssemi_out.append(LOCldssemi_temp)
-    ldsRQspray_temp=terrplant_model.ldsRQspray(spray_temp,lds_temp)
+    ldsRQspray_temp=terr.ldsRQspray_results
     ldsRQspray_out.append(ldsRQspray_temp)
-    LOCldsspray_temp=terrplant_model.LOCldsspray(ldsRQspray_temp)
+    LOCldsspray_temp=terr.LOCldsspray_results
     LOCldsspray_out.append(LOCldsspray_temp)
 
 
@@ -555,7 +557,7 @@ def loop_html(thefile):
                     <td>-</td>
                 </tr>""" %(numpy.mean(ndsRQspray_out), numpy.std(ndsRQspray_out), numpy.min(ndsRQspray_out), numpy.max(ndsRQspray_out)) 
     sum_output_ldsRQdry="""<tr>
-                    <td>Risk Quotient for listed dicot seedlings exposed to Pesticide X in DdryRY areas</td>
+                    <td>Risk Quotient for listed dicot seedlings exposed to Pesticide X in dry areas</td>
                     <td>%5.2f</td>
                     <td>%5.2f</td> 
                     <td>%5.2f</td>

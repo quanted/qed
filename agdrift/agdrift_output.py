@@ -36,40 +36,50 @@ class agdriftOutputPage(webapp.RequestHandler):
                 'model':'agdrift', 
                 'model_attributes':'AgDrift Output'})
         html = html + """
-        <table border="1" class="out_1">
-        <tr>
-            <th colspan="2">Inputs: Chemical Identity</th>
-        </tr>
-        <tr>
-            <td>Application method</td>
-            <td id="app_method_val">%s</td>
-        </tr>
-        <tr id="Orc_type">
-            <td>Orchard type</td>
-            <td>%s</td>
-        </tr>
-        <tr>
-            <td>Drop size</td>
-            <td>%s</td>
-        </tr>
-        <tr>
-            <td>Ecosystem type</td>
-            <td>%s</td>
-        </tr>
-        </table>
+        <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs</H3>
+        <div class="out_">
+            <table class="out_">
+                <tr>
+                    <th colspan="2">Inputs: Chemical Identity</th>
+                </tr>
+                <tr>
+                    <td>Application method</td>
+                    <td id="app_method_val">%s</td>
+                </tr>
+                <tr id="Orc_type">
+                    <td>Orchard type</td>
+                    <td>%s</td>
+                </tr>
+                <tr>
+                    <td>Drop size</td>
+                    <td>%s</td>
+                </tr>
+                <tr>
+                    <td>Ecosystem type</td>
+                    <td>%s</td>
+                </tr>
+            </table>
+        </div>
         """ % (application_method, orchard_type, drop_size, ecosystem_type)
-        html = html +  """<table width="400" style="display:none;">
-                          <tr><h3>Results</h3></tr>
-                          <tr>
-                            <td>distance</td>
-                            <td id="distance">%s</td>
-                          </tr>
-                          <tr>
-                            <td>deposition</td>
-                            <td id="deposition">%s</td>
-                          </tr>
-                          </table>"""%(results[0], results[1])
-        html = html + template.render(templatepath + 'agdrift-output-jqplot.html', {})         
+        html = html +  """
+        <table style="display:none;">
+            <tr>
+                <td>distance</td>
+                <td id="distance">%s</td>
+            </tr>
+            <tr>
+                <td>deposition</td>
+                <td id="deposition">%s</td>
+            </tr>
+        </table>
+        <br>
+        <h3 class="out_2 collapsible" id="section2"><span></span>Results</h3>
+        <div>
+        """%(results[0], results[1])
+        html = html + template.render(templatepath + 'agdrift-output-jqplot.html', {})
+        html = html +  """
+        </div>
+        """
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

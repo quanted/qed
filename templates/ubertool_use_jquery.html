@@ -1,6 +1,25 @@
 <script type="text/javascript" src=" ../stylesheets/jquery.validate.js"></script>
 <script>
 $(document).ready(function() {
+	
+	$.ajax({
+		url:"{{cas_service_url}}/all-cas",
+		async: true,
+		type: 'GET',
+		success: function(cas_data) {
+			if(cas_data != null)
+			{
+				for(i = 0; i < cas_data.length; i++)
+				{
+					var cas_datum = cas_data[i];
+					if(cas_datum.ChemicalName != "None" && cas_datum.CASNumber != null)
+					{
+						$("#id_cas_number").append(new Option(cas_datum.ChemicalName, cas_datum.CASNumber));
+					}
+				}
+			}
+		}
+	});
 	$("#id_user_use_configuration").change(function(){
 		var user_use_configuration = $("#id_user_use_configuration")[0].value;
 

@@ -44,6 +44,17 @@ server.get('/batch_configs', function(req, res, next){
         res.send(batch_ids);
     });
 });
+server.post('/batch',submitBatch);
+server.get('/batch_results/:batchId', function(req, res, next){
+    var batchId = req.params.batchId;
+    console.log("BatchId: " + batchId);
+    mongodb.getBatchResults(batchId, function(error, batch_data){
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.send(batch_data);
+    });
+});
+
 server.get('/cas/:cas_num', function(req, res, next){
     var cas_number = req.params.cas_num;
     console.log("Cas Number: " + cas_number);
@@ -53,21 +64,12 @@ server.get('/cas/:cas_num', function(req, res, next){
         res.send(chemical_name);
     });
 });
+
 server.get('/all-cas', function(req, res, next){
     cas.getAll(function(error,all_cas){
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.send(all_cas);
-    });
-});
-server.post('/batch',submitBatch);
-server.get('/batch_results/:batchId', function(req, res, next){
-    var batchId = req.params.batchId;
-    console.log("BatchId: " + batchId);
-    mongodb.getBatchResults(batchId, function(error, batch_data){
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "X-Requested-With");
-        res.send(batch_data);
     });
 });
 

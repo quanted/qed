@@ -21,8 +21,8 @@ class UseService(webapp.RequestHandler):
         q.filter('config_name =',use_config_name)
         use = q.get()
         use_dict = {}
-        use_dict['cas_number'] = use.cas_number
-        cas = CASGql("apppest:cas","CAS")
+#        use_dict['cas_number'] = use.cas_number
+#        cas = CASGql("apppest:cas","CAS")
         use_dict['formulated_product_name'] = use.formulated_product_name 
         use_dict['percent_ai'] = use.percent_ai
         use_dict['met_file'] = use.met_file 
@@ -108,6 +108,7 @@ class UsePropertiesRetrievalService():
         use_dict['spray_drift'] = use.spray_drift 
         use_dict['runoff'] = use.runoff
         return use_dict
+
 
 class Use(db.Model):
     config_name = db.StringProperty()

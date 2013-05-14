@@ -22,20 +22,31 @@
     			var cas_nums_chem_names = [];
     			for(i = 0; i < all_cas.length; i++)
     			{
-    				cas_nums_chem_names.push({"ChemicalName":all_cas[i].ChemicalName,"CASNumber":all_cas[i].CASNumber})
+    				cas_nums_chem_names.push({"ChemicalName":all_cas[i].ChemicalName.substring(0,20),"CASNumber":all_cas[i].CASNumber})
     			}
     			callback(null,cas_nums_chem_names);
     		});
     	});
     }
 
+    exports.getAllChemicalNames = function(callback)
+    {
+      getAll( function(err,cas_data){
+        var utf8_cas_data = [];
+        for(i = 0; i < cas_data.length; i++)
+        {
+          utf8_cas_data.push(cas_data[i].ChemicalName.substring(0,20));
+        }
+        callback(null,utf8_cas_data);
+      })
+    }
+
     exports.getChemicalName = function(cas_number,callback)
     { 
       db.collection('CAS', function(err,collection){
         collection.findOne({CASNumber:cas_number},function(err,cas) {
-          console.log("getBatchResults");
           console.log(cas);
-          callback(null,cas.ChemicalName);
+          callback(null,cas.ChemicalName.substring(0,20));
         });
       });
     }

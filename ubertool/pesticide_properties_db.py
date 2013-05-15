@@ -11,20 +11,11 @@ from django.db import models
 from google.appengine.api import users
 from google.appengine.ext import db
 from pesticide_properties import PesticideProperties
-
+import datetime
 
 class PPInp(forms.Form):
-    user = users.get_current_user()
-    user_id = user.user_id()
-    q = db.Query(PesticideProperties)
-    q.filter('user =',user)
-    uses = ()
-    uses += ((None,None),)
-    for use in q:
-        #logger.info(use.to_xml())
-        uses += ((use.config_name,use.config_name),)
-    user_pest_configuration = forms.ChoiceField(label="User Saved Pesticide Properties Configuration",required=True, choices=uses)
-    config_name = forms.CharField(label="Pesticide Properties Configuration Name", initial="pesticide-properties-config-%s"%user_id)
+    user_pest_configuration = forms.ChoiceField(label="User Saved Pesticide Properties Configuration",required=True)
+    config_name = forms.CharField(label="Pesticide Properties Configuration Name", initial="pesticide-properties-config-%s"%datetime.datetime.now())
     molecular_weight = forms.FloatField(label='Molecular weight (g/mol)')
     henrys_law_constant = forms.FloatField(label="Henry's Law Constant (atm-m^3/mol)")
     vapor_pressure = forms.FloatField(label='Vapor Pressure (torr)')

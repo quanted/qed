@@ -15,27 +15,15 @@ from google.appengine.api import users
 from google.appengine.ext import db
 from use import Use
 import logging
+import datetime
 
 APPLICATIONTYPE = (('broadcast','broadcast'),('row/band/in-furrow','row/band/in-furrow'))
 APPTYPE = (('liquid','liquid'),('granular','granular'))
 YN = (('Yes','Yes'),('No','No'))
 
 class UseInp(forms.Form):
-    user_id = users.get_current_user().user_id()
-    user = users.get_current_user()
-    user_id = user.user_id()
-    q = db.Query(Use)
-    q.filter('user =',user)
-    uses = ()
-    uses += ((None,None),)
-    logger = logging.getLogger("UseInp")
-    for use in q:
-        logger.info(use.to_xml())
-        uses += ((use.config_name,use.config_name),)
-    user_use_configuration = forms.ChoiceField(label="User Saved Use Configuration",required=True, choices=uses)
-    config_name = forms.CharField(label="Use Configuration Name", initial="use-config-%s"%user_id)
-    #cas = CASGql("apppest:cas","CAS")
-    #cas_number = forms.ChoiceField(required=True, choices=cas.getAllChemNamesCASNumsUTF8(None,20))
+    user_use_configuration = forms.ChoiceField(label="User Saved Use Configuration",required=True)
+    config_name = forms.CharField(label="Use Configuration Name", initial="use-config-%s"%datetime.datetime.now())
     cas_number = forms.ChoiceField(required=True)
     formulated_product_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}))
     percent_ai = forms.FloatField(label='% Active Ingredient')

@@ -15,36 +15,106 @@
       console.log('Opened MongoDb connection.');
     });
 
-    exports.getAllAquaConfigNames = function(callback)
+    exports.getAllConfigNames = function(config_type,callback)
     {
-      db.collection('AquaticToxicity', function(err,collection){
-        collection.find().toArray(function(err,all_aqua_data) {
-          var aqua_config_names = [];
-          for(i = 0; i < all_aqua_data.length; i++)
+      var config_collection = '';
+      if(config_type == 'aqua')
+      {
+        config_collection = 'AquaticToxicity';
+      } else if(config_type == 'eco')
+      {
+        config_collection = 'EcosystemInputs';
+      } else if(config_type == 'expo')
+      {
+        config_collection = 'ExposureConcentrations';
+      } else if(config_type == 'pest')
+      {
+        config_collection = 'PesticideProperties';
+      } else if(config_type == 'terre')
+      {
+        config_collection = 'TerrestrialToxicity';
+      } else if(config_type == 'use')
+      {
+        config_collection = 'Use';
+      } else if(config_type == 'ubertool')
+      {
+        config_collection = 'Ubertool';
+      } 
+      db.collection(config_collection, function(err,collection){
+        collection.find().toArray(function(err,all_data) {
+          var config_names = [];
+          for(i = 0; i < all_data.length; i++)
           {
-            aqua_config_names.push(all_aqua_data[i].config_name);
+            config_names.push(all_data[i].config_name);
           }
-          callback(null,aqua_config_names);
+          callback(null,config_names);
         });
       });
     }
 
-    exports.getAquaConfigData = function(aqua_config,callback)
+    exports.getConfigData = function(config_type,config,callback)
     { 
-      db.collection('AquaticToxicity', function(err,collection){
-        collection.findOne({'config_name':aqua_config},function(err,aqua_config_data) {
-          console.log(aqua_config_data);
-          callback(null,aqua_config_data);
+      var config_collection = '';
+      if(config_type == 'aqua')
+      {
+        config_collection = 'AquaticToxicity';
+      } else if(config_type == 'eco')
+      {
+        config_collection = 'EcosystemInputs';
+      } else if(config_type == 'expo')
+      {
+        config_collection = 'ExposureConcentrations';
+      } else if(config_type == 'pest')
+      {
+        config_collection = 'PesticideProperties';
+      } else if(config_type == 'terre')
+      {
+        config_collection = 'TerrestrialToxicity';
+      } else if(config_type == 'use')
+      {
+        config_collection = 'Use';
+      } else if(config_type == 'ubertool')
+      {
+        config_collection = 'Ubertool';
+      } 
+      db.collection(config_collection, function(err,collection){
+        collection.findOne({'config_name':config},function(err,config_data) {
+          callback(null,config_data);
         });
       });
     }
 
-    exports.addUpdateAquaConfig = function(aqua_config,aqua_json)
+    exports.addUpdateConfig = function(config_type,config,json_data)
     {
-      console.log(aqua_config);
-      db.collection('AquaticToxicity', function(err,collection){
-        collection.findAndModify({config_name:aqua_config}, {created: 1},
-          aqua_json, {new:true, upsert:true, w:1},function(err,doc){
+      var config_collection = '';
+      if(config_type == 'aqua')
+      {
+        config_collection = 'AquaticToxicity';
+      } else if(config_type == 'eco')
+      {
+        config_collection = 'EcosystemInputs';
+      } else if(config_type == 'expo')
+      {
+        config_collection = 'ExposureConcentrations';
+      } else if(config_type == 'pest')
+      {
+        config_collection = 'PesticideProperties';
+      } else if(config_type == 'terre')
+      {
+        config_collection = 'TerrestrialToxicity';
+      } else if(config_type == 'use')
+      {
+        config_collection = 'Use';
+      } else if(config_type == 'ubertool')
+      {
+        config_collection = 'Ubertool';
+      }
+      console.log(config_collection);
+      console.log(config);
+      //console.log(json_data);
+      db.collection(config_collection, function(err,collection){
+        collection.findAndModify({config_name:config}, {created: 1},
+          json_data, {new:true, upsert:true, w:1},function(err,doc){
             console.log("added document");
             console.log(doc);
           });

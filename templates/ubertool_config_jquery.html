@@ -14,8 +14,8 @@ function submitBatchConfigurations()
 	}
 	var batch_config_props = null;
 	$.ajax({
-		url:"ubertool-batch-configuration",
-		async: false,
+		url:"{{ubertool_mongo_server}}/ubertool/ubertool/"+$("#id_config_name")[0].value,
+		async: true,
 		type: 'POST',
 		data: JSON.stringify(form_data),
 		success: function(form_data) {
@@ -64,42 +64,42 @@ function updateUbertoolConfigurations(sel)
 			configuration_suffix = user_ubertool_configuration_id.substring(underscore_index);
 		}
 		$.ajax({
-			url:"ubertool/"+user_ubertool_configuration,
+			url:"{{ubertool_mongo_server}}/ubertool/ubertool/"+user_ubertool_configuration,
 			async: false,
 			type: 'GET',
 			success: function(ubertool_data) {
 				// application type select dropdown
-				var use_config = ubertool_data['use'];
+				var use_config = ubertool_data['use_configuration'];
 				if(use_config != null)
 				{
 					s = document.getElementById('id_use_configuration'+configuration_suffix);
 					s.value = use_config;
 				}
-				var pest_config = ubertool_data['pest'];
+				var pest_config = ubertool_data['pest_configuration'];
 				if(pest_config != null)
 				{
 					s = document.getElementById('id_pest_configuration'+configuration_suffix);
 					s.value = pest_config;
 				}
-				var expo_config = ubertool_data['expo'];
+				var expo_config = ubertool_data['exposures_configuration'];
 				if(expo_config != null)
 				{
 					s = document.getElementById('id_exposures_configuration'+configuration_suffix);
 					s.value = expo_config;
 				}
-				var aqua_config = ubertool_data['aqua'];
+				var aqua_config = ubertool_data['aquatic_configuration'];
 				if(aqua_config != null)
 				{
 					s = document.getElementById('id_aquatic_configuration'+configuration_suffix);
 					s.value = aqua_config;
 				}
-				var terra_config = ubertool_data['terra'];
+				var terra_config = ubertool_data['terrestrial_configuration'];
 				if(terra_config != null)
 				{
 					s = document.getElementById('id_terrestrial_configuration'+configuration_suffix);
 					s.value = terra_config;
 				}
-				var eco_config = ubertool_data['eco'];
+				var eco_config = ubertool_data['ecosystems_configuration'];
 				if(eco_config != null)
 				{
 					s = document.getElementById('id_ecosystems_configuration'+configuration_suffix);
@@ -116,140 +116,112 @@ $(document).ready(function() {
 	num_ubertool_runs = 1;
 	
 	$.ajax({
-		url:"ubertool",
+		url:"{{ubertool_mongo_server}}/ubertool/ubertool/config_names",
 		async: false,
 		type: 'GET',
-		success: function(use_data) {
-			var config_names = use_data['config_names'];
+		success: function(config_names) {
 			if(config_names != null)
 			{
 				for(i = 0; i < config_names.length; i++)
 				{
 					var config_name = config_names[i];
-					if(config_name != "None" && config_name != null)
-					{
-						$("#id_user_ubertool_configuration").append(new Option(config_name, config_name));
-					}
+					$("#id_user_ubertool_configuration").append(new Option(config_name, config_name));
 				}
 			}
 		}
 	});
 	
 	$.ajax({
-		url:"use-config-names",
+		url:"{{ubertool_mongo_server}}/ubertool/use/config_names",
 		async: false,
 		type: 'GET',
-		success: function(use_data) {
-			var config_names = use_data['config_names'];
+		success: function(config_names) {
 			if(config_names != null)
 			{
 				for(i = 0; i < config_names.length; i++)
 				{
 					var config_name = config_names[i];
-					if(config_name != "None")
-					{
-						$("#id_use_configuration").append(new Option(config_name, config_name));
-					}
+					$("#id_use_configuration").append(new Option(config_name, config_name));
 				}
 			}
 		}
 	});
 	
 	$.ajax({
-		url:"aqua-config-names",
+		url:"{{ubertool_mongo_server}}/ubertool/aqua/config_names",
 		async: false,
 		type: 'GET',
-		success: function(aqua_data) {
-			var config_names = aqua_data['config_names'];
+		success: function(config_names) {
 			if(config_names != null)
 			{
 				for(i = 0; i < config_names.length; i++)
 				{
 					var config_name = config_names[i];
-					if(config_name != "None")
-					{
-						$("#id_aquatic_configuration").append(new Option(config_name, config_name));
-					}
+					$("#id_aquatic_configuration").append(new Option(config_name, config_name));
 				}
 			}
 		}
 	});	
 	
 	$.ajax({
-		url:"eco-config-names",
+		url:"{{ubertool_mongo_server}}/ubertool/eco/config_names",
 		async: false,
 		type: 'GET',
-		success: function(eco_data) {
-			var config_names = eco_data['config_names'];
+		success: function(config_names) {
 			if(config_names != null)
 			{
 				for(i = 0; i < config_names.length; i++)
 				{
 					var config_name = config_names[i];
-					if(config_name != "None")
-					{
-						$("#id_ecosystems_configuration").append(new Option(config_name, config_name));
-					}
+					$("#id_ecosystems_configuration").append(new Option(config_name, config_name));
 				}
 			}
 		}
 	});
 	
 	$.ajax({
-		url:"expo-config-names",
+		url:"{{ubertool_mongo_server}}/ubertool/expo/config_names",
 		async: false,
 		type: 'GET',
-		success: function(expo_data) {
-			var config_names = expo_data['config_names'];
+		success: function(config_names) {
 			if(config_names != null)
 			{
 				for(i = 0; i < config_names.length; i++)
 				{
 					var config_name = config_names[i];
-					if(config_name != "None")
-					{
-						$("#id_exposures_configuration").append(new Option(config_name, config_name));
-					}
+					$("#id_exposures_configuration").append(new Option(config_name, config_name));
 				}
 			}
 		}
 	});
 	
 	$.ajax({
-		url:"pest-config-names",
+		url:"{{ubertool_mongo_server}}/ubertool/pest/config_names",
 		async: false,
 		type: 'GET',
-		success: function(pest_data) {
-			var config_names = pest_data['config_names'];
+		success: function(config_names) {
 			if(config_names != null)
 			{
 				for(i = 0; i < config_names.length; i++)
 				{
 					var config_name = config_names[i];
-					if(config_name != "None")
-					{
-						$("#id_pest_configuration").append(new Option(config_name, config_name));
-					}
+					$("#id_pest_configuration").append(new Option(config_name, config_name));
 				}
 			}
 		}
 	});
 	
 	$.ajax({
-		url:"terra-config-names",
+		url:"{{ubertool_mongo_server}}/ubertool/terre/config_names",
 		async: false,
 		type: 'GET',
-		success: function(terra_data) {
-			var config_names = terra_data['config_names'];
+		success: function(config_names) {
 			if(config_names != null)
 			{
 				for(i = 0; i < config_names.length; i++)
 				{
 					var config_name = config_names[i];
-					if(config_name != "None")
-					{
-						$("#id_terrestrial_configuration").append(new Option(config_name, config_name));
-					}
+					$("#id_terrestrial_configuration").append(new Option(config_name, config_name));
 				}
 			}
 		}
@@ -275,11 +247,10 @@ $(document).ready(function() {
 		ubertool_select_inner_html += added_ubertool_select;
 		$("#ubertool_select")[0].innerHTML = ubertool_select_inner_html;
 		$.ajax({
-			url:"ubertool",
+			url:"{{ubertool_mongo_server}}/ubertool/ubertool/config_names",
 			async: false,
 			type: 'GET',
-			success: function(use_data) {
-				var config_names = use_data['config_names'];
+			success: function(config_names) {
 				if(config_names != null)
 				{
 					for(i = 0; i < config_names.length; i++)
@@ -306,11 +277,10 @@ $(document).ready(function() {
 		use_select_inner_html += added_use_select;
 		$("#use_select")[0].innerHTML = use_select_inner_html;
 		$.ajax({
-			url:"use-config-names",
+			url:"{{ubertool_mongo_server}}/ubertool/use/config_names",
 			async: false,
 			type: 'GET',
-			success: function(use_data) {
-				var config_names = use_data['config_names'];
+			success: function(config_names) {
 				if(config_names != null)
 				{
 					for(i = 0; i < config_names.length; i++)
@@ -331,11 +301,10 @@ $(document).ready(function() {
 		pest_select_inner_html += added_pest_select;
 		$("#pest_select")[0].innerHTML = pest_select_inner_html;
 		$.ajax({
-			url:"pest-config-names",
+			url:"{{ubertool_mongo_server}}/ubertool/pest/config_names",
 			async: false,
 			type: 'GET',
-			success: function(pest_data) {
-				var config_names = pest_data['config_names'];
+			success: function(config_names) {
 				if(config_names != null)
 				{
 					for(i = 0; i < config_names.length; i++)
@@ -356,11 +325,10 @@ $(document).ready(function() {
 		exposures_select_inner_html += added_exposures_select;
 		$("#exposure_select")[0].innerHTML = exposures_select_inner_html;
 		$.ajax({
-			url:"expo-config-names",
+			url:"{{ubertool_mongo_server}}/ubertool/expo/config_names",
 			async: false,
 			type: 'GET',
-			success: function(expo_data) {
-				var config_names = expo_data['config_names'];
+			success: function(config_names) {
 				if(config_names != null)
 				{
 					for(i = 0; i < config_names.length; i++)
@@ -381,11 +349,10 @@ $(document).ready(function() {
 		aquatic_select_inner_html += added_aquatic_select;
 		$("#aquatic_select")[0].innerHTML = aquatic_select_inner_html;
 		$.ajax({
-			url:"aqua-config-names",
+			url:"{{ubertool_mongo_server}}/ubertool/aqua/config_names",
 			async: false,
 			type: 'GET',
-			success: function(aqua_data) {
-				var config_names = aqua_data['config_names'];
+			success: function(config_names) {
 				if(config_names != null)
 				{
 					for(i = 0; i < config_names.length; i++)
@@ -398,7 +365,7 @@ $(document).ready(function() {
 					}
 				}
 			}
-		});	
+		});
 		var new_terrestrial_name = "terrestrial_configuration_"+num_ubertool_runs;
 		var id_new_terrestrial_name = "id_terrestrial_configuration_"+num_ubertool_runs;
 		var added_terrestrial_select = "<select name='"  + new_terrestrial_name + "' id='" + id_new_terrestrial_name + "' style='width:120px'><option value='None'>None</option></select>"	
@@ -406,11 +373,10 @@ $(document).ready(function() {
 		terrestrial_select_inner_html += added_terrestrial_select;
 		$("#terrestrial_select")[0].innerHTML = terrestrial_select_inner_html;
 		$.ajax({
-			url:"terra-config-names",
+			url:"{{ubertool_mongo_server}}/ubertool/terre/config_names",
 			async: false,
 			type: 'GET',
-			success: function(terra_data) {
-				var config_names = terra_data['config_names'];
+			success: function(config_names) {
 				if(config_names != null)
 				{
 					for(i = 0; i < config_names.length; i++)
@@ -431,11 +397,10 @@ $(document).ready(function() {
 		ecosystems_select_inner_html += added_ecosystems_select;
 		$("#ecosystem_select")[0].innerHTML = ecosystems_select_inner_html;
 		$.ajax({
-			url:"eco-config-names",
+			url:"{{ubertool_mongo_server}}/ubertool/eco/config_names",
 			async: false,
 			type: 'GET',
-			success: function(eco_data) {
-				var config_names = eco_data['config_names'];
+			success: function(config_names) {
 				if(config_names != null)
 				{
 					for(i = 0; i < config_names.length; i++)

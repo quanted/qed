@@ -2,7 +2,7 @@
 <script>
 $(document).ready(function() {
 	$.ajax({
-		url:"{{ubertool_service_url}}/aqua/config_names",
+		url:"{{ubertool_service_url}}/ubertool/aqua/config_names",
 		async: true,
 		type: 'GET',
 		success: function(config_names) {
@@ -24,7 +24,7 @@ $(document).ready(function() {
 		if(user_aqua_configuration != 'None')
 		{
 			$.ajax({
-				url:"{{ubertool_service_url}}/aqua/"+user_aqua_configuration,
+				url:"{{ubertool_service_url}}/ubertool/aqua/"+user_aqua_configuration,
 				async: false,
 				type: 'GET',
 				success: function(aqua_data) {
@@ -54,7 +54,7 @@ function submitAquaConfiguration()
 	}
 	var batch_config_props = null;
 	$.ajax({
-		url:"{{ubertool_service_url}}/aqua/"+$("#id_config_name")[0].value,
+		url:"{{ubertool_service_url}}/ubertool/aqua/"+$("#id_config_name")[0].value,
 		async: true,
 		type: 'POST',
 		data: JSON.stringify(form_data)

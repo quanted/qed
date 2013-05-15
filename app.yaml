@@ -1,5 +1,5 @@
 application: pypest
-version: chance
+version: pop
 runtime: python27
 api_version: 1
 
@@ -20,7 +20,6 @@ libraries:
 
 env_variables:
   UBERTOOL_BATCH_SERVER: 'http://www.chancedelphia.com:8887/'
-  UBERTOOL_MONGO_SERVER:  'http://127.0.0.1:8887'
 
 skip_files:
 - ^(.*/)?app\.yaml
@@ -41,9 +40,9 @@ skip_files:
 
 handlers:
 - url: /
-  script: landing_pypest.py 
+  script: landing_pypop.py 
 - url: /index.html
-  script: landing_pypest.py 
+  script: landing_pypop.py 
 - url: /admin.html
   script: admin.py
 - url: /eco_index.html
@@ -163,10 +162,9 @@ handlers:
 
 #USER pages
 - url: /user.html
-  script: user/user_input.py 
+  script: user/user_input.py   
   login: required
-  secure: always
-  
+
 - url: /user_output.html
   script: user/user_output.py
   login: required
@@ -183,6 +181,13 @@ handlers:
 #use service
 - url: /use-config-names
   script: ubertool/use.py
+  login: required
+#aqua service
+- url: /aqua-config-names
+  script: ubertool/aquatic_toxicity.py
+  login: required
+- url: /aqua/(.*)
+  script: ubertool/aquatic_toxicity.py
   login: required
 #expo service
 - url: /expo-config-names
@@ -246,11 +251,6 @@ handlers:
 
 #cas service
 - url: /cas/(.*)
-  script: CAS/cas.py
-  login: required
-
-#cas service
-- url: /cas-all/json
   script: CAS/cas.py
   login: required
 

@@ -42,4 +42,24 @@ $(document).ready(function() {
 		
 	});
 })
+function submitAquaConfiguration()
+{
+	var document_form = document.forms[0];
+	var form_data = {};
+	for(i = 1; i < document_form.length-2; i++)
+	{
+		var id = (document_form[i].id).replace("id_","");
+		var val = document_form[i].value;
+		form_data[id] = val;
+	}
+	var batch_config_props = null;
+	$.ajax({
+		url:"{{ubertool_service_url}}/aqua/"+$("#id_config_name")[0].value,
+		async: true,
+		type: 'POST',
+		data: JSON.stringify(form_data)
+	});
+	window.location = "terrestrial_toxicity.html";
+
+}
 </script>

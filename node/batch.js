@@ -87,11 +87,28 @@ server.get('/aqua/config_names', function(req, res, next){
 
 server.get('/aqua/:aqua_config', function(req, res, next){
     var aqua_config = req.params.aqua_config;
-    console.log("Aquatic Toxicity Configuration Name: " + aqua_config);
+    console.log("GET for Aquatic Toxicity Configuration Name: " + aqua_config);
     ubertool.getAquaConfigData(aqua_config, function(error,aqua_config_data){
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.send(aqua_config_data);
+    });
+});
+
+server.post('/aqua/:aqua_config', function(req, res, next){
+    var aqua_config = req.params.aqua_config;
+    console.log("POST for Aquatic Toxicity Configuration Name: " + aqua_config);
+    var body = '';
+    var json = '';
+    req.on('data', function (data)
+    {
+        body += data;
+    });
+    req.on('end', function ()
+    {
+        json = JSON.parse(body);
+        console.log(JSON.stringify(json)); 
+        ubertool.addUpdateAquaConfig(aqua_config,json);
     });
 });
 

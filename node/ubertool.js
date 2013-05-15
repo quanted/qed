@@ -38,3 +38,15 @@
         });
       });
     }
+
+    exports.addUpdateAquaConfig = function(aqua_config,aqua_json)
+    {
+      console.log(aqua_config);
+      db.collection('AquaticToxicity', function(err,collection){
+        collection.findAndModify({config_name:aqua_config}, {created: 1},
+          aqua_json, {new:true, upsert:true, w:1},function(err,doc){
+            console.log("added document");
+            console.log(doc);
+          });
+      });
+    }

@@ -25,9 +25,9 @@ class ATInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'ubertool_aqua_jquery.html', {'ubertool_service_url':mongo_service_url})
         html = html + template.render(templatepath + '02uberintroblock_nomodellinks.html', {'title2':'Aquatic Toxicity', 'model':'aquatic_toxicity'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {'model':'aquatic_toxicity'})
+        html = html + template.render(templatepath + '04uberinput_aqua_start.html', {'model':'aquatic_toxicity'})
         html = html + str(aquatic_toxicity_db.ATInp())
-        html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
+        html = html + template.render(templatepath + '04uberinput_aqua_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

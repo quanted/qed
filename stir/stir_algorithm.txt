@@ -1,2 +1,27 @@
+<p>Saturated air concentration:</p>
+<img src = "/images/latex/stir/stir_image1.png" alt="Stir_1">
+<p><Avian inhalation rate/p>
+<img src = "/images/latex/terrplant/stir_image2.png" alt="Terrplant_2">
+<p>Maximum avian vapor inhalation dose:</p>
+<img src = "/images/latex/stir/stir_image3.png" alt="stir_3">
+<p>Mammalian inhalation rate:</p>
+<img src = "/images/latex/stir/stir_image4.png" alt="stir_4">
+<p>Maximum Mammalian Vapor Inhalation Dose:</p>
+<img src = "/images/latex/stir/stir_image5.png" alt="stir_5">
+<p>Air column concentration after spray:</p>
+<img src = "/images/latex/stir/stir_image6.png" alt="stir_6">
+<p>Avian spray droplet inhalation dose:</p>
+<img src = "/images/latex/stir/stir_image7.png" alt="stir_7">
+<p>Mammalian spray droplet inhalation dose:</p>
+<img src = "/images/latex/stir/stir_image8.png" alt="stir_8">
+<p>Conversion of mammalian inhalation LC50 to LD50:</p>
+<img src = "/images/latex/stir/stir_image9.png" alt="stir_9">
+<p>Adjusted mammalian inhalation LD50:</p>
+<img src = "/images/latex/stir/stir_image10.png" alt="stir_10">
+<p>Estimated avian inhalation LD50:</p>
+<img src = "/images/latex/stir/stir_image11.png" alt="stir_11">
+<p>Adjusted avian inhalation LD50:</p>
+<img src = "/images/latex/stir/stir_image12.png" alt="stir_12">
 
-<p></p>
+
+

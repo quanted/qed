@@ -64,7 +64,7 @@ function submitConfiguration()
 	}
 	var batch_config_props = null;
 	$.ajax({
-		url:"{{ubertool_service_url}}/ubertool/pest/"+$("#id_user_pest_configuration")[0].value,
+		url:"{{ubertool_service_url}}/ubertool/pest/"+$("#id_config_name")[0].value,
 		async: true,
 		type: 'POST',
 		data: JSON.stringify(form_data)

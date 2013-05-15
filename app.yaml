@@ -20,7 +20,7 @@ libraries:
 
 env_variables:
   UBERTOOL_BATCH_SERVER: 'http://www.chancedelphia.com:8887/'
-  UBERTOOL_MONGO_SERVER:  'http://127.0.0.1:8887'
+  UBERTOOL_MONGO_SERVER: 'http://www.chancedelphia.com:8887'
 
 skip_files:
 - ^(.*/)?app\.yaml
@@ -175,7 +175,7 @@ handlers:
 - url: /select_chemical.html
   script: ubertool/select_chemical_input.py
   login: required
-  
+
 #Model method service for asynchronous invocation
 - url: /msed
   script: rice/rice_model.py 

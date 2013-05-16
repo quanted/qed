@@ -55,31 +55,49 @@ $('.next').click(function () {
     $('#id_Application_type').change(function() { 
         if ($(this).val() == 'Seed Treatment'){
             $('#id_seed_treatment_formulation_name').closest('tr').show(); 
-            $('#id_id_maximum_seedling_rate_per_use').closest('tr').show();
+            $('#id_maximum_seedling_rate_per_use').closest('tr').show();
             $('#id_seed_crop').closest('tr').show();
             $('#id_Application_target').closest('tr').hide();
-             $('#id_bandwidth').closest('tr').hide();
+            $('#id_bandwidth').closest('tr').hide();
             $('#id_row_sp').closest('tr').hide();
+            
+            $('.tab_Application').hide()
+            $('.tab_Chemical').append('<tr class="seed"><th>Rate</th><td><input type="text" size="5" name="rate_seed" id="id_rate_seed" readonly="readonly"/></td></tr><tr class="seed"><th>Number of Day</th><td><input type="text" size="5" name="day_seed" id="id_day_seed" readonly="readonly"/></td></tr>');
+
+            $('#id_rate_seed').val($('#id_seed_crop').val())
+            $('#id_day_seed').val('0')
+
+            $('#id_seed_crop').change(function () {
+                $('#id_rate_seed').val($(this).val())
+            })
+
         }
+
         else if ($(this).val() == 'Row/Band/In-furrow-Granular'){
+            $('.tab_Application').show()
+            $('.seed').remove()
             $('#id_seed_treatment_formulation_name').closest('tr').hide(); 
-            $('#id_id_maximum_seedling_rate_per_use').closest('tr').hide();
+            $('#id_maximum_seedling_rate_per_use').closest('tr').hide();
             $('#id_seed_crop').closest('tr').hide();
             $('#id_Application_target').closest('tr').show();
             $('#id_bandwidth').closest('tr').show();
             $('#id_row_sp').closest('tr').show();
         }
          else if ($(this).val() == 'Row/Band/In-furrow-Liquid'){
+            $('.tab_Application').show()
+            $('.seed').remove()
             $('#id_seed_treatment_formulation_name').closest('tr').hide(); 
-            $('#id_id_maximum_seedling_rate_per_use').closest('tr').hide();
+            $('#id_maximum_seedling_rate_per_use').closest('tr').hide();
             $('#id_seed_crop').closest('tr').hide();
             $('#id_Application_target').closest('tr').show();
             $('#id_bandwidth').closest('tr').show();
             $('#id_row_sp').closest('tr').show();
         }
         else{
+            $('.tab_Application').show()
+            $('.seed').remove()
             $('#id_seed_treatment_formulation_name').closest('tr').hide(); 
-            $('#id_id_maximum_seedling_rate_per_use').closest('tr').hide();
+            $('#id_maximum_seedling_rate_per_use').closest('tr').hide();
             $('#id_seed_crop').closest('tr').hide();
             $('#id_bandwidth').closest('tr').hide();
             $('#id_Application_target').closest('tr').show();
@@ -89,6 +107,12 @@ $('.next').click(function () {
 
     var i = 1
     $('.tab_Application').append('<tr id="noa_header" style="display:none"><th width="18%">App#</th><th width="18%">Rate</th><th width="18%">Number of Day</th></tr>');
+
+    $('#id_Application_type').change(function () {
+        
+        // $('#id_noa').attr('disabled', false);
+
+})
 
     $('#id_noa').change(function () {
     	var total = $(this).val()

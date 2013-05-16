@@ -221,6 +221,7 @@ def EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day_out):
     a_p_temp = 0  #application period temp  
     n_a_temp = 0  #number of existing applications
     dayt = 0
+    day_out_l=len(day_out)
 #new in trex1.5.1
     if n_a == 1:
         C_temp = C_0(a_r[0], a_i, para)
@@ -228,15 +229,21 @@ def EEC_diet(C_0, n_a, a_r, a_i, para, h_l, day_out):
     
     else:
         for i in range (0,365):
+            # print 'n_a=', n_a, 'i=', i, 'dayt=', dayt, 'n_a_temp=', n_a_temp, 'day_out=', day_out
             if i==0:  #first day of application
                 a_p_temp = 0
                 n_a_temp = n_a_temp + 1
                 C_temp[i] = C_0(a_r[0], a_i, para)
                 dayt = dayt + 1
-            elif i==day_out[dayt] and n_a_temp<=n_a: # next application day
-                n_a_temp = n_a_temp + 1
-                C_temp[i] = C_t(C_temp[i-1], h_l) + C_0(a_r[dayt], a_i, para)
-                dayt = dayt + 1        
+            elif dayt<=day_out_l-1 and n_a_temp<=n_a: # next application day
+                if i==day_out[dayt]:
+                    n_a_temp = n_a_temp + 1
+                    C_temp[i] = C_t(C_temp[i-1], h_l) + C_0(a_r[dayt], a_i, para)
+                    dayt = dayt + 1        
+            # elif i==day_out[dayt] and n_a_temp==n_a: # next application day
+            #     n_a_temp = n_a_temp + 1
+            #     C_temp[i] = C_t(C_temp[i-1], h_l) + C_0(a_r[dayt], a_i, para)
+            #     dayt = dayt + 1        
         # elif a_p_temp<(i_a-1) and n_a_temp<=n_a: #
         #     a_p_temp=a_p_temp+1
         #     C_temp[i]=C_t(C_temp[i-1], h_l)        

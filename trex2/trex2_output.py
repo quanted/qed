@@ -23,7 +23,7 @@ class TRexOutputPage(webapp.RequestHandler):
         a_i = form.getvalue('percent_ai')
         a_i = float(a_i)/100
         Application_type = form.getvalue('Application_type')
-        seed_crop = form.getvalue('seed_crop')
+        seed_crop = float(form.getvalue('seed_crop'))
         p_i = form.getvalue('percent_incorporated')
         p_i = float(p_i)/100
         seed_treatment_formulation_name = form.getvalue('seed_treatment_formulation_name')
@@ -35,22 +35,28 @@ class TRexOutputPage(webapp.RequestHandler):
         r_s=float(r_s)
         b_w = form.getvalue('bandwidth')   #convert to ft
         b_w = float(b_w)/12
-        n_a = float(form.getvalue('noa'))
 
-        rate_out = []
-        day_out = []
 
-        for i in range(int(n_a)):
-            j=i+1
-            rate_temp = form.getvalue('rate'+str(j))
-            rate_out.append(float(rate_temp))
-            day_temp = form.getvalue('day'+str(j))
-            day_out.append(day_temp)  
 
         if Application_type=='Seed Treatment':
-           a_r_p=rate_out[0]       #coefficient used to estimate initial conc.
+           # a_r_p=seed_crop       #coefficient used to estimate initial conc.
+           n_a = 1
+           rate_out = []
+           day_out = []
+           rate_out.append(float(form.getvalue('rate_seed')))
+           day_out.append(float(form.getvalue('day_seed')))
+
         else:
-           a_r_p=0
+           # a_r_p=0
+           n_a = float(form.getvalue('noa'))
+           rate_out = []
+           day_out = []
+           for i in range(int(n_a)):
+               j=i+1
+               rate_temp = form.getvalue('rate'+str(j))
+               rate_out.append(float(rate_temp))
+               day_temp = float(form.getvalue('day'+str(j)))
+               day_out.append(day_temp)  
 
         h_l = form.getvalue('Foliar_dissipation_half_life')
         ld50_bird = form.getvalue('avian_ld50')
@@ -101,46 +107,10 @@ class TRexOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'trex2', 
                 'model_attributes':'T-Rex 1.5.1 Output'})
-
-        html = html + trex2_tables.table_1(chem_name, use, formu_name, 100*a_i, Application_type, r_s, 12*b_w, 100*p_i, den, h_l)
-        html = html + trex2_tables.table_2(n_a, rate_out, day_out)
-        html = html + trex2_tables.table_3(ld50_bird, lc50_mamm, NOAEC_bird, NOAEL_mamm, aw_bird_sm, aw_bird_md, 
-                                           aw_bird_lg, Species_of_the_tested_bird, tw_bird, x)
-        html = html + trex2_tables.table_4(ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, 
-                                           aw_mamm_lg, tw_mamm)
-
-
-        if Application_type == 'Seed Treatment':
-
-            html = html + trex2_tables.table_5(Application_type, a_r_p, a_i, den, ld50_bird, aw_bird_sm, tw_bird, x, m_s_r_p, 
-                                               NOAEC_bird, ld50_mamm, aw_mamm_sm, tw_mamm, NOAEL_mamm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg)
-
-        else:
-
-            html = html + trex2_tables.table_6(Application_type, n_a, rate_out, a_i, h_l, day_out)
-            html = html + trex2_tables.table_7(aw_bird_sm, aw_bird_md, aw_bird_lg, n_a, rate_out, a_i, h_l, day_out)
-            html = html + trex2_tables.table_8(lc50_bird, NOAEC_bird, n_a, rate_out, a_i, h_l, day_out)  
-            html = html + trex2_tables.table_9(aw_mamm_sm, aw_mamm_md, aw_mamm_lg, n_a, rate_out, a_i, h_l, day_out)
-            html = html + trex2_tables.table_10(aw_mamm_sm, aw_mamm_md, aw_mamm_lg, ld50_mamm, NOAEL_mamm, tw_mamm, n_a, rate_out, a_i, h_l, day_out)
-            html = html + trex2_tables.table_11(lc50_mamm, NOAEC_bird, n_a, rate_out, a_i, h_l, day_out)
-
-
-        if Application_type == 'Row/Band/In-furrow-Granular':
-
-            html = html + trex2_tables.table_12(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_sm, aw_mamm_sm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg, ld50_bird, ld50_mamm, tw_bird, tw_mamm, x)
-
-
-        elif Application_type == 'Row/Band/In-furrow-Liquid':
-
-            html = html + trex2_tables.table_13(Application_type, rate_out, a_i, p_i, b_w, aw_bird_sm, aw_mamm_sm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg, ld50_bird, ld50_mamm, tw_bird, tw_mamm, x)
-
-        elif Application_type == 'Broadcast-Granular':
-
-            html = html + trex2_tables.table_14(Application_type, rate_out, a_i, p_i, aw_bird_sm, aw_mamm_sm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg, ld50_bird, ld50_mamm, tw_bird, tw_mamm, x)
-
-        elif Application_type == 'Broadcast-Liquid':
-
-            html = html + trex2_tables.table_15(Application_type, rate_out, a_i, p_i, aw_bird_sm, aw_mamm_sm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg, ld50_bird, ld50_mamm, tw_bird, tw_mamm, x)          
+        html = html + trex2_tables.table_all(chem_name, use, formu_name, a_i, Application_type, r_s, b_w, p_i, den, h_l, n_a, rate_out, day_out,
+                      ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, aw_bird_md, aw_bird_lg, Species_of_the_tested_bird, 
+                      tw_bird, x, ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, aw_mamm_lg, tw_mamm,
+                      m_s_r_p)[0]
 
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})

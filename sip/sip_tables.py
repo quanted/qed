@@ -99,24 +99,29 @@ def table_all(chemical_name, select_receptor, bw_bird, bw_mamm, sol, ld50, aw_bi
 def table_1(chemical_name, select_receptor, bw_bird, bw_mamm, sol, ld50, aw_bird, tw_bird, aw_mamm, tw_mamm, mineau, noaec, noael):
         #pre-table 1
         html = """
-            <div class="out_1">
-              <H3>User Inputs: Chemical Identity</H3>
-              <H4>Application and Chemical Information</H4>
-            </div>
+        <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs</H3>
+        <div class="out_">
+            <H4 class="out_1 collapsible" id="section2"><span></span>Application and Chemical Information</H4>
+                <div class="out_ container_output">
         """
         #table 1
         t1data = gett1data(chemical_name, select_receptor, bw_bird, bw_mamm, sol, ld50, aw_bird, tw_bird, aw_mamm, tw_mamm, mineau, noaec, noael)
         t1rows = gethtmlrowsfromcols(t1data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
+        html = html + """
+                </div>
+        </div>
+        """
         return html
 
 def table_2(aw_mamm, bw_mamm, sol, ld50, tw_mamm, noael):
         #pre-table 1
         html = """
-            <div class="out_1">
-              <H3>User Inputs: Chemical Identity</H3>
-              <H4>Mammalian Results (%s kg)</H4>
-            </div>
+        <br>
+        <H3 class="out_1 collapsible" id="section3"><span></span>SIP Output</H3>
+        <div class="out_1">
+            <H4 class="out_1 collapsible" id="section4"><span></span>Mammalian Results (%s kg)</H4>
+                <div class="out_ container_output">
         """%(aw_mamm)
         #table 1        
         dose_mamm_out1 = sip_model.dose_mamm(sip_model.fw_mamm(bw_mamm),sol,bw_mamm)
@@ -134,14 +139,15 @@ def table_2(aw_mamm, bw_mamm, sol, ld50, tw_mamm, noael):
 
         t2rows = gethtmlrowsfromcols(t2data,pvrheadings)
         html = html + tmpl.render(Context(dict(data=t2rows, headings=pvrheadings)))
+        html = html + """
+                </div>
+        """
         return html               
 def table_3(aw_bird, bw_bird, sol, ld50, tw_bird, mineau, noaec):
         #pre-table 1
         html = """
-            <div class="out_1">
-              <H3>User Inputs: Chemical Identity</H3>
-              <H4>Mammalian Results (%s kg)</H4>
-            </div>
+            <H4 class="out_1 collapsible" id="section4"><span></span>Avian Results (%s kg)</H4>
+                <div class="out_ container_output">
         """%(aw_bird)
         #table 1      
         dose_bird_out1 = sip_model.dose_bird(sip_model.fw_bird(bw_bird),sol,bw_bird), 
@@ -155,4 +161,8 @@ def table_3(aw_bird, bw_bird, sol, ld50, tw_bird, mineau, noaec):
         t3data = gett3data(dose_bird_out1,dose_bird_out2, at_bird_out1, det_out1, acute_bird_out1, chron_bird_out1, acuonb_bird_out1, chronconb_bird_out1)
         t3rows = gethtmlrowsfromcols(t3data,pvrheadings)
         html = html + tmpl.render(Context(dict(data=t3rows, headings=pvrheadings)))
+        html = html + """
+                </div>
+        </div>
+        """
         return html

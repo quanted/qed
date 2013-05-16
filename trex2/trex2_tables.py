@@ -903,24 +903,26 @@ def table_sum_15(LD50_bl_bird_sm_out, LD50_bl_mamm_sm_out, LD50_bl_bird_md_out, 
 def table_1(chemical_name, Use, Formulated_product_name, percent_ai, Application_type, r_s, b_w, percent_incorporated, density_of_product, Foliar_dissipation_half_life):
         #pre-table 1
         html = """
-            <div class="out_1">
-              <H3>User Inputs: </H3>
-              <H4>Chemical Properties</H4>
-            </div>
+        <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs:</H3>
+        <div class="out_">
+            <H4 class="out_1 collapsible" id="section2"><span></span>Chemical Properties</H4>
+                <div class="out_ container_output">
         """
         #table 1
         t1data = gett1data(chemical_name, Use, Formulated_product_name, percent_ai, Application_type, r_s, b_w, percent_incorporated,
                            density_of_product, Foliar_dissipation_half_life)
         t1rows = gethtmlrowsfromcols(t1data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
+        html = html + """
+                </div>
+        """
         return html
 
 def table_2(noa, rate_out, day_out):
         # #pre-table 2
         html = """
-            <div class="out_2">
-              <H4>Chemical Application (n=%s)</H4>
-            </div>
+            <H4 class="out_2 collapsible" id="section3"><span></span>Chemical Application (n=%s)</H4>
+                <div class="out_ container_output">
         """ %(noa)
         #table 2
         t2data_all=[]
@@ -932,34 +934,41 @@ def table_2(noa, rate_out, day_out):
         t2data = dict([(k,[t2data_ind[k][0] for t2data_ind in t2data_all]) for k in t2data_temp])
         t2rows = gethtmlrowsfromcols(t2data,pvaheadings)
         html = html + tmpl.render(Context(dict(data=t2rows, headings=pvaheadings)))
+        html = html + """
+                </div>
+        """
         return html
 
 def table_3(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s, bw_assessed_bird_m, bw_assessed_bird_l, Species_tested_bird, bw_tested_bird, mineau_scaling_factor):
         #pre-table 3
         html = """
-            <div class="out_3">
-              <H4>Toxicity Properties (Avian)</H4>
-            </div>
+            <H4 class="out_3 collapsible" id="section4"><span></span>Toxicity Properties (Avian)</H4>
+                <div class="out_ container_output">
         """
         #table 3
         t3data = gett3data(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s, bw_assessed_bird_m, 
             bw_assessed_bird_l, Species_tested_bird, bw_tested_bird, mineau_scaling_factor)
         t3rows = gethtmlrowsfromcols(t3data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t3rows, headings=pvuheadings)))
+        html = html + """
+                </div>
+        """
         return html
 
 def table_4(mammalian_ld50, mammalian_lc50, mammalian_NOAEC, mammalian_NOAEL, bw_assessed_mamm_s, bw_assessed_mamm_m, bw_assessed_mamm_l, bw_tested_mamm):
         #pre-table 4
         html = """
-            <div class="out_4">
-              <H4>Toxicity Properties (Mammal)</H4>
-            </div>
+            <H4 class="out_4 collapsible" id="section5"><span></span>Toxicity Properties (Mammal)</H4>              <div class="out_ container_output">
         """
         #table 4
         t4data = gett4data(mammalian_ld50, mammalian_lc50, mammalian_NOAEC, mammalian_NOAEL, bw_assessed_mamm_s, bw_assessed_mamm_m, 
               bw_assessed_mamm_l, bw_tested_mamm)
         t4rows = gethtmlrowsfromcols(t4data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t4rows, headings=pvuheadings)))
+        html = html + """
+                </div>
+        </div>
+        """
         return html
 
 def table_5(Application_type, a_r_p, a_i, den, ld50_bird, aw_bird_sm, tw_bird, x, m_s_r_p, NOAEC_bird, ld50_mamm, aw_mamm_sm, tw_mamm, NOAEL_mamm, aw_bird_md, aw_mamm_md, aw_bird_lg,  aw_mamm_lg):
@@ -1022,6 +1031,7 @@ def table_6(Application_type, n_a, rate_out, a_i, h_l, day_out):
         html = html + tmpl.render(Context(dict(data=t6rows, headings=pv6headings)))
         return {'html':html, 'EEC_diet_SG':EEC_diet_SG, 'EEC_diet_TG':EEC_diet_TG, 'EEC_diet_BP':EEC_diet_BP, 'EEC_diet_FR':EEC_diet_FR, 'EEC_diet_AR':EEC_diet_AR}
 
+
 def table_7(aw_bird_sm, aw_bird_md, aw_bird_lg, n_a, rate_out, a_i, h_l, day_out):
         #pre-table 7
         html = """
@@ -1056,6 +1066,7 @@ def table_7(aw_bird_sm, aw_bird_md, aw_bird_lg, n_a, rate_out, a_i, h_l, day_out
                              'EEC_dose_bird_BP_sm':EEC_dose_bird_BP_sm, 'EEC_dose_bird_BP_md':EEC_dose_bird_BP_md, 'EEC_dose_bird_BP_lg':EEC_dose_bird_BP_lg, 'EEC_dose_bird_FP_sm':EEC_dose_bird_FP_sm, 'EEC_dose_bird_FP_md':EEC_dose_bird_FP_md, 'EEC_dose_bird_FP_lg':EEC_dose_bird_FP_lg,
                              'EEC_dose_bird_AR_sm':EEC_dose_bird_AR_sm, 'EEC_dose_bird_AR_md':EEC_dose_bird_AR_md, 'EEC_dose_bird_AR_lg':EEC_dose_bird_AR_lg, 'EEC_dose_bird_SE_sm':EEC_dose_bird_SE_sm, 'EEC_dose_bird_SE_md':EEC_dose_bird_SE_md, 'EEC_dose_bird_SE_lg':EEC_dose_bird_SE_lg}
 
+
 def table_8(lc50_bird, NOAEC_bird, n_a, rate_out, a_i, h_l, day_out):
         #pre-table 8
         html = """
@@ -1083,6 +1094,7 @@ def table_8(lc50_bird, NOAEC_bird, n_a, rate_out, a_i, h_l, day_out):
                              'ARQ_diet_bird_BP_A':ARQ_diet_bird_BP_A, 'ARQ_diet_bird_BP_C':ARQ_diet_bird_BP_C,
                              'ARQ_diet_bird_FP_A':ARQ_diet_bird_FP_A, 'ARQ_diet_bird_FP_C':ARQ_diet_bird_FP_C, 
                              'ARQ_diet_bird_AR_A':ARQ_diet_bird_AR_A, 'ARQ_diet_bird_AR_C':ARQ_diet_bird_AR_C}
+
 
 def table_9(aw_mamm_sm, aw_mamm_md, aw_mamm_lg, n_a, rate_out, a_i, h_l, day_out):
         #pre-table 9
@@ -1117,6 +1129,7 @@ def table_9(aw_mamm_sm, aw_mamm_md, aw_mamm_lg, n_a, rate_out, a_i, h_l, day_out
         return {'html':html, 'EEC_dose_mamm_SG_sm':EEC_dose_mamm_SG_sm, 'EEC_dose_mamm_SG_md':EEC_dose_mamm_SG_md, 'EEC_dose_mamm_SG_lg':EEC_dose_mamm_SG_lg, 'EEC_dose_mamm_TG_sm':EEC_dose_mamm_TG_sm, 'EEC_dose_mamm_TG_md':EEC_dose_mamm_TG_md, 'EEC_dose_mamm_TG_lg':EEC_dose_mamm_TG_lg,
                              'EEC_dose_mamm_BP_sm':EEC_dose_mamm_BP_sm, 'EEC_dose_mamm_BP_md':EEC_dose_mamm_BP_md, 'EEC_dose_mamm_BP_lg':EEC_dose_mamm_BP_lg, 'EEC_dose_mamm_FP_sm':EEC_dose_mamm_FP_sm, 'EEC_dose_mamm_FP_md':EEC_dose_mamm_FP_md, 'EEC_dose_mamm_FP_lg':EEC_dose_mamm_FP_lg,
                              'EEC_dose_mamm_AR_sm':EEC_dose_mamm_AR_sm, 'EEC_dose_mamm_AR_md':EEC_dose_mamm_AR_md, 'EEC_dose_mamm_AR_lg':EEC_dose_mamm_AR_lg, 'EEC_dose_mamm_SE_sm':EEC_dose_mamm_SE_sm, 'EEC_dose_mamm_SE_md':EEC_dose_mamm_SE_md, 'EEC_dose_mamm_SE_lg':EEC_dose_mamm_SE_lg}
+
 
 def table_10(aw_mamm_sm, aw_mamm_md, aw_mamm_lg, ld50_mamm, NOAEL_mamm, tw_mamm, n_a, rate_out, a_i, h_l, day_out):
         #pre-table 10
@@ -1205,6 +1218,7 @@ def table_11(lc50_mamm, NOAEC_bird, n_a, rate_out, a_i, h_l, day_out):
                              'ARQ_diet_mamm_BP':ARQ_diet_mamm_BP, 'CRQ_diet_mamm_BP':CRQ_diet_mamm_BP, 'ARQ_diet_mamm_FP':ARQ_diet_mamm_FP, 'CRQ_diet_mamm_FP':CRQ_diet_mamm_FP,
                              'ARQ_diet_mamm_AR':ARQ_diet_mamm_AR, 'CRQ_diet_mamm_AR':CRQ_diet_mamm_AR}
 
+
 def table_12(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_sm, aw_mamm_sm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg, ld50_bird, ld50_mamm, tw_bird, tw_mamm, x):
         #pre-table 12
         html = """
@@ -1227,6 +1241,7 @@ def table_12(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_sm, aw_mamm
                              'LD50_rg_bird_md':LD50_rg_bird_md, 'LD50_rg_mamm_md':LD50_rg_mamm_md,
                              'LD50_rg_bird_lg':LD50_rg_bird_lg, 'LD50_rg_mamm_lg':LD50_rg_mamm_lg}
 
+
 def table_13(Application_type, rate_out, a_i, p_i, b_w, aw_bird_sm, aw_mamm_sm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg, ld50_bird, ld50_mamm, tw_bird, tw_mamm, x):
         #pre-table 13
         html = """
@@ -1248,6 +1263,7 @@ def table_13(Application_type, rate_out, a_i, p_i, b_w, aw_bird_sm, aw_mamm_sm, 
         return {'html':html, 'LD50_rl_bird_sm':LD50_rl_bird_sm, 'LD50_rl_mamm_sm':LD50_rl_mamm_sm,
                              'LD50_rl_bird_md':LD50_rl_bird_md, 'LD50_rl_mamm_md':LD50_rl_mamm_md,
                              'LD50_rl_bird_lg':LD50_rl_bird_lg, 'LD50_rl_mamm_lg':LD50_rl_mamm_lg}
+
 
 def table_14(Application_type, rate_out, a_i, p_i, aw_bird_sm, aw_mamm_sm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg, ld50_bird, ld50_mamm, tw_bird, tw_mamm, x):
         #pre-table 14
@@ -1292,4 +1308,4 @@ def table_15(Application_type, rate_out, a_i, p_i, aw_bird_sm, aw_mamm_sm, aw_bi
         return {'html':html, 'LD50_bl_bird_sm':LD50_bl_bird_sm, 'LD50_bl_mamm_sm':LD50_bl_mamm_sm,
                              'LD50_bl_bird_md':LD50_bl_bird_md, 'LD50_bl_mamm_md':LD50_bl_mamm_md,
                              'LD50_bl_bird_lg':LD50_bl_bird_lg, 'LD50_bl_mamm_lg':LD50_bl_mamm_lg}
-                             
+

@@ -35,7 +35,6 @@ class SelectChemicalInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'chemical_selection_jqueryui.html', {'ChemicalNames':chemicalNames})
         html = html + str(select_chemical_db.SelectChemicalInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

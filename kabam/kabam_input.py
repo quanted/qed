@@ -24,24 +24,28 @@ class KabamInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'kabam-jQuery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'kabam','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})
-        html = html + template.render(templatepath + '04uberinput_start.html', {
+        html = html + template.render(templatepath + '04uberinput_start_tabbed.html', {
                 'model':'kabam', 
                 'model_attributes':'Kabam Inputs'})
-        html = html + """<table><H4  align="center" id="id_tab">
-            |<a class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </a>|
-             <a class="Avian" style="font-weight:bold"> Avian </a>|
-             <a class="Mammal" style="font-weight:bold"> Mammal </a>|
-             <a class="LargeFish" style="font-weight:bold"> Large Fish </a>|
-             <a class="MediumFish" style="font-weight:bold"> Medium Fish </a>|
-             <a class="SmallFish" style="font-weight:bold"> Small Fish </a>|
-             <a class="Filterfeeders" style="font-weight:bold"> Filter feeders </a>|
-             <a class="Invertebrates" style="font-weight:bold"> Invertebrates </a>|
-             <a class="Zooplankton" style="font-weight:bold"> Zooplankton </a>|
-             <a class="Phytoplankton" style="font-weight:bold"> Phytoplankton </a>|
-             <a class="Sediment" style="font-weight:bold"> Sediment </a>|
-             <a class="Constants" style="font-weight:bold"> Constants </a>|
-            </H4>"""
-        html = html + """</table><br><table class="tab tab_Chemical" border="0">"""
+        html = html + """
+        <div id="input_nav">
+          <ul>
+            <li>| <a class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </a></li>
+            <li>| <a class="Avian" style="font-weight:bold"> Avian </a></li>
+            <li>| <a class="Mammal" style="font-weight:bold"> Mammal </a></li>
+            <li>| <a class="LargeFish" style="font-weight:bold"> Large Fish </a></li>
+            <li>| <a class="MediumFish" style="font-weight:bold"> Medium Fish </a></li>
+            <li>| <a class="SmallFish" style="font-weight:bold"> Small Fish </a></li>
+            <li>| <a class="Filterfeeders" style="font-weight:bold"> Filter feeders </a></li>
+            <li>| <a class="Invertebrates" style="font-weight:bold"> Invertebrates </a></li>
+            <li>| <a class="Zooplankton" style="font-weight:bold"> Zooplankton </a></li>
+            <li>| <a class="Phytoplankton" style="font-weight:bold"> Phytoplankton </a></li>
+            <li>| <a class="Sediment" style="font-weight:bold"> Sediment </a></li>
+            <li>| <a class="Constants" style="font-weight:bold"> Constants </a>|</li>
+          </ul>
+        </div>
+        """
+        html = html + """<br><table class="tab tab_Chemical" border="0">"""
         html = html + str(Kabamdb.KabamInp_chem())
         html = html + """</table><table class="tab tab_Avian" border="0" style="display:none">"""
         html = html + str(Kabamdb.KabamInp_bird())

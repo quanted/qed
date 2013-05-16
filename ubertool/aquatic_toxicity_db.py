@@ -11,20 +11,21 @@ from django.db import models
 from google.appengine.api import users
 from google.appengine.ext import db
 from aquatic_toxicity import AquaticToxicity
+import datetime
 
 class ATInp(forms.Form):
-    user_id = users.get_current_user().user_id()
-    user = users.get_current_user()
-    user_id = user.user_id()
-    q = db.Query(AquaticToxicity)
-    q.filter('user =',user)
-    uses = ()
-    uses += ((None,None),)
-    for use in q:
+    #user_id = users.get_current_user().user_id()
+    #user = users.get_current_user()
+    #user_id = user.user_id()
+    #q = db.Query(AquaticToxicity)
+    #q.filter('user =',user)
+    #uses = ()
+    #uses += ((None,None),)
+    #for use in q:
         #logger.info(use.to_xml())
-        uses += ((use.config_name,use.config_name),)
-    user_use_configuration = forms.ChoiceField(label="Aquatic Toxicity Saved Use Configuration",required=True, choices=uses)
-    config_name = forms.CharField(label="Aquatic Toxicity Configuration Name", initial="aquatic-toxicity-config-%s"%user_id)
+    #    uses += ((use.config_name,use.config_name),)
+    user_aqua_configuration = forms.ChoiceField(label="Aquatic Toxicity Saved Use Configuration",required=True)
+    config_name = forms.CharField(label="Aquatic Toxicity Configuration Name", initial="aquatic-toxicity-config-%s"%datetime.datetime.now())
     acute_toxicity_target_concentration_for_freshwater_fish = forms.FloatField(label='Acute Toxicity Target Concentration For Most Sensitive Freshwater Fish')
     chronic_toxicity_target_concentration_for_freshwater_fish = forms.FloatField(label='Chronic Toxicity Target Concentration For Most Sensitive Freshwater Fish')
     acute_toxicity_target_concentration_for_freshwater_invertebrates = forms.FloatField(label='Acute Toxicity Target Concentration For Most Sensitive Freshwater Invertebrates')

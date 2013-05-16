@@ -24,8 +24,18 @@ class CASService(webapp.RequestHandler):
         chem_json = simplejson.dumps({"chemical_name":results})
         self.response.headers['Content-Type'] = 'application/json'
         self.response.out.write(chem_json)
-        
-app = webapp.WSGIApplication([('/cas/(.*)', CASService)], debug=True)
+
+class CASJsonService(webapp.RequestHandler):
+    
+    def get(self):
+        cas = CASGql()
+        results = cas.getAllChemNamesCASNumsMongoJson()
+        chem_json = simplejson.dumps(results)
+        self.response.headers['Content-Type'] = 'application/json'
+        self.response.out.write(chem_json)
+
+app = webapp.WSGIApplication([('/cas/(.*)', CASService),
+								('/cas-all/json', CASJsonService)], debug=True)
 
 def main():
     run_wsgi_app(app)

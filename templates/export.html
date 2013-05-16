@@ -7,9 +7,13 @@ $(document).ready(function () {
         return this.animate({opacity: 'toggle', height: 'toggle'}, speed, easing, callback);
     };
 
+    var sect_all = $('.collapsible').map(function() {
+    	return this.id;
+    }).get().join();
+
 	$('.collapsible').collapsible({
-		defaultOpen: 'section1,section2',
 		speed: 'slow',
+		defaultOpen: ""+sect_all+"",
         //replace the standard slideUp with custom function
         animateOpen: function (elem, opts) {
             elem.next().slideFadeToggle(opts.speed);
@@ -20,8 +24,10 @@ $(document).ready(function () {
         }
 	});
 
-var jq_html = $('<div />').append($("div.articles_output").children('table[class*=out_], div[class*=out_]:not(div#chart1,table:hidden)').clone()).html();
-var n_plot=$('div[id^="chart"]').size()
+var jq_html = $('<div />').append($("div.articles_output").children('table[class*=out_], div[class*=out_], H3[class*=out_], H4[class*=out_]:not(div#chart1,table:hidden)').clone()).html();
+var n_plot = $('div[id^="chart"]').size();
+
+// console.log(jq_html);
 
 i=1;
 var imgData = [];
@@ -30,7 +36,6 @@ while(i <= n_plot){
     i=i+1    
 }
 imgData_json = JSON.stringify(imgData)
-
 
 	$('<tr style="display:none"><td><input type="hidden" name="pdf_t"></td></tr>')
     .appendTo('.getpdf')

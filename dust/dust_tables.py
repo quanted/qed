@@ -254,39 +254,46 @@ def table_sum_output(granbirdderm_out, granherpderm_out, granmammderm_out,
 def table_1(pvuheadings, tmpl, chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res):
         #pre-table 1
         html = """
-            <div class="out_1">
-              <H3>User Inputs: Chemical Identity</H3>
-              <H4>Application and Chemical Information</H4>
-            </div>
+        <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs: Chemical Identity</H3>
+        <div class="out_">
+            <H4 class="out_1 collapsible" id="section2"><span></span>Application and Chemical Information</H4>
+                <div class="out_ container_output">
         """
         #table 1
         t1data = gett1data(chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res)
         t1rows = gethtmlrowsfromcols(t1data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
+        html = html + """
+                </div>
+        """
         return html
 
 def table_2(pvuheadings, tmpl, bird_acute_oral_study, bird_study_add_comm,low_bird_acute_ld50, test_bird_bw, mineau, 
             mamm_acute_derm_study,mamm_study_add_comm, mam_acute_derm_ld50, test_mam_bw):
         # #pre-table 2
         html = """
-            <div class="out_2">
-              <H4>Toxicity Properties</H4>
-            </div>
+            <H4 class="out_2 collapsible" id="section3"><span></span>Toxicity Properties</H4>
+                <div class="out_ container_output">
         """
         #table 2
         t2data = gett2data(bird_acute_oral_study, bird_study_add_comm,low_bird_acute_ld50, test_bird_bw, mineau, 
             mamm_acute_derm_study,mamm_study_add_comm, mam_acute_derm_ld50, test_mam_bw)
         t2rows = gethtmlrowsfromcols(t2data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t2rows, headings=pvuheadings)))
+        html = html + """
+                </div>
+        </div>
+        """
         return html
 
 def table_3(pvuheadings, tmpl, ar_lb, frac_pest_surface):
         #pre-table 3
         html = """
-            <div class="out_3">
-              <H3>Exposure Estimates</H3>
-              <H4>Granular Application</H4>
-            </div>
+        <br>
+        <H3 class="out_3 collapsible" id="section4"><span></span>Exposure Estimates</H3>
+        <div class="out_">
+            <H4 class="out_3 collapsible" id="section5"><span></span>Granular Application</H4>
+                <div class="out_ container_output">
         """
         #table 3
         granbirdderm = dust_model.gran_bird_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface)
@@ -295,15 +302,16 @@ def table_3(pvuheadings, tmpl, ar_lb, frac_pest_surface):
         t3data = gett3data(granbirdderm,granherpderm,granmammderm)
         t3rows = gethtmlrowsfromcols(t3data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t3rows, headings=pvuheadings)))
+        html = html + """
+                </div>
+        """
         return {'html':html, 'granbirdderm':granbirdderm, 'granherpderm':granherpderm, 'granmammderm':granmammderm}
 
 def table_4(pvuheadings, tmpl, ar_lb, dislodge_fol_res):
         #pre-table 4
         html = """     
-            <div class="out_4">
-                <H4>Foliar Spray Application</H4>
-                <p>(contact with foliar residues and directly applied spray)</p>
-            </div>
+            <H4 class="out_4 collapsible" id="section5"><span></span>Foliar Spray Application (contact with foliar residues and directly applied spray)</H4>
+                <div class="out_ container_output">
         """
         #table 4
         folbirdderm = dust_model.fol_bird_ex_derm_dose(dislodge_fol_res,dust_model.ar_mg(ar_lb))
@@ -312,15 +320,16 @@ def table_4(pvuheadings, tmpl, ar_lb, dislodge_fol_res):
         t4data = gett4data(folbirdderm,folherpderm,folmammderm)
         t4rows = gethtmlrowsfromcols(t4data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t4rows, headings=pvuheadings)))
+        html = html + """
+                </div>
+        """
         return {'html':html, 'folbirdderm':folbirdderm, 'folherpderm':folherpderm, 'folmammderm':folmammderm}
 
 def table_5(pvuheadings, tmpl, ar_lb, frac_pest_surface):
         #pre-table 5
         html = """         
-            <div class="out_5">
-                <H4>Bare Ground Spray Application</H4>
-                <p>(contact with soil residues and directly applied spray)</p>
-            </div>
+            <H4 class="out_5 collapsible" id="section6"><span></span>Bare Ground Spray Application (contact with soil residues and directly applied spray)</H4>
+                <div class="out_ container_output">
         """
         #table 5
         barebirdderm = dust_model.bgs_bird_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface)
@@ -329,17 +338,21 @@ def table_5(pvuheadings, tmpl, ar_lb, frac_pest_surface):
         t5data = gett5data(barebirdderm,bareherpderm,baremammderm)
         t5rows = gethtmlrowsfromcols(t5data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t5rows, headings=pvuheadings)))
+        html = html + """
+                </div>
+        </div>
+        """
         return {'html':html, 'barebirdderm':barebirdderm, 'bareherpderm':bareherpderm, 'baremammderm':baremammderm}
 
 
 def table_6(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw):
         #pre-table 6
         html = """        
-            <br>
-            <div class="out_6">
-                <H3>Ratio of Exposure to Toxicity</H3>
-                <H4>Granular</H4>
-            </div>
+        <br>
+        <H3 class="out_6 collapsible" id="section7"><span></span>Ratio of Exposure to Toxicity</H3>
+        <div class="out_">
+            <H4 class="out_6 collapsible" id="section8"><span></span>Granular</H4>
+                <div class="out_ container_output">
         """
         #table 6
         granbirdrisk = dust_model.ratio_gran_bird(dust_model.gran_bird_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau))
@@ -353,15 +366,17 @@ def table_6(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, te
         t6data = gett6data(granbirdrisk,granbirdmess,granreprisk,granrepmess,granamphibrisk,granamphibmess,granmammrisk,granmammmess)
         t6rows = gethtmlrowsfromcols(t6data,pvrheadings)
         html = html + tmpl.render(Context(dict(data=t6rows, headings=pvrheadings)))
+        html = html + """
+                </div>
+        """
         return {'html':html, 'granbirdrisk':granbirdrisk, 'granreprisk':granreprisk, 
                 'granamphibrisk':granamphibrisk, 'granmammrisk':granmammrisk}
 
 def table_7(pvrheadings, tmpl, ar_lb, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw):
         #pre-table 7
         html = """         
-            <div class="out_7">
-                <H4>Foliar Spray</H4>
-            </div>
+            <H4 class="out_7 collapsible" id="section9"><span></span>Foliar Spray</H4>
+                <div class="out_ container_output">
         """
         #table 7
         folbirdrisk = dust_model.ratio_fol_bird(dust_model.fol_bird_ex_derm_dose(dislodge_fol_res,dust_model.ar_mg(ar_lb)),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau))
@@ -375,6 +390,9 @@ def table_7(pvrheadings, tmpl, ar_lb, dislodge_fol_res, low_bird_acute_ld50, tes
         t7data = gett7data(folbirdrisk,folbirdmess,folreprisk,folrepmess,folamphibrisk,folamphibmess,folmammrisk,folmammmess)
         t7rows = gethtmlrowsfromcols(t7data,pvrheadings)
         html = html + tmpl.render(Context(dict(data=t7rows, headings=pvrheadings)))
+        html = html + """
+                </div>
+        """
         return {'html':html, 'folbirdrisk':folbirdrisk, 'folreprisk':folreprisk, 
                 'folamphibrisk':folamphibrisk, 'folmammrisk':folmammrisk}
 
@@ -382,9 +400,8 @@ def table_7(pvrheadings, tmpl, ar_lb, dislodge_fol_res, low_bird_acute_ld50, tes
 def table_8(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw):
         #pre-table 8
         html = """          
-            <div class="out_8">
-                <H4>Bare Ground Spray</H4>
-            </div>
+            <H4 class="out_8 collapsible" id="section10"><span></span>Bare Ground Spray</H4>
+                <div class="out_ container_output">
         """
         #table 8
         barebirdrisk = dust_model.ratio_bgs_bird(dust_model.bgs_bird_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau))
@@ -398,5 +415,9 @@ def table_8(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, te
         t8data = gett8data(barebirdrisk,barebirdmess,barereprisk,barerepmess,bareamphibrisk,bareamphibmess,baremammrisk,baremammmess)
         t8rows = gethtmlrowsfromcols(t8data,pvrheadings)
         html = html + tmpl.render(Context(dict(data=t8rows, headings=pvrheadings)))
+        html = html + """
+                </div>
+        </div>
+        """
         return {'html':html, 'barebirdrisk':barebirdrisk, 'barereprisk':barereprisk, 
                 'bareamphibrisk':bareamphibrisk, 'baremammrisk':baremammrisk}

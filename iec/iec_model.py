@@ -24,7 +24,7 @@ class iec(object):
             self.F8 = self.F8
         return self.F8
         
-    def chance_f(self):    
+    def chance_f(self):
         self.chance = 1 / self.F8
         return self.chance
 

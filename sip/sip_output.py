@@ -30,7 +30,7 @@ class SIPExecutePage(webapp.RequestHandler):
         mineau = form.getvalue('mineau_scaling_factor')
         noaec = form.getvalue('NOAEC')
         noael = form.getvalue('NOAEL')
-            
+        sip_obj = sip_model.sip(chemical_name, select_receptor, bw_bird, bw_mamm, sol, ld50, aw_bird, tw_bird, mineau, aw_mamm, tw_mamm, noaec, noael)
         text_file = open('sip/sip_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
@@ -45,7 +45,7 @@ class SIPExecutePage(webapp.RequestHandler):
 
         # html = html + sip_tables.table_1(chemical_name, select_receptor, bw_bird, bw_mamm, sol, ld50, aw_bird, tw_bird, aw_mamm, tw_mamm, mineau, noaec, noael)      
 
-        html = html + sip_tables.table_all(chemical_name, select_receptor, bw_bird, bw_mamm, sol, ld50, aw_bird, tw_bird, aw_mamm, tw_mamm, mineau, noaec, noael)
+        html = html + sip_tables.table_all(sip_obj)
 
        
         # html = html + """

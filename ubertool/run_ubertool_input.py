@@ -20,7 +20,7 @@ class UbertoolInputPage(webapp.RequestHandler):
         ubertool_mongo_server = os.environ['UBERTOOL_MONGO_SERVER']
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + 'ubertool_config_jquery.html', {'ubertool_server':ubertool_batch_server,'ubertool_mongo_server':ubertool_mongo_server})
+        html = html + template.render(templatepath + 'ubertool_config_jquery.html', {'ubertool_server':ubertool_mongo_server,'ubertool_mongo_server':ubertool_mongo_server})
         html = html + template.render(templatepath + '02uberintroblock_nomodellinks.html', {'title2':'Ubertool Inputs', 'model':'run_ubertool'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberinput_batch_start.html', {'model':'run_ubertool'})

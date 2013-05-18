@@ -76,6 +76,22 @@ server.get('/all-cas', function(req, res, next){
     });
 });
 
+server.post('/ubertool/batch/:config', function(req, res, next){
+    var config_type = req.params.config_type;
+    var config = req.params.config;
+    var body = '';
+    var json = '';
+    req.on('data', function (data)
+    {
+        body += data;
+    });
+    req.on('end', function ()
+    {
+        json = JSON.parse(body);
+        console.log("POST for Configuration Name: " + config + " config type: " + config_type + " json data: " + json);
+    });
+});
+
 //Ubertool Services
 server.get('/ubertool/:config_type/config_names', function(req, res, next){
     var config_type = req.params.config_type;

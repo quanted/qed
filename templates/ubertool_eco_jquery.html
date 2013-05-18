@@ -51,7 +51,7 @@ function submitConfiguration()
 		var val = document_form[i].value;
 		form_data[id] = val;
 	}
-	var batch_config_props = null;
+	form_data['created'] = getDateTime();
 	$.ajax({
 		url:"{{ubertool_service_url}}/ubertool/eco/"+$("#id_config_name")[0].value,
 		async: true,
@@ -59,6 +59,31 @@ function submitConfiguration()
 		data: JSON.stringify(form_data)
 	});
 	window.location = "run_ubertool.html";
+
+}
+
+function getDateTime() {
+
+    var date = new Date();
+
+    var hour = date.getHours();
+    hour = (hour < 10 ? "0" : "") + hour;
+
+    var min  = date.getMinutes();
+    min = (min < 10 ? "0" : "") + min;
+
+    var sec  = date.getSeconds();
+    sec = (sec < 10 ? "0" : "") + sec;
+
+    var year = date.getFullYear();
+
+    var month = date.getMonth() + 1;
+    month = (month < 10 ? "0" : "") + month;
+
+    var day  = date.getDate();
+    day = (day < 10 ? "0" : "") + day;
+
+    return year + ":" + month + ":" + day + ":" + hour + ":" + min + ":" + sec;
 
 }
 </script>

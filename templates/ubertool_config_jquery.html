@@ -6,27 +6,22 @@ function submitBatchConfigurations()
 	var document_form = document.forms[0];
 	var batch_size = (document_form.length-3)/8;
 	var form_data = {};
-	for(i = batch_size + 1; i < document_form.length - 2; i++)
+	for(var i = batch_size + 1; i < document_form.length - 2; i++)
 	{
-		var id = (document_form[i].id).replace("id_","");
+		var name = document_form[i].name;
 		var val = document_form[i].value;
-		form_data[id] = val;
+		form_data[name] = val;
 	}
-	var batch_config_props = null;
-	$.ajax({
-		url:"{{ubertool_mongo_server}}/ubertool/ubertool/"+$("#id_config_name")[0].value,
-		async: true,
-		type: 'POST',
-		data: JSON.stringify(form_data),
-		success: function(form_data) {
-			batch_config_props = form_data
-		}
-	});
+
+	var batch_config_props = coalesceUbertoolRunConfigurationParameters(form_data, batch_size);
+
+	saveUbertoolRunProperties(batch_config_props,batch_size);
+
 	var batch_config_name = null
 	if(batch_config_props != null)
 	{
 		$.ajax({
-			url:"{{ ubertool_server }}batch",
+			url:"{{ubertool_mongo_server}}/batch",
 			async: false,
 			contentType:"application/json; charset=utf-8",
 			type: 'POST',
@@ -40,15 +35,296 @@ function submitBatchConfigurations()
 
 }
 
+//TODO: Create method that creates an array of configuration properties per ubertool run and includes the associated config names
+function coalesceUbertoolRunConfigurationParameters(form_data, batch_size)
+{
+	var batch_config_props = {};
+	var ubertools = []
+	//loop through each run in batch
+	for (var i = 0; i < batch_size; i++) {
+		var ubertool_run_config_properties = {};
+		ubertool_run_config_properties['config_name'] = form_data['config_name_'+i];
+		//TODO: Pull back use config properties from config name
+		ubertool_run_config_properties = retrieveUseConfigProperties(form_data,i,ubertool_run_config_properties);
+		//TODO: Pull back pest config properties from config name
+		ubertool_run_config_properties = retrievePestConfigProperties(form_data,i,ubertool_run_config_properties);
+		//TODO: Pull back expo config properties from config name
+		ubertool_run_config_properties = retrieveExpoConfigProperties(form_data,i,ubertool_run_config_properties);
+		//TODO: Pull back aqua config properties from config name
+		ubertool_run_config_properties = retrieveAquaConfigProperties(form_data,i,ubertool_run_config_properties);
+		//TODO: Pull back terra config properties from config name
+		ubertool_run_config_properties = retrieveTerreConfigProperties(form_data,i,ubertool_run_config_properties);
+		//TODO: Pull back eco config properties from config name
+		ubertool_run_config_properties = retrieveEcoConfigProperties(form_data,i,ubertool_run_config_properties);
+		ubertools.push(ubertool_run_config_properties);
+	};
+	batch_config_props['ubertools'] = ubertools;
+	batch_config_props['created'] = getDateTime();
+	batch_config_props['id'] = "batch-"+getDateTime();
+	return batch_config_props;
+}
+
+function retrieveAquaConfigProperties(form_data,ubertool_run_index,ubertool_run_config_properties)
+{
+	var config_key = "aquatic_configuration_" + ubertool_run_index;
+	var config_name = form_data[config_key];
+	ubertool_run_config_properties['aquatic_configuration'] = config_name;
+	if(config_name != 'None')
+	{
+		$.ajax({
+			url:"{{ubertool_mongo_server}}/ubertool/aqua/"+config_name,
+			async: false,
+			type: 'GET',
+			success: function(data) {
+				ubertool_run_config_properties['acute_toxicity_target_concentration_for_freshwater_fish'] = data['acute_toxicity_target_concentration_for_freshwater_fish'];						
+				ubertool_run_config_properties['chronic_toxicity_target_concentration_for_freshwater_fish']= data['chronic_toxicity_target_concentration_for_freshwater_fish'];						
+				ubertool_run_config_properties['acute_toxicity_target_concentration_for_freshwater_invertebrates'] = data['acute_toxicity_target_concentration_for_freshwater_invertebrates'];
+				ubertool_run_config_properties['chronic_toxicity_target_concentration_for_freshwater_invertebrates'] = data['chronic_toxicity_target_concentration_for_freshwater_invertebrates'];
+				ubertool_run_config_properties['toxicity_target_concentration_for_nonlisted_vascular_plants'] = data['toxicity_target_concentration_for_nonlisted_vascular_plants'];	
+				ubertool_run_config_properties['toxicity_target_concentration_for_listed_vascular_plants'] = data['toxicity_target_concentration_for_listed_vascular_plants'];						
+				ubertool_run_config_properties['toxicity_target_concentration_for_duckweed'] = data['toxicity_target_concentration_for_duckweed'];
+			}
+		});
+	}
+	return ubertool_run_config_properties;
+}
+
+function retrievePestConfigProperties(form_data,ubertool_run_index,ubertool_run_config_properties)
+{
+	var config_key = "pest_configuration_" + ubertool_run_index;
+	var config_name = form_data[config_key];
+	ubertool_run_config_properties['pest_configuration'] = config_name;
+	if(config_name != 'None')
+	{
+		$.ajax({
+			url:"{{ubertool_mongo_server}}/ubertool/pest/"+config_name,
+			async: false,
+			type: 'GET',
+			success: function(data) {
+				ubertool_run_config_properties['molecular_weight'] = data['molecular_weight'];						
+				ubertool_run_config_properties['henrys_law_constant'] = data['henrys_law_constant'];						
+				ubertool_run_config_properties['vapor_pressure'] = data['vapor_pressure'];						
+				ubertool_run_config_properties['solubility'] = data['solubility'];						
+				ubertool_run_config_properties['Kd'] = data['Kd'];						
+				ubertool_run_config_properties['Koc'] = data['Koc'];						
+				ubertool_run_config_properties['photolysis'] = data['photolysis'];						
+				ubertool_run_config_properties['aerobic_aquatic_metabolism'] = data['aerobic_aquatic_metabolism'];						
+				ubertool_run_config_properties['anaerobic_aquatic_metabolism'] = data['anaerobic_aquatic_metabolism'];						
+				ubertool_run_config_properties['aerobic_soil_metabolism'] = data['aerobic_soil_metabolism'];						
+				ubertool_run_config_properties['hydrolysis_ph5'] = data['hydrolysis_ph5'];						
+				ubertool_run_config_properties['hydrolysis_ph7'] = data['hydrolysis_ph7'];						
+				ubertool_run_config_properties['hydrolysis_ph9'] = data['hydrolysis_ph9'];						
+				ubertool_run_config_properties['foliar_extraction'] = data['foliar_extraction'];						
+				ubertool_run_config_properties['foliar_decay_rate'] = data['foliar_decay_rate'];						
+				ubertool_run_config_properties['foliar_dissipation_half_life'] = data['foliar_dissipation_half_life'];						
+			}
+		});
+	}
+	return ubertool_run_config_properties;
+}
+
+function retrieveExpoConfigProperties(form_data,ubertool_run_index,ubertool_run_config_properties)
+{
+	var config_key = "exposures_configuration_" + ubertool_run_index;
+	var config_name = form_data[config_key];
+	ubertool_run_config_properties['exposures_configuration'] = config_name;
+	if(config_name != 'None')
+	{
+		$.ajax({
+			url:"{{ubertool_mongo_server}}/ubertool/expo/"+config_name,
+			async: false,
+			type: 'GET',
+			success: function(data) {
+				ubertool_run_config_properties['one_in_ten_peak_exposure_concentration'] = data['one_in_ten_peak_exposure_concentration'];						
+				ubertool_run_config_properties['one_in_ten_four_day_average_exposure_concentration'] = data['one_in_ten_four_day_average_exposure_concentration'];						
+				ubertool_run_config_properties['one_in_ten_twentyone_day_average_exposure_concentration'] = data['one_in_ten_twentyone_day_average_exposure_concentration'];						
+				ubertool_run_config_properties['one_in_ten_sixty_day_average_exposure_concentration'] = data['one_in_ten_sixty_day_average_exposure_concentration'];						
+				ubertool_run_config_properties['one_in_ten_ninety_day_average_exposure_concentration'] = data['one_in_ten_ninety_day_average_exposure_concentration'];						
+				ubertool_run_config_properties['maximum_peak_exposure_concentration'] = data['maximum_peak_exposure_concentration'];
+				ubertool_run_config_properties['maximum_four_day_average_exposure_concentration'] = data['maximum_four_day_average_exposure_concentration'];						
+				ubertool_run_config_properties['maximum_twentyone_day_average_exposure_concentration'] = data['maximum_twentyone_day_average_exposure_concentration'];						
+				ubertool_run_config_properties['maximum_sixty_day_average_exposure_concentration'] = data['maximum_sixty_day_average_exposure_concentration'];						
+				ubertool_run_config_properties['maximum_ninety_day_average_exposure_concentration'] = data['maximum_ninety_day_average_exposure_concentration'];						
+				ubertool_run_config_properties['pore_water_peak_exposure_concentration'] = data['pore_water_peak_exposure_concentration'];
+				ubertool_run_config_properties['pore_water_four_day_average_exposure_concentration'] = data['pore_water_four_day_average_exposure_concentration'];						
+				ubertool_run_config_properties['pore_water_twentyone_day_average_exposure_concentration'] = data['pore_water_twentyone_day_average_exposure_concentration'];						
+				ubertool_run_config_properties['pore_water_sixty_day_average_exposure_concentration'] = data['pore_water_sixty_day_average_exposure_concentration'];						
+				ubertool_run_config_properties['pore_water_ninety_day_average_exposure_concentration'] = data['pore_water_ninety_day_average_exposure_concentration'];
+			}
+		});
+	}
+	return ubertool_run_config_properties;
+}
+
+function retrieveUseConfigProperties(form_data,ubertool_run_index,ubertool_run_config_properties)
+{
+	var config_key = "use_configuration_" + ubertool_run_index;
+	var config_name = form_data[config_key];
+	ubertool_run_config_properties['use_configuration'] = config_name;
+	if(config_name != 'None')
+	{
+		$.ajax({
+			url:"{{ubertool_mongo_server}}/ubertool/use/"+config_name,
+			async: false,
+			type: 'GET',
+			success: function(data) {
+				ubertool_run_config_properties['cas_number'] = data['cas_number'];						
+				ubertool_run_config_properties['application_type'] = data['application_type'];						
+				ubertool_run_config_properties['app_type'] = data['app_type'];						
+				ubertool_run_config_properties['wetted_in'] = data['wetted_in'];						
+				ubertool_run_config_properties['incorporation_depth'] = data['incorporation_depth'];						
+				ubertool_run_config_properties['percent_incorporated'] = data['percent_incorporated'];
+				ubertool_run_config_properties['application_kg_rate'] = data['application_kg_rate'];						
+				ubertool_run_config_properties['application_lbs_rate'] = data['application_lbs_rate'];						
+				ubertool_run_config_properties['seed_treatment_formulation_name'] = data['seed_treatment_formulation_name'];
+				ubertool_run_config_properties['density_of_product'] = data['density_of_product'];						
+				ubertool_run_config_properties['maximum_seedling_rate_per_use'] = data['maximum_seedling_rate_per_use'];
+				ubertool_run_config_properties['application_rate_per_use'] = data['application_rate_per_use'];						
+				ubertool_run_config_properties['formulated_product_name'] = data['formulated_product_name'];						
+				ubertool_run_config_properties['application_date'] = data['application_date'];						
+				ubertool_run_config_properties['number_of_applications'] = data['number_of_applications'];
+				ubertool_run_config_properties['interval_between_applications'] = data['interval_between_applications'];
+				ubertool_run_config_properties['application_efficiency'] = data['application_efficiency'];
+				ubertool_run_config_properties['spray_drift'] = data['spray_drift'];						
+				ubertool_run_config_properties['runoff'] = data['runoff'];						
+				ubertool_run_config_properties['formulated_product_name'] = data['formulated_product_name'];
+				ubertool_run_config_properties['percent_ai'] = data['percent_ai'];						
+				ubertool_run_config_properties['met_file'] = data['met_file'];
+				ubertool_run_config_properties['przm_scenario'] = data['przm_scenario'];						
+				ubertool_run_config_properties['exams_environment_file'] = data['exams_environment_file'];						
+				ubertool_run_config_properties['application_method'] = data['application_method'];						
+				ubertool_run_config_properties['weight_of_one_granule'] = data['weight_of_one_granule'];
+			}
+		});
+	}
+	return ubertool_run_config_properties;
+}
+
+function retrieveTerreConfigProperties(form_data,ubertool_run_index,ubertool_run_config_properties)
+{
+	var config_key = "terrestrial_configuration_" + ubertool_run_index;
+	var config_name = form_data[config_key];
+	ubertool_run_config_properties['terrestrial_configuration'] = config_name;
+	if(config_name != 'None')
+	{
+		$.ajax({
+			url:"{{ubertool_mongo_server}}/ubertool/terre/"+config_name,
+			async: false,
+			type: 'GET',
+			success: function(data) {
+				ubertool_run_config_properties['avian_ld50'] = data['avian_ld50'];						
+				ubertool_run_config_properties['avian_lc50'] = data['avian_lc50'];						
+				ubertool_run_config_properties['avian_NOAEC'] = data['avian_NOAEC'];						
+				ubertool_run_config_properties['avian_NOAEL'] = data['avian_NOAEL'];						
+				ubertool_run_config_properties['body_weight_of_the_assessed_bird'] = data['body_weight_of_the_assessed_bird'];
+				ubertool_run_config_properties['mineau_scaling_factor'] = data['mineau_scaling_factor'];
+				ubertool_run_config_properties['mammalian_ld50'] = data['mammalian_ld50'];						
+				ubertool_run_config_properties['mammalian_lc50'] = data['mammalian_lc50'];						
+				ubertool_run_config_properties['mammalian_inhalation_lc50'] = data['mammalian_inhalation_lc50'];
+				ubertool_run_config_properties['duration_of_rat_study'] = data['duration_of_rat_study'];						
+				ubertool_run_config_properties['mammalian_NOAEL'] = data['mammalian_NOAEL'];
+				ubertool_run_config_properties['mammalian_NOAEC'] = data['mammalian_NOAEC'];						
+				ubertool_run_config_properties['amphibian_bw'] = data['amphibian_bw'];						
+				ubertool_run_config_properties['terrestrial_phase_amphibian_ld50'] = data['terrestrial_phase_amphibian_ld50'];
+				ubertool_run_config_properties['terrestrial_phase_amphibian_lc50'] = data['terrestrial_phase_amphibian_lc50'];
+				ubertool_run_config_properties['terrestrial_phase_amphibian_NOAEC'] = data['terrestrial_phase_amphibian_NOAEC'];
+				ubertool_run_config_properties['terrestrial_phase_amphibian_NOAEL'] = data['terrestrial_phase_amphibian_NOAEL'];
+				ubertool_run_config_properties['reptile_bw'] = data['reptile_bw'];						
+				ubertool_run_config_properties['terrestrial_phase_reptile_ld50'] = data['terrestrial_phase_reptile_ld50'];
+				ubertool_run_config_properties['terrestrial_phase_reptile_lc50'] = data['terrestrial_phase_reptile_lc50'];
+				ubertool_run_config_properties['terrestrial_phase_reptile_NOAEC'] = data['terrestrial_phase_reptile_NOAEC'];
+				ubertool_run_config_properties['terrestrial_phase_reptile_NOAEL'] = data['terrestrial_phase_reptile_NOAEL'];
+				ubertool_run_config_properties['EC25_for_nonlisted_seedling_emergence_monocot'] = data['EC25_for_nonlisted_seedling_emergence_monocot'];						
+				ubertool_run_config_properties['EC25_for_nonlisted_seedling_emergence_dicot'] = data['EC25_for_nonlisted_seedling_emergence_dicot'];						
+				ubertool_run_config_properties['NOAEC_for_listed_seedling_emergence_monocot'] = data['NOAEC_for_listed_seedling_emergence_monocot'];						
+				ubertool_run_config_properties['NOAEC_for_listed_seedling_emergence_dicot'] = data['NOAEC_for_listed_seedling_emergence_dicot'];
+				ubertool_run_config_properties['EC25_for_nonlisted_vegetative_vigor_monocot'] = data['EC25_for_nonlisted_vegetative_vigor_monocot'];
+				ubertool_run_config_properties['EC25_for_nonlisted_vegetative_vigor_dicot'] = data['EC25_for_nonlisted_vegetative_vigor_dicot'];
+				ubertool_run_config_properties['NOAEC_for_listed_vegetative_vigor_monocot'] = data['NOAEC_for_listed_vegetative_vigor_monocot'];
+				ubertool_run_config_properties['NOAEC_for_listed_vegetative_vigor_dicot'] = data['NOAEC_for_listed_vegetative_vigor_dicot'];
+				ubertool_run_config_properties['Small_medium_and_large_BW_of_assessed_herptile_listed_species'] = data['Small_medium_and_large_BW_of_assessed_herptile_listed_species'];						
+				ubertool_run_config_properties['percent_water_content_of_small_med_large_herptile_species_diet'] = data['percent_water_content_of_small_med_large_herptile_species_diet'];
+				ubertool_run_config_properties['taxonomic_group'] = data['taxonomic_group'];
+				ubertool_run_config_properties['eat_mammals'] = data['eat_mammals'];
+				ubertool_run_config_properties['eat_amphibians_reptiles'] = data['eat_amphibians_reptiles'];
+			}
+		});
+	}
+	return ubertool_run_config_properties;
+}
+
+function retrieveEcoConfigProperties(form_data,ubertool_run_index,ubertool_run_config_properties)
+{
+	var config_key = "ecosystems_configuration_" + ubertool_run_index;
+	var config_name = form_data[config_key];
+	ubertool_run_config_properties['ecosystems_configuration'] = config_name;
+	if(config_name != 'None')
+	{
+		$.ajax({
+			url:"{{ubertool_mongo_server}}/ubertool/eco/"+config_name,
+			async: false,
+			type: 'GET',
+			success: function(data) {
+				ubertool_run_config_properties['concentration_of_particulate_organic_carbon'] = data['concentration_of_particulate_organic_carbon'];						
+				ubertool_run_config_properties['concentration_of_dissolved_organic_carbon']= data['concentration_of_dissolved_organic_carbon'];						
+				ubertool_run_config_properties['concentration_of_dissolved_oxygen'] = data['concentration_of_dissolved_oxygen'];
+				ubertool_run_config_properties['water_temperature'] = data['water_temperature'];
+				ubertool_run_config_properties['concentration_of_suspended_solids'] = data['concentration_of_suspended_solids'];	
+				ubertool_run_config_properties['sediment_organic_carbon'] = data['sediment_organic_carbon'];
+			}
+		});
+	}
+	return ubertool_run_config_properties;
+}
+
+function saveUbertoolRunProperties(batch_config_props, batch_size)
+{
+	//TODO: for each id_config_name_# save the associated configurations
+	for(var i = 0; i < batch_size; i++)
+	{
+		var ubertool_config_name_id = "#id_config_name_"+i;
+		$.ajax({
+			url:"{{ubertool_mongo_server}}/ubertool/ubertool/"+$(ubertool_config_name_id)[0].value,
+			async: true,
+			type: 'POST',
+			data: JSON.stringify(batch_config_props[i]),
+		});
+	}
+}
+
 function endsInInteger(str)
 {
 	var lastChar = str.charCodeAt(str.length-1);
 	var lastCharInt = false;
 	if(lastChar > 47 && lastChar < 58)
 	{
-		lastCharInt - true;
+		lastCharInt = true;
 	}
 	return lastCharInt;
+}
+
+function getDateTime() 
+{
+    var date = new Date();
+
+    var hour = date.getHours();
+    hour = (hour < 10 ? "0" : "") + hour;
+
+    var min  = date.getMinutes();
+    min = (min < 10 ? "0" : "") + min;
+
+    var sec  = date.getSeconds();
+    sec = (sec < 10 ? "0" : "") + sec;
+
+    var year = date.getFullYear();
+
+    var month = date.getMonth() + 1;
+    month = (month < 10 ? "0" : "") + month;
+
+    var day  = date.getDate();
+    day = (day < 10 ? "0" : "") + day;
+
+    return year + ":" + month + ":" + day + ":" + hour + ":" + min + ":" + sec;
 }
 
 function updateUbertoolConfigurations(sel)
@@ -125,7 +401,7 @@ $(document).ready(function() {
 				for(i = 0; i < config_names.length; i++)
 				{
 					var config_name = config_names[i];
-					$("#id_user_ubertool_configuration").append(new Option(config_name, config_name));
+					$("#id_user_ubertool_configuration_0").append(new Option(config_name, config_name));
 				}
 			}
 		}
@@ -141,7 +417,7 @@ $(document).ready(function() {
 				for(i = 0; i < config_names.length; i++)
 				{
 					var config_name = config_names[i];
-					$("#id_use_configuration").append(new Option(config_name, config_name));
+					$("#id_use_configuration_0").append(new Option(config_name, config_name));
 				}
 			}
 		}
@@ -157,7 +433,7 @@ $(document).ready(function() {
 				for(i = 0; i < config_names.length; i++)
 				{
 					var config_name = config_names[i];
-					$("#id_aquatic_configuration").append(new Option(config_name, config_name));
+					$("#id_aquatic_configuration_0").append(new Option(config_name, config_name));
 				}
 			}
 		}
@@ -173,7 +449,7 @@ $(document).ready(function() {
 				for(i = 0; i < config_names.length; i++)
 				{
 					var config_name = config_names[i];
-					$("#id_ecosystems_configuration").append(new Option(config_name, config_name));
+					$("#id_ecosystems_configuration_0").append(new Option(config_name, config_name));
 				}
 			}
 		}
@@ -189,7 +465,7 @@ $(document).ready(function() {
 				for(i = 0; i < config_names.length; i++)
 				{
 					var config_name = config_names[i];
-					$("#id_exposures_configuration").append(new Option(config_name, config_name));
+					$("#id_exposures_configuration_0").append(new Option(config_name, config_name));
 				}
 			}
 		}
@@ -205,7 +481,7 @@ $(document).ready(function() {
 				for(i = 0; i < config_names.length; i++)
 				{
 					var config_name = config_names[i];
-					$("#id_pest_configuration").append(new Option(config_name, config_name));
+					$("#id_pest_configuration_0").append(new Option(config_name, config_name));
 				}
 			}
 		}
@@ -221,7 +497,7 @@ $(document).ready(function() {
 				for(i = 0; i < config_names.length; i++)
 				{
 					var config_name = config_names[i];
-					$("#id_terrestrial_configuration").append(new Option(config_name, config_name));
+					$("#id_terrestrial_configuration_0").append(new Option(config_name, config_name));
 				}
 			}
 		}

@@ -52,7 +52,7 @@ class terrplant:
     ldsRQspray_results = -1
     LOCldsspray_results = ''
 
-    def __init__(self,set_variables,run_methods,A=None,I=None,R=None,D=None,nms=None,lms=None,nds=None,lds=None):
+    def __init__(self,set_variables=True,run_methods=True,A=None,I=None,R=None,D=None,nms=None,lms=None,nds=None,lds=None):
         if set_variables:
             self.set_variables(A,I,R,D,nms,lms,nds,lds)
             if run_methods:
@@ -60,31 +60,31 @@ class terrplant:
 
     def __str__(self):
         string_rep = ''
-        string_rep = string_rep + "I = %.2e" % self.I
-        string_rep = string_rep + "A = %.2e" % self.A
-        string_rep = string_rep + "D = %.2e" % self.D
-        string_rep = string_rep + "R = %.2e" % self.R
-        string_rep = string_rep + "nms = %.2e" % self.nms
-        string_rep = string_rep + "nds = %.2e" % self.nds
-        string_rep = string_rep + "lms = %.2e" % self.lms
-        string_rep = string_rep + "lds = %.2e" % self.lds
-        string_rep = string_rep + "rundry_results = %.2e" % self.rundry_results
-        string_rep = string_rep + "runsemi_results = %.2e" % self.runsemi_results
-        string_rep = string_rep + "totaldry_results = %.2e" % self.totaldry_results
-        string_rep = string_rep + "totalsemi_results = %.2e" % self.totalsemi_results
-        string_rep = string_rep + "spray_results = %.2e" % self.spray_results
-        string_rep = string_rep + "nmsRQdry_results = %.2e" % self.nmsRQdry_results
-        string_rep = string_rep + "nmsRQsemi_results = %.2e" % self.nmsRQsemi_results
-        string_rep = string_rep + "nmsRQspray_results = %.2e" % self.nmsRQspray_results
-        string_rep = string_rep + "lmsRQdry_results = %.2e" % self.lmsRQdry_results
-        string_rep = string_rep + "lmsRQsemi_results = %.2e" % self.lmsRQsemi_results
-        string_rep = string_rep + "lmsRQspray_results = %.2e" % self.lmsRQspray_results
-        string_rep = string_rep + "ndsRQdry_results = %.2e" % self.ndsRQdry_results
-        string_rep = string_rep + "ndsRQsemi_results = %.2e" % self.ndsRQsemi_results
-        string_rep = string_rep + "ndsRQspray_results = %.2e" % self.ndsRQspray_results
-        string_rep = string_rep + "ldsRQdry_results = %.2e" % self.ldsRQdry_results
-        string_rep = string_rep + "ldsRQsemi_results = %.2e" % self.ldsRQsemi_results
-        string_rep = string_rep + "ldsRQspray_results = %.2e" % self.ldsRQspray_results
+        string_rep = string_rep + "I = %.2e \n" % self.I
+        string_rep = string_rep + "A = %.2e \n" % self.A
+        string_rep = string_rep + "D = %.2e \n" % self.D
+        string_rep = string_rep + "R = %.2e \n" % self.R
+        string_rep = string_rep + "nms = %.2e \n" % self.nms
+        string_rep = string_rep + "nds = %.2e \n" % self.nds
+        string_rep = string_rep + "lms = %.2e \n" % self.lms
+        string_rep = string_rep + "lds = %.2e \n" % self.lds
+        string_rep = string_rep + "rundry_results = %.2e \n" % self.rundry_results
+        string_rep = string_rep + "runsemi_results = %.2e \n" % self.runsemi_results
+        string_rep = string_rep + "totaldry_results = %.2e \n" % self.totaldry_results
+        string_rep = string_rep + "totalsemi_results = %.2e \n" % self.totalsemi_results
+        string_rep = string_rep + "spray_results = %.2e \n" % self.spray_results
+        string_rep = string_rep + "nmsRQdry_results = %.2e \n" % self.nmsRQdry_results
+        string_rep = string_rep + "nmsRQsemi_results = %.2e \n" % self.nmsRQsemi_results
+        string_rep = string_rep + "nmsRQspray_results = %.2e \n" % self.nmsRQspray_results
+        string_rep = string_rep + "lmsRQdry_results = %.2e \n" % self.lmsRQdry_results
+        string_rep = string_rep + "lmsRQsemi_results = %.2e \n" % self.lmsRQsemi_results
+        string_rep = string_rep + "lmsRQspray_results = %.2e \n" % self.lmsRQspray_results
+        string_rep = string_rep + "ndsRQdry_results = %.2e \n" % self.ndsRQdry_results
+        string_rep = string_rep + "ndsRQsemi_results = %.2e \n" % self.ndsRQsemi_results
+        string_rep = string_rep + "ndsRQspray_results = %.2e \n" % self.ndsRQspray_results
+        string_rep = string_rep + "ldsRQdry_results = %.2e \n" % self.ldsRQdry_results
+        string_rep = string_rep + "ldsRQsemi_results = %.2e \n" % self.ldsRQsemi_results
+        string_rep = string_rep + "ldsRQspray_results = %.2e \n" % self.ldsRQspray_results
         return string_rep
 
     def set_variables(self,A,I,R,D,nms,lms,nds,lds):

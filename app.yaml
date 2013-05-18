@@ -1,5 +1,5 @@
 application: pypest
-version: jon
+version: sprint5
 runtime: python27
 api_version: 1
 
@@ -20,7 +20,7 @@ libraries:
 
 env_variables:
   UBERTOOL_BATCH_SERVER: 'http://www.chancedelphia.com:8887/'
-  UBERTOOL_MONGO_SERVER: 'http://www.chancedelphia.com:8887'
+  UBERTOOL_MONGO_SERVER: 'http://127.0.0.1:8887'
 
 skip_files:
 - ^(.*/)?app\.yaml

@@ -68,6 +68,7 @@
                 var createdTimestamp = objId.getTimestamp();
                 ubertool_run.created = createdTimestamp;
                 ubertool_run.config_name = config_name;
+                ubertool_run.config_properties = ubertoolRunData;
                 var ubertool_data = batch.ubertool_data;
                 if(ubertool_data == null)
                 {

@@ -11,60 +11,9 @@ def fromJSON(json_string):
     return new_terrplant
 
 class terrplant:
-    #Currently used variables
-    I = 1
-    A = 1
-    D = 1
-    R = 1
-    nms = 1
-    nds = 1
-    lms = 1
-    lds = 1
 
-    #Variables in the input page
-    chemical_name = ''
-    pc_code = ''
-    use = ''
-    application_method = ''
-    application_form = ''
-    solubility = 1
-    nmv = 1
-    ndv = 1
-    lmv = 1
-    ldv = 1
-
-    #Result variables
-    rundry_results = -1
-    runsemi_results = -1
-    totaldry_results = -1
-    totalsemi_results = -1
-    spray_results = -1
-    nmsRQdry_results = -1
-    LOCnmsdry_results = ''
-    nmsRQsemi_results = -1
-    LOCnmssemi_results = ''
-    nmsRQspray_results = -1
-    LOCnmsspray_results = ''
-    lmsRQdry_results = -1
-    LOClmsdry_results = ''
-    lmsRQsemi_results = -1
-    LOClmssemi_results = ''
-    lmsRQspray_results = -1
-    LOClmsspray_results = ''
-    ndsRQdry_results = -1
-    LOCndsdry_results = ''
-    ndsRQsemi_results = -1
-    LOCndssemi_results = ''
-    ndsRQspray_results = -1
-    LOCndsspray_results = ''
-    ldsRQdry_results = -1
-    LOCldsdry_results = ''
-    ldsRQsemi_results = -1
-    LOCldssemi_results = ''
-    ldsRQspray_results = -1
-    LOCldsspray_results = ''
-
-    def __init__(self,set_variables=True,run_methods=True,A=None,I=None,R=None,D=None,nms=None,lms=None,nds=None,lds=None,vars_dict=None):
+    def __init__(self,set_variables=True,run_methods=True,A=1,I=1,R=1,D=1,nms=1,lms=1,nds=1,lds=1,vars_dict=None):
+        self.set_default_variables()
         if set_variables:
             if vars_dict != None:
                 self.__dict__.update(vars_dict)
@@ -72,6 +21,60 @@ class terrplant:
                 self.set_variables(A,I,R,D,nms,lms,nds,lds)
             if run_methods:
                 self.run_methods()
+
+    def set_default_variables(self):
+        #Currently used variables
+        self.I = 1
+        self.A = 1
+        self.D = 1
+        self.R = 1
+        self.nms = 1
+        self.nds = 1
+        self.lms = 1
+        self.lds = 1
+
+        #Variables in the input page
+        self.chemical_name = ''
+        self.pc_code = ''
+        self.use = ''
+        self.application_method = ''
+        self.application_form = ''
+        self.solubility = 1
+        self.nmv = 1
+        self.ndv = 1
+        self.lmv = 1
+        self.ldv = 1
+
+        #Result variables
+        self.rundry_results = -1
+        self.runsemi_results = -1
+        self.totaldry_results = -1
+        self.totalsemi_results = -1
+        self.spray_results = -1
+        self.nmsRQdry_results = -1
+        self.LOCnmsdry_results = ''
+        self.nmsRQsemi_results = -1
+        self.LOCnmssemi_results = ''
+        self.nmsRQspray_results = -1
+        self.LOCnmsspray_results = ''
+        self.lmsRQdry_results = -1
+        self.LOClmsdry_results = ''
+        self.lmsRQsemi_results = -1
+        self.LOClmssemi_results = ''
+        self.lmsRQspray_results = -1
+        self.LOClmsspray_results = ''
+        self.ndsRQdry_results = -1
+        self.LOCndsdry_results = ''
+        self.ndsRQsemi_results = -1
+        self.LOCndssemi_results = ''
+        self.ndsRQspray_results = -1
+        self.LOCndsspray_results = ''
+        self.ldsRQdry_results = -1
+        self.LOCldsdry_results = ''
+        self.ldsRQsemi_results = -1
+        self.LOCldssemi_results = ''
+        self.ldsRQspray_results = -1
+        self.LOCldsspray_results = ''
 
     def __str__(self):
         string_rep = ''
@@ -136,7 +139,6 @@ class terrplant:
 
     # EEC for runoff for dry areas
     def rundry(self):
-        print vars(self)
         try:
             self.A = float(self.A)
             self.I = float(self.I)
@@ -879,7 +881,6 @@ class terrplant:
 
 def main():
     test_terrplant = terrplant(True,True,1,1,1,1,1,1,1,1)
-    print vars(test_terrplant)
     terrplant_json = toJSON(test_terrplant)
     new_terrplant = fromJSON(terrplant_json)
     print vars(new_terrplant)

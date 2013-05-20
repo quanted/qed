@@ -5,10 +5,6 @@ var cas = require('./cas_mongo.js');
 var ubertool = require('./ubertool.js');
 var flow = require('nimble');
 
-function sayHello(req, res, next) {
-  res.send('hello ');
-}
-
 function submitBatch(req, res, next)
 {
     console.log("Batch Submitted to Node.js server.");
@@ -126,7 +122,10 @@ server.post('/ubertool/:config_type/:config', function(req, res, next){
     {
         json = JSON.parse(body);
         console.log("POST for Configuration Name: " + config + " config type: " + config_type + " json data: " + json);
-        ubertool.addUpdateConfig(config_type,config,json);
+        ubertool.addUpdateConfig(config_type,config,json, function(error, results)
+        {
+            res.send(results);
+        });
     });
 });
 

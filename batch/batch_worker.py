@@ -95,14 +95,16 @@ def handle_delivery(channel, method, header, body):
     messageData = data['message']
     messageData = convert(messageData)
     messageData = json.loads(messageData)
+    results_data = None
     #print messageData
     ubertool_config_name = messageData['config_name']
-    batch_id = messageData['batchId']
-    results = processUbertoolBatchRunsIntoBatchModelRun(messageData)
-    results['config_name'] = ubertool_config_name
-    results['batchId'] = batch_id
-    #print results
-    results_data = json.dumps(results)
+    if 'batchId' in messageData:
+        batch_id = messageData['batchId']
+        results = processUbertoolBatchRunsIntoBatchModelRun(messageData)
+        results['config_name'] = ubertool_config_name
+        results['batchId'] = batch_id
+        #print results
+        results_data = json.dumps(results)
     msg_props = pika.BasicProperties()
     msg_props.content_type = "application/json"
     msg_props.durable = False

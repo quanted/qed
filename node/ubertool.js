@@ -84,7 +84,7 @@ exports.getConfigData = function(config_type,config,callback)
   });
 }
 
-exports.addUpdateConfig = function(config_type,config,json_data)
+exports.addUpdateConfig = function(config_type,config,json_data,callback)
 {
   var config_collection = '';
   if(config_type == 'aqua')
@@ -117,6 +117,7 @@ exports.addUpdateConfig = function(config_type,config,json_data)
       json_data, {new:true, upsert:true, w:1},function(err,doc){
         console.log("added document");
         console.log(doc);
+        callback(null,doc);
       });
   });
 }

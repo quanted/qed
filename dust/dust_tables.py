@@ -255,8 +255,8 @@ def table_1(pvuheadings, tmpl, chemical_name, label_epa_reg_no, ar_lb, frac_pest
         #pre-table 1
         html = """
             <div class="out_1">
-              <H3>User Inputs: Chemical Identity</H3>
-              <H4>Application and Chemical Information</H4>
+              <H3>User Inputs: Chemical</H3>
+              <H4>Table 1. Application and Chemical Information</H4>
             </div>
         """
         #table 1
@@ -270,7 +270,7 @@ def table_2(pvuheadings, tmpl, bird_acute_oral_study, bird_study_add_comm,low_bi
         # #pre-table 2
         html = """
             <div class="out_2">
-              <H4>Toxicity Properties</H4>
+              <H4>Table 2. Toxicity Properties</H4>
             </div>
         """
         #table 2
@@ -285,7 +285,7 @@ def table_3(pvuheadings, tmpl, ar_lb, frac_pest_surface):
         html = """
             <div class="out_3">
               <H3>Exposure Estimates</H3>
-              <H4>Granular Application</H4>
+              <H4>Table 3. Granular Application</H4>
             </div>
         """
         #table 3
@@ -301,8 +301,7 @@ def table_4(pvuheadings, tmpl, ar_lb, dislodge_fol_res):
         #pre-table 4
         html = """     
             <div class="out_4">
-                <H4>Foliar Spray Application</H4>
-                <p>(contact with foliar residues and directly applied spray)</p>
+                <H4>Table 4. Foliar Spray Application (contact with foliar residues and directly applied spray)</H4>
             </div>
         """
         #table 4
@@ -318,8 +317,7 @@ def table_5(pvuheadings, tmpl, ar_lb, frac_pest_surface):
         #pre-table 5
         html = """         
             <div class="out_5">
-                <H4>Bare Ground Spray Application</H4>
-                <p>(contact with soil residues and directly applied spray)</p>
+                <H4>Table 5. Bare Ground Spray Application (contact with soil residues and directly applied spray)</H4>
             </div>
         """
         #table 5
@@ -338,7 +336,7 @@ def table_6(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, te
             <br>
             <div class="out_6">
                 <H3>Ratio of Exposure to Toxicity</H3>
-                <H4>Granular</H4>
+                <H4>Table 6. Granular</H4>
             </div>
         """
         #table 6
@@ -360,7 +358,7 @@ def table_7(pvrheadings, tmpl, ar_lb, dislodge_fol_res, low_bird_acute_ld50, tes
         #pre-table 7
         html = """         
             <div class="out_7">
-                <H4>Foliar Spray</H4>
+                <H4>Table 7. Foliar Spray</H4>
             </div>
         """
         #table 7
@@ -383,7 +381,7 @@ def table_8(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, te
         #pre-table 8
         html = """          
             <div class="out_8">
-                <H4>Bare Ground Spray</H4>
+                <H4>Table 8. Bare Ground Spray</H4>
             </div>
         """
         #table 8

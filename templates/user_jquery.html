@@ -1,13 +1,14 @@
 <script> 
 $(document).ready(function(){
+
 	$.ajax({
-		url:"use-config-names",
-		async: false,
+		url:"{{ ubertool_server }}/ubertool/use/config_names",
+		async: true,
 		type: 'GET',
-		success: function(use_data) {
-			var config_names = use_data['config_names'];
+		success: function(config_names) {
 			if(config_names != null)
 			{
+				$("#id_user_use_configuration").append(new Option('None', 'None'));
 				for(i = 0; i < config_names.length; i++)
 				{
 					var config_name = config_names[i];
@@ -15,10 +16,112 @@ $(document).ready(function(){
 				}
 			}
 		}
-	});	
+	});
+
+	$.ajax({
+		url:"{{ubertool_server}}/ubertool/terre/config_names",
+		async: true,
+		type: 'GET',
+		success: function(config_names) {
+			if(config_names != null)
+			{
+				$("#id_terrestrial_configuration").append(new Option('None', 'None'));
+				for(i = 0; i < config_names.length; i++)
+				{
+					var config_name = config_names[i];
+					$("#id_terrestrial_configuration").append(new Option(config_name, config_name));
+				}
+			}
+		}
+	});
+
+	$.ajax({
+		url:"{{ubertool_server}}/ubertool/pest/config_names",
+		async: true,
+		type: 'GET',
+		success: function(config_names) {
+			if(config_names != null)
+			{
+				$("#id_pest_configuration").append(new Option('None', 'None'));
+				for(i = 0; i < config_names.length; i++)
+				{
+					var config_name = config_names[i];
+					$("#id_pest_configuration").append(new Option(config_name, config_name));
+				}
+			}
+		}
+	});
+
+	$.ajax({
+		url:"{{ubertool_server}}/ubertool/expo/config_names",
+		async: true,
+		type: 'GET',
+		success: function(config_names) {
+			if(config_names != null)
+			{
+				$("#id_exposures_configuration").append(new Option('None', 'None'));
+				for(i = 0; i < config_names.length; i++)
+				{
+					var config_name = config_names[i];
+					$("#id_exposures_configuration").append(new Option(config_name, config_name));
+				}
+			}
+		}
+	});
+
+	$.ajax({
+		url:"{{ubertool_server}}/ubertool/eco/config_names",
+		async: true,
+		type: 'GET',
+		success: function(config_names) {
+			if(config_names != null)
+			{
+				$("#id_ecosystems_configuration").append(new Option('None', 'None'));
+				for(i = 0; i < config_names.length; i++)
+				{
+					var config_name = config_names[i];
+					$("#id_ecosystems_configuration").append(new Option(config_name, config_name));
+				}
+			}
+		}
+	});
+
+	$.ajax({
+		url:"{{ubertool_server}}/ubertool/aqua/config_names",
+		async: true,
+		type: 'GET',
+		success: function(config_names) {
+			if(config_names != null)
+			{
+				$("#id_aquatic_configuration").append(new Option('None', 'None'));
+				for(i = 0; i < config_names.length; i++)
+				{
+					var config_name = config_names[i];
+					$("#id_aquatic_configuration").append(new Option(config_name, config_name));
+				}
+			}
+		}
+	});
+
+	$.ajax({
+		url:"{{ubertool_server}}/ubertool/ubertool/config_names",
+		async: false,
+		type: 'GET',
+		success: function(config_names) {
+			if(config_names != null)
+			{
+				$("#id_ubertools_configuration").append(new Option('None', 'None'));
+				for(i = 0; i < config_names.length; i++)
+				{
+					var config_name = config_names[i];
+					$("#id_ubertools_configuration").append(new Option(config_name, config_name));
+				}
+			}
+		}
+	});
 	
 	$.ajax({
-		url:"{{ ubertool_server }}batch_configs",
+		url:"{{ ubertool_server }}/batch_configs",
 		type: 'GET',
 		success: function(batch_data) {	
 			$("#id_batch_ubertool_results").width(120);
@@ -41,7 +144,7 @@ $(document).ready(function(){
 			$("#id_batch_results_table").css({"visibility":"visible","height":"auto"});
 			var batch_data;
 			$.ajax({
-				url:"{{ ubertool_server }}/batch_results/"+batch_configuration,
+				url:"{{ ubertool_server }}/batch_results/"+encodeURIComponent(batch_configuration),
 				async: false,
 				type: 'GET',
 				success: function(batch_data) {
@@ -58,7 +161,19 @@ $(document).ready(function(){
 							batchTableInnerHTML += "<tr><th><label>Ubertool Run Configuration Name:</label></th><td>"+ubertool_data_key+"</td></tr>";
 							for(var ubertool_run_key in ubertool_data)
 							{
-								batchTableInnerHTML += "<tr><th><label>" + ubertool_run_key + "</label></th><td>"+ubertool_data[ubertool_run_key]+"</td></tr>";								
+								if(typeof ubertool_data[ubertool_run_key] === 'object')
+								{
+									var ubertool_data_object = ubertool_data[ubertool_run_key];
+									batchTableInnerHTML += "<tr><th><label>" + ubertool_run_key + "</label></th><td> </td></tr>";
+									for(var ubertool_data_obj_key in ubertool_data_object)
+									{
+										batchTableInnerHTML += "<tr><th><label>" + ubertool_data_obj_key + "</label></th><td>"+ubertool_data_object[ubertool_data_obj_key]+"</td></tr>";
+									}
+								}
+								else
+								{
+									batchTableInnerHTML += "<tr><th><label>" + ubertool_run_key + "</label></th><td>"+ubertool_data[ubertool_run_key]+"</td></tr>";
+								}								
 							}
 						}
 					}

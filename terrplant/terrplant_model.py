@@ -1,3 +1,15 @@
+from django.utils import simplejson
+
+def toJSON(terrplant_object):
+    terrplant_vars = vars(terrplant_object)
+    terrplant_json = simplejson.dumps(terrplant_vars)
+    return terrplant_json
+
+def fromJSON(json_string):
+    terrplant_vars = simplejson.loads(json_string)
+    new_terrplant = terrplant(True,False,vars_dict=terrplant_vars)
+    return new_terrplant
+
 class terrplant:
     #Currently used variables
     I = 1
@@ -52,9 +64,12 @@ class terrplant:
     ldsRQspray_results = -1
     LOCldsspray_results = ''
 
-    def __init__(self,set_variables=True,run_methods=True,A=None,I=None,R=None,D=None,nms=None,lms=None,nds=None,lds=None):
+    def __init__(self,set_variables=True,run_methods=True,A=None,I=None,R=None,D=None,nms=None,lms=None,nds=None,lds=None,vars_dict=None):
         if set_variables:
-            self.set_variables(A,I,R,D,nms,lms,nds,lds)
+            if vars_dict != None:
+                self.__dict__.update(vars_dict)
+            else:
+                self.set_variables(A,I,R,D,nms,lms,nds,lds)
             if run_methods:
                 self.run_methods()
 
@@ -98,26 +113,30 @@ class terrplant:
         self.lds = lds
 
     def run_methods(self):
-        self.rundry()
-        self.runsemi()
-        self.spray()
-        self.totaldry()
-        self.totalsemi()
-        self.nmsRQdry()
-        self.nmsRQsemi()
-        self.nmsRQspray()
-        self.lmsRQdry()
-        self.lmsRQsemi()
-        self.lmsRQspray()
-        self.ndsRQdry()
-        self.ndsRQsemi()
-        self.ndsRQspray()
-        self.ldsRQdry()
-        self.ldsRQsemi()
-        self.ldsRQspray() 
+        try:
+            self.rundry()
+            self.runsemi()
+            self.spray()
+            self.totaldry()
+            self.totalsemi()
+            self.nmsRQdry()
+            self.nmsRQsemi()
+            self.nmsRQspray()
+            self.lmsRQdry()
+            self.lmsRQsemi()
+            self.lmsRQspray()
+            self.ndsRQdry()
+            self.ndsRQsemi()
+            self.ndsRQspray()
+            self.ldsRQdry()
+            self.ldsRQsemi()
+            self.ldsRQspray()
+        except TypeError:
+            print "Type Error: Your variables are not set correctly."
 
     # EEC for runoff for dry areas
     def rundry(self):
+        print vars(self)
         try:
             self.A = float(self.A)
             self.I = float(self.I)
@@ -131,6 +150,9 @@ class terrplant:
         except ValueError:
             raise ValueError\
             ('The application rate, incorporation, and/or runoff fraction must be a real number')
+        except TypeError:
+            raise TypeError\
+            ('The application rate, incorporation, and/or runoff fraction must be an integer or string')
         if self.A < 0:
             raise ValueError\
             ('A must be positive.')
@@ -854,3 +876,13 @@ class terrplant:
                 self.LOCldsspray_results = ('The risk quotient for listed monocot seedlings exposed to the'\
             ' pesticide via spray drift indicates that potential risk is minimal.')
         return self.LOCldsspray_results
+
+def main():
+    test_terrplant = terrplant(True,True,1,1,1,1,1,1,1,1)
+    print vars(test_terrplant)
+    terrplant_json = toJSON(test_terrplant)
+    new_terrplant = fromJSON(terrplant_json)
+    print vars(new_terrplant)
+
+if __name__ == '__main__':
+    main()

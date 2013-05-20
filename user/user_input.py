@@ -19,7 +19,7 @@ from user import userdb
 
 class UserInputPage(webapp.RequestHandler):
     def get(self):
-        ubertool_batch_server = os.environ['UBERTOOL_BATCH_SERVER']
+        ubertool_batch_server = os.environ['UBERTOOL_MONGO_SERVER']
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'User'})
         html = html + template.render(templatepath + '02uberintroblock_nomodellinks.html', {'title2':'Update User Ubertool Configurations'})

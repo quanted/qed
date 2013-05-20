@@ -60,7 +60,7 @@ function coalesceUbertoolRunConfigurationParameters(form_data, batch_size)
 	};
 	batch_config_props['ubertools'] = ubertools;
 	batch_config_props['created'] = getDateTime();
-	batch_config_props['id'] = "batch-"+getDateTime();
+	batch_config_props['id'] = "batch-"+encodeURI(getDateTime());
 	return batch_config_props;
 }
 

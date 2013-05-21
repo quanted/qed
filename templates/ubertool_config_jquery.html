@@ -56,11 +56,15 @@ function coalesceUbertoolRunConfigurationParameters(form_data, batch_size)
 		ubertool_run_config_properties = retrieveTerreConfigProperties(form_data,i,ubertool_run_config_properties);
 		//TODO: Pull back eco config properties from config name
 		ubertool_run_config_properties = retrieveEcoConfigProperties(form_data,i,ubertool_run_config_properties);
+		ubertool_run_config_properties['created'] = getDateTime();
 		ubertools.push(ubertool_run_config_properties);
 	};
 	batch_config_props['ubertools'] = ubertools;
 	batch_config_props['created'] = getDateTime();
-	batch_config_props['id'] = "batch-"+encodeURI(getDateTime());
+	var d = new Date();
+	var n = d.getTime();
+	batch_config_props['batchId'] = "batch-"+n;
+	batch_config_props['id'] = "batch-"+n;
 	return batch_config_props;
 }
 
@@ -287,7 +291,7 @@ function saveUbertoolRunProperties(batch_config_props, batch_size)
 			url:"{{ubertool_mongo_server}}/ubertool/ubertool/"+$(ubertool_config_name_id)[0].value,
 			async: true,
 			type: 'POST',
-			data: JSON.stringify(batch_config_props[i]),
+			data: JSON.stringify(batch_config_props.ubertools[i]),
 		});
 	}
 }

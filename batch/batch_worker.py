@@ -103,7 +103,7 @@ def handle_delivery(channel, method, header, body):
         results = processUbertoolBatchRunsIntoBatchModelRun(messageData)
         results['config_name'] = ubertool_config_name
         results['batchId'] = batch_id
-        #print results
+        print results
         results_data = json.dumps(results)
     msg_props = pika.BasicProperties()
     msg_props.content_type = "application/json"

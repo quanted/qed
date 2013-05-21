@@ -21,8 +21,11 @@ exports.submitUbertoolBatchRequest = function (msg)
     var batchId = msg['id'];
     console.log("SubmitUbertoolBatchRequest");
     console.log(msg);
-    mongodb.createNewBatch(batchId,ubertools, function(batchId,ubertools){
-        submitNextUbertoolRun(ubertools,batchId,0,submitNextUbertoolRun); 
+    mongodb.createNewBatch(batchId,ubertools, function(error,batchId,ubertools){
+        if(error == null)
+        {
+            submitNextUbertoolRun(ubertools,batchId,0,submitNextUbertoolRun); 
+        }
     });
 }
 

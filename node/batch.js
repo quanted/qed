@@ -3,6 +3,7 @@ var rabbitmq = require('./rabbitmq.js');
 var mongodb = require('./mongodb.js');
 var cas = require('./cas_mongo.js');
 var ubertool = require('./ubertool.js');
+var utils = require('./utils.js');
 var flow = require('nimble');
 
 function submitBatch(req, res, next)
@@ -49,7 +50,12 @@ server.get('/batch_results/:batchId', function(req, res, next){
     mongodb.getBatchResults(batchId, function(error, batch_data){
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
-        res.send(batch_data);
+        if(batch_data != null)
+        {
+            res.send(batch_data);
+        } else {
+            res.send("Problem returning results");
+        }
     });
 });
 
@@ -127,6 +133,14 @@ server.post('/ubertool/:config_type/:config', function(req, res, next){
             res.send(results);
         });
     });
+});
+
+server.get('/api-key', function(req, res, next){
+    console.log("GET for API Key");
+    apiKey = utils.generateNewAPIKey();
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.send(apiKey);
 });
 
 server.listen(8887, function() {

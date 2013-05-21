@@ -1,3 +1,5 @@
+crypto = require('crypto');
+
 exports.getDateTime = function() 
 {
 
@@ -22,4 +24,9 @@ exports.getDateTime = function()
 
     return year + ":" + month + ":" + day + ":" + hour + ":" + min + ":" + sec;
 
+}
+
+exports.generateNewAPIKey = function()
+{
+    return crypto.createHash('sha256').update('_').update('salt').digest('hex');
 }

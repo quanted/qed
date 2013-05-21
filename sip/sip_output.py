@@ -18,11 +18,12 @@ class SIPExecutePage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage() 
         chemical_name = form.getvalue('chemical_name')
-        select_receptor = form.getvalue('select_receptor')
+       # select_receptor = form.getvalue('select_receptor')
         bw_bird = form.getvalue('body_weight_of_bird')
         bw_mamm = form.getvalue('body_weight_of_mammal')
         sol = form.getvalue('solubility')
-        ld50 = form.getvalue('ld50')
+        ld50_a = form.getvalue('ld50_a')
+        ld50_m = form.getvalue('ld50_m')
         aw_bird = form.getvalue('body_weight_of_the_assessed_bird')
         tw_bird = form.getvalue('body_weight_of_the_tested_bird')
         aw_mamm = form.getvalue('body_weight_of_the_assessed_mammal')
@@ -30,7 +31,7 @@ class SIPExecutePage(webapp.RequestHandler):
         mineau = form.getvalue('mineau_scaling_factor')
         noaec = form.getvalue('NOAEC')
         noael = form.getvalue('NOAEL')
-        sip_obj = sip_model.sip(chemical_name, select_receptor, bw_bird, bw_mamm, sol, ld50, aw_bird, tw_bird, mineau, aw_mamm, tw_mamm, noaec, noael)
+        sip_obj = sip_model.sip(chemical_name, bw_bird, bw_mamm, sol, ld50_a, ld50_m, aw_bird, tw_bird, mineau, aw_mamm, tw_mamm, noaec, noael)
         text_file = open('sip/sip_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'

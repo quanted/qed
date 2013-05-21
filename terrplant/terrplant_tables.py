@@ -109,7 +109,9 @@ def gett5data(terrplant_obj):
 
 def gettsumdata(A, I, R, D, nms, lms, nds, lds):
     data = { 
-        "Parameter": ['Incorporation', 'Application Rate', 'Drift Fraction', 'Runoff Fraction','Runoff to Dry Areas',],
+        "Parameter": ['Incorporation', 'Application Rate', 'Drift Fraction', 'Runoff Fraction', 
+                    'Noaec for listed seedling emergence monocot','Ec25 for nonlisted seedling emergence monocot',
+                    'Noaec for listed seedling emergence dicot','Noaec for listed seedling emergence dicot'],
         "Mean": ['%.2e' % numpy.mean(A),'%.2e' % numpy.mean(I),'%.2e' % numpy.mean(R), '%.2e' % numpy.mean(D), 
                  '%.2e' % numpy.mean(nms), '%.2e' % numpy.mean(lms), '%.2e' % numpy.mean(nds), '%.2e' % numpy.mean(lds),],
         "Std": ['%.2e' % numpy.std(A),'%.2e' % numpy.std(I),'%.2e' % numpy.std(R), '%.2e' % numpy.std(D), 
@@ -128,20 +130,19 @@ def gettsumdata_out(rundry_out, runsemi_out, spray_out, totaldry_out, totalsemi_
                     ndsRQdry_out, ndsRQsemi_out, ndsRQspray_out, 
                     ldsRQdry_out, ldsRQsemi_out, ldsRQspray_out):
     data = { 
-        "Parameter": ['Runoff to Semi-Aquatic Areas', 'Spray Drift','Total to Dry Areas', 'Total to Semi-Aquatic Areas',
-                    'EEC for runoff to dry areas','EEC for runoff to semi-aquatic areas','EEC for spray drift',
-                    'EEC total for dry areas','EEC total for semi-aquatic areas',
-                    'Risk Quotient for non-listed monocot seedlings exposed to pesticide X in a dry area'
-                    'Risk Quotient for non-listed monocot seedlings exposed to Pesticide X in a semi-aquatic area'
-                    'Risk Quotient for non-listed monocot seedlings exposed to Pesticide X via spray drift'
-                    'Risk Quotient for listed monocot seedlings exposed to Pesticide X in a dry areas'
-                    'Risk Quotient for listed monocot seedlings exposed to Pesticide X in a semi-aquatic area'
-                    'Risk Quotient for listed monocot seedlings exposed to Pesticide X via spray drift'
-                    'Risk Quotient for non-listed dicot seedlings exposed to Pesticide X in dry areas'
-                    'Risk Quotient for non-listed dicot seedlings exposed to Pesticide X in semi-aquatic areas'
-                    'Risk Quotient for non-listed dicot seedlings exposed to Pesticide X in dry areas'
-                    'Risk Quotient for listed dicot seedlings exposed to Pesticide X in dry areas'
-                    'Risk Quotient for listed dicot seedlings exposed to Pesticide X in semi-aquatic areas'
+        "Parameter": ['Runoff to Dry Areas', 'Runoff to Semi-Aquatic Areas', 'Spray Drift',
+                    'Total to Dry Areas', 'Total to Semi-Aquatic Areas',
+                    'Risk Quotient for non-listed monocot seedlings exposed to pesticide X in a dry area',
+                    'Risk Quotient for non-listed monocot seedlings exposed to Pesticide X in a semi-aquatic area',
+                    'Risk Quotient for non-listed monocot seedlings exposed to Pesticide X via spray drift',
+                    'Risk Quotient for listed monocot seedlings exposed to Pesticide X in a dry areas',
+                    'Risk Quotient for listed monocot seedlings exposed to Pesticide X in a semi-aquatic area',
+                    'Risk Quotient for listed monocot seedlings exposed to Pesticide X via spray drift',
+                    'Risk Quotient for non-listed dicot seedlings exposed to Pesticide X in dry areas',
+                    'Risk Quotient for non-listed dicot seedlings exposed to Pesticide X in semi-aquatic areas',
+                    'Risk Quotient for non-listed dicot seedlings exposed to Pesticide X in dry areas',
+                    'Risk Quotient for listed dicot seedlings exposed to Pesticide X in dry areas',
+                    'Risk Quotient for listed dicot seedlings exposed to Pesticide X in semi-aquatic areas',
                     'Risk Quotient for listed dicot seedlings exposed to Pesticide X via spray drift',],
 
         "Mean": [
@@ -190,21 +191,35 @@ def table_all(pvheadings, pvuheadings, deheadings, plantec25noaecheadings, plant
     html_all = html_all + table_5(plantecdrysemisprayheadings, tmpl, terrplant_obj)
     return html_all
 
+def table_all_sum(sumheadings, tmpl, A, I, R, D, nms, lms, nds, lds, 
+                    rundry_out, runsemi_out, spray_out, totaldry_out, totalsemi_out, 
+                    nmsRQdry_out, nmsRQsemi_out, nmsRQspray_out, 
+                    lmsRQdry_out, lmsRQsemi_out, lmsRQspray_out, 
+                    ndsRQdry_out, ndsRQsemi_out, ndsRQspray_out, 
+                    ldsRQdry_out, ldsRQsemi_out, ldsRQspray_out):
+    html_all_sum = table_sum_input(sumheadings, tmpl, A, I, R, D, nms, lms, nds, lds)
+    html_all_sum += table_sum_output(sumheadings, tmpl, rundry_out, runsemi_out, spray_out, totaldry_out, totalsemi_out, 
+                    nmsRQdry_out, nmsRQsemi_out, nmsRQspray_out, 
+                    lmsRQdry_out, lmsRQsemi_out, lmsRQspray_out, 
+                    ndsRQdry_out, ndsRQsemi_out, ndsRQspray_out, 
+                    ldsRQdry_out, ldsRQsemi_out, ldsRQspray_out)
+    return html_all_sum
+
 def table_sum_input(sumheadings, tmpl, A, I, R, D, nms, lms, nds, lds):
         #pre-table sum_input
         html = """
         <table border="1" border="1" class="out_1">
-        <tr><td><H3>Summary Statistics (Iterations=%s)</H3></td></tr>
+        <tr><td><H3>Summary Statistics</H3></td></tr>
         <tr></tr>
         </table>
-        """%(i-1)
+        """
         #table sum_input
         tsuminputdata = gettsumdata(A, I, R, D, nms, lms, nds, lds)
         tsuminputrows = gethtmlrowsfromcols(tsuminputdata, sumheadings)
         html = html + tmpl.render(Context(dict(data=tsuminputrows, headings=sumheadings)))
         return html
 
-def table_sum_output(rundry_out, runsemi_out, spray_out, totaldry_out, totalsemi_out, 
+def table_sum_output(sumheadings, tmpl, rundry_out, runsemi_out, spray_out, totaldry_out, totalsemi_out, 
                     nmsRQdry_out, nmsRQsemi_out, nmsRQspray_out, 
                     lmsRQdry_out, lmsRQsemi_out, lmsRQspray_out, 
                     ndsRQdry_out, ndsRQsemi_out, ndsRQspray_out, 
@@ -220,6 +235,7 @@ def table_sum_output(rundry_out, runsemi_out, spray_out, totaldry_out, totalsemi
                     lmsRQdry_out, lmsRQsemi_out, lmsRQspray_out, 
                     ndsRQdry_out, ndsRQsemi_out, ndsRQspray_out, 
                     ldsRQdry_out, ldsRQsemi_out, ldsRQspray_out)
+        tsumoutputrows = gethtmlrowsfromcols(tsumoutputdata, sumheadings)
         html = html + tmpl.render(Context(dict(data=tsumoutputrows, headings=sumheadings)))
         return html
 
@@ -234,7 +250,7 @@ def table_1(pvheadings, tmpl, terrplant_obj):
         #table 1
         t1data = gett1data(terrplant_obj)
         t1rows = gethtmlrowsfromcols(t1data,pvheadings)
-        html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
+        html = html + tmpl.render(Context(dict(data=t1rows, headings=pvheadings)))
         html = html + """
                 </div>
         """

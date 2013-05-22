@@ -104,7 +104,7 @@ test_suite_chance_f_2 = suite(TestCase_chance_f, LC50=LC50[1], threshold=thresho
                 
 class IecQaqcPage(webapp.RequestHandler):
     def get(self):
-        text_file1 = open('rice/rice_description.txt','r')
+        text_file1 = open('iec/iec_description.txt','r')
         x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', 'title')
@@ -206,18 +206,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-

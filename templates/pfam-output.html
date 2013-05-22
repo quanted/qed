@@ -1,14 +1,15 @@
-<link rel="stylesheet" type="text/css" href="http://www.prioritymarketers.com/jqplot/src/jquery.jqplot.css"> 
-<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/jquery.jqplot.js"></script> 
-<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.barRenderer.js"></script>
-<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.categoryAxisRenderer.js"></script>
-<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.pointLabels.js"></script>
-<script type='text/javascript' src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.cursor.js"></script>
-<script type="text/javascript" src="https://bitbucket.org/cleonello/jqplot/raw/b5a7796a9ebf/src/plugins/jqplot.canvasTextRenderer.js"></script>
-<script type="text/javascript" src="https://bitbucket.org/cleonello/jqplot/raw/b5a7796a9ebf/src/plugins/jqplot.canvasAxisLabelRenderer.js"></script>
+<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="/stylesheets/jqplot/excanvas.js"></script><![endif]-->
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/jquery.jqplot.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/jqplot/jquery.jqplot.css" />
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.pointLabels.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.cursor.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
 <script type="text/javascript" language="javascript" src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.dateAxisRenderer.js"></script>
 <script type="text/javascript" language="javascript" src="http://www.prioritymarketers.com/jqplot/src/plugins/jqplot.canvasAxisTickRenderer.js"></script>
-<script type="text/javascript" language="javascript" src="../stylesheets/jQRangeSlider/jquery-ui-1.8.16.custom.min.js"></script> 
+<!-- <script type="text/javascript" language="javascript" src="../stylesheets/jQRangeSlider/jquery-ui-1.8.16.custom.min.js"></script> -->
 <script type="text/javascript" language="javascript" src="../stylesheets/jQRangeSlider/jQDateRangeSlider-withRuler-min.js"></script> 
 <link rel="stylesheet" type="text/css" href="../stylesheets/jQRangeSlider/classic.css"> 
 <script type="text/javascript" language="javascript" src="https://raw.github.com/kensnyder/date-prototype/master/src/Date.js"></script> 
@@ -16,38 +17,37 @@
 <script src="http://www.prioritymarketers.com/jqplot/src/excanvas.min.js"></script>
 <![endif]-->
 
-     
 <script type='text/javascript'> 
 
-$(document).ready(function(){   
-    	var noa_out = $.parseJSON($('#noa_out').text());
-    	var mm_out = $.parseJSON($('#mm_out').attr('data-val'));
-    	var dd_out = $.parseJSON($('#dd_out').attr('data-val'));
-    	var ma_out = $.parseJSON($('#ma_out').attr('data-val'));
-    	var sr_out = $.parseJSON($('#sr_out').attr('data-val'));
-		i=1
+$(document).ready(function(){
+   	var noa_out = $.parseJSON($('#noa_out').text());
+   	var mm_out = $.parseJSON($('#mm_out').attr('data-val'));
+   	var dd_out = $.parseJSON($('#dd_out').attr('data-val'));
+   	var ma_out = $.parseJSON($('#ma_out').attr('data-val'));
+   	var sr_out = $.parseJSON($('#sr_out').attr('data-val'));
+		var i=1;
 		while (i <= noa_out){
-		$('<tr><td>Application method</td><tr>').appendTo('.out_application')
-		i=i+1
+	  $('<tr><td>Application method</td><tr>').appendTo('.out_application');
+		var i=i+1;
 		}
 		
-    	var nof_out = $.parseJSON($('#nof_out').text());
-    	var nod_out = $.parseJSON($('#nod_out').attr('data-val'));
-    	var fl_out = $.parseJSON($('#fl_out').attr('data-val'));
-    	var wl_out = $.parseJSON($('#wl_out').attr('data-val'));
-    	var ml_out = $.parseJSON($('#ml_out').attr('data-val'));
-    	var to_out = $.parseJSON($('#to_out').attr('data-val'));
-		k=1
+   	var nof_out = $.parseJSON($('#nof_out').text());
+   	var nod_out = $.parseJSON($('#nod_out').attr('data-val'));
+   	var fl_out = $.parseJSON($('#fl_out').attr('data-val'));
+   	var wl_out = $.parseJSON($('#wl_out').attr('data-val'));
+   	var ml_out = $.parseJSON($('#ml_out').attr('data-val'));
+   	var to_out = $.parseJSON($('#to_out').attr('data-val'));
+		var k=1
 		while (k <= nof_out){
-		$('<tr><td width=50><div align="center">Event'+k+'</div></td><td width=50><div align="center">'+nod_out[k-1]+'</div></td><td width=50><div align="center">'+fl_out[k-1]+'</div></td><td width=50><div align="center">'+wl_out[k-1]+'</div></td><td width=50><div align="center">'+ml_out[k-1]+'</div></td><td width=50><div align="center">'+to_out[k-1]+'</div></td></tr>').appendTo('.out_floods')
-		k=k+1
+	  $('<tr><td width=50><div align="center">Event'+k+'</div></td><td width=50><div align="center">'+nod_out[k-1]+'</div></td><td width=50><div align="center">'+fl_out[k-1]+'</div></td><td width=50><div align="center">'+wl_out[k-1]+'</div></td><td width=50><div align="center">'+ml_out[k-1]+'</div></td><td width=50><div align="center">'+to_out[k-1]+'</div></td></tr>').appendTo('.out_floods');
+		var k=k+1;
 		}
 
 /////collect data for figures////////
         var x_date1 = $.parseJSON($('#x_date1').attr('data-val'));
         var x_re_v_f = $.parseJSON($('#x_re_v_f').attr('data-val'));
         var x_re_c_f = $.parseJSON($('#x_re_c_f').attr('data-val'));
-        var x_date1_len=x_date1.length
+        var x_date1_len=x_date1.length;
         var paired5 = [];
         var paired6 = [];
         // for (var i=0; i<=x_date1_len; i+=1){
@@ -60,7 +60,7 @@ $(document).ready(function(){
         var x_water_level = $.parseJSON($('#x_water_level').attr('data-val'));
         var x_ben_tot = $.parseJSON($('#x_ben_tot').attr('data-val'));
         var x_ben_por = $.parseJSON($('#x_ben_por').attr('data-val'));
-        var x_date2_len=x_date2.length
+        var x_date2_len=x_date2.length;
         var paired = [];
         var paired2 = [];
         var paired3 = [];
@@ -107,7 +107,7 @@ $(document).ready(function(){
           
           createplot1(paired, paired2, values_min, values_max, range_interval);
           createplot2(paired3, paired4, values_min, values_max, range_interval);
-          createplot3(paired5, paired6, values_min, values_max, range_interval)
+          createplot3(paired5, paired6, values_min, values_max, range_interval);
 
 
         $('#calc1').click(function () {
@@ -131,12 +131,12 @@ $(document).ready(function(){
           var month_map_min = month_map_pool[mydate_min.getMonth()];
           var date_map_min = date_map_pool[mydate_min.getDate()-1];
           var str_min = month_map_min + '/' + date_map_min+ '/' + mydate_min.getFullYear();
-          var mydate_min_ind = x_date2.indexOf(str_min)
+          var mydate_min_ind = x_date2.indexOf(str_min);
 
           var month_map_max = month_map_pool[mydate_max.getMonth()];
           var date_map_max = date_map_pool[mydate_max.getDate()-1];
           var str_max = month_map_max + '/' + date_map_max+ '/' + mydate_max.getFullYear();
-          var mydate_max_ind = x_date2.indexOf(str_max)
+          var mydate_max_ind = x_date2.indexOf(str_max);
 
           //console.log(new_min_s, str_min, x_date2.indexOf(str_min), str_max, x_date2.indexOf(str_max))
           //console.log(x_date[0])
@@ -145,8 +145,8 @@ $(document).ready(function(){
 
           createplot1(paired.slice(mydate_min_ind, mydate_max_ind+1), paired2.slice(mydate_min_ind, mydate_max_ind+1), values_min, values_max, range_interval);
           createplot2(paired3.slice(mydate_min_ind, mydate_max_ind+1), paired4.slice(mydate_min_ind, mydate_max_ind+1), values_min, values_max, range_interval);
-          createplot3(paired5.slice(mydate_min_ind, mydate_max_ind+1), paired6.slice(mydate_min_ind, mydate_max_ind+1), values_min, values_max, range_interval)
-        })
+          createplot3(paired5.slice(mydate_min_ind, mydate_max_ind+1), paired6.slice(mydate_min_ind, mydate_max_ind+1), values_min, values_max, range_interval);
+        });
 
     function createplot1(data1, data2, range_min, range_max, range_interval) {
   		$.jqplot.config.enablePlugins = true;
@@ -192,8 +192,8 @@ $(document).ready(function(){
                   placement: 'inside',
                   fontSize: '11px'
               }
-          })
-      }
+          });
+      };
 
       function createplot2(data1, data2, range_min, range_max, range_interval) {
       $.jqplot.config.enablePlugins = true;
@@ -239,8 +239,8 @@ $(document).ready(function(){
                   placement: 'inside',
                   fontSize: '11px'
               }
-          })
-      }
+          });
+      };
 
       function createplot3(data1, data2, range_min, range_max, range_interval) {
       $.jqplot.config.enablePlugins = true;
@@ -286,9 +286,9 @@ $(document).ready(function(){
                   placement: 'inside',
                   fontSize: '11px'
               }
-          })
-      }
-})
+          });
+      };
+});
 </script>
 
 

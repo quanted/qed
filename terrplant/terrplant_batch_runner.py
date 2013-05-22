@@ -4,7 +4,7 @@ import sys
 sys.path.append("utils")
 import json_utils
 sys.path.append("./terrplant")
-from terrplant import terrplant_model
+import terrplant_model
 
 class TerrPlantBatchRunner():
     
@@ -37,21 +37,5 @@ class TerrPlantBatchRunner():
         if 'NOAEC_for_listed_vegetative_vigor_dicot' in config_properties:
             lds = config_properties['NOAEC_for_listed_vegetative_vigor_dicot']
         terr = terrplant_model.terrplant(True,True,A,I,R,D,nms,lms,nds,lds)
-        results_dict['EEC-dry'] = terr.rundry_result
-        results_dict['EEC-semi-aquatic'] = terr.runsemi_result
-        results_dict['EEC-spray-drift'] = terr.spray_result
-        results_dict['EEC-total-dry'] = terr.totaldry_result
-        results_dict['EEC-total-semi-aquatic'] = terr.totalsemi_result
-        results_dict['nmsRQdry'] = terr.nmsRQdry_result
-        results_dict['nmsRQsemi'] = terr.nmsRQsemi_result
-        results_dict['nmsRQspray'] = terr.nmsRQspray_result
-        results_dict['lmsRQdry'] = terr.lmsRQdry_result
-        results_dict['lmsRQsemi'] = terr.lmsRQsemi_result
-        results_dict['lmsRQspray'] = terr.lmsRQspray_result
-        results_dict['ndsRQdry'] = terr.ndsRQdry_result
-        results_dict['ndsRQsemi'] = terr.ndsRQsemi_result
-        results_dict['ndsRQspray'] = terr.ndsRQspray_result
-        results_dict['ldsRQdry'] = terr.ldsRQdry_result
-        results_dict['ldsRQsemi'] = terr.ldsRQsemi_result
-        results_dict['ldsRQspray'] = terr.ldsRQspray_result 
+        results_dict['terrplant'] = vars(terr)
         return results_dict

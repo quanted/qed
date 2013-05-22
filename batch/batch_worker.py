@@ -7,10 +7,10 @@ sys.path.append("terrplant")
 import terrplant_model
 from terrplant_batch_runner import TerrPlantBatchRunner
 terrPlantRunner = TerrPlantBatchRunner()
-sys.path.append("sip")
-import sip_model
-from sip_batch_runner import SIPBatchRunner
-sipRunner = SIPBatchRunner()
+#sys.path.append("sip")
+#import sip_model
+#from sip_batch_runner import SIPBatchRunner
+#sipRunner = SIPBatchRunner()
 
 logger = logging.getLogger("BatchWorker")
 
@@ -51,12 +51,14 @@ def combineUbertoolProperties(ubertool):
     
 def processUbertoolBatchRunsIntoBatchModelRun(ubertool):
     logger.info("Starting Ubertool Asynchronous Distributed Batching")
-    combined_ubertool_props = {}
-    combined_ubertool_props = combineUbertoolProperties(ubertool)
-    ubertool_id = combined_ubertool_props["ubertool-config-name"]
+    #combined_ubertool_props = {}
+    #combined_ubertool_props = combineUbertoolProperties(ubertool)
+    #ubertool_id = combined_ubertool_props["config_name"]
     ubertool_result = {}
-    ubertool_result = terrPlantRunner.runTerrPlantModel(combined_ubertool_props,ubertool_result)
-    ubertool_result = sipRunner.runSIPModel(combined_ubertool_props,ubertool_result)
+    ubertool_result = terrPlantRunner.runTerrPlantModel(ubertool,ubertool_result)
+    logger.info("Ubertool Results:")
+    logger.info(ubertool_result)
+    #ubertool_result = sipRunner.runSIPModel(ubertool,ubertool_result)
     #perform on all other eco models
     return ubertool_result
 
@@ -93,14 +95,16 @@ def handle_delivery(channel, method, header, body):
     messageData = data['message']
     messageData = convert(messageData)
     messageData = json.loads(messageData)
+    results_data = None
     #print messageData
     ubertool_config_name = messageData['config_name']
-    batch_id = messageData['batchId']
-    results = processUbertoolBatchRunsIntoBatchModelRun(messageData)
-    results['config_name'] = ubertool_config_name
-    results['batchId'] = batch_id
-    #print results
-    results_data = json.dumps(results)
+    if 'batchId' in messageData:
+        batch_id = messageData['batchId']
+        results = processUbertoolBatchRunsIntoBatchModelRun(messageData)
+        results['config_name'] = ubertool_config_name
+        results['batchId'] = batch_id
+        print results
+        results_data = json.dumps(results)
     msg_props = pika.BasicProperties()
     msg_props.content_type = "application/json"
     msg_props.durable = False

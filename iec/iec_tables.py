@@ -48,17 +48,17 @@ def getdjtemplate():
     """
     return dj_template
 
-def gett1data(LC50,threshold,dose_response):
+def gett1data(iec_obj):
     data = { 
         "User Input": ['LC50 or LD50', 'Threshold', 'Slope',],
-        "Value": [LC50, threshold, dose_response,],
+        "Value": [iec_obj.LC50, iec_obj.threshold, iec_obj.dose_response,],
     }
     return data
 
-def gett2data(z_score_f,F8_f,chance_f):
+def gett2data(iec_obj):
     data = { 
         "IEC Output": ['Z Score', '"F8"', 'Chance of Individual Effect',],
-        "Value": ['%.2f' % z_score_f,'%.2e' % F8_f,'%.2f' % chance_f, ],
+        "Value": ['%.2f' % iec_obj.z_score,'%.2e' % iec_obj.F8,'%.2f' % iec_obj.chance, ],
     }
     return data
 
@@ -67,19 +67,19 @@ ovheadings = getheaderov()
 djtemplate = getdjtemplate()
 tmpl = Template(djtemplate)
 
-def table_all():
-    html_all = table_1(ivheadings,tmpl,LC50,threshold,dose_response)
-    html_all = html_all + table_2(ovheadings,tmpl,z_score_f,F8_f,chance_f)
+def table_all(iec_obj):
+    html_all = table_1(iec_obj)
+    html_all = html_all + table_2(iec_obj)
     return html_all
 
-def table_1(LC50,threshold,dose_response):
+def table_1(iec_obj):
     #pre-table 1
         html = """
         <H4 class="out_1 collapsible" id="section1"><span></span>User Inputs</H4>
             <div class="out_ container_output">
         """
     #table 1
-        t1data = gett1data(LC50,threshold,dose_response)
+        t1data = gett1data(iec_obj)
         t1rows = gethtmlrowsfromcols(t1data,ivheadings)
         html = html + tmpl.render(Context(dict(data=t1rows, headings=ivheadings)))
         html = html + """
@@ -87,18 +87,18 @@ def table_1(LC50,threshold,dose_response):
         """
         return html
 
-def table_2(dose_response, LC50, threshold):
+def table_2(iec_obj):
     #pre-table 1
         html = """
         <H4 class="out_2 collapsible" id="section2"><span></span>Model Output</H4>
             <div class="out_ container_output">
         """
-        z_score_f=iec_model.z_score_f(dose_response, LC50, threshold)
-        F8_f=iec_model.F8_f(dose_response, LC50, threshold)
-        chance_f=iec_model.chance_f(dose_response, LC50, threshold)
+        # z_score_f=iec_model.z_score_f(iec_obj.dose_response, iec_obj.LC50, iec_obj.threshold)
+        # F8_f=iec_model.F8_f(iec_obj.dose_response, iec_obj.LC50, iec_obj.threshold)
+        # chance_f=iec_model.chance_f(iec_obj.dose_response, iec_obj.LC50, iec_obj.threshold)
 
     #table 2
-        t2data = gett2data(z_score_f,F8_f,chance_f)
+        t2data = gett2data(iec_obj)
         t2rows = gethtmlrowsfromcols(t2data,ovheadings)
         html = html + tmpl.render(Context(dict(data=t2rows, headings=ovheadings)))
         html = html + """

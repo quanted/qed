@@ -301,88 +301,94 @@ class beepopOutputPage(webapp.RequestHandler):
                 'model':'beepop', 
                 'model_attributes':'BEEPOP Output'})
         html = html + """
-        <table border="1">
-        <tr><H3>User Inputs</H3></tr>
-        <tr>
-        <td>Initial colony size</td>
-        <td>%s</td>
-        </tr>
-        <tr>
-        <td>Sperm obtained</td>
-        <td>%s</td>
-        </tr>
-        <tr>
-        <td>Potential eggs laid</td>
-        <td>%s</td>
-        </tr>
-        <tr>
-        <td>Number of foraging days</td>
-        <td>%s</td>
-        </tr>
-         <tr>
-        <td>Brood cycles</td>
-        <td>%s</td>
-        </tr>
-         <tr>
-        <td>Days for eggs to develop into adult worker</td>
-        <td>%s</td>
-        </tr>
-         <tr>
-        <td>Days for eggs to develop into adult drones</td>
-        <td>%s</td>
-        </tr>
-        <tr>
-        <td>Days for inside worker bees to develop into foragers</td>
-        <td>%s</td>
-        </tr>
-        <tr>
-        <td>Number of foragers until death</td>
-        <td>%s</td>
-        </tr>
-        <tr>
-        <td>Percentage of eggs surviving to adults</td>
-        <td>%s</td>
-        </tr>
-        <tr>
-        </table>
+        <div class="out_">
+            <H3>User Inputs</H3>
+            <table>
+                <tr>
+                    <td>Initial colony size</td>
+                    <td>%s</td>
+                </tr>
+                <tr>
+                    <td>Sperm obtained</td>
+                    <td>%s</td>
+                </tr>
+                <tr>
+                    <td>Potential eggs laid</td>
+                    <td>%s</td>
+                </tr>
+                <tr>
+                    <td>Number of foraging days</td>
+                    <td>%s</td>
+                </tr>
+                 <tr>
+                    <td>Brood cycles</td>
+                    <td>%s</td>
+                </tr>
+                 <tr>
+                    <td>Days for eggs to develop into adult worker</td>
+                    <td>%s</td>
+                </tr>
+                 <tr>
+                    <td>Days for eggs to develop into adult drones</td>
+                    <td>%s</td>
+                </tr>
+                <tr>
+                    <td>Days for inside worker bees to develop into foragers</td>
+                    <td>%s</td>
+                </tr>
+                <tr>
+                    <td>Number of foragers until death</td>
+                    <td>%s</td>
+                </tr>
+                <tr>
+                    <td>Percentage of eggs surviving to adults</td>
+                    <td>%s</td>
+                </tr>
+            </table>
+        </div>
         """ % (initial_colony_size, sperm_obtained, e_max, number_of_forages, brood_cycles, days_to_adult_worker, days_to_adult_drones, days_from_adult_to_forager, number_of_forages, egg_mortality)
         html = html + """
-        <table border="1">
-        <tr><H3>Outputs for the last day of the model run</H3></tr>
-        <tr>
-        <td>Worker bees</td>
-        <td>%.2f</td>
-        </tr>
-        <tr>
-        <td>Forager bees</td>
-        <td>%.2f</td>
-        </tr>
-        <tr>
-        <td>Drones bees</td>
-        <td>%.2f</td>
-        </tr>
-        </table>
+        <div class="out_">
+            <H3>Outputs for the last day of the model run</H3>
+            <table>
+                <tr>
+                    <td>Worker bees</td>
+                    <td>%.2f</td>
+                </tr>
+                <tr>
+                    <td>Forager bees</td>
+                    <td>%.2f</td>
+                </tr>
+                <tr>
+                    <td>Drones bees</td>
+                    <td>%.2f</td>
+                </tr>
+            </table>
+        </div>
         """ % (Et_f(winter_kill, kill_percent,swarm, swarm_date,adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[4], Et_f(winter_kill, kill_percent,swarm, swarm_date,adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[5], Et_f(winter_kill, kill_percent,swarm, swarm_date,adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[6])
-        html = html +  """<table width="400" border="1", style="display:none">
-                          <tr>
-                            <td>hive_val_1</td>
-                            <td id="Eggs_laid">%s</td>
-                          </tr>
-                          <tr>
-                            <td>hive_val_2</td>
-                            <td id="Adult_workers">%s</td>
-                          </tr>
-                          <tr>
-                            <td>hive_val_3</td>
-                            <td id="Foragers">%s</td>
-                          </tr>
-                          <tr>
-                            <td>hive_val_3</td>
-                            <td id="Drones">%s</td>
-                          </tr>                                                     
-                          </table>"""%(Et_f(winter_kill, kill_percent,swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[0],Et_f(winter_kill, kill_percent,swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[9],Et_f(winter_kill, kill_percent,swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[8],Et_f(winter_kill, kill_percent,swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[7])        
+        html = html +  """
+        <table width="400" border="1", style="display:none">
+            <tr>
+                <td>hive_val_1</td>
+                <td id="Eggs_laid">%s</td>
+            </tr>
+            <tr>
+                <td>hive_val_2</td>
+                <td id="Adult_workers">%s</td>
+            </tr>
+            <tr>
+                <td>hive_val_3</td>
+                <td id="Foragers">%s</td>
+            </tr>
+            <tr>
+                <td>hive_val_3</td>
+                <td id="Drones">%s</td>
+            </tr>                                                     
+      </table>
+        """%(Et_f(winter_kill, kill_percent,swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[0],Et_f(winter_kill, kill_percent,swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[9],Et_f(winter_kill, kill_percent,swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[8],Et_f(winter_kill, kill_percent,swarm, swarm_date, adult_brood_ratio, egg_mortality, e_max, days_to_adult_drones, sperm_obtained, days_to_adult_worker, days_from_adult_to_forager, number_of_forages, initial_colony_size)[7])        
         html = html + template.render(templatepath + 'beepop-outputjqplot.html', {})         
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
           
        

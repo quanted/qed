@@ -3,11 +3,8 @@ var rabbitmq = require('./rabbitmq.js');
 var mongodb = require('./mongodb.js');
 var cas = require('./cas_mongo.js');
 var ubertool = require('./ubertool.js');
+var utils = require('./utils.js');
 var flow = require('nimble');
-
-function sayHello(req, res, next) {
-  res.send('hello ');
-}
 
 function submitBatch(req, res, next)
 {
@@ -53,7 +50,12 @@ server.get('/batch_results/:batchId', function(req, res, next){
     mongodb.getBatchResults(batchId, function(error, batch_data){
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
-        res.send(batch_data);
+        if(batch_data != null)
+        {
+            res.send(batch_data);
+        } else {
+            res.send("Problem returning results");
+        }
     });
 });
 
@@ -76,28 +78,9 @@ server.get('/all-cas', function(req, res, next){
     });
 });
 
-//Ubertool Services
-server.get('/aqua/config_names', function(req, res, next){
-    ubertool.getAllAquaConfigNames(function(error,config_names){
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "X-Requested-With");
-        res.send(config_names);
-    });
-});
-
-server.get('/aqua/:aqua_config', function(req, res, next){
-    var aqua_config = req.params.aqua_config;
-    console.log("GET for Aquatic Toxicity Configuration Name: " + aqua_config);
-    ubertool.getAquaConfigData(aqua_config, function(error,aqua_config_data){
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "X-Requested-With");
-        res.send(aqua_config_data);
-    });
-});
-
-server.post('/aqua/:aqua_config', function(req, res, next){
-    var aqua_config = req.params.aqua_config;
-    console.log("POST for Aquatic Toxicity Configuration Name: " + aqua_config);
+server.post('/ubertool/batch/:config', function(req, res, next){
+    var config_type = req.params.config_type;
+    var config = req.params.config;
     var body = '';
     var json = '';
     req.on('data', function (data)
@@ -107,9 +90,57 @@ server.post('/aqua/:aqua_config', function(req, res, next){
     req.on('end', function ()
     {
         json = JSON.parse(body);
-        console.log(JSON.stringify(json)); 
-        ubertool.addUpdateAquaConfig(aqua_config,json);
+        console.log("POST for Configuration Name: " + config + " config type: " + config_type + " json data: " + json);
     });
+});
+
+//Ubertool Services
+server.get('/ubertool/:config_type/config_names', function(req, res, next){
+    var config_type = req.params.config_type;
+    ubertool.getAllConfigNames(config_type,function(error,config_names){
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.send(config_names);
+    });
+});
+
+server.get('/ubertool/:config_type/:config', function(req, res, next){
+    var config_type = req.params.config_type;
+    var config = req.params.config;
+    console.log("GET for Configuration Name: " + config);
+    ubertool.getConfigData(config_type,config, function(error,config_data){
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.send(config_data);
+    });
+});
+
+server.post('/ubertool/:config_type/:config', function(req, res, next){
+    var config_type = req.params.config_type;
+    var config = req.params.config;
+    var body = '';
+    var json = '';
+    req.on('data', function (data)
+    {
+        body += data;
+    });
+    req.on('end', function ()
+    {
+        json = JSON.parse(body);
+        console.log("POST for Configuration Name: " + config + " config type: " + config_type + " json data: " + json);
+        ubertool.addUpdateConfig(config_type,config,json, function(error, results)
+        {
+            res.send(results);
+        });
+    });
+});
+
+server.get('/api-key', function(req, res, next){
+    console.log("GET for API Key");
+    apiKey = utils.generateNewAPIKey();
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.send(apiKey);
 });
 
 server.listen(8887, function() {

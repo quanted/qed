@@ -51,7 +51,7 @@ class leslieOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'leslie', 
                 'model_attributes':'Leslie Matrix Outputs'})
-        html = html + """<table class="out-in" width="550" border="1">
+        html = html + """<table class="out-in out_" width="550" border="1">
                           <tr>
                             <th scope="col" width="250"><div align="center">Inputs</div></th>
                             <th scope="col" width="150"><div align="center">Unit</div></th>                            
@@ -80,9 +80,9 @@ class leslieOutputPage(webapp.RequestHandler):
                         </table>
                         <p>&nbsp;</p>"""%(T, S, l_m.tolist(), n_o.tolist())
                         
-        html = html + """<table class="lm" border="1">"""
+        html = html + """<table class="lm out_" border="1">"""
                                             
-        html = html + """<table class="ii" border="1">"""
+        html = html + """<table class="ii out_" border="1">"""
                                              
 
         html = html +  """<table width="400" border="1" style="display: none">
@@ -94,6 +94,7 @@ class leslieOutputPage(webapp.RequestHandler):
                           </table>"""%(x)
         html = html + template.render(templatepath + 'leslie-output-jqplot.html', {})                         
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)
      

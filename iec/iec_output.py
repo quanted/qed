@@ -25,6 +25,7 @@ class IecOutputPage(webapp.RequestHandler):
         LC50 = float(form.getvalue('LC50'))
         threshold = float(form.getvalue('threshold'))
         dose_response = float(form.getvalue('dose_response'))
+        iec_obj = iec_model.iec(dose_response, LC50, threshold)
         text_file = open('iec/iec_description.txt','r')
         x1 = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
@@ -34,14 +35,8 @@ class IecOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'iec', 
                 'model_attributes':'IEC Output'})
-        ivheadings = iec_tables.getheaderiv()
-        ovheadings = iec_tables.getheaderov()
-        djtemplate = iec_tables.getdjtemplate()
-        tmpl = Template(djtemplate)
-        #table 1
-        html = html + iec_tables.table_1(LC50,threshold,dose_response)
-        #table 2
-        html = html + iec_tables.table_2(dose_response, LC50, threshold)
+
+        html = html + iec_tables.table_all(iec_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

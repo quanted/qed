@@ -24,15 +24,14 @@ class rddrOutputPage(webapp.RequestHandler):
                 'model':'rddr', 
                 'model_attributes':'RDDR Output'})
         html = html + """
-        <table width="600" border="1">
-          
-        </table>
-        <p>&nbsp;</p>                     
-        
-        <table width="600" border="1">
-        
-        </table>
+        <div class="out_">
+            <table >
+                <th>Output</th>
+                <tr><td>Default</td></tr>
+            </table>
+        </div>
         """
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06hh_uberfooter.html', {'links': ''})
         self.response.out.write(html)

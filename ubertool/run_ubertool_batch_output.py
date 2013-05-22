@@ -14,93 +14,79 @@ cgitb.enable()
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
-from google.appengine.api import users
-from google.appengine.ext import db
+from google.appengine.api import urlfetch
+from django.utils import simplejson
+import urllib
 from ubertool import run_ubertool_db
 from StringIO import StringIO
 import cStringIO
 import csv
 import logging
 import sys
+import datetime
 sys.path.append("utils")
-sys.path.append("ubertool")
 from CSVTestParamsLoader import CSVTestParamsLoader
-import json_utils
-from aquatic_toxicity_batch_output import AquaticToxicityBatchLoader
-from ecosystem_inputs_batch_output import EcosystemInputsBatchLoader
-from exposure_concentrations_batch_output import ExposureConcentrationsBatchLoader
-from pesticide_properties_batch_output import PesticidePropertiesBatchLoader
-from terrestrial_toxicity_batch_output import TerrestrialToxicityBatchLoader
-from use_batch_output import UseBatchLoader
-from use import Use, UsePropertiesRetrievalService
-from pesticide_properties import PesticideProperties, PestPropertiesRetrievalService
-from aquatic_toxicity import AquaticToxicity, AquaticToxicityPropertiesRetrievalService
-from ecosystem_inputs import EcosystemInputs, EcosystemInputsPropertiesRetrievalService
-from exposure_concentrations import ExposureConcentrations, ExposureConcentrationsRetrievalService
-from terrestrial_toxicity import TerrestrialToxicity, TerrestrialPropertiesRetrievalService
-from ubertool.ubertool import Ubertool
-sys.path.append("../batch")
-from batch.batch import Batch
-from batch.batch_processor import BatchService
-from django.utils import simplejson
-import pickle
-from run_ubertool_input import UbertoolInputPage
+
+sys.path.append("ubertool")
+import aquatic_toxicity_batch_output
+import ecosystem_inputs_batch_output
+import exposure_concentrations_batch_output
+import pesticide_properties_batch_output
+import terrestrial_toxicity_batch_output
+import use_batch_output
     
 logger = logging.getLogger("Run_Ubertool_Batch_Output")
 
-batchProcessor = BatchService()
-usePropService = UsePropertiesRetrievalService()
-pestPropService = PestPropertiesRetrievalService()
-aquaPropService = AquaticToxicityPropertiesRetrievalService()
-ecoPropService = EcosystemInputsPropertiesRetrievalService()
-expoPropService = ExposureConcentrationsRetrievalService()
-terrePropService = TerrestrialPropertiesRetrievalService()
+ubertool_config_service_base_url = os.environ['UBERTOOL_MONGO_SERVER']
 
 def loop_batch_file(thefile):
     params_matrix = get_params_matrix(thefile)
-    user = users.get_current_user()
-    batch_ubertools = []
-    batch_ubertools_list = []
+    logger.info("Params Matrix:")
+    logger.info(params_matrix)
+    batch_config_props = {}
+    ubertools = []
     for batch_index in range(len(params_matrix.get('cas_number'))):
-        ubertool_dict = {}
+        batch_index = int(batch_index)
+        ubertool_configuration_properties = {}
         ubertool_config_name = None
         if "ubertool_config_name" in params_matrix:
             ubertool_config_name = params_matrix.get("ubertool_config_name")[batch_index]
-        q = db.Query(Ubertool)
-        if user:
-            q.filter('user =',user)
-        if ubertool_config_name:
-            q.filter("config_name =", ubertool_config_name)
-        ubertool = q.get()
-        if ubertool is None:
-            ubertool = Ubertool()
-            ubertool.config_name = ubertool_config_name
-        if user:
-            ubertool.user = user
-        aqua_toxicity = AquaticToxicityBatchLoader()
-        ubertool.aqua = aqua_toxicity.batchLoadAquaticToxicityConfigs(params_matrix,batch_index,ubertool)
-        ubertool_dict['aqua'] = aquaPropService.get(ubertool.aqua.config_name)
-        ecosystem_inputs = EcosystemInputsBatchLoader()
-        ubertool.eco = ecosystem_inputs.batchLoadEcosystemInputsConfigs(params_matrix,batch_index,ubertool)
-        ubertool_dict['eco'] = ecoPropService.get(ubertool.eco.config_name)
-        exposure_concentrations = ExposureConcentrationsBatchLoader()
-        ubertool.expo = exposure_concentrations.batchLoadExposureConcentrationsConfigs(params_matrix,batch_index,ubertool)
-        ubertool_dict['expo'] = expoPropService.get(ubertool.expo.config_name)
-        pesticide_properties = PesticidePropertiesBatchLoader()
-        ubertool.pest = pesticide_properties.batchLoadPesticidePropertiesConfigs(params_matrix,batch_index,ubertool)
-        ubertool_dict['pest'] = pestPropService.get(ubertool.pest.config_name)
-        terrestrial_toxicity = TerrestrialToxicityBatchLoader()
-        ubertool.terra = terrestrial_toxicity.batchLoadTerrestrialToxicityConfigs(params_matrix,batch_index,ubertool)
-        ubertool_dict['terra'] = terrePropService.get(ubertool.terra.config_name)
-        use = UseBatchLoader()
-        ubertool.use = use.batchLoadUseConfigs(params_matrix,batch_index,ubertool)
-        ubertool_dict['use'] = usePropService.get(ubertool.use.config_name)
-        logger.info(ubertool.to_xml())
-        ubertool.put()
-        ubertool_dict['config_name'] = ubertool_config_name
-        batch_ubertools_list.append(ubertool_dict)
-        batch_ubertools.append(ubertool)
-    return (batch_ubertools, batch_ubertools_list)
+            ubertool_configuration_properties['config_name'] = ubertool_config_name
+        ubertool_configuration_properties = aquatic_toxicity_batch_output.batchLoadAquaticToxicityConfigs(params_matrix,batch_index,ubertool_configuration_properties)
+        ubertool_configuration_properties = ecosystem_inputs_batch_output.batchLoadEcosystemInputsConfigs(params_matrix,batch_index,ubertool_configuration_properties)
+        ubertool_configuration_properties = exposure_concentrations_batch_output.batchLoadExposureConcentrationsConfigs(params_matrix,batch_index,ubertool_configuration_properties)
+        ubertool_configuration_properties = pesticide_properties_batch_output.batchLoadPesticidePropertiesConfigs(params_matrix,batch_index,ubertool_configuration_properties)
+        ubertool_configuration_properties = terrestrial_toxicity_batch_output.batchLoadTerrestrialToxicityConfigs(params_matrix,batch_index,ubertool_configuration_properties)
+        ubertool_configuration_properties = use_batch_output.batchLoadUseConfigs(params_matrix,batch_index,ubertool_configuration_properties)
+        ubertool_configuration_properties['created'] = str(datetime.datetime.now())
+
+        #TODO: POST ubertool run data to mongodb server
+        logger.info("Ubertool CSV-based data:")
+        logger.info(ubertool_configuration_properties)
+        form_data = simplejson.dumps(ubertool_configuration_properties)
+        url = ubertool_config_service_base_url+"/ubertool/ubertool/"+ubertool_config_name
+        result = urlfetch.fetch(url=url,
+                            payload=form_data,
+                            method=urlfetch.POST,
+                            headers={'Content-Type': 'application/json'})
+        ubertools.append(ubertool_configuration_properties)
+        
+    #TODO: POST batch data to mongodb server
+    batch_config_props['ubertools'] = ubertools
+    batchId = str(int(datetime.datetime.now().strftime("%s")) * 1000)
+    batch_config_props['batchId']="batch-"+batchId
+    batch_config_props['id']="batch-"+batchId
+    batch_config_props['created'] = str(datetime.datetime.now())
+    logger.info("Ubertool Batch CSV-based data:")
+    logger.info(batch_config_props)
+    form_data = simplejson.dumps(batch_config_props)
+    url = ubertool_config_service_base_url+"/batch"
+    result = urlfetch.fetch(url=url,
+                        payload=form_data,
+                        method=urlfetch.POST,
+                        headers={'Content-Type': 'application/json'})
+    return result
+
 
 def get_params_matrix(thefile):
     csvTestParamsLoader = CSVTestParamsLoader(thefile)
@@ -112,6 +98,8 @@ class RunUbertoolBatchPage(webapp.RequestHandler):
         form = cgi.FieldStorage()
         thefile = form['upfile1']
         loop_batch_file(thefile)
+        self.redirect("user.html")
+        
 
 app = webapp.WSGIApplication([('/.*', RunUbertoolBatchPage)], debug=True)
 

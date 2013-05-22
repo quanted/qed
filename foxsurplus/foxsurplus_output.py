@@ -51,7 +51,7 @@ class foxsurplusOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'foxsurplus', 
                 'model_attributes':'Fox Surplus Yield Model Output'})
-        html = html + """<table width="550" border="1">
+        html = html + """<table class="out_">
                           <tr>
                             <th scope="col" width="250">Inputs</th>
                             <th scope="col" width="150">Unit</th>                            
@@ -98,6 +98,7 @@ class foxsurplusOutputPage(webapp.RequestHandler):
                           </table>"""%((x_out))
         html = html + template.render(templatepath + 'foxsurplus-output-jqplot.html', {})                         
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)
      

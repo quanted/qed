@@ -77,16 +77,8 @@ class exponentialOutputPage(webapp.RequestHandler):
         html = html +   """<div id="chart1" style="margin-top:20px; margin-left:20px; width:650px; height:400px;"></div>"""
 
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-
-        html = html + """
-          <form method="post" target="_blank" action=pdf.html>
-            <table align="center" class="getpdf">
-            </table>
-          </form>
-        """
-
         html = html + template.render(templatepath + 'exponential-output-jqplot.html', {})
-        html = html + template.render(templatepath + 'getpdf_jquery.html', {})
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)
      

@@ -488,8 +488,8 @@ class PFAMOutputPage(webapp.RequestHandler):
         """
 
         html = html + template.render(templatepath + 'pfam-output.html', {})
-        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

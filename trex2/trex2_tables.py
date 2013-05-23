@@ -265,16 +265,16 @@ tmpl_10 = Template(djtemplate_10)
 
 
 
-def gett1data(chemical_name, Use, Formulated_product_name, percent_ai, Application_type, r_s, b_w, percent_incorporated,
-              density_of_product, Foliar_dissipation_half_life):
+def gett1data(trex2_obj):
     data = { 
         "Parameter": ['Chemical Name', 'Use', 'Formulated product name', 'Percentage active ingredient', 
                       'Application type', 'Row spacing', 'Bandwidth', 'Percentage incorporated', 'Density of product', 'Foliar dissipation half-life',],
-        "Value": ['%s' % chemical_name, '%s' % Use, '%s' % Formulated_product_name, '%s' % percent_ai, '%s' % Application_type, 
-                  '%.4s' % r_s, '%.4s' % b_w, '%s' % percent_incorporated, '%s' % density_of_product, '%s' % Foliar_dissipation_half_life,],
+        "Value": ['%s' % trex2_obj.chem_name, '%s' % trex2_obj.use, '%s' % trex2_obj.formu_name, '%s' % trex2_obj.a_i_t1, '%s' % trex2_obj.Application_type, 
+                  '%.4s' % trex2_obj.r_s, '%.4s' % trex2_obj.b_w_t1, '%s' % trex2_obj.p_i, '%s' % trex2_obj.den, '%s' % trex2_obj.h_l,],
         "Units": ['', '', '', '%', '', 'inch', 'inch', '%', 'lbs/gal', 'days',],
     }
     return data
+
 
 def gett2data(index, rate, day):
     data = { 
@@ -284,27 +284,25 @@ def gett2data(index, rate, day):
     }
     return data
 
-def gett3data(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s, bw_assessed_bird_m, 
-            bw_assessed_bird_l, Species_tested_bird, bw_tested_bird, mineau_scaling_factor):
+def gett3data(trex2_obj):
     data = { 
         "Parameter": ['Avian LD50', 'Avian LC50', 'Avian NOAEC', 'Avian NOAEL', 'Body weight of assessed bird small',
                       'Body weight of assessed bird medium', 'Body weight of assessed bird large', 
                       'Species of the tested bird', 'Body weight of tested bird', 'Mineau scaling factor', ],
-        "Value": ['%s' % avian_ld50, '%s' % avian_lc50, '%s' % avian_NOAEC, '%s' % avian_NOAEL, 
-                  '%s' % bw_assessed_bird_s, '%s' % bw_assessed_bird_m, '%s' % bw_assessed_bird_l,
-                  '%s' % Species_tested_bird, '%s' % bw_tested_bird, '%s' % mineau_scaling_factor, ],
+        "Value": ['%s' % trex2_obj.ld50_bird, '%s' % trex2_obj.lc50_bird, '%s' % trex2_obj.NOAEC_bird, '%s' % trex2_obj.NOAEL_bird, 
+                  '%s' % trex2_obj.aw_bird_sm, '%s' % trex2_obj.aw_bird_md, '%s' % trex2_obj.aw_bird_lg,
+                  '%s' % trex2_obj.Species_of_the_tested_bird, '%s' % trex2_obj.tw_bird, '%s' % trex2_obj.x, ],
         "Units": ['mg/kg-bw', 'mg/kg-diet', 'mg/kg-diet', 'mg/kg-bw', 'g', 'g', 'g', '', 'g', '', ],
     }
     return data
 
-def gett4data(mammalian_ld50, mammalian_lc50, mammalian_NOAEC, mammalian_NOAEL, bw_assessed_mamm_s, bw_assessed_mamm_m, 
-              bw_assessed_mamm_l, bw_tested_mamm):
+def gett4data(trex_obj):
     data = { 
         "Parameter": ['Mammalian LD50', 'Mammalian LC50', 'Mammalian NOAEC', 'Mammalian NOAEL', 'Body weight of assessed mammal small',
                       'Body weight of assessed mammal medium', 'Body weight of assessed mammal large', 
                       'Body weight of tested mammal', ],
-        "Value": ['%s' % mammalian_ld50, '%s' % mammalian_lc50, '%s' % mammalian_NOAEC, '%s' % mammalian_NOAEL, 
-                  '%s' % bw_assessed_mamm_s, '%s' % bw_assessed_mamm_m, '%s' % bw_assessed_mamm_l, '%s' % bw_tested_mamm, ],
+        "Value": ['%s' % trex_obj.ld50_mamm, '%s' % trex_obj.lc50_mamm, '%s' % trex_obj.NOAEC_mamm, '%s' % trex_obj.NOAEL_mamm, 
+                  '%s' % trex_obj.aw_mamm_sm, '%s' % trex_obj.aw_mamm_md, '%s' % trex_obj.aw_mamm_lg, '%s' % trex_obj.tw_mamm, ],
         "Units": ['mg/kg-bw', 'mg/kg-diet', 'mg/kg-diet', 'mg/kg-bw', 'g', 'g', 'g', 'g', ],
     }
     return data
@@ -633,35 +631,32 @@ def gettsumdata_12(LD50_rg_bird_sm_out, LD50_rg_mamm_sm_out, LD50_rg_bird_md_out
     }
     return data
 
-def table_all(chem_name, use, formu_name, a_i, Application_type, r_s, b_w, p_i, den, h_l, n_a, rate_out, day_out,
-              ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, aw_bird_md, aw_bird_lg, Species_of_the_tested_bird, 
-              tw_bird, x, ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, aw_mamm_lg, tw_mamm,
-              m_s_r_p):
+def table_all(trex2_obj):
 
-    table1_out=table_1(chem_name, use, formu_name, 100*a_i, Application_type, r_s, 12*b_w, 100*p_i, den, h_l)
-    table2_out=table_2(n_a, rate_out, day_out)
-    table3_out=table_3(ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, aw_bird_md, aw_bird_lg, Species_of_the_tested_bird, tw_bird, x)
-    table4_out=table_4(ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, aw_mamm_lg, tw_mamm)
+    table1_out=table_1(trex2_obj)
+    table2_out=table_2(trex2_obj)
+    table3_out=table_3(trex2_obj)
+    table4_out=table_4(trex2_obj)
 
     html = table1_out
     html = html + table2_out
     html = html + table3_out
     html = html + table4_out
 
-    if Application_type == 'Seed Treatment':
-        a_r_p=rate_out[0]       #coefficient used to estimate initial conc.
-        table5_out=table_5(Application_type, a_r_p, a_i, den, ld50_bird, aw_bird_sm, tw_bird, x, m_s_r_p, NOAEC_bird, ld50_mamm, aw_mamm_sm, tw_mamm, NOAEL_mamm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg)
+    if trex2_obj.Application_type == 'Seed Treatment':
+        # a_r_p=rate_out[0]       #coefficient used to estimate initial conc.
+        table5_out=table_5(trex2_obj)
 
         html = html + table5_out['html']
         return html, table5_out
     else:
         a_r_p=0
-        table6_out=table_6(Application_type, n_a, rate_out, a_i, h_l, day_out)
-        table7_out=table_7(aw_bird_sm, aw_bird_md, aw_bird_lg, n_a, rate_out, a_i, h_l, day_out)
-        table8_out=table_8(lc50_bird, NOAEC_bird, n_a, rate_out, a_i, h_l, day_out)
-        table9_out=table_9(aw_mamm_sm, aw_mamm_md, aw_mamm_lg, n_a, rate_out, a_i, h_l, day_out)
-        table10_out=table_10(aw_mamm_sm, aw_mamm_md, aw_mamm_lg, ld50_mamm, NOAEL_mamm, tw_mamm, n_a, rate_out, a_i, h_l, day_out)
-        table11_out=table_11(lc50_mamm, NOAEC_bird, n_a, rate_out, a_i, h_l, day_out)
+        table6_out=table_6(trex2_obj)
+        table7_out=table_7(trex2_obj)
+        table8_out=table_8(trex2_obj)
+        table9_out=table_9(trex2_obj)
+        table10_out=table_10(trex2_obj)
+        table11_out=table_11(trex2_obj)
 
         html = html + table6_out['html']
         html = html + table7_out['html']
@@ -670,23 +665,23 @@ def table_all(chem_name, use, formu_name, a_i, Application_type, r_s, b_w, p_i, 
         html = html + table10_out['html']
         html = html + table11_out['html']
 
-        if Application_type == 'Row/Band/In-furrow-Granular':
-            table12_out=table_12(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_sm, aw_mamm_sm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg, ld50_bird, ld50_mamm, tw_bird, tw_mamm, x)
+        if trex2_obj.Application_type == 'Row/Band/In-furrow-Granular':
+            table12_out=table_12(trex2_obj)
             html = html + table12_out['html']
             return html, table6_out, table7_out, table8_out, table9_out, table10_out, table11_out, table12_out
 
-        elif Application_type == 'Row/Band/In-furrow-Liquid':
-            table13_out=table_13(Application_type, rate_out, a_i, p_i, b_w, aw_bird_sm, aw_mamm_sm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg, ld50_bird, ld50_mamm, tw_bird, tw_mamm, x)
+        elif trex2_obj.Application_type == 'Row/Band/In-furrow-Liquid':
+            table13_out=table_13(trex2_obj)
             html = html + table13_out['html']
             return html, table6_out, table7_out, table8_out, table9_out, table10_out, table11_out, table13_out
 
-        elif Application_type == 'Broadcast-Granular':
-            table14_out=table_14(Application_type, rate_out, a_i, p_i, aw_bird_sm, aw_mamm_sm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg, ld50_bird, ld50_mamm, tw_bird, tw_mamm, x)
+        elif trex2_obj.Application_type == 'Broadcast-Granular':
+            table14_out=table_14(trex2_obj)
             html = html + table14_out['html']
             return html, table6_out, table7_out, table8_out, table9_out, table10_out, table11_out, table14_out
 
-        elif Application_type == 'Broadcast-Liquid':
-            table15_out=table_15(Application_type, rate_out, a_i, p_i, aw_bird_sm, aw_mamm_sm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg, ld50_bird, ld50_mamm, tw_bird, tw_mamm, x)
+        elif trex2_obj.Application_type == 'Broadcast-Liquid':
+            table15_out=table_15(trex2_obj)
             html = html + table15_out['html']
             return html, table6_out, table7_out, table8_out, table9_out, table10_out, table11_out, table15_out
 
@@ -900,7 +895,7 @@ def table_sum_15(LD50_bl_bird_sm_out, LD50_bl_mamm_sm_out, LD50_bl_bird_md_out, 
         html = html + tmpl.render(Context(dict(data=tsuminputrows_15, headings=sumheadings_12)))
         return html
 
-def table_1(chemical_name, Use, Formulated_product_name, percent_ai, Application_type, r_s, b_w, percent_incorporated, density_of_product, Foliar_dissipation_half_life):
+def table_1(trex2_obj):
         #pre-table 1
         html = """
         <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs:</H3>
@@ -909,8 +904,7 @@ def table_1(chemical_name, Use, Formulated_product_name, percent_ai, Application
                 <div class="out_ container_output">
         """
         #table 1
-        t1data = gett1data(chemical_name, Use, Formulated_product_name, percent_ai, Application_type, r_s, b_w, percent_incorporated,
-                           density_of_product, Foliar_dissipation_half_life)
+        t1data = gett1data(trex2_obj)
         t1rows = gethtmlrowsfromcols(t1data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
         html = html + """
@@ -918,17 +912,17 @@ def table_1(chemical_name, Use, Formulated_product_name, percent_ai, Application
         """
         return html
 
-def table_2(noa, rate_out, day_out):
+def table_2(trex2_obj):
         # #pre-table 2
         html = """
             <H4 class="out_2 collapsible" id="section3"><span></span>Chemical Application (n=%s)</H4>
                 <div class="out_ container_output">
-        """ %(noa)
+        """ %(trex2_obj.n_a)
         #table 2
         t2data_all=[]
-        for i in range(int(noa)):
-            rate_temp=rate_out[i]
-            day_temp=day_out[i]
+        for i in range(int(trex2_obj.n_a)):
+            rate_temp=trex2_obj.rate_out[i]
+            day_temp=trex2_obj.day_out[i]
             t2data_temp=gett2data(i+1, rate_temp, day_temp)
             t2data_all.append(t2data_temp)
         t2data = dict([(k,[t2data_ind[k][0] for t2data_ind in t2data_all]) for k in t2data_temp])
@@ -939,15 +933,14 @@ def table_2(noa, rate_out, day_out):
         """
         return html
 
-def table_3(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s, bw_assessed_bird_m, bw_assessed_bird_l, Species_tested_bird, bw_tested_bird, mineau_scaling_factor):
+def table_3(trex2_obj):
         #pre-table 3
         html = """
             <H4 class="out_3 collapsible" id="section4"><span></span>Toxicity Properties (Avian)</H4>
                 <div class="out_ container_output">
         """
         #table 3
-        t3data = gett3data(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s, bw_assessed_bird_m, 
-            bw_assessed_bird_l, Species_tested_bird, bw_tested_bird, mineau_scaling_factor)
+        t3data = gett3data(trex2_obj)
         t3rows = gethtmlrowsfromcols(t3data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t3rows, headings=pvuheadings)))
         html = html + """
@@ -955,14 +948,13 @@ def table_3(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s
         """
         return html
 
-def table_4(mammalian_ld50, mammalian_lc50, mammalian_NOAEC, mammalian_NOAEL, bw_assessed_mamm_s, bw_assessed_mamm_m, bw_assessed_mamm_l, bw_tested_mamm):
+def table_4(trex2_obj):
         #pre-table 4
         html = """
             <H4 class="out_4 collapsible" id="section5"><span></span>Toxicity Properties (Mammal)</H4>              <div class="out_ container_output">
         """
         #table 4
-        t4data = gett4data(mammalian_ld50, mammalian_lc50, mammalian_NOAEC, mammalian_NOAEL, bw_assessed_mamm_s, bw_assessed_mamm_m, 
-              bw_assessed_mamm_l, bw_tested_mamm)
+        t4data = gett4data(trex2_obj)
         t4rows = gethtmlrowsfromcols(t4data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t4rows, headings=pvuheadings)))
         html = html + """
@@ -971,35 +963,35 @@ def table_4(mammalian_ld50, mammalian_lc50, mammalian_NOAEC, mammalian_NOAEL, bw
         """
         return html
 
-def table_5(Application_type, a_r_p, a_i, den, ld50_bird, aw_bird_sm, tw_bird, x, m_s_r_p, NOAEC_bird, ld50_mamm, aw_mamm_sm, tw_mamm, NOAEL_mamm, aw_bird_md, aw_mamm_md, aw_bird_lg,  aw_mamm_lg):
+def table_5(trex2_obj):
         #pre-table 5
         html = """
             <div class="out_5">
               <H3>Results</H3>
               <H3>Application Type : %s</H3>
             </div>
-        """%(Application_type)
+        """%(trex2_obj.Application_type)
         #table 5
-        sa_bird_1_s=trex2_model.sa_bird_1(a_r_p, a_i, den, trex2_model.at_bird,trex2_model.fi_bird, ld50_bird, aw_bird_sm, tw_bird, x) 
-        sa_bird_2_s=trex2_model.sa_bird_2(a_r_p, a_i, den, m_s_r_p, trex2_model.at_bird, ld50_bird, aw_bird_sm, tw_bird, x) 
-        sc_bird_s=trex2_model.sc_bird(a_r_p, a_i, den, NOAEC_bird)
-        sa_mamm_1_s=trex2_model.sa_mamm_1(a_r_p, a_i, den, trex2_model.at_mamm, trex2_model.fi_mamm, ld50_mamm, aw_mamm_sm, tw_mamm)
-        sa_mamm_2_s=trex2_model.sa_mamm_2(a_r_p, a_i, den, m_s_r_p, trex2_model.at_mamm, ld50_mamm, aw_mamm_sm, tw_mamm)
-        sc_mamm_s=trex2_model.sc_mamm(a_r_p, a_i, den, NOAEL_mamm,aw_mamm_sm,tw_mamm, trex2_model.ANOAEL_mamm)
+        sa_bird_1_s=trex2_obj.sa_bird_1_s
+        sa_bird_2_s=trex2_obj.sa_bird_2_s
+        sc_bird_s=trex2_obj.sc_bird_s
+        sa_mamm_1_s=trex2_obj.sa_mamm_1_s
+        sa_mamm_2_s=trex2_obj.sa_mamm_2_s
+        sc_mamm_s=trex2_obj.sc_mamm_s
         
-        sa_bird_1_m=trex2_model.sa_bird_1(a_r_p, a_i, den, trex2_model.at_bird, trex2_model.fi_bird, ld50_bird, aw_bird_md, tw_bird, x) 
-        sa_bird_2_m=trex2_model.sa_bird_2(a_r_p, a_i, den, m_s_r_p, trex2_model.at_bird, ld50_bird, aw_bird_md, tw_bird, x) 
-        sc_bird_m=trex2_model.sc_bird(a_r_p, a_i, den, NOAEC_bird)
-        sa_mamm_1_m=trex2_model.sa_mamm_1(a_r_p, a_i, den, trex2_model.at_mamm, trex2_model.fi_mamm, ld50_mamm, aw_mamm_md, tw_mamm)
-        sa_mamm_2_m=trex2_model.sa_mamm_2(a_r_p, a_i, den, m_s_r_p, trex2_model.at_mamm, ld50_mamm, aw_mamm_md, tw_mamm)
-        sc_mamm_m=trex2_model.sc_mamm(a_r_p, a_i, den, NOAEL_mamm,aw_mamm_md,tw_mamm, trex2_model.ANOAEL_mamm)
+        sa_bird_1_m=trex2_obj.sa_bird_1_m
+        sa_bird_2_m=trex2_obj.sa_bird_2_m
+        sc_bird_m=trex2_obj.sc_bird_m
+        sa_mamm_1_m=trex2_obj.sa_mamm_1_m
+        sa_mamm_2_m=trex2_obj.sa_mamm_2_m
+        sc_mamm_m=trex2_obj.sc_mamm_m
              
-        sa_bird_1_l=trex2_model.sa_bird_1(a_r_p, a_i, den, trex2_model.at_bird,trex2_model.fi_bird, ld50_bird, aw_bird_lg, tw_bird, x) 
-        sa_bird_2_l=trex2_model.sa_bird_2(a_r_p, a_i, den, m_s_r_p, trex2_model.at_bird, ld50_bird, aw_bird_lg, tw_bird, x) 
-        sc_bird_l=trex2_model.sc_bird(a_r_p, a_i, den, NOAEC_bird)
-        sa_mamm_1_l=trex2_model.sa_mamm_1(a_r_p, a_i, den, trex2_model.at_mamm, trex2_model.fi_mamm, ld50_mamm, aw_mamm_lg, tw_mamm)
-        sa_mamm_2_l=trex2_model.sa_mamm_2(a_r_p, a_i, den, m_s_r_p, trex2_model.at_mamm, ld50_mamm, aw_mamm_lg, tw_mamm)
-        sc_mamm_l=trex2_model.sc_mamm(a_r_p, a_i, den, NOAEL_mamm,aw_mamm_lg,tw_mamm, trex2_model.ANOAEL_mamm)
+        sa_bird_1_l=trex2_obj.sa_bird_1_l
+        sa_bird_2_l=trex2_obj.sa_bird_2_l
+        sc_bird_l=trex2_obj.sc_bird_l
+        sa_mamm_1_l=trex2_obj.sa_mamm_1_l
+        sa_mamm_2_l=trex2_obj.sa_mamm_2_l
+        sc_mamm_l=trex2_obj.sc_mamm_l
 
         t5data = gett5data(sa_bird_1_s, sa_bird_2_s, sc_bird_s, sa_mamm_1_s, sa_mamm_2_s, sc_mamm_s, 
                            sa_bird_1_m, sa_bird_2_m, sc_bird_m, sa_mamm_1_m, sa_mamm_2_m, sc_mamm_m,
@@ -1010,7 +1002,7 @@ def table_5(Application_type, a_r_p, a_i, den, ld50_bird, aw_bird_sm, tw_bird, x
                              'sa_bird_1_m':sa_bird_1_m, 'sa_bird_2_m':sa_bird_2_m, 'sc_bird_m':sc_bird_m, 'sa_mamm_1_m':sa_mamm_1_m, 'sa_mamm_2_m':sa_mamm_2_m, 'sc_mamm_m':sc_mamm_m,
                              'sa_bird_1_l':sa_bird_1_l, 'sa_bird_2_l':sa_bird_2_l, 'sc_bird_l':sc_bird_l, 'sa_mamm_1_l':sa_mamm_1_l, 'sa_mamm_2_l':sa_mamm_2_l, 'sc_mamm_l':sc_mamm_l}
 
-def table_6(Application_type, n_a, rate_out, a_i, h_l, day_out):
+def table_6(trex2_obj):
         #pre-table 6
         html = """
             <div class="out_6">
@@ -1018,13 +1010,13 @@ def table_6(Application_type, n_a, rate_out, a_i, h_l, day_out):
               <H3>Application Type : %s</H3>
               <H4>Dietary based EECs (ppm)</H4>
             </div>
-        """%(Application_type)
+        """%(trex2_obj.Application_type)
         #table 6
-        EEC_diet_SG=trex2_model.EEC_diet(trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        EEC_diet_TG=trex2_model.EEC_diet(trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        EEC_diet_BP=trex2_model.EEC_diet(trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        EEC_diet_FR=trex2_model.EEC_diet(trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_diet_AR=trex2_model.EEC_diet(trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)                       
+        EEC_diet_SG=trex2_obj.EEC_diet_SG
+        EEC_diet_TG=trex2_obj.EEC_diet_TG
+        EEC_diet_BP=trex2_obj.EEC_diet_BP
+        EEC_diet_FR=trex2_obj.EEC_diet_FR
+        EEC_diet_AR=trex2_obj.EEC_diet_AR
 
         t6data = gett6data(EEC_diet_SG, EEC_diet_TG, EEC_diet_BP, EEC_diet_FR, EEC_diet_AR)
         t6rows = gethtmlrowsfromcols(t6data,pv6headings)       
@@ -1032,7 +1024,7 @@ def table_6(Application_type, n_a, rate_out, a_i, h_l, day_out):
         return {'html':html, 'EEC_diet_SG':EEC_diet_SG, 'EEC_diet_TG':EEC_diet_TG, 'EEC_diet_BP':EEC_diet_BP, 'EEC_diet_FR':EEC_diet_FR, 'EEC_diet_AR':EEC_diet_AR}
 
 
-def table_7(aw_bird_sm, aw_bird_md, aw_bird_lg, n_a, rate_out, a_i, h_l, day_out):
+def table_7(trex2_obj):
         #pre-table 7
         html = """
             <div class="out_7">
@@ -1040,24 +1032,24 @@ def table_7(aw_bird_sm, aw_bird_md, aw_bird_lg, n_a, rate_out, a_i, h_l, day_out
             </div>
         """
         #table 7
-        EEC_dose_bird_SG_sm=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_sm, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        EEC_dose_bird_SG_md=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_md, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        EEC_dose_bird_SG_lg=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_lg, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        EEC_dose_bird_TG_sm=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_sm, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        EEC_dose_bird_TG_md=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_md, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        EEC_dose_bird_TG_lg=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_lg, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        EEC_dose_bird_BP_sm=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_sm, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        EEC_dose_bird_BP_md=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_md, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        EEC_dose_bird_BP_lg=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_lg, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        EEC_dose_bird_FP_sm=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_sm, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_bird_FP_md=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_md, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_bird_FP_lg=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_lg, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_bird_AR_sm=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_sm, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        EEC_dose_bird_AR_md=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_md, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        EEC_dose_bird_AR_lg=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_lg, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        EEC_dose_bird_SE_sm=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_sm, trex2_model.fi_bird, 0.1, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_bird_SE_md=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_md, trex2_model.fi_bird, 0.1, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_bird_SE_lg=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_lg, trex2_model.fi_bird, 0.1, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)                     
+        EEC_dose_bird_SG_sm=trex2_obj.EEC_dose_bird_SG_sm
+        EEC_dose_bird_SG_md=trex2_obj.EEC_dose_bird_SG_md
+        EEC_dose_bird_SG_lg=trex2_obj.EEC_dose_bird_SG_lg
+        EEC_dose_bird_TG_sm=trex2_obj.EEC_dose_bird_TG_sm
+        EEC_dose_bird_TG_md=trex2_obj.EEC_dose_bird_TG_md
+        EEC_dose_bird_TG_lg=trex2_obj.EEC_dose_bird_TG_lg
+        EEC_dose_bird_BP_sm=trex2_obj.EEC_dose_bird_BP_sm
+        EEC_dose_bird_BP_md=trex2_obj.EEC_dose_bird_BP_md
+        EEC_dose_bird_BP_lg=trex2_obj.EEC_dose_bird_BP_lg
+        EEC_dose_bird_FP_sm=trex2_obj.EEC_dose_bird_FP_sm
+        EEC_dose_bird_FP_md=trex2_obj.EEC_dose_bird_FP_md
+        EEC_dose_bird_FP_lg=trex2_obj.EEC_dose_bird_FP_lg
+        EEC_dose_bird_AR_sm=trex2_obj.EEC_dose_bird_AR_sm
+        EEC_dose_bird_AR_md=trex2_obj.EEC_dose_bird_AR_md
+        EEC_dose_bird_AR_lg=trex2_obj.EEC_dose_bird_AR_lg
+        EEC_dose_bird_SE_sm=trex2_obj.EEC_dose_bird_SE_sm
+        EEC_dose_bird_SE_md=trex2_obj.EEC_dose_bird_SE_md
+        EEC_dose_bird_SE_lg=trex2_obj.EEC_dose_bird_SE_lg
                       
         t7data = gett7data(EEC_dose_bird_SG_sm, EEC_dose_bird_SG_md, EEC_dose_bird_SG_lg, EEC_dose_bird_TG_sm, EEC_dose_bird_TG_md, EEC_dose_bird_TG_lg, EEC_dose_bird_BP_sm, EEC_dose_bird_BP_md, EEC_dose_bird_BP_lg, EEC_dose_bird_FP_sm, EEC_dose_bird_FP_md, EEC_dose_bird_FP_lg, EEC_dose_bird_AR_sm, EEC_dose_bird_AR_md, EEC_dose_bird_AR_lg, EEC_dose_bird_SE_sm, EEC_dose_bird_SE_md, EEC_dose_bird_SE_lg)
         t7rows = gethtmlrowsfromcols(t7data,pv7headings)       
@@ -1067,7 +1059,7 @@ def table_7(aw_bird_sm, aw_bird_md, aw_bird_lg, n_a, rate_out, a_i, h_l, day_out
                              'EEC_dose_bird_AR_sm':EEC_dose_bird_AR_sm, 'EEC_dose_bird_AR_md':EEC_dose_bird_AR_md, 'EEC_dose_bird_AR_lg':EEC_dose_bird_AR_lg, 'EEC_dose_bird_SE_sm':EEC_dose_bird_SE_sm, 'EEC_dose_bird_SE_md':EEC_dose_bird_SE_md, 'EEC_dose_bird_SE_lg':EEC_dose_bird_SE_lg}
 
 
-def table_8(lc50_bird, NOAEC_bird, n_a, rate_out, a_i, h_l, day_out):
+def table_8(trex2_obj):
         #pre-table 8
         html = """
             <div class="out_8">
@@ -1075,16 +1067,16 @@ def table_8(lc50_bird, NOAEC_bird, n_a, rate_out, a_i, h_l, day_out):
             </div>
         """
         #table 8
-        ARQ_diet_bird_SG_A=trex2_model.ARQ_diet_bird(trex2_model.EEC_diet, lc50_bird, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        ARQ_diet_bird_SG_C=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l,day_out)
-        ARQ_diet_bird_TG_A=trex2_model.ARQ_diet_bird(trex2_model.EEC_diet, lc50_bird, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l,day_out)
-        ARQ_diet_bird_TG_C=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l,day_out)
-        ARQ_diet_bird_BP_A=trex2_model.ARQ_diet_bird(trex2_model.EEC_diet, lc50_bird, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        ARQ_diet_bird_BP_C=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        ARQ_diet_bird_FP_A=trex2_model.ARQ_diet_bird(trex2_model.EEC_diet, lc50_bird, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        ARQ_diet_bird_FP_C=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        ARQ_diet_bird_AR_A=trex2_model.ARQ_diet_bird(trex2_model.EEC_diet, lc50_bird, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        ARQ_diet_bird_AR_C=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
+        ARQ_diet_bird_SG_A=trex2_obj.ARQ_diet_bird_SG_A
+        ARQ_diet_bird_SG_C=trex2_obj.ARQ_diet_bird_SG_C
+        ARQ_diet_bird_TG_A=trex2_obj.ARQ_diet_bird_TG_A
+        ARQ_diet_bird_TG_C=trex2_obj.ARQ_diet_bird_TG_C
+        ARQ_diet_bird_BP_A=trex2_obj.ARQ_diet_bird_BP_A
+        ARQ_diet_bird_BP_C=trex2_obj.ARQ_diet_bird_BP_C
+        ARQ_diet_bird_FP_A=trex2_obj.ARQ_diet_bird_FP_A
+        ARQ_diet_bird_FP_C=trex2_obj.ARQ_diet_bird_FP_C
+        ARQ_diet_bird_AR_A=trex2_obj.ARQ_diet_bird_AR_A
+        ARQ_diet_bird_AR_C=trex2_obj.ARQ_diet_bird_AR_C
                       
         t8data = gett8data(ARQ_diet_bird_SG_A, ARQ_diet_bird_SG_C, ARQ_diet_bird_TG_A, ARQ_diet_bird_TG_C, ARQ_diet_bird_BP_A, ARQ_diet_bird_BP_C, ARQ_diet_bird_FP_A, ARQ_diet_bird_FP_C, ARQ_diet_bird_AR_A, ARQ_diet_bird_AR_C)
         t8rows = gethtmlrowsfromcols(t8data,pv8headings)       
@@ -1096,7 +1088,7 @@ def table_8(lc50_bird, NOAEC_bird, n_a, rate_out, a_i, h_l, day_out):
                              'ARQ_diet_bird_AR_A':ARQ_diet_bird_AR_A, 'ARQ_diet_bird_AR_C':ARQ_diet_bird_AR_C}
 
 
-def table_9(aw_mamm_sm, aw_mamm_md, aw_mamm_lg, n_a, rate_out, a_i, h_l, day_out):
+def table_9(trex2_obj):
         #pre-table 9
         html = """
             <div class="out_9">
@@ -1104,24 +1096,24 @@ def table_9(aw_mamm_sm, aw_mamm_md, aw_mamm_lg, n_a, rate_out, a_i, h_l, day_out
             </div>
         """
         #table 9
-        EEC_dose_mamm_SG_sm=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_sm, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        EEC_dose_mamm_SG_md=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_md, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        EEC_dose_mamm_SG_lg=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_lg, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        EEC_dose_mamm_TG_sm=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_sm, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        EEC_dose_mamm_TG_md=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_md, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        EEC_dose_mamm_TG_lg=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_lg, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        EEC_dose_mamm_BP_sm=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_sm, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        EEC_dose_mamm_BP_md=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_md, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        EEC_dose_mamm_BP_lg=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_lg, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        EEC_dose_mamm_FP_sm=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_sm, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_mamm_FP_md=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_md, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_mamm_FP_lg=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_lg, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_mamm_AR_sm=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_sm, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        EEC_dose_mamm_AR_md=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_md, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        EEC_dose_mamm_AR_lg=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_lg, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        EEC_dose_mamm_SE_sm=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_sm, trex2_model.fi_mamm, 0.1, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_mamm_SE_md=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_md, trex2_model.fi_mamm, 0.1, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_mamm_SE_lg=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_lg, trex2_model.fi_mamm, 0.1, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
+        EEC_dose_mamm_SG_sm=trex2_obj.EEC_dose_mamm_SG_sm
+        EEC_dose_mamm_SG_md=trex2_obj.EEC_dose_mamm_SG_md
+        EEC_dose_mamm_SG_lg=trex2_obj.EEC_dose_mamm_SG_lg
+        EEC_dose_mamm_TG_sm=trex2_obj.EEC_dose_mamm_TG_sm
+        EEC_dose_mamm_TG_md=trex2_obj.EEC_dose_mamm_TG_md
+        EEC_dose_mamm_TG_lg=trex2_obj.EEC_dose_mamm_TG_lg
+        EEC_dose_mamm_BP_sm=trex2_obj.EEC_dose_mamm_BP_sm
+        EEC_dose_mamm_BP_md=trex2_obj.EEC_dose_mamm_BP_md
+        EEC_dose_mamm_BP_lg=trex2_obj.EEC_dose_mamm_BP_lg
+        EEC_dose_mamm_FP_sm=trex2_obj.EEC_dose_mamm_FP_sm
+        EEC_dose_mamm_FP_md=trex2_obj.EEC_dose_mamm_FP_md
+        EEC_dose_mamm_FP_lg=trex2_obj.EEC_dose_mamm_FP_lg
+        EEC_dose_mamm_AR_sm=trex2_obj.EEC_dose_mamm_AR_sm
+        EEC_dose_mamm_AR_md=trex2_obj.EEC_dose_mamm_AR_md
+        EEC_dose_mamm_AR_lg=trex2_obj.EEC_dose_mamm_AR_lg
+        EEC_dose_mamm_SE_sm=trex2_obj.EEC_dose_mamm_SE_sm
+        EEC_dose_mamm_SE_md=trex2_obj.EEC_dose_mamm_SE_md
+        EEC_dose_mamm_SE_lg=trex2_obj.EEC_dose_mamm_SE_lg
                       
         t9data = gett9data(EEC_dose_mamm_SG_sm,EEC_dose_mamm_SG_md,EEC_dose_mamm_SG_lg,EEC_dose_mamm_TG_sm,EEC_dose_mamm_TG_md,EEC_dose_mamm_TG_lg,EEC_dose_mamm_BP_sm,EEC_dose_mamm_BP_md,EEC_dose_mamm_BP_lg,EEC_dose_mamm_FP_sm,EEC_dose_mamm_FP_md,EEC_dose_mamm_FP_lg,EEC_dose_mamm_AR_sm,EEC_dose_mamm_AR_md,EEC_dose_mamm_AR_lg,EEC_dose_mamm_SE_sm,EEC_dose_mamm_SE_md,EEC_dose_mamm_SE_lg)
         t9rows = gethtmlrowsfromcols(t9data,pv7headings)       
@@ -1131,7 +1123,7 @@ def table_9(aw_mamm_sm, aw_mamm_md, aw_mamm_lg, n_a, rate_out, a_i, h_l, day_out
                              'EEC_dose_mamm_AR_sm':EEC_dose_mamm_AR_sm, 'EEC_dose_mamm_AR_md':EEC_dose_mamm_AR_md, 'EEC_dose_mamm_AR_lg':EEC_dose_mamm_AR_lg, 'EEC_dose_mamm_SE_sm':EEC_dose_mamm_SE_sm, 'EEC_dose_mamm_SE_md':EEC_dose_mamm_SE_md, 'EEC_dose_mamm_SE_lg':EEC_dose_mamm_SE_lg}
 
 
-def table_10(aw_mamm_sm, aw_mamm_md, aw_mamm_lg, ld50_mamm, NOAEL_mamm, tw_mamm, n_a, rate_out, a_i, h_l, day_out):
+def table_10(trex2_obj):
         #pre-table 10
         html = """
             <div class="out_10">
@@ -1139,47 +1131,47 @@ def table_10(aw_mamm_sm, aw_mamm_md, aw_mamm_lg, ld50_mamm, NOAEL_mamm, tw_mamm,
             </div>
         """
         #table 10
-        ARQ_dose_mamm_SG_sm=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_sm, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        CRQ_dose_mamm_SG_sm=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_sm, tw_mamm, 0.8, n_a, rate_out, a_i, 240, h_l, day_out)
-        ARQ_dose_mamm_SG_md=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_md, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        CRQ_dose_mamm_SG_md=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_md, tw_mamm, 0.8, n_a, rate_out, a_i, 240, h_l, day_out)
-        ARQ_dose_mamm_SG_lg=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_lg, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        CRQ_dose_mamm_SG_lg=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_lg, tw_mamm, 0.8, n_a, rate_out, a_i, 240, h_l, day_out)
+        ARQ_dose_mamm_SG_sm=trex2_obj.ARQ_dose_mamm_SG_sm
+        CRQ_dose_mamm_SG_sm=trex2_obj.CRQ_dose_mamm_SG_sm
+        ARQ_dose_mamm_SG_md=trex2_obj.ARQ_dose_mamm_SG_md
+        CRQ_dose_mamm_SG_md=trex2_obj.CRQ_dose_mamm_SG_md
+        ARQ_dose_mamm_SG_lg=trex2_obj.ARQ_dose_mamm_SG_lg
+        CRQ_dose_mamm_SG_lg=trex2_obj.CRQ_dose_mamm_SG_lg
         
-        ARQ_dose_mamm_TG_sm=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_sm, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        CRQ_dose_mamm_TG_sm=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_sm, tw_mamm, 0.8, n_a, rate_out, a_i, 110, h_l, day_out)
-        ARQ_dose_mamm_TG_md=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_md, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        CRQ_dose_mamm_TG_md=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_md, tw_mamm, 0.8, n_a, rate_out, a_i, 110, h_l, day_out)
-        ARQ_dose_mamm_TG_lg=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_lg, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        CRQ_dose_mamm_TG_lg=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_lg, tw_mamm, 0.8, n_a, rate_out, a_i, 110, h_l, day_out)
+        ARQ_dose_mamm_TG_sm=trex2_obj.ARQ_dose_mamm_TG_sm
+        CRQ_dose_mamm_TG_sm=trex2_obj.CRQ_dose_mamm_TG_sm
+        ARQ_dose_mamm_TG_md=trex2_obj.ARQ_dose_mamm_TG_md
+        CRQ_dose_mamm_TG_md=trex2_obj.CRQ_dose_mamm_TG_md
+        ARQ_dose_mamm_TG_lg=trex2_obj.ARQ_dose_mamm_TG_lg
+        CRQ_dose_mamm_TG_lg=trex2_obj.CRQ_dose_mamm_TG_lg
         
-        ARQ_dose_mamm_BP_sm=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_sm, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        CRQ_dose_mamm_BP_sm=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_sm, tw_mamm, 0.8, n_a, rate_out, a_i, 135, h_l, day_out)
-        ARQ_dose_mamm_BP_md=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_md, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        CRQ_dose_mamm_BP_md=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_md, tw_mamm, 0.8, n_a, rate_out, a_i, 135, h_l, day_out)
-        ARQ_dose_mamm_BP_lg=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_lg, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        CRQ_dose_mamm_BP_lg=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_lg, tw_mamm, 0.8, n_a, rate_out, a_i, 135, h_l, day_out)
+        ARQ_dose_mamm_BP_sm=trex2_obj.ARQ_dose_mamm_BP_sm
+        CRQ_dose_mamm_BP_sm=trex2_obj.CRQ_dose_mamm_BP_sm
+        ARQ_dose_mamm_BP_md=trex2_obj.ARQ_dose_mamm_BP_md
+        CRQ_dose_mamm_BP_md=trex2_obj.CRQ_dose_mamm_BP_md
+        ARQ_dose_mamm_BP_lg=trex2_obj.ARQ_dose_mamm_BP_lg
+        CRQ_dose_mamm_BP_lg=trex2_obj.CRQ_dose_mamm_BP_lg
         
-        ARQ_dose_mamm_FP_sm=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_sm, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        CRQ_dose_mamm_FP_sm=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_sm, tw_mamm, 0.8, n_a, rate_out, a_i, 15, h_l, day_out)
-        ARQ_dose_mamm_FP_md=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_md, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        CRQ_dose_mamm_FP_md=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_md, tw_mamm, 0.8, n_a, rate_out, a_i, 15, h_l, day_out)
-        ARQ_dose_mamm_FP_lg=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_lg, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        CRQ_dose_mamm_FP_lg=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_lg, tw_mamm, 0.8, n_a, rate_out, a_i, 15, h_l, day_out)
+        ARQ_dose_mamm_FP_sm=trex2_obj.ARQ_dose_mamm_FP_sm
+        CRQ_dose_mamm_FP_sm=trex2_obj.CRQ_dose_mamm_FP_sm
+        ARQ_dose_mamm_FP_md=trex2_obj.ARQ_dose_mamm_FP_md
+        CRQ_dose_mamm_FP_md=trex2_obj.CRQ_dose_mamm_FP_md
+        ARQ_dose_mamm_FP_lg=trex2_obj.ARQ_dose_mamm_FP_lg
+        CRQ_dose_mamm_FP_lg=trex2_obj.CRQ_dose_mamm_FP_lg
         
-        ARQ_dose_mamm_AR_sm=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_sm, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        CRQ_dose_mamm_AR_sm=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_sm, tw_mamm, 0.8, n_a, rate_out, a_i, 94, h_l, day_out)
-        ARQ_dose_mamm_AR_md=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_md, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        CRQ_dose_mamm_AR_md=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_md, tw_mamm, 0.8, n_a, rate_out, a_i, 94, h_l, day_out)
-        ARQ_dose_mamm_AR_lg=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_lg, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        CRQ_dose_mamm_AR_lg=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_lg, tw_mamm, 0.8, n_a, rate_out, a_i, 94, h_l, day_out)
+        ARQ_dose_mamm_AR_sm=trex2_obj.ARQ_dose_mamm_AR_sm
+        CRQ_dose_mamm_AR_sm=trex2_obj.CRQ_dose_mamm_AR_sm
+        ARQ_dose_mamm_AR_md=trex2_obj.ARQ_dose_mamm_AR_md
+        CRQ_dose_mamm_AR_md=trex2_obj.CRQ_dose_mamm_AR_md
+        ARQ_dose_mamm_AR_lg=trex2_obj.ARQ_dose_mamm_AR_lg
+        CRQ_dose_mamm_AR_lg=trex2_obj.CRQ_dose_mamm_AR_lg
         
-        ARQ_dose_mamm_SE_sm=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_sm, ld50_mamm, tw_mamm, 0.1, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        CRQ_dose_mamm_SE_sm=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_sm, tw_mamm, 0.1, n_a, rate_out, a_i, 15, h_l, day_out)
-        ARQ_dose_mamm_SE_md=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_md, ld50_mamm, tw_mamm, 0.1, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        CRQ_dose_mamm_SE_md=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_md, tw_mamm, 0.1, n_a, rate_out, a_i, 15, h_l, day_out)
-        ARQ_dose_mamm_SE_lg=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_lg, ld50_mamm, tw_mamm, 0.1, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        CRQ_dose_mamm_SE_lg=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_lg, tw_mamm, 0.1, n_a, rate_out, a_i, 15, h_l, day_out)
+        ARQ_dose_mamm_SE_sm=trex2_obj.ARQ_dose_mamm_SE_sm
+        CRQ_dose_mamm_SE_sm=trex2_obj.CRQ_dose_mamm_SE_sm
+        ARQ_dose_mamm_SE_md=trex2_obj.ARQ_dose_mamm_SE_md
+        CRQ_dose_mamm_SE_md=trex2_obj.CRQ_dose_mamm_SE_md
+        ARQ_dose_mamm_SE_lg=trex2_obj.ARQ_dose_mamm_SE_lg
+        CRQ_dose_mamm_SE_lg=trex2_obj.CRQ_dose_mamm_SE_lg
                       
         t10data = gett10data(ARQ_dose_mamm_SG_sm,CRQ_dose_mamm_SG_sm,ARQ_dose_mamm_SG_md,CRQ_dose_mamm_SG_md,ARQ_dose_mamm_SG_lg,CRQ_dose_mamm_SG_lg,ARQ_dose_mamm_TG_sm,CRQ_dose_mamm_TG_sm,ARQ_dose_mamm_TG_md,CRQ_dose_mamm_TG_md,ARQ_dose_mamm_TG_lg,CRQ_dose_mamm_TG_lg,ARQ_dose_mamm_BP_sm,CRQ_dose_mamm_BP_sm,ARQ_dose_mamm_BP_md,CRQ_dose_mamm_BP_md,ARQ_dose_mamm_BP_lg,CRQ_dose_mamm_BP_lg,ARQ_dose_mamm_FP_sm,CRQ_dose_mamm_FP_sm,ARQ_dose_mamm_FP_md,CRQ_dose_mamm_FP_md,ARQ_dose_mamm_FP_lg,CRQ_dose_mamm_FP_lg,ARQ_dose_mamm_AR_sm,CRQ_dose_mamm_AR_sm,ARQ_dose_mamm_AR_md,CRQ_dose_mamm_AR_md,ARQ_dose_mamm_AR_lg,CRQ_dose_mamm_AR_lg,ARQ_dose_mamm_SE_sm,CRQ_dose_mamm_SE_sm,ARQ_dose_mamm_SE_md,CRQ_dose_mamm_SE_md,ARQ_dose_mamm_SE_lg,CRQ_dose_mamm_SE_lg)
         t10rows = gethtmlrowsfromcols(t10data, pv10headings)       
@@ -1192,7 +1184,7 @@ def table_10(aw_mamm_sm, aw_mamm_md, aw_mamm_lg, ld50_mamm, NOAEL_mamm, tw_mamm,
                              'ARQ_dose_mamm_SE_sm':ARQ_dose_mamm_SE_sm, 'CRQ_dose_mamm_SE_sm':CRQ_dose_mamm_SE_sm, 'ARQ_dose_mamm_SE_md':ARQ_dose_mamm_SE_md, 'CRQ_dose_mamm_SE_md':CRQ_dose_mamm_SE_md, 'ARQ_dose_mamm_SE_lg':ARQ_dose_mamm_SE_lg, 'CRQ_dose_mamm_SE_lg':CRQ_dose_mamm_SE_lg}
 
 
-def table_11(lc50_mamm, NOAEC_bird, n_a, rate_out, a_i, h_l, day_out):
+def table_11(trex2_obj):
         #pre-table 11
         html = """
             <div class="out_11">
@@ -1200,16 +1192,17 @@ def table_11(lc50_mamm, NOAEC_bird, n_a, rate_out, a_i, h_l, day_out):
             </div>
         """
         #table 11
-        ARQ_diet_mamm_SG=trex2_model.ARQ_diet_mamm(trex2_model.EEC_diet, lc50_mamm, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        CRQ_diet_mamm_SG=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        ARQ_diet_mamm_TG=trex2_model.ARQ_diet_mamm(trex2_model.EEC_diet, lc50_mamm, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        CRQ_diet_mamm_TG=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        ARQ_diet_mamm_BP=trex2_model.ARQ_diet_mamm(trex2_model.EEC_diet, lc50_mamm, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        CRQ_diet_mamm_BP=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        ARQ_diet_mamm_FP=trex2_model.ARQ_diet_mamm(trex2_model.EEC_diet, lc50_mamm, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        CRQ_diet_mamm_FP=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        ARQ_diet_mamm_AR=trex2_model.ARQ_diet_mamm(trex2_model.EEC_diet, lc50_mamm, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        CRQ_diet_mamm_AR=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
+        ARQ_diet_mamm_SG=trex2_obj.ARQ_diet_mamm_SG
+        CRQ_diet_mamm_SG=trex2_obj.CRQ_diet_mamm_SG
+
+        ARQ_diet_mamm_TG=trex2_obj.ARQ_diet_mamm_TG
+        CRQ_diet_mamm_TG=trex2_obj.CRQ_diet_mamm_TG
+        ARQ_diet_mamm_BP=trex2_obj.ARQ_diet_mamm_BP
+        CRQ_diet_mamm_BP=trex2_obj.CRQ_diet_mamm_BP
+        ARQ_diet_mamm_FP=trex2_obj.ARQ_diet_mamm_FP
+        CRQ_diet_mamm_FP=trex2_obj.CRQ_diet_mamm_FP
+        ARQ_diet_mamm_AR=trex2_obj.ARQ_diet_mamm_AR
+        CRQ_diet_mamm_AR=trex2_obj.CRQ_diet_mamm_AR
   
         t11data = gett11data(ARQ_diet_mamm_SG,CRQ_diet_mamm_SG,ARQ_diet_mamm_TG,CRQ_diet_mamm_TG,ARQ_diet_mamm_BP,CRQ_diet_mamm_BP,ARQ_diet_mamm_FP,CRQ_diet_mamm_FP,ARQ_diet_mamm_AR,CRQ_diet_mamm_AR)
         t11rows = gethtmlrowsfromcols(t11data,pv8headings)       
@@ -1219,7 +1212,7 @@ def table_11(lc50_mamm, NOAEC_bird, n_a, rate_out, a_i, h_l, day_out):
                              'ARQ_diet_mamm_AR':ARQ_diet_mamm_AR, 'CRQ_diet_mamm_AR':CRQ_diet_mamm_AR}
 
 
-def table_12(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_sm, aw_mamm_sm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg, ld50_bird, ld50_mamm, tw_bird, tw_mamm, x):
+def table_12(trex2_obj):
         #pre-table 12
         html = """
             <div class="out_12">
@@ -1227,12 +1220,12 @@ def table_12(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_sm, aw_mamm
             </div>
         """
         #table 12
-        LD50_rg_bird_sm=trex2_model.LD50_rg_bird(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_sm, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_rg_mamm_sm=trex2_model.LD50_rg_mamm(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_mamm_sm, trex2_model.at_mamm, ld50_mamm, tw_mamm)
-        LD50_rg_bird_md=trex2_model.LD50_rg_bird(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_md, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_rg_mamm_md=trex2_model.LD50_rg_mamm(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_mamm_md, trex2_model.at_mamm, ld50_mamm, tw_mamm)
-        LD50_rg_bird_lg=trex2_model.LD50_rg_bird(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_lg, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_rg_mamm_lg=trex2_model.LD50_rg_mamm(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_mamm_lg, trex2_model.at_mamm, ld50_mamm, tw_mamm)
+        LD50_rg_bird_sm=trex2_obj.LD50_rg_bird_sm
+        LD50_rg_mamm_sm=trex2_obj.LD50_rg_mamm_sm
+        LD50_rg_bird_md=trex2_obj.LD50_rg_bird_md
+        LD50_rg_mamm_md=trex2_obj.LD50_rg_mamm_md
+        LD50_rg_bird_lg=trex2_obj.LD50_rg_bird_lg
+        LD50_rg_mamm_lg=trex2_obj.LD50_rg_mamm_lg
 
         t12data = gett12data(LD50_rg_bird_sm,LD50_rg_mamm_sm,LD50_rg_bird_md,LD50_rg_mamm_md,LD50_rg_bird_lg,LD50_rg_mamm_lg)
         t12rows = gethtmlrowsfromcols(t12data,pv12headings)       
@@ -1242,7 +1235,7 @@ def table_12(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_sm, aw_mamm
                              'LD50_rg_bird_lg':LD50_rg_bird_lg, 'LD50_rg_mamm_lg':LD50_rg_mamm_lg}
 
 
-def table_13(Application_type, rate_out, a_i, p_i, b_w, aw_bird_sm, aw_mamm_sm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg, ld50_bird, ld50_mamm, tw_bird, tw_mamm, x):
+def table_13(trex2_obj):
         #pre-table 13
         html = """
             <div class="out_13">
@@ -1250,12 +1243,12 @@ def table_13(Application_type, rate_out, a_i, p_i, b_w, aw_bird_sm, aw_mamm_sm, 
             </div>
         """
         #table 13
-        LD50_rl_bird_sm=trex2_model.LD50_rl_bird(Application_type, rate_out, a_i, p_i, b_w, aw_bird_sm, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_rl_mamm_sm=trex2_model.LD50_rl_mamm(Application_type, rate_out, a_i, p_i, b_w, aw_mamm_sm, trex2_model.at_mamm, ld50_mamm, tw_mamm)
-        LD50_rl_bird_md=trex2_model.LD50_rl_bird(Application_type, rate_out, a_i, p_i, b_w, aw_bird_md, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_rl_mamm_md=trex2_model.LD50_rl_mamm(Application_type, rate_out, a_i, p_i, b_w, aw_mamm_md, trex2_model.at_mamm, ld50_mamm, tw_mamm)
-        LD50_rl_bird_lg=trex2_model.LD50_rl_bird(Application_type, rate_out, a_i, p_i, b_w, aw_bird_lg, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_rl_mamm_lg=trex2_model.LD50_rl_mamm(Application_type, rate_out, a_i, p_i, b_w, aw_mamm_lg, trex2_model.at_mamm, ld50_mamm, tw_mamm)
+        LD50_rl_bird_sm=trex2_obj.LD50_rl_bird_sm
+        LD50_rl_mamm_sm=trex2_obj.LD50_rl_mamm_sm
+        LD50_rl_bird_md=trex2_obj.LD50_rl_bird_md
+        LD50_rl_mamm_md=trex2_obj.LD50_rl_mamm_md
+        LD50_rl_bird_lg=trex2_obj.LD50_rl_bird_lg
+        LD50_rl_mamm_lg=trex2_obj.LD50_rl_mamm_lg
 
         t13data = gett12data(LD50_rl_bird_sm,LD50_rl_mamm_sm,LD50_rl_bird_md,LD50_rl_mamm_md,LD50_rl_bird_lg,LD50_rl_mamm_lg)
         t13rows = gethtmlrowsfromcols(t13data,pv12headings)       
@@ -1265,7 +1258,7 @@ def table_13(Application_type, rate_out, a_i, p_i, b_w, aw_bird_sm, aw_mamm_sm, 
                              'LD50_rl_bird_lg':LD50_rl_bird_lg, 'LD50_rl_mamm_lg':LD50_rl_mamm_lg}
 
 
-def table_14(Application_type, rate_out, a_i, p_i, aw_bird_sm, aw_mamm_sm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg, ld50_bird, ld50_mamm, tw_bird, tw_mamm, x):
+def table_14(trex2_obj):
         #pre-table 14
         html = """
             <div class="out_14">
@@ -1273,12 +1266,12 @@ def table_14(Application_type, rate_out, a_i, p_i, aw_bird_sm, aw_mamm_sm, aw_bi
             </div>
         """
         #table 14
-        LD50_bg_bird_sm=trex2_model.LD50_bg_bird(Application_type, rate_out, a_i, p_i, aw_bird_sm, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_bg_mamm_sm=trex2_model.LD50_bg_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_sm, trex2_model.at_mamm, ld50_mamm, tw_mamm)
-        LD50_bg_bird_md=trex2_model.LD50_bg_bird(Application_type, rate_out, a_i, p_i, aw_bird_md, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_bg_mamm_md=trex2_model.LD50_bg_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_md, trex2_model.at_mamm, ld50_mamm, tw_mamm)
-        LD50_bg_bird_lg=trex2_model.LD50_bg_bird(Application_type, rate_out, a_i, p_i, aw_bird_lg, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_bg_mamm_lg=trex2_model.LD50_bg_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_lg, trex2_model.at_mamm, ld50_mamm, tw_mamm)
+        LD50_bg_bird_sm=trex2_obj.LD50_bg_bird_sm
+        LD50_bg_mamm_sm=trex2_obj.LD50_bg_mamm_sm
+        LD50_bg_bird_md=trex2_obj.LD50_bg_bird_md
+        LD50_bg_mamm_md=trex2_obj.LD50_bg_mamm_md
+        LD50_bg_bird_lg=trex2_obj.LD50_bg_bird_lg
+        LD50_bg_mamm_lg=trex2_obj.LD50_bg_mamm_lg
 
         t14data = gett12data(LD50_bg_bird_sm,LD50_bg_mamm_sm,LD50_bg_bird_md,LD50_bg_mamm_md,LD50_bg_bird_lg,LD50_bg_mamm_lg)
         t14rows = gethtmlrowsfromcols(t14data,pv12headings)       
@@ -1287,7 +1280,7 @@ def table_14(Application_type, rate_out, a_i, p_i, aw_bird_sm, aw_mamm_sm, aw_bi
                              'LD50_bg_bird_md':LD50_bg_bird_md, 'LD50_bg_mamm_md':LD50_bg_mamm_md,
                              'LD50_bg_bird_lg':LD50_bg_bird_lg, 'LD50_bg_mamm_lg':LD50_bg_mamm_lg}
                              
-def table_15(Application_type, rate_out, a_i, p_i, aw_bird_sm, aw_mamm_sm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg, ld50_bird, ld50_mamm, tw_bird, tw_mamm, x):
+def table_15(trex2_obj):
         #pre-table 15
         html = """
             <div class="out_15">
@@ -1295,12 +1288,12 @@ def table_15(Application_type, rate_out, a_i, p_i, aw_bird_sm, aw_mamm_sm, aw_bi
             </div>
         """
         #table 15
-        LD50_bl_bird_sm=trex2_model.LD50_bl_bird(Application_type, rate_out, a_i, p_i, aw_bird_sm, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_bl_mamm_sm=trex2_model.LD50_bl_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_sm, trex2_model.at_mamm, ld50_mamm, tw_mamm)
-        LD50_bl_bird_md=trex2_model.LD50_bl_bird(Application_type, rate_out, a_i, p_i, aw_bird_md, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_bl_mamm_md=trex2_model.LD50_bl_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_md, trex2_model.at_mamm, ld50_mamm, tw_mamm)
-        LD50_bl_bird_lg=trex2_model.LD50_bl_bird(Application_type, rate_out, a_i, p_i, aw_bird_lg, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_bl_mamm_lg=trex2_model.LD50_bl_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_lg, trex2_model.at_mamm, ld50_mamm, tw_mamm)
+        LD50_bl_bird_sm=trex2_obj.LD50_bl_bird_sm
+        LD50_bl_mamm_sm=trex2_obj.LD50_bl_mamm_sm
+        LD50_bl_bird_md=trex2_obj.LD50_bl_bird_md
+        LD50_bl_mamm_md=trex2_obj.LD50_bl_mamm_md
+        LD50_bl_bird_lg=trex2_obj.LD50_bl_bird_lg
+        LD50_bl_mamm_lg=trex2_obj.LD50_bl_mamm_lg
 
         t15data = gett12data(LD50_bl_bird_sm,LD50_bl_mamm_sm,LD50_bl_bird_md,LD50_bl_mamm_md,LD50_bl_bird_lg,LD50_bl_mamm_lg)
         t15rows = gethtmlrowsfromcols(t15data,pv12headings)       

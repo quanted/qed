@@ -39,7 +39,7 @@ class TRexOutputPage(webapp.RequestHandler):
 
 
         if Application_type=='Seed Treatment':
-           # a_r_p=seed_crop       #coefficient used to estimate initial conc.
+           a_r_p=seed_crop       #coefficient used to estimate initial conc.
            n_a = 1
            rate_out = []
            day_out = []
@@ -47,7 +47,7 @@ class TRexOutputPage(webapp.RequestHandler):
            day_out.append(float(form.getvalue('day_seed')))
 
         else:
-           # a_r_p=0
+           a_r_p=0
            n_a = float(form.getvalue('noa'))
            rate_out = []
            day_out = []
@@ -107,11 +107,13 @@ class TRexOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'trex2', 
                 'model_attributes':'T-Rex 1.5.1 Output'})
-        html = html + trex2_tables.table_all(chem_name, use, formu_name, a_i, Application_type, r_s, b_w, p_i, den, h_l, n_a, rate_out, day_out,
+
+        trex_obj = trex2_model.trex2(chem_name, use, formu_name, a_i, Application_type, r_s, b_w, a_r_p, p_i, den, h_l, n_a, rate_out, day_out,
                       ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, aw_bird_md, aw_bird_lg, Species_of_the_tested_bird, 
                       tw_bird, x, ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, aw_mamm_lg, tw_mamm,
-                      m_s_r_p)[0]
+                      m_s_r_p)
 
+        html = html + trex2_tables.table_all(trex_obj)[0]
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

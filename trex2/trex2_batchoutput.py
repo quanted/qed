@@ -15,6 +15,7 @@ import cStringIO
 import logging 
 import csv
 from trex2 import trex2_tables
+from trex2 import trex2_model
 
 chem_name = []
 use = []
@@ -595,14 +596,21 @@ def html_table(row_inp,iter):
     tw_mamm_temp = float(row_inp[32])
     tw_mamm.append(tw_mamm_temp)
 
+    if Application_type_temp == 'Seed Treatment':
+        a_r_p_temp = rate_out_temp[0]
+    else:
+        a_r_p_temp = 0
 
     Input_header="""<table border="1">
                         <tr><H3>Batch Calculation of Iteration %s</H3></tr><br>
                     </table>"""%(iter)
-    table_all_out = trex2_tables.table_all(chem_name_temp, use_temp, formu_name_temp, a_i_temp, Application_type_temp, r_s_temp, b_w_temp, p_i_temp, den_temp, h_l_temp, n_a_temp, rate_out_temp, day_out_temp,
+
+    trex2_obj_temp = trex2_model.trex2(chem_name_temp, use_temp, formu_name_temp, a_i_temp, Application_type_temp, r_s_temp, b_w_temp, a_r_p_temp, p_i_temp, den_temp, h_l_temp, n_a_temp, rate_out_temp, day_out_temp,
                     ld50_bird_temp, lc50_bird_temp, NOAEC_bird_temp, NOAEL_bird_temp, aw_bird_sm_temp, aw_bird_md_temp, aw_bird_lg_temp, Species_of_the_tested_bird_temp, 
                     tw_bird_temp, x_temp, ld50_mamm_temp, lc50_mamm_temp, NOAEC_mamm_temp, NOAEL_mamm_temp, aw_mamm_sm_temp, aw_mamm_md_temp, aw_mamm_lg_temp, tw_mamm_temp,
                     m_s_r_p_temp)
+
+    table_all_out = trex2_tables.table_all(trex2_obj_temp)
     
     html_table_temp = Input_header + table_all_out[0]
 

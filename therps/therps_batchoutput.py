@@ -15,6 +15,7 @@ import cStringIO
 import logging 
 import csv
 from therps import therps_tables
+from therps import therps_model
 
 chem_name=[]
 use=[]
@@ -136,8 +137,10 @@ def html_table(row_inp,iter):
     Input_header="""<table border="1">
                         <tr><H3>Batch Calculation of Iteration %s</H3></tr><br>
                     </table>"""%(iter)
-    table_all_out = therps_tables.table_all(chem_name_temp, use_temp, formu_name_temp, a_i_temp, h_l_temp, n_a_temp, i_a_temp, a_r_temp, ld50_bird_temp, lc50_bird_temp, NOAEC_bird_temp, NOAEL_bird_temp, 
+
+    therps_obj_temp = therps_model.therps(chem_name_temp, use_temp, formu_name_temp, a_i_temp, h_l_temp, n_a_temp, i_a_temp, a_r_temp, ld50_bird_temp, lc50_bird_temp, NOAEC_bird_temp, NOAEL_bird_temp, 
               Species_of_the_tested_bird_temp, tw_bird_temp, x_temp, bw_herp_a_sm_temp, bw_herp_a_md_temp, bw_herp_a_lg_temp, wp_herp_a_sm_temp, wp_herp_a_md_temp, wp_herp_a_lg_temp, c_mamm_a_temp, c_herp_a_temp)
+    table_all_out = therps_tables.table_all(therps_obj_temp)
     html_table_temp = Input_header + table_all_out[0]
 
     EEC_diet_herp_BL_temp=table_all_out[1]['EEC_diet_herp_BL']

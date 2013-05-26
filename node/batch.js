@@ -111,6 +111,41 @@ server.get('/batch_results/:batchId', function(req, res, next){
     });
 });
 
+server.post('/batch_results/:batchId', function(req, res, next){
+    var batchId = req.params.batchId;
+    console.log("BatchId: " + batchId);
+    var body = '';
+    req.on('data', function (data)
+    {
+        body += data;
+    });
+    req.on('end', function ()
+    {
+        console.log("body: " + body);
+        var json = JSON.parse(body);
+        var user_id = json.user_id;
+        var user_api_key = json.api_key;
+        console.log("json user_id: " + user_id + " user_api_key: " + user_api_key);
+        user.authenticateRestAccess(user_id,user_api_key,function(err,authenticated){
+            console.log("authenticated: " + authenticated);
+            if(authenticated){
+                mongodb.getBatchResults(batchId, function(error, batch_data){
+                    res.header("Access-Control-Allow-Origin", "*");
+                    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+                    if(batch_data != null)
+                    {
+                        res.send(batch_data);
+                    } else {
+                        res.send("Problem returning results");
+                    }
+                });
+            } else {
+                console.log('User API Authentication failed');
+                res.send("User: " + user_id + " passed an incorrect api key and cannot call this method.");
+            }
+        });
+    });
+});
 //CAS Services
 server.get('/cas/:cas_num', function(req, res, next){
     var cas_number = req.params.cas_num;

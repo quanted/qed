@@ -5,6 +5,8 @@ var cas = require('./cas_mongo.js');
 var ubertool = require('./ubertool.js');
 var utils = require('./utils.js');
 var flow = require('nimble');
+var user = require('./user.js');
+var fs = require('fs');
 
 function submitBatch(req, res, next)
 {
@@ -34,6 +36,56 @@ function getBatchResults(req, res, next)
 }
 
 var server = restify.createServer();
+server.use(restify.CORS());
+server.use(restify.fullResponse());
+//var credentials = {certificate: fs.readFileSync('ubertool_src/node/certs/server-cert.pem'),key: fs.readFileSync('ubertool_src/node/certs/server-key.pem')};
+//var httpsServer = restify.createServer();
+
+server.post('/user/login/:userid', function(req, res, next){
+    var user_id = req.params.userid;
+    console.log('user id: ' + user_id);
+    var body = '';
+    req.on('data', function (data)
+    {
+        body += data;
+    });
+    req.on('end', function ()
+    {
+        json = JSON.parse(body);
+        console.log(json);
+        console.log('json: ' + json);
+        console.log('password' + json.pswrd);
+        user.getLoginDecision(user_id,json.pswrd,function(err, decision){
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "X-Requested-With");
+            res.header('Access-Control-Allow-Methods', "POST");
+            res.send(decision);
+        });
+    });
+});
+
+server.post('/user/registration/:user_id', function(req, res, next){
+    var user_id = req.params.user_id;
+    console.log('user id: ' + user_id);
+    var body = '';
+    req.on('data', function (data)
+    {
+        body += data;
+    });
+    req.on('end', function ()
+    {
+        json = JSON.parse(body);
+        console.log(json);
+        console.log('password: ' + json.pswrd);
+        console.log('email address: ' + json.email_address);
+        user.registerUser(user_id,json.pswrd,json.email_address,function(err, decision){
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "X-Requested-With");
+            res.header('Access-Control-Allow-Methods', "POST");
+            res.send(decision);
+        });
+    });
+});
 
 //Batch REST Services
 server.get('/batch_configs', function(req, res, next){
@@ -78,6 +130,7 @@ server.get('/all-cas', function(req, res, next){
     });
 });
 
+/**
 server.post('/ubertool/batch/:config', function(req, res, next){
     var config_type = req.params.config_type;
     var config = req.params.config;
@@ -93,6 +146,7 @@ server.post('/ubertool/batch/:config', function(req, res, next){
         console.log("POST for Configuration Name: " + config + " config type: " + config_type + " json data: " + json);
     });
 });
+**/
 
 //Ubertool Services
 server.get('/ubertool/:config_type/config_names', function(req, res, next){
@@ -142,6 +196,25 @@ server.get('/api-key', function(req, res, next){
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.send(apiKey);
 });
+
+server.on('MethodNotAllowed', unknownMethodHandler);
+
+function unknownMethodHandler(req, res) {
+  if (req.method.toLowerCase() === 'options') {
+    var allowHeaders = ['Accept', 'Accept-Version', 'Content-Type', 'Api-Version'];
+
+    if (res.methods.indexOf('OPTIONS') === -1) res.methods.push('OPTIONS');
+
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Headers', allowHeaders.join(', '));
+    res.header('Access-Control-Allow-Methods', res.methods.join(', '));
+    res.header('Access-Control-Allow-Origin', req.headers.origin);
+
+    return res.send(204);
+  }
+  else
+    return res.send(new restify.MethodNotAllowedError());
+}
 
 server.listen(8887, function() {
   console.log('%s listening at %s', server.name, server.url);

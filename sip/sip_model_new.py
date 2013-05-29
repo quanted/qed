@@ -7,13 +7,14 @@ import numpy as np
 # Daily water intake rate for birds
 
 class sip(object):
-    def __init__(self, chemical_name, select_receptor, bw_bird, bw_mamm, sol, ld50, aw_bird, tw_bird, mineau, aw_mamm, tw_mamm, noaec, noael):
+    def __init__(self, chemical_name, bw_bird, bw_mamm, sol, ld50_a, ld50_m, aw_bird, tw_bird, mineau, aw_mamm, tw_mamm, noaec, noael):
         self.chemical_name()
-        self.select_receptor()
+       # self.select_receptor()
         self.bw_bird()
         self.bw_mamm()
         self.sol()
-        self.ld50()
+        self.ld50_a()
+        self.ld50_m()
         self.aw_bird()
         self.tw_bird()
         self.mineau()
@@ -150,7 +151,7 @@ class sip(object):
 
     def at_bird(self):
         try:
-            self.ld50 = float(self.ld50)
+            self.ld50_a = float(self.ld50_a)
             self.aw_bird = float(self.aw_bird)
             self.tw_bird = float(self.tw_bird)
             self.mineau = float(self.mineau)
@@ -164,7 +165,7 @@ class sip(object):
             ('The mineau scaling factor must be a real number' %self.mineau)
         except ValueError:
             raise ValueError\
-            ('The lethal dose must be a real number, not "%mg/kg"' %self.ld50)
+            ('The lethal dose must be a real number, not "%mg/kg"' %self.ld50_a)
         except ValueError:
             raise ValueError\
             ('The body weight of assessed bird must be a real number, not "%g"' %self.aw_bird)
@@ -174,16 +175,16 @@ class sip(object):
         except ZeroDivisionError:
             raise ZeroDivisionError\
             ('The body weight of tested bird must be non-zero.')
-        if self.ld50 < 0:
+        if self.ld50_a < 0:
             raise ValueError\
-            ('ld50=%g is a non-physical value.' % self.ld50)
+            ('ld50_a=%g is a non-physical value.' % self.ld50_a)
         if self.aw_bird < 0:
             raise ValueError\
             ('aw_bird=%g is a non-physical value.' % self.aw_bird)
         if self.tw_bird < 0:
             raise ValueError\
             ('tw_bird=%g is a non-physical value.' % self.tw_bird)
-        return (self.self.ld50) * ((self.aw_bird/self.tw_bird)**(self.mineau-1))
+        return (self.self.ld50_a) * ((self.aw_bird/self.tw_bird)**(self.mineau-1))
 
 
 
@@ -192,19 +193,19 @@ class sip(object):
 
     def at_mamm(self):
         try:
-            self.ld50 = float(self.ld50)
+            self.ld50_m = float(self.ld50_m)
             self.aw_mamm = float(self.aw_mamm)
             self.tw_mamm = float(self.tw_mamm)
         except TypeError:
             raise TypeError\
-            ('Either ld50, aw_mamm or tw_mamm equals None and therefor this function cannot be run.')
+            ('Either ld50_m, aw_mamm or tw_mamm equals None and therefor this function cannot be run.')
         except IndexError:
             raise IndexError\
             ('The lethal dose, body weight of assessed mammal, and/or body weight'\
             ' of tested mammal, must be supplied the command line.')
         except ValueError:
             raise ValueError\
-            ('The lethal dose must be a real number, not "%mg/kg"' %self.ld50)
+            ('The lethal dose must be a real number, not "%mg/kg"' %self.ld50_m)
         except ValueError:
             raise ValueError\
             ('The body weight of assessed mammal must be a real number, not "%g"' %self.aw_mamm)
@@ -214,16 +215,16 @@ class sip(object):
         except ZeroDivisionError:
             raise ZeroDivisionError\
             ('The body weight of tested mammal must be non-zero.')
-        if self.ld50 < 0:
+        if self.ld50_m < 0:
             raise ValueError\
-            ('ld50=%g is a non-physical value.' % self.ld50)
+            ('ld50_m=%g is a non-physical value.' % self.ld50_m)
         if self.aw_mamm < 0:
             raise ValueError\
             ('aw_mamm=%g is a non-physical value.' % self.aw_mamm)
         if self.tw_mamm < 0:
             raise ValueError\
             ('tw_mamm=%g is a non-physical value.' % self.tw_mamm)
-        return (self.ld50) * ((self.aw_mamm/self.tw_mamm)**0.25)
+        return (self.ld50_m) * ((self.aw_mamm/self.tw_mamm)**0.25)
 
 
     # Adjusted chronic toxicity values for birds

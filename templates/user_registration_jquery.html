@@ -1,0 +1,34 @@
+<script type="text/javascript" src=" ../stylesheets/jquery.validate.js"></script>
+<script>
+$(document).ready(function() {
+
+});
+</script>
+<script language="javascript">
+function register(form)/*function to check userid & password*/
+{
+	var form_userid = form.userid.value;
+	var form_password = form.pswrd.value;
+	var form_email_address = form.email_address.value;
+	var form_data = {'userid':form_userid,'pswrd':form_password,'email_address':form_email_address};
+	var json_data = JSON.stringify(form_data);
+	$.ajax({
+		url:"{{ubertool_service_url}}/user/registration/"+form_userid,
+		async: false,
+		type: 'POST',
+		data: json_data,
+		success: function(registration_decision) {
+			 if(registration_decision)
+			  {
+			  	alert("Registered correctly	")/*displays error message*/
+			    window.location = "user.html" /*opens the target page while Id & password matches*/
+			  }
+			 else
+			 {
+			   alert("Error Password or Username")/*displays error message*/
+			 }
+		}
+	});
+
+}
+</script>

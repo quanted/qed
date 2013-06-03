@@ -85,9 +85,33 @@ a:hover {
   padding: 5px 0 0 0.4em;
 }
 #banner_r {
-  color: white;
   float: right;
-  padding: 5px 0.4em 0 0;
+}
+#banner_r a {
+  color: #F9FBF6;
+}
+#home {
+  float: right;
+}
+#home_text {
+  width: 0;
+  white-space: nowrap;
+  display: none;
+  float: right;
+  padding: 5px 0 0 0;
+}
+#about {
+  float: right;
+}
+#about_text {
+  width: 0;
+  white-space: nowrap;
+  display: none;
+  float: right;
+  padding: 5px 0 0 0;
+}
+.textshadow {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 #topheader_pic {
   width: 720px;
@@ -96,11 +120,39 @@ a:hover {
   border-right: 4px solid #F4F7ED;
   border-bottom: 2px solid #F4F7ED;
 }
-#topheader_pic img {
+#topheader_pic {
+  background: #79973F url(/images/species/waterfrog_crop.png);
   width: 720px;
-  height: 240px;
+  height: 120px;
+  float: left;
+  border-right: 4px solid #F4F7ED;
+  border-bottom: 2px solid #F4F7ED;
 }
 #topheader_p {
+  width: 300px;
+  height: 120px;
+  background: #79973F;
+  float: right;
+  color: white;
+  font-size: 12px;
+  text-align: justify;
+  border-bottom: 2px solid #F4F7ED;
+}
+#topheader_p p {
+  margin-left: auto;
+  margin-right: auto;
+  width: 240px;
+  padding-top: 20%; /* Text Positioning */
+}
+#topheader_pic_main {
+  background: #79973F url(/images/species/waterfrog_crop.png);
+  width: 720px;
+  height: 240px;
+  float: left;
+  border-right: 4px solid #F4F7ED;
+  border-bottom: 2px solid #F4F7ED;
+}
+#topheader_p_main {
   width: 300px;
   height: 240px;
   background: #79973F;
@@ -110,7 +162,7 @@ a:hover {
   text-align: justify;
   border-bottom: 2px solid #F4F7ED;
 }
-#topheader_p p {
+#topheader_p_main p {
   margin-left: auto;
   margin-right: auto;
   width: 240px;

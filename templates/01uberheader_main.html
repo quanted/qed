@@ -6,9 +6,9 @@
   <title> &uuml;bertool </title>
   <meta http-equiv="X-UA-Compatible" content="IE=8">
   <style type="text/css" media="screen">
-  <!--
-    @import url(/stylesheets/style_hhJon.css);
-  -->
+	<!--
+  	@import url(/stylesheets/style_eco.css);
+	-->
   </style>
 
   <script type="text/javascript">
@@ -30,7 +30,7 @@
   <script src="/stylesheets/scripts.js" type="text/javascript"></script>
 
 <!-- Browser FAVICON -->
-  <LINK REL="SHORTCUT ICON" HREF="http://www.ubertool.org/images/favicon/hh/favicon.ico">
+  <LINK REL="SHORTCUT ICON" HREF="http://www.ubertool.org/images/favicon/eco/favicon.ico">
 
 </head>
 
@@ -38,15 +38,14 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-  $('#topheader_p p, banner_l a').hide();
-  $('.index_link').click(function(e) {
+  $('#l_menu a').click(function(e) {
     e.preventDefault();
     var destination = $(this).attr('href');
     setTimeout(function() { window.location.href = destination; }, 500);
-    $('#topheader_pic, #topheader_p').animate({
-      height:'240px'
+    $('#topheader_pic_main, #topheader_p_main').animate({
+      height:'120px'
     }, 500);
-    $('#topheader_p p').fadeIn(500);
+    $('#topheader_p_main p').fadeOut(500);
   });
   $('#home').hover(
     function() {
@@ -78,7 +77,8 @@ $(document).ready(function() {
 
 <!-- Ubertool banner -->
 <div id="banner">
-  <div id="banner_nav">
+  <a href="eco_index.html" id="banner_l">&uuml;bertool: web applications for ecological risk assessment (beta version)</a>
+  <div id="banner_r">
     <div id="home">
       <div id="home_text"><a href="index.html">Home</a></div>
       <a href="index.html"><img src="/images/home.gif"></a>
@@ -88,12 +88,11 @@ $(document).ready(function() {
       <a href="about.html"><img src="/images/about.gif"></a>
     </div> -->
   </div>
-  <div>
-    <a href="hh_index.html" id="banner_text" class="index_link">&uuml;bertool: web applications for human health risk assessment (beta version)</a>
-  </div>
 </div>
 
 <!-- Header -->
-<a class="index_link" href="hh_index.html"><div id="topheader_pic"></div></a>
-<div id="topheader_p"></div>
-<!--end 01hh_uberheader-->
+<div id="topheader_pic_main"></div>
+<div id="topheader_p_main">
+  <p>Cloud-based environmental models for evaluating pesticide risks to ecosystems.</p>
+</div>
+<!--end 01uberheader-->

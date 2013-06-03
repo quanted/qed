@@ -36,25 +36,64 @@
 
 <body>
 
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#topheader_p p').hide();
+  $('.index_link').click(function(e) {
+    e.preventDefault();
+    var destination = $(this).attr('href');
+    setTimeout(function() { window.location.href = destination; }, 500);
+    $('#topheader_pic, #topheader_p').animate({
+      height:'240px'
+    }, 500);
+    $('#topheader_p p').fadeIn(500);
+  });
+  $('#home').hover(
+    function() {
+        $('#home_text').stop().animate({width: '3.5em' }, {duration: 500, queue: false}).fadeTo(500,1);
+    },
+    function () {
+        $('#home_text').stop().animate({width:0}, {duration: 500, queue: false}).fadeTo(500,0);
+    }
+  ).mousedown(function() {
+    $(this).addClass('textshadow');
+  }).mouseup(function() {
+    $(this).removeClass('textshadow');
+  }).mouseleave(function() {
+    $(this).removeClass('textshadow');
+  });
+  $('#about').hover(
+    function() {
+        $('#about_text').stop().animate({width: '3.5em' }, {duration: 500, queue: false}).fadeTo(500,1);
+    },
+    function () {
+        $('#about_text').stop().animate({width:0}, {duration: 500, queue: false}).fadeTo(500,0);
+    }
+  );
+});
+</script>
+
 <!-- Main Container Div -->
 <div id="container">
 
 <!-- Ubertool banner -->
 <div id="banner">
-  <a href="/index.html" id="banner_l">&uuml;bertool: web applications for ecological risk assessment (beta version)</a>
-  <a href="about.html" id="banner_r">about</a> 
-  <!--
-  <a href="login.html" id="banner_r" target="_blank">login</a>
-  <a href="register.html" id="banner_r" target="_blank">register</a>
--->
+  <a href="eco_index.html" id="banner_l" class="index_link">&uuml;bertool: web applications for ecological risk assessment (beta version)</a>
+  <div id="banner_r">
+    <div id="home">
+      <div id="home_text"><a href="index.html">Home</a></div>
+      <a href="index.html"><img src="/images/home.gif"></a>
+    </div>
+    <!-- <div id="about">
+      <div id="about_text"><a href="about.html">About</a></div>
+      <a href="about.html"><img src="/images/about.gif"></a>
+    </div> -->
+  </div>
 </div>
 
 <!-- Header -->
-<div id="topheader_pic">
-  <a href="/eco_index.html"><img src="/images/species/waterfrog.png" alt="Frog"></a>
-</div>
+<a class="index_link" href="eco_index.html"><div id="topheader_pic"></div></a>
 <div id="topheader_p">  
   <p>Cloud-based environmental models for evaluating pesticide risks to ecosystems.</p>
 </div>
-
 <!--end 01uberheader-->

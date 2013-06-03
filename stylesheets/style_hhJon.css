@@ -79,28 +79,75 @@ a:hover {
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;*/
 }
-#banner_l {
-  color: white;
+#banner_text {
+  color: #F9FBF6;
   float: left;
   padding: 5px 0 0 0.4em;
 }
-#banner_r {
-  color: white;
+#banner_nav {
+  float: left;
+  width: 165px;
+}
+#banner_nav a {
+  color: #F9FBF6;
+}
+#home {
+  float: left;
+}
+#home_text {
+  width: 0;
+  white-space: nowrap;
+  /*overflow: hidden;*/
+  display: none;
   float: right;
-  padding: 5px 0.4em 0 0;
+  padding: 5px 0 0 0;
+}
+#about {
+  float: left;
+}
+#about_text {
+  width: 0;
+  white-space: nowrap;
+  display: none;
+  float: right;
+  padding: 5px 0 0 0;
+}
+.textshadow {
+  text-shadow: 1px 1px 3px rgba(51, 51, 51, 0.4);
 }
 #topheader_pic {
+  background: #485C5A url(/images/species/stilllife.png);
+  width: 720px;
+  height: 120px;
+  float: left;
+  border-right: 4px solid #F4F7ED;
+  border-bottom: 2px solid #F4F7ED;
+}
+#topheader_p {
+  width: 300px;
+  height: 120px;
+  background: #485C5A;
+  float: right;
+  color: white;
+  font-size: 12px;
+  text-align: justify;
+  border-bottom: 2px solid #F4F7ED;
+}
+#topheader_p p {
+  margin-left: auto;
+  margin-right: auto;
+  width: 240px;
+  padding-top: 25%; /* Text Positioning */
+}
+#topheader_pic_main {
+  background: #485C5A url(/images/species/stilllife.png);
   width: 720px;
   height: 240px;
   float: left;
   border-right: 4px solid #F4F7ED;
   border-bottom: 2px solid #F4F7ED;
 }
-#topheader_pic img {
-  width: 720px;
-  height: 240px;
-}
-#topheader_p {
+#topheader_p_main {
   width: 300px;
   height: 240px;
   background: #485C5A;
@@ -110,7 +157,7 @@ a:hover {
   text-align: justify;
   border-bottom: 2px solid #F4F7ED;
 }
-#topheader_p p {
+#topheader_p_main p {
   margin-left: auto;
   margin-right: auto;
   width: 240px;

@@ -1,14 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!--start 01uberheader-->
+<!--start 01hh_uberheader-->
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
   <title> &uuml;bertool </title>
-  <meta http-equiv="X-UA-Compatible" content="IE=8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <style type="text/css" media="screen">
-  <!--
-    @import url(/stylesheets/style_hhJon.css);
-  -->
+	<!--
+  	@import url(/stylesheets/style_hh.css);
+	-->
   </style>
 
   <script type="text/javascript">
@@ -38,15 +38,14 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-  $('#topheader_p p, banner_l a').hide();
-  $('.index_link').click(function(e) {
+  $('#l_menu a').click(function(e) {
     e.preventDefault();
     var destination = $(this).attr('href');
     setTimeout(function() { window.location.href = destination; }, 500);
-    $('#topheader_pic, #topheader_p').animate({
-      height:'240px'
+    $('#topheader_pic_main, #topheader_p_main').animate({
+      height:'120px'
     }, 500);
-    $('#topheader_p p').fadeIn(500);
+    $('#topheader_p_main p').fadeOut(500);
   });
   $('#home').hover(
     function() {
@@ -77,8 +76,10 @@ $(document).ready(function() {
 <div id="container">
 
 <!-- Ubertool banner -->
+
 <div id="banner">
-  <div id="banner_nav">
+  <a href="hh_index.html" id="banner_l">&uuml;bertool: web applications for human health risk assessment (beta version)</a>
+    <div id="banner_r">
     <div id="home">
       <div id="home_text"><a href="index.html">Home</a></div>
       <a href="index.html"><img src="/images/home.gif"></a>
@@ -88,12 +89,11 @@ $(document).ready(function() {
       <a href="about.html"><img src="/images/about.gif"></a>
     </div> -->
   </div>
-  <div>
-    <a href="hh_index.html" id="banner_text" class="index_link">&uuml;bertool: web applications for human health risk assessment (beta version)</a>
-  </div>
 </div>
 
 <!-- Header -->
-<a class="index_link" href="hh_index.html"><div id="topheader_pic"></div></a>
-<div id="topheader_p"></div>
+<div id="topheader_pic_main"></div>
+<div id="topheader_p_main">
+  <p>Cloud-based environmental models used by the USEPA for evaluating human health exposure and effects to ...</p>
+</div>
 <!--end 01hh_uberheader-->

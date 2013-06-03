@@ -16,7 +16,7 @@ class defaultPage(webapp.RequestHandler):
         text_file2 = open('hh_text.txt','r')
         xx = text_file2.read()
         templatepath = os.path.dirname(__file__) + '/templates/'                     
-        html = template.render(templatepath+'01hh_uberheader.html', {'title':'Ubertool'})
+        html = template.render(templatepath+'01hh_uberheader_main.html', {'title':'Ubertool'})
         html = html + template.render(templatepath+'02hh_uberintroblock_nomodellinks.html', {'title2':'Ecological Risk Web Applications','title3':x})
         html = html + template.render (templatepath + '03hh_ubertext_links_left.html', {})                        
         html = html + template.render (templatepath+'04ubertext_start_index.html', {'text_paragraph':xx})

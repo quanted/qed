@@ -38,7 +38,7 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-  $('#topheader_p p').hide();
+  $('#topheader_p p, .logreg').hide();
   $('.index_link').click(function(e) {
     e.preventDefault();
     var destination = $(this).attr('href');
@@ -93,7 +93,8 @@ $(document).ready(function() {
 
 <!-- Header -->
 <a class="index_link" href="eco_index.html"><div id="topheader_pic"></div></a>
-<div id="topheader_p">  
+<div id="topheader_p">
+  <a href="login.html" class="logreg">login</a><a href="register.html" class="logreg">register</a>
   <p>Cloud-based environmental models for evaluating pesticide risks to ecosystems.</p>
 </div>
 <!--end 01uberheader-->

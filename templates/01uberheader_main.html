@@ -38,14 +38,14 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-  $('#l_menu a').click(function(e) {
+  $('#l_menu a, .logreg').click(function(e) {
     e.preventDefault();
     var destination = $(this).attr('href');
     setTimeout(function() { window.location.href = destination; }, 500);
     $('#topheader_pic_main, #topheader_p_main').animate({
       height:'120px'
     }, 500);
-    $('#topheader_p_main p').fadeOut(500);
+    $('#topheader_p_main p, .logreg').fadeOut(500);
   });
   $('#home').hover(
     function() {
@@ -93,6 +93,7 @@ $(document).ready(function() {
 <!-- Header -->
 <div id="topheader_pic_main"></div>
 <div id="topheader_p_main">
+  <a href="login.html" class="logreg">login</a><a href="register.html" class="logreg">register</a>
   <p>Cloud-based environmental models for evaluating pesticide risks to ecosystems.</p>
 </div>
 <!--end 01uberheader-->

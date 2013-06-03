@@ -168,6 +168,12 @@ a:hover {
   width: 240px;
   padding-top: 20%; /* Text Positioning */
 }
+a.logreg:link, a.logreg:visited, a.logreg:active {
+  color: #F9FBF6;
+  font-size: 18px;
+  margin-left: 10px;
+  float: right;
+}
 
 /* 02uberintroblock_wmodellinks.html */
 

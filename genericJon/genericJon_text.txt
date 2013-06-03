@@ -7,8 +7,19 @@ $(document).ready(function() {
 		window.open(url, "popUp", "width=300, height=300")
 		event.preventDefault();
 	});
+
+	$('#slidetest').click(function() {
+		$('#topheader_pic, #topheader_p').animate({
+			height:'120px'
+		}, 500);
+		$('#topheader_p p').fadeOut(500, function() {
+			alert("asd");
+		});
+	});
+
 });
 </script>
 
 <p><a href="/images/popup.html" class="popup">Pop Up Test</a></p>
+<!-- <p><a href="#" id="slidetest">Slide Test</a></p> -->
 <img src="http://1.bp.blogspot.com/-xaeAJytK8Bc/T5gVt3dMKqI/AAAAAAAALj8/2x4y-laiqb8/s1600/rock.jpg" width="493" height="500" alt="Doh!">

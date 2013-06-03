@@ -143,6 +143,9 @@ handlers:
 #batch_output
 - url: /(.*?)_batchoutput.html
   script: \1/\1_batchoutput.py
+#hisotry
+- url: /(.*?)_history.html
+  script: \1/\1_history.py
 
 ##TESTED models##
 #description

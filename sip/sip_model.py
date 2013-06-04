@@ -7,20 +7,34 @@ import numpy as np
 # Daily water intake rate for birds
 
 class sip(object):
-    def __init__(self, chemical_name, select_receptor, bw_bird, bw_mamm, sol, ld50, aw_bird, tw_bird, mineau, aw_mamm, tw_mamm, noaec, noael):
+    def __init__(self, chemical_name, b_species, m_species, bw_quail, bw_duck, bwb_other, bw_rat, bwm_other, sol, ld50_a, ld50_m, aw_bird, mineau, aw_mamm, noaec, noael):
         self.chemical_name = chemical_name
-        self.select_receptor = select_receptor
-        self.bw_bird = bw_bird
-        self.bw_mamm = bw_mamm
+       # self.select_receptor = select_receptor
         self.sol = sol
-        self.ld50 = ld50
+        self.ld50_a = ld50_a
+        self.ld50_m = ld50_m
         self.aw_bird = aw_bird
-        self.tw_bird = tw_bird
         self.mineau = mineau
         self.aw_mamm = aw_mamm
-        self.tw_mamm = tw_mamm
         self.noaec = noaec
         self.noael = noael
+        self.bw_quail = bw_quail
+        self.bw_duck = bw_duck
+        self.bwb_other = bwb_other
+        self.bw_rat = bw_rat
+        self.bwm_other = bwm_other
+        self.b_species = b_species
+        self.m_species = m_species
+        if b_species =='178':
+            self.bw_bird = self.bw_quail
+        elif b_species =='1580':
+            self.bw_bird = self.bw_duck
+        else:
+            self.bw_bird = self.bwb_other
+        if m_species =='350':
+            self.bw_mamm = self.bw_rat
+        else:
+            self.bw_mamm = self.bwm_other
         self.run_methods()
 
     def run_methods(self):
@@ -151,9 +165,9 @@ class sip(object):
 
     def at_bird(self):
         try:
-            self.ld50 = float(self.ld50)
+            self.ld50_a = float(self.ld50_a)
             self.aw_bird = float(self.aw_bird)
-            self.tw_bird = float(self.tw_bird)
+            self.bw_bird = float(self.bw_bird)
             self.mineau = float(self.mineau)
         except IndexError:
             raise IndexError\
@@ -165,26 +179,26 @@ class sip(object):
             ('The mineau scaling factor must be a real number' %self.mineau)
         except ValueError:
             raise ValueError\
-            ('The lethal dose must be a real number, not "%mg/kg"' %self.ld50)
+            ('The lethal dose must be a real number, not "%mg/kg"' %self.ld50_a)
         except ValueError:
             raise ValueError\
             ('The body weight of assessed bird must be a real number, not "%g"' %self.aw_bird)
         except ValueError:
             raise ValueError\
-            ('The body weight of tested bird must be a real number, not "%g"' %self.tw_bird)
+            ('The body weight of tested bird must be a real number, not "%g"' %self.bw_bird)
         except ZeroDivisionError:
             raise ZeroDivisionError\
             ('The body weight of tested bird must be non-zero.')
-        if self.ld50 < 0:
+        if self.ld50_a < 0:
             raise ValueError\
-            ('ld50=%g is a non-physical value.' % self.ld50)
+            ('ld50_a=%g is a non-physical value.' % self.ld50_a)
         if self.aw_bird < 0:
             raise ValueError\
             ('aw_bird=%g is a non-physical value.' % self.aw_bird)
-        if self.tw_bird < 0:
+        if self.bw_bird < 0:
             raise ValueError\
-            ('tw_bird=%g is a non-physical value.' % self.tw_bird)
-        self.at_bird = (self.ld50) * ((self.aw_bird/self.tw_bird)**(self.mineau-1))
+            ('bw_bird=%g is a non-physical value.' % self.bw_bird)
+        self.at_bird = (self.ld50_a) * ((self.aw_bird/self.bw_bird)**(self.mineau-1))
 
 
 
@@ -193,38 +207,38 @@ class sip(object):
 
     def at_mamm(self):
         try:
-            self.ld50 = float(self.ld50)
+            self.ld50_m = float(self.ld50_m)
             self.aw_mamm = float(self.aw_mamm)
-            self.tw_mamm = float(self.tw_mamm)
+            self.bw_mamm = float(self.bw_mamm)
         except TypeError:
             raise TypeError\
-            ('Either ld50, aw_mamm or tw_mamm equals None and therefor this function cannot be run.')
+            ('Either ld50_m, aw_mamm or bw_mamm equals None and therefor this function cannot be run.')
         except IndexError:
             raise IndexError\
             ('The lethal dose, body weight of assessed mammal, and/or body weight'\
             ' of tested mammal, must be supplied the command line.')
         except ValueError:
             raise ValueError\
-            ('The lethal dose must be a real number, not "%mg/kg"' %self.ld50)
+            ('The lethal dose must be a real number, not "%mg/kg"' %self.ld50_m)
         except ValueError:
             raise ValueError\
             ('The body weight of assessed mammal must be a real number, not "%g"' %self.aw_mamm)
         except ValueError:
             raise ValueError\
-            ('The body weight of tested mammal must be a real number, not "%g"' %self.tw_mamm)
+            ('The body weight of tested mammal must be a real number, not "%g"' %self.bw_mamm)
         except ZeroDivisionError:
             raise ZeroDivisionError\
             ('The body weight of tested mammal must be non-zero.')
-        if self.ld50 < 0:
+        if self.ld50_m < 0:
             raise ValueError\
-            ('ld50=%g is a non-physical value.' % self.ld50)
+            ('ld50_m=%g is a non-physical value.' % self.ld50_m)
         if self.aw_mamm < 0:
             raise ValueError\
             ('aw_mamm=%g is a non-physical value.' % self.aw_mamm)
-        if self.tw_mamm < 0:
+        if self.bw_mamm < 0:
             raise ValueError\
-            ('tw_mamm=%g is a non-physical value.' % self.tw_mamm)
-        self.at_mamm = (self.ld50) * ((self.aw_mamm/self.tw_mamm)**0.25)
+            ('bw_mamm=%g is a non-physical value.' % self.bw_mamm)
+        self.at_mamm = (self.ld50_m) * ((self.aw_mamm/self.bw_mamm)**0.25)
 
 
     # Adjusted chronic toxicity values for birds
@@ -287,7 +301,7 @@ class sip(object):
     def act(self):
         try:
             self.noael = float(self.noael)
-            self.tw_mamm = float(self.tw_mamm)
+            self.bw_mamm = float(self.bw_mamm)
             self.aw_mamm = float(self.aw_mamm)
         except IndexError:
             raise IndexError\
@@ -300,7 +314,7 @@ class sip(object):
         except ValueError:
             raise ValueError\
             ('The body weight of the tested mammal must be a real number,'\
-            ' not "%kg"' % self.tw_mamm)
+            ' not "%kg"' % self.bw_mamm)
         except ValueError:
             raise ValueError\
             ('The body weight of the assessed mammal must be a real number,'\
@@ -311,13 +325,13 @@ class sip(object):
         if self.noael < 0:
             raise ValueError\
             ('noael=%g is a non-physical value.' % self.noael)
-        if self.tw_mamm < 0:
+        if self.bw_mamm < 0:
             raise ValueError\
-            ('tw_mamm=%g is a non-physical value.' % self.tw_mamm)
+            ('bw_mamm=%g is a non-physical value.' % self.bw_mamm)
         if self.aw_mamm < 0:
             raise ValueError\
             ('aw_mamm=%g is a non-physical value.' % self.aw_mamm)
-        self.act = (self.noael) * ((self.tw_mamm/self.aw_mamm)**0.25)
+        self.act = (self.noael) * ((self.bw_mamm/self.aw_mamm)**0.25)
 
     # ---- Is drinking water a concern?
 

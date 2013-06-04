@@ -1,5 +1,5 @@
 application: pypest
-version: jon
+version: sprint5
 runtime: python27
 api_version: 1
 
@@ -143,6 +143,9 @@ handlers:
 #batch_output
 - url: /(.*?)_batchoutput.html
   script: \1/\1_batchoutput.py
+#hisotry
+- url: /(.*?)_history.html
+  script: \1/\1_history.py
 
 ##TESTED models##
 #description

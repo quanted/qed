@@ -1,0 +1,42 @@
+<script type="text/javascript" src=" ../stylesheets/jquery.validate.js"></script>
+<link type="text/css" rel="stylesheet" href="http://craigsworks.com/projects/qtip2/packages/nightly/jquery.qtip.css" />
+<script type="text/javascript" src="http://craigsworks.com/projects/qtip2/packages/nightly/jquery.qtip.js"></script>
+<script>
+
+$(document).ready(function() {
+    $('#id_bw_quail').closest('tr').hide();
+    $('#id_bw_duck').closest('tr').hide();
+    $('#id_bwb_other').closest('tr').hide();
+    $('#id_bw_rat').closest('tr').hide();
+    $('#id_bwm_other').closest('tr').hide();
+
+    $('#id_b_species').change(function() { 
+        if ($(this).val() == "178"){
+            $('#id_bw_quail').closest('tr').show();
+            $('#id_bw_duck').closest('tr').hide();
+            $('#id_bwb_other').closest('tr').hide();
+        }
+        else if ($(this).val() == "1580"){
+            $('#id_bw_duck').closest('tr').show();
+            $('#id_bw_quail').closest('tr').hide();
+            $('#id_bwb_other').closest('tr').hide();
+        }
+        else{
+           $('#id_bwb_other').closest('tr').show();
+           $('#id_bw_duck').closest('tr').hide();
+           $('#id_bw_quail').closest('tr').hide();
+       }
+     });
+    $('#id_m_species').change(function() {
+        if ($(this).val() == "350"){
+            $('#id_bw_rat').closest('tr').show();
+            $('#id_bwm_other').closest('tr').hide();
+        }
+        else{
+           $('#id_bw_rat').closest('tr').hide();
+           $('#id_bwm_other').closest('tr').show();
+       }
+    });
+   
+   });
+</script>

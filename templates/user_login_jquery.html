@@ -6,7 +6,7 @@ function openid_login(form)/*function to check userid & password*/
 	var form_data = {'openid_identifier':form_userid};
 	var json_data = JSON.stringify(form_data);
 	$.ajax({
-		url:"http://127.0.0.1:5000/auth/openid",
+		url:"http://localhost:3000/auth/openid",
 		async: false,
 		type: 'POST',
 		data: json_data,
@@ -31,7 +31,7 @@ function digest_login(form)/*function to check userid & password*/
 	var form_data = {'userid':form_userid,'password':form_password};
 	var json_data = JSON.stringify(form_data);
 	$.ajax({
-		url:"http://127.0.0.1:5000/auth/login",
+		url:"http://localhost:3000/auth/login",
 		async: false,
 		type: 'POST',
 		data: json_data,

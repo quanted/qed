@@ -6,6 +6,7 @@ var Db = require('mongodb').Db,
   Server = require('mongodb').Server,
   ObjectId = require('mongodb').ObjectId,
   Timestamp = require('mongodb').Timestamp;
+var uuid = require('node-uuid');
 
 var host = process.env['MONGO_NODE_DRIVER_HOST'] != null ? process.env['MONGO_NODE_DRIVER_HOST'] : 'localhost';
 var port = process.env['MONGO_NODE_DRIVER_PORT'] != null ? process.env['MONGO_NODE_DRIVER_PORT'] : Connection.DEFAULT_PORT;
@@ -19,15 +20,25 @@ db.open(function(err, db) {
 
 exports.getLoginDecision = function(user_id, password, callback)
 { 
+  var decision_sid = {'decision':false,'sid':null};
   db.collection('user', function(err,collection){
     collection.findOne({user_id:user_id},function(err,user_data) {
       if(user_data != null)
       {
         var crypted_password = user_data.password;
         var salt = user_data.salt;
-        callback(null,authenticate(password,crypted_password,salt));
+        var decision = authenticate(password,crypted_password,salt);
+        decision_sid.decision = decision;
+        if(decision)
+        {
+          decision_sid.sid = generateSessionId();
+          var expirationDate = new Date();
+          expirationDate.setHours(expirationDate.getHours() + 24);
+          decision_sid.expires = expirationDate;
+        }
+        callback(null,decision_sid);
       } else {
-        callback(null,false);
+        callback(null,decision_sid);
       }
     });
   });
@@ -43,7 +54,11 @@ exports.registerUser = function(user_id, password, email_address, callback)
   db.collection('user', function(err,collection){
     collection.findAndModify({user_id:user_id}, {},
       registration_data , {new:true, upsert:true, w:1},function(err,doc){
-        callback(null,true);
+        var sessionId = generateSessionId();
+        var expirationDate = new Date();
+        expirationDate.setHours(expirationDate.getHours() + 24);
+        var session_data = {"expires":expirationDate,"sid":sessionId};
+        callback(null,session_data);
       });
   });
 }
@@ -57,6 +72,11 @@ encryptPassword = function(password,salt)
 {
   var encrypted_password = crypto.createHmac('sha1', salt).update(password).digest('hex');
   return encrypted_password;
+}
+
+generateSessionId = function()
+{
+  return uuid.v1();
 }
 
 authenticate = function(plainText,hashed_password,salt) 

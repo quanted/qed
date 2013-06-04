@@ -7,6 +7,7 @@ var utils = require('./utils.js');
 var flow = require('nimble');
 var user = require('./user.js');
 var fs = require('fs');
+var Cookies = require('cookies');
 
 function submitBatch(req, res, next)
 {
@@ -38,8 +39,6 @@ function getBatchResults(req, res, next)
 var server = restify.createServer();
 server.use(restify.CORS());
 server.use(restify.fullResponse());
-//var credentials = {certificate: fs.readFileSync('ubertool_src/node/certs/server-cert.pem'),key: fs.readFileSync('ubertool_src/node/certs/server-key.pem')};
-//var httpsServer = restify.createServer();
 
 server.post('/user/login/:userid', function(req, res, next){
     var user_id = req.params.userid;
@@ -55,11 +54,17 @@ server.post('/user/login/:userid', function(req, res, next){
         console.log(json);
         console.log('json: ' + json);
         console.log('password' + json.pswrd);
-        user.getLoginDecision(user_id,json.pswrd,function(err, decision){
+        user.getLoginDecision(user_id,json.pswrd,function(err, decision_data){
             res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Headers", "X-Requested-With");
             res.header('Access-Control-Allow-Methods', "POST");
-            res.send(decision);
+            if(decision_data.decision)
+            {
+                var acsid_string = "test="+decision_data.sid;
+                console.log("acsid_string: " + acsid_string);
+                res.header('Set-Cookie',acsid_string);
+            }
+            res.send(decision_data);
         });
     });
 });
@@ -78,11 +83,11 @@ server.post('/user/registration/:user_id', function(req, res, next){
         console.log(json);
         console.log('password: ' + json.pswrd);
         console.log('email address: ' + json.email_address);
-        user.registerUser(user_id,json.pswrd,json.email_address,function(err, decision){
+        user.registerUser(user_id,json.pswrd,json.email_address,function(err, sid_data){
             res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Headers", "X-Requested-With");
             res.header('Access-Control-Allow-Methods', "POST");
-            res.send(decision);
+            res.send(sid_data);
         });
     });
 });
@@ -165,24 +170,6 @@ server.get('/all-cas', function(req, res, next){
     });
 });
 
-/**
-server.post('/ubertool/batch/:config', function(req, res, next){
-    var config_type = req.params.config_type;
-    var config = req.params.config;
-    var body = '';
-    var json = '';
-    req.on('data', function (data)
-    {
-        body += data;
-    });
-    req.on('end', function ()
-    {
-        json = JSON.parse(body);
-        console.log("POST for Configuration Name: " + config + " config type: " + config_type + " json data: " + json);
-    });
-});
-**/
-
 //Ubertool Services
 server.get('/ubertool/:config_type/config_names', function(req, res, next){
     var config_type = req.params.config_type;
@@ -254,3 +241,12 @@ function unknownMethodHandler(req, res) {
 server.listen(8887, function() {
   console.log('%s listening at %s', server.name, server.url);
 });
+
+/**
+var credentials = {certificate: fs.readFileSync('ubertool_src/node/certs/server-cert.pem'),key: fs.readFileSync('ubertool_src/node/certs/server-key.pem')};
+var httpsServer = restify.createServer(credentials);
+httpsServer.listen(9443, function() {
+  console.log('%s listening at %s', httpsServer.name, httpsServer.url);
+});
+**/
+

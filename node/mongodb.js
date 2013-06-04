@@ -104,22 +104,25 @@
         console.log(batch);
           
         var isCompleted = false;
-        var ubertool_data = batch.ubertool_data;
-        for(var ubertool_run in ubertool_data)
+        if(ubertool_data in batch)
         {
-            var tempIsCompleted = updateCompletedUbertoolRun(collection,batch,ubertool_data[ubertool_run],config_name,data)
-            if(!isCompleted && tempIsCompleted)
+            var ubertool_data = batch.ubertool_data;
+            for(var ubertool_run in ubertool_data)
             {
-                isCompleted = true;
+                var tempIsCompleted = updateCompletedUbertoolRun(collection,batch,ubertool_data[ubertool_run],config_name,data)
+                if(!isCompleted && tempIsCompleted)
+                {
+                    isCompleted = true;
+                }
             }
+            if(isCompleted)
+            {
+                var completedTime = new Date();
+                batch.completed = completedTime.toString();
+            }
+            collection.save(batch);
+            callback(batch);
         }
-        if(isCompleted)
-        {
-            var completedTime = new Date();
-            batch.completed = completedTime.toString();
-        }
-        collection.save(batch);
-        callback(batch);
     }
 
     function updateCompletedUbertoolRun(collection,batch,ubertool_run,config_name,data )

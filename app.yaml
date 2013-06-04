@@ -241,6 +241,9 @@ handlers:
 - url: /esa_workshop.html
   script: esa_workshop/esa_workshop.py  
 
+- url: /auth.html
+  script: user/auth.py
+
 #file not found
 - url: /.*
   script: file_not_found.py

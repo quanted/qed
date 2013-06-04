@@ -9,10 +9,26 @@
 	<div class="articles">
 	  <h2 class="model_header">Login</h2>
 		<form method="POST" id="form1" class="login" action=user.html>
-			Username<input type="text" name="userid"/>
-			Password<input type="password" name="pswrd"/>
-			<input type="button" onclick="login(this.form)" value="Login"/>
-			<input type="reset" value="Cancel"/>
+			<table>
+			<tr>
+			<td>Username<input type="text" name="userid"/></td>
+			<td>Password<input type="password" name="pswrd"/></td>
+			<td><input type="button" onclick="digest_login(this.form)" value="Login"/></td>
+			<td><input type="reset" value="Cancel"/></td>
+			</tr>
+			</table>
 		</form>
+		<form action="/auth/openid" method="post">
+			<div>
+			<label>OpenID:</label>
+			<input type="text" name="openid_identifier"/><br/>
+			</div>
+			<div>
+			<input type="submit" value="Submit"/>
+			</div>
+		</form>
+		<tr>
+			<td><a href="http://127.0.0.1:3000/auth/google">Sign On with Google</a></td>
+		</tr>
 	</div>
 </td>

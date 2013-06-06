@@ -199,7 +199,7 @@ span {
 .fadeDesc_description {
   display:inline-block;
   height: 30px;
-  width: 110px;
+  width: 117px;
   background: url(../images/tabs/hh/sprites/description.gif);
   background-position: 0 0;
 }
@@ -209,16 +209,16 @@ span {
 .fadeDesc_description span.hover {
   display: inline-block;
   height: 30px;
-  width: 110px;
+  width: 117px;
   background: url(../images/tabs/hh/sprites/description.gif);
   background-position: 0 -30px;
 }
 .fadeInp_description {
   display:inline-block;
   height: 30px;
-  width: 70px;
+  width: 68px;
   background: url(../images/tabs/hh/sprites/description.gif);
-  background-position: -110px 0;
+  background-position: -117px 0;
 }
 .fadeInp_description * {
   display: none;
@@ -226,16 +226,16 @@ span {
 .fadeInp_description span.hover {
   display: inline-block;
   height: 30px;
-  width: 70px;
+  width: 68px;
   background-image: url(../images/tabs/hh/sprites/description.gif);
-  background-position: -110px -30px;
+  background-position: -117px -30px;
 }
 .fadeAlg_description {
   display:inline-block;
   height: 30px;
-  width: 102px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/description.gif);
-  background-position: -180px 0;
+  background-position: -185px 0;
 }
 .fadeAlg_description * {
   display: none;
@@ -243,16 +243,16 @@ span {
 .fadeAlg_description span.hover {
   display: inline-block;
   height: 30px;
-  width: 102px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/description.gif);
-  background-position: -180px -30px;
+  background-position: -185px -30px;
 }
 .fadeRef_description {
   display:inline-block;
   height: 30px;
-  width: 104px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/description.gif);
-  background-position: -282px 0;
+  background-position: -285px 0;
 }
 .fadeRef_description * {
   display: none;
@@ -260,16 +260,16 @@ span {
 .fadeRef_description span.hover {
   display: inline-block;
   height: 30px;
-  width: 104px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/description.gif);
-  background-position: -282px -30px;
+  background-position: -285px -30px;
 }
 .fadeQAQC_description {
   display:inline-block;
   height: 30px;
-  width: 74px;
+  width: 72px;
   background-image: url(../images/tabs/hh/sprites/description.gif);
-  background-position: -386px 0;
+  background-position: -385px 0;
 }
 .fadeQAQC_description * {
   display: none;
@@ -277,16 +277,16 @@ span {
 .fadeQAQC_description span.hover {
   display: inline-block;
   height: 30px;
-  width: 74px;
+  width: 72px;
   background-image: url(../images/tabs/hh/sprites/description.gif);
-  background-position: -386px -30px;
+  background-position: -385px -30px;
 }
 .fadeBat_description {
   display:inline-block;
   height: 30px;
-  width: 70px;
+  width: 64px;
   background-image: url(../images/tabs/hh/sprites/description.gif);
-  background-position: -460px 0;
+  background-position: -457px 0;
 }
 .fadeBat_description * {
   display: none;
@@ -294,16 +294,16 @@ span {
 .fadeBat_description span.hover {
   display: inline-block;
   height: 30px;
-  width: 70px;
+  width: 64px;
   background-image: url(../images/tabs/hh/sprites/description.gif);
-  background-position: -460px -30px;
+  background-position: -457px -30px;
 }
 .fadeHist_description {
   display:inline-block;
   height: 30px;
-  width: 72px;
+  width: 80px;
   background-image: url(../images/tabs/hh/sprites/description.gif);
-  background-position: -530px 0;
+  background-position: -521px 0;
 }
 .fadeHist_description * {
   display: none;
@@ -311,14 +311,14 @@ span {
 .fadeHist_description span.hover {
   display: inline-block;
   height: 30px;
-  width: 72px;
+  width: 80px;
   background-image: url(../images/tabs/hh/sprites/description.gif);
-  background-position: -530px -30px;
+  background-position: -521px -30px;
 }
 .fadeDesc_input {
   display:inline-block;
   height: 30px;
-  width: 110px;
+  width: 117px;
   background: url(../images/tabs/hh/sprites/input.gif);
   background-position: 0 0;
 }
@@ -328,16 +328,16 @@ span {
 .fadeDesc_input span.hover {
   display: inline-block;
   height: 30px;
-  width: 110px;
+  width: 117px;
   background: url(../images/tabs/hh/sprites/input.gif);
   background-position: 0 -30px;
 }
 .fadeInp_input {
   display:inline-block;
   height: 30px;
-  width: 70px;
+  width: 68px;
   background: url(../images/tabs/hh/sprites/input.gif);
-  background-position: -110px 0;
+  background-position: -117px 0;
 }
 .fadeInp_input * {
   display: none;
@@ -345,16 +345,16 @@ span {
 .fadeInp_input span.hover {
   display: inline-block;
   height: 30px;
-  width: 70px;
+  width: 68px;
   background-image: url(../images/tabs/hh/sprites/input.gif);
-  background-position: -110px -30px;
+  background-position: -117px -30px;
 }
 .fadeAlg_input {
   display:inline-block;
   height: 30px;
-  width: 102px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/input.gif);
-  background-position: -180px 0;
+  background-position: -185px 0;
 }
 .fadeAlg_input * {
   display: none;
@@ -362,16 +362,16 @@ span {
 .fadeAlg_input span.hover {
   display: inline-block;
   height: 30px;
-  width: 102px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/input.gif);
-  background-position: -180px -30px;
+  background-position: -185px -30px;
 }
 .fadeRef_input {
   display:inline-block;
   height: 30px;
-  width: 104px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/input.gif);
-  background-position: -282px 0;
+  background-position: -285px 0;
 }
 .fadeRef_input * {
   display: none;
@@ -379,16 +379,16 @@ span {
 .fadeRef_input span.hover {
   display: inline-block;
   height: 30px;
-  width: 104px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/input.gif);
-  background-position: -282px -30px;
+  background-position: -285px -30px;
 }
 .fadeQAQC_input {
   display:inline-block;
   height: 30px;
-  width: 74px;
+  width: 72px;
   background-image: url(../images/tabs/hh/sprites/input.gif);
-  background-position: -386px 0;
+  background-position: -385px 0;
 }
 .fadeQAQC_input * {
   display: none;
@@ -396,16 +396,16 @@ span {
 .fadeQAQC_input span.hover {
   display: inline-block;
   height: 30px;
-  width: 74px;
+  width: 72px;
   background-image: url(../images/tabs/hh/sprites/input.gif);
-  background-position: -386px -30px;
+  background-position: -385px -30px;
 }
 .fadeBat_input {
   display:inline-block;
   height: 30px;
-  width: 70px;
+  width: 64px;
   background-image: url(../images/tabs/hh/sprites/input.gif);
-  background-position: -460px 0;
+  background-position: -457px 0;
 }
 .fadeBat_input * {
   display: none;
@@ -413,16 +413,16 @@ span {
 .fadeBat_input span.hover {
   display: inline-block;
   height: 30px;
-  width: 70px;
+  width: 64px;
   background-image: url(../images/tabs/hh/sprites/input.gif);
-  background-position: -460px -30px;
+  background-position: -457px -30px;
 }
 .fadeHist_input {
   display:inline-block;
   height: 30px;
-  width: 72px;
+  width: 80px;
   background-image: url(../images/tabs/hh/sprites/input.gif);
-  background-position: -530px 0;
+  background-position: -521px 0;
 }
 .fadeHist_input * {
   display: none;
@@ -430,14 +430,14 @@ span {
 .fadeHist_input span.hover {
   display: inline-block;
   height: 30px;
-  width: 72px;
+  width: 80px;
   background-image: url(../images/tabs/hh/sprites/input.gif);
-  background-position: -530px -30px;
+  background-position: -521px -30px;
 }
 .fadeDesc_algorithm {
   display:inline-block;
   height: 30px;
-  width: 110px;
+  width: 117px;
   background: url(../images/tabs/hh/sprites/algorithm.gif);
   background-position: 0 0;
 }
@@ -447,16 +447,16 @@ span {
 .fadeDesc_algorithm span.hover {
   display: inline-block;
   height: 30px;
-  width: 110px;
+  width: 117px;
   background: url(../images/tabs/hh/sprites/algorithm.gif);
   background-position: 0 -30px;
 }
 .fadeInp_algorithm {
   display:inline-block;
   height: 30px;
-  width: 70px;
+  width: 68px;
   background: url(../images/tabs/hh/sprites/algorithm.gif);
-  background-position: -110px 0;
+  background-position: -117px 0;
 }
 .fadeInp_algorithm * {
   display: none;
@@ -464,16 +464,16 @@ span {
 .fadeInp_algorithm span.hover {
   display: inline-block;
   height: 30px;
-  width: 70px;
+  width: 68px;
   background-image: url(../images/tabs/hh/sprites/algorithm.gif);
-  background-position: -110px -30px;
+  background-position: -117px -30px;
 }
 .fadeAlg_algorithm {
   display:inline-block;
   height: 30px;
-  width: 102px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/algorithm.gif);
-  background-position: -180px 0;
+  background-position: -185px 0;
 }
 .fadeAlg_algorithm * {
   display: none;
@@ -481,16 +481,16 @@ span {
 .fadeAlg_algorithm span.hover {
   display: inline-block;
   height: 30px;
-  width: 102px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/algorithm.gif);
-  background-position: -180px -30px;
+  background-position: -185px -30px;f
 }
 .fadeRef_algorithm {
   display:inline-block;
   height: 30px;
-  width: 104px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/algorithm.gif);
-  background-position: -282px 0;
+  background-position: -285px 0;
 }
 .fadeRef_algorithm * {
   display: none;
@@ -498,16 +498,16 @@ span {
 .fadeRef_algorithm span.hover {
   display: inline-block;
   height: 30px;
-  width: 104px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/algorithm.gif);
-  background-position: -282px -30px;
+  background-position: -285px -30px;
 }
 .fadeQAQC_algorithm {
   display:inline-block;
   height: 30px;
-  width: 74px;
+  width: 72px;
   background-image: url(../images/tabs/hh/sprites/algorithm.gif);
-  background-position: -386px 0;
+  background-position: -385px 0;
 }
 .fadeQAQC_algorithm * {
   display: none;
@@ -515,16 +515,16 @@ span {
 .fadeQAQC_algorithm span.hover {
   display: inline-block;
   height: 30px;
-  width: 74px;
+  width: 72px;
   background-image: url(../images/tabs/hh/sprites/algorithm.gif);
-  background-position: -386px -30px;
+  background-position: -385px -30px;
 }
 .fadeBat_algorithm {
   display:inline-block;
   height: 30px;
-  width: 70px;
+  width: 64px;
   background-image: url(../images/tabs/hh/sprites/algorithm.gif);
-  background-position: -460px 0;
+  background-position: -457px 0;
 }
 .fadeBat_algorithm * {
   display: none;
@@ -532,16 +532,16 @@ span {
 .fadeBat_algorithm span.hover {
   display: inline-block;
   height: 30px;
-  width: 70px;
+  width: 64px;
   background-image: url(../images/tabs/hh/sprites/algorithm.gif);
-  background-position: -460px -30px;
+  background-position: -457px -30px;
 }
 .fadeHist_algorithm {
   display:inline-block;
   height: 30px;
-  width: 72px;
+  width: 80px;
   background-image: url(../images/tabs/hh/sprites/algorithm.gif);
-  background-position: -530px 0;
+  background-position: -521px 0;
 }
 .fadeHist_algorithm * {
   display: none;
@@ -549,14 +549,14 @@ span {
 .fadeHist_algorithm span.hover {
   display: inline-block;
   height: 30px;
-  width: 72px;
+  width: 80px;
   background-image: url(../images/tabs/hh/sprites/algorithm.gif);
-  background-position: -530px -30px;
+  background-position: -521px -30px;
 }
 .fadeDesc_references {
   display:inline-block;
   height: 30px;
-  width: 110px;
+  width: 117px;
   background: url(../images/tabs/hh/sprites/references.gif);
   background-position: 0 0;
 }
@@ -566,16 +566,16 @@ span {
 .fadeDesc_references span.hover {
   display: inline-block;
   height: 30px;
-  width: 110px;
+  width: 117px;
   background: url(../images/tabs/hh/sprites/references.gif);
   background-position: 0 -30px;
 }
 .fadeInp_references {
   display:inline-block;
   height: 30px;
-  width: 70px;
+  width: 68px;
   background: url(../images/tabs/hh/sprites/references.gif);
-  background-position: -110px 0;
+  background-position: -117px 0;
 }
 .fadeInp_references * {
   display: none;
@@ -583,16 +583,16 @@ span {
 .fadeInp_references span.hover {
   display: inline-block;
   height: 30px;
-  width: 70px;
+  width: 68px;
   background-image: url(../images/tabs/hh/sprites/references.gif);
-  background-position: -110px -30px;
+  background-position: -117px -30px;
 }
 .fadeAlg_references {
   display:inline-block;
   height: 30px;
-  width: 102px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/references.gif);
-  background-position: -180px 0;
+  background-position: -185px 0;
 }
 .fadeAlg_references * {
   display: none;
@@ -600,16 +600,16 @@ span {
 .fadeAlg_references span.hover {
   display: inline-block;
   height: 30px;
-  width: 102px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/references.gif);
-  background-position: -180px -30px;
+  background-position: -185px -30px;
 }
 .fadeRef_references {
   display:inline-block;
   height: 30px;
-  width: 104px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/references.gif);
-  background-position: -282px 0;
+  background-position: -285px 0;
 }
 .fadeRef_references * {
   display: none;
@@ -617,16 +617,16 @@ span {
 .fadeRef_references span.hover {
   display: inline-block;
   height: 30px;
-  width: 104px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/references.gif);
-  background-position: -282px -30px;
+  background-position: -285px -30px;
 }
 .fadeQAQC_references {
   display:inline-block;
   height: 30px;
-  width: 74px;
+  width: 72px;
   background-image: url(../images/tabs/hh/sprites/references.gif);
-  background-position: -386px 0;
+  background-position: -385px 0;
 }
 .fadeQAQC_references * {
   display: none;
@@ -634,16 +634,16 @@ span {
 .fadeQAQC_references span.hover {
   display: inline-block;
   height: 30px;
-  width: 74px;
+  width: 72px;
   background-image: url(../images/tabs/hh/sprites/references.gif);
-  background-position: -386px -30px;
+  background-position: -385px -30px;
 }
 .fadeBat_references {
   display:inline-block;
   height: 30px;
-  width: 70px;
+  width: 64px;
   background-image: url(../images/tabs/hh/sprites/references.gif);
-  background-position: -460px 0;
+  background-position: -457px 0;
 }
 .fadeBat_references * {
   display: none;
@@ -651,16 +651,16 @@ span {
 .fadeBat_references span.hover {
   display: inline-block;
   height: 30px;
-  width: 70px;
+  width: 64px;
   background-image: url(../images/tabs/hh/sprites/references.gif);
-  background-position: -460px -30px;
+  background-position: -457px -30px;
 }
 .fadeHist_references {
   display:inline-block;
   height: 30px;
-  width: 72px;
+  width: 80px;
   background-image: url(../images/tabs/hh/sprites/references.gif);
-  background-position: -530px 0;
+  background-position: -521px 0;
 }
 .fadeHist_references * {
   display: none;
@@ -668,14 +668,14 @@ span {
 .fadeHist_references span.hover {
   display: inline-block;
   height: 30px;
-  width: 72px;
+  width: 80px;
   background-image: url(../images/tabs/hh/sprites/references.gif);
-  background-position: -530px -30px;
+  background-position: -521px -30px;
 }
 .fadeDesc_qaqc {
   display:inline-block;
   height: 30px;
-  width: 110px;
+  width: 117px;
   background: url(../images/tabs/hh/sprites/qaqc.gif);
   background-position: 0 0;
 }
@@ -685,16 +685,16 @@ span {
 .fadeDesc_qaqc span.hover {
   display: inline-block;
   height: 30px;
-  width: 110px;
+  width: 117px;
   background: url(../images/tabs/hh/sprites/qaqc.gif);
   background-position: 0 -30px;
 }
 .fadeInp_qaqc {
   display:inline-block;
   height: 30px;
-  width: 70px;
+  width: 68px;
   background: url(../images/tabs/hh/sprites/qaqc.gif);
-  background-position: -110px 0;
+  background-position: -117px 0;
 }
 .fadeInp_qaqc * {
   display: none;
@@ -702,16 +702,16 @@ span {
 .fadeInp_qaqc span.hover {
   display: inline-block;
   height: 30px;
-  width: 70px;
+  width: 68px;
   background-image: url(../images/tabs/hh/sprites/qaqc.gif);
-  background-position: -110px -30px;
+  background-position: -117px -30px;
 }
 .fadeAlg_qaqc {
   display:inline-block;
   height: 30px;
-  width: 102px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/qaqc.gif);
-  background-position: -180px 0;
+  background-position: -185px 0;
 }
 .fadeAlg_qaqc * {
   display: none;
@@ -719,16 +719,16 @@ span {
 .fadeAlg_qaqc span.hover {
   display: inline-block;
   height: 30px;
-  width: 102px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/qaqc.gif);
-  background-position: -180px -30px;
+  background-position: -185px -30px;
 }
 .fadeRef_qaqc {
   display:inline-block;
   height: 30px;
-  width: 104px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/qaqc.gif);
-  background-position: -282px 0;
+  background-position: -285px 0;
 }
 .fadeRef_qaqc * {
   display: none;
@@ -736,16 +736,16 @@ span {
 .fadeRef_qaqc span.hover {
   display: inline-block;
   height: 30px;
-  width: 104px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/qaqc.gif);
-  background-position: -282px -30px;
+  background-position: -285px -30px;
 }
 .fadeQAQC_qaqc {
   display:inline-block;
   height: 30px;
-  width: 74px;
+  width: 72px;
   background-image: url(../images/tabs/hh/sprites/qaqc.gif);
-  background-position: -386px 0;
+  background-position: -385px 0;
 }
 .fadeQAQC_qaqc * {
   display: none;
@@ -753,16 +753,16 @@ span {
 .fadeQAQC_qaqc span.hover {
   display: inline-block;
   height: 30px;
-  width: 74px;
+  width: 72px;
   background-image: url(../images/tabs/hh/sprites/qaqc.gif);
-  background-position: -386px -30px;
+  background-position: -385px -30px;
 }
 .fadeBat_qaqc {
   display:inline-block;
   height: 30px;
-  width: 70px;
+  width: 64px;
   background-image: url(../images/tabs/hh/sprites/qaqc.gif);
-  background-position: -460px 0;
+  background-position: -457px 0;
 }
 .fadeBat_qaqc * {
   display: none;
@@ -770,16 +770,16 @@ span {
 .fadeBat_qaqc span.hover {
   display: inline-block;
   height: 30px;
-  width: 70px;
+  width: 64px;
   background-image: url(../images/tabs/hh/sprites/qaqc.gif);
-  background-position: -460px -30px;
+  background-position: -457px -30px;
 }
 .fadeHist_qaqc {
   display:inline-block;
   height: 30px;
-  width: 72px;
+  width: 80px;
   background-image: url(../images/tabs/hh/sprites/qaqc.gif);
-  background-position: -530px 0;
+  background-position: -521px 0;
 }
 .fadeHist_qaqc * {
   display: none;
@@ -787,14 +787,14 @@ span {
 .fadeHist_qaqc span.hover {
   display: inline-block;
   height: 30px;
-  width: 72px;
+  width: 80px;
   background-image: url(../images/tabs/hh/sprites/qaqc.gif);
-  background-position: -530px -30px;
+  background-position: -521px -30px;
 }
 .fadeDesc_batchinput {
   display:inline-block;
   height: 30px;
-  width: 110px;
+  width: 117px;
   background: url(../images/tabs/hh/sprites/batchinput.gif);
   background-position: 0 0;
 }
@@ -804,16 +804,16 @@ span {
 .fadeDesc_batchinput span.hover {
   display: inline-block;
   height: 30px;
-  width: 110px;
+  width: 117px;
   background: url(../images/tabs/hh/sprites/batchinput.gif);
   background-position: 0 -30px;
 }
 .fadeInp_batchinput {
   display:inline-block;
   height: 30px;
-  width: 70px;
+  width: 68px;
   background: url(../images/tabs/hh/sprites/batchinput.gif);
-  background-position: -110px 0;
+  background-position: -117px 0;
 }
 .fadeInp_batchinput * {
   display: none;
@@ -821,16 +821,16 @@ span {
 .fadeInp_batchinput span.hover {
   display: inline-block;
   height: 30px;
-  width: 70px;
+  width: 68px;
   background-image: url(../images/tabs/hh/sprites/batchinput.gif);
-  background-position: -110px -30px;
+  background-position: -117px -30px;
 }
 .fadeAlg_batchinput {
   display:inline-block;
   height: 30px;
-  width: 102px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/batchinput.gif);
-  background-position: -180px 0;
+  background-position: -185px 0;
 }
 .fadeAlg_batchinput * {
   display: none;
@@ -838,16 +838,16 @@ span {
 .fadeAlg_batchinput span.hover {
   display: inline-block;
   height: 30px;
-  width: 102px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/batchinput.gif);
-  background-position: -180px -30px;
+  background-position: -185px -30px;
 }
 .fadeRef_batchinput {
   display:inline-block;
   height: 30px;
-  width: 104px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/batchinput.gif);
-  background-position: -282px 0;
+  background-position: -285px 0;
 }
 .fadeRef_batchinput * {
   display: none;
@@ -855,16 +855,16 @@ span {
 .fadeRef_batchinput span.hover {
   display: inline-block;
   height: 30px;
-  width: 104px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/batchinput.gif);
-  background-position: -282px -30px;
+  background-position: -285px -30px;
 }
 .fadeQAQC_batchinput {
   display:inline-block;
   height: 30px;
-  width: 74px;
+  width: 72px;
   background-image: url(../images/tabs/hh/sprites/batchinput.gif);
-  background-position: -386px 0;
+  background-position: -385px 0;
 }
 .fadeQAQC_batchinput * {
   display: none;
@@ -872,16 +872,16 @@ span {
 .fadeQAQC_batchinput span.hover {
   display: inline-block;
   height: 30px;
-  width: 74px;
+  width: 72px;
   background-image: url(../images/tabs/hh/sprites/batchinput.gif);
-  background-position: -386px -30px;
+  background-position: -385px -30px;
 }
 .fadeBat_batchinput {
   display:inline-block;
   height: 30px;
-  width: 70px;
+  width: 64px;
   background-image: url(../images/tabs/hh/sprites/batchinput.gif);
-  background-position: -460px 0;
+  background-position: -457px 0;
 }
 .fadeBat_batchinput * {
   display: none;
@@ -889,16 +889,16 @@ span {
 .fadeBat_batchinput span.hover {
   display: inline-block;
   height: 30px;
-  width: 70px;
+  width: 64px;
   background-image: url(../images/tabs/hh/sprites/batchinput.gif);
-  background-position: -460px -30px;
+  background-position: -457px -30px;
 }
 .fadeHist_batchinput {
   display:inline-block;
   height: 30px;
-  width: 72px;
+  width: 80px;
   background-image: url(../images/tabs/hh/sprites/batchinput.gif);
-  background-position: -530px 0;
+  background-position: -521px 0;
 }
 .fadeHist_batchinput * {
   display: none;
@@ -906,14 +906,14 @@ span {
 .fadeHist_batchinput span.hover {
   display: inline-block;
   height: 30px;
-  width: 72px;
+  width: 80px;
   background-image: url(../images/tabs/hh/sprites/batchinput.gif);
-  background-position: -530px -30px;
+  background-position: -521px -30px;
 }
 .fadeDesc_history {
   display:inline-block;
   height: 30px;
-  width: 110px;
+  width: 117px;
   background: url(../images/tabs/hh/sprites/history.gif);
   background-position: 0 0;
 }
@@ -923,16 +923,16 @@ span {
 .fadeDesc_history span.hover {
   display: inline-block;
   height: 30px;
-  width: 110px;
+  width: 117px;
   background: url(../images/tabs/hh/sprites/history.gif);
   background-position: 0 -30px;
 }
 .fadeInp_history {
   display:inline-block;
   height: 30px;
-  width: 70px;
+  width: 68px;
   background: url(../images/tabs/hh/sprites/history.gif);
-  background-position: -110px 0;
+  background-position: -117px 0;
 }
 .fadeInp_history * {
   display: none;
@@ -940,16 +940,16 @@ span {
 .fadeInp_history span.hover {
   display: inline-block;
   height: 30px;
-  width: 70px;
+  width: 68px;
   background-image: url(../images/tabs/hh/sprites/history.gif);
-  background-position: -110px -30px;
+  background-position: -117px -30px;
 }
 .fadeAlg_history {
   display:inline-block;
   height: 30px;
-  width: 102px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/history.gif);
-  background-position: -180px 0;
+  background-position: -185px 0;
 }
 .fadeAlg_history * {
   display: none;
@@ -957,16 +957,16 @@ span {
 .fadeAlg_history span.hover {
   display: inline-block;
   height: 30px;
-  width: 102px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/history.gif);
-  background-position: -180px -30px;
+  background-position: -185px -30px;
 }
 .fadeRef_history {
   display:inline-block;
   height: 30px;
-  width: 104px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/history.gif);
-  background-position: -282px 0;
+  background-position: -285px 0;
 }
 .fadeRef_history * {
   display: none;
@@ -974,16 +974,16 @@ span {
 .fadeRef_history span.hover {
   display: inline-block;
   height: 30px;
-  width: 104px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/history.gif);
-  background-position: -282px -30px;
+  background-position: -285px -30px;
 }
 .fadeQAQC_history {
   display:inline-block;
   height: 30px;
-  width: 74px;
+  width: 72px;
   background-image: url(../images/tabs/hh/sprites/history.gif);
-  background-position: -386px 0;
+  background-position: -385px 0;
 }
 .fadeQAQC_history * {
   display: none;
@@ -991,16 +991,16 @@ span {
 .fadeQAQC_history span.hover {
   display: inline-block;
   height: 30px;
-  width: 74px;
+  width: 72px;
   background-image: url(../images/tabs/hh/sprites/history.gif);
-  background-position: -386px -30px;
+  background-position: -385px -30px;
 }
 .fadeBat_history {
   display:inline-block;
   height: 30px;
-  width: 70px;
+  width: 64px;
   background-image: url(../images/tabs/hh/sprites/history.gif);
-  background-position: -460px 0;
+  background-position: -457px 0;
 }
 .fadeBat_history * {
   display: none;
@@ -1008,16 +1008,16 @@ span {
 .fadeBat_history span.hover {
   display: inline-block;
   height: 30px;
-  width: 70px;
+  width: 64px;
   background-image: url(../images/tabs/hh/sprites/history.gif);
-  background-position: -460px -30px;
+  background-position: -457px -30px;
 }
 .fadeHist_history {
   display:inline-block;
   height: 30px;
-  width: 72px;
+  width: 80px;
   background-image: url(../images/tabs/hh/sprites/history.gif);
-  background-position: -530px 0;
+  background-position: -521px 0;
 }
 .fadeHist_history * {
   display: none;
@@ -1025,14 +1025,14 @@ span {
 .fadeHist_history span.hover {
   display: inline-block;
   height: 30px;
-  width: 72px;
+  width: 80px;
   background-image: url(../images/tabs/hh/sprites/history.gif);
-  background-position: -530px -30px;
+  background-position: -521px -30px;
 }
 .fadeDesc_output {
   display:inline-block;
   height: 30px;
-  width: 110px;
+  width: 117px;
   background: url(../images/tabs/hh/sprites/output.gif);
   background-position: 0 0;
 }
@@ -1042,16 +1042,16 @@ span {
 .fadeDesc_output span.hover {
   display: inline-block;
   height: 30px;
-  width: 110px;
+  width: 117px;
   background: url(../images/tabs/hh/sprites/output.gif);
   background-position: 0 -30px;
 }
 .fadeInp_output {
   display:inline-block;
   height: 30px;
-  width: 70px;
+  width: 68px;
   background: url(../images/tabs/hh/sprites/output.gif);
-  background-position: -110px 0;
+  background-position: -117px 0;
 }
 .fadeInp_output * {
   display: none;
@@ -1059,16 +1059,16 @@ span {
 .fadeInp_output span.hover {
   display: inline-block;
   height: 30px;
-  width: 70px;
+  width: 68px;
   background-image: url(../images/tabs/hh/sprites/output.gif);
-  background-position: -110px -30px;
+  background-position: -117px -30px;
 }
 .fadeOut_output {
   display:inline-block;
   height: 30px;
   width: 72px;
   background: url(../images/tabs/hh/sprites/output.gif);
-  background-position: -180px 0;
+  background-position: -185px 0;
 }
 .fadeOut_output * {
   display: none;
@@ -1078,14 +1078,14 @@ span {
   height: 30px;
   width: 72px;
   background-image: url(../images/tabs/hh/sprites/output.gif);
-  background-position: -180px -30px;
+  background-position: -185px -30px;
 }
 .fadeAlg_output {
   display:inline-block;
   height: 30px;
-  width: 102px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/output.gif);
-  background-position: -252px 0;
+  background-position: -257px 0;
 }
 .fadeAlg_output * {
   display: none;
@@ -1093,16 +1093,16 @@ span {
 .fadeAlg_output span.hover {
   display: inline-block;
   height: 30px;
-  width: 102px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/output.gif);
-  background-position: -252px -30px;
+  background-position: -257px -30px;
 }
 .fadeRef_output {
   display:inline-block;
   height: 30px;
-  width: 104px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/output.gif);
-  background-position: -354px 0;
+  background-position: -357px 0;
 }
 .fadeRef_output * {
   display: none;
@@ -1110,16 +1110,16 @@ span {
 .fadeRef_output span.hover {
   display: inline-block;
   height: 30px;
-  width: 104px;
+  width: 100px;
   background-image: url(../images/tabs/hh/sprites/output.gif);
-  background-position: -354px -30px;
+  background-position: -357px -30px;
 }
 .fadeQAQC_output {
   display:inline-block;
   height: 30px;
-  width: 74px;
+  width: 72px;
   background-image: url(../images/tabs/hh/sprites/output.gif);
-  background-position: -458px 0;
+  background-position: -457px 0;
 }
 .fadeQAQC_output * {
   display: none;
@@ -1127,16 +1127,16 @@ span {
 .fadeQAQC_output span.hover {
   display: inline-block;
   height: 30px;
-  width: 74px;
+  width: 72px;
   background-image: url(../images/tabs/hh/sprites/output.gif);
-  background-position: -458px -30px;
+  background-position: -457px -30px;
 }
 .fadeBat_output {
   display:inline-block;
   height: 30px;
-  width: 70px;
+  width: 64px;
   background-image: url(../images/tabs/hh/sprites/output.gif);
-  background-position: -532px 0;
+  background-position: -529px 0;
 }
 .fadeBat_output * {
   display: none;
@@ -1144,9 +1144,26 @@ span {
 .fadeBat_output span.hover {
   display: inline-block;
   height: 30px;
-  width: 70px;
+  width: 64px;
   background-image: url(../images/tabs/hh/sprites/output.gif);
-  background-position: -532px -30px;
+  background-position: -529px -30px;
+}
+.fadeHist_output {
+  display:inline-block;
+  height: 30px;
+  width: 80px;
+  background-image: url(../images/tabs/hh/sprites/output.gif);
+  background-position: -593px 0;
+}
+.fadeHist_output * {
+  display: none;
+}
+.fadeHist_output span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 80px;
+  background-image: url(../images/tabs/hh/sprites/output.gif);
+  background-position: -593px -30px;
 }
 
 /* Header Right Side */

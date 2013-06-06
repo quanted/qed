@@ -20,7 +20,10 @@ db.open(function(err, db) {
 
 exports.getLoginDecision = function(user_id, password, callback)
 { 
-  var decision_sid = {'decision':false,'sid':null};
+  var decision_sid = {'decision':false,'sid':null,'expires':null};
+  var sessionId = generateSessionId();
+  var expirationDate = new Date();
+  expirationDate.setHours(expirationDate.getHours() + 24);
   db.collection('user', function(err,collection){
     collection.findOne({user_id:user_id},function(err,user_data) {
       if(user_data != null)
@@ -31,16 +34,33 @@ exports.getLoginDecision = function(user_id, password, callback)
         decision_sid.decision = decision;
         if(decision)
         {
-          decision_sid.sid = generateSessionId();
-          var expirationDate = new Date();
-          expirationDate.setHours(expirationDate.getHours() + 24);
+          decision_sid.sid = sessionId;
           decision_sid.expires = expirationDate;
+          collection.update({user_id:user_id},{$set:{latest_login_info:{sessionId:sessionId,expires:expires}}});
         }
-        callback(null,decision_sid);
-      } else {
-        callback(null,decision_sid);
       }
+      callback(null,decision_sid);
     });
+  });
+}
+
+exports.openIdLogin = function(openid, callback)
+{
+  var login_data = {'userid':null,'sid':null,'expires':null};
+  var sessionId = generateSessionId();
+  var expirationDate = new Date();
+  expirationDate.setHours(expirationDate.getHours() + 24);
+  db.collection('user', function(err,collection){
+    collection.find({open_id:openid}, function(err,user_data) {
+      if(user_data != null)
+      {
+        collection.update({user_id:user_id},{$set:{latest_login_info:{sessionId:sessionId,expires:expires}}});
+        login_data.userid=user_data.user_id;
+        login_data.sid=user_data.sessionId;
+        login_data.expires=user_data.expires;
+      }
+      callback(null,login_data);
+    })
   });
 }
 

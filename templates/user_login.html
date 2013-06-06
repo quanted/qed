@@ -7,6 +7,7 @@
 
 <td width=656px>
 	<div class="articles">
+	<!--
 	  <h2 class="model_header">Login</h2>
 		<form method="POST" id="form1" class="login" action=user.html>
 			<table>
@@ -30,5 +31,23 @@
 		<tr>
 			<td><a href="/auth/google">Sign On with Google</a></td>
 		</tr>
+	-->
+	    <table class="banner">
+	      <tr>
+	        <td class="leftbanner">
+	          <h1><a href="/">Python OpenID Server Example</a></h1>
+	        </td>
+	        <td class="rightbanner">
+	          You are <a href="/login">not logged in</a>.
+	        </td>
+	      </tr>
+	    </table>
+		<form method="GET" action="/loginsubmit">
+	        <input type="hidden" name="success_to" value="/" />
+	        <input type="hidden" name="fail_to" value="/" />
+	        <input type="text" name="user" value="" />
+	        <input type="submit" name="submit" value="Log In" />
+	        <input type="submit" name="cancel" value="Cancel" />
+        </form>
 	</div>
 </td>

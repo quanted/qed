@@ -242,10 +242,16 @@ handlers:
 
 #ESA workshop
 - url: /esa_workshop.html
-  script: esa_workshop/esa_workshop.py  
+  script: esa_workshop/esa_workshop.py
 
-- url: /auth.html
-  script: user/auth.py
+- url: /loginsubmit
+  script: auth/auth.py
+
+- url: /allow
+  script: auth/auth.py
+
+- url: /openidserver
+  script: auth/auth.py
 
 #file not found
 - url: /.*

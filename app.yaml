@@ -1,7 +1,5 @@
 application: pypest
-
-version: tom
-
+version: sprint5
 runtime: python27
 api_version: 1
 

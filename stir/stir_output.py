@@ -23,22 +23,21 @@ class STIRExecutePage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage() 
         chemical_name = form.getvalue('chemical_name')
-        ar2 = form.getvalue('application_rate')
-        f_inhaled = form.getvalue('spray_drift')
-        mw = form.getvalue('molecular_weight')
-        vp = form.getvalue('vapor_pressure')
-        ld50ao = form.getvalue('avian_oral_ld50')
-        assessed_bw_avian = form.getvalue('body_weight_of_the_assessed_bird')
-        tw_avian = form.getvalue('body_weight_of_the_tested_bird')
-        mineau = form.getvalue('chemical_specific_mineau_scaling_factor')
-        assessed_bw_mammal = form.getvalue('body_weight_of_the_assessed_mammal')
-        tw_mammal = form.getvalue('body_weight_of_the_tested_mammal')
-        h = form.getvalue('height_of_direct_spray_column')
-        ddsi = form.getvalue('ddsi')
-        lc50 = form.getvalue('mammalian_inhalation_lc50')
-        dur = form.getvalue('duration_of_rat_inhalation_study')
-        ld50ri = form.getvalue('rat_inhalation_lc50')
-        ld50ro = form.getvalue('rat_oral_ld50')
+        application_rate = form.getvalue('application_rate')
+        column_height = form.getvalue('column_height')
+        spray_drift_fraction = form.getvalue('spray_drift_fraction')
+        direct_spray_duration = form.getvalue('direct_spray_duration')
+        molecular_weight = form.getvalue('molecular_weight')
+        vapor_pressure = form.getvalue('vapor_pressure')
+        avian_oral_ld50 = form.getvalue('avian_oral_ld50')
+        body_weight_assessed_bird = form.getvalue('body_weight_assessed_bird')
+        body_weight_tested_bird = form.getvalue('body_weight_tested_bird')
+        mineau_scaling_factor = form.getvalue('mineau_scaling_factor')
+        mammal_inhalation_lc50 = form.getvalue('mammal_inhalation_lc50')
+        duration_mammal_inhalation_study = form.getvalue('duration_mammal_inhalation_study')
+        body_weight_assessed_mammal = form.getvalue('body_weight_assessed_mammal')
+        body_weight_tested_mammal = form.getvalue('body_weight_tested_mammal')
+        mammal_oral_ld50 = form.getvalue('mammal_oral_ld50')
         
         text_file = open('stir/stir_description.txt','r')
         x = text_file.read()
@@ -58,13 +57,15 @@ class STIRExecutePage(webapp.RequestHandler):
         tmpl = Template(djtemplate)
         
         #instantiate stir model object
-        sm = stir_model.StirModel(chemical_name, ar2, h, f_inhaled, ddsi, mw, vp,ld50ao, assessed_bw_avian, mineau, 
-            lc50, dur, assessed_bw_mammal, ld50ri, ld50ro)
+        sm = stir_model.StirModel(True,True,chemical_name,application_rate,column_height,spray_drift_fraction,direct_spray_duration, 
+            molecular_weight,vapor_pressure,avian_oral_ld50, body_weight_assessed_bird, body_weight_tested_bird, mineau_scaling_factor, 
+            mammal_inhalation_lc50,duration_mammal_inhalation_study,body_weight_assessed_mammal, body_weight_tested_mammal, 
+            mammal_oral_ld50)
 
         html = html + stir_tables.table_1(pvuheadings,tmpl,sm)
         html = html + stir_tables.table_2(pvuheadings,tmpl,sm)
-
-
+        html = html + stir_tables.table_3(pvuheadings,tmpl,sm)
+        html = html + stir_tables.table_4(pvuheadings,tmpl,sm)
         # sat_air_conc = sm.sat_air_conc
         # inh_rate_avian = sm.inh_rate_avian
         # vid_avian = sm.vid_avian

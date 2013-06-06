@@ -60,6 +60,14 @@ class CASGql:
 		rows = cursor.fetchall()
 		return rows
 
+	def getAllChemNamesCASNumsMongoJson(self):
+		utfTupleList = self.getAllChemNamesCASNumsUTF8()
+		mongoJSON = ''
+		for utfTuple in utfTupleList:
+			mongoJSON += '{\"ChemicalName\":\"%s\",\"CASNumber\":\"%s\"}\n' % (utfTuple[1],utfTuple[0])
+		self.logger.info(mongoJSON)
+		return mongoJSON
+
 	def getAllChemNamesCASNumsUTF8(self, max=None, macChars=None):
 		unicodeList = self.getAllChemicalNamesCASNumbers(max)
 		self.logger.debug(unicodeList)

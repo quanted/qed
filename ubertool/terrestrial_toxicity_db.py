@@ -11,22 +11,13 @@ from django.db import models
 from google.appengine.api import users
 from google.appengine.ext import db
 from terrestrial_toxicity import TerrestrialToxicity
+import datetime
 
 YN = (('Yes','Yes'),('No','No'))
 
 class TTInp(forms.Form):
-    user_id = users.get_current_user().user_id()
-    user = users.get_current_user()
-    user_id = user.user_id()
-    q = db.Query(TerrestrialToxicity)
-    q.filter('user =',user)
-    uses = ()
-    uses += ((None,None),)
-    for use in q:
-        #logger.info(use.to_xml())
-        uses += ((use.config_name,use.config_name),)
-    user_terrestrial_toxicity_configuration = forms.ChoiceField(label="User Saved Terrestrial Toxicity Configuration",required=True, choices=uses)
-    config_name = forms.CharField(label="Use Configuration Name", initial="use-config-%s"%user_id)
+    user_terrestrial_toxicity_configuration = forms.ChoiceField(label="User Saved Terrestrial Toxicity Configuration",required=True)
+    config_name = forms.CharField(label="Use Configuration Name", initial="use-config-%s"%datetime.datetime.now())
     avian_ld50 = forms.FloatField(label='Avian LD50 (mg/kg-bw)')
     avian_lc50 = forms.FloatField(label='Avian LC50 (mg/kg-bw)')
     avian_NOAEC = forms.FloatField(label='Avian NOAEC (mg/kg-diet)')

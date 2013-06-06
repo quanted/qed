@@ -288,9 +288,9 @@ def EEC_dose_mamm(EEC_diet_mamm, EEC_diet, C_0, n_a, i_a, a_r, a_i, para, h_l, b
 
 # Amphibian Dose based EECs for terrestrial
 
-def EEC_dose_tp(EEC_diet_tp, EEC_diet, C_0, n_a, i_a, a_r, a_i, para, h_l, fi_herp, bw_herp, c_herp, wp_herp):
+def EEC_dose_tp(EEC_diet_tp, EEC_diet, C_0, n_a, i_a, a_r, a_i, para, h_l, fi_herp, bw_herp, c_herp, wp_herp, wp_herp_a):
     EEC_diet_tp=EEC_diet_tp(EEC_diet, C_0, n_a, i_a, a_r, a_i, para, h_l, fi_herp, c_herp, wp_herp)
-    fi_herp=fi_herp(bw_herp, wp_herp)
+    fi_herp=fi_herp(bw_herp, wp_herp_a)
     return (EEC_diet_tp*fi_herp/bw_herp)
         
 # Amphibian acute dose-based risk quotients  
@@ -309,8 +309,8 @@ def ARQ_dose_mamm(EEC_dose_mamm, EEC_diet_mamm, bw_herp, fi_herp, at_bird, ld50_
 
 # Amphibian acute dose-based risk quotients for tp
 
-def ARQ_dose_tp(EEC_dose_tp, EEC_diet_tp, EEC_diet, C_0, n_a, i_a, a_r, a_i, para, h_l, fi_herp, c_herp, wp_herp, at_bird, ld50_bird, bw_herp, tw_bird, x):
-    EEC_dose_tp=EEC_dose_tp(EEC_diet_tp, EEC_diet, C_0, n_a, i_a, a_r, a_i, para, h_l, fi_herp, bw_herp, c_herp, wp_herp)
+def ARQ_dose_tp(EEC_dose_tp, EEC_diet_tp, EEC_diet, C_0, n_a, i_a, a_r, a_i, para, h_l, fi_herp, c_herp, wp_herp, wp_herp_a, at_bird, ld50_bird, bw_herp, tw_bird, x):
+    EEC_dose_tp=EEC_dose_tp(EEC_diet_tp, EEC_diet, C_0, n_a, i_a, a_r, a_i, para, h_l, fi_herp, bw_herp, c_herp, wp_herp, wp_herp_a)
     at_bird=at_bird(ld50_bird,bw_herp,tw_bird,x)
     return (EEC_dose_tp/at_bird)
         

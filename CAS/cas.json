@@ -1,0 +1,1375 @@
+{ "_id" : { "$oid" : "5191121e1cb665979448d2a4" }, "ChemicalName" : ".ALPHA.-L-XYLO-2-HEXULOFURANOSONIC ACID, 2,3:4,6-BIS-O-(1-METHYLETHYLIDENE)-, SODIUM SALT", "CASNumber" : "52508-35-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2a5" }, "ChemicalName" : ".BETA.-D-ALLOFURANURONIC ACID, 5-[[2-AMINO-5-O-(AMINOCARBONYL)-2-DEOXY-L-XYLONOYL]AMINO]-1-(5-CARBOX", "CASNumber" : "146659-78-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2a6" }, "ChemicalName" : "ABAMECTIN", "CASNumber" : "71751-41-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2a7" }, "ChemicalName" : "ABSOLUE ORANGE FLOWER", "CASNumber" : "8008-57-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2a8" }, "ChemicalName" : "AC 263222 (CADRE HERBICIDE)", "CASNumber" : "81334-60-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2a9" }, "ChemicalName" : "ACACIA MOLLISSIMA TANNIN", "CASNumber" : "1401-55-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2aa" }, "ChemicalName" : "ACEITE DE LINAZA", "CASNumber" : "8001-26-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2ab" }, "ChemicalName" : "ACEITE DE PINO", "CASNumber" : "2228957" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2ac" }, "ChemicalName" : "ACEPHATE", "CASNumber" : "30560-19-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2ad" }, "ChemicalName" : "ACETALDEHYDE, (3,3-DIMETHYLCYCLOHEXYLIDENE)-, (E)-", "CASNumber" : "26532-25-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2ae" }, "ChemicalName" : "ACETALDEHYDE, (3,3-DIMETHYLCYCLOHEXYLIDENE)-, (Z)-", "CASNumber" : "26532-24-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2af" }, "ChemicalName" : "ACETAMIDE, N-[2,4-DIMETHYL-5-[[(TRIFLUOROMETHYL)SULFONYL]AMINO]PHENYL]-", "CASNumber" : "53780-34-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2b0" }, "ChemicalName" : "ACETAMIDE, N-[2,4-DIMETHYL-5-[[(TRIFLUOROMETHYL)SULFONYL]AMINO]PHENYL]-, MONOPOTASSIUM SALT", "CASNumber" : "83601-83-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2b1" }, "ChemicalName" : "ACETAMINOPHEN", "CASNumber" : "103-90-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2b2" }, "ChemicalName" : "ACETIC ACID", "CASNumber" : "64-19-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2b3" }, "ChemicalName" : "ACETIC ACID, (2,4,5-TRICHLOROPHENOXY)-, 1-METHYLETHYL ESTER", "CASNumber" : "93-78-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2b4" }, "ChemicalName" : "ACETIC ACID, (2,4,5-TRICHLOROPHENOXY)-, 2-BUTOXYETHYL ESTER", "CASNumber" : "2545-59-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2b5" }, "ChemicalName" : "ACETIC ACID, (2,4,5-TRICHLOROPHENOXY)-, 2-ETHYL-4-METHYLPENTYL ESTER", "CASNumber" : "69462-12-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2b6" }, "ChemicalName" : "ACETIC ACID, (2,4,5-TRICHLOROPHENOXY)-, 2-ETHYLHEXYL ESTER", "CASNumber" : "1928-47-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2b7" }, "ChemicalName" : "ACETIC ACID, (2,4,5-TRICHLOROPHENOXY)-, COMPD. WITH 2-(DIETHYLAMINO)ETHANOL (1:1)", "CASNumber" : "53404-86-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2b8" }, "ChemicalName" : "ACETIC ACID, (2,4,5-TRICHLOROPHENOXY)-, PENTYL ESTER", "CASNumber" : "120-39-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2b9" }, "ChemicalName" : "ACETIC ACID, (2,4-DICHLOROPHENOXY)-, 2-METHYLPROPYL ESTER", "CASNumber" : "1713-15-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2ba" }, "ChemicalName" : "ACETIC ACID, (2,4-DICHLOROPHENOXY)-, AMMONIUM SALT", "CASNumber" : "2307-55-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2bb" }, "ChemicalName" : "ACETIC ACID, (2,4-DICHLOROPHENOXY)-, COMPD. WITH 1,1,1-NITRILOTRIS(2-PROPANOL) (1:1)", "CASNumber" : "32341-80-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2bc" }, "ChemicalName" : "ACETIC ACID, (2,4-DICHLOROPHENOXY)-, COMPD. WITH 1,1,1-NITRILOTRIS[2-PROPANOL] (1:1)", "CASNumber" : "18584-79-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2bd" }, "ChemicalName" : "ACETIC ACID, (2,4-DICHLOROPHENOXY)-, COMPD. WITH 1-DODECANAMINE (1:1)", "CASNumber" : "2212-54-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2be" }, "ChemicalName" : "ACETIC ACID, (2,4-DICHLOROPHENOXY)-, COMPD. WITH 1-TETRADECANAMINE (1:1)", "CASNumber" : "28685-18-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2bf" }, "ChemicalName" : "ACETIC ACID, (2,4-DICHLOROPHENOXY)-, COMPD. WITH 2,2,2-NITRILOTRIS[ETHANOL] (1:1)", "CASNumber" : "244358" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2c0" }, "ChemicalName" : "ACETIC ACID, (2,4-DICHLOROPHENOXY)-, COMPD. WITH 2,2-IMINOBIS[ETHANOL] (1:1)", "CASNumber" : "5742-19-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2c1" }, "ChemicalName" : "ACETIC ACID, (2,4-DICHLOROPHENOXY)-, COMPD. WITH 2-AMINOETHANOL (1:1)", "CASNumber" : "3599-58-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2c2" }, "ChemicalName" : "ACETIC ACID, (2,4-DICHLOROPHENOXY)-, COMPD. WITH 2-PROPANAMINE (1:1)", "CASNumber" : "5742-17-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2c3" }, "ChemicalName" : "ACETIC ACID, (2,4-DICHLOROPHENOXY)-, COMPD. WITH N,N-DIETHYLETHANAMINE (1:1)", "CASNumber" : "2646-78-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2c4" }, "ChemicalName" : "ACETIC ACID, (2,4-DICHLOROPHENOXY)-, COMPD. WITH N-ETHYLETHANAMINE (1:1)", "CASNumber" : "20940-37-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2c5" }, "ChemicalName" : "ACETIC ACID, (2,4-DICHLOROPHENOXY)-, COMPD. WITH N-METHYLMETHANAMINE (1:1)", "CASNumber" : "2008-39-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2c6" }, "ChemicalName" : "ACETIC ACID, (2,4-DICHLOROPHENOXY)-, LITHIUM SALT", "CASNumber" : "3766-27-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2c7" }, "ChemicalName" : "ACETIC ACID, (2,4-DICHLOROPHENOXY)-, POTASSIUM SALT", "CASNumber" : "14214-89-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2c8" }, "ChemicalName" : "ACETIC ACID, (4-CHLORO-2-METHYLPHENOXY)-, COMPD. WITH N-METHYLMETHANAMINE (1:1)", "CASNumber" : "2039-46-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2c9" }, "ChemicalName" : "ACETIC ACID, (4-CHLORO-2-METHYLPHENOXY)-, ISOOCTYL ESTER", "CASNumber" : "26544-20-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2ca" }, "ChemicalName" : "ACETIC ACID, BROMO-, 2-BUTENE-1,4-DIYL ESTER", "CASNumber" : "20679-58-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2cb" }, "ChemicalName" : "ACETIC ACID, NITRILOTRI-, TRISODIUM SALT", "CASNumber" : "5064-31-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2cc" }, "ChemicalName" : "ACETIC ACID, SODIUM SALT (2:1)", "CASNumber" : "126-96-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2cd" }, "ChemicalName" : "ACETIC ACID, TRICHLORO-, SODIUM SALT", "CASNumber" : "650-51-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2ce" }, "ChemicalName" : "ACETIC ACID, [(3,5,6-TRICHLORO-2-PYRIDINYL)OXY]-, 2-BUTOXYETHYL ESTER", "CASNumber" : "64700-56-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2cf" }, "ChemicalName" : "ACETOCHLOR", "CASNumber" : "34256-82-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2d0" }, "ChemicalName" : "ACETONE", "CASNumber" : "67-64-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2d1" }, "ChemicalName" : "ACETYLSALICYLIC ACID", "CASNumber" : "50-78-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2d2" }, "ChemicalName" : "ACIBENZOLAR-S-METHYL", "CASNumber" : "135158-54-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2d3" }, "ChemicalName" : "ACID BLUE 9,DIAMMONIUM SALT", "CASNumber" : "2650-18-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2d4" }, "ChemicalName" : "ACIDULATED COCONUT SOAPSTOCK", "CASNumber" : "8001-31-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2d5" }, "ChemicalName" : "ACIDULATED SOYBEAN SOAPSTOCK", "CASNumber" : "8001-22-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2d6" }, "ChemicalName" : "ACIFLUORFEN, SODIUM SALT", "CASNumber" : "62476-59-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2d7" }, "ChemicalName" : "ACROLEIN", "CASNumber" : "107-02-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2d8" }, "ChemicalName" : "ACRYLONITRILE", "CASNumber" : "107-13-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2d9" }, "ChemicalName" : "ACTOCOL 51-530", "CASNumber" : "25322-69-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2da" }, "ChemicalName" : "ADEPS LANE", "CASNumber" : "8006-54-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2db" }, "ChemicalName" : "1,1-AETHYLEN-2,2-BIPYRIDINIUM-DIBROMID", "CASNumber" : "85-00-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2dc" }, "ChemicalName" : "AKYPOSAL ALS 33", "CASNumber" : "2235-54-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2dd" }, "ChemicalName" : "AKYPOSAL TLS", "CASNumber" : "139-96-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2de" }, "ChemicalName" : "ALACHLOR", "CASNumber" : "15972-60-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2df" }, "ChemicalName" : "ALCOHOLS, C11-15, ETHOXYLATED, COMPDS. WITH IODINE", "CASNumber" : "68439-47-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2e0" }, "ChemicalName" : "ALCOHOLS, C11-15-SECONDARY, ETHOXYLATED", "CASNumber" : "68131-40-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2e1" }, "ChemicalName" : "ALCOHOLS, C8-10", "CASNumber" : "85566-12-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2e2" }, "ChemicalName" : "ALDICARB", "CASNumber" : "116-06-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2e3" }, "ChemicalName" : "ALDRIN", "CASNumber" : "309-00-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2e4" }, "ChemicalName" : "ALKENES, C14-16 ALPHA-, SULFONATED, SODIUM SALTS", "CASNumber" : "68439-57-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2e5" }, "ChemicalName" : "ALKYL DIMETHYLBENZYL AMMONIUM CHLORIDE", "CASNumber" : "8001-54-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2e6" }, "ChemicalName" : "ALKYL PYRIDINES", "CASNumber" : "68391-11-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2e7" }, "ChemicalName" : "ALKYL(C12-16)DIMETHYLBENZYLAMMONIUM CHLORIDE", "CASNumber" : "68424-85-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2e8" }, "ChemicalName" : "ALLETHRIN", "CASNumber" : "584-79-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2e9" }, "ChemicalName" : "ALLYL ALCOHOL", "CASNumber" : "107-18-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2ea" }, "ChemicalName" : "ALLYL ISOTHIOCYANATE", "CASNumber" : "57-06-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2eb" }, "ChemicalName" : "1-ALLYL-4-METHOXYBENZENE", "CASNumber" : "140-67-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2ec" }, "ChemicalName" : "ALMOND ARTIFICIAL ESSENTIAL OIL", "CASNumber" : "100-52-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2ed" }, "ChemicalName" : "ALPHA,ALPHA-((9-OCTADECENYLIMINO)DI-2,1-ETHANEDIYL)BIS(OMEGA-HYD- ROXYPOLY(OXY-1,2-ETHANEDIYL)-, (Z", "CASNumber" : "26635-93-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2ee" }, "ChemicalName" : "ALPHA,ALPHA,ALPHA-TRIFLUORO-3-ISOPROPOXY-O-TOLUANILIDE", "CASNumber" : "66332-96-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2ef" }, "ChemicalName" : "ALPHA-METOLACHLOR", "CASNumber" : "87392-12-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2f0" }, "ChemicalName" : "ALUMINUM", "CASNumber" : "7429-90-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2f1" }, "ChemicalName" : "ALUMINUM CHLORIDE", "CASNumber" : "7446-70-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2f2" }, "ChemicalName" : "ALUMINUM PHOSPHIDE", "CASNumber" : "20859-73-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2f3" }, "ChemicalName" : "ALUMINUM SULFATE", "CASNumber" : "10043-01-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2f4" }, "ChemicalName" : "AMETRYN", "CASNumber" : "834-12-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2f5" }, "ChemicalName" : "AMIDES, C12-18, N,N-BIS(HYDROXYETHYL)", "CASNumber" : "68155-06-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2f6" }, "ChemicalName" : "AMIDES, COCO, N-(2-HYDROXYETHYL)-", "CASNumber" : "68140-00-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2f7" }, "ChemicalName" : "AMIDES, SOYA, N,N-BIS(HYDROXYETHYL)", "CASNumber" : "68425-47-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2f8" }, "ChemicalName" : "AMINES, COCO ALKYL, ACETATES", "CASNumber" : "61790-57-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2f9" }, "ChemicalName" : "AMINES, COCO ALKYL, HYDROCHLORIDES", "CASNumber" : "91745-52-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2fa" }, "ChemicalName" : "AMINES, N-C12-18-ALKYLTRIMETHYLENEDI-", "CASNumber" : "68155-37-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2fb" }, "ChemicalName" : "AMINES, N-COCO ALKYLTRIMETHYLENEDI-", "CASNumber" : "61791-63-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2fc" }, "ChemicalName" : "AMINES, N-COCO ALKYLTRIMETHYLENEDI-, ACETATES", "CASNumber" : "61791-64-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2fd" }, "ChemicalName" : "AMINES, N-COCO ALKYLTRIMETHYLENEDI-, ADIPATES", "CASNumber" : "68155-42-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2fe" }, "ChemicalName" : "AMINES, N-COCO ALKYLTRIMETHYLENEDI-, GLYCOLATES", "CASNumber" : "68155-43-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d2ff" }, "ChemicalName" : "AMINES, TALL-OIL ALKYL, (2,4-DICHLOROPHENOXY)ACETATES", "CASNumber" : "137335-70-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d300" }, "ChemicalName" : "2-AMINO-4-(HYDROXYMETHYLPHOSPHINYL)BUTANOIC ACID MONOAMMONIUM SALT", "CASNumber" : "77182-82-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d301" }, "ChemicalName" : "4-AMINO-BENZOLSULFONYL-METHYLCARBAMAT", "CASNumber" : "3337-71-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d302" }, "ChemicalName" : "AMINOCARB", "CASNumber" : "2032-59-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d303" }, "ChemicalName" : "2-AMINOETHANOL", "CASNumber" : "141-43-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d304" }, "ChemicalName" : "AMITRAZ", "CASNumber" : "33089-61-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d305" }, "ChemicalName" : "AMITROLE", "CASNumber" : "61-82-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d306" }, "ChemicalName" : "AMMATE", "CASNumber" : "7773-06-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d307" }, "ChemicalName" : "AMMONIA", "CASNumber" : "7664-41-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d308" }, "ChemicalName" : "AMMONIUM CARBONATE", "CASNumber" : "506-87-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d309" }, "ChemicalName" : "AMMONIUM HYDROXIDE", "CASNumber" : "1336-21-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d30a" }, "ChemicalName" : "AMMONIUM OLEATE", "CASNumber" : "544-60-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d30b" }, "ChemicalName" : "AMMONIUM SILICOFLUORIDE", "CASNumber" : "16919-19-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d30c" }, "ChemicalName" : "AMMONIUM SULFATE", "CASNumber" : "7783-20-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d30d" }, "ChemicalName" : "AMMONIUM THIOSULFATE", "CASNumber" : "7783-18-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d30e" }, "ChemicalName" : "AMYL ACETATE", "CASNumber" : "628-63-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d30f" }, "ChemicalName" : "ANCYMIDOL", "CASNumber" : "12771-68-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d310" }, "ChemicalName" : "ANHIDRIDO BUTIRICO", "CASNumber" : "106-31-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d311" }, "ChemicalName" : "ANILAZINE", "CASNumber" : "101-05-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d312" }, "ChemicalName" : "9,10-ANTHRACENEDIONE", "CASNumber" : "84-65-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d313" }, "ChemicalName" : "ANTIMONY POTASSIUM TARTRATE", "CASNumber" : "28300-74-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d314" }, "ChemicalName" : "ANTIMYCIN A", "CASNumber" : "1397-94-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d315" }, "ChemicalName" : "ANTU", "CASNumber" : "86-88-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d316" }, "ChemicalName" : "APPLE ACID", "CASNumber" : "6915-15-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d317" }, "ChemicalName" : "ARAMITE", "CASNumber" : "140-57-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d318" }, "ChemicalName" : "ARIEN", "CASNumber" : "64742-16-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d319" }, "ChemicalName" : "AROMATIC NAPHTHA, TYPE I", "CASNumber" : "64742-95-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d31a" }, "ChemicalName" : "AROMATIC PETROLEUM DERIVATIVE SOLVENT", "CASNumber" : "68477-31-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d31b" }, "ChemicalName" : "ARQUAD 2C", "CASNumber" : "61789-77-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d31c" }, "ChemicalName" : "ARSENIC ACID", "CASNumber" : "7778-39-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d31d" }, "ChemicalName" : "ARSENIC ACID (H3ASO4), MONOAMMONIUM SALT", "CASNumber" : "13462-93-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d31e" }, "ChemicalName" : "ARSENIC AS ELEMENTAL, PRESENT AS DODECYL AND OCTYL AMMONIUM METHYL ARSENATES", "CASNumber" : "6379-37-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d31f" }, "ChemicalName" : "ARSENIC OXIDE (3)", "CASNumber" : "1327-53-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d320" }, "ChemicalName" : "ARSENIC PENTOXIDE", "CASNumber" : "1303-28-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d321" }, "ChemicalName" : "ARSONIC ACID, METHYL-, CALCIUM SALT (2:1)", "CASNumber" : "5902-95-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d322" }, "ChemicalName" : "ASBESTOS (FRIABLE)", "CASNumber" : "1332-21-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d323" }, "ChemicalName" : "ASPHALT (PETROLEUM) FUMES", "CASNumber" : "8052-42-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d324" }, "ChemicalName" : "ASPON (NPD)", "CASNumber" : "3244-90-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d325" }, "ChemicalName" : "ATRAZINE", "CASNumber" : "1912-24-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d326" }, "ChemicalName" : "AURAMINE", "CASNumber" : "492-80-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d327" }, "ChemicalName" : "AZACOSTEROL", "CASNumber" : "1249-84-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d328" }, "ChemicalName" : "AZADIRACHTIN", "CASNumber" : "11141-17-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d329" }, "ChemicalName" : "AZINPHOS-ETHYL", "CASNumber" : "2642-71-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d32a" }, "ChemicalName" : "AZINPHOS-METHYL", "CASNumber" : "86-50-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d32b" }, "ChemicalName" : "AZODRIN", "CASNumber" : "6923-22-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d32c" }, "ChemicalName" : "AZOXYSTROBIN", "CASNumber" : "131860-33-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d32d" }, "ChemicalName" : "BACILLUS THURINGIENSIS (BERLINER)", "CASNumber" : "68038-71-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d32e" }, "ChemicalName" : "BARBAN", "CASNumber" : "101-27-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d32f" }, "ChemicalName" : "BARIUM CARBONATE", "CASNumber" : "513-77-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d330" }, "ChemicalName" : "BARIUM METABORATE", "CASNumber" : "13701-59-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d331" }, "ChemicalName" : "BASIC COPPER SULFATE", "CASNumber" : "1344-73-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d332" }, "ChemicalName" : "BASIC VIOLET 3", "CASNumber" : "548-62-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d333" }, "ChemicalName" : "BENDIOCARB", "CASNumber" : "22781-23-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d334" }, "ChemicalName" : "BENFLURALIN", "CASNumber" : "1861-40-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d335" }, "ChemicalName" : "BENOMYL", "CASNumber" : "17804-35-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d336" }, "ChemicalName" : "BENSULFURON METHYL", "CASNumber" : "83055-99-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d337" }, "ChemicalName" : "BENSULIDE", "CASNumber" : "741-58-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d338" }, "ChemicalName" : "BENZADOX", "CASNumber" : "5251-79-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d339" }, "ChemicalName" : "BENZAMIDE, 5-BROMO-N-(4-BROMOPHENYL)-2-HYDROXY-", "CASNumber" : "87-12-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d33a" }, "ChemicalName" : "BENZAMIDE, N-[[[3,5-DICHLORO-4-(1,1,2,2-TETRAFLUOROETHOXY) PHENYL]AMINO]CARBONYL]-2,6-DIFLUORO-", "CASNumber" : "86479-06-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d33b" }, "ChemicalName" : "BENZENE", "CASNumber" : "71-43-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d33c" }, "ChemicalName" : "BENZENE, (2-BROMO-2-NITROETHENYL)-", "CASNumber" : "7166-19-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d33d" }, "ChemicalName" : "BENZENE, 1,2,4-TRIMETHOXY-", "CASNumber" : "135-77-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d33e" }, "ChemicalName" : "BENZENE, 1-[(DIIODOMETHYL)SULFONYL]-4-METHYL-", "CASNumber" : "20018-09-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d33f" }, "ChemicalName" : "1,2-BENZENEDICARBOXALDEHYDE", "CASNumber" : "643-79-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d340" }, "ChemicalName" : "BENZENEDIMETHANAMINIUM, AR-DODECYL-AR,N,N,N,N,N,N-HEPTAMETHYL-, DICHLORIDE, MIXT. WITH AR-DODECYL", "CASNumber" : "1399-80-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d341" }, "ChemicalName" : "BENZENEMETHANAMINIUM, AR-DODECYL-N,N,N-TRIMETHYL-, CHLORIDE", "CASNumber" : "1330-85-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d342" }, "ChemicalName" : "BENZENEMETHANAMINIUM, N,N-DIMETHYL-N-TETRADECYL-, CHLORIDE", "CASNumber" : "139-08-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d343" }, "ChemicalName" : "BENZENEMETHANAMINIUM, N,N-DIMETHYL-N-[2-[2-[METHYL-4-(1,1,3,3-TETRAMETHYLBUTYL)PHENOXY]ETHOXY]ETHYL]", "CASNumber" : "25155-18-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d344" }, "ChemicalName" : "BENZENEMETHANAMINIUM, N-[2-[(2,6-DIMETHYLPHENYL)AMINO]-2-OXOETHYL]-N,N-DIETHYL-, SALT WITH 1,2-BENZI", "CASNumber" : "90823-38-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d345" }, "ChemicalName" : "BENZENEMETHANOL, 4-CHLORO-.ALPHA.-(4-CHLOROPHENYL)-.ALPHA.-METHYL-", "CASNumber" : "80-06-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d346" }, "ChemicalName" : "BENZENESULFONIC ACID, DECYL(SULFOPHENOXY)-, DISODIUM SALT", "CASNumber" : "36445-71-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d347" }, "ChemicalName" : "BENZENESULFONIC ACID, DIMETHYL-, SODIUM SALT", "CASNumber" : "1300-72-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d348" }, "ChemicalName" : "BENZENESULFONIC ACID, DODECYL-, POTASSIUM SALT", "CASNumber" : "27177-77-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d349" }, "ChemicalName" : "BENZENESULFONIC ACID, METHYL-, SODIUM SALT", "CASNumber" : "12068-03-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d34a" }, "ChemicalName" : "BENZETHONIUM CHLORIDE", "CASNumber" : "121-54-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d34b" }, "ChemicalName" : "BENZINE", "CASNumber" : "8032-32-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d34c" }, "ChemicalName" : "1,2-BENZISOTHIAZOLIN-3-ONE", "CASNumber" : "2634-33-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d34d" }, "ChemicalName" : "BENZOCAINE", "CASNumber" : "94-09-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d34e" }, "ChemicalName" : "BENZOIC ACID", "CASNumber" : "65-85-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d34f" }, "ChemicalName" : "BENZOIC ACID, 2,3,6-TRICHLORO-", "CASNumber" : "50-31-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d350" }, "ChemicalName" : "BENZOIC ACID, 3,6-DICHLORO-2-METHOXY-, COMPD. WITH 2,2-IMINOBIS[ETHANOL] (1:1)", "CASNumber" : "25059-78-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d351" }, "ChemicalName" : "BENZOIC ACID, 3,6-DICHLORO-2-METHOXY-, COMPD. WITH 2-(2-AMINOETHOXY)ETHANOL (1:1)", "CASNumber" : "104040-79-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d352" }, "ChemicalName" : "BENZOIC ACID, 3,6-DICHLORO-2-METHOXY-, COMPD. WITH 2-AMINOETHANOL (1:1)", "CASNumber" : "53404-28-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d353" }, "ChemicalName" : "BENZOIC ACID, 3,6-DICHLORO-2-METHOXY-, COMPD. WITH 2-PROPANAMINE (1:1)", "CASNumber" : "55871-02-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d354" }, "ChemicalName" : "BENZOIC ACID, 3,6-DICHLORO-2-METHOXY-, POTASSIUM SALT", "CASNumber" : "10007-85-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d355" }, "ChemicalName" : "BENZOIC ACID, PHENYLMETHYL ESTER", "CASNumber" : "120-51-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d356" }, "ChemicalName" : "1,4-BENZOQUINONE, 2,3,5,6-TETRACHLORO-", "CASNumber" : "118-75-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d357" }, "ChemicalName" : "2,2-BENZOTHIAZYL DISULFIDE", "CASNumber" : "120-78-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d358" }, "ChemicalName" : "BENZYL ALCOHOL", "CASNumber" : "100-51-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d359" }, "ChemicalName" : "BENZYL BROMOACETATE", "CASNumber" : "5437-45-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d35a" }, "ChemicalName" : "BENZYLADENINE", "CASNumber" : "1214-39-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d35b" }, "ChemicalName" : "BICYCLO(2.2.1)HEPTAN-2-OL, 1,7,7-TRIMETHYL-, ACETATE, EXO-", "CASNumber" : "125-12-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d35c" }, "ChemicalName" : "BIDRIN", "CASNumber" : "141-66-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d35d" }, "ChemicalName" : "BIFENAZATE", "CASNumber" : "149877-41-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d35e" }, "ChemicalName" : "BIFENOX", "CASNumber" : "42576-02-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d35f" }, "ChemicalName" : "BIFENTHRIN", "CASNumber" : "82657-04-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d360" }, "ChemicalName" : "BIOBAN-C", "CASNumber" : "4075-81-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d361" }, "ChemicalName" : "BIOBAN-S", "CASNumber" : "137-40-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d362" }, "ChemicalName" : "BIORESMETHRIN", "CASNumber" : "28434-01-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d363" }, "ChemicalName" : "BIPHENYL", "CASNumber" : "92-52-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d364" }, "ChemicalName" : "[1,1-BIPHENYL]-2-OL, AMMONIUM SALT", "CASNumber" : "52704-98-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d365" }, "ChemicalName" : "[1,1-BIPHENYL]-2-OL, POTASSIUM SALT", "CASNumber" : "13707-65-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d366" }, "ChemicalName" : "2,3,4,5-BIS (2-BUTENYLENE) TETRAHYDROFURFURAL", "CASNumber" : "126-15-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d367" }, "ChemicalName" : "2,6-BIS(1-METHYLETHYL)NAPHTHALENE", "CASNumber" : "24157-81-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d368" }, "ChemicalName" : "1,4-BIS(2-ETHYLHEXYL) SODIUM SULFOSUCCINATE", "CASNumber" : "577-11-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d369" }, "ChemicalName" : "BIS(2-HYDROXYETHYL)LAURAMIDE", "CASNumber" : "120-40-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d36a" }, "ChemicalName" : "BIS(HYDROGENATED TALLOW ALKYL)DIMETHYLAMMONIUM BENTONITE", "CASNumber" : "68953-58-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d36b" }, "ChemicalName" : "10,10-BIS(PHENOXYARSINYL) OXIDE", "CASNumber" : "58-36-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d36c" }, "ChemicalName" : "BIS(TRIBUTYLTIN) OXIDE", "CASNumber" : "56-35-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d36d" }, "ChemicalName" : "BIS(TRICHLORMETHYL) SULFONE", "CASNumber" : "3064-70-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d36e" }, "ChemicalName" : "BISODIUM SULFATE", "CASNumber" : "7757-82-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d36f" }, "ChemicalName" : "BISPYRIBAC-SODIUM", "CASNumber" : "125401-92-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d370" }, "ChemicalName" : "BK2-W", "CASNumber" : "9004-70-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d371" }, "ChemicalName" : "BL 2142", "CASNumber" : "31512-74-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d372" }, "ChemicalName" : "BONE OIL", "CASNumber" : "8001-85-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d373" }, "ChemicalName" : "BORATES,TETRA,SODIUM SALTS", "CASNumber" : "1303-96-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d374" }, "ChemicalName" : "BORIC ACID", "CASNumber" : "10043-35-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d375" }, "ChemicalName" : "BORON SODIUM OXIDE (B4NA2O7), PENTAHYDRATE", "CASNumber" : "12179-04-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d376" }, "ChemicalName" : "BORON SODIUM OXIDE (B8NA2O13)", "CASNumber" : "12008-41-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d377" }, "ChemicalName" : "BORON SODIUM OXIDE (B8NA2O13), TETRAHYDRATE", "CASNumber" : "12280-03-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d378" }, "ChemicalName" : "BORON ZINC OXIDE (B6ZN2O11), HYDRATE", "CASNumber" : "12447-61-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d379" }, "ChemicalName" : "BRILLIANT BLUE FCF", "CASNumber" : "3844-45-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d37a" }, "ChemicalName" : "BRODIFACOUM", "CASNumber" : "56073-10-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d37b" }, "ChemicalName" : "BROMACIL", "CASNumber" : "314-40-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d37c" }, "ChemicalName" : "BROMACIL LITHIUM SALT (2,4(H,3H)-PYRIMIDINEDIONE, ETHYL-3 (1-METHYLPROPYL), LITHIUM SALT)", "CASNumber" : "53404-19-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d37d" }, "ChemicalName" : "BROMADIOLONE", "CASNumber" : "28772-56-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d37e" }, "ChemicalName" : "BROMETHALIN", "CASNumber" : "63333-35-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d37f" }, "ChemicalName" : "BROMINE", "CASNumber" : "7726-95-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d380" }, "ChemicalName" : "BROMINE CHLORIDE", "CASNumber" : "13863-41-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d381" }, "ChemicalName" : "1-BROMO-1-(BROMOMETHYL)-1,3-PROPANEDICARBONITRILE", "CASNumber" : "35691-65-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d382" }, "ChemicalName" : "4-BROMO-2,5-DICHLOROPHENYL DIMETHYL PHOSPHOROTHIONATE", "CASNumber" : "2104-96-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d383" }, "ChemicalName" : "2-BROMO-2-NITROPROPANE-1,3-DIOL", "CASNumber" : "52-51-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d384" }, "ChemicalName" : "BROMOXYNIL", "CASNumber" : "1689-84-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d385" }, "ChemicalName" : "BROMOXYNIL OCTANOATE", "CASNumber" : "1689-99-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d386" }, "ChemicalName" : "BROMUCONAZOLE", "CASNumber" : "116255-48-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d387" }, "ChemicalName" : "BTC 1100", "CASNumber" : "53516-75-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d388" }, "ChemicalName" : "BTC 776", "CASNumber" : "53516-76-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d389" }, "ChemicalName" : "BTC 927", "CASNumber" : "8045-22-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d38a" }, "ChemicalName" : "BUFA-4,20,22-TRIENOLIDE, 6-(ACETYLOXY)-3-(.BETA.-D-GLUCOPYRANOSYLOXY)-8,14-DIHYDROXY-, (3.BETA.,6.BE", "CASNumber" : "507-60-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d38b" }, "ChemicalName" : "BUFENCARB (RE-5353)", "CASNumber" : "2282-34-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d38c" }, "ChemicalName" : "BUPROFEZIN (APPLAUD)", "CASNumber" : "69327-76-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d38d" }, "ChemicalName" : "BUSAN 1104", "CASNumber" : "85264-33-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d38e" }, "ChemicalName" : "BUSAN 74 (HPMTS)", "CASNumber" : "29803-57-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d38f" }, "ChemicalName" : "1,3-BUTANDIOL", "CASNumber" : "107-88-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d390" }, "ChemicalName" : "BUTANEDIOIC ACID, CADMIUM SALT (1:1)", "CASNumber" : "141-00-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d391" }, "ChemicalName" : "BUTANEDIOIC ACID, SULFO-, 1,4-DIOCTYL ESTER, SODIUM SALT", "CASNumber" : "1639-66-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d392" }, "ChemicalName" : "1-BUTANETHIOL", "CASNumber" : "109-79-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d393" }, "ChemicalName" : "BUTANOIC ACID, 4-(2,4-DICHLOROPHENOXY)-, COMPD. WITH N-METHYLMETHANAMINE (1:1)", "CASNumber" : "2758-42-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d394" }, "ChemicalName" : "BUTANOIC ACID, 4-(2,4-DICHLOROPHENOXY)-, ISOOCTYL ESTER", "CASNumber" : "1320-15-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d395" }, "ChemicalName" : "BUTANOIC ACID, 4-(2,4-DICHLOROPHENOXY)-, SODIUM SALT", "CASNumber" : "10433-59-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d396" }, "ChemicalName" : "BUTANOIC ACID, 4-(4-CHLORO-2-METHYLPHENOXY)-, SODIUM SALT", "CASNumber" : "6062-26-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d397" }, "ChemicalName" : "3-BUTEN-2-ONE, 4-(2,6,6-TRIMETHYL-2-CYCLOHEXEN-1-YL)-, (E)-", "CASNumber" : "127-41-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d398" }, "ChemicalName" : "3-BUTENOIC ACID, 2-AMINO-4-(2-AMINOETHOXY)-, MONOHYDROCHLORIDE, [S-(E)]-", "CASNumber" : "55720-26-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d399" }, "ChemicalName" : "BUTONATE", "CASNumber" : "126-22-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d39a" }, "ChemicalName" : "BUTOXYCARBOXIM", "CASNumber" : "34681-23-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d39b" }, "ChemicalName" : "BUTRALIN", "CASNumber" : "33629-47-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d39c" }, "ChemicalName" : "BUTYLATE", "CASNumber" : "2008-41-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d39d" }, "ChemicalName" : "C.I. BASIC GREEN 4", "CASNumber" : "569-64-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d39e" }, "ChemicalName" : "(C10-C16) ALKYLBENZENESULFONIC ACID", "CASNumber" : "68584-22-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d39f" }, "ChemicalName" : "(C10-C16)ALKYLDIMETHYLAMINE OXIDE", "CASNumber" : "70592-80-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3a0" }, "ChemicalName" : "(C12-C18) ALKYLDIMETHYLBENZYL AMMONIUM CHLORIDE", "CASNumber" : "68391-01-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3a1" }, "ChemicalName" : "(C14-C18) DIALKYLDIMETHYLAMMONIUM CHLORIDE", "CASNumber" : "68002-59-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3a2" }, "ChemicalName" : "(C6-C12) ALKYL ALCOHOL", "CASNumber" : "68603-15-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3a3" }, "ChemicalName" : "(C6-C12) ALKYLCARBOXYLIC ACID METHYL ESTER", "CASNumber" : "67762-39-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3a4" }, "ChemicalName" : "(C8-C18 AND C18)UNSATURATED ALKYL CARBOXYLIC ACID, POTASSIUM SALT", "CASNumber" : "67701-09-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3a5" }, "ChemicalName" : "(C8-C18) AND (C18) UNSATURATED ALKYLCARBOXYLIC ACID SODIUM SALT", "CASNumber" : "67701-10-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3a6" }, "ChemicalName" : "CACODYLIC ACID", "CASNumber" : "75-60-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3a7" }, "ChemicalName" : "CADMIUM CARBONATE", "CASNumber" : "513-78-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3a8" }, "ChemicalName" : "CADMIUM CHLORIDE", "CASNumber" : "10108-64-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3a9" }, "ChemicalName" : "CADRE", "CASNumber" : "104098-49-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3aa" }, "ChemicalName" : "CALCIUM ARSENATE [2ASH3O4.2CA]", "CASNumber" : "7778-44-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3ab" }, "ChemicalName" : "CALCIUM CARBONATE", "CASNumber" : "471-34-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3ac" }, "ChemicalName" : "CALCIUM CHLORIDE (CACL2)", "CASNumber" : "10043-52-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3ad" }, "ChemicalName" : "CALCIUM CYANAMIDE", "CASNumber" : "156-62-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3ae" }, "ChemicalName" : "CALCIUM CYANIDE", "CASNumber" : "592-01-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3af" }, "ChemicalName" : "CALCIUM HYDROXIDE", "CASNumber" : "1305-62-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3b0" }, "ChemicalName" : "CALCIUM HYPOCHLORITE", "CASNumber" : "7778-54-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3b1" }, "ChemicalName" : "CALCIUM OXIDE", "CASNumber" : "1305-78-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3b2" }, "ChemicalName" : "CALCIUM OXYTETRACYCLINE", "CASNumber" : "7179-50-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3b3" }, "ChemicalName" : "CALCIUM SILICATE", "CASNumber" : "10101-39-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3b4" }, "ChemicalName" : "CALCIUM SILICATE", "CASNumber" : "1344-95-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3b5" }, "ChemicalName" : "CALCIUM SULFATE", "CASNumber" : "7778-18-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3b6" }, "ChemicalName" : "CALCIUM SULFIDE (CA(SX))", "CASNumber" : "1344-81-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3b7" }, "ChemicalName" : "CALCIUM THIOSULFATE", "CASNumber" : "10124-41-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3b8" }, "ChemicalName" : "CAMPHECHLOR", "CASNumber" : "8001-35-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3b9" }, "ChemicalName" : "CAMPHOR", "CASNumber" : "76-22-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3ba" }, "ChemicalName" : "CAPRIC ACID", "CASNumber" : "334-48-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3bb" }, "ChemicalName" : "CAPRYLIC ACID", "CASNumber" : "124-07-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3bc" }, "ChemicalName" : "CAPSAICIN", "CASNumber" : "404-86-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3bd" }, "ChemicalName" : "CAPTAN", "CASNumber" : "133-06-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3be" }, "ChemicalName" : "CARBAMIC ACID, 1H-BENZIMIDAZOL-2-YL, 2-(ETHOXYETHOXY)ETHYL ESTER", "CASNumber" : "62732-91-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3bf" }, "ChemicalName" : "CARBAMIC ACID, 1H-BENZIMIDAZOL-2-YL-, METHYL ESTER, PHOSPHATE (1:1)", "CASNumber" : "52316-55-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3c0" }, "ChemicalName" : "CARBAMIC ACID, [(4-AMINOPHENYL)SULFONYL]-, METHYL ESTER, MONOSODIUM SALT", "CASNumber" : "2302-17-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3c1" }, "ChemicalName" : "CARBARYL", "CASNumber" : "63-25-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3c2" }, "ChemicalName" : "CARBENDAZIM", "CASNumber" : "10605-21-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3c3" }, "ChemicalName" : "CARBOFURAN", "CASNumber" : "1563-66-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3c4" }, "ChemicalName" : "CARBON", "CASNumber" : "7440-44-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3c5" }, "ChemicalName" : "CARBON DIOXIDE", "CASNumber" : "124-38-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3c6" }, "ChemicalName" : "CARBON DISULFIDE", "CASNumber" : "75-15-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3c7" }, "ChemicalName" : "CARBON TETRACHLORIDE", "CASNumber" : "56-23-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3c8" }, "ChemicalName" : "CARBONIC ACID, AMMONIUM COPPER SALT", "CASNumber" : "33113-08-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3c9" }, "ChemicalName" : "CARBONIC ACID, COPPER(2+) SALT (1:1)", "CASNumber" : "1184-64-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3ca" }, "ChemicalName" : "CARBOPHENOTHION", "CASNumber" : "786-19-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3cb" }, "ChemicalName" : "CARBOXIN", "CASNumber" : "5234-68-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3cc" }, "ChemicalName" : "(((CARBOXYMETHYL)IMINO)BIS(ETHYLENENITRILO))TETRAACETIC ACID, PENTASODIUM SALT", "CASNumber" : "140-01-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3cd" }, "ChemicalName" : "CARFENTRAZONE-ETHYL", "CASNumber" : "128639-02-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3ce" }, "ChemicalName" : "CASTOR OIL", "CASNumber" : "8001-79-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3cf" }, "ChemicalName" : "CAUSTIC SODA", "CASNumber" : "1310-73-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3d0" }, "ChemicalName" : "CEDARWOOD OIL", "CASNumber" : "8000-27-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3d1" }, "ChemicalName" : "CETYLDIMETHYLETHYLAMMONIUM BROMIDE", "CASNumber" : "124-03-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3d2" }, "ChemicalName" : "CHEMICAL OIL (COAL)", "CASNumber" : "65996-82-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3d3" }, "ChemicalName" : "CHINOMETHIONAT (6-METHYL-1,3-DITHIOLO[4,5-B]QUINOX", "CASNumber" : "196869" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3d4" }, "ChemicalName" : "CHITIN", "CASNumber" : "1398-61-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3d5" }, "ChemicalName" : "CHITOSAN", "CASNumber" : "9012-76-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3d6" }, "ChemicalName" : "4-CHLOR-M-CRESOL", "CASNumber" : "59-50-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3d7" }, "ChemicalName" : "CHLORBROMURON (MALORAN)", "CASNumber" : "13360-45-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3d8" }, "ChemicalName" : "CHLORDANE", "CASNumber" : "57-74-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3d9" }, "ChemicalName" : "CHLORDIMEFORM", "CASNumber" : "6164-98-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3da" }, "ChemicalName" : "CHLORETHOXYFOS (FORTRESS)", "CASNumber" : "54593-83-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3db" }, "ChemicalName" : "CHLORFENAC (+ SALTS)", "CASNumber" : "85-34-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3dc" }, "ChemicalName" : "CHLORFENAPYR (PIRATE)", "CASNumber" : "122453-73-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3dd" }, "ChemicalName" : "CHLORFENVINFOS", "CASNumber" : "470-90-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3de" }, "ChemicalName" : "CHLORFLURECOL METHYL ESTER", "CASNumber" : "2536-31-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3df" }, "ChemicalName" : "CHLORHYDRIN", "CASNumber" : "96-24-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3e0" }, "ChemicalName" : "CHLORIDAZON", "CASNumber" : "1698-60-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3e1" }, "ChemicalName" : "CHLORIMURON ETHYL", "CASNumber" : "90982-32-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3e2" }, "ChemicalName" : "CHLORINATED TRISODIUM PHOSPHATE", "CASNumber" : "56802-99-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3e3" }, "ChemicalName" : "CHLORINE", "CASNumber" : "7782-50-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3e4" }, "ChemicalName" : "CHLORINE DIOXIDE", "CASNumber" : "10049-04-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3e5" }, "ChemicalName" : "CHLORMEQUAT CHLORIDE", "CASNumber" : "999-81-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3e6" }, "ChemicalName" : "4-CHLORO-2-CYCLOPENTYLPHENOL", "CASNumber" : "13347-42-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3e7" }, "ChemicalName" : "(+-)-2-(4-CHLORO-2-METHYLPHENOXY)PROPIONIC ACID", "CASNumber" : "7085-19-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3e8" }, "ChemicalName" : "1-CHLORO-2-NITROPROPANE", "CASNumber" : "2425-66-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3e9" }, "ChemicalName" : "4-CHLORO-3,5-XYLENOL", "CASNumber" : "88-04-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3ea" }, "ChemicalName" : "2-CHLORO-N,N-DI-2-PROPENYLACETAMIDE", "CASNumber" : "93-71-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3eb" }, "ChemicalName" : "(4-CHLORO-O-TOLYLOXY)BUTYRIC ACID", "CASNumber" : "94-81-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3ec" }, "ChemicalName" : "3-CHLORO-P-TOLUIDINE", "CASNumber" : "7745-89-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3ed" }, "ChemicalName" : "1-(3-CHLOROALLYL)-3,5,7-TRIAZA-1-AZONIAADAMANTANE CHLORIDE", "CASNumber" : "4080-31-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3ee" }, "ChemicalName" : "CHLOROBENZENE", "CASNumber" : "108-90-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3ef" }, "ChemicalName" : "CHLOROBENZILATE", "CASNumber" : "510-15-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3f0" }, "ChemicalName" : "1-(2-(2-CHLOROETHOXY)PHENYLSULFONYL)-3-(4-METHOXY-6-METHYL-1,3,5-- TRIAZIN-2-YL)UREA (IUPAC)", "CASNumber" : "82097-50-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3f1" }, "ChemicalName" : "CHLOROFORM", "CASNumber" : "67-66-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3f2" }, "ChemicalName" : "CHLORONEB", "CASNumber" : "2675-77-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3f3" }, "ChemicalName" : "CHLOROPHACINONE", "CASNumber" : "3691-35-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3f4" }, "ChemicalName" : "2-CHLOROPHENOL", "CASNumber" : "95-57-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3f5" }, "ChemicalName" : "(4-CHLOROPHENOXY)ACETIC ACID", "CASNumber" : "122-88-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3f6" }, "ChemicalName" : "CHLOROPICRIN", "CASNumber" : "76-06-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3f7" }, "ChemicalName" : "CHLOROPROPHAM", "CASNumber" : "101-21-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3f8" }, "ChemicalName" : "CHLOROPROPYLATE", "CASNumber" : "1437871" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3f9" }, "ChemicalName" : "CHLOROTHALONIL", "CASNumber" : "1897-45-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3fa" }, "ChemicalName" : "CHLOROXURON", "CASNumber" : "1982-47-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3fb" }, "ChemicalName" : "CHLORPYRIFOS", "CASNumber" : "2921-88-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3fc" }, "ChemicalName" : "CHLORPYRIFOS METHYL", "CASNumber" : "5598-13-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3fd" }, "ChemicalName" : "CHLORSULFURON", "CASNumber" : "64902-72-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3fe" }, "ChemicalName" : "CHOLECALCIFEROL", "CASNumber" : "67-97-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d3ff" }, "ChemicalName" : "CHROMIC ACID", "CASNumber" : "7738-94-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d400" }, "ChemicalName" : "CHROMIC ACID (H2CR2O7), DISODIUM SALT ,DIHYDRATE", "CASNumber" : "7789-12-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d401" }, "ChemicalName" : "CHROMIUM TRIOXIDE", "CASNumber" : "1333-82-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d402" }, "ChemicalName" : "CITRIC ACID", "CASNumber" : "77-92-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d403" }, "ChemicalName" : "CLETHODIM (SELECT HERBACIDE)", "CASNumber" : "99129-21-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d404" }, "ChemicalName" : "CLODINAFOP-PROPARGYL", "CASNumber" : "105512-06-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d405" }, "ChemicalName" : "CLOFENTEZINE", "CASNumber" : "74115-24-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d406" }, "ChemicalName" : "CLOMAZONE (DIMETHAZONE)", "CASNumber" : "81777-89-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d407" }, "ChemicalName" : "CLONITRALID", "CASNumber" : "1420-04-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d408" }, "ChemicalName" : "CLOPROP (+ SALTS) (FRUITONE)", "CASNumber" : "53404-22-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d409" }, "ChemicalName" : "CLOPYRALID (LONTREL)", "CASNumber" : "1702-17-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d40a" }, "ChemicalName" : "CLORANSULAM-METHL (XDE-565)", "CASNumber" : "147150-35-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d40b" }, "ChemicalName" : "COAL TARS", "CASNumber" : "8007-45-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d40c" }, "ChemicalName" : "COBALT NAPHTHENATE", "CASNumber" : "61789-51-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d40d" }, "ChemicalName" : "(COCO ALKYL)DIETHANOLAMIDES", "CASNumber" : "68603-42-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d40e" }, "ChemicalName" : "COCOA FATTY ACIDS, POTASSIUM SALTS", "CASNumber" : "61789-30-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d40f" }, "ChemicalName" : "COCONUT FATTY ACID, SODIUM SALT", "CASNumber" : "61789-31-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d410" }, "ChemicalName" : "COMPOUND 105", "CASNumber" : "137-16-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d411" }, "ChemicalName" : "COPPER", "CASNumber" : "7440-50-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d412" }, "ChemicalName" : "COPPER (11)-8-HYDROXYQUINOLINE", "CASNumber" : "10380-28-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d413" }, "ChemicalName" : "COPPER (I) CHLORIDE", "CASNumber" : "7758-89-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d414" }, "ChemicalName" : "COPPER ARSENATE", "CASNumber" : "10103-61-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d415" }, "ChemicalName" : "COPPER CARBONATE (BASIC)", "CASNumber" : "12069-69-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d416" }, "ChemicalName" : "COPPER CHLORIDE HYDROXIDE (CU2CL(OH)3)", "CASNumber" : "1332-65-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d417" }, "ChemicalName" : "COPPER CHLORIDE HYDROXIDE (CU2CL(OH)3), MIXT. WITH COPPER HYDROXIDE SULFATE (CU4(OH)6(SO4))", "CASNumber" : "8012-69-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d418" }, "ChemicalName" : "COPPER CHLORIDE OXIDE, HYDRATE", "CASNumber" : "1332-40-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d419" }, "ChemicalName" : "COPPER NAPHTHENATE", "CASNumber" : "1338-02-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d41a" }, "ChemicalName" : "COPPER OXIDE", "CASNumber" : "1317-38-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d41b" }, "ChemicalName" : "COPPER ZINC HYDROXIDE SULFATE", "CASNumber" : "55072-57-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d41c" }, "ChemicalName" : "COPPER(2 ), TETRAAMINE-", "CASNumber" : "16828-95-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d41d" }, "ChemicalName" : "COPPER, BIS(2-AMINOETHANOLATO-N,O)-", "CASNumber" : "14215-52-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d41e" }, "ChemicalName" : "COPPER, BIS(D-GLUCONATO-O1,O2)-", "CASNumber" : "527-09-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d41f" }, "ChemicalName" : "COPPER, [[2,2,2-NITRILOTRIS[ETHANOLATO]](2-)-N,O,O,O]-", "CASNumber" : "82027-59-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d420" }, "ChemicalName" : "COTTON OIL", "CASNumber" : "8001-29-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d421" }, "ChemicalName" : "COUMAFURYL (FUMARIN)", "CASNumber" : "117-52-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d422" }, "ChemicalName" : "COUMAPHOS", "CASNumber" : "56-72-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d423" }, "ChemicalName" : "CREOSOTES", "CASNumber" : "8001-58-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d424" }, "ChemicalName" : "CRESOL (MIXED ISOMERS)", "CASNumber" : "1319-77-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d425" }, "ChemicalName" : "CROTOXYPHOS", "CASNumber" : "7700-17-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d426" }, "ChemicalName" : "CRUDE LIGHT OIL (COAL)", "CASNumber" : "65996-78-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d427" }, "ChemicalName" : "CRUFOMATE", "CASNumber" : "299-86-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d428" }, "ChemicalName" : "CRYOLITE", "CASNumber" : "15096-52-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d429" }, "ChemicalName" : "CUPRIC (II) OXALATE", "CASNumber" : "814-91-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d42a" }, "ChemicalName" : "CUPRIC ACETOARSENITE", "CASNumber" : "12002-03-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d42b" }, "ChemicalName" : "CUPRIC HYDROXIDE", "CASNumber" : "20427-59-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d42c" }, "ChemicalName" : "CUPRIC NITRATE", "CASNumber" : "3251-23-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d42d" }, "ChemicalName" : "CUPRIC SULFATE", "CASNumber" : "7758-98-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d42e" }, "ChemicalName" : "CUPRIETHYLENE-DIAMINE SOLUTION", "CASNumber" : "13426-91-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d42f" }, "ChemicalName" : "CUPROUS OXIDE", "CASNumber" : "1317-39-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d430" }, "ChemicalName" : "CUPROUS THIOCYANATE", "CASNumber" : "1111-67-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d431" }, "ChemicalName" : "CYANAMIDE", "CASNumber" : "420-04-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d432" }, "ChemicalName" : "CYANAZINE", "CASNumber" : "21725-46-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d433" }, "ChemicalName" : "CYANURIC ACID", "CASNumber" : "108-80-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d434" }, "ChemicalName" : "CYCLANILIDE", "CASNumber" : "113136-77-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d435" }, "ChemicalName" : "CYCLOATE", "CASNumber" : "1134-23-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d436" }, "ChemicalName" : "CYCLOBUTANEETHANOL, 1-METHYL-2-(1-METHYLETHENYL)-, (1R-CIS)-", "CASNumber" : "26532-22-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d437" }, "ChemicalName" : "CYCLOHEXANE", "CASNumber" : "110-82-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d438" }, "ChemicalName" : "CYCLOHEXANOL, 5-METHYL-2-(1-METHYLETHYL)-", "CASNumber" : "1490-04-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d439" }, "ChemicalName" : "CYCLOHEXANONE", "CASNumber" : "108-94-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d43a" }, "ChemicalName" : "CYCLOHEXIMIDE", "CASNumber" : "66-81-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d43b" }, "ChemicalName" : "CYCLOPROPANECARBOXYLIC ACID, 2,2-DIMETHYL-3-(2-METHYL-1-PROPENYL)-, 2-METHYL-4-OXO-3-(2-PROPENYL)-2-", "CASNumber" : "42534-61-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d43c" }, "ChemicalName" : "CYCLOPROPANECARBOXYLIC ACID, 2,2-DIMETHYL-3-(2-METHYL-1-PROPENYL)-, 2-METHYL-4-OXO-3-(2-PROPENYL)-2-", "CASNumber" : "28434-00-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d43d" }, "ChemicalName" : "CYCLOPROPANECARBOXYLIC ACID, 2,2-DIMETHYL-3-(2-METHYL-1-PROPENYL)-, CYANO(3-PHENOXYPHENYL)METHYL EST", "CASNumber" : "39515-40-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d43e" }, "ChemicalName" : "CYFLUTHRIN", "CASNumber" : "68359-37-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d43f" }, "ChemicalName" : "CYHALOFOP BUTYL", "CASNumber" : "122008-85-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d440" }, "ChemicalName" : "CYHALOTHRIN K", "CASNumber" : "91465-08-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d441" }, "ChemicalName" : "CYMOXANIL", "CASNumber" : "57966-95-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d442" }, "ChemicalName" : "CYPERMETHRIN", "CASNumber" : "52315-07-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d443" }, "ChemicalName" : "CYPRAZINE", "CASNumber" : "22936-86-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d444" }, "ChemicalName" : "CYPROCONAZOLE (SAN 619F)", "CASNumber" : "94361-06-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d445" }, "ChemicalName" : "CYPRODINIL", "CASNumber" : "121552-61-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d446" }, "ChemicalName" : "CYROMAZINE", "CASNumber" : "66215-27-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d447" }, "ChemicalName" : "2,4-D", "CASNumber" : "94-75-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d448" }, "ChemicalName" : "2,4-D 2-ETHYL-4-METHYLPENTYL ESTER", "CASNumber" : "53404-37-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d449" }, "ChemicalName" : "2,4-D 2-ETHYLHEXYL ESTER", "CASNumber" : "1928-43-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d44a" }, "ChemicalName" : "2,4-D BUTOXYETHYL ESTER", "CASNumber" : "1929-73-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d44b" }, "ChemicalName" : "2,4-D BUTYL ESTER", "CASNumber" : "94-80-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d44c" }, "ChemicalName" : "2,4-D PROPYLENE GLYCOL BUTYL ETHER ESTER", "CASNumber" : "1320-18-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d44d" }, "ChemicalName" : "2,4-D SODIUM SALT", "CASNumber" : "2702-72-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d44e" }, "ChemicalName" : "2,4-D, ISOOCTYL ESTER", "CASNumber" : "25168-26-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d44f" }, "ChemicalName" : "2,4-D, ISOPROPYL ESTER", "CASNumber" : "94-11-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d450" }, "ChemicalName" : "D-STREPTAMINE, O-2-DEOXY-2-(METHYLAMINO)- .ALPHA. -L-GLUCOPYRANOSYL-(1.FWDARW.2)-O-5-DEOXY-3-C-FORMY", "CASNumber" : "298-39-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d451" }, "ChemicalName" : "D-TRANS-ALLETHRIN", "CASNumber" : "28057-48-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d452" }, "ChemicalName" : "DAMINOZIDE", "CASNumber" : "1596-84-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d453" }, "ChemicalName" : "DASANIT", "CASNumber" : "115-90-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d454" }, "ChemicalName" : "DAZOMET", "CASNumber" : "533-74-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d455" }, "ChemicalName" : "2,4-DB", "CASNumber" : "94-82-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d456" }, "ChemicalName" : "DDT", "CASNumber" : "50-29-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d457" }, "ChemicalName" : "1-DECANAMINIUM, N,N-DIMETHYL-N-OCTYL-, CHLORIDE", "CASNumber" : "32426-11-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d458" }, "ChemicalName" : "1-DECANAMINIUM, N-DECYL-N-METHYL-N-[3-(TRIMETHOXYSILYL)PROPYL]-, CHLORIDE", "CASNumber" : "68959-20-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d459" }, "ChemicalName" : "1-DECANAMINIUM, N-ISONONYL-N,N-DIMETHYL-, CHLORIDE", "CASNumber" : "138698-36-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d45a" }, "ChemicalName" : "DECANEDIOIC ACID, CADMIUM SALT (1:1)", "CASNumber" : "940961" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d45b" }, "ChemicalName" : "1-DECANOL", "CASNumber" : "112-30-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d45c" }, "ChemicalName" : "5-DECEN-1-OL, (E)-", "CASNumber" : "56578-18-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d45d" }, "ChemicalName" : "5-DECEN-1-OL, ACETATE, (E)-", "CASNumber" : "38421-90-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d45e" }, "ChemicalName" : "DEET", "CASNumber" : "134-62-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d45f" }, "ChemicalName" : "DEHYDROABIETYLAMINE ACETATE", "CASNumber" : "2026-24-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d460" }, "ChemicalName" : "DEHYDROABIETYLAMINE ETHYLENE OXIDE", "CASNumber" : "51344-62-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d461" }, "ChemicalName" : "DELTAMETHRIN (DECA-)", "CASNumber" : "52918-63-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d462" }, "ChemicalName" : "DEMETON", "CASNumber" : "8065-48-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d463" }, "ChemicalName" : "DENATONIUM BENZOATE", "CASNumber" : "3734-33-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d464" }, "ChemicalName" : "DEODORIZER DISTILLATE", "CASNumber" : "68476-80-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d465" }, "ChemicalName" : "DESMEDIPHAM", "CASNumber" : "13684-56-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d466" }, "ChemicalName" : "DEXTRIN", "CASNumber" : "9004-53-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d467" }, "ChemicalName" : "2,6-DI-TERT-BUTYL-P-CRESOL", "CASNumber" : "128-37-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d468" }, "ChemicalName" : "DIACETONE ALCOHOL", "CASNumber" : "123-42-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d469" }, "ChemicalName" : "DIALLATE", "CASNumber" : "2303-16-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d46a" }, "ChemicalName" : "DIAMMONIUM EDTA", "CASNumber" : "20824-56-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d46b" }, "ChemicalName" : "DIAZINON", "CASNumber" : "333-41-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d46c" }, "ChemicalName" : "DIBENZOTHIAZINE", "CASNumber" : "92-84-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d46d" }, "ChemicalName" : "1,2-DIBROMO-3-CHLOROPROPANE (DBCP)", "CASNumber" : "96-12-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d46e" }, "ChemicalName" : "2,2-DIBROMO-3-NITRILOPROPIONAMIDE", "CASNumber" : "10222-01-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d46f" }, "ChemicalName" : "1,2-DIBROMOETHANE", "CASNumber" : "106-93-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d470" }, "ChemicalName" : "3,5-DIBROMOSALICYLANILIDE", "CASNumber" : "2577-72-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d471" }, "ChemicalName" : "DIBUTYL PHTHALATE", "CASNumber" : "84-74-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d472" }, "ChemicalName" : "DICAMBA", "CASNumber" : "1918-00-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d473" }, "ChemicalName" : "DICHLOBENIL", "CASNumber" : "1194-65-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d474" }, "ChemicalName" : "DICHLOFENTHION", "CASNumber" : "97-17-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d475" }, "ChemicalName" : "DICHLONE", "CASNumber" : "117-80-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d476" }, "ChemicalName" : "2,2-DICHLOR0PROPIONIC ACID", "CASNumber" : "75-99-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d477" }, "ChemicalName" : "DICHLORAN", "CASNumber" : "99-30-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d478" }, "ChemicalName" : "DICHLORFLURECOL-METHYL", "CASNumber" : "21634-96-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d479" }, "ChemicalName" : "3,6-DICHLORO-2-PYRIDINECARBOXYLIC ACID, MONOETHANOLAMINE SALT", "CASNumber" : "57754-85-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d47a" }, "ChemicalName" : "1,3-DICHLORO-5,5-DIMETHYL-HYDANTOIN", "CASNumber" : "118-52-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d47b" }, "ChemicalName" : "DICHLOROBENZALKONIUM CHLORIDE", "CASNumber" : "8023-53-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d47c" }, "ChemicalName" : "1,2-DICHLOROBENZENE", "CASNumber" : "95-50-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d47d" }, "ChemicalName" : "1,4-DICHLOROBENZENE", "CASNumber" : "106-46-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d47e" }, "ChemicalName" : "(3,4-DICHLOROBENZYL)DODECYLDIMETHYLAMMONIUM CHLORIDE", "CASNumber" : "102-30-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d47f" }, "ChemicalName" : "DICHLORODIFLUOROMETHANE", "CASNumber" : "75-71-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d480" }, "ChemicalName" : "1,2-DICHLOROETHANE", "CASNumber" : "107-06-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d481" }, "ChemicalName" : "DICHLOROISOCYANURIC ACID", "CASNumber" : "2782-57-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d482" }, "ChemicalName" : "DICHLOROMETHANE", "CASNumber" : "75-09-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d483" }, "ChemicalName" : "DICHLOROPHENE", "CASNumber" : "97-23-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d484" }, "ChemicalName" : "1,2-DICHLOROPROPANE", "CASNumber" : "78-87-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d485" }, "ChemicalName" : "2,3-DICHLOROPROPENE", "CASNumber" : "78-88-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d486" }, "ChemicalName" : "1,3-DICHLOROPROPENE (MIXED ISOMERS)", "CASNumber" : "542-75-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d487" }, "ChemicalName" : "DICHLORVOS", "CASNumber" : "62-73-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d488" }, "ChemicalName" : "DICLOFOP METHYL", "CASNumber" : "51338-27-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d489" }, "ChemicalName" : "DICLOSULAM", "CASNumber" : "145701-21-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d48a" }, "ChemicalName" : "DICOFOL", "CASNumber" : "115-32-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d48b" }, "ChemicalName" : "DIDECYLDIMETHYLAMMONIUM CHLORIDE", "CASNumber" : "7173-51-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d48c" }, "ChemicalName" : "DIELDRIN", "CASNumber" : "60-57-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d48d" }, "ChemicalName" : "DIENOCHLOR", "CASNumber" : "2227-17-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d48e" }, "ChemicalName" : "DIETHATYL ETHYL", "CASNumber" : "38727-55-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d48f" }, "ChemicalName" : "DIETHYLENE GLYCOL MONOMETHYL ETHER", "CASNumber" : "111-77-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d490" }, "ChemicalName" : "DIFENOCONAZOLE (DIVIDEND)", "CASNumber" : "119446-68-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d491" }, "ChemicalName" : "DIFETHIALONE", "CASNumber" : "104653-34-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d492" }, "ChemicalName" : "DIFLUBENZURON", "CASNumber" : "35367-38-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d493" }, "ChemicalName" : "DIFLUFENZOPYR", "CASNumber" : "109293-97-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d494" }, "ChemicalName" : "DIFLUFENZOPYR-SODIUM", "CASNumber" : "109293-98-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d495" }, "ChemicalName" : "1,2-DIHYDRO-2,2,4-TRIMETHYL-6-ETHOXYQUINOLINE", "CASNumber" : "91-53-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d496" }, "ChemicalName" : "(+-)-2-(4,5-DIHYDRO-4-METHYL-4(1-METHYLETHYL)-5-OXO-1H-IMIDAZOL-2- YL)-5-ETHYL-3-PYRIDINECARBOXYLIC ", "CASNumber" : "81335-77-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d497" }, "ChemicalName" : "2-(4,5-DIHYDRO-4-METHYL-4-(1-METHYLETHYL)-5-OXO-1H-IMIDAZOL-2-YL)- -3-QUINOLINECARBOXYLIC ACID", "CASNumber" : "81335-37-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d498" }, "ChemicalName" : "2,2-DIHYDROXY-3,3-DIMETHYL-5,5-DICHLORODIPHENYL SULFIDE", "CASNumber" : "4418-66-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d499" }, "ChemicalName" : "DIISOBUTYL KETONE;2,6-DIMETHYL-4-HEPTONE", "CASNumber" : "108-83-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d49a" }, "ChemicalName" : "DIMETHAMETRYN", "CASNumber" : "22936-75-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d49b" }, "ChemicalName" : "DIMETHENAMID (SAN 582H)", "CASNumber" : "87674-68-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d49c" }, "ChemicalName" : "DIMETHIPIN", "CASNumber" : "55290-64-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d49d" }, "ChemicalName" : "DIMETHOATE", "CASNumber" : "60-51-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d49e" }, "ChemicalName" : "DIMETHOMORPH", "CASNumber" : "110488-70-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d49f" }, "ChemicalName" : "DIMETHOXANE", "CASNumber" : "828-00-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4a0" }, "ChemicalName" : "2,6-DIMETHOXY-N-(3-(1-ETHYL-1-METHYLPROPYL)-5-ISOXAZOLYL)BENZAMID- E", "CASNumber" : "82558-50-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4a1" }, "ChemicalName" : "DIMETHRIN", "CASNumber" : "70-38-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4a2" }, "ChemicalName" : "DIMETHYL PHTHALATE", "CASNumber" : "131-11-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4a3" }, "ChemicalName" : "DIMETHYL TETRACHLOROTEREPHTHALATE", "CASNumber" : "1861-32-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4a4" }, "ChemicalName" : "2,6-DIMETHYL-2-OCTEN-8-OL", "CASNumber" : "106-22-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4a5" }, "ChemicalName" : "1,2-DIMETHYL-3,5-DIPHENYL-1-H-PYRAZOLIUM METHYL SULFATE", "CASNumber" : "43222-48-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4a6" }, "ChemicalName" : "DIMETHYLAMINE DICAMBA", "CASNumber" : "2300-66-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4a7" }, "ChemicalName" : "1,1-DIMETHYLETHYL HYDROPEROXIDE", "CASNumber" : "75-91-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4a8" }, "ChemicalName" : "DIMETHYLNAPHTHALENE", "CASNumber" : "28804-88-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4a9" }, "ChemicalName" : "DIMETHYLOXAZOLIDINE, 4,4-", "CASNumber" : "51200-87-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4aa" }, "ChemicalName" : "2,4-DIMETHYLPHENOL", "CASNumber" : "105-67-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4ab" }, "ChemicalName" : "DIMETILAN", "CASNumber" : "644-64-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4ac" }, "ChemicalName" : "DINITRAMINE", "CASNumber" : "29091-05-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4ad" }, "ChemicalName" : "1,3-DINITRO-4-CHLOROBENZENE", "CASNumber" : "97-00-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4ae" }, "ChemicalName" : "2,6-DINITRO-N,N-DIPROPYL-4-ISOPROPYLANILINE", "CASNumber" : "33820-53-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4af" }, "ChemicalName" : "4,6-DINITRO-O-CRESOL", "CASNumber" : "534-52-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4b0" }, "ChemicalName" : "DINITROBUTYL PHENOL", "CASNumber" : "88-85-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4b1" }, "ChemicalName" : "2,4-DINITROPHENOL", "CASNumber" : "51-28-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4b2" }, "ChemicalName" : "DINOCAP", "CASNumber" : "39300-45-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4b3" }, "ChemicalName" : "DINOSEB, AMMONIUM SALT", "CASNumber" : "6365-83-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4b4" }, "ChemicalName" : "1,3,2-DIOXABORINANE, 2,2-OXYBIS[4,4,6-TRIMETHYL-", "CASNumber" : "14697-50-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4b5" }, "ChemicalName" : "1,3,2-DIOXABORINANE, 2,2-[(1-METHYL-1,3-PROPANEDIYL)BIS(OXY)]BIS[4-METHYL-", "CASNumber" : "2665-13-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4b6" }, "ChemicalName" : "DIPENTENE", "CASNumber" : "138-86-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4b7" }, "ChemicalName" : "DIPHACINONE", "CASNumber" : "82-66-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4b8" }, "ChemicalName" : "DIPHENAMID", "CASNumber" : "957-51-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4b9" }, "ChemicalName" : "DIPHENYLAMINE", "CASNumber" : "122-39-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4ba" }, "ChemicalName" : "DIPHENYLSTIBINE 2-ETHYLHEXOATE", "CASNumber" : "5035-58-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4bb" }, "ChemicalName" : "DIPOTASSIUM ENDOTHALL", "CASNumber" : "2164-07-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4bc" }, "ChemicalName" : "DIPROPETRYN", "CASNumber" : "4147-51-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4bd" }, "ChemicalName" : "DIPROPYL ISOCINCHOMERONATE", "CASNumber" : "136-45-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4be" }, "ChemicalName" : "DIPROPYLENE GLYCOL", "CASNumber" : "25265-71-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4bf" }, "ChemicalName" : "DIPROPYLENE GLYCOL MONOMETHYL ETHER", "CASNumber" : "34590-94-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4c0" }, "ChemicalName" : "DISODIUM CYANODITHIOIMIDOCARBONATE", "CASNumber" : "138-93-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4c1" }, "ChemicalName" : "DISODIUM METHANEARSONATE", "CASNumber" : "144-21-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4c2" }, "ChemicalName" : "DISODIUM PHOSPHATE", "CASNumber" : "7558-79-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4c3" }, "ChemicalName" : "DISTILLATES (PETROLEUM), HYDROTREATED (MILD) HEAVY PARAFFINIC (9CI)", "CASNumber" : "64742-54-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4c4" }, "ChemicalName" : "DISTILLATES (PETROLEUM), HYDROTREATED (MILD) LIGHT PARAFFINIC (9CI)", "CASNumber" : "64742-55-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4c5" }, "ChemicalName" : "DISTILLATES (PETROLEUM), SOLVENT-REFINED (MILD) HEAVY PARAFFINIC (9CI)", "CASNumber" : "64741-88-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4c6" }, "ChemicalName" : "DISTILLATES (PETROLEUM), SOLVENT-REFINED (MILD) LIGHT NAPHTHENIC (9CI)", "CASNumber" : "64741-97-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4c7" }, "ChemicalName" : "DISTILLATES (PETROLEUM), SOLVENT-REFINED (MILD) LIGHT PARAFFINIC (9CI)", "CASNumber" : "64741-89-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4c8" }, "ChemicalName" : "DISTILLATES, PETROLEUM, C12-30-AROM.", "CASNumber" : "68602-80-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4c9" }, "ChemicalName" : "DISTILLATES, WOOD TAR", "CASNumber" : "91995-59-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4ca" }, "ChemicalName" : "DISULFOTON", "CASNumber" : "298-04-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4cb" }, "ChemicalName" : "DITALIMFOS", "CASNumber" : "5131-24-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4cc" }, "ChemicalName" : "DITHIANON", "CASNumber" : "3347-22-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4cd" }, "ChemicalName" : "DITHIOPYR (MON 7200)", "CASNumber" : "97886-45-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4ce" }, "ChemicalName" : "DIURON", "CASNumber" : "330-54-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4cf" }, "ChemicalName" : "DMPA (ZYTRON)", "CASNumber" : "299-85-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4d0" }, "ChemicalName" : "8,10-DODECADIEN-1-OL, (E,E)-", "CASNumber" : "33956-49-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4d1" }, "ChemicalName" : "2,4-DODECADIENOIC ACID, 11-METHOXY-3,7,11-TRIMETHYL-, 1-METHYLETHYL ESTER, [S-(E,E)]-", "CASNumber" : "65733-16-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4d2" }, "ChemicalName" : "2,4-DODECADIENOIC ACID, 3,7,11-TRIMETHYL-, 2-PROPYNYL ESTER,[S-(E,E)]-", "CASNumber" : "65733-20-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4d3" }, "ChemicalName" : "2,4-DODECADIENOIC ACID, 3,7,11-TRIMETHYL-, ETHYL ESTER, [S-(E,E)]-", "CASNumber" : "65733-18-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4d4" }, "ChemicalName" : "1-DODECANAMINIUM, N,N,N-TRIMETHYL-, CHLORIDE", "CASNumber" : "112-00-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4d5" }, "ChemicalName" : "1-DODECANAMINIUM, N,N-DIMETHYL-N-OCTYL-, CHLORIDE", "CASNumber" : "10361-16-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4d6" }, "ChemicalName" : "DODECANOIC ACID, POTASSIUM SALT", "CASNumber" : "10124-65-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4d7" }, "ChemicalName" : "1-DODECANOL", "CASNumber" : "112-53-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4d8" }, "ChemicalName" : "2,6,10-DODECATRIEN-1-OL, 3,7,11-TRIMETHYL-", "CASNumber" : "4602-84-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4d9" }, "ChemicalName" : "1,6,10-DODECATRIEN-3-OL, 3,7,11-TRIMETHYL-", "CASNumber" : "7212-44-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4da" }, "ChemicalName" : "8-DODECEN-1-OL, (Z)-", "CASNumber" : "40642-40-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4db" }, "ChemicalName" : "DODECYL GUANIDINE HYDROCHLORIDE", "CASNumber" : "13590-97-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4dc" }, "ChemicalName" : "DODECYLBENZENESULFONIC ACID", "CASNumber" : "27176-87-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4dd" }, "ChemicalName" : "DODINE", "CASNumber" : "197143" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4de" }, "ChemicalName" : "2,4-DP", "CASNumber" : "120-36-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4df" }, "ChemicalName" : "DPX-M 6316", "CASNumber" : "79277-27-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4e0" }, "ChemicalName" : "(E)-3,7-DIMETHYL-2,6-OCTADIEN-1-OL", "CASNumber" : "106-24-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4e1" }, "ChemicalName" : "(E,E)-2,4-HEXADIENOIC ACID", "CASNumber" : "110-44-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4e2" }, "ChemicalName" : "E-8-DODECENYL ACETATE", "CASNumber" : "38363-29-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4e3" }, "ChemicalName" : "EDETATE SODIUM", "CASNumber" : "64-02-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4e4" }, "ChemicalName" : "EDETATE TRISODIUM", "CASNumber" : "150-38-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4e5" }, "ChemicalName" : "EMAMECTIN", "CASNumber" : "137512-74-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4e6" }, "ChemicalName" : "ENDOSULFAN", "CASNumber" : "115-29-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4e7" }, "ChemicalName" : "ENDOTHALL", "CASNumber" : "145-73-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4e8" }, "ChemicalName" : "ENDRIN", "CASNumber" : "72-20-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4e9" }, "ChemicalName" : "ENQUIK", "CASNumber" : "21351-39-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4ea" }, "ChemicalName" : "EPICHLOROHYDRIN", "CASNumber" : "106-89-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4eb" }, "ChemicalName" : "EPN", "CASNumber" : "2104-64-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4ec" }, "ChemicalName" : "ERBON", "CASNumber" : "136-25-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4ed" }, "ChemicalName" : "ESFENVALERATE", "CASNumber" : "66230-04-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4ee" }, "ChemicalName" : "ETHALFLURALIN", "CASNumber" : "55283-68-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4ef" }, "ChemicalName" : "ETHAMETSULFURON", "CASNumber" : "97780-06-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4f0" }, "ChemicalName" : "ETHANAMINE, 2-DECYLTHIO-, HYDROCHLORIDE", "CASNumber" : "36362-09-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4f1" }, "ChemicalName" : "ETHANOL", "CASNumber" : "64-17-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4f2" }, "ChemicalName" : "ETHANOL, 2-(3,3-DIMETHYLCYCLOHEXYLIDENE)-, (Z)-", "CASNumber" : "26532-23-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4f3" }, "ChemicalName" : "ETHANOL, 2-(HYDROXYMETHYLAMINO)-", "CASNumber" : "34375-28-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4f4" }, "ChemicalName" : "ETHEPHON", "CASNumber" : "16672-87-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4f5" }, "ChemicalName" : "ETHIOLATE", "CASNumber" : "2941-55-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4f6" }, "ChemicalName" : "ETHION", "CASNumber" : "563-12-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4f7" }, "ChemicalName" : "ETHOFENPROX (ETOFENPROX)", "CASNumber" : "80844-07-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4f8" }, "ChemicalName" : "ETHOFUMESATE", "CASNumber" : "26225-79-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4f9" }, "ChemicalName" : "ETHOPROP", "CASNumber" : "13194-48-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4fa" }, "ChemicalName" : "ETHYL ACETATE", "CASNumber" : "141-78-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4fb" }, "ChemicalName" : "ETHYL DIPROPYLTHIOCARBAMATE", "CASNumber" : "759-94-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4fc" }, "ChemicalName" : "ETHYL FORMATE", "CASNumber" : "109-94-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4fd" }, "ChemicalName" : "ETHYLENE", "CASNumber" : "74-85-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4fe" }, "ChemicalName" : "ETHYLENE GLYCOL", "CASNumber" : "107-21-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d4ff" }, "ChemicalName" : "ETHYLENE GLYCOL MONOBUTYL ETHER", "CASNumber" : "111-76-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d500" }, "ChemicalName" : "ETHYLENE GLYCOL MONOMETHYL ETHER", "CASNumber" : "109-86-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d501" }, "ChemicalName" : "ETHYLENE OXIDE", "CASNumber" : "75-21-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d502" }, "ChemicalName" : "ETHYLENE THIOUREA", "CASNumber" : "96-45-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d503" }, "ChemicalName" : "ETHYLENEDIAMINE", "CASNumber" : "107-15-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d504" }, "ChemicalName" : "ETHYLENEDIAMINE TETRAACETIC ACID (EDTA)", "CASNumber" : "60-00-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d505" }, "ChemicalName" : "(ETHYLENEDINITRILO)-TETRAACETIC ACID DISODIUM SALT", "CASNumber" : "139-33-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d506" }, "ChemicalName" : "EUGENOL", "CASNumber" : "97-53-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d507" }, "ChemicalName" : "FAMPHUR", "CASNumber" : "52-85-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d508" }, "ChemicalName" : "FENAMINOSULF (DIAZOBEN)", "CASNumber" : "140-56-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d509" }, "ChemicalName" : "FENAMIPHOS", "CASNumber" : "22224-92-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d50a" }, "ChemicalName" : "FENARIMOL", "CASNumber" : "60168-88-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d50b" }, "ChemicalName" : "FENBUCONAZOLE (FENETHANIL)", "CASNumber" : "114369-43-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d50c" }, "ChemicalName" : "FENBUTATIN OXIDE", "CASNumber" : "13356-08-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d50d" }, "ChemicalName" : "FENHEXAMID", "CASNumber" : "126833-17-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d50e" }, "ChemicalName" : "FENITROTHION", "CASNumber" : "122-14-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d50f" }, "ChemicalName" : "FENOXAPROP ETHYL(2-(4-((6-CHLORO-2-BENZOXAZOLYEN)OXY)PENOXY)PROPANIC ACID,ETHYL ESTER)", "CASNumber" : "66441-23-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d510" }, "ChemicalName" : "FENOXYCARB", "CASNumber" : "72490-01-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d511" }, "ChemicalName" : "FENPROPATHRIN", "CASNumber" : "39515-41-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d512" }, "ChemicalName" : "FENPRYROXIMATE", "CASNumber" : "134098-61-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d513" }, "ChemicalName" : "FENRIDAZON", "CASNumber" : "83588-43-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d514" }, "ChemicalName" : "FENTHION", "CASNumber" : "55-38-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d515" }, "ChemicalName" : "FENTICHLOR", "CASNumber" : "97-24-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d516" }, "ChemicalName" : "FENURON-TCA", "CASNumber" : "4482-55-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d517" }, "ChemicalName" : "FENVALERATE", "CASNumber" : "51630-58-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d518" }, "ChemicalName" : "FERBAM", "CASNumber" : "14484-64-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d519" }, "ChemicalName" : "FERRIC SULFATE", "CASNumber" : "10028-22-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d51a" }, "ChemicalName" : "FERROUS AMMONIUM SULFATE", "CASNumber" : "10045-89-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d51b" }, "ChemicalName" : "FIPRONIL", "CASNumber" : "120068-37-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d51c" }, "ChemicalName" : "FLUAZIFOP-BUTYL", "CASNumber" : "69806-50-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d51d" }, "ChemicalName" : "FLUAZINAM", "CASNumber" : "79622-59-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d51e" }, "ChemicalName" : "FLUCARBAZONE SODIUM", "CASNumber" : "181274-17-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d51f" }, "ChemicalName" : "FLUCHLORALIN", "CASNumber" : "33245-39-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d520" }, "ChemicalName" : "FLUCYTHRINATE", "CASNumber" : "70124-77-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d521" }, "ChemicalName" : "FLUDIOXONIL (MAXIM)", "CASNumber" : "131341-86-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d522" }, "ChemicalName" : "FLUMETRALIN", "CASNumber" : "62924-70-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d523" }, "ChemicalName" : "FLUMETSULAM (XRD-498)", "CASNumber" : "98967-40-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d524" }, "ChemicalName" : "FLUMICLORAC PENTYL", "CASNumber" : "87546-18-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d525" }, "ChemicalName" : "FLUMIOXAZIN", "CASNumber" : "103361-09-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d526" }, "ChemicalName" : "FLUOMETURON", "CASNumber" : "2164-17-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d527" }, "ChemicalName" : "FLUOROACETAMIDE", "CASNumber" : "640-19-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d528" }, "ChemicalName" : "FLUOROACETIC ACID, SODIUM SALT", "CASNumber" : "62-74-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d529" }, "ChemicalName" : "FLUORODIFEN", "CASNumber" : "15457-05-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d52a" }, "ChemicalName" : "FLUROXYPYR 1-METHYLHEPTYL ESTER", "CASNumber" : "81406-37-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d52b" }, "ChemicalName" : "FLUTHIACET-METHYL (ACTION)", "CASNumber" : "117337-19-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d52c" }, "ChemicalName" : "FLUVALINATE", "CASNumber" : "69409-94-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d52d" }, "ChemicalName" : "FLUVALINATE, TAU-", "CASNumber" : "102851-06-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d52e" }, "ChemicalName" : "FOLPET", "CASNumber" : "133-07-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d52f" }, "ChemicalName" : "FOMESAFEN", "CASNumber" : "72178-02-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d530" }, "ChemicalName" : "FOMESAFEN SODIUM (FLEX)", "CASNumber" : "108731-70-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d531" }, "ChemicalName" : "FONOFOS", "CASNumber" : "944-22-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d532" }, "ChemicalName" : "FORAMSULFURON", "CASNumber" : "173159-57-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d533" }, "ChemicalName" : "FORMALDEHYDE", "CASNumber" : "50-00-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d534" }, "ChemicalName" : "FORMETANATE HYDROCHLORIDE", "CASNumber" : "23422-53-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d535" }, "ChemicalName" : "FORMIC ACID", "CASNumber" : "64-18-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d536" }, "ChemicalName" : "FOSAMINE AMMONIUM", "CASNumber" : "25954-13-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d537" }, "ChemicalName" : "FOSETYL AL", "CASNumber" : "39148-24-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d538" }, "ChemicalName" : "FOSTHIAZATE", "CASNumber" : "98886-44-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d539" }, "ChemicalName" : "FOSTHIETAN", "CASNumber" : "21548-32-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d53a" }, "ChemicalName" : "FUMARIC ACID", "CASNumber" : "110-17-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d53b" }, "ChemicalName" : "GAMMA-LINDANE", "CASNumber" : "58-89-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d53c" }, "ChemicalName" : "GASOLINE", "CASNumber" : "8006-61-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d53d" }, "ChemicalName" : "GIBB-3-ENE-1,10-DICARBOXYLIC ACID, 2,4A,7-TRIHYDROXY-1-METHYL-8-METHYLENE-, 1,4A-LACTONE, MONOPOTASS", "CASNumber" : "125-67-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d53e" }, "ChemicalName" : "GIBB-3-ENE-1,10-DICARBOXYLIC ACID, 2,4A-DIHYDROXY-1-METHYL-8-METHYLENE- 1,4A-LACTONE MIXT. WITH GIBB", "CASNumber" : "8030-53-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d53f" }, "ChemicalName" : "GIBBERELLIC ACID", "CASNumber" : "77-06-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d540" }, "ChemicalName" : "GLUTARALDHYDE", "CASNumber" : "111-30-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d541" }, "ChemicalName" : "GLYCERIN MIST", "CASNumber" : "56-81-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d542" }, "ChemicalName" : "GLYCINE, N,N-1,2-ETHANEDIYLBIS[N-(CARBOXYMETHYL)-, TETRAPOTASSIUM SALT", "CASNumber" : "5964-35-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d543" }, "ChemicalName" : "GLYCINE, N-(HYDROXYMETHYL)-, MONOSODIUM SALT", "CASNumber" : "70161-44-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d544" }, "ChemicalName" : "GLYCINE, N-(PHOSPHINOMETHYL)-, AMMONIUM SALT", "CASNumber" : "114370-14-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d545" }, "ChemicalName" : "GLYCINE, N-(PHOSPHONOMETHYL)-, COMPD. WITH 2-PROPANAMINE (1:1)", "CASNumber" : "38641-94-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d546" }, "ChemicalName" : "GLYCINE, N-(PHOSPHONOMETHYL)-, SODIUM SALT (2:3)", "CASNumber" : "70393-85-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d547" }, "ChemicalName" : "GLYCOLIC ACID", "CASNumber" : "79-14-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d548" }, "ChemicalName" : "GLYCOLS, POLYETHYLENE, MONO(HYDROGEN SULFATE), DODECYL ETHER, SODIUM SALT", "CASNumber" : "9004-82-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d549" }, "ChemicalName" : "GLYODIN", "CASNumber" : "556-22-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d54a" }, "ChemicalName" : "GLYPHOSATE", "CASNumber" : "1071-83-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d54b" }, "ChemicalName" : "GLYPHOSATE TRIMESIUM", "CASNumber" : "81591-81-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d54c" }, "ChemicalName" : "GLYPHOSINE", "CASNumber" : "2439-99-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d54d" }, "ChemicalName" : "15H", "CASNumber" : "9003-29-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d54e" }, "ChemicalName" : "2(3H)-BENZOTHIAZOLETHIONE, SODIUM SALT", "CASNumber" : "2492-26-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d54f" }, "ChemicalName" : "2(3H)-BENZOTHIAZOLETHIONE, ZINC SALT", "CASNumber" : "155-04-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d550" }, "ChemicalName" : "2(3H)-FURANONE, 5-(1-DECENYL)DIHYDRO-, [R-(Z)]-", "CASNumber" : "64726-91-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d551" }, "ChemicalName" : "2(3H)-FURANONE, 5-HEPTYLDIHYDRO-", "CASNumber" : "104-67-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d552" }, "ChemicalName" : "2(3H)-FURANONE, DIHYDRO-5-PENTYL-", "CASNumber" : "104-61-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d553" }, "ChemicalName" : "3(2H)-ISOTHIAZOLONE, 4,5-DICHLORO-2-OCTYL-", "CASNumber" : "64359-81-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d554" }, "ChemicalName" : "1H,3H,5H-OXAZOLO[3,4-C]OXAZOLE, 7A-ETHYLDIHYDRO-", "CASNumber" : "7747-35-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d555" }, "ChemicalName" : "1H,3H,5H-OXAZOLO[3,4-C]OXAZOLE-7A(7H)-METHANOL", "CASNumber" : "6542-37-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d556" }, "ChemicalName" : "1H,7H-NAPHTHO[1,8-BC:4,4A-C]DIFURAN-5,10A(8H)-DICARBOXYLIC ACID, 10-(ACETYLOXY)-4-(HEXAHYDRO-6A-HYD", "CASNumber" : "108189-58-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d557" }, "ChemicalName" : "3H-1,2-DITHIOL-3-ONE, 4,5-DICHLORO-", "CASNumber" : "1192-52-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d558" }, "ChemicalName" : "2H-1,3-THIAZINE, TETRAHYDRO-2-(NITROMETHYLENE)-", "CASNumber" : "58842-20-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d559" }, "ChemicalName" : "1H-2,1,3-BENZOTHIADIAZIN-4(3H)-ONE, 3-(1-METHYLETHYL)-, 2,2-DIOXIDE, SODIUM SALT", "CASNumber" : "50723-80-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d55a" }, "ChemicalName" : "1H-INDENE-1,3(2H)-DIONE, 2-(2,2-DIMETHYL-1-OXOPROPYL)-, ION(1-), SODIUM", "CASNumber" : "6120-20-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d55b" }, "ChemicalName" : "1H-INDENE-1,3(2H)-DIONE, 2-(DIPHENYLACETYL)-, ION(1-), SODIUM", "CASNumber" : "42721-99-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d55c" }, "ChemicalName" : "1H-INDOLE", "CASNumber" : "120-72-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d55d" }, "ChemicalName" : "1H-INDOLE-3-BUTANETHIOIC ACID, S-PHENYL ESTER", "CASNumber" : "85977-73-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d55e" }, "ChemicalName" : "HAIMASED", "CASNumber" : "540-72-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d55f" }, "ChemicalName" : "HALOFENOZIDE", "CASNumber" : "112226-61-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d560" }, "ChemicalName" : "HALOSULFURON METHYL", "CASNumber" : "100784-20-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d561" }, "ChemicalName" : "HEAVY ALKYLATE HYDROCARBONS", "CASNumber" : "68919-17-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d562" }, "ChemicalName" : "HEPTACHLOR", "CASNumber" : "76-44-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d563" }, "ChemicalName" : "1-HEPTADECANECARBOXYLIC ACID", "CASNumber" : "57-11-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d564" }, "ChemicalName" : "HEPTANOIC ACID, 2,6-DIBROMO-4-CYANOPHENYL ESTER", "CASNumber" : "56634-95-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d565" }, "ChemicalName" : "HEXACHLOROBENZENE", "CASNumber" : "118-74-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d566" }, "ChemicalName" : "1,2,3,4,5,6-HEXACHLOROCYCLOHEXANE (MIXTURE OF ISOMERS)", "CASNumber" : "608-73-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d567" }, "ChemicalName" : "HEXACHLOROCYCLOPENTADIENE", "CASNumber" : "77-47-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d568" }, "ChemicalName" : "HEXACHLOROPHENE (HCP)", "CASNumber" : "70-30-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d569" }, "ChemicalName" : "7,11-HEXADECADIEN-1-OL, ACETATE", "CASNumber" : "50933-33-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d56a" }, "ChemicalName" : "7,11-HEXADECADIEN-1-OL, ACETATE, (E,Z)-", "CASNumber" : "53042-79-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d56b" }, "ChemicalName" : "7,11-HEXADECADIEN-1-OL, ACETATE, (Z,Z)-", "CASNumber" : "52207-99-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d56c" }, "ChemicalName" : "1-HEXADECANOL", "CASNumber" : "36653-82-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d56d" }, "ChemicalName" : "11-HEXADECENAL, (Z)-", "CASNumber" : "53939-28-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d56e" }, "ChemicalName" : "2,4-HEXADIENOIC ACID, POTASSIUM SALT, (2E,4E)-", "CASNumber" : "24634-61-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d56f" }, "ChemicalName" : "1,3-HEXANEDIOL, 2-ETHYL-", "CASNumber" : "94-96-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d570" }, "ChemicalName" : "1-HEXANOL", "CASNumber" : "111-27-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d571" }, "ChemicalName" : "1-HEXANOL, 2-ETHYL-", "CASNumber" : "104-76-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d572" }, "ChemicalName" : "HEXAZINONE", "CASNumber" : "51235-04-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d573" }, "ChemicalName" : "HEXYLENE GLYCOL", "CASNumber" : "107-41-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d574" }, "ChemicalName" : "#2 HOME HEATING OILS", "CASNumber" : "68476-30-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d575" }, "ChemicalName" : "HYDANTOIN, 3-BROMO-1-CHLORO-5,5-DIMETHYL-", "CASNumber" : "126-06-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d576" }, "ChemicalName" : "HYDRAMETHYLNON", "CASNumber" : "67485-29-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d577" }, "ChemicalName" : "HYDRIODIC ACID", "CASNumber" : "10034-85-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d578" }, "ChemicalName" : "HYDROCARBONS", "CASNumber" : "68920-06-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d579" }, "ChemicalName" : "HYDROCHLORIC ACID", "CASNumber" : "7647-01-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d57a" }, "ChemicalName" : "HYDROFLUORIC ACID", "CASNumber" : "7664-39-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d57b" }, "ChemicalName" : "HYDROGEN CYANIDE", "CASNumber" : "74-90-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d57c" }, "ChemicalName" : "HYDROGEN PEROXIDE (CONC > 52%)", "CASNumber" : "7722-84-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d57d" }, "ChemicalName" : "(HYDROLYSIS PRODUCTS OF SULFATED CASTOR OIL), SODIUM SALTS", "CASNumber" : "68187-76-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d57e" }, "ChemicalName" : "HYDROPRENE (ALTOZAR)", "CASNumber" : "41096-46-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d57f" }, "ChemicalName" : "1-HYDROXY-4-TERT-BUTYLBENZENE", "CASNumber" : "98-54-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d580" }, "ChemicalName" : "4-HYDROXY-BUTYL ESTER BENZOIC ACID", "CASNumber" : "94-26-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d581" }, "ChemicalName" : "2-HYDROXYBENZOIC ACID", "CASNumber" : "69-72-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d582" }, "ChemicalName" : "1-(2-HYDROXYETHYL)-2-(TALL OIL ALKYL)-2-IMIDAZOLINE", "CASNumber" : "61791-39-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d583" }, "ChemicalName" : "HYDROXYLETHYL OCTYL SULFIDE", "CASNumber" : "3547-33-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d584" }, "ChemicalName" : "1-(HYDROXYMETHYL)-5,5-DIMETHYL HYDANTOIN", "CASNumber" : "116-25-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d585" }, "ChemicalName" : "2-HYDROXYNAPHTHALENE", "CASNumber" : "135-19-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d586" }, "ChemicalName" : "1-HYDROXYOCTANE", "CASNumber" : "111-87-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d587" }, "ChemicalName" : "1-(4-HYDROXYPHENYL)-2-BROMOETHANONE", "CASNumber" : "2491-38-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d588" }, "ChemicalName" : "1-(2-HYDRPXYETHYL)-2-HEPTADECYLIMIDAZOLINE", "CASNumber" : "27136-73-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d589" }, "ChemicalName" : "HYMEXAZOL (TACHIGAREN)", "CASNumber" : "10004-44-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d58a" }, "ChemicalName" : "HYPOCHLORITE", "CASNumber" : "7778-66-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d58b" }, "ChemicalName" : "HYPOCHLOROUS ACID", "CASNumber" : "7790-92-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d58c" }, "ChemicalName" : "IMAZALIL", "CASNumber" : "35554-44-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d58d" }, "ChemicalName" : "IMAZAMETHABENZ", "CASNumber" : "81405-85-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d58e" }, "ChemicalName" : "IMAZAPYR (ARSENAL)", "CASNumber" : "81334-34-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d58f" }, "ChemicalName" : "IMIDACLOPRID", "CASNumber" : "105827-78-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d590" }, "ChemicalName" : "IMIDAN", "CASNumber" : "732-11-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d591" }, "ChemicalName" : "2,4-IMIDAZOLIDINEDIONE, 1,3-BIS(HYDROXYMETHYL)-5,5-DIMETHYL-", "CASNumber" : "6440-58-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d592" }, "ChemicalName" : "2,4-IMIDAZOLIDINEDIONE, 1,3-DIBROMO-5,5-DIMETHYL-", "CASNumber" : "77-48-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d593" }, "ChemicalName" : "2,4-IMIDAZOLIDINEDIONE, 1,3-DICHLORO-5-ETHYL-5-METHYL-", "CASNumber" : "89415-87-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d594" }, "ChemicalName" : "2,4-IMIDAZOLIDINEDIONE, 1-BROMO-3-CHLORO-5,5-DIMETHYL-", "CASNumber" : "16079-88-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d595" }, "ChemicalName" : "2,2-IMINOBISETHANOL N-COCO ALKYL DERIVS.", "CASNumber" : "61791-31-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d596" }, "ChemicalName" : "INDOLE-3-BUTYRIC ACID", "CASNumber" : "133-32-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d597" }, "ChemicalName" : "INDOXACARB (DPX-MP062)", "CASNumber" : "173584-44-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d598" }, "ChemicalName" : "IODINE", "CASNumber" : "7553-56-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d599" }, "ChemicalName" : "3-IODO-2-PROPYNYL BUTYLCARBAMATE", "CASNumber" : "55406-53-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d59a" }, "ChemicalName" : "IPRODIONE", "CASNumber" : "36734-19-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d59b" }, "ChemicalName" : "ISOFENPHOS", "CASNumber" : "25311-71-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d59c" }, "ChemicalName" : "ISOPROPYL ACETATE", "CASNumber" : "108-21-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d59d" }, "ChemicalName" : "ISOPROPYL ALCOHOL", "CASNumber" : "67-63-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d59e" }, "ChemicalName" : "KAOLIN", "CASNumber" : "1332-58-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d59f" }, "ChemicalName" : "KBR 3023 (PROPIDINE)", "CASNumber" : "119515-38-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5a0" }, "ChemicalName" : "KEROSENE", "CASNumber" : "8008-20-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5a1" }, "ChemicalName" : "KINETIN", "CASNumber" : "525-79-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5a2" }, "ChemicalName" : "KINOXIFEN", "CASNumber" : "124495-18-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5a3" }, "ChemicalName" : "KRESOXIM-METHYL", "CASNumber" : "143390-89-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5a4" }, "ChemicalName" : "LACTOFEN", "CASNumber" : "77501-63-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5a5" }, "ChemicalName" : "LAURYL DIMETHYL BENZYL AMMONIUM CHLORIDE", "CASNumber" : "139-07-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5a6" }, "ChemicalName" : "LEAD ACETATE", "CASNumber" : "301-04-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5a7" }, "ChemicalName" : "LEAD ARSENATE", "CASNumber" : "7784-40-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5a8" }, "ChemicalName" : "LETHANE", "CASNumber" : "112-56-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5a9" }, "ChemicalName" : "LINURON", "CASNumber" : "330-55-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5aa" }, "ChemicalName" : "LITHIUM HYPOCHLORITE", "CASNumber" : "13840-33-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5ab" }, "ChemicalName" : "LITHIUM PERFLUOROOCTANE SULFONATE", "CASNumber" : "29457-72-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5ac" }, "ChemicalName" : "LURSECT", "CASNumber" : "51609-52-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5ad" }, "ChemicalName" : "M-CRESOL", "CASNumber" : "108-39-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5ae" }, "ChemicalName" : "MAGNESIUM CHLORIDE", "CASNumber" : "7786-30-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5af" }, "ChemicalName" : "MAGNESIUM PHOSPHIDE", "CASNumber" : "12057-74-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5b0" }, "ChemicalName" : "MAGNESIUM SULFATE", "CASNumber" : "7487-88-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5b1" }, "ChemicalName" : "MALATHION", "CASNumber" : "121-75-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5b2" }, "ChemicalName" : "MANCOZEB", "CASNumber" : "2234562" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5b3" }, "ChemicalName" : "MANEB", "CASNumber" : "12427-38-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5b4" }, "ChemicalName" : "MANGANESEDIMETHYLDITHIOCARBAMATE", "CASNumber" : "15339-36-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5b5" }, "ChemicalName" : "MEDIUM STEAM CRACKED AROMATIC NAPHTHA (PETROLEUM)", "CASNumber" : "68516-20-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5b6" }, "ChemicalName" : "MEFENOXAM TECHNICAL", "CASNumber" : "70630-17-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5b7" }, "ChemicalName" : "MEFLUIDINE DIETHANOLAMINE", "CASNumber" : "53780-36-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5b8" }, "ChemicalName" : "1-MENTHENE-8-OL", "CASNumber" : "98-55-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5b9" }, "ChemicalName" : "MEPIQUAT CHLORIDE", "CASNumber" : "24307-26-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5ba" }, "ChemicalName" : "2-MERCAPTOBENZOTHIAZOLE", "CASNumber" : "149-30-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5bb" }, "ChemicalName" : "MERCAPTODIMETHUR", "CASNumber" : "2032-65-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5bc" }, "ChemicalName" : "MERCURY CHLORIDE (2)", "CASNumber" : "7487-94-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5bd" }, "ChemicalName" : "MERCURY(1+), [2,2,2-NITRILOTRIS[ETHANOL]-N,O,O,O]PHENYL-, SALT WITH 2-HYDROXYPROPANOIC ACID (1", "CASNumber" : "23319-66-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5be" }, "ChemicalName" : "MERCURY, (2-ETHYLHEXANOATO)PHENYL-", "CASNumber" : "13302-00-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5bf" }, "ChemicalName" : "MERCURY, (2-HYDROXYPROPANOATO)PHENYL-", "CASNumber" : "122-64-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5c0" }, "ChemicalName" : "MERCURY, (9-OCTADECENOATO-O)PHENYL-, (Z)-", "CASNumber" : "104-60-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5c1" }, "ChemicalName" : "MERCURY, (NITRATO-O)PHENYL-", "CASNumber" : "55-68-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5c2" }, "ChemicalName" : "MERCURY, DIPHENYL[.MU.-[(TETRAPROPENYL)BUTANEDIOATO(2-)-O:O]]DI-", "CASNumber" : "27236-65-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5c3" }, "ChemicalName" : "MERCURY, PHENYL(8-QUINOLINOLATO-N1,O8)-", "CASNumber" : "14354-56-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5c4" }, "ChemicalName" : "MERCURY, [.MU.-[ORTHOBORATO(2-)-O:O]]DIPHENYLDI-", "CASNumber" : "6273-99-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5c5" }, "ChemicalName" : "MERPHOS", "CASNumber" : "150-50-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5c6" }, "ChemicalName" : "MESOTRIONE", "CASNumber" : "104206-82-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5c7" }, "ChemicalName" : "2-MESYL-2-METHYLPROPIONALDEHYDE O-METHYLCARBAMOYLOXIME", "CASNumber" : "1646-88-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5c8" }, "ChemicalName" : "METACETALDEHYDE", "CASNumber" : "108-62-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5c9" }, "ChemicalName" : "METALAXYL", "CASNumber" : "57837-19-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5ca" }, "ChemicalName" : "METALDEHYDE", "CASNumber" : "9002-91-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5cb" }, "ChemicalName" : "METARHIZIUM ANISOPLIAE ESF1", "CASNumber" : "67892-13-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5cc" }, "ChemicalName" : "METHAM SODIUM", "CASNumber" : "137-42-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5cd" }, "ChemicalName" : "METHAMIDOPHOS", "CASNumber" : "10265-92-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5ce" }, "ChemicalName" : "METHANESULFONIC ACID, THIO-, O-(2-HYDROXYPROPYL) ESTER", "CASNumber" : "30388-01-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5cf" }, "ChemicalName" : "METHANIMIDAMIDE, N-(4-CHLORO-2-METHYLPHENYL)-N,N-DIMETHYL-, MONOHYDROCHLORIDE", "CASNumber" : "19750-95-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5d0" }, "ChemicalName" : "METHANOL", "CASNumber" : "67-56-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5d1" }, "ChemicalName" : "METHANOL, (1H,3H,5H-OXAZOLO[3,4-C]OXAZOL-7A(7H)-YLMETHOXY)-", "CASNumber" : "59720-42-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5d2" }, "ChemicalName" : "METHANOL, [[[1-METHYL-2-(5-METHYL-3-OXAZOLIDINYL)ETHYOXY]METHOXY]METHOXY]-", "CASNumber" : "97553-90-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5d3" }, "ChemicalName" : "METHANONE, (5-CYCLOPROPYL-4-ISOXAZOLYL)[2-(METHYLSULFONYL)-4-(TRIFLUOROMETHYL)PHENYL]-", "CASNumber" : "141112-29-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5d4" }, "ChemicalName" : "METHAZOLE", "CASNumber" : "20354-26-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5d5" }, "ChemicalName" : "METHIDATHION", "CASNumber" : "950-37-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5d6" }, "ChemicalName" : "METHOMYL", "CASNumber" : "16752-77-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5d7" }, "ChemicalName" : "METHOPRENE", "CASNumber" : "40596-69-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5d8" }, "ChemicalName" : "METHOXONE", "CASNumber" : "94-74-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5d9" }, "ChemicalName" : "METHOXONE SODIUM SALT ((4-CHLORO-2-METHYLPGENOXY) ACETATE SODIUM SALT)", "CASNumber" : "3653-48-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5da" }, "ChemicalName" : "1-(2-METHOXY-1-METHYLETHOXY)-2-PROPANOL", "CASNumber" : "20324-32-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5db" }, "ChemicalName" : "1-METHOXY-4-(1-PROPENYL)BENZENE", "CASNumber" : "104-46-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5dc" }, "ChemicalName" : "2-(((((4-METHOXY-6-METHYL-1,3,5-TRIAZIN-2YL)AMINO)CARBONYL)AMINO)- SULFONYL)BENZOIC ACID METHYL ESTE", "CASNumber" : "74223-64-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5dd" }, "ChemicalName" : "2-(METHOXYCARBONYL)ANILINE", "CASNumber" : "134-20-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5de" }, "ChemicalName" : "4-(METHOXYCARBONYL)PHENOL", "CASNumber" : "99-76-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5df" }, "ChemicalName" : "METHOXYCHLOR", "CASNumber" : "72-43-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5e0" }, "ChemicalName" : "METHOXYFENOZIDE", "CASNumber" : "161050-58-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5e1" }, "ChemicalName" : "METHYL BROMIDE", "CASNumber" : "74-83-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5e2" }, "ChemicalName" : "METHYL DEMETON", "CASNumber" : "8022-00-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5e3" }, "ChemicalName" : "METHYL ISOBUTYL KETONE", "CASNumber" : "108-10-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5e4" }, "ChemicalName" : "METHYL ISOTHIOCYANATE", "CASNumber" : "556-61-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5e5" }, "ChemicalName" : "METHYL NAPHTHALENE", "CASNumber" : "1321-94-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5e6" }, "ChemicalName" : "METHYL NONYL KETONE", "CASNumber" : "112-12-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5e7" }, "ChemicalName" : "METHYL PARATHION", "CASNumber" : "298-00-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5e8" }, "ChemicalName" : "2-(METHYL(1-OXO-9-OCTADECENYL)AMINO)ETHANESULFONIC ACID, SODIUM SALT", "CASNumber" : "137-20-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5e9" }, "ChemicalName" : "METHYL-2,3,5,6-TETRACHLORO-4-PYRIDYLSULPHON E", "CASNumber" : "13108-52-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5ea" }, "ChemicalName" : "2-METHYL-2-PROPENOIC ACID, DODECYL ESTER", "CASNumber" : "142-90-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5eb" }, "ChemicalName" : "1-METHYL-3-PHENYL-5-(3-(TRIFLUOROMETHYL)PHENYL)-4(1H)-PYRIDINONE", "CASNumber" : "59756-60-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5ec" }, "ChemicalName" : "METHYL-4-ISOTHIAZOLIN", "CASNumber" : "2682-20-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5ed" }, "ChemicalName" : "4-METHYLBENZENESULFONIC ACID", "CASNumber" : "104-15-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5ee" }, "ChemicalName" : "METHYLENE BLUE", "CASNumber" : "61-73-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5ef" }, "ChemicalName" : "METHYLENEBISTHIOCYANAT", "CASNumber" : "6317-18-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5f0" }, "ChemicalName" : "1-METHYLETHYL TETRADECANOATE", "CASNumber" : "110-27-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5f1" }, "ChemicalName" : "2-METHYLPROPANOIC ACID", "CASNumber" : "79-31-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5f2" }, "ChemicalName" : "METIRAM", "CASNumber" : "9006-42-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5f3" }, "ChemicalName" : "METOBROMURON", "CASNumber" : "3060-89-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5f4" }, "ChemicalName" : "METOLACHLOR", "CASNumber" : "51218-45-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5f5" }, "ChemicalName" : "METRIBUZIN", "CASNumber" : "21087-64-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5f6" }, "ChemicalName" : "METRONIDAZOLE", "CASNumber" : "443-48-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5f7" }, "ChemicalName" : "MEVINPHOS", "CASNumber" : "7786-34-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5f8" }, "ChemicalName" : "MEXACARBATE", "CASNumber" : "315-18-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5f9" }, "ChemicalName" : "MGK-264", "CASNumber" : "113-48-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5fa" }, "ChemicalName" : "MINERAL OIL SULFONIC ACIDS, SODIUM SALTS", "CASNumber" : "68608-26-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5fb" }, "ChemicalName" : "MIREX", "CASNumber" : "2385-85-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5fc" }, "ChemicalName" : "MITIN FF", "CASNumber" : "3567-25-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5fd" }, "ChemicalName" : "MOLINATE", "CASNumber" : "2212-67-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5fe" }, "ChemicalName" : "MON 21200 (GENESIS)", "CASNumber" : "82697-71-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d5ff" }, "ChemicalName" : "MONURON", "CASNumber" : "150-68-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d600" }, "ChemicalName" : "MONURON TCA (UROX)", "CASNumber" : "140-41-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d601" }, "ChemicalName" : "MORPHOLINE", "CASNumber" : "110-91-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d602" }, "ChemicalName" : "MORPHOLINE, 4,4-(2-ETHYL-2-NITRO-1,3-PROPANEDIYL)BIS-", "CASNumber" : "1854-23-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d603" }, "ChemicalName" : "MORPHOLINE, 4-(2-NITROBUTYL)-", "CASNumber" : "2224-44-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d604" }, "ChemicalName" : "MORPHOLINE, 4-CYCLODODECYL-2,6-DIMETHYL-, ACETATE", "CASNumber" : "31717-87-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d605" }, "ChemicalName" : "MSMA", "CASNumber" : "2163-80-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d606" }, "ChemicalName" : "MUSCALURE", "CASNumber" : "27519-02-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d607" }, "ChemicalName" : "MYCLOBUTANIL", "CASNumber" : "88671-89-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d608" }, "ChemicalName" : "MYRISTYL ALCOHOL", "CASNumber" : "112-72-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d609" }, "ChemicalName" : "N,N-DIMETHYL-N-(3-(TRIMETHOXYSILYL)PROPYL)-1-OCTADECANAMINIUM CHLORIDE", "CASNumber" : "27668-52-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d60a" }, "ChemicalName" : "N-(2-(BISCARBOXYMETHYLAMINO)ETHYL)-N-(2-HYDROXYETHYL)GLYCINE TRISODIUM SALT", "CASNumber" : "139-89-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d60b" }, "ChemicalName" : "N-ALKYL (5% C5-18, 61% C12, 23% C14, 11% C16) DIMETHYL BENZYL AMMONIUM CHLORIDE", "CASNumber" : "63449-41-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d60c" }, "ChemicalName" : "N-ALKYL DIMETHYLETHYLBENZYL AMMONIUM CHLORIDE", "CASNumber" : "68956-79-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d60d" }, "ChemicalName" : "N-METHYL NEODECANAMIDE (MNDA)", "CASNumber" : "105726-67-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d60e" }, "ChemicalName" : "N-METHYLOL CHLOROACETAMIDE", "CASNumber" : "2832-19-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d60f" }, "ChemicalName" : "N-PROPYL ALCOHOL", "CASNumber" : "71-23-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d610" }, "ChemicalName" : "NABAM", "CASNumber" : "142-59-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d611" }, "ChemicalName" : "NALED", "CASNumber" : "300-76-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d612" }, "ChemicalName" : "NAPHTHALENE", "CASNumber" : "91-20-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d613" }, "ChemicalName" : "NAPHTHALENE, 1,4-DIMETHYL-", "CASNumber" : "571-58-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d614" }, "ChemicalName" : "1-NAPHTHALENEACETAMIDE", "CASNumber" : "86-86-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d615" }, "ChemicalName" : "1-NAPHTHALENEACETIC ACID", "CASNumber" : "86-87-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d616" }, "ChemicalName" : "1-NAPHTHALENEACETIC ACID, AMMONIUM SALT", "CASNumber" : "25545-89-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d617" }, "ChemicalName" : "1-NAPHTHALENEACETIC ACID, ETHYL ESTER", "CASNumber" : "2122-70-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d618" }, "ChemicalName" : "1-NAPHTHALENEACETIC ACID, POTASSIUM SALT", "CASNumber" : "15165-79-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d619" }, "ChemicalName" : "1-NAPHTHALENEACETIC ACID, SODIUM SALT", "CASNumber" : "61-31-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d61a" }, "ChemicalName" : "NAPHTHO[2,3-D]-1,3-DIOXOLE-5,6-DICARBOXYLIC ACID, 5,6,7,8-TETRAHYDRO-7-METHYL-, DIPROPYL ESTER", "CASNumber" : "83-59-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d61b" }, "ChemicalName" : "2-NAPHTHYLOXACETIC ACID", "CASNumber" : "120-23-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d61c" }, "ChemicalName" : "NAPROPAMIDE", "CASNumber" : "15299-99-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d61d" }, "ChemicalName" : "NAPTALAM (ALANAP-1)", "CASNumber" : "132-66-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d61e" }, "ChemicalName" : "NAPTALAM, SODIUM SALT", "CASNumber" : "132-67-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d61f" }, "ChemicalName" : "NATRIUMTETRABORAT ANHYDRID", "CASNumber" : "1330-43-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d620" }, "ChemicalName" : "NEBURON", "CASNumber" : "555-37-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d621" }, "ChemicalName" : "NEOMYCIN SULFATE", "CASNumber" : "1405-10-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d622" }, "ChemicalName" : "NICKEL (NICKEL SULFATE HEXAHYDRATE)", "CASNumber" : "10101-97-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d623" }, "ChemicalName" : "NICOSULFURON (ACCENT)", "CASNumber" : "111991-09-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d624" }, "ChemicalName" : "NICOTINE AND SALTS", "CASNumber" : "54-11-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d625" }, "ChemicalName" : "NICOTINE SULFATE", "CASNumber" : "65-30-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d626" }, "ChemicalName" : "NITRALIN", "CASNumber" : "4726-14-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d627" }, "ChemicalName" : "NITRAPYRIN", "CASNumber" : "1929-82-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d628" }, "ChemicalName" : "1,1,1-NITRILOTRI-2-PROPANOL", "CASNumber" : "122-20-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d629" }, "ChemicalName" : "NITROBENZENE", "CASNumber" : "98-95-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d62a" }, "ChemicalName" : "NITROFEN", "CASNumber" : "1836-75-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d62b" }, "ChemicalName" : "NITROGEN", "CASNumber" : "7727-37-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d62c" }, "ChemicalName" : "4-NITROPHENOL", "CASNumber" : "100-02-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d62d" }, "ChemicalName" : "4-NITROPHENOL SODIUM SALT", "CASNumber" : "824-78-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d62e" }, "ChemicalName" : "NONANOIC ACID, SULFOPHENYL ESTER, SODIUM SALT", "CASNumber" : "91125-43-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d62f" }, "ChemicalName" : "2-(2-(2-(2-(NONYLPHENOXY)ETHOXY)ETHOXY)ETHOXY)ETHANOL", "CASNumber" : "9016-45-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d630" }, "ChemicalName" : "NONYLPHENOXYPOLYETHOXYETHANOL - IODINE COMPLEX", "CASNumber" : "35860-86-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d631" }, "ChemicalName" : "NOREA (NORURON)", "CASNumber" : "18530-56-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d632" }, "ChemicalName" : "NORFLURAZON", "CASNumber" : "27314-13-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d633" }, "ChemicalName" : "NOVALURON", "CASNumber" : "116714-46-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d634" }, "ChemicalName" : "O-PHENYLPHENATE, SODIUM", "CASNumber" : "132-27-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d635" }, "ChemicalName" : "9-OCTADECEN-1-AMINIUM, N-ETHYL-N,N-DIMETHYL-, BROMIDE", "CASNumber" : "6458-13-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d636" }, "ChemicalName" : "9-OCTADECENOIC ACID (Z)-, COMPD. WITH 2,2,2-NITRILOTRIS[ETHANOL](1:1)", "CASNumber" : "2717-15-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d637" }, "ChemicalName" : "9-OCTADECENOIC ACID (Z)-, COPPER SALT (2+)", "CASNumber" : "1120-44-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d638" }, "ChemicalName" : "9-OCTADECENOIC ACID (Z)-, SULFONATED, SODIUM SALTS", "CASNumber" : "68443-05-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d639" }, "ChemicalName" : "1,6-OCTADIEN-3-OL, 3,7-DIMETHYL-", "CASNumber" : "78-70-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d63a" }, "ChemicalName" : "1,6-OCTADIENE, 7-METHYL-3-METHYLENE-", "CASNumber" : "123-35-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d63b" }, "ChemicalName" : "1-OCTANAMINIUM, N,N-DIMETHYL-N-OCTYL-, CHLORIDE", "CASNumber" : "5538-94-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d63c" }, "ChemicalName" : "1-OCTANECARBOXYIC ACID", "CASNumber" : "112-05-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d63d" }, "ChemicalName" : "OCTANOIC ACID, COPPER SALT", "CASNumber" : "20543-04-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d63e" }, "ChemicalName" : "1-OCTEN-3-OL", "CASNumber" : "3391-86-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d63f" }, "ChemicalName" : "OCTHILINONE", "CASNumber" : "26530-20-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d640" }, "ChemicalName" : "OIL MIST, MINERAL", "CASNumber" : "8012-95-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d641" }, "ChemicalName" : "OIL OF BLACK PEPPER", "CASNumber" : "8006-82-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d642" }, "ChemicalName" : "OIL OF CITRONELLA", "CASNumber" : "8000-29-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d643" }, "ChemicalName" : "OIL OF LEMONGRASS", "CASNumber" : "2230569" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d644" }, "ChemicalName" : "OILS, EUCALYPTUS", "CASNumber" : "8000-48-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d645" }, "ChemicalName" : "OLEIC ACID", "CASNumber" : "112-80-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d646" }, "ChemicalName" : "OLEIC ACID POTASSIUM SALT", "CASNumber" : "143-18-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d647" }, "ChemicalName" : "ORTHO-BENZYL-P-CHLOROPHENOL", "CASNumber" : "120-32-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d648" }, "ChemicalName" : "ORYZALIN", "CASNumber" : "19044-88-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d649" }, "ChemicalName" : "OVEX", "CASNumber" : "80-33-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d64a" }, "ChemicalName" : "7-OXABICYCLO[2.2.1]HEPTANE-2,3-DICARBOXYLIC ACID, COMPD. WITH N,N-DIMETHYLCOCOAMINE (1:1)", "CASNumber" : "66330-88-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d64b" }, "ChemicalName" : "7-OXABICYCLO[2.2.1]HEPTANE-2,3-DICARBOXYLIC ACID, DISODIUM SALT", "CASNumber" : "129-67-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d64c" }, "ChemicalName" : "OXADIXYL (SAN 371F)", "CASNumber" : "77732-09-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d64d" }, "ChemicalName" : "OXALIC ACID", "CASNumber" : "144-62-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d64e" }, "ChemicalName" : "OXAMYL", "CASNumber" : "23135-22-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d64f" }, "ChemicalName" : "1,4-OXATHIIN-3-CARBOXAMIDE, 5,6-DIHYDRO-2-METHYL-N-PHENYL-, 4,4-DIOXIDE", "CASNumber" : "5259-88-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d650" }, "ChemicalName" : "OXINE BENZOATE", "CASNumber" : "7091-57-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d651" }, "ChemicalName" : "OXIRANE, 2-DECYL-3-(5-METHYLHEXYL)-, CIS-", "CASNumber" : "29804-22-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d652" }, "ChemicalName" : "OXIRANE, METHYL-, POLYMER WITH OXIRANE, COMPD. WITH IODINE", "CASNumber" : "26617-87-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d653" }, "ChemicalName" : "OXIRANE, METHYL-, POLYMER WITH OXIRANE, MONOBUTYL ETHER, COMPD. WITH IODINE", "CASNumber" : "68610-00-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d654" }, "ChemicalName" : "OXYDEMETON METHYL", "CASNumber" : "301-12-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d655" }, "ChemicalName" : "OXYDIAZON", "CASNumber" : "19666-30-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d656" }, "ChemicalName" : "(OXYDIETHYLENEGLYCOL)BIS(COCO ALKYL)DIMETHYL AMMONIUM CHLORIDE", "CASNumber" : "68607-28-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d657" }, "ChemicalName" : "OXYFLUORFEN", "CASNumber" : "42874-03-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d658" }, "ChemicalName" : "OXYTETRACYCLINE HYDROCHLORIDE (INTERNAL USE)", "CASNumber" : "2058-46-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d659" }, "ChemicalName" : "2,3-P-DIOXANEDITHIOL S,S-BIS(O,O-DIETHYL PHOSPHORODITHIOATE)", "CASNumber" : "78-34-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d65a" }, "ChemicalName" : "2-(P-HYDROXYPHENYL)GLYOXYLOHYDROXYMOYL CHLORIDE", "CASNumber" : "34911-46-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d65b" }, "ChemicalName" : "P-TERT-AMYLPHENOL", "CASNumber" : "80-46-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d65c" }, "ChemicalName" : "P-TERT-AMYLPHENOL, POTASSIUM SALT", "CASNumber" : "53404-18-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d65d" }, "ChemicalName" : "PACLOBUTRAZOL", "CASNumber" : "76738-62-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d65e" }, "ChemicalName" : "PARABENS", "CASNumber" : "94-13-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d65f" }, "ChemicalName" : "PARAFORMALDEHYDE", "CASNumber" : "30525-89-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d660" }, "ChemicalName" : "PARAQUAT", "CASNumber" : "1910-42-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d661" }, "ChemicalName" : "PARAQUAT METHOSULFATE", "CASNumber" : "2074-50-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d662" }, "ChemicalName" : "PARATHION", "CASNumber" : "56-38-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d663" }, "ChemicalName" : "PEBULATE", "CASNumber" : "1114-71-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d664" }, "ChemicalName" : "PENDIMETHALIN", "CASNumber" : "40487-42-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d665" }, "ChemicalName" : "PENTACHLOROPHENOL", "CASNumber" : "87-86-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d666" }, "ChemicalName" : "2,3,4,5,6-PENTAHYDROXYHEXANOIC ACID", "CASNumber" : "526-95-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d667" }, "ChemicalName" : "PENTANE", "CASNumber" : "109-66-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d668" }, "ChemicalName" : "1-PENTANETHIOL", "CASNumber" : "110-66-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d669" }, "ChemicalName" : "PERACETIC ACID", "CASNumber" : "79-21-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d66a" }, "ChemicalName" : "PERBORIC ACID, SODIUM SALT, MONOHYDRATE", "CASNumber" : "10332-33-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d66b" }, "ChemicalName" : "PERFLUIDONE", "CASNumber" : "37924-13-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d66c" }, "ChemicalName" : "PERMETHRIN", "CASNumber" : "52645-53-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d66d" }, "ChemicalName" : "PEROXYCARBONIC ACID, TETRATHIO-, DISODIUM SALT", "CASNumber" : "7345-69-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d66e" }, "ChemicalName" : "PEROXYMONOSULFURIC ACID, MONOPOTASSIUM SALT", "CASNumber" : "10058-23-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d66f" }, "ChemicalName" : "PERTHANE", "CASNumber" : "72-56-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d670" }, "ChemicalName" : "PETROLEUM DISTILLATES", "CASNumber" : "2228840" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d671" }, "ChemicalName" : "1-PHENANTHRENEMETHANAMINE, 1,2,3,4,4A,9,10,10A-OCTAHYDRO-1,4A-DIMETHYL-7-...", "CASNumber" : "1446-61-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d672" }, "ChemicalName" : "PHENMEDIPHAM", "CASNumber" : "13684-63-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d673" }, "ChemicalName" : "PHENOL", "CASNumber" : "108-95-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d674" }, "ChemicalName" : "PHENOL, 2-(1-METHYLPROPYL)-4,6-DINITRO-, COMPD. WITH 2,2,2-NITRILOTRIS[ETHANOL] (1:1)", "CASNumber" : "6420-47-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d675" }, "ChemicalName" : "PHENOL, 2-(1-METHYLPROPYL)-4,6-DINITRO-, SODIUM SALT", "CASNumber" : "35040-03-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d676" }, "ChemicalName" : "PHENOL, 2-METHOXY-5-NITRO-, SODIUM SALT", "CASNumber" : "67233-85-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d677" }, "ChemicalName" : "PHENOL, 2-NITRO-, SODIUM SALT", "CASNumber" : "824-39-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d678" }, "ChemicalName" : "PHENOL, 3-(1-METHYLETHYL)-, METHYLCARBAMATE", "CASNumber" : "64-00-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d679" }, "ChemicalName" : "PHENOL, 4-(1,1-DIMETHYLPROPYL)-, SODIUM SALT", "CASNumber" : "31366-95-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d67a" }, "ChemicalName" : "PHENOL, 4-CHLORO-2-(PHENYLMETHYL)-, POTASSIUM SALT", "CASNumber" : "35471-49-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d67b" }, "ChemicalName" : "PHENOL, 4-CHLORO-2-(PHENYLMETHYL)-, SODIUM SALT", "CASNumber" : "3184-65-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d67c" }, "ChemicalName" : "PHENOL, 4-NITRO-3-(TRIFLUOROMETHYL)-", "CASNumber" : "88-30-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d67d" }, "ChemicalName" : "PHENOL, METHYL-, POTASSIUM SALT", "CASNumber" : "12002-51-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d67e" }, "ChemicalName" : "PHENOTHRIN", "CASNumber" : "26002-80-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d67f" }, "ChemicalName" : "PHENTHOATE", "CASNumber" : "254642" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d680" }, "ChemicalName" : "1-PHENYL-2-ETHANOL", "CASNumber" : "60-12-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d681" }, "ChemicalName" : "PHENYLMERCURIC ACETATE", "CASNumber" : "62-38-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d682" }, "ChemicalName" : "2-PHENYLPHENOL", "CASNumber" : "90-43-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d683" }, "ChemicalName" : "PHEROMONE: GRAPE BERRY MOTH", "CASNumber" : "16974-11-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d684" }, "ChemicalName" : "PHORATE", "CASNumber" : "298-02-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d685" }, "ChemicalName" : "PHOSACETIM", "CASNumber" : "4104-14-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d686" }, "ChemicalName" : "PHOSALONE", "CASNumber" : "2310-17-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d687" }, "ChemicalName" : "PHOSPHAMIDON", "CASNumber" : "13171-21-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d688" }, "ChemicalName" : "PHOSPHINE", "CASNumber" : "7803-51-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d689" }, "ChemicalName" : "PHOSPHINIC ACID, COMPD. WITH 2-(4-THIAZOLYL)-1H-BENZIMIDAZOLE (1:1)", "CASNumber" : "28558-32-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d68a" }, "ChemicalName" : "PHOSPHORIC ACID", "CASNumber" : "7664-38-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d68b" }, "ChemicalName" : "PHOSPHORIC ACID, BIS(2-ETHYLHEXYL) ESTER, COMPD. WITH 2,2-(COCO ALKYLIMINO)BIS[ETHANOL]", "CASNumber" : "68649-38-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d68c" }, "ChemicalName" : "PHOSPHORIC ACID, DIOCTYL ESTER, COMPD. WITH 2,2-(DODECYLIMINO)BIS(ETHANOL) (1:1)", "CASNumber" : "68961-66-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d68d" }, "ChemicalName" : "PHOSPHORIC ACID, IRON(3+) SALT (1:1)", "CASNumber" : "10045-86-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d68e" }, "ChemicalName" : "PHOSPHORIC ACID, MONO(2-ETHYLHEXYL) ESTER", "CASNumber" : "1070-03-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d68f" }, "ChemicalName" : "PHOSPHORIC ACID, MONO(2-ETHYLHEXYL)ESTER, COMPDS. WITH DIETHANOLAMINE N-COCO ALKYL DERIVS. (1:1)", "CASNumber" : "120579-32-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d690" }, "ChemicalName" : "PHOSPHORIC ACID, MONOOCTYL ESTER, COMPD. WITH 2,2-(DODECYLIMINO)BIS(ETHANOL) (1:1)", "CASNumber" : "125091-04-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d691" }, "ChemicalName" : "PHOSPHOROTHIOIC ACID, O-[5-CHLORO-1-(1-METHYLETHYL)-1H-1,2,4-TRIAZOL-3-YL] O,O-DIETHYL ESTER", "CASNumber" : "42509-80-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d692" }, "ChemicalName" : "PHOSPHORUS (YELLOW OR WHITE)", "CASNumber" : "7723-14-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d693" }, "ChemicalName" : "PHOSPHORUS PENTOXIDE", "CASNumber" : "1314-56-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d694" }, "ChemicalName" : "PICLORAM", "CASNumber" : "6607" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d695" }, "ChemicalName" : "PICLORAM TRIETHYLAMINE SALT", "CASNumber" : "35832-11-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d696" }, "ChemicalName" : "PIPERALIN", "CASNumber" : "3478-94-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d697" }, "ChemicalName" : "PIPERAZINE DIHYDROCHLORIDE", "CASNumber" : "142-64-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d698" }, "ChemicalName" : "PIPERINE", "CASNumber" : "94-62-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d699" }, "ChemicalName" : "PIPERONYL BUTOXIDE", "CASNumber" : "51-03-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d69a" }, "ChemicalName" : "PIRIMICARB", "CASNumber" : "23103-98-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d69b" }, "ChemicalName" : "PIRIMIFOS-ETHYL", "CASNumber" : "23505-41-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d69c" }, "ChemicalName" : "PIRIMIPHOS METHYL", "CASNumber" : "29232-93-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d69d" }, "ChemicalName" : "2-PIVALYL-1,3-INDANDIONE (PINDONE)", "CASNumber" : "83-26-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d69e" }, "ChemicalName" : "POLY(DIMETHYLDIALLYLAMMINIUM CHLORIDE)", "CASNumber" : "26062-79-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d69f" }, "ChemicalName" : "POLY(IMINOCARBONIMIDOYLIMINOCARBONIMIDOYLIMINO-1,6-HEXANEDIYL), HYDROCHLORIDE", "CASNumber" : "32289-58-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6a0" }, "ChemicalName" : "POLY(OXY-1,2-ETHANEDIYL), .ALPHA.-(NONYLPHENYL)-.OMEGA.-HYDROXY-, COMPD. WITH IODINE", "CASNumber" : "11096-42-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6a1" }, "ChemicalName" : "POLY(OXY-1,2-ETHANEDIYL), .ALPHA.-ISOOCTADECYL-.OMEGA.-HYDROXY-", "CASNumber" : "52292-17-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6a2" }, "ChemicalName" : "POLY(OXY-1,2-ETHANEDIYL), .ALPHA.-[4-(1,1,3,3-TETRAMETHYLBUTYL)PHENYL]-.OMEGA.-HYDROXY-, COMPD. WITH", "CASNumber" : "53404-04-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6a3" }, "ChemicalName" : "POLY(OXYMETHYLENE), .ALPHA.-(1H,3H,5H-OXAZOLO[3,4-C]OXAZOL-7A(7H)-YLMETHYL)-.OMEGA.-HYDROXY-", "CASNumber" : "56709-13-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6a4" }, "ChemicalName" : "POLYCHLORINATED TERPHENYLS", "CASNumber" : "61788-33-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6a5" }, "ChemicalName" : "(POLYETHYL)BENZENES", "CASNumber" : "64742-94-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6a6" }, "ChemicalName" : "POLYOXYETHYLENE (20) SORBITAN MONOLAURATE", "CASNumber" : "9005-64-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6a7" }, "ChemicalName" : "POLYVINYL PYRROLIDONE", "CASNumber" : "9003-39-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6a8" }, "ChemicalName" : "POLY[OXY(METHYL-1,2-ETHANEDIYL)], .ALPHA.-BUTYL-.OMEGA.-HYDROXY-", "CASNumber" : "9003-13-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6a9" }, "ChemicalName" : "POTASSIUM BROMIDE", "CASNumber" : "2139626" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6aa" }, "ChemicalName" : "POTASSIUM CHROMATE", "CASNumber" : "7789-00-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6ab" }, "ChemicalName" : "POTASSIUM CYANIDE", "CASNumber" : "151-50-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6ac" }, "ChemicalName" : "POTASSIUM DICHLORO ISOCYANURATE", "CASNumber" : "2244-21-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6ad" }, "ChemicalName" : "POTASSIUM DICHROMATE", "CASNumber" : "7778-50-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6ae" }, "ChemicalName" : "POTASSIUM DIMETHYLDITHIOCARBAMATE", "CASNumber" : "128-03-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6af" }, "ChemicalName" : "POTASSIUM HYDROXIDE", "CASNumber" : "1310-58-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6b0" }, "ChemicalName" : "POTASSIUM HYROXYMETHYL-N-METHYL-DITHIOCARBAMATE", "CASNumber" : "51026-28-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6b1" }, "ChemicalName" : "POTASSIUM IODIDE", "CASNumber" : "7681-11-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6b2" }, "ChemicalName" : "POTASSIUM IODIDE (K(I3))", "CASNumber" : "12298-68-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6b3" }, "ChemicalName" : "POTASSIUM N-METHYLDITHIOCARBAMATE", "CASNumber" : "137-41-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6b4" }, "ChemicalName" : "POTASSIUM NITRATE", "CASNumber" : "7757-79-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6b5" }, "ChemicalName" : "POTASSIUM PERMANGANATE", "CASNumber" : "7722-64-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6b6" }, "ChemicalName" : "POTASSIUM PYROPHOSPHATE", "CASNumber" : "7320-34-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6b7" }, "ChemicalName" : "POTASSIUM SALT OF ETHYLENEDIAMINETETRAACETIC ACID", "CASNumber" : "7379-27-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6b8" }, "ChemicalName" : "POTASSIUM SOAP OF TALL OIL FATTY ACIDS (C18)", "CASNumber" : "61790-44-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6b9" }, "ChemicalName" : "POTASSIUM SORBATE", "CASNumber" : "590-00-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6ba" }, "ChemicalName" : "PRALLETHRIN (ETOC)", "CASNumber" : "23031-36-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6bb" }, "ChemicalName" : "PRIMISULFURON-METHYL", "CASNumber" : "86209-51-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6bc" }, "ChemicalName" : "PRODIAMINE (RYDEX)", "CASNumber" : "29091-21-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6bd" }, "ChemicalName" : "PROFENOFOS", "CASNumber" : "41198-08-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6be" }, "ChemicalName" : "PROFLURALIN", "CASNumber" : "26399-36-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6bf" }, "ChemicalName" : "PROHEXADIONE CALCIUM", "CASNumber" : "127277-53-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6c0" }, "ChemicalName" : "PROMETON", "CASNumber" : "1610-18-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6c1" }, "ChemicalName" : "PROMETRYN", "CASNumber" : "7287-19-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6c2" }, "ChemicalName" : "PROMEXAL (MTI)", "CASNumber" : "82633-79-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6c3" }, "ChemicalName" : "PRONAMIDE", "CASNumber" : "23950-58-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6c4" }, "ChemicalName" : "PROPACHLOR", "CASNumber" : "1918-16-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6c5" }, "ChemicalName" : "PROPAMOCARB HYDROCHLORIDE", "CASNumber" : "25606-41-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6c6" }, "ChemicalName" : "1,3-PROPANEDIOL, 2-ETHYL-2-NITRO-", "CASNumber" : "597-09-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6c7" }, "ChemicalName" : "1,2,3-PROPANETRICARBOXYLIC ACID, 2-HYDROXY-, COPPER SALT", "CASNumber" : "10402-15-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6c8" }, "ChemicalName" : "1,2,3-PROPANETRIOL TRI(12-HYDROXYSTEARATE)", "CASNumber" : "8001-78-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6c9" }, "ChemicalName" : "PROPANIL", "CASNumber" : "709-98-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6ca" }, "ChemicalName" : "PROPANOIC ACID, 2-(2,4,5-TRICHLOROPHENOXY)-, COMPD. WITH 2,2,2-NITRILOTRIS[ETHANOL] (1:1)", "CASNumber" : "17369-89-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6cb" }, "ChemicalName" : "PROPANOIC ACID, 2-(2,4,5-TRICHLOROPHENOXY)-, COMPD. WITH N-METHYLMETHANAMINE (1:1)", "CASNumber" : "55617-85-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6cc" }, "ChemicalName" : "PROPANOIC ACID, 2-(2,4,5-TRICHLOROPHENOXY)-, POTASSIUM SALT", "CASNumber" : "2818-16-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6cd" }, "ChemicalName" : "PROPANOIC ACID, 2-(2,4-DICHLOROPHENOXY)-, 2-BUTOXYETHYL ESTER", "CASNumber" : "53404-31-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6ce" }, "ChemicalName" : "PROPANOIC ACID, 2-(2,4-DICHLOROPHENOXY)-, COMPD. WITH N-METHYLMETHANAMINE (1:1)", "CASNumber" : "53404-32-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6cf" }, "ChemicalName" : "PROPANOIC ACID, 2-(2,4-DICHLOROPHENOXY)-, ISOOCTYL ESTER", "CASNumber" : "28631-35-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6d0" }, "ChemicalName" : "PROPANOIC ACID, 2-(4-CHLORO-2-METHYLPHENOXY)-, (R)-", "CASNumber" : "16484-77-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6d1" }, "ChemicalName" : "PROPANOIC ACID, 2-(4-CHLORO-2-METHYLPHENOXY)-, COMPD. WITH 2,2-IMINOBIS[ETHANOL] (1:1)", "CASNumber" : "1432-14-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6d2" }, "ChemicalName" : "PROPANOIC ACID, 2-(4-CHLORO-2-METHYLPHENOXY)-, COMPD. WITH N-METHYLMETHANAMINE (1:1)", "CASNumber" : "32351-70-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6d3" }, "ChemicalName" : "PROPANOIC ACID, 2-(4-CHLORO-2-METHYLPHENOXY)-, ISOOCTYL ESTER", "CASNumber" : "28473-03-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6d4" }, "ChemicalName" : "PROPANOIC ACID, 2-(4-CHLORO-2-METHYLPHENOXY)-, POTASSIUM SALT", "CASNumber" : "1929-86-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6d5" }, "ChemicalName" : "PROPANOIC ACID, 2-HYDROXY-, (S)-", "CASNumber" : "79-33-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6d6" }, "ChemicalName" : "PROPANOIC ACID, 2-PHENYLETHYL ESTER", "CASNumber" : "122-70-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6d7" }, "ChemicalName" : "PROPANOIC ACID, 2-[4-[(6-CHLORO-2-BENZOXAZOLYL)OXY]PHENOXY]-, ETHYL ESTER, (R)-", "CASNumber" : "71283-80-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6d8" }, "ChemicalName" : "PROPANOIC ACID, 2-[4-[[5-(TRIFLUOROMETHYL)-2-PYRIDINYL]OXY]PHENOXY]-, BUTYL ESTER, (R)-", "CASNumber" : "79241-46-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6d9" }, "ChemicalName" : "1-PROPANOL, 2-[(HYDROXYMETHYL)AMINO]-2-METHYL-", "CASNumber" : "52299-20-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6da" }, "ChemicalName" : "2-PROPANONE, 1,1,1,3,3,3-HEXACHLORO-", "CASNumber" : "116-16-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6db" }, "ChemicalName" : "PROPARGITE", "CASNumber" : "2312-35-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6dc" }, "ChemicalName" : "PROPAZINE", "CASNumber" : "139-40-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6dd" }, "ChemicalName" : "2-PROPEN-1-OL, 3-PHENYL-", "CASNumber" : "104-54-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6de" }, "ChemicalName" : "2-PROPENAL, 3-PHENYL-", "CASNumber" : "104-55-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6df" }, "ChemicalName" : "2-PROPENOIC ACID, 2-METHYL-, METHYL ESTER = STANNANE, TRIBUTYLMEACRYLATE", "CASNumber" : "26354-18-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6e0" }, "ChemicalName" : "2-PROPENOIC ACID, 3-(4-METHOXYPHENYL)-, 2-ETHOXYETHYL ESTER", "CASNumber" : "104-28-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6e1" }, "ChemicalName" : "PROPETAMPHOS", "CASNumber" : "31218-83-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6e2" }, "ChemicalName" : "PROPHAM", "CASNumber" : "122-42-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6e3" }, "ChemicalName" : "PROPICONAZOLE", "CASNumber" : "60207-90-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6e4" }, "ChemicalName" : "PROPIONIC ACID", "CASNumber" : "79-09-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6e5" }, "ChemicalName" : "PROPOXUR", "CASNumber" : "114-26-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6e6" }, "ChemicalName" : "PROPYLENE GLYCOL", "CASNumber" : "57-55-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6e7" }, "ChemicalName" : "PROPYLENE OXIDE", "CASNumber" : "75-56-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6e8" }, "ChemicalName" : "PROSULFURON (CGA-152005)", "CASNumber" : "94125-34-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6e9" }, "ChemicalName" : "PYMETROZINE", "CASNumber" : "123312-89-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6ea" }, "ChemicalName" : "PYRACLOSTROBIN", "CASNumber" : "175013-18-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6eb" }, "ChemicalName" : "PYRETHRUM", "CASNumber" : "8003-34-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6ec" }, "ChemicalName" : "PYRIDABEN", "CASNumber" : "96489-71-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6ed" }, "ChemicalName" : "3,6-PYRIDAZINEDIONE, 1,2-DIHYDRO-, MONOPOTASSIUM SALT", "CASNumber" : "28382-15-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6ee" }, "ChemicalName" : "PYRIDINE", "CASNumber" : "110-86-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6ef" }, "ChemicalName" : "PYRIDINE, 4-AMINO-", "CASNumber" : "504-24-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6f0" }, "ChemicalName" : "3-PYRIDINECARBOXYLIC ACID, 2-[4,5-DIHYDRO-4-METHYL-4-(1-METHYLETHYL)-5-OXO-1H-IMIDAZOL-2-YL]-, COMPD", "CASNumber" : "81510-83-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6f1" }, "ChemicalName" : "3-PYRIDINECARBOXYLIC ACID, 2-[4,5-DIHYDRO-4-METHYL-4-(1-METHYLETHYL)-5-OXO-1H-IMIDAZOL-2-YL]-5-(METH", "CASNumber" : "114311-32-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6f2" }, "ChemicalName" : "3-PYRIDINECARBOXYLIC ACID, 2-[4,5-DIHYDRO-4-METHYL-4-(1-METHYLETHYL)-5-OXO-1H-IMIDAZOL-2-YL]-5-ETHYL", "CASNumber" : "101917-66-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6f3" }, "ChemicalName" : "2-PYRIDINECARBOXYLIC ACID, 4-AMINO-3,5,6-TRICHLORO-, COMPD.WITH 1,1,1-NITRILOTRIS[2-PROPANOL] (1:", "CASNumber" : "6753-47-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6f4" }, "ChemicalName" : "2-PYRIDINECARBOXYLIC ACID, 4-AMINO-3,5,6-TRICHLORO-, ISOOCTYL ESTER", "CASNumber" : "26952-20-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6f5" }, "ChemicalName" : "2-PYRIDINECARBOXYLIC ACID, 4-AMINO-3,5,6-TRICHLORO-, MONOPOTASSIUM SALT", "CASNumber" : "2545-60-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6f6" }, "ChemicalName" : "PYRITHIOBAC-SODIUM", "CASNumber" : "123343-16-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6f7" }, "ChemicalName" : "2-PYRROLIDINONE, 1-ETHENYL-, HOMOPOLYMER, COMPD. WITH IODINE", "CASNumber" : "25655-41-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6f8" }, "ChemicalName" : "QUATERNARY AMMONIUM COMPOUNDS, BENZYL-C10-18-ALKYLBIS(HYDROXYETHYL), CHLORIDES", "CASNumber" : "91721-81-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6f9" }, "ChemicalName" : "QUATERNARY AMMONIUM COMPOUNDS, BENZYL-C12-18-ALKYLDIMETHYL, SALTS WITH 1,2-BENZISOTHIAZOL-3(2H)-ONE ", "CASNumber" : "68989-01-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6fa" }, "ChemicalName" : "QUATERNARY AMMONIUM COMPOUNDS, BENZYLCOCO ALKYLDIMETHYL, CHLORIDES", "CASNumber" : "61789-71-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6fb" }, "ChemicalName" : "QUATERNARY AMMONIUM COMPOUNDS, BENZYLDI-C12-18-ALKYLMETHYL, CHLORIDES", "CASNumber" : "73049-75-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6fc" }, "ChemicalName" : "QUATERNARY AMMONIUM COMPOUNDS, C12-14-ALKYL[(ETHYLPHENYL)METHYL]DIMETHYL, CHLORIDES", "CASNumber" : "85409-23-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6fd" }, "ChemicalName" : "QUATERNARY AMMONIUM COMPOUNDS, C12-16-ALKYL[(DICHLOROPHENYL)METHYL]DIMETHYL, CHLORIDES", "CASNumber" : "68989-02-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6fe" }, "ChemicalName" : "QUATERNARY AMMONIUM COMPOUNDS, C12-18-ALKYLDIMETHYLETHYLBENZYL, CHLORIDES", "CASNumber" : "8045-21-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d6ff" }, "ChemicalName" : "QUATERNARY AMMONIUM COMPOUNDS, C14-18-ALKYLETHYLDIMETHYL", "CASNumber" : "134595-54-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d700" }, "ChemicalName" : "QUATERNARY AMMONIUM COMPOUNDS, C14-18-ALKYLTRIMETHYL, BROMIDES", "CASNumber" : "68424-92-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d701" }, "ChemicalName" : "QUATERNARY AMMONIUM COMPOUNDS, C14-18-ALKYLTRIMETHYL, CHLORIDES", "CASNumber" : "68002-63-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d702" }, "ChemicalName" : "QUATERNARY AMMONIUM COMPOUNDS, C16-18-ALKYLTRIMETHYL, CHLORIDES", "CASNumber" : "68002-62-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d703" }, "ChemicalName" : "QUATERNARY AMMONIUM COMPOUNDS, DI-C8-18-ALKYLDIMETHYL, CHLORIDES", "CASNumber" : "73398-64-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d704" }, "ChemicalName" : "QUINCLORAC (FACET)", "CASNumber" : "84087-01-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d705" }, "ChemicalName" : "3-QUINOLINECARBOXYLIC ACID, 2-[4,5-DIHYDRO-4-METHYL-4-(1-METHYLETHYL)-5-OXO-1H-IMIDAZOL-2-YL]-, MONO", "CASNumber" : "81335-47-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d706" }, "ChemicalName" : "3-QUINOLINECARBOXYLIC ACID, 2-[4,5-DIHYDRO-4-METHYL-4-(1-METHYLETHYL)-5-OXO-1H-IMIDAZOL-2-YL]-, SODI", "CASNumber" : "81335-46-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d707" }, "ChemicalName" : "QUINONE", "CASNumber" : "106-51-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d708" }, "ChemicalName" : "QUINTOZENE", "CASNumber" : "82-68-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d709" }, "ChemicalName" : "QUIZALOFOP P-ETHYL", "CASNumber" : "100646-51-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d70a" }, "ChemicalName" : "QUIZALOFOP-ETHYL", "CASNumber" : "76578-14-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d70b" }, "ChemicalName" : "RESIN ACIDS AND ROSIN ACIDS, COPPER SALTS", "CASNumber" : "9007-39-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d70c" }, "ChemicalName" : "RESMETHRIN", "CASNumber" : "10453-86-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d70d" }, "ChemicalName" : "RIMSULFURON (DPX-E9636)", "CASNumber" : "122931-48-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d70e" }, "ChemicalName" : "RONNEL", "CASNumber" : "299-84-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d70f" }, "ChemicalName" : "ROTENONE, COMMERCIAL", "CASNumber" : "83-79-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d710" }, "ChemicalName" : "(RS)-2-(3,5-DICHLOROPHENYL)-2-(2,2,2-TRICHLOROETHYL)OXIRANE", "CASNumber" : "58138-08-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d711" }, "ChemicalName" : "(RS)-2-METHYL-1-PYRIMIDIN-5-YL-1-(4-TRIFLUOROMETHOXY)PHENYLPROPAN- -2-OL", "CASNumber" : "56425-91-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d712" }, "ChemicalName" : "(RS)-SEC-BUTYLAMINE", "CASNumber" : "13952-84-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d713" }, "ChemicalName" : "(4RS,5RS)-5-(4-CHLOROPHENYL)-N-CYCLOHEXYL-4-METHYL-2-OXO-1,3-THIA- ZOLIDINE-3-CARBOXAMIDE", "CASNumber" : "78587-05-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d714" }, "ChemicalName" : "RYANODINE", "CASNumber" : "15662-33-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d715" }, "ChemicalName" : "(S)-ALPHA-CYANO-3-PHENOXYBENZYL (1R)-CIS-2,2-DIMETHYL-3-((RS)-1,2,2,2-TETRABROMOETHYL)-CYCLOPROPA- N", "CASNumber" : "66841-25-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d716" }, "ChemicalName" : "S,S,S-TRIBUTYLTRITHIOPHOSPHATE", "CASNumber" : "78-48-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d717" }, "ChemicalName" : "SABADILLA", "CASNumber" : "2246642" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d718" }, "ChemicalName" : "SEC-BUTYL ALCOHOL", "CASNumber" : "78-92-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d719" }, "ChemicalName" : "SESONE", "CASNumber" : "136-78-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d71a" }, "ChemicalName" : "SETHOXYDIM", "CASNumber" : "74051-80-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d71b" }, "ChemicalName" : "SIDURON", "CASNumber" : "1982-49-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d71c" }, "ChemicalName" : "SILICA GEL", "CASNumber" : "63231-67-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d71d" }, "ChemicalName" : "SILICA, AMORPHOUS", "CASNumber" : "61790-53-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d71e" }, "ChemicalName" : "SILICA, AMORPHOUS HYDRATED", "CASNumber" : "7631-86-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d71f" }, "ChemicalName" : "SILICIC ACID (H2SIO3), DISODIUM SALT", "CASNumber" : "6834-92-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d720" }, "ChemicalName" : "SILVER", "CASNumber" : "7440-22-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d721" }, "ChemicalName" : "SILVER NITRATE", "CASNumber" : "7761-88-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d722" }, "ChemicalName" : "SILVER OXIDE (AG4O4)", "CASNumber" : "155645-89-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d723" }, "ChemicalName" : "SIMAZINE", "CASNumber" : "122-34-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d724" }, "ChemicalName" : "SODIUM 4,6-DINITRO-O-CRESOL", "CASNumber" : "2312-76-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d725" }, "ChemicalName" : "SODIUM ALKYL ARYL SULFONATE", "CASNumber" : "68411-30-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d726" }, "ChemicalName" : "SODIUM ARSENATE", "CASNumber" : "13464-38-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d727" }, "ChemicalName" : "SODIUM ARSENITE", "CASNumber" : "7784-46-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d728" }, "ChemicalName" : "SODIUM AZIDE", "CASNumber" : "26628-22-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d729" }, "ChemicalName" : "SODIUM BENZOATE", "CASNumber" : "532-32-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d72a" }, "ChemicalName" : "SODIUM BICARBONATE", "CASNumber" : "144-55-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d72b" }, "ChemicalName" : "SODIUM BICHROMATE", "CASNumber" : "10588-01-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d72c" }, "ChemicalName" : "SODIUM BISULFATE", "CASNumber" : "7681-38-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d72d" }, "ChemicalName" : "SODIUM BISULFITE", "CASNumber" : "7631-90-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d72e" }, "ChemicalName" : "SODIUM BROMIDE", "CASNumber" : "7647-15-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d72f" }, "ChemicalName" : "SODIUM CACODYLATE", "CASNumber" : "124-65-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d730" }, "ChemicalName" : "SODIUM CARBONATE", "CASNumber" : "497-19-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d731" }, "ChemicalName" : "SODIUM CHLORATE", "CASNumber" : "2146053" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d732" }, "ChemicalName" : "SODIUM CHLORIDE", "CASNumber" : "7647-14-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d733" }, "ChemicalName" : "SODIUM CHLORITE", "CASNumber" : "7758-19-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d734" }, "ChemicalName" : "SODIUM CHROMATE", "CASNumber" : "2146108" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d735" }, "ChemicalName" : "SODIUM CYANIDE", "CASNumber" : "143-33-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d736" }, "ChemicalName" : "SODIUM DEHYDROACETATE", "CASNumber" : "4418-26-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d737" }, "ChemicalName" : "SODIUM DICAMBA", "CASNumber" : "1982-69-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d738" }, "ChemicalName" : "SODIUM DICHLORO-S-TRIAZINETRIONE", "CASNumber" : "2893-78-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d739" }, "ChemicalName" : "SODIUM DIMETHYLDITHIOCARBAMATE", "CASNumber" : "128-04-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d73a" }, "ChemicalName" : "SODIUM DODECYLBENZENE SULFONATE", "CASNumber" : "25155-30-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d73b" }, "ChemicalName" : "SODIUM FLUORIDE", "CASNumber" : "7681-49-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d73c" }, "ChemicalName" : "SODIUM FLUOSILICATE", "CASNumber" : "16893-85-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d73d" }, "ChemicalName" : "SODIUM HEXAMETAPHOSPATE", "CASNumber" : "10124-56-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d73e" }, "ChemicalName" : "SODIUM HYDROSULFIDE", "CASNumber" : "16721-80-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d73f" }, "ChemicalName" : "SODIUM HYPOCHLORITE", "CASNumber" : "7681-52-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d740" }, "ChemicalName" : "SODIUM LAURYL SULFATE", "CASNumber" : "151-21-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d741" }, "ChemicalName" : "SODIUM METABISULFITE", "CASNumber" : "7681-57-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d742" }, "ChemicalName" : "SODIUM METABORATE", "CASNumber" : "7775-19-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d743" }, "ChemicalName" : "SODIUM NITRATE", "CASNumber" : "7631-99-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d744" }, "ChemicalName" : "SODIUM NITRITE", "CASNumber" : "7632-00-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d745" }, "ChemicalName" : "SODIUM OMADINE", "CASNumber" : "15922-78-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d746" }, "ChemicalName" : "SODIUM PENTACHLOROPHENATE", "CASNumber" : "131-52-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d747" }, "ChemicalName" : "SODIUM PERCARBONATE", "CASNumber" : "15630-89-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d748" }, "ChemicalName" : "SODIUM PHENATE", "CASNumber" : "139-02-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d749" }, "ChemicalName" : "SODIUM PHOSPHATE, MONOBASIC", "CASNumber" : "7558-80-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d74a" }, "ChemicalName" : "SODIUM PHOSPHATE, TRIBASIC", "CASNumber" : "7601-54-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d74b" }, "ChemicalName" : "SODIUM SESQUICARBONATE", "CASNumber" : "533-96-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d74c" }, "ChemicalName" : "SODIUM SILICATE", "CASNumber" : "1344-09-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d74d" }, "ChemicalName" : "SODIUM SULFIDE (NA2S)", "CASNumber" : "1313-82-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d74e" }, "ChemicalName" : "SODIUM TRIPOLYPHOSPHATE", "CASNumber" : "7758-29-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d74f" }, "ChemicalName" : "SODIUM-2-PYRIDINETHIOL-1-OXIDE", "CASNumber" : "3811-73-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d750" }, "ChemicalName" : "SODIUM-P-TOLUENESULPHONCHLORAMIDE", "CASNumber" : "127-65-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d751" }, "ChemicalName" : "SOLVENT NAPHTHA (PETROLEUM), LIGHT ALIPHATIC", "CASNumber" : "64742-89-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d752" }, "ChemicalName" : "SOLVENT NAPHTHA (PETROLEUM), MEDIUM ALIPHATIC", "CASNumber" : "64742-88-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d753" }, "ChemicalName" : "SPIRO[11-OXABICYCLO[8.1.0]UNDEC-6-ENE-2,2-OXIRAN]-3-ONE, 8-METHYLENE-5-(1-METHYLETHYL)-, [1R-(1R*,2", "CASNumber" : "61228-92-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d754" }, "ChemicalName" : "SQUALANE", "CASNumber" : "111-01-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d755" }, "ChemicalName" : "STANNANE, (ACETYLOXY)TRIBUTYL-", "CASNumber" : "56-36-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d756" }, "ChemicalName" : "STANNANE, TRIBUTYL[(1-OXO-2-PROPENYL)OXY]-", "CASNumber" : "13331-52-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d757" }, "ChemicalName" : "STANNANE, TRIBUTYL[(1-OXO-9,12-OCTADECAD", "CASNumber" : "24124-25-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d758" }, "ChemicalName" : "STANNANE, TRIBUTYL[(1-OXONEODECYL)OXY]-", "CASNumber" : "28801-69-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d759" }, "ChemicalName" : "STANNANE, TRIBUTYL[[2-[(TRIBUTYLSTANNYL)OXY]BENZOYL]OXY]-", "CASNumber" : "22330-14-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d75a" }, "ChemicalName" : "STANNANE, TRIBUTYL[[[1,2,3,4,4A,4B,5,6,1", "CASNumber" : "26239-64-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d75b" }, "ChemicalName" : "STIROFOS", "CASNumber" : "22248-79-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d75c" }, "ChemicalName" : "STODDARD SOLVENT", "CASNumber" : "8052-41-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d75d" }, "ChemicalName" : "STREPTOMYCIN", "CASNumber" : "57-92-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d75e" }, "ChemicalName" : "STREPTOMYCIN SULFATE", "CASNumber" : "3810-74-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d75f" }, "ChemicalName" : "STRYCHNINE", "CASNumber" : "57-24-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d760" }, "ChemicalName" : "STRYCHNINE, SULFATE", "CASNumber" : "60-41-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d761" }, "ChemicalName" : "SUCROSE", "CASNumber" : "57-50-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d762" }, "ChemicalName" : "SULFACETAMIDE", "CASNumber" : "144-80-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d763" }, "ChemicalName" : "SULFALLATE", "CASNumber" : "95-06-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d764" }, "ChemicalName" : "SULFAMIC ACID", "CASNumber" : "5329-14-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d765" }, "ChemicalName" : "SULFAQUINOXALINE", "CASNumber" : "59-40-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d766" }, "ChemicalName" : "SULFENTRAZONE", "CASNumber" : "122836-35-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d767" }, "ChemicalName" : "SULFLURAMID", "CASNumber" : "4151-50-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d768" }, "ChemicalName" : "SULFOMETURON METHYL", "CASNumber" : "74222-97-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d769" }, "ChemicalName" : "SULFONAMIDE", "CASNumber" : "63-74-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d76a" }, "ChemicalName" : "1-(4-SULFOPHENYL)-4-((4-SULFOPHENYL)AZO)-1H-PYRAZOLE-3-CARBOXYLIC", "CASNumber" : "1934-21-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d76b" }, "ChemicalName" : "SULFOSULFURON [MON 31500]", "CASNumber" : "141776-32-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d76c" }, "ChemicalName" : "SULFOTEP", "CASNumber" : "3689-24-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d76d" }, "ChemicalName" : "SULFOXIDE", "CASNumber" : "120-62-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d76e" }, "ChemicalName" : "SULFUR", "CASNumber" : "7704-34-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d76f" }, "ChemicalName" : "SULFUR DIOXIDE", "CASNumber" : "2025884" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d770" }, "ChemicalName" : "SULFURIC ACID", "CASNumber" : "7664-93-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d771" }, "ChemicalName" : "SULFURIC ACID, COPPER(2+) SALT (1:1), PENTAHYDRATE", "CASNumber" : "7758-99-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d772" }, "ChemicalName" : "SULFURIC ACID, IRON(2+) SALT (1:1), HEPTAHYDRATE", "CASNumber" : "7782-63-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d773" }, "ChemicalName" : "SULFURIC ACID, IRON(2+) SALT (1:1), MONOHYDRATE", "CASNumber" : "17375-41-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d774" }, "ChemicalName" : "SULFURIC ACID, ZINC SALT (1:1), MONOHYDRATE", "CASNumber" : "7446-19-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d775" }, "ChemicalName" : "SULFURYL FLUORIDE", "CASNumber" : "2699-79-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d776" }, "ChemicalName" : "SULPROFOS", "CASNumber" : "35400-43-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d777" }, "ChemicalName" : "SUMILARV (PYRIPROXYFEN)", "CASNumber" : "95737-68-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d778" }, "ChemicalName" : "2,4,5-T", "CASNumber" : "93-76-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d779" }, "ChemicalName" : "2,4,5-T COMPOUND WITH N-METHYLMETHANAMINE  (1:1)", "CASNumber" : "6369-97-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d77a" }, "ChemicalName" : "2,4,5-T ESTERS", "CASNumber" : "93-79-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d77b" }, "ChemicalName" : "2,4,5-T TRIETHYLAMINE SALT", "CASNumber" : "2008-46-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d77c" }, "ChemicalName" : "TAR ACIDS, COAL, CRUDE", "CASNumber" : "65996-85-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d77d" }, "ChemicalName" : "TCMTB", "CASNumber" : "21564-17-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d77e" }, "ChemicalName" : "TEBUCONAZOLE (FOLICUR)", "CASNumber" : "107534-96-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d77f" }, "ChemicalName" : "TEBUFENOZIDE", "CASNumber" : "112410-23-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d780" }, "ChemicalName" : "TEBUPIRIMFOS", "CASNumber" : "96182-53-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d781" }, "ChemicalName" : "TEBUTHIURON", "CASNumber" : "34014-18-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d782" }, "ChemicalName" : "TECNAZENE", "CASNumber" : "117-18-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d783" }, "ChemicalName" : "TEFLUTHRIN", "CASNumber" : "79538-32-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d784" }, "ChemicalName" : "TEMEPHOS", "CASNumber" : "3383-96-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d785" }, "ChemicalName" : "TEPP", "CASNumber" : "107-49-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d786" }, "ChemicalName" : "TEPRALOXYDIM", "CASNumber" : "149979-41-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d787" }, "ChemicalName" : "TERBACIL", "CASNumber" : "5902-51-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d788" }, "ChemicalName" : "TERBUFOS", "CASNumber" : "13071-79-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d789" }, "ChemicalName" : "TERRAZOLE", "CASNumber" : "2593-15-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d78a" }, "ChemicalName" : "TERT-BUTYL ALCOHOL", "CASNumber" : "75-65-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d78b" }, "ChemicalName" : "2,4,11,13-TETRAAZATETRADECANEDIIMIDAMIDE, N,N-BIS(4-CHLOROPHENYL)-3,12-DIIMINO-, DIACETATE", "CASNumber" : "56-95-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d78c" }, "ChemicalName" : "TETRACAINE HYROCHLORIDE", "CASNumber" : "136-47-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d78d" }, "ChemicalName" : "1,1,2,2-TETRACHLOROETHANE", "CASNumber" : "79-34-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d78e" }, "ChemicalName" : "TETRACHLOROETHYLENE", "CASNumber" : "127-18-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d78f" }, "ChemicalName" : "2,3,4,6-TETRACHLOROPHENOL,POTASSIUM SALT", "CASNumber" : "53535-27-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d790" }, "ChemicalName" : "2,3,4,6-TETRACHLOROPHENOL,SODIUM SALT", "CASNumber" : "25567-55-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d791" }, "ChemicalName" : "TETRACHLOROPHENOLS", "CASNumber" : "25167-83-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d792" }, "ChemicalName" : "TETRACHLORVINPHOS", "CASNumber" : "961-11-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d793" }, "ChemicalName" : "1-TETRADECANAMINIUM, N-ETHYL-N,N-DIMETHYL-, BROMIDE", "CASNumber" : "68527-84-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d794" }, "ChemicalName" : "11-TETRADECEN-1-OL, (E)-", "CASNumber" : "35153-18-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d795" }, "ChemicalName" : "11-TETRADECEN-1-OL, ACETATE, (E)-", "CASNumber" : "33189-72-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d796" }, "ChemicalName" : "11-TETRADECEN-1-OL, ACETATE, (Z)-", "CASNumber" : "20711-10-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d797" }, "ChemicalName" : "TETRADIFON", "CASNumber" : "116-29-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d798" }, "ChemicalName" : "TETRAGLYCINE HYDROPERIODIDE", "CASNumber" : "7097-60-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d799" }, "ChemicalName" : "1,2,3,6-TETRAHYDRO-3,6-DIOXOPYRIDAZINE", "CASNumber" : "123-33-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d79a" }, "ChemicalName" : "1,2,3,4-TETRAHYDRONAPHTHALENE", "CASNumber" : "119-64-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d79b" }, "ChemicalName" : "TETRAIODOETHYLENE", "CASNumber" : "513-92-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d79c" }, "ChemicalName" : "TETRAMETHRIN", "CASNumber" : "7696-12-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d79d" }, "ChemicalName" : "(1,1,3,3-TETRAMETHYLBUTYL)PHENOL", "CASNumber" : "27193-28-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d79e" }, "ChemicalName" : "TETRASODIUM PYROPHOSPHATE", "CASNumber" : "7722-88-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d79f" }, "ChemicalName" : "TETRASUL", "CASNumber" : "2227-13-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7a0" }, "ChemicalName" : "THIABENDAZOLE", "CASNumber" : "148-79-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7a1" }, "ChemicalName" : "THIAFLUAMIDE (FOE 5043)", "CASNumber" : "142459-58-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7a2" }, "ChemicalName" : "THIAMETHOXAM", "CASNumber" : "153719-23-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7a3" }, "ChemicalName" : "THIAZOPYR (MON 13200)", "CASNumber" : "117718-60-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7a4" }, "ChemicalName" : "THIDIAZURON", "CASNumber" : "51707-55-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7a5" }, "ChemicalName" : "THIOBENCARB", "CASNumber" : "28249-77-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7a6" }, "ChemicalName" : "2,2-THIOBIS(4,6-DICHLORO)PHENOL", "CASNumber" : "97-18-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7a7" }, "ChemicalName" : "1,1-THIOBISETHANE", "CASNumber" : "352-93-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7a8" }, "ChemicalName" : "THIODICARB", "CASNumber" : "59669-26-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7a9" }, "ChemicalName" : "THIOPHANATE ETHYL", "CASNumber" : "23564-06-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7aa" }, "ChemicalName" : "THIOPHANATE-METHYL", "CASNumber" : "23564-05-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7ab" }, "ChemicalName" : "THIRAM", "CASNumber" : "137-26-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7ac" }, "ChemicalName" : "THPS", "CASNumber" : "55566-30-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7ad" }, "ChemicalName" : "THYMOL", "CASNumber" : "89-83-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7ae" }, "ChemicalName" : "TOLUENE", "CASNumber" : "108-88-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7af" }, "ChemicalName" : "TORAK", "CASNumber" : "10311-84-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7b0" }, "ChemicalName" : "2,4,5-TP ACID (SILVEX)", "CASNumber" : "93-72-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7b1" }, "ChemicalName" : "TRALKOXYDIM", "CASNumber" : "87820-88-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7b2" }, "ChemicalName" : "1-TRIACONTANOL", "CASNumber" : "593-50-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7b3" }, "ChemicalName" : "TRIADIMEFON", "CASNumber" : "43121-43-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7b4" }, "ChemicalName" : "TRIADIMENOL (BAYTAN)", "CASNumber" : "55219-65-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7b5" }, "ChemicalName" : "TRIALLATE", "CASNumber" : "2303-17-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7b6" }, "ChemicalName" : "3,5,7-TRIAZA-1-AZONIATRICYCLO[3.3.1.1(3,7)]DECANE, 1-METHYL-, CHLORIDE", "CASNumber" : "76902-90-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7b7" }, "ChemicalName" : "3,5,7-TRIAZATRICYCLO[3.1.1.1(3,7)]DECANE, 1-(3-CHLORO-2-PROPENYL)-, CHLORIDE, (Z)-", "CASNumber" : "51229-78-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7b8" }, "ChemicalName" : "1,3,5-TRIAZINE-1,3,5(2H,4H,6H)-TRIETHANOL (9CI)", "CASNumber" : "1029713" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7b9" }, "ChemicalName" : "1,3,5-TRIAZINE-2,4,6(1H,3H,5H)-TRIONE, 1,3-DICHLORO-, SODIUMSALT, DIHYDRATE", "CASNumber" : "51580-86-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7ba" }, "ChemicalName" : "1,3,5-TRIAZINE-2,4,6-TRIAMINE, N,N,N-TRICHLORO-", "CASNumber" : "2108798" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7bb" }, "ChemicalName" : "1,3,5-TRIAZINE-2,4-DIAMINE, 6-CHLORO-N-(1,1-DIMETHYLETHYL)-N-ETHYL-", "CASNumber" : "5915-41-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7bc" }, "ChemicalName" : "1,3,5-TRIAZINE-2,4-DIAMINE, N-(1,1-DIMETHYLETHYL)-N-ETHYL-6-(METHYLTHIO)-", "CASNumber" : "886-50-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7bd" }, "ChemicalName" : "1,3,5-TRIAZINE-2,4-DIAMINE, N-CYCLOPROPYL-N-(1,1-DIMETHYLETHYL)-6-(METHYLTHIO)-", "CASNumber" : "28159-98-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7be" }, "ChemicalName" : "TRIBENURON METHYL", "CASNumber" : "101200-48-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7bf" }, "ChemicalName" : "3,4,5-TRIBRMOSALICYLANILIDE", "CASNumber" : "87-10-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7c0" }, "ChemicalName" : "TRIBUTYLTIN BENZOATE", "CASNumber" : "4342-36-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7c1" }, "ChemicalName" : "TRIBUTYLTIN CHLORIDE", "CASNumber" : "1461-22-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7c2" }, "ChemicalName" : "TRIBUTYLTIN FLUORIDE", "CASNumber" : "30593" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7c3" }, "ChemicalName" : "TRIBUTYLTIN METHACRYLATE", "CASNumber" : "2155-70-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7c4" }, "ChemicalName" : "TRICHLORFON", "CASNumber" : "52-68-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7c5" }, "ChemicalName" : "1,3,5-TRICHLORO-1,3,5-TRIAZINE-2,4,6 (1H,3H,5H)-TRIONE", "CASNumber" : "87-90-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7c6" }, "ChemicalName" : "TRICHLOROACETIC ACID", "CASNumber" : "76-03-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7c7" }, "ChemicalName" : "1,2,4-TRICHLOROBENZENE", "CASNumber" : "120-82-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7c8" }, "ChemicalName" : "TRICHLOROBENZYL CHLORIDE", "CASNumber" : "1344-32-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7c9" }, "ChemicalName" : "1,1,1-TRICHLOROETHANE", "CASNumber" : "71-55-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7ca" }, "ChemicalName" : "TRICHLOROETHYLENE", "CASNumber" : "79-01-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7cb" }, "ChemicalName" : "TRICHLOROFLUOROMETHANE", "CASNumber" : "75-69-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7cc" }, "ChemicalName" : "2,4,5-TRICHLOROPHENOL", "CASNumber" : "95-95-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7cd" }, "ChemicalName" : "2,4,6-TRICHLOROPHENOL", "CASNumber" : "88-06-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7ce" }, "ChemicalName" : "TRICLOCARBAN", "CASNumber" : "101-20-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7cf" }, "ChemicalName" : "TRICLOPYR (SALTS & ESTERS)", "CASNumber" : "55335-06-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7d0" }, "ChemicalName" : "TRICLOPYR TRIETHYLAMMONIUM SALT", "CASNumber" : "57213-69-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7d1" }, "ChemicalName" : "TRICLOSAN", "CASNumber" : "3380-34-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7d2" }, "ChemicalName" : "9-TRICOSENE, (E)-", "CASNumber" : "35857-62-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7d3" }, "ChemicalName" : "TRICYCLOHEXYLTIN HYDROXIDE", "CASNumber" : "13121-70-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7d4" }, "ChemicalName" : "4-TRIDECEN-1-OL, ACETATE, (E)-", "CASNumber" : "72269-48-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7d5" }, "ChemicalName" : "4-TRIDECEN-1-OL, ACETATE, (Z)-", "CASNumber" : "65954-19-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7d6" }, "ChemicalName" : "TRIETHANOLAMINE", "CASNumber" : "102-71-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7d7" }, "ChemicalName" : "TRIETHANOLAMINE DODECYLBENZENESULFONATE", "CASNumber" : "27323-41-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7d8" }, "ChemicalName" : "TRIETHYLENE GLYCOL", "CASNumber" : "112-27-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7d9" }, "ChemicalName" : "TRIFLOXYSTROBIN", "CASNumber" : "141517-21-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7da" }, "ChemicalName" : "TRIFLUMIZOLE", "CASNumber" : "68694-11-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7db" }, "ChemicalName" : "TRIFLURALIN", "CASNumber" : "1582-09-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7dc" }, "ChemicalName" : "TRIFLUSULFURON-METHYL", "CASNumber" : "126535-15-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7dd" }, "ChemicalName" : "TRIFORINE", "CASNumber" : "26644-46-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7de" }, "ChemicalName" : "TRIIODOBENZOIC ACID, 2,3,5-", "CASNumber" : "88-82-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7df" }, "ChemicalName" : "TRIMETHACARB (BROOT)", "CASNumber" : "2686-99-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7e0" }, "ChemicalName" : "2,6,6-TRIMETHYL-BICYCLO(3.1.1)HEPTANE, DIDEHYDRO DERIV.", "CASNumber" : "1330-16-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7e1" }, "ChemicalName" : "2,6,6-TRIMETHYLBICYCLO(3.1.1)-2-HEPT-2-ENE", "CASNumber" : "80-56-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7e2" }, "ChemicalName" : "2,3,5-TRIMETHYLPHENYL METHYLCARBAMATE", "CASNumber" : "2655-15-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7e3" }, "ChemicalName" : "TRINEXAPAC-ETHYL", "CASNumber" : "95266-40-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7e4" }, "ChemicalName" : "TRIPHENYLTIN HYDROXIDE", "CASNumber" : "76-87-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7e5" }, "ChemicalName" : "1,1,1-TRIS(HYDROXYMETHYL)NITROMETHANE", "CASNumber" : "126-11-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7e6" }, "ChemicalName" : "TURPENTINE", "CASNumber" : "8006-64-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7e7" }, "ChemicalName" : "TURPENTINE GUM", "CASNumber" : "9005-90-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7e8" }, "ChemicalName" : "10-UNDECENOIC ACID", "CASNumber" : "112-38-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7e9" }, "ChemicalName" : "UNICONAZOLE (PRUNIT)", "CASNumber" : "83657-17-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7ea" }, "ChemicalName" : "UPPER COAL TAR DISTILLATE", "CASNumber" : "65996-91-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7eb" }, "ChemicalName" : "UREA", "CASNumber" : "57-13-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7ec" }, "ChemicalName" : "VANCIDE TH", "CASNumber" : "7779-27-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7ed" }, "ChemicalName" : "VERNOLATE", "CASNumber" : "1929-77-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7ee" }, "ChemicalName" : "VINCLOZOLIN", "CASNumber" : "50471-44-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7ef" }, "ChemicalName" : "WARFARIN AND SALTS", "CASNumber" : "81-81-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7f0" }, "ChemicalName" : "WARFARIN SODIUM", "CASNumber" : "129-06-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7f1" }, "ChemicalName" : "WINTERGREEN OIL", "CASNumber" : "119-36-8" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7f2" }, "ChemicalName" : "XYLENE (MIXED ISOMERS)", "CASNumber" : "1330-20-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7f3" }, "ChemicalName" : "XYLENOL", "CASNumber" : "1300-71-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7f4" }, "ChemicalName" : "Z-8-DODECENYL ACETATE", "CASNumber" : "28079-04-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7f5" }, "ChemicalName" : "ZINC", "CASNumber" : "7440-66-6" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7f6" }, "ChemicalName" : "ZINC CHLORIDE FUME", "CASNumber" : "7646-85-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7f7" }, "ChemicalName" : "ZINC NAPHTHENATE", "CASNumber" : "12001-85-3" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7f8" }, "ChemicalName" : "ZINC OXIDE", "CASNumber" : "1314-13-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7f9" }, "ChemicalName" : "ZINC PHENOLSULFONATE", "CASNumber" : "127-82-2" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7fa" }, "ChemicalName" : "ZINC PHOSPHIDE", "CASNumber" : "1314-84-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7fb" }, "ChemicalName" : "ZINC SILICFLUORIDE", "CASNumber" : "16871-71-9" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7fc" }, "ChemicalName" : "ZINC STEARATE", "CASNumber" : "557-05-1" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7fd" }, "ChemicalName" : "ZINC SULFATE", "CASNumber" : "7733-02-0" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7fe" }, "ChemicalName" : "ZINC SULFATE (BASIC)", "CASNumber" : "68813-94-5" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d7ff" }, "ChemicalName" : "ZINC, BIS(1-HYDROXY-2(1H)-PYRIDINETHIONATO-O,S)-, (T-4)-", "CASNumber" : "13463-41-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d800" }, "ChemicalName" : "ZINEB", "CASNumber" : "12122-67-7" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d801" }, "ChemicalName" : "ZIRAM", "CASNumber" : "137-30-4" }
+{ "_id" : { "$oid" : "5191121e1cb665979448d802" }, "ChemicalName" : "ZOXAMIDE", "CASNumber" : "156052-68-5" }

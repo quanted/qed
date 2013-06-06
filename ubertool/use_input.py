@@ -20,20 +20,19 @@ import logging
 
 class UseInputPage(webapp.RequestHandler):
     def get(self):
+        ubertool_service_url = os.environ['UBERTOOL_MONGO_SERVER']
         logger = logging.getLogger(__name__)
         cookies = self.request.cookies
         #logger.info(cookies)
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         #html = template.render(templatepath + '01uberheaderchance.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + 'ubertool_use_jquery.html', {})
+        html = html + template.render(templatepath + 'ubertool_use_jquery.html', {'ubertool_service_url':ubertool_service_url})
         html = html + template.render(templatepath + '02uberintroblock_nomodellinks.html', {'title2':'Use/Label/Site Data', 'model':'use'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {'model':'use'})
+        html = html + template.render(templatepath + '04uberinput_use_start.html', {'model':'use'})
         html = html + str(use_db.UseInp())
-        html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
-        #html = html + template.render(templatepath + '05ubertext_links_rightchance.html', {})
+        html = html + template.render(templatepath + '04uberinput_use_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

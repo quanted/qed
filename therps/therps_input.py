@@ -26,13 +26,26 @@ class THerpsInputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'therps','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})        
-        html = html + template.render(templatepath + '04uberinput_start.html', {
+        html = html + template.render(templatepath + '04uberinput_start_tabbed.html', {
                 'model':'therps', 
                 'model_attributes':'T-Herps Inputs'})
-        html = html + str(therps_parameters.therpsInp())
-        html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render(templatepath + 'therps_jquery.html', {})
-        html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
+        html = html + """
+        <div id="input_nav">
+            <ul>
+                <li>| <a class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </a> </li>
+                <li>| <a class="Avian" style="font-weight:bold"> Avian </a> </li>
+                <li>| <a class="Herptile" style="font-weight:bold"> Herptile </a> |</li>
+            </ul>
+        </div>
+        """
+        html = html + """<br><table class="tab tab_Chemical" border="0">"""
+        html = html + str(therps_parameters.trexInp_chem())
+        html = html + """</table><table class="tab tab_Avian" border="0" style="display:none">"""
+        html = html + str(therps_parameters.trexInp_bird())
+        html = html + """</table><table class="tab tab_Herptile" border="0" style="display:none">"""
+        html = html + str(therps_parameters.trexInp_herp())
+        html = html + template.render(templatepath + 'therps_input_end.html', {'sub_title': 'Submit'})
+        html = html + template.render(templatepath + 'therps-jquery.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

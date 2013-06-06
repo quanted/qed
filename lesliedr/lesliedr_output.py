@@ -78,7 +78,7 @@ class lesliedrOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'lesliedr', 
                 'model_attributes':'Leslie Model with Logistic Dose Response Output'})
-        html = html + """<table class="out-in" width="550" border="1">
+        html = html + """<table class="out-in out_" width="550" border="1">
                           <tr>
                             <th scope="col" width="250"><div align="center">Inputs</div></th>
                             <th scope="col" width="150"><div align="center">Unit</div></th>                            
@@ -142,9 +142,9 @@ class lesliedrOutputPage(webapp.RequestHandler):
                         </table>
                         <p>&nbsp;</p>"""%(a_n, c_n, HL, Con, T, a, b, c, S, l_m.tolist(), n_o.tolist())
                         
-        html = html + """<table class="lm" border="1">"""
+        html = html + """<table class="lm out_" border="1">"""
                                                                                         
-        html = html + """<table class="it" border="1">"""
+        html = html + """<table class="it out_" border="1">"""
 
         html = html +  """<table width="400" border="1" style="display:none">
                           <tr>
@@ -158,6 +158,7 @@ class lesliedrOutputPage(webapp.RequestHandler):
                           </table>"""%(x,x_f)
         html = html + template.render(templatepath + 'lesliedr-output-jqplot.html', {})                         
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)
      

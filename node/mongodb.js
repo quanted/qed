@@ -49,11 +49,13 @@
       db.collection('Batch', function(err,collection){
         collection.insert({batchId:batch_id,ubertool_data:{}});
         collection.findOne({batchId:batch_id}, function(err, batch) {
-          var objId = batch._id;
-          var createdTimestamp = objId.getTimestamp();
-          batch.created = createdTimestamp;
-          collection.save(batch);
-          callback(batch_id,data);
+            if(batch != null)
+            {
+              var createdTime = new Date();
+              batch.created = createdTime.toString();
+              collection.save(batch);
+            }
+            callback(null,batch_id,data);
         });
       });
     }
@@ -64,17 +66,20 @@
             collection.findOne({batchId:batch_id}, function(err, batch) {
                 console.log("addEmptyUbertoolRun  ");
                 var ubertool_run = {};
-                var objId = batch._id;
-                var createdTimestamp = objId.getTimestamp();
-                ubertool_run.created = createdTimestamp;
+                var createdTime = new Date();
+                ubertool_run.created = createdTime.toString();
                 ubertool_run.config_name = config_name;
+                ubertool_run.config_properties = ubertoolRunData;
                 var ubertool_data = batch.ubertool_data;
+                console.log('Before - ubertool_data: ' + ubertool_data);
                 if(ubertool_data == null)
                 {
                     ubertool_data = {};
                 }
                 ubertool_data[config_name] = ubertool_run;
+                console.log('After - ubertool_data: ' + ubertool_data);
                 batch.ubertool_data = ubertool_data;
+                batch.created = createdTime.toString();
                 collection.save(batch);
                 console.log(batch);
                 callback(ubertoolRunData);
@@ -98,44 +103,50 @@
         console.log("Finding One batch for update.");
         console.log(batch);
           
-        var isCompleted = true;
-        var ubertool_data = batch.ubertool_data;
-        for(var ubertool_run in ubertool_data)
+        var isCompleted = false;
+        if(ubertool_data in batch)
         {
-            var tempIsCompleted = updateCompletedUbertoolRun(collection,batch,ubertool_data[ubertool_run],config_name,data)
-            isCompleted = isCompleted ? tempIsCompleted: isCompleted;
+            var ubertool_data = batch.ubertool_data;
+            for(var ubertool_run in ubertool_data)
+            {
+                var tempIsCompleted = updateCompletedUbertoolRun(collection,batch,ubertool_data[ubertool_run],config_name,data)
+                if(!isCompleted && tempIsCompleted)
+                {
+                    isCompleted = true;
+                }
+            }
+            if(isCompleted)
+            {
+                var completedTime = new Date();
+                batch.completed = completedTime.toString();
+            }
+            collection.save(batch);
+            callback(batch);
         }
-        if(isCompleted)
-        {
-            var objId = batch._id;
-            var createdTimestamp = objId.getTimestamp();
-            batch.completed = createdTimestamp;
-        }
-        collection.save(batch);
-        callback(batch);
     }
 
     function updateCompletedUbertoolRun(collection,batch,ubertool_run,config_name,data )
     {
         var isCompleted = true;
         var ubertool_run_config_name = ubertool_run.config_name;
-        console.log("updateUbertoolRun: " + ubertool_run_config_name);
+        console.log("updateUbertoolRun: " + ubertool_run_config_name + " config_name: " + config_name);
         if(ubertool_run_config_name == config_name)
         {
-            var objId = batch._id;
-            var ubertoolCompleted = objId.getTimestamp();
+            console.log("Completed ubertool run: " + ubertool_run_config_name);
             for(var datum in data)
             {
                 ubertool_run[datum] = data[datum];
             }
-            ubertool_run.completed = ubertoolCompleted;
+            var completedTime = new Date();
+            ubertool_run.completed = completedTime.toString();
             collection.save(batch);
         } else {
             var ubertoolRunCompleted = ubertool_run.completed;
-            if(ubertoolRunCompleted == null || ubertoolRunCompleted == false)
+            if(ubertoolRunCompleted == null)
             {
                 isCompleted = false;
             }
+            console.log("Ubertool run: " + ubertool_run_config_name + " completion status: " + isCompleted);
         }
         return isCompleted;
     }

@@ -69,7 +69,7 @@ def gett2data(sip_obj):
 def gett3data(sip_obj):
     data = { 
         "Parameter": ['Upper Bound Exposure', 'Adjusted Toxicity Value', 'Ratio of Exposure to Toxicity', 'Conclusion',],
-        "Acute": ['%.2e' % sip_obj.dose_bird, '%.2e' % sip_obj.at_bird,'%.2e' % sip_obj.acute_bird, '%s' % sip_obj.acuconb,],
+        "Acute": ['%.2e' % sip_obj.acute_bird, '%.2e' % sip_obj.at_bird,'%.2e' % sip_obj.acute_bird, '%s' % sip_obj.acuconb,],
         "Chronic": ['%.2e' % sip_obj.dose_bird, '%.2e' % sip_obj.det,'%.2e' % sip_obj.chron_bird, '%s' % sip_obj.chronconb,],
         "Units": ['mg/kg-bw', 'mg/kg-bw', '', '',],
     }

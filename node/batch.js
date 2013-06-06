@@ -92,6 +92,17 @@ server.post('/user/registration/:user_id', function(req, res, next){
     });
 });
 
+server.get('/user/openid/login/:openid', function(req,res,next){
+    var openid = req.params.openid;
+    console.console.log("OpenId: " + openid);
+    user.openIdLogin(openId, function(err, login_data){
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.header('Access-Control-Allow-Methods', "GET");
+        res.send(login_data);
+    });
+});
+
 //Batch REST Services
 server.get('/batch_configs', function(req, res, next){
     mongodb.getBatchNames(function(error, batch_ids){

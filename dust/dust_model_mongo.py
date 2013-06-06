@@ -3,6 +3,7 @@ import logging
 import sys
 import math
 
+
 class dust(object):
 
     def __init__(self, chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res, bird_acute_oral_study, bird_study_add_comm,
@@ -385,4 +386,28 @@ class dust(object):
     
     
     
-  
+sys.path.append('C:\Python27\Lib\site-packages')
+
+import pymongo
+from django.utils import simplejson
+import json
+
+dust_obj = dust("Chem 1", "", 2, 0.2, 2, 2, 2, 2, 2, 0.5, 2, 2, 2, 2)
+
+
+client = pymongo.MongoClient()
+print client
+
+# print dust_json
+db = client.test_database
+posts = db.posts
+# print dust_obj.__dict__
+posts.save(dust_obj.__dict__)
+
+# print db
+# print posts
+
+print posts.find_one({"LOC_bgs_amp": "Potentially Significant Pathway"})
+
+for post in posts.find():
+    print post

@@ -122,30 +122,30 @@ def getdjtemplate_5():
     """
     return dj_template
 
-def gett1data(chemical_name, Use, Formulated_product_name, percent_ai, Foliar_dissipation_half_life, number_of_applications, interval_between_applications, application_rate):
+def gett1data(therps_obj):
     data = { 
         "Parameter": ['Chemical Name', 'Use', 'Formulated product name', 'Percentage active ingredient', 'Foliar dissipation half-life', 'Number of applications',
                       'Interval between applications', 'Application rate',],
-        "Value": ['%s' % chemical_name, '%s' % Use, '%s' % Formulated_product_name, '%s' % percent_ai, '%s' % Foliar_dissipation_half_life, '%s' % number_of_applications, 
-                  '%s' % interval_between_applications, '%s' % application_rate,],
+        "Value": ['%s' % therps_obj.chem_name, '%s' % therps_obj.use, '%s' % therps_obj.formu_name, '%s' % therps_obj.a_i, '%s' % therps_obj.h_l, '%s' % therps_obj.n_a, 
+                  '%s' % therps_obj.i_a, '%s' % therps_obj.a_r,],
         "Units": ['', '', '', '%', 'days', '', 'days', 'lbs a.i./A',],
     }
     return data
 
-def gett2data(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, Species_of_the_tested_bird, body_weight_of_the_tested_bird, mineau_scaling_factor):
+def gett2data(therps_obj):
     data = { 
         "Parameter": ['Avian LD50', 'Avian LC50', 'Avian NOAEC', 'Avian NOAEL', 'Species of the tested bird', 'Body weight of the tested bird', 'Mineau scaling factor', ],
-        "Value": ['%s' % avian_ld50, '%s' % avian_lc50, '%s' % avian_NOAEC, '%s' % avian_NOAEL, '%s' % Species_of_the_tested_bird, '%s' % body_weight_of_the_tested_bird, '%s' % mineau_scaling_factor,],
+        "Value": ['%s' % therps_obj.ld50_bird, '%s' % therps_obj.lc50_bird, '%s' % therps_obj.NOAEC_bird, '%s' % therps_obj.NOAEL_bird, '%s' % therps_obj.Species_of_the_tested_bird, '%s' % therps_obj.tw_bird, '%s' % therps_obj.x,],
         "Units": ['mg/kg-bw', 'mg/kg-diet', 'mg/kg-diet', 'mg/kg-bw', '', 'g', '',],
     }
     return data
 
-def gett3data(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md, wp_herp_a_lg, c_mamm_a, c_herp_a):
+def gett3data(therps_obj):
     data = { 
         "Parameter": ['Body weight of assessed small herptile', 'Body weight of assessed medium herptile', 'Body weight of assessed large herptile', 
                       "Water content of the assessed small herptile's diet", "Water content of the assessed medium herptile's diet", "Water content of the assessed large herptile's diet", 
                       'Weight of the mammal consumed by assessed frog', 'Weight of the herptile consumed by assessed frog', ],
-        "Value": ['%s' % bw_herp_a_sm, '%s' % bw_herp_a_md, '%s' % bw_herp_a_lg, '%s' % wp_herp_a_sm, '%s' % wp_herp_a_md, '%s' % wp_herp_a_lg, '%s' % c_mamm_a, '%s' % c_herp_a,],
+        "Value": ['%s' % therps_obj.bw_herp_a_sm, '%s' % therps_obj.bw_herp_a_md, '%s' % therps_obj.bw_herp_a_lg, '%s' % therps_obj.wp_herp_a_sm, '%s' % therps_obj.wp_herp_a_md, '%s' % therps_obj.wp_herp_a_lg, '%s' % therps_obj.c_mamm_a, '%s' % therps_obj.c_herp_a,],
         "Units": ['g', 'g', 'g', '%', '%', '%', 'g', 'g',],
     }
     return data
@@ -335,14 +335,13 @@ tmpl = Template(djtemplate)
 tmpl_5 = Template(djtemplate_5)
 
 
-def table_all(chem_name, use, formu_name, a_i, h_l, n_a, i_a, a_r, ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, 
-              Species_of_the_tested_bird, tw_bird, x, bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md, wp_herp_a_lg, c_mamm_a, c_herp_a):
-    table1_out = table_1(chem_name, use, formu_name, a_i, h_l, n_a, i_a, a_r)
-    table2_out = table_2(ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, Species_of_the_tested_bird, tw_bird, x)
-    table3_out = table_3(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md, wp_herp_a_lg, c_mamm_a, c_herp_a)
-    table5_out = table_5(lc50_bird, n_a, i_a, a_r, a_i, h_l, c_mamm_a, c_herp_a, wp_herp_a_sm)
-    table6_out = table_6(NOAEC_bird, n_a, i_a, a_r, a_i, h_l, c_mamm_a, c_herp_a, wp_herp_a_sm)
-    table7_out = table_7(ld50_bird, tw_bird, x, n_a, i_a, a_r, a_i, h_l, c_mamm_a, c_herp_a, bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md, wp_herp_a_lg)
+def table_all(therps_obj):
+    table1_out = table_1(therps_obj)
+    table2_out = table_2(therps_obj)
+    table3_out = table_3(therps_obj)
+    table5_out = table_5(therps_obj)
+    table6_out = table_6(therps_obj)
+    table7_out = table_7(therps_obj)
 
     html_all = table1_out
     html_all = html_all + table2_out
@@ -450,7 +449,7 @@ def table_sum_7(bw_herp_a_sm_out, bw_herp_a_md_out, bw_herp_a_lg_out, LD50_AD_sm
         return html
 
 
-def table_1(chemical_name, Use, Formulated_product_name, percent_ai, Foliar_dissipation_half_life, number_of_applications, interval_between_applications, application_rate):
+def table_1(therps_obj):
         #pre-table 1
         html = """
         <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs:</H3>
@@ -459,7 +458,7 @@ def table_1(chemical_name, Use, Formulated_product_name, percent_ai, Foliar_diss
                 <div class="out_ container_output">
         """
         #table 1
-        t1data = gett1data(chemical_name, Use, Formulated_product_name, percent_ai, Foliar_dissipation_half_life, number_of_applications, interval_between_applications, application_rate)
+        t1data = gett1data(therps_obj)
         t1rows = gethtmlrowsfromcols(t1data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
         html = html + """
@@ -467,14 +466,14 @@ def table_1(chemical_name, Use, Formulated_product_name, percent_ai, Foliar_diss
         """
         return html
 
-def table_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, Species_of_the_tested_bird, body_weight_of_the_tested_bird, mineau_scaling_factor):
+def table_2(therps_obj):
         #pre-table 2
         html = """
             <H4 class="out_2 collapsible" id="section3"><span></span>Toxicity Properties</H4>
                 <div class="out_ container_output">
         """
         #table 2
-        t2data = gett2data(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, Species_of_the_tested_bird, body_weight_of_the_tested_bird, mineau_scaling_factor)
+        t2data = gett2data(therps_obj)
         t2rows = gethtmlrowsfromcols(t2data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t2rows, headings=pvuheadings)))
         html = html + """
@@ -482,14 +481,14 @@ def table_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, Species_of_the_tes
         """
         return html
 
-def table_3(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md, wp_herp_a_lg, c_mamm_a, c_herp_a):
+def table_3(therps_obj):
         #pre-table 3
         html = """
             <H4 class="out_3 collapsible" id="section4"><span></span>Assessed Species Inputs</H4>
                 <div class="out_ container_output">
         """
         #table 3
-        t3data = gett3data(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md, wp_herp_a_lg, c_mamm_a, c_herp_a)
+        t3data = gett3data(therps_obj)
         t3rows = gethtmlrowsfromcols(t3data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t3rows, headings=pvuheadings)))
         html = html + """
@@ -498,7 +497,7 @@ def table_3(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md
         """
         return html
 
-def table_5(lc50_bird, n_a, i_a, a_r, a_i, h_l, c_mamm_a, c_herp_a, wp_herp_a_sm):
+def table_5(therps_obj):
         #pre-table 5
         html = """
         <br>
@@ -508,18 +507,18 @@ def table_5(lc50_bird, n_a, i_a, a_r, a_i, h_l, c_mamm_a, c_herp_a, wp_herp_a_sm
                 <div class="out_ container_output">
         """
         #table 5
-        EEC_diet_herp_BL=therps_model.EEC_diet(therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l)
-        EEC_ARQ_herp_BL=therps_model.ARQ_diet_herp(therps_model.EEC_diet, lc50_bird, therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l)
-        EEC_diet_herp_FR=therps_model.C_0(a_r, a_i, 15)
-        EEC_ARQ_herp_FR=therps_model.ARQ_diet_herp(therps_model.EEC_diet, lc50_bird, therps_model.C_0, n_a, i_a, a_r, a_i, 15, h_l)
-        EEC_diet_herp_HM=therps_model.EEC_diet_mamm(therps_model.EEC_diet, therps_model.C_0, n_a, i_a, a_r, a_i, 240, h_l, therps_model.fi_mamm, c_mamm_a, 0.8)
-        EEC_ARQ_herp_HM=therps_model.ARQ_diet_mamm(therps_model.EEC_diet_mamm, lc50_bird, therps_model.C_0, n_a, i_a, a_r, a_i, 240, h_l, therps_model.fi_mamm, c_mamm_a, 0.8)
-        EEC_diet_herp_IM=therps_model.EEC_diet_mamm(therps_model.EEC_diet, therps_model.C_0, n_a, i_a, a_r, a_i, 15, h_l, therps_model.fi_mamm, c_mamm_a, 0.8)
-        EEC_ARQ_herp_IM=therps_model.ARQ_diet_mamm(therps_model.EEC_diet_mamm, lc50_bird, therps_model.C_0, n_a, i_a, a_r, a_i, 15, h_l, therps_model.fi_mamm, c_mamm_a, 0.8)
-        EEC_diet_herp_TP=therps_model.EEC_diet_tp(therps_model.EEC_diet, therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l, therps_model.fi_herp, c_herp_a, wp_herp_a_sm)
-        EEC_ARQ_herp_TP=therps_model.ARQ_diet_tp(therps_model.EEC_diet_tp, lc50_bird, therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l, therps_model.fi_herp, c_herp_a, wp_herp_a_sm)
+        EEC_diet_herp_BL=therps_obj.EEC_diet_herp_BL
+        EEC_ARQ_herp_BL =therps_obj.EEC_ARQ_herp_BL 
+        EEC_diet_herp_FR=therps_obj.EEC_diet_herp_FR
+        EEC_ARQ_herp_FR =therps_obj.EEC_ARQ_herp_FR 
+        EEC_diet_herp_HM=therps_obj.EEC_diet_herp_HM
+        EEC_ARQ_herp_HM =therps_obj.EEC_ARQ_herp_HM 
+        EEC_diet_herp_IM=therps_obj.EEC_diet_herp_IM
+        EEC_ARQ_herp_IM =therps_obj.EEC_ARQ_herp_IM 
+        EEC_diet_herp_TP=therps_obj.EEC_diet_herp_TP
+        EEC_ARQ_herp_TP =therps_obj.EEC_ARQ_herp_TP 
 
-        t5data = gett5data(lc50_bird, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_FR, EEC_ARQ_herp_FR, EEC_diet_herp_HM, EEC_ARQ_herp_HM, EEC_diet_herp_IM, EEC_ARQ_herp_IM, EEC_diet_herp_TP, EEC_ARQ_herp_TP)
+        t5data = gett5data(therps_obj.lc50_bird, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_FR, EEC_ARQ_herp_FR, EEC_diet_herp_HM, EEC_ARQ_herp_HM, EEC_diet_herp_IM, EEC_ARQ_herp_IM, EEC_diet_herp_TP, EEC_ARQ_herp_TP)
         t5rows = gethtmlrowsfromcols(t5data,pv5headings[1])       
         html = html + tmpl_5.render(Context(dict(data=t5rows, l_headings=pv5headings[0][0])))
         html = html + """
@@ -528,25 +527,25 @@ def table_5(lc50_bird, n_a, i_a, a_r, a_i, h_l, c_mamm_a, c_herp_a, wp_herp_a_sm
         return {'html':html, 'EEC_diet_herp_BL':EEC_diet_herp_BL, 'EEC_ARQ_herp_BL':EEC_ARQ_herp_BL, 'EEC_diet_herp_FR':EEC_diet_herp_FR, 'EEC_ARQ_herp_FR':EEC_ARQ_herp_FR, 
                 'EEC_diet_herp_HM':EEC_diet_herp_HM, 'EEC_ARQ_herp_HM':EEC_ARQ_herp_HM, 'EEC_diet_herp_IM':EEC_diet_herp_IM, 'EEC_ARQ_herp_IM':EEC_ARQ_herp_IM, 'EEC_diet_herp_TP':EEC_diet_herp_TP, 'EEC_ARQ_herp_TP':EEC_ARQ_herp_TP}
 
-def table_6(NOAEC_bird, n_a, i_a, a_r, a_i, h_l, c_mamm_a, c_herp_a, wp_herp_a_sm):
+def table_6(therps_obj):
         #pre-table 6
         html = """
             <H4 class="out_6 collapsible" id="section7"><span></span>Upper Bound Kenaga, Chronic Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
                 <div class="out_ container_output">
         """
         #table 6
-        EEC_diet_herp_BL=therps_model.EEC_diet(therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l)
-        EEC_CRQ_herp_BL=therps_model.CRQ_diet_herp(therps_model.EEC_diet, NOAEC_bird, therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l)
-        EEC_diet_herp_FR=therps_model.C_0(a_r, a_i, 15)
-        EEC_CRQ_herp_FR=therps_model.CRQ_diet_herp(therps_model.EEC_diet, NOAEC_bird, therps_model.C_0, n_a, i_a, a_r, a_i, 15, h_l)
-        EEC_diet_herp_HM=therps_model.EEC_diet_mamm(therps_model.EEC_diet, therps_model.C_0, n_a, i_a, a_r, a_i, 240, h_l, therps_model.fi_mamm, c_mamm_a, 0.8)
-        EEC_CRQ_herp_HM=therps_model.CRQ_diet_mamm(therps_model.EEC_diet_mamm, therps_model.EEC_diet, NOAEC_bird, therps_model.C_0, n_a, i_a, a_r, a_i, 240, h_l, therps_model.fi_mamm, c_mamm_a, 0.8)
-        EEC_diet_herp_IM=therps_model.EEC_diet_mamm(therps_model.EEC_diet, therps_model.C_0, n_a, i_a, a_r, a_i, 15, h_l, therps_model.fi_mamm, c_mamm_a, 0.8)
-        EEC_CRQ_herp_IM=therps_model.CRQ_diet_mamm(therps_model.EEC_diet_mamm, therps_model.EEC_diet, NOAEC_bird, therps_model.C_0, n_a, i_a, a_r, a_i, 15, h_l, therps_model.fi_mamm, c_mamm_a, 0.8)
-        EEC_diet_herp_TP=therps_model.EEC_diet_tp(therps_model.EEC_diet, therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l, therps_model.fi_herp, c_herp_a, wp_herp_a_sm)
-        EEC_CRQ_herp_TP=therps_model.CRQ_diet_tp(therps_model.EEC_diet_tp, therps_model.EEC_diet, NOAEC_bird, therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l, therps_model.fi_herp, c_herp_a, wp_herp_a_sm)
+        EEC_diet_herp_BL=therps_obj.EEC_diet_herp_BL
+        EEC_CRQ_herp_BL =therps_obj.EEC_CRQ_herp_BL 
+        EEC_diet_herp_FR=therps_obj.EEC_diet_herp_FR
+        EEC_CRQ_herp_FR =therps_obj.EEC_CRQ_herp_FR 
+        EEC_diet_herp_HM=therps_obj.EEC_diet_herp_HM
+        EEC_CRQ_herp_HM =therps_obj.EEC_CRQ_herp_HM 
+        EEC_diet_herp_IM=therps_obj.EEC_diet_herp_IM
+        EEC_CRQ_herp_IM =therps_obj.EEC_CRQ_herp_IM 
+        EEC_diet_herp_TP=therps_obj.EEC_diet_herp_TP
+        EEC_CRQ_herp_TP =therps_obj.EEC_CRQ_herp_TP 
 
-        t6data = gett6data(NOAEC_bird, EEC_diet_herp_BL, EEC_CRQ_herp_BL, EEC_diet_herp_FR, EEC_CRQ_herp_FR, EEC_diet_herp_HM, EEC_CRQ_herp_HM, EEC_diet_herp_IM, EEC_CRQ_herp_IM, EEC_diet_herp_TP, EEC_CRQ_herp_TP)
+        t6data = gett6data(therps_obj.NOAEC_bird, EEC_diet_herp_BL, EEC_CRQ_herp_BL, EEC_diet_herp_FR, EEC_CRQ_herp_FR, EEC_diet_herp_HM, EEC_CRQ_herp_HM, EEC_diet_herp_IM, EEC_CRQ_herp_IM, EEC_diet_herp_TP, EEC_CRQ_herp_TP)
         t6rows = gethtmlrowsfromcols(t6data,pv6headings[1])       
         html = html + tmpl_5.render(Context(dict(data=t6rows, l_headings=pv6headings[0][0])))
         html = html + """
@@ -555,45 +554,45 @@ def table_6(NOAEC_bird, n_a, i_a, a_r, a_i, h_l, c_mamm_a, c_herp_a, wp_herp_a_s
         return {'html':html, 'EEC_diet_herp_BL':EEC_diet_herp_BL, 'EEC_CRQ_herp_BL':EEC_CRQ_herp_BL, 'EEC_diet_herp_FR':EEC_diet_herp_FR, 'EEC_CRQ_herp_FR':EEC_CRQ_herp_FR, 
                 'EEC_diet_herp_HM':EEC_diet_herp_HM, 'EEC_CRQ_herp_HM':EEC_CRQ_herp_HM, 'EEC_diet_herp_IM':EEC_diet_herp_IM, 'EEC_CRQ_herp_IM':EEC_CRQ_herp_IM, 'EEC_diet_herp_TP':EEC_diet_herp_TP, 'EEC_CRQ_herp_TP':EEC_CRQ_herp_TP}
 
-def table_7(ld50_bird, tw_bird, x, n_a, i_a, a_r, a_i, h_l, c_mamm_a, c_herp_a, bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md, wp_herp_a_lg):
+def table_7(therps_obj):
         #pre-table 7
         html = """
             <H4 class="out_7 collapsible" id="section8"><span></span>Upper Bound Kenaga, Acute Terrestrial Herpetofauna Dose-Based Risk Quotients</H4>
                 <div class="out_ container_output">
         """
         #table 7
-        LD50_AD_sm=therps_model.at_bird(ld50_bird, bw_herp_a_sm, tw_bird, x)
-        LD50_AD_md=therps_model.at_bird(ld50_bird, bw_herp_a_md, tw_bird, x)
-        LD50_AD_lg=therps_model.at_bird(ld50_bird, bw_herp_a_lg, tw_bird, x)
+        LD50_AD_sm=therps_obj.LD50_AD_sm
+        LD50_AD_md=therps_obj.LD50_AD_md
+        LD50_AD_lg=therps_obj.LD50_AD_lg
 
-        EEC_dose_BP_sm=therps_model.EEC_dose_herp(therps_model.EEC_diet, bw_herp_a_sm, therps_model.fi_herp, wp_herp_a_sm, therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l)
-        EEC_dose_BP_md=therps_model.EEC_dose_herp(therps_model.EEC_diet, bw_herp_a_md, therps_model.fi_herp, wp_herp_a_md, therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l)
-        EEC_dose_BP_lg=therps_model.EEC_dose_herp(therps_model.EEC_diet, bw_herp_a_lg, therps_model.fi_herp, wp_herp_a_lg, therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l)
-        ARQ_dose_BP_sm=therps_model.ARQ_dose_herp(therps_model.EEC_dose_herp, therps_model.EEC_diet, bw_herp_a_sm, therps_model.fi_herp, therps_model.at_bird, ld50_bird, tw_bird, x, wp_herp_a_sm, therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l)
-        ARQ_dose_BP_md=therps_model.ARQ_dose_herp(therps_model.EEC_dose_herp, therps_model.EEC_diet, bw_herp_a_md, therps_model.fi_herp, therps_model.at_bird, ld50_bird, tw_bird, x, wp_herp_a_md, therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l)
-        ARQ_dose_BP_lg=therps_model.ARQ_dose_herp(therps_model.EEC_dose_herp, therps_model.EEC_diet, bw_herp_a_lg, therps_model.fi_herp, therps_model.at_bird, ld50_bird, tw_bird, x, wp_herp_a_lg, therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l)
+        EEC_dose_BP_sm=therps_obj.EEC_dose_BP_sm
+        EEC_dose_BP_md=therps_obj.EEC_dose_BP_md
+        EEC_dose_BP_lg=therps_obj.EEC_dose_BP_lg
+        ARQ_dose_BP_sm=therps_obj.ARQ_dose_BP_sm
+        ARQ_dose_BP_md=therps_obj.ARQ_dose_BP_md
+        ARQ_dose_BP_lg=therps_obj.ARQ_dose_BP_lg
 
-        EEC_dose_FR_sm=therps_model.EEC_dose_herp(therps_model.EEC_diet, bw_herp_a_sm, therps_model.fi_herp, wp_herp_a_sm, therps_model.C_0, n_a, i_a, a_r, a_i, 15, h_l)
-        EEC_dose_FR_md=therps_model.EEC_dose_herp(therps_model.EEC_diet, bw_herp_a_md, therps_model.fi_herp, wp_herp_a_md, therps_model.C_0, n_a, i_a, a_r, a_i, 15, h_l)
-        EEC_dose_FR_lg=therps_model.EEC_dose_herp(therps_model.EEC_diet, bw_herp_a_lg, therps_model.fi_herp, wp_herp_a_lg, therps_model.C_0, n_a, i_a, a_r, a_i, 15, h_l)
-        ARQ_dose_FR_sm=therps_model.ARQ_dose_herp(therps_model.EEC_dose_herp, therps_model.EEC_diet, bw_herp_a_sm, therps_model.fi_herp, therps_model.at_bird, ld50_bird, tw_bird, x, wp_herp_a_sm, therps_model.C_0, n_a, i_a, a_r, a_i, 15, h_l)
-        ARQ_dose_FR_md=therps_model.ARQ_dose_herp(therps_model.EEC_dose_herp, therps_model.EEC_diet, bw_herp_a_md, therps_model.fi_herp, therps_model.at_bird, ld50_bird, tw_bird, x, wp_herp_a_md, therps_model.C_0, n_a, i_a, a_r, a_i, 15, h_l)
-        ARQ_dose_FR_lg=therps_model.ARQ_dose_herp(therps_model.EEC_dose_herp, therps_model.EEC_diet, bw_herp_a_lg, therps_model.fi_herp, therps_model.at_bird, ld50_bird, tw_bird, x, wp_herp_a_lg, therps_model.C_0, n_a, i_a, a_r, a_i, 15, h_l)
+        EEC_dose_FR_sm=therps_obj.EEC_dose_FR_sm
+        EEC_dose_FR_md=therps_obj.EEC_dose_FR_md
+        EEC_dose_FR_lg=therps_obj.EEC_dose_FR_lg
+        ARQ_dose_FR_sm=therps_obj.ARQ_dose_FR_sm
+        ARQ_dose_FR_md=therps_obj.ARQ_dose_FR_md
+        ARQ_dose_FR_lg=therps_obj.ARQ_dose_FR_lg
 
-        EEC_dose_HM_md=therps_model.EEC_dose_mamm(therps_model.EEC_diet_mamm, therps_model.EEC_diet, therps_model.C_0, n_a, i_a, a_r, a_i, 240, h_l, bw_herp_a_md, c_mamm_a, 0.8)
-        EEC_dose_HM_lg=therps_model.EEC_dose_mamm(therps_model.EEC_diet_mamm, therps_model.EEC_diet, therps_model.C_0, n_a, i_a, a_r, a_i, 240, h_l, bw_herp_a_lg, c_mamm_a, 0.8)
-        ARQ_dose_HM_md=therps_model.ARQ_dose_mamm(therps_model.EEC_dose_mamm, therps_model.EEC_diet_mamm, bw_herp_a_md, therps_model.fi_herp, therps_model.at_bird, ld50_bird, tw_bird, x, c_mamm_a, 0.8, therps_model.C_0, n_a, i_a, a_r, a_i, 240, h_l)
-        ARQ_dose_HM_lg=therps_model.ARQ_dose_mamm(therps_model.EEC_dose_mamm, therps_model.EEC_diet_mamm, bw_herp_a_lg, therps_model.fi_herp, therps_model.at_bird, ld50_bird, tw_bird, x, c_mamm_a, 0.8, therps_model.C_0, n_a, i_a, a_r, a_i, 240, h_l)
+        EEC_dose_HM_md=therps_obj.EEC_dose_HM_md
+        EEC_dose_HM_lg=therps_obj.EEC_dose_HM_lg
+        ARQ_dose_HM_md=therps_obj.ARQ_dose_HM_md
+        ARQ_dose_HM_lg=therps_obj.ARQ_dose_HM_lg
 
-        EEC_dose_IM_md=therps_model.EEC_dose_mamm(therps_model.EEC_diet_mamm, therps_model.EEC_diet, therps_model.C_0, n_a, i_a, a_r, a_i, 15, h_l, bw_herp_a_md, c_mamm_a, 0.8)
-        EEC_dose_IM_lg=therps_model.EEC_dose_mamm(therps_model.EEC_diet_mamm, therps_model.EEC_diet, therps_model.C_0, n_a, i_a, a_r, a_i, 15, h_l, bw_herp_a_lg, c_mamm_a, 0.8)
-        ARQ_dose_IM_md=therps_model.ARQ_dose_mamm(therps_model.EEC_dose_mamm, therps_model.EEC_diet_mamm, bw_herp_a_md, therps_model.fi_herp, therps_model.at_bird, ld50_bird, tw_bird, x, c_mamm_a, 0.8, therps_model.C_0, n_a, i_a, a_r, a_i, 15, h_l)
-        ARQ_dose_IM_lg=therps_model.ARQ_dose_mamm(therps_model.EEC_dose_mamm, therps_model.EEC_diet_mamm, bw_herp_a_lg, therps_model.fi_herp, therps_model.at_bird, ld50_bird, tw_bird, x, c_mamm_a, 0.8, therps_model.C_0, n_a, i_a, a_r, a_i, 15, h_l)
+        EEC_dose_IM_md=therps_obj.EEC_dose_IM_md
+        EEC_dose_IM_lg=therps_obj.EEC_dose_IM_lg
+        ARQ_dose_IM_md=therps_obj.ARQ_dose_IM_md
+        ARQ_dose_IM_lg=therps_obj.ARQ_dose_IM_lg
 
-        EEC_dose_TP_md=therps_model.EEC_dose_tp(therps_model.EEC_diet_tp, therps_model.EEC_diet, therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l, therps_model.fi_herp, bw_herp_a_md, c_herp_a, wp_herp_a_sm, wp_herp_a_md)
-        EEC_dose_TP_lg=therps_model.EEC_dose_tp(therps_model.EEC_diet_tp, therps_model.EEC_diet, therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l, therps_model.fi_herp, bw_herp_a_lg, c_herp_a, wp_herp_a_sm, wp_herp_a_md)
-        ARQ_dose_TP_md=therps_model.ARQ_dose_tp(therps_model.EEC_dose_tp, therps_model.EEC_diet_tp, therps_model.EEC_diet, therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l, therps_model.fi_herp, c_herp_a, wp_herp_a_sm, wp_herp_a_md, therps_model.at_bird, ld50_bird, bw_herp_a_md, tw_bird, x)
-        ARQ_dose_TP_lg=therps_model.ARQ_dose_tp(therps_model.EEC_dose_tp, therps_model.EEC_diet_tp, therps_model.EEC_diet, therps_model.C_0, n_a, i_a, a_r, a_i, 135, h_l, therps_model.fi_herp, c_herp_a, wp_herp_a_sm, wp_herp_a_md, therps_model.at_bird, ld50_bird, bw_herp_a_lg, tw_bird, x)
+        EEC_dose_TP_md=therps_obj.EEC_dose_TP_md
+        EEC_dose_TP_lg=therps_obj.EEC_dose_TP_lg
+        ARQ_dose_TP_md=therps_obj.ARQ_dose_TP_md
+        ARQ_dose_TP_lg=therps_obj.ARQ_dose_TP_lg
 
         t7data = gett7data(LD50_AD_sm, LD50_AD_md, LD50_AD_lg,
                            EEC_dose_BP_sm, EEC_dose_BP_md, EEC_dose_BP_lg, ARQ_dose_BP_sm, ARQ_dose_BP_md, ARQ_dose_BP_lg,

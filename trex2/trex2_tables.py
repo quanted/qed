@@ -47,6 +47,72 @@ def getheadersum():
     headings = ["Parameter", "Mean", "Std", "Min", "Max", "Unit"]
     return headings
 
+def getheadersum5():
+    headings_1 = ["Avian (20g)", "Mammalian (15g)"]
+    headings_2 = ["Size", "Metric", "AAcute #1", "AAcute #2", "AChronic", "MAcute #1", "MAcute #2", "MChronic"]
+    headings_2_show = ["Size", "Metric", "Acute #1", "Acute #2", "Chronic", "Acute #1", "Acute #2", "Chronic"]
+    return headings_1, headings_2, headings_2_show
+
+def getheadersum6():
+    headings_1 = ["Metric", "Application Target"]
+    headings_1_c_span = [1, 5]
+    headings_1_r_span = [2, 1]
+    headings_1_zip = zip(headings_1, headings_1_c_span, headings_1_r_span)
+    headings_2 = ["Metric", "Short Grass", "Tall Grass", "Broadleaf Plants", "Fruits/Pods/Seeds", "Arthropods"]
+    headings_2_show = ["Short Grass", "Tall Grass", "Broadleaf Plants", "Fruits/Pods/Seeds", "Arthropods"]
+    return headings_1_zip, headings_2, headings_2_show
+
+def getheadersum7():
+    headings_1 = ["Animal Size", "Metric", "Application Target"]
+    headings_1_c_span = [1, 1, 6]
+    headings_1_r_span = [2, 2, 1]
+    headings_1_zip = zip(headings_1, headings_1_c_span, headings_1_r_span)
+    headings_2 = ["Animal Size", "Metric", "Short Grass", "Tall Grass", "Broadleaf Plants", "Fruits/Pods", "Arthropods", "Seeds"]
+    # headings_2 = ["Metric", "Short Grass", "Tall Grass", "Broadleaf Plants", "Fruits/Pods", "Arthropods", "Seeds"]
+    headings_2_show = ["Short Grass", "Tall Grass", "Broadleaf Plants", "Fruits/Pods", "Arthropods", "Seeds"]    
+    return headings_1_zip, headings_2, headings_2_show
+
+def getheadersum8():
+    headings_1 = ["Type", "Metric", "Application Target"]
+    headings_1_c_span = [1, 1, 5]
+    headings_1_r_span = [2, 2, 1]
+    headings_1_zip = zip(headings_1, headings_1_c_span, headings_1_r_span)
+    headings_2 = ["Type", "Metric", "Short Grass", "Tall Grass", "Broadleaf Plants", "Fruits/Pods", "Arthropods"]
+    headings_2_show = ["Short Grass", "Tall Grass", "Broadleaf Plants", "Fruits/Pods", "Arthropods"]    
+    return headings_1_zip, headings_2, headings_2_show
+
+def getheadersum9():
+    headings_1 = ["Animal Size", "Metric", "Application Target"]
+    headings_1_c_span = [1, 1, 6]
+    headings_1_r_span = [2, 2, 1]
+    headings_1_zip = zip(headings_1, headings_1_c_span, headings_1_r_span)
+    headings_2 = ["Animal Size", "Metric", "Short Grass", "Tall Grass", "Broadleaf Plants", "Fruits/Pods", "Arthropods", "Seeds"]
+    headings_2_show = ["Short Grass", "Tall Grass", "Broadleaf Plants", "Fruits/Pods", "Arthropods", "Seeds"]    
+    return headings_1_zip, headings_2, headings_2_show
+
+def getheadersum10():
+    headings_1 = ["Animal Size", "Type", "Metric", "Application Target"]
+    headings_1_c_span = [1, 1, 1, 6]
+    headings_1_r_span = [2, 2, 2, 1]
+    headings_1_zip = zip(headings_1, headings_1_c_span, headings_1_r_span)
+    headings_2 = ["Animal Size", "Type", "Metric", "Short Grass", "Tall Grass", "Broadleaf Plants", "Fruits/Pods", "Arthropods", "Seeds"]
+    headings_2_show = ["Short Grass", "Tall Grass", "Broadleaf Plants", "Fruits/Pods", "Arthropods", "Seeds"]    
+    return headings_1_zip, headings_2, headings_2_show
+
+def getheadersum11():
+    headings_1 = ["Type", "Metric", "Application Target"]
+    headings_1_c_span = [1, 1, 5]
+    headings_1_r_span = [2, 2, 1]
+    headings_1_zip = zip(headings_1, headings_1_c_span, headings_1_r_span)
+    headings_2 = ["Type", "Metric", "Short Grass", "Tall Grass", "Broadleaf Plants", "Fruits/Pods/Seeds", "Arthropods"]
+    headings_2_show = ["Short Grass", "Tall Grass", "Broadleaf Plants", "Fruits/Pods/Seeds", "Arthropods"]    
+    return headings_1_zip, headings_2, headings_2_show
+
+
+def getheadersum12():
+    headings = ["Animal Size", "Metric", "Avian", "Mammal"]
+    return headings
+
 def gethtmlrowsfromcols(data, headings):
     columns = [data[heading] for heading in headings]
 
@@ -67,10 +133,9 @@ def getdjtemplate():
     {# headings #}
         <tr>
         {% for heading in headings %}
-            <th colspan={{ th_span|default:'1' }}>{{ heading }}</th>
+                <th colspan={{ th_span|default:'1' }}>{{ heading }}</th>
         {% endfor %}
         </tr>
-    
     {% if sub_headings %}
         <tr>
         {% for sub_heading in sub_headings %}
@@ -89,6 +154,54 @@ def getdjtemplate():
     </table>
     """
     return dj_template
+
+def getdjtemplate_sum():
+    dj_template ="""
+    <table class="out_">
+    {# headings #}
+        <tr>
+            {% for heading, th_c_span, th_r_span in headings %}
+                <th colspan={{ th_c_span|default:'1' }} rowspan={{ th_r_span|default:'1' }}>{{ heading }}</th>
+            {% endfor %}
+        </tr>
+    {% if sub_headings %}
+        <tr>
+            {% for sub_heading in sub_headings %}
+                <th>{{ sub_heading }}</th>
+            {% endfor %}
+        </tr>
+    {% endif %}
+
+    {# data #}
+    {% if data %}
+        {% for row in data %}
+                <tr>
+                    {% for val in row %}
+                        <td>{{ val|default:'' }}</td>
+                    {% endfor %}
+                </tr>
+        {% endfor %}
+    {% endif %}
+
+    {% if data_cols %}
+        {% for data_col in data_cols %}
+            <tr>
+                <td rowspan='4'>{{ data_col|default:''}}</td>
+                    {% for row in data_new %}
+                        {% for val in row %}
+                            <td>{{ val|default:'' }}</td>
+                        {% endfor %}
+                    {% endfor %}
+            </tr>
+        {% endfor %}
+    {% endif %}
+
+
+    </table>
+    """
+    return dj_template
+
+
 
 def getdjtemplate_10():
     dj_template ="""
@@ -120,46 +233,76 @@ def getdjtemplate_10():
     """
     return dj_template
 
-def gett1data(chemical_name, Use, Formulated_product_name, percent_ai, Application_type, r_s, b_w, percent_incorporated,
-              density_of_product, Foliar_dissipation_half_life):
+
+pvuheadings = getheaderpvu()
+pvaheadings = getheaderpva()
+pvrheadings = getheaderpvr()
+pv5headings = getheaderpv5()
+pv6headings = getheaderpv6()
+pv7headings = getheaderpv7()
+pv8headings = getheaderpv8()
+pv10headings = getheaderpv10()
+pv12headings = getheaderpv12()
+
+sumheadings = getheadersum()
+sumheadings_5 = getheadersum5()
+sumheadings_6 = getheadersum6()
+sumheadings_7 = getheadersum7()
+sumheadings_8 = getheadersum8()
+sumheadings_9 = getheadersum9()
+sumheadings_10 = getheadersum10()
+sumheadings_11 = getheadersum11()
+sumheadings_12 = getheadersum12()
+
+djtemplate = getdjtemplate()
+djtemplate_sum = getdjtemplate_sum()
+djtemplate_10 = getdjtemplate_10()
+
+tmpl = Template(djtemplate)
+tmpl_sum = Template(djtemplate_sum)
+tmpl_10 = Template(djtemplate_10)
+
+
+
+
+def gett1data(trex2_obj):
     data = { 
         "Parameter": ['Chemical Name', 'Use', 'Formulated product name', 'Percentage active ingredient', 
                       'Application type', 'Row spacing', 'Bandwidth', 'Percentage incorporated', 'Density of product', 'Foliar dissipation half-life',],
-        "Value": ['%s' % chemical_name, '%s' % Use, '%s' % Formulated_product_name, '%s' % percent_ai, '%s' % Application_type, 
-                  '%.4s' % r_s, '%.4s' % b_w, '%s' % percent_incorporated, '%s' % density_of_product, '%s' % Foliar_dissipation_half_life,],
+        "Value": ['%s' % trex2_obj.chem_name, '%s' % trex2_obj.use, '%s' % trex2_obj.formu_name, '%s' % trex2_obj.a_i_t1, '%s' % trex2_obj.Application_type, 
+                  '%.4s' % trex2_obj.r_s, '%.4s' % trex2_obj.b_w_t1, '%s' % trex2_obj.p_i, '%s' % trex2_obj.den, '%s' % trex2_obj.h_l,],
         "Units": ['', '', '', '%', '', 'inch', 'inch', '%', 'lbs/gal', 'days',],
     }
     return data
+
 
 def gett2data(index, rate, day):
     data = { 
         "App": ['%s' %index,  ],
         "Rate": [rate,],
-        "Number of Days": [day,],
+        "Number of Days": ['%s' %day,],
     }
     return data
 
-def gett3data(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s, bw_assessed_bird_m, 
-            bw_assessed_bird_l, Species_tested_bird, bw_tested_bird, mineau_scaling_factor):
+def gett3data(trex2_obj):
     data = { 
         "Parameter": ['Avian LD50', 'Avian LC50', 'Avian NOAEC', 'Avian NOAEL', 'Body weight of assessed bird small',
                       'Body weight of assessed bird medium', 'Body weight of assessed bird large', 
                       'Species of the tested bird', 'Body weight of tested bird', 'Mineau scaling factor', ],
-        "Value": ['%s' % avian_ld50, '%s' % avian_lc50, '%s' % avian_NOAEC, '%s' % avian_NOAEL, 
-                  '%s' % bw_assessed_bird_s, '%s' % bw_assessed_bird_m, '%s' % bw_assessed_bird_l,
-                  '%s' % Species_tested_bird, '%s' % bw_tested_bird, '%s' % mineau_scaling_factor, ],
+        "Value": ['%s' % trex2_obj.ld50_bird, '%s' % trex2_obj.lc50_bird, '%s' % trex2_obj.NOAEC_bird, '%s' % trex2_obj.NOAEL_bird, 
+                  '%s' % trex2_obj.aw_bird_sm, '%s' % trex2_obj.aw_bird_md, '%s' % trex2_obj.aw_bird_lg,
+                  '%s' % trex2_obj.Species_of_the_tested_bird, '%s' % trex2_obj.tw_bird, '%s' % trex2_obj.x, ],
         "Units": ['mg/kg-bw', 'mg/kg-diet', 'mg/kg-diet', 'mg/kg-bw', 'g', 'g', 'g', '', 'g', '', ],
     }
     return data
 
-def gett4data(mammalian_ld50, mammalian_lc50, mammalian_NOAEC, mammalian_NOAEL, bw_assessed_mamm_s, bw_assessed_mamm_m, 
-              bw_assessed_mamm_l, bw_tested_mamm):
+def gett4data(trex_obj):
     data = { 
         "Parameter": ['Mammalian LD50', 'Mammalian LC50', 'Mammalian NOAEC', 'Mammalian NOAEL', 'Body weight of assessed mammal small',
                       'Body weight of assessed mammal medium', 'Body weight of assessed mammal large', 
                       'Body weight of tested mammal', ],
-        "Value": ['%s' % mammalian_ld50, '%s' % mammalian_lc50, '%s' % mammalian_NOAEC, '%s' % mammalian_NOAEL, 
-                  '%s' % bw_assessed_mamm_s, '%s' % bw_assessed_mamm_m, '%s' % bw_assessed_mamm_l, '%s' % bw_tested_mamm, ],
+        "Value": ['%s' % trex_obj.ld50_mamm, '%s' % trex_obj.lc50_mamm, '%s' % trex_obj.NOAEC_mamm, '%s' % trex_obj.NOAEL_mamm, 
+                  '%s' % trex_obj.aw_mamm_sm, '%s' % trex_obj.aw_mamm_md, '%s' % trex_obj.aw_mamm_lg, '%s' % trex_obj.tw_mamm, ],
         "Units": ['mg/kg-bw', 'mg/kg-diet', 'mg/kg-diet', 'mg/kg-bw', 'g', 'g', 'g', 'g', ],
     }
     return data
@@ -168,7 +311,7 @@ def gett5data(sa_bird_1_s, sa_bird_2_s, sc_bird_s, sa_mamm_1_s, sa_mamm_2_s, sc_
               sa_bird_1_m, sa_bird_2_m, sc_bird_m, sa_mamm_1_m, sa_mamm_2_m, sc_mamm_m,
               sa_bird_1_l, sa_bird_2_l, sc_bird_l, sa_mamm_1_l, sa_mamm_2_l, sc_mamm_l):
     data = { 
-        "Size": ['Small', 'Medium','Large', ],
+        "Size": ['Small', 'Medium','Large',],
         "AAcute #1": ['%.2e' % sa_bird_1_s, '%.2e' % sa_bird_1_m, '%.2e' % sa_bird_1_l,],
         "AAcute #2": ['%.2e' % sa_bird_2_s, '%.2e' % sa_bird_2_m, '%.2e' % sa_bird_2_l,],
         "AChronic": ['%.2e' % sc_bird_s, '%.2e' % sc_bird_m, '%.2e' % sc_bird_l,],
@@ -242,134 +385,517 @@ def gett12data(LD50_rg_bird_sm,LD50_rg_mamm_sm,LD50_rg_bird_md,LD50_rg_mamm_md,L
 
 
 
-def gettsumdata(ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw):
+def gettsumdata_1(a_i, r_s, b_w, p_i, den, Foliar_dissipation_half_life, n_a, rate_out_t):
     data = { 
-        "Parameter": ['Maximum Single Application Rate', 'Fraction of Pesticide Assumed at the Surface', 'Dislodgeable Foliar Residue', 
-                     mark_safe('Lowest Bird Acute Oral LD<sub>50</sub> &asymp; Amphibian Dermal LD<sub>50</sub>'), 'Tested Bird Body Weight', 'Mineau Scaling Factor for Birds',
-                     mark_safe('Mammal Acute Dermal LD<sub>50</sub>'),'Tested Mammal Body Weight',],
-        "Mean": ['%.2e' % numpy.mean(ar_lb),'%.2e' % numpy.mean(frac_pest_surface),'%.2e' % numpy.mean(dislodge_fol_res), '%.2e' % numpy.mean(low_bird_acute_ld50), 
-                 '%.2e' % numpy.mean(test_bird_bw), '%.2e' % numpy.mean(mineau), '%.2e' % numpy.mean(mam_acute_derm_ld50), '%.2e' % numpy.mean(test_mam_bw),],
-        "Std": ['%.2e' % numpy.std(ar_lb),'%.2e' % numpy.std(frac_pest_surface),'%.2e' % numpy.std(dislodge_fol_res), '%.2e' % numpy.std(low_bird_acute_ld50), 
-                '%.2e' % numpy.std(test_bird_bw), '%.2e' % numpy.std(mineau), '%.2e' % numpy.std(mam_acute_derm_ld50), '%.2e' % numpy.std(test_mam_bw),],
-        "Min": ['%.2e' % numpy.min(ar_lb),'%.2e' % numpy.min(frac_pest_surface),'%.2e' % numpy.min(dislodge_fol_res), '%.2e' % numpy.min(low_bird_acute_ld50), 
-                '%.2e' % numpy.min(test_bird_bw), '%.2e' % numpy.min(mineau), '%.2e' % numpy.min(mam_acute_derm_ld50), '%.2e' % numpy.min(test_mam_bw),],
-         "Max": ['%.2e' % numpy.max(ar_lb),'%.2e' % numpy.max(frac_pest_surface),'%.2e' % numpy.max(dislodge_fol_res), '%.2e' % numpy.max(low_bird_acute_ld50), 
-                 '%.2e' % numpy.max(test_bird_bw), '%.2e' % numpy.max(mineau), '%.2e' % numpy.max(mam_acute_derm_ld50), '%.2e' % numpy.max(test_mam_bw),],
-        "Unit": ['lbs a.i./A', '', 'mg a.i./cm^2', 'mg a.i./kg-bw', 'g', '', 'mg a.i./kg-bw', 'g'],
+        "Parameter": ['Percentage active ingredient', 'Row spacing', 'Bandwidth', 'Percentage incorporated', 
+                      'Density of product', 'Foliar dissipation half-life', 'Number of application', 'Application rate', ],
+        "Mean": ['%.2e' % numpy.mean(a_i), '%.2e' % numpy.mean(r_s), '%.2e' % numpy.mean(b_w), '%.2e' % numpy.mean(p_i), '%.2e' % numpy.mean(den), '%.2e' % numpy.mean(Foliar_dissipation_half_life), '%.2e' % numpy.mean(n_a), '%.2e' % numpy.mean(rate_out_t),],
+        "Std": ['%.2e' % numpy.std(a_i),'%.2e' % numpy.mean(r_s), '%.2e' % numpy.mean(b_w), '%.2e' % numpy.mean(p_i), '%.2e' % numpy.mean(den), '%.2e' % numpy.std(Foliar_dissipation_half_life), '%.2e' % numpy.std(n_a), '%.2e' % numpy.std(rate_out_t),],
+        "Min": ['%.2e' % numpy.min(a_i),'%.2e' % numpy.mean(r_s), '%.2e' % numpy.mean(b_w), '%.2e' % numpy.mean(p_i), '%.2e' % numpy.mean(den), '%.2e' % numpy.min(Foliar_dissipation_half_life), '%.2e' % numpy.min(n_a), '%.2e' % numpy.min(rate_out_t),],
+        "Max": ['%.2e' % numpy.max(a_i),'%.2e' % numpy.mean(r_s), '%.2e' % numpy.mean(b_w), '%.2e' % numpy.mean(p_i), '%.2e' % numpy.mean(den), '%.2e' % numpy.max(Foliar_dissipation_half_life), '%.2e' % numpy.max(n_a), '%.2e' % numpy.max(rate_out_t),],
+        "Unit": ['%', 'inch', 'inch', '%', 'lbs/gal', 'days', '', ],
     }
     return data
 
-def gettsumdata_out(granbirdderm_out, granherpderm_out, granmammderm_out,folbirdderm_out, folherpderm_out, folmammderm_out, barebirdderm_out, bareherpderm_out, baremammderm_out, granbirdrisk_out, granreprisk_out, granamphibrisk_out, granmammrisk_out, folbirdrisk_out, folreprisk_out, folamphibrisk_out, folmammrisk_out,  barebirdrisk_out, barereprisk_out, bareamphibrisk_out, baremammrisk_out):
+def gettsumdata_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s, bw_assessed_bird_m, 
+            bw_assessed_bird_l, bw_tested_bird, mineau_scaling_factor):
     data = { 
-        "Parameter": ['Granular Application Bird External Dermal Dose', 'Granular Application Reptile/Amphibian External Dermal Dose', 'Granular Application Mammal External Dermal Dose', 
-                      'Foliar Spray Application Bird External Dermal Dose', 'Foliar Spray Application Reptile/Amphibian External Dermal Dose', 'Foliar Spray Application Mammal External Dermal Dose',
-                      'Bare Ground Spray Application Bird External Dermal Dose', 'Bare Ground Spray Application Reptile/Amphibian External Dermal Dose', 'Bare Ground Spray Application Mammal External Dermal Dose',
-                      'Granular Application Bird Ratio of Exposure to Toxicity', 'Granular Application Reptile Ratio of Exposure to Toxicity', 'Granular Application Amphibian Ratio of Exposure to Toxicity', 'Granular Application Mammal Ratio of Exposure to Toxicity',
-                      'Foliar Spray Application Bird Ratio of Exposure to Toxicity', 'Foliar Spray Application Reptile Ratio of Exposure to Toxicity', 'Foliar Spray Application Amphibian Ratio of Exposure to Toxicity', 'Foliar Spray Application Mammal Ratio of Exposure to Toxicity',
-                      'Bare Ground Spray Application Bird Ratio of Exposure to Toxicity', 'Bare Ground Spray Application Reptile Ratio of Exposure to Toxicity', 'Bare Ground Spray Application Amphibian Ratio of Exposure to Toxicity', 'Bare Ground Spray Application Mammal Ratio of Exposure to Toxicity',],
-
-        "Mean": ['%.2e' % numpy.mean(granbirdderm_out),'%.2e' % numpy.mean(granherpderm_out), '%.2e' % numpy.mean(granmammderm_out), 
-                 '%.2e' % numpy.mean(folbirdderm_out), '%.2e' % numpy.mean(folherpderm_out), '%.2e' % numpy.mean(folmammderm_out), 
-                 '%.2e' % numpy.mean(barebirdderm_out), '%.2e' % numpy.mean(bareherpderm_out), '%.2e' % numpy.mean(baremammderm_out),
-                 '%.2e' % numpy.mean(granbirdrisk_out), '%.2e' % numpy.mean(granreprisk_out), '%.2e' % numpy.mean(granamphibrisk_out), '%.2e' % numpy.mean(granmammrisk_out),
-                 '%.2e' % numpy.mean(folbirdrisk_out), '%.2e' % numpy.mean(folreprisk_out), '%.2e' % numpy.mean(folamphibrisk_out), '%.2e' % numpy.mean(folmammrisk_out),
-                 '%.2e' % numpy.mean(barebirdrisk_out), '%.2e' % numpy.mean(barereprisk_out), '%.2e' % numpy.mean(bareamphibrisk_out), '%.2e' % numpy.mean(baremammrisk_out),],
-
-        "Std": ['%.2e' % numpy.std(granbirdderm_out),'%.2e' % numpy.std(granherpderm_out), '%.2e' % numpy.std(granmammderm_out), 
-                '%.2e' % numpy.std(folbirdderm_out), '%.2e' % numpy.std(folherpderm_out), '%.2e' % numpy.std(folmammderm_out), 
-                '%.2e' % numpy.std(barebirdderm_out), '%.2e' % numpy.std(bareherpderm_out), '%.2e' % numpy.std(baremammderm_out),
-                '%.2e' % numpy.std(granbirdrisk_out), '%.2e' % numpy.std(granreprisk_out), '%.2e' % numpy.std(granamphibrisk_out), '%.2e' % numpy.std(granmammrisk_out),
-                '%.2e' % numpy.std(folbirdrisk_out), '%.2e' % numpy.std(folreprisk_out), '%.2e' % numpy.std(folamphibrisk_out), '%.2e' % numpy.std(folmammrisk_out),
-                '%.2e' % numpy.std(barebirdrisk_out), '%.2e' % numpy.std(barereprisk_out), '%.2e' % numpy.std(bareamphibrisk_out), '%.2e' % numpy.std(baremammrisk_out),],
-
-        "Min": ['%.2e' % numpy.min(granbirdderm_out),'%.2e' % numpy.min(granherpderm_out), '%.2e' % numpy.min(granmammderm_out), 
-                '%.2e' % numpy.min(folbirdderm_out), '%.2e' % numpy.min(folherpderm_out), '%.2e' % numpy.min(folmammderm_out), 
-                '%.2e' % numpy.min(barebirdderm_out), '%.2e' % numpy.min(bareherpderm_out), '%.2e' % numpy.min(baremammderm_out),
-                '%.2e' % numpy.min(granbirdrisk_out), '%.2e' % numpy.min(granreprisk_out), '%.2e' % numpy.min(granamphibrisk_out), '%.2e' % numpy.min(granmammrisk_out),
-                '%.2e' % numpy.min(folbirdrisk_out), '%.2e' % numpy.min(folreprisk_out), '%.2e' % numpy.min(folamphibrisk_out), '%.2e' % numpy.min(folmammrisk_out),
-                '%.2e' % numpy.min(barebirdrisk_out), '%.2e' % numpy.min(barereprisk_out), '%.2e' % numpy.min(bareamphibrisk_out), '%.2e' % numpy.min(baremammrisk_out),],
-
-         "Max": ['%.2e' % numpy.max(granbirdderm_out),'%.2e' % numpy.max(granherpderm_out), '%.2e' % numpy.max(granmammderm_out),
-                 '%.2e' % numpy.max(folbirdderm_out), '%.2e' % numpy.max(folherpderm_out), '%.2e' % numpy.max(folmammderm_out), 
-                 '%.2e' % numpy.max(barebirdderm_out),'%.2e' % numpy.max(bareherpderm_out), '%.2e' % numpy.max(baremammderm_out),
-                 '%.2e' % numpy.max(granbirdrisk_out), '%.2e' % numpy.max(granreprisk_out), '%.2e' % numpy.max(granamphibrisk_out), '%.2e' % numpy.max(granmammrisk_out),
-                 '%.2e' % numpy.max(folbirdrisk_out), '%.2e' % numpy.max(folreprisk_out), '%.2e' % numpy.max(folamphibrisk_out), '%.2e' % numpy.max(folmammrisk_out),
-                 '%.2e' % numpy.max(barebirdrisk_out), '%.2e' % numpy.max(barereprisk_out), '%.2e' % numpy.max(bareamphibrisk_out), '%.2e' % numpy.max(baremammrisk_out),],
-
-        "Unit": ['mg a.i./kg-bw', 'mg a.i./kg-bw', 'mg a.i./kg-bw', 'mg a.i./kg-bw', 'mg a.i./kg-bw', 'mg a.i./kg-bw', 'mg a.i./kg-bw', 'mg a.i./kg-bw', 'mg a.i./kg-bw',
-                 '', '', '', '','', '', '', '','', '', '', '',],
+        "Parameter": ['Avian LD50', 'Avian LC50', 'Avian NOAEC', 'Avian NOAEL', 'Body weight of assessed bird small',
+                      'Body weight of assessed bird medium', 'Body weight of assessed bird large', 
+                      'Body weight of tested bird', 'Mineau scaling factor', ],
+        "Mean": ['%.2e' % numpy.mean(avian_ld50), '%.2e' % numpy.mean(avian_lc50), '%.2e' % numpy.mean(avian_NOAEC), '%.2e' % numpy.mean(avian_NOAEL), '%.2e' % numpy.mean(bw_assessed_bird_s), '%.2e' % numpy.mean(bw_assessed_bird_m), '%.2e' % numpy.mean(bw_assessed_bird_l), '%.2e' % numpy.mean(bw_tested_bird), '%.2e' % numpy.mean(mineau_scaling_factor), ],
+        "Std": ['%.2e' % numpy.std(avian_ld50), '%.2e' % numpy.std(avian_lc50), '%.2e' % numpy.std(avian_NOAEC), '%.2e' % numpy.std(avian_NOAEL), '%.2e' % numpy.std(bw_assessed_bird_s), '%.2e' % numpy.std(bw_assessed_bird_m), '%.2e' % numpy.std(bw_assessed_bird_l), '%.2e' % numpy.std(bw_tested_bird), '%.2e' % numpy.std(mineau_scaling_factor), ],
+        "Min": ['%.2e' % numpy.min(avian_ld50), '%.2e' % numpy.min(avian_lc50), '%.2e' % numpy.min(avian_NOAEC), '%.2e' % numpy.min(avian_NOAEL), '%.2e' % numpy.min(bw_assessed_bird_s), '%.2e' % numpy.min(bw_assessed_bird_m), '%.2e' % numpy.min(bw_assessed_bird_l), '%.2e' % numpy.min(bw_tested_bird), '%.2e' % numpy.min(mineau_scaling_factor), ],
+        "Max": ['%.2e' % numpy.max(avian_ld50), '%.2e' % numpy.max(avian_lc50), '%.2e' % numpy.max(avian_NOAEC), '%.2e' % numpy.max(avian_NOAEL), '%.2e' % numpy.max(bw_assessed_bird_s), '%.2e' % numpy.max(bw_assessed_bird_m), '%.2e' % numpy.max(bw_assessed_bird_l), '%.2e' % numpy.max(bw_tested_bird), '%.2e' % numpy.max(mineau_scaling_factor), ],
+        "Unit": ['mg/kg-bw', 'mg/kg-diet', 'mg/kg-diet', 'mg/kg-bw', 'g', 'g', 'g', 'g', '', ],
     }
     return data
 
-pvuheadings = getheaderpvu()
-pvaheadings = getheaderpva()
-pvrheadings = getheaderpvr()
-pv5headings = getheaderpv5()
-pv6headings = getheaderpv6()
-pv7headings = getheaderpv7()
-pv8headings = getheaderpv8()
-pv10headings = getheaderpv10()
-pv12headings = getheaderpv12()
+def gettsumdata_3(mammalian_ld50, mammalian_lc50, mammalian_NOAEC, mammalian_NOAEL, bw_assessed_mamm_s, bw_assessed_mamm_m, 
+              bw_assessed_mamm_l, bw_tested_mamm):
+    data = { 
+        "Parameter": ['Mammalian LD50', 'Mammalian LC50', 'Mammalian NOAEC', 'Mammalian NOAEL', 'Body weight of assessed mammal small',
+                      'Body weight of assessed mammal medium', 'Body weight of assessed mammal large', 
+                      'Body weight of tested mammal', ],
+        "Mean": ['%.2e' % numpy.mean(mammalian_ld50), '%.2e' % numpy.mean(mammalian_lc50), '%.2e' % numpy.mean(mammalian_NOAEC), '%.2e' % numpy.mean(mammalian_NOAEL), '%.2e' % numpy.mean(bw_assessed_mamm_s), '%.2e' % numpy.mean(bw_assessed_mamm_m), '%.2e' % numpy.mean(bw_assessed_mamm_l), '%.2e' % numpy.mean(bw_tested_mamm), ],
+        "Std": ['%.2e' % numpy.std(mammalian_ld50), '%.2e' % numpy.std(mammalian_lc50), '%.2e' % numpy.std(mammalian_NOAEC), '%.2e' % numpy.std(mammalian_NOAEL), '%.2e' % numpy.std(bw_assessed_mamm_s), '%.2e' % numpy.std(bw_assessed_mamm_m), '%.2e' % numpy.std(bw_assessed_mamm_l), '%.2e' % numpy.std(bw_tested_mamm), ],
+        "Min": ['%.2e' % numpy.min(mammalian_ld50), '%.2e' % numpy.min(mammalian_lc50), '%.2e' % numpy.min(mammalian_NOAEC), '%.2e' % numpy.min(mammalian_NOAEL), '%.2e' % numpy.min(bw_assessed_mamm_s), '%.2e' % numpy.min(bw_assessed_mamm_m), '%.2e' % numpy.min(bw_assessed_mamm_l), '%.2e' % numpy.min(bw_tested_mamm), ],
+        "Max": ['%.2e' % numpy.max(mammalian_ld50), '%.2e' % numpy.max(mammalian_lc50), '%.2e' % numpy.max(mammalian_NOAEC), '%.2e' % numpy.max(mammalian_NOAEL), '%.2e' % numpy.max(bw_assessed_mamm_s), '%.2e' % numpy.max(bw_assessed_mamm_m), '%.2e' % numpy.max(bw_assessed_mamm_l), '%.2e' % numpy.max(bw_tested_mamm), ],
+        "Unit": ['mg/kg-bw', 'mg/kg-diet', 'mg/kg-diet', 'mg/kg-bw', 'g', 'g', 'g', 'g', ],
+    }
+    return data
 
-sumheadings = getheadersum()
+def gettsumdata_5(sa_bird_1_s_out, sa_bird_2_s_out, sc_bird_s_out, sa_mamm_1_s_out, sa_mamm_2_s_out, sc_mamm_s_out, sa_bird_1_m_out, sa_bird_2_m_out, sc_bird_m_out, sa_mamm_1_m_out, sa_mamm_2_m_out, sc_mamm_m_out, sa_bird_1_l_out, sa_bird_2_l_out, sc_bird_l_out, sa_mamm_1_l_out, sa_mamm_2_l_out, sc_mamm_l_out):
+    data = { 
+        "Size": ['Small', 'Small', 'Small', 'Small', 'Medium', 'Medium', 'Medium', 'Medium', 'Large', 'Large', 'Large', 'Large',],
+        "Metric": ['Mean', 'Std', 'Min', 'Max', 'Mean', 'Std', 'Min', 'Max', 'Mean', 'Std', 'Min', 'Max',],
+        "AAcute #1": ['%.2e' % numpy.mean(sa_bird_1_s_out), '%.2e' % numpy.std(sa_bird_1_s_out), '%.2e' % numpy.min(sa_bird_1_s_out), '%.2e' % numpy.max(sa_bird_1_s_out), 
+                      '%.2e' % numpy.mean(sa_bird_1_m_out), '%.2e' % numpy.std(sa_bird_1_m_out), '%.2e' % numpy.min(sa_bird_1_m_out), '%.2e' % numpy.max(sa_bird_1_m_out),
+                      '%.2e' % numpy.mean(sa_bird_1_l_out), '%.2e' % numpy.std(sa_bird_1_l_out), '%.2e' % numpy.min(sa_bird_1_l_out), '%.2e' % numpy.max(sa_bird_1_l_out),],
+        
+        "AAcute #2": ['%.2e' % numpy.mean(sa_bird_2_s_out), '%.2e' % numpy.std(sa_bird_2_s_out), '%.2e' % numpy.min(sa_bird_2_s_out), '%.2e' % numpy.max(sa_bird_2_s_out),
+                      '%.2e' % numpy.mean(sa_bird_2_m_out), '%.2e' % numpy.std(sa_bird_2_m_out), '%.2e' % numpy.min(sa_bird_2_m_out), '%.2e' % numpy.max(sa_bird_2_m_out),
+                      '%.2e' % numpy.mean(sa_bird_2_l_out), '%.2e' % numpy.std(sa_bird_2_l_out), '%.2e' % numpy.min(sa_bird_2_l_out), '%.2e' % numpy.max(sa_bird_2_l_out),],
+        
+        "AChronic":  ['%.2e' % numpy.mean(sc_bird_s_out), '%.2e' % numpy.std(sc_bird_s_out), '%.2e' % numpy.min(sc_bird_s_out), '%.2e' % numpy.max(sc_bird_s_out),
+                      '%.2e' % numpy.mean(sc_bird_m_out), '%.2e' % numpy.std(sc_bird_m_out), '%.2e' % numpy.min(sc_bird_m_out), '%.2e' % numpy.max(sc_bird_m_out),
+                      '%.2e' % numpy.mean(sc_bird_l_out), '%.2e' % numpy.std(sc_bird_l_out), '%.2e' % numpy.min(sc_bird_l_out), '%.2e' % numpy.max(sc_bird_l_out),],
+        
+        "MAcute #1": ['%.2e' % numpy.mean(sa_mamm_1_s_out), '%.2e' % numpy.std(sa_mamm_1_s_out), '%.2e' % numpy.min(sa_mamm_1_s_out), '%.2e' % numpy.max(sa_mamm_1_s_out),
+                      '%.2e' % numpy.mean(sa_mamm_1_m_out), '%.2e' % numpy.std(sa_mamm_1_m_out), '%.2e' % numpy.min(sa_mamm_1_m_out), '%.2e' % numpy.max(sa_mamm_1_m_out),
+                      '%.2e' % numpy.mean(sa_mamm_1_l_out), '%.2e' % numpy.std(sa_mamm_1_l_out), '%.2e' % numpy.min(sa_mamm_1_l_out), '%.2e' % numpy.max(sa_mamm_1_l_out),],
+        
+        "MAcute #2": ['%.2e' % numpy.mean(sa_mamm_2_s_out), '%.2e' % numpy.std(sa_mamm_2_s_out), '%.2e' % numpy.min(sa_mamm_2_s_out), '%.2e' % numpy.max(sa_mamm_2_s_out),
+                      '%.2e' % numpy.mean(sa_mamm_2_m_out), '%.2e' % numpy.std(sa_mamm_2_m_out), '%.2e' % numpy.min(sa_mamm_2_m_out), '%.2e' % numpy.max(sa_mamm_2_m_out),
+                      '%.2e' % numpy.mean(sa_mamm_2_l_out), '%.2e' % numpy.std(sa_mamm_2_l_out), '%.2e' % numpy.min(sa_mamm_2_l_out), '%.2e' % numpy.max(sa_mamm_2_l_out),],
+        
+        "MChronic":  ['%.2e' % numpy.mean(sc_mamm_s_out), '%.2e' % numpy.std(sc_mamm_s_out), '%.2e' % numpy.min(sc_mamm_s_out), '%.2e' % numpy.max(sc_mamm_s_out),
+                      '%.2e' % numpy.mean(sc_mamm_m_out), '%.2e' % numpy.std(sc_mamm_m_out), '%.2e' % numpy.min(sc_mamm_m_out), '%.2e' % numpy.max(sc_mamm_m_out),
+                      '%.2e' % numpy.mean(sc_mamm_l_out), '%.2e' % numpy.std(sc_mamm_l_out), '%.2e' % numpy.min(sc_mamm_l_out), '%.2e' % numpy.max(sc_mamm_l_out),],
+    }
+    return data
 
-djtemplate = getdjtemplate()
-djtemplate_10 = getdjtemplate_10()
+def gettsumdata_6(EEC_diet_SG_RBG_out, EEC_diet_TG_RBG_out, EEC_diet_BP_RBG_out, EEC_diet_FR_RBG_out, EEC_diet_AR_RBG_out):
+    data = { 
+        "Metric": ['Mean', 'Std', 'Min', 'Max',],
+        "Short Grass": ['%.2e' % numpy.mean(EEC_diet_SG_RBG_out), '%.2e' % numpy.std(EEC_diet_SG_RBG_out), '%.2e' % numpy.min(EEC_diet_SG_RBG_out), '%.2e' % numpy.max(EEC_diet_SG_RBG_out),],
+        "Tall Grass": ['%.2e' % numpy.mean(EEC_diet_TG_RBG_out), '%.2e' % numpy.std(EEC_diet_TG_RBG_out), '%.2e' % numpy.min(EEC_diet_TG_RBG_out), '%.2e' % numpy.max(EEC_diet_TG_RBG_out),],
+        "Broadleaf Plants": ['%.2e' % numpy.mean(EEC_diet_BP_RBG_out), '%.2e' % numpy.std(EEC_diet_BP_RBG_out), '%.2e' % numpy.min(EEC_diet_BP_RBG_out), '%.2e' % numpy.max(EEC_diet_BP_RBG_out),],
+        "Fruits/Pods/Seeds": ['%.2e' % numpy.mean(EEC_diet_FR_RBG_out), '%.2e' % numpy.std(EEC_diet_FR_RBG_out), '%.2e' % numpy.min(EEC_diet_FR_RBG_out), '%.2e' % numpy.max(EEC_diet_FR_RBG_out),],
+        "Arthropods": ['%.2e' % numpy.mean(EEC_diet_AR_RBG_out), '%.2e' % numpy.std(EEC_diet_AR_RBG_out), '%.2e' % numpy.min(EEC_diet_AR_RBG_out), '%.2e' % numpy.max(EEC_diet_AR_RBG_out),],
+    }
+    return data
 
-tmpl = Template(djtemplate)
-tmpl_10 = Template(djtemplate_10)
+def gettsumdata_7(EEC_dose_bird_SG_sm_out, EEC_dose_bird_SG_md_out, EEC_dose_bird_SG_lg_out, EEC_dose_bird_TG_sm_out, EEC_dose_bird_TG_md_out, EEC_dose_bird_TG_lg_out, EEC_dose_bird_BP_sm_out, EEC_dose_bird_BP_md_out, EEC_dose_bird_BP_lg_out, EEC_dose_bird_FP_sm_out, EEC_dose_bird_FP_md_out, EEC_dose_bird_FP_lg_out, EEC_dose_bird_AR_sm_out, EEC_dose_bird_AR_md_out, EEC_dose_bird_AR_lg_out, EEC_dose_bird_SE_sm_out, EEC_dose_bird_SE_md_out, EEC_dose_bird_SE_lg_out):
+    data = { 
+        "Animal Size": ['Small', 'Small', 'Small', 'Small', 'Medium', 'Medium', 'Medium', 'Medium', 'Large', 'Large', 'Large', 'Large',],
+        "Metric": ['Mean', 'Std', 'Min', 'Max', 'Mean', 'Std', 'Min', 'Max', 'Mean', 'Std', 'Min', 'Max',],
+        "Short Grass": ['%.2e' % numpy.mean(EEC_dose_bird_SG_sm_out), '%.2e' % numpy.std(EEC_dose_bird_SG_sm_out), '%.2e' % numpy.min(EEC_dose_bird_SG_sm_out), '%.2e' % numpy.max(EEC_dose_bird_SG_sm_out),
+                        '%.2e' % numpy.mean(EEC_dose_bird_SG_md_out), '%.2e' % numpy.std(EEC_dose_bird_SG_md_out), '%.2e' % numpy.min(EEC_dose_bird_SG_md_out), '%.2e' % numpy.max(EEC_dose_bird_SG_md_out),
+                        '%.2e' % numpy.mean(EEC_dose_bird_SG_lg_out), '%.2e' % numpy.std(EEC_dose_bird_SG_lg_out), '%.2e' % numpy.min(EEC_dose_bird_SG_lg_out), '%.2e' % numpy.max(EEC_dose_bird_SG_lg_out),],
+        
+        "Tall Grass": ['%.2e' % numpy.mean(EEC_dose_bird_TG_sm_out), '%.2e' % numpy.std(EEC_dose_bird_TG_sm_out), '%.2e' % numpy.min(EEC_dose_bird_TG_sm_out), '%.2e' % numpy.max(EEC_dose_bird_TG_sm_out),
+                       '%.2e' % numpy.mean(EEC_dose_bird_TG_md_out), '%.2e' % numpy.std(EEC_dose_bird_TG_md_out), '%.2e' % numpy.min(EEC_dose_bird_TG_md_out), '%.2e' % numpy.max(EEC_dose_bird_TG_md_out),
+                       '%.2e' % numpy.mean(EEC_dose_bird_TG_lg_out), '%.2e' % numpy.std(EEC_dose_bird_TG_lg_out), '%.2e' % numpy.min(EEC_dose_bird_TG_lg_out), '%.2e' % numpy.max(EEC_dose_bird_TG_lg_out),],
+        
+        "Broadleaf Plants": ['%.2e' % numpy.mean(EEC_dose_bird_BP_sm_out), '%.2e' % numpy.std(EEC_dose_bird_BP_sm_out), '%.2e' % numpy.min(EEC_dose_bird_BP_sm_out), '%.2e' % numpy.max(EEC_dose_bird_BP_sm_out),
+                             '%.2e' % numpy.mean(EEC_dose_bird_BP_md_out), '%.2e' % numpy.std(EEC_dose_bird_BP_md_out), '%.2e' % numpy.min(EEC_dose_bird_BP_md_out), '%.2e' % numpy.max(EEC_dose_bird_BP_md_out),
+                             '%.2e' % numpy.mean(EEC_dose_bird_BP_lg_out), '%.2e' % numpy.std(EEC_dose_bird_BP_lg_out), '%.2e' % numpy.min(EEC_dose_bird_BP_lg_out), '%.2e' % numpy.max(EEC_dose_bird_BP_lg_out),],
+
+        "Fruits/Pods": ['%.2e' % numpy.mean(EEC_dose_bird_FP_sm_out), '%.2e' % numpy.std(EEC_dose_bird_FP_sm_out), '%.2e' % numpy.min(EEC_dose_bird_FP_sm_out), '%.2e' % numpy.max(EEC_dose_bird_FP_sm_out),
+                              '%.2e' % numpy.mean(EEC_dose_bird_FP_md_out), '%.2e' % numpy.std(EEC_dose_bird_FP_md_out), '%.2e' % numpy.min(EEC_dose_bird_FP_md_out), '%.2e' % numpy.max(EEC_dose_bird_FP_md_out),
+                              '%.2e' % numpy.mean(EEC_dose_bird_FP_lg_out), '%.2e' % numpy.std(EEC_dose_bird_FP_lg_out), '%.2e' % numpy.min(EEC_dose_bird_FP_lg_out), '%.2e' % numpy.max(EEC_dose_bird_FP_lg_out),],
+
+        "Arthropods": ['%.2e' % numpy.mean(EEC_dose_bird_AR_sm_out), '%.2e' % numpy.std(EEC_dose_bird_AR_sm_out), '%.2e' % numpy.min(EEC_dose_bird_AR_sm_out), '%.2e' % numpy.max(EEC_dose_bird_AR_sm_out),
+                       '%.2e' % numpy.mean(EEC_dose_bird_AR_md_out), '%.2e' % numpy.std(EEC_dose_bird_AR_md_out), '%.2e' % numpy.min(EEC_dose_bird_AR_md_out), '%.2e' % numpy.max(EEC_dose_bird_AR_md_out),
+                       '%.2e' % numpy.mean(EEC_dose_bird_AR_lg_out), '%.2e' % numpy.std(EEC_dose_bird_AR_lg_out), '%.2e' % numpy.min(EEC_dose_bird_AR_lg_out), '%.2e' % numpy.max(EEC_dose_bird_AR_lg_out),],
+
+        "Seeds": ['%.2e' % numpy.mean(EEC_dose_bird_SE_sm_out), '%.2e' % numpy.std(EEC_dose_bird_SE_sm_out), '%.2e' % numpy.min(EEC_dose_bird_SE_sm_out), '%.2e' % numpy.max(EEC_dose_bird_SE_sm_out),
+                  '%.2e' % numpy.mean(EEC_dose_bird_SE_md_out), '%.2e' % numpy.std(EEC_dose_bird_SE_md_out), '%.2e' % numpy.min(EEC_dose_bird_SE_md_out), '%.2e' % numpy.max(EEC_dose_bird_SE_md_out),
+                  '%.2e' % numpy.mean(EEC_dose_bird_SE_lg_out), '%.2e' % numpy.std(EEC_dose_bird_SE_lg_out), '%.2e' % numpy.min(EEC_dose_bird_SE_lg_out), '%.2e' % numpy.max(EEC_dose_bird_SE_lg_out),],
+    }
+    return data
+
+def gettsumdata_8(ARQ_diet_bird_SG_A_out, ARQ_diet_bird_SG_C_out, ARQ_diet_bird_TG_A_out, ARQ_diet_bird_TG_C_out, ARQ_diet_bird_BP_A_out, ARQ_diet_bird_BP_C_out, ARQ_diet_bird_FP_A_out, ARQ_diet_bird_FP_C_out, ARQ_diet_bird_AR_A_out, ARQ_diet_bird_AR_C_out):
+    data = { 
+        "Type": ['Acute', 'Acute', 'Acute', 'Acute', 'Chronic', 'Chronic', 'Chronic', 'Chronic',],
+        "Metric": ['Mean', 'Std', 'Min', 'Max', 'Mean', 'Std', 'Min', 'Max',],
+        "Short Grass": ['%.2e' % numpy.mean(ARQ_diet_bird_SG_A_out), '%.2e' % numpy.std(ARQ_diet_bird_SG_A_out), '%.2e' % numpy.min(ARQ_diet_bird_SG_A_out), '%.2e' % numpy.max(ARQ_diet_bird_SG_A_out),
+                        '%.2e' % numpy.mean(ARQ_diet_bird_SG_C_out), '%.2e' % numpy.std(ARQ_diet_bird_SG_C_out), '%.2e' % numpy.min(ARQ_diet_bird_SG_C_out), '%.2e' % numpy.max(ARQ_diet_bird_SG_C_out),],
+        
+        "Tall Grass": ['%.2e' % numpy.mean(ARQ_diet_bird_TG_A_out), '%.2e' % numpy.std(ARQ_diet_bird_TG_A_out), '%.2e' % numpy.min(ARQ_diet_bird_TG_A_out), '%.2e' % numpy.max(ARQ_diet_bird_TG_A_out),
+                       '%.2e' % numpy.mean(ARQ_diet_bird_TG_C_out), '%.2e' % numpy.std(ARQ_diet_bird_TG_C_out), '%.2e' % numpy.min(ARQ_diet_bird_TG_C_out), '%.2e' % numpy.max(ARQ_diet_bird_TG_C_out),],
+        
+        "Broadleaf Plants": ['%.2e' % numpy.mean(ARQ_diet_bird_BP_A_out), '%.2e' % numpy.std(ARQ_diet_bird_BP_A_out), '%.2e' % numpy.min(ARQ_diet_bird_BP_A_out), '%.2e' % numpy.max(ARQ_diet_bird_BP_A_out),
+                             '%.2e' % numpy.mean(ARQ_diet_bird_BP_C_out), '%.2e' % numpy.std(ARQ_diet_bird_BP_C_out), '%.2e' % numpy.min(ARQ_diet_bird_BP_C_out), '%.2e' % numpy.max(ARQ_diet_bird_BP_C_out),],
+
+        "Fruits/Pods": ['%.2e' % numpy.mean(ARQ_diet_bird_FP_A_out), '%.2e' % numpy.std(ARQ_diet_bird_FP_A_out), '%.2e' % numpy.min(ARQ_diet_bird_FP_A_out), '%.2e' % numpy.max(ARQ_diet_bird_FP_A_out),
+                              '%.2e' % numpy.mean(ARQ_diet_bird_FP_C_out), '%.2e' % numpy.std(ARQ_diet_bird_FP_C_out), '%.2e' % numpy.min(ARQ_diet_bird_FP_C_out), '%.2e' % numpy.max(ARQ_diet_bird_FP_C_out),],
+
+        "Arthropods": ['%.2e' % numpy.mean(ARQ_diet_bird_AR_A_out), '%.2e' % numpy.std(ARQ_diet_bird_AR_A_out), '%.2e' % numpy.min(ARQ_diet_bird_AR_A_out), '%.2e' % numpy.max(ARQ_diet_bird_AR_A_out),
+                       '%.2e' % numpy.mean(ARQ_diet_bird_AR_C_out), '%.2e' % numpy.std(ARQ_diet_bird_AR_C_out), '%.2e' % numpy.min(ARQ_diet_bird_AR_C_out), '%.2e' % numpy.max(ARQ_diet_bird_AR_C_out),],
+    }
+    return data    
+
+def gettsumdata_9(EEC_dose_mamm_SG_sm_out, EEC_dose_mamm_SG_md_out, EEC_dose_mamm_SG_lg_out, EEC_dose_mamm_TG_sm_out, EEC_dose_mamm_TG_md_out, EEC_dose_mamm_TG_lg_out, EEC_dose_mamm_BP_sm_out, EEC_dose_mamm_BP_md_out, EEC_dose_mamm_BP_lg_out, EEC_dose_mamm_FP_sm_out, EEC_dose_mamm_FP_md_out, EEC_dose_mamm_FP_lg_out, EEC_dose_mamm_AR_sm_out, EEC_dose_mamm_AR_md_out, EEC_dose_mamm_AR_lg_out, EEC_dose_mamm_SE_sm_out, EEC_dose_mamm_SE_md_out, EEC_dose_mamm_SE_lg_out):
+    data = { 
+        "Animal Size": ['Small', 'Small', 'Small', 'Small', 'Medium', 'Medium', 'Medium', 'Medium', 'Large', 'Large', 'Large', 'Large',],
+        "Metric": ['Mean', 'Std', 'Min', 'Max', 'Mean', 'Std', 'Min', 'Max', 'Mean', 'Std', 'Min', 'Max',],
+        "Short Grass": ['%.2e' % numpy.mean(EEC_dose_mamm_SG_sm_out), '%.2e' % numpy.std(EEC_dose_mamm_SG_sm_out), '%.2e' % numpy.min(EEC_dose_mamm_SG_sm_out), '%.2e' % numpy.max(EEC_dose_mamm_SG_sm_out),
+                        '%.2e' % numpy.mean(EEC_dose_mamm_SG_md_out), '%.2e' % numpy.std(EEC_dose_mamm_SG_md_out), '%.2e' % numpy.min(EEC_dose_mamm_SG_md_out), '%.2e' % numpy.max(EEC_dose_mamm_SG_md_out),
+                        '%.2e' % numpy.mean(EEC_dose_mamm_SG_lg_out), '%.2e' % numpy.std(EEC_dose_mamm_SG_lg_out), '%.2e' % numpy.min(EEC_dose_mamm_SG_lg_out), '%.2e' % numpy.max(EEC_dose_mamm_SG_lg_out),],
+        
+        "Tall Grass": ['%.2e' % numpy.mean(EEC_dose_mamm_TG_sm_out), '%.2e' % numpy.std(EEC_dose_mamm_TG_sm_out), '%.2e' % numpy.min(EEC_dose_mamm_TG_sm_out), '%.2e' % numpy.max(EEC_dose_mamm_TG_sm_out),
+                       '%.2e' % numpy.mean(EEC_dose_mamm_TG_md_out), '%.2e' % numpy.std(EEC_dose_mamm_TG_md_out), '%.2e' % numpy.min(EEC_dose_mamm_TG_md_out), '%.2e' % numpy.max(EEC_dose_mamm_TG_md_out),
+                       '%.2e' % numpy.mean(EEC_dose_mamm_TG_lg_out), '%.2e' % numpy.std(EEC_dose_mamm_TG_lg_out), '%.2e' % numpy.min(EEC_dose_mamm_TG_lg_out), '%.2e' % numpy.max(EEC_dose_mamm_TG_lg_out),],
+        
+        "Broadleaf Plants": ['%.2e' % numpy.mean(EEC_dose_mamm_BP_sm_out), '%.2e' % numpy.std(EEC_dose_mamm_BP_sm_out), '%.2e' % numpy.min(EEC_dose_mamm_BP_sm_out), '%.2e' % numpy.max(EEC_dose_mamm_BP_sm_out),
+                             '%.2e' % numpy.mean(EEC_dose_mamm_BP_md_out), '%.2e' % numpy.std(EEC_dose_mamm_BP_md_out), '%.2e' % numpy.min(EEC_dose_mamm_BP_md_out), '%.2e' % numpy.max(EEC_dose_mamm_BP_md_out),
+                             '%.2e' % numpy.mean(EEC_dose_mamm_BP_lg_out), '%.2e' % numpy.std(EEC_dose_mamm_BP_lg_out), '%.2e' % numpy.min(EEC_dose_mamm_BP_lg_out), '%.2e' % numpy.max(EEC_dose_mamm_BP_lg_out),],
+
+        "Fruits/Pods": ['%.2e' % numpy.mean(EEC_dose_mamm_FP_sm_out), '%.2e' % numpy.std(EEC_dose_mamm_FP_sm_out), '%.2e' % numpy.min(EEC_dose_mamm_FP_sm_out), '%.2e' % numpy.max(EEC_dose_mamm_FP_sm_out),
+                              '%.2e' % numpy.mean(EEC_dose_mamm_FP_md_out), '%.2e' % numpy.std(EEC_dose_mamm_FP_md_out), '%.2e' % numpy.min(EEC_dose_mamm_FP_md_out), '%.2e' % numpy.max(EEC_dose_mamm_FP_md_out),
+                              '%.2e' % numpy.mean(EEC_dose_mamm_FP_lg_out), '%.2e' % numpy.std(EEC_dose_mamm_FP_lg_out), '%.2e' % numpy.min(EEC_dose_mamm_FP_lg_out), '%.2e' % numpy.max(EEC_dose_mamm_FP_lg_out),],
+
+        "Arthropods": ['%.2e' % numpy.mean(EEC_dose_mamm_AR_sm_out), '%.2e' % numpy.std(EEC_dose_mamm_AR_sm_out), '%.2e' % numpy.min(EEC_dose_mamm_AR_sm_out), '%.2e' % numpy.max(EEC_dose_mamm_AR_sm_out),
+                       '%.2e' % numpy.mean(EEC_dose_mamm_AR_md_out), '%.2e' % numpy.std(EEC_dose_mamm_AR_md_out), '%.2e' % numpy.min(EEC_dose_mamm_AR_md_out), '%.2e' % numpy.max(EEC_dose_mamm_AR_md_out),
+                       '%.2e' % numpy.mean(EEC_dose_mamm_AR_lg_out), '%.2e' % numpy.std(EEC_dose_mamm_AR_lg_out), '%.2e' % numpy.min(EEC_dose_mamm_AR_lg_out), '%.2e' % numpy.max(EEC_dose_mamm_AR_lg_out),],
+
+        "Seeds": ['%.2e' % numpy.mean(EEC_dose_mamm_SE_sm_out), '%.2e' % numpy.std(EEC_dose_mamm_SE_sm_out), '%.2e' % numpy.min(EEC_dose_mamm_SE_sm_out), '%.2e' % numpy.max(EEC_dose_mamm_SE_sm_out),
+                  '%.2e' % numpy.mean(EEC_dose_mamm_SE_md_out), '%.2e' % numpy.std(EEC_dose_mamm_SE_md_out), '%.2e' % numpy.min(EEC_dose_mamm_SE_md_out), '%.2e' % numpy.max(EEC_dose_mamm_SE_md_out),
+                  '%.2e' % numpy.mean(EEC_dose_mamm_SE_lg_out), '%.2e' % numpy.std(EEC_dose_mamm_SE_lg_out), '%.2e' % numpy.min(EEC_dose_mamm_SE_lg_out), '%.2e' % numpy.max(EEC_dose_mamm_SE_lg_out),],
+    }
+    return data
+
+def gettsumdata_10(ARQ_dose_mamm_SG_sm, CRQ_dose_mamm_SG_sm, ARQ_dose_mamm_SG_md, CRQ_dose_mamm_SG_md, ARQ_dose_mamm_SG_lg, CRQ_dose_mamm_SG_lg, ARQ_dose_mamm_TG_sm, CRQ_dose_mamm_TG_sm, ARQ_dose_mamm_TG_md, CRQ_dose_mamm_TG_md, ARQ_dose_mamm_TG_lg, CRQ_dose_mamm_TG_lg, ARQ_dose_mamm_BP_sm, CRQ_dose_mamm_BP_sm, ARQ_dose_mamm_BP_md, CRQ_dose_mamm_BP_md, ARQ_dose_mamm_BP_lg, CRQ_dose_mamm_BP_lg, ARQ_dose_mamm_FP_sm, CRQ_dose_mamm_FP_sm, ARQ_dose_mamm_FP_md, CRQ_dose_mamm_FP_md, ARQ_dose_mamm_FP_lg, CRQ_dose_mamm_FP_lg, ARQ_dose_mamm_AR_sm, CRQ_dose_mamm_AR_sm, ARQ_dose_mamm_AR_md, CRQ_dose_mamm_AR_md, ARQ_dose_mamm_AR_lg, CRQ_dose_mamm_AR_lg, ARQ_dose_mamm_SE_sm, CRQ_dose_mamm_SE_sm, ARQ_dose_mamm_SE_md, CRQ_dose_mamm_SE_md, ARQ_dose_mamm_SE_lg, CRQ_dose_mamm_SE_lg):
+    data = { 
+        "Animal Size": ['Small', 'Small', 'Small', 'Small', 'Small', 'Small', 'Small', 'Small', 'Medium', 'Medium', 'Medium', 'Medium', 'Medium', 'Medium', 'Medium', 'Medium', 'Large', 'Large', 'Large', 'Large', 'Large', 'Large', 'Large', 'Large',],
+        "Type": ['Acute', 'Acute', 'Acute', 'Acute', 'Chronic', 'Chronic', 'Chronic', 'Chronic', 'Acute', 'Acute', 'Acute', 'Acute', 'Chronic', 'Chronic', 'Chronic', 'Chronic', 'Acute', 'Acute', 'Acute', 'Acute', 'Chronic', 'Chronic', 'Chronic', 'Chronic',],
+        "Metric": ['Mean', 'Std', 'Min', 'Max', 'Mean', 'Std', 'Min', 'Max', 'Mean', 'Std', 'Min', 'Max', 'Mean', 'Std', 'Min', 'Max', 'Mean', 'Std', 'Min', 'Max', 'Mean', 'Std', 'Min', 'Max',],
+        
+        "Short Grass": ['%.2e' % numpy.mean(ARQ_dose_mamm_SG_sm), '%.2e' % numpy.std(ARQ_dose_mamm_SG_sm), '%.2e' % numpy.min(ARQ_dose_mamm_SG_sm), '%.2e' % numpy.max(ARQ_dose_mamm_SG_sm),
+                        '%.2e' % numpy.mean(CRQ_dose_mamm_SG_sm), '%.2e' % numpy.std(CRQ_dose_mamm_SG_sm), '%.2e' % numpy.min(CRQ_dose_mamm_SG_sm), '%.2e' % numpy.max(CRQ_dose_mamm_SG_sm),
+                        '%.2e' % numpy.mean(ARQ_dose_mamm_SG_md), '%.2e' % numpy.std(ARQ_dose_mamm_SG_md), '%.2e' % numpy.min(ARQ_dose_mamm_SG_md), '%.2e' % numpy.max(ARQ_dose_mamm_SG_md),
+                        '%.2e' % numpy.mean(CRQ_dose_mamm_SG_md), '%.2e' % numpy.std(CRQ_dose_mamm_SG_md), '%.2e' % numpy.min(CRQ_dose_mamm_SG_md), '%.2e' % numpy.max(CRQ_dose_mamm_SG_md),
+                        '%.2e' % numpy.mean(ARQ_dose_mamm_SG_lg), '%.2e' % numpy.std(ARQ_dose_mamm_SG_lg), '%.2e' % numpy.min(ARQ_dose_mamm_SG_lg), '%.2e' % numpy.max(ARQ_dose_mamm_SG_lg),
+                        '%.2e' % numpy.mean(CRQ_dose_mamm_SG_lg), '%.2e' % numpy.std(CRQ_dose_mamm_SG_lg), '%.2e' % numpy.min(CRQ_dose_mamm_SG_lg), '%.2e' % numpy.max(CRQ_dose_mamm_SG_lg),],
+        
+        "Tall Grass": ['%.2e' % numpy.mean(ARQ_dose_mamm_TG_sm), '%.2e' % numpy.std(ARQ_dose_mamm_TG_sm), '%.2e' % numpy.min(ARQ_dose_mamm_TG_sm), '%.2e' % numpy.max(ARQ_dose_mamm_TG_sm),
+                       '%.2e' % numpy.mean(CRQ_dose_mamm_TG_sm), '%.2e' % numpy.std(CRQ_dose_mamm_TG_sm), '%.2e' % numpy.min(CRQ_dose_mamm_TG_sm), '%.2e' % numpy.max(CRQ_dose_mamm_TG_sm),
+                       '%.2e' % numpy.mean(ARQ_dose_mamm_TG_md), '%.2e' % numpy.std(ARQ_dose_mamm_TG_md), '%.2e' % numpy.min(ARQ_dose_mamm_TG_md), '%.2e' % numpy.max(ARQ_dose_mamm_TG_md),
+                       '%.2e' % numpy.mean(CRQ_dose_mamm_TG_md), '%.2e' % numpy.std(CRQ_dose_mamm_TG_md), '%.2e' % numpy.min(CRQ_dose_mamm_TG_md), '%.2e' % numpy.max(CRQ_dose_mamm_TG_md),
+                       '%.2e' % numpy.mean(ARQ_dose_mamm_TG_lg), '%.2e' % numpy.std(ARQ_dose_mamm_TG_lg), '%.2e' % numpy.min(ARQ_dose_mamm_TG_lg), '%.2e' % numpy.max(ARQ_dose_mamm_TG_lg),
+                       '%.2e' % numpy.mean(CRQ_dose_mamm_TG_lg), '%.2e' % numpy.std(CRQ_dose_mamm_TG_lg), '%.2e' % numpy.min(CRQ_dose_mamm_TG_lg), '%.2e' % numpy.max(CRQ_dose_mamm_TG_lg),],
+
+        "Broadleaf Plants": ['%.2e' % numpy.mean(ARQ_dose_mamm_BP_sm), '%.2e' % numpy.std(ARQ_dose_mamm_BP_sm), '%.2e' % numpy.min(ARQ_dose_mamm_BP_sm), '%.2e' % numpy.max(ARQ_dose_mamm_BP_sm),
+                             '%.2e' % numpy.mean(CRQ_dose_mamm_BP_sm), '%.2e' % numpy.std(CRQ_dose_mamm_BP_sm), '%.2e' % numpy.min(CRQ_dose_mamm_BP_sm), '%.2e' % numpy.max(CRQ_dose_mamm_BP_sm),
+                             '%.2e' % numpy.mean(ARQ_dose_mamm_BP_md), '%.2e' % numpy.std(ARQ_dose_mamm_BP_md), '%.2e' % numpy.min(ARQ_dose_mamm_BP_md), '%.2e' % numpy.max(ARQ_dose_mamm_BP_md),
+                             '%.2e' % numpy.mean(CRQ_dose_mamm_BP_md), '%.2e' % numpy.std(CRQ_dose_mamm_BP_md), '%.2e' % numpy.min(CRQ_dose_mamm_BP_md), '%.2e' % numpy.max(CRQ_dose_mamm_BP_md),
+                             '%.2e' % numpy.mean(ARQ_dose_mamm_BP_lg), '%.2e' % numpy.std(ARQ_dose_mamm_BP_lg), '%.2e' % numpy.min(ARQ_dose_mamm_BP_lg), '%.2e' % numpy.max(ARQ_dose_mamm_BP_lg),
+                             '%.2e' % numpy.mean(CRQ_dose_mamm_BP_lg), '%.2e' % numpy.std(CRQ_dose_mamm_BP_lg), '%.2e' % numpy.min(CRQ_dose_mamm_BP_lg), '%.2e' % numpy.max(CRQ_dose_mamm_BP_lg),],
+
+        "Fruits/Pods": ['%.2e' % numpy.mean(ARQ_dose_mamm_FP_sm), '%.2e' % numpy.std(ARQ_dose_mamm_FP_sm), '%.2e' % numpy.min(ARQ_dose_mamm_FP_sm), '%.2e' % numpy.max(ARQ_dose_mamm_FP_sm),
+                        '%.2e' % numpy.mean(CRQ_dose_mamm_FP_sm), '%.2e' % numpy.std(CRQ_dose_mamm_FP_sm), '%.2e' % numpy.min(CRQ_dose_mamm_FP_sm), '%.2e' % numpy.max(CRQ_dose_mamm_FP_sm),
+                        '%.2e' % numpy.mean(ARQ_dose_mamm_FP_md), '%.2e' % numpy.std(ARQ_dose_mamm_FP_md), '%.2e' % numpy.min(ARQ_dose_mamm_FP_md), '%.2e' % numpy.max(ARQ_dose_mamm_FP_md),
+                        '%.2e' % numpy.mean(CRQ_dose_mamm_FP_md), '%.2e' % numpy.std(CRQ_dose_mamm_FP_md), '%.2e' % numpy.min(CRQ_dose_mamm_FP_md), '%.2e' % numpy.max(CRQ_dose_mamm_FP_md),
+                        '%.2e' % numpy.mean(ARQ_dose_mamm_FP_lg), '%.2e' % numpy.std(ARQ_dose_mamm_FP_lg), '%.2e' % numpy.min(ARQ_dose_mamm_FP_lg), '%.2e' % numpy.max(ARQ_dose_mamm_FP_lg),
+                        '%.2e' % numpy.mean(CRQ_dose_mamm_FP_lg), '%.2e' % numpy.std(CRQ_dose_mamm_FP_lg), '%.2e' % numpy.min(CRQ_dose_mamm_FP_lg), '%.2e' % numpy.max(CRQ_dose_mamm_FP_lg),],
+
+        "Arthropods": ['%.2e' % numpy.mean(ARQ_dose_mamm_AR_sm), '%.2e' % numpy.std(ARQ_dose_mamm_AR_sm), '%.2e' % numpy.min(ARQ_dose_mamm_AR_sm), '%.2e' % numpy.max(ARQ_dose_mamm_AR_sm),
+                       '%.2e' % numpy.mean(CRQ_dose_mamm_AR_sm), '%.2e' % numpy.std(CRQ_dose_mamm_AR_sm), '%.2e' % numpy.min(CRQ_dose_mamm_AR_sm), '%.2e' % numpy.max(CRQ_dose_mamm_AR_sm),
+                       '%.2e' % numpy.mean(ARQ_dose_mamm_AR_md), '%.2e' % numpy.std(ARQ_dose_mamm_AR_md), '%.2e' % numpy.min(ARQ_dose_mamm_AR_md), '%.2e' % numpy.max(ARQ_dose_mamm_AR_md),
+                       '%.2e' % numpy.mean(CRQ_dose_mamm_AR_md), '%.2e' % numpy.std(CRQ_dose_mamm_AR_md), '%.2e' % numpy.min(CRQ_dose_mamm_AR_md), '%.2e' % numpy.max(CRQ_dose_mamm_AR_md),
+                       '%.2e' % numpy.mean(ARQ_dose_mamm_AR_lg), '%.2e' % numpy.std(ARQ_dose_mamm_AR_lg), '%.2e' % numpy.min(ARQ_dose_mamm_AR_lg), '%.2e' % numpy.max(ARQ_dose_mamm_AR_lg),
+                       '%.2e' % numpy.mean(CRQ_dose_mamm_AR_lg), '%.2e' % numpy.std(CRQ_dose_mamm_AR_lg), '%.2e' % numpy.min(CRQ_dose_mamm_AR_lg), '%.2e' % numpy.max(CRQ_dose_mamm_AR_lg),],
+
+        "Seeds":      ['%.2e' % numpy.mean(ARQ_dose_mamm_AR_sm), '%.2e' % numpy.std(ARQ_dose_mamm_SE_sm), '%.2e' % numpy.min(ARQ_dose_mamm_SE_sm), '%.2e' % numpy.max(ARQ_dose_mamm_SE_sm),
+                       '%.2e' % numpy.mean(CRQ_dose_mamm_SE_sm), '%.2e' % numpy.std(CRQ_dose_mamm_SE_sm), '%.2e' % numpy.min(CRQ_dose_mamm_SE_sm), '%.2e' % numpy.max(CRQ_dose_mamm_SE_sm),
+                       '%.2e' % numpy.mean(ARQ_dose_mamm_SE_md), '%.2e' % numpy.std(ARQ_dose_mamm_SE_md), '%.2e' % numpy.min(ARQ_dose_mamm_SE_md), '%.2e' % numpy.max(ARQ_dose_mamm_SE_md),
+                       '%.2e' % numpy.mean(CRQ_dose_mamm_SE_md), '%.2e' % numpy.std(CRQ_dose_mamm_SE_md), '%.2e' % numpy.min(CRQ_dose_mamm_SE_md), '%.2e' % numpy.max(CRQ_dose_mamm_SE_md),
+                       '%.2e' % numpy.mean(ARQ_dose_mamm_SE_lg), '%.2e' % numpy.std(ARQ_dose_mamm_SE_lg), '%.2e' % numpy.min(ARQ_dose_mamm_SE_lg), '%.2e' % numpy.max(ARQ_dose_mamm_SE_lg),
+                       '%.2e' % numpy.mean(CRQ_dose_mamm_SE_lg), '%.2e' % numpy.std(CRQ_dose_mamm_SE_lg), '%.2e' % numpy.min(CRQ_dose_mamm_SE_lg), '%.2e' % numpy.max(CRQ_dose_mamm_SE_lg),],
+    }
+    return data    
+
+def gettsumdata_11(ARQ_diet_mamm_SG, CRQ_diet_mamm_SG, ARQ_diet_mamm_TG, CRQ_diet_mamm_TG, ARQ_diet_mamm_BP, CRQ_diet_mamm_BP, ARQ_diet_mamm_FP, CRQ_diet_mamm_FP, ARQ_diet_mamm_AR, CRQ_diet_mamm_AR):
+    data = { 
+        "Type": ['Acute', 'Acute', 'Acute', 'Acute', 'Chronic', 'Chronic', 'Chronic', 'Chronic',],
+        "Metric": ['Mean', 'Std', 'Min', 'Max', 'Mean', 'Std', 'Min', 'Max',],
+        "Short Grass": ['%.2e' % numpy.mean(ARQ_diet_mamm_SG), '%.2e' % numpy.std(ARQ_diet_mamm_SG), '%.2e' % numpy.min(ARQ_diet_mamm_SG), '%.2e' % numpy.max(ARQ_diet_mamm_SG),
+                        '%.2e' % numpy.mean(CRQ_diet_mamm_SG), '%.2e' % numpy.std(CRQ_diet_mamm_SG), '%.2e' % numpy.min(CRQ_diet_mamm_SG), '%.2e' % numpy.max(CRQ_diet_mamm_SG),],
+        
+        "Tall Grass": ['%.2e' % numpy.mean(ARQ_diet_mamm_TG), '%.2e' % numpy.std(ARQ_diet_mamm_TG), '%.2e' % numpy.min(ARQ_diet_mamm_TG), '%.2e' % numpy.max(ARQ_diet_mamm_TG),
+                       '%.2e' % numpy.mean(CRQ_diet_mamm_TG), '%.2e' % numpy.std(CRQ_diet_mamm_TG), '%.2e' % numpy.min(CRQ_diet_mamm_TG), '%.2e' % numpy.max(CRQ_diet_mamm_TG),],
+        
+        "Broadleaf Plants": ['%.2e' % numpy.mean(ARQ_diet_mamm_BP), '%.2e' % numpy.std(ARQ_diet_mamm_BP), '%.2e' % numpy.min(ARQ_diet_mamm_BP), '%.2e' % numpy.max(ARQ_diet_mamm_BP),
+                             '%.2e' % numpy.mean(CRQ_diet_mamm_BP), '%.2e' % numpy.std(CRQ_diet_mamm_BP), '%.2e' % numpy.min(CRQ_diet_mamm_BP), '%.2e' % numpy.max(CRQ_diet_mamm_BP),],
+
+        "Fruits/Pods/Seeds": ['%.2e' % numpy.mean(ARQ_diet_mamm_FP), '%.2e' % numpy.std(ARQ_diet_mamm_FP), '%.2e' % numpy.min(ARQ_diet_mamm_FP), '%.2e' % numpy.max(ARQ_diet_mamm_FP),
+                              '%.2e' % numpy.mean(CRQ_diet_mamm_FP), '%.2e' % numpy.std(CRQ_diet_mamm_FP), '%.2e' % numpy.min(CRQ_diet_mamm_FP), '%.2e' % numpy.max(CRQ_diet_mamm_FP),],
+
+        "Arthropods": ['%.2e' % numpy.mean(ARQ_diet_mamm_AR), '%.2e' % numpy.std(ARQ_diet_mamm_AR), '%.2e' % numpy.min(ARQ_diet_mamm_AR), '%.2e' % numpy.max(ARQ_diet_mamm_AR),
+                       '%.2e' % numpy.mean(CRQ_diet_mamm_AR), '%.2e' % numpy.std(CRQ_diet_mamm_AR), '%.2e' % numpy.min(CRQ_diet_mamm_AR), '%.2e' % numpy.max(CRQ_diet_mamm_AR),],
+    }
+    return data    
+
+def gettsumdata_12(LD50_rg_bird_sm_out, LD50_rg_mamm_sm_out, LD50_rg_bird_md_out, LD50_rg_mamm_md_out, LD50_rg_bird_lg_out, LD50_rg_mamm_lg_out):
+    data = { 
+        "Animal Size": ['Small', 'Small', 'Small', 'Small', 'Medium', 'Medium', 'Medium', 'Medium', 'Large', 'Large', 'Large', 'Large',],
+        "Metric": ['Mean', 'Std', 'Min', 'Max', 'Mean', 'Std', 'Min', 'Max', 'Mean', 'Std', 'Min', 'Max',],
+        "Avian":  ['%.2e' % numpy.mean(LD50_rg_bird_sm_out), '%.2e' % numpy.std(LD50_rg_bird_sm_out), '%.2e' % numpy.min(LD50_rg_bird_sm_out), '%.2e' % numpy.max(LD50_rg_bird_sm_out), 
+                   '%.2e' % numpy.mean(LD50_rg_bird_md_out), '%.2e' % numpy.std(LD50_rg_bird_md_out), '%.2e' % numpy.min(LD50_rg_bird_md_out), '%.2e' % numpy.max(LD50_rg_bird_md_out),
+                   '%.2e' % numpy.mean(LD50_rg_bird_lg_out), '%.2e' % numpy.std(LD50_rg_bird_lg_out), '%.2e' % numpy.min(LD50_rg_bird_lg_out), '%.2e' % numpy.max(LD50_rg_bird_lg_out),],
+        "Mammal": ['%.2e' % numpy.mean(LD50_rg_mamm_sm_out), '%.2e' % numpy.std(LD50_rg_mamm_sm_out), '%.2e' % numpy.min(LD50_rg_mamm_sm_out), '%.2e' % numpy.max(LD50_rg_mamm_sm_out), 
+                   '%.2e' % numpy.mean(LD50_rg_mamm_md_out), '%.2e' % numpy.std(LD50_rg_mamm_md_out), '%.2e' % numpy.min(LD50_rg_mamm_md_out), '%.2e' % numpy.max(LD50_rg_mamm_md_out),
+                   '%.2e' % numpy.mean(LD50_rg_mamm_lg_out), '%.2e' % numpy.std(LD50_rg_mamm_lg_out), '%.2e' % numpy.min(LD50_rg_mamm_lg_out), '%.2e' % numpy.max(LD50_rg_mamm_lg_out),],
+    }
+    return data
+
+def table_all(trex2_obj):
+
+    table1_out=table_1(trex2_obj)
+    table2_out=table_2(trex2_obj)
+    table3_out=table_3(trex2_obj)
+    table4_out=table_4(trex2_obj)
+
+    html = table1_out
+    html = html + table2_out
+    html = html + table3_out
+    html = html + table4_out
+
+    if trex2_obj.Application_type == 'Seed Treatment':
+        # a_r_p=rate_out[0]       #coefficient used to estimate initial conc.
+        table5_out=table_5(trex2_obj)
+
+        html = html + table5_out['html']
+        return html, table5_out
+    else:
+        a_r_p=0
+        table6_out=table_6(trex2_obj)
+        table7_out=table_7(trex2_obj)
+        table8_out=table_8(trex2_obj)
+        table9_out=table_9(trex2_obj)
+        table10_out=table_10(trex2_obj)
+        table11_out=table_11(trex2_obj)
+
+        html = html + table6_out['html']
+        html = html + table7_out['html']
+        html = html + table8_out['html']
+        html = html + table9_out['html']
+        html = html + table10_out['html']
+        html = html + table11_out['html']
+
+        if trex2_obj.Application_type == 'Row/Band/In-furrow-Granular':
+            table12_out=table_12(trex2_obj)
+            html = html + table12_out['html']
+            return html, table6_out, table7_out, table8_out, table9_out, table10_out, table11_out, table12_out
+
+        elif trex2_obj.Application_type == 'Row/Band/In-furrow-Liquid':
+            table13_out=table_13(trex2_obj)
+            html = html + table13_out['html']
+            return html, table6_out, table7_out, table8_out, table9_out, table10_out, table11_out, table13_out
+
+        elif trex2_obj.Application_type == 'Broadcast-Granular':
+            table14_out=table_14(trex2_obj)
+            html = html + table14_out['html']
+            return html, table6_out, table7_out, table8_out, table9_out, table10_out, table11_out, table14_out
+
+        elif trex2_obj.Application_type == 'Broadcast-Liquid':
+            table15_out=table_15(trex2_obj)
+            html = html + table15_out['html']
+            return html, table6_out, table7_out, table8_out, table9_out, table10_out, table11_out, table15_out
 
 
-def table_all(pvuheadings, pvrheadings, tmpl, chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res, bird_acute_oral_study, bird_study_add_comm, low_bird_acute_ld50, test_bird_bw, mineau, mamm_acute_derm_study, mamm_study_add_comm, mam_acute_derm_ld50, test_mam_bw):
-    table3_out = table_3(pvuheadings, tmpl, ar_lb, frac_pest_surface)
-    table4_out = table_4(pvuheadings, tmpl, ar_lb, dislodge_fol_res)
-    table5_out = table_5(pvuheadings, tmpl, ar_lb, frac_pest_surface)
-    table6_out = table_6(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw)
-    table7_out = table_7(pvrheadings, tmpl, ar_lb, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw)
-    table8_out = table_8(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw)
-
-    html_all = table_1(pvuheadings, tmpl, chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res)
-    html_all = html_all + table_2(pvuheadings, tmpl, bird_acute_oral_study, bird_study_add_comm,low_bird_acute_ld50, test_bird_bw, mineau, 
-                         mamm_acute_derm_study,mamm_study_add_comm, mam_acute_derm_ld50, test_mam_bw)
-    html_all = html_all + table3_out['html']
-    html_all = html_all + table4_out['html']
-    html_all = html_all + table5_out['html']
-    html_all = html_all + table6_out['html']
-    html_all = html_all + table7_out['html']
-    html_all = html_all + table8_out['html']
-    return html_all, table3_out, table4_out, table5_out, table6_out, table7_out, table8_out
-
-def table_sum_input(sumheadings, tmpl, i, ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw):
-        #pre-table sum_input
+def table_sum_1(i, a_i, r_s, b_w, p_i, den, Foliar_dissipation_half_life, n_a, rate_out):
+        #pre-table sum_input_1
         html = """
-        <table border="1" border="1" class="out_1">
-        <tr><td><H3>Summary Statistics (Iterations=%s)</H3></td></tr>
-        <tr></tr>
-        </table>
+            <div class="out_1">
+              <H3>Summary Statistics (Iterations=%s)</H3>
+              <H3>Batch Inputs:</H3>
+              <H4>Chemical Properties</H4>
+            </div>
         """%(i-1)
-        #table sum_input
-        tsuminputdata = gettsumdata(ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw)
-        tsuminputrows = gethtmlrowsfromcols(tsuminputdata, sumheadings)
-        html = html + tmpl.render(Context(dict(data=tsuminputrows, headings=sumheadings)))
+
+        rate_out_t=[]
+        for jj in rate_out:
+            rate_out_t.append(numpy.mean(jj))
+        
+        #table sum_input_1
+        tsuminputdata_1 = gettsumdata_1(a_i, r_s, b_w, p_i, den, Foliar_dissipation_half_life, n_a, rate_out_t)
+        tsuminputrows_1 = gethtmlrowsfromcols(tsuminputdata_1, sumheadings)
+        html = html + tmpl.render(Context(dict(data=tsuminputrows_1, headings=sumheadings)))
         return html
 
-def table_sum_output(granbirdderm_out, granherpderm_out, granmammderm_out, folbirdderm_out, folherpderm_out, folmammderm_out, barebirdderm_out, bareherpderm_out, baremammderm_out, granbirdrisk_out, granreprisk_out, granamphibrisk_out, granmammrisk_out, folbirdrisk_out, folreprisk_out, folamphibrisk_out, folmammrisk_out, barebirdrisk_out, barereprisk_out, bareamphibrisk_out, baremammrisk_out):
-        #pre-table sum_input
+def table_sum_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s, bw_assessed_bird_m, bw_assessed_bird_l, bw_tested_bird, mineau_scaling_factor):
+        #pre-table sum_input_2
         html = """
-        <br>
+            <div class="out_2">
+              <H4>Toxicity Properties (Avian)</H4>
+            </div>
         """
-        #table sum_input
-        tsumoutputdata = gettsumdata_out(granbirdderm_out, granherpderm_out, granmammderm_out,
-                    folbirdderm_out, folherpderm_out, folmammderm_out,
-                    barebirdderm_out, bareherpderm_out, baremammderm_out,
-                    granbirdrisk_out, granreprisk_out, granamphibrisk_out, granmammrisk_out,
-                    folbirdrisk_out, folreprisk_out, folamphibrisk_out, folmammrisk_out,
-                    barebirdrisk_out, barereprisk_out, bareamphibrisk_out, baremammrisk_out)
-        tsumoutputrows = gethtmlrowsfromcols(tsumoutputdata, sumheadings)
-        html = html + tmpl.render(Context(dict(data=tsumoutputrows, headings=sumheadings)))
+        #table sum_input_2
+        tsuminputdata_2 = gettsumdata_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s, bw_assessed_bird_m, 
+            bw_assessed_bird_l, bw_tested_bird, mineau_scaling_factor)
+        tsuminputrows_2 = gethtmlrowsfromcols(tsuminputdata_2, sumheadings)
+        html = html + tmpl.render(Context(dict(data=tsuminputrows_2, headings=sumheadings)))
         return html
 
-def table_1(chemical_name, Use, Formulated_product_name, percent_ai, Application_type, r_s, b_w, percent_incorporated, density_of_product, Foliar_dissipation_half_life):
+def table_sum_3(mammalian_ld50, mammalian_lc50, mammalian_NOAEC, mammalian_NOAEL, bw_assessed_mamm_s, bw_assessed_mamm_m, bw_assessed_mamm_l, bw_tested_mamm):
+        #pre-table sum_input_3
+        html = """
+            <div class="out_4">
+              <H4>Toxicity Properties (Mammal)</H4>
+            </div>
+        """
+        #table sum_input_3
+        tsuminputdata_3 = gettsumdata_3(mammalian_ld50, mammalian_lc50, mammalian_NOAEC, mammalian_NOAEL, bw_assessed_mamm_s, bw_assessed_mamm_m, 
+              bw_assessed_mamm_l, bw_tested_mamm)
+        tsuminputrows_3 = gethtmlrowsfromcols(tsuminputdata_3, sumheadings)
+        html = html + tmpl.render(Context(dict(data=tsuminputrows_3, headings=sumheadings)))
+        return html
+
+def table_sum_5(Application_type_ST, sa_bird_1_s_out, sa_bird_2_s_out, sc_bird_s_out, sa_mamm_1_s_out, sa_mamm_2_s_out, sc_mamm_s_out, sa_bird_1_m_out, sa_bird_2_m_out, sc_bird_m_out, sa_mamm_1_m_out, sa_mamm_2_m_out, sc_mamm_m_out, sa_bird_1_l_out, sa_bird_2_l_out, sc_bird_l_out, sa_mamm_1_l_out, sa_mamm_2_l_out, sc_mamm_l_out):
+        #pre-table sum_5
+        html = """
+            <div class="out_5">
+              <H3>Batch outputs:</H3>
+              <H3>Application Type : Seed Treatment (N=%s)<H3>
+            </div>
+        """%(Application_type_ST)
+
+        #table sum_output_5
+        tsuminputdata_5 = gettsumdata_5(sa_bird_1_s_out, sa_bird_2_s_out, sc_bird_s_out, sa_mamm_1_s_out, sa_mamm_2_s_out, sc_mamm_s_out, sa_bird_1_m_out, sa_bird_2_m_out, sc_bird_m_out, sa_mamm_1_m_out, sa_mamm_2_m_out, sc_mamm_m_out, sa_bird_1_l_out, sa_bird_2_l_out, sc_bird_l_out, sa_mamm_1_l_out, sa_mamm_2_l_out, sc_mamm_l_out)
+        tsuminputrows_5 = gethtmlrowsfromcols(tsuminputdata_5,sumheadings_5[1])       
+        html = html + tmpl.render(Context(dict(data=tsuminputrows_5, headings=sumheadings_5[0], sub_headings=sumheadings_5[2], th_span='5')))
+        return html
+
+def table_sum_6(Application_type, Application_type_str, EEC_diet_SG_RBG_out, EEC_diet_TG_RBG_out, EEC_diet_BP_RBG_out, EEC_diet_FR_RBG_out, EEC_diet_AR_RBG_out):
+        #pre-table sum_6
+        html = """
+            <div class="out_6">
+              <H3>Application Type : %s (N=%s)<H3>
+              <H4>Dietary based EECs (ppm)</H4>
+            </div><br>
+        """%(Application_type_str, Application_type)
+
+        #table sum_output_6
+        tsuminputdata_6 = gettsumdata_6(EEC_diet_SG_RBG_out, EEC_diet_TG_RBG_out, EEC_diet_BP_RBG_out, EEC_diet_FR_RBG_out, EEC_diet_AR_RBG_out)
+        tsuminputrows_6 = gethtmlrowsfromcols(tsuminputdata_6, sumheadings_6[1])
+        html = html + tmpl_sum.render(Context(dict(data=tsuminputrows_6, headings=sumheadings_6[0], sub_headings=sumheadings_6[2])))
+        return html
+
+def table_sum_7(EEC_dose_bird_SG_sm_out, EEC_dose_bird_SG_md_out, EEC_dose_bird_SG_lg_out, EEC_dose_bird_TG_sm_out, EEC_dose_bird_TG_md_out, EEC_dose_bird_TG_lg_out, EEC_dose_bird_BP_sm_out, EEC_dose_bird_BP_md_out, EEC_dose_bird_BP_lg_out, EEC_dose_bird_FP_sm_out, EEC_dose_bird_FP_md_out, EEC_dose_bird_FP_lg_out, EEC_dose_bird_AR_sm_out, EEC_dose_bird_AR_md_out, EEC_dose_bird_AR_lg_out, EEC_dose_bird_SE_sm_out, EEC_dose_bird_SE_md_out, EEC_dose_bird_SE_lg_out):
+        #pre-table sum_7
+        html = """
+            <div class="out_7">
+              <H4>Avian Dosed Based EECs</H4>
+            </div><br>
+        """
+
+        #table sum_output_7
+        tsuminputdata_7 = gettsumdata_7(EEC_dose_bird_SG_sm_out, EEC_dose_bird_SG_md_out, EEC_dose_bird_SG_lg_out, EEC_dose_bird_TG_sm_out, EEC_dose_bird_TG_md_out, EEC_dose_bird_TG_lg_out, EEC_dose_bird_BP_sm_out, EEC_dose_bird_BP_md_out, EEC_dose_bird_BP_lg_out, EEC_dose_bird_FP_sm_out, EEC_dose_bird_FP_md_out, EEC_dose_bird_FP_lg_out, EEC_dose_bird_AR_sm_out, EEC_dose_bird_AR_md_out, EEC_dose_bird_AR_lg_out, EEC_dose_bird_SE_sm_out, EEC_dose_bird_SE_md_out, EEC_dose_bird_SE_lg_out)
+        tsuminputrows_7 = gethtmlrowsfromcols(tsuminputdata_7, sumheadings_7[1])
+        # html = html + tmpl_sum.render(Context(dict(data_new=tsuminputrows_7, headings=sumheadings_7[0], sub_headings=sumheadings_7[2], data_cols=["Small", "Medium", "Large"])))
+        html = html + tmpl_sum.render(Context(dict(data=tsuminputrows_7, headings=sumheadings_7[0], sub_headings=sumheadings_7[2])))
+        return html
+
+def table_sum_8(ARQ_diet_bird_SG_A_out, ARQ_diet_bird_SG_C_out, ARQ_diet_bird_TG_A_out, ARQ_diet_bird_TG_C_out, ARQ_diet_bird_BP_A_out, ARQ_diet_bird_BP_C_out, ARQ_diet_bird_FP_A_out, ARQ_diet_bird_FP_C_out, ARQ_diet_bird_AR_A_out, ARQ_diet_bird_AR_C_out):
+        #pre-table sum_8
+        html = """
+            <div class="out_8">
+              <H4>Avian Diet Based RQs</H4>
+            </div><br>
+        """
+
+        #table sum_output_8
+        tsuminputdata_8 = gettsumdata_8(ARQ_diet_bird_SG_A_out, ARQ_diet_bird_SG_C_out, ARQ_diet_bird_TG_A_out, ARQ_diet_bird_TG_C_out, ARQ_diet_bird_BP_A_out, ARQ_diet_bird_BP_C_out, ARQ_diet_bird_FP_A_out, ARQ_diet_bird_FP_C_out, ARQ_diet_bird_AR_A_out, ARQ_diet_bird_AR_C_out)
+        tsuminputrows_8 = gethtmlrowsfromcols(tsuminputdata_8, sumheadings_8[1])
+        html = html + tmpl_sum.render(Context(dict(data=tsuminputrows_8, headings=sumheadings_8[0], sub_headings=sumheadings_8[2])))
+        return html
+
+def table_sum_9(EEC_dose_mamm_SG_sm_out, EEC_dose_mamm_SG_md_out, EEC_dose_mamm_SG_lg_out, EEC_dose_mamm_TG_sm_out, EEC_dose_mamm_TG_md_out, EEC_dose_mamm_TG_lg_out, EEC_dose_mamm_BP_sm_out, EEC_dose_mamm_BP_md_out, EEC_dose_mamm_BP_lg_out, EEC_dose_mamm_FP_sm_out, EEC_dose_mamm_FP_md_out, EEC_dose_mamm_FP_lg_out, EEC_dose_mamm_AR_sm_out, EEC_dose_mamm_AR_md_out, EEC_dose_mamm_AR_lg_out, EEC_dose_mamm_SE_sm_out, EEC_dose_mamm_SE_md_out, EEC_dose_mamm_SE_lg_out):
+        #pre-table sum_9
+        html = """
+            <div class="out_9">
+              <H4>Mammalian Dose Based EECs (mg/kg-bw)</H4>
+            </div><br>
+        """
+
+        #table sum_output_9
+        tsuminputdata_9 = gettsumdata_9(EEC_dose_mamm_SG_sm_out, EEC_dose_mamm_SG_md_out, EEC_dose_mamm_SG_lg_out, EEC_dose_mamm_TG_sm_out, EEC_dose_mamm_TG_md_out, EEC_dose_mamm_TG_lg_out, EEC_dose_mamm_BP_sm_out, EEC_dose_mamm_BP_md_out, EEC_dose_mamm_BP_lg_out, EEC_dose_mamm_FP_sm_out, EEC_dose_mamm_FP_md_out, EEC_dose_mamm_FP_lg_out, EEC_dose_mamm_AR_sm_out, EEC_dose_mamm_AR_md_out, EEC_dose_mamm_AR_lg_out, EEC_dose_mamm_SE_sm_out, EEC_dose_mamm_SE_md_out, EEC_dose_mamm_SE_lg_out)
+        tsuminputrows_9 = gethtmlrowsfromcols(tsuminputdata_9, sumheadings_9[1])
+        html = html + tmpl_sum.render(Context(dict(data=tsuminputrows_9, headings=sumheadings_9[0], sub_headings=sumheadings_9[2])))
+        return html
+
+def table_sum_10(ARQ_dose_mamm_SG_sm, CRQ_dose_mamm_SG_sm, ARQ_dose_mamm_SG_md, CRQ_dose_mamm_SG_md, ARQ_dose_mamm_SG_lg, CRQ_dose_mamm_SG_lg, ARQ_dose_mamm_TG_sm, CRQ_dose_mamm_TG_sm, ARQ_dose_mamm_TG_md, CRQ_dose_mamm_TG_md, ARQ_dose_mamm_TG_lg, CRQ_dose_mamm_TG_lg, ARQ_dose_mamm_BP_sm, CRQ_dose_mamm_BP_sm, ARQ_dose_mamm_BP_md, CRQ_dose_mamm_BP_md, ARQ_dose_mamm_BP_lg, CRQ_dose_mamm_BP_lg, ARQ_dose_mamm_FP_sm, CRQ_dose_mamm_FP_sm, ARQ_dose_mamm_FP_md, CRQ_dose_mamm_FP_md, ARQ_dose_mamm_FP_lg, CRQ_dose_mamm_FP_lg, ARQ_dose_mamm_AR_sm, CRQ_dose_mamm_AR_sm, ARQ_dose_mamm_AR_md, CRQ_dose_mamm_AR_md, ARQ_dose_mamm_AR_lg, CRQ_dose_mamm_AR_lg, ARQ_dose_mamm_SE_sm, CRQ_dose_mamm_SE_sm, ARQ_dose_mamm_SE_md, CRQ_dose_mamm_SE_md, ARQ_dose_mamm_SE_lg, CRQ_dose_mamm_SE_lg):
+        #pre-table sum_10
+        html = """
+            <div class="out_10">
+              <H4>Mammalian Dose Based RQs</H4>
+            </div><br>
+        """
+
+        #table sum_output_10
+        tsuminputdata_10 = gettsumdata_10(ARQ_dose_mamm_SG_sm, CRQ_dose_mamm_SG_sm, ARQ_dose_mamm_SG_md, CRQ_dose_mamm_SG_md, ARQ_dose_mamm_SG_lg, CRQ_dose_mamm_SG_lg, ARQ_dose_mamm_TG_sm, CRQ_dose_mamm_TG_sm, ARQ_dose_mamm_TG_md, CRQ_dose_mamm_TG_md, ARQ_dose_mamm_TG_lg, CRQ_dose_mamm_TG_lg, ARQ_dose_mamm_BP_sm, CRQ_dose_mamm_BP_sm, ARQ_dose_mamm_BP_md, CRQ_dose_mamm_BP_md, ARQ_dose_mamm_BP_lg, CRQ_dose_mamm_BP_lg, ARQ_dose_mamm_FP_sm, CRQ_dose_mamm_FP_sm, ARQ_dose_mamm_FP_md, CRQ_dose_mamm_FP_md, ARQ_dose_mamm_FP_lg, CRQ_dose_mamm_FP_lg, ARQ_dose_mamm_AR_sm, CRQ_dose_mamm_AR_sm, ARQ_dose_mamm_AR_md, CRQ_dose_mamm_AR_md, ARQ_dose_mamm_AR_lg, CRQ_dose_mamm_AR_lg, ARQ_dose_mamm_SE_sm, CRQ_dose_mamm_SE_sm, ARQ_dose_mamm_SE_md, CRQ_dose_mamm_SE_md, ARQ_dose_mamm_SE_lg, CRQ_dose_mamm_SE_lg)
+        tsuminputrows_10 = gethtmlrowsfromcols(tsuminputdata_10, sumheadings_10[1])
+        html = html + tmpl_sum.render(Context(dict(data=tsuminputrows_10, headings=sumheadings_10[0], sub_headings=sumheadings_10[2])))
+        return html
+
+
+def table_sum_11(ARQ_diet_mamm_SG, CRQ_diet_mamm_SG, ARQ_diet_mamm_TG, CRQ_diet_mamm_TG, ARQ_diet_mamm_BP, CRQ_diet_mamm_BP, ARQ_diet_mamm_FP, CRQ_diet_mamm_FP, ARQ_diet_mamm_AR, CRQ_diet_mamm_AR):
+        #pre-table sum_11
+        html = """
+            <div class="out_11">
+              <H4>Mammalian Dietary Based RQs</H4>
+            </div><br>
+        """
+        #table sum_output_11
+        tsuminputdata_11 = gettsumdata_11(ARQ_diet_mamm_SG, CRQ_diet_mamm_SG, ARQ_diet_mamm_TG, CRQ_diet_mamm_TG, ARQ_diet_mamm_BP, CRQ_diet_mamm_BP, ARQ_diet_mamm_FP, CRQ_diet_mamm_FP, ARQ_diet_mamm_AR, CRQ_diet_mamm_AR)
+        tsuminputrows_11 = gethtmlrowsfromcols(tsuminputdata_11, sumheadings_11[1])
+        html = html + tmpl_sum.render(Context(dict(data=tsuminputrows_11, headings=sumheadings_11[0], sub_headings=sumheadings_11[2])))
+        return html
+
+
+def table_sum_12(LD50_rg_bird_sm_out, LD50_rg_mamm_sm_out, LD50_rg_bird_md_out, LD50_rg_mamm_md_out, LD50_rg_bird_lg_out, LD50_rg_mamm_lg_out):
+        #pre-table sum_12
+        html = """
+            <div class="out_12">
+              <br>
+              <H4>LD50ft-2(mg/kg-bw)</H4>
+            </div>
+        """
+        #table sum_output_12
+        tsuminputdata_12 = gettsumdata_12(LD50_rg_bird_sm_out, LD50_rg_mamm_sm_out, LD50_rg_bird_md_out, LD50_rg_mamm_md_out, LD50_rg_bird_lg_out, LD50_rg_mamm_lg_out)
+        tsuminputrows_12 = gethtmlrowsfromcols(tsuminputdata_12, sumheadings_12)
+        html = html + tmpl.render(Context(dict(data=tsuminputrows_12, headings=sumheadings_12)))
+        return html
+
+def table_sum_13(LD50_rl_bird_sm_out, LD50_rl_mamm_sm_out, LD50_rl_bird_md_out, LD50_rl_mamm_md_out, LD50_rl_bird_lg_out, LD50_rl_mamm_lg_out):
+        #pre-table sum_13
+        html = """
+            <div class="out_13">
+              <br>
+              <H4>LD50ft-2(mg/kg-bw)</H4>
+            </div>
+        """
+
+        #table sum_output_13
+        tsuminputdata_13 = gettsumdata_12(LD50_rl_bird_sm_out, LD50_rl_mamm_sm_out, LD50_rl_bird_md_out, LD50_rl_mamm_md_out, LD50_rl_bird_lg_out, LD50_rl_mamm_lg_out)
+        tsuminputrows_13 = gethtmlrowsfromcols(tsuminputdata_13, sumheadings_12)
+        html = html + tmpl.render(Context(dict(data=tsuminputrows_13, headings=sumheadings_12)))
+        return html
+
+def table_sum_14(LD50_bg_bird_sm_out, LD50_bg_mamm_sm_out, LD50_bg_bird_md_out, LD50_bg_mamm_md_out, LD50_bg_bird_lg_out, LD50_bg_mamm_lg_out):
+        #pre-table sum_14
+        html = """
+            <div class="out_14">
+              <br>
+              <H4>LD50ft-2(mg/kg-bw)</H4>
+            </div>
+        """
+
+        #table sum_output_14
+        tsuminputdata_14 = gettsumdata_12(LD50_bg_bird_sm_out, LD50_bg_mamm_sm_out, LD50_bg_bird_md_out, LD50_bg_mamm_md_out, LD50_bg_bird_lg_out, LD50_bg_mamm_lg_out)
+        tsuminputrows_14 = gethtmlrowsfromcols(tsuminputdata_14, sumheadings_12)
+        html = html + tmpl.render(Context(dict(data=tsuminputrows_14, headings=sumheadings_12)))
+        return html
+
+def table_sum_15(LD50_bl_bird_sm_out, LD50_bl_mamm_sm_out, LD50_bl_bird_md_out, LD50_bl_mamm_md_out, LD50_bl_bird_lg_out, LD50_bl_mamm_lg_out):
+        #pre-table sum_15
+        html = """
+            <div class="out_15">
+              <br>
+              <H4>LD50ft-2(mg/kg-bw)</H4>
+            </div>
+        """
+
+        #table sum_output_15
+        tsuminputdata_15 = gettsumdata_12(LD50_bl_bird_sm_out, LD50_bl_mamm_sm_out, LD50_bl_bird_md_out, LD50_bl_mamm_md_out, LD50_bl_bird_lg_out, LD50_bl_mamm_lg_out)
+        tsuminputrows_15 = gethtmlrowsfromcols(tsuminputdata_15, sumheadings_12)
+        html = html + tmpl.render(Context(dict(data=tsuminputrows_15, headings=sumheadings_12)))
+        return html
+
+def table_1(trex2_obj):
         #pre-table 1
         html = """
         <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs:</H3>
@@ -378,8 +904,7 @@ def table_1(chemical_name, Use, Formulated_product_name, percent_ai, Application
                 <div class="out_ container_output">
         """
         #table 1
-        t1data = gett1data(chemical_name, Use, Formulated_product_name, percent_ai, Application_type, r_s, b_w, percent_incorporated,
-                           density_of_product, Foliar_dissipation_half_life)
+        t1data = gett1data(trex2_obj)
         t1rows = gethtmlrowsfromcols(t1data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
         html = html + """
@@ -387,17 +912,17 @@ def table_1(chemical_name, Use, Formulated_product_name, percent_ai, Application
         """
         return html
 
-def table_2(noa, rate_out, day_out):
+def table_2(trex2_obj):
         # #pre-table 2
         html = """
             <H4 class="out_2 collapsible" id="section3"><span></span>Chemical Application (n=%s)</H4>
                 <div class="out_ container_output">
-        """ %(noa)
+        """ %(trex2_obj.n_a)
         #table 2
         t2data_all=[]
-        for i in range(int(noa)):
-            rate_temp=rate_out[i]
-            day_temp=day_out[i]
+        for i in range(int(trex2_obj.n_a)):
+            rate_temp=trex2_obj.rate_out[i]
+            day_temp=trex2_obj.day_out[i]
             t2data_temp=gett2data(i+1, rate_temp, day_temp)
             t2data_all.append(t2data_temp)
         t2data = dict([(k,[t2data_ind[k][0] for t2data_ind in t2data_all]) for k in t2data_temp])
@@ -408,15 +933,14 @@ def table_2(noa, rate_out, day_out):
         """
         return html
 
-def table_3(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s, bw_assessed_bird_m, bw_assessed_bird_l, Species_tested_bird, bw_tested_bird, mineau_scaling_factor):
+def table_3(trex2_obj):
         #pre-table 3
         html = """
             <H4 class="out_3 collapsible" id="section4"><span></span>Toxicity Properties (Avian)</H4>
                 <div class="out_ container_output">
         """
         #table 3
-        t3data = gett3data(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s, bw_assessed_bird_m, 
-            bw_assessed_bird_l, Species_tested_bird, bw_tested_bird, mineau_scaling_factor)
+        t3data = gett3data(trex2_obj)
         t3rows = gethtmlrowsfromcols(t3data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t3rows, headings=pvuheadings)))
         html = html + """
@@ -424,14 +948,13 @@ def table_3(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s
         """
         return html
 
-def table_4(mammalian_ld50, mammalian_lc50, mammalian_NOAEC, mammalian_NOAEL, bw_assessed_mamm_s, bw_assessed_mamm_m, bw_assessed_mamm_l, bw_tested_mamm):
+def table_4(trex2_obj):
         #pre-table 4
         html = """
             <H4 class="out_4 collapsible" id="section5"><span></span>Toxicity Properties (Mammal)</H4>              <div class="out_ container_output">
         """
         #table 4
-        t4data = gett4data(mammalian_ld50, mammalian_lc50, mammalian_NOAEC, mammalian_NOAEL, bw_assessed_mamm_s, bw_assessed_mamm_m, 
-              bw_assessed_mamm_l, bw_tested_mamm)
+        t4data = gett4data(trex2_obj)
         t4rows = gethtmlrowsfromcols(t4data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t4rows, headings=pvuheadings)))
         html = html + """
@@ -440,333 +963,342 @@ def table_4(mammalian_ld50, mammalian_lc50, mammalian_NOAEC, mammalian_NOAEL, bw
         """
         return html
 
-def table_5(Application_type, a_r_p, a_i, den, ld50_bird, aw_bird_sm, tw_bird, x, m_s_r_p, NOAEC_bird, ld50_mamm, aw_mamm_sm, tw_mamm, NOAEL_mamm, aw_bird_md, aw_mamm_md, aw_bird_lg,  aw_mamm_lg):
+def table_5(trex2_obj):
         #pre-table 5
         html = """
-        <br>
-        <H3 class="out_5 collapsible" id="section6"><span></span>Results</H3>
-        <div class="out_">
-        <H3 class="out_5" style="margin-left:16px">Application Type : %s</H3>
-        """%(Application_type)
+            <div class="out_5">
+              <H3>Results</H3>
+              <H3>Application Type : %s</H3>
+            </div>
+        """%(trex2_obj.Application_type)
         #table 5
-        sa_bird_1_s=trex2_model.sa_bird_1(a_r_p, a_i, den, trex2_model.at_bird,trex2_model.fi_bird, ld50_bird, aw_bird_sm, tw_bird, x) 
-        sa_bird_2_s=trex2_model.sa_bird_2(a_r_p, a_i, den, m_s_r_p, trex2_model.at_bird, ld50_bird, aw_bird_sm, tw_bird, x) 
-        sc_bird_s=trex2_model.sc_bird(a_r_p, a_i, den, NOAEC_bird)
-        sa_mamm_1_s=trex2_model.sa_mamm_1(a_r_p, a_i, den, trex2_model.at_mamm, trex2_model.fi_mamm, ld50_mamm, aw_mamm_sm, tw_mamm)
-        sa_mamm_2_s=trex2_model.sa_mamm_2(a_r_p, a_i, den, m_s_r_p, trex2_model.at_mamm, ld50_mamm, aw_mamm_sm, tw_mamm)
-        sc_mamm_s=trex2_model.sc_mamm(a_r_p, a_i, den, NOAEL_mamm,aw_mamm_sm,tw_mamm, trex2_model.ANOAEL_mamm)
+        sa_bird_1_s=trex2_obj.sa_bird_1_s
+        sa_bird_2_s=trex2_obj.sa_bird_2_s
+        sc_bird_s=trex2_obj.sc_bird_s
+        sa_mamm_1_s=trex2_obj.sa_mamm_1_s
+        sa_mamm_2_s=trex2_obj.sa_mamm_2_s
+        sc_mamm_s=trex2_obj.sc_mamm_s
         
-        sa_bird_1_m=trex2_model.sa_bird_1(a_r_p, a_i, den, trex2_model.at_bird, trex2_model.fi_bird, ld50_bird, aw_bird_md, tw_bird, x) 
-        sa_bird_2_m=trex2_model.sa_bird_2(a_r_p, a_i, den, m_s_r_p, trex2_model.at_bird, ld50_bird, aw_bird_md, tw_bird, x) 
-        sc_bird_m=trex2_model.sc_bird(a_r_p, a_i, den, NOAEC_bird)
-        sa_mamm_1_m=trex2_model.sa_mamm_1(a_r_p, a_i, den, trex2_model.at_mamm, trex2_model.fi_mamm, ld50_mamm, aw_mamm_md, tw_mamm)
-        sa_mamm_2_m=trex2_model.sa_mamm_2(a_r_p, a_i, den, m_s_r_p, trex2_model.at_mamm, ld50_mamm, aw_mamm_md, tw_mamm)
-        sc_mamm_m=trex2_model.sc_mamm(a_r_p, a_i, den, NOAEL_mamm,aw_mamm_md,tw_mamm, trex2_model.ANOAEL_mamm)
+        sa_bird_1_m=trex2_obj.sa_bird_1_m
+        sa_bird_2_m=trex2_obj.sa_bird_2_m
+        sc_bird_m=trex2_obj.sc_bird_m
+        sa_mamm_1_m=trex2_obj.sa_mamm_1_m
+        sa_mamm_2_m=trex2_obj.sa_mamm_2_m
+        sc_mamm_m=trex2_obj.sc_mamm_m
              
-        sa_bird_1_l=trex2_model.sa_bird_1(a_r_p, a_i, den, trex2_model.at_bird,trex2_model.fi_bird, ld50_bird, aw_bird_lg, tw_bird, x) 
-        sa_bird_2_l=trex2_model.sa_bird_2(a_r_p, a_i, den, m_s_r_p, trex2_model.at_bird, ld50_bird, aw_bird_lg, tw_bird, x) 
-        sc_bird_l=trex2_model.sc_bird(a_r_p, a_i, den, NOAEC_bird)
-        sa_mamm_1_l=trex2_model.sa_mamm_1(a_r_p, a_i, den, trex2_model.at_mamm, trex2_model.fi_mamm, ld50_mamm, aw_mamm_lg, tw_mamm)
-        sa_mamm_2_l=trex2_model.sa_mamm_2(a_r_p, a_i, den, m_s_r_p, trex2_model.at_mamm, ld50_mamm, aw_mamm_lg, tw_mamm)
-        sc_mamm_l=trex2_model.sc_mamm(a_r_p, a_i, den, NOAEL_mamm,aw_mamm_lg,tw_mamm, trex2_model.ANOAEL_mamm)
+        sa_bird_1_l=trex2_obj.sa_bird_1_l
+        sa_bird_2_l=trex2_obj.sa_bird_2_l
+        sc_bird_l=trex2_obj.sc_bird_l
+        sa_mamm_1_l=trex2_obj.sa_mamm_1_l
+        sa_mamm_2_l=trex2_obj.sa_mamm_2_l
+        sc_mamm_l=trex2_obj.sc_mamm_l
 
         t5data = gett5data(sa_bird_1_s, sa_bird_2_s, sc_bird_s, sa_mamm_1_s, sa_mamm_2_s, sc_mamm_s, 
                            sa_bird_1_m, sa_bird_2_m, sc_bird_m, sa_mamm_1_m, sa_mamm_2_m, sc_mamm_m,
                            sa_bird_1_l, sa_bird_2_l, sc_bird_l, sa_mamm_1_l, sa_mamm_2_l, sc_mamm_l)
         t5rows = gethtmlrowsfromcols(t5data,pv5headings[1])       
         html = html + tmpl.render(Context(dict(data=t5rows, headings=pv5headings[0], sub_headings=pv5headings[2], th_span='4')))
-        return html
+        return {'html':html, 'sa_bird_1_s':sa_bird_1_s, 'sa_bird_2_s':sa_bird_2_s, 'sc_bird_s':sc_bird_s, 'sa_mamm_1_s':sa_mamm_1_s, 'sa_mamm_2_s':sa_mamm_2_s, 'sc_mamm_s':sc_mamm_s,
+                             'sa_bird_1_m':sa_bird_1_m, 'sa_bird_2_m':sa_bird_2_m, 'sc_bird_m':sc_bird_m, 'sa_mamm_1_m':sa_mamm_1_m, 'sa_mamm_2_m':sa_mamm_2_m, 'sc_mamm_m':sc_mamm_m,
+                             'sa_bird_1_l':sa_bird_1_l, 'sa_bird_2_l':sa_bird_2_l, 'sc_bird_l':sc_bird_l, 'sa_mamm_1_l':sa_mamm_1_l, 'sa_mamm_2_l':sa_mamm_2_l, 'sc_mamm_l':sc_mamm_l}
 
-def table_6(Application_type, n_a, rate_out, a_i, h_l, day_out):
+def table_6(trex2_obj):
         #pre-table 6
         html = """
-        <br>
-        <H3 class="out_5 collapsible" id="section7"><span></span>Results</H3>
-        <div class="out_">
-        <H3 class="out_5" style="margin-left:16px">Application Type : %s</H3>
-            <H4 class="out_5 collapsible" id="section8"><span></span>Dietary based EECs (ppm)</H4>
-                <div class="out_ container_output">
-        """%(Application_type)
+            <div class="out_6">
+              <H3>Results</H3>
+              <H3>Application Type : %s</H3>
+              <H4>Dietary based EECs (ppm)</H4>
+            </div>
+        """%(trex2_obj.Application_type)
         #table 6
-        EEC_diet_SG=trex2_model.EEC_diet(trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        EEC_diet_TG=trex2_model.EEC_diet(trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        EEC_diet_BP=trex2_model.EEC_diet(trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        EEC_diet_FR=trex2_model.EEC_diet(trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_diet_AR=trex2_model.EEC_diet(trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)                       
+        EEC_diet_SG=trex2_obj.EEC_diet_SG
+        EEC_diet_TG=trex2_obj.EEC_diet_TG
+        EEC_diet_BP=trex2_obj.EEC_diet_BP
+        EEC_diet_FR=trex2_obj.EEC_diet_FR
+        EEC_diet_AR=trex2_obj.EEC_diet_AR
 
         t6data = gett6data(EEC_diet_SG, EEC_diet_TG, EEC_diet_BP, EEC_diet_FR, EEC_diet_AR)
         t6rows = gethtmlrowsfromcols(t6data,pv6headings)       
         html = html + tmpl.render(Context(dict(data=t6rows, headings=pv6headings)))
-        html = html + """
-                </div>
-        """
-        return html
+        return {'html':html, 'EEC_diet_SG':EEC_diet_SG, 'EEC_diet_TG':EEC_diet_TG, 'EEC_diet_BP':EEC_diet_BP, 'EEC_diet_FR':EEC_diet_FR, 'EEC_diet_AR':EEC_diet_AR}
 
-def table_7(aw_bird_sm, aw_bird_md, aw_bird_lg, n_a, rate_out, a_i, h_l, day_out):
+
+def table_7(trex2_obj):
         #pre-table 7
         html = """
-            <H4 class="out_6 collapsible" id="section9"><span></span>Avian Dosed Based EECs</H4>
-                <div class="out_ container_output">
+            <div class="out_7">
+              <H4>Avian Dosed Based EECs</H4>
+            </div>
         """
         #table 7
-        EEC_dose_bird_SG_sm=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_sm, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        EEC_dose_bird_SG_md=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_md, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        EEC_dose_bird_SG_lg=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_lg, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        EEC_dose_bird_TG_sm=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_sm, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        EEC_dose_bird_TG_md=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_md, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        EEC_dose_bird_TG_lg=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_lg, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        EEC_dose_bird_BP_sm=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_sm, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        EEC_dose_bird_BP_md=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_md, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        EEC_dose_bird_BP_lg=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_lg, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        EEC_dose_bird_FP_sm=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_sm, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_bird_FP_md=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_md, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_bird_FP_lg=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_lg, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_bird_AR_sm=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_sm, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        EEC_dose_bird_AR_md=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_md, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        EEC_dose_bird_AR_lg=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_lg, trex2_model.fi_bird, 0.9, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        EEC_dose_bird_SE_sm=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_sm, trex2_model.fi_bird, 0.1, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_bird_SE_md=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_md, trex2_model.fi_bird, 0.1, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_bird_SE_lg=trex2_model.EEC_dose_bird(trex2_model.EEC_diet, aw_bird_lg, trex2_model.fi_bird, 0.1, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)                     
+        EEC_dose_bird_SG_sm=trex2_obj.EEC_dose_bird_SG_sm
+        EEC_dose_bird_SG_md=trex2_obj.EEC_dose_bird_SG_md
+        EEC_dose_bird_SG_lg=trex2_obj.EEC_dose_bird_SG_lg
+        EEC_dose_bird_TG_sm=trex2_obj.EEC_dose_bird_TG_sm
+        EEC_dose_bird_TG_md=trex2_obj.EEC_dose_bird_TG_md
+        EEC_dose_bird_TG_lg=trex2_obj.EEC_dose_bird_TG_lg
+        EEC_dose_bird_BP_sm=trex2_obj.EEC_dose_bird_BP_sm
+        EEC_dose_bird_BP_md=trex2_obj.EEC_dose_bird_BP_md
+        EEC_dose_bird_BP_lg=trex2_obj.EEC_dose_bird_BP_lg
+        EEC_dose_bird_FP_sm=trex2_obj.EEC_dose_bird_FP_sm
+        EEC_dose_bird_FP_md=trex2_obj.EEC_dose_bird_FP_md
+        EEC_dose_bird_FP_lg=trex2_obj.EEC_dose_bird_FP_lg
+        EEC_dose_bird_AR_sm=trex2_obj.EEC_dose_bird_AR_sm
+        EEC_dose_bird_AR_md=trex2_obj.EEC_dose_bird_AR_md
+        EEC_dose_bird_AR_lg=trex2_obj.EEC_dose_bird_AR_lg
+        EEC_dose_bird_SE_sm=trex2_obj.EEC_dose_bird_SE_sm
+        EEC_dose_bird_SE_md=trex2_obj.EEC_dose_bird_SE_md
+        EEC_dose_bird_SE_lg=trex2_obj.EEC_dose_bird_SE_lg
                       
         t7data = gett7data(EEC_dose_bird_SG_sm, EEC_dose_bird_SG_md, EEC_dose_bird_SG_lg, EEC_dose_bird_TG_sm, EEC_dose_bird_TG_md, EEC_dose_bird_TG_lg, EEC_dose_bird_BP_sm, EEC_dose_bird_BP_md, EEC_dose_bird_BP_lg, EEC_dose_bird_FP_sm, EEC_dose_bird_FP_md, EEC_dose_bird_FP_lg, EEC_dose_bird_AR_sm, EEC_dose_bird_AR_md, EEC_dose_bird_AR_lg, EEC_dose_bird_SE_sm, EEC_dose_bird_SE_md, EEC_dose_bird_SE_lg)
         t7rows = gethtmlrowsfromcols(t7data,pv7headings)       
         html = html + tmpl.render(Context(dict(data=t7rows, headings=pv7headings)))
-        html = html + """
-                </div>
-        """
-        return html
+        return {'html':html, 'EEC_dose_bird_SG_sm':EEC_dose_bird_SG_sm, 'EEC_dose_bird_SG_md':EEC_dose_bird_SG_md, 'EEC_dose_bird_SG_lg':EEC_dose_bird_SG_lg, 'EEC_dose_bird_TG_sm':EEC_dose_bird_TG_sm, 'EEC_dose_bird_TG_md':EEC_dose_bird_TG_md, 'EEC_dose_bird_TG_lg':EEC_dose_bird_TG_lg,
+                             'EEC_dose_bird_BP_sm':EEC_dose_bird_BP_sm, 'EEC_dose_bird_BP_md':EEC_dose_bird_BP_md, 'EEC_dose_bird_BP_lg':EEC_dose_bird_BP_lg, 'EEC_dose_bird_FP_sm':EEC_dose_bird_FP_sm, 'EEC_dose_bird_FP_md':EEC_dose_bird_FP_md, 'EEC_dose_bird_FP_lg':EEC_dose_bird_FP_lg,
+                             'EEC_dose_bird_AR_sm':EEC_dose_bird_AR_sm, 'EEC_dose_bird_AR_md':EEC_dose_bird_AR_md, 'EEC_dose_bird_AR_lg':EEC_dose_bird_AR_lg, 'EEC_dose_bird_SE_sm':EEC_dose_bird_SE_sm, 'EEC_dose_bird_SE_md':EEC_dose_bird_SE_md, 'EEC_dose_bird_SE_lg':EEC_dose_bird_SE_lg}
 
-def table_8(lc50_bird, NOAEC_bird, n_a, rate_out, a_i, h_l, day_out):
+
+def table_8(trex2_obj):
         #pre-table 8
         html = """
-            <H4 class="out_7 collapsible" id="section10"><span></span>Avian Diet Based RQs</H4>
-                <div class="out_ container_output">
+            <div class="out_8">
+              <H4>Avian Diet Based RQs</H4>
+            </div>
         """
         #table 8
-        ARQ_diet_bird_SG_A=trex2_model.ARQ_diet_bird(trex2_model.EEC_diet, lc50_bird, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        ARQ_diet_bird_SG_C=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l,day_out)
-        ARQ_diet_bird_TG_A=trex2_model.ARQ_diet_bird(trex2_model.EEC_diet, lc50_bird, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l,day_out)
-        ARQ_diet_bird_TG_C=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l,day_out)
-        ARQ_diet_bird_BP_A=trex2_model.ARQ_diet_bird(trex2_model.EEC_diet, lc50_bird, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        ARQ_diet_bird_BP_C=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        ARQ_diet_bird_FP_A=trex2_model.ARQ_diet_bird(trex2_model.EEC_diet, lc50_bird, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        ARQ_diet_bird_FP_C=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        ARQ_diet_bird_AR_A=trex2_model.ARQ_diet_bird(trex2_model.EEC_diet, lc50_bird, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        ARQ_diet_bird_AR_C=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
+        ARQ_diet_bird_SG_A=trex2_obj.ARQ_diet_bird_SG_A
+        ARQ_diet_bird_SG_C=trex2_obj.ARQ_diet_bird_SG_C
+        ARQ_diet_bird_TG_A=trex2_obj.ARQ_diet_bird_TG_A
+        ARQ_diet_bird_TG_C=trex2_obj.ARQ_diet_bird_TG_C
+        ARQ_diet_bird_BP_A=trex2_obj.ARQ_diet_bird_BP_A
+        ARQ_diet_bird_BP_C=trex2_obj.ARQ_diet_bird_BP_C
+        ARQ_diet_bird_FP_A=trex2_obj.ARQ_diet_bird_FP_A
+        ARQ_diet_bird_FP_C=trex2_obj.ARQ_diet_bird_FP_C
+        ARQ_diet_bird_AR_A=trex2_obj.ARQ_diet_bird_AR_A
+        ARQ_diet_bird_AR_C=trex2_obj.ARQ_diet_bird_AR_C
                       
         t8data = gett8data(ARQ_diet_bird_SG_A, ARQ_diet_bird_SG_C, ARQ_diet_bird_TG_A, ARQ_diet_bird_TG_C, ARQ_diet_bird_BP_A, ARQ_diet_bird_BP_C, ARQ_diet_bird_FP_A, ARQ_diet_bird_FP_C, ARQ_diet_bird_AR_A, ARQ_diet_bird_AR_C)
         t8rows = gethtmlrowsfromcols(t8data,pv8headings)       
         html = html + tmpl.render(Context(dict(data=t8rows, headings=pv8headings)))
-        html = html + """
-                </div>
-        """
-        return html
+        return {'html':html, 'ARQ_diet_bird_SG_A':ARQ_diet_bird_SG_A, 'ARQ_diet_bird_SG_C':ARQ_diet_bird_SG_C, 
+                             'ARQ_diet_bird_TG_A':ARQ_diet_bird_TG_A, 'ARQ_diet_bird_TG_C':ARQ_diet_bird_TG_C, 
+                             'ARQ_diet_bird_BP_A':ARQ_diet_bird_BP_A, 'ARQ_diet_bird_BP_C':ARQ_diet_bird_BP_C,
+                             'ARQ_diet_bird_FP_A':ARQ_diet_bird_FP_A, 'ARQ_diet_bird_FP_C':ARQ_diet_bird_FP_C, 
+                             'ARQ_diet_bird_AR_A':ARQ_diet_bird_AR_A, 'ARQ_diet_bird_AR_C':ARQ_diet_bird_AR_C}
 
-def table_9(aw_mamm_sm, aw_mamm_md, aw_mamm_lg, n_a, rate_out, a_i, h_l, day_out):
+
+def table_9(trex2_obj):
         #pre-table 9
         html = """
-            <H4 class="out_8 collapsible" id="section11"><span></span>Mammalian Dose Based EECs (mg/kg-bw)</H4>
-                <div class="out_ container_output">
+            <div class="out_9">
+              <H4>Mammalian Dose Based EECs (mg/kg-bw)</H4>
+            </div>
         """
         #table 9
-        EEC_dose_mamm_SG_sm=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_sm, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        EEC_dose_mamm_SG_md=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_md, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        EEC_dose_mamm_SG_lg=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_lg, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        EEC_dose_mamm_TG_sm=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_sm, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        EEC_dose_mamm_TG_md=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_md, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        EEC_dose_mamm_TG_lg=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_lg, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        EEC_dose_mamm_BP_sm=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_sm, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        EEC_dose_mamm_BP_md=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_md, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        EEC_dose_mamm_BP_lg=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_lg, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        EEC_dose_mamm_FP_sm=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_sm, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_mamm_FP_md=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_md, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_mamm_FP_lg=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_lg, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_mamm_AR_sm=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_sm, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        EEC_dose_mamm_AR_md=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_md, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        EEC_dose_mamm_AR_lg=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_lg, trex2_model.fi_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        EEC_dose_mamm_SE_sm=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_sm, trex2_model.fi_mamm, 0.1, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_mamm_SE_md=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_md, trex2_model.fi_mamm, 0.1, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        EEC_dose_mamm_SE_lg=trex2_model.EEC_dose_mamm(trex2_model.EEC_diet, aw_mamm_lg, trex2_model.fi_mamm, 0.1, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
+        EEC_dose_mamm_SG_sm=trex2_obj.EEC_dose_mamm_SG_sm
+        EEC_dose_mamm_SG_md=trex2_obj.EEC_dose_mamm_SG_md
+        EEC_dose_mamm_SG_lg=trex2_obj.EEC_dose_mamm_SG_lg
+        EEC_dose_mamm_TG_sm=trex2_obj.EEC_dose_mamm_TG_sm
+        EEC_dose_mamm_TG_md=trex2_obj.EEC_dose_mamm_TG_md
+        EEC_dose_mamm_TG_lg=trex2_obj.EEC_dose_mamm_TG_lg
+        EEC_dose_mamm_BP_sm=trex2_obj.EEC_dose_mamm_BP_sm
+        EEC_dose_mamm_BP_md=trex2_obj.EEC_dose_mamm_BP_md
+        EEC_dose_mamm_BP_lg=trex2_obj.EEC_dose_mamm_BP_lg
+        EEC_dose_mamm_FP_sm=trex2_obj.EEC_dose_mamm_FP_sm
+        EEC_dose_mamm_FP_md=trex2_obj.EEC_dose_mamm_FP_md
+        EEC_dose_mamm_FP_lg=trex2_obj.EEC_dose_mamm_FP_lg
+        EEC_dose_mamm_AR_sm=trex2_obj.EEC_dose_mamm_AR_sm
+        EEC_dose_mamm_AR_md=trex2_obj.EEC_dose_mamm_AR_md
+        EEC_dose_mamm_AR_lg=trex2_obj.EEC_dose_mamm_AR_lg
+        EEC_dose_mamm_SE_sm=trex2_obj.EEC_dose_mamm_SE_sm
+        EEC_dose_mamm_SE_md=trex2_obj.EEC_dose_mamm_SE_md
+        EEC_dose_mamm_SE_lg=trex2_obj.EEC_dose_mamm_SE_lg
                       
         t9data = gett9data(EEC_dose_mamm_SG_sm,EEC_dose_mamm_SG_md,EEC_dose_mamm_SG_lg,EEC_dose_mamm_TG_sm,EEC_dose_mamm_TG_md,EEC_dose_mamm_TG_lg,EEC_dose_mamm_BP_sm,EEC_dose_mamm_BP_md,EEC_dose_mamm_BP_lg,EEC_dose_mamm_FP_sm,EEC_dose_mamm_FP_md,EEC_dose_mamm_FP_lg,EEC_dose_mamm_AR_sm,EEC_dose_mamm_AR_md,EEC_dose_mamm_AR_lg,EEC_dose_mamm_SE_sm,EEC_dose_mamm_SE_md,EEC_dose_mamm_SE_lg)
         t9rows = gethtmlrowsfromcols(t9data,pv7headings)       
         html = html + tmpl.render(Context(dict(data=t9rows, headings=pv7headings)))
-        html = html + """
-                </div>
-        """
-        return html
+        return {'html':html, 'EEC_dose_mamm_SG_sm':EEC_dose_mamm_SG_sm, 'EEC_dose_mamm_SG_md':EEC_dose_mamm_SG_md, 'EEC_dose_mamm_SG_lg':EEC_dose_mamm_SG_lg, 'EEC_dose_mamm_TG_sm':EEC_dose_mamm_TG_sm, 'EEC_dose_mamm_TG_md':EEC_dose_mamm_TG_md, 'EEC_dose_mamm_TG_lg':EEC_dose_mamm_TG_lg,
+                             'EEC_dose_mamm_BP_sm':EEC_dose_mamm_BP_sm, 'EEC_dose_mamm_BP_md':EEC_dose_mamm_BP_md, 'EEC_dose_mamm_BP_lg':EEC_dose_mamm_BP_lg, 'EEC_dose_mamm_FP_sm':EEC_dose_mamm_FP_sm, 'EEC_dose_mamm_FP_md':EEC_dose_mamm_FP_md, 'EEC_dose_mamm_FP_lg':EEC_dose_mamm_FP_lg,
+                             'EEC_dose_mamm_AR_sm':EEC_dose_mamm_AR_sm, 'EEC_dose_mamm_AR_md':EEC_dose_mamm_AR_md, 'EEC_dose_mamm_AR_lg':EEC_dose_mamm_AR_lg, 'EEC_dose_mamm_SE_sm':EEC_dose_mamm_SE_sm, 'EEC_dose_mamm_SE_md':EEC_dose_mamm_SE_md, 'EEC_dose_mamm_SE_lg':EEC_dose_mamm_SE_lg}
 
-def table_10(aw_mamm_sm, aw_mamm_md, aw_mamm_lg, ld50_mamm, NOAEL_mamm, tw_mamm, n_a, rate_out, a_i, h_l, day_out):
+
+def table_10(trex2_obj):
         #pre-table 10
         html = """
-            <H4 class="out_8 collapsible" id="section11"><span></span>Mammalian Dose Based EECs (mg/kg-bw)</H4>
-                <div class="out_ container_output">
+            <div class="out_10">
+              <H4>Mammalian Dose Based RQs</H4>
+            </div>
         """
         #table 10
-        ARQ_dose_mamm_SG_sm=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_sm, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        CRQ_dose_mamm_SG_sm=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_sm, tw_mamm, 0.8, n_a, rate_out, a_i, 240, h_l, day_out)
-        ARQ_dose_mamm_SG_md=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_md, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        CRQ_dose_mamm_SG_md=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_md, tw_mamm, 0.8, n_a, rate_out, a_i, 240, h_l, day_out)
-        ARQ_dose_mamm_SG_lg=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_lg, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        CRQ_dose_mamm_SG_lg=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_lg, tw_mamm, 0.8, n_a, rate_out, a_i, 240, h_l, day_out)
+        ARQ_dose_mamm_SG_sm=trex2_obj.ARQ_dose_mamm_SG_sm
+        CRQ_dose_mamm_SG_sm=trex2_obj.CRQ_dose_mamm_SG_sm
+        ARQ_dose_mamm_SG_md=trex2_obj.ARQ_dose_mamm_SG_md
+        CRQ_dose_mamm_SG_md=trex2_obj.CRQ_dose_mamm_SG_md
+        ARQ_dose_mamm_SG_lg=trex2_obj.ARQ_dose_mamm_SG_lg
+        CRQ_dose_mamm_SG_lg=trex2_obj.CRQ_dose_mamm_SG_lg
         
-        ARQ_dose_mamm_TG_sm=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_sm, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        CRQ_dose_mamm_TG_sm=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_sm, tw_mamm, 0.8, n_a, rate_out, a_i, 110, h_l, day_out)
-        ARQ_dose_mamm_TG_md=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_md, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        CRQ_dose_mamm_TG_md=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_md, tw_mamm, 0.8, n_a, rate_out, a_i, 110, h_l, day_out)
-        ARQ_dose_mamm_TG_lg=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_lg, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        CRQ_dose_mamm_TG_lg=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_lg, tw_mamm, 0.8, n_a, rate_out, a_i, 110, h_l, day_out)
+        ARQ_dose_mamm_TG_sm=trex2_obj.ARQ_dose_mamm_TG_sm
+        CRQ_dose_mamm_TG_sm=trex2_obj.CRQ_dose_mamm_TG_sm
+        ARQ_dose_mamm_TG_md=trex2_obj.ARQ_dose_mamm_TG_md
+        CRQ_dose_mamm_TG_md=trex2_obj.CRQ_dose_mamm_TG_md
+        ARQ_dose_mamm_TG_lg=trex2_obj.ARQ_dose_mamm_TG_lg
+        CRQ_dose_mamm_TG_lg=trex2_obj.CRQ_dose_mamm_TG_lg
         
-        ARQ_dose_mamm_BP_sm=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_sm, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        CRQ_dose_mamm_BP_sm=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_sm, tw_mamm, 0.8, n_a, rate_out, a_i, 135, h_l, day_out)
-        ARQ_dose_mamm_BP_md=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_md, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        CRQ_dose_mamm_BP_md=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_md, tw_mamm, 0.8, n_a, rate_out, a_i, 135, h_l, day_out)
-        ARQ_dose_mamm_BP_lg=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_lg, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        CRQ_dose_mamm_BP_lg=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_lg, tw_mamm, 0.8, n_a, rate_out, a_i, 135, h_l, day_out)
+        ARQ_dose_mamm_BP_sm=trex2_obj.ARQ_dose_mamm_BP_sm
+        CRQ_dose_mamm_BP_sm=trex2_obj.CRQ_dose_mamm_BP_sm
+        ARQ_dose_mamm_BP_md=trex2_obj.ARQ_dose_mamm_BP_md
+        CRQ_dose_mamm_BP_md=trex2_obj.CRQ_dose_mamm_BP_md
+        ARQ_dose_mamm_BP_lg=trex2_obj.ARQ_dose_mamm_BP_lg
+        CRQ_dose_mamm_BP_lg=trex2_obj.CRQ_dose_mamm_BP_lg
         
-        ARQ_dose_mamm_FP_sm=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_sm, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        CRQ_dose_mamm_FP_sm=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_sm, tw_mamm, 0.8, n_a, rate_out, a_i, 15, h_l, day_out)
-        ARQ_dose_mamm_FP_md=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_md, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        CRQ_dose_mamm_FP_md=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_md, tw_mamm, 0.8, n_a, rate_out, a_i, 15, h_l, day_out)
-        ARQ_dose_mamm_FP_lg=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_lg, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        CRQ_dose_mamm_FP_lg=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_lg, tw_mamm, 0.8, n_a, rate_out, a_i, 15, h_l, day_out)
+        ARQ_dose_mamm_FP_sm=trex2_obj.ARQ_dose_mamm_FP_sm
+        CRQ_dose_mamm_FP_sm=trex2_obj.CRQ_dose_mamm_FP_sm
+        ARQ_dose_mamm_FP_md=trex2_obj.ARQ_dose_mamm_FP_md
+        CRQ_dose_mamm_FP_md=trex2_obj.CRQ_dose_mamm_FP_md
+        ARQ_dose_mamm_FP_lg=trex2_obj.ARQ_dose_mamm_FP_lg
+        CRQ_dose_mamm_FP_lg=trex2_obj.CRQ_dose_mamm_FP_lg
         
-        ARQ_dose_mamm_AR_sm=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_sm, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        CRQ_dose_mamm_AR_sm=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_sm, tw_mamm, 0.8, n_a, rate_out, a_i, 94, h_l, day_out)
-        ARQ_dose_mamm_AR_md=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_md, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        CRQ_dose_mamm_AR_md=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_md, tw_mamm, 0.8, n_a, rate_out, a_i, 94, h_l, day_out)
-        ARQ_dose_mamm_AR_lg=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_lg, ld50_mamm, tw_mamm, 0.8, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        CRQ_dose_mamm_AR_lg=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_lg, tw_mamm, 0.8, n_a, rate_out, a_i, 94, h_l, day_out)
+        ARQ_dose_mamm_AR_sm=trex2_obj.ARQ_dose_mamm_AR_sm
+        CRQ_dose_mamm_AR_sm=trex2_obj.CRQ_dose_mamm_AR_sm
+        ARQ_dose_mamm_AR_md=trex2_obj.ARQ_dose_mamm_AR_md
+        CRQ_dose_mamm_AR_md=trex2_obj.CRQ_dose_mamm_AR_md
+        ARQ_dose_mamm_AR_lg=trex2_obj.ARQ_dose_mamm_AR_lg
+        CRQ_dose_mamm_AR_lg=trex2_obj.CRQ_dose_mamm_AR_lg
         
-        ARQ_dose_mamm_SE_sm=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_sm, ld50_mamm, tw_mamm, 0.1, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        CRQ_dose_mamm_SE_sm=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_sm, tw_mamm, 0.1, n_a, rate_out, a_i, 15, h_l, day_out)
-        ARQ_dose_mamm_SE_md=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_md, ld50_mamm, tw_mamm, 0.1, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        CRQ_dose_mamm_SE_md=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_md, tw_mamm, 0.1, n_a, rate_out, a_i, 15, h_l, day_out)
-        ARQ_dose_mamm_SE_lg=trex2_model.ARQ_dose_mamm(trex2_model.EEC_dose_mamm, trex2_model.at_mamm, aw_mamm_lg, ld50_mamm, tw_mamm, 0.1, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        CRQ_dose_mamm_SE_lg=trex2_model.CRQ_dose_mamm(trex2_model.EEC_diet, trex2_model.EEC_dose_mamm, trex2_model.ANOAEL_mamm, NOAEL_mamm, aw_mamm_lg, tw_mamm, 0.1, n_a, rate_out, a_i, 15, h_l, day_out)
+        ARQ_dose_mamm_SE_sm=trex2_obj.ARQ_dose_mamm_SE_sm
+        CRQ_dose_mamm_SE_sm=trex2_obj.CRQ_dose_mamm_SE_sm
+        ARQ_dose_mamm_SE_md=trex2_obj.ARQ_dose_mamm_SE_md
+        CRQ_dose_mamm_SE_md=trex2_obj.CRQ_dose_mamm_SE_md
+        ARQ_dose_mamm_SE_lg=trex2_obj.ARQ_dose_mamm_SE_lg
+        CRQ_dose_mamm_SE_lg=trex2_obj.CRQ_dose_mamm_SE_lg
                       
         t10data = gett10data(ARQ_dose_mamm_SG_sm,CRQ_dose_mamm_SG_sm,ARQ_dose_mamm_SG_md,CRQ_dose_mamm_SG_md,ARQ_dose_mamm_SG_lg,CRQ_dose_mamm_SG_lg,ARQ_dose_mamm_TG_sm,CRQ_dose_mamm_TG_sm,ARQ_dose_mamm_TG_md,CRQ_dose_mamm_TG_md,ARQ_dose_mamm_TG_lg,CRQ_dose_mamm_TG_lg,ARQ_dose_mamm_BP_sm,CRQ_dose_mamm_BP_sm,ARQ_dose_mamm_BP_md,CRQ_dose_mamm_BP_md,ARQ_dose_mamm_BP_lg,CRQ_dose_mamm_BP_lg,ARQ_dose_mamm_FP_sm,CRQ_dose_mamm_FP_sm,ARQ_dose_mamm_FP_md,CRQ_dose_mamm_FP_md,ARQ_dose_mamm_FP_lg,CRQ_dose_mamm_FP_lg,ARQ_dose_mamm_AR_sm,CRQ_dose_mamm_AR_sm,ARQ_dose_mamm_AR_md,CRQ_dose_mamm_AR_md,ARQ_dose_mamm_AR_lg,CRQ_dose_mamm_AR_lg,ARQ_dose_mamm_SE_sm,CRQ_dose_mamm_SE_sm,ARQ_dose_mamm_SE_md,CRQ_dose_mamm_SE_md,ARQ_dose_mamm_SE_lg,CRQ_dose_mamm_SE_lg)
         t10rows = gethtmlrowsfromcols(t10data, pv10headings)       
         html = html + tmpl_10.render(Context(dict(data=t10rows)))
-        html = html + """
-                </div>
-        """
-        return html
+        return {'html':html, 'ARQ_dose_mamm_SG_sm':ARQ_dose_mamm_SG_sm, 'CRQ_dose_mamm_SG_sm':CRQ_dose_mamm_SG_sm, 'ARQ_dose_mamm_SG_md':ARQ_dose_mamm_SG_md, 'CRQ_dose_mamm_SG_md':CRQ_dose_mamm_SG_md, 'ARQ_dose_mamm_SG_lg':ARQ_dose_mamm_SG_lg, 'CRQ_dose_mamm_SG_lg':CRQ_dose_mamm_SG_lg,
+                             'ARQ_dose_mamm_TG_sm':ARQ_dose_mamm_TG_sm, 'CRQ_dose_mamm_TG_sm':CRQ_dose_mamm_TG_sm, 'ARQ_dose_mamm_TG_md':ARQ_dose_mamm_TG_md, 'CRQ_dose_mamm_TG_md':CRQ_dose_mamm_TG_md, 'ARQ_dose_mamm_TG_lg':ARQ_dose_mamm_TG_lg, 'CRQ_dose_mamm_TG_lg':CRQ_dose_mamm_TG_lg,
+                             'ARQ_dose_mamm_BP_sm':ARQ_dose_mamm_BP_sm, 'CRQ_dose_mamm_BP_sm':CRQ_dose_mamm_BP_sm, 'ARQ_dose_mamm_BP_md':ARQ_dose_mamm_BP_md, 'CRQ_dose_mamm_BP_md':CRQ_dose_mamm_BP_md, 'ARQ_dose_mamm_BP_lg':ARQ_dose_mamm_BP_lg, 'CRQ_dose_mamm_BP_lg':CRQ_dose_mamm_BP_lg,
+                             'ARQ_dose_mamm_FP_sm':ARQ_dose_mamm_FP_sm, 'CRQ_dose_mamm_FP_sm':CRQ_dose_mamm_FP_sm, 'ARQ_dose_mamm_FP_md':ARQ_dose_mamm_FP_md, 'CRQ_dose_mamm_FP_md':CRQ_dose_mamm_FP_md, 'ARQ_dose_mamm_FP_lg':ARQ_dose_mamm_FP_lg, 'CRQ_dose_mamm_FP_lg':CRQ_dose_mamm_FP_lg,
+                             'ARQ_dose_mamm_AR_sm':ARQ_dose_mamm_AR_sm, 'CRQ_dose_mamm_AR_sm':CRQ_dose_mamm_AR_sm, 'ARQ_dose_mamm_AR_md':ARQ_dose_mamm_AR_md, 'CRQ_dose_mamm_AR_md':CRQ_dose_mamm_AR_md, 'ARQ_dose_mamm_AR_lg':ARQ_dose_mamm_AR_lg, 'CRQ_dose_mamm_AR_lg':CRQ_dose_mamm_AR_lg,
+                             'ARQ_dose_mamm_SE_sm':ARQ_dose_mamm_SE_sm, 'CRQ_dose_mamm_SE_sm':CRQ_dose_mamm_SE_sm, 'ARQ_dose_mamm_SE_md':ARQ_dose_mamm_SE_md, 'CRQ_dose_mamm_SE_md':CRQ_dose_mamm_SE_md, 'ARQ_dose_mamm_SE_lg':ARQ_dose_mamm_SE_lg, 'CRQ_dose_mamm_SE_lg':CRQ_dose_mamm_SE_lg}
 
-def table_11(lc50_mamm, NOAEC_bird, n_a, rate_out, a_i, h_l, day_out):
+
+def table_11(trex2_obj):
         #pre-table 11
         html = """
-            <H4 class="out_9 collapsible" id="section12"><span></span>Mammalian Dietary Based RQs (mg/kg-bw)</H4>
-                <div class="out_ container_output">
+            <div class="out_11">
+              <H4>Mammalian Dietary Based RQs</H4>
+            </div>
         """
         #table 11
-        ARQ_diet_mamm_SG=trex2_model.ARQ_diet_mamm(trex2_model.EEC_diet, lc50_mamm, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        CRQ_diet_bird_SG=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 240, h_l, day_out)
-        ARQ_diet_mamm_TG=trex2_model.ARQ_diet_mamm(trex2_model.EEC_diet, lc50_mamm, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        CRQ_diet_bird_TG=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 110, h_l, day_out)
-        ARQ_diet_mamm_BP=trex2_model.ARQ_diet_mamm(trex2_model.EEC_diet, lc50_mamm, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        CRQ_diet_bird_BP=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 135, h_l, day_out)
-        ARQ_diet_mamm_FP=trex2_model.ARQ_diet_mamm(trex2_model.EEC_diet, lc50_mamm, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        CRQ_diet_bird_FP=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 15, h_l, day_out)
-        ARQ_diet_mamm_AR=trex2_model.ARQ_diet_mamm(trex2_model.EEC_diet, lc50_mamm, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
-        CRQ_diet_bird_AR=trex2_model.CRQ_diet_bird(trex2_model.EEC_diet, NOAEC_bird, trex2_model.C_0, n_a, rate_out, a_i, 94, h_l, day_out)
+        ARQ_diet_mamm_SG=trex2_obj.ARQ_diet_mamm_SG
+        CRQ_diet_mamm_SG=trex2_obj.CRQ_diet_mamm_SG
+
+        ARQ_diet_mamm_TG=trex2_obj.ARQ_diet_mamm_TG
+        CRQ_diet_mamm_TG=trex2_obj.CRQ_diet_mamm_TG
+        ARQ_diet_mamm_BP=trex2_obj.ARQ_diet_mamm_BP
+        CRQ_diet_mamm_BP=trex2_obj.CRQ_diet_mamm_BP
+        ARQ_diet_mamm_FP=trex2_obj.ARQ_diet_mamm_FP
+        CRQ_diet_mamm_FP=trex2_obj.CRQ_diet_mamm_FP
+        ARQ_diet_mamm_AR=trex2_obj.ARQ_diet_mamm_AR
+        CRQ_diet_mamm_AR=trex2_obj.CRQ_diet_mamm_AR
   
-        t11data = gett11data(ARQ_diet_mamm_SG,CRQ_diet_bird_SG,ARQ_diet_mamm_TG,CRQ_diet_bird_TG,ARQ_diet_mamm_BP,CRQ_diet_bird_BP,ARQ_diet_mamm_FP,CRQ_diet_bird_FP,ARQ_diet_mamm_AR,CRQ_diet_bird_AR)
+        t11data = gett11data(ARQ_diet_mamm_SG,CRQ_diet_mamm_SG,ARQ_diet_mamm_TG,CRQ_diet_mamm_TG,ARQ_diet_mamm_BP,CRQ_diet_mamm_BP,ARQ_diet_mamm_FP,CRQ_diet_mamm_FP,ARQ_diet_mamm_AR,CRQ_diet_mamm_AR)
         t11rows = gethtmlrowsfromcols(t11data,pv8headings)       
         html = html + tmpl.render(Context(dict(data=t11rows, headings=pv8headings)))
-        html = html + """
-                </div>
-        """
-        return html
+        return {'html':html, 'ARQ_diet_mamm_SG':ARQ_diet_mamm_SG, 'CRQ_diet_mamm_SG':CRQ_diet_mamm_SG, 'ARQ_diet_mamm_TG':ARQ_diet_mamm_TG, 'CRQ_diet_mamm_TG':CRQ_diet_mamm_TG,
+                             'ARQ_diet_mamm_BP':ARQ_diet_mamm_BP, 'CRQ_diet_mamm_BP':CRQ_diet_mamm_BP, 'ARQ_diet_mamm_FP':ARQ_diet_mamm_FP, 'CRQ_diet_mamm_FP':CRQ_diet_mamm_FP,
+                             'ARQ_diet_mamm_AR':ARQ_diet_mamm_AR, 'CRQ_diet_mamm_AR':CRQ_diet_mamm_AR}
 
-def table_12(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_sm, aw_mamm_sm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg, ld50_bird, ld50_mamm, tw_bird, tw_mamm, x):
+
+def table_12(trex2_obj):
         #pre-table 12
         html = """
-            <H4 class="out_10 collapsible" id="section13"><span></span>LD50ft-2(mg/kg-bw)</H4>
-                <div class="out_ container_output">
+            <div class="out_12">
+              <H4>LD50ft-2(mg/kg-bw)</H4>
+            </div>
         """
         #table 12
-        LD50_rg_bird_sm=trex2_model.LD50_rg_bird(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_sm, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_rg_mamm_sm=trex2_model.LD50_rg_mamm(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_mamm_sm, trex2_model.at_mamm, ld50_mamm, tw_mamm)
-        LD50_rg_bird_md=trex2_model.LD50_rg_bird(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_md, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_rg_mamm_md=trex2_model.LD50_rg_mamm(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_mamm_md, trex2_model.at_mamm, ld50_mamm, tw_mamm)
-        LD50_rg_bird_lg=trex2_model.LD50_rg_bird(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_lg, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_rg_mamm_lg=trex2_model.LD50_rg_mamm(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_mamm_lg, trex2_model.at_mamm, ld50_mamm, tw_mamm)
+        LD50_rg_bird_sm=trex2_obj.LD50_rg_bird_sm
+        LD50_rg_mamm_sm=trex2_obj.LD50_rg_mamm_sm
+        LD50_rg_bird_md=trex2_obj.LD50_rg_bird_md
+        LD50_rg_mamm_md=trex2_obj.LD50_rg_mamm_md
+        LD50_rg_bird_lg=trex2_obj.LD50_rg_bird_lg
+        LD50_rg_mamm_lg=trex2_obj.LD50_rg_mamm_lg
 
         t12data = gett12data(LD50_rg_bird_sm,LD50_rg_mamm_sm,LD50_rg_bird_md,LD50_rg_mamm_md,LD50_rg_bird_lg,LD50_rg_mamm_lg)
         t12rows = gethtmlrowsfromcols(t12data,pv12headings)       
         html = html + tmpl.render(Context(dict(data=t12rows, headings=pv12headings)))
-        html = html + """
-                </div>
-        </div>
-        """
-        return html
+        return {'html':html, 'LD50_rg_bird_sm':LD50_rg_bird_sm, 'LD50_rg_mamm_sm':LD50_rg_mamm_sm,
+                             'LD50_rg_bird_md':LD50_rg_bird_md, 'LD50_rg_mamm_md':LD50_rg_mamm_md,
+                             'LD50_rg_bird_lg':LD50_rg_bird_lg, 'LD50_rg_mamm_lg':LD50_rg_mamm_lg}
 
-def table_13(Application_type, rate_out, a_i, p_i, b_w, aw_bird_sm, aw_mamm_sm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg, ld50_bird, ld50_mamm, tw_bird, tw_mamm, x):
+
+def table_13(trex2_obj):
         #pre-table 13
         html = """
-            <H4 class="out_10 collapsible" id="section13"><span></span>LD50ft-2(mg/kg-bw)</H4>
-                <div class="out_ container_output">
+            <div class="out_13">
+              <H4>LD50ft-2(mg/kg-bw)</H4>
+            </div>
         """
         #table 13
-        LD50_rl_bird_sm=trex2_model.LD50_rl_bird(Application_type, rate_out, a_i, p_i, b_w, aw_bird_sm, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_rl_mamm_sm=trex2_model.LD50_rl_mamm(Application_type, rate_out, a_i, p_i, b_w, aw_mamm_sm, trex2_model.at_mamm, ld50_mamm, tw_mamm)
-        LD50_rl_bird_md=trex2_model.LD50_rl_bird(Application_type, rate_out, a_i, p_i, b_w, aw_bird_md, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_rl_mamm_md=trex2_model.LD50_rl_mamm(Application_type, rate_out, a_i, p_i, b_w, aw_mamm_md, trex2_model.at_mamm, ld50_mamm, tw_mamm)
-        LD50_rl_bird_lg=trex2_model.LD50_rl_bird(Application_type, rate_out, a_i, p_i, b_w, aw_bird_lg, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_rl_mamm_lg=trex2_model.LD50_rl_mamm(Application_type, rate_out, a_i, p_i, b_w, aw_mamm_lg, trex2_model.at_mamm, ld50_mamm, tw_mamm)
+        LD50_rl_bird_sm=trex2_obj.LD50_rl_bird_sm
+        LD50_rl_mamm_sm=trex2_obj.LD50_rl_mamm_sm
+        LD50_rl_bird_md=trex2_obj.LD50_rl_bird_md
+        LD50_rl_mamm_md=trex2_obj.LD50_rl_mamm_md
+        LD50_rl_bird_lg=trex2_obj.LD50_rl_bird_lg
+        LD50_rl_mamm_lg=trex2_obj.LD50_rl_mamm_lg
 
         t13data = gett12data(LD50_rl_bird_sm,LD50_rl_mamm_sm,LD50_rl_bird_md,LD50_rl_mamm_md,LD50_rl_bird_lg,LD50_rl_mamm_lg)
         t13rows = gethtmlrowsfromcols(t13data,pv12headings)       
         html = html + tmpl.render(Context(dict(data=t13rows, headings=pv12headings)))
-        html = html + """
-                </div>
-        </div>
-        """
-        return html
+        return {'html':html, 'LD50_rl_bird_sm':LD50_rl_bird_sm, 'LD50_rl_mamm_sm':LD50_rl_mamm_sm,
+                             'LD50_rl_bird_md':LD50_rl_bird_md, 'LD50_rl_mamm_md':LD50_rl_mamm_md,
+                             'LD50_rl_bird_lg':LD50_rl_bird_lg, 'LD50_rl_mamm_lg':LD50_rl_mamm_lg}
 
-def table_14(Application_type, rate_out, a_i, p_i, aw_bird_sm, aw_mamm_sm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg, ld50_bird, ld50_mamm, tw_bird, tw_mamm, x):
+
+def table_14(trex2_obj):
         #pre-table 14
         html = """
-            <H4 class="out_10 collapsible" id="section13"><span></span>LD50ft-2(mg/kg-bw)</H4>
-                <div class="out_ container_output">
+            <div class="out_14">
+              <H4>LD50ft-2(mg/kg-bw)</H4>
+            </div>
         """
         #table 14
-        LD50_bg_bird_sm=trex2_model.LD50_bg_bird(Application_type, rate_out, a_i, p_i, aw_bird_sm, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_bg_mamm_sm=trex2_model.LD50_bg_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_sm, trex2_model.at_mamm, ld50_mamm, tw_mamm)
-        LD50_bg_bird_md=trex2_model.LD50_bg_bird(Application_type, rate_out, a_i, p_i, aw_bird_md, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_bg_mamm_md=trex2_model.LD50_bg_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_md, trex2_model.at_mamm, ld50_mamm, tw_mamm)
-        LD50_bg_bird_lg=trex2_model.LD50_bg_bird(Application_type, rate_out, a_i, p_i, aw_bird_lg, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_bg_mamm_lg=trex2_model.LD50_bg_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_lg, trex2_model.at_mamm, ld50_mamm, tw_mamm)
+        LD50_bg_bird_sm=trex2_obj.LD50_bg_bird_sm
+        LD50_bg_mamm_sm=trex2_obj.LD50_bg_mamm_sm
+        LD50_bg_bird_md=trex2_obj.LD50_bg_bird_md
+        LD50_bg_mamm_md=trex2_obj.LD50_bg_mamm_md
+        LD50_bg_bird_lg=trex2_obj.LD50_bg_bird_lg
+        LD50_bg_mamm_lg=trex2_obj.LD50_bg_mamm_lg
 
         t14data = gett12data(LD50_bg_bird_sm,LD50_bg_mamm_sm,LD50_bg_bird_md,LD50_bg_mamm_md,LD50_bg_bird_lg,LD50_bg_mamm_lg)
         t14rows = gethtmlrowsfromcols(t14data,pv12headings)       
         html = html + tmpl.render(Context(dict(data=t14rows, headings=pv12headings)))
-        html = html + """
-                </div>
-        </div>
-        """
-        return html
-
-def table_15(Application_type, rate_out, a_i, p_i, aw_bird_sm, aw_mamm_sm, aw_bird_md, aw_mamm_md, aw_bird_lg, aw_mamm_lg, ld50_bird, ld50_mamm, tw_bird, tw_mamm, x):
+        return {'html':html, 'LD50_bg_bird_sm':LD50_bg_bird_sm, 'LD50_bg_mamm_sm':LD50_bg_mamm_sm,
+                             'LD50_bg_bird_md':LD50_bg_bird_md, 'LD50_bg_mamm_md':LD50_bg_mamm_md,
+                             'LD50_bg_bird_lg':LD50_bg_bird_lg, 'LD50_bg_mamm_lg':LD50_bg_mamm_lg}
+                             
+def table_15(trex2_obj):
         #pre-table 15
         html = """
-            <H4 class="out_10 collapsible" id="section13"><span></span>LD50ft-2(mg/kg-bw)</H4>
-                <div class="out_ container_output">
+            <div class="out_15">
+              <H4>LD50ft-2(mg/kg-bw)</H4>
+            </div>
         """
         #table 15
-        LD50_bl_bird_sm=trex2_model.LD50_bl_bird(Application_type, rate_out, a_i, p_i, aw_bird_sm, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_bl_mamm_sm=trex2_model.LD50_bl_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_sm, trex2_model.at_mamm, ld50_mamm, tw_mamm)
-        LD50_bl_bird_md=trex2_model.LD50_bl_bird(Application_type, rate_out, a_i, p_i, aw_bird_md, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_bl_mamm_md=trex2_model.LD50_bl_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_md, trex2_model.at_mamm, ld50_mamm, tw_mamm)
-        LD50_bl_bird_lg=trex2_model.LD50_bl_bird(Application_type, rate_out, a_i, p_i, aw_bird_lg, trex2_model.at_bird, ld50_bird, tw_bird, x)
-        LD50_bl_mamm_lg=trex2_model.LD50_bl_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_lg, trex2_model.at_mamm, ld50_mamm, tw_mamm)
+        LD50_bl_bird_sm=trex2_obj.LD50_bl_bird_sm
+        LD50_bl_mamm_sm=trex2_obj.LD50_bl_mamm_sm
+        LD50_bl_bird_md=trex2_obj.LD50_bl_bird_md
+        LD50_bl_mamm_md=trex2_obj.LD50_bl_mamm_md
+        LD50_bl_bird_lg=trex2_obj.LD50_bl_bird_lg
+        LD50_bl_mamm_lg=trex2_obj.LD50_bl_mamm_lg
 
         t15data = gett12data(LD50_bl_bird_sm,LD50_bl_mamm_sm,LD50_bl_bird_md,LD50_bl_mamm_md,LD50_bl_bird_lg,LD50_bl_mamm_lg)
         t15rows = gethtmlrowsfromcols(t15data,pv12headings)       
         html = html + tmpl.render(Context(dict(data=t15rows, headings=pv12headings)))
-        html = html + """
-                </div>
-        </div>
-        """
-        return html
+        return {'html':html, 'LD50_bl_bird_sm':LD50_bl_bird_sm, 'LD50_bl_mamm_sm':LD50_bl_mamm_sm,
+                             'LD50_bl_bird_md':LD50_bl_bird_md, 'LD50_bl_mamm_md':LD50_bl_mamm_md,
+                             'LD50_bl_bird_lg':LD50_bl_bird_lg, 'LD50_bl_mamm_lg':LD50_bl_mamm_lg}
+

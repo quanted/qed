@@ -14,6 +14,7 @@ from StringIO import StringIO
 import cStringIO
 import logging 
 from dust import dust_tables
+from dust import dust_model
 import csv
 import numpy
 
@@ -94,9 +95,13 @@ def html_table(row_inp,iter):
                         <tr><H3>Batch Calculation of Iteration %s</H3></tr><br>
                     </table>"""%(iter)
 
-    table_all_out = dust_tables.table_all(dust_tables.pvuheadings, dust_tables.pvrheadings, dust_tables.tmpl, chemical_name_temp, label_epa_reg_no_temp, ar_lb_temp, frac_pest_surface_temp, 
-                                            dislodge_fol_res_temp, bird_acute_oral_study_temp, bird_study_add_comm_temp, low_bird_acute_ld50_temp, test_bird_bw_temp, mineau_temp, 
-                                            mamm_acute_derm_study_temp, mamm_study_add_comm_temp, mam_acute_derm_ld50_temp, test_mam_bw_temp)
+    dust_obj_temp = dust_model.dust(chemical_name_temp, label_epa_reg_no_temp, ar_lb_temp, frac_pest_surface_temp, dislodge_fol_res_temp, 
+                               bird_acute_oral_study_temp, bird_study_add_comm_temp, low_bird_acute_ld50_temp, test_bird_bw_temp, 
+                               mineau_temp, mamm_acute_derm_study_temp, mamm_study_add_comm_temp, mam_acute_derm_ld50_temp, test_mam_bw_temp)
+
+
+    table_all_out = dust_tables.table_all(dust_obj_temp)
+        # html = html + dust_tables.table_all(dust_obj)[0]
 
     html_table_temp = Input_header + table_all_out[0]
 
@@ -167,7 +172,7 @@ def loop_html(thefile):
         iter_html = iter_html +html_table(row,i)
         i=i+1
 
-    sum_input_html = dust_tables.table_sum_input(dust_tables.sumheadings, dust_tables.tmpl, i, ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw)
+    sum_input_html = dust_tables.table_sum_input(i, ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw)
     sum_output_html = dust_tables.table_sum_output(granbirdderm_out, granherpderm_out, granmammderm_out,
                     folbirdderm_out, folherpderm_out, folmammderm_out,
                     barebirdderm_out, bareherpderm_out, baremammderm_out,

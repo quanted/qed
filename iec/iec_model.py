@@ -7,6 +7,13 @@ class iec(object):
         self.threshold = threshold
         self.run_methods()
 
+    def __str__(self):
+        string_rep = ''
+        string_rep = string_rep + "dose_response = %.2e" % self.dose_response
+        string_rep = string_rep + "LC50 = %.2e" % self.LC50
+        string_rep = string_rep + "threshold = %.2e" % self.threshold
+        return string_rep
+
     def run_methods(self):
         self.z_score_f()
         self.F8_f()
@@ -27,4 +34,3 @@ class iec(object):
     def chance_f(self):
         self.chance = 1 / self.F8
         return self.chance
-

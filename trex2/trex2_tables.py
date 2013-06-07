@@ -951,7 +951,8 @@ def table_3(trex2_obj):
 def table_4(trex2_obj):
         #pre-table 4
         html = """
-            <H4 class="out_4 collapsible" id="section5"><span></span>Toxicity Properties (Mammal)</H4>              <div class="out_ container_output">
+            <H4 class="out_4 collapsible" id="section5"><span></span>Toxicity Properties (Mammal)</H4>
+                <div class="out_ container_output">
         """
         #table 4
         t4data = gett4data(trex2_obj)
@@ -966,10 +967,8 @@ def table_4(trex2_obj):
 def table_5(trex2_obj):
         #pre-table 5
         html = """
-            <div class="out_5">
-              <H3>Results</H3>
-              <H3>Application Type : %s</H3>
-            </div>
+        <H3 class="out_1 collapsible" id="section6"><span></span>Results: Application Type : %s</H3>
+            <div class="out_ container_output">
         """%(trex2_obj.Application_type)
         #table 5
         sa_bird_1_s=trex2_obj.sa_bird_1_s
@@ -996,8 +995,11 @@ def table_5(trex2_obj):
         t5data = gett5data(sa_bird_1_s, sa_bird_2_s, sc_bird_s, sa_mamm_1_s, sa_mamm_2_s, sc_mamm_s, 
                            sa_bird_1_m, sa_bird_2_m, sc_bird_m, sa_mamm_1_m, sa_mamm_2_m, sc_mamm_m,
                            sa_bird_1_l, sa_bird_2_l, sc_bird_l, sa_mamm_1_l, sa_mamm_2_l, sc_mamm_l)
-        t5rows = gethtmlrowsfromcols(t5data,pv5headings[1])       
+        t5rows = gethtmlrowsfromcols(t5data,pv5headings[1])     
         html = html + tmpl.render(Context(dict(data=t5rows, headings=pv5headings[0], sub_headings=pv5headings[2], th_span='4')))
+        html = html + """
+                </div>
+        """  
         return {'html':html, 'sa_bird_1_s':sa_bird_1_s, 'sa_bird_2_s':sa_bird_2_s, 'sc_bird_s':sc_bird_s, 'sa_mamm_1_s':sa_mamm_1_s, 'sa_mamm_2_s':sa_mamm_2_s, 'sc_mamm_s':sc_mamm_s,
                              'sa_bird_1_m':sa_bird_1_m, 'sa_bird_2_m':sa_bird_2_m, 'sc_bird_m':sc_bird_m, 'sa_mamm_1_m':sa_mamm_1_m, 'sa_mamm_2_m':sa_mamm_2_m, 'sc_mamm_m':sc_mamm_m,
                              'sa_bird_1_l':sa_bird_1_l, 'sa_bird_2_l':sa_bird_2_l, 'sc_bird_l':sc_bird_l, 'sa_mamm_1_l':sa_mamm_1_l, 'sa_mamm_2_l':sa_mamm_2_l, 'sc_mamm_l':sc_mamm_l}
@@ -1005,11 +1007,10 @@ def table_5(trex2_obj):
 def table_6(trex2_obj):
         #pre-table 6
         html = """
-            <div class="out_6">
-              <H3>Results</H3>
-              <H3>Application Type : %s</H3>
-              <H4>Dietary based EECs (ppm)</H4>
-            </div>
+        <H3 class="out_1 collapsible" id="section6"><span></span>Results: Application Type : %s</H3>
+        <div class="out_">
+            <H4 class="out_ collapsible" id="section7"><span></span>Dietary based EECs (ppm)</H4>
+                <div class="out_ container_output">
         """%(trex2_obj.Application_type)
         #table 6
         EEC_diet_SG=trex2_obj.EEC_diet_SG
@@ -1019,17 +1020,19 @@ def table_6(trex2_obj):
         EEC_diet_AR=trex2_obj.EEC_diet_AR
 
         t6data = gett6data(EEC_diet_SG, EEC_diet_TG, EEC_diet_BP, EEC_diet_FR, EEC_diet_AR)
-        t6rows = gethtmlrowsfromcols(t6data,pv6headings)       
+        t6rows = gethtmlrowsfromcols(t6data,pv6headings)
         html = html + tmpl.render(Context(dict(data=t6rows, headings=pv6headings)))
+        html = html + """
+                </div>
+        """
         return {'html':html, 'EEC_diet_SG':EEC_diet_SG, 'EEC_diet_TG':EEC_diet_TG, 'EEC_diet_BP':EEC_diet_BP, 'EEC_diet_FR':EEC_diet_FR, 'EEC_diet_AR':EEC_diet_AR}
 
 
 def table_7(trex2_obj):
         #pre-table 7
         html = """
-            <div class="out_7">
-              <H4>Avian Dosed Based EECs</H4>
-            </div>
+            <H4 class="out_ collapsible" id="section8"><span></span>Avian Dosed Based EECs</H4>
+                <div class="out_ container_output">
         """
         #table 7
         EEC_dose_bird_SG_sm=trex2_obj.EEC_dose_bird_SG_sm
@@ -1054,6 +1057,9 @@ def table_7(trex2_obj):
         t7data = gett7data(EEC_dose_bird_SG_sm, EEC_dose_bird_SG_md, EEC_dose_bird_SG_lg, EEC_dose_bird_TG_sm, EEC_dose_bird_TG_md, EEC_dose_bird_TG_lg, EEC_dose_bird_BP_sm, EEC_dose_bird_BP_md, EEC_dose_bird_BP_lg, EEC_dose_bird_FP_sm, EEC_dose_bird_FP_md, EEC_dose_bird_FP_lg, EEC_dose_bird_AR_sm, EEC_dose_bird_AR_md, EEC_dose_bird_AR_lg, EEC_dose_bird_SE_sm, EEC_dose_bird_SE_md, EEC_dose_bird_SE_lg)
         t7rows = gethtmlrowsfromcols(t7data,pv7headings)       
         html = html + tmpl.render(Context(dict(data=t7rows, headings=pv7headings)))
+        html = html + """
+                </div>
+        """
         return {'html':html, 'EEC_dose_bird_SG_sm':EEC_dose_bird_SG_sm, 'EEC_dose_bird_SG_md':EEC_dose_bird_SG_md, 'EEC_dose_bird_SG_lg':EEC_dose_bird_SG_lg, 'EEC_dose_bird_TG_sm':EEC_dose_bird_TG_sm, 'EEC_dose_bird_TG_md':EEC_dose_bird_TG_md, 'EEC_dose_bird_TG_lg':EEC_dose_bird_TG_lg,
                              'EEC_dose_bird_BP_sm':EEC_dose_bird_BP_sm, 'EEC_dose_bird_BP_md':EEC_dose_bird_BP_md, 'EEC_dose_bird_BP_lg':EEC_dose_bird_BP_lg, 'EEC_dose_bird_FP_sm':EEC_dose_bird_FP_sm, 'EEC_dose_bird_FP_md':EEC_dose_bird_FP_md, 'EEC_dose_bird_FP_lg':EEC_dose_bird_FP_lg,
                              'EEC_dose_bird_AR_sm':EEC_dose_bird_AR_sm, 'EEC_dose_bird_AR_md':EEC_dose_bird_AR_md, 'EEC_dose_bird_AR_lg':EEC_dose_bird_AR_lg, 'EEC_dose_bird_SE_sm':EEC_dose_bird_SE_sm, 'EEC_dose_bird_SE_md':EEC_dose_bird_SE_md, 'EEC_dose_bird_SE_lg':EEC_dose_bird_SE_lg}
@@ -1062,9 +1068,8 @@ def table_7(trex2_obj):
 def table_8(trex2_obj):
         #pre-table 8
         html = """
-            <div class="out_8">
-              <H4>Avian Diet Based RQs</H4>
-            </div>
+            <H4 class="out_ collapsible" id="section9"><span></span>Avian Diet Based RQs</H4>
+                <div class="out_ container_output">
         """
         #table 8
         ARQ_diet_bird_SG_A=trex2_obj.ARQ_diet_bird_SG_A
@@ -1081,6 +1086,9 @@ def table_8(trex2_obj):
         t8data = gett8data(ARQ_diet_bird_SG_A, ARQ_diet_bird_SG_C, ARQ_diet_bird_TG_A, ARQ_diet_bird_TG_C, ARQ_diet_bird_BP_A, ARQ_diet_bird_BP_C, ARQ_diet_bird_FP_A, ARQ_diet_bird_FP_C, ARQ_diet_bird_AR_A, ARQ_diet_bird_AR_C)
         t8rows = gethtmlrowsfromcols(t8data,pv8headings)       
         html = html + tmpl.render(Context(dict(data=t8rows, headings=pv8headings)))
+        html = html + """
+                </div>
+        """
         return {'html':html, 'ARQ_diet_bird_SG_A':ARQ_diet_bird_SG_A, 'ARQ_diet_bird_SG_C':ARQ_diet_bird_SG_C, 
                              'ARQ_diet_bird_TG_A':ARQ_diet_bird_TG_A, 'ARQ_diet_bird_TG_C':ARQ_diet_bird_TG_C, 
                              'ARQ_diet_bird_BP_A':ARQ_diet_bird_BP_A, 'ARQ_diet_bird_BP_C':ARQ_diet_bird_BP_C,
@@ -1091,9 +1099,8 @@ def table_8(trex2_obj):
 def table_9(trex2_obj):
         #pre-table 9
         html = """
-            <div class="out_9">
-              <H4>Mammalian Dose Based EECs (mg/kg-bw)</H4>
-            </div>
+            <H4 class="out_ collapsible" id="section10"><span></span>Mammalian Dose Based EECs (mg/kg-bw)</H4>
+                <div class="out_ container_output">
         """
         #table 9
         EEC_dose_mamm_SG_sm=trex2_obj.EEC_dose_mamm_SG_sm
@@ -1118,6 +1125,9 @@ def table_9(trex2_obj):
         t9data = gett9data(EEC_dose_mamm_SG_sm,EEC_dose_mamm_SG_md,EEC_dose_mamm_SG_lg,EEC_dose_mamm_TG_sm,EEC_dose_mamm_TG_md,EEC_dose_mamm_TG_lg,EEC_dose_mamm_BP_sm,EEC_dose_mamm_BP_md,EEC_dose_mamm_BP_lg,EEC_dose_mamm_FP_sm,EEC_dose_mamm_FP_md,EEC_dose_mamm_FP_lg,EEC_dose_mamm_AR_sm,EEC_dose_mamm_AR_md,EEC_dose_mamm_AR_lg,EEC_dose_mamm_SE_sm,EEC_dose_mamm_SE_md,EEC_dose_mamm_SE_lg)
         t9rows = gethtmlrowsfromcols(t9data,pv7headings)       
         html = html + tmpl.render(Context(dict(data=t9rows, headings=pv7headings)))
+        html = html + """
+                </div>
+        """
         return {'html':html, 'EEC_dose_mamm_SG_sm':EEC_dose_mamm_SG_sm, 'EEC_dose_mamm_SG_md':EEC_dose_mamm_SG_md, 'EEC_dose_mamm_SG_lg':EEC_dose_mamm_SG_lg, 'EEC_dose_mamm_TG_sm':EEC_dose_mamm_TG_sm, 'EEC_dose_mamm_TG_md':EEC_dose_mamm_TG_md, 'EEC_dose_mamm_TG_lg':EEC_dose_mamm_TG_lg,
                              'EEC_dose_mamm_BP_sm':EEC_dose_mamm_BP_sm, 'EEC_dose_mamm_BP_md':EEC_dose_mamm_BP_md, 'EEC_dose_mamm_BP_lg':EEC_dose_mamm_BP_lg, 'EEC_dose_mamm_FP_sm':EEC_dose_mamm_FP_sm, 'EEC_dose_mamm_FP_md':EEC_dose_mamm_FP_md, 'EEC_dose_mamm_FP_lg':EEC_dose_mamm_FP_lg,
                              'EEC_dose_mamm_AR_sm':EEC_dose_mamm_AR_sm, 'EEC_dose_mamm_AR_md':EEC_dose_mamm_AR_md, 'EEC_dose_mamm_AR_lg':EEC_dose_mamm_AR_lg, 'EEC_dose_mamm_SE_sm':EEC_dose_mamm_SE_sm, 'EEC_dose_mamm_SE_md':EEC_dose_mamm_SE_md, 'EEC_dose_mamm_SE_lg':EEC_dose_mamm_SE_lg}
@@ -1126,9 +1136,8 @@ def table_9(trex2_obj):
 def table_10(trex2_obj):
         #pre-table 10
         html = """
-            <div class="out_10">
-              <H4>Mammalian Dose Based RQs</H4>
-            </div>
+            <H4 class="out_ collapsible" id="section11"><span></span>Mammalian Dose Based RQs</H4>
+                <div class="out_ container_output">
         """
         #table 10
         ARQ_dose_mamm_SG_sm=trex2_obj.ARQ_dose_mamm_SG_sm
@@ -1176,6 +1185,9 @@ def table_10(trex2_obj):
         t10data = gett10data(ARQ_dose_mamm_SG_sm,CRQ_dose_mamm_SG_sm,ARQ_dose_mamm_SG_md,CRQ_dose_mamm_SG_md,ARQ_dose_mamm_SG_lg,CRQ_dose_mamm_SG_lg,ARQ_dose_mamm_TG_sm,CRQ_dose_mamm_TG_sm,ARQ_dose_mamm_TG_md,CRQ_dose_mamm_TG_md,ARQ_dose_mamm_TG_lg,CRQ_dose_mamm_TG_lg,ARQ_dose_mamm_BP_sm,CRQ_dose_mamm_BP_sm,ARQ_dose_mamm_BP_md,CRQ_dose_mamm_BP_md,ARQ_dose_mamm_BP_lg,CRQ_dose_mamm_BP_lg,ARQ_dose_mamm_FP_sm,CRQ_dose_mamm_FP_sm,ARQ_dose_mamm_FP_md,CRQ_dose_mamm_FP_md,ARQ_dose_mamm_FP_lg,CRQ_dose_mamm_FP_lg,ARQ_dose_mamm_AR_sm,CRQ_dose_mamm_AR_sm,ARQ_dose_mamm_AR_md,CRQ_dose_mamm_AR_md,ARQ_dose_mamm_AR_lg,CRQ_dose_mamm_AR_lg,ARQ_dose_mamm_SE_sm,CRQ_dose_mamm_SE_sm,ARQ_dose_mamm_SE_md,CRQ_dose_mamm_SE_md,ARQ_dose_mamm_SE_lg,CRQ_dose_mamm_SE_lg)
         t10rows = gethtmlrowsfromcols(t10data, pv10headings)       
         html = html + tmpl_10.render(Context(dict(data=t10rows)))
+        html = html + """
+                </div>
+        """
         return {'html':html, 'ARQ_dose_mamm_SG_sm':ARQ_dose_mamm_SG_sm, 'CRQ_dose_mamm_SG_sm':CRQ_dose_mamm_SG_sm, 'ARQ_dose_mamm_SG_md':ARQ_dose_mamm_SG_md, 'CRQ_dose_mamm_SG_md':CRQ_dose_mamm_SG_md, 'ARQ_dose_mamm_SG_lg':ARQ_dose_mamm_SG_lg, 'CRQ_dose_mamm_SG_lg':CRQ_dose_mamm_SG_lg,
                              'ARQ_dose_mamm_TG_sm':ARQ_dose_mamm_TG_sm, 'CRQ_dose_mamm_TG_sm':CRQ_dose_mamm_TG_sm, 'ARQ_dose_mamm_TG_md':ARQ_dose_mamm_TG_md, 'CRQ_dose_mamm_TG_md':CRQ_dose_mamm_TG_md, 'ARQ_dose_mamm_TG_lg':ARQ_dose_mamm_TG_lg, 'CRQ_dose_mamm_TG_lg':CRQ_dose_mamm_TG_lg,
                              'ARQ_dose_mamm_BP_sm':ARQ_dose_mamm_BP_sm, 'CRQ_dose_mamm_BP_sm':CRQ_dose_mamm_BP_sm, 'ARQ_dose_mamm_BP_md':ARQ_dose_mamm_BP_md, 'CRQ_dose_mamm_BP_md':CRQ_dose_mamm_BP_md, 'ARQ_dose_mamm_BP_lg':ARQ_dose_mamm_BP_lg, 'CRQ_dose_mamm_BP_lg':CRQ_dose_mamm_BP_lg,
@@ -1187,9 +1199,8 @@ def table_10(trex2_obj):
 def table_11(trex2_obj):
         #pre-table 11
         html = """
-            <div class="out_11">
-              <H4>Mammalian Dietary Based RQs</H4>
-            </div>
+            <H4 class="out_ collapsible" id="section12"><span></span>Mammalian Dietary Based RQs</H4>
+                <div class="out_ container_output">
         """
         #table 11
         ARQ_diet_mamm_SG=trex2_obj.ARQ_diet_mamm_SG
@@ -1207,6 +1218,9 @@ def table_11(trex2_obj):
         t11data = gett11data(ARQ_diet_mamm_SG,CRQ_diet_mamm_SG,ARQ_diet_mamm_TG,CRQ_diet_mamm_TG,ARQ_diet_mamm_BP,CRQ_diet_mamm_BP,ARQ_diet_mamm_FP,CRQ_diet_mamm_FP,ARQ_diet_mamm_AR,CRQ_diet_mamm_AR)
         t11rows = gethtmlrowsfromcols(t11data,pv8headings)       
         html = html + tmpl.render(Context(dict(data=t11rows, headings=pv8headings)))
+        html = html + """
+                </div>
+        """
         return {'html':html, 'ARQ_diet_mamm_SG':ARQ_diet_mamm_SG, 'CRQ_diet_mamm_SG':CRQ_diet_mamm_SG, 'ARQ_diet_mamm_TG':ARQ_diet_mamm_TG, 'CRQ_diet_mamm_TG':CRQ_diet_mamm_TG,
                              'ARQ_diet_mamm_BP':ARQ_diet_mamm_BP, 'CRQ_diet_mamm_BP':CRQ_diet_mamm_BP, 'ARQ_diet_mamm_FP':ARQ_diet_mamm_FP, 'CRQ_diet_mamm_FP':CRQ_diet_mamm_FP,
                              'ARQ_diet_mamm_AR':ARQ_diet_mamm_AR, 'CRQ_diet_mamm_AR':CRQ_diet_mamm_AR}
@@ -1215,9 +1229,8 @@ def table_11(trex2_obj):
 def table_12(trex2_obj):
         #pre-table 12
         html = """
-            <div class="out_12">
-              <H4>LD50ft-2(mg/kg-bw)</H4>
-            </div>
+            <H4 class="out_ collapsible" id="section13"><span></span>LD50ft-2(mg/kg-bw)</H4>
+                <div class="out_ container_output">
         """
         #table 12
         LD50_rg_bird_sm=trex2_obj.LD50_rg_bird_sm
@@ -1230,6 +1243,10 @@ def table_12(trex2_obj):
         t12data = gett12data(LD50_rg_bird_sm,LD50_rg_mamm_sm,LD50_rg_bird_md,LD50_rg_mamm_md,LD50_rg_bird_lg,LD50_rg_mamm_lg)
         t12rows = gethtmlrowsfromcols(t12data,pv12headings)       
         html = html + tmpl.render(Context(dict(data=t12rows, headings=pv12headings)))
+        html = html + """
+                </div>
+        </div>
+        """
         return {'html':html, 'LD50_rg_bird_sm':LD50_rg_bird_sm, 'LD50_rg_mamm_sm':LD50_rg_mamm_sm,
                              'LD50_rg_bird_md':LD50_rg_bird_md, 'LD50_rg_mamm_md':LD50_rg_mamm_md,
                              'LD50_rg_bird_lg':LD50_rg_bird_lg, 'LD50_rg_mamm_lg':LD50_rg_mamm_lg}
@@ -1238,9 +1255,8 @@ def table_12(trex2_obj):
 def table_13(trex2_obj):
         #pre-table 13
         html = """
-            <div class="out_13">
-              <H4>LD50ft-2(mg/kg-bw)</H4>
-            </div>
+            <H4 class="out_ collapsible" id="section13"><span></span>LD50ft-2(mg/kg-bw)</H4>
+                <div class="out_ container_output">
         """
         #table 13
         LD50_rl_bird_sm=trex2_obj.LD50_rl_bird_sm
@@ -1253,6 +1269,10 @@ def table_13(trex2_obj):
         t13data = gett12data(LD50_rl_bird_sm,LD50_rl_mamm_sm,LD50_rl_bird_md,LD50_rl_mamm_md,LD50_rl_bird_lg,LD50_rl_mamm_lg)
         t13rows = gethtmlrowsfromcols(t13data,pv12headings)       
         html = html + tmpl.render(Context(dict(data=t13rows, headings=pv12headings)))
+        html = html + """
+                </div>
+        </div>
+        """
         return {'html':html, 'LD50_rl_bird_sm':LD50_rl_bird_sm, 'LD50_rl_mamm_sm':LD50_rl_mamm_sm,
                              'LD50_rl_bird_md':LD50_rl_bird_md, 'LD50_rl_mamm_md':LD50_rl_mamm_md,
                              'LD50_rl_bird_lg':LD50_rl_bird_lg, 'LD50_rl_mamm_lg':LD50_rl_mamm_lg}
@@ -1261,9 +1281,8 @@ def table_13(trex2_obj):
 def table_14(trex2_obj):
         #pre-table 14
         html = """
-            <div class="out_14">
-              <H4>LD50ft-2(mg/kg-bw)</H4>
-            </div>
+            <H4 class="out_ collapsible" id="section13"><span></span>LD50ft-2(mg/kg-bw)</H4>
+                <div class="out_ container_output">
         """
         #table 14
         LD50_bg_bird_sm=trex2_obj.LD50_bg_bird_sm
@@ -1276,6 +1295,10 @@ def table_14(trex2_obj):
         t14data = gett12data(LD50_bg_bird_sm,LD50_bg_mamm_sm,LD50_bg_bird_md,LD50_bg_mamm_md,LD50_bg_bird_lg,LD50_bg_mamm_lg)
         t14rows = gethtmlrowsfromcols(t14data,pv12headings)       
         html = html + tmpl.render(Context(dict(data=t14rows, headings=pv12headings)))
+        html = html + """
+                </div>
+        </div>
+        """
         return {'html':html, 'LD50_bg_bird_sm':LD50_bg_bird_sm, 'LD50_bg_mamm_sm':LD50_bg_mamm_sm,
                              'LD50_bg_bird_md':LD50_bg_bird_md, 'LD50_bg_mamm_md':LD50_bg_mamm_md,
                              'LD50_bg_bird_lg':LD50_bg_bird_lg, 'LD50_bg_mamm_lg':LD50_bg_mamm_lg}
@@ -1283,9 +1306,8 @@ def table_14(trex2_obj):
 def table_15(trex2_obj):
         #pre-table 15
         html = """
-            <div class="out_15">
-              <H4>LD50ft-2(mg/kg-bw)</H4>
-            </div>
+            <H4 class="out_ collapsible" id="section13"><span></span>LD50ft-2(mg/kg-bw)</H4>
+                <div class="out_ container_output">
         """
         #table 15
         LD50_bl_bird_sm=trex2_obj.LD50_bl_bird_sm
@@ -1298,6 +1320,10 @@ def table_15(trex2_obj):
         t15data = gett12data(LD50_bl_bird_sm,LD50_bl_mamm_sm,LD50_bl_bird_md,LD50_bl_mamm_md,LD50_bl_bird_lg,LD50_bl_mamm_lg)
         t15rows = gethtmlrowsfromcols(t15data,pv12headings)       
         html = html + tmpl.render(Context(dict(data=t15rows, headings=pv12headings)))
+        html = html + """
+                </div>
+        </div>
+        """
         return {'html':html, 'LD50_bl_bird_sm':LD50_bl_bird_sm, 'LD50_bl_mamm_sm':LD50_bl_mamm_sm,
                              'LD50_bl_bird_md':LD50_bl_bird_md, 'LD50_bl_mamm_md':LD50_bl_mamm_md,
                              'LD50_bl_bird_lg':LD50_bl_bird_lg, 'LD50_bl_mamm_lg':LD50_bl_mamm_lg}

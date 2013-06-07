@@ -53,8 +53,8 @@ server.post('/user/login/:userid', function(req, res, next){
         json = JSON.parse(body);
         console.log(json);
         console.log('json: ' + json);
-        console.log('password' + json.pswrd);
-        user.getLoginDecision(user_id,json.pswrd,function(err, decision_data){
+        console.log('password: ' + json.password);
+        user.getLoginDecision(user_id,json.password,function(err, decision_data){
             res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Headers", "X-Requested-With");
             res.header('Access-Control-Allow-Methods', "POST");
@@ -92,14 +92,21 @@ server.post('/user/registration/:user_id', function(req, res, next){
     });
 });
 
-server.get('/user/openid/login/:openid', function(req,res,next){
-    var openid = req.params.openid;
-    console.console.log("OpenId: " + openid);
-    user.openIdLogin(openId, function(err, login_data){
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "X-Requested-With");
-        res.header('Access-Control-Allow-Methods', "GET");
-        res.send(login_data);
+server.post('/user/openid/login', function(req,res,next){
+    var body = '';
+    req.on('data', function (data)
+    {
+        body += data;
+    });
+    req.on('end', function ()
+    {
+        var json = JSON.parse(body);
+        user.openIdLogin(json.openid, function(err, login_data){
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "X-Requested-With");
+            res.header('Access-Control-Allow-Methods', "GET");
+            res.send(login_data);
+        });
     });
 });
 

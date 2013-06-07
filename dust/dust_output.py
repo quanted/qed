@@ -19,9 +19,9 @@ from dust import dust_model
 
 from django.template import Context, Template
 
-sys.path.append('C:\Python27\Lib\site-packages')
+# sys.path.append('C:\Python27\Lib\site-packages')
 
-import pymongo
+# import pymongo
 from django.utils import simplejson
 
 
@@ -45,17 +45,17 @@ class DUSTExecutePage(webapp.RequestHandler):
         dust_obj = dust_model.dust(chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res, bird_acute_oral_study, bird_study_add_comm,
               low_bird_acute_ld50, test_bird_bw, mineau, mamm_acute_derm_study, mamm_study_add_comm, mam_acute_derm_ld50, test_mam_bw)
         
-        client = pymongo.MongoClient()
-        # print client
+        # client = pymongo.MongoClient()
+        # # print client
 
-        db = client.test_database
-        posts = db.posts
-        user_names={"user":"tao"}
-        dust_save = dict(dust_obj.__dict__,**user_names)
-        posts.insert(dust_save)
-        print db
-        print posts
-        print posts.find_one({"user":"tao"})
+        # db = client.test_database
+        # posts = db.posts
+        # user_names={"user":"tao"}
+        # dust_save = dict(dust_obj.__dict__,**user_names)
+        # posts.insert(dust_save)
+        # print db
+        # print posts
+        # print posts.find_one({"user":"tao"})
 
         # for post in posts.find({"user":"tao"}):
         #     print post

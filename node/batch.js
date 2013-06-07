@@ -51,9 +51,6 @@ server.post('/user/login/:userid', function(req, res, next){
     req.on('end', function ()
     {
         json = JSON.parse(body);
-        console.log(json);
-        console.log('json: ' + json);
-        console.log('password: ' + json.password);
         user.getLoginDecision(user_id,json.password,function(err, decision_data){
             res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -106,6 +103,29 @@ server.post('/user/openid/login', function(req,res,next){
             res.header("Access-Control-Allow-Headers", "X-Requested-With");
             res.header('Access-Control-Allow-Methods', "GET");
             res.send(login_data);
+        });
+    });
+});
+
+
+server.post('/user/sessionid', function(req,res,next){
+    var body = '';
+    req.on('data', function (data)
+    {
+        body += data;
+    });
+    req.on('end', function ()
+    {
+        var json = JSON.parse(body);
+        var user_id = json['user_id'];
+        var session_id = json['session_id'];
+        console.log("User id: " + user_id + " session id: " + session_id);
+        user.checkUserSessionId(user_id, session_id, function(err, decision_data){
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "X-Requested-With");
+            res.header('Access-Control-Allow-Methods', "POST");
+            console.log(decision_data);
+            res.send(decision_data);
         });
     });
 });

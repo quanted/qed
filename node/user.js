@@ -66,6 +66,30 @@ exports.openIdLogin = function(openid, callback)
   });
 }
 
+exports.checkUserSessionId = function(userid, sessionid, callback)
+{
+  var decision_sid = {'decision':false,'sid':null,'expires':null,'userid':userid};
+  console.log("parameter sid: " + sessionid);
+  db.collection('user', function(err,collection){
+    collection.findOne({user_id:userid},function(err,user_data) {
+      if(user_data != null)
+      {
+        var storedSessionId = user_data.latest_login_info.sessionId;
+        var storedExpiration = user_data.latest_login_info.expires;
+        var decision = (sessionid === storedSessionId);
+        console.log("stored sid: " + storedSessionId);
+        if(decision)
+        {
+          decision_sid.decision = decision;
+          decision_sid.sid = sessionid;
+          decision_sid.expires = storedExpiration;
+        }
+      }
+      callback(null,decision_sid);
+    });
+  });
+}
+
 exports.registerUser = function(user_id, password, email_address, callback)
 { 
   console.log("Registering User");

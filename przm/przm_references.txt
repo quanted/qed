@@ -23,6 +23,20 @@ Example reports documenting the use of PRZM in reregistration eligibility docume
   <li><a href="http://www.epa.gov/pesticides/chem_search/cleared_reviews/csr_PC-128901_19-Aug-09_a.pdf">Chlorimuron-ethyl</a></li>
   <li><a href="http://www.epa.gov/espp/litstatus/effects/24d/attachment-b.pdf">Reregistration Eligibility Document for 2,4-D</a></li>
 </ul>
+
+<p>
+Example reports for the use of PRZM in NOAA consultations with the EPA (Endangered Species Act Section 7 Consultations) concerning the impact of pesticides on listed species:
+</p>
+<ul class="bullet">
+<li><a href="http://www.nmfs.noaa.gov/pr/pdfs/consultations/pesticides_batch5opinion.pdf">Biological Opinion 5 (Oryzalin,Pendimethalin,Trifluralin)</a>
+<li><a href="http://www.nmfs.noaa.gov/pr/pdfs/consultations/pesticide_opinion4.pdf">Biological Opinion 4 (2,4-D, Triclopyr BEE, Diuron, Linuron, Captan, Chlorothalonil )</a>
+<li><a href="http://www.nmfs.noaa.gov/pr/pdfs/final_batch_3_opinion.pdf">Biological Opinion 3 (Azinphos methyl, Bensulide, Dimethoate, 
+Disulfoton, Ethoprop, Fenamiphos, Naled, Methamidophos, 
+Methidathion, Methyl parathion, Phorate and Phosmet)</a>
+<li><a href="http://www.nmfs.noaa.gov/pr/pdfs/carbamate.pdf">Biological Opinion 2 (Carbaryl, Carbofuran, and Methomyl)</a>
+<li><a href="http://www.nmfs.noaa.gov/pr/pdfs/pesticide_biop.pdf">Biological Opinion 1 (Chlorpyrifos, Diazinon, and Malathion)</a>
+</ul>
+
 <p>
 General EPA guidance on how PRZM fits into the overall ecological risk assessment process for pesticides can be found at the following links:
 </p>

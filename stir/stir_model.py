@@ -259,19 +259,14 @@ class StirModel:
             self.sid_mammal = (self.air_conc * self.inh_rate_mammal * self.direct_spray_duration * self.spray_drift_fraction)/(60.0 * self.body_weight_assessed_mammal)
         return self.sid_mammal
 
-    # Conversion Factor
-    def ConvLCLD(self):
-        if self.cf == -1:
-            self.inh_rate_mammal = float(self.inh_rate_mammal)
-            self.body_weight_assessed_mammal = float(self.body_weight_assessed_mammal)
-            self.cf = ((self.inh_rate_mammal * 0.001)/self.body_weight_assessed_mammal)
-        return self.cf
-
     #eq. 9 Conversion of mammalian LC50 to LD50
     def CalcConvertMammalInhalationLC50toLD50(self):
         if self.mammal_inhalation_ld50 == -1:
             self.mammal_inhalation_lc50 = float(self.mammal_inhalation_lc50)
-            self.cf = self.ConvLCLD()
+            #conversion factor
+            self.inh_rate_mammal = float(self.inh_rate_mammal)
+            self.body_weight_tested_mammal = float(self.body_weight_tested_mammal)
+            self.cf = ((self.inh_rate_mammal * 0.001)/self.body_weight_tested_mammal)
             self.duration_mammal_inhalation_study = float(self.duration_mammal_inhalation_study)
             activity_factor = 1
             absorption = 1

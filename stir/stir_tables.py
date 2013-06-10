@@ -92,11 +92,13 @@ def table_2(pvuheadings, tmpl, sm):
 
 def gett2data(sm):
     data = { 
-        "Parameter": ['Avian Oral LD50','Assessed Bird Body Weight','Mineau Scaling Factor','Mammalian Inhalation LC50',
-          'Rat Inhalation Study Duration','Assessed Mammal Body Weight','Mammal Oral LD50',],
-        "Value": [sm.avian_oral_ld50, sm.body_weight_assessed_bird, sm.mineau_scaling_factor, sm.mammal_inhalation_lc50, 
-            sm.duration_mammal_inhalation_study, sm.body_weight_assessed_mammal, sm.mammal_oral_ld50,],
-        "Units": ['mg/kg-bw','kg','','mg/kg-bw','hours','kg','mg/kg-bw',],
+        "Parameter": ['Avian Oral LD50','Assessed Bird Body Weight','Tested Bird Body Weight','Mineau Scaling Factor',
+            'Mammalian Inhalation LC50','Rat Inhalation Study Duration','Assessed Mammal Body Weight','Tested Mammal Body Weight',
+            'Mammal Oral LD50',],
+        "Value": [sm.avian_oral_ld50, sm.body_weight_assessed_bird, sm.body_weight_tested_bird, sm.mineau_scaling_factor, 
+            sm.mammal_inhalation_lc50, sm.duration_mammal_inhalation_study, sm.body_weight_assessed_mammal, sm.body_weight_tested_mammal,
+            sm.mammal_oral_ld50,],
+        "Units": ['mg/kg-bw','kg','kg','mg/kg-bw','hours','kg','kg','mg/kg-bw',],
     }
     return data
 

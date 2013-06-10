@@ -14,8 +14,7 @@ from pprint import pprint
 import csv
 import sys
 sys.path.append("../terrplant")
-from terrplant import terrplant_model
-from terrplant import terrplant_tables
+from terrplant import terrplant_model,terrplant_tables
 import logging
 
 logger = logging.getLogger('TerrplantQaqcPage')
@@ -139,7 +138,7 @@ def set_globals(**kwargs):
 class TestCase_rundry_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.rundry_out_in=rundry_out_in
     def testRundry_out_in(self):
@@ -151,7 +150,7 @@ class TestCase_rundry_out(unittest.TestCase):
 class TestCase_runsemi_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.runsemi_out_in=runsemi_out_in
     def testRundry_out_in(self):
@@ -163,7 +162,7 @@ class TestCase_runsemi_out(unittest.TestCase):
 class TestCase_spray_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.spray_out_in=spray_out_in
     def testRundry_out_in(self):
@@ -175,7 +174,7 @@ class TestCase_spray_out(unittest.TestCase):
 class TestCase_totaldry_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.totaldry_out_in=totaldry_out_in
     def testRundry_out_in(self):
@@ -187,7 +186,7 @@ class TestCase_totaldry_out(unittest.TestCase):
 class TestCase_totalsemi_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.totalsemi_out_in=totalsemi_out_in
     def testRundry_out_in(self):
@@ -199,7 +198,7 @@ class TestCase_totalsemi_out(unittest.TestCase):
 class TestCase_nmsRQdry_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.nmsRQdry_out_in=nmsRQdry_out_in
     def testRundry_out_in(self):
@@ -211,7 +210,7 @@ class TestCase_nmsRQdry_out(unittest.TestCase):
 class TestCase_LOCnmsdry_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.LOCnmsdry_out_in=LOCnmsdry_out_in
     def testRundry_out_in(self):
@@ -223,7 +222,7 @@ class TestCase_LOCnmsdry_out(unittest.TestCase):
 class TestCase_nmsRQsemi_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.nmsRQsemi_out_in=nmsRQsemi_out_in
     def testRunsemi_out_in(self):
@@ -235,7 +234,7 @@ class TestCase_nmsRQsemi_out(unittest.TestCase):
 class TestCase_LOCnmssemi_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.LOCnmssemi_out_in=LOCnmssemi_out_in
     def testRunsemi_out_in(self):
@@ -247,7 +246,7 @@ class TestCase_LOCnmssemi_out(unittest.TestCase):
 class TestCase_nmsRQspray_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.nmsRQspray_out_in=nmsRQspray_out_in
     def testRunspray_out_in(self):
@@ -259,7 +258,7 @@ class TestCase_nmsRQspray_out(unittest.TestCase):
 class TestCase_LOCnmsspray_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.LOCnmsspray_out_in=LOCnmsspray_out_in
     def testRunspray_out_in(self):
@@ -271,7 +270,7 @@ class TestCase_LOCnmsspray_out(unittest.TestCase):
 class TestCase_lmsRQdry_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.lmsRQdry_out_in=lmsRQdry_out_in
     def testRundry_out_in(self):
@@ -283,7 +282,7 @@ class TestCase_lmsRQdry_out(unittest.TestCase):
 class TestCase_LOClmsdry_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.LOClmsdry_out_in=LOClmsdry_out_in
     def testRundry_out_in(self):
@@ -295,7 +294,7 @@ class TestCase_LOClmsdry_out(unittest.TestCase):
 class TestCase_lmsRQsemi_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.lmsRQsemi_out_in=lmsRQsemi_out_in
     def testRunsemi_out_in(self):
@@ -307,7 +306,7 @@ class TestCase_lmsRQsemi_out(unittest.TestCase):
 class TestCase_LOClmssemi_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.LOClmssemi_out_in=LOClmssemi_out_in
     def testRunsemi_out_in(self):
@@ -319,7 +318,7 @@ class TestCase_LOClmssemi_out(unittest.TestCase):
 class TestCase_lmsRQspray_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.lmsRQspray_out_in=lmsRQspray_out_in
     def testRunspray_out_in(self):
@@ -331,7 +330,7 @@ class TestCase_lmsRQspray_out(unittest.TestCase):
 class TestCase_LOClmsspray_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.LOClmsspray_out_in=LOClmsspray_out_in
     def testRunspray_out_in(self):
@@ -343,7 +342,7 @@ class TestCase_LOClmsspray_out(unittest.TestCase):
 class TestCase_ndsRQdry_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.ndsRQdry_out_in=ndsRQdry_out_in
     def testRundry_out_in(self):
@@ -355,7 +354,7 @@ class TestCase_ndsRQdry_out(unittest.TestCase):
 class TestCase_LOCndsdry_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.LOCndsdry_out_in=LOCndsdry_out_in
     def testRundry_out_in(self):
@@ -367,7 +366,7 @@ class TestCase_LOCndsdry_out(unittest.TestCase):
 class TestCase_ndsRQsemi_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.ndsRQsemi_out_in=ndsRQsemi_out_in
     def testRunsemi_out_in(self):
@@ -379,7 +378,7 @@ class TestCase_ndsRQsemi_out(unittest.TestCase):
 class TestCase_LOCndssemi_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.LOCndssemi_out_in=LOCndssemi_out_in
     def testRunsemi_out_in(self):
@@ -391,7 +390,7 @@ class TestCase_LOCndssemi_out(unittest.TestCase):
 class TestCase_ndsRQspray_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.ndsRQspray_out_in=ndsRQspray_out_in
     def testRunspray_out_in(self):
@@ -403,7 +402,7 @@ class TestCase_ndsRQspray_out(unittest.TestCase):
 class TestCase_LOCndsspray_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.LOCndsspray_out_in=LOCndsspray_out_in
     def testRunspray_out_in(self):
@@ -415,7 +414,7 @@ class TestCase_LOCndsspray_out(unittest.TestCase):
 class TestCase_ldsRQdry_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.ldsRQdry_out_in=ldsRQdry_out_in
     def testRundry_out_in(self):
@@ -427,7 +426,7 @@ class TestCase_ldsRQdry_out(unittest.TestCase):
 class TestCase_LOCldsdry_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.LOCldsdry_out_in=LOCldsdry_out_in
     def testRundry_out_in(self):
@@ -439,7 +438,7 @@ class TestCase_LOCldsdry_out(unittest.TestCase):
 class TestCase_ldsRQsemi_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.ldsRQsemi_out_in=ldsRQsemi_out_in
     def testRunsemi_out_in(self):
@@ -451,7 +450,7 @@ class TestCase_ldsRQsemi_out(unittest.TestCase):
 class TestCase_LOCldssemi_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.LOCldssemi_out_in=LOCldssemi_out_in
     def testRunsemi_out_in(self):
@@ -463,7 +462,7 @@ class TestCase_LOCldssemi_out(unittest.TestCase):
 class TestCase_ldsRQspray_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.ldsRQspray_out_in=ldsRQspray_out_in
     def testRunspray_out_in(self):
@@ -475,7 +474,7 @@ class TestCase_ldsRQspray_out(unittest.TestCase):
 class TestCase_LOCldsspray_out(unittest.TestCase):
     def setUp(self):
         #####Pre-defined inputs########
-        self.terr = terrplant_model.terrplant(True,False,A_in,I_in,R_in,D_in,nms_in,lms_in,nds_in,lds_in)
+        self.terr = terrplant_obj_in
         #####Pre-defined outputs########
         self.LOCldsspray_out_in=LOCldsspray_out_in
     def testRunspray_out_in(self):
@@ -495,35 +494,36 @@ def suite(TestCaseName, **kwargs):
     test_out=stream.read()
     return test_out
 
-test_suite_rundry_out = suite(TestCase_rundry_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], rundry_out=rundry_out[0])
-test_suite_runsemi_out = suite(TestCase_runsemi_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], runsemi_out=runsemi_out[0])
-test_suite_spray_out = suite(TestCase_spray_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], spray_out=spray_out[0])
-test_suite_totaldry_out = suite(TestCase_totaldry_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], totaldry_out=totaldry_out[0])
-test_suite_totalsemi_out = suite(TestCase_totalsemi_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], totalsemi_out=totalsemi_out[0])
-test_suite_nmsRQdry_out = suite(TestCase_nmsRQdry_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], nmsRQdry_out=nmsRQdry_out[0])
-test_suite_LOCnmsdry_out = suite(TestCase_LOCnmsdry_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], LOCnmsdry_out=LOCnmsdry_out[0])
-test_suite_nmsRQsemi_out = suite(TestCase_nmsRQsemi_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], nmsRQsemi_out=nmsRQsemi_out[0])
-test_suite_LOCnmssemi_out = suite(TestCase_LOCnmssemi_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], LOCnmssemi_out=LOCnmssemi_out[0])
-test_suite_nmsRQspray_out = suite(TestCase_nmsRQspray_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], nmsRQspray_out=nmsRQspray_out[0])
-test_suite_LOCnmsspray_out = suite(TestCase_LOCnmsspray_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], LOCnmsspray_out=LOCnmsspray_out[0])
-test_suite_lmsRQdry_out = suite(TestCase_lmsRQdry_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], lmsRQdry_out=lmsRQdry_out[0])
-test_suite_LOClmsdry_out = suite(TestCase_LOClmsdry_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], LOClmsdry_out=LOClmsdry_out[0])
-test_suite_lmsRQsemi_out = suite(TestCase_lmsRQsemi_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], lmsRQsemi_out=lmsRQsemi_out[0])
-test_suite_LOClmssemi_out = suite(TestCase_LOClmssemi_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], LOClmssemi_out=LOClmssemi_out[0])
-test_suite_lmsRQspray_out = suite(TestCase_lmsRQspray_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], lmsRQspray_out=lmsRQspray_out[0])
-test_suite_LOClmsspray_out = suite(TestCase_LOClmsspray_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], LOClmsspray_out=LOClmsspray_out[0])
-test_suite_ndsRQdry_out = suite(TestCase_ndsRQdry_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], ndsRQdry_out=ndsRQdry_out[0])
-test_suite_LOCndsdry_out = suite(TestCase_LOCndsdry_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], LOCndsdry_out=LOCndsdry_out[0])
-test_suite_ndsRQsemi_out = suite(TestCase_ndsRQsemi_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], ndsRQsemi_out=ndsRQsemi_out[0])
-test_suite_LOCndssemi_out = suite(TestCase_LOCndssemi_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], LOCndssemi_out=LOCndssemi_out[0])
-test_suite_ndsRQspray_out = suite(TestCase_ndsRQspray_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], ndsRQspray_out=ndsRQspray_out[0])
-test_suite_LOCndsspray_out = suite(TestCase_LOCndsspray_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], LOCndsspray_out=LOCndsspray_out[0])
-test_suite_ldsRQdry_out = suite(TestCase_ldsRQdry_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], ldsRQdry_out=ldsRQdry_out[0])
-test_suite_LOCldsdry_out = suite(TestCase_LOCldsdry_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], LOCldsdry_out=LOCldsdry_out[0])
-test_suite_ldsRQsemi_out = suite(TestCase_ldsRQsemi_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], ldsRQsemi_out=ldsRQsemi_out[0])
-test_suite_LOCldssemi_out = suite(TestCase_LOCldssemi_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], LOCldssemi_out=LOCldssemi_out[0])
-test_suite_ldsRQspray_out = suite(TestCase_ldsRQspray_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], ldsRQspray_out=ldsRQspray_out[0])
-test_suite_LOCldsspray_out = suite(TestCase_LOCldsspray_out, A=A[0], I=I[0], R=R[0], D=D[0],nms=nms[0],lms=lms[0],nds=nds[0],lds=lds[0], LOCldsspray_out=LOCldsspray_out[0])
+terrplant_obj = terrplant_model.terrplant(True,False,A[0],I[0],R[0],D[0],nms[0],lms[0],nds[0],lds[0])
+test_suite_rundry_out = suite(TestCase_rundry_out, terrplant_obj=terrplant_obj, rundry_out=rundry_out[0])
+test_suite_runsemi_out = suite(TestCase_runsemi_out, terrplant_obj=terrplant_obj, runsemi_out=runsemi_out[0])
+test_suite_spray_out = suite(TestCase_spray_out, terrplant_obj=terrplant_obj, spray_out=spray_out[0])
+test_suite_totaldry_out = suite(TestCase_totaldry_out, terrplant_obj=terrplant_obj, totaldry_out=totaldry_out[0])
+test_suite_totalsemi_out = suite(TestCase_totalsemi_out, terrplant_obj=terrplant_obj, totalsemi_out=totalsemi_out[0])
+test_suite_nmsRQdry_out = suite(TestCase_nmsRQdry_out, terrplant_obj=terrplant_obj, nmsRQdry_out=nmsRQdry_out[0])
+test_suite_LOCnmsdry_out = suite(TestCase_LOCnmsdry_out, terrplant_obj=terrplant_obj, LOCnmsdry_out=LOCnmsdry_out[0])
+test_suite_nmsRQsemi_out = suite(TestCase_nmsRQsemi_out, terrplant_obj=terrplant_obj, nmsRQsemi_out=nmsRQsemi_out[0])
+test_suite_LOCnmssemi_out = suite(TestCase_LOCnmssemi_out, terrplant_obj=terrplant_obj, LOCnmssemi_out=LOCnmssemi_out[0])
+test_suite_nmsRQspray_out = suite(TestCase_nmsRQspray_out, terrplant_obj=terrplant_obj, nmsRQspray_out=nmsRQspray_out[0])
+test_suite_LOCnmsspray_out = suite(TestCase_LOCnmsspray_out, terrplant_obj=terrplant_obj, LOCnmsspray_out=LOCnmsspray_out[0])
+test_suite_lmsRQdry_out = suite(TestCase_lmsRQdry_out, terrplant_obj=terrplant_obj, lmsRQdry_out=lmsRQdry_out[0])
+test_suite_LOClmsdry_out = suite(TestCase_LOClmsdry_out, terrplant_obj=terrplant_obj, LOClmsdry_out=LOClmsdry_out[0])
+test_suite_lmsRQsemi_out = suite(TestCase_lmsRQsemi_out, terrplant_obj=terrplant_obj, lmsRQsemi_out=lmsRQsemi_out[0])
+test_suite_LOClmssemi_out = suite(TestCase_LOClmssemi_out, terrplant_obj=terrplant_obj, LOClmssemi_out=LOClmssemi_out[0])
+test_suite_lmsRQspray_out = suite(TestCase_lmsRQspray_out, terrplant_obj=terrplant_obj, lmsRQspray_out=lmsRQspray_out[0])
+test_suite_LOClmsspray_out = suite(TestCase_LOClmsspray_out, terrplant_obj=terrplant_obj, LOClmsspray_out=LOClmsspray_out[0])
+test_suite_ndsRQdry_out = suite(TestCase_ndsRQdry_out, terrplant_obj=terrplant_obj, ndsRQdry_out=ndsRQdry_out[0])
+test_suite_LOCndsdry_out = suite(TestCase_LOCndsdry_out, terrplant_obj=terrplant_obj, LOCndsdry_out=LOCndsdry_out[0])
+test_suite_ndsRQsemi_out = suite(TestCase_ndsRQsemi_out, terrplant_obj=terrplant_obj, ndsRQsemi_out=ndsRQsemi_out[0])
+test_suite_LOCndssemi_out = suite(TestCase_LOCndssemi_out,terrplant_obj=terrplant_obj, LOCndssemi_out=LOCndssemi_out[0])
+test_suite_ndsRQspray_out = suite(TestCase_ndsRQspray_out, terrplant_obj=terrplant_obj, ndsRQspray_out=ndsRQspray_out[0])
+test_suite_LOCndsspray_out = suite(TestCase_LOCndsspray_out, terrplant_obj=terrplant_obj, LOCndsspray_out=LOCndsspray_out[0])
+test_suite_ldsRQdry_out = suite(TestCase_ldsRQdry_out, terrplant_obj=terrplant_obj, ldsRQdry_out=ldsRQdry_out[0])
+test_suite_LOCldsdry_out = suite(TestCase_LOCldsdry_out, terrplant_obj=terrplant_obj, LOCldsdry_out=LOCldsdry_out[0])
+test_suite_ldsRQsemi_out = suite(TestCase_ldsRQsemi_out, terrplant_obj=terrplant_obj, ldsRQsemi_out=ldsRQsemi_out[0])
+test_suite_LOCldssemi_out = suite(TestCase_LOCldssemi_out, terrplant_obj=terrplant_obj, LOCldssemi_out=LOCldssemi_out[0])
+test_suite_ldsRQspray_out = suite(TestCase_ldsRQspray_out, terrplant_obj=terrplant_obj, ldsRQspray_out=ldsRQspray_out[0])
+test_suite_LOCldsspray_out = suite(TestCase_LOCldsspray_out, terrplant_obj=terrplant_obj, LOCldsspray_out=LOCldsspray_out[0])
 
 class TerrplantQaqcPage(webapp.RequestHandler):
     def get(self):
@@ -533,275 +533,35 @@ class TerrplantQaqcPage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', 'title')
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'terrplant','page':'qaqc'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {
+        html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'terrplant',
                 'model_attributes':'IEC QAQC'})
-        html = html + """
-        <table border="1">
-        <tr><H3>Model Validation Inputs</H3></tr><br>
-        <tr>
-        <td>Input Name</td>
-        <td>Test value1</td>
-        <td>Unit</td>
-        </tr>      
-        <tr>
-        <td>Application Rate</td>
-        <td>%s</td>
-        <td>&nbsp</td>
-        </tr>
-        <tr>
-        <td>Incorporation Rate</td>
-        <td>%s</td>
-        <td>&nbsp</td>
-        </tr>
-        <tr>
-        <td>Runoff Fraction</td>
-        <td>%s</td>       
-        <td>&nbsp</td>
-        </tr>
-        <tr>
-        <td>Drift Fraction</td>
-        <td>%s</td>       
-        <td>&nbsp</td>
-        </tr>
-        <tr>
-        <td>EC25 (Non-listed) Monocot Seedling</td>
-        <td>%s</td>
-        <td>&nbsp</td>
-        </tr>
-        <tr>
-        <td>NOAEC (Listed) Monocot Seedling</td>
-        <td>%s</td>
-        <td>&nbsp</td>
-        </tr>
-        <tr>
-        <td>EC25 (Non-listed) Dicot Seedling</td>
-        <td>%s</td>       
-        <td>&nbsp</td>
-        </tr>
-        <tr>
-        <td>NOAEC (Listed) Dicot Seedling</td>
-        <td>%s</td>       
-        <td>&nbsp</td>
-        </tr>
-        </table>
-        """  % (A[0], I[0], R[0], D[0], nms[0], lms[0], nds[0], lds[0])      
-        html = html + """
-        <table width="500" border="1">
-            <br>
-            <tr><H3>Model Validation Outputs<H3></tr><br>
-            <tr>
-                <td>Model Name</td>
-                <td>Simulated value</td>
-                <td>Expected value</td>
-                <td>Test output</td>       
-            </tr>
-            <tr>
-                <td>rundry</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>
-            <tr>
-                <td>runsemi</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>
-            <tr>
-                <td>spray</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>
-            <tr>
-                <td>totaldry</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>
-            <tr>
-                <td>totalsemi</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>      
-            <tr>
-                <td>nmsRQdry</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>
-            <tr>
-                <td>LOCnmsdry</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>       
-            <tr>
-                <td>nmsRQsemi</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>
-            <tr>
-                <td>LOCnmssemi</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>        
-            <tr>
-                <td>nmsRQspray</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>
-            <tr>
-                <td>LOCnmsspray</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>      
-            <tr>
-                <td>lmsRQdry</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>
-            <tr>
-                <td>LOClmsdry</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>       
-            <tr>
-                <td>lmsRQsemi</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>
-            <tr>
-                <td>LOClmssemi</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>        
-            <tr>
-                <td>lmsRQspray</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>
-            <tr>
-                <td>LOCndsspray</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>      
-            <tr>
-                <td>ndsRQdry</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>
-            <tr>
-                <td>LOCndsdry</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>       
-            <tr>
-                <td>ndsRQsemi</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>
-            <tr>
-                <td>LOCndssemi</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>        
-            <tr>
-                <td>ndsRQspray</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>
-            <tr>
-                <td>LOCndsspray</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>       
-            <tr>
-                <td>ldsRQdry</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>
-            <tr>
-                <td>LOCldsdry</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>       
-            <tr>
-                <td>ldsRQsemi</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>
-            <tr>
-                <td>LOCldssemi</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>        
-            <tr>
-                <td>ldsRQspray</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>
-            <tr>
-                <td>LOCldsspray</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>   
-        </table>
-        """ % (round(out_fun_rundry[0],3), round(rundry_out[0],3), test_suite_rundry_out,
-            round(out_fun_runsemi[0],3), round(runsemi_out[0],3), test_suite_runsemi_out,
-            round(out_fun_spray[0],3), round(spray_out[0],3), test_suite_spray_out,
-            round(out_fun_totaldry[0],3), round(totaldry_out[0],3), test_suite_totaldry_out,
-            round(out_fun_totalsemi[0],3), round(totalsemi_out[0],3), test_suite_totalsemi_out,
-            round(out_fun_nmsRQdry[0],3), round(nmsRQdry_out[0],3), test_suite_nmsRQdry_out,
-            out_fun_LOCnmsdry[0], LOCnmsdry_out[0], test_suite_LOCnmsdry_out,
-            round(out_fun_nmsRQsemi[0],3), round(nmsRQsemi_out[0],3), test_suite_nmsRQsemi_out,
-            out_fun_LOCnmssemi[0], LOCnmssemi_out[0], test_suite_LOCnmssemi_out,
-            round(out_fun_nmsRQspray[0],3), round(nmsRQspray_out[0],3), test_suite_nmsRQspray_out,
-            out_fun_LOCnmsspray[0], LOCnmsspray_out[0], test_suite_LOCnmsspray_out,
-            round(out_fun_lmsRQdry[0],3), round(lmsRQdry_out[0],3), test_suite_lmsRQdry_out,
-            out_fun_LOClmsdry[0], LOClmsdry_out[0], test_suite_LOClmsdry_out,
-            round(out_fun_lmsRQsemi[0],3), round(lmsRQsemi_out[0],3), test_suite_lmsRQsemi_out,
-            out_fun_LOClmssemi[0], LOClmssemi_out[0], test_suite_LOClmssemi_out,
-            round(out_fun_lmsRQspray[0],3), round(lmsRQspray_out[0],3), test_suite_lmsRQspray_out,
-            out_fun_LOClmsspray[0], LOClmsspray_out[0], test_suite_LOClmsspray_out,
-            round(out_fun_ndsRQdry[0],3), round(ndsRQdry_out[0],3), test_suite_ndsRQdry_out,
-            out_fun_LOCndsdry[0], LOCndsdry_out[0], test_suite_LOCndsdry_out,
-            round(out_fun_ndsRQsemi[0],3), round(ndsRQsemi_out[0],3), test_suite_ndsRQsemi_out,
-            out_fun_LOCndssemi[0], LOCndssemi_out[0], test_suite_LOCndssemi_out,
-            round(out_fun_ndsRQspray[0],3), round(ndsRQspray_out[0],3), test_suite_ndsRQspray_out,
-            out_fun_LOCndsspray[0], LOCndsspray_out[0], test_suite_LOCndsspray_out,
-            round(out_fun_ldsRQdry[0],3), round(ldsRQdry_out[0],3), test_suite_ldsRQdry_out,
-            out_fun_LOCldsdry[0], LOCldsdry_out[0], test_suite_LOCldsdry_out,
-            round(out_fun_ldsRQsemi[0],3), round(ldsRQsemi_out[0],3), test_suite_ldsRQsemi_out,
-            out_fun_LOCldssemi[0], LOCldssemi_out[0], test_suite_LOCldssemi_out,
-            round(out_fun_ldsRQspray[0],3), round(ldsRQspray_out[0],3), test_suite_ldsRQspray_out,
-            out_fun_LOCldsspray[0], LOCldsspray_out[0], test_suite_LOCldsspray_out)
+
+        terr = terrplant_model.terrplant(True,True,A[0],I[0],R[0],D[0],nms[0],lms[0],nds[0],lds[0])
+        terr.rundry_results_expected = out_fun_rundry[0]
+        terr.runsemi_results_expected = out_fun_runsemi[0]
+        terr.spray_results_expected = out_fun_spray[0]
+        terr.totaldry_results_expected = out_fun_totaldry[0]
+        terr.totalsemi_results_expected = out_fun_totalsemi[0]        
+        terr.nmsRQdry_results_expected = out_fun_nmsRQdry[0]
+        terr.nmsRQsemi_results_expected = out_fun_nmsRQsemi[0]
+        terr.nmsRQspray_results_expected = out_fun_nmsRQspray[0]
+        terr.lmsRQdry_results_expected = out_fun_lmsRQdry[0]
+        terr.lmsRQsemi_results_expected = out_fun_lmsRQsemi[0]
+        terr.lmsRQspray_results_expected = out_fun_lmsRQspray[0]
+        terr.ndsRQdry_results_expected = out_fun_ndsRQdry[0]
+        terr.ndsRQsemi_results_expected = out_fun_ndsRQsemi[0]
+        terr.ndsRQspray_results_expected = out_fun_ndsRQspray[0]
+        terr.ldsRQdry_results_expected = out_fun_ldsRQdry[0]
+        terr.ldsRQsemi_results_expected = out_fun_ldsRQsemi[0]
+        terr.ldsRQspray_results_expected = out_fun_ldsRQspray[0]
+
+
+        html = html + terrplant_tables.table_all_qaqc(terrplant_tables.pvheadings, terrplant_tables.pvuheadings,terrplant_tables.deheadingsqaqc,
+                                        terrplant_tables.plantec25noaecheadings,terrplant_tables.plantecdrysemisprayheadingsqaqc, 
+                                        terrplant_tables.tmpl, terr)
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
+        #html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

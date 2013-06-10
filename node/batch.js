@@ -51,10 +51,7 @@ server.post('/user/login/:userid', function(req, res, next){
     req.on('end', function ()
     {
         json = JSON.parse(body);
-        console.log(json);
-        console.log('json: ' + json);
-        console.log('password' + json.pswrd);
-        user.getLoginDecision(user_id,json.pswrd,function(err, decision_data){
+        user.getLoginDecision(user_id,json.password,function(err, decision_data){
             res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Headers", "X-Requested-With");
             res.header('Access-Control-Allow-Methods', "POST");
@@ -92,14 +89,44 @@ server.post('/user/registration/:user_id', function(req, res, next){
     });
 });
 
-server.get('/user/openid/login/:openid', function(req,res,next){
-    var openid = req.params.openid;
-    console.console.log("OpenId: " + openid);
-    user.openIdLogin(openId, function(err, login_data){
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "X-Requested-With");
-        res.header('Access-Control-Allow-Methods', "GET");
-        res.send(login_data);
+server.post('/user/openid/login', function(req,res,next){
+    var body = '';
+    req.on('data', function (data)
+    {
+        body += data;
+    });
+    req.on('end', function ()
+    {
+        var json = JSON.parse(body);
+        user.openIdLogin(json.openid, function(err, login_data){
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "X-Requested-With");
+            res.header('Access-Control-Allow-Methods', "GET");
+            res.send(login_data);
+        });
+    });
+});
+
+
+server.post('/user/sessionid', function(req,res,next){
+    var body = '';
+    req.on('data', function (data)
+    {
+        body += data;
+    });
+    req.on('end', function ()
+    {
+        var json = JSON.parse(body);
+        var user_id = json['user_id'];
+        var session_id = json['session_id'];
+        console.log("User id: " + user_id + " session id: " + session_id);
+        user.checkUserSessionId(user_id, session_id, function(err, decision_data){
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "X-Requested-With");
+            res.header('Access-Control-Allow-Methods', "POST");
+            console.log(decision_data);
+            res.send(decision_data);
+        });
     });
 });
 

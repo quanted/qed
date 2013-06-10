@@ -4,6 +4,9 @@ from django.template import Context, Template
 from django.utils.safestring import mark_safe
 from dust import dust_model
 from dust import dust_parameters
+import logging
+
+logger = logging.getLogger('TerrplantTables')
 
 def getheaderpv():
     headings = ["Parameter", "Value"]
@@ -23,6 +26,14 @@ def getheaderplantec25noaec():
 
 def getheaderplantecdrysemispray():
     headings = ["Plant Type", "Listed Status", "Dry", "Semi-Aquatic", "Spray Drift"]
+    return headings
+
+def getheaderdeqaqc():
+    headings = ["Description", "EEC", "Expected"]
+    return headings
+
+def getheaderplantecdrysemisprayqaqc():
+    headings = ["Plant Type", "Listed Status", "Dry", "Dry-Expected", "Semi-Aquatic", "Semi-Aquatic-Expected", "Spray Drift", "Spray Drift-Expected"]
     return headings
 
 def getheadersum():
@@ -87,6 +98,15 @@ def gett3data(terrplant_obj):
     }
     return data
 
+def gett3dataqaqc(terrplant_obj):
+    data = { 
+        "Description": ['Runoff to Dry Areas', 'Runoff to Semi-Aquatic Areas', 'Spray Drift','Total to Dry Areas', 'Total to Semi-Aquatic Areas',],
+        "EEC": ['%.2e' % terrplant_obj.rundry_results,'%.2e' % terrplant_obj.runsemi_results,'%.2e' % terrplant_obj.spray_results,
+                '%.2e' % terrplant_obj.totaldry_results,'%.2e' % terrplant_obj.totalsemi_results, ],
+        "Expected": ['%.2e' % terrplant_obj.rundry_results_expected,'%.2e' % terrplant_obj.runsemi_results_expected,'%.2e' % terrplant_obj.spray_results_expected,
+                '%.2e' % terrplant_obj.totaldry_results_expected,'%.2e' % terrplant_obj.totalsemi_results_expected, ],
+    }
+    return data
 def gett4data(terrplant_obj):
     data = { 
         "Plant Type": ['Monocot', 'Dicot',],
@@ -104,6 +124,20 @@ def gett5data(terrplant_obj):
         "Dry": ['%.2e' % terrplant_obj.nmsRQdry_results,'%.2e' % terrplant_obj.lmsRQdry_results,'%.2e' % terrplant_obj.ndsRQdry_results,'%.2e' % terrplant_obj.ldsRQdry_results,],
         "Semi-Aquatic": ['%.2e' % terrplant_obj.nmsRQsemi_results,'%.2e' % terrplant_obj.lmsRQsemi_results,'%.2e' % terrplant_obj.ndsRQsemi_results,'%.2e' % terrplant_obj.ldsRQsemi_results,],
         "Spray Drift":['%.2e' % terrplant_obj.nmsRQspray_results,'%.2e' % terrplant_obj.lmsRQspray_results,'%.2e' % terrplant_obj.ndsRQspray_results,'%.2e' % terrplant_obj.ldsRQspray_results,],
+    }
+    return data
+
+
+def gett5dataqaqc(terrplant_obj):
+    data = { 
+        "Plant Type": ['Monocot', 'Monocot', 'Dicot', 'Dicot',],
+        "Listed Status": ['non-listed','listed','non-listed','listed',],
+        "Dry": ['%.2e' % terrplant_obj.nmsRQdry_results,'%.2e' % terrplant_obj.lmsRQdry_results,'%.2e' % terrplant_obj.ndsRQdry_results,'%.2e' % terrplant_obj.ldsRQdry_results,],
+        "Dry-Expected": ['%.2e' % terrplant_obj.nmsRQdry_results_expected,'%.2e' % terrplant_obj.lmsRQdry_results_expected,'%.2e' % terrplant_obj.ndsRQdry_results_expected,'%.2e' % terrplant_obj.ldsRQdry_results_expected,],
+        "Semi-Aquatic": ['%.2e' % terrplant_obj.nmsRQsemi_results,'%.2e' % terrplant_obj.lmsRQsemi_results,'%.2e' % terrplant_obj.ndsRQsemi_results,'%.2e' % terrplant_obj.ldsRQsemi_results,],
+        "Semi-Aquatic-Expected": ['%.2e' % terrplant_obj.nmsRQsemi_results_expected,'%.2e' % terrplant_obj.lmsRQsemi_results_expected,'%.2e' % terrplant_obj.ndsRQsemi_results_expected,'%.2e' % terrplant_obj.ldsRQsemi_results_expected,],
+        "Spray Drift":['%.2e' % terrplant_obj.nmsRQspray_results,'%.2e' % terrplant_obj.lmsRQspray_results,'%.2e' % terrplant_obj.ndsRQspray_results,'%.2e' % terrplant_obj.ldsRQspray_results,],
+        "Spray Drift-Expected":['%.2e' % terrplant_obj.nmsRQspray_results_expected,'%.2e' % terrplant_obj.lmsRQspray_results_expected,'%.2e' % terrplant_obj.ndsRQspray_results_expected,'%.2e' % terrplant_obj.ldsRQspray_results_expected,],
     }
     return data
 
@@ -177,8 +211,10 @@ def gettsumdata_out(rundry_out, runsemi_out, spray_out, totaldry_out, totalsemi_
 pvheadings = getheaderpv()
 pvuheadings = getheaderpvu()
 deheadings = getheaderde()
+deheadingsqaqc = getheaderdeqaqc()
 plantec25noaecheadings = getheaderplantec25noaec()
 plantecdrysemisprayheadings = getheaderplantecdrysemispray()
+plantecdrysemisprayheadingsqaqc = getheaderplantecdrysemisprayqaqc()
 sumheadings = getheadersum()
 djtemplate = getdjtemplate()
 tmpl = Template(djtemplate)
@@ -189,6 +225,16 @@ def table_all(pvheadings, pvuheadings, deheadings, plantec25noaecheadings, plant
     html_all = html_all + table_3(deheadings, tmpl, terrplant_obj)
     html_all = html_all + table_4(plantec25noaecheadings, tmpl, terrplant_obj)
     html_all = html_all + table_5(plantecdrysemisprayheadings, tmpl, terrplant_obj)
+    return html_all
+
+def table_all_qaqc(pvheadings, pvuheadings, deheadingsqaqc, plantec25noaecheadings, plantecdrysemisprayheadingsqaqc, tmpl,terrplant_obj):
+    html_all = table_1(pvheadings, tmpl, terrplant_obj)
+    html_all = html_all + table_2(pvuheadings, tmpl, terrplant_obj)
+    table_3_html = table_3_qaqc(deheadingsqaqc, tmpl, terrplant_obj)
+    logger.info("table3html:%s",table_3_html)
+    html_all = html_all + table_3_html
+    html_all = html_all + table_4(plantec25noaecheadings, tmpl, terrplant_obj)
+    html_all = html_all + table_5_qaqc(plantecdrysemisprayheadingsqaqc, tmpl, terrplant_obj)
     return html_all
 
 def table_all_sum(sumheadings, tmpl, A, I, R, D, nms, lms, nds, lds, 
@@ -290,6 +336,25 @@ def table_3(deheadings, tmpl, terrplant_obj):
         """
         return html
 
+
+def table_3_qaqc(deheadings, tmpl, terrplant_obj):
+        #pre-table 3
+        html = """
+        <br>
+        <H3 class="out_3 collapsible" id="section4"><span></span>Exposure Estimates</H3>
+        <div class="out_">
+            <H4 class="out_3 collapsible" id="section5"><span></span>Granular Application</H4>
+                <div class="out_ container_output">
+        """
+        #table 3
+        t3data = gett3dataqaqc(terrplant_obj)
+        t3rows = gethtmlrowsfromcols(t3data,deheadings)
+        html = html + tmpl.render(Context(dict(data=t3rows, headings=deheadings)))
+        html = html + """
+                </div>
+        """
+        return html
+
 def table_4(plantec25noaecheadings, tmpl, terrplant_obj):
         #pre-table 4
         html = """     
@@ -313,6 +378,22 @@ def table_5(plantecdrysemisprayheadings, tmpl, terrplant_obj):
         """
         #table 5
         t5data = gett5data(terrplant_obj)
+        t5rows = gethtmlrowsfromcols(t5data,plantecdrysemisprayheadings)
+        html = html + tmpl.render(Context(dict(data=t5rows, headings=plantecdrysemisprayheadings)))
+        html = html + """
+                </div>
+        </div>
+        """
+        return html
+
+def table_5_qaqc(plantecdrysemisprayheadings, tmpl, terrplant_obj):
+        #pre-table 5
+        html = """         
+            <H4 class="out_5 collapsible" id="section7"><span></span>Bare Ground Spray Application (contact with soil residues and directly applied spray)</H4>
+                <div class="out_ container_output">
+        """
+        #table 5
+        t5data = gett5dataqaqc(terrplant_obj)
         t5rows = gethtmlrowsfromcols(t5data,plantecdrysemisprayheadings)
         html = html + tmpl.render(Context(dict(data=t5rows, headings=plantecdrysemisprayheadings)))
         html = html + """

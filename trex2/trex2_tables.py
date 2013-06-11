@@ -1009,7 +1009,7 @@ def table_6(trex2_obj):
         html = """
         <H3 class="out_1 collapsible" id="section6"><span></span>Results: Application Type : %s</H3>
         <div class="out_">
-            <H4 class="out_ collapsible" id="section7"><span></span>Dietary based EECs (ppm)</H4>
+            <H4 class="out_ collapsible" id="section7"><span></span>Dietary based EECs (mg/kg-dietary item)</H4>
                 <div class="out_ container_output">
         """%(trex2_obj.Application_type)
         #table 6
@@ -1031,7 +1031,7 @@ def table_6(trex2_obj):
 def table_7(trex2_obj):
         #pre-table 7
         html = """
-            <H4 class="out_ collapsible" id="section8"><span></span>Avian Dosed Based EECs</H4>
+            <H4 class="out_ collapsible" id="section8"><span></span>Avian Dosed Based EECs (mg/kg-bw)</H4>
                 <div class="out_ container_output">
         """
         #table 7
@@ -1205,7 +1205,6 @@ def table_11(trex2_obj):
         #table 11
         ARQ_diet_mamm_SG=trex2_obj.ARQ_diet_mamm_SG
         CRQ_diet_mamm_SG=trex2_obj.CRQ_diet_mamm_SG
-
         ARQ_diet_mamm_TG=trex2_obj.ARQ_diet_mamm_TG
         CRQ_diet_mamm_TG=trex2_obj.CRQ_diet_mamm_TG
         ARQ_diet_mamm_BP=trex2_obj.ARQ_diet_mamm_BP
@@ -1229,7 +1228,7 @@ def table_11(trex2_obj):
 def table_12(trex2_obj):
         #pre-table 12
         html = """
-            <H4 class="out_ collapsible" id="section13"><span></span>LD50ft-2(mg/kg-bw)</H4>
+            <H4 class="out_ collapsible" id="section13"><span></span>LD<sub>50</sub> ft<sup>-2</sup></H4>
                 <div class="out_ container_output">
         """
         #table 12
@@ -1255,7 +1254,7 @@ def table_12(trex2_obj):
 def table_13(trex2_obj):
         #pre-table 13
         html = """
-            <H4 class="out_ collapsible" id="section13"><span></span>LD50ft-2(mg/kg-bw)</H4>
+            <H4 class="out_ collapsible" id="section13"><span></span>LD<sub>50</sub> ft<sup>-2</sup></H4>
                 <div class="out_ container_output">
         """
         #table 13
@@ -1281,7 +1280,7 @@ def table_13(trex2_obj):
 def table_14(trex2_obj):
         #pre-table 14
         html = """
-            <H4 class="out_ collapsible" id="section13"><span></span>LD50ft-2(mg/kg-bw)</H4>
+            <H4 class="out_ collapsible" id="section13"><span></span>LD<sub>50</sub> ft<sup>-2</sup></H4>
                 <div class="out_ container_output">
         """
         #table 14
@@ -1306,7 +1305,7 @@ def table_14(trex2_obj):
 def table_15(trex2_obj):
         #pre-table 15
         html = """
-            <H4 class="out_ collapsible" id="section13"><span></span>LD50ft-2(mg/kg-bw)</H4>
+            <H4 class="out_ collapsible" id="section13"><span></span>LD<sub>50</sub> ft<sup>-2</sup></H4>
                 <div class="out_ container_output">
         """
         #table 15

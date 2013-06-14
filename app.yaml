@@ -1,5 +1,5 @@
 application: pypest
-version: jon
+version: sprint6
 runtime: python27
 api_version: 1
 
@@ -251,6 +251,9 @@ handlers:
   script: auth/auth.py
 
 - url: /openidserver
+  script: auth/auth.py
+
+- url: /login
   script: auth/auth.py
 
 #file not found

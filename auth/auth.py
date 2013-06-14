@@ -15,9 +15,16 @@ from openid.extensions import sreg
 from openid.store.filestore import FileOpenIDStore
 from openid.consumer import discover
 from datetime import datetime,timedelta
+import urllib
+from google.appengine.api import urlfetch
+import json
+sys.path.append("utils")
+import json_utils
+from datetime import datetime
 
 logger = logging.getLogger("AuthService")
 
+backend_auth_server = "http://127.0.0.1:8887"
 
 def quoteattr(s):
     qs = cgi.escape(s, 1)
@@ -44,37 +51,23 @@ class OpenIDAuthService(webapp.RequestHandler):
         else:
             self.response.status ='404 Not Found'
 
-    def post(self):
-        try:
-            #print "in OpenID AUth service post with request: "
-            #print self.request
-            self.path = self.request.url
-            self.parsed_uri = urlparse(self.path)
+    def post(self,method):
+        #print "in OpenID AUth service post with request: "
+        #print self.request
+        self.path = self.request.url
+        self.parsed_uri = urlparse(self.path)
 
-            self.setUser()
-            content_length = int(self.headers['Content-Length'])
-            post_data = self.rfile.read(content_length)
+        data = json.loads(self.request.body)
+        data = json_utils.convert(data)
 
-            self.query = {}
-            for k, v in cgi.parse_qsl(post_data):
-                self.query[k] = v
-            print self.query
-            path = self.parsed_uri[2]
-            if path == '/openidserver':
-                self.serverEndPoint(self.query)
-
-            elif path == '/allow':
-                self.handleAllow(self.query)
-            else:
-                self.response.status ='404 Not Found'
-
-        except (KeyboardInterrupt, SystemExit):
-            raise
-        except:
-            self.send_response(500)
-            self.send_header('Content-type', 'text/html')
-            self.end_headers()
-            self.wfile.write(cgitb.html(sys.exc_info(), context=10))
+        path = self.parsed_uri[2]
+        if path == '/login':
+            logger.info(data)
+            self.doBasicLogin(data)
+        elif path == '/allow':
+            self.handleAllow(self.query)
+        else:
+            self.response.status ='404 Not Found'
 
     def handleAllow(self, query):
         # pretend this next bit is keying off the user's session or something,
@@ -190,11 +183,16 @@ class OpenIDAuthService(webapp.RequestHandler):
         if 'submit' in self.query:
             if 'user' in self.query:
                 self.user = self.query['user']
-                one_day = timedelta(hours=24)
-                tomorrow = datetime.now()+one_day
-                self.response.set_cookie('SACSID',value="test", expires=tomorrow)
-                self.response.set_cookie('dev_appserver_login', value=self.user)
-                self.response.set_cookie('user', value=self.user)
+                results = self.submitOpenId(self.user)
+                login_data = json.loads(results.content)
+                logger.info("Login results")
+                logger.info(login_data)
+                sid = json_utils.convert(login_data[u'sid'])
+                expires = json_utils.convert(login_data[u'expires'])
+                userid = json_utils.convert(login_data[u'userid'])
+                self.response.set_cookie('SACSID',value=sid)
+                self.response.set_cookie('dev_appserver_login', value=sid)
+                self.response.set_cookie('user', value=userid)
             else:
                 self.user = None
             self.redirect(self.query['success_to'])
@@ -202,6 +200,46 @@ class OpenIDAuthService(webapp.RequestHandler):
             self.redirect(self.query['fail_to'])
         else:
             assert 0, 'strange login %r' % (self.query,)
+
+    def doBasicLogin(self, params):
+        config_params = {}
+        config_params['password'] = params['password']
+        userid = params['userid']
+        form_data = simplejson.dumps(config_params)
+        url = backend_auth_server+"/user/login/"+userid
+        results = urlfetch.fetch(url=url,
+                        payload=form_data,
+                        method=urlfetch.POST,
+                        headers={'Content-Type': 'application/json'})
+        login_data = json.loads(results.content)
+        logger.info("Login results")
+        logger.info(login_data)
+        sid = json_utils.convert(login_data[u'sid'])
+        expires = json_utils.convert(login_data[u'expires'])
+        userid = json_utils.convert(login_data[u'userid'])
+        decision = json_utils.convert(login_data[u'decision'])
+        decision_data = {};
+        logger.info("decision: ")
+        logger.info(decision)
+        decision_data['decision'] = decision
+        self.response.set_cookie('SACSID',value=sid)
+        self.response.set_cookie('dev_appserver_login', value=sid)
+        self.response.set_cookie('user', value=userid)
+        self.response.headers['Content-Type'] = 'application/json'
+        batch_json = simplejson.dumps(decision_data)
+        self.response.out.write(batch_json)
+
+
+    def submitOpenId(self, openId):
+        config_params = {}
+        config_params['openid'] = openId
+        form_data = simplejson.dumps(config_params)
+        url = backend_auth_server+"/user/openid/login"
+        results = urlfetch.fetch(url=url,
+                        payload=form_data,
+                        method=urlfetch.POST,
+                        headers={'Content-Type': 'application/json'})
+        return results
 
     def redirect(self, url):
         self.response.status ='302'

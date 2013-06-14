@@ -82,7 +82,7 @@ def html_table(row_inp,iter):
     mammalian_noaec.append(mammalian_noaec_temp)
     mammalian_noael_temp=float(row_inp[13])   
     mammalian_noael.append(mammalian_noael_temp)
-
+    
 
     fw_bird_temp=sip_model.fw_bird(bw_bird_temp)
     fw_bird_out.append(fw_bird_temp)

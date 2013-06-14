@@ -52,25 +52,24 @@ def getdjtemplate():
     """
     return dj_template
 
-def gett1data(chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res):
+def gett1data(dust_obj):
     data = { 
         "Parameter": ['Chemical Name', 'Label EPA Reg. No.', 'Maximum Single Application Rate', 
             'Fraction of Pesticide Assumed at the Surface','Dislodgeable Foliar Residue',],
-        "Value": [chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res,],
+        "Value": [dust_obj.chemical_name, dust_obj.label_epa_reg_no, dust_obj.ar_lb, dust_obj.frac_pest_surface, dust_obj.dislodge_fol_res,],
         "Units": ['', '', 'lbs a.i./A', '','mg a.i./cm^2', ],
     }
     return data
 
-def gett2data(bird_acute_oral_study, bird_study_add_comm,low_bird_acute_ld50, test_bird_bw, mineau, mamm_acute_derm_study,
-               mamm_study_add_comm, mam_acute_derm_ld50, test_mam_bw):
+def gett2data(dust_obj):
     data = { 
         "Parameter": ['Bird Acute Oral Study (OCSPP 850.2100) MRID#', 'Additional Comments About the Study (if any)', 
             mark_safe('Lowest Bird Acute Oral LD<sub>50</sub> &asymp; Amphibian Dermal LD<sub>50</sub>'), 
             'Tested Bird Body Weight','Mineau Scaling Factor for Birds',
             mark_safe('Mammal Acute Dermal (OCSPP 870.1200) MRID#'),'Additional Comments About Study (if any)',
             mark_safe('Mammal Acute Dermal LD<sub>50</sub>'),'Tested Mammal Body Weight',],
-        "Value": [bird_acute_oral_study, bird_study_add_comm,low_bird_acute_ld50, test_bird_bw, mineau, mamm_acute_derm_study,
-               mamm_study_add_comm, mam_acute_derm_ld50, test_mam_bw,],
+        "Value": [dust_obj.bird_acute_oral_study, dust_obj.bird_study_add_comm, dust_obj.low_bird_acute_ld50, dust_obj.test_bird_bw, dust_obj.mineau, dust_obj.mamm_acute_derm_study,
+               dust_obj.mamm_study_add_comm, dust_obj.mam_acute_derm_ld50, dust_obj.test_mam_bw,],
         "Units": ['', '', 'mg a.i./kg-bw', 'g','','','','mg a.i./kg-bw','g', ],
     }
     return data
@@ -194,18 +193,16 @@ sumheadings = getheadersum()
 djtemplate = getdjtemplate()
 tmpl = Template(djtemplate)
 
-def table_all(pvuheadings, pvrheadings, tmpl, chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res, bird_acute_oral_study, bird_study_add_comm,
-              low_bird_acute_ld50, test_bird_bw, mineau, mamm_acute_derm_study, mamm_study_add_comm, mam_acute_derm_ld50, test_mam_bw):
-    table3_out = table_3(pvuheadings, tmpl, ar_lb, frac_pest_surface)
-    table4_out = table_4(pvuheadings, tmpl, ar_lb, dislodge_fol_res)
-    table5_out = table_5(pvuheadings, tmpl, ar_lb, frac_pest_surface)
-    table6_out = table_6(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw)
-    table7_out = table_7(pvrheadings, tmpl, ar_lb, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw)
-    table8_out = table_8(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw)
+def table_all(dust_obj):
+    table3_out = table_3(dust_obj)
+    table4_out = table_4(dust_obj)
+    table5_out = table_5(dust_obj)
+    table6_out = table_6(dust_obj)
+    table7_out = table_7(dust_obj)
+    table8_out = table_8(dust_obj)
 
-    html_all = table_1(pvuheadings, tmpl, chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res)
-    html_all = html_all + table_2(pvuheadings, tmpl, bird_acute_oral_study, bird_study_add_comm,low_bird_acute_ld50, test_bird_bw, mineau, 
-                         mamm_acute_derm_study,mamm_study_add_comm, mam_acute_derm_ld50, test_mam_bw)
+    html_all = table_1(dust_obj)
+    html_all = html_all + table_2(dust_obj)
     html_all = html_all + table3_out['html']
     html_all = html_all + table4_out['html']
     html_all = html_all + table5_out['html']
@@ -214,7 +211,7 @@ def table_all(pvuheadings, pvrheadings, tmpl, chemical_name, label_epa_reg_no, a
     html_all = html_all + table8_out['html']
     return html_all, table3_out, table4_out, table5_out, table6_out, table7_out, table8_out
 
-def table_sum_input(sumheadings, tmpl, i, ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw):
+def table_sum_input(i, ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw):
         #pre-table sum_input
         html = """
         <table border="1" border="1" class="out_1">
@@ -251,7 +248,7 @@ def table_sum_output(granbirdderm_out, granherpderm_out, granmammderm_out,
         html = html + tmpl.render(Context(dict(data=tsumoutputrows, headings=sumheadings)))
         return html
 
-def table_1(pvuheadings, tmpl, chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res):
+def table_1(dust_obj):
         #pre-table 1
         html = """
         <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs: Chemical Identity</H3>
@@ -260,7 +257,7 @@ def table_1(pvuheadings, tmpl, chemical_name, label_epa_reg_no, ar_lb, frac_pest
                 <div class="out_ container_output">
         """
         #table 1
-        t1data = gett1data(chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res)
+        t1data = gett1data(dust_obj)
         t1rows = gethtmlrowsfromcols(t1data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
         html = html + """
@@ -268,16 +265,14 @@ def table_1(pvuheadings, tmpl, chemical_name, label_epa_reg_no, ar_lb, frac_pest
         """
         return html
 
-def table_2(pvuheadings, tmpl, bird_acute_oral_study, bird_study_add_comm,low_bird_acute_ld50, test_bird_bw, mineau, 
-            mamm_acute_derm_study,mamm_study_add_comm, mam_acute_derm_ld50, test_mam_bw):
+def table_2(dust_obj):
         # #pre-table 2
         html = """
             <H4 class="out_2 collapsible" id="section3"><span></span>Toxicity Properties</H4>
                 <div class="out_ container_output">
         """
         #table 2
-        t2data = gett2data(bird_acute_oral_study, bird_study_add_comm,low_bird_acute_ld50, test_bird_bw, mineau, 
-            mamm_acute_derm_study,mamm_study_add_comm, mam_acute_derm_ld50, test_mam_bw)
+        t2data = gett2data(dust_obj)
         t2rows = gethtmlrowsfromcols(t2data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t2rows, headings=pvuheadings)))
         html = html + """
@@ -286,7 +281,7 @@ def table_2(pvuheadings, tmpl, bird_acute_oral_study, bird_study_add_comm,low_bi
         """
         return html
 
-def table_3(pvuheadings, tmpl, ar_lb, frac_pest_surface):
+def table_3(dust_obj):
         #pre-table 3
         html = """
         <br>
@@ -296,10 +291,10 @@ def table_3(pvuheadings, tmpl, ar_lb, frac_pest_surface):
                 <div class="out_ container_output">
         """
         #table 3
-        granbirdderm = dust_model.gran_bird_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface)
-        granherpderm = dust_model.gran_repamp_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface) 
-        granmammderm = dust_model.gran_mam_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface)
-        t3data = gett3data(granbirdderm,granherpderm,granmammderm)
+        granbirdderm = dust_obj.gran_bird_ex_derm_dose
+        granherpderm = dust_obj.gran_repamp_ex_derm_dose
+        granmammderm = dust_obj.gran_mam_ex_derm_dose
+        t3data = gett3data(granbirdderm, granherpderm, granmammderm)
         t3rows = gethtmlrowsfromcols(t3data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t3rows, headings=pvuheadings)))
         html = html + """
@@ -307,17 +302,17 @@ def table_3(pvuheadings, tmpl, ar_lb, frac_pest_surface):
         """
         return {'html':html, 'granbirdderm':granbirdderm, 'granherpderm':granherpderm, 'granmammderm':granmammderm}
 
-def table_4(pvuheadings, tmpl, ar_lb, dislodge_fol_res):
+def table_4(dust_obj):
         #pre-table 4
         html = """     
             <H4 class="out_4 collapsible" id="section5"><span></span>Foliar Spray Application (contact with foliar residues and directly applied spray)</H4>
                 <div class="out_ container_output">
         """
         #table 4
-        folbirdderm = dust_model.fol_bird_ex_derm_dose(dislodge_fol_res,dust_model.ar_mg(ar_lb))
-        folherpderm = dust_model.fol_repamp_ex_derm_dose(dislodge_fol_res,dust_model.ar_mg(ar_lb))
-        folmammderm = dust_model.fol_mam_ex_derm_dose(dislodge_fol_res,dust_model.ar_mg(ar_lb))
-        t4data = gett4data(folbirdderm,folherpderm,folmammderm)
+        folbirdderm = dust_obj.fol_bird_ex_derm_dose
+        folherpderm = dust_obj.fol_repamp_ex_derm_dose
+        folmammderm = dust_obj.fol_mam_ex_derm_dose
+        t4data = gett4data(folbirdderm, folherpderm, folmammderm)
         t4rows = gethtmlrowsfromcols(t4data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t4rows, headings=pvuheadings)))
         html = html + """
@@ -325,17 +320,17 @@ def table_4(pvuheadings, tmpl, ar_lb, dislodge_fol_res):
         """
         return {'html':html, 'folbirdderm':folbirdderm, 'folherpderm':folherpderm, 'folmammderm':folmammderm}
 
-def table_5(pvuheadings, tmpl, ar_lb, frac_pest_surface):
+def table_5(dust_obj):
         #pre-table 5
         html = """         
             <H4 class="out_5 collapsible" id="section6"><span></span>Bare Ground Spray Application (contact with soil residues and directly applied spray)</H4>
                 <div class="out_ container_output">
         """
         #table 5
-        barebirdderm = dust_model.bgs_bird_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface)
-        bareherpderm = dust_model.bgs_repamp_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface)
-        baremammderm = dust_model.bgs_mam_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface)
-        t5data = gett5data(barebirdderm,bareherpderm,baremammderm)
+        barebirdderm = dust_obj.bgs_bird_ex_derm_dose
+        bareherpderm = dust_obj.bgs_repamp_ex_derm_dose
+        baremammderm = dust_obj.bgs_mam_ex_derm_dose
+        t5data = gett5data(barebirdderm, bareherpderm, baremammderm)
         t5rows = gethtmlrowsfromcols(t5data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t5rows, headings=pvuheadings)))
         html = html + """
@@ -345,7 +340,7 @@ def table_5(pvuheadings, tmpl, ar_lb, frac_pest_surface):
         return {'html':html, 'barebirdderm':barebirdderm, 'bareherpderm':bareherpderm, 'baremammderm':baremammderm}
 
 
-def table_6(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw):
+def table_6(dust_obj):
         #pre-table 6
         html = """        
         <br>
@@ -355,15 +350,15 @@ def table_6(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, te
                 <div class="out_ container_output">
         """
         #table 6
-        granbirdrisk = dust_model.ratio_gran_bird(dust_model.gran_bird_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau))
-        granbirdmess = dust_model.LOC_gran_bird(dust_model.ratio_gran_bird(dust_model.gran_bird_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau)))
-        granreprisk = dust_model.ratio_gran_rep(dust_model.gran_repamp_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau))
-        granrepmess = dust_model.LOC_gran_rep(dust_model.ratio_gran_rep(dust_model.gran_repamp_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau)))
-        granamphibrisk = dust_model.ratio_gran_amp(dust_model.gran_repamp_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.amp_derm_ld50(low_bird_acute_ld50,test_bird_bw,mineau))
-        granamphibmess = dust_model.LOC_gran_amp(dust_model.ratio_gran_amp(dust_model.gran_repamp_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.amp_derm_ld50(low_bird_acute_ld50,test_bird_bw,mineau)))
-        granmammrisk = dust_model.ratio_gran_mam(dust_model.gran_mam_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.mam_derm_ld50(mam_acute_derm_ld50,test_mam_bw))
-        granmammmess = dust_model.LOC_gran_mam(dust_model.ratio_gran_mam(dust_model.gran_mam_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.mam_derm_ld50(mam_acute_derm_ld50,test_mam_bw)))
-        t6data = gett6data(granbirdrisk,granbirdmess,granreprisk,granrepmess,granamphibrisk,granamphibmess,granmammrisk,granmammmess)
+        granbirdrisk = dust_obj.ratio_gran_bird
+        granbirdmess = dust_obj.LOC_gran_bird
+        granreprisk = dust_obj.ratio_gran_rep
+        granrepmess = dust_obj.LOC_gran_rep
+        granamphibrisk = dust_obj.ratio_gran_amp
+        granamphibmess = dust_obj.LOC_gran_amp
+        granmammrisk = dust_obj.ratio_gran_mam
+        granmammmess = dust_obj.LOC_gran_mam
+        t6data = gett6data(granbirdrisk, granbirdmess, granreprisk, granrepmess, granamphibrisk, granamphibmess, granmammrisk, granmammmess)
         t6rows = gethtmlrowsfromcols(t6data,pvrheadings)
         html = html + tmpl.render(Context(dict(data=t6rows, headings=pvrheadings)))
         html = html + """
@@ -372,22 +367,22 @@ def table_6(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, te
         return {'html':html, 'granbirdrisk':granbirdrisk, 'granreprisk':granreprisk, 
                 'granamphibrisk':granamphibrisk, 'granmammrisk':granmammrisk}
 
-def table_7(pvrheadings, tmpl, ar_lb, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw):
+def table_7(dust_obj):
         #pre-table 7
         html = """         
             <H4 class="out_7 collapsible" id="section9"><span></span>Foliar Spray</H4>
                 <div class="out_ container_output">
         """
         #table 7
-        folbirdrisk = dust_model.ratio_fol_bird(dust_model.fol_bird_ex_derm_dose(dislodge_fol_res,dust_model.ar_mg(ar_lb)),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau))
-        folbirdmess = dust_model.LOC_fol_bird(dust_model.ratio_fol_bird(dust_model.fol_bird_ex_derm_dose(dislodge_fol_res,dust_model.ar_mg(ar_lb)),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau)))
-        folreprisk = dust_model.ratio_fol_rep(dust_model.fol_repamp_ex_derm_dose(dislodge_fol_res,dust_model.ar_mg(ar_lb)),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau))
-        folrepmess = dust_model.LOC_fol_rep(dust_model.ratio_fol_rep(dust_model.fol_repamp_ex_derm_dose(dislodge_fol_res,dust_model.ar_mg(ar_lb)),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau)))
-        folamphibrisk = dust_model.ratio_fol_amp(dust_model.fol_repamp_ex_derm_dose(dislodge_fol_res,dust_model.ar_mg(ar_lb)),dust_model.amp_derm_ld50(low_bird_acute_ld50,test_bird_bw,mineau))
-        folamphibmess = dust_model.LOC_fol_amp(dust_model.ratio_fol_amp(dust_model.fol_repamp_ex_derm_dose(dislodge_fol_res,dust_model.ar_mg(ar_lb)),dust_model.amp_derm_ld50(low_bird_acute_ld50,test_bird_bw,mineau)))
-        folmammrisk = dust_model.ratio_fol_mam(dust_model.fol_mam_ex_derm_dose(dislodge_fol_res,dust_model.ar_mg(ar_lb)),dust_model.mam_derm_ld50(mam_acute_derm_ld50,test_mam_bw))
-        folmammmess = dust_model.LOC_fol_mam(dust_model.ratio_fol_mam(dust_model.fol_mam_ex_derm_dose(dislodge_fol_res,dust_model.ar_mg(ar_lb)),dust_model.mam_derm_ld50(mam_acute_derm_ld50,test_mam_bw)))
-        t7data = gett7data(folbirdrisk,folbirdmess,folreprisk,folrepmess,folamphibrisk,folamphibmess,folmammrisk,folmammmess)
+        folbirdrisk = dust_obj.ratio_fol_bird
+        folbirdmess = dust_obj.LOC_fol_bird
+        folreprisk = dust_obj.ratio_fol_rep
+        folrepmess = dust_obj.LOC_fol_rep
+        folamphibrisk = dust_obj.ratio_fol_amp
+        folamphibmess = dust_obj.LOC_fol_amp
+        folmammrisk = dust_obj.ratio_fol_mam
+        folmammmess = dust_obj.LOC_fol_mam
+        t7data = gett7data(folbirdrisk, folbirdmess, folreprisk, folrepmess, folamphibrisk, folamphibmess, folmammrisk, folmammmess)
         t7rows = gethtmlrowsfromcols(t7data,pvrheadings)
         html = html + tmpl.render(Context(dict(data=t7rows, headings=pvrheadings)))
         html = html + """
@@ -397,22 +392,22 @@ def table_7(pvrheadings, tmpl, ar_lb, dislodge_fol_res, low_bird_acute_ld50, tes
                 'folamphibrisk':folamphibrisk, 'folmammrisk':folmammrisk}
 
 
-def table_8(pvrheadings, tmpl, ar_lb, frac_pest_surface, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw):
+def table_8(dust_obj):
         #pre-table 8
         html = """          
             <H4 class="out_8 collapsible" id="section10"><span></span>Bare Ground Spray</H4>
                 <div class="out_ container_output">
         """
         #table 8
-        barebirdrisk = dust_model.ratio_bgs_bird(dust_model.bgs_bird_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau))
-        barebirdmess = dust_model.LOC_bgs_bird(dust_model.ratio_bgs_bird(dust_model.bgs_bird_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau)))
-        barereprisk = dust_model.ratio_bgs_rep(dust_model.bgs_repamp_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau))
-        barerepmess = dust_model.LOC_bgs_rep(dust_model.ratio_bgs_rep(dust_model.bgs_repamp_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.birdrep_derm_ld50(dust_model.bird_reptile_dermal_ld50(low_bird_acute_ld50),test_bird_bw,mineau)))
-        bareamphibrisk = dust_model.ratio_bgs_amp(dust_model.bgs_repamp_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.amp_derm_ld50(low_bird_acute_ld50,test_bird_bw,mineau))
-        bareamphibmess = dust_model.LOC_bgs_amp(dust_model.ratio_bgs_amp(dust_model.bgs_repamp_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.amp_derm_ld50(low_bird_acute_ld50,test_bird_bw,mineau)))
-        baremammrisk = dust_model.ratio_bgs_mam(dust_model.bgs_mam_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.mam_derm_ld50(mam_acute_derm_ld50,test_mam_bw))
-        baremammmess = dust_model.LOC_bgs_mam(dust_model.ratio_bgs_mam(dust_model.bgs_mam_ex_derm_dose(dust_model.ar_mg(ar_lb),frac_pest_surface),dust_model.mam_derm_ld50(mam_acute_derm_ld50,test_mam_bw)))
-        t8data = gett8data(barebirdrisk,barebirdmess,barereprisk,barerepmess,bareamphibrisk,bareamphibmess,baremammrisk,baremammmess)
+        barebirdrisk = dust_obj.ratio_bgs_bird
+        barebirdmess = dust_obj.LOC_bgs_bird
+        barereprisk = dust_obj.ratio_bgs_rep
+        barerepmess = dust_obj.LOC_bgs_rep
+        bareamphibrisk = dust_obj.ratio_bgs_amp
+        bareamphibmess = dust_obj.LOC_bgs_amp
+        baremammrisk = dust_obj.ratio_bgs_mam
+        baremammmess = dust_obj.LOC_bgs_mam
+        t8data = gett8data(barebirdrisk, barebirdmess, barereprisk, barerepmess, bareamphibrisk, bareamphibmess, baremammrisk, baremammmess)
         t8rows = gethtmlrowsfromcols(t8data,pvrheadings)
         html = html + tmpl.render(Context(dict(data=t8rows, headings=pvrheadings)))
         html = html + """

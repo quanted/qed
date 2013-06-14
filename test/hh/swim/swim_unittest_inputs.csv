@@ -1,0 +1,4 @@
+LC50,threshold,dose_response,z_score_f_out,F8_f_out,chance_f_out
+float,float,float,float,float,float
+50,2,4.5,1.355,0.912,1.096
+2,3,4,1.908,0.972,1.029

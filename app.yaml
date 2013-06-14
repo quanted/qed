@@ -20,6 +20,8 @@ libraries:
 
 env_variables:
   UBERTOOL_BATCH_SERVER: 'http://www.chancedelphia.com:8887/'
+  UBERTOOL_MONGO_SERVER: 'http://127.0.0.1:8887'
+  UBERTOOL_SECURE_SERVER: 'http://127.0.0.1:8989'
 
 skip_files:
 - ^(.*/)?app\.yaml
@@ -57,6 +59,12 @@ handlers:
   script: pdf_output.py
 - url: /html.html
   script: html_output.py
+- url: /login.html
+  script: user/user_login_input.py
+  secure: always
+- url: /register.html
+  script: user/user_registration_input.py
+  secure: always
 
 # All URLs beginning with /stylesheets are treated as paths to static files in
 # the stylesheets/ directory. Note that static_dir handlers do not use a
@@ -135,6 +143,9 @@ handlers:
 #batch_output
 - url: /(.*?)_batchoutput.html
   script: \1/\1_batchoutput.py
+#hisotry
+- url: /(.*?)_history.html
+  script: \1/\1_history.py
 
 ##TESTED models##
 #description
@@ -301,7 +312,19 @@ handlers:
 
 #ESA workshop
 - url: /esa_workshop.html
-  script: esa_workshop/esa_workshop.py  
+  script: esa_workshop/esa_workshop.py
+
+- url: /loginsubmit
+  script: auth/auth.py
+
+- url: /allow
+  script: auth/auth.py
+
+- url: /openidserver
+  script: auth/auth.py
+
+- url: /login
+  script: auth/auth.py
 
 #file not found
 - url: /.*

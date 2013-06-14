@@ -1,606 +1,386 @@
 import numpy as np
 import logging
 import sys
-
 import math
+from django.utils import simplejson
 
-def cs(vp,mw):
-    try:
-        vp = float(vp)
-        mw = float(mw)
-    except IndexError:
-        raise IndexError\
-        ('The vapor pressure and/or molecular weight must be '\
-        'supplied on the command line.')
-    except ValueError:
-        raise ValueError\
-        ('The vapor pressure must be a real number, not "%mm Hg"' %vp)
-    except ValueError:
-        raise ValueError\
-        ('The molecular weight must be a real number, not "%g/mol"' %mw)
-    except ZeroDivisionError:
-        raise ZeroDivisionError\
-        ('The volume must be greater than zero.')
-    if vp < 0:
-        raise ValueError\
-        ('vp=%g is a non-physical value.' % vp)
-    if mw < 0:
-        raise ValueError\
-        ('mw=%g is a non-physical value.' % mw)
-    return (vp * mw * 1000000.0)/(760.0 * 24.45)
+def toJSON(stir_object):
+    stir_vars = vars(stir_object)
+    stir_json = simplejson.dumps(stir_vars)
+    return stir_json
 
+def fromJSON(json_string):
+    stir_vars = simplejson.loads(json_string)
+    new_stir = stir(True,False,vars_dict=stir_vars)
+    return new_stir
 
+class StirModel:
 
-# Avian inhalation rate
+    def __init__(self,set_variables=True, run_methods=True,
+            chemical_name=None,application_rate=None,column_height=None,spray_drift_fraction=None,direct_spray_duration=None, 
+            molecular_weight=None,vapor_pressure=None,avian_oral_ld50=None, body_weight_assessed_bird=None, body_weight_tested_bird=None, 
+            mineau_scaling_factor=None,mammal_inhalation_lc50=None,duration_mammal_inhalation_study=None,body_weight_assessed_mammal=None, 
+            body_weight_tested_mammal=None,mammal_oral_ld50=None,
+            vars_dict=None):
+        self.set_default_variables()
+        if set_variables:
+            if vars_dict != None:
+                self.__dict__.update(vars_dict)
+            else:
+                self.set_variables(chemical_name,application_rate,column_height,spray_drift_fraction,direct_spray_duration, 
+                    molecular_weight,vapor_pressure,avian_oral_ld50, body_weight_assessed_bird, body_weight_tested_bird, mineau_scaling_factor, 
+                    mammal_inhalation_lc50,duration_mammal_inhalation_study,body_weight_assessed_mammal, body_weight_tested_mammal, 
+                    mammal_oral_ld50)
+            if run_methods:
+                self.run_methods()
 
-def ir_avian(aw_avian):
-    try:
-        aw_avian = float(aw_avian)
-    except IndexError:
-        raise IndexError\
-        ('The body weight of the assessed bird '\
-        'must be supplied on the command line.')
-    except ValueError:
-        raise ValueError\
-        ('The body weight must be a real number, not "%kg"' %aw_avian)
-    if aw_avian < 0:
-        raise ValueError\
-        ('aw_avian=%g is a non-physical value.' % aw_avian)
-    return 284 * (aw_avian**0.77) * 60.0 * 3
+    def set_default_variables(self):
+        #inputs
+        self.chemical_name = ''
+        self.application_rate = 1
+        self.column_height = 1
+        self.spray_drift_fraction = 1
+        self.direct_spray_duration = 1
+        self.molecular_weight = 1
+        self.vapor_pressure = 1
+        self.avian_oral_ld50 = 1
+        self.body_weight_assessed_bird = 1
+        self.body_weight_tested_bird = 1
+        self.mineau_scaling_factor = 1
+        self.mammal_inhalation_lc50 = 1
+        self.duration_mammal_inhalation_study = 1
+        self.body_weight_assessed_mammal = 1
+        self.body_weight_tested_mammal = 1
+        self.mammal_oral_ld50 = 1
 
+        #outputs
+        self.sat_air_conc = -1
+        self.inh_rate_avian = -1
+        self.vid_avian = -1
+        self.inh_rate_mammal = -1
+        self.vid_mammal = -1
+        self.ar2 = -1
+        self.air_conc = -1
+        self.sid_avian = -1
+        self.sid_mammal = -1
+        self.cf = -1
+        self.mammal_inhalation_ld50 = -1
+        self.adjusted_mammal_inhalation_ld50 = -1
+        self.estimated_avian_inhalation_ld50 = -1
+        self.adjusted_avian_inhalation_ld50 = -1
+        self.ratio_vid_avian = -1
+        self.ratio_sid_avian = -1
+        self.ratio_vid_mammal = -1
+        self.ratio_sid_mammal = -1
+        self.loc_vid_avian = ''
+        self.loc_sid_avian = ''
+        self.loc_vid_mammal = ''
+        self.loc_sid_mammal = ''
 
-# Maximum avian vapor inhalation dose
+    def __str__(self):
+        #inputs
+        string_rep = ''
+        string_rep = string_rep + self.chemical_name + "\n"
+        string_rep = string_rep + "application_rate = %.2e \n" % self.application_rate
+        string_rep = string_rep + "column_height = %.2e \n" % self.column_height
+        string_rep = string_rep + "spray_drift_fraction = %.2e \n" % self.spray_drift_fraction
+        string_rep = string_rep + "direct_spray_duration = %.2e \n" % self.direct_spray_duration
+        string_rep = string_rep + "molecular_weight = %.2e \n" % self.molecular_weight
+        string_rep = string_rep + "vapor_pressure = %.2e \n" % self.vapor_pressure
+        string_rep = string_rep + "avian_oral_ld50 = %.2e \n" % self.avian_oral_ld50
+        string_rep = string_rep + "body_weight_assessed_bird = %.2e \n" % self.body_weight_assessed_bird
+        string_rep = string_rep + "body_weight_tested_bird = %.2e \n" % self.body_weight_tested_bird
+        string_rep = string_rep + "mineau_scaling_factor = %.2e \n" % self.mineau_scaling_factor
+        string_rep = string_rep + "mammal_inhalation_lc50 = %.2e \n" % self.mammal_inhalation_lc50
+        string_rep = string_rep + "duration_mammal_inhalation_study = %.2e \n" % self.duration_mammal_inhalation_study
+        string_rep = string_rep + "body_weight_assessed_mammal = %.2e \n" % self.body_weight_assessed_mammal
+        string_rep = string_rep + "body_weight_tested_mammal = %.2e \n" % self.body_weight_tested_mammal
+        string_rep = string_rep + "mammal_oral_ld50 = %.2e \n" % self.mammal_oral_ld50
+        #outputs
+        string_rep = string_rep + "sat_air_conc = %.2e \n" % self.sat_air_conc
+        string_rep = string_rep + "inh_rate_avian = %.2e \n" % self.inh_rate_avian
+        string_rep = string_rep + "vid_avian = %.2e \n" % self.vid_avian
+        string_rep = string_rep + "inh_rate_mammal = %.2e \n" % self.inh_rate_mammal
+        string_rep = string_rep + "vid_mammal = %.2e \n" % self.vid_mammal
+        string_rep = string_rep + "ar2 = %.2e \n" % self.ar2
+        string_rep = string_rep + "air_conc = %.2e \n" % self.air_conc
+        string_rep = string_rep + "sid_avian = %.2e \n" % self.sid_avian
+        string_rep = string_rep + "sid_mammal = %.2e \n" % self.sid_mammal
+        string_rep = string_rep + "cf = %.2e \n" % self.cf
+        string_rep = string_rep + "mammal_inhalation_ld50 = %.2e \n" % self.self.mammal_inhalation_ld50
+        string_rep = string_rep + "adjusted_mammal_inhalation_ld50 = %.2e \n" % self.adjusted_mammal_inhalation_ld50
+        string_rep = string_rep + "estimated_avian_inhalation_ld50 = %.2e \n" % self.estimated_avian_inhalation_ld50
+        string_rep = string_rep + "adjusted_avian_inhalation_ld50 = %.2e \n" % self.adjusted_avian_inhalation_ld50
+        string_rep = string_rep + "ratio_vid_avian = %.2e \n" % self.ratio_vid_avian
+        string_rep = string_rep + "ratio_sid_avian = %.2e \n" % self.ratio_sid_avian
+        string_rep = string_rep + "ratio_vid_mammal = %.2e \n" % self.ratio_vid_mammal
+        string_rep = string_rep + "ratio_sid_mammal = %.2e \n" % self.ratio_sid_mammal
+        string_rep = string_rep + "loc_vid_avian =" + self.loc_vid_avian + "\n"
+        string_rep = string_rep + "loc_sid_avian =" + self.loc_sid_avian + "\n"
+        string_rep = string_rep + "loc_vid_mammal =" + self.loc_vid_mammal + "\n"
+        string_rep = string_rep + "loc_sid_mammal =" + self.loc_sid_mammal + "\n"
 
-def vid_avian(cs,ir_avian,aw_avian):
-    try:
-        cs = float(cs)
-        ir_avian = float(ir_avian)
-        aw_avian = float(aw_avian)
-    except IndexError:
-        raise IndexError\
-        ('The vapor air concentration, inhalation rate,'\
-        ' and/or body weight of assessed bird must be supplied'\
-        ' on the command line.')
-    except ValueError:
-        raise ValueError\
-        ('The vapor air concentration must be a real number, not "%mg/m3"' %cs)
-    except ValueError:
-        raise ValueError\
-        ('The inhalation rate must be a real number, not "%cm3/hr"' %ir_avian)
-    except ValueError:
-        raise ValueError\
-        ('The body weight of the assessed bird must be a real number'\
-        ' not "%kg"' %aw_avian)
-    except ZeroDivisionError:
-        raise ZeroDivisionError\
-        ('The body weight of the assessed bird must be greater than zero.')
-    if cs < 0:
-        raise ValueError\
-        ('cs=%g is a non-physical value.' % cs)
-    if ir_avian < 0:
-        raise ValueError\
-        ('ir_avian=%g is a non-physical value.' % ir_avian)
-    if aw_avian < 0:
-        raise ValueError\
-        ('aw_avian=%g is a non-physical value.' % aw_avian)
-    return (cs * ir_avian * 1)/(1000000.0 * aw_avian) # 1 (hr) is duration of exposure
+        return string_rep
 
+    def set_variables(self,chemical_name,application_rate,column_height,spray_drift_fraction,direct_spray_duration, 
+            molecular_weight,vapor_pressure,avian_oral_ld50,body_weight_assessed_bird,body_weight_tested_bird,mineau_scaling_factor, 
+            mammal_inhalation_lc50,duration_mammal_inhalation_study,body_weight_assessed_mammal,body_weight_tested_mammal, 
+            mammal_oral_ld50):
+        self.chemical_name = chemical_name
+        self.application_rate = application_rate
+        self.column_height = column_height
+        self.spray_drift_fraction = spray_drift_fraction
+        self.direct_spray_duration = direct_spray_duration
+        self.molecular_weight = molecular_weight
+        self.vapor_pressure = vapor_pressure
+        self.avian_oral_ld50 = avian_oral_ld50
+        self.body_weight_assessed_bird = body_weight_assessed_bird
+        self.body_weight_tested_bird = body_weight_tested_bird
+        self.mineau_scaling_factor = mineau_scaling_factor
+        self.mammal_inhalation_lc50 = mammal_inhalation_lc50
+        self.duration_mammal_inhalation_study = duration_mammal_inhalation_study
+        self.body_weight_assessed_mammal = body_weight_assessed_mammal
+        self.body_weight_tested_mammal = body_weight_tested_mammal
+        self.mammal_oral_ld50 = mammal_oral_ld50
 
-# Mammalian inhalation rate
+    def run_methods(self):
+        try:
+            self.CalcSatAirConc() #eq. 1
+            self.CalcInhRateAvian() #eq. 2
+            self.CalcVidAvian() #eq. 3
+            self.CalcInhRateMammal() #eq. 4
+            self.CalcVidMammal() #eq. 5
+            self.CalcConcAir() #eq. 6
+            self.CalcSidAvian() #eq. 7
+            self.CalcSidMammal() #eq. 8
+            self.CalcConvertMammalInhalationLC50toLD50() #eq. 9
+            self.CalcAdjustedMammalInhalationLD50() #eq. 10
+            self.CalcEstimatedAvianInhalationLD50() #eq. 11
+            self.CalcAdjustedAvianInhalationLD50() #eq. 12
+            self.ReturnRatioVidAvian() #results #1
+            self.ReturnLocVidAvian() #results #2
+            self.ReturnRatioSidAvian() #results #3
+            self.ReturnLocSidAvian() #results #4
+            self.ReturnRatioVidMammal() #results #5
+            self.ReturnLocVidMammal() #results #6
+            self.ReturnRatioSidMammal() #results #7
+            self.ReturnLocSidMammal() #results #8
+        except TypeError:
+            print "Type Error: Your variables are not set correctly."
 
-def ir_mammal(aw_mammal):
-    try:
-        aw_mammal = float(aw_mammal)
-    except IndexError:
-        raise IndexError\
-        ('The body weight of the assessed mammal '\
-        'must be supplied on the command line.')
-    except ValueError:
-        raise ValueError\
-        ('The body weight of the assessed mammal must be a real'\
-        ' number, not "%kg"' %aw_mammal)
-    if aw_mammal < 0:
-        raise ValueError\
-        ('aw_mammal=%g is a non-physical value.' % aw_mammal)
-    return 379.0 * (aw_mammal**0.80) * 60.0 * 3.0
+    #eq. 1 saturated air concentration in mg/m^3
+    def CalcSatAirConc(self):
+        if self.sat_air_conc == -1:
+            self.vapor_pressure = float(self.vapor_pressure)
+            self.molecular_weight = float(self.molecular_weight)
+            air_vol = 24.45
+            pressure = 760.0
+            conv = 1000000.0
+            self.sat_air_conc = (self.vapor_pressure * self.molecular_weight * conv)/(pressure * air_vol)
+        return self.sat_air_conc
 
+    #eq. 2 Avian inhalation rate
+    def CalcInhRateAvian(self):
+        if self.inh_rate_avian == -1:
+            self.body_weight_assessed_bird = float(self.body_weight_assessed_bird)
+            magic1 = 284.
+            magic2 = 0.77
+            conversion = 60.
+            activity_factor = 3.
+            self.inh_rate_avian = magic1 * (self.body_weight_assessed_bird**magic2) * conversion * activity_factor
+        return self.inh_rate_avian
 
-# Maximum mammalian vapor inhalation dose
+    #eq. 3  Maximum avian vapor inhalation dose
+    def CalcVidAvian(self):
+        if self.vid_avian == -1:
+            self.sat_air_conc = float(self.sat_air_conc)
+            self.inh_rate_avian = float(self.inh_rate_avian)
+            self.body_weight_assessed_bird = float(self.body_weight_assessed_bird)
+            duration_hours = 1.
+            conversion_factor = 1000000. # cm3/m3
+            self.vid_avian = (self.sat_air_conc * self.inh_rate_avian * duration_hours)/(conversion_factor * self.body_weight_assessed_bird) # 1 (hr) is duration of exposure
+        return self.vid_avian
 
-def vid_mammal(cs,ir_mammal,aw_mammal):
-    try:
-        cs = float(cs)
-        ir_mammal = float(ir_mammal)
-        aw_mammal = float(aw_mammal)
-    except IndexError:
-        raise IndexError\
-        ('The vapor air concentration, inhalation rate,'\
-        ' and/or body weight of assessed mammal must be supplied'\
-        ' on the command line.')
-    except ValueError:
-        raise ValueError\
-        ('The vapor air concentration must be a real number, not "%mg/m3"' %cs)
-    except ValueError:
-        raise ValueError\
-        ('The inhalation rate must be a real number, not "%cm3/hr"' %ir_mammal)
-    except ValueError:
-        raise ValueError\
-        ('The body weight of the assessed mammal must be a real number'\
-        ' not "%kg"' %aw_mammal)
-    except ZeroDivisionError:
-        raise ZeroDivisionError\
-        ('The body weight of the assessed mammal must be greater than zero.')
-    if cs < 0:
-        raise ValueError\
-        ('cs=%g is a non-physical value.' % cs)
-    if ir_mammal < 0:
-        raise ValueError\
-        ('ir_mammal=%g is a non-physical value.' % ir_mammal)
-    if aw_mammal < 0:
-        raise ValueError\
-        ('aw_mammal=%g is a non-physical value.' % aw_mammal)
-    return (cs * ir_mammal * 1)/(1000000.0 * aw_mammal) # 1 hr = duration of exposure
+    #eq. 4 Mammalian inhalation rate
+    def CalcInhRateMammal(self):
+        if self.inh_rate_mammal == -1:
+            self.body_weight_assessed_mammal = float(self.body_weight_assessed_mammal)
+            magic1 = 379.0
+            magic2 = 0.8
+            minutes_conversion = 60.
+            activity_factor = 3
+            self.inh_rate_mammal = magic1 * (self.body_weight_assessed_mammal**magic2) * minutes_conversion * activity_factor
+        return self.inh_rate_mammal
 
+    #eq. 5 Maximum mammalian vapor inhalation dose
+    def CalcVidMammal(self):
+        if self.vid_mammal == -1:
+            self.sat_air_conc = float(self.sat_air_conc) # eq. 1
+            self.inh_rate_mammal = float(self.inh_rate_mammal) # eq. 4
+            self.body_weight_assessed_mammal = float(self.body_weight_assessed_mammal)
+            duration_hours = 1.
+            conversion_factor = 1000000.
+            self.vid_mammal = (self.sat_air_conc * self.inh_rate_mammal * duration_hours)/(conversion_factor * self.body_weight_assessed_mammal) # 1 hr = duration of exposure
+        return self.vid_mammal
 
-# Air column concentration after spray
+    #eq. 6 Air column concentration after spray
+    def CalcConcAir(self):
+        if self.air_conc == -1:
+            self.application_rate = float(self.application_rate)
+            self.column_height = float(self.column_height)
+            conversion_factor = 100. #cm/m
+            # conversion of application rate from lbs/acre to mg/cm2
+            cf_g_lbs = 453.59237
+            cf_mg_g = 1000.
+            cf_cm2_acre = 40468564.2
+            self.ar2 = (self.application_rate*cf_g_lbs*cf_mg_g)/cf_cm2_acre
+            self.air_conc = self.ar2/(self.column_height * conversion_factor)
+        return self.air_conc
 
-def c_air(ar2,h):
-    try:
-        ar2 = float(ar2)
-        h = float(h)
-    except IndexError:
-        raise IndexError\
-        ('The pesticide application rate and/or height of direct spray column'\
-        ' must be supplied on the command line.')
-    except ValueError:
-        raise ValueError\
-        ('The pesticide application rate must be a real number, '\
-        ' not "%mg/cm2"' % ar2)
-    except ValueError:
-        raise ValueError\
-        ('The height of the direct spray column must be a real number, '\
-        'not "%m"' % h)
-    except ZeroDivisionError:
-        raise ZeroDivisionError\
-        ('The height of the direct spray column must be non-zero.')
-    if ar2 < 0:
-        raise ValueError\
-        ('ar2=%g is a non-physical value.' %ar2)
-    if h < 0:
-        raise ValueError\
-        ('h=%g is a non-physical value.' %h)
-    return ar2/(h * 100.0)
+    #eq. 7 Avian spray droplet inhalation dose
+    def CalcSidAvian(self):
+        if self.sid_avian == -1:
+            self.air_conc = float(self.air_conc)
+            self.inh_rate_avian = float(self.inh_rate_avian)
+            self.direct_spray_duration = float(self.direct_spray_duration)
+            self.spray_drift_fraction = float(self.spray_drift_fraction)
+            self.body_weight_assessed_bird = float(self.body_weight_assessed_bird)
+            self.sid_avian = (self.air_conc * self.inh_rate_avian * self.direct_spray_duration * self.spray_drift_fraction)/(60.0 * self.body_weight_assessed_bird)
+        return self.sid_avian
 
+    #eq. 8 Mammalian spray droplet inhalation dose
+    def CalcSidMammal(self):
+        if self.sid_mammal == -1:
+            self.air_conc = float(self.air_conc)
+            self.inh_rate_mammal = float(self.inh_rate_mammal)
+            self.direct_spray_duration = float(self.direct_spray_duration)
+            self.spray_drift_fraction = float(self.spray_drift_fraction)
+            self.body_weight_assessed_mammal = float(self.body_weight_assessed_mammal)
+            self.sid_mammal = (self.air_conc * self.inh_rate_mammal * self.direct_spray_duration * self.spray_drift_fraction)/(60.0 * self.body_weight_assessed_mammal)
+        return self.sid_mammal
 
-# Avian spray droplet inhalation dose
+    # Conversion Factor
+    def ConvLCLD(self):
+        if self.cf == -1:
+            self.inh_rate_mammal = float(self.inh_rate_mammal)
+            self.body_weight_assessed_mammal = float(self.body_weight_assessed_mammal)
+            self.cf = ((self.inh_rate_mammal * 0.001)/self.body_weight_assessed_mammal)
+        return self.cf
 
-def sid_avian(c_air,ir_avian,ddsi,f_inhaled,aw_avian):
-    try:
-        c_air = float(c_air)
-        ir_avian = float(ir_avian)
-        ddsi = float(ddsi)
-        f_inhaled = float(f_inhaled)
-        aw_avian = float(aw_avian)
-    except IndexError:
-        raise IndexError\
-        ('The droplet concentration of pesticide, inhalation rate, '\
-        'duration of exposure, fraction of inhaled spray, and/or body '
-        'weight of assessed bird must be supplied on the command line.')
-    except ValueError:
-        raise ValueError\
-        ('The droplet concentration of pesticide must be a real number, '\
-        'not "%mg/cm3"' %c_air)
-    except ValueError:
-        raise ValueError\
-        ('The inhalation rate must be a real number, not "%cm3/hr"' %ir_avian)
-    except ValueError:
-        raise ValueError\
-        ('The duration of exposure must be a real number, not "%hr"' %ddsi)
-    except ValueError:
-        raise ValueError\
-        ('The fraction of inhaled spray must be a real number' % f_inhaled)
-    except ValueError:
-        raise ValueError\
-        ('The body weight of the assessed bird must be a real number'\
-        ' not "%kg"' %aw_avian)
-    except ZeroDivisionError:
-        raise ZeroDivisionError\
-        ('The body weight of the assessed bird must non-zero.')
-    if c_air < 0:
-        raise ValueError\
-        ('c_air=%g is a non-physical value.' % c_air)
-    if ir_avian < 0:
-        raise ValueError\
-        ('ir_avian=%g is a non-physical value.' % ir_avian)
-    if ddsi < 0:
-        raise ValueError\
-        ('ddsi=%g is a non-physical value.' % ddsi)
-    if f_inhaled < 0:
-        raise ValueError\
-        ('f_inhaled=g% is a non-physical value.' % f_inhaled)
-    if aw_avian < 0:
-        raise ValueError\
-        ('aw_avian=%g is a non-physical value.' % aw_avian)
-    return (c_air * ir_avian * ddsi * f_inhaled)/(60.0 * aw_avian)
+    #eq. 9 Conversion of mammalian LC50 to LD50
+    def CalcConvertMammalInhalationLC50toLD50(self):
+        if self.mammal_inhalation_ld50 == -1:
+            self.mammal_inhalation_lc50 = float(self.mammal_inhalation_lc50)
+            self.cf = self.ConvLCLD()
+            self.duration_mammal_inhalation_study = float(self.duration_mammal_inhalation_study)
+            activity_factor = 1
+            absorption = 1
+            self.mammal_inhalation_ld50 = self.mammal_inhalation_lc50 * absorption * self.cf * self.duration_mammal_inhalation_study * activity_factor
+        return self.mammal_inhalation_ld50
 
+    #eq. 10 Adjusted mammalian inhalation LD50
+    def CalcAdjustedMammalInhalationLD50(self):
+        if self.adjusted_mammal_inhalation_ld50 == -1:
+            self.mammal_inhalation_ld50 = float(self.mammal_inhalation_ld50)
+            self.body_weight_assessed_mammal = float(self.body_weight_assessed_mammal)
+            self.body_weight_tested_mammal = float(self.body_weight_tested_mammal)
+            magicpower = 0.25
+            self.adjusted_mammal_inhalation_ld50 = self.mammal_inhalation_ld50 * (self.body_weight_tested_mammal/self.body_weight_assessed_mammal)**magicpower
+        return self.adjusted_mammal_inhalation_ld50
 
-# Mammalian spray droplet inhalation dose
+    #eq. 11 Estimated avian inhalation LD50
+    def CalcEstimatedAvianInhalationLD50(self):
+        if self.estimated_avian_inhalation_ld50 == -1:
+            self.avian_oral_ld50 = float(self.avian_oral_ld50)
+            self.mammal_inhalation_ld50 = float(self.mammal_inhalation_ld50)
+            self.mammal_oral_ld50 = float(self.mammal_oral_ld50)
+            three_five = 3.5
+            self.estimated_avian_inhalation_ld50 = (self.avian_oral_ld50 * self.mammal_inhalation_ld50)/(three_five * self.mammal_oral_ld50) 
+        return self.estimated_avian_inhalation_ld50
 
-def sid_mammal(c_air,ir_mammal,ddsi,f_inhaled,aw_mammal):
-    try:
-        c_air = float(c_air)
-        ir_mammal = float(ir_mammal)
-        ddsi = float(ddsi)
-        f_inhaled = float(f_inhaled)
-        aw_mammal = float(aw_mammal)
-    except IndexError:
-        raise IndexError\
-        ('The droplet concentration of pesticide, inhalation rate, '\
-        'duration of exposure, fraction of inhaled spray, and/or body '
-        'weight of assessed mammal must be supplied on the command line.')
-    except ValueError:
-        raise ValueError\
-        ('The droplet concentration of pesticide must be a real number, '\
-        'not "%mg/cm3"' %c_air)
-    except ValueError:
-        raise ValueError\
-        ('The inhalation rate must be a real number, not "%cm3/hr"' %ir_mammal)
-    except ValueError:
-        raise ValueError\
-        ('The duration of exposure must be a real number, not "%hr"' %ddsi)
-    except ValueError:
-        raise ValueError\
-        ('The fraction of inhaled spray must be a real number' % f_inhaled)
-    except ValueError:
-        raise ValueError\
-        ('The body weight of the assessed mammal must be a real number'\
-        ' not "%kg"' %aw_mammal)
-    except ZeroDivisionError:
-        raise ZeroDivisionError\
-        ('The body weight of the assessed mammal must non-zero.')
-    if c_air < 0:
-        raise ValueError\
-        ('c_air=%g is a non-physical value.' % c_air)
-    if ir_mammal < 0:
-        raise ValueError\
-        ('ir_mammal=%g is a non-physical value.' % ir_mammal)
-    if ddsi < 0:
-        raise ValueError\
-        ('ddsi=%g is a non-physical value.' % ddsi)
-    if f_inhaled < 0:
-        raise ValueError\
-        ('f_inhaled=g% is a non-physical value.' % f_inhaled)
-    if aw_mammal < 0:
-        raise ValueError\
-        ('aw_mammal=%g is a non-physical value.' % aw_mammal)
-    return (c_air * ir_mammal * ddsi * f_inhaled)/(60.0 * aw_mammal)
+    #eq. 12 Adjusted avian inhalation LD50
+    def CalcAdjustedAvianInhalationLD50(self):
+        if self.adjusted_avian_inhalation_ld50 == -1:
+            self.estimated_avian_inhalation_ld50 = float(self.estimated_avian_inhalation_ld50)
+            self.body_weight_assessed_bird = float(self.body_weight_assessed_bird)
+            self.body_weight_tested_bird = float(self.body_weight_tested_bird)
+            self.mineau_scaling_factor = float(self.mineau_scaling_factor)
+            self.adjusted_avian_inhalation_ld50 = self.estimated_avian_inhalation_ld50 * (self.body_weight_assessed_bird/self.body_weight_tested_bird)**(self.mineau_scaling_factor - 1)
+        return self.adjusted_avian_inhalation_ld50
 
-# Conversion Factor
+    # ----------------------------------------------
+    # results
+    # ----------------------------------------------
+    # results #1: Ratio of avian vapor dose to adjusted inhalation LD50
+    def ReturnRatioVidAvian(self):
+        if self.ratio_vid_avian == -1:
+            self.vid_avian = float(self.vid_avian)
+            self.adjusted_avian_inhalation_ld50 = float(self.adjusted_avian_inhalation_ld50)
+            self.ratio_vid_avian = self.vid_avian/self.adjusted_avian_inhalation_ld50
+        return self.ratio_vid_avian
 
-def cf(ir_mammal, aw_mammal):
-    try:
-        ir_mammal = float(ir_mammal)
-        aw_mammal = float(aw_mammal)
-    except IndexError:
-        raise IndexError\
-        ('The mammalian inhalation rate, and/or body '
-        'weight of assessed mammal must be supplied on the command line.')
-    except ValueError:
-        raise ValueError\
-        ('The mammalian inhalation rate must be a real number, '\
-        'not "%cm3/hr"' % ir_mammal)
-    except ValueError:
-        raise ValueError\
-        ('The body weight of the assessed mammal must be a real number'\
-        ' not "%kg"' %aw_mammal)
-    except ZeroDivisionError:
-        raise ZeroDivisionError\
-        ('The body weight of the assessed mammal must non-zero.')
-    if ir_mammal < 0:
-        raise ValueError\
-        ('ir_mammal=%g is a non-physical value.' % ir_mammal)
-    if aw_mammal < 0:
-        raise ValueError\
-        ('aw_mammal=%g is a non-physical value.' % aw_mammal)
-    return ((ir_mammal * 0.001)/aw_mammal)
+    # results #2: Level of Concern for avian vapor phase risk
+    def ReturnLocVidAvian(self):
+        if self.ratio_vid_avian < 0.1:
+            self.loc_vid_avian = 'Exposure not Likely Significant'
+        else:
+            self.loc_vid_avian = 'Proceed to Refinements'
+        return self.loc_vid_avian
 
+    # results #3: Ratio of avian droplet inhalation dose to adjusted inhalation LD50
+    def ReturnRatioSidAvian(self):
+        if self.ratio_sid_avian == -1:
+            self.sid_avian = float(self.sid_avian)
+            self.adjusted_avian_inhalation_ld50 = float(self.adjusted_avian_inhalation_ld50)
+            self.ratio_sid_avian = self.sid_avian/self.adjusted_avian_inhalation_ld50
+        return self.ratio_sid_avian
 
+    # results #4: Level of Concern for avian droplet inhalation risk
+    def ReturnLocSidAvian(self):
+        if self.ratio_sid_avian < 0.1:
+            self.loc_sid_avian = 'Exposure not Likely Significant'
+        else:
+            self.loc_sid_avian = 'Proceed to Refinements'
+        return self.loc_sid_avian
 
-# Conversion of mammalian LC50 to LD50
+    # results #5: Ratio of mammalian vapor dose to adjusted inhalation LD50
+    def ReturnRatioVidMammal(self):
+        if self.ratio_vid_mammal == -1:
+            self.vid_mammal = float(self.vid_mammal)
+            self.adjusted_mammal_inhalation_ld50 = float(self.adjusted_mammal_inhalation_ld50)
+            self.ratio_vid_mammal = self.vid_mammal/self.adjusted_mammal_inhalation_ld50
+        return self.ratio_vid_mammal
 
-def ld50 (lc50,cf,dur):
-    try:
-        lc50 = float(lc50)
-        cf = float(cf)
-        dur = float(dur)
-    except IndexError:
-        raise IndexError\
-        ('The lethal concentration, conversion factor, and/or duration'\
-        ' of inhalation study must be supplied on the command line.')
-    except ValueError:
-        raise ValueError\
-        ('The lethal concentration must be a real number, '\
-        'not "%mg/L"' %lc50)
-    except ValueError:
-        raise ValueError\
-        ('The conversion factor must be a real number, not "%hr"' %cf)
-    except ValueError:
-        raise ValueError\
-        ('The duration of inhalation study must be a real number' % dur)
-    if lc50 < 0:
-        raise ValueError\
-        ('lc50=%g is a non-physical value.' % lc50)
-    if cf < 0:
-        raise ValueError\
-        ('cf=%g is a non-physical value.' % cf)
-    if dur < 0:
-        raise ValueError\
-        ('dur=g% is a non-physical value.' % dur)
-    return lc50 * 1 * cf * dur * 1 # Absorption is assumed to be 100% = 1 -- Activity Factor = 1 (reflects the rat at rest in the experimental conditions)
+    # results #6: Level of Concern for mammalian vapor phase risk
+    def ReturnLocVidMammal(self):
+        if self.ratio_vid_mammal < 0.1:
+            self.loc_vid_mammal = 'Exposure not Likely Significant'
+        else:
+            self.loc_vid_mammal = 'Proceed to Refinements'
+        return self.loc_vid_mammal
 
+    # results #7: Ratio of mammalian droplet inhalation dose to adjusted inhalation LD50
+    def ReturnRatioSidMammal(self):
+        if self.ratio_sid_mammal == -1:
+            self.sid_mammal = float(self.sid_mammal)
+            self.adjusted_mammal_inhalation_ld50 = float(self.adjusted_mammal_inhalation_ld50)
+            self.ratio_sid_mammal = self.sid_mammal/self.adjusted_mammal_inhalation_ld50
+        return self.ratio_sid_mammal
 
-# Adjusted mammalian inhalation LD50
+    # results #8: Level of Concern for mammaliam droplet inhalation risk
+    def ReturnLocSidMammal(self):
+        if self.ratio_sid_mammal < 0.1:
+            self.loc_sid_mammal = 'Exposure not Likely Significant'
+        else:
+            self.loc_sid_mammal = 'Proceed to Refinements'
+        return self.loc_sid_mammal
 
-def ld50adj_mammal(ld50,tw_mammal,aw_mammal):
-    try:
-        ld50 = float(ld50)
-        tw_mammal = float(tw_mammal)
-        aw_mammal = float(aw_mammal)
-    except IndexError:
-        raise IndexError\
-        ('The lethal dose, body weight of the tested mammal, and/or body '\
-        'weight of assessed mammal must be supplied on the command line.')
-    except ValueError:
-        raise ValueError\
-        ('The lethal dose must be a real number, not "%mg/kg"' %ld50)
-    except ValueError:
-        raise ValueError\
-        ('The body weight of the tested animal must be a real number, not'\
-        ' "%cm3/hr"' %tw_mammal)
-    except ValueError:
-        raise ValueError\
-        ('The body weight of the assessed mammal must be a real number'\
-        ' not "%kg"' %aw_mammal)
-    if ld50 < 0:
-        raise ValueError\
-        ('ld50=%g is a non-physical value.' % ld50)
-    if tw_mammal < 0:
-        raise ValueError\
-        ('tw_mammal=%g is a non-physical value.' % tw_mammal)
-    if aw_mammal < 0:
-        raise ValueError\
-        ('aw_mammal=%g is a non-physical value.' % aw_mammal)
-    return ld50 * (tw_mammal/aw_mammal)**0.25
+def main():
+    test_stir = stir(True,True,1,1,1,1,1,1,1,1)
+    print vars(test_stir)
+    stir_json = toJSON(test_stir)
+    new_stir = fromJSON(stir_json)
+    print vars(new_stir)
 
-
-# Estimated avian inhalation LD50
-
-def ld50est(ld50ao,ld50ri,ld50ro):
-    try:
-        ld50ao = float(ld50ao)
-        ld50ri = float(ld50ri)
-        ld50ro = float(ld50ro)
-    except IndexError:
-        raise IndexError\
-        ('The avian oral LD50, rat inhalation LD50, and/or rat oral LD50 '\
-        'must be supplied on the command line.')
-    except ValueError:
-        raise ValueError\
-        ('The avian oral LD50 of pesticide must be a real number, '\
-        'not "%mg/kg"' %ld50ao)
-    except ValueError:
-        raise ValueError\
-        ('The rat inhalation LD50 must be a real number, not "%mg/kg"' % ld50ri)
-    except ValueError:
-        raise ValueError\
-        ('The rat oral LD50 must be a real number, not "%mg/kg"' %ld50ro)
-    except ZeroDivisionError:
-        raise ZeroDivisionError\
-        ('The rat oral LD50 must non-zero.')
-    if ld50ao < 0:
-        raise ValueError\
-        ('ld50ao=%g is a non-physical value.' % ld50ao)
-    if ld50ri < 0:
-        raise ValueError\
-        ('ld50ri=%g is a non-physical value.' % ld50ri)
-    if ld50ro < 0:
-        raise ValueError\
-        ('ld50ro%g is a non-physical value.' % ld50ro)
-    return (ld50ao * ld50ri)/(3.5 * ld50ro)
-
-
-# Adjusted avian inhalation LD50
-
-def ld50adj_avian(ld50est,aw_avian,tw_avian,mineau):
-    try:
-        ld50est = float(ld50est)
-        aw_avian = float(aw_avian)
-        tw_avian = float(tw_avian)
-        mineau = float(mineau)
-    except IndexError:
-        raise IndexError\
-        ('The estimated avian inhalation LD50, body weight of the assessed'\
-        ' bird, body weight of the tested bird,  and/or Mineau scaling factor '
-        ' for birds must be supplied on the command line.')
-    except ValueError:
-        raise ValueError\
-        ('The estimated avian inhalation LD50 must be a real number, '\
-        'not "%mg/kg"' % ld50est)
-    except ValueError:
-        raise ValueError\
-        ('The body weight of the assessed bird must be a real number,'\
-        ' not "%kg"' % aw_avian)
-    except ValueError:
-        raise ValueError\
-        ('The body weight of the tested bird must be a real number, '\
-        'not "%kg"' % tw_avian)
-    except ValueError:
-        raise ValueError\
-        ('The Mineau scaling factor for bords must be a real number' % mineau)
-    except ZeroDivisionError:
-        raise ZeroDivisionError\
-        ('The body weight of the tested bird must non-zero.')
-    if ld50est < 0:
-        raise ValueError\
-        ('ld50est=%g is a non-physical value.' % ld50est)
-    if aw_avian < 0:
-        raise ValueError\
-        ('aw_avian=%g is a non-physical value.' % aw_avian)
-    if tw_avian < 0:
-        raise ValueError\
-        ('tw_avian=%g is a non-physical value.' % tw_avian)
-    if mineau < 0:
-        raise ValueError\
-        ('mineau=g% is a non-physical value.' % mineau)
-    return ld50est * (aw_avian/tw_avian)**(mineau - 1)
-
-# ----------------------------------------------
-# Ratio of avian vapor dose to adjusted inhalation LD50
-
-def ratio_vd_avian(vid_avian,ld50adj_avian):
-    try:
-        vid_avian = float(vid_avian)
-        ld50adj_avian = float(ld50adj_avian)
-    except IndexError:
-        raise IndexError\
-        ('The avian vapor inhalation dose and/or adjusted avian inhalation LD50'\
-        ' must be supplied on the command line. ')
-    except ValueError:
-        raise ValueError\
-        ('The avian vapor inhalation dose must be a real number,'\
-        ' not "%mg/kg"' %vid_avian)
-    except ValueError:
-        raise ValueError\
-        ('The adjusted avian inhalation LD50 must be a real number, '\
-        'not"%mg/kg"' %ld50adj_avian)
-    except ZeroDivisionError:
-        raise ZeroDivisionError\
-        ('The adjusted avian inhalation LD50 must be non-zero.')
-    if vid_avian < 0:
-        raise ValueError\
-        ('vid_avian=%g is a non-physical value.' %vid_avian)
-    if ld50adj_avian < 0:
-        raise ValueError\
-        ('ld50adj_avian=%g is a non-physical value' %ld50adj_avian)
-    return vid_avian/ld50adj_avian
-
-# Level of Concern for avian vapor phase risk
-
-def LOC_vd_avian(ratio_vd_avian):
-    if ratio_vd_avian < 0.1:
-        return ('Exposure not Likely Significant')
-    else:
-        return ('Proceed to Refinements')
-
-
-# Ratio of avian droplet inhalation dose to adjusted inhalation LD50
-
-def ratio_sid_avian(sid_avian,ld50adj_avian):
-    try:
-        sid_avian = float(sid_avian)
-        ld50adj_avian = float(ld50adj_avian)
-    except IndexError:
-        raise IndexError\
-        ('The avian spray droplet inhalation dose and/or adjusted avian inhalation LD50'\
-        ' must be supplied on the command line. ')
-    except ValueError:
-        raise ValueError\
-        ('The avian spray droplet inhalation dose must be a real number,'\
-        ' not "%mg/kg"' %sid_avian)
-    except ValueError:
-        raise ValueError\
-        ('The adjusted avian inhalation LD50 must be a real number, '\
-        'not"%mg/kg"' %ld50adj_avian)
-    except ZeroDivisionError:
-        raise ZeroDivisionError\
-        ('The adjusted avian inhalation LD50 must be non-zero.')
-    if sid_avian < 0:
-        raise ValueError\
-        ('sid_avian=%g is a non-physical value.' %sid_avian)
-    if ld50adj_avian < 0:
-        raise ValueError\
-        ('ld50adj_avian=%g is a non-physical value' %ld50adj_avian)
-    return sid_avian/ld50adj_avian
-
-# Level of Concern for avian droplet inhalation risk
-
-def LOC_sid_avian(ratio_sid_avian):
-    if ratio_sid_avian < 0.1:
-        return ('Exposure not Likely Significant')
-    else:
-        return ('Proceed to Refinements')
-
-# Ratio of mammalian vapor dose to adjusted inhalation LD50
-
-def ratio_vd_mammal(vid_mammal,ld50adj_mammal):
-    try:
-        vid_mammal = float(vid_mammal)
-        ld50adj_mammal = float(ld50adj_mammal)
-    except IndexError:
-        raise IndexError\
-        ('The mammalian vapor inhalation dose and/or adjusted mammalian'\
-        ' inhalation LD50 must be supplied on the command line. ')
-    except ValueError:
-        raise ValueError\
-        ('The mammalian vapor inhalation dose must be a real number,'\
-        ' not "%mg/kg"' %vid_mammal)
-    except ValueError:
-        raise ValueError\
-        ('The adjusted mammalian inhalation LD50 must be a real number, '\
-        'not"%mg/kg"' %ld50adj_mammal)
-    except ZeroDivisionError:
-        raise ZeroDivisionError\
-        ('The adjusted mammalian inhalation LD50 must be non-zero.')
-    if vid_mammal < 0:
-        raise ValueError\
-        ('vid_mammal=%g is a non-physical value.' %vid_mammal)
-    if ld50adj_mammal < 0:
-        raise ValueError\
-        ('ld50adj_mammal=%g is a non-physical value' %ld50adj_mammal)
-    return vid_mammal/ld50adj_mammal
-
-# Level of Concern for mammalian vapor phase risk
-
-def LOC_vd_mammal(ratio_vd_mammal):
-    if ratio_vd_mammal < 0.1:
-        return ('Exposure not Likely Significant')
-    else:
-        return ('Proceed to Refinements')
-
-
-# Ratio of mammalian droplet inhalation dose to adjusted inhalation LD50
-
-def ratio_sid_mammal(sid_mammal,ld50adj_mammal):
-    try:
-        sid_mammal = float(sid_mammal)
-        ld50adj_mammal = float(ld50adj_mammal)
-    except IndexError:
-        raise IndexError\
-        ('The mammalian spray droplet inhalation dose and/or adjusted mammalian'\
-        ' inhalation LD50 must be supplied on the command line. ')
-    except ValueError:
-        raise ValueError\
-        ('The mammalian spray droplet inhalation dose must be a real number,'\
-        ' not "%mg/kg"' %sid_mammal)
-    except ValueError:
-        raise ValueError\
-        ('The adjusted mammalian inhalation LD50 must be a real number, '\
-        'not"%mg/kg"' %ld50adj_mammal)
-    except ZeroDivisionError:
-        raise ZeroDivisionError\
-        ('The adjusted mammalian inhalation LD50 must be non-zero.')
-    if sid_mammal < 0:
-        raise ValueError\
-        ('sid_mammal=%g is a non-physical value.' %sid_mammal)
-    if ld50adj_mammal < 0:
-        raise ValueError\
-        ('ld50adj_mammal=%g is a non-physical value' %ld50adj_mammal)
-    return sid_mammal/ld50adj_mammal
-
-# Level of Concern for mammaliam droplet inhalation risk
-
-def LOC_sid_mammal(ratio_sid_mammal):
-    if ratio_sid_mammal < 0.1:
-        return ('Exposure not Likely Significant')
-    else:
-        return ('Proceed to Refinements')
+if __name__ == '__main__':
+    main()

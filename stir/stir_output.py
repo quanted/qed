@@ -23,23 +23,21 @@ class STIRExecutePage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage() 
         chemical_name = form.getvalue('chemical_name')
-        select_receptor = form.getvalue('select_receptor')
-        ar2 = form.getvalue('application_rate')
-        f_inhaled = form.getvalue('spray_drift')
-        mw = form.getvalue('molecular_weight')
-        vp = form.getvalue('vapor_pressure')
-        ld50ao = form.getvalue('avian_oral_ld50')
-        aw_avian = form.getvalue('body_weight_of_the_assessed_bird')
-        tw_avian = form.getvalue('body_weight_of_the_tested_bird')
-        mineau = form.getvalue('chemical_specific_mineau_scaling_factor')
-        aw_mammal = form.getvalue('body_weight_of_the_assessed_mammal')
-        tw_mammal = form.getvalue('body_weight_of_the_tested_mammal')
-        h = form.getvalue('height_of_direct_spray_column')
-        ddsi = form.getvalue('ddsi')
-        lc50 = form.getvalue('mammalian_inhalation_lc50')
-        dur = form.getvalue('duration_of_rat_inhalation_study')
-        ld50ri = form.getvalue('rat_inhalation_ld50')
-        ld50ro = form.getvalue('rat_oral_ld50')
+        application_rate = form.getvalue('application_rate')
+        column_height = form.getvalue('column_height')
+        spray_drift_fraction = form.getvalue('spray_drift_fraction')
+        direct_spray_duration = form.getvalue('direct_spray_duration')
+        molecular_weight = form.getvalue('molecular_weight')
+        vapor_pressure = form.getvalue('vapor_pressure')
+        avian_oral_ld50 = form.getvalue('avian_oral_ld50')
+        body_weight_assessed_bird = form.getvalue('body_weight_assessed_bird')
+        body_weight_tested_bird = form.getvalue('body_weight_tested_bird')
+        mineau_scaling_factor = form.getvalue('mineau_scaling_factor')
+        mammal_inhalation_lc50 = form.getvalue('mammal_inhalation_lc50')
+        duration_mammal_inhalation_study = form.getvalue('duration_mammal_inhalation_study')
+        body_weight_assessed_mammal = form.getvalue('body_weight_assessed_mammal')
+        body_weight_tested_mammal = form.getvalue('body_weight_tested_mammal')
+        mammal_oral_ld50 = form.getvalue('mammal_oral_ld50')
         
         text_file = open('stir/stir_description.txt','r')
         x = text_file.read()
@@ -49,211 +47,153 @@ class STIRExecutePage(webapp.RequestHandler):
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'stir', 
-                'model_attributes':'STIR Output'})    
-        html = html + """
-        <table border="1" class="out_1">
-            <tr>
-                <th colspan="3">User Inputs</th>
-            </tr>
-            <tr>
-                <td>Chemical Name</td>
-                <td>%s</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Receptor Selected</td>
-                <td>%s</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Pesticide Application Rate</td>
-                <td>%s</td>
-                <td>lbs ai/A</td>
-            </tr>
-            <tr>
-                <td>Height of Direct Spray Column</td>
-                <td>%s</td>
-                <td>m</td>
-            </tr>
-            <tr>
-                <td>Fraction of Spray Inhaled</td>
-                <td>%s</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Duration of Direct Spray Inhalation</td>
-                <td>%s</td>
-                <td>minutes</td>
-            </tr>
-            <tr>
-                <td>Molecular Weight</td>
-                <td>%s</td>
-                <td>g/mol</td>
-            </tr>
-            <tr>
-                <td>Vapor Pressure</td>
-                <td>%s</td>
-                <td>torr</td>
-            </tr>
-            <tr>
-                <td>Avian Oral LD<sub>50</sub></td>
-                <td>%s</td>
-                <td>mg/kg-bw</td>
-            </tr>
-            <tr>
-                <td>Body Weight of Assessed Bird</td>
-                <td>%s</td>
-                <td>kg</td>
-            </tr>
-            <tr>
-                <td>Chemical Specific Mineau Scaling Factor</td>
-                <td>%s</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Mammalian LC<sub>50</sub></td>
-                <td>%s</td>
-                <td>mg/kg-bw</td>
-            </tr>
-            <tr>
-                <td>Duration of Rat Inhalation Study</td>
-                <td>%s</td>
-                <td>hrs</td>
-            </tr>
-            <tr>
-                <td>Body Weight of Assessed Mammal</td>
-                <td>%s</td>
-                <td>kg</td>
-            </tr>
-            <tr>
-                <td>Rat Inhalation LD<sub>50</sub></td>
-                <td>%s</td>
-                <td>mg/kg-bw</td>
-            </tr>
-            <tr>
-                <td>Rat Oral LD<sub>50</sub></td>
-                <td>%s</td>
-                <td>mg/kg-bw</td>
-            </tr>
-        </table><br>
-        """ % (chemical_name, select_receptor, ar2, h, f_inhaled, ddsi, mw, vp, ld50ao, aw_avian, mineau, lc50, dur, aw_mammal, ld50ri, ld50ro)
+                'model_attributes':'STIR Output'})   
+        
+        def getheaderpvu():
+            headings = ["Parameter", "Value", "Units"]
+            return headings        
+        pvuheadings = getheaderpvu()
+        djtemplate = stir_tables.getdjtemplate()
+        tmpl = Template(djtemplate)
+        
+        #instantiate stir model object
+        sm = stir_model.StirModel(True,True,chemical_name,application_rate,column_height,spray_drift_fraction,direct_spray_duration, 
+            molecular_weight,vapor_pressure,avian_oral_ld50, body_weight_assessed_bird, body_weight_tested_bird, mineau_scaling_factor, 
+            mammal_inhalation_lc50,duration_mammal_inhalation_study,body_weight_assessed_mammal, body_weight_tested_mammal, 
+            mammal_oral_ld50)
 
-        html = html + """
-        <table border="1" class="out_2">
-            <tr>
-                <th colspan="3">STIR Outputs</th>
-            </tr>
-            <tr>
-                <th colspan="3">Avian (%s kg)</th>
-            </tr>
-            <tr>
-                <td>Saturated Air Concentration of Pesticide</td>
-                <td>%0.2E</td>
-                <td>mg/m<sup>3</sup></td>
-            </tr>
-            <tr>
-                <td>Avian Inhalation Rate</td>
-                <td>%0.2E</td>
-                <td>cm<sup>3</sup>/hr</td>
-            </tr>
-            <tr>
-                <td>Maximum 1-hour Avian Vapor Inhalation Dose</td>
-                <td>%0.2E</td>
-                <td>mg/kg-bw</td>
-            </tr>
-            <tr>
-                <td>Estimated Avian Inhalation LD<sub>50</sub></td>
-                <td>%0.2E</td>
-                <td>mg/kg-bw</td>
-            </tr>
-            <tr>
-                <td>Adjusted Avian Inhalation LD<sub>50</sub></td>
-                <td>%0.2E</td>
-                <td>mg/kg-bw</td>
-            </tr>
-            <tr>
-                <td>Ratio of Vapor Dose to Adjusted Inhalation LD<sub>50</sub></td>
-                <td>%0.2E</td>
-                <td><H5><font color="red">%s</font></H5></td>
-            </tr>
-            <tr>
-                <td>Spray Droplet Inhalation Dose of Assessed Bird</td>
-                <td>%0.2E</td>
-                <td>mg/kg-bw</td>
-            </tr>
-            <tr>
-                <td>Ratio of Droplet Inhalation Dose to Adjusted Inhalation LD<sub>50</sub></td>
-                <td>%0.2E</td>
-                <td><H5><font color="red">%s</font></H5></td>
-            </tr>
-            <tr>
-                <th colspan="3">Mammalian (%s kg)</th>
-            </tr>
-            <tr>
-                <td>Saturated Air Concentration of Pesticide</td>
-                <td>%0.2E</td>
-                <td>mg/m<sup>3</sup></td>
-            </tr>
-            <tr>
-                <td>Mammalian Inhalation Rate</td>
-                <td>%0.2E</td>
-                <td>cm<sup>3</sup>/hr</td>
-            </tr>
-            <tr>
-                <td>Maximum 1-hour Mammalian Vapor Inhalation Dose</td> 
-                <td>%0.2E</td>
-                <td>mg/kg</td>
-            </tr>
-            <tr>
-                <td>Conversion of Mammalian Inhalation LC<sub>50</sub> to LD<sub>50</sub></td>
-                <td>%0.2E</td>
-                <td>mg/kg-bw</td>
-            </tr>
-            <tr>
-                <td>Adjusted Mammalian Inhalation LD<sub>50</sub></td>
-                <td>%0.2E</td>
-                <td>mg/kg-bw</td>
-            </tr>
-            <tr>
-                <td>Ratio of Vapor Dose to Adjusted Inhalation LD<sub>50</sub></td>
-                <td>%0.2E</td>
-                <td><H5><font color="red">%s</font></H5></td>
-            </tr>
-            <tr>
-                <td>Spray Droplet Inhalation Dose of Assessed Mammal</td>
-                <td>%0.2E</td>
-                <td>mg/kg-bw</td>
-            </tr>
-            <tr>
-                <td>Ratio of Droplet Inhalation Dose to Adjusted Inhalation LD<sub>50</sub></td>
-                <td>%0.2E</td>
-                <td><H5><font color="red">%s</font></H5></td>
-            </tr>
-        </table>
-        """ % (aw_avian, 
-              stir_model.cs(vp,mw), 
-              stir_model.ir_avian(aw_avian), 
-              stir_model.vid_avian(stir_model.cs(vp,mw),
-              stir_model.ir_avian(aw_avian),aw_avian), 
-              stir_model.ld50est(ld50ao,ld50ri,ld50ro), 
-              stir_model.ld50adj_avian(stir_model.ld50est(ld50ao,ld50ri,ld50ro),aw_avian,tw_avian,mineau), 
-              stir_model.ratio_vd_avian(stir_model.vid_avian(stir_model.cs(vp,mw),stir_model.ir_avian(aw_avian),aw_avian),
-              stir_model.ld50adj_avian(stir_model.ld50est(ld50ao,ld50ri,ld50ro),aw_avian,tw_avian,mineau)), 
-              stir_model.LOC_vd_avian(stir_model.ratio_vd_avian(stir_model.vid_avian(stir_model.cs(vp,mw),stir_model.ir_avian(aw_avian),aw_avian),stir_model.ld50adj_avian(stir_model.ld50est(ld50ao,ld50ri,ld50ro),aw_avian,tw_avian,mineau))), 
-              stir_model.sid_avian(stir_model.c_air(ar2,h),stir_model.ir_avian(aw_avian),ddsi,f_inhaled,aw_avian),
-              stir_model.ratio_sid_avian(stir_model.sid_avian(stir_model.c_air(ar2,h),stir_model.ir_avian(aw_avian),ddsi,f_inhaled,aw_avian),stir_model.ld50adj_avian(stir_model.ld50est(ld50ao,ld50ri,ld50ro),aw_avian,tw_avian,mineau)), 
-              stir_model.LOC_sid_avian(stir_model.ratio_sid_avian(stir_model.sid_avian(stir_model.c_air(ar2,h),stir_model.ir_avian(aw_avian),ddsi,f_inhaled,aw_avian),stir_model.ld50adj_avian(stir_model.ld50est(ld50ao,ld50ri,ld50ro),aw_avian,tw_avian,mineau))), 
-              aw_mammal, 
-              stir_model.cs(vp,mw), 
-              stir_model.ir_mammal(aw_mammal), 
-              stir_model.vid_mammal(stir_model.cs(vp,mw),stir_model.ir_mammal(aw_mammal),aw_mammal), 
-              stir_model.ld50(lc50,stir_model.cf(stir_model.ir_mammal(aw_mammal),aw_mammal),dur), 
-              stir_model.ld50adj_mammal(stir_model.ld50(lc50,stir_model.cf(stir_model.ir_mammal(aw_mammal), aw_mammal),dur),tw_mammal,aw_mammal), 
-              stir_model.ratio_vd_mammal(stir_model.vid_mammal(stir_model.cs(vp,mw),stir_model.ir_mammal(aw_mammal),aw_mammal),stir_model.ld50adj_mammal(stir_model.ld50(lc50,stir_model.cf(stir_model.ir_mammal(aw_mammal), aw_mammal),dur),tw_mammal,aw_mammal)), 
-              stir_model.LOC_vd_mammal(stir_model.ratio_vd_mammal(stir_model.vid_mammal(stir_model.cs(vp,mw),stir_model.ir_mammal(aw_mammal),aw_mammal),stir_model.ld50adj_mammal(stir_model.ld50(lc50,stir_model.cf(stir_model.ir_mammal(aw_mammal), aw_mammal),dur),tw_mammal,aw_mammal))), 
-              stir_model.sid_mammal(stir_model.c_air(ar2,h),stir_model.ir_mammal(aw_mammal),ddsi,f_inhaled,aw_mammal),
-              stir_model.ratio_sid_mammal(stir_model.sid_mammal(stir_model.c_air(ar2,h),stir_model.ir_mammal(aw_mammal),ddsi,f_inhaled,aw_mammal),stir_model.ld50adj_mammal(stir_model.ld50(lc50,stir_model.cf(stir_model.ir_mammal(aw_mammal), aw_mammal),dur),tw_mammal,aw_mammal)),
-              stir_model.LOC_sid_mammal(stir_model.ratio_sid_mammal(stir_model.sid_mammal(stir_model.c_air(ar2,h),stir_model.ir_mammal(aw_mammal),ddsi,f_inhaled,aw_mammal),stir_model.ld50adj_mammal(stir_model.ld50(lc50,stir_model.cf(stir_model.ir_mammal(aw_mammal), aw_mammal),dur),tw_mammal,aw_mammal))))
+        html = html + stir_tables.table_1(pvuheadings,tmpl,sm)
+        html = html + stir_tables.table_2(pvuheadings,tmpl,sm)
+        html = html + stir_tables.table_3(pvuheadings,tmpl,sm)
+        html = html + stir_tables.table_4(pvuheadings,tmpl,sm)
+        # sat_air_conc = sm.sat_air_conc
+        # inh_rate_avian = sm.inh_rate_avian
+        # vid_avian = sm.vid_avian
+        # ld50est = sm.ld50est
+        # ld50adj = sm.ld50adj_avian
+        # ratio_vd_avian = sm.ratio_vd_avian(stir_model.vid_avian(sat_air_conc,inh_rate_avian,assessed_bw_avian),stir_model.ld50adj_avian(stir_model.ld50est(ld50ao,ld50ri,ld50ro),assessed_bw_avian,tw_avian,mineau))
+        # sid_avian = sm.sid_avian(stir_model.c_air(ar2,h),inh_rate_avian,ddsi,f_inhaled,assessed_bw_avian),
+        # ratio_sid_avian = sm.ratio_sid_avian(stir_model.sid_avian(stir_model.c_air(ar2,h),inh_rate_avian,ddsi,f_inhaled,assessed_bw_avian),stir_model.ld50adj_avian(stir_model.ld50est(ld50ao,ld50ri,ld50ro),assessed_bw_avian,tw_avian,mineau)), 
+
+        # html = html + stir_tables.table_3(pvuheadings,tmpl,sat_air_conc,inh_rate_avian,vid_avian,ld50est,ld50adj,ratio_vd_avian,sid_avian,ratio_sid_avian)
+
+        # sm.LOC_vd_avian(stir_model.ratio_vd_avian(stir_model.vid_avian(sat_air_conc,inh_rate_avian,assessed_bw_avian),stir_model.ld50adj_avian(stir_model.ld50est(ld50ao,ld50ri,ld50ro),assessed_bw_avian,tw_avian,mineau))), 
+        # sm.LOC_sid_avian(stir_model.ratio_sid_avian(stir_model.sid_avian(stir_model.c_air(ar2,h),inh_rate_avian,ddsi,f_inhaled,assessed_bw_avian),stir_model.ld50adj_avian(stir_model.ld50est(ld50ao,ld50ri,ld50ro),assessed_bw_avian,tw_avian,mineau))), 
+
+        # html = html + """
+        # <table border="1" class="out_2">
+        #     <tr>
+        #         <th colspan="3">STIR Outputs</th>
+        #     </tr>
+        #     <tr>
+        #         <th colspan="3">Avian (%s kg)</th>
+        #     </tr>
+        #     <tr>
+        #         <td>Saturated Air Concentration of Pesticide</td>
+        #         <td>%0.2E</td>
+        #         <td>mg/m<sup>3</sup></td>
+        #     </tr>
+        #     <tr>
+        #         <td>Avian Inhalation Rate</td>
+        #         <td>%0.2E</td>
+        #         <td>cm<sup>3</sup>/hr</td>
+        #     </tr>
+        #     <tr>
+        #         <td>Maximum 1-hour Avian Vapor Inhalation Dose</td>
+        #         <td>%0.2E</td>
+        #         <td>mg/kg-bw</td>
+        #     </tr>
+        #     <tr>
+        #         <td>Estimated Avian Inhalation LD<sub>50</sub></td>
+        #         <td>%0.2E</td>
+        #         <td>mg/kg-bw</td>
+        #     </tr>
+        #     <tr>
+        #         <td>Adjusted Avian Inhalation LD<sub>50</sub></td>
+        #         <td>%0.2E</td>
+        #         <td>mg/kg-bw</td>
+        #     </tr>
+        #     <tr>
+        #         <td>Ratio of Vapor Dose to Adjusted Inhalation LD<sub>50</sub></td>
+        #         <td>%0.2E</td>
+        #         <td><H5><font color="red">%s</font></H5></td>
+        #     </tr>
+        #     <tr>
+        #         <td>Spray Droplet Inhalation Dose of Assessed Bird</td>
+        #         <td>%0.2E</td>
+        #         <td>mg/kg-bw</td>
+        #     </tr>
+        #     <tr>
+        #         <td>Ratio of Droplet Inhalation Dose to Adjusted Inhalation LD<sub>50</sub></td>
+        #         <td>%0.2E</td>
+        #         <td><H5><font color="red">%s</font></H5></td>
+        #     </tr>
+        #     <tr>
+        #         <th colspan="3">Mammalian (%s kg)</th>
+        #     </tr>
+        #     <tr>
+        #         <td>Saturated Air Concentration of Pesticide</td>
+        #         <td>%0.2E</td>
+        #         <td>mg/m<sup>3</sup></td>
+        #     </tr>
+        #     <tr>
+        #         <td>Mammalian Inhalation Rate</td>
+        #         <td>%0.2E</td>
+        #         <td>cm<sup>3</sup>/hr</td>
+        #     </tr>
+        #     <tr>
+        #         <td>Maximum 1-hour Mammalian Vapor Inhalation Dose</td> 
+        #         <td>%0.2E</td>
+        #         <td>mg/kg</td>
+        #     </tr>
+        #     <tr>
+        #         <td>Conversion of Mammalian Inhalation LC<sub>50</sub> to LD<sub>50</sub></td>
+        #         <td>%0.2E</td>
+        #         <td>mg/kg-bw</td>
+        #     </tr>
+        #     <tr>
+        #         <td>Adjusted Mammalian Inhalation LD<sub>50</sub></td>
+        #         <td>%0.2E</td>
+        #         <td>mg/kg-bw</td>
+        #     </tr>
+        #     <tr>
+        #         <td>Ratio of Vapor Dose to Adjusted Inhalation LD<sub>50</sub></td>
+        #         <td>%0.2E</td>
+        #         <td><H5><font color="red">%s</font></H5></td>
+        #     </tr>
+        #     <tr>
+        #         <td>Spray Droplet Inhalation Dose of Assessed Mammal</td>
+        #         <td>%0.2E</td>
+        #         <td>mg/kg-bw</td>
+        #     </tr>
+        #     <tr>
+        #         <td>Ratio of Droplet Inhalation Dose to Adjusted Inhalation LD<sub>50</sub></td>
+        #         <td>%0.2E</td>
+        #         <td><H5><font color="red">%s</font></H5></td>
+        #     </tr>
+        # </table>
+        # """ % (assessed_bw_avian, 
+        #       sat_air_conc, 
+        #       inh_rate_avian, 
+        #       stir_model.vid_avian(sat_air_conc,stir_model.ir_avian(assessed_bw_avian),assessed_bw_avian), 
+        #       stir_model.ld50est(ld50ao,ld50ri,ld50ro), 
+        #       stir_model.ld50adj_avian(stir_model.ld50est(ld50ao,ld50ri,ld50ro),assessed_bw_avian,tw_avian,mineau), 
+        #       stir_model.ratio_vd_avian(stir_model.vid_avian(sat_air_conc,inh_rate_avian,assessed_bw_avian),stir_model.ld50adj_avian(stir_model.ld50est(ld50ao,ld50ri,ld50ro),assessed_bw_avian,tw_avian,mineau)), 
+        #       stir_model.LOC_vd_avian(stir_model.ratio_vd_avian(stir_model.vid_avian(sat_air_conc,inh_rate_avian,assessed_bw_avian),stir_model.ld50adj_avian(stir_model.ld50est(ld50ao,ld50ri,ld50ro),assessed_bw_avian,tw_avian,mineau))), 
+        #       stir_model.sid_avian(stir_model.c_air(ar2,h),inh_rate_avian,ddsi,f_inhaled,assessed_bw_avian),
+        #       stir_model.ratio_sid_avian(stir_model.sid_avian(stir_model.c_air(ar2,h),inh_rate_avian,ddsi,f_inhaled,assessed_bw_avian),stir_model.ld50adj_avian(stir_model.ld50est(ld50ao,ld50ri,ld50ro),assessed_bw_avian,tw_avian,mineau)), 
+        #       stir_model.LOC_sid_avian(stir_model.ratio_sid_avian(stir_model.sid_avian(stir_model.c_air(ar2,h),inh_rate_avian,ddsi,f_inhaled,assessed_bw_avian),stir_model.ld50adj_avian(stir_model.ld50est(ld50ao,ld50ri,ld50ro),assessed_bw_avian,tw_avian,mineau))), 
+        #       aw_mammal, 
+        #       sat_air_conc, 
+        #       stir_model.ir_mammal(aw_mammal), 
+        #       stir_model.vid_mammal(sat_air_conc,stir_model.ir_mammal(aw_mammal),aw_mammal), 
+        #       stir_model.ld50(lc50,stir_model.cf(stir_model.ir_mammal(aw_mammal),aw_mammal),dur), 
+        #       stir_model.ld50adj_mammal(stir_model.ld50(lc50,stir_model.cf(stir_model.ir_mammal(aw_mammal), aw_mammal),dur),tw_mammal,aw_mammal), 
+        #       stir_model.ratio_vd_mammal(stir_model.vid_mammal(sat_air_conc,stir_model.ir_mammal(aw_mammal),aw_mammal),stir_model.ld50adj_mammal(stir_model.ld50(lc50,stir_model.cf(stir_model.ir_mammal(aw_mammal), aw_mammal),dur),tw_mammal,aw_mammal)), 
+        #       stir_model.LOC_vd_mammal(stir_model.ratio_vd_mammal(stir_model.vid_mammal(sat_air_conc,stir_model.ir_mammal(aw_mammal),aw_mammal),stir_model.ld50adj_mammal(stir_model.ld50(lc50,stir_model.cf(stir_model.ir_mammal(aw_mammal), aw_mammal),dur),tw_mammal,aw_mammal))), 
+        #       stir_model.sid_mammal(stir_model.c_air(ar2,h),stir_model.ir_mammal(aw_mammal),ddsi,f_inhaled,aw_mammal),
+        #       stir_model.ratio_sid_mammal(stir_model.sid_mammal(stir_model.c_air(ar2,h),stir_model.ir_mammal(aw_mammal),ddsi,f_inhaled,aw_mammal),stir_model.ld50adj_mammal(stir_model.ld50(lc50,stir_model.cf(stir_model.ir_mammal(aw_mammal), aw_mammal),dur),tw_mammal,aw_mammal)),
+        #       stir_model.LOC_sid_mammal(stir_model.ratio_sid_mammal(stir_model.sid_mammal(stir_model.c_air(ar2,h),stir_model.ir_mammal(aw_mammal),ddsi,f_inhaled,aw_mammal),stir_model.ld50adj_mammal(stir_model.ld50(lc50,stir_model.cf(stir_model.ir_mammal(aw_mammal), aw_mammal),dur),tw_mammal,aw_mammal))))
 
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})

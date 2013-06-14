@@ -1,0 +1,51 @@
+<script type="text/javascript" src=" ../stylesheets/jquery.validate.js"></script>
+<script language="javascript">
+function openid_login(form)/*function to check userid & password*/
+{
+	var form_openid_identifier = form.openid_identifier.value;
+	var form_data = {'openid_identifier':form_userid};
+	var json_data = JSON.stringify(form_data);
+	$.ajax({
+		url:"http://localhost:3000/auth/openid",
+		async: false,
+		type: 'POST',
+		data: json_data,
+		success: function(decision_data) {
+			 if(decision_data.decision)
+			  {
+			  	alert("Logged in correctly	")/*displays error message*/
+			    window.location = "user.html" /*opens the target page while Id & password matches*/
+			  }
+			 else
+			 {
+			   alert("Error Password or Username")/*displays error message*/
+			 }
+		}
+	});
+
+}
+function digest_login(form)/*function to check userid & password*/
+{
+	var form_userid = form.userid.value;
+	var form_password = form.pswrd.value;
+	var form_data = {'userid':form_userid,'password':form_password};
+	var json_data = JSON.stringify(form_data);
+	$.ajax({
+		url:"/login",
+		async: false,
+		type: 'POST',
+		data: json_data,
+		success: function(decision_data) {
+			 if(decision_data.decision)
+			  {
+			    window.location = "user.html" /*opens the target page while Id & password matches*/
+			  }
+			 else
+			 {
+			   alert("Error Password or Username")/*displays error message*/
+			 }
+		}
+	});
+
+}
+</script>

@@ -26,7 +26,7 @@ EPA Development of Conceptual Models</a></li>
 </ul>
 <p>
 Presentations/posters/abstracts/reports on the subject of EPA's ecological risk assessment models, including SIP.
-</p>s
+</p>
 <ul class="bullet">
   <li><a href="http://www.agrodiv.org/documents/denver11/Endangered%20Species%20Act%20and%20Regulation/AGRO219_Odenkirchen_Edward.pdf">Advancements in Endangered Species Act Effects Determination
 	for Pesticide Registration Actions, Ed Odenkirchen (USEPA)</a></li>

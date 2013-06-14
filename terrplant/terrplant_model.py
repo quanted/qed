@@ -12,7 +12,7 @@ def fromJSON(json_string):
 
 class terrplant:
 
-    def __init__(self,set_variables=True,run_methods=True,A=1,I=1,R=1,D=1,nms=1,lms=1,nds=1,lds=1,vars_dict=None):
+    def __init__(self,set_variables=True,run_methods=True,A=1,I=1,R=1,D=1,nms=1,lms=1,nds=1,lds=1,vars_dict=None,):
         self.set_default_variables()
         if set_variables:
             if vars_dict != None:
@@ -75,6 +75,24 @@ class terrplant:
         self.LOCldssemi_results = ''
         self.ldsRQspray_results = -1
         self.LOCldsspray_results = ''
+
+        self.rundry_results_expected = -1
+        self.runsemi_results_expected = -1
+        self.spray_results_expected = -1
+        self.totaldry_results_expected = -1
+        self.totalsemi_results_expected = -1       
+        self.nmsRQdry_results_expected = -1
+        self.nmsRQsemi_results_expected = -1
+        self.nmsRQspray_results_expected = -1
+        self.lmsRQdry_results_expected = -1
+        self.lmsRQsemi_results_expected = -1
+        self.lmsRQspray_results_expected = -1
+        self.ndsRQdry_results_expected = -1
+        self.ndsRQsemi_results_expected = -1
+        self.ndsRQspray_results_expected = -1
+        self.ldsRQdry_results_expected = -1
+        self.ldsRQsemi_results_expected = -1
+        self.ldsRQspray_results_expected = -1
 
     def __str__(self):
         string_rep = ''

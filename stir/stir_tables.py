@@ -125,9 +125,9 @@ def gett3data(sm):
           'Estimated Avian Inhalation LD50','Adjusted Avian Inhalation LD50','Ratio of Vapor Dose to Adjusted Inhalation LD50',
           'Spray Droplet Inhalation Dose of Assessed Bird','Ratio of Droplet Inhalation Dose to Adjusted Inhalation LD50',],
         #"Value": [cs,ir_avian,vid_avian,ld50est,ld50adj,ratio_vd_avian,sid_avian,ratio_sid_avian,],
-        "Value": [sm.sat_air_conc,sm.inh_rate_avian,sm.vid_avian,
-            sm.estimated_avian_inhalation_ld50,sm.adjusted_avian_inhalation_ld50,sm.ratio_vid_avian,
-            sm.sid_avian,sm.ratio_sid_avian,],
+        "Value": ['%.2e' % sm.sat_air_conc,'%.2e' % sm.inh_rate_avian,'%.2e' % sm.vid_avian,
+            '%.2e' % sm.estimated_avian_inhalation_ld50,'%.2e' % sm.adjusted_avian_inhalation_ld50,'%.2e' % sm.ratio_vid_avian,
+            '%.2e' % sm.sid_avian,'%.2e' % sm.ratio_sid_avian,],
         "Units": ['mg/m3','cm3/hr','mg/kg-bw','mg/kg-bw','mg/kg-bw','unitless','mg/kg-bw','unitless',],
     }
     return data
@@ -144,7 +144,6 @@ def table_4(pvuheadings, tmpl, sm):
     html = html + tmpl.render(Context(dict(data=t4rows, headings=pvuheadings)))
     html = html + """
         </div>
-        </div>
         """
     return html
 
@@ -153,10 +152,35 @@ def gett4data(sm):
         "Parameter": ['Saturated Air Concentration of Pesticide','Mammal Inhalation Rate','Maximum 1-hour Mammal Vapor Inhalation Dose',
           'Mammal Inhalation LD50','Adjusted Mammal Inhalation LD50','Ratio of Vapor Dose to Adjusted Inhalation LD50',
           'Spray Droplet Inhalation Dose of Assessed Mammal','Ratio of Droplet Inhalation Dose to Adjusted Inhalation LD50',],
-        "Value": [sm.sat_air_conc,sm.inh_rate_mammal,sm.vid_mammal,
-            sm.mammal_inhalation_ld50,sm.adjusted_mammal_inhalation_ld50,sm.ratio_vid_mammal,
-            sm.sid_mammal,sm.ratio_sid_mammal,],
+        "Value": ['%.2e' % sm.sat_air_conc,'%.2e' % sm.inh_rate_mammal,'%.2e' % sm.vid_mammal,
+            '%.2e' % sm.mammal_inhalation_ld50,'%.2e' % sm.adjusted_mammal_inhalation_ld50,'%.2e' % sm.ratio_vid_mammal,
+            '%.2e' % sm.sid_mammal,'%.2e' % sm.ratio_sid_mammal,],
         "Units": ['mg/m3','cm3/hr','mg/kg-bw','mg/kg-bw','mg/kg-bw','unitless','mg/kg-bw','unitless',],
+    }
+    return data
+
+def table_5(pvuheadings, tmpl, sm):
+    # #pre-table 5
+    html = """
+            <H4 class="out_5 collapsible" id="section5"><span></span>Table 5. Inference</H4>
+                <div class="out_ container_output">
+    """
+    #table 3
+    t5data = gett5data(sm)
+    t5rows = gethtmlrowsfromcols(t5data,pvuheadings)
+    html = html + tmpl.render(Context(dict(data=t5rows, headings=pvuheadings)))
+    html = html + """
+        </div>
+        </div>
+        """
+    return html
+
+def gett5data(sm):
+    data = { 
+        "Parameter": ['Avian: Ratio of Vapor Dose to Adjusted Inhalation LD50','Avian: Ratio of Droplet Dose to Adjusted Inhalation LD50',
+          'Mammal: Ratio of Vapor Dose to Adjusted Inhalation LD50','Mammal: Ratio of Droplet Dose to Adjusted Inhalation LD50',],
+        "Value": ['%.2e' % sm.ratio_vid_avian,'%.2e' % sm.ratio_sid_avian,'%.2e' % sm.ratio_vid_mammal,'%.2e' % sm.ratio_sid_mammal,],
+        "Results": [sm.loc_vid_avian,sm.loc_sid_avian,sm.loc_vid_mammal,sm.loc_sid_mammal,],
     }
     return data
 

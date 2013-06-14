@@ -3,12 +3,6 @@
 <!-- "Click" Menus -->
 <script type="text/javascript">
 $( document ).ready(function() {
-	$(".articles a").hover(function(){
-			$(this).stop().animate({ color:'#FFA500' },500);
-		}, function(){
-			$(this).stop().animate({ color:'#79973F' },500);
-	});
-
 	$('a#{{model}}').removeClass('fadeMenu').addClass('aSelected');
 	$('#output_tab').css('display', (pathSlice == '{{model}}_output') ? 'inline' : 'none');
     

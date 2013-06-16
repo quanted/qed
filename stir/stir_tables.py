@@ -2,6 +2,8 @@ import numpy as np
 #import django
 from django.template import Context, Template
 from django.utils.safestring import mark_safe
+import time
+import datetime
 
 def getheaderpvu():
 	headings = ["Parameter", "Value", "Units"]
@@ -45,6 +47,16 @@ def getdjtemplate():
     </table>
     """
     return dj_template
+
+def timestamp():
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S %p')
+    html="""
+    <b>STIR Version 1.0 (Beta)<br>
+    """
+    html = html + st
+    html = html + " (UTC)</b>"
+    return html
 
 def table_1(pvuheadings, tmpl, sm):
     #chemical_name, ar2, h, f_inhaled, ddsi, mw, vp

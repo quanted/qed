@@ -60,6 +60,7 @@ class STIRExecutePage(webapp.RequestHandler):
             mammal_inhalation_lc50,duration_mammal_inhalation_study,body_weight_assessed_mammal, body_weight_tested_mammal, 
             mammal_oral_ld50)
 
+        html = html +stir_tables.timestamp()
         html = html + stir_tables.table_1(pvuheadings,tmpl,sm)
         html = html + stir_tables.table_2(pvuheadings,tmpl,sm)
         html = html + stir_tables.table_3(pvuheadings,tmpl,sm)

@@ -1,45 +1,42 @@
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import math
-
+import numpy
 
 class iec(object):
-    # def __init__(self, set_variables=True,run_methods=True,dose_response=1,LC50=1,threshold=1,vars_dict=None):
-    #     self.set_default_variables()
-    #     if set_variables:
-    #         if vars_dict != None:
-    #             self.__dict__.update(vars_dict)
-    #         else:
-    #             self.set_variables(dose_response,LC50,threshold)
-    #         if run_methods:
-    #             self.run_methods()
+    def __init__(self, set_variables=True,run_methods=True,dose_response=1,LC50=1,threshold=1,vars_dict=None):
+        self.set_default_variables()
+        if set_variables:
+            if vars_dict != None:
+                self.__dict__.update(vars_dict)
+            else:
+                self.set_variables(dose_response,LC50,threshold)
+            if run_methods:
+                self.run_methods()
 
-    def __init__(self,dose_response,LC50,threshold):
-        self.dose_response = dose_response
-        self.LC50 = LC50
-        self.threshold = threshold
-        self.run_methods()
-
-    # def set_variables(self, dose_response,LC50,threshold):
+    # def __init__(self,dose_response,LC50,threshold):
     #     self.dose_response = dose_response
     #     self.LC50 = LC50
     #     self.threshold = threshold
+    #     self.run_methods()
 
-    # def set_default_variables(self):
-    #     self.dose_response = -1
-    #     self.LC50 = -1
-    #     self.threshold = -1
-    #     self.z_score_f_out = -1
-    #     self.F8_f_out = -1
-    #     self.chance_f_out = -1
-        #
-        #"_out" need to be added to ea. fun. as expection catching
-        #
+    def set_variables(self, dose_response,LC50,threshold):
+        self.dose_response = dose_response
+        self.LC50 = LC50
+        self.threshold = threshold
 
-    # def set_unit_testing_variables(self):
-    #     z_score_f_out_expected = None
-    #     F8_f_out_expected = None
-    #     chance_f_out_expected = None
+    def set_default_variables(self):
+        self.dose_response = -1
+        self.LC50 = -1
+        self.threshold = -1
+        self.z_score_f_out = -1
+        self.F8_f_out = -1
+        self.chance_f_out = -1
+
+    def set_unit_testing_variables(self):
+        self.z_score_f_out_expected = None
+        self.F8_f_out_expected = None
+        self.chance_f_out_expected = None
 
 
     # def __str__(self):
@@ -56,6 +53,13 @@ class iec(object):
         self.chance_f()
 
     def z_score_f(self):
+        try:
+            self.dose_response = float(self.dose_response)
+            self.LC50 = float(self.LC50)
+            self.threshold = float(self.threshold)
+        except IndexError:
+            raise IndexError\
+            ('There is something wrong with the inputs')
         if self.dose_response < 0:
             raise ValueError\
             ('self.dose_response=%g is a non-physical value.' % self.dose_response)

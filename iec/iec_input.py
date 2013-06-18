@@ -8,7 +8,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import django
 from django import forms
-from iec import iecdb
+from iec import iec_parameters
 
 class iecInputPage(webapp.RequestHandler):
     def get(self):
@@ -21,7 +21,7 @@ class iecInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start.html', {
                 'model':'iec', 
                 'model_attributes':'IEC Inputs'})
-        html = html + str(iecdb.iecInp())
+        html = html + str(iec_parameters.iecInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

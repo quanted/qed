@@ -312,6 +312,7 @@ class sipQaqcPage(webapp.RequestHandler):
         html = html + sip_tables.table_all_qaqc(sip_obj)
 
 #        html = html =
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         #html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

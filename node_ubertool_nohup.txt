@@ -97,28 +97,6 @@ Opened MongoDb connection.
 Opened MongoDb connection.
 Opened MongoDb connection.
 Opened MongoDb connection.
-user id: chancebatwalrus
-{ userid: 'chancebatwalrus',
-  pswrd: '@1977Flyers',
-  email_address: 'chancebatwalrus@gmail.com' }
-password: @1977Flyers
-email address: chancebatwalrus@gmail.com
-Registering User
-Getting Batch Names
-{ 'batch-1369110072000': 'Tue May 21 2013 00:21:12 GMT-0400 (EDT)',
-  'batch-1369110473448': 'Tue May 21 2013 00:27:53 GMT-0400 (EDT)',
-  'batch-1369110523680': 'Tue May 21 2013 00:28:43 GMT-0400 (EDT)',
-  'batch-1369111533000': 'Tue May 21 2013 00:45:33 GMT-0400 (EDT)',
-  'batch-1369141781641': 'Tue May 21 2013 09:09:41 GMT-0400 (EDT)',
-  'batch-1369142120489': 'Tue May 21 2013 09:15:20 GMT-0400 (EDT)',
-  'batch-1369140501070': 'Tue May 21 2013 08:48:21 GMT-0400 (EDT)' }
-user id: chancebatwalrus
-{ userid: 'chancebatwalrus',
-  pswrd: '@1977Flyers',
-  email_address: 'chancebatwalrus@gmail.com' }
-password: @1977Flyers
-email address: chancebatwalrus@gmail.com
-Registering User
 Getting Batch Names
 { 'batch-1369110072000': 'Tue May 21 2013 00:21:12 GMT-0400 (EDT)',
   'batch-1369110473448': 'Tue May 21 2013 00:27:53 GMT-0400 (EDT)',

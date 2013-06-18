@@ -70,8 +70,8 @@ def gett1data(sip_obj):
 def gett2data(sip_obj):
     data = { 
         "Parameter": ['Upper Bound Exposure', 'Adjusted Toxicity Value', 'Ratio of Exposure to Toxicity', 'Conclusion',],
-        "Acute": ['%.2e' % sip_obj.acute_mamm, '%.2e' % sip_obj.at_mamm, '%.2e' % sip_obj.acute_mamm, '%s' % sip_obj.acuconm,],
-        "Chronic": ['%.2e' % sip_obj.dose_mamm, '%.2e' % sip_obj.act, '%.2e' % sip_obj.chron_mamm, '%s' % sip_obj.chronconm,],
+        "Acute": ['%.2e' % sip_obj.acute_mamm_out, '%.2e' % sip_obj.at_mamm_out, '%.2e' % sip_obj.acute_mamm_out, '%s' % sip_obj.acuconm_out,],
+        "Chronic": ['%.2e' % sip_obj.dose_mamm_out, '%.2e' % sip_obj.act_out, '%.2e' % sip_obj.chron_mamm_out, '%s' % sip_obj.chronconm_out,],
         "Units": ['mg/kg-bw', 'mg/kg-bw', '', '',],
     }
     return data
@@ -91,8 +91,8 @@ def gett2dataqaqc(sip_obj):
 def gett3data(sip_obj):
     data = { 
         "Parameter": ['Upper Bound Exposure', 'Adjusted Toxicity Value', 'Ratio of Exposure to Toxicity', 'Conclusion',],
-        "Acute": ['%.2e' % sip_obj.acute_bird, '%.2e' % sip_obj.at_bird,'%.2e' % sip_obj.acute_bird, '%s' % sip_obj.acuconb,],
-        "Chronic": ['%.2e' % sip_obj.dose_bird, '%.2e' % sip_obj.det,'%.2e' % sip_obj.chron_bird, '%s' % sip_obj.chronconb,],
+        "Acute": ['%.2e' % sip_obj.acute_bird_out, '%.2e' % sip_obj.at_bird_out,'%.2e' % sip_obj.acute_bird_out, '%s' % sip_obj.acuconb_out,],
+        "Chronic": ['%.2e' % sip_obj.dose_bird_out, '%.2e' % sip_obj.det_out,'%.2e' % sip_obj.chron_bird_out, '%s' % sip_obj.chronconb_out,],
         "Units": ['mg/kg-bw', 'mg/kg-bw', '', '',],
     }
     return data
@@ -108,9 +108,72 @@ def gett3dataqaqc(sip_obj):
     }
     return data
 
-def getheadersum():
-    headings = ["Parameter", "Mean", "Std", "Min", "Max", "Unit"]
-    return headings
+def gettsumdata(bw_bird, bw_mamm, avian_ld50, mammalian_ld50, sol, aw_bird, tw_bird, mineau,
+                    aw_mamm, tw_mamm, avian_noaec, avian_noael, mammalian_noaec, mammalian_noael):
+    data = { 
+        "Parameter": ['BW Bird', 'BW Mammalian', 'Avian LD50', 'Mammalian LD50', 
+                    'Solubility','AW Bird', 'TW Bird', 'Mineau', 'AW Mammalian', 'TW Mammalian',
+                    'NOAEL for Avian','Noaec for Avian', 'NOAEL for Mammal','Noaec for Mammal'],
+        "Mean": ['%.2e' % numpy.mean(bw_bird),'%.2e' % numpy.mean(bw_mamm),'%.2e' % numpy.mean(avian_ld50), '%.2e' % numpy.mean(mammalian_ld50), 
+                 '%.2e' % numpy.mean(sol), '%.2e' % numpy.mean(aw_bird), '%.2e' % numpy.mean(tw_bird), '%.2e' % numpy.mean(mineau),
+                 '%.2e' % numpy.mean(aw_mamm), '%.2e' % numpy.mean(tw_mamm), '%.2e' % numpy.mean(avian_noaec),
+                 '%.2e' % numpy.mean(avian_noael), '%.2e' % numpy.mean(mammalian_noaec), '%.2e' % numpy.mean(mammalian_noael),],
+        "Std": ['%.2e' % numpy.std(bw_bird),'%.2e' % numpy.std(bw_mamm),'%.2e' % numpy.std(avian_ld50), '%.2e' % numpy.std(mammalian_ld50), 
+                '%.2e' % numpy.std(sol), '%.2e' % numpy.std(aw_bird), '%.2e' % numpy.std(tw_bird), '%.2e' % numpy.std(mineau),
+                 '%.2e' % numpy.std(aw_mamm), '%.2e' % numpy.std(tw_mamm), '%.2e' % numpy.std(avian_noaec),
+                 '%.2e' % numpy.std(avian_noael), '%.2e' % numpy.std(mammalian_noaec), '%.2e' % numpy.std(mammalian_noael),],
+        "Min": ['%.2e' % numpy.min(bw_bird),'%.2e' % numpy.min(bw_mamm),'%.2e' % numpy.min(avian_ld50), '%.2e' % numpy.min(mammalian_ld50), 
+                '%.2e' % numpy.min(sol), '%.2e' % numpy.min(aw_bird), '%.2e' % numpy.min(tw_bird), '%.2e' % numpy.min(mineau),
+                 '%.2e' % numpy.min(aw_mamm), '%.2e' % numpy.min(tw_mamm), '%.2e' % numpy.min(avian_noaec),
+                 '%.2e' % numpy.min(avian_noael), '%.2e' % numpy.min(mammalian_noaec), '%.2e' % numpy.min(mammalian_noael),],
+         "Max": ['%.2e' % numpy.max(bw_bird),'%.2e' % numpy.max(bw_mamm),'%.2e' % numpy.max(avian_ld50), '%.2e' % numpy.max(mammalian_ld50), 
+                '%.2e' % numpy.max(sol), '%.2e' % numpy.max(aw_bird), '%.2e' % numpy.max(tw_bird), '%.2e' % numpy.max(mineau),
+                 '%.2e' % numpy.max(aw_mamm), '%.2e' % numpy.max(tw_mamm), '%.2e' % numpy.max(avian_noaec),
+                 '%.2e' % numpy.max(avian_noael), '%.2e' % numpy.max(mammalian_noaec), '%.2e' % numpy.max(mammalian_noael),],
+        "Unit": ['', '', '', '', '','', '', '','', '', '','', '', '',],
+    }
+    return data
+
+def gettsumdata_out(fw_bird_out, fw_mamm_out, dose_bird_out, dose_mamm_out, at_bird_out, 
+                    at_mamm_out, fi_bird_out, det_out, 
+                    act_out, acute_bird_out, acute_mamm_out, 
+                    chron_bird_out, chron_mamm_out):
+    data = { 
+        "Parameter": ['Runoff to Dry Areas', 'Runoff to Semi-Aquatic Areas', 'Spray Drift',
+                    'Total to Dry Areas', 'Total to Semi-Aquatic Areas',
+                    'Risk Quotient for non-listed monocot seedlings exposed to pesticide X in a dry area',
+                    'Risk Quotient for non-listed monocot seedlings exposed to Pesticide X in a semi-aquatic area',
+                    'Risk Quotient for non-listed monocot seedlings exposed to Pesticide X via spray drift',
+                    'Risk Quotient for listed monocot seedlings exposed to Pesticide X in a dry areas',
+                    'Risk Quotient for listed monocot seedlings exposed to Pesticide X in a semi-aquatic area',
+                    'Risk Quotient for listed monocot seedlings exposed to Pesticide X via spray drift',
+                    'Risk Quotient for non-listed dicot seedlings exposed to Pesticide X in dry areas',
+                    'Risk Quotient for non-listed dicot seedlings exposed to Pesticide X in semi-aquatic areas',],
+
+        "Mean": [
+                 '%.2e' % numpy.mean(fw_bird_out), '%.2e' % numpy.mean(fw_mamm_out), '%.2e' % numpy.mean(dose_bird_out), '%.2e' % numpy.mean(dose_mamm_out), '%.2e' % numpy.mean(at_bird_out),
+                 '%.2e' % numpy.mean(at_mamm_out), '%.2e' % numpy.mean(fi_bird_out), '%.2e' % numpy.mean(det_out),
+                 '%.2e' % numpy.mean(act_out), '%.2e' % numpy.mean(acute_bird_out), '%.2e' % numpy.mean(acute_mamm_out),
+                 '%.2e' % numpy.mean(chron_bird_out), '%.2e' % numpy.mean(chron_mamm_out),],
+
+        "Std": ['%.2e' % numpy.std(fw_bird_out), '%.2e' % numpy.std(fw_mamm_out), '%.2e' % numpy.std(dose_bird_out), '%.2e' % numpy.std(dose_mamm_out), '%.2e' % numpy.std(at_bird_out),
+                '%.2e' % numpy.std(at_mamm_out), '%.2e' % numpy.std(fi_bird_out), '%.2e' % numpy.std(det_out),
+                '%.2e' % numpy.std(act_out), '%.2e' % numpy.std(acute_bird_out), '%.2e' % numpy.std(acute_mamm_out),
+                '%.2e' % numpy.std(chron_bird_out), '%.2e' % numpy.std(chron_mamm_out),],
+
+        "Min": ['%.2e' % numpy.min(fw_bird_out), '%.2e' % numpy.min(fw_mamm_out), '%.2e' % numpy.min(dose_bird_out), '%.2e' % numpy.min(dose_mamm_out), '%.2e' % numpy.min(at_bird_out),
+                '%.2e' % numpy.min(at_mamm_out), '%.2e' % numpy.min(fi_bird_out), '%.2e' % numpy.min(det_out),
+                '%.2e' % numpy.min(act_out), '%.2e' % numpy.min(acute_bird_out), '%.2e' % numpy.min(acute_mamm_out),
+                '%.2e' % numpy.min(chron_bird_out), '%.2e' % numpy.min(chron_mamm_out),],
+
+         "Max": ['%.2e' % numpy.max(fw_bird_out), '%.2e' % numpy.max(fw_mamm_out), '%.2e' % numpy.max(dose_bird_out), '%.2e' % numpy.min(dose_mamm_out), '%.2e' % numpy.min(at_bird_out),
+                '%.2e' % numpy.max(at_mamm_out), '%.2e' % numpy.max(fi_bird_out), '%.2e' % numpy.min(det_out),
+                '%.2e' % numpy.max(act_out), '%.2e' % numpy.max(acute_bird_out), '%.2e' % numpy.min(acute_mamm_out),
+                '%.2e' % numpy.max(chron_bird_out), '%.2e' % numpy.max(chron_mamm_out),],
+
+        "Unit": ['', '','', '', '', '', '','', '', '', '', '','',],
+    }
+    return data
 
 
 pvuheadings = getheaderpvu()
@@ -261,4 +324,53 @@ def table_3_qaqc(sip_obj):
                 </div>
         </div>
         """
+        return html
+
+
+def table_all_sum(sumheadings, tmpl, bw_bird, bw_mamm, avian_ld50, mammalian_ld50, sol, aw_bird, tw_bird, mineau,
+                    aw_mamm, tw_mamm, avian_noaec, avian_noael, mammalian_noaec, mammalian_noael,
+                    fw_bird_out, fw_mamm_out, dose_bird_out, dose_mamm_out, at_bird_out, 
+                    at_mamm_out, fi_bird_out, det_out, 
+                    act_out, acute_bird_out, acute_mamm_out, 
+                    chron_bird_out, chron_mamm_out):
+    html_all_sum = table_sum_input(sumheadings, tmpl, bw_bird, bw_mamm, avian_ld50, mammalian_ld50, sol, aw_bird, tw_bird, 
+                    mineau, aw_mamm, tw_mamm, avian_noaec, avian_noael, mammalian_noaec, mammalian_noael)
+    html_all_sum += table_sum_output(sumheadings, tmpl, fw_bird_out, fw_mamm_out, dose_bird_out, dose_mamm_out, at_bird_out, 
+                    at_mamm_out, fi_bird_out, det_out, 
+                    act_out, acute_bird_out, acute_mamm_out, 
+                    chron_bird_out, chron_mamm_out)
+    return html_all_sum
+
+def table_sum_input(sumheadings, tmpl, bw_bird, bw_mamm, avian_ld50, mammalian_ld50, sol, aw_bird, tw_bird, mineau,
+                    aw_mamm, tw_mamm, avian_noaec, avian_noael, mammalian_noaec, mammalian_noael):
+        #pre-table sum_input
+        html = """
+        <table border="1" border="1" class="out_1">
+        <tr><td><H3>Summary Statistics</H3></td></tr>
+        <tr></tr>
+        </table>
+        """
+        #table sum_input
+        tsuminputdata = gettsumdata(bw_bird, bw_mamm, avian_ld50, mammalian_ld50, sol, aw_bird, tw_bird, mineau,
+                    aw_mamm, tw_mamm, avian_noaec, avian_noael, mammalian_noaec, mammalian_noael)
+        tsuminputrows = gethtmlrowsfromcols(tsuminputdata, sumheadings)
+        html = html + tmpl.render(Context(dict(data=tsuminputrows, headings=sumheadings)))
+        return html
+
+def table_sum_output(sumheadings, tmpl, fw_bird_out, fw_mamm_out, dose_bird_out, dose_mamm_out, at_bird_out, 
+                    at_mamm_out, fi_bird_out, det_out, 
+                    act_out, acute_bird_out, acute_mamm_out, 
+                    chron_bird_out, chron_mamm_out):
+
+        #pre-table sum_input
+        html = """
+        <br>
+        """
+        #table sum_input
+        tsumoutputdata = gettsumdata_out(fw_bird_out, fw_mamm_out, dose_bird_out, dose_mamm_out, at_bird_out, 
+                    at_mamm_out, fi_bird_out, det_out, 
+                    act_out, acute_bird_out, acute_mamm_out, 
+                    chron_bird_out, chron_mamm_out)
+        tsumoutputrows = gethtmlrowsfromcols(tsumoutputdata, sumheadings)
+        html = html + tmpl.render(Context(dict(data=tsumoutputrows, headings=sumheadings)))
         return html

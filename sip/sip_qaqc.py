@@ -21,6 +21,7 @@ logger = logging.getLogger('SIPQaqcPage')
 
 cwd= os.getcwd()
 data = csv.reader(open(cwd+'/sip/sip_qaqc.csv'))
+chemical_name = []
 bw_bird=[]
 bw_mamm=[]
 avian_ld50=[]
@@ -57,37 +58,38 @@ chronconm_out = []
 
 data.next()
 for row in data:
-    bw_bird.append(float(row[0]))
-    bw_mamm.append(float(row[1]))  
-    sol.append(float(row[2]))
-    avian_ld50.append(float(row[3])) 
-    mammalian_ld50.append(float(row[4]))
-    aw_bird.append(float(row[5]))
-    tw_bird.append(float(row[6])) 
-    mineau.append(float(row[7]))
-    aw_mamm.append(float(row[8]))
-    tw_mamm.append(float(row[9]))
-    avian_noaec.append(float(row[10])) 
-    avian_noael.append(float(row[11]))
-    mammalian_noaec.append(float(row[12]))
-    mammalian_noael.append(float(row[13])) 
-    fw_bird_out.append(float(row[14]))
-    fw_mamm_out.append(float(row[15]))
-    dose_bird_out.append(float(row[16]))
-    dose_mamm_out.append(float(row[17])) 
-    at_bird_out.append(float(row[18]))
-    at_mamm_out.append(float(row[19]))
-    fi_bird_out.append(str(row[20])) 
-    det_out.append(float(row[21]))
-    act_out.append(float(row[22]))
-    acute_bird_out.append(float(row[23]))
-    acuconb_out.append(str(row[24])) 
-    acute_mamm_out.append(float(row[25]))
-    acuconm_out.append(str(row[26]))
-    chron_bird_out.append(float(row[27])) 
-    chronconb_out.append(str(row[28]))
-    chron_mamm_out.append(float(row[29]))
-    chronconm_out.append(str(row[30]))
+    chemical_name.append(str(row[0]))
+    bw_bird.append(float(row[1]))
+    bw_mamm.append(float(row[2]))  
+    sol.append(float(row[3]))
+    avian_ld50.append(float(row[4])) 
+    mammalian_ld50.append(float(row[5]))
+    aw_bird.append(float(row[6]))
+    tw_bird.append(float(row[7])) 
+    mineau.append(float(row[8]))
+    aw_mamm.append(float(row[9]))
+    tw_mamm.append(float(row[10]))
+    avian_noaec.append(float(row[11])) 
+    avian_noael.append(float(row[12]))
+    mammalian_noaec.append(float(row[13]))
+    mammalian_noael.append(float(row[14])) 
+    fw_bird_out.append(float(row[15]))
+    fw_mamm_out.append(float(row[16]))
+    dose_bird_out.append(float(row[17]))
+    dose_mamm_out.append(float(row[18])) 
+    at_bird_out.append(float(row[19]))
+    at_mamm_out.append(float(row[20]))
+    fi_bird_out.append(str(row[21])) 
+    det_out.append(float(row[22]))
+    act_out.append(float(row[23]))
+    acute_bird_out.append(float(row[24]))
+    acuconb_out.append(str(row[25])) 
+    acute_mamm_out.append(float(row[26]))
+    acuconm_out.append(str(row[27]))
+    chron_bird_out.append(float(row[28])) 
+    chronconb_out.append(str(row[29]))
+    chron_mamm_out.append(float(row[30]))
+    chronconm_out.append(str(row[31]))
 
     
 out_fun_fw_bird = []
@@ -262,6 +264,7 @@ def suite(TestCaseName, **kwargs):
 sip_obj = sip_model_new.sip(True,True,'', bw_bird[0], bw_mamm[0], sol[0], avian_ld50[0], mammalian_ld50[0], aw_bird[0], tw_bird[0], mineau[0], aw_mamm[0], tw_mamm[0], avian_noaec[0], avian_noael[0])
 sip_obj.set_unit_testing_variables()
 
+sip_obj.chemical_name_expected = chemical_name[0]
 sip_obj.fw_bird_out_expected = fw_bird_out[0]
 sip_obj.fw_mamm_out_expected = fw_mamm_out[0]
 sip_obj.dose_bird_out_expected = dose_bird_out[0]

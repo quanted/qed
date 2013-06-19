@@ -67,6 +67,14 @@ def gett1data(sip_obj):
     }
     return data
 
+def gett1dataqaqc(sip_obj):
+    data = { 
+        "Parameter": ['Chemical Name', 'Body Weight of Bird', 'Body Weight of Mammal','Solubility', 'LD<sub>50 avian', 'LD<sub>50 mammal','Body Weight of Assessed Bird','Body Weight of Assessed Mammal','Mineau Scaling Factor','NOAEC','NOAEL',],
+        "Value": [sip_obj.chemical_name_expected,  sip_obj.bw_bird, sip_obj.bw_mamm, sip_obj.sol, sip_obj.ld50_a, sip_obj.ld50_m, sip_obj.aw_bird,  sip_obj.aw_mamm, sip_obj.mineau, sip_obj.noaec, sip_obj.noael,],
+        "Units": ['', 'kg', 'kg','mg/L', 'mg/kg','mg/kg','kg','kg','', 'mg/kg','mg/kg'],
+    }
+    return data
+
 def gett2data(sip_obj):
     data = { 
         "Parameter": ['Upper Bound Exposure', 'Adjusted Toxicity Value', 'Ratio of Exposure to Toxicity', 'Conclusion',],
@@ -193,7 +201,7 @@ def table_all(sip_obj):
 
 def table_all_qaqc(sip_obj):
    
-    html_all = table_1(sip_obj)      
+    html_all = table_1_qaqc(sip_obj)      
     html_all = html_all + table_2_qaqc(sip_obj)
     html_all = html_all + table_3_qaqc(sip_obj)
 
@@ -210,6 +218,24 @@ def table_1(sip_obj):
         """
         #table 1
         t1data = gett1data(sip_obj)
+        t1rows = gethtmlrowsfromcols(t1data,pvuheadings)
+        html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
+        html = html + """
+                </div>
+        </div>
+        """
+        return html
+
+def table_1_qaqc(sip_obj):
+        #pre-table 1
+        html = """
+        <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs</H3>
+        <div class="out_">
+            <H4 class="out_1 collapsible" id="section2"><span></span>Application and Chemical Information</H4>
+                <div class="out_ container_output">
+        """
+        #table 1
+        t1data = gett1dataqaqc(sip_obj)
         t1rows = gethtmlrowsfromcols(t1data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
         html = html + """

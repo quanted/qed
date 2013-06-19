@@ -1,0 +1,251 @@
+<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="/stylesheets/jqplot/excanvas.js"></script><![endif]-->
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/jquery.jqplot.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/jqplot/jquery.jqplot.css" />
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.pointLabels.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.cursor.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.enhancedLegendRenderer.js"></script>
+
+<div id="chart1" style="margin-top:20px; margin-left:20px; width:600px; height:400px;"></div>
+<div id="chart2" style="margin-top:20px; margin-left:20px; width:600px; height:400px;"></div>
+<div id="chart3" style="margin-top:20px; margin-left:20px; width:600px; height:400px;"></div>
+<div id="chart4" style="margin-top:20px; margin-left:20px; width:600px; height:400px;"></div>
+<div id="chart5" style="margin-top:20px; margin-left:20px; width:600px; height:400px;"></div>
+
+<script>
+$(document).ready(function(){
+
+      $.jqplot.config.enablePlugins = true;
+      var s1 = $.parseJSON($('#x_pre_irr_val').attr('data-val'));
+        $.jqplot('chart1', [s1], {
+            seriesDefaults:{
+                renderer:$.jqplot.BarRenderer,
+                pointLabels: { show: true },
+        rendererOptions: {
+        barWidth: 3,
+        barPadding: -40,
+        barMargin: 100
+        }
+            },
+      series:[
+      {label:'Prepip.+Irrig'}
+      ],
+      axes: {
+            xaxis: {
+                renderer: $.jqplot.CategoryAxisRenderer,
+          label :'Period'
+
+              },
+            yaxis: {
+              label: 'Prepip.+Irrig (cm)',
+          labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+
+              }
+        },
+       legend: {
+            show: true,
+            location: 'ne',
+            placement: 'inside',
+        fontSize: '11px'
+        } 
+        });
+
+    $.jqplot.config.enablePlugins = true;
+
+      var s2 = $.parseJSON($('#x_leachate_val').attr('data-val'));
+      var s3 = $.parseJSON($('#x_et_val').attr('data-val'));
+      var s4 = $.parseJSON($('#x_runoff_val').attr('data-val'));    
+             
+      $.jqplot('chart2', [s2, s3, s4], {
+          stackSeries: true,
+
+      seriesDefaults:{
+                renderer:$.jqplot.BarRenderer,
+                pointLabels: { show: false },
+        rendererOptions: {
+          barWidth: 4
+          }
+            },
+      
+      series:[
+      {label:'Leachate'},{label:'Evapo-Transp.'},{label:'Runoff'}
+      ],
+      axes: {
+            xaxis: {
+                renderer: $.jqplot.CategoryAxisRenderer,
+          label :'Period'
+              },
+            yaxis: {
+              label: 'Water Balance (cm)',
+          labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+              }
+        },
+       legend: {
+            show: true,
+            location: 'ne',
+            placement: 'inside',
+            fontSize: '11px'
+        } 
+        });
+
+    $.jqplot.config.enablePlugins = true;
+      var s5 = $.parseJSON($('#Lim_inst_val').attr('data-val'));
+      var s6 = $.parseJSON($('#Lim_24h_val').attr('data-val'));
+      var s7 = $.parseJSON($('#Lim_96h_val').attr('data-val'));
+      var s8 = $.parseJSON($('#Lim_21d_val').attr('data-val'));
+      var s9 = $.parseJSON($('#Lim_60d_val').attr('data-val'));
+      var s10 = $.parseJSON($('#Lim_90d_val').attr('data-val'));
+      var s11 = $.parseJSON($('#Lim_y_val').attr('data-val'));
+
+      var s12 = $.parseJSON($('#Ben_inst_val').attr('data-val'));
+      var s13 = $.parseJSON($('#Ben_24h_val').attr('data-val'));
+      var s14 = $.parseJSON($('#Ben_96h_val').attr('data-val'));
+      var s15 = $.parseJSON($('#Ben_21d_val').attr('data-val'));
+      var s16 = $.parseJSON($('#Ben_60d_val').attr('data-val'));
+      var s17 = $.parseJSON($('#Ben_90d_val').attr('data-val'));
+      var s18 = $.parseJSON($('#Ben_y_val').attr('data-val'));
+
+      $.jqplot('chart3', [[s5[2], s12[2]], [s6[2], s13[2]], [s7[2], s14[2]], [s8[2], s15[2]], [s9[2], s16[2]], [s10[2], s17[2]],[s11[2], s18[2]]], {
+          stackSeries: true,
+          seriesDefaults:{
+              renderer:$.jqplot.BarRenderer,
+              pointLabels: { show: false },
+              rendererOptions: {
+              barWidth: 60
+              }
+          },
+          series:[
+              {label:'Max. Peak'}, {label:'Max. 24-Hour'}, {label:'Max. 96-Hour'},
+              {label:'Max. 21-Day'}, {label:'Max. 60-Day'}, {label:'Max. 90-Day'},
+              {label:'Max. Annual'}
+          ],
+          axes: {
+              xaxis: {
+                    renderer: $.jqplot.CategoryAxisRenderer,
+                    ticks:['Limnetic Dissolved Exposure Concentrations', 'Benthic Dissolved Exposure Concentrations'],
+                    tickOptions: {
+                        fontSize: '10pt'
+                      }
+                    },
+              yaxis: {
+                  label: 'Dissolved Concentrations (ppb)',
+                  labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+                  }
+            },
+           legend: {
+                show: true,
+                location: 'ne',
+                placement: 'inside',
+                fontSize: '11px'
+            } 
+        })
+
+    var Lim_ins =[];
+    var Lim_24h =[];
+    var Lim_96h =[];
+    var Lim_21d =[];
+    var Lim_60d =[];
+    var Lim_90d =[];
+    var Lim_y =[];
+    var Ben_ins =[];
+    var Ben_24h =[];
+    var Ben_96h =[];
+    var Ben_21d =[];
+    var Ben_60d =[];
+    var Ben_90d =[];
+    var Ben_y =[];
+
+    for (var i=0; i<=s5.length; i+=1){
+      Lim_ins.push([i/30, s5[i]]);
+      Lim_24h.push([i/30, s6[i]]);
+      Lim_96h.push([i/30, s7[i]]);
+      Lim_21d.push([i/30, s8[i]]);
+      Lim_60d.push([i/30, s9[i]]);
+      Lim_90d.push([i/30, s10[i]]);
+      Lim_y.push([i/30, s11[i]]);
+
+      Ben_ins.push([i/30, s12[i]]);
+      Ben_24h.push([i/30, s13[i]]);
+      Ben_96h.push([i/30, s14[i]]);
+      Ben_21d.push([i/30, s15[i]]);
+      Ben_60d.push([i/30, s16[i]]);
+      Ben_90d.push([i/30, s17[i]]);
+      Ben_y.push([i/30, s18[i]]);
+    };
+
+      $.jqplot('chart4', [Lim_ins, Lim_24h, Lim_96h, Lim_21d, Lim_60d, Lim_90d, Lim_y], {
+      seriesDefaults: { 
+          pointLabels: { show:false } 
+          },
+      series:[
+            {label:['Max. Peak', '(10th Percentile:'+s5[2].toFixed(2)+')']}, 
+            {label:['Max. 24-Hour', '(10th Percentile:'+s6[2].toFixed(2)+')']}, 
+            {label:['Max. 96-Hour', '(10th Percentile:'+s7[2].toFixed(2)+')']},
+            {label:['Max. 21-Day', '(10th Percentile:'+s8[2].toFixed(2)+')']}, 
+            {label:['Max. 60-Day', '(10th Percentile:'+s9[2].toFixed(2)+')']}, 
+            {label:['Max. 90-Day', '(10th Percentile:'+s10[2].toFixed(2)+')']},
+            {label:['Max. Annual', '(10th Percentile:'+s11[2].toFixed(2)+')']}
+        ],
+      axes: {
+          xaxis: {
+              label :'Percent of Years Exceeding the Above Concentration',
+              pad: 0
+              },
+            yaxis: {
+              label: 'Limnetic Dissolved Concentrations (ppb)',
+              labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+              pad: 0
+              }
+        },
+       legend: {
+            renderer: $.jqplot.EnhancedLegendRenderer,
+            show: true,
+            location: 'ne',
+            placement: 'outside',
+            fontSize: '7pt'
+        } 
+        });   
+
+      $.jqplot('chart5', [Ben_ins, Ben_24h, Ben_96h, Ben_21d, Ben_60d, Ben_90d, Ben_y], {
+      seriesDefaults: { 
+          pointLabels: { show:false } 
+          },
+      series:[
+            {label:['Max. Peak', '(10th Percentile:'+s12[2].toFixed(2)+')']}, 
+            {label:['Max. 24-Hour', '(10th Percentile:'+s13[2].toFixed(2)+')']}, 
+            {label:['Max. 96-Hour', '(10th Percentile:'+s14[2].toFixed(2)+')']},
+            {label:['Max. 21-Day', '(10th Percentile:'+s15[2].toFixed(2)+')']}, 
+            {label:['Max. 60-Day', '(10th Percentile:'+s16[2].toFixed(2)+')']}, 
+            {label:['Max. 90-Day', '(10th Percentile:'+s17[2].toFixed(2)+')']},
+            {label:['Max. Annual', '(10th Percentile:'+s18[2].toFixed(2)+')']}
+        ],
+      axes: {
+          xaxis: {
+              label :'Percent of Years Exceeding the Above Concentration',
+              pad: 0
+              },
+            yaxis: {
+              label: 'Benthic Dissolved Concentrations (ppb)',
+              labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+              pad: 0
+              }
+        },
+       legend: {
+            renderer: $.jqplot.EnhancedLegendRenderer,
+            show: true,
+            location: 'ne',
+            placement: 'outside',
+            fontSize: '7pt'
+        } 
+        });   
+
+})
+
+
+</script>
+
+
+

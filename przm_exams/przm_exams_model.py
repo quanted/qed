@@ -5,7 +5,6 @@ import sys
 
 
 class przm_exams(object):
-
     def __init__(self, chem_name, noa, scenarios, unit, met_o, inp_o, run_o, exam_o, 
                  MM, DD, YY, CAM_f, DEPI_text, Ar_text, EFF, Drft, 
                  Apt_p, DayRe, Ap_mp, Ar, CAM_f_p, EFF_p, Drft_p, DEPI_f,

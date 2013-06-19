@@ -535,7 +535,7 @@ class TerrplantQaqcPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'terrplant',
-                'model_attributes':'IEC QAQC'})
+                'model_attributes':'TerrPlant QAQC'})
 
         terr = terrplant_model.terrplant(True,True,A[0],I[0],R[0],D[0],nms[0],lms[0],nds[0],lds[0])
         terr.rundry_results_expected = out_fun_rundry[0]
@@ -560,8 +560,8 @@ class TerrplantQaqcPage(webapp.RequestHandler):
         html = html + terrplant_tables.table_all_qaqc(terrplant_tables.pvheadings, terrplant_tables.pvuheadings,terrplant_tables.deheadingsqaqc,
                                         terrplant_tables.plantec25noaecheadings,terrplant_tables.plantecdrysemisprayheadingsqaqc, 
                                         terrplant_tables.tmpl, terr)
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        #html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

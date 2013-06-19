@@ -20,12 +20,12 @@ NOA_select =(('','Select the number of applications'),('1','1'),('2','2'),('3','
 
 class PRZMInp(forms.Form):
     chemical_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2, 'readonly':'readonly'}), initial='Forchlorfenuron')#Alachlor
-    Scenarios = forms.ChoiceField(required=True,choices=Scenario_select, label='Standard OPP/EFED Scenarios', initial='')
     NOA = forms.ChoiceField(required=True,choices=NOA_select, label='Number of applications', initial='')
+    Scenarios = forms.ChoiceField(required=True,choices=Scenario_select, label='Standard OPP/EFED Scenarios', initial='')
     Unit = forms.ChoiceField(widget=forms.RadioSelect(), choices=Unit_select, label='Application unit')
     
     Apt=forms.ChoiceField(required=True,choices=Ap_select, label='Application timing 1')
-#    Date_apt=forms.CharField(label='Application Date (MM/DD)', initial='05/10')
+    # Date_apt=forms.CharField(label='Application Date (MM/DD)', initial='05/10')
     DayRe = forms.FloatField(required=True,label='Days relevant to the application 1',initial=0)
     Ap_m = forms.ChoiceField(required=True,choices=Ap_m_select, label='Application method 1')  
     Ar = forms.FloatField(required=True,label='Application rate 1')#,initial=1

@@ -24,14 +24,3 @@ class exams(object):
         self.ph_out=ph_out
         self.hl_out=hl_out
         self.met = met_pool[scenarios] 
-
-# exams_obj = exams('chem_name_1', 'CA Almonds MLRA-17', 'Yes', 70, 71, 72, 73, 24, 25, 26, 27, 3, [5.0, 7.0, 11.0], [11.0, 12.0, 10.0])
-# import json
-# import simplejson
-# input_list=json.dumps(exams_obj.__dict__)
-# print input_list
-# input_list1= simplejson.loads(input_list)
-# print input_list1['hl_out'][0]
-# import urllib
-# data = urllib.urlencode({"input_list":input_list})
-# print data

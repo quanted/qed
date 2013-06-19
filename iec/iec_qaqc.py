@@ -38,7 +38,7 @@ for row in data:
     F8_f_out.append(float(row[4]))
     chance_f_out.append(float(row[5]))
     
-out_fun_z_score_f=[]       
+out_fun_z_score_f=[]
 out_fun_F8_f=[]
 out_fun_chance_f=[]
 

@@ -14,7 +14,7 @@ def fromJSON(json_string):
     new_stir = stir(True,False,vars_dict=stir_vars)
     return new_stir
 
-class StirModel:
+class StirModel(object):
 
     def __init__(self,set_variables=True, run_methods=True,
             chemical_name=None,application_rate=None,column_height=None,spray_drift_fraction=None,direct_spray_duration=None, 
@@ -59,11 +59,11 @@ class StirModel:
         self.vid_avian = -1
         self.inh_rate_mammal = -1
         self.vid_mammal = -1
-        self.ar2 = -1
+        self.ar2 = ''
         self.air_conc = -1
         self.sid_avian = -1
         self.sid_mammal = -1
-        self.cf = -1
+        self.cf = ''
         self.mammal_inhalation_ld50 = -1
         self.adjusted_mammal_inhalation_ld50 = -1
         self.estimated_avian_inhalation_ld50 = -1
@@ -142,6 +142,31 @@ class StirModel:
         self.body_weight_assessed_mammal = body_weight_assessed_mammal
         self.body_weight_tested_mammal = body_weight_tested_mammal
         self.mammal_oral_ld50 = mammal_oral_ld50
+
+    def set_unit_testing_variables(self):
+        self.chemical_name_expected = None
+        self.sat_air_conc_expected = None
+        self.inh_rate_avian_expected = None
+        self.vid_avian_expected = None
+        self.inh_rate_mammal_expected = None
+        self.vid_mammal_expected = None
+        self.ar2_expected = None
+        self.air_conc_expected = None
+        self.sid_avian_expected = None
+        self.sid_mammal_expected = None
+        self.cf_expected = None
+        self.mammal_inhalation_ld50_expected = None
+        self.adjusted_mammal_inhalation_ld50_expected = None
+        self.estimated_avian_inhalation_ld50_expected = None
+        self.adjusted_avian_inhalation_ld50_expected = None
+        self.ratio_vid_avian_expected = None
+        self.ratio_sid_avian_expected = None
+        self.ratio_vid_mammal_expected = None
+        self.ratio_sid_mammal_expected = None
+        self.loc_vid_avian_expected = None
+        self.loc_sid_avian_expected = None
+        self.loc_vid_mammal_expected = None
+        self.loc_sid_mammal_expected = None
 
     def run_methods(self):
         try:

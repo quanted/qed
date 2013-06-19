@@ -9,7 +9,7 @@ import cgitb
 cgitb.enable()
 import unittest
 from StringIO import StringIO
-from iec import iec_output
+# from iec import iec_output
 from pprint import pprint
 import csv
 import sys

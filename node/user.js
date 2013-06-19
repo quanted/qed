@@ -20,7 +20,7 @@ db.open(function(err, db) {
 
 exports.getLoginDecision = function(user_id, password, callback)
 { 
-  var decision_sid = {'decision':false,'sid':null,'expires':null};
+  var decision_sid = {'decision':false,'sid':null,'expires':null,'userid':user_id};
   var sessionId = generateSessionId();
   var expirationDate = new Date();
   expirationDate.setHours(expirationDate.getHours() + 24);
@@ -36,7 +36,7 @@ exports.getLoginDecision = function(user_id, password, callback)
         {
           decision_sid.sid = sessionId;
           decision_sid.expires = expirationDate;
-          collection.update({user_id:user_id},{$set:{latest_login_info:{sessionId:sessionId,expires:expires}}});
+          collection.update({user_id:user_id},{$set:{latest_login_info:{sessionId:sessionId,expires:expirationDate}}});
         }
       }
       callback(null,decision_sid);
@@ -51,16 +51,42 @@ exports.openIdLogin = function(openid, callback)
   var expirationDate = new Date();
   expirationDate.setHours(expirationDate.getHours() + 24);
   db.collection('user', function(err,collection){
-    collection.find({open_id:openid}, function(err,user_data) {
+    collection.findOne({open_id:openid}, function(err,user_data) {
       if(user_data != null)
       {
-        collection.update({user_id:user_id},{$set:{latest_login_info:{sessionId:sessionId,expires:expires}}});
-        login_data.userid=user_data.user_id;
-        login_data.sid=user_data.sessionId;
-        login_data.expires=user_data.expires;
+        console.log("user_data: " + user_data.user_id);
+        var user_id = user_data.user_id;
+        collection.update({user_id:user_id},{$set:{latest_login_info:{sessionId:sessionId,expires:expirationDate}}});
+        login_data.userid=user_id;
+        login_data.sid=sessionId;
+        login_data.expires=expirationDate;
       }
       callback(null,login_data);
     })
+  });
+}
+
+exports.checkUserSessionId = function(userid, sessionid, callback)
+{
+  var decision_sid = {'decision':false,'sid':null,'expires':null,'userid':userid};
+  console.log("parameter sid: " + sessionid);
+  db.collection('user', function(err,collection){
+    collection.findOne({user_id:userid},function(err,user_data) {
+      if(user_data != null)
+      {
+        var storedSessionId = user_data.latest_login_info.sessionId;
+        var storedExpiration = user_data.latest_login_info.expires;
+        var decision = (sessionid === storedSessionId);
+        console.log("stored sid: " + storedSessionId);
+        if(decision)
+        {
+          decision_sid.decision = decision;
+          decision_sid.sid = sessionid;
+          decision_sid.expires = storedExpiration;
+        }
+      }
+      callback(null,decision_sid);
+    });
   });
 }
 
@@ -78,6 +104,7 @@ exports.registerUser = function(user_id, password, email_address, callback)
         var expirationDate = new Date();
         expirationDate.setHours(expirationDate.getHours() + 24);
         var session_data = {"expires":expirationDate,"sid":sessionId};
+        collection.update({user_id:user_id},{$set:{latest_login_info:{sessionId:sessionId,expires:expirationDate}}});
         callback(null,session_data);
       });
   });
@@ -90,6 +117,7 @@ makeSalt = function()
 
 encryptPassword = function(password,salt) 
 {
+  console.log("salt: " + salt + " password: " + password);
   var encrypted_password = crypto.createHmac('sha1', salt).update(password).digest('hex');
   return encrypted_password;
 }

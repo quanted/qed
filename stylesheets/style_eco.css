@@ -16,12 +16,20 @@ h1, h2, h3, h4, h5, h6, p {
 /* General */
 
 body {
-  /*text-align: center; */  /* Container: IE Hack */
+  text-align: center;  /* Container: IE Hack */
   background: #F4F7ED repeat-x;
   font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size: 11px;
   line-height: 18px;
   color: #333333;
+}
+#container_landing {
+  width: 680px;
+  text-align: left;    /* IE Hack */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -307px 0 0 -340px;
 }
 #container {
   width: 1024px;
@@ -62,6 +70,88 @@ a:visited {
 a:hover {
   color: #79973F;
   text-decoration: none;
+}
+
+/*
+   Landing Page
+*/
+
+#landing_uberlogo {
+  width: 192px;
+  height: 192px;
+  border: none;
+  margin-bottom: 48px;
+  /*border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;*/
+  background: #F4F7ED url(/images/logo_landing.png) no-repeat;
+}
+#landing_links {
+  width: 680px;
+  height: 334px;
+  margin-bottom: 16px;
+}
+#eco {
+  width: 334px;
+  height: 334px;
+  float: left;
+  background: url(/images/eco.gif);
+  margin-right: 10px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;
+}
+#hh {
+  width: 334px;
+  height: 334px;
+  float: left;
+  background: url(/images/hh.gif);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;
+}
+/*#pop {
+  width: 334px;
+  height: 334px;
+  float: left;
+  background: url(/images/pop.gif);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;
+}*/
+#landing_text {
+  background: #F9FBF6;
+  width: 676px;
+  height: 24px;
+  /*padding: 8px 0 1px 4px;*/
+  font-size: 2em;
+  font-weight: bold;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  /*border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;*/
+}
+#landing_links ul {
+  list-style: none;
+}
+#landing_links ul li {
+  display: inline;
+  position: relative;
 }
 
 /* 01uberheader.html */
@@ -112,13 +202,6 @@ a:hover {
 }
 .textshadow {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-}
-#topheader_pic {
-  width: 720px;
-  height: 240px;
-  float: left;
-  border-right: 4px solid #F4F7ED;
-  border-bottom: 2px solid #F4F7ED;
 }
 #topheader_pic {
   background: #79973F url(/images/species/waterfrog_crop.png);
@@ -1194,7 +1277,7 @@ span {
   -moz-box-shadow: 3px 3px 15px #CCC;*/
 }
 #header_menu_r ul {
-  padding-left: 0px;
+  padding-left: 0;
   text-align: left;
   margin-top: 7px;
 }

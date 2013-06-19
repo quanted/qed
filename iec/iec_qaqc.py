@@ -9,9 +9,14 @@ import cgitb
 cgitb.enable()
 import unittest
 from StringIO import StringIO
-from iec import iec_model
 from pprint import pprint
 import csv
+import sys
+sys.path.append("../iec")
+from iec import iec_model_new,iec_tables
+import logging
+
+logger = logging.getLogger('IECQaqcPage')
 
 cwd= os.getcwd()
 data = csv.reader(open(cwd+'/iec/iec_unittest_inputs.csv'))
@@ -33,7 +38,7 @@ for row in data:
     F8_f_out.append(float(row[4]))
     chance_f_out.append(float(row[5]))
     
-out_fun_z_score_f=[]       
+out_fun_z_score_f=[]
 out_fun_F8_f=[]
 out_fun_chance_f=[]
 
@@ -41,47 +46,29 @@ def set_globals(**kwargs):
     for argname in kwargs:
         globals()['%s_in' % argname] = kwargs[argname]
            
-class TestCase_Z_score_f(unittest.TestCase):
+class TestCase_z_score_f_out(unittest.TestCase):
     def setUp(self):
-        #####Pre-defined inputs########
-        self.LC50_in=LC50_in
-        self.threshold_in=threshold_in
-        self.dose_response_in=dose_response_in
-        #####Pre-defined outputs########
-        self.z_score_f_out_in=z_score_f_out_in
-    def testIec(self):
-            fun = iec_output.z_score_f(self.dose_response_in,self.LC50_in,self.threshold_in)
-            out_fun_z_score_f.append(fun)
-            testFailureMessage = "Test of function name: %s expected: %s != calculated: %s" % ("Z_score_f",self.z_score_f_out_in,fun)
-            self.assertEqual(round(fun,3),round(self.z_score_f_out_in,3),testFailureMessage)
+        self.iec_obj = iec_object_in
+    def testz_score_f_out_in(self):
+        out_fun_z_score_f.append(self.iec_obj.z_score_f_out)
+        testFailureMessage = "Test of function name: %s expected: %s != calculated: %s" % ("Z_score_f",self.iec_obj.z_score_f_out,fun)
+        self.assertEqual(round(fun,3),round(self.z_score_f_out,3),testFailureMessage)
 
-class TestCase_F8_f(unittest.TestCase):
+class TestCase_F8_f_out(unittest.TestCase):
     def setUp(self):
-        #####Pre-defined inputs########
-        self.LC50_in=LC50_in
-        self.threshold_in=threshold_in
-        self.dose_response_in=dose_response_in
-        #####Pre-defined outputs########
-        self.F8_f_out_in=F8_f_out_in
-    def testF8_f(self):
-            fun = iec_output.F8_f(self.dose_response_in,self.LC50_in,self.threshold_in)
-            out_fun_F8_f.append(fun)
-            testFailureMessage = "Test of function name: %s expected: %s != calculated: %s" % ("F8_f",self.F8_f_out_in,fun)
-            self.assertEqual(round(fun,3),round(self.F8_f_out_in,3),testFailureMessage)
+        self.iec_obj = iec_object_in
+    def testF8_f_out_in(self):
+        out_fun_F8_f.append(self.iec_obj.F8_f_out)
+        testFailureMessage = "Test of function name: %s expected: %s != calculated: %s" % ("F8_f",self.iec_obj.F8_f_out,fun)
+        self.assertEqual(round(fun,3),round(self.F8_f_out,3),testFailureMessage)
             
-class TestCase_chance_f(unittest.TestCase):
+class TestCase_chance_f_out(unittest.TestCase):
     def setUp(self):
-        #####Pre-defined inputs########
-        self.LC50_in=LC50_in
-        self.threshold_in=threshold_in
-        self.dose_response_in=dose_response_in
-        #####Pre-defined outputs########
-        self.chance_f_out_in=chance_f_out_in
-    def testchance_f(self):
-            fun = iec_output.chance_f(self.dose_response_in,self.LC50_in,self.threshold_in)
-            out_fun_chance_f.append(fun)
-            testFailureMessage = "Test of function name: %s expected: %s != calculated: %s" % ("Chance_f",self.chance_f_out_in,fun)
-            self.assertEqual(round(fun,3),round(self.chance_f_out_in,3),testFailureMessage)
+        self.iec_obj = iec_object_in
+    def testchance_f_out_in(self):
+        out_fun_chance_f.append(self.iec_obj.chance_f_out)
+        testFailureMessage = "Test of function name: %s expected: %s != calculated: %s" % ("Chance_f",self.iec_obj.chance_f_out,fun)
+        self.assertEqual(round(fun,3),round(self.chance_f_out,3),testFailureMessage)
                         
 def suite(TestCaseName, **kwargs):
     suite = unittest.TestSuite()
@@ -94,12 +81,16 @@ def suite(TestCaseName, **kwargs):
     test_out=stream.read()
     return test_out
 
-test_suite_z_score_f_1 = suite(TestCase_Z_score_f, LC50=LC50[0], threshold=threshold[0], dose_response=dose_response[0], z_score_f_out=z_score_f_out[0])
-test_suite_z_score_f_2 = suite(TestCase_Z_score_f, LC50=LC50[1], threshold=threshold[1], dose_response=dose_response[1], z_score_f_out=z_score_f_out[1])
-test_suite_F8_f_1 = suite(TestCase_F8_f, LC50=LC50[0], threshold=threshold[0], dose_response=dose_response[0], F8_f_out=F8_f_out[0])
-test_suite_F8_f_2 = suite(TestCase_F8_f, LC50=LC50[1], threshold=threshold[1], dose_response=dose_response[1], F8_f_out=F8_f_out[1])
-test_suite_chance_f_1 = suite(TestCase_chance_f, LC50=LC50[0], threshold=threshold[0], dose_response=dose_response[0], chance_f_out=chance_f_out[0])
-test_suite_chance_f_2 = suite(TestCase_chance_f, LC50=LC50[1], threshold=threshold[1], dose_response=dose_response[1], chance_f_out=chance_f_out[1])
+iec_obj = iec_model_new.iec(True,True,dose_response[0],LC50[0],threshold[0])
+iec_obj.set_unit_testing_variables()
+
+iec_obj.z_score_f_out_expected = z_score_f_out[0]
+iec_obj.F8_f_out_expected = F8_f_out[0]
+iec_obj.chance_f_out_expected = chance_f_out[0]
+
+test_suite_z_score_f_out = suite(TestCase_z_score_f_out, iec_obj=iec_obj)
+test_suite_F8_f_out = suite(TestCase_F8_f_out, iec_obj=iec_obj)
+test_suite_chance_f_out = suite(TestCase_chance_f_out, iec_obj=iec_obj)
 
                 
 class IecQaqcPage(webapp.RequestHandler):
@@ -110,92 +101,12 @@ class IecQaqcPage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', 'title')
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'iec','page':'qaqc'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {
+        html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'iec',
                 'model_attributes':'IEC QAQC'})
-        html = html + """
-        <table border="1">
-        <tr><H3>Model Validation Inputs</H3></tr><br>
-        <tr>
-        <td>Input Name</td>
-        <td>Test value1</td>
-        <td>Test value2</td>
-        <td>Unit</td>
-        </tr>      
-        <tr>
-        <td>LC<sub>50</sub>/LD<sub>50</sub></td>
-        <td>%s</td>
-        <td>%s</td>        
-        <td>&nbsp</td>
-        </tr>
-        <tr>
-        <td>Desired threshold</td>
-        <td>%s</td>
-        <td>%s</td>        
-        <td>&nbsp</td>
-        </tr>
-        <tr>
-        <td>Slope of does-response</td>
-        <td>%s</td>
-        <td>%s</td>        
-        <td>&nbsp</td>
-        </table>
-        """  % (LC50[0], threshold[0], dose_response[0], LC50[1], threshold[1], dose_response[1])      
-        html = html + """
-        <table width="500" border="1">
-            <br>
-            <tr><H3>Model Validation Outputs<H3></tr><br>
-            <tr>
-                <td>Model Name</td>
-                <td>Simulated value</td>
-                <td>Expected value</td>
-                <td>Test output</td>       
-            </tr>
-            <tr>
-                <td>z_score_f</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>
-            <tr>
-                <td>z_score_f</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>   
-            <tr>
-                <td>F8_f</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>        
-            <tr>
-                <td>F8_f</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>         
-            <tr>
-                <td>Chance_f</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>         
-            <tr>
-                <td>Chance_f</td>
-                <td>%s</td>        
-                <td>%s</td>
-                <td><div style="word-wrap: break-word; width:40em">%s</div></td> 
-            </tr>         
-        </table>
-        """ % (round(out_fun_z_score_f[0],3), round(z_score_f_out[0],3), test_suite_z_score_f_1, 
-               round(out_fun_z_score_f[1],3), round(z_score_f_out[1],3), test_suite_z_score_f_2,
-               round(out_fun_F8_f[0],3), round(F8_f_out[0],3), test_suite_F8_f_1, 
-               round(out_fun_F8_f[1],3), round(F8_f_out[1],3), test_suite_F8_f_2,
-               round(out_fun_chance_f[0],3), round(chance_f_out[0],3), test_suite_chance_f_1, 
-               round(out_fun_chance_f[1],3), round(chance_f_out[1],3), test_suite_chance_f_2)
+        html = html + iec_tables.table_all_qaqc(iec_obj)
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

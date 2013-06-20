@@ -314,6 +314,10 @@ class PRZMOutputPage(webapp.RequestHandler):
         DD=es_date(NOA, Scenarios, Apt, DayRe, Date_inp)[1]
         YY='61'
         
+        if Unit=='2':
+            Ar=[1.12*kk for kk in Ar]
+        else:
+            Ar=Ar
         Ar_text=['%.4f' %i for i in Ar]
         
         CAM_f_f = [float(i) for i in CAM_f]

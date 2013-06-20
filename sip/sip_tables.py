@@ -63,7 +63,7 @@ def gett1data(sip_obj):
     data = { 
         "Parameter": ['Chemical Name', 'Body Weight of Bird', 'Body Weight of Mammal','Solubility', 'LD<sub>50 avian', 'LD<sub>50 mammal','Body Weight of Assessed Bird','Body Weight of Assessed Mammal','Mineau Scaling Factor','NOAEC','NOAEL',],
         "Value": [sip_obj.chemical_name,  sip_obj.bw_bird, sip_obj.bw_mamm, sip_obj.sol, sip_obj.ld50_a, sip_obj.ld50_m, sip_obj.aw_bird,  sip_obj.aw_mamm, sip_obj.mineau, sip_obj.noaec, sip_obj.noael,],
-        "Units": ['', 'kg', 'kg','mg/L', 'mg/kg','mg/kg','kg','kg','', 'mg/kg','mg/kg'],
+        "Units": ['', 'g', 'g','mg/L', 'mg/kg','mg/kg','g','g','', 'mg/kg-diet','mg/kg-bw'],
     }
     return data
 
@@ -71,7 +71,7 @@ def gett1dataqaqc(sip_obj):
     data = { 
         "Parameter": ['Chemical Name', 'Body Weight of Bird', 'Body Weight of Mammal','Solubility', 'LD<sub>50 avian', 'LD<sub>50 mammal','Body Weight of Assessed Bird','Body Weight of Assessed Mammal','Mineau Scaling Factor','NOAEC','NOAEL',],
         "Value": [sip_obj.chemical_name_expected,  sip_obj.bw_bird, sip_obj.bw_mamm, sip_obj.sol, sip_obj.ld50_a, sip_obj.ld50_m, sip_obj.aw_bird,  sip_obj.aw_mamm, sip_obj.mineau, sip_obj.noaec, sip_obj.noael,],
-        "Units": ['', 'kg', 'kg','mg/L', 'mg/kg','mg/kg','kg','kg','', 'mg/kg','mg/kg'],
+        "Units": ['', 'g', 'g','mg/L', 'mg/kg','mg/kg','g','g','', 'mg/kg-diet','mg/kg-bw'],
     }
     return data
 

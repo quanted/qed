@@ -39,7 +39,7 @@ class SIPExecutePage(webapp.RequestHandler):
         bwm_other = form.getvalue('bwm_other')
         b_species = form.getvalue('b_species')
         m_species = form.getvalue('m_species')
-        sip_obj = sip_model.sip(chemical_name, b_species, m_species, bw_quail, bw_duck, bwb_other, bw_rat, bwm_other, sol, ld50_a, ld50_m, aw_bird, mineau, aw_mamm, noaec, noael)
+        sip_obj = sip_model.sip(True,True,chemical_name, b_species, m_species, bw_quail, bw_duck, bwb_other, bw_rat, bwm_other, sol, ld50_a, ld50_m, aw_bird, mineau, aw_mamm, noaec, noael)
         text_file = open('sip/sip_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'

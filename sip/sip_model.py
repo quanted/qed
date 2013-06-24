@@ -3,39 +3,115 @@
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import numpy as np
+import logging
+from django.utils import simplejson
 
+logger = logging.getLogger('SIP Model')
 # Daily water intake rate for birds
 
+def toJSON(sip_object):
+    sip_vars = vars(sip_object)
+    sip_json = simplejson.dumps(sip_vars)
+    return sip_json
+
+def fromJSON(json_string):
+    sip_vars = simplejson.loads(json_string)
+    sip_object = terrplant(True,False,vars_dict=sip_vars)
+    return sip_object
+
 class sip(object):
-    def __init__(self, chemical_name, b_species, m_species, bw_quail, bw_duck, bwb_other, bw_rat, bwm_other, sol, ld50_a, ld50_m, aw_bird, mineau, aw_mamm, noaec, noael):
-        self.chemical_name = chemical_name
-       # self.select_receptor = select_receptor
-        self.sol = sol
-        self.ld50_a = ld50_a
-        self.ld50_m = ld50_m
-        self.aw_bird = aw_bird
-        self.mineau = mineau
-        self.aw_mamm = aw_mamm
-        self.noaec = noaec
-        self.noael = noael
-        self.bw_quail = bw_quail
-        self.bw_duck = bw_duck
-        self.bwb_other = bwb_other
-        self.bw_rat = bw_rat
-        self.bwm_other = bwm_other
-        self.b_species = b_species
-        self.m_species = m_species
-        if b_species =='178':
-            self.bw_bird = self.bw_quail
-        elif b_species =='1580':
-            self.bw_bird = self.bw_duck
-        else:
-            self.bw_bird = self.bwb_other
-        if m_species =='350':
-            self.bw_mamm = self.bw_rat
-        else:
-            self.bw_mamm = self.bwm_other
-        self.run_methods()
+    def __init__(self, set_variables=True,run_methods=True,chemical_name='', b_species='', m_species='', bw_quail=1, bw_duck=1, bwb_other=1, bw_rat=-1, bwm_other=1, sol=1, ld50_a=1, ld50_m=1, aw_bird=1, mineau=1, aw_mamm=1, noaec=1, noael=1,vars_dict=None):
+        self.set_default_variables()
+        if set_variables:
+            if vars_dict != None:
+                self.__dict__.update(vars_dict)
+            else:
+                self.chemical_name = chemical_name
+                self.bw_quail = bw_quail
+                self.bw_duck = bw_duck
+                self.bwb_other = bwb_other
+                self.bw_rat = bw_rat
+                self.bwm_other = bwm_other
+                self.b_species = b_species
+                self.m_species = m_species
+                if b_species =='178':
+                    self.bw_bird = self.bw_quail
+                elif b_species =='1580':
+                    self.bw_bird = self.bw_duck
+                else:
+                    self.bw_bird = self.bwb_other
+                if m_species =='350':
+                    self.bw_mamm = self.bw_rat
+                else:
+                    self.bw_mamm = self.bwm_other
+                self.sol = sol
+                self.ld50_a = ld50_a
+                self.ld50_m = ld50_m
+                self.aw_bird = aw_bird
+                self.mineau = mineau
+                self.aw_mamm = aw_mamm
+                self.noaec = noaec
+                self.noael = noael
+                logger.info(vars(self))
+            if run_methods:
+                self.run_methods()
+
+    def set_default_variables(self):
+        self.chemical_name = ''
+       # self.select_receptor()
+        self.bw_bird = -1
+        self.bw_mamm = -1
+        self.sol = -1
+        self.ld50_a = -1
+        self.ld50_m = -1
+        self.aw_bird = -1
+        self.mineau = -1
+        self.aw_mamm = -1
+        self.noaec = -1
+        self.noael = -1
+        self.fw_bird_out = None
+        self.fw_mamm_out = None
+        self.dose_bird_out = None
+        self.dose_mamm_out = None
+        self.at_bird_out = None
+        self.at_mamm_out = None
+        self.fi_bird_out = None
+        self.det_out = None
+        self.act_out = None
+        self.acute_bird_out = None
+        self.acuconb_out = None
+        self.acute_mamm_out = None
+        self.acuconm_out = None
+        self.chron_bird_out = None
+        self.chronconb_out = None
+        self.chron_mamm_out = None
+        self.chronconm_out = None
+        self.bw_quail = None
+        self.bw_duck = None
+        self.bwb_other = None
+        self.bw_rat = None
+        self.bwm_other = None
+        self.b_species = None
+        self.m_species = None
+
+    def set_unit_testing_variables(self):
+        self.fw_bird_out_expected = None
+        self.fw_mamm_out_expected = None
+        self.dose_bird_out_expected = None
+        self.dose_mamm_out_expected = None
+        self.at_bird_out_expected = None
+        self.at_mamm_out_expected = None
+        self.fi_bird_out_expected = None
+        self.det_out_expected = None
+        self.act_out_expected = None
+        self.acute_bird_out_expected = None
+        self.acuconb_out_expected = None
+        self.acute_mamm_out_expected = None
+        self.acuconm_out_expected = None
+        self.chron_bird_out_expected = None
+        self.chronconb_out_expected = None
+        self.chron_mamm_out_expected = None
+        self.chronconm_out_expected = None
 
     def run_methods(self):
         self.fw_bird()
@@ -68,7 +144,7 @@ class sip(object):
         if self.bw_bird < 0:
             raise ValueError\
             ('self.bw_bird=%g is a non-physical value.' % self.bw_bird)
-        self.fw_bird = (1.180 * (self.bw_bird**0.874))/1000.0
+        self.fw_bird_out = (1.180 * (self.bw_bird**0.874))/1000.0
         # return 
 
 
@@ -86,14 +162,14 @@ class sip(object):
        if self.bw_mamm < 0:
             raise ValueError\
             ('self.bw_mamm=%g is a non-physical value.' % self.bw_mamm)
-       self.fw_mamm = (0.708 * (self.bw_mamm**0.795))/1000.0
+       self.fw_mamm_out = (0.708 * (self.bw_mamm**0.795))/1000.0
 
 
     # Upper bound estimate of exposure for birds
 
     def dose_bird(self):
         try:
-            self.fw_bird = float(self.fw_bird)
+            self.fw_bird_out = float(self.fw_bird_out)
             self.sol = float(self.sol)
             self.bw_bird = float(self.bw_bird)
         except IndexError:
@@ -113,23 +189,23 @@ class sip(object):
         except ZeroDivisionError:
             raise ZeroDivisionError\
             ('The body weight of the bird must non-zero.')
-        if self.fw_bird < 0:
+        if self.fw_bird_out < 0:
             raise ValueError\
-            ('fw_bird=%g is a non-physical value.' % self.fw_bird)
+            ('fw_bird=%g is a non-physical value.' % self.fw_bird_out)
         if self.sol < 0:
             raise ValueError\
             ('sol=%g is a non-physical value.' % self.sol)
         if self.bw_bird < 0:
             raise ValueError\
             ('self.bw_bird=%g is a non-physical value.' % self.bw_bird)
-        self.dose_bird = (self.fw_bird * self.sol)/self.bw_bird
+        self.dose_bird_out = (self.fw_bird_out * self.sol)/self.bw_bird
 
 
     # Upper bound estimate of exposure for mammals
 
     def dose_mamm(self):
         try:
-            self.fw_mamm = float(self.fw_mamm)
+            self.fw_mamm_out = float(self.fw_mamm_out)
             self.sol = float(self.sol)
             self.bw_mamm = float(self.bw_mamm)
         except IndexError:
@@ -149,16 +225,16 @@ class sip(object):
         except ZeroDivisionError:
             raise ZeroDivisionError\
             ('The body weight of the mammal must non-zero.')
-        if self.fw_bird < 0:
+        if self.fw_bird_out < 0:
             raise ValueError\
-            ('fw_mamm=%g is a non-physical value.' % self.fw_mamm)
+            ('fw_mamm=%g is a non-physical value.' % self.fw_mamm_out)
         if self.sol < 0:
             raise ValueError\
             ('sol=%g is a non-physical value.' % self.sol)
         if self.bw_mamm < 0:
             raise ValueError\
             ('self.bw_mamm=%g is a non-physical value.' % self.bw_mamm)
-        self.dose_mamm = (self.fw_mamm * self.sol)/self.bw_mamm
+        self.dose_mamm_out = (self.fw_mamm_out * self.sol)/self.bw_mamm
 
 
     # Acute adjusted toxicity value for birds
@@ -198,7 +274,7 @@ class sip(object):
         if self.bw_bird < 0:
             raise ValueError\
             ('bw_bird=%g is a non-physical value.' % self.bw_bird)
-        self.at_bird = (self.ld50_a) * ((self.aw_bird/self.bw_bird)**(self.mineau-1))
+        self.at_bird_out = (self.ld50_a) * ((self.aw_bird/self.bw_bird)**(self.mineau-1))
 
 
 
@@ -238,7 +314,7 @@ class sip(object):
         if self.bw_mamm < 0:
             raise ValueError\
             ('bw_mamm=%g is a non-physical value.' % self.bw_mamm)
-        self.at_mamm = (self.ld50_m) * ((self.aw_mamm/self.bw_mamm)**0.25)
+        self.at_mamm_out = (self.ld50_m) * ((self.aw_mamm/self.bw_mamm)**0.25)
 
 
     # Adjusted chronic toxicity values for birds
@@ -257,7 +333,7 @@ class sip(object):
         if self.bw_bird < 0:
             raise ValueError\
             ('self.bw_bird=%g is a non-physical value.' % self.bw_bird)
-        self.fi_bird = 0.0582 * (self.bw_bird**0.651)
+        self.fi_bird_out = 0.0582 * (self.bw_bird**0.651)
 
 
     # Dose-equivalent chronic toxicity value for birds
@@ -265,7 +341,7 @@ class sip(object):
     def det(self):
         try:
             self.noaec = float(self.noaec)
-            self.fi_bird = float(self.fi_bird)
+            self.fi_bird_out = float(self.fi_bird_out)
             self.bw_bird = float(self.bw_bird)
         except IndexError:
             raise IndexError\
@@ -278,7 +354,7 @@ class sip(object):
         except ValueError:
             raise ValueError\
             ('The dialy food intake rate for birds must be a real number,'\
-            ' not "%kg"' % self.fi_bird)
+            ' not "%kg"' % self.fi_bird_out)
         except ValueError:
             raise ValueError\
             ('The body weight of the bird must be a real number, not "%kg"' % self.bw_bird)
@@ -288,13 +364,13 @@ class sip(object):
         if self.noaec < 0:
             raise ValueError\
             ('noaec=%g is a non-physical value.' % self.noaec)
-        if self.fi_bird < 0:
+        if self.fi_bird_out < 0:
             raise ValueError\
-            ('fi_bird=%g is a non-physical value.' % self.fi_bird)
+            ('fi_bird=%g is a non-physical value.' % self.fi_bird_out)
         if self.bw_bird < 0:
             raise ValueError\
             ('self.bw_bird=%g is a non-physical value.' % self.bw_bird)
-        self.det = (self.noaec * self.fi_bird)/self.bw_bird
+        self.det_out = (self.noaec * self.fi_bird_out)/self.bw_bird
 
     # Adjusted chronic toxicty value for mammals
 
@@ -331,7 +407,7 @@ class sip(object):
         if self.aw_mamm < 0:
             raise ValueError\
             ('aw_mamm=%g is a non-physical value.' % self.aw_mamm)
-        self.act = (self.noael) * ((self.bw_mamm/self.aw_mamm)**0.25)
+        self.act_out = (self.noael) * ((self.bw_mamm/self.aw_mamm)**0.25)
 
     # ---- Is drinking water a concern?
 
@@ -340,8 +416,8 @@ class sip(object):
 
     def acute_bird(self):
         try:
-            self.dose_bird = float(self.dose_bird)
-            self.at_bird = float(self.at_bird)
+            self.dose_bird_out = float(self.dose_bird_out)
+            self.at_bird_out = float(self.at_bird_out)
         except IndexError:
             raise IndexError\
             ('The upper bound estimate of exposure for birds, and/or the adjusted'\
@@ -349,38 +425,39 @@ class sip(object):
         except ValueError:
             raise ValueError\
             ('The upper bound estimate of exposure for birds must be a real'\
-            ' number, not "%mg/kg"' % self.dose_bird)
+            ' number, not "%mg/kg"' % self.dose_bird_out)
         except ValueError:
             raise ValueError\
             ('The adjusted toxicity value for birds must be a real number,'\
-            ' not "%mg/kg"' % self.at_bird)
+            ' not "%mg/kg"' % self.at_bird_out)
         except ZeroDivisionError:
             raise ZeroDivisionError\
             ('The adjusted toxicity value for birds must be non-zero.')
-        if self.dose_bird < 0:
+        if self.dose_bird_out < 0:
             raise ValueError\
-            ('dose_bird=%g is a non-physical value.' % self.dose_bird)
-        if self.at_bird < 0:
+            ('dose_bird=%g is a non-physical value.' % self.dose_bird_out)
+        if self.at_bird_out < 0:
             raise ValueError\
-            ('at_bird=%g is a non-physical value.' % self.at_bird)
-        self.acute_bird = self.dose_bird/self.at_bird
+            ('at_bird=%g is a non-physical value.' % self.at_bird_out)
+        self.acute_bird_out = self.dose_bird_out/self.at_bird_out
 
 
     def acuconb(self):
-        if self.acute_bird == None:
+        if self.acute_bird_out == None:
             raise ValueError\
             ('acute_bird variable equals None and therefor this function cannot be run.')
-        if self.acute_bird < 0.1:
-            return ('Drinking water exposure alone is NOT a potential concern for birds')
+        if self.acute_bird_out < 0.1:
+            self.acuconb_out = ('Drinking water exposure alone is NOT a potential concern for birds')
         else:
-            return ('Exposure through drinking water alone is a potential concern for birds')
+            self.acuconb_out ('Exposure through drinking water alone is a potential concern for birds')
+        return self.acuconb_out
 
     # Acute exposures for mammals
 
     def acute_mamm(self):
         try:
-            self.dose_mamm = float(self.dose_mamm)
-            self.at_mamm = float(self.at_mamm)
+            self.dose_mamm_out = float(self.dose_mamm_out)
+            self.at_mamm_out = float(self.at_mamm_out)
         except IndexError:
             raise IndexError\
             ('The upper bound estimate of exposure for mammals, and/or the adjusted'\
@@ -388,39 +465,40 @@ class sip(object):
         except ValueError:
             raise ValueError\
             ('The upper bound estimate of exposure for mammals must be a real'\
-            ' number, not "%mg/kg"' % self.dose_mamm)
+            ' number, not "%mg/kg"' % self.dose_mamm_out)
         except ValueError:
             raise ValueError\
             ('The adjusted toxicity value for mammals must be a real number,'\
-            ' not "%mg/kg"' % self.at_mamm)
+            ' not "%mg/kg"' % self.at_mamm_out)
         except ZeroDivisionError:
             raise ZeroDivisionError\
             ('The adjusted toxicity value for mammals must be non-zero.')
-        if self.dose_mamm < 0:
+        if self.dose_mamm_out < 0:
             raise ValueError\
-            ('dose_mamm=%g is a non-physical value.' % self.dose_mamm)
-        if self.at_mamm < 0:
+            ('dose_mamm=%g is a non-physical value.' % self.dose_mamm_out)
+        if self.at_mamm_out < 0:
             raise ValueError\
-            ('at_mamm=%g is a non-physical value.' % self.at_mamm)
-        self.acute_mamm = self.dose_mamm/self.at_mamm
+            ('at_mamm=%g is a non-physical value.' % self.at_mamm_out)
+        self.acute_mamm_out = self.dose_mamm_out/self.at_mamm_out
 
 
     def acuconm(self):
-        if self.acute_mamm == None:
+        if self.acute_mamm_out == None:
             raise ValueError\
             ('acute_mamm variable equals None and therefor this function cannot be run.')
-        if self.acute_mamm < 0.1:
-            return ('Drinking water exposure alone is NOT a potential concern for mammals')
+        if self.acute_mamm_out < 0.1:
+            self.acuconm_out = ('Drinking water exposure alone is NOT a potential concern for mammals')
         else:
-            return ('Exposure through drinking water alone is a potential concern for mammals')
+            self.acuconm_out = ('Exposure through drinking water alone is a potential concern for mammals')
+        return self.acuconm_out
 
 
     # Chronic Exposures for birds
 
     def chron_bird(self):
         try:
-            self.dose_bird = float(self.dose_bird)
-            self.det = float(self.det)
+            self.dose_bird_out = float(self.dose_bird_out)
+            self.det_out = float(self.det_out)
         except TypeError:
             raise TypeError\
             ('Either dose_bird or det equals None and therefor this function cannot be run.')
@@ -432,38 +510,39 @@ class sip(object):
         except ValueError:
             raise ValueError\
             ('The upper bound estimate of exposure for birds must be a real'\
-            ' number, not "%mg/kg"' % self.dose_bird)
+            ' number, not "%mg/kg"' % self.dose_bird_out)
         except ValueError:
             raise ValueError\
             ('The dose-equivalent chronic toxicity value for birds must be a real'\
-            ' number, not "%mg/kg"' % self.det)
+            ' number, not "%mg/kg"' % self.det_out)
         except ZeroDivisionError:
             raise ZeroDivisionError\
             ('The dose-equivalent chronic toxicity value for birds must be non-zero.')
-        if self.dose_bird < 0:
+        if self.dose_bird_out < 0:
             raise ValueError\
-            ('dose_bird=%g is a non-physical value.' % self.dose_bird)
-        if self.det < 0:
+            ('dose_bird=%g is a non-physical value.' % self.dose_bird_out)
+        if self.det_out < 0:
             raise ValueError\
-            ('det=%g is a non-physical value.' % self.det)
-        self.chron_bird = self.dose_bird/self.det
+            ('det=%g is a non-physical value.' % self.det_out)
+        self.chron_bird_out = self.dose_bird_out/self.det_out
 
 
     def chronconb(self):
-        if self.chron_bird == None:
+        if self.chron_bird_out == None:
             raise ValueError\
             ('chron_bird variable equals None and therefor this function cannot be run.')
-        if self.chron_bird < 1:
-            return ('Drinking water exposure alone is NOT a potential concern for birds')
+        if self.chron_bird_out < 1:
+            self.chronconb_out = ('Drinking water exposure alone is NOT a potential concern for birds')
         else:
-            return ('Exposure through drinking water alone is a potential concern for birds')
+            self.chronconb_out = ('Exposure through drinking water alone is a potential concern for birds')
+        return self.chronconb_out
 
     # Chronic exposures for mammals
 
     def chron_mamm(self):
         try:
-            self.dose_mamm = float(self.dose_mamm)
-            self.act = float(self.act)
+            self.dose_mamm_out = float(self.dose_mamm_out)
+            self.act_out = float(self.act_out)
         except IndexError:
             raise IndexError\
             ('The upper bound estimate of exposure for mammals, and/or the'\
@@ -472,28 +551,29 @@ class sip(object):
         except ValueError:
             raise ValueError\
             ('The upper bound estimate of exposure for mammals must be a real'\
-            ' number, not "%mg/kg"' % self.dose_mamm)
+            ' number, not "%mg/kg"' % self.dose_mamm_out)
         except ValueError:
             raise ValueError\
             ('The adjusted chronic toxicity value for mammals must be a real'\
-            ' number, not "%mg/kg"' % self.act)
+            ' number, not "%mg/kg"' % self.act_out)
         except ZeroDivisionError:
             raise ZeroDivisionError\
             ('The adjusted chronic toxicity value for mammals must be non-zero.')
-        if self.dose_mamm < 0:
+        if self.dose_mamm_out < 0:
             raise ValueError\
-            ('dose_mamm=%g is a non-physical value.' % self.dose_mamm)
-        if self.act < 0:
+            ('dose_mamm=%g is a non-physical value.' % self.dose_mamm_out)
+        if self.act_out < 0:
             raise ValueError\
-            ('act=%g is a non-physical value.' % self.act)
-        self.chron_mamm = self.dose_mamm/self.act
+            ('act=%g is a non-physical value.' % self.act_out)
+        self.chron_mamm_out = self.dose_mamm_out/self.act_out
 
     def chronconm(self):
-        if self.chron_mamm == None:
+        if self.chron_mamm_out == None:
             raise ValueError\
             ('chron_mamm variable equals None and therefor this function cannot be run.')
-        if self.chron_mamm < 1:
-            return ('Drinking water exposure alone is NOT a potential concern for mammals')
+        if self.chron_mamm_out < 1:
+            self.chronconm_out = ('Drinking water exposure alone is NOT a potential concern for mammals')
         else:
-            return ('Exposure through drinking water alone is a potential concern for mammals')
+            self.chronconm_out = ('Exposure through drinking water alone is a potential concern for mammals')
+        return self.chronconm_out
 

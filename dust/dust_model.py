@@ -6,7 +6,7 @@ import math
 class dust(object):
 
     def __init__(self, chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res, bird_acute_oral_study, bird_study_add_comm,
-              low_bird_acute_ld50, test_bird_bw, mineau, mamm_acute_derm_study, mamm_study_add_comm, mam_acute_derm_ld50, test_mam_bw):
+              low_bird_acute_ld50, test_bird_bw, mineau, mamm_acute_derm_study, mamm_study_add_comm, aviandermaltype, mam_acute_derm_ld50, mam_acute_oral_ld50, test_mam_bw):
         self.chemical_name=chemical_name
         self.label_epa_reg_no=label_epa_reg_no
         self.ar_lb=ar_lb
@@ -19,7 +19,9 @@ class dust(object):
         self.mineau=mineau
         self.mamm_acute_derm_study=mamm_acute_derm_study
         self.mamm_study_add_comm=mamm_study_add_comm
+        self.aviandermaltype=aviandermaltype
         self.mam_acute_derm_ld50=mam_acute_derm_ld50
+        self.mam_acute_oral_ld50 = mam_acute_oral_ld50
         self.test_mam_bw=test_mam_bw
         self.run_methods()
 
@@ -70,8 +72,14 @@ class dust(object):
 
     def bird_reptile_dermal_ld50(self):
         self.low_bird_acute_ld50 = float(self.low_bird_acute_ld50)
-        self.bird_reptile_dermal_ld50 = 10**(0.84+(0.62*(math.log(self.low_bird_acute_ld50))))
+        self.mam_acute_oral_ld50 = float(self.mam_acute_oral_ld50)
+        self.mam_acute_derm_ld50 = float(self.mam_acute_derm_ld50)
+        if self.aviandermaltype == 'With DTI':
+            self.bird_reptile_dermal_ld50 = 10**(0.84+(0.62*(math.log(self.low_bird_acute_ld50))))
+        else:
+            self.bird_reptile_dermal_ld50 = 10**(1.7822+0.8199 *(math.log(self.low_bird_acute_ld50))-0.4874 * (math.log(self.mam_acute_oral_ld50/self.mam_acute_derm_ld50*1000)))
         return self.bird_reptile_dermal_ld50
+    
 
     #------Granular Application------
 
@@ -191,8 +199,7 @@ class dust(object):
             ('')
         self.amp_derm_ld50 = self.low_bird_acute_ld50*((20.0/self.test_bird_bw)**(self.mineau-1.0))
         return self.amp_derm_ld50
-
-
+   
     #Estimate 20g Bird/Reptile Dermal LD50 (mg a.i./kg-bw)
     def birdrep_derm_ld50(self):
         try:

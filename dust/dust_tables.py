@@ -67,10 +67,10 @@ def gett2data(dust_obj):
             mark_safe('Lowest Bird Acute Oral LD<sub>50</sub> &asymp; Amphibian Dermal LD<sub>50</sub>'), 
             'Tested Bird Body Weight','Mineau Scaling Factor for Birds',
             mark_safe('Mammal Acute Dermal (OCSPP 870.1200) MRID#'),'Additional Comments About Study (if any)',
-            mark_safe('Mammal Acute Dermal LD<sub>50</sub>'),'Tested Mammal Body Weight',],
+            mark_safe('Mammal Acute Dermal LD<sub>50</sub>'), 'Avian Dermal type', mark_safe('Mammal Acute Oral LD<sub>50</sub>'),'Tested Mammal Body Weight',],
         "Value": [dust_obj.bird_acute_oral_study, dust_obj.bird_study_add_comm, dust_obj.low_bird_acute_ld50, dust_obj.test_bird_bw, dust_obj.mineau, dust_obj.mamm_acute_derm_study,
-               dust_obj.mamm_study_add_comm, dust_obj.mam_acute_derm_ld50, dust_obj.test_mam_bw,],
-        "Units": ['', '', 'mg a.i./kg-bw', 'g','','','','mg a.i./kg-bw','g', ],
+               dust_obj.mamm_study_add_comm, dust_obj.mam_acute_derm_ld50, dust_obj.aviandermaltype, dust_obj.mam_acute_oral_ld50, dust_obj.test_mam_bw,],
+        "Units": ['', '', 'mg a.i./kg-bw', 'g','','','','', 'mg a.i./kg-bw','mg a.i./kg-bw','g', ],
     }
     return data
 

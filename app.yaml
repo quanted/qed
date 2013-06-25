@@ -253,6 +253,9 @@ handlers:
 - url: /openidserver
   script: auth/auth.py
 
+- url: /login
+  script: auth/auth.py
+
 #file not found
 - url: /.*
   script: file_not_found.py

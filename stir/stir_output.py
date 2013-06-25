@@ -48,11 +48,9 @@ class STIRExecutePage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'stir', 
                 'model_attributes':'STIR Output'})   
-        
-        def getheaderpvu():
-            headings = ["Parameter", "Value", "Units"]
-            return headings        
-        pvuheadings = getheaderpvu()
+              
+        pvuheadings = stir_tables.getheaderpvu()
+        pvrheadings = stir_tables.getheaderpvr()
         djtemplate = stir_tables.getdjtemplate()
         tmpl = Template(djtemplate)
         
@@ -62,10 +60,12 @@ class STIRExecutePage(webapp.RequestHandler):
             mammal_inhalation_lc50,duration_mammal_inhalation_study,body_weight_assessed_mammal, body_weight_tested_mammal, 
             mammal_oral_ld50)
 
+        html = html +stir_tables.timestamp()
         html = html + stir_tables.table_1(pvuheadings,tmpl,sm)
         html = html + stir_tables.table_2(pvuheadings,tmpl,sm)
         html = html + stir_tables.table_3(pvuheadings,tmpl,sm)
         html = html + stir_tables.table_4(pvuheadings,tmpl,sm)
+        html = html + stir_tables.table_5(pvrheadings,tmpl,sm)
         # sat_air_conc = sm.sat_air_conc
         # inh_rate_avian = sm.inh_rate_avian
         # vid_avian = sm.vid_avian

@@ -39,7 +39,7 @@ class SIPExecutePage(webapp.RequestHandler):
         bwm_other = form.getvalue('bwm_other')
         b_species = form.getvalue('b_species')
         m_species = form.getvalue('m_species')
-        sip_obj = sip_model.sip(chemical_name, b_species, m_species, bw_quail, bw_duck, bwb_other, bw_rat, bwm_other, sol, ld50_a, ld50_m, aw_bird, mineau, aw_mamm, noaec, noael)
+        sip_obj = sip_model.sip(True,True,chemical_name, b_species, m_species, bw_quail, bw_duck, bwb_other, bw_rat, bwm_other, sol, ld50_a, ld50_m, aw_bird, mineau, aw_mamm, noaec, noael)
         text_file = open('sip/sip_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
@@ -50,42 +50,8 @@ class SIPExecutePage(webapp.RequestHandler):
                 'model':'sip', 
                 'model_attributes':'SIP Output'})     
 
-
-
-        # html = html + sip_tables.table_1(chemical_name, select_receptor, bw_bird, bw_mamm, sol, ld50, aw_bird, tw_bird, aw_mamm, tw_mamm, mineau, noaec, noael)      
-
         html = html + sip_tables.table_all(sip_obj)
 
-       
-        # html = html + """
-        #  #pre-table 1
-        # <table>
-        # <tr><H3>User Inputs: Chemical Identity</H3></tr>
-        # <tr><H4>Application and Chemical Information</H4></tr>
-        # <tr></tr>
-        # </table>
-        # """
-        # pvuheadings = sip_tables.getheaderpvu()
-        # pvrheadings = sip_tables.getheaderpvr()
-        # djtemplate = sip_tables.getdjtemplate()
-        # tmpl = Template(djtemplate)
-
-        # #table 1
-        # t1data = sip_tables.gett1data(chemical_name, select_receptor, bw_bird, bw_mamm, sol, ld50, aw_bird, tw_bird, aw_mamm, tw_mamm, mineau, noaec, noael)
-        # t1rows = sip_tables.gethtmlrowsfromcols(t1data,pvuheadings)
-        # html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
-        # html = html + """
-        #  #pre-table 2
-        # <table>
-        # <tr><H3>Outputs: Chemical Identity</H3></tr>
-        # <tr><H4>Application and Chemical Information</H4></tr>
-        # <tr></tr>
-        # </table>
-        # """
-        # #table 2
-        # t2data = sip_tables.gett2data(aw_bird, bw_bird, sol, ld50, tw_bird, mineau, noaec)
-        # t2rows = sip_tables.gethtmlrowsfromcols(t1data,pvuheadings)
-        # html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

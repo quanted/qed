@@ -14,27 +14,29 @@ from pprint import pprint
 import csv
 import sys
 sys.path.append("../sip")
-from sip import sip_model_new,sip_tables
+from sip import sip_model,sip_tables
 import logging
 
 logger = logging.getLogger('SIPQaqcPage')
 
 cwd= os.getcwd()
 data = csv.reader(open(cwd+'/sip/sip_qaqc.csv'))
-bw_bird=[]
-bw_mamm=[]
+chemical_name=[]
+b_species=[]
+m_species=[]
+bw_quail=[]
+bw_duck=[]
+bwb_other=[]
+bw_rat=[]
+bwm_other=[]
 avian_ld50=[]
 mammalian_ld50=[]
 sol = []
 aw_bird=[]
-tw_bird=[]
 mineau=[]
 aw_mamm=[]
-tw_mamm=[]
-avian_noaec=[]
-avian_noael=[]
-mammalian_noaec=[]
-mammalian_noael=[]
+noaec=[]
+noael=[]
 
 ######Pre-defined outputs########
 fw_bird_out = []
@@ -57,37 +59,39 @@ chronconm_out = []
 
 data.next()
 for row in data:
-    bw_bird.append(float(row[0]))
-    bw_mamm.append(float(row[1]))  
-    sol.append(float(row[2]))
-    avian_ld50.append(float(row[3])) 
-    mammalian_ld50.append(float(row[4]))
-    aw_bird.append(float(row[5]))
-    tw_bird.append(float(row[6])) 
-    mineau.append(float(row[7]))
-    aw_mamm.append(float(row[8]))
-    tw_mamm.append(float(row[9]))
-    avian_noaec.append(float(row[10])) 
-    avian_noael.append(float(row[11]))
-    mammalian_noaec.append(float(row[12]))
-    mammalian_noael.append(float(row[13])) 
-    fw_bird_out.append(float(row[14]))
-    fw_mamm_out.append(float(row[15]))
-    dose_bird_out.append(float(row[16]))
-    dose_mamm_out.append(float(row[17])) 
-    at_bird_out.append(float(row[18]))
-    at_mamm_out.append(float(row[19]))
-    fi_bird_out.append(str(row[20])) 
-    det_out.append(float(row[21]))
-    act_out.append(float(row[22]))
-    acute_bird_out.append(float(row[23]))
-    acuconb_out.append(str(row[24])) 
-    acute_mamm_out.append(float(row[25]))
-    acuconm_out.append(str(row[26]))
-    chron_bird_out.append(float(row[27])) 
-    chronconb_out.append(str(row[28]))
-    chron_mamm_out.append(float(row[29]))
-    chronconm_out.append(str(row[30]))
+    chemical_name.append(row[0])
+    b_species.append(row[1])
+    m_species.append(row[2])
+    bw_quail.append(float(row[3]))
+    bw_duck.append(float(row[4]))
+    bwb_other.append(float(row[5])) 
+    bw_rat.append(float(row[6]))
+    bwm_other.append(float(row[7]))
+    sol.append(float(row[8]))
+    avian_ld50.append(float(row[9])) 
+    mammalian_ld50.append(float(row[10]))
+    aw_bird.append(float(row[11]))
+    mineau.append(float(row[12]))
+    aw_mamm.append(float(row[13]))
+    noaec.append(float(row[14])) 
+    noael.append(float(row[15]))
+    fw_bird_out.append(float(row[16]))
+    fw_mamm_out.append(float(row[17]))
+    dose_bird_out.append(float(row[18]))
+    dose_mamm_out.append(float(row[19])) 
+    at_bird_out.append(float(row[20]))
+    at_mamm_out.append(float(row[21]))
+    fi_bird_out.append(str(row[22])) 
+    det_out.append(float(row[23]))
+    act_out.append(float(row[24]))
+    acute_bird_out.append(float(row[25]))
+    acuconb_out.append(str(row[26])) 
+    acute_mamm_out.append(float(row[27]))
+    acuconm_out.append(str(row[28]))
+    chron_bird_out.append(float(row[29])) 
+    chronconb_out.append(str(row[30]))
+    chron_mamm_out.append(float(row[31]))
+    chronconm_out.append(str(row[32]))
 
     
 out_fun_fw_bird = []
@@ -259,7 +263,7 @@ def suite(TestCaseName, **kwargs):
     test_out=stream.read()
     return test_out
 
-sip_obj = sip_model_new.sip(True,True,'', bw_bird[0], bw_mamm[0], sol[0], avian_ld50[0], mammalian_ld50[0], aw_bird[0], tw_bird[0], mineau[0], aw_mamm[0], tw_mamm[0], avian_noaec[0], avian_noael[0])
+sip_obj = sip_model.sip(True,True,chemical_name[0], b_species[0], m_species[0], bw_quail[0], bw_duck[0], bwb_other[0], bw_rat[0], bwm_other[0], sol[0], avian_ld50[0], mammalian_ld50[0], aw_bird[0], mineau[0], aw_mamm[0], noaec[0], noael[0])
 sip_obj.set_unit_testing_variables()
 
 sip_obj.fw_bird_out_expected = fw_bird_out[0]

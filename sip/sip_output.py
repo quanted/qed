@@ -25,7 +25,6 @@ class SIPExecutePage(webapp.RequestHandler):
         ld50_a = form.getvalue('ld50_a')
         ld50_m = form.getvalue('ld50_m')
         aw_bird = form.getvalue('aw_bird')
-        print aw_bird
         # tw_bird = form.getvalue('body_weight_of_the_tested_bird')
         aw_mamm = form.getvalue('aw_mamm')
         # tw_mamm = form.getvalue('body_weight_of_the_tested_mammal')

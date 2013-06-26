@@ -1,3 +1,6 @@
+import sys
+import math
+import logging
 from django.utils import simplejson
 
 def toJSON(terrplant_object):
@@ -10,7 +13,7 @@ def fromJSON(json_string):
     new_terrplant = terrplant(True,False,vars_dict=terrplant_vars)
     return new_terrplant
 
-class terrplant:
+class terrplant(object):
 
     def __init__(self,set_variables=True,run_methods=True,A=1,I=1,R=1,D=1,nms=1,lms=1,nds=1,lds=1,vars_dict=None,):
         self.set_default_variables()

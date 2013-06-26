@@ -9,12 +9,12 @@ import cgitb
 cgitb.enable()
 import unittest
 from StringIO import StringIO
-from iec import iec_output
 from pprint import pprint
 import csv
 import sys
 sys.path.append("../terrplant")
 from terrplant import terrplant_model,terrplant_tables
+from django.template import Context, Template
 import logging
 
 logger = logging.getLogger('TerrplantQaqcPage')
@@ -29,6 +29,7 @@ nms=[]
 lms=[]
 nds=[]
 lds=[]
+chemical_name = []
 
 ######Pre-defined outputs########
 rundry_out = []
@@ -63,43 +64,44 @@ LOCldsspray_out = []
 
 data.next()
 for row in data:
-    A.append(float(row[0]))
-    I.append(float(row[1]))  
-    R.append(float(row[2]))
-    rundry_out.append(float(row[3])) 
-    runsemi_out.append(float(row[4]))
-    D.append(float(row[5]))
-    spray_out.append(float(row[6])) 
-    totaldry_out.append(float(row[7]))
-    totalsemi_out.append(float(row[8]))
-    nms.append(float(row[9]))
-    nmsRQdry_out.append(float(row[10])) 
-    LOCnmsdry_out.append(str(row[11]))
-    nmsRQsemi_out.append(float(row[12]))
-    LOCnmssemi_out.append(str(row[13])) 
-    nmsRQspray_out.append(float(row[14]))
-    LOCnmsspray_out.append(str(row[15]))
-    lms.append(float(row[16]))
-    lmsRQdry_out.append(float(row[17])) 
-    LOClmsdry_out.append(str(row[18]))
-    lmsRQsemi_out.append(float(row[19]))
-    LOClmssemi_out.append(str(row[20])) 
-    lmsRQspray_out.append(float(row[21]))
-    LOClmsspray_out.append(str(row[22]))
-    nds.append(float(row[23]))
-    ndsRQdry_out.append(float(row[24])) 
-    LOCndsdry_out.append(str(row[25]))
-    ndsRQsemi_out.append(float(row[26]))
-    LOCndssemi_out.append(str(row[27])) 
-    ndsRQspray_out.append(float(row[28]))
-    LOCndsspray_out.append(str(row[29]))
-    lds.append(float(row[30]))
-    ldsRQdry_out.append(float(row[31])) 
-    LOCldsdry_out.append(str(row[32]))
-    ldsRQsemi_out.append(float(row[33]))
-    LOCldssemi_out.append(str(row[34])) 
-    ldsRQspray_out.append(float(row[35]))
-    LOCldsspray_out.append(str(row[36]))
+    chemical_name.append(str(row[0]))
+    A.append(float(row[1]))
+    I.append(float(row[2]))  
+    R.append(float(row[3]))
+    rundry_out.append(float(row[4])) 
+    runsemi_out.append(float(row[5]))
+    D.append(float(row[6]))
+    spray_out.append(float(row[7])) 
+    totaldry_out.append(float(row[8]))
+    totalsemi_out.append(float(row[9]))
+    nms.append(float(row[10]))
+    nmsRQdry_out.append(float(row[11])) 
+    LOCnmsdry_out.append(str(row[12]))
+    nmsRQsemi_out.append(float(row[13]))
+    LOCnmssemi_out.append(str(row[14])) 
+    nmsRQspray_out.append(float(row[15]))
+    LOCnmsspray_out.append(str(row[16]))
+    lms.append(float(row[17]))
+    lmsRQdry_out.append(float(row[18])) 
+    LOClmsdry_out.append(str(row[19]))
+    lmsRQsemi_out.append(float(row[20]))
+    LOClmssemi_out.append(str(row[21])) 
+    lmsRQspray_out.append(float(row[22]))
+    LOClmsspray_out.append(str(row[23]))
+    nds.append(float(row[24]))
+    ndsRQdry_out.append(float(row[25])) 
+    LOCndsdry_out.append(str(row[26]))
+    ndsRQsemi_out.append(float(row[27]))
+    LOCndssemi_out.append(str(row[28])) 
+    ndsRQspray_out.append(float(row[29]))
+    LOCndsspray_out.append(str(row[30]))
+    lds.append(float(row[31]))
+    ldsRQdry_out.append(float(row[32])) 
+    LOCldsdry_out.append(str(row[33]))
+    ldsRQsemi_out.append(float(row[34]))
+    LOCldssemi_out.append(str(row[35])) 
+    ldsRQspray_out.append(float(row[36]))
+    LOCldsspray_out.append(str(row[37]))
     
 out_fun_rundry = []
 out_fun_runsemi = []
@@ -538,6 +540,7 @@ class TerrplantQaqcPage(webapp.RequestHandler):
                 'model_attributes':'TerrPlant QAQC'})
 
         terr = terrplant_model.terrplant(True,True,A[0],I[0],R[0],D[0],nms[0],lms[0],nds[0],lds[0])
+        terr.chemical_name_expected = chemical_name[0]
         terr.rundry_results_expected = out_fun_rundry[0]
         terr.runsemi_results_expected = out_fun_runsemi[0]
         terr.spray_results_expected = out_fun_spray[0]

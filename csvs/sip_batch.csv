@@ -1,1 +1,3 @@
-bw_bird,bw_mamm,sol,avian_ld50,mammalian_ld50,aw_bird,tw_bird,mineau,aw_mamm,tw_mamm,avian_noaec,avian_noael,mammalian_noaec,mammalian_noael1,1,1,1,1,2,1,2,2,1,2,1,2,11,1,1,1,1,1,2,2,2,16,1,1,1,1
+chemical_name,b_species,m_species,bw_quail,bw_duck,bwb_other,bw_rat,bwm_other,sol,avian_ld50,mammalian_ld50,aw_bird,mineau,aw_mamm,noaec,noael
+test0,178,350,2,-1,-1,1,-1,1,1,1,2,2,2,2,1
+test1,178,350,2,-1,-1,1,-1,1,1,1,1,2,2,1,1

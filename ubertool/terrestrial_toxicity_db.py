@@ -19,6 +19,7 @@ class TTInp(forms.Form):
     user_terrestrial_toxicity_configuration = forms.ChoiceField(label="User Saved Terrestrial Toxicity Configuration",required=True)
     config_name = forms.CharField(label="Use Configuration Name", initial="use-config-%s"%datetime.datetime.now())
     avian_ld50 = forms.FloatField(label='Avian LD50 (mg/kg-bw)')
+    low_bird_acute_oral_ld50 = forms.FloatField(label='Avian LD50 lowest dose(mg/kg-bw)')
     avian_lc50 = forms.FloatField(label='Avian LC50 (mg/kg-bw)')
     avian_NOAEC = forms.FloatField(label='Avian NOAEC (mg/kg-diet)')
     avian_NOAEL = forms.FloatField(label='Avian NOAEL (mg/kg-bw)')

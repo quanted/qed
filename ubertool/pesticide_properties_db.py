@@ -16,6 +16,8 @@ import datetime
 class PPInp(forms.Form):
     user_pest_configuration = forms.ChoiceField(label="User Saved Pesticide Properties Configuration",required=True)
     config_name = forms.CharField(label="Pesticide Properties Configuration Name", initial="pesticide-properties-config-%s"%datetime.datetime.now())
+    chemical_name = forms.CharField(label="Chemical Name")
+    label_epa_reg_no = forms.CharField(label="Label EPA Reg. No.")
     molecular_weight = forms.FloatField(label='Molecular weight (g/mol)')
     henrys_law_constant = forms.FloatField(label="Henry's Law Constant (atm-m^3/mol)")
     vapor_pressure = forms.FloatField(label='Vapor Pressure (torr)')

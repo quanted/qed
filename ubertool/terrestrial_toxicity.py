@@ -10,6 +10,7 @@ from google.appengine.api import users
 class TerrestrialToxicity(db.Model):
     config_name = db.StringProperty()
     user = db.UserProperty()
+    low_bird_acute_oral_ld50 = db.FloatProperty()
     avian_ld50 = db.FloatProperty()
     avian_lc50 = db.FloatProperty()
     avian_NOAEC = db.FloatProperty()

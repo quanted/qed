@@ -12,6 +12,7 @@ logger = logging.getLogger('ExposureConcentrationsService')
 class ExposureConcentrations(db.Model):
     config_name = db.StringProperty()
     user = db.UserProperty()
+    ar_lb = db.FloatProperty()
     one_in_ten_peak_exposure_concentration = db.FloatProperty() 
     one_in_ten_four_day_average_exposure_concentration = db.FloatProperty() 
     one_in_ten_twentyone_day_average_exposure_concentration = db.FloatProperty() 
@@ -27,4 +28,5 @@ class ExposureConcentrations(db.Model):
     pore_water_twentyone_day_average_exposure_concentration = db.FloatProperty() 
     pore_water_sixty_day_average_exposure_concentration = db.FloatProperty() 
     pore_water_ninety_day_average_exposure_concentration = db.FloatProperty() 
+    frac_pest_surface = db.FloatProperty()
     created = db.DateTimeProperty(auto_now_add=True)

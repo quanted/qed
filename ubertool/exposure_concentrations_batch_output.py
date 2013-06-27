@@ -14,7 +14,9 @@ def batchLoadExposureConcentrationsConfigs(params_matrix,config_index,ubertool_c
     config_name = None
     if "exposure_concentrations_config_name" in params_matrix:
         config_name = params_matrix.get("exposure_concentrations_config_name")[config_index]
-    if "exposure_concentrations_config_name" in params_matrix:
+    if "ar_lb" in params_matrix:
+        config_params['ar_lb'] = params_matrix.get("ar_lb")[config_index]
+    if "concentration_of_particulate_organic_carbon" in params_matrix:
         config_params['concentration_of_particulate_organic_carbon'] = params_matrix.get("exposure_concentrations_config_name")[config_index]
     if "one_in_ten_peak_exposure_concentration" in params_matrix:
         config_params['one_in_ten_peak_exposure_concentration'] = params_matrix.get("one_in_ten_peak_exposure_concentration")[config_index]            
@@ -46,6 +48,8 @@ def batchLoadExposureConcentrationsConfigs(params_matrix,config_index,ubertool_c
         config_params['pore_water_sixty_day_average_exposure_concentration'] = params_matrix.get("pore_water_sixty_day_average_exposure_concentration")[config_index]            
     if "pore_water_ninety_day_average_exposure_concentration" in params_matrix:
         config_params['pore_water_ninety_day_average_exposure_concentration'] = params_matrix.get("pore_water_ninety_day_average_exposure_concentration")[config_index]            
+    if "frac_pest_surface" in params_matrix:
+        config_params['frac_pest_surface'] = params_matrix.get("frac_pest_surface")[config_index]            
     
     config_params['exposures_configuration'] = config_name
     ubertool_configuration_properties.update(config_params)

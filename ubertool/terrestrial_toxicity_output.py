@@ -34,6 +34,7 @@ class UbertoolTerrestrialToxicityConfigurationPage(webapp.RequestHandler):
             terr_tox.user = user
         terr_tox.config_name = config_name
         terr_tox.avian_ld50 = float(form.getvalue('avian_ld50'))
+        terr_tox.low_bird_acute_oral_ld50 = float(form.getvalue('low_bird_acute_oral_ld50'))
         terr_tox.avian_lc50 = float(form.getvalue('avian_lc50'))
         terr_tox.avian_NOAEC = float(form.getvalue('avian_NOAEC'))
         terr_tox.avian_NOAEL = float(form.getvalue('avian_NOAEL'))

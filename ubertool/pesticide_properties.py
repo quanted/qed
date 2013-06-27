@@ -9,6 +9,8 @@ import logging
 class PesticideProperties(db.Model):
     config_name = db.StringProperty()
     user = db.UserProperty()
+    chemical_name = db.StringProperty()
+    label_epa_reg_no = db.StringProperty()
     molecular_weight = db.FloatProperty()
     henrys_law_constant = db.FloatProperty()
     vapor_pressure = db.FloatProperty()

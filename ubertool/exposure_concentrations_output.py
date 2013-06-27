@@ -44,7 +44,7 @@ class UbertoolExposureConcentrationsConfigurationPage(webapp.RequestHandler):
         exposure_concentrations.pore_water_twentyone_day_average_exposure_concentration = float(form.getvalue('pore_water_twentyone_day_average_exposure_concentration'))
         exposure_concentrations.pore_water_sixty_day_average_exposure_concentration = float(form.getvalue('pore_water_sixty_day_average_exposure_concentration'))
         exposure_concentrations.pore_water_ninety_day_average_exposure_concentration = float(form.getvalue('pore_water_ninety_day_average_exposure_concentration'))
-
+        exposure_concentrations.frac_pest_surface = float(form.getvalue('frac_pest_surface'))
         exposure_concentrations.put()
         self.redirect("aquatic_toxicity.html")
         

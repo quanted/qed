@@ -14,6 +14,8 @@ def batchLoadTerrestrialToxicityConfigs(params_matrix,config_index,ubertool_conf
     config_name = None
     if "terrestrial_toxicity_config_name" in params_matrix:
         config_name = params_matrix.get("terrestrial_toxicity_config_name")[config_index]
+    if "low_bird_acute_oral_ld50" in params_matrix:
+        config_params['low_bird_acute_oral_ld50'] = params_matrix.get("low_bird_acute_oral_ld50")[config_index]  
     if "avian_ld50" in params_matrix:
         config_params['avian_ld50'] = params_matrix.get("avian_ld50")[config_index]            
     if "avian_lc50" in params_matrix:

@@ -63,7 +63,7 @@ def gett1data(sip_obj):
     data = { 
         "Parameter": ['Chemical Name', 'Body Weight of Bird', 'Body Weight of Mammal','Solubility', 'LD<sub>50 avian', 'LD<sub>50 mammal','Body Weight of Assessed Bird','Body Weight of Assessed Mammal','Mineau Scaling Factor','NOAEC','NOAEL',],
         "Value": [sip_obj.chemical_name,  sip_obj.bw_bird, sip_obj.bw_mamm, sip_obj.sol, sip_obj.ld50_a, sip_obj.ld50_m, sip_obj.aw_bird,  sip_obj.aw_mamm, sip_obj.mineau, sip_obj.noaec, sip_obj.noael,],
-        "Units": ['', 'kg', 'kg','mg/L', 'mg/kg','mg/kg','kg','kg','', 'mg/kg','mg/kg'],
+        "Units": ['', 'g', 'g','mg/L', 'mg/kg','mg/kg','g','g','', 'mg/kg-diet','mg/kg-bw'],
     }
     return data
 
@@ -71,7 +71,7 @@ def gett1dataqaqc(sip_obj):
     data = { 
         "Parameter": ['Chemical Name', 'Body Weight of Bird', 'Body Weight of Mammal','Solubility', 'LD<sub>50 avian', 'LD<sub>50 mammal','Body Weight of Assessed Bird','Body Weight of Assessed Mammal','Mineau Scaling Factor','NOAEC','NOAEL',],
         "Value": [sip_obj.chemical_name_expected,  sip_obj.bw_bird, sip_obj.bw_mamm, sip_obj.sol, sip_obj.ld50_a, sip_obj.ld50_m, sip_obj.aw_bird,  sip_obj.aw_mamm, sip_obj.mineau, sip_obj.noaec, sip_obj.noael,],
-        "Units": ['', 'kg', 'kg','mg/L', 'mg/kg','mg/kg','kg','kg','', 'mg/kg','mg/kg'],
+        "Units": ['', 'g', 'g','mg/L', 'mg/kg','mg/kg','g','g','', 'mg/kg-diet','mg/kg-bw'],
     }
     return data
 
@@ -116,29 +116,28 @@ def gett3dataqaqc(sip_obj):
     }
     return data
 
-def gettsumdata(bw_bird, bw_mamm, avian_ld50, mammalian_ld50, sol, aw_bird, tw_bird, mineau,
-                    aw_mamm, tw_mamm, avian_noaec, avian_noael, mammalian_noaec, mammalian_noael):
+def gettsumdata(bw_quail,bw_duck,bwb_other,bw_rat,bwm_other,sol,
+                    avian_ld50,mammalian_ld50,aw_bird,mineau,aw_mamm,noaec,noael):
     data = { 
-        "Parameter": ['BW Bird', 'BW Mammalian', 'Avian LD50', 'Mammalian LD50', 
-                    'Solubility','AW Bird', 'TW Bird', 'Mineau', 'AW Mammalian', 'TW Mammalian',
-                    'NOAEL for Avian','Noaec for Avian', 'NOAEL for Mammal','Noaec for Mammal'],
-        "Mean": ['%.2e' % numpy.mean(bw_bird),'%.2e' % numpy.mean(bw_mamm),'%.2e' % numpy.mean(avian_ld50), '%.2e' % numpy.mean(mammalian_ld50), 
-                 '%.2e' % numpy.mean(sol), '%.2e' % numpy.mean(aw_bird), '%.2e' % numpy.mean(tw_bird), '%.2e' % numpy.mean(mineau),
-                 '%.2e' % numpy.mean(aw_mamm), '%.2e' % numpy.mean(tw_mamm), '%.2e' % numpy.mean(avian_noaec),
-                 '%.2e' % numpy.mean(avian_noael), '%.2e' % numpy.mean(mammalian_noaec), '%.2e' % numpy.mean(mammalian_noael),],
-        "Std": ['%.2e' % numpy.std(bw_bird),'%.2e' % numpy.std(bw_mamm),'%.2e' % numpy.std(avian_ld50), '%.2e' % numpy.std(mammalian_ld50), 
-                '%.2e' % numpy.std(sol), '%.2e' % numpy.std(aw_bird), '%.2e' % numpy.std(tw_bird), '%.2e' % numpy.std(mineau),
-                 '%.2e' % numpy.std(aw_mamm), '%.2e' % numpy.std(tw_mamm), '%.2e' % numpy.std(avian_noaec),
-                 '%.2e' % numpy.std(avian_noael), '%.2e' % numpy.std(mammalian_noaec), '%.2e' % numpy.std(mammalian_noael),],
-        "Min": ['%.2e' % numpy.min(bw_bird),'%.2e' % numpy.min(bw_mamm),'%.2e' % numpy.min(avian_ld50), '%.2e' % numpy.min(mammalian_ld50), 
-                '%.2e' % numpy.min(sol), '%.2e' % numpy.min(aw_bird), '%.2e' % numpy.min(tw_bird), '%.2e' % numpy.min(mineau),
-                 '%.2e' % numpy.min(aw_mamm), '%.2e' % numpy.min(tw_mamm), '%.2e' % numpy.min(avian_noaec),
-                 '%.2e' % numpy.min(avian_noael), '%.2e' % numpy.min(mammalian_noaec), '%.2e' % numpy.min(mammalian_noael),],
-         "Max": ['%.2e' % numpy.max(bw_bird),'%.2e' % numpy.max(bw_mamm),'%.2e' % numpy.max(avian_ld50), '%.2e' % numpy.max(mammalian_ld50), 
-                '%.2e' % numpy.max(sol), '%.2e' % numpy.max(aw_bird), '%.2e' % numpy.max(tw_bird), '%.2e' % numpy.max(mineau),
-                 '%.2e' % numpy.max(aw_mamm), '%.2e' % numpy.max(tw_mamm), '%.2e' % numpy.max(avian_noaec),
-                 '%.2e' % numpy.max(avian_noael), '%.2e' % numpy.max(mammalian_noaec), '%.2e' % numpy.max(mammalian_noael),],
-        "Unit": ['', '', '', '', '','', '', '','', '', '','', '', '',],
+        "Parameter": ['BW Quail', 'BW Duck', 'BW Bird Other', 'BW Rat', 'BW Mammal Other', 'Avian LD50', 'Mammalian LD50', 
+                    'Solubility','AW Bird' , 'Mineau', 'AW Mammalian', 'NOAEC','NOAEL'],
+        "Mean": ['%.2e' % numpy.mean(bw_quail),'%.2e' % numpy.mean(bw_duck),'%.2e' % numpy.mean(bwb_other), '%.2e' % numpy.mean(bw_rat), 
+                 '%.2e' % numpy.mean(bwm_other), '%.2e' % numpy.mean(sol), '%.2e' % numpy.mean(avian_ld50), '%.2e' % numpy.mean(mammalian_ld50),
+                 '%.2e' % numpy.mean(aw_bird), '%.2e' % numpy.mean(mineau), '%.2e' % numpy.mean(aw_mamm),
+                 '%.2e' % numpy.mean(noaec), '%.2e' % numpy.mean(noael),],
+        "Std": ['%.2e' % numpy.std(bw_quail),'%.2e' % numpy.std(bw_duck),'%.2e' % numpy.std(bwb_other), '%.2e' % numpy.std(bw_rat), 
+                '%.2e' % numpy.std(bwm_other), '%.2e' % numpy.std(sol), '%.2e' % numpy.std(avian_ld50), '%.2e' % numpy.std(mammalian_ld50),
+                 '%.2e' % numpy.std(aw_bird), '%.2e' % numpy.std(mineau), '%.2e' % numpy.std(aw_mamm),
+                 '%.2e' % numpy.std(noaec),'%.2e' % numpy.std(noael),],
+        "Min": ['%.2e' % numpy.min(bw_quail),'%.2e' % numpy.min(bw_duck),'%.2e' % numpy.min(bwb_other), '%.2e' % numpy.min(bw_rat), 
+                '%.2e' % numpy.min(bwm_other), '%.2e' % numpy.min(sol), '%.2e' % numpy.min(avian_ld50), '%.2e' % numpy.min(mammalian_ld50),
+                 '%.2e' % numpy.min(aw_bird), '%.2e' % numpy.min(mineau), '%.2e' % numpy.min(aw_mamm),
+                 '%.2e' % numpy.min(noaec),'%.2e' % numpy.min(noael),],
+         "Max": ['%.2e' % numpy.max(bw_quail),'%.2e' % numpy.max(bw_duck),'%.2e' % numpy.max(bwb_other), '%.2e' % numpy.max(bw_rat), 
+                '%.2e' % numpy.max(bwm_other), '%.2e' % numpy.max(sol), '%.2e' % numpy.max(avian_ld50), '%.2e' % numpy.max(mammalian_ld50),
+                 '%.2e' % numpy.max(aw_bird), '%.2e' % numpy.max(mineau), '%.2e' % numpy.max(aw_mamm),
+                 '%.2e' % numpy.max(noaec),'%.2e' % numpy.max(noael),],
+        "Unit": ['', '', '', '', '','', '', '','', '', '','', ],
     }
     return data
 
@@ -353,22 +352,22 @@ def table_3_qaqc(sip_obj):
         return html
 
 
-def table_all_sum(sumheadings, tmpl, bw_bird, bw_mamm, avian_ld50, mammalian_ld50, sol, aw_bird, tw_bird, mineau,
-                    aw_mamm, tw_mamm, avian_noaec, avian_noael, mammalian_noaec, mammalian_noael,
+def table_all_sum(sumheadings, tmpl, bw_quail,bw_duck,bwb_other,bw_rat,bwm_other,sol,
+                    avian_ld50,mammalian_ld50,aw_bird,mineau,aw_mamm,noaec,noael,
                     fw_bird_out, fw_mamm_out, dose_bird_out, dose_mamm_out, at_bird_out, 
                     at_mamm_out, fi_bird_out, det_out, 
                     act_out, acute_bird_out, acute_mamm_out, 
                     chron_bird_out, chron_mamm_out):
-    html_all_sum = table_sum_input(sumheadings, tmpl, bw_bird, bw_mamm, avian_ld50, mammalian_ld50, sol, aw_bird, tw_bird, 
-                    mineau, aw_mamm, tw_mamm, avian_noaec, avian_noael, mammalian_noaec, mammalian_noael)
+    html_all_sum = table_sum_input(sumheadings, tmpl,bw_quail,bw_duck,bwb_other,bw_rat,bwm_other,sol,
+                    avian_ld50,mammalian_ld50,aw_bird,mineau,aw_mamm,noaec,noael)
     html_all_sum += table_sum_output(sumheadings, tmpl, fw_bird_out, fw_mamm_out, dose_bird_out, dose_mamm_out, at_bird_out, 
                     at_mamm_out, fi_bird_out, det_out, 
                     act_out, acute_bird_out, acute_mamm_out, 
                     chron_bird_out, chron_mamm_out)
     return html_all_sum
 
-def table_sum_input(sumheadings, tmpl, bw_bird, bw_mamm, avian_ld50, mammalian_ld50, sol, aw_bird, tw_bird, mineau,
-                    aw_mamm, tw_mamm, avian_noaec, avian_noael, mammalian_noaec, mammalian_noael):
+def table_sum_input(sumheadings, tmpl, bw_quail,bw_duck,bwb_other,bw_rat,bwm_other,sol,
+                    avian_ld50,mammalian_ld50,aw_bird,mineau,aw_mamm,noaec,noael):
         #pre-table sum_input
         html = """
         <table border="1" border="1" class="out_1">
@@ -377,8 +376,8 @@ def table_sum_input(sumheadings, tmpl, bw_bird, bw_mamm, avian_ld50, mammalian_l
         </table>
         """
         #table sum_input
-        tsuminputdata = gettsumdata(bw_bird, bw_mamm, avian_ld50, mammalian_ld50, sol, aw_bird, tw_bird, mineau,
-                    aw_mamm, tw_mamm, avian_noaec, avian_noael, mammalian_noaec, mammalian_noael)
+        tsuminputdata = gettsumdata(bw_quail,bw_duck,bwb_other,bw_rat,bwm_other,sol,
+                    avian_ld50,mammalian_ld50,aw_bird,mineau,aw_mamm,noaec,noael)
         tsuminputrows = gethtmlrowsfromcols(tsuminputdata, sumheadings)
         html = html + tmpl.render(Context(dict(data=tsuminputrows, headings=sumheadings)))
         return html

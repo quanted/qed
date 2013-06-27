@@ -65,10 +65,10 @@ def timestamp():
     ts = time.time()
     st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S %p')
     html="""
-    <b>STIR Version 1.0 (Beta)<br>
+    <H3 class="out_">STIR Version 1.0 (Beta)<br>
     """
     html = html + st
-    html = html + " (UTC)</b>"
+    html = html + " (UTC)</H3>"
     return html
 
 def table_1(pvuheadings, tmpl, sm):

@@ -10,14 +10,18 @@ def getheaderpvu():
 	return headings
 
 def getheaderpva():
-    headings = ["App", "Rate", "Number of Days"]
-    return headings
+    headings = ["App", "Rate", "Day of Application"]
+    headings_show = ["App", "Rate (lb ai/acre)", "Day of Application"]
+    headings_show_seed = ["App", "Rate (fl oz/cwt)", "Day of Application"]
+    return headings, headings_show, headings_show_seed
 
 def getheaderpv5():
     headings_1 = ["Avian (20g)", "Mammalian (15g)"]
     headings_2 = ["Size", "AAcute #1", "AAcute #2", "AChronic", "MAcute #1", "MAcute #2", "MChronic"]
-    headings_2_show = ["Size", "Acute #1", "Acute #2", "Chronic", "Acute #1", "Acute #2", "Chronic"]
-    return headings_1, headings_2, headings_2_show
+    headings_2_show = ["", "Acute #1", "Acute #2", "Chronic", "Acute #1", "Acute #2", "Chronic"]
+    headings_3_show = ["Size", "(mg ai /kg-bw/day)/LD50", "mg ai ft<sup>-2</sup>/(LD50*bw)", "mg kg<sup>-1</sup>seed/NOAEL", "(mg ai /kg-bw/day)/LD50", "mg ai ft<sup>-2</sup>/(LD50*bw)", "mg a.i./kg-bw/day/adjusted NOAEL"]
+
+    return headings_1, headings_2, headings_2_show, headings_3_show
 
 def getheaderpv6():
     headings = ["Application Target", "Value"]
@@ -142,6 +146,13 @@ def getdjtemplate():
             <th>{{ sub_heading }}</th>
         {% endfor %}
         </tr>
+        {% if sub_headings_1 %}
+            <tr>
+            {% for sub_heading_1 in sub_headings_1 %}
+                <th>{{ sub_heading_1|safe }}</th>
+            {% endfor %}
+            </tr>
+        {% endif %}
     {% endif %}
     {# data #}
     {% for row in data %}
@@ -265,34 +276,58 @@ tmpl_10 = Template(djtemplate_10)
 
 
 
-def gett1data(trex2_obj):
+def gett1data_broad(trex2_obj):
     data = { 
         "Parameter": ['Chemical Name', 'Use', 'Formulated product name', 'Percentage active ingredient', 
-                      'Application type', 'Row spacing', 'Bandwidth', 'Percentage incorporated', 'Density of product', 'Foliar dissipation half-life',],
+                      'Application type', 'Percentage incorporated', 'Foliar dissipation half-life',],
         "Value": ['%s' % trex2_obj.chem_name, '%s' % trex2_obj.use, '%s' % trex2_obj.formu_name, '%s' % trex2_obj.a_i_t1, '%s' % trex2_obj.Application_type, 
-                  '%.4s' % trex2_obj.r_s, '%.4s' % trex2_obj.b_w_t1, '%s' % trex2_obj.p_i, '%s' % trex2_obj.den, '%s' % trex2_obj.h_l,],
-        "Units": ['', '', '', '%', '', 'inch', 'inch', '%', 'lbs/gal', 'days',],
+                  '%s' % trex2_obj.p_i, '%s' % trex2_obj.h_l,],
+        "Units": ['', '', '', '%', '', '%', 'days',],
     }
     return data
 
+def gett1data_band(trex2_obj):
+    data = { 
+        "Parameter": ['Chemical Name', 'Use', 'Formulated product name', 'Percentage active ingredient', 
+                      'Application type', 'Row spacing', 'Bandwidth', 'Percentage incorporated', 'Foliar dissipation half-life',],
+        "Value": ['%s' % trex2_obj.chem_name, '%s' % trex2_obj.use, '%s' % trex2_obj.formu_name, '%s' % trex2_obj.a_i_t1, '%s' % trex2_obj.Application_type, 
+                  '%.4s' % trex2_obj.r_s, '%.4s' % trex2_obj.b_w_t1, '%s' % trex2_obj.p_i, '%s' % trex2_obj.h_l,],
+        "Units": ['', '', '', '%', '', 'inch', 'inch', '%', 'days',],
+    }
+    return data
+
+def gett1data_seed(trex2_obj):
+    data = { 
+        "Parameter": ['Chemical Name', 'Use', 'Formulated product name', 'Percentage active ingredient', 
+                      'Application type', 'Seed treatment formulation name', 'Crop use', 'Density of product', 'Seeding rare'],
+        "Value": ['%s' % trex2_obj.chem_name, '%s' % trex2_obj.use, '%s' % trex2_obj.formu_name, '%s' % trex2_obj.a_i_t1, '%s' % trex2_obj.Application_type, 
+                  '%s' % trex2_obj.seed_treatment_formulation_name, '%s' % trex2_obj.seed_crop_v, '%s' % trex2_obj.den, '%s' % trex2_obj.m_s_r_p,],
+        "Units": ['', '', '', '%', '', '', '', 'lbs/gal', 'lbs/acre',],
+    }
+    return data
 
 def gett2data(index, rate, day):
     data = { 
         "App": ['%s' %index,  ],
         "Rate": [rate,],
-        "Number of Days": ['%s' %day,],
+        "Day of Application": ['%s' %day,],
     }
     return data
 
 def gett3data(trex2_obj):
     data = { 
-        "Parameter": ['Avian LD50', 'Avian LC50', 'Avian NOAEC', 'Avian NOAEL', 'Body weight of assessed bird small',
-                      'Body weight of assessed bird medium', 'Body weight of assessed bird large', 
-                      'Species of the tested bird', 'Body weight of tested bird', 'Mineau scaling factor', ],
-        "Value": ['%s' % trex2_obj.ld50_bird, '%s' % trex2_obj.lc50_bird, '%s' % trex2_obj.NOAEC_bird, '%s' % trex2_obj.NOAEL_bird, 
-                  '%s' % trex2_obj.aw_bird_sm, '%s' % trex2_obj.aw_bird_md, '%s' % trex2_obj.aw_bird_lg,
-                  '%s' % trex2_obj.Species_of_the_tested_bird, '%s' % trex2_obj.tw_bird, '%s' % trex2_obj.x, ],
-        "Units": ['mg/kg-bw', 'mg/kg-diet', 'mg/kg-diet', 'mg/kg-bw', 'g', 'g', 'g', '', 'g', '', ],
+        "Parameter": ['Avian LD50', 'Test species (for Avian LD50)', 'Weight',
+                      'Avian LC50', 'Test species (for Avian LC50)', 'Weight',
+                      'Avian NOAEC', 'Test species (for Avian NOAEC)', 'Weight',
+                      'Avian NOAEL', 'Test species (for Avian NOAEL)', 'Weight',
+                      'Body weight of assessed bird small', 'Body weight of assessed bird medium', 
+                      'Body weight of assessed bird large', 'Mineau scaling factor', ],
+        "Value": ['%s' % trex2_obj.ld50_bird, '%s' % trex2_obj.Species_of_the_tested_bird_avian_ld50, '%s' % trex2_obj.tw_bird_ld50,
+                  '%s' % trex2_obj.lc50_bird, '%s' % trex2_obj.Species_of_the_tested_bird_avian_lc50, '%s' % trex2_obj.tw_bird_lc50,
+                  '%s' % trex2_obj.NOAEC_bird, '%s' % trex2_obj.Species_of_the_tested_bird_avian_NOAEC, '%s' % trex2_obj.tw_bird_NOAEC,
+                  '%s' % trex2_obj.NOAEL_bird, '%s' % trex2_obj.Species_of_the_tested_bird_avian_NOAEL, '%s' % trex2_obj.tw_bird_NOAEL,
+                  '%s' % trex2_obj.aw_bird_sm, '%s' % trex2_obj.aw_bird_md, '%s' % trex2_obj.aw_bird_lg, '%s' % trex2_obj.x, ],
+        "Units": ['mg/kg-bw', '', 'g', 'mg/kg-diet', '', 'g', 'mg/kg-diet', '', 'g', 'mg/kg-bw', '', 'g', 'g', 'g', 'g', ''],
     }
     return data
 
@@ -337,6 +372,15 @@ def gett7data(EEC_dose_bird_SG_sm, EEC_dose_bird_SG_md, EEC_dose_bird_SG_lg, EEC
     }
     return data
 
+def gett7_add_data(ARQ_bird_SG_sm, ARQ_bird_SG_md, ARQ_bird_SG_lg, ARQ_bird_TG_sm, ARQ_bird_TG_md, ARQ_bird_TG_lg, ARQ_bird_BP_sm, ARQ_bird_BP_md, ARQ_bird_BP_lg, ARQ_bird_FP_sm, ARQ_bird_FP_md, ARQ_bird_FP_lg, ARQ_bird_AR_sm, ARQ_bird_AR_md, ARQ_bird_AR_lg, ARQ_bird_SE_sm, ARQ_bird_SE_md, ARQ_bird_SE_lg):
+    data = { 
+        "Application Target": ['Short Grass', 'Tall Grass', 'Broadleaf Plants', 'Fruits/Pods', 'Arthropods', 'Seeds',],
+        "Small": ['%.2e' % ARQ_bird_SG_sm, '%.2e' % ARQ_bird_TG_sm, '%.2e' % ARQ_bird_BP_sm, '%.2e' % ARQ_bird_FP_sm, '%.2e' % ARQ_bird_AR_sm, '%.2e' % ARQ_bird_SE_sm],
+        "Medium": ['%.2e' % ARQ_bird_SG_md, '%.2e' % ARQ_bird_TG_md, '%.2e' % ARQ_bird_BP_md, '%.2e' % ARQ_bird_FP_md, '%.2e' % ARQ_bird_AR_md, '%.2e' % ARQ_bird_SE_md],
+        "Large": ['%.2e' % ARQ_bird_SG_lg, '%.2e' % ARQ_bird_TG_lg, '%.2e' % ARQ_bird_BP_lg, '%.2e' % ARQ_bird_FP_lg, '%.2e' % ARQ_bird_AR_lg, '%.2e' % ARQ_bird_SE_lg],
+    }
+    return data
+
 def gett8data(ARQ_diet_bird_SG_A, ARQ_diet_bird_SG_C, ARQ_diet_bird_TG_A, ARQ_diet_bird_TG_C, ARQ_diet_bird_BP_A, ARQ_diet_bird_BP_C, ARQ_diet_bird_FP_A, ARQ_diet_bird_FP_C, ARQ_diet_bird_AR_A, ARQ_diet_bird_AR_C):
     data = { 
         "Application Target": ['Short Grass', 'Tall Grass', 'Broadleaf Plants', 'Fruits/Pods', 'Arthropods',],
@@ -374,6 +418,13 @@ def gett11data(ARQ_diet_mamm_SG,CRQ_diet_bird_SG,ARQ_diet_mamm_TG,CRQ_diet_bird_
     }
     return data 
 
+def gett11data_na(ARQ_diet_mamm_SG,CRQ_diet_bird_SG,ARQ_diet_mamm_TG,CRQ_diet_bird_TG,ARQ_diet_mamm_BP,CRQ_diet_bird_BP,ARQ_diet_mamm_FP,CRQ_diet_bird_FP,ARQ_diet_mamm_AR,CRQ_diet_bird_AR):
+    data = { 
+        "Application Target": ['Short Grass', 'Tall Grass', 'Broadleaf Plants', 'Fruits/Pods/Seeds', 'Arthropods',],
+        "Acute": ['%s' % ARQ_diet_mamm_SG, '%s' % ARQ_diet_mamm_TG, '%s' % ARQ_diet_mamm_BP, '%s' % ARQ_diet_mamm_FP, '%s' % ARQ_diet_mamm_AR],
+        "Chronic": ['%.2e' % CRQ_diet_bird_SG, '%.2e' % CRQ_diet_bird_TG, '%.2e' % CRQ_diet_bird_BP, '%.2e' % CRQ_diet_bird_FP, '%.2e' % CRQ_diet_bird_AR],
+    }
+    return data 
 
 def gett12data(LD50_rg_bird_sm,LD50_rg_mamm_sm,LD50_rg_bird_md,LD50_rg_mamm_md,LD50_rg_bird_lg,LD50_rg_mamm_lg):
     data = { 
@@ -653,6 +704,7 @@ def table_all(trex2_obj):
         a_r_p=0
         table6_out=table_6(trex2_obj)
         table7_out=table_7(trex2_obj)
+        table7_add_out=table_7_add(trex2_obj)
         table8_out=table_8(trex2_obj)
         table9_out=table_9(trex2_obj)
         table10_out=table_10(trex2_obj)
@@ -660,6 +712,7 @@ def table_all(trex2_obj):
 
         html = html + table6_out['html']
         html = html + table7_out['html']
+        html = html + table7_add_out['html']
         html = html + table8_out['html']
         html = html + table9_out['html']
         html = html + table10_out['html']
@@ -668,22 +721,22 @@ def table_all(trex2_obj):
         if trex2_obj.Application_type == 'Row/Band/In-furrow-Granular':
             table12_out=table_12(trex2_obj)
             html = html + table12_out['html']
-            return html, table6_out, table7_out, table8_out, table9_out, table10_out, table11_out, table12_out
+            return html, table6_out, table7_out, table7_add_out, table8_out, table9_out, table10_out, table11_out, table12_out
 
         elif trex2_obj.Application_type == 'Row/Band/In-furrow-Liquid':
             table13_out=table_13(trex2_obj)
             html = html + table13_out['html']
-            return html, table6_out, table7_out, table8_out, table9_out, table10_out, table11_out, table13_out
+            return html, table6_out, table7_out, table7_add_out, table8_out, table9_out, table10_out, table11_out, table13_out
 
         elif trex2_obj.Application_type == 'Broadcast-Granular':
             table14_out=table_14(trex2_obj)
             html = html + table14_out['html']
-            return html, table6_out, table7_out, table8_out, table9_out, table10_out, table11_out, table14_out
+            return html, table6_out, table7_out, table7_add_out, table8_out, table9_out, table10_out, table11_out, table14_out
 
         elif trex2_obj.Application_type == 'Broadcast-Liquid':
             table15_out=table_15(trex2_obj)
             html = html + table15_out['html']
-            return html, table6_out, table7_out, table8_out, table9_out, table10_out, table11_out, table15_out
+            return html, table6_out, table7_out, table7_add_out, table8_out, table9_out, table10_out, table11_out, table15_out
 
 
 def table_sum_1(i, a_i, r_s, b_w, p_i, den, Foliar_dissipation_half_life, n_a, rate_out):
@@ -904,7 +957,12 @@ def table_1(trex2_obj):
                 <div class="out_ container_output">
         """
         #table 1
-        t1data = gett1data(trex2_obj)
+        if trex2_obj.Application_type=="Broadcast-Liquid" or trex2_obj.Application_type=="Broadcast-Granular":
+            t1data = gett1data_broad(trex2_obj)
+        elif trex2_obj.Application_type=="Row/Band/In-furrow-Granular" or trex2_obj.Application_type=="Row/Band/In-furrow-Liquid": 
+            t1data = gett1data_band(trex2_obj)
+        else:
+            t1data = gett1data_seed(trex2_obj)
         t1rows = gethtmlrowsfromcols(t1data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
         html = html + """
@@ -926,8 +984,11 @@ def table_2(trex2_obj):
             t2data_temp=gett2data(i+1, rate_temp, day_temp)
             t2data_all.append(t2data_temp)
         t2data = dict([(k,[t2data_ind[k][0] for t2data_ind in t2data_all]) for k in t2data_temp])
-        t2rows = gethtmlrowsfromcols(t2data,pvaheadings)
-        html = html + tmpl.render(Context(dict(data=t2rows, headings=pvaheadings)))
+        t2rows = gethtmlrowsfromcols(t2data,pvaheadings[0])
+        if trex2_obj.Application_type=="Seed Treatment":
+            html = html + tmpl.render(Context(dict(data=t2rows, headings=pvaheadings[1])))
+        else:
+            html = html + tmpl.render(Context(dict(data=t2rows, headings=pvaheadings[2])))
         html = html + """
                 </div>
         """
@@ -967,7 +1028,7 @@ def table_4(trex2_obj):
 def table_5(trex2_obj):
         #pre-table 5
         html = """
-        <H3 class="out_1 collapsible" id="section6"><span></span>Results: Application Type : %s</H3>
+        <H3 class="out_1 collapsible" id="section6"><span></span>Results (Upper Bound Kenaga): Application Type : %s</H3>
             <div class="out_ container_output">
         """%(trex2_obj.Application_type)
         #table 5
@@ -996,7 +1057,7 @@ def table_5(trex2_obj):
                            sa_bird_1_m, sa_bird_2_m, sc_bird_m, sa_mamm_1_m, sa_mamm_2_m, sc_mamm_m,
                            sa_bird_1_l, sa_bird_2_l, sc_bird_l, sa_mamm_1_l, sa_mamm_2_l, sc_mamm_l)
         t5rows = gethtmlrowsfromcols(t5data,pv5headings[1])     
-        html = html + tmpl.render(Context(dict(data=t5rows, headings=pv5headings[0], sub_headings=pv5headings[2], th_span='4')))
+        html = html + tmpl.render(Context(dict(data=t5rows, headings=pv5headings[0], sub_headings=pv5headings[2], sub_headings_1=pv5headings[3], th_span='4')))
         html = html + """
                 </div>
         """  
@@ -1009,7 +1070,7 @@ def table_6(trex2_obj):
         html = """
         <H3 class="out_1 collapsible" id="section6"><span></span>Results: Application Type : %s</H3>
         <div class="out_">
-            <H4 class="out_ collapsible" id="section7"><span></span>Dietary based EECs (mg/kg-dietary item)</H4>
+            <H4 class="out_ collapsible" id="section7"><span></span>Dietary Based EECs (mg/kg-dietary item)</H4>
                 <div class="out_ container_output">
         """%(trex2_obj.Application_type)
         #table 6
@@ -1031,7 +1092,7 @@ def table_6(trex2_obj):
 def table_7(trex2_obj):
         #pre-table 7
         html = """
-            <H4 class="out_ collapsible" id="section8"><span></span>Avian Dosed Based EECs (mg/kg-bw)</H4>
+            <H4 class="out_ collapsible" id="section8"><span></span>Avian Dose Based EECs (mg/kg-bw)</H4>
                 <div class="out_ container_output">
         """
         #table 7
@@ -1064,11 +1125,46 @@ def table_7(trex2_obj):
                              'EEC_dose_bird_BP_sm':EEC_dose_bird_BP_sm, 'EEC_dose_bird_BP_md':EEC_dose_bird_BP_md, 'EEC_dose_bird_BP_lg':EEC_dose_bird_BP_lg, 'EEC_dose_bird_FP_sm':EEC_dose_bird_FP_sm, 'EEC_dose_bird_FP_md':EEC_dose_bird_FP_md, 'EEC_dose_bird_FP_lg':EEC_dose_bird_FP_lg,
                              'EEC_dose_bird_AR_sm':EEC_dose_bird_AR_sm, 'EEC_dose_bird_AR_md':EEC_dose_bird_AR_md, 'EEC_dose_bird_AR_lg':EEC_dose_bird_AR_lg, 'EEC_dose_bird_SE_sm':EEC_dose_bird_SE_sm, 'EEC_dose_bird_SE_md':EEC_dose_bird_SE_md, 'EEC_dose_bird_SE_lg':EEC_dose_bird_SE_lg}
 
+def table_7_add(trex2_obj):
+        #pre-table 7
+        html = """
+            <H4 class="out_ collapsible" id="section8_add"><span></span>Avian Dose Based RQs</H4>
+                <div class="out_ container_output">
+        """
+        #table 7_add
+        ARQ_bird_SG_sm=trex2_obj.ARQ_bird_SG_sm
+        ARQ_bird_SG_md=trex2_obj.ARQ_bird_SG_md
+        ARQ_bird_SG_lg=trex2_obj.ARQ_bird_SG_lg
+        ARQ_bird_TG_sm=trex2_obj.ARQ_bird_TG_sm
+        ARQ_bird_TG_md=trex2_obj.ARQ_bird_TG_md
+        ARQ_bird_TG_lg=trex2_obj.ARQ_bird_TG_lg
+        ARQ_bird_BP_sm=trex2_obj.ARQ_bird_BP_sm
+        ARQ_bird_BP_md=trex2_obj.ARQ_bird_BP_md
+        ARQ_bird_BP_lg=trex2_obj.ARQ_bird_BP_lg
+        ARQ_bird_FP_sm=trex2_obj.ARQ_bird_FP_sm
+        ARQ_bird_FP_md=trex2_obj.ARQ_bird_FP_md
+        ARQ_bird_FP_lg=trex2_obj.ARQ_bird_FP_lg
+        ARQ_bird_AR_sm=trex2_obj.ARQ_bird_AR_sm
+        ARQ_bird_AR_md=trex2_obj.ARQ_bird_AR_md
+        ARQ_bird_AR_lg=trex2_obj.ARQ_bird_AR_lg
+        ARQ_bird_SE_sm=trex2_obj.ARQ_bird_SE_sm
+        ARQ_bird_SE_md=trex2_obj.ARQ_bird_SE_md
+        ARQ_bird_SE_lg=trex2_obj.ARQ_bird_SE_lg
+                      
+        t7_add_data = gett7_add_data(ARQ_bird_SG_sm, ARQ_bird_SG_md, ARQ_bird_SG_lg, ARQ_bird_TG_sm, ARQ_bird_TG_md, ARQ_bird_TG_lg, ARQ_bird_BP_sm, ARQ_bird_BP_md, ARQ_bird_BP_lg, ARQ_bird_FP_sm, ARQ_bird_FP_md, ARQ_bird_FP_lg, ARQ_bird_AR_sm, ARQ_bird_AR_md, ARQ_bird_AR_lg, ARQ_bird_SE_sm, ARQ_bird_SE_md, ARQ_bird_SE_lg)
+        t7_add_rows = gethtmlrowsfromcols(t7_add_data,pv7headings)       
+        html = html + tmpl.render(Context(dict(data=t7_add_rows, headings=pv7headings)))
+        html = html + """
+                </div>
+        """
+        return {'html':html, 'ARQ_bird_SG_sm':ARQ_bird_SG_sm, 'ARQ_bird_SG_md':ARQ_bird_SG_md, 'ARQ_bird_SG_lg':ARQ_bird_SG_lg, 'ARQ_bird_TG_sm':ARQ_bird_TG_sm, 'ARQ_bird_TG_md':ARQ_bird_TG_md, 'ARQ_bird_TG_lg':ARQ_bird_TG_lg, 
+                             'ARQ_bird_BP_sm':ARQ_bird_BP_sm, 'ARQ_bird_BP_md':ARQ_bird_BP_md, 'ARQ_bird_BP_lg':ARQ_bird_BP_lg, 'ARQ_bird_FP_sm':ARQ_bird_FP_sm, 'ARQ_bird_FP_md':ARQ_bird_FP_md, 'ARQ_bird_FP_lg':ARQ_bird_FP_lg, 
+                             'ARQ_bird_AR_sm':ARQ_bird_AR_sm, 'ARQ_bird_AR_md':ARQ_bird_AR_md, 'ARQ_bird_AR_lg':ARQ_bird_AR_lg, 'ARQ_bird_SE_sm':ARQ_bird_SE_sm, 'ARQ_bird_SE_md':ARQ_bird_SE_md, 'ARQ_bird_SE_lg':ARQ_bird_SE_lg}
 
 def table_8(trex2_obj):
         #pre-table 8
         html = """
-            <H4 class="out_ collapsible" id="section9"><span></span>Avian Diet Based RQs</H4>
+            <H4 class="out_ collapsible" id="section9"><span></span>Avian Dietary Based RQs</H4>
                 <div class="out_ container_output">
         """
         #table 8
@@ -1213,8 +1309,10 @@ def table_11(trex2_obj):
         CRQ_diet_mamm_FP=trex2_obj.CRQ_diet_mamm_FP
         ARQ_diet_mamm_AR=trex2_obj.ARQ_diet_mamm_AR
         CRQ_diet_mamm_AR=trex2_obj.CRQ_diet_mamm_AR
-  
-        t11data = gett11data(ARQ_diet_mamm_SG,CRQ_diet_mamm_SG,ARQ_diet_mamm_TG,CRQ_diet_mamm_TG,ARQ_diet_mamm_BP,CRQ_diet_mamm_BP,ARQ_diet_mamm_FP,CRQ_diet_mamm_FP,ARQ_diet_mamm_AR,CRQ_diet_mamm_AR)
+        if ARQ_diet_mamm_SG=='N/A':
+            t11data = gett11data_na(ARQ_diet_mamm_SG,CRQ_diet_mamm_SG,ARQ_diet_mamm_TG,CRQ_diet_mamm_TG,ARQ_diet_mamm_BP,CRQ_diet_mamm_BP,ARQ_diet_mamm_FP,CRQ_diet_mamm_FP,ARQ_diet_mamm_AR,CRQ_diet_mamm_AR)
+        else:
+            t11data = gett11data(ARQ_diet_mamm_SG,CRQ_diet_mamm_SG,ARQ_diet_mamm_TG,CRQ_diet_mamm_TG,ARQ_diet_mamm_BP,CRQ_diet_mamm_BP,ARQ_diet_mamm_FP,CRQ_diet_mamm_FP,ARQ_diet_mamm_AR,CRQ_diet_mamm_AR)
         t11rows = gethtmlrowsfromcols(t11data,pv8headings)       
         html = html + tmpl.render(Context(dict(data=t11rows, headings=pv8headings)))
         html = html + """

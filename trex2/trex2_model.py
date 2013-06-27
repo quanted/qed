@@ -5,9 +5,10 @@ import sys
 
 #food intake for birds
 class trex2(object):
-    def __init__(self, chem_name, use, formu_name, a_i, Application_type, r_s, b_w, a_r_p, p_i, den, h_l, n_a, rate_out, day_out,
+    def __init__(self, chem_name, use, formu_name, a_i, Application_type, seed_treatment_formulation_name, seed_crop, seed_crop_v, r_s, b_w, p_i, den, h_l, n_a, rate_out, day_out,
               ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, aw_bird_md, aw_bird_lg, Species_of_the_tested_bird, 
-              tw_bird, x, ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, aw_mamm_lg, tw_mamm,
+              Species_of_the_tested_bird_avian_ld50, Species_of_the_tested_bird_avian_lc50, Species_of_the_tested_bird_avian_NOAEC, Species_of_the_tested_bird_avian_NOAEL, 
+              tw_bird_ld50, tw_bird_lc50, tw_bird_NOAEC, tw_bird_NOAEL, x, ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, aw_mamm_lg, tw_mamm,
               m_s_r_p):
         self.chem_name=chem_name
         self.use=use
@@ -15,10 +16,14 @@ class trex2(object):
         self.a_i=a_i
         self.a_i_t1=100*float(a_i)
         self.Application_type=Application_type
+        self.seed_treatment_formulation_name=seed_treatment_formulation_name
+        self.seed_crop=seed_crop
+        self.seed_crop_v=seed_crop_v
+
         self.r_s=r_s
         self.b_w=b_w
         self.b_w_t1=12*float(b_w)
-        self.a_r_p=a_r_p
+        # self.a_r_p=a_r_p
         self.p_i=p_i
         self.p_i_t1=100*float(p_i)
         self.den=den
@@ -33,8 +38,16 @@ class trex2(object):
         self.aw_bird_sm=aw_bird_sm
         self.aw_bird_md=aw_bird_md
         self.aw_bird_lg=aw_bird_lg
-        self.Species_of_the_tested_bird=Species_of_the_tested_bird
-        self.tw_bird=tw_bird
+
+        self.Species_of_the_tested_bird_avian_ld50=Species_of_the_tested_bird_avian_ld50
+        self.Species_of_the_tested_bird_avian_lc50=Species_of_the_tested_bird_avian_lc50
+        self.Species_of_the_tested_bird_avian_NOAEC=Species_of_the_tested_bird_avian_NOAEC
+        self.Species_of_the_tested_bird_avian_NOAEL=Species_of_the_tested_bird_avian_NOAEL
+
+        self.tw_bird_ld50=tw_bird_ld50
+        self.tw_bird_lc50=tw_bird_lc50
+        self.tw_bird_NOAEC=tw_bird_NOAEC
+        self.tw_bird_NOAEL=tw_bird_NOAEL
         self.x=x
         self.ld50_mamm=ld50_mamm
         self.lc50_mamm=lc50_mamm
@@ -47,26 +60,26 @@ class trex2(object):
         self.m_s_r_p=m_s_r_p
 
         #Table5
-        self.sa_bird_1_s = self.sa_bird_1(a_r_p, a_i, den, self.at_bird, self.fi_bird, ld50_bird, aw_bird_sm, tw_bird, x) 
-        self.sa_bird_2_s = self.sa_bird_2(a_r_p, a_i, den, m_s_r_p, self.at_bird, ld50_bird, aw_bird_sm, tw_bird, x) 
-        self.sc_bird_s = self.sc_bird(a_r_p, a_i, den, NOAEC_bird)
-        self.sa_mamm_1_s = self.sa_mamm_1(a_r_p, a_i, den, self.at_mamm, self.fi_mamm, ld50_mamm, aw_mamm_sm, tw_mamm)
-        self.sa_mamm_2_s = self.sa_mamm_2(a_r_p, a_i, den, m_s_r_p, self.at_mamm, ld50_mamm, aw_mamm_sm, tw_mamm)
-        self.sc_mamm_s = self.sc_mamm(a_r_p, a_i, den, NOAEL_mamm, aw_mamm_sm, tw_mamm, self.ANOAEL_mamm)
+        self.sa_bird_1_s = self.sa_bird_1(rate_out[0], a_i, den, self.at_bird, self.fi_bird, 0.1, ld50_bird, aw_bird_sm, tw_bird_ld50, x, 0.02) 
+        self.sa_bird_2_s = self.sa_bird_2(rate_out[0], a_i, den, m_s_r_p, self.at_bird, ld50_bird, aw_bird_sm, tw_bird_ld50, x, 0.02) 
+        self.sc_bird_s = self.sc_bird(rate_out[0], a_i, den, NOAEC_bird)
+        self.sa_mamm_1_s = self.sa_mamm_1(rate_out[0], a_i, den, self.at_mamm, self.fi_mamm, 0.1, ld50_mamm, aw_mamm_sm, tw_mamm, 0.015)
+        self.sa_mamm_2_s = self.sa_mamm_2(rate_out[0], a_i, den, m_s_r_p, self.at_mamm, ld50_mamm, aw_mamm_sm, tw_mamm, 0.015)
+        self.sc_mamm_s = self.sc_mamm(rate_out[0], a_i, den, NOAEL_mamm, aw_mamm_sm, self.fi_mamm, 0.1, tw_mamm, self.ANOAEL_mamm, 0.015)
 
-        self.sa_bird_1_m = self.sa_bird_1(a_r_p, a_i, den, self.at_bird, self.fi_bird, ld50_bird, aw_bird_md, tw_bird, x) 
-        self.sa_bird_2_m = self.sa_bird_2(a_r_p, a_i, den, m_s_r_p, self.at_bird, ld50_bird, aw_bird_md, tw_bird, x) 
-        self.sc_bird_m = self.sc_bird(a_r_p, a_i, den, NOAEC_bird)
-        self.sa_mamm_1_m = self.sa_mamm_1(a_r_p, a_i, den, self.at_mamm, self.fi_mamm, ld50_mamm, aw_mamm_md, tw_mamm)
-        self.sa_mamm_2_m = self.sa_mamm_2(a_r_p, a_i, den, m_s_r_p, self.at_mamm, ld50_mamm, aw_mamm_md, tw_mamm)
-        self.sc_mamm_m = self.sc_mamm(a_r_p, a_i, den, NOAEL_mamm,aw_mamm_md,tw_mamm, self.ANOAEL_mamm)
+        self.sa_bird_1_m = self.sa_bird_1(rate_out[0], a_i, den, self.at_bird, self.fi_bird, 0.1, ld50_bird, aw_bird_md, tw_bird_ld50, x, 0.1) 
+        self.sa_bird_2_m = self.sa_bird_2(rate_out[0], a_i, den, m_s_r_p, self.at_bird, ld50_bird, aw_bird_md, tw_bird_ld50, x, 0.1) 
+        self.sc_bird_m = self.sc_bird(rate_out[0], a_i, den, NOAEC_bird)
+        self.sa_mamm_1_m = self.sa_mamm_1(rate_out[0], a_i, den, self.at_mamm, self.fi_mamm, 0.1, ld50_mamm, aw_mamm_md, tw_mamm, 0.035)
+        self.sa_mamm_2_m = self.sa_mamm_2(rate_out[0], a_i, den, m_s_r_p, self.at_mamm, ld50_mamm, aw_mamm_md, tw_mamm, 0.035)
+        self.sc_mamm_m = self.sc_mamm(rate_out[0], a_i, den, NOAEL_mamm,aw_mamm_md, self.fi_mamm, 0.1, tw_mamm, self.ANOAEL_mamm, 0.035)
 
-        self.sa_bird_1_l = self.sa_bird_1(a_r_p, a_i, den, self.at_bird, self.fi_bird, ld50_bird, aw_bird_lg, tw_bird, x) 
-        self.sa_bird_2_l = self.sa_bird_2(a_r_p, a_i, den, m_s_r_p, self.at_bird, ld50_bird, aw_bird_lg, tw_bird, x) 
-        self.sc_bird_l = self.sc_bird(a_r_p, a_i, den, NOAEC_bird)
-        self.sa_mamm_1_l = self.sa_mamm_1(a_r_p, a_i, den, self.at_mamm, self.fi_mamm, ld50_mamm, aw_mamm_lg, tw_mamm)
-        self.sa_mamm_2_l = self.sa_mamm_2(a_r_p, a_i, den, m_s_r_p, self.at_mamm, ld50_mamm, aw_mamm_lg, tw_mamm)
-        self.sc_mamm_l = self.sc_mamm(a_r_p, a_i, den, NOAEL_mamm,aw_mamm_lg,tw_mamm, self.ANOAEL_mamm)
+        self.sa_bird_1_l = self.sa_bird_1(rate_out[0], a_i, den, self.at_bird, self.fi_bird, 0.1, ld50_bird, aw_bird_lg, tw_bird_ld50, x, 1.0) 
+        self.sa_bird_2_l = self.sa_bird_2(rate_out[0], a_i, den, m_s_r_p, self.at_bird, ld50_bird, aw_bird_lg, tw_bird_ld50, x, 1.0) 
+        self.sc_bird_l = self.sc_bird(rate_out[0], a_i, den, NOAEC_bird)
+        self.sa_mamm_1_l = self.sa_mamm_1(rate_out[0], a_i, den, self.at_mamm, self.fi_mamm, 0.1, ld50_mamm, aw_mamm_lg, tw_mamm, 1)
+        self.sa_mamm_2_l = self.sa_mamm_2(rate_out[0], a_i, den, m_s_r_p, self.at_mamm, ld50_mamm, aw_mamm_lg, tw_mamm, 1)
+        self.sc_mamm_l = self.sc_mamm(rate_out[0], a_i, den, NOAEL_mamm,aw_mamm_lg, self.fi_mamm, 0.1, tw_mamm, self.ANOAEL_mamm, 1)
 
         #Table 6
         self.EEC_diet_SG = self.EEC_diet(self.C_0, self.C_t, n_a, rate_out, a_i, 240, h_l, day_out)
@@ -76,24 +89,44 @@ class trex2(object):
         self.EEC_diet_AR = self.EEC_diet(self.C_0, self.C_t, n_a, rate_out, a_i, 94, h_l, day_out)
 
         #Table 7
-        self.EEC_dose_bird_SG_sm = self.EEC_dose_bird(self.EEC_diet, aw_bird_sm, self.fi_bird, 0.9, self.C_0, self.C_t, n_a, rate_out, a_i, 240, h_l, day_out)
-        self.EEC_dose_bird_SG_md = self.EEC_dose_bird(self.EEC_diet, aw_bird_md, self.fi_bird, 0.9, self.C_0, self.C_t, n_a, rate_out, a_i, 240, h_l, day_out)
-        self.EEC_dose_bird_SG_lg = self.EEC_dose_bird(self.EEC_diet, aw_bird_lg, self.fi_bird, 0.9, self.C_0, self.C_t, n_a, rate_out, a_i, 240, h_l, day_out)
-        self.EEC_dose_bird_TG_sm = self.EEC_dose_bird(self.EEC_diet, aw_bird_sm, self.fi_bird, 0.9, self.C_0, self.C_t, n_a, rate_out, a_i, 110, h_l, day_out)
-        self.EEC_dose_bird_TG_md = self.EEC_dose_bird(self.EEC_diet, aw_bird_md, self.fi_bird, 0.9, self.C_0, self.C_t, n_a, rate_out, a_i, 110, h_l, day_out)
-        self.EEC_dose_bird_TG_lg = self.EEC_dose_bird(self.EEC_diet, aw_bird_lg, self.fi_bird, 0.9, self.C_0, self.C_t, n_a, rate_out, a_i, 110, h_l, day_out)
-        self.EEC_dose_bird_BP_sm = self.EEC_dose_bird(self.EEC_diet, aw_bird_sm, self.fi_bird, 0.9, self.C_0, self.C_t, n_a, rate_out, a_i, 135, h_l, day_out)
-        self.EEC_dose_bird_BP_md = self.EEC_dose_bird(self.EEC_diet, aw_bird_md, self.fi_bird, 0.9, self.C_0, self.C_t, n_a, rate_out, a_i, 135, h_l, day_out)
-        self.EEC_dose_bird_BP_lg = self.EEC_dose_bird(self.EEC_diet, aw_bird_lg, self.fi_bird, 0.9, self.C_0, self.C_t, n_a, rate_out, a_i, 135, h_l, day_out)
-        self.EEC_dose_bird_FP_sm = self.EEC_dose_bird(self.EEC_diet, aw_bird_sm, self.fi_bird, 0.9, self.C_0, self.C_t, n_a, rate_out, a_i, 15, h_l, day_out)
-        self.EEC_dose_bird_FP_md = self.EEC_dose_bird(self.EEC_diet, aw_bird_md, self.fi_bird, 0.9, self.C_0, self.C_t, n_a, rate_out, a_i, 15, h_l, day_out)
-        self.EEC_dose_bird_FP_lg = self.EEC_dose_bird(self.EEC_diet, aw_bird_lg, self.fi_bird, 0.9, self.C_0, self.C_t, n_a, rate_out, a_i, 15, h_l, day_out)
-        self.EEC_dose_bird_AR_sm = self.EEC_dose_bird(self.EEC_diet, aw_bird_sm, self.fi_bird, 0.9, self.C_0, self.C_t, n_a, rate_out, a_i, 94, h_l, day_out)
-        self.EEC_dose_bird_AR_md = self.EEC_dose_bird(self.EEC_diet, aw_bird_md, self.fi_bird, 0.9, self.C_0, self.C_t, n_a, rate_out, a_i, 94, h_l, day_out)
-        self.EEC_dose_bird_AR_lg = self.EEC_dose_bird(self.EEC_diet, aw_bird_lg, self.fi_bird, 0.9, self.C_0, self.C_t, n_a, rate_out, a_i, 94, h_l, day_out)
+        self.EEC_dose_bird_SG_sm = self.EEC_dose_bird(self.EEC_diet, aw_bird_sm, self.fi_bird, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 240, h_l, day_out)
+        self.EEC_dose_bird_SG_md = self.EEC_dose_bird(self.EEC_diet, aw_bird_md, self.fi_bird, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 240, h_l, day_out)
+        self.EEC_dose_bird_SG_lg = self.EEC_dose_bird(self.EEC_diet, aw_bird_lg, self.fi_bird, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 240, h_l, day_out)
+        self.EEC_dose_bird_TG_sm = self.EEC_dose_bird(self.EEC_diet, aw_bird_sm, self.fi_bird, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 110, h_l, day_out)
+        self.EEC_dose_bird_TG_md = self.EEC_dose_bird(self.EEC_diet, aw_bird_md, self.fi_bird, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 110, h_l, day_out)
+        self.EEC_dose_bird_TG_lg = self.EEC_dose_bird(self.EEC_diet, aw_bird_lg, self.fi_bird, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 110, h_l, day_out)
+        self.EEC_dose_bird_BP_sm = self.EEC_dose_bird(self.EEC_diet, aw_bird_sm, self.fi_bird, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 135, h_l, day_out)
+        self.EEC_dose_bird_BP_md = self.EEC_dose_bird(self.EEC_diet, aw_bird_md, self.fi_bird, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 135, h_l, day_out)
+        self.EEC_dose_bird_BP_lg = self.EEC_dose_bird(self.EEC_diet, aw_bird_lg, self.fi_bird, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 135, h_l, day_out)
+        self.EEC_dose_bird_FP_sm = self.EEC_dose_bird(self.EEC_diet, aw_bird_sm, self.fi_bird, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 15, h_l, day_out)
+        self.EEC_dose_bird_FP_md = self.EEC_dose_bird(self.EEC_diet, aw_bird_md, self.fi_bird, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 15, h_l, day_out)
+        self.EEC_dose_bird_FP_lg = self.EEC_dose_bird(self.EEC_diet, aw_bird_lg, self.fi_bird, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 15, h_l, day_out)
+        self.EEC_dose_bird_AR_sm = self.EEC_dose_bird(self.EEC_diet, aw_bird_sm, self.fi_bird, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 94, h_l, day_out)
+        self.EEC_dose_bird_AR_md = self.EEC_dose_bird(self.EEC_diet, aw_bird_md, self.fi_bird, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 94, h_l, day_out)
+        self.EEC_dose_bird_AR_lg = self.EEC_dose_bird(self.EEC_diet, aw_bird_lg, self.fi_bird, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 94, h_l, day_out)
         self.EEC_dose_bird_SE_sm = self.EEC_dose_bird(self.EEC_diet, aw_bird_sm, self.fi_bird, 0.1, self.C_0, self.C_t, n_a, rate_out, a_i, 15, h_l, day_out)
         self.EEC_dose_bird_SE_md = self.EEC_dose_bird(self.EEC_diet, aw_bird_md, self.fi_bird, 0.1, self.C_0, self.C_t, n_a, rate_out, a_i, 15, h_l, day_out)
         self.EEC_dose_bird_SE_lg = self.EEC_dose_bird(self.EEC_diet, aw_bird_lg, self.fi_bird, 0.1, self.C_0, self.C_t, n_a, rate_out, a_i, 15, h_l, day_out)
+
+        #Table 7_add
+        self.ARQ_bird_SG_sm = self.ARQ_dose_bird(self.EEC_dose_bird, self.EEC_diet, aw_bird_sm, self.fi_bird, self.at_bird, ld50_bird, tw_bird_ld50, x, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 240, h_l, day_out)
+        self.ARQ_bird_SG_md = self.ARQ_dose_bird(self.EEC_dose_bird, self.EEC_diet, aw_bird_md, self.fi_bird, self.at_bird, ld50_bird, tw_bird_ld50, x, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 240, h_l, day_out)
+        self.ARQ_bird_SG_lg = self.ARQ_dose_bird(self.EEC_dose_bird, self.EEC_diet, aw_bird_lg, self.fi_bird, self.at_bird, ld50_bird, tw_bird_ld50, x, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 240, h_l, day_out)
+        self.ARQ_bird_TG_sm = self.ARQ_dose_bird(self.EEC_dose_bird, self.EEC_diet, aw_bird_sm, self.fi_bird, self.at_bird, ld50_bird, tw_bird_ld50, x, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 110, h_l, day_out)
+        self.ARQ_bird_TG_md = self.ARQ_dose_bird(self.EEC_dose_bird, self.EEC_diet, aw_bird_md, self.fi_bird, self.at_bird, ld50_bird, tw_bird_ld50, x, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 110, h_l, day_out)
+        self.ARQ_bird_TG_lg = self.ARQ_dose_bird(self.EEC_dose_bird, self.EEC_diet, aw_bird_lg, self.fi_bird, self.at_bird, ld50_bird, tw_bird_ld50, x, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 110, h_l, day_out)
+        self.ARQ_bird_BP_sm = self.ARQ_dose_bird(self.EEC_dose_bird, self.EEC_diet, aw_bird_sm, self.fi_bird, self.at_bird, ld50_bird, tw_bird_ld50, x, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 135, h_l, day_out)
+        self.ARQ_bird_BP_md = self.ARQ_dose_bird(self.EEC_dose_bird, self.EEC_diet, aw_bird_md, self.fi_bird, self.at_bird, ld50_bird, tw_bird_ld50, x, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 135, h_l, day_out)
+        self.ARQ_bird_BP_lg = self.ARQ_dose_bird(self.EEC_dose_bird, self.EEC_diet, aw_bird_lg, self.fi_bird, self.at_bird, ld50_bird, tw_bird_ld50, x, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 135, h_l, day_out)
+        self.ARQ_bird_FP_sm = self.ARQ_dose_bird(self.EEC_dose_bird, self.EEC_diet, aw_bird_sm, self.fi_bird, self.at_bird, ld50_bird, tw_bird_ld50, x, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 15, h_l, day_out)
+        self.ARQ_bird_FP_md = self.ARQ_dose_bird(self.EEC_dose_bird, self.EEC_diet, aw_bird_md, self.fi_bird, self.at_bird, ld50_bird, tw_bird_ld50, x, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 15, h_l, day_out)
+        self.ARQ_bird_FP_lg = self.ARQ_dose_bird(self.EEC_dose_bird, self.EEC_diet, aw_bird_lg, self.fi_bird, self.at_bird, ld50_bird, tw_bird_ld50, x, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 15, h_l, day_out)
+        self.ARQ_bird_AR_sm = self.ARQ_dose_bird(self.EEC_dose_bird, self.EEC_diet, aw_bird_sm, self.fi_bird, self.at_bird, ld50_bird, tw_bird_ld50, x, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 94, h_l, day_out)
+        self.ARQ_bird_AR_md = self.ARQ_dose_bird(self.EEC_dose_bird, self.EEC_diet, aw_bird_md, self.fi_bird, self.at_bird, ld50_bird, tw_bird_ld50, x, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 94, h_l, day_out)
+        self.ARQ_bird_AR_lg = self.ARQ_dose_bird(self.EEC_dose_bird, self.EEC_diet, aw_bird_lg, self.fi_bird, self.at_bird, ld50_bird, tw_bird_ld50, x, 0.8, self.C_0, self.C_t, n_a, rate_out, a_i, 94, h_l, day_out)
+        self.ARQ_bird_SE_sm = self.ARQ_dose_bird(self.EEC_dose_bird, self.EEC_diet, aw_bird_sm, self.fi_bird, self.at_bird, ld50_bird, tw_bird_ld50, x, 0.1, self.C_0, self.C_t, n_a, rate_out, a_i, 15, h_l, day_out)
+        self.ARQ_bird_SE_md = self.ARQ_dose_bird(self.EEC_dose_bird, self.EEC_diet, aw_bird_md, self.fi_bird, self.at_bird, ld50_bird, tw_bird_ld50, x, 0.1, self.C_0, self.C_t, n_a, rate_out, a_i, 15, h_l, day_out)
+        self.ARQ_bird_SE_lg = self.ARQ_dose_bird(self.EEC_dose_bird, self.EEC_diet, aw_bird_lg, self.fi_bird, self.at_bird, ld50_bird, tw_bird_ld50, x, 0.1, self.C_0, self.C_t, n_a, rate_out, a_i, 15, h_l, day_out)
 
         #Table 8
         self.ARQ_diet_bird_SG_A = self.ARQ_diet_bird(self.EEC_diet, lc50_bird, self.C_0, self.C_t, n_a, rate_out, a_i, 240, h_l, day_out)
@@ -171,49 +204,56 @@ class trex2(object):
         self.CRQ_dose_mamm_SE_lg=self.CRQ_dose_mamm(self.EEC_diet, self.EEC_dose_mamm, self.ANOAEL_mamm, NOAEL_mamm, aw_mamm_lg, self.fi_mamm, tw_mamm, 0.1, self.C_0, self.C_t, n_a, rate_out, a_i, 15, h_l, day_out)
 
         #table 11
-        self.ARQ_diet_mamm_SG=self.ARQ_diet_mamm(self.EEC_diet, lc50_mamm, self.C_0, self.C_t, n_a, rate_out, a_i, 240, h_l, day_out)
-        self.CRQ_diet_mamm_SG=self.CRQ_diet_mamm(self.EEC_diet, NOAEC_mamm, self.C_0, self.C_t, n_a, rate_out, a_i, 240, h_l, day_out)
+        if self.lc50_mamm != 'N/A':
+            self.ARQ_diet_mamm_SG=self.ARQ_diet_mamm(self.EEC_diet, lc50_mamm, self.C_0, self.C_t, n_a, rate_out, a_i, 240, h_l, day_out)
+            self.ARQ_diet_mamm_TG=self.ARQ_diet_mamm(self.EEC_diet, lc50_mamm, self.C_0, self.C_t, n_a, rate_out, a_i, 110, h_l, day_out)
+            self.ARQ_diet_mamm_BP=self.ARQ_diet_mamm(self.EEC_diet, lc50_mamm, self.C_0, self.C_t, n_a, rate_out, a_i, 135, h_l, day_out)
+            self.ARQ_diet_mamm_FP=self.ARQ_diet_mamm(self.EEC_diet, lc50_mamm, self.C_0, self.C_t, n_a, rate_out, a_i, 15, h_l, day_out)
+            self.ARQ_diet_mamm_AR=self.ARQ_diet_mamm(self.EEC_diet, lc50_mamm, self.C_0, self.C_t, n_a, rate_out, a_i, 94, h_l, day_out)
+        else:
+            self.ARQ_diet_mamm_SG='N/A'
+            self.ARQ_diet_mamm_TG='N/A'
+            self.ARQ_diet_mamm_BP='N/A'
+            self.ARQ_diet_mamm_FP='N/A'
+            self.ARQ_diet_mamm_AR='N/A'
 
-        self.ARQ_diet_mamm_TG=self.ARQ_diet_mamm(self.EEC_diet, lc50_mamm, self.C_0, self.C_t, n_a, rate_out, a_i, 110, h_l, day_out)
+        self.CRQ_diet_mamm_SG=self.CRQ_diet_mamm(self.EEC_diet, NOAEC_mamm, self.C_0, self.C_t, n_a, rate_out, a_i, 240, h_l, day_out)
         self.CRQ_diet_mamm_TG=self.CRQ_diet_mamm(self.EEC_diet, NOAEC_mamm, self.C_0, self.C_t, n_a, rate_out, a_i, 110, h_l, day_out)
-        self.ARQ_diet_mamm_BP=self.ARQ_diet_mamm(self.EEC_diet, lc50_mamm, self.C_0, self.C_t, n_a, rate_out, a_i, 135, h_l, day_out)
         self.CRQ_diet_mamm_BP=self.CRQ_diet_mamm(self.EEC_diet, NOAEC_mamm, self.C_0, self.C_t, n_a, rate_out, a_i, 135, h_l, day_out)
-        self.ARQ_diet_mamm_FP=self.ARQ_diet_mamm(self.EEC_diet, lc50_mamm, self.C_0, self.C_t, n_a, rate_out, a_i, 15, h_l, day_out)
         self.CRQ_diet_mamm_FP=self.CRQ_diet_mamm(self.EEC_diet, NOAEC_mamm, self.C_0, self.C_t, n_a, rate_out, a_i, 15, h_l, day_out)
-        self.ARQ_diet_mamm_AR=self.ARQ_diet_mamm(self.EEC_diet, lc50_mamm, self.C_0, self.C_t, n_a, rate_out, a_i, 94, h_l, day_out)
         self.CRQ_diet_mamm_AR=self.CRQ_diet_mamm(self.EEC_diet, NOAEC_mamm, self.C_0, self.C_t, n_a, rate_out, a_i, 94, h_l, day_out)
   
         #Table12
-        self.LD50_rg_bird_sm=self.LD50_rg_bird(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_sm, self.at_bird, ld50_bird, tw_bird, x)
+        self.LD50_rg_bird_sm=self.LD50_rg_bird(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_sm, self.at_bird, ld50_bird, tw_bird_ld50, x)
         self.LD50_rg_mamm_sm=self.LD50_rg_mamm(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_mamm_sm, self.at_mamm, ld50_mamm, tw_mamm)
-        self.LD50_rg_bird_md=self.LD50_rg_bird(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_md, self.at_bird, ld50_bird, tw_bird, x)
+        self.LD50_rg_bird_md=self.LD50_rg_bird(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_md, self.at_bird, ld50_bird, tw_bird_ld50, x)
         self.LD50_rg_mamm_md=self.LD50_rg_mamm(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_mamm_md, self.at_mamm, ld50_mamm, tw_mamm)
-        self.LD50_rg_bird_lg=self.LD50_rg_bird(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_lg, self.at_bird, ld50_bird, tw_bird, x)
+        self.LD50_rg_bird_lg=self.LD50_rg_bird(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_bird_lg, self.at_bird, ld50_bird, tw_bird_ld50, x)
         self.LD50_rg_mamm_lg=self.LD50_rg_mamm(Application_type, rate_out, a_i, p_i, r_s, b_w, aw_mamm_lg, self.at_mamm, ld50_mamm, tw_mamm)
 
         #Table13
-        self.LD50_rl_bird_sm=self.LD50_rl_bird(Application_type, rate_out, a_i, p_i, b_w, aw_bird_sm, self.at_bird, ld50_bird, tw_bird, x)
+        self.LD50_rl_bird_sm=self.LD50_rl_bird(Application_type, rate_out, a_i, p_i, b_w, aw_bird_sm, self.at_bird, ld50_bird, tw_bird_ld50, x)
         self.LD50_rl_mamm_sm=self.LD50_rl_mamm(Application_type, rate_out, a_i, p_i, b_w, aw_mamm_sm, self.at_mamm, ld50_mamm, tw_mamm)
-        self.LD50_rl_bird_md=self.LD50_rl_bird(Application_type, rate_out, a_i, p_i, b_w, aw_bird_md, self.at_bird, ld50_bird, tw_bird, x)
+        self.LD50_rl_bird_md=self.LD50_rl_bird(Application_type, rate_out, a_i, p_i, b_w, aw_bird_md, self.at_bird, ld50_bird, tw_bird_ld50, x)
         self.LD50_rl_mamm_md=self.LD50_rl_mamm(Application_type, rate_out, a_i, p_i, b_w, aw_mamm_md, self.at_mamm, ld50_mamm, tw_mamm)
-        self.LD50_rl_bird_lg=self.LD50_rl_bird(Application_type, rate_out, a_i, p_i, b_w, aw_bird_lg, self.at_bird, ld50_bird, tw_bird, x)
+        self.LD50_rl_bird_lg=self.LD50_rl_bird(Application_type, rate_out, a_i, p_i, b_w, aw_bird_lg, self.at_bird, ld50_bird, tw_bird_ld50, x)
         self.LD50_rl_mamm_lg=self.LD50_rl_mamm(Application_type, rate_out, a_i, p_i, b_w, aw_mamm_lg, self.at_mamm, ld50_mamm, tw_mamm)
 
         #Table14
-        self.LD50_bg_bird_sm=self.LD50_bg_bird(Application_type, rate_out, a_i, p_i, aw_bird_sm, self.at_bird, ld50_bird, tw_bird, x)
+        self.LD50_bg_bird_sm=self.LD50_bg_bird(Application_type, rate_out, a_i, p_i, aw_bird_sm, self.at_bird, ld50_bird, tw_bird_ld50, x)
         self.LD50_bg_mamm_sm=self.LD50_bg_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_sm, self.at_mamm, ld50_mamm, tw_mamm)
-        self.LD50_bg_bird_md=self.LD50_bg_bird(Application_type, rate_out, a_i, p_i, aw_bird_md, self.at_bird, ld50_bird, tw_bird, x)
+        self.LD50_bg_bird_md=self.LD50_bg_bird(Application_type, rate_out, a_i, p_i, aw_bird_md, self.at_bird, ld50_bird, tw_bird_ld50, x)
         self.LD50_bg_mamm_md=self.LD50_bg_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_md, self.at_mamm, ld50_mamm, tw_mamm)
-        self.LD50_bg_bird_lg=self.LD50_bg_bird(Application_type, rate_out, a_i, p_i, aw_bird_lg, self.at_bird, ld50_bird, tw_bird, x)
+        self.LD50_bg_bird_lg=self.LD50_bg_bird(Application_type, rate_out, a_i, p_i, aw_bird_lg, self.at_bird, ld50_bird, tw_bird_ld50, x)
         self.LD50_bg_mamm_lg=self.LD50_bg_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_lg, self.at_mamm, ld50_mamm, tw_mamm)
 
         #Table15
-        self.LD50_bl_bird_sm=self.LD50_bl_bird(Application_type, rate_out, a_i, p_i, aw_bird_sm, self.at_bird, ld50_bird, tw_bird, x)
-        self.LD50_bl_mamm_sm=self.LD50_bl_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_sm, self.at_mamm, ld50_mamm, tw_mamm)
-        self.LD50_bl_bird_md=self.LD50_bl_bird(Application_type, rate_out, a_i, p_i, aw_bird_md, self.at_bird, ld50_bird, tw_bird, x)
-        self.LD50_bl_mamm_md=self.LD50_bl_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_md, self.at_mamm, ld50_mamm, tw_mamm)
-        self.LD50_bl_bird_lg=self.LD50_bl_bird(Application_type, rate_out, a_i, p_i, aw_bird_lg, self.at_bird, ld50_bird, tw_bird, x)
-        self.LD50_bl_mamm_lg=self.LD50_bl_mamm(Application_type, rate_out, a_i, p_i, aw_mamm_lg, self.at_mamm, ld50_mamm, tw_mamm)
+        self.LD50_bl_bird_sm=self.LD50_bl_bird(Application_type, rate_out, a_i, aw_bird_sm, self.at_bird, ld50_bird, tw_bird_ld50, x)
+        self.LD50_bl_mamm_sm=self.LD50_bl_mamm(Application_type, rate_out, a_i, aw_mamm_sm, self.at_mamm, ld50_mamm, tw_mamm)
+        self.LD50_bl_bird_md=self.LD50_bl_bird(Application_type, rate_out, a_i, aw_bird_md, self.at_bird, ld50_bird, tw_bird_ld50, x)
+        self.LD50_bl_mamm_md=self.LD50_bl_mamm(Application_type, rate_out, a_i, aw_mamm_md, self.at_mamm, ld50_mamm, tw_mamm)
+        self.LD50_bl_bird_lg=self.LD50_bl_bird(Application_type, rate_out, a_i, aw_bird_lg, self.at_bird, ld50_bird, tw_bird_ld50, x)
+        self.LD50_bl_mamm_lg=self.LD50_bl_mamm(Application_type, rate_out, a_i, aw_mamm_lg, self.at_mamm, ld50_mamm, tw_mamm)
 
 
     #food intake for birds
@@ -430,39 +470,29 @@ class trex2(object):
     #Dietary based EECs
 
     def EEC_diet(self, C_0, C_t, n_a, a_r, a_i, para, h_l, day_out):
-
-        C_temp = np.ones((365,1)) #empty array to hold the concentrations over days       
-        a_p_temp = 0  #application period temp  
-        n_a_temp = 0  #number of existing applications
-        dayt = 0
-        day_out_l=len(day_out)
     #new in trex1.5.1
         if n_a == 1:
             C_temp = C_0(a_r[0], a_i, para)
             return C_temp
-        
         else:
-            for i in range (0,365):
-                # print 'n_a=', n_a, 'i=', i, 'dayt=', dayt, 'n_a_temp=', n_a_temp, 'day_out=', day_out
+            C_temp = np.ones((371,1)) #empty array to hold the concentrations over days       
+            a_p_temp = 0  #application period temp  
+            n_a_temp = 0  #number of existing applications
+            dayt = 0
+            day_out_l=len(day_out)
+            for i in range (0,371):
                 if i==0:  #first day of application
+                    C_temp[i] = C_0(a_r[0], a_i, para)
                     a_p_temp = 0
                     n_a_temp = n_a_temp + 1
-                    C_temp[i] = C_0(a_r[0], a_i, para)
                     dayt = dayt + 1
                 elif dayt<=day_out_l-1 and n_a_temp<=n_a: # next application day
                     if i==day_out[dayt]:
-                        n_a_temp = n_a_temp + 1
                         C_temp[i] = C_t(C_temp[i-1], h_l) + C_0(a_r[dayt], a_i, para)
+                        n_a_temp = n_a_temp + 1
                         dayt = dayt + 1        
-                # elif i==day_out[dayt] and n_a_temp==n_a: # next application day
-                #     n_a_temp = n_a_temp + 1
-                #     C_temp[i] = C_t(C_temp[i-1], h_l) + C_0(a_r[dayt], a_i, para)
-                #     dayt = dayt + 1        
-            # elif a_p_temp<(i_a-1) and n_a_temp<=n_a: #
-            #     a_p_temp=a_p_temp+1
-            #     C_temp[i]=C_t(C_temp[i-1], h_l)        
-                else : #not an application day just degredation of existing concentration
-                    C_temp[i]=C_t(C_temp[i-1], h_l) 
+                    else :
+                        C_temp[i]=C_t(C_temp[i-1], h_l) 
             return (max(C_temp))
 
 
@@ -521,8 +551,8 @@ class trex2(object):
             
     # Acute dose-based risk quotients for birds
 
-    def ARQ_dose_bird(EEC_dose_bird, EEC_diet, aw_bird, fi_bird, at_bird, ld50_bird, tw_bird, x, mf_w_bird, C_0, n_a, a_r, a_i, para, h_l, day_out):
-        EEC_dose_bird = EEC_dose_bird(EEC_diet, aw_bird, fi_bird, mf_w_bird, C_0, n_a, a_r, a_i, para, h_l, day_out)
+    def ARQ_dose_bird(self, EEC_dose_bird, EEC_diet, aw_bird, fi_bird, at_bird, ld50_bird, tw_bird, x, mf_w_bird, C_0, C_t, n_a, a_r, a_i, para, h_l, day_out):
+        EEC_dose_bird = EEC_dose_bird(EEC_diet, aw_bird, fi_bird, mf_w_bird, C_0, C_t, n_a, a_r, a_i, para, h_l, day_out)
         at_bird = at_bird(ld50_bird,aw_bird,tw_bird,x)
         return (EEC_dose_bird/at_bird)
 
@@ -671,20 +701,21 @@ class trex2(object):
             
     # LD50ft-2 for broadcast granular birds
 
-    def LD50_bg_bird(self, Application_type, a_r, a_i, p_i, aw_bird, at_bird, ld50_bird, tw_bird,x):
+    def LD50_bg_bird(self, Application_type, a_r, a_i, p_i, aw_bird, at_bird, ld50_bird, tw_bird, x):
         if Application_type=='Broadcast-Granular':    
             at_bird=at_bird(ld50_bird,aw_bird,tw_bird,x)
-            expo_bg_bird=((max(a_r)*a_i*453590)/43560)*(1-p_i)
+            expo_bg_bird=((max(a_r)*a_i*453590)/43560)
             return (expo_bg_bird/(at_bird*(aw_bird/1000.0)))
         else:
             return(0)
             
     # LD50ft-2 for broadcast liquid birds
 
-    def LD50_bl_bird(self, Application_type, a_r, a_i, p_i, aw_bird, at_bird, ld50_bird, tw_bird,x):
+    def LD50_bl_bird(self, Application_type, a_r, a_i, aw_bird, at_bird, ld50_bird, tw_bird, x):
         if Application_type=='Broadcast-Liquid':   
             at_bird=at_bird(ld50_bird,aw_bird,tw_bird,x)
-            expo_bl_bird=((max(a_r)*28349*a_i)/43560)*(1-p_i)
+            # expo_bl_bird=((max(a_r)*28349*a_i)/43560)*(1-p_i)
+            expo_bl_bird=((max(a_r)*453590*a_i)/43560)
             return (expo_bl_bird/(at_bird*(aw_bird/1000.0)))    
         else:
             return(0)
@@ -694,38 +725,40 @@ class trex2(object):
     def LD50_bg_mamm(self, Application_type, a_r, a_i, p_i, aw_mamm, at_mamm, ld50_mamm, tw_mamm):
         if Application_type=='Broadcast-Granular':    
             at_mamm=at_mamm(ld50_mamm,aw_mamm,tw_mamm) 
-            expo_bg_mamm=((max(a_r)*a_i*453590)/43560)*(1-p_i)
+            expo_bg_mamm=((max(a_r)*a_i*453590)/43560)
             return (expo_bg_mamm/(at_mamm*(aw_mamm/1000.0)))
         else:
             return(0)
             
     # LD50ft-2 for broadcast liquid mammals
 
-    def LD50_bl_mamm(self, Application_type, a_r, a_i, p_i, aw_mamm, at_mamm, ld50_mamm, tw_mamm):
+    def LD50_bl_mamm(self, Application_type, a_r, a_i, aw_mamm, at_mamm, ld50_mamm, tw_mamm):
         if Application_type=='Broadcast-Liquid':    
             at_mamm=at_mamm(ld50_mamm,aw_mamm,tw_mamm)
-            expo_bl_mamm=((max(a_r)*28349*a_i)/43560)*(1-p_i)
+            # expo_bl_mamm=((max(a_r)*28349*a_i)/43560)*(1-p_i)
+            expo_bl_mamm=((max(a_r)*a_i*453590)/43560)
             return (expo_bl_mamm/(at_mamm*(aw_mamm/1000.0)))     
         else:
             return(0)
             
     # Seed treatment acute RQ for birds method 1
 
-    def sa_bird_1(self, a_r_p, a_i, den, at_bird, fi_bird, ld50_bird, aw_bird, tw_bird, x):
+    def sa_bird_1(self, a_r_p, a_i, den, at_bird, fi_bird, mf_w_bird, ld50_bird, aw_bird, tw_bird, x, nagy_bird_coef):
         at_bird=at_bird(ld50_bird,aw_bird,tw_bird,x)    
-        fi_bird=fi_bird(20, 0.1)    
+        # fi_bird=fi_bird(20, 0.1)    
+        fi_bird = fi_bird(aw_bird, mf_w_bird)
         m_s_a_r=((a_r_p*a_i)/128)*den*10000    #maximum seed application rate=application rate*10000
-        nagy_bird=fi_bird*0.001*m_s_a_r/0.02
+        nagy_bird=fi_bird*0.001*m_s_a_r/nagy_bird_coef
         return (nagy_bird/at_bird)      
 
 
     # Seed treatment acute RQ for birds method 2
 
-    def sa_bird_2(self, a_r_p, a_i, den, m_s_r_p, at_bird, ld50_bird, aw_bird, tw_bird, x):
+    def sa_bird_2(self, a_r_p, a_i, den, m_s_r_p, at_bird, ld50_bird, aw_bird, tw_bird, x, nagy_bird_coef):
         at_bird=at_bird(ld50_bird,aw_bird,tw_bird,x)    
-        m_a_r=((((a_r_p*a_i)/128)*den)*m_s_r_p)/100    #maximum application rate
-        av_ai=m_a_r*1000000/(43560*2.2)
-        return (av_ai/(at_bird*0.02))     
+        m_a_r=(m_s_r_p*((a_i*a_r_p)/128)*den)/100    #maximum application rate
+        av_ai=m_a_r*1e6/(43560*2.2)
+        return (av_ai/(at_bird*nagy_bird_coef))     
         
     # Seed treatment chronic RQ for birds
 
@@ -735,24 +768,26 @@ class trex2(object):
         
     # Seed treatment acute RQ for mammals method 1
 
-    def sa_mamm_1(self, a_r_p, a_i, den, at_mamm, fi_mamm, ld50_mamm, aw_mamm, tw_mamm):
+    def sa_mamm_1(self, a_r_p, a_i, den, at_mamm, fi_mamm, mf_w_bird, ld50_mamm, aw_mamm, tw_mamm, nagy_mamm_coef):
         at_mamm=at_mamm(ld50_mamm,aw_mamm,tw_mamm)     
-        fi_mamm=fi_mamm(15, 0.1)    
+        fi_mamm=fi_mamm(aw_mamm, mf_w_bird)    
         m_s_a_r=((a_r_p*a_i)/128)*den*10000    #maximum seed application rate=application rate*10000
-        nagy_mamm=fi_mamm*0.001*m_s_a_r/0.015
+        nagy_mamm=fi_mamm*0.001*m_s_a_r/nagy_mamm_coef
         return (nagy_mamm/at_mamm)       
         
     # Seed treatment acute RQ for mammals method 2
 
-    def sa_mamm_2(self, a_r_p, a_i, den, m_s_r_p, at_mamm, ld50_mamm, aw_mamm, tw_mamm):
+    def sa_mamm_2(self, a_r_p, a_i, den, m_s_r_p, at_mamm, ld50_mamm, aw_mamm, tw_mamm, nagy_mamm_coef):
         at_mamm=at_mamm(ld50_mamm,aw_mamm,tw_mamm)
-        m_a_r=((((a_r_p*a_i)/128)*den)*m_s_r_p)/100    #maximum application rate
+        m_a_r=(m_s_r_p*((a_r_p*a_i)/128)*den)/100    #maximum application rate
         av_ai=m_a_r*1000000/(43560*2.2)
-        return (av_ai/(at_mamm*0.015))     
+        return (av_ai/(at_mamm*nagy_mamm_coef))     
           
     # Seed treatment chronic RQ for mammals
 
-    def sc_mamm(self, a_r_p, a_i, den, NOAEL_mamm,aw_mamm,tw_mamm,ANOAEL_mamm):
-        ANOAEL_mamm = ANOAEL_mamm(NOAEL_mamm,aw_mamm,tw_mamm)
+    def sc_mamm(self, a_r_p, a_i, den, NOAEL_mamm, aw_mamm, fi_mamm, mf_w_bird, tw_mamm, ANOAEL_mamm, nagy_mamm_coef):
+        ANOAEL_mamm = ANOAEL_mamm(NOAEL_mamm, aw_mamm, tw_mamm)
+        fi_mamm=fi_mamm(aw_mamm, mf_w_bird)    
         m_s_a_r=((a_r_p*a_i)/128)*den*10000    #maximum seed application rate=application rate*10000
-        return (m_s_a_r/ANOAEL_mamm)          
+        nagy_mamm=fi_mamm*0.001*m_s_a_r/nagy_mamm_coef
+        return (nagy_mamm/ANOAEL_mamm)          

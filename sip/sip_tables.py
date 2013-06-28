@@ -61,37 +61,36 @@ def getdjtemplate():
 
 def gett1data(sip_obj):
     data = { 
-        "Parameter": ['Chemical Name', 'Body Weight of Bird', 'Body Weight of Mammal','Solubility', 'LD<sub>50 avian', 'LD<sub>50 mammal','Body Weight of Assessed Bird','Body Weight of Assessed Mammal','Mineau Scaling Factor','NOAEC','NOAEL',],
-        "Value": [sip_obj.chemical_name,  sip_obj.bw_bird, sip_obj.bw_mamm, sip_obj.sol, sip_obj.ld50_a, sip_obj.ld50_m, sip_obj.aw_bird,  sip_obj.aw_mamm, sip_obj.mineau, sip_obj.noaec, sip_obj.noael,],
-        "Units": ['', 'g', 'g','mg/L', 'mg/kg','mg/kg','g','g','', 'mg/kg-diet','mg/kg-bw'],
+        "Parameter": ['Chemical Name',mark_safe('Solubility (in water @25&deg;C)'),mark_safe('Mammalian LD<sub>50</sub>'),'Body Weight of Tested Mammal','Body Weight of Assessed Mammal','Mammalian NOAEL',mark_safe('Avian LD<sub>50</sub>'),'Body Weight of Tested Bird','Body Weight of Assessed Bird','Mineau Scaling Factor','Avian NOAEC',],
+        "Value": [sip_obj.chemical_name,sip_obj.sol,sip_obj.ld50_m,sip_obj.bw_mamm,sip_obj.aw_mamm,sip_obj.noael,sip_obj.ld50_a,sip_obj.bw_bird,sip_obj.aw_bird,sip_obj.mineau,sip_obj.noaec,],
+        "Units": ['','mg/L','mg/kg-bw','g','g','mg/kg-bw','mg/kg-bw','g','g','','mg/kg-diet'],
     }
     return data
 
 def gett1dataqaqc(sip_obj):
     data = { 
-        "Parameter": ['Chemical Name', 'Body Weight of Bird', 'Body Weight of Mammal','Solubility', 'LD<sub>50 avian', 'LD<sub>50 mammal','Body Weight of Assessed Bird','Body Weight of Assessed Mammal','Mineau Scaling Factor','NOAEC','NOAEL',],
-        "Value": [sip_obj.chemical_name_expected,  sip_obj.bw_bird, sip_obj.bw_mamm, sip_obj.sol, sip_obj.ld50_a, sip_obj.ld50_m, sip_obj.aw_bird,  sip_obj.aw_mamm, sip_obj.mineau, sip_obj.noaec, sip_obj.noael,],
-        "Units": ['', 'g', 'g','mg/L', 'mg/kg','mg/kg','g','g','', 'mg/kg-diet','mg/kg-bw'],
+        "Parameter": ['Chemical Name',mark_safe('Solubility (in water @25&deg;C)'),mark_safe('Mammalian LD<sub>50</sub>'),'Body Weight of Tested Mammal','Body Weight of Assessed Mammal','Mammalian NOAEL',mark_safe('Avian LD<sub>50</sub>'),'Body Weight of Tested Bird','Body Weight of Assessed Bird','Mineau Scaling Factor','Avian NOAEC',],
+        "Value": [sip_obj.chemical_name_expected,sip_obj.sol,sip_obj.ld50_m,sip_obj.bw_mamm,sip_obj.aw_mamm,sip_obj.noael,sip_obj.ld50_a,sip_obj.bw_bird,sip_obj.aw_bird,sip_obj.mineau,sip_obj.noaec,],
+        "Units": ['','mg/L','mg/kg-bw','g','g','mg/kg-bw','mg/kg-bw','g','g','','mg/kg-diet'],
     }
     return data
 
 def gett2data(sip_obj):
     data = { 
         "Parameter": ['Upper Bound Exposure', 'Adjusted Toxicity Value', 'Ratio of Exposure to Toxicity', 'Conclusion',],
-        "Acute": ['%.2e' % sip_obj.acute_mamm_out, '%.2e' % sip_obj.at_mamm_out, '%.2e' % sip_obj.acute_mamm_out, '%s' % sip_obj.acuconm_out,],
-        "Chronic": ['%.2e' % sip_obj.dose_mamm_out, '%.2e' % sip_obj.act_out, '%.2e' % sip_obj.chron_mamm_out, '%s' % sip_obj.chronconm_out,],
+        "Acute": ['%.3e' % sip_obj.dose_mamm_out, '%.4f' % sip_obj.at_mamm_out, '%.4f' % sip_obj.acute_mamm_out, '%s' % sip_obj.acuconm_out,],
+        "Chronic": ['%.3e' % sip_obj.dose_mamm_out, '%.4f' % sip_obj.act_out, '%.4f' % sip_obj.chron_mamm_out, '%s' % sip_obj.chronconm_out,],
         "Units": ['mg/kg-bw', 'mg/kg-bw', '', '',],
     }
     return data
 
 def gett2dataqaqc(sip_obj):
-    logger.info(vars(sip_obj))
     data = { 
         "Parameter": ['Upper Bound Exposure', 'Adjusted Toxicity Value', 'Ratio of Exposure to Toxicity', 'Conclusion',],
-        "Acute": ['%.2e' % sip_obj.acute_mamm_out,'%.2e' % sip_obj.at_mamm_out,'%.2e' % sip_obj.acute_mamm_out,'%s' % sip_obj.acuconm_out,],
-        "Acute-Expected": ['%.2e' % sip_obj.acute_mamm_out_expected,'%.2e' % sip_obj.at_mamm_out_expected,'%.2e' % sip_obj.acute_mamm_out_expected,'%s' % sip_obj.acuconm_out_expected,],
-        "Chronic": ['%.2e' % sip_obj.dose_mamm_out,'%.2e' % sip_obj.act_out,'%.2e' % sip_obj.chron_mamm_out,'%s' % sip_obj.chronconm_out,],
-        "Chronic-Expected": ['%.2e' % sip_obj.dose_mamm_out_expected,'%.2e' % sip_obj.act_out_expected,'%.2e' % sip_obj.chron_mamm_out_expected,'%s' % sip_obj.chronconm_out_expected,],
+        "Acute": ['%.3e' % sip_obj.dose_mamm_out, '%.4f' % sip_obj.at_mamm_out, '%.4f' % sip_obj.acute_mamm_out, '%s' % sip_obj.acuconm_out,],
+        "Acute-Expected": ['%.3e' % sip_obj.acute_mamm_out_expected,'%.4f' % sip_obj.at_mamm_out_expected,'%.4f' % sip_obj.acute_mamm_out_expected,'%s' % sip_obj.acuconm_out_expected,],
+        "Chronic": ['%.3e' % sip_obj.dose_mamm_out, '%.4f' % sip_obj.act_out, '%.4f' % sip_obj.chron_mamm_out, '%s' % sip_obj.chronconm_out,],
+        "Chronic-Expected": ['%.3e' % sip_obj.dose_mamm_out_expected,'%.4f' % sip_obj.act_out_expected,'%.4f' % sip_obj.chron_mamm_out_expected,'%s' % sip_obj.chronconm_out_expected,],
         "Units": ['mg/kg-bw', 'mg/kg-bw', '', '',],
     }
     return data
@@ -99,8 +98,8 @@ def gett2dataqaqc(sip_obj):
 def gett3data(sip_obj):
     data = { 
         "Parameter": ['Upper Bound Exposure', 'Adjusted Toxicity Value', 'Ratio of Exposure to Toxicity', 'Conclusion',],
-        "Acute": ['%.2e' % sip_obj.acute_bird_out, '%.2e' % sip_obj.at_bird_out,'%.2e' % sip_obj.acute_bird_out, '%s' % sip_obj.acuconb_out,],
-        "Chronic": ['%.2e' % sip_obj.dose_bird_out, '%.2e' % sip_obj.det_out,'%.2e' % sip_obj.chron_bird_out, '%s' % sip_obj.chronconb_out,],
+        "Acute": ['%.5e' % sip_obj.dose_bird_out, '%.4f' % sip_obj.at_bird_out,'%.4f' % sip_obj.acute_bird_out, '%s' % sip_obj.acuconb_out,],
+        "Chronic": ['%.5e' % sip_obj.dose_bird_out, '%.4f' % sip_obj.det_out,'%.4f' % sip_obj.chron_bird_out, '%s' % sip_obj.chronconb_out,],
         "Units": ['mg/kg-bw', 'mg/kg-bw', '', '',],
     }
     return data
@@ -108,10 +107,10 @@ def gett3data(sip_obj):
 def gett3dataqaqc(sip_obj):
     data = { 
         "Parameter": ['Upper Bound Exposure', 'Adjusted Toxicity Value', 'Ratio of Exposure to Toxicity', 'Conclusion',],
-        "Acute": ['%.2e' % sip_obj.acute_bird_out, '%.2e' % sip_obj.at_bird_out, '%.2e' % sip_obj.acute_bird_out, '%s' % sip_obj.acuconb_out,],
-        "Acute-Expected": ['%.2e' % sip_obj.acute_bird_out_expected, '%.2e' % sip_obj.at_bird_out_expected, '%.2e' % sip_obj.acute_bird_out_expected, '%s' % sip_obj.acuconb_out_expected,],
-        "Chronic": ['%.2e' % sip_obj.dose_bird_out, '%.2e' % sip_obj.act_out, '%.2e' % sip_obj.chron_bird_out, '%s' % sip_obj.chronconb_out,],
-        "Chronic-Expected": ['%.2e' % sip_obj.dose_bird_out_expected,'%.2e' % sip_obj.act_out_expected,'%.2e' % sip_obj.chron_bird_out_expected,'%s' % sip_obj.chronconb_out_expected,],
+        "Acute": ['%.5e' % sip_obj.dose_bird_out, '%.4f' % sip_obj.at_bird_out,'%.4f' % sip_obj.acute_bird_out, '%s' % sip_obj.acuconb_out,],
+        "Acute-Expected": ['%.5e' % sip_obj.acute_bird_out_expected, '%.4f' % sip_obj.at_bird_out_expected, '%.4f' % sip_obj.acute_bird_out_expected, '%s' % sip_obj.acuconb_out_expected,],
+        "Chronic": ['%.5e' % sip_obj.dose_bird_out, '%.4f' % sip_obj.det_out,'%.4f' % sip_obj.chron_bird_out, '%s' % sip_obj.chronconb_out,],
+        "Chronic-Expected": ['%.5e' % sip_obj.dose_bird_out_expected,'%.4f' % sip_obj.act_out_expected,'%.4f' % sip_obj.chron_bird_out_expected,'%s' % sip_obj.chronconb_out_expected,],
         "Units": ['mg/kg-bw', 'mg/kg-bw', '', '',],
     }
     return data

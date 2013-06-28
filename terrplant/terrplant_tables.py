@@ -2,8 +2,7 @@ import numpy
 #import django
 from django.template import Context, Template
 from django.utils.safestring import mark_safe
-from dust import dust_model
-from dust import dust_parameters
+from terrplant import terrplant_model,terrplant_parameters
 import logging
 
 logger = logging.getLogger('TerrplantTables')
@@ -79,6 +78,13 @@ def gett1data(terrplant_obj):
     data = { 
         "Parameter": ['Chemical Name', 'PC Code', 'Use', 'Application Method','Application Form',],
         "Value": [terrplant_obj.chemical_name, terrplant_obj.pc_code, terrplant_obj.use, terrplant_obj.application_method,terrplant_obj.application_form,],
+    }
+    return data
+
+def gett1dataqaqc(terrplant_obj):
+    data = { 
+        "Parameter": ['Chemical Name', 'PC Code', 'Use', 'Application Method','Application Form',],
+        "Value": [terrplant_obj.chemical_name_expected, terrplant_obj.pc_code, terrplant_obj.use, terrplant_obj.application_method,terrplant_obj.application_form,],
     }
     return data
 
@@ -228,7 +234,7 @@ def table_all(pvheadings, pvuheadings, deheadings, plantec25noaecheadings, plant
     return html_all
 
 def table_all_qaqc(pvheadings, pvuheadings, deheadingsqaqc, plantec25noaecheadings, plantecdrysemisprayheadingsqaqc, tmpl,terrplant_obj):
-    html_all = table_1(pvheadings, tmpl, terrplant_obj)
+    html_all = table_1_qaqc(pvheadings, tmpl, terrplant_obj)
     html_all = html_all + table_2(pvuheadings, tmpl, terrplant_obj)
     table_3_html = table_3_qaqc(deheadingsqaqc, tmpl, terrplant_obj)
     logger.info("table3html:%s",table_3_html)
@@ -295,6 +301,23 @@ def table_1(pvheadings, tmpl, terrplant_obj):
         """
         #table 1
         t1data = gett1data(terrplant_obj)
+        t1rows = gethtmlrowsfromcols(t1data,pvheadings)
+        html = html + tmpl.render(Context(dict(data=t1rows, headings=pvheadings)))
+        html = html + """
+                </div>
+        """
+        return html
+
+def table_1_qaqc(pvheadings, tmpl, terrplant_obj):
+        #pre-table 1
+        html = """
+        <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs: Chemical Identity</H3>
+        <div class="out_">
+            <H4 class="out_1 collapsible" id="section2"><span></span>Application and Chemical Information</H4>
+                <div class="out_ container_output">
+        """
+        #table 1
+        t1data = gett1dataqaqc(terrplant_obj)
         t1rows = gethtmlrowsfromcols(t1data,pvheadings)
         html = html + tmpl.render(Context(dict(data=t1rows, headings=pvheadings)))
         html = html + """

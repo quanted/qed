@@ -173,7 +173,7 @@ class sip(object):
             try:
                 self.fw_bird_out = float(self.fw_bird_out)
                 self.sol = float(self.sol)
-                self.bw_bird = float(self.bw_bird)
+                self.aw_bird = float(self.aw_bird)
             except IndexError:
                 raise IndexError\
                 ('The daily water intake for birds, chemical solubility, and/or'\
@@ -187,7 +187,7 @@ class sip(object):
                 ('The chemical solubility must be a real number, not "%mg/L"' %self.sol)
             except ValueError:
                 raise ValueError\
-                ('The body weight of the bird must be a real number, not "%g"' %self.bw_bird)
+                ('The body weight of the bird must be a real number, not "%g"' %self.aw_bird)
             except ZeroDivisionError:
                 raise ZeroDivisionError\
                 ('The body weight of the bird must non-zero.')
@@ -197,10 +197,10 @@ class sip(object):
             if self.sol < 0:
                 raise ValueError\
                 ('sol=%g is a non-physical value.' % self.sol)
-            if self.bw_bird < 0:
+            if self.aw_bird < 0:
                 raise ValueError\
-                ('self.bw_bird=%g is a non-physical value.' % self.bw_bird)
-            self.dose_bird_out = (self.fw_bird_out * self.sol)/self.bw_bird
+                ('self.aw_bird=%g is a non-physical value.' % self.aw_bird)
+            self.dose_bird_out = (self.fw_bird_out * self.sol)/(self.aw_bird / 1000)
         return self.dose_bird_out
 
 
@@ -211,7 +211,7 @@ class sip(object):
             try:
                 self.fw_mamm_out = float(self.fw_mamm_out)
                 self.sol = float(self.sol)
-                self.bw_mamm = float(self.bw_mamm)
+                self.aw_mamm = float(self.aw_mamm)
             except IndexError:
                 raise IndexError\
                 ('The daily water intake for mammals, chemical solubility, and/or'\
@@ -225,7 +225,7 @@ class sip(object):
                 ('The chemical solubility must be a real number, not "%mg/L"' %self.sol)
             except ValueError:
                 raise ValueError\
-                ('The body weight of the mammal must be a real number, not "%g"' %self.bw_mamm)
+                ('The body weight of the mammal must be a real number, not "%g"' %self.aw_mamm)
             except ZeroDivisionError:
                 raise ZeroDivisionError\
                 ('The body weight of the mammal must non-zero.')
@@ -235,10 +235,10 @@ class sip(object):
             if self.sol < 0:
                 raise ValueError\
                 ('sol=%g is a non-physical value.' % self.sol)
-            if self.bw_mamm < 0:
+            if self.aw_mamm < 0:
                 raise ValueError\
-                ('self.bw_mamm=%g is a non-physical value.' % self.bw_mamm)
-            self.dose_mamm_out = (self.fw_mamm_out * self.sol)/self.bw_mamm
+                ('self.aw_mamm=%g is a non-physical value.' % self.aw_mamm)
+            self.dose_mamm_out = (self.fw_mamm_out * self.sol)/(self.aw_mamm / 1000)
         return self.dose_mamm_out
 
     # Acute adjusted toxicity value for birds
@@ -318,7 +318,7 @@ class sip(object):
             if self.bw_mamm < 0:
                 raise ValueError\
                 ('bw_mamm=%g is a non-physical value.' % self.bw_mamm)
-            self.at_mamm_out = (self.ld50_m) * ((self.aw_mamm/self.bw_mamm)**0.25)
+            self.at_mamm_out = (self.ld50_m) * ((self.bw_mamm/self.aw_mamm)**0.25)
         return self.at_mamm_out
 
 
@@ -339,7 +339,7 @@ class sip(object):
             if self.bw_bird < 0:
                 raise ValueError\
                 ('self.bw_bird=%g is a non-physical value.' % self.bw_bird)
-            self.fi_bird_out = 0.0582 * (self.bw_bird**0.651)
+            self.fi_bird_out = 0.0582 * ((self.bw_bird / 1000)**0.651)
         return self.fi_bird_out
 
     # Dose-equivalent chronic toxicity value for birds
@@ -377,7 +377,7 @@ class sip(object):
             if self.bw_bird < 0:
                 raise ValueError\
                 ('self.bw_bird=%g is a non-physical value.' % self.bw_bird)
-            self.det_out = (self.noaec * self.fi_bird_out)/self.bw_bird
+            self.det_out = (self.noaec * self.fi_bird_out) / (self.bw_bird / 1000)
         return self.det_out
 
     # Adjusted chronic toxicty value for mammals
@@ -418,6 +418,7 @@ class sip(object):
                 ('aw_mamm=%g is a non-physical value.' % self.aw_mamm)
             self.act_out = (self.noael) * ((self.bw_mamm/self.aw_mamm)**0.25)
         return self.act_out
+        #If only a NOAEC value (in mg/kg-diet) is available, the model user should divide the NOAEC by 20 to determine the equivalent chronic daily dose
     # ---- Is drinking water a concern?
 
     # Acute exposures for birds

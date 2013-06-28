@@ -9,19 +9,20 @@ def getheaderpvu():
 	return headings
 
 def getheaderpv5():
+    headings_l = ["Size Class (g)", "Adjusted LD50", ],
+    headings = ["Size", "LD50_AD", "EEC_BP", "ARQ_BP", "EEC_FR", "ARQ_FR", "EEC_HM", "ARQ_HM", "EEC_IM", "ARQ_IM", "EEC_TP", "ARQ_TP"]
+    return headings_l, headings
+
+def getheaderpv6():
     headings_l = ["LC50 (ppm)",],
     headings = ["LC50", "EEC_BP", "ARQ_BP", "EEC_FR", "ARQ_FR", "EEC_HM", "ARQ_HM", "EEC_IM", "ARQ_IM", "EEC_TP", "ARQ_TP"]
     return headings_l, headings
 
-def getheaderpv6():
+def getheaderpv7():
     headings_l = ["NOAEC (ppm)",],
     headings = ["NOAEC", "EEC_BP", "CRQ_BP", "EEC_FR", "CRQ_FR", "EEC_HM", "CRQ_HM", "EEC_IM", "CRQ_IM", "EEC_TP", "CRQ_TP"]
     return headings_l, headings
 
-def getheaderpv7():
-    headings_l = ["Size Class (g)", "Adjusted LD50", ],
-    headings = ["Size", "LD50_AD", "EEC_BP", "ARQ_BP", "EEC_FR", "ARQ_FR", "EEC_HM", "ARQ_HM", "EEC_IM", "ARQ_IM", "EEC_TP", "ARQ_TP"]
-    return headings_l, headings
 
 def getheadersum():
     headings = ["Parameter", "Mean", "Std", "Min", "Max", "Unit"]
@@ -126,7 +127,7 @@ def gett1data(therps_obj):
     data = { 
         "Parameter": ['Chemical Name', 'Use', 'Formulated product name', 'Percentage active ingredient', 'Foliar dissipation half-life', 'Number of applications',
                       'Interval between applications', 'Application rate',],
-        "Value": ['%s' % therps_obj.chem_name, '%s' % therps_obj.use, '%s' % therps_obj.formu_name, '%s' % therps_obj.a_i, '%s' % therps_obj.h_l, '%s' % therps_obj.n_a, 
+        "Value": ['%s' % therps_obj.chem_name, '%s' % therps_obj.use, '%s' % therps_obj.formu_name, '%s' % therps_obj.a_i_disp, '%s' % therps_obj.h_l, '%s' % therps_obj.n_a, 
                   '%s' % therps_obj.i_a, '%s' % therps_obj.a_r,],
         "Units": ['', '', '', '%', 'days', '', 'days', 'lbs a.i./A',],
     }
@@ -134,9 +135,17 @@ def gett1data(therps_obj):
 
 def gett2data(therps_obj):
     data = { 
-        "Parameter": ['Avian LD50', 'Avian LC50', 'Avian NOAEC', 'Avian NOAEL', 'Species of the tested bird', 'Body weight of the tested bird', 'Mineau scaling factor', ],
-        "Value": ['%s' % therps_obj.ld50_bird, '%s' % therps_obj.lc50_bird, '%s' % therps_obj.NOAEC_bird, '%s' % therps_obj.NOAEL_bird, '%s' % therps_obj.Species_of_the_tested_bird, '%s' % therps_obj.tw_bird, '%s' % therps_obj.x,],
-        "Units": ['mg/kg-bw', 'mg/kg-diet', 'mg/kg-diet', 'mg/kg-bw', '', 'g', '',],
+        "Parameter": ['Avian LD50', 'Test species (for Avian LD50)', 'Weight',
+                      'Avian LC50', 'Test species (for Avian LC50)', 'Weight',
+                      'Avian NOAEC', 'Test species (for Avian NOAEC)', 'Weight',
+                      'Avian NOAEL', 'Test species (for Avian NOAEL)', 'Weight', 
+                      'Mineau scaling factor', ],
+        "Value": ['%s' % therps_obj.ld50_bird, '%s' % therps_obj.Species_of_the_tested_bird_avian_ld50, '%s' % therps_obj.tw_bird_ld50,
+                  '%s' % therps_obj.lc50_bird, '%s' % therps_obj.Species_of_the_tested_bird_avian_lc50, '%s' % therps_obj.tw_bird_lc50,
+                  '%s' % therps_obj.NOAEC_bird, '%s' % therps_obj.Species_of_the_tested_bird_avian_NOAEC, '%s' % therps_obj.tw_bird_NOAEC,
+                  '%s' % therps_obj.NOAEL_bird, '%s' % therps_obj.Species_of_the_tested_bird_avian_NOAEL, '%s' % therps_obj.tw_bird_NOAEL,
+                  '%s' % therps_obj.x,],
+        "Units": ['mg/kg-bw', '', 'g', 'mg/kg-diet', '', 'g', 'mg/kg-diet', '', 'g', 'mg/kg-bw', '', 'g', ''],
     }
     return data
 
@@ -150,7 +159,29 @@ def gett3data(therps_obj):
     }
     return data
 
-def gett5data(lc50_bird, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_FR, EEC_ARQ_herp_FR, EEC_diet_herp_HM, EEC_ARQ_herp_HM, EEC_diet_herp_IM, EEC_ARQ_herp_IM, EEC_diet_herp_TP, EEC_ARQ_herp_TP):
+def gett5data(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, LD50_AD_sm, LD50_AD_md, LD50_AD_lg,
+              EEC_dose_BP_sm, EEC_dose_BP_md, EEC_dose_BP_lg, ARQ_dose_BP_sm, ARQ_dose_BP_md, ARQ_dose_BP_lg,
+              EEC_dose_FR_sm, EEC_dose_FR_md, EEC_dose_FR_lg, ARQ_dose_FR_sm, ARQ_dose_FR_md, ARQ_dose_FR_lg,
+              EEC_dose_HM_md, EEC_dose_HM_lg, ARQ_dose_HM_md, ARQ_dose_HM_lg,
+              EEC_dose_IM_md, EEC_dose_IM_lg, ARQ_dose_IM_md, ARQ_dose_IM_lg,
+              EEC_dose_TP_md, EEC_dose_TP_lg, ARQ_dose_TP_md, ARQ_dose_TP_lg):
+    data = { 
+        "Size": ['%s' % bw_herp_a_sm, '%s' % bw_herp_a_md, '%s' % bw_herp_a_lg,],
+        "LD50_AD": ['%0.2E' % LD50_AD_sm, '%0.2E' % LD50_AD_md, '%0.2E' % LD50_AD_lg,],
+        "EEC_BP": ['%0.2E' % EEC_dose_BP_sm, '%0.2E' % EEC_dose_BP_md, '%0.2E' % EEC_dose_BP_lg,],
+        "ARQ_BP": ['%0.2E' % ARQ_dose_BP_sm, '%0.2E' % ARQ_dose_BP_md, '%0.2E' % ARQ_dose_BP_lg,],
+        "EEC_FR": ['%0.2E' % EEC_dose_FR_sm, '%0.2E' % EEC_dose_FR_md, '%0.2E' % EEC_dose_FR_lg,],
+        "ARQ_FR": ['%0.2E' % ARQ_dose_FR_sm, '%0.2E' % ARQ_dose_FR_md, '%0.2E' % ARQ_dose_FR_lg,],
+        "EEC_HM": ['N/A', '%0.2E' % EEC_dose_HM_md, '%0.2E' % EEC_dose_HM_lg,],
+        "ARQ_HM": ['N/A', '%0.2E' % ARQ_dose_HM_md, '%0.2E' % ARQ_dose_HM_lg,],
+        "EEC_IM": ['N/A', '%0.2E' % EEC_dose_IM_md, '%0.2E' % EEC_dose_IM_lg,],
+        "ARQ_IM": ['N/A', '%0.2E' % ARQ_dose_IM_md, '%0.2E' % ARQ_dose_IM_lg,],
+        "EEC_TP": ['N/A', '%0.2E' % EEC_dose_TP_md, '%0.2E' % EEC_dose_TP_lg,],
+        "ARQ_TP": ['N/A', '%0.2E' % ARQ_dose_TP_md, '%0.2E' % ARQ_dose_TP_lg,],
+    }
+    return data
+
+def gett6data(lc50_bird, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_FR, EEC_ARQ_herp_FR, EEC_diet_herp_HM, EEC_ARQ_herp_HM, EEC_diet_herp_IM, EEC_ARQ_herp_IM, EEC_diet_herp_TP, EEC_ARQ_herp_TP):
     data = { 
         "LC50":   ['%0.2E' % lc50_bird,],
         "EEC_BP": ['%0.2E' % EEC_diet_herp_BL,],
@@ -166,7 +197,7 @@ def gett5data(lc50_bird, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_FR, EE
     }
     return data
 
-def gett6data(NOAEC_bird, EEC_diet_herp_BL, EEC_CRQ_herp_BL, EEC_diet_herp_FR, EEC_CRQ_herp_FR, EEC_diet_herp_HM, EEC_CRQ_herp_HM, EEC_diet_herp_IM, EEC_CRQ_herp_IM, EEC_diet_herp_TP, EEC_CRQ_herp_TP):
+def gett7data(NOAEC_bird, EEC_diet_herp_BL, EEC_CRQ_herp_BL, EEC_diet_herp_FR, EEC_CRQ_herp_FR, EEC_diet_herp_HM, EEC_CRQ_herp_HM, EEC_diet_herp_IM, EEC_CRQ_herp_IM, EEC_diet_herp_TP, EEC_CRQ_herp_TP):
     data = { 
         "NOAEC":   ['%0.2E' % NOAEC_bird,],
         "EEC_BP": ['%0.2E' % EEC_diet_herp_BL,],
@@ -179,28 +210,6 @@ def gett6data(NOAEC_bird, EEC_diet_herp_BL, EEC_CRQ_herp_BL, EEC_diet_herp_FR, E
         "CRQ_IM":  ['%0.2E' % EEC_CRQ_herp_IM,],
         "EEC_TP": ['%0.2E' % EEC_diet_herp_TP,],
         "CRQ_TP":  ['%0.2E' % EEC_CRQ_herp_TP,],
-    }
-    return data
-
-def gett7data(LD50_AD_sm, LD50_AD_md, LD50_AD_lg,
-              EEC_dose_BP_sm, EEC_dose_BP_md, EEC_dose_BP_lg, ARQ_dose_BP_sm, ARQ_dose_BP_md, ARQ_dose_BP_lg,
-              EEC_dose_FR_sm, EEC_dose_FR_md, EEC_dose_FR_lg, ARQ_dose_FR_sm, ARQ_dose_FR_md, ARQ_dose_FR_lg,
-              EEC_dose_HM_md, EEC_dose_HM_lg, ARQ_dose_HM_md, ARQ_dose_HM_lg,
-              EEC_dose_IM_md, EEC_dose_IM_lg, ARQ_dose_IM_md, ARQ_dose_IM_lg,
-              EEC_dose_TP_md, EEC_dose_TP_lg, ARQ_dose_TP_md, ARQ_dose_TP_lg):
-    data = { 
-        "Size": ['1.4', '37', '238', ],
-        "LD50_AD": ['%0.2E' % LD50_AD_sm, '%0.2E' % LD50_AD_md, '%0.2E' % LD50_AD_lg,],
-        "EEC_BP": ['%0.2E' % EEC_dose_BP_sm, '%0.2E' % EEC_dose_BP_md, '%0.2E' % EEC_dose_BP_lg,],
-        "ARQ_BP": ['%0.2E' % ARQ_dose_BP_sm, '%0.2E' % ARQ_dose_BP_md, '%0.2E' % ARQ_dose_BP_lg,],
-        "EEC_FR": ['%0.2E' % EEC_dose_FR_sm, '%0.2E' % EEC_dose_FR_md, '%0.2E' % EEC_dose_FR_lg,],
-        "ARQ_FR": ['%0.2E' % ARQ_dose_FR_sm, '%0.2E' % ARQ_dose_FR_md, '%0.2E' % ARQ_dose_FR_lg,],
-        "EEC_HM": ['N/A', '%0.2E' % EEC_dose_HM_md, '%0.2E' % EEC_dose_HM_lg,],
-        "ARQ_HM": ['N/A', '%0.2E' % ARQ_dose_HM_md, '%0.2E' % ARQ_dose_HM_lg,],
-        "EEC_IM": ['N/A', '%0.2E' % EEC_dose_IM_md, '%0.2E' % EEC_dose_IM_lg,],
-        "ARQ_IM": ['N/A', '%0.2E' % ARQ_dose_IM_md, '%0.2E' % ARQ_dose_IM_lg,],
-        "EEC_TP": ['N/A', '%0.2E' % EEC_dose_TP_md, '%0.2E' % EEC_dose_TP_lg,],
-        "ARQ_TP": ['N/A', '%0.2E' % ARQ_dose_TP_md, '%0.2E' % ARQ_dose_TP_lg,],
     }
     return data
 
@@ -342,6 +351,9 @@ def table_all(therps_obj):
     table5_out = table_5(therps_obj)
     table6_out = table_6(therps_obj)
     table7_out = table_7(therps_obj)
+    table8_out = table_8(therps_obj)
+    table9_out = table_9(therps_obj)
+    table10_out = table_10(therps_obj)
 
     html_all = table1_out
     html_all = html_all + table2_out
@@ -349,7 +361,10 @@ def table_all(therps_obj):
     html_all = html_all + table5_out['html']
     html_all = html_all + table6_out['html']
     html_all = html_all + table7_out['html']
-    return html_all, table5_out, table6_out, table7_out
+    html_all = html_all + table8_out['html']
+    html_all = html_all + table9_out['html']
+    html_all = html_all + table10_out['html']
+    return html_all, table5_out, table6_out, table7_out, table8_out, table9_out, table10_out
 
 def table_sum_1(i, percent_ai, Foliar_dissipation_half_life, number_of_applications, interval_between_applications, application_rate):
         #pre-table sum_input
@@ -501,66 +516,16 @@ def table_5(therps_obj):
         #pre-table 5
         html = """
         <br>
-        <H3 class="out_5 collapsible" id="section5"><span></span>Results</H3>
+        <H3 class="out_6 collapsible" id="section5"><span></span>Results (Upper Bound Kenaga)</H3>
         <div class="out_">
-            <H4 class="out_5 collapsible" id="section6"><span></span>Upper Bound Kenaga, Subacute Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
+            <H4 class="out_5 collapsible" id="section8"><span></span>Upper Bound Kenaga, Acute Terrestrial Herpetofauna Dose-Based Risk Quotients</H4>
                 <div class="out_ container_output">
         """
         #table 5
-        EEC_diet_herp_BL=therps_obj.EEC_diet_herp_BL
-        EEC_ARQ_herp_BL =therps_obj.EEC_ARQ_herp_BL 
-        EEC_diet_herp_FR=therps_obj.EEC_diet_herp_FR
-        EEC_ARQ_herp_FR =therps_obj.EEC_ARQ_herp_FR 
-        EEC_diet_herp_HM=therps_obj.EEC_diet_herp_HM
-        EEC_ARQ_herp_HM =therps_obj.EEC_ARQ_herp_HM 
-        EEC_diet_herp_IM=therps_obj.EEC_diet_herp_IM
-        EEC_ARQ_herp_IM =therps_obj.EEC_ARQ_herp_IM 
-        EEC_diet_herp_TP=therps_obj.EEC_diet_herp_TP
-        EEC_ARQ_herp_TP =therps_obj.EEC_ARQ_herp_TP 
+        bw_herp_a_sm=therps_obj.bw_herp_a_sm
+        bw_herp_a_md=therps_obj.bw_herp_a_md
+        bw_herp_a_lg=therps_obj.bw_herp_a_lg
 
-        t5data = gett5data(therps_obj.lc50_bird, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_FR, EEC_ARQ_herp_FR, EEC_diet_herp_HM, EEC_ARQ_herp_HM, EEC_diet_herp_IM, EEC_ARQ_herp_IM, EEC_diet_herp_TP, EEC_ARQ_herp_TP)
-        t5rows = gethtmlrowsfromcols(t5data,pv5headings[1])       
-        html = html + tmpl_5.render(Context(dict(data=t5rows, l_headings=pv5headings[0][0])))
-        html = html + """
-                </div>
-        """
-        return {'html':html, 'EEC_diet_herp_BL':EEC_diet_herp_BL, 'EEC_ARQ_herp_BL':EEC_ARQ_herp_BL, 'EEC_diet_herp_FR':EEC_diet_herp_FR, 'EEC_ARQ_herp_FR':EEC_ARQ_herp_FR, 
-                'EEC_diet_herp_HM':EEC_diet_herp_HM, 'EEC_ARQ_herp_HM':EEC_ARQ_herp_HM, 'EEC_diet_herp_IM':EEC_diet_herp_IM, 'EEC_ARQ_herp_IM':EEC_ARQ_herp_IM, 'EEC_diet_herp_TP':EEC_diet_herp_TP, 'EEC_ARQ_herp_TP':EEC_ARQ_herp_TP}
-
-def table_6(therps_obj):
-        #pre-table 6
-        html = """
-            <H4 class="out_6 collapsible" id="section7"><span></span>Upper Bound Kenaga, Chronic Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
-                <div class="out_ container_output">
-        """
-        #table 6
-        EEC_diet_herp_BL=therps_obj.EEC_diet_herp_BL
-        EEC_CRQ_herp_BL =therps_obj.EEC_CRQ_herp_BL 
-        EEC_diet_herp_FR=therps_obj.EEC_diet_herp_FR
-        EEC_CRQ_herp_FR =therps_obj.EEC_CRQ_herp_FR 
-        EEC_diet_herp_HM=therps_obj.EEC_diet_herp_HM
-        EEC_CRQ_herp_HM =therps_obj.EEC_CRQ_herp_HM 
-        EEC_diet_herp_IM=therps_obj.EEC_diet_herp_IM
-        EEC_CRQ_herp_IM =therps_obj.EEC_CRQ_herp_IM 
-        EEC_diet_herp_TP=therps_obj.EEC_diet_herp_TP
-        EEC_CRQ_herp_TP =therps_obj.EEC_CRQ_herp_TP 
-
-        t6data = gett6data(therps_obj.NOAEC_bird, EEC_diet_herp_BL, EEC_CRQ_herp_BL, EEC_diet_herp_FR, EEC_CRQ_herp_FR, EEC_diet_herp_HM, EEC_CRQ_herp_HM, EEC_diet_herp_IM, EEC_CRQ_herp_IM, EEC_diet_herp_TP, EEC_CRQ_herp_TP)
-        t6rows = gethtmlrowsfromcols(t6data,pv6headings[1])       
-        html = html + tmpl_5.render(Context(dict(data=t6rows, l_headings=pv6headings[0][0])))
-        html = html + """
-                </div>
-        """
-        return {'html':html, 'EEC_diet_herp_BL':EEC_diet_herp_BL, 'EEC_CRQ_herp_BL':EEC_CRQ_herp_BL, 'EEC_diet_herp_FR':EEC_diet_herp_FR, 'EEC_CRQ_herp_FR':EEC_CRQ_herp_FR, 
-                'EEC_diet_herp_HM':EEC_diet_herp_HM, 'EEC_CRQ_herp_HM':EEC_CRQ_herp_HM, 'EEC_diet_herp_IM':EEC_diet_herp_IM, 'EEC_CRQ_herp_IM':EEC_CRQ_herp_IM, 'EEC_diet_herp_TP':EEC_diet_herp_TP, 'EEC_CRQ_herp_TP':EEC_CRQ_herp_TP}
-
-def table_7(therps_obj):
-        #pre-table 7
-        html = """
-            <H4 class="out_7 collapsible" id="section8"><span></span>Upper Bound Kenaga, Acute Terrestrial Herpetofauna Dose-Based Risk Quotients</H4>
-                <div class="out_ container_output">
-        """
-        #table 7
         LD50_AD_sm=therps_obj.LD50_AD_sm
         LD50_AD_md=therps_obj.LD50_AD_md
         LD50_AD_lg=therps_obj.LD50_AD_lg
@@ -594,15 +559,15 @@ def table_7(therps_obj):
         ARQ_dose_TP_md=therps_obj.ARQ_dose_TP_md
         ARQ_dose_TP_lg=therps_obj.ARQ_dose_TP_lg
 
-        t7data = gett7data(LD50_AD_sm, LD50_AD_md, LD50_AD_lg,
+        t5data = gett5data(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, LD50_AD_sm, LD50_AD_md, LD50_AD_lg,
                            EEC_dose_BP_sm, EEC_dose_BP_md, EEC_dose_BP_lg, ARQ_dose_BP_sm, ARQ_dose_BP_md, ARQ_dose_BP_lg,
                            EEC_dose_FR_sm, EEC_dose_FR_md, EEC_dose_FR_lg, ARQ_dose_FR_sm, ARQ_dose_FR_md, ARQ_dose_FR_lg,
                            EEC_dose_HM_md, EEC_dose_HM_lg, ARQ_dose_HM_md, ARQ_dose_HM_lg,
                            EEC_dose_IM_md, EEC_dose_IM_lg, ARQ_dose_IM_md, ARQ_dose_IM_lg,
                            EEC_dose_TP_md, EEC_dose_TP_lg, ARQ_dose_TP_md, ARQ_dose_TP_lg)
 
-        t7rows = gethtmlrowsfromcols(t7data, pv7headings[1])       
-        html = html + tmpl_5.render(Context(dict(data=t7rows, l_headings=[pv7headings[0][0][0], pv7headings[0][0][1]])))
+        t5rows = gethtmlrowsfromcols(t5data, pv5headings[1])       
+        html = html + tmpl_5.render(Context(dict(data=t5rows, l_headings=[pv5headings[0][0][0], pv5headings[0][0][1]])))
         html = html + """
                 </div>
         </div>
@@ -616,3 +581,182 @@ def table_7(therps_obj):
                 'ARQ_dose_HM_lg': ARQ_dose_HM_lg, 'EEC_dose_IM_md': EEC_dose_IM_md, 'EEC_dose_IM_lg': EEC_dose_IM_lg, 
                 'ARQ_dose_IM_md': ARQ_dose_IM_md, 'ARQ_dose_IM_lg': ARQ_dose_IM_lg, 'EEC_dose_TP_md': EEC_dose_TP_md, 
                 'EEC_dose_TP_lg': EEC_dose_TP_lg, 'ARQ_dose_TP_md': ARQ_dose_TP_md, 'ARQ_dose_TP_lg': ARQ_dose_TP_lg}
+
+
+def table_6(therps_obj):
+        #pre-table 6
+        html = """
+            <H4 class="out_6 collapsible" id="section6"><span></span>Upper Bound Kenaga, Subacute Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
+                <div class="out_ container_output">
+        """
+        #table 6
+        EEC_diet_herp_BL=therps_obj.EEC_diet_herp_BL
+        EEC_ARQ_herp_BL =therps_obj.EEC_ARQ_herp_BL 
+        EEC_diet_herp_FR=therps_obj.EEC_diet_herp_FR
+        EEC_ARQ_herp_FR =therps_obj.EEC_ARQ_herp_FR 
+        EEC_diet_herp_HM=therps_obj.EEC_diet_herp_HM
+        EEC_ARQ_herp_HM =therps_obj.EEC_ARQ_herp_HM 
+        EEC_diet_herp_IM=therps_obj.EEC_diet_herp_IM
+        EEC_ARQ_herp_IM =therps_obj.EEC_ARQ_herp_IM 
+        EEC_diet_herp_TP=therps_obj.EEC_diet_herp_TP
+        EEC_ARQ_herp_TP =therps_obj.EEC_ARQ_herp_TP 
+
+        t6data = gett6data(therps_obj.lc50_bird, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_FR, EEC_ARQ_herp_FR, EEC_diet_herp_HM, EEC_ARQ_herp_HM, EEC_diet_herp_IM, EEC_ARQ_herp_IM, EEC_diet_herp_TP, EEC_ARQ_herp_TP)
+        t6rows = gethtmlrowsfromcols(t6data, pv6headings[1])       
+        html = html + tmpl_5.render(Context(dict(data=t6rows, l_headings=pv6headings[0][0])))
+        html = html + """
+                </div>
+        """
+        return {'html':html, 'EEC_diet_herp_BL':EEC_diet_herp_BL, 'EEC_ARQ_herp_BL':EEC_ARQ_herp_BL, 'EEC_diet_herp_FR':EEC_diet_herp_FR, 'EEC_ARQ_herp_FR':EEC_ARQ_herp_FR, 
+                'EEC_diet_herp_HM':EEC_diet_herp_HM, 'EEC_ARQ_herp_HM':EEC_ARQ_herp_HM, 'EEC_diet_herp_IM':EEC_diet_herp_IM, 'EEC_ARQ_herp_IM':EEC_ARQ_herp_IM, 'EEC_diet_herp_TP':EEC_diet_herp_TP, 'EEC_ARQ_herp_TP':EEC_ARQ_herp_TP}
+
+def table_7(therps_obj):
+        #pre-table 7
+        html = """
+            <H4 class="out_7 collapsible" id="section7"><span></span>Upper Bound Kenaga, Chronic Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
+                <div class="out_ container_output">
+        """
+        #table 7
+        EEC_diet_herp_BL=therps_obj.EEC_diet_herp_BL
+        EEC_CRQ_herp_BL =therps_obj.EEC_CRQ_herp_BL 
+        EEC_diet_herp_FR=therps_obj.EEC_diet_herp_FR
+        EEC_CRQ_herp_FR =therps_obj.EEC_CRQ_herp_FR 
+        EEC_diet_herp_HM=therps_obj.EEC_diet_herp_HM
+        EEC_CRQ_herp_HM =therps_obj.EEC_CRQ_herp_HM 
+        EEC_diet_herp_IM=therps_obj.EEC_diet_herp_IM
+        EEC_CRQ_herp_IM =therps_obj.EEC_CRQ_herp_IM 
+        EEC_diet_herp_TP=therps_obj.EEC_diet_herp_TP
+        EEC_CRQ_herp_TP =therps_obj.EEC_CRQ_herp_TP 
+
+        t7data = gett7data(therps_obj.NOAEC_bird, EEC_diet_herp_BL, EEC_CRQ_herp_BL, EEC_diet_herp_FR, EEC_CRQ_herp_FR, EEC_diet_herp_HM, EEC_CRQ_herp_HM, EEC_diet_herp_IM, EEC_CRQ_herp_IM, EEC_diet_herp_TP, EEC_CRQ_herp_TP)
+        t7rows = gethtmlrowsfromcols(t7data, pv7headings[1])       
+        html = html + tmpl_5.render(Context(dict(data=t7rows, l_headings=pv7headings[0][0])))
+        html = html + """
+                </div>
+        """
+        return {'html':html, 'EEC_diet_herp_BL':EEC_diet_herp_BL, 'EEC_CRQ_herp_BL':EEC_CRQ_herp_BL, 'EEC_diet_herp_FR':EEC_diet_herp_FR, 'EEC_CRQ_herp_FR':EEC_CRQ_herp_FR, 
+                'EEC_diet_herp_HM':EEC_diet_herp_HM, 'EEC_CRQ_herp_HM':EEC_CRQ_herp_HM, 'EEC_diet_herp_IM':EEC_diet_herp_IM, 'EEC_CRQ_herp_IM':EEC_CRQ_herp_IM, 'EEC_diet_herp_TP':EEC_diet_herp_TP, 'EEC_CRQ_herp_TP':EEC_CRQ_herp_TP}
+
+def table_8(therps_obj):
+        #pre-table 8
+        html = """
+        <br>
+        <H3 class="out_8 collapsible" id="section8"><span></span>Results (Mean Kenaga)</H3>
+        <div class="out_">
+            <H4 class="out_8 collapsible" id="section8"><span></span>Mean Kenaga, Acute Terrestrial Herpetofauna Dose-Based Risk Quotients</H4>
+                <div class="out_ container_output">
+        """
+        #table 8
+        bw_herp_a_sm=therps_obj.bw_herp_a_sm
+        bw_herp_a_md=therps_obj.bw_herp_a_md
+        bw_herp_a_lg=therps_obj.bw_herp_a_lg
+
+        LD50_AD_sm=therps_obj.LD50_AD_sm
+        LD50_AD_md=therps_obj.LD50_AD_md
+        LD50_AD_lg=therps_obj.LD50_AD_lg
+
+        EEC_dose_BP_sm_mean=therps_obj.EEC_dose_BP_sm_mean
+        EEC_dose_BP_md_mean=therps_obj.EEC_dose_BP_md_mean
+        EEC_dose_BP_lg_mean=therps_obj.EEC_dose_BP_lg_mean
+        ARQ_dose_BP_sm_mean=therps_obj.ARQ_dose_BP_sm_mean
+        ARQ_dose_BP_md_mean=therps_obj.ARQ_dose_BP_md_mean
+        ARQ_dose_BP_lg_mean=therps_obj.ARQ_dose_BP_lg_mean
+
+        EEC_dose_FR_sm_mean=therps_obj.EEC_dose_FR_sm_mean
+        EEC_dose_FR_md_mean=therps_obj.EEC_dose_FR_md_mean
+        EEC_dose_FR_lg_mean=therps_obj.EEC_dose_FR_lg_mean
+        ARQ_dose_FR_sm_mean=therps_obj.ARQ_dose_FR_sm_mean
+        ARQ_dose_FR_md_mean=therps_obj.ARQ_dose_FR_md_mean
+        ARQ_dose_FR_lg_mean=therps_obj.ARQ_dose_FR_lg_mean
+
+        EEC_dose_HM_md_mean=therps_obj.EEC_dose_HM_md_mean
+        EEC_dose_HM_lg_mean=therps_obj.EEC_dose_HM_lg_mean
+        ARQ_dose_HM_md_mean=therps_obj.ARQ_dose_HM_md_mean
+        ARQ_dose_HM_lg_mean=therps_obj.ARQ_dose_HM_lg_mean
+
+        EEC_dose_IM_md_mean=therps_obj.EEC_dose_IM_md_mean
+        EEC_dose_IM_lg_mean=therps_obj.EEC_dose_IM_lg_mean
+        ARQ_dose_IM_md_mean=therps_obj.ARQ_dose_IM_md_mean
+        ARQ_dose_IM_lg_mean=therps_obj.ARQ_dose_IM_lg_mean
+
+        EEC_dose_TP_md_mean=therps_obj.EEC_dose_TP_md_mean
+        EEC_dose_TP_lg_mean=therps_obj.EEC_dose_TP_lg_mean
+        ARQ_dose_TP_md_mean=therps_obj.ARQ_dose_TP_md_mean
+        ARQ_dose_TP_lg_mean=therps_obj.ARQ_dose_TP_lg_mean
+
+        t8data = gett5data(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, LD50_AD_sm, LD50_AD_md, LD50_AD_lg,
+                           EEC_dose_BP_sm_mean, EEC_dose_BP_md_mean, EEC_dose_BP_lg_mean, ARQ_dose_BP_sm_mean, ARQ_dose_BP_md_mean, ARQ_dose_BP_lg_mean,
+                           EEC_dose_FR_sm_mean, EEC_dose_FR_md_mean, EEC_dose_FR_lg_mean, ARQ_dose_FR_sm_mean, ARQ_dose_FR_md_mean, ARQ_dose_FR_lg_mean,
+                           EEC_dose_HM_md_mean, EEC_dose_HM_lg_mean, ARQ_dose_HM_md_mean, ARQ_dose_HM_lg_mean,
+                           EEC_dose_IM_md_mean, EEC_dose_IM_lg_mean, ARQ_dose_IM_md_mean, ARQ_dose_IM_lg_mean,
+                           EEC_dose_TP_md_mean, EEC_dose_TP_lg_mean, ARQ_dose_TP_md_mean, ARQ_dose_TP_lg_mean)
+
+        t8rows = gethtmlrowsfromcols(t8data, pv5headings[1])       
+        html = html + tmpl_5.render(Context(dict(data=t8rows, l_headings=[pv5headings[0][0][0], pv5headings[0][0][1]])))
+        html = html + """
+                </div>
+        </div>
+        """
+        return {'html':html, 'LD50_AD_sm': LD50_AD_sm, 'LD50_AD_md': LD50_AD_md, 'LD50_AD_lg': LD50_AD_lg, 
+                'EEC_dose_BP_sm': EEC_dose_BP_sm_mean, 'EEC_dose_BP_md': EEC_dose_BP_md_mean, 'EEC_dose_BP_lg': EEC_dose_BP_lg_mean, 
+                'ARQ_dose_BP_sm': ARQ_dose_BP_sm_mean, 'ARQ_dose_BP_md': ARQ_dose_BP_md_mean, 'ARQ_dose_BP_lg': ARQ_dose_BP_lg_mean, 
+                'EEC_dose_FR_sm': EEC_dose_FR_sm_mean, 'EEC_dose_FR_md': EEC_dose_FR_md_mean, 'EEC_dose_FR_lg': EEC_dose_FR_lg_mean, 
+                'ARQ_dose_FR_sm': ARQ_dose_FR_sm_mean, 'ARQ_dose_FR_md': ARQ_dose_FR_md_mean, 'ARQ_dose_FR_lg': ARQ_dose_FR_lg_mean, 
+                'EEC_dose_HM_md': EEC_dose_HM_md_mean, 'EEC_dose_HM_lg': EEC_dose_HM_lg_mean, 'ARQ_dose_HM_md': ARQ_dose_HM_md_mean, 
+                'ARQ_dose_HM_lg': ARQ_dose_HM_lg_mean, 'EEC_dose_IM_md': EEC_dose_IM_md_mean, 'EEC_dose_IM_lg': EEC_dose_IM_lg_mean, 
+                'ARQ_dose_IM_md': ARQ_dose_IM_md_mean, 'ARQ_dose_IM_lg': ARQ_dose_IM_lg_mean, 'EEC_dose_TP_md': EEC_dose_TP_md_mean, 
+                'EEC_dose_TP_lg': EEC_dose_TP_lg_mean, 'ARQ_dose_TP_md': ARQ_dose_TP_md_mean, 'ARQ_dose_TP_lg': ARQ_dose_TP_lg_mean}
+
+def table_9(therps_obj):
+        #pre-table 9
+        html = """
+            <H4 class="out_9 collapsible" id="section9"><span></span>Mean Kenaga, Subacute Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
+                <div class="out_ container_output">
+        """
+        #table 9
+        EEC_diet_herp_BL_mean=therps_obj.EEC_diet_herp_BL_mean
+        EEC_ARQ_herp_BL_mean =therps_obj.EEC_ARQ_herp_BL_mean 
+        EEC_diet_herp_FR_mean=therps_obj.EEC_diet_herp_FR_mean
+        EEC_ARQ_herp_FR_mean =therps_obj.EEC_ARQ_herp_FR_mean 
+        EEC_diet_herp_HM_mean=therps_obj.EEC_diet_herp_HM_mean
+        EEC_ARQ_herp_HM_mean =therps_obj.EEC_ARQ_herp_HM_mean 
+        EEC_diet_herp_IM_mean=therps_obj.EEC_diet_herp_IM_mean
+        EEC_ARQ_herp_IM_mean =therps_obj.EEC_ARQ_herp_IM_mean 
+        EEC_diet_herp_TP_mean=therps_obj.EEC_diet_herp_TP_mean
+        EEC_ARQ_herp_TP_mean =therps_obj.EEC_ARQ_herp_TP_mean 
+
+        t9data = gett6data(therps_obj.lc50_bird, EEC_diet_herp_BL_mean, EEC_ARQ_herp_BL_mean, EEC_diet_herp_FR_mean, EEC_ARQ_herp_FR_mean, EEC_diet_herp_HM_mean, EEC_ARQ_herp_HM_mean, EEC_diet_herp_IM_mean, EEC_ARQ_herp_IM_mean, EEC_diet_herp_TP_mean, EEC_ARQ_herp_TP_mean)
+        t9rows = gethtmlrowsfromcols(t9data, pv6headings[1])       
+        html = html + tmpl_5.render(Context(dict(data=t9rows, l_headings=pv6headings[0][0])))
+        html = html + """
+                </div>
+        """
+        return {'html':html, 'EEC_diet_herp_BL':EEC_diet_herp_BL_mean, 'EEC_ARQ_herp_BL':EEC_ARQ_herp_BL_mean, 'EEC_diet_herp_FR':EEC_diet_herp_FR_mean, 'EEC_ARQ_herp_FR':EEC_ARQ_herp_FR_mean, 
+                'EEC_diet_herp_HM':EEC_diet_herp_HM_mean, 'EEC_ARQ_herp_HM':EEC_ARQ_herp_HM_mean, 'EEC_diet_herp_IM':EEC_diet_herp_IM_mean, 'EEC_ARQ_herp_IM':EEC_ARQ_herp_IM_mean, 'EEC_diet_herp_TP':EEC_diet_herp_TP_mean, 'EEC_ARQ_herp_TP':EEC_ARQ_herp_TP_mean}
+
+def table_10(therps_obj):
+        #pre-table 10
+        html = """
+            <H4 class="out_10 collapsible" id="section10"><span></span>Mean Kenaga, Chronic Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
+                <div class="out_ container_output">
+        """
+        #table 10
+        EEC_diet_herp_BL_mean=therps_obj.EEC_diet_herp_BL_mean
+        EEC_CRQ_herp_BL_mean=therps_obj.EEC_CRQ_herp_BL_mean
+        EEC_diet_herp_FR_mean=therps_obj.EEC_diet_herp_FR_mean
+        EEC_CRQ_herp_FR_mean=therps_obj.EEC_CRQ_herp_FR_mean
+        EEC_diet_herp_HM_mean=therps_obj.EEC_diet_herp_HM_mean
+        EEC_CRQ_herp_HM_mean=therps_obj.EEC_CRQ_herp_HM_mean
+        EEC_diet_herp_IM_mean=therps_obj.EEC_diet_herp_IM_mean
+        EEC_CRQ_herp_IM_mean=therps_obj.EEC_CRQ_herp_IM_mean
+        EEC_diet_herp_TP_mean=therps_obj.EEC_diet_herp_TP_mean
+        EEC_CRQ_herp_TP_mean=therps_obj.EEC_CRQ_herp_TP_mean
+
+        t10data = gett7data(therps_obj.NOAEC_bird, EEC_diet_herp_BL_mean, EEC_CRQ_herp_BL_mean, EEC_diet_herp_FR_mean, EEC_CRQ_herp_FR_mean, EEC_diet_herp_HM_mean, EEC_CRQ_herp_HM_mean, EEC_diet_herp_IM_mean, EEC_CRQ_herp_IM_mean, EEC_diet_herp_TP_mean, EEC_CRQ_herp_TP_mean)
+        t10rows = gethtmlrowsfromcols(t10data, pv7headings[1])       
+        html = html + tmpl_5.render(Context(dict(data=t10rows, l_headings=pv7headings[0][0])))
+        html = html + """
+                </div>
+        """
+        return {'html':html, 'EEC_diet_herp_BL':EEC_diet_herp_BL_mean, 'EEC_CRQ_herp_BL':EEC_CRQ_herp_BL_mean, 'EEC_diet_herp_FR':EEC_diet_herp_FR_mean, 'EEC_CRQ_herp_FR':EEC_CRQ_herp_FR_mean, 
+                'EEC_diet_herp_HM':EEC_diet_herp_HM_mean, 'EEC_CRQ_herp_HM':EEC_CRQ_herp_HM_mean, 'EEC_diet_herp_IM':EEC_diet_herp_IM_mean, 'EEC_CRQ_herp_IM':EEC_CRQ_herp_IM_mean, 'EEC_diet_herp_TP':EEC_diet_herp_TP_mean, 'EEC_CRQ_herp_TP':EEC_CRQ_herp_TP_mean}

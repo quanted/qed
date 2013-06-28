@@ -462,7 +462,7 @@ class sip(object):
             if self.acute_bird_out < 0.1:
                 self.acuconb_out = ('Drinking water exposure alone is NOT a potential concern for birds')
             else:
-                self.acuconb_out ('Exposure through drinking water alone is a potential concern for birds')
+                self.acuconb_out = ('Exposure through drinking water alone is a potential concern for birds')
         return self.acuconb_out
 
     # Acute exposures for mammals

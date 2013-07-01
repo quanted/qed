@@ -226,14 +226,16 @@ def gettsumdata_1(percent_ai, Foliar_dissipation_half_life, number_of_applicatio
     }
     return data
 
-def gettsumdata_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, body_weight_of_the_tested_bird, mineau_scaling_factor):
+def gettsumdata_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_avian_ld50, bw_avian_lc50, bw_avian_NOAEC, bw_avian_NOAEL, mineau_scaling_factor):
     data = { 
-        "Parameter": ['Avian LD50', 'Avian LC50', 'Avian NOAEC', 'Avian NOAEL', 'Body weight of the tested bird', 'Mineau scaling factor',],
-        "Mean": ['%.2e' % numpy.mean(avian_ld50),'%.2e' % numpy.mean(avian_lc50),'%.2e' % numpy.mean(avian_NOAEC), '%.2e' % numpy.mean(avian_NOAEL), '%.2e' % numpy.mean(body_weight_of_the_tested_bird), '%.2e' % numpy.mean(mineau_scaling_factor),],
-        "Std": ['%.2e' % numpy.std(avian_ld50),'%.2e' % numpy.std(avian_lc50),'%.2e' % numpy.std(avian_NOAEC), '%.2e' % numpy.std(avian_NOAEL), '%.2e' % numpy.std(body_weight_of_the_tested_bird), '%.2e' % numpy.mean(mineau_scaling_factor),],
-        "Min": ['%.2e' % numpy.min(avian_ld50),'%.2e' % numpy.min(avian_lc50),'%.2e' % numpy.min(avian_NOAEC), '%.2e' % numpy.min(avian_NOAEL), '%.2e' % numpy.min(body_weight_of_the_tested_bird), '%.2e' % numpy.mean(mineau_scaling_factor),],
-        "Max": ['%.2e' % numpy.max(avian_ld50),'%.2e' % numpy.max(avian_lc50),'%.2e' % numpy.max(avian_NOAEC), '%.2e' % numpy.max(avian_NOAEL), '%.2e' % numpy.max(body_weight_of_the_tested_bird), '%.2e' % numpy.mean(mineau_scaling_factor),],
-        "Unit": ['mg/kg-bw', 'mg/kg-diet', 'mg/kg-diet', 'mg/kg-bw', 'g', '',],
+        "Parameter": ['Avian LD50', 'Avian LC50', 'Avian NOAEC', 'Avian NOAEL', 
+                      'Body weight of the tested bird (LD50)', 'Body weight of the tested bird (LC50)', 
+                      'Body weight of the tested bird (NOAEC)', 'Body weight of the tested bird (NOAEL)', 'Mineau scaling factor',],
+        "Mean": ['%.2e' % numpy.mean(avian_ld50),'%.2e' % numpy.mean(avian_lc50),'%.2e' % numpy.mean(avian_NOAEC), '%.2e' % numpy.mean(avian_NOAEL), '%.2e' % numpy.mean(bw_avian_ld50), '%.2e' % numpy.mean(bw_avian_lc50), '%.2e' % numpy.mean(bw_avian_NOAEC), '%.2e' % numpy.mean(bw_avian_NOAEL), '%.2e' % numpy.mean(mineau_scaling_factor),],
+        "Std": ['%.2e' % numpy.std(avian_ld50),'%.2e' % numpy.std(avian_lc50),'%.2e' % numpy.std(avian_NOAEC), '%.2e' % numpy.std(avian_NOAEL), '%.2e' % numpy.std(bw_avian_ld50), '%.2e' % numpy.std(bw_avian_lc50), '%.2e' % numpy.std(bw_avian_NOAEC), '%.2e' % numpy.std(bw_avian_NOAEL), '%.2e' % numpy.mean(mineau_scaling_factor),],
+        "Min": ['%.2e' % numpy.min(avian_ld50),'%.2e' % numpy.min(avian_lc50),'%.2e' % numpy.min(avian_NOAEC), '%.2e' % numpy.min(avian_NOAEL), '%.2e' % numpy.min(bw_avian_ld50), '%.2e' % numpy.min(bw_avian_lc50), '%.2e' % numpy.min(bw_avian_NOAEC), '%.2e' % numpy.min(bw_avian_NOAEL), '%.2e' % numpy.mean(mineau_scaling_factor),],
+        "Max": ['%.2e' % numpy.max(avian_ld50),'%.2e' % numpy.max(avian_lc50),'%.2e' % numpy.max(avian_NOAEC), '%.2e' % numpy.max(avian_NOAEL), '%.2e' % numpy.max(bw_avian_ld50), '%.2e' % numpy.max(bw_avian_lc50), '%.2e' % numpy.max(bw_avian_NOAEC), '%.2e' % numpy.max(bw_avian_NOAEL), '%.2e' % numpy.mean(mineau_scaling_factor),],
+        "Unit": ['mg/kg-bw', 'mg/kg-diet', 'mg/kg-diet', 'mg/kg-bw', 'g', 'g', 'g', 'g', '',],
     }
     return data
 
@@ -382,7 +384,7 @@ def table_sum_1(i, percent_ai, Foliar_dissipation_half_life, number_of_applicati
         html = html + tmpl.render(Context(dict(data=tsuminputrows_1, headings=sumheadings)))
         return html
 
-def table_sum_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, body_weight_of_the_tested_bird, mineau_scaling_factor):
+def table_sum_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_avian_ld50, bw_avian_lc50, bw_avian_NOAEC, bw_avian_NOAEL, mineau_scaling_factor):
         #pre-table sum_input
         html = """
             <div class="out_1">
@@ -391,7 +393,7 @@ def table_sum_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, body_weight_of
         """
 
         #table sum_input
-        tsuminputdata_2 = gettsumdata_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, body_weight_of_the_tested_bird, mineau_scaling_factor)
+        tsuminputdata_2 = gettsumdata_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_avian_ld50, bw_avian_lc50, bw_avian_NOAEC, bw_avian_NOAEL, mineau_scaling_factor)
         tsuminputrows_2 = gethtmlrowsfromcols(tsuminputdata_2, sumheadings)
         html = html + tmpl.render(Context(dict(data=tsuminputrows_2, headings=sumheadings)))
         return html
@@ -410,14 +412,13 @@ def table_sum_3(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_
         html = html + tmpl.render(Context(dict(data=tsuminputrows_3, headings=sumheadings)))
         return html
 
-def table_sum_5(EEC_diet_herp_BL_out, EEC_ARQ_herp_BL_out, EEC_diet_herp_FR_out, EEC_ARQ_herp_FR_out, EEC_diet_herp_HM_out, EEC_ARQ_herp_HM_out, EEC_diet_herp_IM_out, EEC_ARQ_herp_IM_out, EEC_diet_herp_TP_out, EEC_ARQ_herp_TP_out):
+def table_sum_5(table_type, EEC_diet_herp_BL_out, EEC_ARQ_herp_BL_out, EEC_diet_herp_FR_out, EEC_ARQ_herp_FR_out, EEC_diet_herp_HM_out, EEC_ARQ_herp_HM_out, EEC_diet_herp_IM_out, EEC_ARQ_herp_IM_out, EEC_diet_herp_TP_out, EEC_ARQ_herp_TP_out):
         #pre-table sum_input
         html = """
             <div class="out_1">
-              <H3>Batch outputs:</H3>
-              <H4>Upper Bound Kenaga, Subacute Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
+              <H4>%s, Subacute Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
             </div>
-        """
+        """%(table_type)
 
         #table sum_input
         tsuminputdata_5 = gettsumdata_5(EEC_diet_herp_BL_out, EEC_ARQ_herp_BL_out, EEC_diet_herp_FR_out, EEC_ARQ_herp_FR_out, EEC_diet_herp_HM_out, EEC_ARQ_herp_HM_out, EEC_diet_herp_IM_out, EEC_ARQ_herp_IM_out, EEC_diet_herp_TP_out, EEC_ARQ_herp_TP_out)
@@ -425,13 +426,13 @@ def table_sum_5(EEC_diet_herp_BL_out, EEC_ARQ_herp_BL_out, EEC_diet_herp_FR_out,
         html = html + tmpl_5.render(Context(dict(data=tsuminputrows_5, l_headings=sumheadings_5[0][0])))
         return html
 
-def table_sum_6(EEC_diet_herp_BL_out, EEC_CRQ_herp_BL_out, EEC_diet_herp_FR_out, EEC_CRQ_herp_FR_out, EEC_diet_herp_HM_out, EEC_CRQ_herp_HM_out, EEC_diet_herp_IM_out, EEC_CRQ_herp_IM_out, EEC_diet_herp_TP_out, EEC_CRQ_herp_TP_out):
+def table_sum_6(table_type, EEC_diet_herp_BL_out, EEC_CRQ_herp_BL_out, EEC_diet_herp_FR_out, EEC_CRQ_herp_FR_out, EEC_diet_herp_HM_out, EEC_CRQ_herp_HM_out, EEC_diet_herp_IM_out, EEC_CRQ_herp_IM_out, EEC_diet_herp_TP_out, EEC_CRQ_herp_TP_out):
         #pre-table sum_input
         html = """
             <div class="out_1">
-              <H4>Upper Bound Kenaga, Chronic Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
+              <H4>%s, Chronic Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
             </div>
-        """
+        """%(table_type)
 
         #table sum_input
         tsuminputdata_6 = gettsumdata_6(EEC_diet_herp_BL_out, EEC_CRQ_herp_BL_out, EEC_diet_herp_FR_out, EEC_CRQ_herp_FR_out, EEC_diet_herp_HM_out, EEC_CRQ_herp_HM_out, EEC_diet_herp_IM_out, EEC_CRQ_herp_IM_out, EEC_diet_herp_TP_out, EEC_CRQ_herp_TP_out)
@@ -439,7 +440,7 @@ def table_sum_6(EEC_diet_herp_BL_out, EEC_CRQ_herp_BL_out, EEC_diet_herp_FR_out,
         html = html + tmpl_5.render(Context(dict(data=tsuminputrows_6, l_headings=sumheadings_5[0][0])))
         return html
 
-def table_sum_7(bw_herp_a_sm_out, bw_herp_a_md_out, bw_herp_a_lg_out, LD50_AD_sm_out, LD50_AD_md_out, LD50_AD_lg_out,
+def table_sum_7(table_type, bw_herp_a_sm_out, bw_herp_a_md_out, bw_herp_a_lg_out, LD50_AD_sm_out, LD50_AD_md_out, LD50_AD_lg_out,
                   EEC_dose_BP_sm_out, EEC_dose_BP_md_out, EEC_dose_BP_lg_out, ARQ_dose_BP_sm_out, ARQ_dose_BP_md_out, ARQ_dose_BP_lg_out,
                   EEC_dose_FR_sm_out, EEC_dose_FR_md_out, EEC_dose_FR_lg_out, ARQ_dose_FR_sm_out, ARQ_dose_FR_md_out, ARQ_dose_FR_lg_out,
                   EEC_dose_HM_md_out, EEC_dose_HM_lg_out, ARQ_dose_HM_md_out, ARQ_dose_HM_lg_out,
@@ -448,9 +449,9 @@ def table_sum_7(bw_herp_a_sm_out, bw_herp_a_md_out, bw_herp_a_lg_out, LD50_AD_sm
         #pre-table sum_input
         html = """
             <div class="out_1">
-              <H4>Upper Bound Kenaga_out, Acute Terrestrial Herpetofauna Dose-Based Risk Quotients</H4>
+              <H4>%s, Acute Terrestrial Herpetofauna Dose-Based Risk Quotients</H4>
             </div>
-        """
+        """%(table_type)
 
         #table sum_input
         tsuminputdata_7 = gettsumdata_7(bw_herp_a_sm_out, bw_herp_a_md_out, bw_herp_a_lg_out, LD50_AD_sm_out, LD50_AD_md_out, LD50_AD_lg_out,

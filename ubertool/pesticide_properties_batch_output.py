@@ -14,6 +14,10 @@ def batchLoadPesticidePropertiesConfigs(params_matrix,config_index,ubertool_conf
     config_name = None
     if "pesticide_properties_config_name" in params_matrix:
         config_name = params_matrix.get("pesticide_properties_config_name")[config_index]
+    if "chemical_name" in params_matrix:
+        config_params['chemical_name'] = params_matrix.get("chemical_name")[config_index]  
+    if "label_epa_reg_no" in params_matrix:
+        config_params['label_epa_reg_no'] = params_matrix.get("label_epa_reg_no")[config_index]  
     if "molecular_weight" in params_matrix:
         config_params['molecular_weight'] = params_matrix.get("molecular_weight")[config_index]            
     if "henrys_law_constant" in params_matrix:

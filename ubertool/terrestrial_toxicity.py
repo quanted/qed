@@ -10,10 +10,18 @@ from google.appengine.api import users
 class TerrestrialToxicity(db.Model):
     config_name = db.StringProperty()
     user = db.UserProperty()
+    low_bird_acute_oral_ld50 = db.FloatProperty()
     avian_ld50 = db.FloatProperty()
+    bird_acute_oral_study = db.StringProperty
+    bird_study_additional_comment = db.StringProperty
+    mamm_acute_derm_ld50 = db.FloatProperty()
+    mamm_acute_derm_study = db.StringProperty()
+    mamm_study_add_comm = db.StringProperty()
+    tested_mamm_body_weight = db.FloatProperty()
     avian_lc50 = db.FloatProperty()
     avian_NOAEC = db.FloatProperty()
     avian_NOAEL = db.FloatProperty()
+    tested_bird_body_weight = db.FloatProperty()
     body_weight_of_the_assessed_bird = db.FloatProperty()
     mineau_scaling_factor = db.FloatProperty()
     mammalian_ld50 = db.FloatProperty()

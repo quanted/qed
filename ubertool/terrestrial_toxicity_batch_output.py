@@ -14,14 +14,30 @@ def batchLoadTerrestrialToxicityConfigs(params_matrix,config_index,ubertool_conf
     config_name = None
     if "terrestrial_toxicity_config_name" in params_matrix:
         config_name = params_matrix.get("terrestrial_toxicity_config_name")[config_index]
+    if "low_bird_acute_oral_ld50" in params_matrix:
+        config_params['low_bird_acute_oral_ld50'] = params_matrix.get("low_bird_acute_oral_ld50")[config_index]
+    if "bird_study_add_comm" in params_matrix:
+        config_params['bird_study_add_comm'] = params_matrix.get("bird_study_add_comm")[config_index]    
+    if "mamm_study_add_comm" in params_matrix:
+        config_params['mamm_study_add_comm'] = params_matrix.get("mamm_study_add_comm")[config_index]    
     if "avian_ld50" in params_matrix:
-        config_params['avian_ld50'] = params_matrix.get("avian_ld50")[config_index]            
+        config_params['avian_ld50'] = params_matrix.get("avian_ld50")[config_index]  
+    if "mamm_acute_derm_ld50" in params_matrix:
+        config_params['mamm_acute_derm_ld50'] = params_matrix.get("mamm_acute_derm_ld50")[config_index] 
+    if "mamm_acute_derm_study" in params_matrix:
+        config_params['mamm_acute_derm_study'] = params_matrix.get("mamm_acute_derm_study")[config_index] 
+    if "bird_acute_oral_study" in params_matrix:
+        config_params['bird_acute_oral_study'] = params_matrix.get("bird_acute_oral_study")[config_index]             
     if "avian_lc50" in params_matrix:
         config_params['avian_lc50'] = params_matrix.get("avian_lc50")[config_index]            
     if "avian_NOAEC" in params_matrix:
         config_params['avian_ld50'] = params_matrix.get("avian_NOAEC")[config_index]            
     if "avian_NOAEL" in params_matrix:
         config_params['avian_NOAEC'] = params_matrix.get("avian_NOAEL")[config_index]  
+    if "tested_bird_body_weight" in params_matrix:
+        config_params['tested_bird_body_weight'] = params_matrix.get("tested_bird_body_weight")[config_index]
+    if "tested_mamm_body_weight" in params_matrix:
+        config_params['tested_mamm_body_weight'] = params_matrix.get("tested_mamm_body_weight")[config_index]        
     if "body_weight_of_the_assessed_bird" in params_matrix:
         config_params['body_weight_of_the_assessed_bird'] = params_matrix.get("body_weight_of_the_assessed_bird")[config_index]  
     if "mineau_scaling_factor" in params_matrix:

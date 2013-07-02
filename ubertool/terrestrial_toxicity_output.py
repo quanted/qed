@@ -34,9 +34,17 @@ class UbertoolTerrestrialToxicityConfigurationPage(webapp.RequestHandler):
             terr_tox.user = user
         terr_tox.config_name = config_name
         terr_tox.avian_ld50 = float(form.getvalue('avian_ld50'))
+        terr_tox.low_bird_acute_oral_ld50 = float(form.getvalue('low_bird_acute_oral_ld50'))
+        terr_tox.mamm_acute_derm_ld50 = float(form.getvalue('mamm_acute_derm_ld50'))
+        terr_tox.bird_acute_oral_study = float(form.getvalue('bird_acute_oral_study'))
+        terr_tox.mamm_acute_derm_study = float(form.getvalue('mamm_acute_derm_study'))
+        terr_tox.bird_study_add_comm = float(form.getvalue('bird_study_add_comm'))
+        terr_tox.mamm_study_add_comm = float(form.getvalue('mamm_study_add_comm'))
         terr_tox.avian_lc50 = float(form.getvalue('avian_lc50'))
         terr_tox.avian_NOAEC = float(form.getvalue('avian_NOAEC'))
         terr_tox.avian_NOAEL = float(form.getvalue('avian_NOAEL'))
+        terr_tox.tested_bird_body_weight = float(form.getvalue('tested_bird_body_weight'))
+        terr_tox.tested_mamm_body_weight = float(form.getvalue('tested_mamm_body_weight'))
         terr_tox.body_weight_of_the_assessed_bird = float(form.getvalue('body_weight_of_the_assessed_bird'))
         terr_tox.mineau_scaling_factor = float(form.getvalue('mineau_scaling_factor'))
         terr_tox.mammalian_ld50 = float(form.getvalue('mammalian_ld50'))

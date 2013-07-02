@@ -27,6 +27,8 @@ class UbertoolPesticidePropertiesConfigurationPage(webapp.RequestHandler):
         if user:
             pestProps.user = user
         pestProps.config_name = config_name
+        pestProps.chemical_name = float(form.getvalue('chemical_name'))
+        pestProps.label_epa_reg_no = float(form.getvalue('label_epa_reg_no'))
         pestProps.molecular_weight = float(form.getvalue('molecular_weight'))
         pestProps.henrys_law_constant = float(form.getvalue('henrys_law_constant'))
         pestProps.vapor_pressure = float(form.getvalue('vapor_pressure'))                

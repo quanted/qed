@@ -10,7 +10,8 @@ from django import forms
 from django.db import models
 from django.utils.safestring import mark_safe
 
-Species_of_the_tested_bird_CHOICES=(('0','Make a selection'),('178','Bobwhite quail'),('1580','Mallard duck'),('1','Other'))
+Species_of_the_tested_bird_CHOICES=(('0','Make a selection'),('178','Northern bobwhite quail'),('1580','Mallard duck'),('1','Other'))
+Species_of_the_bird_NOAEC_CHOICES=(('0','Make a selection'),('1','Northern bobwhite quail NOAEC'),('2','Mallard duck NOAEC'),('3','"Other" Bird species NOAEC'))
 Species_of_the_tested_mamm_CHOICES=(('0','Make a selection'),('350','Laboratory rat'),('1','Other'))
 #SELECT_RECEPTOR = (('Avian','Avian'),('Mammalian','Mammalian'),('Both','Both'))
 
@@ -26,16 +27,21 @@ class SIPInp(forms.Form):
 
     NOAEL = forms.FloatField(required=True, label='Mammalian NOAEL (mg/kg-bw)', initial=20)
 
-    ld50_a = forms.FloatField(required=True, label=mark_safe('Avian LD<sub>50</sub> (mg/kg-bw)'), initial=2292)
-    b_species = forms.ChoiceField(required=True,label='Species of the tested bird', choices=Species_of_the_tested_bird_CHOICES, initial='Make a selection')
+    ld50_a = forms.FloatField(required=True, label=mark_safe('Avian LD<sub>50</sub> (mg/kg-bw) of the tested bird'), initial=2292)
+    b_species = forms.ChoiceField(required=True,label=mark_safe('Species of the tested bird with LD<sub>50</sub> data'), choices=Species_of_the_tested_bird_CHOICES, initial='Make a selection')
     bw_quail = forms.FloatField(required=True,label='Weight of the tested bird (g)', initial= 178)
     bw_duck = forms.FloatField(required=True,label='Weight of the tested bird (g)', initial= 1580)
     bwb_other = forms.FloatField(required=True,label='Weight of the "other" bird (g)', initial= 200)
     aw_bird = forms.FloatField(required=True, label='Body weight of assessed bird (g)', initial=20)
-
     mineau_scaling_factor = forms.FloatField(required=True, label='Mineau scaling factor', initial=1.15)
+    
+    # NOAEC = forms.ChoiceField(required=True,label='Species with NOAEC value', choices=Species_of_the_bird_NOAEC_CHOICES, initial='Make a selection')
 
-    NOAEC = forms.FloatField(required=True, label='Avian NOAEC (mg/kg)', initial=465)
+    NOAEC_species = forms.ChoiceField(required=True,label=mark_safe('Species of the tested bird with NOAEC data'), choices=Species_of_the_bird_NOAEC_CHOICES, initial='Make a selection')
+    NOAEC_d = forms.FloatField(required=True, label='Mallard duck NOAEC (mg/kg-diet)', initial=465)
+    NOAEC_q = forms.FloatField(required=True, label='Northern bobwhite quail NOAEC (mg/kg-diet)', initial=435)
+    NOAEC_o = forms.FloatField(required=True, label='"Other" Bird species NOAEC (mg/kg-diet)', initial=0)
+    # NOAEC_o2 = forms.FloatField(required=True, label=mark_safe('"2<sup>nd</sup> Other" Bird species NOAEC (mg/kg-diet)'), initial=0)
 
 #  select_receptor = forms.ChoiceField(required=True, choices=SELECT_RECEPTOR, initial='Both')
 #  body_weight_of_bird = forms.FloatField(required=True, label='Body weight of bird (kg)', initial='4')

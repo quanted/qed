@@ -248,7 +248,7 @@ def table_2(sip_obj):
         <br>
         <H3 class="out_1 collapsible" id="section3"><span></span>SIP Output</H3>
         <div class="out_1">
-            <H4 class="out_1 collapsible" id="section4"><span></span>Mammalian Results (%s kg)</H4>
+            <H4 class="out_1 collapsible" id="section4"><span></span>Mammalian Results (%s g)</H4>
                 <div class="out_ container_output">
         """%(sip_obj.aw_mamm)
         #table 1
@@ -278,7 +278,7 @@ def table_2_qaqc(sip_obj):
         <br>
         <H3 class="out_1 collapsible" id="section3"><span></span>SIP Output</H3>
         <div class="out_1">
-            <H4 class="out_1 collapsible" id="section4"><span></span>Mammalian Results (%s kg)</H4>
+            <H4 class="out_1 collapsible" id="section4"><span></span>Mammalian Results (%s g)</H4>
                 <div class="out_ container_output">
         """%(sip_obj.aw_mamm)
         #table 1
@@ -305,7 +305,7 @@ def table_2_qaqc(sip_obj):
 def table_3(sip_obj):
         #pre-table 1
         html = """
-            <H4 class="out_1 collapsible" id="section4"><span></span>Avian Results (%s kg)</H4>
+            <H4 class="out_1 collapsible" id="section4"><span></span>Avian Results (%s g)</H4>
                 <div class="out_ container_output">
         """%(sip_obj.aw_bird)
         #table 1      
@@ -329,7 +329,7 @@ def table_3(sip_obj):
 def table_3_qaqc(sip_obj):
         #pre-table 1
         html = """
-            <H4 class="out_1 collapsible" id="section4"><span></span>Avian Results (%s kg)</H4>
+            <H4 class="out_1 collapsible" id="section4"><span></span>Avian Results (%s g)</H4>
                 <div class="out_ container_output">
         """%(sip_obj.aw_bird)
         #table 1      

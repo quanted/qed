@@ -35,8 +35,11 @@ sol = []
 aw_bird=[]
 mineau=[]
 aw_mamm=[]
-noaec=[]
+noaec_d=[]
+noaec_q=[]
+noaec_o=[]
 noael=[]
+Species_of_the_bird_NOAEC_CHOICES = []
 
 ######Pre-defined outputs########
 fw_bird_out = []
@@ -57,6 +60,7 @@ chronconb_out = []
 chron_mamm_out = []
 chronconm_out = []
 
+
 data.next()
 for row in data:
     chemical_name.append(row[0])
@@ -73,26 +77,25 @@ for row in data:
     aw_bird.append(float(row[11]))
     mineau.append(float(row[12]))
     aw_mamm.append(float(row[13]))
-    noaec.append(float(row[14])) 
-    noael.append(float(row[15]))
-    fw_bird_out.append(float(row[16]))
-    fw_mamm_out.append(float(row[17]))
+    noaec_d.append(float(row[14]))
+    noaec_q.append(float(row[15]))
+    noaec_o.append(float(row[16]))
+    noael.append(float(row[17]))
     dose_bird_out.append(float(row[18]))
     dose_mamm_out.append(float(row[19])) 
     at_bird_out.append(float(row[20]))
     at_mamm_out.append(float(row[21]))
-    fi_bird_out.append(str(row[22])) 
-    det_out.append(float(row[23]))
-    act_out.append(float(row[24]))
-    acute_bird_out.append(float(row[25]))
-    acuconb_out.append(str(row[26])) 
-    acute_mamm_out.append(float(row[27]))
-    acuconm_out.append(str(row[28]))
-    chron_bird_out.append(float(row[29])) 
-    chronconb_out.append(str(row[30]))
-    chron_mamm_out.append(float(row[31]))
-    chronconm_out.append(str(row[32]))
-
+    det_out.append(float(row[22]))
+    act_out.append(float(row[23]))
+    acute_bird_out.append(float(row[24]))
+    acuconb_out.append(str(row[25])) 
+    acute_mamm_out.append(float(row[26]))
+    acuconm_out.append(str(row[27]))
+    chron_bird_out.append(float(row[28])) 
+    chronconb_out.append(str(row[29]))
+    chron_mamm_out.append(float(row[30]))
+    chronconm_out.append(str(row[31]))
+    Species_of_the_bird_NOAEC_CHOICES.append(str(row[32]))
     
 out_fun_fw_bird = []
 out_fun_fw_mamm = []
@@ -263,17 +266,15 @@ def suite(TestCaseName, **kwargs):
     test_out=stream.read()
     return test_out
 
-sip_obj = sip_model.sip(True,True,chemical_name[0], b_species[0], m_species[0], bw_quail[0], bw_duck[0], bwb_other[0], bw_rat[0], bwm_other[0], sol[0], avian_ld50[0], mammalian_ld50[0], aw_bird[0], mineau[0], aw_mamm[0], noaec[0], noael[0])
+
+sip_obj = sip_model.sip(True,True,chemical_name[0], b_species[0], m_species[0], bw_quail[0], bw_duck[0], bwb_other[0], bw_rat[0], bwm_other[0], sol[0], avian_ld50[0], mammalian_ld50[0], aw_bird[0], mineau[0], aw_mamm[0], noaec_d[0], noaec_q[0], noaec_o[0], Species_of_the_bird_NOAEC_CHOICES[0], noael[0])
 sip_obj.set_unit_testing_variables()
 
 sip_obj.chemical_name_expected = chemical_name[0]
-sip_obj.fw_bird_out_expected = fw_bird_out[0]
-sip_obj.fw_mamm_out_expected = fw_mamm_out[0]
 sip_obj.dose_bird_out_expected = dose_bird_out[0]
 sip_obj.dose_mamm_out_expected = dose_mamm_out[0]
 sip_obj.at_bird_out_expected = at_bird_out[0]
 sip_obj.at_mamm_out_expected = at_mamm_out[0]
-sip_obj.fi_bird_out_expected = fi_bird_out[0]
 sip_obj.det_out_expected = det_out[0]
 sip_obj.act_out_expected = act_out[0]
 sip_obj.acute_bird_out_expected = acute_bird_out[0]
@@ -285,13 +286,10 @@ sip_obj.chronconb_out_expected = chronconb_out[0]
 sip_obj.chron_mamm_out_expected = chron_mamm_out[0]
 sip_obj.chronconm_out_expected = chronconm_out[0]
 
-test_suite_fw_bird_out = suite(TestCase_fw_bird_out, sip_obj=sip_obj)
-test_suite_fw_mamm_out = suite(TestCase_fw_mamm_out, sip_obj=sip_obj)
 test_suite_dose_bird_out = suite(TestCase_dose_bird_out, sip_obj=sip_obj)
 test_suite_dose_mamm_out = suite(TestCase_dose_mamm_out, sip_obj=sip_obj)
 test_suite_at_bird_out = suite(TestCase_at_bird_out, sip_obj=sip_obj)
 test_suite_at_mamm_out = suite(TestCase_at_mamm_out, sip_obj=sip_obj)
-test_suite_fi_bird_out = suite(TestCase_fi_bird_out, sip_obj=sip_obj)
 test_suite_det_out = suite(TestCase_det_out, sip_obj=sip_obj)
 test_suite_act_out = suite(TestCase_act_out, sip_obj=sip_obj)
 test_suite_acute_bird_out = suite(TestCase_acute_bird_out, sip_obj=sip_obj)
@@ -315,11 +313,8 @@ class sipQaqcPage(webapp.RequestHandler):
                 'model_attributes':'SIP QAQC'})
         
         html = html + sip_tables.table_all_qaqc(sip_obj)
-
-#        html = html =
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        #html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

@@ -9,6 +9,9 @@ $(document).ready(function() {
     $('#id_bwb_other').closest('tr').hide();
     $('#id_bw_rat').closest('tr').hide();
     $('#id_bwm_other').closest('tr').hide();
+    $('#id_NOAEC_d').closest('tr').hide();
+    $('#id_NOAEC_q').closest('tr').hide();
+    $('#id_NOAEC_o').closest('tr').hide();
 
     $('#id_b_species').change(function() { 
         if ($(this).val() == "178"){
@@ -46,5 +49,27 @@ $(document).ready(function() {
             $('#id_bwm_other').closest('tr').hide();
         }
     });
+    $('#id_NOAEC_species').change(function() {
+        if ($(this).val() == "1"){
+            $('#id_NOAEC_q').closest('tr').show();
+            $('#id_NOAEC_d').closest('tr').hide();
+            $('#id_NOAEC_o').closest('tr').hide();
+        }
+        else if ($(this).val() == "2"){
+            $('#id_NOAEC_d').closest('tr').show();
+            $('#id_NOAEC_q').closest('tr').hide();
+            $('#id_NOAEC_o').closest('tr').hide();
+        }
+        else{
+           $('#id_NOAEC_o').closest('tr').show();
+           $('#id_NOAEC_d').closest('tr').hide();
+           $('#id_NOAEC_q').closest('tr').hide();
+       }
+       if ($(this).val() == "0"){
+           $('#id_NOAEC_d').closest('tr').hide();
+           $('#id_NOAEC_q').closest('tr').hide();
+           $('#id_NOAEC_o').closest('tr').hide();
+       }
+     });
 });
 </script>

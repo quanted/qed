@@ -88,7 +88,7 @@ def gett2dataqaqc(sip_obj):
     data = { 
         "Parameter": ['Upper Bound Exposure', 'Adjusted Toxicity Value', 'Ratio of Exposure to Toxicity', 'Conclusion',],
         "Acute": ['%.3e' % sip_obj.dose_mamm_out, '%.4f' % sip_obj.at_mamm_out, '%.4f' % sip_obj.acute_mamm_out, '%s' % sip_obj.acuconm_out,],
-        "Acute-Expected": ['%.3e' % sip_obj.acute_mamm_out_expected,'%.4f' % sip_obj.at_mamm_out_expected,'%.4f' % sip_obj.acute_mamm_out_expected,'%s' % sip_obj.acuconm_out_expected,],
+        "Acute-Expected": ['%.3e' % sip_obj.dose_mamm_out_expected,'%.4f' % sip_obj.at_mamm_out_expected,'%.4f' % sip_obj.acute_mamm_out_expected,'%s' % sip_obj.acuconm_out_expected,],
         "Chronic": ['%.3e' % sip_obj.dose_mamm_out, '%.4f' % sip_obj.act_out, '%.4f' % sip_obj.chron_mamm_out, '%s' % sip_obj.chronconm_out,],
         "Chronic-Expected": ['%.3e' % sip_obj.dose_mamm_out_expected,'%.4f' % sip_obj.act_out_expected,'%.4f' % sip_obj.chron_mamm_out_expected,'%s' % sip_obj.chronconm_out_expected,],
         "Units": ['mg/kg-bw', 'mg/kg-bw', '', '',],
@@ -108,9 +108,9 @@ def gett3dataqaqc(sip_obj):
     data = { 
         "Parameter": ['Upper Bound Exposure', 'Adjusted Toxicity Value', 'Ratio of Exposure to Toxicity', 'Conclusion',],
         "Acute": ['%.5e' % sip_obj.dose_bird_out, '%.4f' % sip_obj.at_bird_out,'%.4f' % sip_obj.acute_bird_out, '%s' % sip_obj.acuconb_out,],
-        "Acute-Expected": ['%.5e' % sip_obj.acute_bird_out_expected, '%.4f' % sip_obj.at_bird_out_expected, '%.4f' % sip_obj.acute_bird_out_expected, '%s' % sip_obj.acuconb_out_expected,],
+        "Acute-Expected": ['%.5e' % sip_obj.dose_bird_out_expected, '%.4f' % sip_obj.at_bird_out_expected, '%.4f' % sip_obj.acute_bird_out_expected, '%s' % sip_obj.acuconb_out_expected,],
         "Chronic": ['%.5e' % sip_obj.dose_bird_out, '%.4f' % sip_obj.det_out,'%.4f' % sip_obj.chron_bird_out, '%s' % sip_obj.chronconb_out,],
-        "Chronic-Expected": ['%.5e' % sip_obj.dose_bird_out_expected,'%.4f' % sip_obj.act_out_expected,'%.4f' % sip_obj.chron_bird_out_expected,'%s' % sip_obj.chronconb_out_expected,],
+        "Chronic-Expected": ['%.5e' % sip_obj.dose_bird_out_expected,'%.4f' % sip_obj.det_out_expected,'%.4f' % sip_obj.chron_bird_out_expected,'%s' % sip_obj.chronconb_out_expected,],
         "Units": ['mg/kg-bw', 'mg/kg-bw', '', '',],
     }
     return data

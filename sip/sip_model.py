@@ -20,7 +20,7 @@ def fromJSON(json_string):
     return sip_object
 
 class sip(object):
-    def __init__(self, set_variables=True,run_methods=True,chemical_name='', b_species='', m_species='', bw_quail=1, bw_duck=1, bwb_other=1, bw_rat=-1, bwm_other=1, sol=1, ld50_a=1, ld50_m=1, aw_bird=1, mineau=1, aw_mamm=1, noaec=1, noael=1,vars_dict=None):
+    def __init__(self, set_variables=True,run_methods=True,chemical_name='', b_species='', m_species='', bw_quail=1, bw_duck=1, bwb_other=1, bw_rat=-1, bwm_other=1, sol=1, ld50_a=1, ld50_m=1, aw_bird=1, mineau=1, aw_mamm=1, noaec_d=1, noaec_q=1, noaec_o=1, Species_of_the_bird_NOAEC_CHOICES=1, noael=1,vars_dict=None):
         self.set_default_variables()
         if set_variables:
             if vars_dict != None:
@@ -50,7 +50,12 @@ class sip(object):
                 self.aw_bird = aw_bird
                 self.mineau = mineau
                 self.aw_mamm = aw_mamm
-                self.noaec = noaec
+                if Species_of_the_bird_NOAEC_CHOICES == '1':
+                    self.noaec = noaec_q
+                elif Species_of_the_bird_NOAEC_CHOICES == '2':
+                    self.noaec = noaec_d
+                elif Species_of_the_bird_NOAEC_CHOICES == '3':
+                    self.noaec = noaec_o
                 self.noael = noael
                 logger.info(vars(self))
             if run_methods:
@@ -135,17 +140,17 @@ class sip(object):
     def fw_bird(self):
         if self.fw_bird_out == -1:
             try:
-                self.bw_bird = float(self.bw_bird)
+                self.aw_bird = float(self.aw_bird)
             except IndexError:
                 raise IndexError\
                 ('The body weight of the bird must be supplied on the command line.')
             except ValueError:
                 raise ValueError\
-                ('The body weight of the bird must be a real number, not "%g"' % self.bw_bird)
-            if self.bw_bird < 0:
+                ('The body weight of the bird must be a real number, not "%g"' % self.aw_bird)
+            if self.aw_bird < 0:
                 raise ValueError\
-                ('self.bw_bird=%g is a non-physical value.' % self.bw_bird)
-            self.fw_bird_out = (1.180 * (self.bw_bird**0.874))/1000.0
+                ('self.aw_bird=%g is a non-physical value.' % self.aw_bird)
+            self.fw_bird_out = (1.180 * (self.aw_bird**0.874))/1000.0
         return self.fw_bird_out
 
     # Daily water intake rate for mammals
@@ -153,17 +158,17 @@ class sip(object):
     def fw_mamm(self):
         if self.fw_mamm_out == -1:
             try:
-                self.bw_mamm = float(self.bw_mamm)
+                self.aw_mamm = float(self.aw_mamm)
             except IndexError:
                 raise IndexError\
                 ('The body weight of the mammal must be supplied on the command line.')
             except ValueError:
                 raise ValueError\
-                ('The body weight of the mammal must be a real number, not "%g"' % self.bw_mamm)
-            if self.bw_mamm < 0:
+                ('The body weight of the mammal must be a real number, not "%g"' % self.aw_mamm)
+            if self.aw_mamm < 0:
                 raise ValueError\
-                ('self.bw_mamm=%g is a non-physical value.' % self.bw_mamm)
-            self.fw_mamm_out = (0.708 * (self.bw_mamm**0.795))/1000.0
+                ('self.aw_mamm=%g is a non-physical value.' % self.aw_mamm)
+            self.fw_mamm_out = (0.708 * (self.aw_mamm**0.795))/1000.0
         return self.fw_mamm_out
 
     # Upper bound estimate of exposure for birds
@@ -418,7 +423,7 @@ class sip(object):
                 ('aw_mamm=%g is a non-physical value.' % self.aw_mamm)
             self.act_out = (self.noael) * ((self.bw_mamm/self.aw_mamm)**0.25)
         return self.act_out
-        #If only a NOAEC value (in mg/kg-diet) is available, the model user should divide the NOAEC by 20 to determine the equivalent chronic daily dose
+        #   MAMMILIAN:  If only a NOAEC value (in mg/kg-diet) is available, the model user should divide the NOAEC by 20 to determine the equivalent chronic daily dose (NOAEL)
     # ---- Is drinking water a concern?
 
     # Acute exposures for birds

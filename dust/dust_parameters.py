@@ -20,7 +20,7 @@ class DustInp(forms.Form):
     bird_study_add_comm = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),label='Additional Comments About Bird Study (if any)',initial='NA')
     low_bird_acute_oral_ld50 = forms.FloatField(required=True,label=mark_safe('Lowest Bird Acute Oral LD<sub>50</sub> &asymp; Amphibian Dermal LD<sub>50</sub>'),initial=4640,help_text='mg a.i./kg-bw')
     tested_bird_body_weight = forms.FloatField(required=True,label='Tested Bird Body Weight',initial=1580,help_text='g')
-    mineau = forms.FloatField(required=True,label='Mineau Scaling Factor for Birds',initial='1.15')
+    mineau_scaling_factor = forms.FloatField(required=True,label='Mineau Scaling Factor for Birds',initial='1.15')
     mamm_acute_derm_study = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}), label='Mammal Acute Dermal (OCSPP 870.1200) MRID#',initial='B202')
     mamm_study_add_comm = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),label='Additional Comments About Mammal Study (if any)',initial='NA')
     mamm_acute_derm_ld50 = forms.FloatField(required=True,label=mark_safe('Mammal Acute Dermal LD<sub>50</sub>'),initial=2000,help_text='mg a.i./kg-bw')

@@ -9,31 +9,31 @@ import cgi
 import cgitb
 cgitb.enable()
 import datetime
-from ubertool.use import Use
+from ubertool.use import Use_metadata
 import sys
 sys.path.append("../")
 import logging
 
 
-class UbertoolUseConfigurationPage(webapp.RequestHandler):
+class UbertoolUse_metadataConfigurationPage(webapp.RequestHandler):
     def post(self):
-        logger = logging.getLogger("UbertoolUseConfigurationPage")
+        logger = logging.getLogger("UbertoolUse_metadataConfigurationPage")
         form = cgi.FieldStorage()
         config_name = str(form.getvalue('config_name'))
         user = users.get_current_user()
-        q = db.Query(Use)
+        q = db.Query(Use_metadata)
         q.filter('user =',user)
         q.filter("config_name =", config_name)
-        use = q.get()
-        if use is None:
-            use = Use()
+        use_metadata = q.get()
+        if use_metadata is None:
+            use_metadata = Use()
         if user:
             logger.info(user.user_id())
-            use.user = user
-        use.config_name = config_name
-        use.cas_number = str(form.getvalue('cas_number'))
-        use.formulated_product_name = form.getvalue('formulated_product_name')
-        use.percent_ai = float(form.getvalue('percent_ai'))
+            use_metadata.user = user
+        use_metadata.config_name = config_name
+        use_metadata.cas_number = str(form.getvalue('cas_number'))
+        use_metadata.formulated_product_name = form.getvalue('formulated_product_name')
+        use_metadata.percent_ai = float(form.getvalue('percent_ai'))
         use.met_file = form.getvalue('metfile')
         use.przm_scenario = form.getvalue('PRZM_scenario')
         use.exams_environment_file = form.getvalue('EXAMS_environment_file')

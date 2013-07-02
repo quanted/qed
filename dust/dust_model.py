@@ -6,14 +6,14 @@ import math
 
 class dust(object):
     def __init__(self, set_variables=True, run_methods=True, chemical_name='', label_epa_reg_no='', ar_lb=1, frac_pest_surface=1, dislodge_fol_res=1,  bird_acute_oral_study="", bird_study_add_comm="",
-              low_bird_acute_ld50=1, test_bird_bw=1, mineau=1, mamm_acute_derm_study='', mamm_study_add_comm='',  aviandermaltype=1, mam_acute_derm_ld50=1, mam_acute_oral_ld50=1, test_mam_bw=1, vars_dict=None):
+              low_bird_acute_ld50=1, test_bird_bw=1, mineau_scaling_factor=1, mamm_acute_derm_study='', mamm_study_add_comm='',  aviandermaltype=1, mam_acute_derm_ld50=1, mam_acute_oral_ld50=1, test_mam_bw=1, vars_dict=None):
         self.set_default_variables()
         if set_variables:
             if vars_dict != None:
                 self.__dict__.update(vars_dict)
             else:
                 self.set_variables(chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res,  bird_acute_oral_study, bird_study_add_comm,
-              low_bird_acute_ld50, test_bird_bw, mineau, mamm_acute_derm_study, mamm_study_add_comm,  aviandermaltype, mam_acute_derm_ld50, mam_acute_oral_ld50, test_mam_bw)
+              low_bird_acute_ld50, test_bird_bw, mineau_scaling_factor, mamm_acute_derm_study, mamm_study_add_comm,  aviandermaltype, mam_acute_derm_ld50, mam_acute_oral_ld50, test_mam_bw)
 
             if run_methods:
                 self.run_methods()
@@ -29,7 +29,7 @@ class dust(object):
         self.bird_study_add_comm=''
         self.low_bird_acute_ld50=1
         self.test_bird_bw=1
-        self.mineau=1
+        self.mineau_scaling_factor=1
         self.mamm_acute_derm_study=''
         self.mamm_study_add_comm=''
         self.aviandermaltype=1
@@ -77,7 +77,7 @@ class dust(object):
         self.LOC_bgs_mam=-1
 
     def set_variables(self, chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res, bird_acute_oral_study, bird_study_add_comm,
-              low_bird_acute_ld50, test_bird_bw, mineau, mamm_acute_derm_study, mamm_study_add_comm, aviandermaltype, mam_acute_derm_ld50, mam_acute_oral_ld50, test_mam_bw):
+              low_bird_acute_ld50, test_bird_bw, mineau_scaling_factor, mamm_acute_derm_study, mamm_study_add_comm, aviandermaltype, mam_acute_derm_ld50, mam_acute_oral_ld50, test_mam_bw):
         
 
         self.chemical_name=chemical_name
@@ -89,7 +89,7 @@ class dust(object):
         self.bird_study_add_comm=bird_study_add_comm
         self.low_bird_acute_ld50=low_bird_acute_ld50
         self.test_bird_bw=test_bird_bw
-        self.mineau=mineau
+        self.mineau_scaling_factor=mineau_scaling_factor
         self.mamm_acute_derm_study=mamm_acute_derm_study
         self.mamm_study_add_comm=mamm_study_add_comm
         self.aviandermaltype=aviandermaltype
@@ -277,12 +277,12 @@ class dust(object):
         try:
             self.low_bird_acute_ld50 = float(self.low_bird_acute_ld50)
             self.test_bird_bw = float(self.test_bird_bw)
-            self.mineau = float(self.mineau)
+            self.mineau_scaling_factor = float(self.mineau_scaling_factor)
         except ZeroDivisionError:
             raise ZeroDivisionError\
             ('')
         if self.amp_derm_ld50 == -1:    
-            self.amp_derm_ld50 = self.low_bird_acute_ld50*((20.0/self.test_bird_bw)**(self.mineau-1.0))
+            self.amp_derm_ld50 = self.low_bird_acute_ld50*((20.0/self.test_bird_bw)**(self.mineau_scaling_factor-1.0))
         return self.amp_derm_ld50
    
     #Estimate 20g Bird/Reptile Dermal LD50 (mg a.i./kg-bw)
@@ -290,12 +290,12 @@ class dust(object):
         try:
             self.bird_reptile_dermal_ld50 = float(self.bird_reptile_dermal_ld50)
             self.test_bird_bw = float(self.test_bird_bw)
-            self.mineau = float(self.mineau)
+            self.mineau_scaling_factor = float(self.mineau_scaling_factor)
         except ZeroDivisionError:
             raise ZeroDivisionError\
             ('')
         if self.birdrep_derm_ld50 == -1:
-            self.birdrep_derm_ld50 = self.bird_reptile_dermal_ld50*((20/self.test_bird_bw)**(self.mineau-1))
+            self.birdrep_derm_ld50 = self.bird_reptile_dermal_ld50*((20/self.test_bird_bw)**(self.mineau_scaling_factor-1))
         return self.birdrep_derm_ld50
 
     #Estimate 15g Mammal Dermal LD50 (mg a.i./kg-bw)

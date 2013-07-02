@@ -3,6 +3,8 @@ import numpy
 from django.template import Context, Template
 from django.utils.safestring import mark_safe
 from therps import therps_model
+import time
+import datetime
 
 def getheaderpvu():
 	headings = ["Parameter", "Value", "Units"]
@@ -36,6 +38,21 @@ def getheaderpv5_sum():
 def getheaderpv7_sum():
     headings_l = ["Size Class (g)", "Metric", "Weight (g)", "Adjusted LD50", ],
     headings = ["Size class", "Metric", "Size", "LD50_AD", "EEC_BP", "ARQ_BP", "EEC_FR", "ARQ_FR", "EEC_HM", "ARQ_HM", "EEC_IM", "ARQ_IM", "EEC_TP", "ARQ_TP"]
+    return headings_l, headings
+
+def getheaderpv5_qaqc():
+    headings_l = ["Type", "Size Class (g)", "Adjusted LD50"],
+    headings = ["Type", "Size", "LD50_AD", "EEC_BP", "ARQ_BP", "EEC_FR", "ARQ_FR", "EEC_HM", "ARQ_HM", "EEC_IM", "ARQ_IM", "EEC_TP", "ARQ_TP"]
+    return headings_l, headings
+
+def getheaderpv6_qaqc():
+    headings_l = ["Type", "LC50 (ppm)",],
+    headings = ["Type", "LC50", "EEC_BP", "ARQ_BP", "EEC_FR", "ARQ_FR", "EEC_HM", "ARQ_HM", "EEC_IM", "ARQ_IM", "EEC_TP", "ARQ_TP"]
+    return headings_l, headings
+
+def getheaderpv7_qaqc():
+    headings_l = ["Type", "NOAEC (ppm)",],
+    headings = ["Type", "NOAEC", "EEC_BP", "CRQ_BP", "EEC_FR", "CRQ_FR", "EEC_HM", "CRQ_HM", "EEC_IM", "CRQ_IM", "EEC_TP", "CRQ_TP"]
     return headings_l, headings
 
 
@@ -330,11 +347,79 @@ def gettsumdata_7(bw_herp_a_sm_out, bw_herp_a_md_out, bw_herp_a_lg_out, LD50_AD_
     }
     return data
 
+def gett5data_qaqc(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, LD50_AD_sm, LD50_AD_md, LD50_AD_lg,
+              EEC_dose_BP_sm, EEC_dose_BP_md, EEC_dose_BP_lg, ARQ_dose_BP_sm, ARQ_dose_BP_md, ARQ_dose_BP_lg,
+              EEC_dose_FR_sm, EEC_dose_FR_md, EEC_dose_FR_lg, ARQ_dose_FR_sm, ARQ_dose_FR_md, ARQ_dose_FR_lg,
+              EEC_dose_HM_md, EEC_dose_HM_lg, ARQ_dose_HM_md, ARQ_dose_HM_lg,
+              EEC_dose_IM_md, EEC_dose_IM_lg, ARQ_dose_IM_md, ARQ_dose_IM_lg,
+              EEC_dose_TP_md, EEC_dose_TP_lg, ARQ_dose_TP_md, ARQ_dose_TP_lg,
+              LD50_AD_sm_exp, LD50_AD_md_exp, LD50_AD_lg_exp,
+              EEC_dose_BP_sm_exp, EEC_dose_BP_md_exp, EEC_dose_BP_lg_exp, ARQ_dose_BP_sm_exp, ARQ_dose_BP_md_exp, ARQ_dose_BP_lg_exp,
+              EEC_dose_FR_sm_exp, EEC_dose_FR_md_exp, EEC_dose_FR_lg_exp, ARQ_dose_FR_sm_exp, ARQ_dose_FR_md_exp, ARQ_dose_FR_lg_exp,
+              EEC_dose_HM_md_exp, EEC_dose_HM_lg_exp, ARQ_dose_HM_md_exp, ARQ_dose_HM_lg_exp,
+              EEC_dose_IM_md_exp, EEC_dose_IM_lg_exp, ARQ_dose_IM_md_exp, ARQ_dose_IM_lg_exp,
+              EEC_dose_TP_md_exp, EEC_dose_TP_lg_exp, ARQ_dose_TP_md_exp, ARQ_dose_TP_lg_exp):
+    data = {
+        "Type": ['Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value',],
+        "Size": ['%s' % bw_herp_a_sm, '%s' % bw_herp_a_sm, '%s' % bw_herp_a_md, '%s' % bw_herp_a_md, '%s' % bw_herp_a_lg, '%s' % bw_herp_a_lg,],
+        "LD50_AD": ['%0.2E' % LD50_AD_sm, '%0.2E' % LD50_AD_sm_exp, '%0.2E' % LD50_AD_md, '%0.2E' % LD50_AD_md_exp, '%0.2E' % LD50_AD_lg, '%0.2E' % LD50_AD_lg_exp,],
+        "EEC_BP": ['%0.2E' % EEC_dose_BP_sm, '%0.2E' % EEC_dose_BP_sm_exp, '%0.2E' % EEC_dose_BP_md, '%0.2E' % EEC_dose_BP_md_exp, '%0.2E' % EEC_dose_BP_lg, '%0.2E' % EEC_dose_BP_lg_exp,],
+        "ARQ_BP": ['%0.2E' % ARQ_dose_BP_sm, '%0.2E' % ARQ_dose_BP_sm_exp, '%0.2E' % ARQ_dose_BP_md, '%0.2E' % ARQ_dose_BP_md_exp, '%0.2E' % ARQ_dose_BP_lg, '%0.2E' % ARQ_dose_BP_lg_exp,],
+        "EEC_FR": ['%0.2E' % EEC_dose_FR_sm, '%0.2E' % EEC_dose_FR_sm_exp, '%0.2E' % EEC_dose_FR_md, '%0.2E' % EEC_dose_FR_md_exp, '%0.2E' % EEC_dose_FR_lg, '%0.2E' % EEC_dose_FR_lg_exp,],
+        "ARQ_FR": ['%0.2E' % ARQ_dose_FR_sm, '%0.2E' % ARQ_dose_FR_sm_exp, '%0.2E' % ARQ_dose_FR_md, '%0.2E' % ARQ_dose_FR_md_exp, '%0.2E' % ARQ_dose_FR_lg, '%0.2E' % ARQ_dose_FR_lg_exp,],
+        "EEC_HM": ['N/A', 'N/A', '%0.2E' % EEC_dose_HM_md, '%0.2E' % EEC_dose_HM_md_exp, '%0.2E' % EEC_dose_HM_lg, '%0.2E' % EEC_dose_HM_lg_exp,],
+        "ARQ_HM": ['N/A', 'N/A', '%0.2E' % ARQ_dose_HM_md, '%0.2E' % ARQ_dose_HM_md_exp, '%0.2E' % ARQ_dose_HM_lg, '%0.2E' % ARQ_dose_HM_lg_exp,],
+        "EEC_IM": ['N/A', 'N/A', '%0.2E' % EEC_dose_IM_md, '%0.2E' % EEC_dose_IM_md_exp, '%0.2E' % EEC_dose_IM_lg, '%0.2E' % EEC_dose_IM_lg_exp,],
+        "ARQ_IM": ['N/A', 'N/A', '%0.2E' % ARQ_dose_IM_md, '%0.2E' % ARQ_dose_IM_md_exp, '%0.2E' % ARQ_dose_IM_lg, '%0.2E' % ARQ_dose_IM_lg_exp,],
+        "EEC_TP": ['N/A', 'N/A', '%0.2E' % EEC_dose_TP_md, '%0.2E' % EEC_dose_TP_md_exp, '%0.2E' % EEC_dose_TP_lg, '%0.2E' % EEC_dose_TP_lg_exp,],
+        "ARQ_TP": ['N/A', 'N/A', '%0.2E' % ARQ_dose_TP_md, '%0.2E' % ARQ_dose_TP_md_exp, '%0.2E' % ARQ_dose_TP_lg, '%0.2E' % ARQ_dose_TP_lg_exp,],
+    }
+    return data
+
+def gett6data_qaqc(lc50_bird, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_FR, EEC_ARQ_herp_FR, EEC_diet_herp_HM, EEC_ARQ_herp_HM, EEC_diet_herp_IM, EEC_ARQ_herp_IM, EEC_diet_herp_TP, EEC_ARQ_herp_TP,
+                   EEC_diet_herp_BL_exp, EEC_ARQ_herp_BL_exp, EEC_diet_herp_FR_exp, EEC_ARQ_herp_FR_exp, EEC_diet_herp_HM_exp, EEC_ARQ_herp_HM_exp, EEC_diet_herp_IM_exp, EEC_ARQ_herp_IM_exp, EEC_diet_herp_TP_exp, EEC_ARQ_herp_TP_exp):
+    data = {
+        "Type": ['Calculated Value', 'Expected Value',],
+        "LC50":   ['%0.2E' % lc50_bird, '%0.2E' % lc50_bird,],
+        "EEC_BP": ['%0.2E' % EEC_diet_herp_BL, '%0.2E' % EEC_diet_herp_BL_exp,],
+        "ARQ_BP":  ['%0.2E' % EEC_ARQ_herp_BL, '%0.2E' % EEC_ARQ_herp_BL_exp,],
+        "EEC_FR": ['%0.2E' % EEC_diet_herp_FR, '%0.2E' % EEC_diet_herp_FR_exp,], 
+        "ARQ_FR":  ['%0.2E' % EEC_ARQ_herp_FR, '%0.2E' % EEC_ARQ_herp_FR_exp,], 
+        "EEC_HM": ['%0.2E' % EEC_diet_herp_HM, '%0.2E' % EEC_diet_herp_HM_exp,],
+        "ARQ_HM":  ['%0.2E' % EEC_ARQ_herp_HM, '%0.2E' % EEC_ARQ_herp_HM_exp,],
+        "EEC_IM": ['%0.2E' % EEC_diet_herp_IM, '%0.2E' % EEC_diet_herp_IM_exp,],
+        "ARQ_IM":  ['%0.2E' % EEC_ARQ_herp_IM, '%0.2E' % EEC_ARQ_herp_IM_exp,],
+        "EEC_TP": ['%0.2E' % EEC_diet_herp_TP, '%0.2E' % EEC_diet_herp_TP_exp,],
+        "ARQ_TP":  ['%0.2E' % EEC_ARQ_herp_TP, '%0.2E' % EEC_ARQ_herp_TP_exp,],
+    }
+    return data
+
+def gett7data_qaqc(NOAEC_bird, EEC_diet_herp_BL, EEC_CRQ_herp_BL, EEC_diet_herp_FR, EEC_CRQ_herp_FR, EEC_diet_herp_HM, EEC_CRQ_herp_HM, EEC_diet_herp_IM, EEC_CRQ_herp_IM, EEC_diet_herp_TP, EEC_CRQ_herp_TP,
+              EEC_diet_herp_BL_exp, EEC_CRQ_herp_BL_exp, EEC_diet_herp_FR_exp, EEC_CRQ_herp_FR_exp, EEC_diet_herp_HM_exp, EEC_CRQ_herp_HM_exp, EEC_diet_herp_IM_exp, EEC_CRQ_herp_IM_exp, EEC_diet_herp_TP_exp, EEC_CRQ_herp_TP_exp):
+    data = { 
+        "Type": ['Calculated Value', 'Expected Value',],
+        "NOAEC":   ['%0.2E' % NOAEC_bird, '%0.2E' % NOAEC_bird,],
+        "EEC_BP": ['%0.2E' % EEC_diet_herp_BL, '%0.2E' % EEC_diet_herp_BL_exp,],
+        "CRQ_BP":  ['%0.2E' % EEC_CRQ_herp_BL, '%0.2E' % EEC_CRQ_herp_BL_exp,],
+        "EEC_FR": ['%0.2E' % EEC_diet_herp_FR, '%0.2E' % EEC_diet_herp_FR_exp,], 
+        "CRQ_FR":  ['%0.2E' % EEC_CRQ_herp_FR, '%0.2E' % EEC_CRQ_herp_FR_exp,], 
+        "EEC_HM": ['%0.2E' % EEC_diet_herp_HM, '%0.2E' % EEC_diet_herp_HM_exp,],
+        "CRQ_HM":  ['%0.2E' % EEC_CRQ_herp_HM, '%0.2E' % EEC_CRQ_herp_HM_exp,],
+        "EEC_IM": ['%0.2E' % EEC_diet_herp_IM, '%0.2E' % EEC_diet_herp_IM_exp,],
+        "CRQ_IM":  ['%0.2E' % EEC_CRQ_herp_IM, '%0.2E' % EEC_CRQ_herp_IM_exp,],
+        "EEC_TP": ['%0.2E' % EEC_diet_herp_TP, '%0.2E' % EEC_diet_herp_TP_exp,],
+        "CRQ_TP":  ['%0.2E' % EEC_CRQ_herp_TP, '%0.2E' % EEC_CRQ_herp_TP_exp,],
+    }
+    return data
 
 pvuheadings = getheaderpvu()
 pv5headings = getheaderpv5()
 pv6headings = getheaderpv6()
 pv7headings = getheaderpv7()
+pv5headings_qaqc = getheaderpv5_qaqc()
+pv6headings_qaqc = getheaderpv6_qaqc()
+pv7headings_qaqc = getheaderpv7_qaqc()
+
 
 sumheadings = getheadersum()
 sumheadings_5 = getheaderpv5_sum()
@@ -367,6 +452,22 @@ def table_all(therps_obj):
     html_all = html_all + table9_out['html']
     html_all = html_all + table10_out['html']
     return html_all, table5_out, table6_out, table7_out, table8_out, table9_out, table10_out
+
+def table_all_qaqc(therps_obj):
+    table1_out = table_1(therps_obj)
+    table2_out = table_2(therps_obj)
+    table3_out = table_3(therps_obj)
+    table5_out_qaqc = table_5_qaqc(therps_obj)
+    table6_out_qaqc = table_6_qaqc(therps_obj)
+    table7_out_qaqc = table_7_qaqc(therps_obj)
+    table8_out_qaqc = table_8_qaqc(therps_obj)
+    table9_out_qaqc = table_9_qaqc(therps_obj)
+    table10_out_qaqc = table_10_qaqc(therps_obj)
+
+    html_all = timestamp()+table1_out+table2_out+table3_out+table5_out_qaqc+table6_out_qaqc+table7_out_qaqc+table8_out_qaqc+table9_out_qaqc+table10_out_qaqc
+
+
+    return html_all
 
 def table_sum_1(i, percent_ai, Foliar_dissipation_half_life, number_of_applications, interval_between_applications, application_rate):
         #pre-table sum_input
@@ -761,3 +862,371 @@ def table_10(therps_obj):
         """
         return {'html':html, 'EEC_diet_herp_BL':EEC_diet_herp_BL_mean, 'EEC_CRQ_herp_BL':EEC_CRQ_herp_BL_mean, 'EEC_diet_herp_FR':EEC_diet_herp_FR_mean, 'EEC_CRQ_herp_FR':EEC_CRQ_herp_FR_mean, 
                 'EEC_diet_herp_HM':EEC_diet_herp_HM_mean, 'EEC_CRQ_herp_HM':EEC_CRQ_herp_HM_mean, 'EEC_diet_herp_IM':EEC_diet_herp_IM_mean, 'EEC_CRQ_herp_IM':EEC_CRQ_herp_IM_mean, 'EEC_diet_herp_TP':EEC_diet_herp_TP_mean, 'EEC_CRQ_herp_TP':EEC_CRQ_herp_TP_mean}
+
+
+
+def table_5_qaqc(therps_obj):
+        #pre-table 5_qaqc
+        html = """
+        <br>
+        <H3 class="out_5 collapsible" id="section5"><span></span>Calculated Estimates (Upper Bound Kenaga)</H3>
+        <div class="out_">
+            <H4 class="out_5 collapsible" id="section8"><span></span>Upper Bound Kenaga, Acute Terrestrial Herpetofauna Dose-Based Risk Quotients</H4>
+                <div class="out_ container_output">
+        """
+        #table 5_qaqc
+        bw_herp_a_sm=therps_obj.bw_herp_a_sm
+        bw_herp_a_md=therps_obj.bw_herp_a_md
+        bw_herp_a_lg=therps_obj.bw_herp_a_lg
+
+        LD50_AD_sm=therps_obj.LD50_AD_sm
+        LD50_AD_md=therps_obj.LD50_AD_md
+        LD50_AD_lg=therps_obj.LD50_AD_lg
+
+        EEC_dose_BP_sm=therps_obj.EEC_dose_BP_sm
+        EEC_dose_BP_md=therps_obj.EEC_dose_BP_md
+        EEC_dose_BP_lg=therps_obj.EEC_dose_BP_lg
+        ARQ_dose_BP_sm=therps_obj.ARQ_dose_BP_sm
+        ARQ_dose_BP_md=therps_obj.ARQ_dose_BP_md
+        ARQ_dose_BP_lg=therps_obj.ARQ_dose_BP_lg
+
+        EEC_dose_FR_sm=therps_obj.EEC_dose_FR_sm
+        EEC_dose_FR_md=therps_obj.EEC_dose_FR_md
+        EEC_dose_FR_lg=therps_obj.EEC_dose_FR_lg
+        ARQ_dose_FR_sm=therps_obj.ARQ_dose_FR_sm
+        ARQ_dose_FR_md=therps_obj.ARQ_dose_FR_md
+        ARQ_dose_FR_lg=therps_obj.ARQ_dose_FR_lg
+
+        EEC_dose_HM_md=therps_obj.EEC_dose_HM_md
+        EEC_dose_HM_lg=therps_obj.EEC_dose_HM_lg
+        ARQ_dose_HM_md=therps_obj.ARQ_dose_HM_md
+        ARQ_dose_HM_lg=therps_obj.ARQ_dose_HM_lg
+
+        EEC_dose_IM_md=therps_obj.EEC_dose_IM_md
+        EEC_dose_IM_lg=therps_obj.EEC_dose_IM_lg
+        ARQ_dose_IM_md=therps_obj.ARQ_dose_IM_md
+        ARQ_dose_IM_lg=therps_obj.ARQ_dose_IM_lg
+
+        EEC_dose_TP_md=therps_obj.EEC_dose_TP_md
+        EEC_dose_TP_lg=therps_obj.EEC_dose_TP_lg
+        ARQ_dose_TP_md=therps_obj.ARQ_dose_TP_md
+        ARQ_dose_TP_lg=therps_obj.ARQ_dose_TP_lg
+
+###############expected###############################
+        LD50_AD_sm_exp=therps_obj.LD50_AD_sm_exp
+        LD50_AD_md_exp=therps_obj.LD50_AD_md_exp
+        LD50_AD_lg_exp=therps_obj.LD50_AD_lg_exp
+
+        EEC_dose_BP_sm_exp=therps_obj.EEC_dose_BP_sm_exp
+        EEC_dose_BP_md_exp=therps_obj.EEC_dose_BP_md_exp
+        EEC_dose_BP_lg_exp=therps_obj.EEC_dose_BP_lg_exp
+        ARQ_dose_BP_sm_exp=therps_obj.ARQ_dose_BP_sm_exp
+        ARQ_dose_BP_md_exp=therps_obj.ARQ_dose_BP_md_exp
+        ARQ_dose_BP_lg_exp=therps_obj.ARQ_dose_BP_lg_exp
+
+        EEC_dose_FR_sm_exp=therps_obj.EEC_dose_FR_sm_exp
+        EEC_dose_FR_md_exp=therps_obj.EEC_dose_FR_md_exp
+        EEC_dose_FR_lg_exp=therps_obj.EEC_dose_FR_lg_exp
+        ARQ_dose_FR_sm_exp=therps_obj.ARQ_dose_FR_sm_exp
+        ARQ_dose_FR_md_exp=therps_obj.ARQ_dose_FR_md_exp
+        ARQ_dose_FR_lg_exp=therps_obj.ARQ_dose_FR_lg_exp
+
+        EEC_dose_HM_md_exp=therps_obj.EEC_dose_HM_md_exp
+        EEC_dose_HM_lg_exp=therps_obj.EEC_dose_HM_lg_exp
+        ARQ_dose_HM_md_exp=therps_obj.ARQ_dose_HM_md_exp
+        ARQ_dose_HM_lg_exp=therps_obj.ARQ_dose_HM_lg_exp
+
+        EEC_dose_IM_md_exp=therps_obj.EEC_dose_IM_md_exp
+        EEC_dose_IM_lg_exp=therps_obj.EEC_dose_IM_lg_exp
+        ARQ_dose_IM_md_exp=therps_obj.ARQ_dose_IM_md_exp
+        ARQ_dose_IM_lg_exp=therps_obj.ARQ_dose_IM_lg_exp
+
+        EEC_dose_TP_md_exp=therps_obj.EEC_dose_TP_md_exp
+        EEC_dose_TP_lg_exp=therps_obj.EEC_dose_TP_lg_exp
+        ARQ_dose_TP_md_exp=therps_obj.ARQ_dose_TP_md_exp
+        ARQ_dose_TP_lg_exp=therps_obj.ARQ_dose_TP_lg_exp
+
+        t5data_qaqc = gett5data_qaqc(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, LD50_AD_sm, LD50_AD_md, LD50_AD_lg,
+                           EEC_dose_BP_sm, EEC_dose_BP_md, EEC_dose_BP_lg, ARQ_dose_BP_sm, ARQ_dose_BP_md, ARQ_dose_BP_lg,
+                           EEC_dose_FR_sm, EEC_dose_FR_md, EEC_dose_FR_lg, ARQ_dose_FR_sm, ARQ_dose_FR_md, ARQ_dose_FR_lg,
+                           EEC_dose_HM_md, EEC_dose_HM_lg, ARQ_dose_HM_md, ARQ_dose_HM_lg,
+                           EEC_dose_IM_md, EEC_dose_IM_lg, ARQ_dose_IM_md, ARQ_dose_IM_lg,
+                           EEC_dose_TP_md, EEC_dose_TP_lg, ARQ_dose_TP_md, ARQ_dose_TP_lg,
+                           LD50_AD_sm_exp, LD50_AD_md_exp, LD50_AD_lg_exp,
+                           EEC_dose_BP_sm_exp, EEC_dose_BP_md_exp, EEC_dose_BP_lg_exp, ARQ_dose_BP_sm_exp, ARQ_dose_BP_md_exp, ARQ_dose_BP_lg_exp,
+                           EEC_dose_FR_sm_exp, EEC_dose_FR_md_exp, EEC_dose_FR_lg_exp, ARQ_dose_FR_sm_exp, ARQ_dose_FR_md_exp, ARQ_dose_FR_lg_exp,
+                           EEC_dose_HM_md_exp, EEC_dose_HM_lg_exp, ARQ_dose_HM_md_exp, ARQ_dose_HM_lg_exp,
+                           EEC_dose_IM_md_exp, EEC_dose_IM_lg_exp, ARQ_dose_IM_md_exp, ARQ_dose_IM_lg_exp,
+                           EEC_dose_TP_md_exp, EEC_dose_TP_lg_exp, ARQ_dose_TP_md_exp, ARQ_dose_TP_lg_exp)
+
+        t5rows_qaqc = gethtmlrowsfromcols(t5data_qaqc, pv5headings_qaqc[1])       
+        html = html + tmpl_5.render(Context(dict(data=t5rows_qaqc, l_headings=[pv5headings_qaqc[0][0][0], pv5headings_qaqc[0][0][1], pv5headings_qaqc[0][0][2]])))
+        html = html + """
+                </div>
+        </div>
+        """
+        return html
+
+def table_6_qaqc(therps_obj):
+        #pre-table 6_qaqc
+        html = """
+            <H4 class="out_6 collapsible" id="section6"><span></span>Upper Bound Kenaga, Subacute Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
+                <div class="out_ container_output">
+        """
+        #table 6_qaqc
+        EEC_diet_herp_BL=therps_obj.EEC_diet_herp_BL
+        EEC_ARQ_herp_BL =therps_obj.EEC_ARQ_herp_BL 
+        EEC_diet_herp_FR=therps_obj.EEC_diet_herp_FR
+        EEC_ARQ_herp_FR =therps_obj.EEC_ARQ_herp_FR 
+        EEC_diet_herp_HM=therps_obj.EEC_diet_herp_HM
+        EEC_ARQ_herp_HM =therps_obj.EEC_ARQ_herp_HM 
+        EEC_diet_herp_IM=therps_obj.EEC_diet_herp_IM
+        EEC_ARQ_herp_IM =therps_obj.EEC_ARQ_herp_IM 
+        EEC_diet_herp_TP=therps_obj.EEC_diet_herp_TP
+        EEC_ARQ_herp_TP =therps_obj.EEC_ARQ_herp_TP 
+
+        EEC_diet_herp_BL_exp=therps_obj.EEC_diet_herp_BL_exp
+        EEC_ARQ_herp_BL_exp=therps_obj.EEC_ARQ_herp_BL_exp
+        EEC_diet_herp_FR_exp=therps_obj.EEC_diet_herp_FR_exp
+        EEC_ARQ_herp_FR_exp=therps_obj.EEC_ARQ_herp_FR_exp
+        EEC_diet_herp_HM_exp=therps_obj.EEC_diet_herp_HM_exp
+        EEC_ARQ_herp_HM_exp=therps_obj.EEC_ARQ_herp_HM_exp
+        EEC_diet_herp_IM_exp=therps_obj.EEC_diet_herp_IM_exp
+        EEC_ARQ_herp_IM_exp=therps_obj.EEC_ARQ_herp_IM_exp
+        EEC_diet_herp_TP_exp=therps_obj.EEC_diet_herp_TP_exp
+        EEC_ARQ_herp_TP_exp=therps_obj.EEC_ARQ_herp_TP_exp
+
+        t6data_qaqc = gett6data_qaqc(therps_obj.lc50_bird, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_FR, EEC_ARQ_herp_FR, EEC_diet_herp_HM, EEC_ARQ_herp_HM, EEC_diet_herp_IM, EEC_ARQ_herp_IM, EEC_diet_herp_TP, EEC_ARQ_herp_TP,
+                           EEC_diet_herp_BL_exp, EEC_ARQ_herp_BL_exp, EEC_diet_herp_FR_exp, EEC_ARQ_herp_FR_exp, EEC_diet_herp_HM_exp, EEC_ARQ_herp_HM_exp, EEC_diet_herp_IM_exp, EEC_ARQ_herp_IM_exp, EEC_diet_herp_TP_exp, EEC_ARQ_herp_TP_exp)
+        t6rows_qaqc = gethtmlrowsfromcols(t6data_qaqc, pv6headings_qaqc[1])       
+        html = html + tmpl_5.render(Context(dict(data=t6rows_qaqc, l_headings=[pv6headings_qaqc[0][0][0], pv6headings_qaqc[0][0][1]])))
+        html = html + """
+                </div>
+        """
+        return html
+
+def table_7_qaqc(therps_obj):
+        #pre-table 7_qaqc
+        html = """
+            <H4 class="out_7 collapsible" id="section7"><span></span>Upper Bound Kenaga, Chronic Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
+                <div class="out_ container_output">
+        """
+        #table 7
+        EEC_diet_herp_BL=therps_obj.EEC_diet_herp_BL
+        EEC_CRQ_herp_BL =therps_obj.EEC_CRQ_herp_BL 
+        EEC_diet_herp_FR=therps_obj.EEC_diet_herp_FR
+        EEC_CRQ_herp_FR =therps_obj.EEC_CRQ_herp_FR 
+        EEC_diet_herp_HM=therps_obj.EEC_diet_herp_HM
+        EEC_CRQ_herp_HM =therps_obj.EEC_CRQ_herp_HM 
+        EEC_diet_herp_IM=therps_obj.EEC_diet_herp_IM
+        EEC_CRQ_herp_IM =therps_obj.EEC_CRQ_herp_IM 
+        EEC_diet_herp_TP=therps_obj.EEC_diet_herp_TP
+        EEC_CRQ_herp_TP =therps_obj.EEC_CRQ_herp_TP 
+
+        EEC_diet_herp_BL_exp=therps_obj.EEC_diet_herp_BL_exp
+        EEC_CRQ_herp_BL_exp=therps_obj.EEC_CRQ_herp_BL_exp
+        EEC_diet_herp_FR_exp=therps_obj.EEC_diet_herp_FR_exp
+        EEC_CRQ_herp_FR_exp=therps_obj.EEC_CRQ_herp_FR_exp
+        EEC_diet_herp_HM_exp=therps_obj.EEC_diet_herp_HM_exp
+        EEC_CRQ_herp_HM_exp=therps_obj.EEC_CRQ_herp_HM_exp
+        EEC_diet_herp_IM_exp=therps_obj.EEC_diet_herp_IM_exp
+        EEC_CRQ_herp_IM_exp=therps_obj.EEC_CRQ_herp_IM_exp
+        EEC_diet_herp_TP_exp=therps_obj.EEC_diet_herp_TP_exp
+        EEC_CRQ_herp_TP_exp=therps_obj.EEC_CRQ_herp_TP_exp
+
+        t7data_qaqc = gett7data_qaqc(therps_obj.NOAEC_bird, EEC_diet_herp_BL, EEC_CRQ_herp_BL, EEC_diet_herp_FR, EEC_CRQ_herp_FR, EEC_diet_herp_HM, EEC_CRQ_herp_HM, EEC_diet_herp_IM, EEC_CRQ_herp_IM, EEC_diet_herp_TP, EEC_CRQ_herp_TP,
+                                     EEC_diet_herp_BL_exp, EEC_CRQ_herp_BL_exp, EEC_diet_herp_FR_exp, EEC_CRQ_herp_FR_exp, EEC_diet_herp_HM_exp, EEC_CRQ_herp_HM_exp, EEC_diet_herp_IM_exp, EEC_CRQ_herp_IM_exp, EEC_diet_herp_TP_exp, EEC_CRQ_herp_TP_exp)
+        t7rows_qaqc = gethtmlrowsfromcols(t7data_qaqc, pv7headings_qaqc[1])       
+        html = html + tmpl_5.render(Context(dict(data=t7rows_qaqc, l_headings=[pv7headings_qaqc[0][0][0], pv7headings_qaqc[0][0][1]])))
+        html = html + """
+                </div>
+        """
+        return html
+
+def table_8_qaqc(therps_obj):
+        #pre-table 8_qaqc
+        html = """
+        <br>
+        <H3 class="out_8 collapsible" id="section8"><span></span>Results (Mean Kenaga)</H3>
+        <div class="out_">
+            <H4 class="out_8 collapsible" id="section8"><span></span>Mean Kenaga, Acute Terrestrial Herpetofauna Dose-Based Risk Quotients</H4>
+                <div class="out_ container_output">
+        """
+        #table 8
+        bw_herp_a_sm=therps_obj.bw_herp_a_sm
+        bw_herp_a_md=therps_obj.bw_herp_a_md
+        bw_herp_a_lg=therps_obj.bw_herp_a_lg
+
+        LD50_AD_sm=therps_obj.LD50_AD_sm
+        LD50_AD_md=therps_obj.LD50_AD_md
+        LD50_AD_lg=therps_obj.LD50_AD_lg
+
+        EEC_dose_BP_sm_mean=therps_obj.EEC_dose_BP_sm_mean
+        EEC_dose_BP_md_mean=therps_obj.EEC_dose_BP_md_mean
+        EEC_dose_BP_lg_mean=therps_obj.EEC_dose_BP_lg_mean
+        ARQ_dose_BP_sm_mean=therps_obj.ARQ_dose_BP_sm_mean
+        ARQ_dose_BP_md_mean=therps_obj.ARQ_dose_BP_md_mean
+        ARQ_dose_BP_lg_mean=therps_obj.ARQ_dose_BP_lg_mean
+
+        EEC_dose_FR_sm_mean=therps_obj.EEC_dose_FR_sm_mean
+        EEC_dose_FR_md_mean=therps_obj.EEC_dose_FR_md_mean
+        EEC_dose_FR_lg_mean=therps_obj.EEC_dose_FR_lg_mean
+        ARQ_dose_FR_sm_mean=therps_obj.ARQ_dose_FR_sm_mean
+        ARQ_dose_FR_md_mean=therps_obj.ARQ_dose_FR_md_mean
+        ARQ_dose_FR_lg_mean=therps_obj.ARQ_dose_FR_lg_mean
+
+        EEC_dose_HM_md_mean=therps_obj.EEC_dose_HM_md_mean
+        EEC_dose_HM_lg_mean=therps_obj.EEC_dose_HM_lg_mean
+        ARQ_dose_HM_md_mean=therps_obj.ARQ_dose_HM_md_mean
+        ARQ_dose_HM_lg_mean=therps_obj.ARQ_dose_HM_lg_mean
+
+        EEC_dose_IM_md_mean=therps_obj.EEC_dose_IM_md_mean
+        EEC_dose_IM_lg_mean=therps_obj.EEC_dose_IM_lg_mean
+        ARQ_dose_IM_md_mean=therps_obj.ARQ_dose_IM_md_mean
+        ARQ_dose_IM_lg_mean=therps_obj.ARQ_dose_IM_lg_mean
+
+        EEC_dose_TP_md_mean=therps_obj.EEC_dose_TP_md_mean
+        EEC_dose_TP_lg_mean=therps_obj.EEC_dose_TP_lg_mean
+        ARQ_dose_TP_md_mean=therps_obj.ARQ_dose_TP_md_mean
+        ARQ_dose_TP_lg_mean=therps_obj.ARQ_dose_TP_lg_mean
+
+
+        LD50_AD_sm_exp_mean=therps_obj.LD50_AD_sm_exp
+        LD50_AD_md_exp_mean=therps_obj.LD50_AD_md_exp
+        LD50_AD_lg_exp_mean=therps_obj.LD50_AD_lg_exp
+
+        EEC_dose_BP_sm_exp_mean=therps_obj.EEC_dose_BP_sm_exp_mean
+        EEC_dose_BP_md_exp_mean=therps_obj.EEC_dose_BP_md_exp_mean
+        EEC_dose_BP_lg_exp_mean=therps_obj.EEC_dose_BP_lg_exp_mean
+        ARQ_dose_BP_sm_exp_mean=therps_obj.ARQ_dose_BP_sm_exp_mean
+        ARQ_dose_BP_md_exp_mean=therps_obj.ARQ_dose_BP_md_exp_mean
+        ARQ_dose_BP_lg_exp_mean=therps_obj.ARQ_dose_BP_lg_exp_mean
+
+        EEC_dose_FR_sm_exp_mean=therps_obj.EEC_dose_FR_sm_exp_mean
+        EEC_dose_FR_md_exp_mean=therps_obj.EEC_dose_FR_md_exp_mean
+        EEC_dose_FR_lg_exp_mean=therps_obj.EEC_dose_FR_lg_exp_mean
+        ARQ_dose_FR_sm_exp_mean=therps_obj.ARQ_dose_FR_sm_exp_mean
+        ARQ_dose_FR_md_exp_mean=therps_obj.ARQ_dose_FR_md_exp_mean
+        ARQ_dose_FR_lg_exp_mean=therps_obj.ARQ_dose_FR_lg_exp_mean
+
+        EEC_dose_HM_md_exp_mean=therps_obj.EEC_dose_HM_md_exp_mean
+        EEC_dose_HM_lg_exp_mean=therps_obj.EEC_dose_HM_lg_exp_mean
+        ARQ_dose_HM_md_exp_mean=therps_obj.ARQ_dose_HM_md_exp_mean
+        ARQ_dose_HM_lg_exp_mean=therps_obj.ARQ_dose_HM_lg_exp_mean
+
+        EEC_dose_IM_md_exp_mean=therps_obj.EEC_dose_IM_md_exp_mean
+        EEC_dose_IM_lg_exp_mean=therps_obj.EEC_dose_IM_lg_exp_mean
+        ARQ_dose_IM_md_exp_mean=therps_obj.ARQ_dose_IM_md_exp_mean
+        ARQ_dose_IM_lg_exp_mean=therps_obj.ARQ_dose_IM_lg_exp_mean
+
+        EEC_dose_TP_md_exp_mean=therps_obj.EEC_dose_TP_md_exp_mean
+        EEC_dose_TP_lg_exp_mean=therps_obj.EEC_dose_TP_lg_exp_mean
+        ARQ_dose_TP_md_exp_mean=therps_obj.ARQ_dose_TP_md_exp_mean
+        ARQ_dose_TP_lg_exp_mean=therps_obj.ARQ_dose_TP_lg_exp_mean
+
+        t8data_qaqc = gett5data_qaqc(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, LD50_AD_sm, LD50_AD_md, LD50_AD_lg,
+                           EEC_dose_BP_sm_mean, EEC_dose_BP_md_mean, EEC_dose_BP_lg_mean, ARQ_dose_BP_sm_mean, ARQ_dose_BP_md_mean, ARQ_dose_BP_lg_mean,
+                           EEC_dose_FR_sm_mean, EEC_dose_FR_md_mean, EEC_dose_FR_lg_mean, ARQ_dose_FR_sm_mean, ARQ_dose_FR_md_mean, ARQ_dose_FR_lg_mean,
+                           EEC_dose_HM_md_mean, EEC_dose_HM_lg_mean, ARQ_dose_HM_md_mean, ARQ_dose_HM_lg_mean,
+                           EEC_dose_IM_md_mean, EEC_dose_IM_lg_mean, ARQ_dose_IM_md_mean, ARQ_dose_IM_lg_mean,
+                           EEC_dose_TP_md_mean, EEC_dose_TP_lg_mean, ARQ_dose_TP_md_mean, ARQ_dose_TP_lg_mean,
+                           LD50_AD_sm_exp_mean, LD50_AD_md_exp_mean, LD50_AD_lg_exp_mean,
+                           EEC_dose_BP_sm_exp_mean, EEC_dose_BP_md_exp_mean, EEC_dose_BP_lg_exp_mean, ARQ_dose_BP_sm_exp_mean, ARQ_dose_BP_md_exp_mean, ARQ_dose_BP_lg_exp_mean,
+                           EEC_dose_FR_sm_exp_mean, EEC_dose_FR_md_exp_mean, EEC_dose_FR_lg_exp_mean, ARQ_dose_FR_sm_exp_mean, ARQ_dose_FR_md_exp_mean, ARQ_dose_FR_lg_exp_mean,
+                           EEC_dose_HM_md_exp_mean, EEC_dose_HM_lg_exp_mean, ARQ_dose_HM_md_exp_mean, ARQ_dose_HM_lg_exp_mean,
+                           EEC_dose_IM_md_exp_mean, EEC_dose_IM_lg_exp_mean, ARQ_dose_IM_md_exp_mean, ARQ_dose_IM_lg_exp_mean,
+                           EEC_dose_TP_md_exp_mean, EEC_dose_TP_lg_exp_mean, ARQ_dose_TP_md_exp_mean, ARQ_dose_TP_lg_exp_mean)
+
+        t8rows_qaqc = gethtmlrowsfromcols(t8data_qaqc, pv5headings_qaqc[1])       
+        html = html + tmpl_5.render(Context(dict(data=t8rows_qaqc, l_headings=[pv5headings_qaqc[0][0][0], pv5headings_qaqc[0][0][1], pv5headings_qaqc[0][0][2]])))
+        html = html + """
+                </div>
+        </div>
+        """
+        return html
+
+def table_9_qaqc(therps_obj):
+        #pre-table 9_qaqc
+        html = """
+            <H4 class="out_9 collapsible" id="section9"><span></span>Mean Kenaga, Subacute Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
+                <div class="out_ container_output">
+        """
+        #table 9_qaqc
+        EEC_diet_herp_BL_mean=therps_obj.EEC_diet_herp_BL_mean
+        EEC_ARQ_herp_BL_mean=therps_obj.EEC_ARQ_herp_BL_mean
+        EEC_diet_herp_FR_mean=therps_obj.EEC_diet_herp_FR_mean
+        EEC_ARQ_herp_FR_mean=therps_obj.EEC_ARQ_herp_FR_mean
+        EEC_diet_herp_HM_mean=therps_obj.EEC_diet_herp_HM_mean
+        EEC_ARQ_herp_HM_mean=therps_obj.EEC_ARQ_herp_HM_mean
+        EEC_diet_herp_IM_mean=therps_obj.EEC_diet_herp_IM_mean
+        EEC_ARQ_herp_IM_mean=therps_obj.EEC_ARQ_herp_IM_mean
+        EEC_diet_herp_TP_mean=therps_obj.EEC_diet_herp_TP_mean
+        EEC_ARQ_herp_TP_mean=therps_obj.EEC_ARQ_herp_TP_mean
+
+        EEC_diet_herp_BL_exp_mean=therps_obj.EEC_diet_herp_BL_exp_mean
+        EEC_ARQ_herp_BL_exp_mean=therps_obj.EEC_ARQ_herp_BL_exp_mean
+        EEC_diet_herp_FR_exp_mean=therps_obj.EEC_diet_herp_FR_exp_mean
+        EEC_ARQ_herp_FR_exp_mean=therps_obj.EEC_ARQ_herp_FR_exp_mean
+        EEC_diet_herp_HM_exp_mean=therps_obj.EEC_diet_herp_HM_exp_mean
+        EEC_ARQ_herp_HM_exp_mean=therps_obj.EEC_ARQ_herp_HM_exp_mean
+        EEC_diet_herp_IM_exp_mean=therps_obj.EEC_diet_herp_IM_exp_mean
+        EEC_ARQ_herp_IM_exp_mean=therps_obj.EEC_ARQ_herp_IM_exp_mean
+        EEC_diet_herp_TP_exp_mean=therps_obj.EEC_diet_herp_TP_exp_mean
+        EEC_ARQ_herp_TP_exp_mean=therps_obj.EEC_ARQ_herp_TP_exp_mean
+
+        t9data_qaqc = gett6data_qaqc(therps_obj.lc50_bird, EEC_diet_herp_BL_mean, EEC_ARQ_herp_BL_mean, EEC_diet_herp_FR_mean, EEC_ARQ_herp_FR_mean, EEC_diet_herp_HM_mean, EEC_ARQ_herp_HM_mean, EEC_diet_herp_IM_mean, EEC_ARQ_herp_IM_mean, EEC_diet_herp_TP_mean, EEC_ARQ_herp_TP_mean,
+                                EEC_diet_herp_BL_exp_mean, EEC_ARQ_herp_BL_exp_mean, EEC_diet_herp_FR_exp_mean, EEC_ARQ_herp_FR_exp_mean, EEC_diet_herp_HM_exp_mean, EEC_ARQ_herp_HM_exp_mean, EEC_diet_herp_IM_exp_mean, EEC_ARQ_herp_IM_exp_mean, EEC_diet_herp_TP_exp_mean, EEC_ARQ_herp_TP_exp_mean)
+        t9rows_qaqc = gethtmlrowsfromcols(t9data_qaqc, pv6headings_qaqc[1])       
+        html = html + tmpl_5.render(Context(dict(data=t9rows_qaqc, l_headings=[pv6headings_qaqc[0][0][0], pv6headings_qaqc[0][0][1]])))
+        html = html + """
+                </div>
+        """
+        return html
+
+def table_10_qaqc(therps_obj):
+        #pre-table 10_qaqc
+        html = """
+            <H4 class="out_10 collapsible" id="section10"><span></span>Mean Kenaga, Chronic Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
+                <div class="out_ container_output">
+        """
+        #table 10_qaqc
+        EEC_diet_herp_BL_mean=therps_obj.EEC_diet_herp_BL_mean
+        EEC_CRQ_herp_BL_mean=therps_obj.EEC_CRQ_herp_BL_mean
+        EEC_diet_herp_FR_mean=therps_obj.EEC_diet_herp_FR_mean
+        EEC_CRQ_herp_FR_mean=therps_obj.EEC_CRQ_herp_FR_mean
+        EEC_diet_herp_HM_mean=therps_obj.EEC_diet_herp_HM_mean
+        EEC_CRQ_herp_HM_mean=therps_obj.EEC_CRQ_herp_HM_mean
+        EEC_diet_herp_IM_mean=therps_obj.EEC_diet_herp_IM_mean
+        EEC_CRQ_herp_IM_mean=therps_obj.EEC_CRQ_herp_IM_mean
+        EEC_diet_herp_TP_mean=therps_obj.EEC_diet_herp_TP_mean
+        EEC_CRQ_herp_TP_mean=therps_obj.EEC_CRQ_herp_TP_mean
+
+        EEC_diet_herp_BL_exp_mean=therps_obj.EEC_diet_herp_BL_exp_mean
+        EEC_CRQ_herp_BL_exp_mean=therps_obj.EEC_CRQ_herp_BL_exp_mean
+        EEC_diet_herp_FR_exp_mean=therps_obj.EEC_diet_herp_FR_exp_mean
+        EEC_CRQ_herp_FR_exp_mean=therps_obj.EEC_CRQ_herp_FR_exp_mean
+        EEC_diet_herp_HM_exp_mean=therps_obj.EEC_diet_herp_HM_exp_mean
+        EEC_CRQ_herp_HM_exp_mean=therps_obj.EEC_CRQ_herp_HM_exp_mean
+        EEC_diet_herp_IM_exp_mean=therps_obj.EEC_diet_herp_IM_exp_mean
+        EEC_CRQ_herp_IM_exp_mean=therps_obj.EEC_CRQ_herp_IM_exp_mean
+        EEC_diet_herp_TP_exp_mean=therps_obj.EEC_diet_herp_TP_exp_mean
+        EEC_CRQ_herp_TP_exp_mean=therps_obj.EEC_CRQ_herp_TP_exp_mean
+
+        t10data_qaqc = gett7data_qaqc(therps_obj.NOAEC_bird, EEC_diet_herp_BL_mean, EEC_CRQ_herp_BL_mean, EEC_diet_herp_FR_mean, EEC_CRQ_herp_FR_mean, EEC_diet_herp_HM_mean, EEC_CRQ_herp_HM_mean, EEC_diet_herp_IM_mean, EEC_CRQ_herp_IM_mean, EEC_diet_herp_TP_mean, EEC_CRQ_herp_TP_mean,
+                                      EEC_diet_herp_BL_exp_mean, EEC_CRQ_herp_BL_exp_mean, EEC_diet_herp_FR_exp_mean, EEC_CRQ_herp_FR_exp_mean, EEC_diet_herp_HM_exp_mean, EEC_CRQ_herp_HM_exp_mean, EEC_diet_herp_IM_exp_mean, EEC_CRQ_herp_IM_exp_mean, EEC_diet_herp_TP_exp_mean, EEC_CRQ_herp_TP_exp_mean)
+        t10rows_qaqc = gethtmlrowsfromcols(t10data_qaqc, pv7headings_qaqc[1])       
+        html = html + tmpl_5.render(Context(dict(data=t10rows_qaqc, l_headings=[pv7headings_qaqc[0][0][0], pv7headings_qaqc[0][0][1]])))
+        html = html + """
+                </div>
+        """
+        return html
+
+def timestamp():
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S %p')
+    html="""
+    <H3 class="out_">THERPS Version 1.0 <br>
+    """
+    html = html + st
+    html = html + " (UTC)</H3>"
+    return html

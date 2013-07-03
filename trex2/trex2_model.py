@@ -6,7 +6,7 @@ import sys
 #food intake for birds
 class trex2(object):
     def __init__(self, chem_name, use, formu_name, a_i, Application_type, seed_treatment_formulation_name, seed_crop, seed_crop_v, r_s, b_w, p_i, den, h_l, n_a, rate_out, day_out,
-              ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, aw_bird_md, aw_bird_lg, Species_of_the_tested_bird, 
+              ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, aw_bird_md, aw_bird_lg, 
               Species_of_the_tested_bird_avian_ld50, Species_of_the_tested_bird_avian_lc50, Species_of_the_tested_bird_avian_NOAEC, Species_of_the_tested_bird_avian_NOAEL, 
               tw_bird_ld50, tw_bird_lc50, tw_bird_NOAEC, tw_bird_NOAEL, x, ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, aw_mamm_lg, tw_mamm,
               m_s_r_p):
@@ -23,9 +23,11 @@ class trex2(object):
         self.r_s=r_s
         self.b_w=b_w
         self.b_w_t1=12*float(b_w)
-        # self.a_r_p=a_r_p
         self.p_i=p_i
-        self.p_i_t1=100*float(p_i)
+        try:
+            self.p_i_t1=100*float(p_i)
+        except:
+            self.p_i_t1='N/A'
         self.den=den
         self.h_l=h_l
         self.n_a=n_a

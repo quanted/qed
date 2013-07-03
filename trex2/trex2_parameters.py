@@ -16,7 +16,7 @@ seed_crop_CHOICES=(('33.2', 'corn, all or unspecified'), ('29.6', 'corn, field')
 Species_of_the_tested_bird_CHOICES=(('Bobwhite quail','Bobwhite quail'),('Mallard duck','Mallard duck'),('Other','Other'))
 
 
-class trexInp_chem(forms.Form):    
+class trexInp_chem(forms.Form):
     chemical_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),initial='Acephate')
     Use = forms.CharField(max_length=255, widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),initial='Corn')   
     Formulated_product_name = forms.CharField(max_length=255, widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),initial='NA')    
@@ -32,7 +32,7 @@ class trexInp_chem(forms.Form):
     bandwidth = forms.FloatField(required=True, label='Bandwidth (inch)', initial=1)
     Foliar_dissipation_half_life = forms.FloatField(required=True, label='Foliar dissipation half-life (days)', initial=8.2)
 
-class trexInp_bird(forms.Form):    
+class trexInp_bird(forms.Form):
     avian_ld50 = forms.FloatField(required=True, label='Avian LD50 (mg/kg-bw)', initial=109)
     Species_of_the_tested_bird_avian_ld50 = forms.ChoiceField(required=True,label='Test species (for Avian LD50)', choices=Species_of_the_tested_bird_CHOICES, initial='Bobwhite quail')
     bw_avian_ld50 = forms.FloatField(required=True,label='Weight (g)', initial= '178')
@@ -54,7 +54,7 @@ class trexInp_bird(forms.Form):
     # bwb_other = forms.FloatField(required=True,label='Weight of the tested bird', initial= '7')
     mineau_scaling_factor = forms.FloatField(required=True,label='Mineau scaling factor',initial=1.15)
 
-class trexInp_mammal(forms.Form):  
+class trexInp_mammal(forms.Form):
     mammalian_ld50 = forms.FloatField(required=True, label='Mammalian LD50 (mg/kg-bw)', initial=321)
     mammalian_lc50 = forms.FloatField(required=True, label='Mammalian LC50 (mg/kg-diet)')
     mammalian_NOAEC = forms.FloatField(required=True, label='Mammalian NOAEC (mg/kg-diet)', initial=50)

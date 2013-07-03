@@ -437,41 +437,77 @@ def gett12data(LD50_rg_bird_sm,LD50_rg_mamm_sm,LD50_rg_bird_md,LD50_rg_mamm_md,L
 
 
 def gettsumdata_1(a_i, r_s, b_w, p_i, den, Foliar_dissipation_half_life, n_a, rate_out_t):
+
+    if 'N/A' in p_i:
+        p_i_mean='N/A'
+        p_i_std='N/A'
+        p_i_min='N/A'
+        p_i_max='N/A'
+    else:
+        p_i_mean='%.2e' % numpy.mean(p_i)
+        p_i_std='%.2e' % numpy.std(p_i)
+        p_i_min='%.2e' % numpy.min(p_i)
+        p_i_max='%.2e' % numpy.max(p_i)
     data = { 
         "Parameter": ['Percentage active ingredient', 'Row spacing', 'Bandwidth', 'Percentage incorporated', 
                       'Density of product', 'Foliar dissipation half-life', 'Number of application', 'Application rate', ],
-        "Mean": ['%.2e' % numpy.mean(a_i), '%.2e' % numpy.mean(r_s), '%.2e' % numpy.mean(b_w), '%.2e' % numpy.mean(p_i), '%.2e' % numpy.mean(den), '%.2e' % numpy.mean(Foliar_dissipation_half_life), '%.2e' % numpy.mean(n_a), '%.2e' % numpy.mean(rate_out_t),],
-        "Std": ['%.2e' % numpy.std(a_i),'%.2e' % numpy.mean(r_s), '%.2e' % numpy.mean(b_w), '%.2e' % numpy.mean(p_i), '%.2e' % numpy.mean(den), '%.2e' % numpy.std(Foliar_dissipation_half_life), '%.2e' % numpy.std(n_a), '%.2e' % numpy.std(rate_out_t),],
-        "Min": ['%.2e' % numpy.min(a_i),'%.2e' % numpy.mean(r_s), '%.2e' % numpy.mean(b_w), '%.2e' % numpy.mean(p_i), '%.2e' % numpy.mean(den), '%.2e' % numpy.min(Foliar_dissipation_half_life), '%.2e' % numpy.min(n_a), '%.2e' % numpy.min(rate_out_t),],
-        "Max": ['%.2e' % numpy.max(a_i),'%.2e' % numpy.mean(r_s), '%.2e' % numpy.mean(b_w), '%.2e' % numpy.mean(p_i), '%.2e' % numpy.mean(den), '%.2e' % numpy.max(Foliar_dissipation_half_life), '%.2e' % numpy.max(n_a), '%.2e' % numpy.max(rate_out_t),],
+        "Mean": ['%.2e' % numpy.mean(a_i), '%.2e' % numpy.mean(r_s), '%.2e' % numpy.mean(b_w), p_i_mean, '%.2e' % numpy.mean(den), '%.2e' % numpy.mean(Foliar_dissipation_half_life), '%.2e' % numpy.mean(n_a), '%.2e' % numpy.mean(rate_out_t),],
+        "Std": ['%.2e' % numpy.std(a_i),'%.2e' % numpy.mean(r_s), '%.2e' % numpy.mean(b_w), p_i_std, '%.2e' % numpy.mean(den), '%.2e' % numpy.std(Foliar_dissipation_half_life), '%.2e' % numpy.std(n_a), '%.2e' % numpy.std(rate_out_t),],
+        "Min": ['%.2e' % numpy.min(a_i),'%.2e' % numpy.mean(r_s), '%.2e' % numpy.mean(b_w), p_i_min, '%.2e' % numpy.mean(den), '%.2e' % numpy.min(Foliar_dissipation_half_life), '%.2e' % numpy.min(n_a), '%.2e' % numpy.min(rate_out_t),],
+        "Max": ['%.2e' % numpy.max(a_i),'%.2e' % numpy.mean(r_s), '%.2e' % numpy.mean(b_w), p_i_max, '%.2e' % numpy.mean(den), '%.2e' % numpy.max(Foliar_dissipation_half_life), '%.2e' % numpy.max(n_a), '%.2e' % numpy.max(rate_out_t),],
         "Unit": ['%', 'inch', 'inch', '%', 'lbs/gal', 'days', '', ],
     }
     return data
 
 def gettsumdata_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s, bw_assessed_bird_m, 
-            bw_assessed_bird_l, bw_tested_bird, mineau_scaling_factor):
+            bw_assessed_bird_l, tw_bird_ld50, tw_bird_lc50, tw_bird_NOAEC, tw_bird_NOAEL, mineau_scaling_factor):
+
+    if 'N/A' in avian_NOAEL:
+        avian_lc50_mean='N/A'
+        avian_lc50_std='N/A'
+        avian_lc50_min='N/A'
+        avian_lc50_max='N/A'
+    else:
+        avian_lc50_mean='%.2e' % numpy.mean(avian_lc50)
+        avian_lc50_std='%.2e' % numpy.std(avian_lc50)
+        avian_lc50_min='%.2e' % numpy.min(avian_lc50)
+        avian_lc50_max='%.2e' % numpy.max(avian_lc50)
+
     data = { 
-        "Parameter": ['Avian LD50', 'Avian LC50', 'Avian NOAEC', 'Avian NOAEL', 'Body weight of assessed bird small',
-                      'Body weight of assessed bird medium', 'Body weight of assessed bird large', 
-                      'Body weight of tested bird', 'Mineau scaling factor', ],
-        "Mean": ['%.2e' % numpy.mean(avian_ld50), '%.2e' % numpy.mean(avian_lc50), '%.2e' % numpy.mean(avian_NOAEC), '%.2e' % numpy.mean(avian_NOAEL), '%.2e' % numpy.mean(bw_assessed_bird_s), '%.2e' % numpy.mean(bw_assessed_bird_m), '%.2e' % numpy.mean(bw_assessed_bird_l), '%.2e' % numpy.mean(bw_tested_bird), '%.2e' % numpy.mean(mineau_scaling_factor), ],
-        "Std": ['%.2e' % numpy.std(avian_ld50), '%.2e' % numpy.std(avian_lc50), '%.2e' % numpy.std(avian_NOAEC), '%.2e' % numpy.std(avian_NOAEL), '%.2e' % numpy.std(bw_assessed_bird_s), '%.2e' % numpy.std(bw_assessed_bird_m), '%.2e' % numpy.std(bw_assessed_bird_l), '%.2e' % numpy.std(bw_tested_bird), '%.2e' % numpy.std(mineau_scaling_factor), ],
-        "Min": ['%.2e' % numpy.min(avian_ld50), '%.2e' % numpy.min(avian_lc50), '%.2e' % numpy.min(avian_NOAEC), '%.2e' % numpy.min(avian_NOAEL), '%.2e' % numpy.min(bw_assessed_bird_s), '%.2e' % numpy.min(bw_assessed_bird_m), '%.2e' % numpy.min(bw_assessed_bird_l), '%.2e' % numpy.min(bw_tested_bird), '%.2e' % numpy.min(mineau_scaling_factor), ],
-        "Max": ['%.2e' % numpy.max(avian_ld50), '%.2e' % numpy.max(avian_lc50), '%.2e' % numpy.max(avian_NOAEC), '%.2e' % numpy.max(avian_NOAEL), '%.2e' % numpy.max(bw_assessed_bird_s), '%.2e' % numpy.max(bw_assessed_bird_m), '%.2e' % numpy.max(bw_assessed_bird_l), '%.2e' % numpy.max(bw_tested_bird), '%.2e' % numpy.max(mineau_scaling_factor), ],
-        "Unit": ['mg/kg-bw', 'mg/kg-diet', 'mg/kg-diet', 'mg/kg-bw', 'g', 'g', 'g', 'g', '', ],
+        "Parameter": ['Avian LD50', 'Weight (LD50)', 'Avian LC50', 'Weight (LC50)',
+                      'Avian NOAEC', 'Weight (NOAEC)', 'Avian NOAEL', 'Weight (NOAEL)',
+                      'Body weight of assessed bird small', 'Body weight of assessed bird medium', 'Body weight of assessed bird large', 
+                      'Mineau scaling factor', ],
+        "Mean": ['%.2e' % numpy.mean(avian_ld50), '%.2e' % numpy.mean(tw_bird_ld50), avian_lc50_mean, '%.2e' % numpy.mean(tw_bird_lc50), '%.2e' % numpy.mean(avian_NOAEC), '%.2e' % numpy.mean(tw_bird_NOAEC), '%.2e' % numpy.mean(avian_NOAEL), '%.2e' % numpy.mean(tw_bird_NOAEL), '%.2e' % numpy.mean(bw_assessed_bird_s), '%.2e' % numpy.mean(bw_assessed_bird_m), '%.2e' % numpy.mean(bw_assessed_bird_l), '%.2e' % numpy.mean(mineau_scaling_factor), ],
+        "Std": ['%.2e' % numpy.std(avian_ld50), '%.2e' % numpy.std(tw_bird_ld50), avian_lc50_std, '%.2e' % numpy.std(tw_bird_lc50), '%.2e' % numpy.std(avian_NOAEC), '%.2e' % numpy.std(tw_bird_NOAEC), '%.2e' % numpy.std(avian_NOAEL), '%.2e' % numpy.std(tw_bird_NOAEL), '%.2e' % numpy.std(bw_assessed_bird_s), '%.2e' % numpy.std(bw_assessed_bird_m), '%.2e' % numpy.std(bw_assessed_bird_l), '%.2e' % numpy.std(mineau_scaling_factor), ],
+        "Min": ['%.2e' % numpy.min(avian_ld50), '%.2e' % numpy.min(tw_bird_ld50), avian_lc50_min, '%.2e' % numpy.min(tw_bird_lc50), '%.2e' % numpy.min(avian_NOAEC), '%.2e' % numpy.min(tw_bird_NOAEC), '%.2e' % numpy.min(avian_NOAEL), '%.2e' % numpy.min(tw_bird_NOAEL), '%.2e' % numpy.min(bw_assessed_bird_s), '%.2e' % numpy.min(bw_assessed_bird_m), '%.2e' % numpy.min(bw_assessed_bird_l), '%.2e' % numpy.min(mineau_scaling_factor), ],
+        "Max": ['%.2e' % numpy.max(avian_ld50), '%.2e' % numpy.max(tw_bird_ld50), avian_lc50_max, '%.2e' % numpy.max(tw_bird_lc50), '%.2e' % numpy.max(avian_NOAEC), '%.2e' % numpy.max(tw_bird_NOAEC), '%.2e' % numpy.max(avian_NOAEL), '%.2e' % numpy.max(tw_bird_NOAEL), '%.2e' % numpy.max(bw_assessed_bird_s), '%.2e' % numpy.max(bw_assessed_bird_m), '%.2e' % numpy.max(bw_assessed_bird_l), '%.2e' % numpy.max(mineau_scaling_factor), ],
+        "Unit": ['mg/kg-bw', 'g', 'mg/kg-diet', 'g', 'mg/kg-diet', 'g', 'mg/kg-bw', 'g', 'g', 'g', 'g', '', ],
     }
     return data
 
 def gettsumdata_3(mammalian_ld50, mammalian_lc50, mammalian_NOAEC, mammalian_NOAEL, bw_assessed_mamm_s, bw_assessed_mamm_m, 
               bw_assessed_mamm_l, bw_tested_mamm):
+
+    if 'N/A' in mammalian_lc50:
+        mammalian_lc50_mean='N/A'
+        mammalian_lc50_std='N/A'
+        mammalian_lc50_min='N/A'
+        mammalian_lc50_max='N/A'
+    else:
+        mammalian_lc50_mean='%.2e' % numpy.mean(mammalian_lc50)
+        mammalian_lc50_std='%.2e' % numpy.std(mammalian_lc50)
+        mammalian_lc50_min='%.2e' % numpy.min(mammalian_lc50)
+        mammalian_lc50_max='%.2e' % numpy.max(mammalian_lc50)
+
     data = { 
         "Parameter": ['Mammalian LD50', 'Mammalian LC50', 'Mammalian NOAEC', 'Mammalian NOAEL', 'Body weight of assessed mammal small',
                       'Body weight of assessed mammal medium', 'Body weight of assessed mammal large', 
                       'Body weight of tested mammal', ],
-        "Mean": ['%.2e' % numpy.mean(mammalian_ld50), '%.2e' % numpy.mean(mammalian_lc50), '%.2e' % numpy.mean(mammalian_NOAEC), '%.2e' % numpy.mean(mammalian_NOAEL), '%.2e' % numpy.mean(bw_assessed_mamm_s), '%.2e' % numpy.mean(bw_assessed_mamm_m), '%.2e' % numpy.mean(bw_assessed_mamm_l), '%.2e' % numpy.mean(bw_tested_mamm), ],
-        "Std": ['%.2e' % numpy.std(mammalian_ld50), '%.2e' % numpy.std(mammalian_lc50), '%.2e' % numpy.std(mammalian_NOAEC), '%.2e' % numpy.std(mammalian_NOAEL), '%.2e' % numpy.std(bw_assessed_mamm_s), '%.2e' % numpy.std(bw_assessed_mamm_m), '%.2e' % numpy.std(bw_assessed_mamm_l), '%.2e' % numpy.std(bw_tested_mamm), ],
-        "Min": ['%.2e' % numpy.min(mammalian_ld50), '%.2e' % numpy.min(mammalian_lc50), '%.2e' % numpy.min(mammalian_NOAEC), '%.2e' % numpy.min(mammalian_NOAEL), '%.2e' % numpy.min(bw_assessed_mamm_s), '%.2e' % numpy.min(bw_assessed_mamm_m), '%.2e' % numpy.min(bw_assessed_mamm_l), '%.2e' % numpy.min(bw_tested_mamm), ],
-        "Max": ['%.2e' % numpy.max(mammalian_ld50), '%.2e' % numpy.max(mammalian_lc50), '%.2e' % numpy.max(mammalian_NOAEC), '%.2e' % numpy.max(mammalian_NOAEL), '%.2e' % numpy.max(bw_assessed_mamm_s), '%.2e' % numpy.max(bw_assessed_mamm_m), '%.2e' % numpy.max(bw_assessed_mamm_l), '%.2e' % numpy.max(bw_tested_mamm), ],
+        "Mean": ['%.2e' % numpy.mean(mammalian_ld50), mammalian_lc50_mean, '%.2e' % numpy.mean(mammalian_NOAEC), '%.2e' % numpy.mean(mammalian_NOAEL), '%.2e' % numpy.mean(bw_assessed_mamm_s), '%.2e' % numpy.mean(bw_assessed_mamm_m), '%.2e' % numpy.mean(bw_assessed_mamm_l), '%.2e' % numpy.mean(bw_tested_mamm), ],
+        "Std": ['%.2e' % numpy.std(mammalian_ld50), mammalian_lc50_std, '%.2e' % numpy.std(mammalian_NOAEC), '%.2e' % numpy.std(mammalian_NOAEL), '%.2e' % numpy.std(bw_assessed_mamm_s), '%.2e' % numpy.std(bw_assessed_mamm_m), '%.2e' % numpy.std(bw_assessed_mamm_l), '%.2e' % numpy.std(bw_tested_mamm), ],
+        "Min": ['%.2e' % numpy.min(mammalian_ld50), mammalian_lc50_min, '%.2e' % numpy.min(mammalian_NOAEC), '%.2e' % numpy.min(mammalian_NOAEL), '%.2e' % numpy.min(bw_assessed_mamm_s), '%.2e' % numpy.min(bw_assessed_mamm_m), '%.2e' % numpy.min(bw_assessed_mamm_l), '%.2e' % numpy.min(bw_tested_mamm), ],
+        "Max": ['%.2e' % numpy.max(mammalian_ld50), mammalian_lc50_max, '%.2e' % numpy.max(mammalian_NOAEC), '%.2e' % numpy.max(mammalian_NOAEL), '%.2e' % numpy.max(bw_assessed_mamm_s), '%.2e' % numpy.max(bw_assessed_mamm_m), '%.2e' % numpy.max(bw_assessed_mamm_l), '%.2e' % numpy.max(bw_tested_mamm), ],
         "Unit": ['mg/kg-bw', 'mg/kg-diet', 'mg/kg-diet', 'mg/kg-bw', 'g', 'g', 'g', 'g', ],
     }
     return data
@@ -649,22 +685,64 @@ def gettsumdata_10(ARQ_dose_mamm_SG_sm, CRQ_dose_mamm_SG_sm, ARQ_dose_mamm_SG_md
     return data    
 
 def gettsumdata_11(ARQ_diet_mamm_SG, CRQ_diet_mamm_SG, ARQ_diet_mamm_TG, CRQ_diet_mamm_TG, ARQ_diet_mamm_BP, CRQ_diet_mamm_BP, ARQ_diet_mamm_FP, CRQ_diet_mamm_FP, ARQ_diet_mamm_AR, CRQ_diet_mamm_AR):
+    if 'N/A' in ARQ_diet_mamm_SG:
+        ARQ_diet_mamm_SG_mean='N/A'
+        ARQ_diet_mamm_SG_std='N/A'
+        ARQ_diet_mamm_SG_min='N/A'
+        ARQ_diet_mamm_SG_max='N/A'
+        ARQ_diet_mamm_TG_mean='N/A'
+        ARQ_diet_mamm_TG_std='N/A'
+        ARQ_diet_mamm_TG_min='N/A'
+        ARQ_diet_mamm_TG_max='N/A'
+        ARQ_diet_mamm_BP_mean='N/A'
+        ARQ_diet_mamm_BP_std='N/A'
+        ARQ_diet_mamm_BP_min='N/A'
+        ARQ_diet_mamm_BP_max='N/A'
+        ARQ_diet_mamm_FP_mean='N/A'
+        ARQ_diet_mamm_FP_std='N/A'
+        ARQ_diet_mamm_FP_min='N/A'
+        ARQ_diet_mamm_FP_max='N/A'
+        ARQ_diet_mamm_AR_mean='N/A'
+        ARQ_diet_mamm_AR_std='N/A'
+        ARQ_diet_mamm_AR_min='N/A'
+        ARQ_diet_mamm_AR_max='N/A'
+    else:
+        ARQ_diet_mamm_SG_mean='%.2e' % numpy.mean(ARQ_diet_mamm_SG)
+        ARQ_diet_mamm_SG_std='%.2e' % numpy.std(ARQ_diet_mamm_SG)
+        ARQ_diet_mamm_SG_min='%.2e' % numpy.min(ARQ_diet_mamm_SG)
+        ARQ_diet_mamm_SG_max='%.2e' % numpy.max(ARQ_diet_mamm_SG)
+        ARQ_diet_mamm_TG_mean='%.2e' % numpy.mean(ARQ_diet_mamm_TG)
+        ARQ_diet_mamm_TG_std='%.2e' % numpy.std(ARQ_diet_mamm_TG)
+        ARQ_diet_mamm_TG_min='%.2e' % numpy.min(ARQ_diet_mamm_TG)
+        ARQ_diet_mamm_TG_max='%.2e' % numpy.max(ARQ_diet_mamm_TG)
+        ARQ_diet_mamm_BP_mean='%.2e' % numpy.mean(ARQ_diet_mamm_BP)
+        ARQ_diet_mamm_BP_std='%.2e' % numpy.std(ARQ_diet_mamm_BP)
+        ARQ_diet_mamm_BP_min='%.2e' % numpy.min(ARQ_diet_mamm_BP)
+        ARQ_diet_mamm_BP_max='%.2e' % numpy.max(ARQ_diet_mamm_BP)
+        ARQ_diet_mamm_FP_mean='%.2e' % numpy.mean(ARQ_diet_mamm_FP)
+        ARQ_diet_mamm_FP_std='%.2e' % numpy.std(ARQ_diet_mamm_FP)
+        ARQ_diet_mamm_FP_min='%.2e' % numpy.min(ARQ_diet_mamm_FP)
+        ARQ_diet_mamm_FP_max='%.2e' % numpy.max(ARQ_diet_mamm_FP)
+        ARQ_diet_mamm_AR_mean='%.2e' % numpy.mean(ARQ_diet_mamm_AR)
+        ARQ_diet_mamm_AR_std='%.2e' % numpy.std(ARQ_diet_mamm_AR)
+        ARQ_diet_mamm_AR_min='%.2e' % numpy.min(ARQ_diet_mamm_AR)
+        ARQ_diet_mamm_AR_max='%.2e' % numpy.max(ARQ_diet_mamm_AR)
     data = { 
         "Type": ['Acute', 'Acute', 'Acute', 'Acute', 'Chronic', 'Chronic', 'Chronic', 'Chronic',],
         "Metric": ['Mean', 'Std', 'Min', 'Max', 'Mean', 'Std', 'Min', 'Max',],
-        "Short Grass": ['%.2e' % numpy.mean(ARQ_diet_mamm_SG), '%.2e' % numpy.std(ARQ_diet_mamm_SG), '%.2e' % numpy.min(ARQ_diet_mamm_SG), '%.2e' % numpy.max(ARQ_diet_mamm_SG),
+        "Short Grass": [ARQ_diet_mamm_SG_mean, ARQ_diet_mamm_SG_std, ARQ_diet_mamm_SG_min, ARQ_diet_mamm_SG_max,
                         '%.2e' % numpy.mean(CRQ_diet_mamm_SG), '%.2e' % numpy.std(CRQ_diet_mamm_SG), '%.2e' % numpy.min(CRQ_diet_mamm_SG), '%.2e' % numpy.max(CRQ_diet_mamm_SG),],
         
-        "Tall Grass": ['%.2e' % numpy.mean(ARQ_diet_mamm_TG), '%.2e' % numpy.std(ARQ_diet_mamm_TG), '%.2e' % numpy.min(ARQ_diet_mamm_TG), '%.2e' % numpy.max(ARQ_diet_mamm_TG),
+        "Tall Grass": [ARQ_diet_mamm_TG_mean, ARQ_diet_mamm_TG_std, ARQ_diet_mamm_TG_min, ARQ_diet_mamm_TG_max,
                        '%.2e' % numpy.mean(CRQ_diet_mamm_TG), '%.2e' % numpy.std(CRQ_diet_mamm_TG), '%.2e' % numpy.min(CRQ_diet_mamm_TG), '%.2e' % numpy.max(CRQ_diet_mamm_TG),],
         
-        "Broadleaf Plants": ['%.2e' % numpy.mean(ARQ_diet_mamm_BP), '%.2e' % numpy.std(ARQ_diet_mamm_BP), '%.2e' % numpy.min(ARQ_diet_mamm_BP), '%.2e' % numpy.max(ARQ_diet_mamm_BP),
+        "Broadleaf Plants": [ARQ_diet_mamm_BP_mean, ARQ_diet_mamm_BP_std, ARQ_diet_mamm_BP_min, ARQ_diet_mamm_BP_max,
                              '%.2e' % numpy.mean(CRQ_diet_mamm_BP), '%.2e' % numpy.std(CRQ_diet_mamm_BP), '%.2e' % numpy.min(CRQ_diet_mamm_BP), '%.2e' % numpy.max(CRQ_diet_mamm_BP),],
 
-        "Fruits/Pods/Seeds": ['%.2e' % numpy.mean(ARQ_diet_mamm_FP), '%.2e' % numpy.std(ARQ_diet_mamm_FP), '%.2e' % numpy.min(ARQ_diet_mamm_FP), '%.2e' % numpy.max(ARQ_diet_mamm_FP),
+        "Fruits/Pods/Seeds": [ARQ_diet_mamm_FP_mean, ARQ_diet_mamm_FP_std, ARQ_diet_mamm_FP_min, ARQ_diet_mamm_FP_max,
                               '%.2e' % numpy.mean(CRQ_diet_mamm_FP), '%.2e' % numpy.std(CRQ_diet_mamm_FP), '%.2e' % numpy.min(CRQ_diet_mamm_FP), '%.2e' % numpy.max(CRQ_diet_mamm_FP),],
 
-        "Arthropods": ['%.2e' % numpy.mean(ARQ_diet_mamm_AR), '%.2e' % numpy.std(ARQ_diet_mamm_AR), '%.2e' % numpy.min(ARQ_diet_mamm_AR), '%.2e' % numpy.max(ARQ_diet_mamm_AR),
+        "Arthropods": [ARQ_diet_mamm_AR_mean, ARQ_diet_mamm_AR_std, ARQ_diet_mamm_AR_min, ARQ_diet_mamm_AR_max,
                        '%.2e' % numpy.mean(CRQ_diet_mamm_AR), '%.2e' % numpy.std(CRQ_diet_mamm_AR), '%.2e' % numpy.min(CRQ_diet_mamm_AR), '%.2e' % numpy.max(CRQ_diet_mamm_AR),],
     }
     return data    
@@ -695,7 +773,6 @@ def table_all(trex2_obj):
     html = html + table4_out
 
     if trex2_obj.Application_type == 'Seed Treatment':
-        # a_r_p=rate_out[0]       #coefficient used to estimate initial conc.
         table5_out=table_5(trex2_obj)
 
         html = html + table5_out['html']
@@ -759,7 +836,7 @@ def table_sum_1(i, a_i, r_s, b_w, p_i, den, Foliar_dissipation_half_life, n_a, r
         html = html + tmpl.render(Context(dict(data=tsuminputrows_1, headings=sumheadings)))
         return html
 
-def table_sum_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s, bw_assessed_bird_m, bw_assessed_bird_l, bw_tested_bird, mineau_scaling_factor):
+def table_sum_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s, bw_assessed_bird_m, bw_assessed_bird_l, tw_bird_ld50, tw_bird_lc50, tw_bird_NOAEC, tw_bird_NOAEL, mineau_scaling_factor):
         #pre-table sum_input_2
         html = """
             <div class="out_2">
@@ -767,8 +844,7 @@ def table_sum_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bi
             </div>
         """
         #table sum_input_2
-        tsuminputdata_2 = gettsumdata_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s, bw_assessed_bird_m, 
-            bw_assessed_bird_l, bw_tested_bird, mineau_scaling_factor)
+        tsuminputdata_2 = gettsumdata_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_assessed_bird_s, bw_assessed_bird_m, bw_assessed_bird_l, tw_bird_ld50, tw_bird_lc50, tw_bird_NOAEC, tw_bird_NOAEL, mineau_scaling_factor)
         tsuminputrows_2 = gethtmlrowsfromcols(tsuminputdata_2, sumheadings)
         html = html + tmpl.render(Context(dict(data=tsuminputrows_2, headings=sumheadings)))
         return html
@@ -830,6 +906,20 @@ def table_sum_7(EEC_dose_bird_SG_sm_out, EEC_dose_bird_SG_md_out, EEC_dose_bird_
         tsuminputrows_7 = gethtmlrowsfromcols(tsuminputdata_7, sumheadings_7[1])
         # html = html + tmpl_sum.render(Context(dict(data_new=tsuminputrows_7, headings=sumheadings_7[0], sub_headings=sumheadings_7[2], data_cols=["Small", "Medium", "Large"])))
         html = html + tmpl_sum.render(Context(dict(data=tsuminputrows_7, headings=sumheadings_7[0], sub_headings=sumheadings_7[2])))
+        return html
+
+def table_sum_7_add(ARQ_bird_SG_RBG_sm_out, ARQ_bird_SG_RBG_md_out, ARQ_bird_SG_RBG_lg_out, ARQ_bird_TG_RBG_sm_out, ARQ_bird_TG_RBG_md_out, ARQ_bird_TG_RBG_lg_out, ARQ_bird_BP_RBG_sm_out, ARQ_bird_BP_RBG_md_out, ARQ_bird_BP_RBG_lg_out, ARQ_bird_FP_RBG_sm_out, ARQ_bird_FP_RBG_md_out, ARQ_bird_FP_RBG_lg_out, ARQ_bird_AR_RBG_sm_out, ARQ_bird_AR_RBG_md_out, ARQ_bird_AR_RBG_lg_out, ARQ_bird_SE_RBG_sm_out, ARQ_bird_SE_RBG_md_out, ARQ_bird_SE_RBG_lg_out):
+        #pre-table sum_7_add
+        html = """
+            <div class="out_7_add">
+              <H4>Avian Dosed Based RQs</H4>
+            </div><br>
+        """
+
+        #table sum_output_7
+        tsuminputdata_7_add = gettsumdata_7(ARQ_bird_SG_RBG_sm_out, ARQ_bird_SG_RBG_md_out, ARQ_bird_SG_RBG_lg_out, ARQ_bird_TG_RBG_sm_out, ARQ_bird_TG_RBG_md_out, ARQ_bird_TG_RBG_lg_out, ARQ_bird_BP_RBG_sm_out, ARQ_bird_BP_RBG_md_out, ARQ_bird_BP_RBG_lg_out, ARQ_bird_FP_RBG_sm_out, ARQ_bird_FP_RBG_md_out, ARQ_bird_FP_RBG_lg_out, ARQ_bird_AR_RBG_sm_out, ARQ_bird_AR_RBG_md_out, ARQ_bird_AR_RBG_lg_out, ARQ_bird_SE_RBG_sm_out, ARQ_bird_SE_RBG_md_out, ARQ_bird_SE_RBG_lg_out)
+        tsuminputrows_7_add = gethtmlrowsfromcols(tsuminputdata_7_add, sumheadings_7[1])
+        html = html + tmpl_sum.render(Context(dict(data=tsuminputrows_7_add, headings=sumheadings_7[0], sub_headings=sumheadings_7[2])))
         return html
 
 def table_sum_8(ARQ_diet_bird_SG_A_out, ARQ_diet_bird_SG_C_out, ARQ_diet_bird_TG_A_out, ARQ_diet_bird_TG_C_out, ARQ_diet_bird_BP_A_out, ARQ_diet_bird_BP_C_out, ARQ_diet_bird_FP_A_out, ARQ_diet_bird_FP_C_out, ARQ_diet_bird_AR_A_out, ARQ_diet_bird_AR_C_out):

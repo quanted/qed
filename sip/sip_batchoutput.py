@@ -10,7 +10,6 @@ import cgitb
 cgitb.enable()
 import unittest
 from StringIO import StringIO
-from iec import iec_output
 from pprint import pprint
 import csv
 import sys
@@ -30,21 +29,22 @@ bw_rat=[]
 bwm_other=[]
 avian_ld50=[]
 mammalian_ld50=[]
-sol = []
+sol=[]
 aw_bird=[]
 mineau=[]
 aw_mamm=[]
-noaec=[]
+noaec_d=[]
+noaec_q=[]
+noaec_o=[]
 noael=[]
+Species_of_the_bird_NOAEC_CHOICES=[]
+noaec=[]
 
 ######Pre-defined outputs########
-fw_bird_out = []
-fw_mamm_out = []
 dose_bird_out = []
 dose_mamm_out = []
 at_bird_out = []
 at_mamm_out = []
-fi_bird_out = []
 det_out = []
 act_out = []
 acute_bird_out = []
@@ -60,9 +60,9 @@ logger = logging.getLogger("SIPBatchOutput")
 
 def html_table(row_inp,iter):
     logger.info("iteration: " + str(iter))
-    chemical_name.append(row_inp[0])
-    b_species.append(row_inp[1])
-    m_species.append(row_inp[2])
+    chemical_name.append(str(row_inp[0]))
+    b_species.append(float(row_inp[1]))
+    m_species.append(float(row_inp[2]))
     bw_quail.append(float(row_inp[3]))
     bw_duck.append(float(row_inp[4]))
     bwb_other.append(float(row_inp[5])) 
@@ -74,8 +74,17 @@ def html_table(row_inp,iter):
     aw_bird.append(float(row_inp[11]))
     mineau.append(float(row_inp[12]))
     aw_mamm.append(float(row_inp[13]))
-    noaec.append(float(row_inp[14])) 
-    noael.append(float(row_inp[15]))
+    noaec_d.append(float(row_inp[14]))
+    noaec_q.append(float(row_inp[15]))
+    noaec_o.append(float(row_inp[16]))
+    noael.append(float(row_inp[17]))
+    Species_of_the_bird_NOAEC_CHOICES.append(str(row_inp[18]))
+    if Species_of_the_bird_NOAEC_CHOICES[iter] == '1':
+        noaec.append(float(row_inp[14]))
+    elif Species_of_the_bird_NOAEC_CHOICES[iter] == '2':
+        noaec.append(float(row_inp[15]))
+    elif Species_of_the_bird_NOAEC_CHOICES[iter] == '3':
+        noaec.append(float(row_inp[16]))
 
     logger.info(chemical_name)
     logger.info(b_species)
@@ -91,21 +100,20 @@ def html_table(row_inp,iter):
     logger.info(aw_bird)
     logger.info(mineau)
     logger.info(aw_mamm)
-    logger.info(noaec)
-    logger.info(noael)   
+    logger.info(noaec_d)
+    logger.info(noaec_q)
+    logger.info(noaec_o)
+    logger.info(noael)
+    logger.info(Species_of_the_bird_NOAEC_CHOICES)
 
     sip_obj = sip_model.sip(True,True,chemical_name[iter], b_species[iter], m_species[iter], bw_quail[iter],
                     bw_duck[iter], bwb_other[iter], bw_rat[iter], bwm_other[iter], sol[iter], avian_ld50[iter],
-                    mammalian_ld50[iter], aw_bird[iter], mineau[iter], aw_mamm[iter], noaec[iter], noael[iter])
+                    mammalian_ld50[iter], aw_bird[iter], mineau[iter], aw_mamm[iter], noaec_d[iter], noaec_q[iter], noaec_o[iter], Species_of_the_bird_NOAEC_CHOICES[iter], noael[iter])
 
-
-    fw_bird_out.append(sip_obj.fw_bird_out)
-    fw_mamm_out.append(sip_obj.fw_mamm_out)
     dose_bird_out.append(sip_obj.dose_bird_out)
     dose_mamm_out.append(sip_obj.dose_mamm_out)
     at_bird_out.append(sip_obj.at_bird_out)
     at_mamm_out.append(sip_obj.at_mamm_out)
-    fi_bird_out.append(sip_obj.fi_bird_out)
     det_out.append(sip_obj.det_out)
     act_out.append(sip_obj.act_out)
     acute_bird_out.append(sip_obj.acute_bird_out)
@@ -118,8 +126,8 @@ def html_table(row_inp,iter):
     chronconm_out.append(sip_obj.chronconm_out)
 
     html = sip_tables.table_all(sip_obj)
-               
-    return html  
+
+    return html
                 
 def loop_html(thefile):
     reader = csv.reader(thefile.file.read().splitlines())
@@ -131,14 +139,14 @@ def loop_html(thefile):
         iter_html = iter_html +html_table(row,i)
         i=i+1
 
-    sum_html = sip_tables.table_all_sum(sip_tables.sumheadings, sip_tables.tmpl,bw_quail,bw_duck,
-                    bwb_other,bw_rat,bwm_other,sol, avian_ld50,mammalian_ld50,aw_bird,
-                    mineau,aw_mamm, noaec,noael, fw_bird_out, fw_mamm_out, dose_bird_out,
-                    dose_mamm_out, at_bird_out, at_mamm_out, fi_bird_out, det_out, 
-                    act_out, acute_bird_out, acute_mamm_out, chron_bird_out, chron_mamm_out)
+    sum_html = sip_tables.table_all_sum(sip_tables.sumheadings, sip_tables.tmpl, bw_quail,bw_duck,bwb_other,bw_rat,bwm_other,sol,
+                    avian_ld50,mammalian_ld50,aw_bird,mineau,aw_mamm,noaec,noael,
+                    dose_bird_out, dose_mamm_out, at_bird_out, 
+                    at_mamm_out, det_out, act_out, acute_bird_out, acute_mamm_out, 
+                    chron_bird_out, chron_mamm_out)
 
     return sum_html+iter_html
-
+    # return iter_html
 
 
               
@@ -149,16 +157,18 @@ class SIPBatchOutputPage(webapp.RequestHandler):
         form = cgi.FieldStorage()
         logger.info(form) 
         thefile = form['upfile']
-        iter_html=loop_html(thefile)        
+        iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', 'title')
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'sip','page':'batchinput'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberbatch_start.html', {})
+        html = html + template.render(templatepath + '04uberbatch_start.html', {
+                'model':'sip',
+                'model_attributes':'SIP Batch Output'})
         html = html + iter_html
-        html = html + template.render(templatepath + 'sip-batchoutput-jqplot.html', {})                
+        # html = html + template.render(templatepath + 'sip-batchoutput-jqplot.html', {})
+        html = html + template.render(templatepath + 'export.html', {})                
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        #html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

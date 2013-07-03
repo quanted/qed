@@ -50,12 +50,21 @@ class sip(object):
                 self.aw_bird = aw_bird
                 self.mineau = mineau
                 self.aw_mamm = aw_mamm
+                self.noaec_d = noaec_d
+                self.noaec_q = noaec_q
+                self.noaec_o = noaec_o
                 if Species_of_the_bird_NOAEC_CHOICES == '1':
-                    self.noaec = noaec_q
+                    self.noaec = self.noaec_q
                 elif Species_of_the_bird_NOAEC_CHOICES == '2':
-                    self.noaec = noaec_d
+                    self.noaec = self.noaec_d
                 elif Species_of_the_bird_NOAEC_CHOICES == '3':
-                    self.noaec = noaec_o
+                    self.noaec = self.noaec_o
+                # else:
+                #     try:
+                #         self.noaec = noaec
+                #     except ValueError:
+                #         raise ValueError\
+                #         ('self.noaec=%g is a non-physical value.' % self.aw_bird)
                 self.noael = noael
                 logger.info(vars(self))
             if run_methods:

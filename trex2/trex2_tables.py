@@ -1,5 +1,5 @@
 import numpy
-#import django
+import time, datetime
 from django.template import Context, Template
 from django.utils.safestring import mark_safe
 from trex2 import trex2_model
@@ -112,9 +112,28 @@ def getheadersum11():
     headings_2_show = ["Short Grass", "Tall Grass", "Broadleaf Plants", "Fruits/Pods/Seeds", "Arthropods"]    
     return headings_1_zip, headings_2, headings_2_show
 
-
 def getheadersum12():
     headings = ["Animal Size", "Metric", "Avian", "Mammal"]
+    return headings
+
+def getheaderpv6_qaqc():
+    headings = ["Type", "Application Target", "Value"]
+    return headings
+
+def getheaderpv7_qaqc():
+    headings = ["Type", "Application Target", "Small", "Medium", "Large"]
+    return headings
+
+def getheaderpv8_qaqc():
+    headings = ["Type", "Application Target", "Acute", "Chronic"]
+    return headings
+
+def getheaderpv10_qaqc():
+    headings = ["Type", "Application Target", "Acute_sm", "Chronic_sm", "Acute_md", "Chronic_md", "Acute_lg", "Chronic_lg"]
+    return headings
+
+def getheaderpv12_qaqc():
+    headings = ["Type", "Animal Size", "Avian", "Mammal"]
     return headings
 
 def gethtmlrowsfromcols(data, headings):
@@ -244,6 +263,37 @@ def getdjtemplate_10():
     """
     return dj_template
 
+def getdjtemplate_10_qaqc():
+    dj_template ="""
+    <table class="out_">
+    {# headings #}
+      <tr>
+        <th rowspan="2">Type</div></th>
+        <th rowspan="2">Application Target</div></th>
+        <th colspan="2">Small</th>
+        <th colspan="2">Medium</th>
+        <th colspan="2">Large</th>
+        </tr>
+        <tr>
+        <th scope="col">Acute</div></th>
+        <th scope="col">Chronic</div></th>
+        <th scope="col">Acute</div></th>
+        <th scope="col">Chronic</div></th>
+        <th scope="col">Acute</div></th>
+        <th scope="col">Chronic</div></th> 
+      </tr>
+    {# data #}
+    {% for row in data %}
+    <tr>
+        {% for val in row %}
+        <td>{{ val|default:'' }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    </table>
+    """
+    return dj_template
+
 
 pvuheadings = getheaderpvu()
 pvaheadings = getheaderpva()
@@ -265,13 +315,21 @@ sumheadings_10 = getheadersum10()
 sumheadings_11 = getheadersum11()
 sumheadings_12 = getheadersum12()
 
+pv6headings_qaqc = getheaderpv6_qaqc()
+pv7headings_qaqc = getheaderpv7_qaqc()
+pv8headings_qaqc = getheaderpv8_qaqc()
+pv10headings_qaqc = getheaderpv10_qaqc()
+pv12headings_qaqc = getheaderpv12_qaqc()
+
 djtemplate = getdjtemplate()
 djtemplate_sum = getdjtemplate_sum()
 djtemplate_10 = getdjtemplate_10()
+djtemplate_10_qaqc = getdjtemplate_10_qaqc()
 
 tmpl = Template(djtemplate)
 tmpl_sum = Template(djtemplate_sum)
 tmpl_10 = Template(djtemplate_10)
+tmpl_10_qaqc = Template(djtemplate_10_qaqc)
 
 
 
@@ -428,13 +486,95 @@ def gett11data_na(ARQ_diet_mamm_SG,CRQ_diet_bird_SG,ARQ_diet_mamm_TG,CRQ_diet_bi
 
 def gett12data(LD50_rg_bird_sm,LD50_rg_mamm_sm,LD50_rg_bird_md,LD50_rg_mamm_md,LD50_rg_bird_lg,LD50_rg_mamm_lg):
     data = { 
-        "Animal Size": ['Small', 'Medium', 'Large',],
+        "Animal Size": ['Small', 'Medium', 'Large', ] ,
         "Avian": ['%.2e' % LD50_rg_bird_sm, '%.2e' % LD50_rg_bird_md, '%.2e' % LD50_rg_bird_lg,],
         "Mammal": ['%.2e' % LD50_rg_mamm_sm, '%.2e' % LD50_rg_mamm_md, '%.2e' % LD50_rg_mamm_lg,],
     }
     return data
 
+def gett6data_qaqc(EEC_diet_SG, EEC_diet_TG, EEC_diet_BP, EEC_diet_FR, EEC_diet_AR, EEC_diet_SG_exp, EEC_diet_TG_exp, EEC_diet_BP_exp, EEC_diet_FR_exp, EEC_diet_AR_exp):
+    data = { 
+        "Type": ['Calculated Value', 'Expected Value','Calculated Value', 'Expected Value','Calculated Value', 'Expected Value','Calculated Value', 'Expected Value','Calculated Value', 'Expected Value',],
+        "Application Target": ['Short Grass', 'Short Grass', 'Tall Grass', 'Tall Grass', 'Broadleaf Plants', 'Broadleaf Plants', 'Fruits/Pods/Seeds', 'Fruits/Pods/Seeds', 'Arthropods', 'Arthropods',],
+        "Value": ['%.2e' % EEC_diet_SG, '%.2e' % EEC_diet_SG_exp, '%.2e' % EEC_diet_TG, '%.2e' % EEC_diet_TG_exp, '%.2e' % EEC_diet_BP, '%.2e' % EEC_diet_BP_exp, '%.2e' % EEC_diet_FR, '%.2e' % EEC_diet_FR_exp, '%.2e' % EEC_diet_AR, '%.2e' % EEC_diet_AR_exp],
+    }
+    return data
 
+def gett7data_qaqc(EEC_dose_bird_SG_sm, EEC_dose_bird_SG_md, EEC_dose_bird_SG_lg, EEC_dose_bird_TG_sm, EEC_dose_bird_TG_md, EEC_dose_bird_TG_lg, EEC_dose_bird_BP_sm, EEC_dose_bird_BP_md, EEC_dose_bird_BP_lg, EEC_dose_bird_FP_sm, EEC_dose_bird_FP_md, EEC_dose_bird_FP_lg, EEC_dose_bird_AR_sm, EEC_dose_bird_AR_md, EEC_dose_bird_AR_lg, EEC_dose_bird_SE_sm, EEC_dose_bird_SE_md, EEC_dose_bird_SE_lg,
+                   EEC_dose_bird_SG_sm_exp, EEC_dose_bird_SG_md_exp, EEC_dose_bird_SG_lg_exp, EEC_dose_bird_TG_sm_exp, EEC_dose_bird_TG_md_exp, EEC_dose_bird_TG_lg_exp, EEC_dose_bird_BP_sm_exp, EEC_dose_bird_BP_md_exp, EEC_dose_bird_BP_lg_exp, EEC_dose_bird_FP_sm_exp, EEC_dose_bird_FP_md_exp, EEC_dose_bird_FP_lg_exp, EEC_dose_bird_AR_sm_exp, EEC_dose_bird_AR_md_exp, EEC_dose_bird_AR_lg_exp, EEC_dose_bird_SE_sm_exp, EEC_dose_bird_SE_md_exp, EEC_dose_bird_SE_lg_exp):
+    data = {
+        "Type": ['Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value',],
+        "Application Target": ['Short Grass', 'Short Grass', 'Tall Grass', 'Tall Grass', 'Broadleaf Plants', 'Broadleaf Plants', 'Fruits/Pods', 'Fruits/Pods', 'Arthropods', 'Arthropods', 'Seeds', 'Seeds',],
+        "Small":  ['%.2e' % EEC_dose_bird_SG_sm, '%.2e' % EEC_dose_bird_SG_sm_exp, '%.2e' % EEC_dose_bird_TG_sm, '%.2e' % EEC_dose_bird_TG_sm_exp, '%.2e' % EEC_dose_bird_BP_sm, '%.2e' % EEC_dose_bird_BP_sm_exp, '%.2e' % EEC_dose_bird_FP_sm, '%.2e' % EEC_dose_bird_FP_sm_exp, '%.2e' % EEC_dose_bird_AR_sm, '%.2e' % EEC_dose_bird_AR_sm_exp, '%.2e' % EEC_dose_bird_SE_sm, '%.2e' % EEC_dose_bird_SE_sm_exp],
+        "Medium": ['%.2e' % EEC_dose_bird_SG_md, '%.2e' % EEC_dose_bird_SG_md_exp, '%.2e' % EEC_dose_bird_TG_md, '%.2e' % EEC_dose_bird_TG_md_exp, '%.2e' % EEC_dose_bird_BP_md, '%.2e' % EEC_dose_bird_BP_md_exp, '%.2e' % EEC_dose_bird_FP_md, '%.2e' % EEC_dose_bird_FP_md_exp, '%.2e' % EEC_dose_bird_AR_md, '%.2e' % EEC_dose_bird_AR_md_exp, '%.2e' % EEC_dose_bird_SE_md, '%.2e' % EEC_dose_bird_SE_md_exp],
+        "Large":  ['%.2e' % EEC_dose_bird_SG_lg, '%.2e' % EEC_dose_bird_SG_lg_exp, '%.2e' % EEC_dose_bird_TG_lg, '%.2e' % EEC_dose_bird_TG_lg_exp, '%.2e' % EEC_dose_bird_BP_lg, '%.2e' % EEC_dose_bird_BP_lg_exp, '%.2e' % EEC_dose_bird_FP_lg, '%.2e' % EEC_dose_bird_FP_lg_exp, '%.2e' % EEC_dose_bird_AR_lg, '%.2e' % EEC_dose_bird_AR_lg_exp, '%.2e' % EEC_dose_bird_SE_lg, '%.2e' % EEC_dose_bird_SE_lg_exp],
+    }
+    return data
+
+def gett7_add_data_qaqc(ARQ_bird_SG_sm, ARQ_bird_SG_md, ARQ_bird_SG_lg, ARQ_bird_TG_sm, ARQ_bird_TG_md, ARQ_bird_TG_lg, ARQ_bird_BP_sm, ARQ_bird_BP_md, ARQ_bird_BP_lg, ARQ_bird_FP_sm, ARQ_bird_FP_md, ARQ_bird_FP_lg, ARQ_bird_AR_sm, ARQ_bird_AR_md, ARQ_bird_AR_lg, ARQ_bird_SE_sm, ARQ_bird_SE_md, ARQ_bird_SE_lg,
+                        ARQ_bird_SG_sm_exp, ARQ_bird_SG_md_exp, ARQ_bird_SG_lg_exp, ARQ_bird_TG_sm_exp, ARQ_bird_TG_md_exp, ARQ_bird_TG_lg_exp, ARQ_bird_BP_sm_exp, ARQ_bird_BP_md_exp, ARQ_bird_BP_lg_exp, ARQ_bird_FP_sm_exp, ARQ_bird_FP_md_exp, ARQ_bird_FP_lg_exp, ARQ_bird_AR_sm_exp, ARQ_bird_AR_md_exp, ARQ_bird_AR_lg_exp, ARQ_bird_SE_sm_exp, ARQ_bird_SE_md_exp, ARQ_bird_SE_lg_exp):
+    data = {
+        "Type": ['Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value',],
+        "Application Target": ['Short Grass', 'Short Grass', 'Tall Grass', 'Tall Grass', 'Broadleaf Plants', 'Broadleaf Plants', 'Fruits/Pods', 'Fruits/Pods', 'Arthropods', 'Arthropods', 'Seeds', 'Seeds',],
+        "Small":  ['%.2e' % ARQ_bird_SG_sm, '%.2e' % ARQ_bird_SG_sm_exp, '%.2e' % ARQ_bird_TG_sm, '%.2e' % ARQ_bird_TG_sm_exp, '%.2e' % ARQ_bird_BP_sm, '%.2e' % ARQ_bird_BP_sm_exp, '%.2e' % ARQ_bird_FP_sm, '%.2e' % ARQ_bird_FP_sm_exp, '%.2e' % ARQ_bird_AR_sm, '%.2e' % ARQ_bird_AR_sm_exp, '%.2e' % ARQ_bird_SE_sm, '%.2e' % ARQ_bird_SE_sm_exp],
+        "Medium": ['%.2e' % ARQ_bird_SG_md, '%.2e' % ARQ_bird_SG_md_exp, '%.2e' % ARQ_bird_TG_md, '%.2e' % ARQ_bird_TG_md_exp, '%.2e' % ARQ_bird_BP_md, '%.2e' % ARQ_bird_BP_md_exp, '%.2e' % ARQ_bird_FP_md, '%.2e' % ARQ_bird_FP_md_exp, '%.2e' % ARQ_bird_AR_md, '%.2e' % ARQ_bird_AR_md_exp, '%.2e' % ARQ_bird_SE_md, '%.2e' % ARQ_bird_SE_md_exp],
+        "Large":  ['%.2e' % ARQ_bird_SG_lg, '%.2e' % ARQ_bird_SG_lg_exp, '%.2e' % ARQ_bird_TG_lg, '%.2e' % ARQ_bird_TG_lg_exp, '%.2e' % ARQ_bird_BP_lg, '%.2e' % ARQ_bird_BP_lg_exp, '%.2e' % ARQ_bird_FP_lg, '%.2e' % ARQ_bird_FP_lg_exp, '%.2e' % ARQ_bird_AR_lg, '%.2e' % ARQ_bird_AR_lg_exp, '%.2e' % ARQ_bird_SE_lg, '%.2e' % ARQ_bird_SE_lg_exp],
+    }
+    return data
+
+def gett8data_qaqc(ARQ_diet_bird_SG_A, ARQ_diet_bird_SG_C, ARQ_diet_bird_TG_A, ARQ_diet_bird_TG_C, ARQ_diet_bird_BP_A, ARQ_diet_bird_BP_C, ARQ_diet_bird_FP_A, ARQ_diet_bird_FP_C, ARQ_diet_bird_AR_A, ARQ_diet_bird_AR_C,
+                   ARQ_diet_bird_SG_A_exp, ARQ_diet_bird_SG_C_exp, ARQ_diet_bird_TG_A_exp, ARQ_diet_bird_TG_C_exp, ARQ_diet_bird_BP_A_exp, ARQ_diet_bird_BP_C_exp, ARQ_diet_bird_FP_A_exp, ARQ_diet_bird_FP_C_exp, ARQ_diet_bird_AR_A_exp, ARQ_diet_bird_AR_C_exp):
+    data = {
+        "Type": ['Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value',],
+        "Application Target": ['Short Grass', 'Short Grass', 'Tall Grass', 'Tall Grass', 'Broadleaf Plants', 'Broadleaf Plants', 'Fruits/Pods', 'Fruits/Pods', 'Arthropods', 'Arthropods',],
+        "Acute":   ['%.2e' % ARQ_diet_bird_SG_A, '%.2e' % ARQ_diet_bird_SG_A_exp, '%.2e' % ARQ_diet_bird_TG_A, '%.2e' % ARQ_diet_bird_TG_A_exp, '%.2e' % ARQ_diet_bird_BP_A, '%.2e' % ARQ_diet_bird_BP_A_exp, '%.2e' % ARQ_diet_bird_FP_A, '%.2e' % ARQ_diet_bird_FP_A_exp, '%.2e' % ARQ_diet_bird_AR_A, '%.2e' % ARQ_diet_bird_AR_A_exp,],
+        "Chronic": ['%.2e' % ARQ_diet_bird_SG_C, '%.2e' % ARQ_diet_bird_SG_C_exp, '%.2e' % ARQ_diet_bird_TG_C, '%.2e' % ARQ_diet_bird_TG_C_exp, '%.2e' % ARQ_diet_bird_BP_C, '%.2e' % ARQ_diet_bird_BP_C_exp, '%.2e' % ARQ_diet_bird_FP_C, '%.2e' % ARQ_diet_bird_FP_C_exp, '%.2e' % ARQ_diet_bird_AR_C, '%.2e' % ARQ_diet_bird_AR_C_exp,],
+    }
+    return data  
+
+def gett9data_qaqc(EEC_dose_mamm_SG_sm,EEC_dose_mamm_SG_md,EEC_dose_mamm_SG_lg,EEC_dose_mamm_TG_sm,EEC_dose_mamm_TG_md,EEC_dose_mamm_TG_lg,EEC_dose_mamm_BP_sm,EEC_dose_mamm_BP_md,EEC_dose_mamm_BP_lg,EEC_dose_mamm_FP_sm,EEC_dose_mamm_FP_md,EEC_dose_mamm_FP_lg,EEC_dose_mamm_AR_sm,EEC_dose_mamm_AR_md,EEC_dose_mamm_AR_lg,EEC_dose_mamm_SE_sm,EEC_dose_mamm_SE_md,EEC_dose_mamm_SE_lg,
+                   EEC_dose_mamm_SG_sm_exp, EEC_dose_mamm_SG_md_exp, EEC_dose_mamm_SG_lg_exp, EEC_dose_mamm_TG_sm_exp, EEC_dose_mamm_TG_md_exp, EEC_dose_mamm_TG_lg_exp, EEC_dose_mamm_BP_sm_exp, EEC_dose_mamm_BP_md_exp, EEC_dose_mamm_BP_lg_exp, EEC_dose_mamm_FP_sm_exp, EEC_dose_mamm_FP_md_exp, EEC_dose_mamm_FP_lg_exp, EEC_dose_mamm_AR_sm_exp, EEC_dose_mamm_AR_md_exp, EEC_dose_mamm_AR_lg_exp, EEC_dose_mamm_SE_sm_exp, EEC_dose_mamm_SE_md_exp, EEC_dose_mamm_SE_lg_exp):
+    data = { 
+        "Type": ['Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value',],
+        "Application Target": ['Short Grass', 'Short Grass', 'Tall Grass', 'Tall Grass', 'Broadleaf Plants', 'Broadleaf Plants', 'Fruits/Pods', 'Fruits/Pods', 'Arthropods', 'Arthropods', 'Seeds', 'Seeds',],
+        "Small":  ['%.2e' % EEC_dose_mamm_SG_sm, '%.2e' % EEC_dose_mamm_SG_sm_exp, '%.2e' % EEC_dose_mamm_TG_sm, '%.2e' % EEC_dose_mamm_TG_sm_exp, '%.2e' % EEC_dose_mamm_BP_sm, '%.2e' % EEC_dose_mamm_BP_sm_exp, '%.2e' % EEC_dose_mamm_FP_sm, '%.2e' % EEC_dose_mamm_FP_sm_exp, '%.2e' % EEC_dose_mamm_AR_sm, '%.2e' % EEC_dose_mamm_AR_sm_exp, '%.2e' % EEC_dose_mamm_SE_sm, '%.2e' % EEC_dose_mamm_SE_sm_exp],
+        "Medium": ['%.2e' % EEC_dose_mamm_SG_md, '%.2e' % EEC_dose_mamm_SG_md_exp, '%.2e' % EEC_dose_mamm_TG_md, '%.2e' % EEC_dose_mamm_TG_md_exp, '%.2e' % EEC_dose_mamm_BP_md, '%.2e' % EEC_dose_mamm_BP_md_exp, '%.2e' % EEC_dose_mamm_FP_md, '%.2e' % EEC_dose_mamm_FP_md_exp, '%.2e' % EEC_dose_mamm_AR_md, '%.2e' % EEC_dose_mamm_AR_md_exp, '%.2e' % EEC_dose_mamm_SE_md, '%.2e' % EEC_dose_mamm_SE_md_exp],
+        "Large":  ['%.2e' % EEC_dose_mamm_SG_lg, '%.2e' % EEC_dose_mamm_SG_lg_exp, '%.2e' % EEC_dose_mamm_TG_lg, '%.2e' % EEC_dose_mamm_TG_lg_exp, '%.2e' % EEC_dose_mamm_BP_lg, '%.2e' % EEC_dose_mamm_BP_lg_exp, '%.2e' % EEC_dose_mamm_FP_lg, '%.2e' % EEC_dose_mamm_FP_lg_exp, '%.2e' % EEC_dose_mamm_AR_lg, '%.2e' % EEC_dose_mamm_AR_lg_exp, '%.2e' % EEC_dose_mamm_SE_lg, '%.2e' % EEC_dose_mamm_SE_lg_exp],
+    }
+    return data
+
+def gett10data_qaqc(ARQ_dose_mamm_SG_sm,CRQ_dose_mamm_SG_sm,ARQ_dose_mamm_SG_md,CRQ_dose_mamm_SG_md,ARQ_dose_mamm_SG_lg,CRQ_dose_mamm_SG_lg,ARQ_dose_mamm_TG_sm,CRQ_dose_mamm_TG_sm,ARQ_dose_mamm_TG_md,CRQ_dose_mamm_TG_md,ARQ_dose_mamm_TG_lg,CRQ_dose_mamm_TG_lg,ARQ_dose_mamm_BP_sm,CRQ_dose_mamm_BP_sm,ARQ_dose_mamm_BP_md,CRQ_dose_mamm_BP_md,ARQ_dose_mamm_BP_lg,CRQ_dose_mamm_BP_lg,ARQ_dose_mamm_FP_sm,CRQ_dose_mamm_FP_sm,ARQ_dose_mamm_FP_md,CRQ_dose_mamm_FP_md,ARQ_dose_mamm_FP_lg,CRQ_dose_mamm_FP_lg,ARQ_dose_mamm_AR_sm,CRQ_dose_mamm_AR_sm,ARQ_dose_mamm_AR_md,CRQ_dose_mamm_AR_md,ARQ_dose_mamm_AR_lg,CRQ_dose_mamm_AR_lg,ARQ_dose_mamm_SE_sm,CRQ_dose_mamm_SE_sm,ARQ_dose_mamm_SE_md,CRQ_dose_mamm_SE_md,ARQ_dose_mamm_SE_lg,CRQ_dose_mamm_SE_lg,
+                    ARQ_dose_mamm_SG_sm_exp, CRQ_dose_mamm_SG_sm_exp, ARQ_dose_mamm_SG_md_exp, CRQ_dose_mamm_SG_md_exp, ARQ_dose_mamm_SG_lg_exp, CRQ_dose_mamm_SG_lg_exp, ARQ_dose_mamm_TG_sm_exp, CRQ_dose_mamm_TG_sm_exp, ARQ_dose_mamm_TG_md_exp, CRQ_dose_mamm_TG_md_exp, ARQ_dose_mamm_TG_lg_exp, CRQ_dose_mamm_TG_lg_exp, ARQ_dose_mamm_BP_sm_exp, CRQ_dose_mamm_BP_sm_exp, ARQ_dose_mamm_BP_md_exp, CRQ_dose_mamm_BP_md_exp, ARQ_dose_mamm_BP_lg_exp, CRQ_dose_mamm_BP_lg_exp, ARQ_dose_mamm_FP_sm_exp, CRQ_dose_mamm_FP_sm_exp, ARQ_dose_mamm_FP_md_exp, CRQ_dose_mamm_FP_md_exp, ARQ_dose_mamm_FP_lg_exp, CRQ_dose_mamm_FP_lg_exp, ARQ_dose_mamm_AR_sm_exp, CRQ_dose_mamm_AR_sm_exp, ARQ_dose_mamm_AR_md_exp, CRQ_dose_mamm_AR_md_exp, ARQ_dose_mamm_AR_lg_exp, CRQ_dose_mamm_AR_lg_exp, ARQ_dose_mamm_SE_sm_exp, CRQ_dose_mamm_SE_sm_exp, ARQ_dose_mamm_SE_md_exp, CRQ_dose_mamm_SE_md_exp, ARQ_dose_mamm_SE_lg_exp, CRQ_dose_mamm_SE_lg_exp):
+    data = {
+        "Type": ['Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value',],
+        "Application Target": ['Short Grass', 'Short Grass', 'Tall Grass', 'Tall Grass', 'Broadleaf Plants', 'Broadleaf Plants', 'Fruits/Pods', 'Fruits/Pods', 'Arthropods', 'Arthropods', 'Seeds', 'Seeds',],
+        "Acute_sm":   ['%.2e' % ARQ_dose_mamm_SG_sm, '%.2e' % ARQ_dose_mamm_SG_sm_exp, '%.2e' % ARQ_dose_mamm_TG_sm, '%.2e' % ARQ_dose_mamm_TG_sm_exp, '%.2e' % ARQ_dose_mamm_BP_sm, '%.2e' % ARQ_dose_mamm_BP_sm_exp, '%.2e' % ARQ_dose_mamm_FP_sm, '%.2e' % ARQ_dose_mamm_FP_sm_exp, '%.2e' % ARQ_dose_mamm_AR_sm, '%.2e' % ARQ_dose_mamm_AR_sm_exp, '%.2e' % ARQ_dose_mamm_SE_sm, '%.2e' % ARQ_dose_mamm_SE_sm_exp],
+        "Chronic_sm": ['%.2e' % CRQ_dose_mamm_SG_sm, '%.2e' % CRQ_dose_mamm_SG_sm_exp, '%.2e' % CRQ_dose_mamm_TG_sm, '%.2e' % CRQ_dose_mamm_TG_sm_exp, '%.2e' % CRQ_dose_mamm_BP_sm, '%.2e' % CRQ_dose_mamm_BP_sm_exp, '%.2e' % CRQ_dose_mamm_FP_sm, '%.2e' % CRQ_dose_mamm_FP_sm_exp, '%.2e' % CRQ_dose_mamm_AR_sm, '%.2e' % CRQ_dose_mamm_AR_sm_exp, '%.2e' % CRQ_dose_mamm_SE_sm, '%.2e' % CRQ_dose_mamm_SE_sm_exp],
+        "Acute_md":   ['%.2e' % ARQ_dose_mamm_SG_md, '%.2e' % ARQ_dose_mamm_SG_md_exp, '%.2e' % ARQ_dose_mamm_TG_md, '%.2e' % ARQ_dose_mamm_TG_md_exp, '%.2e' % ARQ_dose_mamm_BP_md, '%.2e' % ARQ_dose_mamm_BP_md_exp, '%.2e' % ARQ_dose_mamm_FP_md, '%.2e' % ARQ_dose_mamm_FP_md_exp, '%.2e' % ARQ_dose_mamm_AR_md, '%.2e' % ARQ_dose_mamm_AR_md_exp, '%.2e' % ARQ_dose_mamm_SE_md, '%.2e' % ARQ_dose_mamm_SE_md_exp],
+        "Chronic_md": ['%.2e' % CRQ_dose_mamm_SG_md, '%.2e' % CRQ_dose_mamm_SG_md_exp, '%.2e' % CRQ_dose_mamm_TG_md, '%.2e' % CRQ_dose_mamm_TG_md_exp, '%.2e' % CRQ_dose_mamm_BP_md, '%.2e' % CRQ_dose_mamm_BP_md_exp, '%.2e' % CRQ_dose_mamm_FP_md, '%.2e' % CRQ_dose_mamm_FP_md_exp, '%.2e' % CRQ_dose_mamm_AR_md, '%.2e' % CRQ_dose_mamm_AR_md_exp, '%.2e' % CRQ_dose_mamm_SE_md, '%.2e' % CRQ_dose_mamm_SE_md_exp],
+        "Acute_lg":   ['%.2e' % ARQ_dose_mamm_SG_lg, '%.2e' % ARQ_dose_mamm_SG_lg_exp, '%.2e' % ARQ_dose_mamm_TG_lg, '%.2e' % ARQ_dose_mamm_TG_lg_exp, '%.2e' % ARQ_dose_mamm_BP_lg, '%.2e' % ARQ_dose_mamm_BP_lg_exp, '%.2e' % ARQ_dose_mamm_FP_lg, '%.2e' % ARQ_dose_mamm_FP_lg_exp, '%.2e' % ARQ_dose_mamm_AR_lg, '%.2e' % ARQ_dose_mamm_AR_lg_exp, '%.2e' % ARQ_dose_mamm_SE_lg, '%.2e' % ARQ_dose_mamm_SE_lg_exp],
+        "Chronic_lg": ['%.2e' % CRQ_dose_mamm_SG_lg, '%.2e' % CRQ_dose_mamm_SG_lg_exp, '%.2e' % CRQ_dose_mamm_TG_lg, '%.2e' % CRQ_dose_mamm_TG_lg_exp, '%.2e' % CRQ_dose_mamm_BP_lg, '%.2e' % CRQ_dose_mamm_BP_lg_exp, '%.2e' % CRQ_dose_mamm_FP_lg, '%.2e' % CRQ_dose_mamm_FP_lg_exp, '%.2e' % CRQ_dose_mamm_AR_lg, '%.2e' % CRQ_dose_mamm_AR_lg_exp, '%.2e' % CRQ_dose_mamm_SE_lg, '%.2e' % CRQ_dose_mamm_SE_lg_exp], 
+    }
+    return data
+
+def gett11data_na_qaqc(ARQ_diet_mamm_SG,CRQ_diet_bird_SG,ARQ_diet_mamm_TG,CRQ_diet_bird_TG,ARQ_diet_mamm_BP,CRQ_diet_bird_BP,ARQ_diet_mamm_FP,CRQ_diet_bird_FP,ARQ_diet_mamm_AR,CRQ_diet_bird_AR,
+                       ARQ_diet_mamm_SG_exp,CRQ_diet_bird_SG_exp,ARQ_diet_mamm_TG_exp,CRQ_diet_bird_TG_exp,ARQ_diet_mamm_BP_exp,CRQ_diet_bird_BP_exp,ARQ_diet_mamm_FP_exp,CRQ_diet_bird_FP_exp,ARQ_diet_mamm_AR_exp,CRQ_diet_bird_AR_exp):
+    data = {
+        "Type": ['Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value',],
+        "Application Target": ['Short Grass', 'Short Grass', 'Tall Grass', 'Tall Grass', 'Broadleaf Plants', 'Broadleaf Plants', 'Fruits/Pods/Seeds', 'Fruits/Pods/Seeds', 'Arthropods', 'Arthropods'],
+        "Acute": ['%s' % ARQ_diet_mamm_SG, '%s' % ARQ_diet_mamm_SG_exp, '%s' % ARQ_diet_mamm_TG, '%s' % ARQ_diet_mamm_TG_exp, '%s' % ARQ_diet_mamm_BP, '%s' % ARQ_diet_mamm_BP_exp, '%s' % ARQ_diet_mamm_FP, '%s' % ARQ_diet_mamm_FP_exp, '%s' % ARQ_diet_mamm_AR, '%s' % ARQ_diet_mamm_AR_exp],
+        "Chronic": ['%.2e' % CRQ_diet_bird_SG, '%.2e' % CRQ_diet_bird_SG_exp, '%.2e' % CRQ_diet_bird_TG, '%.2e' % CRQ_diet_bird_TG_exp, '%.2e' % CRQ_diet_bird_BP, '%.2e' % CRQ_diet_bird_BP_exp, '%.2e' % CRQ_diet_bird_FP, '%.2e' % CRQ_diet_bird_FP_exp, '%.2e' % CRQ_diet_bird_AR, '%.2e' % CRQ_diet_bird_AR_exp],
+    }
+    return data 
+
+def gett12data_qaqc(LD50_rg_bird_sm,LD50_rg_mamm_sm,LD50_rg_bird_md,LD50_rg_mamm_md,LD50_rg_bird_lg,LD50_rg_mamm_lg,
+                    LD50_rg_bird_sm_exp,LD50_rg_mamm_sm_exp,LD50_rg_bird_md_exp,LD50_rg_mamm_md_exp,LD50_rg_bird_lg_exp,LD50_rg_mamm_lg_exp):
+    data = { 
+        "Type": ['Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value',],        "Animal Size": ['Small', 'Small', 'Medium', 'Medium', 'Large', 'Large', ] ,
+        "Avian":  ['%.2e' % LD50_rg_bird_sm, '%.2e' % LD50_rg_bird_sm_exp, '%.2e' % LD50_rg_bird_md, '%.2e' % LD50_rg_bird_md_exp, '%.2e' % LD50_rg_bird_lg, '%.2e' % LD50_rg_bird_lg_exp,],
+        "Mammal": ['%.2e' % LD50_rg_mamm_sm, '%.2e' % LD50_rg_mamm_sm_exp, '%.2e' % LD50_rg_mamm_md, '%.2e' % LD50_rg_mamm_md_exp, '%.2e' % LD50_rg_mamm_lg, '%.2e' % LD50_rg_mamm_lg_exp,],
+    }
+    return data
 
 def gettsumdata_1(a_i, r_s, b_w, p_i, den, Foliar_dissipation_half_life, n_a, rate_out_t):
 
@@ -815,6 +955,26 @@ def table_all(trex2_obj):
             html = html + table15_out['html']
             return html, table6_out, table7_out, table7_add_out, table8_out, table9_out, table10_out, table11_out, table15_out
 
+def table_all_qaqc(trex2_obj):
+    table1_out=table_1(trex2_obj)
+    table2_out=table_2(trex2_obj)
+    table3_out=table_3(trex2_obj)
+    table4_out=table_4(trex2_obj)
+    a_r_p=0
+    table6_out_qaqc=table_6_qaqc(trex2_obj)
+    table7_out_qaqc=table_7_qaqc(trex2_obj)
+    table_7_add_out_qaqc=table_7_add_qaqc(trex2_obj)
+    table8_out_qaqc=table_8_qaqc(trex2_obj)
+    table9_out_qaqc=table_9_qaqc(trex2_obj)
+    table10_out_qaqc=table_10_qaqc(trex2_obj)
+    table11_out_qaqc=table_11_qaqc(trex2_obj)
+    table15_out_qaqc=table_15_qaqc(trex2_obj)
+
+    html_all = timestamp()+table1_out+table2_out+table3_out+table4_out+table6_out_qaqc+\
+               table7_out_qaqc+table_7_add_out_qaqc+table8_out_qaqc+table9_out_qaqc+\
+               table10_out_qaqc+table11_out_qaqc+table15_out_qaqc
+
+    return html_all
 
 def table_sum_1(i, a_i, r_s, b_w, p_i, den, Foliar_dissipation_half_life, n_a, rate_out):
         #pre-table sum_input_1
@@ -1318,7 +1478,6 @@ def table_9(trex2_obj):
                              'EEC_dose_mamm_BP_sm':EEC_dose_mamm_BP_sm, 'EEC_dose_mamm_BP_md':EEC_dose_mamm_BP_md, 'EEC_dose_mamm_BP_lg':EEC_dose_mamm_BP_lg, 'EEC_dose_mamm_FP_sm':EEC_dose_mamm_FP_sm, 'EEC_dose_mamm_FP_md':EEC_dose_mamm_FP_md, 'EEC_dose_mamm_FP_lg':EEC_dose_mamm_FP_lg,
                              'EEC_dose_mamm_AR_sm':EEC_dose_mamm_AR_sm, 'EEC_dose_mamm_AR_md':EEC_dose_mamm_AR_md, 'EEC_dose_mamm_AR_lg':EEC_dose_mamm_AR_lg, 'EEC_dose_mamm_SE_sm':EEC_dose_mamm_SE_sm, 'EEC_dose_mamm_SE_md':EEC_dose_mamm_SE_md, 'EEC_dose_mamm_SE_lg':EEC_dose_mamm_SE_lg}
 
-
 def table_10(trex2_obj):
         #pre-table 10
         html = """
@@ -1380,7 +1539,6 @@ def table_10(trex2_obj):
                              'ARQ_dose_mamm_FP_sm':ARQ_dose_mamm_FP_sm, 'CRQ_dose_mamm_FP_sm':CRQ_dose_mamm_FP_sm, 'ARQ_dose_mamm_FP_md':ARQ_dose_mamm_FP_md, 'CRQ_dose_mamm_FP_md':CRQ_dose_mamm_FP_md, 'ARQ_dose_mamm_FP_lg':ARQ_dose_mamm_FP_lg, 'CRQ_dose_mamm_FP_lg':CRQ_dose_mamm_FP_lg,
                              'ARQ_dose_mamm_AR_sm':ARQ_dose_mamm_AR_sm, 'CRQ_dose_mamm_AR_sm':CRQ_dose_mamm_AR_sm, 'ARQ_dose_mamm_AR_md':ARQ_dose_mamm_AR_md, 'CRQ_dose_mamm_AR_md':CRQ_dose_mamm_AR_md, 'ARQ_dose_mamm_AR_lg':ARQ_dose_mamm_AR_lg, 'CRQ_dose_mamm_AR_lg':CRQ_dose_mamm_AR_lg,
                              'ARQ_dose_mamm_SE_sm':ARQ_dose_mamm_SE_sm, 'CRQ_dose_mamm_SE_sm':CRQ_dose_mamm_SE_sm, 'ARQ_dose_mamm_SE_md':ARQ_dose_mamm_SE_md, 'CRQ_dose_mamm_SE_md':CRQ_dose_mamm_SE_md, 'ARQ_dose_mamm_SE_lg':ARQ_dose_mamm_SE_lg, 'CRQ_dose_mamm_SE_lg':CRQ_dose_mamm_SE_lg}
-
 
 def table_11(trex2_obj):
         #pre-table 11
@@ -1515,3 +1673,413 @@ def table_15(trex2_obj):
                              'LD50_bl_bird_md':LD50_bl_bird_md, 'LD50_bl_mamm_md':LD50_bl_mamm_md,
                              'LD50_bl_bird_lg':LD50_bl_bird_lg, 'LD50_bl_mamm_lg':LD50_bl_mamm_lg}
 
+def timestamp():
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S %p')
+    html="""
+    <H3 class="out_">T-REX Version 1.5.2 <br>
+    """
+    html = html + st
+    html = html + " (UTC)</H3>"
+    return html
+
+def table_6_qaqc(trex2_obj):
+        #pre-table 6_qaqc
+        html = """
+        <H3 class="out_1 collapsible" id="section6"><span></span>Results: Application Type : Broadcast-Liquid</H3>
+        <div class="out_">
+            <H4 class="out_ collapsible" id="section7"><span></span>Dietary Based EECs (mg/kg-dietary item)</H4>
+                <div class="out_ container_output">
+        """
+        #table 6_qaqc
+        EEC_diet_SG=trex2_obj.EEC_diet_SG
+        EEC_diet_TG=trex2_obj.EEC_diet_TG
+        EEC_diet_BP=trex2_obj.EEC_diet_BP
+        EEC_diet_FR=trex2_obj.EEC_diet_FR
+        EEC_diet_AR=trex2_obj.EEC_diet_AR
+
+        EEC_diet_SG_exp=trex2_obj.EEC_diet_SG_BL_out_exp
+        EEC_diet_TG_exp=trex2_obj.EEC_diet_TG_BL_out_exp
+        EEC_diet_BP_exp=trex2_obj.EEC_diet_BP_BL_out_exp
+        EEC_diet_FR_exp=trex2_obj.EEC_diet_FR_BL_out_exp
+        EEC_diet_AR_exp=trex2_obj.EEC_diet_AR_BL_out_exp
+
+        t6data_qaqc = gett6data_qaqc(EEC_diet_SG, EEC_diet_TG, EEC_diet_BP, EEC_diet_FR, EEC_diet_AR, EEC_diet_SG_exp, EEC_diet_TG_exp, EEC_diet_BP_exp, EEC_diet_FR_exp, EEC_diet_AR_exp)
+        t6rows_qaqc = gethtmlrowsfromcols(t6data_qaqc,pv6headings_qaqc)
+        html = html + tmpl.render(Context(dict(data=t6rows_qaqc, headings=pv6headings_qaqc)))
+        html = html + """
+                </div>
+        """
+        return html
+
+def table_7_qaqc(trex2_obj):
+        #pre-table 7
+        html = """
+            <H4 class="out_ collapsible" id="section8"><span></span>Avian Dose Based EECs (mg/kg-bw)</H4>
+                <div class="out_ container_output">
+        """
+        #table 7
+        EEC_dose_bird_SG_sm=trex2_obj.EEC_dose_bird_SG_sm
+        EEC_dose_bird_SG_md=trex2_obj.EEC_dose_bird_SG_md
+        EEC_dose_bird_SG_lg=trex2_obj.EEC_dose_bird_SG_lg
+        EEC_dose_bird_TG_sm=trex2_obj.EEC_dose_bird_TG_sm
+        EEC_dose_bird_TG_md=trex2_obj.EEC_dose_bird_TG_md
+        EEC_dose_bird_TG_lg=trex2_obj.EEC_dose_bird_TG_lg
+        EEC_dose_bird_BP_sm=trex2_obj.EEC_dose_bird_BP_sm
+        EEC_dose_bird_BP_md=trex2_obj.EEC_dose_bird_BP_md
+        EEC_dose_bird_BP_lg=trex2_obj.EEC_dose_bird_BP_lg
+        EEC_dose_bird_FP_sm=trex2_obj.EEC_dose_bird_FP_sm
+        EEC_dose_bird_FP_md=trex2_obj.EEC_dose_bird_FP_md
+        EEC_dose_bird_FP_lg=trex2_obj.EEC_dose_bird_FP_lg
+        EEC_dose_bird_AR_sm=trex2_obj.EEC_dose_bird_AR_sm
+        EEC_dose_bird_AR_md=trex2_obj.EEC_dose_bird_AR_md
+        EEC_dose_bird_AR_lg=trex2_obj.EEC_dose_bird_AR_lg
+        EEC_dose_bird_SE_sm=trex2_obj.EEC_dose_bird_SE_sm
+        EEC_dose_bird_SE_md=trex2_obj.EEC_dose_bird_SE_md
+        EEC_dose_bird_SE_lg=trex2_obj.EEC_dose_bird_SE_lg
+
+        EEC_dose_bird_SG_sm_exp=trex2_obj.EEC_dose_bird_SG_BL_sm_out_exp
+        EEC_dose_bird_SG_md_exp=trex2_obj.EEC_dose_bird_SG_BL_md_out_exp
+        EEC_dose_bird_SG_lg_exp=trex2_obj.EEC_dose_bird_SG_BL_lg_out_exp
+        EEC_dose_bird_TG_sm_exp=trex2_obj.EEC_dose_bird_TG_BL_sm_out_exp
+        EEC_dose_bird_TG_md_exp=trex2_obj.EEC_dose_bird_TG_BL_md_out_exp
+        EEC_dose_bird_TG_lg_exp=trex2_obj.EEC_dose_bird_TG_BL_lg_out_exp
+        EEC_dose_bird_BP_sm_exp=trex2_obj.EEC_dose_bird_BP_BL_sm_out_exp
+        EEC_dose_bird_BP_md_exp=trex2_obj.EEC_dose_bird_BP_BL_md_out_exp
+        EEC_dose_bird_BP_lg_exp=trex2_obj.EEC_dose_bird_BP_BL_lg_out_exp
+        EEC_dose_bird_FP_sm_exp=trex2_obj.EEC_dose_bird_FP_BL_sm_out_exp
+        EEC_dose_bird_FP_md_exp=trex2_obj.EEC_dose_bird_FP_BL_md_out_exp
+        EEC_dose_bird_FP_lg_exp=trex2_obj.EEC_dose_bird_FP_BL_lg_out_exp
+        EEC_dose_bird_AR_sm_exp=trex2_obj.EEC_dose_bird_AR_BL_sm_out_exp
+        EEC_dose_bird_AR_md_exp=trex2_obj.EEC_dose_bird_AR_BL_md_out_exp
+        EEC_dose_bird_AR_lg_exp=trex2_obj.EEC_dose_bird_AR_BL_lg_out_exp
+        EEC_dose_bird_SE_sm_exp=trex2_obj.EEC_dose_bird_SE_BL_sm_out_exp
+        EEC_dose_bird_SE_md_exp=trex2_obj.EEC_dose_bird_SE_BL_md_out_exp
+        EEC_dose_bird_SE_lg_exp=trex2_obj.EEC_dose_bird_SE_BL_lg_out_exp
+
+
+        t7data_qaqc = gett7data_qaqc(EEC_dose_bird_SG_sm, EEC_dose_bird_SG_md, EEC_dose_bird_SG_lg, EEC_dose_bird_TG_sm, EEC_dose_bird_TG_md, EEC_dose_bird_TG_lg, EEC_dose_bird_BP_sm, EEC_dose_bird_BP_md, EEC_dose_bird_BP_lg, EEC_dose_bird_FP_sm, EEC_dose_bird_FP_md, EEC_dose_bird_FP_lg, EEC_dose_bird_AR_sm, EEC_dose_bird_AR_md, EEC_dose_bird_AR_lg, EEC_dose_bird_SE_sm, EEC_dose_bird_SE_md, EEC_dose_bird_SE_lg,
+                                     EEC_dose_bird_SG_sm_exp, EEC_dose_bird_SG_md_exp, EEC_dose_bird_SG_lg_exp, EEC_dose_bird_TG_sm_exp, EEC_dose_bird_TG_md_exp, EEC_dose_bird_TG_lg_exp, EEC_dose_bird_BP_sm_exp, EEC_dose_bird_BP_md_exp, EEC_dose_bird_BP_lg_exp, EEC_dose_bird_FP_sm_exp, EEC_dose_bird_FP_md_exp, EEC_dose_bird_FP_lg_exp, EEC_dose_bird_AR_sm_exp, EEC_dose_bird_AR_md_exp, EEC_dose_bird_AR_lg_exp, EEC_dose_bird_SE_sm_exp, EEC_dose_bird_SE_md_exp, EEC_dose_bird_SE_lg_exp)
+        t7rows_qaqc = gethtmlrowsfromcols(t7data_qaqc, pv7headings_qaqc)       
+        html = html + tmpl.render(Context(dict(data=t7rows_qaqc, headings=pv7headings_qaqc)))
+        html = html + """
+                </div>
+        """
+        return html
+
+
+def table_7_add_qaqc(trex2_obj):
+        #pre-table 7
+        html = """
+            <H4 class="out_ collapsible" id="section8_add"><span></span>Avianr Dose Based RQs</H4>
+                <div class="out_ container_output">
+        """
+        #table 7_add
+        ARQ_bird_SG_sm=trex2_obj.ARQ_bird_SG_sm
+        ARQ_bird_SG_md=trex2_obj.ARQ_bird_SG_md
+        ARQ_bird_SG_lg=trex2_obj.ARQ_bird_SG_lg
+        ARQ_bird_TG_sm=trex2_obj.ARQ_bird_TG_sm
+        ARQ_bird_TG_md=trex2_obj.ARQ_bird_TG_md
+        ARQ_bird_TG_lg=trex2_obj.ARQ_bird_TG_lg
+        ARQ_bird_BP_sm=trex2_obj.ARQ_bird_BP_sm
+        ARQ_bird_BP_md=trex2_obj.ARQ_bird_BP_md
+        ARQ_bird_BP_lg=trex2_obj.ARQ_bird_BP_lg
+        ARQ_bird_FP_sm=trex2_obj.ARQ_bird_FP_sm
+        ARQ_bird_FP_md=trex2_obj.ARQ_bird_FP_md
+        ARQ_bird_FP_lg=trex2_obj.ARQ_bird_FP_lg
+        ARQ_bird_AR_sm=trex2_obj.ARQ_bird_AR_sm
+        ARQ_bird_AR_md=trex2_obj.ARQ_bird_AR_md
+        ARQ_bird_AR_lg=trex2_obj.ARQ_bird_AR_lg
+        ARQ_bird_SE_sm=trex2_obj.ARQ_bird_SE_sm
+        ARQ_bird_SE_md=trex2_obj.ARQ_bird_SE_md
+        ARQ_bird_SE_lg=trex2_obj.ARQ_bird_SE_lg
+
+        ARQ_bird_SG_sm_exp=trex2_obj.ARQ_bird_SG_BL_sm_out_exp
+        ARQ_bird_SG_md_exp=trex2_obj.ARQ_bird_SG_BL_md_out_exp
+        ARQ_bird_SG_lg_exp=trex2_obj.ARQ_bird_SG_BL_lg_out_exp
+        ARQ_bird_TG_sm_exp=trex2_obj.ARQ_bird_TG_BL_sm_out_exp
+        ARQ_bird_TG_md_exp=trex2_obj.ARQ_bird_TG_BL_md_out_exp
+        ARQ_bird_TG_lg_exp=trex2_obj.ARQ_bird_TG_BL_lg_out_exp
+        ARQ_bird_BP_sm_exp=trex2_obj.ARQ_bird_BP_BL_sm_out_exp
+        ARQ_bird_BP_md_exp=trex2_obj.ARQ_bird_BP_BL_md_out_exp
+        ARQ_bird_BP_lg_exp=trex2_obj.ARQ_bird_BP_BL_lg_out_exp
+        ARQ_bird_FP_sm_exp=trex2_obj.ARQ_bird_FP_BL_sm_out_exp
+        ARQ_bird_FP_md_exp=trex2_obj.ARQ_bird_FP_BL_md_out_exp
+        ARQ_bird_FP_lg_exp=trex2_obj.ARQ_bird_FP_BL_lg_out_exp
+        ARQ_bird_AR_sm_exp=trex2_obj.ARQ_bird_AR_BL_sm_out_exp
+        ARQ_bird_AR_md_exp=trex2_obj.ARQ_bird_AR_BL_md_out_exp
+        ARQ_bird_AR_lg_exp=trex2_obj.ARQ_bird_AR_BL_lg_out_exp
+        ARQ_bird_SE_sm_exp=trex2_obj.ARQ_bird_SE_BL_sm_out_exp
+        ARQ_bird_SE_md_exp=trex2_obj.ARQ_bird_SE_BL_md_out_exp
+        ARQ_bird_SE_lg_exp=trex2_obj.ARQ_bird_SE_BL_lg_out_exp
+
+        t7_add_data_qaqc = gett7_add_data_qaqc(ARQ_bird_SG_sm, ARQ_bird_SG_md, ARQ_bird_SG_lg, ARQ_bird_TG_sm, ARQ_bird_TG_md, ARQ_bird_TG_lg, ARQ_bird_BP_sm, ARQ_bird_BP_md, ARQ_bird_BP_lg, ARQ_bird_FP_sm, ARQ_bird_FP_md, ARQ_bird_FP_lg, ARQ_bird_AR_sm, ARQ_bird_AR_md, ARQ_bird_AR_lg, ARQ_bird_SE_sm, ARQ_bird_SE_md, ARQ_bird_SE_lg, 
+                                              ARQ_bird_SG_sm_exp, ARQ_bird_SG_md_exp, ARQ_bird_SG_lg_exp, ARQ_bird_TG_sm_exp, ARQ_bird_TG_md_exp, ARQ_bird_TG_lg_exp, ARQ_bird_BP_sm_exp, ARQ_bird_BP_md_exp, ARQ_bird_BP_lg_exp, ARQ_bird_FP_sm_exp, ARQ_bird_FP_md_exp, ARQ_bird_FP_lg_exp, ARQ_bird_AR_sm_exp, ARQ_bird_AR_md_exp, ARQ_bird_AR_lg_exp, ARQ_bird_SE_sm_exp, ARQ_bird_SE_md_exp, ARQ_bird_SE_lg_exp)
+        t7_add_rows_qaqc = gethtmlrowsfromcols(t7_add_data_qaqc, pv7headings_qaqc)       
+        html = html + tmpl.render(Context(dict(data=t7_add_rows_qaqc, headings=pv7headings_qaqc)))
+        html = html + """
+                </div>
+        """
+        return html
+
+def table_8_qaqc(trex2_obj):
+        #pre-table 8 qaqc
+        html = """
+            <H4 class="out_ collapsible" id="section9"><span></span>Avian Dietary Based RQs</H4>
+                <div class="out_ container_output">
+        """
+        #table 8
+        ARQ_diet_bird_SG_A=trex2_obj.ARQ_diet_bird_SG_A
+        ARQ_diet_bird_SG_C=trex2_obj.ARQ_diet_bird_SG_C
+        ARQ_diet_bird_TG_A=trex2_obj.ARQ_diet_bird_TG_A
+        ARQ_diet_bird_TG_C=trex2_obj.ARQ_diet_bird_TG_C
+        ARQ_diet_bird_BP_A=trex2_obj.ARQ_diet_bird_BP_A
+        ARQ_diet_bird_BP_C=trex2_obj.ARQ_diet_bird_BP_C
+        ARQ_diet_bird_FP_A=trex2_obj.ARQ_diet_bird_FP_A
+        ARQ_diet_bird_FP_C=trex2_obj.ARQ_diet_bird_FP_C
+        ARQ_diet_bird_AR_A=trex2_obj.ARQ_diet_bird_AR_A
+        ARQ_diet_bird_AR_C=trex2_obj.ARQ_diet_bird_AR_C
+
+        ARQ_diet_bird_SG_A_exp=trex2_obj.ARQ_diet_bird_SG_A_BL_out_exp
+        ARQ_diet_bird_SG_C_exp=trex2_obj.ARQ_diet_bird_SG_C_BL_out_exp
+        ARQ_diet_bird_TG_A_exp=trex2_obj.ARQ_diet_bird_TG_A_BL_out_exp
+        ARQ_diet_bird_TG_C_exp=trex2_obj.ARQ_diet_bird_TG_C_BL_out_exp
+        ARQ_diet_bird_BP_A_exp=trex2_obj.ARQ_diet_bird_BP_A_BL_out_exp
+        ARQ_diet_bird_BP_C_exp=trex2_obj.ARQ_diet_bird_BP_C_BL_out_exp
+        ARQ_diet_bird_FP_A_exp=trex2_obj.ARQ_diet_bird_FP_A_BL_out_exp
+        ARQ_diet_bird_FP_C_exp=trex2_obj.ARQ_diet_bird_FP_C_BL_out_exp
+        ARQ_diet_bird_AR_A_exp=trex2_obj.ARQ_diet_bird_AR_A_BL_out_exp
+        ARQ_diet_bird_AR_C_exp=trex2_obj.ARQ_diet_bird_AR_C_BL_out_exp
+
+        t8data_qaqc = gett8data_qaqc(ARQ_diet_bird_SG_A, ARQ_diet_bird_SG_C, ARQ_diet_bird_TG_A, ARQ_diet_bird_TG_C, ARQ_diet_bird_BP_A, ARQ_diet_bird_BP_C, ARQ_diet_bird_FP_A, ARQ_diet_bird_FP_C, ARQ_diet_bird_AR_A, ARQ_diet_bird_AR_C,
+                                     ARQ_diet_bird_SG_A_exp, ARQ_diet_bird_SG_C_exp, ARQ_diet_bird_TG_A_exp, ARQ_diet_bird_TG_C_exp, ARQ_diet_bird_BP_A_exp, ARQ_diet_bird_BP_C_exp, ARQ_diet_bird_FP_A_exp, ARQ_diet_bird_FP_C_exp, ARQ_diet_bird_AR_A_exp, ARQ_diet_bird_AR_C_exp)
+        t8rows_qaqc = gethtmlrowsfromcols(t8data_qaqc, pv8headings_qaqc)       
+        html = html + tmpl.render(Context(dict(data=t8rows_qaqc, headings=pv8headings_qaqc)))
+        html = html + """
+                </div>
+        """
+        return html
+
+def table_9_qaqc(trex2_obj):
+        #pre-table 9_qaqc
+        html = """
+            <H4 class="out_ collapsible" id="section10"><span></span>Mammalian Dose Based EECs (mg/kg-bw)</H4>
+                <div class="out_ container_output">
+        """
+        #table 9_qaqc
+        EEC_dose_mamm_SG_sm=trex2_obj.EEC_dose_mamm_SG_sm
+        EEC_dose_mamm_SG_md=trex2_obj.EEC_dose_mamm_SG_md
+        EEC_dose_mamm_SG_lg=trex2_obj.EEC_dose_mamm_SG_lg
+        EEC_dose_mamm_TG_sm=trex2_obj.EEC_dose_mamm_TG_sm
+        EEC_dose_mamm_TG_md=trex2_obj.EEC_dose_mamm_TG_md
+        EEC_dose_mamm_TG_lg=trex2_obj.EEC_dose_mamm_TG_lg
+        EEC_dose_mamm_BP_sm=trex2_obj.EEC_dose_mamm_BP_sm
+        EEC_dose_mamm_BP_md=trex2_obj.EEC_dose_mamm_BP_md
+        EEC_dose_mamm_BP_lg=trex2_obj.EEC_dose_mamm_BP_lg
+        EEC_dose_mamm_FP_sm=trex2_obj.EEC_dose_mamm_FP_sm
+        EEC_dose_mamm_FP_md=trex2_obj.EEC_dose_mamm_FP_md
+        EEC_dose_mamm_FP_lg=trex2_obj.EEC_dose_mamm_FP_lg
+        EEC_dose_mamm_AR_sm=trex2_obj.EEC_dose_mamm_AR_sm
+        EEC_dose_mamm_AR_md=trex2_obj.EEC_dose_mamm_AR_md
+        EEC_dose_mamm_AR_lg=trex2_obj.EEC_dose_mamm_AR_lg
+        EEC_dose_mamm_SE_sm=trex2_obj.EEC_dose_mamm_SE_sm
+        EEC_dose_mamm_SE_md=trex2_obj.EEC_dose_mamm_SE_md
+        EEC_dose_mamm_SE_lg=trex2_obj.EEC_dose_mamm_SE_lg
+
+        EEC_dose_mamm_SG_sm_exp=trex2_obj.EEC_dose_mamm_SG_sm_BL_out_exp
+        EEC_dose_mamm_SG_md_exp=trex2_obj.EEC_dose_mamm_SG_md_BL_out_exp
+        EEC_dose_mamm_SG_lg_exp=trex2_obj.EEC_dose_mamm_SG_lg_BL_out_exp
+        EEC_dose_mamm_TG_sm_exp=trex2_obj.EEC_dose_mamm_TG_sm_BL_out_exp
+        EEC_dose_mamm_TG_md_exp=trex2_obj.EEC_dose_mamm_TG_md_BL_out_exp
+        EEC_dose_mamm_TG_lg_exp=trex2_obj.EEC_dose_mamm_TG_lg_BL_out_exp
+        EEC_dose_mamm_BP_sm_exp=trex2_obj.EEC_dose_mamm_BP_sm_BL_out_exp
+        EEC_dose_mamm_BP_md_exp=trex2_obj.EEC_dose_mamm_BP_md_BL_out_exp
+        EEC_dose_mamm_BP_lg_exp=trex2_obj.EEC_dose_mamm_BP_lg_BL_out_exp
+        EEC_dose_mamm_FP_sm_exp=trex2_obj.EEC_dose_mamm_FP_sm_BL_out_exp
+        EEC_dose_mamm_FP_md_exp=trex2_obj.EEC_dose_mamm_FP_md_BL_out_exp
+        EEC_dose_mamm_FP_lg_exp=trex2_obj.EEC_dose_mamm_FP_lg_BL_out_exp
+        EEC_dose_mamm_AR_sm_exp=trex2_obj.EEC_dose_mamm_AR_sm_BL_out_exp
+        EEC_dose_mamm_AR_md_exp=trex2_obj.EEC_dose_mamm_AR_md_BL_out_exp
+        EEC_dose_mamm_AR_lg_exp=trex2_obj.EEC_dose_mamm_AR_lg_BL_out_exp
+        EEC_dose_mamm_SE_sm_exp=trex2_obj.EEC_dose_mamm_SE_sm_BL_out_exp
+        EEC_dose_mamm_SE_md_exp=trex2_obj.EEC_dose_mamm_SE_md_BL_out_exp
+        EEC_dose_mamm_SE_lg_exp=trex2_obj.EEC_dose_mamm_SE_lg_BL_out_exp
+
+        t9data_qaqc = gett9data_qaqc(EEC_dose_mamm_SG_sm,EEC_dose_mamm_SG_md,EEC_dose_mamm_SG_lg,EEC_dose_mamm_TG_sm,EEC_dose_mamm_TG_md,EEC_dose_mamm_TG_lg,EEC_dose_mamm_BP_sm,EEC_dose_mamm_BP_md,EEC_dose_mamm_BP_lg,EEC_dose_mamm_FP_sm,EEC_dose_mamm_FP_md,EEC_dose_mamm_FP_lg,EEC_dose_mamm_AR_sm,EEC_dose_mamm_AR_md,EEC_dose_mamm_AR_lg,EEC_dose_mamm_SE_sm,EEC_dose_mamm_SE_md,EEC_dose_mamm_SE_lg,
+                                     EEC_dose_mamm_SG_sm_exp, EEC_dose_mamm_SG_md_exp, EEC_dose_mamm_SG_lg_exp, EEC_dose_mamm_TG_sm_exp, EEC_dose_mamm_TG_md_exp, EEC_dose_mamm_TG_lg_exp, EEC_dose_mamm_BP_sm_exp, EEC_dose_mamm_BP_md_exp, EEC_dose_mamm_BP_lg_exp, EEC_dose_mamm_FP_sm_exp, EEC_dose_mamm_FP_md_exp, EEC_dose_mamm_FP_lg_exp, EEC_dose_mamm_AR_sm_exp, EEC_dose_mamm_AR_md_exp, EEC_dose_mamm_AR_lg_exp, EEC_dose_mamm_SE_sm_exp, EEC_dose_mamm_SE_md_exp, EEC_dose_mamm_SE_lg_exp)
+        t9rows_qaqc = gethtmlrowsfromcols(t9data_qaqc, pv7headings_qaqc)       
+        html = html + tmpl.render(Context(dict(data=t9rows_qaqc, headings=pv7headings_qaqc)))
+        html = html + """
+                </div>
+        """
+        return html
+
+def table_10_qaqc(trex2_obj):
+        #pre-table 10_qaqc
+        html = """
+            <H4 class="out_ collapsible" id="section11"><span></span>Mammalian Dose Based RQs</H4>
+                <div class="out_ container_output">
+        """
+        #table 10_qaqc
+        ARQ_dose_mamm_SG_sm=trex2_obj.ARQ_dose_mamm_SG_sm
+        CRQ_dose_mamm_SG_sm=trex2_obj.CRQ_dose_mamm_SG_sm
+        ARQ_dose_mamm_SG_md=trex2_obj.ARQ_dose_mamm_SG_md
+        CRQ_dose_mamm_SG_md=trex2_obj.CRQ_dose_mamm_SG_md
+        ARQ_dose_mamm_SG_lg=trex2_obj.ARQ_dose_mamm_SG_lg
+        CRQ_dose_mamm_SG_lg=trex2_obj.CRQ_dose_mamm_SG_lg
+        
+        ARQ_dose_mamm_TG_sm=trex2_obj.ARQ_dose_mamm_TG_sm
+        CRQ_dose_mamm_TG_sm=trex2_obj.CRQ_dose_mamm_TG_sm
+        ARQ_dose_mamm_TG_md=trex2_obj.ARQ_dose_mamm_TG_md
+        CRQ_dose_mamm_TG_md=trex2_obj.CRQ_dose_mamm_TG_md
+        ARQ_dose_mamm_TG_lg=trex2_obj.ARQ_dose_mamm_TG_lg
+        CRQ_dose_mamm_TG_lg=trex2_obj.CRQ_dose_mamm_TG_lg
+        
+        ARQ_dose_mamm_BP_sm=trex2_obj.ARQ_dose_mamm_BP_sm
+        CRQ_dose_mamm_BP_sm=trex2_obj.CRQ_dose_mamm_BP_sm
+        ARQ_dose_mamm_BP_md=trex2_obj.ARQ_dose_mamm_BP_md
+        CRQ_dose_mamm_BP_md=trex2_obj.CRQ_dose_mamm_BP_md
+        ARQ_dose_mamm_BP_lg=trex2_obj.ARQ_dose_mamm_BP_lg
+        CRQ_dose_mamm_BP_lg=trex2_obj.CRQ_dose_mamm_BP_lg
+        
+        ARQ_dose_mamm_FP_sm=trex2_obj.ARQ_dose_mamm_FP_sm
+        CRQ_dose_mamm_FP_sm=trex2_obj.CRQ_dose_mamm_FP_sm
+        ARQ_dose_mamm_FP_md=trex2_obj.ARQ_dose_mamm_FP_md
+        CRQ_dose_mamm_FP_md=trex2_obj.CRQ_dose_mamm_FP_md
+        ARQ_dose_mamm_FP_lg=trex2_obj.ARQ_dose_mamm_FP_lg
+        CRQ_dose_mamm_FP_lg=trex2_obj.CRQ_dose_mamm_FP_lg
+        
+        ARQ_dose_mamm_AR_sm=trex2_obj.ARQ_dose_mamm_AR_sm
+        CRQ_dose_mamm_AR_sm=trex2_obj.CRQ_dose_mamm_AR_sm
+        ARQ_dose_mamm_AR_md=trex2_obj.ARQ_dose_mamm_AR_md
+        CRQ_dose_mamm_AR_md=trex2_obj.CRQ_dose_mamm_AR_md
+        ARQ_dose_mamm_AR_lg=trex2_obj.ARQ_dose_mamm_AR_lg
+        CRQ_dose_mamm_AR_lg=trex2_obj.CRQ_dose_mamm_AR_lg
+        
+        ARQ_dose_mamm_SE_sm=trex2_obj.ARQ_dose_mamm_SE_sm
+        CRQ_dose_mamm_SE_sm=trex2_obj.CRQ_dose_mamm_SE_sm
+        ARQ_dose_mamm_SE_md=trex2_obj.ARQ_dose_mamm_SE_md
+        CRQ_dose_mamm_SE_md=trex2_obj.CRQ_dose_mamm_SE_md
+        ARQ_dose_mamm_SE_lg=trex2_obj.ARQ_dose_mamm_SE_lg
+        CRQ_dose_mamm_SE_lg=trex2_obj.CRQ_dose_mamm_SE_lg
+
+#########
+        ARQ_dose_mamm_SG_sm_exp=trex2_obj.ARQ_dose_mamm_SG_sm_BL_out_exp
+        CRQ_dose_mamm_SG_sm_exp=trex2_obj.CRQ_dose_mamm_SG_sm_BL_out_exp
+        ARQ_dose_mamm_SG_md_exp=trex2_obj.ARQ_dose_mamm_SG_md_BL_out_exp
+        CRQ_dose_mamm_SG_md_exp=trex2_obj.CRQ_dose_mamm_SG_md_BL_out_exp
+        ARQ_dose_mamm_SG_lg_exp=trex2_obj.ARQ_dose_mamm_SG_lg_BL_out_exp
+        CRQ_dose_mamm_SG_lg_exp=trex2_obj.CRQ_dose_mamm_SG_lg_BL_out_exp
+        
+        ARQ_dose_mamm_TG_sm_exp=trex2_obj.ARQ_dose_mamm_TG_sm_BL_out_exp
+        CRQ_dose_mamm_TG_sm_exp=trex2_obj.CRQ_dose_mamm_TG_sm_BL_out_exp
+        ARQ_dose_mamm_TG_md_exp=trex2_obj.ARQ_dose_mamm_TG_md_BL_out_exp
+        CRQ_dose_mamm_TG_md_exp=trex2_obj.CRQ_dose_mamm_TG_md_BL_out_exp
+        ARQ_dose_mamm_TG_lg_exp=trex2_obj.ARQ_dose_mamm_TG_lg_BL_out_exp
+        CRQ_dose_mamm_TG_lg_exp=trex2_obj.CRQ_dose_mamm_TG_lg_BL_out_exp
+        
+        ARQ_dose_mamm_BP_sm_exp=trex2_obj.ARQ_dose_mamm_BP_sm_BL_out_exp
+        CRQ_dose_mamm_BP_sm_exp=trex2_obj.CRQ_dose_mamm_BP_sm_BL_out_exp
+        ARQ_dose_mamm_BP_md_exp=trex2_obj.ARQ_dose_mamm_BP_md_BL_out_exp
+        CRQ_dose_mamm_BP_md_exp=trex2_obj.CRQ_dose_mamm_BP_md_BL_out_exp
+        ARQ_dose_mamm_BP_lg_exp=trex2_obj.ARQ_dose_mamm_BP_lg_BL_out_exp
+        CRQ_dose_mamm_BP_lg_exp=trex2_obj.CRQ_dose_mamm_BP_lg_BL_out_exp
+        
+        ARQ_dose_mamm_FP_sm_exp=trex2_obj.ARQ_dose_mamm_FP_sm_BL_out_exp
+        CRQ_dose_mamm_FP_sm_exp=trex2_obj.CRQ_dose_mamm_FP_sm_BL_out_exp
+        ARQ_dose_mamm_FP_md_exp=trex2_obj.ARQ_dose_mamm_FP_md_BL_out_exp
+        CRQ_dose_mamm_FP_md_exp=trex2_obj.CRQ_dose_mamm_FP_md_BL_out_exp
+        ARQ_dose_mamm_FP_lg_exp=trex2_obj.ARQ_dose_mamm_FP_lg_BL_out_exp
+        CRQ_dose_mamm_FP_lg_exp=trex2_obj.CRQ_dose_mamm_FP_lg_BL_out_exp
+        
+        ARQ_dose_mamm_AR_sm_exp=trex2_obj.ARQ_dose_mamm_AR_sm_BL_out_exp
+        CRQ_dose_mamm_AR_sm_exp=trex2_obj.CRQ_dose_mamm_AR_sm_BL_out_exp
+        ARQ_dose_mamm_AR_md_exp=trex2_obj.ARQ_dose_mamm_AR_md_BL_out_exp
+        CRQ_dose_mamm_AR_md_exp=trex2_obj.CRQ_dose_mamm_AR_md_BL_out_exp
+        ARQ_dose_mamm_AR_lg_exp=trex2_obj.ARQ_dose_mamm_AR_lg_BL_out_exp
+        CRQ_dose_mamm_AR_lg_exp=trex2_obj.CRQ_dose_mamm_AR_lg_BL_out_exp
+        
+        ARQ_dose_mamm_SE_sm_exp=trex2_obj.ARQ_dose_mamm_SE_sm_BL_out_exp
+        CRQ_dose_mamm_SE_sm_exp=trex2_obj.CRQ_dose_mamm_SE_sm_BL_out_exp
+        ARQ_dose_mamm_SE_md_exp=trex2_obj.ARQ_dose_mamm_SE_md_BL_out_exp
+        CRQ_dose_mamm_SE_md_exp=trex2_obj.CRQ_dose_mamm_SE_md_BL_out_exp
+        ARQ_dose_mamm_SE_lg_exp=trex2_obj.ARQ_dose_mamm_SE_lg_BL_out_exp
+        CRQ_dose_mamm_SE_lg_exp=trex2_obj.CRQ_dose_mamm_SE_lg_BL_out_exp
+
+        t10data_qaqc = gett10data_qaqc(ARQ_dose_mamm_SG_sm,CRQ_dose_mamm_SG_sm,ARQ_dose_mamm_SG_md,CRQ_dose_mamm_SG_md,ARQ_dose_mamm_SG_lg,CRQ_dose_mamm_SG_lg,ARQ_dose_mamm_TG_sm,CRQ_dose_mamm_TG_sm,ARQ_dose_mamm_TG_md,CRQ_dose_mamm_TG_md,ARQ_dose_mamm_TG_lg,CRQ_dose_mamm_TG_lg,ARQ_dose_mamm_BP_sm,CRQ_dose_mamm_BP_sm,ARQ_dose_mamm_BP_md,CRQ_dose_mamm_BP_md,ARQ_dose_mamm_BP_lg,CRQ_dose_mamm_BP_lg,ARQ_dose_mamm_FP_sm,CRQ_dose_mamm_FP_sm,ARQ_dose_mamm_FP_md,CRQ_dose_mamm_FP_md,ARQ_dose_mamm_FP_lg,CRQ_dose_mamm_FP_lg,ARQ_dose_mamm_AR_sm,CRQ_dose_mamm_AR_sm,ARQ_dose_mamm_AR_md,CRQ_dose_mamm_AR_md,ARQ_dose_mamm_AR_lg,CRQ_dose_mamm_AR_lg,ARQ_dose_mamm_SE_sm,CRQ_dose_mamm_SE_sm,ARQ_dose_mamm_SE_md,CRQ_dose_mamm_SE_md,ARQ_dose_mamm_SE_lg,CRQ_dose_mamm_SE_lg,
+                                       ARQ_dose_mamm_SG_sm_exp, CRQ_dose_mamm_SG_sm_exp, ARQ_dose_mamm_SG_md_exp, CRQ_dose_mamm_SG_md_exp, ARQ_dose_mamm_SG_lg_exp, CRQ_dose_mamm_SG_lg_exp, ARQ_dose_mamm_TG_sm_exp, CRQ_dose_mamm_TG_sm_exp, ARQ_dose_mamm_TG_md_exp, CRQ_dose_mamm_TG_md_exp, ARQ_dose_mamm_TG_lg_exp, CRQ_dose_mamm_TG_lg_exp, ARQ_dose_mamm_BP_sm_exp, CRQ_dose_mamm_BP_sm_exp, ARQ_dose_mamm_BP_md_exp, CRQ_dose_mamm_BP_md_exp, ARQ_dose_mamm_BP_lg_exp, CRQ_dose_mamm_BP_lg_exp, ARQ_dose_mamm_FP_sm_exp, CRQ_dose_mamm_FP_sm_exp, ARQ_dose_mamm_FP_md_exp, CRQ_dose_mamm_FP_md_exp, ARQ_dose_mamm_FP_lg_exp, CRQ_dose_mamm_FP_lg_exp, ARQ_dose_mamm_AR_sm_exp, CRQ_dose_mamm_AR_sm_exp, ARQ_dose_mamm_AR_md_exp, CRQ_dose_mamm_AR_md_exp, ARQ_dose_mamm_AR_lg_exp, CRQ_dose_mamm_AR_lg_exp, ARQ_dose_mamm_SE_sm_exp, CRQ_dose_mamm_SE_sm_exp, ARQ_dose_mamm_SE_md_exp, CRQ_dose_mamm_SE_md_exp, ARQ_dose_mamm_SE_lg_exp, CRQ_dose_mamm_SE_lg_exp)
+        t10rows_qaqc = gethtmlrowsfromcols(t10data_qaqc, pv10headings_qaqc)       
+        html = html + tmpl_10_qaqc.render(Context(dict(data=t10rows_qaqc)))
+        html = html + """
+                </div>
+        """
+        return html
+
+def table_11_qaqc(trex2_obj):
+        #pre-table 11_qaqc
+        html = """
+            <H4 class="out_ collapsible" id="section12"><span></span>Mammalian Dietary Based RQs</H4>
+                <div class="out_ container_output">
+        """
+        #table 11_qaqc
+        ARQ_diet_mamm_SG=trex2_obj.ARQ_diet_mamm_SG
+        CRQ_diet_mamm_SG=trex2_obj.CRQ_diet_mamm_SG
+        ARQ_diet_mamm_TG=trex2_obj.ARQ_diet_mamm_TG
+        CRQ_diet_mamm_TG=trex2_obj.CRQ_diet_mamm_TG
+        ARQ_diet_mamm_BP=trex2_obj.ARQ_diet_mamm_BP
+        CRQ_diet_mamm_BP=trex2_obj.CRQ_diet_mamm_BP
+        ARQ_diet_mamm_FP=trex2_obj.ARQ_diet_mamm_FP
+        CRQ_diet_mamm_FP=trex2_obj.CRQ_diet_mamm_FP
+        ARQ_diet_mamm_AR=trex2_obj.ARQ_diet_mamm_AR
+        CRQ_diet_mamm_AR=trex2_obj.CRQ_diet_mamm_AR
+
+        ARQ_diet_mamm_SG_exp=trex2_obj.ARQ_diet_mamm_SG_BL_out_exp
+        CRQ_diet_mamm_SG_exp=trex2_obj.CRQ_diet_mamm_SG_BL_out_exp
+        ARQ_diet_mamm_TG_exp=trex2_obj.ARQ_diet_mamm_TG_BL_out_exp
+        CRQ_diet_mamm_TG_exp=trex2_obj.CRQ_diet_mamm_TG_BL_out_exp
+        ARQ_diet_mamm_BP_exp=trex2_obj.ARQ_diet_mamm_BP_BL_out_exp
+        CRQ_diet_mamm_BP_exp=trex2_obj.CRQ_diet_mamm_BP_BL_out_exp
+        ARQ_diet_mamm_FP_exp=trex2_obj.ARQ_diet_mamm_FP_BL_out_exp
+        CRQ_diet_mamm_FP_exp=trex2_obj.CRQ_diet_mamm_FP_BL_out_exp
+        ARQ_diet_mamm_AR_exp=trex2_obj.ARQ_diet_mamm_AR_BL_out_exp
+        CRQ_diet_mamm_AR_exp=trex2_obj.CRQ_diet_mamm_AR_BL_out_exp
+
+        t11data_qaqc = gett11data_na_qaqc(ARQ_diet_mamm_SG,CRQ_diet_mamm_SG,ARQ_diet_mamm_TG,CRQ_diet_mamm_TG,ARQ_diet_mamm_BP,CRQ_diet_mamm_BP,ARQ_diet_mamm_FP,CRQ_diet_mamm_FP,ARQ_diet_mamm_AR,CRQ_diet_mamm_AR,
+                                          ARQ_diet_mamm_SG_exp,CRQ_diet_mamm_SG_exp,ARQ_diet_mamm_TG_exp,CRQ_diet_mamm_TG_exp,ARQ_diet_mamm_BP_exp,CRQ_diet_mamm_BP_exp,ARQ_diet_mamm_FP_exp,CRQ_diet_mamm_FP_exp,ARQ_diet_mamm_AR_exp,CRQ_diet_mamm_AR_exp)
+        t11rows_qaqc = gethtmlrowsfromcols(t11data_qaqc, pv8headings_qaqc)       
+        html = html + tmpl.render(Context(dict(data=t11rows_qaqc, headings=pv8headings_qaqc)))
+        html = html + """
+                </div>
+        """
+        return html
+
+def table_15_qaqc(trex2_obj):
+        #pre-table 15_qaqc
+        html = """
+            <H4 class="out_ collapsible" id="section13"><span></span>LD<sub>50</sub> ft<sup>-2</sup></H4>
+                <div class="out_ container_output">
+        """
+        #table 15_qaqc
+        LD50_bl_bird_sm=trex2_obj.LD50_bl_bird_sm
+        LD50_bl_mamm_sm=trex2_obj.LD50_bl_mamm_sm
+        LD50_bl_bird_md=trex2_obj.LD50_bl_bird_md
+        LD50_bl_mamm_md=trex2_obj.LD50_bl_mamm_md
+        LD50_bl_bird_lg=trex2_obj.LD50_bl_bird_lg
+        LD50_bl_mamm_lg=trex2_obj.LD50_bl_mamm_lg
+
+        LD50_bl_bird_sm_exp=trex2_obj.LD50_bl_bird_sm
+        LD50_bl_mamm_sm_exp=trex2_obj.LD50_bl_mamm_sm
+        LD50_bl_bird_md_exp=trex2_obj.LD50_bl_bird_md
+        LD50_bl_mamm_md_exp=trex2_obj.LD50_bl_mamm_md
+        LD50_bl_bird_lg_exp=trex2_obj.LD50_bl_bird_lg
+        LD50_bl_mamm_lg_exp=trex2_obj.LD50_bl_mamm_lg
+
+        t15data_qaqc = gett12data_qaqc(LD50_bl_bird_sm,LD50_bl_mamm_sm,LD50_bl_bird_md,LD50_bl_mamm_md,LD50_bl_bird_lg,LD50_bl_mamm_lg,
+                                       LD50_bl_bird_sm_exp,LD50_bl_mamm_sm_exp,LD50_bl_bird_md_exp,LD50_bl_mamm_md_exp,LD50_bl_bird_lg_exp,LD50_bl_mamm_lg_exp)
+        t15rows_qaqc = gethtmlrowsfromcols(t15data_qaqc, pv12headings_qaqc)       
+        html = html + tmpl.render(Context(dict(data=t15rows_qaqc, headings=pv12headings_qaqc)))
+        html = html + """
+                </div>
+        </div>
+        """
+        return html

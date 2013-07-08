@@ -15,11 +15,17 @@ def batchLoadPesticidePropertiesConfigs(params_matrix,config_index,ubertool_conf
     if "pesticide_properties_config_name" in params_matrix:
         config_name = params_matrix.get("pesticide_properties_config_name")[config_index]
     if "chemical_name" in params_matrix:
-        config_params['chemical_name'] = params_matrix.get("chemical_name")[config_index]  
+        config_params['chemical_name'] = params_matrix.get("chemical_name")[config_index] 
+    if "Formulated_product_name" in params_matrix:
+        config_params['Formulated_product_name'] = params_matrix.get("Formulated_product_name")[config_index]
+    if "seed_treatment_formulation_name" in params_matrix:
+        config_params['seed_treatment_formulation_name'] = params_matrix.get("seed_treatment_formulation_name")[config_index]     
     if "label_epa_reg_no" in params_matrix:
         config_params['label_epa_reg_no'] = params_matrix.get("label_epa_reg_no")[config_index]  
     if "molecular_weight" in params_matrix:
-        config_params['molecular_weight'] = params_matrix.get("molecular_weight")[config_index]            
+        config_params['molecular_weight'] = params_matrix.get("molecular_weight")[config_index]   
+    if "percent_ai" in params_matrix:
+        config_params['percent_ai'] = params_matrix.get("percent_ai")[config_index]                         
     if "henrys_law_constant" in params_matrix:
         config_params['henrys_law_constant'] = params_matrix.get("henrys_law_constant")[config_index]            
     if "vapor_pressure" in params_matrix:
@@ -50,7 +56,8 @@ def batchLoadPesticidePropertiesConfigs(params_matrix,config_index,ubertool_conf
         config_params['foliar_decay_rate'] = params_matrix.get("foliar_decay_rate")[config_index]            
     if "foliar_dissipation_half_life" in params_matrix:
         config_params['foliar_dissipation_half_life'] = params_matrix.get("foliar_dissipation_half_life")[config_index]
-
+    if "density_of_product" in params_matrix:
+        config_params['density_of_product'] = params_matrix.get("density_of_product")[config_index]            
     config_params['pest_configuration'] = config_name
     ubertool_configuration_properties.update(config_params)
     config_params['config_name'] = config_name

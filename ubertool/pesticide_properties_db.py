@@ -17,8 +17,11 @@ class PPInp(forms.Form):
     user_pest_configuration = forms.ChoiceField(label="User Saved Pesticide Properties Configuration",required=True)
     config_name = forms.CharField(label="Pesticide Properties Configuration Name", initial="pesticide-properties-config-%s"%datetime.datetime.now())
     chemical_name = forms.CharField(label="Chemical Name")
+    Formulated_product_name = forms.CharField(label="Formulated product name")
+    seed_treatment_formulation_name = forms.CharField(label="seed_treatment_formulation_name")
     label_epa_reg_no = forms.CharField(label="Label EPA Reg. No.")
     molecular_weight = forms.FloatField(label='Molecular weight (g/mol)')
+    percent_ai = forms.FloatField(label='% Active Ingredient')
     henrys_law_constant = forms.FloatField(label="Henry's Law Constant (atm-m^3/mol)")
     vapor_pressure = forms.FloatField(label='Vapor Pressure (torr)')
     solubility = forms.FloatField(label='Solubility(mg/L)')
@@ -34,4 +37,6 @@ class PPInp(forms.Form):
     foliar_extraction = forms.FloatField(label='Foliar extraction, default=0.5 (cm^-1)')
     foliar_decay_rate = forms.FloatField(label='Foliar Decay Rate (day^-1)')
     foliar_dissipation_half_life = forms.FloatField(label='Foliar Dissipation Half-life (days)')
+    density_of_product = forms.FloatField(label='Density of product (lbs/gal)')
+
     

@@ -28,8 +28,11 @@ class UbertoolPesticidePropertiesConfigurationPage(webapp.RequestHandler):
             pestProps.user = user
         pestProps.config_name = config_name
         pestProps.chemical_name = float(form.getvalue('chemical_name'))
+        pestProps.Formulated_product_name = float(form.getvalue('Formulated_product_name'))
+        pestProps.seed_treatment_formulation_name = float(form.getvalue('seed_treatment_formulation_name'))
         pestProps.label_epa_reg_no = float(form.getvalue('label_epa_reg_no'))
         pestProps.molecular_weight = float(form.getvalue('molecular_weight'))
+        pestProps.percent_ai = float(form.getvalue('percent_ai'))
         pestProps.henrys_law_constant = float(form.getvalue('henrys_law_constant'))
         pestProps.vapor_pressure = float(form.getvalue('vapor_pressure'))                
         pestProps.solubility = float(form.getvalue('solubility'))
@@ -44,7 +47,8 @@ class UbertoolPesticidePropertiesConfigurationPage(webapp.RequestHandler):
         pestProps.hydrolysis_ph9 = float(form.getvalue('hydrolysis_ph9'))                
         pestProps.foliar_extraction = float(form.getvalue('foliar_extraction'))
         pestProps.foliar_decay_rate = float(form.getvalue('foliar_decay_rate'))                
-        pestProps.foliar_dissipation_half_life = float(form.getvalue('foliar_dissipation_half_life'))             
+        pestProps.foliar_dissipation_half_life = float(form.getvalue('foliar_dissipation_half_life'))  
+        exposure.density_of_product = float(form.getvalue('density_of_product'))   
         pestProps.put()
         q = db.Query(PesticideProperties)
         for new_use in q:

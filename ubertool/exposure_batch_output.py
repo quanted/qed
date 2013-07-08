@@ -18,8 +18,6 @@ def batchLoadExposureConcentrationsConfigs(params_matrix,config_index,ubertool_c
         config_params['cas_number'] = params_matrix.get("cas_number")[config_index]            
     if "formulated_product_name" in params_matrix:
         config_params['formulated_product_name'] = params_matrix.get("formulated_product_name")[config_index]            
-    if "percent_ai" in params_matrix:
-        config_params['percent_ai'] = params_matrix.get("percent_ai")[config_index]            
     if "met_file" in params_matrix:
         config_params['met_file'] = params_matrix.get("met_file")[config_index]  
     if "przm_scenario" in params_matrix:
@@ -44,10 +42,6 @@ def batchLoadExposureConcentrationsConfigs(params_matrix,config_index,ubertool_c
         config_params['application_kg_rate'] = params_matrix.get("application_kg_rate")[config_index]              
     if "application_lbs_rate" in params_matrix:
         config_params['application_lbs_rate'] = params_matrix.get("application_lbs_rate")[config_index]
-    if "seed_treatment_formulation_name" in params_matrix:
-        config_params['seed_treatment_formulation_name'] = params_matrix.get("seed_treatment_formulation_name")[config_index]            
-    if "density_of_product" in params_matrix:
-        config_params['density_of_product'] = params_matrix.get("density_of_product")[config_index]            
     if "maximum_seedling_rate_per_use" in params_matrix:
         config_params['maximum_seedling_rate_per_use'] = params_matrix.get("maximum_seedling_rate_per_use")[config_index]            
     if "application_rate_per_use" in params_matrix:

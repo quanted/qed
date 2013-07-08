@@ -31,7 +31,6 @@ class UbertoolExposureConfigurationPage(webapp.RequestHandler):
         exposure.config_name = config_name
         exposure.cas_number = str(form.getvalue('cas_number'))
         exposure.formulated_product_name = form.getvalue('formulated_product_name')
-        exposure.percent_ai = float(form.getvalue('percent_ai'))
         exposure.met_file = form.getvalue('metfile')
         exposure.przm_scenario = form.getvalue('PRZM_scenario')
         exposure.exams_environment_file = form.getvalue('EXAMS_environment_file')
@@ -44,8 +43,6 @@ class UbertoolExposureConfigurationPage(webapp.RequestHandler):
         exposure.percent_incorporated = float(form.getvalue('percent_incorporated'))
         exposure.application_kg_rate = float(form.getvalue('application_kg_rate'))
         exposure.application_lbs_rate = float(form.getvalue('application_lbs_rate'))
-        exposure.seed_treatment_formulation_name = form.getvalue('seed_treatment_formulation_name')
-        exposure.density_of_product = float(form.getvalue('density_of_product'))
         exposure.maximum_seedling_rate_per_use = float(form.getvalue('maximum_seedling_rate_per_use'))
         exposure.application_rate_per_use = float(form.getvalue('application_rate_per_use'))
         logger.info(form.getvalue("application_date"))

@@ -1233,12 +1233,3 @@ def table_10_qaqc(therps_obj):
         """
         return html
 
-def timestamp():
-    ts = time.time()
-    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S %p')
-    html="""
-    <H3 class="out_">THERPS Version 1.0 <br>
-    """
-    html = html + st
-    html = html + " (UTC)</H3>"
-    return html

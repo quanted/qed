@@ -989,12 +989,11 @@ def timestamp():
     st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
     html="""
     <div class="out_">
-    <b>T-Rex <a href="http://www.epa.gov/oppefed1/models/terrestrial/trex/t_rex_user_guide.htm">Version 1.5</a> (Beta)<br>
+    <b>T-Rex <a href="http://www.epa.gov/oppefed1/models/terrestrial/trex/t_rex_user_guide.htm">Version 1.5.2</a> (Beta)<br>
     """
     html = html + st
     html = html + " (UTC)</b>"
     return html
-
 
 def table_all_qaqc(trex2_obj):
     table1_out=table_1(trex2_obj)
@@ -1718,17 +1717,6 @@ def table_15(trex2_obj):
         return {'html':html, 'LD50_bl_bird_sm':LD50_bl_bird_sm, 'LD50_bl_mamm_sm':LD50_bl_mamm_sm,
                              'LD50_bl_bird_md':LD50_bl_bird_md, 'LD50_bl_mamm_md':LD50_bl_mamm_md,
                              'LD50_bl_bird_lg':LD50_bl_bird_lg, 'LD50_bl_mamm_lg':LD50_bl_mamm_lg}
-
-def timestamp():
-    ts = time.time()
-    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S %p')
-    html="""
-    <H3 class="out_">T-REX Version 1.5.2 <br>
-    """
-    html = html + st
-    html = html + " (UTC)</H3>"
-    return html
-
 
 def table_5_qaqc(trex2_obj):
         #pre-table 5_qaqc

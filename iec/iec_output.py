@@ -25,7 +25,7 @@ class IecOutputPage(webapp.RequestHandler):
         LC50 = float(form.getvalue('LC50'))
         threshold = float(form.getvalue('threshold'))
         dose_response = float(form.getvalue('dose_response'))
-        iec_obj = iec_model.iec(dose_response, LC50, threshold)
+        iec_obj = iec_model.iec(True,True,dose_response, LC50, threshold)
         text_file = open('iec/iec_description.txt','r')
         x1 = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'

@@ -24,6 +24,7 @@ class TRexOutputPage(webapp.RequestHandler):
         a_i = float(a_i)/100
         Application_type = form.getvalue('Application_type')
         seed_crop = float(form.getvalue('seed_crop'))
+        seed_crop_v = form.getvalue('seed_crop_v')
         p_i = form.getvalue('percent_incorporated')
         p_i = float(p_i)/100
         seed_treatment_formulation_name = form.getvalue('seed_treatment_formulation_name')
@@ -36,55 +37,51 @@ class TRexOutputPage(webapp.RequestHandler):
         b_w = form.getvalue('bandwidth')   #convert to ft
         b_w = float(b_w)/12
 
-
-
         if Application_type=='Seed Treatment':
-           a_r_p=seed_crop       #coefficient used to estimate initial conc.
            n_a = 1
-           rate_out = []
-           day_out = []
-           rate_out.append(float(form.getvalue('rate_seed')))
-           day_out.append(float(form.getvalue('day_seed')))
-
         else:
-           a_r_p=0
            n_a = float(form.getvalue('noa'))
-           rate_out = []
-           day_out = []
-           for i in range(int(n_a)):
-               j=i+1
-               rate_temp = form.getvalue('rate'+str(j))
-               rate_out.append(float(rate_temp))
-               day_temp = float(form.getvalue('day'+str(j)))
-               day_out.append(day_temp)  
+        
+        rate_out = []
+        day_out = []
+        for i in range(int(n_a)):
+           j=i+1
+           rate_temp = form.getvalue('rate'+str(j))
+           rate_out.append(float(rate_temp))
+           day_temp = float(form.getvalue('day'+str(j)))
+           day_out.append(day_temp)  
 
         h_l = form.getvalue('Foliar_dissipation_half_life')
         ld50_bird = form.getvalue('avian_ld50')
         lc50_bird = form.getvalue('avian_lc50')
-        NOAEC_bird = form.getvalue('avian_NOAEC')
-        NOAEC_bird = float(NOAEC_bird)
-        NOAEL_bird = form.getvalue('avian_NOAEL')
-        NOAEL_bird = float(NOAEL_bird)
-        
-        Species_of_the_tested_bird = form.getvalue('Species_of_the_tested_bird')
+        NOAEC_bird = float(form.getvalue('avian_NOAEC'))
+        try:
+            NOAEL_bird = float(form.getvalue('avian_NOAEL'))
+        except:
+            NOAEL_bird = 'N/A'
         aw_bird_sm = form.getvalue('body_weight_of_the_assessed_bird_small')
         aw_bird_sm = float(aw_bird_sm)  
         aw_bird_md = form.getvalue('body_weight_of_the_assessed_bird_medium')
         aw_bird_md = float(aw_bird_md) 
         aw_bird_lg = form.getvalue('body_weight_of_the_assessed_bird_large')
         aw_bird_lg = float(aw_bird_lg)       
-        if Species_of_the_tested_bird == 'Bobwhite quail':
-            tw_bird = form.getvalue('bw_quail')
-        elif  Species_of_the_tested_bird == 'Mallard duck':
-            tw_bird = form.getvalue('bw_duck')  
-        else:
-            tw_bird = form.getvalue('bwb_other')      
+        
+        Species_of_the_tested_bird_avian_ld50 = form.getvalue('Species_of_the_tested_bird_avian_ld50')
+        Species_of_the_tested_bird_avian_lc50 = form.getvalue('Species_of_the_tested_bird_avian_lc50')
+        Species_of_the_tested_bird_avian_NOAEC = form.getvalue('Species_of_the_tested_bird_avian_NOAEC')
+        Species_of_the_tested_bird_avian_NOAEL = form.getvalue('Species_of_the_tested_bird_avian_NOAEL')
 
-        tw_bird = float(tw_bird)        
+        tw_bird_ld50 = float(form.getvalue('bw_avian_ld50'))
+        tw_bird_lc50 = float(form.getvalue('bw_avian_lc50'))
+        tw_bird_NOAEC = float(form.getvalue('bw_avian_NOAEC'))
+        tw_bird_NOAEL = float(form.getvalue('bw_avian_NOAEL'))
+
         x = form.getvalue('mineau_scaling_factor')
         ld50_mamm = form.getvalue('mammalian_ld50')
-        lc50_mamm = form.getvalue('mammalian_lc50')
-        lc50_mamm=float(lc50_mamm)        
+        try:
+            lc50_mamm = float(form.getvalue('mammalian_lc50'))
+        except:
+            lc50_mamm = 'N/A'
         NOAEC_mamm = form.getvalue('mammalian_NOAEC')
         NOAEC_mamm = float(NOAEC_mamm)
         NOAEL_mamm = form.getvalue('mammalian_NOAEL')
@@ -106,11 +103,12 @@ class TRexOutputPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                               
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'trex2', 
-                'model_attributes':'T-Rex Output'})
+                'model_attributes':'T-Rex 1.5.2 Output'})
 
-        trex_obj = trex2_model.trex2(chem_name, use, formu_name, a_i, Application_type, r_s, b_w, a_r_p, p_i, den, h_l, n_a, rate_out, day_out,
-                      ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, aw_bird_md, aw_bird_lg, Species_of_the_tested_bird, 
-                      tw_bird, x, ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, aw_mamm_lg, tw_mamm,
+        trex_obj = trex2_model.trex2(chem_name, use, formu_name, a_i, Application_type, seed_treatment_formulation_name, seed_crop, seed_crop_v, r_s, b_w, p_i, den, h_l, n_a, rate_out, day_out,
+                      ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, aw_bird_md, aw_bird_lg, 
+                      Species_of_the_tested_bird_avian_ld50, Species_of_the_tested_bird_avian_lc50, Species_of_the_tested_bird_avian_NOAEC, Species_of_the_tested_bird_avian_NOAEL,
+                      tw_bird_ld50, tw_bird_lc50, tw_bird_NOAEC, tw_bird_NOAEL, x, ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, aw_mamm_lg, tw_mamm,
                       m_s_r_p)
 
         html = html + trex2_tables.table_all(trex_obj)[0]

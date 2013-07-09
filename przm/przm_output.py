@@ -314,6 +314,10 @@ class PRZMOutputPage(webapp.RequestHandler):
         DD=es_date(NOA, Scenarios, Apt, DayRe, Date_inp)[1]
         YY='61'
         
+        if Unit=='2':
+            Ar=[1.12*kk for kk in Ar]
+        else:
+            Ar=Ar
         Ar_text=['%.4f' %i for i in Ar]
         
         CAM_f_f = [float(i) for i in CAM_f]
@@ -338,16 +342,15 @@ class PRZMOutputPage(webapp.RequestHandler):
         EFF_p_j=json.dumps(EFF_p)
         Drft_p_j=json.dumps(Drft_p)                                                                   
         DEPI_p_j=json.dumps(DEPI_p)
-            
+        
         x_precip=[float(i) for i in final_res[2][1]]
         x_runoff=[float(i) for i in final_res[2][2]]
         x_et=[float(i) for i in final_res[2][3]]
         x_irr=[float(i) for i in final_res[2][4]]
         x_leachate=[float(i) for i in final_res[2][5]]
-
         x_pre_irr=[i+j for i,j in zip(x_precip,x_irr)]
         x_leachate=[i/100000 for i in x_leachate]
-      
+
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'przm','page':'output'})
@@ -426,7 +429,7 @@ class PRZMOutputPage(webapp.RequestHandler):
                             <td id="x_runoff">runoff</td>
                             <td id="x_runoff_val">%s</td>
                           </tr>                          
-                          </table>""" %(final_res[2][0],x_pre_irr,x_leachate,x_et,x_runoff)
+                          </table>""" %(final_res[2][0], x_pre_irr, x_leachate, x_et, x_runoff)
                           
         html = html + template.render(templatepath + 'przm-output.html', {})
         html = html + template.render(templatepath + 'przm-output-jqplot.html', {})

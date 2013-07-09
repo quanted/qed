@@ -1,0 +1,13 @@
+<script>
+$(document).ready(function() {
+        
+        $('#id_aviandermaltype').change(function() { 
+            if ($(this).val() == "With DTI"){
+                $('#id_mam_acute_oral_ld50').closest('tr').show(); 
+                }
+            else{
+                $('#id_mam_acute_oral_ld50').closest('tr').hide(); 
+                }
+    });    
+});
+ </script>

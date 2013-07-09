@@ -39,12 +39,15 @@ class DUSTExecutePage(webapp.RequestHandler):
         test_bird_bw = form.getvalue('tested_bird_body_weight')
         mamm_acute_derm_study = form.getvalue('mamm_acute_derm_study')
         mamm_study_add_comm = form.getvalue('mamm_study_add_comm')
+        aviandermaltype = form.getvalue('aviandermaltype')
         mam_acute_derm_ld50 = form.getvalue('mamm_acute_derm_ld50')
+        mam_acute_oral_ld50 = form.getvalue('mam_acute_oral_ld50')
         test_mam_bw = form.getvalue('tested_mamm_body_weight')
-        mineau = form.getvalue('mineau')
-        dust_obj = dust_model.dust(chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res, bird_acute_oral_study, bird_study_add_comm,
-              low_bird_acute_ld50, test_bird_bw, mineau, mamm_acute_derm_study, mamm_study_add_comm, mam_acute_derm_ld50, test_mam_bw)
-        
+        mineau_scaling_factor = float(form.getvalue('mineau_scaling_factor'))
+        dust_obj = dust_model.dust(True, False, chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res, bird_acute_oral_study, bird_study_add_comm,
+              low_bird_acute_ld50, test_bird_bw, mineau_scaling_factor, mamm_acute_derm_study, mamm_study_add_comm, aviandermaltype, mam_acute_derm_ld50, mam_acute_oral_ld50, test_mam_bw, None)
+        print vars(dust_obj)
+
         # client = pymongo.MongoClient()
         # # print client
 

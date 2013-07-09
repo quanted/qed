@@ -20,7 +20,7 @@ class TRexAlgorithmPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '03ubertext_links_left.html', {})                      
         html = html + template.render(templatepath + '04uberalgorithm_start.html', {
                 'model':'trex', 
-                'model_attributes':'TREX 1.5.1 Algorithms', 
+                'model_attributes':'TREX 1.5.2 Algorithms', 
                 'text_paragraph':x})
 #        html = html + template.render(templatepath + 'trex_algorithm.html', {}) 
 #        html = html + '<iframe src="http://docs.google.com/gview?url=https://s3.amazonaws.com/przm/11.pdf&embedded=true" style="width:700px; height:900px;" frameborder="0"></iframe>'

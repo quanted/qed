@@ -1,0 +1,2 @@
+
+<p>The purpose of this model is provide an estimate of exposure of surface water through using pesticides on rice paddies. This model is intended for use in problem formulation to determine whether or not surface water concentrations may pose a risk to aquatic life and human health.</p>

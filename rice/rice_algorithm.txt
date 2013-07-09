@@ -1,0 +1,10 @@
+<p>The formula of the Tier I Rice Model v1.0:</p>
+<img src = "/images/latex/rice/rice.eqn1.gif">
+<p>The Tier I Rice Conceptual Model:</p>
+<img src = "/images/latex/rice/rice.eqn2.gif">
+<p>It is more customary to describe a rice paddy in terms of depth rather than volume or mass. Therefore, the following equations are defined:</p>
+<img src = "/images/latex/rice/rice.eqn3.gif">
+<p>Further, the input mass per unit area as:</p>
+<img src = "/images/latex/rice/rice.eqn4.gif">
+<p>After substititution, the conceptual model with commonly understood parameters is the following:</p>
+<img src = "/images/latex/rice/rice.eqn5.gif">

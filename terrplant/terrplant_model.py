@@ -15,13 +15,13 @@ def fromJSON(json_string):
 
 class terrplant(object):
 
-    def __init__(self,set_variables=True,run_methods=True,A=1,I=1,R=1,D=1,nms=1,lms=1,nds=1,lds=1,vars_dict=None,):
+    def __init__(self,set_variables=True,run_methods=True,A=1,I=1,R=1,D=1,nms=1,lms=1,nds=1,lds=1,chemical_name='',pc_code='',use='',application_method='',application_form='',sol=1,vars_dict=None,):
         self.set_default_variables()
         if set_variables:
             if vars_dict != None:
                 self.__dict__.update(vars_dict)
             else:
-                self.set_variables(A,I,R,D,nms,lms,nds,lds)
+                self.set_variables(A,I,R,D,nms,lms,nds,lds,chemical_name,pc_code,use,application_method,application_form,sol)
             if run_methods:
                 self.run_methods()
 
@@ -42,7 +42,7 @@ class terrplant(object):
         self.use = ''
         self.application_method = ''
         self.application_form = ''
-        self.solubility = 1
+        self.sol = 1
         self.nmv = 1
         self.ndv = 1
         self.lmv = 1
@@ -126,7 +126,7 @@ class terrplant(object):
         string_rep = string_rep + "ldsRQspray_results = %.2e \n" % self.ldsRQspray_results
         return string_rep
 
-    def set_variables(self,A,I,R,D,nms,lms,nds,lds):
+    def set_variables(self,A,I,R,D,nms,lms,nds,lds,chemical_name,pc_code,use,application_method,application_form,sol):
         self.A = A
         self.I = I
         self.R = R
@@ -135,6 +135,12 @@ class terrplant(object):
         self.lms = lms
         self.nds = nds
         self.lds = lds
+        self.chemical_name = chemical_name
+        self.pc_code = pc_code
+        self.use = use
+        self.application_method = application_method
+        self.application_form = application_form
+        self.sol = sol
 
     def run_methods(self):
         try:
@@ -258,7 +264,7 @@ class terrplant(object):
                 if self.rundry_results == None or self.spray_results == None:
                     raise ValueError\
                     ('Either the rundry or spray variables equals None and therefor this function cannot be run.')
-                self.totaldry_results = self.rundry_results * self.spray_results
+                self.totaldry_results = self.rundry_results + self.spray_results
             except ZeroDivisionError:
                 raise ZeroDivisionError\
                 ('The incorporation must be non-zero.')
@@ -276,7 +282,7 @@ class terrplant(object):
                 if self.runsemi_results == None or self.spray_results == None:
                     raise ValueError\
                     ('Either the runsemi or spray variables equals None and therefor this function cannot be run.')
-                self.totalsemi_results = self.runsemi_results * self.spray_results
+                self.totalsemi_results = self.runsemi_results + self.spray_results
             except ZeroDivisionError:
                 raise ZeroDivisionError\
                 ('The incorporation must be non-zero.')

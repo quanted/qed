@@ -1007,7 +1007,7 @@ def table_all_qaqc(trex2_obj):
 
     return html_all
 
-def table_sum_1(i, a_i, r_s, b_w, p_i, den, Foliar_dissipation_half_life, n_a, rate_out):
+def table_sum_1(i, a_i, r_s, b_w, p_i, den, Foliar_dissipation_half_life, n_a, ar_lb):
         #pre-table sum_input_1
         html = """
             <div class="out_1">
@@ -1018,7 +1018,7 @@ def table_sum_1(i, a_i, r_s, b_w, p_i, den, Foliar_dissipation_half_life, n_a, r
         """%(i-1)
 
         rate_out_t=[]
-        for jj in rate_out:
+        for jj in ar_lb:
             rate_out_t.append(numpy.mean(jj))
         
         #table sum_input_1
@@ -1260,7 +1260,7 @@ def table_2(trex2_obj):
         #table 2
         t2data_all=[]
         for i in range(int(trex2_obj.n_a)):
-            rate_temp=trex2_obj.rate_out[i]
+            rate_temp=trex2_obj.ar_lb[i]
             day_temp=trex2_obj.day_out[i]
             t2data_temp=gett2data(i+1, rate_temp, day_temp)
             t2data_all.append(t2data_temp)

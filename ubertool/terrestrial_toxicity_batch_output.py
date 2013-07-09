@@ -22,6 +22,8 @@ def batchLoadTerrestrialToxicityConfigs(params_matrix,config_index,ubertool_conf
         config_params['mamm_study_add_comm'] = params_matrix.get("mamm_study_add_comm")[config_index]    
     if "avian_ld50" in params_matrix:
         config_params['avian_ld50'] = params_matrix.get("avian_ld50")[config_index]  
+    if "Species_of_the_tested_bird" in params_matrix:
+        config_params['Species_of_the_tested_bird'] = params_matrix.get("Species_of_the_tested_bird")[config_index]      
     if "mamm_acute_derm_ld50" in params_matrix:
         config_params['mamm_acute_derm_ld50'] = params_matrix.get("mamm_acute_derm_ld50")[config_index] 
     if "mamm_acute_derm_study" in params_matrix:
@@ -38,8 +40,26 @@ def batchLoadTerrestrialToxicityConfigs(params_matrix,config_index,ubertool_conf
         config_params['tested_bird_body_weight'] = params_matrix.get("tested_bird_body_weight")[config_index]
     if "tested_mamm_body_weight" in params_matrix:
         config_params['tested_mamm_body_weight'] = params_matrix.get("tested_mamm_body_weight")[config_index]        
+    if "bw_quail" in params_matrix:
+        config_params['bw_quail'] = params_matrix.get("bw_quail")[config_index]
+    if "bw_duck" in params_matrix:
+        config_params['bw_duck'] = params_matrix.get("bw_duck")[config_index]
+    if "bwb_duck" in params_matrix:
+        config_params['bwb_duck'] = params_matrix.get("bwb_duck")[config_index]    
     if "body_weight_of_the_assessed_bird" in params_matrix:
-        config_params['body_weight_of_the_assessed_bird'] = params_matrix.get("body_weight_of_the_assessed_bird")[config_index]  
+        config_params['body_weight_of_the_assessed_bird'] = params_matrix.get("body_weight_of_the_assessed_bird")[config_index]
+    if "body_weight_of_the_assessed_bird_sm" in params_matrix:
+        config_params['body_weight_of_the_assessed_bird_sm'] = params_matrix.get("body_weight_of_the_assessed_bird_sm")[config_index]
+    if "body_weight_of_the_assessed_bird_md" in params_matrix:
+        config_params['body_weight_of_the_assessed_bird_md'] = params_matrix.get("body_weight_of_the_assessed_bird_md")[config_index]
+    if "body_weight_of_the_assessed_bird_lg" in params_matrix:
+        config_params['body_weight_of_the_assessed_bird_lg'] = params_matrix.get("body_weight_of_the_assessed_bird_lg")[config_index] 
+    if "body_weight_of_the_assessed_mammal_sm" in params_matrix:
+        config_params['body_weight_of_the_assessed_mammal_sm'] = params_matrix.get("body_weight_of_the_assessed_mammal_sm")[config_index]
+    if "body_weight_of_the_assessed_mammal_md" in params_matrix:
+        config_params['body_weight_of_the_assessed_mammal_md'] = params_matrix.get("body_weight_of_the_assessed_mammal_md")[config_index]
+    if "body_weight_of_the_assessed_mammal_lg" in params_matrix:
+        config_params['body_weight_of_the_assessed_mammal_lg'] = params_matrix.get("body_weight_of_the_assessed_mammal_lg")[config_index]       
     if "mineau_scaling_factor" in params_matrix:
         config_params['mineau_scaling_factor'] = params_matrix.get("mineau_scaling_factor")[config_index]              
     if "mammalian_ld50" in params_matrix:
@@ -100,7 +120,7 @@ def batchLoadTerrestrialToxicityConfigs(params_matrix,config_index,ubertool_conf
         config_params['eat_mammals'] = params_matrix.get("eat_mammals")[config_index]              
     if "eat_amphibians_reptiles" in params_matrix:
         config_params['eat_amphibians_reptiles'] = params_matrix.get("eat_amphibians_reptiles")[config_index]
-
+                                                          
     config_params['terrestrial_configuration'] = config_name
     ubertool_configuration_properties.update(config_params)
     config_params['config_name'] = config_name

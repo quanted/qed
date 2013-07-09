@@ -84,7 +84,7 @@ def gett1data(terrplant_obj):
 def gett1dataqaqc(terrplant_obj):
     data = { 
         "Parameter": ['Chemical Name', 'PC Code', 'Use', 'Application Method','Application Form',],
-        "Value": [terrplant_obj.chemical_name_expected, terrplant_obj.pc_code, terrplant_obj.use, terrplant_obj.application_method,terrplant_obj.application_form,],
+        "Value": [terrplant_obj.chemical_name_expected, terrplant_obj.pc_code_expected, terrplant_obj.use_expected, terrplant_obj.application_method_expected,terrplant_obj.application_form_expected,],
     }
     return data
 
@@ -92,27 +92,26 @@ def gett2data(terrplant_obj):
     data = { 
         "Parameter": ['Incorporation', 'Application Rate', 'Drift Fraction', 'Runoff Fraction',],
         "Value": [terrplant_obj.I, terrplant_obj.A, terrplant_obj.D, terrplant_obj.R,],
-        "Units": ['', 'lbs ai/A', '','', ],
+        "Units": ['in', 'lbs ai/A', '','', ],
     }
     return data
 
 def gett3data(terrplant_obj):
     data = { 
         "Description": ['Runoff to Dry Areas', 'Runoff to Semi-Aquatic Areas', 'Spray Drift','Total to Dry Areas', 'Total to Semi-Aquatic Areas',],
-        "EEC": ['%.2e' % terrplant_obj.rundry_results,'%.2e' % terrplant_obj.runsemi_results,'%.2e' % terrplant_obj.spray_results,
-                '%.2e' % terrplant_obj.totaldry_results,'%.2e' % terrplant_obj.totalsemi_results, ],
+        "EEC": ['%.2f' % terrplant_obj.rundry_results,'%.2f' % terrplant_obj.runsemi_results,'%.2f' % terrplant_obj.spray_results,
+                '%.2f' % terrplant_obj.totaldry_results,'%.2f' % terrplant_obj.totalsemi_results, ],
     }
     return data
 
 def gett3dataqaqc(terrplant_obj):
     data = { 
         "Description": ['Runoff to Dry Areas', 'Runoff to Semi-Aquatic Areas', 'Spray Drift','Total to Dry Areas', 'Total to Semi-Aquatic Areas',],
-        "EEC": ['%.2e' % terrplant_obj.rundry_results,'%.2e' % terrplant_obj.runsemi_results,'%.2e' % terrplant_obj.spray_results,
-                '%.2e' % terrplant_obj.totaldry_results,'%.2e' % terrplant_obj.totalsemi_results, ],
-        "Expected": ['%.2e' % terrplant_obj.rundry_results_expected,'%.2e' % terrplant_obj.runsemi_results_expected,'%.2e' % terrplant_obj.spray_results_expected,
-                '%.2e' % terrplant_obj.totaldry_results_expected,'%.2e' % terrplant_obj.totalsemi_results_expected, ],
+        "EEC": ['%.2f' % terrplant_obj.rundry_results,'%.2f' % terrplant_obj.runsemi_results,'%.2f' % terrplant_obj.spray_results,
+                '%.2f' % terrplant_obj.totaldry_results,'%.2f' % terrplant_obj.totalsemi_results, ],
     }
     return data
+
 def gett4data(terrplant_obj):
     data = { 
         "Plant Type": ['Monocot', 'Dicot',],
@@ -123,13 +122,23 @@ def gett4data(terrplant_obj):
     }
     return data
 
+def gett4dataqaqc(terrplant_obj):
+    data = { 
+        "Plant Type": ['Monocot', 'Dicot',],
+        "EC25": [terrplant_obj.nms_expected,terrplant_obj.nds_expected,],
+        "NOAEC": [terrplant_obj.lms_expected,terrplant_obj.lds_expected,],
+        "EC25": [terrplant_obj.nmv_expected,terrplant_obj.ndv_expected,],
+        "NOAEC":[terrplant_obj.lmv_expected,terrplant_obj.ldv_expected,],
+    }
+    return data
+
 def gett5data(terrplant_obj):
     data = { 
         "Plant Type": ['Monocot', 'Monocot', 'Dicot', 'Dicot',],
         "Listed Status": ['non-listed','listed','non-listed','listed',],
-        "Dry": ['%.2e' % terrplant_obj.nmsRQdry_results,'%.2e' % terrplant_obj.lmsRQdry_results,'%.2e' % terrplant_obj.ndsRQdry_results,'%.2e' % terrplant_obj.ldsRQdry_results,],
-        "Semi-Aquatic": ['%.2e' % terrplant_obj.nmsRQsemi_results,'%.2e' % terrplant_obj.lmsRQsemi_results,'%.2e' % terrplant_obj.ndsRQsemi_results,'%.2e' % terrplant_obj.ldsRQsemi_results,],
-        "Spray Drift":['%.2e' % terrplant_obj.nmsRQspray_results,'%.2e' % terrplant_obj.lmsRQspray_results,'%.2e' % terrplant_obj.ndsRQspray_results,'%.2e' % terrplant_obj.ldsRQspray_results,],
+        "Dry": ['%.2f' % terrplant_obj.nmsRQdry_results,'%.2f' % terrplant_obj.lmsRQdry_results,'%.2f' % terrplant_obj.ndsRQdry_results,'%.2f' % terrplant_obj.ldsRQdry_results,],
+        "Semi-Aquatic": ['%.2f' % terrplant_obj.nmsRQsemi_results,'%.2f' % terrplant_obj.lmsRQsemi_results,'%.2f' % terrplant_obj.ndsRQsemi_results,'%.2f' % terrplant_obj.ldsRQsemi_results,],
+        "Spray Drift":['%.2f' % terrplant_obj.nmsRQspray_results,'%.2f' % terrplant_obj.lmsRQspray_results,'%.2f' % terrplant_obj.ndsRQspray_results,'%.2f' % terrplant_obj.ldsRQspray_results,],
     }
     return data
 
@@ -138,12 +147,12 @@ def gett5dataqaqc(terrplant_obj):
     data = { 
         "Plant Type": ['Monocot', 'Monocot', 'Dicot', 'Dicot',],
         "Listed Status": ['non-listed','listed','non-listed','listed',],
-        "Dry": ['%.2e' % terrplant_obj.nmsRQdry_results,'%.2e' % terrplant_obj.lmsRQdry_results,'%.2e' % terrplant_obj.ndsRQdry_results,'%.2e' % terrplant_obj.ldsRQdry_results,],
-        "Dry-Expected": ['%.2e' % terrplant_obj.nmsRQdry_results_expected,'%.2e' % terrplant_obj.lmsRQdry_results_expected,'%.2e' % terrplant_obj.ndsRQdry_results_expected,'%.2e' % terrplant_obj.ldsRQdry_results_expected,],
-        "Semi-Aquatic": ['%.2e' % terrplant_obj.nmsRQsemi_results,'%.2e' % terrplant_obj.lmsRQsemi_results,'%.2e' % terrplant_obj.ndsRQsemi_results,'%.2e' % terrplant_obj.ldsRQsemi_results,],
-        "Semi-Aquatic-Expected": ['%.2e' % terrplant_obj.nmsRQsemi_results_expected,'%.2e' % terrplant_obj.lmsRQsemi_results_expected,'%.2e' % terrplant_obj.ndsRQsemi_results_expected,'%.2e' % terrplant_obj.ldsRQsemi_results_expected,],
-        "Spray Drift":['%.2e' % terrplant_obj.nmsRQspray_results,'%.2e' % terrplant_obj.lmsRQspray_results,'%.2e' % terrplant_obj.ndsRQspray_results,'%.2e' % terrplant_obj.ldsRQspray_results,],
-        "Spray Drift-Expected":['%.2e' % terrplant_obj.nmsRQspray_results_expected,'%.2e' % terrplant_obj.lmsRQspray_results_expected,'%.2e' % terrplant_obj.ndsRQspray_results_expected,'%.2e' % terrplant_obj.ldsRQspray_results_expected,],
+        "Dry": ['%.2f' % terrplant_obj.nmsRQdry_results,'%.2f' % terrplant_obj.lmsRQdry_results,'%.2f' % terrplant_obj.ndsRQdry_results,'%.2f' % terrplant_obj.ldsRQdry_results,],
+        "Dry-Expected": ['%.2f' % terrplant_obj.nmsRQdry_results_expected,'%.2f' % terrplant_obj.lmsRQdry_results_expected,'%.2f' % terrplant_obj.ndsRQdry_results_expected,'%.2f' % terrplant_obj.ldsRQdry_results_expected,],
+        "Semi-Aquatic": ['%.2f' % terrplant_obj.nmsRQsemi_results,'%.2f' % terrplant_obj.lmsRQsemi_results,'%.2f' % terrplant_obj.ndsRQsemi_results,'%.2f' % terrplant_obj.ldsRQsemi_results,],
+        "Semi-Aquatic-Expected": ['%.2f' % terrplant_obj.nmsRQsemi_results_expected,'%.2f' % terrplant_obj.lmsRQsemi_results_expected,'%.2f' % terrplant_obj.ndsRQsemi_results_expected,'%.2f' % terrplant_obj.ldsRQsemi_results_expected,],
+        "Spray Drift":['%.2f' % terrplant_obj.nmsRQspray_results,'%.2f' % terrplant_obj.lmsRQspray_results,'%.2f' % terrplant_obj.ndsRQspray_results,'%.2f' % terrplant_obj.ldsRQspray_results,],
+        "Spray Drift-Expected":['%.2f' % terrplant_obj.nmsRQspray_results_expected,'%.2f' % terrplant_obj.lmsRQspray_results_expected,'%.2f' % terrplant_obj.ndsRQspray_results_expected,'%.2f' % terrplant_obj.ldsRQspray_results_expected,],
     }
     return data
 
@@ -233,13 +242,11 @@ def table_all(pvheadings, pvuheadings, deheadings, plantec25noaecheadings, plant
     html_all = html_all + table_5(plantecdrysemisprayheadings, tmpl, terrplant_obj)
     return html_all
 
-def table_all_qaqc(pvheadings, pvuheadings, deheadingsqaqc, plantec25noaecheadings, plantecdrysemisprayheadingsqaqc, tmpl,terrplant_obj):
+def table_all_qaqc(pvheadings, pvuheadings, deheadingsqaqc, plantec25noaecheadingsqaqc, plantecdrysemisprayheadingsqaqc, tmpl,terrplant_obj):
     html_all = table_1_qaqc(pvheadings, tmpl, terrplant_obj)
     html_all = html_all + table_2(pvuheadings, tmpl, terrplant_obj)
-    table_3_html = table_3_qaqc(deheadingsqaqc, tmpl, terrplant_obj)
-    logger.info("table3html:%s",table_3_html)
-    html_all = html_all + table_3_html
-    html_all = html_all + table_4(plantec25noaecheadings, tmpl, terrplant_obj)
+    html_all = html_all + table_3_qaqc(deheadings, tmpl, terrplant_obj)
+    html_all = html_all + table_4_qaqc(plantec25noaecheadings, tmpl, terrplant_obj)
     html_all = html_all + table_5_qaqc(plantecdrysemisprayheadingsqaqc, tmpl, terrplant_obj)
     return html_all
 
@@ -294,9 +301,9 @@ def table_sum_output(sumheadings, tmpl, rundry_out, runsemi_out, spray_out, tota
 def table_1(pvheadings, tmpl, terrplant_obj):
         #pre-table 1
         html = """
-        <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs: Chemical Identity</H3>
+        <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs</H3>
         <div class="out_">
-            <H4 class="out_1 collapsible" id="section2"><span></span>Application and Chemical Information</H4>
+            <H4 class="out_1 collapsible" id="section2"><span></span>Chemical Identity</H4>
                 <div class="out_ container_output">
         """
         #table 1
@@ -311,9 +318,9 @@ def table_1(pvheadings, tmpl, terrplant_obj):
 def table_1_qaqc(pvheadings, tmpl, terrplant_obj):
         #pre-table 1
         html = """
-        <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs: Chemical Identity</H3>
+        <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs</H3>
         <div class="out_">
-            <H4 class="out_1 collapsible" id="section2"><span></span>Application and Chemical Information</H4>
+            <H4 class="out_1 collapsible" id="section2"><span></span>Chemical Identity</H4>
                 <div class="out_ container_output">
         """
         #table 1
@@ -328,7 +335,7 @@ def table_1_qaqc(pvheadings, tmpl, terrplant_obj):
 def table_2(pvuheadings, tmpl, terrplant_obj):
         # #pre-table 2
         html = """
-            <H4 class="out_2 collapsible" id="section3"><span></span>Toxicity Properties</H4>
+            <H4 class="out_2 collapsible" id="section3"><span></span>Input parameters used to derive EECs</H4>
                 <div class="out_ container_output">
         """
         #table 2
@@ -347,9 +354,9 @@ def table_3(deheadings, tmpl, terrplant_obj):
         <br>
         <H3 class="out_3 collapsible" id="section4"><span></span>Exposure Estimates</H3>
         <div class="out_">
-            <H4 class="out_3 collapsible" id="section5"><span></span>Granular Application</H4>
+            <H4 class="out_3 collapsible" id="section5"><span></span>EECs for %s</H4>
                 <div class="out_ container_output">
-        """
+        """%(terrplant_obj.chemical_name)
         #table 3
         t3data = gett3data(terrplant_obj)
         t3rows = gethtmlrowsfromcols(t3data,deheadings)
@@ -366,9 +373,9 @@ def table_3_qaqc(deheadings, tmpl, terrplant_obj):
         <br>
         <H3 class="out_3 collapsible" id="section4"><span></span>Exposure Estimates</H3>
         <div class="out_">
-            <H4 class="out_3 collapsible" id="section5"><span></span>Granular Application</H4>
+            <H4 class="out_3 collapsible" id="section5"><span></span>EECs for %s</H4>
                 <div class="out_ container_output">
-        """
+        """%(terrplant_obj.chemical_name)
         #table 3
         t3data = gett3dataqaqc(terrplant_obj)
         t3rows = gethtmlrowsfromcols(t3data,deheadings)
@@ -381,7 +388,7 @@ def table_3_qaqc(deheadings, tmpl, terrplant_obj):
 def table_4(plantec25noaecheadings, tmpl, terrplant_obj):
         #pre-table 4
         html = """     
-            <H4 class="out_4 collapsible" id="section6"><span></span>Foliar Spray Application (contact with foliar residues and directly applied spray)</H4>
+            <H4 class="out_4 collapsible" id="section6"><span></span>Plant survival and growth data used for RQ derivation</H4>
                 <div class="out_ container_output">
         """
         #table 4
@@ -393,17 +400,33 @@ def table_4(plantec25noaecheadings, tmpl, terrplant_obj):
         """
         return html
 
+def table_4_qaqc(plantec25noaecheadings, tmpl, terrplant_obj):
+        #pre-table 4
+        html = """     
+            <H4 class="out_4 collapsible" id="section6"><span></span>Plant survival and growth data used for RQ derivation</H4>
+                <div class="out_ container_output">
+        """
+        #table 4
+        t4data = gett4dataqaqc(terrplant_obj)
+        t4rows = gethtmlrowsfromcols(t4data,plantec25noaecheadings)
+        html = html + tmpl.render(Context(dict(data=t4rows, headings=plantec25noaecheadings)))
+        html = html + """
+                </div>
+        """
+        return html
+
 def table_5(plantecdrysemisprayheadings, tmpl, terrplant_obj):
         #pre-table 5
         html = """         
-            <H4 class="out_5 collapsible" id="section7"><span></span>Bare Ground Spray Application (contact with soil residues and directly applied spray)</H4>
+            <H4 class="out_5 collapsible" id="section7"><span></span>RQ values for plants in dry and semi-aquatic areas exposed to %s through runoff and/or spray drift*</H4>
                 <div class="out_ container_output">
-        """
+        """%(terrplant_obj.chemical_name)
         #table 5
         t5data = gett5data(terrplant_obj)
         t5rows = gethtmlrowsfromcols(t5data,plantecdrysemisprayheadings)
         html = html + tmpl.render(Context(dict(data=t5rows, headings=plantecdrysemisprayheadings)))
         html = html + """
+                <H4>*If RQ > 1.0, the LOC is exceeded, resulting in potential for risk to that plant group</H4>
                 </div>
         </div>
         """
@@ -412,14 +435,15 @@ def table_5(plantecdrysemisprayheadings, tmpl, terrplant_obj):
 def table_5_qaqc(plantecdrysemisprayheadings, tmpl, terrplant_obj):
         #pre-table 5
         html = """         
-            <H4 class="out_5 collapsible" id="section7"><span></span>Bare Ground Spray Application (contact with soil residues and directly applied spray)</H4>
+            <H4 class="out_5 collapsible" id="section7"><span></span>RQ values for plants in dry and semi-aquatic areas exposed to %s through runoff and/or spray drift*</H4>
                 <div class="out_ container_output">
-        """
+        """%(terrplant_obj.chemical_name)
         #table 5
         t5data = gett5dataqaqc(terrplant_obj)
         t5rows = gethtmlrowsfromcols(t5data,plantecdrysemisprayheadings)
         html = html + tmpl.render(Context(dict(data=t5rows, headings=plantecdrysemisprayheadings)))
         html = html + """
+                <H4>*If RQ > 1.0, the LOC is exceeded, resulting in potential for risk to that plant group</H4>
                 </div>
         </div>
         """

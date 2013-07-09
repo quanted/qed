@@ -18,7 +18,7 @@ Species_of_the_tested_bird_CHOICES=(('Bobwhite quail','Bobwhite quail'),('Mallar
 
 class trexInp_chem(forms.Form):    
     chemical_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),initial='Alachlor')
-    Use = forms.CharField(max_length=255, widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),initial='Corn')   
+    use = forms.CharField(max_length=255, widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),initial='Corn')   
     Formulated_product_name = forms.CharField(max_length=255, widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),initial='NA')    
     percent_ai=forms.FloatField(required=True, label='% a.i. (%)', initial=100)
     Application_type = forms.ChoiceField(required=True, choices=Applicationtype_CHOICES, initial='Broadcast-Granular')

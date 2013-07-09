@@ -35,22 +35,18 @@ class UbertoolExposureConfigurationPage(webapp.RequestHandler):
         exposure.przm_scenario = form.getvalue('PRZM_scenario')
         exposure.exams_environment_file = form.getvalue('EXAMS_environment_file')
         exposure.application_method = form.getvalue('application_mathod')
-        exposure.application_type = form.getvalue('application_type')
         exposure.app_type = form.getvalue('app_type')
         exposure.weight_of_one_granule = float(form.getvalue('weight_of_one_granule'))
         exposure.wetted_in = bool(form.getvalue('wetted_in'))
         exposure.incorporation_depth = float(form.getvalue('incorporation_depth'))
-        exposure.percent_incorporated = float(form.getvalue('percent_incorporated'))
         exposure.application_kg_rate = float(form.getvalue('application_kg_rate'))
         exposure.application_lbs_rate = float(form.getvalue('application_lbs_rate'))
-        exposure.maximum_seedling_rate_per_use = float(form.getvalue('maximum_seedling_rate_per_use'))
         exposure.application_rate_per_use = float(form.getvalue('application_rate_per_use'))
         logger.info(form.getvalue("application_date"))
         #TODO This is NASTY we should consider using Date Chooser or something with only one valid output
         app_data = form.getvalue('application_date')
         app_data_parts = app_data.split("-")
         exposure.application_date = datetime.date(int(app_data_parts[0]),int(app_data_parts[1]),int(app_data_parts[2]))
-        exposure.number_of_applications = float(form.getvalue('number_of_applications'))
         exposure.interval_between_applications = float(form.getvalue('interval_between_applications'))
         exposure.application_efficiency = float(form.getvalue('application_efficiency'))
         exposure.percent_incorporated = float(form.getvalue('percent_incorporated'))
@@ -72,6 +68,19 @@ class UbertoolExposureConfigurationPage(webapp.RequestHandler):
         exposure.pore_water_sixty_day_average_exposure_concentration = float(form.getvalue('pore_water_sixty_day_average_exposure_concentration'))
         exposure.pore_water_ninety_day_average_exposure_concentration = float(form.getvalue('pore_water_ninety_day_average_exposure_concentration'))
         exposure.frac_pest_surface = float(form.getvalue('frac_pest_surface'))
+        
+
+
+
+
+
+
+
+
+
+
+
+
         exposure.put()
         self.redirect("aquatic_toxicity.html")
         

@@ -25,9 +25,7 @@ def batchLoadExposureConcentrationsConfigs(params_matrix,config_index,ubertool_c
     if "exams_environment_file" in params_matrix:
         config_params['exams_environment_file'] = params_matrix.get("exams_environment_file")[config_index]              
     if "application_method" in params_matrix:
-        config_params['application_method'] = params_matrix.get("application_method")[config_index]
-    if "application_type" in params_matrix:
-        config_params['application_type'] = params_matrix.get("application_type")[config_index]            
+        config_params['application_method'] = params_matrix.get("application_method")[config_index]          
     if "app_type" in params_matrix:
         config_params['app_type'] = params_matrix.get("app_type")[config_index]
     if "weight_of_one_granule" in params_matrix:
@@ -36,20 +34,15 @@ def batchLoadExposureConcentrationsConfigs(params_matrix,config_index,ubertool_c
         config_params['wetted_in'] = params_matrix.get("wetted_in")[config_index]            
     if "incorporation_depth" in params_matrix:
         config_params['incorporation_depth'] = params_matrix.get("incorporation_depth")[config_index]  
-    if "percent_incorporated" in params_matrix:
-        config_params['percent_incorporated'] = params_matrix.get("percent_incorporated")[config_index]  
+    
     if "application_kg_rate" in params_matrix:
         config_params['application_kg_rate'] = params_matrix.get("application_kg_rate")[config_index]              
     if "application_lbs_rate" in params_matrix:
         config_params['application_lbs_rate'] = params_matrix.get("application_lbs_rate")[config_index]
-    if "maximum_seedling_rate_per_use" in params_matrix:
-        config_params['maximum_seedling_rate_per_use'] = params_matrix.get("maximum_seedling_rate_per_use")[config_index]            
     if "application_rate_per_use" in params_matrix:
         config_params['application_rate_per_use'] = params_matrix.get("application_rate_per_use")[config_index]  
     if "application_date" in params_matrix:
-        config_params['application_date'] = str(params_matrix.get("application_date")[config_index])
-    if "number_of_applications" in params_matrix:
-        config_params['number_of_applications'] = params_matrix.get("number_of_applications")[config_index]              
+        config_params['application_date'] = str(params_matrix.get("application_date")[config_index]) 
     if "interval_between_applications" in params_matrix:
         config_params['interval_between_applications'] = params_matrix.get("interval_between_applications")[config_index]
     if "application_efficiency" in params_matrix:
@@ -58,8 +51,6 @@ def batchLoadExposureConcentrationsConfigs(params_matrix,config_index,ubertool_c
         config_params['spray_drift'] = params_matrix.get("spray_drift")[config_index]            
     if "runoff" in params_matrix:
         config_params['runoff'] = params_matrix.get("runoff")[config_index]     
-    if "ar_lb" in params_matrix:
-        config_params['ar_lb'] = params_matrix.get("ar_lb")[config_index]
     if "concentration_of_particulate_organic_carbon" in params_matrix:
         config_params['concentration_of_particulate_organic_carbon'] = params_matrix.get("exposure_concentrations_config_name")[config_index]
     if "one_in_ten_peak_exposure_concentration" in params_matrix:
@@ -93,8 +84,8 @@ def batchLoadExposureConcentrationsConfigs(params_matrix,config_index,ubertool_c
     if "pore_water_ninety_day_average_exposure_concentration" in params_matrix:
         config_params['pore_water_ninety_day_average_exposure_concentration'] = params_matrix.get("pore_water_ninety_day_average_exposure_concentration")[config_index]            
     if "frac_pest_surface" in params_matrix:
-        config_params['frac_pest_surface'] = params_matrix.get("frac_pest_surface")[config_index]            
-    
+        config_params['frac_pest_surface'] = params_matrix.get("frac_pest_surface")[config_index]    
+                                                                                          
     config_params['exposure'] = config_name
     ubertool_configuration_properties.update(config_params)
     config_params['config_name'] = config_name

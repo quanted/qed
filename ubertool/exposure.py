@@ -18,23 +18,18 @@ class Exposure(db.Model):
     przm_scenario = db.StringProperty()
     exams_environment_file = db.StringProperty()
     application_method = db.StringProperty()
-    application_type = db.StringProperty()
     app_type = db.StringProperty()
     weight_of_one_granule = db.FloatProperty()
     wetted_in = db.BooleanProperty()
     incorporation_depth = db.FloatProperty()
-    percent_incorporated = db.FloatProperty()
     application_kg_rate = db.FloatProperty()
     application_lbs_rate = db.FloatProperty()
-    maximum_seedling_rate_per_use = db.FloatProperty()
     application_rate_per_use = db.FloatProperty()
     application_date = db.DateProperty()
-    number_of_applications = db.FloatProperty()
     interval_between_applications = db.FloatProperty()
     application_efficiency = db.FloatProperty()
     spray_drift = db.FloatProperty()
     runoff = db.FloatProperty()
-    ar_lb = db.FloatProperty()
     one_in_ten_peak_exposure_concentration = db.FloatProperty() 
     one_in_ten_four_day_average_exposure_concentration = db.FloatProperty() 
     one_in_ten_twentyone_day_average_exposure_concentration = db.FloatProperty() 
@@ -51,4 +46,9 @@ class Exposure(db.Model):
     pore_water_sixty_day_average_exposure_concentration = db.FloatProperty() 
     pore_water_ninety_day_average_exposure_concentration = db.FloatProperty() 
     frac_pest_surface = db.FloatProperty()
+    
+
+
+
+
     created = db.DateTimeProperty(auto_now_add=True)

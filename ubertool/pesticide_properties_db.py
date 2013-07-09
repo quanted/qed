@@ -36,7 +36,22 @@ class PPInp(forms.Form):
     hydrolysis_ph9 = forms.FloatField(label='Hydrolysis: pH=9/alkaline (half-life, days)')
     foliar_extraction = forms.FloatField(label='Foliar extraction, default=0.5 (cm^-1)')
     foliar_decay_rate = forms.FloatField(label='Foliar Decay Rate (day^-1)')
-    foliar_dissipation_half_life = forms.FloatField(label='Foliar Dissipation Half-life (days)')
+    Foliar_dissipation_half_life = forms.FloatField(label='Foliar Dissipation Half-life (days)')
     density_of_product = forms.FloatField(label='Density of product (lbs/gal)')
+    maximum_seedling_rate_per_use = forms.FloatField(label='Maximum seedling rate per use (lbs/A)')
+    row_sp = forms.FloatField(label='Row spacing')
+    bandwidth = forms.FloatField(label='Band width')
+    day_out = forms.FloatField(label='Day of pesticide application')
+    use = forms.FloatField(label='Use of pesticide (e.g. corn)')
+    seed_crop = forms.FloatField(label='Seed treatment use (e.g. corn)')
+    Application_type = forms.FloatField(label='Application type')
+    n_a = forms.FloatField(label='Number of applications')
+    ar_lb = forms.FloatField(label='Maximum single application rate lbs ai/A')
+    percent_incorporated = forms.FloatField(label='% Incorporated (%)')
+
+
+
+
+
 
     

@@ -106,7 +106,7 @@ class TRexOutputPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                               
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'trex2', 
-                'model_attributes':'T-Rex 1.5.1 Output'})
+                'model_attributes':'T-Rex Output'})
 
         trex_obj = trex2_model.trex2(chem_name, use, formu_name, a_i, Application_type, r_s, b_w, a_r_p, p_i, den, h_l, n_a, rate_out, day_out,
                       ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, aw_bird_md, aw_bird_lg, Species_of_the_tested_bird, 

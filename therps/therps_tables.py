@@ -3,6 +3,8 @@ import numpy
 from django.template import Context, Template
 from django.utils.safestring import mark_safe
 from therps import therps_model
+import time
+import datetime
 
 def getheaderpvu():
 	headings = ["Parameter", "Value", "Units"]
@@ -121,6 +123,17 @@ def getdjtemplate_5():
     </table>
     """
     return dj_template
+
+def timestamp():
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+    html="""
+    <div class="out_">
+    <b>T-Herps <a href="http://www.epa.gov/oppefed1/models/terrestrial/therps/t_herps_user_guide.htm">Version 1.0</a> (Beta)<br>
+    """
+    html = html + st
+    html = html + " (UTC)</b>"
+    return html
 
 def gett1data(therps_obj):
     data = { 
@@ -343,7 +356,8 @@ def table_all(therps_obj):
     table6_out = table_6(therps_obj)
     table7_out = table_7(therps_obj)
 
-    html_all = table1_out
+    html_all = timestamp()
+    html_all = html_all + table1_out
     html_all = html_all + table2_out
     html_all = html_all + table3_out
     html_all = html_all + table5_out['html']

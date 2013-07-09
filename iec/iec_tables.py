@@ -2,6 +2,8 @@ import numpy
 #import django
 from django.template import Context, Template
 from django.utils.safestring import mark_safe
+import time
+import datetime
 from iec import iec_model
 from iec import iec_parameters
 
@@ -48,6 +50,17 @@ def getdjtemplate():
     """
     return dj_template
 
+def timestamp():
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+    html="""
+    <div class="out_">
+    <b>IEC Version 1.0 (Beta)<br>
+    """
+    html = html + st
+    html = html + " (UTC)</b>"
+    return html
+
 def gett1data(iec_obj):
     data = { 
         "User Input": ['LC50 or LD50', 'Threshold', 'Slope',],
@@ -68,7 +81,8 @@ djtemplate = getdjtemplate()
 tmpl = Template(djtemplate)
 
 def table_all(iec_obj):
-    html_all = table_1(iec_obj)
+    html_all = timestamp()
+    html_all = html_all + table_1(iec_obj)
     html_all = html_all + table_2(iec_obj)
     return html_all
 

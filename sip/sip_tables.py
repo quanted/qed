@@ -5,6 +5,8 @@ from django.utils.safestring import mark_safe
 from sip import sip_model
 from sip import sip_parameters
 import logging
+import time
+import datetime
 
 logger = logging.getLogger("SipTables")
 
@@ -125,7 +127,6 @@ def table_all(sip_obj):
     html_all = table_1(sip_obj)      
     html_all = html_all + table_2(sip_obj)
     html_all = html_all + table_3(sip_obj)
-
     return html_all
 
 def table_all_qaqc(sip_obj):
@@ -133,15 +134,23 @@ def table_all_qaqc(sip_obj):
     html_all = table_1(sip_obj)      
     html_all = html_all + table_2_qaqc(sip_obj)
     html_all = html_all + table_3_qaqc(sip_obj)
-
     return html_all
 
+def timestamp():
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+    html="""
+    <div class="out_">
+    <b>SIP <a href="http://www.epa.gov/oppefed1/models/terrestrial/sip/sip_user_guide.html">Version 1.0</a> (Beta)<br>
+    """
+    html = html + st
+    html = html + " (UTC)</b>"
+    return html
 
 def table_1(sip_obj):
         #pre-table 1
         html = """
         <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs</H3>
-        <div class="out_">
             <H4 class="out_1 collapsible" id="section2"><span></span>Application and Chemical Information</H4>
                 <div class="out_ container_output">
         """

@@ -4,6 +4,8 @@ from django.template import Context, Template
 from django.utils.safestring import mark_safe
 from trex2 import trex2_model
 from trex2 import trex2_parameters
+import time
+import datetime
 
 def getheaderpvu():
 	headings = ["Parameter", "Value", "Units"]
@@ -638,7 +640,8 @@ def table_all(trex2_obj):
     table3_out=table_3(trex2_obj)
     table4_out=table_4(trex2_obj)
 
-    html = table1_out
+    html = timestamp()
+    html = html + table1_out
     html = html + table2_out
     html = html + table3_out
     html = html + table4_out
@@ -685,6 +688,16 @@ def table_all(trex2_obj):
             html = html + table15_out['html']
             return html, table6_out, table7_out, table8_out, table9_out, table10_out, table11_out, table15_out
 
+def timestamp():
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+    html="""
+    <div class="out_">
+    <b>T-Rex <a href="http://www.epa.gov/oppefed1/models/terrestrial/trex/t_rex_user_guide.htm">Version 1.5</a> (Beta)<br>
+    """
+    html = html + st
+    html = html + " (UTC)</b>"
+    return html
 
 def table_sum_1(i, a_i, r_s, b_w, p_i, den, Foliar_dissipation_half_life, n_a, rate_out):
         #pre-table sum_input_1

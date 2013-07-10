@@ -68,6 +68,8 @@ class TTInp(forms.Form):
     NOAEC_for_listed_vegetative_vigor_dicot = forms.FloatField()
     Small_medium_and_large_BW_of_assessed_herptile_listed_species = forms.FloatField(label='Small, medium, and large BW of assessed herptile listed species (g)')
     percent_water_content_of_small_med_large_herptile_species_diet = forms.FloatField(label='Percent water content of small, med, large herptile species diet')    
+    desired_threshold = forms.FloatField(label='Desired threshold')
+    slope_of_dose_response = forms.FloatField(label='Slope of dose-response')
     taxonomic_group = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),label='What taxonomic group are you assessing?')    
     eat_mammals = forms.ChoiceField(label='Does the assessed animal eat mammals' , choices=YN, initial='Yes')
     eat_amphibians_reptiles = forms.ChoiceField(label='Does the assessed animal eat amphibians or reptiles?' , choices=YN, initial='Yes')

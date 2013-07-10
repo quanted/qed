@@ -4,6 +4,8 @@ from django.template import Context, Template
 from django.utils.safestring import mark_safe
 from dust import dust_model
 from dust import dust_parameters
+import time
+import datetime
 
 def getheaderpvu():
 	headings = ["Parameter", "Value", "Units"]
@@ -201,7 +203,8 @@ def table_all(dust_obj):
     table7_out = table_7(dust_obj)
     table8_out = table_8(dust_obj)
 
-    html_all = table_1(dust_obj)
+    html_all = timestamp()
+    html_all = html_all + table_1(dust_obj)
     html_all = html_all + table_2(dust_obj)
     html_all = html_all + table3_out['html']
     html_all = html_all + table4_out['html']
@@ -211,7 +214,18 @@ def table_all(dust_obj):
     html_all = html_all + table8_out['html']
     return html_all, table3_out, table4_out, table5_out, table6_out, table7_out, table8_out
 
-def table_sum_input(i, ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau_scaling_factor, mam_acute_derm_ld50, test_mam_bw):
+def timestamp():
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+    html="""
+    <div class="out_">
+    <b>Dust Version 0.1 (Beta)<br>
+    """
+    html = html + st
+    html = html + " (UTC)</b>"
+    return html
+
+def table_sum_input(i, ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw):
         #pre-table sum_input
         html = """
         <table border="1" border="1" class="out_1">
@@ -252,7 +266,6 @@ def table_1(dust_obj):
         #pre-table 1
         html = """
         <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs: Chemical Identity</H3>
-        <div class="out_">
             <H4 class="out_1 collapsible" id="section2"><span></span>Application and Chemical Information</H4>
                 <div class="out_ container_output">
         """

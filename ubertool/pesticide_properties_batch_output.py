@@ -15,11 +15,17 @@ def batchLoadPesticidePropertiesConfigs(params_matrix,config_index,ubertool_conf
     if "pesticide_properties_config_name" in params_matrix:
         config_name = params_matrix.get("pesticide_properties_config_name")[config_index]
     if "chemical_name" in params_matrix:
-        config_params['chemical_name'] = params_matrix.get("chemical_name")[config_index]  
+        config_params['chemical_name'] = params_matrix.get("chemical_name")[config_index] 
+    if "Formulated_product_name" in params_matrix:
+        config_params['Formulated_product_name'] = params_matrix.get("Formulated_product_name")[config_index]
+    if "seed_treatment_formulation_name" in params_matrix:
+        config_params['seed_treatment_formulation_name'] = params_matrix.get("seed_treatment_formulation_name")[config_index]     
     if "label_epa_reg_no" in params_matrix:
         config_params['label_epa_reg_no'] = params_matrix.get("label_epa_reg_no")[config_index]  
     if "molecular_weight" in params_matrix:
-        config_params['molecular_weight'] = params_matrix.get("molecular_weight")[config_index]            
+        config_params['molecular_weight'] = params_matrix.get("molecular_weight")[config_index]   
+    if "percent_ai" in params_matrix:
+        config_params['percent_ai'] = params_matrix.get("percent_ai")[config_index]                         
     if "henrys_law_constant" in params_matrix:
         config_params['henrys_law_constant'] = params_matrix.get("henrys_law_constant")[config_index]            
     if "vapor_pressure" in params_matrix:
@@ -48,9 +54,30 @@ def batchLoadPesticidePropertiesConfigs(params_matrix,config_index,ubertool_conf
         config_params['foliar_extraction'] = params_matrix.get("foliar_extraction")[config_index]            
     if "foliar_decay_rate" in params_matrix:
         config_params['foliar_decay_rate'] = params_matrix.get("foliar_decay_rate")[config_index]            
-    if "foliar_dissipation_half_life" in params_matrix:
-        config_params['foliar_dissipation_half_life'] = params_matrix.get("foliar_dissipation_half_life")[config_index]
-
+    if "Foliar_dissipation_half_life" in params_matrix:
+        config_params['Foliar_dissipation_half_life'] = params_matrix.get("Foliar_dissipation_half_life")[config_index]
+    if "density_of_product" in params_matrix:
+        config_params['density_of_product'] = params_matrix.get("density_of_product")[config_index]   
+    if "maximum_seedling_rate_per_use" in params_matrix:
+        config_params['maximum_seedling_rate_per_use'] = params_matrix.get("maximum_seedling_rate_per_use")[config_index] 
+    if "row_sp" in params_matrix:
+        config_params['row_sp'] = params_matrix.get("row_sp")[config_index] 
+    if "bandwidth" in params_matrix:
+        config_params['bandwidth'] = params_matrix.get("bandwidth")[config_index]    
+    if "day_out" in params_matrix:
+        config_params['day_out'] = params_matrix.get("day_out")[config_index] 
+    if "use" in params_matrix:
+        config_params['use'] = params_matrix.get("use")[config_index] 
+    if "Application_type" in params_matrix:
+        config_params['Application_type'] = params_matrix.get("Application_type")[config_index]     
+    if "seed_crop" in params_matrix:
+        config_params['seed_crop'] = params_matrix.get("seed_crop")[config_index] 
+    if "n_a" in params_matrix:
+        config_params['n_a'] = params_matrix.get("n_a")[config_index]  
+    if "ar_lb" in params_matrix:
+        config_params['ar_lb'] = params_matrix.get("ar_lb")[config_index]   
+     if "percent_incorporated" in params_matrix:
+        config_params['percent_incorporated'] = params_matrix.get("percent_incorporated")[config_index]                                       
     config_params['pest_configuration'] = config_name
     ubertool_configuration_properties.update(config_params)
     config_params['config_name'] = config_name

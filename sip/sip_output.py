@@ -53,6 +53,8 @@ class SIPExecutePage(webapp.RequestHandler):
                 'model':'sip', 
                 'model_attributes':'SIP Output'})     
 
+        html = html +sip_tables.timestamp()
+        # html = html + sip_tables.table_1(chemical_name, select_receptor, bw_bird, bw_mamm, sol, ld50, aw_bird, tw_bird, aw_mamm, tw_mamm, mineau, noaec, noael)      
         html = html + sip_tables.table_all(sip_obj)
 
         html = html + template.render(templatepath + 'export.html', {})

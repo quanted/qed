@@ -1466,8 +1466,11 @@ th {
   background-color: rgb(227, 220, 191);
   border: none;
   text-align: center;
+  padding: 1px 4px;
 }
-
+td {
+  padding: 1px 4px;
+}
 .articles_input table {
   width: 90%;
   margin-bottom: 12px;

@@ -152,8 +152,6 @@ def loop_html(thefile):
               
 class SIPBatchOutputPage(webapp.RequestHandler):
     def post(self):
-        text_file1 = open('sip/sip_description.txt','r')
-        x = text_file1.read()
         form = cgi.FieldStorage()
         logger.info(form) 
         thefile = form['upfile']
@@ -167,7 +165,7 @@ class SIPBatchOutputPage(webapp.RequestHandler):
                 'model_attributes':'SIP Batch Output'})
         html = html + iter_html
         # html = html + template.render(templatepath + 'sip-batchoutput-jqplot.html', {})
-        html = html + template.render(templatepath + 'export.html', {})                
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

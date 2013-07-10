@@ -14,7 +14,9 @@ class stirBatchInputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', 'title')
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'stir','page':'batchinput'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberbatchinput.html', {'model':'stir'}) 
+        html = html + template.render(templatepath + '04uberbatchinput.html', {
+                'model':'stir',
+                'model_attributes':'STIR Batch Input'}) 
         html = html + template.render(templatepath + '04uberbatchinput_jquery.html', {}) 
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

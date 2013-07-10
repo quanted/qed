@@ -1,7 +1,9 @@
+import numpy
 from django.template import Context, Template
 from django.utils.safestring import mark_safe
-# import rice_model,rice_parameters
 import logging
+import time
+import datetime
 
 logger = logging.getLogger("RiceTables")
 
@@ -54,15 +56,15 @@ def getdjtemplate():
 
 def gett1data(rice_obj):
     data = { 
-        "Parameter": ['Chemical Name','Mass applied to patty','Area of patty','Sediment Depth','Sediment bulk density','Water column depth','Sediment porosity','Water-Sediment partitioning coefficient'],
-        "Value": [rice_obj.chemical_name,rice_obj.mai,rice_obj.a,rice_obj.dsed,rice_obj.pb,rice_obj.dw,rice_obj.osed,rice_obj.kd],
+        "Parameter": ['Chemical Name','Mass applied to patty','Area of patty','Sediment Depth',mark_safe('Sediment bulk density, &#961;<sub>b</sub>'),'Water column depth',mark_safe('Sediment porosity, K<sub>d</sub>'), mark_safe('Water-Sediment partitioning coefficient, K<sub>d</sub>')],
+        "Value": ['%s' % rice_obj.chemical_name, '%.4f' % rice_obj.mai, '%.2f' % rice_obj.a, '%.2f' % rice_obj.dsed, '%.2f' % rice_obj.pb, '%.2f' % rice_obj.dw, '%.4f' % rice_obj.osed, '%.2f' % rice_obj.kd],
         "Units": ['','kg',mark_safe('m<sup>2</sup>'),'m',mark_safe('kg/m<sup>3</sup>'),'m','','L/kg'],
     }
     return data
 
 def gett1dataqaqc(rice_obj):
     data = { 
-        "Parameter": ['Chemical Name','Mass applied to patty','Area of patty','Sediment Depth','Sediment bulk density','Water column depth','Sediment porosity','Water-Sediment partitioning coefficient'],
+        "Parameter": ['Chemical Name','Mass applied to patty','Area of patty','Sediment Depth',mark_safe('Sediment bulk density, &#961;<sub>b</sub>'),'Water column depth',mark_safe('Sediment porosity, K<sub>d</sub>'), mark_safe('Water-Sediment partitioning coefficient, K<sub>d</sub>')],
         "Value": [rice_obj.chemical_name,rice_obj.mai,rice_obj.a,rice_obj.dsed,rice_obj.pb,rice_obj.dw,rice_obj.osed,rice_obj.kd],
         "Expected-Value": [rice_obj.chemical_name_expected,rice_obj.mai,rice_obj.a,rice_obj.dsed,rice_obj.pb,rice_obj.dw,rice_obj.osed,rice_obj.kd],
         "Units": ['','kg',mark_safe('m<sup>2</sup>'),'m',mark_safe('kg/m<sup>3</sup>'),'m','','L/kg'],
@@ -72,90 +74,45 @@ def gett1dataqaqc(rice_obj):
 def gett2data(rice_obj):
     data = { 
         "Parameter": ['Sediment Mass', 'Water Column Volume', 'Mass per unit area', 'Water Concentration',],
-        "Value": ['%.3f' % rice_obj.msed, '%.3f' % rice_obj.vw, '%.3f' % rice_obj.mai1, '%.3f' % rice_obj.cw,],
-        "Units": ['mass', 'volume', 'mass/area', 'mass/volume',],
+        "Value": ['%.2f' % rice_obj.msed, '%.2f' % rice_obj.vw, '%.4f' % rice_obj.mai1, '%.4f' % rice_obj.cw,],
+        "Units": ['kg', mark_safe('m<sup>3</sup>'), 'kg/ha', 'mass/volume',],
     }
     return data
 
 def gett2dataqaqc(rice_obj):
     data = { 
         "Parameter": ['Sediment Mass', 'Water Column Volume', 'Mass per unit area', 'Water Concentration',],
-        "Value": ['%.3f' % rice_obj.msed, '%.3f' % rice_obj.vw, '%.3f' % rice_obj.mai1, '%.3f' % rice_obj.cw,],
-        "Expected-Value": ['%.3f' % rice_obj.msed_expected, '%.3f' % rice_obj.vw_expected, '%.3f' % rice_obj.mai1_expected, '%.3f' % rice_obj.cw_expected,],
-        "Units": ['mass', 'volume', 'mass/area', 'mass/volume',],
+        "Value": ['%.2f' % rice_obj.msed, '%.2f' % rice_obj.vw, '%.4f' % rice_obj.mai1, '%.4f' % rice_obj.cw,],
+        "Expected-Value": ['%.2f' % rice_obj.msed_expected, '%.2f' % rice_obj.vw_expected, '%.4f' % rice_obj.mai1_expected, '%.4f' % rice_obj.cw_expected,],
+        "Units": ['kg', mark_safe('m<sup>3</sup>'), 'kg/ha', 'mass/volume',],
     }
     return data
 
+def gettsumdata(mai, dsed, a, pb, dw, osed, kd):
+    data = {
+        "Parameter": ['Mass applied to patty','Area of patty','Sediment Depth',mark_safe('Sediment bulk density, &#961;<sub>b</sub>'),'Water column depth',mark_safe('Sediment porosity, K<sub>d</sub>'), mark_safe('Water-Sediment partitioning coefficient, K<sub>d</sub>')],
+        "Mean": ['%.2e' % numpy.mean(mai),'%.2e' % numpy.mean(dsed),'%.2e' % numpy.mean(a), '%.2e' % numpy.mean(pb), 
+                 '%.2e' % numpy.mean(dw), '%.2e' % numpy.mean(osed), '%.2e' % numpy.mean(kd)],
+        "Std": ['%.2e' % numpy.std(mai),'%.2e' % numpy.std(dsed),'%.2e' % numpy.std(a), '%.2e' % numpy.std(pb), 
+                '%.2e' % numpy.std(dw), '%.2e' % numpy.std(osed), '%.2e' % numpy.std(kd)],
+        "Min": ['%.2e' % numpy.min(mai),'%.2e' % numpy.min(dsed),'%.2e' % numpy.min(a), '%.2e' % numpy.min(pb), 
+                '%.2e' % numpy.min(dw), '%.2e' % numpy.min(osed), '%.2e' % numpy.min(kd)],
+         "Max": ['%.2e' % numpy.max(mai),'%.2e' % numpy.max(dsed),'%.2e' % numpy.max(a), '%.2e' % numpy.max(pb), 
+                '%.2e' % numpy.max(dw), '%.2e' % numpy.max(osed), '%.2e' % numpy.max(kd)],
+        "Unit": ['kg',mark_safe('m<sup>2</sup>'),'m',mark_safe('kg/m<sup>3</sup>'),'m','','L/kg'],
+    }
+    return data
 
-
-# def gettsumdata(bw_quail,bw_duck,bwb_other,bw_rat,bwm_other,sol,
-#                     avian_ld50,mammalian_ld50,aw_bird,mineau,aw_mamm,noaec,noael):
-#     data = { 
-#         "Parameter": ['BW Quail', 'BW Duck', 'BW Bird Other', 'BW Rat', 'BW Mammal Other', 'Avian LD50', 'Mammalian LD50', 
-#                     'Solubility','AW Bird' , 'Mineau', 'AW Mammalian', 'NOAEC','NOAEL'],
-#         "Mean": ['%.2e' % numpy.mean(bw_quail),'%.2e' % numpy.mean(bw_duck),'%.2e' % numpy.mean(bwb_other), '%.2e' % numpy.mean(bw_rat), 
-#                  '%.2e' % numpy.mean(bwm_other), '%.2e' % numpy.mean(sol), '%.2e' % numpy.mean(avian_ld50), '%.2e' % numpy.mean(mammalian_ld50),
-#                  '%.2e' % numpy.mean(aw_bird), '%.2e' % numpy.mean(mineau), '%.2e' % numpy.mean(aw_mamm),
-#                  '%.2e' % numpy.mean(noaec), '%.2e' % numpy.mean(noael),],
-#         "Std": ['%.2e' % numpy.std(bw_quail),'%.2e' % numpy.std(bw_duck),'%.2e' % numpy.std(bwb_other), '%.2e' % numpy.std(bw_rat), 
-#                 '%.2e' % numpy.std(bwm_other), '%.2e' % numpy.std(sol), '%.2e' % numpy.std(avian_ld50), '%.2e' % numpy.std(mammalian_ld50),
-#                  '%.2e' % numpy.std(aw_bird), '%.2e' % numpy.std(mineau), '%.2e' % numpy.std(aw_mamm),
-#                  '%.2e' % numpy.std(noaec),'%.2e' % numpy.std(noael),],
-#         "Min": ['%.2e' % numpy.min(bw_quail),'%.2e' % numpy.min(bw_duck),'%.2e' % numpy.min(bwb_other), '%.2e' % numpy.min(bw_rat), 
-#                 '%.2e' % numpy.min(bwm_other), '%.2e' % numpy.min(sol), '%.2e' % numpy.min(avian_ld50), '%.2e' % numpy.min(mammalian_ld50),
-#                  '%.2e' % numpy.min(aw_bird), '%.2e' % numpy.min(mineau), '%.2e' % numpy.min(aw_mamm),
-#                  '%.2e' % numpy.min(noaec),'%.2e' % numpy.min(noael),],
-#          "Max": ['%.2e' % numpy.max(bw_quail),'%.2e' % numpy.max(bw_duck),'%.2e' % numpy.max(bwb_other), '%.2e' % numpy.max(bw_rat), 
-#                 '%.2e' % numpy.max(bwm_other), '%.2e' % numpy.max(sol), '%.2e' % numpy.max(avian_ld50), '%.2e' % numpy.max(mammalian_ld50),
-#                  '%.2e' % numpy.max(aw_bird), '%.2e' % numpy.max(mineau), '%.2e' % numpy.max(aw_mamm),
-#                  '%.2e' % numpy.max(noaec),'%.2e' % numpy.max(noael),],
-#         "Unit": ['g', 'g', 'g', 'g', 'g','mg/kg-bw', 'mg/kg-bw', 'mg/L','g', '', 'g','mg/kg-diet', 'mg/kg-bw',],
-#     }
-#     return data
-
-# # def gettsumdata_out(fw_bird_out, fw_mamm_out, dose_bird_out, dose_mamm_out, at_bird_out, 
-# #                     at_mamm_out, fi_bird_out, det_out, 
-# #                     act_out, acute_bird_out, acute_mamm_out, 
-# #                     chron_bird_out, chron_mamm_out):
-# def gettsumdata_out(dose_bird_out, dose_mamm_out, at_bird_out, 
-#                     at_mamm_out, det_out, act_out, acute_bird_out, acute_mamm_out, 
-#                     chron_bird_out, chron_mamm_out):
-#     data = {
-#         "Parameter": ['Upper Bound Exposure - Avian', 'Upper Bound Exposure - Mammalian',
-#                     'Adjusted Toxicity Value (Acute) - Avian',
-#                     'Adjusted Toxicity Value (Acute) - Mammalian',
-#                     'Adjusted Toxicity Value (Chronic) - Avian',
-#                     'Adjusted Toxicity Value (Chronic) - Mammalian',
-#                     'Ratio of Exposure to Toxicity (Acute) - Avian',
-#                     'Ratio of Exposure to Toxicity (Acute) - Mammalian',
-#                     'Ratio of Exposure to Toxicity (Chronic) - Avian',
-#                     'Ratio of Exposure to Toxicity (Chronic) - Mammalian',],
-
-#         "Mean": [
-#                  '%.2e' % numpy.mean(dose_bird_out), '%.2e' % numpy.mean(dose_mamm_out), '%.2e' % numpy.mean(at_bird_out),
-#                  '%.2e' % numpy.mean(at_mamm_out), '%.2e' % numpy.mean(act_out), '%.2e' % numpy.mean(det_out),
-#                  '%.2e' % numpy.mean(acute_bird_out), '%.2e' % numpy.mean(acute_mamm_out),
-#                  '%.2e' % numpy.mean(chron_bird_out), '%.2e' % numpy.mean(chron_mamm_out),],
-
-#         "Std": ['%.2e' % numpy.std(dose_bird_out), '%.2e' % numpy.std(dose_mamm_out), '%.2e' % numpy.std(at_bird_out),
-#                 '%.2e' % numpy.std(at_mamm_out), '%.2e' % numpy.std(act_out), '%.2e' % numpy.std(det_out),
-#                 '%.2e' % numpy.std(acute_bird_out), '%.2e' % numpy.std(acute_mamm_out),
-#                 '%.2e' % numpy.std(chron_bird_out), '%.2e' % numpy.std(chron_mamm_out),],
-
-#         "Min": ['%.2e' % numpy.min(dose_bird_out), '%.2e' % numpy.min(dose_mamm_out), '%.2e' % numpy.min(at_bird_out),
-#                 '%.2e' % numpy.min(at_mamm_out), '%.2e' % numpy.min(act_out), '%.2e' % numpy.min(det_out),
-#                 '%.2e' % numpy.min(acute_bird_out), '%.2e' % numpy.min(acute_mamm_out),
-#                 '%.2e' % numpy.min(chron_bird_out), '%.2e' % numpy.min(chron_mamm_out),],
-
-#          "Max": ['%.2e' % numpy.max(dose_bird_out), '%.2e' % numpy.min(dose_mamm_out), '%.2e' % numpy.min(at_bird_out),
-#                 '%.2e' % numpy.max(at_mamm_out), '%.2e' % numpy.max(act_out), '%.2e' % numpy.min(det_out),
-#                 '%.2e' % numpy.max(acute_bird_out), '%.2e' % numpy.min(acute_mamm_out),
-#                 '%.2e' % numpy.max(chron_bird_out), '%.2e' % numpy.max(chron_mamm_out),],
-
-#         "Unit": ['mg/kg-bw', 'mg/kg-bw','mg/kg-bw', 'mg/kg-bw', 'mg/kg-bw', 'mg/kg-bw', '','', '', '',],
-#     }
-#     return data
-
+def gettsumdata_out(msed, vw, mai1, cw):
+    data = {
+        "Parameter": ['Sediment Mass', 'Water Column Volume', 'Mass per unit area', 'Water Concentration',],
+        "Mean": ['%.2e' % numpy.mean(msed),'%.2e' % numpy.mean(vw),'%.2e' % numpy.mean(mai1), '%.2e' % numpy.mean(cw)],
+        "Std": ['%.2e' % numpy.std(msed),'%.2e' % numpy.std(vw),'%.2e' % numpy.std(mai1), '%.2e' % numpy.std(cw)],
+        "Min": ['%.2e' % numpy.min(msed),'%.2e' % numpy.min(vw),'%.2e' % numpy.min(mai1), '%.2e' % numpy.min(cw)],
+         "Max": ['%.2e' % numpy.max(msed),'%.2e' % numpy.max(vw),'%.2e' % numpy.max(mai1), '%.2e' % numpy.max(cw)],
+        "Unit": ['kg', mark_safe('m<sup>3</sup>'), 'kg/ha', 'mass/volume',],
+    }
+    return data
 
 pvuheadings = getheaderpvu()
 pvuheadingsqaqc = getheaderpvuqaqc()
@@ -177,6 +134,16 @@ def table_all_qaqc(rice_obj):
 
     return html_all
 
+def timestamp():
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+    html="""
+    <div class="out_">
+    <b>Tier 1 Rice Model (Version 1.0)<br>
+    """
+    html = html + st
+    html = html + " (UTC)</b>"
+    return html
 
 def table_1(rice_obj):
         #pre-table 1
@@ -252,53 +219,42 @@ def table_2_qaqc(rice_obj):
         """
         return html
 
-# def table_all_sum(sumheadings, tmpl, bw_quail,bw_duck,bwb_other,bw_rat,bwm_other,sol,
-#                     avian_ld50,mammalian_ld50,aw_bird,mineau,aw_mamm,noaec,noael,
-#                     dose_bird_out, dose_mamm_out, at_bird_out, 
-#                     at_mamm_out, det_out, act_out, acute_bird_out, acute_mamm_out, 
-#                     chron_bird_out, chron_mamm_out):
-#     html_all_sum = table_sum_input(sumheadings, tmpl, bw_quail,bw_duck,bwb_other,bw_rat,bwm_other,sol,
-#                     avian_ld50,mammalian_ld50,aw_bird,mineau,aw_mamm,noaec,noael)
-#     html_all_sum += table_sum_output(sumheadings,tmpl,dose_bird_out,dose_mamm_out,at_bird_out, 
-#                     at_mamm_out,det_out,act_out,acute_bird_out,acute_mamm_out,chron_bird_out,chron_mamm_out)
-#     return html_all_sum
+def table_sum_all(sumheadings, tmpl, mai, dsed, a, pb, dw, osed, kd, msed, vw, mai1, cw):
+    html_all_sum = table_sum_input(sumheadings, tmpl, mai, dsed, a, pb, dw, osed, kd)
+    html_all_sum += table_sum_output(sumheadings, tmpl, msed, vw, mai1, cw)
+    return html_all_sum
 
-# def table_sum_input(sumheadings, tmpl, bw_quail,bw_duck,bwb_other,bw_rat,bwm_other,sol,
-#                     avian_ld50,mammalian_ld50,aw_bird,mineau,aw_mamm,noaec,noael):
-#         #pre-table sum_input
-#         html = """
-#         <H3 class="out_1 collapsible" id="section1"><span></span>Summary Statistics</H3>
-#         <div class="out_">
-#             <H4 class="out_1 collapsible" id="section4"><span></span>Batch Inputs</H4>
-#                 <div class="out_ container_output">
-#         """
-#         #table sum_input
-#         tsuminputdata = gettsumdata(bw_quail,bw_duck,bwb_other,bw_rat,bwm_other,sol,avian_ld50,mammalian_ld50,aw_bird,mineau,aw_mamm,noaec,noael)
-#         tsuminputrows = gethtmlrowsfromcols(tsuminputdata, sumheadings)
-#         html = html + tmpl.render(Context(dict(data=tsuminputrows, headings=sumheadings)))
-#         html = html + """
-#         </div>
-#         """
-#         return html
+def table_sum_input(sumheadings, tmpl, mai, dsed, a, pb, dw, osed, kd):
+    #pre-table sum_input
+        html = """
+        <H3 class="out_1 collapsible" id="section1"><span></span>Summary Statistics</H3>
+        <div class="out_">
+            <H4 class="out_1 collapsible" id="section4"><span></span>Batch Inputs</H4>
+                <div class="out_ container_output">
+        """
+        #table sum_input
+        tsuminputdata = gettsumdata(mai, dsed, a, pb, dw, osed, kd)
+        tsuminputrows = gethtmlrowsfromcols(tsuminputdata, sumheadings)
+        html = html + tmpl.render(Context(dict(data=tsuminputrows, headings=sumheadings)))
+        html = html + """
+        </div>
+        """
+        return html
 
-# def table_sum_output(sumheadings, tmpl, dose_bird_out, dose_mamm_out, at_bird_out, 
-#                     at_mamm_out, det_out, act_out, acute_bird_out, acute_mamm_out, 
-#                     chron_bird_out, chron_mamm_out):
-#         #pre-table sum_input
-#         html = """
-#         <br>
-#             <H4 class="out_1 collapsible" id="section3"><span></span>rice Outputs</H4>
-#                 <div class="out_ container_output">
-#         """
-#         #table sum_input
-#         tsumoutputdata = gettsumdata_out(dose_bird_out, dose_mamm_out, at_bird_out, 
-#                     at_mamm_out, det_out, act_out, acute_bird_out, acute_mamm_out, 
-#                     chron_bird_out, chron_mamm_out)
-#         tsumoutputrows = gethtmlrowsfromcols(tsumoutputdata, sumheadings)
-#         html = html + tmpl.render(Context(dict(data=tsumoutputrows, headings=sumheadings)))
-#         html = html + """
-#                 </div>
-#         </div>
-#         <br>
-#         """
-#         return html
+def table_sum_output(sumheadings, tmpl, msed, vw, mai1, cw):
+    #pre-table sum_input
+        html = """
+        <br>
+            <H4 class="out_1 collapsible" id="section3"><span></span>Rice Model Outputs</H4>
+                <div class="out_ container_output">
+        """
+        #table sum_input
+        tsumoutputdata = gettsumdata_out(msed, vw, mai1, cw)
+        tsumoutputrows = gethtmlrowsfromcols(tsumoutputdata, sumheadings)
+        html = html + tmpl.render(Context(dict(data=tsumoutputrows, headings=sumheadings)))
+        html = html + """
+                </div>
+        </div>
+        <br>
+        """
+        return html

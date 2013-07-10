@@ -24,7 +24,7 @@ class TTInp(forms.Form):
     mamm_acute_derm_study = forms.CharField(label='Mammalian acute dermal LD50 study')
     bird_acute_oral_study = forms.CharField(label='Avian acute oral study MRID number')
     bird_study_add_comm = forms.CharField(label='bird_study_add_comm')
-    Species_of_the_tested_bird = forms.CharField(Label='Species_of_the_tested_bird')
+    Species_of_the_tested_bird = forms.CharField(label='Species_of_the_tested_bird')
     mamm_study_add_comm = forms.CharField(label='mamm_study_add_comm')
     avian_lc50 = forms.FloatField(label='Avian LC50 (mg/kg-bw)')
     avian_NOAEC = forms.FloatField(label='Avian NOAEC (mg/kg-diet)')

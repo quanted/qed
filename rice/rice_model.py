@@ -144,9 +144,26 @@ class rice(object):
 
     # The pesticide mass per unit area
     def Calcmai1(self):
-        self.mai = float(self.mai)
-        self.a = float(self.a)*1e-4
-        self.mai1 = self.mai/self.a
+        if self.mai1 == -1:
+            try:
+                self.mai = float(self.mai)
+                self.a = float(self.a)
+            except IndexError:
+                raise IndexError\
+                ('The mass applied to patty and area of the patty must be supplied the command line.')
+            except ValueError:
+                raise ValueError\
+                ('The area of the rice paddy must be a real number, not "%ha"' % self.a)
+            except ValueError:
+                raise ValueError\
+                ('The area of the rice paddy must be a real number, not "%ha"' % self.mai)
+            if self.a < 0:
+                raise ValueError\
+                ('a=%g is a non-physical value.' % self.a)
+            if self.mai < 0:
+                raise ValueError\
+                ('mai=%g is a non-physical value.' % self.mai)
+            self.mai1 = (self.mai/self.a)*10000
         return self.mai1
 
     #    if a <= 0:
@@ -207,7 +224,7 @@ class rice(object):
             if self.kd < 0:
                 raise ValueError\
                 ('kd=g% is a non-physical value.' % self.kd)
-            self.cw = self.mai1*1e-2 / (self.dw + (self.dsed * (self.osed + (self.pb * self.kd*0.001))))
+            self.cw = (self.mai1 / (self.dw + (self.dsed * (self.osed + (self.pb * self.kd*1e-5)))))*100
         return self.cw
 
 

@@ -156,7 +156,7 @@ class RiceQaqcPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'rice',
-                'model_attributes':'RICE QAQC'})
+                'model_attributes':'Rice Model QAQC'})
         html = html + rice_tables.table_all_qaqc(rice_obj)
         # html = html + """
         # <table border="1">

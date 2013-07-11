@@ -1,7 +1,7 @@
 <p>Saturated air concentration:</p>
 <img src = "/images/latex/stir/stir_image1.png" alt="Stir_1">
-<p><Avian inhalation rate/p>
-<img src = "/images/latex/terrplant/stir_image2.png" alt="Terrplant_2">
+<p>Avian inhalation rate:</p>
+<img src = "/images/latex/stir/stir_image2.png" alt="stir_2">
 <p>Maximum avian vapor inhalation dose:</p>
 <img src = "/images/latex/stir/stir_image3.png" alt="stir_3">
 <p>Mammalian inhalation rate:</p>

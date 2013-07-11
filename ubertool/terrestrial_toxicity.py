@@ -15,6 +15,10 @@ class TerrestrialToxicity(db.Model):
     bird_acute_oral_study = db.StringProperty
     bird_study_additional_comment = db.StringProperty
     Species_of_the_tested_bird = db.StringProperty
+    Species_of_the_tested_bird_avian_ld50 = db.StringProperty
+    Species_of_the_tested_bird_avian_lc50 = db.StringProperty
+    Species_of_the_tested_bird_avian_NOAEC = db.StringProperty
+    Species_of_the_tested_bird_avian_NOAEL = db.StringProperty
     mamm_acute_derm_ld50 = db.FloatProperty()
     mamm_acute_derm_study = db.StringProperty()
     mamm_study_add_comm = db.StringProperty()
@@ -22,6 +26,10 @@ class TerrestrialToxicity(db.Model):
     avian_lc50 = db.FloatProperty()
     avian_NOAEC = db.FloatProperty()
     avian_NOAEL = db.FloatProperty()
+    bw_avian_ld50 = db.FloatProperty()
+    bw_avian_lc50 = db.FloatProperty()
+    bw_avian_NOAEC = db.FloatProperty()
+    bw_avian_NOAEL = db.FloatProperty()
     bw_quail = db.FloatProperty()
     bw_duck = db.FloatProperty()
     bwb_other = db.FloatProperty()

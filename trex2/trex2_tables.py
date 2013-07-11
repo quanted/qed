@@ -982,7 +982,7 @@ def table_all(trex2_obj):
         elif trex2_obj.Application_type == 'Broadcast-Liquid':
             table15_out=table_15(trex2_obj)
             html = html + table15_out['html']
-            return html, table6_out, table7_out, table8_out, table9_out, table10_out, table11_out, table15_out
+            return html, table6_out, table7_out, table7_add_out, table8_out, table9_out, table10_out, table11_out, table15_out
 
 def timestamp():
     ts = time.time()

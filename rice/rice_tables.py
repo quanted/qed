@@ -75,7 +75,7 @@ def gett2data(rice_obj):
     data = { 
         "Parameter": ['Sediment Mass', 'Water Column Volume', 'Mass per unit area', 'Water Concentration',],
         "Value": ['%.2f' % rice_obj.msed, '%.2f' % rice_obj.vw, '%.4f' % rice_obj.mai1, '%.4f' % rice_obj.cw,],
-        "Units": ['kg', mark_safe('m<sup>3</sup>'), 'kg/ha', 'mass/volume',],
+        "Units": ['kg', mark_safe('m<sup>3</sup>'), 'kg/ha', mark_safe('&#956;g/L'),],
     }
     return data
 
@@ -84,7 +84,7 @@ def gett2dataqaqc(rice_obj):
         "Parameter": ['Sediment Mass', 'Water Column Volume', 'Mass per unit area', 'Water Concentration',],
         "Value": ['%.2f' % rice_obj.msed, '%.2f' % rice_obj.vw, '%.4f' % rice_obj.mai1, '%.4f' % rice_obj.cw,],
         "Expected-Value": ['%.2f' % rice_obj.msed_expected, '%.2f' % rice_obj.vw_expected, '%.4f' % rice_obj.mai1_expected, '%.4f' % rice_obj.cw_expected,],
-        "Units": ['kg', mark_safe('m<sup>3</sup>'), 'kg/ha', 'mass/volume',],
+        "Units": ['kg', mark_safe('m<sup>3</sup>'), 'kg/ha', mark_safe('&#956;g/L'),],
     }
     return data
 
@@ -110,7 +110,7 @@ def gettsumdata_out(msed, vw, mai1, cw):
         "Std": ['%.2e' % numpy.std(msed),'%.2e' % numpy.std(vw),'%.2e' % numpy.std(mai1), '%.2e' % numpy.std(cw)],
         "Min": ['%.2e' % numpy.min(msed),'%.2e' % numpy.min(vw),'%.2e' % numpy.min(mai1), '%.2e' % numpy.min(cw)],
          "Max": ['%.2e' % numpy.max(msed),'%.2e' % numpy.max(vw),'%.2e' % numpy.max(mai1), '%.2e' % numpy.max(cw)],
-        "Unit": ['kg', mark_safe('m<sup>3</sup>'), 'kg/ha', 'mass/volume',],
+        "Unit": ['kg', mark_safe('m<sup>3</sup>'), 'kg/ha', mark_safe('&#956;g/L'),],
     }
     return data
 
@@ -129,7 +129,7 @@ def table_all(rice_obj):
 
 def table_all_qaqc(rice_obj):
    
-    html_all = table_1_qaqc(rice_obj)      
+    html_all = table_1_qaqc(rice_obj)
     html_all = html_all + table_2_qaqc(rice_obj)
 
     return html_all
@@ -139,10 +139,12 @@ def timestamp():
     st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
     html="""
     <div class="out_">
-    <b>Tier 1 Rice Model (Version 1.0)<br>
+        <b>Tier 1 Rice Model (Version 1.0)<br>
     """
     html = html + st
     html = html + " (UTC)</b>"
+    html = html + """
+    </div>"""
     return html
 
 def table_1(rice_obj):

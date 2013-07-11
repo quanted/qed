@@ -61,7 +61,8 @@ class RiceExecutePage(webapp.RequestHandler):
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html',{
                 'model':'rice', 
-                'model_attributes':'Rice Model Output'})     
+                'model_attributes':'Rice Model Output'})
+        html = html + rice_tables.timestamp()
         html = html + rice_tables.table_all(rice_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})

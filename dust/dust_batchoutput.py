@@ -191,10 +191,12 @@ class DustBatchOutputPage(webapp.RequestHandler):
         iter_html=loop_html(thefile)        
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', 'title')
-        # print baremammrisk_out
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'dust','page':'batchinput'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberbatch_start.html', {})
+        html = html + template.render(templatepath + '04uberbatch_start.html', {
+                'model':'dust',
+                'model_attributes':'DUST Batch Output'})
+        html = html + dust_tables.timestamp()
         html = html + iter_html
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

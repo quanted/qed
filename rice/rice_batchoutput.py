@@ -276,6 +276,7 @@ class RiceBatchOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberbatch_start.html', {
                 'model':'rice',
                 'model_attributes':'Rice Model Batch Output'})
+        html = html + rice_tables.timestamp()
         html = html + iter_html
         # html = html + template.render(templatepath + 'rice-batchoutput-jqplot.html', {})
         html = html + template.render(templatepath + 'export.html', {})            

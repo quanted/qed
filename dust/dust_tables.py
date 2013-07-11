@@ -203,8 +203,7 @@ def table_all(dust_obj):
     table7_out = table_7(dust_obj)
     table8_out = table_8(dust_obj)
 
-    html_all = timestamp()
-    html_all = html_all + table_1(dust_obj)
+    html_all = table_1(dust_obj)
     html_all = html_all + table_2(dust_obj)
     html_all = html_all + table3_out['html']
     html_all = html_all + table4_out['html']
@@ -223,6 +222,8 @@ def timestamp():
     """
     html = html + st
     html = html + " (UTC)</b>"
+    html = html + """
+    </div>"""
     return html
 
 def table_sum_input(i, ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw):

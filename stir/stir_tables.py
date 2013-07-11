@@ -66,19 +66,22 @@ def timestamp():
     st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
     html="""
     <div class="out_">
-    <b>STIR <a href="http://www.epa.gov/oppefed1/models/terrestrial/stir/stir_user_guide.html">Version 1.0</a> (Beta)<br>
+        <b>STIR <a href="http://www.epa.gov/oppefed1/models/terrestrial/stir/stir_user_guide.html">Version 1.0</a> (Beta)<br>
     """
     html = html + st
-    html = html + " (UTC)</H3>"
+    html = html + " (UTC)</b>"
+    html = html + """
+    </div>"""
     return html
 
 def table_1(pvuheadings, tmpl, sm):
     #chemical_name, ar2, h, f_inhaled, ddsi, mw, vp
     #pre-table 1
     html = """
-        <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs: Chemical</H3>        
+    <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs: Chemical</H3>        
+    <div class="out_">
         <H4 class="out_1 collapsible" id="section2"><span></span>Table 1. Application and Chemical Information</H4>
-        <div class="out_ container_output">
+            <div class="out_ container_output">
         """
     #table 1
     t1data = gett1data(sm)
@@ -103,10 +106,10 @@ def table_1qaqc(pvuheadings, tmpl, sm):
     #chemical_name, ar2, h, f_inhaled, ddsi, mw, vp
     #pre-table 1
     html = """
-        <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs: Chemical</H3>
-        <div class="out_">
+    <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs: Chemical</H3>
+    <div class="out_">
         <H4 class="out_1 collapsible" id="section2"><span></span>Table 1. Application and Chemical Information</H4>
-        <div class="out_ container_output">
+            <div class="out_ container_output">
         """
     #table 1
     t1data = gett1dataqaqc(sm)

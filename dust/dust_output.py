@@ -69,12 +69,9 @@ class DUSTExecutePage(webapp.RequestHandler):
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'dust', 
-                'model_attributes':'DUST Output'})   
-
-
-
+                'model_attributes':'DUST Output'})
+        html = html + dust_tables.timestamp()
         html = html + dust_tables.table_all(dust_obj)[0]
-
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

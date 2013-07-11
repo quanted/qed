@@ -81,7 +81,7 @@ class THerpsOutputPage(webapp.RequestHandler):
                                          tw_bird_ld50, tw_bird_lc50, tw_bird_NOAEC, tw_bird_NOAEL,
                                          x, bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md, 
                                          wp_herp_a_lg, c_mamm_a, c_herp_a)
-        
+        html = html + therps_tables.timestamp()
         html = html + therps_tables.table_all(therps_obj)[0]
         html = html + template.render(templatepath + 'export.html', {})       
         html = html + template.render(templatepath + '04uberoutput_end.html', {})

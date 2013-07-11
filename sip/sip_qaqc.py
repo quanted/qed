@@ -311,7 +311,7 @@ class sipQaqcPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'sip',
                 'model_attributes':'SIP QAQC'})
-        
+        html = html + sip_tables.timestamp()
         html = html + sip_tables.table_all_qaqc(sip_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})

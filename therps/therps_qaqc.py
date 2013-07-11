@@ -362,6 +362,7 @@ class TherpsQaqcPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'therps',
                 'model_attributes':'T-Herps QAQC'})
+        html = html + therps_tables.timestamp()
         html = html + therps_tables.table_all_qaqc(therps_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})

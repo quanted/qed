@@ -35,7 +35,7 @@ class IecOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'iec', 
                 'model_attributes':'IEC Output'})
-
+        html = html + iec_tables.timestamp()
         html = html + iec_tables.table_all(iec_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})

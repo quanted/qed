@@ -178,11 +178,13 @@ class TerrPlantBatchOutputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', 'title')
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'terrplant','page':'batchinput'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberbatch_start.html', {})
+        html = html + template.render(templatepath + '04uberbatch_start.html', {
+                'model':'terrplant',
+                'model_attributes':'TerrPlant Batch Output'})
+        html = html + terrplant_tables.timestamp()
         html = html + iter_html
-        html = html + template.render(templatepath + 'terrplant-batchoutput-jqplot.html', {})                
+        html = html + template.render(templatepath + 'terrplant-batchoutput-jqplot.html', {})             
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        #html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

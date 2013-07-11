@@ -149,6 +149,8 @@ def timestamp():
     """
     html = html + st
     html = html + " (UTC)</b>"
+    html = html + """
+    </div>"""
     return html
 
 def gett1data(therps_obj):
@@ -453,8 +455,7 @@ def table_all(therps_obj):
     table9_out = table_9(therps_obj)
     table10_out = table_10(therps_obj)
 
-    html_all = timestamp()
-    html_all = html_all + table1_out
+    html_all = table1_out
     html_all = html_all + table2_out
     html_all = html_all + table3_out
     html_all = html_all + table5_out['html']
@@ -476,7 +477,7 @@ def table_all_qaqc(therps_obj):
     table9_out_qaqc = table_9_qaqc(therps_obj)
     table10_out_qaqc = table_10_qaqc(therps_obj)
 
-    html_all = timestamp()+table1_out+table2_out+table3_out+table5_out_qaqc+table6_out_qaqc+table7_out_qaqc+table8_out_qaqc+table9_out_qaqc+table10_out_qaqc
+    html_all = table1_out+table2_out+table3_out+table5_out_qaqc+table6_out_qaqc+table7_out_qaqc+table8_out_qaqc+table9_out_qaqc+table10_out_qaqc
 
 
     return html_all
@@ -484,73 +485,81 @@ def table_all_qaqc(therps_obj):
 def table_sum_1(i, percent_ai, Foliar_dissipation_half_life, number_of_applications, interval_between_applications, application_rate):
         #pre-table sum_input
         html = """
-            <div class="out_1">
-              <H3>Summary Statistics (Iterations=%s)</H3>
-              <H3>Batch Inputs:</H3>
-              <H4>Chemical Properties</H4>
-            </div>
+        <H3 class="out_1 collapsible" id="section1"><span></span>Summary Statistics (Iterations=%s)</H3>
+        <div class="out_">
+            <H4 class="out_1 collapsible" id="section4"><span></span>Batch Inputs</H4>
+                <div class="out_ container_output">
         """%(i-1)
 
         #table sum_input
         tsuminputdata_1 = gettsumdata_1(percent_ai, Foliar_dissipation_half_life, number_of_applications, interval_between_applications, application_rate)
         tsuminputrows_1 = gethtmlrowsfromcols(tsuminputdata_1, sumheadings)
         html = html + tmpl.render(Context(dict(data=tsuminputrows_1, headings=sumheadings)))
+        html = html + """
+        </div>
+        """
         return html
 
 def table_sum_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_avian_ld50, bw_avian_lc50, bw_avian_NOAEC, bw_avian_NOAEL, mineau_scaling_factor):
         #pre-table sum_input
         html = """
-            <div class="out_1">
-              <H4>Toxicity Properties</H4>
-            </div>
+            <H4 class="out_1 collapsible" id="section3"><span></span>Toxicity Properties</H4>
+                <div class="out_ container_output">
         """
-
         #table sum_input
         tsuminputdata_2 = gettsumdata_2(avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, bw_avian_ld50, bw_avian_lc50, bw_avian_NOAEC, bw_avian_NOAEL, mineau_scaling_factor)
         tsuminputrows_2 = gethtmlrowsfromcols(tsuminputdata_2, sumheadings)
         html = html + tmpl.render(Context(dict(data=tsuminputrows_2, headings=sumheadings)))
+        html = html + """
+        </div>
+        """
         return html
 
 def table_sum_3(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md, wp_herp_a_lg, c_mamm_a, c_herp_a):
         #pre-table sum_input
         html = """
-            <div class="out_1">
-              <H4>Assessed Species Inputs</H4>
-            </div>
+        <H4 class="out_1 collapsible" id="section3"><span></span>Assessed Species Inputs</H4>
+                <div class="out_ container_output">
         """
-
         #table sum_input
         tsuminputdata_3 = gettsumdata_3(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md, wp_herp_a_lg, c_mamm_a, c_herp_a)
         tsuminputrows_3 = gethtmlrowsfromcols(tsuminputdata_3, sumheadings)
         html = html + tmpl.render(Context(dict(data=tsuminputrows_3, headings=sumheadings)))
+        html = html + """
+                </div>
+        </div>
+        """
         return html
 
 def table_sum_5(table_type, EEC_diet_herp_BL_out, EEC_ARQ_herp_BL_out, EEC_diet_herp_FR_out, EEC_ARQ_herp_FR_out, EEC_diet_herp_HM_out, EEC_ARQ_herp_HM_out, EEC_diet_herp_IM_out, EEC_ARQ_herp_IM_out, EEC_diet_herp_TP_out, EEC_ARQ_herp_TP_out):
         #pre-table sum_input
         html = """
-            <div class="out_1">
-              <H4>%s, Subacute Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
-            </div>
+        <H4 class="out_1 collapsible" id="section3"><span></span>%s, Subacute Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
+                <div class="out_ container_output">
         """%(table_type)
 
         #table sum_input
         tsuminputdata_5 = gettsumdata_5(EEC_diet_herp_BL_out, EEC_ARQ_herp_BL_out, EEC_diet_herp_FR_out, EEC_ARQ_herp_FR_out, EEC_diet_herp_HM_out, EEC_ARQ_herp_HM_out, EEC_diet_herp_IM_out, EEC_ARQ_herp_IM_out, EEC_diet_herp_TP_out, EEC_ARQ_herp_TP_out)
         tsuminputrows_5 = gethtmlrowsfromcols(tsuminputdata_5, sumheadings_5[1])
         html = html + tmpl_5.render(Context(dict(data=tsuminputrows_5, l_headings=sumheadings_5[0][0])))
+        html = html + """
+        </div>
+        """
         return html
 
 def table_sum_6(table_type, EEC_diet_herp_BL_out, EEC_CRQ_herp_BL_out, EEC_diet_herp_FR_out, EEC_CRQ_herp_FR_out, EEC_diet_herp_HM_out, EEC_CRQ_herp_HM_out, EEC_diet_herp_IM_out, EEC_CRQ_herp_IM_out, EEC_diet_herp_TP_out, EEC_CRQ_herp_TP_out):
         #pre-table sum_input
         html = """
-            <div class="out_1">
-              <H4>%s, Chronic Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
-            </div>
+        <H4 class="out_1 collapsible" id="section3"><span></span>%s, Chronic Terrestrial Herpetofauna Dietary Based Risk Quotients</H4>
+                <div class="out_ container_output">
         """%(table_type)
-
         #table sum_input
         tsuminputdata_6 = gettsumdata_6(EEC_diet_herp_BL_out, EEC_CRQ_herp_BL_out, EEC_diet_herp_FR_out, EEC_CRQ_herp_FR_out, EEC_diet_herp_HM_out, EEC_CRQ_herp_HM_out, EEC_diet_herp_IM_out, EEC_CRQ_herp_IM_out, EEC_diet_herp_TP_out, EEC_CRQ_herp_TP_out)
         tsuminputrows_6 = gethtmlrowsfromcols(tsuminputdata_6, sumheadings_5[1])
         html = html + tmpl_5.render(Context(dict(data=tsuminputrows_6, l_headings=sumheadings_5[0][0])))
+        html = html + """
+        </div>
+        """
         return html
 
 def table_sum_7(table_type, bw_herp_a_sm_out, bw_herp_a_md_out, bw_herp_a_lg_out, LD50_AD_sm_out, LD50_AD_md_out, LD50_AD_lg_out,
@@ -561,11 +570,9 @@ def table_sum_7(table_type, bw_herp_a_sm_out, bw_herp_a_md_out, bw_herp_a_lg_out
                   EEC_dose_TP_md_out, EEC_dose_TP_lg_out, ARQ_dose_TP_md_out, ARQ_dose_TP_lg_out):
         #pre-table sum_input
         html = """
-            <div class="out_1">
-              <H4>%s, Acute Terrestrial Herpetofauna Dose-Based Risk Quotients</H4>
-            </div>
+        <H4 class="out_1 collapsible" id="section3"><span></span>%s, Acute Terrestrial Herpetofauna Dose-Based Risk Quotients</H4>
+                <div class="out_ container_output">
         """%(table_type)
-
         #table sum_input
         tsuminputdata_7 = gettsumdata_7(bw_herp_a_sm_out, bw_herp_a_md_out, bw_herp_a_lg_out, LD50_AD_sm_out, LD50_AD_md_out, LD50_AD_lg_out,
                   EEC_dose_BP_sm_out, EEC_dose_BP_md_out, EEC_dose_BP_lg_out, ARQ_dose_BP_sm_out, ARQ_dose_BP_md_out, ARQ_dose_BP_lg_out,
@@ -575,6 +582,9 @@ def table_sum_7(table_type, bw_herp_a_sm_out, bw_herp_a_md_out, bw_herp_a_lg_out
                   EEC_dose_TP_md_out, EEC_dose_TP_lg_out, ARQ_dose_TP_md_out, ARQ_dose_TP_lg_out)
         tsuminputrows_7 = gethtmlrowsfromcols(tsuminputdata_7, sumheadings_7[1])
         html = html + tmpl_5.render(Context(dict(data=tsuminputrows_7, l_headings=[sumheadings_7[0][0][0], sumheadings_7[0][0][1], sumheadings_7[0][0][2], sumheadings_7[0][0][3]])))
+        html = html + """
+        </div>
+        """
         return html
 
 

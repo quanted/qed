@@ -617,7 +617,7 @@ class TerrplantQaqcPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'terrplant',
                 'model_attributes':'TerrPlant QAQC'})
-
+        html = html + terrplant_tables.timestamp()
         terr = terrplant_model.terrplant(True,True,A[0],I[0],R[0],D[0],nms[0],lms[0],nds[0],lds[0],chemical_name[0],pc_code[0],use[0],application_method[0],application_form[0],sol[0])
         terr.chemical_name_expected = chemical_name[0]
         terr.pc_code_expected = pc_code[0]

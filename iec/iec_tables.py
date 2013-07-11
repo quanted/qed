@@ -66,6 +66,8 @@ def timestamp():
     """
     html = html + st
     html = html + " (UTC)</b>"
+    html = html + """
+    </div>"""
     return html
 
 def gett1data(iec_obj):
@@ -98,8 +100,7 @@ djtemplate = getdjtemplate()
 tmpl = Template(djtemplate)
 
 def table_all(iec_obj):
-    html_all = timestamp()
-    html_all = html_all + table_1(iec_obj)
+    html_all = table_1(iec_obj)
     html_all = html_all + table_2(iec_obj)
     return html_all
 

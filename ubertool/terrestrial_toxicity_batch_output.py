@@ -114,6 +114,10 @@ def batchLoadTerrestrialToxicityConfigs(params_matrix,config_index,ubertool_conf
         config_params['Small_medium_and_large_BW_of_assessed_herptile_listed_species'] = params_matrix.get("Small_medium_and_large_BW_of_assessed_herptile_listed_species")[config_index]            
     if "percent_water_content_of_small_med_large_herptile_species_diet" in params_matrix:
         config_params['percent_water_content_of_small_med_large_herptile_species_diet'] = params_matrix.get("percent_water_content_of_small_med_large_herptile_species_diet")[config_index]  
+    if "slope_of_dose_response" in params_matrix:
+        config_params['slope_of_dose_response'] = params_matrix.get("slope_of_dose_response")[config_index]
+    if "desired_threshold" in params_matrix:
+        config_params['desired_threshold'] = params_matrix.get("desired_threshold")[config_index]
     if "taxonomic_group" in params_matrix:
         config_params['taxonomic_group'] = params_matrix.get("taxonomic_group")[config_index]  
     if "eat_mammals" in params_matrix:

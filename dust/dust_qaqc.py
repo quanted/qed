@@ -18,7 +18,8 @@ class dustQaqcPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start.html', {
                 'model':'dust',
                 'model_attributes':'Dust QAQC'})
-#        html = html =
+        # Un-comment below to make timestamping work for QAQC page
+        # html = html + dust_tables.timestamp()
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

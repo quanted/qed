@@ -197,9 +197,7 @@ def html_table(row_inp,iter):
     wp_herp_a_lg_temp=float(row_inp[28])/100
     wp_herp_a_lg.append(wp_herp_a_lg_temp)
 
-    Input_header="""<table border="0">
-                        <tr><H3>Batch Calculation of Iteration %s</H3></tr>
-                    </table>"""%(iter)
+    Input_header="""<H3>Batch Calculation of Iteration %s</H3>"""%(iter)
 
     therps_obj_temp = therps_model.therps(chem_name_temp, use_temp, formu_name_temp, a_i_temp, h_l_temp, n_a_temp, i_a_temp, a_r_temp, 
                                           ld50_bird_temp, lc50_bird_temp, NOAEC_bird_temp, NOAEL_bird_temp, 
@@ -410,8 +408,11 @@ def loop_html(thefile):
     sum_1=therps_tables.table_sum_1(i, a_i_disp, h_l, n_a, i_a, a_r)
     sum_2=therps_tables.table_sum_2(ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, bw_avian_ld50, bw_avian_lc50, bw_avian_NOAEC, bw_avian_NOAEL, x)
     sum_3=therps_tables.table_sum_3(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md, wp_herp_a_lg, c_mamm_a, c_herp_a)
-    sum_4="""<div class="out_"><H3>Batch outputs:</H3></div>"""
-
+    sum_4="""
+    <br>
+        <H3 class="out_1 collapsible" id="section3"><span></span>T-herps Batch outputs:</H3>
+        <div class="out_">
+    """
     sum_5=therps_tables.table_sum_5("Upper Bound Kenaga", EEC_diet_herp_BL_out, EEC_ARQ_herp_BL_out, EEC_diet_herp_FR_out, EEC_ARQ_herp_FR_out, EEC_diet_herp_HM_out, EEC_ARQ_herp_HM_out, EEC_diet_herp_IM_out, EEC_ARQ_herp_IM_out, EEC_diet_herp_TP_out, EEC_ARQ_herp_TP_out)
     sum_6=therps_tables.table_sum_6("Upper Bound Kenaga", EEC_diet_herp_BL_out, EEC_CRQ_herp_BL_out, EEC_diet_herp_FR_out, EEC_CRQ_herp_FR_out, EEC_diet_herp_HM_out, EEC_CRQ_herp_HM_out, EEC_diet_herp_IM_out, EEC_CRQ_herp_IM_out, EEC_diet_herp_TP_out, EEC_CRQ_herp_TP_out)
     sum_7=therps_tables.table_sum_7("Upper Bound Kenaga", bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, LD50_AD_sm_out, LD50_AD_md_out, LD50_AD_lg_out,
@@ -429,8 +430,10 @@ def loop_html(thefile):
                   EEC_dose_HM_md_out_mean, EEC_dose_HM_lg_out_mean, ARQ_dose_HM_md_out_mean, ARQ_dose_HM_lg_out_mean,
                   EEC_dose_IM_md_out_mean, EEC_dose_IM_lg_out_mean, ARQ_dose_IM_md_out_mean, ARQ_dose_IM_lg_out_mean,
                   EEC_dose_TP_md_out_mean, EEC_dose_TP_lg_out_mean, ARQ_dose_TP_md_out_mean, ARQ_dose_TP_lg_out_mean)
-
-    return sum_1+sum_2+sum_3+sum_4+sum_7+sum_5+sum_6+ sum_10+sum_8+sum_9+iter_html
+    html_end = """
+        </div>
+    """
+    return sum_1+sum_2+sum_3+sum_4+sum_7+sum_5+sum_6+ sum_10+sum_8+sum_9+iter_html+html_end
     # return sum_1+sum_2+sum_3+iter_html
 
 
@@ -443,8 +446,12 @@ class TherpsBatchOutputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', 'title')
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'therps','page':'batchinput'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberbatch_start.html', {})
+        html = html + template.render(templatepath + '04uberbatch_start.html', {
+                'model':'therps',
+                'model_attributes':'T-Herps Batch Output'})
+        html = html + therps_tables.timestamp()
         html = html + iter_html
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

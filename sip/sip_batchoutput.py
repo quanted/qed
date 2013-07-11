@@ -163,6 +163,7 @@ class SIPBatchOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberbatch_start.html', {
                 'model':'sip',
                 'model_attributes':'SIP Batch Output'})
+        html = html + sip_tables.timestamp()
         html = html + iter_html
         # html = html + template.render(templatepath + 'sip-batchoutput-jqplot.html', {})
         html = html + template.render(templatepath + 'export.html', {})

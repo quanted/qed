@@ -237,8 +237,7 @@ djtemplate = getdjtemplate()
 tmpl = Template(djtemplate)
 
 def table_all(pvheadings, pvuheadings, deheadings, plantec25noaecheadings, plantecdrysemisprayheadings, sumheadings, tmpl,terrplant_obj):
-    html_all = timestamp()  
-    html_all = html_all + table_1(pvheadings, tmpl, terrplant_obj)
+    html_all = table_1(pvheadings, tmpl, terrplant_obj)
     html_all = html_all + table_2(pvuheadings, tmpl, terrplant_obj)
     html_all = html_all + table_3(deheadings, tmpl, terrplant_obj)
     html_all = html_all + table_4(plantec25noaecheadings, tmpl, terrplant_obj)
@@ -270,10 +269,10 @@ def table_all_sum(sumheadings, tmpl, A, I, R, D, nms, lms, nds, lds,
 def table_sum_input(sumheadings, tmpl, A, I, R, D, nms, lms, nds, lds):
         #pre-table sum_input
         html = """
-        <table border="1" border="1" class="out_1">
-        <tr><td><H3>Summary Statistics</H3></td></tr>
-        <tr></tr>
-        </table>
+        <H3 class="out_1 collapsible" id="section1"><span></span>Summary Statistics</H3>
+        <div class="out_">
+            <H4 class="out_1 collapsible" id="section4"><span></span>Batch Inputs</H4>
+                <div class="out_ container_output">
         """
         #table sum_input
         tsuminputdata = gettsumdata(A, I, R, D, nms, lms, nds, lds)
@@ -290,6 +289,8 @@ def table_sum_output(sumheadings, tmpl, rundry_out, runsemi_out, spray_out, tota
         #pre-table sum_input
         html = """
         <br>
+            <H4 class="out_1 collapsible" id="section3"><span></span>Rice Model Outputs</H4>
+                <div class="out_ container_output">
         """
         #table sum_input
         tsumoutputdata = gettsumdata_out(rundry_out, runsemi_out, spray_out, totaldry_out, totalsemi_out, 
@@ -310,6 +311,8 @@ def timestamp():
     """
     html = html + st
     html = html + " (UTC)</b>"
+    html = html + """
+    </div>"""
     return html
 
 def table_1(pvheadings, tmpl, terrplant_obj):

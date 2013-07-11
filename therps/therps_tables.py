@@ -140,6 +140,17 @@ def getdjtemplate_5():
     """
     return dj_template
 
+def timestamp():
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+    html="""
+    <div class="out_">
+    <b>T-Herps <a href="http://www.epa.gov/oppefed1/models/terrestrial/therps/t_herps_user_guide.htm">Version 1.0</a> (Beta)<br>
+    """
+    html = html + st
+    html = html + " (UTC)</b>"
+    return html
+
 def gett1data(therps_obj):
     data = { 
         "Parameter": ['Chemical Name', 'Use', 'Formulated product name', 'Percentage active ingredient', 'Foliar dissipation half-life', 'Number of applications',
@@ -442,7 +453,8 @@ def table_all(therps_obj):
     table9_out = table_9(therps_obj)
     table10_out = table_10(therps_obj)
 
-    html_all = table1_out
+    html_all = timestamp()
+    html_all = html_all + table1_out
     html_all = html_all + table2_out
     html_all = html_all + table3_out
     html_all = html_all + table5_out['html']
@@ -1221,12 +1233,3 @@ def table_10_qaqc(therps_obj):
         """
         return html
 
-def timestamp():
-    ts = time.time()
-    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S %p')
-    html="""
-    <H3 class="out_">THERPS Version 1.0 <br>
-    """
-    html = html + st
-    html = html + " (UTC)</H3>"
-    return html

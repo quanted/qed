@@ -4,6 +4,8 @@ from django.template import Context, Template
 from django.utils.safestring import mark_safe
 from trex2 import trex2_model
 from trex2 import trex2_parameters
+import time
+import datetime
 
 def getheaderpvu():
 	headings = ["Parameter", "Value", "Units"]
@@ -115,6 +117,13 @@ def getheadersum11():
 def getheadersum12():
     headings = ["Animal Size", "Metric", "Avian", "Mammal"]
     return headings
+
+def getheaderpv5_qaqc():
+    headings_1 = ["Avian (20g)", "Mammalian (15g)"]
+    headings_2 = ["Type", "Size", "AAcute #1", "AAcute #2", "AChronic", "MAcute #1", "MAcute #2", "MChronic"]
+    headings_2_show = ["", "", "Acute #1", "Acute #2", "Chronic", "Acute #1", "Acute #2", "Chronic"]
+    headings_3_show = ["Type", "Size", "(mg ai /kg-bw/day)/LD50", "mg ai ft<sup>-2</sup>/(LD50*bw)", "mg kg<sup>-1</sup>seed/NOAEL", "(mg ai /kg-bw/day)/LD50", "mg ai ft<sup>-2</sup>/(LD50*bw)", "mg a.i./kg-bw/day/adjusted NOAEL"]
+    return headings_1, headings_2, headings_2_show, headings_3_show
 
 def getheaderpv6_qaqc():
     headings = ["Type", "Application Target", "Value"]
@@ -315,6 +324,7 @@ sumheadings_10 = getheadersum10()
 sumheadings_11 = getheadersum11()
 sumheadings_12 = getheadersum12()
 
+pv5headings_qaqc = getheaderpv5_qaqc()
 pv6headings_qaqc = getheaderpv6_qaqc()
 pv7headings_qaqc = getheaderpv7_qaqc()
 pv8headings_qaqc = getheaderpv8_qaqc()
@@ -489,6 +499,24 @@ def gett12data(LD50_rg_bird_sm,LD50_rg_mamm_sm,LD50_rg_bird_md,LD50_rg_mamm_md,L
         "Animal Size": ['Small', 'Medium', 'Large', ] ,
         "Avian": ['%.2e' % LD50_rg_bird_sm, '%.2e' % LD50_rg_bird_md, '%.2e' % LD50_rg_bird_lg,],
         "Mammal": ['%.2e' % LD50_rg_mamm_sm, '%.2e' % LD50_rg_mamm_md, '%.2e' % LD50_rg_mamm_lg,],
+    }
+    return data
+
+def gett5data_qaqc(sa_bird_1_s, sa_bird_2_s, sc_bird_s, sa_mamm_1_s, sa_mamm_2_s, sc_mamm_s, 
+                   sa_bird_1_m, sa_bird_2_m, sc_bird_m, sa_mamm_1_m, sa_mamm_2_m, sc_mamm_m,
+                   sa_bird_1_l, sa_bird_2_l, sc_bird_l, sa_mamm_1_l, sa_mamm_2_l, sc_mamm_l,
+                   sa_bird_1_s_exp, sa_bird_2_s_exp, sc_bird_s_exp, sa_mamm_1_s_exp, sa_mamm_2_s_exp, sc_mamm_s_exp,
+                   sa_bird_1_m_exp, sa_bird_2_m_exp, sc_bird_m_exp, sa_mamm_1_m_exp, sa_mamm_2_m_exp, sc_mamm_m_exp,
+                   sa_bird_1_l_exp, sa_bird_2_l_exp, sc_bird_l_exp, sa_mamm_1_l_exp, sa_mamm_2_l_exp, sc_mamm_l_exp):
+    data = { 
+        "Type": ['Calculated Value', 'Expected Value','Calculated Value', 'Expected Value','Calculated Value', 'Expected Value',],
+        "Size": ['Small', 'Small', 'Medium', 'Medium', 'Large', 'Large',],
+        "AAcute #1": ['%.2e' % sa_bird_1_s, '%.2e' % sa_bird_1_s_exp, '%.2e' % sa_bird_1_m, '%.2e' % sa_bird_1_m_exp, '%.2e' % sa_bird_1_l, '%.2e' % sa_bird_1_l_exp,],
+        "AAcute #2": ['%.2e' % sa_bird_2_s, '%.2e' % sa_bird_2_s_exp, '%.2e' % sa_bird_2_m, '%.2e' % sa_bird_2_m_exp, '%.2e' % sa_bird_2_l, '%.2e' % sa_bird_2_l_exp,],
+        "AChronic":  ['%.2e' % sc_bird_s, '%.2e' % sc_bird_s_exp, '%.2e' % sc_bird_m, '%.2e' % sc_bird_m_exp, '%.2e' % sc_bird_l, '%.2e' % sc_bird_l_exp,],
+        "MAcute #1": ['%.2e' % sa_mamm_1_s, '%.2e' % sa_mamm_1_s_exp, '%.2e' % sa_mamm_1_m, '%.2e' % sa_mamm_1_m_exp, '%.2e' % sa_mamm_1_l, '%.2e' % sa_mamm_1_l_exp,],
+        "MAcute #2": ['%.2e' % sa_mamm_2_s, '%.2e' % sa_mamm_2_s_exp, '%.2e' % sa_mamm_2_m, '%.2e' % sa_mamm_2_m_exp, '%.2e' % sa_mamm_2_l, '%.2e' % sa_mamm_2_l_exp,],
+        "MChronic":  ['%.2e' % sc_mamm_s, '%.2e' % sc_mamm_s_exp, '%.2e' % sc_mamm_m, '%.2e' % sc_mamm_m_exp, '%.2e' % sc_mamm_l, '%.2e' % sc_mamm_l_exp,],
     }
     return data
 
@@ -907,7 +935,8 @@ def table_all(trex2_obj):
     table3_out=table_3(trex2_obj)
     table4_out=table_4(trex2_obj)
 
-    html = table1_out
+    html = timestamp()
+    html = html + table1_out
     html = html + table2_out
     html = html + table3_out
     html = html + table4_out
@@ -953,7 +982,18 @@ def table_all(trex2_obj):
         elif trex2_obj.Application_type == 'Broadcast-Liquid':
             table15_out=table_15(trex2_obj)
             html = html + table15_out['html']
-            return html, table6_out, table7_out, table7_add_out, table8_out, table9_out, table10_out, table11_out, table15_out
+            return html, table6_out, table7_out, table8_out, table9_out, table10_out, table11_out, table15_out
+
+def timestamp():
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+    html="""
+    <div class="out_">
+    <b>T-Rex <a href="http://www.epa.gov/oppefed1/models/terrestrial/trex/t_rex_user_guide.htm">Version 1.5.2</a> (Beta)<br>
+    """
+    html = html + st
+    html = html + " (UTC)</b>"
+    return html
 
 def table_all_qaqc(trex2_obj):
     table1_out=table_1(trex2_obj)
@@ -961,18 +1001,23 @@ def table_all_qaqc(trex2_obj):
     table3_out=table_3(trex2_obj)
     table4_out=table_4(trex2_obj)
     a_r_p=0
-    table6_out_qaqc=table_6_qaqc(trex2_obj)
-    table7_out_qaqc=table_7_qaqc(trex2_obj)
-    table_7_add_out_qaqc=table_7_add_qaqc(trex2_obj)
-    table8_out_qaqc=table_8_qaqc(trex2_obj)
-    table9_out_qaqc=table_9_qaqc(trex2_obj)
-    table10_out_qaqc=table_10_qaqc(trex2_obj)
-    table11_out_qaqc=table_11_qaqc(trex2_obj)
-    table15_out_qaqc=table_15_qaqc(trex2_obj)
 
-    html_all = timestamp()+table1_out+table2_out+table3_out+table4_out+table6_out_qaqc+\
-               table7_out_qaqc+table_7_add_out_qaqc+table8_out_qaqc+table9_out_qaqc+\
-               table10_out_qaqc+table11_out_qaqc+table15_out_qaqc
+    if trex2_obj.Application_type != 'Seed Treatment':
+        table6_out_qaqc=table_6_qaqc(trex2_obj)
+        table7_out_qaqc=table_7_qaqc(trex2_obj)
+        table_7_add_out_qaqc=table_7_add_qaqc(trex2_obj)
+        table8_out_qaqc=table_8_qaqc(trex2_obj)
+        table9_out_qaqc=table_9_qaqc(trex2_obj)
+        table10_out_qaqc=table_10_qaqc(trex2_obj)
+        table11_out_qaqc=table_11_qaqc(trex2_obj)
+        table15_out_qaqc=table_15_qaqc(trex2_obj)
+
+        html_all = timestamp()+table1_out+table2_out+table3_out+table4_out+table6_out_qaqc+\
+                   table7_out_qaqc+table_7_add_out_qaqc+table8_out_qaqc+table9_out_qaqc+\
+                   table10_out_qaqc+table11_out_qaqc+table15_out_qaqc
+    else:
+        table5_out_qaqc=table_5_qaqc(trex2_obj)
+        html_all = timestamp()+table1_out+table2_out+table3_out+table4_out+table5_out_qaqc
 
     return html_all
 
@@ -1673,15 +1718,67 @@ def table_15(trex2_obj):
                              'LD50_bl_bird_md':LD50_bl_bird_md, 'LD50_bl_mamm_md':LD50_bl_mamm_md,
                              'LD50_bl_bird_lg':LD50_bl_bird_lg, 'LD50_bl_mamm_lg':LD50_bl_mamm_lg}
 
-def timestamp():
-    ts = time.time()
-    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S %p')
-    html="""
-    <H3 class="out_">T-REX Version 1.5.2 <br>
-    """
-    html = html + st
-    html = html + " (UTC)</H3>"
-    return html
+def table_5_qaqc(trex2_obj):
+        #pre-table 5_qaqc
+        html = """
+        <H3 class="out_1 collapsible" id="section6"><span></span>Results (Upper Bound Kenaga): Application Type : Seed Treatment</H3>
+            <div class="out_ container_output">
+        """
+        #table 5_qaqc
+        sa_bird_1_s=trex2_obj.sa_bird_1_s
+        sa_bird_2_s=trex2_obj.sa_bird_2_s
+        sc_bird_s=trex2_obj.sc_bird_s
+        sa_mamm_1_s=trex2_obj.sa_mamm_1_s
+        sa_mamm_2_s=trex2_obj.sa_mamm_2_s
+        sc_mamm_s=trex2_obj.sc_mamm_s
+        
+        sa_bird_1_m=trex2_obj.sa_bird_1_m
+        sa_bird_2_m=trex2_obj.sa_bird_2_m
+        sc_bird_m=trex2_obj.sc_bird_m
+        sa_mamm_1_m=trex2_obj.sa_mamm_1_m
+        sa_mamm_2_m=trex2_obj.sa_mamm_2_m
+        sc_mamm_m=trex2_obj.sc_mamm_m
+             
+        sa_bird_1_l=trex2_obj.sa_bird_1_l
+        sa_bird_2_l=trex2_obj.sa_bird_2_l
+        sc_bird_l=trex2_obj.sc_bird_l
+        sa_mamm_1_l=trex2_obj.sa_mamm_1_l
+        sa_mamm_2_l=trex2_obj.sa_mamm_2_l
+        sc_mamm_l=trex2_obj.sc_mamm_l
+
+        sa_bird_1_s_exp=trex2_obj.sa_bird_1_s_out_exp
+        sa_bird_2_s_exp=trex2_obj.sa_bird_2_s_out_exp
+        sc_bird_s_exp=trex2_obj.sc_bird_s_out_exp
+        sa_mamm_1_s_exp=trex2_obj.sa_mamm_1_s_out_exp
+        sa_mamm_2_s_exp=trex2_obj.sa_mamm_2_s_out_exp
+        sc_mamm_s_exp=trex2_obj.sc_mamm_s_out_exp
+        
+        sa_bird_1_m_exp=trex2_obj.sa_bird_1_m_out_exp
+        sa_bird_2_m_exp=trex2_obj.sa_bird_2_m_out_exp
+        sc_bird_m_exp=trex2_obj.sc_bird_m_out_exp
+        sa_mamm_1_m_exp=trex2_obj.sa_mamm_1_m_out_exp
+        sa_mamm_2_m_exp=trex2_obj.sa_mamm_2_m_out_exp
+        sc_mamm_m_exp=trex2_obj.sc_mamm_m_out_exp
+             
+        sa_bird_1_l_exp=trex2_obj.sa_bird_1_l_out_exp
+        sa_bird_2_l_exp=trex2_obj.sa_bird_2_l_out_exp
+        sc_bird_l_exp=trex2_obj.sc_bird_l_out_exp
+        sa_mamm_1_l_exp=trex2_obj.sa_mamm_1_l_out_exp
+        sa_mamm_2_l_exp=trex2_obj.sa_mamm_2_l_out_exp
+        sc_mamm_l_exp=trex2_obj.sc_mamm_l_out_exp
+
+        t5data_qaqc = gett5data_qaqc(sa_bird_1_s, sa_bird_2_s, sc_bird_s, sa_mamm_1_s, sa_mamm_2_s, sc_mamm_s, 
+                           sa_bird_1_m, sa_bird_2_m, sc_bird_m, sa_mamm_1_m, sa_mamm_2_m, sc_mamm_m,
+                           sa_bird_1_l, sa_bird_2_l, sc_bird_l, sa_mamm_1_l, sa_mamm_2_l, sc_mamm_l,
+                           sa_bird_1_s_exp, sa_bird_2_s_exp, sc_bird_s_exp, sa_mamm_1_s_exp, sa_mamm_2_s_exp, sc_mamm_s_exp, 
+                           sa_bird_1_m_exp, sa_bird_2_m_exp, sc_bird_m_exp, sa_mamm_1_m_exp, sa_mamm_2_m_exp, sc_mamm_m_exp,
+                           sa_bird_1_l_exp, sa_bird_2_l_exp, sc_bird_l_exp, sa_mamm_1_l_exp, sa_mamm_2_l_exp, sc_mamm_l_exp)
+        t5rows_qaqc = gethtmlrowsfromcols(t5data_qaqc, pv5headings_qaqc[1])     
+        html = html + tmpl.render(Context(dict(data=t5rows_qaqc, headings=pv5headings_qaqc[0], sub_headings=pv5headings_qaqc[2], sub_headings_1=pv5headings_qaqc[3], th_span='4')))
+        html = html + """
+                </div>
+        """  
+        return html
 
 def table_6_qaqc(trex2_obj):
         #pre-table 6_qaqc

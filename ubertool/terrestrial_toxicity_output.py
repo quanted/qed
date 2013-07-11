@@ -83,6 +83,8 @@ class UbertoolTerrestrialToxicityConfigurationPage(webapp.RequestHandler):
         terr_tox.NOAEC_for_listed_vegetative_vigor_dicot = float(form.getvalue('NOAEC_for_listed_vegetative_vigor_dicot'))
         terr_tox.Small_medium_and_large_BW_of_assessed_herptile_listed_species = float(form.getvalue('Small_medium_and_large_BW_of_assessed_herptile_listed_species'))
         terr_tox.percent_water_content_of_small_med_large_herptile_species_diet = float(form.getvalue('percent_water_content_of_small_med_large_herptile_species_diet'))    
+        terr_tox.desired_threshold = float(form.getvalue('desired_threshold'))
+        terr_tox.slope_of_dose_response = float(form.getvalue('slope_of_dose_response'))
         terr_tox.taxonomic_group = str(form.getvalue('taxonomic_group'))
         terr_tox.eat_mammals = str(form.getvalue('eat_mammals'))
         terr_tox.eat_amphibians_reptiles = str(form.getvalue('eat_amphibians_reptiles'))

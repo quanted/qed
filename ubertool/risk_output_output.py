@@ -173,34 +173,6 @@ class UbertoolUseConfigurationPage(webapp.RequestHandler):
         risk_output.LD50_bl_mamm_sm = float(form.getvalue('LD50_bl_mamm_sm'))
         risk_output.LD50_bl_mamm_md = float(form.getvalue('LD50_bl_mamm_md'))
         risk_output.LD50_bl_mamm_lg = float(form.getvalue('LD50_bl_mamm_lg'))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         use.put()
         self.redirect("pesticide_properties.html")
         

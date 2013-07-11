@@ -4,6 +4,8 @@ from django.template import Context, Template
 from django.utils.safestring import mark_safe
 from terrplant import terrplant_model,terrplant_parameters
 import logging
+import time
+import datetime
 
 logger = logging.getLogger('TerrplantTables')
 
@@ -235,7 +237,8 @@ djtemplate = getdjtemplate()
 tmpl = Template(djtemplate)
 
 def table_all(pvheadings, pvuheadings, deheadings, plantec25noaecheadings, plantecdrysemisprayheadings, sumheadings, tmpl,terrplant_obj):
-    html_all = table_1(pvheadings, tmpl, terrplant_obj)
+    html_all = timestamp()  
+    html_all = html_all + table_1(pvheadings, tmpl, terrplant_obj)
     html_all = html_all + table_2(pvuheadings, tmpl, terrplant_obj)
     html_all = html_all + table_3(deheadings, tmpl, terrplant_obj)
     html_all = html_all + table_4(plantec25noaecheadings, tmpl, terrplant_obj)
@@ -297,6 +300,17 @@ def table_sum_output(sumheadings, tmpl, rundry_out, runsemi_out, spray_out, tota
         tsumoutputrows = gethtmlrowsfromcols(tsumoutputdata, sumheadings)
         html = html + tmpl.render(Context(dict(data=tsumoutputrows, headings=sumheadings)))
         return html
+
+def timestamp():
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+    html="""
+    <div class="out_">
+    <b>TerrPlant <a href="http://www.epa.gov/oppefed1/models/terrestrial/terrplant/terrplant_user_guide.html">Version 1.2.2</a> (Beta)<br>
+    """
+    html = html + st
+    html = html + " (UTC)</b>"
+    return html
 
 def table_1(pvheadings, tmpl, terrplant_obj):
         #pre-table 1

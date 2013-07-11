@@ -170,11 +170,11 @@ def gett2data(therps_obj):
                       'Avian NOAEC', 'Test species (for Avian NOAEC)', 'Weight',
                       'Avian NOAEL', 'Test species (for Avian NOAEL)', 'Weight', 
                       'Mineau scaling factor', ],
-        "Value": ['%s' % therps_obj.ld50_bird, '%s' % therps_obj.Species_of_the_tested_bird_avian_ld50, '%s' % therps_obj.tw_bird_ld50,
-                  '%s' % therps_obj.lc50_bird, '%s' % therps_obj.Species_of_the_tested_bird_avian_lc50, '%s' % therps_obj.tw_bird_lc50,
-                  '%s' % therps_obj.NOAEC_bird, '%s' % therps_obj.Species_of_the_tested_bird_avian_NOAEC, '%s' % therps_obj.tw_bird_NOAEC,
-                  '%s' % therps_obj.NOAEL_bird, '%s' % therps_obj.Species_of_the_tested_bird_avian_NOAEL, '%s' % therps_obj.tw_bird_NOAEL,
-                  '%s' % therps_obj.x,],
+        "Value": ['%s' % therps_obj.avian_ld50, '%s' % therps_obj.Species_of_the_tested_bird_avian_ld50, '%s' % therps_obj.bw_avian_ld50,
+                  '%s' % therps_obj.avian_lc50, '%s' % therps_obj.Species_of_the_tested_bird_avian_lc50, '%s' % therps_obj.bw_avian_lc50,
+                  '%s' % therps_obj.avian_NOAEC, '%s' % therps_obj.Species_of_the_tested_bird_avian_NOAEC, '%s' % therps_obj.bw_avian_NOAEC,
+                  '%s' % therps_obj.avian_NOAEL, '%s' % therps_obj.Species_of_the_tested_bird_avian_NOAEL, '%s' % therps_obj.bw_avian_NOAEL,
+                  '%s' % therps_obj.mineau_scaling_factor,],
         "Units": ['mg/kg-bw', '', 'g', 'mg/kg-diet', '', 'g', 'mg/kg-diet', '', 'g', 'mg/kg-bw', '', 'g', ''],
     }
     return data
@@ -211,9 +211,9 @@ def gett5data(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, LD50_AD_sm, LD50_AD_md, 
     }
     return data
 
-def gett6data(lc50_bird, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_FR, EEC_ARQ_herp_FR, EEC_diet_herp_HM, EEC_ARQ_herp_HM, EEC_diet_herp_IM, EEC_ARQ_herp_IM, EEC_diet_herp_TP, EEC_ARQ_herp_TP):
+def gett6data(avian_lc50, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_FR, EEC_ARQ_herp_FR, EEC_diet_herp_HM, EEC_ARQ_herp_HM, EEC_diet_herp_IM, EEC_ARQ_herp_IM, EEC_diet_herp_TP, EEC_ARQ_herp_TP):
     data = { 
-        "LC50":   ['%0.2E' % lc50_bird,],
+        "LC50":   ['%0.2E' % avian_lc50,],
         "EEC_BP": ['%0.2E' % EEC_diet_herp_BL,],
         "ARQ_BP":  ['%0.2E' % EEC_ARQ_herp_BL,],
         "EEC_FR": ['%0.2E' % EEC_diet_herp_FR,], 
@@ -227,9 +227,9 @@ def gett6data(lc50_bird, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_FR, EE
     }
     return data
 
-def gett7data(NOAEC_bird, EEC_diet_herp_BL, EEC_CRQ_herp_BL, EEC_diet_herp_FR, EEC_CRQ_herp_FR, EEC_diet_herp_HM, EEC_CRQ_herp_HM, EEC_diet_herp_IM, EEC_CRQ_herp_IM, EEC_diet_herp_TP, EEC_CRQ_herp_TP):
+def gett7data(avian_NOAEC, EEC_diet_herp_BL, EEC_CRQ_herp_BL, EEC_diet_herp_FR, EEC_CRQ_herp_FR, EEC_diet_herp_HM, EEC_CRQ_herp_HM, EEC_diet_herp_IM, EEC_CRQ_herp_IM, EEC_diet_herp_TP, EEC_CRQ_herp_TP):
     data = { 
-        "NOAEC":   ['%0.2E' % NOAEC_bird,],
+        "NOAEC":   ['%0.2E' % avian_NOAEC,],
         "EEC_BP": ['%0.2E' % EEC_diet_herp_BL,],
         "CRQ_BP":  ['%0.2E' % EEC_CRQ_herp_BL,],
         "EEC_FR": ['%0.2E' % EEC_diet_herp_FR,], 
@@ -389,11 +389,11 @@ def gett5data_qaqc(bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, LD50_AD_sm, LD50_AD
     }
     return data
 
-def gett6data_qaqc(lc50_bird, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_FR, EEC_ARQ_herp_FR, EEC_diet_herp_HM, EEC_ARQ_herp_HM, EEC_diet_herp_IM, EEC_ARQ_herp_IM, EEC_diet_herp_TP, EEC_ARQ_herp_TP,
+def gett6data_qaqc(avian_lc50, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_FR, EEC_ARQ_herp_FR, EEC_diet_herp_HM, EEC_ARQ_herp_HM, EEC_diet_herp_IM, EEC_ARQ_herp_IM, EEC_diet_herp_TP, EEC_ARQ_herp_TP,
                    EEC_diet_herp_BL_exp, EEC_ARQ_herp_BL_exp, EEC_diet_herp_FR_exp, EEC_ARQ_herp_FR_exp, EEC_diet_herp_HM_exp, EEC_ARQ_herp_HM_exp, EEC_diet_herp_IM_exp, EEC_ARQ_herp_IM_exp, EEC_diet_herp_TP_exp, EEC_ARQ_herp_TP_exp):
     data = {
         "Type": ['Calculated Value', 'Expected Value',],
-        "LC50":   ['%0.2E' % lc50_bird, '%0.2E' % lc50_bird,],
+        "LC50":   ['%0.2E' % avian_lc50, '%0.2E' % avian_lc50,],
         "EEC_BP": ['%0.2E' % EEC_diet_herp_BL, '%0.2E' % EEC_diet_herp_BL_exp,],
         "ARQ_BP":  ['%0.2E' % EEC_ARQ_herp_BL, '%0.2E' % EEC_ARQ_herp_BL_exp,],
         "EEC_FR": ['%0.2E' % EEC_diet_herp_FR, '%0.2E' % EEC_diet_herp_FR_exp,], 
@@ -407,11 +407,11 @@ def gett6data_qaqc(lc50_bird, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_F
     }
     return data
 
-def gett7data_qaqc(NOAEC_bird, EEC_diet_herp_BL, EEC_CRQ_herp_BL, EEC_diet_herp_FR, EEC_CRQ_herp_FR, EEC_diet_herp_HM, EEC_CRQ_herp_HM, EEC_diet_herp_IM, EEC_CRQ_herp_IM, EEC_diet_herp_TP, EEC_CRQ_herp_TP,
+def gett7data_qaqc(avian_NOAEC, EEC_diet_herp_BL, EEC_CRQ_herp_BL, EEC_diet_herp_FR, EEC_CRQ_herp_FR, EEC_diet_herp_HM, EEC_CRQ_herp_HM, EEC_diet_herp_IM, EEC_CRQ_herp_IM, EEC_diet_herp_TP, EEC_CRQ_herp_TP,
               EEC_diet_herp_BL_exp, EEC_CRQ_herp_BL_exp, EEC_diet_herp_FR_exp, EEC_CRQ_herp_FR_exp, EEC_diet_herp_HM_exp, EEC_CRQ_herp_HM_exp, EEC_diet_herp_IM_exp, EEC_CRQ_herp_IM_exp, EEC_diet_herp_TP_exp, EEC_CRQ_herp_TP_exp):
     data = { 
         "Type": ['Calculated Value', 'Expected Value',],
-        "NOAEC":   ['%0.2E' % NOAEC_bird, '%0.2E' % NOAEC_bird,],
+        "NOAEC":   ['%0.2E' % avian_NOAEC, '%0.2E' % avian_NOAEC,],
         "EEC_BP": ['%0.2E' % EEC_diet_herp_BL, '%0.2E' % EEC_diet_herp_BL_exp,],
         "CRQ_BP":  ['%0.2E' % EEC_CRQ_herp_BL, '%0.2E' % EEC_CRQ_herp_BL_exp,],
         "EEC_FR": ['%0.2E' % EEC_diet_herp_FR, '%0.2E' % EEC_diet_herp_FR_exp,], 
@@ -725,7 +725,7 @@ def table_6(therps_obj):
         EEC_diet_herp_TP=therps_obj.EEC_diet_herp_TP
         EEC_ARQ_herp_TP =therps_obj.EEC_ARQ_herp_TP 
 
-        t6data = gett6data(therps_obj.lc50_bird, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_FR, EEC_ARQ_herp_FR, EEC_diet_herp_HM, EEC_ARQ_herp_HM, EEC_diet_herp_IM, EEC_ARQ_herp_IM, EEC_diet_herp_TP, EEC_ARQ_herp_TP)
+        t6data = gett6data(therps_obj.avian_lc50, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_FR, EEC_ARQ_herp_FR, EEC_diet_herp_HM, EEC_ARQ_herp_HM, EEC_diet_herp_IM, EEC_ARQ_herp_IM, EEC_diet_herp_TP, EEC_ARQ_herp_TP)
         t6rows = gethtmlrowsfromcols(t6data, pv6headings[1])       
         html = html + tmpl_5.render(Context(dict(data=t6rows, l_headings=pv6headings[0][0])))
         html = html + """
@@ -752,7 +752,7 @@ def table_7(therps_obj):
         EEC_diet_herp_TP=therps_obj.EEC_diet_herp_TP
         EEC_CRQ_herp_TP =therps_obj.EEC_CRQ_herp_TP 
 
-        t7data = gett7data(therps_obj.NOAEC_bird, EEC_diet_herp_BL, EEC_CRQ_herp_BL, EEC_diet_herp_FR, EEC_CRQ_herp_FR, EEC_diet_herp_HM, EEC_CRQ_herp_HM, EEC_diet_herp_IM, EEC_CRQ_herp_IM, EEC_diet_herp_TP, EEC_CRQ_herp_TP)
+        t7data = gett7data(therps_obj.avian_NOAEC, EEC_diet_herp_BL, EEC_CRQ_herp_BL, EEC_diet_herp_FR, EEC_CRQ_herp_FR, EEC_diet_herp_HM, EEC_CRQ_herp_HM, EEC_diet_herp_IM, EEC_CRQ_herp_IM, EEC_diet_herp_TP, EEC_CRQ_herp_TP)
         t7rows = gethtmlrowsfromcols(t7data, pv7headings[1])       
         html = html + tmpl_5.render(Context(dict(data=t7rows, l_headings=pv7headings[0][0])))
         html = html + """
@@ -849,7 +849,7 @@ def table_9(therps_obj):
         EEC_diet_herp_TP_mean=therps_obj.EEC_diet_herp_TP_mean
         EEC_ARQ_herp_TP_mean =therps_obj.EEC_ARQ_herp_TP_mean 
 
-        t9data = gett6data(therps_obj.lc50_bird, EEC_diet_herp_BL_mean, EEC_ARQ_herp_BL_mean, EEC_diet_herp_FR_mean, EEC_ARQ_herp_FR_mean, EEC_diet_herp_HM_mean, EEC_ARQ_herp_HM_mean, EEC_diet_herp_IM_mean, EEC_ARQ_herp_IM_mean, EEC_diet_herp_TP_mean, EEC_ARQ_herp_TP_mean)
+        t9data = gett6data(therps_obj.avian_lc50, EEC_diet_herp_BL_mean, EEC_ARQ_herp_BL_mean, EEC_diet_herp_FR_mean, EEC_ARQ_herp_FR_mean, EEC_diet_herp_HM_mean, EEC_ARQ_herp_HM_mean, EEC_diet_herp_IM_mean, EEC_ARQ_herp_IM_mean, EEC_diet_herp_TP_mean, EEC_ARQ_herp_TP_mean)
         t9rows = gethtmlrowsfromcols(t9data, pv6headings[1])       
         html = html + tmpl_5.render(Context(dict(data=t9rows, l_headings=pv6headings[0][0])))
         html = html + """
@@ -876,7 +876,7 @@ def table_10(therps_obj):
         EEC_diet_herp_TP_mean=therps_obj.EEC_diet_herp_TP_mean
         EEC_CRQ_herp_TP_mean=therps_obj.EEC_CRQ_herp_TP_mean
 
-        t10data = gett7data(therps_obj.NOAEC_bird, EEC_diet_herp_BL_mean, EEC_CRQ_herp_BL_mean, EEC_diet_herp_FR_mean, EEC_CRQ_herp_FR_mean, EEC_diet_herp_HM_mean, EEC_CRQ_herp_HM_mean, EEC_diet_herp_IM_mean, EEC_CRQ_herp_IM_mean, EEC_diet_herp_TP_mean, EEC_CRQ_herp_TP_mean)
+        t10data = gett7data(therps_obj.avian_NOAEC, EEC_diet_herp_BL_mean, EEC_CRQ_herp_BL_mean, EEC_diet_herp_FR_mean, EEC_CRQ_herp_FR_mean, EEC_diet_herp_HM_mean, EEC_CRQ_herp_HM_mean, EEC_diet_herp_IM_mean, EEC_CRQ_herp_IM_mean, EEC_diet_herp_TP_mean, EEC_CRQ_herp_TP_mean)
         t10rows = gethtmlrowsfromcols(t10data, pv7headings[1])       
         html = html + tmpl_5.render(Context(dict(data=t10rows, l_headings=pv7headings[0][0])))
         html = html + """
@@ -1018,7 +1018,7 @@ def table_6_qaqc(therps_obj):
         EEC_diet_herp_TP_exp=therps_obj.EEC_diet_herp_TP_exp
         EEC_ARQ_herp_TP_exp=therps_obj.EEC_ARQ_herp_TP_exp
 
-        t6data_qaqc = gett6data_qaqc(therps_obj.lc50_bird, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_FR, EEC_ARQ_herp_FR, EEC_diet_herp_HM, EEC_ARQ_herp_HM, EEC_diet_herp_IM, EEC_ARQ_herp_IM, EEC_diet_herp_TP, EEC_ARQ_herp_TP,
+        t6data_qaqc = gett6data_qaqc(therps_obj.avian_lc50, EEC_diet_herp_BL, EEC_ARQ_herp_BL, EEC_diet_herp_FR, EEC_ARQ_herp_FR, EEC_diet_herp_HM, EEC_ARQ_herp_HM, EEC_diet_herp_IM, EEC_ARQ_herp_IM, EEC_diet_herp_TP, EEC_ARQ_herp_TP,
                            EEC_diet_herp_BL_exp, EEC_ARQ_herp_BL_exp, EEC_diet_herp_FR_exp, EEC_ARQ_herp_FR_exp, EEC_diet_herp_HM_exp, EEC_ARQ_herp_HM_exp, EEC_diet_herp_IM_exp, EEC_ARQ_herp_IM_exp, EEC_diet_herp_TP_exp, EEC_ARQ_herp_TP_exp)
         t6rows_qaqc = gethtmlrowsfromcols(t6data_qaqc, pv6headings_qaqc[1])       
         html = html + tmpl_5.render(Context(dict(data=t6rows_qaqc, l_headings=[pv6headings_qaqc[0][0][0], pv6headings_qaqc[0][0][1]])))
@@ -1056,7 +1056,7 @@ def table_7_qaqc(therps_obj):
         EEC_diet_herp_TP_exp=therps_obj.EEC_diet_herp_TP_exp
         EEC_CRQ_herp_TP_exp=therps_obj.EEC_CRQ_herp_TP_exp
 
-        t7data_qaqc = gett7data_qaqc(therps_obj.NOAEC_bird, EEC_diet_herp_BL, EEC_CRQ_herp_BL, EEC_diet_herp_FR, EEC_CRQ_herp_FR, EEC_diet_herp_HM, EEC_CRQ_herp_HM, EEC_diet_herp_IM, EEC_CRQ_herp_IM, EEC_diet_herp_TP, EEC_CRQ_herp_TP,
+        t7data_qaqc = gett7data_qaqc(therps_obj.avian_NOAEC, EEC_diet_herp_BL, EEC_CRQ_herp_BL, EEC_diet_herp_FR, EEC_CRQ_herp_FR, EEC_diet_herp_HM, EEC_CRQ_herp_HM, EEC_diet_herp_IM, EEC_CRQ_herp_IM, EEC_diet_herp_TP, EEC_CRQ_herp_TP,
                                      EEC_diet_herp_BL_exp, EEC_CRQ_herp_BL_exp, EEC_diet_herp_FR_exp, EEC_CRQ_herp_FR_exp, EEC_diet_herp_HM_exp, EEC_CRQ_herp_HM_exp, EEC_diet_herp_IM_exp, EEC_CRQ_herp_IM_exp, EEC_diet_herp_TP_exp, EEC_CRQ_herp_TP_exp)
         t7rows_qaqc = gethtmlrowsfromcols(t7data_qaqc, pv7headings_qaqc[1])       
         html = html + tmpl_5.render(Context(dict(data=t7rows_qaqc, l_headings=[pv7headings_qaqc[0][0][0], pv7headings_qaqc[0][0][1]])))
@@ -1196,7 +1196,7 @@ def table_9_qaqc(therps_obj):
         EEC_diet_herp_TP_exp_mean=therps_obj.EEC_diet_herp_TP_exp_mean
         EEC_ARQ_herp_TP_exp_mean=therps_obj.EEC_ARQ_herp_TP_exp_mean
 
-        t9data_qaqc = gett6data_qaqc(therps_obj.lc50_bird, EEC_diet_herp_BL_mean, EEC_ARQ_herp_BL_mean, EEC_diet_herp_FR_mean, EEC_ARQ_herp_FR_mean, EEC_diet_herp_HM_mean, EEC_ARQ_herp_HM_mean, EEC_diet_herp_IM_mean, EEC_ARQ_herp_IM_mean, EEC_diet_herp_TP_mean, EEC_ARQ_herp_TP_mean,
+        t9data_qaqc = gett6data_qaqc(therps_obj.avian_lc50, EEC_diet_herp_BL_mean, EEC_ARQ_herp_BL_mean, EEC_diet_herp_FR_mean, EEC_ARQ_herp_FR_mean, EEC_diet_herp_HM_mean, EEC_ARQ_herp_HM_mean, EEC_diet_herp_IM_mean, EEC_ARQ_herp_IM_mean, EEC_diet_herp_TP_mean, EEC_ARQ_herp_TP_mean,
                                 EEC_diet_herp_BL_exp_mean, EEC_ARQ_herp_BL_exp_mean, EEC_diet_herp_FR_exp_mean, EEC_ARQ_herp_FR_exp_mean, EEC_diet_herp_HM_exp_mean, EEC_ARQ_herp_HM_exp_mean, EEC_diet_herp_IM_exp_mean, EEC_ARQ_herp_IM_exp_mean, EEC_diet_herp_TP_exp_mean, EEC_ARQ_herp_TP_exp_mean)
         t9rows_qaqc = gethtmlrowsfromcols(t9data_qaqc, pv6headings_qaqc[1])       
         html = html + tmpl_5.render(Context(dict(data=t9rows_qaqc, l_headings=[pv6headings_qaqc[0][0][0], pv6headings_qaqc[0][0][1]])))
@@ -1234,7 +1234,7 @@ def table_10_qaqc(therps_obj):
         EEC_diet_herp_TP_exp_mean=therps_obj.EEC_diet_herp_TP_exp_mean
         EEC_CRQ_herp_TP_exp_mean=therps_obj.EEC_CRQ_herp_TP_exp_mean
 
-        t10data_qaqc = gett7data_qaqc(therps_obj.NOAEC_bird, EEC_diet_herp_BL_mean, EEC_CRQ_herp_BL_mean, EEC_diet_herp_FR_mean, EEC_CRQ_herp_FR_mean, EEC_diet_herp_HM_mean, EEC_CRQ_herp_HM_mean, EEC_diet_herp_IM_mean, EEC_CRQ_herp_IM_mean, EEC_diet_herp_TP_mean, EEC_CRQ_herp_TP_mean,
+        t10data_qaqc = gett7data_qaqc(therps_obj.avian_NOAEC, EEC_diet_herp_BL_mean, EEC_CRQ_herp_BL_mean, EEC_diet_herp_FR_mean, EEC_CRQ_herp_FR_mean, EEC_diet_herp_HM_mean, EEC_CRQ_herp_HM_mean, EEC_diet_herp_IM_mean, EEC_CRQ_herp_IM_mean, EEC_diet_herp_TP_mean, EEC_CRQ_herp_TP_mean,
                                       EEC_diet_herp_BL_exp_mean, EEC_CRQ_herp_BL_exp_mean, EEC_diet_herp_FR_exp_mean, EEC_CRQ_herp_FR_exp_mean, EEC_diet_herp_HM_exp_mean, EEC_CRQ_herp_HM_exp_mean, EEC_diet_herp_IM_exp_mean, EEC_CRQ_herp_IM_exp_mean, EEC_diet_herp_TP_exp_mean, EEC_CRQ_herp_TP_exp_mean)
         t10rows_qaqc = gethtmlrowsfromcols(t10data_qaqc, pv7headings_qaqc[1])       
         html = html + tmpl_5.render(Context(dict(data=t10rows_qaqc, l_headings=[pv7headings_qaqc[0][0][0], pv7headings_qaqc[0][0][1]])))

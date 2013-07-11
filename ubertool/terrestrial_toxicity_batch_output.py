@@ -23,7 +23,15 @@ def batchLoadTerrestrialToxicityConfigs(params_matrix,config_index,ubertool_conf
     if "avian_ld50" in params_matrix:
         config_params['avian_ld50'] = params_matrix.get("avian_ld50")[config_index]  
     if "Species_of_the_tested_bird" in params_matrix:
-        config_params['Species_of_the_tested_bird'] = params_matrix.get("Species_of_the_tested_bird")[config_index]      
+        config_params['Species_of_the_tested_bird'] = params_matrix.get("Species_of_the_tested_bird")[config_index]    
+    if "Species_of_the_tested_bird_avian_LD50" in params_matrix:
+        config_params['Species_of_the_tested_bird_avian_LD50'] = params_matrix.get("Species_of_the_tested_bird_avian_LD50")[config_index]      
+    if "Species_of_the_tested_bird_avian_LC50" in params_matrix:
+        config_params['Species_of_the_tested_bird_avian_LC50'] = params_matrix.get("Species_of_the_tested_bird_avian_LC50")[config_index]      
+    if "Species_of_the_tested_bird_avian_NOAEC" in params_matrix:
+        config_params['Species_of_the_tested_bird_avian_NOAEC'] = params_matrix.get("Species_of_the_tested_bird_avian_NOAEC")[config_index]      
+    if "Species_of_the_tested_bird_avian_NOAEL" in params_matrix:
+        config_params['Species_of_the_tested_bird_avian_NOAEL'] = params_matrix.get("Species_of_the_tested_bird_avian_NOAEL")[config_index]            
     if "mamm_acute_derm_ld50" in params_matrix:
         config_params['mamm_acute_derm_ld50'] = params_matrix.get("mamm_acute_derm_ld50")[config_index] 
     if "mamm_acute_derm_study" in params_matrix:
@@ -40,6 +48,14 @@ def batchLoadTerrestrialToxicityConfigs(params_matrix,config_index,ubertool_conf
         config_params['tested_bird_body_weight'] = params_matrix.get("tested_bird_body_weight")[config_index]
     if "tested_mamm_body_weight" in params_matrix:
         config_params['tested_mamm_body_weight'] = params_matrix.get("tested_mamm_body_weight")[config_index]        
+    if "bw_avian_ld50" in params_matrix:
+        config_params['bw_avian_ld50'] = params_matrix.get("bw_avian_ld50")[config_index]
+    if "bw_avian_lc50" in params_matrix:
+        config_params['bw_avian_lc50'] = params_matrix.get("bw_avian_lc50")[config_index]
+    if "bw_avian_NOAEC" in params_matrix:
+        config_params['bw_avian_NOAEC'] = params_matrix.get("bw_avian_NOAEC")[config_index]
+    if "bw_avian_NOAEL" in params_matrix:
+        config_params['bw_avian_NOAEL'] = params_matrix.get("bw_avian_NOAEL")[config_index]
     if "bw_quail" in params_matrix:
         config_params['bw_quail'] = params_matrix.get("bw_quail")[config_index]
     if "bw_duck" in params_matrix:

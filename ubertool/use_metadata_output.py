@@ -9,7 +9,7 @@ import cgi
 import cgitb
 cgitb.enable()
 import datetime
-from ubertool.use import Use_metadata
+from ubertool import use_metadata
 import sys
 sys.path.append("../")
 import logging

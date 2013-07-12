@@ -12,6 +12,11 @@ from google.appengine.api import users
 from google.appengine.ext import db
 from exposure import Exposure
 
+APPLICATIONTYPE=(('Broadcast-Granular','Broadcast-Granular'),('Row/Band/In-furrow-Granular','Row/Band/In-furrow-Granular'),
+                         ('Broadcast-Liquid','Broadcast-Liquid'),('Row/Band/In-furrow-Liquid','Row/Band/In-furrow-Liquid'))
+
+YN=(('Yes','Yes'),('No','No'))
+
 class ECInp(forms.Form):
     user_id = users.get_current_user().user_id()
     user = users.get_current_user()
@@ -29,7 +34,7 @@ class ECInp(forms.Form):
     PRZM_scenario = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}))
     EXAMS_environment_file = forms.FloatField()
     application_method = forms.FloatField(label='Application Method (CAM)')
-    app_type = forms.ChoiceField(label='Application Type (for terrestrial)',choices=APPTYPE, initial='liquid')
+    app_type = forms.ChoiceField(label='Application Type (for terrestrial)',choices=APPLICATIONTYPE, initial='liquid')
     weight_of_one_granule = forms.FloatField(label='Weight of 1 granule (mg)')
     wetted_in = forms.ChoiceField(label='Wetted In?', choices=YN, initial='Yes')
     incorporation_depth = forms.FloatField(label='Incorporation Depth (cm)')

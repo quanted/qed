@@ -14,7 +14,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import django
 from django import forms
-from ubertool import use_db
+from ubertool import use_metadata_db
 import logging
 
 
@@ -27,12 +27,12 @@ class Use_metadataInputPage(webapp.RequestHandler):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         #html = template.render(templatepath + '01uberheaderchance.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + 'ubertool_use_metadata_jquery.html', {'ubertool_service_url':ubertool_service_url})
+        html = html + template.render(templatepath + 'ubertool_use_jquery.html', {'ubertool_service_url':ubertool_service_url})
         html = html + template.render(templatepath + '02uberintroblock_nomodellinks.html', {'title2':'Use/Label/Site Data', 'model':'use_metadata'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_use_metadata_start.html', {'model':'use_metadata'})
-        html = html + str(use_db.UseInp())
-        html = html + template.render(templatepath + '04uberinput_use_metadata_end.html', {'sub_title': 'Submit'})
+        html = html + template.render(templatepath + '04uberinput_use_start.html', {'model':'use_metadata'})
+        html = html + str(use_metadata_db.Use_metadataInp())
+        html = html + template.render(templatepath + '04uberinput_use_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

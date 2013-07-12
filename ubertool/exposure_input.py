@@ -22,7 +22,7 @@ class ECInputPage(webapp.RequestHandler):
         mongo_service_url = os.environ['UBERTOOL_MONGO_SERVER']
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
-        html = html + template.render (templatepath + 'ubertool_expo_jquery.html', {'ubertool_service_url':mongo_service_url})
+        html = html + template.render (templatepath + 'ubertool_expoconc_jquery.html', {'ubertool_service_url':mongo_service_url})
         html = html + template.render(templatepath + '02uberintroblock_nomodellinks.html', {'title2':'Exposure', 'model':'exposure'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberinput_expo_start.html', {'model':'exposure'})

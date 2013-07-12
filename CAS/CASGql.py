@@ -26,7 +26,7 @@ class CASGql:
 		self.logger = logging.getLogger(__name__)
 		try:
 			self.conn = rdbms.connect(instance=google_cloud_instance, database=google_cloud_database)
-		except rdbms.OperationalError:
+		except:
 			try:
 				self.logger.error("Trying local MySQL db")
 				self.conn = rdbms.connect(instance=local_mysql_instance, database=local_mysql_database,user=local_mysql_user,password=local_mysql_password)

@@ -212,7 +212,7 @@ handlers:
 
 #use label site data
 - url: /site_data.html
-  script: ubertool/use_input.py
+  script: ubertool/use_metadata_input.py
   login: required
 #  login: required
 #pesticide properties
@@ -221,7 +221,7 @@ handlers:
   login: required
 #exposure concentrations
 - url: /exposure_concentrations.html
-  script: ubertool/exposure_concentrations_input.py
+  script: ubertool/exposure_input.py
   login: required
 #aquatic toxicity
 - url: /aquatic_toxicity.html

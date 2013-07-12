@@ -20,8 +20,8 @@ libraries:
 
 env_variables:
   UBERTOOL_BATCH_SERVER: 'http://www.chancedelphia.com:8887/'
-  UBERTOOL_MONGO_SERVER: 'http://127.0.0.1:8887'
-  UBERTOOL_SECURE_SERVER: 'http://127.0.0.1:8989'
+  UBERTOOL_MONGO_SERVER: 'http://www.chancedelphia.com:8887'
+  UBERTOOL_SECURE_SERVER: 'http://www.chancedelphia.com:8989'
 
 skip_files:
 - ^(.*/)?app\.yaml
@@ -175,7 +175,7 @@ handlers:
 - url: /user.html
   script: user/user_input.py 
   login: required
-  secure: always
+  secure: never
   
 - url: /user_output.html
   script: user/user_output.py

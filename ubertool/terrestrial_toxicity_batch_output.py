@@ -134,6 +134,14 @@ def batchLoadTerrestrialToxicityConfigs(params_matrix,config_index,ubertool_conf
         config_params['slope_of_dose_response'] = params_matrix.get("slope_of_dose_response")[config_index]
     if "desired_threshold" in params_matrix:
         config_params['desired_threshold'] = params_matrix.get("desired_threshold")[config_index]
+    if "ld50_a" in params_matrix:
+        config_params['ld50_a'] = params_matrix.get("ld50_a")[config_index]
+    if "ld50_m" in params_matrix:
+        config_params['ld50_m'] = params_matrix.get("ld50_m")[config_index]
+    if "bw_rat" in params_matrix:
+        config_params['bw_rat'] = params_matrix.get("bw_rat")[config_index]
+    if "bwm_other" in params_matrix:
+        config_params['bwm_other'] = params_matrix.get("bwm_other")[config_index]
     if "taxonomic_group" in params_matrix:
         config_params['taxonomic_group'] = params_matrix.get("taxonomic_group")[config_index]  
     if "eat_mammals" in params_matrix:

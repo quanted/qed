@@ -31,7 +31,6 @@ class SelectChemicalInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start.html', {'model':'select_chemical'})
         cas = CASGql("apppest:cas","CAS")
         chemicalNames = cas.getAllChemicalNamesUTF8()
-        logger.info(len(chemicalNames))
         html = html + template.render(templatepath + 'chemical_selection_jqueryui.html', {'ChemicalNames':chemicalNames})
         html = html + str(select_chemical_db.SelectChemicalInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})

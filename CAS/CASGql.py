@@ -24,6 +24,7 @@ class CASGql:
 
 	def __init__(self, instance=google_cloud_instance, database=google_cloud_database, user=local_mysql_user, password=local_mysql_password):
 		self.logger = logging.getLogger(__name__)
+		self.conn = None
 		try:
 			self.conn = rdbms.connect(instance=google_cloud_instance, database=google_cloud_database)
 		except:
@@ -37,55 +38,69 @@ class CASGql:
 		self.conn.close()
 			
 	def getAllChemicalNames(self, max=None):
-		cursor = self.conn.cursor()
-		if max is None:
-			cursor.execute('SELECT ChemicalName from CAS')
-		else:
-			cursor.execute('SELECT ChemicalName from CAS limit %s' , (max))
-		rows = cursor.fetchall()
+		rows = None
+		if not self.conn is None:
+			cursor = self.conn.cursor()
+			if max is None:
+				cursor.execute('SELECT ChemicalName from CAS')
+			else:
+				cursor.execute('SELECT ChemicalName from CAS limit %s' , (max))
+			rows = cursor.fetchall()
 		return rows
 	
 	def getAllChemicalNamesUTF8(self, max=None, maxChars=None):
 		unicodeList = self.getAllChemicalNames(max)
-		utfList = self.makeChemicalNamesListUTF8(unicodeList,maxChars)
+		utfList = None
+		if not unicodeList is None:
+			utfList = self.makeChemicalNamesListUTF8(unicodeList,maxChars)
 		#self.logger.info(utfList)
 		return utfList
 
 	def getAllChemicalNamesCASNumbers(self, max=None):
-		cursor = self.conn.cursor()
-		if max is None:
-			cursor.execute('SELECT ChemicalName,CASNumber from CAS')
-		else:
-			cursor.execute('SELECT ChemicalName,CASNumber from CAS limit %s' , (max))
-		rows = cursor.fetchall()
+		rows = None
+		if not self.conn is None:
+			cursor = self.conn.cursor()
+			if max is None:
+				cursor.execute('SELECT ChemicalName,CASNumber from CAS')
+			else:
+				cursor.execute('SELECT ChemicalName,CASNumber from CAS limit %s' , (max))
+			rows = cursor.fetchall()
 		return rows
 
 	def getAllChemNamesCASNumsMongoJson(self):
 		utfTupleList = self.getAllChemNamesCASNumsUTF8()
-		mongoJSON = ''
-		for utfTuple in utfTupleList:
-			mongoJSON += '{\"ChemicalName\":\"%s\",\"CASNumber\":\"%s\"}\n' % (utfTuple[1],utfTuple[0])
-		self.logger.info(mongoJSON)
+		mongoJSON = None
+		if not utfTupleList is None:
+			mongoJSON = ''
+			for utfTuple in utfTupleList:
+				mongoJSON += '{\"ChemicalName\":\"%s\",\"CASNumber\":\"%s\"}\n' % (utfTuple[1],utfTuple[0])
+			self.logger.info(mongoJSON)
 		return mongoJSON
 
 	def getAllChemNamesCASNumsUTF8(self, max=None, macChars=None):
 		unicodeList = self.getAllChemicalNamesCASNumbers(max)
-		self.logger.debug(unicodeList)
-		utfList = self.makeListUTF8(unicodeList, macChars)
+		utfList = None
+		if not unicodeList is None:
+			self.logger.debug(unicodeList)
+			utfList = self.makeListUTF8(unicodeList, macChars)
 		return utfList
 
 	def getChemicalNameFromCASNumber(self, casNumber):
-		cursor = self.conn.cursor()
-		cursor.execute('SELECT ChemicalName from CAS where CASNumber=%s', (casNumber))
-		chemicalName = cursor.fetchone()
-		print chemicalName
+		chemicalName = None
+		if not self.conn is None:
+			cursor = self.conn.cursor()
+			cursor.execute('SELECT ChemicalName from CAS where CASNumber=%s', (casNumber))
+			chemicalName = cursor.fetchone()
+			print chemicalName
 		return chemicalName
 
 	def getCASNumberFromChemicalName(self, chemicalName):
-		cursor = self.conn.cursor()
-		cursor.execute('SELECT CASNumber from CAS where ChemicalName=%s', (chemicalName))
-		casNumber = cursor.fetchone()
-		print casNumber
+		casNumber = None
+		if not self.conn is None:
+			cursor = self.conn.cursor()
+			cursor.execute('SELECT CASNumber from CAS where ChemicalName=%s', (chemicalName))
+			casNumber = cursor.fetchone()
+			print casNumber
 		return casNumber
 	
 	def makeChemicalNamesListUTF8(self, list, maxChars=None):

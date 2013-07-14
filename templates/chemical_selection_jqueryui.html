@@ -4,17 +4,31 @@
 <input id="autocomplete">
  
 <script>
-var tags = [ "c++", "java", "php", "coldfusion", "javascript", "asp", "ruby" ];
 var chemNames = [];
-{% for chemicalName in ChemicalNames %}
-	chemNames.push('{{chemicalName}}')
-{% endfor %}
+$(document).ready(function() {
+	
+	$.ajax({
+		url:"{{UBERTOOL_MONGO_SERVER}}/all-cas",
+		async: true,
+		type: 'GET',
+		success: function(cas_data) {
+			if(cas_data != null)
+			{
+				for(i = 0; i < cas_data.length; i++)
+				{
+					var cas_datum = cas_data[i];
+					chemNames.push(cas_datum.ChemicalName)
+				}
+			}
+		}
+	});
+});
 $( "#autocomplete" ).autocomplete({
-  source: function( request, response ) {
+  	source: function( request, response ) {
           var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
           response( ($.grep( chemNames, function( item ){
               return matcher.test( item );
           })).slice(0,10) );
-      }
+    }
 });
 </script>

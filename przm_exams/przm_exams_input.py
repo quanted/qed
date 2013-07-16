@@ -24,8 +24,8 @@ class PRZMEXAMSInputPage(webapp.RequestHandler):
         html = html + """
         <div id="input_nav">
             <ul>
-                <li>| <a class="PRZM" style="color:#FFA500; font-weight:bold"> PRZM Inputs</a> </li>
-                <li>| <a class="EXAMS" style="font-weight:bold"> EXAMS Inputs</a> |</li>
+                <li class="PRZM" style="color:#FFA500; font-weight:bold"> PRZM Inputs </li>
+                |<li class="EXAMS" style="font-weight:bold"> EXAMS Inputs</li>
             </ul>
         </div>
         """
@@ -47,7 +47,7 @@ class PRZMEXAMSInputPage(webapp.RequestHandler):
                                             <option value="10">10</option></select>
                                         </td>
                                     </tr>""" 
-        html = html + template.render(templatepath + 'przm_exams_input_end.html', {'sub_title': 'Submit'})
+        html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

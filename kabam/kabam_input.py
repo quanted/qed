@@ -30,18 +30,18 @@ class KabamInputPage(webapp.RequestHandler):
         html = html + """
         <div id="input_nav">
           <ul>
-            <li>| <a class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </a></li>
-            <li>| <a class="Avian" style="font-weight:bold"> Avian </a></li>
-            <li>| <a class="Mammal" style="font-weight:bold"> Mammal </a></li>
-            <li>| <a class="LargeFish" style="font-weight:bold"> Large Fish </a></li>
-            <li>| <a class="MediumFish" style="font-weight:bold"> Medium Fish </a></li>
-            <li>| <a class="SmallFish" style="font-weight:bold"> Small Fish </a></li>
-            <li>| <a class="Filterfeeders" style="font-weight:bold"> Filter feeders </a></li>
-            <li>| <a class="Invertebrates" style="font-weight:bold"> Invertebrates </a></li>
-            <li>| <a class="Zooplankton" style="font-weight:bold"> Zooplankton </a></li>
-            <li>| <a class="Phytoplankton" style="font-weight:bold"> Phytoplankton </a></li>
-            <li>| <a class="Sediment" style="font-weight:bold"> Sediment </a></li>
-            <li>| <a class="Constants" style="font-weight:bold"> Constants </a>|</li>
+            <li class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </li>
+            |<li class="Avian" style="font-weight:bold"> Avian </li>
+            |<li class="Mammal" style="font-weight:bold"> Mammal </li>
+            |<li class="LargeFish" style="font-weight:bold"> Large Fish </li>
+            |<li class="MediumFish" style="font-weight:bold"> Medium Fish </li>
+            |<li class="SmallFish" style="font-weight:bold"> Small Fish </li>
+            |<li class="Filterfeeders" style="font-weight:bold"> Filter feeders </li>
+            |<li class="Invertebrates" style="font-weight:bold"> Invertebrates </li>
+            |<li class="Zooplankton" style="font-weight:bold"> Zooplankton </li>
+            |<li class="Phytoplankton" style="font-weight:bold"> Phytoplankton </li>
+            |<li class="Sediment" style="font-weight:bold"> Sediment </li>
+            |<li class="Constants" style="font-weight:bold"> Constants</li>
           </ul>
         </div>
         """
@@ -69,8 +69,7 @@ class KabamInputPage(webapp.RequestHandler):
         html = html + str(Kabamdb.KabamInp_sed())
         html = html + """</table><table class="tab tab_Constants" border="0" style="display:none">"""
         html = html + str(Kabamdb.KabamInp_constants())
-        html = html + template.render(templatepath + 'kabam_input_end.html', {'sub_title': 'Submit'})
-      #  html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
+        html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

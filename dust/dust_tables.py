@@ -267,6 +267,7 @@ def table_1(dust_obj):
         #pre-table 1
         html = """
         <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs: Chemical Identity</H3>
+        <div class="out_">
             <H4 class="out_1 collapsible" id="section2"><span></span>Application and Chemical Information</H4>
                 <div class="out_ container_output">
         """

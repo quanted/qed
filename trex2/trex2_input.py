@@ -29,9 +29,9 @@ class trexInputPage(webapp.RequestHandler):
         html = html + """
         <div id="input_nav">
             <ul>
-                <li>| <a class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </a></li>
-                <li>| <a class="Avian" style="font-weight:bold"> Avian </a></li>
-                <li>| <a class="Mammal" style="font-weight:bold"> Mammal </a>|</li>
+                <li class="Chemical" style="color:#FFA500; font-weight:bold">Chemical</li>
+                |<li class="Avian" style="font-weight:bold"> Avian</li>
+                |<li class="Mammal" style="font-weight:bold"> Mammal</li>
             </ul>
         </div>
         """
@@ -55,7 +55,7 @@ class trexInputPage(webapp.RequestHandler):
         html = html + str(trex2_parameters.trexInp_bird())
         html = html + """</table><table class="tab tab_Mammal" border="0" style="display:none">"""
         html = html + str(trex2_parameters.trexInp_mammal())
-        html = html + template.render(templatepath + 'trex2_input_end.html', {'sub_title': 'Submit'})
+        html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

@@ -22,6 +22,10 @@ def getheaderovqaqc():
   headings = ["Parameter", "Value", "Expected Value"]
   return headings
 
+def getheadersum():
+    headings = ["Parameter", "Mean", "Std", "Min", "Max", "Unit"]
+    return headings
+
 def gethtmlrowsfromcols(data, headings):
     columns = [data[heading] for heading in headings]
 
@@ -78,7 +82,7 @@ def gett1data(iec_obj):
     return data
 
 def gett2data(iec_obj):
-    logger.info(vars(iec_obj))
+    #logger.info(vars(iec_obj))
     data = { 
         "Parameter": ['Z Score', '"F8"', 'Chance of Individual Effect',],
         "Value": ['%.2f' % iec_obj.z_score_f_out,'%.2e' % iec_obj.F8_f_out,'%.2f' % iec_obj.chance_f_out, ],
@@ -93,9 +97,34 @@ def gett2dataqaqc(iec_obj):
     }
     return data
 
+# def gettsumdata(dose_response,LC50,threshold)
+def gettsumdata(dose_response,LC50,threshold):
+    data = { 
+        "Parameter": ['Dose Response', 'LC50', 'Threshold'],
+        "Mean": ['%.2e' % numpy.mean(dose_response), '%.2e' % numpy.mean(LC50),'%.2e' % numpy.mean(threshold),],
+        "Std": ['%.2e' % numpy.std(dose_response),'%.2e' % numpy.std(LC50),'%.2e' % numpy.std(threshold),],
+        "Min": ['%.2e' % numpy.min(dose_response),'%.2e' % numpy.min(LC50),'%.2e' % numpy.min(threshold),],
+         "Max": ['%.2e' % numpy.max(dose_response),'%.2e' % numpy.max(LC50),'%.2e' % numpy.max(threshold),],
+        "Unit": ['','mg/kg-bw', '',],
+    }
+    return data
+
+# def gettsumdata_out(dose_response,LC50,threshold):
+def gettsumdata_out(z_score_f_out, F8_f_out, chance_f_out):
+    data = {
+        "Parameter": ['Z Score F', 'F8', 'Chance F',],
+        "Mean": ['%.2e' % numpy.mean(z_score_f_out),'%.2e' % numpy.mean(F8_f_out),'%.2e' % numpy.mean(chance_f_out),],
+        "Std": ['%.2e' % numpy.std(z_score_f_out),'%.2e' % numpy.std(F8_f_out),'%.2e' % numpy.std(chance_f_out),],
+        "Min": ['%.2e' % numpy.min(z_score_f_out),'%.2e' % numpy.min(F8_f_out),'%.2e' % numpy.min(chance_f_out),],
+         "Max": ['%.2e' % numpy.max(z_score_f_out),'%.2e' % numpy.max(F8_f_out),'%.2e' % numpy.max(chance_f_out),],
+        "Unit": ['','mg/kg-bw', '',],
+    }
+    return data
+
 ivheadings = getheaderiv()
 ovheadings = getheaderov()
 ovheadingsqaqc = getheaderovqaqc()
+sumheadings = getheadersum()
 djtemplate = getdjtemplate()
 tmpl = Template(djtemplate)
 
@@ -108,6 +137,19 @@ def table_all_qaqc(iec_obj):
     html_all = table_1(iec_obj)
     html_all = html_all + table_2_qaqc(iec_obj)
     return html_all
+
+def timestamp():
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+    html="""
+    <div class="out_">
+        <b>IEC Version 1.0</a> (Beta)<br>
+    """
+    html = html + st
+    html = html + " (UTC)</b>"
+    html = html + """
+    </div>"""
+    return html
 
 def table_1(iec_obj):
         html = """
@@ -145,5 +187,46 @@ def table_2_qaqc(iec_obj):
         html = html + tmpl.render(Context(dict(data=t2rows, headings=ovheadingsqaqc)))
         html = html + """
             </div>
+        """
+        return html
+
+
+def table_all_sum(dose_response,LC50,threshold,z_score_f_out, F8_f_out, chance_f_out):
+    html_all_sum = table_sum_input(dose_response,LC50,threshold)
+    html_all_sum += table_sum_output(z_score_f_out, F8_f_out, chance_f_out)
+    return html_all_sum
+
+def table_sum_input(dose_response,LC50,threshold):
+        #pre-table sum_input
+        html = """
+        <H3 class="out_1 collapsible" id="section1"><span></span>Summary Statistics</H3>
+        <div class="out_">
+            <H4 class="out_1 collapsible" id="section4"><span></span>Batch Inputs</H4>
+                <div class="out_ container_output">
+        """
+        #table sum_input
+        tsuminputdata = gettsumdata(dose_response,LC50,threshold)
+        tsuminputrows = gethtmlrowsfromcols(tsuminputdata, sumheadings)
+        html = html + tmpl.render(Context(dict(data=tsuminputrows, headings=sumheadings)))
+        html = html + """
+        </div>
+        """
+        return html
+
+def table_sum_output(z_score_f_out, F8_f_out, chance_f_out):
+        #pre-table sum_input
+        html = """
+        <br>
+            <H4 class="out_1 collapsible" id="section3"><span></span>SIP Outputs</H4>
+                <div class="out_ container_output">
+        """
+        #table sum_input
+        tsumoutputdata = gettsumdata_out(z_score_f_out, F8_f_out, chance_f_out)
+        tsumoutputrows = gethtmlrowsfromcols(tsumoutputdata, sumheadings)
+        html = html + tmpl.render(Context(dict(data=tsumoutputrows, headings=sumheadings)))
+        html = html + """
+                </div>
+        </div>
+        <br>
         """
         return html

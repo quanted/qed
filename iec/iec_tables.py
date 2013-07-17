@@ -216,8 +216,7 @@ def table_sum_input(dose_response,LC50,threshold):
 def table_sum_output(z_score_f_out, F8_f_out, chance_f_out):
         #pre-table sum_input
         html = """
-        <br>
-            <H4 class="out_1 collapsible" id="section3"><span></span>SIP Outputs</H4>
+            <H4 class="out_1 collapsible" id="section3"><span></span>IEC Outputs</H4>
                 <div class="out_ container_output">
         """
         #table sum_input

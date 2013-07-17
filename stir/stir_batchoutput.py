@@ -83,9 +83,9 @@ def html_table(row,iter):
     body_weight_tested_mammal.append(float(row[14]))
     mammal_oral_ld50.append(float(row[15]))
 
-    Input_header="""<table border="1">
-                        <tr><H3>Batch Calculation of Iteration %s</H3></tr>
-                    </table>"""%(iter)
+    Input_header="""<div class="out_">
+                        <br><H3>Batch Calculation of Iteration %s</H3>
+                    </div>"""%(iter)
 
     stir_obj_temp = stir_model.StirModel(True,True,chemical_name[iter-1],application_rate[iter-1],column_height[iter-1],spray_drift_fraction[iter-1],direct_spray_duration[iter-1], 
             molecular_weight[iter-1],vapor_pressure[iter-1],avian_oral_ld50[iter-1], body_weight_assessed_bird[iter-1], body_weight_tested_bird[iter-1], mineau_scaling_factor[iter-1], 
@@ -155,7 +155,7 @@ class stirBatchOutputPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberbatch_start.html', {
                 'model':'stir',
-                'model_attributes':'stir Batch Output'})
+                'model_attributes':'STIR Batch Output'})
         html = html + stir_tables.timestamp()
         html = html + iter_html
         html = html + template.render(templatepath + 'export.html', {})

@@ -32,9 +32,9 @@ class THerpsInputPage(webapp.RequestHandler):
         html = html + """
         <div id="input_nav">
             <ul>
-                <li>| <a class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </a> </li>
-                <li>| <a class="Avian" style="font-weight:bold"> Avian </a> </li>
-                <li>| <a class="Herptile" style="font-weight:bold"> Herptile </a> |</li>
+                <li class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical</li>
+                |<li class="Avian" style="font-weight:bold"> Avian</li>
+                |<li class="Herptile" style="font-weight:bold"> Herptile</li>
             </ul>
         </div>
         """
@@ -44,7 +44,7 @@ class THerpsInputPage(webapp.RequestHandler):
         html = html + str(therps_parameters.trexInp_bird())
         html = html + """</table><table class="tab tab_Herptile" border="0" style="display:none">"""
         html = html + str(therps_parameters.trexInp_herp())
-        html = html + template.render(templatepath + 'therps_input_end.html', {'sub_title': 'Submit'})
+        html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + 'therps-jquery.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

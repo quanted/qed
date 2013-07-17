@@ -197,7 +197,9 @@ def html_table(row_inp,iter):
     wp_herp_a_lg_temp=float(row_inp[28])/100
     wp_herp_a_lg.append(wp_herp_a_lg_temp)
 
-    Input_header="""<H3>Batch Calculation of Iteration %s</H3>"""%(iter)
+    Input_header="""<div class="out_">
+                        <br><H3>Batch Calculation of Iteration %s</H3>
+                    </div>"""%(iter)
 
     therps_obj_temp = therps_model.therps(chem_name_temp, use_temp, formu_name_temp, a_i_temp, h_l_temp, n_a_temp, i_a_temp, a_r_temp, 
                                           ld50_bird_temp, lc50_bird_temp, NOAEC_bird_temp, NOAEL_bird_temp, 

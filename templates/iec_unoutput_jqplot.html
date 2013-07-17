@@ -1,0 +1,152 @@
+<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="/stylesheets/jqplot/excanvas.js"></script><![endif]-->
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/jquery.jqplot.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/jqplot/jquery.jqplot.css" />
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.pointLabels.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.cursor.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+
+<div id="chart1" style="margin-top:20px; margin-left:20px; width:600px; height:400px;"></div>
+
+
+<script type='text/javascript'> 
+
+$(document).ready(function(){
+		
+      $.jqplot.config.enablePlugins = true;
+    	// var s1 = $.parseJSON($('#z_score_f_pool').attr("data-val"));
+      var s1 =  [[1521.3938, 0.03708],[1626.3757, 0.042449],[1738.6018, 0.049646],[1858.5719, 0.060338],[1986.8205, 0.071497],
+        [2123.9187, 0.087044],[2270.4772, 0.104666],[2427.1488, 0.128184],[2594.6313, 0.159819],[2773.6707, 0.199611],
+        [2965.0643, 0.243673],[3169.6651, 0.287224],[3388.384, 0.342159],[3622.1955, 0.415635],[3872.1408, 0.517318],
+        [4139.3332, 0.659341],[4424.963, 0.840113],[4730.3023, 1.074108],[5056.7112, 1.442097],[5405.6431, 1.981591],
+        [5778.6531, 2.7619],[6177.4022, 3.842131],[6603.6665, 5.373085],[7059.3446, 7.749981],[7546.4664, 11.242774],
+        [8067.2013, 15.291262],[8623.869, 19.8475],[9218.9488, 25.015106],[9855.0905, 30.121086],[10535.1293, 35.513309],
+        [11262.0934, 41.587183],[12039.2208, 46.321554],[12869.973, 49.223654],[13758.0502, 51.762768],[14707.4081, 54.47173],
+        [15722.2754, 56.863937],[16807.1724, 57.920473],[17966.9296, 58.642722],[19206.7162, 59.984755],[20532.0529, 61.048963],
+        [21948.8429, 59.669989],[23463.3991, 56.956409],[25082.4581, 54.101304],[26813.238, 53.0051],[28663.448, 51.385158],
+        [30641.3597, 50.165756],[32755.7239, 47.205435],[35015.9867, 43.941876],[37432.2159, 40.609332],[40015.1736, 37.393368],
+        [42776.4074, 34.753172],[45728.1335, 31.843056],[48883.5393, 29.239575],[52256.6796, 26.946508],[55862.5786, 24.54375],
+        [59717.3573, 21.987525],[63838.07, 19.447158],[68243.1267, 16.947396],[72952.1481, 14.562087],[77986.109, 12.487872],
+        [83367.4313, 10.610279],[89120.1733, 9.061827],[95269.7861, 7.759485],[101843.7444, 6.5685],[108871.3294, 5.529717],
+        [116383.8431, 4.605731],[124414.8718, 3.803268],[132999.9458, 3.106561],[142177.421, 2.580555],[151988.1749, 2.127878],
+        [162475.9062, 1.720439],[173687.5023, 1.418638],[185672.5653, 1.173246],[198484.6408, 0.977631],[212180.7957, 0.832246],
+        [226822.0345, 0.720185],[242473.814, 0.624252],[259205.3802, 0.54125],[277091.4846, 0.469102],[296211.7947, 0.415329],
+        [316651.475, 0.374489],[338501.5668, 0.335609],[361859.7555, 0.297025],[386829.3815, 0.261974],[413522.0015, 0.228367],
+        [442056.5084, 0.19707],[472559.9991, 0.17066],[505168.8456, 0.147428],[540027.3147, 0.128476],[577291.1437, 0.112712],
+        [617126.311, 0.097754],[659710.2484, 0.083718],[705233.3359, 0.070908],[753896.9752, 0.061016],[805918.5808, 0.053385],
+        [861529.8645, 0.047077],[920978.5269, 0.041268],[984529.3611, 0.035943],[1052466.484, 0.031318],[1125090.461, 0.027688]]
+      console.log(s1);
+   //      $.jqplot('chart1', [s1], {
+   //          seriesDefaults:{
+   //              renderer:$.jqplot.BarRenderer,
+   //              pointLabels: { show: true },
+			// 	rendererOptions: {
+			// 	barWidth: 3,
+			// 	barPadding: -40,
+			// 	barMargin: 100
+			// 	}
+   //          },
+			// series:[
+			// {label:'Prepip.+Irrig'}
+			// ],
+			// axes: {
+   //    			xaxis: {
+   //        			renderer: $.jqplot.CategoryAxisRenderer,
+			// 		label :'Period'
+
+   //    				},
+   //    			yaxis: {
+   //      			label: 'Prepip.+Irrig (cm)',
+			// 		labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+
+   //    				}
+   //  		},
+			//  legend: {
+   //    			show: true,
+   //    			location: 'ne',
+   //    			placement: 'inside',
+			// 	fontSize: '11px'
+   //  		} 
+   //      })   
+
+
+
+     $.jqplot("chart1", [s1], {
+        title: "Probability Density Function",
+        cursor: {
+            show: false
+        },
+        highlighter: {
+            show: true,
+            showMarker: false,
+            useAxesFormatters: false,
+            // formatString: '%d, %.1f'
+        },
+        axesDefaults: {
+            labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+        },
+        seriesDefaults: {
+            showMarker: false
+        },
+        axes: {
+            xaxis: {
+                label: 'Per Capita Expenditure (local currency)',
+                // renderer: $.jqplot.LogAxisRenderer,
+                pad:0,
+                // ticks: [700, 7000, 70000, 700000, {value:1000000, showLabel:false, showMark:false, showGridline:false}],
+                tickOptions: {
+                    // formatString: "%d"
+                }
+            },
+            yaxis: {
+                label: 'Population Share (%)',
+                forceTickAt0: true,
+                pad: 0
+            }
+        },
+        grid: {
+            drawBorder: false,
+            shadow: false,
+            // background: 'rgba(0,0,0,0)'  works.
+            background: "white"
+        }
+        // canvasOverlay: {
+        //     show: true,
+        //     objects: [
+        //         {verticalLine: {
+        //             name: "line1",
+        //             x: 8250,
+        //             color: "#d4c35D",
+        //             yOffset: 0,
+        //             shadow: false,
+        //             showTooltip: true,
+        //             tooltipFormatString: "PCE=%'d",
+        //             showTooltipPrecision: 0.5
+        //         }},
+        //         {verticalLine: {
+        //             name: "line2",
+        //             x: 60000,
+        //             color: "#d4c35D",
+        //             yOffset: 0,
+        //             shadow: false,
+        //             showTooltip: true,
+        //             tooltipFormatString: "PCE=%'d",
+        //             showTooltipPrecision: 0.5
+        //         }}
+        //     ]
+        // }
+    })
+
+    })
+
+
+</script>
+
+
+
+  
+
+
+

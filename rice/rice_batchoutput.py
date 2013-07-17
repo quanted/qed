@@ -47,10 +47,10 @@ def html_table(row_inp,iter):
     dw.append(float(row_inp[5]))
     osed.append(float(row_inp[6]))        
     kd.append(float(row_inp[7]))    
-    msed.append(float(row_inp[8]))
-    vw.append(float(row_inp[9]))
-    mai1.append(float(row_inp[10]))
-    cw.append(float(row_inp[11])) 
+    # msed.append(float(row_inp[8]))
+    # vw.append(float(row_inp[9]))
+    # mai1.append(float(row_inp[10]))
+    # cw.append(float(row_inp[11])) 
     
     logger.info(chemical_name)
     logger.info(mai)
@@ -151,9 +151,22 @@ def loop_html(thefile):
         iter_html = iter_html +html_table(row,i)
         i=i+1
 
+    sum_output_cw="""<table border="1" style="display: none"><tr>
+                    <td id="cw_out_raw" data-val='%s' style="display: none"></td>                                                                              
+                    <td>&microg/L</td>
+                </tr></table><br>""" %(cw)             
+    sum_fig="""<H3>Historgram</H3><br>
+               <div id="calculate">
+                   <div class="block">
+                        <label>How many buckets (Default is based on Sturgis rule):</label>
+                        <input type="text" id="buckets" value=%s></div><br>
+                        <button type="submit" id="calc">Calculate Historgram</button></div><br>
+                <div id="chart1"></div><br>"""%(int(1+3.3*np.log10(len(cw)))) #number of bins coming from Sturgis rule         
+                                     
+
     sum_html = rice_tables.table_sum_all(rice_tables.sumheadings, rice_tables.tmpl, mai, dsed, a, pb, dw, osed, kd, msed, vw, mai1, cw)
 
-    return sum_html+iter_html
+    return sum_html+sum_output_cw+sum_fig+iter_html
 
     # sum_header ="""<table border="1">
     #                     <tr><H3>Summary Statistics (Iterations=%s)</H3></tr><br>
@@ -240,7 +253,7 @@ def loop_html(thefile):
     #                 <td>%0.2E</td>                      
     #                 <td>lbs a.i./A</td>
     #             </tr>""" %(numpy.mean(mai1_out), numpy.std(mai1_out), numpy.min(mai1_out), numpy.max(mai1_out))
-    # sum_output_cw="""<tr>
+    # sum_output_cw="""<table border="1" style="display: none"><tr>
     #                 <td>Peak & Chronic EEC</td>
     #                 <td>%0.2E</td>
     #                 <td>%0.2E</td> 
@@ -278,7 +291,7 @@ class RiceBatchOutputPage(webapp.RequestHandler):
                 'model_attributes':'Rice Model Batch Output'})
         html = html + rice_tables.timestamp()
         html = html + iter_html
-        # html = html + template.render(templatepath + 'rice-batchoutput-jqplot.html', {})
+        html = html + template.render(templatepath + 'rice-batchoutput-jqplot.html', {})
         html = html + template.render(templatepath + 'export.html', {})            
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

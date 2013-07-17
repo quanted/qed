@@ -257,7 +257,8 @@ def table_sum_output(z_score_f_out, F8_f_out, chance_f_out):
                 </div>
         </div>
         <br>"""
-
+        return html
+        
 def table_1_un(LC50_pool, threshold_pool, dose_response_pool):
         html = """
         <H4 class="out_1 collapsible" id="section1"><span></span>User Inputs</H4>

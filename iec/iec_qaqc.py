@@ -13,7 +13,7 @@ from pprint import pprint
 import csv
 import sys
 sys.path.append("../iec")
-from iec import iec_model_new,iec_tables
+from iec import iec_model,iec_tables
 import logging
 
 logger = logging.getLogger('IECQaqcPage')
@@ -81,7 +81,7 @@ def suite(TestCaseName, **kwargs):
     test_out=stream.read()
     return test_out
 
-iec_obj = iec_model_new.iec(True,True,dose_response[0],LC50[0],threshold[0])
+iec_obj = iec_model.iec(True,True,dose_response[0],LC50[0],threshold[0])
 iec_obj.set_unit_testing_variables()
 
 iec_obj.z_score_f_out_expected = z_score_f_out[0]

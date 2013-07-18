@@ -1,9 +1,5 @@
 application: pypest
-<<<<<<< HEAD
 version: sprint7
-=======
-version: tao
->>>>>>> b526a0b4de81cd0ce6ed9a59b4362d430c85a130
 runtime: python27
 api_version: 1
 

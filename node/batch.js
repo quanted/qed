@@ -213,7 +213,18 @@ server.get('/all-cas', function(req, res, next){
 server.get('/formula/:registration_num', function(req, res, next){
     var registration_num = req.params.registration_num;
     console.log("Registration Number: " + registration_num);
-    formula.getFormulaData(registration_num, function(error,chemical){
+    formula.getFormulaData(registration_num, function(error,chemicals){
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        console.log(chemicals)
+        res.send(chemicals);
+    });
+});
+
+server.get('/formulas/:pc_code', function(req, res, next){
+    var pc_code = req.params.pc_code;
+    console.log("PC Code: " + pc_code);
+    formula.getFormulaDataFromPCCode(pc_code, function(error,chemical){
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.send(chemical);

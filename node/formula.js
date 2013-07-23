@@ -44,6 +44,23 @@
       })
     }
 
+    exports.getFormulaDataFromPCCode = function(pc_code,callback)
+    { 
+      db.collection('chemicals', function(err,collection){
+        collection.find({pccode:pc_code}).toArray(function(err,all_formulas) {
+          var formula_data = [];
+          for(i = 0; i < all_formulas.length; i++)
+          {
+            formula_data.push({"Registration Number":all_formulas[i].regnum.substring(0,20),
+                                      "PC Percentage":all_formulas[i].pcpct,
+                                      "Product Name":all_formulas[i].prodname,
+                                      "PC Code":all_formulas[i].pccode})
+          }
+          callback(null,formula_data);
+        });
+      });
+    }
+
     exports.getFormulaData = function(registration_num,callback)
     { 
       db.collection('chemicals', function(err,collection){

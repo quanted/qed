@@ -2,6 +2,7 @@ var restify = require('restify');
 var rabbitmq = require('./rabbitmq.js');
 var mongodb = require('./mongodb.js');
 var cas = require('./cas_mongo.js');
+var formula = require('./formula.js');
 var ubertool = require('./ubertool.js');
 var utils = require('./utils.js');
 var flow = require('nimble');
@@ -205,6 +206,25 @@ server.get('/all-cas', function(req, res, next){
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.send(all_cas);
+    });
+});
+
+//Formula Services
+server.get('/formula/:registration_num', function(req, res, next){
+    var registration_num = req.params.registration_num;
+    console.log("Registration Number: " + registration_num);
+    formula.getFormulaData(registration_num, function(error,chemical){
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.send(chemical);
+    });
+});
+
+server.get('/all_formula', function(req, res, next){
+    formula.getAllFormulaData(function(error,formula_data){
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.send(formula_data);
     });
 });
 

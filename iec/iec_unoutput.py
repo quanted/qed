@@ -112,8 +112,10 @@ class iecUnoutputPage(webapp.RequestHandler):
         num_bin_z_score = int(1+3.3*np.log10(len(z_score_f_pool)))
         num_bin_chance_f = int(1+3.3*np.log10(len(chance_f_pool)))
 
+        html = html + '<div>'
         html = html + hist_plot(z_score_f_pool, num_bin_z_score, 'Z Score', id_generator(), 1) + '<br>'
         html = html + hist_plot(chance_f_pool, num_bin_chance_f, 'Chance F', id_generator(), 2) + '<br>'
+        html = html + '</div>'
 
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {}) 

@@ -5,7 +5,7 @@ var n_plot_1 = $('div[id^="chart"]').size();
 var n_plot_2 = $('img[id^="chart"]').size();
 n_plot = n_plot_1 + n_plot_2
 
-console.log(n_plot);
+// console.log(n_plot);
 
 i=1;
 

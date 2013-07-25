@@ -153,6 +153,9 @@ handlers:
 #uncertainty_output
 - url: /(.*?)_unoutput.html
   script: \1/\1_unoutput.py
+#blog
+- url: /(.*?)_(.*?).html
+  script: \1/\2.py
 
 ##TESTED models##
 #description

@@ -22,7 +22,8 @@
     			var cas_nums_chem_names = [];
     			for(i = 0; i < all_cas.length; i++)
     			{
-    				cas_nums_chem_names.push({"ChemicalName":all_cas[i].ChemicalName.substring(0,20),"CASNumber":all_cas[i].CASNumber})
+            console.log(all_cas[i]);
+    				cas_nums_chem_names.push({"ChemicalName":all_cas[i].ChemicalName,"CASNumber":all_cas[i].CASNumber,"PCCode":all_cas[i].PCCode})
     			}
     			callback(null,cas_nums_chem_names);
     		});
@@ -35,7 +36,7 @@
         var utf8_cas_data = [];
         for(i = 0; i < cas_data.length; i++)
         {
-          utf8_cas_data.push(cas_data[i].ChemicalName.substring(0,20));
+          utf8_cas_data.push(cas_data[i].ChemicalName);
         }
         callback(null,utf8_cas_data);
       })
@@ -47,6 +48,21 @@
         collection.findOne({CASNumber:cas_number},function(err,cas) {
           console.log(cas);
           callback(null,cas.ChemicalName.substring(0,20));
+        });
+      });
+    }
+
+    exports.getChemicalData = function(chemical_name, callback)
+    {
+      db.collection('CAS', function(err,collection){
+        collection.findOne({ChemicalName:chemical_name},function(err,cas) {
+          console.log(cas);
+          var cas_data = null;
+          if(cas != null)
+          {
+            cas_data = {"ChemicalName":cas.ChemicalName,"CASNumber":cas.CASNumber,"PCCode":cas.PCCode};
+          }
+          callback(null,cas_data);
         });
       });
     }

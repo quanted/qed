@@ -201,6 +201,19 @@ server.get('/cas/:cas_num', function(req, res, next){
     });
 });
 
+server.get('/casdata/:chemical_name', function(req, res, next){
+    var chemical_name = req.params.chemical_name;
+    console.log("Chemical Name: " + chemical_name);
+    cas.getChemicalData(chemical_name, function(error,cas_data){
+        if(cas_data != null)
+        {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "X-Requested-With");
+            res.send(cas_data);
+        }
+    });
+});
+
 server.get('/all-cas', function(req, res, next){
     cas.getAll(function(error,all_cas){
         res.header("Access-Control-Allow-Origin", "*");

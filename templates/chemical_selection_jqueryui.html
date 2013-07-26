@@ -14,7 +14,7 @@ all_formula_data = {};
 $(document).ready(function() {
 
 	$.ajax({
-		url:"http://localhost:8887/all-cas",
+		url:"{{UBERTOOL_MONGO_SERVER}}/all-cas",
 		async: true,
 		type: 'GET',
 		success: function(cas_data) {
@@ -37,7 +37,7 @@ $(document).ready(function() {
 		$("#id_cas_num")[0].value = cas_datum.CASNumber;
 		$("#id_pc_code")[0].value = cas_datum.PCCode;
 		$.ajax({
-			url:"http://localhost:8887/formulas/"+cas_datum.PCCode,
+			url:"{{UBERTOOL_MONGO_SERVER}}/formulas/"+cas_datum.PCCode,
 			async: true,
 			type: 'GET',
 			success: function(formula_data) {

@@ -67,6 +67,10 @@ handlers:
   script: user/user_registration_input.py
   secure: always
 
+#blog
+- url: /blog_(.*?).html
+  script: \blog\1.py
+
 # All URLs beginning with /stylesheets are treated as paths to static files in
 # the stylesheets/ directory. Note that static_dir handlers do not use a
 # regular expression for the URL pattern, only a prefix.
@@ -246,10 +250,6 @@ handlers:
 - url: /run_ubertool.html
   script: ubertool/run_ubertool_input.py  
   login: required
-
-#blog
-- url: /(.*?)_(.*?).html
-  script: \1/\2.py
 
 #ESA workshop
 - url: /esa_workshop.html

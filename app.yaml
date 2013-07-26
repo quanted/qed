@@ -21,7 +21,7 @@ libraries:
 
 env_variables:
   UBERTOOL_BATCH_SERVER: 'http://www.chancedelphia.com:8887/'
-  UBERTOOL_MONGO_SERVER: 'http://127.0.0.1:8887'
+  UBERTOOL_MONGO_SERVER: 'http://www.chancedelphia.com:8887'
   UBERTOOL_SECURE_SERVER: 'http://www.chancedelphia.com:8989'
 
 skip_files:

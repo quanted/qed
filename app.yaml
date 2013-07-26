@@ -153,9 +153,6 @@ handlers:
 #uncertainty_output
 - url: /(.*?)_unoutput.html
   script: \1/\1_unoutput.py
-#blog
-- url: /(.*?)_(.*?).html
-  script: \1/\2.py
 
 ##TESTED models##
 #description
@@ -249,6 +246,10 @@ handlers:
 - url: /run_ubertool.html
   script: ubertool/run_ubertool_input.py  
   login: required
+
+#blog
+- url: /(.*?)_(.*?).html
+  script: \1/\2.py
 
 #ESA workshop
 - url: /esa_workshop.html

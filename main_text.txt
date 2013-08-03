@@ -24,3 +24,5 @@ Terrestrial species that are located in potential exposure areas for specific pe
 Aquatic species have a different set of models, though PRZM is also used.  PRZM is linked to EXAMS to provide exposure concentrations in an agricultural farm pond.  These concentrations are used in KABAM to estimate exposures for piscivorous birds and mammals.  GENEEC2 is a Tier 1 alternative for deriving similar farm pond exposure concentrations.  The Tier 1 Rice model and PFAM (in development) are used for estimating pesticide concentrations in rice paddies and SWAMP is used to estimate exposure concentrations for fish and aquatic invertebrates for water bodies that are adjacent to treated fields.  Models for estimating pesticide concentrations downstream are currently under discussion.  
 </p>
 
+<p><a href="/blog_20130725.html">2013 ESA Python Workshop</p>
+</p>

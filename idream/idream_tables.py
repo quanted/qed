@@ -19,6 +19,14 @@ def getheaderpva2():
     headings = ["Subpopulation", "Acute Exposure (mg/kg/d)"]
     return headings
 
+def getheadersum1():
+    headings = ["Parameter", "Mean", "Std", "Min", "Max", "Units"]
+    return headings
+
+def getheadersum2():
+    headings = ["Subpopulation", "Mean", "Std", "Min", "Max"]
+    return headings
+
 def gethtmlrowsfromcols(data, headings):
     columns = [data[heading] for heading in headings]
 
@@ -73,7 +81,8 @@ def getdjtemplate():
 pvuheadings = getheaderpvu()
 pvaheadings = getheaderpva()
 pva2headings = getheaderpva2()
-
+sumheadings1 = getheadersum1()
+sumheadings2 = getheadersum2()
 
 djtemplate = getdjtemplate()
 
@@ -113,7 +122,6 @@ def table_all(idream_obj):
         html = html + table3_out_3
         return html
 
-
 def gett1data(idream_obj):
     data = { 
         "Parameter": ['Subject active ingredient', 'Product residue', 'In-use active conc',],
@@ -148,8 +156,7 @@ def gett1data_3(idream_obj):
         "Units": ['', 'mg/cm<sup>2</sup>', '%', '%', '%', '%', '%', '%', '%', '%', '%', '%',],
         }
     return data
-  
- 
+
 def gett2data_3(idream_obj):
     data = { 
         "Subpopulation": ['Children 1-2', 'Children 3-5', 'Adults 13+', 'Females 13-49',],
@@ -162,6 +169,32 @@ def gett3data_3(idream_obj):
         "Subpopulation": ['Children 1-2', 'Children 3-5', 'Adults 13+', 'Females 13-49',],
         "Acute Exposure (mg/kg/d)": ['%.4e' % idream_obj.exp_child_a_1, '%.4e' % idream_obj.exp_child_a_2, '%.4e' % idream_obj.exp_adult_a, '%.4e' % idream_obj.exp_fe_a,],
         }
+    return data
+
+    
+def gettsumdata_1(prod_re, ai, liq_rte, fruit_rte, bread_rte, cheese_rte, veg_rte, meat_rte, pure_rte, piec_rte, powd_rte):
+    data = { 
+        "Parameter": ['Product residue', 'In-use active conc', 'Liquid residue transfer efficiency', 
+                      'Fruit residue transfer efficiency', 'Bread residue transfer efficiency', 'Cheese residue transfer efficiency', 
+                      'Vegetable residue transfer efficiency ', 'Meat residue transfer efficiency', 'Purees residue transfer efficiency', 
+                      'Pieces residue transfer efficiency', 'Powders residue transfer efficiency'],
+        "Mean": ['%.4e' % numpy.mean(prod_re), '%.4e' % numpy.mean(ai), '%.4e' % numpy.mean(liq_rte), '%.4e' % numpy.mean(fruit_rte), '%.4e' % numpy.mean(bread_rte), '%.4e' % numpy.mean(cheese_rte), '%.4e' % numpy.mean(veg_rte), '%.4e' % numpy.mean(meat_rte), '%.4e' % numpy.mean(pure_rte), '%.4e' % numpy.mean(piec_rte), '%.4e' % numpy.mean(powd_rte)],
+        "Std": ['%.4e' % numpy.std(prod_re), '%.4e' % numpy.std(ai), '%.4e' % numpy.std(liq_rte), '%.4e' % numpy.std(fruit_rte), '%.4e' % numpy.std(bread_rte), '%.4e' % numpy.std(cheese_rte), '%.4e' % numpy.std(veg_rte), '%.4e' % numpy.std(meat_rte), '%.4e' % numpy.std(pure_rte), '%.4e' % numpy.std(piec_rte), '%.4e' % numpy.std(powd_rte)],
+        "Min": ['%.4e' % numpy.min(prod_re), '%.4e' % numpy.min(ai), '%.4e' % numpy.min(liq_rte), '%.4e' % numpy.min(fruit_rte), '%.4e' % numpy.min(bread_rte), '%.4e' % numpy.min(cheese_rte), '%.4e' % numpy.min(veg_rte), '%.4e' % numpy.min(meat_rte), '%.4e' % numpy.min(pure_rte), '%.4e' % numpy.min(piec_rte), '%.4e' % numpy.min(powd_rte)],
+        "Max": ['%.4e' % numpy.max(prod_re), '%.4e' % numpy.max(ai), '%.4e' % numpy.max(liq_rte), '%.4e' % numpy.max(fruit_rte), '%.4e' % numpy.max(bread_rte), '%.4e' % numpy.max(cheese_rte), '%.4e' % numpy.max(veg_rte), '%.4e' % numpy.max(meat_rte), '%.4e' % numpy.max(pure_rte), '%.4e' % numpy.max(piec_rte), '%.4e' % numpy.max(powd_rte)],
+        "Units": ['mg/cm<sup>2</sup>', '%', '%', '%', '%', '%', '%', '%', '%', '%', '%',],
+    }
+    return data
+
+
+def gettsumdata_2(exp_child_c_1_out, exp_child_c_2_out, exp_adult_c_out, exp_fe_c_out):
+    data = { 
+        "Subpopulation": ['Children 1-2', 'Children 3-5', 'Adults 13+', 'Females 13-49',],
+        "Mean": ['%.4e' % numpy.mean(exp_child_c_1_out), '%.4e' % numpy.mean(exp_child_c_2_out), '%.4e' % numpy.mean(exp_adult_c_out), '%.4e' % numpy.mean(exp_fe_c_out)],
+        "Std": ['%.4e' % numpy.std(exp_child_c_1_out), '%.4e' % numpy.std(exp_child_c_2_out), '%.4e' % numpy.std(exp_adult_c_out), '%.4e' % numpy.std(exp_fe_c_out)],
+        "Min": ['%.4e' % numpy.min(exp_child_c_1_out), '%.4e' % numpy.min(exp_child_c_2_out), '%.4e' % numpy.min(exp_adult_c_out), '%.4e' % numpy.min(exp_fe_c_out)],
+        "Max": ['%.4e' % numpy.max(exp_child_c_1_out), '%.4e' % numpy.max(exp_child_c_2_out), '%.4e' % numpy.max(exp_adult_c_out), '%.4e' % numpy.max(exp_fe_c_out)],
+    }
     return data
 
 def table_1(idream_obj):
@@ -233,7 +266,6 @@ def table_2_3(idream_obj):
 def table_3(idream_obj):
         #pre-table 3
         html = """
-        <H3 class="out_1 collapsible" id="section1"><span></span>User Outputs:</H3>
         <div class="out_">
             <H4 class="out_ collapsible" id="section3"><span></span>Acute Assessment</H4>
             <div class="out_ container_output">
@@ -250,7 +282,6 @@ def table_3(idream_obj):
 def table_3_3(idream_obj):
         #pre-table 3
         html = """
-        <H3 class="out_1 collapsible" id="section1"><span></span>User Outputs:</H3>
         <div class="out_">
             <H4 class="out_ collapsible" id="section3"><span></span>Acute Assessment</H4>
             <div class="out_ container_output">
@@ -261,5 +292,53 @@ def table_3_3(idream_obj):
         html = html + tmpl.render(Context(dict(data=t3rows_3, headings=pva2headings)))
         html = html + """
                 </div>
+        """
+        return html
+
+def table_sum_1(i, prod_re, ai, liq_rte, fruit_rte, bread_rte, cheese_rte, veg_rte, meat_rte, pure_rte, piec_rte, powd_rte):
+        #pre-table sum_input_1
+        html = """
+        <H3 class="out_1 collapsible" id="section1"><span></span>Batch Summary Statistics (Iterations=%s)</H3>
+        <div class="out_">
+            <H4 class="out_1 collapsible" id="section4"><span></span>User Inputs</H4>
+                <div class="out_ container_output">
+        """%(i-1)
+
+        #table sum_input_1
+        tsuminputdata_1 = gettsumdata_1(prod_re, ai, liq_rte, fruit_rte, bread_rte, cheese_rte, veg_rte, meat_rte, pure_rte, piec_rte, powd_rte)
+        tsuminputrows_1 = gethtmlrowsfromcols(tsuminputdata_1, sumheadings1)
+        html = html + tmpl.render(Context(dict(data=tsuminputrows_1, headings=sumheadings1)))
+        html = html + """
+        </div>
+        """
+        return html
+
+def table_sum_2(exp_child_c_1_out, exp_child_c_2_out, exp_adult_c_out, exp_fe_c_out):
+        #pre-table sum_input_2
+        html = """
+            <H4 class="out_1 collapsible" id="section3"><span></span>Chronic Exposure (mg/kg/d)</H4>
+                <div class="out_ container_output">
+        """
+        #table sum_input_2
+        tsuminputdata_2 = gettsumdata_2(exp_child_c_1_out, exp_child_c_2_out, exp_adult_c_out, exp_fe_c_out)
+        tsuminputrows_2 = gethtmlrowsfromcols(tsuminputdata_2, sumheadings2)
+        html = html + tmpl.render(Context(dict(data=tsuminputrows_2, headings=sumheadings2)))
+        html = html + """
+        </div>
+        """
+        return html
+
+def table_sum_3(exp_child_a_1_out, exp_child_a_2_out, exp_adult_a_out, exp_fe_a_out):
+        #pre-table sum_input_3
+        html = """
+            <H4 class="out_1 collapsible" id="section3"><span></span>Acute Exposure (mg/kg/d)</H4>
+                <div class="out_ container_output">
+        """
+        #table sum_input_2
+        tsuminputdata_3 = gettsumdata_2(exp_child_a_1_out, exp_child_a_2_out, exp_adult_a_out, exp_fe_a_out)
+        tsuminputrows_3 = gethtmlrowsfromcols(tsuminputdata_3, sumheadings2)
+        html = html + tmpl.render(Context(dict(data=tsuminputrows_3, headings=sumheadings2)))
+        html = html + """
+        </div>
         """
         return html

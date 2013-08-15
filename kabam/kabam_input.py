@@ -3,7 +3,6 @@
 Created on Tue Jan 03 13:30:41 2012
 @author: thong
 """
-
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import cgitb
@@ -11,9 +10,8 @@ cgitb.enable()
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
-from kabam import Kabamdb
+from kabam import kabam_parameters
 from django import forms
-
 
 class KabamInputPage(webapp.RequestHandler):
     def get(self):
@@ -46,29 +44,29 @@ class KabamInputPage(webapp.RequestHandler):
         </div>
         """
         html = html + """<br><table class="tab tab_Chemical" border="0">"""
-        html = html + str(Kabamdb.KabamInp_chem())
+        html = html + str(kabam_parameters.KabamInp_chem())
         html = html + """</table><table class="tab tab_Avian" border="0" style="display:none">"""
-        html = html + str(Kabamdb.KabamInp_bird())
+        html = html + str(kabam_parameters.KabamInp_bird())
         html = html + """</table><table class="tab tab_Mammal" border="0" style="display:none">"""
-        html = html + str(Kabamdb.KabamInp_mammal())
+        html = html + str(kabam_parameters.KabamInp_mammal())
         html = html + """</table><table class="tab tab_LargeFish" border="0" style="display:none">"""
-        html = html + str(Kabamdb.KabamInp_lfish())
+        html = html + str(kabam_parameters.KabamInp_lfish())
         html = html + """</table><table class="tab tab_MediumFish" border="0" style="display:none">"""
-        html = html + str(Kabamdb.KabamInp_mfish())
+        html = html + str(kabam_parameters.KabamInp_mfish())
         html = html + """</table><table class="tab tab_SmallFish" border="0" style="display:none">"""
-        html = html + str(Kabamdb.KabamInp_sfish())
+        html = html + str(kabam_parameters.KabamInp_sfish())
         html = html + """</table><table class="tab tab_Filterfeeders" border="0" style="display:none">"""
-        html = html + str(Kabamdb.KabamInp_ff())
+        html = html + str(kabam_parameters.KabamInp_ff())
         html = html + """</table><table class="tab tab_Invertebrates" border="0" style="display:none">"""
-        html = html + str(Kabamdb.KabamInp_invert())
+        html = html + str(kabam_parameters.KabamInp_invert())
         html = html + """</table><table class="tab tab_Zooplankton" border="0" style="display:none">"""
-        html = html + str(Kabamdb.KabamInp_zoo())
+        html = html + str(kabam_parameters.KabamInp_zoo())
         html = html + """</table><table class="tab tab_Phytoplankton" border="0" style="display:none">"""
-        html = html + str(Kabamdb.KabamInp_phyto())
+        html = html + str(kabam_parameters.KabamInp_phyto())
         html = html + """</table><table class="tab tab_Sediment" border="0" style="display:none">"""
-        html = html + str(Kabamdb.KabamInp_sed())
+        html = html + str(kabam_parameters.KabamInp_sed())
         html = html + """</table><table class="tab tab_Constants" border="0" style="display:none">"""
-        html = html + str(Kabamdb.KabamInp_constants())
+        html = html + str(kabam_parameters.KabamInp_constants())
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

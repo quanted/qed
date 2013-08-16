@@ -103,14 +103,14 @@ def gett1data(kabam_obj):
 def gett2data(kabam_obj):
     data = { 
         "Parameter": ['Water Total','Water Freely Dissolved','Sediment Pore Water','Sediment in Solid','Phytoplankton','Zooplankton','Benthic Invertebrates','Filter Feeders','Small Fish','Medium Fish','Large Fish'],
-        "Total": ['removed','%.3f' % kabam_obj.water_d,'removed','%.3f' % kabam_obj.c_s,'%.3f' % kabam_obj.cb_phytoplankton,'%.3f' % kabam_obj.cb_zoo,'%.3f' % kabam_obj.cb_beninv,'%.3f' % kabam_obj.cbf_ff,'%.3f' % kabam_obj.cb_sf,'%.3f' % kabam_obj.cb_mf,'%.3f' % kabam_obj.cb_lf],
-        "Lipid Normalized": ['NA','NA','NA','NA','%.3f' % kabam_obj.cbl_phytoplankton,'%.3f' % kabam_obj.cbl_zoo,'%.3f' % kabam_obj.cbl_beninv,'%.3f' % kabam_obj.cbl_ff,'%.3f' % kabam_obj.cbl_sf,'%.3f' % kabam_obj.cbl_mf,'%.3f' % kabam_obj.cbl_lf],
-        "Diet Contribution": ['NA','NA','NA','NA','NA','%.3f' % kabam_obj.cbd_zoo,'%.3f' % kabam_obj.cbd_beninv,'%.3f' % kabam_obj.cbd_ff,'%.3f' % kabam_obj.cbd_sf,'%.3f' % kabam_obj.cbd_mf,'%.3f' % kabam_obj.cbd_lf],
-        "Respiration Contribution": ['removed','removed','removed','removed','removed','removed','removed','removed','removed','removed','removed'],
+        "Total": ['%.0f' % kabam_obj.water_column_EEC,'%.0f' % kabam_obj.water_d,'%.0f' % (1e6*kabam_obj.c_wdp_2),'%.0f' % (1e6*kabam_obj.c_s),'%.0f' % (1e6*kabam_obj.cb_phytoplankton),'%.0f' % (1e6*kabam_obj.cb_zoo),'%.0f' % (1e6*kabam_obj.cb_beninv),'%.0f' % (1e6*kabam_obj.cbf_ff),'%.0f' % (1e6*kabam_obj.cb_sf),'%.0f' % (1e6*kabam_obj.cb_mf),'%.0f' % (1e6*kabam_obj.cb_lf)],
+        "Lipid Normalized": ['NA','NA','NA','NA','%.0f' % kabam_obj.cbl_phytoplankton,'%.0f' % kabam_obj.cbl_zoo,'%.0f' % kabam_obj.cbl_beninv,'%.0f' % kabam_obj.cbl_ff,'%.0f' % kabam_obj.cbl_sf,'%.0f' % kabam_obj.cbl_mf,'%.0f' % kabam_obj.cbl_lf],
+        "Diet Contribution": ['NA','NA','NA','NA','NA','%.2f' % (1e6*kabam_obj.cbd_zoo),'%.2f' % (1e6*kabam_obj.cbd_beninv),'%.2f' % (1e6*kabam_obj.cbd_ff),'%.2f' % (1e6*kabam_obj.cbd_sf),'%.2f' % (1e6*kabam_obj.cbd_mf),'%.2f' % (1e6*kabam_obj.cbd_lf)],
+        "Respiration Contribution": ['NA','NA','NA','NA','removed','%.2f' % (1e6*kabam_obj.cbr_zoo),'%.2f' % (1e6*kabam_obj.cbr_beninv),'%.2f' % (1e6*kabam_obj.cbr_ff),'%.2f' % (1e6*kabam_obj.cbr_sf),'%.2f' % (1e6*kabam_obj.cbr_mf),'%.2f' % (1e6*kabam_obj.cbr_lf)],
     }
     return data
     # Removed: "Total": ['%.3f' % kabam_obj.water_column_EEC,'%.3f' % kabam_obj.water_d,'%.3f' % kabam_obj.c_wdp_2,'%.3f' % kabam_obj.c_s_f,'%.3f' % kabam_obj.cb_phytoplankton_f,'%.3f' % kabam_obj.cb_zoo_f,'%.3f' % kabam_obj.cb_beninv_f,'%.3f' % kabam_obj.cb_ff_f,'%.3f' % kabam_obj.cb_sf_f,'%.3f' % kabam_obj.cb_mf_f,'%.3f' % kabam_obj.cb_lf_f],
-    # Removed: "Respiration Contribution": ['NA','NA','NA','NA','%.3f' % kabam_obj.cbr_phytoplankton,'%.3f' % kabam_obj.cbr_zoo,'%.3f' % kabam_obj.cbr_beninv,'%.3f' % kabam_obj.cbrf,'%.3f' % kabam_obj.cbr_sf,'%.3f' % kabam_obj.cbr_mf,'%.3f' % kabam_obj.cbr_lf],
+    # Removed: "Respiration Contribution": ['NA','NA','NA','NA','%.3f' % kabam_obj.cbr_phytoplankton,'%.3f' % kabam_obj.cbr_zoo,'%.3f' % kabam_obj.cbr_beninv,'%.3f' % kabam_obj.cbr_ff,'%.3f' % kabam_obj.cbr_sf,'%.3f' % kabam_obj.cbr_mf,'%.3f' % kabam_obj.cbr_lf],
 
 # def gett2dataqaqc(kabam_obj):
 #     data = { 
@@ -198,9 +198,9 @@ def gett5data(kabam_obj):
 def gett6data(kabam_obj):
     data = { 
         "Wildlife Species": ['fog/water shrew','rice rate/star nosed mole','small mink','large mink','small river otter','large river otter','sandpipers','cranes','rails','herons','small osprey','white pelican'],
-        "Acute Dose Based (mg/kg-bw)": [kabam_obj.acute_dose_based_m[:,0],kabam_obj.acute_dose_based_m[:,1],kabam_obj.acute_dose_based_m[:,2],kabam_obj.acute_dose_based_m[:,3],kabam_obj.acute_dose_based_m[:,4],kabam_obj.acute_dose_based_m[:,5],kabam_obj.acute_dose_based_a[:,0],kabam_obj.acute_dose_based_a[:,1],kabam_obj.acute_dose_based_a[:,2],kabam_obj.acute_dose_based_a[:,3],kabam_obj.acute_dose_based_a[:,4],kabam_obj.acute_dose_based_a[:,0]],
+        "Acute Dose Based (mg/kg-bw)": [kabam_obj.acute_dose_based_m[:,0][0],kabam_obj.acute_dose_based_m[:,1][0],kabam_obj.acute_dose_based_m[:,2][0],kabam_obj.acute_dose_based_m[:,3][0],kabam_obj.acute_dose_based_m[:,4][0],kabam_obj.acute_dose_based_m[:,5][0],kabam_obj.acute_dose_based_a[:,0][0],kabam_obj.acute_dose_based_a[:,1][0],kabam_obj.acute_dose_based_a[:,2][0],kabam_obj.acute_dose_based_a[:,3][0],kabam_obj.acute_dose_based_a[:,4][0],kabam_obj.acute_dose_based_a[:,0][0]],
         "Acute Dietary Based (mg/kg-diet)": [kabam_obj.mammalian_ld50,kabam_obj.mammalian_ld50,kabam_obj.mammalian_ld50,kabam_obj.mammalian_ld50,kabam_obj.mammalian_ld50,kabam_obj.mammalian_ld50,kabam_obj.avian_ld50,kabam_obj.avian_ld50,kabam_obj.avian_ld50,kabam_obj.avian_ld50,kabam_obj.avian_ld50,kabam_obj.avian_ld50],
-        "Chronic Dose Based (mg/kg-bw)": [kabam_obj.chronic_dose_based_m[:,0],kabam_obj.chronic_dose_based_m[:,1],kabam_obj.chronic_dose_based_m[:,2],kabam_obj.chronic_dose_based_m[:,3],kabam_obj.chronic_dose_based_m[:,4],kabam_obj.chronic_dose_based_m[:,5],'NA','NA','NA','NA','NA','NA'],
+        "Chronic Dose Based (mg/kg-bw)": [kabam_obj.chronic_dose_based_m[:,0][0],kabam_obj.chronic_dose_based_m[:,1][0],kabam_obj.chronic_dose_based_m[:,2][0],kabam_obj.chronic_dose_based_m[:,3][0],kabam_obj.chronic_dose_based_m[:,4][0],kabam_obj.chronic_dose_based_m[:,5][0],'NA','NA','NA','NA','NA','NA'],
         "Chronic Dietary Based (mg/kg-diet)": [kabam_obj.mammalian_chronic_endpoint,kabam_obj.mammalian_chronic_endpoint,kabam_obj.mammalian_chronic_endpoint,kabam_obj.mammalian_chronic_endpoint,kabam_obj.mammalian_chronic_endpoint,kabam_obj.mammalian_chronic_endpoint,kabam_obj.avian_lc50,kabam_obj.avian_lc50,kabam_obj.avian_lc50,kabam_obj.avian_lc50,kabam_obj.avian_lc50,kabam_obj.avian_lc50],
     }
     return data
@@ -208,9 +208,9 @@ def gett6data(kabam_obj):
 def gett7data(kabam_obj):
     data = { 
         "Wildlife Species": ['fog/water shrew','rice rate/star nosed mole','small mink','large mink','small river otter','large river otter','sandpipers','cranes','rails','herons','small osprey','white pelican'],
-        "Acute Dose Based (mg/kg-bw)": [kabam_obj.acute_rq_dose_m[:,0],kabam_obj.acute_rq_dose_m[:,1],kabam_obj.acute_rq_dose_m[:,2],kabam_obj.acute_rq_dose_m[:,3],kabam_obj.acute_rq_dose_m[:,4],kabam_obj.acute_rq_dose_m[:,5],kabam_obj.acute_rq_dose_a[:,0],kabam_obj.acute_rq_dose_a[:,1],kabam_obj.acute_rq_dose_a[:,2],kabam_obj.acute_rq_dose_a[:,3],kabam_obj.acute_rq_dose_a[:,4],kabam_obj.acute_rq_dose_a[:,5]],
+        "Acute Dose Based (mg/kg-bw)": [kabam_obj.acute_rq_dose_m[:,0][0],kabam_obj.acute_rq_dose_m[:,1][0],kabam_obj.acute_rq_dose_m[:,2][0],kabam_obj.acute_rq_dose_m[:,3][0],kabam_obj.acute_rq_dose_m[:,4][0],kabam_obj.acute_rq_dose_m[:,5][0],kabam_obj.acute_rq_dose_a[:,0][0],kabam_obj.acute_rq_dose_a[:,1][0],kabam_obj.acute_rq_dose_a[:,2][0],kabam_obj.acute_rq_dose_a[:,3][0],kabam_obj.acute_rq_dose_a[:,4][0],kabam_obj.acute_rq_dose_a[:,5][0]],
         "Acute Dietary Based (mg/kg-diet)": [kabam_obj.acute_rq_diet_m[0],kabam_obj.acute_rq_diet_m[1],kabam_obj.acute_rq_diet_m[2],kabam_obj.acute_rq_diet_m[3],kabam_obj.acute_rq_diet_m[4],kabam_obj.acute_rq_diet_m[5],kabam_obj.acute_rq_diet_a[0],kabam_obj.acute_rq_diet_a[1],kabam_obj.acute_rq_diet_a[2],kabam_obj.acute_rq_diet_a[3],kabam_obj.acute_rq_diet_a[4],kabam_obj.acute_rq_diet_a[5]],
-        "Chronic Dose Based (mg/kg-bw)": [kabam_obj.chronic_rq_dose_m[:,0],kabam_obj.chronic_rq_dose_m[:,1],kabam_obj.chronic_rq_dose_m[:,2],kabam_obj.chronic_rq_dose_m[:,3],kabam_obj.chronic_rq_dose_m[:,4],kabam_obj.chronic_rq_dose_m[:,5],'NA','NA','NA','NA','NA','NA'],
+        "Chronic Dose Based (mg/kg-bw)": [kabam_obj.chronic_rq_dose_m[:,0][0],kabam_obj.chronic_rq_dose_m[:,1][0],kabam_obj.chronic_rq_dose_m[:,2][0],kabam_obj.chronic_rq_dose_m[:,3][0],kabam_obj.chronic_rq_dose_m[:,4][0],kabam_obj.chronic_rq_dose_m[:,5][0],'NA','NA','NA','NA','NA','NA'],
         "Chronic Dietary Based (mg/kg-diet)": [kabam_obj.chronic_rq_diet_m[0],kabam_obj.chronic_rq_diet_m[1],kabam_obj.chronic_rq_diet_m[2],kabam_obj.chronic_rq_diet_m[3],kabam_obj.chronic_rq_diet_m[4],kabam_obj.chronic_rq_diet_m[5],kabam_obj.chronic_rq_diet_a[0],kabam_obj.chronic_rq_diet_a[1],kabam_obj.chronic_rq_diet_a[2],kabam_obj.chronic_rq_diet_a[3],kabam_obj.chronic_rq_diet_a[4],kabam_obj.chronic_rq_diet_a[5]],
     }
     return data
@@ -275,6 +275,7 @@ def table_1(kabam_obj):
 
 def table_2(kabam_obj):
         html = """
+        <br>
         <H3 class="out_1 collapsible" id="section1"><span></span>Kabam Output</H3>
         <div class="out_">
             <H4 class="out_1 collapsible" id="section4"><span></span>Ecosystem Components (%)</H4>

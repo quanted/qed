@@ -92,12 +92,12 @@ class KabamOutputPage(webapp.RequestHandler):
         s_lipid = float(form.getvalue('s_lipid'))/100
         s_NLOM = float(form.getvalue('s_NLOM'))/100
         s_water = float(form.getvalue('s_water'))/100
-        sediment_respire = form.getvalue('s_respire')
+        s_respire = form.getvalue('s_respire')
         characteristics_phytoplankton = form.getvalue('char_phyto')
         v_lb_phytoplankton = float(form.getvalue('phyto_lipid'))/100
         v_nb_phytoplankton = float(form.getvalue('phyto_NLOM'))/100
         v_wb_phytoplankton = float(form.getvalue('phyto_water'))/100
-        phytoplankton_respire = form.getvalue('phyto_respire')
+        phyto_respire = form.getvalue('phyto_respire')
         characteristics_zooplankton = form.getvalue('char_zoo')
         wb_zoo = float(form.getvalue('zoo_ww'))
         v_lb_zoo = float(form.getvalue('zoo_lipid'))/100
@@ -121,19 +121,19 @@ class KabamOutputPage(webapp.RequestHandler):
         v_lb_sf = float(form.getvalue('sfish_lipid'))/100
         v_nb_sf = float(form.getvalue('sfish_NLOM'))/100
         v_wb_sf = float(form.getvalue('sfish_water'))/100
-        smfish_respire = form.getvalue('sfish_respire')
+        sfish_respire = form.getvalue('sfish_respire')
         characteristics_medfish = form.getvalue('char_mfish')
         wb_mf = float(form.getvalue('mfish_ww'))
         v_lb_mf = float(form.getvalue('mfish_lipid'))/100
         v_nb_mf = float(form.getvalue('mfish_NLOM'))/100
         v_wb_mf = float(form.getvalue('mfish_water'))/100
-        medfish_respire = form.getvalue('mfish_respire')
+        mfish_respire = form.getvalue('mfish_respire')
         characteristics_larfish = form.getvalue('char_lfish')
         wb_lf = float(form.getvalue('lfish_ww'))
         v_lb_lf = float(form.getvalue('lfish_lipid'))/100
         v_nb_lf = float(form.getvalue('lfish_NLOM'))/100
         v_wb_lf = float(form.getvalue('lfish_water'))/100
-        larfish_respire = form.getvalue('lfish_respire')
+        lfish_respire = form.getvalue('lfish_respire')
         rate_constants = form.getvalue('rate_c')
         # phytoplankton growth rate constant
         kg_phytoplankton = 0.1
@@ -305,7 +305,7 @@ class KabamOutputPage(webapp.RequestHandler):
             k1_phytoplankton,k2_phytoplankton,
             k1_zoo,k2_zoo,kd_zoo,ke_zoo,k1_beninv,k2_beninv,kd_beninv,ke_beninv,km_beninv,
             k1_ff,k2_ff,kd_ff,ke_ff,km_ff,k1_sf,k2_sf,kd_sf,ke_sf,km_sf,k1_mf,k2_mf,kd_mf,ke_mf,km_mf,k1_lf,k2_lf,kd_lf,ke_lf,km_lf,
-            rate_constants
+            rate_constants,s_respire,phyto_respire,zoo_respire,beninv_respire,ff_respire,sfish_respire,mfish_respire,lfish_respire
             )
 
             # cb_phytoplankton_v,cb_zoo_v,cb_beninv_v,cb_ff_v,cb_sf_v,cb_mf_v,cb_lf_v   ***Removed from kabam_obj above***

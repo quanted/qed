@@ -35,7 +35,7 @@ class kabam(object):
             k1_phytoplankton=1,k2_phytoplankton=1,
             k1_zoo=1,k2_zoo=1,kd_zoo=1,ke_zoo=1,k1_beninv=1,k2_beninv=1,kd_beninv=1,ke_beninv=1,km_beninv=1,
             k1_ff=1,k2_ff=1,kd_ff=1,ke_ff=1,km_ff=1,k1_sf=1,k2_sf=1,kd_sf=1,ke_sf=1,km_sf=1,k1_mf=1,k2_mf=1,kd_mf=1,ke_mf=1,km_mf=1,k1_lf=1,k2_lf=1,kd_lf=1,ke_lf=1,km_lf=1,
-            rate_constants='',
+            rate_constants='',s_respire='',phyto_respire='',zoo_respire='',beninv_respire='',ff_respire='',sfish_respire='',mfish_respire='',lfish_respire='',
             
             vars_dict=None):
 
@@ -188,6 +188,14 @@ class kabam(object):
                 # self.k_bw_mf=k_bw_mf
                 # self.k_bw_lf=k_bw_lf
                 self.rate_constants=rate_constants
+                self.s_respire=s_respire
+                self.phyto_respire=phyto_respire
+                self.zoo_respire=zoo_respire
+                self.beninv_respire=beninv_respire
+                self.ff_respire=ff_respire
+                self.sfish_respire=sfish_respire
+                self.mfish_respire=mfish_respire
+                self.lfish_respire=lfish_respire
                 if rate_constants == 'a':
                     self.k_bw_phytoplankton_f()
                     self.k1_phytoplankton_f()
@@ -610,7 +618,7 @@ class kabam(object):
 
     # lipid normalized pesticide residue in phytoplankton    
     def cbl_phytoplankton_f(self):
-        self.cbl_phytoplankton = self.cb_phytoplankton / self.v_lb_phytoplankton
+        self.cbl_phytoplankton = (1e6*self.cb_phytoplankton) / self.v_lb_phytoplankton
         return self.cbl_phytoplankton
     #phytoplankton total bioconcentration factor
     def cbcf_phytoplankton_f(self):   
@@ -734,22 +742,25 @@ class kabam(object):
         
     # zooplankton pesticide tissue residue
     def cb_zoo_f(self):
-        self.cb_zoo = (self.k1_zoo * (1.0 * self.phi * self.c_wto + 0 * self.c_wdp) + self.kd_zoo * self.diet_zoo) / (self.k2_zoo + self.ke_zoo + self.kg_zoo + 0)    
+        self.cb_zoo = (self.k1_zoo * (1.0 * self.phi * self.c_wto + 0 * self.c_wdp) + self.kd_zoo * self.diet_zoo) / (self.k2_zoo + self.ke_zoo + self.kg_zoo + 0)
+        # print "cb_zoo =", self.cb_zoo
         return self.cb_zoo
     # zooplankton pesticide tissue residue lipid normalized
     def cbl_zoo_f(self):
-        self.cbl_zoo = self.cb_zoo / self.v_lb_zoo
+        self.cbl_zoo = (1e6*self.cb_zoo) / self.v_lb_zoo
         return self.cbl_zoo
     # zooplankton pesticide concentration originating from uptake through diet k1=0    
     def cbd_zoo_f(self):  
         self.k1_zoo = 0
         self.cbd_zoo = (self.k1_zoo * (1.0) * self.phi * self.c_wto + (0 * self.c_wdp) + (self.kd_zoo * (self.diet_zoo))) / (self.k2_zoo + self.ke_zoo + self.kg_zoo + 0)
+        # print "cbd_zoo =", self.cbd_zoo
         return self.cbd_zoo
     # zooplankton pesticide concentration originating from uptake through respiration (kd=0)    
     def cbr_zoo_f(self):
         self.kd_zoo = 0
-        self.cbr_zoo = (self.k1_zoo * (1.0) * self.phi * self.c_wto + (0 * self.c_wdp) + (self.kd_zoo * (self.diet_zoo))) / (self.k2_zoo + self.ke_zoo + self.kg_zoo + 0)
-        return self.cbr_zoo    
+        self.cbr_zoo = (self.k1_zoo * (1.0 * self.phi * self.c_wto + (0.05 * self.c_wdp)) + (self.kd_zoo * self.diet_zoo)) / (self.k2_zoo + self.ke_zoo + self.kg_zoo + 0)
+        # print "cbr_zoo =", self.cbr_zoo
+        return self.cbr_zoo
     # zooplankton total bioconcentration factor
     def cbf_zoo_f(self):
         self.kd_zoo = 0
@@ -887,7 +898,7 @@ class kabam(object):
         return self.cb_beninv
 
     def cbl_beninv_f(self):
-        self.cbl_beninv = self.cb_beninv / self.v_lb_beninv
+        self.cbl_beninv = (1e6*self.cb_beninv) / self.v_lb_beninv
         return self.cbl_beninv
     # benthic invertebrates pesticide concentration originating from uptake through diet k1=0     
     def cbd_beninv_f(self):
@@ -1025,12 +1036,23 @@ class kabam(object):
         return self.cb_ff
 
     def cbl_ff_f(self):
-        self.cbl_ff = self.cb_ff / self.v_lb_ff
+        self.cbl_ff = (1e6*self.cb_ff) / self.v_lb_ff
         return self.cbl_ff
     # benthic invertebrates pesticide concentration originating from uptake through diet k1=0     
     def cbd_ff_f(self):
-        self.k1_ff = 0    
+        # self.k1_ff = 0    
         self.cbd_ff = (self.k1_ff * (0.95 * self.phi * self.c_wto + 0.05 * self.c_wdp) + self.kd_ff * self.diet_ff) / (self.k2_ff + self.ke_ff + self.kg_ff + 0)
+        # print "k1_ff =", self.k1_ff
+        # print "phi =", self.phi
+        # print "c_wto =", self.c_wto
+        # print "c_wdp =", self.c_wdp
+        # print "kd_ff =", self.kd_ff
+        # print "diet_ff =", self.diet_ff
+        # print "nominator =", self.cbd_ff * (self.k2_ff+self.ke_ff+self.kg_ff)
+        # print "sum =", self.k2_ff+self.ke_ff+self.kg_ff
+        # print "k2_ff =", self.k2_ff
+        # print "ke_ff =", self.ke_ff
+        # print "kg_fg =", self.kg_ff
         return self.cbd_ff
     # benthic invertebrates pesticide concentration originating from uptake through respiration (kd=0)    
     def cbr_ff_f(self):
@@ -1162,7 +1184,7 @@ class kabam(object):
         return self.cb_sf
     # small fish lipid normalized pesticide tissue residue
     def cbl_sf_f(self):
-        self.cbl_sf = self.cb_sf / self.v_lb_sf
+        self.cbl_sf = (1e6*self.cb_sf) / self.v_lb_sf
         return self.cbl_sf
     # small fish pesticide concentration originating from uptake through diet k1=0     
     def cbd_sf_f(self):
@@ -1297,7 +1319,7 @@ class kabam(object):
         return self.cb_mf
     # medium fish lipid normalized pesticide tissue residue
     def cbl_mf_f(self):
-        self.cbl_mf = self.cb_mf / self.v_lb_mf
+        self.cbl_mf = (1e6*self.cb_mf) / self.v_lb_mf
         return self.cbl_mf
     # medium fish pesticide concentration originating from uptake through diet k1=0     
     def cbd_mf_f(self):
@@ -1433,7 +1455,7 @@ class kabam(object):
         return self.cb_lf
     # large fish lipid normalized pesticide tissue residue
     def cbl_lf_f(self):
-        self.cbl_lf = self.cb_lf / self.v_lb_lf
+        self.cbl_lf = (1e6*self.cb_lf) / self.v_lb_lf
         return self.cbl_lf
     # large fish pesticide concentration originating from uptake through diet k1=0     
     def cbd_lf_f(self):

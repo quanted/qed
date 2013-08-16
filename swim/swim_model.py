@@ -114,13 +114,13 @@ class swim(object):
         cf = 1000 #conversion factor 
         cvp = cw*henry_ulss*cf
         prd_inh = cvp*et*ir/bw
-        prd_inh_moe = prd_inh/noael
+        prd_inh_moe = noael/prd_inh
         return prd_inh, prd_inh_moe
 
 ##Ingestion########
     def ing(self, cw, igr, et, bw, noael):
         prd_ing = cw*igr*et/bw
-        prd_ing_moe = prd_ing/noael
+        prd_ing_moe = noael/prd_ing
         return prd_ing, prd_ing_moe
 
 ##Dermal########
@@ -129,7 +129,7 @@ class swim(object):
         kp = 10**log_kp
         cf_der=0.001    #conversion factor (L/cm3)
         prd_der = cw*sa*et*kp*cf_der/bw
-        prd_der_moe = prd_der/noael
+        prd_der_moe = noael/prd_der
         return prd_der, prd_der_moe
 
 

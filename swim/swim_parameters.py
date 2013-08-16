@@ -15,7 +15,7 @@ class swimInp_chem(forms.Form):
     chemical_name = forms.CharField(widget=forms.Textarea(attrs={'cols': 20, 'rows': 2}), label='Chemical name')
     log_kow = forms.FloatField(required=True, label="Log Kow", initial=-0.66)
     mw = forms.FloatField(required=True, label="Molecular weight of substance (g/mol)", initial=197)
-    hlc = forms.FloatField(required=True, label=mark_safe("Henry's law (atm-m<sup>3</sup>/mole)"), initial=1.27e-7)
+    hlc = forms.FloatField(required=True, label=mark_safe("Henry's law constant (atm-m<sup>3</sup>/mole)"), initial=1.27e-7)
     r = forms.FloatField(required=True, label=mark_safe("Gas constant (atm-m<sup>3</sup>/mole-K)"), initial=8.19e-5)
     T = forms.FloatField(required=True, label=mark_safe("Ambient air temp (<sup>o</sup>C)"), initial=25)
     cw = forms.FloatField(required=True, label="Water concentration (mg/L)", initial=3.0)

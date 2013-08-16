@@ -1,1 +1,5 @@
-<p>swimming swimming swimming</p>
+<p>The Swimmer Exposure Assessment Model was developed by EPA as a screening tool to conduct exposure assessments of pesticides found in indoor swimming pools and spas (these include the 200+ pesticides registered for swimming pool uses, as well as those which exist in water, and run-off water).</p>
+
+<p>The SWIMODEL uses well-accepted screening exposure assessment equations to calculate the total orst-case exposure for swimmers expressed as a mass-based intake value (mg/event). The assessor has the option of using the default values available within the model or entering other available values. The model focuses on potential chemical intakes only and does not take into account metabolism or excretion of the chemical of concern. The SWIMODEL is being used for swimmer exposure assessments by EPA, registrants, and in academic circles.</p>
+
+<p>The SWIMODEL allows the assessor to estimate exposure for up to three exposure routes (i.e., oral ingestion, dermal absorption, inhalation).</p>

@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jan 03 13:30:41 2012
 
-@author: jharston
 """
 
 import os

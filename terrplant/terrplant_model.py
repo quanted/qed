@@ -15,13 +15,14 @@ def fromJSON(json_string):
 
 class terrplant(object):
 
-    def __init__(self,set_variables=True,run_methods=True,A=1,I=1,R=1,D=1,nms=1,lms=1,nds=1,lds=1,chemical_name='',pc_code='',use='',application_method='',application_form='',sol=1,vars_dict=None,):
+    def __init__(self,set_variables=True,run_methods=True,version_terrplant='1.2.2',A=1,I=1,R=1,D=1,nms=1,lms=1,nds=1,lds=1,
+            chemical_name='',pc_code='',use='',application_method='',application_form='',solubility=1,vars_dict=None,):
         self.set_default_variables()
         if set_variables:
             if vars_dict != None:
                 self.__dict__.update(vars_dict)
             else:
-                self.set_variables(A,I,R,D,nms,lms,nds,lds,chemical_name,pc_code,use,application_method,application_form,sol)
+                self.set_variables(version_terrplant,A,I,R,D,nms,lms,nds,lds,chemical_name,pc_code,use,application_method,application_form,solubility)
             if run_methods:
                 self.run_methods()
 
@@ -37,12 +38,13 @@ class terrplant(object):
         self.lds = 1
 
         #Variables in the input page
+        self.version_terrplant = ''
         self.chemical_name = ''
         self.pc_code = ''
         self.use = ''
         self.application_method = ''
         self.application_form = ''
-        self.sol = 1
+        self.solubility = 1
         self.nmv = 1
         self.ndv = 1
         self.lmv = 1
@@ -99,6 +101,7 @@ class terrplant(object):
 
     def __str__(self):
         string_rep = ''
+        string_rep = string_rep + "TerrPlant version = %s \n" % self.version_terrplant
         string_rep = string_rep + "I = %.2e \n" % self.I
         string_rep = string_rep + "A = %.2e \n" % self.A
         string_rep = string_rep + "D = %.2e \n" % self.D
@@ -126,7 +129,8 @@ class terrplant(object):
         string_rep = string_rep + "ldsRQspray_results = %.2e \n" % self.ldsRQspray_results
         return string_rep
 
-    def set_variables(self,A,I,R,D,nms,lms,nds,lds,chemical_name,pc_code,use,application_method,application_form,sol):
+    def set_variables(self,version_terrplant,A,I,R,D,nms,lms,nds,lds,chemical_name,pc_code,use,application_method,application_form,solubility):
+        self.version_terrplant = version_terrplant
         self.A = A
         self.I = I
         self.R = R
@@ -140,7 +144,7 @@ class terrplant(object):
         self.use = use
         self.application_method = application_method
         self.application_form = application_form
-        self.sol = sol
+        self.solubility = solubility
 
     def run_methods(self):
         try:

@@ -164,8 +164,9 @@ function submitConfiguration()
 		form_data[id] = val;
 	}
 	form_data['created'] = getDateTime();
+	var use_id = ($("#id_config_name")[0].value).replace(" ","-");
 	$.ajax({
-		url:"{{ubertool_service_url}}/ubertool/use/"+$("#id_config_name")[0].value,
+		url:"{{ubertool_service_url}}/ubertool/use/"+use_id,
 		async: true,
 		type: 'POST',
 		data: JSON.stringify(form_data)

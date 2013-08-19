@@ -16,8 +16,6 @@ import django
 from django import forms
 from ubertool import select_chemical_db
 import sys
-sys.path.append("../CAS")
-#from CAS.CASGql import CASGql
 import logging
 
 UBERTOOL_MONGO_SERVER = os.environ['UBERTOOL_MONGO_SERVER']

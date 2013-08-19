@@ -26,6 +26,10 @@ def getheadersum():
     headings = ["Parameter", "Mean", "Std", "Min", "Max", "Unit"]
     return headings
 
+def getheadersum_un():
+    headings = ["Parameter", "Mean", "Std", "Min", "Max"]
+    return headings
+
 def gethtmlrowsfromcols(data, headings):
     columns = [data[heading] for heading in headings]
 
@@ -81,11 +85,31 @@ def gett1data(iec_obj):
     }
     return data
 
+def gettsumdata_1(LC50_pool, threshold_pool, dose_response_pool):
+    data = { 
+        "Parameter": ['LC50 or LD50', 'Threshold', 'Slope',],
+        "Mean": ['%.2e' % numpy.mean(LC50_pool),'%.2e' % numpy.mean(threshold_pool),'%.2e' % numpy.mean(dose_response_pool)],
+        "Std": ['%.2e' % numpy.std(LC50_pool),'%.2e' % numpy.std(threshold_pool),'%.2e' % numpy.std(dose_response_pool)],
+        "Min": ['%.2e' % numpy.min(LC50_pool),'%.2e' % numpy.min(threshold_pool),'%.2e' % numpy.min(dose_response_pool)],
+        "Max": ['%.2e' % numpy.max(LC50_pool),'%.2e' % numpy.max(threshold_pool),'%.2e' % numpy.max(dose_response_pool)],
+    }
+    return data
+
 def gett2data(iec_obj):
     #logger.info(vars(iec_obj))
     data = { 
         "Parameter": ['Z Score', '"F8"', 'Chance of Individual Effect',],
         "Value": ['%.2f' % iec_obj.z_score_f_out,'%.2e' % iec_obj.F8_f_out,'%.2f' % iec_obj.chance_f_out, ],
+    }
+    return data
+
+def gettsumdata_2_un(z_score_f_pool, F8_f_pool, chance_f_pool):
+    data = { 
+        "Parameter": ['Z Score', '"F8"', 'Chance of Individual Effect',],
+        "Mean": ['%.2e' % numpy.mean(z_score_f_pool),'%.2e' % numpy.mean(F8_f_pool),'%.2e' % numpy.mean(chance_f_pool)],
+        "Std": ['%.2e' % numpy.std(z_score_f_pool),'%.2e' % numpy.std(F8_f_pool),'%.2e' % numpy.std(chance_f_pool)],
+        "Min": ['%.2e' % numpy.min(z_score_f_pool),'%.2e' % numpy.min(F8_f_pool),'%.2e' % numpy.min(chance_f_pool)],
+        "Max": ['%.2e' % numpy.max(z_score_f_pool),'%.2e' % numpy.max(F8_f_pool),'%.2e' % numpy.max(chance_f_pool)],
     }
     return data
 
@@ -123,6 +147,7 @@ def gettsumdata_out(z_score_f_out, F8_f_out, chance_f_out):
 
 ivheadings = getheaderiv()
 ovheadings = getheaderov()
+ivheadings_un = getheadersum_un()
 ovheadingsqaqc = getheaderovqaqc()
 sumheadings = getheadersum()
 djtemplate = getdjtemplate()
@@ -150,6 +175,11 @@ def timestamp():
     html = html + """
     </div>"""
     return html
+
+def table_all_un(LC50_pool, threshold_pool, dose_response_pool, z_score_f_pool, F8_f_pool, chance_f_pool):
+    html_all = table_1_un(LC50_pool, F8_f_pool, dose_response_pool)
+    html_all = html_all + table_2_un(z_score_f_pool, threshold_pool, chance_f_pool)
+    return html_all
 
 def table_1(iec_obj):
         html = """
@@ -226,6 +256,31 @@ def table_sum_output(z_score_f_out, F8_f_out, chance_f_out):
         html = html + """
                 </div>
         </div>
-        <br>
+        <br>"""
+        return html
+        
+def table_1_un(LC50_pool, threshold_pool, dose_response_pool):
+        html = """
+        <H4 class="out_1 collapsible" id="section1"><span></span>User Inputs</H4>
+            <div class="out_ container_output">
+        """
+        t1data_un = gettsumdata_1(LC50_pool, threshold_pool, dose_response_pool)
+        t1rows_un = gethtmlrowsfromcols(t1data_un,ivheadings_un)
+        html = html + tmpl.render(Context(dict(data=t1rows_un, headings=ivheadings_un)))
+        html = html + """
+            </div>
+        """
+        return html
+
+def table_2_un(z_score_f_pool, F8_f_pool, chance_f_pool):
+        html = """
+        <H4 class="out_2 collapsible" id="section1"><span></span>Outputs</H4>
+            <div class="out_ container_output">
+        """
+        t2data_un = gettsumdata_2_un(z_score_f_pool, F8_f_pool, chance_f_pool)
+        t2rows_un = gethtmlrowsfromcols(t2data_un,ivheadings_un)
+        html = html + tmpl.render(Context(dict(data=t2rows_un, headings=ivheadings_un)))
+        html = html + """
+            </div>
         """
         return html

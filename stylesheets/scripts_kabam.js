@@ -79,10 +79,10 @@ $(document).ready(function() {
     $('#id_lfish_kd').closest('tr').addClass('method_options').hide();
     $('#id_lfish_ke').closest('tr').addClass('method_options').hide();
     $('#id_lfish_km').closest('tr').addClass('method_options').hide();
-    $('#id_bw_quail').closest('tr').addClass('method_options2').hide();
+    // $('#id_bw_quail').closest('tr').addClass('method_options2').hide();
     $('#id_bw_duck').closest('tr').addClass('method_options3').hide();
     $('#id_bwb_other').closest('tr').addClass('method_options4').hide();
-    $('#id_bw_rat').closest('tr').hide();
+    // $('#id_bw_rat').closest('tr').hide();
     $('#id_bwm_other').closest('tr').hide();
     
     $('#id_m_species').change(function() {

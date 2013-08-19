@@ -30,10 +30,10 @@ class KabamInp_chem(forms.Form):
     cdoc = forms.FloatField(required=True,label=mark_safe('Concentration of Dissolved Organic Carbon (X<sub>DOC</sub>; kg OC/L)'),initial=0)
     cox = forms.FloatField(required=True,label=mark_safe('Concentration of Dissolved Oxygen (C<sub>OX</sub>; mg O<sup>2</sup>/L)'),initial=5)
     wt = forms.FloatField(required=True,label=mark_safe('Water Temperature (T; &degC)'),initial=15)
-    css = forms.FloatField(required=True,label=mark_safe('Concentration of Suspended Solids (C<sub>SS</sub>; Kg/L)'),initial=0.0050)
+    css = forms.FloatField(required=True,label=mark_safe('Concentration of Suspended Solids (C<sub>SS</sub>; Kg/L)'),initial=0.00003)
     oc = forms.FloatField(required=True,label=mark_safe('Sediment Organic Carbon (OC; %)'),initial=4)
 class KabamInp_bird(forms.Form):
-    b_species = forms.ChoiceField(required=True,label='Species of the tested bird', choices=Species_of_the_tested_bird_CHOICES, initial='Make a selection')
+    b_species = forms.ChoiceField(required=True,label='Species of the tested bird', choices=Species_of_the_tested_bird_CHOICES, initial='178')
     bw_quail = forms.FloatField(required=True,label='Weight of the tested bird', initial= 178)
     bw_duck = forms.FloatField(required=True,label='Weight of the tested bird', initial= 1580)
     bwb_other = forms.FloatField(required=True,label='Weight of the tested bird', initial= 200)
@@ -41,7 +41,7 @@ class KabamInp_bird(forms.Form):
     alc50 = forms.FloatField(required=True,label='Avian LC50 (mg/kg-diet)', initial=500)
     aNOAEC = forms.FloatField(required=True,label='Avian NOAEC (mg/kg-diet)', initial=10)
 class KabamInp_mammal(forms.Form):
-    m_species = forms.ChoiceField(required=True,label='Species of the tested mammal', choices=Species_of_the_tested_mamm_CHOICES, initial='Make a selection')    
+    m_species = forms.ChoiceField(required=True,label='Species of the tested mammal', choices=Species_of_the_tested_mamm_CHOICES, initial='350')    
     bw_rat= forms.FloatField(required=True, label='Body weight of the tested mammalian (g)', initial=350)
     bwm_other= forms.FloatField(required=True, label='Body weight of the tested mammalian (g)', initial=500)
     mld50 = forms.FloatField(required=True,label='Mammalian LD50 (mg/kg-bw)', initial='50')
@@ -143,7 +143,7 @@ class KabamInp_phyto(forms.Form):
     
                        #####input parameters for rate constants
 class KabamInp_constants(forms.Form):    
-    rate_c = forms.ChoiceField(required=True, label='Rate constants for uptake and elimination', choices=Rate_constants_CHOICES, initial='Make a selection')
+    rate_c = forms.ChoiceField(required=True, label='Rate constants for uptake and elimination', choices=Rate_constants_CHOICES, initial='a')
     phyto_k1 = forms.FloatField(required=True, label=mark_safe('phytoplankton k<sub>1</sub> (L/kg*d)'),initial=1)
     phyto_k2 = forms.FloatField(required=True, label=mark_safe('phytoplankton k<sub>2</sub> (d<sup>-1</sup>)'),initial=1)
     phyto_kd = forms.FloatField(required=True, label=mark_safe('phytoplankton k<sub>D</sub> (kg-food/kg-org/d)'),initial=0)

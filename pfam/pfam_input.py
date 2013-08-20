@@ -88,7 +88,7 @@ class PFAMInputPage(webapp.RequestHandler):
                                             <option value="8">8</option>
                                             <option value="9">9</option>
                                             <option value="10">10</option>
-                                            <option value="11">11</option></select>
+                                            <option value="11">11</option>
                                         </td>
                                     </tr>
                                     <tr><th></th><th colspan="2"><label for="id_date_f1">Date for Event 1:</label></th>

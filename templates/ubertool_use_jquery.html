@@ -1,26 +1,6 @@
 <script type="text/javascript" src=" ../stylesheets/jquery.validate.js"></script>
 <script>
 $(document).ready(function() {
-	
-	$.ajax({
-		url:"{{ubertool_service_url}}/all-cas",
-		async: true,
-		type: 'GET',
-		success: function(cas_data) {
-			if(cas_data != null)
-			{
-				for(i = 0; i < cas_data.length; i++)
-				{
-					var cas_datum = cas_data[i];
-					if(cas_datum.ChemicalName != "None" && cas_datum.CASNumber != null)
-					{
-						$("#id_cas_number").append(new Option(cas_datum.ChemicalName, cas_datum.CASNumber));
-					}
-				}
-			}
-		}
-	});
-
 	$.ajax({
 		url:"{{ubertool_service_url}}/ubertool/use/config_names",
 		async: true,
@@ -48,105 +28,30 @@ $(document).ready(function() {
 				async: false,
 				type: 'GET',
 				success: function(use_data) {
-					var cas_number = use_data['cas_number'];
-					//TODO These dropdown being reset may be done in a better manner
-					if(cas_number != null)
-					{
-						var s = document.getElementById('id_cas_number');
-						for(i = 0; i < s.options.length; i++)
-						{ 
-							var option = s.options[i];
-							if(option.value == cas_number)
-							{ 
-								option.selected = true; 
-							}
-							else
-							{
-								option.selected = false;
-							}
-							
-						}
-					}
-					// application type select dropdown
-					var application_type = use_data['application_type'];
-					if(application_type != null)
-					{
-						s = document.getElementById('id_application_type');
-						for(i = 0; i < s.options.length; i++)
-						{ 
-							var option = s.options[i];
-							if(option.value == application_type)
-							{ 
-								option.selected = true; 
-							}
-							else
-							{
-								option.selected = false;
-							}
-							
-					}
-					}
-					// application type select dropdown
-					var app_type = use_data['app_type'];
-					if(app_type != null)
-					{
-						s = document.getElementById('id_app_type');
-						for(i = 0; i < s.options.length; i++)
-						{ 
-							var option = s.options[i];
-							if(option.value == app_type)
-							{ 
-								option.selected = true; 
-							}
-							else
-							{
-								option.selected = false;
-							}
-							
-						}
-					}
-					var wetted_in = use_data['wetted_in'];
-					if(wetted_in != null)
-					{
-						// wetted in select dropdown
-						s = document.getElementById('id_wetted_in');
-						for(i = 0; i < s.options.length; i++)
-						{ 
-							var option = s.options[i];
-							if(option.value == wetted_in)
-							{ 
-								option.selected = true; 
-							}
-							else
-							{
-								option.selected = false;
-							}
-							
-						}
-					}
+    
 					$("#id_config_name")[0].value = $("#id_user_use_configuration")[0].value;
-					$("#id_incorporation_depth")[0].value = use_data['incorporation_depth'];
-					$("#id_percent_incorporated")[0].value = use_data['percent_incorporated'];
-					$("#id_application_kg_rate")[0].value = use_data['application_kg_rate'];
-					$("#id_application_lbs_rate")[0].value = use_data['application_lbs_rate'];
 					$("#id_seed_treatment_formulation_name")[0].value = use_data['seed_treatment_formulation_name'];
 					$("#id_density_of_product")[0].value = use_data['density_of_product'];
 					$("#id_maximum_seedling_rate_per_use")[0].value = use_data['maximum_seedling_rate_per_use'];
-					$("#id_application_rate_per_use")[0].value = use_data['application_rate_per_use'];
-					$("#id_formulated_product_name")[0].value = use_data['formulated_product_name'];
-					$("#id_application_date")[0].value = use_data['application_date'];
-					$("#id_number_of_applications")[0].value = use_data['number_of_applications'];
-					$("#id_interval_between_applications")[0].value = use_data['interval_between_applications'];
-					$("#id_application_efficiency")[0].value = use_data['application_efficiency'];
-					$("#id_spray_drift")[0].value = use_data['spray_drift'];
-					$("#id_runoff")[0].value = use_data['runoff'];
-					$("#id_formulated_product_name")[0].value = use_data['formulated_product_name'];
-					$("#id_percent_ai")[0].value = use_data['percent_ai'];
-					$("#id_metfile")[0].value = use_data['met_file'];
-					$("#id_PRZM_scenario")[0].value = use_data['przm_scenario'];
-					$("#id_EXAMS_environment_file")[0].value = use_data['exams_environment_file'];
+					$("#id_use")[0].value = use_data['use'];
+					$("#id_seed_crop")[0].value = use_data['seed_crop'];
+					$("#id_application_type")[0].value = use_data['application_type'];
+					$("#id_n_a")[0].value = use_data['n_a'];
+					$("#id_ar_lb")[0].value = use_data['ar_lb'];
+					$("#id_row_sp")[0].value = use_data['row_sp'];
+					$("#id_bandwidth")[0].value = use_data['bandwidth'];
+					$("#id_foliar_dissipation_half_life")[0].value = use_data['foliar_dissipation_half_life'];
+					$("#id_frac_pest_surface")[0].value = use_data['frac_pest_surface'];
+					$("#id_day_out")[0].value = use_data['day_out'];
+					$("#id_aerobic_aquatic_metabolism")[0].value = use_data['aerobic_aquatic_metabolism'];
+					$("#id_anaerobic_aquatic_metabolism")[0].value = use_data['anaerobic_aquatic_metabolism'];
+					$("#id_aerobic_soil_metabolism")[0].value = use_data['aerobic_soil_metabolism'];
+					$("#id_foliar_extraction")[0].value = use_data['foliar_extraction'];
+					$("#id_foliar_decay_rate")[0].value = use_data['foliar_decay_rate'];
+					$("#id_foliar_dissipation_half_life")[0].value = use_data['foliar_dissipation_half_life'];
 					$("#id_application_method")[0].value = use_data['application_method'];
-					$("#id_weight_of_one_granule")[0].value = use_data['weight_of_one_granule'];					
+					$("#id_application_form")[0].value = use_data['application_form'];
+
 				}
 			});
 		}

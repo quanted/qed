@@ -7,7 +7,6 @@ Created on Fri Aug 31 10:34:41 2012
 # -*- coding: utf-8 -*-
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
-from kabam import Kabamdb
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
@@ -21,7 +20,7 @@ logger = logging.getLogger('Kabam Model')
 
 class kabam(object):
     def __init__(self, set_variables=True,run_methods=True,
-            chemical_name='',l_kow=1,k_oc=1,c_wdp_2=1,c_wdp=1,water_column_EEC=1,c_wto=1,mineau=1,x_poc=1,x_doc=1,c_ox=1,w_t=1,c_ss=1,oc=1,k_ow=1,
+            chemical_name='',l_kow=1,k_oc=1,c_wdp=1,water_column_EEC=1,c_wto=1,mineau=1,x_poc=1,x_doc=1,c_ox=1,w_t=1,c_ss=1,oc=1,k_ow=1,
             b_species='',bw_quail=1,bw_duck=1,bwb_other=1,avian_ld50=1,avian_lc50=1,avian_noaec=1,m_species='',bw_rat=1,bwm_other=1,mammalian_ld50=1,mammalian_lc50=1,mammalian_chronic_endpoint=1,
             lf_p_sediment=1,lf_p_phytoplankton=1,lf_p_zooplankton=1,lf_p_benthic_invertebrates=1,lf_p_filter_feeders=1,lf_p_small_fish=1,lf_p_medium_fish=1,
             mf_p_sediment=1,mf_p_phytoplankton=1,mf_p_zooplankton=1,mf_p_benthic_invertebrates=1,mf_p_filter_feeders=1,mf_p_small_fish=1,
@@ -50,7 +49,6 @@ class kabam(object):
                 self.chemical_name = chemical_name
                 self.l_kow=l_kow
                 self.k_oc=k_oc
-                self.c_wdp_2=c_wdp_2
                 self.c_wdp=c_wdp
                 self.water_column_EEC=water_column_EEC
                 self.c_wto=c_wto
@@ -619,7 +617,6 @@ class kabam(object):
     def cb_phytoplankton_f(self):   
         self.cb_phytoplankton = (self.k1_phytoplankton * (self.mo_phytoplankton * self.c_wto * self.phi + self.mp_phytoplankton * self.c_wdp)) / (self.k2_phytoplankton + self.ke_phytoplankton + self.kg_phytoplankton + self.km_phytoplankton)
         return self.cb_phytoplankton
-
 
     # lipid normalized pesticide residue in phytoplankton    
     def cbl_phytoplankton_f(self):

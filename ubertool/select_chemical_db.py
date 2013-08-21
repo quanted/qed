@@ -13,6 +13,7 @@ from google.appengine.api import users
 
 class SelectChemicalInp(forms.Form):
     user_id = users.get_current_user().user_id()
+    chemical_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}))
     formulated_product_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}))
     cas_num = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}))
     pc_code = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}))

@@ -23,4 +23,6 @@ YN = (('Yes','Yes'),('No','No'))
 class Use_metadataInp(forms.Form):
     user_use_configuration = forms.ChoiceField(label="User Saved Use Configuration",required=True)
     config_name = forms.CharField(label="Use Configuration Name", initial="use-config-%s"%datetime.datetime.now())
+    #version_terrplant = forms.CharField(label="TerrPlant Version", initial="1.0")
+    #etc...
     

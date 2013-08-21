@@ -33,7 +33,7 @@ $(document).ready(function() {
 	$( "#autocomplete" ).focusout(function(){
 		var chemical_name = $("#autocomplete")[0].value;
 		var cas_datum = all_cas_data[chemical_name];
-		$("#id_formulated_product_name")[0].value = cas_datum.ChemicalName;
+		$("#id_chemical_name")[0].value = cas_datum.ChemicalName;
 		$("#id_cas_num")[0].value = cas_datum.CASNumber;
 		$("#id_pc_code")[0].value = cas_datum.PCCode;
 		$.ajax({

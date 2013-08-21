@@ -23,6 +23,8 @@ YN = (('Yes','Yes'),('No','No'))
 class Use_metadataInp(forms.Form):
     user_use_configuration = forms.ChoiceField(label="User Saved Use Configuration",required=True)
     config_name = forms.CharField(label="Use Configuration Name", initial="use-config-%s"%datetime.datetime.now())
+    #version_terrplant = forms.CharField(label="TerrPlant Version", initial="1.0")
+    #etc...
     percent_ai = forms.FloatField(label="Percent Active Ingredient (%)")
     seed_treatment_formulation_name = forms.CharField(label="Seed Treatment Formulation Name", initial="")
     density_of_product = forms.FloatField(label="Density of Product (lbs/gal)")
@@ -45,4 +47,5 @@ class Use_metadataInp(forms.Form):
     foliar_dissipation_half_life = forms.FloatField(label="Foliar dissipation half-life")
     application_method = forms.CharField(label="Application Method")
     application_form= forms.ChoiceField(label='Application Form' , choices=APPTYPE, initial='liquid')
+
     

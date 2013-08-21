@@ -11,9 +11,7 @@ from django.db import models
 from django.utils.safestring import mark_safe
 #from google.appengine.api import users
 
-noa_CHOICES=(('',''),('1','1'),('2','2'),('3','3'))
 weather_CHOICES=(('','Make a selection'),('wTest','test1'))
-nof_CHOICES=(('','Make a selection'),('1','1'),('2','2'),('3','3'))
 
 class PFAMInp_chem(forms.Form):
 #    user_id = users.get_current_user().user_id()
@@ -35,19 +33,12 @@ class PFAMInp_chem(forms.Form):
     hea_h = forms.FloatField(required=True,label='Heat of Henry (J/mol)', initial=0)
     hea_r_t = forms.FloatField(required=True,label=mark_safe('Henry Reference Temperature (&#8451)'), initial=20)
     
-class PFAMInp_app(forms.Form):
-    noa= forms.ChoiceField(required=True,label='Number of Applications', choices=noa_CHOICES, initial='')
-    
 class PFAMInp_loc(forms.Form):
     weather= forms.ChoiceField(required=True,label='Weather File', choices=weather_CHOICES, initial='Make a selection')
     wea_l = forms.FloatField(required=True,label='@Latitude (for Photolysis Calculations)', initial=40)
     
-class PFAMInp_flo(forms.Form):
-    nof= forms.ChoiceField(required=True,label='Number of Floods Events', choices=nof_CHOICES, initial='Make a selection')
-    date_f1= forms.DateField(required=True,label='Date for Event 1', initial='MM/DD')
-    
 class PFAMInp_cro(forms.Form):
-    zero_height_ref= forms.DateField(required=True,label='Zero Height Reference', initial='MM/DD')
+    zero_height_ref= forms.DateField(required=True,label='Zero Height Reference (MM/DD)', initial='MM/DD')
     days_zero_full = forms.IntegerField(required=True,label='Days from Zero Height to Full Height', initial=60)
     days_zero_removal = forms.IntegerField(required=True,label='Days from Zero Height to Removal', initial=90)
     max_frac_cov = forms.FloatField(required=True,label='Maximum Fractional Area Coverage', initial=0.90)
@@ -67,4 +58,4 @@ class PFAMInp_phy(forms.Form):
     dfac = forms.FloatField(required=True,label='Dfac', initial=1.19)
     q10 = forms.FloatField(required=True,label='Q10', initial=2)
 class PFAMInp_out(forms.Form):
-    area_app = forms.FloatField(required=True,label=mark_safe('Area of Application (m<sup>2</sup>)'), initial=1.0)
+    area_app = forms.FloatField(required=True,label=mark_safe('Area of Application (m<sup>2</sup>)'), initial=10000)

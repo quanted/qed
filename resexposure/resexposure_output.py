@@ -5,17 +5,18 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
-#import numpy as np
-#import cgi
-#import math 
-#import cgitb
-#cgitb.enable()
+import numpy as np
+import math 
+import cgi
+import cgitb
+cgitb.enable()
 
-
-  
- 
 class resexposureOutputPage(webapp.RequestHandler):
     def post(self):
+        form = cgi.FieldStorage()
+        model = form.getvalue('model')
+        print model[0]
+
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01hh_uberheader.html', {'title':'Ubertool'})        
         html = html + template.render(templatepath + '02hh_uberintroblock_wmodellinks.html',  {'model':'resexposure','page':'output'})

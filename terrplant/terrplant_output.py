@@ -22,6 +22,7 @@ class terrplantExecutePage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage() 
         #Get variables needed to construct terrplant object
+        version_terrplant = form.getvalue('version_terrplant')
         I = form.getvalue('incorporation')
         A = form.getvalue('application_rate')
         D = form.getvalue('drift_fraction')
@@ -41,9 +42,9 @@ class terrplantExecutePage(webapp.RequestHandler):
         # terr.application_method = application_method
         application_form = form.getvalue('application_form')
         # terr.application_form = application_form
-        sol = form.getvalue('sol')
+        solubility = form.getvalue('solubility')
         # terr.sol = sol
-        terr = terrplant_model.terrplant(True,True,A,I,R,D,nms,lms,nds,lds,chemical_name,pc_code,use,application_method,application_form,sol)
+        terr = terrplant_model.terrplant(True,True,version_terrplant,A,I,R,D,nms,lms,nds,lds,chemical_name,pc_code,use,application_method,application_form,solubility)
         nmv = form.getvalue('EC25_for_nonlisted_vegetative_vigor_monocot')
         terr.nmv = nmv
         ndv = form.getvalue('EC25_for_nonlisted_vegetative_vigor_dicot')

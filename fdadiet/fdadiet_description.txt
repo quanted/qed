@@ -1,2 +1,3 @@
-<p>Description to come</p>
-<p>Description to come</p>
+<p>Sanitizing solutions (sanitizers) are classified as Indirect Food additives regulated under 21 CDR 178.1010. Sanitizing solutions are indirect food additives for their components are reasonably expected to become components of food through contact with the treated surfaces of food processing equipment and utensils. As food additives, sanitizers must be shown to be safe prior to their use. The condition which a sanitizer may be safely used on food-contact surfaces are prescribed in a regulation.</p>
+
+<p>The FDA Dietary Exposure Model employed here for the FDA equations used by EPA/AD to estimate what FDA considers to be conservative, yet reasonable, dietary exposures resulting from use of food contact surface sanitizers.  EPA/AD often uses these equations in the absence of residue data to estimate dietary exposure.  These equations are very simple and are amenable to risk assessment using a dashboard approach.</p>

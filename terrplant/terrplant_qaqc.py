@@ -21,6 +21,7 @@ logger = logging.getLogger('TerrplantQaqcPage')
 
 cwd= os.getcwd()
 data = csv.reader(open(cwd+'/terrplant/terrplant_qaqc_inputs.csv'))
+version_terrplant = '1.2.2'
 A=[]
 I=[]
 R=[]
@@ -34,7 +35,7 @@ pc_code = []
 use = []
 application_method = []
 application_form = []
-sol = []
+solubility = []
 
 ######Pre-defined outputs########
 # rundry_out = []
@@ -95,7 +96,7 @@ for row in data:
     use.append(str(row[2]))
     application_method.append(str(row[3]))
     application_form.append(str(row[4]))
-    sol.append(float(row[5]))
+    solubility.append(float(row[5]))
     I.append(float(row[6]))
     A.append(float(row[7]))
     D.append(float(row[8]))
@@ -618,13 +619,13 @@ class TerrplantQaqcPage(webapp.RequestHandler):
                 'model':'terrplant',
                 'model_attributes':'TerrPlant QAQC'})
         html = html + terrplant_tables.timestamp()
-        terr = terrplant_model.terrplant(True,True,A[0],I[0],R[0],D[0],nms[0],lms[0],nds[0],lds[0],chemical_name[0],pc_code[0],use[0],application_method[0],application_form[0],sol[0])
+        terr = terrplant_model.terrplant(True,True,version_terrplant,A[0],I[0],R[0],D[0],nms[0],lms[0],nds[0],lds[0],chemical_name[0],pc_code[0],use[0],application_method[0],application_form[0],solubility[0])
         terr.chemical_name_expected = chemical_name[0]
         terr.pc_code_expected = pc_code[0]
         terr.use_expected = use[0]
         terr.application_method_expected = application_method[0]
         terr.application_form_expected = application_form[0]
-        terr.sol_expected = sol[0]
+        terr.solubility_expected = solubility[0]
 
         # terr.rundry_results_expected = out_fun_rundry[0]
         # terr.runsemi_results_expected = out_fun_runsemi[0]

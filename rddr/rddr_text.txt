@@ -1,1 +1,5 @@
-<p></p>
+<p>Regional deposited dose ratio (RDDR) is in a respiratory tract region (r) for the laboratory animal species of interest (RDDA) to that of humans (RDDH). This ratio is used to adjust the observed particulate exposure effect level for interspecies dosimetric differences.</p>
+
+<p>RDDR is a core component for estimation of inhalation reference concentrations (RfCs) (earlier terminology was "inhalation reference dose") as benchmark estimates of the quantitative dose response assessment of chronic non-cancer toxicity for individual inhaled chemicals. Non-cancer toxicity refers to adverse health effects other than cancer and gene mutations.</p>
+
+<p>The U.S. Environmental Protection Agency (EPA) has a history of advocating the evaluation of scientific data and calculation of Acceptable Daily Intake (ADI) values for non-carcinogens as benchmark values for deriving regulatory levels to protect exposed populations from adverse effects.</p>

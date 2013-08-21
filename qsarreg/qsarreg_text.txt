@@ -1,1 +1,6 @@
-<p></p>
+<!-- This information is extracted from WIKI, as I cannot open up the attachment in the HED dash documentation_August2012_ml_082912,docx. -->
+<!-- What is the difference between qsarreg and qsarhe? -- Mingshu 08/21/2013  -->
+
+<p>Quantitative Structure–Activity Relationship models (QSAR) are regression or classification models used in the chemical and biological sciences and engineering. Like other regression models, QSAR regression models relate a set of "predictor" variables (X) to the potency of the response variable (Y), while classification QSAR models relate the predictor variables to a categorical value of the response variable. </p>
+
+<p>In QSAR modeling, the predictors consist of physicochemical properties or theoretical molecular descriptors of chemicals; the QSAR response-variable could be a biological activity of the chemicals. QSAR models first summarize a supposed relationship between chemical structures and biological activity in a data-set of chemicals. Second QSAR models predict the activities of new chemicals.</p>

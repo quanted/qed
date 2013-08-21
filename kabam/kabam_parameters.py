@@ -30,7 +30,7 @@ class KabamInp_chem(forms.Form):
     cdoc = forms.FloatField(required=True,label=mark_safe('Concentration of Dissolved Organic Carbon (X<sub>DOC</sub>; kg OC/L)'),initial=0)
     cox = forms.FloatField(required=True,label=mark_safe('Concentration of Dissolved Oxygen (C<sub>OX</sub>; mg O<sup>2</sup>/L)'),initial=5)
     wt = forms.FloatField(required=True,label=mark_safe('Water Temperature (T; &degC)'),initial=15)
-    css = forms.FloatField(required=True,label=mark_safe('Concentration of Suspended Solids (C<sub>SS</sub>; Kg/L)'),initial=0.00003)
+    css = forms.FloatField(required=True,label=mark_safe('Concentration of Suspended Solids (C<sub>SS</sub>; kg/L)'),initial=0.00003)
     oc = forms.FloatField(required=True,label=mark_safe('Sediment Organic Carbon (OC; %)'),initial=4)
 class KabamInp_bird(forms.Form):
     b_species = forms.ChoiceField(required=True,label='Species of the tested bird', choices=Species_of_the_tested_bird_CHOICES, initial='178')

@@ -488,6 +488,8 @@ for row in data:
     sfish_respire.append(row[126])
     mfish_respire.append(row[127])
     lfish_respire.append(row[128])
+
+    #outputs
     cb_phytoplankton.append(float(row[129]))
     cb_zoo.append(float(row[130]))
     cb_beninv.append(float(row[131]))
@@ -902,7 +904,6 @@ kabam_obj.chronic_rq_diet_a2_exp=chronic_rq_diet_a2[0]
 kabam_obj.chronic_rq_diet_a3_exp=chronic_rq_diet_a3[0]
 kabam_obj.chronic_rq_diet_a4_exp=chronic_rq_diet_a4[0]
 kabam_obj.chronic_rq_diet_a5_exp=chronic_rq_diet_a5[0]
-
 
 class kabamQaqcPage(webapp.RequestHandler):
     def get(self):

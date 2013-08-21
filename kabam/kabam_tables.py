@@ -36,9 +36,9 @@ def getheaderwadadcdcd_noUnits():
         headings = ["Wildlife Species","Acute Dose Based","Acute Dietary Based","Chronic Dose Based","Chronic Dietary Based"]
         return headings
 
-# def getheadersum():
-#     headings = ["Parameter", "Mean", "Std", "Min", "Max", "Unit"]
-#     return headings
+def getheadersum():
+    headings = ["Parameter", "Mean", "Std", "Min", "Max", "Unit"]
+    return headings
 
 def gethtmlrowsfromcols(data, headings):
     columns = [data[heading] for heading in headings]
@@ -157,7 +157,7 @@ def gett5data(kabam_obj):
         "Dry Food Ingestion Rate (kg-dry food/kg-bw/day)": ['%.3f' % kabam_obj.dfir[:,0],'%.3f' % kabam_obj.dfir[:,1],'%.3f' % kabam_obj.dfir[:,2],'%.3f' % kabam_obj.dfir[:,3],'%.3f' % kabam_obj.dfir[:,4],'%.3f' % kabam_obj.dfir[:,5],'%.3f' % kabam_obj.dfir_a[:,0],'%.3f' % kabam_obj.dfir_a[:,1],'%.3f' % kabam_obj.dfir_a[:,2],'%.3f' % kabam_obj.dfir_a[:,3],'%.3f' % kabam_obj.dfir_a[:,4],'%.3f' % kabam_obj.dfir_a[:,5]],
         "Wet Food Ingestion Rate (kg-wet food/kg-bw/day)": ['%.3f' % kabam_obj.wet_food_ingestion_m[:,0],'%.3f' % kabam_obj.wet_food_ingestion_m[:,1],'%.3f' % kabam_obj.wet_food_ingestion_m[:,2],'%.3f' % kabam_obj.wet_food_ingestion_m[:,3],'%.3f' % kabam_obj.wet_food_ingestion_m[:,4],'%.3f' % kabam_obj.wet_food_ingestion_m[:,5],'%.3f' % kabam_obj.wet_food_ingestion_a[:,0],'%.3f' % kabam_obj.wet_food_ingestion_a[:,1],'%.3f' % kabam_obj.wet_food_ingestion_a[:,2],'%.3f' % kabam_obj.wet_food_ingestion_a[:,3],'%.3f' % kabam_obj.wet_food_ingestion_a[:,4],'%.3f' % kabam_obj.wet_food_ingestion_a[:,5]],
         "Drinking Water Intake (L/d)": ['%.3f' % kabam_obj.drinking_water_intake_m[:,0],'%.3f' % kabam_obj.drinking_water_intake_m[:,1],'%.3f' % kabam_obj.drinking_water_intake_m[:,2],'%.3f' % kabam_obj.drinking_water_intake_m[:,3],'%.3f' % kabam_obj.drinking_water_intake_m[:,4],'%.3f' % kabam_obj.drinking_water_intake_m[:,5],'%.3f' % kabam_obj.drinking_water_intake_a[:,0],'%.3f' % kabam_obj.drinking_water_intake_a[:,1],'%.3f' % kabam_obj.drinking_water_intake_a[:,2],'%.3f' % kabam_obj.drinking_water_intake_a[:,3],'%.3f' % kabam_obj.drinking_water_intake_a[:,4],'%.3f' % kabam_obj.drinking_water_intake_a[:,5]],
-        "Dose Based (mg/kg-bw/d)": ['%.3f' % kabam_obj.db4[:,0],'%.3f' % kabam_obj.db4[:,1],'%.3f' % kabam_obj.db4[:,2],'%.3f' % kabam_obj.db4[:,3],'%.3f' % kabam_obj.db4[:,4],'%.3f' % kabam_obj.db4[:,5],'%.3f' % kabam_obj.db4a[:,0],'%.3f' % kabam_obj.db4a[:,1],'%.3f' % kabam_obj.db4a[:,2],'%.3f' % kabam_obj.db4a[:,3],'%.3f' % kabam_obj.db4a[:,4],'%.3f' % kabam_obj.db4a[:,5]],
+        "Dose Based (mg/kg-bw/d)": ['%.3f' % kabam_obj.db4[:,0],'%.3f' % kabam_obj.db4[:,1],'%.3f' % kabam_obj.db4[:,2],'%.3f' % kabam_obj.db4[:,3],'%.3f' % kabam_obj.db4[:,4],'%.3f' % kabam_obj.db4[:,5],'%.4f' % kabam_obj.db4a[:,0],'%.4f' % kabam_obj.db4a[:,1],'%.4f' % kabam_obj.db4a[:,2],'%.4f' % kabam_obj.db4a[:,3],'%.4f' % kabam_obj.db4a[:,4],'%.4f' % kabam_obj.db4a[:,5]],
         "Dietary Based (ppm)": ['%.2f' % kabam_obj.db5[0],'%.2f' % kabam_obj.db5[1],'%.2f' % kabam_obj.db5[2],'%.2f' % kabam_obj.db5[3],'%.2f' % kabam_obj.db5[4],'%.2f' % kabam_obj.db5[5],'%.2f' % kabam_obj.db5a[0],'%.2f' % kabam_obj.db5a[1],'%.2f' % kabam_obj.db5a[2],'%.2f' % kabam_obj.db5a[3],'%.2f' % kabam_obj.db5a[4],'%.2f' % kabam_obj.db5a[5]],
     }
     return data
@@ -169,7 +169,7 @@ def gett5dataqaqc(kabam_obj):
         "Dry Food Ingestion Rate (kg-dry food/kg-bw/day)": ['%.3f' % kabam_obj.dfir[:,0],'%.3f' % kabam_obj.dfir0_exp,'%.3f' % kabam_obj.dfir[:,1],'%.3f' % kabam_obj.dfir1_exp,'%.3f' % kabam_obj.dfir[:,2],'%.3f' % kabam_obj.dfir2_exp,'%.3f' % kabam_obj.dfir[:,3],'%.3f' % kabam_obj.dfir3_exp,'%.3f' % kabam_obj.dfir[:,4],'%.3f' % kabam_obj.dfir4_exp,'%.3f' % kabam_obj.dfir[:,5],'%.3f' % kabam_obj.dfir5_exp,'%.3f' % kabam_obj.dfir_a[:,0],'%.3f' % kabam_obj.dfira0_exp,'%.3f' % kabam_obj.dfir_a[:,1],'%.3f' % kabam_obj.dfira1_exp,'%.3f' % kabam_obj.dfir_a[:,2],'%.3f' % kabam_obj.dfira2_exp,'%.3f' % kabam_obj.dfir_a[:,3],'%.3f' % kabam_obj.dfira3_exp,'%.3f' % kabam_obj.dfir_a[:,4],'%.3f' % kabam_obj.dfira4_exp,'%.3f' % kabam_obj.dfir_a[:,5],'%.3f' % kabam_obj.dfira5_exp],
         "Wet Food Ingestion Rate (kg-wet food/kg-bw/day)": ['%.3f' % kabam_obj.wet_food_ingestion_m[:,0],'%.3f' % kabam_obj.wet_food_ingestion_m0_exp,'%.3f' % kabam_obj.wet_food_ingestion_m[:,1],'%.3f' % kabam_obj.wet_food_ingestion_m1_exp,'%.3f' % kabam_obj.wet_food_ingestion_m[:,2],'%.3f' % kabam_obj.wet_food_ingestion_m2_exp,'%.3f' % kabam_obj.wet_food_ingestion_m[:,3],'%.3f' % kabam_obj.wet_food_ingestion_m3_exp,'%.3f' % kabam_obj.wet_food_ingestion_m[:,4],'%.3f' % kabam_obj.wet_food_ingestion_m4_exp,'%.3f' % kabam_obj.wet_food_ingestion_m[:,5],'%.3f' % kabam_obj.wet_food_ingestion_m5_exp,'%.3f' % kabam_obj.wet_food_ingestion_a[:,0],'%.3f' % kabam_obj.wet_food_ingestion_a0_exp,'%.3f' % kabam_obj.wet_food_ingestion_a[:,1],'%.3f' % kabam_obj.wet_food_ingestion_a1_exp,'%.3f' % kabam_obj.wet_food_ingestion_a[:,2],'%.3f' % kabam_obj.wet_food_ingestion_a2_exp,'%.3f' % kabam_obj.wet_food_ingestion_a[:,3],'%.3f' % kabam_obj.wet_food_ingestion_a3_exp,'%.3f' % kabam_obj.wet_food_ingestion_a[:,4],'%.3f' % kabam_obj.wet_food_ingestion_a4_exp,'%.3f' % kabam_obj.wet_food_ingestion_a[:,5],'%.3f' % kabam_obj.wet_food_ingestion_a5_exp],
         "Drinking Water Intake (L/d)": ['%.3f' % kabam_obj.drinking_water_intake_m[:,0],'%.3f' % kabam_obj.drinking_water_intake_m0_exp,'%.3f' % kabam_obj.drinking_water_intake_m[:,1],'%.3f' % kabam_obj.drinking_water_intake_m1_exp,'%.3f' % kabam_obj.drinking_water_intake_m[:,2],'%.3f' % kabam_obj.drinking_water_intake_m2_exp,'%.3f' % kabam_obj.drinking_water_intake_m[:,3],'%.3f' % kabam_obj.drinking_water_intake_m3_exp,'%.3f' % kabam_obj.drinking_water_intake_m[:,4],'%.3f' % kabam_obj.drinking_water_intake_m4_exp,'%.3f' % kabam_obj.drinking_water_intake_m[:,5],'%.3f' % kabam_obj.drinking_water_intake_m5_exp,'%.3f' % kabam_obj.drinking_water_intake_a[:,0],'%.3f' % kabam_obj.drinking_water_intake_a0_exp,'%.3f' % kabam_obj.drinking_water_intake_a[:,1],'%.3f' % kabam_obj.drinking_water_intake_a1_exp,'%.3f' % kabam_obj.drinking_water_intake_a[:,2],'%.3f' % kabam_obj.drinking_water_intake_a2_exp,'%.3f' % kabam_obj.drinking_water_intake_a[:,3],'%.3f' % kabam_obj.drinking_water_intake_a3_exp,'%.3f' % kabam_obj.drinking_water_intake_a[:,4],'%.3f' % kabam_obj.drinking_water_intake_a4_exp,'%.3f' % kabam_obj.drinking_water_intake_a[:,5],'%.3f' % kabam_obj.drinking_water_intake_a5_exp],
-        "Dose Based (mg/kg-bw/d)": ['%.3f' % kabam_obj.db4[:,0],'%.3f' % kabam_obj.db40_exp,'%.3f' % kabam_obj.db4[:,1],'%.3f' % kabam_obj.db41_exp,'%.3f' % kabam_obj.db4[:,2],'%.3f' % kabam_obj.db42_exp,'%.3f' % kabam_obj.db4[:,3],'%.3f' % kabam_obj.db43_exp,'%.3f' % kabam_obj.db4[:,4],'%.3f' % kabam_obj.db44_exp,'%.3f' % kabam_obj.db4[:,5],'%.3f' % kabam_obj.db45_exp,'%.3f' % kabam_obj.db4a[:,0],'%.3f' % kabam_obj.db4a0_exp,'%.3f' % kabam_obj.db4a[:,1],'%.3f' % kabam_obj.db4a1_exp,'%.3f' % kabam_obj.db4a[:,2],'%.3f' % kabam_obj.db4a2_exp,'%.3f' % kabam_obj.db4a[:,3],'%.3f' % kabam_obj.db4a3_exp,'%.3f' % kabam_obj.db4a[:,4],'%.3f' % kabam_obj.db4a4_exp,'%.3f' % kabam_obj.db4a[:,5],'%.3f' % kabam_obj.db4a5_exp],
+        "Dose Based (mg/kg-bw/d)": ['%.3f' % kabam_obj.db4[:,0],'%.3f' % kabam_obj.db40_exp,'%.3f' % kabam_obj.db4[:,1],'%.3f' % kabam_obj.db41_exp,'%.3f' % kabam_obj.db4[:,2],'%.3f' % kabam_obj.db42_exp,'%.3f' % kabam_obj.db4[:,3],'%.3f' % kabam_obj.db43_exp,'%.3f' % kabam_obj.db4[:,4],'%.3f' % kabam_obj.db44_exp,'%.3f' % kabam_obj.db4[:,5],'%.3f' % kabam_obj.db45_exp,'%.4f' % kabam_obj.db4a[:,0],'%.4f' % kabam_obj.db4a0_exp,'%.4f' % kabam_obj.db4a[:,1],'%.4f' % kabam_obj.db4a1_exp,'%.4f' % kabam_obj.db4a[:,2],'%.4f' % kabam_obj.db4a2_exp,'%.4f' % kabam_obj.db4a[:,3],'%.4f' % kabam_obj.db4a3_exp,'%.4f' % kabam_obj.db4a[:,4],'%.4f' % kabam_obj.db4a4_exp,'%.4f' % kabam_obj.db4a[:,5],'%.4f' % kabam_obj.db4a5_exp],
         "Dietary Based (ppm)": ['%.2f' % kabam_obj.db5[0],'%.2f' % kabam_obj.db50_exp,'%.2f' % kabam_obj.db5[1],'%.2f' % kabam_obj.db51_exp,'%.2f' % kabam_obj.db5[2],'%.2f' % kabam_obj.db52_exp,'%.2f' % kabam_obj.db5[3],'%.2f' % kabam_obj.db53_exp,'%.2f' % kabam_obj.db5[4],'%.2f' % kabam_obj.db54_exp,'%.2f' % kabam_obj.db5[5],'%.2f' % kabam_obj.db55_exp,'%.2f' % kabam_obj.db5a[0],'%.2f' % kabam_obj.db5a0_exp,'%.2f' % kabam_obj.db5a[1],'%.2f' % kabam_obj.db5a1_exp,'%.2f' % kabam_obj.db5a[2],'%.2f' % kabam_obj.db5a2_exp,'%.2f' % kabam_obj.db5a[3],'%.2f' % kabam_obj.db5a3_exp,'%.2f' % kabam_obj.db5a[4],'%.2f' % kabam_obj.db5a4_exp,'%.2f' % kabam_obj.db5a[5],'%.2f' % kabam_obj.db5a5_exp],
     }
     return data
@@ -180,7 +180,7 @@ def gett6data(kabam_obj):
         "Acute Dose Based (mg/kg-bw)": ['%.2f' % kabam_obj.acute_dose_based_m[:,0],'%.2f' % kabam_obj.acute_dose_based_m[:,1],'%.2f' % kabam_obj.acute_dose_based_m[:,2],'%.2f' % kabam_obj.acute_dose_based_m[:,3],'%.2f' % kabam_obj.acute_dose_based_m[:,4],'%.2f' % kabam_obj.acute_dose_based_m[:,5],'%.2f' % kabam_obj.acute_dose_based_a[:,0],'%.2f' % kabam_obj.acute_dose_based_a[:,1],'%.2f' % kabam_obj.acute_dose_based_a[:,2],'%.2f' % kabam_obj.acute_dose_based_a[:,3],'%.2f' % kabam_obj.acute_dose_based_a[:,4],'%.2f' % kabam_obj.acute_dose_based_a[:,5]],
         "Acute Dietary Based (mg/kg-diet)": ['N/A','N/A','N/A','N/A','N/A','N/A','%.2f' % kabam_obj.avian_lc50,'%.2f' % kabam_obj.avian_lc50,'%.2f' % kabam_obj.avian_lc50,'%.2f' % kabam_obj.avian_lc50,'%.2f' % kabam_obj.avian_lc50,'%.2f' % kabam_obj.avian_lc50],
         "Chronic Dose Based (mg/kg-bw)": ['%.2f' % kabam_obj.chronic_dose_based_m[:,0],'%.2f' % kabam_obj.chronic_dose_based_m[:,1],'%.2f' % kabam_obj.chronic_dose_based_m[:,2],'%.2f' % kabam_obj.chronic_dose_based_m[:,3],'%.2f' % kabam_obj.chronic_dose_based_m[:,4],'%.2f' % kabam_obj.chronic_dose_based_m[:,5],'N/A','N/A','N/A','N/A','N/A','N/A'],
-        "Chronic Dietary Based (mg/kg-diet)": ['%.0f' % (20 * kabam_obj.mammalian_chronic_endpoint),'%.0f' % (20 * kabam_obj.mammalian_chronic_endpoint),'%.0f' % (20 * kabam_obj.mammalian_chronic_endpoint),'%.0f' % (20 * kabam_obj.mammalian_chronic_endpoint),'%.0f' % (20 * kabam_obj.mammalian_chronic_endpoint),'%.0f' % (20 * kabam_obj.mammalian_chronic_endpoint),'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec],
+        "Chronic Dietary Based (mg/kg-diet)": ['%.0f' % kabam_obj.mammalian_chronic_endpoint,'%.0f' % kabam_obj.mammalian_chronic_endpoint,'%.0f' % kabam_obj.mammalian_chronic_endpoint,'%.0f' % kabam_obj.mammalian_chronic_endpoint,'%.0f' % kabam_obj.mammalian_chronic_endpoint,'%.0f' % kabam_obj.mammalian_chronic_endpoint,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec],
     }
     return data
 
@@ -190,7 +190,7 @@ def gett6dataqaqc(kabam_obj):
         "Acute Dose Based (mg/kg-bw)": ['%.2f' % kabam_obj.acute_dose_based_m[:,0],'%.2f' % kabam_obj.acute_dose_based_m0_exp,'%.2f' % kabam_obj.acute_dose_based_m[:,1],'%.2f' % kabam_obj.acute_dose_based_m1_exp,'%.2f' % kabam_obj.acute_dose_based_m[:,2],'%.2f' % kabam_obj.acute_dose_based_m2_exp,'%.2f' % kabam_obj.acute_dose_based_m[:,3],'%.2f' % kabam_obj.acute_dose_based_m3_exp,'%.2f' % kabam_obj.acute_dose_based_m[:,4],'%.2f' % kabam_obj.acute_dose_based_m4_exp,'%.2f' % kabam_obj.acute_dose_based_m[:,5],'%.2f' % kabam_obj.acute_dose_based_m5_exp,'%.2f' % kabam_obj.acute_dose_based_a[:,0],'%.2f' % kabam_obj.acute_dose_based_a0_exp,'%.2f' % kabam_obj.acute_dose_based_a[:,1],'%.2f' % kabam_obj.acute_dose_based_a1_exp,'%.2f' % kabam_obj.acute_dose_based_a[:,2],'%.2f' % kabam_obj.acute_dose_based_a2_exp,'%.2f' % kabam_obj.acute_dose_based_a[:,3],'%.2f' % kabam_obj.acute_dose_based_a3_exp,'%.2f' % kabam_obj.acute_dose_based_a[:,4],'%.2f' % kabam_obj.acute_dose_based_a4_exp,'%.2f' % kabam_obj.acute_dose_based_a[:,5],'%.2f' % kabam_obj.acute_dose_based_a5_exp],
         "Acute Dietary Based (mg/kg-diet)": ['N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','%.2f' % kabam_obj.avian_lc50,'%.2f' % kabam_obj.avian_lc50_exp,'%.2f' % kabam_obj.avian_lc50,'%.2f' % kabam_obj.avian_lc50_exp,'%.2f' % kabam_obj.avian_lc50,'%.2f' % kabam_obj.avian_lc50_exp,'%.2f' % kabam_obj.avian_lc50,'%.2f' % kabam_obj.avian_lc50_exp,'%.2f' % kabam_obj.avian_lc50,'%.2f' % kabam_obj.avian_lc50_exp,'%.2f' % kabam_obj.avian_lc50,'%.2f' % kabam_obj.avian_lc50_exp],
         "Chronic Dose Based (mg/kg-bw)": ['%.2f' % kabam_obj.chronic_dose_based_m[:,0],'%.2f' % kabam_obj.chronic_dose_based_m0_exp,'%.2f' % kabam_obj.chronic_dose_based_m[:,1],'%.2f' % kabam_obj.chronic_dose_based_m1_exp,'%.2f' % kabam_obj.chronic_dose_based_m[:,2],'%.2f' % kabam_obj.chronic_dose_based_m2_exp,'%.2f' % kabam_obj.chronic_dose_based_m[:,3],'%.2f' % kabam_obj.chronic_dose_based_m3_exp,'%.2f' % kabam_obj.chronic_dose_based_m[:,4],'%.2f' % kabam_obj.chronic_dose_based_m4_exp,'%.2f' % kabam_obj.chronic_dose_based_m[:,5],'%.2f' % kabam_obj.chronic_dose_based_m5_exp,'N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A'],
-        "Chronic Dietary Based (mg/kg-diet)": ['%.0f' % (20 * kabam_obj.mammalian_chronic_endpoint),'%.0f' % (20 * kabam_obj.mammalian_chronic_endpoint_exp),'%.0f' % (20 * kabam_obj.mammalian_chronic_endpoint),'%.0f' % (20 * kabam_obj.mammalian_chronic_endpoint_exp),'%.0f' % (20 * kabam_obj.mammalian_chronic_endpoint),'%.0f' % (20 * kabam_obj.mammalian_chronic_endpoint_exp),'%.0f' % (20 * kabam_obj.mammalian_chronic_endpoint),'%.0f' % (20 * kabam_obj.mammalian_chronic_endpoint_exp),'%.0f' % (20 * kabam_obj.mammalian_chronic_endpoint),'%.0f' % (20 * kabam_obj.mammalian_chronic_endpoint_exp),'%.0f' % (20 * kabam_obj.mammalian_chronic_endpoint),'%.0f' % (20 * kabam_obj.mammalian_chronic_endpoint_exp),'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec_exp,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec_exp,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec_exp,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec_exp,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec_exp,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec_exp],
+        "Chronic Dietary Based (mg/kg-diet)": ['%.0f' % kabam_obj.mammalian_chronic_endpoint,'%.0f' % kabam_obj.mammalian_chronic_endpoint_exp,'%.0f' % kabam_obj.mammalian_chronic_endpoint,'%.0f' % kabam_obj.mammalian_chronic_endpoint_exp,'%.0f' % kabam_obj.mammalian_chronic_endpoint,'%.0f' % kabam_obj.mammalian_chronic_endpoint_exp,'%.0f' % kabam_obj.mammalian_chronic_endpoint,'%.0f' % kabam_obj.mammalian_chronic_endpoint_exp,'%.0f' % kabam_obj.mammalian_chronic_endpoint,'%.0f' % kabam_obj.mammalian_chronic_endpoint_exp,'%.0f' % kabam_obj.mammalian_chronic_endpoint,'%.0f' % kabam_obj.mammalian_chronic_endpoint_exp,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec_exp,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec_exp,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec_exp,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec_exp,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec_exp,'%.0f' % kabam_obj.avian_noaec,'%.0f' % kabam_obj.avian_noaec_exp],
     }
     return data
 
@@ -214,6 +214,60 @@ def gett7dataqaqc(kabam_obj):
     }
     return data
 
+
+def gettsumdata(l_kow,k_oc,c_wdp,water_column_EEC,mineau,x_poc,x_doc,c_ox,w_t,c_ss,oc,k_ow,
+            bw_quail,bw_duck,bwb_other,avian_ld50,avian_lc50,avian_noaec,bw_rat,bwm_other,mammalian_ld50,mammalian_lc50,mammalian_chronic_endpoint):
+
+    data = { 
+        "Parameter": [mark_safe('Log K<sub>ow</sub>'), mark_safe('K<sub>OC</sub>'), 'Pore water (benthic) EEC', 'Water column 1in10yr EEC', 'Mineau scaling factor', mark_safe('X<sub>POC</sub>'), mark_safe('X<sub>DOC</sub>'), mark_safe('C<sub>OX</sub>'), mark_safe('Water Temperature'), mark_safe('C<sub>SS</sub>'), 'OC', mark_safe('K<sub>OW</sub>'),
+            'BW Quail', 'BW Duck', 'BW Bird Other', mark_safe('Avian LD<sub>50</sub>'), mark_safe('Avian LC<sub>50</sub>'), 'Avian NOAEC', 'BW Rat', 'BW Mammal Other', mark_safe('Mammalian LD<sub>50</sub>'), mark_safe('Mammalian LC<sub>50</sub>'), 'Mammalian Chronic Endpoint'],
+        
+        "Mean": ['%.2e' % numpy.mean(l_kow),'%.2e' % numpy.mean(k_oc),'%.2e' % numpy.mean(c_wdp), '%.2e' % numpy.mean(water_column_EEC), '%.2e' % numpy.mean(mineau), '%.2e' % numpy.mean(x_poc), '%.2e' % numpy.mean(x_doc), '%.2e' % numpy.mean(c_ox), '%.2e' % numpy.mean(w_t), '%.2e' % numpy.mean(c_ss), '%.2e' % numpy.mean(oc), '%.2e' % numpy.mean(k_ow),
+                '%.2e' % numpy.mean(bw_quail),'%.2e' % numpy.mean(bw_duck),'%.2e' % numpy.mean(bwb_other),'%.2e' % numpy.mean(avian_ld50),'%.2e' % numpy.mean(avian_lc50),'%.2e' % numpy.mean(avian_noaec),'%.2e' % numpy.mean(bw_rat),'%.2e' % numpy.mean(bwm_other),'%.2e' % numpy.mean(mammalian_ld50),'%.2e' % numpy.mean(mammalian_lc50),'%.2e' % numpy.mean(mammalian_chronic_endpoint)],
+
+        "Std": ['%.2e' % numpy.std(l_kow),'%.2e' % numpy.std(k_oc),'%.2e' % numpy.std(c_wdp), '%.2e' % numpy.std(water_column_EEC), '%.2e' % numpy.std(mineau), '%.2e' % numpy.std(x_poc), '%.2e' % numpy.std(x_doc), '%.2e' % numpy.std(c_ox), '%.2e' % numpy.std(w_t), '%.2e' % numpy.std(c_ss), '%.2e' % numpy.std(oc), '%.2e' % numpy.std(k_ow),
+                '%.2e' % numpy.std(bw_quail),'%.2e' % numpy.std(bw_duck),'%.2e' % numpy.std(bwb_other),'%.2e' % numpy.std(avian_ld50),'%.2e' % numpy.std(avian_lc50),'%.2e' % numpy.std(avian_noaec),'%.2e' % numpy.std(bw_rat),'%.2e' % numpy.std(bwm_other),'%.2e' % numpy.std(mammalian_ld50),'%.2e' % numpy.std(mammalian_lc50),'%.2e' % numpy.std(mammalian_chronic_endpoint)],        
+        
+        "Min": ['%.2e' % numpy.min(l_kow),'%.2e' % numpy.min(k_oc),'%.2e' % numpy.min(c_wdp), '%.2e' % numpy.min(water_column_EEC), '%.2e' % numpy.min(mineau), '%.2e' % numpy.min(x_poc), '%.2e' % numpy.min(x_doc), '%.2e' % numpy.min(c_ox), '%.2e' % numpy.min(w_t), '%.2e' % numpy.min(c_ss), '%.2e' % numpy.min(oc), '%.2e' % numpy.min(k_ow),
+                '%.2e' % numpy.min(bw_quail),'%.2e' % numpy.min(bw_duck),'%.2e' % numpy.min(bwb_other),'%.2e' % numpy.min(avian_ld50),'%.2e' % numpy.min(avian_lc50),'%.2e' % numpy.min(avian_noaec),'%.2e' % numpy.min(bw_rat),'%.2e' % numpy.min(bwm_other),'%.2e' % numpy.min(mammalian_ld50),'%.2e' % numpy.min(mammalian_lc50),'%.2e' % numpy.min(mammalian_chronic_endpoint)],
+
+        "Max": ['%.2e' % numpy.max(l_kow),'%.2e' % numpy.max(k_oc),'%.2e' % numpy.max(c_wdp), '%.2e' % numpy.max(water_column_EEC), '%.2e' % numpy.max(mineau), '%.2e' % numpy.max(x_poc), '%.2e' % numpy.max(x_doc), '%.2e' % numpy.max(c_ox), '%.2e' % numpy.max(w_t), '%.2e' % numpy.max(c_ss), '%.2e' % numpy.max(oc), '%.2e' % numpy.max(k_ow),
+                '%.2e' % numpy.max(bw_quail),'%.2e' % numpy.max(bw_duck),'%.2e' % numpy.max(bwb_other),'%.2e' % numpy.max(avian_ld50),'%.2e' % numpy.max(avian_lc50),'%.2e' % numpy.max(avian_noaec),'%.2e' % numpy.max(bw_rat),'%.2e' % numpy.max(bwm_other),'%.2e' % numpy.max(mammalian_ld50),'%.2e' % numpy.max(mammalian_lc50),'%.2e' % numpy.max(mammalian_chronic_endpoint)],
+
+        "Unit": ['','',mark_safe('&#956;g/L'),mark_safe('&#956;g/L'),'','kg OC/L','kg OC/L',mark_safe('mg O<sup>2</sup>/L'),mark_safe('&#176;C'),'kg/L','%','','g','g','g','mg/kg-bw','mg/kg-diet','mg/kg-diet','g','g','mg/kg-bw','mg/kg-diet','ppm'],
+    }
+    return data
+
+
+# def gettsumdata_out1():
+#     data = {
+#         "Wildlife Species": ['fog/water shrew','Expected fog/water shrew','rice rate/star nosed mole','Expected rice rate/star nosed mole','small mink','Expected small mink','large mink','Expected large mink','small river otter','Expected small river otter','large river otter','Expected large river otter','sandpipers','Expected sandpipers','cranes','Expected cranes','rails','Expected rails','herons','Expected herons','small osprey','Expected small osprey','white pelican','Expected white pelican'],
+
+#         "Mean": ['%.2e' % numpy.mean(dose_bird_out), '%.2e' % numpy.mean(dose_mamm_out), '%.2e' % numpy.mean(at_bird_out),
+#                  '%.2e' % numpy.mean(at_mamm_out), '%.2e' % numpy.mean(act_out), '%.2e' % numpy.mean(det_out),
+#                  '%.2e' % numpy.mean(acute_bird_out), '%.2e' % numpy.mean(acute_mamm_out),
+#                  '%.2e' % numpy.mean(chron_bird_out), '%.2e' % numpy.mean(chron_mamm_out),],
+
+#         "Std": ['%.2e' % numpy.std(dose_bird_out), '%.2e' % numpy.std(dose_mamm_out), '%.2e' % numpy.std(at_bird_out),
+#                 '%.2e' % numpy.std(at_mamm_out), '%.2e' % numpy.std(act_out), '%.2e' % numpy.std(det_out),
+#                 '%.2e' % numpy.std(acute_bird_out), '%.2e' % numpy.std(acute_mamm_out),
+#                 '%.2e' % numpy.std(chron_bird_out), '%.2e' % numpy.std(chron_mamm_out),],
+
+#         "Min": ['%.2e' % numpy.min(dose_bird_out), '%.2e' % numpy.min(dose_mamm_out), '%.2e' % numpy.min(at_bird_out),
+#                 '%.2e' % numpy.min(at_mamm_out), '%.2e' % numpy.min(act_out), '%.2e' % numpy.min(det_out),
+#                 '%.2e' % numpy.min(acute_bird_out), '%.2e' % numpy.min(acute_mamm_out),
+#                 '%.2e' % numpy.min(chron_bird_out), '%.2e' % numpy.min(chron_mamm_out),],
+
+#         "Max": ['%.2e' % numpy.max(dose_bird_out), '%.2e' % numpy.min(dose_mamm_out), '%.2e' % numpy.min(at_bird_out),
+#                 '%.2e' % numpy.max(at_mamm_out), '%.2e' % numpy.max(act_out), '%.2e' % numpy.min(det_out),
+#                 '%.2e' % numpy.max(acute_bird_out), '%.2e' % numpy.min(acute_mamm_out),
+#                 '%.2e' % numpy.max(chron_bird_out), '%.2e' % numpy.max(chron_mamm_out),],
+
+#         "Unit": ['mg/kg-bw', 'mg/kg-bw','mg/kg-bw', 'mg/kg-bw', 'mg/kg-bw', 'mg/kg-bw', '','', '', '',],
+#     }
+#     return data
+
+
 pvuheadings = getheaderpvu()
 headerptldr = getheaderptldr()
 headerttb = getheaderttb()
@@ -221,7 +275,7 @@ headertbbbb = getheadertbbbb()
 headerwbdwddd = getheaderwbdwddd()
 headerwadadcdcd = getheaderwadadcdcd()
 headerwadadcdcd_noUnits = getheaderwadadcdcd_noUnits()
-# sumheadings = getheadersum()
+sumheadings = getheadersum()
 djtemplate = getdjtemplate()
 tmpl = Template(djtemplate)
 
@@ -448,6 +502,29 @@ def table_7_qaqc(kabam_obj):
         t7data = gett7dataqaqc(kabam_obj)
         t7rows = gethtmlrowsfromcols(t7data,headerwadadcdcd_noUnits)
         html = html + tmpl.render(Context(dict(data=t7rows, headings=headerwadadcdcd_noUnits)))
+        html = html + """
+                </div>
+        </div>
+        """
+        return html
+
+def table_all_sum(sumheadings,tmpl,l_kow,k_oc,c_wdp,water_column_EEC,mineau,x_poc,x_doc,c_ox,w_t,c_ss,oc,k_ow,
+                    bw_quail,bw_duck,bwb_other,avian_ld50,avian_lc50,avian_noaec,bw_rat,bwm_other,mammalian_ld50,mammalian_lc50,mammalian_chronic_endpoint):
+    html_all_sum = table_sum_input(sumheadings,tmpl,l_kow,k_oc,c_wdp,water_column_EEC,mineau,x_poc,x_doc,c_ox,w_t,c_ss,oc,k_ow,
+                    bw_quail,bw_duck,bwb_other,avian_ld50,avian_lc50,avian_noaec,bw_rat,bwm_other,mammalian_ld50,mammalian_lc50,mammalian_chronic_endpoint)
+    return html_all_sum
+
+def table_sum_input(sumheadings,tmpl,l_kow,k_oc,c_wdp,water_column_EEC,mineau,x_poc,x_doc,c_ox,w_t,c_ss,oc,k_ow,
+                    bw_quail,bw_duck,bwb_other,avian_ld50,avian_lc50,avian_noaec,bw_rat,bwm_other,mammalian_ld50,mammalian_lc50,mammalian_chronic_endpoint):
+        html = """
+        <H3 class="out_1 collapsible" id="section1"><span></span>Summary Statistics</H3>
+        <div class="out_">
+            <H4 class="out_1 collapsible" id="section4"><span></span>Batch Inputs</H4>
+                <div class="out_ container_output">
+        """
+        tsuminputdata = gettsumdata(l_kow,k_oc,c_wdp,water_column_EEC,mineau,x_poc,x_doc,c_ox,w_t,c_ss,oc,k_ow,bw_quail,bw_duck,bwb_other,avian_ld50,avian_lc50,avian_noaec,bw_rat,bwm_other,mammalian_ld50,mammalian_lc50,mammalian_chronic_endpoint)
+        tsuminputrows = gethtmlrowsfromcols(tsuminputdata, sumheadings)
+        html = html + tmpl.render(Context(dict(data=tsuminputrows, headings=sumheadings)))
         html = html + """
                 </div>
         </div>

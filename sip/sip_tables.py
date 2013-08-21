@@ -1,5 +1,4 @@
 import numpy
-#import django
 from django.template import Context, Template
 from django.utils.safestring import mark_safe
 from sip import sip_model,sip_parameters
@@ -116,8 +115,6 @@ def gett3dataqaqc(sip_obj):
     }
     return data
 
-# def gettsumdata(bw_quail,bw_duck,bwb_other,bw_rat,bwm_other,sol,
-#                     avian_ld50,mammalian_ld50,aw_bird,mineau,aw_mamm,noaec,noael):
 def gettsumdata(bw_quail,bw_duck,bwb_other,bw_rat,bwm_other,sol,
                     avian_ld50,mammalian_ld50,aw_bird,mineau,aw_mamm,noaec,noael):
     data = { 
@@ -143,10 +140,6 @@ def gettsumdata(bw_quail,bw_duck,bwb_other,bw_rat,bwm_other,sol,
     }
     return data
 
-# def gettsumdata_out(fw_bird_out, fw_mamm_out, dose_bird_out, dose_mamm_out, at_bird_out, 
-#                     at_mamm_out, fi_bird_out, det_out, 
-#                     act_out, acute_bird_out, acute_mamm_out, 
-#                     chron_bird_out, chron_mamm_out):
 def gettsumdata_out(dose_bird_out, dose_mamm_out, at_bird_out, 
                     at_mamm_out, det_out, act_out, acute_bird_out, acute_mamm_out, 
                     chron_bird_out, chron_mamm_out):
@@ -220,14 +213,12 @@ def timestamp():
     return html
 
 def table_1(sip_obj):
-        #pre-table 1
         html = """
         <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs</H3>
         <div class="out_">
             <H4 class="out_1 collapsible" id="section2"><span></span>Application and Chemical Information</H4>
                 <div class="out_ container_output">
         """
-        #table 1
         t1data = gett1data(sip_obj)
         t1rows = gethtmlrowsfromcols(t1data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
@@ -238,14 +229,12 @@ def table_1(sip_obj):
         return html
 
 def table_1_qaqc(sip_obj):
-        #pre-table 1
         html = """
         <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs</H3>
         <div class="out_">
             <H4 class="out_1 collapsible" id="section2"><span></span>Application and Chemical Information</H4>
                 <div class="out_ container_output">
         """
-        #table 1
         t1data = gett1dataqaqc(sip_obj)
         t1rows = gethtmlrowsfromcols(t1data,pvuheadings)
         html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
@@ -256,7 +245,6 @@ def table_1_qaqc(sip_obj):
         return html
 
 def table_2(sip_obj):
-        #pre-table 1
         html = """
         <br>
         <H3 class="out_1 collapsible" id="section3"><span></span>SIP Output</H3>
@@ -264,20 +252,7 @@ def table_2(sip_obj):
             <H4 class="out_1 collapsible" id="section4"><span></span>Mammalian Results (%s g)</H4>
                 <div class="out_ container_output">
         """%(sip_obj.aw_mamm)
-        #table 1
-        # dose_mamm_out1 = sip_obj.dose_mamm(self)
-        # dose_mamm_out2 = sip_obj.dose_mamm(sip_obj.fw_mamm(bw_mamm),sol,bw_mamm)
-        # at_mamm_out1 = sip_obj.at_mamm(ld50,aw_mamm,tw_mamm)
-        # act_out1 = sip_obj.act(noael,tw_mamm,aw_mamm)
-        # acute_mamm_out1 = sip_obj.acute_mamm(sip_obj.dose_mamm(sip_obj.fw_mamm(bw_mamm),sol,bw_mamm),sip_obj.at_mamm(ld50,aw_mamm,tw_mamm))
-        # chron_mamm_out1 = sip_obj.chron_mamm(sip_obj.dose_mamm(sip_obj.fw_mamm(bw_mamm),sol,bw_mamm),sip_obj.act(noael,tw_mamm,aw_mamm))
-        # acuconm_out1 = sip_obj.acuconm(sip_obj.acute_mamm(sip_obj.dose_mamm(sip_obj.fw_mamm(bw_mamm),sol,bw_mamm),sip_obj.at_mamm(ld50,aw_mamm,tw_mamm)))
-        # chronconm_out1 = sip_obj.chronconm(sip_obj.chron_mamm(sip_obj.dose_mamm(sip_obj.fw_mamm(bw_mamm),sol,bw_mamm),sip_obj.act(noael,tw_mamm,aw_mamm)))
-        # t2data = gett2data(dose_mamm_out1, dose_mamm_out2, at_mamm_out1,act_out1, acute_mamm_out1, chron_mamm_out1, acuconm_out1, chronconm_out1)
         t2data = gett2data(sip_obj)
-
-
-
         t2rows = gethtmlrowsfromcols(t2data,pvrheadings)
         html = html + tmpl.render(Context(dict(data=t2rows, headings=pvrheadings)))
         html = html + """
@@ -286,7 +261,6 @@ def table_2(sip_obj):
         return html  
 
 def table_2_qaqc(sip_obj):
-        #pre-table 1
         html = """
         <br>
         <H3 class="out_1 collapsible" id="section3"><span></span>SIP Output</H3>
@@ -294,20 +268,7 @@ def table_2_qaqc(sip_obj):
             <H4 class="out_1 collapsible" id="section4"><span></span>Mammalian Results (%s g)</H4>
                 <div class="out_ container_output">
         """%(sip_obj.aw_mamm)
-        #table 1
-        # dose_mamm_out1 = sip_obj.dose_mamm(self)
-        # dose_mamm_out2 = sip_obj.dose_mamm(sip_obj.fw_mamm(bw_mamm),sol,bw_mamm)
-        # at_mamm_out1 = sip_obj.at_mamm(ld50,aw_mamm,tw_mamm)
-        # act_out1 = sip_obj.act(noael,tw_mamm,aw_mamm)
-        # acute_mamm_out1 = sip_obj.acute_mamm(sip_obj.dose_mamm(sip_obj.fw_mamm(bw_mamm),sol,bw_mamm),sip_obj.at_mamm(ld50,aw_mamm,tw_mamm))
-        # chron_mamm_out1 = sip_obj.chron_mamm(sip_obj.dose_mamm(sip_obj.fw_mamm(bw_mamm),sol,bw_mamm),sip_obj.act(noael,tw_mamm,aw_mamm))
-        # acuconm_out1 = sip_obj.acuconm(sip_obj.acute_mamm(sip_obj.dose_mamm(sip_obj.fw_mamm(bw_mamm),sol,bw_mamm),sip_obj.at_mamm(ld50,aw_mamm,tw_mamm)))
-        # chronconm_out1 = sip_obj.chronconm(sip_obj.chron_mamm(sip_obj.dose_mamm(sip_obj.fw_mamm(bw_mamm),sol,bw_mamm),sip_obj.act(noael,tw_mamm,aw_mamm)))
-        # t2data = gett2data(dose_mamm_out1, dose_mamm_out2, at_mamm_out1,act_out1, acute_mamm_out1, chron_mamm_out1, acuconm_out1, chronconm_out1)
         t2data = gett2dataqaqc(sip_obj)
-
-
-
         t2rows = gethtmlrowsfromcols(t2data,pvrheadingsqaqc)
         html = html + tmpl.render(Context(dict(data=t2rows, headings=pvrheadingsqaqc)))
         html = html + """
@@ -316,20 +277,10 @@ def table_2_qaqc(sip_obj):
         return html  
 
 def table_3(sip_obj):
-        #pre-table 1
         html = """
             <H4 class="out_1 collapsible" id="section4"><span></span>Avian Results (%s g)</H4>
                 <div class="out_ container_output">
         """%(sip_obj.aw_bird)
-        #table 1      
-        # dose_bird_out1 = sip_obj.dose_bird(sip_obj.fw_bird(bw_bird),sol,bw_bird), 
-        # dose_bird_out2 = sip_obj.dose_bird(sip_obj.fw_bird(bw_bird),sol,bw_bird), 
-        # at_bird_out1 = sip_obj.at_bird(ld50,aw_bird,tw_bird,mineau),
-        # det_out1 = sip_obj.det(noaec,sip_obj.fi_bird(bw_bird),bw_bird),
-        # acute_bird_out1 = sip_obj.acute_bird(sip_obj.dose_bird(sip_obj.fw_bird(bw_bird),sol,bw_bird),sip_obj.at_bird(ld50,aw_bird,tw_bird,mineau)),
-        # chron_bird_out1 = sip_obj.chron_bird(sip_obj.dose_bird(sip_obj.fw_bird(bw_bird),sol,bw_bird),sip_obj.det(noaec,sip_obj.fi_bird(bw_bird),bw_bird)),
-        # acuonb_bird_out1 = sip_obj.acuconb(sip_obj.acute_bird(sip_obj.dose_bird(sip_obj.fw_bird(bw_bird),sol,bw_bird),sip_obj.at_bird(ld50,aw_bird,tw_bird,mineau))),             
-        # chronconb_bird_out1 = sip_obj.chronconb(sip_obj.chron_bird(sip_obj.dose_bird(sip_obj.fw_bird(bw_bird),sol,bw_bird),sip_obj.det(noaec,sip_obj.fi_bird(bw_bird),bw_bird)))
         t3data = gett3data(sip_obj)
         t3rows = gethtmlrowsfromcols(t3data,pvrheadings)
         html = html + tmpl.render(Context(dict(data=t3rows, headings=pvrheadings)))
@@ -340,20 +291,10 @@ def table_3(sip_obj):
         return html
 
 def table_3_qaqc(sip_obj):
-        #pre-table 1
         html = """
             <H4 class="out_1 collapsible" id="section4"><span></span>Avian Results (%s g)</H4>
                 <div class="out_ container_output">
         """%(sip_obj.aw_bird)
-        #table 1      
-        # dose_bird_out1 = sip_obj.dose_bird(sip_obj.fw_bird(bw_bird),sol,bw_bird), 
-        # dose_bird_out2 = sip_obj.dose_bird(sip_obj.fw_bird(bw_bird),sol,bw_bird), 
-        # at_bird_out1 = sip_obj.at_bird(ld50,aw_bird,tw_bird,mineau),
-        # det_out1 = sip_obj.det(noaec,sip_obj.fi_bird(bw_bird),bw_bird),
-        # acute_bird_out1 = sip_obj.acute_bird(sip_obj.dose_bird(sip_obj.fw_bird(bw_bird),sol,bw_bird),sip_obj.at_bird(ld50,aw_bird,tw_bird,mineau)),
-        # chron_bird_out1 = sip_obj.chron_bird(sip_obj.dose_bird(sip_obj.fw_bird(bw_bird),sol,bw_bird),sip_obj.det(noaec,sip_obj.fi_bird(bw_bird),bw_bird)),
-        # acuonb_bird_out1 = sip_obj.acuconb(sip_obj.acute_bird(sip_obj.dose_bird(sip_obj.fw_bird(bw_bird),sol,bw_bird),sip_obj.at_bird(ld50,aw_bird,tw_bird,mineau))),             
-        # chronconb_bird_out1 = sip_obj.chronconb(sip_obj.chron_bird(sip_obj.dose_bird(sip_obj.fw_bird(bw_bird),sol,bw_bird),sip_obj.det(noaec,sip_obj.fi_bird(bw_bird),bw_bird)))
         t3data = gett3dataqaqc(sip_obj)
         t3rows = gethtmlrowsfromcols(t3data,pvrheadingsqaqc)
         html = html + tmpl.render(Context(dict(data=t3rows, headings=pvrheadingsqaqc)))
@@ -377,32 +318,28 @@ def table_all_sum(sumheadings, tmpl, bw_quail,bw_duck,bwb_other,bw_rat,bwm_other
 
 def table_sum_input(sumheadings, tmpl, bw_quail,bw_duck,bwb_other,bw_rat,bwm_other,sol,
                     avian_ld50,mammalian_ld50,aw_bird,mineau,aw_mamm,noaec,noael):
-        #pre-table sum_input
         html = """
         <H3 class="out_1 collapsible" id="section1"><span></span>Summary Statistics</H3>
         <div class="out_">
             <H4 class="out_1 collapsible" id="section4"><span></span>Batch Inputs</H4>
                 <div class="out_ container_output">
         """
-        #table sum_input
         tsuminputdata = gettsumdata(bw_quail,bw_duck,bwb_other,bw_rat,bwm_other,sol,avian_ld50,mammalian_ld50,aw_bird,mineau,aw_mamm,noaec,noael)
         tsuminputrows = gethtmlrowsfromcols(tsuminputdata, sumheadings)
         html = html + tmpl.render(Context(dict(data=tsuminputrows, headings=sumheadings)))
         html = html + """
-        </div>
+                </div>
         """
         return html
 
 def table_sum_output(sumheadings, tmpl, dose_bird_out, dose_mamm_out, at_bird_out, 
                     at_mamm_out, det_out, act_out, acute_bird_out, acute_mamm_out, 
                     chron_bird_out, chron_mamm_out):
-        #pre-table sum_input
         html = """
         <br>
             <H4 class="out_1 collapsible" id="section3"><span></span>SIP Outputs</H4>
                 <div class="out_ container_output">
         """
-        #table sum_input
         tsumoutputdata = gettsumdata_out(dose_bird_out, dose_mamm_out, at_bird_out, 
                     at_mamm_out, det_out, act_out, acute_bird_out, acute_mamm_out, 
                     chron_bird_out, chron_mamm_out)

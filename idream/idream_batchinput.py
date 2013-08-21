@@ -14,7 +14,9 @@ class idreamBatchInputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01hh_uberheader.html', 'title')
         html = html + template.render(templatepath + '02hh_uberintroblock_wmodellinks.html', {'model':'idream','page':'batchinput'})
         html = html + template.render (templatepath + '03hh_ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberbatchinput.html', {'model':'fdadiet'}) 
+        html = html + template.render(templatepath + '04uberbatchinput.html', {
+            'model':'idream',
+            'model_attributes':'IDREAM Batch Input'}) 
         html = html + template.render(templatepath + '04uberbatchinput_jquery.html', {}) 
         html = html + template.render(templatepath + '05hh_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06hh_uberfooter.html', {'links': ''})

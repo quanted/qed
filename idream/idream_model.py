@@ -146,4 +146,4 @@ class idream3(object):
 
 # ss=idream3('test', 'tire 2 ', 0.1, 1, 0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1)
 
-# print ss.exp_fe_c
+# print ss.exp_child_c_1[0]

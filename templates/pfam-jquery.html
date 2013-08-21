@@ -428,7 +428,135 @@ $(document).ready(function() {
                         
     var i = 1
     $('.tab_Application').append('<tr id="noa_header" style="display:none"><th width="18%">App#</th><th width="18%">Month</th><th width="18%">Day</th><th width="23%">Mass Applied</th><th width="23%">Slow Release</th></tr><tr id="noa_header" style="display:none"><th width="18%"></th><th width="18%"></th><th width="18%"></th><th width="23%">(kg/hA)</th><th width="23%">(1/day)</th></tr>');
+
+    var j = 1
+    $('.tab_Floods').append('<tr id="nof_header" style="display:none"><th width="10%">Event</th><th width="18%">Number of</th><th width="18%">Fill Level</th><th width="18%">Wier Level</th><th width="18%">Min. Level</th><th width="18%">Turn Over</th></tr><tr id="nof_header" style="display:none"><th width="10%"></th><th width="18%">Days</th><th width="18%">(m)</th><th width="18%">(m)</th><th width="18%">(m)</th><th width="18%">(1/day)</th></tr>');
             
+
+
+//set default values//
+    $('#id_noa').val(10);
+    $('tr[id*="noa_header"]').show()
+    while (i <= 10) {
+        $('.tab_Application').append('<tr class="tab_noa1"><td><input name="jm' + i + '" type="text" size="5" value="' + i + '" disabled/></td><td><input type="text" size="5" name="mm' + i + '" id="id_mm' + i + '"/></td><td><input type="text" size="5" name="dd' + i + '" id="id_dd' + i + '"/></td><td><input type="text" size="5" name="ma' + i + '" id="id_ma' + i + '"/></td><td><input type="text" size="5" name="sr' + i + '" id="id_sr' + i + '" value="0"/></td></tr>');
+        i = i + 1;
+    }
+    $('</table>').appendTo('.tab_Application');
+
+    $('[name*="mm"]').each(function () {
+        $(this).rules('add', {
+            required: true,
+            monthCheck: true,
+            integer:true
+        });
+    });
+    $('[name*="dd"]').each(function () {
+        $(this).rules('add', {
+            required: true,
+            dayCheck: true,
+            integer:true            
+        });
+    });
+    $('[name*="ma"]').each(function () {
+        $(this).rules('add', {
+            required : true,
+            sciFormat: true,
+            min: 0
+        });
+    });
+    $('[name*="sr"]').each(function () {
+        $(this).rules('add', {
+            required : true,
+            sciFormat: true,
+            min: 0
+        });
+    });
+
+    $('[id^="id_mm"]').val(1)
+    $('#id_dd1').val(1)
+    $('#id_dd2').val(2)
+    $('#id_dd3').val(3)
+    $('#id_dd4').val(4)
+    $('#id_dd5').val(15)
+    $('#id_dd6').val(16)
+    $('#id_dd7').val(17)
+    $('#id_dd8').val(18)
+    $('#id_dd9').val(19)
+    $('#id_dd10').val(20)
+
+    $('#id_ma1').val(0.123)
+    $('#id_ma2').val(0.246)
+    $('#id_ma3').val(0.789)
+    $('#id_ma4').val(0.444)
+    $('#id_ma5').val(0.555)
+    $('#id_ma6').val(0.666)
+    $('#id_ma7').val(0.77)
+    $('#id_ma8').val(0.88)
+    $('#id_ma9').val(0.99)
+    $('#id_ma10').val(0.10)
+
+    $('#id_weather').val('wTest')
+
+    $('#id_nof').val(2)
+    $('#id_date_f1').val('01/01')
+    $('tr[id*="nof_header"]').show()
+    while (j <= 2) {
+        if (j == 1){
+        $('.tab_Floods').append('<tr class="tab_nof1"><td><input type="text" size="5" value="'+j+'" disabled/></td><td><input type="text" size="5" name="nod'+j+'" id="id_nod'+j+'" value="0" disabled/></td><td><input type="text" size="5" name="fl'+j+'" id="id_fl'+j+'" value="0"/></td><td><input type="text" size="5" name="wl'+j+'" id="id_wl'+j+'" value="0"/></td><td><input type="text" size="5" name="ml'+j+'" id="id_ml'+j+'" value="0"/></td><td><input type="text" size="5" name="to'+j+'" id="id_to'+j+'" value="0"/></td></tr>');           
+        }
+        else {
+        $('.tab_Floods').append('<tr class="tab_nof1"><td><input type="text" size="5" value="'+j+'" disabled/></td><td><input type="text" size="5" name="nod'+j+'" id="id_nod'+j+'" value="0"/></td><td><input type="text" size="5" name="fl'+j+'" id="id_fl'+j+'" value="0"/></td><td><input type="text" size="5" name="wl'+j+'" id="id_wl'+j+'" value="0"/></td><td><input type="text" size="5" name="ml'+j+'" id="id_ml'+j+'" value="0"/></td><td><input type="text" size="5" name="to'+j+'" id="id_to'+j+'" value="0"/></td></tr>');
+        }
+        j = j + 1;
+    }
+        $('[name*="nod"]').each(function () {
+        $(this).rules('add', {
+            required : true,
+            integer: true,
+            min: 0,
+            mtp : true
+        });
+    });
+
+        $('[name*="fl"]').each(function () {
+        $(this).rules('add', {
+            required : true,
+            sciFormat: true,
+            min: 0
+        });
+    });
+
+        $('[name*="wl"]').each(function () {
+        $(this).rules('add', {
+            required : true,
+            sciFormat: true,
+            min: 0,
+            wlflCheck: true         
+        });
+    });
+
+        $('[name*="ml"]').each(function () {
+        $(this).rules('add', {
+            required : true,
+            sciFormat: true,
+            min: 0,
+            mlflCheck: true
+        });
+    });
+
+        $('[name*="to"]').each(function () {
+        $(this).rules('add', {
+            required : true,
+            sciFormat: true,
+            min: 0
+        });
+    });
+
+    $('#id_zero_height_ref').val('06/01')
+
+
+//end default setup//
+
     $('#id_noa').change(function () {
         var total = $(this).val()
         $('tr[id*="noa_header"]').show()
@@ -481,9 +609,7 @@ $(document).ready(function() {
     })
     
     
-    var j = 1
-    $('.tab_Floods').append('<tr id="nof_header" style="display:none"><th width="10%">Event</th><th width="18%">Number of</th><th width="18%">Fill Level</th><th width="18%">Wier Level</th><th width="18%">Min. Level</th><th width="18%">Turn Over</th></tr><tr id="nof_header" style="display:none"><th width="10%"></th><th width="18%">Days</th><th width="18%">(m)</th><th width="18%">(m)</th><th width="18%">(m)</th><th width="18%">(1/day)</th></tr>');
-            
+
     $('#id_nof').change(function () {
         var total_nof = $(this).val()
         $('tr[id*="nof_header"]').show()

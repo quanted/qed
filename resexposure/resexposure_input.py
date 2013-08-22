@@ -27,6 +27,14 @@ class resexposureInputPage(webapp.RequestHandler):
                 <li class="hdflr" style="font-weight:bold; display:none"> | Hard Surface Floor Cleaner</li>
                 <li class="vlflr" style="font-weight:bold; display:none"> | Vinyl Floor</li>
                 <li class="cpcln" style="font-weight:bold; display:none"> | Carpet Cleaner</li>
+                <li class="ipcap" style="font-weight:bold; display:none"> | Impregnated Carpet</li>
+                <li class="mactk" style="font-weight:bold; display:none"> | Mattress Covers and Ticking</li>
+                <li class="ccpst" style="font-weight:bold; display:none"> | Clothing/Textile Consumer Product Spray Treatment</li>
+                <li class="ldtpr" style="font-weight:bold; display:none"> | Laundry Detergent Preservative</li>
+                <li class="clopr" style="font-weight:bold; display:none"> | Clothing/Textile Material Preservative</li>
+                <li class="impdp" style="font-weight:bold; display:none"> | Impregnated Diapers</li>
+                <li class="cldst" style="font-weight:bold; display:none"> | Sprayed Diapers</li>
+                <li class="impty" style="font-weight:bold; display:none"> | Impregnated Toys</li>
             </ul>
         </div>
         """
@@ -39,6 +47,23 @@ class resexposureInputPage(webapp.RequestHandler):
         html = html + str(resexposure_parameters.resexposureInp_vlflr())
         html = html + """</table><table class="tab tab_cpcln" border="0" style="display:none">"""
         html = html + str(resexposure_parameters.resexposureInp_cpcln())
+        html = html + """</table><table class="tab tab_ipcap" border="0" style="display:none">"""
+        html = html + str(resexposure_parameters.resexposureInp_ipcap())
+        html = html + """</table><table class="tab tab_mactk" border="0" style="display:none">"""
+        html = html + str(resexposure_parameters.resexposureInp_mactk())
+        html = html + """</table><table class="tab tab_ccpst" border="0" style="display:none">"""
+        html = html + str(resexposure_parameters.resexposureInp_ccpst())
+        html = html + """</table><table class="tab tab_ldtpr" border="0" style="display:none">"""
+        html = html + str(resexposure_parameters.resexposureInp_ldtpr())
+        html = html + """</table><table class="tab tab_clopr" border="0" style="display:none">"""
+        html = html + str(resexposure_parameters.resexposureInp_clopr())
+        html = html + """</table><table class="tab tab_impdp" border="0" style="display:none">"""
+        html = html + str(resexposure_parameters.resexposureInp_impdp())
+        html = html + """</table><table class="tab tab_cldst" border="0" style="display:none">"""
+        html = html + str(resexposure_parameters.resexposureInp_cldst())
+        html = html + """</table><table class="tab tab_impty" border="0" style="display:none">"""
+        html = html + str(resexposure_parameters.resexposureInp_impty())
+
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05hh_ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06hh_uberfooter.html', {'links': ''})

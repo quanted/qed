@@ -1,4 +1,4 @@
-import numpy
+import numpy as np
 from django.template import Context, Template
 from django.utils.safestring import mark_safe
 from kabam import kabam_model,kabam_parameters
@@ -38,6 +38,10 @@ def getheaderwadadcdcd_noUnits():
 
 def getheadersum():
     headings = ["Parameter", "Mean", "Std", "Min", "Max", "Unit"]
+    return headings
+
+def getheadersum_out():
+    headings = ["Parameter", "Mean", "Std", "Min", "Max"]
     return headings
 
 def gethtmlrowsfromcols(data, headings):
@@ -219,53 +223,192 @@ def gettsumdata(l_kow,k_oc,c_wdp,water_column_EEC,mineau,x_poc,x_doc,c_ox,w_t,c_
             bw_quail,bw_duck,bwb_other,avian_ld50,avian_lc50,avian_noaec,bw_rat,bwm_other,mammalian_ld50,mammalian_lc50,mammalian_chronic_endpoint):
 
     data = { 
-        "Parameter": [mark_safe('Log K<sub>ow</sub>'), mark_safe('K<sub>OC</sub>'), 'Pore water (benthic) EEC', 'Water column 1in10yr EEC', 'Mineau scaling factor', mark_safe('X<sub>POC</sub>'), mark_safe('X<sub>DOC</sub>'), mark_safe('C<sub>OX</sub>'), mark_safe('Water Temperature'), mark_safe('C<sub>SS</sub>'), 'OC', mark_safe('K<sub>OW</sub>'),
+        "Parameter": [mark_safe('Log K<sub>OW</sub>'), mark_safe('K<sub>OC</sub>'), 'Pore water (benthic) EEC', 'Water column 1 in 10yr EEC', 'Mineau scaling factor', mark_safe('X<sub>POC</sub>'), mark_safe('X<sub>DOC</sub>'), mark_safe('C<sub>OX</sub>'), mark_safe('Water Temperature'), mark_safe('C<sub>SS</sub>'), 'OC', mark_safe('K<sub>OW</sub>'),
             'BW Quail', 'BW Duck', 'BW Bird Other', mark_safe('Avian LD<sub>50</sub>'), mark_safe('Avian LC<sub>50</sub>'), 'Avian NOAEC', 'BW Rat', 'BW Mammal Other', mark_safe('Mammalian LD<sub>50</sub>'), mark_safe('Mammalian LC<sub>50</sub>'), 'Mammalian Chronic Endpoint'],
         
-        "Mean": ['%.2e' % numpy.mean(l_kow),'%.2e' % numpy.mean(k_oc),'%.2e' % numpy.mean(c_wdp), '%.2e' % numpy.mean(water_column_EEC), '%.2e' % numpy.mean(mineau), '%.2e' % numpy.mean(x_poc), '%.2e' % numpy.mean(x_doc), '%.2e' % numpy.mean(c_ox), '%.2e' % numpy.mean(w_t), '%.2e' % numpy.mean(c_ss), '%.2e' % numpy.mean(oc), '%.2e' % numpy.mean(k_ow),
-                '%.2e' % numpy.mean(bw_quail),'%.2e' % numpy.mean(bw_duck),'%.2e' % numpy.mean(bwb_other),'%.2e' % numpy.mean(avian_ld50),'%.2e' % numpy.mean(avian_lc50),'%.2e' % numpy.mean(avian_noaec),'%.2e' % numpy.mean(bw_rat),'%.2e' % numpy.mean(bwm_other),'%.2e' % numpy.mean(mammalian_ld50),'%.2e' % numpy.mean(mammalian_lc50),'%.2e' % numpy.mean(mammalian_chronic_endpoint)],
+        "Mean": ['%.1f' % np.mean(l_kow),'%.1f' % np.mean(k_oc),'%.1f' % np.mean(c_wdp), '%.1f' % np.mean(water_column_EEC), '%.1f' % np.mean(mineau), '%.1f' % np.mean(x_poc), '%.1f' % np.mean(x_doc), '%.1f' % np.mean(c_ox), '%.1f' % np.mean(w_t), '%.1f' % np.mean(c_ss), '%.1f' % np.mean(oc), '%.1f' % np.mean(k_ow),
+                '%.1f' % np.mean(bw_quail),'%.1f' % np.mean(bw_duck),'%.1f' % np.mean(bwb_other),'%.1f' % np.mean(avian_ld50),'%.1f' % np.mean(avian_lc50),'%.1f' % np.mean(avian_noaec),'%.1f' % np.mean(bw_rat),'%.1f' % np.mean(bwm_other),'%.1f' % np.mean(mammalian_ld50),'%.1f' % np.mean(mammalian_lc50),'%.1f' % np.mean(mammalian_chronic_endpoint)],
 
-        "Std": ['%.2e' % numpy.std(l_kow),'%.2e' % numpy.std(k_oc),'%.2e' % numpy.std(c_wdp), '%.2e' % numpy.std(water_column_EEC), '%.2e' % numpy.std(mineau), '%.2e' % numpy.std(x_poc), '%.2e' % numpy.std(x_doc), '%.2e' % numpy.std(c_ox), '%.2e' % numpy.std(w_t), '%.2e' % numpy.std(c_ss), '%.2e' % numpy.std(oc), '%.2e' % numpy.std(k_ow),
-                '%.2e' % numpy.std(bw_quail),'%.2e' % numpy.std(bw_duck),'%.2e' % numpy.std(bwb_other),'%.2e' % numpy.std(avian_ld50),'%.2e' % numpy.std(avian_lc50),'%.2e' % numpy.std(avian_noaec),'%.2e' % numpy.std(bw_rat),'%.2e' % numpy.std(bwm_other),'%.2e' % numpy.std(mammalian_ld50),'%.2e' % numpy.std(mammalian_lc50),'%.2e' % numpy.std(mammalian_chronic_endpoint)],        
+        "Std": ['%.1f' % np.std(l_kow),'%.1f' % np.std(k_oc),'%.1f' % np.std(c_wdp), '%.1f' % np.std(water_column_EEC), '%.1f' % np.std(mineau), '%.1f' % np.std(x_poc), '%.1f' % np.std(x_doc), '%.1f' % np.std(c_ox), '%.1f' % np.std(w_t), '%.1f' % np.std(c_ss), '%.1f' % np.std(oc), '%.1f' % np.std(k_ow),
+                '%.1f' % np.std(bw_quail),'%.1f' % np.std(bw_duck),'%.1f' % np.std(bwb_other),'%.1f' % np.std(avian_ld50),'%.1f' % np.std(avian_lc50),'%.1f' % np.std(avian_noaec),'%.1f' % np.std(bw_rat),'%.1f' % np.std(bwm_other),'%.1f' % np.std(mammalian_ld50),'%.1f' % np.std(mammalian_lc50),'%.1f' % np.std(mammalian_chronic_endpoint)],        
         
-        "Min": ['%.2e' % numpy.min(l_kow),'%.2e' % numpy.min(k_oc),'%.2e' % numpy.min(c_wdp), '%.2e' % numpy.min(water_column_EEC), '%.2e' % numpy.min(mineau), '%.2e' % numpy.min(x_poc), '%.2e' % numpy.min(x_doc), '%.2e' % numpy.min(c_ox), '%.2e' % numpy.min(w_t), '%.2e' % numpy.min(c_ss), '%.2e' % numpy.min(oc), '%.2e' % numpy.min(k_ow),
-                '%.2e' % numpy.min(bw_quail),'%.2e' % numpy.min(bw_duck),'%.2e' % numpy.min(bwb_other),'%.2e' % numpy.min(avian_ld50),'%.2e' % numpy.min(avian_lc50),'%.2e' % numpy.min(avian_noaec),'%.2e' % numpy.min(bw_rat),'%.2e' % numpy.min(bwm_other),'%.2e' % numpy.min(mammalian_ld50),'%.2e' % numpy.min(mammalian_lc50),'%.2e' % numpy.min(mammalian_chronic_endpoint)],
+        "Min": ['%.1f' % np.min(l_kow),'%.1f' % np.min(k_oc),'%.1f' % np.min(c_wdp), '%.1f' % np.min(water_column_EEC), '%.1f' % np.min(mineau), '%.1f' % np.min(x_poc), '%.1f' % np.min(x_doc), '%.1f' % np.min(c_ox), '%.1f' % np.min(w_t), '%.1f' % np.min(c_ss), '%.1f' % np.min(oc), '%.1f' % np.min(k_ow),
+                '%.1f' % np.min(bw_quail),'%.1f' % np.min(bw_duck),'%.1f' % np.min(bwb_other),'%.1f' % np.min(avian_ld50),'%.1f' % np.min(avian_lc50),'%.1f' % np.min(avian_noaec),'%.1f' % np.min(bw_rat),'%.1f' % np.min(bwm_other),'%.1f' % np.min(mammalian_ld50),'%.1f' % np.min(mammalian_lc50),'%.1f' % np.min(mammalian_chronic_endpoint)],
 
-        "Max": ['%.2e' % numpy.max(l_kow),'%.2e' % numpy.max(k_oc),'%.2e' % numpy.max(c_wdp), '%.2e' % numpy.max(water_column_EEC), '%.2e' % numpy.max(mineau), '%.2e' % numpy.max(x_poc), '%.2e' % numpy.max(x_doc), '%.2e' % numpy.max(c_ox), '%.2e' % numpy.max(w_t), '%.2e' % numpy.max(c_ss), '%.2e' % numpy.max(oc), '%.2e' % numpy.max(k_ow),
-                '%.2e' % numpy.max(bw_quail),'%.2e' % numpy.max(bw_duck),'%.2e' % numpy.max(bwb_other),'%.2e' % numpy.max(avian_ld50),'%.2e' % numpy.max(avian_lc50),'%.2e' % numpy.max(avian_noaec),'%.2e' % numpy.max(bw_rat),'%.2e' % numpy.max(bwm_other),'%.2e' % numpy.max(mammalian_ld50),'%.2e' % numpy.max(mammalian_lc50),'%.2e' % numpy.max(mammalian_chronic_endpoint)],
+        "Max": ['%.1f' % np.max(l_kow),'%.1f' % np.max(k_oc),'%.1f' % np.max(c_wdp), '%.1f' % np.max(water_column_EEC), '%.1f' % np.max(mineau), '%.1f' % np.max(x_poc), '%.1f' % np.max(x_doc), '%.1f' % np.max(c_ox), '%.1f' % np.max(w_t), '%.1f' % np.max(c_ss), '%.1f' % np.max(oc), '%.1f' % np.max(k_ow),
+                '%.1f' % np.max(bw_quail),'%.1f' % np.max(bw_duck),'%.1f' % np.max(bwb_other),'%.1f' % np.max(avian_ld50),'%.1f' % np.max(avian_lc50),'%.1f' % np.max(avian_noaec),'%.1f' % np.max(bw_rat),'%.1f' % np.max(bwm_other),'%.1f' % np.max(mammalian_ld50),'%.1f' % np.max(mammalian_lc50),'%.1f' % np.max(mammalian_chronic_endpoint)],
 
-        "Unit": ['','',mark_safe('&#956;g/L'),mark_safe('&#956;g/L'),'','kg OC/L','kg OC/L',mark_safe('mg O<sup>2</sup>/L'),mark_safe('&#176;C'),'kg/L','%','','g','g','g','mg/kg-bw','mg/kg-diet','mg/kg-diet','g','g','mg/kg-bw','mg/kg-diet','ppm'],
+        "Unit": ['','',mark_safe('&#956;g/L'),mark_safe('&#956;g/L'),'','kg OC/L','kg OC/L',mark_safe('mg O<sup>2</sup>/L'),mark_safe('&#176;C'),'kg/L','%','','g','g','g','mg/kg-bw','mg/kg-diet','mg/kg-diet','g','g','mg/kg-bw','mg/kg-diet','ppm']
     }
     return data
 
+def gettsumdata_out1(acute_dose_based_m_array,acute_dose_based_a_array):
+    acute_dose_based_m_avg = np.mean(acute_dose_based_m_array, axis=0)
+    acute_dose_based_m_std = np.std(acute_dose_based_m_array, axis=0)
+    acute_dose_based_m_min = np.min(acute_dose_based_m_array, axis=0)
+    acute_dose_based_m_max = np.max(acute_dose_based_m_array, axis=0)
+    acute_dose_based_a_avg = np.mean(acute_dose_based_a_array, axis=0)
+    acute_dose_based_a_std = np.std(acute_dose_based_a_array, axis=0)
+    acute_dose_based_a_min = np.min(acute_dose_based_a_array, axis=0)
+    acute_dose_based_a_max = np.max(acute_dose_based_a_array, axis=0)
+    data = {
+        "Parameter": ['fog/water shrew','rice rate/star nosed mole','small mink','large mink','small river otter','large river otter','sandpipers','cranes','rails','herons','small osprey','white pelican'],
 
-# def gettsumdata_out1():
-#     data = {
-#         "Wildlife Species": ['fog/water shrew','Expected fog/water shrew','rice rate/star nosed mole','Expected rice rate/star nosed mole','small mink','Expected small mink','large mink','Expected large mink','small river otter','Expected small river otter','large river otter','Expected large river otter','sandpipers','Expected sandpipers','cranes','Expected cranes','rails','Expected rails','herons','Expected herons','small osprey','Expected small osprey','white pelican','Expected white pelican'],
+        "Mean": ['%.3f' % acute_dose_based_m_avg[0],'%.3f' % acute_dose_based_m_avg[1],'%.3f' % acute_dose_based_m_avg[2],'%.3f' % acute_dose_based_m_avg[3],'%.3f' % acute_dose_based_m_avg[4],'%.3f' % acute_dose_based_m_avg[5],
+                '%.3f' % acute_dose_based_a_avg[0],'%.3f' % acute_dose_based_a_avg[1],'%.3f' % acute_dose_based_a_avg[2],'%.3f' % acute_dose_based_a_avg[3],'%.3f' % acute_dose_based_a_avg[4],'%.3f' % acute_dose_based_a_avg[5],
+                ],
 
-#         "Mean": ['%.2e' % numpy.mean(dose_bird_out), '%.2e' % numpy.mean(dose_mamm_out), '%.2e' % numpy.mean(at_bird_out),
-#                  '%.2e' % numpy.mean(at_mamm_out), '%.2e' % numpy.mean(act_out), '%.2e' % numpy.mean(det_out),
-#                  '%.2e' % numpy.mean(acute_bird_out), '%.2e' % numpy.mean(acute_mamm_out),
-#                  '%.2e' % numpy.mean(chron_bird_out), '%.2e' % numpy.mean(chron_mamm_out),],
+        "Std": ['%.3f' % acute_dose_based_m_std[0],'%.3f' % acute_dose_based_m_std[1],'%.3f' % acute_dose_based_m_std[2],'%.3f' % acute_dose_based_m_std[3],'%.3f' % acute_dose_based_m_std[4],'%.3f' % acute_dose_based_m_std[5],
+                '%.3f' % acute_dose_based_a_std[0],'%.3f' % acute_dose_based_a_std[1],'%.3f' % acute_dose_based_a_std[2],'%.3f' % acute_dose_based_a_std[3],'%.3f' % acute_dose_based_a_std[4],'%.3f' % acute_dose_based_a_std[5],
+                ],
 
-#         "Std": ['%.2e' % numpy.std(dose_bird_out), '%.2e' % numpy.std(dose_mamm_out), '%.2e' % numpy.std(at_bird_out),
-#                 '%.2e' % numpy.std(at_mamm_out), '%.2e' % numpy.std(act_out), '%.2e' % numpy.std(det_out),
-#                 '%.2e' % numpy.std(acute_bird_out), '%.2e' % numpy.std(acute_mamm_out),
-#                 '%.2e' % numpy.std(chron_bird_out), '%.2e' % numpy.std(chron_mamm_out),],
+        "Min": ['%.3f' % acute_dose_based_m_min[0],'%.3f' % acute_dose_based_m_min[1],'%.3f' % acute_dose_based_m_min[2],'%.3f' % acute_dose_based_m_min[3],'%.3f' % acute_dose_based_m_min[4],'%.3f' % acute_dose_based_m_min[5],
+                '%.3f' % acute_dose_based_a_min[0],'%.3f' % acute_dose_based_a_min[1],'%.3f' % acute_dose_based_a_min[2],'%.3f' % acute_dose_based_a_min[3],'%.3f' % acute_dose_based_a_min[4],'%.3f' % acute_dose_based_a_min[5],
+                ],
 
-#         "Min": ['%.2e' % numpy.min(dose_bird_out), '%.2e' % numpy.min(dose_mamm_out), '%.2e' % numpy.min(at_bird_out),
-#                 '%.2e' % numpy.min(at_mamm_out), '%.2e' % numpy.min(act_out), '%.2e' % numpy.min(det_out),
-#                 '%.2e' % numpy.min(acute_bird_out), '%.2e' % numpy.min(acute_mamm_out),
-#                 '%.2e' % numpy.min(chron_bird_out), '%.2e' % numpy.min(chron_mamm_out),],
+        "Max": ['%.3f' % acute_dose_based_m_max[0],'%.3f' % acute_dose_based_m_max[1],'%.3f' % acute_dose_based_m_max[2],'%.3f' % acute_dose_based_m_max[3],'%.3f' % acute_dose_based_m_max[4],'%.3f' % acute_dose_based_m_max[5],
+                '%.3f' % acute_dose_based_a_max[0],'%.3f' % acute_dose_based_a_max[1],'%.3f' % acute_dose_based_a_max[2],'%.3f' % acute_dose_based_a_max[3],'%.3f' % acute_dose_based_a_max[4],'%.3f' % acute_dose_based_a_max[5],
+                ]
+    }
+    return data
 
-#         "Max": ['%.2e' % numpy.max(dose_bird_out), '%.2e' % numpy.min(dose_mamm_out), '%.2e' % numpy.min(at_bird_out),
-#                 '%.2e' % numpy.max(at_mamm_out), '%.2e' % numpy.max(act_out), '%.2e' % numpy.min(det_out),
-#                 '%.2e' % numpy.max(acute_bird_out), '%.2e' % numpy.min(acute_mamm_out),
-#                 '%.2e' % numpy.max(chron_bird_out), '%.2e' % numpy.max(chron_mamm_out),],
+def gettsumdata_out2(chronic_dose_based_m_array):
+    chronic_dose_based_m_avg = np.mean(chronic_dose_based_m_array, axis=0)
+    chronic_dose_based_m_std = np.std(chronic_dose_based_m_array, axis=0)
+    chronic_dose_based_m_min = np.min(chronic_dose_based_m_array, axis=0)
+    chronic_dose_based_m_max = np.max(chronic_dose_based_m_array, axis=0)
+    data = {
+        "Parameter": ['fog/water shrew','rice rate/star nosed mole','small mink','large mink','small river otter','large river otter','sandpipers','cranes','rails','herons','small osprey','white pelican'],
 
-#         "Unit": ['mg/kg-bw', 'mg/kg-bw','mg/kg-bw', 'mg/kg-bw', 'mg/kg-bw', 'mg/kg-bw', '','', '', '',],
-#     }
-#     return data
+        "Mean": ['%.3f' % chronic_dose_based_m_avg[0],'%.3f' % chronic_dose_based_m_avg[1],'%.3f' % chronic_dose_based_m_avg[2],'%.3f' % chronic_dose_based_m_avg[3],'%.3f' % chronic_dose_based_m_avg[4],'%.3f' % chronic_dose_based_m_avg[5],
+                'N/A','N/A','N/A','N/A','N/A','N/A'
+                ],
+
+        "Std": ['%.3f' % chronic_dose_based_m_std[0],'%.3f' % chronic_dose_based_m_std[1],'%.3f' % chronic_dose_based_m_std[2],'%.3f' % chronic_dose_based_m_std[3],'%.3f' % chronic_dose_based_m_std[4],'%.3f' % chronic_dose_based_m_std[5],
+                'N/A','N/A','N/A','N/A','N/A','N/A'
+                ],
+
+        "Min": ['%.3f' % chronic_dose_based_m_min[0],'%.3f' % chronic_dose_based_m_min[1],'%.3f' % chronic_dose_based_m_min[2],'%.3f' % chronic_dose_based_m_min[3],'%.3f' % chronic_dose_based_m_min[4],'%.3f' % chronic_dose_based_m_min[5],
+                'N/A','N/A','N/A','N/A','N/A','N/A'
+                ],
+
+        "Max": ['%.3f' % chronic_dose_based_m_max[0],'%.3f' % chronic_dose_based_m_max[1],'%.3f' % chronic_dose_based_m_max[2],'%.3f' % chronic_dose_based_m_max[3],'%.3f' % chronic_dose_based_m_max[4],'%.3f' % chronic_dose_based_m_max[5],
+                'N/A','N/A','N/A','N/A','N/A','N/A'
+                ]
+    }
+    return data
+
+def gettsumdata_out3(acute_rq_dose_m_array,acute_rq_dose_a_array):
+    acute_rq_dose_m_avg = np.mean(acute_rq_dose_m_array, axis=0)
+    acute_rq_dose_m_std = np.std(acute_rq_dose_m_array, axis=0)
+    acute_rq_dose_m_min = np.min(acute_rq_dose_m_array, axis=0)
+    acute_rq_dose_m_max = np.max(acute_rq_dose_m_array, axis=0)
+    acute_rq_dose_a_avg = np.mean(acute_rq_dose_a_array, axis=0)
+    acute_rq_dose_a_std = np.std(acute_rq_dose_a_array, axis=0)
+    acute_rq_dose_a_min = np.min(acute_rq_dose_a_array, axis=0)
+    acute_rq_dose_a_max = np.max(acute_rq_dose_a_array, axis=0)
+    data = {
+        "Parameter": ['fog/water shrew','rice rate/star nosed mole','small mink','large mink','small river otter','large river otter','sandpipers','cranes','rails','herons','small osprey','white pelican'],
+
+        "Mean": ['%.3f' % acute_rq_dose_m_avg[0],'%.3f' % acute_rq_dose_m_avg[1],'%.3f' % acute_rq_dose_m_avg[2],'%.3f' % acute_rq_dose_m_avg[3],'%.3f' % acute_rq_dose_m_avg[4],'%.3f' % acute_rq_dose_m_avg[5],
+                '%.3f' % acute_rq_dose_a_avg[0],'%.3f' % acute_rq_dose_a_avg[1],'%.3f' % acute_rq_dose_a_avg[2],'%.3f' % acute_rq_dose_a_avg[3],'%.3f' % acute_rq_dose_a_avg[4],'%.3f' % acute_rq_dose_a_avg[5],
+                ],
+
+        "Std": ['%.3f' % acute_rq_dose_m_std[0],'%.3f' % acute_rq_dose_m_std[1],'%.3f' % acute_rq_dose_m_std[2],'%.3f' % acute_rq_dose_m_std[3],'%.3f' % acute_rq_dose_m_std[4],'%.3f' % acute_rq_dose_m_std[5],
+                '%.3f' % acute_rq_dose_a_std[0],'%.3f' % acute_rq_dose_a_std[1],'%.3f' % acute_rq_dose_a_std[2],'%.3f' % acute_rq_dose_a_std[3],'%.3f' % acute_rq_dose_a_std[4],'%.3f' % acute_rq_dose_a_std[5],
+                ],
+
+        "Min": ['%.3f' % acute_rq_dose_m_min[0],'%.3f' % acute_rq_dose_m_min[1],'%.3f' % acute_rq_dose_m_min[2],'%.3f' % acute_rq_dose_m_min[3],'%.3f' % acute_rq_dose_m_min[4],'%.3f' % acute_rq_dose_m_min[5],
+                '%.3f' % acute_rq_dose_a_min[0],'%.3f' % acute_rq_dose_a_min[1],'%.3f' % acute_rq_dose_a_min[2],'%.3f' % acute_rq_dose_a_min[3],'%.3f' % acute_rq_dose_a_min[4],'%.3f' % acute_rq_dose_a_min[5],
+                ],
+
+        "Max": ['%.3f' % acute_rq_dose_m_max[0],'%.3f' % acute_rq_dose_m_max[1],'%.3f' % acute_rq_dose_m_max[2],'%.3f' % acute_rq_dose_m_max[3],'%.3f' % acute_rq_dose_m_max[4],'%.3f' % acute_rq_dose_m_max[5],
+                '%.3f' % acute_rq_dose_a_max[0],'%.3f' % acute_rq_dose_a_max[1],'%.3f' % acute_rq_dose_a_max[2],'%.3f' % acute_rq_dose_a_max[3],'%.3f' % acute_rq_dose_a_max[4],'%.3f' % acute_rq_dose_a_max[5],
+                ]
+    }
+    return data
+
+def gettsumdata_out4(acute_rq_diet_a_array):
+    acute_rq_diet_a_avg = np.mean(acute_rq_diet_a_array, axis=0)
+    acute_rq_diet_a_std = np.std(acute_rq_diet_a_array, axis=0)
+    acute_rq_diet_a_min = np.min(acute_rq_diet_a_array, axis=0)
+    acute_rq_diet_a_max = np.max(acute_rq_diet_a_array, axis=0)
+    data = {
+        "Parameter": ['fog/water shrew','rice rate/star nosed mole','small mink','large mink','small river otter','large river otter','sandpipers','cranes','rails','herons','small osprey','white pelican'],
+
+        "Mean": ['N/A','N/A','N/A','N/A','N/A','N/A',
+                '%.3f' % acute_rq_diet_a_avg[0],'%.3f' % acute_rq_diet_a_avg[1],'%.3f' % acute_rq_diet_a_avg[2],'%.3f' % acute_rq_diet_a_avg[3],'%.3f' % acute_rq_diet_a_avg[4],'%.3f' % acute_rq_diet_a_avg[5],
+                ],
+
+        "Std": ['N/A','N/A','N/A','N/A','N/A','N/A',
+                '%.3f' % acute_rq_diet_a_std[0],'%.3f' % acute_rq_diet_a_std[1],'%.3f' % acute_rq_diet_a_std[2],'%.3f' % acute_rq_diet_a_std[3],'%.3f' % acute_rq_diet_a_std[4],'%.3f' % acute_rq_diet_a_std[5],
+                ],
+
+        "Min": ['N/A','N/A','N/A','N/A','N/A','N/A',
+                '%.3f' % acute_rq_diet_a_min[0],'%.3f' % acute_rq_diet_a_min[1],'%.3f' % acute_rq_diet_a_min[2],'%.3f' % acute_rq_diet_a_min[3],'%.3f' % acute_rq_diet_a_min[4],'%.3f' % acute_rq_diet_a_min[5],
+                ],
+
+        "Max": ['N/A','N/A','N/A','N/A','N/A','N/A',
+                '%.3f' % acute_rq_diet_a_max[0],'%.3f' % acute_rq_diet_a_max[1],'%.3f' % acute_rq_diet_a_max[2],'%.3f' % acute_rq_diet_a_max[3],'%.3f' % acute_rq_diet_a_max[4],'%.3f' % acute_rq_diet_a_max[5],
+                ]
+    }
+    return data
+
+def gettsumdata_out5(chronic_rq_dose_m_array):
+    chronic_rq_dose_m_avg = np.mean(chronic_rq_dose_m_array, axis=0)
+    chronic_rq_dose_m_std = np.std(chronic_rq_dose_m_array, axis=0)
+    chronic_rq_dose_m_min = np.min(chronic_rq_dose_m_array, axis=0)
+    chronic_rq_dose_m_max = np.max(chronic_rq_dose_m_array, axis=0)
+    data = {
+        "Parameter": ['fog/water shrew','rice rate/star nosed mole','small mink','large mink','small river otter','large river otter','sandpipers','cranes','rails','herons','small osprey','white pelican'],
+
+        "Mean": ['%.3f' % chronic_rq_dose_m_avg[0],'%.3f' % chronic_rq_dose_m_avg[1],'%.3f' % chronic_rq_dose_m_avg[2],'%.3f' % chronic_rq_dose_m_avg[3],'%.3f' % chronic_rq_dose_m_avg[4],'%.3f' % chronic_rq_dose_m_avg[5],
+                'N/A','N/A','N/A','N/A','N/A','N/A'
+                ],
+
+        "Std": ['%.3f' % chronic_rq_dose_m_std[0],'%.3f' % chronic_rq_dose_m_std[1],'%.3f' % chronic_rq_dose_m_std[2],'%.3f' % chronic_rq_dose_m_std[3],'%.3f' % chronic_rq_dose_m_std[4],'%.3f' % chronic_rq_dose_m_std[5],
+                'N/A','N/A','N/A','N/A','N/A','N/A'
+                ],
+
+        "Min": ['%.3f' % chronic_rq_dose_m_min[0],'%.3f' % chronic_rq_dose_m_min[1],'%.3f' % chronic_rq_dose_m_min[2],'%.3f' % chronic_rq_dose_m_min[3],'%.3f' % chronic_rq_dose_m_min[4],'%.3f' % chronic_rq_dose_m_min[5],
+                'N/A','N/A','N/A','N/A','N/A','N/A'
+                ],
+
+        "Max": ['%.3f' % chronic_rq_dose_m_max[0],'%.3f' % chronic_rq_dose_m_max[1],'%.3f' % chronic_rq_dose_m_max[2],'%.3f' % chronic_rq_dose_m_max[3],'%.3f' % chronic_rq_dose_m_max[4],'%.3f' % chronic_rq_dose_m_max[5],
+                'N/A','N/A','N/A','N/A','N/A','N/A'
+                ]
+    }
+    return data
+
+def gettsumdata_out6(chronic_rq_diet_m_array,chronic_rq_diet_a_array):
+    chronic_rq_diet_m_avg = np.mean(chronic_rq_diet_m_array, axis=0)
+    chronic_rq_diet_m_std = np.std(chronic_rq_diet_m_array, axis=0)
+    chronic_rq_diet_m_min = np.min(chronic_rq_diet_m_array, axis=0)
+    chronic_rq_diet_m_max = np.max(chronic_rq_diet_m_array, axis=0)
+    chronic_rq_diet_a_avg = np.mean(chronic_rq_diet_a_array, axis=0)
+    chronic_rq_diet_a_std = np.std(chronic_rq_diet_a_array, axis=0)
+    chronic_rq_diet_a_min = np.min(chronic_rq_diet_a_array, axis=0)
+    chronic_rq_diet_a_max = np.max(chronic_rq_diet_a_array, axis=0)
+    data = {
+        "Parameter": ['fog/water shrew','rice rate/star nosed mole','small mink','large mink','small river otter','large river otter','sandpipers','cranes','rails','herons','small osprey','white pelican'],
+
+        "Mean": ['%.3f' % chronic_rq_diet_m_avg[0],'%.3f' % chronic_rq_diet_m_avg[1],'%.3f' % chronic_rq_diet_m_avg[2],'%.3f' % chronic_rq_diet_m_avg[3],'%.3f' % chronic_rq_diet_m_avg[4],'%.3f' % chronic_rq_diet_m_avg[5],
+                '%.3f' % chronic_rq_diet_a_avg[0],'%.3f' % chronic_rq_diet_a_avg[1],'%.3f' % chronic_rq_diet_a_avg[2],'%.3f' % chronic_rq_diet_a_avg[3],'%.3f' % chronic_rq_diet_a_avg[4],'%.3f' % chronic_rq_diet_a_avg[5],
+                ],
+
+        "Std": ['%.3f' % chronic_rq_diet_m_std[0],'%.3f' % chronic_rq_diet_m_std[1],'%.3f' % chronic_rq_diet_m_std[2],'%.3f' % chronic_rq_diet_m_std[3],'%.3f' % chronic_rq_diet_m_std[4],'%.3f' % chronic_rq_diet_m_std[5],
+                '%.3f' % chronic_rq_diet_a_std[0],'%.3f' % chronic_rq_diet_a_std[1],'%.3f' % chronic_rq_diet_a_std[2],'%.3f' % chronic_rq_diet_a_std[3],'%.3f' % chronic_rq_diet_a_std[4],'%.3f' % chronic_rq_diet_a_std[5],
+                ],
+
+        "Min": ['%.3f' % chronic_rq_diet_m_min[0],'%.3f' % chronic_rq_diet_m_min[1],'%.3f' % chronic_rq_diet_m_min[2],'%.3f' % chronic_rq_diet_m_min[3],'%.3f' % chronic_rq_diet_m_min[4],'%.3f' % chronic_rq_diet_m_min[5],
+                '%.3f' % chronic_rq_diet_a_min[0],'%.3f' % chronic_rq_diet_a_min[1],'%.3f' % chronic_rq_diet_a_min[2],'%.3f' % chronic_rq_diet_a_min[3],'%.3f' % chronic_rq_diet_a_min[4],'%.3f' % chronic_rq_diet_a_min[5],
+                ],
+
+        "Max": ['%.3f' % chronic_rq_diet_m_max[0],'%.3f' % chronic_rq_diet_m_max[1],'%.3f' % chronic_rq_diet_m_max[2],'%.3f' % chronic_rq_diet_m_max[3],'%.3f' % chronic_rq_diet_m_max[4],'%.3f' % chronic_rq_diet_m_max[5],
+                '%.3f' % chronic_rq_diet_a_max[0],'%.3f' % chronic_rq_diet_a_max[1],'%.3f' % chronic_rq_diet_a_max[2],'%.3f' % chronic_rq_diet_a_max[3],'%.3f' % chronic_rq_diet_a_max[4],'%.3f' % chronic_rq_diet_a_max[5],
+                ]
+    }
+    return data
 
 
 pvuheadings = getheaderpvu()
@@ -276,6 +419,7 @@ headerwbdwddd = getheaderwbdwddd()
 headerwadadcdcd = getheaderwadadcdcd()
 headerwadadcdcd_noUnits = getheaderwadadcdcd_noUnits()
 sumheadings = getheadersum()
+sumheadings_out = getheadersum_out()
 djtemplate = getdjtemplate()
 tmpl = Template(djtemplate)
 
@@ -509,9 +653,16 @@ def table_7_qaqc(kabam_obj):
         return html
 
 def table_all_sum(sumheadings,tmpl,l_kow,k_oc,c_wdp,water_column_EEC,mineau,x_poc,x_doc,c_ox,w_t,c_ss,oc,k_ow,
-                    bw_quail,bw_duck,bwb_other,avian_ld50,avian_lc50,avian_noaec,bw_rat,bwm_other,mammalian_ld50,mammalian_lc50,mammalian_chronic_endpoint):
+                    bw_quail,bw_duck,bwb_other,avian_ld50,avian_lc50,avian_noaec,bw_rat,bwm_other,mammalian_ld50,mammalian_lc50,mammalian_chronic_endpoint,
+                    sumheadings_out,acute_dose_based_m_array,acute_dose_based_a_array,chronic_dose_based_m_array,acute_rq_dose_m_array,acute_rq_dose_a_array,acute_rq_diet_a_array,chronic_rq_dose_m_array,chronic_rq_diet_m_array,chronic_rq_diet_a_array):
     html_all_sum = table_sum_input(sumheadings,tmpl,l_kow,k_oc,c_wdp,water_column_EEC,mineau,x_poc,x_doc,c_ox,w_t,c_ss,oc,k_ow,
                     bw_quail,bw_duck,bwb_other,avian_ld50,avian_lc50,avian_noaec,bw_rat,bwm_other,mammalian_ld50,mammalian_lc50,mammalian_chronic_endpoint)
+    html_all_sum += table_sum_output1(sumheadings_out,tmpl,acute_dose_based_m_array,acute_dose_based_a_array)
+    html_all_sum += table_sum_output2(sumheadings_out,tmpl,chronic_dose_based_m_array)
+    html_all_sum += table_sum_output3(sumheadings_out,tmpl,acute_rq_dose_m_array,acute_rq_dose_a_array)
+    html_all_sum += table_sum_output4(sumheadings_out,tmpl,acute_rq_diet_a_array)
+    html_all_sum += table_sum_output5(sumheadings_out,tmpl,chronic_rq_dose_m_array)
+    html_all_sum += table_sum_output6(sumheadings_out,tmpl,chronic_rq_diet_m_array,chronic_rq_diet_a_array)
     return html_all_sum
 
 def table_sum_input(sumheadings,tmpl,l_kow,k_oc,c_wdp,water_column_EEC,mineau,x_poc,x_doc,c_ox,w_t,c_ss,oc,k_ow,
@@ -519,12 +670,91 @@ def table_sum_input(sumheadings,tmpl,l_kow,k_oc,c_wdp,water_column_EEC,mineau,x_
         html = """
         <H3 class="out_1 collapsible" id="section1"><span></span>Summary Statistics</H3>
         <div class="out_">
-            <H4 class="out_1 collapsible" id="section4"><span></span>Batch Inputs</H4>
+            <H4 class="out_1 collapsible" id="section4"><span></span>Kabam Batch Inputs</H4>
                 <div class="out_ container_output">
         """
         tsuminputdata = gettsumdata(l_kow,k_oc,c_wdp,water_column_EEC,mineau,x_poc,x_doc,c_ox,w_t,c_ss,oc,k_ow,bw_quail,bw_duck,bwb_other,avian_ld50,avian_lc50,avian_noaec,bw_rat,bwm_other,mammalian_ld50,mammalian_lc50,mammalian_chronic_endpoint)
         tsuminputrows = gethtmlrowsfromcols(tsuminputdata, sumheadings)
         html = html + tmpl.render(Context(dict(data=tsuminputrows, headings=sumheadings)))
+        html = html + """
+                </div>
+        """
+        return html
+
+def table_sum_output1(sumheadings_out,tmpl,acute_dose_based_m_array,acute_dose_based_a_array):
+        html = """
+        <br>
+            <H4 class="out_1 collapsible" id="section4"><span></span>Kabam Batch Outputs: Acute Dose Based Toxicity (mg/kg-bw)</H4>
+                <div class="out_ container_output">
+        """
+        tsumoutputdata = gettsumdata_out1(acute_dose_based_m_array,acute_dose_based_a_array)
+        tsumoutputrows = gethtmlrowsfromcols(tsumoutputdata, sumheadings_out)
+        html = html + tmpl.render(Context(dict(data=tsumoutputrows, headings=sumheadings_out)))
+        html = html + """
+                </div>
+        """
+        return html
+
+def table_sum_output2(sumheadings_out,tmpl,chronic_dose_based_m_array):
+        html = """
+            <H4 class="out_1 collapsible" id="section4"><span></span>Kabam Batch Outputs: Chronic Dose Based Toxicity (mg/kg-bw)</H4>
+                <div class="out_ container_output">
+        """
+        tsumoutputdata = gettsumdata_out2(chronic_dose_based_m_array)
+        tsumoutputrows = gethtmlrowsfromcols(tsumoutputdata, sumheadings_out)
+        html = html + tmpl.render(Context(dict(data=tsumoutputrows, headings=sumheadings_out)))
+        html = html + """
+                </div>
+        """
+        return html
+
+def table_sum_output3(sumheadings_out,tmpl,acute_rq_dose_m_array,acute_rq_dose_a_array):
+        html = """
+            <H4 class="out_1 collapsible" id="section4"><span></span>Kabam Batch Outputs: Acute Dose Based RQs</H4>
+                <div class="out_ container_output">
+        """
+        tsumoutputdata = gettsumdata_out3(acute_rq_dose_m_array,acute_rq_dose_a_array)
+        tsumoutputrows = gethtmlrowsfromcols(tsumoutputdata, sumheadings_out)
+        html = html + tmpl.render(Context(dict(data=tsumoutputrows, headings=sumheadings_out)))
+        html = html + """
+                </div>
+        """
+        return html
+
+def table_sum_output4(sumheadings_out,tmpl,acute_rq_diet_a_array):
+        html = """
+            <H4 class="out_1 collapsible" id="section4"><span></span>Kabam Batch Outputs: Acute Dietary Based RQs</H4>
+                <div class="out_ container_output">
+        """
+        tsumoutputdata = gettsumdata_out4(acute_rq_diet_a_array)
+        tsumoutputrows = gethtmlrowsfromcols(tsumoutputdata, sumheadings_out)
+        html = html + tmpl.render(Context(dict(data=tsumoutputrows, headings=sumheadings_out)))
+        html = html + """
+                </div>
+        """
+        return html
+
+def table_sum_output5(sumheadings_out,tmpl,chronic_rq_dose_m_array):
+        html = """
+            <H4 class="out_1 collapsible" id="section4"><span></span>Kabam Batch Outputs: Chronic Based RQs</H4>
+                <div class="out_ container_output">
+        """
+        tsumoutputdata = gettsumdata_out5(chronic_rq_dose_m_array)
+        tsumoutputrows = gethtmlrowsfromcols(tsumoutputdata, sumheadings_out)
+        html = html + tmpl.render(Context(dict(data=tsumoutputrows, headings=sumheadings_out)))
+        html = html + """
+                </div>
+        """
+        return html
+
+def table_sum_output6(sumheadings_out,tmpl,chronic_rq_diet_m_array,chronic_rq_diet_a_array):
+        html = """
+            <H4 class="out_1 collapsible" id="section4"><span></span>Kabam Batch Outputs: Chronic Dietary Based RQs</H4>
+                <div class="out_ container_output">
+        """
+        tsumoutputdata = gettsumdata_out6(chronic_rq_diet_m_array,chronic_rq_diet_a_array)
+        tsumoutputrows = gethtmlrowsfromcols(tsumoutputdata, sumheadings_out)
+        html = html + tmpl.render(Context(dict(data=tsumoutputrows, headings=sumheadings_out)))
         html = html + """
                 </div>
         </div>

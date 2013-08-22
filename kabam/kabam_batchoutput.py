@@ -221,7 +221,13 @@ cbsafl_ff=[]
 cbsafl_sf=[]
 cbsafl_mf=[]
 cbsafl_lf=[]
-mweight=np.array([0,0,0,0,0,0])
+# mweight=np.empty([2,6])   !!!Values don't change (hard input in model)!!!
+# acute_rq_dose_m=np.empty([2,6])
+# acute_rq_dose_m=np.array([0,0,0,0,0,0])
+# acute_rq_dose_m=[]
+
+
+
 # STILL NEED TO ADD ARRAY OUTPUTS
 
 
@@ -450,16 +456,46 @@ def html_table(row_inp,iter):
     cbsafl_sf.append(kabam_obj.cbsafl_sf)
     cbsafl_mf.append(kabam_obj.cbsafl_mf)
     cbsafl_lf.append(kabam_obj.cbsafl_lf)
-    mweight = np.vstack([kabam_obj.mweight])
 
-    # STILL NEED TO ADD ARRAY OUTPUTS
+    if iter==0:
+        acute_dose_based_m_array = np.array((kabam_obj.acute_dose_based_m))
+        global acute_dose_based_m_array
+        acute_dose_based_a_array = np.array((kabam_obj.acute_dose_based_a))
+        global acute_dose_based_a_array
+        chronic_dose_based_m_array = np.array((kabam_obj.chronic_dose_based_m))
+        global chronic_dose_based_m_array
+        acute_rq_dose_m_array = np.array((kabam_obj.acute_rq_dose_m))
+        global acute_rq_dose_m_array
+        acute_rq_dose_a_array = np.array((kabam_obj.acute_rq_dose_a))
+        global acute_rq_dose_a_array
+        acute_rq_diet_a_array = np.array((kabam_obj.acute_rq_diet_a))
+        global acute_rq_diet_a_array
+        chronic_rq_dose_m_array = np.array((kabam_obj.chronic_rq_dose_m))
+        global chronic_rq_dose_m_array
+        chronic_rq_diet_m_array = np.array((kabam_obj.chronic_rq_diet_m))
+        global chronic_rq_diet_m_array
+        chronic_rq_diet_a_array = np.array((kabam_obj.chronic_rq_diet_a))
+        global chronic_rq_diet_a_array
+    else:
+        acute_dose_based_m_array = np.vstack((acute_dose_based_m_array,kabam_obj.acute_dose_based_m))
+        acute_dose_based_a_array = np.vstack((acute_dose_based_a_array,kabam_obj.acute_dose_based_a))
+        chronic_dose_based_m_array = np.vstack((chronic_dose_based_m_array,kabam_obj.chronic_dose_based_m))
+        acute_rq_dose_m_array = np.vstack((acute_rq_dose_m_array,kabam_obj.acute_rq_dose_m))
+        acute_rq_dose_a_array = np.vstack((acute_rq_dose_a_array,kabam_obj.acute_rq_dose_a))
+        acute_rq_diet_a_array = np.vstack((acute_rq_diet_a_array,kabam_obj.acute_rq_diet_a))
+        chronic_rq_dose_m_array = np.vstack((chronic_rq_dose_m_array,kabam_obj.chronic_rq_dose_m))
+        chronic_rq_diet_m_array = np.vstack((chronic_rq_diet_m_array,kabam_obj.chronic_rq_diet_m))
+        chronic_rq_diet_a_array = np.vstack((chronic_rq_diet_a_array,kabam_obj.chronic_rq_diet_a))
 
+    batch_header = """
+        <div class="out_">
+            <br><H3>Batch Calculation of Iteration %s:</H3>
+        </div>
+        """%(iter + 1)
 
-    html = kabam_tables.table_all(kabam_obj)
-    # print kabam_obj.mweight
-    print mweight
+    html = batch_header + kabam_tables.table_all(kabam_obj)
     return html
-                
+
 def loop_html(thefile):
     reader = csv.reader(thefile.file.read().splitlines())
     header = reader.next()
@@ -469,12 +505,10 @@ def loop_html(thefile):
     for row in reader:
         iter_html = iter_html +html_table(row,i)
         i=i+1
-
-    sum_html = kabam_tables.table_all_sum(kabam_tables.sumheadings, kabam_tables.tmpl,l_kow,k_oc,c_wdp,water_column_EEC,mineau,x_poc,x_doc,c_ox,w_t,c_ss,oc,k_ow,
-                bw_quail,bw_duck,bwb_other,avian_ld50,avian_lc50,avian_noaec,bw_rat,bwm_other,mammalian_ld50,mammalian_lc50,mammalian_chronic_endpoint)
-        #outputs
-        # cb_phytoplankton,cb_zoo,cb_beninv,cb_ff,cb_sf,cb_mf,cb_lf,cbl_phytoplankton,cbl_zoo,cbl_beninv,cbl_ff,cbl_sf,cbl_mf,cbl_lf,cbd_zoo,cbd_beninv,cbd_ff,cbd_sf,cbd_mf,cbd_lf,cbr_phytoprankton,cbr_zoo,cbr_beninv,cbr_ff,cbr_sf,cbr_mf,cbr_lf,cbf_phytopfankton,cbf_zoo,cbf_beninv,cbf_ff,cbf_sf,cbf_mf,cbf_lf,cbaf_phytopfankton,cbaf_zoo,cbaf_beninv,cbaf_ff,cbaf_sf,cbaf_mf,cbaf_lf,cbfl_phytopfankton,cbfl_zoo,cbfl_beninv,cbfl_ff,cbfl_sf,cbfl_mf,cbfl_lf,cbafl_phytopfankton,cbafl_zoo,cbafl_beninv,cbafl_ff,cbafl_sf,cbafl_mf,cbafl_lf,bmf_zoo,bmf_beninv,bmf_ff,bmf_sf,bmf_mf,bmf_lf,cbsafl_phytopfankton,cbsafl_zoo,cbsafl_beninv,cbsafl_ff,cbsafl_sf,cbsafl_mf,cbsafl_lf,mweight0,mweight1,mweight2,mweight3,mweight4,mweight5,aweight0,aweight1,aweight2,aweight3,aweight4,aweight5,dfir0,dfir1,dfir2,dfir3,dfir4,dfir5,dfira0,dfira1,dfira2,dfira3,dfira4,dfira5,wet_food_ingestion_m0,wet_food_ingestion_m1,wet_food_ingestion_m2,wet_food_ingestion_m3,wet_food_ingestion_m4,wet_food_ingestion_m5,wet_food_ingestion_a0,wet_food_ingestion_a1,wet_food_ingestion_a2,wet_food_ingestion_a3,wet_food_ingestion_a4,wet_food_ingestion_a5,drinking_water_intake_m0,drinking_water_intake_m1,drinking_water_intake_m2,drinking_water_intake_m3,drinking_water_intake_m4,drinking_water_intake_m5,drinking_water_intake_a0,drinking_water_intake_a1,drinking_water_intake_a2,drinking_water_intake_a3,drinking_water_intake_a4,drinking_water_intake_a5,db40,db41,db42,db43,db44,db45,db4a0,db4a1,db4a2,db4a3,db4a4,db4a5,db50,db51,db52,db53,db54,db55,db5a0,db5a1,db5a2,db5a3,db5a4,db5a5,acute_dose_based_m0,acute_dose_based_m1,acute_dose_based_m2,acute_dose_based_m3,acute_dose_based_m4,acute_dose_based_m5,acute_dose_based_a0,acute_dose_based_a1,acute_dose_based_a2,acute_dose_based_a3,acute_dose_based_a4,acute_dose_based_a5,avian_lc50,chronic_dose_based_m0,chronic_dose_based_m1,chronic_dose_based_m2,chronic_dose_based_m3,chronic_dose_based_m4,chronic_dose_based_m5,avian_noaec,acute_rq_dose_m0,acute_rq_dose_m1,acute_rq_dose_m2,acute_rq_dose_m3,acute_rq_dose_m4,acute_rq_dose_m5,acute_rq_dose_a0,acute_rq_dose_a1,acute_rq_dose_a2,acute_rq_dose_a3,acute_rq_dose_a4,acute_rq_dose_a5,acute_rq_diet_a0,acute_rq_diet_a1,acute_rq_diet_a2,acute_rq_diet_a3,acute_rq_diet_a4,acute_rq_diet_a5,chronic_rq_dose_m0,chronic_rq_dose_m1,chronic_rq_dose_m2,chronic_rq_dose_m3,chronic_rq_dose_m4,chronic_rq_dose_m5,chronic_rq_diet_m0,chronic_rq_diet_m1,chronic_rq_diet_m2,chronic_rq_diet_m3,chronic_rq_diet_m4,chronic_rq_diet_m5,chronic_rq_diet_a0,chronic_rq_diet_a1,chronic_rq_diet_a2,chronic_rq_diet_a3,chronic_rq_diet_a4,chronic_rq_diet_a5
-
+    sum_html = kabam_tables.table_all_sum(kabam_tables.sumheadings,kabam_tables.tmpl,l_kow,k_oc,c_wdp,water_column_EEC,mineau,x_poc,x_doc,c_ox,w_t,c_ss,oc,k_ow,
+                bw_quail,bw_duck,bwb_other,avian_ld50,avian_lc50,avian_noaec,bw_rat,bwm_other,mammalian_ld50,mammalian_lc50,mammalian_chronic_endpoint,
+                #Outputs
+                kabam_tables.sumheadings_out,acute_dose_based_m_array,acute_dose_based_a_array,chronic_dose_based_m_array,acute_rq_dose_m_array,acute_rq_dose_a_array,acute_rq_diet_a_array,chronic_rq_dose_m_array,chronic_rq_diet_m_array,chronic_rq_diet_a_array)
     return sum_html+iter_html
     # return iter_html
 

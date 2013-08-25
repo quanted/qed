@@ -1588,7 +1588,7 @@ class kabam(object):
 #         chronic_dose_based_m = (mammalian_chronic_endpoint/20) * (body_weight_of_the_tested_mamm_other / mweight)**0.25
 # #              return chronic_dose_based_m
     def chronic_dose_based_m_f(self):
-        self.chronic_dose_based_m = (self.mammalian_chronic_endpoint) * (((float(self.bw_mamm)/1000) / self.mweight)**0.25)
+        self.chronic_dose_based_m = (self.mammalian_chronic_endpoint / 20) * (((float(self.bw_mamm)/1000) / self.mweight)**0.25)
         return self.chronic_dose_based_m
 
 #     #################################### avian
@@ -1621,7 +1621,7 @@ class kabam(object):
         return self.acute_rq_diet_m
 
     def chronic_rq_diet_m_f(self):
-        self.chronic_rq_diet_m = self.db5 / (20 * self.mammalian_chronic_endpoint)
+        self.chronic_rq_diet_m = self.db5 / self.mammalian_chronic_endpoint
         return self.chronic_rq_diet_m
 
     #RQ dose based for birds

@@ -23,18 +23,18 @@ class resexposureInputPage(webapp.RequestHandler):
         html = html + """
         <div id="input_nav">
             <ul>
-                <li class="model" style="color:#FFA500; font-weight:bold">Select model</li>
-                <li class="hdflr" style="font-weight:bold; display:none"> | Hard Surface Floor Cleaner</li>
-                <li class="vlflr" style="font-weight:bold; display:none"> | Vinyl Floor</li>
-                <li class="cpcln" style="font-weight:bold; display:none"> | Carpet Cleaner</li>
-                <li class="ipcap" style="font-weight:bold; display:none"> | Impregnated Carpet</li>
-                <li class="mactk" style="font-weight:bold; display:none"> | Mattress Covers and Ticking</li>
-                <li class="ccpst" style="font-weight:bold; display:none"> | Clothing/Textile Consumer Product Spray Treatment</li>
-                <li class="ldtpr" style="font-weight:bold; display:none"> | Laundry Detergent Preservative</li>
-                <li class="clopr" style="font-weight:bold; display:none"> | Clothing/Textile Material Preservative</li>
-                <li class="impdp" style="font-weight:bold; display:none"> | Impregnated Diapers</li>
-                <li class="cldst" style="font-weight:bold; display:none"> | Sprayed Diapers</li>
-                <li class="impty" style="font-weight:bold; display:none"> | Impregnated Toys</li>
+                <li class="uutab model" style="color:#FFA500; font-weight:bold">Select model</li>
+                <li class="uutab hdflr" style="font-weight:bold; display:none"> | Hard Surface Floor Cleaner</li>
+                <li class="uutab vlflr" style="font-weight:bold; display:none"> | Vinyl Floor</li>
+                <li class="uutab cpcln" style="font-weight:bold; display:none"> | Carpet Cleaner</li>
+                <li class="uutab ipcap" style="font-weight:bold; display:none"> | Impregnated Carpet</li>
+                <li class="uutab mactk" style="font-weight:bold; display:none"> | Mattress Covers and Ticking</li>
+                <li class="uutab ccpst" style="font-weight:bold; display:none"> | Clothing/Textile Consumer Product Spray Treatment</li>
+                <li class="uutab ldtpr" style="font-weight:bold; display:none"> | Laundry Detergent Preservative</li>
+                <li class="uutab clopr" style="font-weight:bold; display:none"> | Clothing/Textile Material Preservative</li>
+                <li class="uutab impdp" style="font-weight:bold; display:none"> | Impregnated Diapers</li>
+                <li class="uutab cldst" style="font-weight:bold; display:none"> | Sprayed Diapers</li>
+                <li class="uutab impty" style="font-weight:bold; display:none"> | Impregnated Toys</li>
             </ul>
         </div>
         """

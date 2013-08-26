@@ -1,33 +1,13 @@
 <script>
 $(document).ready(function() {
-    // var tab_pool_old = ["tab_model", "tab_hdflr", "tab_vlflr", "tab_cpcln"];
-    // var uptab_pool_old = ["model", "hdflr", "vlflr", "cpcln"];
-    // var visible = $(".tab:visible").attr('class').split(" ")[1];
-    // alert(visible)
-    // var curr_ind = $.inArray(visible, tab_pool);
-
-    // var tab_pool = ["tab_model"];
-    // var uptab_pool = ["model"];
     var curr_ind = 0;
-
     $(".submit").hide();
     $(".back").hide();
 
-
-    // $('li[class="hdflr"]').show();
-    // $(' .hdflr').show();
-
-
 $('.next').click(function () {
-
-            // console.log(tab_pool)
-            // console.log(uptab_pool)
-            // console.log(uptab_pool_old)
 
         var tab = $(".tab:visible");
         if (curr_ind < 11) {      
-           // if (curr_ind == 0) {      
-            // $('.next').click(function () {
             var tab_pool = ["tab_model"];
             var uptab_pool = ["model"];
             var vis_list = [".model"];
@@ -37,12 +17,11 @@ $('.next').click(function () {
                 uptab_pool.push(selec_temp.slice(4));
                 vis_list.push("."+selec_temp.slice(4));
             });
-            // })
-            // }
             
-            // vis_list=vis_list.join(', ');
-            console.log(vis_list.length)
+            // console.log(vis_list)
+            // console.log(uptab_pool)
 
+            $('.uutab').hide();
             $(vis_list.join(', ')).show();
 
             $(".tab:visible").hide();
@@ -73,6 +52,8 @@ $('.next').click(function () {
                 vis_list.push("."+selec_temp.slice(4));
             });
             
+            // console.log(vis_list)
+            $('.uutab').hide();
             $(vis_list.join(', ')).show();
 
             $(".tab:visible").hide();

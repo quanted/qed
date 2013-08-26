@@ -13,7 +13,7 @@ class DustInp(forms.Form):
     chemical_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}), label='Chemical Name',initial='Aliphatic Alcohols')
     label_epa_reg_no = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),label='Label EPA Reg. No.',initial='79038')
     #pest_app_method = forms.ChoiceField(choices=SELECT_METHOD, label=mark_safe('Select Pesticide Application Method'),initial='Granular')
-    application_rate = forms.FloatField(required=True,label='Maximum Single Application Rate',initial=0.176309878, help_text='lbs ai/A')
+    application_rate = forms.FloatField(required=True,label='Maximum Single Application Rate',initial=15.73, help_text='lbs ai/A')
     frac_pest_assumed_at_surface = forms.DecimalField(required=True,label='Fraction of Pesticide Assumed at Surface',initial=.3,help_text='Decimal [0-1]')
     dislodgeable_foliar_residue = forms.FloatField(required=True,label='Dislodgeable Foliar Residue',initial=5, help_text='mg a.i./cm<sup>2</sup>')
     bird_acute_oral_study = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),label='Bird Acute Oral Study (OCSPP 850.2100) MRID#',initial='A304')

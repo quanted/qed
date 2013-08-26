@@ -1,1 +1,18 @@
-<p></p>
+<p>OPP’s Registration Division has a branch dedicated to evaluating inert ingredients for use in pesticide formulations. The Inerts Branch assesses occupational and residential exposure in much the same way that OPP’s Health Effects Division does. The key difference is that there is limited product label data to evaluate any given active ingredient.  Therefore, the exposure assessment strategy is tiered to reflect the screening nature of inert ingredients.</p>
+
+<p> HED Occupational and Residential Exposure (ORE) models are composed of occupational exposure assessment module and the residential exposure assessment module. The occupational exposure module provides the most current data used to assess exposure and risk for occupational pesticide handlers. It is intended primarily for both internal U.S. EPA technical users as well as external stakeholders conducting occupational pesticide handler exposure assessments.</p>
+
+<p> “Handlers” refers to the following individuals who are involved in, and potentially can experience exposure during, the pesticide application process in agricultural and non-agricultural settings:</p>
+<UL>
+<LI>Mixer/Loaders: individuals perform tasks in preparation for an application.  For example, prior to application, mixer/loaders would mix a liquid pesticide concentrate with water and load it into the holding tank of the airplane;
+<LI>	Applicators: individuals operate application equipment during the release of a pesticide product onto its target;
+<LI>	Mixer/Loader/Applicators: individuals who perform all aspects of the pesticide application process; 
+<LI>	Flaggers: individuals that guide aerial applicators during the release of a pesticide product onto its target.
+</UL>
+
+<p>The residential exposure assessment module is for estimating exposure resulting from the most common non-occupational pesticide uses including lawn and garden care, foggers, and pet treatments. This module is an integral part of ORE because it provides:</p>
+<UL>
+<LI>	Guidance for exposure assessors who are responsible for the residential non-dietary component of the risk assessment process,
+<LI>	A description of the methods used to evaluate chemicals in a straightforward and user-friendly fashion, and
+<LI>	A framework for future research directed at improvements in the residential assessment process for pesticides.
+</UL>

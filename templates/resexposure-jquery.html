@@ -1,0 +1,91 @@
+<script>
+$(document).ready(function() {
+    // var tab_pool_old = ["tab_model", "tab_hdflr", "tab_vlflr", "tab_cpcln"];
+    // var uptab_pool_old = ["model", "hdflr", "vlflr", "cpcln"];
+    // var visible = $(".tab:visible").attr('class').split(" ")[1];
+    // alert(visible)
+    // var curr_ind = $.inArray(visible, tab_pool);
+
+    // var tab_pool = ["tab_model"];
+    // var uptab_pool = ["model"];
+    var curr_ind = 0;
+
+    $(".submit").hide();
+    $(".back").hide();
+
+
+    // $('li[class="hdflr"]').show();
+    // $(' .hdflr').show();
+
+
+$('.next').click(function () {
+
+            // console.log(tab_pool)
+            // console.log(uptab_pool)
+            // console.log(uptab_pool_old)
+
+        var tab = $(".tab:visible");
+        if (curr_ind < 11) {      
+           // if (curr_ind == 0) {      
+            // $('.next').click(function () {
+            var tab_pool = ["tab_model"];
+            var uptab_pool = ["model"];
+            var vis_list = [".model"];
+            $('input[name="model"]:checked').each(function () {
+                selec_temp = $(this).val()
+                tab_pool.push(selec_temp);
+                uptab_pool.push(selec_temp.slice(4));
+                vis_list.push("."+selec_temp.slice(4));
+            });
+            // })
+            // }
+            
+            // vis_list=vis_list.join(', ');
+            console.log(vis_list.length)
+
+            $(vis_list.join(', ')).show();
+
+            $(".tab:visible").hide();
+            $("."+ uptab_pool[curr_ind]).css({'color': '#333333'});
+            curr_ind = curr_ind + 1;
+
+            $("." + tab_pool[curr_ind]).show();
+            $("."+ uptab_pool[curr_ind]).css({'color': '#FFA500'});
+            $(".submit").hide();
+            $(".back").show();
+            }
+        if (curr_ind == tab_pool.length-1) {
+            $(".submit").show();
+            $(".next").hide();
+        }
+    });
+
+    $('.back').click(function () {
+        if (curr_ind > 0) {
+
+            var tab_pool = ["tab_model"];
+            var uptab_pool = ["model"];
+            var vis_list = [".model"];
+            $('input[name="model"]:checked').each(function () {
+                selec_temp = $(this).val()
+                tab_pool.push(selec_temp);
+                uptab_pool.push(selec_temp.slice(4));
+                vis_list.push("."+selec_temp.slice(4));
+            });
+            
+            $(vis_list.join(', ')).show();
+
+            $(".tab:visible").hide();
+            $("."+ uptab_pool[curr_ind]).css({'color': '#333333'});
+            curr_ind = curr_ind - 1;
+            $("." + tab_pool[curr_ind]).show();
+            $("."+ uptab_pool[curr_ind]).css({'color': '#FFA500'});
+            $(".submit").hide();
+            $(".next").show();
+        }
+        if (curr_ind == 0) {
+            $(".back").hide();
+        }
+    });
+});
+</script>

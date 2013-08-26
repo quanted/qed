@@ -111,6 +111,7 @@ class TRexOutputPage(webapp.RequestHandler):
                       tw_bird_ld50, tw_bird_lc50, tw_bird_NOAEC, tw_bird_NOAEL, x, ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, aw_mamm_lg, tw_mamm,
                       m_s_r_p)
 
+        html = html + trex2_tables.timestamp()
         html = html + trex2_tables.table_all(trex_obj)[0]
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})

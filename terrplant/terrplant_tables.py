@@ -278,6 +278,9 @@ def table_sum_input(sumheadings, tmpl, A, I, R, D, nms, lms, nds, lds):
         tsuminputdata = gettsumdata(A, I, R, D, nms, lms, nds, lds)
         tsuminputrows = gethtmlrowsfromcols(tsuminputdata, sumheadings)
         html = html + tmpl.render(Context(dict(data=tsuminputrows, headings=sumheadings)))
+        html = html + """
+                </div>
+        """
         return html
 
 def table_sum_output(sumheadings, tmpl, rundry_out, runsemi_out, spray_out, totaldry_out, totalsemi_out, 
@@ -300,6 +303,11 @@ def table_sum_output(sumheadings, tmpl, rundry_out, runsemi_out, spray_out, tota
                     ldsRQdry_out, ldsRQsemi_out, ldsRQspray_out)
         tsumoutputrows = gethtmlrowsfromcols(tsumoutputdata, sumheadings)
         html = html + tmpl.render(Context(dict(data=tsumoutputrows, headings=sumheadings)))
+        html = html + """
+                </div>
+        </div>
+        <br>
+        """
         return html
 
 def timestamp():

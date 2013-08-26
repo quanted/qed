@@ -9,7 +9,7 @@ $(document).ready(function() {
     }, 500);
     $('#topheader_p p, .logreg').fadeIn(500);
   });
-  $('.articles a').hover(function(){
+  $('.articles a, .articles_input a, articles_output a').hover(function(){
     $(this).stop().animate({ color:'#FFA500' },500);
   }, function(){
     $(this).stop().animate({ color:'#79973F' },500);

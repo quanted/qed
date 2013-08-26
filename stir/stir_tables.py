@@ -113,17 +113,19 @@ def gett1data(sm):
 def table_sum_1(i,application_rate,column_height,spray_drift_fraction,direct_spray_duration,molecular_weight,vapor_pressure):
         #pre-table sum_input_1
         html = """
-            <div class="out_1">
-              <H3>Summary Statistics (Iterations=%s)</H3>
-              <H3>Batch Inputs:</H3>
-              <H4>Chemical Properties</H4>
-            </div>
+        <H3 class="out_1 collapsible" id="section1"><span></span>Batch Summary Statistics (Iterations=%s)</H3>
+        <div class="out_">
+            <H4 class="out_1 collapsible" id="section4"><span></span>Chemical Properties</H4>
+                <div class="out_ container_output">
         """%(i-1)
 
         #table sum_input_1
         tsuminputdata_1 = gettsumdata_1(application_rate,column_height,spray_drift_fraction,direct_spray_duration,molecular_weight,vapor_pressure)
         tsuminputrows_1 = gethtmlrowsfromcols(tsuminputdata_1, sumheadings)
         html = html + tmpl.render(Context(dict(data=tsuminputrows_1, headings=sumheadings)))
+        html = html + """
+        </div>
+        """
         return html
 
 def gettsumdata_1(application_rate,column_height,spray_drift_fraction,direct_spray_duration,molecular_weight,vapor_pressure):
@@ -170,8 +172,8 @@ def gett1dataqaqc(sm):
 def table_2(pvuheadings, tmpl, sm):
     # #pre-table 2
     html = """
-            <H4 class="out_2 collapsible" id="section3"><span></span>Toxicity Properties</H4>
-                <div class="out_ container_output">
+        <H4 class="out_2 collapsible" id="section3"><span></span>Toxicity Properties</H4>
+            <div class="out_ container_output">
     """
     #table 2
     t2data = gett2data(sm)
@@ -179,8 +181,8 @@ def table_2(pvuheadings, tmpl, sm):
     html = html + tmpl.render(Context(dict(data=t2rows, headings=pvuheadings)))
     html = html + """
         </div>
-        </div>
-        """
+    </div>
+    """
     return html
 
 def gett2data(sm):
@@ -196,18 +198,22 @@ def gett2data(sm):
     return data
 
 def table_sum_2(avian_oral_ld50,body_weight_assessed_bird,body_weight_tested_bird,mineau_scaling_factor,mammal_inhalation_lc50,duration_mammal_inhalation_study,body_weight_assessed_mammal,body_weight_tested_mammal,mammal_oral_ld50):
-        #pre-table sum_input_2
-        html = """
-            <div class="out_2">
-              <H4>Toxicity  Properties</H4>
-            </div>
-        """
+    #pre-table sum_input_2
+    html = """
+        <H4 class="out_1 collapsible" id="section3"><span></span>Toxicity  Properties</H4>
+            <div class="out_ container_output">
+    """
 
-        #table sum_input_2
-        tsuminputdata_2 = gettsumdata_2(avian_oral_ld50,body_weight_assessed_bird,body_weight_tested_bird,mineau_scaling_factor,mammal_inhalation_lc50,duration_mammal_inhalation_study,body_weight_assessed_mammal,body_weight_tested_mammal,mammal_oral_ld50)
-        tsuminputrows_2 = gethtmlrowsfromcols(tsuminputdata_2, sumheadings)
-        html = html + tmpl.render(Context(dict(data=tsuminputrows_2, headings=sumheadings)))
-        return html
+    #table sum_input_2
+    tsuminputdata_2 = gettsumdata_2(avian_oral_ld50,body_weight_assessed_bird,body_weight_tested_bird,mineau_scaling_factor,mammal_inhalation_lc50,duration_mammal_inhalation_study,body_weight_assessed_mammal,body_weight_tested_mammal,mammal_oral_ld50)
+    tsuminputrows_2 = gethtmlrowsfromcols(tsuminputdata_2, sumheadings)
+    html = html + tmpl.render(Context(dict(data=tsuminputrows_2, headings=sumheadings)))
+    html = html + """
+            </div>
+    </div>
+    <br>
+    """
+    return html
 
 def gettsumdata_2(avian_oral_ld50,body_weight_assessed_bird,body_weight_tested_bird,mineau_scaling_factor,mammal_inhalation_lc50,duration_mammal_inhalation_study,body_weight_assessed_mammal,body_weight_tested_mammal,mammal_oral_ld50):
 
@@ -226,18 +232,19 @@ def gettsumdata_2(avian_oral_ld50,body_weight_assessed_bird,body_weight_tested_b
 def table_3(pvuheadings, tmpl, sm):
     # #pre-table 3
     html = """
-        <H3 class="out_3 collapsible" id="section4"><span></span>Calculated Estimates</H3>
-        <div class="out_">
-            <H4 class="out_3 collapsible" id="section5"><span></span>Table 3. Avian Calculated Outputs</H4>
-                <div class="out_ container_output">
+    <br>
+    <H3 class="out_3 collapsible" id="section4"><span></span>Calculated Estimates</H3>
+    <div class="out_">
+        <H4 class="out_3 collapsible" id="section5"><span></span>Table 3. Avian Calculated Outputs</H4>
+            <div class="out_ container_output">
     """
     #table 3
     t3data = gett3data(sm)
     t3rows = gethtmlrowsfromcols(t3data,pvuheadings)
     html = html + tmpl.render(Context(dict(data=t3rows, headings=pvuheadings)))
     html = html + """
-        </div>
-        """
+            </div>
+    """
     return {'html':html, 'sat_air_conc':sm.sat_air_conc, 'inh_rate_avian':sm.inh_rate_avian, 'vid_avian':sm.vid_avian,
             'estimated_avian_inhalation_ld50':sm.estimated_avian_inhalation_ld50, 'adjusted_avian_inhalation_ld50':sm.adjusted_avian_inhalation_ld50, 'ratio_vid_avian':sm.ratio_vid_avian,
             'sid_avian':sm.sid_avian, 'ratio_sid_avian':sm.ratio_sid_avian}
@@ -256,19 +263,22 @@ def gett3data(sm):
     return data
 
 def table_sum_3(sat_air_conc,inh_rate_avian,vid_avian,estimated_avian_inhalation_ld50,adjusted_avian_inhalation_ld50,ratio_vid_avian,sid_avian,ratio_sid_avian):
-        #pre-table sum_3
-        html = """
-            <div class="out_3">
-              <H3>Batch outputs:</H3>
-              <H3>Avian Calculated Outputs<H3>
-            </div>
-        """
+    #pre-table sum_3
+    html = """
+    <H3 class="out_3 collapsible" id="section4"><span></span>Calculated Estimates</H3>
+    <div class="out_">
+        <H4 class="out_1 collapsible" id="section3"><span></span>Avian Calculated Outputs</H4>
+            <div class="out_ container_output">
+    """
 
-        #table sum_output_3
-        tsuminputdata_3 = gettsumdata_3(sat_air_conc,inh_rate_avian,vid_avian,estimated_avian_inhalation_ld50,adjusted_avian_inhalation_ld50,ratio_vid_avian,sid_avian,ratio_sid_avian)
-        tsuminputrows_3 = gethtmlrowsfromcols(tsuminputdata_3,sumheadings)       
-        html = html + tmpl.render(Context(dict(data=tsuminputrows_3, headings=sumheadings)))
-        return html
+    #table sum_output_3
+    tsuminputdata_3 = gettsumdata_3(sat_air_conc,inh_rate_avian,vid_avian,estimated_avian_inhalation_ld50,adjusted_avian_inhalation_ld50,ratio_vid_avian,sid_avian,ratio_sid_avian)
+    tsuminputrows_3 = gethtmlrowsfromcols(tsuminputdata_3,sumheadings)       
+    html = html + tmpl.render(Context(dict(data=tsuminputrows_3, headings=sumheadings)))
+    html = html + """
+            </div>
+    """
+    return html
 
 def gettsumdata_3(sat_air_conc,inh_rate_avian,vid_avian,estimated_avian_inhalation_ld50,adjusted_avian_inhalation_ld50,ratio_vid_avian,sid_avian,ratio_sid_avian):
 
@@ -287,6 +297,7 @@ def gettsumdata_3(sat_air_conc,inh_rate_avian,vid_avian,estimated_avian_inhalati
 def table_3qaqc(pvuheadingsqaqc, tmpl, sm):
     # #pre-table 3
     html = """
+    <br>
         <H3 class="out_3 collapsible" id="section4"><span></span>Calculated Estimates</H3>
         <div class="out_">
             <H4 class="out_3 collapsible" id="section5"><span></span>Table 3. Avian Calculated Outputs</H4>
@@ -320,8 +331,8 @@ def gett3dataqaqc(sm):
 def table_4(pvuheadings, tmpl, sm):
     # #pre-table 3
     html = """
-                <H4 class="out_4 collapsible" id="section6"><span></span>Table 4. Mammal Calculated Outputs</H4>
-                <div class="out_ container_output">
+        <H4 class="out_4 collapsible" id="section6"><span></span>Table 4. Mammal Calculated Outputs</H4>
+            <div class="out_ container_output">
     """
     #table 3
     t4data = gett4data(sm)
@@ -347,18 +358,20 @@ def gett4data(sm):
     return data
 
 def table_sum_4(sat_air_conc,inh_rate_mammal,vid_mammal,mammal_inhalation_ld50,adjusted_mammal_inhalation_ld50,ratio_vid_mammal,sid_mammal,ratio_sid_mammal):
-        #pre-table sum_4
-        html = """
-            <div class="out_4">
-              <H3>Mammal Calculated Outputs<H3>
-            </div>
-        """
+    #pre-table sum_4
+    html = """
+        <H4 class="out_4 collapsible" id="section6"><span></span>Table 4. Mammal Calculated Outputs</H4>
+            <div class="out_ container_output">
+    """
 
-        #table sum_output_4
-        tsuminputdata_4 = gettsumdata_4(sat_air_conc,inh_rate_mammal,vid_mammal,mammal_inhalation_ld50,adjusted_mammal_inhalation_ld50,ratio_vid_mammal,sid_mammal,ratio_sid_mammal)
-        tsuminputrows_4 = gethtmlrowsfromcols(tsuminputdata_4,sumheadings)       
-        html = html + tmpl.render(Context(dict(data=tsuminputrows_4, headings=sumheadings)))
-        return html
+    #table sum_output_4
+    tsuminputdata_4 = gettsumdata_4(sat_air_conc,inh_rate_mammal,vid_mammal,mammal_inhalation_ld50,adjusted_mammal_inhalation_ld50,ratio_vid_mammal,sid_mammal,ratio_sid_mammal)
+    tsuminputrows_4 = gethtmlrowsfromcols(tsuminputdata_4,sumheadings)       
+    html = html + tmpl.render(Context(dict(data=tsuminputrows_4, headings=sumheadings)))
+    html = html + """
+    </div>
+    """
+    return html
 
 def gettsumdata_4(sat_air_conc,inh_rate_mammal,vid_mammal,mammal_inhalation_ld50,adjusted_mammal_inhalation_ld50,ratio_vid_mammal,sid_mammal,ratio_sid_mammal):
 
@@ -377,8 +390,8 @@ def gettsumdata_4(sat_air_conc,inh_rate_mammal,vid_mammal,mammal_inhalation_ld50
 def table_4qaqc(pvuheadingsqaqc, tmpl, sm):
     # #pre-table 3
     html = """
-                <H4 class="out_4 collapsible" id="section6"><span></span>Table 4. Mammal Calculated Outputs</H4>
-                <div class="out_ container_output">
+        <H4 class="out_4 collapsible" id="section6"><span></span>Table 4. Mammal Calculated Outputs</H4>
+            <div class="out_ container_output">
     """
     #table 3
     t4data = gett4dataqaqc(sm)
@@ -416,8 +429,8 @@ def table_5(pvuheadings, tmpl, sm):
     html = html + tmpl.render(Context(dict(data=t5rows, headings=pvuheadings)))
     html = html + """
         </div>
-        </div>
-        """
+    </div>
+    """
     return {'html':html, 'ratio_vid_avian':sm.ratio_vid_avian, 'ratio_sid_avian':sm.ratio_sid_avian, 'ratio_vid_mammal':sm.ratio_vid_mammal,
             'ratio_sid_mammal':sm.ratio_sid_mammal}
 
@@ -431,18 +444,21 @@ def gett5data(sm):
     return data
 
 def table_sum_5(ratio_vid_avian, ratio_sid_avian, ratio_vid_mammal, ratio_sid_mammal):
-        #pre-table sum_5
-        html = """
-            <div class="out_5">
-              <H3>Inference<H3>
-            </div>
-        """
+    #pre-table sum_5
+    html = """
+        <H4 class="out_5 collapsible" id="section5"><span></span>Table 5. Inference</H4>
+            <div class="out_ container_output">
+    """
 
-        #table sum_output_5
-        tsuminputdata_5 = gettsumdata_5(ratio_vid_avian, ratio_sid_avian, ratio_vid_mammal, ratio_sid_mammal)
-        tsuminputrows_5 = gethtmlrowsfromcols(tsuminputdata_5,sumheadings_5)       
-        html = html + tmpl.render(Context(dict(data=tsuminputrows_5, headings=sumheadings_5)))
-        return html
+    #table sum_output_5
+    tsuminputdata_5 = gettsumdata_5(ratio_vid_avian, ratio_sid_avian, ratio_vid_mammal, ratio_sid_mammal)
+    tsuminputrows_5 = gethtmlrowsfromcols(tsuminputdata_5,sumheadings_5)       
+    html = html + tmpl.render(Context(dict(data=tsuminputrows_5, headings=sumheadings_5)))
+    html = html + """
+        </div>
+    </div>
+    """
+    return html
 
 def gettsumdata_5(ratio_vid_avian, ratio_sid_avian, ratio_vid_mammal, ratio_sid_mammal):
 
@@ -468,8 +484,8 @@ def table_5qaqc(pvuheadingsqaqc, tmpl, sm):
     html = html + tmpl.render(Context(dict(data=t5rows, headings=pvuheadingsqaqc)))
     html = html + """
         </div>
-        </div>
-        """
+    </div>
+    """
     return html
 
 def gett5dataqaqc(sm):

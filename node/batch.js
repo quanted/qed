@@ -2,6 +2,7 @@ var restify = require('restify');
 var rabbitmq = require('./rabbitmq.js');
 var mongodb = require('./mongodb.js');
 var cas = require('./cas_mongo.js');
+var formula = require('./formula.js');
 var ubertool = require('./ubertool.js');
 var utils = require('./utils.js');
 var flow = require('nimble');
@@ -200,11 +201,54 @@ server.get('/cas/:cas_num', function(req, res, next){
     });
 });
 
+server.get('/casdata/:chemical_name', function(req, res, next){
+    var chemical_name = req.params.chemical_name;
+    console.log("Chemical Name: " + chemical_name);
+    cas.getChemicalData(chemical_name, function(error,cas_data){
+        if(cas_data != null)
+        {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "X-Requested-With");
+            res.send(cas_data);
+        }
+    });
+});
+
 server.get('/all-cas', function(req, res, next){
     cas.getAll(function(error,all_cas){
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.send(all_cas);
+    });
+});
+
+//Formula Services
+server.get('/formula/:registration_num', function(req, res, next){
+    var registration_num = req.params.registration_num;
+    console.log("Registration Number: " + registration_num);
+    formula.getFormulaData(registration_num, function(error,chemicals){
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        console.log(chemicals)
+        res.send(chemicals);
+    });
+});
+
+server.get('/formulas/:pc_code', function(req, res, next){
+    var pc_code = req.params.pc_code;
+    console.log("PC Code: " + pc_code);
+    formula.getFormulaDataFromPCCode(pc_code, function(error,chemical){
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.send(chemical);
+    });
+});
+
+server.get('/all_formula', function(req, res, next){
+    formula.getAllFormulaData(function(error,formula_data){
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.send(formula_data);
     });
 });
 

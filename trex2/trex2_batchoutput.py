@@ -704,9 +704,9 @@ def html_table(row_inp,iter):
     tw_mamm_temp = float(row_inp[39])
     tw_mamm.append(tw_mamm_temp)
 
-    Input_header="""<table border="1">
-                        <tr><H3>Batch Calculation of Iteration %s</H3></tr>
-                    </table>"""%(iter)
+    Input_header="""<div class="out_">
+                        <br><H3>Batch Calculation of Iteration %s</H3>
+                    </div>"""%(iter)
 
     trex2_obj_temp = trex2_model.trex2(chem_name_temp, use_temp, formu_name_temp, a_i_temp, Application_type_temp, seed_treatment_name_temp, m_s_r_p_temp, crop_use_temp, r_s_temp, b_w_temp, p_i_temp, den_temp, h_l_temp, n_a_temp, rate_out_temp, day_out_temp,
                     ld50_bird_temp, lc50_bird_temp, NOAEC_bird_temp, NOAEL_bird_temp, aw_bird_sm_temp, aw_bird_md_temp, aw_bird_lg_temp, 
@@ -1882,8 +1882,12 @@ class Trex2BatchOutputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', 'title')
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'trex2','page':'batchinput'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberbatch_start.html', {})
+        html = html + template.render(templatepath + '04uberbatch_start.html', {
+                'model':'trex2',
+                'model_attributes':'TREX 1.5.2 Batch Input'})
+        html = html + trex2_tables.timestamp()
         html = html + iter_html
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

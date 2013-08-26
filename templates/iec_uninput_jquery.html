@@ -1,0 +1,55 @@
+<script>
+$('[id*=_lower]').closest('tr').hide()
+$('[id*=_upper]').closest('tr').hide()
+$('[id*=_mean]').closest('tr').hide()
+$('[id*=_std]').closest('tr').hide()
+
+$(document).ready(function() {
+
+    $('#id_LC50').change(function() { 
+        if ($(this).val() == "Uniform"){
+            $('#id_LC50_mean').closest('tr').hide();
+            $('#id_LC50_std').closest('tr').hide();
+            $('#id_LC50_upper').closest('tr').show();
+            $('#id_LC50_lower').closest('tr').show();
+        }
+        else if ($(this).val() == "Normal" || "Log-normal"){
+            $('#id_LC50_mean').closest('tr').show();
+            $('#id_LC50_std').closest('tr').show();
+            $('#id_LC50_upper').closest('tr').hide();
+            $('#id_LC50_lower').closest('tr').hide();
+        }
+   });
+
+    $('#id_threshold').change(function() { 
+        if ($(this).val() == "Uniform"){
+            $('#id_threshold_mean').closest('tr').hide();
+            $('#id_threshold_std').closest('tr').hide();
+            $('#id_threshold_upper').closest('tr').show();
+            $('#id_threshold_lower').closest('tr').show();
+        }
+        else if ($(this).val() == "Normal" || "Log-normal"){
+            $('#id_threshold_mean').closest('tr').show();
+            $('#id_threshold_std').closest('tr').show();
+            $('#id_threshold_upper').closest('tr').hide();
+            $('#id_threshold_lower').closest('tr').hide();
+        }
+   });
+
+    $('#id_dose_response').change(function() { 
+        if ($(this).val() == "Uniform"){
+            $('#id_dose_response_mean').closest('tr').hide();
+            $('#id_dose_response_std').closest('tr').hide();
+            $('#id_dose_response_upper').closest('tr').show();
+            $('#id_dose_response_lower').closest('tr').show();
+        }
+        else if ($(this).val() == "Normal" || "Log-normal"){
+            $('#id_dose_response_mean').closest('tr').show();
+            $('#id_dose_response_std').closest('tr').show();
+            $('#id_dose_response_upper').closest('tr').hide();
+            $('#id_dose_response_lower').closest('tr').hide();
+        }
+   });
+    
+});
+</script>

@@ -23,13 +23,13 @@ class PFAMInputPage(webapp.RequestHandler):
         html = html + """
         <div id="input_nav">
             <ul>
-                <li>| <a class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </a></li>
-                <li>| <a class="Application" style="font-weight:bold"> Application </a></li>
-                <li>| <a class="Location" style="font-weight:bold"> Location </a></li>
-                <li>| <a class="Floods" style="font-weight:bold"> Floods </a></li>
-                <li>| <a class="Crop" style="font-weight:bold"> Crop </a></li>
-                <li>| <a class="Physical" style="font-weight:bold"> Physical </a></li>
-                <li>| <a class="Output" style="font-weight:bold"> Output </a>|</li>
+                <li class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </li>
+                |<li class="Application" style="font-weight:bold"> Application </li>
+                |<li class="Location" style="font-weight:bold"> Location </li>
+                |<li class="Floods" style="font-weight:bold"> Floods </li>
+                |<li class="Crop" style="font-weight:bold"> Crop </li>
+                |<li class="Physical" style="font-weight:bold"> Physical </li>
+                |<li class="Output" style="font-weight:bold"> Output</li>
             </ul>
         </div>
         """
@@ -68,7 +68,7 @@ class PFAMInputPage(webapp.RequestHandler):
                                             <option value="27">27</option>
                                             <option value="28">28</option>
                                             <option value="29">29</option>
-                                            <option value="30">30</option></select>
+                                            <option value="30">30</option>
                                         </td>
                                     </tr>"""        
                 
@@ -88,7 +88,6 @@ class PFAMInputPage(webapp.RequestHandler):
                                             <option value="8">8</option>
                                             <option value="9">9</option>
                                             <option value="10">10</option>
-                                            <option value="11">11</option></select>
                                         </td>
                                     </tr>
                                     <tr><th></th><th colspan="2"><label for="id_date_f1">Date for Event 1:</label></th>
@@ -103,7 +102,7 @@ class PFAMInputPage(webapp.RequestHandler):
         html = html + str(PFAMdb.PFAMInp_out())     
                 
         html = html + template.render(templatepath + 'pfam-jquery.html', {})
-        html = html + template.render(templatepath + 'pfam_input_end.html', {'sub_title': 'Submit'})
+        html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

@@ -1,5 +1,5 @@
 application: pypest
-version: jon
+version: tao
 runtime: python27
 api_version: 1
 
@@ -14,8 +14,9 @@ libraries:
   version: latest
 - name: django
   version: "1.3"
-
 - name: PIL
+  version: latest
+- name: matplotlib
   version: latest
 
 env_variables:
@@ -146,6 +147,15 @@ handlers:
 #hisotry
 - url: /(.*?)_history.html
   script: \1/\1_history.py
+#uncertainty_input
+- url: /(.*?)_uninput.html
+  script: \1/\1_uninput.py
+#uncertainty_output
+- url: /(.*?)_unoutput.html
+  script: \1/\1_unoutput.py
+#blog
+- url: /blog_(.*?).html
+  script: blog/\1.py
 
 ##TESTED models##
 #description

@@ -16,7 +16,7 @@ class therpsBatchInputPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberbatchinput.html', {
                 'model':'trex2',
-                'model_attributes':'TREX 1.5.2 Batch Input'}) 
+                'model_attributes':'TREX 1.5.2 Batch Input'})
         html = html + template.render(templatepath + '04uberbatchinput_jquery.html', {}) 
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

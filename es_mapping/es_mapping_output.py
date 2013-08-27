@@ -14,10 +14,8 @@ import urllib
 from google.appengine.api import urlfetch
 
 
-
-                                   
 class ESOutputPage(webapp.RequestHandler):
-    def get(self):
+    def post(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'es_mapping','page':'output'})

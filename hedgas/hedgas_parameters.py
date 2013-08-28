@@ -9,10 +9,11 @@ from django.utils.safestring import mark_safe
 
 class hedgas_acuteNonOcc_Inp(forms.Form):
     choose_acuteNonOcc = (('1','Yes'),('0','No'))
-    run_acuteNonOcc = forms.ChoiceField(required=True,label='Run Acute HEC Non-Occupational?',widget=forms.RadioSelect(attrs={'class':'inline_radio'}), choices=choose_acuteNonOcc, initial='1')
+    run_acuteNonOcc = forms.ChoiceField(required=True,label='Run Acute HEC Non-Occupational?',widget=forms.RadioSelect, choices=choose_acuteNonOcc, initial='0')
     mw_acuteNonOcc = forms.FloatField(label='Molecular Weight')
     noael_acuteNonOcc = forms.FloatField(label='NOAEL')
-    #radio button for unit mg/m3  or   ppm
+    choose_noaelunit_acuteNonOcc = (('1',mark_safe('mg/m<sup>3</sup>')),('0','ppm'))
+    run_noaelunit_acuteNonOcc = forms.ChoiceField(required=True,label='NOAEL Unit',widget=forms.RadioSelect, choices=choose_noaelunit_acuteNonOcc, initial='1')
     hrs_animal_acuteNonOcc = forms.FloatField(label='Hours animal study (acute)')
     hrs_human_acuteNonOcc = forms.FloatField(label='Hours human (acute)')
     dow_animal_acuteNonOcc = forms.FloatField(label='Days of week animal (acute)')
@@ -28,7 +29,8 @@ class hedgas_stitNonOcc_Inp(forms.Form):
     run_stitNonOcc = forms.ChoiceField(required=True,label='Run ST/IT HEC Non-Occupational?',widget=forms.RadioSelect(attrs={'class':'inline_radio'}), choices=choose_stitNonOcc, initial='0')
     mw_stitNonOcc = forms.FloatField(label='Molecular Weight')
     noael_stitNonOcc = forms.FloatField(label='NOAEL')
-    #radio button for unit mg/m3  or   ppm
+    choose_noaelunit_stitNonOcc = (('1',mark_safe('mg/m<sup>3</sup>')),('0','ppm'))
+    run_noaelunit_stitNonOcc = forms.ChoiceField(required=True,label='NOAEL Unit',widget=forms.RadioSelect, choices=choose_noaelunit_stitNonOcc, initial='1')
     hrs_animal_stitNonOcc = forms.FloatField(label='Hours animal study (subchronic)')
     hrs_human_stitNonOcc = forms.FloatField(label='Hours human (subchronic)')
     dow_animal_stitNonOcc = forms.FloatField(label='Days of week animal*')
@@ -44,7 +46,8 @@ class hedgas_ltNonOcc_Inp(forms.Form):
     run_ltNonOcc = forms.ChoiceField(required=True,label='Run Acute HEC Non-Occupational?',widget=forms.RadioSelect(attrs={'class':'inline_radio'}), choices=choose_ltNonOcc, initial='0')
     mw_ltNonOcc = forms.FloatField(required=True,label='Molecular Weight')
     noael_ltNonOcc = forms.FloatField(required=True,label='NOAEL')
-    #radio button for unit mg/m3  or   ppm
+    choose_noaelunit_ltNonOcc = (('1',mark_safe('mg/m<sup>3</sup>')),('0','ppm'))
+    run_noaelunit_ltNonOcc = forms.ChoiceField(required=True,label='NOAEL Unit',widget=forms.RadioSelect, choices=choose_noaelunit_ltNonOcc, initial='1')
     hrs_animal_ltNonOcc = forms.FloatField(required=True,label='Hours animal study (acute)')
     hrs_human_ltNonOcc = forms.FloatField(required=True,label='Hours human (acute)')
     dow_animal_ltNonOcc = forms.FloatField(required=True,label='Days of week animal (acute)')
@@ -60,7 +63,8 @@ class hedgas_acuteOcc_Inp(forms.Form):
     run_acuteOcc = forms.ChoiceField(required=True,label='Run Acute HEC Non-Occupational?',widget=forms.RadioSelect(attrs={'class':'inline_radio'}), choices=choose_acuteOcc, initial='0')
     mw_acuteOcc = forms.FloatField(required=True,label='Molecular Weight')
     noael_acuteOcc = forms.FloatField(required=True,label='NOAEL')
-    #radio button for unit mg/m3  or   ppm
+    choose_noaelunit_acuteOcc = (('1',mark_safe('mg/m<sup>3</sup>')),('0','ppm'))
+    run_noaelunit_acuteOcc = forms.ChoiceField(required=True,label='NOAEL Unit',widget=forms.RadioSelect, choices=choose_noaelunit_acuteOcc, initial='1')
     hrs_animal_acuteOcc = forms.FloatField(required=True,label='Hours animal study (acute)')
     hrs_human_acuteOcc = forms.FloatField(required=True,label='Hours human (acute)')
     dow_animal_acuteOcc = forms.FloatField(required=True,label='Days of week animal (acute)')
@@ -76,7 +80,8 @@ class hedgas_stitOcc_Inp(forms.Form):
     run_stitOcc = forms.ChoiceField(required=True,label='Run Acute HEC Non-Occupational?',widget=forms.RadioSelect(attrs={'class':'inline_radio'}), choices=choose_stitOcc, initial='0')
     mw_stitOcc = forms.FloatField(required=True,label='Molecular Weight')
     noael_stitOcc = forms.FloatField(required=True,label='NOAEL')
-    #radio button for unit mg/m3  or   ppm
+    choose_noaelunit_stitOcc = (('1',mark_safe('mg/m<sup>3</sup>')),('0','ppm'))
+    run_noaelunit_stitOcc = forms.ChoiceField(required=True,label='NOAEL Unit',widget=forms.RadioSelect, choices=choose_noaelunit_stitOcc, initial='1')
     hrs_animal_stitOcc = forms.FloatField(required=True,label='Hours animal study (acute)')
     hrs_human_stitOcc = forms.FloatField(required=True,label='Hours human (acute)')
     dow_animal_stitOcc = forms.FloatField(required=True,label='Days of week animal (acute)')
@@ -92,7 +97,8 @@ class hedgas_ltOcc_Inp(forms.Form):
     run_ltOcc = forms.ChoiceField(required=True,label='Run Acute HEC Non-Occupational?',widget=forms.RadioSelect(attrs={'class':'inline_radio'}), choices=choose_ltOcc, initial='0')
     mw_ltOcc = forms.FloatField(required=True,label='Molecular Weight')
     noael_ltOcc = forms.FloatField(required=True,label='NOAEL')
-    #radio button for unit mg/m3  or   ppm
+    choose_noaelunit_ltOcc = (('1',mark_safe('mg/m<sup>3</sup>')),('0','ppm'))
+    run_noaelunit_ltOcc = forms.ChoiceField(required=True,label='NOAEL Unit',widget=forms.RadioSelect, choices=choose_noaelunit_ltOcc, initial='1')
     hrs_animal_ltOcc = forms.FloatField(required=True,label='Hours animal study (acute)')
     hrs_human_ltOcc = forms.FloatField(required=True,label='Hours human (acute)')
     dow_animal_ltOcc = forms.FloatField(required=True,label='Days of week animal (acute)')

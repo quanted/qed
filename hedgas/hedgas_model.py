@@ -9,8 +9,8 @@ from django.utils import simplejson
 
 class hedgas(object):
 	def __init__(self, set_variables=True,run_methods=True,
-				run_acuteNonOcc='',mw_acuteNonOcc=1,noael_acuteNonOcc=1,hrs_animal_acuteNonOcc=1,hrs_human_acuteNonOcc=1,dow_animal_acuteNonOcc=1,dow_human_acuteNonOcc=1,b0_acuteNonOcc=1,b1_acuteNonOcc=1,SAa_acuteNonOcc=1,tb_acuteNonOcc=1,pu_acuteNonOcc=1,
-				run_stitNonOcc='',mw_stitNonOcc=1,noael_stitNonOcc=1,hrs_animal_stitNonOcc=1,hrs_human_stitNonOcc=1,dow_animal_stitNonOcc=1,dow_human_stitNonOcc=1,b0_stitNonOcc=1,b1_stitNonOcc=1,SAa_stitNonOcc=1,tb_stitNonOcc=1,pu_stitNonOcc=1,
+				run_acuteNonOcc='',mw_acuteNonOcc=1,noael_acuteNonOcc=1,run_noaelunit_acuteNonOcc='',hrs_animal_acuteNonOcc=1,hrs_human_acuteNonOcc=1,dow_animal_acuteNonOcc=1,dow_human_acuteNonOcc=1,b0_acuteNonOcc=1,b1_acuteNonOcc=1,SAa_acuteNonOcc=1,tb_acuteNonOcc=1,pu_acuteNonOcc=1,
+				run_stitNonOcc='',mw_stitNonOcc=1,noael_stitNonOcc=1,run_noaelunit_stitNonOcc=1,hrs_animal_stitNonOcc=1,hrs_human_stitNonOcc=1,dow_animal_stitNonOcc=1,dow_human_stitNonOcc=1,b0_stitNonOcc=1,b1_stitNonOcc=1,SAa_stitNonOcc=1,tb_stitNonOcc=1,pu_stitNonOcc=1,
 				run_ltNonOcc='',mw_ltNonOcc=1,noael_ltNonOcc=1,hrs_animal_ltNonOcc=1,hrs_human_ltNonOcc=1,dow_animal_ltNonOcc=1,dow_human_ltNonOcc=1,b0_ltNonOcc=1,b1_ltNonOcc=1,SAa_ltNonOcc=1,tb_ltNonOcc=1,pu_ltNonOcc=1,
 				run_acuteOcc='',mw_acuteOcc=1,noael_acuteOcc=1,hrs_animal_acuteOcc=1,hrs_human_acuteOcc=1,dow_animal_acuteOcc=1,dow_human_acuteOcc=1,b0_acuteOcc=1,b1_acuteOcc=1,SAa_acuteOcc=1,tb_acuteOcc=1,pu_acuteOcc=1,
 				run_stitOcc='',mw_stitOcc=1,noael_stitOcc=1,hrs_animal_stitOcc=1,hrs_human_stitOcc=1,dow_animal_stitOcc=1,dow_human_stitOcc=1,b0_stitOcc=1,b1_stitOcc=1,SAa_stitOcc=1,tb_stitOcc=1,pu_stitOcc=1,
@@ -24,6 +24,7 @@ class hedgas(object):
 				self.run_acuteNonOcc = run_acuteNonOcc
 				self.mw_acuteNonOcc = mw_acuteNonOcc
 				self.noael_acuteNonOcc = noael_acuteNonOcc
+				self.run_noaelunit_acuteNonOcc = run_noaelunit_acuteNonOcc
 				self.hrs_animal_acuteNonOcc = hrs_animal_acuteNonOcc
 				self.hrs_human_acuteNonOcc = hrs_human_acuteNonOcc
 				self.dow_animal_acuteNonOcc = dow_animal_acuteNonOcc
@@ -36,6 +37,7 @@ class hedgas(object):
 				self.run_stitNonOcc = run_stitNonOcc
 				self.mw_stitNonOcc = mw_stitNonOcc
 				self.noael_stitNonOcc = noael_stitNonOcc
+				self.run_noaelunit_stitNonOcc = run_noaelunit_stitNonOcc
 				self.hrs_animal_stitNonOcc = hrs_animal_stitNonOcc
 				self.hrs_human_stitNonOcc = hrs_human_stitNonOcc
 				self.dow_animal_stitNonOcc = dow_animal_stitNonOcc

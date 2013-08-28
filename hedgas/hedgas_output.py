@@ -18,9 +18,13 @@ class hedgasOutputPage(webapp.RequestHandler):
         form = cgi.FieldStorage()
 
         run_acuteNonOcc = form.getvalue('run_acuteNonOcc')
+        run_noaelunit_acuteNonOcc = form.getvalue('run_noaelunit_acuteNonOcc')
         if run_acuteNonOcc == '1':
             mw_acuteNonOcc = float(form.getvalue('mw_acuteNonOcc'))
-            noael_acuteNonOcc = float(form.getvalue('noael_acuteNonOcc'))
+            if run_noaelunit_acuteNonOcc == '1':
+                noael_acuteNonOcc = float(form.getvalue('noael_acuteNonOcc'))
+            else:
+                noael_acuteNonOcc = float(form.getvalue('noael_acuteNonOcc')) * (mw_acuteNonOcc / 24.45)
             hrs_animal_acuteNonOcc = float(form.getvalue('hrs_animal_acuteNonOcc'))
             hrs_human_acuteNonOcc = float(form.getvalue('hrs_human_acuteNonOcc'))
             dow_animal_acuteNonOcc = float(form.getvalue('dow_animal_acuteNonOcc'))
@@ -32,6 +36,7 @@ class hedgasOutputPage(webapp.RequestHandler):
             pu_acuteNonOcc = float(form.getvalue('pu_acuteNonOcc'))            
         else:
             mw_acuteNonOcc = -1
+            run_noaelunit_acuteNonOcc = -1
             noael_acuteNonOcc = -1
             hrs_animal_acuteNonOcc = -1
             hrs_human_acuteNonOcc = -1
@@ -44,9 +49,13 @@ class hedgasOutputPage(webapp.RequestHandler):
             pu_acuteNonOcc = -1
 
         run_stitNonOcc = form.getvalue('run_stitNonOcc')
+        run_noaelunit_stitNonOcc = form.getvalue('run_noaelunit_stitNonOcc')
         if run_stitNonOcc == '1':
             mw_stitNonOcc = float(form.getvalue('mw_stitNonOcc'))
-            noael_stitNonOcc = float(form.getvalue('noael_stitNonOcc'))
+            if run_noaelunit_stitNonOcc == '1':
+                noael_stitNonOcc = float(form.getvalue('noael_stitNonOcc'))
+            else:
+                noael_stitNonOcc = float(form.getvalue('noael_stitNonOcc')) * (mw_stitNonOcc / 24.45)
             hrs_animal_stitNonOcc = float(form.getvalue('hrs_animal_stitNonOcc'))
             hrs_human_stitNonOcc = float(form.getvalue('hrs_human_stitNonOcc'))
             dow_animal_stitNonOcc = float(form.getvalue('dow_animal_stitNonOcc'))
@@ -58,6 +67,7 @@ class hedgasOutputPage(webapp.RequestHandler):
             pu_stitNonOcc = float(form.getvalue('pu_stitNonOcc'))           
         else:
             mw_stitNonOcc = -1
+            run_noaelunit_stitNonOcc = -1
             noael_stitNonOcc = -1
             hrs_animal_stitNonOcc = -1
             hrs_human_stitNonOcc = -1
@@ -70,9 +80,13 @@ class hedgasOutputPage(webapp.RequestHandler):
             pu_stitNonOcc = -1
 
         run_ltNonOcc = form.getvalue('run_ltNonOcc')
+        run_noaelunit_ltNonOcc = form.getvalue('run_noaelunit_ltNonOcc')
         if run_ltNonOcc == '1':
             mw_ltNonOcc = float(form.getvalue('mw_ltNonOcc'))
-            noael_ltNonOcc = float(form.getvalue('noael_ltNonOcc'))
+            if run_noaelunit_ltNonOcc == '1':
+                noael_ltNonOcc = float(form.getvalue('noael_ltNonOcc'))
+            else:
+                noael_ltNonOcc = float(form.getvalue('noael_ltNonOcc')) * (mw_ltNonOcc / 24.45)
             hrs_animal_ltNonOcc = float(form.getvalue('hrs_animal_ltNonOcc'))
             hrs_human_ltNonOcc = float(form.getvalue('hrs_human_ltNonOcc'))
             dow_animal_ltNonOcc = float(form.getvalue('dow_animal_ltNonOcc'))
@@ -84,6 +98,7 @@ class hedgasOutputPage(webapp.RequestHandler):
             pu_ltNonOcc = float(form.getvalue('pu_ltNonOcc'))           
         else:
             mw_ltNonOcc = -1
+            run_noaelunit_ltNonOcc = -1
             noael_ltNonOcc = -1
             hrs_animal_ltNonOcc = -1
             hrs_human_ltNonOcc = -1
@@ -96,9 +111,13 @@ class hedgasOutputPage(webapp.RequestHandler):
             pu_ltNonOcc = -1
 
         run_acuteOcc = form.getvalue('run_acuteOcc')
+        run_noaelunit_acuteOcc = form.getvalue('run_noaelunit_acuteOcc')
         if run_acuteOcc == '1':
             mw_acuteOcc = float(form.getvalue('mw_acuteOcc'))
-            noael_acuteOcc = float(form.getvalue('noael_acuteOcc'))
+            if run_noaelunit_acuteOcc == '1':
+                noael_acuteOcc = float(form.getvalue('noael_acuteOcc'))
+            else:
+                noael_acuteOcc = float(form.getvalue('noael_acuteOcc')) * (mw_acuteOcc / 24.45)
             hrs_animal_acuteOcc = float(form.getvalue('hrs_animal_acuteOcc'))
             hrs_human_acuteOcc = float(form.getvalue('hrs_human_acuteOcc'))
             dow_animal_acuteOcc = float(form.getvalue('dow_animal_acuteOcc'))
@@ -111,6 +130,7 @@ class hedgasOutputPage(webapp.RequestHandler):
         else:
             mw_acuteOcc = -1
             noael_acuteOcc = -1
+            run_noaelunit_acuteOcc = -1
             hrs_animal_acuteOcc = -1
             hrs_human_acuteOcc = -1
             dow_animal_acuteOcc = -1
@@ -122,9 +142,13 @@ class hedgasOutputPage(webapp.RequestHandler):
             pu_acuteOcc = -1
 
         run_stitOcc = form.getvalue('run_stitOcc')
+        run_noaelunit_stitOcc = form.getvalue('run_noaelunit_stitOcc')
         if run_stitOcc == '1':
             mw_stitOcc = float(form.getvalue('mw_stitOcc'))
-            noael_stitOcc = float(form.getvalue('noael_stitOcc'))
+            if run_noaelunit_stitOcc == '1':
+                noael_stitOcc = float(form.getvalue('noael_stitOcc'))
+            else:
+                noael_stitOcc = float(form.getvalue('noael_stitOcc')) * (mw_stitOcc / 24.45)
             hrs_animal_stitOcc = float(form.getvalue('hrs_animal_stitOcc'))
             hrs_human_stitOcc = float(form.getvalue('hrs_human_stitOcc'))
             dow_animal_stitOcc = float(form.getvalue('dow_animal_stitOcc'))
@@ -136,6 +160,7 @@ class hedgasOutputPage(webapp.RequestHandler):
             pu_stitOcc = float(form.getvalue('pu_stitOcc'))           
         else:
             mw_stitOcc = -1
+            run_noaelunit_stitOcc = -1
             noael_stitOcc = -1
             hrs_animal_stitOcc = -1
             hrs_human_stitOcc = -1
@@ -148,9 +173,13 @@ class hedgasOutputPage(webapp.RequestHandler):
             pu_stitOcc = -1
 
         run_ltOcc = form.getvalue('run_ltOcc')
+        run_noaelunit_ltOcc = form.getvalue('run_noaelunit_ltOcc')
         if run_ltOcc == '1':
             mw_ltOcc = float(form.getvalue('mw_ltOcc'))
-            noael_ltOcc = float(form.getvalue('noael_ltOcc'))
+            if run_noaelunit_ltOcc == '1':
+                noael_ltOcc = float(form.getvalue('noael_ltOcc'))
+            else:
+                noael_ltOcc = float(form.getvalue('noael_ltOcc')) * (mw_ltOcc / 24.45)
             hrs_animal_ltOcc = float(form.getvalue('hrs_animal_ltOcc'))
             hrs_human_ltOcc = float(form.getvalue('hrs_human_ltOcc'))
             dow_animal_ltOcc = float(form.getvalue('dow_animal_ltOcc'))
@@ -162,6 +191,7 @@ class hedgasOutputPage(webapp.RequestHandler):
             pu_ltOcc = float(form.getvalue('pu_ltOcc'))           
         else:
             mw_ltOcc = -1
+            run_noaelunit_ltOcc = -1
             noael_ltOcc = -1
             hrs_animal_ltOcc = -1
             hrs_human_ltOcc = -1
@@ -174,7 +204,7 @@ class hedgasOutputPage(webapp.RequestHandler):
             pu_ltOcc = -1
 
 
-        hedgas_obj = hedgas_model.hedgas(True,True,run_acuteNonOcc,mw_acuteNonOcc,noael_acuteNonOcc,hrs_animal_acuteNonOcc,hrs_human_acuteNonOcc,dow_animal_acuteNonOcc,dow_human_acuteNonOcc,b0_acuteNonOcc,b1_acuteNonOcc,SAa_acuteNonOcc,tb_acuteNonOcc,pu_acuteNonOcc,run_stitNonOcc,mw_stitNonOcc,noael_stitNonOcc,hrs_animal_stitNonOcc,hrs_human_stitNonOcc,dow_animal_stitNonOcc,dow_human_stitNonOcc,b0_stitNonOcc,b1_stitNonOcc,SAa_stitNonOcc,tb_stitNonOcc,pu_stitNonOcc,run_ltNonOcc,mw_ltNonOcc,noael_ltNonOcc,hrs_animal_ltNonOcc,hrs_human_ltNonOcc,dow_animal_ltNonOcc,dow_human_ltNonOcc,b0_ltNonOcc,b1_ltNonOcc,SAa_ltNonOcc,tb_ltNonOcc,pu_ltNonOcc,run_acuteOcc,mw_acuteOcc,noael_acuteOcc,hrs_animal_acuteOcc,hrs_human_acuteOcc,dow_animal_acuteOcc,dow_human_acuteOcc,b0_acuteOcc,b1_acuteOcc,SAa_acuteOcc,tb_acuteOcc,pu_acuteOcc,run_stitOcc,mw_stitOcc,noael_stitOcc,hrs_animal_stitOcc,hrs_human_stitOcc,dow_animal_stitOcc,dow_human_stitOcc,b0_stitOcc,b1_stitOcc,SAa_stitOcc,tb_stitOcc,pu_stitOcc,run_ltOcc,mw_ltOcc,noael_ltOcc,hrs_animal_ltOcc,hrs_human_ltOcc,dow_animal_ltOcc,dow_human_ltOcc,b0_ltOcc,b1_ltOcc,SAa_ltOcc,tb_ltOcc,pu_ltOcc)
+        hedgas_obj = hedgas_model.hedgas(True,True,run_acuteNonOcc,mw_acuteNonOcc,noael_acuteNonOcc,run_noaelunit_acuteNonOcc,hrs_animal_acuteNonOcc,hrs_human_acuteNonOcc,dow_animal_acuteNonOcc,dow_human_acuteNonOcc,b0_acuteNonOcc,b1_acuteNonOcc,SAa_acuteNonOcc,tb_acuteNonOcc,pu_acuteNonOcc,run_stitNonOcc,mw_stitNonOcc,noael_stitNonOcc,run_noaelunit_stitNonOcc,hrs_animal_stitNonOcc,hrs_human_stitNonOcc,dow_animal_stitNonOcc,dow_human_stitNonOcc,b0_stitNonOcc,b1_stitNonOcc,SAa_stitNonOcc,tb_stitNonOcc,pu_stitNonOcc,run_ltNonOcc,mw_ltNonOcc,noael_ltNonOcc,hrs_animal_ltNonOcc,hrs_human_ltNonOcc,dow_animal_ltNonOcc,dow_human_ltNonOcc,b0_ltNonOcc,b1_ltNonOcc,SAa_ltNonOcc,tb_ltNonOcc,pu_ltNonOcc,run_acuteOcc,mw_acuteOcc,noael_acuteOcc,hrs_animal_acuteOcc,hrs_human_acuteOcc,dow_animal_acuteOcc,dow_human_acuteOcc,b0_acuteOcc,b1_acuteOcc,SAa_acuteOcc,tb_acuteOcc,pu_acuteOcc,run_stitOcc,mw_stitOcc,noael_stitOcc,hrs_animal_stitOcc,hrs_human_stitOcc,dow_animal_stitOcc,dow_human_stitOcc,b0_stitOcc,b1_stitOcc,SAa_stitOcc,tb_stitOcc,pu_stitOcc,run_ltOcc,mw_ltOcc,noael_ltOcc,hrs_animal_ltOcc,hrs_human_ltOcc,dow_animal_ltOcc,dow_human_ltOcc,b0_ltOcc,b1_ltOcc,SAa_ltOcc,tb_ltOcc,pu_ltOcc)
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01hh_uberheader.html', {'title':'Ubertool'})        
         html = html + template.render(templatepath + '02hh_uberintroblock_wmodellinks.html',  {'model':'hedgas','page':'output'})

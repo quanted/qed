@@ -37,7 +37,6 @@ class UbertoolPesticidePropertiesConfigurationPage(webapp.RequestHandler):
         pestProps.vapor_pressure = float(form.getvalue('vapor_pressure'))                
         pestProps.solubility = float(form.getvalue('solubility'))
         pestProps.Kd = float(form.getvalue('Kd'))                
-        pestProps.Koc = float(form.getvalue('Koc'))
         pestProps.photolysis = float(form.getvalue('photolysis'))                
         pestProps.aerobic_aquatic_metabolism = float(form.getvalue('aerobic_aquatic_metabolism'))
         pestProps.anaerobic_aquatic_metabolism = float(form.getvalue('anaerobic_aquatic_metabolism'))                
@@ -59,6 +58,11 @@ class UbertoolPesticidePropertiesConfigurationPage(webapp.RequestHandler):
         pestProps.n_a = float(form.getvalue('n_a'))
         pestProps.ar_lb = float(form.getvalue('ar_lb'))
         pestProps.percent_incorporated = float(form.getvalue('percent_incorporated'))
+        pestProps.l_kow = float(form.getvalue('l_kow'))
+        pestProps.k_oc = float(form.getvalue('k_oc'))
+        pestProps.c_wdp = float(form.getvalue('c_wdp'))
+        pestProps.water_column_EEC = float(form.getvalue('water_column_EEC'))
+        
         pestProps.put()
         q = db.Query(PesticideProperties)
         for new_use in q:

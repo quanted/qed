@@ -9,12 +9,12 @@ from django.utils import simplejson
 
 class hedgas(object):
 	def __init__(self, set_variables=True,run_methods=True,
-				run_acuteNonOcc='',mw_acuteNonOcc=1,noael_acuteNonOcc=1,run_noaelunit_acuteNonOcc='',hrs_animal_acuteNonOcc=1,hrs_human_acuteNonOcc=1,dow_animal_acuteNonOcc=1,dow_human_acuteNonOcc=1,b0_acuteNonOcc=1,b1_acuteNonOcc=1,SAa_acuteNonOcc=1,tb_acuteNonOcc=1,pu_acuteNonOcc=1,
-				run_stitNonOcc='',mw_stitNonOcc=1,noael_stitNonOcc=1,run_noaelunit_stitNonOcc=1,hrs_animal_stitNonOcc=1,hrs_human_stitNonOcc=1,dow_animal_stitNonOcc=1,dow_human_stitNonOcc=1,b0_stitNonOcc=1,b1_stitNonOcc=1,SAa_stitNonOcc=1,tb_stitNonOcc=1,pu_stitNonOcc=1,
-				run_ltNonOcc='',mw_ltNonOcc=1,noael_ltNonOcc=1,hrs_animal_ltNonOcc=1,hrs_human_ltNonOcc=1,dow_animal_ltNonOcc=1,dow_human_ltNonOcc=1,b0_ltNonOcc=1,b1_ltNonOcc=1,SAa_ltNonOcc=1,tb_ltNonOcc=1,pu_ltNonOcc=1,
-				run_acuteOcc='',mw_acuteOcc=1,noael_acuteOcc=1,hrs_animal_acuteOcc=1,hrs_human_acuteOcc=1,dow_animal_acuteOcc=1,dow_human_acuteOcc=1,b0_acuteOcc=1,b1_acuteOcc=1,SAa_acuteOcc=1,tb_acuteOcc=1,pu_acuteOcc=1,
-				run_stitOcc='',mw_stitOcc=1,noael_stitOcc=1,hrs_animal_stitOcc=1,hrs_human_stitOcc=1,dow_animal_stitOcc=1,dow_human_stitOcc=1,b0_stitOcc=1,b1_stitOcc=1,SAa_stitOcc=1,tb_stitOcc=1,pu_stitOcc=1,
-				run_ltOcc='',mw_ltOcc=1,noael_ltOcc=1,hrs_animal_ltOcc=1,hrs_human_ltOcc=1,dow_animal_ltOcc=1,dow_human_ltOcc=1,b0_ltOcc=1,b1_ltOcc=1,SAa_ltOcc=1,tb_ltOcc=1,pu_ltOcc=1,
+				run_acuteNonOcc='',mw_acuteNonOcc=1,noael_acuteNonOcc=1,hrs_animal_acuteNonOcc=1,hrs_human_acuteNonOcc=1,dow_animal_acuteNonOcc=1,dow_human_acuteNonOcc=1,b0_acuteNonOcc=1,b1_acuteNonOcc=1,SAa_acuteNonOcc=1,tb_acuteNonOcc=1,pu_acuteNonOcc=1,
+				run_stitNonOcc='',mw_stitNonOcc=1,noael_stitNonOcc=1,hrs_animal_stitNonOcc=1,hrs_human_stitNonOcc=1,BWa_stitNonOcc=1,dow_animal_stitNonOcc=1,dow_human_stitNonOcc=1,b0_stitNonOcc=1,b1_stitNonOcc=1,SAa_stitNonOcc=1,tb_stitNonOcc=1,pu_stitNonOcc=1,
+				run_ltNonOcc='',mw_ltNonOcc=1,noael_ltNonOcc=1,hrs_animal_ltNonOcc=1,hrs_human_ltNonOcc=1,BWa_ltNonOcc=1,dow_animal_ltNonOcc=1,dow_human_ltNonOcc=1,b0_ltNonOcc=1,b1_ltNonOcc=1,SAa_ltNonOcc=1,tb_ltNonOcc=1,pu_ltNonOcc=1,
+				run_acuteOcc='',mw_acuteOcc=1,noael_acuteOcc=1,hrs_animal_acuteOcc=1,hrs_human_acuteOcc=1,BWa_acuteOcc=1,dow_animal_acuteOcc=1,dow_human_acuteOcc=1,b0_acuteOcc=1,b1_acuteOcc=1,SAa_acuteOcc=1,tb_acuteOcc=1,pu_acuteOcc=1,
+				run_stitOcc='',mw_stitOcc=1,noael_stitOcc=1,hrs_animal_stitOcc=1,hrs_human_stitOcc=1,BWa_stitOcc=1,dow_animal_stitOcc=1,dow_human_stitOcc=1,b0_stitOcc=1,b1_stitOcc=1,SAa_stitOcc=1,tb_stitOcc=1,pu_stitOcc=1,
+				run_ltOcc='',mw_ltOcc=1,noael_ltOcc=1,hrs_animal_ltOcc=1,hrs_human_ltOcc=1,BWa_ltOcc=1,dow_animal_ltOcc=1,dow_human_ltOcc=1,b0_ltOcc=1,b1_ltOcc=1,SAa_ltOcc=1,tb_ltOcc=1,pu_ltOcc=1,
 				vars_dict=None):
 		self.set_default_variables()
 		if set_variables:
@@ -24,7 +24,6 @@ class hedgas(object):
 				self.run_acuteNonOcc = run_acuteNonOcc
 				self.mw_acuteNonOcc = mw_acuteNonOcc
 				self.noael_acuteNonOcc = noael_acuteNonOcc
-				self.run_noaelunit_acuteNonOcc = run_noaelunit_acuteNonOcc
 				self.hrs_animal_acuteNonOcc = hrs_animal_acuteNonOcc
 				self.hrs_human_acuteNonOcc = hrs_human_acuteNonOcc
 				self.dow_animal_acuteNonOcc = dow_animal_acuteNonOcc
@@ -37,9 +36,9 @@ class hedgas(object):
 				self.run_stitNonOcc = run_stitNonOcc
 				self.mw_stitNonOcc = mw_stitNonOcc
 				self.noael_stitNonOcc = noael_stitNonOcc
-				self.run_noaelunit_stitNonOcc = run_noaelunit_stitNonOcc
 				self.hrs_animal_stitNonOcc = hrs_animal_stitNonOcc
 				self.hrs_human_stitNonOcc = hrs_human_stitNonOcc
+				self.BWa_stitNonOcc = BWa_stitNonOcc
 				self.dow_animal_stitNonOcc = dow_animal_stitNonOcc
 				self.dow_human_stitNonOcc = dow_human_stitNonOcc
 				self.b0_stitNonOcc = b0_stitNonOcc
@@ -52,6 +51,7 @@ class hedgas(object):
 				self.noael_ltNonOcc = noael_ltNonOcc
 				self.hrs_animal_ltNonOcc = hrs_animal_ltNonOcc
 				self.hrs_human_ltNonOcc = hrs_human_ltNonOcc
+				self.BWa_ltNonOcc = BWa_ltNonOcc
 				self.dow_animal_ltNonOcc = dow_animal_ltNonOcc
 				self.dow_human_ltNonOcc = dow_human_ltNonOcc
 				self.b0_ltNonOcc = b0_ltNonOcc
@@ -64,6 +64,7 @@ class hedgas(object):
 				self.noael_acuteOcc = noael_acuteOcc
 				self.hrs_animal_acuteOcc = hrs_animal_acuteOcc
 				self.hrs_human_acuteOcc = hrs_human_acuteOcc
+				self.BWa_acuteOcc = BWa_acuteOcc
 				self.dow_animal_acuteOcc = dow_animal_acuteOcc
 				self.dow_human_acuteOcc = dow_human_acuteOcc
 				self.b0_acuteOcc = b0_acuteOcc
@@ -76,6 +77,7 @@ class hedgas(object):
 				self.noael_stitOcc = noael_stitOcc
 				self.hrs_animal_stitOcc = hrs_animal_stitOcc
 				self.hrs_human_stitOcc = hrs_human_stitOcc
+				self.BWa_stitOcc = BWa_stitOcc
 				self.dow_animal_stitOcc = dow_animal_stitOcc
 				self.dow_human_stitOcc = dow_human_stitOcc
 				self.b0_stitOcc = b0_stitOcc
@@ -88,6 +90,7 @@ class hedgas(object):
 				self.noael_ltOcc = noael_ltOcc
 				self.hrs_animal_ltOcc = hrs_animal_ltOcc
 				self.hrs_human_ltOcc = hrs_human_ltOcc
+				self.BWa_ltOcc = BWa_ltOcc
 				self.dow_animal_ltOcc = dow_animal_ltOcc
 				self.dow_human_ltOcc = dow_human_ltOcc
 				self.b0_ltOcc = b0_ltOcc
@@ -115,6 +118,7 @@ class hedgas(object):
 		self.noael_stitNonOcc = -1
 		self.hrs_animal_stitNonOcc = -1
 		self.hrs_human_stitNonOcc = -1
+		self.BWa_stitNonOcc = -1
 		self.dow_animal_stitNonOcc = -1
 		self.dow_human_stitNonOcc = -1
 		self.b0_stitNonOcc = -1
@@ -126,6 +130,7 @@ class hedgas(object):
 		self.noael_ltNonOcc = -1
 		self.hrs_animal_ltNonOcc = -1
 		self.hrs_human_ltNonOcc = -1
+		self.BWa_ltNonOcc = -1
 		self.dow_animal_ltNonOcc = -1
 		self.dow_human_ltNonOcc = -1
 		self.b0_ltNonOcc = -1
@@ -138,6 +143,7 @@ class hedgas(object):
 		self.noael_acuteOcc = -1
 		self.hrs_animal_acuteOcc = -1
 		self.hrs_human_acuteOcc = -1
+		self.BWa_acuteOcc = -1
 		self.dow_animal_acuteOcc = -1
 		self.dow_human_acuteOcc = -1
 		self.b0_acuteOcc = -1
@@ -150,6 +156,7 @@ class hedgas(object):
 		self.noael_stitOcc = -1
 		self.hrs_animal_stitOcc = -1
 		self.hrs_human_stitOcc = -1
+		self.BWa_stitOcc = -1
 		self.dow_animal_stitOcc = -1
 		self.dow_human_stitOcc = -1
 		self.b0_stitOcc = -1
@@ -162,6 +169,7 @@ class hedgas(object):
 		self.noael_ltOcc = -1
 		self.hrs_animal_ltOcc = -1
 		self.hrs_human_ltOcc = -1
+		self.BWa_ltOcc = -1
 		self.dow_animal_ltOcc = -1
 		self.dow_human_ltOcc = -1
 		self.b0_ltOcc = -1
@@ -204,7 +212,7 @@ class hedgas(object):
 			
 		if self.run_stitNonOcc == '1':
 			self.noael_adj_stitNonOccET = self.noael_adj_f(self.hrs_animal_stitNonOcc,self.hrs_human_stitNonOcc,self.dow_animal_stitNonOcc,self.dow_human_stitNonOcc,self.noael_stitNonOcc)
-			self.mv_a_stitNonOccET = self.mv_a_f(self.hrs_human_stitNonOcc,self.b0_stitNonOcc,self.b1_stitNonOcc)
+			self.mv_a_stitNonOccET = self.mv_a_f(self.BWa_stitNonOcc,self.b0_stitNonOcc,self.b1_stitNonOcc)
 			self.rgdr_stitNonOccET = self.rgdr_ET_f(self.mv_a_stitNonOccET,self.SAa_stitNonOcc)
 			self.hec_stitNonOccET = self.hec_ET_f(self.noael_adj_stitNonOccET,self.rgdr_stitNonOccET)
 			self.hec_stitNonOccET_ppm = self.hec_ET_ppm_f(self.mw_stitNonOcc,self.hec_stitNonOccET)
@@ -219,7 +227,7 @@ class hedgas(object):
 			
 		if self.run_ltNonOcc == '1':
 			self.noael_adj_ltNonOccET = self.noael_adj_f(self.hrs_animal_ltNonOcc,self.hrs_human_ltNonOcc,self.dow_animal_ltNonOcc,self.dow_human_ltNonOcc,self.noael_ltNonOcc)
-			self.mv_a_ltNonOccET = self.mv_a_f(self.hrs_human_ltNonOcc,self.b0_ltNonOcc,self.b1_ltNonOcc)
+			self.mv_a_ltNonOccET = self.mv_a_f(self.BWa_ltNonOcc,self.b0_ltNonOcc,self.b1_ltNonOcc)
 			self.rgdr_ltNonOccET = self.rgdr_ET_f(self.mv_a_ltNonOccET,self.SAa_ltNonOcc)
 			self.hec_ltNonOccET = self.hec_ET_f(self.noael_adj_ltNonOccET,self.rgdr_ltNonOccET)
 			self.hec_ltNonOccET_ppm = self.hec_ET_ppm_f(self.mw_ltNonOcc,self.hec_ltNonOccET)
@@ -234,7 +242,7 @@ class hedgas(object):
 
 		if self.run_acuteOcc == '1':
 			self.noael_adj_acuteOccET = self.noael_adj_f(self.hrs_animal_acuteOcc,self.hrs_human_acuteOcc,self.dow_animal_acuteOcc,self.dow_human_acuteOcc,self.noael_acuteOcc)
-			self.mv_a_acuteOccET = self.mv_a_f(self.hrs_human_acuteOcc,self.b0_acuteOcc,self.b1_acuteOcc)
+			self.mv_a_acuteOccET = self.mv_a_f(self.BWa_acuteOcc,self.b0_acuteOcc,self.b1_acuteOcc)
 			self.rgdr_acuteOccET = self.rgdr_ET_f(self.mv_a_acuteOccET,self.SAa_acuteOcc)
 			self.hec_acuteOccET = self.hec_ET_f(self.noael_adj_acuteOccET,self.rgdr_acuteOccET)
 			self.hec_acuteOccET_ppm = self.hec_ET_ppm_f(self.mw_acuteOcc,self.hec_acuteOccET)
@@ -249,7 +257,7 @@ class hedgas(object):
 			
 		if self.run_stitOcc == '1':
 			self.noael_adj_stitOccET = self.noael_adj_f(self.hrs_animal_stitOcc,self.hrs_human_stitOcc,self.dow_animal_stitOcc,self.dow_human_stitOcc,self.noael_stitOcc)
-			self.mv_a_stitOccET = self.mv_a_f(self.hrs_human_stitOcc,self.b0_stitOcc,self.b1_stitOcc)
+			self.mv_a_stitOccET = self.mv_a_f(self.BWa_stitOcc,self.b0_stitOcc,self.b1_stitOcc)
 			self.rgdr_stitOccET = self.rgdr_ET_f(self.mv_a_stitOccET,self.SAa_stitOcc)
 			self.hec_stitOccET = self.hec_ET_f(self.noael_adj_stitOccET,self.rgdr_stitOccET)
 			self.hec_stitOccET_ppm = self.hec_ET_ppm_f(self.mw_stitOcc,self.hec_stitOccET)
@@ -264,7 +272,7 @@ class hedgas(object):
 			
 		if self.run_ltOcc == '1':
 			self.noael_adj_ltOccET = self.noael_adj_f(self.hrs_animal_ltOcc,self.hrs_human_ltOcc,self.dow_animal_ltOcc,self.dow_human_ltOcc,self.noael_ltOcc)
-			self.mv_a_ltOccET = self.mv_a_f(self.hrs_human_ltOcc,self.b0_ltOcc,self.b1_ltOcc)
+			self.mv_a_ltOccET = self.mv_a_f(self.BWa_ltOcc,self.b0_ltOcc,self.b1_ltOcc)
 			self.rgdr_ltOccET = self.rgdr_ET_f(self.mv_a_ltOccET,self.SAa_ltOcc)
 			self.hec_ltOccET = self.hec_ET_f(self.noael_adj_ltOccET,self.rgdr_ltOccET)
 			self.hec_ltOccET_ppm = self.hec_ET_ppm_f(self.mw_ltOcc,self.hec_ltOccET)
@@ -322,6 +330,36 @@ class hedgas(object):
 			# 	('noael_acuteNonOcc=%g is a non-physical value' %self.noael_acuteNonOcc)
 		self.noael_adj = (hrs_animal / hrs_human) * (dow_animal / dow_human) * noael
 		return self.noael_adj
+
+	def mv_a_acuteNonOcc_f(self,exp_n,b0,b1):
+		# if self.mv_a == -1:
+			# try:
+			# 	self.hrs_human_acuteNonOcc = float(self.hrs_human_acuteNonOcc)
+			# 	self.b1_acuteNonOcc = float(self.b1_acuteNonOcc)
+			# 	self.b0_acuteNonOcc = float(self.b0_acuteNonOcc)
+			# except IndexError:
+			# 	raise IndexError\
+			# 	('The hours human, b01, and/or b1 must be supplied')
+			# except ValueError:
+			# 	raise ValueError\
+			# 	('The hours human must be a real number, not "%L"' %self.hrs_human_acuteNonOcc)
+			# except ValueError:
+			# 	raise ValueError\
+			# 	('The b0 must be a real number, not "%L"' %self.b0_acuteNonOcc)
+			# except ValueError:
+			# 	raise ValueError\
+			# 	('The b1 must be a real number, not "%L"' %self.b1_acuteNonOcc)
+			# if self.hrs_human_acuteNonOcc < 0:
+			# 	raise ValueError\
+			# 	('hrs_human_acuteNonOcc=%g is a non-physical value' %self.hrs_human_acuteNonOcc)
+			# if self.b0_acuteNonOcc < 0:
+			# 	raise ValueError\
+			# 	('b0_acuteNonOcc=%g is a non-physical value' %self.b0_acuteNonOcc)
+			# if self.b1_acuteNonOcc < 0:
+			# 	raise ValueError\
+			# 	('b1_acuteNonOcc=%g is a non-physical value' %self.b1_acuteNonOcc)
+		self.mv_a = math.exp(math.log(exp_n) * b1 + b0)
+		return self.mv_a
 
 	def mv_a_f(self,hrs_human,b0,b1):
 		# if self.mv_a == -1:

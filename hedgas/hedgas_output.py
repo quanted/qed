@@ -58,6 +58,7 @@ class hedgasOutputPage(webapp.RequestHandler):
                 noael_stitNonOcc = float(form.getvalue('noael_stitNonOcc')) * (mw_stitNonOcc / 24.45)
             hrs_animal_stitNonOcc = float(form.getvalue('hrs_animal_stitNonOcc'))
             hrs_human_stitNonOcc = float(form.getvalue('hrs_human_stitNonOcc'))
+            BWa_stitNonOcc = float(form.getvalue('BWa_stitNonOcc'))
             dow_animal_stitNonOcc = float(form.getvalue('dow_animal_stitNonOcc'))
             dow_human_stitNonOcc = float(form.getvalue('dow_human_stitNonOcc'))
             b0_stitNonOcc = float(form.getvalue('b0_stitNonOcc'))
@@ -71,6 +72,7 @@ class hedgasOutputPage(webapp.RequestHandler):
             noael_stitNonOcc = -1
             hrs_animal_stitNonOcc = -1
             hrs_human_stitNonOcc = -1
+            BWa_stitNonOcc = -1
             dow_animal_stitNonOcc = -1
             dow_human_stitNonOcc = -1
             b0_stitNonOcc = -1
@@ -89,6 +91,7 @@ class hedgasOutputPage(webapp.RequestHandler):
                 noael_ltNonOcc = float(form.getvalue('noael_ltNonOcc')) * (mw_ltNonOcc / 24.45)
             hrs_animal_ltNonOcc = float(form.getvalue('hrs_animal_ltNonOcc'))
             hrs_human_ltNonOcc = float(form.getvalue('hrs_human_ltNonOcc'))
+            BWa_ltNonOcc = float(form.getvalue('BWa_ltNonOcc'))
             dow_animal_ltNonOcc = float(form.getvalue('dow_animal_ltNonOcc'))
             dow_human_ltNonOcc = float(form.getvalue('dow_human_ltNonOcc'))
             b0_ltNonOcc = float(form.getvalue('b0_ltNonOcc'))
@@ -102,6 +105,7 @@ class hedgasOutputPage(webapp.RequestHandler):
             noael_ltNonOcc = -1
             hrs_animal_ltNonOcc = -1
             hrs_human_ltNonOcc = -1
+            BWa_ltNonOcc = -1
             dow_animal_ltNonOcc = -1
             dow_human_ltNonOcc = -1
             b0_ltNonOcc = -1
@@ -122,6 +126,7 @@ class hedgasOutputPage(webapp.RequestHandler):
             hrs_human_acuteOcc = float(form.getvalue('hrs_human_acuteOcc'))
             dow_animal_acuteOcc = float(form.getvalue('dow_animal_acuteOcc'))
             dow_human_acuteOcc = float(form.getvalue('dow_human_acuteOcc'))
+            BWa_acuteOcc = float(form.getvalue('BWa_acuteOcc'))
             b0_acuteOcc = float(form.getvalue('b0_acuteOcc'))
             b1_acuteOcc = float(form.getvalue('b1_acuteOcc'))
             SAa_acuteOcc = float(form.getvalue('SAa_acuteOcc'))
@@ -133,6 +138,7 @@ class hedgasOutputPage(webapp.RequestHandler):
             run_noaelunit_acuteOcc = -1
             hrs_animal_acuteOcc = -1
             hrs_human_acuteOcc = -1
+            BWa_acuteOcc = -1
             dow_animal_acuteOcc = -1
             dow_human_acuteOcc = -1
             b0_acuteOcc = -1
@@ -151,6 +157,7 @@ class hedgasOutputPage(webapp.RequestHandler):
                 noael_stitOcc = float(form.getvalue('noael_stitOcc')) * (mw_stitOcc / 24.45)
             hrs_animal_stitOcc = float(form.getvalue('hrs_animal_stitOcc'))
             hrs_human_stitOcc = float(form.getvalue('hrs_human_stitOcc'))
+            BWa_stitOcc = float(form.getvalue('BWa_stitOcc'))
             dow_animal_stitOcc = float(form.getvalue('dow_animal_stitOcc'))
             dow_human_stitOcc = float(form.getvalue('dow_human_stitOcc'))
             b0_stitOcc = float(form.getvalue('b0_stitOcc'))
@@ -164,6 +171,7 @@ class hedgasOutputPage(webapp.RequestHandler):
             noael_stitOcc = -1
             hrs_animal_stitOcc = -1
             hrs_human_stitOcc = -1
+            BWa_stitOcc = -1
             dow_animal_stitOcc = -1
             dow_human_stitOcc = -1
             b0_stitOcc = -1
@@ -182,6 +190,7 @@ class hedgasOutputPage(webapp.RequestHandler):
                 noael_ltOcc = float(form.getvalue('noael_ltOcc')) * (mw_ltOcc / 24.45)
             hrs_animal_ltOcc = float(form.getvalue('hrs_animal_ltOcc'))
             hrs_human_ltOcc = float(form.getvalue('hrs_human_ltOcc'))
+            BWa_ltOcc = float(form.getvalue('BWa_ltOcc'))
             dow_animal_ltOcc = float(form.getvalue('dow_animal_ltOcc'))
             dow_human_ltOcc = float(form.getvalue('dow_human_ltOcc'))
             b0_ltOcc = float(form.getvalue('b0_ltOcc'))
@@ -195,6 +204,7 @@ class hedgasOutputPage(webapp.RequestHandler):
             noael_ltOcc = -1
             hrs_animal_ltOcc = -1
             hrs_human_ltOcc = -1
+            BWa_ltOcc = -1
             dow_animal_ltOcc = -1
             dow_human_ltOcc = -1
             b0_ltOcc = -1
@@ -204,7 +214,7 @@ class hedgasOutputPage(webapp.RequestHandler):
             pu_ltOcc = -1
 
 
-        hedgas_obj = hedgas_model.hedgas(True,True,run_acuteNonOcc,mw_acuteNonOcc,noael_acuteNonOcc,run_noaelunit_acuteNonOcc,hrs_animal_acuteNonOcc,hrs_human_acuteNonOcc,dow_animal_acuteNonOcc,dow_human_acuteNonOcc,b0_acuteNonOcc,b1_acuteNonOcc,SAa_acuteNonOcc,tb_acuteNonOcc,pu_acuteNonOcc,run_stitNonOcc,mw_stitNonOcc,noael_stitNonOcc,run_noaelunit_stitNonOcc,hrs_animal_stitNonOcc,hrs_human_stitNonOcc,dow_animal_stitNonOcc,dow_human_stitNonOcc,b0_stitNonOcc,b1_stitNonOcc,SAa_stitNonOcc,tb_stitNonOcc,pu_stitNonOcc,run_ltNonOcc,mw_ltNonOcc,noael_ltNonOcc,hrs_animal_ltNonOcc,hrs_human_ltNonOcc,dow_animal_ltNonOcc,dow_human_ltNonOcc,b0_ltNonOcc,b1_ltNonOcc,SAa_ltNonOcc,tb_ltNonOcc,pu_ltNonOcc,run_acuteOcc,mw_acuteOcc,noael_acuteOcc,hrs_animal_acuteOcc,hrs_human_acuteOcc,dow_animal_acuteOcc,dow_human_acuteOcc,b0_acuteOcc,b1_acuteOcc,SAa_acuteOcc,tb_acuteOcc,pu_acuteOcc,run_stitOcc,mw_stitOcc,noael_stitOcc,hrs_animal_stitOcc,hrs_human_stitOcc,dow_animal_stitOcc,dow_human_stitOcc,b0_stitOcc,b1_stitOcc,SAa_stitOcc,tb_stitOcc,pu_stitOcc,run_ltOcc,mw_ltOcc,noael_ltOcc,hrs_animal_ltOcc,hrs_human_ltOcc,dow_animal_ltOcc,dow_human_ltOcc,b0_ltOcc,b1_ltOcc,SAa_ltOcc,tb_ltOcc,pu_ltOcc)
+        hedgas_obj = hedgas_model.hedgas(True,True,run_acuteNonOcc,mw_acuteNonOcc,noael_acuteNonOcc,hrs_animal_acuteNonOcc,hrs_human_acuteNonOcc,dow_animal_acuteNonOcc,dow_human_acuteNonOcc,b0_acuteNonOcc,b1_acuteNonOcc,SAa_acuteNonOcc,tb_acuteNonOcc,pu_acuteNonOcc,run_stitNonOcc,mw_stitNonOcc,noael_stitNonOcc,hrs_animal_stitNonOcc,hrs_human_stitNonOcc,BWa_stitNonOcc,dow_animal_stitNonOcc,dow_human_stitNonOcc,b0_stitNonOcc,b1_stitNonOcc,SAa_stitNonOcc,tb_stitNonOcc,pu_stitNonOcc,run_ltNonOcc,mw_ltNonOcc,noael_ltNonOcc,hrs_animal_ltNonOcc,hrs_human_ltNonOcc,BWa_ltNonOcc,dow_animal_ltNonOcc,dow_human_ltNonOcc,b0_ltNonOcc,b1_ltNonOcc,SAa_ltNonOcc,tb_ltNonOcc,pu_ltNonOcc,run_acuteOcc,mw_acuteOcc,noael_acuteOcc,hrs_animal_acuteOcc,hrs_human_acuteOcc,BWa_acuteOcc,dow_animal_acuteOcc,dow_human_acuteOcc,b0_acuteOcc,b1_acuteOcc,SAa_acuteOcc,tb_acuteOcc,pu_acuteOcc,run_stitOcc,mw_stitOcc,noael_stitOcc,hrs_animal_stitOcc,hrs_human_stitOcc,BWa_stitOcc,dow_animal_stitOcc,dow_human_stitOcc,b0_stitOcc,b1_stitOcc,SAa_stitOcc,tb_stitOcc,pu_stitOcc,run_ltOcc,mw_ltOcc,noael_ltOcc,hrs_animal_ltOcc,hrs_human_ltOcc,BWa_ltOcc,dow_animal_ltOcc,dow_human_ltOcc,b0_ltOcc,b1_ltOcc,SAa_ltOcc,tb_ltOcc,pu_ltOcc)
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01hh_uberheader.html', {'title':'Ubertool'})        
         html = html + template.render(templatepath + '02hh_uberintroblock_wmodellinks.html',  {'model':'hedgas','page':'output'})

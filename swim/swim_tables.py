@@ -327,7 +327,6 @@ def table_1(swim_obj):
 def table_2(swim_obj):
         #pre-table 2
         html = """
-        <div class="out_">
             <H4 class="out_2 collapsible" id="section2"><span></span>Adult</H4>
                 <div class="out_ container_output">
         """
@@ -343,7 +342,6 @@ def table_2(swim_obj):
 def table_3(swim_obj):
         #pre-table 3
         html = """
-        <div class="out_">
             <H4 class="out_3 collapsible" id="section3"><span></span>Children (6-11)</H4>
                 <div class="out_ container_output">
         """
@@ -359,7 +357,6 @@ def table_3(swim_obj):
 def table_4(swim_obj):
         #pre-table 4
         html = """
-        <div class="out_">
             <H4 class="out_4 collapsible" id="section4"><span></span>Children (11-16)</H4>
                 <div class="out_ container_output">
         """
@@ -369,6 +366,7 @@ def table_4(swim_obj):
         html = html + tmpl.render(Context(dict(data=t4rows, headings=pvuheadings)))
         html = html + """
                 </div>
+        </div>
         """
         return html
 
@@ -393,8 +391,6 @@ def table_5(swim_obj):
 def table_6(swim_obj):
         #pre-table 6
         html = """
-        <br>
-        <div class="out_">
             <H4 class="out_6 collapsible" id="section6"><span></span>Margin of exposure (MOE)</H4>
                 <div class="out_ container_output">
         """
@@ -404,6 +400,7 @@ def table_6(swim_obj):
         html = html + tmpl_5.render(Context(dict(data=t6rows, l_headings=[pv5headings[0][0][0]])))
         html = html + """
                 </div>
+        </div>
         """
         return html
 
@@ -414,7 +411,7 @@ def table_sum_1(i, log_kow, mw, hlc, r, T, cw, noael):
         <div class="out_">
             <H4 class="out_1 collapsible" id="section4"><span></span>User Inputs</H4>
             <H4 class="out_1 collapsible" id="section4"><span></span>Chemical</H4>
-        <div class="out_ container_output">
+                <div class="out_ container_output">
         """%(i-1)
 
         #table sum_input_1
@@ -422,16 +419,15 @@ def table_sum_1(i, log_kow, mw, hlc, r, T, cw, noael):
         tsuminputrows_1 = gethtmlrowsfromcols(tsuminputdata_1, sumheadings1)
         html = html + tmpl.render(Context(dict(data=tsuminputrows_1, headings=sumheadings1)))
         html = html + """
-        </div>
+                </div>
         """
         return html
 
 def table_sum_2(bw_aa, bw_fa, sa_a_c, sa_a_nc, et_a_c, et_a_nc, ir_a_c, ir_a_nc, igr_a_c, igr_a_nc):
         #pre-table sum_input_2
         html = """
-        <div class="out_">
             <H4 class="out_2 collapsible" id="section4"><span></span>Adult</H4>
-        <div class="out_ container_output">
+                <div class="out_ container_output">
         """
 
         #table sum_input_2
@@ -439,16 +435,15 @@ def table_sum_2(bw_aa, bw_fa, sa_a_c, sa_a_nc, et_a_c, et_a_nc, ir_a_c, ir_a_nc,
         tsuminputrows_2 = gethtmlrowsfromcols(tsuminputdata_2, sumheadings1)
         html = html + tmpl.render(Context(dict(data=tsuminputrows_2, headings=sumheadings1)))
         html = html + """
-        </div>
+                </div>
         """
         return html
 
 def table_sum_3(bw_c1, sa_c1_c, sa_c1_nc, et_c1_c, et_c1_nc, ir_c1_c, ir_c1_nc, igr_c1_c, igr_c1_nc):
         #pre-table sum_input_3
         html = """
-        <div class="out_">
             <H4 class="out_3 collapsible" id="section4"><span></span>Children (6-11)</H4>
-        <div class="out_ container_output">
+                <div class="out_ container_output">
         """
 
         #table sum_input_3
@@ -456,16 +451,15 @@ def table_sum_3(bw_c1, sa_c1_c, sa_c1_nc, et_c1_c, et_c1_nc, ir_c1_c, ir_c1_nc, 
         tsuminputrows_3 = gethtmlrowsfromcols(tsuminputdata_3, sumheadings1)
         html = html + tmpl.render(Context(dict(data=tsuminputrows_3, headings=sumheadings1)))
         html = html + """
-        </div>
+                </div>
         """
         return html
 
 def table_sum_4(bw_c2, sa_c2_c, sa_c2_nc, et_c2_c, et_c2_nc, ir_c2_c, ir_c2_nc, igr_c2_c, igr_c2_nc):
         #pre-table sum_input_4
         html = """
-        <div class="out_">
             <H4 class="out_4 collapsible" id="section4"><span></span>Children (11-16)</H4>
-        <div class="out_ container_output">
+                <div class="out_ container_output">
         """
 
         #table sum_input_4
@@ -473,7 +467,7 @@ def table_sum_4(bw_c2, sa_c2_c, sa_c2_nc, et_c2_c, et_c2_nc, ir_c2_c, ir_c2_nc, 
         tsuminputrows_4 = gethtmlrowsfromcols(tsuminputdata_4, sumheadings1)
         html = html + tmpl.render(Context(dict(data=tsuminputrows_4, headings=sumheadings1)))
         html = html + """
-        </div>
+                </div>
         """
         return html
 
@@ -483,8 +477,6 @@ def table_sum_5(inh_c_aa, inh_c_fa, inh_c_c1, inh_c_c2, inh_nc_aa, inh_nc_fa,
                 der_c_c1, der_c_c2, der_nc_aa, der_nc_fa, der_nc_c1, der_nc_c2):
         #pre-table sum_input_5
         html = """
-        <br>
-        <div class="out_">
             <H4 class="out_5 collapsible" id="section5"><span></span>Exposure dose (mg/kg/day)</H4>
                 <div class="out_ container_output">
         """
@@ -496,7 +488,7 @@ def table_sum_5(inh_c_aa, inh_c_fa, inh_c_c1, inh_c_c2, inh_nc_aa, inh_nc_fa,
         tsuminputrows_5 = gethtmlrowsfromcols(tsuminputdata_5, sumheadings5[1])
         html = html + tmpl_5.render(Context(dict(data=tsuminputrows_5, l_headings=[sumheadings5[0][0][0], sumheadings5[0][0][1]])))
         html = html + """
-        </div>
+                </div>
         """
         return html
 
@@ -506,8 +498,6 @@ def table_sum_6(inh_c_aa_moe, inh_c_fa_moe, inh_c_c1_moe, inh_c_c2_moe, inh_nc_a
                 der_c_c1_moe, der_c_c2_moe, der_nc_aa_moe, der_nc_fa_moe, der_nc_c1_moe, der_nc_c2):
         #pre-table sum_input_6
         html = """
-        <br>
-        <div class="out_">
             <H4 class="out_6 collapsible" id="section6"><span></span>Margin of exposure (MOE)</H4>
                 <div class="out_ container_output">
         """
@@ -519,6 +509,7 @@ def table_sum_6(inh_c_aa_moe, inh_c_fa_moe, inh_c_c1_moe, inh_c_c2_moe, inh_nc_a
         tsuminputrows_6 = gethtmlrowsfromcols(tsuminputdata_6, sumheadings5[1])
         html = html + tmpl_5.render(Context(dict(data=tsuminputrows_6, l_headings=[sumheadings5[0][0][0], sumheadings5[0][0][1]])))
         html = html + """
+                </div>
         </div>
         """
         return html

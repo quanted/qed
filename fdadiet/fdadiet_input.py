@@ -22,6 +22,9 @@ class fdadietInputPage(webapp.RequestHandler):
                 'model':'fdadiet', 
                 'model_attributes':'FDA Dietary Exposure Model Inputs'})
         html = html + str(fdadiet_parameters.fdadietInp())
+        html = html + """
+        </table><p class="tank_residue" style="margin-left:35px">*Must supply either Surface Area of tank <b>or</b> Cross-sectional diameter <i>and</i> Length of tank</p><br class="tank_residue">
+        """
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05hh_ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06hh_uberfooter.html', {'links': ''})

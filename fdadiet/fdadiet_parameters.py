@@ -18,9 +18,9 @@ class fdadietInp(forms.Form):
 	run_use = forms.ChoiceField(required=True,widget=forms.RadioSelect,label='Calculation Type', choices=choose_use)
 	
 	vol = forms.FloatField(label='Volume of tank (gal)',initial='4000')
-	d = forms.FloatField(label='Cross-sectional diameter of tank (ft)',initial='6')
-	h = forms.FloatField(label='Length of tank (ft)',initial='19.9')
-	sa = forms.FloatField(label=mark_safe('Surface Area of tank (ft<sup>2</sup>)<br> (Optional; calculated from above if not supplied)'),initial='')
+	d = forms.FloatField(label='Cross-sectional diameter of tank (ft)*',initial='6')
+	h = forms.FloatField(label='Length of tank (ft)*',initial='19.9')
+	sa = forms.FloatField(label=mark_safe('Surface Area of tank (ft<sup>2</sup>)*'),initial='')
 	intake_avg = forms.FloatField(label='Average Intake of Food (g/person/day)',initial='125')
 	intake_90th = forms.FloatField(label='90th Percentile Intake of Food (g/person/day)',initial='320')
 

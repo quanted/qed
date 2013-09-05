@@ -86,8 +86,8 @@ $(document).ready(function() {
             });
 
             $('li.cpcln').click(function(){
-                if ($.inArray('.cpcln',vis_list) !== -1)
-                    curr_ind = $.inArray('.cpcln',vis_list);
+                if ($.inArray('.cpcln',vis_list) !== -1) {
+                    curr_ind = $.inArray('.cpcln',vis_list); }
                 $('li.cpcln').css({'color': '#A31E39'});
                 $('li.model, li.hdflr, li.vlflr, li.ipcap, li.mactk, li.ccpst, li.ldtpr, li.clopr, li.impdp, li.cldst, li.impty').css({'color': '#333333'});
                 $(".tab:visible").hide();
@@ -103,8 +103,8 @@ $(document).ready(function() {
             });
 
             $('li.ipcap').click(function(){
-                if ($.inArray('.ipcap',vis_list) !== -1)
-                    curr_ind = $.inArray('.ipcap',vis_list);
+                if ($.inArray('.ipcap',vis_list) !== -1) {
+                    curr_ind = $.inArray('.ipcap',vis_list); }
                 $('li.ipcap').css({'color': '#A31E39'});
                 $('li.model, li.hdflr, li.vlflr, li.cpcln, li.mactk, li.ccpst, li.ldtpr, li.clopr, li.impdp, li.cldst, li.impty').css({'color': '#333333'});
                 $(".tab:visible").hide();
@@ -120,8 +120,8 @@ $(document).ready(function() {
             });
 
             $('li.mactk').click(function(){
-                if ($.inArray('.mactk',vis_list) !== -1)
-                    curr_ind = $.inArray('.mactk',vis_list);
+                if ($.inArray('.mactk',vis_list) !== -1) {
+                    curr_ind = $.inArray('.mactk',vis_list); }
                 $('li.mactk').css({'color': '#A31E39'});
                 $('li.model, li.hdflr, li.vlflr, li.cpcln, li.ipcap, li.ccpst, li.ldtpr, li.clopr, li.impdp, li.cldst, li.impty').css({'color': '#333333'});
                 $(".tab:visible").hide();
@@ -137,8 +137,8 @@ $(document).ready(function() {
             });
 
             $('li.ccpst').click(function(){
-                if ($.inArray('.ccpst',vis_list) !== -1)
-                    curr_ind = $.inArray('.ccpst',vis_list);
+                if ($.inArray('.ccpst',vis_list) !== -1) {
+                    curr_ind = $.inArray('.ccpst',vis_list); }
                 $('li.ccpst').css({'color': '#A31E39'});
                 $('li.model, li.hdflr, li.vlflr, li.cpcln, li.ipcap, li.mactk, li.ldtpr, li.clopr, li.impdp, li.cldst, li.impty').css({'color': '#333333'});
                 $(".tab:visible").hide();
@@ -154,8 +154,8 @@ $(document).ready(function() {
             });
 
             $('li.ldtpr').click(function(){
-                if ($.inArray('.ldtpr',vis_list) !== -1)
-                    curr_ind = $.inArray('.ldtpr',vis_list);
+                if ($.inArray('.ldtpr',vis_list) !== -1) {
+                    curr_ind = $.inArray('.ldtpr',vis_list); }
                 $('li.ldtpr').css({'color': '#A31E39'});
                 $('li.model, li.hdflr, li.vlflr, li.cpcln, li.ipcap, li.mactk, li.ccpst, li.clopr, li.impdp, li.cldst, li.impty').css({'color': '#333333'});
                 $(".tab:visible").hide();
@@ -171,8 +171,8 @@ $(document).ready(function() {
             });
 
             $('li.clopr').click(function(){
-                if ($.inArray('.clopr',vis_list) !== -1)
-                    curr_ind = $.inArray('.clopr',vis_list);
+                if ($.inArray('.clopr',vis_list) !== -1) {
+                    curr_ind = $.inArray('.clopr',vis_list); }
                 $('li.clopr').css({'color': '#A31E39'});
                 $('li.model, li.hdflr, li.vlflr, li.cpcln, li.ipcap, li.mactk, li.ccpst, li.ldtpr, li.impdp, li.cldst, li.impty').css({'color': '#333333'});
                 $(".tab:visible").hide();
@@ -188,8 +188,8 @@ $(document).ready(function() {
             });
 
             $('li.impdp').click(function(){
-                if ($.inArray('.impdp',vis_list) !== -1)
-                    curr_ind = $.inArray('.impdp',vis_list);
+                if ($.inArray('.impdp',vis_list) !== -1) {
+                    curr_ind = $.inArray('.impdp',vis_list); }
                 $('li.impdp').css({'color': '#A31E39'});
                 $('li.model, li.hdflr, li.vlflr, li.cpcln, li.ipcap, li.mactk, li.ccpst, li.ldtpr, li.clopr, li.cldst, li.impty').css({'color': '#333333'});
                 $(".tab:visible").hide();
@@ -205,8 +205,8 @@ $(document).ready(function() {
             });
 
             $('li.cldst').click(function(){
-                if ($.inArray('.cldst',vis_list) !== -1)
-                    curr_ind = $.inArray('.cldst',vis_list);
+                if ($.inArray('.cldst',vis_list) !== -1) {
+                    curr_ind = $.inArray('.cldst',vis_list); }
                 $('li.cldst').css({'color': '#A31E39'});
                 $('li.model, li.hdflr, li.vlflr, li.cpcln, li.ipcap, li.mactk, li.ccpst, li.ldtpr, li.clopr, li.impdp, li.impty').css({'color': '#333333'});
                 $(".tab:visible").hide();
@@ -222,8 +222,8 @@ $(document).ready(function() {
             });
 
             $('li.impty').click(function(){
-                if ($.inArray('.impty',vis_list) !== -1)
-                    curr_ind = $.inArray('.impty',vis_list);
+                if ($.inArray('.impty',vis_list) !== -1) {
+                    curr_ind = $.inArray('.impty',vis_list); }
                 $('li.impty').css({'color': '#A31E39'});
                 $('li.model, li.hdflr, li.vlflr, li.cpcln, li.ipcap, li.mactk, li.ccpst, li.ldtpr, li.clopr, li.impdp, li.cldst').css({'color': '#333333'});
                 $(".tab:visible").hide();

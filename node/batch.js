@@ -342,7 +342,7 @@ server.get('/api', function(req, res, next){
     res.send(apiDescription);
 });
 
-erver.get('/api-key', function(req, res, next){
+server.get('/api-key', function(req, res, next){
     console.log("GET for API Key");
     apiKey = utils.generateNewAPIKey();
     res.header("Access-Control-Allow-Origin", "*");

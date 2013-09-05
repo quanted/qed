@@ -20,8 +20,16 @@ class PPInp(forms.Form):
     solubility = forms.FloatField(label='Solubility(mg/L)')
     solubility_ppm = forms.FloatField(label='Solubility(ppm)')
     Kd = forms.FloatField(label='Kd (mL/g)')
-    Koc = forms.FloatField(label='Koc (mL/g OC)')   
     photolysis = forms.FloatField(label='Photolysis, aquatic half-life (days)')
     hydrolysis_ph5 = forms.FloatField(label='Hydrolysis: pH=5/acidic (half-life, days)')
     hydrolysis_ph7 = forms.FloatField(label='Hydrolysis: pH=7/neutral (half-life, days)')
     hydrolysis_ph9 = forms.FloatField(label='Hydrolysis: pH=9/alkaline (half-life, days)')
+    l_kow = forms.FloatField(label='Log Kow')
+    k_oc = forms.FloatField(label='Koc (L/kg OC)')
+    c_wdp = forms.FloatField(label='Pore water (benthic) EECs (ug/L)')
+    water_column_EEC = forms.FloatField(label='Water column 1 in 10 years EECs (ug/L)')
+    
+
+
+
+

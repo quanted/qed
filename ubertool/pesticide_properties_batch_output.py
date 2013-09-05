@@ -25,9 +25,7 @@ def batchLoadPesticidePropertiesConfigs(params_matrix,config_index,ubertool_conf
     if "solubility_ppm" in params_matrix:
         config_params['solubility_ppm'] = params_matrix.get("solubility_ppm")[config_index]   
     if "Kd" in params_matrix:
-        config_params['Kd'] = params_matrix.get("Kd")[config_index]                         
-    if "Koc" in params_matrix:
-        config_params['Koc'] = params_matrix.get("Koc")[config_index]            
+        config_params['Kd'] = params_matrix.get("Kd")[config_index]                                   
     if "photolysis" in params_matrix:
         config_params['photolysis'] = params_matrix.get("photolysis")[config_index]            
     if "hydrolysis_ph5" in params_matrix:
@@ -36,6 +34,15 @@ def batchLoadPesticidePropertiesConfigs(params_matrix,config_index,ubertool_conf
         config_params['hydrolysis_ph7'] = params_matrix.get("hydrolysis_ph7")[config_index]            
     if "hydrolysis_ph9" in params_matrix:
         config_params['hydrolysis_ph9'] = params_matrix.get("hydrolysis_ph9")[config_index]
+    if "l_kow" in params_matrix:
+        config_params['l_kow'] = params_matrix.get("l_kow")[config_index]   
+    if "k_oc" in params_matrix:
+        config_params['k_oc'] = params_matrix.get("k_oc")[config_index]  
+    if "c_wdp" in params_matrix:
+        config_params['c_wdp'] = params_matrix.get("c_wdp")[config_index] 
+    if "water_column_EEC" in params_matrix:
+        config_params['water_column_EEC'] = params_matrix.get("water_column_EEC")[config_index] 
+                     
     config_params['pest_configuration'] = config_name
     ubertool_configuration_properties.update(config_params)
     config_params['config_name'] = config_name

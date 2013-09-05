@@ -32,6 +32,8 @@ def batchLoadTerrestrialToxicityConfigs(params_matrix,config_index,ubertool_conf
         config_params['Species_of_the_tested_bird_avian_NOAEC'] = params_matrix.get("Species_of_the_tested_bird_avian_NOAEC")[config_index]      
     if "Species_of_the_tested_bird_avian_NOAEL" in params_matrix:
         config_params['Species_of_the_tested_bird_avian_NOAEL'] = params_matrix.get("Species_of_the_tested_bird_avian_NOAEL")[config_index]            
+    if "m_species" in params_matrix:
+        config_params['m_species'] = params_matrix.get("m_species")[config_index]
     if "mamm_acute_derm_ld50" in params_matrix:
         config_params['mamm_acute_derm_ld50'] = params_matrix.get("mamm_acute_derm_ld50")[config_index] 
     if "mamm_acute_derm_study" in params_matrix:
@@ -86,6 +88,8 @@ def batchLoadTerrestrialToxicityConfigs(params_matrix,config_index,ubertool_conf
         config_params['mammalian_inhalation_lc50'] = params_matrix.get("mammalian_inhalation_lc50")[config_index]            
     if "duration_of_rat_study" in params_matrix:
         config_params['duration_of_rat_study'] = params_matrix.get("duration_of_rat_study")[config_index]            
+    if "mammalian_chronic_endpoint" in params_matrix:
+        config_params['mammalian_chronic_endpoint'] = params_matrix.get("mammalian_chronic_endpoint")[config_index] 
     if "mammalian_NOAEC" in params_matrix:
         config_params['mammalian_NOAEC'] = params_matrix.get("mammalian_NOAEC")[config_index]  
     if "mammalian_NOAEL" in params_matrix:

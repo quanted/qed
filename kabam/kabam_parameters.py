@@ -33,7 +33,7 @@ class KabamInp_chem(forms.Form):
     css = forms.FloatField(required=True,label=mark_safe('Concentration of Suspended Solids (C<sub>SS</sub>; kg/L)'),initial=0.00003)
     oc = forms.FloatField(required=True,label=mark_safe('Sediment Organic Carbon (OC; %)'),initial=4)
 class KabamInp_bird(forms.Form):
-    b_species = forms.ChoiceField(required=True,label='Species of the tested bird', choices=Species_of_the_tested_bird_CHOICES, initial='178')
+    Species_of_the_tested_bird = forms.ChoiceField(required=True,label='Species of the tested bird', choices=Species_of_the_tested_bird_CHOICES, initial='178')
     bw_quail = forms.FloatField(required=True,label='Weight of the tested bird', initial= 178)
     bw_duck = forms.FloatField(required=True,label='Weight of the tested bird', initial= 1580)
     bwb_other = forms.FloatField(required=True,label='Weight of the tested bird', initial= 200)

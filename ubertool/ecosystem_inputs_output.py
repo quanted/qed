@@ -29,13 +29,12 @@ class UbertoolEcosystemInputsConfigurationPage(webapp.RequestHandler):
             logger.info(user.user_id())
             eco_inputs.user = user
         eco_inputs.config_name = config_name
-        eco_inputs.concentration_of_particulate_organic_carbon = float(form.getvalue('concentration_of_particulate_organic_carbon'))
-        eco_inputs.concentration_of_dissolved_organic_carbon = float(form.getvalue('concentration_of_dissolved_organic_carbon'))
-        eco_inputs.concentration_of_dissolved_oxygen = float(form.getvalue('concentration_of_dissolved_oxygen'))
-        eco_inputs.water_temperature = float(form.getvalue('water_temperature'))
-        eco_inputs.concentration_of_suspended_solids = float(form.getvalue('concentration_of_suspended_solids'))
-        eco_inputs.sediment_organic_carbon = float(form.getvalue('sediment_organic_carbon'))
-
+        eco_inputs.x_poc = float(form.getvalue('x_poc'))
+        eco_inputs.x_doc = float(form.getvalue('x_doc'))
+        eco_inputs.c_ox = float(form.getvalue('c_ox'))
+        eco_inputs.w_t = float(form.getvalue('w_t'))
+        eco_inputs.c_ss = float(form.getvalue('c_ss'))
+        eco_inputs.oc = float(form.getvalue('oc'))
         eco_inputs.put()
         self.redirect("run_ubertool.html")
         

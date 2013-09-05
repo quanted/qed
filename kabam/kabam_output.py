@@ -30,7 +30,7 @@ class KabamOutputPage(webapp.RequestHandler):
         c_wdp = float(form.getvalue('beec')) / 1000000
         water_column_EEC = float(form.getvalue('weec'))
         c_wto = float(water_column_EEC) / 1000000
-        mineau = float(form.getvalue('sf'))
+        mineau_scaling_factor = float(form.getvalue('sf'))
         x_poc = float(form.getvalue('cpoc'))
         x_doc = float(form.getvalue('cdoc'))
         c_ox = float(form.getvalue('cox'))
@@ -38,7 +38,7 @@ class KabamOutputPage(webapp.RequestHandler):
         c_ss = float(form.getvalue('css'))
         oc = float(form.getvalue('oc'))/100
         k_ow = 10**(float(l_kow))
-        b_species = form.getvalue('b_species')
+        Species_of_the_tested_bird = form.getvalue('Species_of_the_tested_bird')
         bw_quail = form.getvalue('bw_quail')
         bw_duck = form.getvalue('bw_duck')
         bwb_other = form.getvalue('bwb_other')
@@ -291,8 +291,8 @@ class KabamOutputPage(webapp.RequestHandler):
 
 
         kabam_obj = kabam_model.kabam(
-            True,True,chemical_name,l_kow,k_oc,c_wdp,water_column_EEC,c_wto,mineau,x_poc,x_doc,c_ox,w_t,c_ss,oc,k_ow,
-            b_species,bw_quail,bw_duck,bwb_other,avian_ld50,avian_lc50,avian_noaec,m_species,bw_rat,bwm_other,mammalian_ld50,mammalian_lc50,mammalian_chronic_endpoint,
+            True,True,chemical_name,l_kow,k_oc,c_wdp,water_column_EEC,c_wto,mineau_scaling_factor,x_poc,x_doc,c_ox,w_t,c_ss,oc,k_ow,
+            Species_of_the_tested_bird,bw_quail,bw_duck,bwb_other,avian_ld50,avian_lc50,avian_noaec,m_species,bw_rat,bwm_other,mammalian_ld50,mammalian_lc50,mammalian_chronic_endpoint,
             lf_p_sediment,lf_p_phytoplankton,lf_p_zooplankton,lf_p_benthic_invertebrates,lf_p_filter_feeders,lf_p_small_fish,lf_p_medium_fish,
             mf_p_sediment,mf_p_phytoplankton,mf_p_zooplankton,mf_p_benthic_invertebrates,mf_p_filter_feeders,mf_p_small_fish,
             sf_p_sediment,sf_p_phytoplankton,sf_p_zooplankton,sf_p_benthic_invertebrates,sf_p_filter_feeders,

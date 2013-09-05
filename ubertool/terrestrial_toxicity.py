@@ -19,6 +19,7 @@ class TerrestrialToxicity(db.Model):
     Species_of_the_tested_bird_avian_lc50 = db.StringProperty
     Species_of_the_tested_bird_avian_NOAEC = db.StringProperty
     Species_of_the_tested_bird_avian_NOAEL = db.StringProperty
+    m_species = db.StringProperty
     mamm_acute_derm_ld50 = db.FloatProperty()
     mamm_acute_derm_study = db.StringProperty()
     mamm_study_add_comm = db.StringProperty()
@@ -46,6 +47,7 @@ class TerrestrialToxicity(db.Model):
     mammalian_lc50 = db.FloatProperty()
     mammalian_inhalation_lc50 = db.FloatProperty()
     duration_of_rat_study = db.FloatProperty()
+    mammalian_chronic_endpoint = db.FloatProperty()
     mammalian_NOAEC = db.FloatProperty()
     mammalian_NOAEL = db.FloatProperty()
     amphibian_bw = db.FloatProperty()    

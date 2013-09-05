@@ -20,8 +20,8 @@ logger = logging.getLogger('Kabam Model')
 
 class kabam(object):
     def __init__(self, set_variables=True,run_methods=True,
-            chemical_name='',l_kow=1,k_oc=1,c_wdp=1,water_column_EEC=1,c_wto=1,mineau=1,x_poc=1,x_doc=1,c_ox=1,w_t=1,c_ss=1,oc=1,k_ow=1,
-            b_species='',bw_quail=1,bw_duck=1,bwb_other=1,avian_ld50=1,avian_lc50=1,avian_noaec=1,m_species='',bw_rat=1,bwm_other=1,mammalian_ld50=1,mammalian_lc50=1,mammalian_chronic_endpoint=1,
+            chemical_name='',l_kow=1,k_oc=1,c_wdp=1,water_column_EEC=1,c_wto=1,mineau_scaling_factor=1,x_poc=1,x_doc=1,c_ox=1,w_t=1,c_ss=1,oc=1,k_ow=1,
+            Species_of_the_tested_bird='',bw_quail=1,bw_duck=1,bwb_other=1,avian_ld50=1,avian_lc50=1,avian_noaec=1,m_species='',bw_rat=1,bwm_other=1,mammalian_ld50=1,mammalian_lc50=1,mammalian_chronic_endpoint=1,
             lf_p_sediment=1,lf_p_phytoplankton=1,lf_p_zooplankton=1,lf_p_benthic_invertebrates=1,lf_p_filter_feeders=1,lf_p_small_fish=1,lf_p_medium_fish=1,
             mf_p_sediment=1,mf_p_phytoplankton=1,mf_p_zooplankton=1,mf_p_benthic_invertebrates=1,mf_p_filter_feeders=1,mf_p_small_fish=1,
             sf_p_sediment=1,sf_p_phytoplankton=1,sf_p_zooplankton=1,sf_p_benthic_invertebrates=1,sf_p_filter_feeders=1,
@@ -52,7 +52,7 @@ class kabam(object):
                 self.c_wdp=c_wdp
                 self.water_column_EEC=water_column_EEC
                 self.c_wto=c_wto
-                self.mineau=mineau
+                self.mineau_scaling_factor=mineau_scaling_factor
                 self.x_poc=x_poc
                 self.x_doc=x_doc
                 self.c_ox=c_ox
@@ -60,13 +60,13 @@ class kabam(object):
                 self.c_ss=c_ss
                 self.oc=oc
                 self.k_ow=k_ow
-                self.b_species = b_species
+                self.Species_of_the_tested_bird = Species_of_the_tested_bird
                 self.bw_quail = bw_quail
                 self.bw_duck = bw_duck
                 self.bwb_other = bwb_other
-                if b_species =='178':
+                if Species_of_the_tested_bird =='178':
                     self.bw_bird = self.bw_quail
-                elif b_species =='1580':
+                elif Species_of_the_tested_bird =='1580':
                     self.bw_bird = self.bw_duck
                 else:
                     self.bw_bird = self.bwb_other           
@@ -1593,16 +1593,16 @@ class kabam(object):
 
 #     #################################### avian
 #     #dose based acute toxicity for birds
-#     if b_species == '178':
-#         acute_dose_based_a = avian_ld50 * (aweight/0.178)**(mineau-1)
-#     elif b_species == '1580':
-#         acute_dose_based_a = avian_ld50 * (aweight/1.58)**(mineau-1)
+#     if Species_of_the_tested_bird == '178':
+#         acute_dose_based_a = avian_ld50 * (aweight/0.178)**(mineau_scaling_factor-1)
+#     elif Species_of_the_tested_bird == '1580':
+#         acute_dose_based_a = avian_ld50 * (aweight/1.58)**(mineau_scaling_factor-1)
 #     else: 
-#         acute_dose_based_a = avian_ld50 * (aweight/float(body_weight_of_the_tested_bird_other))**(mineau-1)
+#         acute_dose_based_a = avian_ld50 * (aweight/float(body_weight_of_the_tested_bird_other))**(mineau_scaling_factor-1)
 # #          return acute_dose_based_a
     
     def acute_dose_based_a_f(self):
-        self.acute_dose_based_a = self.avian_ld50 * (self.aweight/(float(self.bw_bird)/1000))**(self.mineau-1)
+        self.acute_dose_based_a = self.avian_ld50 * (self.aweight/(float(self.bw_bird)/1000))**(self.mineau_scaling_factor-1)
         return self.acute_dose_based_a
 
     ##################################### RQ Values

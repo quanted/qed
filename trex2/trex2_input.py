@@ -27,7 +27,7 @@ class trexInputPage(webapp.RequestHandler):
                 'model_attributes':'TREX 1.5.2 Inputs'})
         html = html + """<a href="trex_input.html" class="TREX1"> Want to Use TREX 1.4.1?</a>"""
         html = html + """
-        <div id="input_nav">
+        <div class="input_nav">
             <ul>
                 <li class="Chemical" style="color:#FFA500; font-weight:bold">Chemical</li>
                 |<li class="Avian" style="font-weight:bold"> Avian</li>

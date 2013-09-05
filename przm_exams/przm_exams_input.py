@@ -22,7 +22,7 @@ class PRZMEXAMSInputPage(webapp.RequestHandler):
                 'model':'przm_exams', 
                 'model_attributes':'PRZM-EXAMS Inputs'})
         html = html + """
-        <div id="input_nav">
+        <div class="input_nav">
             <ul>
                 <li class="PRZM" style="color:#FFA500; font-weight:bold"> PRZM Inputs </li>
                 |<li class="EXAMS" style="font-weight:bold"> EXAMS Inputs</li>

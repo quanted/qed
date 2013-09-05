@@ -21,20 +21,32 @@ class resexposureInputPage(webapp.RequestHandler):
                 'model':'resexposure', 
                 'model_attributes':'Residential Exposure Model Inputs'})
         html = html + """
-        <div id="input_nav">
+        <div class="input_nav">
             <ul>
-                <li class="uutab model" style="color:#FFA500; font-weight:bold">Select model</li>
-                <li class="uutab hdflr" style="font-weight:bold; display:none"> | Hard Surface Floor Cleaner</li>
-                <li class="uutab vlflr" style="font-weight:bold; display:none"> | Vinyl Floor</li>
-                <li class="uutab cpcln" style="font-weight:bold; display:none"> | Carpet Cleaner</li>
-                <li class="uutab ipcap" style="font-weight:bold; display:none"> | Impregnated Carpet</li>
-                <li class="uutab mactk" style="font-weight:bold; display:none"> | Mattress Covers and Ticking</li>
-                <li class="uutab ccpst" style="font-weight:bold; display:none"> | Clothing/Textile Consumer Product Spray Treatment</li>
-                <li class="uutab ldtpr" style="font-weight:bold; display:none"> | Laundry Detergent Preservative</li>
-                <li class="uutab clopr" style="font-weight:bold; display:none"> | Clothing/Textile Material Preservative</li>
-                <li class="uutab impdp" style="font-weight:bold; display:none"> | Impregnated Diapers</li>
-                <li class="uutab cldst" style="font-weight:bold; display:none"> | Sprayed Diapers</li>
-                <li class="uutab impty" style="font-weight:bold; display:none"> | Impregnated Toys</li>
+                <li class="uutab model" style="color:#A31E39; font-weight:bold">Select model</li>
+                <li class="uutab model_li" style="font-weight:bold; display:none"> | </li>
+                <li class="uutab hdflr" style="font-weight:bold; display:none"> Hard Surface Floor Cleaner</li>
+                <li class="uutab hdflr_li" style="font-weight:bold; display:none"> | </li>
+                <li class="uutab vlflr" style="font-weight:bold; display:none"> Vinyl Floor</li>
+                <li class="uutab vlflr_li" style="font-weight:bold; display:none"> | </li>
+                <li class="uutab cpcln" style="font-weight:bold; display:none"> Carpet Cleaner</li>
+                <li class="uutab cpcln_li" style="font-weight:bold; display:none"> | </li>
+                <li class="uutab ipcap" style="font-weight:bold; display:none"> Impregnated Carpet</li>
+                <li class="uutab ipcap_li" style="font-weight:bold; display:none"> | </li>
+                <li class="uutab mactk" style="font-weight:bold; display:none"> Mattress Covers and Ticking</li>
+                <li class="uutab mactk_li" style="font-weight:bold; display:none"> | </li>
+                <li class="uutab ccpst" style="font-weight:bold; display:none"> Clothing/Textile Consumer Product Spray Treatment</li>
+                <li class="uutab ccpst_li" style="font-weight:bold; display:none"> | </li>
+                <li class="uutab ldtpr" style="font-weight:bold; display:none"> Laundry Detergent Preservative</li>
+                <li class="uutab ldtpr_li" style="font-weight:bold; display:none"> | </li>
+                <li class="uutab clopr" style="font-weight:bold; display:none"> Clothing/Textile Material Preservative</li>
+                <li class="uutab clopr_li" style="font-weight:bold; display:none"> | </li>
+                <li class="uutab impdp" style="font-weight:bold; display:none"> Impregnated Diapers</li>
+                <li class="uutab impdp_li" style="font-weight:bold; display:none"> | </li>
+                <li class="uutab cldst" style="font-weight:bold; display:none"> Sprayed Diapers</li>
+                <li class="uutab cldst_li" style="font-weight:bold; display:none"> | </li>
+                <li class="uutab impty" style="font-weight:bold; display:none"> Impregnated Toys</li>
+                <li class="uutab impty_li" style="font-weight:bold; display:none"> | </li>
             </ul>
         </div>
         """
@@ -64,7 +76,7 @@ class resexposureInputPage(webapp.RequestHandler):
         html = html + """</table><table class="tab tab_impty" border="0" style="display:none">"""
         html = html + str(resexposure_parameters.resexposureInp_impty())
 
-        html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
+        html = html + template.render(templatepath + '04uberinput_tabbed_end_resexposure.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05hh_ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06hh_uberfooter.html', {'links': ''})
         self.response.out.write(html)

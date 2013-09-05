@@ -21,9 +21,9 @@ class swimInputPage(webapp.RequestHandler):
                 'model':'swim', 
                 'model_attributes':'SWIM Inputs'})
         html = html + """
-        <div id="input_nav">
+        <div class="input_nav">
             <ul>
-                <li class="chem" style="color:#FFA500; font-weight:bold">Chemical</li>
+                <li class="chem" style="color:#A31E39; font-weight:bold">Chemical</li>
                 |<li class="ad" style="font-weight:bold"> Adult</li>
                 |<li class="c1" style="font-weight:bold"> Children 6-11</li>
                 |<li class="c2" style="font-weight:bold"> Children 11-16</li>

@@ -30,7 +30,7 @@ class THerpsInputPage(webapp.RequestHandler):
                 'model':'therps', 
                 'model_attributes':'T-Herps Inputs'})
         html = html + """
-        <div id="input_nav">
+        <div class="input_nav">
             <ul>
                 <li class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical</li>
                 |<li class="Avian" style="font-weight:bold"> Avian</li>

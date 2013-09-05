@@ -21,7 +21,7 @@ class PFAMInputPage(webapp.RequestHandler):
                 'model_attributes':'PFAM Inputs'})
 
         html = html + """
-        <div id="input_nav">
+        <div class="input_nav">
             <ul>
                 <li class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </li>
                 |<li class="Application" style="font-weight:bold"> Application </li>

@@ -1456,12 +1456,14 @@ ul.nobullet {
 .articles_input ul {
   list-style: none;
 }
-#input_nav ul {
+.input_nav ul {
   text-align: center;
 }
-#input_nav li {
+.input_nav li {
   display: inline;
   list-style: none;
+  cursor: hand;
+  cursor: pointer;
 }
 .articles_output {
   width: 822px;
@@ -1504,6 +1506,14 @@ ul.nobullet {
 .articles_output li {
   margin-top: 0.5em;
   font-size: 12px;
+}
+.input_left {
+  float: left;
+  margin-left: 35px;
+}
+.input_right {
+  float: right;
+  margin-right: 35px;
 }
 .input_submit {
   text-align: center;

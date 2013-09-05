@@ -1,3 +1,11 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+#*********************************************************#
+# @@ScriptName: orehe_batchinput.py
+# @@Author: Tao Hong
+# @@Create Date: 2013-06-19
+# @@Modify Date: 2013-08-28
+#*********************************************************#
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import webapp2 as webapp

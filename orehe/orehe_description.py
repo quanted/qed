@@ -1,9 +1,11 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jan 03 13:30:41 2012
-
-@author: jharston
-"""
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+#*********************************************************#
+# @@ScriptName: orehe_description.py
+# @@Author: Tao
+# @@Create Date: 2013-06-19
+# @@Modify Date: 2013-08-28
+#*********************************************************#
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
@@ -33,4 +35,4 @@ def main():
 
 if __name__ == '__main__':
     main()
- 
+ 

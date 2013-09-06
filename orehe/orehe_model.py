@@ -1,5 +1,9 @@
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
+#*********************************************************#
+# @@ScriptName: orehe_model.py
+# @@Author: Tao Hong
+# @@Create Date: 2013-08-28
+# @@Modify Date: 2013-09-06
+#*********************************************************#
 import numpy as np
 import logging
 import sys
@@ -77,7 +81,7 @@ class orehe_pp_ac(orehe_chem):
         self.apmd_pp_ac = apmd_pp_ac
         self.wf_pp_ac = float(wf_pp_ac)
         self.vl_pp_ac = float(vl_pp_ac)
-        self.pd_pp_ac= float(pd_pp_ac)
+        self.pd_pp_ac = float(pd_pp_ac)
         self.area_pp_ac = float(area_pp_ac)
         self.deru_pp_ac = float(deru_pp_ac)
         self.inhu_pp_ac = float(inhu_pp_ac)
@@ -162,10 +166,20 @@ class orehe_oa(orehe_chem):
                                        inh_pod_cm, inh_pod_sor_cm, inh_abs_cm, inh_loc_cm, der_wt_cm, inh_wt_cm, chd_wt_cm, comb_cm)
         self.lab_oa = lab_oa
         self.ai_oa = float(ai_oa)/100.0
-        self.at_oz_oa = float(at_oz_oa)
-        self.at_g_oa = float(at_g_oa)
-        self.at_ml_oa = float(at_ml_oa)
-        self.den_oa = float(den_oa)
+        try:
+            self.at_oz_oa = float(at_oz_oa)
+        except:
+            self.at_oz_oa = at_oz_oa
+        try:
+            self.at_g_oa = float(at_g_oa)
+        except:
+            self.at_g_oa = at_g_oa
+        try:
+            self.at_ml_oa = float(at_ml_oa)
+            self.den_oa = float(den_oa)
+        except:
+            self.at_ml_oa = at_ml_oa
+            self.den_oa = den_oa
         self.deru_oa = float(deru_oa)
         self.inhu_oa = float(inhu_oa)
 
@@ -282,42 +296,3 @@ class orehe_ab(orehe_chem):
         return {'der_exp':der_exp, 'inh_exp':inh_exp, 'der_abs_exp':der_abs_exp, 
                 'inh_abs_exp':inh_abs_exp, 'der_moe':der_moe, 'inh_moe':inh_moe, 
                 'comb_moe':comb_moe, 'ari':ari, 'aprt_ab':aprt_ab}
-
-
-
-
-
-# ss=orehe(0.4, 45, 23, 90, 1000)
-
-# ss_ge = orehe_ge('actv_cm', 'exdu_cm', 2, 'der_pod_sor_cm', 3, 'der_abs_sor_cm', 4, 
-#                  5, 'inh_pod_sor_cm', 6, 7, 8, 9, 10, 'Combined (same LOCs)', 
-#                  'scna_gh', 'form_gh', 'apmd_gh', 'type_gh', 11, 12, 13, 14)
-
-# ss_oa = orehe_oa('actv_cm', 'exdu_cm', 2, 'der_pod_sor_cm', 3, 'der_abs_sor_cm', 4, 
-#                  5, 'inh_pod_sor_cm', 6, 7, 8, 9, 10, 'Combined (same LOCs)', 
-#                  'oz', 0.4, 2, 2, 1, 2, 1, 2)
-
-# ss_ab = orehe_ab('actv_cm', 'exdu_cm', 2, 'der_pod_sor_cm', 3, 'der_abs_sor_cm', 4, 
-#                  5, 'inh_pod_sor_cm', 6, 7, 8, 9, 10, 'Combined (same LOCs)', 
-#                  0.3, 55, 1, 12, 0.03, 0.4, 0.01)
-
-# ss_pp_ac = orehe_pp_ac('actv_cm', 'exdu_cm', 2, 'der_pod_sor_cm', 3, 'der_abs_sor_cm', 4, 
-#                  5, 'inh_pod_sor_cm', 6, 7, 8, 9, 10, 'Combined (same LOCs)', 
-#                  0.4, 45, 23, 3, 370, 3)
-
-# ss_tp_dp = orehe_tp_dp('actv_cm', 'exdu_cm', 2, 'der_pod_sor_cm', 3, 'der_abs_sor_cm', 4, 
-#                  5, 'inh_pod_sor_cm', 6, 7, 8, 9, 10, 'Combined (same LOCs)', 
-#                  0.9, 1000, 2, 100, 0.027)
-
-
-
-
-# print ss_ge.exp_ge_out
-# print ss_oa.exp_oa_out
-
-# print ss_ab.exp_ab_out
-# print ss_tp_dp.exp_tp_dp_out
-
-# print ss_oa.exp_oa_out
-# print ss.aa_can
-# print ss.aa_pet

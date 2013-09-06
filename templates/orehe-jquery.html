@@ -1,5 +1,11 @@
 <script>
 $(document).ready(function() {
+
+    $('#id_der_pod_sor_cm').change(function () {
+    if ($('#id_der_pod_sor_cm').val() == "Route-specific") {
+        $('#id_der_abs_cm').val(1.0)
+        }
+    });
 // Start Dynamic for Outdoor Aerosol Space Sprays// 
     $('#id_at_g_oa').closest('tr').hide();
     $('#id_at_ml_oa').closest('tr').hide();

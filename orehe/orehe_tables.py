@@ -4,7 +4,7 @@
 # @@ScriptName: orehe_tables.py
 # @@Author: Tao Hong
 # @@Create Date: 2013-09-05
-# @@Modify Date: 2013-09-05
+# @@Modify Date: 2013-09-06
 #*********************************************************#
 import numpy
 import time, datetime
@@ -387,20 +387,6 @@ def gett6data_out(re_obj):
         }
     return data
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###################################################################################################
 def table_0(re_obj):
         #pre-table 0
@@ -414,7 +400,8 @@ def table_0(re_obj):
         t0rows_in = gethtmlrowsfromcols(t0data_in, pvuheadings)
         html = html + tmpl.render(Context(dict(data=t0rows_in, headings=pvuheadings)))
         html = html + """
-                </div>
+            </div>
+        </div><br>
         """
         return html
 
@@ -432,10 +419,9 @@ def table_1(re_obj):
         t1rows_in = gethtmlrowsfromcols(t1data_in, pvuheadings)
         html = html + tmpl.render(Context(dict(data=t1rows_in, headings=pvuheadings)))
         html = html + """
-                </div>
+            </div>
         """
         html = html + """
-        <div class="out_1">
             <H4 class="out_1 collapsible" id="section2"><span></span>Output</H4>
             <div class="out_1 container_output">
         """
@@ -444,7 +430,8 @@ def table_1(re_obj):
         t1rows_out = gethtmlrowsfromcols(t1data_out, pvuheadings)
         html = html + tmpl.render(Context(dict(data=t1rows_out, headings=pvuheadings)))
         html = html + """
-                </div><br>
+            </div>
+        </div><br>
         """
         return html
 
@@ -462,10 +449,9 @@ def table_2(re_obj):
         t2rows_in = gethtmlrowsfromcols(t2data_in, pvuheadings)
         html = html + tmpl.render(Context(dict(data=t2rows_in, headings=pvuheadings)))
         html = html + """
-                </div>
+            </div>
         """
         html = html + """
-        <div class="out_2">
             <H4 class="out_2 collapsible" id="section2"><span></span>Output</H4>
             <div class="out_2 container_output">
         """
@@ -474,7 +460,8 @@ def table_2(re_obj):
         t2rows_out = gethtmlrowsfromcols(t2data_out, pvuheadings)
         html = html + tmpl.render(Context(dict(data=t2rows_out, headings=pvuheadings)))
         html = html + """
-                </div><br>
+            </div>
+        </div><br>
         """
         return html
 
@@ -492,10 +479,9 @@ def table_3(re_obj):
         t3rows_in = gethtmlrowsfromcols(t3data_in, pvuheadings)
         html = html + tmpl.render(Context(dict(data=t3rows_in, headings=pvuheadings)))
         html = html + """
-                </div>
+            </div>
         """
         html = html + """
-        <div class="out_3">
             <H4 class="out_3 collapsible" id="section3"><span></span>Output</H4>
             <div class="out_3 container_output">
         """
@@ -504,9 +490,11 @@ def table_3(re_obj):
         t3rows_out = gethtmlrowsfromcols(t3data_out, pvuheadings)
         html = html + tmpl.render(Context(dict(data=t3rows_out, headings=pvuheadings)))
         html = html + """
-                </div><br>
+            </div>
+        </div><br>
         """
-        return html
+        return html
+
 
 #############Outdoor Aerosol Space Sprays############
 def table_4(re_obj):
@@ -522,10 +510,9 @@ def table_4(re_obj):
         t4rows_in = gethtmlrowsfromcols(t4data_in, pvuheadings)
         html = html + tmpl.render(Context(dict(data=t4rows_in, headings=pvuheadings)))
         html = html + """
-                </div>
+            </div>
         """
         html = html + """
-        <div class="out_4">
             <H4 class="out_4 collapsible" id="section4"><span></span>Output</H4>
             <div class="out_4 container_output">
         """
@@ -534,7 +521,8 @@ def table_4(re_obj):
         t4rows_out = gethtmlrowsfromcols(t4data_out, pvuheadings)
         html = html + tmpl.render(Context(dict(data=t4rows_out, headings=pvuheadings)))
         html = html + """
-                </div><br>
+            </div>
+        </div><br>
         """
         return html
 
@@ -555,7 +543,6 @@ def table_5(re_obj):
                 </div>
         """
         html = html + """
-        <div class="out_5">
             <H4 class="out_5 collapsible" id="section5"><span></span>Output</H4>
             <div class="out_5 container_output">
         """
@@ -564,9 +551,11 @@ def table_5(re_obj):
         t5rows_out = gethtmlrowsfromcols(t5data_out, pvuheadings)
         html = html + tmpl.render(Context(dict(data=t5rows_out, headings=pvuheadings)))
         html = html + """
-                </div><br>
+            </div>
+        </div><br>
         """
-        return html
+        return html
+
 
 #############Animal Barn Misting Systems############
 def table_6(re_obj):
@@ -585,7 +574,6 @@ def table_6(re_obj):
                 </div>
         """
         html = html + """
-        <div class="out_6">
             <H4 class="out_6 collapsible" id="section6"><span></span>Output</H4>
             <div class="out_6 container_output">
         """
@@ -594,6 +582,7 @@ def table_6(re_obj):
         t6rows_out = gethtmlrowsfromcols(t6data_out, pvuheadings)
         html = html + tmpl.render(Context(dict(data=t6rows_out, headings=pvuheadings)))
         html = html + """
-                </div><br>
+            </div>
+        </div><br>
         """
         return html

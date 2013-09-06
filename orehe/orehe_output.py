@@ -4,7 +4,7 @@
 # @@ScriptName: orehe_output.py
 # @@Author: Tao Hong
 # @@Create Date: 2013-06-19
-# @@Modify Date: 2013-09-05
+# @@Modify Date: 2013-09-06
 #*********************************************************#
 
 import os
@@ -37,8 +37,8 @@ class oreheOutputPage(webapp.RequestHandler):
         inh_pod_sor_cm = form.getvalue('inh_pod_sor_cm')
         inh_abs_cm = float(form.getvalue('inh_abs_cm'))
         inh_loc_cm = float(form.getvalue('inh_loc_cm'))
-        der_wt_cm = form.getvalue('der_wt_cm')
-        inh_wt_cm = form.getvalue('inh_wt_cm')
+        der_wt_cm = float(form.getvalue('der_wt_cm'))
+        inh_wt_cm = float(form.getvalue('inh_wt_cm'))
         chd_wt_cm = float(form.getvalue('chd_wt_cm'))
         comb_cm = form.getvalue('comb_cm')
         
@@ -146,7 +146,6 @@ class oreheOutputPage(webapp.RequestHandler):
                 'model':'orehe', 
                 'model_attributes':'ORE Output'})
         html = html + orehe_tables.table_all(scenario_cm, all_obj)
-        # print dir(gh_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06hh_uberfooter.html', {'links': ''})

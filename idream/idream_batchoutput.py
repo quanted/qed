@@ -106,13 +106,12 @@ def html_table(row, iter):
         exp_fe_a_out.append(idream_obj_temp.exp_fe_a)
 
 
-    Input_header="""<div class="out_">
-                        <br><H3>Batch Calculation of Iteration %s</H3>
-                    </div>"""%(iter)
-
+    Input_header="""<br><H3 class="out_0 collapsible" id="section0"><span></span>Batch Calculation of Iteration %s</H3>
+                        <div class="out_">
+                 """%(iter)
 
     table_all_out = idream_tables.table_all(idream_obj_temp)
-    html_table_temp = Input_header + table_all_out + "<br>"
+    html_table_temp = Input_header + table_all_out + "</div><br>"
 
     return html_table_temp           
     
@@ -129,11 +128,15 @@ def loop_html(thefile):
         iter_html = iter_html +html_table(row,i)
         i=i+1
 
+
+    sum_0="""
+        <H3 class="out_1 collapsible" id="section1"><span></span>Batch Summary Statistics (Iterations=%s)</H3>
+        <div class="out_">"""%(i-1)
     sum_1=idream_tables.table_sum_1(i, prod_re, ai, liq_rte, fruit_rte, bread_rte, cheese_rte, veg_rte, meat_rte, pure_rte, piec_rte, powd_rte)
     sum_2=idream_tables.table_sum_2(exp_child_c_1_out, exp_child_c_2_out, exp_adult_c_out, exp_fe_c_out)
     sum_3=idream_tables.table_sum_3(exp_child_a_1_out, exp_child_a_2_out, exp_adult_a_out, exp_fe_a_out)
-
-    return sum_1+sum_2+sum_3+iter_html
+    sum_4="""</div>"""
+    return sum_0+sum_1+sum_2+sum_3+sum_4+iter_html
 
 
               

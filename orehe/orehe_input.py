@@ -31,7 +31,7 @@ class oreheInputPage(webapp.RequestHandler):
         html = html + """
         <div id="input_nav">
             <ul>
-                <li class="uutab scenario" style="color:#A31E39; font-weight:bold">Select scenario</li>
+                <li class="uutab scenario" style="color:#A31E39; font-weight:bold">Chemical</li>
                 <li class="uutab ie" style="font-weight:bold; display:none"> | Indoor Environment</li>
                 <li class="uutab pp" style="font-weight:bold; display:none"> | Paints / Preservatives</li>
                 <li class="uutab tp" style="font-weight:bold; display:none"> | Treated Pets</li>

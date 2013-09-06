@@ -445,12 +445,11 @@ def html_table(row, iter):
         all_obj_temp['tab_impty'] = ip_obj_temp
 
 
-    Input_header="""<div class="out_">
-                        <br><H3>Batch Calculation of Iteration %s</H3>
-                    </div>"""%(iter)
-
+    Input_header="""<H3 class="out_0 collapsible" id="section0"><span></span>Batch Calculation of Iteration %s</H3>
+                    <div class="out_">
+                    """%(iter)
     table_all_out = resexposure_tables.table_all(model_temp, all_obj_temp)
-    html_table_temp = Input_header + table_all_out + "<br>"
+    html_table_temp = Input_header + table_all_out + "</div><br>"
 
     return html_table_temp           
     
@@ -484,7 +483,7 @@ class resexposureBatchOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberbatch_start.html', {
                 'model':'resexposure',
                 'model_attributes':'Residential Exposure Batch Output'})
-        html = html + resexposure_tables.timestamp()
+        # html = html + resexposure_tables.timestamp()
         html = html + iter_html
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})

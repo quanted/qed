@@ -28,7 +28,16 @@ $(document).ready(function() {
 			    type: 'GET',
 		        success: function(use_data) {
 					$("#id_config_name")[0].value = $("#id_user_exposure_concentrations_configuration")[0].value; 
-					$("#id_one_in_ten_peak_exposure_concentration")[0].value = use_data['one_in_ten_peak_exposure_concentration']; 
+
+					$("#id_interval_between_applications")[0].value = use_data['interval_between_applications']; 
+					$("#id_column_height")[0].value = use_data['column_height']; 
+					$("#id_spray_drift")[0].value = use_data['spray_drift']; 
+					$("#id_drift_fraction")[0].value = use_data['drift_fraction']; 
+					$("#id_direct_spray_duration")[0].value = use_data['direct_spray_duration']; 
+					$("#id_incorporation_depth")[0].value = use_data['incorporation_depth']; 
+					$("#id_percent_incorporated")[0].value = use_data['percent_incorporated']; 
+					$("#id_runoff_fraction")[0].value = use_data['runoff_fraction'];
+					$("#id_one_in_ten_peak_exposure_concentration")[0].value = use_data['one_in_ten_peak_exposure_concentration'];
 					$("#id_one_in_ten_four_day_average_exposure_concentration")[0].value = use_data['one_in_ten_four_day_average_exposure_concentration']; 
 					$("#id_one_in_ten_twentyone_day_average_exposure_concentration")[0].value = use_data['one_in_ten_twentyone_day_average_exposure_concentration']; 
 					$("#id_one_in_ten_sixty_day_average_exposure_concentration")[0].value = use_data['one_in_ten_sixty_day_average_exposure_concentration'];
@@ -59,11 +68,13 @@ function submitConfiguration()
 		form_data[id] = val;
 	}
 	form_data['created'] = getDateTime();
+	var json_form_data = JSON.stringify(form_data)
+	var post_url = "{{ubertool_service_url}}/ubertool/expo/"+$("#id_user_exposure_concentrations_configuration")[0].value;
 	$.ajax({
-		url:"{{ubertool_service_url}}/ubertool/expo/"+$("#id_user_exposure_concentrations_configuration")[0].value,
+		url: post_url,
 		async: true,
 		type: 'POST',
-		data: JSON.stringify(form_data)
+		data: json_form_data
 	});
 	window.location = "aquatic_toxicity.html";
 

@@ -1,2 +1,38 @@
+<p>PFAM model consists of two regions—a water column and a benthic region (Figure 1). Each individual region is completely mixed and at equilibrium with all phases within the individual region, and equilibrium within each region follows a linear isotherm. The two regions are coupled by a first-order mass-transfer process. Chemical transformation processes (i.e., hydrolysis, bacterial metabolism, photolysis, and sorption) within each region are formulations that were heavily borrowed from the USEPA EXAMS model (Burns, 2000). Changes in water body conditions (temperature, water levels, wind speed, etc) and the resulting changes in degradation rates occur on a daily time step. The selection of a daily time step was mainly because of the availability of a large amount of daily meteorological data (Burns et al., 2007) and the USEPA’s historical use of EXAMS on a daily time step. Major processes are presented below, while please refer to the manual for the</p>
 
-<p></p>
+<img class="pfam" src = "images/pfam_figure1.png" alt="PFAM Model">
+
+<ol>
+<li>Flood and Overflow Control</li>
+
+<p>Water is held in a basin behind a weir. The depth of the water column is calculated from daily precipitation, refill, drainage, leakage, and evaporation:</p>
+<img src = "/images/latex/pfam/pfam_image1.png">
+
+<li>Plant Growth</li>
+<p>Plant growth is based on a simple linear increase in areal coverage of the plant, as described in the following equations:</p>
+<img src = "/images/latex/pfam/pfam_image2.png" alt="pfam_2">
+
+<li>Chemical Processes</li>
+<p>The mathematical conceptualization of the water body is formed on daily piecewise solutions. A constant water body volume is assumed for the duration of a day (the time step of the model), but the volume can vary from one day to another day. All individual dissipation processes (e.g., metabolism, hydrolysis, and volatilization) are represented as first-order in concentration. On any given day, the aquatic agriculture model is described by two differential equations—namely, a mass balance on the water column region and a mass balance on the benthic region:</p>
+<p>In this model the following assumptions are made:</p>
+<img src = "/images/latex/pfam/pfam_image3.png" alt="pfam_3">
+<img src = "/images/latex/pfam/pfam_image4.png" alt="pfam_4">
+<ul>
+<li>suspended matter in the water column occupies negligible volume</li> 
+<li>hydrolysis, photolysis, and volatilization act only on dissolved species</li> 
+<li>within a single region (water column or benthic), the rate coefficient for biological metabolism is the same</li> 
+<li>for both dissolved and sorbed forms of pesticide</li> 
+<li>the hydrolysis rate coefficient in the benthic region is the same as that in the water column</li> 
+<li>linear isotherm equilibrium exists within each region among all sorbed species</li> 
+</ul>
+
+<li>Pesticide Applications</li>
+<p>PFAM allows the user to apply pesticides in ways that should cover most application possibilities. Users may apply pesticide to the dry soil or to the flood water. When the slow release option is selected the pesticide is assumed to be released in a first-order manner in which the amount of pesticide unreleased is:</p>
+<img src = "/images/latex/pfam/pfam_image5.png" alt="pfam_5">
+<p>PFAM calculates the mass released each day by:</p>
+<img src = "/images/latex/pfam/pfam_image6.png" alt="pfam_6">
+
+<li>Degradates</li>
+<p>Degradates are handled exactly like the parent in regard to their transformations. The production of degradates is from the first-order degradation of the parent compound and can be due to water, dry soil, or benthic metabolic degradation, photolysis or hydrolysis. Users can specify the stoichiometry of the degradate production. Up to two degradates in series are possible with PFAM.</p>
+</ol>
+

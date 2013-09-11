@@ -1,0 +1,25 @@
+\documentclass[fleqn, oneside, 11pt]{article}%allows pdfs to be cropped and fleqn left justifies
+\usepackage{amssymb}
+\usepackage{amsmath}%sets math environment
+\usepackage[active, tightpage]{preview}%crops pdf to border of equations
+\usepackage{fixltx2e}
+\DeclareMathSizes{10}{1}{1}{1}
+\setlength\PreviewBorder{1pt}%sets size of border
+
+\begin{document}
+\begin{preview}
+\begin{align*}%sets up equation environment so you can specify alignment with ampersands
+\frac{\partial Q}{\partial z} + \frac{\partial A}{\partial t}  & = -\frac{\partial q}{\partial t} \\ 
+\text{where} \nonumber \\
+Q & =  \text{flow rate in the channel (m\textsuperscript{3} s\textsuperscript{-1})} \nonumber \\
+A & =  \text{cross-sectional area of flow (m\textsuperscript{2})}  \nonumber \\
+z & =  \text{distance down the furrow (m)} \nonumber \\
+q & =  \text{lateral flow infiltrated per unit length of channel (m\textsuperscript{3}/m\;s)} \nonumber \\
+\end{align*} 
+\end{preview}
+\end{document}
+
+% convert pdf to png using imagemagick
+% convert -density 400 przm_image1.pdf przm_image1.png
+
+

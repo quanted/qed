@@ -1,0 +1,43 @@
+\documentclass[fleqn, oneside, 11pt]{article}%allows pdfs to be cropped and fleqn left justifies
+\usepackage{amssymb}
+\usepackage{amsmath}%sets math environment
+\usepackage[active, tightpage]{preview}%crops pdf to border of equations
+\usepackage{fixltx2e}
+\setlength\PreviewBorder{1pt}%sets size of border
+
+\begin{document}
+\begin{preview}
+\begin{align*}%sets up equation environment so you can specify alignment with ampersands
+\text{where} \nonumber \\
+C_{1} & = \text{aqueous concentration in water column, (kg/m\textsuperscript{3})} \nonumber \\
+C_{2} & = \text{aqueous concentration in benthic region, (kg/m\textsuperscript{3})} \nonumber \\
+C_{sed} & =  \text{concentration of suspended sediment in water column = m\textsubscript{sed1}/v\textsubscript{1} (kg/m\textsuperscript{3})} \nonumber \\
+C_{DOC} & =  \text{concentration of DOC in water column = m\textsubscript{DOC}/v\textsubscript{1} (kg/m\textsuperscript{3})} \nonumber \\
+m_{sed1} & = \text{aqueous concentration in water column, (kg/m\textsuperscript{3})} \nonumber \\
+m_{DOC1} & = \text{mass of DOC in water column, (kg)} \nonumber \\
+m_{sed2} & = \text{mass of suspended sediment in water column, (kg)} \nonumber \\
+S_{sed1} & = \text{sorbed concentration on suspended sediment in water column, (kg/kg)} \nonumber \\
+S_{DOC1} & = \text{sorbed concentration on suspended DOC in water column, (kg/kg)} \nonumber \\
+S_{sed2} & = \text{sorbed pesticide concentration on benthic sediment, (kg/kg)} \nonumber \\
+v_{1} & = \text{volume of water in region 1 on the specific day, (m\textsuperscript{3})} \nonumber \\
+v_{2} & = \text{volume of water in region 2, (m\textsuperscript{3})} \nonumber \\
+Q & = \text{volumetric leakage flow rate, (m\textsuperscript{3}/s)} \nonumber \\
+\omega & = \text{1\textsuperscript{st} order water-column-to-benthic mass transfer coefficient, (m\textsuperscript{3}/s\textsuperscript{-1})} \nonumber \\
+\mu_{hydr} & = \text{1\textsuperscript{st} order hydrolysis rate coefficient, (s\textsuperscript{-1})} \nonumber \\
+\mu_{photo} & = \text{1\textsuperscript{st} order photolyisis rate coefficient, (s\textsuperscript{-1})} \nonumber \\
+\mu_{vol} & = \text{effective 1\textsuperscript{st} order volatilization rate coefficient, (s\textsuperscript{-1})} \nonumber \\
+\mu_{bio-a1} & = \text{1\textsuperscript{st} order aqueous-phase metabolic degradation rate coefficient in water column, (s\textsuperscript{-1})} \nonumber \\
+\mu_{bio-sed1} & = \text{1\textsuperscript{st} order sediment-sorbed metabolic degradation rate coefficient in water column, (s\textsuperscript{-1})} \nonumber \\
+\mu_{bio-DOC1} & = \text{1\textsuperscript{st} order DOC-sorbed metabolic degradation rate coefficient in water column, (s\textsuperscript{-1})} \nonumber \\
+\mu_{bio-a2} & = \text{1\textsuperscript{st} order aqueous-phase metabolic degradation rate coefficient in benthic region, (s\textsuperscript{-1})} \nonumber \\
+\mu_{bio-sed2} & = \text{1\textsuperscript{st} order sediment-sorbed metabolic degradation rate coefficient in benthic region, (s\textsuperscript{-1})} \nonumber \\
+\end{align*} 
+\end{preview}
+\end{document}
+
+% to convert at commandline- add the pdf file produced by this tex file at the end, and replace e.g., dust_equation25
+convert -density 400 generic_image1.pdf -resize 25% generic_image1.png
+
+% then type quit to exit ghostscript
+gs -sDEVICE=png16m -dTextAlphaBits=4 -r300 -dGraphicsAlphaBits=4 -dSAFER -q -dNOPAUSE -sOutputFile=dust_equation25.png image2_template_standalone.pdf
+

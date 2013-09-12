@@ -5,8 +5,8 @@ $( document ).ready(function() {
 			// Store Checkbox values
 			var valuesCheckbox = [];
       		var selectedCheckbox = $("input:checkbox").each(
-     		 function(){
-          		valuesCheckbox.push( $(this).is(':checked'));
+     			function(){
+          			valuesCheckbox.push( $(this).is(':checked'));
      		});
 
       		// Create array of hidden tabs
@@ -14,33 +14,33 @@ $( document ).ready(function() {
       		var fill_hiddenTabs = $(".tab:hidden").each(
       			function(){
       				hiddenTabs.push(this);
-      			});
+      		});
 
 			// Store radio button values
 			var valuesRadio = [];
       		var selectedRadio = $(hiddenTabs).find("input:radio").each(
-     		 function(){
-          		valuesRadio.push( $(this).is(':checked'));
+     			function(){
+          			valuesRadio.push( $(this).is(':checked'));
      		});
 
 			// Store TextArea values
 			var valuesTextArea = [];
       		var selectedTextArea = $(hiddenTabs).find("textarea").each(
-     		 function(){
-          		valuesTextArea.push( $(this).val());
+     			function(){
+          			valuesTextArea.push( $(this).val());
      		});
 
 			// Store Text values
 			var valuesText = [];
       		var selectedText = $(hiddenTabs).find("input:text").each(
-     		 function(){
-          		valuesText.push( $(this).val());
+     			function(){
+          			valuesText.push( $(this).val());
      		});
 
-     		// Reset Form
+     		// Reset Form (default values)
 			this.form.reset();
 
-			// Re-Fill inputs with previous values
+			// Re-Fill inputs with previous user input values
 			for (i=0;i<selectedCheckbox.length;i++) {
 				$(selectedCheckbox[i]).prop('checked', valuesCheckbox[i]);
 			}

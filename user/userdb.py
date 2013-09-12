@@ -10,9 +10,9 @@ from google.appengine.api import users
 from google.appengine.ext import db
 import sys
 sys.path.append("../ubertool")
-from ubertool.use import Use
+from ubertool.use_metadata import Use_metadata
 from ubertool.pesticide_properties import PesticideProperties
-from ubertool.exposure_concentrations import ExposureConcentrations
+from ubertool.exposure import Exposure
 from ubertool.aquatic_toxicity import AquaticToxicity
 from ubertool.terrestrial_toxicity import TerrestrialToxicity
 from ubertool.ecosystem_inputs import EcosystemInputs

@@ -2,19 +2,81 @@
   
 <label for="autocomplete">Select a Chemical by PC Code, CAS Number, or Name: </label>
 <input id="autocomplete">
- 
+<br>
+<label for="autocomplete">Select a Formula</label>
+<input id="autocomplete-formulas">
+
 <script>
-var tags = [ "c++", "java", "php", "coldfusion", "javascript", "asp", "ruby" ];
-var chemNames = [];
-{% for chemicalName in ChemicalNames %}
-	chemNames.push('{{chemicalName}}')
-{% endfor %}
+chemNames = [];
+formulaNames = [];
+all_cas_data = {};
+all_formula_data = {};
+$(document).ready(function() {
+
+	$.ajax({
+		url:"{{UBERTOOL_MONGO_SERVER}}/all-cas",
+		async: true,
+		type: 'GET',
+		success: function(cas_data) {
+			if(cas_data != null)
+			{
+				for(i = 0; i < cas_data.length; i++)
+				{
+					var cas_datum = cas_data[i];
+					chemNames.push(cas_datum.ChemicalName);
+					all_cas_data[cas_datum.ChemicalName.slice(0,10)] = cas_datum;
+				}
+			}
+		}
+	});
+
+	$( "#autocomplete" ).focusout(function(){
+		var chemical_name = $("#autocomplete")[0].value;
+		var cas_datum = all_cas_data[chemical_name];
+		$("#id_chemical_name")[0].value = cas_datum.ChemicalName;
+		$("#id_cas_num")[0].value = cas_datum.CASNumber;
+		$("#id_pc_code")[0].value = cas_datum.PCCode;
+		$.ajax({
+			url:"{{UBERTOOL_MONGO_SERVER}}/formulas/"+cas_datum.PCCode,
+			async: true,
+			type: 'GET',
+			success: function(formula_data) {
+				if(formula_data != null)
+				{
+					for(i = 0; i < formula_data.length; i++)
+					{
+						var formula_datum = formula_data[i];
+						formulaNames.push(formula_datum["Product Name"]);
+						all_formula_data[formula_datum["Product Name"]] = formula_datum;
+					}
+				}
+			}
+		});
+	});
+
+	$( "#autocomplete-formulas" ).focusout(function(){
+		var formula_name = $("#autocomplete-formulas")[0].value;
+		var formula_datum = all_formula_data[formula_name];
+		$("#id_regnum")[0].value = formula_datum["Registration Number"];
+		$("#id_pcpct")[0].value = formula_datum["PC Percentage"];
+		$("#id_prodname")[0].value = formula_datum["Product Name"];
+	});
+
+});
 $( "#autocomplete" ).autocomplete({
-  source: function( request, response ) {
+  	source: function( request, response ) {
           var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
           response( ($.grep( chemNames, function( item ){
               return matcher.test( item );
           })).slice(0,10) );
-      }
+    }
+});
+$( "#autocomplete-formulas" ).autocomplete({
+  	source: function( request, response ) {
+          var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+          response( ($.grep( formulaNames, function( item ){
+              return matcher.test( item );
+          })).slice(0,10) );
+    }
 });
 </script>

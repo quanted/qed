@@ -1,0 +1,4 @@
+chemical_name,trade_name,atuse_conc,residue,worst_case_est,vol,d,h,sa,intake_avg,intake_90th
+component X,,200,1,4000,4000,6,19.9,,125,320
+component Y,,400,1,4000,4000,8,24.4,,150,450
+component Z,,500,1,4000,4000,8,24.4,,200,550

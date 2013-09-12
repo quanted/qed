@@ -11,8 +11,8 @@ import os
 
 class idreamDescriptionPage(webapp.RequestHandler):
     def get(self):
-        text_file2 = open('idream/idream_text.txt','r')
-        xx = text_file2.read()
+        text_file1 = open('idream/idream_description.txt','r')
+        x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01hh_uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02hh_uberintroblock_wmodellinks.html', {'model':'idream','page':'description'})
@@ -20,7 +20,7 @@ class idreamDescriptionPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04ubertext_start.html', {
                 'model_page':'#', 
                 'model_attributes':'IDREAM Overview', 
-                'text_paragraph':xx})
+                'text_paragraph':x})
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '05hh_ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06hh_uberfooter.html', {'links': ''})

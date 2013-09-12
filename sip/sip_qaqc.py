@@ -9,32 +9,37 @@ import cgitb
 cgitb.enable()
 import unittest
 from StringIO import StringIO
-from iec import iec_output
+# from iec import iec_output
 from pprint import pprint
 import csv
 import sys
 sys.path.append("../sip")
-from sip import sip_model_new,sip_tables
+from sip import sip_model,sip_tables
 import logging
 
 logger = logging.getLogger('SIPQaqcPage')
 
 cwd= os.getcwd()
 data = csv.reader(open(cwd+'/sip/sip_qaqc.csv'))
-bw_bird=[]
-bw_mamm=[]
+chemical_name=[]
+b_species=[]
+m_species=[]
+bw_quail=[]
+bw_duck=[]
+bwb_other=[]
+bw_rat=[]
+bwm_other=[]
 avian_ld50=[]
 mammalian_ld50=[]
 sol = []
 aw_bird=[]
-tw_bird=[]
 mineau=[]
 aw_mamm=[]
-tw_mamm=[]
-avian_noaec=[]
-avian_noael=[]
-mammalian_noaec=[]
-mammalian_noael=[]
+noaec_d=[]
+noaec_q=[]
+noaec_o=[]
+noael=[]
+Species_of_the_bird_NOAEC_CHOICES = []
 
 ######Pre-defined outputs########
 fw_bird_out = []
@@ -55,40 +60,42 @@ chronconb_out = []
 chron_mamm_out = []
 chronconm_out = []
 
+
 data.next()
 for row in data:
-    bw_bird.append(float(row[0]))
-    bw_mamm.append(float(row[1]))  
-    sol.append(float(row[2]))
-    avian_ld50.append(float(row[3])) 
-    mammalian_ld50.append(float(row[4]))
-    aw_bird.append(float(row[5]))
-    tw_bird.append(float(row[6])) 
-    mineau.append(float(row[7]))
-    aw_mamm.append(float(row[8]))
-    tw_mamm.append(float(row[9]))
-    avian_noaec.append(float(row[10])) 
-    avian_noael.append(float(row[11]))
-    mammalian_noaec.append(float(row[12]))
-    mammalian_noael.append(float(row[13])) 
-    fw_bird_out.append(float(row[14]))
-    fw_mamm_out.append(float(row[15]))
-    dose_bird_out.append(float(row[16]))
-    dose_mamm_out.append(float(row[17])) 
-    at_bird_out.append(float(row[18]))
-    at_mamm_out.append(float(row[19]))
-    fi_bird_out.append(str(row[20])) 
-    det_out.append(float(row[21]))
-    act_out.append(float(row[22]))
-    acute_bird_out.append(float(row[23]))
-    acuconb_out.append(str(row[24])) 
-    acute_mamm_out.append(float(row[25]))
-    acuconm_out.append(str(row[26]))
-    chron_bird_out.append(float(row[27])) 
-    chronconb_out.append(str(row[28]))
-    chron_mamm_out.append(float(row[29]))
-    chronconm_out.append(str(row[30]))
-
+    chemical_name.append(row[0])
+    b_species.append(row[1])
+    m_species.append(row[2])
+    bw_quail.append(float(row[3]))
+    bw_duck.append(float(row[4]))
+    bwb_other.append(float(row[5])) 
+    bw_rat.append(float(row[6]))
+    bwm_other.append(float(row[7]))
+    sol.append(float(row[8]))
+    avian_ld50.append(float(row[9])) 
+    mammalian_ld50.append(float(row[10]))
+    aw_bird.append(float(row[11]))
+    mineau.append(float(row[12]))
+    aw_mamm.append(float(row[13]))
+    noaec_d.append(float(row[14]))
+    noaec_q.append(float(row[15]))
+    noaec_o.append(float(row[16]))
+    noael.append(float(row[17]))
+    dose_bird_out.append(float(row[18]))
+    dose_mamm_out.append(float(row[19])) 
+    at_bird_out.append(float(row[20]))
+    at_mamm_out.append(float(row[21]))
+    det_out.append(float(row[22]))
+    act_out.append(float(row[23]))
+    acute_bird_out.append(float(row[24]))
+    acuconb_out.append(str(row[25])) 
+    acute_mamm_out.append(float(row[26]))
+    acuconm_out.append(str(row[27]))
+    chron_bird_out.append(float(row[28])) 
+    chronconb_out.append(str(row[29]))
+    chron_mamm_out.append(float(row[30]))
+    chronconm_out.append(str(row[31]))
+    Species_of_the_bird_NOAEC_CHOICES.append(str(row[32]))
     
 out_fun_fw_bird = []
 out_fun_fw_mamm = []
@@ -259,16 +266,15 @@ def suite(TestCaseName, **kwargs):
     test_out=stream.read()
     return test_out
 
-sip_obj = sip_model_new.sip(True,True,'', bw_bird[0], bw_mamm[0], sol[0], avian_ld50[0], mammalian_ld50[0], aw_bird[0], tw_bird[0], mineau[0], aw_mamm[0], tw_mamm[0], avian_noaec[0], avian_noael[0])
+
+sip_obj = sip_model.sip(True,True,chemical_name[0], b_species[0], m_species[0], bw_quail[0], bw_duck[0], bwb_other[0], bw_rat[0], bwm_other[0], sol[0], avian_ld50[0], mammalian_ld50[0], aw_bird[0], mineau[0], aw_mamm[0], noaec_d[0], noaec_q[0], noaec_o[0], Species_of_the_bird_NOAEC_CHOICES[0], noael[0])
 sip_obj.set_unit_testing_variables()
 
-sip_obj.fw_bird_out_expected = fw_bird_out[0]
-sip_obj.fw_mamm_out_expected = fw_mamm_out[0]
+sip_obj.chemical_name_expected = chemical_name[0]
 sip_obj.dose_bird_out_expected = dose_bird_out[0]
 sip_obj.dose_mamm_out_expected = dose_mamm_out[0]
 sip_obj.at_bird_out_expected = at_bird_out[0]
 sip_obj.at_mamm_out_expected = at_mamm_out[0]
-sip_obj.fi_bird_out_expected = fi_bird_out[0]
 sip_obj.det_out_expected = det_out[0]
 sip_obj.act_out_expected = act_out[0]
 sip_obj.acute_bird_out_expected = acute_bird_out[0]
@@ -280,13 +286,10 @@ sip_obj.chronconb_out_expected = chronconb_out[0]
 sip_obj.chron_mamm_out_expected = chron_mamm_out[0]
 sip_obj.chronconm_out_expected = chronconm_out[0]
 
-test_suite_fw_bird_out = suite(TestCase_fw_bird_out, sip_obj=sip_obj)
-test_suite_fw_mamm_out = suite(TestCase_fw_mamm_out, sip_obj=sip_obj)
 test_suite_dose_bird_out = suite(TestCase_dose_bird_out, sip_obj=sip_obj)
 test_suite_dose_mamm_out = suite(TestCase_dose_mamm_out, sip_obj=sip_obj)
 test_suite_at_bird_out = suite(TestCase_at_bird_out, sip_obj=sip_obj)
 test_suite_at_mamm_out = suite(TestCase_at_mamm_out, sip_obj=sip_obj)
-test_suite_fi_bird_out = suite(TestCase_fi_bird_out, sip_obj=sip_obj)
 test_suite_det_out = suite(TestCase_det_out, sip_obj=sip_obj)
 test_suite_act_out = suite(TestCase_act_out, sip_obj=sip_obj)
 test_suite_acute_bird_out = suite(TestCase_acute_bird_out, sip_obj=sip_obj)
@@ -308,12 +311,10 @@ class sipQaqcPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'sip',
                 'model_attributes':'SIP QAQC'})
-        
+        html = html + sip_tables.timestamp()
         html = html + sip_tables.table_all_qaqc(sip_obj)
-
-#        html = html =
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        #html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

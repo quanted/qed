@@ -1372,8 +1372,7 @@ ul.nobullet {
   -moz-box-shadow: 3px 3px 15px #CCC;
 }
 .articles_output p {
-  margin: 1em 0;
-  font-size: 12px;
+  margin: 1em 30px;
 }
 .articles_output img {
   margin: 0 0 0 1.5em;
@@ -1398,6 +1397,12 @@ ul.nobullet {
 .articles_output li {
   margin-top: 0.5em;
   font-size: 12px;
+}
+.input_submit {
+  text-align: center;
+}
+.input_button {
+  padding: 2px 4px;
 }
 #export_menu {
   top: 8px;
@@ -1463,7 +1468,7 @@ ul.nobullet {
   background: url(../images/export/export_sprite_small_hort.gif) no-repeat;
   background-position: -68px -38px;
 }*/
-#popup {
+.popup {
   background-color: #F9FBF6;
   margin: auto;
   padding: 0;
@@ -1614,10 +1619,25 @@ table
   border-color: white;
   border-collapse: separate;*/
   background-color: rgb(197,207,204);
-  border: none;
+  padding: 1px;
+  /*border: none;*/
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
 }
 th {
   background-color: rgb(197,207,204);
   border: none;
   text-align: center;
+  padding: 1px 4px;
+}
+td {
+  padding: 1px 4px;
+}
+.articles_input table {
+  width: 90%;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
 }

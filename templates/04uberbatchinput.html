@@ -1,15 +1,16 @@
 <!--start 04uberbatchinput-->
 	<div class="articles">
-		<ul class="bullet">
-		<li><a href="/csvs/rice_batch.csv">Please download, fill, and upload this CSV file for batch calculation. </a></li>
+		<h2 class="model_header">{{ model_attributes }}</h2>
+		<ul class="nobullet">
+		<li><a href="/csvs/{{model}}_batch.csv">Please download, fill, and upload this CSV file for batch calculation. </a></li>
 		</ul>
 		<ul class="nobullet">
 		<li>
 			<form method="post" id="form1" enctype="multipart/form-data" action={{model}}_batchoutput.html>
-				File to upload: <input type="file" id="upfile1" name="upfile" class="required" accept=".csv"/>
+				File to upload: <input type="file" id="upfile1" name="upfile" class="required input_button" accept=".csv"/>
 		</li>
 		<li>
-				<input type="submit" value="Submit"> Upload the file!
+				<input class="input_button" type="submit" value="Submit"> Upload the file!
 			</form>
 		</li>	
 		</ul>

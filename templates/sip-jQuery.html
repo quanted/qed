@@ -1,6 +1,6 @@
-<script type="text/javascript" src=" ../stylesheets/jquery.validate.js"></script>
+<!--<script type="text/javascript" src=" ../stylesheets/jquery.validate.js"></script>
 <link type="text/css" rel="stylesheet" href="http://craigsworks.com/projects/qtip2/packages/nightly/jquery.qtip.css" />
-<script type="text/javascript" src="http://craigsworks.com/projects/qtip2/packages/nightly/jquery.qtip.js"></script>
+<script type="text/javascript" src="http://craigsworks.com/projects/qtip2/packages/nightly/jquery.qtip.js"></script>-->
 <script>
 
 $(document).ready(function() {
@@ -9,6 +9,9 @@ $(document).ready(function() {
     $('#id_bwb_other').closest('tr').hide();
     $('#id_bw_rat').closest('tr').hide();
     $('#id_bwm_other').closest('tr').hide();
+    $('#id_NOAEC_d').closest('tr').hide();
+    $('#id_NOAEC_q').closest('tr').hide();
+    $('#id_NOAEC_o').closest('tr').hide();
 
     $('#id_b_species').change(function() { 
         if ($(this).val() == "178"){
@@ -26,6 +29,11 @@ $(document).ready(function() {
            $('#id_bw_duck').closest('tr').hide();
            $('#id_bw_quail').closest('tr').hide();
        }
+       if ($(this).val() == "0"){
+           $('#id_bwb_other').closest('tr').hide();
+           $('#id_bw_duck').closest('tr').hide();
+           $('#id_bw_quail').closest('tr').hide();
+       }
      });
     $('#id_m_species').change(function() {
         if ($(this).val() == "350"){
@@ -35,8 +43,33 @@ $(document).ready(function() {
         else{
            $('#id_bw_rat').closest('tr').hide();
            $('#id_bwm_other').closest('tr').show();
-       }
+        }
+        if ($(this).val() == "0"){
+            $('#id_bw_rat').closest('tr').hide();
+            $('#id_bwm_other').closest('tr').hide();
+        }
     });
-   
-   });
+    $('#id_NOAEC_species').change(function() {
+        if ($(this).val() == "1"){
+            $('#id_NOAEC_q').closest('tr').show();
+            $('#id_NOAEC_d').closest('tr').hide();
+            $('#id_NOAEC_o').closest('tr').hide();
+        }
+        else if ($(this).val() == "2"){
+            $('#id_NOAEC_d').closest('tr').show();
+            $('#id_NOAEC_q').closest('tr').hide();
+            $('#id_NOAEC_o').closest('tr').hide();
+        }
+        else{
+           $('#id_NOAEC_o').closest('tr').show();
+           $('#id_NOAEC_d').closest('tr').hide();
+           $('#id_NOAEC_q').closest('tr').hide();
+       }
+       if ($(this).val() == "0"){
+           $('#id_NOAEC_d').closest('tr').hide();
+           $('#id_NOAEC_q').closest('tr').hide();
+           $('#id_NOAEC_o').closest('tr').hide();
+       }
+     });
+});
 </script>

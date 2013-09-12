@@ -1,53 +1,47 @@
- <p>&nbsp;</p>
- <tr><th>Georgia Overlays on Google Maps</th></tr>
- <tr><th>To demonstrate KML overlays in Google Maps</th></tr>    
-    
-<table width="700" border="0">
+<!-- Google Map API Key -->
+<script src="http://maps.google.com/maps?file=api&amp;v=1&amp;key=AIzaSyAkl6EK6jQ3pNrMMl2j6zXMznm4eqprkME" type="text/javascript"></script>
+
+<div>Georgia Overlays on Google Maps</div>
+<div>To demonstrate KML overlays in Google Maps</div>
 <div id="map"></div>
-    
-	<tr><ul><a href="http://maps.google.co.uk/maps?f=q&amp;hl=en&amp;q=http%3A%2F%2Fwww.littled.net%2Fexp%2Fgmap.kml&amp;ie=UTF8&amp;ll=51.4832,-0.007896&amp;spn=0.004931,0.014591&amp;z=16&amp;om=1">View in Google Maps</a></ul></tr>
-	<tr><ul><a href="gmap.kml">Download KML file</a></ul></tr>
+<!-- <div><ul><a href="http://maps.google.co.uk/maps?f=q&amp;hl=en&amp;q=http%3A%2F%2Fwww.littled.net%2Fexp%2Fgmap.kml&amp;ie=UTF8&amp;ll=51.4832,-0.007896&amp;spn=0.004931,0.014591&amp;z=16&amp;om=1">View in Google Maps</a></ul></div>
+<div><ul><a href="gmap.kml">Download KML file</a></ul></div>
+ -->
+<script type="text/javascript">
+	function showMap() {
+		var geocoder = new GClientGeocoder();
+		geocoder.setCache=null;
+		// Google Maps caches KML files -- use a random query string parameter set to Date.
+		// var url_end = "?nocache=" + (new Date()).valueOf();
+		// var server_root = "http://www.littled.net/exp/";			
+        var kmlFile = "http://dl.dropbox.com/u/34957516/clarke.kmz";
+        var kmlFile2 = "http://dl.dropbox.com/u/34957516/raster.kmz";
+        var kmlFile3 = "http://dl.dropbox.com/u/34957516/T_sirtalis.kmz";
+        var kmlFile4 = "http://dl.dropbox.com/u/34957516/G_sila.kmz";
+		var map = new GMap2(document.getElementById("map"));
+		// Add controls
+		map.addControl(new GLargeMapControl());
+		map.addControl(new GMapTypeControl());
+		geoxml = new GGeoXml(kmlFile);
+        geoxml2 = new GGeoXml(kmlFile2);
+        geoxml3 = new GGeoXml(kmlFile3);
+        geoxml4 = new GGeoXml(kmlFile4);
+        map.addOverlay(geoxml); 
+        map.addOverlay(geoxml2);
+        map.addOverlay(geoxml3); 
+        map.addOverlay(geoxml4);
+		
+		// Default zoom level
+		var zl = 5;
+		map.setCenter(new GLatLng(35.7489,-80.3881), zl);
+	}
+	window.onload = showMap;
+</script>
 
-    <style type="text/css">
-		#map { width:700px; height:500px;}
-		body { font-family:"Trebuchet MS", verdana,arial,sans-serif; 
-				font-size:80%;}
-
-		#map div { font-weight:bold;}
-		#map #iwsw p { font-weight:normal !important;}
-	</style>
-    
-    <script src="http://maps.google.com/maps?file=api&amp;v=1&amp;key=AIzaSyAkl6EK6jQ3pNrMMl2j6zXMznm4eqprkME" type="text/javascript"></script>
-  <script type="text/javascript">
-		function showMap() {
-			var geocoder = new GClientGeocoder();
-			geocoder.setCache=null;
-			// Google Maps caches KML files -- use a random query string parameter set to Date.
-			var url_end = "?nocache=" + (new Date()).valueOf();
-			var server_root = "http://www.littled.net/exp/";			
-                        var kmlFile = "http://dl.dropbox.com/u/34957516/clarke.kmz";
-                        var kmlFile2 = "http://dl.dropbox.com/u/34957516/raster.kmz";
-                        var kmlFile3 = "http://dl.dropbox.com/u/34957516/T_sirtalis.kmz";
-                        var kmlFile4 = "http://dl.dropbox.com/u/34957516/G_sila.kmz";
-
-			var map = new GMap2(document.getElementById("map"));
-			// Add controls
-			map.addControl(new GLargeMapControl());
-			map.addControl(new GMapTypeControl());
-			geoxml = new GGeoXml(kmlFile);
-                        geoxml2 = new GGeoXml(kmlFile2);
-                        geoxml3 = new GGeoXml(kmlFile3);
-                        geoxml4 = new GGeoXml(kmlFile4);
-                        map.addOverlay(geoxml); 
-                        map.addOverlay(geoxml2);
-                        map.addOverlay(geoxml3); 
-                        map.addOverlay(geoxml4);
-			
-			// Default zoom level
-			var zl = 5;
-			map.setCenter(new GLatLng(33.7489,-84.3881),zl);
-		}
-		window.onload = showMap;
-	</script>
-                                                       
-</table>
+<!-- CSS to control the layout of the map -->
+<style type="text/css">
+	#map {width:700px; height:500px;}
+	#map div { font-weight:bold;}
+	#map #iwsw p { font-weight:normal !important;}
+</style>
+<!-- end CSS -->

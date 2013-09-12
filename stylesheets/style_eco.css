@@ -52,6 +52,19 @@ h3 {
 }
 .model_header {
   color: #79973F;
+  margin: 0 400px 20px 0;
+  font-size: 1.5em;
+  font-weight: bold;
+  display: inline-block;
+}
+.input_header {
+  color: #79973F;
+  margin-bottom: 1em;
+  font-size: 1.2em;
+  display: inline;
+}
+.popup_header {
+  color: #79973F;
   margin-bottom: 1em;
   font-size: 1.5em;
   font-weight: bold;
@@ -132,7 +145,7 @@ a:hover {
   -moz-box-shadow: 3px 3px 15px #CCC;
 }*/
 #landing_text {
-  background: #F9FBF6;
+  background: #F4F7ED;
   width: 676px;
   height: 24px;
   /*padding: 8px 0 1px 4px;*/
@@ -1262,7 +1275,7 @@ span {
   background-position: -593px -30px;
 }
 
-/* Header Right Side */
+/* Eco Header Right Side */
 
 #header_menu_r {
   width: 160px;
@@ -1440,15 +1453,17 @@ ul.nobullet {
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;
 }
-.articles_input a:hover {
-  color: #333333;
+.articles_input ul {
+  list-style: none;
 }
-#input_nav ul {
+.input_nav ul {
   text-align: center;
 }
-#input_nav li {
+.input_nav li {
   display: inline;
   list-style: none;
+  cursor: hand;
+  cursor: pointer;
 }
 .articles_output {
   width: 822px;
@@ -1491,6 +1506,14 @@ ul.nobullet {
 .articles_output li {
   margin-top: 0.5em;
   font-size: 12px;
+}
+.input_left {
+  float: left;
+  margin-left: 35px;
+}
+.input_right {
+  float: right;
+  margin-right: 35px;
 }
 .input_submit {
   text-align: center;
@@ -1724,8 +1747,11 @@ th {
   background-color: rgb(201,224,179);
   border: none;
   text-align: center;
+  padding: 1px 4px;
 }
-
+td {
+  padding: 1px 4px;
+}
 .articles_input table {
   width: 90%;
   margin-bottom: 12px;

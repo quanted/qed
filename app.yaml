@@ -14,14 +14,15 @@ libraries:
   version: latest
 - name: django
   version: "1.3"
-
 - name: PIL
+  version: latest
+- name: matplotlib
   version: latest
 
 env_variables:
   UBERTOOL_BATCH_SERVER: 'http://www.chancedelphia.com:8887/'
-  UBERTOOL_MONGO_SERVER: 'http://127.0.0.1:8887'
-  UBERTOOL_SECURE_SERVER: 'http://127.0.0.1:8989'
+  UBERTOOL_MONGO_SERVER: 'http://www.chancedelphia.com:8887'
+  UBERTOOL_SECURE_SERVER: 'http://www.chancedelphia.com:8989'
 
 skip_files:
 - ^(.*/)?app\.yaml
@@ -146,6 +147,15 @@ handlers:
 #hisotry
 - url: /(.*?)_history.html
   script: \1/\1_history.py
+#uncertainty_input
+- url: /(.*?)_uninput.html
+  script: \1/\1_uninput.py
+#uncertainty_output
+- url: /(.*?)_unoutput.html
+  script: \1/\1_unoutput.py
+#blog
+- url: /blog_(.*?).html
+  script: blog/\1.py
 
 ##TESTED models##
 #description
@@ -175,7 +185,12 @@ handlers:
 - url: /user.html
   script: user/user_input.py   
   login: required
+<<<<<<< HEAD
 
+=======
+  secure: never
+  
+>>>>>>> sprint8
 - url: /user_output.html
   script: user/user_output.py
   login: required
@@ -282,7 +297,7 @@ handlers:
 
 #use label site data
 - url: /site_data.html
-  script: ubertool/use_input.py
+  script: ubertool/use_metadata_input.py
   login: required
 #  login: required
 #pesticide properties
@@ -291,7 +306,7 @@ handlers:
   login: required
 #exposure concentrations
 - url: /exposure_concentrations.html
-  script: ubertool/exposure_concentrations_input.py
+  script: ubertool/exposure_input.py
   login: required
 #aquatic toxicity
 - url: /aquatic_toxicity.html

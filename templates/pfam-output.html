@@ -12,7 +12,7 @@
 <!-- <script type="text/javascript" language="javascript" src="../stylesheets/jQRangeSlider/jquery-ui-1.8.16.custom.min.js"></script> -->
 <script type="text/javascript" language="javascript" src="../stylesheets/jQRangeSlider/jQDateRangeSlider-withRuler-min.js"></script> 
 <link rel="stylesheet" type="text/css" href="../stylesheets/jQRangeSlider/classic.css"> 
-<script type="text/javascript" language="javascript" src="https://raw.github.com/kensnyder/date-prototype/master/src/Date.js"></script> 
+<script type="text/javascript" language="javascript" src="https://rawgithub.com/kensnyder/date-prototype/master/src/Date.js"></script> 
 <!--[if lt IE 9]>
 <script src="http://www.prioritymarketers.com/jqplot/src/excanvas.min.js"></script>
 <![endif]-->
@@ -27,7 +27,9 @@ $(document).ready(function(){
    	var sr_out = $.parseJSON($('#sr_out').attr('data-val'));
 		var i=1;
 		while (i <= noa_out){
-	  $('<tr><td>Application method</td><tr>').appendTo('.out_application');
+	  // $('<tr><td>Application method</td><tr>').appendTo('.out_application');
+    $('<tr><td width=50><div align="center">App'+i+'</div></td><td width=50><div align="center">'+mm_out[i-1]+'</div></td><td width=50><div align="center">'+dd_out[i-1]+'</div></td><td width=50><div align="center">'+ma_out[i-1]+'</div></td><td width=50><div align="center">'+sr_out[i-1]+'</div></td></tr>').appendTo('.out_application');
+
 		var i=i+1;
 		}
 		

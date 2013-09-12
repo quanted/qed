@@ -1,0 +1,25 @@
+\documentclass[fleqn, oneside, 11pt]{article}%allows pdfs to be cropped and fleqn left justifies
+\usepackage{amssymb}
+\usepackage{amsmath}%sets math environment
+\usepackage[active, tightpage]{preview}%crops pdf to border of equations
+\usepackage{fixltx2e}
+\DeclareMathSizes{10}{1}{1}{1}
+\setlength\PreviewBorder{1pt}%sets size of border
+
+\begin{document}
+\begin{preview}
+\begin{align*}%sets up equation environment so you can specify alignment with ampersands
+Da & = D(1+LF)+I_{f} \\ 
+\text{where} \nonumber \\
+Da & =  \text{depth of irrigation water applied to the field (cm)} \nonumber \\
+LF & =  \text{a factor specified by the user to allow for the practice in saline soils}  \nonumber \\
+& \text{of adding water to leach salts out of the root zone (fraction of Da)} \nonumber \\
+I_{f} & =  \text{crop canopy interception capacity (cm)} \nonumber \\
+\end{align*} 
+\end{preview}
+\end{document}
+
+% convert pdf to png using imagemagick
+% convert -density 400 przm_image1.pdf przm_image1.png
+
+

@@ -28,6 +28,17 @@ EPA Ecological Risk Assessment Exposure Characterization</a></li>
   <li><a href="http://www.epa.gov/pesticides/science/efed/policy_guidance/team_authors/endangered_species_reregistration_workgroup/esa_conceptual_model_pf.htm">
 EPA Development of Conceptual Models</a></li>
 </ul>
+
+<p>
+Example reports for the use of Ricein NOAA consultations with the EPA (Endangered Species Act Section 7 Consultations) concerning the impact of pesticides on listed species:
+</p>
+<ul class="bullet">
+<li><a href="http://www.nmfs.noaa.gov/pr/consultation/opinions/biop_thiobencarb.pdf">Thiobencarb</a>
+<li><a href="http://www.nmfs.noaa.gov/pr/pdfs/consultations/pesticides_batch5opinion.pdf">Biological Opinion 5 (Oryzalin,Pendimethalin,Trifluralin)</a>
+<li><a href="http://www.nmfs.noaa.gov/pr/pdfs/consultations/pesticide_opinion4.pdf">Biological Opinion 4 (2,4-D, Triclopyr BEE, Diuron, Linuron, Captan, Chlorothalonil )</a>
+<li><a href="http://www.nmfs.noaa.gov/pr/pdfs/pesticide_biop.pdf">Biological Opinion 1 (Chlorpyrifos, Diazinon, and Malathion)</a>
+</ul>
+
 <p>
 Presentations/posters/abstracts/reports on the subject of EPA's ecological risk assessment models, including the Tier I Rice model .
 </p>

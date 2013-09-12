@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jan 17 14:50:59 2012
 
-@author: JHarston
 """
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
@@ -16,14 +14,17 @@ SELECT_DRIFT = (('0.01','0.01'),('0.05','0.05'),('0','0'))
 
 SELECT_RUN = (('0.01','0.01'),('0.02','0.02'),('0.05','0.05'))
 
+SELECT_VERSION = (('1.2.2','1.2.2'),)
+
 class TerrPlantInp(forms.Form):
+    version_terrplant = forms.ChoiceField(required=True, choices=SELECT_VERSION, label='Version',initial='1.2.2')
     chemical_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),label='Chemical Name',initial='Alachlor')
     pc_code = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}), label='PC Code',initial='90501')
     use = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}), label='Use',initial='Corn')
     application_method = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}), label='Application Method',initial='Ground')
     application_form = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}), label='Application Form',initial='Spray')
-    solubility = forms.FloatField(label='Solubility in Water (ppm)',initial=240)
-    incorporation = forms.ChoiceField(required=True, choices=SELECT_INCORPORATION, label=mark_safe('Incorporation (If incorporation depth is <u>&lt;</u> 1 in, choose 1. If &gt; 1 in, choose #. If <u>&gt;</u> 6 in, choose 6. For Aerial applications, choose 1.)'))    
+    solubility = forms.FloatField(label=mark_safe('Solubility (in water @25&deg;C; mg/L)'),initial=240)
+    incorporation = forms.ChoiceField(required=True, choices=SELECT_INCORPORATION, label=mark_safe('Incorporation, in (If incorporation depth is <u>&lt;</u> 1 in, choose 1. If &gt; 1 in, choose #. If <u>&gt;</u> 6 in, choose 6. For Aerial applications, choose 1.)'))    
     application_rate = forms.FloatField(required=True,label='Application rate (lbs ai/A)',initial=4)    
     drift_fraction = forms.ChoiceField(required=True, choices=SELECT_DRIFT, label=mark_safe('Drift Fraction (Liquid application form by ground: 0.01. Liquid application by aerial, airblast or spray chemigation: 0.05. Granular application form: 0.)'),initial=0.01)
     runoff_fraction = forms.ChoiceField(required=True, choices=SELECT_RUN, label=mark_safe('Runoff Fraction (For solubility &lt; 10 ppm, choose 0.01. For solubility 10-100 &lt; ppm, choose 0.02. For solubility &gt; 100 ppm, choose 0.05)'),initial=0.05)

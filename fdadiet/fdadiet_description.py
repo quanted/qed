@@ -11,7 +11,7 @@ import os
 
 class fdadietDescriptionPage(webapp.RequestHandler):
     def get(self):
-        text_file2 = open('fdadiet/fdadiet_text.txt','r')
+        text_file2 = open('fdadiet/fdadiet_description.txt','r')
         xx = text_file2.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01hh_uberheader.html', {'title':'Ubertool'})

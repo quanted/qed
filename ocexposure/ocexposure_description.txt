@@ -1,0 +1,14 @@
+<p>Occupational Exposure Models are used by Antimicrobials Division for assessing occupational handler and post-application exposures. Antimicrobial products have been grouped by EPA into the 12 Use Categories presented below. </p>
+
+<p> I 	Agricultural premises and equipment</p>
+<p>II	Food handling/storage establishments/premises and equipment</p>
+<p>III	Commercial/institutional/industrial premises and equipment</p>
+<p>IV	Residential and public access premises</p>
+<p>V	Medical premises and equipment</p>
+<p>VI	Human drinking water systems</p>
+<p>VII	Material preservatives</p>
+<p>VIII	Industrial processes</p>
+<p>IX	Antifouling coatings</p>
+<p>X	Wood preservatives</p>
+<p>XI	Swimming pools</p>
+<p>XII	Aquatic areas</p>

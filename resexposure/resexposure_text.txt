@@ -1,1 +1,10 @@
-<p></p>
+<p>The USEPA Office of Pesticides Program (OPP), Antimicrobials Division (AD) was formed in 1996.  Prior to 1996 the non-dietary exposure assessments for antimicrobial pesticides were performed by OPP’s Health Effects Division (HED).  Non-dietary human exposures include exposures to people in occupational and residential settings.</p>
+
+<p>The standard exposure scenarios presented herein have been developed for incidental oral, dermal, and inhalation routes of exposures resulting from antimicrobial product use.  There are ~4,700 registered antimicrobial products and thus a potential for a multitude of exposure pathways.  Because it is not feasible to estimate each and every conceivable exposure pathway for all uses, the standard exposure scenarios have been designed to represent the high-end of exposure potential for other similar pesticide uses.</p>
+
+<p>The following items can be calculated using the residential exposure model:</p>
+
+<ul class="bullet">
+	<li>Residential Handler Exposure and Risk (Exposure Assessment for Non-Volatile Chemicals Excluding Antifoulant Paint, Antifoulant Paint and Volatile Chemicals).</li>
+	<li>Residential Post-application Exposures(Hard Surface Antimicrobial Floor Cleaners with Cleaning Claims, Impregnated Hard Surfaces(vinyl flooring), Carpet Cleaners, Impregnated Carpet Fibers/Piling, Mattresses, Clothing/Textile Consumer Product Spray Treatment, Laundry Detergent Preservative, Clothing/Textile Material Preservative, Impregnated Diapers, Cloth Diaper Spray Treatment, Impregnated Polymer (Toys), Air Sanitizers, Foggers, Paint Preserved With or Containing Volatile Antimicrobial Ingredients, Swimming Pools,  Spa/Whirlpool/Hot Tub, Pressure Treated Wood Preservatives, HVAC Biocide Treatment).</li>
+</ul>

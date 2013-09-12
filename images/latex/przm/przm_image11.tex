@@ -1,0 +1,25 @@
+\documentclass[fleqn, oneside, 11pt]{article}%allows pdfs to be cropped and fleqn left justifies
+\usepackage{amssymb}
+\usepackage{amsmath}%sets math environment
+\usepackage[active, tightpage]{preview}%crops pdf to border of equations
+\usepackage{fixltx2e}
+\DeclareMathSizes{10}{1}{1}{1}
+\setlength\PreviewBorder{1pt}%sets size of border
+
+\begin{document}
+\begin{preview}
+\begin{align*}%sets up equation environment so you can specify alignment with ampersands
+D & = (\theta_{fc}-\theta_{z})Z_{r} \\ 
+\text{where} \nonumber \\
+D & =  \text{soil moisture deficit (cm)} \nonumber \\
+\theta_{z} & =  \text{active root-zone soil moisture content (cm\textsuperscript{3} cm\textsuperscript{-3}) on the current day} \nonumber \\
+\theta_{fc} & =  \text{active root-zone soil moisture content at field capacity (cm\textsuperscript{3} cm\textsuperscript{-3}} \nonumber \\
+Z_{r} & =  \text{active root zone depth (cm) (varies with crop stage)} \nonumber \\
+\end{align*} 
+\end{preview}
+\end{document}
+
+% convert pdf to png using imagemagick
+% convert -density 400 przm_image1.pdf przm_image1.png
+
+

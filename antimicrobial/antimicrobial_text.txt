@@ -1,1 +1,8 @@
-<p></p>
+<p>This model was produced by Office of Research and Development of U.S. EPA. The model is a modified version of the IAQ model RISK (Sparks) designed to allow analysis of the impact of antimicrobial agents introduced in the duct work of residential heating and air conditioning (HAC) or commercial heating, ventilating, and air conditioning (HVAC) systems.</p>
+
+<p>The antimicrobial model is limited to analysis of three scenarios:</p>
+<ul class=bullet>
+	<li>Application of an antimicrobial agent to duct work in a “typical” residential system</li>
+	<li>Application of an antimicrobial agent to duct work in a “typical” commercial building</li>
+	<li>Application of an antimicrobial agent to duct work in a “typical” school.</li>
+</ul>

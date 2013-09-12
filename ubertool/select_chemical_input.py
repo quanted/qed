@@ -16,9 +16,9 @@ import django
 from django import forms
 from ubertool import select_chemical_db
 import sys
-sys.path.append("../CAS")
-from CAS.CASGql import CASGql
 import logging
+
+UBERTOOL_MONGO_SERVER = os.environ['UBERTOOL_MONGO_SERVER']
 
 class SelectChemicalInputPage(webapp.RequestHandler):
 
@@ -29,14 +29,12 @@ class SelectChemicalInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '02uberintroblock_nomodellinks.html', {'title2':'Select Chemical'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberinput_start.html', {'model':'select_chemical'})
-        cas = CASGql("apppest:cas","CAS")
-        chemicalNames = cas.getAllChemicalNamesUTF8()
-        logger.info(len(chemicalNames))
-        html = html + template.render(templatepath + 'chemical_selection_jqueryui.html', {'ChemicalNames':chemicalNames})
+        html = html + template.render(templatepath + 'chemical_selection_jqueryui.html', {'UBERTOOL_MONGO_SERVER':UBERTOOL_MONGO_SERVER})
         html = html + str(select_chemical_db.SelectChemicalInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
+
 
 app = webapp.WSGIApplication([('/.*', SelectChemicalInputPage)], debug=True)
 

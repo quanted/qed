@@ -1,17 +1,33 @@
 $(document).ready(function () {
 
 var jq_html = $('<div />').append($("div.articles_output").children('table[class*=out_], div[class*=out_], H3[class*=out_], H4[class*=out_]:not(div#chart1,table:hidden)').clone()).html();
-var n_plot = $('div[id^="chart"]').size();
+var n_plot_1 = $('div[id^="chart"]').size();
+var n_plot_2 = $('img[id^="chart"]').size();
+n_plot = n_plot_1 + n_plot_2
 
-// console.log(jq_html);
+// console.log(n_plot);
 
 i=1;
+
 var imgData = [];
 while(i <= n_plot){
+	try{
     imgData.push($('#chart'+i).jqplotToImageStr({}));
     i=i+1    
+    // console.log('a')
+
+    }
+    catch(e){
+	imgData.push($('#chart'+i).attr('src'));
+    i=i+1    
+    // console.log('b')
+    }
 }
+
+// console.log(imgData);
+
 imgData_json = JSON.stringify(imgData)
+// console.log(imgData_json);
 
 	$('<tr style="display:none"><td><input type="hidden" name="pdf_t"></td></tr>')
     .appendTo('.getpdf')
@@ -39,7 +55,7 @@ var doneDiv = document.getElementById("popup");
 		$(document).ajaxStart(function(){
 			$.blockUI({
 				css:{ "top":""+wintop+"", "left":""+winleft+"", "padding": "30px 20px", "width": "400px", "height": "60px", "border": "0 none", "border-radius": "4px", "-webkit-border-radius": "4px", "-moz-border-radius": "4px", "box-shadow": "3px 3px 15px #333", "-webkit-box-shadow": "3px 3px 15px #333", "-moz-box-shadow": "3px 3px 15px #333" },
-				message: '<h2 class="model_header">Generating PDF Document...</h2><br><img src="/images/loader.gif" style="margin-top:-16px">'
+				message: '<h2 class="popup_header">Generating PDF Document...</h2><br><img src="/images/loader.gif" style="margin-top:-16px">'
 			});
 		});
 
@@ -74,7 +90,7 @@ var doneDiv = document.getElementById("popup");
 		$(document).ajaxStart(function(){
 			$.blockUI({
 				css:{ "top":""+wintop+"", "left":""+winleft+"", "padding": "30px 20px", "width": "400px", "height": "60px", "border": "0 none", "border-radius": "4px", "-webkit-border-radius": "4px", "-moz-border-radius": "4px", "box-shadow": "3px 3px 15px #333", "-webkit-box-shadow": "3px 3px 15px #333", "-moz-box-shadow": "3px 3px 15px #333" },
-				message: '<h2 class="model_header">Generating HTML Document...</h2><br><img src="/images/loader.gif" style="margin-top:-16px">'
+				message: '<h2 class="popup_header">Generating HTML Document...</h2><br><img src="/images/loader.gif" style="margin-top:-16px">'
 			});
 		});
 

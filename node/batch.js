@@ -2,6 +2,7 @@ var restify = require('restify');
 var rabbitmq = require('./rabbitmq.js');
 var mongodb = require('./mongodb.js');
 var cas = require('./cas_mongo.js');
+var formula = require('./formula.js');
 var ubertool = require('./ubertool.js');
 var utils = require('./utils.js');
 var flow = require('nimble');
@@ -200,11 +201,54 @@ server.get('/cas/:cas_num', function(req, res, next){
     });
 });
 
+server.get('/casdata/:chemical_name', function(req, res, next){
+    var chemical_name = req.params.chemical_name;
+    console.log("Chemical Name: " + chemical_name);
+    cas.getChemicalData(chemical_name, function(error,cas_data){
+        if(cas_data != null)
+        {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "X-Requested-With");
+            res.send(cas_data);
+        }
+    });
+});
+
 server.get('/all-cas', function(req, res, next){
     cas.getAll(function(error,all_cas){
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.send(all_cas);
+    });
+});
+
+//Formula Services
+server.get('/formula/:registration_num', function(req, res, next){
+    var registration_num = req.params.registration_num;
+    console.log("Registration Number: " + registration_num);
+    formula.getFormulaData(registration_num, function(error,chemicals){
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        console.log(chemicals)
+        res.send(chemicals);
+    });
+});
+
+server.get('/formulas/:pc_code', function(req, res, next){
+    var pc_code = req.params.pc_code;
+    console.log("PC Code: " + pc_code);
+    formula.getFormulaDataFromPCCode(pc_code, function(error,chemical){
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.send(chemical);
+    });
+});
+
+server.get('/all_formula', function(req, res, next){
+    formula.getAllFormulaData(function(error,formula_data){
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.send(formula_data);
     });
 });
 
@@ -256,6 +300,57 @@ server.get('/api-key', function(req, res, next){
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.send(apiKey);
 });
+
+server.get('/api', function(req, res, next){
+    console.log("Describe REST API");
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    var apiDescription ={"/user/login/:userid":{
+        "POST": "Decides if the password passed in the json in the body of the request (key password) is valid for the user id as the last part of the url. Returns a json document with the decision(true/false), the sessionId, expiration date time. It adds a value to the passed cookie that tells google appengine that the user is valid to view protected pages."}
+        ,"/user/registration/:user_id":{
+            "POST":"registers a user given the user id as the last part of the url and the password and email address passed as arguments in the json request. Returns a json document with the sessionId, expiration date time."}
+,"/user/openid/login":{
+    "POST": "Using the openId passed in the json request, retrieves the userId, sessionId, and expiration date time for the sessionID. "}
+,"/user/sessionid":{
+    "POST": "Attempts to validate a sessionId for a userId, both passed as arguments in the json request. Returns a json document with the decision(true/false), the sessionId, expiration date time."}
+,"/batch_configs":{
+    "GET": "Retrieves all the names for batch configurations in the system. No parameters are passed"}
+,"/batch":{
+    "POST": "Submits a batch configuration to the asynchronous batching system via RabbitMQ."}
+,"/batch_results/:batchId":{
+    "GET": "Retrieves the results of an ubertool batch, based on the batchId passed in the URL. Returns a hierarchical JSON data.",
+    "POST": "Similar to GET request, except that it authenticates the userId along with an apiKey (both passed as arguments in the json documents).  If authenticated to a valid user, will retrieve results."}
+,"/cas/:cas_num":{
+    "GET": "Retrieves the chemical name associated with a CAS number"}
+,"/casdata/:chemical_name":{
+    "GET": "Retrieves the CAS Number and PC Code"}
+,"/all-cas":{
+    "GET": "Retrieves all of the CAS Numbers"}
+,"/formula/:registration_num":{
+    "GET": "Retrieves formulation data based on a registration number. This service returns PC Percentage, Product Name, and PC Code in the json response."}
+,"/formulas/:pc_code":{
+    "GET": "Retrieves all of the formulations given a PC Code. The return is a json document containing an array of data, each data record contains Registration Number, PC Percentage, Product Name, and PC Code"}
+,"/all_formula":{
+    "GET": "Retrieves all of the formulations available.  The return is a json document containing an array of data, each data record contains Registration Number, PC Percentage, Product Name, and PC Code"}
+,"/ubertool/:config_type/config_names":{
+    "GET": "Retrieves all configurations for a given ubertool configuration (use, pest, aqua, eco, expo, terre, ubertool). Returns a json document, with a variety of properties."}
+,"/ubertool/:config_type/:config":{
+    "GET":  "Retrieves a configuration for a given ubertool configuration (use, pest, aqua, eco, expo, terre, ubertool) based on a specific configuration ID (the last part of the url). Returns a json document, with a variety of properties.",
+    "POST": "Places an ubertool configuration into the mongo db, which can be referenced by ubertool configurations and is the basis for running an ubertool batch."}
+,"/api-key":{
+    "GET": "Retrieves an API Key, though this is not stored to a user, just a means of generating an API key."}};
+    res.send(apiDescription);
+});
+
+erver.get('/api-key', function(req, res, next){
+    console.log("GET for API Key");
+    apiKey = utils.generateNewAPIKey();
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.send(apiKey);
+});
+
+
 
 server.on('MethodNotAllowed', unknownMethodHandler);
 

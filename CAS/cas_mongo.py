@@ -3,7 +3,7 @@ from pymongo import MongoClient
 
 class CASMongo:
 
-	def __init__(self, mongodb_host=localhost, mongodb_port=27017):
+	def __init__(self, mongodb_host='chancedelphia.com', mongodb_port=27017):
 		self.client = MongoClient(mongodb_host, mongodb_port)
 		self.db = self.client.ubertool
 

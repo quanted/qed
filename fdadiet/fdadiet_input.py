@@ -8,18 +8,23 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import django
 from django import forms
-from fdadiet import fdadietdb
+from fdadiet import fdadiet_parameters
+
 
 class fdadietInputPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01hh_uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02hh_uberintroblock_wmodellinks.html', {'model':'fdadiet','page':'input'})
-        html = html + template.render (templatepath + '03hh_ubertext_links_left.html', {})                
+        html = html + template.render (templatepath + '03hh_ubertext_links_left.html', {})
+        html = html + template.render(templatepath + 'fdadiet-jQuery.html', {})  
         html = html + template.render(templatepath + '04uberinput_start.html', {
                 'model':'fdadiet', 
                 'model_attributes':'FDA Dietary Exposure Model Inputs'})
-        html = html + str(fdadietdb.fdadietInp())
+        html = html + str(fdadiet_parameters.fdadietInp())
+        html = html + """
+        </table><p class="tank_residue" style="margin-left:35px">*Must supply either Surface Area of tank <b>or</b> Cross-sectional diameter <i>and</i> Length of tank</p><br class="tank_residue">
+        """
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05hh_ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06hh_uberfooter.html', {'links': ''})

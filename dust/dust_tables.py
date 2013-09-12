@@ -4,6 +4,8 @@ from django.template import Context, Template
 from django.utils.safestring import mark_safe
 from dust import dust_model
 from dust import dust_parameters
+import time
+import datetime
 
 def getheaderpvu():
 	headings = ["Parameter", "Value", "Units"]
@@ -67,10 +69,10 @@ def gett2data(dust_obj):
             mark_safe('Lowest Bird Acute Oral LD<sub>50</sub> &asymp; Amphibian Dermal LD<sub>50</sub>'), 
             'Tested Bird Body Weight','Mineau Scaling Factor for Birds',
             mark_safe('Mammal Acute Dermal (OCSPP 870.1200) MRID#'),'Additional Comments About Study (if any)',
-            mark_safe('Mammal Acute Dermal LD<sub>50</sub>'),'Tested Mammal Body Weight',],
-        "Value": [dust_obj.bird_acute_oral_study, dust_obj.bird_study_add_comm, dust_obj.low_bird_acute_ld50, dust_obj.test_bird_bw, dust_obj.mineau, dust_obj.mamm_acute_derm_study,
-               dust_obj.mamm_study_add_comm, dust_obj.mam_acute_derm_ld50, dust_obj.test_mam_bw,],
-        "Units": ['', '', 'mg a.i./kg-bw', 'g','','','','mg a.i./kg-bw','g', ],
+            mark_safe('Mammal Acute Dermal LD<sub>50</sub>'), 'Avian Dermal type', mark_safe('Mammal Acute Oral LD<sub>50</sub>'),'Tested Mammal Body Weight',],
+        "Value": [dust_obj.bird_acute_oral_study, dust_obj.bird_study_add_comm, dust_obj.low_bird_acute_ld50, dust_obj.test_bird_bw, dust_obj.mineau_scaling_factor, dust_obj.mamm_acute_derm_study,
+               dust_obj.mamm_study_add_comm, dust_obj.mam_acute_derm_ld50, dust_obj.aviandermaltype, dust_obj.mam_acute_oral_ld50, dust_obj.test_mam_bw,],
+        "Units": ['', '', 'mg a.i./kg-bw', 'g','','','','', 'mg a.i./kg-bw','mg a.i./kg-bw','g', ],
     }
     return data
 
@@ -122,19 +124,19 @@ def gett8data(birdrisk,birdmess,reprisk,repmess,amphibrisk,amphibmess,mammrisk,m
     }
     return data
 
-def gettsumdata(ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw):
+def gettsumdata(ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau_scaling_factor, mam_acute_derm_ld50, test_mam_bw):
     data = { 
         "Parameter": ['Maximum Single Application Rate', 'Fraction of Pesticide Assumed at the Surface', 'Dislodgeable Foliar Residue', 
                      mark_safe('Lowest Bird Acute Oral LD<sub>50</sub> &asymp; Amphibian Dermal LD<sub>50</sub>'), 'Tested Bird Body Weight', 'Mineau Scaling Factor for Birds',
                      mark_safe('Mammal Acute Dermal LD<sub>50</sub>'),'Tested Mammal Body Weight',],
         "Mean": ['%.2e' % numpy.mean(ar_lb),'%.2e' % numpy.mean(frac_pest_surface),'%.2e' % numpy.mean(dislodge_fol_res), '%.2e' % numpy.mean(low_bird_acute_ld50), 
-                 '%.2e' % numpy.mean(test_bird_bw), '%.2e' % numpy.mean(mineau), '%.2e' % numpy.mean(mam_acute_derm_ld50), '%.2e' % numpy.mean(test_mam_bw),],
+                 '%.2e' % numpy.mean(test_bird_bw), '%.2e' % numpy.mean(mineau_scaling_factor), '%.2e' % numpy.mean(mam_acute_derm_ld50), '%.2e' % numpy.mean(test_mam_bw),],
         "Std": ['%.2e' % numpy.std(ar_lb),'%.2e' % numpy.std(frac_pest_surface),'%.2e' % numpy.std(dislodge_fol_res), '%.2e' % numpy.std(low_bird_acute_ld50), 
-                '%.2e' % numpy.std(test_bird_bw), '%.2e' % numpy.std(mineau), '%.2e' % numpy.std(mam_acute_derm_ld50), '%.2e' % numpy.std(test_mam_bw),],
+                '%.2e' % numpy.std(test_bird_bw), '%.2e' % numpy.std(mineau_scaling_factor), '%.2e' % numpy.std(mam_acute_derm_ld50), '%.2e' % numpy.std(test_mam_bw),],
         "Min": ['%.2e' % numpy.min(ar_lb),'%.2e' % numpy.min(frac_pest_surface),'%.2e' % numpy.min(dislodge_fol_res), '%.2e' % numpy.min(low_bird_acute_ld50), 
-                '%.2e' % numpy.min(test_bird_bw), '%.2e' % numpy.min(mineau), '%.2e' % numpy.min(mam_acute_derm_ld50), '%.2e' % numpy.min(test_mam_bw),],
+                '%.2e' % numpy.min(test_bird_bw), '%.2e' % numpy.min(mineau_scaling_factor), '%.2e' % numpy.min(mam_acute_derm_ld50), '%.2e' % numpy.min(test_mam_bw),],
          "Max": ['%.2e' % numpy.max(ar_lb),'%.2e' % numpy.max(frac_pest_surface),'%.2e' % numpy.max(dislodge_fol_res), '%.2e' % numpy.max(low_bird_acute_ld50), 
-                 '%.2e' % numpy.max(test_bird_bw), '%.2e' % numpy.max(mineau), '%.2e' % numpy.max(mam_acute_derm_ld50), '%.2e' % numpy.max(test_mam_bw),],
+                 '%.2e' % numpy.max(test_bird_bw), '%.2e' % numpy.max(mineau_scaling_factor), '%.2e' % numpy.max(mam_acute_derm_ld50), '%.2e' % numpy.max(test_mam_bw),],
         "Unit": ['lbs a.i./A', '', 'mg a.i./cm^2', 'mg a.i./kg-bw', 'g', '', 'mg a.i./kg-bw', 'g'],
     }
     return data
@@ -211,6 +213,19 @@ def table_all(dust_obj):
     html_all = html_all + table8_out['html']
     return html_all, table3_out, table4_out, table5_out, table6_out, table7_out, table8_out
 
+def timestamp():
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+    html="""
+    <div class="out_">
+    <b>Dust Version 0.1 (Beta)<br>
+    """
+    html = html + st
+    html = html + " (UTC)</b>"
+    html = html + """
+    </div>"""
+    return html
+
 def table_sum_input(i, ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw):
         #pre-table sum_input
         html = """
@@ -220,7 +235,7 @@ def table_sum_input(i, ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acut
         </table>
         """%(i-1)
         #table sum_input
-        tsuminputdata = gettsumdata(ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau, mam_acute_derm_ld50, test_mam_bw)
+        tsuminputdata = gettsumdata(ar_lb, frac_pest_surface, dislodge_fol_res, low_bird_acute_ld50, test_bird_bw, mineau_scaling_factor, mam_acute_derm_ld50, test_mam_bw)
         tsuminputrows = gethtmlrowsfromcols(tsuminputdata, sumheadings)
         html = html + tmpl.render(Context(dict(data=tsuminputrows, headings=sumheadings)))
         return html

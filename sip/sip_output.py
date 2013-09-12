@@ -25,13 +25,16 @@ class SIPExecutePage(webapp.RequestHandler):
         ld50_a = form.getvalue('ld50_a')
         ld50_m = form.getvalue('ld50_m')
         aw_bird = form.getvalue('aw_bird')
-        print aw_bird
         # tw_bird = form.getvalue('body_weight_of_the_tested_bird')
         aw_mamm = form.getvalue('aw_mamm')
         # tw_mamm = form.getvalue('body_weight_of_the_tested_mammal')
         mineau = form.getvalue('mineau_scaling_factor')
-        noaec = form.getvalue('NOAEC')
         noael = form.getvalue('NOAEL')
+        noaec_d = form.getvalue('NOAEC_d')
+        noaec_q = form.getvalue('NOAEC_q')
+        noaec_o = form.getvalue('NOAEC_o')
+        # noaec_o2 = form.getvalue('NOAEC_o2')
+        Species_of_the_bird_NOAEC_CHOICES = form.getvalue('NOAEC_species')
         bw_quail = form.getvalue('bw_quail')
         bw_duck = form.getvalue('bw_duck')
         bwb_other = form.getvalue('bwb_other')
@@ -39,7 +42,7 @@ class SIPExecutePage(webapp.RequestHandler):
         bwm_other = form.getvalue('bwm_other')
         b_species = form.getvalue('b_species')
         m_species = form.getvalue('m_species')
-        sip_obj = sip_model.sip(chemical_name, b_species, m_species, bw_quail, bw_duck, bwb_other, bw_rat, bwm_other, sol, ld50_a, ld50_m, aw_bird, mineau, aw_mamm, noaec, noael)
+        sip_obj = sip_model.sip(True,True,chemical_name, b_species, m_species, bw_quail, bw_duck, bwb_other, bw_rat, bwm_other, sol, ld50_a, ld50_m, aw_bird, mineau, aw_mamm, noaec_d, noaec_q, noaec_o, Species_of_the_bird_NOAEC_CHOICES, noael)
         text_file = open('sip/sip_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
@@ -49,43 +52,8 @@ class SIPExecutePage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'sip', 
                 'model_attributes':'SIP Output'})     
-
-
-
-        # html = html + sip_tables.table_1(chemical_name, select_receptor, bw_bird, bw_mamm, sol, ld50, aw_bird, tw_bird, aw_mamm, tw_mamm, mineau, noaec, noael)      
-
+        html = html + sip_tables.timestamp()
         html = html + sip_tables.table_all(sip_obj)
-
-       
-        # html = html + """
-        #  #pre-table 1
-        # <table>
-        # <tr><H3>User Inputs: Chemical Identity</H3></tr>
-        # <tr><H4>Application and Chemical Information</H4></tr>
-        # <tr></tr>
-        # </table>
-        # """
-        # pvuheadings = sip_tables.getheaderpvu()
-        # pvrheadings = sip_tables.getheaderpvr()
-        # djtemplate = sip_tables.getdjtemplate()
-        # tmpl = Template(djtemplate)
-
-        # #table 1
-        # t1data = sip_tables.gett1data(chemical_name, select_receptor, bw_bird, bw_mamm, sol, ld50, aw_bird, tw_bird, aw_mamm, tw_mamm, mineau, noaec, noael)
-        # t1rows = sip_tables.gethtmlrowsfromcols(t1data,pvuheadings)
-        # html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
-        # html = html + """
-        #  #pre-table 2
-        # <table>
-        # <tr><H3>Outputs: Chemical Identity</H3></tr>
-        # <tr><H4>Application and Chemical Information</H4></tr>
-        # <tr></tr>
-        # </table>
-        # """
-        # #table 2
-        # t2data = sip_tables.gett2data(aw_bird, bw_bird, sol, ld50, tw_bird, mineau, noaec)
-        # t2rows = sip_tables.gethtmlrowsfromcols(t1data,pvuheadings)
-        # html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

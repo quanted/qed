@@ -1,0 +1,23 @@
+\documentclass[fleqn, oneside, 11pt]{article}%allows pdfs to be cropped and fleqn left justifies
+\usepackage{amssymb}
+\usepackage{amsmath}%sets math environment
+\usepackage[active, tightpage]{preview}%crops pdf to border of equations
+\usepackage{fixltx2e}
+\DeclareMathSizes{10}{1}{1}{1}
+\setlength\PreviewBorder{1pt}%sets size of border
+
+\begin{document}
+\begin{preview}
+\begin{align*}%sets up equation environment so you can specify alignment with ampersands
+DRI_{i} & = 0.7(\frac{1}{\frac{2}{Midtot_{i}}+0.9}) \\ 
+\text{where} \nonumber \\
+DRI_{i} & =  \text{the fraction of dissolved-phase chemical present in compartment i available for runoff} \nonumber \\
+Midtot_{i} & = \text{the depth to the midpoint of compartment i (cm)} \nonumber \\
+\end{align*} 
+\end{preview}
+\end{document}
+
+% convert pdf to png using imagemagick
+% convert -density 400 przm_image1.pdf przm_image1.png
+
+

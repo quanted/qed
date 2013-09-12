@@ -18,9 +18,6 @@ class ESOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()   
         NSF = form.getvalue('NSF')
-        print NSF
-
-
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'es_mapping','page':'output'})
@@ -54,4 +51,4 @@ if __name__ == '__main__':
 
 
 
-    
+    

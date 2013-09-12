@@ -18,12 +18,11 @@ $(document).ready(function() {
 
 
 		var nsf = $('#nsf').text()+ '.kmz';
-		var nsf_link="https://dl.dropbox.com/s/lr52gowjl2cjs5o/"+nsf
-
+		var nsf_link="https://s3.amazonaws.com/esmapping_kmz/"+nsf
         var kmlFile = "http://dl.dropbox.com/u/34957516/clarke.kmz";
         var kmlFile2 = "http://dl.dropbox.com/u/34957516/raster.kmz";
         var kmlFile3 = nsf_link;
-        alert((nsf_link))
+        // console.log(nsf_link)
         // var kmlFile3 = "http://dl.dropbox.com/u/34957516/T_sirtalis.kmz";
         // var kmlFile4 = "http://dl.dropbox.com/u/34957516/G_sila.kmz";
 		var map = new GMap2(document.getElementById("map"));
@@ -54,4 +53,4 @@ $(document).ready(function() {
 	#map div { font-weight:bold;}
 	#map #iwsw p { font-weight:normal !important;}
 </style>
-<!-- end CSS -->
+<!-- end CSS -->

@@ -14,18 +14,18 @@ def batchLoadEcosystemInputsConfigs(params_matrix,config_index,ubertool_configur
     config_name = None
     if "ecosystem_inputs_config_name" in params_matrix:
         config_name = params_matrix.get("ecosystem_inputs_config_name")[config_index]
-    if "concentration_of_particulate_organic_carbon" in params_matrix:
-        config_params['concentration_of_particulate_organic_carbon'] = params_matrix.get("concentration_of_particulate_organic_carbon")[config_index]
-    if "concentration_of_dissolved_organic_carbon" in params_matrix:
-        config_params['concentration_of_dissolved_organic_carbon'] = params_matrix.get("concentration_of_dissolved_organic_carbon")[config_index]          
-    if "concentration_of_dissolved_oxygen" in params_matrix:
-        config_params['concentration_of_dissolved_oxygen'] = params_matrix.get("concentration_of_dissolved_oxygen")[config_index]            
-    if "water_temperature" in params_matrix:
-        config_params['water_temperature'] = params_matrix.get("water_temperature")[config_index]
-    if "concentration_of_suspended_solids" in params_matrix:
-        config_params['concentration_of_suspended_solids'] = params_matrix.get("concentration_of_suspended_solids")[config_index]
-    if "sediment_organic_carbon" in params_matrix:
-        config_params['sediment_organic_carbon'] = params_matrix.get("sediment_organic_carbon")[config_index]
+    if "x_poc" in params_matrix:
+        config_params['x_poc'] = params_matrix.get("x_poc")[config_index]
+    if "x_doc" in params_matrix:
+        config_params['x_doc'] = params_matrix.get("x_doc")[config_index]          
+    if "c_ox" in params_matrix:
+        config_params['c_ox'] = params_matrix.get("c_ox")[config_index]            
+    if "w_t" in params_matrix:
+        config_params['w_t'] = params_matrix.get("w_t")[config_index]
+    if "c_ss" in params_matrix:
+        config_params['c_ss'] = params_matrix.get("c_ss")[config_index]
+    if "oc" in params_matrix:
+        config_params['oc'] = params_matrix.get("oc")[config_index]
     config_params['ecosystems_configuration'] = config_name
     ubertool_configuration_properties.update(config_params)
     config_params['config_name'] = config_name

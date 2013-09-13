@@ -18,10 +18,10 @@ import datetime
 
 class EcoInp(forms.Form):
     user_ecosystem_configuration = forms.ChoiceField(label="User Saved Ecosystem Inputs Configuration",required=True)
-    config_name = forms.CharField(label="EcosystemInputs Configuration Name", initial="ubertool-config-%s"%datetime.datetime.now())
-    concentration_of_particulate_organic_carbon = forms.FloatField(label='Concentration of particulate organic carbon (kg OC/L)', initial='0')
-    concentration_of_dissolved_organic_carbon = forms.FloatField(label='Concentration of dissolved organic carbon (kg OC/L)', initial='0')
-    concentration_of_dissolved_oxygen = forms.FloatField(label='Concentration of dissolved oxygen (mg O2/L)', initial='5.0')
-    water_temperature = forms.FloatField(label='Water temperature (degrees Celsius)')
-    concentration_of_suspended_solids = forms.FloatField(label='Concentration of suspended solids (kg/L)')
-    sediment_organic_carbon = forms.FloatField(label='Sediment organic Carbon (%)')
+    config_name = forms.CharField(label="EcosystemInputs Configuration Name", initial="eco-config-%s"%datetime.datetime.now())
+    x_poc = forms.FloatField(label='Concentration of particulate organic carbon (kg OC/L)', initial='0')
+    x_doc = forms.FloatField(label='Concentration of dissolved organic carbon (kg OC/L)', initial='0')
+    c_ox = forms.FloatField(label='Concentration of dissolved oxygen (mg O2/L)', initial='5.0')
+    w_t = forms.FloatField(label='Water temperature (degrees Celsius)')
+    c_ss = forms.FloatField(label='Concentration of suspended solids (kg/L)')
+    oc = forms.FloatField(label='Sediment organic Carbon (%)')

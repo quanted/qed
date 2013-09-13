@@ -134,7 +134,7 @@ function submitConfiguration()
 	form_data['created'] = getDateTime();
 	$.ajax({
 		url:"{{ubertool_service_url}}/ubertool/terre/"+$("#id_config_name")[0].value,
-		async: true,
+		async: false,
 		type: 'POST',
 		data: JSON.stringify(form_data)
 	});

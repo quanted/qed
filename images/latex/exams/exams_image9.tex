@@ -1,0 +1,24 @@
+\documentclass[fleqn, oneside, 11pt]{article}%allows pdfs to be cropped and fleqn left justifies
+\usepackage{amssymb}
+\usepackage{amsmath}%sets math environment
+\usepackage[active, tightpage]{preview}%crops pdf to border of equations
+\setlength\PreviewBorder{1pt}%sets size of border
+
+\begin{document}
+\begin{preview}
+\begin{align*}%sets up equation environment so you can specify alignment with ampersands
+(RH_{3}) + (DOC) & \leftrightarrow (RH_{3}DOC); \quad KPDOCL(1)=\frac{[RH_{3}DOC]}{[RH_{3}][DOC]} \nonumber \\ 
+(RH^{+}_{4}) + (DOC) & \leftrightarrow (RH_{4}DOC^{+}); \quad KPDOCL(2)=\frac{[RH_{4}DOC^{+}]}{[RH^{+}_{4}][DOC]} \nonumber \\ 
+(RH^{2+}_{5}) + (DOC) & \leftrightarrow (RH_{5}DOC^{2+}); \quad KPDOCL(3)=\frac{[RH_{5}DOC^{2+}]}{[RH^{2+}_{5}][DOC]} \nonumber \\ 
+(RH^{3+}_{6}) + (DOC) & \leftrightarrow (RH_{6}DOC^{3+}); \quad KPDOCL(4)=\frac{[RH_{6}DOC^{3+}]}{[RH^{3+}_{6}][DOC]} \nonumber \\ 
+(RH^{-}_{2}) + (DOC) & \leftrightarrow (RH_{2}DOC^{-}); \quad KPDOCL(5)=\frac{[RH_{2}DOC^{-}]}{[RH^{-}_{2}][DOC]} \nonumber \\ 
+(RH^{2-}) + (DOC) & \leftrightarrow (RHDOC^{2-}); \quad KPDOCL(6)=\frac{[RHDOC^{2-}]}{[RH^{2-}][DOC]} \nonumber \\ 
+(R^{3-}) + (DOC) & \leftrightarrow (RDOC^{3-}); \quad KPDOCL(7)=\frac{[RDOC^{3-}]}{[R^{3-}][DOC]} \nonumber \\
+\end{align*} 
+\end{preview}
+\end{document}
+
+% convert pdf to png using imagemagick
+% convert -density 400 exams_image1.pdf exams_image1.png
+
+

@@ -1,0 +1,20 @@
+\documentclass[fleqn, oneside, 11pt]{article}%allows pdfs to be cropped and fleqn left justifies
+\usepackage{amssymb}
+\usepackage{amsmath}%sets math environment
+\usepackage[active, tightpage]{preview}%crops pdf to border of equations
+\setlength\PreviewBorder{1pt}%sets size of border
+
+\begin{document}
+\begin{preview}
+\begin{align*}%sets up equation environment so you can specify alignment with ampersands
+RH_{3} + H_{2}O & \leftrightarrow RH^{+}_{4} +OH^{-} \nonumber \\ 
+RH^{+}_{4} + H_{2}O & \leftrightarrow RH^{2+}_{5} +OH^{-} \nonumber \\ 
+RH^{2+}_{5} + H_{2}O & \leftrightarrow RH^{3+}_{6} +OH^{-} \nonumber \\ 
+\end{align*} 
+\end{preview}
+\end{document}
+
+% convert pdf to png using imagemagick
+% convert -density 400 exams_image1.pdf exams_image1.png
+
+

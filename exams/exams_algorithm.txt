@@ -1,2 +1,96 @@
+<p>This page summarizes the fundamental ideas that were used to construct the EXAMS program. The references cited represent only the key findings or papers that directly influenced the EXAMS code. Additional detail and background information can be found in the works listed in the bibliography for this report.</p>
 
-<p></p>
+
+<ol>
+<li>Compartment Models and Conservation of Mass</li>
+<p>Each water-body in EXAMS is represented via a set of N compartments or distinct zones in the system. The
+program is based on a series of mass balances, which give rise to a single differential equation for each compartment. Working from the transport and transformation process equations, EXAMS compiles an equation for the net rate of change of chemical concentration in each compartment. The resulting system of N differential equations describes a mass balance for the entire ecosystem. These equations have the general form of equation:</p>
+<img src = "/images/latex/exams/exams_image1.png">
+<p>The chemical data base supplied with the program includes 11 compounds investigated by Smith and coworkers (1978). As with EXAMS’ nominal environmental data base, these data should not be regarded as immutably fixed. In many instances the data of Smith et al. (1978) were augmented in order to illustrate EXAMS’ data entry capabilities, and the assumptions used to fill gaps in the chemical data base are open to revision as additional experimental data become available.</p>
+
+<li>Equilibrium Processes</li>
+<p>The kinetic properties of organic chemicals are often strongly influenced by the molecular state of the compound. Consider, for example, a compound that can both ionize and sorb to suspended sediments. In this case, the compound will be present in the water column in ionized, unionized, and sorbed states. In inland waters, where aerosol formation can be neglected, only the unionized, unsorbed molecule will volatilize across the air-water interface. An accurate evaluation of the tendency of the compound to volatilize thus cannot be obtained until ionization and sorption are incorporated in the estimation method. Ionization and sorption also affect the reactivity of chemicals to transformation processes, although the magnitude of the changes cannot be as readily predicted.</p>
+
+<ul style="margin-left:10px;">
+<li>Ionization Reactions:</li>
+<p>The EXAMS program regards any synthetic organic as potentially capable of acting as an ampholyte, forming both singly, doubly, and triply charged cations and anions in the aqueous medium. The unionized molecule is taken as the parent compound, and is denoted in the program documentation as "RH<sub>3</sub>." The potential acid-base reactions are then:</p>
+
+<ul style="margin-left:15px;">
+<li>Basic reactions:</li>
+<img src = "/images/latex/exams/exams_image2.png">
+<li>Acidic reactions:</li>
+<img src = "/images/latex/exams/exams_image3.png">
+<li>The equilibrium constants for the ionization reactions are:</li>
+<img src = "/images/latex/exams/exams_image4.png">
+<li>The acidity constants are:</li>
+<img src = "/images/latex/exams/exams_image5.png">
+</ul>
+
+<li>Sediment Sorption:</li>
+<p>EXAMS computes a (local) equilibrium value for the partitioning of each chemical species to sediment phases in the system. The chemical input data includes a vector of partition coefficients (KPSG) whose elements apply to each of the corresponding chemical species.</p>
+
+<p>EXAMS uses linear isotherms for all sorption computations, rather than the non-linear Freundlich or Langmuir formulations. (A linear isotherm is equivalent to a partition coefficient.) Linear isotherms are usually an adequate descriptor of the capture of neutral organics by sediments, at least up to 50% of their water
+solubility residual in the aqueous phase. For compounds whose melting point (EXAMS input parameter MP) is greater than the ambient temperature a crystal energy term is added:</p>
+<img src = "/images/latex/exams/exams_image6.png">
+
+<p>EXAMS uses the internal value of the partition coefficient (KPSL) for each chemical species, however computed, to calculate the equilibrium sediment sorption of each species on each particulate sediment phase (P) throughout the system. The chemical equations and equilibrium expressions are similar for each chemical species:</p>
+<img src = "/images/latex/exams/exams_image7.png">
+
+<li>Biosorption:</li>
+<p>The uptake of chemicals by living organisms is represented in EXAMS via seven simple bioconcentration factors or biomass partition coefficients (KPBG). The chemical equations and equilibrium expressions are analogous to those for sediment sorption:</p>
+<img src = "/images/latex/exams/exams_image8.png">
+<p>The actual quantities of synthetic organics captured by the biomass are often relatively small, compared to the amounts sorbed with sediments or dissolved in the aqueous phase of real systems. Thus, the biomass often plays a relatively minor role as a transport or capture medium affecting the fate of an organic pollutant. The role of the biomass as a food-chain vector can, however, have great ecotoxicological significance.</p>
+
+<li>Complexation with DOC:</li>
+<p>EXAMS treats complexation with the “dissolved” (i.e., colloidal and filtrable particulate) organic matter of natural waters via complexation constants for each of the ionic species. In these formulations, DOC is in kg/L, complexed species are in mg/kg (DOC), and dissolved chemical species are in mg/L; KPDOC is conventionally regarded as being “dimensionless” or as having units of (mg/kg)/(mg/L) or L/kg.</p>
+<img src = "/images/latex/exams/exams_image9.png">
+
+<li>Computation of Equilibrium Distribution Coefficients:</li>
+<p>EXAMS computes the distribution of the chemical among its 28 possible molecular structures. This distribution
+is expressed as a vector of concentration ratios (&#945;). Each element of &#945; is the ratio of the concentration of a particular molecular species, to the total concentration of chemical in the system compartment (S<sub>t</sub>, mg chemical per liter of water in the compartment). These &#945; values enter the kinetic equations as multipliers on the user-supplied rate constants for transformation of each molecular species.</p>
+</ul>
+
+<li>Kinetic Processes:</li>
+<p>“Kinetic” processes, unlike rapid (local) equilibrium processes such as ionization and sorption, occur on time scales that make their time-dependent behavior of direct concern in a hazard evaluation. The kinetics of the transport regime in aquatic systems, and the kinetics of the transformation processes that degrade a chemical to innocuous forms, are the primary constituents of EXAMS’ evaluative capabilities.</p>
+
+<ul style="margin-left:10px;">
+<li>Transport:</li>
+<p>EXAMS calculates steady-state average transport of water, sediments, and planktonic organisms throughout the system. The flows of water, sediments, and plankton act as simple carriers for the dissolved, sediment-sorbed, DOC-complexed, and biosorbed forms of the synthetic organic chemical. These carrier flows are ultimately reduced to coefficients that express the effects of transport processes on the kinetics of the chemical; the vector of concentrations of the synthetic organic chemical itself thereby remains the only true time-dependent state variable in EXAMS.</p>
+
+<p>A hydrologic sub-program was created for EXAMS in order to minimize the labor necessary to specify, or modify, the physical transport section of EXAMS’ environmental data base. This data base is composed primarily of readily available and easily comprehended parameters, such as the volume, mean depth, and surface area of the system compartments. Any of these parameters can be modified by the user as desired. EXAMS then recomputes the exchanges of materials among compartments, and the net transport of materials through the system, in effect creating a new hydrologic model according to the user’s modifications.</p>
+
+<li>Volatilization:</li>
+<p>EXAMS uses a two-resistance model to compute transport across the air-water interface. EXAMS calculates the rate of interphase transport by computing the sequential resistance to movement through an aqueous and a gaseous “film” at the air-water interface. Although originally developed for industrial applications (Whitman 1923), these models have been adapted to environmental problems (Liss 1973, Liss and Slater 1974, Mackay and Leinonen 1975, Mackay 1978, Burns 1982, 1985). Whitman (1923) visualized the aquatic interface as “stagnant films” of air and water, bounded by well-mixed bulk phases on either side of the interface. Figure 1 illustrates the conceptual model of chemical transport across the air-water interface. For the detail process, please refer to the manual. C<sub>l</sub> is the concentration of contaminant (mol m<sup>-3</sup>) in the bulk water phase; P<sub>g</sub> is its partial pressure (atmospheres) in the bulk air above the interface; C<sub>sl</sub> is its aqueous concentration at the interface; and P<sub>sg</sub> is its partial pressure.</p>
+<figure>
+	<img src = "/images/latex/exams/figure1.png">
+	<figcaption>Figure 1. Conceptual model of chemical transport across the air-water interface</figcaption>
+</figure>
+
+<li>Direct Photolysis:</li>
+<p>EXAMS includes two entirely separate methods to compute rates of direct photolysis. These methods are mutually exclusive, and accept different kinds of input data. The first, mechanized in procedure “PHOTO1”, begins from a pseudo-first-order rate constant (KDP) representing the photolytic decomposition rate in near-surface waters under cloudless conditions at a specified reference latitude (RFLAT). This input rate constant datum is taken as the annual mean value averaged over the entire diel (24-hour) cycle. The second method, in procedure “PHOTO2”, works from
+measured light absorption spectra and reaction quantum yields of the compound. Because this method is intrinsically more accurate, it is to be preferred whenever possible.</p>
+
+<li>Specific Acid, Specific Base, and Neutral Hydrolysis:</li>
+<p>Many organic compounds react directly with water in the aqueous solvent system. In addition, water dissociates into hydronium and hydroxide ions, and the concentrations of these subsidiary species often affect the rates of chemical transformations. EXAMS includes kinetic constants for three kinds of hydrolytic pathways: specific-acid (H<sub>3</sub>O<sup>+</sup>) catalyzed, neutral hydrolysis, and specific-base (OH<sup>-</sup>) catalyzed transformations.</p>
+
+
+<li>Indirect Photochemistry, Oxidation and Reduction:</li>
+<p>Indirect photolysis can be subdivided into two general classes of reactions. First, “sensitized photolysis” per se involves sunlight absorption and electronic excitation of a sensitizer (humic) molecule, followed by direct chemical interaction between the excited state of the sensitizer and a pollutant molecule. Possible chemical reactions include a direct energy transfer to the pollutant molecule, hydrogen atom transfer from pollutant to sensitizer to give free radicals, and union of sensitizer and pollutant yielding an excited-state complex or “exciplex” (Zepp and Baughman 1978). The resulting free radicals or exciplexes can then react with dissolved molecular oxygen, a process termed “type I sensitized photooxidation” by these authors.</p>
+
+<p>The second class of indirect photolysis involves the formation of chemical oxidants in natural waters, primarily via the interaction of sunlight, humic materials, and dissolved oxygen (type II sensitized photooxidation (Zepp and Baughman 1978)). The primary oxidants known to occur in natural waters are hydroxyl (OH&#8226;) and peroxy (ROO&#8226;) radicals (Mill et al. 1978), singlet oxygen (<sup>1</sup>O<sub>2</sub>) (Zepp et al. 1977b). Alkoxy radicals and diradicals may also contribute to environmental oxidation of some compounds, but their presence in natural waters has not been conclusively demonstrated (Mill 1980, Mill et al. 1980).</p>
+
+<li>Microbial Transformations:</li>
+<p>Microbial communities are a ubiquitous constituent of almost all aquatic ecosystems. The microbiota play a central role in the remineralization of plant and animal debris; they have evolved the capacity to transform and harvest energy from an immense array of naturally occurring organic compounds. The optimistic hope that “the solution to pollution is dilution” to some extent had its origin in a naive faith in the ability of saprobic microbes to utilize any and all synthetic organic compounds in their metabolic mills.</p>
+</ul>
+
+<li>Input Pollutant Loadings:</li>
+<p>The flux of a pollutant chemical entering an ecosystem is a primary determinant of the ultimate exposure experienced by resident organisms. EXAMS does not compute pollutant loadings. Loadings may be developed via projected or measured industrial effluent fluxes, agricultural runoff, by transfer from the PRZM model, landfill seepages, etc., but these computations must be executed externally to EXAMS.</p>
+
+<p>EXAMS provides input vectors for 5 kinds of loadings to each compartment of the system. These are: point-source or stream-borne loadings (STRLD), non-point-source loadings (NPSLD), contaminated ground-water seepage entering the system (SEELD), precipitation washout from the atmosphere (PCPLD), and spray-drift (or miscellaneous) loadings (DRFLD). The loadings have units of kg (of chemical)/hour in all cases. These loadings are taken as time-invariant constants in EXAMS’ steady-state computations, or as monthly values when EXAMS is run in mode 3. In addition, both Mode 2 and Mode 3 provide or
+event loadings by specification of the date, chemical, and kg mass of the event.</p>
+
+<li>Data Assembly and Solution of Equations:</li>
+<p>EXAMS includes three “modes” of operation: direct calculation of the “steady-state” outcome of long-term contamination (Mode1), step-wise computation of the time course of contaminant exposure under a specified set of environmental conditions,
+(Mode 2), and computation of daily exposure concentrations using monthly updates of environmental conditions (Mode 3). The numerical integration techniques are the same, and the output summaries analogous, for each operating “mode” of the program.</p>
+
+</ol>

@@ -1,2 +1,24 @@
+<p>The standard PRZM-EXAMS runoff modeling scenario captures the properties and
+dimensions of an agricultural field draining into water bodies for subsequent drinking water safety
+and aquatic exposure assessments. PRZM links two subordinate models (PRZM per se and
+VADOFT), that combine differing root zone and vadose zone characteristics into a single simulation
+to predict pesticide transport and transformation in the crop root and unsaturated zones, and edge-of-
+field losses in runoff waters and eroded sediment. Each PRZM modeling scenario represents a
+unique combination of climatic conditions, crop-specific management practices, specific soil
+properties, site-specific hydrology, and pesticide-specific application and dissipation (fate and
+transport) processes. Each PRZM simulation is conducted for multiple years (usually 30, spanning
+the years 1961-1990) using historical weather data (Burns 2001) to provide a probabilistic exposure
+characterization for a single site. Daily edge-of-field loadings of pesticides dissolved in runoff waters
+and sorbed to entrained sediment, as predicted by PRZM, are discharged into a standard water
+body simulated by the EXAMS model. The EXAMS model accounts for subsequent hydrologic
+transport, volatilization, sorption, hydrolysis, biodegradation, and photolysis of the pesticide.</p>
 
-<p></p>
+<p>PRZM-EXAMS is designed to facilitate a
+rapid and consistent assessment of aquatic pesticide exposure on a variety of
+crops. EXPRESS is a joint endeavor of the USEPA Office of Pesticide Programs
+(OPP) and the USEPA Office of Research and Development (ORD). The first
+draft of the software was developed by OPP/EFED via contract. OPP retains
+responsibility for development and maintenance of the crop-specific modeling
+scenarios. ORD continues development,maintenance and public availability of the
+Express software and its constituent models. EXPRESS has not yet,
+be it noted, been certified by OPP for routine use in regulatory analyses.</p>

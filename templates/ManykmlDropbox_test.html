@@ -1,48 +1,46 @@
-<!-- Google Map API Key -->
-<script src="http://maps.google.com/maps?file=api&amp;v=1&amp;key=AIzaSyAkl6EK6jQ3pNrMMl2j6zXMznm4eqprkME" type="text/javascript"></script>
+<!-- Google Maps API V3 Key -->
+<script type="text/javascript"
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-zLc7tlB-UbVrQPL6MXJQ1IDEFE-2cWA&sensor=false">
+</script>
 
-<div>Georgia Overlays on Google Maps</div>
-<div>To demonstrate KML overlays in Google Maps</div>
+
+<div>Endangered Species Mapper</div>
 <div id="map"></div>
-<!-- <div><ul><a href="http://maps.google.co.uk/maps?f=q&amp;hl=en&amp;q=http%3A%2F%2Fwww.littled.net%2Fexp%2Fgmap.kml&amp;ie=UTF8&amp;ll=51.4832,-0.007896&amp;spn=0.004931,0.014591&amp;z=16&amp;om=1">View in Google Maps</a></ul></div>
-<div><ul><a href="gmap.kml">Download KML file</a></ul></div>
- -->
+
+
 <script type="text/javascript">
-$(document).ready(function() {
-	function showMap() {
-		var geocoder = new GClientGeocoder();
-		geocoder.setCache=null;
-		// Google Maps caches KML files -- use a random query string parameter set to Date.
-		// var url_end = "?nocache=" + (new Date()).valueOf();
-		// var server_root = "http://www.littled.net/exp/";			
+$(document).ready(function(){
+
+// Enable the visual refresh
+google.maps.visualRefresh = true;
 
 
-		var nsf = $('#nsf').text()+ '.kmz';
-		var nsf_link="https://s3.amazonaws.com/esmapping_kmz/"+nsf
-        var kmlFile = "http://dl.dropbox.com/u/34957516/clarke.kmz";
-        var kmlFile2 = "http://dl.dropbox.com/u/34957516/raster.kmz";
-        var kmlFile3 = nsf_link;
-        // console.log(nsf_link)
-        // var kmlFile3 = "http://dl.dropbox.com/u/34957516/T_sirtalis.kmz";
-        // var kmlFile4 = "http://dl.dropbox.com/u/34957516/G_sila.kmz";
-		var map = new GMap2(document.getElementById("map"));
-		// Add controls
-		map.addControl(new GLargeMapControl());
-		map.addControl(new GMapTypeControl());
-		geoxml = new GGeoXml(kmlFile);
-        geoxml2 = new GGeoXml(kmlFile2);
-        geoxml3 = new GGeoXml(kmlFile3);
-        // geoxml4 = new GGeoXml(kmlFile4);
-        map.addOverlay(geoxml); 
-        map.addOverlay(geoxml2);
-        map.addOverlay(geoxml3); 
-        // map.addOverlay(geoxml4);
-		
-		// Default zoom level
-		var zl = 5;
-		map.setCenter(new GLatLng(35.7489,-80.3881), zl);
-	}
-	window.onload = showMap;
+function initialize() {
+
+	var mapDiv = document.getElementById('map');
+	// // Crating a MapOptions object with properties
+	var options = {
+		center: new google.maps.LatLng(37.09, -95.71),
+		zoom: 4,
+		mapTypedId: google.maps.MapTypeId.ROADMAP,
+		scaleControl: true
+	};
+
+	// //Creating the map
+	var map = new google.maps.Map(mapDiv,options);
+
+	// Creating overlays
+	var nsf = $('#nsf').text()+ '.kmz';
+	var nsf_link ="https://s3.amazonaws.com/esmapping_kmz/"+nsf
+
+	// KML overlay
+	var speciesLayer = new google.maps.KmlLayer(nsf_link) 
+	speciesLayer.setMap(map);
+
+};
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
 })
 
 </script>
@@ -53,4 +51,4 @@ $(document).ready(function() {
 	#map div { font-weight:bold;}
 	#map #iwsw p { font-weight:normal !important;}
 </style>
-<!-- end CSS -->
+<!-- end CSS -->

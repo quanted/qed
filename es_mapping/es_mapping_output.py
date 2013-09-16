@@ -22,7 +22,7 @@ class ESOutputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'es_mapping','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberoutput_start.html', {
+        html = html + template.render(templatepath + '04uberoutput_esmapping_start.html', {
             'model':'es_mapping', 
             'model_attributes':'Endangered Species Mapper Output'})
         html = html + """
@@ -51,4 +51,5 @@ if __name__ == '__main__':
 
 
 
-    
+    
+

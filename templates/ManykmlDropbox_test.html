@@ -26,7 +26,7 @@ function initialize() {
 	var map = new google.maps.Map(mapDiv,options);
 	// Creating overlays
 	var nsf = $('#nsf').text()+ '.kmz';
-	var nsf_link ="https://s3.amazonaws.com/esmapping_kmz/"+nsf
+	var nsf_link ="https://s3.amazonaws.com/esmapping_kmz/nsf/"+nsf
 	// KML overlay
 	var speciesLayer = new google.maps.KmlLayer(nsf_link) 
 	speciesLayer.setMap(map);

@@ -1,0 +1,34 @@
+\documentclass[fleqn, oneside, 11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[active, tightpage]{preview}
+
+\setlength\PreviewBorder{1pt}%
+
+\begin{document}
+
+\begin{preview}
+\begin{align*}
+%\begin{fleqn}
+\frac{d^{2}}{dt^{2}}\left(x_{i}+x_{i}\right) & = \left(U_{i} + u_{i} - V_{i} - v_{i}\right)\left(\frac{1}{\tau_{p}}\right)+g_{i} \nonumber \\
+\frac{d}{dt}\left(x_{i}+x_{i}\right) & = V_{i} + v_{i} \nonumber \\
+t & =  \text{Time} \nonumber \\
+U_{i} & =  \text{Mean local velocity} \nonumber \\
+u_{i} & =  \text{Fluctuating local velocity} \nonumber \\
+V_{i} & =  \text{Mean droplet velocity} \nonumber \\
+v_{i} & =  \text{Fluctuating droplet velocity} \nonumber \\
+g_{i} & =  \text{gravity} \nonumber \\
+g_{i} & =  \text{gravity} \nonumber \\
+\tau_{p} & = \text{Droplet relaxation time} \nonumber \\
+%\end{fleqn}
+\end{align*} 
+\end{preview}
+
+\end{document}
+
+% to convert at commandline- add the pdf file produced by this tex file at the end, and replace e.g., dust_equation25
+gs -sDEVICE=png16m -dTextAlphaBits=4 -r300 -dGraphicsAlphaBits=4 -dSAFER -q -dNOPAUSE -sOutputFile=dust_equation25.png image2_template_standalone.pdf
+
+% then type quit to exit ghostscript
+%using imageMagick
+convert -transparent-color white dust_equation25.png dust_equation25.gif

@@ -18,6 +18,7 @@ class ESOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()   
         NSF = form.getvalue('NSF')
+        NSP = form.getvalue('NSP')
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'es_mapping','page':'output'})
@@ -31,8 +32,13 @@ class ESOutputPage(webapp.RequestHandler):
                         <th id="NSF">NSF</th>
                         <td id="nsf">%s<td>
                     </tr>
+                    <tr>
+                        <th id="NSP">NSP</th>
+                        <td id="nsp">%s<td>
+                    </tr>
+
                 </table>
-        """%(NSF)
+        """%(NSF, NSP)
         html = html + template.render(templatepath+'ManykmlDropbox_test.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

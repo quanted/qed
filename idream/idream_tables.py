@@ -103,7 +103,7 @@ def timestamp():
     return html
 
 def table_all(idream_obj):
-    if idream_obj.tire == 'Tire 2':
+    if idream_obj.tire == 'Tier 2':
         table1_out=table_1(idream_obj)
         table2_out=table_2(idream_obj)
         table3_out=table_3(idream_obj)
@@ -211,7 +211,7 @@ def gettsumdata_2(exp_child_c_1_out, exp_child_c_2_out, exp_adult_c_out, exp_fe_
 def table_1(idream_obj):
         #pre-table 1
         html = """
-            <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs (TIRE 2):</H3>
+            <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs (TIER 2):</H3>
             <div class="out_">
                 <div class="out_ container_output">
         """
@@ -228,7 +228,7 @@ def table_1(idream_obj):
 def table_1_3(idream_obj):
         #pre-table 1
         html = """
-            <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs (TIRE 3):</H3>
+            <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs (TIER 3):</H3>
             <div class="out_ container_output">
         """
         #table 1
@@ -343,4 +343,5 @@ def table_sum_3(exp_child_a_1_out, exp_child_a_2_out, exp_adult_a_out, exp_fe_a_
         html = html + """
             </div>
         """
-        return html
+        return html
+

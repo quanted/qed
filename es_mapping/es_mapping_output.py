@@ -17,8 +17,11 @@ from google.appengine.api import urlfetch
 class ESOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()   
+        
         NSF = form.getvalue('NSF')
         NSP = form.getvalue('NSP')
+        NSM = form.getvalue('NSM')
+
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'es_mapping','page':'output'})
@@ -26,6 +29,7 @@ class ESOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_esmapping_start.html', {
             'model':'es_mapping', 
             'model_attributes':'Endangered Species Mapper Output'})
+        
         html = html + """
                 <table class="out_">
                     <tr>
@@ -36,9 +40,12 @@ class ESOutputPage(webapp.RequestHandler):
                         <th id="NSP">NSP</th>
                         <td id="nsp">%s<td>
                     </tr>
-
+                    <tr>
+                        <th id="NSM">NSM</th>
+                        <td id="nsm">%s<td>
+                    </tr>
                 </table>
-        """%(NSF, NSP)
+        """%(NSF, NSP, NSM)
         html = html + template.render(templatepath+'ManykmlDropbox_test.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

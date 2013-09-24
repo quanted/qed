@@ -348,6 +348,5 @@ def table_sum_output(sumheadings, tmpl, dose_bird_out, dose_mamm_out, at_bird_ou
         html = html + """
                 </div>
         </div>
-        <br>
         """
         return html

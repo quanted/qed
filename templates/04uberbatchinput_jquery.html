@@ -3,16 +3,37 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-					$("#form1").validate({
-					submitHandler: function (form) {
-						SubmittingForm()
-						alert("submitted");   
+	$("#form1").validate({
+	submitHandler: function (form) {
+		SubmittingForm()
+		alert("submitted");   
 
-						},
-					rules: {
-						upfile: "required"	
-						}
-					})
+		},
+	rules: {
+		upfile: "required"	
+		}
+	})
+
+	$('.input_button:submit').click(function () {
+		$(document).ajaxStart(function(){
+			alert('AJAX Start');
+		});
+
+		$(document).ajaxStop(function(){
+			alert('AJAX Stop');
+		});
+
+		$.ajax({
+
+			type: "post",
+
+		   success: function(data) {
+	    		alert('AJAX Completed');
+			}
+
+		});
+	});
+
 });
 </script>
 </div> <!-- End "articles" div -->

@@ -185,12 +185,7 @@ handlers:
 - url: /user.html
   script: user/user_input.py   
   login: required
-<<<<<<< HEAD
 
-=======
-  secure: never
-  
->>>>>>> sprint8
 - url: /user_output.html
   script: user/user_output.py
   login: required

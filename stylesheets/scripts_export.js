@@ -73,14 +73,14 @@ var doneDiv = document.getElementById("popup");
 
 		$.ajax({
 
-				type: "post",
-				url: "/pdf.html",
-				data: $("#pdf_post").serialize(),
-				dataType: "html",
+			type: "post",
+			url: "/pdf.html",
+			data: $("#pdf_post").serialize(),
+			dataType: "html",
 
-			   success: function(data) {
-            		doneDiv.innerHTML = data;
-				}
+		   success: function(data) {
+        		doneDiv.innerHTML = data;
+			}
 
 		});
 

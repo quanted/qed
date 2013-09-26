@@ -40,7 +40,10 @@ function initialize() {
 	nspLayer.setMap(map);
 
 	// Creating overlays for NatureServeMammals: NSM
-	
+	var nsm = $('#nsm').text()+ '.kmz';
+	var nsm_link = "https://s3.amazonaws.com/esmapping_kmz/nsm/"+nsm
+	var nsmLayer = new google.maps.KmlLayer(nsm_link) 
+	nsmLayer.setMap(map);
 
 };
 

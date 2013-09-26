@@ -24,9 +24,7 @@ class agdriftOutputPage(webapp.RequestHandler):
         application_method = form.getvalue('application_method')
         boom_height = form.getvalue('boom_height')
         orchard_type = form.getvalue('orchard_type')
-        agdrift_obj = agdrift_model.agdrift(True, True, drop_size, ecosystem_type, application_method, boom_height, orchard_type)
-
-
+        agdrift_obj = agdrift_model.agdrift(True, True, ecosystem_type, application_method, drop_size, orchard_type, boom_height)
         text_file = open('agdrift/agdrift_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
@@ -39,6 +37,7 @@ class agdriftOutputPage(webapp.RequestHandler):
 
         html = html + agdrift_tables.timestamp()
         html = html + agdrift_tables.table_all(agdrift_obj)
+        html = html + template.render(templatepath + 'export.html', {})
         
 
         # <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs</H3>
@@ -79,11 +78,10 @@ class agdriftOutputPage(webapp.RequestHandler):
         # </table>
         # <br>
         # <h3 class="out_2 collapsible" id="section2"><span></span>Results</h3>
-        #<div>
+        <div>
        # """%(results[0], results[1])
 
         html = html + template.render(templatepath + 'agdrift-output-jqplot.html', {})
-
         html = html +  """
         </div>
         """

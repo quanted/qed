@@ -30,6 +30,15 @@ def lesliedrgrow(S, l_m, n_o, T, HL, Con, a, b, c):
         n_f[:,i]=n.squeeze()
     return n_f
 
+def lesliegrow(S, l_m, n_o, T):
+    n_f=np.zeros(shape=(S,T+1), dtype=float)
+    n_f[:,0]=n_o.squeeze()
+    for i in range(1, T+1):
+        n=np.dot(l_m, n_o)
+        n_o=n
+        n_f[:,i]=n.squeeze()
+    return n_f
+
 class lesliedrOutputPage(webapp.RequestHandler):
     def post(self):        
         form = cgi.FieldStorage()
@@ -66,6 +75,12 @@ class lesliedrOutputPage(webapp.RequestHandler):
         x=x.tolist()
         x_f=copy.deepcopy(x)
         
+
+        x_no=lesliegrow(S, l_m, n_o, T)
+        x_no=x_no.tolist()
+        x_no_f=copy.deepcopy(x_no)
+
+
         for m in range(0,S):
             for n in range(0,T+1):
                 x[m][n]=format(x[m][n],'3.2E')
@@ -155,8 +170,12 @@ class lesliedrOutputPage(webapp.RequestHandler):
                             <td>X_f</td>
                             <td id="final_f">%s</td>
                           </tr>                          
-                          </table>"""%(x,x_f)
-        html = html + template.render(templatepath + 'lesliedr-output-jqplot.html', {})                         
+                          <tr>
+                            <td>X_f_no</td>
+                            <td id="final_f_no">%s</td>
+                          </tr>                          
+                          </table>"""%(x, x_f, x_no_f)
+        html = html + template.render(templatepath + 'lesliedr-output-jqplot.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})

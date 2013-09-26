@@ -44,4 +44,4 @@ class SIPInp(forms.Form):
 #  body_weight_of_bird = forms.FloatField(required=True, label='Body weight of bird (kg)', initial='4')
 #  body_weight_of_mammal = forms.FloatField(required=True,label='Body weight of mammal (kg)', initial='5')
 #  body_weight_of_the_assessed_bird = forms.FloatField(required=True, label='Body weight of assessed bird (g)', initial='8')
-#  body_weight_of_the_assessed_mammal = forms.FloatField(required=True, label='Body weight of assessed mammal (kg)', initial='5')
+#  body_weight_of_the_assessed_mammal = forms.FloatField(required=True, label='Body weight of assessed mammal (kg)', initial='5')

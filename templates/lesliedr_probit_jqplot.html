@@ -11,80 +11,60 @@
 
 <div id="chart1" style="margin-top:20px; margin-left:20px; width:650px; height:400px;"></div>
 <div id="chart2" style="margin-top:20px; margin-left:20px; width:650px; height:400px;"></div>
+<div id="chart3" style="margin-top:20px; margin-left:20px; width:650px; height:400px;"></div>
 
 <script type='text/javascript'> 
-
 $(document).ready(function(){    
-    	var ms = $.parseJSON($('#MS').text());
-    	var lm = $.parseJSON($('#LM').text());
-    	var ii = $.parseJSON($('#IN').text());
-    	var sd = $.parseJSON($('#sd').text());
-    	var s1 = eval($('#final').text());
-    	var s = $.parseJSON($('#final_f').text());
-    	var s_no = $.parseJSON($('#final_f_no').text());
-		$('<tr><th colspan='+ms+1+'><div align="center">Leslie Matrix</div></th></tr>').appendTo('.lm');	
-		$('<tr><th><div align="center">Initial Individuals</div></th></tr>').appendTo('.ii');	
-		$('<tr><th colspan='+ms+1+'><div align="center">Individuals Over Time</div></th></tr>').appendTo('.it');	
-		
-		i=0
-		while (i < ms){
-			i1=i+1
-		$('<tr><td width=60><div align="center">C'+i1+'</div></td>').appendTo('.lm')
-		
-		var j=0
-			while (j < ms) {	
-			$('<td width=60><div align="center">'+lm[i][j]+'</div></td>').appendTo('.lm tr:last')
-  			j=j+1
-			}
-		$('</tr>').appendTo('.lm')
-		i=i+1			
-		}
-		$('</table>').appendTo('.lm')
-		$('<p>&nbsp;</p>').insertAfter('.lm')
-
-		p=0
-		$('<tr><td width=60><div align="center">Time Steps</div></td></tr>').appendTo('.it')
-		while (p < ms){
-			p=p+1
-			$('<td width=60><div align="center">C'+p+'</div></td>').appendTo('.it tr:last')
-		}
-		$('</tr>').appendTo('.it')
-		
-		
-		l=0
-		while (l < sd+1){	//time step, row
-		$('<tr><td width=60><div align="center">T='+l+'</div></td>').appendTo('.it')
-		var k=0
-			while (k < ms) {	//age class, col
-			$('<td width=60><div align="center">'+s1[k][l]+'</div></td>').appendTo('.it tr:last')
-  			k=k+1
-			}
-		$('</tr>').appendTo('.it')
-		l=l+1			
-		}
-		$('</table>').appendTo('.it')
-
-
-
+    	var ms = $.parseJSON($('#n_o_c').text());
+    	var s = $.parseJSON($('#final').text());
+    	var s_no = $.parseJSON($('#final_no').text());
+    	var conc = $.parseJSON($('#conc').text());
 		
 		$.jqplot.config.enablePlugins = true;
 		
 		L=[{label:'Age class 1'}];
-		
 		var i=2
 		while(i<=ms)
 			{
 				L.push({label:'Age class'+i});
 				i++;
 			}		
-		
-        $.jqplot('chart1', s, {
-			
+
+// concentration plot
+        $.jqplot('chart1', [conc], {
 			seriesDefaults: { 
         	showMarker:false,
          	pointLabels: {show:false }
       		},
-			
+			series:[
+			{label:'Concentrations'}
+			],
+			axes: {
+      			xaxis: {
+					label :'Time units',
+					pad: 0
+      				},
+      			yaxis: {
+        			label: 'Pesticide concentrations (ppm)',
+					labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+					//renderer: $.jqplot.LogAxisRenderer,
+					pad: 0
+      				}
+    		},
+			 legend: {
+      			show: true,
+      			location: 'nw',
+      			placement: 'inside',
+				fontSize: '11px'
+    		} 
+        })   
+
+// population with impacts
+        $.jqplot('chart2', s, {
+			seriesDefaults: { 
+        	showMarker:false,
+         	pointLabels: {show:false }
+      		},
 			series:L,
 			axes: {
       			xaxis: {
@@ -106,12 +86,12 @@ $(document).ready(function(){
     		} 
         })   
 
-        $.jqplot('chart2', s_no, {
+// population without impacts
+        $.jqplot('chart3', s_no, {
 			seriesDefaults: { 
         	showMarker:false,
          	pointLabels: {show:false }
       		},
-			
 			series:L,
 			axes: {
       			xaxis: {
@@ -132,6 +112,7 @@ $(document).ready(function(){
 				fontSize: '11px'
     		} 
         })   
+
 
     })
 </script>

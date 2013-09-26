@@ -1,0 +1,157 @@
+<script>
+$(document).ready(function(){ 
+
+	//$(".articles").find('table').addClass('table');
+    var tab_pool = ["tab_chem", "tab_dose", "tab_popu"];
+    var uptab_pool = ["chem", "dose", "popu"];
+    var visible = $(".tab:visible").attr('class').split(" ")[1];
+    var curr_ind = $.inArray(visible, tab_pool);
+    $(".submit").hide();
+    $(".back").hide();
+
+    // $('li.Chemical').click(function(){
+    //     curr_ind = 0;
+    //     $('li.Chemical').css({'color': '#FFA500'});
+    //     $('li.Avian, li.Mammal').css({'color': '#333333'});
+    //     $(".tab:visible").hide();
+    //     $('.tab_Chemical').show();
+    //     $(".back").hide();
+    //     $(".submit").hide();
+    //     $(".next").show();
+    // });
+
+    // $('li.Avian').click(function(){
+    //     curr_ind = 1;
+    //     $('li.Avian').css({'color': '#FFA500'});
+    //     $('li.Chemical, li.Mammal').css({'color': '#333333'});
+    //     $(".tab:visible").hide();
+    //     $('.tab_Avian').show();
+    //     $(".back").show();
+    //     $(".submit").hide();
+    //     $(".next").show();
+    // });
+
+    // $('li.Mammal').click(function(){
+    //     curr_ind = 2;
+    //     $('li.Mammal').css({'color': '#FFA500'});
+    //     $('li.Avian, li.Chemical').css({'color': '#333333'});
+    //     $(".tab:visible").hide();
+    //     $('.tab_Mammal').show();
+    //     $(".back").show();
+    //     $(".submit").show();
+    //     $(".next").hide();
+    // });
+
+    $('.next').click(function () {
+        var tab = $(".tab:visible");
+        if (curr_ind < 2) {      
+            $(".tab:visible").hide();
+            $("."+ uptab_pool[curr_ind]).css({'color': '#333333'});
+            curr_ind = curr_ind + 1;
+            $("." + tab_pool[curr_ind]).show();
+            $("."+ uptab_pool[curr_ind]).css({'color': '#FFA500'});
+            $(".submit").hide();
+            $(".back").show();
+            }
+        if (curr_ind == 2) {
+            $(".submit").show();
+            $(".next").hide();
+        }
+    });
+
+    $('.back').click(function () {
+        if (curr_ind > 0) {
+            $(".tab:visible").hide();
+            $("."+ uptab_pool[curr_ind]).css({'color': '#333333'});
+            curr_ind = curr_ind - 1;
+            $("." + tab_pool[curr_ind]).show();
+            $("."+ uptab_pool[curr_ind]).css({'color': '#FFA500'});
+            $(".submit").hide();
+            $(".next").show();
+        }
+        if (curr_ind == 0) {
+            $(".back").hide();
+        }
+    });
+
+    var i = 2
+
+        var total = $('#id_noa').val()
+        $('tr[id*="noa_header"]').show()
+
+        while (i <= total) {
+            if (i==1){
+                $('.tab_app').append('<tr class="tab_noa1"><td><input name="jm' + i + '" type="text" size="5" value="' + i + '"/></td><td><input type="text" size="5" name="rate' + i + '" id="id_rate' + i + '" value="4"/></td><td><input type="text" size="5" name="day' + i + '" id="id_day' + i + '"  value="0" /></td></tr>');
+            }
+
+            else {
+                $('.tab_app').append('<tr class="tab_noa1"><td><input name="jm' + i + '" type="text" size="5" value="' + i + '"/></td><td><input type="text" size="5" name="rate' + i + '" id="id_rate' + i + '" value="4"/></td><td><input type="text" size="5" name="day' + i + '" id="id_day' + i + '" value="' + 3*(i-1) + '"/></td></tr>');
+            }
+            i = i + 1;
+        }
+        while (i-1 > total) {
+            $(".tab_app tr:last").remove();
+            i=i-1
+        }
+        $('</table>').appendTo('.tab_app');
+
+
+    $('#id_noa').change(function () {
+    	var total = $(this).val()
+    	$('tr[id*="noa_header"]').show()
+
+    	while (i <= total) {
+    		if (i==1){
+    			$('.tab_app').append('<tr class="tab_noa1"><td><input name="jm' + i + '" type="text" size="5" value="' + i + '"/></td><td><input type="text" size="5" name="rate' + i + '" id="id_rate' + i + '" value="4"/></td><td><input type="text" size="5" name="day' + i + '" id="id_day' + i + '"  value="0" /></td></tr>');
+    		}
+
+    		else {
+    			$('.tab_app').append('<tr class="tab_noa1"><td><input name="jm' + i + '" type="text" size="5" value="' + i + '"/></td><td><input type="text" size="5" name="rate' + i + '" id="id_rate' + i + '" value="4"/></td><td><input type="text" size="5" name="day' + i + '" id="id_day' + i + '" value="' + 3*(i-1) + '"/></td></tr>');
+    		}
+    		i = i + 1;
+    	}
+    	while (i-1 > total) {
+    		$(".tab_app tr:last").remove();
+    		i=i-1
+    	}
+    	$('</table>').appendTo('.tab_app');
+    })
+
+    $('#id_s').change(function() {
+		$('.leslie1').remove();
+		$('.no1').remove();
+		var total = $(this).val()
+		$('<tr class="leslie1"><th colspan='+total+'>Leslie Matrix:</th></tr>').appendTo('.leslie');	
+		i=0
+		while (i < total){
+		$('<tr class="leslie1">').appendTo('.leslie')
+		var j=0
+			while (j < total) {	
+			if (i==0) {
+				 vv = 'Fx'
+				}
+			else if (i==j+1)	{
+				 vv = 'So'	
+			}
+			else {
+				 vv = 0
+			}
+			$('<td><input type="text" size="5" name="aa'+i+''+j+'" value='+vv+' id="id_a'+i+''+j+'"/></td>').appendTo('.leslie tr:last')
+  			j=j+1
+			}
+		$('</tr>').appendTo('.leslie')
+		i=i+1			
+		}
+		$('</table>').appendTo('.leslie');	
+		
+		$('<tr class="no1"><th width="5">Initial Number:</th></tr>').appendTo('.no');			
+		q=0
+		while (q < total){
+		$('<tr class="no1"><td><input type="text" size="5" name="no'+q+'" value="0" id="id_a'+q+'"/></td></tr>').appendTo('.no')
+		q=q+1			
+		}
+		$('</table>').appendTo('.no');
+	});
+});
+</script>
+

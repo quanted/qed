@@ -48,7 +48,7 @@ var browserWidth = $(window).width();
 var browserHeight = $(window).height();
 var winleft = (browserWidth / 2) - 220 + "px";
 var wintop = (browserHeight / 2) - 30 + "px";
-var divTop = ($('.articles_output').height() * 0.5) - 28.5 + "px";
+// var divTop = ($('.articles_output').height() * 0.5) - 28.5 + "px";
 var doneDiv = document.getElementById("popup");
 
     $('#pdfExport').click(function () {
@@ -61,7 +61,6 @@ var doneDiv = document.getElementById("popup");
 
         $(document).ajaxStop(function(){
 	        $.blockUI( { message: null, fadeIn: 0 } );
-	        $("#popup").show();
 	        $("#export_link,.exit_button").fadeIn(500);
 	        $("#popup_link").css({ "top":""+wintop+"", "left":""+winleft+"" });
 	        $(".exit_button").click(function (){
@@ -83,7 +82,6 @@ var doneDiv = document.getElementById("popup");
 			}
 
 		});
-
 	});
 
 	$('#htmlExport').click(function () {

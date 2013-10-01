@@ -51,7 +51,7 @@ def get_jid(pdf_t, pdf_nop, pdf_p):
     output_val = json.loads(response_val.content)['result']
     return(jid, output_st, output_val)
 
-class pdfPage(webapp.RequestHandler):
+class ajaxTest(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()   
         pdf_t = form.getvalue('pdf_t')
@@ -67,7 +67,7 @@ class pdfPage(webapp.RequestHandler):
             'model_attributes':'Please download your PDF here','text_paragraph':''})
         self.response.out.write(html)
 
-app = webapp.WSGIApplication([('/.*', pdfPage)], debug=True)
+app = webapp.WSGIApplication([('/.*', ajaxTest)], debug=True)
 
 def main():
     run_wsgi_app(app)

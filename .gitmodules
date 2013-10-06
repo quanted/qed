@@ -1,0 +1,3 @@
+[submodule "uberrest"]
+	path = uberrest
+	url = git://github.com/batwalrus76/uberrest.git

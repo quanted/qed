@@ -125,8 +125,13 @@ def html_table(row_inp,iter):
     chron_mamm_out.append(sip_obj.chron_mamm_out)
     chronconm_out.append(sip_obj.chronconm_out)
 
-    html = sip_tables.table_all(sip_obj)
+    batch_header = """
+        <div class="out_">
+            <br><H3>Batch Calculation of Iteration %s:</H3>
+        </div>
+        """%(iter + 1)
 
+    html = batch_header + sip_tables.table_all(sip_obj)
     return html
                 
 def loop_html(thefile):

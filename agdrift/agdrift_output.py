@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jan 18 11:50:49 2013
-
-@author: MSnyder
-"""
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import webapp2 as webapp
@@ -12,11 +6,15 @@ from google.appengine.ext.webapp import template
 import numpy as np
 import cgi
 import cgitb
-import math
-import csv
-from agdrift import agdrift_model
-
 cgitb.enable()
+import logging
+import sys
+sys.path.append("../utils")
+import utils.json_utils
+sys.path.append("../agdrift")
+from agdrift import agdrift_model
+from agdrift import agdrift_tables
+from django.template import Context, Template
 
 class agdriftOutputPage(webapp.RequestHandler):
     def post(self):        
@@ -26,8 +24,11 @@ class agdriftOutputPage(webapp.RequestHandler):
         application_method = form.getvalue('application_method')
         boom_height = form.getvalue('boom_height')
         orchard_type = form.getvalue('orchard_type')
+        agdrift_obj = agdrift_model.agdrift(True, True, drop_size, ecosystem_type, application_method, boom_height, orchard_type)
 
-        results = agdrift_model.func(ecosystem_type, application_method, drop_size, orchard_type, boom_height)
+
+        text_file = open('agdrift/agdrift_description.txt','r')
+        x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'agdrift','page':'output'})
@@ -35,48 +36,54 @@ class agdriftOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'agdrift', 
                 'model_attributes':'AgDrift Output'})
-        html = html + """
-        <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs</H3>
-        <div class="out_">
-            <table class="out_">
-                <tr>
-                    <th colspan="2">Inputs: Chemical Identity</th>
-                </tr>
-                <tr>
-                    <td>Application method</td>
-                    <td id="app_method_val">%s</td>
-                </tr>
-                <tr id="Orc_type">
-                    <td>Orchard type</td>
-                    <td>%s</td>
-                </tr>
-                <tr>
-                    <td>Drop size</td>
-                    <td>%s</td>
-                </tr>
-                <tr>
-                    <td>Ecosystem type</td>
-                    <td>%s</td>
-                </tr>
-            </table>
-        </div>
-        """ % (application_method, orchard_type, drop_size, ecosystem_type)
-        html = html +  """
-        <table style="display:none;">
-            <tr>
-                <td>distance</td>
-                <td id="distance">%s</td>
-            </tr>
-            <tr>
-                <td>deposition</td>
-                <td id="deposition">%s</td>
-            </tr>
-        </table>
-        <br>
-        <h3 class="out_2 collapsible" id="section2"><span></span>Results</h3>
-        <div>
-        """%(results[0], results[1])
+
+        html = html + agdrift_tables.timestamp()
+        html = html + agdrift_tables.table_all(agdrift_obj)
+        
+
+        # <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs</H3>
+        # <div class="out_">
+        #     <table class="out_">
+        #         <tr>
+        #             <th colspan="2">Inputs: Chemical Identity</th>
+        #         </tr>
+        #         <tr>
+        #             <td>Application method</td>
+        #             <td id="app_method_val">%s</td>
+        #         </tr>
+        #         <tr id="Orc_type">
+        #             <td>Orchard type</td>
+        #             <td>%s</td>
+        #         </tr>
+        #         <tr>
+        #             <td>Drop size</td>
+        #             <td>%s</td>
+        #         </tr>
+        #         <tr>
+        #             <td>Ecosystem type</td>
+        #             <td>%s</td>
+        #         </tr>
+        #     </table>
+        # </div>
+        # """ % (application_method, orchard_type, drop_size, ecosystem_type)
+        # html = html +  """
+        # <table style="display:none;">
+        #     <tr>
+        #         <td>distance</td>
+        #         <td id="distance">%s</td>
+        #     </tr>
+        #     <tr>
+        #         <td>deposition</td>
+        #         <td id="deposition">%s</td>
+        #     </tr>
+        # </table>
+        # <br>
+        # <h3 class="out_2 collapsible" id="section2"><span></span>Results</h3>
+        #<div>
+       # """%(results[0], results[1])
+
         html = html + template.render(templatepath + 'agdrift-output-jqplot.html', {})
+
         html = html +  """
         </div>
         """

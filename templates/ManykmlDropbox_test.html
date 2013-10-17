@@ -1,0 +1,71 @@
+<!-- Google Maps API V3 Key, v = 3.13 -->
+<script type="text/javascript"
+	src="https://maps.googleapis.com/maps/api/js?v=3.13&key=AIzaSyB-zLc7tlB-UbVrQPL6MXJQ1IDEFE-2cWA&sensor=false">
+</script>
+
+<div>Endangered Species Mapper</div>
+<div id="map"></div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+// Enable the visual refresh
+google.maps.visualRefresh = true;
+
+function initialize() {
+	var mapDiv = document.getElementById('map');
+	// // Crating a MapOptions object with properties
+	var options = {
+		center: new google.maps.LatLng(37.09, -95.71),
+		zoom: 4,
+		mapTypedId: google.maps.MapTypeId.ROADMAP,
+		scaleControl: true
+	};
+	// Creating the map
+	var map = new google.maps.Map(mapDiv,options);
+
+	// Creating an InfoWindow with content text: "Test"
+	var infowindow = new google.maps.InfoWindow({
+		content : 'test!!!'
+	});
+	
+	// Creating overlays for NatureServeFish: NSF
+	var nsf = $('#nsf').text()+ '.kmz';
+	var nsf_link ="https://s3.amazonaws.com/esmapping_kmz/nsf/"+nsf
+	// KML overlay
+	var nsfLayer = new google.maps.KmlLayer(nsf_link, {suppressInfoWindows: true}) 
+	nsfLayer.setMap(map);
+	// Adding the click event to the overlay
+	google.maps.event.addListener(nsfLayer,'click',function(){
+	infowindow.open(map,nsfLayer);	
+	//infowindow.close();
+	});
+
+
+	// Creating overlays for NatureServePollinator: NSP
+	var nsp = $('#nsp').text()+ '.kmz';
+	var nsp_link ="https://s3.amazonaws.com/esmapping_kmz/nsp/"+nsp
+	// KML overlay
+	var nspLayer = new google.maps.KmlLayer(nsp_link,{suppressInfoWindows: true}) 
+	nspLayer.setMap(map);
+
+	// Creating overlays for NatureServeMammals: NSM
+	var nsm = $('#nsm').text()+ '.kmz';
+	var nsm_link = "https://s3.amazonaws.com/esmapping_kmz/nsm/"+nsm
+	var nsmLayer = new google.maps.KmlLayer(nsm_link,{suppressInfoWindows: true}) 
+	nsmLayer.setMap(map);
+
+};
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+})
+
+</script>
+<!-- CSS to control the layout of the map -->
+<style type="text/css">
+	#map {width:700px; height:500px;}
+	#map div { font-weight:bold;}
+	#map #iwsw p { font-weight:normal !important;}
+</style>
+<!-- end CSS -->

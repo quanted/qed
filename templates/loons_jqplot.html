@@ -1,0 +1,59 @@
+<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="/stylesheets/jqplot/excanvas.js"></script><![endif]-->
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/jquery.jqplot.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/jqplot/jquery.jqplot.css" />
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.pointLabels.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.cursor.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.logAxisRenderer.js"></script>
+
+<div id="chart1" style="margin-top:20px; margin-left:20px; width:650px; height:400px;"></div>
+
+
+<script type='text/javascript'> 
+$(document).ready(function(){    
+
+    	var ms = $.parseJSON($('#n_o_c').text());
+    	var s = $.parseJSON($('#final').text());
+		
+		$.jqplot.config.enablePlugins = true;
+		
+		L=[{label:'Juvenile Year 1'}, {label:'Juvenile Year 2'}, {label:'Juvenile Year 3'}, {label:'Adult'}];
+
+
+      console.log(L)
+// population with impacts
+        $.jqplot('chart1', s, {
+			seriesDefaults: { 
+        	showMarker:false,
+         	pointLabels: {show:false }
+      		},
+			series:L,
+			axes: {
+      			xaxis: {
+					label :'Time units (year)',
+					pad: 0
+      				},
+      			yaxis: {
+        			label: 'Number of individuals',
+					labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+					//renderer: $.jqplot.LogAxisRenderer,
+					pad: 0
+      				}
+    		},
+			 legend: {
+      			show: true,
+      			location: 'e',
+      			placement: 'inside',
+				fontSize: '11px'
+    		} 
+        })   
+
+
+    })
+</script>
+
+
+

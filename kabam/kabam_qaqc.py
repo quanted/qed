@@ -29,7 +29,7 @@ k_oc=[]
 c_wdp=[]
 water_column_EEC=[]
 c_wto=[]
-mineau=[]
+mineau_scaling_factor=[]
 x_poc=[]
 x_doc=[]
 c_ox=[]
@@ -37,7 +37,7 @@ w_t=[]
 c_ss=[]
 oc=[]
 k_ow=[]
-b_species =[]
+Species_of_the_tested_bird =[]
 bw_quail =[]
 bw_duck =[]
 bwb_other =[]
@@ -363,7 +363,7 @@ for row in data:
     c_wdp.append(float(row[3]) / 1000000)
     water_column_EEC.append(float(row[4]))
     c_wto.append(float(row[4]) / 1000000)
-    mineau.append(float(row[5]))
+    mineau_scaling_factor.append(float(row[5]))
     x_poc.append(float(row[6]))
     x_doc.append(float(row[7]))
     c_ox.append(float(row[8]))
@@ -371,7 +371,7 @@ for row in data:
     c_ss.append(float(row[10]))
     oc.append(float(row[11]) / 100)
     k_ow.append(10**(float(row[1])))
-    b_species.append(row[12])
+    Species_of_the_tested_bird.append(row[12])
     bw_quail.append(row[13])
     bw_duck.append(row[14])
     bwb_other.append(row[15])
@@ -689,8 +689,8 @@ for row in data:
 
 
 kabam_obj = kabam_model.kabam(
-            True,True,chemical_name[0],l_kow[0],k_oc[0],c_wdp[0],water_column_EEC[0],c_wto[0],mineau[0],x_poc[0],x_doc[0],c_ox[0],w_t[0],c_ss[0],oc[0],k_ow[0],
-            b_species[0],bw_quail[0],bw_duck[0],bwb_other[0],avian_ld50[0],avian_lc50[0],avian_noaec[0],m_species[0],bw_rat[0],bwm_other[0],mammalian_ld50[0],mammalian_lc50[0],mammalian_chronic_endpoint[0],
+            True,True,chemical_name[0],l_kow[0],k_oc[0],c_wdp[0],water_column_EEC[0],c_wto[0],mineau_scaling_factor[0],x_poc[0],x_doc[0],c_ox[0],w_t[0],c_ss[0],oc[0],k_ow[0],
+            Species_of_the_tested_bird[0],bw_quail[0],bw_duck[0],bwb_other[0],avian_ld50[0],avian_lc50[0],avian_noaec[0],m_species[0],bw_rat[0],bwm_other[0],mammalian_ld50[0],mammalian_lc50[0],mammalian_chronic_endpoint[0],
             lf_p_sediment[0],lf_p_phytoplankton[0],lf_p_zooplankton[0],lf_p_benthic_invertebrates[0],lf_p_filter_feeders[0],lf_p_small_fish[0],lf_p_medium_fish[0],
             mf_p_sediment[0],mf_p_phytoplankton[0],mf_p_zooplankton[0],mf_p_benthic_invertebrates[0],mf_p_filter_feeders[0],mf_p_small_fish[0],
             sf_p_sediment[0],sf_p_phytoplankton[0],sf_p_zooplankton[0],sf_p_benthic_invertebrates[0],sf_p_filter_feeders[0],

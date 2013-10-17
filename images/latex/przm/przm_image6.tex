@@ -1,0 +1,25 @@
+\documentclass[fleqn, oneside, 11pt]{article}%allows pdfs to be cropped and fleqn left justifies
+\usepackage{amssymb}
+\usepackage{amsmath}%sets math environment
+\usepackage[active, tightpage]{preview}%crops pdf to border of equations
+\usepackage{fixltx2e}
+\DeclareMathSizes{10}{1}{1}{1}
+\setlength\PreviewBorder{1pt}%sets size of border
+
+\begin{document}
+\begin{preview}
+\begin{align*}%sets up equation environment so you can specify alignment with ampersands
+\text{where} \nonumber \\
+(SW)^{t}_i & =  \text{soil water in layer ``I" on day ``t" (cm)} \nonumber \\
+E_i & =  \text{evaporation (cm day\textsuperscript{-1})} \nonumber \\
+U_i & =  \text{transpiration (cm day\textsuperscript{-1})} \nonumber \\
+I_i & =  \text{percolation out of zone I (cm day\textsuperscript{-1})} \nonumber \\
+INF & =  \text{infiltration into layer 1 (cm day\textsuperscript{-1})} \nonumber \\
+\end{align*} 
+\end{preview}
+\end{document}
+
+% convert pdf to png using imagemagick
+% convert -density 400 przm_image1.pdf przm_image1.png
+
+

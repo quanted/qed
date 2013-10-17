@@ -7,6 +7,138 @@ $(document).ready(function() {
     $(".submit").hide();
     $(".back").hide();
 
+    $('li.Chemical').click(function(){
+        curr_ind = 0;
+        $('li.Chemical').css({'color': '#FFA500'});
+        $('li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $(".tab:visible").hide();
+        $('.tab_Chemical').show();
+        $(".back").hide();
+        $(".submit").hide();
+        $(".next").show();
+    });
+
+    $('li.Avian').click(function(){
+        curr_ind = 1;
+        $('li.Avian').css({'color': '#FFA500'});
+        $('li.Chemical, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $(".tab:visible").hide();
+        $('.tab_Avian').show();
+        $(".back").show();
+        $(".submit").hide();
+        $(".next").show();
+    });
+
+    $('li.Mammal').click(function(){
+        curr_ind = 2;
+        $('li.Mammal').css({'color': '#FFA500'});
+        $('li.Chemical, li.Avian, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $(".tab:visible").hide();
+        $('.tab_Mammal').show();
+        $(".back").show();
+        $(".submit").hide();
+        $(".next").show();
+    });
+
+    $('li.LargeFish').click(function(){
+        curr_ind = 3;
+        $('li.LargeFish').css({'color': '#FFA500'});
+        $('li.Chemical, li.Avian, li.Mammal, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $(".tab:visible").hide();
+        $('.tab_LargeFish').show();
+        $(".back").show();
+        $(".submit").hide();
+        $(".next").show();
+    });
+
+    $('li.MediumFish').click(function(){
+        curr_ind = 4;
+        $('li.MediumFish').css({'color': '#FFA500'});
+        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $(".tab:visible").hide();
+        $('.tab_MediumFish').show();
+        $(".back").show();
+        $(".submit").hide();
+        $(".next").show();
+    });
+
+    $('li.SmallFish').click(function(){
+        curr_ind = 5;
+        $('li.SmallFish').css({'color': '#FFA500'});
+        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $(".tab:visible").hide();
+        $('.tab_SmallFish').show();
+        $(".back").show();
+        $(".submit").hide();
+        $(".next").show();
+    });
+
+    $('li.Filterfeeders').click(function(){
+        curr_ind = 6;
+        $('li.Filterfeeders').css({'color': '#FFA500'});
+        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $(".tab:visible").hide();
+        $('.tab_Filterfeeders').show();
+        $(".back").show();
+        $(".submit").hide();
+        $(".next").show();
+    });
+
+    $('li.Invertebrates').click(function(){
+        curr_ind = 7;
+        $('li.Invertebrates').css({'color': '#FFA500'});
+        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $(".tab:visible").hide();
+        $('.tab_Invertebrates').show();
+        $(".back").show();
+        $(".submit").hide();
+        $(".next").show();
+    });
+
+    $('li.Zooplankton').click(function(){
+        curr_ind = 8;
+        $('li.Zooplankton').css({'color': '#FFA500'});
+        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Phytoplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $(".tab:visible").hide();
+        $('.tab_Zooplankton').show();
+        $(".back").show();
+        $(".submit").hide();
+        $(".next").show();
+    });
+
+    $('li.Phytoplankton').click(function(){
+        curr_ind = 9;
+        $('li.Phytoplankton').css({'color': '#FFA500'});
+        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $(".tab:visible").hide();
+        $('.tab_Phytoplankton').show();
+        $(".back").show();
+        $(".submit").hide();
+        $(".next").show();
+    });
+
+    $('li.Sediment').click(function(){
+        curr_ind = 10;
+        $('li.Sediment').css({'color': '#FFA500'});
+        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Constants').css({'color': '#333333'});
+        $(".tab:visible").hide();
+        $('.tab_Sediment').show();
+        $(".back").show();
+        $(".submit").hide();
+        $(".next").show();
+    });
+
+    $('li.Constants').click(function(){
+        curr_ind = 11;
+        $('li.Constants').css({'color': '#FFA500'});
+        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment').css({'color': '#333333'});
+        $(".tab:visible").hide();
+        $('.tab_Constants').show();
+        $(".back").show();
+        $(".submit").show();
+        $(".next").hide();
+    });
+
     $('.next').click(function () {
         var tab = $(".tab:visible");
         

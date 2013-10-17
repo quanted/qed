@@ -246,12 +246,11 @@ def html_table(row, iter):
     der_nc_c2_moe_out.append(swim_obj_temp.der_nc_c2_moe)
 
 
-    Input_header="""<div class="out_">
-                        <br><H3>Batch Calculation of Iteration %s</H3>
-                    </div>"""%(iter)
-
+    Input_header="""<H3 class="out_0 collapsible" id="section0"><span></span>Batch Calculation of Iteration %s</H3>
+                    <div class="out_">
+                    """%(iter)
     table_all_out = swim_tables.table_all(swim_obj_temp)
-    html_table_temp = Input_header + table_all_out + "<br>"
+    html_table_temp = Input_header + table_all_out + "</div><br>"
 
     return html_table_temp           
     
@@ -269,7 +268,10 @@ def loop_html(thefile):
             break
         iter_html = iter_html +html_table(row,i)
         i=i+1
-
+    sum_0 = """
+                <H3 class="out_1 collapsible" id="section1"><span></span>Batch Summary Statistics (Iterations=%s)</H3>
+                <div class="out_">
+    """%(i-1)
     sum_1 = swim_tables.table_sum_1(i, log_kow, mw, hlc, r, T, cw, noael)
     sum_2 = swim_tables.table_sum_2(bw_aa, bw_fa, sa_a_c, sa_a_nc, et_a_c, et_a_nc, ir_a_c, ir_a_nc, igr_a_c, igr_a_nc)
     sum_3 = swim_tables.table_sum_3(bw_c1, sa_c1_c, sa_c1_nc, et_c1_c, et_c1_nc, ir_c1_c, ir_c1_nc, igr_c1_c, igr_c1_nc)
@@ -282,8 +284,8 @@ def loop_html(thefile):
                                     inh_nc_c1_moe_out, inh_nc_c2_moe_out, ing_c_aa_moe_out, ing_c_fa_moe_out, ing_c_c1_moe_out, ing_c_c2_moe_out, 
                                     ing_nc_aa_moe_out, ing_nc_fa_moe_out, ing_nc_c1_moe_out, ing_nc_c2_moe_out, der_c_aa_moe_out, der_c_fa_moe_out, 
                                     der_c_c1_moe_out, der_c_c2_moe_out, der_nc_aa_moe_out, der_nc_fa_moe_out, der_nc_c1_moe_out, der_nc_c2_moe_out)
-
-    return sum_1+sum_2+sum_3+sum_4+sum_5+sum_6+iter_html
+    sum_7 = """</div><br>"""
+    return sum_0+sum_1+sum_2+sum_3+sum_4+sum_5+sum_6+sum_7+iter_html
 
 
               

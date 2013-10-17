@@ -103,14 +103,20 @@ def timestamp():
     return html
 
 def table_all(idream_obj):
-    if idream_obj.tire == 'Tire 2':
+    if idream_obj.tire == 'Tier 2':
         table1_out=table_1(idream_obj)
         table2_out=table_2(idream_obj)
         table3_out=table_3(idream_obj)
 
         html = table1_out
+        html = html + """
+                        <H3 class="out_1 collapsible" id="section1"><span></span>User Outputs:</H3>
+                        <div class="out_">
+                      """
         html = html + table2_out
         html = html + table3_out
+        html = html + """</div>"""
+
         return html
     else:
         table1_out_3=table_1_3(idream_obj)
@@ -118,8 +124,13 @@ def table_all(idream_obj):
         table3_out_3=table_3_3(idream_obj)
 
         html = table1_out_3
+        html = html + """
+                        <H3 class="out_1 collapsible" id="section1"><span></span>User Outputs:</H3>
+                        <div class="out_">
+                      """        
         html = html + table2_out_3
         html = html + table3_out_3
+        html = html + """</div>"""
         return html
 
 def gett1data(idream_obj):
@@ -200,8 +211,8 @@ def gettsumdata_2(exp_child_c_1_out, exp_child_c_2_out, exp_adult_c_out, exp_fe_
 def table_1(idream_obj):
         #pre-table 1
         html = """
-        <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs (TIRE 2):</H3>
-        <div class="out_">
+            <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs (TIER 2):</H3>
+            <div class="out_">
                 <div class="out_ container_output">
         """
         #table 1
@@ -210,30 +221,28 @@ def table_1(idream_obj):
         html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
         html = html + """
                 </div>
+            </div><br>
         """
         return html
 
 def table_1_3(idream_obj):
         #pre-table 1
         html = """
-        <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs (TIRE 3):</H3>
-        <div class="out_">
-                <div class="out_ container_output">
+            <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs (TIER 3):</H3>
+            <div class="out_ container_output">
         """
         #table 1
         t1data_3 = gett1data_3(idream_obj)
         t1rows_3 = gethtmlrowsfromcols(t1data_3, pvuheadings)
         html = html + tmpl.render(Context(dict(data=t1rows_3, headings=pvuheadings)))
         html = html + """
-                </div>
+            </div><br>
         """
         return html
 
 def table_2(idream_obj):
         #pre-table 2
         html = """
-        <H3 class="out_1 collapsible" id="section1"><span></span>User Outputs:</H3>
-        <div class="out_">
             <H4 class="out_ collapsible" id="section2"><span></span>Chronic Assessment</H4>
             <div class="out_ container_output">
         """
@@ -242,15 +251,13 @@ def table_2(idream_obj):
         t2rows = gethtmlrowsfromcols(t2data, pvaheadings)
         html = html + tmpl.render(Context(dict(data=t2rows, headings=pvaheadings)))
         html = html + """
-                </div>
+            </div><br>
         """
         return html
 
 def table_2_3(idream_obj):
         #pre-table 2
         html = """
-        <H3 class="out_1 collapsible" id="section1"><span></span>User Outputs:</H3>
-        <div class="out_">
             <H4 class="out_ collapsible" id="section2"><span></span>Chronic Assessment</H4>
             <div class="out_ container_output">
         """
@@ -259,14 +266,13 @@ def table_2_3(idream_obj):
         t2rows_3 = gethtmlrowsfromcols(t2data_3, pvaheadings)
         html = html + tmpl.render(Context(dict(data=t2rows_3, headings=pvaheadings)))
         html = html + """
-                </div>
+            </div>
         """
         return html
 
 def table_3(idream_obj):
         #pre-table 3
         html = """
-        <div class="out_">
             <H4 class="out_ collapsible" id="section3"><span></span>Acute Assessment</H4>
             <div class="out_ container_output">
         """
@@ -275,14 +281,13 @@ def table_3(idream_obj):
         t3rows = gethtmlrowsfromcols(t3data, pva2headings)
         html = html + tmpl.render(Context(dict(data=t3rows, headings=pva2headings)))
         html = html + """
-                </div>
+            </div>
         """
         return html
 
 def table_3_3(idream_obj):
         #pre-table 3
         html = """
-        <div class="out_">
             <H4 class="out_ collapsible" id="section3"><span></span>Acute Assessment</H4>
             <div class="out_ container_output">
         """
@@ -291,25 +296,22 @@ def table_3_3(idream_obj):
         t3rows_3 = gethtmlrowsfromcols(t3data_3, pva2headings)
         html = html + tmpl.render(Context(dict(data=t3rows_3, headings=pva2headings)))
         html = html + """
-                </div>
+            </div>
         """
         return html
 
 def table_sum_1(i, prod_re, ai, liq_rte, fruit_rte, bread_rte, cheese_rte, veg_rte, meat_rte, pure_rte, piec_rte, powd_rte):
         #pre-table sum_input_1
         html = """
-        <H3 class="out_1 collapsible" id="section1"><span></span>Batch Summary Statistics (Iterations=%s)</H3>
-        <div class="out_">
             <H4 class="out_1 collapsible" id="section4"><span></span>User Inputs</H4>
-                <div class="out_ container_output">
-        """%(i-1)
-
+            <div class="out_ container_output">
+        """
         #table sum_input_1
         tsuminputdata_1 = gettsumdata_1(prod_re, ai, liq_rte, fruit_rte, bread_rte, cheese_rte, veg_rte, meat_rte, pure_rte, piec_rte, powd_rte)
         tsuminputrows_1 = gethtmlrowsfromcols(tsuminputdata_1, sumheadings1)
         html = html + tmpl.render(Context(dict(data=tsuminputrows_1, headings=sumheadings1)))
         html = html + """
-        </div>
+            </div>
         """
         return html
 
@@ -317,14 +319,14 @@ def table_sum_2(exp_child_c_1_out, exp_child_c_2_out, exp_adult_c_out, exp_fe_c_
         #pre-table sum_input_2
         html = """
             <H4 class="out_1 collapsible" id="section3"><span></span>Chronic Exposure (mg/kg/d)</H4>
-                <div class="out_ container_output">
+            <div class="out_ container_output">
         """
         #table sum_input_2
         tsuminputdata_2 = gettsumdata_2(exp_child_c_1_out, exp_child_c_2_out, exp_adult_c_out, exp_fe_c_out)
         tsuminputrows_2 = gethtmlrowsfromcols(tsuminputdata_2, sumheadings2)
         html = html + tmpl.render(Context(dict(data=tsuminputrows_2, headings=sumheadings2)))
         html = html + """
-        </div>
+            </div>
         """
         return html
 
@@ -332,13 +334,14 @@ def table_sum_3(exp_child_a_1_out, exp_child_a_2_out, exp_adult_a_out, exp_fe_a_
         #pre-table sum_input_3
         html = """
             <H4 class="out_1 collapsible" id="section3"><span></span>Acute Exposure (mg/kg/d)</H4>
-                <div class="out_ container_output">
+            <div class="out_ container_output">
         """
         #table sum_input_2
         tsuminputdata_3 = gettsumdata_2(exp_child_a_1_out, exp_child_a_2_out, exp_adult_a_out, exp_fe_a_out)
         tsuminputrows_3 = gethtmlrowsfromcols(tsuminputdata_3, sumheadings2)
         html = html + tmpl.render(Context(dict(data=tsuminputrows_3, headings=sumheadings2)))
         html = html + """
-        </div>
+            </div>
         """
         return html
+

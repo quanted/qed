@@ -1,0 +1,44 @@
+\documentclass[fleqn, oneside, 11pt]{article}%allows pdfs to be cropped and fleqn left justifies
+\usepackage{amssymb}
+\usepackage{amsmath}%sets math environment
+\usepackage[active, tightpage]{preview}%crops pdf to border of equations
+\usepackage{fixltx2e}
+\DeclareMathSizes{10}{1}{1}{1}
+\setlength\PreviewBorder{1pt}%sets size of border
+
+\begin{document}
+\begin{preview}
+\begin{align*}%sets up equation environment so you can specify alignment with ampersands
+A \Delta z \frac{ \partial (C_{w} \theta) }{ \partial t} & = J_{D} - J_{V} - J_{DW} - J_{U} - J_{QR} + J_{APP} + J_{FOF} \pm J_{TRN} \\ 
+A \Delta z \frac{ \partial (C_{s} \rho_{s}) }{ \partial t} & = -J_{DS} - J_{ER} \\ 
+A \Delta z \frac{ \partial (C_{g} a) }{ \partial t} & = J_{GD} - J_{DG} \\ 
+\text{where} \nonumber \\
+A & =  \text{cross-sectional area of soil column (cm\textsuperscript {2})} \nonumber \\
+\Delta z & =  \text{depth dimension of compartment (cm)} \nonumber \\
+C_{w} & =  \text{dissolved concentration of pesticide (g cm\textsuperscript{-3})} \nonumber \\
+C_{s} & =  \text{sorbed concentration of pesticide (g g\textsuperscript{-1})} \nonumber \\
+C_{g} & =  \text{gaseous concentration of pesticide (g cm\textsuperscript{-3})} \nonumber \\
+\theta & =  \text{volumetric water content of soil (cm\textsuperscript{3} cm\textsuperscript{-3})} \nonumber \\
+a & =  \text{volumetric air content of the soil (cm\textsuperscript{3} cm\textsuperscript{-3})} \nonumber \\
+\rho_{s} & =  \text{soil bulk density (g cm\textsuperscript{-3})} \nonumber \\
+t & =  \text{time (days)} \nonumber \\
+J_{D} & =  \text{represents the effect of dispersion and diffusion of dissolved phase (g day\textsuperscript{-1})} \nonumber \\
+J_{V} & =  \text{represents the effect of advection of dissolved phase (g day\textsuperscript{-1})} \nonumber \\
+J_{GD} & =  \text{represents the effect of dispersion and diffusion in vapor phase (g day\textsuperscript{-1})} \nonumber \\
+J_{DW} & =  \text{mass loss due to degradation in the dissolved phase (g day\textsuperscript{-1})} \nonumber \\
+J_{DG} & =  \text{mass loss due to degradation in the vapor phase (g day\textsuperscript{-1})} \nonumber \\
+J_{U} & =  \text{mass loss by plant uptake of dissolved phase (g day\textsuperscript{-1})} \nonumber \\
+J_{QR} & =  \text{mass loss by removal in runoff (g day\textsuperscript{-1})} \nonumber \\
+J_{APP} & =  \text{mass gain due to pesticide deposition on the soil surface (g day\textsuperscript{-1})} \nonumber \\
+J_{FOF} & =  \text{mass gain due to washoff from plants to soil (g day\textsuperscript{-1})} \nonumber \\
+J_{DS} & =  \text{mass loss due to degradation of sorbed phase chemical (g day\textsuperscript{-1})} \nonumber \\
+J_{ER} & =  \text{mass loss by dissolved removal on eroded sediments (g day\textsuperscript{-1})} \nonumber \\
+J_{TRN} & =  \text{mass gain or loss due to parent/daughter transformations (g day\textsuperscript{-1})} \nonumber \\
+\end{align*} 
+\end{preview}
+\end{document}
+
+% convert pdf to png using imagemagick
+% convert -density 400 przm_image1.pdf przm_image1.png
+
+

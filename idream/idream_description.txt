@@ -1,10 +1,10 @@
 <p>Incidental Dietary Residential Exposure Assessment Model (IDREAM) was developed by Exponent to assess incidental ingestion exposures that may result from the use of antimicrobial pesticide products on residential countertops. The Antimicrobials Division of the US Environmental Protection Agency (EPA), Office of Pesticide Programs, proposed a screening model that was modified from the Food and Drug Administration (FDA) approach for estimating dietary intake from sanitizing rinses regulated as indirect food additives. The goal of the proposed model presented here is to improve the existing procedure by providing a rigorous science-based approach to estimating exposures, while at the same time conserving resources by using “worst case” assumptions at early steps. The resulting model is appropriate for use in assessing potential incidental ingestion exposures related to the use of hard surface disinfectants and sanitizers in the home.</p>
 
 <p>
-IDREAM contains four tires (Tire 2 and Tire 3 models are included here) that can be used to determine exposure to countertop cleaning products via their transfer to foods coming into contact with the countertop in the home. The model tiers progress from a “no data” default to data-rich refined assessment:
+IDREAM contains four tier (Tier 2 and Tier 3 models are included here) that can be used to determine exposure to countertop cleaning products via their transfer to foods coming into contact with the countertop in the home. The model tiers progress from a “no data” default to data-rich refined assessment:
 <li>Tier 1A: Default SOP (100% transfer) </li>
 <li>Tier 1B: First Refinement (Residue adjustment factor)</li>
 <li>Tier 2: Food Consumption Model (General Refinement)</li>
 <li>Tier 3: Food Consumption Model (with Chemical-Specific Refinements)</li>
 <li>Tier 4: Advanced Exposure Assessment Model(s), with refinements defined on a chemical-specific basis and which may include probabilistic modeling</li>
-</p>
+</p>

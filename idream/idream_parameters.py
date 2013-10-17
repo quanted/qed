@@ -10,11 +10,11 @@ from django import forms
 from django.db import models
 from django.utils.safestring import mark_safe
 
-tire_select = (('Tire 2','Tire 2'), ('Tire 3','Tire 3'))
+tire_select = (('Tier 2','Tier 2'), ('Tier 3','Tier 3'))
 
 
 class idreamInp(forms.Form):
-    tire = forms.ChoiceField(required=True, choices=tire_select, label='Select TIRE')
+    tier = forms.ChoiceField(required=True, choices=tire_select, label='Select Tier')
     ai_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}), label = 'Subject active ingredient')
     prod_re = forms.FloatField(required=True, label=mark_safe('Product residue (mg/cm<sup>3</sup>)'), initial=1)
     ai = forms.FloatField(required=True, label='In-use active concentration (%)', initial=0.10)
@@ -26,4 +26,4 @@ class idreamInp(forms.Form):
     meat_rte = forms.FloatField(required=True, label='Meat residue transfer efficiency (%)', initial=80)
     pure_rte = forms.FloatField(required=True, label='Purees residue transfer efficiency (%)', initial=100)
     piec_rte = forms.FloatField(required=True, label='Pieces residue transfer efficiency (%)', initial=55)
-    powd_rte = forms.FloatField(required=True, label='Powders residue transfer efficiency (%)', initial=20)
+    powd_rte = forms.FloatField(required=True, label='Powders residue transfer efficiency (%)', initial=20)

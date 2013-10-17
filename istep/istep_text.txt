@@ -2,11 +2,11 @@
 
 <p>Modules in the ISTEP:</p>
 
-<UL>
-<LI>	TES (Toxicology Endpoint Selection) - based on the toxicology section of the HED Risk Assessment, and is updated 5 to 6 times per year- about 500 chemicals
-<LI>	CAM (Cancer Assessment Module) - based on HED Cancer Assessment, and is updated annually- about 400 chemicals
-<LI>	CPM (Chemical Properties Module) – based on information contained in HED Risk Assessment – about 300 chemicals
-<LI>	Acutes – “six-pack” data – under construction – about 450 chemicals
-</UL>
+<ul class=bullet>
+	<li>TES (Toxicology Endpoint Selection) - based on the toxicology section of the HED Risk Assessment, and is updated 5 to 6 times per year- about 500 chemicals</li>
+	<li>CAM (Cancer Assessment Module) - based on HED Cancer Assessment, and is updated annually- about 400 chemicals</li>
+	<li>CPM (Chemical Properties Module) – based on information contained in HED Risk Assessment – about 300 chemicals</li>
+	<li>Acutes – “six-pack” data – under construction – about 450 chemicals</li>
+</ul>
 
 <p>ISTEP is used as a preliminary screen tool for many special projects, such as acute and chronic RfD list, cancer classification list, EDSP congressional inquiry, fumigants risk assessment, conazoles cumulative risk analysis, cancer retrospective analysis and dog study retrospective analysis and so forth.</p>

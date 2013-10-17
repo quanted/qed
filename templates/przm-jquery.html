@@ -205,7 +205,6 @@ var HArvest_pool={'NC Sweet Potato MLRA-133': '2209', 'ID Potato   MLRA-11B': '1
             $('.app_days').find('input').val( $('.app_days').find('input').prop('defaultValue') );
             $('.app_timing').find('select').bind('change', function() {
                 if ($(this).val()=='1') {
-                    alert(2221)
                     $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly')
                     $(this).closest('.app_timing').nextAll('.app_days:first').show()
                     $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(Planting_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+Planting_pool[$('#id_Scenarios').val()].slice(0,2))

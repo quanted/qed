@@ -8,20 +8,28 @@ $(document).ready(function() {
     $('#id_incorporation_depth').closest('tr').addClass('method_options').hide();
     $('#id_hydrolysis').closest('tr').addClass('method_options').hide();
 
+    $('#id_application_method').val('a')
+	// $('tr.method_options').hide();
+	$('#id_a').closest('tr').show();
+
+
     $('#id_application_method').change(function() {
-	$('tr.method_options').hide();
-	
-	if ($(this).val() == "b"){
-		$('#id_' + $(this).val()).closest('tr').show();
-		$('#id_spray_quality').closest('tr').show();
-		$('#id_incorporation_depth').closest('tr').show();}	
-	
-	else if ($(this).val() == "d"){
-		$('#id_incorporation_depth').closest('tr').show();
-		$('#id_no_spray_drift').closest('tr').addClass('method_options').hide();}
-	
-	else{
-		$('#id_' + $(this).val()).closest('tr').show();}
+		$('tr.method_options').hide();
+		
+		if ($(this).val() == "b"){
+			$('#id_' + $(this).val()).closest('tr').show();
+			$('#id_spray_quality').closest('tr').show();
+			$('#id_incorporation_depth').closest('tr').show();
+		}	
+		
+		else if ($(this).val() == "d"){
+			$('#id_incorporation_depth').closest('tr').show();
+			$('#id_no_spray_drift').closest('tr').addClass('method_options').hide();
+		}
+		
+		else{
+			$('#id_' + $(this).val()).closest('tr').show();
+		}
 	});
 	
 	$('#id_aerobic_aquatic_metabolism').change(function() {

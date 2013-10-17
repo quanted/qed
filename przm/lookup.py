@@ -42,7 +42,7 @@ import csv
 #import glob
 #a=glob.glob("C:/Users/th/Desktop/pool/*.INP")
 
-data = csv.reader(open('C:/Users/th/Dropbox/AppPest/PRZM/scenario_new.csv'))
+data = csv.reader(open('C:/Users/th/Desktop/scenario_new.csv'))
 scenario = []
 station = []
 met = []
@@ -154,4 +154,4 @@ print sce_HArvest
 #    print files
     
     
- 
+ 

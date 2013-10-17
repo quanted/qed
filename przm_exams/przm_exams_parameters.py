@@ -17,7 +17,9 @@ CAM_1_select = (('2','2-Interception based on crop canopy'),('9','9-Linear folia
 CAM_2_select = (('1','1-Soil applied (4cm incorporation, linearly decreasing with depth)'), ('2','2-Interception based on crop canopy'),('9','9-Linear foliar based on crop canop'))
 CAM_3_select = (('2','2-Interception based on crop canopy'),('9','9-Linear foliar based on crop canop'))
 CAM_4_select = (('1','1-Soil applied (4cm incorporation, linearly decreasing with depth)'),('4','4-Soil applied (user-defined incorporation, uniform with depth)'),('5','5-Soil applied (user-defined incorporation, linearly increasing with depth)'),('6','6-Soil applied (user-defined incorporation, linearly decreasing with depth)'),('7','7-Soil applied, T-Band granular application'),('8','8-Soil applied, chemical incorporated depth specified by user'))
-NOA_select =(('','Select the number of applications'),('1','1'),('2','2'),('3','3'),('4','4'))
+NOA_select =(('','Select the number of applications'),('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6'),('7','7'),('8','8'),('9','9'),('10','10'),
+             ('11','11'),('12','12'),('13','13'),('14','14'),('15','15'),('16','16'),('17','17'),('18','18'),('19','19'),('20','20'),
+             ('21','21'),('22','22'),('23','23'),('24','24'),('25','25'),('26','26'),('27','27'),('28','28'),('29','29'),('30','30'))
 
 
 class PRZMInp(forms.Form):

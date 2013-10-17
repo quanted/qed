@@ -30,7 +30,7 @@ class KabamOutputPage(webapp.RequestHandler):
         c_wdp = float(form.getvalue('beec')) / 1000000
         water_column_EEC = float(form.getvalue('weec'))
         c_wto = float(water_column_EEC) / 1000000
-        mineau = float(form.getvalue('sf'))
+        mineau_scaling_factor = float(form.getvalue('sf'))
         x_poc = float(form.getvalue('cpoc'))
         x_doc = float(form.getvalue('cdoc'))
         c_ox = float(form.getvalue('cox'))
@@ -38,7 +38,7 @@ class KabamOutputPage(webapp.RequestHandler):
         c_ss = float(form.getvalue('css'))
         oc = float(form.getvalue('oc'))/100
         k_ow = 10**(float(l_kow))
-        b_species = form.getvalue('b_species')
+        Species_of_the_tested_bird = form.getvalue('Species_of_the_tested_bird')
         bw_quail = form.getvalue('bw_quail')
         bw_duck = form.getvalue('bw_duck')
         bwb_other = form.getvalue('bwb_other')
@@ -53,7 +53,7 @@ class KabamOutputPage(webapp.RequestHandler):
         mammalian_lc50 = float(form.getvalue('mlc50'))
         mammalian_chronic_endpoint = float(form.getvalue('m_chronic'))
 #        body_weight_of_the_assessed_mamm = float(form.getvalue('bw_assess_m'))
-        diet_for_large_fish = form.getvalue('Diet_lfish')
+        #diet_for_large_fish = form.getvalue('Diet_lfish')
         lf_p_sediment = float(form.getvalue('lfish_p_sediment'))/100
         lf_p_phytoplankton = float(form.getvalue('lfish_p_phyto'))/100
         lf_p_zooplankton = float(form.getvalue('lfish_p_zoo'))/100
@@ -61,7 +61,7 @@ class KabamOutputPage(webapp.RequestHandler):
         lf_p_filter_feeders = float(form.getvalue('lfish_p_ff'))/100
         lf_p_small_fish = float(form.getvalue('lfish_p_sfish'))/100
         lf_p_medium_fish = float(form.getvalue('lfish_p_mfish'))/100
-        diet_for_medium_fish = form.getvalue('Diet_mfish')
+        #diet_for_medium_fish = form.getvalue('Diet_mfish')
         mf_p_sediment = float(form.getvalue('mfish_p_sediment'))
         #print type(mf_p_sediment)
         mf_p_sediment = float(mf_p_sediment)
@@ -70,65 +70,65 @@ class KabamOutputPage(webapp.RequestHandler):
         mf_p_benthic_invertebrates = float(form.getvalue('mfish_p_beninv'))/100
         mf_p_filter_feeders = float(form.getvalue('mfish_p_ff'))
         mf_p_small_fish = float(form.getvalue('mfish_p_sfish'))/100
-        diet_for_small_fish = form.getvalue('Diet_sfish')
+        #diet_for_small_fish = form.getvalue('Diet_sfish')
         sf_p_sediment = float(form.getvalue('sfish_p_sediment'))
         sf_p_phytoplankton = float(form.getvalue('sfish_p_phyto'))
         sf_p_zooplankton = float(form.getvalue('sfish_p_zoo'))/100
         sf_p_benthic_invertebrates = float(form.getvalue('sfish_p_beninv'))/100
         sf_p_filter_feeders = float(form.getvalue('sfish_p_ff'))
-        diet_for_filter_feeder = form.getvalue('Diet_ff')
+        #diet_for_filter_feeder = form.getvalue('Diet_ff')
         ff_p_sediment = float(form.getvalue('ff_p_sediment'))/100
         ff_p_phytoplankton = float(form.getvalue('ff_p_phyto'))/100
         ff_p_zooplankton = float(form.getvalue('ff_p_zoo'))/100
         ff_p_benthic_invertebrates = float(form.getvalue('ff_p_beninv'))
-        diet_for_invertebrates = form.getvalue('Diet_invert')
+        #diet_for_invertebrates = form.getvalue('Diet_invert')
         beninv_p_sediment = float(form.getvalue('beninv_p_sediment'))/100
         beninv_p_phytoplankton = float(form.getvalue('beninv_p_phyto'))/100
         beninv_p_zooplankton = float(form.getvalue('beninv_p_zoo'))/100
-        diet_for_zooplankton = form.getvalue('Diet_zoo')
+        #diet_for_zooplankton = form.getvalue('Diet_zoo')
         zoo_p_sediment = float(form.getvalue('zoo_p_sediment'))
         zoo_p_phyto = float(form.getvalue('zoo_p_phyto'))/100
-        characteristics_sediment = form.getvalue('char_s')
+        #characteristics_sediment = form.getvalue('char_s')
         s_lipid = float(form.getvalue('s_lipid'))/100
         s_NLOM = float(form.getvalue('s_NLOM'))/100
         s_water = float(form.getvalue('s_water'))/100
         s_respire = form.getvalue('s_respire')
-        characteristics_phytoplankton = form.getvalue('char_phyto')
+        #characteristics_phytoplankton = form.getvalue('char_phyto')
         v_lb_phytoplankton = float(form.getvalue('phyto_lipid'))/100
         v_nb_phytoplankton = float(form.getvalue('phyto_NLOM'))/100
         v_wb_phytoplankton = float(form.getvalue('phyto_water'))/100
         phyto_respire = form.getvalue('phyto_respire')
-        characteristics_zooplankton = form.getvalue('char_zoo')
+        #characteristics_zooplankton = form.getvalue('char_zoo')
         wb_zoo = float(form.getvalue('zoo_ww'))
         v_lb_zoo = float(form.getvalue('zoo_lipid'))/100
         v_nb_zoo = float(form.getvalue('zoo_NLOM'))/100
         v_wb_zoo = float(form.getvalue('zoo_water'))/100
         zoo_respire = form.getvalue('zoo_respire')
-        characteristics_benthic_invertebrates = form.getvalue('char_beninv')
+        #characteristics_benthic_invertebrates = form.getvalue('char_beninv')
         wb_beninv = float(form.getvalue('beninv_ww'))
         v_lb_beninv = float(form.getvalue('beninv_lipid'))/100
         v_nb_beninv = float(form.getvalue('beninv_NLOM'))/100
         v_wb_beninv = float(form.getvalue('beninv_water'))/100
         beninv_respire = form.getvalue('beninv_respire')
-        characteristics_ff = form.getvalue('char_ff')
+        #characteristics_ff = form.getvalue('char_ff')
         wb_ff = float(form.getvalue('ff_ww'))
         v_lb_ff = float(form.getvalue('ff_lipid'))/100
         v_nb_ff = float(form.getvalue('ff_NLOM'))/100
         v_wb_ff = float(form.getvalue('ff_water'))/100
         ff_respire = form.getvalue('ff_respire')
-        characteristics_smfish = form.getvalue('char_sfish')
+        #characteristics_smfish = form.getvalue('char_sfish')
         wb_sf = float(form.getvalue('sfish_ww'))
         v_lb_sf = float(form.getvalue('sfish_lipid'))/100
         v_nb_sf = float(form.getvalue('sfish_NLOM'))/100
         v_wb_sf = float(form.getvalue('sfish_water'))/100
         sfish_respire = form.getvalue('sfish_respire')
-        characteristics_medfish = form.getvalue('char_mfish')
+        #characteristics_medfish = form.getvalue('char_mfish')
         wb_mf = float(form.getvalue('mfish_ww'))
         v_lb_mf = float(form.getvalue('mfish_lipid'))/100
         v_nb_mf = float(form.getvalue('mfish_NLOM'))/100
         v_wb_mf = float(form.getvalue('mfish_water'))/100
         mfish_respire = form.getvalue('mfish_respire')
-        characteristics_larfish = form.getvalue('char_lfish')
+        #characteristics_larfish = form.getvalue('char_lfish')
         wb_lf = float(form.getvalue('lfish_ww'))
         v_lb_lf = float(form.getvalue('lfish_lipid'))/100
         v_nb_lf = float(form.getvalue('lfish_NLOM'))/100
@@ -291,8 +291,8 @@ class KabamOutputPage(webapp.RequestHandler):
 
 
         kabam_obj = kabam_model.kabam(
-            True,True,chemical_name,l_kow,k_oc,c_wdp,water_column_EEC,c_wto,mineau,x_poc,x_doc,c_ox,w_t,c_ss,oc,k_ow,
-            b_species,bw_quail,bw_duck,bwb_other,avian_ld50,avian_lc50,avian_noaec,m_species,bw_rat,bwm_other,mammalian_ld50,mammalian_lc50,mammalian_chronic_endpoint,
+            True,True,chemical_name,l_kow,k_oc,c_wdp,water_column_EEC,c_wto,mineau_scaling_factor,x_poc,x_doc,c_ox,w_t,c_ss,oc,k_ow,
+            Species_of_the_tested_bird,bw_quail,bw_duck,bwb_other,avian_ld50,avian_lc50,avian_noaec,m_species,bw_rat,bwm_other,mammalian_ld50,mammalian_lc50,mammalian_chronic_endpoint,
             lf_p_sediment,lf_p_phytoplankton,lf_p_zooplankton,lf_p_benthic_invertebrates,lf_p_filter_feeders,lf_p_small_fish,lf_p_medium_fish,
             mf_p_sediment,mf_p_phytoplankton,mf_p_zooplankton,mf_p_benthic_invertebrates,mf_p_filter_feeders,mf_p_small_fish,
             sf_p_sediment,sf_p_phytoplankton,sf_p_zooplankton,sf_p_benthic_invertebrates,sf_p_filter_feeders,

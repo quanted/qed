@@ -143,14 +143,6 @@ kd_lf=[]
 ke_lf=[]
 km_lf=[]
 rate_constants=[]
-# s_respire=[]
-# phyto_respire=[]
-# zoo_respire=[]
-# beninv_respire=[]
-# ff_respire=[]
-# sfish_respire=[]
-# mfish_respire=[]
-# lfish_respire=[]
 
 # Outputs
 cb_phytoplankton=[]
@@ -221,15 +213,6 @@ cbsafl_ff=[]
 cbsafl_sf=[]
 cbsafl_mf=[]
 cbsafl_lf=[]
-# mweight=np.empty([2,6])   !!!Values don't change (hard input in model)!!!
-# acute_rq_dose_m=np.empty([2,6])
-# acute_rq_dose_m=np.array([0,0,0,0,0,0])
-# acute_rq_dose_m=[]
-
-
-
-# STILL NEED TO ADD ARRAY OUTPUTS
-
 
 
 logger = logging.getLogger("kabamBatchOutput")
@@ -359,14 +342,6 @@ def html_table(row_inp,iter):
     ke_lf.append(float(row_inp[118]))
     km_lf.append(float(row_inp[119]))
     rate_constants.append(row_inp[120])
-    # s_respire.append(row_inp[121])
-    # phyto_respire.append(row_inp[122])
-    # zoo_respire.append(row_inp[123])
-    # beninv_respire.append(row_inp[124])
-    # ff_respire.append(row_inp[125])
-    # sfish_respire.append(row_inp[126])
-    # mfish_respire.append(row_inp[127])
-    # lfish_respire.append(row_inp[128])
 
 
     kabam_obj = kabam_model.kabam(
@@ -386,7 +361,6 @@ def html_table(row_inp,iter):
             k1_ff[iter],k2_ff[iter],kd_ff[iter],ke_ff[iter],km_ff[iter],k1_sf[iter],k2_sf[iter],kd_sf[iter],ke_sf[iter],km_sf[iter],k1_mf[iter],k2_mf[iter],kd_mf[iter],ke_mf[iter],km_mf[iter],k1_lf[iter],k2_lf[iter],kd_lf[iter],ke_lf[iter],km_lf[iter],
             rate_constants[iter]
             )
-# ,s_respire[iter],phyto_respire[iter],zoo_respire[iter],beninv_respire[iter],ff_respire[iter],sfish_respire[iter],mfish_respire[iter],lfish_respire[iter]
 
     cb_phytoplankton.append(kabam_obj.cb_phytoplankton)
     cb_zoo.append(kabam_obj.cb_zoo)
@@ -510,8 +484,6 @@ def loop_html(thefile):
                 #Outputs
                 kabam_tables.sumheadings_out,acute_dose_based_m_array,acute_dose_based_a_array,chronic_dose_based_m_array,acute_rq_dose_m_array,acute_rq_dose_a_array,acute_rq_diet_a_array,chronic_rq_dose_m_array,chronic_rq_diet_m_array,chronic_rq_diet_a_array)
     return sum_html+iter_html
-    # return iter_html
-
 
               
 class kabamBatchOutputPage(webapp.RequestHandler):

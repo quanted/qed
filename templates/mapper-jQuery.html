@@ -6,7 +6,10 @@ $(document).ready(function() {
     $('#id_USFWS_t').attr('id', 'id_c').closest('tr').addClass('method_options').hide();
 	 
     $('#id_NSM').attr('id', 'id_a1').closest('tr').addClass('method_options').hide();
-    $('#id_NSB').attr('id', 'id_a2').closest('tr').addClass('method_options').hide();
+    //$('#id_NSB').attr('id', 'id_a2').closest('tr').addClass('method_options').hide();
+    $('#id_NSF').attr('id', 'id_a3').closest('tr').addClass('method_options').hide();
+    $('#id_NSP').attr('id', 'id_a4').closest('tr').addClass('method_options').hide();
+
     $('#id_USFWS_p').attr('id', 'id_c1').closest('tr').addClass('method_options').hide();
     $('#id_USFWS_l').attr('id', 'id_c2').closest('tr').addClass('method_options').hide();
 
@@ -22,11 +25,33 @@ $(document).ready(function() {
 		if ($(this).val() == "a1"){
 			
 			$('#id_' + $(this).val()).closest('tr').show();
-			$('#id_a2').closest('tr').hide();}	
+			//$('#id_a2').closest('tr').hide();
+			$('#id_a3').closest('tr').hide();
+			$('#id_a4').closest('tr').hide();
+		}	
 
-		else if ($(this).val() == "a2"){
+		//else if ($(this).val() == "a2"){
+			//$('#id_' + $(this).val()).closest('tr').show();
+			//$('#id_a1').closest('tr').hide();
+			//$('#id_a3').closest('tr').hide();
+			//$('#id_a4').closest('tr').hide();
+		//}
+
+		else if ($(this).val() == "a3"){
 			$('#id_' + $(this).val()).closest('tr').show();
-			$('#id_a1').closest('tr').hide();}});}	
+			$('#id_a1').closest('tr').hide();
+			//$('#id_a2').closest('tr').hide();
+			$('#id_a4').closest('tr').hide();
+		}
+
+		else if ($(this).val() == "a4"){
+			$('#id_' + $(this).val()).closest('tr').show();
+			$('#id_a1').closest('tr').hide();
+			//$('#id_a2').closest('tr').hide();
+			$('#id_a3').closest('tr').hide();
+		}
+
+		});}	
 	
 	else if ($(this).val() == "b"){
 		$('#id_' + $(this).val()).closest('tr').show();}	

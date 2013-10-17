@@ -1,26 +1,26 @@
 <script>
 $(document).ready(function () {
-    $('#id_liq_rte').closest('tr').addClass('tire3')
-    $('#id_fruit_rte').closest('tr').addClass('tire3')
-    $('#id_bread_rte').closest('tr').addClass('tire3')
-    $('#id_cheese_rte').closest('tr').addClass('tire3')
-    $('#id_veg_rte').closest('tr').addClass('tire3')
-    $('#id_meat_rte').closest('tr').addClass('tire3')
-    $('#id_pure_rte').closest('tr').addClass('tire3')
-    $('#id_piec_rte').closest('tr').addClass('tire3')
-    $('#id_powd_rte').closest('tr').addClass('tire3')
+    $('#id_liq_rte').closest('tr').addClass('tier3')
+    $('#id_fruit_rte').closest('tr').addClass('tier3')
+    $('#id_bread_rte').closest('tr').addClass('tier3')
+    $('#id_cheese_rte').closest('tr').addClass('tier3')
+    $('#id_veg_rte').closest('tr').addClass('tier3')
+    $('#id_meat_rte').closest('tr').addClass('tier3')
+    $('#id_pure_rte').closest('tr').addClass('tier3')
+    $('#id_piec_rte').closest('tr').addClass('tier3')
+    $('#id_powd_rte').closest('tr').addClass('tier3')
 
     $('#id_veg_rte').attr('disabled', true);
     $('#id_powd_rte').attr('disabled', true);
 
-    $('tr.tire3').hide();
+    $('tr.tier3').hide();
 
-    $('#id_tire').change(function () {
-        if ($('#id_tire').val() == 'Tire 3') {
-            $('tr.tire3').show();
+    $('#id_tier').change(function () {
+        if ($('#id_tier').val() == 'Tier 3') {
+            $('tr.tier3').show();
         } 
         else  {
-            $('tr.tire3').hide();
+            $('tr.tier3').hide();
         }
     });
 

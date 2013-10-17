@@ -51,7 +51,40 @@ var wintop = (browserHeight / 2) - 30 + "px";
 var divTop = ($('.articles_output').height() * 0.5) - 28.5 + "px";
 var doneDiv = document.getElementById("popup");
 
+
+
     $('#pdfExport').click(function () {
+
+    	// var frm = $('#pdf_post');
+    	// console.log(frm.attr('action'))
+    	// frm.submit()
+
+		// $(document).ajaxStart(function(){
+  //       	alert('start');
+
+		// });
+
+
+  //       $.ajax({
+  //           type: "get",
+  //           url: "/pdf.html",
+  //           data: $('#pdf_post').serialize(),
+  //           dataType: "data",
+  //           success: function (data) {
+  //           	alert('success');
+  //               alert(data)
+  //           	console.log(data)
+  //           	window.location = "/pdf.html";
+  //           },
+  //           error: function (data) {
+  //           	alert('error');
+  //               alert(data)
+  //           	console.log(data)
+  //           },
+
+
+  //       });
+
 		$(document).ajaxStart(function(){
 			$.blockUI({
 				css:{ "top":""+wintop+"", "left":""+winleft+"", "padding": "30px 20px", "width": "400px", "height": "60px", "border": "0 none", "border-radius": "4px", "-webkit-border-radius": "4px", "-moz-border-radius": "4px", "box-shadow": "3px 3px 15px #333", "-webkit-box-shadow": "3px 3px 15px #333", "-moz-box-shadow": "3px 3px 15px #333" },
@@ -73,18 +106,22 @@ var doneDiv = document.getElementById("popup");
 
 		$.ajax({
 
-			type: "post",
+			type: "POST",
 			url: "/pdf.html",
 			data: $("#pdf_post").serialize(),
 			dataType: "html",
 
 		   success: function(data) {
         		doneDiv.innerHTML = data;
+        		// console.log(data)
+        		// window.location = '/pdf.html';
+
 			}
 
 		});
 
-	});
+});
+
 
 	$('#htmlExport').click(function () {
 		$(document).ajaxStart(function(){

@@ -11,11 +11,12 @@ from django.utils.safestring import mark_safe
 
 ES_source_CHOICES=(('Select a source','Select a source'),('a','NatureServe'),('b','IUCN Red List'),('c','US FWD Critical Habitat')) 
 
-Crop_CHOICES=(('','Select a source'),('Barley','Barley'),('Beans','Beans'),('Canola','Canola'),('Corn','Corn'),('Cotton','Cotton'),
-              ('Flaxseed','Flaxseed'),('Hay','Hay'),('Oats','Oats'),('Peanuts','Peanuts'),('Rice','Rice'),
-              ('Sorghum','Sorghum'),('Soybeans','Soybeans'),('Sugarbeets','Sugarbeets'),('Sugarcane','Sugarcane'),
-              ('Sunflowers','Sunflowers'),('Sweet Potatoes','Sweet Potatoes'),('Tobacco','Tobacco'),
-              ('Tomatoes','Tomatoes'),('Wheat','Wheat'))
+#Crop_CHOICES=(('','Select a source'),('Barley','Barley'),('Beans','Beans'),('Canola','Canola'),('Corn','Corn'),('Cotton','Cotton'),
+#              ('Flaxseed','Flaxseed'),('Hay','Hay'),('Oats','Oats'),('Peanuts','Peanuts'),('Rice','Rice'),
+#              ('Sorghum','Sorghum'),('Soybeans','Soybeans'),('Sugarbeets','Sugarbeets'),('Sugarcane','Sugarcane'),
+#              ('Sunflowers','Sunflowers'),('Sweet Potatoes','Sweet Potatoes'),('Tobacco','Tobacco'),
+#              ('Tomatoes','Tomatoes'),('Wheat','Wheat'))
+Crop_CHOICES = (('','Select a source'),('majorcrop','All major crops'),('Alfalfa','Alfalfa'),('Barley','Barley'),('Corn','Corn'),('Cotton','Cotton'),('DoubleCrops','Double Crop-Winter Wheat/Soybeans'),('NonAlfalfa','Non Alfalfa'),('Rice','Rice'),('Sorghum','Sorghum'),('Soybeans','Soybeans'),('SpringWheat','Spring Wheat'),('WinterWheat','Winter Wheat'))
 
 #NS_CHOICES=(('','Select an animal type'),('a1','NatureServe Mammals'),('a2','NatureServe Birds'),('a3','NatureServe Fish'),('a4','NatureServe Pollinator Species'))
 NS_CHOICES=(('','Select an animal type'),('a1','NatureServe Mammals'),('a3','NatureServe Fish'),('a4','NatureServe Pollinator Species'))
@@ -44,24 +45,7 @@ class esInp(forms.Form):
     USFWS_l = forms.ChoiceField(choices=USFWS_l_CHOICES, label='USFWS Lines')
    
     Crop = forms.ChoiceField(choices=Crop_CHOICES, label='Crop')        
-    Year = forms.FloatField(initial=2012)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    Year = forms.FloatField(initial=2011)
 
 
 

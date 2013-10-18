@@ -21,6 +21,7 @@ class ESOutputPage(webapp.RequestHandler):
         NSF = form.getvalue('NSF')
         NSP = form.getvalue('NSP')
         NSM = form.getvalue('NSM')
+        Crop = form.getvalue('Crop')
 
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
@@ -44,8 +45,13 @@ class ESOutputPage(webapp.RequestHandler):
                         <th id="NSM">NSM</th>
                         <td id="nsm">%s<td>
                     </tr>
+
+                    <tr>
+                        <th id="Crop">Crop</th>
+                        <td id="crop">%s<td>
+                    </tr>
                 </table>
-        """%(NSF, NSP, NSM)
+        """%(NSF, NSP, NSM,Crop)
         html = html + template.render(templatepath+'ManykmlDropbox_test.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

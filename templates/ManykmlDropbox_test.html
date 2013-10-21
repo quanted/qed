@@ -24,11 +24,12 @@ function initialize() {
 	// Creating the map
 	var map = new google.maps.Map(mapDiv,options);
 
-	// Creating an InfoWindow with content text: "Test"
+	// Creating an InfoWindow with content text
 	var infowindow = new google.maps.InfoWindow({
 		content : 'test!!!'
 	});
 	
+
 	// Creating overlays for NatureServeFish: NSF
 	var nsf = $('#nsf').text()+ '.kmz';
 	var nsf_link ="https://s3.amazonaws.com/esmapping_kmz/nsf/"+nsf
@@ -38,7 +39,6 @@ function initialize() {
 	// Adding the click event to the overlay
 	google.maps.event.addListener(nsfLayer,'click',function(){
 	infowindow.open(map,nsfLayer);	
-	//infowindow.close();
 	});
 
 
@@ -54,6 +54,14 @@ function initialize() {
 	var nsm_link = "https://s3.amazonaws.com/esmapping_kmz/nsm/"+nsm
 	var nsmLayer = new google.maps.KmlLayer(nsm_link,{suppressInfoWindows: true}) 
 	nsmLayer.setMap(map);
+
+
+	//Creating overlays for USDACropScape
+	var crop = $('#crop').text()+ '.kmz';
+	var crop_link = "https://s3.amazonaws.com/esmapping_kmz/USDACropScape2011/"+crop
+	var cropLayer = new google.maps.KmlLayer(crop_link,{suppressInfoWindows: true}) 
+	cropLayer.setMap(map);
+
 
 };
 

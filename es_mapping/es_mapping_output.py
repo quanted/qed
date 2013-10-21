@@ -23,6 +23,7 @@ class ESOutputPage(webapp.RequestHandler):
         NSM = form.getvalue('NSM')
         Crop = form.getvalue('Crop')
 
+        IUCN_Amphibians = form.getvalue('IUCN_Amphibians')
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'es_mapping','page':'output'})
@@ -45,13 +46,16 @@ class ESOutputPage(webapp.RequestHandler):
                         <th id="NSM">NSM</th>
                         <td id="nsm">%s<td>
                     </tr>
-
                     <tr>
                         <th id="Crop">Crop</th>
                         <td id="crop">%s<td>
                     </tr>
+                    <tr>
+                        <th id="iucn_amphibians">IUCN_Amphibians</th>
+                        <td id="IUCN_Amphibians">%s<td>
+                    </tr>                    
                 </table>
-        """%(NSF, NSP, NSM,Crop)
+        """%(NSF, NSP, NSM, Crop, IUCN_Amphibians)
         html = html + template.render(templatepath+'ManykmlDropbox_test.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

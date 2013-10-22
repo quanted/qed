@@ -30,6 +30,13 @@ function initialize() {
 	});
 	
 
+
+	//Creating overlays for USDACropScape
+	var crop = $('#crop').text()+ '.kmz';
+	var crop_link = "https://s3.amazonaws.com/esmapping_kmz/USDACropScape2011/"+crop
+	var cropLayer = new google.maps.KmlLayer(crop_link,{suppressInfoWindows: true}) 
+	cropLayer.setMap(map);	
+
 	// Creating overlays for NatureServeFish: NSF
 	var nsf = $('#nsf').text()+ '.kmz';
 	var nsf_link ="https://s3.amazonaws.com/esmapping_kmz/nsf/"+nsf
@@ -67,14 +74,6 @@ function initialize() {
 	var IUCN_Birds_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Birds/"+IUCN_Birds
 	var IUCN_BirdsLayer = new google.map.KmlLayer(IUCN_Birds_link,{suppressInfoWindows: true})
 	IUCN_BirdsLayer.setMap(map);
-
-
-	//Creating overlays for USDACropScape
-	var crop = $('#crop').text()+ '.kmz';
-	var crop_link = "https://s3.amazonaws.com/esmapping_kmz/USDACropScape2011/"+crop
-	var cropLayer = new google.maps.KmlLayer(crop_link,{suppressInfoWindows: true}) 
-	cropLayer.setMap(map);
-
 
 };
 

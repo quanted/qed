@@ -103,7 +103,9 @@ def gett2data(kabam_obj):
         mark_safe("Lipid Normalized <br>(&#956;g/kg-lipid)"): ['N/A','N/A','N/A','N/A','%.0f' % kabam_obj.cbl_phytoplankton,'%.0f' % kabam_obj.cbl_zoo,'%.0f' % kabam_obj.cbl_beninv,'%.0f' % kabam_obj.cbl_ff,'%.0f' % kabam_obj.cbl_sf,'%.0f' % kabam_obj.cbl_mf,'%.0f' % kabam_obj.cbl_lf],
         mark_safe("Diet Contribution <br>(&#956;g/kg-ww)"): ['N/A','N/A','N/A','N/A','N/A','%.2f' % (1e6*kabam_obj.cbd_zoo),'%.2f' % (1e6*kabam_obj.cbd_beninv),'%.2f' % (1e6*kabam_obj.cbd_ff),'%.2f' % (1e6*kabam_obj.cbd_sf),'%.2f' % (1e6*kabam_obj.cbd_mf),'%.2f' % (1e6*kabam_obj.cbd_lf)],
         mark_safe("Respiration Contribution <br>(&#956;g/kg-ww)"): ['N/A','N/A','N/A','N/A','%.2f' % (1e6*kabam_obj.cbr_phytoplankton),'%.2f' % (1e6*kabam_obj.cbr_zoo),'%.2f' % (1e6*kabam_obj.cbr_beninv),'%.2f' % (1e6*kabam_obj.cbr_ff),'%.2f' % (1e6*kabam_obj.cbr_sf),'%.2f' % (1e6*kabam_obj.cbr_mf),'%.2f' % (1e6*kabam_obj.cbr_lf)],
+        
     }
+    
     return data
     # Removed: "Total": ['%.3f' % kabam_obj.water_column_EEC,'%.3f' % kabam_obj.water_d,'%.3f' % (1e6 * kabam_obj.c_wdp),'%.3f' % kabam_obj.c_s_f,'%.3f' % kabam_obj.cb_phytoplankton_f,'%.3f' % kabam_obj.cb_zoo_f,'%.3f' % kabam_obj.cb_beninv_f,'%.3f' % kabam_obj.cb_ff_f,'%.3f' % kabam_obj.cb_sf_f,'%.3f' % kabam_obj.cb_mf_f,'%.3f' % kabam_obj.cb_lf_f],
     # Removed: "Respiration Contribution": ['N/A','N/A','N/A','N/A','%.3f' % kabam_obj.cbr_phytoplankton,'%.3f' % kabam_obj.cbr_zoo,'%.3f' % kabam_obj.cbr_beninv,'%.3f' % kabam_obj.cbr_ff,'%.3f' % kabam_obj.cbr_sf,'%.3f' % kabam_obj.cbr_mf,'%.3f' % kabam_obj.cbr_lf],
@@ -760,3 +762,20 @@ def table_sum_output6(sumheadings_out,tmpl,chronic_rq_diet_m_array,chronic_rq_di
         </div>
         """
         return html
+
+def bar_f(kabam_obj):
+    resp_conc = [kabam_obj.cbr_zoo, kabam_obj.cbr_beninv, kabam_obj.cbr_ff, kabam_obj.cbr_sf, kabam_obj.cbr_mf, kabam_obj.cbr_lf]
+    diet_conc = [kabam_obj.cbd_zoo, kabam_obj.cbd_beninv, kabam_obj.cbd_ff, kabam_obj.cbd_sf, kabam_obj.cbd_mf, kabam_obj.cbd_lf]
+    html =  """<table width="500" border="1">
+                          <tr style="display: none">
+                            <td id="conc_diet">concanddiet</td>
+                            <td id="conc_diet_val">%s</td>
+                            </tr> 
+                          <tr style="display: none">
+                            <td id="conc_resp">concandresp</td>
+                            <td id="conc_resp_val">%s</td>
+                           
+                          </tr>                   
+                            </table>""" %(resp_conc, diet_conc)
+    return html
+

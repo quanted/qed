@@ -318,6 +318,9 @@ class KabamOutputPage(webapp.RequestHandler):
                 'model_attributes':'Kabam Output'})
         html = html + kabam_tables.timestamp()
         html = html + kabam_tables.table_all(kabam_obj)
+        html = html + kabam_tables.bar_f(kabam_obj)
+        
+        html = html + template.render(templatepath + 'kabam_output_jqplot.html', {})
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

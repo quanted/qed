@@ -46,11 +46,11 @@ aerobic_aquatic_metabolism = []
 hydrolysis = []
 photolysis_aquatic_half_life = []
 ####### Outputs ########
-GEEC_peak = []
-GEEC_4avg = []
-GEEC_21avg = []
-GEEC_60avg = []
-GEEC_90avg = []
+# GEEC_peak = []
+# GEEC_4avg = []
+# GEEC_21avg = []
+# GEEC_60avg = []
+# GEEC_90avg = []
 jid_all = []
 geneec_obj_all = []
 
@@ -146,7 +146,6 @@ def loop_html(thefile):
 class geneecBatchOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()
-        # print form
         thefile = form['file-0']
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
@@ -158,7 +157,6 @@ class geneecBatchOutputPage(webapp.RequestHandler):
                 'model_attributes':'GENEEC Batch Output'})
         html = html + geneec_tables.timestamp()
         html = html + iter_html
-
         html = html + template.render(templatepath + 'export_fortran.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

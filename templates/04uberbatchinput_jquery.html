@@ -12,12 +12,24 @@ var winleft = (browserWidth / 2) - 220 + "px";
 var wintop = (browserHeight / 2) - 30 + "px";
 var doneDiv = document.getElementById("popup");
 
-	$("#form1").validate({
-	submitHandler: function (form) {
-        form.submit();
-        // SubmittingForm()
-		alert("submitted");   
+var validator = $("#form1").validate({
+	rules: {
+		upfile: "required"	
+		}
+});
 
+
+
+$('.submit_button').click(function (event) {
+
+	var validator_out = validator.form()
+
+	var form_data = new FormData();
+	$.each($('input[name^="upfile"]')[0].files, function(i, file) {
+	    form_data.append('file-'+i, file);
+	});
+
+	if (validator_out) {
 		$(document).ajaxStart(function(){
 			$.blockUI({
 				css:{ "top":""+wintop+"", "left":""+winleft+"", "padding": "30px 20px", "width": "400px", "height": "60px", "border": "0 none", "border-radius": "4px", "-webkit-border-radius": "4px", "-moz-border-radius": "4px", "box-shadow": "3px 3px 15px #333", "-webkit-box-shadow": "3px 3px 15px #333", "-moz-box-shadow": "3px 3px 15px #333" },
@@ -25,28 +37,56 @@ var doneDiv = document.getElementById("popup");
 			});
 		});
 
-		$.ajax({
-			type: "post",
-			url: "/geneec_batchoutput.html",
+			$.ajax({
+				type: "post",
+				url: "/geneec_batchoutput.html",
+				data: form_data,
+				cache: false,
+			    contentType: false,
+			    processData: false,
+				success: function(url) {
+					$.unblockUI();
+					$("body").html(url);
+					location.hash = "output";
+					},
+				error: function(data) {
+					$.unblockUI();
+					alert('There is a problem about your submission. Please contact us via ecoubertool@gmail.com')
+					window.location = '/geneec_batchinput.html';
+					}
+			});
+	}
+});
 
-		   success: function() {
-		   		$.unblockUI();
-        		window.location = '/geneec_batchoutput.html';
-			}
-		});
-		},
-	rules: {
-		upfile: "required"	
-		}
-	});
 
 
 
 
-	// $('.submit_button').click(function () {
+
+	// submitHandler: function (form) {
+        // form.submit();
+        // SubmittingForm()
+		// alert("submitted");   
+
+		// $(document).ajaxStart(function(){
+		// 	$.blockUI({
+		// 		css:{ "top":""+wintop+"", "left":""+winleft+"", "padding": "30px 20px", "width": "400px", "height": "60px", "border": "0 none", "border-radius": "4px", "-webkit-border-radius": "4px", "-moz-border-radius": "4px", "box-shadow": "3px 3px 15px #333", "-webkit-box-shadow": "3px 3px 15px #333", "-moz-box-shadow": "3px 3px 15px #333" },
+		// 		message: '<h2 class="popup_header">Computing...</h2><br><img src="/images/loader.gif" style="margin-top:-16px">'
+		// 	});
+		// });
+
+		// $.ajax({
+		// 	type: "post",
+		// 	url: "/geneec_batchoutput.html",
+
+		//    success: function() {
+		//    		$.unblockUI();
+  //       		window.location = '/geneec_batchoutput.html';
+		// 	}
+		// });
+		// },
 
 
-	// });
 
 });
 </script>

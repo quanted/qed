@@ -146,7 +146,8 @@ def loop_html(thefile):
 class geneecBatchOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()
-        thefile = form['upfile']
+        # print form
+        thefile = form['file-0']
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', 'title')

@@ -72,7 +72,7 @@ function submitConfiguration()
 	var use_id = ($("#id_config_name")[0].value).replace(" ","-");
 	$.ajax({
 		url:"{{ubertool_service_url}}/ubertool/use/"+use_id,
-		async: false,
+		async: true,
 		type: 'POST',
 		data: JSON.stringify(form_data)
 	});

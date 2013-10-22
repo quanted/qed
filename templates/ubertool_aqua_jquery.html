@@ -157,7 +157,7 @@ function submitAquaConfiguration()
 	form_data['created'] = getDateTime(); 
 	$.ajax({
 		url:"{{ubertool_service_url}}/ubertool/aqua/"+$("#id_config_name")[0].value,
-		async: false,
+		async: true,
 		type: 'POST',
 		data: JSON.stringify(form_data)
 	});

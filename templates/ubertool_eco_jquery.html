@@ -55,7 +55,7 @@ function submitConfiguration()
 	var form_json = JSON.stringify(form_data);
 	$.ajax({
 		url:"{{ubertool_service_url}}/ubertool/eco/"+$("#id_config_name")[0].value,
-		async: false,
+		async: true,
 		type: 'POST',
 		data: form_json
 	});

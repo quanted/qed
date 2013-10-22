@@ -72,7 +72,7 @@ function submitConfiguration()
 	var post_url = "{{ubertool_service_url}}/ubertool/expo/"+$("#id_user_exposure_concentrations_configuration")[0].value;
 	$.ajax({
 		url: post_url,
-		async: false,
+		async: true,
 		type: 'POST',
 		data: json_form_data
 	});

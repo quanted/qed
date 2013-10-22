@@ -11,7 +11,7 @@ $(document).ready(function () {
     $('#id_NSP').attr('id', 'id_a4').closest('tr').addClass('method_options').hide();
 
     $('#id_IUCN_Amphibians').attr('id', 'id_b1').closest('tr').addClass('method_options').hide();
-
+    $('#id_IUCN_Birds').attr('id', 'id_b2').closest('tr').addClass('method_options').hide();
 
 
     $('#id_USFWS_p').attr('id', 'id_c1').closest('tr').addClass('method_options').hide();
@@ -33,20 +33,13 @@ $(document).ready(function () {
                     $('#id_a3').closest('tr').hide();
                     $('#id_a4').closest('tr').hide();
                 }
-
-                //else if ($(this).val() == "a2"){
-                //$('#id_' + $(this).val()).closest('tr').show();
-                //$('#id_a1').closest('tr').hide();
-                //$('#id_a3').closest('tr').hide();
-                //$('#id_a4').closest('tr').hide();
-                //}
-
                 else if ($(this).val() == "a3") {
                     $('#id_' + $(this).val()).closest('tr').show();
                     $('#id_a1').closest('tr').hide();
                     //$('#id_a2').closest('tr').hide();
                     $('#id_a4').closest('tr').hide();
-                } else if ($(this).val() == "a4") {
+                } 
+                else if ($(this).val() == "a4") {
                     $('#id_' + $(this).val()).closest('tr').show();
                     $('#id_a1').closest('tr').hide();
                     //$('#id_a2').closest('tr').hide();
@@ -54,17 +47,22 @@ $(document).ready(function () {
                 }
 
             });
-        } else if ($(this).val() == "b") {
+        } 
+        else if ($(this).val() == "b") {
             $('#id_' + $(this).val()).closest('tr').show();
             $('#id_b').change(function () {
 
                 if ($(this).val() == "b1") {
-
                     $('#id_' + $(this).val()).closest('tr').show();
                     $('#id_b2').closest('tr').hide();
+                } 
+                else if ($(this).val() == "b2"){
+                    $('#id_' + $(this).val()).closest('tr').show();
+                    $('#id_b1').closest('tr').hide();                    
                 }
             });
-        } else if ($(this).val() == "c") {
+        } 
+        else if ($(this).val() == "c") {
             $('#id_' + $(this).val()).closest('tr').show();
             $('#id_c').change(function () {
 
@@ -72,13 +70,12 @@ $(document).ready(function () {
 
                     $('#id_' + $(this).val()).closest('tr').show();
                     $('#id_c2').closest('tr').hide();
-                } else if ($(this).val() == "c2") {
+                } 
+                else if ($(this).val() == "c2") {
                     $('#id_' + $(this).val()).closest('tr').show();
                     $('#id_c1').closest('tr').hide();
                 }
             });
-
-
         }
     });
 

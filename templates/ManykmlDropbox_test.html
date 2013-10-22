@@ -62,6 +62,12 @@ function initialize() {
 	var IUCN_AmphibiansLayer = new google.maps.KmlLayer(IUCN_Amphibians_link,{suppressInfoWindows: true}) 
 	IUCN_AmphibiansLayer.setMap(map);
 
+	//Creating overlays for IUCN Birds
+	var IUCN_Birds = $('#IUCN_Birds').text()+ '.kmz';
+	var IUCN_Birds_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Birds/"+IUCN_Birds
+	var IUCN_BirdsLayer = new google.map.KmlLayer(IUCN_Birds_link,{suppressInfoWindows: true})
+	IUCN_BirdsLayer.setMap(map);
+
 
 	//Creating overlays for USDACropScape
 	var crop = $('#crop').text()+ '.kmz';

@@ -71,9 +71,16 @@ function initialize() {
 
 	//Creating overlays for IUCN Birds
 	var IUCN_Birds = $('#IUCN_Birds').text()+ '.kmz';
-	var IUCN_Birds_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Birds/"+IUCN_Birds
-	var IUCN_BirdsLayer = new google.map.KmlLayer(IUCN_Birds_link,{suppressInfoWindows: true})
+	var IUCN_Birds_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Bird/"+IUCN_Birds
+	//console.log(IUCN_Birds_link)
+	var IUCN_BirdsLayer = new google.maps.KmlLayer(IUCN_Birds_link,{suppressInfoWindows: true})
 	IUCN_BirdsLayer.setMap(map);
+
+	//Creating overlays for IUCN Mammals
+	var IUCN_Mammals = $('#IUCN_Mammals').text()+ '.kmz';
+	var IUCN_Mammals_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Mammals/"+IUCN_Mammals
+	var IUCN_MammalsLayer = new google.maps.KmlLayer(IUCN_Mammals_link,{suppressInfoWindows: true})
+	IUCN_MammalsLayer.setMap(map);
 
 };
 

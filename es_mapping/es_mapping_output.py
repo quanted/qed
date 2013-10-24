@@ -25,6 +25,8 @@ class ESOutputPage(webapp.RequestHandler):
 
         IUCN_Amphibians = form.getvalue('IUCN_Amphibians')
         IUCN_Birds = form.getvalue('IUCN_Birds')
+        IUCN_Mammals = form.getvalue('IUCN_Mammals')
+        print IUCN_Mammals
 
 
         templatepath = os.path.dirname(__file__) + '/../templates/'
@@ -60,9 +62,13 @@ class ESOutputPage(webapp.RequestHandler):
                     <tr>
                         <th id="iucn_birds">IUCN_Birds</th>
                         <td id="IUCN_Birds">%s<td>
-                    </tr>                                       
+                    </tr>
+                    <tr>
+                        <th id="iucn_mammals">IUCN_Mammals</th>
+                        <td id="IUCN_Mammals">%s<td>
+                    </tr>                                                          
                 </table>
-        """%(NSF, NSP, NSM, Crop, IUCN_Amphibians, IUCN_Birds)
+        """%(NSF, NSP, NSM, Crop, IUCN_Amphibians, IUCN_Birds, IUCN_Mammals)
         html = html + template.render(templatepath+'ManykmlDropbox_test.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

@@ -94,7 +94,10 @@ function initialize() {
 	IUCN_CoralLayer.setMap(map);
 
 	// Creating overlays for IUCN Reptiles
-
+	var IUCN_Reptiles = $('#IUCN_Reptiles').text()+ '.kmz';
+	var IUCN_Reptiles_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Reptiles/"+IUCN_Reptiles
+	var IUCN_ReptileLayer = new google.maps.KmlLayer(IUCN_Reptiles_link,{suppressInfoWindows: true})
+	IUCN_ReptileLayer.setMap(map);
 };
 
 google.maps.event.addDomListener(window, 'load', initialize);

@@ -87,14 +87,6 @@ function initialize() {
 	var IUCN_Mammals_MarineLayer = new google.maps.KmlLayer(IUCN_Mammals_Marine_link,{suppressInfoWindows: true})
 	IUCN_Mammals_MarineLayer.setMap(map);
 
-	// Creating overlays for IUCN Coral
-	var IUCN_Coral = $('#IUCN_Coral').text()+ '.kmz';
-	var IUCN_Coral_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Coral/"+IUCN_Coral
-	var IUCN_CoralLayer = new google.maps.KmlLayer(IUCN_Coral_link,{suppressInfoWindows: true})
-	IUCN_CoralLayer.setMap(map);
-
-	// Creating overlays for IUCN Reptiles
-
 };
 
 google.maps.event.addDomListener(window, 'load', initialize);

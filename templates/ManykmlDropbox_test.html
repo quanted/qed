@@ -76,11 +76,16 @@ function initialize() {
 	var IUCN_BirdsLayer = new google.maps.KmlLayer(IUCN_Birds_link,{suppressInfoWindows: true})
 	IUCN_BirdsLayer.setMap(map);
 
-	//Creating overlays for IUCN Mammals
+	//Creating overlays for IUCN Terrestrial Mammals
 	var IUCN_Mammals = $('#IUCN_Mammals').text()+ '.kmz';
 	var IUCN_Mammals_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Mammals/"+IUCN_Mammals
 	var IUCN_MammalsLayer = new google.maps.KmlLayer(IUCN_Mammals_link,{suppressInfoWindows: true})
 	IUCN_MammalsLayer.setMap(map);
+	// Creating overlays for IUCN Marine Mammals
+	var IUCN_Mammals_Marine = $('#IUCN_Mammals_Marine').text()+ '.kmz';
+	var IUCN_Mammals_Marine_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Mammals_Marine/"+IUCN_Mammals_Marine
+	var IUCN_Mammals_MarineLayer = new google.maps.KmlLayer(IUCN_Mammals_Marine_link,{suppressInfoWindows: true})
+	IUCN_Mammals_MarineLayer.setMap(map);
 
 };
 

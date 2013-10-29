@@ -5,25 +5,25 @@
 <head>
   <title> &uuml;bertool </title>
   <meta http-equiv="X-UA-Compatible" content="IE=8">
-  <style type="text/css" media="screen">
-	<!--
-  	@import url(/stylesheets/style_eco.css);
-	-->
-  </style>
-
 <!-- Import Google Analytics -->
   <script src="/stylesheets/scripts_googleanal.js" type="text/javascript"></script>
 <!-- Import jQuery library -->
-  <script src="/stylesheets/jquery-1.9.1.min.js" type="text/javascript"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
 <!-- Import jQueryUI library -->
-  <script src="/stylesheets/jquery-ui.js" type="text/javascript"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
 <!-- import Javascripts -->
   <script src="/stylesheets/scripts.js" type="text/javascript"></script>
 <!-- import Header Javascripts -->
   <script src="/stylesheets/scripts_header.js" type="text/javascript"></script>
+<!-- import blockUI -->
+  <script type="text/javascript" src="../stylesheets/jquery.blockUI.js"></script>
 
+  <link href="/stylesheets/style.css" media="screen" rel="stylesheet" type="text/css" class="default"/>
+  <link href="/stylesheets/style_eco.css" media="screen" rel="stylesheet" type="text/css" class="default"/>
+  <link href="/stylesheets/styleEPA.css" media="screen" rel="stylesheet" type="text/css" class="EPA"/>
+  <link href="/stylesheets/style_ecoEPA.css" media="screen" rel="stylesheet" type="text/css" class="EPA"/>  
 <!-- Browser FAVICON -->
-  <LINK REL="SHORTCUT ICON" HREF="http://www.ubertool.org/images/favicon/eco/favicon.ico">
+  <LINK REL="SHORTCUT ICON" HREF="http://www.ubertool.org/images/favicon/eco/favicon.ico" />
 
 </head>
 
@@ -53,6 +53,8 @@
 <!-- Header -->
 <div id="topheader_pic_main"></div>
 <div id="topheader_p_main">
+  <a href="#" id="epaSkin">EPA Skin</a>
+  <a href="#" id="defSkin">Default Skin</a>
   <a href="login.html" class="logreg">login</a><a href="register.html" class="logreg">register</a>
   <p>Cloud-based environmental models for evaluating pesticide risks to ecosystems.</p>
 </div>

@@ -2,11 +2,26 @@
 
 <!-- "Click" Menus -->
 <script type="text/javascript">
-$( document ).ready(function() {		
+$( document ).ready(function() {
+	var SkinChk;
 	$('.fadeMenu').hover(function(){
-		$(this).stop().animate({ backgroundColor:'rgb(255,165,0)', color:'#FFFFFF'},500);
+		SkinChk = getCookie('ubercookie');
+		if (SkinChk == 'EPA') {
+			// EPA Skin
+			$(this).stop().animate({ backgroundColor:'rgb(66, 137, 170)', color:'#F7F9F4'},500);
+		} else {
+			// Default Skin
+			$(this).stop().animate({ backgroundColor:'rgb(255,165,0)', color:'#FFFFFF'},500);
+		}
 	}, function(){
-		$(this).stop().animate({ backgroundColor:'rgb(201,224,179)', color:'#333333'},500);
+		SkinChk = getCookie('ubercookie');
+		if (SkinChk == 'EPA') {
+			// EPA Skin
+			$(this).stop().animate({ backgroundColor:'rgb(247, 249, 244)', color:'#1F262A'},500);
+		} else {
+			// Default Skin
+			$(this).stop().animate({ backgroundColor:'rgb(201,224,179)', color:'#333333'},500);
+		}
 	});
 });
 </script>

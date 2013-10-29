@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	// Log-in
 	$('#l_menu a, .logreg').click(function(e) {
 		e.preventDefault();
 		var destination = $(this).attr('href');
@@ -7,10 +8,5 @@ $(document).ready(function() {
 	 		height:'120px'
 		}, 500);
 		$('#topheader_p_main p, .logreg').fadeOut(500);
-	});
-	$('.articles a').hover(function(){
-		$(this).stop().animate({ color:'#FFA500' },500);
-	}, function(){
-		$(this).stop().animate({ color:'#79973F' },500);
 	});
 });

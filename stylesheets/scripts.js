@@ -1,4 +1,5 @@
 $( document ).ready(function() {
+	SetSkin();
 
 	$('.fadeDesc_description').append('<span class="hover"></span>').each(function () {
 		var $span = $('> span.hover', this).css('opacity', 0);
@@ -518,3 +519,5 @@ $( document ).ready(function() {
 var pathArray = window.location.pathname.split( '/' );
 var pathLink = pathArray[1];
 var pathSlice = pathLink.slice(0, -5);
+var defSkinSel = {backgroundColor:'rgb(255,165,0)', color:'#FFFFFF'};
+var epaSkinSel = {backgroundColor:'rgb(255,165,0)', color:'#FFFFFF'};

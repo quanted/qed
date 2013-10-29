@@ -240,6 +240,9 @@ span {
   list-style-type: square;
   padding: 5px 10px 10px 20px;
 }
+.right_tt {
+  display: none;
+}
 .urbangreymenu{
   width: 154px;
   float: left;
@@ -277,6 +280,7 @@ span {
   padding: 1em 1.5em;
   background: #F7F9F4;
   border-bottom: 1px solid #A1A1A1;
+  margin-bottom: 5px;
   /*border-top: none;*/
   /*border-radius: 0 0 4px 4px;
   -webkit-border-radius: 0 0 4px 4px;
@@ -317,11 +321,12 @@ ul.nobullet {
   width: 663px;
   display: inline;
   float: left;
-  margin: 8px;
+  /*margin: 8px;*/
   padding: 1em 1.5em;
   background: #F7F9F4;
-  border: 2px solid #1F262A;
-  border-top: none;
+  border-bottom: 1px solid #A1A1A1;
+  margin-bottom: 5px;
+  /*border-top: none;*/
   /*border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -349,21 +354,21 @@ ul.nobullet {
   cursor: pointer;
 }
 .articles_output {
-  width: 822px;
+  width: 827px;
   display: inline;
   float: left;
   position: relative;
-  margin: 8px 0 8px 8px;
+  /*margin: 8px 0 8px 8px;*/
   padding: 1em 1.5em;
   background: #F7F9F4;
-  border: 2px solid #1F262A;
-  border-top: none;
-  border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  box-shadow: 0 3px 15px -7px #000;
+  border-bottom: 1px solid #A1A1A1;
+  margin-bottom: 5px;
+  border-radius: 0 4px 4px 0;
+  -webkit-border-radius: 0 4px 4px 0;
+  -moz-border-radius: 0 4px 4px 0;
+  /*box-shadow: 0 3px 15px -7px #000;
   -webkit-box-shadow: 0 3px 15px -7px #000;
-  -moz-box-shadow: 0 3px 15px -7px #000;
+  -moz-box-shadow: 0 3px 15px -7px #000;*/
 }
 .articles_output p {
   margin: 1em 30px;

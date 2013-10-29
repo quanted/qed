@@ -73,7 +73,7 @@ a:hover {
 #topheader_p {
   width: 300px;
   height: 120px;
-  background: #79973F;
+  background: #79973F url(/images/epa_seal_verysmall_trim.gif) no-repeat center;
   float: right;
   color: white;
   font-size: 12px;
@@ -85,6 +85,12 @@ a:hover {
   margin-right: auto;
   width: 240px;
   padding-top: 20%; /* Text Positioning */
+}
+a:link#epaSkin, a:visited#epaSkin {
+  color: #fff;
+}
+#defSkin {
+  display: none;
 }
 #topheader_pic_main {
   background: #79973F url(/images/species/waterfrog_crop.png);

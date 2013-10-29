@@ -63,7 +63,7 @@ a:hover {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 #topheader_pic {
-  background: #79973F url(/images/species/waterfrog_crop.png);
+  background: #356697 url(/images/species/waterfrog_crop.png);
   width: 720px;
   height: 120px;
   float: left;
@@ -91,23 +91,31 @@ a:hover {
   width: 240px;
   padding-top: 20%; /* Text Positioning */
 }
+#epaSkin {
+  display: none;
+}
 #topheader_pic_main {
-  background: #79973F url(/images/species/waterfrog_crop.png);
+  background: #356697 url(/images/species/waterfrog_crop.png);
   width: 720px;
   height: 240px;
   float: left;
-  border-right: 4px solid #F4F7ED;
-  border-bottom: 2px solid #F4F7ED;
+  border: 2px solid #1F262A;
+  border-radius: 4px 0 0 4px;
+  -webkit-border-radius: 4px 0 0 4px;
+  -moz-border-radius: 4px 0 0 4px;
 }
 #topheader_p_main {
   width: 300px;
   height: 240px;
-  background: #79973F;
+  background: #1F262A;
   float: right;
   color: white;
   font-size: 12px;
   text-align: justify;
-  border-bottom: 2px solid #F4F7ED;
+  border-bottom: 4px solid #1F262A;
+  border-radius: 0 4px 4px 0;
+  -webkit-border-radius: 0 4px 4px 0;
+  -moz-border-radius: 0 4px 4px 0;
 }
 #topheader_p_main p {
   margin-left: auto;
@@ -1169,18 +1177,18 @@ table,td
   border-style: outset;
   border-color: white;
   border-collapse: separate;
-  background-color: rgb(201,224,179);
+  background-color: #E7EADC;
 }
 table
 {
-  background-color: rgb(201,224,179);
+  background-color: #EEF0E6;
   padding: 1px;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
 }
 th {
-  background-color: rgb(201,224,179);
+  background-color: #E7EADC;
   border: none;
   text-align: center;
   padding: 1px 4px;
@@ -1201,6 +1209,9 @@ th {
   box-shadow: 0 3px 15px -7px #000;
   -webkit-box-shadow: 0 3px 15px -7px #000;
   -moz-box-shadow: 0 3px 15px -7px #000;*/
+}
+#footer li {
+  display: none;
 }
 
 /* Contact Us */

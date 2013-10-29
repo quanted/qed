@@ -14,8 +14,8 @@ class genericJonDescriptionPage(webapp.RequestHandler):
         text_file2 = open('genericJon/genericJon_text.txt','r')
         xx = text_file2.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheaderEPA.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinksEPA.html', {'model':'genericJon','page':'description'})
+        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'genericJon','page':'description'})
         html = html + template.render(templatepath + '03hh_ubertext_links_leftJon.html', {})                       
         html = html + template.render(templatepath + '04ubertext_start.html', {
                 'model_page':'#',

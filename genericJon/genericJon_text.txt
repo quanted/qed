@@ -1,4 +1,11 @@
-<p>Testing Below</p>
+<p id="css_test">Testing Below</p>
+<a href="javascript:disableCSS()" class="cookie">Disable CSS...</a>
+<a href="javascript:switch_style('EPA')" class="cookie">Switch Style JS Test...</a>
+<a href="javascript:getCookie('ubercookie','EPA',7)" class="cookie">Test Cookie Value...</a>
+<a href="javascript:setCookie('ubercookie','EPA',7)" class="cookie">Set Cookie to "EPA"...</a>
+<a href="javascript:setCookie('ubercookie','default',7)" class="cookie">Set Cookie to ""...</a>
+<a href="javascript:readCookie('ubercookie')" class="cookie">Read Cookie!</a>
+<a href="javascript:eraseCookie('ubercookie')" class="cookie">Erase Cookie!</a>
 
 <script type="text/javascript">
 $(document).ready(function() {	

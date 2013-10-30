@@ -98,6 +98,27 @@ function initialize() {
 	var IUCN_Reptiles_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Reptiles/"+IUCN_Reptiles
 	var IUCN_ReptileLayer = new google.maps.KmlLayer(IUCN_Reptiles_link,{suppressInfoWindows: true})
 	IUCN_ReptileLayer.setMap(map);
+
+	// Creating overlays for IUCN Seagrasses
+	var IUCN_Seagrasses = $('#IUCN_Seagrasses').text()+ '.kmz';
+	var IUCN_Seagrasses_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Seagrasses/"+IUCN_Seagrasses
+	var IUCN_SeagrassesLayer = new google.maps.KmlLayer(IUCN_Seagrasses_link,{suppressInfoWindows: true})
+	IUCN_SeagrassesLayer.setMap(map);	
+
+	// Creating overlays for IUCN SeaCucumbers
+	var IUCN_SeaCucumbers = $('#IUCN_SeaCucumbers').text()+ '.kmz';
+	var IUCN_SeaCucumbers_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_SeaCucumbers/"+IUCN_SeaCucumbers
+	var IUCN_SeaCucumbersLayer = new google.maps.KmlLayer(IUCN_SeaCucumbers_link,{suppressInfoWindows: true})
+	IUCN_SeaCucumbersLayer.setMap(map);	
+
+	// Creating overlays for IUCN Mangrove
+	var IUCN_Mangrove = $('#IUCN_Mangrove').text()+ '.kmz';
+	var IUCN_Mangrove_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Mangroves/"+IUCN_Mangrove
+	var IUCN_MangroveLayer = new google.maps.KmlLayer(IUCN_Mangrove_link,{suppressInfoWindows: true})
+	IUCN_MangroveLayer.setMap(map);	
+
+
+
 };
 
 google.maps.event.addDomListener(window, 'load', initialize);

@@ -29,7 +29,9 @@ class ESOutputPage(webapp.RequestHandler):
         IUCN_Mammals_Marine = form.getvalue('IUCN_Mammals_Marine')
         IUCN_Coral = form.getvalue('IUCN_Coral')
         IUCN_Reptiles = form.getvalue('IUCN_Reptiles')
-
+        IUCN_Seagrasses = form.getvalue('IUCN_Seagrasses')
+        IUCN_SeaCucumbers = form.getvalue('IUCN_SeaCucumbers')        
+        IUCN_Mangrove = form.getvalue('IUCN_Mangrove')  
 
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
@@ -80,9 +82,21 @@ class ESOutputPage(webapp.RequestHandler):
                     <tr>
                         <th id="iucn_reptiles">IUCN_Reptiles</th>
                         <td id="IUCN_Reptiles">%s<td>
-                    </tr>                                                                                                                
+                    </tr>
+                    <tr>
+                        <th id="iucn_seagrasses">IUCN_Seagrasses</th>
+                        <td id="IUCN_Seagrasses">%s<td>
+                    </tr> 
+                    <tr>
+                        <th id="iucn_seacucumbers">IUCN_SeaCucumbers</th>
+                        <td id="IUCN_SeaCucumbers">%s<td>
+                    </tr>
+                    <tr>
+                        <th id="iucn_mangrove">IUCN_Mangrove</th>
+                        <td id="IUCN_Mangrove">%s<td>
+                    </tr>                                                                                                                                                                            
                 </table>
-        """%(NSF, NSP, NSM, Crop, IUCN_Amphibians, IUCN_Birds, IUCN_Mammals,IUCN_Mammals_Marine, IUCN_Coral,IUCN_Reptiles)
+        """%(NSF, NSP, NSM, Crop, IUCN_Amphibians, IUCN_Birds, IUCN_Mammals,IUCN_Mammals_Marine, IUCN_Coral,IUCN_Reptiles,IUCN_Seagrasses,IUCN_SeaCucumbers,IUCN_Mangrove)
         html = html + template.render(templatepath+'ManykmlDropbox_test.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

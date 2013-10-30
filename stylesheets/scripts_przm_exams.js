@@ -156,6 +156,14 @@ $(document).ready(function() {
 
     $('#id_Ap_m').val(1);
     $('#id_1').closest('tr').show();
+
+    $('#id_1').change(function() {
+    $('#id_5').closest('tr').hide();    
+    if ($(this).val() >= "4"){          
+        $('#id_5').closest('tr').show();
+        }
+    });
+
     $('#id_Ar').val(4);
 
 //end setup defaults////
@@ -545,4 +553,4 @@ function isDate(txtDate) {
 					Unit: "Please choose a unit."
 				}
 			})
-})
+})

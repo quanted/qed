@@ -7,8 +7,7 @@ import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import django
-from django import forms
-from przm import przmdb
+from przm import przm_parameters
 
 
 
@@ -22,7 +21,7 @@ class PRZMInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start.html', {
                 'model':'przm', 
                 'model_attributes':'PRZM Inputs'})
-        html = html + str(przmdb.PRZMInp())
+        html = html + str(przm_parameters.PRZMInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

@@ -17,7 +17,7 @@ class geneecBatchInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberbatchinput.html', {
                 'model':'geneec',
                 'model_attributes':'GENEEC Batch Input'}) 
-        html = html + template.render(templatepath + '04uberbatchinput_jquery.html', {}) 
+        html = html + template.render(templatepath + '04uberbatchinput_jquery.html', {'model':'geneec'}) 
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

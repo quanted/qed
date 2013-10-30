@@ -8,20 +8,15 @@
 <script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
 <script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
 
-<div id="chart1" style="margin-top:20px; margin-left:20px; width:600px; height:400px;"></div>
-
 
 <script type='text/javascript'> 
 
 $(document).ready(function(){
-    	
-
-		
         $.jqplot.config.enablePlugins = true;
     	//$('#x_pre_irr').closest('tr').hide();
-    	var s1 = $.parseJSON($('#x_pre_irr_val').text());
+    	var s1 = $.parseJSON($('#x_pre_irr_val_{{ model_index }}').text());
          
-        $.jqplot('chart1', [s1], {
+        $.jqplot('chart{{ plot_index1 }}', [s1], {
             seriesDefaults:{
                 renderer:$.jqplot.BarRenderer,
                 pointLabels: { show: true },
@@ -56,20 +51,19 @@ $(document).ready(function(){
     })
 </script>
 
-<div id="chart2" style="margin-top:20px; margin-left:20px; width:600px; height:400px;"></div>
 
 <script type='text/javascript'> 
 $(document).ready(function(){
-        $.jqplot.config.enablePlugins = true;
+    $.jqplot.config.enablePlugins = true;
 		//$('#x_leachate').closest('tr').hide();
 	
-    	var s2 = $.parseJSON($('#x_leachate_val').text());
-		$('#x_et').closest('tr').hide();
-    	var s3 = $.parseJSON($('#x_et_val').text());
-		$('#x_runoff').closest('tr').hide();
-    	var s4 = $.parseJSON($('#x_runoff_val').text());		
+    	var s2 = $.parseJSON($('#x_leachate_val_{{ model_index }}').text());
+		$('#x_et_{{ model_index }}').closest('tr').hide();
+    	var s3 = $.parseJSON($('#x_et_val_{{ model_index }}').text());
+		$('#x_runoff_{{ model_index }}').closest('tr').hide();
+    	var s4 = $.parseJSON($('#x_runoff_val_{{ model_index }}').text());		
 		         
-        $.jqplot('chart2', [s2, s3, s4], {
+        $.jqplot('chart{{ plot_index2 }}', [s2, s3, s4], {
             stackSeries: true,
 
 			seriesDefaults:{

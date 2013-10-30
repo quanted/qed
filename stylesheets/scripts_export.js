@@ -10,9 +10,14 @@ n_plot = n_plot_1 + n_plot_2
 i=1;
 
 var imgData = [];
+var options = {
+    x_offset : 30,
+    y_offset : 30
+};
+
 while(i <= n_plot){
 	try{
-    imgData.push($('#chart'+i).jqplotToImageStr({}));
+    imgData.push($('#chart'+i).jqplotToImageStr(options));
     i=i+1    
     // console.log('a')
 
@@ -24,7 +29,6 @@ while(i <= n_plot){
     }
 }
 
-// console.log(imgData);
 
 imgData_json = JSON.stringify(imgData)
 // console.log(imgData_json);
@@ -51,40 +55,7 @@ var wintop = (browserHeight / 2) - 30 + "px";
 var divTop = ($('.articles_output').height() * 0.5) - 28.5 + "px";
 var doneDiv = document.getElementById("popup");
 
-
-
     $('#pdfExport').click(function () {
-
-    	// var frm = $('#pdf_post');
-    	// console.log(frm.attr('action'))
-    	// frm.submit()
-
-		// $(document).ajaxStart(function(){
-  //       	alert('start');
-
-		// });
-
-
-  //       $.ajax({
-  //           type: "get",
-  //           url: "/pdf.html",
-  //           data: $('#pdf_post').serialize(),
-  //           dataType: "data",
-  //           success: function (data) {
-  //           	alert('success');
-  //               alert(data)
-  //           	console.log(data)
-  //           	window.location = "/pdf.html";
-  //           },
-  //           error: function (data) {
-  //           	alert('error');
-  //               alert(data)
-  //           	console.log(data)
-  //           },
-
-
-  //       });
-
 		$(document).ajaxStart(function(){
 			$.blockUI({
 				css:{ "top":""+wintop+"", "left":""+winleft+"", "padding": "30px 20px", "width": "400px", "height": "60px", "border": "0 none", "border-radius": "4px", "-webkit-border-radius": "4px", "-moz-border-radius": "4px", "box-shadow": "3px 3px 15px #333", "-webkit-box-shadow": "3px 3px 15px #333", "-moz-box-shadow": "3px 3px 15px #333" },
@@ -101,26 +72,20 @@ var doneDiv = document.getElementById("popup");
 	        	$("#popup").hide();
 	        	$.unblockUI();
 	        });
-
 		});
 
 		$.ajax({
-
 			type: "POST",
 			url: "/pdf.html",
 			data: $("#pdf_post").serialize(),
 			dataType: "html",
-
-		   success: function(data) {
+		    success: function(data) {
         		doneDiv.innerHTML = data;
         		// console.log(data)
         		// window.location = '/pdf.html';
-
 			}
-
 		});
-
-});
+	});
 
 
 	$('#htmlExport').click(function () {
@@ -144,18 +109,14 @@ var doneDiv = document.getElementById("popup");
 		});
 
 		$.ajax({
-
 				type: "post",
 				url: "/html.html",
 				data: $("#pdf_post").serialize(),
 				dataType: "html",
-
-			   success: function(data) {
+			    success: function(data) {
             		doneDiv.innerHTML = data;
 				}
-
 		});
-
 	});
 
 	$('#fadeExport_pdf').append('<span class="hover"></span>').each(function () {
@@ -186,3 +147,4 @@ var doneDiv = document.getElementById("popup");
 	// });
 
 });
+

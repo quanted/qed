@@ -1,5 +1,5 @@
 application: pypest
-version: tao
+version: jon
 runtime: python27
 api_version: 1
 
@@ -66,6 +66,8 @@ handlers:
 - url: /register.html
   script: user/user_registration_input.py
   secure: always
+- url: /ajaxtest.html
+  script: ajaxtest.py
 
 # All URLs beginning with /stylesheets are treated as paths to static files in
 # the stylesheets/ directory. Note that static_dir handlers do not use a

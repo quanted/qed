@@ -12,6 +12,8 @@ import os
 
 class genericAlgorithmPage(webapp.RequestHandler):
     def get(self):
+        text_file1 = open('generic/generic_algorithm.txt','r')
+        x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title'})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'generic','page':'algorithm'})

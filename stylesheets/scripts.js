@@ -1,5 +1,4 @@
 $( document ).ready(function() {
-	SetSkin();
 
 	$('.fadeDesc_description').append('<span class="hover"></span>').each(function () {
 		var $span = $('> span.hover', this).css('opacity', 0);

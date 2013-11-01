@@ -10,6 +10,7 @@ cgitb.enable()
 from StringIO import StringIO
 import csv
 from geneec import geneec_model,geneec_tables
+from uber import uber_lib
 import json
 import base64
 import urllib
@@ -92,7 +93,8 @@ geneec_obj.GEEC_90avg_exp = GEEC_90avg[0]
 class geneecQaqcPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'geneec','page':'qaqc'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {

@@ -14,6 +14,7 @@ import csv
 import sys
 sys.path.append("../terrplant")
 from terrplant import terrplant_model,terrplant_tables
+from uber import uber_lib
 from django.template import Context, Template
 import logging
 
@@ -612,7 +613,8 @@ class TerrplantQaqcPage(webapp.RequestHandler):
         text_file1 = open('terrplant/terrplant_description.txt','r')
         x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'terrplant','page':'qaqc'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {

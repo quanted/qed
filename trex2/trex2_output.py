@@ -10,9 +10,8 @@ import numpy as np
 import cgi
 import cgitb
 cgitb.enable()
-from trex2 import trex2_model
-from trex2 import trex2_tables
-
+from trex2 import trex2_model,trex2_tables
+from uber import uber_lib
 
 class TRexOutputPage(webapp.RequestHandler):
     def post(self):        
@@ -98,7 +97,8 @@ class TRexOutputPage(webapp.RequestHandler):
         text_file = open('trex2/trex2_description.txt','r')
         x1 = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})        
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html',  {'model':'trex2','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                               
         html = html + template.render(templatepath + '04uberoutput_start.html', {

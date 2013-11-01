@@ -14,6 +14,7 @@ import csv
 import sys
 sys.path.append("../stir")
 from stir import stir_model,stir_tables
+from uber import uber_lib
 from django.template import Context, Template
 import logging
 
@@ -373,7 +374,8 @@ test_suite_loc_sid_mammal = suite(TestCase_loc_sid_mammal, stir_obj=stir_obj)
 class stirQaqcPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'stir','page':'qaqc'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {

@@ -9,12 +9,13 @@ from google.appengine.ext.webapp import template
 import django
 from django import forms
 from przm_exams import przm_exams_parameters
-
+from uber import uber_lib
 
 class PRZMEXAMSInputPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + 'przm_exams_jquery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'przm_exams','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                

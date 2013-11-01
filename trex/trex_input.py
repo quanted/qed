@@ -11,13 +11,15 @@ import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 from trex import trexdb
+from uber import uber_lib
 
 class trexInputPage(webapp.RequestHandler):
     def get(self):
         text_file = open('trex/trex_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'trex','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})        
         html = html + template.render (templatepath + '04uberinput_start.html', {

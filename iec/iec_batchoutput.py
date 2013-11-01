@@ -15,6 +15,7 @@ import csv
 import sys
 sys.path.append("../iec")
 from iec import iec_model,iec_tables
+from uber import uber_lib
 import logging
 
 logger = logging.getLogger('IECBatchPage')
@@ -68,7 +69,8 @@ class IECBatchOutputPage(webapp.RequestHandler):
         thefile = form['upfile']
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'iec','page':'batchinput'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberbatch_start.html', {

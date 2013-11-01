@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import webapp2 as webapp
@@ -9,8 +8,8 @@ import cgi
 import cgitb
 cgitb.enable()
 import json
-from przm_exams import przm_exams_model
-from przm_exams import przm_exams_tables
+from przm_exams import przm_exams_model,przm_exams_tables
+from uber import uber_lib
 import base64
 import urllib
 from google.appengine.api import urlfetch
@@ -430,7 +429,8 @@ class PRZMEXAMSOutputPage(webapp.RequestHandler):
 
 
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})        
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)     
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html',  {'model':'przm_exams','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                               
         html = html + template.render(templatepath + '04uberoutput_start.html', {

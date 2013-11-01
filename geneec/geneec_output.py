@@ -8,12 +8,11 @@ import cgi
 import cgitb
 cgitb.enable()
 import json
-from geneec import geneec_model
-from geneec import geneec_tables
+from geneec import geneec_model,geneec_tables
 import sys
 lib_path = os.path.abspath('..')
 sys.path.append(lib_path)
-
+from uber import uber_lib
 
 #############################################
 
@@ -133,7 +132,8 @@ class GENEECOutputPage(webapp.RequestHandler):
         # final_res=get_jid(geneec_obj)
 
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'geneec','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {

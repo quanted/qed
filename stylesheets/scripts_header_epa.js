@@ -1,5 +1,7 @@
 $(document).ready(function() {
+  // Remove Log-in
   $('#topheader_p p, .logreg').hide();
+  // Index link
   $('.index_link').click(function(e) {
     e.preventDefault();
     var destination = $(this).attr('href');
@@ -9,11 +11,7 @@ $(document).ready(function() {
     }, 500);
     $('#topheader_p p, .logreg').fadeIn(500);
   });
-  $('.articles a, .articles_input a, articles_output a').hover(function(){
-    $(this).stop().animate({ color:'#356697' },500);
-  }, function(){
-    $(this).stop().animate({ color:'#4289AA' },500);
-  });
+  // BlockUI setup
   var browserWidth = $(window).width();
   var browserHeight = $(window).height();
   var winleft = (browserWidth / 2) - 220 + "px";

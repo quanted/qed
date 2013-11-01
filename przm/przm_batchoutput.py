@@ -17,6 +17,7 @@ from google.appengine.api import urlfetch
 import keys_Picloud_S3
 import logging
 logger = logging.getLogger('PRZM Batch Model')
+from uber import uber_lib
 
 ############Provide the key and connect to the picloud####################
 api_key=keys_Picloud_S3.picloud_api_key
@@ -116,10 +117,10 @@ class przmBatchOutputPage(webapp.RequestHandler):
         form = cgi.FieldStorage()
         # thefile = form['upfile']
         thefile = form['file-0']
-
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'przm','page':'batchinput'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {

@@ -14,9 +14,8 @@ import sys
 sys.path.append("../utils")
 import utils.json_utils
 sys.path.append("../dust")
-from stir import stir_model
-from stir import stir_parameters
-from stir import stir_tables
+from stir import stir_model,stir_tables
+from uber import uber_lib
 from django.template import Context, Template
 
 class STIRExecutePage(webapp.RequestHandler):
@@ -42,7 +41,8 @@ class STIRExecutePage(webapp.RequestHandler):
         text_file = open('stir/stir_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'stir','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {

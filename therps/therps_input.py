@@ -4,7 +4,6 @@ Created on Tue Jan 03 13:30:41 2012
 
 @author: tao.hong
 """
-
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import cgi
@@ -16,14 +15,15 @@ from google.appengine.ext.webapp import template
 import django
 from django import forms
 from therps import therps_parameters
-
+from uber import uber_lib
 
 class THerpsInputPage(webapp.RequestHandler):
     def get(self):
         text_file = open('therps/therps_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'therps','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})        
         html = html + template.render(templatepath + '04uberinput_start_tabbed.html', {

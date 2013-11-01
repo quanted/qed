@@ -5,9 +5,6 @@
 <head>
   <title> &uuml;bertool </title>
   <meta http-equiv="X-UA-Compatible" content="IE=8">
-  <link href="/stylesheets/style.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="/stylesheets/style_eco.css" media="screen" rel="stylesheet" type="text/css" />
-
 <!-- Import Google Analytics -->
   <script src="/stylesheets/scripts_googleanal.js" type="text/javascript"></script>
 <!-- Import jQuery library -->
@@ -18,6 +15,13 @@
   <script src="/stylesheets/scripts.js" type="text/javascript"></script>
 <!-- import Header Javascripts -->
   <script src="/stylesheets/scripts_header.js" type="text/javascript"></script>
+<!-- import blockUI -->
+  <script type="text/javascript" src="../stylesheets/jquery.blockUI.js"></script>
+
+  <link href="/stylesheets/styleEPA.css" media="screen" rel="stylesheet" type="text/css" class="EPA"/>
+  <link href="/stylesheets/style_ecoEPA.css" media="screen" rel="stylesheet" type="text/css" class="EPA"/>
+  <link href="/stylesheets/style.css" media="screen" rel="stylesheet" type="text/css" class="default" disabled/>
+  <link href="/stylesheets/style_eco.css" media="screen" rel="stylesheet" type="text/css" class="default" disabled/>
 
 <!-- Browser FAVICON -->
   <LINK REL="SHORTCUT ICON" HREF="http://www.ubertool.org/images/favicon/epa/favicon.ico" />
@@ -27,14 +31,14 @@
 <body>
 
 <!-- import Header_main Javascripts -->
-  <script src="/stylesheets/scripts_header_epa.js" type="text/javascript"></script>
+  <script src="/stylesheets/scripts_header_eco.js" type="text/javascript"></script>
 
 <!-- Main Container Div -->
 <div id="container">
 
 <!-- Ubertool banner -->
 <div id="banner">
-  <a href="hh_index.html" id="banner_l" class="index_link">&uuml;bertool: web applications for human health risk assessment (beta version)</a>
+  <a href="index.html" id="banner_l" class="index_link">&uuml;bertool: web applications for human health risk assessment (beta version)</a>
   <div id="banner_r">
     <div id="home">
       <div id="home_text"><a href="index.html">Home</a></div>
@@ -48,8 +52,10 @@
 </div>
 
 <!-- Header -->
-<a class="index_link" href="hh_index.html"><div id="topheader_pic"></div></a>
+<a class="index_link" href="index.html"><div id="topheader_pic"></div></a>
 <div id="topheader_p">
+  <a href="#" id="epaSkin">EPA Skin</a>
+  <a href="#" id="defSkin">Default Skin</a>
   <a href="login.html" class="logreg">login</a><a href="register.html" class="logreg">register</a>
 </div>
-<!--end 01hh_uberheader-->
+<!--end 01uberheader-->

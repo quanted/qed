@@ -1,23 +1,16 @@
 # -*- coding: utf-8 -*-
-
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
-#import numpy as np
-#import cgi
-#import math 
-#import cgitb
-#cgitb.enable()
+from uber import uber_lib
 
-
-  
- 
 class przm5OutputPage(webapp.RequestHandler):
     def post(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})        
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)    
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html',  {'model':'przm5','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                               
         html = html + template.render(templatepath + '04uberoutput_start.html', {

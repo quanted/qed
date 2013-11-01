@@ -12,13 +12,15 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 from kabam import kabam_parameters
 from django import forms
+from uber import uber_lib
 
 class KabamInputPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         text_file = open('kabam/kabam_description.txt','r')
         x = text_file.read()
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + 'kabam-jQuery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'kabam','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})

@@ -16,6 +16,7 @@ import sys
 sys.path.append("../kabam")
 from kabam import kabam_model,kabam_tables
 import logging
+from uber import uber_lib
 
 logger = logging.getLogger('kabamBatchPage')
 
@@ -493,7 +494,8 @@ class kabamBatchOutputPage(webapp.RequestHandler):
         thefile = form['upfile']
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'kabam','page':'batchinput'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberbatch_start.html', {

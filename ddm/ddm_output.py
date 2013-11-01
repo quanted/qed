@@ -1,25 +1,16 @@
 # -*- coding: utf-8 -*-
-
-# IEC
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
-#from iec import iec_input      <---- HAS THIS BEEN DONE?  (I JUST CHANGED THE NAME)
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
-#import numpy as np
-#import cgi
-#import math 
-#import cgitb
-#cgitb.enable()
+from uber import uber_lib
 
-
-  
- 
 class ddmOutputPage(webapp.RequestHandler):
     def post(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})        
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html',  {'model':'ddm','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                               
         html = html + template.render(templatepath + '04uberoutput_start.html', {

@@ -2,15 +2,6 @@
 var name = 'ubercookie';
 var days = 7;
 var mouseOn, mouseOff;
-// onLoad SKin Function
-function SetSkin() {
-  var value = getCookie(name);
-  if (value != null) {
-    SetStyle(value);
-  } else {
-    SetStyle('default');
-  }
-}
 // Enable/Disable Stylesheets
 function SetStyle (value)
 {
@@ -130,7 +121,7 @@ $(document).ready(function() {
       $('.articles a:link, .articles_input a:link, articles_output a:link').css( {'color':'#79973F'} );
       mouseOff = '#79973F';
       mouseOn = '#FFA500';
-      delCookie('ubercookie');
+      setCookie('ubercookie','default',7);
     //   return valSlice + '.css';
     // });
   });

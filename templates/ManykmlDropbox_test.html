@@ -117,8 +117,11 @@ function initialize() {
 	var IUCN_MangroveLayer = new google.maps.KmlLayer(IUCN_Mangrove_link,{suppressInfoWindows: true})
 	IUCN_MangroveLayer.setMap(map);	
 
-
-
+	// Creating overlays for IUCN Marine Fish
+	var IUCN_MarineFish = $('#IUCN_MarineFish').text()+ '.kmz';
+	var IUCN_MarineFish_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_MarineFish/"+IUCN_MarineFish
+	var IUCN_MarineFishLayer = new google.maps.KmlLayer(IUCN_MarineFish_link,{suppressInfoWindows: true})
+	IUCN_MarineFishLayer.setMap(map);
 };
 
 google.maps.event.addDomListener(window, 'load', initialize);

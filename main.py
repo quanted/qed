@@ -8,16 +8,17 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
+from uber import uber_lib
 
 class defaultPage(webapp.RequestHandler):
     def get(self):
-        #print os.getcwd()
         text_file1 = open('main_description.txt','r')
         x = text_file1.read()
         text_file2 = open('main_text.txt','r')
         xx = text_file2.read()
         templatepath = os.path.dirname(__file__) + '/templates/'                     
-        html = template.render(templatepath+'01uberheader_main.html', {'title':'Ubertool'})
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChkMain(ChkCookie)
         html = html + template.render(templatepath+'02uberintroblock_nomodellinks.html', {'title2':'Ecological Risk Web Applications','title3':x})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                        
         html = html + template.render (templatepath+'04ubertext_start_index.html', {'text_paragraph':xx})

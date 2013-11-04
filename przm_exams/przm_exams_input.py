@@ -25,8 +25,8 @@ class PRZMEXAMSInputPage(webapp.RequestHandler):
         html = html + """
         <div class="input_nav">
             <ul>
-                <li class="PRZM" style="color:#FFA500; font-weight:bold"> PRZM Inputs </li>
-                |<li class="EXAMS" style="font-weight:bold"> EXAMS Inputs</li>
+                <li class="PRZM tabSel"> PRZM Inputs </li>
+                |<li class="EXAMS tabUnsel"> EXAMS Inputs</li>
             </ul>
         </div>
         """

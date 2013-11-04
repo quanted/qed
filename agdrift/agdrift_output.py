@@ -19,14 +19,19 @@ from django.template import Context, Template
 class agdriftOutputPage(webapp.RequestHandler):
     def post(self):        
         form = cgi.FieldStorage()   
+       # args={}
+        #for keys in form:
+        #    args[keys]=form.getvalue(keys)
         drop_size = form.getvalue('drop_size')
         ecosystem_type = form.getvalue('ecosystem_type')
         application_method = form.getvalue('application_method')
         boom_height = form.getvalue('boom_height')
         orchard_type = form.getvalue('orchard_type')
-        agdrift_obj = agdrift_model.agdrift(True, True, drop_size, ecosystem_type, application_method, boom_height, orchard_type)
-
-
+        application_rate = form.getvalue('application_rate')
+        distance_aqua = form.getvalue('distance_aqua')
+        distance_terr = form.getvalue('distance_terr')
+        aquatic_type = form.getvalue('aquatic_type')
+        agdrift_obj = agdrift_model.agdrift(True, True, drop_size, ecosystem_type, application_method, boom_height, orchard_type, application_rate, distance_aqua, distance_terr, aquatic_type)
         text_file = open('agdrift/agdrift_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'

@@ -59,7 +59,7 @@ def getdjtemplate():
 
 def gett1data(agdrift_obj):
     data = { 
-        "Parameter": ['Application method', 'Orchard type', 'Drop size', 'Ecosystem type',],
+        "Parameter": ['Application method', 'Orchard type', 'Drop size', 'Ecosystem type', ],
         "Value": [agdrift_obj.application_method, agdrift_obj.orchard_type, agdrift_obj.drop_size, agdrift_obj.ecosystem_type,],
     }
     return data
@@ -70,6 +70,13 @@ def gett1data(agdrift_obj):
 #        "Value": [agdrift_obj.results[0], agdrift_obj.results[1],],
 #    }
 #    return data
+def gett2data(agdrift_obj):
+    #logger.info(vars(iec_obj))
+    data = { 
+        "Parameter": ['Spray drift fraction of applied', 'Initial Average Deposition (g/ha)', 'Initial Average Deposition (lb/ac)', 'Initial Average Concentration (ng/L)', 'Initial Average Deposition (mg/cm2)',],
+        "Value": ['%.2f' % agdrift_obj.init_avg_dep_foa,'%.2e' % agdrift_obj.avg_depo_gha,'%.2f' % agdrift_obj.avg_depo_lbac, '%.2f' % agdrift_obj.deposition_ngL, '%.2f' % agdrift_obj.deposition_mgcm],
+    }
+    return data
 
 pvuheadings = getheaderpvu()
 pvrheadings = getheaderpvr()
@@ -81,7 +88,7 @@ tmpl = Template(djtemplate)
 def table_all(agdrift_obj):
     html_all = table_1(agdrift_obj)     
     html_all = html_all + table_2(agdrift_obj)
-    # html_all = html_all + table_3(agdrift_obj)
+    html_all = html_all + table_3(agdrift_obj)
     return html_all
 
 def timestamp():
@@ -116,6 +123,19 @@ def table_1(agdrift_obj):
 
 def table_2(agdrift_obj):
         html = """
+        <H4 class="out_2 collapsible" id="section2"><span></span>Model Output</H4>
+            <div class="out_ container_output">
+        """
+        t2data = gett2data(agdrift_obj)
+        t2rows = gethtmlrowsfromcols(t2data,pvuheadings)
+        html = html + tmpl.render(Context(dict(data=t2rows, headings=pvuheadings)))
+        html = html + """
+            </div>
+        """
+        return html        
+
+def table_3(agdrift_obj):
+        html = """
         <table style="display:none;">
             <tr>
                 <td>distance</td>
@@ -138,4 +158,5 @@ def table_2(agdrift_obj):
         #         </div>
         # """
         return html
+
 

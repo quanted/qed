@@ -32,9 +32,9 @@ class THerpsInputPage(webapp.RequestHandler):
         html = html + """
         <div class="input_nav">
             <ul>
-                <li class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical</li>
-                |<li class="Avian" style="font-weight:bold"> Avian</li>
-                |<li class="Herptile" style="font-weight:bold"> Herptile</li>
+                <li class="Chemical tabSel"> Chemical</li>
+                |<li class="Avian tabUnsel"> Avian</li>
+                |<li class="Herptile tabUnsel"> Herptile</li>
             </ul>
         </div>
         """

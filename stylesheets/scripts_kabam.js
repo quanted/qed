@@ -9,8 +9,8 @@ $(document).ready(function() {
 
     $('li.Chemical').click(function(){
         curr_ind = 0;
-        $('li.Chemical').css({'color': '#FFA500'});
-        $('li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $('li.Chemical').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_Chemical').show();
         $(".back").hide();
@@ -20,8 +20,8 @@ $(document).ready(function() {
 
     $('li.Avian').click(function(){
         curr_ind = 1;
-        $('li.Avian').css({'color': '#FFA500'});
-        $('li.Chemical, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $('li.Avian').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_Avian').show();
         $(".back").show();
@@ -31,8 +31,8 @@ $(document).ready(function() {
 
     $('li.Mammal').click(function(){
         curr_ind = 2;
-        $('li.Mammal').css({'color': '#FFA500'});
-        $('li.Chemical, li.Avian, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $('li.Mammal').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Avian, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_Mammal').show();
         $(".back").show();
@@ -42,8 +42,8 @@ $(document).ready(function() {
 
     $('li.LargeFish').click(function(){
         curr_ind = 3;
-        $('li.LargeFish').css({'color': '#FFA500'});
-        $('li.Chemical, li.Avian, li.Mammal, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $('li.LargeFish').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Avian, li.Mammal, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_LargeFish').show();
         $(".back").show();
@@ -53,8 +53,8 @@ $(document).ready(function() {
 
     $('li.MediumFish').click(function(){
         curr_ind = 4;
-        $('li.MediumFish').css({'color': '#FFA500'});
-        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $('li.MediumFish').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_MediumFish').show();
         $(".back").show();
@@ -64,8 +64,8 @@ $(document).ready(function() {
 
     $('li.SmallFish').click(function(){
         curr_ind = 5;
-        $('li.SmallFish').css({'color': '#FFA500'});
-        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $('li.SmallFish').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_SmallFish').show();
         $(".back").show();
@@ -75,8 +75,8 @@ $(document).ready(function() {
 
     $('li.Filterfeeders').click(function(){
         curr_ind = 6;
-        $('li.Filterfeeders').css({'color': '#FFA500'});
-        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $('li.Filterfeeders').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_Filterfeeders').show();
         $(".back").show();
@@ -86,8 +86,8 @@ $(document).ready(function() {
 
     $('li.Invertebrates').click(function(){
         curr_ind = 7;
-        $('li.Invertebrates').css({'color': '#FFA500'});
-        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $('li.Invertebrates').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Zooplankton, li.Phytoplankton, li.Sediment, li.Constants').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_Invertebrates').show();
         $(".back").show();
@@ -97,8 +97,8 @@ $(document).ready(function() {
 
     $('li.Zooplankton').click(function(){
         curr_ind = 8;
-        $('li.Zooplankton').css({'color': '#FFA500'});
-        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Phytoplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $('li.Zooplankton').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Phytoplankton, li.Sediment, li.Constants').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_Zooplankton').show();
         $(".back").show();
@@ -108,8 +108,8 @@ $(document).ready(function() {
 
     $('li.Phytoplankton').click(function(){
         curr_ind = 9;
-        $('li.Phytoplankton').css({'color': '#FFA500'});
-        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Sediment, li.Constants').css({'color': '#333333'});
+        $('li.Phytoplankton').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Sediment, li.Constants').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_Phytoplankton').show();
         $(".back").show();
@@ -119,8 +119,8 @@ $(document).ready(function() {
 
     $('li.Sediment').click(function(){
         curr_ind = 10;
-        $('li.Sediment').css({'color': '#FFA500'});
-        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Constants').css({'color': '#333333'});
+        $('li.Sediment').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Constants').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_Sediment').show();
         $(".back").show();
@@ -130,8 +130,8 @@ $(document).ready(function() {
 
     $('li.Constants').click(function(){
         curr_ind = 11;
-        $('li.Constants').css({'color': '#FFA500'});
-        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment').css({'color': '#333333'});
+        $('li.Constants').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_Constants').show();
         $(".back").show();
@@ -144,10 +144,10 @@ $(document).ready(function() {
         
         if (curr_ind < 11) {      
             $(".tab:visible").hide();
-            $("."+ uptab_pool[curr_ind]).css({'color': '#333333'});
+            $("."+ uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel');
             curr_ind = curr_ind + 1;
             $("." + tab_pool[curr_ind]).show();
-            $("."+ uptab_pool[curr_ind]).css({'color': '#FFA500'});
+            $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
             $(".submit").hide();
             $(".back").show();
             }
@@ -163,10 +163,10 @@ $(document).ready(function() {
                 
             
             $(".tab:visible").hide();
-            $("."+ uptab_pool[curr_ind]).css({'color': '#333333'});
+            $("."+ uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel');
             curr_ind = curr_ind - 1;
             $("." + tab_pool[curr_ind]).show();
-            $("."+ uptab_pool[curr_ind]).css({'color': '#FFA500'});
+            $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
             $(".submit").hide();
             $(".next").show();
            

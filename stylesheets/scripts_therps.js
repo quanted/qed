@@ -9,8 +9,8 @@ $(document).ready(function() {
 
     $('li.Chemical').click(function(){
         curr_ind = 0;
-        $('li.Chemical').css({'color': '#FFA500'});
-        $('li.Avian, li.Herptile').css({'color': '#333333'});
+        $('li.Chemical').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Avian, li.Herptile').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_Chemical').show();
         $(".back").hide();
@@ -20,8 +20,8 @@ $(document).ready(function() {
 
     $('li.Avian').click(function(){
         curr_ind = 1;
-        $('li.Avian').css({'color': '#FFA500'});
-        $('li.Chemical, li.Herptile').css({'color': '#333333'});
+        $('li.Avian').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Herptile').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_Avian').show();
         $(".back").show();
@@ -31,8 +31,8 @@ $(document).ready(function() {
 
     $('li.Herptile').click(function(){
         curr_ind = 2;
-        $('li.Herptile').css({'color': '#FFA500'});
-        $('li.Avian, li.Chemical').css({'color': '#333333'});
+        $('li.Herptile').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Avian, li.Chemical').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_Herptile').show();
         $(".back").show();
@@ -45,10 +45,10 @@ $(document).ready(function() {
         
         if (curr_ind < 2) {      
             $(".tab:visible").hide();
-            $("."+ uptab_pool[curr_ind]).css({'color': '#333333'});
+            $("."+ uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel');
             curr_ind = curr_ind + 1;
             $("." + tab_pool[curr_ind]).show();
-            $("."+ uptab_pool[curr_ind]).css({'color': '#FFA500'});
+            $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
             $(".submit").hide();
             $(".back").show();
             }
@@ -63,10 +63,10 @@ $(document).ready(function() {
         if (curr_ind > 0) {
                 
             $(".tab:visible").hide();
-            $("."+ uptab_pool[curr_ind]).css({'color': '#333333'});
+            $("."+ uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel');
             curr_ind = curr_ind - 1;
             $("." + tab_pool[curr_ind]).show();
-            $("."+ uptab_pool[curr_ind]).css({'color': '#FFA500'});
+            $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
             $(".submit").hide();
             $(".next").show();
            

@@ -30,18 +30,18 @@ class KabamInputPage(webapp.RequestHandler):
         html = html + """
         <div class="input_nav">
           <ul>
-            <li class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </li>
-            |<li class="Avian" style="font-weight:bold"> Avian </li>
-            |<li class="Mammal" style="font-weight:bold"> Mammal </li>
-            |<li class="LargeFish" style="font-weight:bold"> Large Fish </li>
-            |<li class="MediumFish" style="font-weight:bold"> Medium Fish </li>
-            |<li class="SmallFish" style="font-weight:bold"> Small Fish </li>
-            |<li class="Filterfeeders" style="font-weight:bold"> Filter feeders </li>
-            |<li class="Invertebrates" style="font-weight:bold"> Invertebrates </li>
-            |<li class="Zooplankton" style="font-weight:bold"> Zooplankton </li>
-            |<li class="Phytoplankton" style="font-weight:bold"> Phytoplankton </li>
-            |<li class="Sediment" style="font-weight:bold"> Sediment </li>
-            |<li class="Constants" style="font-weight:bold"> Constants</li>
+            <li class="Chemical tabSel"> Chemical </li>
+            |<li class="Avian tabUnsel"> Avian </li>
+            |<li class="Mammal tabUnsel"> Mammal </li>
+            |<li class="LargeFish tabUnsel"> Large Fish </li>
+            |<li class="MediumFish tabUnsel"> Medium Fish </li>
+            |<li class="SmallFish tabUnsel"> Small Fish </li>
+            |<li class="Filterfeeders tabUnsel"> Filter feeders </li>
+            |<li class="Invertebrates tabUnsel"> Invertebrates </li>
+            |<li class="Zooplankton tabUnsel"> Zooplankton </li>
+            |<li class="Phytoplankton tabUnsel"> Phytoplankton </li>
+            |<li class="Sediment tabUnsel"> Sediment </li>
+            |<li class="Constants tabUnsel"> Constants</li>
           </ul>
         </div>
         """

@@ -349,9 +349,20 @@ ul.nobullet {
 }
 .input_nav li {
   display: inline;
+  font-weight:bold;
   list-style: none;
   cursor: hand;
   cursor: pointer;
+}
+.error{
+  border-color: #F78181;
+  color:red;
+}
+.tabUnsel {
+  color: #1F262A;
+}
+.tabSel {
+  color: #4289AA;
 }
 .articles_output {
   width: 827px;

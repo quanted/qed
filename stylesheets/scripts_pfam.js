@@ -348,14 +348,14 @@ $(document).ready(function() {
                 required : true,
                 sciFormat: true,
                 positiveNumber: true
-            }       
+            }
         }
     });
     
     $('li.Chemical').click(function(){
         curr_ind = 0;
-        $('li.Chemical').css({'color': '#FFA500'});
-        $('li.Application, li.Location, li.Floods, li.Crop, li.Physical, li.Output').css({'color': '#333333'});
+        $(this).addClass('tabSel').removeClass('tabUnsel');
+        $('li.Application, li.Location, li.Floods, li.Crop, li.Physical, li.Output').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_Chemical').show();
         $(".back").hide();
@@ -365,8 +365,8 @@ $(document).ready(function() {
 
     $('li.Application').click(function(){
         curr_ind = 1;
-        $('li.Application').css({'color': '#FFA500'});
-        $('li.Chemical, li.Location, li.Floods, li.Crop, li.Physical, li.Output').css({'color': '#333333'});
+        $(this).addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Location, li.Floods, li.Crop, li.Physical, li.Output').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_Application').show();
         $(".back").show();
@@ -376,8 +376,8 @@ $(document).ready(function() {
 
     $('li.Location').click(function(){
         curr_ind = 2;
-        $('li.Location').css({'color': '#FFA500'});
-        $('li.Chemical, li.Application, li.Floods, li.Crop, li.Physical, li.Output').css({'color': '#333333'});
+        $(this).addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Application, li.Floods, li.Crop, li.Physical, li.Output').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_Location').show();
         $(".back").show();
@@ -387,8 +387,8 @@ $(document).ready(function() {
 
     $('li.Floods').click(function(){
         curr_ind = 3;
-        $('li.Floods').css({'color': '#FFA500'});
-        $('li.Chemical, li.Application, li.Location, li.Crop, li.Physical, li.Output').css({'color': '#333333'});
+        $(this).addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Application, li.Location, li.Crop, li.Physical, li.Output').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_Floods').show();
         $(".back").show();
@@ -398,8 +398,8 @@ $(document).ready(function() {
 
     $('li.Crop').click(function(){
         curr_ind = 4;
-        $('li.Crop').css({'color': '#FFA500'});
-        $('li.Chemical, li.Application, li.Location, li.Floods, li.Physical, li.Output').css({'color': '#333333'});
+        $(this).addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Application, li.Location, li.Floods, li.Physical, li.Output').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_Crop').show();
         $(".back").show();
@@ -409,8 +409,8 @@ $(document).ready(function() {
 
     $('li.Physical').click(function(){
         curr_ind = 5;
-        $('li.Physical').css({'color': '#FFA500'});
-        $('li.Chemical, li.Application, li.Location, li.Floods, li.Crop, li.Output').css({'color': '#333333'});
+        $(this).addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Application, li.Location, li.Floods, li.Crop, li.Output').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_Physical').show();
         $(".back").show();
@@ -420,8 +420,8 @@ $(document).ready(function() {
 
     $('li.Output').click(function(){
         curr_ind = 6;
-        $('li.Output').css({'color': '#FFA500'});
-        $('li.Chemical, li.Application, li.Location, li.Floods, li.Crop, li.Physical').css({'color': '#333333'});
+        $(this).addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Application, li.Location, li.Floods, li.Crop, li.Physical').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_Output').show();
         $(".back").show();
@@ -443,10 +443,10 @@ $(document).ready(function() {
         if (curr_ind < 6) {
             if (curr_ind == 1) {
             $(".tab:visible").hide();
-            $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
+            $("." + uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel') //unhighlight previous tabs
             curr_ind = curr_ind + 1;
             $("." + tab_pool[curr_ind]).show();
-            $("." + uptab_pool[curr_ind]).css({ 'color': '#FFA500'}); //highlight current tabs
+            $("." + uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel'); //highlight current tabs
             $(".tab_noa1").show();
             $(".submit").hide();
             $(".back").show();      
@@ -454,10 +454,10 @@ $(document).ready(function() {
                 
             else{   
             $(".tab:visible").hide();
-            $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
+            $("." + uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel') //unhighlight previous tabs
             curr_ind = curr_ind + 1;
             $("." + tab_pool[curr_ind]).show();
-            $("." + uptab_pool[curr_ind]).css({ 'color': '#FFA500'}); //highlight current tabs
+            $("." + uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel'); //highlight current tabs
             $(".submit").hide();
             $(".back").show();
             }
@@ -473,10 +473,10 @@ $(document).ready(function() {
             
             if (curr_ind == 1) {
             $(".tab:visible").hide();
-            $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
+            $("." + uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel') //unhighlight previous tabs
             curr_ind = curr_ind - 1;
             $("." + tab_pool[curr_ind]).show();
-            $("." + uptab_pool[curr_ind]).css({ 'color': '#FFA500'}); //highlight current tabs            
+            $("." + uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel'); //highlight current tabs            
             $(".tab_noa1").show();
             $(".submit").hide();
             $(".next").show();      
@@ -484,10 +484,10 @@ $(document).ready(function() {
                 
             else{
             $(".tab:visible").hide();
-            $("." + uptab_pool[curr_ind]).css({ 'color': '#333333'}); //unhighlight previous tabs
+            $("." + uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel') //unhighlight previous tabs
             curr_ind = curr_ind - 1;
             $("." + tab_pool[curr_ind]).show();
-            $("." + uptab_pool[curr_ind]).css({ 'color': '#FFA500'}); //highlight current tabs            
+            $("." + uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel'); //highlight current tabs            
             $(".submit").hide();
             $(".next").show();
             }

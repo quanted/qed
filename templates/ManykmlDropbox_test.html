@@ -122,6 +122,19 @@ function initialize() {
 	var IUCN_MarineFish_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_MarineFish/"+IUCN_MarineFish
 	var IUCN_MarineFishLayer = new google.maps.KmlLayer(IUCN_MarineFish_link,{suppressInfoWindows: true})
 	IUCN_MarineFishLayer.setMap(map);
+
+
+	// Creating overlays for USWFS Polygon
+	var USFWS_p = $('#USFWS_p').text()+ '.kmz';
+	var USFWS_p_link = "https://s3.amazonaws.com/esmapping_kmz/USFWS_p/"+USFWS_p
+	var USFWS_pLayer = new google.maps.KmlLayer(USFWS_p_link,{suppressInfoWindows: true})
+	USFWS_pLayer.setMap(map);	
+
+	// Creating overlays for USFWS Line
+	var USFWS_l = $('#USFWS_l').text()+ '.kmz';
+	var USFWS_l_link = "https://s3.amazonaws.com/esmapping_kmz/USFWS_l/"+USFWS_l
+	var USFWS_lLayer = new google.maps.KmlLayer(USFWS_l_link,{suppressInfoWindows: true})
+	USFWS_lLayer.setMap(map);
 };
 
 google.maps.event.addDomListener(window, 'load', initialize);

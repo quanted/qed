@@ -8,7 +8,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import django
 from django import forms
-from przm5 import przm5db
+from przm5 import przm5_parameters
 
 class przm5InputPage(webapp.RequestHandler):
     def get(self):
@@ -19,7 +19,7 @@ class przm5InputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start.html', {
                 'model':'przm5', 
                 'model_attributes':'PRZM 5 Inputs'})
-        html = html + str(przm5db.przm5Inp())
+        html = html + str(przm5_parameters.przm5Inp_chem())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
@@ -31,4 +31,4 @@ def main():
     run_wsgi_app(app)
 
 if __name__ == '__main__':
-    main()
+    main()

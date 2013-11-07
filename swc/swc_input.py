@@ -8,7 +8,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import django
 from django import forms
-from swc import swcdb
+from swc import swc_parameters
 from uber import uber_lib
 
 class swcInputPage(webapp.RequestHandler):
@@ -16,13 +16,34 @@ class swcInputPage(webapp.RequestHandler):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie)
+        html = html + template.render (templatepath + 'swc-jquery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'swc','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {
+        html = html + template.render(templatepath + '04uberinput_start_tabbed.html', {
                 'model':'swc', 
                 'model_attributes':'Surface Water Calculator Inputs'})
-        html = html + str(swcdb.swcInp())
-        html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
+        html = html + """
+        <div class="input_nav">
+            <ul>
+                <li class="Chemical tabSel">Chemical </li>
+                |<li class="Applications tabUnsel"> Applications </li>
+                |<li class="CropLand tabUnsel"> Crop/Land </li>
+                |<li class="Runoff tabUnsel"> Runoff </li>
+                |<li class="WaterBody tabUnsel"> Water Body </li>
+            </ul>
+        </div>
+        """
+        html = html + """<br><table class="tab tab_Chemical" border="0">"""
+        html = html + str(swc_parameters.swcInp_chem())
+        html = html + """</table><table class="tab tab_Applications" border="0" style="display:none">"""
+        html = html + str(swc_parameters.swcInp_appl())
+        html = html + """</table><table class="tab tab_CropLand" border="0" style="display:none">"""
+        html = html + str(swc_parameters.swcInp_cropland())
+        html = html + """</table><table class="tab tab_Runoff" border="0" style="display:none">"""
+        html = html + str(swc_parameters.swcInp_runoff())
+        html = html + """</table><table class="tab tab_WaterBody" border="0" style="display:none">"""
+        html = html + str(swc_parameters.swcInp_waterbody())
+        html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

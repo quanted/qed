@@ -14,8 +14,8 @@ class swcInp_chem(forms.Form):
 	# Chemical Tab
     chemical_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}))
     sorp_K = forms.FloatField(required=True,label='Sorption Coefficient (mL/g)')
-    unit = (('1','Koc'),('0','Kd'))
-    sorp_K_unit = forms.ChoiceField(required=True,widget=forms.RadioSelect,label='Sorption Coefficient Type', choices=unit)
+    unit = ((1,'Koc'),(0,'Kd'))
+    sorp_K_unit = forms.ChoiceField(required=True,label='Sorption Coefficient Type',choices=unit,initial='Koc')
     wc_hl = forms.FloatField(required=True,label='Water Column Metabolism Halflife (day)')
     w_temp = forms.FloatField(required=True,label=mark_safe('Water Reference Temperature (&deg;C)'))
     bm_hl = forms.FloatField(required=True,label='Benthic Metabolism Halflife (day)')

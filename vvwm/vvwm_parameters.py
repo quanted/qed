@@ -80,3 +80,8 @@ class vvwmInp_waterbody(forms.Form):
  #    xHydro
 
  #    flow_averaging
+
+
+def form():
+    out = vvwmInp_chem()
+    return out

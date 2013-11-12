@@ -31,12 +31,16 @@ class vvwmInputPage(webapp.RequestHandler):
             </ul>
         </div>
         """
-        html = html + """<br><table class="tab tab_Chemical" border="0">"""
-        html = html + str(vvwm_parameters.vvwmInp_chem())
+        html = html + """
+        <br><table class="tab tab_Chemical">
+            %s
+        """%vvwm_parameters.form()
+        # html = html + """<br><table class="tab tab_Chemical">"""
+        # html = html + str(vvwm_parameters.form.as_p)
         html = html + """</table><table class="tab tab_Applications" border="0" style="display:none">"""
-        html = html + str(vvwm_parameters.vvwmInp_appl())
+        # html = html + str(vvwm_parameters.vvwmInp_appl())
         html = html + """</table><table class="tab tab_WaterBody" border="0" style="display:none">"""
-        html = html + str(vvwm_parameters.vvwmInp_waterbody())
+        # html = html + str(vvwm_parameters.vvwmInp_waterbody())
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

@@ -11,11 +11,6 @@ $(document).ready(function() {
     }, 500);
     $('#topheader_p p, .logreg').fadeIn(500);
   });
-  // BlockUI setup
-  var browserWidth = $(window).width();
-  var browserHeight = $(window).height();
-  var winleft = (browserWidth / 2) - 220 + "px";
-  var wintop = (browserHeight / 2) - 30 + "px";
   // BlockUI on QAQC
   $("a[class^='fadeQAQC']").click(function (e) {
     e.preventDefault();
@@ -26,15 +21,12 @@ $(document).ready(function() {
       });
     });
       var retStatus;
-      var currPage = pathSlice.slice(0, -5).split('_');
-      var model = currPage[0];
       $.ajax({
           cache: false,
           complete: function(xhr) { 
             retStatus = xhr.status;
           },
           success: function() {
-            // $.unblockUI();
             window.location.href = model+"_qaqc.html";
           },
           error: function() {
@@ -43,7 +35,7 @@ $(document).ready(function() {
           }
         });
       if(retStatus == 200)
-            return false;
+          return false;
       else
           return true;
   });

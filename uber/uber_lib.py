@@ -3,6 +3,7 @@
 import webapp2 as webapp
 from google.appengine.ext.webapp import template
 import os
+import inspect
 
 # Check Cookie
 # class ChkCookieClass(webapp.RequestHandler):
@@ -23,3 +24,10 @@ def SkinChkMain(ChkCookie):
     else:
         html = template.render(templatepath + '01uberheader_main.html', {'title':'Ubertool'})
     return html
+
+def inspectTest():
+    inspectTestVar = inspect.getmodule(frm[0]).__name__
+    test = """
+    <p>BLAH BLAH BLAH: %s</p>
+    """%inspectTestVar
+    return test

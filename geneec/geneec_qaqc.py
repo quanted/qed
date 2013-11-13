@@ -103,7 +103,6 @@ class geneecQaqcPage(webapp.RequestHandler):
         html = html + geneec_tables.timestamp()
         html = html + geneec_tables.table_all_qaqc(geneec_obj)
         html = html + template.render(templatepath + 'export.html', {})
-        # html = html + template.render(templatepath + '04uberqaqc_jquery.html', {}) 
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

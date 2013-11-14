@@ -73,8 +73,9 @@ def gett1data(agdrift_obj):
 def gett2data(agdrift_obj):
     #logger.info(vars(iec_obj))
     data = { 
-        "Parameter": ['Spray drift fraction of applied', 'Initial Average Deposition (g/ha)', 'Initial Average Deposition (lb/ac)', 'Initial Average Concentration (ng/L)', 'Initial Average Deposition (mg/cm2)',],
-        "Value": ['%.2f' % agdrift_obj.init_avg_dep_foa,'%.2e' % agdrift_obj.avg_depo_gha,'%.2f' % agdrift_obj.avg_depo_lbac, '%.2f' % agdrift_obj.deposition_ngL, '%.2f' % agdrift_obj.deposition_mgcm],
+        "Parameter": ['Spray drift fraction of applied', 'Initial Average Deposition (g/ha)', 'Initial Average Deposition (lb/ac)', 'Initial Average Concentration (ng/L)', 'Initial Average Deposition (mg/cm2)', 'Distance to Point or Waterbody (ft)',],
+        # "Value": ['%.3f' % agdrift_obj.init_avg_dep_foa,'%.3f' % agdrift_obj.avg_depo_gha,'%.3f' % agdrift_obj.avg_depo_lbac, '%.3f' % agdrift_obj.deposition_ngL, '%.3f' % agdrift_obj.deposition_mgcm,],
+        "Value": ['%.3f' % agdrift_obj.init_avg_dep_foa,'%.3f' % agdrift_obj.avg_depo_gha,'%.3f' % agdrift_obj.avg_depo_lbac, '%.3f' % agdrift_obj.deposition_ngL, '%.3f' % agdrift_obj.deposition_mgcm, '%.d' % agdrift_obj.distance,],
     }
     return data
 

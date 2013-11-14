@@ -21,7 +21,7 @@ def fromJSON(json_string):
     return agdrift_object
 
 class agdrift(object):
-    def __init__(self, set_variables=True, run_methods=True, drop_size = '', ecosystem_type = '', application_method = '', boom_height = '', orchard_type = '', application_rate='', distance_aqua='', distance_terr='', aquatic_type='', vars_dict=None):
+    def __init__(self, set_variables=True, run_methods=True, drop_size = '', ecosystem_type = '', application_method = '', boom_height = '', orchard_type = '', application_rate='', distance='',  aquatic_type='', calculation_input='', init_avg_dep_foa='', avg_depo_gha='', avg_depo_lbac='', deposition_ngL='', deposition_mgcm='', vars_dict=None):
         self.set_default_variables()
         if set_variables:
             if vars_dict != None:
@@ -33,9 +33,14 @@ class agdrift(object):
                 self.boom_height = boom_height
                 self.orchard_type = orchard_type
                 self.application_rate = application_rate
-                self.distance_aqua = distance_aqua
-                self.distance_terr = distance_terr
+                self.distance = distance
                 self.aquatic_type = aquatic_type
+                self.calculation_input = calculation_input
+                self.init_avg_dep_foa = init_avg_dep_foa
+                self.avg_depo_gha = avg_depo_gha
+                self.avg_depo_lbac = avg_depo_lbac
+                self.deposition_ngL = deposition_ngL
+                self.deposition_mgcm = deposition_mgcm
             if run_methods:
                 self.run_methods()
                 logger.info(vars(self))
@@ -50,9 +55,9 @@ class agdrift(object):
         self.boom_height = ''
         self.orchard_type = ''
         self.application_rate = ''
-        self.distance_aqua = ''
-        self.distance_terr = ''
+        self.distance = ''
         self.aquatic_type = ''
+        self.calculation_input = ''
         self.init_avg_dep_foa = -1
         self.avg_depo_lbac = -1
         self.avg_depo_gha  = -1
@@ -60,24 +65,66 @@ class agdrift(object):
         self.deposition_mgcm = -1
 
 
-
-    def set_variables(self, drop_size, ecosystem_type, application_method, boom_height, orchard_type, application_rate, distance_aqua, distance_terr, aquatic_type):
+    def set_variables(self, drop_size, ecosystem_type, application_method, boom_height, orchard_type, application_rate, distance, aquatic_type, calculation_input, init_avg_dep_foa, avg_depo_gha, avg_depo_lbac, deposition_ngL, deposition_mgcm):
         self.drop_size = drop_size
         self.ecosystem_type = ecosystem_type 
         self.application_method = application_method
         self.boom_height = boom_height
         self.orchard_type = orchard_type  
         self.application_rate = application_rate
-        self.distance_aqua = distance_aqua
-        self.distance_terr = distance_terr
+        self.distance = distance
         self.aquatic_type = aquatic_type
+        self.calculation_input = calculation_input
+        self.init_avg_dep_foa = init_avg_dep_foa
+        self.avg_depo_gha = avg_depo_gha
+        self.avg_depo_lbac = avg_depo_lbac
+        self.deposition_ngL = deposition_ngL
+        self.deposition_mgcm = deposition_mgcm
     def run_methods(self):
         self.results()
-        self.extrapolate_from_fig(self.ecosystem_type, self.distance_aqua, self.distance_terr, bisect_right, self.x, self.y)
-        self.deposition_lbac_f(self.init_avg_dep_foa, self.application_rate)
-        self.deposition_gha_f(self.avg_depo_lbac)
-        self.deposition_ngL_f(self.ecosystem_type, self.avg_depo_gha)
-        self.deposition_mgcm_f(self.ecosystem_type, self.avg_depo_gha)
+        if (self.calculation_input == 'Distance' ):
+            self.extrapolate_from_fig(self.ecosystem_type, self.distance, bisect_left, self.x, self.y)
+            self.deposition_foa_to_lbac_f(self.init_avg_dep_foa, self.application_rate)
+            self.deposition_lbac_to_gha_f(self.avg_depo_lbac)
+            self.deposition_gha_to_ngL_f(self.aquatic_type, self.avg_depo_gha)
+            self.deposition_gha_to_mgcm_f(self.avg_depo_gha)
+
+        elif (self.calculation_input == 'Fraction'):
+            self.extrapolate_from_fig2(self.ecosystem_type, self.init_avg_dep_foa, bisect_left, self.x, self.y)
+            self.deposition_foa_to_lbac_f(self.init_avg_dep_foa, self.application_rate)
+            self.deposition_lbac_to_gha_f(self.avg_depo_lbac)
+            self.deposition_gha_to_ngL_f(self.aquatic_type, self.avg_depo_gha)
+            self.deposition_gha_to_mgcm_f(self.avg_depo_gha)
+
+        elif (self.calculation_input == 'Initial Average Deposition (g/ha)'):
+            self.deposition_ghac_to_lbac_f(self.avg_depo_gha)
+            #print self.avg_depo_lbac 
+            self.deposition_lbac_to_foa_f(self.avg_depo_lbac, self.application_rate)
+            self.extrapolate_from_fig2(self.ecosystem_type, self.init_avg_dep_foa, bisect_left, self.x, self.y)
+            self.deposition_gha_to_ngL_f(self.aquatic_type, self.avg_depo_gha)
+            self.deposition_gha_to_mgcm_f(self.avg_depo_gha)
+
+        elif (self.calculation_input == 'Initial Average Deposition (lb/ac)'):     
+            print self.avg_depo_lbac
+            self.deposition_lbac_to_gha_f(self.avg_depo_lbac)
+            self.deposition_gha_to_ngL_f(self.aquatic_type, self.avg_depo_gha)
+            self.deposition_gha_to_mgcm_f(self.avg_depo_gha)
+            self.deposition_lbac_to_foa_f(self.avg_depo_lbac, self.application_rate)
+            self.extrapolate_from_fig2(self.ecosystem_type, self.init_avg_dep_foa, bisect_left, self.x, self.y)
+
+        elif (self.calculation_input == 'Initial Average Concentration (ng/L)'):
+            self.deposition_ngL_2_gha_f(self.deposition_ngL)
+            self.deposition_ghac_to_lbac_f(self.avg_depo_gha)
+            self.deposition_lbac_to_foa_f(self.avg_depo_lbac, self.application_rate)
+            self.extrapolate_from_fig2(self.ecosystem_type, self.init_avg_dep_foa, bisect_left, self.x, self.y)
+            self.deposition_gha_to_mgcm_f(self.avg_depo_gha)
+
+        else:  
+            self.deposition_mgcm_to_gha_f(self.deposition_mgcm)
+            self.deposition_ghac_to_lbac_f(self.avg_depo_gha)
+            self.deposition_lbac_to_foa_f(self.avg_depo_lbac, self.application_rate)
+            self.extrapolate_from_fig2(self.ecosystem_type, self.init_avg_dep_foa, bisect_left, self.x, self.y)
+            self.deposition_gha_to_ngL_f(self.aquatic_type, self.avg_depo_gha)
 
     def results(self):
         self.pond_ground_high_vf2f = [0.0616,0.0572,0.0455,0.0376,0.0267,0.0194,0.013,0.0098,0.0078,0.0064,0.0053,0.0046,0.0039,0.0035,0.003,0.0027,0.0024,0.0022,0.002,0.0018,0.0017,0.0015,0.0014,0.0013,0.0012]
@@ -186,58 +233,91 @@ class agdrift(object):
             self.y = 3
         return self.x, self.y
 
-    def extrapolate_from_fig(self, ecosystem_type, distance_aqua, distance_terr, bisect_right, x, y):
-        if (self.ecosystem_type == 'EPA Pond'):
-            a = self.distance_aqua
+    def extrapolate_from_fig(self, ecosystem_type, distance, bisect_left, x, y): 
+        self.distance = int(self.distance)   
+        if self.distance in self.x:
+            y_index = x.index(self.distance)
+            self.init_avg_dep_foa = self.y[y_index] 
         else:
-            a = self.distance_terr  
-        a = int(a)   
-        if a in self.x:
-            y_index = x.index(a)
-            self.init_avg_dep_foa = self.y[y_index]
-            print(self.init_avg_dep_foa)    
-        else:
-            i= bisect_left(self.x, a) #find largest distance closest to value
-        #if i:
-        #print a
-        #print self.x
-        #print i
+            i= bisect_left(self.x, self.distance) #find largest distance closest to value
             low1 = self.x[i-1] #assign nearest lowest x value for interpolation
-        #print low1
             high1 = self.x[i] #assign nearest highest x value for interpolation
-        #print high1
             low_i = i-1    #assign index values to use to find nearest y values for interpolation            
             high_i = i      #assign index values to use to find nearest y values for interpolation
-        #print low_i
-        #print high_i
-        
-        #raise ValueError
-            self.init_avg_dep_foa = ((a - low1) * (self.y[high_i] - self.y[low_i]) / (high1 - low1)) + self.y[low_i]
-        #print(self.init_avg_dep_foa)
+            self.init_avg_dep_foa = ((self.distance - low1) * (self.y[high_i] - self.y[low_i]) / (high1 - low1)) + self.y[low_i]
         return self.init_avg_dep_foa
+       
+    def extrapolate_from_fig2(self, ecosystem_type, init_avg_dep_foa, bisect_left, x, y):
+        self.init_avg_dep_foa = float(self.init_avg_dep_foa)
+        if self.init_avg_dep_foa in self.y:
+            x_index = y.index(self.init_avg_dep_foa)
+            self.distance = self.x[x_index]    
+        else:
+            i = min(enumerate(self.y), key=lambda x: abs(x[1]-self.init_avg_dep_foa)) #finds smallest closest value closest to input value
+            #i = bisect_left(self.y, self.init_avg_dep_foa) #find largest foa closest to value
+            #print self.y
+            #print self.init_avg_dep_foa
+            #print i[0]
+            #print i[1]
+            i2 = i[0]
+            low1 = self.y[i2] #assign nearest lowest x value for interpolation
+            high1 = self.y[i2-1] #assign nearest highest x value for interpolation
+            low_i = i2    #assign index values to use to find nearest y values for interpolation            
+            high_i = i2-1      #assign index values to use to find nearest y values for interpolation
+            print self.y
+            print low1
+            print high1
+            print low_i
+            print high_i
+            self.distance = ((self.init_avg_dep_foa - low1) * (self.x[high_i] - self.x[low_i]) / (high1 - low1)) + self.x[low_i]
+        return self.distance
 
-    def deposition_lbac_f(self, init_avg_dep_foa, application_rate):
+    def deposition_foa_to_lbac_f(self, init_avg_dep_foa, application_rate):
         self.application_rate = float(self.application_rate)
-        self.avg_depo_lbac = self.init_avg_dep_foa * self.application_rate * 1000
+        self.avg_depo_lbac = self.init_avg_dep_foa * self.application_rate 
         #print self.avg_depo_lbac
         return self.avg_depo_lbac
 
-    def deposition_gha_f(self, avg_depo_lbac):
-        self.avg_depo_gha = self.avg_depo_lbac * (0.0022046) / 2.4711
+    def deposition_lbac_to_gha_f(self, avg_depo_lbac):
+        self.avg_depo_lbac = float(self.avg_depo_lbac)
+        self.avg_depo_gha = self.avg_depo_lbac * (453.592) / 0.404686
         #print self.avg_depo_gha
         return self.avg_depo_gha    
+    def deposition_gha_to_ngL_f(self, aquatic_type, avg_depo_gha):
+        if (self.aquatic_type == '1'):
 
-    def deposition_ngL_f(self, ecosystem_type, avg_depo_gha):
-        if (ecosystem_type == 'EPA Pond'):
             self.deposition_ngL = self.avg_depo_gha * 0.05 * 1000
         else:
             self.deposition_ngL = self.avg_depo_gha * 0.05 * 1000 * (6.56 / 0.4921)
-            print self.deposition_ngL
         return self.deposition_ngL
 
-    def deposition_mgcm_f(self, ecosystem_type, avg_depo_gha):
+    def deposition_gha_to_mgcm_f(self, avg_depo_gha):
         self.deposition_mgcm = self.avg_depo_gha * 0.00001
         return self.deposition_mgcm
+
+    def deposition_ngL_2_gha_f(self, deposition_ngL):
+        self.deposition_ngL =float(self.deposition_ngL)
+        if (self.aquatic_type == '1'):
+            self.avg_depo_gha = self.deposition_ngL / (0.05 * 1000)
+        else:
+            self.avg_depo_gha = ((self.deposition_ngL / 6.56) * 0.4921) / (0.05 * 1000)
+        return self.avg_depo_gha    
+
+    def deposition_ghac_to_lbac_f(self, avg_depo_gha):
+        self.avg_depo_gha = float(self.avg_depo_gha)
+        self.avg_depo_lbac = (self.avg_depo_gha * 0.00220462 / 2.47105 ) 
+        return self.avg_depo_lbac    
+
+    def deposition_lbac_to_foa_f(self, avg_depo_lbac, application_rate):
+        self.application_rate = float(self.application_rate)
+        self.init_avg_dep_foa =  self.avg_depo_lbac / self.application_rate  
+        return self.init_avg_dep_foa
+
+    def deposition_mgcm_to_gha_f(self, deposition_mgcm):
+        self.deposition_mgcm = float(self.deposition_mgcm)
+        self.avg_depo_gha = self.deposition_mgcm /  0.00001 
+        return self.avg_depo_gha
+
 
 
 

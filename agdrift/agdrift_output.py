@@ -19,14 +19,24 @@ from django.template import Context, Template
 class agdriftOutputPage(webapp.RequestHandler):
     def post(self):        
         form = cgi.FieldStorage()   
+       # args={}
+        #for keys in form:
+        #    args[keys]=form.getvalue(keys)
         drop_size = form.getvalue('drop_size')
         ecosystem_type = form.getvalue('ecosystem_type')
         application_method = form.getvalue('application_method')
         boom_height = form.getvalue('boom_height')
         orchard_type = form.getvalue('orchard_type')
-        agdrift_obj = agdrift_model.agdrift(True, True, drop_size, ecosystem_type, application_method, boom_height, orchard_type)
-
-
+        application_rate = form.getvalue('application_rate')
+        aquatic_type = form.getvalue('aquatic_type')
+        distance = form.getvalue('distance')
+        calculation_input = form.getvalue('calculation_input')
+        init_avg_dep_foa = form.getvalue('init_avg_dep_foa')
+        avg_depo_gha = form.getvalue('avg_depo_gha')
+        avg_depo_lbac = form.getvalue('avg_depo_lbac')
+        deposition_ngL = form.getvalue('deposition_ngL')
+        deposition_mgcm = form.getvalue('deposition_mgcm')
+        agdrift_obj = agdrift_model.agdrift(True, True, drop_size, ecosystem_type, application_method, boom_height, orchard_type, application_rate, distance, aquatic_type, calculation_input, init_avg_dep_foa, avg_depo_gha, avg_depo_lbac, deposition_ngL, deposition_mgcm)
         text_file = open('agdrift/agdrift_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'

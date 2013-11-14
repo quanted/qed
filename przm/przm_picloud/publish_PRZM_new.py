@@ -19,7 +19,8 @@ def PRZM(noa, met, inp, run,  MM, DD, YY, CAM_f, DEPI_text, Ar_text, EFF, Drft):
    
     return ff
  
-cloud.rest.publish(func=PRZM, label='PRZM_s1_new', _env='t-fortran77-test', _type='s1', _profile=True )
+cloud.rest.publish(func=PRZM, label='PRZM_s1_new', _env='t-fortran77-test', _type='s1', _profile=True)
 
 
 
+# , _kill_process=True

@@ -153,10 +153,10 @@ def gett2data(geneec_obj):
     }
     return data
 
-def gett2data_qaqc(final_res, geneec_obj):
+def gett2data_qaqc(geneec_obj):
     data = { 
         "Parameter": [ 'Peak GEEC','Maximum 4-day Average GEEC','Maximum 21-day Average GEEC','Maximum 60-day Average GEEC','Maximum 90-day Average GEEC' ],
-        "Value": [ '%.1f'%final_res[2][0], '%.1f'%final_res[2][1], '%.1f'%final_res[2][2], '%.1f'%final_res[2][3], '%.1f'%final_res[2][4] ],
+        "Value": [ '%.1f'%geneec_obj.output_val[0], '%.1f'%geneec_obj.output_val[1], '%.1f'%geneec_obj.output_val[2], '%.1f'%geneec_obj.output_val[3], '%.1f'%geneec_obj.output_val[4] ],
         "Expected Value": [ '%.1f'%geneec_obj.GEEC_peak_exp, '%.1f'%geneec_obj.GEEC_4avg_exp, '%.1f'%geneec_obj.GEEC_21avg_exp, '%.1f'%geneec_obj.GEEC_60avg_exp, '%.1f'%geneec_obj.GEEC_90avg_exp ],
         "Units": [ 'ppb','ppb','ppb','ppb','ppb' ]
     }
@@ -174,9 +174,9 @@ def table_all(geneec_obj):
     html_all = table1_out + table2_out
     return html_all
 
-def table_all_qaqc(geneec_obj, final_res):
+def table_all_qaqc(geneec_obj):
     table1_out = table_1_qaqc(geneec_obj)
-    table2_out = table_2_qaqc(final_res, geneec_obj)
+    table2_out = table_2_qaqc(geneec_obj)
     html_all = table1_out + table2_out
     return html_all
 
@@ -250,18 +250,18 @@ def table_2(geneec_obj):
         """
         return html
 
-def table_2_qaqc(final_res, geneec_obj):
+def table_2_qaqc(geneec_obj):
         html = """
         <H3 class="out_1 collapsible" id="section1"><span></span>Model Output</H3>
         <div class="out_">
             <H4 class="out_2 collapsible" id="section3"><span></span>Generic Expected Environmental Concentration (GEEC)</H4>
                 <div class="out_ container_output">
         """
-        t2data = gett2data_qaqc(final_res, geneec_obj)
+        t2data = gett2data_qaqc(geneec_obj)
         t2rows = gethtmlrowsfromcols(t2data,pvuheadingsqaqc)
         html = html + tmpl.render(Context(dict(data=t2rows, headings=pvuheadingsqaqc)))
         html = html + """
                 </div>
         </div>
         """
-        return html
+        return html

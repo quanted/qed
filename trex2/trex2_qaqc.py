@@ -14,6 +14,7 @@ import csv
 import sys
 sys.path.append("../trex2")
 from trex2 import trex2_model,trex2_tables
+from uber import uber_lib
 import logging
 
 logger = logging.getLogger('Trex2QaqcPage')
@@ -620,14 +621,13 @@ for row_inp in data:
 class TherpsQaqcPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'trex2','page':'qaqc'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'therps',
                 'model_attributes':'T-Rex QAQC'})
-        # print trex2_obj.__dict__.items()
-
         html = html + html_qaqc
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})

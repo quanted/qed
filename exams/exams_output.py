@@ -9,8 +9,8 @@ import cgi
 import cgitb
 cgitb.enable()
 import json
-from exams import exams_model
-from exams import exams_tables
+from exams import exams_model,exams_tables
+from uber import uber_lib
 import base64
 import urllib
 from google.appengine.api import urlfetch
@@ -96,7 +96,8 @@ class examsOutputPage(webapp.RequestHandler):
         # print final_res[2]
 
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})        
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html',  {'model':'exams','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                               
         html = html + template.render(templatepath + '04uberoutput_start.html', {

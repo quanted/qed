@@ -9,8 +9,8 @@ $(document).ready(function() {
 
     $('li.PRZM').click(function(){
         curr_ind = 0;
-        $('li.PRZM').css({'color': '#FFA500'});
-        $('li.EXAMS').css({'color': '#333333'});
+        $('li.PRZM').addClass('tabSel').removeClass('tabUnsel');
+        $('li.EXAMS').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_PRZM').show();
         $(".back").hide();
@@ -20,8 +20,8 @@ $(document).ready(function() {
 
     $('li.EXAMS').click(function(){
         curr_ind = 1;
-        $('li.EXAMS').css({'color': '#FFA500'});
-        $('li.PRZM').css({'color': '#333333'});
+        $('li.EXAMS').addClass('tabSel').removeClass('tabUnsel');
+        $('li.PRZM').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
         $('.tab_EXAMS').show();
         $(".back").show();
@@ -33,10 +33,10 @@ $(document).ready(function() {
         var tab = $(".tab:visible");
         if (curr_ind < 1) {      
             $(".tab:visible").hide();
-            $("."+ uptab_pool[curr_ind]).css({'color': '#333333'});
+            $("."+ uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel');
             curr_ind = curr_ind + 1;
             $("." + tab_pool[curr_ind]).show();
-            $("."+ uptab_pool[curr_ind]).css({'color': '#FFA500'});
+            $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
             $(".submit").hide();
             $(".back").show();
             }
@@ -49,10 +49,10 @@ $(document).ready(function() {
     $('.back').click(function () {
         if (curr_ind > 0) {
             $(".tab:visible").hide();
-            $("."+ uptab_pool[curr_ind]).css({'color': '#333333'});
+            $("."+ uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel');
             curr_ind = curr_ind - 1;
             $("." + tab_pool[curr_ind]).show();
-            $("."+ uptab_pool[curr_ind]).css({'color': '#FFA500'});
+            $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
             $(".submit").hide();
             $(".next").show();
         }
@@ -156,6 +156,14 @@ $(document).ready(function() {
 
     $('#id_Ap_m').val(1);
     $('#id_1').closest('tr').show();
+
+    $('#id_1').change(function() {
+    $('#id_5').closest('tr').hide();    
+    if ($(this).val() >= "4"){          
+        $('#id_5').closest('tr').show();
+        }
+    });
+
     $('#id_Ar').val(4);
 
 //end setup defaults////
@@ -546,3 +554,4 @@ function isDate(txtDate) {
 				}
 			})
 })
+

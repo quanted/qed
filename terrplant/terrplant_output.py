@@ -16,7 +16,7 @@ sys.path.append("../utils")
 import utils.json_utils
 sys.path.append("../terrplant")
 from terrplant import terrplant_model,terrplant_parameters,terrplant_tables
-
+from uber import uber_lib
 
 class terrplantExecutePage(webapp.RequestHandler):
     def post(self):
@@ -57,7 +57,8 @@ class terrplantExecutePage(webapp.RequestHandler):
         text_file = open('terrplant/terrplant_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'terrplant','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                                
         html = html + template.render(templatepath + '04uberoutput_start.html',{

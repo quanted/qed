@@ -16,7 +16,7 @@ import base64
 import urllib
 from google.appengine.api import urlfetch
 from datetime import datetime,timedelta
-
+from uber import uber_lib
 import sys
 lib_path = os.path.abspath('..')
 sys.path.append(lib_path)
@@ -157,7 +157,8 @@ class PFAMOutputPage(webapp.RequestHandler):
         x_ben_por = [float(i)*1000000 for i in final_res[2][8]]
         
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})        
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html',  {'model':'pfam','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                               
         html = html + template.render(templatepath + '04uberoutput_start.html', {

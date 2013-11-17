@@ -48,13 +48,6 @@ imgData_json = JSON.stringify(imgData)
     .find('input')
     .val(imgData_json);
 
-var browserWidth = $(window).width();
-var browserHeight = $(window).height();
-var winleft = (browserWidth / 2) - 220 + "px";
-var wintop = (browserHeight / 2) - 30 + "px";
-// var divTop = ($('.articles_output').height() * 0.5) - 28.5 + "px";
-var doneDiv = document.getElementById("popup");
-
     $('#pdfExport').click(function () {
 		$(document).ajaxStart(function(){
 			$.blockUI({

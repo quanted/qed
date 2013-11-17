@@ -12,13 +12,15 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 from kabam import kabam_parameters
 from django import forms
+from uber import uber_lib
 
 class KabamInputPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         text_file = open('kabam/kabam_description.txt','r')
         x = text_file.read()
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + 'kabam-jQuery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'kabam','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})
@@ -28,18 +30,18 @@ class KabamInputPage(webapp.RequestHandler):
         html = html + """
         <div class="input_nav">
           <ul>
-            <li class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </li>
-            |<li class="Avian" style="font-weight:bold"> Avian </li>
-            |<li class="Mammal" style="font-weight:bold"> Mammal </li>
-            |<li class="LargeFish" style="font-weight:bold"> Large Fish </li>
-            |<li class="MediumFish" style="font-weight:bold"> Medium Fish </li>
-            |<li class="SmallFish" style="font-weight:bold"> Small Fish </li>
-            |<li class="Filterfeeders" style="font-weight:bold"> Filter feeders </li>
-            |<li class="Invertebrates" style="font-weight:bold"> Invertebrates </li>
-            |<li class="Zooplankton" style="font-weight:bold"> Zooplankton </li>
-            |<li class="Phytoplankton" style="font-weight:bold"> Phytoplankton </li>
-            |<li class="Sediment" style="font-weight:bold"> Sediment </li>
-            |<li class="Constants" style="font-weight:bold"> Constants</li>
+            <li class="Chemical tabSel"> Chemical </li>
+            |<li class="Avian tabUnsel"> Avian </li>
+            |<li class="Mammal tabUnsel"> Mammal </li>
+            |<li class="LargeFish tabUnsel"> Large Fish </li>
+            |<li class="MediumFish tabUnsel"> Medium Fish </li>
+            |<li class="SmallFish tabUnsel"> Small Fish </li>
+            |<li class="Filterfeeders tabUnsel"> Filter feeders </li>
+            |<li class="Invertebrates tabUnsel"> Invertebrates </li>
+            |<li class="Zooplankton tabUnsel"> Zooplankton </li>
+            |<li class="Phytoplankton tabUnsel"> Phytoplankton </li>
+            |<li class="Sediment tabUnsel"> Sediment </li>
+            |<li class="Constants tabUnsel"> Constants</li>
           </ul>
         </div>
         """

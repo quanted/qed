@@ -6,9 +6,8 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import cgi
 import cgitb
-from przm import przm_model
-from przm import przm_tables
-
+from przm import przm_model,przm_tables
+from uber import uber_lib
 import logging
 logger = logging.getLogger('PRZM Model')
 
@@ -24,7 +23,8 @@ class PRZMOutputPage(webapp.RequestHandler):
         logger.info(vars(przm_obj))
 
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'przm','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {

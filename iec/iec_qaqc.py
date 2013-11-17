@@ -14,6 +14,7 @@ import csv
 import sys
 sys.path.append("../iec")
 from iec import iec_model,iec_tables
+from uber import uber_lib
 import logging
 
 logger = logging.getLogger('IECQaqcPage')
@@ -98,7 +99,8 @@ class IecQaqcPage(webapp.RequestHandler):
         text_file1 = open('iec/iec_description.txt','r')
         x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'iec','page':'qaqc'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {

@@ -2,15 +2,6 @@
 var name = 'ubercookie';
 var days = 7;
 var mouseOn, mouseOff;
-// onLoad SKin Function
-function SetSkin() {
-  var value = getCookie(name);
-  if (value != null) {
-    SetStyle(value);
-  } else {
-    SetStyle('default');
-  }
-}
 // Enable/Disable Stylesheets
 function SetStyle (value)
 {
@@ -102,36 +93,24 @@ $(document).ready(function() {
   }, function(){
     $(this).stop().animate({ color: mouseOff },500);
   });
-  // EPA Skin
+  // EPA Skin Set
   $("#epaSkin").click(function () {
-    // $("link").attr("href",function(i, val) {
-    //   var valSlice = val.slice(0,-4);
     setCookie('ubercookie','EPA',7);
-
     $(".default").prop('disabled', true);
     $(".EPA").prop('disabled', false);
-
-    // var c_value = getCookie('ubercookie');
-    $('.fadeMenu').css( {backgroundColor:'rgb(247, 249, 244)', color:'#1F262A'} );
+    $('.fadeMenu').css( {backgroundColor:'rgb(247, 249, 244)', 'color':'#1F262A'} );
     $('.articles a:link, .articles_input a:link, articles_output a:link').css( {'color':'#4289AA'} );
     mouseOff = '#4289AA';
     mouseOn = '#356697';
-      // return valSlice + c_value +".css";
-    // });
   });
-  // Default Skin
+  // Default Skin Set
   $("#defSkin").click(function () {
-    // $("link").attr("href",function(i, val) {
-    //   var valSlice = val.slice(0,-7);
       $(".default").prop('disabled', false);
       $(".EPA").prop('disabled', true);
-
       $('.fadeMenu').css( {'backgroundColor':'rgb(201,224,179)', 'color':'#333333'} );
       $('.articles a:link, .articles_input a:link, articles_output a:link').css( {'color':'#79973F'} );
       mouseOff = '#79973F';
       mouseOn = '#FFA500';
-      delCookie('ubercookie');
-    //   return valSlice + '.css';
-    // });
+      setCookie('ubercookie','default',7);
   });
 });

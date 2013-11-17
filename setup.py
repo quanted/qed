@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Jan 26 14:35:42 2012
-
-@author: jharston
-"""
 
 from disutils.core import setup
 

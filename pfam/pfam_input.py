@@ -9,27 +9,28 @@ from google.appengine.ext.webapp import template
 import django
 from django import forms
 from pfam import PFAMdb
+from uber import uber_lib
 
 class PFAMInputPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'pfam','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberinput_start_tabbed.html', {
                 'model':'pfam', 
                 'model_attributes':'PFAM Inputs'})
-
         html = html + """
         <div class="input_nav">
             <ul>
-                <li class="Chemical" style="color:#FFA500; font-weight:bold"> Chemical </li>
-                |<li class="Application" style="font-weight:bold"> Application </li>
-                |<li class="Location" style="font-weight:bold"> Location </li>
-                |<li class="Floods" style="font-weight:bold"> Floods </li>
-                |<li class="Crop" style="font-weight:bold"> Crop </li>
-                |<li class="Physical" style="font-weight:bold"> Physical </li>
-                |<li class="Output" style="font-weight:bold"> Output</li>
+                <li class="Chemical tabSel"> Chemical </li>
+                |<li class="Application tabUnsel"> Application </li>
+                |<li class="Location tabUnsel"> Location </li>
+                |<li class="Floods tabUnsel"> Floods </li>
+                |<li class="Crop tabUnsel"> Crop </li>
+                |<li class="Physical tabUnsel"> Physical </li>
+                |<li class="Output tabUnsel"> Output</li>
             </ul>
         </div>
         """
@@ -93,7 +94,7 @@ class PFAMInputPage(webapp.RequestHandler):
                                     <tr><th></th><th colspan="2"><label for="id_date_f1">Date for Event 1:</label></th>
                                         <td colspan="2"><input type="text" name="date_f1" value="MM/DD" id="id_date_f1" /></td>
                                     </tr>"""    
-                         
+
         html = html + """</table><table class="tab tab_Crop" border="0" style="display:none">"""      
         html = html + str(PFAMdb.PFAMInp_cro())                
         html = html + """</table><table class="tab tab_Physical" border="0" style="display:none">"""      

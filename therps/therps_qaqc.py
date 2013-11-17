@@ -14,6 +14,7 @@ import csv
 import sys
 sys.path.append("../therps")
 from therps import therps_model,therps_tables
+from uber import uber_lib
 import logging
 
 logger = logging.getLogger('TherpsQaqcPage')
@@ -356,7 +357,8 @@ for row in data:
 class TherpsQaqcPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'therps','page':'qaqc'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {

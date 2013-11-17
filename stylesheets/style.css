@@ -320,9 +320,20 @@ ul.nobullet {
 }
 .input_nav li {
   display: inline;
+  font-weight:bold;
   list-style: none;
   cursor: hand;
   cursor: pointer;
+}
+.error{
+  border-color: #F78181;
+  color:red;
+}
+.tabUnsel {
+  color: #333333;
+}
+.tabSel {
+  color: #FFA500;
 }
 .articles_output {
   width: 822px;

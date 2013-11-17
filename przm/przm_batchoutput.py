@@ -17,6 +17,7 @@ from google.appengine.api import urlfetch
 import keys_Picloud_S3
 import logging
 logger = logging.getLogger('PRZM Batch Model')
+from uber import uber_lib
 
 ############Provide the key and connect to the picloud####################
 api_key=keys_Picloud_S3.picloud_api_key
@@ -116,20 +117,19 @@ class przmBatchOutputPage(webapp.RequestHandler):
         form = cgi.FieldStorage()
         # thefile = form['upfile']
         thefile = form['file-0']
-
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'przm','page':'batchinput'})
-        html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberoutput_start.html', {
+        # html = template.render(templatepath + '01uberheader.html', 'title')
+        # html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'przm','page':'batchinput'})
+        # html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
+        html = template.render(templatepath + '04uberoutput_start.html', {
                 'model':'przm',
                 'model_attributes':'PRZM Batch Output'})
         html = html + przm_tables.timestamp()
         html = html + iter_html
         html = html + template.render(templatepath + 'export_fortran.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        # html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', przmBatchOutputPage)], debug=True)

@@ -27,20 +27,23 @@ class vvwmInputPage(webapp.RequestHandler):
             <ul>
                 <li class="Chemical tabSel">Chemical </li>
                 |<li class="Applications tabUnsel"> Applications </li>
+                |<li class="CropLand tabUnsel"> Crop/Land </li>
                 |<li class="WaterBody tabUnsel"> Water Body </li>
             </ul>
         </div>
         """
-        html = html + """
-        <br><table class="tab tab_Chemical">
-            %s
-        """%vvwm_parameters.form()
-        # html = html + """<br><table class="tab tab_Chemical">"""
-        # html = html + str(vvwm_parameters.form.as_p)
-        html = html + """</table><table class="tab tab_Applications" border="0" style="display:none">"""
-        # html = html + str(vvwm_parameters.vvwmInp_appl())
-        html = html + """</table><table class="tab tab_WaterBody" border="0" style="display:none">"""
-        # html = html + str(vvwm_parameters.vvwmInp_waterbody())
+        # html = html + """
+        # <br><table class="tab tab_Chemical">
+        #     %s
+        # """%vvwm_parameters.form()
+        html = html + """<br><table class="tab tab_Chemical">"""
+        html = html + str(vvwm_parameters.vvwmInp_chem())
+        html = html + """</table><table class="tab tab_Applications" style="display:none">"""
+        html = html + str(vvwm_parameters.vvwmInp_appl())
+        html = html + template.render (templatepath + 'vvwm_weatherfile.html', {})
+        html = html + str(vvwm_parameters.vvwmInp_cropland())
+        html = html + """</table><table class="tab tab_WaterBody" style="display:none">"""
+        html = html + str(vvwm_parameters.vvwmInp_waterbody())
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

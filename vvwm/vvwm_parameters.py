@@ -15,6 +15,8 @@ from django.utils.safestring import mark_safe
 class vvwmInp_chem(forms.Form):
 	# Chemical Tab
     chemical_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}))
+    # Add Degradate 1 & Degradate 2 options (checkboxes)
+        # if no checks, deg = 1; if deg1 'checked', deg = 2; if deg2 'checked', deg = 2
     sorp_K = forms.FloatField(required=True,label='Sorption Coefficient (mL/g)',initial='200')
     unit = ((1,'Koc'),(0,'Kd'))
     sorp_K_unit = forms.ChoiceField(required=True,label='Sorption Coefficient Type',choices=unit,initial='Koc')
@@ -22,25 +24,43 @@ class vvwmInp_chem(forms.Form):
     w_temp = forms.FloatField(required=True,label=mark_safe('Water Reference Temperature (&deg;C)'),initial='25')
     bm_hl = forms.FloatField(required=True,label='Benthic Metabolism Halflife (day)',initial='75')
     ben_temp = forms.FloatField(required=True,label=mark_safe('Benthic Reference Temperature (&deg;C)'),initial='25')
-    QT = forms.FloatField(required=True,label=mark_safe('EXAMS Q10 Vallues (eq. 2-133)'),initial='2')
 
     ap_hl = forms.FloatField(required=True,label='Aquatic Photolysis Metabolism Halflife (day)',initial='2.0')
     p_ref = forms.FloatField(required=True,label=mark_safe('Photolysis Ref Latitude (&deg;)'),initial='40')
     h_hl = forms.FloatField(required=True,label='Hydrolysis Halflife (day)',initial='')
+    s_hl = forms.FloatField(required=True,label='Soil Halflife (day)',initial='100')
+    s_ref = forms.FloatField(required=True,label=mark_safe('Soil Reference Temp (&deg;C)'),initial='25')
+    f_hl = forms.FloatField(required=True,label='Foliar Halflife (day)',initial='')
 
     mwt = forms.FloatField(required=True,label='MWT',initial='311')
     vp = forms.FloatField(required=True,label='Vapor Pressure (torr)',initial='8e-8')
     sol = forms.FloatField(required=True,label='Solubility (mg/L)',initial='3.3')
 
-    # Add Degradate 1 & Degradate 2 options (checkboxes)
+    QT = forms.FloatField(required=True,label=mark_safe('EXAMS Q10 Value (eq. 2-133)'),initial='2')
+    # Molar Conversion Factors
+    # wc_mcf = 
+    # ben_mcf = 
+    # p_mcf = 
+    # h_mcf = 
+    # s_mcf = 
+    # f_mcf = 
 
 class vvwmInp_appl(forms.Form):
     # Applications Tab
-    app_n = forms.FloatField(required=True,label='Number of Applications (50 max)')
+    app_nOpt =(('','Select Value'),('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6'),('7','7'),('8','8'),('9','9'),('10','10'),
+             ('11','11'),('12','12'),('13','13'),('14','14'),('15','15'),('16','16'),('17','17'),('18','18'),('19','19'),('20','20'),
+             ('21','21'),('22','22'),('23','23'),('24','24'),('25','25'),('26','26'),('27','27'),('28','28'),('29','29'),('30','30'),
+             ('31','31'),('32','23'),('33','33'),('34','34'),('35','35'),('36','36'),('37','37'),('38','38'),('39','39'),('40','40'),
+             ('41','41'),('42','24'),('43','43'),('44','44'),('45','45'),('46','46'),('47','47'),('48','48'),('49','49'),('50','50'))
+    app_n = forms.ChoiceField(required=True,choices=app_nOpt, label='Number of Applications', initial='')
     dates = (('1','Absolute Dates'),('0','Relative Dates'))
-    sorp_K_unit = forms.ChoiceField(required=True,widget=forms.RadioSelect,label='Choose Way of Entering Application Dates', choices=dates)
+    sorp_K_unit = forms.ChoiceField(required=True,label='Choose Way of Entering Application Dates', choices=dates)
     app_rate = forms.FloatField(required=True,label='Application Rate (kg/ha)')
     spray = forms.FloatField(required=True,label='Fraction of application to be applied to water body area (decimal)')
+
+class vvwmInp_cropland(forms.Form):
+    #CropLand Tab
+    scenID = forms.FloatField(required=True,label='Scenario ID')
 
 class vvwmInp_waterbody(forms.Form):
 	# Water Body Tab
@@ -82,6 +102,8 @@ class vvwmInp_waterbody(forms.Form):
  #    flow_averaging
 
 
-def form():
-    out = vvwmInp_chem()
-    return out
+
+
+# def form():
+#     out = vvwmInp_chem()
+#     return out

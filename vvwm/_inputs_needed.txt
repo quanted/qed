@@ -1,0 +1,5 @@
+VVWM requires the following input files:
+
+vvwmTransfer.txt   =>  Inputs from input page
+*.dvf              =>  Weather file (same as PRZM)
+*.zts              =>  PRZM5 output file

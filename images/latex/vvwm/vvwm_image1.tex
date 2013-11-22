@@ -1,0 +1,19 @@
+\documentclass[fleqn, oneside, 11pt]{article}%allows pdfs to be cropped and fleqn left justifies
+\usepackage{amssymb}
+\usepackage{amsmath}%sets math environment
+\usepackage[active, tightpage]{preview}%crops pdf to border of equations
+\setlength\PreviewBorder{1pt}%sets size of border
+
+\begin{document}
+\begin{preview}
+\begin{align*}%sets up equation environment so you can specify alignment with ampersands
+&m_{sed\_1} \left(\frac{ds_{sed\_1}}{dt}\right) + m_{bio\_1} \left(\frac{ds_{bio\_1}}{dt}\right) + m_{DOC\_1} \left(\frac{ds_{DOC\_1}}{dt}\right) + v_{1} \left(\frac{dc_{1}}{dt}\right) = \nonumber \\
+&-Qc_{1} - QC_{sed}s_{sed\_1} - QC_{bio}s_{bio\_1} - QC_{DOC}s_{DOC\_1} - \alpha(c_{1} - c_{2}) \nonumber \\
+&-v_{1}\mu_{photo}c_{1} - v_{1}\mu_{bio\_a1}c_{1} - v_{1}\mu_{hydr}c_{1} - v_{1}\mu_{vol}c_{1} \nonumber \\
+&-m_{sed\_1}\mu_{bio\_sed1}s_{sed\_1} - m_{bio\_1}\mu_{bio\_biota1}s_{bio\_1} \nonumber \\
+&-m_{DOC\_1}\mu_{bio\_DOC1}s_{DOC\_1} \nonumber \\
+\end{align*} 
+\end{preview}
+\end{document}
+
+

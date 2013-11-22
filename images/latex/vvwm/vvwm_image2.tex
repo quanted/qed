@@ -1,0 +1,21 @@
+\documentclass[fleqn, oneside, 11pt]{article}%allows pdfs to be cropped and fleqn left justifies
+\usepackage{amssymb}
+\usepackage{amsmath}%sets math environment
+\usepackage[active, tightpage]{preview}%crops pdf to border of equations
+\setlength\PreviewBorder{1pt}%sets size of border
+
+\begin{document}
+\begin{preview}
+\begin{align*}%sets up equation environment so you can specify alignment with ampersands
+&m_{sed\_2} \left(\frac{ds_{sed\_2}}{dt}\right) + m_{bio\_2} \left(\frac{ds_{bio\_2}}{dt}\right) + m_{DOC\_2} \left(\frac{ds_{DOC\_2}}{dt}\right) + v_{2} \left(\frac{dc_{2}}{dt}\right) = \nonumber \\
+&-v_{1}\mu_{bio\_a1}c_{2} - v_{2}\mu_{hydr\_2}C_{2} + \alpha(c_{1} - c_{2}) \nonumber \\
+&-m_{sed\_2}\mu_{bio\_sed2}s_{sed\_2} - m_{bio\_2}\mu_{bio_biota2}s_{bio_2} \nonumber \\
+&-m_{DOC\_2}\mu_{bio\_DOC2}s_{DOC\_2} \nonumber \\
+\end{align*} 
+\end{preview}
+\end{document}
+
+% convert pdf to png using imagemagick
+% convert -density 400 vvwm_image1.pdf vvwm_image1.png
+
+

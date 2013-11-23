@@ -175,6 +175,7 @@ def PRZM5_pi(pfac, snowmelt, evapDepth,
             TETD.append(float(line[7]))
 
     year_ind = [Year.index(i) for i in list(set(Year))]
+    year_ind.append(len(Year))
 
     for jj in range(len(year_ind)-1):
         PRCP_sum.append(sum(PRCP[year_ind[jj]:year_ind[jj+1]]))

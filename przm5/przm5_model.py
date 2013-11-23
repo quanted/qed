@@ -206,10 +206,13 @@ class przm5(object):
 
 
         self.NumberOfFactors = int(self.nott)
-        dvf_file_read = open(cwd+self.dvf_file,'r')
-        content = dvf_file_read.readlines()
-        self.firstyear = int(content[0][5:7])
-        self.lastyear = int(content[-1][5:7])
+        # dvf_file_read = open(cwd+self.dvf_file,'r')
+        # content = dvf_file_read.readlines()
+        # self.firstyear = int(content[0][5:7])
+        # self.lastyear = int(content[-1][5:7])
+
+        self.firstyear = 61
+        self.lastyear = 90
 
         #Record 12
         self.dayEmerge_text=int(self.Emerge_text[0:2])

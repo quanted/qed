@@ -1,0 +1,18 @@
+\documentclass[fleqn, oneside, 11pt]{article}%allows pdfs to be cropped and fleqn left justifies
+\usepackage{amssymb}
+\usepackage{amsmath}%sets math environment
+\usepackage[active, tightpage]{preview}%crops pdf to border of equations
+\setlength\PreviewBorder{1pt}%sets size of border
+
+\begin{document}
+\begin{preview}
+\begin{align*}%sets up equation environment so you can specify alignment with ampersands
+\Theta & = \frac{(m_{sed\_2}K_{sed\_2} + m_{bio\_2}K_{bio\_2} + m_{DOC\_2}K_{DOC\_2} + v_{2})}{(m_{sed\_1}K_{sed\_1} + m_{bio\_1}K_{bio\_1} + m_{DOC\_1}K_{DOC\_1} + v_{1})} \nonumber \\
+\end{align*} 
+\end{preview}
+\end{document}
+
+% convert pdf to png using imagemagick
+% convert -density 400 vvwm_image1.pdf vvwm_image1.png
+
+

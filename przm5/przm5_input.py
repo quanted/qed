@@ -7,10 +7,9 @@ import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import django
-from django import forms
 from przm5 import przm5_parameters
 import logging
-logger = logging.getLogger('SIP Model')
+logger = logging.getLogger('PRZM5 Model')
 
 class przm5InputPage(webapp.RequestHandler):
     def get(self):

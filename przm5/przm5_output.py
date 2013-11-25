@@ -16,14 +16,11 @@ logger = logging.getLogger('PRZM5 Model')
 class przm5OutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage() 
-
         args={}
         for key in form:
             args[key] = form.getvalue(key)
-
         przm5_obj = przm5_model.przm5(args)
         logger.info(vars(przm5_obj))
-
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie)    

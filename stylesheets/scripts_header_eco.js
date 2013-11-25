@@ -40,12 +40,23 @@ $(document).ready(function() {
           return true;
   });
   // BlockUI on Form Submit
-  $("input[value='Submit']").click(function (e) {
+  $("input[value='Submit']").click(function (e, form_valid) {
     e.preventDefault();
-    $.blockUI({
-      css:{ "top":""+wintop+"", "left":""+winleft+"", "padding": "30px 20px", "width": "400px", "height": "60px", "border": "0 none", "border-radius": "4px", "-webkit-border-radius": "4px", "-moz-border-radius": "4px", "box-shadow": "3px 3px 15px #333", "-webkit-box-shadow": "3px 3px 15px #333", "-moz-box-shadow": "3px 3px 15px #333" },
-      message: '<h2 class="popup_header">Processing Model Submission...</h2><br/><img src="/images/loader.gif" style="margin-top:-16px">'
-    });
-    setTimeout(function() { $('form').submit(); }, 500);
+    if (typeof ($("form").valid) == 'undefined'){
+        $.blockUI({
+          css:{ "top":""+wintop+"", "left":""+winleft+"", "padding": "30px 20px", "width": "400px", "height": "60px", "border": "0 none", "border-radius": "4px", "-webkit-border-radius": "4px", "-moz-border-radius": "4px", "box-shadow": "3px 3px 15px #333", "-webkit-box-shadow": "3px 3px 15px #333", "-moz-box-shadow": "3px 3px 15px #333" },
+          message: '<h2 class="popup_header">Processing Model Submission...</h2><br/><img src="/images/loader.gif" style="margin-top:-16px">'
+        });
+        setTimeout(function() {$('form').submit();}, 500);
+    }
+
+    if (typeof ($("form").valid) != 'undefined' && $("form").valid() != false){
+        e.preventDefault();
+        $.blockUI({
+          css:{ "top":""+wintop+"", "left":""+winleft+"", "padding": "30px 20px", "width": "400px", "height": "60px", "border": "0 none", "border-radius": "4px", "-webkit-border-radius": "4px", "-moz-border-radius": "4px", "box-shadow": "3px 3px 15px #333", "-webkit-box-shadow": "3px 3px 15px #333", "-moz-box-shadow": "3px 3px 15px #333" },
+          message: '<h2 class="popup_header">Processing Model Submission...</h2><br/><img src="/images/loader.gif" style="margin-top:-16px">'
+        });
+        setTimeout(function() {$('form').submit();}, 500);
+    }
   });
-});
+});

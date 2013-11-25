@@ -1,0 +1,34 @@
+/user/login/:userid
+POST: Decides if the password passed in the json in the body of the request (key password) is valid for the user id as the last part of the url. Returns a json document with the decision(true/false), the sessionId, expiration date time. It adds a value to the passed cookie that tells google appengine that the user is valid to view protected pages.
+/user/registration/:user_id
+POST: registers a user given the user id as the last part of the url and the password and email address passed as arguments in the json request. Returns a json document with the sessionId, expiration date time.
+/user/openid/login
+POST: Using the openId passed in the json request, retrieves the userId, sessionId, and expiration date time for the sessionID. 
+/user/sessionid
+POST: Attempts to validate a sessionId for a userId, both passed as arguments in the json request. Returns a json document with the decision(true/false), the sessionId, expiration date time.
+/batch_configs
+GET: Retrieves all the names for batch configurations in the system. No parameters are passed
+/batch
+POST: Submits a batch configuration to the asynchronous batching system via RabbitMQ.
+/batch_results/:batchId 
+GET: Retrieves the results of an ubertool batch, based on the batchId passed in the URL. Returns a hierarchical JSON data.
+POST: Similar to GET request, except that it authenticates the userId along with an apiKey (both passed as arguments in the json documents).  If authenticated to a valid user, will retrieve results.
+/cas/:cas_num
+GET: Retrieves the chemical name associated with a CAS number
+/casdata/:chemical_name
+GET: Retrieves the CAS Number and PC Code
+/all-cas
+GET: Retrieves all of the CAS Numbers
+/formula/:registration_num
+GET: Retrieves formulation data based on a registration number. This service returns PC Percentage, Product Name, and PC Code in the json response.
+/formulas/:pc_code
+GET: Retrieves all of the formulations given a PC Code. The return is a json document containing an array of data, each data record contains Registration Number, PC Percentage, Product Name, and PC Code
+/all_formula
+GET: Retrieves all of the formulations available.  The return is a json document containing an array of data, each data record contains Registration Number, PC Percentage, Product Name, and PC Code
+/ubertool/:config_type/config_names
+GET: Retrieves all configurations for a given ubertool configuration (use, pest, aqua, eco, expo, terre, ubertool). Returns a json document, with a variety of properties.
+/ubertool/:config_type/:config
+GET:  Retrieves a configuration for a given ubertool configuration (use, pest, aqua, eco, expo, terre, ubertool) based on a specific configuration ID (the last part of the url). Returns a json document, with a variety of properties.
+POST: Places an ubertool configuration into the mongo db, which can be referenced by ubertool configurations and is the basis for running an ubertool batch.
+/api-key
+GET: Retrieves an API Key, though this is not stored to a user, just a means of generating an API key.

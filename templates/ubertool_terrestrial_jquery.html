@@ -29,77 +29,92 @@ $(document).ready(function() {
 				type: 'GET',
 				success: function(terrestrial_data) {
 					$("#id_config_name")[0].value = $("#id_user_terrestrial_toxicity_configuration")[0].value;
-					$("#id_avian_ld50")[0].value = terrestrial_data['avian_ld50'];						
+					$("#id_avian_ld50")[0].value = terrestrial_data['avian_ld50'];
+					$("#id_avian_ld50_species")[0].value = terrestrial_data['avian_ld50_species'];
+					$("#id_low_bird_acute_oral_ld50")[0].value = terrestrial_data['low_bird_acute_oral_ld50'];
+					$("#id_bird_acute_oral_study")[0].value = terrestrial_data['bird_acute_oral_study'];
+					$("#id_bird_acute_oral_study_comments")[0].value = terrestrial_data['bird_acute_oral_study_comments'];
+					$("#id_avian_ld50_water")[0].value = terrestrial_data['avian_ld50_water'];				
 					$("#id_avian_lc50")[0].value = terrestrial_data['avian_lc50'];						
 					$("#id_avian_NOAEC")[0].value = terrestrial_data['avian_NOAEC'];						
-					$("#id_avian_NOAEL")[0].value = terrestrial_data['avian_NOAEL'];						
-					$("#id_body_weight_of_the_assessed_bird")[0].value = terrestrial_data['body_weight_of_the_assessed_bird'];						
+					$("#id_avian_NOAEL")[0].value = terrestrial_data['avian_NOAEL'];	
+					$("#id_Species_of_the_tested_bird")[0].value = terrestrial_data['Species_of_the_tested_bird'];	
+					$("#id_Species_of_the_tested_bird_avian_LD50")[0].value = terrestrial_data['Species_of_the_tested_bird_avian_LD50'];	
+					$("#id_Species_of_the_tested_bird_avian_LC50")[0].value = terrestrial_data['Species_of_the_tested_bird_avian_LC50'];	
+					$("#id_Species_of_the_tested_bird_avian_NOAEC")[0].value = terrestrial_data['Species_of_the_tested_bird_avian_NOAEC'];	
+					$("#id_Species_of_the_tested_bird_avian_NOAEL")[0].value = terrestrial_data['Species_of_the_tested_bird_avian_NOAEL'];
+					$("#id_body_weight_of_the_assessed_bird")[0].value = terrestrial_data['body_weight_of_the_assessed_bird'];				
+					$("#id_body_weight_of_the_assessed_bird_sm")[0].value = terrestrial_data['body_weight_of_the_assessed_bird_sm'];
+					$("#id_body_weight_of_the_assessed_bird_md")[0].value = terrestrial_data['body_weight_of_the_assessed_bird_md'];
+					$("#id_body_weight_of_the_assessed_bird_lg")[0].value = terrestrial_data['body_weight_of_the_assessed_bird_lg'];
+					$("#id_bw_quail")[0].value = terrestrial_data['bw_quail'];						
+					$("#id_bw_duck")[0].value = terrestrial_data['bw_duck'];						
+					$("#id_bwb_other")[0].value = terrestrial_data['bwb_other'];													
 					$("#id_mineau_scaling_factor")[0].value = terrestrial_data['mineau_scaling_factor'];						
-					$("#id_mammalian_ld50")[0].value = terrestrial_data['mammalian_ld50'];						
+					$("#id_m_species")[0].value = terrestrial_data['m_species'];									
+					$("#id_mammalian_ld50")[0].value = terrestrial_data['mammalian_ld50'];					
+					$("#id_ld50_m")[0].value = terrestrial_data['ld50_m'];						
 					$("#id_mammalian_lc50")[0].value = terrestrial_data['mammalian_lc50'];						
 					$("#id_mammalian_inhalation_lc50")[0].value = terrestrial_data['mammalian_inhalation_lc50'];						
-					$("#id_duration_of_rat_study")[0].value = terrestrial_data['duration_of_rat_study'];						
+					$("#id_duration_of_rat_study")[0].value = terrestrial_data['duration_of_rat_study'];
+					$("#id_mamm_acute_derm_ld50")[0].value = terrestrial_data['mamm_acute_derm_ld50'];
+					$("#id_mamm_acute_derm_study")[0].value = terrestrial_data['mamm_acute_derm_study'];
+					$("#id_mamm_study_add_comm")[0].value = terrestrial_data['mamm_study_add_comm'];
+					$("#id_mammalian_chronic_endpoint")[0].value = terrestrial_data['mammalian_chronic_endpoint'];
 					$("#id_mammalian_NOAEC")[0].value = terrestrial_data['mammalian_NOAEC'];						
-					$("#id_mammalian_NOAEL")[0].value = terrestrial_data['mammalian_NOAEL'];						
-					$("#id_amphibian_bw")[0].value = terrestrial_data['amphibian_bw'];						
-					$("#id_terrestrial_phase_amphibian_ld50")[0].value = terrestrial_data['terrestrial_phase_amphibian_ld50'];						
-					$("#id_terrestrial_phase_amphibian_lc50")[0].value = terrestrial_data['terrestrial_phase_amphibian_lc50'];						
-					$("#id_terrestrial_phase_amphibian_NOAEC")[0].value = terrestrial_data['terrestrial_phase_amphibian_NOAEC'];						
-					$("#id_terrestrial_phase_amphibian_NOAEL")[0].value = terrestrial_data['terrestrial_phase_amphibian_NOAEL'];						
-					$("#id_reptile_bw")[0].value = terrestrial_data['reptile_bw'];						
-					$("#id_terrestrial_phase_reptile_ld50")[0].value = terrestrial_data['terrestrial_phase_reptile_ld50'];						
-					$("#id_terrestrial_phase_reptile_lc50")[0].value = terrestrial_data['terrestrial_phase_reptile_lc50'];						
-					$("#id_terrestrial_phase_reptile_NOAEC")[0].value = terrestrial_data['terrestrial_phase_reptile_NOAEC'];						
-					$("#id_terrestrial_phase_reptile_NOAEL")[0].value = terrestrial_data['terrestrial_phase_reptile_NOAEL'];						
-					$("#id_EC25_for_nonlisted_seedling_emergence_monocot")[0].value = terrestrial_data['EC25_for_nonlisted_seedling_emergence_monocot'];						
-					$("#id_EC25_for_nonlisted_seedling_emergence_dicot")[0].value = terrestrial_data['EC25_for_nonlisted_seedling_emergence_dicot'];						
-					$("#id_NOAEC_for_listed_seedling_emergence_monocot")[0].value = terrestrial_data['NOAEC_for_listed_seedling_emergence_monocot'];						
-					$("#id_NOAEC_for_listed_seedling_emergence_dicot")[0].value = terrestrial_data['NOAEC_for_listed_seedling_emergence_dicot'];						
-					$("#id_EC25_for_nonlisted_vegetative_vigor_monocot")[0].value = terrestrial_data['EC25_for_nonlisted_vegetative_vigor_monocot'];						
-					$("#id_EC25_for_nonlisted_vegetative_vigor_dicot")[0].value = terrestrial_data['EC25_for_nonlisted_vegetative_vigor_dicot'];						
-					$("#id_NOAEC_for_listed_vegetative_vigor_monocot")[0].value = terrestrial_data['NOAEC_for_listed_vegetative_vigor_monocot'];						
-					$("#id_NOAEC_for_listed_vegetative_vigor_dicot")[0].value = terrestrial_data['NOAEC_for_listed_vegetative_vigor_dicot'];						
-					$("#id_Small_medium_and_large_BW_of_assessed_herptile_listed_species")[0].value = terrestrial_data['Small_medium_and_large_BW_of_assessed_herptile_listed_species'];						
-					$("#id_percent_water_content_of_small_med_large_herptile_species_diet")[0].value = terrestrial_data['percent_water_content_of_small_med_large_herptile_species_diet'];						
-					$("#id_taxonomic_group")[0].value = terrestrial_data['taxonomic_group'];																		
-					var eat_mammals = terrestrial_data['eat_mammals'];
-					//TODO These dropdown being reset may be done in a better manner
-					if(eat_mammals != null)
-					{
-						var s = document.getElementById('id_eat_mammals');
-						for(i = 0; i < s.options.length; i++)
-						{ 
-							var option = s.options[i];
-							if(option.value == eat_mammals)
-							{ 
-								option.selected = true; 
-							}
-							else
-							{
-								option.selected = false;
-							}
-							
-						}
-					}
-					var eat_amphibians_reptiles = terrestrial_data['eat_amphibians_reptiles'];
-					//TODO These dropdown being reset may be done in a better manner
-					if(eat_amphibians_reptiles != null)
-					{
-						var s = document.getElementById('id_eat_amphibians_reptiles');
-						for(i = 0; i < s.options.length; i++)
-						{ 
-							var option = s.options[i];
-							if(option.value == eat_amphibians_reptiles)
-							{ 
-								option.selected = true; 
-							}
-							else
-							{
-								option.selected = false;
-							}
-							
-						}
-					}
+					$("#id_mammalian_NOAEL")[0].value = terrestrial_data['mammalian_NOAEL'];				
+					$("#id_tested_mamm_body_weight")[0].value = terrestrial_data['tested_mamm_body_weight'];
+					$("#id_bw_rat")[0].value = terrestrial_data['bw_rat'];				
+					$("#id_bwm_other")[0].value = terrestrial_data['bwm_other'];
+					$("#id_body_weight_of_the_assessed_mammal_sm")[0].value = terrestrial_data['body_weight_of_the_assessed_mammal_sm'];
+					$("#id_body_weight_of_the_assessed_mammal_md")[0].value = terrestrial_data['body_weight_of_the_assessed_mammal_md'];			
+					$("#id_body_weight_of_the_assessed_mammal_lg")[0].value = terrestrial_data['body_weight_of_the_assessed_mammal_lg'];			
+					$("#id_terrestrial_phase_amphibian_ld50")[0].value = terrestrial_data['terrestrial_phase_amphibian_ld50'];			
+					$("#id_terrestrial_phase_amphibian_ld50_species")[0].value = terrestrial_data['terrestrial_phase_amphibian_ld50_species'];			
+					$("#id_terrestrial_phase_amphibian_ld50_bw")[0].value = terrestrial_data['terrestrial_phase_amphibian_ld50_bw'];			
+					$("#id_terrestrial_phase_amphibian_lc50")[0].value = terrestrial_data['terrestrial_phase_amphibian_lc50'];			
+					$("#id_terrestrial_phase_amphibian_lc50_species")[0].value = terrestrial_data['terrestrial_phase_amphibian_lc50_species'];			
+					$("#id_terrestrial_phase_amphibian_lc50_bw")[0].value = terrestrial_data['terrestrial_phase_amphibian_lc50_bw'];			
+					$("#id_terrestrial_phase_amphibian_NOAEC")[0].value = terrestrial_data['terrestrial_phase_amphibian_NOAEC'];		
+					$("#id_terrestrial_phase_amphibian_NOAEC_species")[0].value = terrestrial_data['terrestrial_phase_amphibian_NOAEC_species'];		
+					$("#id_terrestrial_phase_amphibian_NOAEC_bw")[0].value = terrestrial_data['terrestrial_phase_amphibian_NOAEC_bw'];		
+					$("#id_terrestrial_phase_amphibian_NOAEL")[0].value = terrestrial_data['terrestrial_phase_amphibian_NOAEL'];		
+					$("#id_terrestrial_phase_amphibian_NOAEL_species")[0].value = terrestrial_data['terrestrial_phase_amphibian_NOAEL_species'];		
+					$("#id_terrestrial_phase_amphibian_NOAEL_bw")[0].value = terrestrial_data['terrestrial_phase_amphibian_NOAEL_bw'];		
+					$("#id_terrestrial_phase_reptile_ld50")[0].value = terrestrial_data['terrestrial_phase_reptile_ld50'];		
+					$("#id_terrestrial_phase_reptile_ld50_species")[0].value = terrestrial_data['terrestrial_phase_reptile_ld50_species'];		
+					$("#id_terrestrial_phase_reptile_ld50_bw")[0].value = terrestrial_data['terrestrial_phase_reptile_ld50_bw'];		
+					$("#id_terrestrial_phase_reptile_lc50")[0].value = terrestrial_data['terrestrial_phase_reptile_lc50'];				
+					$("#id_terrestrial_phase_reptile_lc50_species")[0].value = terrestrial_data['terrestrial_phase_reptile_lc50_species'];				
+					$("#id_terrestrial_phase_reptile_lc50_bw")[0].value = terrestrial_data['terrestrial_phase_reptile_lc50_bw'];
+					$("#id_terrestrial_phase_reptile_NOAEC")[0].value = terrestrial_data['terrestrial_phase_reptile_NOAEC'];
+					$("#id_terrestrial_phase_reptile_NOAEC_species")[0].value = terrestrial_data['terrestrial_phase_reptile_NOAEC_species'];
+					$("#id_terrestrial_phase_reptile_NOAEC_bw")[0].value = terrestrial_data['terrestrial_phase_reptile_NOAEC_bw'];		
+					$("#id_terrestrial_phase_reptile_NOAEL")[0].value = terrestrial_data['terrestrial_phase_reptile_NOAEL'];		
+					$("#id_terrestrial_phase_reptile_NOAEL_species")[0].value = terrestrial_data['terrestrial_phase_reptile_NOAEL_species'];		
+					$("#id_terrestrial_phase_reptile_NOAEL_bw")[0].value = terrestrial_data['terrestrial_phase_reptile_NOAEL_bw'];	
+					$("#id_EC25_for_nonlisted_seedling_emergence_monocot")[0].value = terrestrial_data['EC25_for_nonlisted_seedling_emergence_monocot'];
+					$("#id_NOAEC_for_listed_seedling_emergence_monocot")[0].value = terrestrial_data['NOAEC_for_listed_seedling_emergence_monocot'];
+					$("#id_EC25_for_nonlisted_seedling_emergence_dicot")[0].value = terrestrial_data['EC25_for_nonlisted_seedling_emergence_dicot'];	
+					$("#id_NOAEC_for_listed_seedling_emergence_dicot")[0].value = terrestrial_data['NOAEC_for_listed_seedling_emergence_dicot'];
+					$("#id_EC25_for_nonlisted_vegetative_vigor_monocot")[0].value = terrestrial_data['EC25_for_nonlisted_vegetative_vigor_monocot'];
+					$("#id_body_weight_of_the_consumed_mammal_a")[0].value = terrestrial_data['body_weight_of_the_consumed_mammal_a'];		
+					$("#id_body_weight_of_the_consumed_herp_a")[0].value = terrestrial_data['body_weight_of_the_consumed_herp_a'];
+					$("#id_EC25_for_nonlisted_vegetative_vigor_dicot")[0].value = terrestrial_data['EC25_for_nonlisted_vegetative_vigor_dicot'];
+					$("#id_NOAEC_for_listed_vegetative_vigor_monocot")[0].value = terrestrial_data['NOAEC_for_listed_vegetative_vigor_monocot'];
+					$("#id_NOAEC_for_listed_vegetative_vigor_dicot")[0].value = terrestrial_data['NOAEC_for_listed_vegetative_vigor_dicot'];
+					$("#id_bw_herp_a_sm")[0].value = terrestrial_data['bw_herp_a_sm'];						
+					$("#id_bw_herp_a_md")[0].value = terrestrial_data['bw_herp_a_md'];						
+					$("#id_bw_herp_a_lg")[0].value = terrestrial_data['bw_herp_a_lg'];						
+					$("#id_wp_herp_a_sm")[0].value = terrestrial_data['wp_herp_a_sm'];						
+					$("#id_wp_herp_a_md")[0].value = terrestrial_data['wp_herp_a_md'];						
+					$("#id_wp_herp_a_lg")[0].value = terrestrial_data['wp_herp_a_lg'];					
+					$("#id_taxonomic_group")[0].value = terrestrial_data['taxonomic_group'];
+					$("#id_eat_mammals")[0].value = terrestrial_data['eat_mammals'];
+					$("#id_eat_amphibians_reptiles")[0].value = terrestrial_data['eat_amphibians_reptiles'];
+					$("#id_desired_threshold")[0].value = terrestrial_data['desired_threshold'];
+					$("#id_slope_of_dose_response")[0].value = terrestrial_data['slope_of_dose_response'];
+					$("#id_lc50_or_ld50")[0].value = terrestrial_data['lc50_or_ld50'];
 				}
 			});
 		}

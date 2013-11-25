@@ -515,6 +515,17 @@ $( document ).ready(function() {
 
 });
 
-var pathArray = window.location.pathname.split( '/' );
+var pathArray = window.location.pathname.split('/');
 var pathLink = pathArray[1];
 var pathSlice = pathLink.slice(0, -5);
+var defSkinSel = {backgroundColor:'rgb(255,165,0)', color:'#FFFFFF'};
+var epaSkinSel = {backgroundColor:'rgb(255,165,0)', color:'#FFFFFF'};
+// BlockUI setup
+var browserWidth = $(window).width();
+var browserHeight = $(window).height();
+var winleft = (browserWidth / 2) - 220 + "px";
+var wintop = (browserHeight / 2) - 30 + "px";
+var doneDiv = document.getElementById("popup");
+// Model name
+var currPage = pathSlice.slice(0, -5).split('_');
+var model = currPage[0];

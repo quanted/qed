@@ -1,0 +1,51 @@
+\documentclass[fleqn, oneside, 11pt]{article}%allows pdfs to be cropped and fleqn left justifies
+\usepackage{amssymb}
+\usepackage{amsmath}%sets math environment
+\usepackage[active, tightpage]{preview}%crops pdf to border of equations
+\setlength\PreviewBorder{1pt}%sets size of border
+
+\begin{document}
+\begin{preview}
+\begin{align*}%sets up equation environment so you can specify alignment with ampersands
+\text{where,} \nonumber \\
+c_{1} & = \text{aqueous concentration of pesticide in littoral zone, kg/m}^{\text{3}} \nonumber \\
+c_{2} & = \text{aqueous concentration of pesticide in benthic zone, kg/m}^{\text{3}} \nonumber \\
+c_{sed} & = \text{concentration of suspended sediment in littoral zone, kg/m}^{\text{3}} = \frac{m_{sed\_1}}{v_{1}} \nonumber \\
+c_{DOC} & = \text{concentration of dissolved organic carbon (DOC) in littoral zone, kg/m}^{\text{3}} = \frac{m_{DOC}}{v_{1}} \nonumber \\
+c_{bio} & = \text{concentration of biota in littoral zone, kg/m}^{\text{3}} = \frac{m_{bio\_1}}{v_{1}} \nonumber \\
+m_{sed\_1} & = \text{mass of suspended sediment in littoral zone, kg} \nonumber \\
+m_{DOC\_1} & = \text{mass of DOC in littoral zone, kg} \nonumber \\
+m_{bio\_1} & = \text{mass of suspended biota in littoral zone, kg} \nonumber \\
+m_{sed\_2} & = \text{mass of sediment in benthic zone, kg} \nonumber \\
+m_{DOC\_2} & = \text{mass of DOC in benthic zone, kg} \nonumber \\
+m_{bio\_2} & = \text{mass of biota in benthic zone, kg} \nonumber \\
+s_{sed\_1} & = \text{sorbed pesticide concentration on suspended sediment in littoral zone, kg/kg} \nonumber \\
+s_{DOC\_1} & = \text{sorbed pesticide concentration on suspended DOC in littoral zone, kg/kg} \nonumber \\
+s_{bio\_1} & = \text{sorbed pesticide concentration on suspended biota in littoral zone, kg/kg} \nonumber \\
+s_{sed\_2} & = \text{sorbed pesticide concentration on benthic sediment, kg/kg} \nonumber \\
+s_{DOC\_2} & = \text{sorbed pesticide concentration on benthic DOC, kg/kg} \nonumber \\
+s_{bio\_2} & = \text{sorbed pesticide concentration on benthic biota, kg/kg} \nonumber \\
+v_{1} & = \text{volume of water in littoral zone on the specific day, kg/m}^{\text{3}} \nonumber \\
+v_{2} & = \text{volume of water in benthic zone, kg/m}^{\text{3}} \nonumber \\
+Q & = \text{volumetric flow rate of water out of littoral zone, m}^{\text{3}}\text{/s} \nonumber \\
+\alpha & = \text{1}^{\text{st}}\text{\space order littoral-to-benthic mass transfer coefficient, m}^{\text{3}}\text{/s}^{\text{-1}} \nonumber \\
+\mu_{photo} & = \text{1}^{\text{st}}\text{\space order photolyisis rate coefficient, s}^{\text{-1}} \nonumber \\
+\mu_{vol} & = \text{effective 1}^{\text{st}}\text{\space order volatilization rate coefficient, s}^{\text{-1}} \nonumber \\
+\mu_{bio\_a1} & = \text{1}^{\text{st}}\text{\space order aqueous-phase metabolic degradation rate coefficient in littoral zone, s}^{\text{-1}} \nonumber \\
+\mu_{bio\_sed1} & = \text{1}^{\text{st}}\text{\space order sediment-sorbed metabolic degradation rate coefficient in littoral zone, s}^{\text{-1}} \nonumber \\
+\mu_{bio\_biota1} & = \text{1}^{\text{st}}\text{\space order biota-sorbed metabolic degradation rate coefficient in littoral zone, s}^{\text{-1}} \nonumber \\
+\mu_{bio\_DOC1} & = \text{1}^{\text{st}}\text{\space order DOC-sorbed metabolic degradation rate coefficient in littoral zone, s}^{\text{-1}} \nonumber \\
+\mu_{bio\_a2} & = \text{1}^{\text{st}}\text{\space order aqueous-phase metabolic degradation rate coefficient in benthic zone, s}^{\text{-1}} \nonumber \\
+\mu_{bio\_sed2} & = \text{1}^{\text{st}}\text{\space order sediment-sorbed metabolic degradation rate coefficient in benthic zone, s}^{\text{-1}} \nonumber \\
+\mu_{bio\_biota2} & = \text{1}^{\text{st}}\text{\space order biota-sorbed metabolic degradation rate coefficient in benthic zone, s}^{\text{-1}} \nonumber \\
+\mu_{bio\_DOC2} & = \text{1}^{\text{st}}\text{\space order DOC-sorbed metabolic degradation rate coefficient in benthic zone, s}^{\text{-1}} \nonumber \\
+\mu_{hydr\_1} & = \text{1}^{\text{st}}\text{\space order hydrolysis rate coefficient in littoral zone, s}^{\text{-1}} \nonumber \\
+\mu_{hydr\_2} & = \text{1}^{\text{st}}\text{\space order hydrolysis rate coefficient in benthic zone, s}^{\text{-1}} \nonumber \\
+\end{align*} 
+\end{preview}
+\end{document}
+
+% convert pdf to png using imagemagick
+% convert -density 400 vvwm_image1.pdf vvwm_image1.png
+
+

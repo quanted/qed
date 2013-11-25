@@ -29,12 +29,12 @@ $(document).ready(function() {
 				type: 'GET',
 				success: function(ecosys_data) {
 					$("#id_config_name")[0].value = $("#id_user_ecosystem_configuration")[0].value;
-					$("#id_concentration_of_particulate_organic_carbon")[0].value = ecosys_data['concentration_of_particulate_organic_carbon'];
-					$("#id_concentration_of_dissolved_organic_carbon")[0].value = ecosys_data['concentration_of_dissolved_organic_carbon'];
-					$("#id_concentration_of_dissolved_oxygen")[0].value = ecosys_data['concentration_of_dissolved_oxygen'];
-					$("#id_water_temperature")[0].value = ecosys_data['water_temperature'];
-					$("#id_concentration_of_suspended_solids")[0].value = ecosys_data['concentration_of_suspended_solids'];
-					$("#id_sediment_organic_carbon")[0].value = ecosys_data['sediment_organic_carbon'];
+					$("#id_x_poc")[0].value = ecosys_data['x_poc'];
+					$("#id_x_doc")[0].value = ecosys_data['x_doc'];
+					$("#id_c_ox")[0].value = ecosys_data['c_ox'];
+					$("#id_w_t")[0].value = ecosys_data['w_t'];
+					$("#id_c_ss")[0].value = ecosys_data['c_ss'];
+					$("#id_oc")[0].value = ecosys_data['oc'];
 				}
 			});
 		}
@@ -52,11 +52,12 @@ function submitConfiguration()
 		form_data[id] = val;
 	}
 	form_data['created'] = getDateTime();
+	var form_json = JSON.stringify(form_data);
 	$.ajax({
 		url:"{{ubertool_service_url}}/ubertool/eco/"+$("#id_config_name")[0].value,
 		async: true,
 		type: 'POST',
-		data: JSON.stringify(form_data)
+		data: form_json
 	});
 	window.location = "run_ubertool.html";
 

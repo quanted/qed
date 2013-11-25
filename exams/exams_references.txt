@@ -3,11 +3,10 @@ Specific EPA guidance and source code for the EXAMS model can be found here:
 </p>
 <ul class="bullet">
   <li><a href="http://www.epa.gov/oppefed1/models/water/#exams">EXAMS Documentation</a></li>
-  <li><a href="http://www.epa.gov/ceampubl/swater/exams/index.html">EXAMS Versions</a></li>
+  <li><a href="http://www2.epa.gov/exposure-assessment-models/exams-version-index">EXAMS Versions</a></li>
   <li><a href="http://www.epa.gov/ceampubl/swater/exams/exams29804/EXAMREVG.PDF">User's Guide</a></li>
-  <li><a href="http://www.epa.gov/ceampubl/swater/exams/exams2980406.html">EXAMS v2.98.04.06 Installation File</a></li>
-  <li><a href="http://www.epa.gov/ceampubl/swater/exams/exams29804.html">EXAMS v2.98.04.03 Installation File</a></li>
-  <li><a href="http://www.epa.gov/ceampubl/swater/exams/exams29804/EXAMCODE.EXE">EXAMS v2.98.04.03 Fortran Source Code</a></li>
+  <li><a href="http://www2.epa.gov/exposure-assessment-models/exams-version-2980406">EXAMS v2.98.04.06 Specifications</a></li>
+  <li><a href="http://www2.epa.gov/exposure-assessment-models/exams-version-2980403">EXAMS v2.98.04.03 Specifications</a></li>
   <li><a href="http://www.epa.gov/oppefed1/models/water/input_parameter_guidance.htm#Exams">EXAMS Input Parameter Guidance</a></li>
 </ul>
 <p>

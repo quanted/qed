@@ -15,6 +15,7 @@ import csv
 import sys
 sys.path.append("../sip")
 from sip import sip_model,sip_tables
+from uber import uber_lib
 import logging
 
 logger = logging.getLogger('SIPQaqcPage')
@@ -305,7 +306,8 @@ test_suite_chronconm_out = suite(TestCase_chronconm_out, sip_obj=sip_obj)
 class sipQaqcPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'sip','page':'qaqc'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {

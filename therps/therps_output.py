@@ -9,9 +9,8 @@ import numpy as np
 import cgi
 import cgitb
 cgitb.enable()
-from therps import therps_model
-from therps import therps_tables
-
+from therps import therps_model,therps_tables
+from uber import uber_lib
 
 class THerpsOutputPage(webapp.RequestHandler):
     def post(self):        
@@ -69,7 +68,8 @@ class THerpsOutputPage(webapp.RequestHandler):
         text_file = open('therps/therps_description.txt','r')
         x1 = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'therps','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                        
         html = html + template.render(templatepath + '04uberoutput_start.html', {

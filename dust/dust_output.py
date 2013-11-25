@@ -14,14 +14,9 @@ import sys
 sys.path.append("../utils")
 import utils.json_utils
 sys.path.append("../dust")
-from dust import dust_tables
-from dust import dust_model
-
+from dust import dust_tables,dust_model
+from uber import uber_lib
 from django.template import Context, Template
-
-# sys.path.append('C:\Python27\Lib\site-packages')
-
-# import pymongo
 from django.utils import simplejson
 
 
@@ -64,7 +59,8 @@ class DUSTExecutePage(webapp.RequestHandler):
         #     print post
             
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'dust','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                                
         html = html + template.render(templatepath + '04uberoutput_start.html', {

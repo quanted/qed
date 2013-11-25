@@ -10,6 +10,7 @@ cgitb.enable()
 from StringIO import StringIO
 import csv
 from geneec import geneec_model,geneec_tables
+from uber import uber_lib
 import json
 import base64
 import urllib
@@ -80,49 +81,7 @@ for row in data:
     GEEC_60avg.append(float(row[22]))
     GEEC_90avg.append(float(row[23]))
 
-def get_jid(geneec_obj):
-
-    url='https://api.picloud.com/r/3303/geneec_fortran_s1' 
-
-    APPRAT = geneec_obj.application_rate
-    APPNUM = geneec_obj.number_of_applications
-    APSPAC = geneec_obj.interval_between_applications
-    KOC = geneec_obj.Koc
-    METHAF = geneec_obj.aerobic_soil_metabolism
-    WETTED = json.dumps(geneec_obj.wet_in)
-    METHOD = json.dumps(geneec_obj.application_method)
-    AIRFLG = json.dumps(geneec_obj.aerial_size_dist)
-    YLOCEN = geneec_obj.no_spray_drift
-    GRNFLG = json.dumps(geneec_obj.ground_spray_type)
-    GRSIZE = json.dumps(geneec_obj.spray_quality)
-    ORCFLG = json.dumps(geneec_obj.airblast_type)
-    INCORP = geneec_obj.incorporation_depth
-    SOL = geneec_obj.solubility
-    METHAP = geneec_obj.aerobic_aquatic_metabolism
-    HYDHAP = geneec_obj.hydrolysis
-    FOTHAP = geneec_obj.photolysis_aquatic_half_life
-
-    data = urllib.urlencode({"APPRAT":APPRAT, "APPNUM":APPNUM, "APSPAC":APSPAC, "KOC":KOC, "METHAF":METHAF, "WETTED":WETTED,
-                             "METHOD":METHOD, "AIRFLG":AIRFLG, "YLOCEN":YLOCEN, "GRNFLG":GRNFLG, "GRSIZE":GRSIZE,
-                             "ORCFLG":ORCFLG, "INCORP":INCORP, "SOL":SOL, "METHAP":METHAP, "HYDHAP":HYDHAP, "FOTHAP":FOTHAP})
-    
-    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers)    
-    jid= json.loads(response.content)['jid']
-    output_st = ''
-    
-    while output_st!="done":
-        response_st = urlfetch.fetch(url='https://api.picloud.com/job/?jids=%s&field=status' %jid, headers=http_headers)
-        output_st = json.loads(response_st.content)['info']['%s' %jid]['status']
-
-    url_val = 'https://api.picloud.com/job/result/?jid='+str(jid)
-    response_val = urlfetch.fetch(url=url_val, method=urlfetch.GET, headers=http_headers)
-    output_val = json.loads(response_val.content)['result']
-    return(jid, output_st, output_val)
-
-
-geneec_obj = geneec_model.geneec(chem_name[0], application_target[0], application_rate[0], number_of_applications[0], interval_between_applications[0], Koc[0], aerobic_soil_metabolism[0], wet_in[0], application_method[0], application_method_label, aerial_size_dist[0], ground_spray_type[0], airblast_type[0], spray_quality[0], no_spray_drift[0], incorporation_depth[0], solubility[0], aerobic_aquatic_metabolism[0], hydrolysis[0], photolysis_aquatic_half_life[0])
-final_res=get_jid(geneec_obj)
-
+geneec_obj = geneec_model.geneec('individual', chem_name[0], application_target[0], application_rate[0], number_of_applications[0], interval_between_applications[0], Koc[0], aerobic_soil_metabolism[0], wet_in[0], application_method[0], application_method_label, aerial_size_dist[0], ground_spray_type[0], airblast_type[0], spray_quality[0], no_spray_drift[0], incorporation_depth[0], solubility[0], aerobic_aquatic_metabolism[0], hydrolysis[0], photolysis_aquatic_half_life[0])
 geneec_obj.chem_name_exp = chem_name[0]
 geneec_obj.GEEC_peak_exp = GEEC_peak[0]
 geneec_obj.GEEC_4avg_exp = GEEC_4avg[0]
@@ -134,14 +93,15 @@ geneec_obj.GEEC_90avg_exp = GEEC_90avg[0]
 class geneecQaqcPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'geneec','page':'qaqc'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'geneec',
                 'model_attributes':'GENEEC QAQC'})
         html = html + geneec_tables.timestamp()
-        html = html + geneec_tables.table_all_qaqc(geneec_obj, final_res)
+        html = html + geneec_tables.table_all_qaqc(geneec_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

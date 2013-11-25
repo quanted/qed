@@ -40,7 +40,8 @@ def PRZM_pi(noa, met, inp, run, MM, DD, YY, CAM_f, DEPI_text, Ar_text, EFF, Drft
 ##################################################################################
 ######Create a folder if it does not existed, where holds calculations' output.#####
 ##################################################################################
-    cwd=os.getcwd()+'/PRZM_lin_test'
+    cwd='/home/picloud/PRZM_lin_test'
+    # cwd=os.getcwd()+'/PRZM_lin_test'
     print("cwd="+cwd)
 
     src=cwd
@@ -126,13 +127,34 @@ def PRZM_pi(noa, met, inp, run, MM, DD, YY, CAM_f, DEPI_text, Ar_text, EFF, Drft
         fout.writelines(lines) 
         fout.close() 
 
+    if inp == "NC1App-P.INP":
+        noa_new = 26
+        row_num1 = 87 - 4
+        row_num2 = 129 - 8
+        row_num3 = 132 - 8
+        row_num4 = 95 - 4
+        row_num5 = 125 - 8
+    elif inp == "ND1Cno-P.INP":
+        noa_new = 28
+        row_num1 = 87 - 2
+        row_num2 = 129 - 4
+        row_num3 = 132 - 4
+        row_num4 = 95 - 2
+        row_num5 = 125 - 4
+    else:
+        noa_new = 30
+        row_num1 = 87
+        row_num2 = 129
+        row_num3 = 132
+        row_num4 = 95
+        row_num5 = 125
 
-    new3=noa*30
+    new3=noa*noa_new
     
     if new3>100:
-        replace_line(src1+'/'+inp, 87, 5,8, str(new3))
+        replace_line(src1+'/'+inp, row_num1, 5,8, str(new3))
     else:
-        replace_line(src1+'/'+inp, 87, 6,8, str(new3))
+        replace_line(src1+'/'+inp, row_num1, 6,8, str(new3))
         
     index_del=0
     for l in CAM_f:
@@ -142,13 +164,13 @@ def PRZM_pi(noa, met, inp, run, MM, DD, YY, CAM_f, DEPI_text, Ar_text, EFF, Drft
             index_del=index_del
     
     if index_del>0:
-        del_line(src1+'/'+inp, 129,132)
+        del_line(src1+'/'+inp, row_num2, row_num3)
     
-    copy_line(src1+'/'+inp, noa, 95, 125)
+    copy_line(src1+'/'+inp, noa, row_num4, row_num5)
     
     new=[]
     new1=[]
-    j=range(95, 95+30*noa)
+    j=range(row_num4, row_num4+noa_new*noa)
     
     for i in range(noa):
         new="  "+DD[i]+MM[i]
@@ -180,6 +202,10 @@ def PRZM_pi(noa, met, inp, run, MM, DD, YY, CAM_f, DEPI_text, Ar_text, EFF, Drft
 #    print(met)
 #    print(inp)    
 #    print(os.listdir(src1)) 
+
+    fname_before = os.listdir(src1)
+    print 'Before running PRZM', fname_before
+
     a=subprocess.Popen(src2, shell=0)
     print('done')
     a.wait()

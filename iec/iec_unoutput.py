@@ -13,8 +13,8 @@ import sys
 sys.path.append("../utils")
 import utils.json_utils
 sys.path.append("../iec")
-from iec import iec_model
-from iec import iec_tables
+from iec import iec_model,iec_tables
+from uber import uber_lib
 from django.template import Context, Template
 import numpy as np 
 import matplotlib
@@ -100,7 +100,8 @@ class iecUnoutputPage(webapp.RequestHandler):
 
 
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})        
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html',  {'model':'iec','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                               
         html = html + template.render(templatepath + '04uberoutput_start.html', {

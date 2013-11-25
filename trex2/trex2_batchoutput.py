@@ -14,8 +14,8 @@ from StringIO import StringIO
 import cStringIO
 import logging 
 import csv
-from trex2 import trex2_tables
-from trex2 import trex2_model
+from trex2 import trex2_tables,trex2_model
+from uber import uber_lib
 
 chem_name = []
 use = []
@@ -1879,7 +1879,8 @@ class Trex2BatchOutputPage(webapp.RequestHandler):
         thefile = form['upfile']
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'trex2','page':'batchinput'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberbatch_start.html', {

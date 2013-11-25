@@ -12,7 +12,7 @@ import cgi
 import cgitb
 cgitb.enable()
 from trex import trex_model
-
+from uber import uber_lib
  
 class TRexOutputPage(webapp.RequestHandler):
     def post(self):        
@@ -91,7 +91,8 @@ class TRexOutputPage(webapp.RequestHandler):
         text_file = open('trex/trex_description.txt','r')
         x1 = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})        
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)     
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html',  {'model':'trex','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                               
         html = html + template.render(templatepath + '04uberoutput_start.html', {

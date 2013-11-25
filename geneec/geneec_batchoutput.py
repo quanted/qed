@@ -16,6 +16,7 @@ import urllib
 from google.appengine.api import urlfetch
 import keys_Picloud_S3
 import logging
+from uber import uber_lib
 
 ############Provide the key and connect to the picloud####################
 api_key=keys_Picloud_S3.picloud_api_key
@@ -46,11 +47,11 @@ aerobic_aquatic_metabolism = []
 hydrolysis = []
 photolysis_aquatic_half_life = []
 ####### Outputs ########
-GEEC_peak = []
-GEEC_4avg = []
-GEEC_21avg = []
-GEEC_60avg = []
-GEEC_90avg = []
+# GEEC_peak = []
+# GEEC_4avg = []
+# GEEC_21avg = []
+# GEEC_60avg = []
+# GEEC_90avg = []
 jid_all = []
 geneec_obj_all = []
 
@@ -146,10 +147,11 @@ def loop_html(thefile):
 class geneecBatchOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()
-        thefile = form['upfile']
+        thefile = form['file-0']
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'geneec','page':'batchinput'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
@@ -157,7 +159,6 @@ class geneecBatchOutputPage(webapp.RequestHandler):
                 'model_attributes':'GENEEC Batch Output'})
         html = html + geneec_tables.timestamp()
         html = html + iter_html
-
         html = html + template.render(templatepath + 'export_fortran.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

@@ -64,22 +64,22 @@ class loons_InputPage(webapp.RequestHandler):
 
 
 
-        html = html + """<table class="life_cycle" border="0">
-                            <tr>
-                                <th>Age Class</th>
-                                <th colspan=2>Annual transition matrix</th>
-                            </tr>
-                            <tr>
-                                <td>Juvenile</td>
-                                <td input name="a11" id="a11" type="text"></td>
-                                <td input name="a12" id="a12" type="text"></td>
-                            </tr>
-                            <tr>
-                                <td>Adult</td>
-                                <td input name="a21" id="a21" type="text"></td>
-                                <td input name="a22" id="a22" type="text"></td>
-                            </tr>
-                        </table>"""
+        # html = html + """<table class="life_cycle" border="0">
+        #                     <tr>
+        #                         <th>Age Class</th>
+        #                         <th colspan=2>Annual transition matrix</th>
+        #                     </tr>
+        #                     <tr>
+        #                         <td>Juvenile</td>
+        #                         <td input name="a11" id="a11" type="text"></td>
+        #                         <td input name="a12" id="a12" type="text"></td>
+        #                     </tr>
+        #                     <tr>
+        #                         <td>Adult</td>
+        #                         <td input name="a21" id="a21" type="text"></td>
+        #                         <td input name="a22" id="a22" type="text"></td>
+        #                     </tr>
+        #                 </table>"""
 
 
         html = html + template.render(templatepath + 'loons_input_jquery.html', {})

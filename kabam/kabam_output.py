@@ -17,7 +17,7 @@ cgitb.enable()
 import sys
 sys.path.append("../kabam")
 from kabam import kabam_model,kabam_tables
-
+from uber import uber_lib
 
 class KabamOutputPage(webapp.RequestHandler):
     def post(self):        
@@ -310,7 +310,8 @@ class KabamOutputPage(webapp.RequestHandler):
 
             # cb_phytoplankton_v,cb_zoo_v,cb_beninv_v,cb_ff_v,cb_sf_v,cb_mf_v,cb_lf_v   ***Removed from kabam_obj above***
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'kabam','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
@@ -318,6 +319,9 @@ class KabamOutputPage(webapp.RequestHandler):
                 'model_attributes':'Kabam Output'})
         html = html + kabam_tables.timestamp()
         html = html + kabam_tables.table_all(kabam_obj)
+        html = html + kabam_tables.bar_f(kabam_obj)
+        
+        html = html + template.render(templatepath + 'kabam_output_jqplot.html', {})
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

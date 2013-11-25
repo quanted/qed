@@ -1,0 +1,9 @@
+[submodule "uberrest"]
+	path = uberrest
+	url = git://github.com/batwalrus76/uberrest.git
+[submodule "uberworker"]
+	path = uberworker
+	url = https://batwalrus76@github.com/batwalrus76/uberworker.git
+[submodule "ubermq"]
+	path = ubermq
+	url = https://batwalrus76@github.com/batwalrus76/ubermq.git

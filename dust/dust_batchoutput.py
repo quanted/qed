@@ -13,8 +13,8 @@ import unittest
 from StringIO import StringIO
 import cStringIO
 import logging 
-from dust import dust_tables
-from dust import dust_model
+from dust import dust_tables,dust_model
+from uber import uber_lib
 import csv
 import numpy
 
@@ -190,7 +190,8 @@ class DustBatchOutputPage(webapp.RequestHandler):
         thefile = form['upfile']
         iter_html=loop_html(thefile)        
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'dust','page':'batchinput'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberbatch_start.html', {

@@ -11,14 +11,15 @@ from google.appengine.ext.webapp import template
 import django
 from django import forms
 from dust import dust_parameters
-
+from uber import uber_lib
 
 class DustInputPage(webapp.RequestHandler):
     def get(self):
         text_file = open('dust/dust_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render (templatepath + 'dust-jquery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'dust','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                

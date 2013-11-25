@@ -14,8 +14,8 @@ from StringIO import StringIO
 import cStringIO
 import logging 
 import csv
-from therps import therps_tables
-from therps import therps_model
+from therps import therps_tables,therps_model
+from uber import uber_lib
 
 chem_name=[]
 use=[]
@@ -445,7 +445,8 @@ class TherpsBatchOutputPage(webapp.RequestHandler):
         thefile = form['upfile']
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'therps','page':'batchinput'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberbatch_start.html', {

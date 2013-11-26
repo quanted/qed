@@ -75,7 +75,7 @@ def gett2data(agdrift_obj):
     data = { 
         "Parameter": ['Spray drift fraction of applied', 'Initial Average Deposition (g/ha)', 'Initial Average Deposition (lb/ac)', 'Initial Average Concentration (ng/L)', 'Initial Average Deposition (mg/cm2)', 'Distance to Point or Waterbody (ft)',],
         # "Value": ['%.3f' % agdrift_obj.init_avg_dep_foa,'%.3f' % agdrift_obj.avg_depo_gha,'%.3f' % agdrift_obj.avg_depo_lbac, '%.3f' % agdrift_obj.deposition_ngL, '%.3f' % agdrift_obj.deposition_mgcm,],
-        "Value": ['%.3f' % agdrift_obj.init_avg_dep_foa,'%.3f' % agdrift_obj.avg_depo_gha,'%.3f' % agdrift_obj.avg_depo_lbac, '%.3f' % agdrift_obj.deposition_ngL, '%.3f' % agdrift_obj.deposition_mgcm, '%.d' % agdrift_obj.distance,],
+        "Value": ['%.3f' % agdrift_obj.init_avg_dep_foa,'%.3f' % agdrift_obj.avg_depo_gha,'%.3f' % agdrift_obj.avg_depo_lbac, '%.3f' % agdrift_obj.deposition_ngL, '%.3f' % agdrift_obj.deposition_mgcm, '%.d' % int(agdrift_obj.distance),],
     }
     return data
 
@@ -151,7 +151,7 @@ def table_3(agdrift_obj):
         <h3 class="out_2 collapsible" id="section2"><span></span>Results</h3>
             <H4 class="out_2 collapsible" id="section3"><span></span>Plot of spray drift</H4>
                 <div class="out_">
-        """%(agdrift_obj.x, agdrift_obj.y)
+        """%(agdrift_obj.x, agdrift_obj.express_y)
         # t2data = gett2data(agdrift_obj)
         # t2rows = gethtmlrowsfromcols(t2data,pvrheadings)
         # html = html + tmpl.render(Context(dict(data=t2rows, headings=pvuheadings)))

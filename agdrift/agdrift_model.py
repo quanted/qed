@@ -91,17 +91,14 @@ class agdrift(object):
         self.nasae = nasae
         self.y = y
         self.x = x
-        self.express_y
+        self.express_y = express_y  
     def run_methods(self):
         self.results()
         if (self.calculation_input == 'Distance' ):
             self.results()
-            #print self.x
-            #print self.y
-            print self.express_y
             self.express_extrapolate_f(self.y, self.nasae, self.distance)
-            self.deposition_foa_to_lbac_f(self.init_avg_dep_foa, self.application_rate)
-            self.deposition_lbac_to_gha_f(self.avg_depo_lbac)
+            self.deposition_foa_to_gha_f(self.init_avg_dep_foa, self.application_rate)
+            self.deposition_ghac_to_lbac_f(self.avg_depo_gha)
             self.deposition_gha_to_ngL_f(self.aquatic_type, self.avg_depo_gha)
             self.deposition_gha_to_mgcm_f(self.avg_depo_gha)
 
@@ -114,7 +111,6 @@ class agdrift(object):
 
         elif (self.calculation_input == 'Initial Average Deposition (g/ha)'):
             self.deposition_ghac_to_lbac_f(self.avg_depo_gha)
-            #print self.avg_depo_lbac 
             self.deposition_lbac_to_foa_f(self.avg_depo_lbac, self.application_rate)
             self.extrapolate_from_fig2(self.ecosystem_type, self.init_avg_dep_foa, bisect_left, self.x, self.y)
             self.deposition_gha_to_ngL_f(self.aquatic_type, self.avg_depo_gha)
@@ -516,11 +512,6 @@ class agdrift(object):
              #print 2
             self.y = 3
             #print self.nasae
-            print self.x
-            print self.y
-        return self.x, self.y, self.nasae, self.express_y
-        print self.x
-        print self.express_y
     def express_extrapolate_f(self, y, nasae, distance):
        # XV = np.array([X0, X1, X2, X3, X4, X5, X6, X7, X8, X9])
         
@@ -554,11 +545,6 @@ class agdrift(object):
             self.distance = self.x[x_index]    
         else:
             i = min(enumerate(self.y), key=lambda x: abs(x[1]-self.init_avg_dep_foa)) #finds smallest closest value closest to input value
-            #i = bisect_left(self.y, self.init_avg_dep_foa) #find largest foa closest to value
-            #print self.y
-            #print self.init_avg_dep_foa
-            #print i[0]
-            #print i[1]
             i2 = i[0]
             low1 = self.y[i2] #assign nearest lowest x value for interpolation
             high1 = self.y[i2-1] #assign nearest highest x value for interpolation
@@ -566,10 +552,20 @@ class agdrift(object):
             high_i = i2-1      #assign index values to use to find nearest y values for interpolation
             self.distance = ((self.init_avg_dep_foa - low1) * (self.x[high_i] - self.x[low_i]) / (high1 - low1)) + self.x[low_i]
         return self.distance
+    def deposition_foa_to_gha_f(self, init_avg_dep_foa, application_rate):
+        application_rate = float(application_rate)
+        #self.init_avg_dep_foa = float(init_avg_dep_foa)
+        print application_rate
+        print init_avg_dep_foa
+        self.avg_depo_gha = init_avg_dep_foa  * application_rate  * 10
+        print self.avg_depo_gha
+        return self.avg_depo_gha
 
     def deposition_foa_to_lbac_f(self, init_avg_dep_foa, application_rate):
         self.application_rate = float(self.application_rate)
-        self.avg_depo_lbac = self.init_avg_dep_foa /100  * self.application_rate 
+        #print self.application_rate
+        #print self.init_avg_dep_foa
+        self.avg_depo_lbac = (self.init_avg_dep_foa /100)  * self.application_rate 
         #print self.avg_depo_lbac
         return self.avg_depo_lbac
 

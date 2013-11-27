@@ -9,7 +9,7 @@ from django import forms
 from django.db import models
 from django.utils.safestring import mark_safe
 
-ES_source_CHOICES=(('Select a source','Select a source'),('a','NatureServe'),('b','IUCN Red List'),('c','US FWD Critical Habitat')) 
+ES_source_CHOICES=(('Select a source','Select a source'),('a','NatureServe'),('b','IUCN Red List'),('c','US FWS Critical Habitat')) 
 
 #Crop_CHOICES=(('','Select a source'),('Barley','Barley'),('Beans','Beans'),('Canola','Canola'),('Corn','Corn'),('Cotton','Cotton'),
 #              ('Flaxseed','Flaxseed'),('Hay','Hay'),('Oats','Oats'),('Peanuts','Peanuts'),('Rice','Rice'),

@@ -1,4 +1,3 @@
-<script type="text/javascript" src=" ../stylesheets/jquery.validate.js"></script>
 <!-- <link type="text/css" rel="stylesheet" href="http://craigsworks.com/projects/qtip2/packages/nightly/jquery.qtip.css" />
 <script type="text/javascript" src="http://craigsworks.com/projects/qtip2/packages/nightly/jquery.qtip.js"></script>
  -->
@@ -296,8 +295,9 @@ var HArvest_pool={'NC Sweet Potato MLRA-133': '2209', 'ID Potato   MLRA-11B': '1
         $("label[for='id_chemical_name']").attr({'title': title_chemical, 'id':'id_chemical_name_title'})
         $('#id_chemical_name_title').qtip();        
         
-        
-//begin the form validation process////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////begin the form validation process//////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
                     $.validator.addMethod(
                         "apptiming",
                         function(value, element) {
@@ -386,10 +386,11 @@ var HArvest_pool={'NC Sweet Potato MLRA-133': '2209', 'ID Potato   MLRA-11B': '1
                         }
                     }
                     
-                    $("#form1").validate({
-                    submitHandler:function(form) {
-                        SubmittingForm()
-                        },
+// var validator = $( "#myform" ).validate();
+// validator.form();
+
+
+                   $("form").validate({
                     rules: {
                         chemical_name: "required",      // simple rule, converted to {required:true}
                         Scenarios:"required",
@@ -443,11 +444,15 @@ var HArvest_pool={'NC Sweet Potato MLRA-133': '2209', 'ID Potato   MLRA-11B': '1
                         Unit: "Please choose a unit."
                     }
                 })
+
+
 })
+
+
 </script>
 
 <style type="text/css">
-#form1 label.error {
+form label.error {
     width: 200px;
     display: block;
     float: right;

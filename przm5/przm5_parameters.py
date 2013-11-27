@@ -69,7 +69,7 @@ class przm5Inp_runoff(forms.Form):
     ireg = forms.FloatField(required=True, label='IREG', initial=1)
     slope = forms.FloatField(required=True, label='Slope (%)', initial=6)
     NumberOfFactors_choice = ((26,26), (27,27))
-    NumberOfFactors = forms.ChoiceField(required=True, label='No. of Time-Varing Factors', choices=NumberOfFactors_choice, initial=26)
+    # NumberOfFactors = forms.ChoiceField(required=True, label='No. of Time-Varing Factors', choices=NumberOfFactors_choice, initial=26)
     rDepthBox = forms.FloatField(required=True, label='R-Depth (cm)', initial=2.0)
     rDeclineBox = forms.FloatField(required=True, label='R-Decline (1/cm)', initial=1.55)
     rBypassBox = forms.FloatField(required=True, label='Efficiency', initial=0.266)

@@ -1,0 +1,72 @@
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+
+                $(".out_input_table").append(localStorage.html_input);
+                $(".out_input_table :input").attr('disabled', true);
+                $(".out_input_table").append("</div>");
+                element_all = localStorage.html_new.split("&")
+                console.log(element_all)
+
+                element1 = localStorage.html_new.split("&")[0].split("=")
+                console.log(element_all.length)
+
+
+                for (i=0; i<element_all.length; i++) {
+                    element_name_t = element_all[i].split("=")[0]
+                    element_val_t = element_all[i].split("=")[1]
+
+                    $('[name="'+element_name_t+'"]').val(element_val_t)
+                }
+
+                $(".input_button").hide()
+
+
+
+
+
+
+    // var tab_pool = ["tab_Chemical", "tab_Applications", "tab_CropLand", "tab_Runoff"];
+    // var uptab_pool = ["Chemical", "Applications", "CropLand", "Runoff"];
+    // var visible = $(".tab:visible").attr('class').split(" ")[1];
+    // var curr_ind = $.inArray(visible, tab_pool);
+    // $(".submit").hide();
+    // $(".back").hide();
+
+    $('li.Chemical').click(function(){
+        $('li.Chemical').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Applications, li.CropLand, li.Runoff').addClass('tabUnsel').removeClass('tabSel');
+        $(".tab:visible").hide();
+        $('.tab_Chemical').show();
+        if ($('#id_deg_check').val()==0){
+          $(".deg").hide();
+        }
+    });
+
+    $('li.Applications').click(function(){
+        $('li.Applications').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.CropLand, li.Runoff').addClass('tabUnsel').removeClass('tabSel');
+        $(".tab:visible").hide();
+        $('.tab_Applications').show();
+    });
+
+    $('li.CropLand').click(function(){
+        $('li.CropLand').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Applications, li.Chemical, li.Runoff').addClass('tabUnsel').removeClass('tabSel');
+        $(".tab:visible").hide();
+        $('.tab_CropLand').show();
+    });
+
+    $('li.Runoff').click(function(){
+        $('li.Runoff').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Applications, li.Chemical, li.CropLand').addClass('tabUnsel').removeClass('tabSel');
+        $(".tab:visible").hide();
+        $('.tab_Runoff').show();
+    });
+
+
+});
+
+
+</script>

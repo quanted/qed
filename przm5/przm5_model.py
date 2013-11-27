@@ -95,7 +95,7 @@ def convert_dict_key(key):
 
 class przm5(object):
      def __init__(self, dictionary):
-        logger.info('FILE LOCATION===================')
+        logger.info('===================')
         logger.info(os.getcwd())
         cwd=os.getcwd()+'/PRZM5/'
 

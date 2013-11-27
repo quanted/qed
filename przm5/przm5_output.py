@@ -30,6 +30,11 @@ class przm5OutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'przm5', 
                 'model_attributes':'PRZM 5 Output'})
+        html = html + template.render (templatepath + 'przm5-jquery-output.html', {})
+        html = html + """<H3 class="out_3 collapsible" id="section1"><span></span>User Inputs</H3>
+                            <div class="out_input_table">"""
+
+
         html = html + """
                         <H3 class="out_3 collapsible" id="section1"><span></span>User Outputs</H3>
                         <div class="out_3">

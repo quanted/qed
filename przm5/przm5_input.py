@@ -115,12 +115,6 @@ class przm5InputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
-        html = html + """<script>
-                        var html_input = $("div.articles_input").clone().html();
-                        console.log(html_input)
-                        </script>
-                    """
-
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', przm5InputPage)], debug=True)

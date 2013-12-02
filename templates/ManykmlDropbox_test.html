@@ -30,11 +30,11 @@ function initialize() {
 	});
 	
 
-
 	//Creating overlays for USDACropScape
 	var crop = '{{ Crop }}' + '.kmz';
-	console.log(crop)
+	//console.log(crop)
 	var crop_link = "https://s3.amazonaws.com/esmapping_kmz/USDACropScape2011/"+crop
+	//var cropLayer = new google.maps.KmlLayer(crop_link,{suppressInfoWindows: true},{preserveViewport:true}) 
 	var cropLayer = new google.maps.KmlLayer(crop_link,{suppressInfoWindows: true}) 
 	cropLayer.setMap(map);	
 
@@ -45,9 +45,9 @@ function initialize() {
 	var nsfLayer = new google.maps.KmlLayer(nsf_link, {suppressInfoWindows: true}) 
 	nsfLayer.setMap(map);
 	// Adding the click event to the overlay
-	google.maps.event.addListener(nsfLayer,'click',function(){
-	//infowindow.open(map,nsfLayer);	
-	});
+	//google.maps.event.addListener(nsfLayer,'click',function(){
+	//	infowindow.open(map,nsfLayer);	
+	//});
 
 
 	// Creating overlays for NatureServePollinator: NSP
@@ -62,6 +62,9 @@ function initialize() {
 	var nsm_link = "https://s3.amazonaws.com/esmapping_kmz/nsm/"+nsm
 	var nsmLayer = new google.maps.KmlLayer(nsm_link,{suppressInfoWindows: true}) 
 	nsmLayer.setMap(map);
+
+
+
 
 	//Creating overlays for IUCN Amphibians
 	var IUCN_Amphibians = '{{ IUCN_Amphibians }}' + '.kmz';
@@ -134,6 +137,30 @@ function initialize() {
 	var USFWS_l_link = "https://s3.amazonaws.com/esmapping_kmz/USFWS_l/"+USFWS_l
 	var USFWS_lLayer = new google.maps.KmlLayer(USFWS_l_link,{suppressInfoWindows: true})
 	USFWS_lLayer.setMap(map);
+
+
+	// EPest -- six layers
+	var EPest_R1 = new google.maps.KmlLayer("https://s3.amazonaws.com/esmapping_kmz/R1.kmz")
+	EPest_R1.setMap(map);
+	var EPest_R2 = new google.maps.KmlLayer("https://s3.amazonaws.com/esmapping_kmz/R2.kmz")
+	EPest_R2.setMap(map);
+	var EPest_R3 = new google.maps.KmlLayer("https://s3.amazonaws.com/esmapping_kmz/R3.kmz")
+	EPest_R3.setMap(map);
+	var EPest_R4 = new google.maps.KmlLayer("https://s3.amazonaws.com/esmapping_kmz/R4.kmz")
+	EPest_R4.setMap(map);
+	var EPest_R5 = new google.maps.KmlLayer("https://s3.amazonaws.com/esmapping_kmz/R5.kmz")
+	EPest_R5.setMap(map);
+	var EPest_R6 = new google.maps.KmlLayer("https://s3.amazonaws.com/esmapping_kmz/R6.kmz")
+	EPest_R6.setMap(map);
+
+
+	// help lib to deal with opacity
+	//https://code.google.com/p/geoxml-v3/
+	//https://code.google.com/p/geoxml3/
+	//http://stackoverflow.com/questions/4651930/using-a-kmllayer-object-within-the-google-maps-api-is-it-possible-to-allow-a-us
+
+
+
 };
 
 google.maps.event.addDomListener(window, 'load', initialize);

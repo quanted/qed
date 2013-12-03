@@ -12,7 +12,7 @@ $(document).ready(function() {
         $('li.Chemical').addClass('tabSel').removeClass('tabUnsel');
         $('li.Applications, li.CropLand, li.Runoff, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
         $(".tab:visible").hide();
-        $('.tab_Chemical').show();
+        $('.tab_Chemical, .tab_Chemical0').show();
         $(".back").hide();
         $(".submit").hide();
         $(".next").show();
@@ -93,6 +93,79 @@ $(document).ready(function() {
             $(".back").hide();
         }
     });
+
+  $("label[for='id_n_chem_1']").hide();
+  
+  var soilRefTemp = $('#id_s_ref').val();
+  $('#id_s_ref_1, #id_s_ref_2').val(soilRefTemp).prop('disabled', true);
+  $('#id_s_ref').change(function() {
+    soilRefTemp = $('#id_s_ref').val();
+    $('#id_s_ref_1, #id_s_ref_2').val(soilRefTemp);
+  });
+
+  $('#id_n_chem_0, #id_n_chem_1').change(function() { 
+    if ($("input#id_n_chem_0").is(':checked')){
+      $("label[for='id_n_chem_1'], .tab_Chemical1, .tab_MCF1").show();
+    } else {
+      $("input#id_n_chem_1").prop('checked', false);
+      $("label[for='id_n_chem_1'], .tab_Chemical1, .tab_MCF1").hide();
+    }
+    if ($("input#id_n_chem_1").is(':checked')){
+      $('.tab_Chemical2, .tab_MCF2').show();
+    } else {
+      $('.tab_Chemical2, .tab_MCF2').hide();
+    }
+  });
+
+  $("label[for='id_dates'], label[for='id_app_n'], label[for='id_specifyYears_0']").closest('th').attr({colspan:"5"});
+  $("select[id='id_dates'], select[id='id_app_n'], label[for='id_specifyYears_0']").closest('td').attr({colspan:"3"});
+  $("label[for='id_specifyYears_0']").closest('ul').find("li").attr({display:"inline"});
+
+  var i_a = 0;
+  $('#id_app_n').change(function () {
+    if ($('#id_specifyYears_1').checked) {
+      // $("input[id^='id_year']").prop('disabled', true);
+      alert('No is checked');
+    }
+    else if ($("#id_specifyYears_1").prop( "checked" )) {
+      // $("input[id^='id_year']").prop('disabled', true);
+      alert('No is checked');
+    }
+    else if ($("#id_specifyYears_1").is( ":checked" )) {
+      // $("input[id^='id_year']").prop('disabled', true);
+      alert('No is checked');
+    } else {
+      alert('Yes is checked');
+    }
+    var total_a = $(this).val();
+    while (i_a < total_a) {
+      var i = i_a + 1;
+      $('.tab_Applications').append(
+        '<tr><td><input id="id_day_'+i+'" type="text" name="day_'+i+'" value="1" size="2" /></td><td><input id="id_month_'+i+'" type="text" name="month_'+i+'" value="1" size="2" /></td><td><input id="id_year_'+i+'" type="text" name="year_'+i+'" value="1" size="4" /></td><td><input id="id_app_'+i+'" type="text" name="app_'+i+'" value="1" size="5" /></td><td><select id="id_apptype_'+i+'"><option value="1">Ground</option><option value="2">Foliar</option><option value="3">Incorporate</option><option value="4">@ Depth</option><option value="5">T-Band</option></select></td><td><input id="id_depth_'+i+'" type="text" name="depth_'+i+'" size="5" /></td><td><input id="id_eff_'+i+'" type="text" name="eff_'+i+'" value="1" size="4" /></td><td><input id="id_driftT_'+i+'" type="text" name="driftT_'+i+'" value="1" size="5" /></td></tr>'
+      );
+    i_a = i_a + 1;
+    };
+    $("input[id^='id_depth']").prop('disabled', true);
+    // Specify Years?
+    while (i_a > total_a) {
+      $(".tab_Applications tr:last").remove();
+      i_a=i_a-1;
+    }
+  });
+
+  function useDepth() {
+    var app_nChk = $(this);
+    var apptypeChk = $(this).val();
+    if (apptypeChk == '1') {
+      $(app_nChk).parent().next().children().prop('disabled', true);
+    } else if (apptypeChk == '2') {
+      $(app_nChk).parent().next().children().prop('disabled', true);
+    } else {
+      $(app_nChk).parent().next().children().prop('disabled', false); 
+    }
+  }
+
+  $("tbody").on("change", "select[id^='id_apptype']", useDepth );
 
 });
    //  $('#id_avian_NOAEL').val($('#id_avian_NOAEC').val()/20);

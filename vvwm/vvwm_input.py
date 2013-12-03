@@ -26,7 +26,6 @@ class vvwmInputPage(webapp.RequestHandler):
         <div class="input_nav">
             <ul>
                 <li class="Chemical tabSel">Chemical </li>
-                |<li class="Applications tabUnsel"> Applications </li>
                 |<li class="CropLand tabUnsel"> Crop/Land </li>
                 |<li class="WaterBody tabUnsel"> Water Body </li>
             </ul>
@@ -38,8 +37,6 @@ class vvwmInputPage(webapp.RequestHandler):
         # """%vvwm_parameters.form()
         html = html + """<br><table class="tab tab_Chemical">"""
         html = html + str(vvwm_parameters.vvwmInp_chem())
-        html = html + """</table><table class="tab tab_Applications" style="display:none">"""
-        html = html + str(vvwm_parameters.vvwmInp_appl())
         html = html + template.render (templatepath + 'vvwm_weatherfile.html', {})
         html = html + str(vvwm_parameters.vvwmInp_cropland())
         html = html + """</table><table class="tab tab_WaterBody" style="display:none">"""

@@ -33,15 +33,46 @@ class swcInputPage(webapp.RequestHandler):
             </ul>
         </div>
         """
-        html = html + """<br><table class="tab tab_Chemical" border="0">"""
+        html = html + """<br><table class="tab tab_Chemical">"""
         html = html + str(swc_parameters.swcInp_chem())
-        html = html + """</table><table class="tab tab_Applications" border="0" style="display:none">"""
+        html = html + """</table><table class="tab tab_Chemical0">"""
+        html = html + str(swc_parameters.swcInp_chem0())
+        html = html + """</table><table class="tab tab_Chemical1" style="display:none">
+                            <tr><th colspan="2">Degradate 1</th></tr>
+                            """
+        html = html + str(swc_parameters.swcInp_chem1())
+        html = html + """</table><table class="tab tab_MCF1" style="display:none">
+                            <tr><th colspan="2">Molar Conversion Factors (Degradate 1)</th></tr>
+                            """
+        html = html + str(swc_parameters.swcInp_mcf1())
+        html = html + """</table><table class="tab tab_Chemical2" style="display:none">
+                            <tr><th colspan="2">Degradate 2</th></tr>
+                            """
+        html = html + str(swc_parameters.swcInp_chem2())
+        html = html + """</table><table class="tab tab_MCF2" style="display:none">
+                            <tr><th colspan="2">Molar Conversion Factors (Degradate 2)</th></tr>
+                            """
+        html = html + str(swc_parameters.swcInp_mcf2())
+        html = html + """</table><table class="tab tab_Applications" style="display:none">"""
         html = html + str(swc_parameters.swcInp_appl())
-        html = html + """</table><table class="tab tab_CropLand" border="0" style="display:none">"""
+        html = html + """
+                        <tr>
+                            <th width="55px">Day</th>
+                            <th width="56px">Month</th>
+                            <th width="68px">Year</th>
+                            <th width="74px">Amount (kg/hA)</th>
+                            <th width="104px">Application Method</th>
+                            <th width="74px">Depth (cm)</th>
+                            <th width="68px">Eff.</th>
+                            <th width="75px">Drift/T</th>
+                        </tr>
+                        
+                        """
+        html = html + """</table><table class="tab tab_CropLand" style="display:none">"""
         html = html + str(swc_parameters.swcInp_cropland())
-        html = html + """</table><table class="tab tab_Runoff" border="0" style="display:none">"""
+        html = html + """</table><table class="tab tab_Runoff" style="display:none">"""
         html = html + str(swc_parameters.swcInp_runoff())
-        html = html + """</table><table class="tab tab_WaterBody" border="0" style="display:none">"""
+        html = html + """</table><table class="tab tab_WaterBody" style="display:none">"""
         html = html + str(swc_parameters.swcInp_waterbody())
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})

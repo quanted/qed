@@ -22,6 +22,7 @@ class ESOutputPage(webapp.RequestHandler):
         NSP = form.getvalue('NSP')
         NSM = form.getvalue('NSM')
         Crop = form.getvalue('Crop')
+        Pesticide = form.getvalue('Pesticide')
 
         IUCN_Amphibians = form.getvalue('IUCN_Amphibians')
         IUCN_Birds = form.getvalue('IUCN_Birds')
@@ -120,6 +121,7 @@ class ESOutputPage(webapp.RequestHandler):
                'NSP':NSP,
                'NSM':NSM,
                'Crop':Crop,
+               'Pesticide':Pesticide,
                'IUCN_Amphibians':IUCN_Amphibians,
                'IUCN_Birds':IUCN_Birds,
                'IUCN_Mammals':IUCN_Mammals,

@@ -3,11 +3,33 @@
 	src="https://maps.googleapis.com/maps/api/js?v=3.13&key=AIzaSyB-zLc7tlB-UbVrQPL6MXJQ1IDEFE-2cWA&sensor=false">
 </script>
 
-<div>Endangered Species Mapper</div>
-<div id="map"></div>
+<!-- <div>Endangered Species Mapper</div>
+<div id="map"></div> -->
 
 <script type="text/javascript">
 $(document).ready(function(){
+
+// Initialize output page//
+
+$('#export_menu').hide()
+
+$(".out_input_table").append(localStorage.html_input);
+$(".out_input_table :input").attr('disabled', true);
+
+element_all = localStorage.html_new.split("&")
+// console.log(element_all)
+element1 = localStorage.html_new.split("&")[0].split("=")
+// console.log(element_all.length)
+for (i=0; i<element_all.length; i++) {
+    element_name_t = element_all[i].split("=")[0]
+    element_val_t = element_all[i].split("=")[1]
+    $('[name="'+element_name_t+'"]').val(element_val_t)
+}
+$(".input_button").hide()
+
+
+
+
 
 // Enable the visual refresh
 google.maps.visualRefresh = true;
@@ -182,4 +204,5 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	#map div { font-weight:bold;}
 	#map #iwsw p { font-weight:normal !important;}
 </style>
-<!-- end CSS -->
+<!-- end CSS -->
+

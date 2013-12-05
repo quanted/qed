@@ -6,7 +6,6 @@ Created on May 23, 2012
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
 from django import forms
-from django.db import models
 from django.utils.safestring import mark_safe
 
 ES_source_CHOICES=(('Select a source','Select a source'),('a','NatureServe'),('b','IUCN Red List'),('c','US FWS Critical Habitat')) 

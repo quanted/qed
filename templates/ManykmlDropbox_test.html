@@ -160,36 +160,22 @@ function initialize() {
 	var USFWS_lLayer = new google.maps.KmlLayer(USFWS_l_link,{suppressInfoWindows: true})
 	USFWS_lLayer.setMap(map);
 
-
-	// EPest -- six layers
-	var EPest_R1 = new google.maps.KmlLayer("https://s3.amazonaws.com/esmapping_kmz/Test80.kmz")
+	//EPestHigh -- six layers
+	var EPestH = '{{ Pesticide }}'
+	var EPestH_link = "https://s3.amazonaws.com/esmapping_kmz/EPestHigh/" + EPestH + '/'
+	
+	var EPest_R1 = new google.maps.KmlLayer(EPestH_link + "m_R1.kmz")
 	EPest_R1.setMap(map);
-	// var EPest_R2 = new google.maps.KmlLayer("https://s3.amazonaws.com/esmapping_kmz/R2.kmz")
-	// EPest_R2.setMap(map);
-	// var EPest_R3 = new google.maps.KmlLayer("https://s3.amazonaws.com/esmapping_kmz/R3.kmz")
-	// EPest_R3.setMap(map);
-	// var EPest_R4 = new google.maps.KmlLayer("https://s3.amazonaws.com/esmapping_kmz/R4.kmz")
-	// EPest_R4.setMap(map);
-	// var EPest_R5 = new google.maps.KmlLayer("https://s3.amazonaws.com/esmapping_kmz/R5.kmz")
-	// EPest_R5.setMap(map);
-	// var EPest_R6 = new google.maps.KmlLayer("https://s3.amazonaws.com/esmapping_kmz/R6.kmz")
-	// EPest_R6.setMap(map);
-
-	// EPestHigh -- six layers
-	// var EPestH = '{{ USFWS_l }}'
-	// var EPestH_link = "https://s3.amazonaws.com/esmapping_kmz/EPestHigh" + EPestH + '/'
-	// var EPest_R1 = new google.maps.KmlLayer(EPestH_link + "R1.kmz")
-	// EPest_R1.setMap(map);
-	// var EPest_R2 = new google.maps.KmlLayer(EPestH_link + "R2.kmz")
-	// EPest_R2.setMap(map);
-	// var EPest_R3 = new google.maps.KmlLayer(EPestH_link + "R3.kmz")
-	// EPest_R3.setMap(map);
-	// var EPest_R4 = new google.maps.KmlLayer(EPestH_link + "R4.kmz")
-	// EPest_R4.setMap(map);
-	// var EPest_R5 = new google.maps.KmlLayer(EPestH_link + "R5.kmz")
-	// EPest_R5.setMap(map);
-	// var EPest_R6 = new google.maps.KmlLayer(EPestH_link + "R6.kmz")
-	// EPest_R6.setMap(map);
+	var EPest_R2 = new google.maps.KmlLayer(EPestH_link + "m_R2.kmz")
+	EPest_R2.setMap(map);
+	var EPest_R3 = new google.maps.KmlLayer(EPestH_link + "m_R3.kmz")
+	EPest_R3.setMap(map);
+	var EPest_R4 = new google.maps.KmlLayer(EPestH_link + "m_R4.kmz")
+	EPest_R4.setMap(map);
+	var EPest_R5 = new google.maps.KmlLayer(EPestH_link + "m_R5.kmz")
+	EPest_R5.setMap(map);
+	var EPest_R6 = new google.maps.KmlLayer(EPestH_link + "m_R6.kmz")
+	EPest_R6.setMap(map);
 
 };
 

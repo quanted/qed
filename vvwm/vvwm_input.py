@@ -9,6 +9,7 @@ from google.appengine.ext.webapp import template
 import django
 from django import forms
 from vvwm import vvwm_parameters
+from przm5 import przm5_parameters
 from uber import uber_lib
 
 class vvwmInputPage(webapp.RequestHandler):
@@ -26,20 +27,32 @@ class vvwmInputPage(webapp.RequestHandler):
         <div class="input_nav">
             <ul>
                 <li class="Chemical tabSel">Chemical </li>
-                |<li class="Applications tabUnsel"> Applications </li>
                 |<li class="CropLand tabUnsel"> Crop/Land </li>
                 |<li class="WaterBody tabUnsel"> Water Body </li>
             </ul>
         </div>
         """
-        # html = html + """
-        # <br><table class="tab tab_Chemical">
-        #     %s
-        # """%vvwm_parameters.form()
         html = html + """<br><table class="tab tab_Chemical">"""
+        html = html + str(przm5_parameters.przm5Inp_chem())
         html = html + str(vvwm_parameters.vvwmInp_chem())
-        html = html + """</table><table class="tab tab_Applications" style="display:none">"""
-        html = html + str(vvwm_parameters.vvwmInp_appl())
+        html = html + """</table><table class="tab tab_Chemical0">"""
+        html = html + str(przm5_parameters.przm5Inp_chem0())
+        html = html + """</table><table class="tab tab_Chemical1" style="display:none">
+                            <tr><th colspan="2">Degradate 1</th></tr>
+                            """
+        html = html + str(przm5_parameters.przm5Inp_chem1())
+        html = html + """</table><table class="tab tab_Chemical_MCF1" style="display:none">
+                            <tr><th colspan="2">Molar Conversion Factors (Degradate 1)</th></tr>
+                            """
+        html = html + str(przm5_parameters.przm5Inp_mcf1())
+        html = html + """</table><table class="tab tab_Chemical2" style="display:none">
+                            <tr><th colspan="2">Degradate 2</th></tr>
+                            """
+        html = html + str(przm5_parameters.przm5Inp_chem2())
+        html = html + """</table><table class="tab tab_Chemical_MCF2" style="display:none">
+                            <tr><th colspan="2">Molar Conversion Factors (Degradate 2)</th></tr>
+                            """
+        html = html + str(przm5_parameters.przm5Inp_mcf2())
         html = html + template.render (templatepath + 'vvwm_weatherfile.html', {})
         html = html + str(vvwm_parameters.vvwmInp_cropland())
         html = html + """</table><table class="tab tab_WaterBody" style="display:none">"""

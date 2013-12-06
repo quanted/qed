@@ -10,25 +10,25 @@ from google.appengine.ext.webapp import template
 import os
 from uber import uber_lib
 
-class genericAlgorithmPage(webapp.RequestHandler):
+class webiceAlgorithmPage(webapp.RequestHandler):
     def get(self):
-        text_file1 = open('generic/generic_history.txt','r')
+        text_file1 = open('webice/webice_history.txt','r')
         x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie)
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'generic','page':'history'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'webice','page':'history'})
         html = html + template.render(templatepath + '03ubertext_links_left.html', {})                       
         html = html + template.render(templatepath + '04uberalgorithm_start.html', {
-                'model':'generic', 
-                'model_attributes':'generic User History', 
+                'model':'webice', 
+                'model_attributes':'Web-ICE User History', 
                 'text_paragraph':x})
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
-app = webapp.WSGIApplication([('/.*', genericAlgorithmPage)], debug=True)
+app = webapp.WSGIApplication([('/.*', webiceAlgorithmPage)], debug=True)
 
 def main():
     run_wsgi_app(app)

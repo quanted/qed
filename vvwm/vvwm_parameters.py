@@ -14,36 +14,17 @@ from django.utils.safestring import mark_safe
 
 class vvwmInp_chem(forms.Form):
 	# Chemical Tab
-    chemical_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}))
-    # Add Degradate 1 & Degradate 2 options (checkboxes)
-        # if no checks, deg = 1; if deg1 'checked', deg = 2; if deg2 'checked', deg = 2
-    sorp_K = forms.FloatField(required=True,label='Sorption Coefficient (mL/g)',initial='200')
-    unit = ((1,'Koc'),(0,'Kd'))
-    sorp_K_unit = forms.ChoiceField(required=True,label='Sorption Coefficient Type',choices=unit,initial='Koc')
     wc_hl = forms.FloatField(required=True,label='Water Column Metabolism Halflife (day)',initial='21')
     w_temp = forms.FloatField(required=True,label=mark_safe('Water Reference Temperature (&deg;C)'),initial='25')
     bm_hl = forms.FloatField(required=True,label='Benthic Metabolism Halflife (day)',initial='75')
     ben_temp = forms.FloatField(required=True,label=mark_safe('Benthic Reference Temperature (&deg;C)'),initial='25')
-
     ap_hl = forms.FloatField(required=True,label='Aquatic Photolysis Metabolism Halflife (day)',initial='2.0')
     p_ref = forms.FloatField(required=True,label=mark_safe('Photolysis Ref Latitude (&deg;)'),initial='40')
     h_hl = forms.FloatField(required=True,label='Hydrolysis Halflife (day)',initial='')
-    s_hl = forms.FloatField(required=True,label='Soil Halflife (day)',initial='100')
-    s_ref = forms.FloatField(required=True,label=mark_safe('Soil Reference Temp (&deg;C)'),initial='25')
-    f_hl = forms.FloatField(required=True,label='Foliar Halflife (day)',initial='')
-
     mwt = forms.FloatField(required=True,label='MWT',initial='311')
     vp = forms.FloatField(required=True,label='Vapor Pressure (torr)',initial='8e-8')
     sol = forms.FloatField(required=True,label='Solubility (mg/L)',initial='3.3')
-
     QT = forms.FloatField(required=True,label=mark_safe('EXAMS Q10 Value (eq. 2-133)'),initial='2')
-    # Molar Conversion Factors
-    # wc_mcf = 
-    # ben_mcf = 
-    # p_mcf = 
-    # h_mcf = 
-    # s_mcf = 
-    # f_mcf = 
 
 class vvwmInp_cropland(forms.Form):
     #CropLand Tab

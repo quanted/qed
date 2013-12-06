@@ -9,6 +9,7 @@ from google.appengine.ext.webapp import template
 import django
 from uber import uber_lib
 from przm5 import przm5_parameters
+from vvwm import vvwm_parameters
 import logging
 logger = logging.getLogger('PRZM5 Model')
 
@@ -30,46 +31,51 @@ class przm5InputPage(webapp.RequestHandler):
                 |<li class="Applications tabUnsel"> Applications </li>
                 |<li class="CropLand tabUnsel"> Crop/Land </li>
                 |<li class="Runoff tabUnsel"> Runoff </li>
+                |<li class="WaterBody tabUnsel"> Water Body </li>
             </ul>
         </div>
         """
-        html = html + """<br><table class="tab tab_Chemical" border="0">"""
+        html = html + """<br><table class="tab tab_Chemical">"""
         html = html + str(przm5_parameters.przm5Inp_chem())
-        html = html + """</table><table class="tab tab_Chemical deg" border="0" style="display:none">
-                                    <tr class="deg1"><th><label for="id_Koc_1">Sorption Coefficient 1 (mL/g):</label></th><td><input type="text" name="Koc_1" value="200" id="id_Koc_1" /></td></tr>
-                                    <tr class="deg1"><th><label for="id_soilHalfLife_1">Soil Halflife 1 (day):</label></th><td><input type="text" name="soilHalfLife_1" value="100" id="id_soilHalfLife_1" /></td></tr>
-                                    <tr class="deg1"><th><label for="id_foliarHalfLife_1">Foliar Halflife 1 (day):</label></th><td><input type="text" name="foliarHalfLife_1" value="44" id="id_foliarHalfLife_1" /></td></tr>
-                                    <tr class="deg1"><th><label for="id_convert_Foliar1">Foliar Molar Conversion Factor:</label></th><td><input type="text" name="convert_Foliar1" value="0.82" id="id_convert_Foliar1" /></td></tr>
-                                    <tr class="deg1"><th><label for="id_convertSoil1">Soil Molar Conversion Factor:</label></th><td><input type="text" name="convertSoil1" value="0.70" id="id_convertSoil1" /></td></tr>
-                                    <tr class="deg2"><th><label for="id_Koc_2">Sorption Coefficient 2 (mL/g):</label></th><td><input type="text" name="Koc_2" value="200" id="id_Koc_2" /></td></tr>
-                                    <tr class="deg2"><th><label for="id_soilHalfLife_2">Soil Halflife 2 (day):</label></th><td><input type="text" name="soilHalfLife_2" value="100" id="id_soilHalfLife_2" /></td></tr>
-                                    <tr class="deg2"><th><label for="id_foliarHalfLife_2">Foliar Halflife 2 (day):</label></th><td><input type="text" name="foliarHalfLife_2" value="44" id="id_foliarHalfLife_2" /></td></tr>
-                                    <tr class="deg2"><th><label for="id_deg2_source">Source of Degradate 2:</label></th><td><select name="deg2_source" id="id_deg2_source"><option value="0">Degradate 1</option><option value="1">Parent</option></select></td></tr>
-                                    <tr class="deg2"><th><label for="id_convertSoil2">Soil Molar Conversion Factor (Degradate 2):</label></th><td><input type="text" name="convertSoil2" value="0.80" id="id_convertSoil2" /></td></tr>
-                                </table>"""
+        html = html + """</table><table class="tab tab_Chemical0">"""
+        html = html + str(przm5_parameters.przm5Inp_chem0())
+        html = html + """</table><table class="tab tab_Chemical1" style="display:none">
+                            <tr><th colspan="2">Degradate 1</th></tr>
+                            """
+        html = html + str(przm5_parameters.przm5Inp_chem1())
+        html = html + """</table><table class="tab tab_Chemical_MCF1" style="display:none">
+                            <tr><th colspan="2">Molar Conversion Factors (Degradate 1)</th></tr>
+                            """
+        html = html + str(przm5_parameters.przm5Inp_mcf1())
+        html = html + """</table><table class="tab tab_Chemical2" style="display:none">
+                            <tr><th colspan="2">Degradate 2</th></tr>
+                            """
+        html = html + str(przm5_parameters.przm5Inp_chem2())
+        html = html + """</table><table class="tab tab_Chemical_MCF2" style="display:none">
+                            <tr><th colspan="2">Molar Conversion Factors (Degradate 2)</th></tr>
+                            """
+        html = html + str(przm5_parameters.przm5Inp_mcf2())
 
-        html = html + """</table><table class="tab tab_Applications" border="0" style="display:none">"""
+        html = html + """</table><table class="tab tab_Applications" style="display:none">"""
         html = html + str(przm5_parameters.przm5Inp_appl())
-        html = html + """</table><table class="tab tab_Applications tab_noa" border="0" style="display:none">
-                                    <tr><th colspan="5" scope="col"><label for="id_noa">No. of Applications:</label></th>
-                                        <td colspan="1" scope="col"><select name="noa" id="id_noa">
-                                            <option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
-                                        </td>
-                                    </tr>
-                                    <tr id="not_header">
-                                        <th width="18%" id="rela_a_head" class="rela">Days Since Emergence</th>
-                                        <th width="18%" id="day_head" class="abs">Day</th>
-                                        <th width="18%" id="mon_head" class="abs">Month</th>
-                                        <th width="18%" id="a_head">Amount (kg/hA)</th>
-                                        <th width="18%" id="cam_head">Application method</th>
-                                        <th width="18%" id="d_head">Depth</th>
-                                        <th width="18%" id="e_head">Eff.</th>
-                                        <th width="18%" id="d_head">Drift/T</th>
-                                    </tr>""" 
-
-        html = html + """</table><table class="tab tab_CropLand" border="0" style="display:none">"""
+        html = html + """
+                        <tr>
+                            <th width="55px">Day</th>
+                            <th width="56px">Month</th>
+                            <th width="68px">Year</th>
+                            <th width="74px">Amount (kg/hA)</th>
+                            <th width="104px">Application Method</th>
+                            <th width="74px">Depth (cm)</th>
+                            <th width="68px">Eff.</th>
+                            <th width="75px">Drift/T</th>
+                        </tr>
+                        
+                        """
+        # Next line will be replaced with "vvwm_weatherfile.html" template when selecting of Weatherfile (*.dvf) is enabled
+        html = html + """</table><table class="tab tab_CropLand" style="display:none">"""
+        html = html + str(vvwm_parameters.vvwmInp_cropland())
         html = html + str(przm5_parameters.przm5Inp_cropland())
-        html = html + """</table><table class="tab tab_CropLand tab_noh" border="0" style="display:none">
+        html = html + """</table><table class="tab tab_CropLand tab_noh" style="display:none">
                                     <tr><th colspan="2" scope="col"><label for="id_noh">No. of Horizons:</label></th>
                                         <td colspan="1" scope="col"><select name="noh" id="id_noh">
                                             <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5" selected>5</option><option value="6">6</option><option value="7">7</option>
@@ -95,9 +101,9 @@ class przm5InputPage(webapp.RequestHandler):
                                         <th width="18%" id="c_head" class="tempflag">Clay</th>
                                     </tr>""" 
 
-        html = html + """</table><table class="tab tab_Runoff" border="0" style="display:none">"""
+        html = html + """</table><table class="tab tab_Runoff" style="display:none">"""
         html = html + str(przm5_parameters.przm5Inp_runoff())
-        html = html + """</table><table class="tab tab_Runoff tab_nott" border="0" style="display:none">
+        html = html + """</table><table class="tab tab_Runoff tab_nott" style="display:none">
                                     <tr><th colspan="3" scope="col"><label for="id_nott">No. of Time-Varing Factors:</label></th>
                                         <td colspan="1" scope="col"><select name="nott" id="id_nott">
                                             <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26" selected>26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
@@ -114,6 +120,8 @@ class przm5InputPage(webapp.RequestHandler):
                                         <th style="width:6px;" id="year_head" class="year_not">Year</th>
                                     </tr>""" 
 
+        html = html + """</table><table class="tab tab_WaterBody" style="display:none">"""
+        html = html + str(przm5_parameters.przm5Inp_waterbody())
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

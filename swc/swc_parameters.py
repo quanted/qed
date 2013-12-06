@@ -33,13 +33,6 @@ class swcInp_chem(forms.Form):
     sol = forms.FloatField(required=True,label='Solubility (mg/L)',initial='3.3')
 
     QT = forms.FloatField(required=True,label=mark_safe('EXAMS Q10 Value (eq. 2-133)'),initial='2')
-    # Molar Conversion Factors
-    # wc_mcf = 
-    # ben_mcf = 
-    # p_mcf = 
-    # h_mcf = 
-    # s_mcf = 
-    # f_mcf = 
 
 class swcInp_chem0(forms.Form):
     n_chemSel = (('1','Degradate 1'), ('2','Degradate 2'))
@@ -47,9 +40,9 @@ class swcInp_chem0(forms.Form):
 
 class swcInp_chem1(forms.Form):
     #Degradate 1
-    sorp_K_1 = forms.FloatField(required=True,label='Sorption Coefficient (mL/g)')
-    unit_1 = ((1,'Koc'),(0,'Kd'))
-    sorp_K_unit_1 = forms.ChoiceField(required=True,label='Sorption Coefficient Type',choices=unit_1)
+    # sorp_K_1 = forms.FloatField(required=True,label='Sorption Coefficient (mL/g)')
+    # unit_1 = ((1,'Koc'),(0,'Kd'))
+    # sorp_K_unit_1 = forms.ChoiceField(required=True,label='Sorption Coefficient Type',choices=unit_1)
     wc_hl_1 = forms.FloatField(required=True,label='Water Column Metabolism Halflife (day)')
     w_temp_1 = forms.FloatField(required=True,label=mark_safe('Water Reference Temperature (&deg;C)'))
     bm_hl_1 = forms.FloatField(required=True,label='Benthic Metabolism Halflife (day)')
@@ -57,13 +50,12 @@ class swcInp_chem1(forms.Form):
     ap_hl_1 = forms.FloatField(required=True,label='Aquatic Photolysis Metabolism Halflife (day)')
     p_ref_1 = forms.FloatField(required=True,label=mark_safe('Photolysis Ref Latitude (&deg;)'))
     h_hl_1 = forms.FloatField(required=True,label='Hydrolysis Halflife (day)')
-    s_hl_1 = forms.FloatField(required=True,label='Soil Halflife (day)')
-    s_ref_1 = forms.FloatField(required=True,label=mark_safe('Soil Reference Temp (&deg;C)'))
-    f_hl_1 = forms.FloatField(required=True,label='Foliar Halflife (day)')
+    # s_hl_1 = forms.FloatField(required=True,label='Soil Halflife (day)')
+    # s_ref_1 = forms.FloatField(required=True,label=mark_safe('Soil Reference Temp (&deg;C)'))
+    # f_hl_1 = forms.FloatField(required=True,label='Foliar Halflife (day)')
     mwt_1 = forms.FloatField(required=True,label='MWT')
     vp_1 = forms.FloatField(required=True,label='Vapor Pressure (torr)')
     sol_1 = forms.FloatField(required=True,label='Solubility (mg/L)')
-    QT_1 = forms.FloatField(required=True,label=mark_safe('EXAMS Q10 Value (eq. 2-133)'))
 
 class swcInp_mcf1(forms.Form):
     # Molar Conversion Factors 1
@@ -76,9 +68,9 @@ class swcInp_mcf1(forms.Form):
 
 class swcInp_chem2(forms.Form):
     #Degradate 2
-    sorp_K_2 = forms.FloatField(required=True,label='Sorption Coefficient (mL/g)')
-    unit_2 = ((1,'Koc'),(0,'Kd'))
-    sorp_K_unit_2 = forms.ChoiceField(required=True,label='Sorption Coefficient Type',choices=unit_2)
+    # sorp_K_2 = forms.FloatField(required=True,label='Sorption Coefficient (mL/g)')
+    # unit_2 = ((1,'Koc'),(0,'Kd'))
+    # sorp_K_unit_2 = forms.ChoiceField(required=True,label='Sorption Coefficient Type',choices=unit_2)
     wc_hl_2 = forms.FloatField(required=True,label='Water Column Metabolism Halflife (day)')
     w_temp_2 = forms.FloatField(required=True,label=mark_safe('Water Reference Temperature (&deg;C)'))
     bm_hl_2 = forms.FloatField(required=True,label='Benthic Metabolism Halflife (day)')
@@ -86,13 +78,12 @@ class swcInp_chem2(forms.Form):
     ap_hl_2 = forms.FloatField(required=True,label='Aquatic Photolysis Metabolism Halflife (day)')
     p_ref_2 = forms.FloatField(required=True,label=mark_safe('Photolysis Ref Latitude (&deg;)'))
     h_hl_2 = forms.FloatField(required=True,label='Hydrolysis Halflife (day)')
-    s_hl_2 = forms.FloatField(required=True,label='Soil Halflife (day)')
-    s_ref_2 = forms.FloatField(required=True,label=mark_safe('Soil Reference Temp (&deg;C)'))
-    f_hl_2 = forms.FloatField(required=True,label='Foliar Halflife (day)')
+    # s_hl_2 = forms.FloatField(required=True,label='Soil Halflife (day)')
+    # s_ref_2 = forms.FloatField(required=True,label=mark_safe('Soil Reference Temp (&deg;C)'))
+    # f_hl_2 = forms.FloatField(required=True,label='Foliar Halflife (day)')
     mwt_2 = forms.FloatField(required=True,label='MWT')
     vp_2 = forms.FloatField(required=True,label='Vapor Pressure (torr)')
     sol_2 = forms.FloatField(required=True,label='Solubility (mg/L)')
-    QT_2 = forms.FloatField(required=True,label=mark_safe('EXAMS Q10 Value (eq. 2-133)'))
 
 class swcInp_mcf2(forms.Form):
     # Molar Conversion Factors 2
@@ -116,7 +107,7 @@ class swcInp_appl(forms.Form):
              ('41','41'),('42','24'),('43','43'),('44','44'),('45','45'),('46','46'),('47','47'),('48','48'),('49','49'),('50','50'))
     app_n = forms.ChoiceField(required=True,choices=app_nOpt, label='Number of Applications', initial='')
     specifyYearsSel = (('1','Yes'), ('0','No'))
-    specifyYears = forms.ChoiceField(label='Specify Years?', choices=specifyYearsSel, widget=forms.RadioSelect(), initial='0')
+    specifyYears = forms.ChoiceField(label='Specify Years?', choices=specifyYearsSel, initial='0')
     
 class swcInp_cropland(forms.Form):
 	# Crop/Land Tab

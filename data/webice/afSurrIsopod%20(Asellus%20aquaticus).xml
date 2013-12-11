@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Asellidae</predicted>
+		<r2>0.9989078840</r2>
+		<pVal>0.0210423160</pVal>
+		<df>1</df>
+		<intercept>-2.9905074790</intercept>
+		<slope>1.5103274200</slope>
+		<xAvg>4.3123778530</xAvg>
+		<xMin>3.1205739310</xMin>
+		<xMax>5.5564882400</xMax>
+		<Sxx>2.9709432090</Sxx>
+		<MSE>0.0074093440</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+</species>

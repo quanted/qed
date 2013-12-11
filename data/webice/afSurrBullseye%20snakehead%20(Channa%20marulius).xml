@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Cyprinidae</predicted>
+		<r2>0.9993177910</r2>
+		<pVal>0.0166298470</pVal>
+		<df>1</df>
+		<intercept>-1.0708600330</intercept>
+		<slope>1.3003100590</slope>
+		<xAvg>2.8496543680</xAvg>
+		<xMin>2.2641811110</xMin>
+		<xMax>3.7878523450</xMax>
+		<Sxx>1.3474091070</Sxx>
+		<MSE>0.0015552750</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

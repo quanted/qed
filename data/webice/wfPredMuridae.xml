@@ -1,0 +1,90 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Blacktailed jackrabbit (Lepus californicus)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>California quail (Callipepla californica)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Canada goose (Branta canadensis)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Chicken (Gallus gallus)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Chukar (Alectoris chukar)</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Common grackle (Quiscalus quiscula)</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Deer mouse (Peromyscus maniculatus)</surrogate>
+	</cross>
+	<cross num="8">
+		<surrogate>Dog (Canis familiaris)</surrogate>
+	</cross>
+	<cross num="9">
+		<surrogate>Domestic goat (Capra hircus)</surrogate>
+	</cross>
+	<cross num="10">
+		<surrogate>Gray partridge (Perdix perdix)</surrogate>
+	</cross>
+	<cross num="11">
+		<surrogate>Guinea pig (Cavia porcellus)</surrogate>
+	</cross>
+	<cross num="12">
+		<surrogate>House finch (Carpodacus mexicanus)</surrogate>
+	</cross>
+	<cross num="13">
+		<surrogate>House sparrow (Passer domesticus)</surrogate>
+	</cross>
+	<cross num="14">
+		<surrogate>Japanese quail (Coturnix japonica)</surrogate>
+	</cross>
+	<cross num="15">
+		<surrogate>Mallard (Anas platyrhynchos)</surrogate>
+	</cross>
+	<cross num="16">
+		<surrogate>Meadow vole (Microtus pennsylvanicus)</surrogate>
+	</cross>
+	<cross num="17">
+		<surrogate>Mouse (Mus musculus)</surrogate>
+	</cross>
+	<cross num="18">
+		<surrogate>Mule deer (Odocoileus hemionus)</surrogate>
+	</cross>
+	<cross num="19">
+		<surrogate>Northern bobwhite (Colinus virginianus)</surrogate>
+	</cross>
+	<cross num="20">
+		<surrogate>Norway rat (Rattus norvegicus)</surrogate>
+	</cross>
+	<cross num="21">
+		<surrogate>Rabbit (Oryctolagus cuniculus)</surrogate>
+	</cross>
+	<cross num="22">
+		<surrogate>Red billed quelea (Quelea quelea)</surrogate>
+	</cross>
+	<cross num="23">
+		<surrogate>Red-legged partridge (Alectoris rufa)</surrogate>
+	</cross>
+	<cross num="24">
+		<surrogate>Redwinged blackbird (Agelaius phoeniceus)</surrogate>
+	</cross>
+	<cross num="25">
+		<surrogate>Ricefield rat (Rattus argentiventer)</surrogate>
+	</cross>
+	<cross num="26">
+		<surrogate>Ring-necked pheasant (Phasianus colchicus)</surrogate>
+	</cross>
+	<cross num="27">
+		<surrogate>Rock dove (Columba livia)</surrogate>
+	</cross>
+	<cross num="28">
+		<surrogate>Sharp-tailed grouse (Tympanuchus phasianellus)</surrogate>
+	</cross>
+	<cross num="29">
+		<surrogate>Starling (Sturnus vulgaris)</surrogate>
+	</cross>
+</species>

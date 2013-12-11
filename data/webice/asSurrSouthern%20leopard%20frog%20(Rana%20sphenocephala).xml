@@ -1,0 +1,219 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Apache trout (Oncorhynchus gilae)</predicted>
+		<r2>0.9079272310</r2>
+		<pVal>0.0122020040</pVal>
+		<df>3</df>
+		<intercept>-0.4732886050</intercept>
+		<slope>0.9730972200</slope>
+		<xAvg>2.2113896170</xAvg>
+		<xMin>1.3010299960</xMin>
+		<xMax>3.9011312510</xMax>
+		<Sxx>4.3741206150</Sxx>
+		<MSE>0.1400109900</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>60</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Bonytail chub (Gila elegans)</predicted>
+		<r2>0.9982799000</r2>
+		<pVal>0.0264108020</pVal>
+		<df>1</df>
+		<intercept>0.4568064490</intercept>
+		<slope>0.7908303670</slope>
+		<xAvg>2.4115933360</xAvg>
+		<xMin>1.6434526760</xMin>
+		<xMax>3.9011312510</xMax>
+		<Sxx>3.3291772750</Sxx>
+		<MSE>0.0035876080</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Cape fear shiner (Notropis mekistocholas)</predicted>
+		<r2>0.9502403500</r2>
+		<pVal>0.0047831720</pVal>
+		<df>3</df>
+		<intercept>-0.4011489970</intercept>
+		<slope>1.0592175720</slope>
+		<xAvg>2.2113896170</xAvg>
+		<xMin>1.3010299960</xMin>
+		<xMax>3.9011312510</xMax>
+		<Sxx>4.3741206150</Sxx>
+		<MSE>0.0856611110</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Cutthroat trout (Oncorhynchus clarkii)</predicted>
+		<r2>0.8686244390</r2>
+		<pVal>0.0210675920</pVal>
+		<df>3</df>
+		<intercept>-0.4187237360</intercept>
+		<slope>1.0277515150</slope>
+		<xAvg>2.2113896170</xAvg>
+		<xMin>1.3010299960</xMin>
+		<xMax>3.9011312510</xMax>
+		<Sxx>4.3741206150</Sxx>
+		<MSE>0.2329315370</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>60</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Fathead minnow (Pimephales promelas)</predicted>
+		<r2>0.9234776150</r2>
+		<pVal>0.0091991810</pVal>
+		<df>3</df>
+		<intercept>0.1661233340</intercept>
+		<slope>0.9431121480</slope>
+		<xAvg>2.2113896170</xAvg>
+		<xMin>1.3010299960</xMin>
+		<xMax>3.9011312510</xMax>
+		<Sxx>4.3741206150</Sxx>
+		<MSE>0.1074628380</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="6">
+		<predicted>Greenthroat darter (Etheostoma lepidum)</predicted>
+		<r2>0.8247316470</r2>
+		<pVal>0.0329530270</pVal>
+		<df>3</df>
+		<intercept>-0.1184922810</intercept>
+		<slope>0.9155705850</slope>
+		<xAvg>2.2113896170</xAvg>
+		<xMin>1.3010299960</xMin>
+		<xMax>3.9011312510</xMax>
+		<Sxx>4.3741206150</Sxx>
+		<MSE>0.2597430940</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>40</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="7">
+		<predicted>Leon springs pupfish (Cyprinodon bovinus)</predicted>
+		<r2>0.9471156440</r2>
+		<pVal>0.0268013340</pVal>
+		<df>2</df>
+		<intercept>0.4161253790</intercept>
+		<slope>0.7675586110</slope>
+		<xAvg>2.3533738530</xAvg>
+		<xMin>1.3010299960</xMin>
+		<xMax>3.9011312510</xMax>
+		<Sxx>3.9709301540</Sxx>
+		<MSE>0.0653144920</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="8">
+		<predicted>Rainbow trout (Oncorhynchus mykiss)</predicted>
+		<r2>0.9331995540</r2>
+		<pVal>0.0074798740</pVal>
+		<df>3</df>
+		<intercept>-0.0821051640</intercept>
+		<slope>0.8773829850</slope>
+		<xAvg>2.2113896170</xAvg>
+		<xMin>1.3010299960</xMin>
+		<xMax>3.9011312510</xMax>
+		<Sxx>4.3741206150</Sxx>
+		<MSE>0.0803438720</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>80</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="9">
+		<predicted>Razorback sucker (Xyrauchen texanus)</predicted>
+		<r2>0.9103133960</r2>
+		<pVal>0.0117217170</pVal>
+		<df>3</df>
+		<intercept>-0.0226909150</intercept>
+		<slope>0.9454937300</slope>
+		<xAvg>2.2113896170</xAvg>
+		<xMin>1.3010299960</xMin>
+		<xMax>3.9011312510</xMax>
+		<Sxx>4.3741206150</Sxx>
+		<MSE>0.1284172760</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>80</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="10">
+		<predicted>Shortnose sturgeon (Acipenser brevirostrum)</predicted>
+		<r2>0.9684672940</r2>
+		<pVal>0.0158926410</pVal>
+		<df>2</df>
+		<intercept>-0.3344258890</intercept>
+		<slope>0.9170307100</slope>
+		<xAvg>2.4389795230</xAvg>
+		<xMin>1.6434526760</xMin>
+		<xMax>3.9011312510</xMax>
+		<Sxx>3.3381773140</Sxx>
+		<MSE>0.0457007630</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="11">
+		<predicted>Spotfin chub (Erimonax monachus)</predicted>
+		<r2>0.8727925220</r2>
+		<pVal>0.0200450950</pVal>
+		<df>3</df>
+		<intercept>-0.5341067780</intercept>
+		<slope>1.0551651120</slope>
+		<xAvg>2.2113896170</xAvg>
+		<xMin>1.3010299960</xMin>
+		<xMax>3.9011312510</xMax>
+		<Sxx>4.3741206150</Sxx>
+		<MSE>0.2365984910</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>80</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="12">
+		<predicted>Western toad (Bufo boreas)</predicted>
+		<r2>0.9248420710</r2>
+		<pVal>0.0383129040</pVal>
+		<df>2</df>
+		<intercept>-0.2353594160</intercept>
+		<slope>1.0766830730</slope>
+		<xAvg>2.4389795230</xAvg>
+		<xMin>1.6434526760</xMin>
+		<xMax>3.9011312510</xMax>
+		<Sxx>3.3381773140</Sxx>
+		<MSE>0.1572397720</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>75</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+</species>

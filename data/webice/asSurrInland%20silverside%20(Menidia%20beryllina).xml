@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Bluegill (Lepomis macrochirus)</predicted>
+		<r2>0.9714059790</r2>
+		<pVal>0.0144007010</pVal>
+		<df>2</df>
+		<intercept>-0.7483796310</intercept>
+		<slope>1.1112812070</slope>
+		<xAvg>3.5715570650</xAvg>
+		<xMin>1.9740509030</xMin>
+		<xMax>5.0569048510</xMax>
+		<Sxx>6.6635769810</Sxx>
+		<MSE>0.1211155270</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

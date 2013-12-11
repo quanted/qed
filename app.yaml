@@ -1,5 +1,5 @@
 application: pypest
-version: tao
+version: sprint10
 runtime: python27
 api_version: 1
 
@@ -89,6 +89,8 @@ handlers:
 - url: /templates/popup.html
   static_files: templates/popup.html
   upload: templates/popup.html
+- url: /data
+  static_dir: data
 
 ##UBERTOOL INPUT PAGES##
 #output

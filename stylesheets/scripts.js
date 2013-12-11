@@ -515,9 +515,22 @@ $( document ).ready(function() {
 
 });
 
-var pathArray = window.location.pathname.split('/');
-var pathLink = pathArray[1];
+// var pathArray = window.location.pathname.split('/');
+var pathArray = document.URL.split('/');
+var pathDoamin = pathArray[2];
+var pathLink = pathArray[3];
 var pathSlice = pathLink.slice(0, -5);
+// 
+// console.log('pathArray ='+pathArray);
+// console.log('pathLink ='+pathLink);
+// console.log('pathSlice ='+pathSlice);
+
+// var pathArryURL = document.URL.split('/');
+// var pathLinkURL = pathArryURL[2];
+// console.log('pathArryURL ='+pathArryURL);
+// console.log('pathLinkURL ='+pathLinkURL);
+// console.log('Test: '+pathArryURL[3]);
+
 var defSkinSel = {backgroundColor:'rgb(255,165,0)', color:'#FFFFFF'};
 var epaSkinSel = {backgroundColor:'rgb(255,165,0)', color:'#FFFFFF'};
 // BlockUI setup

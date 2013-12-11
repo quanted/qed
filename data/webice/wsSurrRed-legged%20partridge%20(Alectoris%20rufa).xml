@@ -1,0 +1,219 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Chicken (Gallus gallus)</predicted>
+		<r2>0.512</r2>
+		<pVal>0.001</pVal>
+		<df>15</df>
+		<intercept>0.577</intercept>
+		<slope>0.801</slope>
+		<xAvg>1.898</xAvg>
+		<xMin>0.903</xMin>
+		<xMax>2.83</xMax>
+		<Sxx>4.229</Sxx>
+		<MSE>0.172</MSE>
+		<t90CI>1.753</t90CI>
+		<t95CI>2.131</t95CI>
+		<t99CI>2.947</t99CI>
+		<Bootstrap>88.235</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Chukar (Alectoris chukar)</predicted>
+		<r2>0.944</r2>
+		<pVal>0</pVal>
+		<df>6</df>
+		<intercept>-0.088</intercept>
+		<slope>1.094</slope>
+		<xAvg>1.899</xAvg>
+		<xMin>1.246</xMin>
+		<xMax>3.101</xMax>
+		<Sxx>2.548</Sxx>
+		<MSE>0.03</MSE>
+		<t90CI>1.943</t90CI>
+		<t95CI>2.447</t95CI>
+		<t99CI>3.707</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>1</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Gray partridge (Perdix perdix)</predicted>
+		<r2>0.792</r2>
+		<pVal>0</pVal>
+		<df>32</df>
+		<intercept>0.005</intercept>
+		<slope>0.951</slope>
+		<xAvg>2.008</xAvg>
+		<xMin>0.903</xMin>
+		<xMax>3.101</xMax>
+		<Sxx>10.777</Sxx>
+		<MSE>0.08</MSE>
+		<t90CI>1.645</t90CI>
+		<t95CI>1.96</t95CI>
+		<t99CI>2.576</t99CI>
+		<Bootstrap>97.059</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Japanese quail (Coturnix japonica)</predicted>
+		<r2>0.66</r2>
+		<pVal>0</pVal>
+		<df>24</df>
+		<intercept>-0.586</intercept>
+		<slope>1.273</slope>
+		<xAvg>1.94</xAvg>
+		<xMin>1.246</xMin>
+		<xMax>3.101</xMax>
+		<Sxx>4.654</Sxx>
+		<MSE>0.162</MSE>
+		<t90CI>1.711</t90CI>
+		<t95CI>2.064</t95CI>
+		<t99CI>2.797</t99CI>
+		<Bootstrap>88.462</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Mallard (Anas platyrhynchos)</predicted>
+		<r2>0.567</r2>
+		<pVal>0</pVal>
+		<df>20</df>
+		<intercept>-0.343</intercept>
+		<slope>1.137</slope>
+		<xAvg>2.015</xAvg>
+		<xMin>1.246</xMin>
+		<xMax>3.646</xMax>
+		<Sxx>9.085</Sxx>
+		<MSE>0.448</MSE>
+		<t90CI>1.725</t90CI>
+		<t95CI>2.086</t95CI>
+		<t99CI>2.845</t99CI>
+		<Bootstrap>63.636</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="6">
+		<predicted>Northern bobwhite (Colinus virginianus)</predicted>
+		<r2>0.464</r2>
+		<pVal>0.001</pVal>
+		<df>18</df>
+		<intercept>0.283</intercept>
+		<slope>0.851</slope>
+		<xAvg>1.873</xAvg>
+		<xMin>0.903</xMin>
+		<xMax>2.849</xMax>
+		<Sxx>4.6</Sxx>
+		<MSE>0.214</MSE>
+		<t90CI>1.734</t90CI>
+		<t95CI>2.101</t95CI>
+		<t99CI>2.878</t99CI>
+		<Bootstrap>85</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+	<cross num="7">
+		<predicted>Norway rat (Rattus norvegicus)</predicted>
+		<r2>0.273</r2>
+		<pVal>0.026</pVal>
+		<df>16</df>
+		<intercept>0.599</intercept>
+		<slope>0.765</slope>
+		<xAvg>2.044</xAvg>
+		<xMin>1.246</xMin>
+		<xMax>3.101</xMax>
+		<Sxx>5.174</Sxx>
+		<MSE>0.502</MSE>
+		<t90CI>1.746</t90CI>
+		<t95CI>2.12</t95CI>
+		<t99CI>2.921</t99CI>
+		<Bootstrap>64.286</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="8">
+		<predicted>Redwinged blackbird (Agelaius phoeniceus)</predicted>
+		<r2>0.438</r2>
+		<pVal>0.005</pVal>
+		<df>14</df>
+		<intercept>-0.349</intercept>
+		<slope>0.812</slope>
+		<xAvg>1.97</xAvg>
+		<xMin>1.246</xMin>
+		<xMax>3.101</xMax>
+		<Sxx>4.1</Sxx>
+		<MSE>0.248</MSE>
+		<t90CI>1.761</t90CI>
+		<t95CI>2.145</t95CI>
+		<t99CI>2.977</t99CI>
+		<Bootstrap>75</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="9">
+		<predicted>Ring-necked pheasant (Phasianus colchicus)</predicted>
+		<r2>0.341</r2>
+		<pVal>0.003</pVal>
+		<df>22</df>
+		<intercept>0.539</intercept>
+		<slope>0.642</slope>
+		<xAvg>1.891</xAvg>
+		<xMin>0.903</xMin>
+		<xMax>3.101</xMax>
+		<Sxx>6.797</Sxx>
+		<MSE>0.246</MSE>
+		<t90CI>1.717</t90CI>
+		<t95CI>2.074</t95CI>
+		<t99CI>2.819</t99CI>
+		<Bootstrap>87.5</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+	<cross num="10">
+		<predicted>Ringed turtledove (Streptopelia risoria)</predicted>
+		<r2>0.998</r2>
+		<pVal>0.032</pVal>
+		<df>1</df>
+		<intercept>-2.578</intercept>
+		<slope>2.93</slope>
+		<xAvg>1.542</xAvg>
+		<xMin>1.246</xMin>
+		<xMax>1.737</xMax>
+		<Sxx>0.136</Sxx>
+		<MSE>0.003</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="11">
+		<predicted>Rock dove (Columba livia)</predicted>
+		<r2>0.731</r2>
+		<pVal>0</pVal>
+		<df>11</df>
+		<intercept>-1.46</intercept>
+		<slope>1.567</slope>
+		<xAvg>1.905</xAvg>
+		<xMin>1.246</xMin>
+		<xMax>3.101</xMax>
+		<Sxx>2.895</Sxx>
+		<MSE>0.238</MSE>
+		<t90CI>1.796</t90CI>
+		<t95CI>2.201</t95CI>
+		<t99CI>3.106</t99CI>
+		<Bootstrap>92.308</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="12">
+		<predicted>Sharp-tailed grouse (Tympanuchus phasianellus)</predicted>
+		<r2>0.886</r2>
+		<pVal>0.005</pVal>
+		<df>4</df>
+		<intercept>-0.896</intercept>
+		<slope>1.208</slope>
+		<xAvg>1.882</xAvg>
+		<xMin>1.246</xMin>
+		<xMax>2.83</xMax>
+		<Sxx>1.669</Sxx>
+		<MSE>0.078</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+</species>

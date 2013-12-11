@@ -1,0 +1,80 @@
+<table class="webice webiceSel">
+  <tr>
+    <th colspan="2">Web-ICE Modules</th>
+  </tr>
+  <tr>
+  	<th>ICE Aquatic</th>
+  	<th>ICE Wildlife</th>
+  </tr>
+  <tr>
+  	<th>Aquatic vertebrates / invertebrates</th>
+  	<th>Terrestrial Birds / Mammals</th>
+  </tr>
+  <tr>
+  	<td><a href="#?file=as" id="asTaxa">Species</a></td>
+  	<td><a href="#aw">Species</a></td>
+  </tr>
+  <tr>
+  	<td><a href="#ag">Genus</a></td>
+  	<td><a href="#wf">Family</a></td>
+  </tr>
+  <tr>
+  	<td><a href="#af">Family</a></td>
+  </tr>
+  <tr>
+  	<th>Algae</th>
+  </tr>
+  <tr>
+  	<td><a href="#ls">Species</a></td>
+  </tr>
+  <tr>
+  	<td><a href="#lg">Genus</a></td>
+  </tr>
+</table>
+<table class="webice webiceSel">
+  <tr>
+    <th colspan="2">Species Sensitivity Distribution Module</th>
+  </tr>
+  <tr>
+  	<td><a href="#as">ICE Aquatic</a></td>
+  	<td><a href="#ws">ICE Wildlife</a></td>
+  </tr>
+</table>
+<table class="webice webiceSel">
+  <tr>
+    <th colspan="2">Endangered Species Module</th>
+  </tr>
+  <tr>
+  	<td><a href="#tneAs">ICE Aquatic</a></td>
+  	<td><a href="#tneWs">ICE Wildlife</a></td>
+  </tr>
+</table>
+
+<table class="webice asTaxaSel" style="display:none">
+  <tr>
+    <th>Surrogate:</th>
+    <th>Predicted:</th>
+  </tr>
+  <tr>
+    <td id="SurrogateCell">
+      <select id="Surrogate" name="Surrogate" onchange="loadSurrogate();">
+        <option> </option>
+      </select>
+    </td>
+    <td id="PredictedCell">
+      <select id="Predicted" name="Predicted" onchange="loadPredicted();">
+        <option> </option>
+      </select>
+    </td>
+  </tr>
+  <tr id="sortRow">
+    <td>Sort By: 
+      <select id="sortBy" onchange="nameReload();">
+        <option>Common Name</option>
+        <option>Scientific Name</option>
+      </select>
+    </td>
+  </tr>
+<!-- Below goes right before the form closing tag -->
+<input id="file" name="file" type="hidden" value=""/>
+</table>

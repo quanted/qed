@@ -1,0 +1,75 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Centrarchidae</predicted>
+		<r2>0.9473986800</r2>
+		<pVal>0.0266559290</pVal>
+		<df>2</df>
+		<intercept>-1.0873967490</intercept>
+		<slope>1.2294486140</slope>
+		<xAvg>1.5201818680</xAvg>
+		<xMin>0.6627578320</xMin>
+		<xMax>2.5854607300</xMax>
+		<Sxx>1.9606442380</Sxx>
+		<MSE>0.0822722610</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Cyprinidae</predicted>
+		<r2>0.9220394270</r2>
+		<pVal>0.0397711590</pVal>
+		<df>2</df>
+		<intercept>-1.7718024790</intercept>
+		<slope>2.1166574770</slope>
+		<xAvg>1.5201818680</xAvg>
+		<xMin>0.6627578320</xMin>
+		<xMax>2.5854607300</xMax>
+		<Sxx>1.9606442380</Sxx>
+		<MSE>0.3713603250</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>50</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Percidae</predicted>
+		<r2>0.9175453680</r2>
+		<pVal>0.0421141160</pVal>
+		<df>2</df>
+		<intercept>-1.4095009400</intercept>
+		<slope>1.4413989730</slope>
+		<xAvg>1.5201818680</xAvg>
+		<xMin>0.6627578320</xMin>
+		<xMax>2.5854607300</xMax>
+		<Sxx>1.9606442380</Sxx>
+		<MSE>0.1830310330</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>50</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Salmonidae</predicted>
+		<r2>0.9753418860</r2>
+		<pVal>0.0124060120</pVal>
+		<df>2</df>
+		<intercept>-0.9530185720</intercept>
+		<slope>1.1627585030</slope>
+		<xAvg>1.5201818680</xAvg>
+		<xMin>0.6627578320</xMin>
+		<xMax>2.5854607300</xMax>
+		<Sxx>1.9606442380</Sxx>
+		<MSE>0.0335081790</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

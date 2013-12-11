@@ -1,0 +1,93 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Chlorella</predicted>
+		<r2>0.63865163</r2>
+		<pVal>0.01732566</pVal>
+		<df>6</df>
+		<intercept>0.048773683</intercept>
+		<slope>0.699296743</slope>
+		<xAvg>0.140038081</xAvg>
+		<xMin>-1.391473966</xMin>
+		<xMax>1.33243846</xMax>
+		<Sxx>7.164223808</Sxx>
+		<MSE>0.330371808</MSE>
+		<t90CI>1.943180281</t90CI>
+		<t95CI>2.446911851</t95CI>
+		<t99CI>3.707428021</t99CI>
+		<Bootstrap>71.4285714</Bootstrap>
+		<taxDist>7</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Desmodesmus</predicted>
+		<r2>0.595939226</r2>
+		<pVal>0.014793938</pVal>
+		<df>7</df>
+		<intercept>-0.280310585</intercept>
+		<slope>0.968754035</slope>
+		<xAvg>-0.029102155</xAvg>
+		<xMin>-1.352546545</xMin>
+		<xMax>1.30887749</xMax>
+		<Sxx>6.097457753</Sxx>
+		<MSE>0.554271475</MSE>
+		<t90CI>1.894578605</t90CI>
+		<t95CI>2.364624252</t95CI>
+		<t99CI>3.499483297</t99CI>
+		<Bootstrap>62.5</Bootstrap>
+		<taxDist>7</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Microcystis</predicted>
+		<r2>0.993564568</r2>
+		<pVal>0</pVal>
+		<df>8</df>
+		<intercept>-0.03722682</intercept>
+		<slope>1.092836499</slope>
+		<xAvg>-1.512633961</xAvg>
+		<xMin>-4.692225932</xMin>
+		<xMax>1.794741718</xMax>
+		<Sxx>46.35700894</Sxx>
+		<MSE>0.044824703</MSE>
+		<t90CI>1.859548038</t90CI>
+		<t95CI>2.306004135</t95CI>
+		<t99CI>3.355387331</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Pseudokirchneriella</predicted>
+		<r2>0.518548588</r2>
+		<pVal>0</pVal>
+		<df>22</df>
+		<intercept>-0.33105559</intercept>
+		<slope>0.649549321</slope>
+		<xAvg>0.056459471</xAvg>
+		<xMin>-2.96702351</xMin>
+		<xMax>1.794741718</xMax>
+		<Sxx>28.27189815</Sxx>
+		<MSE>0.503407361</MSE>
+		<t90CI>1.717144374</t90CI>
+		<t95CI>2.073873068</t95CI>
+		<t99CI>2.818756061</t99CI>
+		<Bootstrap>50</Bootstrap>
+		<taxDist>7</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Skeletonema</predicted>
+		<r2>0.66287931</r2>
+		<pVal>0.004141177</pVal>
+		<df>8</df>
+		<intercept>-0.872971611</intercept>
+		<slope>0.833753558</slope>
+		<xAvg>-0.078848519</xAvg>
+		<xMin>-1.71219827</xMin>
+		<xMax>1.30887749</xMax>
+		<Sxx>9.591716659</Sxx>
+		<MSE>0.423870019</MSE>
+		<t90CI>1.859548038</t90CI>
+		<t95CI>2.306004135</t95CI>
+		<t99CI>3.355387331</t99CI>
+		<Bootstrap>80</Bootstrap>
+		<taxDist>7</taxDist>
+	</cross>
+</species>

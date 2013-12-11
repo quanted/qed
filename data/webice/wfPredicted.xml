@@ -1,0 +1,19 @@
+<?xml version = '1.0'?>
+<species>
+	<predicted>Sciuridae</predicted>
+	<predicted>Phasianidae</predicted>
+	<predicted>Anatidae</predicted>
+	<predicted>Columbidae</predicted>
+	<predicted>Leporidae</predicted>
+	<predicted>Psittacidae</predicted>
+	<predicted>Emberizidae</predicted>
+	<predicted>Icteridae</predicted>
+	<predicted>Bovidae</predicted>
+	<predicted>Fringillidae</predicted>
+	<predicted>Ploceidae</predicted>
+	<predicted>Passeridae</predicted>
+	<predicted>Muridae</predicted>
+	<predicted>Corvidae</predicted>
+	<predicted>Canidae</predicted>
+	<predicted>Odontophoridae</predicted>
+</species>

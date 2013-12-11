@@ -1,0 +1,75 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Acipenser</predicted>
+		<r2>0.9218637180</r2>
+		<pVal>0.0398626570</pVal>
+		<df>2</df>
+		<intercept>-0.2067737390</intercept>
+		<slope>1.0692141410</slope>
+		<xAvg>2.0230031050</xAvg>
+		<xMin>1.3303946350</xMin>
+		<xMax>3.1568519010</xMax>
+		<Sxx>2.1898142700</Sxx>
+		<MSE>0.1060944570</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Cyprinodon</predicted>
+		<r2>0.9510463870</r2>
+		<pVal>0.0247839280</pVal>
+		<df>2</df>
+		<intercept>1.0273467820</intercept>
+		<slope>0.6989988330</slope>
+		<xAvg>1.7487756020</xAvg>
+		<xMin>0.3010299960</xMin>
+		<xMax>3.1568519010</xMax>
+		<Sxx>4.4634988920</Sxx>
+		<MSE>0.0561282360</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Etheostoma</predicted>
+		<r2>0.9628742670</r2>
+		<pVal>0.0030705010</pVal>
+		<df>3</df>
+		<intercept>0.2975952830</intercept>
+		<slope>0.9558522540</slope>
+		<xAvg>1.6786084830</xAvg>
+		<xMin>0.3010299960</xMin>
+		<xMax>3.1568519010</xMax>
+		<Sxx>4.5619673820</Sxx>
+		<MSE>0.0535695390</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Oncorhynchus</predicted>
+		<r2>0.9895957870</r2>
+		<pVal>0.0004518180</pVal>
+		<df>3</df>
+		<intercept>0.1920397390</intercept>
+		<slope>0.9848331020</slope>
+		<xAvg>1.6786084830</xAvg>
+		<xMin>0.3010299960</xMin>
+		<xMax>3.1568519010</xMax>
+		<Sxx>4.5619673820</Sxx>
+		<MSE>0.0155062800</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>1</taxDist>
+	</cross>
+</species>

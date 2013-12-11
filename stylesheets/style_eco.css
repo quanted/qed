@@ -1,6 +1,6 @@
 .model_header {
   color: #79973F;
-  margin: 0 400px 20px 0;
+  margin-bottom: 20px;
   font-size: 1.5em;
   font-weight: bold;
   display: inline-block;
@@ -1220,4 +1220,16 @@ th {
 	background:#FFA500;
 	color:#fff;
 	font-weight:normal;
+}
+.webice {
+  width: 80%;
+  margin-top: 16px;
+}
+.webice td {
+  border: none;
+  text-align: center;
+  padding: 4px;
+}
+.webice th {
+  padding: 8px;
 }

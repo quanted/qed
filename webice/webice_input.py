@@ -8,7 +8,6 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import django
 from django import forms
-from webice import webice_parameters
 from uber import uber_lib
 
 class webiceInputPage(webapp.RequestHandler):
@@ -16,13 +15,14 @@ class webiceInputPage(webapp.RequestHandler):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie)
+        html = html + template.render (templatepath + 'webice-jquery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'webice','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberinput_start.html', {
+        html = html + template.render(templatepath + '04ubertext_start.html', {
                 'model':'webice', 
-                'model_attributes':'Web-ICE Inputs'})
-        html = html + str(webice_parameters.webiceInp())
-        html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
+                'model_attributes':'Web-ICE v3.2.1'})
+        html = html + template.render (templatepath + 'webice.html', {})
+        html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

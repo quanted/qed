@@ -12,8 +12,6 @@ from uber import uber_lib
 
 class webiceDescriptionPage(webapp.RequestHandler):
     def get(self):
-        text_file1 = open('webice/webice_description.txt','r')
-        x = text_file1.read()
         text_file2 = open('webice/webice_text.txt','r')
         xx = text_file2.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'

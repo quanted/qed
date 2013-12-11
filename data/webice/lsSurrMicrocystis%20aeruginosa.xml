@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Anabaena flos-aquae</predicted>
+		<r2>0.736710835</r2>
+		<pVal>0</pVal>
+		<df>13</df>
+		<intercept>-0.066764458</intercept>
+		<slope>0.830988148</slope>
+		<xAvg>-2.875203574</xAvg>
+		<xMin>-5.457299031</xMin>
+		<xMax>1.939745825</xMax>
+		<Sxx>52.36717431</Sxx>
+		<MSE>0.994125874</MSE>
+		<t90CI>1.770933396</t90CI>
+		<t95CI>2.160368657</t95CI>
+		<t99CI>3.012275839</t99CI>
+		<Bootstrap>93.3333333</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Microcystis flos-aquae</predicted>
+		<r2>0.585912603</r2>
+		<pVal>0.000881278</pVal>
+		<df>13</df>
+		<intercept>-0.882498538</intercept>
+		<slope>0.894127859</slope>
+		<xAvg>-2.875203574</xAvg>
+		<xMin>-5.457299031</xMin>
+		<xMax>1.939745825</xMax>
+		<Sxx>52.36717431</Sxx>
+		<MSE>2.276010258</MSE>
+		<t90CI>1.770933396</t90CI>
+		<t95CI>2.160368657</t95CI>
+		<t99CI>3.012275839</t99CI>
+		<Bootstrap>93.3333333</Bootstrap>
+		<taxDist>1</taxDist>
+	</cross>
+</species>

@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Oncorhynchus</predicted>
+		<r2>0.9639075280</r2>
+		<pVal>0.0182120760</pVal>
+		<df>2</df>
+		<intercept>-0.8446470150</intercept>
+		<slope>1.1725742430</slope>
+		<xAvg>1.5201818680</xAvg>
+		<xMin>0.6627578320</xMin>
+		<xMax>2.5854607300</xMax>
+		<Sxx>1.9606442380</Sxx>
+		<MSE>0.0504697040</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Pimephales</predicted>
+		<r2>0.9037706130</r2>
+		<pVal>0.0493314910</pVal>
+		<df>2</df>
+		<intercept>-1.7671110140</intercept>
+		<slope>2.1878298070</slope>
+		<xAvg>1.5201818680</xAvg>
+		<xMin>0.6627578320</xMin>
+		<xMax>2.5854607300</xMax>
+		<Sxx>1.9606442380</Sxx>
+		<MSE>0.4996263940</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>50</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

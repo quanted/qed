@@ -1,0 +1,4 @@
+The GENeric Estimated Exposure Concentration (GENEEC) model
+estimates aquatic exposure concentrations based on a pesticide's 
+label application information. It is used as a screening-level model for more 
+sophisticated aquatic exposure models.

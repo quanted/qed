@@ -1,0 +1,10 @@
+<p>GENEEC is a screening-level aquatic exposure assessment model used in the 
+determination of the ecological risk assessment process. It works in conjunction 
+with other environmental fate and transport models such as the Pesticide Root Zone 
+Model (PRZM) and the Exposure Analysis Modeling System (EXAMS). GENEEC is used to 
+establish which chemicals were most likely to pose a higher risk and should be 
+assessed. The chemicals that GENEEC finds to be further assessed are then used in the
+labor-intensive and time consuming PRZM and EXAMS models.</p>
+<p>GENEEC was designed to mimic a much more sophisticated PRZM/EXAMS simulation.
+However, GENEEC requires only a few, readily available input parameters, which 
+makes it fast and easy to use.</p>

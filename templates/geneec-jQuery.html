@@ -33,11 +33,22 @@ $(document).ready(function() {
 	});
 	
 	$('#id_aerobic_aquatic_metabolism').change(function() {
-	
-	if ($(this).val() <0){
-		$('#id_hydrolysis').closest('tr').show();}
-	else{
+		if ($(this).val() <0){
+			$('#id_hydrolysis').closest('tr').show();
 		}
+		else{
+			$('#id_hydrolysis').closest('tr').hide();
+			}
+	});
+
+	
+	$("input[value='Submit']").click(function (e) {
+		e.preventDefault();
+		var html_input = $("form").html();
+		localStorage.html_input=html_input;
+		event.preventDefault();
+		var html_new = $("form").serialize()
+		localStorage.html_new=html_new;
 	});
 
 	});

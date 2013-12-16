@@ -169,7 +169,7 @@ tmpl = Template(djtemplate)
 
 
 def table_all(geneec_obj):
-    table1_out = table_1(geneec_obj)
+    table1_out = table_1()
     table2_out = table_2(geneec_obj)
     html_all = table1_out + table2_out
     return html_all
@@ -193,29 +193,28 @@ def timestamp():
     </div>"""
     return html
 
-def table_1(geneec_obj):
-        if geneec_obj.application_method_label == 'Aerial Spray':
-          t1data = gett1dataAerial(geneec_obj)
-        if geneec_obj.application_method_label == 'Ground Spray':
-          t1data = gett1dataGround(geneec_obj)
-        if geneec_obj.application_method_label == 'Airblast Spray (Orchard & Vineyard)':
-          t1data = gett1dataAirBlast(geneec_obj)
-        if geneec_obj.application_method_label == 'Granular (Non-spray)':
-          t1data = gett1dataGranular(geneec_obj)
-        t1rows = gethtmlrowsfromcols(t1data,pvuheadings)
-        html = """
-        <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs</H3>
-        <div class="out_">
-            <H4 class="out_1 collapsible" id="section2"><span></span>Chemical Properties: %s</H4>
-                <div class="out_ container_output">
-        """%geneec_obj.application_method_label
-        html = html + tmpl.render(Context(dict(data=t1rows, headings=pvuheadings)))
-        html = html + """
-                </div>
-        </div>
-        <br>
-        """
-        return html
+
+def table_1():
+    html = """<H3 class="out_3 collapsible" id="section1"><span></span>User Inputs</H3>
+                <div class="out_input_table out_">
+                </div>"""
+    html = html + """<script>
+                        $(".out_input_table").append(localStorage.html_input);
+                        $(".out_input_table :input").attr('disabled', true);
+
+                        element_all = localStorage.html_new.split("&")
+                        // console.log(element_all)
+                        element1 = localStorage.html_new.split("&")[0].split("=")
+                        // console.log(element_all.length)
+                        for (i=0; i<element_all.length; i++) {
+                            element_name_t = element_all[i].split("=")[0]
+                            element_val_t = element_all[i].split("=")[1]
+                            $('[name="'+element_name_t+'"]').val(element_val_t)
+                        }
+                        $(".input_button").hide()
+                    </script>"""
+    return html
+
 
 def table_1_qaqc(geneec_obj):
         t1data = gett1dataAerial_qaqc(geneec_obj)
@@ -264,4 +263,5 @@ def table_2_qaqc(geneec_obj):
                 </div>
         </div>
         """
-        return html
+        return html
+

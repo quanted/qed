@@ -39,7 +39,10 @@ class genee(object):
         self.photolysis_aquatic_half_life = photolysis_aquatic_half_life
 
         ############Provide the key and connect to the picloud####################
-
+        api_key=keys_Picloud_S3.picloud_api_key
+        api_secretkey=keys_Picloud_S3.picloud_api_secretkey
+        base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
+        http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
         ########call the function################# 
 
         APPRAT = self.application_rate
@@ -65,18 +68,14 @@ class genee(object):
                    "METHOD":METHOD, "AIRFLG":AIRFLG, "YLOCEN":YLOCEN, "GRNFLG":GRNFLG, "GRSIZE":GRSIZE,
                    "ORCFLG":ORCFLG, "INCORP":INCORP, "SOL":SOL, "METHAP":METHAP, "HYDHAP":HYDHAP, "FOTHAP":FOTHAP}
         logger.info(all_dic)
-
         data = json.dumps(all_dic)
-        # url='http://localhost:7777/myroute/' 
-        url='http://54.204.192.91:7777/myroute/' 
 
+        url='http://localhost:7777/geneec/' 
+        # url='http://54.204.192.91:7777/myroute/' 
+        self.response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+        self.output_val = json.loads(self.response.content)['result']
 
-        http_headers = {'Content-Type' : 'application/json'}
-        response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers)   
-        self.data_a= json.loads(response.content)["ff"]
-        # self.data_a= response
-
-        logger.info(self.data_a)
+        logger.info(self.output_val)
 
 
         # if run_type == "individual":

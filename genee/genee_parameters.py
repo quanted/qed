@@ -10,8 +10,8 @@ from django import forms
 from django.db import models
 from django.utils.safestring import mark_safe
 
-applicationtarget_CHOICES=(('Short grass','Short grass'),('Tall grass','Tall grass'),('Broad-leafed plants/small insects','Broad-leafed plants/small insects'),
-                           ('Fruits/pods/seeds/large insects','Fruits/pods/seeds/large insects')) 
+applicationtarget_CHOICES=(('a','Short grass'),('b','Tall grass'),('c','Broad-leafed plants/small insects'),
+                           ('d','Fruits/pods/seeds/large insects')) 
 
 wet_in_CHOICES=(('Yes','Yes'),('No','No'))
 

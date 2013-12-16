@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Lepomis</predicted>
+		<r2>0.9245872130</r2>
+		<pVal>0.0384454190</pVal>
+		<df>2</df>
+		<intercept>-0.7631613840</intercept>
+		<slope>1.4949473230</slope>
+		<xAvg>1.4809370490</xAvg>
+		<xMin>1.1760912590</xMin>
+		<xMax>1.7923916890</xMax>
+		<Sxx>0.3121563520</Sxx>
+		<MSE>0.0284505760</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>1</taxDist>
+	</cross>
+</species>

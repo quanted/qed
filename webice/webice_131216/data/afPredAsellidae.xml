@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Bluegill (Lepomis macrochirus)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Channel catfish (Ictalurus punctatus)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Cutthroat trout (Oncorhynchus clarkii)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Daphnid (Daphnia magna)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Daphnid (Daphnia pulex)</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Fathead minnow (Pimephales promelas)</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Guppy (Poecilia reticulata)</surrogate>
+	</cross>
+	<cross num="8">
+		<surrogate>Isopod (Asellus aquaticus)</surrogate>
+	</cross>
+	<cross num="9">
+		<surrogate>Kadal shrimp (Metapenaeus dobsoni)</surrogate>
+	</cross>
+	<cross num="10">
+		<surrogate>Northern river crangonyctid (Crangonyx pseudogracilis)</surrogate>
+	</cross>
+	<cross num="11">
+		<surrogate>Oligochaete (Lumbriculus variegatus)</surrogate>
+	</cross>
+	<cross num="12">
+		<surrogate>Rainbow trout (Oncorhynchus mykiss)</surrogate>
+	</cross>
+</species>

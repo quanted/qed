@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Passeridae</predicted>
+		<r2>1</r2>
+		<pVal>0.012</pVal>
+		<df>1</df>
+		<intercept>0.3463</intercept>
+		<slope>0.898</slope>
+		<xAvg>1.21</xAvg>
+		<xMin>0.41</xMin>
+		<xMax>2.48</xMax>
+		<Sxx>2.4677</Sxx>
+		<MSE>0.0007</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Ploceidae</predicted>
+		<r2>0.998</r2>
+		<pVal>0.029</pVal>
+		<df>1</df>
+		<intercept>0.3057</intercept>
+		<slope>0.5632</slope>
+		<xAvg>1.21</xAvg>
+		<xMin>0.41</xMin>
+		<xMax>2.48</xMax>
+		<Sxx>2.4677</Sxx>
+		<MSE>0.0016</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+</species>

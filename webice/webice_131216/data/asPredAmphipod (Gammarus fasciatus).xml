@@ -1,0 +1,33 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Amphipod (Gammarus lacustris)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Bluegill (Lepomis macrochirus)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Daphnid (Daphnia magna)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Eastern forktail (Ischnura verticalis)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Goldfish (Carassius auratus)</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Isopod (Caecidotea brevicauda)</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Mysid (Americamysis bahia)</surrogate>
+	</cross>
+	<cross num="8">
+		<surrogate>Rainbow trout (Oncorhynchus mykiss)</surrogate>
+	</cross>
+	<cross num="9">
+		<surrogate>Stonefly (Pteronarcella badia)</surrogate>
+	</cross>
+	<cross num="10">
+		<surrogate>Stonefly (Pteronarcys californica)</surrogate>
+	</cross>
+</species>

@@ -1,0 +1,153 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Amphipod (Gammarus fasciatus)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Amphipod (Gammarus pseudolimnaeus)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Apache trout (Oncorhynchus gilae)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Atlantic salmon (Salmo salar)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Atlantic silverside (Menidia menidia)</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Black bullhead (Ameiurus melas)</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Black crappie (Pomoxis nigromaculatus)</surrogate>
+	</cross>
+	<cross num="8">
+		<surrogate>Bluegill (Lepomis macrochirus)</surrogate>
+	</cross>
+	<cross num="9">
+		<surrogate>Bonytail chub (Gila elegans)</surrogate>
+	</cross>
+	<cross num="10">
+		<surrogate>Brook trout (Salvelinus fontinalis)</surrogate>
+	</cross>
+	<cross num="11">
+		<surrogate>Brown trout (Salmo trutta)</surrogate>
+	</cross>
+	<cross num="12">
+		<surrogate>Cape fear shiner (Notropis mekistocholas)</surrogate>
+	</cross>
+	<cross num="13">
+		<surrogate>Channel catfish (Ictalurus punctatus)</surrogate>
+	</cross>
+	<cross num="14">
+		<surrogate>Chinook salmon (Oncorhynchus tshawytscha)</surrogate>
+	</cross>
+	<cross num="15">
+		<surrogate>Coho salmon (Oncorhynchus kisutch)</surrogate>
+	</cross>
+	<cross num="16">
+		<surrogate>Colorado squawfish (Ptychocheilus lucius)</surrogate>
+	</cross>
+	<cross num="17">
+		<surrogate>Common carp (Cyprinus carpio)</surrogate>
+	</cross>
+	<cross num="18">
+		<surrogate>Cutthroat trout (Oncorhynchus clarkii)</surrogate>
+	</cross>
+	<cross num="19">
+		<surrogate>Daphnid (Daphnia magna)</surrogate>
+	</cross>
+	<cross num="20">
+		<surrogate>Eastern oyster (Crassostrea virginica)</surrogate>
+	</cross>
+	<cross num="21">
+		<surrogate>Fathead minnow (Pimephales promelas)</surrogate>
+	</cross>
+	<cross num="22">
+		<surrogate>Fountain darter (Etheostoma fonticola)</surrogate>
+	</cross>
+	<cross num="23">
+		<surrogate>Gila topminnow (Poeciliopsis occidentalis)</surrogate>
+	</cross>
+	<cross num="24">
+		<surrogate>Goldfish (Carassius auratus)</surrogate>
+	</cross>
+	<cross num="25">
+		<surrogate>Green sunfish (Lepomis cyanellus)</surrogate>
+	</cross>
+	<cross num="26">
+		<surrogate>Greenthroat darter (Etheostoma lepidum)</surrogate>
+	</cross>
+	<cross num="27">
+		<surrogate>Guppy (Poecilia reticulata)</surrogate>
+	</cross>
+	<cross num="28">
+		<surrogate>Isopod (Caecidotea brevicauda)</surrogate>
+	</cross>
+	<cross num="29">
+		<surrogate>Lake trout (Salvelinus namaycush)</surrogate>
+	</cross>
+	<cross num="30">
+		<surrogate>Largemouth bass (Micropterus salmoides)</surrogate>
+	</cross>
+	<cross num="31">
+		<surrogate>Leon springs pupfish (Cyprinodon bovinus)</surrogate>
+	</cross>
+	<cross num="32">
+		<surrogate>Midge (Chironomus plumosus)</surrogate>
+	</cross>
+	<cross num="33">
+		<surrogate>Midge (Paratanytarsus dissimilis)</surrogate>
+	</cross>
+	<cross num="34">
+		<surrogate>Mosquitofish (Gambusia affinis)</surrogate>
+	</cross>
+	<cross num="35">
+		<surrogate>Mysid (Americamysis bahia)</surrogate>
+	</cross>
+	<cross num="36">
+		<surrogate>Northern pike (Esox lucius)</surrogate>
+	</cross>
+	<cross num="37">
+		<surrogate>Pinfish (Lagodon rhomboides)</surrogate>
+	</cross>
+	<cross num="38">
+		<surrogate>Pink shrimp (Farfantepenaeus duorarum)</surrogate>
+	</cross>
+	<cross num="39">
+		<surrogate>Rainbow trout (Oncorhynchus mykiss)</surrogate>
+	</cross>
+	<cross num="40">
+		<surrogate>Razorback sucker (Xyrauchen texanus)</surrogate>
+	</cross>
+	<cross num="41">
+		<surrogate>Sheepshead minnow (Cyprinodon variegatus)</surrogate>
+	</cross>
+	<cross num="42">
+		<surrogate>Shortnose sturgeon (Acipenser brevirostrum)</surrogate>
+	</cross>
+	<cross num="43">
+		<surrogate>Snipefly (Atherix variegata)</surrogate>
+	</cross>
+	<cross num="44">
+		<surrogate>Southern leopard frog (Rana sphenocephala)</surrogate>
+	</cross>
+	<cross num="45">
+		<surrogate>Spotfin chub (Erimonax monachus)</surrogate>
+	</cross>
+	<cross num="46">
+		<surrogate>Stonefly (Pteronarcella badia)</surrogate>
+	</cross>
+	<cross num="47">
+		<surrogate>Stonefly (Pteronarcys californica)</surrogate>
+	</cross>
+	<cross num="48">
+		<surrogate>Threespine stickleback (Gasterosteus aculeatus)</surrogate>
+	</cross>
+	<cross num="49">
+		<surrogate>Walleye (Sander vitreus)</surrogate>
+	</cross>
+	<cross num="50">
+		<surrogate>Yellow perch (Perca flavescens)</surrogate>
+	</cross>
+</species>

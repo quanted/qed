@@ -1,0 +1,75 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Daphnia</predicted>
+		<r2>0.2738027630</r2>
+		<pVal>0.0000000233</pVal>
+		<df>98</df>
+		<intercept>1.0003685370</intercept>
+		<slope>0.6096384080</slope>
+		<xAvg>2.8015608000</xAvg>
+		<xMin>-0.9065783150</xMin>
+		<xMax>5.0530784430</xMax>
+		<Sxx>154.7470256000</Sxx>
+		<MSE>1.5565305180</MSE>
+		<t90CI>1.645</t90CI>
+		<t95CI>1.96</t95CI>
+		<t99CI>2.576</t99CI>
+		<Bootstrap>45</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Lepomis</predicted>
+		<r2>0.5492361710</r2>
+		<pVal>0.0000000000</pVal>
+		<df>93</df>
+		<intercept>0.9584552290</intercept>
+		<slope>0.7403804570</slope>
+		<xAvg>2.6906136440</xAvg>
+		<xMin>-0.9065783150</xMin>
+		<xMax>5.0530784430</xMax>
+		<Sxx>137.0645641000</Sxx>
+		<MSE>0.6630435600</MSE>
+		<t90CI>1.645</t90CI>
+		<t95CI>1.96</t95CI>
+		<t99CI>2.576</t99CI>
+		<Bootstrap>66.31578947</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Menidia</predicted>
+		<r2>0.9627239780</r2>
+		<pVal>0.0188150130</pVal>
+		<df>2</df>
+		<intercept>0.2733941770</intercept>
+		<slope>0.9059263730</slope>
+		<xAvg>3.3495213030</xAvg>
+		<xMin>2.6627578320</xMin>
+		<xMax>4.7075701760</xMax>
+		<Sxx>2.7187121920</Sxx>
+		<MSE>0.0431963270</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>75</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Oncorhynchus</predicted>
+		<r2>0.5292878600</r2>
+		<pVal>0.0000000000</pVal>
+		<df>96</df>
+		<intercept>0.7861101770</intercept>
+		<slope>0.7752547450</slope>
+		<xAvg>2.7083243860</xAvg>
+		<xMin>-0.9065783150</xMin>
+		<xMax>5.0530784430</xMax>
+		<Sxx>146.8781377000</Sxx>
+		<MSE>0.8177833360</MSE>
+		<t90CI>1.645</t90CI>
+		<t95CI>1.96</t95CI>
+		<t99CI>2.576</t99CI>
+		<Bootstrap>63.26530612</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

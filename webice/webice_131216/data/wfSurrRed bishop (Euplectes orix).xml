@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Passeridae</predicted>
+		<r2>0.995</r2>
+		<pVal>0.044</pVal>
+		<df>1</df>
+		<intercept>0.2</intercept>
+		<slope>0.9804</slope>
+		<xAvg>1.16</xAvg>
+		<xMin>0.31</xMin>
+		<xMax>2.35</xMax>
+		<Sxx>2.2636</Sxx>
+		<MSE>0.0104</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+</species>

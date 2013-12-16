@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Chlorella</predicted>
+		<r2>0.541699061</r2>
+		<pVal>0.009814281</pVal>
+		<df>9</df>
+		<intercept>0.230141402</intercept>
+		<slope>0.862199235</slope>
+		<xAvg>-0.130613064</xAvg>
+		<xMin>-1.638272164</xMin>
+		<xMax>2.414973348</xMax>
+		<Sxx>13.01632266</Sxx>
+		<MSE>0.90960686</MSE>
+		<t90CI>1.833112933</t90CI>
+		<t95CI>2.262157163</t95CI>
+		<t99CI>3.249835542</t99CI>
+		<Bootstrap>60</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Desmodesmus</predicted>
+		<r2>0.596564979</r2>
+		<pVal>0.00883116</pVal>
+		<df>8</df>
+		<intercept>-0.365311618</intercept>
+		<slope>0.983451649</slope>
+		<xAvg>0.030708632</xAvg>
+		<xMin>-1.431798276</xMin>
+		<xMax>2.414973348</xMax>
+		<Sxx>11.45520331</Sxx>
+		<MSE>0.936558007</MSE>
+		<t90CI>1.859548038</t90CI>
+		<t95CI>2.306004135</t95CI>
+		<t99CI>3.355387331</t99CI>
+		<Bootstrap>80</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

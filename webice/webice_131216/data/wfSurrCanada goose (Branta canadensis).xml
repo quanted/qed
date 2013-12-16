@@ -1,0 +1,93 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Anatidae</predicted>
+		<r2>0.893</r2>
+		<pVal>0</pVal>
+		<df>13</df>
+		<intercept>0.2132</intercept>
+		<slope>0.9677</slope>
+		<xAvg>1.09</xAvg>
+		<xMin>0.2</xMin>
+		<xMax>3.25</xMax>
+		<Sxx>8.3438</Sxx>
+		<MSE>0.0721</MSE>
+		<t90CI>1.771</t90CI>
+		<t95CI>2.16</t95CI>
+		<t99CI>3.012</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Columbidae</predicted>
+		<r2>0.81</r2>
+		<pVal>0</pVal>
+		<df>11</df>
+		<intercept>0.2988</intercept>
+		<slope>0.8529</slope>
+		<xAvg>1.06</xAvg>
+		<xMin>0.2</xMin>
+		<xMax>3.25</xMax>
+		<Sxx>8.019</Sxx>
+		<MSE>0.124</MSE>
+		<t90CI>1.796</t90CI>
+		<t95CI>2.201</t95CI>
+		<t99CI>3.106</t99CI>
+		<Bootstrap>92.308</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Icteridae</predicted>
+		<r2>0.751</r2>
+		<pVal>0</pVal>
+		<df>12</df>
+		<intercept>0.2932</intercept>
+		<slope>0.5107</slope>
+		<xAvg>1.05</xAvg>
+		<xMin>0.2</xMin>
+		<xMax>3.25</xMax>
+		<Sxx>8.0293</Sxx>
+		<MSE>0.058</MSE>
+		<t90CI>1.782</t90CI>
+		<t95CI>2.179</t95CI>
+		<t99CI>3.055</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Muridae</predicted>
+		<r2>0.498</r2>
+		<pVal>0.01</pVal>
+		<df>10</df>
+		<intercept>1.1878</intercept>
+		<slope>0.5302</slope>
+		<xAvg>1.03</xAvg>
+		<xMin>0.2</xMin>
+		<xMax>3.25</xMax>
+		<Sxx>7.5627</Sxx>
+		<MSE>0.2144</MSE>
+		<t90CI>1.812</t90CI>
+		<t95CI>2.228</t95CI>
+		<t99CI>3.169</t99CI>
+		<Bootstrap>81.818</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Phasianidae</predicted>
+		<r2>0.597</r2>
+		<pVal>0.001</pVal>
+		<df>13</df>
+		<intercept>0.7102</intercept>
+		<slope>0.7486</slope>
+		<xAvg>1.09</xAvg>
+		<xMin>0.2</xMin>
+		<xMax>3.25</xMax>
+		<Sxx>8.3438</Sxx>
+		<MSE>0.2433</MSE>
+		<t90CI>1.771</t90CI>
+		<t95CI>2.16</t95CI>
+		<t99CI>3.012</t99CI>
+		<Bootstrap>80</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

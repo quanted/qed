@@ -1,0 +1,57 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Daphnid (Daphnia magna)</predicted>
+		<r2>0.9188213720</r2>
+		<pVal>0.0100664230</pVal>
+		<df>3</df>
+		<intercept>-0.9089421840</intercept>
+		<slope>0.8956844130</slope>
+		<xAvg>2.9102075690</xAvg>
+		<xMin>1.9030899870</xMin>
+		<xMax>3.7735820250</xMax>
+		<Sxx>1.9651971050</Sxx>
+		<MSE>0.0464307300</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Starfish (Asterias forbesi)</predicted>
+		<r2>0.9989774700</r2>
+		<pVal>0.0203606740</pVal>
+		<df>1</df>
+		<intercept>-2.0654778360</intercept>
+		<slope>2.0277263580</slope>
+		<xAvg>2.6987381950</xAvg>
+		<xMin>1.9030899870</xMin>
+		<xMax>3.3010299960</xMax>
+		<Sxx>1.0331981840</Sxx>
+		<MSE>0.0043483310</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>White sucker (Catostomus commersonii)</predicted>
+		<r2>0.9980717110</r2>
+		<pVal>0.0279644190</pVal>
+		<df>1</df>
+		<intercept>1.6308884040</intercept>
+		<slope>0.6372169250</slope>
+		<xAvg>2.6987381950</xAvg>
+		<xMin>1.9030899870</xMin>
+		<xMax>3.3010299960</xMax>
+		<Sxx>1.0331981840</Sxx>
+		<MSE>0.0008105290</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

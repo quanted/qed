@@ -1,0 +1,147 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Anabaena flos-aquae</predicted>
+		<r2>0.567001047</r2>
+		<pVal>0.019179621</pVal>
+		<df>7</df>
+		<intercept>0.640711413</intercept>
+		<slope>0.777713256</slope>
+		<xAvg>-1.123488257</xAvg>
+		<xMin>-3.229147988</xMin>
+		<xMax>-0.065501549</xMax>
+		<Sxx>6.985784946</Sxx>
+		<MSE>0.460955669</MSE>
+		<t90CI>1.894578605</t90CI>
+		<t95CI>2.364624252</t95CI>
+		<t99CI>3.499483297</t99CI>
+		<Bootstrap>50</Bootstrap>
+		<taxDist>7</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Chlorella vulgaris</predicted>
+		<r2>0.508437179</r2>
+		<pVal>0.047087069</pVal>
+		<df>6</df>
+		<intercept>0.90385847</intercept>
+		<slope>0.962867681</slope>
+		<xAvg>-1.103041905</xAvg>
+		<xMin>-3.229147988</xMin>
+		<xMax>0.633468456</xMax>
+		<Sxx>11.02767719</Sxx>
+		<MSE>1.647432924</MSE>
+		<t90CI>1.943180281</t90CI>
+		<t95CI>2.446911851</t95CI>
+		<t99CI>3.707428021</t99CI>
+		<Bootstrap>0</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Desmodesmus subspicatus</predicted>
+		<r2>0.954943187</r2>
+		<pVal>0</pVal>
+		<df>21</df>
+		<intercept>0.467997649</intercept>
+		<slope>1.018171562</slope>
+		<xAvg>-2.30490243</xAvg>
+		<xMin>-6.853871964</xMin>
+		<xMax>1.977723605</xMax>
+		<Sxx>253.0110721</Sxx>
+		<MSE>0.589311737</MSE>
+		<t90CI>1.720742903</t90CI>
+		<t95CI>2.079613845</t95CI>
+		<t99CI>2.831359558</t99CI>
+		<Bootstrap>91.3043478</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Minutocellus polymorphus</predicted>
+		<r2>0.757397636</r2>
+		<pVal>0</pVal>
+		<df>13</df>
+		<intercept>-0.251644995</intercept>
+		<slope>1.019301942</slope>
+		<xAvg>-0.162774071</xAvg>
+		<xMin>-1.709965389</xMin>
+		<xMax>0.799011912</xMax>
+		<Sxx>9.406082867</Sxx>
+		<MSE>0.2407921</MSE>
+		<t90CI>1.770933396</t90CI>
+		<t95CI>2.160368657</t95CI>
+		<t99CI>3.012275839</t99CI>
+		<Bootstrap>86.6666667</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Phaeodactylum tricornutum</predicted>
+		<r2>0.946757991</r2>
+		<pVal>0</pVal>
+		<df>11</df>
+		<intercept>0.739467678</intercept>
+		<slope>1.037830518</slope>
+		<xAvg>-4.355552244</xAvg>
+		<xMin>-6.853871964</xMin>
+		<xMax>1.02392098</xMax>
+		<Sxx>110.1479422</Sxx>
+		<MSE>0.606529647</MSE>
+		<t90CI>1.795884819</t90CI>
+		<t95CI>2.20098516</t95CI>
+		<t99CI>3.105806516</t99CI>
+		<Bootstrap>76.9230769</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="6">
+		<predicted>Pseudokirchneriella subcapitata</predicted>
+		<r2>0.93557257</r2>
+		<pVal>0</pVal>
+		<df>37</df>
+		<intercept>0.478286001</intercept>
+		<slope>0.890677254</slope>
+		<xAvg>-1.401580965</xAvg>
+		<xMin>-6.853871964</xMin>
+		<xMax>1.929418926</xMax>
+		<Sxx>321.9910531</Sxx>
+		<MSE>0.475418559</MSE>
+		<t90CI>1.68709362</t90CI>
+		<t95CI>2.026192463</t95CI>
+		<t99CI>2.715408722</t99CI>
+		<Bootstrap>82.0512821</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="7">
+		<predicted>Sellaphora seminulum</predicted>
+		<r2>0.783931541</r2>
+		<pVal>0.003446743</pVal>
+		<df>6</df>
+		<intercept>0.228559218</intercept>
+		<slope>0.708039207</slope>
+		<xAvg>-0.641961229</xAvg>
+		<xMin>-2.928117993</xMin>
+		<xMax>0.785329835</xMax>
+		<Sxx>10.32434675</Sxx>
+		<MSE>0.237760214</MSE>
+		<t90CI>1.943180281</t90CI>
+		<t95CI>2.446911851</t95CI>
+		<t99CI>3.707428021</t99CI>
+		<Bootstrap>62.5</Bootstrap>
+		<taxDist>7</taxDist>
+	</cross>
+	<cross num="8">
+		<predicted>Thalassiosira pseudonana</predicted>
+		<r2>0.927243452</r2>
+		<pVal>0</pVal>
+		<df>17</df>
+		<intercept>0.175097588</intercept>
+		<slope>0.957282401</slope>
+		<xAvg>-1.648831075</xAvg>
+		<xMin>-3.682258127</xMin>
+		<xMax>0.190439885</xMax>
+		<Sxx>26.41716371</Sxx>
+		<MSE>0.11173667</MSE>
+		<t90CI>1.739606726</t90CI>
+		<t95CI>2.109815578</t95CI>
+		<t99CI>2.89823052</t99CI>
+		<Bootstrap>94.7368421</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+</species>

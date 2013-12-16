@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>House sparrow (Passer domesticus)</predicted>
+		<r2>1</r2>
+		<pVal>0.012</pVal>
+		<df>1</df>
+		<intercept>0.346</intercept>
+		<slope>0.898</slope>
+		<xAvg>1.212</xAvg>
+		<xMin>0.406</xMin>
+		<xMax>2.479</xMax>
+		<Sxx>2.468</Sxx>
+		<MSE>0.001</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>1</taxDist>
+	</cross>
+</species>

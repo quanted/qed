@@ -1,0 +1,93 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Colorado squawfish (Ptychocheilus lucius)</predicted>
+		<r2>0.9984478270</r2>
+		<pVal>0.0250877990</pVal>
+		<df>1</df>
+		<intercept>-0.9749827710</intercept>
+		<slope>1.0268003970</slope>
+		<xAvg>3.3689239210</xAvg>
+		<xMin>2.6995168620</xMin>
+		<xMax>4.2966651900</xMax>
+		<Sxx>1.3755462380</Sxx>
+		<MSE>0.0022545610</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Daphnid (Daphnia magna)</predicted>
+		<r2>0.7125514280</r2>
+		<pVal>0.0010839890</pVal>
+		<df>9</df>
+		<intercept>0.1861238830</intercept>
+		<slope>0.6616734050</slope>
+		<xAvg>3.0694317340</xAvg>
+		<xMin>0.0000000000</xMin>
+		<xMax>5.5422478010</xMax>
+		<Sxx>25.7127513000</Sxx>
+		<MSE>0.5045884880</MSE>
+		<t90CI>1.833</t90CI>
+		<t95CI>2.262</t95CI>
+		<t99CI>3.25</t99CI>
+		<Bootstrap>54.54545455</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Isopod (Asellus aquaticus)</predicted>
+		<r2>0.8822191000</r2>
+		<pVal>0.0016895430</pVal>
+		<df>5</df>
+		<intercept>1.9642012440</intercept>
+		<slope>0.6096710000</slope>
+		<xAvg>3.7263933850</xAvg>
+		<xMin>0.0000000000</xMin>
+		<xMax>5.5422478010</xMax>
+		<Sxx>21.6631574800</Sxx>
+		<MSE>0.2150013760</MSE>
+		<t90CI>2.015</t90CI>
+		<t95CI>2.571</t95CI>
+		<t99CI>4.032</t99CI>
+		<Bootstrap>71.42857143</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Starfish (Asterias forbesi)</predicted>
+		<r2>0.9997476550</r2>
+		<pVal>0.0101133670</pVal>
+		<df>1</df>
+		<intercept>1.7717780180</intercept>
+		<slope>0.6516627860</slope>
+		<xAvg>2.5090380370</xAvg>
+		<xMin>0.0000000000</xMin>
+		<xMax>4.2966651900</xMax>
+		<Sxx>10.0113163700</Sxx>
+		<MSE>0.0010731030</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>White sucker (Catostomus commersonii)</predicted>
+		<r2>0.9802288770</r2>
+		<pVal>0.0099349120</pVal>
+		<df>2</df>
+		<intercept>2.8231853380</intercept>
+		<slope>0.1998648210</slope>
+		<xAvg>2.6712377030</xAvg>
+		<xMin>0.0000000000</xMin>
+		<xMax>4.2966651900</xMax>
+		<Sxx>10.3270211500</Sxx>
+		<MSE>0.0041602710</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

@@ -1,0 +1,213 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Birds</group>
+		<species>Campbell Island flightless teal (Anas aucklandica nesiotis)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="2">	
+		<group>Birds</group>
+		<species>Laysan duck (Anas laysanensis)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="3">	
+		<group>Birds</group>
+		<species>Hawaiian Duck (Anas wyvilliana)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="4">	
+		<group>Birds</group>
+		<species>Madagascar pochard (Aythya innotata)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="5">	
+		<group>Birds</group>
+		<species>Hawaiian goose (Branta sandvicensis)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="6">	
+		<group>Birds</group>
+		<species>White-winged wood duck (Cairina scutulata)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="7">	
+		<group>Birds</group>
+		<species>Steller's Eider (Polysticta stelleri)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="8">	
+		<group>Birds</group>
+		<species>Pink-headed duck (Rhodonessa caryophyllacea)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="9">	
+		<group>Birds</group>
+		<species>Spectacled eider (Somateria fischeri)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="10">	
+		<group>Mammals</group>
+		<species>Pygmy Rabbit (Brachylagus idahoensis)</species>
+		<predicted>Leporidae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="11">	
+		<group>Mammals</group>
+		<species>Hispid hare (Caprolagus hispidus)</species>
+		<predicted>Leporidae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="12">	
+		<group>Mammals</group>
+		<species>Ryukyu rabbit (Pentalagus furnessi)</species>
+		<predicted>Leporidae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="13">	
+		<group>Mammals</group>
+		<species>Volcano rabbit (Romerolagus diazi)</species>
+		<predicted>Leporidae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="14">	
+		<group>Mammals</group>
+		<species>Riparian brush rabbit (Sylvilagus bachmani riparius)</species>
+		<predicted>Leporidae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="15">	
+		<group>Mammals</group>
+		<species>Lower Keys marsh rabbit (Sylvilagus palustris hefneri)</species>
+		<predicted>Leporidae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="16">	
+		<group>Mammals</group>
+		<species>Stick-nest rat (Leporillus conditor)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="17">	
+		<group>Mammals</group>
+		<species>Riparian woodrat (Neotoma fuscipes riparia)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="18">	
+		<group>Mammals</group>
+		<species>Australian native mouse (Notomys aquilo)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="19">	
+		<group>Mammals</group>
+		<species>Rice rat (Oryzomys palustris natator)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="20">	
+		<group>Mammals</group>
+		<species>Key Largo cotton mouse (Peromyscus gossypinus allapaticola)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="21">	
+		<group>Mammals</group>
+		<species>Choctawhatchee beach mouse (Peromyscus polionotus allophrys)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="22">	
+		<group>Mammals</group>
+		<species>Alabama beach mouse (Peromyscus polionotus ammobates)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="23">	
+		<group>Mammals</group>
+		<species>Southeastern beach mouse (Peromyscus polionotus niveiventris)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="24">	
+		<group>Mammals</group>
+		<species>St. Andrew beach mouse (Peromyscus polionotus peninsularis)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="25">	
+		<group>Mammals</group>
+		<species>Anastasia Island beach mouse (Peromyscus polionotus phasma)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="26">	
+		<group>Mammals</group>
+		<species>Perdido Key beach mouse (Peromyscus polionotus trissyllepsis)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="27">	
+		<group>Mammals</group>
+		<species>Field's mouse (Pseudomys fieldi)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="28">	
+		<group>Mammals</group>
+		<species>Smoky mouse (Pseudomys fumeus)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="29">	
+		<group>Mammals</group>
+		<species>Gould's mouse (Pseudomys gouldii)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="30">	
+		<group>Mammals</group>
+		<species>New Holland mouse (Pseudomys novaehollandiae)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="31">	
+		<group>Mammals</group>
+		<species>Western mouse (Pseudomys occidentalis)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="32">	
+		<group>Mammals</group>
+		<species>Shark Bay mouse (Pseudomys praeconis)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="33">	
+		<group>Mammals</group>
+		<species>Shortridge's mouse (Pseudomys shortridgei)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="34">	
+		<group>Mammals</group>
+		<species>False water rat (Xeromys myoides)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+	<cross num="35">	
+		<group>Mammals</group>
+		<species>Australian native mouse (Zyzomys pedunculatus)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrDog (Canis familiaris).xml</filesource>
+	</cross>
+</crosses>

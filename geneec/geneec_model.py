@@ -3,7 +3,8 @@ import base64
 import urllib
 from google.appengine.api import urlfetch
 import json
-
+import logging
+logger = logging.getLogger('Geneec Model')
 
 class geneec(object):
     def __init__(self, run_type, chem_name, application_target, application_rate, number_of_applications, interval_between_applications, Koc, aerobic_soil_metabolism, wet_in, application_method, application_method_label, aerial_size_dist, ground_spray_type, airblast_type, spray_quality, no_spray_drift, incorporation_depth, solubility, aerobic_aquatic_metabolism, hydrolysis, photolysis_aquatic_half_life):
@@ -69,6 +70,10 @@ class geneec(object):
                                  "METHOD":METHOD, "AIRFLG":AIRFLG, "YLOCEN":YLOCEN, "GRNFLG":GRNFLG, "GRSIZE":GRSIZE,
                                  "ORCFLG":ORCFLG, "INCORP":INCORP, "SOL":SOL, "METHAP":METHAP, "HYDHAP":HYDHAP, "FOTHAP":FOTHAP})
         
+        logger.info({"APPRAT":APPRAT, "APPNUM":APPNUM, "APSPAC":APSPAC, "KOC":KOC, "METHAF":METHAF, "WETTED":WETTED,
+                     "METHOD":METHOD, "AIRFLG":AIRFLG, "YLOCEN":YLOCEN, "GRNFLG":GRNFLG, "GRSIZE":GRSIZE,
+                     "ORCFLG":ORCFLG, "INCORP":INCORP, "SOL":SOL, "METHAP":METHAP, "HYDHAP":HYDHAP, "FOTHAP":FOTHAP})
+        
         if run_type == "individual":
             response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers)    
             self.jid= json.loads(response.content)['jid']
@@ -94,3 +99,4 @@ class geneec(object):
             # self.url_val = 'https://api.picloud.com/job/result/?jid='+str(self.jid)
             # self.response_val = urlfetch.fetch(url=self.url_val, method=urlfetch.GET, headers=http_headers)
             # self.output_val = json.loads(self.response_val.content)['result']
+

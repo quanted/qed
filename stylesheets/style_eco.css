@@ -1222,8 +1222,8 @@ th {
 	font-weight:normal;
 }
 .webice {
-  width: 80%;
-  margin-top: 16px;
+  width: 763px;
+  margin: 8px 0 12px 0;
 }
 .webice td {
   border: none;
@@ -1232,4 +1232,15 @@ th {
 }
 .webice th {
   padding: 8px;
+}
+#SurrogateCell, #PredictedCell {
+  width: 50%;
+}
+#surrSpecies, #predSpecies {
+  font-size: 1.5em;
+  margin: 0 0 12px 160px;
+}
+#surrSpecies span, #predSpecies span {
+  cursor: text;
+  font-weight: 700;
 }

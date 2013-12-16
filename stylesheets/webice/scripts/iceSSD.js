@@ -1,5 +1,5 @@
-if (!document.URL.split("?")[1])
-	location.href="index.html";
+// if (!document.URL.split("?")[1])
+// 	location.href="index.html";
 var fileFamily = '';
 fileFamily = document.URL.split("?")[1];
 if (fileFamily)
@@ -29,7 +29,8 @@ function sortBySci(a,b)
 }
 
 function importSurrogate(prefix) {
-	file = 'data/'+prefix+'Surrogate.xml';
+	// Changed DIR by J. Flaishans
+	file = 'data/webice/'+prefix+'Surrogate.xml';
 	if (document.implementation && document.implementation.createDocument)
 	{
 		var xmlhttp = new window.XMLHttpRequest();
@@ -49,6 +50,7 @@ function importSurrogate(prefix) {
 
 function loadSurr(prefix)
 { 
+	console.log('loadSurr function loaded');
 	if (prefix == 'as') fieldName = 'Surrogate';
 	if (prefix == 'ws') fieldName = 'Surrogate';
 	if (prefix == 'ls') fieldName = 'Algae';
@@ -61,11 +63,12 @@ function loadSurr(prefix)
 			surrogateNode = 1;
 		else 
 			surrogateNode = 0;
+		console.log('surrogateNode = '+surrogateNode);
 		
 		for (i=0;i<surrXmlDoc.getElementsByTagName("surrogate").length;i++) 
 		{
 			var surr = surrXmlDoc.getElementsByTagName("surrogate")[i].childNodes[surrogateNode].nodeValue;
-			
+
 			if(!SurrDup[surr]) 
 			{
 				SurrogateArray[SurrogateArray.length] = surr;
@@ -129,21 +132,21 @@ function popHeader()
 		document.getElementById('AlgaeFormRow').style.display='none';
 		document.getElementById('primaryType').appendChild(document.createTextNode('Vertebrates:'));
 	}
-	document.getElementById('PageName').appendChild(document.createTextNode(' - '+fType+' Species'));
+	// document.getElementById('PageName').appendChild(document.createTextNode(' - '+fType+' Species'));
 	document.getElementById('file1').value = fileFamily;
-	document.title = fType+' Species | '+document.title;
-	newBClink = document.createElement('a');
-	newBClink.setAttribute('href','iceSSD.html');
-	newBClink.appendChild(document.createTextNode('Species Sensistivity Distributions'));
-	oldBC = document.createElement('li');
-	oldBC.appendChild(newBClink);
-	newBC = document.createElement('li');
-	newBC.appendChild(document.createTextNode(fType+' Species'));
-	if(!document.getElementById('breadcrumbs').lastChild.childNodes.length)
-		document.getElementById('breadcrumbs').removeChild(document.getElementById('breadcrumbs').lastChild);
-	document.getElementById('breadcrumbs').removeChild(document.getElementById('breadcrumbs').lastChild);
-	document.getElementById('breadcrumbs').appendChild(oldBC);
-	document.getElementById('breadcrumbs').appendChild(newBC);
+	// document.title = fType+' Species | '+document.title;
+	// newBClink = document.createElement('a');
+	// newBClink.setAttribute('href','iceSSD.html');
+	// newBClink.appendChild(document.createTextNode('Species Sensistivity Distributions'));
+	// oldBC = document.createElement('li');
+	// oldBC.appendChild(newBClink);
+	// newBC = document.createElement('li');
+	// newBC.appendChild(document.createTextNode(fType+' Species'));
+	// if(!document.getElementById('breadcrumbs').lastChild.childNodes.length)
+	// 	document.getElementById('breadcrumbs').removeChild(document.getElementById('breadcrumbs').lastChild);
+	// document.getElementById('breadcrumbs').removeChild(document.getElementById('breadcrumbs').lastChild);
+	// document.getElementById('breadcrumbs').appendChild(oldBC);
+	// document.getElementById('breadcrumbs').appendChild(newBC);
 }
 
 function nameReload()
@@ -154,6 +157,7 @@ function nameReload()
 
 function cleanList()
 {
+	console.log('cleanList ran');
 	var inputs = document.getElementsByTagName('input');
 	for (g=0;g<inputs.length;g++)
 		if (inputs[g].name=='S')
@@ -259,7 +263,7 @@ function checkTox()
 
 function initPage()
 {
-	openContent();
+	// openContent();
 	importSurrogate(fileFamily);
 	if (fileFamily == 'as') setTimeout("importSurrogate('ls')",300);
 	popHeader();

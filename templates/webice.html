@@ -12,23 +12,23 @@
   </tr>
   <tr>
   	<td><a href="#?file=as" id="asTaxa">Species</a></td>
-  	<td><a href="#aw">Species</a></td>
+  	<td><a href="#?file=ws" id="wsTaxa">Species</a></td>
   </tr>
   <tr>
-  	<td><a href="#ag">Genus</a></td>
-  	<td><a href="#wf">Family</a></td>
+  	<td><a href="#?file=ag" id="agTaxa">Genus</a></td>
+  	<td><a href="#?file=wf" id="wfTaxa">Family</a></td>
   </tr>
   <tr>
-  	<td><a href="#af">Family</a></td>
+  	<td><a href="#?file=af" id="afTaxa">Family</a></td>
   </tr>
   <tr>
   	<th>Algae</th>
   </tr>
   <tr>
-  	<td><a href="#ls">Species</a></td>
+  	<td><a href="#?file=ls" id="lsTaxa">Species</a></td>
   </tr>
   <tr>
-  	<td><a href="#lg">Genus</a></td>
+  	<td><a href="#?file=lg" id="lgTaxa">Genus</a></td>
   </tr>
 </table>
 <table class="webice webiceSel">
@@ -36,8 +36,8 @@
     <th colspan="2">Species Sensitivity Distribution Module</th>
   </tr>
   <tr>
-  	<td><a href="#as">ICE Aquatic</a></td>
-  	<td><a href="#ws">ICE Wildlife</a></td>
+  	<td><a href="#?filename=as" id="asSSD">ICE Aquatic</a></td>
+  	<td><a href="#?filename=ws" id="awSSD">ICE Wildlife</a></td>
   </tr>
 </table>
 <table class="webice webiceSel">
@@ -45,12 +45,12 @@
     <th colspan="2">Endangered Species Module</th>
   </tr>
   <tr>
-  	<td><a href="#tneAs">ICE Aquatic</a></td>
-  	<td><a href="#tneWs">ICE Wildlife</a></td>
+  	<td><a href="#?filename=tneAs" id="tneAs">ICE Aquatic</a></td>
+  	<td><a href="#?filename=tneWs" id="tneWs">ICE Wildlife</a></td>
   </tr>
 </table>
 
-<table class="webice asTaxaSel" style="display:none">
+<table id="wiTaxatemp" class="webice" style="display:none">
   <tr>
     <th>Surrogate:</th>
     <th>Predicted:</th>
@@ -75,6 +75,5 @@
       </select>
     </td>
   </tr>
-<!-- Below goes right before the form closing tag -->
-<input id="file" name="file" type="hidden" value=""/>
+<input id="file" name="file" type="hidden" />
 </table>

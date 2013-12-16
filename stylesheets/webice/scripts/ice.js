@@ -2,10 +2,8 @@
 // 	location.href="index.html";
 var fileFamily = '';
 fileFamily = document.URL.split("?")[1];
-console.log('fileFamily = '+fileFamily);
 if (fileFamily)
 fileFamily = fileFamily.split("=")[1];
-console.log('fileFamily = '+fileFamily);
 var chosenSurrogate = '';
 var chosenPredicted = '';
 var chosenFirst = '';
@@ -29,9 +27,8 @@ function sortBySci(a,b)
 }
 
 function importSurrogate(surrName) {
-	// Changed DIR to webice subdir
+	// Changed DIR by J. Flaishans
 	file = 'data/webice/'+fileFamily+surrName+'.xml';
-	console.log('file path = '+file);
 	if (document.implementation && document.implementation.createDocument)
 	{
 		var xmlhttp = new window.XMLHttpRequest();
@@ -54,6 +51,7 @@ function importSurrogate(surrName) {
 }
 
 function importPredicted(predName) {
+	// Changed DIR to webice subdir
 	file = 'data/webice/'+fileFamily+predName+'.xml';
 	if (document.implementation && document.implementation.createDocument)
 	{
@@ -77,7 +75,7 @@ function importPredicted(predName) {
 }
 
 function loadSurr()
-{ 
+{
 	if (document.getElementById('Surrogate'))
 	{
 		SurrDup = new Array();
@@ -171,8 +169,6 @@ function loadPred()
 
 function loadSurrogate()
 {
-	// Added by Jon F
-	console.log('Surrogate Drop-down Clicked');
 	if (chosenSurrogate != '' && chosenFirst == 'Surrogate')
 		chosenPredicted = '';
 	if (chosenFirst == '') chosenFirst = 'Surrogate';

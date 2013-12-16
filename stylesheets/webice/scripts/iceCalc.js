@@ -45,7 +45,8 @@ if (fileFamily.substr(0,1) == 'l')
 
 function begin()
 {
-	file = 'data/'+fileFamily+'Surr'+chosenSurrogate+'.xml?rand='+Math.random();
+	// Changed DIR by J. Flaishans
+	file = 'data/webice/'+fileFamily+'Surr'+chosenSurrogate+'.xml?rand='+Math.random();
 	importFile(file);
 }
 		
@@ -181,7 +182,7 @@ function showImage()
 			picName += '.gif';
 		}
 		pic = document.createElement('img');
-		pic.setAttribute('src','images/'+picName);
+		pic.setAttribute('src','http://epa.gov/ceampubl/fchain/webice/images/'+picName);
 		pic.setAttribute('alt','ICE model graph for this species pair');
 		//pic.setAttribute('width','375');
 		document.getElementById('graphImage').appendChild(pic);
@@ -302,25 +303,25 @@ function popHeader()
 
 	var commonSurrogate= chosenSurrogate.split("(")[0];
 	var commonPredicted= chosenPredicted.split("(")[0];
-	document.title= commonSurrogate +'-' + commonPredicted + ' | ' + document.title;
+	// document.title= commonSurrogate +'-' + commonPredicted + ' | ' + document.title;
 
-	document.getElementById('PageName').appendChild(document.createTextNode(' - '+fType));
+	// document.getElementById('PageName').appendChild(document.createTextNode(' - '+fType));
 
 	document.getElementById('surrSpecies').appendChild(document.createTextNode(" "+chosenSurrogate));
 	document.getElementById('predSpecies').appendChild(document.createTextNode(" "+chosenPredicted));
 	
-	var linkname = "getPredSurr.html?filename="+fileFamily;
-	newBClink = document.createElement('a');
-	newBClink.setAttribute('href',linkname);
-	newBClink.appendChild(document.createTextNode(fType+' Taxa Selection'));
-	oldBC = document.createElement('li');
-	oldBC.appendChild(newBClink);
-	newBC = document.createElement('li');
-	newBC.appendChild(document.createTextNode('Calculator'));
-	if(!document.getElementById('breadcrumbs').lastChild.childNodes.length)
-		document.getElementById('breadcrumbs').removeChild(document.getElementById('breadcrumbs').lastChild);
-	document.getElementById('breadcrumbs').removeChild(document.getElementById('breadcrumbs').lastChild);
-	document.getElementById('breadcrumbs').appendChild(oldBC);
-	document.getElementById('breadcrumbs').appendChild(newBC);
+	// var linkname = "getPredSurr.html?filename="+fileFamily;
+	// newBClink = document.createElement('a');
+	// newBClink.setAttribute('href',linkname);
+	// newBClink.appendChild(document.createTextNode(fType+' Taxa Selection'));
+	// oldBC = document.createElement('li');
+	// oldBC.appendChild(newBClink);
+	// newBC = document.createElement('li');
+	// newBC.appendChild(document.createTextNode('Calculator'));
+	// if(!document.getElementById('breadcrumbs').lastChild.childNodes.length)
+	// 	document.getElementById('breadcrumbs').removeChild(document.getElementById('breadcrumbs').lastChild);
+	// document.getElementById('breadcrumbs').removeChild(document.getElementById('breadcrumbs').lastChild);
+	// document.getElementById('breadcrumbs').appendChild(oldBC);
+	// document.getElementById('breadcrumbs').appendChild(newBC);
 
 }

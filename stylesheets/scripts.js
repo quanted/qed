@@ -541,4 +541,8 @@ var wintop = (browserHeight / 2) - 30 + "px";
 var doneDiv = document.getElementById("popup");
 // Model name
 var currPage = pathSlice.slice(0, -5).split('_');
+// Remove query string from 'pathSlice' var
 var model = currPage[0];
+if (pathSlice.indexOf("?")) {
+	pathSlice = pathSlice.split('.html?')[0];
+}

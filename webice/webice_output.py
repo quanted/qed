@@ -7,26 +7,18 @@ from google.appengine.ext.webapp import template
 from uber import uber_lib
 
 class webiceOutputPage(webapp.RequestHandler):
-    def post(self):
+    def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)   
+        html = uber_lib.SkinChk(ChkCookie)
+        html = html + template.render (templatepath + 'webice-jqueryOutput.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html',  {'model':'webice','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                               
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'webice', 
-                'model_attributes':'Web-ICE Output'})
-        html = html + """
-        <table width="600" border="1">
-          
-        </table>
-        <p>&nbsp;</p>                     
-        
-        <table width="600" border="1">
-        
-        </table>
-        """
-        html = html + template.render(templatepath + '04uberoutput_end.html', {})
+                'model_attributes':'Web-ICE v3.2.1 Output'})
+        html = html + template.render (templatepath + 'webiceOutput.html', {})
+        html = html + template.render(templatepath + '04uberwebice_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

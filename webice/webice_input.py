@@ -18,11 +18,11 @@ class webiceInputPage(webapp.RequestHandler):
         html = html + template.render (templatepath + 'webice-jquery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'webice','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04ubertext_start.html', {
+        html = html + template.render(templatepath + '04uberwebice_start.html', {
                 'model':'webice', 
                 'model_attributes':'Web-ICE v3.2.1'})
         html = html + template.render (templatepath + 'webice.html', {})
-        html = html + template.render(templatepath + '04ubertext_end.html', {})
+        html = html + template.render(templatepath + '04uberwebice_end.html', {})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

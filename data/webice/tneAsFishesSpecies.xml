@@ -1,0 +1,120 @@
+<?xml version = '1.0'?>
+<speciesOptions>
+	<species>Shortnose sturgeon (Acipenser brevirostrum)</species>
+	<species>Leon springs pupfish (Cyprinodon bovinus)</species>
+	<species>Spotfin chub (Erimonax monachus)</species>
+	<species>Fountain darter (Etheostoma fonticola)</species>
+	<species>Unarmored threespine stickleback (Gasterosteus aculeatus williamsoni)</species>
+	<species>Bonytail chub (Gila elegans)</species>
+	<species>Cape Fear shiner (Notropis mekistocholas)</species>
+	<species>Lahontan cutthroat trout (Oncorhynchus clarkii henshawi)</species>
+	<species>Greenback cutthroat trout (Oncorhynchus clarkii stomias)</species>
+	<species>Paiute cutthroat trout (Oncorhynchus clarkii seleniris)</species>
+	<species>Gila trout (Oncorhynchus gilae)</species>
+	<species>Apache trout (Oncorhynchus gilae apache)</species>
+	<species>Coho salmon (Oncorhynchus kisutch)</species>
+	<species>Steelhead (Oncorhynchus mykiss)</species>
+	<species>Chinook salmon (Oncorhynchus tshawytscha)</species>
+	<species>Gila topminnow (Poeciliopsis occidentalis)</species>
+	<species>Colorado pikeminnow (Ptychocheilus lucius)</species>
+	<species>Atlantic salmon (Salmo salar)</species>
+	<species>Bull trout (Salvelinus confluentus)</species>
+	<species>Razorback sucker (Xyrauchen texanus)</species>
+	<species>North American green sturgeon (Acipenser medirostris)</species>
+	<species>Gulf sturgeon (Acipenser oxyrinchus desotoi)</species>
+	<species>White sturgeon (Acipenser transmontanus)</species>
+	<species>Modoc sucker (Catostomus microps)</species>
+	<species>Santa Ana sucker (Catostomus santaanae)</species>
+	<species>Warner sucker (Catostomus warnerensis)</species>
+	<species>Devils Hole pupfish (Cyprinodon diabolis)</species>
+	<species>Comanche Springs pupfish (Cyprinodon elegans)</species>
+	<species>Desert pupfish (Cyprinodon macularius)</species>
+	<species>Ash Meadows Amargosa pupfish (Cyprinodon nevadensis mionectes)</species>
+	<species>Warm Springs pupfish (Cyprinodon nevadensis pectoralis)</species>
+	<species>Owens pupfish (Cyprinodon radiosus)</species>
+	<species>Slackwater darter (Etheostoma boschungi)</species>
+	<species>Vermilion darter (Etheostoma chermocki)</species>
+	<species>Relict darter (Etheostoma chienense)</species>
+	<species>Etowah darter (Etheostoma etowahae)</species>
+	<species>Niangua darter (Etheostoma nianguae)</species>
+	<species>Watercress darter (Etheostoma nuchale)</species>
+	<species>Okaloosa darter (Etheostoma okaloosae)</species>
+	<species>Duskytail darter (Etheostoma percnurum)</species>
+	<species>Bayou darter (Etheostoma rubrum)</species>
+	<species>Cherokee darter (Etheostoma scotti)</species>
+	<species>Maryland darter (Etheostoma sellare)</species>
+	<species>Bluemask darter (Etheostoma sp.)</species>
+	<species>Boulder darter (Etheostoma wapiti)</species>
+	<species>Waccamaw silverside (Menidia extensa)</species>
+	<species>Palezone shiner (Notropis albizonatus)</species>
+	<species>Cahaba shiner (Notropis cahabae)</species>
+	<species>Arkansas River shiner (Notropis girardi)</species>
+	<species>Pecos bluntnose shiner (Notropis simus pecosensis)</species>
+	<species>Topeka shiner (Notropis topeka)</species>
+	<species>Little Kern golden trout (Oncorhynchus aguabonita whitei)</species>
+	<species>Chum salmon (Oncorhynchus keta)</species>
+	<species>Sockeye salmon (Oncorhynchus nerka)</species>
+	<species>Ala balik (Salmo platycephalus)</species>
+	<species>Cicek (Acanthorutilus handlirschi)</species>
+	<species>Shortnose sucker (Chasmistes brevirostris)</species>
+	<species>Cui-ui (Chasmistes cujus)</species>
+	<species>June sucker (Chasmistes liorus)</species>
+	<species>White River springfish (Crenichthys baileyi baileyi)</species>
+	<species>Hiko White River springfish (Crenichthys baileyi grandis)</species>
+	<species>Railroad Valley springfish (Crenichthys nevadae)</species>
+	<species>Blue shiner (Cyprinella caerulea)</species>
+	<species>Beautiful shiner (Cyprinella formosa)</species>
+	<species>Lost River sucker (Deltistes luxatus)</species>
+	<species>Devils River minnow (Dionda diaboli)</species>
+	<species>Pahrump poolfish (Empetrichthys latos)</species>
+	<species>Desert dace (Eremichthys acros)</species>
+	<species>Slender chub (Erimystax cahni)</species>
+	<species>Big Bend gambusia (Gambusia gaigei)</species>
+	<species>San Marcos gambusia (Gambusia georgei)</species>
+	<species>Clear Creek gambusia (Gambusia heterochir)</species>
+	<species>Pecos gambusia (Gambusia nobilis)</species>
+	<species>Mohave tui chub (Gila bicolor mohavensis)</species>
+	<species>Owens tui chub (Gila bicolor snyderi)</species>
+	<species>Hutton tui chub (Gila bicolor ssp.)</species>
+	<species>Borax Lake chub (Gila boraxobius)</species>
+	<species>Humpback chub (Gila cypha)</species>
+	<species>Sonora chub (Gila ditaenia)</species>
+	<species>Gila chub (Gila intermedia)</species>
+	<species>Chihuahua chub (Gila nigrescens)</species>
+	<species>Yaqui chub (Gila purpurea)</species>
+	<species>Pahranagat roundtail chub (Gila robusta jordani)</species>
+	<species>Virgin River chub (Gila seminuda)</species>
+	<species>Beluga sturgeon (Huso huso)</species>
+	<species>Rio Grande silvery minnow (Hybognathus amarus)</species>
+	<species>Yaqui catfish (Ictalurus pricei)</species>
+	<species>White River spinedace (Lepidomeda albivallis)</species>
+	<species>Big Spring spinedace (Lepidomeda mollispinis pratensis)</species>
+	<species>Little Colorado spinedace (Lepidomeda vittata)</species>
+	<species>Spikedace (Meda fulgida)</species>
+	<species>Moapa dace (Moapa coriacea)</species>
+	<species>Smoky madtom (Noturus baileyi)</species>
+	<species>Yellowfin madtom (Noturus flavipinnis)</species>
+	<species>Neosho madtom (Noturus placidus)</species>
+	<species>Pygmy madtom (Noturus stanauli)</species>
+	<species>Scioto madtom (Noturus trautmani)</species>
+	<species>Oregon chub (Oregonichthys crameri)</species>
+	<species>Amber darter (Percina antesella)</species>
+	<species>Goldline darter (Percina aurolineata)</species>
+	<species>Conasauga logperch (Percina jenkinsi)</species>
+	<species>Leopard darter (Percina pantherina)</species>
+	<species>Roanoke logperch (Percina rex)</species>
+	<species>Snail darter (Percina tanasi)</species>
+	<species>Blackside dace (Phoxinus cumberlandensis)</species>
+	<species>Woundfin (Plagopterus argentissimus)</species>
+	<species>Mexican blindcat (Prietella phreatophila)</species>
+	<species>Ikan temoleh (Probarbus jullieni)</species>
+	<species>Foskett speckled dace (Rhinichthys osculus ssp.)</species>
+	<species>Independence Valley speckled dace (Rhinichthys osculus lethoporus)</species>
+	<species>Ash Meadows speckled dace (Rhinichthys osculus nevadensis)</species>
+	<species>Clover Valley speckled dace (Rhinichthys osculus oligoporus)</species>
+	<species>Kendall Warm Springs dace (Rhinichthys osculus thermalis)</species>
+	<species>Pallid sturgeon (Scaphirhynchus albus)</species>
+	<species>Alabama sturgeon (Scaphirhynchus suttkusi)</species>
+	<species>Miyako tango (Tanakia tanago)</species>
+	<species>Loach minnow (Tiaroga cobitis)</species>
+</speciesOptions>

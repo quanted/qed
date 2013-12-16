@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Fishes</group>
+		<species>Bull trout (Salvelinus confluentus)</species>
+		<predicted>Bull trout (Salvelinus confluentus)</predicted>
+		<filesource>asSurrIsopod (Asellus aquaticus).xml</filesource>
+	</cross>
+	<cross num="2">	
+		<group>Crustaceans</group>
+		<species>Lee County cave isopod (Lirceus usdagalun)</species>
+		<predicted>Lirceus</predicted>
+		<filesource>agSurrIsopod (Asellus aquaticus).xml</filesource>
+	</cross>
+	<cross num="3">	
+		<group>Crustaceans</group>
+		<species>Lee County cave isopod (Lirceus usdagalun)</species>
+		<predicted>Asellidae</predicted>
+		<filesource>afSurrIsopod (Asellus aquaticus).xml</filesource>
+	</cross>
+</crosses>

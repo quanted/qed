@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Norway rat (Rattus norvegicus)</predicted>
+		<r2>0.873</r2>
+		<pVal>0.006</pVal>
+		<df>4</df>
+		<intercept>0.231</intercept>
+		<slope>1.192</slope>
+		<xAvg>0.884</xAvg>
+		<xMin>-0.036</xMin>
+		<xMax>1.255</xMax>
+		<Sxx>1.164</Sxx>
+		<MSE>0.06</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>83.333</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+</species>

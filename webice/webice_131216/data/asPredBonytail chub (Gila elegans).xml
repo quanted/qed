@@ -1,0 +1,24 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Apache trout (Oncorhynchus gilae)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Cape fear shiner (Notropis mekistocholas)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Chinook salmon (Oncorhynchus tshawytscha)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Colorado squawfish (Ptychocheilus lucius)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Fathead minnow (Pimephales promelas)</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Razorback sucker (Xyrauchen texanus)</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Southern leopard frog (Rana sphenocephala)</surrogate>
+	</cross>
+</species>

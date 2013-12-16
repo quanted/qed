@@ -1,0 +1,24 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Common grackle (Quiscalus quiscula)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Dog (Canis familiaris)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>House sparrow (Passer domesticus)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Mallard (Anas platyrhynchos)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Mouse (Mus musculus)</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Norway rat (Rattus norvegicus)</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Redwinged blackbird (Agelaius phoeniceus)</surrogate>
+	</cross>
+</species>

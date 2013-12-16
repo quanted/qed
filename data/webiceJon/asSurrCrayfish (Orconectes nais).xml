@@ -1,0 +1,75 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Brown trout (Salmo trutta)</predicted>
+		<r2>0.9948312320</r2>
+		<pVal>0.0025877320</pVal>
+		<df>2</df>
+		<intercept>0.6846421480</intercept>
+		<slope>0.6268345540</slope>
+		<xAvg>1.2045292750</xAvg>
+		<xMin>-1.1611509090</xMin>
+		<xMax>4.2504200020</xMax>
+		<Sxx>18.9741553600</Sxx>
+		<MSE>0.0193676070</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Coho salmon (Oncorhynchus kisutch)</predicted>
+		<r2>0.9949926610</r2>
+		<pVal>0.0450865220</pVal>
+		<df>1</df>
+		<intercept>1.1738404250</intercept>
+		<slope>0.5172643590</slope>
+		<xAvg>1.9930893360</xAvg>
+		<xMin>-0.5264244990</xMin>
+		<xMax>4.2504200020</xMax>
+		<Sxx>11.5122317100</Sxx>
+		<MSE>0.0155014300</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Northern pike (Esox lucius)</predicted>
+		<r2>0.9649949760</r2>
+		<pVal>0.0176584220</pVal>
+		<df>2</df>
+		<intercept>0.9387395690</intercept>
+		<slope>0.4823434020</slope>
+		<xAvg>0.7804838780</xAvg>
+		<xMin>-0.5264244990</xMin>
+		<xMax>4.2504200020</xMax>
+		<Sxx>16.0878107300</Sxx>
+		<MSE>0.0678867430</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>75</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Redear sunfish (Lepomis microlophus)</predicted>
+		<r2>0.9999546700</r2>
+		<pVal>0.0042862500</pVal>
+		<df>1</df>
+		<intercept>1.2945393100</intercept>
+		<slope>0.2208362260</slope>
+		<xAvg>0.4759393370</xAvg>
+		<xMin>-0.5264244990</xMin>
+		<xMax>2.2552725050</xMax>
+		<Sxx>4.7744411260</Sxx>
+		<MSE>0.0000105553</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

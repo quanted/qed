@@ -1,0 +1,93 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Chlorella sp.</predicted>
+		<r2>0.845499098</r2>
+		<pVal>0.00945717</pVal>
+		<df>4</df>
+		<intercept>0.537539106</intercept>
+		<slope>0.737315279</slope>
+		<xAvg>-0.968778932</xAvg>
+		<xMin>-3.710506714</xMin>
+		<xMax>0.190439884</xMax>
+		<Sxx>10.7501835</Sxx>
+		<MSE>0.266980919</MSE>
+		<t90CI>2.131846786</t90CI>
+		<t95CI>2.776445105</t95CI>
+		<t99CI>4.604094871</t99CI>
+		<Bootstrap>0.6</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Desmodesmus sp.</predicted>
+		<r2>0.884785827</r2>
+		<pVal>1.70604E-06</pVal>
+		<df>11</df>
+		<intercept>0.30165016</intercept>
+		<slope>1.106544477</slope>
+		<xAvg>-0.307024423</xAvg>
+		<xMin>-0.938892061</xMin>
+		<xMax>1.977723605</xMax>
+		<Sxx>7.954427451</Sxx>
+		<MSE>0.11529799</MSE>
+		<t90CI>1.795884819</t90CI>
+		<t95CI>2.20098516</t95CI>
+		<t99CI>3.105806516</t99CI>
+		<Bootstrap>0.846153846</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Minutocellus sp.</predicted>
+		<r2>0.736013263</r2>
+		<pVal>4.30101E-05</pVal>
+		<df>13</df>
+		<intercept>-0.297299526</intercept>
+		<slope>1.049536433</slope>
+		<xAvg>-0.114585251</xAvg>
+		<xMin>-1.709965389</xMin>
+		<xMax>0.799011912</xMax>
+		<Sxx>8.621466827</Sxx>
+		<MSE>0.262016906</MSE>
+		<t90CI>1.770933396</t90CI>
+		<t95CI>2.160368656</t95CI>
+		<t99CI>3.012275839</t99CI>
+		<Bootstrap>0.866666667</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Pseudokirchneriella sp.</predicted>
+		<r2>0.769280681</r2>
+		<pVal>8.16283E-06</pVal>
+		<df>14</df>
+		<intercept>0.685567195</intercept>
+		<slope>0.533669913</slope>
+		<xAvg>-0.566173703</xAvg>
+		<xMin>-3.229147988</xMin>
+		<xMax>1.027415321</xMax>
+		<Sxx>14.90975807</Sxx>
+		<MSE>0.090967683</MSE>
+		<t90CI>1.761310136</t90CI>
+		<t95CI>2.144786688</t95CI>
+		<t99CI>2.976842734</t99CI>
+		<Bootstrap>0.875</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Thalassiosira sp.</predicted>
+		<r2>0.95701391</r2>
+		<pVal>5.79097E-11</pVal>
+		<df>14</df>
+		<intercept>0.269019069</intercept>
+		<slope>1.003307909</slope>
+		<xAvg>-1.788607457</xAvg>
+		<xMin>-3.710506714</xMin>
+		<xMax>0.190439884</xMax>
+		<Sxx>23.88168092</Sxx>
+		<MSE>0.077128524</MSE>
+		<t90CI>1.761310136</t90CI>
+		<t95CI>2.144786688</t95CI>
+		<t99CI>2.976842734</t99CI>
+		<Bootstrap>1</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+</species>

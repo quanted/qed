@@ -1,0 +1,57 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Daphnia</predicted>
+		<r2>0.4003457310</r2>
+		<pVal>0.0113579200</pVal>
+		<df>13</df>
+		<intercept>-0.0047973920</intercept>
+		<slope>0.8499621410</slope>
+		<xAvg>1.2340496210</xAvg>
+		<xMin>-0.8239087410</xMin>
+		<xMax>3.8637858040</xMax>
+		<Sxx>27.2343985000</Sxx>
+		<MSE>2.2669363560</MSE>
+		<t90CI>1.771</t90CI>
+		<t95CI>2.16</t95CI>
+		<t99CI>3.012</t99CI>
+		<Bootstrap>40</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Gammarus</predicted>
+		<r2>0.7989551390</r2>
+		<pVal>0.0000380321</pVal>
+		<df>11</df>
+		<intercept>0.2025666980</intercept>
+		<slope>0.9612719640</slope>
+		<xAvg>1.2953722590</xAvg>
+		<xMin>-0.8239087410</xMin>
+		<xMax>3.8637858040</xMax>
+		<Sxx>20.6023739100</Sxx>
+		<MSE>0.4354995540</MSE>
+		<t90CI>1.796</t90CI>
+		<t95CI>2.201</t95CI>
+		<t99CI>3.106</t99CI>
+		<Bootstrap>69.23076923</Bootstrap>
+		<taxDist>1</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Lepomis</predicted>
+		<r2>0.3132742750</r2>
+		<pVal>0.0374055790</pVal>
+		<df>12</df>
+		<intercept>1.9642354820</intercept>
+		<slope>0.5068822920</slope>
+		<xAvg>1.1087156980</xAvg>
+		<xMin>-0.8239087410</xMin>
+		<xMax>3.2552725050</xMax>
+		<Sxx>19.6120332800</Sxx>
+		<MSE>0.9204796630</MSE>
+		<t90CI>1.782</t90CI>
+		<t95CI>2.179</t95CI>
+		<t99CI>3.055</t99CI>
+		<Bootstrap>57.14285714</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

@@ -1,0 +1,93 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Anatidae</predicted>
+		<r2>0.422</r2>
+		<pVal>0.001</pVal>
+		<df>19</df>
+		<intercept>0.1868</intercept>
+		<slope>0.7564</slope>
+		<xAvg>1.59</xAvg>
+		<xMin>-0.24</xMin>
+		<xMax>2.83</xMax>
+		<Sxx>10.0213</Sxx>
+		<MSE>0.4134</MSE>
+		<t90CI>1.729</t90CI>
+		<t95CI>2.093</t95CI>
+		<t99CI>2.861</t99CI>
+		<Bootstrap>61.905</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Columbidae</predicted>
+		<r2>0.434</r2>
+		<pVal>0.006</pVal>
+		<df>14</df>
+		<intercept>0.0864</intercept>
+		<slope>0.8152</slope>
+		<xAvg>1.67</xAvg>
+		<xMin>-0.24</xMin>
+		<xMax>2.83</xMax>
+		<Sxx>7.8477</Sxx>
+		<MSE>0.4867</MSE>
+		<t90CI>1.761</t90CI>
+		<t95CI>2.145</t95CI>
+		<t99CI>2.977</t99CI>
+		<Bootstrap>62.5</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Muridae</predicted>
+		<r2>0.718</r2>
+		<pVal>0</pVal>
+		<df>13</df>
+		<intercept>0.3303</intercept>
+		<slope>0.7823</slope>
+		<xAvg>1.4</xAvg>
+		<xMin>-0.24</xMin>
+		<xMax>2.45</xMax>
+		<Sxx>7.0644</Sxx>
+		<MSE>0.1304</MSE>
+		<t90CI>1.771</t90CI>
+		<t95CI>2.16</t95CI>
+		<t99CI>3.012</t99CI>
+		<Bootstrap>93.333</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Passeridae</predicted>
+		<r2>0.32</r2>
+		<pVal>0.044</pVal>
+		<df>11</df>
+		<intercept>0.2591</intercept>
+		<slope>0.4875</slope>
+		<xAvg>1.41</xAvg>
+		<xMin>-0.24</xMin>
+		<xMax>2.27</xMax>
+		<Sxx>4.7243</Sxx>
+		<MSE>0.2168</MSE>
+		<t90CI>1.796</t90CI>
+		<t95CI>2.201</t95CI>
+		<t99CI>3.106</t99CI>
+		<Bootstrap>60</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Phasianidae</predicted>
+		<r2>0.424</r2>
+		<pVal>0.001</pVal>
+		<df>19</df>
+		<intercept>0.4385</intercept>
+		<slope>0.6572</slope>
+		<xAvg>1.59</xAvg>
+		<xMin>-0.24</xMin>
+		<xMax>2.83</xMax>
+		<Sxx>10.0213</Sxx>
+		<MSE>0.3097</MSE>
+		<t90CI>1.729</t90CI>
+		<t95CI>2.093</t95CI>
+		<t99CI>2.861</t99CI>
+		<Bootstrap>71.429</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+</species>

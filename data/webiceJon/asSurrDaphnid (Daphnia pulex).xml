@@ -1,0 +1,57 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Amphipod (Gammarus lacustris)</predicted>
+		<r2>0.6894457000</r2>
+		<pVal>0.0207402070</pVal>
+		<df>5</df>
+		<intercept>0.7575729670</intercept>
+		<slope>0.5950989710</slope>
+		<xAvg>0.8963761140</xAvg>
+		<xMin>-0.7447274950</xMin>
+		<xMax>4.3361085900</xMax>
+		<Sxx>21.0925073500</Sxx>
+		<MSE>0.6729364970</MSE>
+		<t90CI>2.015</t90CI>
+		<t95CI>2.571</t95CI>
+		<t99CI>4.032</t99CI>
+		<Bootstrap>42.85714286</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Daphnid (Daphnia magna)</predicted>
+		<r2>0.8267159160</r2>
+		<pVal>0.0045368030</pVal>
+		<df>5</df>
+		<intercept>-0.0907425310</intercept>
+		<slope>0.9849546640</slope>
+		<xAvg>1.5459100600</xAvg>
+		<xMin>-0.2218487500</xMin>
+		<xMax>4.5746650790</xMax>
+		<Sxx>18.0825295800</Sxx>
+		<MSE>0.7354006980</MSE>
+		<t90CI>2.015</t90CI>
+		<t95CI>2.571</t95CI>
+		<t99CI>4.032</t99CI>
+		<Bootstrap>71.42857143</Bootstrap>
+		<taxDist>1</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Daphnid (Simocephalus serrulatus)</predicted>
+		<r2>0.9666474700</r2>
+		<pVal>0.0000019980</pVal>
+		<df>7</df>
+		<intercept>0.2515891520</intercept>
+		<slope>0.9261811900</slope>
+		<xAvg>1.3200591400</xAvg>
+		<xMin>-0.7447274950</xMin>
+		<xMax>4.0000000000</xMax>
+		<Sxx>25.9471621000</Sxx>
+		<MSE>0.1097095440</MSE>
+		<t90CI>1.895</t90CI>
+		<t95CI>2.365</t95CI>
+		<t99CI>3.499</t99CI>
+		<Bootstrap>88.88888889</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+</species>

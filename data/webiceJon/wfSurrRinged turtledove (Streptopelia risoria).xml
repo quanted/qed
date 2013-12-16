@@ -1,0 +1,75 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Icteridae</predicted>
+		<r2>0.729</r2>
+		<pVal>0.03</pVal>
+		<df>4</df>
+		<intercept>-0.7374</intercept>
+		<slope>0.9983</slope>
+		<xAvg>1.48</xAvg>
+		<xMin>0.32</xMin>
+		<xMax>2.54</xMax>
+		<Sxx>3.2088</Sxx>
+		<MSE>0.2971</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Odontophoridae</predicted>
+		<r2>0.928</r2>
+		<pVal>0.002</pVal>
+		<df>4</df>
+		<intercept>0.0777</intercept>
+		<slope>0.8499</slope>
+		<xAvg>1.48</xAvg>
+		<xMin>0.32</xMin>
+		<xMax>2.54</xMax>
+		<Sxx>3.2088</Sxx>
+		<MSE>0.0449</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Passeridae</predicted>
+		<r2>0.999</r2>
+		<pVal>0.021</pVal>
+		<df>1</df>
+		<intercept>-0.8094</intercept>
+		<slope>1.0116</slope>
+		<xAvg>1.32</xAvg>
+		<xMin>0.32</xMin>
+		<xMax>2.54</xMax>
+		<Sxx>2.5518</Sxx>
+		<MSE>0.0028</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Phasianidae</predicted>
+		<r2>0.783</r2>
+		<pVal>0.019</pVal>
+		<df>4</df>
+		<intercept>0.0108</intercept>
+		<slope>0.8031</slope>
+		<xAvg>1.48</xAvg>
+		<xMin>0.32</xMin>
+		<xMax>2.54</xMax>
+		<Sxx>3.2088</Sxx>
+		<MSE>0.1432</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>75</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

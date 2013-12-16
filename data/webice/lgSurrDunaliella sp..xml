@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Chlorella sp.</predicted>
+		<r2>0.80711828</r2>
+		<pVal>0.038278748</pVal>
+		<df>3</df>
+		<intercept>-1.278151207</intercept>
+		<slope>0.954121684</slope>
+		<xAvg>0.422079053</xAvg>
+		<xMin>-1.901106339</xMin>
+		<xMax>2.301029996</xMax>
+		<Sxx>17.42617235</Sxx>
+		<MSE>1.263694714</MSE>
+		<t90CI>2.353363435</t90CI>
+		<t95CI>3.182446305</t95CI>
+		<t99CI>5.84090931</t99CI>
+		<Bootstrap></Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Pseudokirchneriella sp.</predicted>
+		<r2>0.944650788</r2>
+		<pVal>0.000249713</pVal>
+		<df>5</df>
+		<intercept>-1.178509653</intercept>
+		<slope>0.532738983</slope>
+		<xAvg>-0.866631451</xAvg>
+		<xMin>-2.508638306</xMin>
+		<xMax>1.619860902</xMax>
+		<Sxx>12.40375497</Sxx>
+		<MSE>0.041252691</MSE>
+		<t90CI>2.015048373</t90CI>
+		<t95CI>2.570581836</t95CI>
+		<t99CI>4.032142984</t99CI>
+		<Bootstrap>1</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

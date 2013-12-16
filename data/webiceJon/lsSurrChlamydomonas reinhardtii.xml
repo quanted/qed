@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Desmodesmus subspicatus</predicted>
+		<r2>0.493524287</r2>
+		<pVal>0.052006715</pVal>
+		<df>6</df>
+		<intercept>-0.329236242</intercept>
+		<slope>1.364971068</slope>
+		<xAvg>-0.084511094</xAvg>
+		<xMin>-1.034072824</xMin>
+		<xMax>0.953759692</xMax>
+		<Sxx>3.525353938</Sxx>
+		<MSE>1.123436327</MSE>
+		<t90CI>1.943180281</t90CI>
+		<t95CI>2.446911851</t95CI>
+		<t99CI>3.707428021</t99CI>
+		<Bootstrap>0</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

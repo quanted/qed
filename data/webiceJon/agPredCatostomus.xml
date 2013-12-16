@@ -1,0 +1,9 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Bluegill (Lepomis macrochirus)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Yellow perch (Perca flavescens)</surrogate>
+	</cross>
+</species>

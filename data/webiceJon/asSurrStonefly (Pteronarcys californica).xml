@@ -1,0 +1,93 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Amphipod (Gammarus fasciatus)</predicted>
+		<r2>0.6698529870</r2>
+		<pVal>0.0069953260</pVal>
+		<df>7</df>
+		<intercept>-0.0753736040</intercept>
+		<slope>1.0784206320</slope>
+		<xAvg>1.4364896970</xAvg>
+		<xMin>0.1461280360</xMin>
+		<xMax>3.4149733480</xMax>
+		<Sxx>16.5687626300</Sxx>
+		<MSE>1.3567389300</MSE>
+		<t90CI>1.895</t90CI>
+		<t95CI>2.365</t95CI>
+		<t99CI>3.499</t99CI>
+		<Bootstrap>44.44444444</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Amphipod (Gammarus lacustris)</predicted>
+		<r2>0.6207817360</r2>
+		<pVal>0.0116768860</pVal>
+		<df>7</df>
+		<intercept>0.0361507460</intercept>
+		<slope>0.7834039750</slope>
+		<xAvg>1.0132366190</xAvg>
+		<xMin>0.1461280360</xMin>
+		<xMax>3.3222192950</xMax>
+		<Sxx>8.2426118590</Sxx>
+		<MSE>0.4414572620</MSE>
+		<t90CI>1.895</t90CI>
+		<t95CI>2.365</t95CI>
+		<t99CI>3.499</t99CI>
+		<Bootstrap>66.66666667</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Largemouth bass (Micropterus salmoides)</predicted>
+		<r2>0.6751798580</r2>
+		<pVal>0.0448554480</pVal>
+		<df>4</df>
+		<intercept>1.0805300570</intercept>
+		<slope>1.8787739680</slope>
+		<xAvg>0.6336189980</xAvg>
+		<xMin>0.1461280360</xMin>
+		<xMax>1.5440680440</xMax>
+		<Sxx>1.2374024060</Sxx>
+		<MSE>0.5253194820</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>50</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Rainbow trout (Oncorhynchus mykiss)</predicted>
+		<r2>0.3896586800</r2>
+		<pVal>0.0225848490</pVal>
+		<df>11</df>
+		<intercept>1.5155582360</intercept>
+		<slope>0.7064653590</slope>
+		<xAvg>1.2265225280</xAvg>
+		<xMin>0.1461280360</xMin>
+		<xMax>3.3222192950</xMax>
+		<Sxx>17.5211305500</Sxx>
+		<MSE>1.2452014000</MSE>
+		<t90CI>1.796</t90CI>
+		<t95CI>2.201</t95CI>
+		<t99CI>3.106</t99CI>
+		<Bootstrap>15.38461538</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Stonefly (Pteronarcella badia)</predicted>
+		<r2>0.9167946980</r2>
+		<pVal>0.0006992280</pVal>
+		<df>5</df>
+		<intercept>0.2015356750</intercept>
+		<slope>0.8953032750</slope>
+		<xAvg>1.4656477340</xAvg>
+		<xMin>0.1461280360</xMin>
+		<xMax>3.4149733480</xMax>
+		<Sxx>10.1191927400</Sxx>
+		<MSE>0.1472295950</MSE>
+		<t90CI>2.015</t90CI>
+		<t95CI>2.571</t95CI>
+		<t99CI>4.032</t99CI>
+		<Bootstrap>85.71428571</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+</species>

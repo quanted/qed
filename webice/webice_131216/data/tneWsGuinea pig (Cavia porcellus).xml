@@ -1,0 +1,123 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Mammals</group>
+		<species>Stick-nest rat (Leporillus conditor)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+	<cross num="2">	
+		<group>Mammals</group>
+		<species>Riparian woodrat (Neotoma fuscipes riparia)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+	<cross num="3">	
+		<group>Mammals</group>
+		<species>Australian native mouse (Notomys aquilo)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+	<cross num="4">	
+		<group>Mammals</group>
+		<species>Rice rat (Oryzomys palustris natator)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+	<cross num="5">	
+		<group>Mammals</group>
+		<species>Key Largo cotton mouse (Peromyscus gossypinus allapaticola)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+	<cross num="6">	
+		<group>Mammals</group>
+		<species>Choctawhatchee beach mouse (Peromyscus polionotus allophrys)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+	<cross num="7">	
+		<group>Mammals</group>
+		<species>Alabama beach mouse (Peromyscus polionotus ammobates)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+	<cross num="8">	
+		<group>Mammals</group>
+		<species>Southeastern beach mouse (Peromyscus polionotus niveiventris)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+	<cross num="9">	
+		<group>Mammals</group>
+		<species>St. Andrew beach mouse (Peromyscus polionotus peninsularis)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+	<cross num="10">	
+		<group>Mammals</group>
+		<species>Anastasia Island beach mouse (Peromyscus polionotus phasma)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+	<cross num="11">	
+		<group>Mammals</group>
+		<species>Perdido Key beach mouse (Peromyscus polionotus trissyllepsis)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+	<cross num="12">	
+		<group>Mammals</group>
+		<species>Field's mouse (Pseudomys fieldi)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+	<cross num="13">	
+		<group>Mammals</group>
+		<species>Smoky mouse (Pseudomys fumeus)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+	<cross num="14">	
+		<group>Mammals</group>
+		<species>Gould's mouse (Pseudomys gouldii)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+	<cross num="15">	
+		<group>Mammals</group>
+		<species>New Holland mouse (Pseudomys novaehollandiae)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+	<cross num="16">	
+		<group>Mammals</group>
+		<species>Western mouse (Pseudomys occidentalis)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+	<cross num="17">	
+		<group>Mammals</group>
+		<species>Shark Bay mouse (Pseudomys praeconis)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+	<cross num="18">	
+		<group>Mammals</group>
+		<species>Shortridge's mouse (Pseudomys shortridgei)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+	<cross num="19">	
+		<group>Mammals</group>
+		<species>False water rat (Xeromys myoides)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+	<cross num="20">	
+		<group>Mammals</group>
+		<species>Australian native mouse (Zyzomys pedunculatus)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrGuinea pig (Cavia porcellus).xml</filesource>
+	</cross>
+</crosses>

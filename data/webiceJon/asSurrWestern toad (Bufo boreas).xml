@@ -1,0 +1,93 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Cape fear shiner (Notropis mekistocholas)</predicted>
+		<r2>0.9337180070</r2>
+		<pVal>0.0337091500</pVal>
+		<df>2</df>
+		<intercept>0.3733219570</intercept>
+		<slope>0.7980156890</slope>
+		<xAvg>2.3906485510</xAvg>
+		<xMin>1.3617278360</xMin>
+		<xMax>4.0899580680</xMax>
+		<Sxx>4.1842497060</Sxx>
+		<MSE>0.0945780350</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Fathead minnow (Pimephales promelas)</predicted>
+		<r2>0.9079842020</r2>
+		<pVal>0.0471179490</pVal>
+		<df>2</df>
+		<intercept>0.7762452790</intercept>
+		<slope>0.7390029010</slope>
+		<xAvg>2.3906485510</xAvg>
+		<xMin>1.3617278360</xMin>
+		<xMax>4.0899580680</xMax>
+		<Sxx>4.1842497060</Sxx>
+		<MSE>0.1157881160</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>75</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Leon springs pupfish (Cyprinodon bovinus)</predicted>
+		<r2>0.9994412260</r2>
+		<pVal>0.0150500770</pVal>
+		<df>1</df>
+		<intercept>0.5879628010</intercept>
+		<slope>0.7077061160</slope>
+		<xAvg>2.7336221220</xAvg>
+		<xMin>1.9741877320</xMin>
+		<xMax>4.0899580680</xMax>
+		<Sxx>2.7726792570</Sxx>
+		<MSE>0.0007763980</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Southern leopard frog (Rana sphenocephala)</predicted>
+		<r2>0.9248420710</r2>
+		<pVal>0.0383129040</pVal>
+		<df>2</df>
+		<intercept>0.3854761170</intercept>
+		<slope>0.8589733550</slope>
+		<xAvg>2.3906485510</xAvg>
+		<xMin>1.3617278360</xMin>
+		<xMax>4.0899580680</xMax>
+		<Sxx>4.1842497060</Sxx>
+		<MSE>0.1254452470</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Spotfin chub (Erimonax monachus)</predicted>
+		<r2>0.9792052140</r2>
+		<pVal>0.0104520150</pVal>
+		<df>2</df>
+		<intercept>0.3616919330</intercept>
+		<slope>0.7653943230</slope>
+		<xAvg>2.3906485510</xAvg>
+		<xMin>1.3617278360</xMin>
+		<xMax>4.0899580680</xMax>
+		<Sxx>4.1842497060</Sxx>
+		<MSE>0.0260278810</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+</species>

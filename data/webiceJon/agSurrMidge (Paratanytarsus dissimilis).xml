@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Daphnia</predicted>
+		<r2>0.7689269080</r2>
+		<pVal>0.0218029870</pVal>
+		<df>4</df>
+		<intercept>-4.8190330010</intercept>
+		<slope>1.7183234210</slope>
+		<xAvg>4.6718527980</xAvg>
+		<xMin>3.5901010680</xMin>
+		<xMax>6.3201462860</xMax>
+		<Sxx>5.8579505850</Sxx>
+		<MSE>1.2994508190</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>50</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Oncorhynchus</predicted>
+		<r2>0.8642062660</r2>
+		<pVal>0.0008259440</pVal>
+		<df>6</df>
+		<intercept>-4.3260053100</intercept>
+		<slope>1.7114125770</slope>
+		<xAvg>4.6184172800</xAvg>
+		<xMin>3.5901010680</xMin>
+		<xMax>6.3201462860</xMax>
+		<Sxx>6.3325457150</Sxx>
+		<MSE>0.4857343760</MSE>
+		<t90CI>1.943</t90CI>
+		<t95CI>2.447</t95CI>
+		<t99CI>3.707</t99CI>
+		<Bootstrap>62.5</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

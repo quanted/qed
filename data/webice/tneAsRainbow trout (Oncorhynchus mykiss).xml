@@ -1,0 +1,1593 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Fishes</group>
+		<species>Shortnose sturgeon (Acipenser brevirostrum)</species>
+		<predicted>Shortnose sturgeon (Acipenser brevirostrum)</predicted>
+		<filesource>asSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="2">	
+		<group>Fishes</group>
+		<species>Leon springs pupfish (Cyprinodon bovinus)</species>
+		<predicted>Leon springs pupfish (Cyprinodon bovinus)</predicted>
+		<filesource>asSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="3">	
+		<group>Fishes</group>
+		<species>Spotfin chub (Erimonax monachus)</species>
+		<predicted>Spotfin chub (Erimonax monachus)</predicted>
+		<filesource>asSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="4">	
+		<group>Fishes</group>
+		<species>Fountain darter (Etheostoma fonticola)</species>
+		<predicted>Fountain darter (Etheostoma fonticola)</predicted>
+		<filesource>asSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="5">	
+		<group>Fishes</group>
+		<species>Unarmored threespine stickleback (Gasterosteus aculeatus williamsoni)</species>
+		<predicted>Threespine stickleback (Gasterosteus aculeatus)</predicted>
+		<filesource>asSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="6">	
+		<group>Fishes</group>
+		<species>Cape Fear shiner (Notropis mekistocholas)</species>
+		<predicted>Cape fear shiner (Notropis mekistocholas)</predicted>
+		<filesource>asSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="7">	
+		<group>Fishes</group>
+		<species>Lahontan cutthroat trout (Oncorhynchus clarkii henshawi)</species>
+		<predicted>Cutthroat trout (Oncorhynchus clarkii)</predicted>
+		<filesource>asSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="8">	
+		<group>Fishes</group>
+		<species>Greenback cutthroat trout (Oncorhynchus clarkii stomias)</species>
+		<predicted>Cutthroat trout (Oncorhynchus clarkii)</predicted>
+		<filesource>asSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="9">	
+		<group>Fishes</group>
+		<species>Paiute cutthroat trout (Oncorhynchus clarkii seleniris)</species>
+		<predicted>Cutthroat trout (Oncorhynchus clarkii)</predicted>
+		<filesource>asSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="10">	
+		<group>Fishes</group>
+		<species>Gila trout (Oncorhynchus gilae)</species>
+		<predicted>Apache trout (Oncorhynchus gilae)</predicted>
+		<filesource>asSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="11">	
+		<group>Fishes</group>
+		<species>Apache trout (Oncorhynchus gilae apache)</species>
+		<predicted>Apache trout (Oncorhynchus gilae)</predicted>
+		<filesource>asSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="12">	
+		<group>Fishes</group>
+		<species>Coho salmon (Oncorhynchus kisutch)</species>
+		<predicted>Coho salmon (Oncorhynchus kisutch)</predicted>
+		<filesource>asSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="13">	
+		<group>Fishes</group>
+		<species>Chinook salmon (Oncorhynchus tshawytscha)</species>
+		<predicted>Chinook salmon (Oncorhynchus tshawytscha)</predicted>
+		<filesource>asSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="14">	
+		<group>Fishes</group>
+		<species>Gila topminnow (Poeciliopsis occidentalis)</species>
+		<predicted>Gila topminnow (Poeciliopsis occidentalis)</predicted>
+		<filesource>asSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="15">	
+		<group>Fishes</group>
+		<species>Atlantic salmon (Salmo salar)</species>
+		<predicted>Atlantic salmon (Salmo salar)</predicted>
+		<filesource>asSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="16">	
+		<group>Fishes</group>
+		<species>Razorback sucker (Xyrauchen texanus)</species>
+		<predicted>Razorback sucker (Xyrauchen texanus)</predicted>
+		<filesource>asSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="17">	
+		<group>Fishes</group>
+		<species>Shortnose sturgeon (Acipenser brevirostrum)</species>
+		<predicted>Acipenser</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="18">	
+		<group>Fishes</group>
+		<species>North American green sturgeon (Acipenser medirostris)</species>
+		<predicted>Acipenser</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="19">	
+		<group>Fishes</group>
+		<species>Gulf sturgeon (Acipenser oxyrinchus desotoi)</species>
+		<predicted>Acipenser</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="20">	
+		<group>Fishes</group>
+		<species>White sturgeon (Acipenser transmontanus)</species>
+		<predicted>Acipenser</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="21">	
+		<group>Fishes</group>
+		<species>Leon springs pupfish (Cyprinodon bovinus)</species>
+		<predicted>Cyprinodon</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="22">	
+		<group>Fishes</group>
+		<species>Devils Hole pupfish (Cyprinodon diabolis)</species>
+		<predicted>Cyprinodon</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="23">	
+		<group>Fishes</group>
+		<species>Comanche Springs pupfish (Cyprinodon elegans)</species>
+		<predicted>Cyprinodon</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="24">	
+		<group>Fishes</group>
+		<species>Desert pupfish (Cyprinodon macularius)</species>
+		<predicted>Cyprinodon</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="25">	
+		<group>Fishes</group>
+		<species>Ash Meadows Amargosa pupfish (Cyprinodon nevadensis mionectes)</species>
+		<predicted>Cyprinodon</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="26">	
+		<group>Fishes</group>
+		<species>Warm Springs pupfish (Cyprinodon nevadensis pectoralis)</species>
+		<predicted>Cyprinodon</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="27">	
+		<group>Fishes</group>
+		<species>Owens pupfish (Cyprinodon radiosus)</species>
+		<predicted>Cyprinodon</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="28">	
+		<group>Fishes</group>
+		<species>Slackwater darter (Etheostoma boschungi)</species>
+		<predicted>Etheostoma</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="29">	
+		<group>Fishes</group>
+		<species>Vermilion darter (Etheostoma chermocki)</species>
+		<predicted>Etheostoma</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="30">	
+		<group>Fishes</group>
+		<species>Relict darter (Etheostoma chienense)</species>
+		<predicted>Etheostoma</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="31">	
+		<group>Fishes</group>
+		<species>Etowah darter (Etheostoma etowahae)</species>
+		<predicted>Etheostoma</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="32">	
+		<group>Fishes</group>
+		<species>Fountain darter (Etheostoma fonticola)</species>
+		<predicted>Etheostoma</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="33">	
+		<group>Fishes</group>
+		<species>Niangua darter (Etheostoma nianguae)</species>
+		<predicted>Etheostoma</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="34">	
+		<group>Fishes</group>
+		<species>Watercress darter (Etheostoma nuchale)</species>
+		<predicted>Etheostoma</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="35">	
+		<group>Fishes</group>
+		<species>Okaloosa darter (Etheostoma okaloosae)</species>
+		<predicted>Etheostoma</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="36">	
+		<group>Fishes</group>
+		<species>Duskytail darter (Etheostoma percnurum)</species>
+		<predicted>Etheostoma</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="37">	
+		<group>Fishes</group>
+		<species>Bayou darter (Etheostoma rubrum)</species>
+		<predicted>Etheostoma</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="38">	
+		<group>Fishes</group>
+		<species>Cherokee darter (Etheostoma scotti)</species>
+		<predicted>Etheostoma</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="39">	
+		<group>Fishes</group>
+		<species>Maryland darter (Etheostoma sellare)</species>
+		<predicted>Etheostoma</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="40">	
+		<group>Fishes</group>
+		<species>Bluemask darter (Etheostoma sp.)</species>
+		<predicted>Etheostoma</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="41">	
+		<group>Fishes</group>
+		<species>Boulder darter (Etheostoma wapiti)</species>
+		<predicted>Etheostoma</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="42">	
+		<group>Crustaceans</group>
+		<species>Illinois cave amphipod (Gammarus acherondytes)</species>
+		<predicted>Gammarus</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="43">	
+		<group>Crustaceans</group>
+		<species>Noel's amphipod (Gammarus desperatus)</species>
+		<predicted>Gammarus</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="44">	
+		<group>Fishes</group>
+		<species>Palezone shiner (Notropis albizonatus)</species>
+		<predicted>Notropis</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="45">	
+		<group>Fishes</group>
+		<species>Cahaba shiner (Notropis cahabae)</species>
+		<predicted>Notropis</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="46">	
+		<group>Fishes</group>
+		<species>Arkansas River shiner (Notropis girardi)</species>
+		<predicted>Notropis</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="47">	
+		<group>Fishes</group>
+		<species>Cape Fear shiner (Notropis mekistocholas)</species>
+		<predicted>Notropis</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="48">	
+		<group>Fishes</group>
+		<species>Pecos bluntnose shiner (Notropis simus pecosensis)</species>
+		<predicted>Notropis</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="49">	
+		<group>Fishes</group>
+		<species>Topeka shiner (Notropis topeka)</species>
+		<predicted>Notropis</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="50">	
+		<group>Fishes</group>
+		<species>Little Kern golden trout (Oncorhynchus aguabonita whitei)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="51">	
+		<group>Fishes</group>
+		<species>Lahontan cutthroat trout (Oncorhynchus clarkii henshawi)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="52">	
+		<group>Fishes</group>
+		<species>Greenback cutthroat trout (Oncorhynchus clarkii stomias)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="53">	
+		<group>Fishes</group>
+		<species>Paiute cutthroat trout (Oncorhynchus clarkii seleniris)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="54">	
+		<group>Fishes</group>
+		<species>Gila trout (Oncorhynchus gilae)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="55">	
+		<group>Fishes</group>
+		<species>Apache trout (Oncorhynchus gilae apache)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="56">	
+		<group>Fishes</group>
+		<species>Chum salmon (Oncorhynchus keta)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="57">	
+		<group>Fishes</group>
+		<species>Coho salmon (Oncorhynchus kisutch)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="58">	
+		<group>Fishes</group>
+		<species>Steelhead (Oncorhynchus mykiss)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="59">	
+		<group>Fishes</group>
+		<species>Sockeye salmon (Oncorhynchus nerka)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="60">	
+		<group>Fishes</group>
+		<species>Chinook salmon (Oncorhynchus tshawytscha)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="61">	
+		<group>Amphibians</group>
+		<species>California red-legged frog (Rana aurora draytonii)</species>
+		<predicted>Rana</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="62">	
+		<group>Amphibians</group>
+		<species>Mississippi gopher frog (Rana capito sevosa)</species>
+		<predicted>Rana</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="63">	
+		<group>Amphibians</group>
+		<species>Chiricahua leopard frog (Rana chiricahuensis)</species>
+		<predicted>Rana</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="64">	
+		<group>Amphibians</group>
+		<species>Mountain yellow-legged frog (Rana muscosa)</species>
+		<predicted>Rana</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="65">	
+		<group>Fishes</group>
+		<species>Ala balik (Salmo platycephalus)</species>
+		<predicted>Salmo</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="66">	
+		<group>Fishes</group>
+		<species>Atlantic salmon (Salmo salar)</species>
+		<predicted>Salmo</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="67">	
+		<group>Fishes</group>
+		<species>Bull trout (Salvelinus confluentus)</species>
+		<predicted>Salvelinus</predicted>
+		<filesource>agSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="68">	
+		<group>Fishes</group>
+		<species>Cicek (Acanthorutilus handlirschi)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="69">	
+		<group>Fishes</group>
+		<species>Shortnose sturgeon (Acipenser brevirostrum)</species>
+		<predicted>Acipenseridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="70">	
+		<group>Fishes</group>
+		<species>North American green sturgeon (Acipenser medirostris)</species>
+		<predicted>Acipenseridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="71">	
+		<group>Fishes</group>
+		<species>Gulf sturgeon (Acipenser oxyrinchus desotoi)</species>
+		<predicted>Acipenseridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="72">	
+		<group>Fishes</group>
+		<species>White sturgeon (Acipenser transmontanus)</species>
+		<predicted>Acipenseridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="73">	
+		<group>Molluscs</group>
+		<species>Cumberland elktoe (Alasmidonta atropurpurea)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="74">	
+		<group>Molluscs</group>
+		<species>Dwarf wedgemussel (Alasmidonta heterodon)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="75">	
+		<group>Molluscs</group>
+		<species>Appalachian elktoe (Alasmidonta raveneliana)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="76">	
+		<group>Molluscs</group>
+		<species>Fat three-ridge (Amblema neislerii)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="77">	
+		<group>Molluscs</group>
+		<species>Ouachita rock pocketbook (Arkansia wheeleri)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="78">	
+		<group>Crustaceans</group>
+		<species>Cave crayfish (Cambarus aculabrum)</species>
+		<predicted>Cambaridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="79">	
+		<group>Crustaceans</group>
+		<species>Cave crayfish (Cambarus zophonastes)</species>
+		<predicted>Cambaridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="80">	
+		<group>Fishes</group>
+		<species>Modoc sucker (Catostomus microps)</species>
+		<predicted>Catostomidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="81">	
+		<group>Fishes</group>
+		<species>Warner sucker (Catostomus warnerensis)</species>
+		<predicted>Catostomidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="82">	
+		<group>Fishes</group>
+		<species>Shortnose sucker (Chasmistes brevirostris)</species>
+		<predicted>Catostomidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="83">	
+		<group>Fishes</group>
+		<species>Cui-ui (Chasmistes cujus)</species>
+		<predicted>Catostomidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="84">	
+		<group>Fishes</group>
+		<species>June sucker (Chasmistes liorus)</species>
+		<predicted>Catostomidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="85">	
+		<group>Molluscs</group>
+		<species>Birdwing pearlymussel (Conradilla caelata)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="86">	
+		<group>Amphibians</group>
+		<species>Goliath frog (Conraua goliath)</species>
+		<predicted>Ranidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="87">	
+		<group>Fishes</group>
+		<species>White River springfish (Crenichthys baileyi baileyi)</species>
+		<predicted>Cyprinodontidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="88">	
+		<group>Fishes</group>
+		<species>Hiko White River springfish (Crenichthys baileyi grandis)</species>
+		<predicted>Cyprinodontidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="89">	
+		<group>Fishes</group>
+		<species>Railroad Valley springfish (Crenichthys nevadae)</species>
+		<predicted>Cyprinodontidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="90">	
+		<group>Fishes</group>
+		<species>Blue shiner (Cyprinella caerulea)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="91">	
+		<group>Fishes</group>
+		<species>Beautiful shiner (Cyprinella formosa)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="92">	
+		<group>Fishes</group>
+		<species>Leon springs pupfish (Cyprinodon bovinus)</species>
+		<predicted>Cyprinodontidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="93">	
+		<group>Fishes</group>
+		<species>Devils Hole pupfish (Cyprinodon diabolis)</species>
+		<predicted>Cyprinodontidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="94">	
+		<group>Fishes</group>
+		<species>Comanche Springs pupfish (Cyprinodon elegans)</species>
+		<predicted>Cyprinodontidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="95">	
+		<group>Fishes</group>
+		<species>Desert pupfish (Cyprinodon macularius)</species>
+		<predicted>Cyprinodontidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="96">	
+		<group>Fishes</group>
+		<species>Ash Meadows Amargosa pupfish (Cyprinodon nevadensis mionectes)</species>
+		<predicted>Cyprinodontidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="97">	
+		<group>Fishes</group>
+		<species>Warm Springs pupfish (Cyprinodon nevadensis pectoralis)</species>
+		<predicted>Cyprinodontidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="98">	
+		<group>Fishes</group>
+		<species>Owens pupfish (Cyprinodon radiosus)</species>
+		<predicted>Cyprinodontidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="99">	
+		<group>Molluscs</group>
+		<species>Fanshell (Cyprogenia stegaria)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="100">	
+		<group>Molluscs</group>
+		<species>Tampico pearlymussel (Cyrtonaias tampicoensis tecomatensis)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="101">	
+		<group>Fishes</group>
+		<species>Lost River sucker (Deltistes luxatus)</species>
+		<predicted>Catostomidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="102">	
+		<group>Fishes</group>
+		<species>Devils River minnow (Dionda diaboli)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="103">	
+		<group>Molluscs</group>
+		<species>Dromedary pearlymussel (Dromus dromas)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="104">	
+		<group>Molluscs</group>
+		<species>Chipola slabshell (Elliptio chipolaensis)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="105">	
+		<group>Molluscs</group>
+		<species>Tar River spinymussel (Elliptio steinstansana)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="106">	
+		<group>Molluscs</group>
+		<species>Purple bankclimber (Elliptoideus sloatianus)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="107">	
+		<group>Fishes</group>
+		<species>Pahrump poolfish (Empetrichthys latos)</species>
+		<predicted>Cyprinodontidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="108">	
+		<group>Molluscs</group>
+		<species>Cumberlandian combshell (Epioblasma brevidens)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="109">	
+		<group>Molluscs</group>
+		<species>Oyster mussel (Epioblasma capsaeformis)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="110">	
+		<group>Molluscs</group>
+		<species>Curtis pearlymussel (Epioblasma florentina curtisii)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="111">	
+		<group>Molluscs</group>
+		<species>Yellow blossom (Epioblasma florentina florentina)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="112">	
+		<group>Molluscs</group>
+		<species>Tan riffleshell (Epioblasma florentina walkeri)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="113">	
+		<group>Molluscs</group>
+		<species>Upland combshell (Epioblasma metastriata)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="114">	
+		<group>Molluscs</group>
+		<species>Catspaw (Epioblasma obliquata obliquata)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="115">	
+		<group>Molluscs</group>
+		<species>White catspaw (Epioblasma obliquata perobliqua)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="116">	
+		<group>Molluscs</group>
+		<species>Southern acornshell (Epioblasma othcaloogensis)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="117">	
+		<group>Molluscs</group>
+		<species>Southern combshell (Epioblasma penita)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="118">	
+		<group>Molluscs</group>
+		<species>Green blossom (Epioblasma torulosa gubernaculum)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="119">	
+		<group>Molluscs</group>
+		<species>Northern riffleshell (Epioblasma torulosa rangiana)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="120">	
+		<group>Molluscs</group>
+		<species>Tubercled blossom (Epioblasma torulosa torulosa)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="121">	
+		<group>Molluscs</group>
+		<species>Turgid blossom (Epioblasma turgidula)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="122">	
+		<group>Fishes</group>
+		<species>Desert dace (Eremichthys acros)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="123">	
+		<group>Fishes</group>
+		<species>Spotfin chub (Erimonax monachus)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="124">	
+		<group>Fishes</group>
+		<species>Slender chub (Erimystax cahni)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="125">	
+		<group>Fishes</group>
+		<species>Slackwater darter (Etheostoma boschungi)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="126">	
+		<group>Fishes</group>
+		<species>Vermilion darter (Etheostoma chermocki)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="127">	
+		<group>Fishes</group>
+		<species>Relict darter (Etheostoma chienense)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="128">	
+		<group>Fishes</group>
+		<species>Etowah darter (Etheostoma etowahae)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="129">	
+		<group>Fishes</group>
+		<species>Fountain darter (Etheostoma fonticola)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="130">	
+		<group>Fishes</group>
+		<species>Niangua darter (Etheostoma nianguae)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="131">	
+		<group>Fishes</group>
+		<species>Watercress darter (Etheostoma nuchale)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="132">	
+		<group>Fishes</group>
+		<species>Okaloosa darter (Etheostoma okaloosae)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="133">	
+		<group>Fishes</group>
+		<species>Duskytail darter (Etheostoma percnurum)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="134">	
+		<group>Fishes</group>
+		<species>Bayou darter (Etheostoma rubrum)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="135">	
+		<group>Fishes</group>
+		<species>Cherokee darter (Etheostoma scotti)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="136">	
+		<group>Fishes</group>
+		<species>Maryland darter (Etheostoma sellare)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="137">	
+		<group>Fishes</group>
+		<species>Bluemask darter (Etheostoma sp.)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="138">	
+		<group>Fishes</group>
+		<species>Boulder darter (Etheostoma wapiti)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="139">	
+		<group>Molluscs</group>
+		<species>Shiny pigtoe (Fusconaia cor)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="140">	
+		<group>Molluscs</group>
+		<species>Finerayed pigtoe (Fusconaia cuneolus)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="141">	
+		<group>Fishes</group>
+		<species>Big Bend gambusia (Gambusia gaigei)</species>
+		<predicted>Poeciliidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="142">	
+		<group>Fishes</group>
+		<species>San Marcos gambusia (Gambusia georgei)</species>
+		<predicted>Poeciliidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="143">	
+		<group>Fishes</group>
+		<species>Clear Creek gambusia (Gambusia heterochir)</species>
+		<predicted>Poeciliidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="144">	
+		<group>Fishes</group>
+		<species>Pecos gambusia (Gambusia nobilis)</species>
+		<predicted>Poeciliidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="145">	
+		<group>Crustaceans</group>
+		<species>Illinois cave amphipod (Gammarus acherondytes)</species>
+		<predicted>Gammaridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="146">	
+		<group>Crustaceans</group>
+		<species>Noel's amphipod (Gammarus desperatus)</species>
+		<predicted>Gammaridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="147">	
+		<group>Fishes</group>
+		<species>Mohave tui chub (Gila bicolor mohavensis)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="148">	
+		<group>Fishes</group>
+		<species>Owens tui chub (Gila bicolor snyderi)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="149">	
+		<group>Fishes</group>
+		<species>Hutton tui chub (Gila bicolor ssp.)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="150">	
+		<group>Fishes</group>
+		<species>Borax Lake chub (Gila boraxobius)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="151">	
+		<group>Fishes</group>
+		<species>Humpback chub (Gila cypha)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="152">	
+		<group>Fishes</group>
+		<species>Sonora chub (Gila ditaenia)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="153">	
+		<group>Fishes</group>
+		<species>Bonytail chub (Gila elegans)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="154">	
+		<group>Fishes</group>
+		<species>Gila chub (Gila intermedia)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="155">	
+		<group>Fishes</group>
+		<species>Chihuahua chub (Gila nigrescens)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="156">	
+		<group>Fishes</group>
+		<species>Yaqui chub (Gila purpurea)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="157">	
+		<group>Fishes</group>
+		<species>Pahranagat roundtail chub (Gila robusta jordani)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="158">	
+		<group>Fishes</group>
+		<species>Virgin River chub (Gila seminuda)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="159">	
+		<group>Molluscs</group>
+		<species>Cracking pearlymussel (Hemistena lata)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="160">	
+		<group>Fishes</group>
+		<species>Beluga sturgeon (Huso huso)</species>
+		<predicted>Acipenseridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="161">	
+		<group>Fishes</group>
+		<species>Rio Grande silvery minnow (Hybognathus amarus)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="162">	
+		<group>Fishes</group>
+		<species>Yaqui catfish (Ictalurus pricei)</species>
+		<predicted>Ictaluridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="163">	
+		<group>Molluscs</group>
+		<species>Pink mucket (Lampsilis abrupta)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="164">	
+		<group>Molluscs</group>
+		<species>Finelined pocketbook (Lampsilis altilis)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="165">	
+		<group>Molluscs</group>
+		<species>Higgins eye (Lampsilis higginsii)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="166">	
+		<group>Molluscs</group>
+		<species>Orangenacre mucket (Lampsilis perovalis)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="167">	
+		<group>Molluscs</group>
+		<species>Arkansas fatmucket (Lampsilis powelli)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="168">	
+		<group>Molluscs</group>
+		<species>Speckled pocketbook (Lampsilis streckeri)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="169">	
+		<group>Molluscs</group>
+		<species>Shinyrayed pocketbook (Lampsilis subangulata)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="170">	
+		<group>Molluscs</group>
+		<species>Alabama lampmussel (Lampsilis virescens)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="171">	
+		<group>Molluscs</group>
+		<species>Carolina heelsplitter (Lasmigona decorata)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="172">	
+		<group>Fishes</group>
+		<species>White River spinedace (Lepidomeda albivallis)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="173">	
+		<group>Fishes</group>
+		<species>Big Spring spinedace (Lepidomeda mollispinis pratensis)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="174">	
+		<group>Fishes</group>
+		<species>Little Colorado spinedace (Lepidomeda vittata)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="175">	
+		<group>Molluscs</group>
+		<species>Scaleshell mussel (Leptodea leptodon)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="176">	
+		<group>Crustaceans</group>
+		<species>Lee County cave isopod (Lirceus usdagalun)</species>
+		<predicted>Asellidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="177">	
+		<group>Molluscs</group>
+		<species>Louisiana pearlshell (Margaritifera hembeli)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="178">	
+		<group>Fishes</group>
+		<species>Spikedace (Meda fulgida)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="179">	
+		<group>Molluscs</group>
+		<species>Alabama moccasinshell (Medionidus acutissimus)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="180">	
+		<group>Molluscs</group>
+		<species>Coosa moccasinshell (Medionidus parvulus)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="181">	
+		<group>Molluscs</group>
+		<species>Gulf moccasinshell (Medionidus penicillatus)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="182">	
+		<group>Molluscs</group>
+		<species>Ochlockonee moccasinshell (Medionidus simpsonianus)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="183">	
+		<group>Molluscs</group>
+		<species>Nicklin's pearlymussel (Megalonaias nicklineana)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="184">	
+		<group>Fishes</group>
+		<species>Moapa dace (Moapa coriacea)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="185">	
+		<group>Fishes</group>
+		<species>Palezone shiner (Notropis albizonatus)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="186">	
+		<group>Fishes</group>
+		<species>Cahaba shiner (Notropis cahabae)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="187">	
+		<group>Fishes</group>
+		<species>Arkansas River shiner (Notropis girardi)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="188">	
+		<group>Fishes</group>
+		<species>Cape Fear shiner (Notropis mekistocholas)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="189">	
+		<group>Fishes</group>
+		<species>Pecos bluntnose shiner (Notropis simus pecosensis)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="190">	
+		<group>Fishes</group>
+		<species>Topeka shiner (Notropis topeka)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="191">	
+		<group>Fishes</group>
+		<species>Smoky madtom (Noturus baileyi)</species>
+		<predicted>Ictaluridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="192">	
+		<group>Fishes</group>
+		<species>Yellowfin madtom (Noturus flavipinnis)</species>
+		<predicted>Ictaluridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="193">	
+		<group>Fishes</group>
+		<species>Neosho madtom (Noturus placidus)</species>
+		<predicted>Ictaluridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="194">	
+		<group>Fishes</group>
+		<species>Pygmy madtom (Noturus stanauli)</species>
+		<predicted>Ictaluridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="195">	
+		<group>Fishes</group>
+		<species>Scioto madtom (Noturus trautmani)</species>
+		<predicted>Ictaluridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="196">	
+		<group>Molluscs</group>
+		<species>Ring pink (Obovaria retusa)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="197">	
+		<group>Fishes</group>
+		<species>Little Kern golden trout (Oncorhynchus aguabonita whitei)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="198">	
+		<group>Fishes</group>
+		<species>Lahontan cutthroat trout (Oncorhynchus clarkii henshawi)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="199">	
+		<group>Fishes</group>
+		<species>Greenback cutthroat trout (Oncorhynchus clarkii stomias)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="200">	
+		<group>Fishes</group>
+		<species>Paiute cutthroat trout (Oncorhynchus clarkii seleniris)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="201">	
+		<group>Fishes</group>
+		<species>Gila trout (Oncorhynchus gilae)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="202">	
+		<group>Fishes</group>
+		<species>Apache trout (Oncorhynchus gilae apache)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="203">	
+		<group>Fishes</group>
+		<species>Chum salmon (Oncorhynchus keta)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="204">	
+		<group>Fishes</group>
+		<species>Coho salmon (Oncorhynchus kisutch)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="205">	
+		<group>Fishes</group>
+		<species>Steelhead (Oncorhynchus mykiss)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="206">	
+		<group>Fishes</group>
+		<species>Sockeye salmon (Oncorhynchus nerka)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="207">	
+		<group>Fishes</group>
+		<species>Chinook salmon (Oncorhynchus tshawytscha)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="208">	
+		<group>Crustaceans</group>
+		<species>Nashville crayfish (Orconectes shoupi)</species>
+		<predicted>Cambaridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="209">	
+		<group>Fishes</group>
+		<species>Oregon chub (Oregonichthys crameri)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="210">	
+		<group>Crustaceans</group>
+		<species>Shasta crayfish (Pacifastacus fortis)</species>
+		<predicted>Cambaridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="211">	
+		<group>Molluscs</group>
+		<species>Littlewing pearlymussel (Pegias fabula)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="212">	
+		<group>Fishes</group>
+		<species>Amber darter (Percina antesella)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="213">	
+		<group>Fishes</group>
+		<species>Goldline darter (Percina aurolineata)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="214">	
+		<group>Fishes</group>
+		<species>Conasauga logperch (Percina jenkinsi)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="215">	
+		<group>Fishes</group>
+		<species>Leopard darter (Percina pantherina)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="216">	
+		<group>Fishes</group>
+		<species>Roanoke logperch (Percina rex)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="217">	
+		<group>Fishes</group>
+		<species>Snail darter (Percina tanasi)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="218">	
+		<group>Fishes</group>
+		<species>Blackside dace (Phoxinus cumberlandensis)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="219">	
+		<group>Fishes</group>
+		<species>Woundfin (Plagopterus argentissimus)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="220">	
+		<group>Molluscs</group>
+		<species>White wartyback (Plethobasus cicatricosus)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="221">	
+		<group>Molluscs</group>
+		<species>Orangefoot pimpleback (Plethobasus cooperianus)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="222">	
+		<group>Molluscs</group>
+		<species>Clubshell (Pleurobema clava)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="223">	
+		<group>Molluscs</group>
+		<species>James spinymussel (Pleurobema collina)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="224">	
+		<group>Molluscs</group>
+		<species>Black clubshell (Pleurobema curtum)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="225">	
+		<group>Molluscs</group>
+		<species>Southern clubshell (Pleurobema decisum)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="226">	
+		<group>Molluscs</group>
+		<species>Dark pigtoe (Pleurobema furvum)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="227">	
+		<group>Molluscs</group>
+		<species>Southern pigtoe (Pleurobema georgianum)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="228">	
+		<group>Molluscs</group>
+		<species>Cumberland pigtoe (Pleurobema gibberum)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="229">	
+		<group>Molluscs</group>
+		<species>Flat pigtoe (Pleurobema marshalli)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="230">	
+		<group>Molluscs</group>
+		<species>Ovate clubshell (Pleurobema perovatum)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="231">	
+		<group>Molluscs</group>
+		<species>Rough pigtoe (Pleurobema plenum)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="232">	
+		<group>Molluscs</group>
+		<species>Oval pigtoe (Pleurobema pyriforme)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="233">	
+		<group>Molluscs</group>
+		<species>Heavy pigtoe (Pleurobema taitianum)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="234">	
+		<group>Fishes</group>
+		<species>Gila topminnow (Poeciliopsis occidentalis)</species>
+		<predicted>Poeciliidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="235">	
+		<group>Molluscs</group>
+		<species>Fat pocketbook (Potamilus capax)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="236">	
+		<group>Molluscs</group>
+		<species>Alabama heelsplitter (Potamilus inflatus)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="237">	
+		<group>Fishes</group>
+		<species>Mexican blindcat (Prietella phreatophila)</species>
+		<predicted>Ictaluridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="238">	
+		<group>Fishes</group>
+		<species>Ikan temoleh (Probarbus jullieni)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="239">	
+		<group>Molluscs</group>
+		<species>Triangular Kidneyshell (Ptychobranchus greenii)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="240">	
+		<group>Fishes</group>
+		<species>Colorado pikeminnow (Ptychocheilus lucius)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="241">	
+		<group>Molluscs</group>
+		<species>Rough rabbitsfoot (Quadrula cylindrica strigillata)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="242">	
+		<group>Molluscs</group>
+		<species>Winged mapleleaf (Quadrula fragosa)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="243">	
+		<group>Molluscs</group>
+		<species>Cumberland monkeyface (Quadrula intermedia)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="244">	
+		<group>Molluscs</group>
+		<species>Appalachian monkeyface (Quadrula sparsa)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="245">	
+		<group>Molluscs</group>
+		<species>Stirrupshell (Quadrula stapes)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="246">	
+		<group>Amphibians</group>
+		<species>California red-legged frog (Rana aurora draytonii)</species>
+		<predicted>Ranidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="247">	
+		<group>Amphibians</group>
+		<species>Mississippi gopher frog (Rana capito sevosa)</species>
+		<predicted>Ranidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="248">	
+		<group>Amphibians</group>
+		<species>Chiricahua leopard frog (Rana chiricahuensis)</species>
+		<predicted>Ranidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="249">	
+		<group>Amphibians</group>
+		<species>Mountain yellow-legged frog (Rana muscosa)</species>
+		<predicted>Ranidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="250">	
+		<group>Fishes</group>
+		<species>Foskett speckled dace (Rhinichthys osculus ssp.)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="251">	
+		<group>Fishes</group>
+		<species>Independence Valley speckled dace (Rhinichthys osculus lethoporus)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="252">	
+		<group>Fishes</group>
+		<species>Ash Meadows speckled dace (Rhinichthys osculus nevadensis)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="253">	
+		<group>Fishes</group>
+		<species>Clover Valley speckled dace (Rhinichthys osculus oligoporus)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="254">	
+		<group>Fishes</group>
+		<species>Kendall Warm Springs dace (Rhinichthys osculus thermalis)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="255">	
+		<group>Fishes</group>
+		<species>Ala balik (Salmo platycephalus)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="256">	
+		<group>Fishes</group>
+		<species>Atlantic salmon (Salmo salar)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="257">	
+		<group>Fishes</group>
+		<species>Bull trout (Salvelinus confluentus)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="258">	
+		<group>Fishes</group>
+		<species>Pallid sturgeon (Scaphirhynchus albus)</species>
+		<predicted>Acipenseridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="259">	
+		<group>Fishes</group>
+		<species>Alabama sturgeon (Scaphirhynchus suttkusi)</species>
+		<predicted>Acipenseridae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="260">	
+		<group>Fishes</group>
+		<species>Miyako tango (Tanakia tanago)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="261">	
+		<group>Fishes</group>
+		<species>Loach minnow (Tiaroga cobitis)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="262">	
+		<group>Molluscs</group>
+		<species>Pale lilliput (Toxolasma cylindrellus)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="263">	
+		<group>Molluscs</group>
+		<species>Purple bean (Villosa perpurpurea)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="264">	
+		<group>Molluscs</group>
+		<species>Cumberland bean (Villosa trabalis)</species>
+		<predicted>Unionidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+	<cross num="265">	
+		<group>Fishes</group>
+		<species>Razorback sucker (Xyrauchen texanus)</species>
+		<predicted>Catostomidae</predicted>
+		<filesource>afSurrRainbow trout (Oncorhynchus mykiss).xml</filesource>
+	</cross>
+</crosses>

@@ -1,5 +1,5 @@
-if (!document.URL.split("?")[1])
-	location.href="index.html";
+// if (!document.URL.split("?")[1])
+// 	location.href="index.html";
 var fileFamily = '';
 fileFamily = document.URL.split("?")[1];
 if (fileFamily)
@@ -47,7 +47,8 @@ function tneInitData()
 }
 
 function importGroups() {
-	file = 'data/'+fileFamily+'AllGroups.xml';
+	// Changed DIR by J. Flaishans
+	file = 'data/webice/'+fileFamily+'AllGroups.xml';
 	if (document.implementation && document.implementation.createDocument)
 	{
 		var xmlhttp = new window.XMLHttpRequest();
@@ -75,7 +76,8 @@ function loadGroups()
 }
 
 function importSpecies(groupName) {
-	file = 'data/'+fileFamily+groupName+'Species.xml';
+	// Changed DIR by J. Flaishans
+	file = 'data/webice/'+fileFamily+groupName+'Species.xml';
 	if (document.implementation && document.implementation.createDocument)
 	{
 		var xmlhttp1 = new window.XMLHttpRequest();
@@ -153,7 +155,8 @@ function loadSpecies()
 }
 
 function importSurrogate(surrName) {
-	file = 'data/'+fileFamily+surrName+'Surrogates.xml';
+	// Changed DIR by J. Flaishans
+	file = 'data/webice/'+fileFamily+surrName+'Surrogates.xml';
 	if (document.implementation && document.implementation.createDocument)
 	{
 		var xmlhttp2 = new window.XMLHttpRequest();
@@ -172,9 +175,10 @@ function importSurrogate(surrName) {
 }
 
 function loadSurr()
-{ 
+{
 	if (document.getElementById('Surrogate'))
 	{
+		console.log('loadSurrogate Started...');
 		SurrDup = new Array();
 		SurrogateArray.length = 0;
 		
@@ -232,19 +236,19 @@ function popHeader()
 	}
 	document.getElementById('PageName').appendChild(document.createTextNode(' - '+fType+' Species'));
 	document.getElementById('file1').value = fileFamily;
-	document.title = fType+' Species | '+document.title;
-	newBClink = document.createElement('a');
-	newBClink.setAttribute('href','iceTNE.html');
-	newBClink.appendChild(document.createTextNode('Endangered Species'));
-	oldBC = document.createElement('li');
-	oldBC.appendChild(newBClink);
-	newBC = document.createElement('li');
-	newBC.appendChild(document.createTextNode(fType+' Species'));
-	if(!document.getElementById('breadcrumbs').lastChild.childNodes.length)
-		document.getElementById('breadcrumbs').removeChild(document.getElementById('breadcrumbs').lastChild);
-	document.getElementById('breadcrumbs').removeChild(document.getElementById('breadcrumbs').lastChild);
-	document.getElementById('breadcrumbs').appendChild(oldBC);
-	document.getElementById('breadcrumbs').appendChild(newBC);
+	// document.title = fType+' Species | '+document.title;
+	// newBClink = document.createElement('a');
+	// newBClink.setAttribute('href','iceTNE.html');
+	// newBClink.appendChild(document.createTextNode('Endangered Species'));
+	// oldBC = document.createElement('li');
+	// oldBC.appendChild(newBClink);
+	// newBC = document.createElement('li');
+	// newBC.appendChild(document.createTextNode(fType+' Species'));
+	// if(!document.getElementById('breadcrumbs').lastChild.childNodes.length)
+	// 	document.getElementById('breadcrumbs').removeChild(document.getElementById('breadcrumbs').lastChild);
+	// document.getElementById('breadcrumbs').removeChild(document.getElementById('breadcrumbs').lastChild);
+	// document.getElementById('breadcrumbs').appendChild(oldBC);
+	// document.getElementById('breadcrumbs').appendChild(newBC);
 }
 
 function speciesReload()

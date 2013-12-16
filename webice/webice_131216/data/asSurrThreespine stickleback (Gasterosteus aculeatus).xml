@@ -1,0 +1,93 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Bluegill (Lepomis macrochirus)</predicted>
+		<r2>0.9614862320</r2>
+		<pVal>0.0032456890</pVal>
+		<df>3</df>
+		<intercept>0.0708426460</intercept>
+		<slope>0.8094970710</slope>
+		<xAvg>1.3008555840</xAvg>
+		<xMin>-0.3010299960</xMin>
+		<xMax>3.1673173350</xMax>
+		<Sxx>6.7574561650</Sxx>
+		<MSE>0.0591242280</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Fathead minnow (Pimephales promelas)</predicted>
+		<r2>0.9847322070</r2>
+		<pVal>0.0076632590</pVal>
+		<df>2</df>
+		<intercept>0.3400671410</intercept>
+		<slope>0.6990650710</slope>
+		<xAvg>1.2149598330</xAvg>
+		<xMin>-0.3010299960</xMin>
+		<xMax>2.2041199830</xMax>
+		<Sxx>3.6762290130</Sxx>
+		<MSE>0.0139272670</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Guppy (Poecilia reticulata)</predicted>
+		<r2>0.9973262760</r2>
+		<pVal>0.0013377570</pVal>
+		<df>2</df>
+		<intercept>0.4449574650</intercept>
+		<slope>0.8515491300</slope>
+		<xAvg>1.2149598330</xAvg>
+		<xMin>-0.3010299960</xMin>
+		<xMax>2.2041199830</xMax>
+		<Sxx>3.6762290130</Sxx>
+		<MSE>0.0035733140</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Largemouth bass (Micropterus salmoides)</predicted>
+		<r2>0.9625972180</r2>
+		<pVal>0.0188796110</pVal>
+		<df>2</df>
+		<intercept>-0.2064528620</intercept>
+		<slope>0.9680572970</slope>
+		<xAvg>1.3467516560</xAvg>
+		<xMin>-0.3010299960</xMin>
+		<xMax>3.1673173350</xMax>
+		<Sxx>6.7153271760</Sxx>
+		<MSE>0.1222640040</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>75</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Rainbow trout (Oncorhynchus mykiss)</predicted>
+		<r2>0.9729878290</r2>
+		<pVal>0.0135985460</pVal>
+		<df>2</df>
+		<intercept>0.0331939510</intercept>
+		<slope>0.8673244140</slope>
+		<xAvg>1.3467516560</xAvg>
+		<xMin>-0.3010299960</xMin>
+		<xMax>3.1673173350</xMax>
+		<Sxx>6.7153271760</Sxx>
+		<MSE>0.0701216960</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

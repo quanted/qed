@@ -1,0 +1,57 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Brown-headed cowbird (Molothrus ater)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>California quail (Callipepla californica)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Chicken (Gallus gallus)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Chukar (Alectoris chukar)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Common grackle (Quiscalus quiscula)</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Golden sparrow (Passer luteus)</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Gray partridge (Perdix perdix)</surrogate>
+	</cross>
+	<cross num="8">
+		<surrogate>House finch (Carpodacus mexicanus)</surrogate>
+	</cross>
+	<cross num="9">
+		<surrogate>House sparrow (Passer domesticus)</surrogate>
+	</cross>
+	<cross num="10">
+		<surrogate>Mallard (Anas platyrhynchos)</surrogate>
+	</cross>
+	<cross num="11">
+		<surrogate>Mouse (Mus musculus)</surrogate>
+	</cross>
+	<cross num="12">
+		<surrogate>Northern bobwhite (Colinus virginianus)</surrogate>
+	</cross>
+	<cross num="13">
+		<surrogate>Norway rat (Rattus norvegicus)</surrogate>
+	</cross>
+	<cross num="14">
+		<surrogate>Redwinged blackbird (Agelaius phoeniceus)</surrogate>
+	</cross>
+	<cross num="15">
+		<surrogate>Ring-necked pheasant (Phasianus colchicus)</surrogate>
+	</cross>
+	<cross num="16">
+		<surrogate>Rock dove (Columba livia)</surrogate>
+	</cross>
+	<cross num="17">
+		<surrogate>Sharp-tailed grouse (Tympanuchus phasianellus)</surrogate>
+	</cross>
+	<cross num="18">
+		<surrogate>Yellow headed blackbird (Xanthocephalus xanthocephalus)</surrogate>
+	</cross>
+</species>

@@ -49,7 +49,7 @@ function begin()
 	file = 'data/webice/'+fileFamily+'Surr'+chosenSurrogate+'.xml?rand='+Math.random();
 	importFile(file);
 }
-		
+
 function importFile(fileName) {
 	
 	if (document.implementation && document.implementation.createDocument)
@@ -182,7 +182,7 @@ function showImage()
 			picName += '.gif';
 		}
 		pic = document.createElement('img');
-		pic.setAttribute('src','http://epa.gov/ceampubl/fchain/webice/images/'+picName);
+		pic.setAttribute('src','/images/webice/'+picName);
 		pic.setAttribute('alt','ICE model graph for this species pair');
 		//pic.setAttribute('width','375');
 		document.getElementById('graphImage').appendChild(pic);

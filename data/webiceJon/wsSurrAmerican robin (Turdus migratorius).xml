@@ -1,0 +1,111 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>American crow (Corvus brachyrhynchos)</predicted>
+		<r2>0.995</r2>
+		<pVal>0.043</pVal>
+		<df>1</df>
+		<intercept>-0.759</intercept>
+		<slope>1.857</slope>
+		<xAvg>0.667</xAvg>
+		<xMin>0.5</xMin>
+		<xMax>0.875</xMax>
+		<Sxx>0.073</Sxx>
+		<MSE>0.001</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Common grackle (Quiscalus quiscula)</predicted>
+		<r2>0.992</r2>
+		<pVal>0.004</pVal>
+		<df>2</df>
+		<intercept>-1.324</intercept>
+		<slope>2.698</slope>
+		<xAvg>0.687</xAvg>
+		<xMin>0.5</xMin>
+		<xMax>0.875</xMax>
+		<Sxx>0.078</Sxx>
+		<MSE>0.002</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>House finch (Carpodacus mexicanus)</predicted>
+		<r2>0.794</r2>
+		<pVal>0.017</pVal>
+		<df>4</df>
+		<intercept>-0.124</intercept>
+		<slope>1.24</slope>
+		<xAvg>0.889</xAvg>
+		<xMin>0.19</xMin>
+		<xMax>1.892</xMax>
+		<Sxx>1.596</Sxx>
+		<MSE>0.16</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Japanese quail (Coturnix japonica)</predicted>
+		<r2>0.882</r2>
+		<pVal>0.002</pVal>
+		<df>5</df>
+		<intercept>0.126</intercept>
+		<slope>1.16</slope>
+		<xAvg>1.092</xAvg>
+		<xMin>0.5</xMin>
+		<xMax>2</xMax>
+		<Sxx>2.206</Sxx>
+		<MSE>0.079</MSE>
+		<t90CI>2.015</t90CI>
+		<t95CI>2.571</t95CI>
+		<t99CI>4.032</t99CI>
+		<Bootstrap>71.429</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Northern bobwhite (Colinus virginianus)</predicted>
+		<r2>0.689</r2>
+		<pVal>0.041</pVal>
+		<df>4</df>
+		<intercept>0.454</intercept>
+		<slope>0.669</slope>
+		<xAvg>1.107</xAvg>
+		<xMin>0.5</xMin>
+		<xMax>2</xMax>
+		<Sxx>2.196</Sxx>
+		<MSE>0.111</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="6">
+		<predicted>Redwinged blackbird (Agelaius phoeniceus)</predicted>
+		<r2>0.758</r2>
+		<pVal>0.005</pVal>
+		<df>6</df>
+		<intercept>-0.043</intercept>
+		<slope>0.968</slope>
+		<xAvg>0.979</xAvg>
+		<xMin>0.19</xMin>
+		<xMax>2</xMax>
+		<Sxx>2.917</Sxx>
+		<MSE>0.146</MSE>
+		<t90CI>1.943</t90CI>
+		<t95CI>2.447</t95CI>
+		<t99CI>3.707</t99CI>
+		<Bootstrap>75</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+</species>

@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Coho salmon (Oncorhynchus kisutch)</predicted>
+		<r2>0.9997027490</r2>
+		<pVal>0.0109764800</pVal>
+		<df>1</df>
+		<intercept>0.2336721550</intercept>
+		<slope>0.9134340630</slope>
+		<xAvg>1.5467608770</xAvg>
+		<xMin>0.4771212550</xMin>
+		<xMax>3.4149733480</xMax>
+		<Sxx>5.2720653550</Sxx>
+		<MSE>0.0013079380</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Rainbow trout (Oncorhynchus mykiss)</predicted>
+		<r2>0.9994903330</r2>
+		<pVal>0.0143734210</pVal>
+		<df>1</df>
+		<intercept>0.2744929680</intercept>
+		<slope>0.8632949870</slope>
+		<xAvg>1.5467608770</xAvg>
+		<xMin>0.4771212550</xMin>
+		<xMax>3.4149733480</xMax>
+		<Sxx>5.2720653550</Sxx>
+		<MSE>0.0020035810</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

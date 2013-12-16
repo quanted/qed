@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>American robin (Turdus migratorius)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Brown-headed cowbird (Molothrus ater)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Common grackle (Quiscalus quiscula)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>House finch (Carpodacus mexicanus)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Japanese quail (Coturnix japonica)</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Mallard (Anas platyrhynchos)</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Mourning dove (Zenaida macroura)</surrogate>
+	</cross>
+	<cross num="8">
+		<surrogate>Redwinged blackbird (Agelaius phoeniceus)</surrogate>
+	</cross>
+	<cross num="9">
+		<surrogate>Ring-necked pheasant (Phasianus colchicus)</surrogate>
+	</cross>
+	<cross num="10">
+		<surrogate>Rock dove (Columba livia)</surrogate>
+	</cross>
+	<cross num="11">
+		<surrogate>Starling (Sturnus vulgaris)</surrogate>
+	</cross>
+	<cross num="12">
+		<surrogate>White-crowned sparrow (Zonotrichia leucophrys)</surrogate>
+	</cross>
+</species>

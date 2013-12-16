@@ -49,7 +49,8 @@ function importSurrogate(prefix) {
 }
 
 function loadSurr(prefix)
-{ 
+{
+	alert(prefix);
 	console.log('loadSurr function loaded');
 	if (prefix == 'as') fieldName = 'Surrogate';
 	if (prefix == 'ws') fieldName = 'Surrogate';
@@ -81,6 +82,7 @@ function loadSurr(prefix)
 		if (prefix == 'as') {
 			if (document.getElementById('sortBy').selectedIndex == 1)
 			{
+				alert('if');
 				SurrogateArray = SurrogateArray.sort(sortBySci);
 				for (i=0;i<SurrogateArray.length;i++)
 				{
@@ -92,6 +94,7 @@ function loadSurr(prefix)
 			}
 			else
 			{
+				alert('else');
 				SurrogateArray = SurrogateArray.sort();
 				for (i=0;i<SurrogateArray.length;i++)
 				{
@@ -118,10 +121,12 @@ function loadSurr(prefix)
 
 function popHeader()
 {
+	console.log('fileFamily = '+fileFamily);
 	var fType;
 	if (fileFamily == 'as') 
 	{
 		fType = 'Aquatic';
+		console.log('fType = '+fType);
 		document.getElementById('primaryType').appendChild(document.createTextNode('Vertebrates & Invertebrates:'));
 	}
 	if (fileFamily == 'ws')
@@ -132,7 +137,8 @@ function popHeader()
 		document.getElementById('AlgaeFormRow').style.display='none';
 		document.getElementById('primaryType').appendChild(document.createTextNode('Vertebrates:'));
 	}
-	// document.getElementById('PageName').appendChild(document.createTextNode(' - '+fType+' Species'));
+	document.getElementById('PageName').appendChild(document.createTextNode(' - '+fType+' Species'));
+	alert('PageName passed');
 	document.getElementById('file1').value = fileFamily;
 	// document.title = fType+' Species | '+document.title;
 	// newBClink = document.createElement('a');

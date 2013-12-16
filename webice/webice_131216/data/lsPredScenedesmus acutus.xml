@@ -1,0 +1,15 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Anabaena flos-aquae</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Chlorella pyrenoidosa</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Pseudokirchneriella subcapitata</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Scenedesmus quadricauda</surrogate>
+	</cross>
+</species>

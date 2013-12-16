@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Oncorhynchus</predicted>
+		<r2>0.9987404055514570000000000</r2>
+		<pVal>0.0225988690975232000000000</pVal>
+		<df>1.0000000000000000000000000</df>
+		<intercept>0.0585637609657060000000000</intercept>
+		<slope>0.9483979779202070000000000</slope>
+		<xAvg>2.8317814572490500000000000</xAvg>
+		<xMin>1.7781512503836400000000000</xMin>
+		<xMax>4.5411018623078400000000000</xMax>
+		<Sxx>4.4618424959764400000000000</Sxx>
+		<MSE>0.0050614341599317200000000</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

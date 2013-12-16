@@ -1,0 +1,165 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Bluegill (Lepomis macrochirus)</predicted>
+		<r2>0.7111565720</r2>
+		<pVal>0.0000000000</pVal>
+		<df>70</df>
+		<intercept>0.1970514760</intercept>
+		<slope>0.8851337230</slope>
+		<xAvg>3.1659796610</xAvg>
+		<xMin>-0.2365720060</xMin>
+		<xMax>5.2116544010</xMax>
+		<Sxx>95.8454579400</Sxx>
+		<MSE>0.4357009770</MSE>
+		<t90CI>1.645</t90CI>
+		<t95CI>1.96</t95CI>
+		<t99CI>2.576</t99CI>
+		<Bootstrap>83.33333333</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Channel catfish (Ictalurus punctatus)</predicted>
+		<r2>0.3171116440</r2>
+		<pVal>0.0450841870</pVal>
+		<df>11</df>
+		<intercept>1.1933885350</intercept>
+		<slope>0.5841454730</slope>
+		<xAvg>2.9988768750</xAvg>
+		<xMin>0.4913616940</xMin>
+		<xMax>5.2552725050</xMax>
+		<Sxx>14.2209084400</Sxx>
+		<MSE>0.9499794360</MSE>
+		<t90CI>1.796</t90CI>
+		<t95CI>2.201</t95CI>
+		<t99CI>3.106</t99CI>
+		<Bootstrap>53.84615385</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Common carp (Cyprinus carpio)</predicted>
+		<r2>0.9155103270</r2>
+		<pVal>0.0106998850</pVal>
+		<df>3</df>
+		<intercept>1.5703308520</intercept>
+		<slope>0.6014326650</slope>
+		<xAvg>3.3152996310</xAvg>
+		<xMin>0.7795964910</xMin>
+		<xMax>5.2552725050</xMax>
+		<Sxx>10.7669574300</Sxx>
+		<MSE>0.1198080910</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Daphnid (Daphnia magna)</predicted>
+		<r2>0.4544925490</r2>
+		<pVal>0.0000000001</pVal>
+		<df>70</df>
+		<intercept>-0.0444998170</intercept>
+		<slope>0.8216144020</slope>
+		<xAvg>3.1826795030</xAvg>
+		<xMin>-0.2365720060</xMin>
+		<xMax>5.2121876040</xMax>
+		<Sxx>104.4187882000</Sxx>
+		<MSE>1.2086223320</MSE>
+		<t90CI>1.645</t90CI>
+		<t95CI>1.96</t95CI>
+		<t99CI>2.576</t99CI>
+		<Bootstrap>54.16666667</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Eastern oyster (Crassostrea virginica)</predicted>
+		<r2>0.3627481470</r2>
+		<pVal>0.0000011462</pVal>
+		<df>53</df>
+		<intercept>0.5190265450</intercept>
+		<slope>0.6923578710</slope>
+		<xAvg>3.1966213400</xAvg>
+		<xMin>0.0413926850</xMin>
+		<xMax>4.9867717340</xMax>
+		<Sxx>56.7123895300</Sxx>
+		<MSE>0.9010922400</MSE>
+		<t90CI>1.645</t90CI>
+		<t95CI>1.96</t95CI>
+		<t99CI>2.576</t99CI>
+		<Bootstrap>56.36363636</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="6">
+		<predicted>Fathead minnow (Pimephales promelas)</predicted>
+		<r2>0.5366756120</r2>
+		<pVal>0.0028831680</pVal>
+		<df>12</df>
+		<intercept>-0.1711174940</intercept>
+		<slope>1.0573236460</slope>
+		<xAvg>3.3286637160</xAvg>
+		<xMin>2.2304489210</xMin>
+		<xMax>5.2116544010</xMax>
+		<Sxx>9.2975811030</Sxx>
+		<MSE>0.7477870140</MSE>
+		<t90CI>1.782</t90CI>
+		<t95CI>2.179</t95CI>
+		<t99CI>3.055</t99CI>
+		<Bootstrap>85.71428571</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="7">
+		<predicted>Goldfish (Carassius auratus)</predicted>
+		<r2>0.9108676610</r2>
+		<pVal>0.0456061290</pVal>
+		<df>2</df>
+		<intercept>0.5006432510</intercept>
+		<slope>0.9562449320</slope>
+		<xAvg>3.1339285710</xAvg>
+		<xMin>1.4065401800</xMin>
+		<xMax>4.0791812460</xMax>
+		<Sxx>4.2499077560</Sxx>
+		<MSE>0.1901375190</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>75</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="8">
+		<predicted>Mysid (Americamysis bahia)</predicted>
+		<r2>0.5688176410</r2>
+		<pVal>0.0000000000</pVal>
+		<df>76</df>
+		<intercept>-0.7690623900</intercept>
+		<slope>0.9322562860</slope>
+		<xAvg>3.1554846890</xAvg>
+		<xMin>-0.2365720060</xMin>
+		<xMax>6.0253058650</xMax>
+		<Sxx>115.2810754000</Sxx>
+		<MSE>0.9993163560</MSE>
+		<t90CI>1.645</t90CI>
+		<t95CI>1.96</t95CI>
+		<t99CI>2.576</t99CI>
+		<Bootstrap>57.69230769</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="9">
+		<predicted>Rainbow trout (Oncorhynchus mykiss)</predicted>
+		<r2>0.6565915910</r2>
+		<pVal>0.0000000000</pVal>
+		<df>71</df>
+		<intercept>0.2416588290</intercept>
+		<slope>0.8609796770</slope>
+		<xAvg>3.1572722600</xAvg>
+		<xMin>-0.2365720060</xMin>
+		<xMax>5.2552725050</xMax>
+		<Sxx>97.3636901600</Sxx>
+		<MSE>0.5316674680</MSE>
+		<t90CI>1.645</t90CI>
+		<t95CI>1.96</t95CI>
+		<t99CI>2.576</t99CI>
+		<Bootstrap>78.08219178</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

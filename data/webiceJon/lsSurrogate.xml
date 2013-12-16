@@ -1,0 +1,19 @@
+<?xml version = '1.0'?>
+<species>
+	<surrogate>Microcystis aeruginosa</surrogate>
+	<surrogate>Chlorella vulgaris</surrogate>
+	<surrogate>Chlamydomonas reinhardtii</surrogate>
+	<surrogate>Pseudokirchneriella subcapitata</surrogate>
+	<surrogate>Thalassiosira pseudonana</surrogate>
+	<surrogate>Minutocellus polymorphus</surrogate>
+	<surrogate>Skeletonema costatum</surrogate>
+	<surrogate>Sellaphora seminulum</surrogate>
+	<surrogate>Microcystis flos-aquae</surrogate>
+	<surrogate>Chlorella pyrenoidosa</surrogate>
+	<surrogate>Dunaliella tertiolecta</surrogate>
+	<surrogate>Desmodesmus subspicatus</surrogate>
+	<surrogate>Scenedesmus quadricauda</surrogate>
+	<surrogate>Anabaena flos-aquae</surrogate>
+	<surrogate>Phaeodactylum tricornutum</surrogate>
+	<surrogate>Scenedesmus acutus</surrogate>
+</species>

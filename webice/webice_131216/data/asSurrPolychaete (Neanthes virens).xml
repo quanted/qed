@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Starfish (Asterias forbesi)</predicted>
+		<r2>0.9555489360</r2>
+		<pVal>0.0224781660</pVal>
+		<df>2</df>
+		<intercept>0.2841547470</intercept>
+		<slope>0.9452418450</slope>
+		<xAvg>4.1156071740</xAvg>
+		<xMin>1.8450980400</xMin>
+		<xMax>6.7403626890</xMax>
+		<Sxx>12.1090983700</Sxx>
+		<MSE>0.2516499910</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>25</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

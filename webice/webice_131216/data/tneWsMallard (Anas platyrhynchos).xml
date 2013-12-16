@@ -1,0 +1,771 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Birds</group>
+		<species>Campbell Island flightless teal (Anas aucklandica nesiotis)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="2">	
+		<group>Birds</group>
+		<species>Laysan duck (Anas laysanensis)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="3">	
+		<group>Birds</group>
+		<species>Hawaiian Duck (Anas wyvilliana)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="4">	
+		<group>Birds</group>
+		<species>Madagascar pochard (Aythya innotata)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="5">	
+		<group>Birds</group>
+		<species>Hawaiian goose (Branta sandvicensis)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="6">	
+		<group>Birds</group>
+		<species>White-winged wood duck (Cairina scutulata)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="7">	
+		<group>Birds</group>
+		<species>Steller's Eider (Polysticta stelleri)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="8">	
+		<group>Birds</group>
+		<species>Pink-headed duck (Rhodonessa caryophyllacea)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="9">	
+		<group>Birds</group>
+		<species>Spectacled eider (Somateria fischeri)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="10">	
+		<group>Mammals</group>
+		<species>Gray wolf (Canis lupus)</species>
+		<predicted>Canidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="11">	
+		<group>Mammals</group>
+		<species>Red wolf (Canis rufus)</species>
+		<predicted>Canidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="12">	
+		<group>Mammals</group>
+		<species>Simien fox (Canis simensis)</species>
+		<predicted>Canidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="13">	
+		<group>Mammals</group>
+		<species>Maned wolf (Chrysocyon brachyurus)</species>
+		<predicted>Canidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="14">	
+		<group>Mammals</group>
+		<species>Dhole (Cuon alpinus)</species>
+		<predicted>Canidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="15">	
+		<group>Mammals</group>
+		<species>African wild dog (Lycaon pictus)</species>
+		<predicted>Canidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="16">	
+		<group>Mammals</group>
+		<species>Santa Catalina Island Fox (Urocyon littoralis catalinae)</species>
+		<predicted>Canidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="17">	
+		<group>Mammals</group>
+		<species>San Miguel Island Fox (Urocyon littoralis littoralis)</species>
+		<predicted>Canidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="18">	
+		<group>Mammals</group>
+		<species>Santa Cruz Island Fox (Urocyon littoralis santacruzae)</species>
+		<predicted>Canidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="19">	
+		<group>Mammals</group>
+		<species>Santa Rosa Island Fox (Urocyon littoralis santarosae)</species>
+		<predicted>Canidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="20">	
+		<group>Mammals</group>
+		<species>San Joaquin kit fox (Vulpes macrotis mutica)</species>
+		<predicted>Canidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="21">	
+		<group>Mammals</group>
+		<species>Northern swift fox (Vulpes velox hebes)</species>
+		<predicted>Canidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="22">	
+		<group>Birds</group>
+		<species>Puerto Rican plain Pigeon (Columba inornata wetmorei)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="23">	
+		<group>Birds</group>
+		<species>White-tailed laurel Pigeon (Columba junoniae)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="24">	
+		<group>Birds</group>
+		<species>Pink pigeon (Columba mayeri)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="25">	
+		<group>Birds</group>
+		<species>Azores wood pigeon (Columba palumbus azorica)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="26">	
+		<group>Birds</group>
+		<species>Cloven-feathered dove (Drepanoptila holosericea)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="27">	
+		<group>Birds</group>
+		<species>Mindoro imperial pigeon (Ducula mindorensis)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="28">	
+		<group>Birds</group>
+		<species>Chatham Island pigeon (Hemiphaga novaeseelandiae chathamensis)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="29">	
+		<group>Birds</group>
+		<species>Grenada gray-fronted dove (Leptotila rufaxilla wellsi)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="30">	
+		<group>Birds</group>
+		<species>Seychelles turtle dove (Streptopelia picturata rostrata)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="31">	
+		<group>Birds</group>
+		<species>Florida scrub jay (Aphelocoma coerulescens)</species>
+		<predicted>Corvidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="32">	
+		<group>Birds</group>
+		<species>Oahu Elepaio (Chasiempis sandwichensis ibidis)</species>
+		<predicted>Corvidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="33">	
+		<group>Birds</group>
+		<species>Hawaiian Crow (Corvus hawaiiensis)</species>
+		<predicted>Corvidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="34">	
+		<group>Birds</group>
+		<species>Mariana Crow (Corvus kubaryi)</species>
+		<predicted>Corvidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="35">	
+		<group>Birds</group>
+		<species>White-necked crow (Corvus leucognaphalus)</species>
+		<predicted>Corvidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="36">	
+		<group>Birds</group>
+		<species>Banded wattle-eye (Platysteira laticincta)</species>
+		<predicted>Corvidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="37">	
+		<group>Birds</group>
+		<species>Cape Sable seaside sparrow (Ammodramus maritimus mirabilis)</species>
+		<predicted>Emberizidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="38">	
+		<group>Birds</group>
+		<species>Florida grasshopper sparrow (Ammodramus savannarum floridanus)</species>
+		<predicted>Emberizidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="39">	
+		<group>Birds</group>
+		<species>San Clemente sage sparrow (Amphispiza belli clementeae)</species>
+		<predicted>Emberizidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="40">	
+		<group>Birds</group>
+		<species>Golden-cheeked warbler (Dendroica chrysoparia)</species>
+		<predicted>Emberizidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="41">	
+		<group>Birds</group>
+		<species>Kirtland's warbler (Dendroica kirtlandii)</species>
+		<predicted>Emberizidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="42">	
+		<group>Birds</group>
+		<species>Barbados yellow warbler (Dendroica petechia petechia)</species>
+		<predicted>Emberizidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="43">	
+		<group>Birds</group>
+		<species>Semper's warbler (Leucopeza semperi)</species>
+		<predicted>Emberizidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="44">	
+		<group>Birds</group>
+		<species>Inyo California towhee (Pipilo crissalis eremophilus)</species>
+		<predicted>Emberizidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="45">	
+		<group>Birds</group>
+		<species>Bachman's warbler (Vermivora bachmanii)</species>
+		<predicted>Emberizidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="46">	
+		<group>Birds</group>
+		<species>Red siskin (Carduelis cucullata)</species>
+		<predicted>Fringillidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="47">	
+		<group>Birds</group>
+		<species>Sao Miguel bullfinch (Pyrrhula pyrrhula murina)</species>
+		<predicted>Fringillidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="48">	
+		<group>Birds</group>
+		<species>Yellow-shouldered blackbird (Agelaius xanthomus)</species>
+		<predicted>Icteridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="49">	
+		<group>Birds</group>
+		<species>Slender-billed Grackle (Quisicalus palustris)</species>
+		<predicted>Icteridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="50">	
+		<group>Mammals</group>
+		<species>Pygmy Rabbit (Brachylagus idahoensis)</species>
+		<predicted>Leporidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="51">	
+		<group>Mammals</group>
+		<species>Hispid hare (Caprolagus hispidus)</species>
+		<predicted>Leporidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="52">	
+		<group>Mammals</group>
+		<species>Ryukyu rabbit (Pentalagus furnessi)</species>
+		<predicted>Leporidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="53">	
+		<group>Mammals</group>
+		<species>Volcano rabbit (Romerolagus diazi)</species>
+		<predicted>Leporidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="54">	
+		<group>Mammals</group>
+		<species>Riparian brush rabbit (Sylvilagus bachmani riparius)</species>
+		<predicted>Leporidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="55">	
+		<group>Mammals</group>
+		<species>Lower Keys marsh rabbit (Sylvilagus palustris hefneri)</species>
+		<predicted>Leporidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="56">	
+		<group>Mammals</group>
+		<species>Stick-nest rat (Leporillus conditor)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="57">	
+		<group>Mammals</group>
+		<species>Riparian woodrat (Neotoma fuscipes riparia)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="58">	
+		<group>Mammals</group>
+		<species>Australian native mouse (Notomys aquilo)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="59">	
+		<group>Mammals</group>
+		<species>Rice rat (Oryzomys palustris natator)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="60">	
+		<group>Mammals</group>
+		<species>Key Largo cotton mouse (Peromyscus gossypinus allapaticola)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="61">	
+		<group>Mammals</group>
+		<species>Choctawhatchee beach mouse (Peromyscus polionotus allophrys)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="62">	
+		<group>Mammals</group>
+		<species>Alabama beach mouse (Peromyscus polionotus ammobates)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="63">	
+		<group>Mammals</group>
+		<species>Southeastern beach mouse (Peromyscus polionotus niveiventris)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="64">	
+		<group>Mammals</group>
+		<species>St. Andrew beach mouse (Peromyscus polionotus peninsularis)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="65">	
+		<group>Mammals</group>
+		<species>Anastasia Island beach mouse (Peromyscus polionotus phasma)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="66">	
+		<group>Mammals</group>
+		<species>Perdido Key beach mouse (Peromyscus polionotus trissyllepsis)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="67">	
+		<group>Mammals</group>
+		<species>Field's mouse (Pseudomys fieldi)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="68">	
+		<group>Mammals</group>
+		<species>Smoky mouse (Pseudomys fumeus)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="69">	
+		<group>Mammals</group>
+		<species>Gould's mouse (Pseudomys gouldii)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="70">	
+		<group>Mammals</group>
+		<species>New Holland mouse (Pseudomys novaehollandiae)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="71">	
+		<group>Mammals</group>
+		<species>Western mouse (Pseudomys occidentalis)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="72">	
+		<group>Mammals</group>
+		<species>Shark Bay mouse (Pseudomys praeconis)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="73">	
+		<group>Mammals</group>
+		<species>Shortridge's mouse (Pseudomys shortridgei)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="74">	
+		<group>Mammals</group>
+		<species>False water rat (Xeromys myoides)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="75">	
+		<group>Mammals</group>
+		<species>Australian native mouse (Zyzomys pedunculatus)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="76">	
+		<group>Birds</group>
+		<species>White-breasted guineafowl (Agelastes meleagrides)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="77">	
+		<group>Birds</group>
+		<species>Cheer pheasant (Catreus wallichii)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="78">	
+		<group>Birds</group>
+		<species>Masked bobwhite (Colinus virginianus ridgwayi)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="79">	
+		<group>Birds</group>
+		<species>White eared pheasant (Crossoptilon crossoptilon)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="80">	
+		<group>Birds</group>
+		<species>Brown eared pheasant (Crossoptilon mantchuricum)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="81">	
+		<group>Birds</group>
+		<species>Merriam's Montezuma quail (Cyrtonyx montezumae merriami)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="82">	
+		<group>Birds</group>
+		<species>Djibouti francolin (Francolinus ochropectus)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="83">	
+		<group>Birds</group>
+		<species>Chinese monal pheasant (Lophophorus lhuysii)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="84">	
+		<group>Birds</group>
+		<species>Sclater's monal pheasant (Lophophorus sclateri)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="85">	
+		<group>Birds</group>
+		<species>Edward's pheasant (Lophura edwardsi)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="86">	
+		<group>Birds</group>
+		<species>Imperial pheasant (Lophura imperialis)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="87">	
+		<group>Birds</group>
+		<species>Swinhoe's pheasant (Lophura swinhoii)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="88">	
+		<group>Birds</group>
+		<species>Palawan peacock pheasant (Polyplectron emphanum)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="89">	
+		<group>Birds</group>
+		<species>Elliot's pheasant (Syrmaticus ellioti)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="90">	
+		<group>Birds</group>
+		<species>Bar-tailed pheasant (Syrmaticus humaie)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="91">	
+		<group>Birds</group>
+		<species>Mikado pheasant (Syrmaticus mikado)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="92">	
+		<group>Birds</group>
+		<species>Blyth's tragopan pheasant (Tragopan blythii)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="93">	
+		<group>Birds</group>
+		<species>Cabot's tragopan pheasant (Tragopan caboti)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="94">	
+		<group>Birds</group>
+		<species>Western tragopan pheasant (Tragopan melanocephalus)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="95">	
+		<group>Birds</group>
+		<species>Attwater's greater prairie-chicken (Tympanuchus cupido attwateri)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="96">	
+		<group>Birds</group>
+		<species>Rodrigues fody (Foudia flavicans)</species>
+		<predicted>Ploceidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="97">	
+		<group>Birds</group>
+		<species>Mauritius fody (Foudia rubra)</species>
+		<predicted>Ploceidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="98">	
+		<group>Birds</group>
+		<species>Seychelles fody (Foudia sechellarum)</species>
+		<predicted>Ploceidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="99">	
+		<group>Birds</group>
+		<species>Ibadan malimbe (Malimbus ibadanensis)</species>
+		<predicted>Ploceidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="100">	
+		<group>Birds</group>
+		<species>Clarke's weaver (Ploceus golandi)</species>
+		<predicted>Ploceidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="101">	
+		<group>Birds</group>
+		<species>Red-necked parrot (Amazona arausiaca)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="102">	
+		<group>Birds</group>
+		<species>Red-tailed parrot (Amazona brasiliensis)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="103">	
+		<group>Birds</group>
+		<species>St Vincent parrot (Amazona guildingii)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="104">	
+		<group>Birds</group>
+		<species>Imperial parrot (Amazona imperialis)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="105">	
+		<group>Birds</group>
+		<species>Bahaman or Cuban parrot (Amazona leucocephala)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="106">	
+		<group>Birds</group>
+		<species>Red-spectacled parrot (Amazona pretrei pretrei)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="107">	
+		<group>Birds</group>
+		<species>Red-browed parrot (Amazona rhodocorytha)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="108">	
+		<group>Birds</group>
+		<species>St. Lucia parrot (Amazona versicolor)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="109">	
+		<group>Birds</group>
+		<species>Vinaceous-breasted parrot (Amazona vinacea)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="110">	
+		<group>Birds</group>
+		<species>Puerto Rican parrot (Amazona vittata)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="111">	
+		<group>Birds</group>
+		<species>Glaucous macaw (Anodorhynchus glaucus)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="112">	
+		<group>Birds</group>
+		<species>Indigo macaw (Anodorhynchus leari)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="113">	
+		<group>Birds</group>
+		<species>Golden parakeet (Aratinga guarouba)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="114">	
+		<group>Birds</group>
+		<species>Seychelles lesser vasa parrot (Coracopsis nigra barklyi)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="115">	
+		<group>Birds</group>
+		<species>Little blue macaw (Cyanopsitta spixii)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="116">	
+		<group>Birds</group>
+		<species>Forbes' parakeet (Cyanoramphus auriceps forbesi)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="117">	
+		<group>Birds</group>
+		<species>Norfolk Island parakeet (Cyanoramphus cookii)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="118">	
+		<group>Birds</group>
+		<species>Night parrot (Geopsittacus occidentalis)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="119">	
+		<group>Birds</group>
+		<species>Orange-bellied parakeet (Neophema chrysogaster)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="120">	
+		<group>Birds</group>
+		<species>Turquoise parakeet (Neophema pulchella)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="121">	
+		<group>Birds</group>
+		<species>Scarlet-chested parakeet (Neophema splendida)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="122">	
+		<group>Birds</group>
+		<species>Ground parrot (Pezoporus wallicus)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="123">	
+		<group>Birds</group>
+		<species>Red-capped parrot (Pionopsitta pileata)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="124">	
+		<group>Birds</group>
+		<species>Golden-shouldered parakeet (Psephotus chrysopterygius)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="125">	
+		<group>Birds</group>
+		<species>Paradise parakeet (Psephotus pulcherrimus)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="126">	
+		<group>Birds</group>
+		<species>Mauritius parakeet (Psittacula echo)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="127">	
+		<group>Birds</group>
+		<species>Blue-throated parakeet (Pyrrhura cruentata)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+	<cross num="128">	
+		<group>Birds</group>
+		<species>Thick-billed parrot (Rhynchopsitta pachyrhyncha)</species>
+		<predicted>Psittacidae</predicted>
+		<filesource>wfSurrMallard (Anas platyrhynchos).xml</filesource>
+	</cross>
+</crosses>

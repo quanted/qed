@@ -1,0 +1,93 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Centrarchidae</predicted>
+		<r2>0.3230722170</r2>
+		<pVal>0.0270506000</pVal>
+		<df>13</df>
+		<intercept>1.9427963610</intercept>
+		<slope>0.5473838820</slope>
+		<xAvg>1.1416053180</xAvg>
+		<xMin>-0.8239087410</xMin>
+		<xMax>3.2552725050</xMax>
+		<Sxx>19.8391959700</Sxx>
+		<MSE>0.9580925260</MSE>
+		<t90CI>1.771</t90CI>
+		<t95CI>2.16</t95CI>
+		<t99CI>3.012</t99CI>
+		<Bootstrap>53.33333333</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Daphniidae</predicted>
+		<r2>0.3972199190</r2>
+		<pVal>0.0117833440</pVal>
+		<df>13</df>
+		<intercept>0.0546746180</intercept>
+		<slope>0.8369870560</slope>
+		<xAvg>1.2340496210</xAvg>
+		<xMin>-0.8239087410</xMin>
+		<xMax>3.8637858040</xMax>
+		<Sxx>27.2343985000</Sxx>
+		<MSE>2.2271003830</MSE>
+		<t90CI>1.771</t90CI>
+		<t95CI>2.16</t95CI>
+		<t99CI>3.012</t99CI>
+		<Bootstrap>26.66666667</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Gammaridae</predicted>
+		<r2>0.7989551390</r2>
+		<pVal>0.0000380321</pVal>
+		<df>11</df>
+		<intercept>0.2025666980</intercept>
+		<slope>0.9612719640</slope>
+		<xAvg>1.2953722590</xAvg>
+		<xMin>-0.8239087410</xMin>
+		<xMax>3.8637858040</xMax>
+		<Sxx>20.6023739100</Sxx>
+		<MSE>0.4354995540</MSE>
+		<t90CI>1.796</t90CI>
+		<t95CI>2.201</t95CI>
+		<t99CI>3.106</t99CI>
+		<Bootstrap>69.23076923</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Pteronarcyidae</predicted>
+		<r2>0.5558579300</r2>
+		<pVal>0.0133101540</pVal>
+		<df>8</df>
+		<intercept>0.4339324400</intercept>
+		<slope>0.6480453020</slope>
+		<xAvg>0.9823954040</xAvg>
+		<xMin>-0.8239087410</xMin>
+		<xMax>2.3546349800</xMax>
+		<Sxx>10.2411396000</Sxx>
+		<MSE>0.4295632690</MSE>
+		<t90CI>1.86</t90CI>
+		<t95CI>2.306</t95CI>
+		<t99CI>3.355</t99CI>
+		<Bootstrap>90</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Salmonidae</predicted>
+		<r2>0.2887191620</r2>
+		<pVal>0.0388639460</pVal>
+		<df>13</df>
+		<intercept>1.9264528320</intercept>
+		<slope>0.5242101090</slope>
+		<xAvg>1.1416053180</xAvg>
+		<xMin>-0.8239087410</xMin>
+		<xMax>3.2552725050</xMax>
+		<Sxx>19.8391959700</Sxx>
+		<MSE>1.0331348210</MSE>
+		<t90CI>1.771</t90CI>
+		<t95CI>2.16</t95CI>
+		<t99CI>3.012</t99CI>
+		<Bootstrap>46.66666667</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

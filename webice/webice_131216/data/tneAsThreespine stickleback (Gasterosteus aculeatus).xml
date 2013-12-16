@@ -1,0 +1,285 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Fishes</group>
+		<species>Steelhead (Oncorhynchus mykiss)</species>
+		<predicted>Rainbow trout (Oncorhynchus mykiss)</predicted>
+		<filesource>asSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="2">	
+		<group>Fishes</group>
+		<species>Little Kern golden trout (Oncorhynchus aguabonita whitei)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="3">	
+		<group>Fishes</group>
+		<species>Lahontan cutthroat trout (Oncorhynchus clarkii henshawi)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="4">	
+		<group>Fishes</group>
+		<species>Greenback cutthroat trout (Oncorhynchus clarkii stomias)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="5">	
+		<group>Fishes</group>
+		<species>Paiute cutthroat trout (Oncorhynchus clarkii seleniris)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="6">	
+		<group>Fishes</group>
+		<species>Gila trout (Oncorhynchus gilae)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="7">	
+		<group>Fishes</group>
+		<species>Apache trout (Oncorhynchus gilae apache)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="8">	
+		<group>Fishes</group>
+		<species>Chum salmon (Oncorhynchus keta)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="9">	
+		<group>Fishes</group>
+		<species>Coho salmon (Oncorhynchus kisutch)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="10">	
+		<group>Fishes</group>
+		<species>Steelhead (Oncorhynchus mykiss)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="11">	
+		<group>Fishes</group>
+		<species>Sockeye salmon (Oncorhynchus nerka)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="12">	
+		<group>Fishes</group>
+		<species>Chinook salmon (Oncorhynchus tshawytscha)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="13">	
+		<group>Fishes</group>
+		<species>Bull trout (Salvelinus confluentus)</species>
+		<predicted>Salvelinus</predicted>
+		<filesource>agSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="14">	
+		<group>Fishes</group>
+		<species>Slackwater darter (Etheostoma boschungi)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="15">	
+		<group>Fishes</group>
+		<species>Vermilion darter (Etheostoma chermocki)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="16">	
+		<group>Fishes</group>
+		<species>Relict darter (Etheostoma chienense)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="17">	
+		<group>Fishes</group>
+		<species>Etowah darter (Etheostoma etowahae)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="18">	
+		<group>Fishes</group>
+		<species>Fountain darter (Etheostoma fonticola)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="19">	
+		<group>Fishes</group>
+		<species>Niangua darter (Etheostoma nianguae)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="20">	
+		<group>Fishes</group>
+		<species>Watercress darter (Etheostoma nuchale)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="21">	
+		<group>Fishes</group>
+		<species>Okaloosa darter (Etheostoma okaloosae)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="22">	
+		<group>Fishes</group>
+		<species>Duskytail darter (Etheostoma percnurum)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="23">	
+		<group>Fishes</group>
+		<species>Bayou darter (Etheostoma rubrum)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="24">	
+		<group>Fishes</group>
+		<species>Cherokee darter (Etheostoma scotti)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="25">	
+		<group>Fishes</group>
+		<species>Maryland darter (Etheostoma sellare)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="26">	
+		<group>Fishes</group>
+		<species>Bluemask darter (Etheostoma sp.)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="27">	
+		<group>Fishes</group>
+		<species>Boulder darter (Etheostoma wapiti)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="28">	
+		<group>Fishes</group>
+		<species>Little Kern golden trout (Oncorhynchus aguabonita whitei)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="29">	
+		<group>Fishes</group>
+		<species>Lahontan cutthroat trout (Oncorhynchus clarkii henshawi)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="30">	
+		<group>Fishes</group>
+		<species>Greenback cutthroat trout (Oncorhynchus clarkii stomias)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="31">	
+		<group>Fishes</group>
+		<species>Paiute cutthroat trout (Oncorhynchus clarkii seleniris)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="32">	
+		<group>Fishes</group>
+		<species>Gila trout (Oncorhynchus gilae)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="33">	
+		<group>Fishes</group>
+		<species>Apache trout (Oncorhynchus gilae apache)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="34">	
+		<group>Fishes</group>
+		<species>Chum salmon (Oncorhynchus keta)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="35">	
+		<group>Fishes</group>
+		<species>Coho salmon (Oncorhynchus kisutch)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="36">	
+		<group>Fishes</group>
+		<species>Steelhead (Oncorhynchus mykiss)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="37">	
+		<group>Fishes</group>
+		<species>Sockeye salmon (Oncorhynchus nerka)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="38">	
+		<group>Fishes</group>
+		<species>Chinook salmon (Oncorhynchus tshawytscha)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="39">	
+		<group>Fishes</group>
+		<species>Amber darter (Percina antesella)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="40">	
+		<group>Fishes</group>
+		<species>Goldline darter (Percina aurolineata)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="41">	
+		<group>Fishes</group>
+		<species>Conasauga logperch (Percina jenkinsi)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="42">	
+		<group>Fishes</group>
+		<species>Leopard darter (Percina pantherina)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="43">	
+		<group>Fishes</group>
+		<species>Roanoke logperch (Percina rex)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="44">	
+		<group>Fishes</group>
+		<species>Snail darter (Percina tanasi)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="45">	
+		<group>Fishes</group>
+		<species>Ala balik (Salmo platycephalus)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="46">	
+		<group>Fishes</group>
+		<species>Atlantic salmon (Salmo salar)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+	<cross num="47">	
+		<group>Fishes</group>
+		<species>Bull trout (Salvelinus confluentus)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrThreespine stickleback (Gasterosteus aculeatus).xml</filesource>
+	</cross>
+</crosses>

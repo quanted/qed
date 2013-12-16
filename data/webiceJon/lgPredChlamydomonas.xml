@@ -1,0 +1,9 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Chlorella</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Desmodesmus</surrogate>
+	</cross>
+</species>

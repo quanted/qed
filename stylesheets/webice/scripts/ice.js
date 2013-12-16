@@ -197,7 +197,7 @@ function popHeader()
 {
 	var fType;
 	pic = document.createElement('img');
-	pic.setAttribute('src','images/'+ fileFamily +'.jpg');
+	pic.setAttribute('src','http://epa.gov/ceampubl/fchain/webice/images/'+ fileFamily +'.jpg');
 	if (fileFamily == 'as') { 
 		fType = 'Aquatic Species'; 
 		pic.setAttribute('alt','Photo of a Blue crab.');}
@@ -224,10 +224,10 @@ function popHeader()
 	pic.setAttribute('width','350');
 	document.getElementById('PageName').appendChild(document.createTextNode(fType+' - Taxa Selection Page'));
 	document.getElementById('fileType').appendChild(pic);
-	document.title = fType+' Taxa Selection | '+ document.title;
-	newBC = document.createElement('li');
-	newBC.appendChild(document.createTextNode(fType+' Taxa Selection'));
-	document.getElementById('breadcrumbs').appendChild(newBC);
+	// document.title = fType+' Taxa Selection | '+ document.title;
+	// newBC = document.createElement('li');
+	// newBC.appendChild(document.createTextNode(fType+' Taxa Selection'));
+	// document.getElementById('breadcrumbs').appendChild(newBC);
 
 }
 

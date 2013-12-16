@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Brown-headed cowbird (Molothrus ater)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Budgerigar (Melopsittacus undulatus)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Common grackle (Quiscalus quiscula)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>House finch (Carpodacus mexicanus)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>House sparrow (Passer domesticus)</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Japanese quail (Coturnix japonica)</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Mallard (Anas platyrhynchos)</surrogate>
+	</cross>
+	<cross num="8">
+		<surrogate>Red billed quelea (Quelea quelea)</surrogate>
+	</cross>
+	<cross num="9">
+		<surrogate>Redwinged blackbird (Agelaius phoeniceus)</surrogate>
+	</cross>
+	<cross num="10">
+		<surrogate>Ring-necked pheasant (Phasianus colchicus)</surrogate>
+	</cross>
+	<cross num="11">
+		<surrogate>Rock dove (Columba livia)</surrogate>
+	</cross>
+	<cross num="12">
+		<surrogate>Starling (Sturnus vulgaris)</surrogate>
+	</cross>
+</species>

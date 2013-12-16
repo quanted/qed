@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Crayfish (Orconectes nais)</predicted>
+		<r2>0.9999546700</r2>
+		<pVal>0.0042862500</pVal>
+		<df>1</df>
+		<intercept>-5.8617007050</intercept>
+		<slope>4.5280373000</slope>
+		<xAvg>1.3996439570</xAvg>
+		<xMin>1.1760912590</xMin>
+		<xMax>1.7923916890</xMax>
+		<Sxx>0.2328535500</Sxx>
+		<MSE>0.0002164270</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

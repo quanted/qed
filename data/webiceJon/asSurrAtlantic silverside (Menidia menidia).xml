@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Rainbow trout (Oncorhynchus mykiss)</predicted>
+		<r2>0.9993203300</r2>
+		<pVal>0.0165988650</pVal>
+		<df>1</df>
+		<intercept>1.6792499050</intercept>
+		<slope>0.6240757600</slope>
+		<xAvg>2.8205210170</xAvg>
+		<xMin>1.5185139400</xMin>
+		<xMax>5.2528530310</xMax>
+		<Sxx>8.8890959180</Sxx>
+		<MSE>0.0023546460</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

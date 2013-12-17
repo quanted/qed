@@ -7,16 +7,14 @@ import numpy as np
 import cgi
 import cgitb
 cgitb.enable()
-from StringIO import StringIO
+from uber import uber_lib
 import csv
 from geneec import geneec_model,geneec_tables
 import json
 import base64
-import urllib
 from google.appengine.api import urlfetch
 import keys_Picloud_S3
 import logging
-from uber import uber_lib
 
 ############Provide the key and connect to the picloud####################
 api_key=keys_Picloud_S3.picloud_api_key
@@ -150,18 +148,18 @@ class geneecBatchOutputPage(webapp.RequestHandler):
         thefile = form['file-0']
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'geneec','page':'batchinput'})
-        html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberoutput_start.html', {
+        # ChkCookie = self.request.cookies.get("ubercookie")
+        # html = uber_lib.SkinChk(ChkCookie)
+        # html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'geneec','page':'batchinput'})
+        # html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
+        html = template.render(templatepath + '04uberoutput_start.html', {
                 'model':'geneec',
                 'model_attributes':'GENEEC Batch Output'})
         html = html + geneec_tables.timestamp()
         html = html + iter_html
         html = html + template.render(templatepath + 'export_fortran.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        # html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', geneecBatchOutputPage)], debug=True)

@@ -3,6 +3,7 @@ import base64
 import urllib
 from google.appengine.api import urlfetch
 import json
+import time
 import logging
 logger = logging.getLogger('Geneec Model')
 
@@ -74,6 +75,7 @@ class geneec(object):
                      "METHOD":METHOD, "AIRFLG":AIRFLG, "YLOCEN":YLOCEN, "GRNFLG":GRNFLG, "GRSIZE":GRSIZE,
                      "ORCFLG":ORCFLG, "INCORP":INCORP, "SOL":SOL, "METHAP":METHAP, "HYDHAP":HYDHAP, "FOTHAP":FOTHAP})
         
+        # start = time.clock()
         if run_type == "individual":
             response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers)    
             self.jid= json.loads(response.content)['jid']
@@ -82,16 +84,21 @@ class geneec(object):
             while self.output_st!="done":
                 self.response_st = urlfetch.fetch(url='https://api.picloud.com/job/?jids=%s&field=status' %self.jid, headers=http_headers)
                 self.output_st = json.loads(self.response_st.content)['info']['%s' %self.jid]['status']
+            # elapsed1 = (time.clock() - start)
 
             self.url_val = 'https://api.picloud.com/job/result/?jid='+str(self.jid)
             self.response_val = urlfetch.fetch(url=self.url_val, method=urlfetch.GET, headers=http_headers)
             self.output_val = json.loads(self.response_val.content)['result']
+            # elapsed2 = (time.clock() - start)
 
         if run_type == "batch":
             response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers)    
             self.jid= json.loads(response.content)['jid']
             self.output_st = ''
-            
+
+        # elapsed = (time.clock() - start)
+        # logger.info([elapsed, elapsed1, elapsed2])
+
             # while self.output_st!="done":
             #     self.response_st = urlfetch.fetch(url='https://api.picloud.com/job/?jids=%s&field=status' %self.jid, headers=http_headers)
             #     self.output_st = json.loads(self.response_st.content)['info']['%s' %self.jid]['status']

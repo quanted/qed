@@ -10,9 +10,7 @@ $(document).ready(function() {
 	});
 
 	$('.submit_button').click(function (event) {
-
 		var validator_out = validator.form()
-
 		var form_data = new FormData();
 		$.each($('input[name^="upfile"]')[0].files, function(i, file) {
 		    form_data.append('file-'+i, file);
@@ -43,7 +41,7 @@ $(document).ready(function() {
 						$("div.right").remove();
 						location.hash = "output";
 						},
-					error: function(data) {
+					error: function() {
 						$.unblockUI();
 						alert('There is a problem about your submission.')
 						window.location = '/{{ model }}_batchinput.html';
@@ -51,35 +49,6 @@ $(document).ready(function() {
 				});
 		}
 	});
-
-
-// $("#form1").validate({
-//         submitHandler: function (form) {
-//         	form.submit();
-//             $(document).ajaxStart(function(){
-// 	            $.blockUI({
-// 	                    css:{ "top":""+wintop+"", "left":""+winleft+"", "padding": "30px 20px", "width": "400px", "height": "60px", "border": "0 none", "border-radius": "4px", "-webkit-border-radius": "4px", "-moz-border-radius": "4px", "box-shadow": "3px 3px 15px #333", "-webkit-box-shadow": "3px 3px 15px #333", "-moz-box-shadow": "3px 3px 15px #333" },
-// 	                    message: '<h2 class="popup_header">Computing...</h2><br><img src="/images/loader.gif" style="margin-top:-16px">'
-// 	            });
-//             });
-//                 $.ajax({
-//                         type: "post",
-//                         url: "/{{ model }}_batchoutput.html",
-
-//                    		success: function() {
-//                    			// console.log('work')
-//                             $.unblockUI();
-//                         	window.location = '/{{ model }}_batchoutput.html';
-//                             // console.log('work1')
-//                         }
-//                 });
-//               },
-//         rules: {
-//                 upfile: "required"        
-//                 }
-//         });
-
-
 });
 
 </script>

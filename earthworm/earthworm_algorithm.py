@@ -10,25 +10,25 @@ from google.appengine.ext.webapp import template
 import os
 from uber import uber_lib
 
-class genericAlgorithmPage(webapp.RequestHandler):
+class earthwormAlgorithmPage(webapp.RequestHandler):
     def get(self):
-        text_file1 = open('generic/generic_algorithm.txt','r')
+        text_file1 = open('earthworm/earthworm_algorithm.txt','r')
         x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie)
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'generic','page':'algorithm'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'earthworm','page':'algorithm'})
         html = html + template.render(templatepath + '03ubertext_links_left.html', {})                       
         html = html + template.render(templatepath + '04uberalgorithm_start.html', {
-                'model':'generic', 
-                'model_attributes':'Generic Algorithms', 
+                'model':'earthworm', 
+                'model_attributes':'Earthworm Algorithms', 
                 'text_paragraph':x})
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
-app = webapp.WSGIApplication([('/.*', genericAlgorithmPage)], debug=True)
+app = webapp.WSGIApplication([('/.*', earthwormAlgorithmPage)], debug=True)
 
 def main():
     run_wsgi_app(app)

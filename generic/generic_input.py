@@ -21,7 +21,7 @@ class genericInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start.html', {
                 'model':'generic', 
                 'model_attributes':'generic Inputs'})
-        html = html + str(genericdb.genericInp())
+        html = html + str(generic_parameters.genericInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

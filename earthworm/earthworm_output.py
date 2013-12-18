@@ -6,16 +6,16 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 from uber import uber_lib
 
-class genericOutputPage(webapp.RequestHandler):
+class earthwormOutputPage(webapp.RequestHandler):
     def post(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie)   
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html',  {'model':'generic','page':'output'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html',  {'model':'earthworm','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                               
         html = html + template.render(templatepath + '04uberoutput_start.html', {
-                'model':'generic', 
-                'model_attributes':'generic Output'})
+                'model':'earthworm', 
+                'model_attributes':'Earthworm Output'})
         html = html + """
         <table width="600" border="1">
           
@@ -30,7 +30,7 @@ class genericOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
-app = webapp.WSGIApplication([('/.*', genericOutputPage)], debug=True)
+app = webapp.WSGIApplication([('/.*', earthwormOutputPage)], debug=True)
 
 def main():
     run_wsgi_app(app)

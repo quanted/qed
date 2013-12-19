@@ -28,7 +28,7 @@ function sortBySci(a,b)
 
 function importSurrogate(surrName) {
 	// Changed DIR by J. Flaishans
-	file = 'data/webice/'+fileFamily+surrName+'.xml';
+	file = 'http://s3.amazonaws.com/webice/data/'+fileFamily+surrName+'.xml';
 	if (document.implementation && document.implementation.createDocument)
 	{
 		var xmlhttp = new window.XMLHttpRequest();
@@ -48,11 +48,14 @@ function importSurrogate(surrName) {
 			if (surrXmlDoc.readyState == 4) loadSurr() };
 		surrXmlDoc.load(file); 
  	}
+
+
+
 }
 
 function importPredicted(predName) {
 	// Changed DIR to webice subdir
-	file = 'data/webice/'+fileFamily+predName+'.xml';
+	file = 'http://s3.amazonaws.com/webice/data/'+fileFamily+predName+'.xml';
 	if (document.implementation && document.implementation.createDocument)
 	{
 		var xmlhttp = new window.XMLHttpRequest();

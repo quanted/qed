@@ -1240,8 +1240,7 @@ th {
   font-size: 1.5em;
   margin: 0 0 12px 160px;
 }
-#surrSpecies span, #predSpecies span {
-  cursor: text;
+#surrSpecies span, #predSpecies span, .title {
   font-weight: 700;
 }
 #resultsTable {
@@ -1265,4 +1264,11 @@ th {
   font-size: 2em;
   margin-bottom: 24px;
   min-height: 18px;
+}
+#ssdResultsContainer, #tneResultsContainer {
+  width: 824px;
+  overflow: auto;
+}
+#ssdResults, #tneResults {
+  margin-left: 0;
 }

@@ -53,47 +53,47 @@
 <form id="wiForm" method='get' action='webice_output.html'>
 
 <div id="wiTaxatemp" style="display:none">
-  <h1 id="PageName"> </h1>
-  <div id="fileType"> </div>
+  <h1> </h1>
+  <div> </div>
   <table class="webice">
     <tr>
       <th>Surrogate:</th>
       <th>Predicted:</th>
     </tr>
     <tr>
-      <td id="SurrogateCell">
-        <select id="Surrogate" name="Surrogate" onchange="loadSurrogate();">
+      <td>
+        <select onchange="loadSurrogate();">
           <option> </option>
         </select>
       </td>
-      <td id="PredictedCell">
-        <select id="Predicted" name="Predicted" onchange="loadPredicted();">
+      <td>
+        <select onchange="loadPredicted();">
           <option> </option>
         </select>
       </td>
     </tr>
     <tr id="sortRow">
       <td>Sort By: 
-        <select id="sortBy" onchange="nameReload();">
+        <select onchange="nameReload();">
           <option>Common Name</option>
           <option>Scientific Name</option>
         </select>
       </td>
     </tr>
   </table>
-  <input id="file" name="file" type="hidden" />
+  <input type="hidden" id="" name="" />
 </div>
 
 <div id="wiSSDtemp" style="display:none">
-  <h1 id="PageName">Species Sensitivity Distributions</h1>
+  <h1>Species Sensitivity Distributions</h1>
   <h3>Multiple Surrogate SSD</h3>
   <table class="webice">
     <tr>
       <th id="primaryType"> </th>
     </tr>
-    <tr>
-      <td id="SurrogateCell">
-        <select id="Surrogate" name="Surrogate">
+    <tr id="SurrogateHeaderRow">
+      <td>
+        <select>
         <option></option>
       </td>
       <td>
@@ -101,7 +101,7 @@
       </td>
       <td><span style="margin-left:25px;">
         Sort By: 
-        <select id="sortBy" onchange="nameReload();cleanList();">
+        <select onchange="nameReload();cleanList();">
         <option>Common Name</option>
         <option>Scientific Name</option>
         </select>
@@ -121,19 +121,19 @@
       </td>
     </tr>
   </table>
-  <table id="DataTable" class="webice" style=" display: None;">
-    <tr id="DataRow">
+  <table class="webice" style="display:none">
+    <tr>
       <td>Species</td>
       <td>Toxicity (<span id="tneUnits">μg/L</span>)</td>
     </tr>
   </table>
-  <input id="file1" name="file" type="hidden" />
-  <input id="type1" name="type1" type="hidden" />
-  <input id="type2" name="type2" type="hidden" />
+  <input type="hidden" id="" name="" />
+  <input type="hidden" id="" name="" />
+  <input type="hidden" id="" name="" />
 </div>
 
 <div id="ICEContent" style="display:none;"> 
-  <h1 id="PageName">Endangered Species Module</h1>
+  <h1>Endangered Species Module</h1>
   <div id="Taxa">
     <h3>Step 1: select Taxa of Interest</h3> 
     <table class="webice">
@@ -146,7 +146,7 @@
         <td>Species:</td>
       </tr>
       <tr>
-        <td id="SurrogateCell"> 
+        <td> 
           <select name="species" id="species" onchange="changeSpecies(this.options[this.selectedIndex].value,this.selectedIndex);">
           <option></option><option>______________________</option><option></option>
           </select>
@@ -174,7 +174,7 @@
       <th>Surrogate(s):</th>
     </tr>
     <tr>
-      <td id="SurrogateCell"> 
+      <td> 
         <select name="Surrogate" id="Surrogate" onchange="">
           <option></option><option>______________________</option><option></option>
         </select>
@@ -195,15 +195,15 @@
       </td>
     </tr>
   </table class="webice">
-  <table class="webice" id="DataTable" style="display: None;" cellspacing="3">
-    <tr id="DataRow">
+  <table class="webice" style="display:none">
+    <tr>
       <td>Species</td>
       <td>Toxicity (<span id="tneUnits">&#956;g/L</span>)</td>
     </tr>
   </table>
-  <input type="submit" value="Calculate" id="SubmitTable" style="display:none;" />
+  <!-- <input type="submit" value="Calculate" id="SubmitTable" style="display:none;" /> -->
   <!-- <button type="button" onclick="location.href=document.URL;">Reset this Form</button> -->
-  <input type="hidden" name="file" id="file1" value="as" />
-  <input type="hidden" name="type1" id="type1" value="vertebrate" />
-  <input type="hidden" name="type2" id="type2" value="invertebrate" />
+  <input type="hidden" id="" name="" />
+  <input type="hidden" id="" name="" />
+  <input type="hidden" id="" name="" />
 </div>

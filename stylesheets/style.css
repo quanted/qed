@@ -377,6 +377,9 @@ ul.nobullet {
   margin-top: 0.5em;
   font-size: 12px;
 }
+.articles_output span {
+  cursor: text;
+}
 .input_left {
   float: left;
   margin-left: 35px;

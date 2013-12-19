@@ -11,16 +11,13 @@ class webiceOutputPage(webapp.RequestHandler):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie)
-        # html = html + str(self.request.url.split('?')[1])
-        # html = html + str(self.request.query_string)
-        # html = html + str(self.request.referer)
-        html = html + template.render (templatepath + 'webice-jqueryOutput.html', {})
+        html = html + template.render (templatepath + 'webiceTNE-jqueryOutput.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html',  {'model':'webice','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                               
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'webice', 
                 'model_attributes':'Web-ICE v3.2.1 Output'})
-        html = html + template.render (templatepath + 'webiceOutput.html', {})
+        html = html + template.render (templatepath + 'webiceTNEOutput.html', {})
         html = html + template.render(templatepath + '04uberwebice_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
@@ -32,7 +29,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
- 
-
-    

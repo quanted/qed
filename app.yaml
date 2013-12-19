@@ -161,6 +161,11 @@ handlers:
 #blog
 - url: /blog_(.*?).html
   script: blog/\1.py
+#webice
+- url: /webiceSSD_out\.html
+  script: webice/webice_SSDoutput.py
+- url: /webiceTNE_out\.html
+  script: webice/webice_TNEoutput.py
 
 ##TESTED models##
 #description

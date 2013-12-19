@@ -46,7 +46,7 @@ if (fileFamily.substr(0,1) == 'l')
 function begin()
 {
 	// Changed DIR by J. Flaishans
-	file = 'data/webice/'+fileFamily+'Surr'+chosenSurrogate+'.xml?rand='+Math.random();
+	file = 'http://s3.amazonaws.com/webice/data/'+fileFamily+'Surr'+chosenSurrogate+'.xml?rand='+Math.random();
 	importFile(file);
 }
 
@@ -182,7 +182,7 @@ function showImage()
 			picName += '.gif';
 		}
 		pic = document.createElement('img');
-		pic.setAttribute('src','/images/webice/'+picName);
+		pic.setAttribute('src','http://s3.amazonaws.com/webice/images/'+picName);
 		pic.setAttribute('alt','ICE model graph for this species pair');
 		//pic.setAttribute('width','375');
 		document.getElementById('graphImage').appendChild(pic);

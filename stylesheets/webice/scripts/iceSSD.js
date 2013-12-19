@@ -30,7 +30,7 @@ function sortBySci(a,b)
 
 function importSurrogate(prefix) {
 	// Changed DIR by J. Flaishans
-	file = 'data/webice/'+prefix+'Surrogate.xml';
+	file = 'http://s3.amazonaws.com/webice/data/'+prefix+'Surrogate.xml';
 	if (document.implementation && document.implementation.createDocument)
 	{
 		var xmlhttp = new window.XMLHttpRequest();
@@ -50,8 +50,6 @@ function importSurrogate(prefix) {
 
 function loadSurr(prefix)
 {
-	alert(prefix);
-	console.log('loadSurr function loaded');
 	if (prefix == 'as') fieldName = 'Surrogate';
 	if (prefix == 'ws') fieldName = 'Surrogate';
 	if (prefix == 'ls') fieldName = 'Algae';
@@ -64,7 +62,6 @@ function loadSurr(prefix)
 			surrogateNode = 1;
 		else 
 			surrogateNode = 0;
-		console.log('surrogateNode = '+surrogateNode);
 		
 		for (i=0;i<surrXmlDoc.getElementsByTagName("surrogate").length;i++) 
 		{
@@ -82,7 +79,6 @@ function loadSurr(prefix)
 		if (prefix == 'as') {
 			if (document.getElementById('sortBy').selectedIndex == 1)
 			{
-				alert('if');
 				SurrogateArray = SurrogateArray.sort(sortBySci);
 				for (i=0;i<SurrogateArray.length;i++)
 				{
@@ -94,7 +90,6 @@ function loadSurr(prefix)
 			}
 			else
 			{
-				alert('else');
 				SurrogateArray = SurrogateArray.sort();
 				for (i=0;i<SurrogateArray.length;i++)
 				{
@@ -121,12 +116,10 @@ function loadSurr(prefix)
 
 function popHeader()
 {
-	console.log('fileFamily = '+fileFamily);
 	var fType;
 	if (fileFamily == 'as') 
 	{
 		fType = 'Aquatic';
-		console.log('fType = '+fType);
 		document.getElementById('primaryType').appendChild(document.createTextNode('Vertebrates & Invertebrates:'));
 	}
 	if (fileFamily == 'ws')
@@ -138,7 +131,6 @@ function popHeader()
 		document.getElementById('primaryType').appendChild(document.createTextNode('Vertebrates:'));
 	}
 	document.getElementById('PageName').appendChild(document.createTextNode(' - '+fType+' Species'));
-	alert('PageName passed');
 	document.getElementById('file1').value = fileFamily;
 	// document.title = fType+' Species | '+document.title;
 	// newBClink = document.createElement('a');
@@ -163,7 +155,6 @@ function nameReload()
 
 function cleanList()
 {
-	console.log('cleanList ran');
 	var inputs = document.getElementsByTagName('input');
 	for (g=0;g<inputs.length;g++)
 		if (inputs[g].name=='S')

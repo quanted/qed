@@ -48,7 +48,7 @@ function tneInitData()
 
 function importGroups() {
 	// Changed DIR by J. Flaishans
-	file = 'data/webice/'+fileFamily+'AllGroups.xml';
+	file = 'http://s3.amazonaws.com/webice/data/'+fileFamily+'AllGroups.xml';
 	if (document.implementation && document.implementation.createDocument)
 	{
 		var xmlhttp = new window.XMLHttpRequest();
@@ -77,7 +77,7 @@ function loadGroups()
 
 function importSpecies(groupName) {
 	// Changed DIR by J. Flaishans
-	file = 'data/webice/'+fileFamily+groupName+'Species.xml';
+	file = 'http://s3.amazonaws.com/webice/data/'+fileFamily+groupName+'Species.xml';
 	if (document.implementation && document.implementation.createDocument)
 	{
 		var xmlhttp1 = new window.XMLHttpRequest();
@@ -156,7 +156,7 @@ function loadSpecies()
 
 function importSurrogate(surrName) {
 	// Changed DIR by J. Flaishans
-	file = 'data/webice/'+fileFamily+surrName+'Surrogates.xml';
+	file = 'http://s3.amazonaws.com/webice/data/'+fileFamily+surrName+'Surrogates.xml';
 	if (document.implementation && document.implementation.createDocument)
 	{
 		var xmlhttp2 = new window.XMLHttpRequest();
@@ -178,7 +178,6 @@ function loadSurr()
 {
 	if (document.getElementById('Surrogate'))
 	{
-		console.log('loadSurrogate Started...');
 		SurrDup = new Array();
 		SurrogateArray.length = 0;
 		

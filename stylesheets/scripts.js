@@ -520,6 +520,7 @@ var pathArray = document.URL.split('/');
 var pathDoamin = pathArray[2];
 var pathLink = pathArray[3];
 var pathSlice = pathLink.slice(0, -5);
+var pathPage = pathSlice.split('_')[1];
 // 
 // console.log('pathArray ='+pathArray);
 // console.log('pathLink ='+pathLink);
@@ -540,9 +541,8 @@ var winleft = (browserWidth / 2) - 220 + "px";
 var wintop = (browserHeight / 2) - 30 + "px";
 var doneDiv = document.getElementById("popup");
 // Model name
-var currPage = pathSlice.slice(0, -5).split('_');
+var model = pathSlice.slice(0, -5).split('_')[0];
 // Remove query string from 'pathSlice' var
-var model = currPage[0];
-if (pathSlice.indexOf("?")) {
-	pathSlice = pathSlice.split('.html?')[0];
+if (pathPage.indexOf("?")) {
+	pathPage = pathPage.split('.html?')[0];
 }

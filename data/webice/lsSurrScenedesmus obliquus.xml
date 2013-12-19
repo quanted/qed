@@ -1,0 +1,57 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Chlorella pyrenoidosa</predicted>
+		<r2>0.678055931</r2>
+		<pVal>2.68446E-05</pVal>
+		<df>16</df>
+		<intercept>-0.39897515</intercept>
+		<slope>0.856142972</slope>
+		<xAvg>0.540051723</xAvg>
+		<xMin>-1.931814138</xMin>
+		<xMax>2.093159628</xMax>
+		<Sxx>31.0055439</Sxx>
+		<MSE>0.674414461</MSE>
+		<t90CI>1.745883676</t90CI>
+		<t95CI>2.119905299</t95CI>
+		<t99CI>2.920781622</t99CI>
+		<Bootstrap>0.833333333</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Pseudokirchneriella subcapitata</predicted>
+		<r2>0.685044258</r2>
+		<pVal>0.00311621</pVal>
+		<df>8</df>
+		<intercept>-0.517603013</intercept>
+		<slope>0.753268876</slope>
+		<xAvg>-0.067941885</xAvg>
+		<xMin>-1.931814138</xMin>
+		<xMax>1.986948998</xMax>
+		<Sxx>17.70945171</Sxx>
+		<MSE>0.577492137</MSE>
+		<t90CI>1.859548038</t90CI>
+		<t95CI>2.306004135</t95CI>
+		<t99CI>3.355387331</t99CI>
+		<Bootstrap>0.7</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Scenedesmus quadricauda</predicted>
+		<r2>0.493152783</r2>
+		<pVal>0.015980422</pVal>
+		<df>9</df>
+		<intercept>-0.195333581</intercept>
+		<slope>0.675919492</slope>
+		<xAvg>-0.126398296</xAvg>
+		<xMin>-1.931814138</xMin>
+		<xMax>1.986948998</xMax>
+		<Sxx>17.70855827</Sxx>
+		<MSE>0.923902654</MSE>
+		<t90CI>1.833112933</t90CI>
+		<t95CI>2.262157163</t95CI>
+		<t99CI>3.249835542</t99CI>
+		<Bootstrap>0.7</Bootstrap>
+		<taxDist>1</taxDist>
+	</cross>
+</species>

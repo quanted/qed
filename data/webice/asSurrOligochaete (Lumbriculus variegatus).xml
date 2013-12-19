@@ -1,0 +1,75 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Fathead minnow (Pimephales promelas)</predicted>
+		<r2>0.5702976760</r2>
+		<pVal>0.0302781620</pVal>
+		<df>6</df>
+		<intercept>0.4532824210</intercept>
+		<slope>0.9136345170</slope>
+		<xAvg>4.2585029070</xAvg>
+		<xMin>2.2525749890</xMin>
+		<xMax>5.1643528560</xMax>
+		<Sxx>7.5986038560</Sxx>
+		<MSE>0.7965144370</MSE>
+		<t90CI>1.943</t90CI>
+		<t95CI>2.447</t95CI>
+		<t99CI>3.707</t99CI>
+		<Bootstrap>75</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Flatworm (Dugesia tigrina)</predicted>
+		<r2>0.8788129910</r2>
+		<pVal>0.0057463430</pVal>
+		<df>4</df>
+		<intercept>1.7028102400</intercept>
+		<slope>0.6185123370</slope>
+		<xAvg>4.1704607910</xAvg>
+		<xMin>2.2525749890</xMin>
+		<xMax>5.0000000000</xMax>
+		<Sxx>5.9544172630</Sxx>
+		<MSE>0.0785300020</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>83.33333333</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Isopod (Caecidotea intermedia)</predicted>
+		<r2>0.8876701440</r2>
+		<pVal>0.0049210290</pVal>
+		<df>4</df>
+		<intercept>1.0924064120</intercept>
+		<slope>0.7580411250</slope>
+		<xAvg>4.1704607910</xAvg>
+		<xMin>2.2525749890</xMin>
+		<xMax>5.0000000000</xMax>
+		<Sxx>5.9544172630</Sxx>
+		<MSE>0.1082451380</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Ramshorn snail (Planorbella trivolvis)</predicted>
+		<r2>0.8537161640</r2>
+		<pVal>0.0084516150</pVal>
+		<df>4</df>
+		<intercept>2.5267635300</intercept>
+		<slope>0.4822489780</slope>
+		<xAvg>4.1704607910</xAvg>
+		<xMin>2.2525749890</xMin>
+		<xMax>5.0000000000</xMax>
+		<Sxx>5.9544172630</Sxx>
+		<MSE>0.0593204920</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

@@ -1,0 +1,129 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Canada goose (Branta canadensis)</predicted>
+		<r2>0.999</r2>
+		<pVal>0.023</pVal>
+		<df>1</df>
+		<intercept>-6.152</intercept>
+		<slope>3.3</slope>
+		<xAvg>2.38</xAvg>
+		<xMin>2.114</xMin>
+		<xMax>2.851</xMax>
+		<Sxx>0.334</Sxx>
+		<MSE>0.005</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Dog (Canis familiaris)</predicted>
+		<r2>1</r2>
+		<pVal>0.008</pVal>
+		<df>1</df>
+		<intercept>-0.833</intercept>
+		<slope>1.318</slope>
+		<xAvg>2.322</xAvg>
+		<xMin>1</xMin>
+		<xMax>3.377</xMax>
+		<Sxx>2.931</Sxx>
+		<MSE>0.001</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>House finch (Carpodacus mexicanus)</predicted>
+		<r2>1</r2>
+		<pVal>0.008</pVal>
+		<df>1</df>
+		<intercept>-0.2</intercept>
+		<slope>0.577</slope>
+		<xAvg>1.972</xAvg>
+		<xMin>1</xMin>
+		<xMax>2.739</xMax>
+		<Sxx>1.574</Sxx>
+		<MSE>0</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>House sparrow (Passer domesticus)</predicted>
+		<r2>0.836</r2>
+		<pVal>0.03</pVal>
+		<df>3</df>
+		<intercept>-0.267</intercept>
+		<slope>0.522</slope>
+		<xAvg>2.123</xAvg>
+		<xMin>1</xMin>
+		<xMax>2.739</xMax>
+		<Sxx>1.859</Sxx>
+		<MSE>0.033</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Mallard (Anas platyrhynchos)</predicted>
+		<r2>0.523</r2>
+		<pVal>0.028</pVal>
+		<df>7</df>
+		<intercept>-0.545</intercept>
+		<slope>1.117</slope>
+		<xAvg>2.255</xAvg>
+		<xMin>1</xMin>
+		<xMax>3.377</xMax>
+		<Sxx>5.087</Sxx>
+		<MSE>0.827</MSE>
+		<t90CI>1.895</t90CI>
+		<t95CI>2.365</t95CI>
+		<t99CI>3.499</t99CI>
+		<Bootstrap>40</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="6">
+		<predicted>Mouse (Mus musculus)</predicted>
+		<r2>0.824</r2>
+		<pVal>0.001</pVal>
+		<df>7</df>
+		<intercept>0.024</intercept>
+		<slope>1.032</slope>
+		<xAvg>2.269</xAvg>
+		<xMin>1</xMin>
+		<xMax>3.377</xMax>
+		<Sxx>5.207</Sxx>
+		<MSE>0.17</MSE>
+		<t90CI>1.895</t90CI>
+		<t95CI>2.365</t95CI>
+		<t99CI>3.499</t99CI>
+		<Bootstrap>77.778</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="7">
+		<predicted>Norway rat (Rattus norvegicus)</predicted>
+		<r2>0.615</r2>
+		<pVal>0.001</pVal>
+		<df>13</df>
+		<intercept>0.071</intercept>
+		<slope>0.933</slope>
+		<xAvg>2.522</xAvg>
+		<xMin>1</xMin>
+		<xMax>3.699</xMax>
+		<Sxx>7.926</Sxx>
+		<MSE>0.332</MSE>
+		<t90CI>1.771</t90CI>
+		<t95CI>2.16</t95CI>
+		<t99CI>3.012</t99CI>
+		<Bootstrap>80</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

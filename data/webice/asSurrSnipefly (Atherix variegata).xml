@@ -1,0 +1,93 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Bluegill (Lepomis macrochirus)</predicted>
+		<r2>0.9235023560</r2>
+		<pVal>0.0390097000</pVal>
+		<df>2</df>
+		<intercept>-0.8422769530</intercept>
+		<slope>1.0558609100</slope>
+		<xAvg>1.5201818680</xAvg>
+		<xMin>0.6627578320</xMin>
+		<xMax>2.5854607300</xMax>
+		<Sxx>1.9606442380</Sxx>
+		<MSE>0.0905299490</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Goldfish (Carassius auratus)</predicted>
+		<r2>0.9447200040</r2>
+		<pVal>0.0280329200</pVal>
+		<df>2</df>
+		<intercept>-1.5678573500</intercept>
+		<slope>2.0726943260</slope>
+		<xAvg>1.5201818680</xAvg>
+		<xMin>0.6627578320</xMin>
+		<xMax>2.5854607300</xMax>
+		<Sxx>1.9606442380</Sxx>
+		<MSE>0.2464360340</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>50</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Largemouth bass (Micropterus salmoides)</predicted>
+		<r2>0.9479288400</r2>
+		<pVal>0.0263836280</pVal>
+		<df>2</df>
+		<intercept>-1.7211096050</intercept>
+		<slope>1.5277626720</slope>
+		<xAvg>1.5201818680</xAvg>
+		<xMin>0.6627578320</xMin>
+		<xMax>2.5854607300</xMax>
+		<Sxx>1.9606442380</Sxx>
+		<MSE>0.1256904010</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>75</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Rainbow trout (Oncorhynchus mykiss)</predicted>
+		<r2>0.9402315920</r2>
+		<pVal>0.0303446020</pVal>
+		<df>2</df>
+		<intercept>-0.6946556560</intercept>
+		<slope>1.0357910430</slope>
+		<xAvg>1.5201818680</xAvg>
+		<xMin>0.6627578320</xMin>
+		<xMax>2.5854607300</xMax>
+		<Sxx>1.9606442380</Sxx>
+		<MSE>0.0668574730</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Yellow perch (Perca flavescens)</predicted>
+		<r2>0.9196250260</r2>
+		<pVal>0.0410291840</pVal>
+		<df>2</df>
+		<intercept>-1.4933060910</intercept>
+		<slope>1.5792016940</slope>
+		<xAvg>1.5201818680</xAvg>
+		<xMin>0.6627578320</xMin>
+		<xMax>2.5854607300</xMax>
+		<Sxx>1.9606442380</Sxx>
+		<MSE>0.2136751750</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>25</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

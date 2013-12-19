@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Mouse (Mus musculus)</predicted>
+		<r2>0.623</r2>
+		<pVal>0.02</pVal>
+		<df>6</df>
+		<intercept>0.041</intercept>
+		<slope>0.895</slope>
+		<xAvg>2.155</xAvg>
+		<xMin>1.588</xMin>
+		<xMax>3.694</xMax>
+		<Sxx>3.236</Sxx>
+		<MSE>0.261</MSE>
+		<t90CI>1.943</t90CI>
+		<t95CI>2.447</t95CI>
+		<t99CI>3.707</t99CI>
+		<Bootstrap>85.714</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Norway rat (Rattus norvegicus)</predicted>
+		<r2>0.782</r2>
+		<pVal>0</pVal>
+		<df>10</df>
+		<intercept>-0.552</intercept>
+		<slope>1.188</slope>
+		<xAvg>2.222</xAvg>
+		<xMin>1.588</xMin>
+		<xMax>3.694</xMax>
+		<Sxx>4.981</Sxx>
+		<MSE>0.196</MSE>
+		<t90CI>1.812</t90CI>
+		<t95CI>2.228</t95CI>
+		<t99CI>3.169</t99CI>
+		<Bootstrap>83.333</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+</species>

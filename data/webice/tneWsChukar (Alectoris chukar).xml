@@ -1,0 +1,405 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Birds</group>
+		<species>Campbell Island flightless teal (Anas aucklandica nesiotis)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="2">	
+		<group>Birds</group>
+		<species>Laysan duck (Anas laysanensis)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="3">	
+		<group>Birds</group>
+		<species>Hawaiian Duck (Anas wyvilliana)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="4">	
+		<group>Birds</group>
+		<species>Madagascar pochard (Aythya innotata)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="5">	
+		<group>Birds</group>
+		<species>Hawaiian goose (Branta sandvicensis)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="6">	
+		<group>Birds</group>
+		<species>White-winged wood duck (Cairina scutulata)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="7">	
+		<group>Birds</group>
+		<species>Steller's Eider (Polysticta stelleri)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="8">	
+		<group>Birds</group>
+		<species>Pink-headed duck (Rhodonessa caryophyllacea)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="9">	
+		<group>Birds</group>
+		<species>Spectacled eider (Somateria fischeri)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="10">	
+		<group>Birds</group>
+		<species>Puerto Rican plain Pigeon (Columba inornata wetmorei)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="11">	
+		<group>Birds</group>
+		<species>White-tailed laurel Pigeon (Columba junoniae)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="12">	
+		<group>Birds</group>
+		<species>Pink pigeon (Columba mayeri)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="13">	
+		<group>Birds</group>
+		<species>Azores wood pigeon (Columba palumbus azorica)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="14">	
+		<group>Birds</group>
+		<species>Cloven-feathered dove (Drepanoptila holosericea)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="15">	
+		<group>Birds</group>
+		<species>Mindoro imperial pigeon (Ducula mindorensis)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="16">	
+		<group>Birds</group>
+		<species>Chatham Island pigeon (Hemiphaga novaeseelandiae chathamensis)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="17">	
+		<group>Birds</group>
+		<species>Grenada gray-fronted dove (Leptotila rufaxilla wellsi)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="18">	
+		<group>Birds</group>
+		<species>Seychelles turtle dove (Streptopelia picturata rostrata)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="19">	
+		<group>Birds</group>
+		<species>Red siskin (Carduelis cucullata)</species>
+		<predicted>Fringillidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="20">	
+		<group>Birds</group>
+		<species>Sao Miguel bullfinch (Pyrrhula pyrrhula murina)</species>
+		<predicted>Fringillidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="21">	
+		<group>Birds</group>
+		<species>Yellow-shouldered blackbird (Agelaius xanthomus)</species>
+		<predicted>Icteridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="22">	
+		<group>Birds</group>
+		<species>Slender-billed Grackle (Quisicalus palustris)</species>
+		<predicted>Icteridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="23">	
+		<group>Mammals</group>
+		<species>Stick-nest rat (Leporillus conditor)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="24">	
+		<group>Mammals</group>
+		<species>Riparian woodrat (Neotoma fuscipes riparia)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="25">	
+		<group>Mammals</group>
+		<species>Australian native mouse (Notomys aquilo)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="26">	
+		<group>Mammals</group>
+		<species>Rice rat (Oryzomys palustris natator)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="27">	
+		<group>Mammals</group>
+		<species>Key Largo cotton mouse (Peromyscus gossypinus allapaticola)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="28">	
+		<group>Mammals</group>
+		<species>Choctawhatchee beach mouse (Peromyscus polionotus allophrys)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="29">	
+		<group>Mammals</group>
+		<species>Alabama beach mouse (Peromyscus polionotus ammobates)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="30">	
+		<group>Mammals</group>
+		<species>Southeastern beach mouse (Peromyscus polionotus niveiventris)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="31">	
+		<group>Mammals</group>
+		<species>St. Andrew beach mouse (Peromyscus polionotus peninsularis)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="32">	
+		<group>Mammals</group>
+		<species>Anastasia Island beach mouse (Peromyscus polionotus phasma)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="33">	
+		<group>Mammals</group>
+		<species>Perdido Key beach mouse (Peromyscus polionotus trissyllepsis)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="34">	
+		<group>Mammals</group>
+		<species>Field's mouse (Pseudomys fieldi)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="35">	
+		<group>Mammals</group>
+		<species>Smoky mouse (Pseudomys fumeus)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="36">	
+		<group>Mammals</group>
+		<species>Gould's mouse (Pseudomys gouldii)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="37">	
+		<group>Mammals</group>
+		<species>New Holland mouse (Pseudomys novaehollandiae)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="38">	
+		<group>Mammals</group>
+		<species>Western mouse (Pseudomys occidentalis)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="39">	
+		<group>Mammals</group>
+		<species>Shark Bay mouse (Pseudomys praeconis)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="40">	
+		<group>Mammals</group>
+		<species>Shortridge's mouse (Pseudomys shortridgei)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="41">	
+		<group>Mammals</group>
+		<species>False water rat (Xeromys myoides)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="42">	
+		<group>Mammals</group>
+		<species>Australian native mouse (Zyzomys pedunculatus)</species>
+		<predicted>Muridae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="43">	
+		<group>Birds</group>
+		<species>White-breasted guineafowl (Agelastes meleagrides)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="44">	
+		<group>Birds</group>
+		<species>Cheer pheasant (Catreus wallichii)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="45">	
+		<group>Birds</group>
+		<species>Masked bobwhite (Colinus virginianus ridgwayi)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="46">	
+		<group>Birds</group>
+		<species>White eared pheasant (Crossoptilon crossoptilon)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="47">	
+		<group>Birds</group>
+		<species>Brown eared pheasant (Crossoptilon mantchuricum)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="48">	
+		<group>Birds</group>
+		<species>Merriam's Montezuma quail (Cyrtonyx montezumae merriami)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="49">	
+		<group>Birds</group>
+		<species>Djibouti francolin (Francolinus ochropectus)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="50">	
+		<group>Birds</group>
+		<species>Chinese monal pheasant (Lophophorus lhuysii)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="51">	
+		<group>Birds</group>
+		<species>Sclater's monal pheasant (Lophophorus sclateri)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="52">	
+		<group>Birds</group>
+		<species>Edward's pheasant (Lophura edwardsi)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="53">	
+		<group>Birds</group>
+		<species>Imperial pheasant (Lophura imperialis)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="54">	
+		<group>Birds</group>
+		<species>Swinhoe's pheasant (Lophura swinhoii)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="55">	
+		<group>Birds</group>
+		<species>Palawan peacock pheasant (Polyplectron emphanum)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="56">	
+		<group>Birds</group>
+		<species>Elliot's pheasant (Syrmaticus ellioti)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="57">	
+		<group>Birds</group>
+		<species>Bar-tailed pheasant (Syrmaticus humaie)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="58">	
+		<group>Birds</group>
+		<species>Mikado pheasant (Syrmaticus mikado)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="59">	
+		<group>Birds</group>
+		<species>Blyth's tragopan pheasant (Tragopan blythii)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="60">	
+		<group>Birds</group>
+		<species>Cabot's tragopan pheasant (Tragopan caboti)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="61">	
+		<group>Birds</group>
+		<species>Western tragopan pheasant (Tragopan melanocephalus)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="62">	
+		<group>Birds</group>
+		<species>Attwater's greater prairie-chicken (Tympanuchus cupido attwateri)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="63">	
+		<group>Birds</group>
+		<species>Rodrigues fody (Foudia flavicans)</species>
+		<predicted>Ploceidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="64">	
+		<group>Birds</group>
+		<species>Mauritius fody (Foudia rubra)</species>
+		<predicted>Ploceidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="65">	
+		<group>Birds</group>
+		<species>Seychelles fody (Foudia sechellarum)</species>
+		<predicted>Ploceidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="66">	
+		<group>Birds</group>
+		<species>Ibadan malimbe (Malimbus ibadanensis)</species>
+		<predicted>Ploceidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+	<cross num="67">	
+		<group>Birds</group>
+		<species>Clarke's weaver (Ploceus golandi)</species>
+		<predicted>Ploceidae</predicted>
+		<filesource>wfSurrChukar (Alectoris chukar).xml</filesource>
+	</cross>
+</crosses>

@@ -1,0 +1,33 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Birds</group>
+		<species>Rodrigues fody (Foudia flavicans)</species>
+		<predicted>Ploceidae</predicted>
+		<filesource>wfSurrGolden sparrow (Passer luteus).xml</filesource>
+	</cross>
+	<cross num="2">	
+		<group>Birds</group>
+		<species>Mauritius fody (Foudia rubra)</species>
+		<predicted>Ploceidae</predicted>
+		<filesource>wfSurrGolden sparrow (Passer luteus).xml</filesource>
+	</cross>
+	<cross num="3">	
+		<group>Birds</group>
+		<species>Seychelles fody (Foudia sechellarum)</species>
+		<predicted>Ploceidae</predicted>
+		<filesource>wfSurrGolden sparrow (Passer luteus).xml</filesource>
+	</cross>
+	<cross num="4">	
+		<group>Birds</group>
+		<species>Ibadan malimbe (Malimbus ibadanensis)</species>
+		<predicted>Ploceidae</predicted>
+		<filesource>wfSurrGolden sparrow (Passer luteus).xml</filesource>
+	</cross>
+	<cross num="5">	
+		<group>Birds</group>
+		<species>Clarke's weaver (Ploceus golandi)</species>
+		<predicted>Ploceidae</predicted>
+		<filesource>wfSurrGolden sparrow (Passer luteus).xml</filesource>
+	</cross>
+</crosses>

@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Chlorella pyrenoidosa</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Microcystis aeruginosa</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Microcystis flos-aquae</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Microcystis sp.</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Pseudokirchneriella sp.</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Pseudokirchneriella subcapitata</surrogate>
+	</cross>
+</species>

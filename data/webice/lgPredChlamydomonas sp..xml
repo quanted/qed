@@ -1,0 +1,12 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Chlorella sp.</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Desmodesmus sp.</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Desmodesmus subspicatus</surrogate>
+	</cross>
+</species>

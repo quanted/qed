@@ -89,6 +89,8 @@ handlers:
 - url: /templates/popup.html
   static_files: templates/popup.html
   upload: templates/popup.html
+- url: /data
+  static_dir: data
 
 ##UBERTOOL INPUT PAGES##
 #output
@@ -159,6 +161,11 @@ handlers:
 #blog
 - url: /blog_(.*?).html
   script: blog/\1.py
+#webice
+- url: /webiceSSD_out\.html
+  script: webice/webice_SSDoutput.py
+- url: /webiceTNE_out\.html
+  script: webice/webice_TNEoutput.py
 
 ##TESTED models##
 #description

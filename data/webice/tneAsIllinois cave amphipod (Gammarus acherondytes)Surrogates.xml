@@ -1,0 +1,23 @@
+<?xml version = '1.0'?>
+<surrogateOptions>
+	<surrogate>Mysid (Americamysis bahia)</surrogate>
+	<surrogate>Isopod (Caecidotea brevicauda)</surrogate>
+	<surrogate>Goldfish (Carassius auratus)</surrogate>
+	<surrogate>Midge (Chironomus plumosus)</surrogate>
+	<surrogate>Daphnid (Daphnia magna)</surrogate>
+	<surrogate>Daphnid (Daphnia pulex)</surrogate>
+	<surrogate>Pink shrimp (Farfantepenaeus duorarum)</surrogate>
+	<surrogate>Amphipod (Gammarus fasciatus)</surrogate>
+	<surrogate>Amphipod (Gammarus lacustris)</surrogate>
+	<surrogate>Amphipod (Gammarus pseudolimnaeus)</surrogate>
+	<surrogate>Channel catfish (Ictalurus punctatus)</surrogate>
+	<surrogate>Bluegill (Lepomis macrochirus)</surrogate>
+	<surrogate>Cutthroat trout (Oncorhynchus clarkii)</surrogate>
+	<surrogate>Rainbow trout (Oncorhynchus mykiss)</surrogate>
+	<surrogate>Yellow perch (Perca flavescens)</surrogate>
+	<surrogate>Fathead minnow (Pimephales promelas)</surrogate>
+	<surrogate>Stonefly (Pteronarcella badia)</surrogate>
+	<surrogate>Stonefly (Pteronarcys californica)</surrogate>
+	<surrogate>Atlantic salmon (Salmo salar)</surrogate>
+	<surrogate>Brook trout (Salvelinus fontinalis)</surrogate>
+</surrogateOptions>

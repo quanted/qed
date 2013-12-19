@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Daphnid (Daphnia magna)</predicted>
+		<r2>0.6291838390</r2>
+		<pVal>0.0332953420</pVal>
+		<df>5</df>
+		<intercept>2.0940336110</intercept>
+		<slope>0.6553509230</slope>
+		<xAvg>2.0609652250</xAvg>
+		<xMin>0.0336124120</xMin>
+		<xMax>5.6748611410</xMax>
+		<Sxx>24.7361168000</Sxx>
+		<MSE>1.2522482820</MSE>
+		<t90CI>2.015</t90CI>
+		<t95CI>2.571</t95CI>
+		<t99CI>4.032</t99CI>
+		<Bootstrap>42.85714286</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Mysid (Americamysis bahia)</predicted>
+		<r2>0.9966166430</r2>
+		<pVal>0.0000836088</pVal>
+		<df>3</df>
+		<intercept>-0.1884649700</intercept>
+		<slope>0.9788251340</slope>
+		<xAvg>2.8145435010</xAvg>
+		<xMin>-1.0891269510</xMin>
+		<xMax>5.6748611410</xMax>
+		<Sxx>27.6604740400</Sxx>
+		<MSE>0.0299894310</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

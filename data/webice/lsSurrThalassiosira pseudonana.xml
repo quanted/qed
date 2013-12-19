@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Skeletonema costatum</predicted>
+		<r2>0.927243452</r2>
+		<pVal>0</pVal>
+		<df>17</df>
+		<intercept>-0.289566387</intercept>
+		<slope>0.968620599</slope>
+		<xAvg>-1.403299382</xAvg>
+		<xMin>-3.652792795</xMin>
+		<xMax>0.40064586</xMax>
+		<Sxx>26.10793733</Sxx>
+		<MSE>0.113060096</MSE>
+		<t90CI>1.739606726</t90CI>
+		<t95CI>2.109815578</t95CI>
+		<t99CI>2.89823052</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+</species>

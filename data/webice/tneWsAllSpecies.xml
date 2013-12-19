@@ -1,0 +1,186 @@
+<?xml version = '1.0'?>
+<speciesOptions>
+	<species>Campbell Island flightless teal (Anas aucklandica nesiotis)</species>
+	<species>Laysan duck (Anas laysanensis)</species>
+	<species>Hawaiian Duck (Anas wyvilliana)</species>
+	<species>Madagascar pochard (Aythya innotata)</species>
+	<species>Hawaiian goose (Branta sandvicensis)</species>
+	<species>White-winged wood duck (Cairina scutulata)</species>
+	<species>Steller's Eider (Polysticta stelleri)</species>
+	<species>Pink-headed duck (Rhodonessa caryophyllacea)</species>
+	<species>Spectacled eider (Somateria fischeri)</species>
+	<species>Addax (Addax nasomaculatus)</species>
+	<species>Black-faced impala (Aepyceros melampus petersi)</species>
+	<species>Swayne's hartebeest (Alcelaphus buselaphus swaynei)</species>
+	<species>Tora hartebeest (Alcelaphus buselaphus tora)</species>
+	<species>Clark's gazelle (Ammodorcas clarkei)</species>
+	<species>Wood Bison (Bison bison athabascae)</species>
+	<species>Seledang (Bos gaurus)</species>
+	<species>Banteng (Bos javanicus)</species>
+	<species>Wild yak (Bos mutus)</species>
+	<species>Kouprey (Bos sauveli)</species>
+	<species>Lowland anoa (Bubalus depressicornis)</species>
+	<species>Tamaraw (Bubalus mindorensis)</species>
+	<species>Mountain anoa (Bubalus quarlesi)</species>
+	<species>Chiltan markhor (Capra falconeri chiltanensis)</species>
+	<species>Straight-horned markhor (Capra falconeri jerdoni)</species>
+	<species>Kabul markhor (Capra falconeri megaceros)</species>
+	<species>Pyrenean ibex (Capra pyrenaica pyrenaica)</species>
+	<species>Walia ibex (Capra walie)</species>
+	<species>Jentink's duiker (Cephalophus jentinki)</species>
+	<species>Bontebok (Damaliscus pygarus dorcas)</species>
+	<species>Mountain gazelle (Gazella cuvieri)</species>
+	<species>Dama gazelle (Gazella dama)</species>
+	<species>Rio de Oro Dama gazelle (Gazella dama lozanoi)</species>
+	<species>Mhorr gazelle (Gazella dama mhorr)</species>
+	<species>Moroccan gazelle (Gazella dorcas massaesyla)</species>
+	<species>Pelzeln's gazelle (Gazella dorcas pelzelni)</species>
+	<species>Saudi Arabian gazelle (Gazella dorcas saudiya)</species>
+	<species>Arabian gazelle (Gazella gazella)</species>
+	<species>Slender-horned gazelle (Gazella leptoceros)</species>
+	<species>Sand gazelle (Gazella subgutturosa marica)</species>
+	<species>Arabian tahr (Hemitragus jayakari)</species>
+	<species>Giant sable antelope (Hippotragus niger variani)</species>
+	<species>Red lechwe (Kobus leche)</species>
+	<species>Serow (Naemorhedus sumatraensis)</species>
+	<species>Goral (Naemorhedus goral)</species>
+	<species>Zanzibar suni (Neotragus moschatus moschatus)</species>
+	<species>Scimitar-horned oryx (Oryx dammah)</species>
+	<species>Arabian oryx (Oryx leucoryx)</species>
+	<species>Argali (Ovis ammon)</species>
+	<species>Bighorn sheep (Ovis canadensis)</species>
+	<species>Sierra Nevada bighorn sheep (Ovis canadensis californiana)</species>
+	<species>Urial (Ovis musimon ophion)</species>
+	<species>Shapo (Ovis vignei vignei)</species>
+	<species>Tibetan antelope (Pantholops hodgsonii)</species>
+	<species>Apennine chamois (Rupicapra rupicapra ornata)</species>
+	<species>Mongolian saiga (Saiga tatarica mongolica)</species>
+	<species>Western giant eland (Taurotragus derbianus derbianus)</species>
+	<species>Gray wolf (Canis lupus)</species>
+	<species>Red wolf (Canis rufus)</species>
+	<species>Simien fox (Canis simensis)</species>
+	<species>Maned wolf (Chrysocyon brachyurus)</species>
+	<species>Dhole (Cuon alpinus)</species>
+	<species>African wild dog (Lycaon pictus)</species>
+	<species>Santa Catalina Island Fox (Urocyon littoralis catalinae)</species>
+	<species>San Miguel Island Fox (Urocyon littoralis littoralis)</species>
+	<species>Santa Cruz Island Fox (Urocyon littoralis santacruzae)</species>
+	<species>Santa Rosa Island Fox (Urocyon littoralis santarosae)</species>
+	<species>San Joaquin kit fox (Vulpes macrotis mutica)</species>
+	<species>Northern swift fox (Vulpes velox hebes)</species>
+	<species>Puerto Rican plain Pigeon (Columba inornata wetmorei)</species>
+	<species>White-tailed laurel Pigeon (Columba junoniae)</species>
+	<species>Pink pigeon (Columba mayeri)</species>
+	<species>Azores wood pigeon (Columba palumbus azorica)</species>
+	<species>Cloven-feathered dove (Drepanoptila holosericea)</species>
+	<species>Mindoro imperial pigeon (Ducula mindorensis)</species>
+	<species>Chatham Island pigeon (Hemiphaga novaeseelandiae chathamensis)</species>
+	<species>Grenada gray-fronted dove (Leptotila rufaxilla wellsi)</species>
+	<species>Seychelles turtle dove (Streptopelia picturata rostrata)</species>
+	<species>Florida scrub jay (Aphelocoma coerulescens)</species>
+	<species>Oahu Elepaio (Chasiempis sandwichensis ibidis)</species>
+	<species>Hawaiian Crow (Corvus hawaiiensis)</species>
+	<species>Mariana Crow (Corvus kubaryi)</species>
+	<species>White-necked crow (Corvus leucognaphalus)</species>
+	<species>Banded wattle-eye (Platysteira laticincta)</species>
+	<species>Cape Sable seaside sparrow (Ammodramus maritimus mirabilis)</species>
+	<species>Florida grasshopper sparrow (Ammodramus savannarum floridanus)</species>
+	<species>San Clemente sage sparrow (Amphispiza belli clementeae)</species>
+	<species>Golden-cheeked warbler (Dendroica chrysoparia)</species>
+	<species>Kirtland's warbler (Dendroica kirtlandii)</species>
+	<species>Barbados yellow warbler (Dendroica petechia petechia)</species>
+	<species>Semper's warbler (Leucopeza semperi)</species>
+	<species>Inyo California towhee (Pipilo crissalis eremophilus)</species>
+	<species>Bachman's warbler (Vermivora bachmanii)</species>
+	<species>Red siskin (Carduelis cucullata)</species>
+	<species>Sao Miguel bullfinch (Pyrrhula pyrrhula murina)</species>
+	<species>Yellow-shouldered blackbird (Agelaius xanthomus)</species>
+	<species>Slender-billed Grackle (Quisicalus palustris)</species>
+	<species>Pygmy Rabbit (Brachylagus idahoensis)</species>
+	<species>Hispid hare (Caprolagus hispidus)</species>
+	<species>Ryukyu rabbit (Pentalagus furnessi)</species>
+	<species>Volcano rabbit (Romerolagus diazi)</species>
+	<species>Riparian brush rabbit (Sylvilagus bachmani riparius)</species>
+	<species>Lower Keys marsh rabbit (Sylvilagus palustris hefneri)</species>
+	<species>Stick-nest rat (Leporillus conditor)</species>
+	<species>Riparian woodrat (Neotoma fuscipes riparia)</species>
+	<species>Australian native mouse (Notomys aquilo)</species>
+	<species>Rice rat (Oryzomys palustris natator)</species>
+	<species>Key Largo cotton mouse (Peromyscus gossypinus allapaticola)</species>
+	<species>Choctawhatchee beach mouse (Peromyscus polionotus allophrys)</species>
+	<species>Alabama beach mouse (Peromyscus polionotus ammobates)</species>
+	<species>Southeastern beach mouse (Peromyscus polionotus niveiventris)</species>
+	<species>St. Andrew beach mouse (Peromyscus polionotus peninsularis)</species>
+	<species>Anastasia Island beach mouse (Peromyscus polionotus phasma)</species>
+	<species>Perdido Key beach mouse (Peromyscus polionotus trissyllepsis)</species>
+	<species>Field's mouse (Pseudomys fieldi)</species>
+	<species>Smoky mouse (Pseudomys fumeus)</species>
+	<species>Gould's mouse (Pseudomys gouldii)</species>
+	<species>New Holland mouse (Pseudomys novaehollandiae)</species>
+	<species>Western mouse (Pseudomys occidentalis)</species>
+	<species>Shark Bay mouse (Pseudomys praeconis)</species>
+	<species>Shortridge's mouse (Pseudomys shortridgei)</species>
+	<species>False water rat (Xeromys myoides)</species>
+	<species>Australian native mouse (Zyzomys pedunculatus)</species>
+	<species>White-breasted guineafowl (Agelastes meleagrides)</species>
+	<species>Cheer pheasant (Catreus wallichii)</species>
+	<species>Masked bobwhite (Colinus virginianus ridgwayi)</species>
+	<species>White eared pheasant (Crossoptilon crossoptilon)</species>
+	<species>Brown eared pheasant (Crossoptilon mantchuricum)</species>
+	<species>Merriam's Montezuma quail (Cyrtonyx montezumae merriami)</species>
+	<species>Djibouti francolin (Francolinus ochropectus)</species>
+	<species>Chinese monal pheasant (Lophophorus lhuysii)</species>
+	<species>Sclater's monal pheasant (Lophophorus sclateri)</species>
+	<species>Edward's pheasant (Lophura edwardsi)</species>
+	<species>Imperial pheasant (Lophura imperialis)</species>
+	<species>Swinhoe's pheasant (Lophura swinhoii)</species>
+	<species>Palawan peacock pheasant (Polyplectron emphanum)</species>
+	<species>Elliot's pheasant (Syrmaticus ellioti)</species>
+	<species>Bar-tailed pheasant (Syrmaticus humaie)</species>
+	<species>Mikado pheasant (Syrmaticus mikado)</species>
+	<species>Blyth's tragopan pheasant (Tragopan blythii)</species>
+	<species>Cabot's tragopan pheasant (Tragopan caboti)</species>
+	<species>Western tragopan pheasant (Tragopan melanocephalus)</species>
+	<species>Attwater's greater prairie-chicken (Tympanuchus cupido attwateri)</species>
+	<species>Rodrigues fody (Foudia flavicans)</species>
+	<species>Mauritius fody (Foudia rubra)</species>
+	<species>Seychelles fody (Foudia sechellarum)</species>
+	<species>Ibadan malimbe (Malimbus ibadanensis)</species>
+	<species>Clarke's weaver (Ploceus golandi)</species>
+	<species>Red-necked parrot (Amazona arausiaca)</species>
+	<species>Red-tailed parrot (Amazona brasiliensis)</species>
+	<species>St Vincent parrot (Amazona guildingii)</species>
+	<species>Imperial parrot (Amazona imperialis)</species>
+	<species>Bahaman or Cuban parrot (Amazona leucocephala)</species>
+	<species>Red-spectacled parrot (Amazona pretrei pretrei)</species>
+	<species>Red-browed parrot (Amazona rhodocorytha)</species>
+	<species>St. Lucia parrot (Amazona versicolor)</species>
+	<species>Vinaceous-breasted parrot (Amazona vinacea)</species>
+	<species>Puerto Rican parrot (Amazona vittata)</species>
+	<species>Glaucous macaw (Anodorhynchus glaucus)</species>
+	<species>Indigo macaw (Anodorhynchus leari)</species>
+	<species>Golden parakeet (Aratinga guarouba)</species>
+	<species>Seychelles lesser vasa parrot (Coracopsis nigra barklyi)</species>
+	<species>Little blue macaw (Cyanopsitta spixii)</species>
+	<species>Forbes' parakeet (Cyanoramphus auriceps forbesi)</species>
+	<species>Norfolk Island parakeet (Cyanoramphus cookii)</species>
+	<species>Night parrot (Geopsittacus occidentalis)</species>
+	<species>Orange-bellied parakeet (Neophema chrysogaster)</species>
+	<species>Turquoise parakeet (Neophema pulchella)</species>
+	<species>Scarlet-chested parakeet (Neophema splendida)</species>
+	<species>Ground parrot (Pezoporus wallicus)</species>
+	<species>Red-capped parrot (Pionopsitta pileata)</species>
+	<species>Golden-shouldered parakeet (Psephotus chrysopterygius)</species>
+	<species>Paradise parakeet (Psephotus pulcherrimus)</species>
+	<species>Mauritius parakeet (Psittacula echo)</species>
+	<species>Blue-throated parakeet (Pyrrhura cruentata)</species>
+	<species>Thick-billed parrot (Rhynchopsitta pachyrhyncha)</species>
+	<species>Mexican prairie dog (Cynomys mexicanus)</species>
+	<species>Utah prairie dog (Cynomys parvidens)</species>
+	<species>Carolina northern flying squirrel (Glaucomys sabrinus coloratus)</species>
+	<species>Virginia northern flying Squirrel (Glaucomys sabrinus fuscus)</species>
+	<species>Vancouver Island marmot (Marmota vancouverensis)</species>
+	<species>Delmarva Peninsula fox squirrel (Sciurus niger cinereus)</species>
+	<species>Northern Idaho ground squirrel (Spermophilus brunneus brunneus)</species>
+	<species>Mount Graham red squirrel (Tamiasciurus hudsonicus grahamensis)</species>
+</speciesOptions>

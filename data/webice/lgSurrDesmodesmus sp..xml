@@ -1,0 +1,93 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Chlamydomonas sp.</predicted>
+		<r2>0.568634788</r2>
+		<pVal>0.018908447</pVal>
+		<df>7</df>
+		<intercept>0.31841008</intercept>
+		<slope>0.545610188</slope>
+		<xAvg>-0.200553701</xAvg>
+		<xMin>-3.170053304</xMin>
+		<xMax>1.649317392</xMax>
+		<Sxx>17.05525366</Sxx>
+		<MSE>0.550220513</MSE>
+		<t90CI>1.894578605</t90CI>
+		<t95CI>2.364624252</t95CI>
+		<t99CI>3.499483297</t99CI>
+		<Bootstrap>0.75</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Phaeodactylum sp.</predicted>
+		<r2>0.393369482</r2>
+		<pVal>0.021764521</pVal>
+		<df>11</df>
+		<intercept>0.046564193</intercept>
+		<slope>0.566470297</slope>
+		<xAvg>-0.175052951</xAvg>
+		<xMin>-1.204053211</xMin>
+		<xMax>1.649317392</xMax>
+		<Sxx>7.091030214</Sxx>
+		<MSE>0.319002823</MSE>
+		<t90CI>1.795884819</t90CI>
+		<t95CI>2.20098516</t95CI>
+		<t99CI>3.105806516</t99CI>
+		<Bootstrap>0.363636364</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Pseudokirchneriella sp.</predicted>
+		<r2>0.59237733</r2>
+		<pVal>6.64236E-07</pVal>
+		<df>28</df>
+		<intercept>0.285248404</intercept>
+		<slope>0.619504613</slope>
+		<xAvg>0.184473205</xAvg>
+		<xMin>-3.170053304</xMin>
+		<xMax>2.232445136</xMax>
+		<Sxx>36.1631818</Sxx>
+		<MSE>0.341081051</MSE>
+		<t90CI>1.701130934</t90CI>
+		<t95CI>2.048407142</t95CI>
+		<t99CI>2.763262455</t99CI>
+		<Bootstrap>0.7</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Scenedesmus sp.</predicted>
+		<r2>0.928993112</r2>
+		<pVal>2.8566E-05</pVal>
+		<df>7</df>
+		<intercept>-0.106618088</intercept>
+		<slope>0.908586428</slope>
+		<xAvg>0.08277127</xAvg>
+		<xMin>-3.170053304</xMin>
+		<xMax>4.025834821</xMax>
+		<Sxx>33.21109654</Sxx>
+		<MSE>0.29936819</MSE>
+		<t90CI>1.894578605</t90CI>
+		<t95CI>2.364624252</t95CI>
+		<t99CI>3.499483297</t99CI>
+		<Bootstrap>0.888888889</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Skeletonema sp.</predicted>
+		<r2>0.884785827</r2>
+		<pVal>1.70604E-06</pVal>
+		<df>11</df>
+		<intercept>-0.276571087</intercept>
+		<slope>0.799593551</slope>
+		<xAvg>-0.038086019</xAvg>
+		<xMin>-1.204053211</xMin>
+		<xMax>2.653212514</xMax>
+		<Sxx>11.00800244</Sxx>
+		<MSE>0.083314798</MSE>
+		<t90CI>1.795884819</t90CI>
+		<t95CI>2.20098516</t95CI>
+		<t99CI>3.105806516</t99CI>
+		<Bootstrap>0.923076923</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

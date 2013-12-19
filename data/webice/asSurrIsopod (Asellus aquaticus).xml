@@ -1,0 +1,57 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Bull trout (Salvelinus confluentus)</predicted>
+		<r2>0.9973340510</r2>
+		<pVal>0.0328851000</pVal>
+		<df>1</df>
+		<intercept>-4.6351045370</intercept>
+		<slope>1.5874952270</slope>
+		<xAvg>3.7816349830</xAvg>
+		<xMin>3.1205739310</xMin>
+		<xMax>4.2600713880</xMax>
+		<Sxx>0.6992548700</Sxx>
+		<MSE>0.0047105480</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Daphnid (Daphnia magna)</predicted>
+		<r2>0.8227086590</r2>
+		<pVal>0.0125625740</pVal>
+		<df>4</df>
+		<intercept>-1.7671984250</intercept>
+		<slope>0.9998713440</slope>
+		<xAvg>4.0011840490</xAvg>
+		<xMin>2.2988530760</xMin>
+		<xMax>5.5564882400</xMax>
+		<Sxx>6.8098726750</Sxx>
+		<MSE>0.3667825800</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>50</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Northern river crangonyctid (Crangonyx pseudogracilis)</predicted>
+		<r2>0.8822191000</r2>
+		<pVal>0.0016895430</pVal>
+		<df>5</df>
+		<intercept>-2.4033823050</intercept>
+		<slope>1.4470412740</slope>
+		<xAvg>4.2360752230</xAvg>
+		<xMin>2.2988530760</xMin>
+		<xMax>5.6454222690</xMax>
+		<Sxx>9.1271749540</Sxx>
+		<MSE>0.5103012360</MSE>
+		<t90CI>2.015</t90CI>
+		<t95CI>2.571</t95CI>
+		<t99CI>4.032</t99CI>
+		<Bootstrap>71.42857143</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

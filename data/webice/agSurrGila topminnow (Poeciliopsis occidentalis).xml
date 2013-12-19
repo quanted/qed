@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Cyprinodon</predicted>
+		<r2>0.9958230930</r2>
+		<pVal>0.0411727930</pVal>
+		<df>1</df>
+		<intercept>0.6265979920</intercept>
+		<slope>0.7102626770</slope>
+		<xAvg>1.7399711930</xAvg>
+		<xMin>1.0000000000</xMin>
+		<xMax>2.3856062740</xMax>
+		<Sxx>0.9733013260</Sxx>
+		<MSE>0.0020594820</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Oncorhynchus</predicted>
+		<r2>0.9380605430</r2>
+		<pVal>0.0314647430</pVal>
+		<df>2</df>
+		<intercept>-0.7700785120</intercept>
+		<slope>1.2708589190</slope>
+		<xAvg>1.7252887040</xAvg>
+		<xMin>1.0000000000</xMin>
+		<xMax>2.3856062740</xMax>
+		<Sxx>0.9758882310</Sxx>
+		<MSE>0.0520356860</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

@@ -1,0 +1,93 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Cutthroat trout (Oncorhynchus clarkii)</predicted>
+		<r2>0.9368195820</r2>
+		<pVal>0.0321055940</pVal>
+		<df>2</df>
+		<intercept>-0.1768313650</intercept>
+		<slope>0.7081560810</slope>
+		<xAvg>2.3543750010</xAvg>
+		<xMin>1.1882884790</xMin>
+		<xMax>3.3010299960</xMax>
+		<Sxx>2.9604130740</Sxx>
+		<MSE>0.0500618430</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Fathead minnow (Pimephales promelas)</predicted>
+		<r2>0.7151390730</r2>
+		<pVal>0.0165108840</pVal>
+		<df>5</df>
+		<intercept>-0.2263719170</intercept>
+		<slope>1.0603124600</slope>
+		<xAvg>2.8447998630</xAvg>
+		<xMin>1.1882884790</xMin>
+		<xMax>3.7528164310</xMax>
+		<Sxx>5.5783316630</Sxx>
+		<MSE>0.4996253130</MSE>
+		<t90CI>2.015</t90CI>
+		<t95CI>2.571</t95CI>
+		<t99CI>4.032</t99CI>
+		<Bootstrap>42.85714286</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Goldfish (Carassius auratus)</predicted>
+		<r2>0.9180104520</r2>
+		<pVal>0.0418713800</pVal>
+		<df>2</df>
+		<intercept>-0.2644078760</intercept>
+		<slope>1.1383606620</slope>
+		<xAvg>2.5307371240</xAvg>
+		<xMin>1.1882884790</xMin>
+		<xMax>3.7528164310</xMax>
+		<Sxx>4.3113979040</Sxx>
+		<MSE>0.2494932120</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>50</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Isopod (Caecidotea brevicauda)</predicted>
+		<r2>0.9999748900</r2>
+		<pVal>0.0031901060</pVal>
+		<df>1</df>
+		<intercept>-1.0221969100</intercept>
+		<slope>1.3621775500</slope>
+		<xAvg>2.1233773550</xAvg>
+		<xMin>1.1882884790</xMin>
+		<xMax>3.3010299960</xMax>
+		<Sxx>2.3200941280</Sxx>
+		<MSE>0.0001081010</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Yellow perch (Perca flavescens)</predicted>
+		<r2>0.9989533040</r2>
+		<pVal>0.0205999550</pVal>
+		<df>1</df>
+		<intercept>0.1534361830</intercept>
+		<slope>0.6893123910</slope>
+		<xAvg>2.1233773550</xAvg>
+		<xMin>1.1882884790</xMin>
+		<xMax>3.3010299960</xMax>
+		<Sxx>2.3200941280</Sxx>
+		<MSE>0.0011550830</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+</species>

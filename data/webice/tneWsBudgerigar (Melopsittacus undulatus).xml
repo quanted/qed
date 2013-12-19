@@ -1,0 +1,111 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Birds</group>
+		<species>Campbell Island flightless teal (Anas aucklandica nesiotis)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrBudgerigar (Melopsittacus undulatus).xml</filesource>
+	</cross>
+	<cross num="2">	
+		<group>Birds</group>
+		<species>Laysan duck (Anas laysanensis)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrBudgerigar (Melopsittacus undulatus).xml</filesource>
+	</cross>
+	<cross num="3">	
+		<group>Birds</group>
+		<species>Hawaiian Duck (Anas wyvilliana)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrBudgerigar (Melopsittacus undulatus).xml</filesource>
+	</cross>
+	<cross num="4">	
+		<group>Birds</group>
+		<species>Madagascar pochard (Aythya innotata)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrBudgerigar (Melopsittacus undulatus).xml</filesource>
+	</cross>
+	<cross num="5">	
+		<group>Birds</group>
+		<species>Hawaiian goose (Branta sandvicensis)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrBudgerigar (Melopsittacus undulatus).xml</filesource>
+	</cross>
+	<cross num="6">	
+		<group>Birds</group>
+		<species>White-winged wood duck (Cairina scutulata)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrBudgerigar (Melopsittacus undulatus).xml</filesource>
+	</cross>
+	<cross num="7">	
+		<group>Birds</group>
+		<species>Steller's Eider (Polysticta stelleri)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrBudgerigar (Melopsittacus undulatus).xml</filesource>
+	</cross>
+	<cross num="8">	
+		<group>Birds</group>
+		<species>Pink-headed duck (Rhodonessa caryophyllacea)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrBudgerigar (Melopsittacus undulatus).xml</filesource>
+	</cross>
+	<cross num="9">	
+		<group>Birds</group>
+		<species>Spectacled eider (Somateria fischeri)</species>
+		<predicted>Anatidae</predicted>
+		<filesource>wfSurrBudgerigar (Melopsittacus undulatus).xml</filesource>
+	</cross>
+	<cross num="10">	
+		<group>Birds</group>
+		<species>Cape Sable seaside sparrow (Ammodramus maritimus mirabilis)</species>
+		<predicted>Emberizidae</predicted>
+		<filesource>wfSurrBudgerigar (Melopsittacus undulatus).xml</filesource>
+	</cross>
+	<cross num="11">	
+		<group>Birds</group>
+		<species>Florida grasshopper sparrow (Ammodramus savannarum floridanus)</species>
+		<predicted>Emberizidae</predicted>
+		<filesource>wfSurrBudgerigar (Melopsittacus undulatus).xml</filesource>
+	</cross>
+	<cross num="12">	
+		<group>Birds</group>
+		<species>San Clemente sage sparrow (Amphispiza belli clementeae)</species>
+		<predicted>Emberizidae</predicted>
+		<filesource>wfSurrBudgerigar (Melopsittacus undulatus).xml</filesource>
+	</cross>
+	<cross num="13">	
+		<group>Birds</group>
+		<species>Golden-cheeked warbler (Dendroica chrysoparia)</species>
+		<predicted>Emberizidae</predicted>
+		<filesource>wfSurrBudgerigar (Melopsittacus undulatus).xml</filesource>
+	</cross>
+	<cross num="14">	
+		<group>Birds</group>
+		<species>Kirtland's warbler (Dendroica kirtlandii)</species>
+		<predicted>Emberizidae</predicted>
+		<filesource>wfSurrBudgerigar (Melopsittacus undulatus).xml</filesource>
+	</cross>
+	<cross num="15">	
+		<group>Birds</group>
+		<species>Barbados yellow warbler (Dendroica petechia petechia)</species>
+		<predicted>Emberizidae</predicted>
+		<filesource>wfSurrBudgerigar (Melopsittacus undulatus).xml</filesource>
+	</cross>
+	<cross num="16">	
+		<group>Birds</group>
+		<species>Semper's warbler (Leucopeza semperi)</species>
+		<predicted>Emberizidae</predicted>
+		<filesource>wfSurrBudgerigar (Melopsittacus undulatus).xml</filesource>
+	</cross>
+	<cross num="17">	
+		<group>Birds</group>
+		<species>Inyo California towhee (Pipilo crissalis eremophilus)</species>
+		<predicted>Emberizidae</predicted>
+		<filesource>wfSurrBudgerigar (Melopsittacus undulatus).xml</filesource>
+	</cross>
+	<cross num="18">	
+		<group>Birds</group>
+		<species>Bachman's warbler (Vermivora bachmanii)</species>
+		<predicted>Emberizidae</predicted>
+		<filesource>wfSurrBudgerigar (Melopsittacus undulatus).xml</filesource>
+	</cross>
+</crosses>

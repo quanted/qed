@@ -1,0 +1,93 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Amphipod (Allorchestes compressa)</predicted>
+		<r2>0.9989774700</r2>
+		<pVal>0.0203606740</pVal>
+		<df>1</df>
+		<intercept>1.0203356130</intercept>
+		<slope>0.4926589160</slope>
+		<xAvg>3.4068247350</xAvg>
+		<xMin>1.7781512500</xMin>
+		<xMax>4.5910646070</xMax>
+		<Sxx>4.2525226310</Sxx>
+		<MSE>0.0010564760</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Daphnid (Daphnia magna)</predicted>
+		<r2>0.9999760280</r2>
+		<pVal>0.0031169550</pVal>
+		<df>1</df>
+		<intercept>-0.2879187080</intercept>
+		<slope>0.5556618170</slope>
+		<xAvg>3.4068247350</xAvg>
+		<xMin>1.7781512500</xMin>
+		<xMax>4.5910646070</xMax>
+		<Sxx>4.2525226310</Sxx>
+		<MSE>0.0000314757</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Northern river crangonyctid (Crangonyx pseudogracilis)</predicted>
+		<r2>0.9997476550</r2>
+		<pVal>0.0101133670</pVal>
+		<df>1</df>
+		<intercept>-2.7175379050</intercept>
+		<slope>1.5341487600</slope>
+		<xAvg>3.4068247350</xAvg>
+		<xMin>1.7781512500</xMin>
+		<xMax>4.5910646070</xMax>
+		<Sxx>4.2525226310</Sxx>
+		<MSE>0.0025263060</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Polychaete (Neanthes virens)</predicted>
+		<r2>0.9555489360</r2>
+		<pVal>0.0224781660</pVal>
+		<df>2</df>
+		<intercept>-0.1043101040</intercept>
+		<slope>1.0109041840</slope>
+		<xAvg>4.1743988650</xAvg>
+		<xMin>1.7781512500</xMin>
+		<xMax>6.4771212550</xMax>
+		<Sxx>11.3225631700</Sxx>
+		<MSE>0.2691311540</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>50</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>White sucker (Catostomus commersonii)</predicted>
+		<r2>0.9998573490</r2>
+		<pVal>0.0076037460</pVal>
+		<df>1</df>
+		<intercept>2.2795595230</intercept>
+		<slope>0.3143720680</slope>
+		<xAvg>3.4068247350</xAvg>
+		<xMin>1.7781512500</xMin>
+		<xMax>4.5910646070</xMax>
+		<Sxx>4.2525226310</Sxx>
+		<MSE>0.0000599613</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

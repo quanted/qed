@@ -1,0 +1,96 @@
+<?xml version = '1.0'?>
+<speciesOptions>
+	<species>Addax (Addax nasomaculatus)</species>
+	<species>Black-faced impala (Aepyceros melampus petersi)</species>
+	<species>Swayne's hartebeest (Alcelaphus buselaphus swaynei)</species>
+	<species>Tora hartebeest (Alcelaphus buselaphus tora)</species>
+	<species>Clark's gazelle (Ammodorcas clarkei)</species>
+	<species>Wood Bison (Bison bison athabascae)</species>
+	<species>Seledang (Bos gaurus)</species>
+	<species>Banteng (Bos javanicus)</species>
+	<species>Wild yak (Bos mutus)</species>
+	<species>Kouprey (Bos sauveli)</species>
+	<species>Lowland anoa (Bubalus depressicornis)</species>
+	<species>Tamaraw (Bubalus mindorensis)</species>
+	<species>Mountain anoa (Bubalus quarlesi)</species>
+	<species>Chiltan markhor (Capra falconeri chiltanensis)</species>
+	<species>Straight-horned markhor (Capra falconeri jerdoni)</species>
+	<species>Kabul markhor (Capra falconeri megaceros)</species>
+	<species>Pyrenean ibex (Capra pyrenaica pyrenaica)</species>
+	<species>Walia ibex (Capra walie)</species>
+	<species>Jentink's duiker (Cephalophus jentinki)</species>
+	<species>Bontebok (Damaliscus pygarus dorcas)</species>
+	<species>Mountain gazelle (Gazella cuvieri)</species>
+	<species>Dama gazelle (Gazella dama)</species>
+	<species>Rio de Oro Dama gazelle (Gazella dama lozanoi)</species>
+	<species>Mhorr gazelle (Gazella dama mhorr)</species>
+	<species>Moroccan gazelle (Gazella dorcas massaesyla)</species>
+	<species>Pelzeln's gazelle (Gazella dorcas pelzelni)</species>
+	<species>Saudi Arabian gazelle (Gazella dorcas saudiya)</species>
+	<species>Arabian gazelle (Gazella gazella)</species>
+	<species>Slender-horned gazelle (Gazella leptoceros)</species>
+	<species>Sand gazelle (Gazella subgutturosa marica)</species>
+	<species>Arabian tahr (Hemitragus jayakari)</species>
+	<species>Giant sable antelope (Hippotragus niger variani)</species>
+	<species>Red lechwe (Kobus leche)</species>
+	<species>Serow (Naemorhedus sumatraensis)</species>
+	<species>Goral (Naemorhedus goral)</species>
+	<species>Zanzibar suni (Neotragus moschatus moschatus)</species>
+	<species>Scimitar-horned oryx (Oryx dammah)</species>
+	<species>Arabian oryx (Oryx leucoryx)</species>
+	<species>Argali (Ovis ammon)</species>
+	<species>Bighorn sheep (Ovis canadensis)</species>
+	<species>Sierra Nevada bighorn sheep (Ovis canadensis californiana)</species>
+	<species>Urial (Ovis musimon ophion)</species>
+	<species>Shapo (Ovis vignei vignei)</species>
+	<species>Tibetan antelope (Pantholops hodgsonii)</species>
+	<species>Apennine chamois (Rupicapra rupicapra ornata)</species>
+	<species>Mongolian saiga (Saiga tatarica mongolica)</species>
+	<species>Western giant eland (Taurotragus derbianus derbianus)</species>
+	<species>Gray wolf (Canis lupus)</species>
+	<species>Red wolf (Canis rufus)</species>
+	<species>Simien fox (Canis simensis)</species>
+	<species>Maned wolf (Chrysocyon brachyurus)</species>
+	<species>Dhole (Cuon alpinus)</species>
+	<species>African wild dog (Lycaon pictus)</species>
+	<species>Santa Catalina Island Fox (Urocyon littoralis catalinae)</species>
+	<species>San Miguel Island Fox (Urocyon littoralis littoralis)</species>
+	<species>Santa Cruz Island Fox (Urocyon littoralis santacruzae)</species>
+	<species>Santa Rosa Island Fox (Urocyon littoralis santarosae)</species>
+	<species>San Joaquin kit fox (Vulpes macrotis mutica)</species>
+	<species>Northern swift fox (Vulpes velox hebes)</species>
+	<species>Pygmy Rabbit (Brachylagus idahoensis)</species>
+	<species>Hispid hare (Caprolagus hispidus)</species>
+	<species>Ryukyu rabbit (Pentalagus furnessi)</species>
+	<species>Volcano rabbit (Romerolagus diazi)</species>
+	<species>Riparian brush rabbit (Sylvilagus bachmani riparius)</species>
+	<species>Lower Keys marsh rabbit (Sylvilagus palustris hefneri)</species>
+	<species>Stick-nest rat (Leporillus conditor)</species>
+	<species>Riparian woodrat (Neotoma fuscipes riparia)</species>
+	<species>Australian native mouse (Notomys aquilo)</species>
+	<species>Rice rat (Oryzomys palustris natator)</species>
+	<species>Key Largo cotton mouse (Peromyscus gossypinus allapaticola)</species>
+	<species>Choctawhatchee beach mouse (Peromyscus polionotus allophrys)</species>
+	<species>Alabama beach mouse (Peromyscus polionotus ammobates)</species>
+	<species>Southeastern beach mouse (Peromyscus polionotus niveiventris)</species>
+	<species>St. Andrew beach mouse (Peromyscus polionotus peninsularis)</species>
+	<species>Anastasia Island beach mouse (Peromyscus polionotus phasma)</species>
+	<species>Perdido Key beach mouse (Peromyscus polionotus trissyllepsis)</species>
+	<species>Field's mouse (Pseudomys fieldi)</species>
+	<species>Smoky mouse (Pseudomys fumeus)</species>
+	<species>Gould's mouse (Pseudomys gouldii)</species>
+	<species>New Holland mouse (Pseudomys novaehollandiae)</species>
+	<species>Western mouse (Pseudomys occidentalis)</species>
+	<species>Shark Bay mouse (Pseudomys praeconis)</species>
+	<species>Shortridge's mouse (Pseudomys shortridgei)</species>
+	<species>False water rat (Xeromys myoides)</species>
+	<species>Australian native mouse (Zyzomys pedunculatus)</species>
+	<species>Mexican prairie dog (Cynomys mexicanus)</species>
+	<species>Utah prairie dog (Cynomys parvidens)</species>
+	<species>Carolina northern flying squirrel (Glaucomys sabrinus coloratus)</species>
+	<species>Virginia northern flying Squirrel (Glaucomys sabrinus fuscus)</species>
+	<species>Vancouver Island marmot (Marmota vancouverensis)</species>
+	<species>Delmarva Peninsula fox squirrel (Sciurus niger cinereus)</species>
+	<species>Northern Idaho ground squirrel (Spermophilus brunneus brunneus)</species>
+	<species>Mount Graham red squirrel (Tamiasciurus hudsonicus grahamensis)</species>
+</speciesOptions>

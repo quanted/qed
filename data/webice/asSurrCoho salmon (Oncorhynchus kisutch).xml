@@ -1,0 +1,399 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Atlantic salmon (Salmo salar)</predicted>
+		<r2>0.9738227130</r2>
+		<pVal>0.0002592450</pVal>
+		<df>4</df>
+		<intercept>-0.2035953310</intercept>
+		<slope>0.9658454300</slope>
+		<xAvg>2.0479383150</xAvg>
+		<xMin>-0.4971149640</xMin>
+		<xMax>4.1461661650</xMax>
+		<Sxx>18.4892506700</Sxx>
+		<MSE>0.1159095750</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Black bullhead (Ameiurus melas)</predicted>
+		<r2>0.5624443060</r2>
+		<pVal>0.0199517040</pVal>
+		<df>7</df>
+		<intercept>1.5208147150</intercept>
+		<slope>0.6571249010</slope>
+		<xAvg>1.7513100840</xAvg>
+		<xMin>-1.6778168890</xMin>
+		<xMax>4.1461661650</xMax>
+		<Sxx>26.8471413000</Sxx>
+		<MSE>1.2883969070</MSE>
+		<t90CI>1.895</t90CI>
+		<t95CI>2.365</t95CI>
+		<t99CI>3.499</t99CI>
+		<Bootstrap>22.22222222</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Black crappie (Pomoxis nigromaculatus)</predicted>
+		<r2>0.9997027490</r2>
+		<pVal>0.0109764800</pVal>
+		<df>1</df>
+		<intercept>-0.2552813940</intercept>
+		<slope>1.0944443500</slope>
+		<xAvg>1.6465362270</xAvg>
+		<xMin>0.6452399070</xMin>
+		<xMax>3.3505601250</xMax>
+		<Sxx>4.4001178130</Sxx>
+		<MSE>0.0015671250</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Bluegill (Lepomis macrochirus)</predicted>
+		<r2>0.9129361090</r2>
+		<pVal>0.0000003607</pVal>
+		<df>11</df>
+		<intercept>0.2579150730</intercept>
+		<slope>0.9251528410</slope>
+		<xAvg>2.3563028160</xAvg>
+		<xMin>0.6452399070</xMin>
+		<xMax>4.1461661650</xMax>
+		<Sxx>19.8392790800</Sxx>
+		<MSE>0.1472169670</MSE>
+		<t90CI>1.796</t90CI>
+		<t95CI>2.201</t95CI>
+		<t99CI>3.106</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Brook trout (Salvelinus fontinalis)</predicted>
+		<r2>0.9873473690</r2>
+		<pVal>0.0006063410</pVal>
+		<df>3</df>
+		<intercept>-0.5798570300</intercept>
+		<slope>1.1279848210</slope>
+		<xAvg>2.5488052380</xAvg>
+		<xMin>0.6452399070</xMin>
+		<xMax>4.1461661650</xMax>
+		<Sxx>10.8491914800</Sxx>
+		<MSE>0.0589648930</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+	<cross num="6">
+		<predicted>Brown trout (Salmo trutta)</predicted>
+		<r2>0.9773285930</r2>
+		<pVal>0.0000000000</pVal>
+		<df>12</df>
+		<intercept>-0.2716405850</intercept>
+		<slope>1.0537707340</slope>
+		<xAvg>2.1124480670</xAvg>
+		<xMin>-0.4971149640</xMin>
+		<xMax>4.1461661650</xMax>
+		<Sxx>23.9716689400</Sxx>
+		<MSE>0.0514573180</MSE>
+		<t90CI>1.782</t90CI>
+		<t95CI>2.179</t95CI>
+		<t99CI>3.055</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+	<cross num="7">
+		<predicted>Channel catfish (Ictalurus punctatus)</predicted>
+		<r2>0.6274132190</r2>
+		<pVal>0.0021323240</pVal>
+		<df>10</df>
+		<intercept>1.2231544940</intercept>
+		<slope>0.6694171520</slope>
+		<xAvg>2.0107850950</xAvg>
+		<xMin>-1.6778168890</xMin>
+		<xMax>4.1461661650</xMax>
+		<Sxx>30.8165332500</Sxx>
+		<MSE>0.8200705780</MSE>
+		<t90CI>1.812</t90CI>
+		<t95CI>2.228</t95CI>
+		<t99CI>3.169</t99CI>
+		<Bootstrap>58.33333333</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="8">
+		<predicted>Chinook salmon (Oncorhynchus tshawytscha)</predicted>
+		<r2>0.9985031910</r2>
+		<pVal>0.0246360890</pVal>
+		<df>1</df>
+		<intercept>-0.2350840370</intercept>
+		<slope>1.0950985740</slope>
+		<xAvg>3.1470369330</xAvg>
+		<xMin>1.9443845070</xMin>
+		<xMax>4.1461661650</xMax>
+		<Sxx>2.4860537690</Sxx>
+		<MSE>0.0044692430</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>1</taxDist>
+	</cross>
+	<cross num="9">
+		<predicted>Common carp (Cyprinus carpio)</predicted>
+		<r2>0.6444391810</r2>
+		<pVal>0.0164552250</pVal>
+		<df>6</df>
+		<intercept>0.9781520810</intercept>
+		<slope>0.8027151380</slope>
+		<xAvg>2.1799509560</xAvg>
+		<xMin>0.6452399070</xMin>
+		<xMax>4.1461661650</xMax>
+		<Sxx>13.6183655300</Sxx>
+		<MSE>0.8069165130</MSE>
+		<t90CI>1.943</t90CI>
+		<t95CI>2.447</t95CI>
+		<t99CI>3.707</t99CI>
+		<Bootstrap>50</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="10">
+		<predicted>Crayfish (Orconectes nais)</predicted>
+		<r2>0.9949926610</r2>
+		<pVal>0.0450865220</pVal>
+		<df>1</df>
+		<intercept>-2.2479806510</intercept>
+		<slope>1.9235670180</slope>
+		<xAvg>2.2047945030</xAvg>
+		<xMin>0.9438086500</xMin>
+		<xMax>3.4313637640</xMax>
+		<Sxx>3.0957419750</Sxx>
+		<MSE>0.0576456480</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="11">
+		<predicted>Cutthroat trout (Oncorhynchus clarkii)</predicted>
+		<r2>0.9832270080</r2>
+		<pVal>0.0000014840</pVal>
+		<df>6</df>
+		<intercept>-0.1017462710</intercept>
+		<slope>1.0046764200</slope>
+		<xAvg>2.6876897460</xAvg>
+		<xMin>0.9438086500</xMin>
+		<xMax>4.1461661650</xMax>
+		<Sxx>9.9801473570</Sxx>
+		<MSE>0.0286414410</MSE>
+		<t90CI>1.943</t90CI>
+		<t95CI>2.447</t95CI>
+		<t99CI>3.707</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>1</taxDist>
+	</cross>
+	<cross num="12">
+		<predicted>Fathead minnow (Pimephales promelas)</predicted>
+		<r2>0.8086976900</r2>
+		<pVal>0.0023655790</pVal>
+		<df>6</df>
+		<intercept>0.4412669320</intercept>
+		<slope>1.0432073090</slope>
+		<xAvg>2.3463408640</xAvg>
+		<xMin>0.9030899870</xMin>
+		<xMax>3.7242758700</xMax>
+		<Sxx>9.0848368680</Sxx>
+		<MSE>0.3897993740</MSE>
+		<t90CI>1.943</t90CI>
+		<t95CI>2.447</t95CI>
+		<t99CI>3.707</t99CI>
+		<Bootstrap>75</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="13">
+		<predicted>Goldfish (Carassius auratus)</predicted>
+		<r2>0.7274492650</r2>
+		<pVal>0.0017082860</pVal>
+		<df>8</df>
+		<intercept>1.1709485090</intercept>
+		<slope>0.7890297310</slope>
+		<xAvg>1.9460760760</xAvg>
+		<xMin>-1.6778168890</xMin>
+		<xMax>4.1461661650</xMax>
+		<Sxx>30.2611825500</Sxx>
+		<MSE>0.8823223740</MSE>
+		<t90CI>1.86</t90CI>
+		<t95CI>2.306</t95CI>
+		<t99CI>3.355</t99CI>
+		<Bootstrap>40</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="14">
+		<predicted>Green sunfish (Lepomis cyanellus)</predicted>
+		<r2>0.9541209150</r2>
+		<pVal>0.0000012344</pVal>
+		<df>8</df>
+		<intercept>0.6200678240</intercept>
+		<slope>0.8538520860</slope>
+		<xAvg>1.9460760760</xAvg>
+		<xMin>-1.6778168890</xMin>
+		<xMax>4.1461661650</xMax>
+		<Sxx>30.2611825500</Sxx>
+		<MSE>0.1326088550</MSE>
+		<t90CI>1.86</t90CI>
+		<t95CI>2.306</t95CI>
+		<t99CI>3.355</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="15">
+		<predicted>Lake trout (Salvelinus namaycush)</predicted>
+		<r2>0.9785450110</r2>
+		<pVal>0.0000000081</pVal>
+		<df>9</df>
+		<intercept>-0.0670656370</intercept>
+		<slope>0.9481712180</slope>
+		<xAvg>2.4126797790</xAvg>
+		<xMin>-0.4971149640</xMin>
+		<xMax>4.1461661650</xMax>
+		<Sxx>19.0081196900</Sxx>
+		<MSE>0.0416310790</MSE>
+		<t90CI>1.833</t90CI>
+		<t95CI>2.262</t95CI>
+		<t99CI>3.25</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+	<cross num="16">
+		<predicted>Largemouth bass (Micropterus salmoides)</predicted>
+		<r2>0.9330738150</r2>
+		<pVal>0.0000231820</pVal>
+		<df>7</df>
+		<intercept>0.0722589230</intercept>
+		<slope>0.9688829350</slope>
+		<xAvg>1.7513100840</xAvg>
+		<xMin>-1.6778168890</xMin>
+		<xMax>4.1461661650</xMax>
+		<Sxx>26.8471413000</Sxx>
+		<MSE>0.2582395090</MSE>
+		<t90CI>1.895</t90CI>
+		<t95CI>2.365</t95CI>
+		<t99CI>3.499</t99CI>
+		<Bootstrap>66.66666667</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="17">
+		<predicted>Northern pike (Esox lucius)</predicted>
+		<r2>0.9925264220</r2>
+		<pVal>0.0037437970</pVal>
+		<df>2</df>
+		<intercept>-0.4836289720</intercept>
+		<slope>1.0449699730</slope>
+		<xAvg>2.0910679270</xAvg>
+		<xMin>0.9114847250</xMin>
+		<xMax>3.4313637640</xMax>
+		<Sxx>5.4772875810</Sxx>
+		<MSE>0.0225179910</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="18">
+		<predicted>Rainbow trout (Oncorhynchus mykiss)</predicted>
+		<r2>0.9885793380</r2>
+		<pVal>0.0000000000</pVal>
+		<df>15</df>
+		<intercept>-0.0122521390</intercept>
+		<slope>0.9430219760</slope>
+		<xAvg>2.3157691670</xAvg>
+		<xMin>-0.4971149640</xMin>
+		<xMax>4.1461661650</xMax>
+		<Sxx>29.7647923600</Sxx>
+		<MSE>0.0203861380</MSE>
+		<t90CI>1.753</t90CI>
+		<t95CI>2.131</t95CI>
+		<t99CI>2.947</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>1</taxDist>
+	</cross>
+	<cross num="19">
+		<predicted>Stonefly (Pteronarcella badia)</predicted>
+		<r2>0.7734287550</r2>
+		<pVal>0.0493267230</pVal>
+		<df>3</df>
+		<intercept>0.0324855140</intercept>
+		<slope>0.2644067780</slope>
+		<xAvg>2.2271279720</xAvg>
+		<xMin>0.9030899870</xMin>
+		<xMax>3.6989700040</xMax>
+		<Sxx>6.8285498400</Sxx>
+		<MSE>0.0466162010</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="20">
+		<predicted>Walleye (Sander vitreus)</predicted>
+		<r2>0.9948683310</r2>
+		<pVal>0.0456437770</pVal>
+		<df>1</df>
+		<intercept>-0.5182532190</intercept>
+		<slope>1.0881853750</slope>
+		<xAvg>2.2047945030</xAvg>
+		<xMin>0.9438086500</xMin>
+		<xMax>3.4313637640</xMax>
+		<Sxx>3.0957419750</Sxx>
+		<MSE>0.0189087810</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="21">
+		<predicted>White sucker (Catostomus commersonii)</predicted>
+		<r2>0.9954846880</r2>
+		<pVal>0.0428106060</pVal>
+		<df>1</df>
+		<intercept>0.7619952420</intercept>
+		<slope>0.3356704870</slope>
+		<xAvg>0.6228371050</xAvg>
+		<xMin>-0.4971149640</xMin>
+		<xMax>1.4541415530</xMax>
+		<Sxx>2.0286771720</Sxx>
+		<MSE>0.0010367940</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="22">
+		<predicted>Yellow perch (Perca flavescens)</predicted>
+		<r2>0.9643432940</r2>
+		<pVal>0.0000000000</pVal>
+		<df>14</df>
+		<intercept>0.0141672960</intercept>
+		<slope>0.9743781230</slope>
+		<xAvg>1.8222719160</xAvg>
+		<xMin>-1.6778168890</xMin>
+		<xMax>4.1461661650</xMax>
+		<Sxx>39.4169855400</Sxx>
+		<MSE>0.0988370960</MSE>
+		<t90CI>1.761</t90CI>
+		<t95CI>2.145</t95CI>
+		<t99CI>2.977</t99CI>
+		<Bootstrap>93.75</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

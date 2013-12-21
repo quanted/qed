@@ -5,9 +5,30 @@ import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 from uber import uber_lib
+import numpy as np
+import cgi
+import cgitb
+cgitb.enable()
+#from earthworm import earthworm_model, earthworm_tables
+#import sys
+#sys.path.append("../earthworm")
 
 class earthwormOutputPage(webapp.RequestHandler):
     def post(self):
+        form = cgi.FieldStorage()
+        k_ow = form.getvalue('k_ow')
+        l_f_e = form.getvalue('l_f_e')
+        c_s = form.getvalue('c_s')
+        k_d = form.getvalue('k_d')
+        p_s = form.getvalue('p_s')
+        c_w = form.getvalue('c_w')
+        m_w = form.getvalue('m_w')
+        p_e = form.getvalue('p_e')
+        
+        c_e = k_ow*l_f_e*(c_s/(k_d*p_s)+c_w)*m_w/p_e
+
+
+
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie)   

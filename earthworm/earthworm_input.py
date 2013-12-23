@@ -23,6 +23,7 @@ class earthwormInputPage(webapp.RequestHandler):
                 'model_attributes':'Earthworm Inputs'})
         html = html + str(earthworm_parameters.earthwormInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
+        html = html + template.render(templatepath + 'earthworm_input_jquery.html', {})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

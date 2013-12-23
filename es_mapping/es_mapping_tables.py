@@ -61,5 +61,6 @@ def table_2():
                 <H4 class="out_4 collapsible" id="section1"><span></span></H4>
                     <div id="map"></div>
             </div>
-           """
+           """
+
     return html

@@ -14,7 +14,7 @@ lib_path = os.path.abspath('..')
 sys.path.append(lib_path)
 from uber import uber_lib
 import logging
-logger = logging.getLogger('PRZM5 Model')
+logger = logging.getLogger('Geneec')
 
 #############################################
 
@@ -141,7 +141,7 @@ class GENEECOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'geneec', 
                 'model_attributes':'GENEEC Output'})
-        html = html + geneec_tables.timestamp()
+        html = html + geneec_tables.timestamp(geneec_obj)
         html = html + geneec_tables.table_all(geneec_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})

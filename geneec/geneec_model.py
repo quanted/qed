@@ -77,6 +77,7 @@ class geneec(object):
         
         # start = time.clock()
         if run_type == "individual":
+            start = time.clock()
             response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers)    
             self.jid= json.loads(response.content)['jid']
             self.output_st = ''
@@ -84,12 +85,12 @@ class geneec(object):
             while self.output_st!="done":
                 self.response_st = urlfetch.fetch(url='https://api.picloud.com/job/?jids=%s&field=status' %self.jid, headers=http_headers)
                 self.output_st = json.loads(self.response_st.content)['info']['%s' %self.jid]['status']
-            # elapsed1 = (time.clock() - start)
 
             self.url_val = 'https://api.picloud.com/job/result/?jid='+str(self.jid)
             self.response_val = urlfetch.fetch(url=self.url_val, method=urlfetch.GET, headers=http_headers)
             self.output_val = json.loads(self.response_val.content)['result']
-            # elapsed2 = (time.clock() - start)
+            self.elapsed = (time.clock() - start)
+
 
         if run_type == "batch":
             response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers)    

@@ -180,13 +180,14 @@ def table_all_qaqc(geneec_obj):
     html_all = table1_out + table2_out
     return html_all
 
-def timestamp():
+def timestamp(geneec_obj):
     ts = time.time()
     st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
     html="""
     <div class="out_">
         <b>GENEEC Version 2.0 (Beta)<br>
-    """
+        <b>Computing Time = %.8ss<b><br>
+    """%(geneec_obj.elapsed)
     html = html + st
     html = html + " (UTC)</b>"
     html = html + """
@@ -264,4 +265,5 @@ def table_2_qaqc(geneec_obj):
                 </div>
         </div>
         """
-        return html
+        return html
+

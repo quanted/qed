@@ -7,9 +7,6 @@ import time
 import logging
 logger = logging.getLogger('Geneec Model')
 
-import datetime, time
-ts = time.time()
-jid = datetime.datetime.fromtimestamp(ts).strftime('%Y%m%d%H%M%S')
 
 class genee(object):
     def __init__(self, run_type, chem_name, application_target, application_rate, number_of_applications, interval_between_applications, Koc, aerobic_soil_metabolism, wet_in, application_method, application_method_label, aerial_size_dist, ground_spray_type, airblast_type, spray_quality, no_spray_drift, incorporation_depth, solubility, aerobic_aquatic_metabolism, hydrolysis, photolysis_aquatic_half_life):
@@ -75,16 +72,20 @@ class genee(object):
         logger.info(all_dic)
         data = json.dumps(all_dic)
 
-        url='http://localhost:7777/geneec1/'+jid 
-        # url='http://54.237.19.125:7777/geneec/' 
+        import datetime, time
+        ts = time.time()
+        self.jid = datetime.datetime.fromtimestamp(ts).strftime('%Y%m%d%H%M%S%f')
+        # url='http://localhost:7777/geneec1/'+self.jid 
+        url='http://54.237.0.142:7777/geneec1/'+self.jid 
+
 
         # if run_type == "individual":
         start = time.clock()
         self.response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
         self.output_val = json.loads(self.response.content)['result']
         self.jid = json.loads(self.response.content)['jid']
-        elapsed = (time.clock() - start)
-        logger.info(self.jid)
+        self.elapsed = (time.clock() - start)
+        # logger.info(self.jid)
 
         # if run_type == "batch":
         #     start = time.clock()

@@ -139,7 +139,7 @@ class GENEEOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'genee', 
                 'model_attributes':'GENEE Output'})
-        html = html + genee_tables.timestamp()
+        html = html + genee_tables.timestamp(genee_obj)
         html = html + genee_tables.table_all(genee_obj)
         # html = html + str(genee_obj.data_a)
         html = html + template.render(templatepath + 'export.html', {})

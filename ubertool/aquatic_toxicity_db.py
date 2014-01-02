@@ -125,5 +125,4 @@ class ATInp(forms.Form):
     kg_phytoplankton = forms.FloatField(label='Phytoplankton growth rate constant(%)')
     mp_phytoplankton = forms.FloatField(label='Fraction of respiratory ventilation involving pore water(%)')
     mo_phytoplankton = forms.FloatField(label='Fraction of respiratory ventilation involving overlying water(%)')
->>>>>>> chance
     created = db.DateTimeProperty(auto_now_add=True)    

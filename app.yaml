@@ -20,9 +20,12 @@ libraries:
   version: latest
 
 env_variables:
-  UBERTOOL_BATCH_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com/'
-  UBERTOOL_MONGO_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
-  UBERTOOL_SECURE_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
+  UBERTOOL_BATCH_SERVER: 'http://localhost:8081/'
+  UBERTOOL_MONGO_SERVER: 'http://localhost:8081'
+  UBERTOOL_SECURE_SERVER: 'http://localhost:8081'
+#  UBERTOOL_BATCH_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com/'
+#  UBERTOOL_MONGO_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
+#  UBERTOOL_SECURE_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
 
 
 skip_files:

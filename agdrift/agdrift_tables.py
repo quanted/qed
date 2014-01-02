@@ -75,7 +75,7 @@ def gett2data(agdrift_obj):
     data = { 
         "Parameter": ['Spray drift fraction of applied', 'Initial Average Deposition (g/ha)', 'Initial Average Deposition (lb/ac)', 'Initial Average Concentration (ng/L)', 'Initial Average Deposition (mg/cm2)', 'Distance to Point or Waterbody (ft)',],
         # "Value": ['%.3f' % agdrift_obj.init_avg_dep_foa,'%.3f' % agdrift_obj.avg_depo_gha,'%.3f' % agdrift_obj.avg_depo_lbac, '%.3f' % agdrift_obj.deposition_ngL, '%.3f' % agdrift_obj.deposition_mgcm,],
-        "Value": ['%.3f' % agdrift_obj.init_avg_dep_foa,'%.3f' % agdrift_obj.avg_depo_gha,'%.3f' % agdrift_obj.avg_depo_lbac, '%.3f' % agdrift_obj.deposition_ngL, '%.3f' % agdrift_obj.deposition_mgcm, '%.d' % int(agdrift_obj.distance),],
+        "Value": ['%.5f' % agdrift_obj.init_avg_dep_foa,'%.5f' % agdrift_obj.avg_depo_gha,'%.5f' % agdrift_obj.avg_depo_lbac, '%.5f' % agdrift_obj.deposition_ngL, '%.5f' % agdrift_obj.deposition_mgcm, '%.d' % int(agdrift_obj.distance),],
     }
     return data
 

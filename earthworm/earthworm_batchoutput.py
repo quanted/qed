@@ -52,11 +52,12 @@ def html_table(row_inp,iter):
     MW.append(MW_temp)
     Pe_temp=float(row_inp[7])
     Pe.append(Pe_temp)
+    
     earth = earthworm_model.earthworm(True,True,Kow_temp,L_temp,Cs_temp,Kd_temp,Ps_temp,Cw_temp,MW_temp,Pe_temp)
     Ce_temp=earth.earthworm_fugacity_out
     Ce_out.append(Ce_temp)
 
-    html = earthworm_tables.table_all2(earthworm_tables.pvuheadings,earthworm_tables.tmpl, earth)
+    html = earthworm_tables.table_all_batch(earthworm_tables.pvuheadings,earthworm_tables.sumheadings,earthworm_tables.tmpl, earth)
     
     return html
                 
@@ -70,9 +71,9 @@ def loop_html(thefile):
         iter_html = iter_html +html_table(row,i)
         i=i+1
 
-    sum_html = earthworm_tables.table_all_sum(earthworm_tables.pvuheadings, earthworm_tables.tmpl, Kow, L, Cs, Kd, Ps, Cw, MW, Pe, 
+    sum_html = earthworm_tables.table_all_sum(earthworm_tables.sumheadings, earthworm_tables.tmpl, Kow, L, Cs, Kd, Ps, Cw, MW, Pe, 
                     Ce_out)
-
+    
     return sum_html + iter_html
 
 

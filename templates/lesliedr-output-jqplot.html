@@ -7,8 +7,10 @@
 <script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.cursor.min.js"></script>
 <script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
 <script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.logAxisRenderer.js"></script>
 
 <div id="chart1" style="margin-top:20px; margin-left:20px; width:650px; height:400px;"></div>
+<div id="chart2" style="margin-top:20px; margin-left:20px; width:650px; height:400px;"></div>
 
 <script type='text/javascript'> 
 
@@ -16,10 +18,10 @@ $(document).ready(function(){
     	var ms = $.parseJSON($('#MS').text());
     	var lm = $.parseJSON($('#LM').text());
     	var ii = $.parseJSON($('#IN').text());
-    	var sd = $.parseJSON($('#sd').text());		
+    	var sd = $.parseJSON($('#sd').text());
     	var s1 = eval($('#final').text());
     	var s = $.parseJSON($('#final_f').text());
-    	//var s = eval($('#final_f').text());
+    	var s_no = $.parseJSON($('#final_f_no').text());
 		$('<tr><th colspan='+ms+1+'><div align="center">Leslie Matrix</div></th></tr>').appendTo('.lm');	
 		$('<tr><th><div align="center">Initial Individuals</div></th></tr>').appendTo('.ii');	
 		$('<tr><th colspan='+ms+1+'><div align="center">Individuals Over Time</div></th></tr>').appendTo('.it');	
@@ -103,6 +105,34 @@ $(document).ready(function(){
 				fontSize: '11px'
     		} 
         })   
+
+        $.jqplot('chart2', s_no, {
+			seriesDefaults: { 
+        	showMarker:false,
+         	pointLabels: {show:false }
+      		},
+			
+			series:L,
+			axes: {
+      			xaxis: {
+					label :'Time units',
+					pad: 0
+      				},
+      			yaxis: {
+        			label: 'Number of individuals (no pesticide impacts)',
+					labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+					renderer: $.jqplot.LogAxisRenderer,
+					pad: 0
+      				}
+    		},
+			 legend: {
+      			show: true,
+      			location: 'nw',
+      			placement: 'inside',
+				fontSize: '11px'
+    		} 
+        })   
+
     })
 </script>
 

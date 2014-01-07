@@ -1,0 +1,42 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Black bullhead (Ameiurus melas)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Bluegill (Lepomis macrochirus)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Channel catfish (Ictalurus punctatus)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Goldfish (Carassius auratus)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Guppy (Poecilia reticulata)</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Isopod (Caecidotea brevicauda)</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Largemouth bass (Micropterus salmoides)</surrogate>
+	</cross>
+	<cross num="8">
+		<surrogate>Rainbow trout (Oncorhynchus mykiss)</surrogate>
+	</cross>
+	<cross num="9">
+		<surrogate>Snipefly (Atherix variegata)</surrogate>
+	</cross>
+	<cross num="10">
+		<surrogate>Stonefly (Claassenia sabulosa)</surrogate>
+	</cross>
+	<cross num="11">
+		<surrogate>Stonefly (Pteronarcella badia)</surrogate>
+	</cross>
+	<cross num="12">
+		<surrogate>Threespine stickleback (Gasterosteus aculeatus)</surrogate>
+	</cross>
+	<cross num="13">
+		<surrogate>Yellow perch (Perca flavescens)</surrogate>
+	</cross>
+</species>

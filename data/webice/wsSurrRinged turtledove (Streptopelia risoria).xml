@@ -1,0 +1,93 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>House sparrow (Passer domesticus)</predicted>
+		<r2>0.999</r2>
+		<pVal>0.021</pVal>
+		<df>1</df>
+		<intercept>-0.809</intercept>
+		<slope>1.012</slope>
+		<xAvg>1.315</xAvg>
+		<xMin>0.322</xMin>
+		<xMax>2.544</xMax>
+		<Sxx>2.552</Sxx>
+		<MSE>0.003</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Northern bobwhite (Colinus virginianus)</predicted>
+		<r2>0.994</r2>
+		<pVal>0</pVal>
+		<df>3</df>
+		<intercept>-0.001</intercept>
+		<slope>0.842</slope>
+		<xAvg>1.474</xAvg>
+		<xMin>0.322</xMin>
+		<xMax>2.544</xMax>
+		<Sxx>3.208</Sxx>
+		<MSE>0.004</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Red-legged partridge (Alectoris rufa)</predicted>
+		<r2>0.998</r2>
+		<pVal>0.032</pVal>
+		<df>1</df>
+		<intercept>0.881</intercept>
+		<slope>0.34</slope>
+		<xAvg>1.94</xAvg>
+		<xMin>1.079</xMin>
+		<xMax>2.544</xMax>
+		<Sxx>1.171</Sxx>
+		<MSE>0</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Redwinged blackbird (Agelaius phoeniceus)</predicted>
+		<r2>0.755</r2>
+		<pVal>0.025</pVal>
+		<df>4</df>
+		<intercept>-0.812</intercept>
+		<slope>1.047</slope>
+		<xAvg>1.479</xAvg>
+		<xMin>0.322</xMin>
+		<xMax>2.544</xMax>
+		<Sxx>3.209</Sxx>
+		<MSE>0.286</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>66.667</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Ring-necked pheasant (Phasianus colchicus)</predicted>
+		<r2>0.803</r2>
+		<pVal>0.039</pVal>
+		<df>3</df>
+		<intercept>0.06</intercept>
+		<slope>0.647</slope>
+		<xAvg>1.474</xAvg>
+		<xMin>0.322</xMin>
+		<xMax>2.544</xMax>
+		<Sxx>3.208</Sxx>
+		<MSE>0.11</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Lepomis</predicted>
+		<r2>0.5386626070</r2>
+		<pVal>0.0381904920</pVal>
+		<df>6</df>
+		<intercept>1.2511741590</intercept>
+		<slope>1.6921225610</slope>
+		<xAvg>0.1391618990</xAvg>
+		<xMin>-1.1191864080</xMin>
+		<xMax>0.7481880270</xMax>
+		<Sxx>2.4569342180</Sxx>
+		<MSE>1.0041711450</MSE>
+		<t90CI>1.943</t90CI>
+		<t95CI>2.447</t95CI>
+		<t99CI>3.707</t99CI>
+		<Bootstrap>37.5</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Pimephales</predicted>
+		<r2>0.5615757980</r2>
+		<pVal>0.0323261730</pVal>
+		<df>6</df>
+		<intercept>2.0414224780</intercept>
+		<slope>1.6785448060</slope>
+		<xAvg>0.2510699800</xAvg>
+		<xMin>-1.1191864080</xMin>
+		<xMax>1.3424226810</xMax>
+		<Sxx>3.7097217600</Sxx>
+		<MSE>1.3600099970</MSE>
+		<t90CI>1.943</t90CI>
+		<t95CI>2.447</t95CI>
+		<t99CI>3.707</t99CI>
+		<Bootstrap>0</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

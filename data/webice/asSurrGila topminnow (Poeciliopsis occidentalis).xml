@@ -1,0 +1,57 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Apache trout (Oncorhynchus gilae)</predicted>
+		<r2>0.9788620980</r2>
+		<pVal>0.0106254010</pVal>
+		<df>2</df>
+		<intercept>-1.0287287060</intercept>
+		<slope>1.3550058780</slope>
+		<xAvg>1.7252887040</xAvg>
+		<xMin>1.0000000000</xMin>
+		<xMax>2.3856062740</xMax>
+		<Sxx>0.9758882310</Sxx>
+		<MSE>0.0193460720</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Cape fear shiner (Notropis mekistocholas)</predicted>
+		<r2>0.9936172200</r2>
+		<pVal>0.0031964990</pVal>
+		<df>2</df>
+		<intercept>-0.6504031850</intercept>
+		<slope>1.2556716700</slope>
+		<xAvg>1.7252887040</xAvg>
+		<xMin>1.0000000000</xMin>
+		<xMax>2.3856062740</xMax>
+		<Sxx>0.9758882310</Sxx>
+		<MSE>0.0049421170</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Rainbow trout (Oncorhynchus mykiss)</predicted>
+		<r2>0.9558652880</r2>
+		<pVal>0.0223163660</pVal>
+		<df>2</df>
+		<intercept>-0.4083988780</intercept>
+		<slope>1.1155487410</slope>
+		<xAvg>1.7252887040</xAvg>
+		<xMin>1.0000000000</xMin>
+		<xMax>2.3856062740</xMax>
+		<Sxx>0.9758882310</Sxx>
+		<MSE>0.0280369520</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

@@ -15,9 +15,9 @@ def batchLoadEcosystemInputsConfigs(params_matrix,config_index,ubertool_configur
     if "ecosystem_inputs_config_name" in params_matrix:
         config_name = params_matrix.get("ecosystem_inputs_config_name")[config_index]
     if "x_poc" in params_matrix:
-        config_params['x_poc'] = params_matrix.get("x_poc")[config_index] 
+        config_params['x_poc'] = params_matrix.get("x_poc")[config_index]
     if "x_doc" in params_matrix:
-        config_params['x_doc'] = params_matrix.get("x_doc")[config_index]      
+        config_params['x_doc'] = params_matrix.get("x_doc")[config_index]          
     if "c_ox" in params_matrix:
         config_params['c_ox'] = params_matrix.get("c_ox")[config_index]            
     if "w_t" in params_matrix:

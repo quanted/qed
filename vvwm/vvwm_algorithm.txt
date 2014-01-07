@@ -1,0 +1,30 @@
+<p>All individual dissipation processes (e.g., metabolism, hydrolysis, volatilization) are represented as first-order in concentration, as described later. This representation is the same for both the current EXAMS-based model and the VVWM. For the VVWM, on any given day, the mass of a pesticide in the surface water system is described by two differential equations. Equation 4-1 represents a mass balance on the littoral zone and equation 4-2 represents a mass balance on the benthic zone.</p>
+<h3>Equation 4-1.</h3>
+<img src="/images/latex/vvwm/vvwm_image1.png" />
+<h3>Equation 4-2.</h3>
+<img src="/images/latex/vvwm/vvwm_image2.png" />
+<img src="/images/latex/vvwm/vvwm_image3.png" />
+<h3>Figure 4-2. Conceptualization of the Varying Volume Water Body Model</h3>
+<img src="/images/vvwm_fig2.gif" />
+<p>In both the current EXAMS-based model and the proposed VVWM, the following assumptions are made:
+<ol>
+	<li>suspended matter in the littoral zone is of negligible volume,</li>
+	<li>hydrolysis, photolysis, and volatilization act only on dissolved pesticide species,</li>
+	<li>because of data limitations described later, the rate coefficient for biological metabolism is the same for both dissolved and sorbed forms of pesticide within a single zone</li>
+	<li>the hydrolysis rate coefficient in the benthic zone is the same as that in the littoral zone,</li>
+	<li>linear isotherm equilibrium exists within each zone among all sorbed species.</li>
+</ol>
+</p>
+<p>With these assumptions, equations 4-1 and 4-2 can be rewritten in a simpler form as follows:</p>
+<h3>Equation 4-3.</h3>
+<img src="/images/latex/vvwm/vvwm_image4.png" />
+<h3>Equation 4-4.</h3>
+<img src="/images/latex/vvwm/vvwm_image5.png" />
+<h3>Equation 4-5.</h3>
+<img src="/images/latex/vvwm/vvwm_image6.png" />
+<h3>Equation 4-6.</h3>
+<img src="/images/latex/vvwm/vvwm_image7.png" />
+<h3>Equation 4-7.</h3>
+<img src="/images/latex/vvwm/vvwm_image8.png" />
+<h3>Equation 4-8.</h3>
+<img src="/images/latex/vvwm/vvwm_image9.png" />

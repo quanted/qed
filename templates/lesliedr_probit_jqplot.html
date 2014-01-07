@@ -1,0 +1,121 @@
+<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="/stylesheets/jqplot/excanvas.js"></script><![endif]-->
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/jquery.jqplot.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/jqplot/jquery.jqplot.css" />
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.pointLabels.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.cursor.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.logAxisRenderer.js"></script>
+
+<div id="chart1" style="margin-top:20px; margin-left:20px; width:650px; height:400px;"></div>
+<div id="chart2" style="margin-top:20px; margin-left:20px; width:650px; height:400px;"></div>
+<div id="chart3" style="margin-top:20px; margin-left:20px; width:650px; height:400px;"></div>
+
+<script type='text/javascript'> 
+$(document).ready(function(){    
+    	var ms = $.parseJSON($('#n_o_c').text());
+    	var s = $.parseJSON($('#final').text());
+    	var s_no = $.parseJSON($('#final_no').text());
+    	var conc = $.parseJSON($('#conc').text());
+		
+		$.jqplot.config.enablePlugins = true;
+		
+		L=[{label:'Age class 1'}];
+		var i=2
+		while(i<=ms)
+			{
+				L.push({label:'Age class'+i});
+				i++;
+			}		
+
+// concentration plot
+        $.jqplot('chart1', [conc], {
+			seriesDefaults: { 
+        	showMarker:false,
+         	pointLabels: {show:false }
+      		},
+			series:[
+			{label:'Concentrations'}
+			],
+			axes: {
+      			xaxis: {
+					label :'Time units',
+					pad: 0
+      				},
+      			yaxis: {
+        			label: 'Pesticide concentrations (ppm)',
+					labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+					//renderer: $.jqplot.LogAxisRenderer,
+					pad: 0
+      				}
+    		},
+			 legend: {
+      			show: true,
+      			location: 'nw',
+      			placement: 'inside',
+				fontSize: '11px'
+    		} 
+        })   
+
+// population with impacts
+        $.jqplot('chart2', s, {
+			seriesDefaults: { 
+        	showMarker:false,
+         	pointLabels: {show:false }
+      		},
+			series:L,
+			axes: {
+      			xaxis: {
+					label :'Time units',
+					pad: 0
+      				},
+      			yaxis: {
+        			label: 'Number of individuals',
+					labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+					//renderer: $.jqplot.LogAxisRenderer,
+					pad: 0
+      				}
+    		},
+			 legend: {
+      			show: true,
+      			location: 'nw',
+      			placement: 'inside',
+				fontSize: '11px'
+    		} 
+        })   
+
+// population without impacts
+        $.jqplot('chart3', s_no, {
+			seriesDefaults: { 
+        	showMarker:false,
+         	pointLabels: {show:false }
+      		},
+			series:L,
+			axes: {
+      			xaxis: {
+					label :'Time units',
+					pad: 0
+      				},
+      			yaxis: {
+        			label: 'Number of individuals (no pesticide impacts)',
+					labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+					renderer: $.jqplot.LogAxisRenderer,
+					pad: 0
+      				}
+    		},
+			 legend: {
+      			show: true,
+      			location: 'nw',
+      			placement: 'inside',
+				fontSize: '11px'
+    		} 
+        })   
+
+
+    })
+</script>
+
+
+

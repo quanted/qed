@@ -53,7 +53,7 @@ def html_table(row, iter):
     ai_temp = float(row[3])/100
     ai.append(ai_temp)
 
-    if tire_temp == 'Tire 2':
+    if tire_temp == 'Tier 2':
         idream_obj_temp = idream_model.idream(tire_temp, ai_name_temp, prod_re_temp, ai_temp)
         liq_rte.append(1)
         fruit_rte.append(0.7)

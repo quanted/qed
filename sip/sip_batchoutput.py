@@ -15,6 +15,7 @@ import csv
 import sys
 sys.path.append("../sip")
 from sip import sip_model,sip_tables
+from uber import uber_lib
 import logging
 
 logger = logging.getLogger('SIPBatchPage')
@@ -125,8 +126,13 @@ def html_table(row_inp,iter):
     chron_mamm_out.append(sip_obj.chron_mamm_out)
     chronconm_out.append(sip_obj.chronconm_out)
 
-    html = sip_tables.table_all(sip_obj)
+    batch_header = """
+        <div class="out_">
+            <br><H3>Batch Calculation of Iteration %s:</H3>
+        </div>
+        """%(iter + 1)
 
+    html = batch_header + sip_tables.table_all(sip_obj)
     return html
                 
 def loop_html(thefile):
@@ -154,13 +160,14 @@ class SIPBatchOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()
         logger.info(form) 
-        thefile = form['upfile']
+        thefile = form['file-0']
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'sip','page':'batchinput'})
-        html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberbatch_start.html', {
+        ChkCookie = self.request.cookies.get("ubercookie")
+        # html = uber_lib.SkinChk(ChkCookie)
+        # html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'sip','page':'batchinput'})
+        # html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
+        html = template.render(templatepath + '04uberbatch_start.html', {
                 'model':'sip',
                 'model_attributes':'SIP Batch Output'})
         html = html + sip_tables.timestamp()
@@ -168,7 +175,7 @@ class SIPBatchOutputPage(webapp.RequestHandler):
         # html = html + template.render(templatepath + 'sip-batchoutput-jqplot.html', {})
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        # html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', SIPBatchOutputPage)], debug=True)

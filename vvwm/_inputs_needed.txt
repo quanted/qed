@@ -1,0 +1,70 @@
+VVWM requires the following input files:
+
+vvwmTransfer.txt   =>  Inputs from input page
+*.dvf              =>  Weather file (same as PRZM)
+*.zts              =>  PRZM5 output file
+
+
+VVWM requires the following input variables:
+-------------------------
+	Chemical Tab:
+-------------------------
+Number of Chemicals (Degradates)
+Koc or Kd flag
+K value
+aerobic aquatic halflife(days)
+ref temperature of aerobic(C)
+anaerobic aquatic halflife(days)
+ref temperature of anaerobic(C)
+photolysis halflife(days)
+latitude of photo study  
+hydrolysis halflife (days)
+soil halflife
+soil ref temp
+foliar halflife
+molecular wt
+vapor pressure (torr)
+solubilty (mg/L)
+	Molar Conversion Factors:
+water column metabolism
+benthic metabolism
+Photolysis
+Hydrolysis
+soil
+foliar
+
+
+
+Q10
+-------------------------
+	Crop/Land Tab:
+-------------------------
+Scenario ID
+MET Data file name
+
+?
+-------------------------
+	Water Body Tab:
+-------------------------
+Burial flag (1 = buried)
+
+
+
+
+PRBEN
+benthic_depth
+porosity
+bulk_density
+FROC2
+DOC2
+BNMAS
+DFAC
+SUSED
+CHL
+FROC1
+DOC1
+PLMAS
+
+
+
+Number of applications??

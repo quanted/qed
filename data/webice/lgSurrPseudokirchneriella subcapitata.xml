@@ -1,0 +1,111 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Anabaena sp.</predicted>
+		<r2>0.473978768</r2>
+		<pVal>0.019159949</pVal>
+		<df>9</df>
+		<intercept>0.028940688</intercept>
+		<slope>0.783046283</slope>
+		<xAvg>-0.377106519</xAvg>
+		<xMin>-2.350665141</xMin>
+		<xMax>0.934498451</xMax>
+		<Sxx>14.39707142</Sxx>
+		<MSE>1.088556311</MSE>
+		<t90CI>1.833112933</t90CI>
+		<t95CI>2.262157163</t95CI>
+		<t99CI>3.249835542</t99CI>
+		<Bootstrap>0.6</Bootstrap>
+		<taxDist>7</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Chlorella sp.</predicted>
+		<r2>0.538180494</r2>
+		<pVal>1.19107E-06</pVal>
+		<df>31</df>
+		<intercept>0.35085891</intercept>
+		<slope>0.77615792</slope>
+		<xAvg>0.103728723</xAvg>
+		<xMin>-2.470553621</xMin>
+		<xMax>2.178976947</xMax>
+		<Sxx>52.44005378</Sxx>
+		<MSE>0.874472065</MSE>
+		<t90CI>1.695518783</t90CI>
+		<t95CI>2.039513446</t95CI>
+		<t99CI>2.744041919</t99CI>
+		<Bootstrap>0.696969697</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Desmodesmus sp.</predicted>
+		<r2>0.59237733</r2>
+		<pVal>6.64236E-07</pVal>
+		<df>28</df>
+		<intercept>-0.197562296</intercept>
+		<slope>0.95621133</slope>
+		<xAvg>0.399530406</xAvg>
+		<xMin>-1.866461092</xMin>
+		<xMax>2.177744916</xMax>
+		<Sxx>23.42919107</Sxx>
+		<MSE>0.526461883</MSE>
+		<t90CI>1.701130934</t90CI>
+		<t95CI>2.048407142</t95CI>
+		<t99CI>2.763262455</t99CI>
+		<Bootstrap>0.566666667</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Dunaliella sp.</predicted>
+		<r2>0.944650788</r2>
+		<pVal>0.000249713</pVal>
+		<df>5</df>
+		<intercept>2.041761574</intercept>
+		<slope>1.773196289</slope>
+		<xAvg>-1.640198011</xAvg>
+		<xMin>-2.583030767</xMin>
+		<xMax>-0.397940009</xMax>
+		<Sxx>3.726583378</Sxx>
+		<MSE>0.137307613</MSE>
+		<t90CI>2.015048373</t90CI>
+		<t95CI>2.570581836</t95CI>
+		<t99CI>4.032142984</t99CI>
+		<Bootstrap>1</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Scenedesmus sp.</predicted>
+		<r2>0.466982065</r2>
+		<pVal>0.000166401</pVal>
+		<df>23</df>
+		<intercept>-0.125582919</intercept>
+		<slope>0.660894303</slope>
+		<xAvg>-0.495532472</xAvg>
+		<xMin>-2.470553621</xMin>
+		<xMax>1.870056747</xMax>
+		<Sxx>34.1917049</Sxx>
+		<MSE>0.741137107</MSE>
+		<t90CI>1.713871528</t90CI>
+		<t95CI>2.06865761</t95CI>
+		<t99CI>2.807335684</t99CI>
+		<Bootstrap>0.68</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="6">
+		<predicted>Skeletonema sp.</predicted>
+		<r2>0.769280681</r2>
+		<pVal>8.16283E-06</pVal>
+		<df>14</df>
+		<intercept>-1.118866544</intercept>
+		<slope>1.441491571</slope>
+		<xAvg>0.383417324</xAvg>
+		<xMin>-0.878440156</xMin>
+		<xMax>1.560268909</xMax>
+		<Sxx>5.519899978</Sxx>
+		<MSE>0.245712087</MSE>
+		<t90CI>1.761310136</t90CI>
+		<t95CI>2.144786688</t95CI>
+		<t99CI>2.976842734</t99CI>
+		<Bootstrap>0.75</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

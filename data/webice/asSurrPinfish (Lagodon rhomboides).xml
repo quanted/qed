@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Mysid (Americamysis bahia)</predicted>
+		<r2>0.9124950230</r2>
+		<pVal>0.0447539470</pVal>
+		<df>2</df>
+		<intercept>0.4682816370</intercept>
+		<slope>0.6585030090</slope>
+		<xAvg>2.1295850470</xAvg>
+		<xMin>0.7993405490</xMin>
+		<xMax>4.9294189260</xMax>
+		<Sxx>11.2052036800</Sxx>
+		<MSE>0.2329740450</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>50</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Rainbow trout (Oncorhynchus mykiss)</predicted>
+		<r2>0.7965923470</r2>
+		<pVal>0.0416097870</pVal>
+		<df>3</df>
+		<intercept>1.0952885250</intercept>
+		<slope>0.8117507970</slope>
+		<xAvg>1.7200664820</xAvg>
+		<xMin>-0.5228787450</xMin>
+		<xMax>4.9294189260</xMax>
+		<Sxx>16.2642861300</Sxx>
+		<MSE>0.9122006080</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>40</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

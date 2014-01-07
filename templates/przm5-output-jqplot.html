@@ -1,0 +1,164 @@
+<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="/stylesheets/jqplot/excanvas.js"></script><![endif]-->
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/jquery.jqplot.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/jqplot/jquery.jqplot.css" />
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.pointLabels.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.cursor.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+
+
+<script type='text/javascript'> 
+
+$(document).ready(function(){
+        $.jqplot.config.enablePlugins = true;
+    	//$('#x_pre_irr').closest('tr').hide();
+    	var s1 = $.parseJSON($('#x_pre_irr_val_1').text());
+
+        $.jqplot('chart1', [s1], {
+            seriesDefaults:{
+                renderer:$.jqplot.BarRenderer,
+                pointLabels: { show: true },
+                                rendererOptions: {
+                                barWidth: 3,
+                                barPadding: -40,
+                                barMargin: 100
+                                }
+            },
+                        series:[
+                        {label:'Prepip.+Irrig'}
+                        ],
+                        axes: {
+                              xaxis: {
+                                  renderer: $.jqplot.CategoryAxisRenderer,
+                                        label :'Period'
+
+                                      },
+                              yaxis: {
+                                label: 'Prepip.+Irrig (cm)',
+                                        labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+
+                                      }
+                    },
+                         legend: {
+                              show: true,
+                              location: 'ne',
+                              placement: 'inside',
+                                fontSize: '11px'
+                    } 
+        })   
+    })
+</script>
+
+
+<script type='text/javascript'> 
+$(document).ready(function(){
+
+    $.jqplot.config.enablePlugins = true;
+		//$('#x_leachate').closest('tr').hide();
+	
+		// $('#x_et_1').closest('tr').hide();
+    	var s3 = $.parseJSON($('#x_et_val_1').text());
+		// $('#x_runoff_1').closest('tr').hide();
+    	var s4 = $.parseJSON($('#x_runoff_val_1').text());		
+		         
+        $.jqplot('chart2', [s3, s4], {
+            stackSeries: true,
+
+                        seriesDefaults:{
+                renderer:$.jqplot.BarRenderer,
+                pointLabels: { show: false },
+                                rendererOptions: {
+                                        barWidth: 4
+                                        }
+            },
+                        
+                        series:[
+                        {label:'Evapo-Transp.'},{label:'Runoff'}
+                        ],
+                        axes: {
+                              xaxis: {
+                                  renderer: $.jqplot.CategoryAxisRenderer,
+                                        label :'Period'
+                                      },
+                              yaxis: {
+                                label: 'Water Balance (cm)',
+                                        labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+                                      }
+                    },
+                         legend: {
+                              show: true,
+                              location: 'ne',
+                              placement: 'inside',
+                                fontSize: '11px'
+                    } 
+                        
+                        
+                        
+                        
+        })   
+    })
+</script>
+
+<!-- Output page input table layout jquery -->
+<script type="text/javascript">
+
+$(document).ready(function() {
+                $(".out_input_table").append(localStorage.html_input);
+                $(".out_input_table :input").attr('disabled', true);
+
+                element_all = localStorage.html_new.split("&")
+                // console.log(element_all)
+                element1 = localStorage.html_new.split("&")[0].split("=")
+                // console.log(element_all.length)
+                for (i=0; i<element_all.length; i++) {
+                    element_name_t = element_all[i].split("=")[0]
+                    element_val_t = element_all[i].split("=")[1]
+                    $('[name="'+element_name_t+'"]').val(element_val_t)
+                }
+                $(".input_button").hide()
+
+    $('li.Chemical').click(function(){
+        $('li.Chemical').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Applications, li.CropLand, li.Runoff').addClass('tabUnsel').removeClass('tabSel');
+        $(".tab:visible").hide();
+        $('.tab_Chemical').show();
+        if ($('#id_deg_check').val()==0){
+          $(".deg").hide();
+        }
+    });
+
+    $('li.Applications').click(function(){
+        $('li.Applications').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.CropLand, li.Runoff').addClass('tabUnsel').removeClass('tabSel');
+        $(".tab:visible").hide();
+        $('.tab_Applications').show();
+    });
+
+    $('li.CropLand').click(function(){
+        $('li.CropLand').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Applications, li.Chemical, li.Runoff').addClass('tabUnsel').removeClass('tabSel');
+        $(".tab:visible").hide();
+        $('.tab_CropLand').show();
+    });
+
+    $('li.Runoff').click(function(){
+        $('li.Runoff').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Applications, li.Chemical, li.CropLand').addClass('tabUnsel').removeClass('tabSel');
+        $(".tab:visible").hide();
+        $('.tab_Runoff').show();
+    });
+
+    $('li.Chemical').click()
+});
+
+
+</script>
+
+<style>
+.tab {
+margin-bottom: 12px;
+}
+
+</style>

@@ -1,0 +1,33 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Crustaceans</group>
+		<species>Illinois cave amphipod (Gammarus acherondytes)</species>
+		<predicted>Gammarus</predicted>
+		<filesource>agSurrDaphnid (Daphnia pulex).xml</filesource>
+	</cross>
+	<cross num="2">	
+		<group>Crustaceans</group>
+		<species>Noel's amphipod (Gammarus desperatus)</species>
+		<predicted>Gammarus</predicted>
+		<filesource>agSurrDaphnid (Daphnia pulex).xml</filesource>
+	</cross>
+	<cross num="3">	
+		<group>Crustaceans</group>
+		<species>Illinois cave amphipod (Gammarus acherondytes)</species>
+		<predicted>Gammaridae</predicted>
+		<filesource>afSurrDaphnid (Daphnia pulex).xml</filesource>
+	</cross>
+	<cross num="4">	
+		<group>Crustaceans</group>
+		<species>Noel's amphipod (Gammarus desperatus)</species>
+		<predicted>Gammaridae</predicted>
+		<filesource>afSurrDaphnid (Daphnia pulex).xml</filesource>
+	</cross>
+	<cross num="5">	
+		<group>Crustaceans</group>
+		<species>Lee County cave isopod (Lirceus usdagalun)</species>
+		<predicted>Asellidae</predicted>
+		<filesource>afSurrDaphnid (Daphnia pulex).xml</filesource>
+	</cross>
+</crosses>

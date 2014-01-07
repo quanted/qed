@@ -13,6 +13,7 @@ import csv
 import sys
 sys.path.append("../stir")
 from stir import stir_model,stir_tables
+from uber import uber_lib
 import logging
 
 logger = logging.getLogger('stirBatchPage')
@@ -147,20 +148,21 @@ class stirBatchOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()
         logger.info(form) 
-        thefile = form['upfile']
+        thefile = form['file-0']
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'stir','page':'batchinput'})
-        html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberbatch_start.html', {
+        ChkCookie = self.request.cookies.get("ubercookie")
+        # html = uber_lib.SkinChk(ChkCookie)
+        # html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'stir','page':'batchinput'})
+        # html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
+        html = template.render(templatepath + '04uberbatch_start.html', {
                 'model':'stir',
                 'model_attributes':'STIR Batch Output'})
         html = html + stir_tables.timestamp()
         html = html + iter_html
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        # html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', stirBatchOutputPage)], debug=True)

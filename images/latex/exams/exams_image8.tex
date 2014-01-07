@@ -1,0 +1,24 @@
+\documentclass[fleqn, oneside, 11pt]{article}%allows pdfs to be cropped and fleqn left justifies
+\usepackage{amssymb}
+\usepackage{amsmath}%sets math environment
+\usepackage[active, tightpage]{preview}%crops pdf to border of equations
+\setlength\PreviewBorder{1pt}%sets size of border
+
+\begin{document}
+\begin{preview}
+\begin{align*}%sets up equation environment so you can specify alignment with ampersands
+(RH_{3}) + (B) & \leftrightarrow (RH_{3}B); \quad KPBL(1)=\frac{[RH_{3}B]}{[RH_{3}][B]} \nonumber \\ 
+(RH^{+}_{4}) + (B) & \leftrightarrow (RH_{4}B^{+}); \quad KPBL(2)=\frac{[RH_{4}B^{+}]}{[RH^{+}_{4}][B]} \nonumber \\ 
+(RH^{2+}_{5}) + (B) & \leftrightarrow (RH_{5}B^{2+}); \quad KPBL(3)=\frac{[RH_{5}B^{2+}]}{[RH^{2+}_{5}][B]} \nonumber \\ 
+(RH^{3+}_{6}) + (B) & \leftrightarrow (RH_{6}B^{3+}); \quad KPBL(4)=\frac{[RH_{6}B^{3+}]}{[RH^{3+}_{6}][B]} \nonumber \\ 
+(RH^{-}_{2}) + (B) & \leftrightarrow (RH_{2}B^{-}); \quad KPBL(5)=\frac{[RH_{2}B^{-}]}{[RH^{-}_{2}][B]} \nonumber \\ 
+(RH^{2-}) + (B) & \leftrightarrow (RHB^{2-}); \quad KPBL(6)=\frac{[RHB^{2-}]}{[RH^{2-}][B]} \nonumber \\ 
+(R^{3-}) + (B) & \leftrightarrow (RB^{3-}); \quad KPBL(7)=\frac{[RB^{3-}]}{[R^{3-}][B]} \nonumber \\ 
+\end{align*} 
+\end{preview}
+\end{document}
+
+% convert pdf to png using imagemagick
+% convert -density 400 exams_image1.pdf exams_image1.png
+
+

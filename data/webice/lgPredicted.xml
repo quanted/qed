@@ -1,0 +1,16 @@
+<?xml version = '1.0'?>
+<species>
+	<predicted>Desmodesmus</predicted>
+	<predicted>Chlamydomonas</predicted>
+	<predicted>Scenedesmus</predicted>
+	<predicted>Microcystis</predicted>
+	<predicted>Sellaphora</predicted>
+	<predicted>Skeletonema</predicted>
+	<predicted>Minutocellus</predicted>
+	<predicted>Anabaena</predicted>
+	<predicted>Chlorella</predicted>
+	<predicted>Dunaliella</predicted>
+	<predicted>Phaeodactylum</predicted>
+	<predicted>Pseudokirchneriella</predicted>
+	<predicted>Thalassiosira</predicted>
+</species>

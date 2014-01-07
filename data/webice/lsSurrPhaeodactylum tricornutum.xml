@@ -1,0 +1,57 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Desmodesmus subspicatus</predicted>
+		<r2>0.935509342</r2>
+		<pVal>0</pVal>
+		<df>11</df>
+		<intercept>-0.364104605</intercept>
+		<slope>0.959746343</slope>
+		<xAvg>-4.139295578</xAvg>
+		<xMin>-6.568636236</xMin>
+		<xMax>1.77815125</xMax>
+		<Sxx>125.1741018</Sxx>
+		<MSE>0.722575793</MSE>
+		<t90CI>1.795884819</t90CI>
+		<t95CI>2.20098516</t95CI>
+		<t99CI>3.105806516</t99CI>
+		<Bootstrap>84.6153846</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Pseudokirchneriella subcapitata</predicted>
+		<r2>0.988456337</r2>
+		<pVal>0</pVal>
+		<df>7</df>
+		<intercept>0.557791823</intercept>
+		<slope>0.980770626</slope>
+		<xAvg>-5.374845903</xAvg>
+		<xMin>-6.568636236</xMin>
+		<xMax>0.95543404</xMax>
+		<Sxx>45.68711067</Sxx>
+		<MSE>0.07331903</MSE>
+		<t90CI>1.894578605</t90CI>
+		<t95CI>2.364624252</t95CI>
+		<t99CI>3.499483297</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Skeletonema costatum</predicted>
+		<r2>0.946757991</r2>
+		<pVal>0</pVal>
+		<df>11</df>
+		<intercept>-0.906475676</intercept>
+		<slope>0.912247207</slope>
+		<xAvg>-3.780857363</xAvg>
+		<xMin>-6.568636236</xMin>
+		<xMax>1.350054094</xMax>
+		<Sxx>125.3113137</Sxx>
+		<MSE>0.533136159</MSE>
+		<t90CI>1.795884819</t90CI>
+		<t95CI>2.20098516</t95CI>
+		<t99CI>3.105806516</t99CI>
+		<Bootstrap>76.9230769</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+</species>

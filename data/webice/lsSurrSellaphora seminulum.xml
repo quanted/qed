@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Pseudokirchneriella subcapitata</predicted>
+		<r2>0.518569635</r2>
+		<pVal>0.008261155</pVal>
+		<df>10</df>
+		<intercept>-0.446373458</intercept>
+		<slope>0.815317366</slope>
+		<xAvg>-0.284739963</xAvg>
+		<xMin>-1.938924676</xMin>
+		<xMax>1</xMax>
+		<Sxx>9.853621658</Sxx>
+		<MSE>0.608100925</MSE>
+		<t90CI>1.812461123</t90CI>
+		<t95CI>2.228138852</t95CI>
+		<t99CI>3.169272673</t99CI>
+		<Bootstrap>41.6666667</Bootstrap>
+		<taxDist>7</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Skeletonema costatum</predicted>
+		<r2>0.783931541</r2>
+		<pVal>0.003446743</pVal>
+		<df>6</df>
+		<intercept>-0.391765284</intercept>
+		<slope>1.107186626</slope>
+		<xAvg>-0.225974501</xAvg>
+		<xMin>-1.938924676</xMin>
+		<xMax>1</xMax>
+		<Sxx>6.602357832</Sxx>
+		<MSE>0.371794283</MSE>
+		<t90CI>1.943180281</t90CI>
+		<t95CI>2.446911851</t95CI>
+		<t99CI>3.707428021</t99CI>
+		<Bootstrap>62.5</Bootstrap>
+		<taxDist>7</taxDist>
+	</cross>
+</species>

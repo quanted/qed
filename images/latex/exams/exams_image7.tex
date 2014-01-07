@@ -1,0 +1,24 @@
+\documentclass[fleqn, oneside, 11pt]{article}%allows pdfs to be cropped and fleqn left justifies
+\usepackage{amssymb}
+\usepackage{amsmath}%sets math environment
+\usepackage[active, tightpage]{preview}%crops pdf to border of equations
+\setlength\PreviewBorder{1pt}%sets size of border
+
+\begin{document}
+\begin{preview}
+\begin{align*}%sets up equation environment so you can specify alignment with ampersands
+(RH_{3}) + (P) & \leftrightarrow (RH_{3}P); \quad KPSL(1)=\frac{[RH_{3}P]}{[RH_{3}][P]} \nonumber \\ 
+(RH^{+}_{4}) + (P) & \leftrightarrow (RH_{4}P^{+}); \quad KPSL(2)=\frac{[RH_{4}P^{+}]}{[RH^{+}_{4}][P]} \nonumber \\ 
+(RH^{2+}_{5}) + (P) & \leftrightarrow (RH_{5}P^{2+}); \quad KPSL(3)=\frac{[RH_{5}P^{2+}]}{[RH^{2+}_{5}][P]} \nonumber \\ 
+(RH^{3+}_{6}) + (P) & \leftrightarrow (RH_{6}P^{3+}); \quad KPSL(4)=\frac{[RH_{6}P^{3+}]}{[RH^{3+}_{6}][P]} \nonumber \\ 
+(RH^{-}_{2}) + (P) & \leftrightarrow (RH_{2}P^{-}); \quad KPSL(5)=\frac{[RH_{2}P^{-}]}{[RH^{-}_{2}][P]} \nonumber \\ 
+(RH^{2-}) + (P) & \leftrightarrow (RHP^{2-}); \quad KPSL(6)=\frac{[RHP^{2-}]}{[RH^{2-}][P]} \nonumber \\ 
+(R^{3-}) + (P) & \leftrightarrow (RP^{3-}); \quad KPSL(7)=\frac{[RP^{3-}]}{[R^{3-}][P]} \nonumber \\ 
+\end{align*} 
+\end{preview}
+\end{document}
+
+% convert pdf to png using imagemagick
+% convert -density 400 exams_image1.pdf exams_image1.png
+
+

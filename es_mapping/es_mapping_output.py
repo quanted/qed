@@ -4,39 +4,35 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
+from uber import uber_lib
 import numpy as np
 import cgi
 import cgitb
-cgitb.enable()
-import json
-import base64
-import urllib
-from google.appengine.api import urlfetch
+from es_mapping import es_mapping_model, es_mapping_tables
 
+
+import logging
+logger = logging.getLogger('ES Model')
 
 class ESOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()   
-        NSF = form.getvalue('NSF')
-        print NSF
 
+        args={}
+        for key in form:
+            args[key] = form.getvalue(key)
+        es_obj = es_mapping_model.es_mapping(args)
+        logger.info(vars(es_obj))
 
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)    
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'es_mapping','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
             'model':'es_mapping', 
             'model_attributes':'Endangered Species Mapper Output'})
-        html = html + """
-                <table class="out_">
-                    <tr>
-                        <th id="NSF">NSF</th>
-                        <td id="nsf">%s<td>
-                    </tr>
-                </table>
-        """%(NSF)
-        html = html + template.render(templatepath+'ManykmlDropbox_test.html', {})
+        html = html + es_mapping_tables.table_all(es_obj)
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
@@ -55,3 +51,4 @@ if __name__ == '__main__':
 
 
     
+

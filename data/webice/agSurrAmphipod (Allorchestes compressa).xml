@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Daphnia</predicted>
+		<r2>0.8821324040</r2>
+		<pVal>0.0178231950</pVal>
+		<df>3</df>
+		<intercept>-0.7975386450</intercept>
+		<slope>0.8503056580</slope>
+		<xAvg>2.9102075690</xAvg>
+		<xMin>1.9030899870</xMin>
+		<xMax>3.7735820250</xMax>
+		<Sxx>1.9651971050</Sxx>
+		<MSE>0.0632842510</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+</species>

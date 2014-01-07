@@ -65,6 +65,7 @@ class pdfPage(webapp.RequestHandler):
             'title':'Ubertool',
             'model_page':final_res,
             'model_attributes':'Please download your PDF here','text_paragraph':''})
+        html= html+str(final_res)
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', pdfPage)], debug=True)

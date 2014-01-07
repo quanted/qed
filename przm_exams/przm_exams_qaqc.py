@@ -7,24 +7,25 @@ import numpy as np
 import cgi
 import cgitb
 cgitb.enable()
-
+from uber import uber_lib
                 
-class examsQaqcPage(webapp.RequestHandler):
+class przm_examsQaqcPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'exams','page':'qaqc'})
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'przm_exams','page':'qaqc'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberinput_start.html', {
-                'model':'exams',
-                'model_attributes':'EXAMS QAQC'})
+                'model':'przm_exams',
+                'model_attributes':'PRZM EXAMS QAQC'})
 #        html = html =
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
-app = webapp.WSGIApplication([('/.*', examsQaqcPage)], debug=True)
+app = webapp.WSGIApplication([('/.*', przm_examsQaqcPage)], debug=True)
 
 def main():
     run_wsgi_app(app)

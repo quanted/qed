@@ -1,0 +1,30 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Chlorella sp.</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Desmodesmus sp.</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Desmodesmus subspicatus</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Minutocellus polymorphus</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Minutocellus sp.</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Pseudokirchneriella sp.</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Pseudokirchneriella subcapitata</surrogate>
+	</cross>
+	<cross num="8">
+		<surrogate>Thalassiosira pseudonana</surrogate>
+	</cross>
+	<cross num="9">
+		<surrogate>Thalassiosira sp.</surrogate>
+	</cross>
+</species>

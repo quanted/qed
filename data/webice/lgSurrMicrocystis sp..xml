@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Anabaena sp.</predicted>
+		<r2>0.952327258</r2>
+		<pVal>7.01608E-06</pVal>
+		<df>7</df>
+		<intercept>0.156254202</intercept>
+		<slope>1.024658919</slope>
+		<xAvg>0.310005222</xAvg>
+		<xMin>-1.732853652</xMin>
+		<xMax>1.739571567</xMax>
+		<Sxx>13.93923817</Sxx>
+		<MSE>0.104660684</MSE>
+		<t90CI>1.894578605</t90CI>
+		<t95CI>2.364624252</t95CI>
+		<t99CI>3.499483297</t99CI>
+		<Bootstrap>1</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

@@ -1,1 +1,23 @@
-<p>EXAMS - PRZM (EXAMS - PRZM Exposure Simulation Shell)</p>
+<p>The Environmental fate and Effects Division (EFED) of the Office of
+Pesticides Programs (OPP) currently uses linked Pesticide Root Zone Model
+(PRZM) and Exposure Analysis Modeling System (EXAMS) models for a refined
+(Tier II) estimation of pesticide concentrations in surface waters for
+drinking water and aquatic exposure assessments. The PRZM is a one-
+dimensional, dynamic, compartmental model that can be used to simulate
+chemical movement in unsaturated soil systems within and immediately below
+the plant root zone. EXAMS contains a set of process modules that link
+fundamental chemical properties to the limnological parameters that control
+the kinetics of fate and transport in aquatic systems. Multiple-year
+pesticide concentrations in the water column are extracted from the
+PRZM/EXAMS simulation as the annual daily peak, maximum annual 96-hour
+average, maximum annual 21-day average, maximum annual 60-day average, and
+annual average. The upper 10th percentile concentrations(except annual
+average) are used to compare against ecotoxicological and human health levels
+of concern (LOC). </p>
+
+<figure>
+	<img style="text-align: center;" class="przm" src = "images/latex/przm_exams/figure1.png">
+	<figcaption style="text-align: center;">Figure 1. Transport Pathways of Pesticides.</figcaption>
+</figure>
+
+

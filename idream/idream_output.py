@@ -14,7 +14,7 @@ from idream import idream_tables
 class idreamOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()
-        tire = form.getvalue('tire')
+        tier = form.getvalue('tier')
         ai_name = form.getvalue('ai_name')
         prod_re = form.getvalue('prod_re')
         ai = form.getvalue('ai')
@@ -45,11 +45,11 @@ class idreamOutputPage(webapp.RequestHandler):
                 'model':'idream', 
                 'model_attributes':'IDREAM Output'})
 
-        if tire == 'Tire 2':
-            idream_obj = idream_model.idream(tire, ai_name, prod_re, ai)
+        if tier == 'Tier 2':
+            idream_obj = idream_model.idream(tier, ai_name, prod_re, ai)
         # print idream_obj.__dict__.items()
         else:
-            idream_obj = idream_model.idream3(tire, ai_name, prod_re, ai, liq_rte, fruit_rte, bread_rte, cheese_rte, veg_rte, meat_rte, pure_rte, piec_rte, powd_rte)
+            idream_obj = idream_model.idream3(tier, ai_name, prod_re, ai, liq_rte, fruit_rte, bread_rte, cheese_rte, veg_rte, meat_rte, pure_rte, piec_rte, powd_rte)
 
         html = html + idream_tables.timestamp()
         html = html + idream_tables.table_all(idream_obj)
@@ -69,4 +69,4 @@ if __name__ == '__main__':
 
  
 
-    
+    

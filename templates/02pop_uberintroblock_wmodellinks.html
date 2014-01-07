@@ -4,8 +4,8 @@
 <script type="text/javascript">
 $( document ).ready(function() {
 	$('a#{{model}}').removeClass('fadeMenu').addClass('aSelected');
-	$('#output_tab').css('display', (pathSlice == '{{model}}_output') ? 'inline' : 'none');
-    
+	$('#output_tab').css('display', (pathPage == 'output' || 'out') ? 'inline' : 'none');
+    // fadeMenu
 	if ($('a#{{model}}').hasClass('aSelected')) {
 		$('.fadeMenu').hover(function(){
 			$(this).stop().animate({ backgroundColor:'rgb(88,107,115)', color:'#FFFFFF'},500);

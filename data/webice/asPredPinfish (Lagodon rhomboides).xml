@@ -1,0 +1,9 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Mysid (Americamysis bahia)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Rainbow trout (Oncorhynchus mykiss)</surrogate>
+	</cross>
+</species>

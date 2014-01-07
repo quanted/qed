@@ -1,3 +1,9 @@
 <p>The AgDRIFT model is both a mechanistic and empirical model which is used to evaluate off-site deposition of pesticides applied by aerial, ground, and orchard airblast spraying methods. For the aerial application scenarios, AgDRIFT outputs are mathematically based on a Lagrangian approach to the solution of the spray material equations of motion (see Teske et al. 2002). The Tier I aerial analysis curves are based on a user selected drop size classification, standard label assumptions and a default set of model parameters including the aircraft, aircraft operation, nozzle setup, meteorology, test substance and substance application.</p>
-<p>For Tier I ground and orchard application types the deposition curves were created from the Spray Drift Task Force field data. Equations used for calculation of deposition for ground and orchard application types are below:</p>
-<img src="/images/latex/agdrift/rice3.gif">
+<p>For Tier I ground and orchard application types the deposition curves were created from the Spray Drift Task Force field data. Spray material from aircraft is modelled as a discrete set of droplets, categorized by the drop size. Drop size is defined by volume average diameter and volume fraction of the total sprayed materials. For all droplets the drop flight path is calculated as a function of time after release and includes the interaction with the turbulance in the environment. Equations used for calculation of deposition for ground and orchard application types are below:</p>
+<p>The motion of the spray droplets is modeled using the lagrangian equations governing the behavior of a droplet in motion</p> 
+<img src="/images/latex/agdrift/agdrift_image1.png">
+<p>The evaporation model in AgDRIFT is based on the D-aquared law, which describes the time rate of change of drop diamter. This is described by:</p>
+ <img src="/images/latex/agdrift/agdrift_image2.png">
+ <p>Aircraft speed, weight, and thrust are all incorporated into the calculations of drift using flow field modeling.When the sprayed material nears the ground, ground deposition begins and continues until all evaporated material is deposited. Ground deposition is calculated by assuming that the concentration of material around the mean maybe be taken as Gaussian. </p>
+ <img src="/images/latex/agdrift/agdrift_image3.png">
+

@@ -16,6 +16,7 @@ import sys
 sys.path.append("../kabam")
 from kabam import kabam_model,kabam_tables
 import logging
+from uber import uber_lib
 
 logger = logging.getLogger('KabamQaqcPage')
 
@@ -908,7 +909,8 @@ kabam_obj.chronic_rq_diet_a5_exp=chronic_rq_diet_a5[0]
 class kabamQaqcPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
+        ChkCookie = self.request.cookies.get("ubercookie")
+        html = uber_lib.SkinChk(ChkCookie)
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'kabam','page':'qaqc'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {

@@ -1,0 +1,75 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Mallard (Anas platyrhynchos)</predicted>
+		<r2>0.546</r2>
+		<pVal>0.015</pVal>
+		<df>8</df>
+		<intercept>-0.61</intercept>
+		<slope>1.001</slope>
+		<xAvg>1.672</xAvg>
+		<xMin>0.477</xMin>
+		<xMax>3.602</xMax>
+		<Sxx>7.265</Sxx>
+		<MSE>0.756</MSE>
+		<t90CI>1.86</t90CI>
+		<t95CI>2.306</t95CI>
+		<t99CI>3.355</t99CI>
+		<Bootstrap>66.667</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Mouse (Mus musculus)</predicted>
+		<r2>0.772</r2>
+		<pVal>0.001</pVal>
+		<df>8</df>
+		<intercept>0.22</intercept>
+		<slope>0.817</slope>
+		<xAvg>1.612</xAvg>
+		<xMin>0.477</xMin>
+		<xMax>3.602</xMax>
+		<Sxx>8.004</Sxx>
+		<MSE>0.197</MSE>
+		<t90CI>1.86</t90CI>
+		<t95CI>2.306</t95CI>
+		<t99CI>3.355</t99CI>
+		<Bootstrap>80</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Norway rat (Rattus norvegicus)</predicted>
+		<r2>0.875</r2>
+		<pVal>0</pVal>
+		<df>11</df>
+		<intercept>0.042</intercept>
+		<slope>0.939</slope>
+		<xAvg>1.806</xAvg>
+		<xMin>0.477</xMin>
+		<xMax>3.602</xMax>
+		<Sxx>11.755</Sxx>
+		<MSE>0.134</MSE>
+		<t90CI>1.796</t90CI>
+		<t95CI>2.201</t95CI>
+		<t99CI>3.106</t99CI>
+		<Bootstrap>92.308</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Rabbit (Oryctolagus cuniculus)</predicted>
+		<r2>1</r2>
+		<pVal>0.008</pVal>
+		<df>1</df>
+		<intercept>0.632</intercept>
+		<slope>0.759</slope>
+		<xAvg>2.227</xAvg>
+		<xMin>0.477</xMin>
+		<xMax>3.602</xMax>
+		<Sxx>5.094</Sxx>
+		<MSE>0.001</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

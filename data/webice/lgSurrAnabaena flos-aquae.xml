@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Microcystis sp.</predicted>
+		<r2>0.952327258</r2>
+		<pVal>7.01608E-06</pVal>
+		<df>7</df>
+		<intercept>-0.130445268</intercept>
+		<slope>0.929409035</slope>
+		<xAvg>0.473903818</xAvg>
+		<xMin>-1.71219827</xMin>
+		<xMax>1.968183976</xMax>
+		<Sxx>15.36779198</Sxx>
+		<MSE>0.094931673</MSE>
+		<t90CI>1.894578605</t90CI>
+		<t95CI>2.364624252</t95CI>
+		<t99CI>3.499483297</t99CI>
+		<Bootstrap>1</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Pseudokirchneriella sp.</predicted>
+		<r2>0.518370846</r2>
+		<pVal>0.018872674</pVal>
+		<df>8</df>
+		<intercept>-0.09182633</intercept>
+		<slope>0.579470098</slope>
+		<xAvg>-0.235292092</xAvg>
+		<xMin>-3.013228266</xMin>
+		<xMax>1.794741718</xMax>
+		<Sxx>18.45880242</Sxx>
+		<MSE>0.71985959</MSE>
+		<t90CI>1.859548038</t90CI>
+		<t95CI>2.306004135</t95CI>
+		<t99CI>3.355387331</t99CI>
+		<Bootstrap>0.555555556</Bootstrap>
+		<taxDist>7</taxDist>
+	</cross>
+</species>

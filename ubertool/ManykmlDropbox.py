@@ -8,7 +8,7 @@ Created on Wed May 23 16:13:01 2012
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-  	<title>A very small map of Greenwich -- demonstrating KML overlays in Google Maps</title>
+  	<title>Endangered Species Mapping</title>
   	<style type="text/css">
 		#map { width:500px; height:500px;}
 		body { font-family:"Trebuchet MS", verdana,arial,sans-serif; 
@@ -58,8 +58,6 @@ Created on Wed May 23 16:13:01 2012
 	</script>
   </head>
   <body>
-   	<h1>Georgia Overlays on Google Maps</h1>
-	<p>To demonstrate KML overlays in Google Maps.</p>
 	<ul>
 		<li id="view-gm"><a href="http://maps.google.co.uk/maps?f=q&amp;hl=en&amp;q=http%3A%2F%2Fwww.littled.net%2Fexp%2Fgmap.kml&amp;ie=UTF8&amp;ll=51.4832,-0.007896&amp;spn=0.004931,0.014591&amp;z=16&amp;om=1">View in Google Maps</a></li>
 		<li id="download-kml"><a href="gmap.kml">Download KML file</a></li>

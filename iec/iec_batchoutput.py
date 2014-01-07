@@ -15,6 +15,7 @@ import csv
 import sys
 sys.path.append("../iec")
 from iec import iec_model,iec_tables
+from uber import uber_lib
 import logging
 
 logger = logging.getLogger('IECBatchPage')
@@ -65,13 +66,14 @@ def loop_html(thefile):
 class IECBatchOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()
-        thefile = form['upfile']
+        thefile = form['file-0']
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', 'title')
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'iec','page':'batchinput'})
-        html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberbatch_start.html', {
+        ChkCookie = self.request.cookies.get("ubercookie")
+        # html = uber_lib.SkinChk(ChkCookie)
+        # html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'iec','page':'batchinput'})
+        # html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
+        html = template.render(templatepath + '04uberbatch_start.html', {
                 'model':'iec',
                 'model_attributes':'IEC Batch Output'})
         html = html + iec_tables.timestamp()
@@ -79,7 +81,7 @@ class IECBatchOutputPage(webapp.RequestHandler):
         # html = html + template.render(templatepath + 'sip-batchoutput-jqplot.html', {})
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        # html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', IECBatchOutputPage)], debug=True)

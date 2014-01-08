@@ -8,11 +8,11 @@ import os
 
 class ESAlgorithmPage(webapp.RequestHandler):
     def get(self):
-        text_file1 = open('es_mapping/es_mapping_algorithm.txt','r')
+        text_file1 = open('es_mapping_openlayer/es_mapping_openlayer_algorithm.txt','r')
         x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'es_mapping','page':'algorithm'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'es_mapping_openlayer','page':'algorithm'})
         html = html + template.render(templatepath + '03ubertext_links_left.html', {})                       
         html = html + template.render(templatepath + '04uberalgorithm_start.html', {
                 'model':'es_mapper', 

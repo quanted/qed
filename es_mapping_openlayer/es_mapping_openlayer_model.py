@@ -3,10 +3,10 @@ from datetime import datetime,timedelta
 from collections import OrderedDict
 
 import logging
-logger = logging.getLogger('ES Model')
+logger = logging.getLogger('es_mapping_openlayer')
 
 
-class es_mapping(object):
+class es_mapping_openlayer(object):
      def __init__(self, dictionary):
         self.ES_source = ''
         self.NSF = ''

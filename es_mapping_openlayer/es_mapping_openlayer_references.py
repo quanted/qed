@@ -8,14 +8,14 @@ import os
 
 class ESReferencesPage(webapp.RequestHandler):
     def get(self):
-        text_file1 = open('es_mapping/es_mapping_references.txt','r')
+        text_file1 = open('es_mapping_openlayer/es_mapping_openlayer_references.txt','r')
         x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'es_mapping','page':'references'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'es_mapping_openlayer','page':'references'})
         html = html + template.render(templatepath + '03ubertext_links_left.html', {})                      
         html = html + template.render(templatepath + '04uberreferences_start.html', {
-                'model':'es_mapping', 
+                'model':'es_mapping_openlayer', 
                 'model_attributes':'Endangered Species Mapper References', 
                 'text_paragraph':x})
         html = html + template.render(templatepath + '04ubertext_end.html', {})

@@ -1,6 +1,6 @@
 from django.template import Context, Template
 from django.utils.safestring import mark_safe
-from es_mapping import es_mapping_model
+from es_mapping_openlayer import es_mapping_openlayer_model
 import time
 import datetime
 import os
@@ -54,13 +54,18 @@ def table_1():
                 </div>"""
     return html
 
+# def table_2():
+#     html = """
+#             <H3 class="out_3 collapsible" id="section1"><span></span>Endangered Species Mapper</H3>
+#             <div class="out_3">
+#                 <H4 class="out_4 collapsible" id="section1"><span></span></H4>
+#                     <div id="map"></div>
+#             </div>
+#            """
 def table_2():
     html = """
             <H3 class="out_3 collapsible" id="section1"><span></span>Endangered Species Mapper</H3>
-            <div class="out_3">
-                <H4 class="out_4 collapsible" id="section1"><span></span></H4>
                     <div id="map"></div>
-            </div>
            """
 
     return html

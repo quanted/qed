@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-
-
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
@@ -8,11 +6,11 @@ import os
 
 class EShistoryPage(webapp.RequestHandler):
     def get(self):
-        text_file1 = open('es_mapping/es_mapping_history.txt','r')
+        text_file1 = open('es_mapping_openlayer/es_mapping_openlayer_history.txt','r')
         x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'es_mapping','page':'history'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'es_mapping_openlayer','page':'history'})
         html = html + template.render(templatepath + '03ubertext_links_left.html', {})                       
         html = html + template.render(templatepath + '04uberalgorithm_start.html', {
                 'model':'es_mapper', 

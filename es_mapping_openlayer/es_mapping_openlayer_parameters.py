@@ -1,8 +1,4 @@
-'''
-Created on May 23, 2012
 
-@author: th
-'''
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
 from django import forms

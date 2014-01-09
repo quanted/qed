@@ -25,9 +25,9 @@ $(document).ready(function() {
     }
   );
   $('.articles a, .articles_output a').hover(function(){
-    $(this).stop().animate({ 'color':'#EDBA1E' },500);
+    $(this).stop().animate({ color:'#364A56' },500);
   }, function(){
-    $(this).stop().animate({ color:'#586B73' },500);
+    $(this).stop().animate({ color:'#DB9C27' },500);
   });
   $('#topheader_p p, .logreg').hide();
   $('.index_link').click(function(e) {

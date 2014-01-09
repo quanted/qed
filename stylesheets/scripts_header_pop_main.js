@@ -25,9 +25,9 @@ $(document).ready(function() {
     }
   );
   $('.articles a').hover(function(){
-    $(this).stop().animate({ color:'#586B73' },500);
+    $(this).stop().animate({ color:'#364A56' },500);
   }, function(){
-    $(this).stop().animate({ color:'#EDB200' },500);
+    $(this).stop().animate({ color:'#DB9C27' },500);
   });
   $('#l_menu a, .logreg').click(function(e) {
     e.preventDefault();

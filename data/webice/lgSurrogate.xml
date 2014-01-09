@@ -1,0 +1,16 @@
+<?xml version = '1.0'?>
+<species>
+	<surrogate>Desmodesmus</surrogate>
+	<surrogate>Chlamydomonas</surrogate>
+	<surrogate>Scenedesmus</surrogate>
+	<surrogate>Microcystis</surrogate>
+	<surrogate>Skeletonema</surrogate>
+	<surrogate>Sellaphora</surrogate>
+	<surrogate>Anabaena</surrogate>
+	<surrogate>Minutocellus</surrogate>
+	<surrogate>Chlorella</surrogate>
+	<surrogate>Dunaliella</surrogate>
+	<surrogate>Pseudokirchneriella</surrogate>
+	<surrogate>Phaeodactylum</surrogate>
+	<surrogate>Thalassiosira</surrogate>
+</species>

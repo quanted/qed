@@ -1,0 +1,18 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Cape fear shiner (Notropis mekistocholas)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Fathead minnow (Pimephales promelas)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Leon springs pupfish (Cyprinodon bovinus)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Southern leopard frog (Rana sphenocephala)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Spotfin chub (Erimonax monachus)</surrogate>
+	</cross>
+</species>

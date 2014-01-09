@@ -1,0 +1,111 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Amphipod (Gammarus pseudolimnaeus)</predicted>
+		<r2>0.7787522000</r2>
+		<pVal>0.0003223750</pVal>
+		<df>9</df>
+		<intercept>-0.2364158120</intercept>
+		<slope>0.9537972420</slope>
+		<xAvg>1.8798236660</xAvg>
+		<xMin>-0.3665315440</xMin>
+		<xMax>4.1303337680</xMax>
+		<Sxx>26.2722540800</Sxx>
+		<MSE>0.7544780790</MSE>
+		<t90CI>1.833</t90CI>
+		<t95CI>2.262</t95CI>
+		<t99CI>3.25</t99CI>
+		<Bootstrap>45.45454545</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Bluegill (Lepomis macrochirus)</predicted>
+		<r2>0.4924782120</r2>
+		<pVal>0.0005635640</pVal>
+		<df>18</df>
+		<intercept>1.2772674500</intercept>
+		<slope>0.6529152030</slope>
+		<xAvg>2.3876536640</xAvg>
+		<xMin>-0.3665315440</xMin>
+		<xMax>4.1303337680</xMax>
+		<Sxx>36.9780556000</Sxx>
+		<MSE>0.9025116130</MSE>
+		<t90CI>1.734</t90CI>
+		<t95CI>2.101</t95CI>
+		<t99CI>2.878</t99CI>
+		<Bootstrap>60</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Channel catfish (Ictalurus punctatus)</predicted>
+		<r2>0.5304272810</r2>
+		<pVal>0.0006095390</pVal>
+		<df>16</df>
+		<intercept>1.2876722760</intercept>
+		<slope>0.6731446960</slope>
+		<xAvg>2.4275436260</xAvg>
+		<xMin>-0.3665315440</xMin>
+		<xMax>4.4271530210</xMax>
+		<Sxx>40.5469348200</Sxx>
+		<MSE>1.0165574040</MSE>
+		<t90CI>1.746</t90CI>
+		<t95CI>2.12</t95CI>
+		<t99CI>2.921</t99CI>
+		<Bootstrap>55.55555556</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Fathead minnow (Pimephales promelas)</predicted>
+		<r2>0.7886176830</r2>
+		<pVal>0.0002612510</pVal>
+		<df>9</df>
+		<intercept>1.1968831740</intercept>
+		<slope>0.7109851660</slope>
+		<xAvg>2.6243768620</xAvg>
+		<xMin>-0.3665315440</xMin>
+		<xMax>4.6398334720</xMax>
+		<Sxx>30.4357125500</Sxx>
+		<MSE>0.4582096030</MSE>
+		<t90CI>1.833</t90CI>
+		<t95CI>2.262</t95CI>
+		<t99CI>3.25</t99CI>
+		<Bootstrap>54.54545455</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Mysid (Americamysis bahia)</predicted>
+		<r2>0.6523153700</r2>
+		<pVal>0.0026401630</pVal>
+		<df>9</df>
+		<intercept>-0.6781910340</intercept>
+		<slope>1.0164599810</slope>
+		<xAvg>1.9397341760</xAvg>
+		<xMin>-0.3665315440</xMin>
+		<xMax>3.8450980400</xMax>
+		<Sxx>25.2953620100</Sxx>
+		<MSE>1.5477714830</MSE>
+		<t90CI>1.833</t90CI>
+		<t95CI>2.262</t95CI>
+		<t99CI>3.25</t99CI>
+		<Bootstrap>9.090909091</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="6">
+		<predicted>Rainbow trout (Oncorhynchus mykiss)</predicted>
+		<r2>0.5310715130</r2>
+		<pVal>0.0002679770</pVal>
+		<df>18</df>
+		<intercept>1.1565673610</intercept>
+		<slope>0.6922031550</slope>
+		<xAvg>2.4270156560</xAvg>
+		<xMin>-0.3665315440</xMin>
+		<xMax>4.4271530210</xMax>
+		<Sxx>39.2835904400</Sxx>
+		<MSE>0.9233352780</MSE>
+		<t90CI>1.734</t90CI>
+		<t95CI>2.101</t95CI>
+		<t99CI>2.878</t99CI>
+		<Bootstrap>50</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Fishes</group>
+		<species>Colorado pikeminnow (Ptychocheilus lucius)</species>
+		<predicted>Colorado squawfish (Ptychocheilus lucius)</predicted>
+		<filesource>asSurrNorthern river crangonyctid (Crangonyx pseudogracilis).xml</filesource>
+	</cross>
+	<cross num="2">	
+		<group>Crustaceans</group>
+		<species>Lee County cave isopod (Lirceus usdagalun)</species>
+		<predicted>Lirceus</predicted>
+		<filesource>agSurrNorthern river crangonyctid (Crangonyx pseudogracilis).xml</filesource>
+	</cross>
+	<cross num="3">	
+		<group>Crustaceans</group>
+		<species>Lee County cave isopod (Lirceus usdagalun)</species>
+		<predicted>Asellidae</predicted>
+		<filesource>afSurrNorthern river crangonyctid (Crangonyx pseudogracilis).xml</filesource>
+	</cross>
+</crosses>

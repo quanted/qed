@@ -1,0 +1,75 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Atlantic salmon (Salmo salar)</predicted>
+		<r2>0.9483563590</r2>
+		<pVal>0.0261641000</pVal>
+		<df>2</df>
+		<intercept>-2.4442767030</intercept>
+		<slope>5.8502229420</slope>
+		<xAvg>0.7886801730</xAvg>
+		<xMin>0.4225490200</xMin>
+		<xMax>1.1139433520</xMax>
+		<Sxx>0.2553157750</Sxx>
+		<MSE>0.2379237380</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>50</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Daphnid (Daphnia magna)</predicted>
+		<r2>0.6339391910</r2>
+		<pVal>0.0019441660</pVal>
+		<df>10</df>
+		<intercept>-0.1074855790</intercept>
+		<slope>0.8577978220</slope>
+		<xAvg>0.3722004870</xAvg>
+		<xMin>-1.0000000000</xMin>
+		<xMax>2.9542425090</xMax>
+		<Sxx>12.2298986900</Sxx>
+		<MSE>0.5196349710</MSE>
+		<t90CI>1.812</t90CI>
+		<t95CI>2.228</t95CI>
+		<t99CI>3.169</t99CI>
+		<Bootstrap>75</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Daphnid (Daphnia pulex)</predicted>
+		<r2>0.9666474700</r2>
+		<pVal>0.0000019980</pVal>
+		<df>7</df>
+		<intercept>-0.2185541560</intercept>
+		<slope>1.0436915360</slope>
+		<xAvg>1.4742030980</xAvg>
+		<xMin>-0.3798502090</xMin>
+		<xMax>3.6989700040</xMax>
+		<Sxx>23.0257433700</Sxx>
+		<MSE>0.1236290740</MSE>
+		<t90CI>1.895</t90CI>
+		<t95CI>2.365</t95CI>
+		<t99CI>3.499</t99CI>
+		<Bootstrap>88.88888889</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Mysid (Americamysis bahia)</predicted>
+		<r2>0.5543819730</r2>
+		<pVal>0.0213758710</pVal>
+		<df>7</df>
+		<intercept>0.1882738680</intercept>
+		<slope>0.7642043580</slope>
+		<xAvg>0.4155177520</xAvg>
+		<xMin>-0.5689343100</xMin>
+		<xMax>3.3010299960</xMax>
+		<Sxx>11.4676169700</Sxx>
+		<MSE>0.7690380190</MSE>
+		<t90CI>1.895</t90CI>
+		<t95CI>2.365</t95CI>
+		<t99CI>3.499</t99CI>
+		<Bootstrap>33.33333333</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+</species>

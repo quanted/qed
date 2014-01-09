@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Muridae</predicted>
+		<r2>0.751</r2>
+		<pVal>0</pVal>
+		<df>10</df>
+		<intercept>-0.443</intercept>
+		<slope>1.1233</slope>
+		<xAvg>2.22</xAvg>
+		<xMin>1.59</xMin>
+		<xMax>3.69</xMax>
+		<Sxx>4.9812</Sxx>
+		<MSE>0.2084</MSE>
+		<t90CI>1.812</t90CI>
+		<t95CI>2.228</t95CI>
+		<t99CI>3.169</t99CI>
+		<Bootstrap>83.333</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+</species>

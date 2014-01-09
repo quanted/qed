@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Fishes</group>
+		<species>Coho salmon (Oncorhynchus kisutch)</species>
+		<predicted>Coho salmon (Oncorhynchus kisutch)</predicted>
+		<filesource>asSurrCrayfish (Orconectes nais).xml</filesource>
+	</cross>
+	<cross num="2">	
+		<group>Fishes</group>
+		<species>Ala balik (Salmo platycephalus)</species>
+		<predicted>Salmo</predicted>
+		<filesource>agSurrCrayfish (Orconectes nais).xml</filesource>
+	</cross>
+	<cross num="3">	
+		<group>Fishes</group>
+		<species>Atlantic salmon (Salmo salar)</species>
+		<predicted>Salmo</predicted>
+		<filesource>agSurrCrayfish (Orconectes nais).xml</filesource>
+	</cross>
+</crosses>

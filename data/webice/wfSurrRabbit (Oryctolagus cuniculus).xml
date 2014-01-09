@@ -1,0 +1,93 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Anatidae</predicted>
+		<r2>0.539</r2>
+		<pVal>0.016</pVal>
+		<df>8</df>
+		<intercept>-0.8996</intercept>
+		<slope>1.221</slope>
+		<xAvg>2.25</xAvg>
+		<xMin>1</xMin>
+		<xMax>3.38</xMax>
+		<Sxx>5.0928</Sxx>
+		<MSE>0.811</MSE>
+		<t90CI>1.86</t90CI>
+		<t95CI>2.306</t95CI>
+		<t99CI>3.355</t99CI>
+		<Bootstrap>50</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Canidae</predicted>
+		<r2>1</r2>
+		<pVal>0.008</pVal>
+		<df>1</df>
+		<intercept>-0.833</intercept>
+		<slope>1.318</slope>
+		<xAvg>2.32</xAvg>
+		<xMin>1</xMin>
+		<xMax>3.38</xMax>
+		<Sxx>2.9315</Sxx>
+		<MSE>0.0009</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Fringillidae</predicted>
+		<r2>1</r2>
+		<pVal>0.008</pVal>
+		<df>1</df>
+		<intercept>-0.1996</intercept>
+		<slope>0.5766</slope>
+		<xAvg>1.97</xAvg>
+		<xMin>1</xMin>
+		<xMax>2.74</xMax>
+		<Sxx>1.5741</Sxx>
+		<MSE>0.0001</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Muridae</predicted>
+		<r2>0.666</r2>
+		<pVal>0</pVal>
+		<df>13</df>
+		<intercept>0.1689</intercept>
+		<slope>0.9066</slope>
+		<xAvg>2.52</xAvg>
+		<xMin>1</xMin>
+		<xMax>3.7</xMax>
+		<Sxx>7.9262</Sxx>
+		<MSE>0.2511</MSE>
+		<t90CI>1.771</t90CI>
+		<t95CI>2.16</t95CI>
+		<t99CI>3.012</t99CI>
+		<Bootstrap>80</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Passeridae</predicted>
+		<r2>0.836</r2>
+		<pVal>0.03</pVal>
+		<df>3</df>
+		<intercept>-0.2673</intercept>
+		<slope>0.5222</slope>
+		<xAvg>2.12</xAvg>
+		<xMin>1</xMin>
+		<xMax>2.74</xMax>
+		<Sxx>1.8592</Sxx>
+		<MSE>0.0331</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+</species>

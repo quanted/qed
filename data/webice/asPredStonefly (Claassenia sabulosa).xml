@@ -1,0 +1,18 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Bluegill (Lepomis macrochirus)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Fathead minnow (Pimephales promelas)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Largemouth bass (Micropterus salmoides)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Mysid (Americamysis bahia)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Stonefly (Pteronarcella badia)</surrogate>
+	</cross>
+</species>

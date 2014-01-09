@@ -1,0 +1,57 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Isopod (Caecidotea intermedia)</predicted>
+		<r2>0.7361138810</r2>
+		<pVal>0.0288259160</pVal>
+		<df>4</df>
+		<intercept>-0.2266003120</intercept>
+		<slope>1.0462593020</slope>
+		<xAvg>4.2822916910</xAvg>
+		<xMin>3.3010299960</xMin>
+		<xMax>5.0000000000</xMax>
+		<Sxx>2.5920270570</Sxx>
+		<MSE>0.2542902700</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>66.66666667</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Oligochaete (Lumbriculus variegatus)</predicted>
+		<r2>0.8788129910</r2>
+		<pVal>0.0057463430</pVal>
+		<df>4</df>
+		<intercept>-1.9140315320</intercept>
+		<slope>1.4208495740</slope>
+		<xAvg>4.2822916910</xAvg>
+		<xMin>3.3010299960</xMin>
+		<xMax>5.0000000000</xMax>
+		<Sxx>2.5920270570</Sxx>
+		<MSE>0.1803995050</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>66.66666667</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Ramshorn snail (Planorbella trivolvis)</predicted>
+		<r2>0.7350348310</r2>
+		<pVal>0.0290754290</pVal>
+		<df>4</df>
+		<intercept>1.6336428380</intercept>
+		<slope>0.6782165610</slope>
+		<xAvg>4.2822916910</xAvg>
+		<xMin>3.3010299960</xMin>
+		<xMax>5.0000000000</xMax>
+		<Sxx>2.5920270570</Sxx>
+		<MSE>0.1074477160</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

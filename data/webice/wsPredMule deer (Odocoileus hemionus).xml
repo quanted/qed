@@ -1,0 +1,30 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Canada goose (Branta canadensis)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Chicken (Gallus gallus)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Chukar (Alectoris chukar)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Japanese quail (Coturnix japonica)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Mallard (Anas platyrhynchos)</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Norway rat (Rattus norvegicus)</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Ring-necked pheasant (Phasianus colchicus)</surrogate>
+	</cross>
+	<cross num="8">
+		<surrogate>Rock dove (Columba livia)</surrogate>
+	</cross>
+	<cross num="9">
+		<surrogate>Sharp-tailed grouse (Tympanuchus phasianellus)</surrogate>
+	</cross>
+</species>

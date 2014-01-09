@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Apache trout (Oncorhynchus gilae)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Cape fear shiner (Notropis mekistocholas)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Colorado squawfish (Ptychocheilus lucius)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Cutthroat trout (Oncorhynchus clarkii)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Fathead minnow (Pimephales promelas)</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Greenthroat darter (Etheostoma lepidum)</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Leon springs pupfish (Cyprinodon bovinus)</surrogate>
+	</cross>
+	<cross num="8">
+		<surrogate>Rainbow trout (Oncorhynchus mykiss)</surrogate>
+	</cross>
+	<cross num="9">
+		<surrogate>Razorback sucker (Xyrauchen texanus)</surrogate>
+	</cross>
+	<cross num="10">
+		<surrogate>Shortnose sturgeon (Acipenser brevirostrum)</surrogate>
+	</cross>
+	<cross num="11">
+		<surrogate>Southern leopard frog (Rana sphenocephala)</surrogate>
+	</cross>
+	<cross num="12">
+		<surrogate>Western toad (Bufo boreas)</surrogate>
+	</cross>
+</species>

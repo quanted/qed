@@ -1,0 +1,111 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Amphipod (Allorchestes compressa)</predicted>
+		<r2>0.9980717110</r2>
+		<pVal>0.0279644190</pVal>
+		<df>1</df>
+		<intercept>-2.5492535960</intercept>
+		<slope>1.5662981820</slope>
+		<xAvg>3.3505700590</xAvg>
+		<xMin>2.8369567370</xMin>
+		<xMax>3.7183675810</xMax>
+		<Sxx>0.4203359090</Sxx>
+		<MSE>0.0019923040</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Bluegill (Lepomis macrochirus)</predicted>
+		<r2>0.9719542550</r2>
+		<pVal>0.0141225960</pVal>
+		<df>2</df>
+		<intercept>0.6446312340</intercept>
+		<slope>0.8369029550</slope>
+		<xAvg>2.2542432300</xAvg>
+		<xMin>1.0934216850</xMin>
+		<xMax>3.3765769570</xMax>
+		<Sxx>2.8743334040</Sxx>
+		<MSE>0.0290454760</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Coho salmon (Oncorhynchus kisutch)</predicted>
+		<r2>0.9954846880</r2>
+		<pVal>0.0428106060</pVal>
+		<df>1</df>
+		<intercept>-2.2570068480</intercept>
+		<slope>2.9656604480</slope>
+		<xAvg>0.9710632770</xAvg>
+		<xMin>0.5880456300</xMin>
+		<xMax>1.2317225160</xMax>
+		<Sxx>0.2296173370</Sxx>
+		<MSE>0.0091601100</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Northern river crangonyctid (Crangonyx pseudogracilis)</predicted>
+		<r2>0.9802288770</r2>
+		<pVal>0.0099349120</pVal>
+		<df>2</df>
+		<intercept>-13.7933841800</intercept>
+		<slope>4.9044592870</slope>
+		<xAvg>3.3570717840</xAvg>
+		<xMin>2.8369567370</xMin>
+		<xMax>3.7183675810</xMax>
+		<Sxx>0.4208431780</Sxx>
+		<MSE>0.1020884000</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>75</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Starfish (Asterias forbesi)</predicted>
+		<r2>0.9998573490</r2>
+		<pVal>0.0076037460</pVal>
+		<df>1</df>
+		<intercept>-7.2496312360</intercept>
+		<slope>3.1804904190</slope>
+		<xAvg>3.3505700590</xAvg>
+		<xMin>2.8369567370</xMin>
+		<xMax>3.7183675810</xMax>
+		<Sxx>0.4203359090</Sxx>
+		<MSE>0.0006066260</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="6">
+		<predicted>Yellow perch (Perca flavescens)</predicted>
+		<r2>0.8792428650</r2>
+		<pVal>0.0057047440</pVal>
+		<df>4</df>
+		<intercept>-1.1533367410</intercept>
+		<slope>1.4226196540</slope>
+		<xAvg>1.8061235110</xAvg>
+		<xMin>0.5880456300</xMin>
+		<xMax>3.3765769570</xMax>
+		<Sxx>5.4912287610</Sxx>
+		<MSE>0.3815848300</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>66.66666667</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

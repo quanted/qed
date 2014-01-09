@@ -1,0 +1,627 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Fishes</group>
+		<species>Lahontan cutthroat trout (Oncorhynchus clarkii henshawi)</species>
+		<predicted>Cutthroat trout (Oncorhynchus clarkii)</predicted>
+		<filesource>asSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="2">	
+		<group>Fishes</group>
+		<species>Greenback cutthroat trout (Oncorhynchus clarkii stomias)</species>
+		<predicted>Cutthroat trout (Oncorhynchus clarkii)</predicted>
+		<filesource>asSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="3">	
+		<group>Fishes</group>
+		<species>Paiute cutthroat trout (Oncorhynchus clarkii seleniris)</species>
+		<predicted>Cutthroat trout (Oncorhynchus clarkii)</predicted>
+		<filesource>asSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="4">	
+		<group>Fishes</group>
+		<species>Coho salmon (Oncorhynchus kisutch)</species>
+		<predicted>Coho salmon (Oncorhynchus kisutch)</predicted>
+		<filesource>asSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="5">	
+		<group>Fishes</group>
+		<species>Steelhead (Oncorhynchus mykiss)</species>
+		<predicted>Rainbow trout (Oncorhynchus mykiss)</predicted>
+		<filesource>asSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="6">	
+		<group>Fishes</group>
+		<species>Atlantic salmon (Salmo salar)</species>
+		<predicted>Atlantic salmon (Salmo salar)</predicted>
+		<filesource>asSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="7">	
+		<group>Fishes</group>
+		<species>Little Kern golden trout (Oncorhynchus aguabonita whitei)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="8">	
+		<group>Fishes</group>
+		<species>Lahontan cutthroat trout (Oncorhynchus clarkii henshawi)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="9">	
+		<group>Fishes</group>
+		<species>Greenback cutthroat trout (Oncorhynchus clarkii stomias)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="10">	
+		<group>Fishes</group>
+		<species>Paiute cutthroat trout (Oncorhynchus clarkii seleniris)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="11">	
+		<group>Fishes</group>
+		<species>Gila trout (Oncorhynchus gilae)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="12">	
+		<group>Fishes</group>
+		<species>Apache trout (Oncorhynchus gilae apache)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="13">	
+		<group>Fishes</group>
+		<species>Chum salmon (Oncorhynchus keta)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="14">	
+		<group>Fishes</group>
+		<species>Coho salmon (Oncorhynchus kisutch)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="15">	
+		<group>Fishes</group>
+		<species>Steelhead (Oncorhynchus mykiss)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="16">	
+		<group>Fishes</group>
+		<species>Sockeye salmon (Oncorhynchus nerka)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="17">	
+		<group>Fishes</group>
+		<species>Chinook salmon (Oncorhynchus tshawytscha)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="18">	
+		<group>Fishes</group>
+		<species>Ala balik (Salmo platycephalus)</species>
+		<predicted>Salmo</predicted>
+		<filesource>agSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="19">	
+		<group>Fishes</group>
+		<species>Atlantic salmon (Salmo salar)</species>
+		<predicted>Salmo</predicted>
+		<filesource>agSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="20">	
+		<group>Fishes</group>
+		<species>Bull trout (Salvelinus confluentus)</species>
+		<predicted>Salvelinus</predicted>
+		<filesource>agSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="21">	
+		<group>Fishes</group>
+		<species>Cicek (Acanthorutilus handlirschi)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="22">	
+		<group>Fishes</group>
+		<species>Blue shiner (Cyprinella caerulea)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="23">	
+		<group>Fishes</group>
+		<species>Beautiful shiner (Cyprinella formosa)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="24">	
+		<group>Fishes</group>
+		<species>Devils River minnow (Dionda diaboli)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="25">	
+		<group>Fishes</group>
+		<species>Desert dace (Eremichthys acros)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="26">	
+		<group>Fishes</group>
+		<species>Spotfin chub (Erimonax monachus)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="27">	
+		<group>Fishes</group>
+		<species>Slender chub (Erimystax cahni)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="28">	
+		<group>Fishes</group>
+		<species>Slackwater darter (Etheostoma boschungi)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="29">	
+		<group>Fishes</group>
+		<species>Vermilion darter (Etheostoma chermocki)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="30">	
+		<group>Fishes</group>
+		<species>Relict darter (Etheostoma chienense)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="31">	
+		<group>Fishes</group>
+		<species>Etowah darter (Etheostoma etowahae)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="32">	
+		<group>Fishes</group>
+		<species>Fountain darter (Etheostoma fonticola)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="33">	
+		<group>Fishes</group>
+		<species>Niangua darter (Etheostoma nianguae)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="34">	
+		<group>Fishes</group>
+		<species>Watercress darter (Etheostoma nuchale)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="35">	
+		<group>Fishes</group>
+		<species>Okaloosa darter (Etheostoma okaloosae)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="36">	
+		<group>Fishes</group>
+		<species>Duskytail darter (Etheostoma percnurum)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="37">	
+		<group>Fishes</group>
+		<species>Bayou darter (Etheostoma rubrum)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="38">	
+		<group>Fishes</group>
+		<species>Cherokee darter (Etheostoma scotti)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="39">	
+		<group>Fishes</group>
+		<species>Maryland darter (Etheostoma sellare)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="40">	
+		<group>Fishes</group>
+		<species>Bluemask darter (Etheostoma sp.)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="41">	
+		<group>Fishes</group>
+		<species>Boulder darter (Etheostoma wapiti)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="42">	
+		<group>Fishes</group>
+		<species>Mohave tui chub (Gila bicolor mohavensis)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="43">	
+		<group>Fishes</group>
+		<species>Owens tui chub (Gila bicolor snyderi)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="44">	
+		<group>Fishes</group>
+		<species>Hutton tui chub (Gila bicolor ssp.)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="45">	
+		<group>Fishes</group>
+		<species>Borax Lake chub (Gila boraxobius)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="46">	
+		<group>Fishes</group>
+		<species>Humpback chub (Gila cypha)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="47">	
+		<group>Fishes</group>
+		<species>Sonora chub (Gila ditaenia)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="48">	
+		<group>Fishes</group>
+		<species>Bonytail chub (Gila elegans)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="49">	
+		<group>Fishes</group>
+		<species>Gila chub (Gila intermedia)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="50">	
+		<group>Fishes</group>
+		<species>Chihuahua chub (Gila nigrescens)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="51">	
+		<group>Fishes</group>
+		<species>Yaqui chub (Gila purpurea)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="52">	
+		<group>Fishes</group>
+		<species>Pahranagat roundtail chub (Gila robusta jordani)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="53">	
+		<group>Fishes</group>
+		<species>Virgin River chub (Gila seminuda)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="54">	
+		<group>Fishes</group>
+		<species>Rio Grande silvery minnow (Hybognathus amarus)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="55">	
+		<group>Fishes</group>
+		<species>Yaqui catfish (Ictalurus pricei)</species>
+		<predicted>Ictaluridae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="56">	
+		<group>Fishes</group>
+		<species>White River spinedace (Lepidomeda albivallis)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="57">	
+		<group>Fishes</group>
+		<species>Big Spring spinedace (Lepidomeda mollispinis pratensis)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="58">	
+		<group>Fishes</group>
+		<species>Little Colorado spinedace (Lepidomeda vittata)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="59">	
+		<group>Fishes</group>
+		<species>Spikedace (Meda fulgida)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="60">	
+		<group>Fishes</group>
+		<species>Moapa dace (Moapa coriacea)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="61">	
+		<group>Fishes</group>
+		<species>Palezone shiner (Notropis albizonatus)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="62">	
+		<group>Fishes</group>
+		<species>Cahaba shiner (Notropis cahabae)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="63">	
+		<group>Fishes</group>
+		<species>Arkansas River shiner (Notropis girardi)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="64">	
+		<group>Fishes</group>
+		<species>Cape Fear shiner (Notropis mekistocholas)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="65">	
+		<group>Fishes</group>
+		<species>Pecos bluntnose shiner (Notropis simus pecosensis)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="66">	
+		<group>Fishes</group>
+		<species>Topeka shiner (Notropis topeka)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="67">	
+		<group>Fishes</group>
+		<species>Smoky madtom (Noturus baileyi)</species>
+		<predicted>Ictaluridae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="68">	
+		<group>Fishes</group>
+		<species>Yellowfin madtom (Noturus flavipinnis)</species>
+		<predicted>Ictaluridae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="69">	
+		<group>Fishes</group>
+		<species>Neosho madtom (Noturus placidus)</species>
+		<predicted>Ictaluridae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="70">	
+		<group>Fishes</group>
+		<species>Pygmy madtom (Noturus stanauli)</species>
+		<predicted>Ictaluridae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="71">	
+		<group>Fishes</group>
+		<species>Scioto madtom (Noturus trautmani)</species>
+		<predicted>Ictaluridae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="72">	
+		<group>Fishes</group>
+		<species>Little Kern golden trout (Oncorhynchus aguabonita whitei)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="73">	
+		<group>Fishes</group>
+		<species>Lahontan cutthroat trout (Oncorhynchus clarkii henshawi)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="74">	
+		<group>Fishes</group>
+		<species>Greenback cutthroat trout (Oncorhynchus clarkii stomias)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="75">	
+		<group>Fishes</group>
+		<species>Paiute cutthroat trout (Oncorhynchus clarkii seleniris)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="76">	
+		<group>Fishes</group>
+		<species>Gila trout (Oncorhynchus gilae)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="77">	
+		<group>Fishes</group>
+		<species>Apache trout (Oncorhynchus gilae apache)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="78">	
+		<group>Fishes</group>
+		<species>Chum salmon (Oncorhynchus keta)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="79">	
+		<group>Fishes</group>
+		<species>Coho salmon (Oncorhynchus kisutch)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="80">	
+		<group>Fishes</group>
+		<species>Steelhead (Oncorhynchus mykiss)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="81">	
+		<group>Fishes</group>
+		<species>Sockeye salmon (Oncorhynchus nerka)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="82">	
+		<group>Fishes</group>
+		<species>Chinook salmon (Oncorhynchus tshawytscha)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="83">	
+		<group>Fishes</group>
+		<species>Oregon chub (Oregonichthys crameri)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="84">	
+		<group>Fishes</group>
+		<species>Amber darter (Percina antesella)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="85">	
+		<group>Fishes</group>
+		<species>Goldline darter (Percina aurolineata)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="86">	
+		<group>Fishes</group>
+		<species>Conasauga logperch (Percina jenkinsi)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="87">	
+		<group>Fishes</group>
+		<species>Leopard darter (Percina pantherina)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="88">	
+		<group>Fishes</group>
+		<species>Roanoke logperch (Percina rex)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="89">	
+		<group>Fishes</group>
+		<species>Snail darter (Percina tanasi)</species>
+		<predicted>Percidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="90">	
+		<group>Fishes</group>
+		<species>Blackside dace (Phoxinus cumberlandensis)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="91">	
+		<group>Fishes</group>
+		<species>Woundfin (Plagopterus argentissimus)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="92">	
+		<group>Fishes</group>
+		<species>Mexican blindcat (Prietella phreatophila)</species>
+		<predicted>Ictaluridae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="93">	
+		<group>Fishes</group>
+		<species>Ikan temoleh (Probarbus jullieni)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="94">	
+		<group>Fishes</group>
+		<species>Colorado pikeminnow (Ptychocheilus lucius)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="95">	
+		<group>Fishes</group>
+		<species>Foskett speckled dace (Rhinichthys osculus ssp.)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="96">	
+		<group>Fishes</group>
+		<species>Independence Valley speckled dace (Rhinichthys osculus lethoporus)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="97">	
+		<group>Fishes</group>
+		<species>Ash Meadows speckled dace (Rhinichthys osculus nevadensis)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="98">	
+		<group>Fishes</group>
+		<species>Clover Valley speckled dace (Rhinichthys osculus oligoporus)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="99">	
+		<group>Fishes</group>
+		<species>Kendall Warm Springs dace (Rhinichthys osculus thermalis)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="100">	
+		<group>Fishes</group>
+		<species>Ala balik (Salmo platycephalus)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="101">	
+		<group>Fishes</group>
+		<species>Atlantic salmon (Salmo salar)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="102">	
+		<group>Fishes</group>
+		<species>Bull trout (Salvelinus confluentus)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="103">	
+		<group>Fishes</group>
+		<species>Miyako tango (Tanakia tanago)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+	<cross num="104">	
+		<group>Fishes</group>
+		<species>Loach minnow (Tiaroga cobitis)</species>
+		<predicted>Cyprinidae</predicted>
+		<filesource>afSurrGreen sunfish (Lepomis cyanellus).xml</filesource>
+	</cross>
+</crosses>

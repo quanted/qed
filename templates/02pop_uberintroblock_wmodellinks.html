@@ -4,13 +4,13 @@
 <script type="text/javascript">
 $( document ).ready(function() {
 	$('a#{{model}}').removeClass('fadeMenu').addClass('aSelected');
-	$('#output_tab').css('display', (pathSlice == '{{model}}_output') ? 'inline' : 'none');
-    
+	$('#output_tab').css('display', (pathPage == 'output' || 'out') ? 'inline' : 'none');
+    // fadeMenu
 	if ($('a#{{model}}').hasClass('aSelected')) {
 		$('.fadeMenu').hover(function(){
-			$(this).stop().animate({ backgroundColor:'rgb(88,107,115)', color:'#FFFFFF'},500);
+			$(this).stop().animate({ backgroundColor:'rgb(54, 74, 86)', color:'#FFFFFF'},500);
 		}, function(){
-			$(this).stop().animate({ backgroundColor:'rgb(227,220,191)', color:'#34322D'},500);
+			$(this).stop().animate({ backgroundColor:'rgb(218, 208, 171)', color:'#34322D'},500);
 		});
 	}
 });

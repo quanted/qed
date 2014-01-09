@@ -12,16 +12,15 @@ from uber import uber_lib
 class webiceBatchInputPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'webice','page':'batchinput'})
-        html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
+        html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
+        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'webice','page':'batchinput'})
+        html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberbatchinput.html', {
                     'model':'webice',
                     'model_attributes':'Web-ICE Batch Input'})
         html = html + template.render(templatepath + '04uberbatchinput_jquery.html', {}) 
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
-        html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', webiceBatchInputPage)], debug=True)

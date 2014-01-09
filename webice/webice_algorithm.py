@@ -15,17 +15,16 @@ class webiceAlgorithmPage(webapp.RequestHandler):
         text_file1 = open('webice/webice_algorithm.txt','r')
         x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'webice','page':'algorithm'})
-        html = html + template.render(templatepath + '03ubertext_links_left.html', {})                       
+        html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
+        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'webice','page':'algorithm'})
+        html = html + template.render(templatepath + '03pop_ubertext_links_left.html', {})                       
         html = html + template.render(templatepath + '04uberalgorithm_start.html', {
                 'model':'webice', 
                 'model_attributes':'Web-ICE Algorithms', 
                 'text_paragraph':x})
         html = html + template.render(templatepath + '04ubertext_end.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
-        html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})
+        html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', webiceAlgorithmPage)], debug=True)

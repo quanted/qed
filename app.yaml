@@ -1,5 +1,5 @@
-application: pypest
-version: jon
+application: untertool
+version: master
 runtime: python27
 api_version: 1
 
@@ -44,9 +44,9 @@ skip_files:
 
 handlers:
 - url: /
-  script: landing_pypest.py 
+  script: landing_pypop.py 
 - url: /index.html
-  script: landing_pypest.py 
+  script: landing_pypop.py 
 - url: /admin.html
   script: admin.py
 - url: /eco_index.html
@@ -193,10 +193,10 @@ handlers:
 
 #USER pages
 - url: /user.html
-  script: user/user_input.py 
+  script: user/user_input.py   
   login: required
   secure: never
-  
+
 - url: /user_output.html
   script: user/user_output.py
   login: required

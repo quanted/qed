@@ -40,7 +40,8 @@ skip_files:
 - ^(geneec/geneec_picloud/.*)
 - ^(przm/przm_picloud/.*)
 - ^(pfam/pfam_picloud/.*)
-- ^(generatepdf/generatepdf_picloud/.*)$
+- ^(generatepdf/generatepdf_picloud/.*)
+- ^(data/.*)$
 
 handlers:
 - url: /
@@ -89,8 +90,6 @@ handlers:
 - url: /templates/popup.html
   static_files: templates/popup.html
   upload: templates/popup.html
-- url: /data
-  static_dir: data
 
 ##UBERTOOL INPUT PAGES##
 #output

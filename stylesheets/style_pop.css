@@ -1,21 +1,18 @@
-body {
-  background: #F1F2F3;
-}
 .model_header {
-  color: #364A56;
+  color: #586B73;
   margin-bottom: 20px;
   font-size: 1.5em;
   font-weight: bold;
   display: inline-block;
 }
 .input_header {
-  color: #DB9C27;
+  color: #EDBA1E;
   margin-bottom: 1em;
   font-size: 1.2em;
   display: inline;
 }
 .popup_header {
-  color: #DB9C27;
+  color: #EDBA1E;
   margin-bottom: 1em;
   font-size: 1.5em;
   font-weight: bold;
@@ -24,15 +21,15 @@ body {
 /* Defining Hyperlink Colors */
 
 a:link {
-  color: #DB9C27;
+  color: #586B73;
   text-decoration: none;
 }
 a:visited {
-  color: #DB9C27;
+  color: #586B73;
   text-decoration: none;
 }
 a:hover {
-  color: #DB9C27;
+  color: #586B73;
   text-decoration: none;
 }
 
@@ -120,7 +117,7 @@ a:hover {
 
 #banner {
   width: 1024px;
-  background: #364A56;
+  background: #586b73;
   min-height: 30px;
   font-size: 1.6em;
   border-bottom: 2px solid #F4F7ED;
@@ -146,7 +143,7 @@ a:hover {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 #topheader_pic {
-  background: #DB9C27 url(/images/species/beecombcrop.jpg);
+  background: #EDBA1E url(/images/species/beecombcrop.jpg);
   width: 720px;
   height: 120px;
   float: left;
@@ -156,8 +153,8 @@ a:hover {
 #topheader_p {
   width: 300px;
   height: 120px;
-  /*background: #DB9C27;*/
-  background: #DB9C27;
+  /*background: #EDBA1E;*/
+  background: #EDBA1E;
   float: right;
   color: white;
   font-size: 12px;
@@ -171,7 +168,7 @@ a:hover {
   padding-top: 25%; /* Text Positioning */
 }
 #topheader_pic_main {
-  background: #DB9C27 url(/images/species/beecombcrop.jpg);
+  background: #EDBA1E url(/images/species/beecombcrop.jpg);
   width: 720px;
   height: 240px;
   float: left;
@@ -181,7 +178,7 @@ a:hover {
 #topheader_p_main {
   width: 300px;
   height: 240px;
-  background: #DB9C27;
+  background: #EDBA1E;
   float: right;
   color: white;
   font-size: 12px;
@@ -208,7 +205,7 @@ a.logreg:link, a.logreg:visited, a.logreg:active {
 #header_menu_nav {
   width: 864px;
   height: 30px;
-  background: #364A56;
+  background: #586b73;
   float: left;
   border-radius: 0 0 0 4px;
   -webkit-border-radius: 0 0 0 4px;
@@ -954,7 +951,7 @@ a.logreg:link, a.logreg:visited, a.logreg:active {
 #header_menu_r {
   width: 160px;
   height: 30px;
-  background: #364A56;
+  background: #586b73;
   float: left;
   border-radius: 0 0 4px 0;
   -webkit-border-radius: 0 0 4px 0;
@@ -966,7 +963,7 @@ a.logreg:link, a.logreg:visited, a.logreg:active {
 .headerbar{
   font-size: 11px;
   color: #FFFFFF;
-  background: #DB9C27;
+  background: #EDBA1E;
   margin: 0 0 2px 0;
   text-transform: uppercase;
   padding: 5px 0 5px 8px;
@@ -988,13 +985,13 @@ a.logreg:link, a.logreg:visited, a.logreg:active {
 }
 .fadeMenu {
   color: #34322D;
-  background: rgb(218, 208, 171);
+  background: rgb(227,220,191);
 }
 .urbangreymenu a.aSelected {
   display: block;
   text-decoration:none;
   color:#FFFFFF;
-  background-color: #364A56;
+  background-color: #586b73;
 }
 
 /* Tables */
@@ -1007,18 +1004,18 @@ table,td
   border-style: outset;
   border-color: white;
   border-collapse: separate;
-  background-color: rgb(234, 223, 185);
+  background-color: rgb(227, 220, 191);
 }
 table
 {
-  background-color: rgb(237, 233, 192);
+  background-color: rgb(234, 227, 199);
   padding: 1px;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
 }
 th {
-  background-color: rgb(234, 223, 185);
+  background-color: rgb(227, 220, 191);
   border: none;
   text-align: center;
   padding: 1px 4px;
@@ -1028,7 +1025,7 @@ th {
 
 #footer {
   clear: both;
-  background: #364A56;
+  background: #586b73;
   width: 1016px;
   height: 31px;
   padding: 4px;
@@ -1058,7 +1055,7 @@ th {
   -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
   -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
   text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
-  background:#364A56;
+  background:#586B73;
   color:#fff;
   font-weight:normal;
 }

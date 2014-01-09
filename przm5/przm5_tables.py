@@ -6,13 +6,14 @@ import datetime
 import os
 from google.appengine.ext.webapp import template
 
-def timestamp():
+def timestamp(przm5_obj):
     ts = time.time()
     st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
     html="""
     <div class="out_">
         <b>PRZM<br>
-    """
+        <b>jid=%s<b><br>
+    """%(przm5_obj.jid)
     html = html + st
     html = html + " (UTC)</b>"
     html = html + """
@@ -27,7 +28,7 @@ def table_all(przm5_obj):
     table4_out = table_4(przm5_obj)
     templatepath = os.path.dirname(__file__) + '/../templates/'
     html_plot = template.render(templatepath + 'przm5-output-jqplot.html', {})
-    html_all = timestamp() + table1_out + table2_out + table3_out + table4_out + html_plot
+    html_all = timestamp(przm5_obj) + table1_out + table2_out + table3_out + table4_out + html_plot
     return html_all
 
 

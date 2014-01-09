@@ -75,8 +75,8 @@ class genee(object):
         import datetime, time
         ts = time.time()
         self.jid = datetime.datetime.fromtimestamp(ts).strftime('%Y%m%d%H%M%S%f')
-        # url='http://localhost:7777/geneec1/'+self.jid 
-        url='http://23.20.129.86:7777/geneec1/'+self.jid 
+        url='http://localhost:7777/geneec1/'+self.jid 
+        # url='http://23.20.129.86:7777/geneec1/'+self.jid 
 
 
         # if run_type == "individual":

@@ -37,11 +37,13 @@ skip_files:
 - ^(.*/)?\..*
 - ^(.*/)?.*\.gz
 - ^(.*/)?.*\.bak
+- ^(data/.*)
+- ^(data/webice/.*)
+- ^(data/webice/images/.*)
 - ^(geneec/geneec_picloud/.*)
 - ^(przm/przm_picloud/.*)
 - ^(pfam/pfam_picloud/.*)
-- ^(generatepdf/generatepdf_picloud/.*)
-- ^(data/.*)$
+- ^(generatepdf/generatepdf_picloud/.*)$
 
 handlers:
 - url: /

@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Anabaena</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Chlamydomonas</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Phaeodactylum</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Pseudokirchneriella</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Scenedesmus</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Skeletonema</surrogate>
+	</cross>
+</species>

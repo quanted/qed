@@ -1,0 +1,129 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Chlorella pyrenoidosa</predicted>
+		<r2>0.873189517</r2>
+		<pVal>0.002039508</pVal>
+		<df>5</df>
+		<intercept>0.382236669</intercept>
+		<slope>1.076137074</slope>
+		<xAvg>-0.456852525</xAvg>
+		<xMin>-1.71219827</xMin>
+		<xMax>1.794741718</xMax>
+		<Sxx>10.87225705</Sxx>
+		<MSE>0.36570554</MSE>
+		<t90CI>2.015048373</t90CI>
+		<t95CI>2.570581836</t95CI>
+		<t99CI>4.032142984</t99CI>
+		<Bootstrap>85.7142857</Bootstrap>
+		<taxDist>7</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Microcystis aeruginosa</predicted>
+		<r2>0.736710835</r2>
+		<pVal>0</pVal>
+		<df>13</df>
+		<intercept>-0.697820056</intercept>
+		<slope>0.886547945</slope>
+		<xAvg>-2.45602455</xAvg>
+		<xMin>-4.692225932</xMin>
+		<xMax>1.794741718</xMax>
+		<Sxx>49.08533307</Sxx>
+		<MSE>1.060593047</MSE>
+		<t90CI>1.770933396</t90CI>
+		<t95CI>2.160368657</t95CI>
+		<t99CI>3.012275839</t99CI>
+		<Bootstrap>86.6666667</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Microcystis flos-aquae</predicted>
+		<r2>0.629878404</r2>
+		<pVal>0.000412548</pVal>
+		<df>13</df>
+		<intercept>-1.101511244</intercept>
+		<slope>0.957558389</slope>
+		<xAvg>-2.45602455</xAvg>
+		<xMin>-4.692225932</xMin>
+		<xMax>1.794741718</xMax>
+		<Sxx>49.08533307</Sxx>
+		<MSE>2.034354475</MSE>
+		<t90CI>1.770933396</t90CI>
+		<t95CI>2.160368657</t95CI>
+		<t99CI>3.012275839</t99CI>
+		<Bootstrap>86.6666667</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Pseudokirchneriella subcapitata</predicted>
+		<r2>0.466165063</r2>
+		<pVal>0.000648124</pVal>
+		<df>19</df>
+		<intercept>-0.28483356</intercept>
+		<slope>0.557704578</slope>
+		<xAvg>0.060981436</xAvg>
+		<xMin>-2.96702351</xMin>
+		<xMax>1.794741718</xMax>
+		<Sxx>26.59626025</Sxx>
+		<MSE>0.498588965</MSE>
+		<t90CI>1.729132812</t90CI>
+		<t95CI>2.093024054</t95CI>
+		<t99CI>2.860934607</t99CI>
+		<Bootstrap>47.6190476</Bootstrap>
+		<taxDist>7</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Scenedesmus acutus</predicted>
+		<r2>0.386669519</r2>
+		<pVal>0.041091949</pVal>
+		<df>9</df>
+		<intercept>-0.361892962</intercept>
+		<slope>0.558478964</slope>
+		<xAvg>-0.167078593</xAvg>
+		<xMin>-1.71219827</xMin>
+		<xMax>1.794741718</xMax>
+		<Sxx>16.58361194</Sxx>
+		<MSE>0.911601155</MSE>
+		<t90CI>1.833112933</t90CI>
+		<t95CI>2.262157163</t95CI>
+		<t99CI>3.249835542</t99CI>
+		<Bootstrap>20</Bootstrap>
+		<taxDist>7</taxDist>
+	</cross>
+	<cross num="6">
+		<predicted>Scenedesmus quadricauda</predicted>
+		<r2>0.502425253</r2>
+		<pVal>0.021738945</pVal>
+		<df>8</df>
+		<intercept>-0.085632921</intercept>
+		<slope>0.659881129</slope>
+		<xAvg>-0.484808369</xAvg>
+		<xMin>-1.71219827</xMin>
+		<xMax>1.794741718</xMax>
+		<Sxx>13.04859413</Sxx>
+		<MSE>0.703383253</MSE>
+		<t90CI>1.859548038</t90CI>
+		<t95CI>2.306004135</t95CI>
+		<t99CI>3.355387331</t99CI>
+		<Bootstrap>88.8888889</Bootstrap>
+		<taxDist>7</taxDist>
+	</cross>
+	<cross num="7">
+		<predicted>Skeletonema costatum</predicted>
+		<r2>0.567001047</r2>
+		<pVal>0.019179621</pVal>
+		<df>7</df>
+		<intercept>-0.953587472</intercept>
+		<slope>0.729061827</slope>
+		<xAvg>-0.233040298</xAvg>
+		<xMin>-1.71219827</xMin>
+		<xMax>0.903089987</xMax>
+		<Sxx>7.451957241</Sxx>
+		<MSE>0.432119653</MSE>
+		<t90CI>1.894578605</t90CI>
+		<t95CI>2.364624252</t95CI>
+		<t99CI>3.499483297</t99CI>
+		<Bootstrap>75</Bootstrap>
+		<taxDist>7</taxDist>
+	</cross>
+</species>

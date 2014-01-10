@@ -1,0 +1,9 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Crustaceans</group>
+		<species>Lee County cave isopod (Lirceus usdagalun)</species>
+		<predicted>Asellidae</predicted>
+		<filesource>afSurrKadal shrimp (Metapenaeus dobsoni).xml</filesource>
+	</cross>
+</crosses>

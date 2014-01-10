@@ -1,0 +1,12 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Coho salmon (Oncorhynchus kisutch)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Green sunfish (Lepomis cyanellus)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Largemouth bass (Micropterus salmoides)</surrogate>
+	</cross>
+</species>

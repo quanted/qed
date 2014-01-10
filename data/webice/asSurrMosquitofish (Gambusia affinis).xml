@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Daphnid (Daphnia magna)</predicted>
+		<r2>0.9970054020</r2>
+		<pVal>0.0348551030</pVal>
+		<df>1</df>
+		<intercept>-9.2776698340</intercept>
+		<slope>2.2751899210</slope>
+		<xAvg>5.9207766290</xAvg>
+		<xMin>3.7218106150</xMin>
+		<xMax>7.1105897100</xMax>
+		<Sxx>7.2694963370</Sxx>
+		<MSE>0.1130265880</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Fathead minnow (Pimephales promelas)</predicted>
+		<r2>0.9881766230</r2>
+		<pVal>0.0059292670</pVal>
+		<df>2</df>
+		<intercept>0.2291974640</intercept>
+		<slope>1.0096603530</slope>
+		<xAvg>3.9517850490</xAvg>
+		<xMin>0.7844081720</xMin>
+		<xMax>7.1105897100</xMax>
+		<Sxx>20.1201159100</Sxx>
+		<MSE>0.1227038150</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

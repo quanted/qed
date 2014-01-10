@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Isopod (Asellus aquaticus)</predicted>
+		<r2>0.9973340510</r2>
+		<pVal>0.0328851000</pVal>
+		<df>1</df>
+		<intercept>2.9220573830</intercept>
+		<slope>0.6282438110</slope>
+		<xAvg>1.3682229500</xAvg>
+		<xMin>0.3328092570</xMin>
+		<xMax>2.1677180230</xMax>
+		<Sxx>1.7669314820</Sxx>
+		<MSE>0.0018641780</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

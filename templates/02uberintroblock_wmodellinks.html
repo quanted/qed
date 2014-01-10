@@ -4,7 +4,7 @@
 <script type="text/javascript">
 $( document ).ready(function() {
 	$('a#{{model}}').removeClass('fadeMenu').addClass('aSelected');
-	$('#output_tab').css('display', (pathSlice == '{{model}}_output') ? 'inline' : 'none');
+	$('#output_tab').css('display', (pathPage == 'output' || 'out') ? 'inline' : 'none');
     // fadeMenu
     var SkinChk;
 	if ($('a#{{model}}').hasClass('aSelected')) {

@@ -491,14 +491,14 @@ class kabamBatchOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()
         logger.info(form) 
-        thefile = form['upfile']
+        thefile = form['file-0']
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'kabam','page':'batchinput'})
-        html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberbatch_start.html', {
+        # html = uber_lib.SkinChk(ChkCookie)
+        # html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'kabam','page':'batchinput'})
+        # html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
+        html = template.render(templatepath + '04uberbatch_start.html', {
                 'model':'kabam',
                 'model_attributes':'Kabam Batch Output'})
         html = html + kabam_tables.timestamp()
@@ -506,7 +506,7 @@ class kabamBatchOutputPage(webapp.RequestHandler):
         # html = html + template.render(templatepath + 'kabam-batchoutput-jqplot.html', {})
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        # html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', kabamBatchOutputPage)], debug=True)

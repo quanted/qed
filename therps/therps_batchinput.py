@@ -19,7 +19,7 @@ class therpsBatchInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberbatchinput.html', {
                 'model':'therps',
                 'model_attributes':'T-Herps Batch Input'}) 
-        html = html + template.render(templatepath + '04uberbatchinput_jquery.html', {}) 
+        html = html + template.render(templatepath + '04uberbatchinput_jquery.html', {'model':'therps'}) 
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

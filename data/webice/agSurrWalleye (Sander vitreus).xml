@@ -1,0 +1,57 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Lepomis</predicted>
+		<r2>0.4971427810</r2>
+		<pVal>0.0227619000</pVal>
+		<df>8</df>
+		<intercept>0.0785129820</intercept>
+		<slope>0.9193421780</slope>
+		<xAvg>2.2337449710</xAvg>
+		<xMin>0.5625779150</xMin>
+		<xMax>3.0334237550</xMax>
+		<Sxx>6.3053952640</Sxx>
+		<MSE>0.6738143440</MSE>
+		<t90CI>1.86</t90CI>
+		<t95CI>2.306</t95CI>
+		<t99CI>3.355</t99CI>
+		<Bootstrap>60</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Oncorhynchus</predicted>
+		<r2>0.6912791740</r2>
+		<pVal>0.0028668960</pVal>
+		<df>8</df>
+		<intercept>0.3374827870</intercept>
+		<slope>0.9567932180</slope>
+		<xAvg>2.2578183800</xAvg>
+		<xMin>0.5625779150</xMin>
+		<xMax>3.2741578490</xMax>
+		<Sxx>6.7425727730</Sxx>
+		<MSE>0.3445754150</MSE>
+		<t90CI>1.86</t90CI>
+		<t95CI>2.306</t95CI>
+		<t99CI>3.355</t99CI>
+		<Bootstrap>80</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Salmo</predicted>
+		<r2>0.9501452150</r2>
+		<pVal>0.0252460750</pVal>
+		<df>2</df>
+		<intercept>-0.3858893450</intercept>
+		<slope>1.2921115290</slope>
+		<xAvg>2.1468496030</xAvg>
+		<xMin>0.5625779150</xMin>
+		<xMax>3.2741578490</xMax>
+		<Sxx>4.5330149730</Sxx>
+		<MSE>0.1985518880</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>50</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

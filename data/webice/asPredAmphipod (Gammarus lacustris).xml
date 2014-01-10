@@ -1,0 +1,18 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Amphipod (Gammarus fasciatus)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Atlantic salmon (Salmo salar)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Bluegill (Lepomis macrochirus)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Daphnid (Daphnia pulex)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Stonefly (Pteronarcys californica)</surrogate>
+	</cross>
+</species>

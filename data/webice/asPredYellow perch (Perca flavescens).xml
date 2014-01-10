@@ -1,0 +1,69 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Atlantic salmon (Salmo salar)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Black bullhead (Ameiurus melas)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Bluegill (Lepomis macrochirus)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Brook trout (Salvelinus fontinalis)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Brown trout (Salmo trutta)</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Channel catfish (Ictalurus punctatus)</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Coho salmon (Oncorhynchus kisutch)</surrogate>
+	</cross>
+	<cross num="8">
+		<surrogate>Common carp (Cyprinus carpio)</surrogate>
+	</cross>
+	<cross num="9">
+		<surrogate>Cutthroat trout (Oncorhynchus clarkii)</surrogate>
+	</cross>
+	<cross num="10">
+		<surrogate>Fathead minnow (Pimephales promelas)</surrogate>
+	</cross>
+	<cross num="11">
+		<surrogate>Goldfish (Carassius auratus)</surrogate>
+	</cross>
+	<cross num="12">
+		<surrogate>Green sunfish (Lepomis cyanellus)</surrogate>
+	</cross>
+	<cross num="13">
+		<surrogate>Guppy (Poecilia reticulata)</surrogate>
+	</cross>
+	<cross num="14">
+		<surrogate>Isopod (Caecidotea brevicauda)</surrogate>
+	</cross>
+	<cross num="15">
+		<surrogate>Lake trout (Salvelinus namaycush)</surrogate>
+	</cross>
+	<cross num="16">
+		<surrogate>Largemouth bass (Micropterus salmoides)</surrogate>
+	</cross>
+	<cross num="17">
+		<surrogate>Mozambique tilapia (Oreochromis mossambicus)</surrogate>
+	</cross>
+	<cross num="18">
+		<surrogate>Northern pike (Esox lucius)</surrogate>
+	</cross>
+	<cross num="19">
+		<surrogate>Rainbow trout (Oncorhynchus mykiss)</surrogate>
+	</cross>
+	<cross num="20">
+		<surrogate>Snipefly (Atherix variegata)</surrogate>
+	</cross>
+	<cross num="21">
+		<surrogate>Walleye (Sander vitreus)</surrogate>
+	</cross>
+	<cross num="22">
+		<surrogate>White sucker (Catostomus commersonii)</surrogate>
+	</cross>
+</species>

@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Desmodesmus sp.</predicted>
+		<r2>0.393369482</r2>
+		<pVal>0.021764521</pVal>
+		<df>11</df>
+		<intercept>-0.138527667</intercept>
+		<slope>0.69442208</slope>
+		<xAvg>-0.052598104</xAvg>
+		<xMin>-1.217455716</xMin>
+		<xMax>1.77815125</xMax>
+		<Sxx>5.784461793</Sxx>
+		<MSE>0.391057758</MSE>
+		<t90CI>1.795884819</t90CI>
+		<t95CI>2.20098516</t95CI>
+		<t99CI>3.105806516</t99CI>
+		<Bootstrap>0.636363636</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Skeletonema</predicted>
+		<r2>0.927459112</r2>
+		<pVal>0</pVal>
+		<df>18</df>
+		<intercept>-0.29567173</intercept>
+		<slope>0.967304565</slope>
+		<xAvg>-1.38091904</xAvg>
+		<xMin>-3.652792795</xMin>
+		<xMax>0.40064586</xMax>
+		<Sxx>26.29902286</Sxx>
+		<MSE>0.106925595</MSE>
+		<t90CI>1.734063607</t90CI>
+		<t95CI>2.10092204</t95CI>
+		<t99CI>2.878440473</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+</species>

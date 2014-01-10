@@ -1,0 +1,93 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Cyprinidae</predicted>
+		<r2>0.9829822810</r2>
+		<pVal>0.0085453710</pVal>
+		<df>2</df>
+		<intercept>-0.7779101860</intercept>
+		<slope>1.2994820960</slope>
+		<xAvg>2.2224777460</xAvg>
+		<xMin>1.3222192950</xMin>
+		<xMax>3.4808808760</xMax>
+		<Sxx>2.4700874830</Sxx>
+		<MSE>0.0361059360</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Ictaluridae</predicted>
+		<r2>0.9960156120</r2>
+		<pVal>0.0402114520</pVal>
+		<df>1</df>
+		<intercept>-1.7648596270</intercept>
+		<slope>1.6944203270</slope>
+		<xAvg>2.2564456840</xAvg>
+		<xMin>1.3222192950</xMin>
+		<xMax>3.4808808760</xMax>
+		<Sxx>2.4562416330</Sxx>
+		<MSE>0.0282103760</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Percidae</predicted>
+		<r2>0.9193949620</r2>
+		<pVal>0.0411491450</pVal>
+		<df>2</df>
+		<intercept>-0.9355524750</intercept>
+		<slope>1.2682884270</slope>
+		<xAvg>2.2224777460</xAvg>
+		<xMin>1.3222192950</xMin>
+		<xMax>3.4808808760</xMax>
+		<Sxx>2.4700874830</Sxx>
+		<MSE>0.1741720500</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>75</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Poeciliidae</predicted>
+		<r2>0.9741452010</r2>
+		<pVal>0.0130120560</pVal>
+		<df>2</df>
+		<intercept>-0.7216006190</intercept>
+		<slope>1.3286334950</slope>
+		<xAvg>2.2224777460</xAvg>
+		<xMin>1.3222192950</xMin>
+		<xMax>3.4808808760</xMax>
+		<Sxx>2.4700874830</Sxx>
+		<MSE>0.0578642330</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>75</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Salmonidae</predicted>
+		<r2>0.9115438090</r2>
+		<pVal>0.0452519660</pVal>
+		<df>2</df>
+		<intercept>-0.9590821270</intercept>
+		<slope>1.2556304360</slope>
+		<xAvg>2.2224777460</xAvg>
+		<xMin>1.3222192950</xMin>
+		<xMax>3.4808808760</xMax>
+		<Sxx>2.4700874830</Sxx>
+		<MSE>0.1889542640</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>50</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

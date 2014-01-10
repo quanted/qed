@@ -13,6 +13,8 @@ import sys
 lib_path = os.path.abspath('..')
 sys.path.append(lib_path)
 from uber import uber_lib
+import logging
+logger = logging.getLogger('Geneec')
 
 #############################################
 
@@ -128,7 +130,7 @@ class GENEECOutputPage(webapp.RequestHandler):
         #                   aerial_size_dist, no_spray_drift, ground_spray_type, spray_quality, airblast_type,
         #                   incorporation_depth, solubility, aerobic_aquatic_metabolism, hydrolysis, photolysis_aquatic_half_life
 
-
+        logger.info(vars(geneec_obj))
         # final_res=get_jid(geneec_obj)
 
         templatepath = os.path.dirname(__file__) + '/../templates/'
@@ -139,7 +141,7 @@ class GENEECOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'geneec', 
                 'model_attributes':'GENEEC Output'})
-        html = html + geneec_tables.timestamp()
+        html = html + geneec_tables.timestamp(geneec_obj)
         html = html + geneec_tables.table_all(geneec_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})

@@ -1,0 +1,57 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Bluegill (Lepomis macrochirus)</predicted>
+		<r2>0.9384785120</r2>
+		<pVal>0.0000009433</pVal>
+		<df>9</df>
+		<intercept>0.7419130640</intercept>
+		<slope>0.7832651410</slope>
+		<xAvg>2.6992370540</xAvg>
+		<xMin>-1.4436974990</xMin>
+		<xMax>5.3729120030</xMax>
+		<Sxx>55.9427674500</Sxx>
+		<MSE>0.2499893640</MSE>
+		<t90CI>1.833</t90CI>
+		<t95CI>2.262</t95CI>
+		<t99CI>3.25</t99CI>
+		<Bootstrap>81.81818182</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Daphnid (Daphnia magna)</predicted>
+		<r2>0.8522816660</r2>
+		<pVal>0.0000505020</pVal>
+		<df>9</df>
+		<intercept>0.1723317310</intercept>
+		<slope>0.7426026370</slope>
+		<xAvg>2.7314978490</xAvg>
+		<xMin>-1.4436974990</xMin>
+		<xMax>5.9052560490</xMax>
+		<Sxx>59.6812895300</Sxx>
+		<MSE>0.6338112120</MSE>
+		<t90CI>1.833</t90CI>
+		<t95CI>2.262</t95CI>
+		<t99CI>3.25</t99CI>
+		<Bootstrap>45.45454545</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Rainbow trout (Oncorhynchus mykiss)</predicted>
+		<r2>0.9108750970</r2>
+		<pVal>0.0000050612</pVal>
+		<df>9</df>
+		<intercept>0.7834157630</intercept>
+		<slope>0.8007725190</slope>
+		<xAvg>2.7844243880</xAvg>
+		<xMin>-1.4436974990</xMin>
+		<xMax>5.3729120030</xMax>
+		<Sxx>51.5452472900</Sxx>
+		<MSE>0.3593392710</MSE>
+		<t90CI>1.833</t90CI>
+		<t95CI>2.262</t95CI>
+		<t99CI>3.25</t99CI>
+		<Bootstrap>72.72727273</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

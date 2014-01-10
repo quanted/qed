@@ -1,0 +1,27 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Anabaena flos-aquae</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Chlorella vulgaris</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Desmodesmus subspicatus</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Minutocellus polymorphus</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Phaeodactylum tricornutum</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Pseudokirchneriella subcapitata</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Sellaphora seminulum</surrogate>
+	</cross>
+	<cross num="8">
+		<surrogate>Thalassiosira pseudonana</surrogate>
+	</cross>
+</species>

@@ -1,0 +1,9 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Skeletonema costatum</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Skeletonema sp.</surrogate>
+	</cross>
+</species>

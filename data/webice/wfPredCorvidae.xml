@@ -1,0 +1,51 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>American crow (Corvus brachyrhynchos)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Black-billed magpie (Pica hudsonia)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Brown-headed cowbird (Molothrus ater)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Common grackle (Quiscalus quiscula)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>House finch (Carpodacus mexicanus)</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>House sparrow (Passer domesticus)</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Japanese quail (Coturnix japonica)</surrogate>
+	</cross>
+	<cross num="8">
+		<surrogate>Mallard (Anas platyrhynchos)</surrogate>
+	</cross>
+	<cross num="9">
+		<surrogate>Mourning dove (Zenaida macroura)</surrogate>
+	</cross>
+	<cross num="10">
+		<surrogate>Mouse (Mus musculus)</surrogate>
+	</cross>
+	<cross num="11">
+		<surrogate>Redwinged blackbird (Agelaius phoeniceus)</surrogate>
+	</cross>
+	<cross num="12">
+		<surrogate>Ring-necked pheasant (Phasianus colchicus)</surrogate>
+	</cross>
+	<cross num="13">
+		<surrogate>Rock dove (Columba livia)</surrogate>
+	</cross>
+	<cross num="14">
+		<surrogate>Starling (Sturnus vulgaris)</surrogate>
+	</cross>
+	<cross num="15">
+		<surrogate>White-crowned sparrow (Zonotrichia leucophrys)</surrogate>
+	</cross>
+	<cross num="16">
+		<surrogate>Yellow headed blackbird (Xanthocephalus xanthocephalus)</surrogate>
+	</cross>
+</species>

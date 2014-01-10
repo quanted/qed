@@ -1,0 +1,96 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>American crow (Corvus brachyrhynchos)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Black-billed magpie (Pica hudsonia)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Blacktailed jackrabbit (Lepus californicus)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Brown-headed cowbird (Molothrus ater)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Budgerigar (Melopsittacus undulatus)</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>California quail (Callipepla californica)</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Canada goose (Branta canadensis)</surrogate>
+	</cross>
+	<cross num="8">
+		<surrogate>Chicken (Gallus gallus)</surrogate>
+	</cross>
+	<cross num="9">
+		<surrogate>Chukar (Alectoris chukar)</surrogate>
+	</cross>
+	<cross num="10">
+		<surrogate>Common grackle (Quiscalus quiscula)</surrogate>
+	</cross>
+	<cross num="11">
+		<surrogate>Dog (Canis familiaris)</surrogate>
+	</cross>
+	<cross num="12">
+		<surrogate>Fulvous whistling duck (Dendrocygna bicolor)</surrogate>
+	</cross>
+	<cross num="13">
+		<surrogate>Gray partridge (Perdix perdix)</surrogate>
+	</cross>
+	<cross num="14">
+		<surrogate>House finch (Carpodacus mexicanus)</surrogate>
+	</cross>
+	<cross num="15">
+		<surrogate>House sparrow (Passer domesticus)</surrogate>
+	</cross>
+	<cross num="16">
+		<surrogate>Japanese quail (Coturnix japonica)</surrogate>
+	</cross>
+	<cross num="17">
+		<surrogate>Mourning dove (Zenaida macroura)</surrogate>
+	</cross>
+	<cross num="18">
+		<surrogate>Mouse (Mus musculus)</surrogate>
+	</cross>
+	<cross num="19">
+		<surrogate>Mule deer (Odocoileus hemionus)</surrogate>
+	</cross>
+	<cross num="20">
+		<surrogate>Northern bobwhite (Colinus virginianus)</surrogate>
+	</cross>
+	<cross num="21">
+		<surrogate>Norway rat (Rattus norvegicus)</surrogate>
+	</cross>
+	<cross num="22">
+		<surrogate>Rabbit (Oryctolagus cuniculus)</surrogate>
+	</cross>
+	<cross num="23">
+		<surrogate>Red billed quelea (Quelea quelea)</surrogate>
+	</cross>
+	<cross num="24">
+		<surrogate>Red-legged partridge (Alectoris rufa)</surrogate>
+	</cross>
+	<cross num="25">
+		<surrogate>Redwinged blackbird (Agelaius phoeniceus)</surrogate>
+	</cross>
+	<cross num="26">
+		<surrogate>Ring-necked pheasant (Phasianus colchicus)</surrogate>
+	</cross>
+	<cross num="27">
+		<surrogate>Rock dove (Columba livia)</surrogate>
+	</cross>
+	<cross num="28">
+		<surrogate>Sharp-tailed grouse (Tympanuchus phasianellus)</surrogate>
+	</cross>
+	<cross num="29">
+		<surrogate>Starling (Sturnus vulgaris)</surrogate>
+	</cross>
+	<cross num="30">
+		<surrogate>White-crowned sparrow (Zonotrichia leucophrys)</surrogate>
+	</cross>
+	<cross num="31">
+		<surrogate>Yellow headed blackbird (Xanthocephalus xanthocephalus)</surrogate>
+	</cross>
+</species>

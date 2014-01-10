@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Phasianidae</predicted>
+		<r2>0.818</r2>
+		<pVal>0.005</pVal>
+		<df>5</df>
+		<intercept>-0.1393</intercept>
+		<slope>0.9059</slope>
+		<xAvg>2.29</xAvg>
+		<xMin>0.43</xMin>
+		<xMax>3.82</xMax>
+		<Sxx>11.3716</Sxx>
+		<MSE>0.4142</MSE>
+		<t90CI>2.015</t90CI>
+		<t95CI>2.571</t95CI>
+		<t99CI>4.032</t99CI>
+		<Bootstrap>57.143</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

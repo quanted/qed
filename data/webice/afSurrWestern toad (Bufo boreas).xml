@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Cyprinidae</predicted>
+		<r2>0.9325128180</r2>
+		<pVal>0.0343329670</pVal>
+		<df>2</df>
+		<intercept>0.6226665120</intercept>
+		<slope>0.7295484760</slope>
+		<xAvg>2.3906485510</xAvg>
+		<xMin>1.3617278360</xMin>
+		<xMax>4.0899580680</xMax>
+		<Sxx>4.1842497060</Sxx>
+		<MSE>0.0805865180</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>75</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Poeciliidae</predicted>
+		<r2>0.9646830240</r2>
+		<pVal>0.0178172150</pVal>
+		<df>2</df>
+		<intercept>0.4975055240</intercept>
+		<slope>0.8077354230</slope>
+		<xAvg>2.3906485510</xAvg>
+		<xMin>1.3617278360</xMin>
+		<xMax>4.0899580680</xMax>
+		<Sxx>4.1842497060</Sxx>
+		<MSE>0.0499717700</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+</species>

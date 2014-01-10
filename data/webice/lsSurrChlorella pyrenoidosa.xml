@@ -1,0 +1,57 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Anabaena flos-aquae</predicted>
+		<r2>0.873189517</r2>
+		<pVal>0.002039508</pVal>
+		<df>5</df>
+		<intercept>-0.368084748</intercept>
+		<slope>0.811411053</slope>
+		<xAvg>-0.109399271</xAvg>
+		<xMin>-1.443697499</xMin>
+		<xMax>2.947058724</xMax>
+		<Sxx>14.41937331</Sxx>
+		<MSE>0.275743234</MSE>
+		<t90CI>2.015048373</t90CI>
+		<t95CI>2.570581836</t95CI>
+		<t99CI>4.032142984</t99CI>
+		<Bootstrap>71.4285714</Bootstrap>
+		<taxDist>7</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Pseudokirchneriella subcapitata</predicted>
+		<r2>0.59317589</r2>
+		<pVal>0.000114584</pVal>
+		<df>17</df>
+		<intercept>-0.283472395</intercept>
+		<slope>0.576756059</slope>
+		<xAvg>0.466463152</xAvg>
+		<xMin>-3.522878745</xMin>
+		<xMax>3.819543936</xMax>
+		<Sxx>54.38462943</Sxx>
+		<MSE>0.729851957</MSE>
+		<t90CI>1.739606726</t90CI>
+		<t95CI>2.109815578</t95CI>
+		<t99CI>2.89823052</t99CI>
+		<Bootstrap>63.1578947</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Scenedesmus acutus</predicted>
+		<r2>0.69660582</r2>
+		<pVal>0</pVal>
+		<df>16</df>
+		<intercept>0.414542609</intercept>
+		<slope>0.796105647</slope>
+		<xAvg>-0.044451571</xAvg>
+		<xMin>-3.522878745</xMin>
+		<xMax>2.947058724</xMax>
+		<Sxx>34.59537216</Sxx>
+		<MSE>0.596842277</MSE>
+		<t90CI>1.745883676</t90CI>
+		<t95CI>2.119905299</t95CI>
+		<t99CI>2.920781622</t99CI>
+		<Bootstrap>88.8888889</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+</species>

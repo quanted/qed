@@ -1,0 +1,75 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Cyprinidae</predicted>
+		<r2>0.9942292820</r2>
+		<pVal>0.0028895340</pVal>
+		<df>2</df>
+		<intercept>-0.0177930630</intercept>
+		<slope>1.0411068770</slope>
+		<xAvg>3.9517850490</xAvg>
+		<xMin>0.7844081720</xMin>
+		<xMax>7.1105897100</xMax>
+		<Sxx>20.1201159100</Sxx>
+		<MSE>0.0632899040</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Cyprinodontidae</predicted>
+		<r2>0.9967888850</r2>
+		<pVal>0.0360944750</pVal>
+		<df>1</df>
+		<intercept>0.5982590060</intercept>
+		<slope>0.9052205380</slope>
+		<xAvg>2.8988501620</xAvg>
+		<xMin>0.7844081720</xMin>
+		<xMax>4.1903316980</xMax>
+		<Sxx>6.8160533950</Sxx>
+		<MSE>0.0179926200</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Daphniidae</predicted>
+		<r2>0.9969915960</r2>
+		<pVal>0.0349354360</pVal>
+		<df>1</df>
+		<intercept>-9.0079707720</intercept>
+		<slope>2.2367862040</slope>
+		<xAvg>5.9207766290</xAvg>
+		<xMin>3.7218106150</xMin>
+		<xMax>7.1105897100</xMax>
+		<Sxx>7.2694963370</Sxx>
+		<MSE>0.1097483160</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Salmonidae</predicted>
+		<r2>0.9114486980</r2>
+		<pVal>0.0453017770</pVal>
+		<df>2</df>
+		<intercept>-0.6488870170</intercept>
+		<slope>1.0852467720</slope>
+		<xAvg>3.9066200110</xAvg>
+		<xMin>0.7844081720</xMin>
+		<xMax>6.9299295600</xMax>
+		<Sxx>19.0032542300</Sxx>
+		<MSE>1.0872207000</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>25</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

@@ -1,0 +1,9 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>House sparrow (Passer domesticus)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Mallard (Anas platyrhynchos)</surrogate>
+	</cross>
+</species>

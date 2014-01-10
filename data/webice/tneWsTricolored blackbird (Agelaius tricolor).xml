@@ -1,0 +1,15 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Birds</group>
+		<species>Yellow-shouldered blackbird (Agelaius xanthomus)</species>
+		<predicted>Icteridae</predicted>
+		<filesource>wfSurrTricolored blackbird (Agelaius tricolor).xml</filesource>
+	</cross>
+	<cross num="2">	
+		<group>Birds</group>
+		<species>Slender-billed Grackle (Quisicalus palustris)</species>
+		<predicted>Icteridae</predicted>
+		<filesource>wfSurrTricolored blackbird (Agelaius tricolor).xml</filesource>
+	</cross>
+</crosses>

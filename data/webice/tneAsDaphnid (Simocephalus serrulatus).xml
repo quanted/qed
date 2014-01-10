@@ -1,0 +1,27 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Fishes</group>
+		<species>Atlantic salmon (Salmo salar)</species>
+		<predicted>Atlantic salmon (Salmo salar)</predicted>
+		<filesource>asSurrDaphnid (Simocephalus serrulatus).xml</filesource>
+	</cross>
+	<cross num="2">	
+		<group>Crustaceans</group>
+		<species>Squirrel Chimney cave shrimp (Palaemonetes cummingi)</species>
+		<predicted>Palaemonetes</predicted>
+		<filesource>agSurrDaphnid (Simocephalus serrulatus).xml</filesource>
+	</cross>
+	<cross num="3">	
+		<group>Crustaceans</group>
+		<species>Squirrel Chimney cave shrimp (Palaemonetes cummingi)</species>
+		<predicted>Palaemonidae</predicted>
+		<filesource>afSurrDaphnid (Simocephalus serrulatus).xml</filesource>
+	</cross>
+	<cross num="4">	
+		<group>Crustaceans</group>
+		<species>California freshwater shrimp (Syncaris pacifica)</species>
+		<predicted>Palaemonidae</predicted>
+		<filesource>afSurrDaphnid (Simocephalus serrulatus).xml</filesource>
+	</cross>
+</crosses>

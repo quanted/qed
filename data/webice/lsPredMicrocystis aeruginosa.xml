@@ -1,0 +1,9 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Anabaena flos-aquae</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Microcystis flos-aquae</surrogate>
+	</cross>
+</species>

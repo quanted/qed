@@ -1,0 +1,75 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Daphnid (Daphnia magna)</predicted>
+		<r2>0.7775804610</r2>
+		<pVal>0.0201294150</pVal>
+		<df>4</df>
+		<intercept>-4.8089271880</intercept>
+		<slope>1.7198451370</slope>
+		<xAvg>4.6718527980</xAvg>
+		<xMin>3.5901010680</xMin>
+		<xMax>6.3201462860</xMax>
+		<Sxx>5.8579505850</Sxx>
+		<MSE>1.2390590220</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>50</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Fathead minnow (Pimephales promelas)</predicted>
+		<r2>0.7700542860</r2>
+		<pVal>0.0018741140</pVal>
+		<df>7</df>
+		<intercept>-3.4170207540</intercept>
+		<slope>1.5848454700</slope>
+		<xAvg>4.5585021650</xAvg>
+		<xMin>3.5901010680</xMin>
+		<xMax>6.3201462860</xMax>
+		<Sxx>6.5910128270</Sxx>
+		<MSE>0.7062068700</MSE>
+		<t90CI>1.895</t90CI>
+		<t95CI>2.365</t95CI>
+		<t99CI>3.499</t99CI>
+		<Bootstrap>44.44444444</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Goldfish (Carassius auratus)</predicted>
+		<r2>0.9781018180</r2>
+		<pVal>0.0110096980</pVal>
+		<df>2</df>
+		<intercept>-1.6829719090</intercept>
+		<slope>1.2599974290</slope>
+		<xAvg>5.1757594020</xAvg>
+		<xMin>3.7671558660</xMin>
+		<xMax>6.3201462860</xMax>
+		<Sxx>3.4400690030</Sxx>
+		<MSE>0.0611364860</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Rainbow trout (Oncorhynchus mykiss)</predicted>
+		<r2>0.8697006870</r2>
+		<pVal>0.0007280010</pVal>
+		<df>6</df>
+		<intercept>-4.2908622460</intercept>
+		<slope>1.7055701920</slope>
+		<xAvg>4.6184172800</xAvg>
+		<xMin>3.5901010680</xMin>
+		<xMax>6.3201462860</xMax>
+		<Sxx>6.3325457150</Sxx>
+		<MSE>0.4599796210</MSE>
+		<t90CI>1.943</t90CI>
+		<t95CI>2.447</t95CI>
+		<t99CI>3.707</t99CI>
+		<Bootstrap>62.5</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

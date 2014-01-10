@@ -1,0 +1,75 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Anabaena flos-aquae</predicted>
+		<r2>0.386669519</r2>
+		<pVal>0.041091949</pVal>
+		<df>9</df>
+		<intercept>0.14808648</intercept>
+		<slope>0.692361832</slope>
+		<xAvg>-0.455202841</xAvg>
+		<xMin>-1.602769685</xMin>
+		<xMax>1.986948998</xMax>
+		<Sxx>13.37681827</Sxx>
+		<MSE>1.130137188</MSE>
+		<t90CI>1.833112933</t90CI>
+		<t95CI>2.262157163</t95CI>
+		<t99CI>3.249835542</t99CI>
+		<Bootstrap>0</Bootstrap>
+		<taxDist>7</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Chlorella pyrenoidosa</predicted>
+		<r2>0.69660582</r2>
+		<pVal>0</pVal>
+		<df>16</df>
+		<intercept>-0.376218098</intercept>
+		<slope>0.875016806</slope>
+		<xAvg>0.379154462</xAvg>
+		<xMin>-1.931814138</xMin>
+		<xMax>2.093159629</xMax>
+		<Sxx>31.47547672</Sxx>
+		<MSE>0.65600216</MSE>
+		<t90CI>1.745883676</t90CI>
+		<t95CI>2.119905299</t95CI>
+		<t99CI>2.920781622</t99CI>
+		<Bootstrap>83.3333333</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Pseudokirchneriella subcapitata</predicted>
+		<r2>0.454887928</r2>
+		<pVal>0.005818072</pVal>
+		<df>13</df>
+		<intercept>-0.225274756</intercept>
+		<slope>0.635270193</slope>
+		<xAvg>-0.373164733</xAvg>
+		<xMin>-1.931814138</xMin>
+		<xMax>1.986948998</xMax>
+		<Sxx>18.80774923</Sxx>
+		<MSE>0.699667692</MSE>
+		<t90CI>1.770933396</t90CI>
+		<t95CI>2.160368657</t95CI>
+		<t99CI>3.012275839</t99CI>
+		<Bootstrap>66.6666667</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Scenedesmus quadricauda</predicted>
+		<r2>0.511237184</r2>
+		<pVal>0.002734375</pVal>
+		<df>13</df>
+		<intercept>-0.111740357</intercept>
+		<slope>0.688836275</slope>
+		<xAvg>-0.319346915</xAvg>
+		<xMin>-1.931814138</xMin>
+		<xMax>1.986948998</xMax>
+		<Sxx>21.57016868</Sxx>
+		<MSE>0.752693096</MSE>
+		<t90CI>1.770933396</t90CI>
+		<t95CI>2.160368657</t95CI>
+		<t99CI>3.012275839</t99CI>
+		<Bootstrap>73.3333333</Bootstrap>
+		<taxDist>1</taxDist>
+	</cross>
+</species>

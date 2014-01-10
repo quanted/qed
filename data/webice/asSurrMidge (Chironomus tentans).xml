@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Daphnid (Daphnia magna)</predicted>
+		<r2>0.9816367040</r2>
+		<pVal>0.0092241910</pVal>
+		<df>2</df>
+		<intercept>-0.5570834740</intercept>
+		<slope>0.9620934170</slope>
+		<xAvg>5.0292148070</xAvg>
+		<xMin>2.5611013840</xMin>
+		<xMax>6.2410481510</xMax>
+		<Sxx>9.0178131660</Sxx>
+		<MSE>0.0780738450</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>75</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+</species>

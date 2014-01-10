@@ -1,0 +1,129 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Bluegill (Lepomis macrochirus)</predicted>
+		<r2>0.5492874600</r2>
+		<pVal>0.0000000000</pVal>
+		<df>93</df>
+		<intercept>0.9584473700</intercept>
+		<slope>0.7402765000</slope>
+		<xAvg>2.6906136440</xAvg>
+		<xMin>-0.9065783150</xMin>
+		<xMax>5.0530784430</xMax>
+		<Sxx>137.0645641000</Sxx>
+		<MSE>0.6627200710</MSE>
+		<t90CI>1.645</t90CI>
+		<t95CI>1.96</t95CI>
+		<t99CI>2.576</t99CI>
+		<Bootstrap>66.31578947</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Daphnid (Daphnia magna)</predicted>
+		<r2>0.2749115890</r2>
+		<pVal>0.0000000355</pVal>
+		<df>95</df>
+		<intercept>0.9991264690</intercept>
+		<slope>0.6078847750</slope>
+		<xAvg>2.7907054450</xAvg>
+		<xMin>-0.9065783150</xMin>
+		<xMax>5.0530784430</xMax>
+		<Sxx>153.9448368000</Sxx>
+		<MSE>1.5793630380</MSE>
+		<t90CI>1.645</t90CI>
+		<t95CI>1.96</t95CI>
+		<t99CI>2.576</t99CI>
+		<Bootstrap>42.26804124</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Fathead minnow (Pimephales promelas)</predicted>
+		<r2>0.7302035260</r2>
+		<pVal>0.0001989250</pVal>
+		<df>11</df>
+		<intercept>0.6279540480</intercept>
+		<slope>0.8282883500</slope>
+		<xAvg>2.6056531720</xAvg>
+		<xMin>-0.8996294550</xMin>
+		<xMax>4.9498777040</xMax>
+		<Sxx>29.4837452700</Sxx>
+		<MSE>0.6794310880</MSE>
+		<t90CI>1.796</t90CI>
+		<t95CI>2.201</t95CI>
+		<t99CI>3.106</t99CI>
+		<Bootstrap>46.15384615</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Goldfish (Carassius auratus)</predicted>
+		<r2>0.8439894450</r2>
+		<pVal>0.0274908960</pVal>
+		<df>3</df>
+		<intercept>1.7859349440</intercept>
+		<slope>0.6182608560</slope>
+		<xAvg>2.1211692100</xAvg>
+		<xMin>-0.4692737600</xMin>
+		<xMax>3.7242758700</xMax>
+		<Sxx>10.4824243200</Sxx>
+		<MSE>0.2468885510</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>40</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Mysid (Americamysis bahia)</predicted>
+		<r2>0.3839681860</r2>
+		<pVal>0.0000000000</pVal>
+		<df>103</df>
+		<intercept>0.1543281110</intercept>
+		<slope>0.7592507380</slope>
+		<xAvg>2.7487033780</xAvg>
+		<xMin>-0.4692737600</xMin>
+		<xMax>5.0530784430</xMax>
+		<Sxx>147.0262593000</Sxx>
+		<MSE>1.3201887510</MSE>
+		<t90CI>1.645</t90CI>
+		<t95CI>1.96</t95CI>
+		<t99CI>2.576</t99CI>
+		<Bootstrap>53.33333333</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="6">
+		<predicted>Rainbow trout (Oncorhynchus mykiss)</predicted>
+		<r2>0.5241090850</r2>
+		<pVal>0.0000000000</pVal>
+		<df>95</df>
+		<intercept>0.7819810810</intercept>
+		<slope>0.7747181750</slope>
+		<xAvg>2.6978506600</xAvg>
+		<xMin>-0.9065783150</xMin>
+		<xMax>5.0530784430</xMax>
+		<Sxx>145.8353395000</Sxx>
+		<MSE>0.8365894580</MSE>
+		<t90CI>1.645</t90CI>
+		<t95CI>1.96</t95CI>
+		<t99CI>2.576</t99CI>
+		<Bootstrap>61.8556701</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="7">
+		<predicted>Sheepshead minnow (Cyprinodon variegatus)</predicted>
+		<r2>0.3627481470</r2>
+		<pVal>0.0000011462</pVal>
+		<df>53</df>
+		<intercept>1.7651184810</intercept>
+		<slope>0.5239315700</slope>
+		<xAvg>2.7322324910</xAvg>
+		<xMin>-0.4692737600</xMin>
+		<xMax>4.9498777040</xMax>
+		<Sxx>74.9435069700</Sxx>
+		<MSE>0.6818882140</MSE>
+		<t90CI>1.645</t90CI>
+		<t95CI>1.96</t95CI>
+		<t99CI>2.576</t99CI>
+		<Bootstrap>74.54545455</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

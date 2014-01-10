@@ -1,0 +1,93 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>American crow (Corvus brachyrhynchos)</predicted>
+		<r2>0.832</r2>
+		<pVal>0.031</pVal>
+		<df>3</df>
+		<intercept>-0.064</intercept>
+		<slope>1.03</slope>
+		<xAvg>1.325</xAvg>
+		<xMin>0.624</xMin>
+		<xMax>1.75</xMax>
+		<Sxx>1.363</Sxx>
+		<MSE>0.098</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>House finch (Carpodacus mexicanus)</predicted>
+		<r2>0.971</r2>
+		<pVal>0.002</pVal>
+		<df>3</df>
+		<intercept>-0.224</intercept>
+		<slope>1.178</slope>
+		<xAvg>1.325</xAvg>
+		<xMin>0.624</xMin>
+		<xMax>1.75</xMax>
+		<Sxx>1.363</Sxx>
+		<MSE>0.019</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Mallard (Anas platyrhynchos)</predicted>
+		<r2>0.812</r2>
+		<pVal>0.037</pVal>
+		<df>3</df>
+		<intercept>0.1</intercept>
+		<slope>1.094</slope>
+		<xAvg>1.325</xAvg>
+		<xMin>0.624</xMin>
+		<xMax>1.75</xMax>
+		<Sxx>1.363</Sxx>
+		<MSE>0.126</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Red billed quelea (Quelea quelea)</predicted>
+		<r2>0.999</r2>
+		<pVal>0.024</pVal>
+		<df>1</df>
+		<intercept>0.007</intercept>
+		<slope>1.024</slope>
+		<xAvg>1.041</xAvg>
+		<xMin>0.624</xMin>
+		<xMax>1.75</xMax>
+		<Sxx>0.761</Sxx>
+		<MSE>0.001</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Redwinged blackbird (Agelaius phoeniceus)</predicted>
+		<r2>0.828</r2>
+		<pVal>0.032</pVal>
+		<df>3</df>
+		<intercept>0.112</intercept>
+		<slope>0.93</slope>
+		<xAvg>1.325</xAvg>
+		<xMin>0.624</xMin>
+		<xMax>1.75</xMax>
+		<Sxx>1.363</Sxx>
+		<MSE>0.081</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+</species>

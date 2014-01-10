@@ -1,0 +1,183 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Bluegill (Lepomis macrochirus)</predicted>
+		<r2>0.9039685370</r2>
+		<pVal>0.0035753580</pVal>
+		<df>4</df>
+		<intercept>1.4576149490</intercept>
+		<slope>0.6725647600</slope>
+		<xAvg>2.7931678740</xAvg>
+		<xMin>1.2691159440</xMin>
+		<xMax>4.3397989780</xMax>
+		<Sxx>8.6817824820</Sxx>
+		<MSE>0.1042983310</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Bonytail chub (Gila elegans)</predicted>
+		<r2>0.9293723700</r2>
+		<pVal>0.0359603900</pVal>
+		<df>2</df>
+		<intercept>0.3676595170</intercept>
+		<slope>0.9825573270</slope>
+		<xAvg>2.2941706200</xAvg>
+		<xMin>1.2691159440</xMin>
+		<xMax>3.3802112420</xMax>
+		<Sxx>2.7758480990</Sxx>
+		<MSE>0.1018278040</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Brown trout (Salmo trutta)</predicted>
+		<r2>0.9976488960</r2>
+		<pVal>0.0011762440</pVal>
+		<df>2</df>
+		<intercept>-0.2024289110</intercept>
+		<slope>1.0333175210</slope>
+		<xAvg>2.5940513800</xAvg>
+		<xMin>0.7425106660</xMin>
+		<xMax>4.3397989780</xMax>
+		<Sxx>7.5567839260</Sxx>
+		<MSE>0.0095075510</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Coho salmon (Oncorhynchus kisutch)</predicted>
+		<r2>0.9985031910</r2>
+		<pVal>0.0246360890</pVal>
+		<df>1</df>
+		<intercept>0.2190584890</intercept>
+		<slope>0.9117929790</slope>
+		<xAvg>3.2112316190</xAvg>
+		<xMin>1.9136846370</xMin>
+		<xMax>4.3397989780</xMax>
+		<Sxx>2.9858465670</Sxx>
+		<MSE>0.0037211480</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>1</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Cutthroat trout (Oncorhynchus clarkii)</predicted>
+		<r2>0.9809360630</r2>
+		<pVal>0.0011235960</pVal>
+		<df>3</df>
+		<intercept>0.2213662230</intercept>
+		<slope>0.9121361680</slope>
+		<xAvg>2.5290127780</xAvg>
+		<xMin>1.2691159440</xMin>
+		<xMax>4.3397989780</xMax>
+		<Sxx>6.5884450440</Sxx>
+		<MSE>0.0355101840</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>1</taxDist>
+	</cross>
+	<cross num="6">
+		<predicted>Greenthroat darter (Etheostoma lepidum)</predicted>
+		<r2>0.9993196230</r2>
+		<pVal>0.0166074990</pVal>
+		<df>1</df>
+		<intercept>0.4766310150</intercept>
+		<slope>0.8461358630</slope>
+		<xAvg>2.1305267590</xAvg>
+		<xMin>1.2691159440</xMin>
+		<xMax>3.3802112420</xMax>
+		<Sxx>2.4544963400</Sxx>
+		<MSE>0.0011964320</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="7">
+		<predicted>Lake trout (Salvelinus namaycush)</predicted>
+		<r2>0.9991766420</r2>
+		<pVal>0.0182698120</pVal>
+		<df>1</df>
+		<intercept>0.0062917200</intercept>
+		<slope>0.8947691350</slope>
+		<xAvg>3.2112316190</xAvg>
+		<xMin>1.9136846370</xMin>
+		<xMax>4.3397989780</xMax>
+		<Sxx>2.9858465670</Sxx>
+		<MSE>0.0019698620</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+	<cross num="8">
+		<predicted>Rainbow trout (Oncorhynchus mykiss)</predicted>
+		<r2>0.9793075350</r2>
+		<pVal>0.0000027905</pVal>
+		<df>6</df>
+		<intercept>-0.2275568800</intercept>
+		<slope>1.0311567810</slope>
+		<xAvg>2.7149024280</xAvg>
+		<xMin>0.7425106660</xMin>
+		<xMax>5.5465426630</xMax>
+		<Sxx>18.6746635500</Sxx>
+		<MSE>0.0699268660</MSE>
+		<t90CI>1.943</t90CI>
+		<t95CI>2.447</t95CI>
+		<t99CI>3.707</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>1</taxDist>
+	</cross>
+	<cross num="9">
+		<predicted>Razorback sucker (Xyrauchen texanus)</predicted>
+		<r2>0.9871171670</r2>
+		<pVal>0.0064622970</pVal>
+		<df>2</df>
+		<intercept>0.4432809820</intercept>
+		<slope>0.9246046970</slope>
+		<xAvg>2.2941706200</xAvg>
+		<xMin>1.2691159440</xMin>
+		<xMax>3.3802112420</xMax>
+		<Sxx>2.7758480990</Sxx>
+		<MSE>0.0154853330</MSE>
+		<t90CI>2.92</t90CI>
+		<t95CI>4.303</t95CI>
+		<t99CI>9.925</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="10">
+		<predicted>Shortnose sturgeon (Acipenser brevirostrum)</predicted>
+		<r2>0.9962594520</r2>
+		<pVal>0.0389599910</pVal>
+		<df>1</df>
+		<intercept>-0.4108201000</intercept>
+		<slope>1.0846688800</slope>
+		<xAvg>2.1305267590</xAvg>
+		<xMin>1.2691159440</xMin>
+		<xMax>3.3802112420</xMax>
+		<Sxx>2.4544963400</Sxx>
+		<MSE>0.0108422520</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

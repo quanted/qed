@@ -1,0 +1,183 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Amphipod (Gammarus lacustris)</predicted>
+		<r2>0.7655491430</r2>
+		<pVal>0.0004212710</pVal>
+		<df>9</df>
+		<intercept>0.1212027210</intercept>
+		<slope>0.7311599370</slope>
+		<xAvg>1.2484227440</xAvg>
+		<xMin>-1.0000000000</xMin>
+		<xMax>4.2007002700</xMax>
+		<Sxx>18.8454853000</Sxx>
+		<MSE>0.3428217280</MSE>
+		<t90CI>1.833</t90CI>
+		<t95CI>2.262</t95CI>
+		<t99CI>3.25</t99CI>
+		<Bootstrap>81.81818182</Bootstrap>
+		<taxDist>1</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Bluegill (Lepomis macrochirus)</predicted>
+		<r2>0.3650993870</r2>
+		<pVal>0.0000952360</pVal>
+		<df>34</df>
+		<intercept>1.4781437940</intercept>
+		<slope>0.4770788910</slope>
+		<xAvg>2.1939381740</xAvg>
+		<xMin>-1.0000000000</xMin>
+		<xMax>5.6020599910</xMax>
+		<Sxx>86.4386197900</Sxx>
+		<MSE>1.0062454990</MSE>
+		<t90CI>1.645</t90CI>
+		<t95CI>1.96</t95CI>
+		<t99CI>2.576</t99CI>
+		<Bootstrap>52.77777778</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Daphnid (Daphnia magna)</predicted>
+		<r2>0.4620058420</r2>
+		<pVal>0.0000963547</pVal>
+		<df>25</df>
+		<intercept>-0.0136467350</intercept>
+		<slope>0.7028462520</slope>
+		<xAvg>2.3448615100</xAvg>
+		<xMin>-1.0000000000</xMin>
+		<xMax>5.6020599910</xMax>
+		<Sxx>84.4268552800</Sxx>
+		<MSE>1.9426356900</MSE>
+		<t90CI>1.708</t90CI>
+		<t95CI>2.06</t95CI>
+		<t99CI>2.787</t99CI>
+		<Bootstrap>48.14814815</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Eastern forktail (Ischnura verticalis)</predicted>
+		<r2>0.9938593580</r2>
+		<pVal>0.0499381560</pVal>
+		<df>1</df>
+		<intercept>-0.0165947960</intercept>
+		<slope>2.5613760680</slope>
+		<xAvg>0.2245789660</xAvg>
+		<xMin>-0.0468324790</xMin>
+		<xMax>0.6066260260</xMax>
+		<Sxx>0.2318643680</Sxx>
+		<MSE>0.0093987390</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Goldfish (Carassius auratus)</predicted>
+		<r2>0.3549528650</r2>
+		<pVal>0.0316625620</pVal>
+		<df>11</df>
+		<intercept>1.9775583040</intercept>
+		<slope>0.5252321700</slope>
+		<xAvg>1.0666126990</xAvg>
+		<xMin>-2.0969100130</xMin>
+		<xMax>5.0000000000</xMax>
+		<Sxx>43.5670451700</Sxx>
+		<MSE>1.9855865500</MSE>
+		<t90CI>1.796</t90CI>
+		<t95CI>2.201</t95CI>
+		<t99CI>3.106</t99CI>
+		<Bootstrap>23.07692308</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="6">
+		<predicted>Isopod (Caecidotea brevicauda)</predicted>
+		<r2>0.4730698540</r2>
+		<pVal>0.0134281610</pVal>
+		<df>10</df>
+		<intercept>1.5283202990</intercept>
+		<slope>0.4674373220</slope>
+		<xAvg>1.6124774870</xAvg>
+		<xMin>-1.0000000000</xMin>
+		<xMax>4.8195439360</xMax>
+		<Sxx>38.6222948400</Sxx>
+		<MSE>0.9399670230</MSE>
+		<t90CI>1.812</t90CI>
+		<t95CI>2.228</t95CI>
+		<t99CI>3.169</t99CI>
+		<Bootstrap>41.66666667</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="7">
+		<predicted>Mysid (Americamysis bahia)</predicted>
+		<r2>0.3161937960</r2>
+		<pVal>0.0233727510</pVal>
+		<df>14</df>
+		<intercept>0.3826023560</intercept>
+		<slope>0.4443795010</slope>
+		<xAvg>2.0289353230</xAvg>
+		<xMin>-0.0468324790</xMin>
+		<xMax>5.6020599910</xMax>
+		<Sxx>39.6582330100</Sxx>
+		<MSE>1.2097428130</MSE>
+		<t90CI>1.761</t90CI>
+		<t95CI>2.145</t95CI>
+		<t99CI>2.977</t99CI>
+		<Bootstrap>43.75</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="8">
+		<predicted>Rainbow trout (Oncorhynchus mykiss)</predicted>
+		<r2>0.3116406700</r2>
+		<pVal>0.0004031420</pVal>
+		<df>34</df>
+		<intercept>1.6147120620</intercept>
+		<slope>0.4615603300</slope>
+		<xAvg>2.1791372410</xAvg>
+		<xMin>-1.0000000000</xMin>
+		<xMax>5.6020599910</xMax>
+		<Sxx>97.1135239200</Sxx>
+		<MSE>1.3440605090</MSE>
+		<t90CI>1.645</t90CI>
+		<t95CI>1.96</t95CI>
+		<t99CI>2.576</t99CI>
+		<Bootstrap>52.77777778</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="9">
+		<predicted>Stonefly (Pteronarcella badia)</predicted>
+		<r2>0.5731113710</r2>
+		<pVal>0.0296382020</pVal>
+		<df>6</df>
+		<intercept>0.0242233980</intercept>
+		<slope>0.7094205630</slope>
+		<xAvg>1.1021387660</xAvg>
+		<xMin>-0.0468324790</xMin>
+		<xMax>3.4263924340</xMax>
+		<Sxx>10.1719757100</Sxx>
+		<MSE>0.6355316320</MSE>
+		<t90CI>1.943</t90CI>
+		<t95CI>2.447</t95CI>
+		<t99CI>3.707</t99CI>
+		<Bootstrap>62.5</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="10">
+		<predicted>Stonefly (Pteronarcys californica)</predicted>
+		<r2>0.6698529870</r2>
+		<pVal>0.0069953260</pVal>
+		<df>7</df>
+		<intercept>0.5210705390</intercept>
+		<slope>0.6211425920</slope>
+		<xAvg>1.4737665220</xAvg>
+		<xMin>-1.0000000000</xMin>
+		<xMax>5.1139433520</xMax>
+		<Sxx>28.7664953200</Sxx>
+		<MSE>0.7814467850</MSE>
+		<t90CI>1.895</t90CI>
+		<t95CI>2.365</t95CI>
+		<t99CI>3.499</t99CI>
+		<Bootstrap>44.44444444</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+</species>

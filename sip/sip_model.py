@@ -20,7 +20,7 @@ def fromJSON(json_string):
     return sip_object
 
 class sip(object):
-    def __init__(self, set_variables=True,run_methods=True,chemical_name='', b_species='', m_species='', bw_quail=1, bw_duck=1, bwb_other=1, bw_rat=1, bwm_other=1, sol=1, ld50_a=1, ld50_m=1, aw_bird=1, mineau=1, aw_mamm=1, noaec_d=1, noaec_q=1, noaec_o=1, Species_of_the_bird_NOAEC_CHOICES=1, noael=1,vars_dict=None):
+    def __init__(self, set_variables=True,run_methods=True,chemical_name='', b_species='', m_species='', bw_quail=1, bw_duck=1, bwb_other=1, bw_rat=1, bwm_other=1, sol=1, ld50_a=1, ld50_m=1, aw_bird=1, mineau=1, aw_mamm=1, noaec_d=1, noaec_q=1, noaec_o=1, Species_of_the_bird_NOAEC_CHOICES=1, noael=1, sol=1, vars_dict=None):
         self.set_default_variables()
         if set_variables:
             if vars_dict != None:

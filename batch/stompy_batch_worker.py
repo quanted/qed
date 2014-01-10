@@ -51,7 +51,9 @@ def processUbertoolBatchRunsIntoBatchModelRun(ubertool):
     ubertool_result = terrPlantRunner.runTerrPlantModel(ubertool,ubertool_result)
     logger.info("Ubertool Results:")
     logger.info(ubertool_result)
-    #ubertool_result = sipRunner.runSIPModel(ubertool,ubertool_result)
+    ubertool_result = sipRunner.runSIPModel(ubertool,ubertool_result)
+    logger.info("Ubertool Results:")
+    logger.info(ubertool_result)
     #perform on all other eco models
     return ubertool_result
     

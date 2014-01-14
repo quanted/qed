@@ -150,9 +150,10 @@ class dust(object):
         self.mam_acute_derm_ld50 = float(self.mam_acute_derm_ld50)
         if self.bird_reptile_dermal_ld50 == -1:
             if self.aviandermaltype == 'With DTI':
-                self.bird_reptile_dermal_ld50 = 10**(0.84+(0.62*(math.log(self.low_bird_acute_ld50))))
-            else:
                 self.bird_reptile_dermal_ld50 = 10**(1.7822+0.8199 *(math.log(self.low_bird_acute_ld50))-0.4874 * (math.log(self.mam_acute_oral_ld50/self.mam_acute_derm_ld50*1000)))
+            else:
+                self.bird_reptile_dermal_ld50 = 10**(0.84+(0.62*(math.log(self.low_bird_acute_ld50))))
+                #self.bird_reptile_dermal_ld50 = 10**(1.7822+0.8199 *(math.log(self.low_bird_acute_ld50))-0.4874 * (math.log(self.mam_acute_oral_ld50/self.mam_acute_derm_ld50*1000)))
             return self.bird_reptile_dermal_ld50
     
 

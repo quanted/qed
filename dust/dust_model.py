@@ -6,14 +6,14 @@ import math
 
 class dust(object):
     def __init__(self, set_variables=True, run_methods=True, chemical_name='', label_epa_reg_no='', ar_lb=1, frac_pest_surface=1, dislodge_fol_res=1,  bird_acute_oral_study="", bird_study_add_comm="",
-              low_bird_acute_ld50=1, test_bird_bw=1, mineau_scaling_factor=1, mamm_acute_derm_study='', mamm_study_add_comm='',  aviandermaltype=1, mam_acute_derm_ld50=1, mam_acute_oral_ld50=1, test_mam_bw=1, vars_dict=None):
+              low_bird_acute_ld50=1, test_bird_bw=1, mineau_scaling_factor=1, mamm_acute_derm_study='', mamm_study_add_comm='',  mam_acute_derm_ld50=1, mam_acute_oral_ld50=1, test_mam_bw=1, vars_dict=None):
         self.set_default_variables()
         if set_variables:
             if vars_dict != None:
                 self.__dict__.update(vars_dict)
             else:
                 self.set_variables(chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res,  bird_acute_oral_study, bird_study_add_comm,
-              low_bird_acute_ld50, test_bird_bw, mineau_scaling_factor, mamm_acute_derm_study, mamm_study_add_comm,  aviandermaltype, mam_acute_derm_ld50, mam_acute_oral_ld50, test_mam_bw)
+              low_bird_acute_ld50, test_bird_bw, mineau_scaling_factor, mamm_acute_derm_study, mamm_study_add_comm,  mam_acute_derm_ld50, mam_acute_oral_ld50, test_mam_bw)
 
             if run_methods:
                 self.run_methods()
@@ -32,7 +32,7 @@ class dust(object):
         self.mineau_scaling_factor=1
         self.mamm_acute_derm_study=''
         self.mamm_study_add_comm=''
-        self.aviandermaltype=1
+        #self.aviandermaltype=1
         self.mam_acute_derm_ld50=1
         self.mam_acute_oral_ld50=1
         self.test_mam_bw=1
@@ -77,7 +77,7 @@ class dust(object):
         self.LOC_bgs_mam=-1
 
     def set_variables(self, chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res, bird_acute_oral_study, bird_study_add_comm,
-              low_bird_acute_ld50, test_bird_bw, mineau_scaling_factor, mamm_acute_derm_study, mamm_study_add_comm, aviandermaltype, mam_acute_derm_ld50, mam_acute_oral_ld50, test_mam_bw):
+              low_bird_acute_ld50, test_bird_bw, mineau_scaling_factor, mamm_acute_derm_study, mamm_study_add_comm, mam_acute_derm_ld50, mam_acute_oral_ld50, test_mam_bw):
         
 
         self.chemical_name=chemical_name
@@ -92,7 +92,7 @@ class dust(object):
         self.mineau_scaling_factor=mineau_scaling_factor
         self.mamm_acute_derm_study=mamm_acute_derm_study
         self.mamm_study_add_comm=mamm_study_add_comm
-        self.aviandermaltype=aviandermaltype
+        #self.aviandermaltype=aviandermaltype
         self.mam_acute_derm_ld50=mam_acute_derm_ld50
         self.mam_acute_oral_ld50 = mam_acute_oral_ld50
         self.test_mam_bw=test_mam_bw
@@ -149,11 +149,21 @@ class dust(object):
         self.mam_acute_oral_ld50 = float(self.mam_acute_oral_ld50)
         self.mam_acute_derm_ld50 = float(self.mam_acute_derm_ld50)
         if self.bird_reptile_dermal_ld50 == -1:
-            if self.aviandermaltype == 'With DTI':
-                self.bird_reptile_dermal_ld50 = 10**(1.7822+0.8199 *(math.log(self.low_bird_acute_ld50))-0.4874 * (math.log(self.mam_acute_oral_ld50/self.mam_acute_derm_ld50*1000)))
-            else:
-                self.bird_reptile_dermal_ld50 = 10**(0.84+(0.62*(math.log(self.low_bird_acute_ld50))))
-                #self.bird_reptile_dermal_ld50 = 10**(1.7822+0.8199 *(math.log(self.low_bird_acute_ld50))-0.4874 * (math.log(self.mam_acute_oral_ld50/self.mam_acute_derm_ld50*1000)))
+           # if self.aviandermaltype == 'With DTI':
+            #    self.bird_reptile_dermal_ld50 = 10**(1.7822+0.8199 *(math.log(self.low_bird_acute_ld50))-0.4874 * (math.log(self.mam_acute_oral_ld50/self.mam_acute_derm_ld50*1000)))
+            #elif self.aviandermaltype == 'With DTI 90% CI':
+				 # rmse1<-0.5361976
+				 # var_b1<-0.1038**2
+				 # var_b2<-0.1210**2
+				 # b1_mean<-0.6379028
+				 # b2_mean<-2.432222
+				 # no.samples<-72
+				 # self.bird_reptile_dermal_ld50 = 10**(1.7822+0.8199 *(math.log(self.low_bird_acute_ld50))-0.4874 * (math.log(self.mam_acute_oral_ld50/self.mam_acute_derm_ld50*1000)))
+     #         	-((math.sqrt(2)/2)*2.38*math.sqrt((rmse1**2/(no.samples)) + ((self.low_bird_acute_ld50-b1_mean)**2*var_b1)+(((math.log(self.mam_acute_oral_ld50/self.mam_acute_derm_ld50*1000)-b2_mean)**2*var_b2)+rmse1**2 ))
+            self.bird_reptile_dermal_ld50 = 10**(1.7822+0.8199 *(math.log(self.low_bird_acute_ld50))-0.4874 * (math.log(self.mam_acute_oral_ld50/self.mam_acute_derm_ld50*1000)))
+            -((math.sqrt(2)/2)*2.38*math.sqrt((0.5361976**2/(72)) + ((self.low_bird_acute_ld50-0.6379028)**2*0.1038**2)+(((math.log(self.mam_acute_oral_ld50/self.mam_acute_derm_ld50*1000)-2.432222)**2*0.1210**2)+0.5361976**2)))
+            #else:
+             #   self.bird_reptile_dermal_ld50 = 10**(0.84+(0.62*(math.log(self.low_bird_acute_ld50))))
             return self.bird_reptile_dermal_ld50
     
 

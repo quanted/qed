@@ -23,6 +23,8 @@ class GENEEInputPage(webapp.RequestHandler):
                 'model':'genee', 
                 'model_attributes':'GENEE Inputs'})
         html = html + str(genee_parameters.GENEEInp())
+        html = html + """<br><table class="tab_input_html" style="display:none">"""
+
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
@@ -36,4 +38,4 @@ def main():
 if __name__ == '__main__':
     main()
     
-    
+    

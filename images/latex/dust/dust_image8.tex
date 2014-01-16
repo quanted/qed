@@ -1,0 +1,32 @@
+\documentclass[fleqn, oneside, 11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[active, tightpage]{preview}
+
+\setlength\PreviewBorder{1pt}%
+
+\begin{document}
+
+\begin{preview}
+\begin{align*}
+%\begin{fleqn}
+CI & = \frac{\sqrt{2}}{2}\left(F_{value}\right)\sqrt{\frac{s^{2}}{n}+\left(x_{1}-\overline{x}_{1}\right)^{2}\left(var*\beta_{1}\right)+\left(x_{2}-\overline{x}_{2}\right)^{2}\left(var*\beta_{2}\right)+s^{2}} \nonumber \\
+CI & = 90\% \text{ Confidence Interval} \nonumber \\
+s & =  \text{Root mean square error} \nonumber \\
+n & =  \text{Number of samples} \nonumber \\
+x_{1} & = \text{Log of Avian Oral LD50} \nonumber \\
+\overline{x}_{1} & = \text{Mean of Avian Oral LD50 logged values} \nonumber \\
+x_{2} & = \text{Rat Dermal Toxicity Index} \nonumber \\
+\overline{x}_{2} & = \text{Mean of rat Dermal Toxicity Index} \nonumber \\
+var & = \text{Variance of rat DTI and Avian Oral LD50} \nonumber \\
+%\end{fleqn}
+\end{align*} 
+\end{preview}
+\end{document}
+
+% to convert at commandline- add the pdf file produced by this tex file at the end, and replace e.g., dust_equation25
+gs -sDEVICE=png16m -dTextAlphaBits=4 -r300 -dGraphicsAlphaBits=4 -dSAFER -q -dNOPAUSE -sOutputFile=dust_equation25.png image2_template_standalone.pdf
+
+% then type quit to exit ghostscript
+%using imageMagick
+convert -transparent-color white dust_equation25.png dust_equation25.gif

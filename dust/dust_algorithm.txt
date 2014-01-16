@@ -11,5 +11,7 @@
 <img src = "/images/latex/dust/dust_image5.png" alt="Dust_5">
 <p>Adjusted dermal LD50 for avians:</p>
 <img src = "/images/latex/dust/dust_image6.png" alt="Dust_6">
+<p>Estimate 90% confidence interval for adjusted dermal LD50 for avians:</p>
+<img src = "/images/latex/dust/dust_image8.png" alt="Dust_6">
 <p>Risk quotient values for mammals and avians:</p>
 <img src = "/images/latex/dust/dust_image7.png" alt="Dust_7">

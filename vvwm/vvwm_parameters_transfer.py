@@ -6,7 +6,7 @@ Created on Thu Nov 14 10:18:30 2013
 """
 
 #Chemical Tab
-working_dir = "Test/"
+working_dir = 'C:/Program Files/epa/SWCsetup2/TestFiles/test_working'
 sorp_K_unit = 'Koc'        #Remove this line after done testing
 chem_deg = '1'
 if chem_deg == '3':
@@ -106,12 +106,12 @@ dvf_path = "test.dvf"
 
 
 # Water Body Tab
-burial = ""
-if burial == 1:
-	buried = "1"
+burial = "False"
+if burial == "False":
+	buried = "False"
 else:
-	buried = ""
-buried = ""
+	buried = "True"
+# buried = ""
 D_over_dx = "1e-8"
 PRBEN = "0.5"
 benthic_depth = "0.05"
@@ -126,3 +126,18 @@ CHL = "0.005"
 FROC1 = "0.04"
 DOC1 = "5"
 PLMAS = "0.4"
+
+napp = "30"
+# 'Number of Applications' * numberOfYears (numberOfYears comes from Weather file *.dvf; default is 30)
+appDayofYear = "152,517,882,1248,1613,1978,2343,2709,3074,3439,3804,4170,4535,4900,5265,5631,5996,6361,6726,7092,7457,7822,8187,8553,8918,9283,9648,10014,10379,10744,"
+# list of the day of the year on which the applications occur; number of items = napp
+vvwmSimType = "2"
+#  Line 910 in Form1.vb (vvwm-specific sim type; sim type determines the next 4 lines...)
+afield = "100000"
+# Field Area
+area = "10000"
+# Water Body Area
+depth_0 = "2"
+# intital depth
+depth_max = "2"
+# max depth

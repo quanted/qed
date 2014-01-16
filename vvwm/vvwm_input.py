@@ -27,6 +27,7 @@ class vvwmInputPage(webapp.RequestHandler):
         <div class="input_nav">
             <ul>
                 <li class="Chemical tabSel">Chemical </li>
+                |<li class="Applications tabUnsel"> Applications </li>
                 |<li class="CropLand tabUnsel"> Crop/Land </li>
                 |<li class="WaterBody tabUnsel"> Water Body </li>
             </ul>
@@ -53,6 +54,21 @@ class vvwmInputPage(webapp.RequestHandler):
                             <tr><th colspan="2">Molar Conversion Factors (Degradate 2)</th></tr>
                             """
         html = html + str(przm5_parameters.przm5Inp_mcf2())
+        html = html + """</table><table class="tab tab_Applications" style="display:none">"""
+        html = html + str(przm5_parameters.przm5Inp_appl())
+        html = html + """
+                        <tr>
+                            <th width="55px">Day</th>
+                            <th width="56px">Month</th>
+                            <th width="68px">Year</th>
+                            <th width="74px">Amount (kg/hA)</th>
+                            <th width="104px">Application Method</th>
+                            <th width="74px">Depth (cm)</th>
+                            <th width="68px">Eff.</th>
+                            <th width="75px">Drift/T</th>
+                        </tr>
+                        
+                        """
         html = html + template.render (templatepath + 'vvwm_weatherfile.html', {})
         html = html + str(vvwm_parameters.vvwmInp_cropland())
         html = html + """</table><table class="tab tab_WaterBody" style="display:none">"""

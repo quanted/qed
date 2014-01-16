@@ -15,9 +15,9 @@ rest_key = keys_Picloud_S3.picloud_api_key
 rest_secretkey = keys_Picloud_S3.picloud_api_secretkey
 ###########################################################################################
 
-from pymongo import Connection
-connection = Connection('localhost', 27017)
-db = connection.ubertool
+import pymongo
+client = pymongo.MongoClient('localhost', 27017)
+db = client.ubertool
 
 def check(user, passwd):
     if user == keys_Picloud_S3.picloud_api_key and passwd == keys_Picloud_S3.picloud_api_secretkey:
@@ -26,15 +26,15 @@ def check(user, passwd):
 
 all_result = {}
 
-###############geneec####################
-@route('/geneec1/<jid>', method='POST') # or @route('/login', method='POST')
+##################################geneec#############################################
+@route('/geneec1/<jid>', method='POST') 
 @auth_basic(check)
 def myroute(jid):
     for k, v in request.json.iteritems():
         exec '%s = v' % k
     all_result.setdefault(jid,{}).setdefault('status','none')
 
-    import gfix
+    from geneec_rest import gfix
     # print request.json
     result = gfix.geneec2(APPRAT,APPNUM,APSPAC,KOC,METHAF,WETTED,METHOD,AIRFLG,YLOCEN,GRNFLG,GRSIZE,ORCFLG,INCORP,SOL,METHAP,HYDHAP,FOTHAP)
 
@@ -46,9 +46,10 @@ def myroute(jid):
     # db['geneec'].save(element)
     # print element
     return {'user_id':'admin', 'result': result, '_id':jid}
+##################################geneec#############################################
 
 
-###############przm5####################
+##################################przm5#############################################
 @route('/przm5/<jid>', method='POST') 
 @auth_basic(check)
 def przm5_rest(jid):

@@ -1,5 +1,9 @@
 application: pypest
+<<<<<<< HEAD
 version: jon
+=======
+version: tao
+>>>>>>> sprint10
 runtime: python27
 api_version: 1
 
@@ -41,6 +45,8 @@ skip_files:
 - ^(data/webice/.*)
 - ^(data/webice/images/.*)
 - ^(geneec/geneec_picloud/.*)
+- ^(data/.*)
+- ^(REST/.*)
 - ^(przm/przm_picloud/.*)
 - ^(pfam/pfam_picloud/.*)
 - ^(generatepdf/generatepdf_picloud/.*)$
@@ -169,6 +175,9 @@ handlers:
   script: webice/webice_SSDoutput.py
 - url: /webiceTNE_out\.html
   script: webice/webice_TNEoutput.py
+#historyoutput
+- url: /(.*?)_asdf.html
+  script: \1/\1_asdf.py
 
 ##TESTED models##
 #description
@@ -192,7 +201,6 @@ handlers:
 #qaqc_output
 - url: /(.*?)/(.*?)_qaqc_output.html
   script: \1/\2/\2_qaqc_output.py
-
 
 #USER pages
 - url: /user.html

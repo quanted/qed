@@ -1,9 +1,5 @@
 application: pypest
-<<<<<<< HEAD
 version: jon
-=======
-version: tao
->>>>>>> sprint10
 runtime: python27
 api_version: 1
 
@@ -207,7 +203,7 @@ handlers:
   script: user/user_input.py 
   login: required
   secure: never
-  
+
 - url: /user_output.html
   script: user/user_output.py
   login: required

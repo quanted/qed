@@ -21,8 +21,8 @@ from genee import genee_his_tables
 import logging
 logger = logging.getLogger('Geneec Model')
 
-url_part1 = 'http://localhost:7777'
-# url_part1 = 'http://50.16.11.44:7777'
+# url_part1 = 'http://localhost:7777'
+url_part1 = keys_Picloud_S3.amazon_ec2_ip
 
 class user_hist(object):
     def __init__(self, user_id, model_name):

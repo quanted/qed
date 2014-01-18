@@ -4,6 +4,8 @@ from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 from boto.s3.bucket import Bucket
 import os
+import boto.utils
+
 
 ##########################################################################################
 #####KEY, store output files. You might have to write your own import approach#####
@@ -14,7 +16,7 @@ rest_key = keys_Picloud_S3.picloud_api_key
 rest_secretkey = keys_Picloud_S3.picloud_api_secretkey
 ###########################################################################################
 
-host_ip='10.29.233.173'
+host_ip=boto.utils.get_instance_metadata()['local-ipv4']
 
 from pymongo import Connection
 connection = Connection(host_ip, 27017)

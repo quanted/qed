@@ -60,6 +60,9 @@ class SIPBatchRunner():
         m_species = None
         if 'm_species' in config_properties:
             m_species = config_properties['m_species']
+        b_species = None
+        if 'b_species' in config_properties:
+            b_species = config_properties['id_Species_of_the_tested_bird']
         noaec_d = None
         if 'noaec_d' in config_properties:
             noaec_d = config_properties['noaec_d']

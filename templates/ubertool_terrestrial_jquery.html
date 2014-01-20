@@ -38,7 +38,12 @@ $(document).ready(function() {
 					$("#id_avian_lc50")[0].value = terrestrial_data['avian_lc50'];						
 					$("#id_avian_NOAEC")[0].value = terrestrial_data['avian_NOAEC'];						
 					$("#id_avian_NOAEL")[0].value = terrestrial_data['avian_NOAEL'];	
-					$("#id_Species_of_the_tested_bird")[0].value = terrestrial_data['Species_of_the_tested_bird'];	
+					var b_species = terrestrial_data['Species_of_the_tested_bird'];
+					if(b_species == null)
+					{
+						b_species = terrestrial_data['b_species'];
+					}
+					$("#id_Species_of_the_tested_bird")[0].value = b_species;
 					$("#id_Species_of_the_tested_bird_avian_LD50")[0].value = terrestrial_data['Species_of_the_tested_bird_avian_LD50'];	
 					$("#id_Species_of_the_tested_bird_avian_LC50")[0].value = terrestrial_data['Species_of_the_tested_bird_avian_LC50'];	
 					$("#id_Species_of_the_tested_bird_avian_NOAEC")[0].value = terrestrial_data['Species_of_the_tested_bird_avian_NOAEC'];	
@@ -49,7 +54,10 @@ $(document).ready(function() {
 					$("#id_body_weight_of_the_assessed_bird_lg")[0].value = terrestrial_data['body_weight_of_the_assessed_bird_lg'];
 					$("#id_bw_quail")[0].value = terrestrial_data['bw_quail'];						
 					$("#id_bw_duck")[0].value = terrestrial_data['bw_duck'];						
-					$("#id_bwb_other")[0].value = terrestrial_data['bwb_other'];													
+					$("#id_bwb_other")[0].value = terrestrial_data['bwb_other'];						
+					$("#id_noaec_q")[0].value = terrestrial_data['noaec_q'];							
+					$("#id_noaec_d")[0].value = terrestrial_data['noaec_d'];						
+					$("#id_noaec_o")[0].value = terrestrial_data['noaec_o'];												
 					$("#id_mineau_scaling_factor")[0].value = terrestrial_data['mineau_scaling_factor'];						
 					$("#id_m_species")[0].value = terrestrial_data['m_species'];									
 					$("#id_mammalian_ld50")[0].value = terrestrial_data['mammalian_ld50'];					

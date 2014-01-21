@@ -29,6 +29,15 @@ class genee(object):
         if application_method == 'd':
             self.application_method_label = 'Granular (Non-spray)'
 
+        if self.application_target == 'a':
+            self.application_target_label = 'Short grass'
+        if self.application_target == 'b':
+            self.application_target_label = 'Tall grass'
+        if self.application_target == 'c':
+            self.application_target_label = 'Broad-leafed plants/small insects'
+        if self.application_target == 'd':
+            self.application_target_label = 'Fruits/pods/seeds/large insects'
+
         self.aerial_size_dist = aerial_size_dist
         self.ground_spray_type = ground_spray_type
         self.airblast_type = airblast_type
@@ -73,17 +82,21 @@ class genee(object):
         data = json.dumps(all_dic)
 
         import datetime, time
-        ts = time.time()
-        self.jid = datetime.datetime.fromtimestamp(ts).strftime('%Y%m%d%H%M%S%f')
-        url='http://localhost:7777/geneec1/'+self.jid 
-        # url='http://23.20.129.86:7777/geneec1/'+self.jid 
+        ts = datetime.datetime.now()
+        if(time.daylight):
+            ts1 = datetime.timedelta(hours=-4)+ts
+        else:
+            ts1 = datetime.timedelta(hours=-5)+ts
+        self.jid = ts1.strftime('%Y%m%d%H%M%S%f')
+        # url='http://localhost:7777/geneec1/'+self.jid 
+        url=keys_Picloud_S3.amazon_ec2_ip+'/geneec1/'+self.jid 
 
 
         # if run_type == "individual":
         start = time.clock()
-        self.response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
-        self.output_val = json.loads(self.response.content)['result']
-        self.jid = json.loads(self.response.content)['jid']
+        response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+        self.output_val = json.loads(response.content)['result']
+        # self.jid = json.loads(self.response.content)['jid']
         self.elapsed = (time.clock() - start)
         # logger.info(self.jid)
 

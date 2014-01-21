@@ -16,8 +16,8 @@ api_key=keys_Picloud_S3.picloud_api_key
 api_secretkey=keys_Picloud_S3.picloud_api_secretkey
 base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
 http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
-# url_part1 = 'http://localhost:7777'
-url_part1 = 'http://50.16.11.44:7777'
+url_part1 = 'http://localhost:7777'
+# url_part1 = 'http://50.16.11.44:7777'
 
 ###########################################################################
 

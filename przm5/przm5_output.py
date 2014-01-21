@@ -7,7 +7,8 @@ from google.appengine.ext.webapp import template
 from uber import uber_lib
 import cgi
 import cgitb
-from przm5 import przm5_rest_model, przm5_tables
+# from przm5 import przm5_rest_model, przm5_tables
+from przm5 import przm5_model, przm5_tables
 
 import logging
 logger = logging.getLogger('PRZM5 Model')
@@ -19,7 +20,7 @@ class przm5OutputPage(webapp.RequestHandler):
         args={}
         for key in form:
             args[key] = form.getvalue(key)
-        przm5_obj = przm5_rest_model.przm5(args)
+        przm5_obj = przm5_model.przm5(args)
         # logger.info(vars(przm5_obj))
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")

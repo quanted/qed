@@ -36,7 +36,10 @@ class agdriftOutputPage(webapp.RequestHandler):
         avg_depo_lbac = form.getvalue('avg_depo_lbac')
         deposition_ngL = form.getvalue('deposition_ngL')
         deposition_mgcm = form.getvalue('deposition_mgcm')
-        agdrift_obj = agdrift_model.agdrift(True, True, drop_size, ecosystem_type, application_method, boom_height, orchard_type, application_rate, distance, aquatic_type, calculation_input, init_avg_dep_foa, avg_depo_gha, avg_depo_lbac, deposition_ngL, deposition_mgcm)
+        nasae = form.getvalue('nasae')
+        y = form.getvalue('y')
+        x = form.getvalue('x')
+        agdrift_obj = agdrift_model.agdrift(True, True, drop_size, ecosystem_type, application_method, boom_height, orchard_type, application_rate, distance, aquatic_type, calculation_input, init_avg_dep_foa, avg_depo_gha, avg_depo_lbac, deposition_ngL, deposition_mgcm, nasae, y, x)
         text_file = open('agdrift/agdrift_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'

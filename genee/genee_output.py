@@ -13,8 +13,29 @@ import sys
 lib_path = os.path.abspath('..')
 sys.path.append(lib_path)
 from uber import uber_lib
+import keys_Picloud_S3
+import base64
+import urllib
+from google.appengine.api import urlfetch
+
+import logging
+logger = logging.getLogger('Geneec Model')
 
 #############################################
+
+############Provide the key and connect to the picloud####################
+api_key=keys_Picloud_S3.picloud_api_key
+api_secretkey=keys_Picloud_S3.picloud_api_secretkey
+base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
+http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
+########call the function################# 
+
+def update_dic(output_html, model_object_dict, model_name):
+    all_dic = {"model_name":model_name, "_id":model_object_dict['jid'], "output_html":output_html, "model_object_dict":model_object_dict}
+    data = json.dumps(all_dic)
+    # url='http://localhost:7777/update_history'
+    url=keys_Picloud_S3.amazon_ec2_ip+'/update_history'
+    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
 
 class GENEEOutputPage(webapp.RequestHandler):
     def post(self):     
@@ -122,15 +143,6 @@ class GENEEOutputPage(webapp.RequestHandler):
 ##########################################################################################                                        
 
         genee_obj = genee_model.genee('individual', chem_name, application_target, application_rate, number_of_applications, interval_between_applications, Koc, aerobic_soil_metabolism, wet_in, application_method, application_method_label, aerial_size_dist, ground_spray_type, airblast_type, spray_quality, no_spray_drift, incorporation_depth, solubility, aerobic_aquatic_metabolism, hydrolysis, photolysis_aquatic_half_life)
-        
-        # application_rate, number_of_applications, interval_between_applications, 
-        #                   Koc, aerobic_soil_metabolism, wet_in, application_method, 
-        #                   aerial_size_dist, no_spray_drift, ground_spray_type, spray_quality, airblast_type,
-        #                   incorporation_depth, solubility, aerobic_aquatic_metabolism, hydrolysis, photolysis_aquatic_half_life
-
-
-        # final_res=get_jid(genee_obj)
-
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie)
@@ -141,10 +153,10 @@ class GENEEOutputPage(webapp.RequestHandler):
                 'model_attributes':'GENEE Output'})
         html = html + genee_tables.timestamp(genee_obj)
         html = html + genee_tables.table_all(genee_obj)
-        # html = html + str(genee_obj.data_a)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        update_dic(html, genee_obj.__dict__, 'geneec')
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', GENEEOutputPage)], debug=True)

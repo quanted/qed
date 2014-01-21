@@ -33,7 +33,8 @@ http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'a
 def update_dic(output_html, model_object_dict, model_name):
     all_dic = {"model_name":model_name, "_id":model_object_dict['jid'], "output_html":output_html, "model_object_dict":model_object_dict}
     data = json.dumps(all_dic)
-    url='http://localhost:7777/update_history'
+    # url='http://localhost:7777/update_history'
+    url=keys_Picloud_S3.amazon_ec2_ip+'/update_history'
     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
 
 class GENEEOutputPage(webapp.RequestHandler):

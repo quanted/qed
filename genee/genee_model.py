@@ -88,8 +88,8 @@ class genee(object):
         else:
             ts1 = datetime.timedelta(hours=-5)+ts
         self.jid = ts1.strftime('%Y%m%d%H%M%S%f')
-        url='http://localhost:7777/geneec1/'+self.jid 
-        # url='http://23.20.129.86:7777/geneec1/'+self.jid 
+        # url='http://localhost:7777/geneec1/'+self.jid 
+        url=keys_Picloud_S3.amazon_ec2_ip+'/geneec1/'+self.jid 
 
 
         # if run_type == "individual":

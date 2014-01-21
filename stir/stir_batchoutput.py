@@ -62,9 +62,7 @@ loc_sid_avian_out = []
 loc_vid_mammal_out = []
 loc_sid_mammal_out = []
 
-
 data.next()
-
 
 def html_table(row,iter):
     chemical_name.append(str(row[0]))

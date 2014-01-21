@@ -27,9 +27,10 @@ function initialize() {
 	
 	// WMS Class settings
 	var wms_layer_map = new OpenLayers.Layer.WMS(
-		'Base layer',
+		'OpenLayer WMS',
 		'http://vmap0.tiles.osgeo.org/wms/vmap0',
 		{layers: 'basic'},
+		// {attribution: 'Base WMS layer'},
 		{isBaseLayer: true});
 
 	// var wms_modis = new OpenLayers.Layer.WMS(
@@ -44,7 +45,12 @@ function initialize() {
 		'http://vmap0.tiles.osgeo.org/wms/vmap0',
 		{layers: 'clabel,ctylabel,statelabel',
 		transparent: true},
+		// {attribution:'Lables of states and cities'},
 		{opacity: .5});
+
+	var osm_layer = new OpenLayers.Layer.OSM(
+		'OpenStreetMap Layer'
+		);
 
 	// var wms_state_lines = new OpenLayers.Layer.WMS(
 	// 	'State Line Layer',
@@ -67,16 +73,24 @@ function initialize() {
 	// 	{layers: 'priroad,secroad,rail',
 	// 	transparent: true},
 	// 	{transistionEffect: 'resize'});
-
+	
+	// Creat a editable veoctor layer
+	var vector_layer = new OpenLayers.Layer.Vector(
+		'Ediatable Vectors')
+	// Add a vector editing control
+	map.addControl(new OpenLayers.Control.EditingToolbar(vector_layer));
+	map.addControl(new OpenLayers.Control.LayerSwitcher({}));
+	map.addControl(new OpenLayers.Control.ScaleLine());
+	
 	map.addLayers([
 		wms_layer_map, 
 		// wms_modis,
 		wms_layer_labels,
+		osm_layer,
 		// wms_state_lines,
 		// wms_water_depth,
 		// wms_roads
 		]);
-	map.addControl(new OpenLayers.Control.LayerSwitcher({}));
 
 	if(!map.getCenter()){
 		map.zoomToMaxExtent();

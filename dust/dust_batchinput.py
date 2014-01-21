@@ -19,7 +19,7 @@ class dustBatchInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberbatchinput.html', {
                 'model':'dust',
                 'model_attributes':'DUST Batch Input'}) 
-        html = html + template.render(templatepath + '04uberbatchinput_jquery.html', {}) 
+        html = html + template.render(templatepath + '04uberbatchinput_jquery.html', {'model':'dust'}) 
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

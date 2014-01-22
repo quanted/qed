@@ -15,14 +15,21 @@ import base64
 from google.appengine.api import urlfetch
 import keys_Picloud_S3
 import logging
+logger = logging.getLogger('Geneec Batch')
 
 ############Provide the key and connect to the picloud####################
 api_key=keys_Picloud_S3.picloud_api_key
 api_secretkey=keys_Picloud_S3.picloud_api_secretkey
 base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
-http_headers = {'Authorization' : 'Basic %s' % base64string}
-###########################################################################
+http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
 
+###########################################################################
+def update_dic(output_html, model_object_dict, model_name):
+    all_dic = {"model_name":model_name, "_id":model_object_dict['jid'], "output_html":output_html, "model_object_dict":model_object_dict}
+    data = json.dumps(all_dic)
+    # url='http://localhost:7777/update_history'
+    url=keys_Picloud_S3.amazon_ec2_ip+'/update_history'
+    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
 
 chem_name = []
 application_target = []
@@ -47,6 +54,7 @@ photolysis_aquatic_half_life = []
 ####### Outputs ########
 jid_all = []
 genee_obj_all = []
+# genee_dict_list_all=[]
 
 def create_jid(row_inp,iter):
     chem_name.append(row_inp[0])
@@ -72,7 +80,7 @@ def create_jid(row_inp,iter):
     genee_obj = genee_model.genee('batch', chem_name[iter], application_target[iter], application_rate[iter], number_of_applications[iter], interval_between_applications[iter], Koc[iter], aerobic_soil_metabolism[iter], wet_in[iter], application_method[iter], application_method_label, aerial_size_dist[iter], ground_spray_type[iter], airblast_type[iter], spray_quality[iter], no_spray_drift[iter], incorporation_depth[iter], solubility[iter], aerobic_aquatic_metabolism[iter], hydrolysis[iter], photolysis_aquatic_half_life[iter])
     jid_all.append(genee_obj.jid)
     genee_obj_all.append(genee_obj)
-
+    # genee_dict_list_all.append(genee_obj.__dict__)
 
 
 
@@ -86,19 +94,18 @@ def loop_html(thefile):
         i=i+1
 
     for j in range(len(jid_all)):
-        output_st = ""
-        while output_st!="done":
-        response_st = urlfetch.fetch(url='https://api.picloud.com/job/?jids=%s&field=status' %jid_all[j], headers=http_headers)
-        output_st = json.loads(response_st.content)['info']['%s' %jid_all[j]]['status']
+        # output_st = ""
+        # url_st='http://localhost:7777/ubertool_history/'+ 'geneec/' + jid_all[j]
+        # while output_st!="done":
+        #     response_st = urlfetch.fetch(url=url_st, method=urlfetch.GET, headers=http_headers, deadline=60)
+        #     output_st = json.loads(response_st.content)['status']
 
-        url_val = 'https://api.picloud.com/job/result/?jid='+str(jid_all[j])
-        response_val = urlfetch.fetch(url=url_val, method=urlfetch.GET, headers=http_headers)
-        output_val = json.loads(response_val.content)['result']
-        # print j
+        # output_val = json.loads(response_st.content)['result']
+        # # print j
 
         genee_obj_temp =  genee_obj_all[j]
-        setattr(genee_obj_temp, 'output_val', output_val)
-
+        # setattr(genee_obj_temp, 'output_val', output_val)
+        logger.info(genee_obj_temp)
         batch_header = """
             <div class="out_">
                 <br><H3>Batch Calculation of Iteration %s:</H3>
@@ -106,8 +113,10 @@ def loop_html(thefile):
             """%(j + 1)
 
         out_html = out_html + batch_header + genee_tables.table_all(genee_obj_temp)
+        # logger.info(genee_obj_temp.__dict__)
+        update_dic(batch_header + genee_tables.table_all(genee_obj_temp), genee_obj_temp.__dict__, 'geneec')
 
-    return out_html
+    return genee_tables.timestamp(genee_obj_temp) + out_html
 
 
 class geneeBatchOutputPage(webapp.RequestHandler):
@@ -118,8 +127,7 @@ class geneeBatchOutputPage(webapp.RequestHandler):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         html = template.render(templatepath + '04uberoutput_start.html', {
                 'model':'genee',
-                'model_attributes':'genee Batch Output'})
-        html = html + genee_tables.timestamp()
+                'model_attributes':'Genee Batch Output'})
         html = html + iter_html
         html = html + template.render(templatepath + 'export_fortran.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})

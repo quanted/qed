@@ -29,13 +29,13 @@ class genee(object):
         if application_method == 'd':
             self.application_method_label = 'Granular (Non-spray)'
 
-        if self.application_target == 'a':
+        if self.application_target == 'a' or 'Short grass':
             self.application_target_label = 'Short grass'
-        if self.application_target == 'b':
+        if self.application_target == 'b' or 'Tall grass':
             self.application_target_label = 'Tall grass'
-        if self.application_target == 'c':
+        if self.application_target == 'c' or 'Broad-leafed plants/small insects':
             self.application_target_label = 'Broad-leafed plants/small insects'
-        if self.application_target == 'd':
+        if self.application_target == 'd' or 'Fruits/pods/seeds/large insects':
             self.application_target_label = 'Fruits/pods/seeds/large insects'
 
         self.aerial_size_dist = aerial_size_dist
@@ -75,10 +75,10 @@ class genee(object):
         FOTHAP = self.photolysis_aquatic_half_life
 
 
-        all_dic = {"APPRAT":APPRAT, "APPNUM":APPNUM, "APSPAC":APSPAC, "KOC":KOC, "METHAF":METHAF, "WETTED":WETTED,
+        all_dic = {"run_type":run_type, "APPRAT":APPRAT, "APPNUM":APPNUM, "APSPAC":APSPAC, "KOC":KOC, "METHAF":METHAF, "WETTED":WETTED,
                    "METHOD":METHOD, "AIRFLG":AIRFLG, "YLOCEN":YLOCEN, "GRNFLG":GRNFLG, "GRSIZE":GRSIZE,
                    "ORCFLG":ORCFLG, "INCORP":INCORP, "SOL":SOL, "METHAP":METHAP, "HYDHAP":HYDHAP, "FOTHAP":FOTHAP}
-        logger.info(all_dic)
+        # logger.info(all_dic)
         data = json.dumps(all_dic)
 
         import datetime, time
@@ -92,15 +92,25 @@ class genee(object):
         url=keys_Picloud_S3.amazon_ec2_ip+'/geneec1/'+self.jid 
 
 
-        # if run_type == "individual":
-        start = time.clock()
-        response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
-        self.output_val = json.loads(response.content)['result']
+        if run_type == "individual":
+            response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+            self.output_val = json.loads(response.content)['result']
         # self.jid = json.loads(self.response.content)['jid']
-        self.elapsed = (time.clock() - start)
         # logger.info(self.jid)
 
-        # if run_type == "batch":
-        #     start = time.clock()
-        #     self.response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
-        #     self.output_val = json.loads(self.response.content)['result']
+        if run_type == "batch":
+            response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+            self.output_val = json.loads(response.content)['result']
+
+# def update_dic(output_html, model_object_dict, model_name):
+#     all_dic = {"model_name":model_name, "_id":model_object_dict['jid'], "output_html":output_html, "model_object_dict":model_object_dict}
+#     data = json.dumps(all_dic)
+#     url='http://localhost:7777/update_history'
+#     # url=keys_Picloud_S3.amazon_ec2_ip+'/update_history'
+#     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+
+#         update_dic(html, genee_obj.__dict__, 'geneec')
+
+
+
+            # self.output_st = ''

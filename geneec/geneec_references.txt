@@ -9,6 +9,14 @@ Specific EPA guidance and the Fortran source code for the GENEEC model can be fo
   <li><a href="http://www.epa.gov/oppefed1/models/water/geneec2_description.htm">GENEEC Fortran Source Code</a></li>
   <li><a href="http://www.epa.gov/oppefed1/models/water/input_parameter_guidance.htm#Geneec2">GENEEC Input Parameter Guidance</a></li>
 </ul>
+
+<p>
+Current github source code:
+</p>
+<ul>
+<li><a href="https://github.com/puruckertom/ubertool_src/tree/master/geneec">ubertool_src on github</a>
+</ul>
+
 <p>
 Example reports documenting the use of GENEEC in reregistration eligibility documents and pesticide effects determinations for federally threatened and endangered species:
 <ul class="bullet">

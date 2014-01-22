@@ -33,7 +33,6 @@ def myroute(jid):
     for k, v in request.json.iteritems():
         exec '%s = v' % k
     all_result.setdefault(jid,{}).setdefault('status','none')
-
     from geneec_rest import gfix
     # print request.json
     result = gfix.geneec2(APPRAT,APPNUM,APSPAC,KOC,METHAF,WETTED,METHOD,AIRFLG,YLOCEN,GRNFLG,GRSIZE,ORCFLG,INCORP,SOL,METHAP,HYDHAP,FOTHAP)
@@ -42,9 +41,10 @@ def myroute(jid):
         all_result[jid]['status']='done'
         all_result[jid]['input']=request.json
         all_result[jid]['result']=result
-    # element={'user_id':'admin', "_id":jid, "output":all_result[jid]['result'], "input":all_result[jid]['input']}
-    # db['geneec'].save(element)
-    # print element
+    # if run_type == "batch":
+    #     # element={'user_id':'admin', "_id":jid, "output":all_result[jid]['result'], "input":all_result[jid]['input']}
+    #     element={'user_id':'admin', "_id":jid, "status": 'done', "result":all_result[jid]['result']}
+    #     db['geneec'].save(element)
     return {'user_id':'admin', 'result': result, '_id':jid}
 ##################################geneec#############################################
 
@@ -140,6 +140,7 @@ def insert_output_html():
 @auth_basic(check)
 def get_document(model_name, jid):
     entity = db[model_name].find_one({'_id':jid})
+    print entity
     if not entity:
         abort(404, 'No document with jid %s' % jid)
     return entity

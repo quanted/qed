@@ -6,6 +6,14 @@ Specific EPA guidance and the Microsoft Excel version of the model on the T-Rex 
   <li><a href="http://www.epa.gov/oppefed1/models/terrestrial/trex/t_rex_user_guide.htm">User's Guide</a></li>
   <li><a href="http://www.epa.gov/oppefed1/models/terrestrial/trex/trex_v1_5_1_webversion.xlsm">T-Rex Excel Implementation</a></li>
 </ul>
+
+<p>
+Current github source code:
+</p>
+<ul>
+<li><a href="https://github.com/puruckertom/ubertool_src/tree/master/trex">ubertool_src on github</a>
+</ul>
+
 <p>
 Example reports documenting the use of T-Rex in reregistration eligibility documents and pesticide effects determinations for federally threatened and endangered species:
 </p>

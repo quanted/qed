@@ -20,7 +20,7 @@ $(document).ready(function(){
 
 
     $.jqplot.config.enablePlugins = true;	
-    var s1 =  $.parseJSON($('#distance').text());
+    var s1 = $.parseJSON($('#distance').text());
     var s2 = $.parseJSON($('#deposition').text());
 		var len1 = s1.length;
 		var len2 = s2.length;
@@ -44,7 +44,7 @@ $(document).ready(function(){
 			series:L,
 			axes: {
       			xaxis: {
-					label :'Distance (Feet)',
+					label :'Distance (Meters)',
 					pad: 0
       				},
       			yaxis: {

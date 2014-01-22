@@ -3,7 +3,9 @@ import base64
 import urllib
 from google.appengine.api import urlfetch
 import json
-
+import time
+import logging
+logger = logging.getLogger('Geneec Model')
 
 class geneec(object):
     def __init__(self, run_type, chem_name, application_target, application_rate, number_of_applications, interval_between_applications, Koc, aerobic_soil_metabolism, wet_in, application_method, application_method_label, aerial_size_dist, ground_spray_type, airblast_type, spray_quality, no_spray_drift, incorporation_depth, solubility, aerobic_aquatic_metabolism, hydrolysis, photolysis_aquatic_half_life):
@@ -69,7 +71,13 @@ class geneec(object):
                                  "METHOD":METHOD, "AIRFLG":AIRFLG, "YLOCEN":YLOCEN, "GRNFLG":GRNFLG, "GRSIZE":GRSIZE,
                                  "ORCFLG":ORCFLG, "INCORP":INCORP, "SOL":SOL, "METHAP":METHAP, "HYDHAP":HYDHAP, "FOTHAP":FOTHAP})
         
+        logger.info({"APPRAT":APPRAT, "APPNUM":APPNUM, "APSPAC":APSPAC, "KOC":KOC, "METHAF":METHAF, "WETTED":WETTED,
+                     "METHOD":METHOD, "AIRFLG":AIRFLG, "YLOCEN":YLOCEN, "GRNFLG":GRNFLG, "GRSIZE":GRSIZE,
+                     "ORCFLG":ORCFLG, "INCORP":INCORP, "SOL":SOL, "METHAP":METHAP, "HYDHAP":HYDHAP, "FOTHAP":FOTHAP})
+        
+        # start = time.clock()
         if run_type == "individual":
+            start = time.clock()
             response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers)    
             self.jid= json.loads(response.content)['jid']
             self.output_st = ''
@@ -81,12 +89,17 @@ class geneec(object):
             self.url_val = 'https://api.picloud.com/job/result/?jid='+str(self.jid)
             self.response_val = urlfetch.fetch(url=self.url_val, method=urlfetch.GET, headers=http_headers)
             self.output_val = json.loads(self.response_val.content)['result']
+            self.elapsed = (time.clock() - start)
+
 
         if run_type == "batch":
             response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers)    
             self.jid= json.loads(response.content)['jid']
             self.output_st = ''
-            
+
+        # elapsed = (time.clock() - start)
+        # logger.info([elapsed, elapsed1, elapsed2])
+
             # while self.output_st!="done":
             #     self.response_st = urlfetch.fetch(url='https://api.picloud.com/job/?jids=%s&field=status' %self.jid, headers=http_headers)
             #     self.output_st = json.loads(self.response_st.content)['info']['%s' %self.jid]['status']
@@ -94,3 +107,4 @@ class geneec(object):
             # self.url_val = 'https://api.picloud.com/job/result/?jid='+str(self.jid)
             # self.response_val = urlfetch.fetch(url=self.url_val, method=urlfetch.GET, headers=http_headers)
             # self.output_val = json.loads(self.response_val.content)['result']
+

@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Pseudokirchneriella sp.</predicted>
+		<r2>0.640853882</r2>
+		<pVal>0.030554159</pVal>
+		<df>5</df>
+		<intercept>0.47319841</intercept>
+		<slope>0.874595239</slope>
+		<xAvg>-0.871792492</xAvg>
+		<xMin>-2.292429824</xMin>
+		<xMax>1.008600172</xMax>
+		<Sxx>5.891111038</Sxx>
+		<MSE>0.505072333</MSE>
+		<t90CI>2.015048373</t90CI>
+		<t95CI>2.570581836</t95CI>
+		<t99CI>4.032142984</t99CI>
+		<Bootstrap>0.5</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

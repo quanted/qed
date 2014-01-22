@@ -1,0 +1,12 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Mourning dove (Zenaida macroura)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Redwinged blackbird (Agelaius phoeniceus)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Rock dove (Columba livia)</surrogate>
+	</cross>
+</species>

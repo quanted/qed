@@ -7,6 +7,14 @@ Specific EPA guidance and the Microsoft Excel version of the model on the T-Herp
   <li><a href="http://www.epa.gov/oppefed1/models/terrestrial/therps/t_herps_v1_0_may_15_2007.xls">T-Herps Excel Implementation</a></li>
   </ul>
 <p>
+
+<p>
+Current github source code:
+</p>
+<ul>
+<li><a href="https://github.com/puruckertom/ubertool_src/tree/master/therps">ubertool_src on github</a>
+</ul>
+
 Example reports documenting the use of T-Herps in reregistration eligibility documents and pesticide effects determinations for federally threatened and endangered species:
 </p>
 <ul class="bullet">

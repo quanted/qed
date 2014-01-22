@@ -1,0 +1,19 @@
+<p>
+Current github source code:
+</p>
+<ul>
+<li><a href="https://github.com/puruckertom/ubertool_src/tree/master/earthworm">ubertool_src on github</a>
+</ul>
+
+<p>
+Belfroid, A., M. Sikkenk, W. Seinen, K.V. Gestel, J. Hermens. 1994. The toxicokinetic behavior of chlorobenzenes in earthworm (<i>Eisenia andrei</i>) experiments in soil. Environ. Toxicol. Chem. 13: 93-99.
+</p>
+<p>
+Cobb, G.P., E.H. Hol, P.W. Allen, J.A Gagne, R.J. Kendall. 1995. Uptake, metabolism, and toxicity of terbufos in the earthworm (<i>Lumbricus terrestris</i>) exposed to COUNTER-15G in artificial soils. Environ. Toxicol. Chem. 14(2): 279-285.
+</p>
+<p>
+Mackay, D. and S. Paterson. 1981. Calculating fugacity. Environ. Sci. Technol. 15: 1006-1014.
+</p>
+<p>
+USEPA. 2008. User's Guide: T-REX Version 1.4.1 (Terrestrial Residue Exposure model). United States Environmental Protection Agency. Environmental Fate and Effects Division.
+</p>

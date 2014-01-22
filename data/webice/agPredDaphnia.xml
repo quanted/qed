@@ -1,0 +1,63 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Amphipod (Allorchestes compressa)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Amphipod (Gammarus fasciatus)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Amphipod (Gammarus lacustris)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Amphipod (Gammarus pseudolimnaeus)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Amphipod (Hyalella azteca)</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Bluegill (Lepomis macrochirus)</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Channel catfish (Ictalurus punctatus)</surrogate>
+	</cross>
+	<cross num="8">
+		<surrogate>Common carp (Cyprinus carpio)</surrogate>
+	</cross>
+	<cross num="9">
+		<surrogate>Crayfish (Orconectes nais)</surrogate>
+	</cross>
+	<cross num="10">
+		<surrogate>Daphnid (Daphnia magna)</surrogate>
+	</cross>
+	<cross num="11">
+		<surrogate>Daphnid (Simocephalus serrulatus)</surrogate>
+	</cross>
+	<cross num="12">
+		<surrogate>Eastern oyster (Crassostrea virginica)</surrogate>
+	</cross>
+	<cross num="13">
+		<surrogate>Fathead minnow (Pimephales promelas)</surrogate>
+	</cross>
+	<cross num="14">
+		<surrogate>Goldfish (Carassius auratus)</surrogate>
+	</cross>
+	<cross num="15">
+		<surrogate>Isopod (Asellus aquaticus)</surrogate>
+	</cross>
+	<cross num="16">
+		<surrogate>Midge (Paratanytarsus dissimilis)</surrogate>
+	</cross>
+	<cross num="17">
+		<surrogate>Mysid (Americamysis bahia)</surrogate>
+	</cross>
+	<cross num="18">
+		<surrogate>Northern river crangonyctid (Crangonyx pseudogracilis)</surrogate>
+	</cross>
+	<cross num="19">
+		<surrogate>Rainbow trout (Oncorhynchus mykiss)</surrogate>
+	</cross>
+	<cross num="20">
+		<surrogate>Sheepshead minnow (Cyprinodon variegatus)</surrogate>
+	</cross>
+</species>

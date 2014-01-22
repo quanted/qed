@@ -26,3 +26,5 @@
 <img src="/images/latex/vvwm/vvwm_image7.png" />
 <h3>Equation 4-7.</h3>
 <img src="/images/latex/vvwm/vvwm_image8.png" />
+<h3>Equation 4-8.</h3>
+<img src="/images/latex/vvwm/vvwm_image9.png" />

@@ -19,7 +19,7 @@ class RiceBatchInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberbatchinput.html', {
                 'model':'rice',
                 'model_attributes':'Rice Model Batch Input'}) 
-        html = html + template.render(templatepath + '04uberbatchinput_jquery.html', {})
+        html = html + template.render(templatepath + '04uberbatchinput_jquery.html', {'model':'rice'})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

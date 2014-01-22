@@ -1,0 +1,57 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Flatworm (Dugesia tigrina)</predicted>
+		<r2>0.7361138810</r2>
+		<pVal>0.0288259160</pVal>
+		<df>4</df>
+		<intercept>1.2894659150</intercept>
+		<slope>0.7035673470</slope>
+		<xAvg>4.2537872040</xAvg>
+		<xMin>2.7525749890</xMin>
+		<xMax>5.0000000000</xMax>
+		<Sxx>3.8545455990</Sxx>
+		<MSE>0.1709999900</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>83.33333333</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Oligochaete (Lumbriculus variegatus)</predicted>
+		<r2>0.8876701440</r2>
+		<pVal>0.0049210290</pVal>
+		<df>4</df>
+		<intercept>-0.8107463910</intercept>
+		<slope>1.1710052580</slope>
+		<xAvg>4.2537872040</xAvg>
+		<xMin>2.7525749890</xMin>
+		<xMax>5.0000000000</xMax>
+		<Sxx>3.8545455990</Sxx>
+		<MSE>0.1672147090</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Ramshorn snail (Planorbella trivolvis)</predicted>
+		<r2>0.9531992730</r2>
+		<pVal>0.0008345270</pVal>
+		<df>4</df>
+		<intercept>1.8438546650</intercept>
+		<slope>0.6333436980</slope>
+		<xAvg>4.2537872040</xAvg>
+		<xMin>2.7525749890</xMin>
+		<xMax>5.0000000000</xMax>
+		<Sxx>3.8545455990</Sxx>
+		<MSE>0.0189784610</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

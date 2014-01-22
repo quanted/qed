@@ -1,0 +1,30 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Bluegill (Lepomis macrochirus)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Brown trout (Salmo trutta)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Coho salmon (Oncorhynchus kisutch)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Cutthroat trout (Oncorhynchus clarkii)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Lake trout (Salvelinus namaycush)</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Largemouth bass (Micropterus salmoides)</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Northern pike (Esox lucius)</surrogate>
+	</cross>
+	<cross num="8">
+		<surrogate>Rainbow trout (Oncorhynchus mykiss)</surrogate>
+	</cross>
+	<cross num="9">
+		<surrogate>Yellow perch (Perca flavescens)</surrogate>
+	</cross>
+</species>

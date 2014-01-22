@@ -1,0 +1,15 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Atlantic salmon (Salmo salar)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Daphnid (Daphnia magna)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Daphnid (Daphnia pulex)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Mysid (Americamysis bahia)</surrogate>
+	</cross>
+</species>

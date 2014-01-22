@@ -1,0 +1,39 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Gammaridae</predicted>
+		<r2>0.9999950470</r2>
+		<pVal>0.0014167950</pVal>
+		<df>1</df>
+		<intercept>-0.8817726850</intercept>
+		<slope>1.1874513030</slope>
+		<xAvg>3.1242973760</xAvg>
+		<xMin>0.6627578320</xMin>
+		<xMax>5.0530784430</xMax>
+		<Sxx>10.0632049300</Sxx>
+		<MSE>0.0000702786</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Salmonidae</predicted>
+		<r2>0.9139689640</r2>
+		<pVal>0.0000043113</pVal>
+		<df>9</df>
+		<intercept>0.8100119580</intercept>
+		<slope>0.7925241490</slope>
+		<xAvg>2.7844243880</xAvg>
+		<xMin>-1.4436974990</xMin>
+		<xMax>5.3729120030</xMax>
+		<Sxx>51.5452472900</Sxx>
+		<MSE>0.3386061400</MSE>
+		<t90CI>1.833</t90CI>
+		<t95CI>2.262</t95CI>
+		<t99CI>3.25</t99CI>
+		<Bootstrap>72.72727273</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

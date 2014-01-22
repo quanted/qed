@@ -1,0 +1,15 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>House sparrow (Passer domesticus)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Mouse (Mus musculus)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Norway rat (Rattus norvegicus)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Starling (Sturnus vulgaris)</surrogate>
+	</cross>
+</species>

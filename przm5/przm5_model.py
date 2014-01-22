@@ -95,7 +95,7 @@ def convert_dict_key(key):
 
 class przm5(object):
      def __init__(self, dictionary):
-        logger.info('FILE LOCATION===================')
+        logger.info('===================')
         logger.info(os.getcwd())
         cwd=os.getcwd()+'/PRZM5/'
 
@@ -285,6 +285,7 @@ class przm5(object):
         self.PRCP_IRRG_sum = self.final_res[2][1]
         self.RUNF_sum = self.final_res[2][2]
         self.CEVP_TETD_sum = self.final_res[2][3]
+        self.jid = self.final_res[0]
 
 
 ###Question.

@@ -1,0 +1,28 @@
+<?xml version = '1.0'?>
+<surrogateOptions>
+	<surrogate>Mysid (Americamysis bahia)</surrogate>
+	<surrogate>Isopod (Caecidotea brevicauda)</surrogate>
+	<surrogate>Goldfish (Carassius auratus)</surrogate>
+	<surrogate>Midge (Chironomus plumosus)</surrogate>
+	<surrogate>Leon springs pupfish (Cyprinodon bovinus)</surrogate>
+	<surrogate>Sheepshead minnow (Cyprinodon variegatus)</surrogate>
+	<surrogate>Common carp (Cyprinus carpio)</surrogate>
+	<surrogate>Daphnid (Daphnia magna)</surrogate>
+	<surrogate>Northern pike (Esox lucius)</surrogate>
+	<surrogate>Green sunfish (Lepomis cyanellus)</surrogate>
+	<surrogate>Bluegill (Lepomis macrochirus)</surrogate>
+	<surrogate>Largemouth bass (Micropterus salmoides)</surrogate>
+	<surrogate>Cutthroat trout (Oncorhynchus clarkii)</surrogate>
+	<surrogate>Coho salmon (Oncorhynchus kisutch)</surrogate>
+	<surrogate>Rainbow trout (Oncorhynchus mykiss)</surrogate>
+	<surrogate>Chinook salmon (Oncorhynchus tshawytscha)</surrogate>
+	<surrogate>Yellow perch (Perca flavescens)</surrogate>
+	<surrogate>Fathead minnow (Pimephales promelas)</surrogate>
+	<surrogate>Guppy (Poecilia reticulata)</surrogate>
+	<surrogate>Stonefly (Pteronarcella badia)</surrogate>
+	<surrogate>Colorado squawfish (Ptychocheilus lucius)</surrogate>
+	<surrogate>Atlantic salmon (Salmo salar)</surrogate>
+	<surrogate>Brown trout (Salmo trutta)</surrogate>
+	<surrogate>Brook trout (Salvelinus fontinalis)</surrogate>
+	<surrogate>Lake trout (Salvelinus namaycush)</surrogate>
+</surrogateOptions>

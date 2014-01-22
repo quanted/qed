@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Fathead minnow (Pimephales promelas)</predicted>
+		<r2>0.9942639690</r2>
+		<pVal>0.0482616220</pVal>
+		<df>1</df>
+		<intercept>-2.7770347990</intercept>
+		<slope>1.4922095320</slope>
+		<xAvg>3.7098931950</xAvg>
+		<xMin>3.0678246270</xMin>
+		<xMax>4.8560034540</xMax>
+		<Sxx>1.9798787980</Sxx>
+		<MSE>0.0254336080</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>6</taxDist>
+	</cross>
+</species>

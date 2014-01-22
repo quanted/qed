@@ -1,0 +1,21 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Salmonidae</predicted>
+		<r2>0.9976416570</r2>
+		<pVal>0.0309281860</pVal>
+		<df>1</df>
+		<intercept>0.3103828200</intercept>
+		<slope>0.8890537050</slope>
+		<xAvg>2.8317814570</xAvg>
+		<xMin>1.7781512500</xMin>
+		<xMax>4.5411018620</xMax>
+		<Sxx>4.4618424960</Sxx>
+		<MSE>0.0083368620</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+</species>

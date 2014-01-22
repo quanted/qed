@@ -1,0 +1,57 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Columbidae</predicted>
+		<r2>1</r2>
+		<pVal>0.006</pVal>
+		<df>1</df>
+		<intercept>0.883</intercept>
+		<slope>0.5327</slope>
+		<xAvg>0.47</xAvg>
+		<xMin>-0.04</xMin>
+		<xMax>0.83</xMax>
+		<Sxx>0.4045</Sxx>
+		<MSE>0</MSE>
+		<t90CI>6.314</t90CI>
+		<t95CI>12.706</t95CI>
+		<t99CI>63.657</t99CI>
+		<Bootstrap>0</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Muridae</predicted>
+		<r2>0.859</r2>
+		<pVal>0.003</pVal>
+		<df>5</df>
+		<intercept>0.4561</intercept>
+		<slope>0.9504</slope>
+		<xAvg>0.84</xAvg>
+		<xMin>-0.04</xMin>
+		<xMax>1.26</xMax>
+		<Sxx>1.2337</Sxx>
+		<MSE>0.0367</MSE>
+		<t90CI>2.015</t90CI>
+		<t95CI>2.571</t95CI>
+		<t99CI>4.032</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Sciuridae</predicted>
+		<r2>0.788</r2>
+		<pVal>0.018</pVal>
+		<df>4</df>
+		<intercept>-0.1725</intercept>
+		<slope>1.8798</slope>
+		<xAvg>0.77</xAvg>
+		<xMin>-0.04</xMin>
+		<xMax>1.26</xMax>
+		<Sxx>1.036</Sxx>
+		<MSE>0.2464</MSE>
+		<t90CI>2.132</t90CI>
+		<t95CI>2.776</t95CI>
+		<t99CI>4.604</t99CI>
+		<Bootstrap>80</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+</species>

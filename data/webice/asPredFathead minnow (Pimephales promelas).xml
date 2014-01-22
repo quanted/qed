@@ -1,0 +1,138 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Amphipod (Gammarus pseudolimnaeus)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Apache trout (Oncorhynchus gilae)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Atlantic salmon (Salmo salar)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Black bullhead (Ameiurus melas)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Bluegill (Lepomis macrochirus)</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Bonytail chub (Gila elegans)</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Brook trout (Salvelinus fontinalis)</surrogate>
+	</cross>
+	<cross num="8">
+		<surrogate>Brown trout (Salmo trutta)</surrogate>
+	</cross>
+	<cross num="9">
+		<surrogate>Cape fear shiner (Notropis mekistocholas)</surrogate>
+	</cross>
+	<cross num="10">
+		<surrogate>Channel catfish (Ictalurus punctatus)</surrogate>
+	</cross>
+	<cross num="11">
+		<surrogate>Coho salmon (Oncorhynchus kisutch)</surrogate>
+	</cross>
+	<cross num="12">
+		<surrogate>Colorado squawfish (Ptychocheilus lucius)</surrogate>
+	</cross>
+	<cross num="13">
+		<surrogate>Common carp (Cyprinus carpio)</surrogate>
+	</cross>
+	<cross num="14">
+		<surrogate>Cutthroat trout (Oncorhynchus clarkii)</surrogate>
+	</cross>
+	<cross num="15">
+		<surrogate>Daphnid (Ceriodaphnia dubia)</surrogate>
+	</cross>
+	<cross num="16">
+		<surrogate>Daphnid (Daphnia magna)</surrogate>
+	</cross>
+	<cross num="17">
+		<surrogate>Eastern oyster (Crassostrea virginica)</surrogate>
+	</cross>
+	<cross num="18">
+		<surrogate>Fountain darter (Etheostoma fonticola)</surrogate>
+	</cross>
+	<cross num="19">
+		<surrogate>Goldfish (Carassius auratus)</surrogate>
+	</cross>
+	<cross num="20">
+		<surrogate>Green sunfish (Lepomis cyanellus)</surrogate>
+	</cross>
+	<cross num="21">
+		<surrogate>Greenthroat darter (Etheostoma lepidum)</surrogate>
+	</cross>
+	<cross num="22">
+		<surrogate>Guppy (Poecilia reticulata)</surrogate>
+	</cross>
+	<cross num="23">
+		<surrogate>Isopod (Caecidotea brevicauda)</surrogate>
+	</cross>
+	<cross num="24">
+		<surrogate>Lake trout (Salvelinus namaycush)</surrogate>
+	</cross>
+	<cross num="25">
+		<surrogate>Largemouth bass (Micropterus salmoides)</surrogate>
+	</cross>
+	<cross num="26">
+		<surrogate>Leon springs pupfish (Cyprinodon bovinus)</surrogate>
+	</cross>
+	<cross num="27">
+		<surrogate>Medaka (Oryzias latipes)</surrogate>
+	</cross>
+	<cross num="28">
+		<surrogate>Midge (Chironomus plumosus)</surrogate>
+	</cross>
+	<cross num="29">
+		<surrogate>Midge (Paratanytarsus dissimilis)</surrogate>
+	</cross>
+	<cross num="30">
+		<surrogate>Mosquitofish (Gambusia affinis)</surrogate>
+	</cross>
+	<cross num="31">
+		<surrogate>Mozambique tilapia (Oreochromis mossambicus)</surrogate>
+	</cross>
+	<cross num="32">
+		<surrogate>Mysid (Americamysis bahia)</surrogate>
+	</cross>
+	<cross num="33">
+		<surrogate>Oligochaete (Lumbriculus variegatus)</surrogate>
+	</cross>
+	<cross num="34">
+		<surrogate>Ostracod (Cypris subglobosa)</surrogate>
+	</cross>
+	<cross num="35">
+		<surrogate>Rainbow trout (Oncorhynchus mykiss)</surrogate>
+	</cross>
+	<cross num="36">
+		<surrogate>Razorback sucker (Xyrauchen texanus)</surrogate>
+	</cross>
+	<cross num="37">
+		<surrogate>Sheepshead minnow (Cyprinodon variegatus)</surrogate>
+	</cross>
+	<cross num="38">
+		<surrogate>Shortnose sturgeon (Acipenser brevirostrum)</surrogate>
+	</cross>
+	<cross num="39">
+		<surrogate>Southern leopard frog (Rana sphenocephala)</surrogate>
+	</cross>
+	<cross num="40">
+		<surrogate>Spotfin chub (Erimonax monachus)</surrogate>
+	</cross>
+	<cross num="41">
+		<surrogate>Stonefly (Claassenia sabulosa)</surrogate>
+	</cross>
+	<cross num="42">
+		<surrogate>Stonefly (Pteronarcella badia)</surrogate>
+	</cross>
+	<cross num="43">
+		<surrogate>Threespine stickleback (Gasterosteus aculeatus)</surrogate>
+	</cross>
+	<cross num="44">
+		<surrogate>Western toad (Bufo boreas)</surrogate>
+	</cross>
+	<cross num="45">
+		<surrogate>Yellow perch (Perca flavescens)</surrogate>
+	</cross>
+</species>

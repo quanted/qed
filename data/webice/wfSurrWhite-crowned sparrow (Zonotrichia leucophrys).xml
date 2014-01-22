@@ -1,0 +1,93 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Anatidae</predicted>
+		<r2>0.826</r2>
+		<pVal>0.033</pVal>
+		<df>3</df>
+		<intercept>0.092</intercept>
+		<slope>1.1055</slope>
+		<xAvg>1.32</xAvg>
+		<xMin>0.62</xMin>
+		<xMax>1.75</xMax>
+		<Sxx>1.3631</Sxx>
+		<MSE>0.1171</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Columbidae</predicted>
+		<r2>0.897</r2>
+		<pVal>0.015</pVal>
+		<df>3</df>
+		<intercept>0.3536</intercept>
+		<slope>0.9447</slope>
+		<xAvg>1.32</xAvg>
+		<xMin>0.62</xMin>
+		<xMax>1.75</xMax>
+		<Sxx>1.3631</Sxx>
+		<MSE>0.0467</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>4</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Corvidae</predicted>
+		<r2>0.858</r2>
+		<pVal>0.024</pVal>
+		<df>3</df>
+		<intercept>-0.1237</intercept>
+		<slope>1.1185</slope>
+		<xAvg>1.32</xAvg>
+		<xMin>0.62</xMin>
+		<xMax>1.75</xMax>
+		<Sxx>1.3631</Sxx>
+		<MSE>0.094</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>na</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+	<cross num="4">
+		<predicted>Fringillidae</predicted>
+		<r2>0.971</r2>
+		<pVal>0.002</pVal>
+		<df>3</df>
+		<intercept>-0.224</intercept>
+		<slope>1.1776</slope>
+		<xAvg>1.32</xAvg>
+		<xMin>0.62</xMin>
+		<xMax>1.75</xMax>
+		<Sxx>1.3631</Sxx>
+		<MSE>0.0189</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+	<cross num="5">
+		<predicted>Icteridae</predicted>
+		<r2>0.912</r2>
+		<pVal>0.011</pVal>
+		<df>3</df>
+		<intercept>0.0022</intercept>
+		<slope>1.0113</slope>
+		<xAvg>1.32</xAvg>
+		<xMin>0.62</xMin>
+		<xMax>1.75</xMax>
+		<Sxx>1.3631</Sxx>
+		<MSE>0.0451</MSE>
+		<t90CI>2.353</t90CI>
+		<t95CI>3.182</t95CI>
+		<t99CI>5.841</t99CI>
+		<Bootstrap>100</Bootstrap>
+		<taxDist>3</taxDist>
+	</cross>
+</species>

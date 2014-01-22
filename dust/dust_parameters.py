@@ -7,7 +7,7 @@ from django.db import models
 from django.utils.safestring import mark_safe
 
 SELECT_METHOD = (('Granular','Granular'),('Foliar Spray','Foliar Spray'),('Bare Ground Spray','Bare Ground Spray'))
-AvianDermalType_CHOICES=(('With DTI','With DTI'),('Without DTI','Without DTI'))
+#AvianDermalType_CHOICES=(('With DTI','With DTI'),('With DTI 90% CI', 'With DTI 90% CI'),('Without DTI','Without DTI'))
 
 class DustInp(forms.Form):
     chemical_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}), label='Chemical Name',initial='Aliphatic Alcohols')
@@ -24,6 +24,6 @@ class DustInp(forms.Form):
     mamm_acute_derm_study = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}), label='Mammal Acute Dermal (OCSPP 870.1200) MRID#',initial='B202')
     mamm_study_add_comm = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),label='Additional Comments About Mammal Study (if any)',initial='NA')
     mamm_acute_derm_ld50 = forms.FloatField(required=True,label=mark_safe('Mammal Acute Dermal LD<sub>50</sub>'),initial=2000,help_text='mg a.i./kg-bw')
-    aviandermaltype = forms.ChoiceField(required=True, choices=AvianDermalType_CHOICES, initial='With DTI', label='Avian Dermal type')
+    #aviandermaltype = forms.ChoiceField(required=True, choices=AvianDermalType_CHOICES, initial='With DTI', label='Avian Dermal type')
     mam_acute_oral_ld50 = forms.FloatField(required=True,label=mark_safe('Mammal Acute Oral LD<sub>50</sub>'),initial=3920,help_text='mg a.i./kg-bw')
     tested_mamm_body_weight = forms.FloatField(required=True,label='Tested Mammal Body Weight',initial=350,help_text='g')

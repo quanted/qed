@@ -1876,21 +1876,21 @@ def loop_html(thefile):
 class Trex2BatchOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()
-        thefile = form['upfile']
+        thefile = form['file-0']
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'trex2','page':'batchinput'})
-        html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberbatch_start.html', {
+        # html = uber_lib.SkinChk(ChkCookie)
+        # html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'trex2','page':'batchinput'})
+        # html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
+        html = template.render(templatepath + '04uberbatch_start.html', {
                 'model':'trex2',
                 'model_attributes':'TREX 1.5.2 Batch Input'})
         html = html + trex2_tables.timestamp()
         html = html + iter_html
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        # html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', Trex2BatchOutputPage)], debug=True)

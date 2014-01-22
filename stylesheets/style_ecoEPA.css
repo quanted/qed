@@ -1,6 +1,6 @@
 .model_header {
-  color: #000;
-  margin: 0 400px 20px 0;
+  color: #4289AA;
+  margin-bottom: 20px;
   font-size: 1.5em;
   font-weight: bold;
   display: inline-block;
@@ -1234,4 +1234,57 @@ th {
 	background:#FFA500;
 	color:#fff;
 	font-weight:normal;
+}
+/* Wec-ICE */
+.webice {
+  width: 763px;
+  margin: 8px 0 12px 0;
+}
+.webice td {
+  border: none;
+  text-align: center;
+  padding: 4px;
+}
+.webice th {
+  padding: 8px;
+}
+#SurrogateCell, #PredictedCell {
+  width: 50%;
+}
+#surrSpecies, #predSpecies {
+  font-size: 1.5em;
+  margin: 0 0 12px 160px;
+}
+#surrSpecies span, #predSpecies span, .title {
+  font-weight: 700;
+}
+#resultsTable {
+  margin-top: 36px;
+}
+#modelData {
+  margin-top: 36px;
+  float: left;
+}
+#graphImage {
+  margin-top: 36px;
+  float: right;
+}
+#fileType {
+  text-align: center;
+  margin-bottom: 12px;
+  min-height: 232px;
+}
+#PageName {
+  font-weight: 700;
+  font-size: 2em;
+  margin-bottom: 24px;
+  min-height: 18px;
+}
+#ssdResultsContainer, #tneResultsContainer {
+  margin-top: 20px;
+  width: 824px;
+  overflow: auto;
+}
+#modResults, #ssdResults, #tneResults {
+  margin-left: 0;
 }

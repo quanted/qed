@@ -1,0 +1,19 @@
+<?xml version = '1.0'?>
+<species>
+	<predicted>Microcystis aeruginosa</predicted>
+	<predicted>Chlorella vulgaris</predicted>
+	<predicted>Chlamydomonas reinhardtii</predicted>
+	<predicted>Pseudokirchneriella subcapitata</predicted>
+	<predicted>Thalassiosira pseudonana</predicted>
+	<predicted>Skeletonema costatum</predicted>
+	<predicted>Minutocellus polymorphus</predicted>
+	<predicted>Sellaphora seminulum</predicted>
+	<predicted>Microcystis flos-aquae</predicted>
+	<predicted>Chlorella pyrenoidosa</predicted>
+	<predicted>Dunaliella tertiolecta</predicted>
+	<predicted>Desmodesmus subspicatus</predicted>
+	<predicted>Scenedesmus quadricauda</predicted>
+	<predicted>Anabaena flos-aquae</predicted>
+	<predicted>Phaeodactylum tricornutum</predicted>
+	<predicted>Scenedesmus acutus</predicted>
+</species>

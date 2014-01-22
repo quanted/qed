@@ -1,0 +1,201 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Birds</group>
+		<species>Puerto Rican plain Pigeon (Columba inornata wetmorei)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="2">	
+		<group>Birds</group>
+		<species>White-tailed laurel Pigeon (Columba junoniae)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="3">	
+		<group>Birds</group>
+		<species>Pink pigeon (Columba mayeri)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="4">	
+		<group>Birds</group>
+		<species>Azores wood pigeon (Columba palumbus azorica)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="5">	
+		<group>Birds</group>
+		<species>Cloven-feathered dove (Drepanoptila holosericea)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="6">	
+		<group>Birds</group>
+		<species>Mindoro imperial pigeon (Ducula mindorensis)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="7">	
+		<group>Birds</group>
+		<species>Chatham Island pigeon (Hemiphaga novaeseelandiae chathamensis)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="8">	
+		<group>Birds</group>
+		<species>Grenada gray-fronted dove (Leptotila rufaxilla wellsi)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="9">	
+		<group>Birds</group>
+		<species>Seychelles turtle dove (Streptopelia picturata rostrata)</species>
+		<predicted>Columbidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="10">	
+		<group>Birds</group>
+		<species>Red siskin (Carduelis cucullata)</species>
+		<predicted>Fringillidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="11">	
+		<group>Birds</group>
+		<species>Sao Miguel bullfinch (Pyrrhula pyrrhula murina)</species>
+		<predicted>Fringillidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="12">	
+		<group>Birds</group>
+		<species>Yellow-shouldered blackbird (Agelaius xanthomus)</species>
+		<predicted>Icteridae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="13">	
+		<group>Birds</group>
+		<species>Slender-billed Grackle (Quisicalus palustris)</species>
+		<predicted>Icteridae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="14">	
+		<group>Birds</group>
+		<species>White-breasted guineafowl (Agelastes meleagrides)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="15">	
+		<group>Birds</group>
+		<species>Cheer pheasant (Catreus wallichii)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="16">	
+		<group>Birds</group>
+		<species>Masked bobwhite (Colinus virginianus ridgwayi)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="17">	
+		<group>Birds</group>
+		<species>White eared pheasant (Crossoptilon crossoptilon)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="18">	
+		<group>Birds</group>
+		<species>Brown eared pheasant (Crossoptilon mantchuricum)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="19">	
+		<group>Birds</group>
+		<species>Merriam's Montezuma quail (Cyrtonyx montezumae merriami)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="20">	
+		<group>Birds</group>
+		<species>Djibouti francolin (Francolinus ochropectus)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="21">	
+		<group>Birds</group>
+		<species>Chinese monal pheasant (Lophophorus lhuysii)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="22">	
+		<group>Birds</group>
+		<species>Sclater's monal pheasant (Lophophorus sclateri)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="23">	
+		<group>Birds</group>
+		<species>Edward's pheasant (Lophura edwardsi)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="24">	
+		<group>Birds</group>
+		<species>Imperial pheasant (Lophura imperialis)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="25">	
+		<group>Birds</group>
+		<species>Swinhoe's pheasant (Lophura swinhoii)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="26">	
+		<group>Birds</group>
+		<species>Palawan peacock pheasant (Polyplectron emphanum)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="27">	
+		<group>Birds</group>
+		<species>Elliot's pheasant (Syrmaticus ellioti)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="28">	
+		<group>Birds</group>
+		<species>Bar-tailed pheasant (Syrmaticus humaie)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="29">	
+		<group>Birds</group>
+		<species>Mikado pheasant (Syrmaticus mikado)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="30">	
+		<group>Birds</group>
+		<species>Blyth's tragopan pheasant (Tragopan blythii)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="31">	
+		<group>Birds</group>
+		<species>Cabot's tragopan pheasant (Tragopan caboti)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="32">	
+		<group>Birds</group>
+		<species>Western tragopan pheasant (Tragopan melanocephalus)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+	<cross num="33">	
+		<group>Birds</group>
+		<species>Attwater's greater prairie-chicken (Tympanuchus cupido attwateri)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrAmerican robin (Turdus migratorius).xml</filesource>
+	</cross>
+</crosses>

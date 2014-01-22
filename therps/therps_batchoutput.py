@@ -442,21 +442,21 @@ def loop_html(thefile):
 class TherpsBatchOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()
-        thefile = form['upfile']
+        thefile = form['file-0']
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'therps','page':'batchinput'})
-        html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberbatch_start.html', {
+        # html = uber_lib.SkinChk(ChkCookie)
+        # html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'therps','page':'batchinput'})
+        # html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
+        html = template.render(templatepath + '04uberbatch_start.html', {
                 'model':'therps',
                 'model_attributes':'T-Herps Batch Output'})
         html = html + therps_tables.timestamp()
         html = html + iter_html
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        # html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', TherpsBatchOutputPage)], debug=True)

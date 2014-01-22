@@ -1,0 +1,135 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Birds</group>
+		<species>Yellow-shouldered blackbird (Agelaius xanthomus)</species>
+		<predicted>Icteridae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="2">	
+		<group>Birds</group>
+		<species>Slender-billed Grackle (Quisicalus palustris)</species>
+		<predicted>Icteridae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="3">	
+		<group>Birds</group>
+		<species>White-breasted guineafowl (Agelastes meleagrides)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="4">	
+		<group>Birds</group>
+		<species>Cheer pheasant (Catreus wallichii)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="5">	
+		<group>Birds</group>
+		<species>Masked bobwhite (Colinus virginianus ridgwayi)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="6">	
+		<group>Birds</group>
+		<species>White eared pheasant (Crossoptilon crossoptilon)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="7">	
+		<group>Birds</group>
+		<species>Brown eared pheasant (Crossoptilon mantchuricum)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="8">	
+		<group>Birds</group>
+		<species>Merriam's Montezuma quail (Cyrtonyx montezumae merriami)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="9">	
+		<group>Birds</group>
+		<species>Djibouti francolin (Francolinus ochropectus)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="10">	
+		<group>Birds</group>
+		<species>Chinese monal pheasant (Lophophorus lhuysii)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="11">	
+		<group>Birds</group>
+		<species>Sclater's monal pheasant (Lophophorus sclateri)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="12">	
+		<group>Birds</group>
+		<species>Edward's pheasant (Lophura edwardsi)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="13">	
+		<group>Birds</group>
+		<species>Imperial pheasant (Lophura imperialis)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="14">	
+		<group>Birds</group>
+		<species>Swinhoe's pheasant (Lophura swinhoii)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="15">	
+		<group>Birds</group>
+		<species>Palawan peacock pheasant (Polyplectron emphanum)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="16">	
+		<group>Birds</group>
+		<species>Elliot's pheasant (Syrmaticus ellioti)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="17">	
+		<group>Birds</group>
+		<species>Bar-tailed pheasant (Syrmaticus humaie)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="18">	
+		<group>Birds</group>
+		<species>Mikado pheasant (Syrmaticus mikado)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="19">	
+		<group>Birds</group>
+		<species>Blyth's tragopan pheasant (Tragopan blythii)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="20">	
+		<group>Birds</group>
+		<species>Cabot's tragopan pheasant (Tragopan caboti)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="21">	
+		<group>Birds</group>
+		<species>Western tragopan pheasant (Tragopan melanocephalus)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+	<cross num="22">	
+		<group>Birds</group>
+		<species>Attwater's greater prairie-chicken (Tympanuchus cupido attwateri)</species>
+		<predicted>Phasianidae</predicted>
+		<filesource>wfSurrRinged turtledove (Streptopelia risoria).xml</filesource>
+	</cross>
+</crosses>

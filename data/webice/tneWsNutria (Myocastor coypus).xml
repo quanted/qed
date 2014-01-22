@@ -1,0 +1,51 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Mammals</group>
+		<species>Mexican prairie dog (Cynomys mexicanus)</species>
+		<predicted>Sciuridae</predicted>
+		<filesource>wfSurrNutria (Myocastor coypus).xml</filesource>
+	</cross>
+	<cross num="2">	
+		<group>Mammals</group>
+		<species>Utah prairie dog (Cynomys parvidens)</species>
+		<predicted>Sciuridae</predicted>
+		<filesource>wfSurrNutria (Myocastor coypus).xml</filesource>
+	</cross>
+	<cross num="3">	
+		<group>Mammals</group>
+		<species>Carolina northern flying squirrel (Glaucomys sabrinus coloratus)</species>
+		<predicted>Sciuridae</predicted>
+		<filesource>wfSurrNutria (Myocastor coypus).xml</filesource>
+	</cross>
+	<cross num="4">	
+		<group>Mammals</group>
+		<species>Virginia northern flying Squirrel (Glaucomys sabrinus fuscus)</species>
+		<predicted>Sciuridae</predicted>
+		<filesource>wfSurrNutria (Myocastor coypus).xml</filesource>
+	</cross>
+	<cross num="5">	
+		<group>Mammals</group>
+		<species>Vancouver Island marmot (Marmota vancouverensis)</species>
+		<predicted>Sciuridae</predicted>
+		<filesource>wfSurrNutria (Myocastor coypus).xml</filesource>
+	</cross>
+	<cross num="6">	
+		<group>Mammals</group>
+		<species>Delmarva Peninsula fox squirrel (Sciurus niger cinereus)</species>
+		<predicted>Sciuridae</predicted>
+		<filesource>wfSurrNutria (Myocastor coypus).xml</filesource>
+	</cross>
+	<cross num="7">	
+		<group>Mammals</group>
+		<species>Northern Idaho ground squirrel (Spermophilus brunneus brunneus)</species>
+		<predicted>Sciuridae</predicted>
+		<filesource>wfSurrNutria (Myocastor coypus).xml</filesource>
+	</cross>
+	<cross num="8">	
+		<group>Mammals</group>
+		<species>Mount Graham red squirrel (Tamiasciurus hudsonicus grahamensis)</species>
+		<predicted>Sciuridae</predicted>
+		<filesource>wfSurrNutria (Myocastor coypus).xml</filesource>
+	</cross>
+</crosses>

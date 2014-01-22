@@ -1,0 +1,30 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Atlantic salmon (Salmo salar)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Bluegill (Lepomis macrochirus)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Bonytail chub (Gila elegans)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Brook trout (Salvelinus fontinalis)</surrogate>
+	</cross>
+	<cross num="5">
+		<surrogate>Colorado squawfish (Ptychocheilus lucius)</surrogate>
+	</cross>
+	<cross num="6">
+		<surrogate>Cutthroat trout (Oncorhynchus clarkii)</surrogate>
+	</cross>
+	<cross num="7">
+		<surrogate>Fathead minnow (Pimephales promelas)</surrogate>
+	</cross>
+	<cross num="8">
+		<surrogate>Rainbow trout (Oncorhynchus mykiss)</surrogate>
+	</cross>
+	<cross num="9">
+		<surrogate>Yellow perch (Perca flavescens)</surrogate>
+	</cross>
+</species>

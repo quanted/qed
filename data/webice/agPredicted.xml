@@ -1,0 +1,31 @@
+<?xml version = '1.0'?>
+<species>
+	<predicted>Etheostoma</predicted>
+	<predicted>Caecidotea</predicted>
+	<predicted>Daphnia</predicted>
+	<predicted>Notropis</predicted>
+	<predicted>Anguilla</predicted>
+	<predicted>Lepomis</predicted>
+	<predicted>Micropterus</predicted>
+	<predicted>Ameiurus</predicted>
+	<predicted>Bufo</predicted>
+	<predicted>Menidia</predicted>
+	<predicted>Paratanytarsus</predicted>
+	<predicted>Gammarus</predicted>
+	<predicted>Pimephales</predicted>
+	<predicted>Oncorhynchus</predicted>
+	<predicted>Acipenser</predicted>
+	<predicted>Simocephalus</predicted>
+	<predicted>Carassius</predicted>
+	<predicted>Salvelinus</predicted>
+	<predicted>Salmo</predicted>
+	<predicted>Lirceus</predicted>
+	<predicted>Catostomus</predicted>
+	<predicted>Rana</predicted>
+	<predicted>Palaemonetes</predicted>
+	<predicted>Cyprinodon</predicted>
+	<predicted>Ceriodaphnia</predicted>
+	<predicted>Pomoxis</predicted>
+	<predicted>Oreochromis</predicted>
+	<predicted>Chironomus</predicted>
+</species>

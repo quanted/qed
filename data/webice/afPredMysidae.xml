@@ -1,0 +1,12 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Daphnid (Ceriodaphnia dubia)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Daphnid (Daphnia magna)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Fathead minnow (Pimephales promelas)</surrogate>
+	</cross>
+</species>

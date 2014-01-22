@@ -1,0 +1,8 @@
+<p>Calculation of the initial pesticide concentration due to runoff in the pond:</p>
+<img src = "/images/latex/geneec/geneec_image01.png" alt="geneec_1">
+<p>Calculation of the total daily dissolved concentration of pesticide in the pond (aerial, ground, and air blast spray application):</p>
+<img src = "/images/latex/geneec/geneec_image02.png" alt="geneec_2">
+<p>Calculation of the total daily dissolved concentration of pesticide in the pond (granular, non-spray application):</p>
+<img src = "/images/latex/geneec/geneec_image03.png" alt="geneec_3">
+<p>Average concentration of the pesticide in the pond on the 4<sup>th</sup>, 21<sup>st</sup>, 60<sup>th</sup>, 90<sup>th</sup> day after application:</p>
+<img src = "/images/latex/geneec/geneec_image04.png" alt="geneec_4">

@@ -1,0 +1,57 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<predicted>Asellidae</predicted>
+		<r2>0.5962734920</r2>
+		<pVal>0.0247377140</pVal>
+		<df>6</df>
+		<intercept>2.1531232060</intercept>
+		<slope>0.6030958840</slope>
+		<xAvg>2.3176477530</xAvg>
+		<xMin>-0.2218487500</xMin>
+		<xMax>6.5429025550</xMax>
+		<Sxx>41.9911425400</Sxx>
+		<MSE>1.7235382820</MSE>
+		<t90CI>1.943</t90CI>
+		<t95CI>2.447</t95CI>
+		<t99CI>3.707</t99CI>
+		<Bootstrap>25</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+	<cross num="2">
+		<predicted>Daphniidae</predicted>
+		<r2>0.9521515620</r2>
+		<pVal>0.0000000630</pVal>
+		<df>10</df>
+		<intercept>0.1986938930</intercept>
+		<slope>0.9225230410</slope>
+		<xAvg>1.6481352830</xAvg>
+		<xMin>-0.7447274950</xMin>
+		<xMax>4.5746650790</xMax>
+		<Sxx>35.7698595500</Sxx>
+		<MSE>0.1529795450</MSE>
+		<t90CI>1.812</t90CI>
+		<t95CI>2.228</t95CI>
+		<t99CI>3.169</t99CI>
+		<Bootstrap>83.33333333</Bootstrap>
+		<taxDist>2</taxDist>
+	</cross>
+	<cross num="3">
+		<predicted>Gammaridae</predicted>
+		<r2>0.5956820580</r2>
+		<pVal>0.0148291850</pVal>
+		<df>7</df>
+		<intercept>0.9152030540</intercept>
+		<slope>0.4819203520</slope>
+		<xAvg>1.1740987630</xAvg>
+		<xMin>-0.7447274950</xMin>
+		<xMax>4.3361085900</xMax>
+		<Sxx>25.5220982500</Sxx>
+		<MSE>0.5747478650</MSE>
+		<t90CI>1.895</t90CI>
+		<t95CI>2.365</t95CI>
+		<t99CI>3.499</t99CI>
+		<Bootstrap>44.44444444</Bootstrap>
+		<taxDist>5</taxDist>
+	</cross>
+</species>

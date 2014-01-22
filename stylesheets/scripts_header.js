@@ -96,8 +96,8 @@ $(document).ready(function() {
   // EPA Skin Set
   $("#epaSkin").click(function () {
     setCookie('ubercookie','EPA',7);
-    $(".default").prop('disabled', true);
-    $(".EPA").prop('disabled', false);
+    $('.ssMain').attr({href:"/stylesheets/styleEPA.css"});
+    $('.ssSkin').attr({href:"/stylesheets/style_ecoEPA.css"});
     $('.fadeMenu').css( {backgroundColor:'rgb(247, 249, 244)', 'color':'#1F262A'} );
     $('.articles a:link, .articles_input a:link, articles_output a:link').css( {'color':'#4289AA'} );
     mouseOff = '#4289AA';
@@ -105,8 +105,8 @@ $(document).ready(function() {
   });
   // Default Skin Set
   $("#defSkin").click(function () {
-      $(".default").prop('disabled', false);
-      $(".EPA").prop('disabled', true);
+      $('.ssMain').attr({href:"/stylesheets/style.css"});
+      $('.ssSkin').attr({href:"/stylesheets/style_eco.css"});
       $('.fadeMenu').css( {'backgroundColor':'rgb(201,224,179)', 'color':'#333333'} );
       $('.articles a:link, .articles_input a:link, articles_output a:link').css( {'color':'#79973F'} );
       mouseOff = '#79973F';

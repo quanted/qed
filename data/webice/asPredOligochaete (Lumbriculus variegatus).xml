@@ -1,0 +1,15 @@
+<?xml version = '1.0'?>
+<species>
+	<cross num="1">
+		<surrogate>Fathead minnow (Pimephales promelas)</surrogate>
+	</cross>
+	<cross num="2">
+		<surrogate>Flatworm (Dugesia tigrina)</surrogate>
+	</cross>
+	<cross num="3">
+		<surrogate>Isopod (Caecidotea intermedia)</surrogate>
+	</cross>
+	<cross num="4">
+		<surrogate>Ramshorn snail (Planorbella trivolvis)</surrogate>
+	</cross>
+</species>

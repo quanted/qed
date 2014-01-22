@@ -1,0 +1,183 @@
+<?xml version = '1.0'?>
+<crosses>
+	<cross num="1">	
+		<group>Fishes</group>
+		<species>Steelhead (Oncorhynchus mykiss)</species>
+		<predicted>Rainbow trout (Oncorhynchus mykiss)</predicted>
+		<filesource>asSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="2">	
+		<group>Crustaceans</group>
+		<species>Illinois cave amphipod (Gammarus acherondytes)</species>
+		<predicted>Gammarus</predicted>
+		<filesource>agSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="3">	
+		<group>Crustaceans</group>
+		<species>Noel's amphipod (Gammarus desperatus)</species>
+		<predicted>Gammarus</predicted>
+		<filesource>agSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="4">	
+		<group>Fishes</group>
+		<species>Little Kern golden trout (Oncorhynchus aguabonita whitei)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="5">	
+		<group>Fishes</group>
+		<species>Lahontan cutthroat trout (Oncorhynchus clarkii henshawi)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="6">	
+		<group>Fishes</group>
+		<species>Greenback cutthroat trout (Oncorhynchus clarkii stomias)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="7">	
+		<group>Fishes</group>
+		<species>Paiute cutthroat trout (Oncorhynchus clarkii seleniris)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="8">	
+		<group>Fishes</group>
+		<species>Gila trout (Oncorhynchus gilae)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="9">	
+		<group>Fishes</group>
+		<species>Apache trout (Oncorhynchus gilae apache)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="10">	
+		<group>Fishes</group>
+		<species>Chum salmon (Oncorhynchus keta)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="11">	
+		<group>Fishes</group>
+		<species>Coho salmon (Oncorhynchus kisutch)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="12">	
+		<group>Fishes</group>
+		<species>Steelhead (Oncorhynchus mykiss)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="13">	
+		<group>Fishes</group>
+		<species>Sockeye salmon (Oncorhynchus nerka)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="14">	
+		<group>Fishes</group>
+		<species>Chinook salmon (Oncorhynchus tshawytscha)</species>
+		<predicted>Oncorhynchus</predicted>
+		<filesource>agSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="15">	
+		<group>Crustaceans</group>
+		<species>Illinois cave amphipod (Gammarus acherondytes)</species>
+		<predicted>Gammaridae</predicted>
+		<filesource>afSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="16">	
+		<group>Crustaceans</group>
+		<species>Noel's amphipod (Gammarus desperatus)</species>
+		<predicted>Gammaridae</predicted>
+		<filesource>afSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="17">	
+		<group>Fishes</group>
+		<species>Little Kern golden trout (Oncorhynchus aguabonita whitei)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="18">	
+		<group>Fishes</group>
+		<species>Lahontan cutthroat trout (Oncorhynchus clarkii henshawi)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="19">	
+		<group>Fishes</group>
+		<species>Greenback cutthroat trout (Oncorhynchus clarkii stomias)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="20">	
+		<group>Fishes</group>
+		<species>Paiute cutthroat trout (Oncorhynchus clarkii seleniris)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="21">	
+		<group>Fishes</group>
+		<species>Gila trout (Oncorhynchus gilae)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="22">	
+		<group>Fishes</group>
+		<species>Apache trout (Oncorhynchus gilae apache)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="23">	
+		<group>Fishes</group>
+		<species>Chum salmon (Oncorhynchus keta)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="24">	
+		<group>Fishes</group>
+		<species>Coho salmon (Oncorhynchus kisutch)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="25">	
+		<group>Fishes</group>
+		<species>Steelhead (Oncorhynchus mykiss)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="26">	
+		<group>Fishes</group>
+		<species>Sockeye salmon (Oncorhynchus nerka)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="27">	
+		<group>Fishes</group>
+		<species>Chinook salmon (Oncorhynchus tshawytscha)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="28">	
+		<group>Fishes</group>
+		<species>Ala balik (Salmo platycephalus)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="29">	
+		<group>Fishes</group>
+		<species>Atlantic salmon (Salmo salar)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+	<cross num="30">	
+		<group>Fishes</group>
+		<species>Bull trout (Salvelinus confluentus)</species>
+		<predicted>Salmonidae</predicted>
+		<filesource>afSurrStonefly (Pteronarcys californica).xml</filesource>
+	</cross>
+</crosses>

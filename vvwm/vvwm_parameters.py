@@ -2,7 +2,7 @@
 """
 Created on Tue Jan 17 14:50:59 2012
 
-@author: JHarston
+@author: Jon F.
 """
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
@@ -10,7 +10,6 @@ from django import forms
 from django.db import models
 from django.utils.safestring import mark_safe
 
-# From Variables.F90 in the "Fortranvvwm\source" dir
 
 class vvwmInp_chem(forms.Form):
 	# Chemical Tab
@@ -32,25 +31,18 @@ class vvwmInp_cropland(forms.Form):
 
 class vvwmInp_waterbody(forms.Form):
 	# Water Body Tab
-    afield = forms.FloatField(required=True,label=mark_safe('Field Area (m<sup>2</sup>)'))
-    area = forms.FloatField(required=True,label=mark_safe('Water Body Area (m<sup>2</sup>)'))
-    depth_0 = forms.FloatField(required=True,label='Initial Water Body Depth (m)')
-    depth_max = forms.FloatField(required=True,label='Maximum Water Body Depth (m)')
-    # Hydraulic Length (m)??  Initial=600
-    SimType = ((1,'Varying Volume'),(2,'Constant Volume (no Flowthrough)'),(3,'Constant Volume (with Flowthrough)'))
+    SimType = ((0,'EPA Reservoir & Pond'),(4,'EPA Reservoir Only'),(5,'EPA Pond Only'),(6,'Reservoir w/ user averaging'),(1,'Varying Volume'),(2,'Constant Volume (w/o Flowthrough)'),(3,'Constant Volume (w/ Flowthrough)'))
     SimTypeFlag = forms.ChoiceField(required=True,label='Simulation Type:', choices=SimType, initial='Varying Volume')
-    
+    afield = forms.FloatField(required=True,label=mark_safe('Field Area (m<sup>2</sup>)'), initial="100000")
+    area = forms.FloatField(required=True,label=mark_safe('Water Body Area (m<sup>2</sup>)'), initial="10000")
+    depth_0 = forms.FloatField(required=True,label='Initial Water Body Depth (m)', initial="2")
+    depth_max = forms.FloatField(required=True,label='Maximum Water Body Depth (m)', initial="2")
+    hyd_len = forms.FloatField(required=True,label='Hydraulic Length (m)', initial="356.8")
+    resAvgBox = forms.FloatField(required=True,label='')
     Burial = ((1,'Burial'),(0,'No Burial'))
-    BurialFlag = forms.ChoiceField(required=True,label='Sediment Accounting:', choices=Burial, initial='No Burial')
-    D_over_dx = forms.FloatField(required=True,label='Mass Xfer Coeff. (m/s)',initial='1e-8')
-    PRBEN = forms.FloatField(required=True,label='PRBEN',initial='0.5')
+    BurialFlag = forms.ChoiceField(required=True,label='Sediment Accounting:', choices=Burial, initial=0)
 
-    benthic_depth = forms.FloatField(required=True,label='Benthic Depth (m)',initial='0.05')
-    porosity = forms.FloatField(required=True,label='Benthic Porosity (g/g)',initial='0.5')
-    bulk_density = forms.FloatField(required=True,label=mark_safe('Bulk Density (g/cm<sup>3</sup>)'),initial='1.35')
-    FROC2 = forms.FloatField(required=True,label='Benthic foc',initial='0.04')
-    DOC2 = forms.FloatField(required=True,label='Benthic DOC',initial='5')
-    BNMAS = forms.FloatField(required=True,label=mark_safe('Benthic Biomass (g/cm<sup>2</sup>)'),initial='0.006')
+class vvwmInp_waterbody_WCparms(forms.Form):
     DFAC = forms.FloatField(required=True,label='DFAC',initial='1.19')
     SUSED = forms.FloatField(required=True,label='Water Column SS (mg/L)',initial='30')
     CHL = forms.FloatField(required=True,label='Chlorophyll (mg/L)',initial='0.005')
@@ -58,20 +50,12 @@ class vvwmInp_waterbody(forms.Form):
     DOC1 = forms.FloatField(required=True,label='Water Column DOC',initial='5')
     PLMAS = forms.FloatField(required=True,label='Water Column Biomass',initial='0.4')
 
-    # Do not know what these are:
-	# CLOUD = 0
-	# minimum_depth = 0.00001
-
- #    xAerobic
- #    xBenthic
- #    xPhoto
- #    xHydro
-
- #    flow_averaging
-
-
-
-
-# def form():
-#     out = vvwmInp_chem()
-#     return out
+class vvwmInp_waterbody_Bparms(forms.Form):
+    benthic_depth = forms.FloatField(required=True,label='Benthic Depth (m)',initial='0.05')
+    porosity = forms.FloatField(required=True,label='Benthic Porosity (g/g)',initial='0.5')
+    bulk_density = forms.FloatField(required=True,label=mark_safe('Bulk Density (g/cm<sup>3</sup>)'),initial='1.35')
+    FROC2 = forms.FloatField(required=True,label='Benthic foc',initial='0.04')
+    DOC2 = forms.FloatField(required=True,label='Benthic DOC',initial='5')
+    BNMAS = forms.FloatField(required=True,label=mark_safe('Benthic Biomass (g/cm<sup>2</sup>)'),initial='0.006')
+    PRBEN = forms.FloatField(required=True,label='PRBEN',initial='0.5')
+    D_over_dx = forms.FloatField(required=True,label='Mass Xfer Coeff. (m/s)',initial='1e-8')

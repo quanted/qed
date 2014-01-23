@@ -6,7 +6,7 @@ Created on Thu Nov 14 10:18:30 2013
 """
 
 #Chemical Tab
-working_dir = 'C:/Program Files/epa/SWCsetup2/TestFiles/test_working'
+working_dir = 'C:\Users\Jon\Dropbox\\terr_models\JonF\swc\compile\\vvwm\laptop\\file usage test\\test\\test'
 sorp_K_unit = 'Koc'        #Remove this line after done testing
 chem_deg = '1'
 if chem_deg == '3':
@@ -102,7 +102,7 @@ QT = "2"
 
 #Crop/Land Tab
 scenID = "CAlettuceSTD"
-dvf_path = "test.dvf"
+dvf_path = "C:\Users\Jon\Dropbox\\terr_models\JonF\swc\compile\\vvwm\laptop\\file usage test\\test\\test.dvf"
 
 
 # Water Body Tab
@@ -141,3 +141,8 @@ depth_0 = "2"
 # intital depth
 depth_max = "2"
 # max depth
+
+ff = "0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,"
+# 
+ReservoirFlowAvgDays = "0"
+# If "Reservoir w/ user averaging" is checked, that value goes here

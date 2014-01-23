@@ -11,44 +11,32 @@ $(document).ready(function() {
         curr_ind = 0;
         $('li.Chemical').addClass('tabSel').removeClass('tabUnsel');
         $('li.Applications, li.CropLand, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_Chemical').show();
-        $(".back").hide();
-        $(".submit").hide();
-        $(".next").show();
+        $('.tab:visible, .back, .submit').hide();
+        $('.tab_Chemical, .tab_Chemical0, .next').show();
     });
 
     $('li.Applications').click(function(){
         curr_ind = 1;
         $('li.Applications').addClass('tabSel').removeClass('tabUnsel');
         $('li.Chemical, li.CropLand, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_Applications').show();
-        $(".back").show();
-        $(".submit").hide();
-        $(".next").show();
+        $('.tab:visible, .submit').hide();
+        $('.tab_Applications, .back, .next').show();
     });
 
     $('li.CropLand').click(function(){
         curr_ind = 2;
         $('li.CropLand').addClass('tabSel').removeClass('tabUnsel');
         $('li.Chemical, li.Applications, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_CropLand').show();
-        $(".back").show();
-        $(".submit").hide();
-        $(".next").show();
+        $('.tab:visible, .submit').hide();
+        $('.tab_CropLand, .back, .next').show();
     });
 
     $('li.WaterBody').click(function(){
         curr_ind = 3;
         $('li.WaterBody').addClass('tabSel').removeClass('tabUnsel');
         $('li.Chemical, li.Applications, li.CropLand').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_WaterBody').show();
-        $(".back").show();
-        $(".submit").show();
-        $(".next").hide();
+        $('.tab:visible, .next').hide();
+        $('.tab_WaterBody, .tab_WaterBodyWCparms, .tab_WaterBodyBparms, .back, .submit').show();
     });
 
     $('.next').click(function () {
@@ -63,7 +51,7 @@ $(document).ready(function() {
             $(".back").show();
             }
         if (curr_ind == 3) {
-            $(".submit").show();
+            $('.submit, .tab_WaterBodyWCparms, .tab_WaterBodyBparms').show();
             $(".next").hide();
         }
     });
@@ -80,7 +68,11 @@ $(document).ready(function() {
         }
         if (curr_ind == 0) {
             $(".back").hide();
+            $('.tab_Chemical0').show();
         }
     });
+
+    // Temporary Fixes
+    $('#id_water_body_type_check').prop('disabled', true);
 
 });

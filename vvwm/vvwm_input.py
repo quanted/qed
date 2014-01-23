@@ -73,6 +73,12 @@ class vvwmInputPage(webapp.RequestHandler):
         html = html + str(vvwm_parameters.vvwmInp_cropland())
         html = html + """</table><table class="tab tab_WaterBody" style="display:none">"""
         html = html + str(vvwm_parameters.vvwmInp_waterbody())
+        html = html + """</table><table class="tab tab_WaterBodyWCparms" style="display:none">
+                            <tr><th colspan="2">Water Column Parameters</tr>"""
+        html = html + str(vvwm_parameters.vvwmInp_waterbody_WCparms())
+        html = html + """</table><table class="tab tab_WaterBodyBparms" style="display:none">
+                            <tr><th colspan="2">Benthic Parameters</tr>"""
+        html = html + str(vvwm_parameters.vvwmInp_waterbody_Bparms())
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

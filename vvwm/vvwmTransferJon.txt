@@ -1,11 +1,11 @@
-C:/Program Files/epa/SWCsetup2/TestFiles/test_working
+C:\Users\Jon\Dropbox\terr_models\JonF\swc\compile\vvwm\laptop\file usage test\test\test
 
 1
 True
 200,,,
 21,,,
 25,,,
-21,,,
+75,,,
 25,,,
 2.0,,,
 40,,,
@@ -27,7 +27,7 @@ True
 
 2
 CAlettuceSTD
-test.dvf
+C:\Users\Jon\Dropbox\terr_models\JonF\swc\compile\vvwm\laptop\file usage test\test\test.dvf
 0
 
 False
@@ -54,3 +54,10 @@ False
 
 30
 152,517,882,1248,1613,1978,2343,2709,3074,3439,3804,4170,4535,4900,5265,5631,5996,6361,6726,7092,7457,7822,8187,8553,8918,9283,9648,10014,10379,10744,
+2
+100000
+10000
+2
+2
+0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,0.056,
+0

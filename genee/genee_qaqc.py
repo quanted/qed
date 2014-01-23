@@ -9,7 +9,7 @@ import cgitb
 cgitb.enable()
 from StringIO import StringIO
 import csv
-from geneec import geneec_model,geneec_tables
+from genee import genee_model, genee_tables
 from uber import uber_lib
 import json
 import base64
@@ -20,12 +20,17 @@ import keys_Picloud_S3
 api_key=keys_Picloud_S3.picloud_api_key
 api_secretkey=keys_Picloud_S3.picloud_api_secretkey
 base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
-http_headers = {'Authorization' : 'Basic %s' % base64string}
+http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
 ###########################################################################
 
+def update_dic(output_html, model_object_dict, model_name):
+    all_dic = {"model_name":model_name, "_id":model_object_dict['jid'], "run_type":"qaqc", "output_html":output_html, "model_object_dict":model_object_dict}
+    data = json.dumps(all_dic)
+    url=os.environ['UBERTOOL_REST_SERVER'] + '/update_history'
+    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
 
 cwd= os.getcwd()
-data = csv.reader(open(cwd+'/geneec/geneec_qaqc.csv'))
+data = csv.reader(open(cwd+'/genee/genee_qaqc.csv'))
 chem_name = []
 application_target = []
 application_rate = []
@@ -81,33 +86,34 @@ for row in data:
     GEEC_60avg.append(float(row[22]))
     GEEC_90avg.append(float(row[23]))
 
-geneec_obj = geneec_model.geneec('individual', chem_name[0], application_target[0], application_rate[0], number_of_applications[0], interval_between_applications[0], Koc[0], aerobic_soil_metabolism[0], wet_in[0], application_method[0], application_method_label, aerial_size_dist[0], ground_spray_type[0], airblast_type[0], spray_quality[0], no_spray_drift[0], incorporation_depth[0], solubility[0], aerobic_aquatic_metabolism[0], hydrolysis[0], photolysis_aquatic_half_life[0])
-geneec_obj.chem_name_exp = chem_name[0]
-geneec_obj.GEEC_peak_exp = GEEC_peak[0]
-geneec_obj.GEEC_4avg_exp = GEEC_4avg[0]
-geneec_obj.GEEC_21avg_exp = GEEC_21avg[0]
-geneec_obj.GEEC_60avg_exp = GEEC_60avg[0]
-geneec_obj.GEEC_90avg_exp = GEEC_90avg[0]
+genee_obj = genee_model.genee('qaqc', chem_name[0], application_target[0], application_rate[0], number_of_applications[0], interval_between_applications[0], Koc[0], aerobic_soil_metabolism[0], wet_in[0], application_method[0], application_method_label, aerial_size_dist[0], ground_spray_type[0], airblast_type[0], spray_quality[0], no_spray_drift[0], incorporation_depth[0], solubility[0], aerobic_aquatic_metabolism[0], hydrolysis[0], photolysis_aquatic_half_life[0])
+genee_obj.chem_name_exp = chem_name[0]
+genee_obj.GEEC_peak_exp = GEEC_peak[0]
+genee_obj.GEEC_4avg_exp = GEEC_4avg[0]
+genee_obj.GEEC_21avg_exp = GEEC_21avg[0]
+genee_obj.GEEC_60avg_exp = GEEC_60avg[0]
+genee_obj.GEEC_90avg_exp = GEEC_90avg[0]
 
 
-class geneecQaqcPage(webapp.RequestHandler):
+class geneeQaqcPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie)
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'geneec','page':'qaqc'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'genee','page':'qaqc'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
-                'model':'geneec',
-                'model_attributes':'GENEEC QAQC'})
-        html = html + geneec_tables.timestamp(geneec_obj)
-        html = html + geneec_tables.table_all_qaqc(geneec_obj)
+                'model':'genee',
+                'model_attributes':'GENEE QAQC'})
+        html = html + genee_tables.timestamp(genee_obj)
+        html = html + genee_tables.table_all_qaqc(genee_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        update_dic(html, genee_obj.__dict__, 'geneec')
         self.response.out.write(html)
 
-app = webapp.WSGIApplication([('/.*', geneecQaqcPage)], debug=True)
+app = webapp.WSGIApplication([('/.*', geneeQaqcPage)], debug=True)
 
 def main():
     run_wsgi_app(app)

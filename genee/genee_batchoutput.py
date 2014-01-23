@@ -16,6 +16,9 @@ from google.appengine.api import urlfetch
 import keys_Picloud_S3
 import logging
 logger = logging.getLogger('Geneec Batch')
+from threading import Thread
+import Queue
+from collections import OrderedDict
 
 ############Provide the key and connect to the picloud####################
 api_key=keys_Picloud_S3.picloud_api_key
@@ -25,10 +28,9 @@ http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'a
 
 ###########################################################################
 def update_dic(output_html, model_object_dict, model_name):
-    all_dic = {"model_name":model_name, "_id":model_object_dict['jid'], "output_html":output_html, "model_object_dict":model_object_dict}
+    all_dic = {"model_name":model_name, "_id":model_object_dict['jid'], "run_type":"batch", "output_html":output_html, "model_object_dict":model_object_dict}
     data = json.dumps(all_dic)
-    # url='http://localhost:7777/update_history'
-    url=keys_Picloud_S3.amazon_ec2_ip+'/update_history'
+    url=os.environ['UBERTOOL_REST_SERVER'] + '/update_history'
     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
 
 chem_name = []
@@ -54,69 +56,78 @@ photolysis_aquatic_half_life = []
 ####### Outputs ########
 jid_all = []
 genee_obj_all = []
-# genee_dict_list_all=[]
+all_threads = []
+out_html_all = {}
+job_q = Queue.Queue()
+thread_count = 10
 
-def create_jid(row_inp,iter):
-    chem_name.append(row_inp[0])
-    application_target.append(row_inp[1])
-    application_rate.append(float(row_inp[2]))
-    number_of_applications.append(float(row_inp[3]))
-    interval_between_applications.append(float(row_inp[4]))
-    Koc.append(float(row_inp[5]))
-    aerobic_soil_metabolism.append(float(row_inp[6]))
-    wet_in.append(row_inp[7])
-    application_method.append(row_inp[8])
-    aerial_size_dist.append(row_inp[9])
-    ground_spray_type.append(row_inp[10])
-    airblast_type.append(row_inp[11])
-    spray_quality.append(row_inp[12])
-    no_spray_drift.append(float(row_inp[13]))
-    incorporation_depth.append(float(row_inp[14]))
-    solubility.append(float(row_inp[15]))
-    aerobic_aquatic_metabolism.append(float(row_inp[16]))
-    hydrolysis.append(float(row_inp[17]))
-    photolysis_aquatic_half_life.append(float(row_inp[18]))
+def create_jid(row_inp):
+    while True:
+        row_inp_temp_all = row_inp.get()
+        if row_inp_temp_all is None:
+            break
+        else:
+            row_inp_temp = row_inp_temp_all[0]
+            iter = row_inp_temp_all[1]
+            chem_name_temp = row_inp_temp[0]
+            application_target_temp = row_inp_temp[1]
+            application_rate_temp = float(row_inp_temp[2])
+            number_of_applications_temp = float(row_inp_temp[3])
+            interval_between_applications_temp = float(row_inp_temp[4])
+            Koc_temp = float(row_inp_temp[5])
+            aerobic_soil_metabolism_temp = float(row_inp_temp[6])
+            wet_in_temp = row_inp_temp[7]
+            application_method_temp = row_inp_temp[8]
+            aerial_size_dist_temp = row_inp_temp[9]
+            ground_spray_type_temp = row_inp_temp[10]
+            airblast_type_temp = row_inp_temp[11]
+            spray_quality_temp = row_inp_temp[12]
+            no_spray_drift_temp = float(row_inp_temp[13])
+            incorporation_depth_temp = float(row_inp_temp[14])
+            solubility_temp = float(row_inp_temp[15])
+            aerobic_aquatic_metabolism_temp = float(row_inp_temp[16])
+            hydrolysis_temp = float(row_inp_temp[17])
+            photolysis_aquatic_half_life_temp = float(row_inp_temp[18])
 
-    genee_obj = genee_model.genee('batch', chem_name[iter], application_target[iter], application_rate[iter], number_of_applications[iter], interval_between_applications[iter], Koc[iter], aerobic_soil_metabolism[iter], wet_in[iter], application_method[iter], application_method_label, aerial_size_dist[iter], ground_spray_type[iter], airblast_type[iter], spray_quality[iter], no_spray_drift[iter], incorporation_depth[iter], solubility[iter], aerobic_aquatic_metabolism[iter], hydrolysis[iter], photolysis_aquatic_half_life[iter])
-    jid_all.append(genee_obj.jid)
-    genee_obj_all.append(genee_obj)
-    # genee_dict_list_all.append(genee_obj.__dict__)
+            genee_obj = genee_model.genee('batch', chem_name_temp, application_target_temp, application_rate_temp, number_of_applications_temp, interval_between_applications_temp, Koc_temp, aerobic_soil_metabolism_temp, wet_in_temp, application_method_temp, application_method_label, aerial_size_dist_temp, ground_spray_type_temp, airblast_type_temp, spray_quality_temp, no_spray_drift_temp, incorporation_depth_temp, solubility_temp, aerobic_aquatic_metabolism_temp, hydrolysis_temp, photolysis_aquatic_half_life_temp)
+            logger.info(genee_obj)
+            jid_all.append(genee_obj.jid)
+            genee_obj_all.append(genee_obj)
 
+            batch_header = """
+                <div class="out_">
+                    <br><H3>Batch Calculation of Iteration %s:</H3>
+                </div>
+                """%(iter + 1)
+            out_html_temp = batch_header + genee_tables.table_all(genee_obj)
+            # out_html_all.append(out_html_temp)
+            out_html_all[iter]=out_html_temp
+            update_dic(out_html_temp, genee_obj.__dict__, 'geneec')
 
 
 def loop_html(thefile):
     reader = csv.reader(thefile.file.read().splitlines())
     header = reader.next()
-    i=0
-    out_html=""
+    indx = 0
     for row in reader:
-        create_jid(row, i)
-        i=i+1
+        job_q.put([row, indx])
+        indx = indx + 1
+    logger.info(job_q.qsize())
+    # Start all threads
+    all_threads = [Thread(target=create_jid, args=(job_q, )) for j in range(thread_count)]
+    for x in all_threads:
+        x.start()
 
-    for j in range(len(jid_all)):
-        # output_st = ""
-        # url_st='http://localhost:7777/ubertool_history/'+ 'geneec/' + jid_all[j]
-        # while output_st!="done":
-        #     response_st = urlfetch.fetch(url=url_st, method=urlfetch.GET, headers=http_headers, deadline=60)
-        #     output_st = json.loads(response_st.content)['status']
+    for x in all_threads:
+        job_q.put(None)
 
-        # output_val = json.loads(response_st.content)['result']
-        # # print j
+    for x in all_threads:
+        x.join()
 
-        genee_obj_temp =  genee_obj_all[j]
-        # setattr(genee_obj_temp, 'output_val', output_val)
-        logger.info(genee_obj_temp)
-        batch_header = """
-            <div class="out_">
-                <br><H3>Batch Calculation of Iteration %s:</H3>
-            </div>
-            """%(j + 1)
+    out_html_all_sort = OrderedDict(sorted(out_html_all.items()))
+    return out_html_all_sort
 
-        out_html = out_html + batch_header + genee_tables.table_all(genee_obj_temp)
-        # logger.info(genee_obj_temp.__dict__)
-        update_dic(batch_header + genee_tables.table_all(genee_obj_temp), genee_obj_temp.__dict__, 'geneec')
 
-    return genee_tables.timestamp(genee_obj_temp) + out_html
 
 
 class geneeBatchOutputPage(webapp.RequestHandler):
@@ -128,7 +139,13 @@ class geneeBatchOutputPage(webapp.RequestHandler):
         html = template.render(templatepath + '04uberoutput_start.html', {
                 'model':'genee',
                 'model_attributes':'Genee Batch Output'})
-        html = html + iter_html
+        html= html + """
+                <div class="out_">
+                    <b>GENEEC Version 2.0 (Beta)<br>
+                </div>"""
+        html = html + "".join(iter_html.values())
+        logger.info(iter_html.keys())
+        logger.info(len(iter_html.keys()))
         html = html + template.render(templatepath + 'export_fortran.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         self.response.out.write(html)

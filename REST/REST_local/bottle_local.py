@@ -37,14 +37,11 @@ def myroute(jid):
     # print request.json
     result = gfix.geneec2(APPRAT,APPNUM,APSPAC,KOC,METHAF,WETTED,METHOD,AIRFLG,YLOCEN,GRNFLG,GRSIZE,ORCFLG,INCORP,SOL,METHAP,HYDHAP,FOTHAP)
 
-    if (result):
-        all_result[jid]['status']='done'
-        all_result[jid]['input']=request.json
-        all_result[jid]['result']=result
-    # if run_type == "batch":
-    #     # element={'user_id':'admin', "_id":jid, "output":all_result[jid]['result'], "input":all_result[jid]['input']}
-    #     element={'user_id':'admin', "_id":jid, "status": 'done', "result":all_result[jid]['result']}
-    #     db['geneec'].save(element)
+    # if (result):
+    all_result[jid]['status']='done'
+    all_result[jid]['input']=request.json
+    all_result[jid]['result']=result
+
     return {'user_id':'admin', 'result': result, '_id':jid}
 ##################################geneec#############################################
 
@@ -122,8 +119,8 @@ def file_upload():
 @auth_basic(check)
 def insert_output_html():
     for k, v in request.json.iteritems():
-        exec '%s = v' % k
-    element={'user_id':'admin', "_id":_id, "output_html": output_html, "model_object_dict":model_object_dict}
+        exec "%s = v" % k
+    element={"user_id":"admin", "_id":_id, "run_type":run_type, "output_html": output_html, "model_object_dict":model_object_dict}
     db[model_name].save(element)
     # db["geneec"].update({"_id" :jid}, {'$set': {"output_html": output_html}})
 
@@ -152,7 +149,7 @@ def get_user_model_hist():
     for k, v in request.json.iteritems():
         exec '%s = v' % k
     hist_all = []
-    entity = db[model_name].find({'user_id':user_id})
+    entity = db[model_name].find({'user_id':user_id}).sort("_id", 1)
     for i in entity:
         hist_all.append(i)
     if not entity:

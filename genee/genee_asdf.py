@@ -31,8 +31,7 @@ http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'a
 def get_output_html(jid, model_name):
     all_dic = {"jid":jid, "model_name":model_name}
     data = json.dumps(all_dic)
-    # url='http://localhost:7777/get_html_output'
-    url=keys_Picloud_S3.amazon_ec2_ip+'/get_html_output'
+    url=os.environ['UBERTOOL_REST_SERVER'] + '/get_html_output'
     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
     html_output = json.loads(response.content)['html_output']
     return html_output

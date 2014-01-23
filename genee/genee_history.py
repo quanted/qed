@@ -6,6 +6,7 @@ Created on Tue Jan 03 13:30:41 2012
 """
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
+
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
@@ -21,9 +22,6 @@ from genee import genee_his_tables
 import logging
 logger = logging.getLogger('Geneec Model')
 
-# url_part1 = 'http://localhost:7777'
-url_part1 = keys_Picloud_S3.amazon_ec2_ip
-
 class user_hist(object):
     def __init__(self, user_id, model_name):
         self.user_id = user_id
@@ -36,7 +34,7 @@ class user_hist(object):
     ########call the function################# 
         self.all_dic = {"user_id": user_id, "model_name":model_name}
         self.data = json.dumps(self.all_dic)
-        self.url=url_part1+'/user_history'
+        self.url=os.environ['UBERTOOL_REST_SERVER']+'/user_history'
         self.response = urlfetch.fetch(url=self.url, payload=self.data, method=urlfetch.POST, headers=http_headers, deadline=60)
         # logger.info(self.response.content)
         self.output_val = json.loads(self.response.content)['hist_all']
@@ -44,12 +42,14 @@ class user_hist(object):
         self.user_id = []
         self.time_id = []
         self.jid = []
+        self.run_type = []
 
         for element in self.output_val:
             self.user_id.append(element['user_id'])
             self.jid.append(element['_id'])
             self.time_id.append(datetime.datetime.strptime(element['_id'], '%Y%m%d%H%M%S%f').strftime('%Y-%m-%d %H:%M:%S'))
-        logger.info(self.time_id)
+            self.run_type.append(element['run_type'])
+        # logger.info(self.time_id)
 
 
 

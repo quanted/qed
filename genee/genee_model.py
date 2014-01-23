@@ -1,3 +1,4 @@
+import os
 import keys_Picloud_S3
 import base64
 import urllib
@@ -75,7 +76,7 @@ class genee(object):
         FOTHAP = self.photolysis_aquatic_half_life
 
 
-        all_dic = {"run_type":run_type, "APPRAT":APPRAT, "APPNUM":APPNUM, "APSPAC":APSPAC, "KOC":KOC, "METHAF":METHAF, "WETTED":WETTED,
+        all_dic = {"APPRAT":APPRAT, "APPNUM":APPNUM, "APSPAC":APSPAC, "KOC":KOC, "METHAF":METHAF, "WETTED":WETTED,
                    "METHOD":METHOD, "AIRFLG":AIRFLG, "YLOCEN":YLOCEN, "GRNFLG":GRNFLG, "GRSIZE":GRSIZE,
                    "ORCFLG":ORCFLG, "INCORP":INCORP, "SOL":SOL, "METHAP":METHAP, "HYDHAP":HYDHAP, "FOTHAP":FOTHAP}
         # logger.info(all_dic)
@@ -88,29 +89,23 @@ class genee(object):
         else:
             ts1 = datetime.timedelta(hours=-5)+ts
         self.jid = ts1.strftime('%Y%m%d%H%M%S%f')
-        # url='http://localhost:7777/geneec1/'+self.jid 
-        url=keys_Picloud_S3.amazon_ec2_ip+'/geneec1/'+self.jid 
+        url=os.environ['UBERTOOL_REST_SERVER'] + '/geneec1/'+self.jid 
+        # url=keys_Picloud_S3.amazon_ec2_ip+'/geneec1/'+self.jid 
 
 
-        if run_type == "individual":
+        if run_type == "single" or "batch":
             response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
             self.output_val = json.loads(response.content)['result']
         # self.jid = json.loads(self.response.content)['jid']
         # logger.info(self.jid)
 
         if run_type == "batch":
-            response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+            response = ""
+            while response =="":
+                response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
             self.output_val = json.loads(response.content)['result']
-
-# def update_dic(output_html, model_object_dict, model_name):
-#     all_dic = {"model_name":model_name, "_id":model_object_dict['jid'], "output_html":output_html, "model_object_dict":model_object_dict}
-#     data = json.dumps(all_dic)
-#     url='http://localhost:7777/update_history'
-#     # url=keys_Picloud_S3.amazon_ec2_ip+'/update_history'
-#     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
-
-#         update_dic(html, genee_obj.__dict__, 'geneec')
-
-
-
             # self.output_st = ''
+
+
+
+

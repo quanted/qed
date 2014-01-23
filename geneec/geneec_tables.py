@@ -186,8 +186,7 @@ def timestamp(geneec_obj):
     html="""
     <div class="out_">
         <b>GENEEC Version 2.0 (Beta)<br>
-        <b>Computing Time = %.8ss<b><br>
-    """%(geneec_obj.elapsed)
+    """
     html = html + st
     html = html + " (UTC)</b>"
     html = html + """

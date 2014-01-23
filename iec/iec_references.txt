@@ -4,6 +4,14 @@ Specific EPA guidance and the Microsoft Excel version of the IEC model are not c
 <ul class="bullet">
   <li>NA</li>
 </ul>
+
+<p>
+Current github source code:
+</p>
+<ul>
+<li><a href="https://github.com/puruckertom/ubertool_src/tree/master/iec">ubertool_src on github</a>
+</ul>
+
 <p>
 Example reports documenting the use of IEC in reregistration eligibility documents and pesticide effects determinations for federally threatened and endangered species:
 </p>

@@ -7,6 +7,14 @@ Specific EPA guidance and the Microsoft Excel version of the model on the KABAM 
   <li><a href="http://www.epa.gov/oppefed1/models/water/kabam/kabam_v1_0_users_guide.pdf">User's Guide (pdf)</a></li>
   <li><a href="http://www.epa.gov/oppefed1/models/water/kabam/kabam_v1_0.xls">KABAM Excel Implementation</a></li>
 </ul>
+
+<p>
+Current github source code:
+</p>
+<ul>
+<li><a href="https://github.com/puruckertom/ubertool_src/tree/master/kabam">ubertool_src on github</a>
+</ul>
+
 <p>
 Example reports documenting the use of KABAM in reregistration eligibility documents and pesticide effects determinations for federally threatened and endangered species:
 </p>

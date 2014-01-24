@@ -27,7 +27,7 @@ class vvwmInp_chem(forms.Form):
 
 class vvwmInp_cropland(forms.Form):
     #CropLand Tab
-    scenID = forms.FloatField(required=True,label='Scenario ID')
+    scenID = forms.FloatField(required=True,label='Scenario ID',initial="CALettuce")
 
 class vvwmInp_waterbody(forms.Form):
 	# Water Body Tab

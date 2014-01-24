@@ -90,6 +90,17 @@ def przm5_rest(jid):
     # print all_result
     # print list(ff)[0][0]
     return {'result': result, '_id':jid, 'jid':jid}
+##################################przm5#############################################
+
+
+################################# VVWM #############################################
+
+# @route('/vvwm/<jid>', method='POST') 
+# @auth_basic(check)
+# def vvwm_rest(jid):
+
+################################# VVWM #############################################
+
 
 # ###############File upload####################
 @route('/file_upload', method='POST') 

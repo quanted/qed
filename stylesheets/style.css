@@ -62,6 +62,9 @@ h3 {
   font-weight: bold;
   font-size: 1.1em;
 }
+h6 {
+  font-size: 0.9em;
+}
 td {
   padding: 1px 4px;
 }

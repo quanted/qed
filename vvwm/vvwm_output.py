@@ -8,7 +8,8 @@ from google.appengine.ext.webapp import template
 from uber import uber_lib
 import cgi
 import cgitb
-from vvwm import vvwm_model, vvwm_tables
+from vvwm import vvwm_model
+# , vvwm_tables
 
 import logging
 logger = logging.getLogger('vvwm Model')

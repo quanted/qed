@@ -1,7 +1,7 @@
 import numpy
 from django.template import Context, Template
 from django.utils.safestring import mark_safe
-from geneec import geneec_model
+from genee import genee_model
 import time
 import datetime
 

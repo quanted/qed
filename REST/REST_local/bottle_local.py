@@ -27,9 +27,9 @@ def check(user, passwd):
 all_result = {}
 
 ##################################geneec#############################################
-@route('/geneec1/<jid>', method='POST') 
+@route('/geneec/<jid>', method='POST') 
 @auth_basic(check)
-def myroute(jid):
+def geneec_rest(jid):
     for k, v in request.json.iteritems():
         exec '%s = v' % k
     all_result.setdefault(jid,{}).setdefault('status','none')
@@ -76,17 +76,15 @@ def przm5_rest(jid):
                                  koc_check, Koc,
                                  soilHalfLifeBox,
                                  convertSoil1, convert1to3, convert2to3)
-    if (result):
-        all_result[jid]['status']='done'
-        all_result[jid]['input']=request.json
-        all_result[jid]['result']=result
-    element={'user_id':'admin', "_id":jid, "output_link":all_result[jid]['result'][0], "output_val":all_result[jid]['result'][1:4], "input":all_result[jid]['input']}
-    db['przm5'].save(element)
+    # if (result):
+    all_result[jid]['status']='done'
+    all_result[jid]['input']=request.json
+    all_result[jid]['result']=result
 
     # print request.json
     # print all_result
     # print list(ff)[0][0]
-    return {'result': result, '_id':jid, 'jid':jid}
+    return {'user_id':'admin', 'result': result, '_id':jid}
 
 # ###############File upload####################
 @route('/file_upload', method='POST') 
@@ -123,6 +121,9 @@ def insert_output_html():
     element={"user_id":"admin", "_id":_id, "run_type":run_type, "output_html": output_html, "model_object_dict":model_object_dict}
     db[model_name].save(element)
     # db["geneec"].update({"_id" :jid}, {'$set': {"output_html": output_html}})
+
+    # element={'user_id':'admin', "_id":jid, "output_link":all_result[jid]['result'][0], "output_val":all_result[jid]['result'][1:4], "input":all_result[jid]['input']}
+    # db['przm5'].save(element)
 
 
 ###############Check History####################

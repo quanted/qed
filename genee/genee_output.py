@@ -21,7 +21,6 @@ from google.appengine.api import urlfetch
 import logging
 logger = logging.getLogger('Geneec Model')
 
-#############################################
 
 ############Provide the key and connect to the picloud####################
 api_key=keys_Picloud_S3.picloud_api_key
@@ -29,7 +28,6 @@ api_secretkey=keys_Picloud_S3.picloud_api_secretkey
 base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
 http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
 ########call the function################# 
-
 def update_dic(output_html, model_object_dict, model_name):
     all_dic = {"model_name":model_name, "_id":model_object_dict['jid'], "run_type":"single", "output_html":output_html, "model_object_dict":model_object_dict}
     data = json.dumps(all_dic)

@@ -54,6 +54,8 @@ handlers:
   script: landing_pypest.py 
 - url: /admin.html
   script: admin.py
+- url: /http_check.html
+  script: http_check.py
 - url: /eco_index.html
   script: main.py 
 - url: /hh_index.html

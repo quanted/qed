@@ -27,9 +27,9 @@ def check(user, passwd):
 all_result = {}
 
 ##################################geneec#############################################
-@route('/geneec1/<jid>', method='POST') 
+@route('/geneec/<jid>', method='POST') 
 @auth_basic(check)
-def myroute(jid):
+def geneec_rest(jid):
     for k, v in request.json.iteritems():
         exec '%s = v' % k
     all_result.setdefault(jid,{}).setdefault('status','none')
@@ -37,14 +37,11 @@ def myroute(jid):
     # print request.json
     result = gfix.geneec2(APPRAT,APPNUM,APSPAC,KOC,METHAF,WETTED,METHOD,AIRFLG,YLOCEN,GRNFLG,GRSIZE,ORCFLG,INCORP,SOL,METHAP,HYDHAP,FOTHAP)
 
-    if (result):
-        all_result[jid]['status']='done'
-        all_result[jid]['input']=request.json
-        all_result[jid]['result']=result
-    # if run_type == "batch":
-    #     # element={'user_id':'admin', "_id":jid, "output":all_result[jid]['result'], "input":all_result[jid]['input']}
-    #     element={'user_id':'admin', "_id":jid, "status": 'done', "result":all_result[jid]['result']}
-    #     db['geneec'].save(element)
+    # if (result):
+    all_result[jid]['status']='done'
+    all_result[jid]['input']=request.json
+    all_result[jid]['result']=result
+
     return {'user_id':'admin', 'result': result, '_id':jid}
 ##################################geneec#############################################
 
@@ -79,30 +76,52 @@ def przm5_rest(jid):
                                  koc_check, Koc,
                                  soilHalfLifeBox,
                                  convertSoil1, convert1to3, convert2to3)
-    if (result):
-        all_result[jid]['status']='done'
-        all_result[jid]['input']=request.json
-        all_result[jid]['result']=result
-    element={'user_id':'admin', "_id":jid, "output_link":all_result[jid]['result'][0], "output_val":all_result[jid]['result'][1:4], "input":all_result[jid]['input']}
-    db['przm5'].save(element)
+    # if (result):
+    all_result[jid]['status']='done'
+    all_result[jid]['input']=request.json
+    all_result[jid]['result']=result
 
     # print request.json
     # print all_result
     # print list(ff)[0][0]
-    return {'result': result, '_id':jid, 'jid':jid}
+
+    return {'user_id':'admin', 'result': result, '_id':jid}
+
 ##################################przm5#############################################
 
 
 ################################# VVWM #############################################
+@route('/vvwm/<jid>', method='POST') 
+@auth_basic(check)
+def vvwm_rest(jid):
+    for k, v in request.json.iteritems():
+        exec '%s = v' % k
+    all_result.setdefault(jid,{}).setdefault('status','none')
 
-# @route('/vvwm/<jid>', method='POST') 
-# @auth_basic(check)
-# def vvwm_rest(jid):
+    from vvwm_rest import VVWM_pi_new
+    result = VVWM_pi_new.VVWM_pi(working_dir,
+                                koc_check, Koc, soilHalfLifeBox, soilTempBox1, foliarHalfLifeBox,
+                                wc_hl, w_temp, bm_hl, ben_temp, ap_hl, p_ref, h_hl, mwt, vp, sol, Q10Box,
+                                convertSoil, convert_Foliar, convertWC, convertBen, convertAP, convertH,
+                                deg_check, totalApp,
+                                SpecifyYears, ApplicationTypes, PestAppyDay, PestAppyMon, appNumber_year, app_date_type, DepthIncorp, PestAppyRate, localEff, localSpray,
+                                scenID,
+                                buried, D_over_dx, PRBEN, benthic_depth, porosity, bulk_density, FROC2, DOC2, BNMAS,
+                                DFAC, SUSED, CHL, FROC1, DOC1, PLMAS,
+                                firstYear, lastyear, vvwmSimType,
+                                afield, area, depth_0, depth_max,
+                                ReservoirFlowAvgDays)
+
+    all_result[jid]['status']='done'
+    all_result[jid]['input']=request.json
+    all_result[jid]['result']=result
+
+    return {'user_id':'admin', 'result': result, '_id':jid}
 
 ################################# VVWM #############################################
 
 
-# ###############File upload####################
+##################File upload####################
 @route('/file_upload', method='POST') 
 @auth_basic(check)
 def file_upload():
@@ -133,10 +152,13 @@ def file_upload():
 @auth_basic(check)
 def insert_output_html():
     for k, v in request.json.iteritems():
-        exec '%s = v' % k
-    element={'user_id':'admin', "_id":_id, "output_html": output_html, "model_object_dict":model_object_dict}
+        exec "%s = v" % k
+    element={"user_id":"admin", "_id":_id, "run_type":run_type, "output_html": output_html, "model_object_dict":model_object_dict}
     db[model_name].save(element)
     # db["geneec"].update({"_id" :jid}, {'$set': {"output_html": output_html}})
+
+    # element={'user_id':'admin', "_id":jid, "output_link":all_result[jid]['result'][0], "output_val":all_result[jid]['result'][1:4], "input":all_result[jid]['input']}
+    # db['przm5'].save(element)
 
 
 ###############Check History####################
@@ -163,7 +185,7 @@ def get_user_model_hist():
     for k, v in request.json.iteritems():
         exec '%s = v' % k
     hist_all = []
-    entity = db[model_name].find({'user_id':user_id})
+    entity = db[model_name].find({'user_id':user_id}).sort("_id", 1)
     for i in entity:
         hist_all.append(i)
     if not entity:

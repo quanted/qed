@@ -4,7 +4,8 @@ import base64
 import urllib
 from google.appengine.api import urlfetch
 import json
-from datetime import datetime,timedelta
+from datetime import datetime, timedelta
+import time
 from collections import OrderedDict
 
 import os
@@ -16,28 +17,24 @@ api_key=keys_Picloud_S3.picloud_api_key
 api_secretkey=keys_Picloud_S3.picloud_api_secretkey
 base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
 http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
-url_part1 = 'http://localhost:7777'
-# url_part1 = 'http://50.16.11.44:7777'
+url_part1 = os.environ['UBERTOOL_REST_SERVER']
 
 ###########################################################################
 
-def get_jid(working_dir, nchem,
+def get_jid(working_dir,
           koc_check, Koc, soilHalfLifeBox, soilTempBox1, foliarHalfLifeBox,
           wc_hl, w_temp, bm_hl, ben_temp, ap_hl, p_ref, h_hl, mwt, vp, sol, Q10Box,
-          totalApp,
-          SpecifyYears, ApplicationTypes, PestAppyDay, PestAppyMon, Rela_a, app_date_type, DepthIncorp, PestAppyRate, localEff, localSpray,
+          convertSoil, convert_Foliar, convertWC, convertBen, convertAP, convertH,
+          deg_check, totalApp,
+          SpecifyYears, ApplicationTypes, PestAppyDay, PestAppyMon, appNumber_year, app_date_type, DepthIncorp, PestAppyRate, localEff, localSpray,
           scenID,
           buried, D_over_dx, PRBEN, benthic_depth, porosity, bulk_density, FROC2, DOC2, BNMAS,
           DFAC, SUSED, CHL, FROC1, DOC1, PLMAS,
-          vvwmSimType,
+          firstYear, lastyear, vvwmSimType,
           afield, area, depth_0, depth_max,
           ReservoirFlowAvgDays):
 
-    # url='https://api.picloud.com/r/3303/przm5_s1_new'
-    # Remove above line
-
     all_dic = {"working_dir": working_dir,
-              "nchem": nchem,
               "koc_check": koc_check,
               "Koc": Koc,
               "soilHalfLifeBox": soilHalfLifeBox,
@@ -54,12 +51,19 @@ def get_jid(working_dir, nchem,
               "vp": vp,
               "sol": sol,
               "Q10Box": Q10Box,
+              "convertSoil":convertSoil,
+              "convert_Foliar":convert_Foliar,
+              "convertWC":convertWC,
+              "convertBen":convertBen,
+              "convertAP":convertAP,
+              "convertH":convertH,
+              "deg_check": deg_check,
               "totalApp": totalApp,
               "SpecifyYears": SpecifyYears,
               "ApplicationTypes": ApplicationTypes,
               "PestAppyDay": PestAppyDay,
               "PestAppyMon": PestAppyMon,
-              "Rela_a": Rela_a,
+              "appNumber_year": appNumber_year,
               "app_date_type": app_date_type,
               "DepthIncorp": DepthIncorp,
               "PestAppyRate": PestAppyRate,
@@ -81,40 +85,42 @@ def get_jid(working_dir, nchem,
               "FROC1": FROC1,
               "DOC1": DOC1,
               "PLMAS": PLMAS,
+              "firstYear": firstYear,
+              "lastyear": lastyear,
               "vvwmSimType": vvwmSimType,
               "afield": afield,
               "area": area,
               "depth_0": depth_0,
               "depth_max": depth_max,
               "ReservoirFlowAvgDays": ReservoirFlowAvgDays}
-
     logger.info(all_dic)
     data = json.dumps(all_dic)
 
-    import datetime, time
-    ts = time.time()
-    jid = datetime.datetime.fromtimestamp(ts).strftime('%Y%m%d%H%M%S%f')
+    ts = datetime.now()
+    if(time.daylight):
+        ts1 = timedelta(hours=-4)+ts
+    else:
+        ts1 = timedelta(hours=-5)+ts
+    jid = ts1.strftime('%Y%m%d%H%M%S%f')
     url=url_part1+'/vvwm/'+jid 
 
 
-    # start = time.clock()
+    # if run_type == "single" or "qaqc":
     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
-    logger.info(json.loads(response.content))
+    # logger.info(json.loads(response.content))
     output_val = json.loads(response.content)['result']
     jid= json.loads(response.content)['jid']
     # print "filepath=", output_val[4]
     # self.elapsed = (time.clock() - start)
     return(jid, output_val)
 
+
+# Commented out at end of this file - What does this do?
 def get_upload(src1, name1):
     all_dic = {"src1": src1, "name1": name1, "model_name":"vvwm"}
     data = json.dumps(all_dic)
     url=url_part1+'/file_upload'
-    import time
-    start = time.clock()
     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
-    elapsed = (time.clock() - start)
-    # print elapsed
 
 def convert_dict_key(key):
     try:
@@ -123,201 +129,157 @@ def convert_dict_key(key):
         return key
 
 class vvwm(object):
-     def __init__(self, dictionary):
-        logger.info('===================')
-        # logger.info(os.getcwd())
-        # cwd=os.getcwd()+'/vvwm/'
+  def __init__(self, dictionary):
+    logger.info('===================')
+    logger.info('===================')
+    # logger.info(os.getcwd())
+    # cwd=os.getcwd()+'/vvwm/'
 
+    alphanum_key = lambda (key, value): convert_dict_key(key)
+    dictionary_1 = sorted(dictionary.items(), key=alphanum_key)
+    self.dictionary = OrderedDict(dictionary_1)
+    logger.info(self.dictionary)
+    # Model input variables not on input page:
+    self.working_dir = "/"
+    self.dvf_file = "test.dvf"         # TEMPORARILY FIXED VALUE
+    self.firstYear = 1961
+    self.lastYear = 1990
+    self.totalApp = '1'                # Remove when Number of Apps is enabled
+    self.SpecifyYears = ""             # Remove when Specify Years is enabled
+    self.app_date_type = ""            # Remove when Relative Dates is enabled
+    self.ReservoirFlowAvgDays = "0"    # Remove when Flow avg days is enabled
 
-        alphanum_key = lambda (key, value): convert_dict_key(key)
-        dictionary_1 = sorted(dictionary.items(), key=alphanum_key)
-        dictionary = OrderedDict(dictionary_1)
+    # Create empty lists for variables below that need to be lists
+    # Lists = ['','',''] are setup that way bc those inputs could potential be left blank
+    self.ApplicationTypes = []
+    self.DepthIncorp = []
+    self.PestAppyDay = []
+    self.PestAppyMon = []
+    self.appNumber_year = []
+    # Year will be added here when "Specify Years" for Applications is enabled
+    self.PestAppyRate = []
+    self.localEff = []
+    self.localSpray = []
+    self.Koc = []
+    self.soilHalfLifeBox = []
+    self.soilTempBox1 = []
+    self.foliarHalfLifeBox = []
+    self.wc_hl = []
+    self.w_temp = []
+    self.bm_hl = []
+    self.ben_temp = []
+    self.ap_hl = []
+    self.p_ref = []
+    self.h_hl = []
+    self.mwt = []
+    self.vp = []
+    self.sol = []
+    # Molar Conversion Factors
+    self.convertSoil = []
+    self.convert_Foliar = []
+    self.convertWC = []
+    self.convertBen = []
+    self.convertAP = []
+    self.convertH = []
 
-        self.hydlength = 356.8  #for pond
-        self.useYears = 0
-        self.tempflag = 0
-        self.Q10Box = 2.0
-        self.soilTempBox1 = 25.0
-        self.SpecifyYears = 0
-        self.parentTo3 = 0
-        self.deg1To2 = 0
-        self.convert1to3 = 0
-        self.convert2to3 = 0
+    self.fillData()
+   
+  def fillData(self):
+    for k, v in self.dictionary.items():
+        setattr(self, k, v)
+        if k.startswith('sp_year'):
+            self.useYears = 1
+        elif k.startswith('deg_check'):
+            self.deg_check = int(v) + 1
+        elif k.startswith('cam_a_'):
+            self.ApplicationTypes.append(int(v))
+        elif k.startswith('depth_a_'):
+            self.DepthIncorp.append(v)
+        elif k.startswith('day_a_'):
+            self.PestAppyDay.append(v)
+        elif k.startswith('mon_a_'):
+            self.PestAppyMon.append(v)
+        elif k.startswith('rate_a_'):
+            self.PestAppyRate.append(v)
+        elif k.startswith('eff_a_'):
+            self.localEff.append(v)
+        elif k.startswith('drift_a_'):
+            self.localSpray.append(v)
+        elif k.startswith('foliarHalfLife_'):
+            self.foliarHalfLifeBox.append(float(v))
+        elif k.startswith('Koc_'):
+            self.Koc.append(float(v))
+        elif k.startswith('soilHalfLife_'):
+            self.soilHalfLifeBox.append(float(v))
+        elif k.startswith('soilHalfLifeRef'):
+            self.soilTempBox1.append(float(v))
+        elif k.startswith('wc_hl_'):
+            self.wc_hl.append(float(v))
+        elif k.startswith('w_temp_'):
+            self.w_temp.append(float(v))
+        elif k.startswith('bm_hl_'):
+            self.bm_hl.append(float(v))
+        elif k.startswith('ben_temp_'):
+            self.ben_temp.append(float(v))
+        elif k.startswith('ap_hl_'):
+            self.ap_hl.append(float(v))
+        elif k.startswith('p_ref_'):
+            self.p_ref.append(float(v))
+        elif k.startswith('h_hl_'):
+            self.h_hl.append(float(v))
+        elif k.startswith('mwt_'):
+            self.mwt.append(float(v))
+        elif k.startswith('vp_'):
+            self.vp.append(float(v))
+        elif k.startswith('sol_'):
+            self.sol.append(float(v))
+        elif k.startswith('QT'):
+            self.Q10Box = v
+        elif k.startswith('noa'):
+            self.totalApp = v
+        elif k.startswith('specifyYears'):
+            self.SpecifyYears = v
+        elif k.startswith('app_date_type'):
+            self.app_date_type = v
+        elif k.startswith('BurialFlag'):
+            self.buried = v
+        elif k.startswith('SimTypeFlag'):
+            self.vvwmSimType = v
+        # Molar Conversion Factors
+        elif k.startswith('convertSoil'):
+            self.convertSoil.append(v)
+        elif k.startswith('convert_Foliar'):
+            self.convert_Foliar.append(v)
+        elif k.startswith('convertWC'):
+            self.convertWC.append(v)
+        elif k.startswith('convertBen'):
+            self.convertBen.append(v)
+        elif k.startswith('convertAP'):
+            self.convertAP.append(v)
+        elif k.startswith('convertH'):
+            self.convertH.append(v)
 
+    self.final_res=get_jid(self.working_dir,
+          self.koc_check, self.Koc, self.soilHalfLifeBox, self.soilTempBox1, self.foliarHalfLifeBox,
+          self.wc_hl, self.w_temp, self.bm_hl, self.ben_temp, self.ap_hl, self.p_ref, self.h_hl, self.mwt, self.vp, self.sol, self.Q10Box,
+          self.convertSoil, self.convert_Foliar, self.convertWC, self.convertBen, self.convertAP, self.convertH,
+          self.deg_check, self.totalApp,
+          self.SpecifyYears, self.ApplicationTypes, self.PestAppyDay, self.PestAppyMon, self.appNumber_year, self.app_date_type, self.DepthIncorp, self.PestAppyRate, self.localEff, self.localSpray,
+          self.scenID,
+          self.buried, self.D_over_dx, self.PRBEN, self.benthic_depth, self.porosity, self.bulk_density, self.FROC2, self.DOC2, self.BNMAS,
+          self.DFAC, self.SUSED, self.CHL, self.FROC1, self.DOC1, self.PLMAS,
+          self.firstYear, self.lastYear, self.vvwmSimType,
+          self.afield, self.area, self.depth_0, self.depth_max,
+          self.ReservoirFlowAvgDays)
 
-        self.Rela_a = []
-        self.USLE_day = []
-        self.USLE_mon = []
-        self.USLE_year = []
-        self.USLE_c = []
-        self.USLE_n = []
-        self.USLE_cn = []
-        self.SoilProperty_thick = []
-        self.SoilProperty_compartment = []
-        self.SoilProperty_bulkden = []
-        self.SoilProperty_maxcap = []
-        self.SoilProperty_mincap = []
-        self.SoilProperty_oc = []
-        self.SoilProperty_sand = []
-        self.SoilProperty_clay = []
-        self.ApplicationTypes = []
-        self.DepthIncorp = []
-        self.PestAppyDay = []
-        self.PestAppyMon = []
-        self.PestAppyRate = []
-        self.localEff = []
-        self.localSpray = []
-        self.foliarHalfLifeBox = []
-        self.Koc = []
-        self.soilHalfLifeBox = []
+    # self.jid = self.final_res[0]
+    # self.link = self.final_res[1][0]
+    # self.PRCP_IRRG_sum = self.final_res[1][1]
+    # self.RUNF_sum = self.final_res[1][2]
+    # self.CEVP_TETD_sum = self.final_res[1][3]
+    # self.src1 = self.final_res[1][4]
+    # self.name1 = self.final_res[1][5]
 
-
-        for k, v in dictionary.items():
-            setattr(self, k, v)
-            if k.startswith('sp_year'):
-                self.useYears = 1
-            elif k.startswith('tempflag_check'):
-                self.tempflag = 1
-            elif k.startswith('day_t_'):
-                self.USLE_day.append(v)
-            elif k.startswith('mon_t_'):
-                self.USLE_mon.append(v)
-            elif k.startswith('year_t_'):
-                self.USLE_year.append(v)
-            elif k.startswith('c_t_'):
-                self.USLE_c.append(v)
-            elif k.startswith('n_t_'):
-                self.USLE_n.append(v)
-            elif k.startswith('cn_t_'):
-                self.USLE_cn.append(v)
-            elif k.startswith('cn_t_'):
-                self.USLE_cn.append(v)
-            elif k.startswith('thick_h_'):
-                self.SoilProperty_thick.append(v)
-            elif k.startswith('n_h_'):
-                self.SoilProperty_compartment.append(int(v))
-            elif k.startswith('rho_h_'):
-                self.SoilProperty_bulkden.append(float(v))
-            elif k.startswith('max_h_'):
-                self.SoilProperty_maxcap.append(float(v))
-            elif k.startswith('min_h_'):
-                self.SoilProperty_mincap.append(float(v))
-            elif k.startswith('oc_h_'):
-                self.SoilProperty_oc.append(float(v))
-            elif k.startswith('sand_h_'):
-                self.SoilProperty_sand.append(float(v))
-            elif k.startswith('clay_h_'):
-                self.SoilProperty_clay.append(float(v))
-            elif k.startswith('deg_check'):
-                self.nchem = int(v) + 1
-            elif k.startswith('cam_a_'):
-                self.ApplicationTypes.append(int(v))
-            elif k.startswith('depth_a_'):
-                self.DepthIncorp.append(v)
-            elif k.startswith('day_a_'):
-                self.PestAppyDay.append(v)
-            elif k.startswith('mon_a_'):
-                self.PestAppyMon.append(v)
-            elif k.startswith('rate_a_'):
-                self.PestAppyRate.append(v)
-            elif k.startswith('eff_a_'):
-                self.localEff.append(v)
-            elif k.startswith('drift_a_'):
-                self.localSpray.append(v)
-            elif k.startswith('foliarHalfLife_'):
-                self.foliarHalfLifeBox.append(float(v))
-            elif k.startswith('Koc_'):
-                self.Koc.append(float(v))
-            elif k.startswith('soilHalfLife_'):
-                self.soilHalfLifeBox.append(float(v))
-            elif k.startswith('rela_a_'):
-                self.Rela_a.append(v)
-
-
-        self.NumberOfFactors = int(self.nott)
-        # dvf_file_read = open(cwd+self.dvf_file,'r')
-        # content = dvf_file_read.readlines()
-        # self.firstyear = int(content[0][5:7])
-        # self.lastyear = int(content[-1][5:7])
-
-        self.firstyear = 61
-        self.lastyear = 90
-
-        #Record 12
-        self.dayEmerge_text=int(self.Emerge_text[0:2])
-        self.monthEmerge_text=int(self.Emerge_text[3:5])
-        self.dateEmerge_text = datetime.strptime(str(self.dayEmerge_text)+str(self.monthEmerge_text), "%d%m") 
-        self.dayMature_text=int(self.Mature_text[0:2])
-        self.monthMature_text=int(self.Mature_text[3:5])
-        self.dateMature_text = datetime.strptime(str(self.dayMature_text)+str(self.monthMature_text), "%d%m") 
-        self.dayHarvest_text=int(self.Harvest_text[0:2])
-        self.monthHarvest_text=int(self.Harvest_text[3:5])
-        self.dateHarvest_text = datetime.strptime(str(self.dayHarvest_text)+str(self.monthHarvest_text), "%d%m") 
-        if self.dateEmerge_text.date()>self.dateMature_text.date():
-            self.addYearM = 1
-        else:
-            self.addYearM = 0
-
-        if self.dateMature_text.date()>self.dateHarvest_text.date():
-            self.addYearH = 1
-        else:
-            self.addYearH = 0
-
-        #Record 13-14
-        # if int(self.irflag) == 1:
-        #     self.irtype = 3
-        # elif int(self.irflag) == 2:
-        #     self.irtype = 4
-
-        #Record 18
-        self.numHoriz = int(self.noh)
-
-        #Record C1
-        self.appNumber_year = int(self.noa)
-        self.totalApp = (self.lastyear - self.firstyear + 1)*self.appNumber_year
-
-        #Record C3
-        self.PestDispHarvest = int(self.PestDispHarvest)
-
-        #Record C5, C9
-        if int(self.deg2_source) == 0:
-            self.deg1To2 = 1
-            self.convert1to3 = self.convertSoil2
-        else:
-            self.parentTo3 = 1
-            self.convert2to3 = self.convertSoil2
-
-
-
-        self.final_res=get_jid(self.pfac, self.snowmelt, self.evapDepth, 
-                               self.uslek, self.uslels, self.uslep, self.fieldSize, self.ireg, self.slope, self.hydlength,
-                               self.canopyHoldup, self.rootDepth, self.canopyCover, self.canopyHeight,
-                               self.NumberOfFactors, self.useYears,
-                               self.USLE_day, self.USLE_mon, self.USLE_year, self.USLE_c, self.USLE_n, self.USLE_cn,
-                               self.firstyear, self.lastyear,
-                               self.dayEmerge_text, self.monthEmerge_text, self.dayMature_text, self.monthMature_text, self.dayHarvest_text, self.monthHarvest_text, self.addYearM, self.addYearH,
-                               self.irflag, self.tempflag,
-                               self.fleach, self.depletion, self.rateIrrig,
-                               self.albedo, self.bcTemp, self.Q10Box, self.soilTempBox1,
-                               self.numHoriz,
-                               self.SoilProperty_thick, self.SoilProperty_compartment, self.SoilProperty_bulkden, self.SoilProperty_maxcap, self.SoilProperty_mincap, self.SoilProperty_oc, self.SoilProperty_sand, self.SoilProperty_clay,
-                               self.rDepthBox, self.rDeclineBox, self.rBypassBox,
-                               self.eDepthBox, self.eDeclineBox,
-                               self.appNumber_year, self.totalApp,
-                               self.SpecifyYears, self.ApplicationTypes, self.PestAppyDay, self.PestAppyMon, self.Rela_a, self.app_date_type, self.DepthIncorp, self.PestAppyRate, self.localEff, self.localSpray,
-                               self.PestDispHarvest,
-                               self.nchem, self.convert_Foliar1, self.parentTo3, self.deg1To2, self.foliarHalfLifeBox,
-                               self.koc_check, self.Koc,
-                               self.soilHalfLifeBox,
-                               self.convertSoil1, self.convert1to3, self.convert2to3)
-        # self.info = self.final_res
-
-        self.jid = self.final_res[0]
-        self.link = self.final_res[1][0]
-        self.PRCP_IRRG_sum = self.final_res[1][1]
-        self.RUNF_sum = self.final_res[1][2]
-        self.CEVP_TETD_sum = self.final_res[1][3]
-        self.src1 = self.final_res[1][4]
-        self.name1 = self.final_res[1][5]
-
-        get_upload(self.src1, self.name1)
+    # get_upload(self.src1, self.name1)
+    logger.info('===================')
+    logger.info('===================')

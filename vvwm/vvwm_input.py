@@ -42,18 +42,22 @@ class vvwmInputPage(webapp.RequestHandler):
                             <tr><th colspan="2">Degradate 1</th></tr>
                             """
         html = html + str(przm5_parameters.przm5Inp_chem1())
+        html = html + str(vvwm_parameters.vvwmInp_chem1())
         html = html + """</table><table class="tab tab_Chemical_MCF1" style="display:none">
                             <tr><th colspan="2">Molar Conversion Factors (Degradate 1)</th></tr>
                             """
         html = html + str(przm5_parameters.przm5Inp_mcf1())
+        html = html + str(vvwm_parameters.vvwmInp_mcf1())
         html = html + """</table><table class="tab tab_Chemical2" style="display:none">
                             <tr><th colspan="2">Degradate 2</th></tr>
                             """
         html = html + str(przm5_parameters.przm5Inp_chem2())
+        html = html + str(vvwm_parameters.vvwmInp_chem2())
         html = html + """</table><table class="tab tab_Chemical_MCF2" style="display:none">
                             <tr><th colspan="2">Molar Conversion Factors (Degradate 2)</th></tr>
                             """
         html = html + str(przm5_parameters.przm5Inp_mcf2())
+        html = html + str(vvwm_parameters.vvwmInp_mcf2())
         html = html + """</table><table class="tab tab_Applications" style="display:none">"""
         html = html + str(przm5_parameters.przm5Inp_appl())
         html = html + """

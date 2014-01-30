@@ -1,4 +1,4 @@
-C:\Users\Jon\Dropbox\terr_models\JonF\swc\compile\vvwm\laptop\file usage test\test\test
+C:/Users/Jon/Documents/GitHub/ubertool_src/REST/REST_local/vvwm_rest/test
 
 1
 True
@@ -27,7 +27,7 @@ True
 
 2
 CAlettuceSTD
-C:\Users\Jon\Dropbox\terr_models\JonF\swc\compile\vvwm\laptop\file usage test\test\test.dvf
+C:/Users/Jon/Documents/GitHub/ubertool_src/REST/REST_local/vvwm_rest/test.dvf
 0
 
 False

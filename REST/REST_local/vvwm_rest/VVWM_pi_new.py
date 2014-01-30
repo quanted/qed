@@ -1,39 +1,30 @@
 #!/usr/bin/python
 #
-def PRZM5_pi(pfac, snowmelt, evapDepth, 
-          uslek, uslels, uslep, fieldSize, ireg, slope, hydlength,
-          canopyHoldup, rootDepth, canopyCover, canopyHeight,
-          NumberOfFactors, useYears,
-          USLE_day, USLE_mon, USLE_year, USLE_c, USLE_n, USLE_cn,
-          firstyear, lastyear,
-          dayEmerge_text, monthEmerge_text, dayMature_text, monthMature_text, dayHarvest_text, monthHarvest_text, addYearM, addYearH,
-          irflag, tempflag,
-          fleach, depletion, rateIrrig,
-          albedo, bcTemp, Q10Box, soilTempBox1,
-          numHoriz,
-          SoilProperty_thick, SoilProperty_compartment, SoilProperty_bulkden, SoilProperty_maxcap, SoilProperty_mincap, SoilProperty_oc, SoilProperty_sand, SoilProperty_clay,
-          rDepthBox, rDeclineBox, rBypassBox,
-          eDepthBox, eDeclineBox,
-          appNumber_year, totalApp,
-          SpecifyYears, ApplicationTypes, PestAppyDay, PestAppyMon, Rela_a, app_date_type, DepthIncorp, PestAppyRate, localEff, localSpray,
-          PestDispHarvest,
-          nchem, convert_Foliar1, parentTo3, deg1To2, foliarHalfLifeBox,
-          koc_check, Koc,
-          soilHalfLifeBox,
-          convertSoil1, convert1to3, convert2to3): 
+def VVWM_pi(working_dir,
+            koc_check, Koc, soilHalfLifeBox, soilTempBox1, foliarHalfLifeBox,
+            wc_hl, w_temp, bm_hl, ben_temp, ap_hl, p_ref, h_hl, mwt, vp, sol, Q10Box,
+            convertSoil, convert_Foliar, convertWC, convertBen, convertAP, convertH,
+            deg_check, totalApp,
+            SpecifyYears, ApplicationTypes, PestAppyDay, PestAppyMon, appNumber_year, app_date_type, DepthIncorp, PestAppyRate, localEff, localSpray,
+            scenID,
+            buried, D_over_dx, PRBEN, benthic_depth, porosity, bulk_density, FROC2, DOC2, BNMAS,
+            DFAC, SUSED, CHL, FROC1, DOC1, PLMAS,
+            firstYear, lastyear, vvwmSimType,
+            afield, area, depth_0, depth_max,
+            ReservoirFlowAvgDays):
     import os
     import stat
     import shutil
     import subprocess
     import zipfile
-    import cloud
+    # import cloud
     from boto.s3.connection import S3Connection
     from boto.s3.key import Key
     from boto.s3.bucket import Bucket
     import string
     import random
     import sys
-    import przm5_input_generator
+    import vvwm_input_generator
 
     print os.getcwd()
     import keys_Picloud_S3
@@ -52,8 +43,8 @@ def PRZM5_pi(pfac, snowmelt, evapDepth,
 ##################################################################################
 ######Create a folder if it does not existed, where holds calculations' output.#####
 ##################################################################################
-    cwd = 'D:/Dropbox/REST/przm5_rest/'
-    # cwd='/home/picloud/PRZM5/'
+    cwd = 'C:/Users/Jon/Documents/GitHub/ubertool_src/REST/REST_local/vvwm_rest/'
+    # cwd='/home/picloud/vvwm/'
     print("cwd="+cwd)
 
     src=cwd
@@ -65,120 +56,83 @@ def PRZM5_pi(pfac, snowmelt, evapDepth,
         os.makedirs(src1)
     ##
     os.chdir(src1)
+    # Set working_dir for vvwmTransfer file:
+    working_dir = src1
 
 ################################################################################
-#####Write the PRZM5 input file################
-    przm5_input_generator.test_przm5(pfac, snowmelt, evapDepth, 
-                                     uslek, uslels, uslep, fieldSize, ireg, slope, hydlength,
-                                     canopyHoldup, rootDepth, canopyCover, canopyHeight,
-                                     NumberOfFactors, useYears,
-                                     USLE_day, USLE_mon, USLE_year, USLE_c, USLE_n, USLE_cn,
-                                     firstyear, lastyear,
-                                     dayEmerge_text, monthEmerge_text, dayMature_text, monthMature_text, dayHarvest_text, monthHarvest_text, addYearM, addYearH,
-                                     irflag, tempflag,
-                                     fleach, depletion, rateIrrig,
-                                     albedo, bcTemp, Q10Box, soilTempBox1,
-                                     numHoriz,
-                                     SoilProperty_thick, SoilProperty_compartment, SoilProperty_bulkden, SoilProperty_maxcap, SoilProperty_mincap, SoilProperty_oc, SoilProperty_sand, SoilProperty_clay,
-                                     rDepthBox, rDeclineBox, rBypassBox,
-                                     eDepthBox, eDeclineBox,
-                                     appNumber_year, totalApp,
-                                     SpecifyYears, ApplicationTypes, PestAppyDay, PestAppyMon, Rela_a, app_date_type, DepthIncorp, PestAppyRate, localEff, localSpray,
-                                     PestDispHarvest,
-                                     nchem, convert_Foliar1, parentTo3, deg1To2, foliarHalfLifeBox,
-                                     koc_check, Koc,
-                                     soilHalfLifeBox,
-                                     convertSoil1, convert1to3, convert2to3)
+#####Write the vvwmTransfer file################
+    vvwm_input_generator.makevvwmTransfer(working_dir,
+                                    koc_check, Koc, soilHalfLifeBox, soilTempBox1, foliarHalfLifeBox,
+                                    wc_hl, w_temp, bm_hl, ben_temp, ap_hl, p_ref, h_hl, mwt, vp, sol, Q10Box,
+                                    convertSoil, convert_Foliar, convertWC, convertBen, convertAP, convertH,
+                                    deg_check, totalApp,
+                                    SpecifyYears, ApplicationTypes, PestAppyDay, PestAppyMon, appNumber_year, app_date_type, DepthIncorp, PestAppyRate, localEff, localSpray,
+                                    scenID,
+                                    buried, D_over_dx, PRBEN, benthic_depth, porosity, bulk_density, FROC2, DOC2, BNMAS,
+                                    DFAC, SUSED, CHL, FROC1, DOC1, PLMAS,
+                                    firstYear, lastyear, vvwmSimType,
+                                    afield, area, depth_0, depth_max,
+                                    ReservoirFlowAvgDays)
 
 
 
 # ########Copy files to the tempt folder#############
-    inp = "PRZM5.inp"
+    print "++++++++++++++++++++++++++"
     met = "test.dvf"
-    # print(os.listdir(src1))   #check what files are copied
+    if (deg_check == 1):
+        przm5_output = "test1.zts"
+    elif (deg_check == 2):
+        przm5_output = "test2.zts"
+    elif (deg_check == 3):
+        przm5_output = "test3.zts"
 
-    shutil.copy(src+"przm5.exe",src1)
+    shutil.copy(src+"vvwm.exe", src1)
     shutil.copy(src+met,src1)
+    shutil.copy(src+przm5_output,src1)
     print(os.getcwd())
     print(os.listdir(src1))   #check what files are copied
 
-    
-    src2=src1+"/przm5.exe"
-    
-    ##call the PRZM file
+    src2="vvwm.exe vvwmTransfer.txt"
+
+    ##call vvwm.exe w/ transfer file
     os.chdir(src1)
     fname_before = os.listdir(src1)
-    print 'Before running PRZM5', fname_before
+    print 'Before running VVWM', fname_before
 
     a=subprocess.Popen(src2, shell=0)
     print('done')
     a.wait()
 
     fname=os.listdir(src1)
-    print 'After running PRZM5', fname
+    print 'After running VVWM', fname
 
-    Year = []
-    Mon = []
-    Day = []
-    IRRG = []
-    PRCP = []
-    RUNF = []
-    CEVP = []
-    TETD = []
-    IRRG_sum = []
-    PRCP_sum = []
-    PRCP_IRRG_sum = []
-    RUNF_sum = []
-    CEVP_sum = []
-    TETD_sum = []
-    CEVP_TETD_sum = []
+    
+    
 
-    with open('test.zts') as f:
-        next(f)
-        next(f)
-        next(f)
-        for line in f:
-            line = line.split()
-            Year.append(int(line[0]))
-            Mon.append(int(line[1]))
-            Day.append(int(line[2]))
-            IRRG.append(float(line[3]))
-            PRCP.append(float(line[4]))
-            RUNF.append(float(line[5]))
-            CEVP.append(float(line[6]))
-            TETD.append(float(line[7]))
-
-    year_ind = [Year.index(i) for i in list(set(Year))]
-    year_ind.append(len(Year))
-
-    for jj in range(len(year_ind)-1):
-        PRCP_sum.append(sum(PRCP[year_ind[jj]:year_ind[jj+1]]))
-        IRRG_sum.append(sum(IRRG[year_ind[jj]:year_ind[jj+1]]))
-        PRCP_IRRG_sum = [x+y for (x, y) in zip(PRCP_sum, IRRG_sum)]
-        RUNF_sum.append(sum(RUNF[year_ind[jj]:year_ind[jj+1]]))
-        CEVP_sum.append(sum(CEVP[year_ind[jj]:year_ind[jj+1]]))
-        TETD_sum.append(sum(TETD[year_ind[jj]:year_ind[jj+1]]))
-        CEVP_TETD_sum = [x+y for (x, y) in zip(CEVP_sum, TETD_sum)]
+    print "++++++++++++++++++++++++++"
+    
 
 
     ##zip all the file
-    zout=zipfile.ZipFile("test.zip","w")
-    for name in fname:
-        if name !='przm5.exe' and name !='test.dvf':
-            zout.write(name)
-    zout.close()
+    # zout=zipfile.ZipFile("test.zip","w")
+    # for name in fname:
+    #     if name !='przm5.exe' and name !='test.dvf':
+    #         zout.write(name)
+    # zout.close()
 
     ##upload file to S3
-    conn = S3Connection(key, secretkey)
-    bucket = Bucket(conn, 'przm5')
-    k=Key(bucket)
+    # conn = S3Connection(key, secretkey)
+    # bucket = Bucket(conn, 'przm5')
+    # k=Key(bucket)
 
-    name1='PRZM5_'+name_temp+'.zip'
-    k.key=name1
-    link='https://s3.amazonaws.com/przm5/'+name1
-    print link
+    # name1='PRZM5_'+name_temp+'.zip'
+    # k.key=name1
+    # link='https://s3.amazonaws.com/przm5/'+name1
+    # print link
 
-    return link, PRCP_IRRG_sum, RUNF_sum, CEVP_TETD_sum, src1, name1
+    # return link, PRCP_IRRG_sum, RUNF_sum, CEVP_TETD_sum, src1, name1
+
+    return src1
 
     # k.set_contents_from_filename('test.zip')
 

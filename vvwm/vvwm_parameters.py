@@ -13,21 +13,57 @@ from django.utils.safestring import mark_safe
 
 class vvwmInp_chem(forms.Form):
 	# Chemical Tab
-    wc_hl = forms.FloatField(required=True,label='Water Column Metabolism Halflife (day)',initial='21')
-    w_temp = forms.FloatField(required=True,label=mark_safe('Water Reference Temperature (&deg;C)'),initial='25')
-    bm_hl = forms.FloatField(required=True,label='Benthic Metabolism Halflife (day)',initial='75')
-    ben_temp = forms.FloatField(required=True,label=mark_safe('Benthic Reference Temperature (&deg;C)'),initial='25')
-    ap_hl = forms.FloatField(required=True,label='Aquatic Photolysis Metabolism Halflife (day)',initial='2.0')
-    p_ref = forms.FloatField(required=True,label=mark_safe('Photolysis Ref Latitude (&deg;)'),initial='40')
-    h_hl = forms.FloatField(required=True,label='Hydrolysis Halflife (day)',initial='')
-    mwt = forms.FloatField(required=True,label='MWT',initial='311')
-    vp = forms.FloatField(required=True,label='Vapor Pressure (torr)',initial='8e-8')
-    sol = forms.FloatField(required=True,label='Solubility (mg/L)',initial='3.3')
+    wc_hl_0 = forms.FloatField(required=True,label='Water Column Metabolism Halflife (day)',initial='21')
+    w_temp_0 = forms.FloatField(required=True,label=mark_safe('Water Reference Temperature (&deg;C)'),initial='25')
+    bm_hl_0 = forms.FloatField(required=True,label='Benthic Metabolism Halflife (day)',initial='75')
+    ben_temp_0 = forms.FloatField(required=True,label=mark_safe('Benthic Reference Temperature (&deg;C)'),initial='25')
+    ap_hl_0 = forms.FloatField(required=True,label='Aquatic Photolysis Metabolism Halflife (day)',initial='2.0')
+    p_ref_0 = forms.FloatField(required=True,label=mark_safe('Photolysis Ref Latitude (&deg;)'),initial='40')
+    h_hl_0 = forms.FloatField(required=True,label='Hydrolysis Halflife (day)',initial='')
+    mwt_0 = forms.FloatField(required=True,label='MWT',initial='311')
+    vp_0 = forms.FloatField(required=True,label='Vapor Pressure (torr)',initial='8e-8')
+    sol_0 = forms.FloatField(required=True,label='Solubility (mg/L)',initial='3.3')
     QT = forms.FloatField(required=True,label=mark_safe('EXAMS Q10 Value (eq. 2-133)'),initial='2')
+
+class vvwmInp_chem1(forms.Form):
+    wc_hl_1 = forms.FloatField(required=True,label='Water Column Metabolism Halflife (day)',initial='21')
+    w_temp_1 = forms.FloatField(required=True,label=mark_safe('Water Reference Temperature (&deg;C)'),initial='25')
+    bm_hl_1 = forms.FloatField(required=True,label='Benthic Metabolism Halflife (day)',initial='75')
+    ben_temp_1 = forms.FloatField(required=True,label=mark_safe('Benthic Reference Temperature (&deg;C)'),initial='25')
+    ap_hl_1 = forms.FloatField(required=True,label='Aquatic Photolysis Metabolism Halflife (day)',initial='2.0')
+    p_ref_1 = forms.FloatField(required=True,label=mark_safe('Photolysis Ref Latitude (&deg;)'),initial='40')
+    h_hl_1 = forms.FloatField(required=True,label='Hydrolysis Halflife (day)',initial='')
+    mwt_1 = forms.FloatField(required=True,label='MWT',initial='311')
+    vp_1 = forms.FloatField(required=True,label='Vapor Pressure (torr)',initial='8e-8')
+    sol_1 = forms.FloatField(required=True,label='Solubility (mg/L)',initial='3.3')
+
+class vvwmInp_chem2(forms.Form):
+    wc_hl_2 = forms.FloatField(required=True,label='Water Column Metabolism Halflife (day)',initial='21')
+    w_temp_2 = forms.FloatField(required=True,label=mark_safe('Water Reference Temperature (&deg;C)'),initial='25')
+    bm_hl_2 = forms.FloatField(required=True,label='Benthic Metabolism Halflife (day)',initial='75')
+    ben_temp_2 = forms.FloatField(required=True,label=mark_safe('Benthic Reference Temperature (&deg;C)'),initial='25')
+    ap_hl_2 = forms.FloatField(required=True,label='Aquatic Photolysis Metabolism Halflife (day)',initial='2.0')
+    p_ref_2 = forms.FloatField(required=True,label=mark_safe('Photolysis Ref Latitude (&deg;)'),initial='40')
+    h_hl_2 = forms.FloatField(required=True,label='Hydrolysis Halflife (day)',initial='')
+    mwt_2 = forms.FloatField(required=True,label='MWT',initial='311')
+    vp_2 = forms.FloatField(required=True,label='Vapor Pressure (torr)',initial='8e-8')
+    sol_2 = forms.FloatField(required=True,label='Solubility (mg/L)',initial='3.3')
+
+class vvwmInp_mcf1(forms.Form):
+    convertWC1 = forms.FloatField(required=True,label='Water Column Metabolism')
+    convertBen1 = forms.FloatField(required=True,label='Benthic Metabolism')
+    convertAP1 = forms.FloatField(required=True,label='Photolysis')
+    convertH1 = forms.FloatField(required=True,label='Hydrolysis')
+
+class vvwmInp_mcf2(forms.Form):
+    convertWC2 = forms.FloatField(required=True,label='Water Column Metabolism')
+    convertBen2 = forms.FloatField(required=True,label='Benthic Metabolism')
+    convertAP2 = forms.FloatField(required=True,label='Photolysis')
+    convertH2 = forms.FloatField(required=True,label='Hydrolysis')
 
 class vvwmInp_cropland(forms.Form):
     #CropLand Tab
-    scenID = forms.FloatField(required=True,label='Scenario ID',initial="CALettuce")
+    scenID = forms.FloatField(required=True,label='Scenario ID',initial="CAlettuceSTD")
 
 class vvwmInp_waterbody(forms.Form):
 	# Water Body Tab

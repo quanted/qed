@@ -16,7 +16,7 @@ def table_1(user_hist_obj):
             <div class="out_">
         """ %(user_hist_obj.total_num)
         html = '''<table>
-                    <tr><th>Index</th><th>User</th><th>Time</th><th style="display:none">jid</th><th>Link</th><tr><tbody id="itemContainer">
+                    <tr><th>Index</th><th>User</th><th>Time</th><th style="display:none">jid</th><th>Run Type</th><th>Link</th><tr><tbody id="itemContainer">
                '''
         for i in range(int(user_hist_obj.total_num)):
             html = html + '''<form method="post" action="genee_asdf.html" target="_blank">'''
@@ -24,6 +24,7 @@ def table_1(user_hist_obj):
             html = html + "<td>%s</td>"%(user_hist_obj.user_id[i])
             html = html + "<td>%s</td>"%(user_hist_obj.time_id[i])
             html = html + '''<td style="display:none"><input name="jid" id="jid" value=%s type="text"></td>'''%(user_hist_obj.jid[i])
+            html = html + '''<td>%s</td>'''%(user_hist_obj.run_type[i])
             html = html + '''<td><input type="submit" value="View" Class="input_button_%s" ></td></tr>'''%(i+1)
             html = html + "</form>"
 

@@ -43,15 +43,13 @@ $(document).ready(function() {
   }
   $("tbody").on("change", "select[id^='id_cam_a']", useDepth );
   // Only 1 Soil Ref Temp Allowed
-  var soilRefTemp = $('#id_soilHalfLife_ref').val();
-  $('#id_soilHalfLife_ref_1, #id_soilHalfLife_ref_2').val(soilRefTemp).prop('readonly', true).css({ 'background-color':'#EBEBE4', 'color':'#888' });
-  $('#id_soilHalfLife_ref').change(function() {
-    soilRefTemp = $('#id_soilHalfLife_ref').val();
-    $('#id_soilHalfLife_ref_1, #id_soilHalfLife_ref_2').val(soilRefTemp);
+  var soilRefTemp = $('#id_soilHalfLifeRef_0').val();
+  $('#id_soilHalfLifeRef_1, #id_soilHalfLifeRef_2').val(soilRefTemp).prop('readonly', true).css({ 'background-color':'#EBEBE4', 'color':'#888' });
+  $('#id_soilHalfLifeRef_0').change(function() {
+    soilRefTemp = $('#id_soilHalfLifeRef_0').val();
+    $('#id_soilHalfLifeRef_1, #id_soilHalfLifeRef_2').val(soilRefTemp);
   });
   // Degradates
-  // Temporarily disable this feature
-  $('#id_deg_check').prop('disabled', true);
   $('#id_deg_check').change(function() { 
     if ($("#id_deg_check").val() == '1'){
       $(".tab_Chemical1, .tab_Chemical_MCF1").show();

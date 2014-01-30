@@ -21,7 +21,6 @@ from google.appengine.api import urlfetch
 import logging
 logger = logging.getLogger('Geneec Model')
 
-#############################################
 
 ############Provide the key and connect to the picloud####################
 api_key=keys_Picloud_S3.picloud_api_key
@@ -29,12 +28,10 @@ api_secretkey=keys_Picloud_S3.picloud_api_secretkey
 base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
 http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
 ########call the function################# 
-
 def update_dic(output_html, model_object_dict, model_name):
-    all_dic = {"model_name":model_name, "_id":model_object_dict['jid'], "output_html":output_html, "model_object_dict":model_object_dict}
+    all_dic = {"model_name":model_name, "_id":model_object_dict['jid'], "run_type":"single", "output_html":output_html, "model_object_dict":model_object_dict}
     data = json.dumps(all_dic)
-    # url='http://localhost:7777/update_history'
-    url=keys_Picloud_S3.amazon_ec2_ip+'/update_history'
+    url=os.environ['UBERTOOL_REST_SERVER'] + '/update_history'
     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
 
 class GENEEOutputPage(webapp.RequestHandler):
@@ -142,7 +139,7 @@ class GENEEOutputPage(webapp.RequestHandler):
             airblast_type_label='NA'
 ##########################################################################################                                        
 
-        genee_obj = genee_model.genee('individual', chem_name, application_target, application_rate, number_of_applications, interval_between_applications, Koc, aerobic_soil_metabolism, wet_in, application_method, application_method_label, aerial_size_dist, ground_spray_type, airblast_type, spray_quality, no_spray_drift, incorporation_depth, solubility, aerobic_aquatic_metabolism, hydrolysis, photolysis_aquatic_half_life)
+        genee_obj = genee_model.genee('single', chem_name, application_target, application_rate, number_of_applications, interval_between_applications, Koc, aerobic_soil_metabolism, wet_in, application_method, application_method_label, aerial_size_dist, ground_spray_type, airblast_type, spray_quality, no_spray_drift, incorporation_depth, solubility, aerobic_aquatic_metabolism, hydrolysis, photolysis_aquatic_half_life)
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie)

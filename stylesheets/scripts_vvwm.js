@@ -74,11 +74,7 @@ $(document).ready(function() {
 
     // Temporary Fixes
     $('#id_water_body_type_check, #id_app_date_type, #upfile1, #upfile2').prop('disabled', true);
-    // 
-    $('#id_noa').val('1').prop('disabled', true);
-    $('.tab_Applications').append(
-        '<tr><td><input id="id_day_a_0" type="text" name="day_a_0" value="1" size="2" /></td><td><input id="id_mon_a_0" type="text" name="mon_a_0" value="6" size="2" /></td><td><input id="id_year_a_0" type="text" name="year_a_0" size="4" /></td><td><input id="id_rate_a_0" type="text" name="rate_a_0" value="1.12" size="5" /></td><td><select id="id_cam_a_0" name="cam_a_0"><option value="1">Ground</option><option value="2">Foliar</option><option value="4">Incorporate</option><option value="8">@ Depth</option><option value="7">T-Band</option></select></td><td><input id="id_depth_a_0" type="text" name="depth_a_0" value="4" size="5" /></td><td><input id="id_eff_a_0" type="text" name="eff_a_0" value="0.95" size="4" /></td><td><input id="id_drift_a_0" type="text" name="drift_a_0" value="0.05" size="5" /></td></tr>'
-    );
+    //
     $("input[id^='id_depth']").prop('readonly', true).css({ 'background-color':'#EBEBE4', 'color':'#EBEBE4' });
     $('#id_year_a_0').prop('disabled', true);
     // 

@@ -8,7 +8,7 @@ import cgi
 import cgitb
 cgitb.enable()
 import json
-from genee import genee_model,genee_tables
+from genee import genee_model, genee_tables
 import sys
 lib_path = os.path.abspath('..')
 sys.path.append(lib_path)
@@ -28,10 +28,10 @@ api_secretkey=keys_Picloud_S3.picloud_api_secretkey
 base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
 http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
 ########call the function################# 
-def update_dic(output_html, model_object_dict, model_name):
+def save_dic(output_html, model_object_dict, model_name):
     all_dic = {"model_name":model_name, "_id":model_object_dict['jid'], "run_type":"single", "output_html":output_html, "model_object_dict":model_object_dict}
     data = json.dumps(all_dic)
-    url=os.environ['UBERTOOL_REST_SERVER'] + '/update_history'
+    url=os.environ['UBERTOOL_REST_SERVER'] + '/save_history'
     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
 
 class GENEEOutputPage(webapp.RequestHandler):
@@ -153,7 +153,7 @@ class GENEEOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
-        update_dic(html, genee_obj.__dict__, 'geneec')
+        save_dic(html, genee_obj.__dict__, 'geneec')
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', GENEEOutputPage)], debug=True)

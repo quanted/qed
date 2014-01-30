@@ -76,7 +76,8 @@ handlers:
   secure: always
 - url: /ajaxtest.html
   script: ajaxtest.py
-
+- url: /history_revisit.html
+  script: history_revisit.py
 # All URLs beginning with /stylesheets are treated as paths to static files in
 # the stylesheets/ directory. Note that static_dir handlers do not use a
 # regular expression for the URL pattern, only a prefix.
@@ -173,9 +174,13 @@ handlers:
   script: webice/webice_SSDoutput.py
 - url: /webiceTNE_out\.html
   script: webice/webice_TNEoutput.py
+# #historyoutput
+# - url: /(.*?)_asdf.html
+#   script: \1/\1_asdf.py
+  #historyoutput
 #historyoutput
-- url: /(.*?)_asdf.html
-  script: \1/\1_asdf.py
+- url: /(.*?)_intermediate.html
+  script: \1/\1_intermediate.py
 
 ##TESTED models##
 #description

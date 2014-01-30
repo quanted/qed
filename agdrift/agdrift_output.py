@@ -15,6 +15,7 @@ sys.path.append("../agdrift")
 from agdrift import agdrift_model,agdrift_tables
 from uber import uber_lib
 from django.template import Context, Template
+from django.utils import simplejson
 
 class agdriftOutputPage(webapp.RequestHandler):
     def post(self):        
@@ -31,15 +32,16 @@ class agdriftOutputPage(webapp.RequestHandler):
         aquatic_type = form.getvalue('aquatic_type')
         distance = form.getvalue('distance')
         calculation_input = form.getvalue('calculation_input')
-        init_avg_dep_foa = form.getvalue('init_avg_dep_foa')
-        avg_depo_gha = form.getvalue('avg_depo_gha')
-        avg_depo_lbac = form.getvalue('avg_depo_lbac')
-        deposition_ngL = form.getvalue('deposition_ngL')
-        deposition_mgcm = form.getvalue('deposition_mgcm')
-        nasae = form.getvalue('nasae')
-        y = form.getvalue('y')
-        x = form.getvalue('x')
-        agdrift_obj = agdrift_model.agdrift(True, True, drop_size, ecosystem_type, application_method, boom_height, orchard_type, application_rate, distance, aquatic_type, calculation_input, init_avg_dep_foa, avg_depo_gha, avg_depo_lbac, deposition_ngL, deposition_mgcm, nasae, y, x)
+        # init_avg_dep_foa = form.getvalue('init_avg_dep_foa')
+        # avg_depo_gha = form.getvalue('avg_depo_gha')
+        # avg_depo_lbac = form.getvalue('avg_depo_lbac')
+        # deposition_ngL = form.getvalue('deposition_ngL')
+        # deposition_mgcm = form.getvalue('deposition_mgcm')
+        # nasae = form.getvalue('nasae')
+        # y = form.getvalue('y')
+        # x = form.getvalue('x')
+        # express_y = form.getvalue('express_y')
+        agdrift_obj = agdrift_model.agdrift(True, True, drop_size, ecosystem_type, application_method, boom_height, orchard_type, application_rate, distance, aquatic_type, calculation_input)
         text_file = open('agdrift/agdrift_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
@@ -96,7 +98,7 @@ class agdriftOutputPage(webapp.RequestHandler):
         #<div>
        # """%(results[0], results[1])
 
-        html = html + template.render(templatepath + 'agdrift-output-jqplot.html', {})
+        html = html + template.render(templatepath + 'agdrift-output-jqplot_header.html', {})
 
         html = html +  """
         </div>

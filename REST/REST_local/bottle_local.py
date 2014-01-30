@@ -1,4 +1,4 @@
-# import bottle
+import bottle
 from bottle import route, run, post, request, auth_basic, abort
 import keys_Picloud_S3
 from boto.s3.connection import S3Connection
@@ -14,6 +14,7 @@ s3_secretkey = keys_Picloud_S3.amazon_s3_secretkey
 rest_key = keys_Picloud_S3.picloud_api_key
 rest_secretkey = keys_Picloud_S3.picloud_api_secretkey
 ###########################################################################################
+bottle.BaseRequest.MEMFILE_MAX = 1024 * 1024 # (or whatever you want)
 
 import pymongo
 client = pymongo.MongoClient('localhost', 27017)
@@ -148,17 +149,23 @@ def file_upload():
 
 
 ##########insert results into mongodb#########################
-@route('/update_history', method='POST') 
+@route('/save_history', method='POST') 
 @auth_basic(check)
 def insert_output_html():
     for k, v in request.json.iteritems():
         exec "%s = v" % k
     element={"user_id":"admin", "_id":_id, "run_type":run_type, "output_html": output_html, "model_object_dict":model_object_dict}
     db[model_name].save(element)
-    # db["geneec"].update({"_id" :jid}, {'$set': {"output_html": output_html}})
 
-    # element={'user_id':'admin', "_id":jid, "output_link":all_result[jid]['result'][0], "output_val":all_result[jid]['result'][1:4], "input":all_result[jid]['input']}
-    # db['przm5'].save(element)
+@route('/update_history', method='POST') 
+@auth_basic(check)
+def update_output_html():
+    for k, v in request.json.iteritems():
+        exec "%s = v" % k
+    # print request.json
+    db[model_name].update({"_id" :_id}, {'$set': {"output_html": output_html}})
+
+
 
 
 ###############Check History####################

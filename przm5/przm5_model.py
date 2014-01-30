@@ -319,7 +319,9 @@ class przm5(object):
             self.parentTo3 = 1
             self.convert2to3 = self.convertSoil2
 
-
+        self.dateEmerge_text = str(self.dateEmerge_text)
+        self.dateMature_text = str(self.dateMature_text)
+        self.dateHarvest_text = str(self.dateHarvest_text)
 
         self.final_res=get_jid(self.run_type, self.pfac, self.snowmelt, self.evapDepth, 
                                self.uslek, self.uslels, self.uslep, self.fieldSize, self.ireg, self.slope, self.hydlength,

@@ -188,15 +188,12 @@ $(document).ready(function() {
   });
 
   $("input[value='Submit']").click(function (e) {
-  e.preventDefault();
-  var html_input = $("form").html();
-  localStorage.html_input=html_input;
-
-    event.preventDefault();
+    e.preventDefault();
+    var html_input = $("form").html();
+    localStorage.html_input=html_input;
+    // event.preventDefault();
     var html_new = $("form").serialize()
-
-  localStorage.html_new=html_new;
-
+    localStorage.html_new=html_new;
   });
 
 });

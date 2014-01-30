@@ -8,18 +8,16 @@ import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
-from google.appengine.ext.webapp import template
 import os
-from uber import uber_lib
-import cgi, cgitb
-cgitb.enable()
 import keys_Picloud_S3
 import base64
 import urllib
 import json
+import cgi, cgitb
+cgitb.enable()
 from google.appengine.api import urlfetch
 import logging
-logger = logging.getLogger('Geneec Model')
+logger = logging.getLogger('historyoutputPage')
 
 
 api_key=keys_Picloud_S3.picloud_api_key
@@ -36,14 +34,15 @@ def get_output_html(jid, model_name):
     html_output = json.loads(response.content)['html_output']
     return html_output
 
-class GENEEhistoryoutputPage(webapp.RequestHandler):
+class historyoutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage() 
         jid = form.getvalue('jid')
-        html = get_output_html(jid, 'geneec')
+        model_name = form.getvalue('model_name')
+        html = get_output_html(jid, model_name)
         self.response.out.write(html)
 
-app = webapp.WSGIApplication([('/.*', GENEEhistoryoutputPage)], debug=True)
+app = webapp.WSGIApplication([('/.*', historyoutputPage)], debug=True)
 
 def main():
     run_wsgi_app(app)

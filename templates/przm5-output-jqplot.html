@@ -103,71 +103,72 @@ $(document).ready(function(){
 
 <!-- Output page input table layout jquery -->
 <script type="text/javascript">
-
 $(document).ready(function() {
-                $(".out_input_table").append(localStorage.html_input);
-                $(".out_input_table :input").attr('disabled', true);
-
-                element_all = localStorage.html_new.split("&")
-                // console.log(element_all)
-                element1 = localStorage.html_new.split("&")[0].split("=")
-                // console.log(element_all.length)
-                for (i=0; i<element_all.length; i++) {
-                    element_name_t = element_all[i].split("=")[0]
-                    element_val_t = element_all[i].split("=")[1]
-                    $('[name="'+element_name_t+'"]').val(element_val_t)
-                }
-                $(".input_button").hide()
-
-    $('li.Chemical').click(function(){
-    var degCheck = $("#id_deg_check").val()
-    curr_ind = 0;
-    $('li.Chemical').addClass('tabSel').removeClass('tabUnsel');
-    $('li.Applications, li.CropLand, li.Runoff').addClass('tabUnsel').removeClass('tabSel');
-    $(".tab:visible").hide();
-    $('.tab_Chemical, .tab_Chemical0').show();
-    if (degCheck == '1') {
-      $('.tab_Chemical1, .tab_Chemical_MCF1').show();
+    if(document.URL.indexOf('out') != -1 ){   
+        $(".out_input_table").append(localStorage.html_input);
     }
-    if (degCheck == '2') {
-      $('.tab_Chemical1, .tab_Chemical_MCF1, .tab_Chemical2, .tab_Chemical_MCF2').show();
-    }
-    });
+        $(".out_input_table :input").attr('disabled', true);
+        element_all = localStorage.html_new.split("&")
+        // console.log(element_all)
+        element1 = localStorage.html_new.split("&")[0].split("=")
+        // console.log(element_all.length)
+        for (i=0; i<element_all.length; i++) {
+            element_name_t = element_all[i].split("=")[0]
+            element_val_t = element_all[i].split("=")[1]
+            $('[name="'+element_name_t+'"]').val(element_val_t)
+        }
+        $(".input_button").hide()
 
-    $('li.Applications').click(function(){
-    curr_ind = 1;
-    $('li.Applications').addClass('tabSel').removeClass('tabUnsel');
-    $('li.Chemical, li.CropLand, li.Runoff, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
-    $(".tab:visible").hide();
-    $('.tab_Applications').show();
-    });
+        $('li.Chemical').click(function(){
+        var degCheck = $("#id_deg_check").val()
+        curr_ind = 0;
+        $('li.Chemical').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Applications, li.CropLand, li.Runoff, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
+        $(".tab:visible").hide();
+        $('.tab_Chemical, .tab_Chemical0').show();
+        if (degCheck == '1') {
+          $('.tab_Chemical1, .tab_Chemical_MCF1').show();
+        }
+        if (degCheck == '2') {
+          $('.tab_Chemical1, .tab_Chemical_MCF1, .tab_Chemical2, .tab_Chemical_MCF2').show();
+        }
+        });
 
-    $('li.CropLand').click(function(){
-    curr_ind = 2;
-    $('li.CropLand').addClass('tabSel').removeClass('tabUnsel');
-    $('li.Applications, li.Chemical, li.Runoff, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
-    $(".tab:visible").hide();
-    $('.tab_CropLand').show();
-    });
+        $('li.Applications').click(function(){
+        curr_ind = 1;
+        $('li.Applications').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.CropLand, li.Runoff, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
+        $(".tab:visible").hide();
+        $('.tab_Applications').show();
+        });
 
-    $('li.Runoff').click(function(){
-    curr_ind = 3;
-    $('li.Runoff').addClass('tabSel').removeClass('tabUnsel');
-    $('li.Applications, li.Chemical, li.CropLand, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
-    $(".tab:visible").hide();
-    $('.tab_Runoff').show();
-    });
+        $('li.CropLand').click(function(){
+        curr_ind = 2;
+        $('li.CropLand').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Applications, li.Chemical, li.Runoff, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
+        $(".tab:visible").hide();
+        $('.tab_CropLand').show();
+        });
 
-    $('li.WaterBody').click(function(){
-    curr_ind = 4;
-    $('li.WaterBody').addClass('tabSel').removeClass('tabUnsel');
-    $('li.Applications, li.Chemical, li.CropLand, li.Runoff').addClass('tabUnsel').removeClass('tabSel');
-    $(".tab:visible").hide();
-    $('.tab_WaterBody').show();
-    });
+        $('li.Runoff').click(function(){
+        curr_ind = 3;
+        $('li.Runoff').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Applications, li.Chemical, li.CropLand, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
+        $(".tab:visible").hide();
+        $('.tab_Runoff').show();
+        });
 
-    $('li.Applications, li.Chemical, li.CropLand, li.Runoff, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
-    $('li.Chemical').click()
+        $('li.WaterBody').click(function(){
+        curr_ind = 4;
+        $('li.WaterBody').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Applications, li.Chemical, li.CropLand, li.Runoff').addClass('tabUnsel').removeClass('tabSel');
+        $(".tab:visible").hide();
+        $('.tab_WaterBody').show();
+        });
+
+        $('li.Applications, li.Chemical, li.CropLand, li.Runoff, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
+        $('li.Chemical').click()
+
 });
 
 

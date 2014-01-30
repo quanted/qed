@@ -27,10 +27,18 @@ base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
 http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
 
 ###########################################################################
-def update_dic(output_html, model_object_dict, model_name):
-    all_dic = {"model_name":model_name, "_id":model_object_dict['jid'], "run_type":"batch", "output_html":output_html, "model_object_dict":model_object_dict}
+def batch_save_dic(output_html, model_object_dict, model_name, jid_batch, ChkCookie, templatepath):
+    html_save = uber_lib.SkinChk(ChkCookie)
+    html_save = html_save + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'genee','page':'output'})
+    html_save = html_save + template.render (templatepath + '03ubertext_links_left.html', {})                
+    html_save = html_save + output_html
+    html_save = html_save + template.render(templatepath + 'export_fortran.html', {})
+    html_save = html_save + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
+    html_save = html_save + template.render(templatepath + '06uberfooter.html', {'links': ''})
+
+    all_dic = {"model_name":model_name, "_id":jid_batch, "run_type":"batch", "output_html":html_save, "model_object_dict":model_object_dict}
     data = json.dumps(all_dic)
-    url=os.environ['UBERTOOL_REST_SERVER'] + '/update_history'
+    url=os.environ['UBERTOOL_REST_SERVER'] + '/save_history'
     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
 
 chem_name = []
@@ -55,7 +63,9 @@ hydrolysis = []
 photolysis_aquatic_half_life = []
 ####### Outputs ########
 jid_all = []
+jid_batch = []
 genee_obj_all = []
+genee_obj_all_dict = []
 all_threads = []
 out_html_all = {}
 job_q = Queue.Queue()
@@ -69,6 +79,7 @@ def create_jid(row_inp):
         else:
             row_inp_temp = row_inp_temp_all[0]
             iter = row_inp_temp_all[1]
+
             chem_name_temp = row_inp_temp[0]
             application_target_temp = row_inp_temp[1]
             application_rate_temp = float(row_inp_temp[2])
@@ -90,9 +101,11 @@ def create_jid(row_inp):
             photolysis_aquatic_half_life_temp = float(row_inp_temp[18])
 
             genee_obj = genee_model.genee('batch', chem_name_temp, application_target_temp, application_rate_temp, number_of_applications_temp, interval_between_applications_temp, Koc_temp, aerobic_soil_metabolism_temp, wet_in_temp, application_method_temp, application_method_label, aerial_size_dist_temp, ground_spray_type_temp, airblast_type_temp, spray_quality_temp, no_spray_drift_temp, incorporation_depth_temp, solubility_temp, aerobic_aquatic_metabolism_temp, hydrolysis_temp, photolysis_aquatic_half_life_temp)
-            logger.info(genee_obj)
+            # logger.info(genee_obj)
             jid_all.append(genee_obj.jid)
             genee_obj_all.append(genee_obj)
+            if iter == 0:
+                jid_batch.append(genee_obj.jid)
 
             batch_header = """
                 <div class="out_">
@@ -100,9 +113,8 @@ def create_jid(row_inp):
                 </div>
                 """%(iter + 1)
             out_html_temp = batch_header + genee_tables.table_all(genee_obj)
-            # out_html_all.append(out_html_temp)
             out_html_all[iter]=out_html_temp
-            update_dic(out_html_temp, genee_obj.__dict__, 'geneec')
+            # save_dic(out_html_temp, genee_obj.__dict__, 'geneec')
 
 
 def loop_html(thefile):
@@ -113,20 +125,18 @@ def loop_html(thefile):
         job_q.put([row, indx])
         indx = indx + 1
     logger.info(job_q.qsize())
+
     # Start all threads
     all_threads = [Thread(target=create_jid, args=(job_q, )) for j in range(thread_count)]
     for x in all_threads:
         x.start()
-
     for x in all_threads:
         job_q.put(None)
-
     for x in all_threads:
         x.join()
 
     out_html_all_sort = OrderedDict(sorted(out_html_all.items()))
     return out_html_all_sort
-
 
 
 
@@ -136,6 +146,8 @@ class geneeBatchOutputPage(webapp.RequestHandler):
         thefile = form['file-0']
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
+        ChkCookie = self.request.cookies.get("ubercookie")
+
         html = template.render(templatepath + '04uberoutput_start.html', {
                 'model':'genee',
                 'model_attributes':'Genee Batch Output'})
@@ -144,10 +156,10 @@ class geneeBatchOutputPage(webapp.RequestHandler):
                     <b>GENEEC Version 2.0 (Beta)<br>
                 </div>"""
         html = html + "".join(iter_html.values())
-        logger.info(iter_html.keys())
-        logger.info(len(iter_html.keys()))
-        html = html + template.render(templatepath + 'export_fortran.html', {})
-        html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
+        # logger.info(iter_html.keys())
+        # logger.info(len(iter_html.keys()))
+
+        batch_save_dic(html, [x.__dict__ for x in genee_obj_all], 'geneec', jid_batch[0], ChkCookie, templatepath)
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', geneeBatchOutputPage)], debug=True)

@@ -18,7 +18,7 @@ import urllib
 from google.appengine.api import urlfetch
 import json
 import datetime, time
-from genee import genee_his_tables
+import history_tables
 import logging
 logger = logging.getLogger('Geneec Model')
 
@@ -43,6 +43,7 @@ class user_hist(object):
         self.time_id = []
         self.jid = []
         self.run_type = []
+        self.model_name = "geneec"
 
         for element in self.output_val:
             self.user_id.append(element['user_id'])
@@ -55,8 +56,6 @@ class user_hist(object):
 
 class GENEEhistoryPage(webapp.RequestHandler):
     def get(self):
-        text_file1 = open('genee/genee_history.txt','r')
-        x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie)
@@ -67,7 +66,7 @@ class GENEEhistoryPage(webapp.RequestHandler):
                 'model_attributes':'GENEE User History'})
         html = html + template.render (templatepath + 'history_pagination.html', {})                
         hist_obj = user_hist('admin', 'geneec')
-        html = html + genee_his_tables.table_all(hist_obj)
+        html = html + history_tables.table_all(hist_obj)
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

@@ -27,10 +27,10 @@ base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
 http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
 
 ###########################################################################
-def update_dic(output_html, model_object_dict, model_name):
+def save_dic(output_html, model_object_dict, model_name):
     all_dic = {"model_name":model_name, "_id":model_object_dict['jid'], "run_type":"batch", "output_html":output_html, "model_object_dict":model_object_dict}
     data = json.dumps(all_dic)
-    url=os.environ['UBERTOOL_REST_SERVER'] + '/update_history'
+    url=os.environ['UBERTOOL_REST_SERVER'] + '/save_history'
     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
 
 chem_name = []
@@ -102,7 +102,7 @@ def create_jid(row_inp):
             out_html_temp = batch_header + genee_tables.table_all(genee_obj)
             # out_html_all.append(out_html_temp)
             out_html_all[iter]=out_html_temp
-            update_dic(out_html_temp, genee_obj.__dict__, 'geneec')
+            save_dic(out_html_temp, genee_obj.__dict__, 'geneec')
 
 
 def loop_html(thefile):

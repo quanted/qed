@@ -11,7 +11,7 @@ $(document).ready(function() {
     var degCheck = $("#id_deg_check").val()
     curr_ind = 0;
     $('li.Chemical').addClass('tabSel').removeClass('tabUnsel');
-    $('li.Applications, li.CropLand, li.Runoff').addClass('tabUnsel').removeClass('tabSel');
+    $('li.Applications, li.CropLand, li.Runoff, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
     $(".tab:visible").hide();
     $('.tab_Chemical, .tab_Chemical0').show();
     if (degCheck == '1') {

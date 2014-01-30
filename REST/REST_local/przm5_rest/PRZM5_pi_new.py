@@ -52,7 +52,7 @@ def PRZM5_pi(pfac, snowmelt, evapDepth,
 ##################################################################################
 ######Create a folder if it does not existed, where holds calculations' output.#####
 ##################################################################################
-    cwd = 'D:/Dropbox/ubertool_src/REST/REST_local/przm5_rest/'
+    cwd = 'I:/Dropbox/ubertool_src/REST/REST_local/przm5_rest/'
     # cwd='/home/picloud/PRZM5/'
     print("cwd="+cwd)
 

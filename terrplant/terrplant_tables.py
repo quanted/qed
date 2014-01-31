@@ -310,10 +310,13 @@ def table_sum_output(sumheadings, tmpl, rundry_out, runsemi_out, spray_out, tota
         """
         return html
 
-def timestamp(terrplant_obj):
+def timestamp(terrplant_obj="", batch_jid=""):
     # ts = time.time()
     # st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
-    st = datetime.datetime.strptime(terrplant_obj.jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
+    if terrplant_obj:
+        st = datetime.datetime.strptime(terrplant_obj.jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
+    else:
+        st = datetime.datetime.strptime(batch_jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
     html="""
     <div class="out_">
     <b>TerrPlant <a href="http://www.epa.gov/oppefed1/models/terrestrial/terrplant/terrplant_user_guide.html">Version 1.2.2</a> (Beta)<br>

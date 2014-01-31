@@ -17,6 +17,23 @@ from terrplant import terrplant_model,terrplant_tables
 from uber import uber_lib
 from django.template import Context, Template
 import logging
+import keys_Picloud_S3
+import base64
+import urllib
+import json
+from google.appengine.api import urlfetch
+
+############Provide the key and connect to the picloud####################
+api_key=keys_Picloud_S3.picloud_api_key
+api_secretkey=keys_Picloud_S3.picloud_api_secretkey
+base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
+http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
+########call the function################# 
+def save_dic(output_html, model_object_dict, model_name):
+    all_dic = {"model_name":model_name, "_id":model_object_dict['jid'], "run_type":"qaqc", "output_html":output_html, "model_object_dict":model_object_dict}
+    data = json.dumps(all_dic)
+    url=os.environ['UBERTOOL_REST_SERVER'] + '/save_history'
+    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
 
 logger = logging.getLogger('TerrplantQaqcPage')
 
@@ -620,8 +637,7 @@ class TerrplantQaqcPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'terrplant',
                 'model_attributes':'TerrPlant QAQC'})
-        html = html + terrplant_tables.timestamp()
-        terr = terrplant_model.terrplant(True,True,version_terrplant,A[0],I[0],R[0],D[0],nms[0],lms[0],nds[0],lds[0],chemical_name[0],pc_code[0],use[0],application_method[0],application_form[0],solubility[0])
+        terr = terrplant_model.terrplant(True,True,version_terrplant,"qaqc",A[0],I[0],R[0],D[0],nms[0],lms[0],nds[0],lds[0],chemical_name[0],pc_code[0],use[0],application_method[0],application_form[0],solubility[0])
         terr.chemical_name_expected = chemical_name[0]
         terr.pc_code_expected = pc_code[0]
         terr.use_expected = use[0]
@@ -669,13 +685,14 @@ class TerrplantQaqcPage(webapp.RequestHandler):
         # terr.ldsRQsemi_results_expected = out_fun_ldsRQsemi[0]
         # terr.ldsRQspray_results_expected = out_fun_ldsRQspray[0]
 
-
+        html = html + terrplant_tables.timestamp(terr)
         html = html + terrplant_tables.table_all_qaqc(terrplant_tables.pvheadings, terrplant_tables.pvuheadings,terrplant_tables.deheadingsqaqc,
                                         terrplant_tables.plantec25noaecheadings,terrplant_tables.plantecdrysemisprayheadingsqaqc, 
                                         terrplant_tables.tmpl, terr)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        save_dic(html, terr.__dict__, 'terrplant')
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', TerrplantQaqcPage)], debug=True)

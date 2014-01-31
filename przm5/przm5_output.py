@@ -37,7 +37,7 @@ class przm5OutputPage(webapp.RequestHandler):
             args[key] = form.getvalue(key)
         args["run_type"] = "single"
         przm5_obj = przm5_model.przm5(args)
-        # logger.info(vars(przm5_obj))
+        logger.info(vars(przm5_obj))
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie)    

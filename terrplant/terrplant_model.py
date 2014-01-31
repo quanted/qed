@@ -1,7 +1,9 @@
 import sys
-import math
-import logging
 from django.utils import simplejson
+import time, datetime
+import logging
+
+
 
 def toJSON(terrplant_object):
     terrplant_vars = vars(terrplant_object)
@@ -14,15 +16,21 @@ def fromJSON(json_string):
     return new_terrplant
 
 class terrplant(object):
-
-    def __init__(self,set_variables=True,run_methods=True,version_terrplant='1.2.2',A=1,I=1,R=1,D=1,nms=1,lms=1,nds=1,lds=1,
-            chemical_name='',pc_code='',use='',application_method='',application_form='',solubility=1,vars_dict=None,):
+    def __init__(self, set_variables=True, run_methods=True, version_terrplant='1.2.2', run_type = "single", A=1, I=1, R=1, D=1, nms=1, lms=1, nds=1, lds=1,
+            chemical_name='', pc_code='', use='', application_method='', application_form='', solubility=1, vars_dict=None,):
         self.set_default_variables()
+        ts = datetime.datetime.now()
+        if(time.daylight):
+            ts1 = datetime.timedelta(hours=-4)+ts
+        else:
+            ts1 = datetime.timedelta(hours=-5)+ts
+        self.jid = ts1.strftime('%Y%m%d%H%M%S%f')
+
         if set_variables:
             if vars_dict != None:
                 self.__dict__.update(vars_dict)
             else:
-                self.set_variables(version_terrplant,A,I,R,D,nms,lms,nds,lds,chemical_name,pc_code,use,application_method,application_form,solubility)
+                self.set_variables(version_terrplant,run_type,A,I,R,D,nms,lms,nds,lds,chemical_name,pc_code,use,application_method,application_form,solubility)
             if run_methods:
                 self.run_methods()
 
@@ -36,7 +44,7 @@ class terrplant(object):
         self.nds = 1
         self.lms = 1
         self.lds = 1
-
+        self.run_type = "single"
         #Variables in the input page
         self.version_terrplant = ''
         self.chemical_name = ''
@@ -102,6 +110,7 @@ class terrplant(object):
     def __str__(self):
         string_rep = ''
         string_rep = string_rep + "TerrPlant version = %s \n" % self.version_terrplant
+        string_rep = string_rep + "run_type = %s \n" % self.run_type
         string_rep = string_rep + "I = %.2e \n" % self.I
         string_rep = string_rep + "A = %.2e \n" % self.A
         string_rep = string_rep + "D = %.2e \n" % self.D
@@ -129,8 +138,9 @@ class terrplant(object):
         string_rep = string_rep + "ldsRQspray_results = %.2e \n" % self.ldsRQspray_results
         return string_rep
 
-    def set_variables(self,version_terrplant,A,I,R,D,nms,lms,nds,lds,chemical_name,pc_code,use,application_method,application_form,solubility):
+    def set_variables(self,version_terrplant,run_type,A,I,R,D,nms,lms,nds,lds,chemical_name,pc_code,use,application_method,application_form,solubility):
         self.version_terrplant = version_terrplant
+        self.run_type = run_type
         self.A = A
         self.I = I
         self.R = R
@@ -909,6 +919,8 @@ class terrplant(object):
                 self.LOCldsspray_results = ('The risk quotient for listed monocot seedlings exposed to the'\
             ' pesticide via spray drift indicates that potential risk is minimal.')
         return self.LOCldsspray_results
+
+
 
 def main():
     test_terrplant = terrplant(True,True,1,1,1,1,1,1,1,1)

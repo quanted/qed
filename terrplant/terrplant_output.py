@@ -1,6 +1,4 @@
 # terrplant Version 1.2.2
-
-
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import webapp2 as webapp
@@ -10,13 +8,31 @@ import numpy as np
 import cgi
 import cgitb
 cgitb.enable()
-import logging
 import sys
 sys.path.append("../utils")
 import utils.json_utils
 sys.path.append("../terrplant")
 from terrplant import terrplant_model,terrplant_parameters,terrplant_tables
 from uber import uber_lib
+import logging
+logger = logging.getLogger('terrplant out')
+import keys_Picloud_S3
+import base64
+import urllib
+import json
+from google.appengine.api import urlfetch
+
+############Provide the key and connect to the picloud####################
+api_key=keys_Picloud_S3.picloud_api_key
+api_secretkey=keys_Picloud_S3.picloud_api_secretkey
+base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
+http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
+########call the function################# 
+def save_dic(output_html, model_object_dict, model_name):
+    all_dic = {"model_name":model_name, "_id":model_object_dict['jid'], "run_type":"single", "output_html":output_html, "model_object_dict":model_object_dict}
+    data = json.dumps(all_dic)
+    url=os.environ['UBERTOOL_REST_SERVER'] + '/save_history'
+    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
 
 class terrplantExecutePage(webapp.RequestHandler):
     def post(self):
@@ -44,7 +60,7 @@ class terrplantExecutePage(webapp.RequestHandler):
         # terr.application_form = application_form
         solubility = form.getvalue('solubility')
         # terr.sol = sol
-        terr = terrplant_model.terrplant(True,True,version_terrplant,A,I,R,D,nms,lms,nds,lds,chemical_name,pc_code,use,application_method,application_form,solubility)
+        terr = terrplant_model.terrplant(True,True,version_terrplant,"single",A,I,R,D,nms,lms,nds,lds,chemical_name,pc_code,use,application_method,application_form,solubility)
         nmv = form.getvalue('EC25_for_nonlisted_vegetative_vigor_monocot')
         terr.nmv = nmv
         ndv = form.getvalue('EC25_for_nonlisted_vegetative_vigor_dicot')
@@ -53,6 +69,7 @@ class terrplantExecutePage(webapp.RequestHandler):
         terr.lmv = lmv
         ldv = form.getvalue('NOAEC_for_listed_vegetative_vigor_dicot')
         terr.ldv = ldv
+        logger.info(terr.__dict__)
 
         text_file = open('terrplant/terrplant_description.txt','r')
         x = text_file.read()
@@ -64,13 +81,14 @@ class terrplantExecutePage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html',{
                 'model':'terrplant',
                 'model_attributes':'TerrPlant Output'})
-        html = html + terrplant_tables.timestamp()
+        html = html + terrplant_tables.timestamp(terr)
         html = html + terrplant_tables.table_all(terrplant_tables.pvheadings, terrplant_tables.pvuheadings,terrplant_tables.deheadings,
                                         terrplant_tables.plantec25noaecheadings,terrplant_tables.plantecdrysemisprayheadings, 
                                         terrplant_tables.sumheadings, terrplant_tables.tmpl, terr)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        save_dic(html, terr.__dict__, 'terrplant')
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', terrplantExecutePage)], debug=True)

@@ -97,6 +97,8 @@ handlers:
 - url: /templates/popup.html
   static_files: templates/popup.html
   upload: templates/popup.html
+- url: /data
+  static_dir: data
 
 ##UBERTOOL INPUT PAGES##
 #output
@@ -208,7 +210,7 @@ handlers:
   script: user/user_input.py 
   login: required
   secure: never
-  
+
 - url: /user_output.html
   script: user/user_output.py
   login: required

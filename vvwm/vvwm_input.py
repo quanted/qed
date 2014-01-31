@@ -27,6 +27,7 @@ class vvwmInputPage(webapp.RequestHandler):
         <div class="input_nav">
             <ul>
                 <li class="Chemical tabSel">Chemical </li>
+                |<li class="Applications tabUnsel"> Applications </li>
                 |<li class="CropLand tabUnsel"> Crop/Land </li>
                 |<li class="WaterBody tabUnsel"> Water Body </li>
             </ul>
@@ -41,22 +42,47 @@ class vvwmInputPage(webapp.RequestHandler):
                             <tr><th colspan="2">Degradate 1</th></tr>
                             """
         html = html + str(przm5_parameters.przm5Inp_chem1())
+        html = html + str(vvwm_parameters.vvwmInp_chem1())
         html = html + """</table><table class="tab tab_Chemical_MCF1" style="display:none">
                             <tr><th colspan="2">Molar Conversion Factors (Degradate 1)</th></tr>
                             """
         html = html + str(przm5_parameters.przm5Inp_mcf1())
+        html = html + str(vvwm_parameters.vvwmInp_mcf1())
         html = html + """</table><table class="tab tab_Chemical2" style="display:none">
                             <tr><th colspan="2">Degradate 2</th></tr>
                             """
         html = html + str(przm5_parameters.przm5Inp_chem2())
+        html = html + str(vvwm_parameters.vvwmInp_chem2())
         html = html + """</table><table class="tab tab_Chemical_MCF2" style="display:none">
                             <tr><th colspan="2">Molar Conversion Factors (Degradate 2)</th></tr>
                             """
         html = html + str(przm5_parameters.przm5Inp_mcf2())
+        html = html + str(vvwm_parameters.vvwmInp_mcf2())
+        html = html + """</table><table class="tab tab_Applications" style="display:none">"""
+        html = html + str(przm5_parameters.przm5Inp_appl())
+        html = html + """
+                        <tr>
+                            <th width="55px">Day</th>
+                            <th width="56px">Month</th>
+                            <th width="68px">Year</th>
+                            <th width="74px">Amount (kg/hA)</th>
+                            <th width="104px">Application Method</th>
+                            <th width="74px">Depth (cm)</th>
+                            <th width="68px">Eff.</th>
+                            <th width="75px">Drift/T</th>
+                        </tr>
+                        
+                        """
         html = html + template.render (templatepath + 'vvwm_weatherfile.html', {})
         html = html + str(vvwm_parameters.vvwmInp_cropland())
         html = html + """</table><table class="tab tab_WaterBody" style="display:none">"""
         html = html + str(vvwm_parameters.vvwmInp_waterbody())
+        html = html + """</table><table class="tab tab_WaterBodyWCparms" style="display:none">
+                            <tr><th colspan="2">Water Column Parameters</tr>"""
+        html = html + str(vvwm_parameters.vvwmInp_waterbody_WCparms())
+        html = html + """</table><table class="tab tab_WaterBodyBparms" style="display:none">
+                            <tr><th colspan="2">Benthic Parameters</tr>"""
+        html = html + str(vvwm_parameters.vvwmInp_waterbody_Bparms())
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

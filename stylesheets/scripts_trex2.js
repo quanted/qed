@@ -4,8 +4,7 @@ $(document).ready(function() {
     var uptab_pool = ["Chemical", "Avian", "Mammal"];
     var visible = $(".tab:visible").attr('class').split(" ")[1];
     var curr_ind = $.inArray(visible, tab_pool);
-    $(".submit").hide();
-    $(".back").hide();
+    $(".back, .submit, #metaDataToggle, #metaDataText").hide();
 
     $('li.Chemical').click(function(){
         curr_ind = 0;
@@ -14,7 +13,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_Chemical').show();
         $(".back").hide();
-        $(".submit").hide();
+        $(".submit, #metaDataToggle, #metaDataText").hide();
         $(".next").show();
     });
 
@@ -25,7 +24,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_Avian').show();
         $(".back").show();
-        $(".submit").hide();
+        $(".submit, #metaDataToggle, #metaDataText").hide();
         $(".next").show();
     });
 
@@ -36,7 +35,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_Mammal').show();
         $(".back").show();
-        $(".submit").show();
+        $(".submit, #metaDataToggle, #metaDataText").show();
         $(".next").hide();
     });
 
@@ -48,11 +47,11 @@ $(document).ready(function() {
             curr_ind = curr_ind + 1;
             $("." + tab_pool[curr_ind]).show();
             $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
-            $(".submit").hide();
+            $(".submit, #metaDataToggle, #metaDataText").hide();
             $(".back").show();
             }
         if (curr_ind == 2) {
-            $(".submit").show();
+            $(".submit, #metaDataToggle, #metaDataText").show();
             $(".next").hide();
         }
     });
@@ -64,11 +63,11 @@ $(document).ready(function() {
             curr_ind = curr_ind - 1;
             $("." + tab_pool[curr_ind]).show();
             $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
-            $(".submit").hide();
+            $(".submit, #metaDataToggle, #metaDataText").hide();
             $(".next").show();
         }
         if (curr_ind == 0) {
-            $(".back").hide();
+            $(".back, #metaDataToggle, #metaDataText").hide();
         }
     });
 

@@ -1,26 +1,83 @@
 $(document).ready(function() {
+  
+  var tab_pool = ["tab_Chemical", "tab_Applications", "tab_CropLand", "tab_Runoff", "tab_WaterBody"];
+  var uptab_pool = ["Chemical", "Applications", "CropLand", "Runoff", "WaterBody"];
+  var visible = $(".tab:visible").attr('class').split(" ")[1];
+  var curr_ind = $.inArray(visible, tab_pool);
+  $(".back, .submit, #metaDataToggle, #metaDataText").hide();
 
-  // $(".deg").hide();
-  // $(".deg1").hide();
-  // $(".deg2").hide();
+  $('li.Chemical').click(function(){
+    curr_ind = 0;
+    $('li.Chemical').addClass('tabSel').removeClass('tabUnsel');
+    $('li.Applications, li.CropLand, li.Runoff, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
+    $('.tab:visible, .back, .submit, #metaDataToggle, #metaDataText').hide();
+    $('.tab_Chemical, .tab_Chemical0, .next').show();
+  });
 
-  // $('#id_deg_check').change(function () {
-  //   if ($(this).val() == 1){
-  //     $(".deg").show();
-  //     $(".deg1").show();
-  //     $(".deg2").hide();
-  //   }
-  //   else if ($(this).val() == 2){
-  //     $(".deg").show();
-  //     $(".deg1").show();
-  //     $(".deg2").show();
-  //   }
-  //   else {
-  //     $(".deg1").hide();
-  //     $(".deg2").hide();
-  //     $(".deg").hide();
-  //   }
-  // });
+  $('li.Applications').click(function(){
+    curr_ind = 1;
+    $('li.Applications').addClass('tabSel').removeClass('tabUnsel');
+    $('li.Chemical, li.CropLand, li.Runoff, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
+    $('.tab:visible, .submit, #metaDataToggle, #metaDataText').hide();
+    $('.tab_Applications, .back, .next').show();
+  });
+
+  $('li.CropLand').click(function(){
+    curr_ind = 2;
+    $('li.CropLand').addClass('tabSel').removeClass('tabUnsel');
+    $('li.Applications, li.Chemical, li.Runoff, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
+    $('.tab:visible, .submit, #metaDataToggle, #metaDataText').hide();
+    $('.tab_CropLand, .back, .next').show();
+  });
+
+  $('li.Runoff').click(function(){
+    curr_ind = 3;
+    $('li.Runoff').addClass('tabSel').removeClass('tabUnsel');
+    $('li.Applications, li.Chemical, li.CropLand, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
+    $('.tab:visible, .submit, #metaDataToggle, #metaDataText').hide();
+    $('.tab_Runoff, .back, .next').show();
+  });
+
+  $('li.WaterBody').click(function(){
+    curr_ind = 4;
+    $('li.WaterBody').addClass('tabSel').removeClass('tabUnsel');
+    $('li.Applications, li.Chemical, li.CropLand, li.Runoff').addClass('tabUnsel').removeClass('tabSel');
+    $('.tab:visible, .next').hide();
+    $('.tab_WaterBody, .back, .submit, #metaDataToggle, #metaDataText').show();
+  });
+
+  $('.next').click(function () {
+    var tab = $(".tab:visible");
+    if (curr_ind < 4) {      
+        $(".tab:visible").hide();
+        $("."+ uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel');
+        curr_ind = curr_ind + 1;
+        $("." + tab_pool[curr_ind]).show();
+        $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
+        $(".submit, #metaDataToggle, #metaDataText").hide();
+        $(".back").show();
+        }
+    if (curr_ind == 4) {
+        $(".submit, #metaDataToggle, #metaDataText").show();
+        $(".next").hide();
+    }
+  });
+
+  $('.back').click(function () {
+    if (curr_ind > 0) {
+        $(".tab:visible").hide();
+        $("."+ uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel');
+        curr_ind = curr_ind - 1;
+        $("." + tab_pool[curr_ind]).show();
+        $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
+        $(".submit, #metaDataToggle, #metaDataText").hide();
+        $(".next").show();
+    }
+    if (curr_ind == 0) {
+      $(".back, #metaDataToggle, #metaDataText").hide();
+      $('.tab_Chemical0').show();
+    }
+  });
 
 	var USLE_day = [16,1,16,1,16,1,16,1,16,1,10,16,1,16,1,16,1,16,1,16,1,10,16,1,16,1]
 	var USLE_mon = [2,3,3,4,4,5,5,6,6,7,7,7,8,8,9,9,10,10,11,11,12,12,12,1,1,2]
@@ -47,18 +104,6 @@ $(document).ready(function() {
     };
     $('</table>').appendTo('.tab_noa');
     $(".rela").hide();
-
-  // $("[id^='id_cam_a_']").change(function () {
-  //     if ($(this).val() >= 4)
-  //     {
-  //       $(this).closest('tr').find("[id^='id_depth_a_']").prop('readonly', false);
-  //     }
-
-  //     else
-  //     {
-  //       $(this).closest('tr').find("[id^='id_depth_a_']").prop('readonly', true);
-  //     }
-  // });
 
   var thick_h = [10,22,40,77,22, '', '']
   var rho_h = [1.575, 1.575, 1.475, 1.725, 1.75, '', '']
@@ -116,43 +161,6 @@ $(document).ready(function() {
       $(".abs").hide();
     }
   });
-
-  // $('#id_noa').change(function () {
-  //   var total_a = $(this).val()
-  //   while (i_a < total_a) {
-  //           $('.tab_noa').append(
-  //             '<tr><td class="rela"><input type="text" size="5" name="rela_a_'+i_a+'" id="id_rela_a_'+i_a+'" value='+i_a+'></td><td class="abs"><input type="text" size="5" name="day_a_'+i_a+'" id="id_day_a_'+i_a+'" value="1"/></td><td class="abs"><input type="text" size="5" name="mon_a_'+i_a+'" id="id_mon_a_'+i_a+'" value="6"/></td><td><input type="text" size="5" name="rate_a_'+i_a+'" id="id_rate_a_'+i_a+'" value="1.12"/></td><td><select name="cam_a_'+i_a+'" id="id_cam_a_'+i_a+'"><option value="" disabled="disabled">Please select a name</option><option value="1">Ground</option><option value="2" selected="selected">Foliar</option><option value="4">Incorporate</option><option value="8">@Depth</option><option value="7">T-Band</option></select></td><td><input type="text" size="5" name="depth_a_'+i_a+'" id="id_depth_a_'+i_a+'" value="4" readonly="readonly"/></td><td><input type="text" size="5" name="eff_a_'+i_a+'" id="id_eff_a_'+i_a+'" value="0.95"/></td><td><input type="text" size="5" name="drift_a_'+i_a+'" id="id_drift_a_'+i_a+'" value="0.05"/></td>');
-  //       i_a = i_a + 1;
-  //   };
-  //   while (i_a > total_a) {
-  //     $(".tab_noa tr:last").remove();
-  //     i_a=i_a-1
-  //   }
-  //   $('</table>').appendTo('.tab_noa');
-
-  //   if ($("#id_app_date_type").val() == 0)
-  //   {
-  //     $(".rela").hide();
-  //     $(".abs").show();
-  //   }
-  //   else
-  //   {
-  //     $(".rela").show();
-  //     $(".abs").hide();
-  //   }
-
-  // $("[id^='id_cam_a_']").change(function () {
-  //     if ($(this).val() >= 4)
-  //     {
-  //       $(this).closest('tr').find("[id^='id_depth_a_']").prop('readonly', false);
-  //     }
-  //     else
-  //     {
-  //       $(this).closest('tr').find("[id^='id_depth_a_']").prop('readonly', true);
-  //     }
-  // })
-
-  // })
 
   $('#id_nott').change(function () {
     var total = $(this).val()

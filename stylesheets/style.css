@@ -31,6 +31,18 @@ body {
   left: 50%;
   margin: -307px 0 0 -340px;
 }
+#container_landing_unter {
+  width: 1035px;
+  text-align: left;    /* IE Hack */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -307px 0 0 -517.5px;
+  /*margin: 0.5em auto 1em auto;
+  top: 50%;
+  left: 50%;
+  text-align: left;*/    /* IE Hack */
+}
 #container {
   width: 1024px;
   margin: 4px auto 18px auto;
@@ -50,6 +62,9 @@ h3 {
   font-weight: bold;
   font-size: 1.1em;
 }
+h6 {
+  font-size: 0.9em;
+}
 td {
   padding: 1px 4px;
 }
@@ -68,6 +83,19 @@ td {
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;*/
   background: #F4F7ED url(/images/logo_landing.png) no-repeat;
+}
+#landing_unterlogo {
+  /*width: 192px;*/
+  height: 192px;
+  border: none;
+  margin-bottom: 48px;
+  /*border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;*/
+  background: #F4F7ED url(/images/logo_unter.png) no-repeat;
 }
 #landing_links {
   width: 680px;
@@ -99,9 +127,10 @@ td {
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;
 }
-/*#pop {
+#pop {
   width: 334px;
   height: 334px;
+  margin-left: 167px;
   float: left;
   background: url(/images/pop.gif);
   border-radius: 4px;
@@ -110,7 +139,7 @@ td {
   box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;
-}*/
+}
 #landing_text {
   background: #F4F7ED;
   width: 676px;
@@ -503,18 +532,28 @@ ul.nobullet {
   z-index: 99999;
 }
 .collapse-open span {
-    background:url(../images/collapsible/minus.gif) center left no-repeat;
-    display: block;
-    float: left;
-    padding: 9px 8px;
-    cursor: default;
+  background:url(../images/collapsible/minus.gif) center left no-repeat;
+  display: block;
+  float: left;
+  padding: 9px 8px;
+  cursor: default;
 }
 .collapse-close span {
-    background:url(../images/collapsible/plus.gif) center left no-repeat;
-    display: block;
-    float: left;
-    padding: 9px 8px;
-    cursor: default;
+  background:url(../images/collapsible/plus.gif) center left no-repeat;
+  display: block;
+  float: left;
+  padding: 9px 8px;
+  cursor: default;
+}
+#metaDataDiv {
+  margin: 12px 0 0 33px;
+  float: left;
+}
+#metaDataTxtArea {
+  width: 584px;
+}
+#metaDataText {
+  cursor: text;
 }
 #footer li {
   display: inline;

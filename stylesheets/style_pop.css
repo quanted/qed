@@ -1062,6 +1062,9 @@ th {
   color:#fff;
   font-weight:normal;
 }
+
+/* Web-ICE */
+
 .webice {
   width: 763px;
   margin: 8px 0 12px 0;
@@ -1112,4 +1115,13 @@ th {
 }
 #modResults, #ssdResults, #tneResults {
   margin-left: 0;
+}
+.outsideRange {
+  color: #FF0000;
+}
+.greyedOut {
+  color: #AAAAAA;
+}
+.greyedOut td.outsideRange {
+  color: #AAAAAA;
 }

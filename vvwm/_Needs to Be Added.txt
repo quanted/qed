@@ -1,0 +1,7 @@
+VVWM: What Needs to be Added to web-app
+
+1) Ability to use different PRZM weather files; right now it is hard coded to only use 1 (test.dvf) and is also hard-coded to having 30 years in the weather file (var: napp)
+
+2) 
+
+3) Absolute and Relative Dates

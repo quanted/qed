@@ -85,9 +85,44 @@ def przm5_rest(jid):
     # print request.json
     # print all_result
     # print list(ff)[0][0]
+
     return {'user_id':'admin', 'result': result, '_id':jid}
 
-# ###############File upload####################
+##################################przm5#############################################
+
+
+################################# VVWM #############################################
+@route('/vvwm/<jid>', method='POST') 
+@auth_basic(check)
+def vvwm_rest(jid):
+    for k, v in request.json.iteritems():
+        exec '%s = v' % k
+    all_result.setdefault(jid,{}).setdefault('status','none')
+
+    from vvwm_rest import VVWM_pi_new
+    result = VVWM_pi_new.VVWM_pi(working_dir,
+                                koc_check, Koc, soilHalfLifeBox, soilTempBox1, foliarHalfLifeBox,
+                                wc_hl, w_temp, bm_hl, ben_temp, ap_hl, p_ref, h_hl, mwt, vp, sol, Q10Box,
+                                convertSoil, convert_Foliar, convertWC, convertBen, convertAP, convertH,
+                                deg_check, totalApp,
+                                SpecifyYears, ApplicationTypes, PestAppyDay, PestAppyMon, appNumber_year, app_date_type, DepthIncorp, PestAppyRate, localEff, localSpray,
+                                scenID,
+                                buried, D_over_dx, PRBEN, benthic_depth, porosity, bulk_density, FROC2, DOC2, BNMAS,
+                                DFAC, SUSED, CHL, FROC1, DOC1, PLMAS,
+                                firstYear, lastyear, vvwmSimType,
+                                afield, area, depth_0, depth_max,
+                                ReservoirFlowAvgDays)
+
+    all_result[jid]['status']='done'
+    all_result[jid]['input']=request.json
+    all_result[jid]['result']=result
+
+    return {'user_id':'admin', 'result': result, '_id':jid}
+
+################################# VVWM #############################################
+
+
+##################File upload####################
 @route('/file_upload', method='POST') 
 @auth_basic(check)
 def file_upload():

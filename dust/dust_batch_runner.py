@@ -5,8 +5,9 @@ sys.path.append("utils")
 import json_utils
 sys.path.append("./dust")
 import dust_model
+logger = logging.getLogger("DustBatchRunner")
 
-class DustBatchRunner():
+class DUSTBatchRunner():
 
     def runDustModel(self,config_properties,results_dict):
         if not results_dict:

@@ -7,6 +7,22 @@ sys.path.append("terrplant")
 import terrplant_model
 from terrplant_batch_runner import TerrPlantBatchRunner
 terrPlantRunner = TerrPlantBatchRunner()
+sys.path.append("sip")
+import sip_model
+from sip_batch_runner import SIPBatchRunner
+sipRunner = SIPBatchRunner()
+sys.path.append("stir")
+import stir_model
+from stir_batch_runner import StirBatchRunner
+stirRunner = STIRBatchRunner()
+sys.path.append("dust")
+import dust_model
+from dust_batch_runner import DUSTBatchRunner
+dustRunner = DUSTBatchRunner()
+sys.path.append("trex2")
+import trex2_model
+from trex2_batch_runner import TRex2BatchRunner
+trex2Runner = TRex2BatchRunner()
 
 logger = logging.getLogger("BatchWorker")
     
@@ -52,6 +68,15 @@ def processUbertoolBatchRunsIntoBatchModelRun(ubertool):
     logger.info("Ubertool Results:")
     logger.info(ubertool_result)
     ubertool_result = sipRunner.runSIPModel(ubertool,ubertool_result)
+    logger.info("Ubertool Results:")
+    logger.info(ubertool_result)
+    ubertool_result = stirRunner.runSTIRModel(ubertool,ubertool_result)
+    logger.info("Ubertool Results:")
+    logger.info(ubertool_result)
+    ubertool_result = dustRunner.runDUSTModel(ubertool,ubertool_result)
+    logger.info("Ubertool Results:")
+    logger.info(ubertool_result)
+    ubertool_result = trex2Runner.runTREX2Model(ubertool,ubertool_result)
     logger.info("Ubertool Results:")
     logger.info(ubertool_result)
     #perform on all other eco models

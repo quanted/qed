@@ -8,7 +8,7 @@ import stir_model
 
 logger = logging.getLogger("STIRBatchRunner")
 
-class SIPBatchRunner():
+class STIRBatchRunner():
     
     def runSTIRModel(self,config_properties,results_dict):
         if not results_dict:

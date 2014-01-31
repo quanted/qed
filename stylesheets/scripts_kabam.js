@@ -4,8 +4,7 @@ $(document).ready(function() {
     var uptab_pool = ["Chemical", "Avian", "Mammal", "LargeFish", "MediumFish", "SmallFish", "Filterfeeders", "Invertebrates", "Zooplankton", "Phytoplankton", "Sediment", "Constants"];
     var visible = $(".tab:visible").attr('class').split(" ")[1];
     var curr_ind = $.inArray(visible, tab_pool);
-    $(".submit").hide();
-    $(".back").hide();
+    $(".back, .submit, #metaDataToggle, #metaDataText").hide();
 
     $('li.Chemical').click(function(){
         curr_ind = 0;
@@ -14,7 +13,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_Chemical').show();
         $(".back").hide();
-        $(".submit").hide();
+        $(".submit, #metaDataToggle, #metaDataText").hide();
         $(".next").show();
     });
 
@@ -25,7 +24,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_Avian').show();
         $(".back").show();
-        $(".submit").hide();
+        $(".submit, #metaDataToggle, #metaDataText").hide();
         $(".next").show();
     });
 
@@ -36,7 +35,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_Mammal').show();
         $(".back").show();
-        $(".submit").hide();
+        $(".submit, #metaDataToggle, #metaDataText").hide();
         $(".next").show();
     });
 
@@ -47,7 +46,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_LargeFish').show();
         $(".back").show();
-        $(".submit").hide();
+        $(".submit, #metaDataToggle, #metaDataText").hide();
         $(".next").show();
     });
 
@@ -58,7 +57,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_MediumFish').show();
         $(".back").show();
-        $(".submit").hide();
+        $(".submit, #metaDataToggle, #metaDataText").hide();
         $(".next").show();
     });
 
@@ -69,7 +68,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_SmallFish').show();
         $(".back").show();
-        $(".submit").hide();
+        $(".submit, #metaDataToggle, #metaDataText").hide();
         $(".next").show();
     });
 
@@ -80,7 +79,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_Filterfeeders').show();
         $(".back").show();
-        $(".submit").hide();
+        $(".submit, #metaDataToggle, #metaDataText").hide();
         $(".next").show();
     });
 
@@ -91,7 +90,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_Invertebrates').show();
         $(".back").show();
-        $(".submit").hide();
+        $(".submit, #metaDataToggle, #metaDataText").hide();
         $(".next").show();
     });
 
@@ -102,7 +101,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_Zooplankton').show();
         $(".back").show();
-        $(".submit").hide();
+        $(".submit, #metaDataToggle, #metaDataText").hide();
         $(".next").show();
     });
 
@@ -113,7 +112,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_Phytoplankton').show();
         $(".back").show();
-        $(".submit").hide();
+        $(".submit, #metaDataToggle, #metaDataText").hide();
         $(".next").show();
     });
 
@@ -124,7 +123,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_Sediment').show();
         $(".back").show();
-        $(".submit").hide();
+        $(".submit, #metaDataToggle, #metaDataText").hide();
         $(".next").show();
     });
 
@@ -132,11 +131,8 @@ $(document).ready(function() {
         curr_ind = 11;
         $('li.Constants').addClass('tabSel').removeClass('tabUnsel');
         $('li.Chemical, li.Avian, li.Mammal, li.LargeFish, li.MediumFish, li.SmallFish, li.Filterfeeders, li.Invertebrates, li.Zooplankton, li.Phytoplankton, li.Sediment').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_Constants').show();
-        $(".back").show();
-        $(".submit").show();
-        $(".next").hide();
+        $(".tab:visible, .next").hide();
+        $(".tab_Constants, .back, .submit, #metaDataToggle, #metaDataText").show();
     });
 
     $('.next').click(function () {
@@ -153,26 +149,25 @@ $(document).ready(function() {
             }
         
         if (curr_ind == 11) {
-            $(".submit").show();
+            $(".submit, #metaDataToggle, #metaDataText").show();
             $(".next").hide();
         }
     });
 
     $('.back').click(function () {
         if (curr_ind > 0) {
-                
-            
+
             $(".tab:visible").hide();
             $("."+ uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel');
             curr_ind = curr_ind - 1;
             $("." + tab_pool[curr_ind]).show();
             $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
-            $(".submit").hide();
+            $(".submit, #metaDataToggle, #metaDataText").hide();
             $(".next").show();
-           
+
         }
         if (curr_ind == 0) {
-            $(".back").hide();
+            $(".back, #metaDataToggle, #metaDataText").hide();
         }
     });
 

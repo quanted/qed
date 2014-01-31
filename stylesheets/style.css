@@ -532,18 +532,28 @@ ul.nobullet {
   z-index: 99999;
 }
 .collapse-open span {
-    background:url(../images/collapsible/minus.gif) center left no-repeat;
-    display: block;
-    float: left;
-    padding: 9px 8px;
-    cursor: default;
+  background:url(../images/collapsible/minus.gif) center left no-repeat;
+  display: block;
+  float: left;
+  padding: 9px 8px;
+  cursor: default;
 }
 .collapse-close span {
-    background:url(../images/collapsible/plus.gif) center left no-repeat;
-    display: block;
-    float: left;
-    padding: 9px 8px;
-    cursor: default;
+  background:url(../images/collapsible/plus.gif) center left no-repeat;
+  display: block;
+  float: left;
+  padding: 9px 8px;
+  cursor: default;
+}
+#metaDataDiv {
+  margin: 12px 0 0 33px;
+  float: left;
+}
+#metaDataTxtArea {
+  width: 584px;
+}
+#metaDataText {
+  cursor: text;
 }
 #footer li {
   display: inline;

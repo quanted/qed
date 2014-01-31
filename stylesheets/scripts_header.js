@@ -113,4 +113,17 @@ $(document).ready(function() {
       mouseOn = '#FFA500';
       setCookie('ubercookie','default',7);
   });
+  // Save Metadata
+  $('#metaDataTxtArea').prop('disabled', true);
+  $('#metaDataToggle').change(function() {
+    if ($('#metaDataToggle').prop( "checked" )) {
+      console.log('Its checked');
+      $('#metaDataTxtArea').prop('disabled', false);
+      $('#metaDataDiv').slideDown();
+    } else {
+      console.log('Its not checked');
+      $('#metaDataDiv').slideUp();
+      $('#metaDataTxtArea').prop('disabled', true);
+    }
+  });
 });

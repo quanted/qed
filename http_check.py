@@ -7,6 +7,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import httplib
 import http_check_tables
+from django.utils.safestring import mark_safe
 
 class aboutPage(webapp.RequestHandler):
     def get(self):
@@ -39,9 +40,9 @@ class aboutPage(webapp.RequestHandler):
             counter = counter + 1
             conn.request("GET",url_string)
             r1 = conn.getresponse()
-            xx = "<p>" + xx + str(counter) + " " + "<a href='http://" + url + url_string + "'>" + url_string + "</a>" + " " + str(r1.status) + " " + r1.reason + "<br>"
+            xx = "<p>" + xx + str(counter) + " " + mark_safe("<a href='http://" + url + url_string + "'>" + url_string + "</a>") + " " + str(r1.status) + " " + r1.reason + "<br>"
             http_counter.append(counter) 
-            http_page.append("<a href='http://" + url + url_string + "'>" + url_string + "</a>")  
+            http_page.append(mark_safe("<a href='http://" + url + url_string + "'>" + url_string + "</a>")) 
             http_status.append(r1.status)
             http_reason.append(r1.reason)
 
@@ -50,7 +51,8 @@ class aboutPage(webapp.RequestHandler):
         #print dir(r1)
         html = html + template.render(templatepath + '04ubertext_start.html', {
                 'model_page':'',
-                'model_attributes':'HTML Check Info','text_paragraph':xx})
+                'model_attributes':'HTML Check Info','text_paragraph':http_html})
+        #html = html + http_html
         html = html + template.render (templatepath+'04ubertext_end.html',{})
         html = html + template.render (templatepath+'05ubertext_links_right.html', {})
         html = html + template.render(templatepath+'06uberfooter.html', {'links': ''})

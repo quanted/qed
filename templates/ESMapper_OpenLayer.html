@@ -97,23 +97,35 @@ function initialize() {
 	}
 	map.setCenter(new OpenLayers.LonLat(-110, 45), 3);
 
+
+	map.AddLayer(new OpenLayers.Layer.Vector('NatureServeFish',{
+		protocol: new OpenLayers.Protocol.HTTP({
+			url: "https://s3.amazonaws.com/esmapping_kmz/nsf/"+ '{{ NSF }}' + '/.doc.kml',
+			format: new OpenLayers.Format.KML({
+				extractStyles: true,
+				extractAttributes: true
+			})
+		}),
+		strategies: [new OpenLayers.strategy.Fixed()]
+	})
+		);
 }
 	
-// 	//Creating overlays for USDACropScape
-// 	var crop = '{{ Crop }}'
-// 	var crop_link = "https://s3.amazonaws.com/esmapping_kmz/USDACropScape2011/"+ crop + '.kmz'
-// 	//var cropLayer = new google.maps.KmlLayer(crop_link,{suppressInfoWindows: true},{preserveViewport:true}) 
-// 	var cropLayer = new google.maps.KmlLayer(crop_link,{suppressInfoWindows: true}) 
-// 	cropLayer.setMap(map);
+	// //Creating overlays for USDACropScape
+	// var crop = '{{ Crop }}'
+	// var crop_link = "https://s3.amazonaws.com/esmapping_kmz/USDACropScape2011/"+ crop + '.kmz'
+	// //var cropLayer = new google.maps.KmlLayer(crop_link,{suppressInfoWindows: true},{preserveViewport:true}) 
+	// var cropLayer = new google.maps.KmlLayer(crop_link,{suppressInfoWindows: true}) 
+	// cropLayer.setMap(map);
 
-// 	// Creating overlays for NatureServeFish: NSF
-// 	var nsf = '{{ NSF }}'
-// 	if (!(!nsf))
-// 	{
-// 		var nsf_link ="https://s3.amazonaws.com/esmapping_kmz/nsf/"+ nsf + '.kmz'
-// 		var nsfLayer = new google.maps.KmlLayer(nsf_link, {suppressInfoWindows: true}) 
-// 		nsfLayer.setMap(map);
-// 	}
+	// Creating overlays for NatureServeFish: NSF
+	// var nsf = '{{ NSF }}'
+	// if (!(!nsf))
+	// {
+	// 	var nsf_link ="https://s3.amazonaws.com/esmapping_kmz/nsf/"+ nsf + '.kmz'
+	// 	var nsfLayer = new google.maps.KmlLayer(nsf_link, {suppressInfoWindows: true}) 
+	// 	nsfLayer.setMap(map);
+	// }
 
 // 	// Creating overlays for NatureServePollinator: NSP
 // 	var nsp = '{{ NSP }}' 

@@ -30,10 +30,13 @@ def batch_save_dic(output_html, model_object_dict, model_name, run_type, jid_bat
     html_save = html_save + output_html
     html_save = html_save + template.render(templatepath + '06uberfooter.html', {'links': ''})
 
-    all_dic = {"model_name":model_name, "_id":jid_batch, "run_type":run_type, "output_html":html_save, "model_object_dict":model_object_dict}
+###########################function to update html saved in MongoDB################################ 
+def update_html(output_html, jid, model_name):
+    all_dic = {"model_name":model_name, "_id":jid, "output_html":output_html}
     data = json.dumps(all_dic)
-    url=os.environ['UBERTOOL_REST_SERVER'] + '/save_history'
+    url=os.environ['UBERTOOL_REST_SERVER'] + '/update_html'
     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+
 
 
 ###########################creat an object to display history runs################################ 

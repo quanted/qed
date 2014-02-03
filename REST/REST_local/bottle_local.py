@@ -157,7 +157,7 @@ def insert_output_html():
     element={"user_id":"admin", "_id":_id, "run_type":run_type, "output_html": output_html, "model_object_dict":model_object_dict}
     db[model_name].save(element)
 
-@route('/update_history', method='POST') 
+@route('/update_html', method='POST') 
 @auth_basic(check)
 def update_output_html():
     for k, v in request.json.iteritems():

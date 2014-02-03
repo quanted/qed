@@ -10,36 +10,13 @@ cgitb.enable()
 from uber import uber_lib
 import csv
 from genee import genee_model, genee_tables
-import json
-import base64
-from google.appengine.api import urlfetch
-import keys_Picloud_S3
 import logging
 logger = logging.getLogger('Geneec Batch')
 from threading import Thread
 import Queue
 from collections import OrderedDict
+import rest_funcs
 
-############Provide the key and connect to the picloud####################
-api_key=keys_Picloud_S3.picloud_api_key
-api_secretkey=keys_Picloud_S3.picloud_api_secretkey
-base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
-http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
-
-###########################################################################
-def batch_save_dic(output_html, model_object_dict, model_name, jid_batch, ChkCookie, templatepath):
-    html_save = uber_lib.SkinChk(ChkCookie)
-    html_save = html_save + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'genee','page':'output'})
-    html_save = html_save + template.render (templatepath + '03ubertext_links_left.html', {})                
-    html_save = html_save + output_html
-    html_save = html_save + template.render(templatepath + 'export_fortran.html', {})
-    html_save = html_save + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-    html_save = html_save + template.render(templatepath + '06uberfooter.html', {'links': ''})
-
-    all_dic = {"model_name":model_name, "_id":jid_batch, "run_type":"batch", "output_html":html_save, "model_object_dict":model_object_dict}
-    data = json.dumps(all_dic)
-    url=os.environ['UBERTOOL_REST_SERVER'] + '/save_history'
-    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
 
 chem_name = []
 application_target = []
@@ -156,10 +133,11 @@ class geneeBatchOutputPage(webapp.RequestHandler):
                     <b>GENEEC Version 2.0 (Beta)<br>
                 </div>"""
         html = html + "".join(iter_html.values())
+        html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         # logger.info(iter_html.keys())
         # logger.info(len(iter_html.keys()))
 
-        batch_save_dic(html, [x.__dict__ for x in genee_obj_all], 'geneec', jid_batch[0], ChkCookie, templatepath)
+        rest_funcs.batch_save_dic(html, [x.__dict__ for x in genee_obj_all], 'geneec', 'batch', jid_batch[0], ChkCookie, templatepath)
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', geneeBatchOutputPage)], debug=True)

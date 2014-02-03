@@ -12,46 +12,10 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import os
 from uber import uber_lib
-import keys_Picloud_S3
-import base64
-import urllib
-from google.appengine.api import urlfetch
-import json
-import datetime, time
 import history_tables
 import logging
 logger = logging.getLogger('Geneec Model')
-
-class user_hist(object):
-    def __init__(self, user_id, model_name):
-        self.user_id = user_id
-        self.model_name = model_name
-    ############Provide the key and connect to the picloud####################
-        api_key=keys_Picloud_S3.picloud_api_key
-        api_secretkey=keys_Picloud_S3.picloud_api_secretkey
-        base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
-        http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
-    ########call the function################# 
-        self.all_dic = {"user_id": user_id, "model_name":model_name}
-        self.data = json.dumps(self.all_dic)
-        self.url=os.environ['UBERTOOL_REST_SERVER']+'/user_history'
-        self.response = urlfetch.fetch(url=self.url, payload=self.data, method=urlfetch.POST, headers=http_headers, deadline=60)
-        # logger.info(self.response.content)
-        self.output_val = json.loads(self.response.content)['hist_all']
-        self.total_num = len(self.output_val)
-        self.user_id = []
-        self.time_id = []
-        self.jid = []
-        self.run_type = []
-        self.model_name = "geneec"
-
-        for element in self.output_val:
-            self.user_id.append(element['user_id'])
-            self.jid.append(element['_id'])
-            self.time_id.append(datetime.datetime.strptime(element['_id'], '%Y%m%d%H%M%S%f').strftime('%Y-%m-%d %H:%M:%S'))
-            self.run_type.append(element['run_type'])
-        # logger.info(self.time_id)
-
+import rest_funcs
 
 
 class GENEEhistoryPage(webapp.RequestHandler):
@@ -65,7 +29,7 @@ class GENEEhistoryPage(webapp.RequestHandler):
                 'model':'genee', 
                 'model_attributes':'GENEE User History'})
         html = html + template.render (templatepath + 'history_pagination.html', {})                
-        hist_obj = user_hist('admin', 'geneec')
+        hist_obj = rest_funcs.user_hist('admin', 'geneec')
         html = html + history_tables.table_all(hist_obj)
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

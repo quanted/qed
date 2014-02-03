@@ -9,22 +9,7 @@ import json
 import logging
 logger = logging.getLogger('PRZM5_int_Model')
 import sys
-import keys_Picloud_S3
-import base64
-import urllib
-from google.appengine.api import urlfetch
-
-############Provide the key and connect to the picloud####################
-api_key=keys_Picloud_S3.picloud_api_key
-api_secretkey=keys_Picloud_S3.picloud_api_secretkey
-base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
-http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
-########call the function################# 
-def update_dic(output_html, jid, model_name):
-    all_dic = {"model_name":model_name, "_id":jid, "output_html":output_html}
-    data = json.dumps(all_dic)
-    url=os.environ['UBERTOOL_REST_SERVER'] + '/update_history'
-    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+import rest_funcs
 
 
 class przm5IntermediatePage(webapp.RequestHandler):
@@ -32,7 +17,7 @@ class przm5IntermediatePage(webapp.RequestHandler):
         data_all = json.load(sys.stdin)
         data_html = data_all["data_html"]
         jid = str(data_all["jid"])
-        logger.info(type(jid))
+        logger.info(data_all)
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie)    
@@ -43,7 +28,7 @@ class przm5IntermediatePage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
-        update_dic(html, jid, 'przm5')
+        rest_funcs.update_html(html, jid, 'przm5')
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', przm5IntermediatePage)], debug=True)

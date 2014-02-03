@@ -11,23 +11,7 @@ from StringIO import StringIO
 import csv
 from genee import genee_model, genee_tables
 from uber import uber_lib
-import json
-import base64
-import urllib
-from google.appengine.api import urlfetch
-import keys_Picloud_S3
-############Provide the key and connect to the picloud####################
-api_key=keys_Picloud_S3.picloud_api_key
-api_secretkey=keys_Picloud_S3.picloud_api_secretkey
-base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
-http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
-###########################################################################
-
-def save_dic(output_html, model_object_dict, model_name):
-    all_dic = {"model_name":model_name, "_id":model_object_dict['jid'], "run_type":"qaqc", "output_html":output_html, "model_object_dict":model_object_dict}
-    data = json.dumps(all_dic)
-    url=os.environ['UBERTOOL_REST_SERVER'] + '/save_history'
-    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+import rest_funcs
 
 cwd= os.getcwd()
 data = csv.reader(open(cwd+'/genee/genee_qaqc.csv'))
@@ -110,7 +94,7 @@ class geneeQaqcPage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
-        save_dic(html, genee_obj.__dict__, 'geneec')
+        rest_funcs.save_dic(html, genee_obj.__dict__, 'geneec', 'qaqc')
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', geneeQaqcPage)], debug=True)

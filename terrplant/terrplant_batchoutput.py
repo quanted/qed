@@ -15,37 +15,14 @@ import cStringIO
 import logging
 import sys
 sys.path.append("../terrplant")
-from terrplant import terrplant_model,terrplant_tables
+from terrplant import terrplant_model, terrplant_tables
 from uber import uber_lib
 import csv
 import numpy
-import base64
-import keys_Picloud_S3
-from google.appengine.api import urlfetch
-import json
 from threading import Thread
 import Queue
 from collections import OrderedDict
-
-############Provide the key and connect to the picloud####################
-api_key=keys_Picloud_S3.picloud_api_key
-api_secretkey=keys_Picloud_S3.picloud_api_secretkey
-base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
-http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
-
-###########################################################################
-def batch_save_dic(output_html, model_object_dict, model_name, jid_batch, ChkCookie, templatepath):
-    html_save = uber_lib.SkinChk(ChkCookie)
-    html_save = html_save + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'terrplant','page':'output'})
-    html_save = html_save + template.render (templatepath + '03ubertext_links_left.html', {})                
-    html_save = html_save + output_html
-    html_save = html_save + template.render(templatepath + '06uberfooter.html', {'links': ''})
-
-    all_dic = {"model_name":model_name, "_id":jid_batch, "run_type":"batch", "output_html":html_save, "model_object_dict":model_object_dict}
-    data = json.dumps(all_dic)
-    url=os.environ['UBERTOOL_REST_SERVER'] + '/save_history'
-    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
-
+import rest_funcs
 
 A=[]
 I=[]
@@ -106,7 +83,6 @@ def html_table(row_inp_all):
         else:
             row_inp = row_inp_temp_all[0]
             iter = row_inp_temp_all[1]
-
 
             A_temp=float(row_inp[0])
             A.append(A_temp)
@@ -185,7 +161,6 @@ def html_table(row_inp_all):
             LOCldsspray_temp=terr.LOCldsspray_results
             LOCldsspray_out.append(LOCldsspray_temp)
 
-            
             jid_all.append(terr.jid)
             terr_all.append(terr)    
             if iter == 1:
@@ -204,7 +179,6 @@ def html_table(row_inp_all):
             out_html_temp = batch_header + html_temp
             out_html_all[iter]=out_html_temp
 
-    # return out_html_temp, terr
                 
 def loop_html(thefile):
     reader = csv.reader(thefile.file.read().splitlines())
@@ -258,7 +232,7 @@ class TerrPlantBatchOutputPage(webapp.RequestHandler):
         # html = html + template.render(templatepath + 'terrplant-batchoutput-jqplot.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         # html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
-        batch_save_dic(html, [x.__dict__ for x in terr_all], 'terrplant', jid_batch[0], ChkCookie, templatepath)
+        rest_funcs.batch_save_dic(html, [x.__dict__ for x in terr_all], 'terrplant', 'batch', jid_batch[0], ChkCookie, templatepath)
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', TerrPlantBatchOutputPage)], debug=True)

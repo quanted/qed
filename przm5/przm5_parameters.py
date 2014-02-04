@@ -123,4 +123,4 @@ class przm5Inp_runoff(forms.Form):
 #Water Body tab
 class przm5Inp_waterbody(forms.Form):
     fieldSize = forms.FloatField(required=True, label='Area of Field (ha.)', initial=10)
-    hydlength = forms.FloatField(required=True, label='Hydraulic Length (m)', initial=356.8)
+    hydlength = forms.FloatField(required=True, label='Hydraulic Length (m)', initial=356.8)

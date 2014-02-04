@@ -135,9 +135,12 @@ def makevvwmTransfer(working_dir,
 	#Crop/Land Tab                                 
 	myfile.write(scenID + "\n")                                          #Line 29 identifier for scenario, used for output file naming
 	dvf_file = "/test.dvf"
-	myfile.write(working_dir + dvf_file + "\n") # TEMPORARY FIXED VALUE          #Line 30 met file name
-	myfile.write("0" + "\n")                                             #Line 31 Unused in VVWM (radio button for water body type; 0=EPA Res & Pond, 1=Varying Vol, 2=Cons. Vol. w/o Flowthrough, 3=Cons. Vol. w/ Flowthrough, 4=EPA Res Only, 5=EPA Pond Only, 6,n=Res w/ user avg, n=?)
-	myfile.write("" + "\n")                                              #Line 32
+	myfile.write(working_dir + dvf_file + "\n") # TEMPORARY FIXED VALUE  #Line 30 met file name
+	myfile.write(vvwmSimType + "\n")                                     #Line 31 (Unused in VVWM?) - radio button for water body type; 0=EPA Res & Pond, 1=Varying Vol, 2=Cons. Vol. w/o Flowthrough, 3=Cons. Vol. w/ Flowthrough, 4=EPA Res Only, 5=EPA Pond Only, 6,n=Res w/ user avg, n=?
+	if vvwmSimType == '6':
+		myfile.write(ReservoirFlowAvgDays + "\n")                        #Line 32 ReservoirFlowAvgDays
+	else:
+		myfile.write('' + "\n")                                          #Line 32 No ReservoirFlowAvgDays
 	#Water Body Tab                                 
 	if (buried == "1"):
 		buried = "True"
@@ -221,19 +224,19 @@ def makevvwmTransfer(working_dir,
 	##################################################################################################################
 	
 	############################ Convert SWC INPUT "SimType" value to vvwmSimType ####################################
-	if (vvwmSimType == "0" or  vvwmSimType == "5"):
-		vvwmSimType = "2"
-	elif (vvwmSimType == "4" or vvwmSimType == "6"):
-		vvwmSimType = "3"
-	elif (vvwmSimType == "1" or vvwmSimType == "2" or vvwmSimType == "3"):
-		vvwmSimType = "1"
-	myfile.write(vvwmSimType + "\n")                                     #Line 57 vvwmSimType
-	myfile.write(afield + "\n")                                          #Line 58 Field Area ***Dependant on vvwmSimType 
-	myfile.write(area + "\n")                                            #Line 59 Water Body Area ***Dependant on vvwmSimType 
-	myfile.write(depth_0 + "\n")                                         #Line 60 Initial Depth ***Dependant on vvwmSimType 
-	myfile.write(depth_max + "\n")                                       #Line 61 Max Depth ***Dependant on vvwmSimType 
+	if (vvwmSimType == "0" or  vvwmSimType == "5"): # 0=EPA Reservoir & Pond, 5=EPA Pond Only
+		vvwmSimType_new = "2"
+	elif (vvwmSimType == "4" or vvwmSimType == "6"): # 4=EPA Reservoir Only, 6=Reservoir w/ User Avg, 
+		vvwmSimType_new = "3"
+	elif (vvwmSimType == "1" or vvwmSimType == "2" or vvwmSimType == "3"): #1=Varying Volume
+		vvwmSimType_new = "1"
+	myfile.write(vvwmSimType_new + "\n")                                        #Line 57 vvwmSimType
+	myfile.write(afield[0] + "\n")                                          #Line 58 Field Area ***Dependant on vvwmSimType 
+	myfile.write(area[0] + "\n")                                            #Line 59 Water Body Area ***Dependant on vvwmSimType 
+	myfile.write(depth_0[0] + "\n")                                         #Line 60 Initial Depth ***Dependant on vvwmSimType 
+	myfile.write(depth_max[0] + "\n")                                       #Line 61 Max Depth ***Dependant on vvwmSimType 
 	##################################### ffList Generator ###########################################################
-	localWaterArea = float(area) / 10000
+	localWaterArea = float(area[0]) / 10000
 	totalAppYears = int(totalApp) * int(noofyears)
 	# Convert list of strings to floats:
 	PestAppyRate = [float(x) for x in PestAppyRate]

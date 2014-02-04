@@ -68,13 +68,27 @@ class vvwmInp_cropland(forms.Form):
 class vvwmInp_waterbody(forms.Form):
 	# Water Body Tab
     SimType = ((0,'EPA Reservoir & Pond'),(4,'EPA Reservoir Only'),(5,'EPA Pond Only'),(6,'Reservoir w/ user averaging'),(1,'Varying Volume'),(2,'Constant Volume (w/o Flowthrough)'),(3,'Constant Volume (w/ Flowthrough)'))
-    SimTypeFlag = forms.ChoiceField(required=True,label='Simulation Type:', choices=SimType, initial='Varying Volume')
-    afield = forms.FloatField(required=True,label=mark_safe('Field Area (m<sup>2</sup>)'), initial="100000")
-    area = forms.FloatField(required=True,label=mark_safe('Water Body Area (m<sup>2</sup>)'), initial="10000")
-    depth_0 = forms.FloatField(required=True,label='Initial Water Body Depth (m)', initial="2")
-    depth_max = forms.FloatField(required=True,label='Maximum Water Body Depth (m)', initial="2")
-    hyd_len = forms.FloatField(required=True,label='Hydraulic Length (m)', initial="356.8")
-    resAvgBox = forms.FloatField(required=True,label='')
+    SimTypeFlag = forms.ChoiceField(required=True,label='Simulation Type:', choices=SimType, initial=0)
+    # Pond
+    fieldArea_Pond = forms.FloatField(required=True,label=mark_safe('Pond Field Area (m<sup>2</sup>)'), initial="100000")
+    wbArea_Pond = forms.FloatField(required=True,label=mark_safe('Pond Water Body Area (m<sup>2</sup>)'), initial="10000")
+    depth_0_Pond = forms.FloatField(required=True,label='Pond Initial Water Body Depth (m)', initial="2")
+    depth_max_Pond = forms.FloatField(required=True,label='Pond Maximum Water Body Depth (m)', initial="2")
+    hyd_len_Pond = forms.FloatField(required=True,label='Pond Hydraulic Length (m)', initial="356.8")
+    # Reservoir
+    fieldArea_Reservoir = forms.FloatField(required=True,label=mark_safe('Reservoir Field Area (m<sup>2</sup>)'), initial="100000")
+    wbArea_Reservoir = forms.FloatField(required=True,label=mark_safe('Reservoir Water Body Area (m<sup>2</sup>)'), initial="10000")
+    depth_0_Reservoir = forms.FloatField(required=True,label='Reservoir Initial Water Body Depth (m)', initial="2")
+    depth_max_Reservoir = forms.FloatField(required=True,label='Reservoir Maximum Water Body Depth (m)', initial="2")
+    hyd_len_Reservoir = forms.FloatField(required=True,label='Reservoir Hydraulic Length (m)', initial="356.8")
+    # Custom
+    fieldArea_Custom = forms.FloatField(required=True,label=mark_safe('Custom Field Area (m<sup>2</sup>)'), initial="100000")
+    wbArea_Custom = forms.FloatField(required=True,label=mark_safe('Custom Water Body Area (m<sup>2</sup>)'), initial="10000")
+    depth_0_Custom = forms.FloatField(required=True,label='Custom Initial Water Body Depth (m)', initial="2")
+    depth_max_Custom = forms.FloatField(required=True,label='Custom Maximum Water Body Depth (m)', initial="2")
+    hyd_len_Custom = forms.FloatField(required=True,label='Custom Hydraulic Length (m)', initial="356.8")
+    resAvgBox_Custom = forms.FloatField(required=True,label='')
+    
     Burial = ((1,'Burial'),(0,'No Burial'))
     BurialFlag = forms.ChoiceField(required=True,label='Sediment Accounting:', choices=Burial, initial=0)
 

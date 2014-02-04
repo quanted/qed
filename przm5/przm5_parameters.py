@@ -53,8 +53,8 @@ class przm5Inp_mcf2(forms.Form):
     # Molar Conversion Factors 2
 
     # Removed because this isn't in the SWC anymore
-    # deg2_srcSel = ((1,'Degradate 1'),(0,'Parent'))
-    # deg2_source = forms.ChoiceField(required=True, choices=deg2_srcSel, label='Source of Degradate 2', initial=1)
+    deg2_srcSel = ((1,'Degradate 1'),(0,'Parent'))
+    deg2_source = forms.ChoiceField(required=True, choices=deg2_srcSel, label='Source of Degradate 2', initial=1)
     convertSoil2 = forms.FloatField(required=True,label='Soil', initial=0.80)
     convert_Foliar2 = forms.FloatField(required=True,label='Foliar')
 

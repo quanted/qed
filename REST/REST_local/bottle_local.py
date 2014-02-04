@@ -134,7 +134,7 @@ def file_upload():
     conn = S3Connection(s3_key, s3_secretkey)
     bucket = Bucket(conn, model_name)
     k=Key(bucket)
-
+    print src1
     os.chdir(src1)
     k.key=name1
     link='https://s3.amazonaws.com/'+model_name+'/'+name1

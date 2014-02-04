@@ -80,11 +80,12 @@ def VVWM_pi(working_dir,
     print "++++++++++++++++++++++++++"
     met = "test.dvf"
     if (deg_check == 1):
-        przm5_output = "test1.zts"
+        przm5_outputChk = "test1"
     elif (deg_check == 2):
-        przm5_output = "test2.zts"
+        przm5_outputChk = "test2"
     elif (deg_check == 3):
-        przm5_output = "test3.zts"
+        przm5_outputChk = "test3"
+    przm5_output = przm5_outputChk + ".zts"
 
     shutil.copy(src+"vvwm.exe", src1)
     shutil.copy(src+met,src1)
@@ -105,41 +106,125 @@ def VVWM_pi(working_dir,
 
     fname=os.listdir(src1)
     print 'After running VVWM', fname
-
-    
-    
-
     print "++++++++++++++++++++++++++"
     
+    WC_peak = []
+    WC_chronic = []
+    WC_simavg = []
+    WC_4dayavg = []
+    WC_21dayavg = []
+    WC_60dayavg = []
+    WC_90dayavg = []
+    Ben_peak = []
+    Ben_21dayavg = []
+    Ben_convfact = []
+    Ben_massfract = []
+    EWCH_washout = [0]
+    EWCH_metabolism = []
+    EWCH_hydrolysis = [0]
+    EWCH_photolysis = []
+    EWCH_volatilization = []
+    EWCH_total = []
+    EBH_burial = [0]
+    EBH_metabolism = []
+    EBH_hydrolysis = [0]
+    EBH_total = []
+    RT_runoff = []
+    RT_erosion = []
+    RT_drift = []
+
+    peak_li = []
+    ben_peak_li = []
+
+    years = 0
+
+    print vvwmSimType
+    # if (vvwmSimType == "0" or  vvwmSimType == "5"):
+    #     vvwmSimType = "2"
+    # elif (vvwmSimType == "4" or vvwmSimType == "6"):
+    #     vvwmSimType = "3"
+    # elif (vvwmSimType == "1" or vvwmSimType == "2" or vvwmSimType == "3"):
+    #     vvwmSimType = "1"
+
+    vvwm_outputFilePond = przm5_outputChk + '_' + scenID + '_Pond_Parent.txt'
+    vvwm_outputFileReservoir = 'test_'+scenID+'_Reservoir_Parent.txt'
+    with open(vvwm_outputFilePond, 'r') as f:
+        for line in f:
+            line = line.split()
+            if (line):
+                if "******* Inputs *******" in line:
+                    break
+                else:
+                    if "=" in line:
+                        # Make desired value be index=1 for each line:
+                        equalsSignIndex = line.index("=")
+                        del line[equalsSignIndex+2:len(line)]
+                        s = " ".join(line)
+                        li = s.split(" = ", 1)
+                        # Assign desired value to variable:
+                        if 'Peak 1-in-10' in li:
+                            WC_peak.append(float(li[1]))
+                        if 'Chronic 1-in-10' in li:
+                            WC_chronic.append(float(li[1]))
+                        if 'Simulation Avg' in li:
+                            WC_simavg.append(float(li[1]))
+                        if '4-day avg 1-in-10' in li:
+                            WC_4dayavg.append(float(li[1]))
+                        if '21-day avg 1-in-10' in li:
+                            WC_21dayavg.append(float(li[1]))
+                        if '60-day avg 1-in-10' in li:
+                            WC_60dayavg.append(float(li[1]))
+                        if '90-day avg 1-in-10' in li:
+                            WC_90dayavg.append(float(li[1]))
+                        if 'Benthic Pore Water Peak 1-in-10' in li:
+                            Ben_peak.append(float(li[1]))
+                        if 'Benthic Pore Water 21-day avg 1-in-10' in li:
+                            Ben_21dayavg.append(float(li[1]))
+                        if 'Benthic Conversion Factor' in li:
+                            Ben_convfact.append(float(li[1]))
+                        if 'Benthic Mass Fraction in Pore Water' in li:
+                            Ben_massfract.append(float(li[1]))
+                        if 'water col metab halflife (days)' in li:
+                            EWCH_metabolism.append(float(li[1]))
+                        if 'photolysis halflife (days)' in li:
+                            EWCH_photolysis.append(float(li[1]))
+                        if 'volatile halflife (days)' in li:
+                            EWCH_volatilization.append(float(li[1]))
+                        if 'total water col halflife (days)' in li:
+                            EWCH_total.append(float(li[1]))
+                        if 'benthic metab halflife (days)' in li:
+                            EBH_metabolism.append(float(li[1]))
+                        if 'total benthic halflife (days)' in li:
+                            EBH_total.append(float(li[1]))
+                        if 'Due to Runoff' in li:
+                            RT_runoff.append(float(li[1]))
+                        if 'Due to Erosion' in li:
+                            RT_erosion.append(float(li[1]))
+                        if 'Due to Drift' in li:
+                            RT_drift.append(float(li[1]))
+                        
+                        # Deal with "ZERO" blah blah blahs in output file (list[0] = blah)      <-- They don't have "="
+                    if (years == 1):
+                        # Append Peak and Benthic Peak to lists
+                        if (len(line) == 1):
+                            years = 0
+                        else:
+                            peak_li.append(float(line[1]))
+                            ben_peak_li.append(float(line[7]))
+                    if (line[0] == 'YEAR'):
+                        # Set years flag to begin list appending above
+                        years = 1
 
 
-    ##zip all the file
-    # zout=zipfile.ZipFile("test.zip","w")
-    # for name in fname:
-    #     if name !='przm5.exe' and name !='test.dvf':
-    #         zout.write(name)
-    # zout.close()
+    #zip all the file
+    zout=zipfile.ZipFile("test.zip","w", zipfile.ZIP_DEFLATED)
+    for name in fname:
+        if name !='vvwm.exe' and name !='test.dvf' and name != przm5_output:
+            zout.write(name)
+    zout.close()
 
-    ##upload file to S3
-    # conn = S3Connection(key, secretkey)
-    # bucket = Bucket(conn, 'przm5')
-    # k=Key(bucket)
-
-    # name1='PRZM5_'+name_temp+'.zip'
-    # k.key=name1
-    # link='https://s3.amazonaws.com/przm5/'+name1
+    name1='VVWM_'+name_temp+'.zip'
+    link='https://s3.amazonaws.com/vvwm/'+name1
     # print link
 
-    # return link, PRCP_IRRG_sum, RUNF_sum, CEVP_TETD_sum, src1, name1
-
-    return src1
-
-    # k.set_contents_from_filename('test.zip')
-
-    # k.set_acl('public-read-write')
-    # print 'upload finished'
-    # os.chdir(src)
-
-    # return link, PRCP_IRRG_sum, RUNF_sum, CEVP_TETD_sum
-
-    # return 'done'
+    return link, WC_peak, WC_chronic, WC_simavg, WC_4dayavg, WC_21dayavg, WC_60dayavg, WC_90dayavg, Ben_peak, Ben_21dayavg, Ben_convfact, Ben_massfract, EWCH_washout, EWCH_metabolism, EWCH_hydrolysis, EWCH_photolysis, EWCH_volatilization, EWCH_total, EBH_burial, EBH_metabolism, EBH_hydrolysis, EBH_total, RT_runoff, RT_erosion, RT_drift, peak_li, ben_peak_li, src1, name1

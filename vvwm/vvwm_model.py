@@ -109,7 +109,7 @@ def get_jid(working_dir,
     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
     # logger.info(json.loads(response.content))
     output_val = json.loads(response.content)['result']
-    jid= json.loads(response.content)['jid']
+    # jid= json.loads(response.content)['jid']
     # print "filepath=", output_val[4]
     # self.elapsed = (time.clock() - start)
     return(jid, output_val)
@@ -142,13 +142,12 @@ class vvwm(object):
     # Model input variables not on input page:
     self.working_dir = "/"
     self.dvf_file = "test.dvf"         # TEMPORARILY FIXED VALUE
-    self.firstYear = 1961
-    self.lastYear = 1990
+    self.firstYear = 1961              # TEMPORARILY FIXED VALUE (from above *.dvf file)
+    self.lastYear = 1990               # TEMPORARILY FIXED VALUE (from above *.dvf file)
     self.totalApp = '1'                # Remove when Number of Apps is enabled
     self.SpecifyYears = ""             # Remove when Specify Years is enabled
     self.app_date_type = ""            # Remove when Relative Dates is enabled
-    self.ReservoirFlowAvgDays = "0"    # Remove when Flow avg days is enabled
-
+    self.ReservoirFlowAvgDays = "0"
     # Create empty lists for variables below that need to be lists
     # Lists = ['','',''] are setup that way bc those inputs could potential be left blank
     self.ApplicationTypes = []
@@ -181,9 +180,14 @@ class vvwm(object):
     self.convertBen = []
     self.convertAP = []
     self.convertH = []
-
+    # Watershed and Water Body Dimensions
+    self.afield = []
+    self.area = []
+    self.depth_0 = []
+    self.depth_max = []
+    # Run function to fill above lists from input page
     self.fillData()
-   
+
   def fillData(self):
     for k, v in self.dictionary.items():
         setattr(self, k, v)
@@ -258,6 +262,24 @@ class vvwm(object):
             self.convertAP.append(v)
         elif k.startswith('convertH'):
             self.convertH.append(v)
+    # Define based on SimTypeFlag:
+    if self.SimTypeFlag == '0' or self.SimTypeFlag == '5': #EPA Reservoir & Pond   OR   EPA Pond Only
+        self.afield.append(self.dictionary['fieldArea_Pond'])
+        self.area.append(self.dictionary['wbArea_Pond'])
+        self.depth_0.append(self.dictionary['depth_0_Pond'])
+        self.depth_max.append(self.dictionary['depth_max_Pond'])
+    if self.SimTypeFlag == '4': #EPA Reservoir Only
+        self.afield.append(self.dictionary['fieldArea_Reservoir'])
+        self.area.append(self.dictionary['wbArea_Reservoir'])
+        self.depth_0.append(self.dictionary['depth_0_Reservoir'])
+        self.depth_max.append(self.dictionary['depth_max_Reservoir'])
+    if self.SimTypeFlag == '6' or self.SimTypeFlag == '1' or self.SimTypeFlag == '2' or self.SimTypeFlag == '3': #Reservoir w/ User Avg, Varying Volume, Constant Volume (w/o Flowthrough), OR Constant Volume (w/ Flowthrough)
+        self.afield.append(self.dictionary['fieldArea_Custom'])
+        self.area.append(self.dictionary['wbArea_Custom'])
+        self.depth_0.append(self.dictionary['depth_0_Custom'])
+        self.depth_max.append(self.dictionary['depth_max_Custom'])
+    if self.SimTypeFlag == '6': #Reservoir w/ User Avg (only)
+        self.ReservoirFlowAvgDays = self.dictionary['resAvgBox_Custom']
 
     self.final_res=get_jid(self.working_dir,
           self.koc_check, self.Koc, self.soilHalfLifeBox, self.soilTempBox1, self.foliarHalfLifeBox,
@@ -271,15 +293,38 @@ class vvwm(object):
           self.firstYear, self.lastYear, self.vvwmSimType,
           self.afield, self.area, self.depth_0, self.depth_max,
           self.ReservoirFlowAvgDays)
+    # logger.info(self.final_res)
 
-    # self.jid = self.final_res[0]
-    # self.link = self.final_res[1][0]
-    # self.PRCP_IRRG_sum = self.final_res[1][1]
-    # self.RUNF_sum = self.final_res[1][2]
-    # self.CEVP_TETD_sum = self.final_res[1][3]
-    # self.src1 = self.final_res[1][4]
-    # self.name1 = self.final_res[1][5]
+    # Assign output variables to the vvwm_obj:
+    self.WC_peak = self.final_res[1][1]
+    self.WC_chronic = self.final_res[1][2]
+    self.WC_simavg = self.final_res[1][3]
+    self.WC_4dayavg = self.final_res[1][4]
+    self.WC_21dayavg = self.final_res[1][5]
+    self.WC_60dayavg = self.final_res[1][6]
+    self.WC_90dayavg = self.final_res[1][7]
+    self.Ben_peak = self.final_res[1][8]
+    self.Ben_21dayavg = self.final_res[1][9]
+    self.Ben_convfact = self.final_res[1][10]
+    self.Ben_massfract = self.final_res[1][11]
+    self.EWCH_washout = self.final_res[1][12]
+    self.EWCH_metabolism = self.final_res[1][13]
+    self.EWCH_hydrolysis = self.final_res[1][14]
+    self.EWCH_photolysis = self.final_res[1][15]
+    self.EWCH_volatilization = self.final_res[1][16]
+    self.EWCH_total = self.final_res[1][17]
+    self.EBH_burial = self.final_res[1][18]
+    self.EBH_metabolism = self.final_res[1][19]
+    self.EBH_hydrolysis = self.final_res[1][20]
+    self.EBH_total = self.final_res[1][21]
+    self.RT_runoff = self.final_res[1][22]
+    self.RT_erosion = self.final_res[1][23]
+    self.RT_drift = self.final_res[1][24]
+    self.peak_li = self.final_res[1][25]
+    self.ben_peak_li = self.final_res[1][26]
+    self.link = self.final_res[1][0]
+    self.jid = self.final_res[0]
+    self.src1 = self.final_res[1][27]
+    self.name1 = self.final_res[1][28]
 
-    # get_upload(self.src1, self.name1)
-    logger.info('===================')
-    logger.info('===================')
+    get_upload(self.src1, self.name1)

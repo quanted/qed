@@ -71,10 +71,39 @@ $(document).ready(function() {
         }
     });
 
+
+    // Temp Disable SimType selection:
+    $('#id_SimTypeFlag').prop('readonly', true);
+
+    // Inital & Maximum Water Body Depth
+    $("input[name$='_Custom']").closest('tr').hide();
+    $("input[name$='_Pond'], input[name$='_Reservoir']").prop('readonly', true);
+    $('#id_SimTypeFlag').change(function() {
+        // Simtype selection        
+        if ($(this).val() == '0') {
+            $("input[name$='_Pond'], input[name$='_Reservoir']").closest('tr').show();
+            $("input[name$='_Custom']").closest('tr').hide();
+        }
+        if ($(this).val() == '4') {
+            $("input[name$='_Reservoir']").closest('tr').show();
+            $("input[name$='_Pond'], input[name$='_Custom']").closest('tr').hide();
+        }
+        if ($(this).val() == '5') {
+            $("input[name$='_Pond']").closest('tr').show();
+            $("input[name$='_Reservoir'], input[name$='_Custom']").closest('tr').hide();
+        }
+        if ($(this).val() == '1' || $(this).val() == '2' || $(this).val() == '3') {
+            $("input[name$='_Custom']").closest('tr').show();
+            $("input[name$='_Reservoir'], input[name$='_Pond'], #id_resAvgBox_Custom").closest('tr').hide();
+        }
+        if ($(this).val() == '6') {
+            $("input[name$='_Custom'], #id_resAvgBox_Custom").closest('tr').show();
+            $("input[name$='_Reservoir'], input[name$='_Pond']").closest('tr').hide();
+        }
+    });
+
     // Temporary Fixes
     $('#id_water_body_type_check, #id_app_date_type, #upfile1, #upfile2').prop('disabled', true);
-    //
-    $("input[id^='id_depth']").prop('readonly', true).css({ 'background-color':'#EBEBE4', 'color':'#EBEBE4' });
     $('#id_year_a_0').prop('disabled', true);
     // 
 

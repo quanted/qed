@@ -9,7 +9,7 @@ $(document).ready(function() {
       );
     i_a = i_a + 1;
     };
-    $("input[id^='id_depth']").prop('readonly', true).css({ 'background-color':'#EBEBE4', 'color':'#EBEBE4' });
+    $("input[id^='id_depth_a']").prop('readonly', true).css({ 'background-color':'#EBEBE4', 'color':'#EBEBE4' });
     // Specify Years?
     if ($('#id_specifyYears').val() == '0') {
       $("input[id^='id_year']").prop('disabled', true);

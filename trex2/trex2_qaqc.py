@@ -9,15 +9,14 @@ import cgitb
 cgitb.enable()
 import unittest
 from StringIO import StringIO
-from pprint import pprint
 import csv
 import sys
 sys.path.append("../trex2")
 from trex2 import trex2_model,trex2_tables
 from uber import uber_lib
 import logging
-
 logger = logging.getLogger('Trex2QaqcPage')
+import rest_funcs
 
 cwd= os.getcwd()
 data = csv.reader(open(cwd+'/trex2/trex2_qaqc.csv'))
@@ -311,7 +310,7 @@ for row_inp in data:
     tw_mamm_temp = float(row_inp[39])
     tw_mamm.append(tw_mamm_temp)
 
-    trex2_obj = trex2_model.trex2(chem_name_temp, use_temp, formu_name_temp, a_i_temp, Application_type_temp, seed_treatment_name_temp, m_s_r_p_temp, crop_use_temp, r_s_temp, b_w_temp, p_i_temp, den_temp, h_l_temp, n_a_temp, rate_out_temp, day_out_temp,
+    trex2_obj = trex2_model.trex2("qaqc", chem_name_temp, use_temp, formu_name_temp, a_i_temp, Application_type_temp, seed_treatment_name_temp, m_s_r_p_temp, crop_use_temp, r_s_temp, b_w_temp, p_i_temp, den_temp, h_l_temp, n_a_temp, rate_out_temp, day_out_temp,
                     ld50_bird_temp, lc50_bird_temp, NOAEC_bird_temp, NOAEL_bird_temp, aw_bird_sm_temp, aw_bird_md_temp, aw_bird_lg_temp, 
                     Species_of_the_tested_bird_avian_ld50_temp, Species_of_the_tested_bird_avian_lc50_temp, Species_of_the_tested_bird_avian_NOAEC_temp, Species_of_the_tested_bird_avian_NOAEL_temp,
                     tw_bird_ld50_temp, tw_bird_lc50_temp, tw_bird_NOAEC_temp, tw_bird_NOAEL_temp,
@@ -632,6 +631,7 @@ class TherpsQaqcPage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.save_dic(html, trex2_obj.__dict__, 'trex2', 'qaqc')
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', TherpsQaqcPage)], debug=True)

@@ -67,7 +67,6 @@ LOCldsspray_out = []
 jid_all = []
 jid_batch = []
 terr_all = []
-terr_all_dict = []
 all_threads = []
 out_html_all = {}
 job_q = Queue.Queue()
@@ -185,7 +184,6 @@ def loop_html(thefile):
     header = reader.next()
     # logger.info(header)
     i=1
-    iter_html=""
     ####Create a job queue and add each row of batch temeplate file as a task into it
     for row in reader:
         job_q.put([row, i])
@@ -215,8 +213,8 @@ def loop_html(thefile):
               
 class TerrPlantBatchOutputPage(webapp.RequestHandler):
     def post(self):
-        text_file1 = open('terrplant/terrplant_description.txt','r')
-        x = text_file1.read()
+        # text_file1 = open('terrplant/terrplant_description.txt','r')
+        # x = text_file1.read()
         form = cgi.FieldStorage()
         logger.info(form) 
         thefile = form['file-0']

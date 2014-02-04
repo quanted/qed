@@ -1,8 +1,6 @@
 import sys
 from django.utils import simplejson
 import time, datetime
-import logging
-
 
 
 def toJSON(terrplant_object):
@@ -929,4 +927,5 @@ def main():
     print vars(new_terrplant)
 
 if __name__ == '__main__':
-    main()
+    main()
+

@@ -4,6 +4,7 @@ import base64
 import urllib
 import json
 from google.appengine.api import urlfetch
+import numpy as np
 
 #############################Provide the key and connect to the picloud#####################
 api_key=keys_Picloud_S3.picloud_api_key
@@ -11,11 +12,17 @@ api_secretkey=keys_Picloud_S3.picloud_api_secretkey
 base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
 http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
 
+###########################A class helps dictionary to be converted to JSON when it contains numpy element################################ 
+class NumPyArangeEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.ndarray):
+            return obj.tolist() # or map(int, obj)
+        return json.JSONEncoder.default(self, obj)
 
 ###########################function to save a single run to MongoDB################################ 
 def save_dic(output_html, model_object_dict, model_name, run_type):
     all_dic = {"model_name":model_name, "_id":model_object_dict['jid'], "run_type":run_type, "output_html":output_html, "model_object_dict":model_object_dict}
-    data = json.dumps(all_dic)
+    data = json.dumps(all_dic, cls=NumPyArangeEncoder)
     url=os.environ['UBERTOOL_REST_SERVER'] + '/save_history'
     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
 
@@ -29,6 +36,11 @@ def batch_save_dic(output_html, model_object_dict, model_name, run_type, jid_bat
     html_save = html_save + template.render (templatepath + '03ubertext_links_left.html', {})                
     html_save = html_save + output_html
     html_save = html_save + template.render(templatepath + '06uberfooter.html', {'links': ''})
+    
+    all_dic = {"model_name":model_name, "_id":jid_batch, "run_type":run_type, "output_html":html_save, "model_object_dict":model_object_dict}
+    data = json.dumps(all_dic, cls=NumPyArangeEncoder)
+    url=os.environ['UBERTOOL_REST_SERVER'] + '/save_history'
+    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
 
 ###########################function to update html saved in MongoDB################################ 
 def update_html(output_html, jid, model_name):
@@ -71,3 +83,4 @@ class user_hist(object):
             self.time_id.append(datetime.datetime.strptime(element['_id'], '%Y%m%d%H%M%S%f').strftime('%Y-%m-%d %H:%M:%S'))
             self.run_type.append(element['run_type'])
         # logger.info(self.time_id)
+

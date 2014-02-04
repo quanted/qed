@@ -183,9 +183,10 @@ def html_table(row_inp_all):
 def loop_html(thefile):
     reader = csv.reader(thefile.file.read().splitlines())
     header = reader.next()
-    logger.info(header)
+    # logger.info(header)
     i=1
     iter_html=""
+    ####Create a job queue and add each row of batch temeplate file as a task into it
     for row in reader:
         job_q.put([row, i])
         i=i+1

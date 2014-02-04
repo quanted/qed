@@ -37,7 +37,14 @@ def update_html(output_html, jid, model_name):
     url=os.environ['UBERTOOL_REST_SERVER'] + '/update_html'
     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
 
-
+###########################function to retrive html from MongoDB################################ 
+def get_output_html(jid, model_name):
+    all_dic = {"jid":jid, "model_name":model_name}
+    data = json.dumps(all_dic)
+    url=os.environ['UBERTOOL_REST_SERVER'] + '/get_html_output'
+    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+    html_output = json.loads(response.content)['html_output']
+    return html_output
 
 ###########################creat an object to display history runs################################ 
 class user_hist(object):

@@ -37,13 +37,15 @@ a:hover {
 
 #banner {
   width: 1024px;
-  background: #356697 url(/images/epa_logo.png) no-repeat;
-  min-height: 70px;
+  /*background: #356697 url(/images/epa_logo.png) no-repeat;*/
+  background: #356697;
+  /*min-height: 70px;*/
+  min-height: 30px;
   font-size: 1.6em;
-  /*border-bottom: 2px solid #F4F7ED;
+  /*border-bottom: 2px solid #F4F7ED;*/
   border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
-  -moz-border-radius: 4px 4px 0 0;*/
+  -moz-border-radius: 4px 4px 0 0;
   /*box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;*/
@@ -51,7 +53,8 @@ a:hover {
 #banner_l {
   color: #fff;
   float: left;
-  padding: 46px 0 4px 13px;
+  /*padding: 46px 0 4px 13px;*/
+  padding: 5px 0 0 0.4em;
 }
 #banner_r {
   float: right;
@@ -68,9 +71,9 @@ a:hover {
   height: 120px;
   float: left;
   border: 2px solid #1F262A;
-  border-radius: 4px 0 0 4px;
+  /*border-radius: 4px 0 0 4px;
   -webkit-border-radius: 4px 0 0 4px;
-  -moz-border-radius: 4px 0 0 4px;
+  -moz-border-radius: 4px 0 0 4px;*/
 }
 #topheader_p {
   width: 300px;
@@ -81,9 +84,9 @@ a:hover {
   font-size: 12px;
   text-align: justify;
   border-bottom: 4px solid #1F262A;
-  border-radius: 0 4px 4px 0;
+  /*border-radius: 0 4px 4px 0;
   -webkit-border-radius: 0 4px 4px 0;
-  -moz-border-radius: 0 4px 4px 0;
+  -moz-border-radius: 0 4px 4px 0;*/
 }
 #topheader_p p {
   margin-left: auto;
@@ -1133,16 +1136,16 @@ a.logreg:link, a.logreg:visited, a.logreg:active {
   font-size: 12px;
   letter-spacing: 0.0625em;
   color: #FFFFFF;
-  background: #4289AA;
+  background: #356697;
   margin: 0;
   /*text-transform: uppercase;*/
   padding: 5px 0 5px 8px;
   border-bottom: 2px solid #1F262A;
   /*border-right: 2px solid #599DBD;*/
   /*border-left: 2px solid #599DBD;*/
-  /*border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
-  -moz-border-radius: 4px 4px 0 0;*/
+  -moz-border-radius: 4px 4px 0 0;
   /*box-shadow: 3px 3px 15px #CCC;
   -webkit-box-shadow: 3px 3px 15px #CCC;
   -moz-box-shadow: 3px 3px 15px #CCC;
@@ -1158,13 +1161,13 @@ a.logreg:link, a.logreg:visited, a.logreg:active {
 }
 .fadeMenu {
   color: #333333;
-  background: #F7F9F4;
+  background: #dee7ef;
 }
 .urbangreymenu a.aSelected {
   display:block;
   text-decoration:none;
   color:#FFFFFF;
-  background-color:#4289AA;
+  background-color:#356697;
 }
 
 /* Tables */
@@ -1201,14 +1204,14 @@ th {
   background: #1F262A url(/images/epa_footer.png) no-repeat;
   width: 1024px;
   height: 175px;
-  /*padding: 4px;
-  text-align: center;
+  /*padding: 4px;*/
+  /*text-align: center;*/
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   box-shadow: 0 3px 15px -7px #000;
   -webkit-box-shadow: 0 3px 15px -7px #000;
-  -moz-box-shadow: 0 3px 15px -7px #000;*/
+  -moz-box-shadow: 0 3px 15px -7px #000;
 }
 #footer li {
   display: none;

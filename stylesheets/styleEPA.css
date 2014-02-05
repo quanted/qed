@@ -196,7 +196,7 @@ span {
 .left {
   float: left;
   text-align: justify;
-  margin-top: 5px;
+  margin-top: 0;
   display: inline;
   /*margin-bottom: 5px;
   border-left: 5px solid #F7F9F4;
@@ -221,7 +221,7 @@ span {
 .right {
   float: right;
   text-align: justify;
-  margin-top: 5px;
+  margin-top: 0;
   display: inline;
   /*margin-bottom: 5px;
   border-right: 5px solid #F7F9F4;

@@ -42,7 +42,7 @@ a:hover {
   /*min-height: 70px;*/
   min-height: 30px;
   font-size: 1.6em;
-  /*border-bottom: 2px solid #F4F7ED;*/
+  border-bottom: 2px solid #1F262A;
   border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
@@ -70,23 +70,18 @@ a:hover {
   width: 720px;
   height: 120px;
   float: left;
-  border: 2px solid #1F262A;
-  /*border-radius: 4px 0 0 4px;
-  -webkit-border-radius: 4px 0 0 4px;
-  -moz-border-radius: 4px 0 0 4px;*/
+  border-right: 4px solid #1F262A;
+  border-bottom: 2px solid #1F262A;
 }
 #topheader_p {
   width: 300px;
   height: 120px;
-  background: #1F262A;
+  background: #1F262A url(/images/epa_logo_gray.png) no-repeat center;
   float: right;
   color: white;
   font-size: 12px;
   text-align: justify;
-  border-bottom: 4px solid #1F262A;
-  /*border-radius: 0 4px 4px 0;
-  -webkit-border-radius: 0 4px 4px 0;
-  -moz-border-radius: 0 4px 4px 0;*/
+  border-bottom: 2px solid #1F262A;
 }
 #topheader_p p {
   margin-left: auto;
@@ -102,10 +97,8 @@ a:hover {
   width: 720px;
   height: 240px;
   float: left;
-  border: 2px solid #1F262A;
-  border-radius: 4px 0 0 4px;
-  -webkit-border-radius: 4px 0 0 4px;
-  -moz-border-radius: 4px 0 0 4px;
+  border-right: 4px solid #1F262A;
+  border-bottom: 2px solid #1F262A;
 }
 #topheader_p_main {
   width: 300px;
@@ -115,10 +108,7 @@ a:hover {
   color: white;
   font-size: 12px;
   text-align: justify;
-  border-bottom: 4px solid #1F262A;
-  border-radius: 0 4px 4px 0;
-  -webkit-border-radius: 0 4px 4px 0;
-  -moz-border-radius: 0 4px 4px 0;
+  border-bottom: 2px solid #1F262A;
 }
 #topheader_p_main p {
   margin-left: auto;

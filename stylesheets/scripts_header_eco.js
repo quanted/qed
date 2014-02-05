@@ -9,7 +9,7 @@ $(document).ready(function() {
     $('#topheader_pic, #topheader_p').animate({
       height:'240px'
     }, 500);
-    $('#topheader_p p, .logreg').fadeIn(500);
+    $('.logreg').fadeIn(500);
   });
   // BlockUI on QAQC
   $("a[class^='fadeQAQC']").click(function (e) {

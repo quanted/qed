@@ -119,7 +119,7 @@ class TRexOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
-        logger.info(trex2_obj.__dict__)
+        # logger.info(trex2_obj.__dict__)
         rest_funcs.save_dic(html, trex2_obj.__dict__, "trex2", "single")
         self.response.out.write(html)
 
@@ -133,4 +133,5 @@ if __name__ == '__main__':
 
  
 
-    
+    
+

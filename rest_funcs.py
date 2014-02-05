@@ -24,7 +24,10 @@ def save_dic(output_html, model_object_dict, model_name, run_type):
     all_dic = {"model_name":model_name, "_id":model_object_dict['jid'], "run_type":run_type, "output_html":output_html, "model_object_dict":model_object_dict}
     data = json.dumps(all_dic, cls=NumPyArangeEncoder)
     url=os.environ['UBERTOOL_REST_SERVER'] + '/save_history'
-    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+    try:
+        response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+    except:
+        pass
 
 ###########################function to save batch runs to MongoDB################################ 
 def batch_save_dic(output_html, model_object_dict, model_name, run_type, jid_batch, ChkCookie, templatepath):
@@ -40,22 +43,32 @@ def batch_save_dic(output_html, model_object_dict, model_name, run_type, jid_bat
     all_dic = {"model_name":model_name, "_id":jid_batch, "run_type":run_type, "output_html":html_save, "model_object_dict":model_object_dict}
     data = json.dumps(all_dic, cls=NumPyArangeEncoder)
     url=os.environ['UBERTOOL_REST_SERVER'] + '/save_history'
-    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
-
+    try:
+        response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+    except:
+        pass
 ###########################function to update html saved in MongoDB################################ 
 def update_html(output_html, jid, model_name):
     all_dic = {"model_name":model_name, "_id":jid, "output_html":output_html}
     data = json.dumps(all_dic)
     url=os.environ['UBERTOOL_REST_SERVER'] + '/update_html'
-    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
-
+    try:
+        response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+    except:
+        pass
 ###########################function to retrive html from MongoDB################################ 
 def get_output_html(jid, model_name):
     all_dic = {"jid":jid, "model_name":model_name}
     data = json.dumps(all_dic)
     url=os.environ['UBERTOOL_REST_SERVER'] + '/get_html_output'
-    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
-    html_output = json.loads(response.content)['html_output']
+    try:
+        response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+    except:
+        pass
+    if response:
+        html_output = json.loads(response.content)['html_output']
+    else:
+        html_output =""
     return html_output
 
 ###########################creat an object to display history runs################################ 
@@ -68,19 +81,25 @@ class user_hist(object):
         self.all_dic = {"user_id": user_id, "model_name":model_name}
         self.data = json.dumps(self.all_dic)
         self.url=os.environ['UBERTOOL_REST_SERVER']+'/user_history'
-        self.response = urlfetch.fetch(url=self.url, payload=self.data, method=urlfetch.POST, headers=http_headers, deadline=60)
-        # logger.info(self.response.content)
-        self.output_val = json.loads(self.response.content)['hist_all']
-        self.total_num = len(self.output_val)
         self.user_id = []
         self.time_id = []
         self.jid = []
         self.run_type = []
 
-        for element in self.output_val:
-            self.user_id.append(element['user_id'])
-            self.jid.append(element['_id'])
-            self.time_id.append(datetime.datetime.strptime(element['_id'], '%Y%m%d%H%M%S%f').strftime('%Y-%m-%d %H:%M:%S'))
-            self.run_type.append(element['run_type'])
-        # logger.info(self.time_id)
+        try:
+            self.response = urlfetch.fetch(url=self.url, payload=self.data, method=urlfetch.POST, headers=http_headers, deadline=60)
+        # logger.info(self.response.content)
+        except:
+            self.response = None
+        if self.response:
+            self.output_val = json.loads(self.response.content)['hist_all']
+            self.total_num = len(self.output_val)
+
+            for element in self.output_val:
+                self.user_id.append(element['user_id'])
+                self.jid.append(element['_id'])
+                self.time_id.append(datetime.datetime.strptime(element['_id'], '%Y%m%d%H%M%S%f').strftime('%Y-%m-%d %H:%M:%S'))
+                self.run_type.append(element['run_type'])
+        else:
+            self.total_num = 0
 

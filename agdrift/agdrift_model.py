@@ -96,9 +96,9 @@ class agdrift(object):
         self.results()
         if (self.calculation_input == 'Distance' ):
             self.results()
-            logger.info(self.y)
-            logger.info(self.nasae)
-            logger.info(self.distance)
+            #logger.info(self.y)
+            #logger.info(self.nasae)
+            #logger.info(self.distance)
             self.express_extrapolate_f(self.y, self.nasae, self.distance)
             self.deposition_foa_to_gha_f(self.init_avg_dep_foa, self.application_rate)
             self.deposition_ghac_to_lbac_f(self.avg_depo_gha)

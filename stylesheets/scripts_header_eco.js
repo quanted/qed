@@ -14,11 +14,12 @@ $(document).ready(function() {
   // BlockUI on QAQC
   $("a[class^='fadeQAQC']").click(function (e) {
     e.preventDefault();
-    var http_method = "get"
+    var http_method = "get";
     if(document.URL.indexOf('out') != -1 && document.URL.indexOf('batch') === -1 )
     {
       var http_method = "post";
     }
+    alert(http_method);
     $(document).ajaxStart(function(http_method){
       $.blockUI({
         css:{ "top":""+wintop+"", "left":""+winleft+"", "padding": "30px 20px", "width": "400px", "height": "60px", "border": "0 none", "border-radius": "4px", "-webkit-border-radius": "4px", "-moz-border-radius": "4px", "box-shadow": "3px 3px 15px #333", "-webkit-box-shadow": "3px 3px 15px #333", "-moz-box-shadow": "3px 3px 15px #333" },

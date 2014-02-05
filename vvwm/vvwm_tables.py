@@ -121,7 +121,6 @@ def table_1():
     html = """
     <H3 class="out_3 collapsible" id="section1"><span></span>User Inputs</H3>
     <div class="out_input_table out_">
-
     </div>"""
     return html
 

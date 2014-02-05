@@ -185,14 +185,12 @@ $(document).ready(function() {
       $(".year_not").hide();
     }
   });
-
-  $("input[value='Submit']").click(function (e) {
-    e.preventDefault();
-    var html_input = $("form").html();
-    localStorage.html_input=html_input;
-    // event.preventDefault();
-    var html_new = $("form").serialize()
-    localStorage.html_new=html_new;
+  // Save input page html to browser Local Storage to be retrieved on output page
+  $("input[value='Submit']").click(function() {
+      var html_input = $("form").html();
+      localStorage.html_input=html_input;
+      var html_new = $("form").serialize();
+      localStorage.html_new=html_new;
   });
 
 });

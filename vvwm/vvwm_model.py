@@ -21,7 +21,7 @@ url_part1 = os.environ['UBERTOOL_REST_SERVER']
 
 ###########################################################################
 
-def get_jid(working_dir,
+def get_jid(run_type, working_dir,
           koc_check, Koc, soilHalfLifeBox, soilTempBox1, foliarHalfLifeBox,
           wc_hl, w_temp, bm_hl, ben_temp, ap_hl, p_ref, h_hl, mwt, vp, sol, Q10Box,
           convertSoil, convert_Foliar, convertWC, convertBen, convertAP, convertH,
@@ -105,14 +105,14 @@ def get_jid(working_dir,
     url=url_part1+'/vvwm/'+jid 
 
 
-    # if run_type == "single" or "qaqc":
-    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
-    # logger.info(json.loads(response.content))
-    output_val = json.loads(response.content)['result']
-    # jid= json.loads(response.content)['jid']
-    # print "filepath=", output_val[4]
-    # self.elapsed = (time.clock() - start)
-    return(jid, output_val)
+    if run_type == "single" or "qaqc":
+        response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+        # logger.info(json.loads(response.content))
+        output_val = json.loads(response.content)['result']
+        # jid= json.loads(response.content)['jid']
+        # print "filepath=", output_val[4]
+        # self.elapsed = (time.clock() - start)
+        return(jid, output_val)
 
 
 # Commented out at end of this file - What does this do?
@@ -281,7 +281,7 @@ class vvwm(object):
     if self.SimTypeFlag == '6': #Reservoir w/ User Avg (only)
         self.ReservoirFlowAvgDays = self.dictionary['resAvgBox_Custom']
 
-    self.final_res=get_jid(self.working_dir,
+    self.final_res=get_jid(self.run_type, self.working_dir,
           self.koc_check, self.Koc, self.soilHalfLifeBox, self.soilTempBox1, self.foliarHalfLifeBox,
           self.wc_hl, self.w_temp, self.bm_hl, self.ben_temp, self.ap_hl, self.p_ref, self.h_hl, self.mwt, self.vp, self.sol, self.Q10Box,
           self.convertSoil, self.convert_Foliar, self.convertWC, self.convertBen, self.convertAP, self.convertH,

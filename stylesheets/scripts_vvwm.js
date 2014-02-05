@@ -105,6 +105,14 @@ $(document).ready(function() {
     // Temporary Fixes
     $('#id_water_body_type_check, #id_app_date_type, #upfile1, #upfile2').prop('disabled', true);
     $('#id_year_a_0').prop('disabled', true);
+    $('#id_water_body_type_check').closest('tr').hide();
     // 
+    // Save input page html to browser Local Storage to be retrieved on output page
+    $("input[value='Submit']").click(function() {
+        var html_input = $("form").html();
+        localStorage.html_input=html_input;
+        var html_new = $("form").serialize();
+        localStorage.html_new=html_new;
+    });
 
 });

@@ -3,10 +3,18 @@ The DUST program is under development and has not been officially released, here
 </p>
 <ul class="bullet">
   <li><a href="http://cfpub.epa.gov/ncea/cfm/recordisplay.cfm?deid=12188">Dermal Exposure Assessment: Principles and Applications</a></li>
-  <li><a href="http://cfpub.epa.gov/ncea/cfm/recordisplay.cfm?deid=183584">Dermal Exposure Assessment: A sumary of approaches</a></li>
+  <li><a href="http://cfpub.epa.gov/ncea/cfm/recordisplay.cfm?deid=183584">Dermal Exposure Assessment: A summary of approaches</a></li>
   <li><a href="http://cfpub.epa.gov/ncea/cfm/recordisplay.cfm?deid=209866">Exposure Factors Handbook: 2009 Update</a></li>
   <li><a href="http://www.epa.gov/ncea/efh/pdfs/efh-chapter07.pdf">Dermal Exposure Factors Chapter of Exposure Factors Handbok (2011)</a></li>
 </ul>
+
+<p>
+Current github source code:
+</p>
+<ul>
+<li><a href="https://github.com/puruckertom/ubertool_src/tree/master/dust">ubertool_src on github</a>
+</ul>
+
 <p>
 There are not currently and example reports documenting the use of DUST in reregistration eligibility documents and pesticide effects determinations for federally threatened and endangered species since it is still under development:
 </p>

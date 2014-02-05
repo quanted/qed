@@ -1,15 +1,25 @@
 import numpy as np
 import logging
 import sys
+import time, datetime
+logger = logging.getLogger('trex2 model')
 
 
 #food intake for birds
 class trex2(object):
-    def __init__(self, chem_name, use, formu_name, a_i, Application_type, seed_treatment_formulation_name, seed_crop, seed_crop_v, r_s, b_w, p_i, den, h_l, n_a, ar_lb, day_out,
+    def __init__(self, run_type, chem_name, use, formu_name, a_i, Application_type, seed_treatment_formulation_name, seed_crop, seed_crop_v, r_s, b_w, p_i, den, h_l, n_a, ar_lb, day_out,
               ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, aw_bird_md, aw_bird_lg, 
               Species_of_the_tested_bird_avian_ld50, Species_of_the_tested_bird_avian_lc50, Species_of_the_tested_bird_avian_NOAEC, Species_of_the_tested_bird_avian_NOAEL, 
               tw_bird_ld50, tw_bird_lc50, tw_bird_NOAEC, tw_bird_NOAEL, x, ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, aw_mamm_lg, tw_mamm,
               m_s_r_p):
+        ts = datetime.datetime.now()
+        if(time.daylight):
+            ts1 = datetime.timedelta(hours=-4)+ts
+        else:
+            ts1 = datetime.timedelta(hours=-5)+ts
+        self.jid = ts1.strftime('%Y%m%d%H%M%S%f')
+
+        self.run_type=run_type
         self.chem_name=chem_name
         self.use=use
         self.formu_name=formu_name

@@ -4,8 +4,7 @@ $(document).ready(function() {
     var uptab_pool = ["Chemical", "Application", "Location", "Floods", "Crop", "Physical", "Output"];
     var visible = $(".tab:visible").attr('class').split(" ")[1];
     var curr_ind = $.inArray(visible, tab_pool);
-    $(".submit").hide();
-    $(".back").hide();
+    $(".back, .submit, #metaDataToggle, #metaDataText").hide();
 
 //Input form validation method
 
@@ -359,7 +358,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_Chemical').show();
         $(".back").hide();
-        $(".submit").hide();
+        $(".submit, #metaDataToggle, #metaDataText").hide();
         $(".next").show();
     });
 
@@ -370,7 +369,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_Application').show();
         $(".back").show();
-        $(".submit").hide();
+        $(".submit, #metaDataToggle, #metaDataText").hide();
         $(".next").show();
     });
 
@@ -381,7 +380,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_Location').show();
         $(".back").show();
-        $(".submit").hide();
+        $(".submit, #metaDataToggle, #metaDataText").hide();
         $(".next").show();
     });
 
@@ -392,7 +391,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_Floods').show();
         $(".back").show();
-        $(".submit").hide();
+        $(".submit, #metaDataToggle, #metaDataText").hide();
         $(".next").show();
     });
 
@@ -403,7 +402,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_Crop').show();
         $(".back").show();
-        $(".submit").hide();
+        $(".submit, #metaDataToggle, #metaDataText").hide();
         $(".next").show();
     });
 
@@ -414,7 +413,7 @@ $(document).ready(function() {
         $(".tab:visible").hide();
         $('.tab_Physical').show();
         $(".back").show();
-        $(".submit").hide();
+        $(".submit, #metaDataToggle, #metaDataText").hide();
         $(".next").show();
     });
 
@@ -422,11 +421,8 @@ $(document).ready(function() {
         curr_ind = 6;
         $(this).addClass('tabSel').removeClass('tabUnsel');
         $('li.Chemical, li.Application, li.Location, li.Floods, li.Crop, li.Physical').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_Output').show();
-        $(".back").show();
-        $(".submit").show();
-        $(".next").hide();
+        $(".tab:visible, .next").hide();
+        $(".tab_Output, .back, .submit, #metaDataToggle, #metaDataText").show();
     });
 
     $('.next').click(function () {
@@ -463,33 +459,30 @@ $(document).ready(function() {
             }
         }
         if (curr_ind == 6) {
-            $(".submit").show();
+            $(".submit, #metaDataToggle, #metaDataText").show();
             $(".next").hide();
         }
     });
 
     $('.back').click(function () {
         if (curr_ind > 0) {
-            
             if (curr_ind == 1) {
-            $(".tab:visible").hide();
-            $("." + uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel') //unhighlight previous tabs
-            curr_ind = curr_ind - 1;
-            $("." + tab_pool[curr_ind]).show();
-            $("." + uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel'); //highlight current tabs            
-            $(".tab_noa1").show();
-            $(".submit").hide();
-            $(".next").show();      
-                }
-                
-            else{
-            $(".tab:visible").hide();
-            $("." + uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel') //unhighlight previous tabs
-            curr_ind = curr_ind - 1;
-            $("." + tab_pool[curr_ind]).show();
-            $("." + uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel'); //highlight current tabs            
-            $(".submit").hide();
-            $(".next").show();
+                $(".tab:visible").hide();
+                $("." + uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel') //unhighlight previous tabs
+                curr_ind = curr_ind - 1;
+                $("." + tab_pool[curr_ind]).show();
+                $("." + uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel'); //highlight current tabs            
+                $(".tab_noa1").show();
+                $(".submit, #metaDataToggle, #metaDataText").hide();
+                $(".next").show();
+            } else {
+                $(".tab:visible").hide();
+                $("." + uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel') //unhighlight previous tabs
+                curr_ind = curr_ind - 1;
+                $("." + tab_pool[curr_ind]).show();
+                $("." + uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel'); //highlight current tabs            
+                $(".submit, #metaDataToggle, #metaDataText").hide();
+                $(".next").show();
             }
         }
         if (curr_ind == 0) {

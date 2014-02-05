@@ -8,11 +8,10 @@ import cgi
 import cgitb
 cgitb.enable()
 import unittest
-from StringIO import StringIO
 import csv
 import sys
 sys.path.append("../trex2")
-from trex2 import trex2_model,trex2_tables
+from trex2 import trex2_model, trex2_tables
 from uber import uber_lib
 import logging
 logger = logging.getLogger('Trex2QaqcPage')

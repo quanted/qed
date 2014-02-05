@@ -5,7 +5,6 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
-import numpy as np
 import cgi
 import cgitb
 cgitb.enable()
@@ -18,7 +17,6 @@ sys.path.append("../terrplant")
 from terrplant import terrplant_model, terrplant_tables
 from uber import uber_lib
 import csv
-import numpy
 from threading import Thread
 import Queue
 from collections import OrderedDict

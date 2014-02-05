@@ -17,9 +17,9 @@ sys.path.append("../sip")
 from sip import sip_model,sip_tables
 from uber import uber_lib
 import logging
+import rest_funcs
 
 logger = logging.getLogger('SIPQaqcPage')
-
 cwd= os.getcwd()
 data = csv.reader(open(cwd+'/sip/sip_qaqc.csv'))
 chemical_name=[]
@@ -268,7 +268,7 @@ def suite(TestCaseName, **kwargs):
     return test_out
 
 
-sip_obj = sip_model.sip(True,True,chemical_name[0], b_species[0], m_species[0], bw_quail[0], bw_duck[0], bwb_other[0], bw_rat[0], bwm_other[0], sol[0], avian_ld50[0], mammalian_ld50[0], aw_bird[0], mineau[0], aw_mamm[0], noaec_d[0], noaec_q[0], noaec_o[0], Species_of_the_bird_NOAEC_CHOICES[0], noael[0])
+sip_obj = sip_model.sip(True,True,'qaqc',chemical_name[0], b_species[0], m_species[0], bw_quail[0], bw_duck[0], bwb_other[0], bw_rat[0], bwm_other[0], sol[0], avian_ld50[0], mammalian_ld50[0], aw_bird[0], mineau[0], aw_mamm[0], noaec_d[0], noaec_q[0], noaec_o[0], Species_of_the_bird_NOAEC_CHOICES[0], noael[0])
 sip_obj.set_unit_testing_variables()
 
 sip_obj.chemical_name_expected = chemical_name[0]
@@ -313,11 +313,12 @@ class sipQaqcPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'sip',
                 'model_attributes':'SIP QAQC'})
-        html = html + sip_tables.timestamp()
+        html = html + sip_tables.timestamp(sip_obj)
         html = html + sip_tables.table_all_qaqc(sip_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.save_dic(html, sip_obj.__dict__, 'sip', 'qaqc')
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', sipQaqcPage)], debug=True)

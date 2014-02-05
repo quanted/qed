@@ -1,4 +1,3 @@
-import sys
 from django.utils import simplejson
 import time, datetime
 

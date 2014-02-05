@@ -199,15 +199,17 @@ def table_all_qaqc(sip_obj):
     html_all = html_all + table_3_qaqc(sip_obj)
     return html_all
 
-def timestamp():
-    ts = time.time()
-    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+def timestamp(sip_obj="", batch_jid=""):
+    if sip_obj:
+        st = datetime.datetime.strptime(sip_obj.jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
+    else:
+        st = datetime.datetime.strptime(batch_jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
     html="""
     <div class="out_">
         <b>SIP <a href="http://www.epa.gov/oppefed1/models/terrestrial/sip/sip_user_guide.html">Version 1.0</a> (Beta)<br>
     """
     html = html + st
-    html = html + " (UTC)</b>"
+    html = html + " (EST)</b>"
     html = html + """
     </div>"""
     return html
@@ -349,4 +351,4 @@ def table_sum_output(sumheadings, tmpl, dose_bird_out, dose_mamm_out, at_bird_ou
                 </div>
         </div>
         """
-        return html
+        return html

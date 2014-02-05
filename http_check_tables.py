@@ -68,18 +68,21 @@ def gethtmlrowsfromcols(data, headings):
 djtemplate = getdjtemplate()
 tmpl = Template(djtemplate)
 
-def table_1(httpheadings, counter, page, status, reason, counter_total, counter_ok):
-    ok_score = str(counter_ok + "/" + counter_total)
+def table_report_integration_results(httpheadings, counter, page, status, reason, counter_total, counter_ok, time_text):
+    ok_score = "(" + str(counter_ok) + "/" + str(counter_total) + " passed)<br>"
     html1 = """
-    <H3 class="out_1 collapsible" id="section1"><span></span>Test Results (
+    <script src="/stylesheets/jquery.collapsible.js" type="text/javascript"></script>
+	<script src="/stylesheets/scripts_collapsible.js" type="text/javascript"></script>
+    <H3 class="out_1 collapsible" id="section1"><span></span>Test Results</H3>
+    <div class="out_">
+    	<H4><a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">Status Code Definitions</a></H4>
+        <H4 class="out_1 collapsible" id="section2"><span></span>Integration Test of Non-Output Pages 
     """
     html2 = """
-    </H3>
-    <div class="out_">
-        <H4 class="out_1 collapsible" id="section2"><span></span>Integration Test of Non-Output Pages (<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">Status Code Definitions</a>)</H4>
+        </H4>
             <div class="out_ container_output">
     """
-    html = html1 + ok_score + html2
+    html = html1 + ok_score + time_text + html2
     t1data = gethttpdata(counter, page, status, reason)
     t1rows = gethtmlrowsfromcols(t1data,httpheadings)
     html = html + tmpl.render(Context(dict(data=t1rows, headings=httpheadings)))

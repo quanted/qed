@@ -12,6 +12,9 @@ h1, h2, h3, h4, h5, h6, p {
   font: inherit;
   vertical-align: baseline;
 }
+h3, h4 {
+  font-weight: 700;
+}
 
 /* General */
 
@@ -394,7 +397,7 @@ ul.nobullet {
   text-align: left;
   margin: 4px 0 4px 0;
 }
-.articles_output h4 {
+.articles_output h4, .articles_input h4, .articles h4 {
   text-align: left;
   margin: 4px 0 4px 14px;
 }

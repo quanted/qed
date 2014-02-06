@@ -26,7 +26,6 @@ def PRZM5_pi(pfac, snowmelt, evapDepth,
     import shutil
     import subprocess
     import zipfile
-    import cloud
     from boto.s3.connection import S3Connection
     from boto.s3.key import Key
     from boto.s3.bucket import Bucket

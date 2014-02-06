@@ -298,16 +298,18 @@ function importFile(xmlDoc,fileName,predicted,index,xmlIndex)
 		loadData(xmlDocArray[xmlIndex],predicted,index, fileName);
  	}
 }
-
+http://s3.amazonaws.com/webice/data/afSurrFathead
 function loadData(xmlDoc,predSpec,index, filename)
 { 
 	var predFound = false;
 	var level = '';
 	var useRow = 1;
-
-	if (filename.charAt(6) == 's') level = 'species';
-	if (filename.charAt(6) == 'f') level = 'family';
-	if (filename.charAt(6) == 'g') level = 'genus';
+	// Changed by J. Flaishans (filename => filenameUber):
+	filenameUberIndex = filename.indexOf("data/");
+	filenameUber = filename.substring(filenameUberIndex);
+	if (filenameUber.charAt(6) == 's') level = 'species';
+	if (filenameUber.charAt(6) == 'f') level = 'family';
+	if (filenameUber.charAt(6) == 'g') level = 'genus';
 	for (p=0;p<(xmlDoc.getElementsByTagName("cross").length>500?500:xmlDoc.getElementsByTagName("cross").length);p++) 
 	{
 	  var row = xmlDoc.getElementsByTagName("cross")[p];

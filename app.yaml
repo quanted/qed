@@ -1,5 +1,5 @@
 application: pypest
-version: tao
+version: pop
 runtime: python27
 api_version: 1
 
@@ -180,6 +180,8 @@ handlers:
   script: webice/webice_SSDoutput.py
 - url: /webiceTNE_out\.html
   script: webice/webice_TNEoutput.py
+- url: /ICETable\.html
+  script: webice/webice_ICETable.py
 # #historyoutput
 # - url: /(.*?)_asdf.html
 #   script: \1/\1_asdf.py

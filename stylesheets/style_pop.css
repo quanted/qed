@@ -988,7 +988,7 @@ a.logreg:link, a.logreg:visited, a.logreg:active {
 }
 .fadeMenu {
   color: #34322D;
-  background: rgb(218, 208, 171);
+  background: rgb(224, 219, 201);
 }
 .urbangreymenu a.aSelected {
   display: block;
@@ -1007,18 +1007,18 @@ table,td
   border-style: outset;
   border-color: white;
   border-collapse: separate;
-  background-color: rgb(234, 223, 185);
+  background-color: rgb(232, 232, 232);
 }
 table
 {
-  background-color: rgb(237, 233, 192);
+  background-color: rgb(237, 237, 237);
   padding: 1px;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
 }
 th {
-  background-color: rgb(234, 223, 185);
+  background-color: rgb(232, 232, 232);
   border: none;
   text-align: center;
   padding: 1px 4px;
@@ -1061,67 +1061,4 @@ th {
   background:#364A56;
   color:#fff;
   font-weight:normal;
-}
-
-/* Web-ICE */
-
-.webice {
-  width: 763px;
-  margin: 8px 0 12px 0;
-}
-.webice td {
-  border: none;
-  text-align: center;
-  padding: 4px;
-}
-.webice th {
-  padding: 8px;
-}
-#SurrogateCell, #PredictedCell {
-  width: 50%;
-}
-#surrSpecies, #predSpecies {
-  font-size: 1.5em;
-  margin: 0 0 12px 160px;
-}
-#surrSpecies span, #predSpecies span, .title {
-  font-weight: 700;
-}
-#resultsTable {
-  margin-top: 36px;
-}
-#modelData {
-  margin-top: 36px;
-  float: left;
-}
-#graphImage {
-  margin-top: 36px;
-  float: right;
-}
-#fileType {
-  text-align: center;
-  margin-bottom: 12px;
-  min-height: 232px;
-}
-#PageName {
-  font-weight: 700;
-  font-size: 2em;
-  margin-bottom: 24px;
-  min-height: 18px;
-}
-#ssdResultsContainer, #tneResultsContainer {
-  width: 824px;
-  overflow: auto;
-}
-#modResults, #ssdResults, #tneResults {
-  margin-left: 0;
-}
-.outsideRange {
-  color: #FF0000;
-}
-.greyedOut {
-  color: #AAAAAA;
-}
-.greyedOut td.outsideRange {
-  color: #AAAAAA;
 }

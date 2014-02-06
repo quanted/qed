@@ -12,7 +12,7 @@ class webiceOutputPage(webapp.RequestHandler):
         html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
         html = html + template.render (templatepath + 'webiceTNE-jqueryOutput.html', {})
         html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html',  {'model':'webice','page':'output'})
-        html = html + template.render (templatepath + '03ubertext_links_left.html', {})                               
+        html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})                               
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'webice', 
                 'model_attributes':'Web-ICE v3.2.1 Output'})

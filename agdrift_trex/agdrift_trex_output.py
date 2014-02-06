@@ -130,7 +130,7 @@ class agdrift_trexOutputPage(webapp.RequestHandler):
         agdrift_obj = agdrift_model.agdrift(True, True, drop_size, ecosystem_type, application_method, boom_height, orchard_type, rate_out[0], distance, aquatic_type, calculation_input)
         #logger.info(type(agdrift_obj.init_avg_dep_foa))
 
-        trex_obj = trex2_model.trex2(chem_name, use, formu_name, a_i, Application_type, seed_treatment_formulation_name, seed_crop, seed_crop_v, r_s, b_w, p_i, den, h_l, n_a, [agdrift_obj.init_avg_dep_foa*i for i in rate_out], day_out,
+        trex_obj = trex2_model.trex2('single', chem_name, use, formu_name, a_i, Application_type, seed_treatment_formulation_name, seed_crop, seed_crop_v, r_s, b_w, p_i, den, h_l, n_a, [agdrift_obj.init_avg_dep_foa*i for i in rate_out], day_out,
                       ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, aw_bird_md, aw_bird_lg, 
                       Species_of_the_tested_bird_avian_ld50, Species_of_the_tested_bird_avian_lc50, Species_of_the_tested_bird_avian_NOAEC, Species_of_the_tested_bird_avian_NOAEL,
                       tw_bird_ld50, tw_bird_lc50, tw_bird_NOAEC, tw_bird_NOAEL, x, ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, aw_mamm_lg, tw_mamm,
@@ -148,9 +148,9 @@ class agdrift_trexOutputPage(webapp.RequestHandler):
                 'model':'agdrift_trex', 
                 'model_attributes':'AgDrift-T-Rex Output'})
 
-        html = html + agdrift_tables.timestamp()
+        html = html + trex2_tables.timestamp(trex_obj, '')
         html = html + agdrift_tables.table_all(agdrift_obj)
-        html = html + trex2_tables.timestamp()
+        # html = html + trex2_tables.timestamp()
         html = html + trex2_tables.table_all(trex_obj)[0]
         
         

@@ -509,6 +509,9 @@ function showSSDRow (species, fullTox, fullLower, fullUpper, toxValue, lowerValu
 		rowObject = createRow(species, fullTox, fullLower, fullUpper, toxValue, lowerValue, upperValue, surrTox, type, surrogateName, df, r2, pVal, MSE, Bootstrap, taxDist, slope, intercept, msg, 1);
 	document.getElementById("ssdResults").tBodies[0].appendChild(rowObject);
 	if (dup==1) makeGrey(idVal); 
+	// Added by J. Flaishans
+	// console.log('Called');
+	// setTimeout(scrollBarInit(), 10000);
 }
 
 function showSSDData(dataPoint)

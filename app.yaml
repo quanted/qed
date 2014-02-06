@@ -51,9 +51,9 @@ skip_files:
 
 handlers:
 - url: /
-  script: landing_pypest.py 
+  script: landing_pypop.py 
 - url: /index.html
-  script: landing_pypest.py 
+  script: landing_pypop.py 
 - url: /admin.html
   script: admin.py
 - url: /http_check_eco.html

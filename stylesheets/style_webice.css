@@ -42,7 +42,7 @@ button, input {
 }
 #surrSpecies, #predSpecies {
   font-size: 1.5em;
-  margin: 0 0 12px 160px;
+  margin: 12px;
 }
 #surrSpecies span, #predSpecies span, .title {
   font-weight: 700;
@@ -58,6 +58,14 @@ button, input {
 }
 #resultsTable {
   margin-top: 36px;
+}
+#resultsTable th {
+  max-width: 222px;
+  padding: 4px;
+}
+#inputToxLog {
+  padding: 3px 8px 0 0;
+  float: right;
 }
 #modelData {
   margin-top: 36px;
@@ -78,12 +86,27 @@ button, input {
   margin-bottom: 24px;
   min-height: 18px;
 }
-#ssdResultsContainer, #tneResultsContainer {
+.ssdResultsContainer, .ssdResultsContainerTopScroll, #tneResultsContainer {
   width: 824px;
-  overflow: auto;
+  overflow-x: scroll;
 }
+/*.scroll-div1 {
+  overflow-x: scroll;
+}*/
+/*.scroll-div2 {
+  width: 1000px;
+}*/
 #modResults, #ssdResults, #tneResults {
   margin-left: 0;
+}
+#modResults th {
+  font-size: 1.2em;
+  max-width: 260px;
+  padding: 4px 8px;
+}
+#modResults td {
+  font-size: 1.2em;
+  max-width: 120px;
 }
 .outsideRange {
   color: #FF0000;
@@ -100,6 +123,6 @@ button, input {
 #ssdResults, #tneResults {
   margin: 20px 0;
 }
-#ssdResults, #tneResults th, td {
-  padding: 6px 10px;
-}
+/*#ssdResults, #tneResults th {
+  padding: 0 4px;
+}*/

@@ -26,7 +26,6 @@ def PRZM5_pi(pfac, snowmelt, evapDepth,
     import shutil
     import subprocess
     import zipfile
-    import cloud
     from boto.s3.connection import S3Connection
     from boto.s3.key import Key
     from boto.s3.bucket import Bucket
@@ -53,11 +52,11 @@ def PRZM5_pi(pfac, snowmelt, evapDepth,
 ######Create a folder if it does not existed, where holds calculations' output.#####
 ##################################################################################
     # cwd = os.getcwd()+'/przm5_rest_pi/'
-    cwd='/home/picloud/Restpi/przm5_rest_pi/'
+    cwd='/home/ubuntu/Rest_EC2/przm5_rest_pi/'
     print("cwd="+cwd)
 
     src=cwd
-    src1=cwd+'/'+name_temp
+    src1=cwd+name_temp
     if not os.path.exists(src1):
         os.makedirs(src1)
     else:
@@ -97,7 +96,7 @@ def PRZM5_pi(pfac, snowmelt, evapDepth,
     met = "test.dvf"
     # print(os.listdir(src1))   #check what files are copied
 
-    shutil.copy(src+"przm5.exe",src1)
+    shutil.copy(src+"przm5.exe", src1)
     shutil.copy(src+met,src1)
     print(os.getcwd())
     print(os.listdir(src1))   #check what files are copied
@@ -162,19 +161,19 @@ def PRZM5_pi(pfac, snowmelt, evapDepth,
 
 
     ##zip all the file
-    zout=zipfile.ZipFile("test.zip","w")
+    zout=zipfile.ZipFile("test.zip","w", zipfile.ZIP_DEFLATED)
     for name in fname:
         if name !='przm5.exe' and name !='test.dvf':
             zout.write(name)
     zout.close()
 
-    ##upload file to S3
-    conn = S3Connection(key, secretkey)
-    bucket = Bucket(conn, 'przm5')
-    k=Key(bucket)
+    # ##upload file to S3
+    # conn = S3Connection(key, secretkey)
+    # bucket = Bucket(conn, 'przm5')
+    # k=Key(bucket)
 
     name1='PRZM5_'+name_temp+'.zip'
-    k.key=name1
+    # k.key=name1
     link='https://s3.amazonaws.com/przm5/'+name1
     print link
 

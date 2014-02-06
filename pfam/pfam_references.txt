@@ -7,6 +7,14 @@ Specific guidance and the source code for the PFAM model can be found here:
   <li><a href="http://www.epa.gov/oppefed1/models/terrestrial/terrplant/terrplant_v1_2_2_oct_29_2009_webversion.xls">TerrPlant Excel Implementation</a></li>
   <li><a href="http://www.cdpr.ca.gov/docs/emon/pubs/ehapreps/report_263.pdf">California DPR: Review and Evaluation of Pesticide Modeling Approaches in Rice Paddies</a></li>
 </ul>
+
+<p>
+Current github source code:
+</p>
+<ul>
+<li><a href="https://github.com/puruckertom/ubertool_src/tree/master/pfam">ubertool_src on github</a>
+</ul>
+
 <p>
 Example reports documenting the use of PFAM in reregistration eligibility documents and pesticide effects determinations for federally threatened and endangered species:
 </p>

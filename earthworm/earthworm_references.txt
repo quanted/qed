@@ -1,4 +1,11 @@
 <p>
+Current github source code:
+</p>
+<ul>
+<li><a href="https://github.com/puruckertom/ubertool_src/tree/master/earthworm">ubertool_src on github</a>
+</ul>
+
+<p>
 Belfroid, A., M. Sikkenk, W. Seinen, K.V. Gestel, J. Hermens. 1994. The toxicokinetic behavior of chlorobenzenes in earthworm (<i>Eisenia andrei</i>) experiments in soil. Environ. Toxicol. Chem. 13: 93-99.
 </p>
 <p>

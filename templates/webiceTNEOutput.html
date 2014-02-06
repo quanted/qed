@@ -1,5 +1,7 @@
+<link href="/stylesheets/style_webice.css" media="screen" rel="stylesheet" type="text/css" />
+
 <h1 id="PageName">Endangered Species</h1>
-<div style="width:50%; float:left;">
+<div>
   <div class="centeredData">
     <span class="title">Surrogate Species:</span>
     <span id="speciesIn"> </span>
@@ -14,7 +16,7 @@
     <tr>
       <th colspan="6">
         Data Filters (Upper and Lower Limits)
-        <button style="float:right;width:60px;" type="button" onclick="filterData();">Filter</button>
+        <button type="button" onclick="filterData();">Filter</button>
       </th>
     </tr>
     <tr>
@@ -54,7 +56,7 @@
     </tr>
   </table>
 </div>
-<!-- <button type="button" onclick="createExcelSheet(1);">Provide Copy-friendly Output</button> -->
+<button type="button" onclick="createExcelSheet(1);">Provide Copy-friendly Output</button>
 <div id="tneResultsContainer">
   <table id="tneResults">
     <tr>
@@ -64,8 +66,8 @@
       <th id="Col3">Estimated Toxicity</th>
       <th id="Col4">95% Confidence Intervals</th>
       <th id="Col5" nowrap="nowrap">df (N-2)</th>
-      <th id="Col6" style=" padding-right: 30px;">R2</th>
-      <th id="Col7" nowrap="nowrap" style=" padding-right: 8px;">p-value</th>
+      <th id="Col6">R2</th>
+      <th id="Col7" nowrap="nowrap">p-value</th>
       <th id="Col8">Mean Square Error (MSE)</th>
       <th id="Col9">Cross-validation Success (%)</th>
       <th id="Col10">Tax. Dist.</th>

@@ -124,7 +124,7 @@ def loop_html(thefile):
 
         out_html = out_html + batch_header + geneec_tables.table_all(geneec_obj_temp)
 
-    return out_html
+    return geneec_tables.timestamp(geneec_obj_temp) + out_html
 
             # while self.output_st!="done":
             #     self.response_st = urlfetch.fetch(url='https://api.picloud.com/job/?jids=%s&field=status' %self.jid, headers=http_headers)
@@ -155,7 +155,6 @@ class geneecBatchOutputPage(webapp.RequestHandler):
         html = template.render(templatepath + '04uberoutput_start.html', {
                 'model':'geneec',
                 'model_attributes':'GENEEC Batch Output'})
-        html = html + geneec_tables.timestamp()
         html = html + iter_html
         html = html + template.render(templatepath + 'export_fortran.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})

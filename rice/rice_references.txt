@@ -7,6 +7,14 @@ EPA guidance on the Tier I Rice Program can be found here:
   <li><a href="http://www.epa.gov/oppefed1/models/water/rice_tier_i.pdf">EPA Guidance for Tier I Estimation of Aqueous Pesticide Concentrations in Rice Paddies</a></li>
   <li><a href="http://www.cdpr.ca.gov/docs/emon/pubs/ehapreps/report_263.pdf">California DPR: Review and Evaluation of Pesticide Modeling Approaches in Rice Paddies</a></li>
 </ul>
+
+<p>
+Current github source code:
+</p>
+<ul>
+<li><a href="https://github.com/puruckertom/ubertool_src/tree/master/rice">ubertool_src on github</a>
+</ul>
+
 <p>
 Example reports documenting the use of the Tier I Rice model in reregistration eligibility documents and pesticide effects determinations for federally threatened and endangered species:
 </p>

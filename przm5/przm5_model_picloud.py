@@ -15,11 +15,10 @@ logger = logging.getLogger('PRZM5 Model')
 api_key=keys_Picloud_S3.picloud_api_key
 api_secretkey=keys_Picloud_S3.picloud_api_secretkey
 base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
-http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
-# url_part1 = 'http://localhost:7777'
-url_part1 = 'http://50.16.11.44:7777'
-
+http_headers = {'Authorization' : 'Basic %s' % base64string}
 ###########################################################################
+def date_handler(obj):
+    return obj.isoformat() if hasattr(obj, 'isoformat') else obj
 
 def get_jid(pfac, snowmelt, evapDepth, 
             uslek, uslels, uslep, fieldSize, ireg, slope, hydlength,
@@ -43,114 +42,50 @@ def get_jid(pfac, snowmelt, evapDepth,
             soilHalfLifeBox,
             convertSoil1, convert1to3, convert2to3):
 
-    # url='https://api.picloud.com/r/3303/przm5_s1_new'
-
-    all_dic = {"pfac": pfac, 
-               "snowmelt": snowmelt, 
-               "evapDepth": evapDepth,
-               "uslek": uslek,
-               "uslels": uslels,
-               "uslep": uslep,
-               "fieldSize": fieldSize,
-               "ireg": ireg,
-               "slope": slope,
-               "hydlength": hydlength,
-               "canopyHoldup": canopyHoldup,
-               "rootDepth": rootDepth,
-               "canopyCover": canopyCover,
-               "canopyHeight": canopyHeight,
-               "NumberOfFactors": NumberOfFactors,
-               "useYears": useYears,
-               "USLE_day": USLE_day,
-               "USLE_mon": USLE_mon,
-               "USLE_year": USLE_year,
-               "USLE_c": USLE_c,
-               "USLE_n": USLE_n,
-               "USLE_cn": USLE_cn,
-               "firstyear": firstyear,
-               "lastyear": lastyear,
-               "dayEmerge_text": dayEmerge_text,
-               "monthEmerge_text": monthEmerge_text,
-               "dayMature_text": dayMature_text,
-               "monthMature_text": monthMature_text,
-               "dayHarvest_text": dayHarvest_text,
-               "monthHarvest_text": monthHarvest_text,
-               "addYearM": addYearM,
-               "addYearH": addYearH,
-               "irflag": irflag,
-               "tempflag": tempflag,
-               "fleach": fleach,
-               "depletion": depletion,
-               "rateIrrig": rateIrrig,
-               "albedo": albedo,
-               "bcTemp": bcTemp,
-               "Q10Box": Q10Box,
-               "soilTempBox1": soilTempBox1,
-               "numHoriz": numHoriz,
-               "SoilProperty_thick": SoilProperty_thick,
-               "SoilProperty_compartment": SoilProperty_compartment,
-               "SoilProperty_bulkden": SoilProperty_bulkden,
-               "SoilProperty_maxcap": SoilProperty_maxcap,
-               "SoilProperty_mincap": SoilProperty_mincap,
-               "SoilProperty_oc": SoilProperty_oc,
-               "SoilProperty_sand": SoilProperty_sand,
-               "SoilProperty_clay": SoilProperty_clay,
-               "rDepthBox": rDepthBox,
-               "rDeclineBox": rDeclineBox,
-               "rBypassBox": rBypassBox,
-               "eDepthBox": eDepthBox,
-               "eDeclineBox": eDeclineBox,
-               "appNumber_year": appNumber_year,
-               "totalApp": totalApp,
-               "SpecifyYears": SpecifyYears,
-               "ApplicationTypes": ApplicationTypes,
-               "PestAppyDay": PestAppyDay,
-               "PestAppyMon": PestAppyMon,
-               "Rela_a": Rela_a,
-               "app_date_type": app_date_type,
-               "DepthIncorp": DepthIncorp,
-               "PestAppyRate": PestAppyRate,
-               "localEff": localEff,
-               "localSpray": localSpray,
-               "PestDispHarvest": PestDispHarvest,
-               "nchem": nchem,
-               "convert_Foliar1": convert_Foliar1,
-               "parentTo3": parentTo3,
-               "deg1To2": deg1To2,
-               "foliarHalfLifeBox": foliarHalfLifeBox,
-               "koc_check": koc_check,
-               "Koc": Koc,
-               "soilHalfLifeBox": soilHalfLifeBox,
-               "convertSoil1": convertSoil1,
-               "convert1to3": convert1to3,
-               "convert2to3": convert2to3}
-    logger.info(all_dic)
-    data = json.dumps(all_dic)
-
-    import datetime, time
-    ts = time.time()
-    jid = datetime.datetime.fromtimestamp(ts).strftime('%Y%m%d%H%M%S%f')
-    url=url_part1+'/przm5/'+jid 
+    url='https://api.picloud.com/r/3303/przm5_s1_new'
+    # przm5_obj_json=json.dumps(przm5_obj.__dict__, default=date_handler)
+    input_list = [pfac, snowmelt, evapDepth, 
+                  uslek, uslels, uslep, fieldSize, ireg, slope, hydlength,
+                  canopyHoldup, rootDepth, canopyCover, canopyHeight,
+                  NumberOfFactors, useYears,
+                  USLE_day, USLE_mon, USLE_year, USLE_c, USLE_n, USLE_cn,
+                  firstyear, lastyear,
+                  dayEmerge_text, monthEmerge_text, dayMature_text, monthMature_text, dayHarvest_text, monthHarvest_text, addYearM, addYearH,
+                  irflag, tempflag,
+                  fleach, depletion, rateIrrig,
+                  albedo, bcTemp, Q10Box, soilTempBox1,
+                  numHoriz,
+                  SoilProperty_thick, SoilProperty_compartment, SoilProperty_bulkden, SoilProperty_maxcap, SoilProperty_mincap, SoilProperty_oc, SoilProperty_sand, SoilProperty_clay,
+                  rDepthBox, rDeclineBox, rBypassBox,
+                  eDepthBox, eDeclineBox,
+                  appNumber_year, totalApp,
+                  SpecifyYears, ApplicationTypes, PestAppyDay, PestAppyMon, Rela_a, app_date_type, DepthIncorp, PestAppyRate, localEff, localSpray,
+                  PestDispHarvest,
+                  nchem, convert_Foliar1, parentTo3, deg1To2, foliarHalfLifeBox,
+                  koc_check, Koc,
+                  soilHalfLifeBox,
+                  convertSoil1, convert1to3, convert2to3]
 
 
-    # start = time.clock()
-    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+    input_list = json.dumps(input_list)
+    data = urllib.urlencode({"input_list" : input_list})
+
+    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers) 
+    logger.info(response)
+
     logger.info(json.loads(response.content))
-    output_val = json.loads(response.content)['result']
-    jid= json.loads(response.content)['jid']
-    # print "filepath=", output_val[4]
-    # self.elapsed = (time.clock() - start)
-    return(jid, output_val)
 
-def get_upload(src1, name1):
-    all_dic = {"src1": src1, "name1": name1, "model_name":"przm5"}
-    data = json.dumps(all_dic)
-    url=url_part1+'/file_upload'
-    import time
-    start = time.clock()
-    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
-    elapsed = (time.clock() - start)
-    # print elapsed
+    jid= json.loads(response.content)['jid']
+    output_st = ''
+        
+    while output_st!="done":
+        response_st = urlfetch.fetch(url='https://api.picloud.com/job/?jids=%s&field=status' %jid, headers=http_headers)
+        output_st = json.loads(response_st.content)['info']['%s' %jid]['status']
+
+    url_val = 'https://api.picloud.com/job/result/?jid='+str(jid)
+    response_val = urlfetch.fetch(url=url_val, method=urlfetch.GET, headers=http_headers)
+    output_val = json.loads(response_val.content)['result']
+    return(jid, output_st, output_val)
 
 def convert_dict_key(key):
     try:
@@ -161,8 +96,8 @@ def convert_dict_key(key):
 class przm5(object):
      def __init__(self, dictionary):
         logger.info('===================')
-        # logger.info(os.getcwd())
-        # cwd=os.getcwd()+'/PRZM5/'
+        logger.info(os.getcwd())
+        cwd=os.getcwd()+'/PRZM5/'
 
 
         alphanum_key = lambda (key, value): convert_dict_key(key)
@@ -346,14 +281,108 @@ class przm5(object):
                                self.koc_check, self.Koc,
                                self.soilHalfLifeBox,
                                self.convertSoil1, self.convert1to3, self.convert2to3)
-        # self.info = self.final_res
-
+        self.link = self.final_res[2][0]
+        self.PRCP_IRRG_sum = self.final_res[2][1]
+        self.RUNF_sum = self.final_res[2][2]
+        self.CEVP_TETD_sum = self.final_res[2][3]
         self.jid = self.final_res[0]
-        self.link = self.final_res[1][0]
-        self.PRCP_IRRG_sum = self.final_res[1][1]
-        self.RUNF_sum = self.final_res[1][2]
-        self.CEVP_TETD_sum = self.final_res[1][3]
-        self.src1 = self.final_res[1][4]
-        self.name1 = self.final_res[1][5]
 
-        get_upload(self.src1, self.name1)
+
+###Question.
+#1. Record 6. useYears = 0 or based on user selection
+#2. On the application tab, enable relative application dates as well?
+#3. On Chemical tab, when Degradate 2 box is checked, its Foliar is not used. 
+
+#Record 1
+# 'pfac': '0.79', 
+# 'snowmelt': '0.0', 
+# 'evapDepth': '17.5', 
+
+#Record 3
+# 'uslek': '0.37', 
+# 'uslels': '1.34', 
+# 'uslep': '0.5', 
+# 'fieldSize': '10', 
+# 'ireg': '1', 
+# 'slope': '6', 
+# self.hydlength = 356.8
+
+#Record 5
+# 'canopyHoldup': '0.25', 
+# 'rootDepth': '12', 
+# 'canopyCover': '90', 
+# 'canopyHeight': '30', 
+
+#Record 6
+# self.NumberOfFactors = int(nott)
+# self.useYears = 0
+
+#Record 7
+# self.USLE_day = []
+# self.USLE_mon = []
+# self.USLE_year = []
+
+#Record 8
+# self.USLE_c = []
+
+#Record 9
+# self.USLE_n = []
+
+#Record 10
+# self.USLE_cn = []
+
+#Record 11
+# self.firstyear = int(content[0][5:7])
+# self.lastyear = int(content[-1][5:7])
+
+#Record 12
+# dayEmerge_text
+# monthEmerge_text
+# dayMature_text
+# monthMature_text
+# addYearM
+# dayHarvest_text
+# monthHarvest_text
+# addYearH
+
+#Record 13
+# 'irflag': '0', 
+# 'tempflag': '0', 
+
+#Record 14
+#irtype (_init_)
+# fleach
+# depletion
+# rateIrrig
+
+#Record 15
+# 'albedo': '0.4', 
+
+#Record 16
+# 'bcTemp': '23', 
+
+#Record 17
+# self.Q10Box
+# self.soilTempBox1
+
+#Record 18
+# self.numHoriz = int(self.noh)
+
+#Record 19
+#init
+
+#Record 20
+# 'rDepthBox': '2.0', 
+# 'rDeclineBox': '1.55', 
+# 'rBypassBox': '0.266', 
+
+#Record 21
+# 'eDepthBox': '0.1', 
+# 'eDeclineBox': '0', 
+
+#Record C1-C9
+#_init_
+
+
+
+

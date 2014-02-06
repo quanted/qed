@@ -20,7 +20,7 @@ class webiceDescriptionPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '03pop_ubertext_links_left.html', {})                       
         html = html + template.render(templatepath + '04ubertext_start.html', {
                 'model_page':'#', 
-                'model_attributes':'Web-ICE Overview', 
+                'model_attributes':'Web-ICE v3.2.1 Overview', 
                 'text_paragraph':xx})
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '05pop_ubertext_links_right.html', {})

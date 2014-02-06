@@ -12,6 +12,9 @@ h1, h2, h3, h4, h5, h6, p {
   font: inherit;
   vertical-align: baseline;
 }
+h3, h4 {
+  font-weight: 700;
+}
 
 /* General */
 
@@ -61,6 +64,9 @@ h3 {
   margin: 1em 0;
   font-weight: bold;
   font-size: 1.1em;
+}
+h6 {
+  font-size: 0.9em;
 }
 td {
   padding: 1px 4px;
@@ -391,7 +397,7 @@ ul.nobullet {
   text-align: left;
   margin: 4px 0 4px 0;
 }
-.articles_output h4 {
+.articles_output h4, .articles_input h4, .articles h4 {
   text-align: left;
   margin: 4px 0 4px 14px;
 }
@@ -529,18 +535,28 @@ ul.nobullet {
   z-index: 99999;
 }
 .collapse-open span {
-    background:url(../images/collapsible/minus.gif) center left no-repeat;
-    display: block;
-    float: left;
-    padding: 9px 8px;
-    cursor: default;
+  background:url(../images/collapsible/minus.gif) center left no-repeat;
+  display: block;
+  float: left;
+  padding: 9px 8px;
+  cursor: default;
 }
 .collapse-close span {
-    background:url(../images/collapsible/plus.gif) center left no-repeat;
-    display: block;
-    float: left;
-    padding: 9px 8px;
-    cursor: default;
+  background:url(../images/collapsible/plus.gif) center left no-repeat;
+  display: block;
+  float: left;
+  padding: 9px 8px;
+  cursor: default;
+}
+#metaDataDiv {
+  margin: 12px 0 0 33px;
+  float: left;
+}
+#metaDataTxtArea {
+  width: 584px;
+}
+#metaDataText {
+  cursor: text;
 }
 #footer li {
   display: inline;

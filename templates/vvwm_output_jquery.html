@@ -1,0 +1,23 @@
+<script>
+$(document).ready(function() {
+	data_html = $("div.articles_output").clone().html();
+	jid = "{{jid}}"
+
+	$.ajax({
+		type: "POST",
+	    datatype:"json",
+		url: "/vvwm_intermediate.html",
+		data: JSON.stringify({"data_html":data_html, "jid":jid}),
+	    success: function() {
+	    	// alert("work")
+		},
+	    error: function() {
+	    	// alert("not work")
+		}
+
+	});
+	
+});
+
+</script>
+

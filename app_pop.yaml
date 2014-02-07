@@ -1,0 +1,303 @@
+application: untertool
+version: master
+runtime: python27
+api_version: 1
+
+default_expiration: "5d 12h"
+
+threadsafe: false
+
+libraries:
+- name: numpy
+  version: latest
+- name: webapp2
+  version: latest
+- name: django
+  version: "1.3"
+- name: PIL
+  version: latest
+- name: matplotlib
+  version: latest
+
+env_variables:
+  UBERTOOL_BATCH_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com/'
+  UBERTOOL_MONGO_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
+  UBERTOOL_SECURE_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
+  UBERTOOL_REST_SERVER: 'http://localhost:7777'
+  # UBERTOOL_REST_SERVER: 'http://23.23.190.202:7777'
+
+
+skip_files:
+- ^(.*/)?app\.yaml
+- ^(.*/)?app\.yml
+- ^(.*/)?index\.yaml
+- ^(.*/)?index\.yml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- ^(.*/)?.*\.gz
+- ^(.*/)?.*\.bak
+- ^(data/.*)
+- ^(data/webice/.*)
+- ^(data/webice/images/.*)
+- ^(geneec/geneec_picloud/.*)
+- ^(data/.*)
+- ^(REST/.*)
+- ^(przm/przm_picloud/.*)
+- ^(pfam/pfam_picloud/.*)
+- ^(generatepdf/generatepdf_picloud/.*)$
+
+handlers:
+- url: /
+  script: landing_pypest.py 
+- url: /index.html
+  script: landing_pypest.py 
+- url: /admin.html
+  script: admin.py
+- url: /http_check_eco.html
+  script: http_check_eco.py
+- url: /http_check_hh.html
+  script: http_check_hh.py
+- url: /http_check_unter.html
+  script: http_check_unter.py
+- url: /eco_index.html
+  script: main.py 
+- url: /hh_index.html
+  script: hh_main.py 
+- url: /pop_index.html
+  script: pop_main.py 
+- url: /about.html
+  script: about.py
+- url: /pdf.html
+  script: pdf_output.py
+- url: /html.html
+  script: html_output.py
+- url: /login.html
+  script: user/user_login_input.py
+  secure: always
+- url: /register.html
+  script: user/user_registration_input.py
+  secure: always
+- url: /ajaxtest.html
+  script: ajaxtest.py
+- url: /history_revisit.html
+  script: history_revisit.py
+# All URLs beginning with /stylesheets are treated as paths to static files in
+# the stylesheets/ directory. Note that static_dir handlers do not use a
+# regular expression for the URL pattern, only a prefix.
+- url: /stylesheets
+  static_dir: stylesheets
+- url: /raphael
+  static_dir: raphael
+- url: /images
+  static_dir: images
+- url: /pdfs
+  static_dir: pdfs
+- url: /csvs
+  static_dir: csvs
+- url: /(.*\.(gif|png|jpg))
+  static_files: static/\1
+  upload: static/(.*\.(gif|png|jpg))
+- url: /templates/popup.html
+  static_files: templates/popup.html
+  upload: templates/popup.html
+- url: /data
+  static_dir: data
+
+##UBERTOOL INPUT PAGES##
+#output
+- url: /select_chemical_output.html
+  script: ubertool/select_chemical_output.py
+  login: required 
+- url: /use_output.html
+  script: ubertool/use_output.py
+  login: required 
+- url: /pesticide_properties_output.html
+  script: ubertool/pesticide_properties_output.py
+  login: required 
+- url: /exposure_concentrations_output.html
+  script: ubertool/exposure_concentrations_output.py
+  login: required 
+- url: /aquatic_toxicity_output.html
+  script: ubertool/aquatic_toxicity_output.py
+  login: required 
+- url: /ecosystem_inputs_output.html
+  script: ubertool/ecosystem_inputs_output.py
+  login: required 
+- url: /terrestrial_toxicity_output.html
+  script: ubertool/terrestrial_toxicity_output.py
+  login: required 
+#ubertool batch output
+- url: /run_ubertool_batchoutput.html
+  script: ubertool/run_ubertool_batch_output.py
+  login: required
+- url: /ubertool-batch-configuration
+  script: ubertool/run_ubertool_output.py
+- url: /run_ubertool_output.html
+  script: ubertool/run_ubertool_output.py
+  login: required 
+##UNTESTED models##
+#description
+- url: /(.*?)_description.html
+  script: \1/\1_description.py
+#input
+- url: /(.*?)_input.html
+  script: \1/\1_input.py
+#output
+- url: /(.*?)_output.html
+  script: \1/\1_output.py  
+#algorithms
+- url: /(.*?)_algorithms.html
+  script: \1/\1_algorithm.py    
+#references
+- url: /(.*?)_references.html
+  script: \1/\1_references.py 
+#qaqc
+- url: /(.*?)_qaqc.html
+  script: \1/\1_qaqc.py 
+#batch
+- url: /(.*?)_batchinput.html
+  script: \1/\1_batchinput.py
+#batch_output
+- url: /(.*?)_batchoutput.html
+  script: \1/\1_batchoutput.py
+#hisotry
+- url: /(.*?)_history.html
+  script: \1/\1_history.py
+#uncertainty_input
+- url: /(.*?)_uninput.html
+  script: \1/\1_uninput.py
+#uncertainty_output
+- url: /(.*?)_unoutput.html
+  script: \1/\1_unoutput.py
+#blog
+- url: /blog_(.*?).html
+  script: blog/\1.py
+#webice
+- url: /webiceSSD_out\.html
+  script: webice/webice_SSDoutput.py
+- url: /webiceTNE_out\.html
+  script: webice/webice_TNEoutput.py
+- url: /ICETable\.html
+  script: webice/webice_ICETable.py
+# #historyoutput
+# - url: /(.*?)_asdf.html
+#   script: \1/\1_asdf.py
+  #historyoutput
+#historyoutput
+- url: /(.*?)_intermediate.html
+  script: \1/\1_intermediate.py
+
+##TESTED models##
+#description
+- url: /(.*?)/(.*?)_description.html
+  script: \1/\2/\2_description.py
+#input
+- url: /(.*?)/(.*?)_input.html
+  script: \1/\2/\2_input.py
+#output
+- url: /(.*?)/(.*?)_output.html
+  script: \1/\2/\2_output.py  
+#algorithms
+- url: /(.*?)/(.*?)_algorithms.html
+  script: \1/\2/\2_algorithm.py    
+#references
+- url: /(.*?)/(.*?)_references.html
+  script: \1/\2/\2_references.py 
+#qaqc
+- url: /(.*?)/(.*?)_qaqc.html
+  script: \1/\2/\2_qaqc.py 
+#qaqc_output
+- url: /(.*?)/(.*?)_qaqc_output.html
+  script: \1/\2/\2_qaqc_output.py
+
+#USER pages
+- url: /user.html
+  script: user/user_input.py 
+  login: required
+  secure: never
+
+- url: /user_output.html
+  script: user/user_output.py
+  login: required
+
+#select chemical
+- url: /select_chemical.html
+  script: ubertool/select_chemical_input.py
+  login: required
+
+#Model method service for asynchronous invocation
+- url: /msed
+  script: rice/rice_model.py 
+
+#terrestrial service
+- url: /terrestrial/(.*)
+  script: ubertool/terrestrial_toxicity.py
+  login: required
+
+#batch service
+- url: /batch
+  script: batch/batch_processor.py
+  login: required
+
+#batch retrieval service
+- url: /batch_results/(.*)
+  script: batch/batch.py
+  login: required
+
+#batch retrieval service
+- url: /batch_configs
+  script: batch/batch.py
+  login: required 
+
+#use label site data
+- url: /site_data.html
+  script: ubertool/use_metadata_input.py
+  login: required
+#  login: required
+#pesticide properties
+- url: /pesticide_properties.html
+  script: ubertool/pesticide_properties_input.py
+  login: required
+#exposure concentrations
+- url: /exposure_concentrations.html
+  script: ubertool/exposure_input.py
+  login: required
+#aquatic toxicity
+- url: /aquatic_toxicity.html
+  script: ubertool/aquatic_toxicity_input.py
+  login: required
+#terrestrial toxicity
+- url: /terrestrial_toxicity.html
+  script: ubertool/terrestrial_toxicity_input.py
+  login: required
+#ecosystem inputs
+- url: /ecosystem_inputs.html
+  script: ubertool/ecosystem_inputs_input.py
+  login: required
+#run ubertool
+- url: /run_ubertool.html
+  script: ubertool/run_ubertool_input.py  
+  login: required
+
+#ESA workshop
+- url: /esa_workshop.html
+  script: esa_workshop/esa_workshop.py
+
+- url: /loginsubmit
+  script: auth/auth.py
+
+- url: /allow
+  script: auth/auth.py
+
+- url: /openidserver
+  script: auth/auth.py
+
+- url: /login
+  script: auth/auth.py
+
+#file not found
+- url: /.*
+  script: file_not_found.py

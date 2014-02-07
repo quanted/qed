@@ -5,7 +5,6 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
-import numpy as np
 import cgi
 import cgitb
 cgitb.enable()
@@ -13,6 +12,7 @@ import sys
 sys.path.append("../sip")
 from sip import sip_model,sip_tables
 from uber import uber_lib
+import rest_funcs
 
 class SIPExecutePage(webapp.RequestHandler):
     def post(self):
@@ -42,7 +42,7 @@ class SIPExecutePage(webapp.RequestHandler):
         bwm_other = form.getvalue('bwm_other')
         b_species = form.getvalue('b_species')
         m_species = form.getvalue('m_species')
-        sip_obj = sip_model.sip(True,True,chemical_name, b_species, m_species, bw_quail, bw_duck, bwb_other, bw_rat, bwm_other, sol, ld50_a, ld50_m, aw_bird, mineau, aw_mamm, noaec_d, noaec_q, noaec_o, Species_of_the_bird_NOAEC_CHOICES, noael)
+        sip_obj = sip_model.sip(True,True,'single',chemical_name, b_species, m_species, bw_quail, bw_duck, bwb_other, bw_rat, bwm_other, sol, ld50_a, ld50_m, aw_bird, mineau, aw_mamm, noaec_d, noaec_q, noaec_o, Species_of_the_bird_NOAEC_CHOICES, noael)
         text_file = open('sip/sip_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
@@ -53,11 +53,12 @@ class SIPExecutePage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'sip', 
                 'model_attributes':'SIP Output'})     
-        html = html + sip_tables.timestamp()
+        html = html + sip_tables.timestamp(sip_obj)
         html = html + sip_tables.table_all(sip_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.save_dic(html, sip_obj.__dict__, "sip", "single")
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', SIPExecutePage)], debug=True)

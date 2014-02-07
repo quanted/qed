@@ -21,7 +21,7 @@ def fromJSON(json_string):
     return agdrift_object
 
 class agdrift(object):
-    def __init__(self, set_variables=True, run_methods=True, drop_size = '', ecosystem_type = '', application_method = '', boom_height = '', orchard_type = '', application_rate='', distance='',  aquatic_type='', calculation_input='', init_avg_dep_foa='', avg_depo_gha='', avg_depo_lbac='', deposition_ngL='', deposition_mgcm='', vars_dict=None):
+    def __init__(self, set_variables=True, run_methods=True, drop_size = '', ecosystem_type = '', application_method = '', boom_height = '', orchard_type = '', application_rate=1, distance=1,  aquatic_type='', calculation_input='', init_avg_dep_foa = 1, avg_depo_lbac = 1, avg_depo_gha  = 1, deposition_ngL = 1, deposition_mgcm = 1, nasae = 1, y = 1, x = 1, express_y = 1, vars_dict=None):
         self.set_default_variables()
         if set_variables:
             if vars_dict != None:
@@ -37,13 +37,17 @@ class agdrift(object):
                 self.aquatic_type = aquatic_type
                 self.calculation_input = calculation_input
                 self.init_avg_dep_foa = init_avg_dep_foa
-                self.avg_depo_gha = avg_depo_gha
                 self.avg_depo_lbac = avg_depo_lbac
+                self.avg_depo_gha  = avg_depo_gha
                 self.deposition_ngL = deposition_ngL
                 self.deposition_mgcm = deposition_mgcm
+                self.nasae = nasae
+                self.y = y
+                self.x = x
+                self.express_y = express_y
+                self.loop_indx = '1'
             if run_methods:
                 self.run_methods()
-                logger.info(vars(self))
             # if run_methods:
             #     self.run_methods()
 
@@ -54,8 +58,8 @@ class agdrift(object):
         self.application_method = ''
         self.boom_height = ''
         self.orchard_type = ''
-        self.application_rate = ''
-        self.distance = ''
+        self.application_rate = 1
+        self.distance = 1
         self.aquatic_type = ''
         self.calculation_input = ''
         self.init_avg_dep_foa = -1
@@ -63,9 +67,13 @@ class agdrift(object):
         self.avg_depo_gha  = -1
         self.deposition_ngL = -1
         self.deposition_mgcm = -1
+        self.nasae = -1
+        self.y = -1
+        self.x = -1
+        self.express_y = -1
 
 
-    def set_variables(self, drop_size, ecosystem_type, application_method, boom_height, orchard_type, application_rate, distance, aquatic_type, calculation_input, init_avg_dep_foa, avg_depo_gha, avg_depo_lbac, deposition_ngL, deposition_mgcm):
+    def set_variables(self, drop_size, ecosystem_type, application_method, boom_height, orchard_type, application_rate, distance, aquatic_type, calculation_input, init_avg_dep_foa, avg_depo_gha, avg_depo_lbac, deposition_ngL, deposition_mgcm, nasae, y, x, express_y):
         self.drop_size = drop_size
         self.ecosystem_type = ecosystem_type 
         self.application_method = application_method
@@ -80,159 +88,446 @@ class agdrift(object):
         self.avg_depo_lbac = avg_depo_lbac
         self.deposition_ngL = deposition_ngL
         self.deposition_mgcm = deposition_mgcm
+        self.nasae = nasae
+        self.y = y
+        self.x = x
+        self.express_y = express_y  
     def run_methods(self):
         self.results()
         if (self.calculation_input == 'Distance' ):
-            self.extrapolate_from_fig(self.ecosystem_type, self.distance, bisect_left, self.x, self.y)
-            self.deposition_foa_to_lbac_f(self.init_avg_dep_foa, self.application_rate)
-            self.deposition_lbac_to_gha_f(self.avg_depo_lbac)
-            self.deposition_gha_to_ngL_f(self.aquatic_type, self.avg_depo_gha)
-            self.deposition_gha_to_mgcm_f(self.avg_depo_gha)
-
-        elif (self.calculation_input == 'Fraction'):
-            self.extrapolate_from_fig2(self.ecosystem_type, self.init_avg_dep_foa, bisect_left, self.x, self.y)
-            self.deposition_foa_to_lbac_f(self.init_avg_dep_foa, self.application_rate)
-            self.deposition_lbac_to_gha_f(self.avg_depo_lbac)
-            self.deposition_gha_to_ngL_f(self.aquatic_type, self.avg_depo_gha)
-            self.deposition_gha_to_mgcm_f(self.avg_depo_gha)
-
-        elif (self.calculation_input == 'Initial Average Deposition (g/ha)'):
+            self.results()
+            #logger.info(self.y)
+            #logger.info(self.nasae)
+            #logger.info(self.distance)
+            self.express_extrapolate_f(self.y, self.nasae, self.distance)
+            self.deposition_foa_to_gha_f(self.init_avg_dep_foa, self.application_rate)
             self.deposition_ghac_to_lbac_f(self.avg_depo_gha)
-            #print self.avg_depo_lbac 
-            self.deposition_lbac_to_foa_f(self.avg_depo_lbac, self.application_rate)
-            self.extrapolate_from_fig2(self.ecosystem_type, self.init_avg_dep_foa, bisect_left, self.x, self.y)
             self.deposition_gha_to_ngL_f(self.aquatic_type, self.avg_depo_gha)
             self.deposition_gha_to_mgcm_f(self.avg_depo_gha)
 
-        elif (self.calculation_input == 'Initial Average Deposition (lb/ac)'):     
-            print self.avg_depo_lbac
-            self.deposition_lbac_to_gha_f(self.avg_depo_lbac)
-            self.deposition_gha_to_ngL_f(self.aquatic_type, self.avg_depo_gha)
-            self.deposition_gha_to_mgcm_f(self.avg_depo_gha)
-            self.deposition_lbac_to_foa_f(self.avg_depo_lbac, self.application_rate)
-            self.extrapolate_from_fig2(self.ecosystem_type, self.init_avg_dep_foa, bisect_left, self.x, self.y)
+        # elif (self.calculation_input == 'Fraction'):
+        #     self.extrapolate_from_fig2(self.ecosystem_type, self.init_avg_dep_foa, bisect_left, self.x, self.y)
+        #     self.deposition_foa_to_lbac_f(self.init_avg_dep_foa, self.application_rate)
+        #     self.deposition_lbac_to_gha_f(self.avg_depo_lbac)
+        #     self.deposition_gha_to_ngL_f(self.aquatic_type, self.avg_depo_gha)
+        #     self.deposition_gha_to_mgcm_f(self.avg_depo_gha)
 
-        elif (self.calculation_input == 'Initial Average Concentration (ng/L)'):
-            self.deposition_ngL_2_gha_f(self.deposition_ngL)
-            self.deposition_ghac_to_lbac_f(self.avg_depo_gha)
-            self.deposition_lbac_to_foa_f(self.avg_depo_lbac, self.application_rate)
-            self.extrapolate_from_fig2(self.ecosystem_type, self.init_avg_dep_foa, bisect_left, self.x, self.y)
-            self.deposition_gha_to_mgcm_f(self.avg_depo_gha)
+        # elif (self.calculation_input == 'Initial Average Deposition (g/ha)'):
+        #     self.deposition_ghac_to_lbac_f(self.avg_depo_gha)
+        #     self.deposition_lbac_to_foa_f(self.avg_depo_lbac, self.application_rate)
+        #     self.extrapolate_from_fig2(self.ecosystem_type, self.init_avg_dep_foa, bisect_left, self.x, self.y)
+        #     self.deposition_gha_to_ngL_f(self.aquatic_type, self.avg_depo_gha)
+        #     self.deposition_gha_to_mgcm_f(self.avg_depo_gha)
 
-        else:  
-            self.deposition_mgcm_to_gha_f(self.deposition_mgcm)
-            self.deposition_ghac_to_lbac_f(self.avg_depo_gha)
-            self.deposition_lbac_to_foa_f(self.avg_depo_lbac, self.application_rate)
-            self.extrapolate_from_fig2(self.ecosystem_type, self.init_avg_dep_foa, bisect_left, self.x, self.y)
-            self.deposition_gha_to_ngL_f(self.aquatic_type, self.avg_depo_gha)
+        # elif (self.calculation_input == 'Initial Average Deposition (lb/ac)'):     
+        #     print self.avg_depo_lbac
+        #     self.deposition_lbac_to_gha_f(self.avg_depo_lbac)
+        #     self.deposition_gha_to_ngL_f(self.aquatic_type, self.avg_depo_gha)
+        #     self.deposition_gha_to_mgcm_f(self.avg_depo_gha)
+        #     self.deposition_lbac_to_foa_f(self.avg_depo_lbac, self.application_rate)
+        #     self.extrapolate_from_fig2(self.ecosystem_type, self.init_avg_dep_foa, bisect_left, self.x, self.y)
+
+        # elif (self.calculation_input == 'Initial Average Concentration (ng/L)'):
+        #     self.deposition_ngL_2_gha_f(self.deposition_ngL)
+        #     self.deposition_ghac_to_lbac_f(self.avg_depo_gha)
+        #     self.deposition_lbac_to_foa_f(self.avg_depo_lbac, self.application_rate)
+        #     self.extrapolate_from_fig2(self.ecosystem_type, self.init_avg_dep_foa, bisect_left, self.x, self.y)
+        #     self.deposition_gha_to_mgcm_f(self.avg_depo_gha)
+
+        # else:  
+        #     self.deposition_mgcm_to_gha_f(self.deposition_mgcm)
+        #     self.deposition_ghac_to_lbac_f(self.avg_depo_gha)
+        #     self.deposition_lbac_to_foa_f(self.avg_depo_lbac, self.application_rate)
+        #     self.extrapolate_from_fig2(self.ecosystem_type, self.init_avg_dep_foa, bisect_left, self.x, self.y)
+        #     self.deposition_gha_to_ngL_f(self.aquatic_type, self.avg_depo_gha)
+
+    # def results(self):
+    #     self.pond_ground_high_vf2f = [0.0616,0.0572,0.0455,0.0376,0.0267,0.0194,0.013,0.0098,0.0078,0.0064,0.0053,0.0046,0.0039,0.0035,0.003,0.0027,0.0024,0.0022,0.002,0.0018,0.0017,0.0015,0.0014,0.0013,0.0012]
+    #     self.pond_ground_high_f2m = [0.0165,0.0137,0.0104,0.009,0.0071,0.0056,0.0042,0.0034,0.0028,0.0024,0.0021,0.0019,0.0017,0.0015,0.0014,0.0013,0.0012,0.0011,0.001,0.00095,0.0009,0.0008,0.0008,0.0007,0.0007]
+    #     self.pond_ground_low_vf2f = [0.0268,0.0231,0.0167,0.0136,0.01,0.0076,0.0054,0.0043,0.0036,0.0031,0.0027,0.0024,0.0021,0.0019,0.0017,0.0016,0.0015,0.0013,0.0012,0.0012,0.0011,0.001,0.001,0.0009,0.0009]
+    #     self.pond_ground_low_f2m = [0.0109,0.0086,0.0065,0.0056,0.0045,0.0036,0.0028,0.0023,0.0019,0.0017,0.0015,0.0013,0.0012,0.0011,0.001,0.0009,0.0009,0.0008,0.0008,0.0007,0.0007,0.0006,0.0006,0.0006,0.0006]
+        
+    # #####one less value (begin)
+    #     self.pond_aerial_vf2f = [0.2425,0.2409,0.2344,0.2271,0.2083,0.1829,0.1455,0.1204,0.103,0.0904,0.0809,0.0734,0.0674,0.0625,0.0584,0.055,0.0521,0.0497,0.0476,0.0458,0.0442,0.0428,0.0416,0.0405,0.0396]
+    #     self.pond_aerial_f2m = [0.1266,0.1247,0.1172,0.1094,0.0926,0.0743,0.0511,0.0392,0.0321,0.0272,0.0238,0.0212,0.0193,0.0177,0.0165,0.0155,0.0146,0.0139,0.0133,0.0128,0.0124,0.012,0.0117,0.0114,0.0111]
+    #     self.pond_aerial_m2c = [0.0892,0.0900,0.0800,0.0700,0.0600,0.0400,0.0300,0.0200,0.0200,0.0130,0.0112,0.0099,0.0090,0.0083,0.0077,0.0073,0.0069,0.0066,0.0063,0.0060,0.0058,0.0056,0.0055,0.0053,0.0052]
+    #     self.pond_aerial_c2vc = [0.0892,0.0900,0.0800,0.0700,0.0600,0.0400,0.0300,0.0200,0.0200,0.0130,0.0112,0.0099,0.0090,0.0083,0.0077,0.0073,0.0069,0.0066,0.0063,0.0060,0.0058,0.0056,0.0055,0.0053,0.0052]
+    #     self.terr_aerial_vf2f = [0.5000,0.4913,0.4564,0.4220,0.3588,0.3039,0.2247,0.1741,0.1403,0.1171,0.1010,0.0893,0.0799,0.0729,0.0671,0.0626,0.0585,0.0550,0.0519,0.0494,0.0475,0.0458,0.0442,0.0428,0.0416]
+    #     self.terr_aerial_f2m = [0.4999,0.4808,0.4046,0.3365,0.2231,0.1712,0.0979,0.0638,0.0469,0.0374,0.0312,0.0266,0.0234,0.021,0.0192,0.0177,0.0164,0.0154,0.0146,0.0139,0.0133,0.0128,0.0124,0.012,0.0117]
+    #     self.terr_aerial_m2c =[0.5,0.4776,0.3882,0.3034,0.1711,0.1114,0.0561,0.0346,0.0249,0.0188,0.015,0.0126,0.011,0.0098,0.0089,0.0082,0.0077,0.0072,0.0069,0.0065,0.0063,0.006,0.0058,0.0056,0.0055]
+    #     self.terr_aerial_c2vc =[0.5,0.4776,0.3882,0.3034,0.1711,0.1114,0.0561,0.0346,0.0249,0.0188,0.015,0.0126,0.011,0.0098,0.0089,0.0082,0.0077,0.0072,0.0069,0.0065,0.0063,0.006,0.0058,0.0056,0.0055]
+    #     self.terr_ground_vf2f = [1.06,0.8564,0.4475,0.2595,0.104,0.05,0.0248,0.0164,0.012,0.0093,0.0075,0.0062,0.0053,0.0045,0.0039,0.0034,0.003,0.0027,0.0024,0.0022,0.002,0.0018,0.0017,0.0015,0.0014]
+    # #####one less value (end)
+
+    #     self.terr_ground_f2m = [1.01,0.3731,0.0889,0.0459,0.0208,0.0119,0.007,0.0051,0.004,0.0033,0.0028,0.0024,0.0021,0.0019,0.0017,0.0015,0.0014,0.0013,0.0012,0.0011,0.001,0.0009,0.0009,0.0008,0.0008]
+    #     self.pond_airblast_normal = [0.0011,0.0011,0.001,0.0009,0.0007,0.0005,0.0003,0.0002,0.0002,0.0002,0.0001,0.0001,0.0000978,0.0000863,0.0000769,0.0000629,0.0000626,0.0000571,0.0000523,0.0000482,0.0000446,0.0000414,0.0000386,0.0000361,0.0000339]
+    #     self.pond_airblast_dense = [0.0145,0.014,0.0122,0.0106,0.0074,0.005,0.003,0.0022,0.0017,0.0014,0.0012,0.0011,0.001,0.0009,0.0008,0.0007,0.0007,0.0006,0.0006,0.0005,0.0005,0.0005,0.0005,0.0004,0.0004]
+    #     self.pond_airblast_sparse = [0.0416,0.0395,0.0323,0.0258,0.015,0.0077,0.0031,0.0017,0.001,0.0007,0.0005,0.0004,0.0003,0.0002,0.0002,0.0002,0.0001,0.0001,0.0000898,0.0000771,0.0000668,0.0000583,0.0000513,0.0000453,0.0000405]
+    #     self.pond_airblast_vineyard = [0.0024,0.0023,0.0018,0.0014,0.0009,0.0006,0.0003,0.0002,0.0002,0.0001,0.0001,0.0001,0.0000881,0.0000765,0.0000672,0.0000596,0.0000533,0.000048,0.0000435,0.0000397,0.0000363,0.0000334,0.0000309,0.0000286,0.0000267]
+    #     self.pond_airblast_orchard = [0.0218,0.0208,0.0175,0.0145,0.0093,0.0056,0.0031,0.0021,0.0016,0.0013,0.0011,0.0009,0.0008,0.0007,0.0007,0.0006,0.0005,0.0005,0.0005,0.0004,0.0004,0.0004,0.0004,0.0003,0.0003]
+    #     self.terr_airblast_normal = [0.0089,0.0081,0.0058,0.0042,0.0023,0.0012,0.0006,0.0004,0.0003,0.0002,0.0002,0.0002,0.0001,0.0001,0.0000965,0.0000765,0.0000625,0.0000523,0.0000446,0.0000387]
+    #     self.terr_airblast_dense = [0.1155,0.1078,0.0834,0.0631,0.033,0.0157,0.0065,0.0038,0.0026,0.002,0.0016,0.0014,0.0012,0.0011,0.0009,0.0008,0.0007,0.0006,0.0005,0.0005]
+    #     self.terr_airblast_sparse = [0.4763,0.4385,0.3218,0.2285,0.1007,0.0373,0.0103,0.0044,0.0023,0.0014,0.0009,0.0006,0.0005,0.0004,0.0003,0.0002,0.0001,0.0000889,0.0000665,0.0000514]
+    #     self.terr_airblast_vineyard = [0.0376,0.0324,0.0195,0.012,0.0047,0.0019,0.0008,0.0004,0.0003,0.0002,0.0002,0.0001,0.0001,0.0001,0.000087,0.0000667,0.0000531,0.0000434,0.0000363,0.000031]
+    #     self.terr_airblast_orchard = [0.2223,0.2046,0.1506,0.108,0.0503,0.021,0.0074,0.004,0.0026,0.0019,0.0015,0.0012,0.0011,0.0009,0.0008,0.0006,0.0005,0.0005,0.0004,0.0004]
+
+    #     if (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Aerial' and self.drop_size == 'Fine'):
+    #         self.y = self.pond_aerial_vf2f
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Aerial' and self.drop_size == 'Medium'):
+    #         self.y = self.pond_aerial_f2m
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Aerial' and self.drop_size == 'Coarse'):
+    #         self.y = self.pond_aerial_m2c   
+    #     elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Aerial' and self.drop_size == 'Very Coarse'):
+    #         self.y = self.pond_aerial_c2vc      
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Ground' and self.drop_size == 'Fine' and self.boom_height == 'Low'):
+    #         self.y = self.pond_ground_low_vf2f
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Ground' and self.drop_size == 'Medium' and self.boom_height == 'Low'): 
+    #         self.y = self.pond_ground_low_f2m
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Ground' and self.drop_size == 'Fine' and self.boom_height == 'High'):
+    #         self.y = self.pond_ground_high_vf2f
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Ground' and self.drop_size == 'Medium' and self.boom_height == 'High'): 
+    #         self.y = self.pond_ground_high_f2m
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Aerial' and self.drop_size == 'Fine'):
+    #         self.y = self.terr_aerial_vf2f
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Aerial' and self.drop_size == 'Medium'):
+    #         self.y = self.terr_aerial_f2m
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Aerial' and self.drop_size == 'Coarse'):
+    #         self.y = self.terr_aerial_m2c   
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Aerial' and self.drop_size == 'Very Coarse'):
+    #         self.y = self.terr_aerial_c2vc   
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Ground' and self.drop_size == 'Fine'):
+    #         self.y = self.terr_ground_vf2f
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Ground' and self.drop_size == 'Medium'): 
+    #         self.y = self.terr_ground_f2m  
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Normal'):
+    #         self.y = self.pond_airblast_normal
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Dense'):
+    #         self.y = self.pond_airblast_dense                        
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Sparse'):
+    #         self.y = self.pond_airblast_sparse
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Vineyard'):
+    #         self.y = self.pond_airblast_vineyard            
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Orchard'):
+    #         self.y = pond_airblast_orchard
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Normal'):
+    #         self.y = self.terr_airblast_normal
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,600,700,800,900,997]            
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Dense'):
+    #         self.y = self.terr_airblast_dense
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,600,700,800,900,997]
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Sparse'):
+    #         self.y = self.terr_airblast_sparse
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,600,700,800,900,997]
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Vineyard'):
+    #         self.y = self.terr_airblast_vineyard
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,600,700,800,900,997]
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Orchard'):
+    #         self.y = self.terr_airblast_orchard
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,600,700,800,900,997]
+    #         self.z = 4
+    #     else:
+    #         #print 2
+    #         self.y = 3
+    #     return self.x, self.y
 
     def results(self):
-        self.pond_ground_high_vf2f = [0.0616,0.0572,0.0455,0.0376,0.0267,0.0194,0.013,0.0098,0.0078,0.0064,0.0053,0.0046,0.0039,0.0035,0.003,0.0027,0.0024,0.0022,0.002,0.0018,0.0017,0.0015,0.0014,0.0013,0.0012]
-        self.pond_ground_high_f2m = [0.0165,0.0137,0.0104,0.009,0.0071,0.0056,0.0042,0.0034,0.0028,0.0024,0.0021,0.0019,0.0017,0.0015,0.0014,0.0013,0.0012,0.0011,0.001,0.00095,0.0009,0.0008,0.0008,0.0007,0.0007]
-        self.pond_ground_low_vf2f = [0.0268,0.0231,0.0167,0.0136,0.01,0.0076,0.0054,0.0043,0.0036,0.0031,0.0027,0.0024,0.0021,0.0019,0.0017,0.0016,0.0015,0.0013,0.0012,0.0012,0.0011,0.001,0.001,0.0009,0.0009]
-        self.pond_ground_low_f2m = [0.0109,0.0086,0.0065,0.0056,0.0045,0.0036,0.0028,0.0023,0.0019,0.0017,0.0015,0.0013,0.0012,0.0011,0.001,0.0009,0.0009,0.0008,0.0008,0.0007,0.0007,0.0006,0.0006,0.0006,0.0006]
-        
-    #####one less value (begin)
-        self.pond_aerial_vf2f = [0.2425,0.2409,0.2344,0.2271,0.2083,0.1829,0.1455,0.1204,0.103,0.0904,0.0809,0.0734,0.0674,0.0625,0.0584,0.055,0.0521,0.0497,0.0476,0.0458,0.0442,0.0428,0.0416,0.0405,0.0396]
-        self.pond_aerial_f2m = [0.1266,0.1247,0.1172,0.1094,0.0926,0.0743,0.0511,0.0392,0.0321,0.0272,0.0238,0.0212,0.0193,0.0177,0.0165,0.0155,0.0146,0.0139,0.0133,0.0128,0.0124,0.012,0.0117,0.0114,0.0111]
-        self.pond_aerial_m2c = [0.0892,0.0900,0.0800,0.0700,0.0600,0.0400,0.0300,0.0200,0.0200,0.0130,0.0112,0.0099,0.0090,0.0083,0.0077,0.0073,0.0069,0.0066,0.0063,0.0060,0.0058,0.0056,0.0055,0.0053,0.0052]
-        self.pond_aerial_c2vc = [0.0892,0.0900,0.0800,0.0700,0.0600,0.0400,0.0300,0.0200,0.0200,0.0130,0.0112,0.0099,0.0090,0.0083,0.0077,0.0073,0.0069,0.0066,0.0063,0.0060,0.0058,0.0056,0.0055,0.0053,0.0052]
-        self.terr_aerial_vf2f = [0.5000,0.4913,0.4564,0.4220,0.3588,0.3039,0.2247,0.1741,0.1403,0.1171,0.1010,0.0893,0.0799,0.0729,0.0671,0.0626,0.0585,0.0550,0.0519,0.0494,0.0475,0.0458,0.0442,0.0428,0.0416]
-        self.terr_aerial_f2m = [0.4999,0.4808,0.4046,0.3365,0.2231,0.1712,0.0979,0.0638,0.0469,0.0374,0.0312,0.0266,0.0234,0.021,0.0192,0.0177,0.0164,0.0154,0.0146,0.0139,0.0133,0.0128,0.0124,0.012,0.0117]
-        self.terr_aerial_m2c =[0.5,0.4776,0.3882,0.3034,0.1711,0.1114,0.0561,0.0346,0.0249,0.0188,0.015,0.0126,0.011,0.0098,0.0089,0.0082,0.0077,0.0072,0.0069,0.0065,0.0063,0.006,0.0058,0.0056,0.0055]
-        self.terr_aerial_c2vc =[0.5,0.4776,0.3882,0.3034,0.1711,0.1114,0.0561,0.0346,0.0249,0.0188,0.015,0.0126,0.011,0.0098,0.0089,0.0082,0.0077,0.0072,0.0069,0.0065,0.0063,0.006,0.0058,0.0056,0.0055]
-        self.terr_ground_vf2f = [1.06,0.8564,0.4475,0.2595,0.104,0.05,0.0248,0.0164,0.012,0.0093,0.0075,0.0062,0.0053,0.0045,0.0039,0.0034,0.003,0.0027,0.0024,0.0022,0.002,0.0018,0.0017,0.0015,0.0014]
-    #####one less value (end)
+        self.pond_ground_high_vf2f = [6.164E+00,4.251E+00,3.425E+00,2.936E+00,2.607E+00,2.364E+00,2.173E+00,
+        2.017E+00,1.886E+00,1.773E+00,1.674E+00,1.586E+00,1.508E+00,1.437E+00,
+        1.372E+00,1.314E+00,1.260E+00,1.210E+00,1.163E+00,1.120E+00,1.080E+00,
+        1.042E+00,1.007E+00,9.740E-01,9.427E-01,9.132E-01,8.853E-01,8.588E-01,
+        8.337E-01,8.099E-01,7.871E-01,7.655E-01,7.449E-01,7.251E-01,7.063E-01,
+        6.882E-01,6.709E-01,6.544E-01,6.385E-01,6.232E-01,6.085E-01,5.944E-01,
+        5.808E-01,5.677E-01,5.551E-01,5.429E-01,5.312E-01,5.198E-01,5.089E-01,
+        4.983E-01,4.880E-01,4.781E-01,4.685E-01,4.592E-01,4.502E-01,4.415E-01,
+        4.331E-01,4.249E-01,4.169E-01,4.092E-01,4.017E-01,3.944E-01,3.873E-01,
+        3.804E-01,3.737E-01,3.672E-01,3.609E-01,3.547E-01,3.487E-01,3.428E-01,
+        3.371E-01,3.316E-01,3.262E-01,3.209E-01,3.157E-01,3.107E-01,3.058E-01,
+        3.010E-01,2.964E-01,2.918E-01,2.874E-01,2.830E-01,2.788E-01,2.746E-01,
+        2.706E-01,2.666E-01,2.628E-01,2.590E-01,2.553E-01,2.516E-01,2.481E-01,
+        2.446E-01,2.412E-01,2.379E-01,2.347E-01,2.315E-01,2.284E-01,2.253E-01,
+        2.223E-01,2.194E-01,2.165E-01]
+        self.pond_ground_high_f2m = [1.650E+00,9.842E-01,8.413E-01,7.572E-01,6.978E-01,6.515E-01,6.135E-01,
+        5.813E-01,5.534E-01,5.287E-01,5.067E-01,4.868E-01,4.686E-01,4.520E-01,
+        4.367E-01,4.225E-01,4.093E-01,3.970E-01,3.854E-01,3.745E-01,3.643E-01,
+        3.546E-01,3.454E-01,3.368E-01,3.285E-01,3.206E-01,3.131E-01,3.060E-01,
+        2.991E-01,2.926E-01,2.863E-01,2.803E-01,2.745E-01,2.689E-01,2.636E-01,
+        2.584E-01,2.535E-01,2.487E-01,2.440E-01,2.396E-01,2.353E-01,2.311E-01,
+        2.270E-01,2.231E-01,2.193E-01,2.157E-01,2.121E-01,2.086E-01,2.053E-01,
+        2.020E-01,1.988E-01,1.958E-01,1.928E-01,1.898E-01,1.870E-01,1.842E-01,
+        1.815E-01,1.789E-01,1.764E-01,1.739E-01,1.714E-01,1.690E-01,1.667E-01,
+        1.645E-01,1.623E-01,1.601E-01,1.580E-01,1.559E-01,1.539E-01,1.520E-01,
+        1.500E-01,1.481E-01,1.463E-01,1.445E-01,1.427E-01,1.410E-01,1.393E-01,
+        1.376E-01,1.360E-01,1.344E-01,1.329E-01,1.313E-01,1.298E-01,1.284E-01,
+        1.269E-01,1.255E-01,1.241E-01,1.227E-01,1.214E-01,1.201E-01,1.188E-01,
+        1.175E-01,1.163E-01,1.151E-01,1.139E-01,1.127E-01,1.115E-01,1.104E-01,
+        1.093E-01,1.082E-01,1.071E-01]
+        self.pond_ground_low_vf2f = [2.681E+00,1.549E+00,1.250E+00,1.087E+00,9.800E-01,9.006E-01,8.380E-01,
+        7.864E-01,7.426E-01,7.047E-01,6.714E-01,6.417E-01,6.150E-01,5.908E-01,
+        5.687E-01,5.484E-01,5.296E-01,5.122E-01,4.960E-01,4.809E-01,4.667E-01,
+        4.534E-01,4.409E-01,4.290E-01,4.178E-01,4.072E-01,3.971E-01,3.875E-01,
+        3.783E-01,3.696E-01,3.613E-01,3.533E-01,3.456E-01,3.383E-01,3.313E-01,
+        3.246E-01,3.181E-01,3.118E-01,3.058E-01,3.000E-01,2.944E-01,2.890E-01,
+        2.838E-01,2.788E-01,2.739E-01,2.692E-01,2.646E-01,2.602E-01,2.559E-01,
+        2.517E-01,2.477E-01,2.438E-01,2.400E-01,2.363E-01,2.327E-01,2.292E-01,
+        2.258E-01,2.225E-01,2.193E-01,2.161E-01,2.131E-01,2.101E-01,2.072E-01,
+        2.043E-01,2.016E-01,1.989E-01,1.962E-01,1.937E-01,1.911E-01,1.887E-01,
+        1.863E-01,1.839E-01,1.816E-01,1.794E-01,1.772E-01,1.751E-01,1.730E-01,
+        1.709E-01,1.689E-01,1.669E-01,1.650E-01,1.631E-01,1.612E-01,1.594E-01,
+        1.576E-01,1.559E-01,1.542E-01,1.525E-01,1.508E-01,1.492E-01,1.476E-01,
+        1.461E-01,1.445E-01,1.430E-01,1.415E-01,1.401E-01,1.387E-01,1.373E-01,
+        1.359E-01,1.345E-01,1.332E-01]
+        self.pond_ground_low_f2m = [1.090E+00,6.124E-01,5.272E-01,4.774E-01,4.422E-01,4.147E-01,3.922E-01,
+        3.730E-01,3.563E-01,3.416E-01,3.284E-01,3.165E-01,3.056E-01,2.956E-01,
+        2.863E-01,2.778E-01,2.698E-01,2.623E-01,2.553E-01,2.487E-01,2.425E-01,
+        2.366E-01,2.311E-01,2.258E-01,2.207E-01,2.159E-01,2.113E-01,2.069E-01,
+        2.027E-01,1.987E-01,1.948E-01,1.911E-01,1.876E-01,1.841E-01,1.808E-01,
+        1.776E-01,1.746E-01,1.716E-01,1.687E-01,1.659E-01,1.633E-01,1.607E-01,
+        1.581E-01,1.557E-01,1.533E-01,1.510E-01,1.488E-01,1.466E-01,1.445E-01,
+        1.425E-01,1.405E-01,1.385E-01,1.366E-01,1.348E-01,1.330E-01,1.312E-01,
+        1.295E-01,1.279E-01,1.263E-01,1.247E-01,1.231E-01,1.216E-01,1.201E-01,
+        1.187E-01,1.173E-01,1.159E-01,1.145E-01,1.132E-01,1.119E-01,1.107E-01,
+        1.094E-01,1.082E-01,1.070E-01,1.059E-01,1.047E-01,1.036E-01,1.025E-01,
+        1.014E-01,1.004E-01,9.935E-02,9.834E-02,9.734E-02,9.637E-02,9.541E-02,
+        9.447E-02,9.354E-02,9.263E-02,9.174E-02,9.087E-02,9.001E-02,8.916E-02,
+        8.833E-02,8.751E-02,8.671E-02,8.591E-02,8.514E-02,8.437E-02,8.362E-02,
+        8.288E-02,8.215E-02,8.143E-02]
 
-        self.terr_ground_f2m = [1.01,0.3731,0.0889,0.0459,0.0208,0.0119,0.007,0.0051,0.004,0.0033,0.0028,0.0024,0.0021,0.0019,0.0017,0.0015,0.0014,0.0013,0.0012,0.0011,0.001,0.0009,0.0009,0.0008,0.0008]
-        self.pond_airblast_normal = [0.0011,0.0011,0.001,0.0009,0.0007,0.0005,0.0003,0.0002,0.0002,0.0002,0.0001,0.0001,0.0000978,0.0000863,0.0000769,0.0000629,0.0000626,0.0000571,0.0000523,0.0000482,0.0000446,0.0000414,0.0000386,0.0000361,0.0000339]
-        self.pond_airblast_dense = [0.0145,0.014,0.0122,0.0106,0.0074,0.005,0.003,0.0022,0.0017,0.0014,0.0012,0.0011,0.001,0.0009,0.0008,0.0007,0.0007,0.0006,0.0006,0.0005,0.0005,0.0005,0.0005,0.0004,0.0004]
-        self.pond_airblast_sparse = [0.0416,0.0395,0.0323,0.0258,0.015,0.0077,0.0031,0.0017,0.001,0.0007,0.0005,0.0004,0.0003,0.0002,0.0002,0.0002,0.0001,0.0001,0.0000898,0.0000771,0.0000668,0.0000583,0.0000513,0.0000453,0.0000405]
-        self.pond_airblast_vineyard = [0.0024,0.0023,0.0018,0.0014,0.0009,0.0006,0.0003,0.0002,0.0002,0.0001,0.0001,0.0001,0.0000881,0.0000765,0.0000672,0.0000596,0.0000533,0.000048,0.0000435,0.0000397,0.0000363,0.0000334,0.0000309,0.0000286,0.0000267]
-        self.pond_airblast_orchard = [0.0218,0.0208,0.0175,0.0145,0.0093,0.0056,0.0031,0.0021,0.0016,0.0013,0.0011,0.0009,0.0008,0.0007,0.0007,0.0006,0.0005,0.0005,0.0005,0.0004,0.0004,0.0004,0.0004,0.0003,0.0003]
-        self.terr_airblast_normal = [0.0089,0.0081,0.0058,0.0042,0.0023,0.0012,0.0006,0.0004,0.0003,0.0002,0.0002,0.0002,0.0001,0.0001,0.0000965,0.0000765,0.0000625,0.0000523,0.0000446,0.0000387]
-        self.terr_airblast_dense = [0.1155,0.1078,0.0834,0.0631,0.033,0.0157,0.0065,0.0038,0.0026,0.002,0.0016,0.0014,0.0012,0.0011,0.0009,0.0008,0.0007,0.0006,0.0005,0.0005]
-        self.terr_airblast_sparse = [0.4763,0.4385,0.3218,0.2285,0.1007,0.0373,0.0103,0.0044,0.0023,0.0014,0.0009,0.0006,0.0005,0.0004,0.0003,0.0002,0.0001,0.0000889,0.0000665,0.0000514]
-        self.terr_airblast_vineyard = [0.0376,0.0324,0.0195,0.012,0.0047,0.0019,0.0008,0.0004,0.0003,0.0002,0.0002,0.0001,0.0001,0.0001,0.000087,0.0000667,0.0000531,0.0000434,0.0000363,0.000031]
-        self.terr_airblast_orchard = [0.2223,0.2046,0.1506,0.108,0.0503,0.021,0.0074,0.004,0.0026,0.0019,0.0015,0.0012,0.0011,0.0009,0.0008,0.0006,0.0005,0.0005,0.0004,0.0004]
+        self.pond_aerial_vf2f = [2.425E+01,2.319E+01,2.227E+01,2.144E+01,2.069E+01,1.997E+01,1.930E+01,1.866E+01,1.806E+01,1.749E+01,1.696E+01,1.645E+01,1.596E+01,1.549E+01,1.506E+01,1.464E+01,1.425E+01,1.388E+01,1.353E+01,1.320E+01,1.288E+01,1.257E+01,1.228E+01,1.200E+01,1.174E+01,1.149E+01,1.125E+01,1.103E+01,1.081E+01,1.059E+01,1.039E+01,1.020E+01,1.001E+01,9.837E+00,9.670E+00,
+            9.510E+00,9.350E+00,9.200E+00,9.058E+00,8.920E+00,8.780E+00,8.650E+00,8.520E+00,8.400E+00,8.290E+00,8.170E+00,8.060E+00,7.950E+00,7.850E+00,7.750E+00,7.650E+00,7.554E+00,7.460E+00,7.370E+00,7.290E+00,7.200E+00,7.120E+00,7.040E+00,6.960E+00,6.880E+00,6.810E+00,6.741E+00,6.670E+00,6.600E+00,6.540E+00,6.470E+00,6.410E+00,6.350E+00,6.290E+00,6.230E+00,6.170E+00,6.120E+00,6.060E+00,6.010E+00,5.960E+00,5.904E+00,5.850E+00,5.806E+00,5.760E+00,5.710E+00,5.670E+00,5.624E+00,5.580E+00,5.540E+00,5.490E+00,5.450E+00,5.413E+00,5.370E+00,5.340E+00,5.300E+00,5.260E+00,5.230E+00,5.190E+00,5.160E+00,5.120E+00,5.090E+00,5.060E+00,5.030E+00,5.000E+00,4.970E+00,4.940E+00]
+        self.pond_aerial_f2m = [1.266E+01,1.142E+01,1.050E+01,9.757E+00,9.147E+00,8.623E+00,8.146E+00,
+                        7.698E+00,7.271E+00,6.871E+00,6.509E+00,6.188E+00,5.899E+00,5.635E+00,
+                        5.388E+00,5.160E+00,4.953E+00,4.765E+00,4.594E+00,4.437E+00,4.291E+00,
+                        4.154E+00,4.025E+00,3.903E+00,3.789E+00,3.682E+00,3.581E+00,3.488E+00,
+                        3.403E+00,3.323E+00,3.245E+00,3.170E+00,3.097E+00,3.027E+00,2.961E+00,
+                        2.898E+00,2.839E+00,2.783E+00,2.729E+00,2.677E+00,2.627E+00,2.579E+00,
+                        2.533E+00,2.488E+00,2.446E+00,2.405E+00,2.366E+00,2.329E+00,2.292E+00,
+                        2.258E+00,2.225E+00,2.193E+00,2.162E+00,2.132E+00,2.104E+00,2.076E+00,
+                        2.049E+00,2.023E+00,1.998E+00,1.974E+00,1.950E+00,1.928E+00,1.905E+00,
+                        1.884E+00,1.863E+00,1.842E+00,1.823E+00,1.804E+00,1.785E+00,1.767E+00,
+                        1.749E+00,1.732E+00,1.715E+00,1.698E+00,1.683E+00,1.667E+00,1.652E+00,
+                        1.637E+00,1.623E+00,1.608E+00,1.595E+00,1.581E+00,1.568E+00,1.555E+00,
+                        1.543E+00,1.531E+00,1.519E+00,1.507E+00,1.496E+00,1.485E+00,1.474E+00,
+                        1.464E+00,1.454E+00,1.444E+00,1.434E+00,1.425E+00,1.416E+00,1.407E+00,
+                        1.398E+00,1.389E+00,1.381E+00]
+        self.pond_aerial_m2c = [8.918E+00,7.649E+00,6.759E+00,6.103E+00,5.593E+00,5.180E+00,4.829E+00,
+        4.513E+00,4.217E+00,3.934E+00,3.670E+00,3.437E+00,3.239E+00,3.070E+00,
+        2.920E+00,2.782E+00,2.654E+00,2.535E+00,2.426E+00,2.324E+00,2.232E+00,
+        2.149E+00,2.072E+00,2.001E+00,1.933E+00,1.869E+00,1.808E+00,1.750E+00,
+        1.696E+00,1.645E+00,1.598E+00,1.553E+00,1.511E+00,1.471E+00,1.434E+00,
+        1.399E+00,1.365E+00,1.334E+00,1.304E+00,1.276E+00,1.249E+00,1.223E+00,
+        1.198E+00,1.175E+00,1.153E+00,1.132E+00,1.113E+00,1.094E+00,1.076E+00,
+        1.058E+00,1.041E+00,1.026E+00,1.010E+00,9.957E-01,9.816E-01,9.681E-01,
+        9.551E-01,9.427E-01,9.307E-01,9.191E-01,9.080E-01,8.972E-01,8.868E-01,
+        8.768E-01,8.671E-01,8.578E-01,8.487E-01,8.399E-01,8.313E-01,8.231E-01,
+        8.151E-01,8.073E-01,7.998E-01,7.926E-01,7.855E-01,7.787E-01,7.720E-01,
+        7.655E-01,7.591E-01,7.529E-01,7.468E-01,7.409E-01,7.352E-01,7.296E-01,
+        7.242E-01,7.188E-01,7.136E-01,7.085E-01,7.035E-01,6.986E-01,6.939E-01,
+        6.892E-01,6.847E-01,6.802E-01,6.758E-01,6.716E-01,6.674E-01,6.633E-01,
+        6.593E-01,6.554E-01,6.516E-01]
+        self.pond_aerial_c2vc = [6.879E+00,5.622E+00,4.785E+00,4.190E+00,3.747E+00,3.401E+00,3.123E+00,
+        2.893E+00,2.692E+00,2.505E+00,2.331E+00,2.175E+00,2.043E+00,1.930E+00,
+        1.830E+00,1.738E+00,1.653E+00,1.574E+00,1.501E+00,1.434E+00,1.373E+00,
+        1.318E+00,1.268E+00,1.221E+00,1.178E+00,1.137E+00,1.099E+00,1.064E+00,
+        1.031E+00,1.000E+00,9.720E-01,9.456E-01,9.208E-01,8.977E-01,8.761E-01,
+        8.559E-01,8.369E-01,8.190E-01,8.020E-01,7.858E-01,7.705E-01,7.559E-01,
+        7.420E-01,7.287E-01,7.161E-01,7.039E-01,6.923E-01,6.811E-01,6.703E-01,
+        6.599E-01,6.497E-01,6.399E-01,6.304E-01,6.211E-01,6.121E-01,6.034E-01,
+        5.948E-01,5.865E-01,5.783E-01,5.703E-01,5.626E-01,5.550E-01,5.476E-01,
+        5.403E-01,5.332E-01,5.263E-01,5.194E-01,5.127E-01,5.062E-01,4.998E-01,
+        4.935E-01,4.874E-01,4.815E-01,4.756E-01,4.699E-01,4.643E-01,4.589E-01,
+        4.536E-01,4.484E-01,4.434E-01,4.384E-01,4.336E-01,4.290E-01,4.244E-01,
+        4.200E-01,4.157E-01,4.115E-01,4.075E-01,4.035E-01,3.997E-01,3.960E-01,
+        3.924E-01,3.889E-01,3.855E-01,3.822E-01,3.790E-01,3.759E-01,3.729E-01,
+        3.700E-01,3.671E-01,3.644E-01]
+    #     self.terr_aerial_vf2f = [0.5000,0.4913,0.4564,0.4220,0.3588,0.3039,0.2247,0.1741,0.1403,0.1171,0.1010,0.0893,0.0799,0.0729,0.0671,0.0626,0.0585,0.0550,0.0519,0.0494,0.0475,0.0458,0.0442,0.0428,0.0416]
+    #     self.terr_aerial_f2m = [0.4999,0.4808,0.4046,0.3365,0.2231,0.1712,0.0979,0.0638,0.0469,0.0374,0.0312,0.0266,0.0234,0.021,0.0192,0.0177,0.0164,0.0154,0.0146,0.0139,0.0133,0.0128,0.0124,0.012,0.0117]
+    #     self.terr_aerial_m2c =[0.5,0.4776,0.3882,0.3034,0.1711,0.1114,0.0561,0.0346,0.0249,0.0188,0.015,0.0126,0.011,0.0098,0.0089,0.0082,0.0077,0.0072,0.0069,0.0065,0.0063,0.006,0.0058,0.0056,0.0055]
+    #     self.terr_aerial_c2vc =[0.5,0.4776,0.3882,0.3034,0.1711,0.1114,0.0561,0.0346,0.0249,0.0188,0.015,0.0126,0.011,0.0098,0.0089,0.0082,0.0077,0.0072,0.0069,0.0065,0.0063,0.006,0.0058,0.0056,0.0055]
+    #     self.terr_ground_vf2f = [1.06,0.8564,0.4475,0.2595,0.104,0.05,0.0248,0.0164,0.012,0.0093,0.0075,0.0062,0.0053,0.0045,0.0039,0.0034,0.003,0.0027,0.0024,0.0022,0.002,0.0018,0.0017,0.0015,0.0014]
+    # #####one less value (end)
 
+    #     self.terr_ground_f2m = [1.01,0.3731,0.0889,0.0459,0.0208,0.0119,0.007,0.0051,0.004,0.0033,0.0028,0.0024,0.0021,0.0019,0.0017,0.0015,0.0014,0.0013,0.0012,0.0011,0.001,0.0009,0.0009,0.0008,0.0008]
+    #     self.pond_airblast_normal = [0.0011,0.0011,0.001,0.0009,0.0007,0.0005,0.0003,0.0002,0.0002,0.0002,0.0001,0.0001,0.0000978,0.0000863,0.0000769,0.0000629,0.0000626,0.0000571,0.0000523,0.0000482,0.0000446,0.0000414,0.0000386,0.0000361,0.0000339]
+    #     self.pond_airblast_dense = [0.0145,0.014,0.0122,0.0106,0.0074,0.005,0.003,0.0022,0.0017,0.0014,0.0012,0.0011,0.001,0.0009,0.0008,0.0007,0.0007,0.0006,0.0006,0.0005,0.0005,0.0005,0.0005,0.0004,0.0004]
+        self.pond_airblast_orchard = [2.180E+00,1.642E+00,1.301E+00,1.067E+00,8.998E-01,7.748E-01,6.784E-01,
+        6.021E-01,5.404E-01,4.896E-01,4.472E-01,4.112E-01,3.805E-01,3.539E-01,
+        3.307E-01,3.103E-01,2.922E-01,2.761E-01,2.617E-01,2.487E-01,2.369E-01,
+        2.262E-01,2.164E-01,2.075E-01,1.992E-01,1.916E-01,1.846E-01,1.781E-01,
+        1.720E-01,1.663E-01,1.610E-01,1.561E-01,1.514E-01,1.470E-01,1.429E-01,
+        1.389E-01,1.352E-01,1.317E-01,1.284E-01,1.252E-01,1.222E-01,1.194E-01,
+        1.166E-01,1.140E-01,1.115E-01,1.092E-01,1.069E-01,1.047E-01,1.026E-01,
+        1.005E-01,9.861E-02,9.674E-02,9.493E-02,9.320E-02,9.152E-02,8.991E-02,
+        8.835E-02,8.684E-02,8.538E-02,8.397E-02,8.261E-02,8.128E-02,8.000E-02,
+        7.876E-02,7.755E-02,7.638E-02,7.525E-02,7.414E-02,7.307E-02,7.202E-02,
+        7.101E-02,7.002E-02,6.906E-02,6.812E-02,6.721E-02,6.632E-02,6.545E-02,
+        6.461E-02,6.378E-02,6.297E-02,6.219E-02,6.142E-02,6.067E-02,5.994E-02,
+        5.922E-02,5.852E-02,5.784E-02,5.717E-02,5.651E-02,5.587E-02,5.524E-02,
+        5.463E-02,5.403E-02,5.344E-02,5.286E-02,5.229E-02,5.174E-02,5.119E-02,
+        5.066E-02,5.014E-02,4.962E-02]
+        self.pond_airblast_vineyard = [2.433E-01,1.658E-01,1.274E-01,1.039E-01,8.835E-02,7.712E-02,6.860E-02,
+        6.188E-02,5.642E-02,5.188E-02,4.804E-02,4.474E-02,4.186E-02,3.933E-02,
+        3.709E-02,3.508E-02,3.327E-02,3.163E-02,3.014E-02,2.877E-02,2.752E-02,
+        2.636E-02,2.529E-02,2.429E-02,2.336E-02,2.250E-02,2.169E-02,2.093E-02,
+        2.021E-02,1.954E-02,1.891E-02,1.831E-02,1.774E-02,1.720E-02,1.669E-02,
+        1.621E-02,1.575E-02,1.531E-02,1.489E-02,1.449E-02,1.411E-02,1.375E-02,
+        1.340E-02,1.306E-02,1.274E-02,1.243E-02,1.214E-02,1.185E-02,1.158E-02,
+        1.132E-02,1.106E-02,1.082E-02,1.059E-02,1.036E-02,1.014E-02,9.928E-03,
+        9.724E-03,9.527E-03,9.336E-03,9.152E-03,8.973E-03,8.800E-03,8.632E-03,
+        8.470E-03,8.312E-03,8.160E-03,8.011E-03,7.868E-03,7.728E-03,7.592E-03,
+        7.460E-03,7.332E-03,7.207E-03,7.086E-03,6.968E-03,6.853E-03,6.742E-03,
+        6.633E-03,6.527E-03,6.423E-03,6.323E-03,6.224E-03,6.129E-03,6.035E-03,
+        5.944E-03,5.855E-03,5.769E-03,5.684E-03,5.601E-03,5.521E-03,5.442E-03,
+        5.365E-03,5.289E-03,5.215E-03,5.143E-03,5.073E-03,5.004E-03,4.937E-03,
+        4.871E-03,4.806E-03,4.743E-03]
+    #     self.pond_airblast_orchard = [0.0218,0.0208,0.0175,0.0145,0.0093,0.0056,0.0031,0.0021,0.0016,0.0013,0.0011,0.0009,0.0008,0.0007,0.0007,0.0006,0.0005,0.0005,0.0005,0.0004,0.0004,0.0004,0.0004,0.0003,0.0003]
+    #     self.terr_airblast_normal = [0.0089,0.0081,0.0058,0.0042,0.0023,0.0012,0.0006,0.0004,0.0003,0.0002,0.0002,0.0002,0.0001,0.0001,0.0000965,0.0000765,0.0000625,0.0000523,0.0000446,0.0000387]
+    #     self.terr_airblast_dense = [0.1155,0.1078,0.0834,0.0631,0.033,0.0157,0.0065,0.0038,0.0026,0.002,0.0016,0.0014,0.0012,0.0011,0.0009,0.0008,0.0007,0.0006,0.0005,0.0005]
+    #     self.terr_airblast_sparse = [0.4763,0.4385,0.3218,0.2285,0.1007,0.0373,0.0103,0.0044,0.0023,0.0014,0.0009,0.0006,0.0005,0.0004,0.0003,0.0002,0.0001,0.0000889,0.0000665,0.0000514]
+    #     self.terr_airblast_vineyard = [0.0376,0.0324,0.0195,0.012,0.0047,0.0019,0.0008,0.0004,0.0003,0.0002,0.0002,0.0001,0.0001,0.0001,0.000087,0.0000667,0.0000531,0.0000434,0.0000363,0.000031]
+    #     self.terr_airblast_orchard = [0.2223,0.2046,0.1506,0.108,0.0503,0.021,0.0074,0.004,0.0026,0.0019,0.0015,0.0012,0.0011,0.0009,0.0008,0.0006,0.0005,0.0005,0.0004,0.0004]
         if (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Aerial' and self.drop_size == 'Fine'):
             self.y = self.pond_aerial_vf2f
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+            #self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+            self.nasae = int(0)
+            self.express_y = [0.2425, 0.2372, 0.23190000000000002, 0.2273, 0.2227, 0.21855, 0.2144, 0.21065, 0.2069, 0.20329999999999998, 0.1997, 0.19634999999999997, 0.193, 0.1898, 0.1866, 0.18359999999999999, 0.18059999999999998, 0.17775, 0.17489999999999997, 0.17225000000000001, 0.1696, 0.16704999999999998, 0.16449999999999998, 0.16204999999999997, 0.15960000000000002, 0.15725, 0.1549, 0.15275, 0.1506, 0.14850000000000002, 0.1464, 0.14445, 0.1425, 0.14065000000000003, 0.1388, 0.13705, 0.1353, 0.13365, 0.132, 0.1304, 0.1288, 0.12725, 0.1257, 0.12425000000000001, 0.12279999999999999, 0.12140000000000001, 0.12, 0.11870000000000001, 0.1174, 0.11615, 0.1149, 0.11370000000000001, 0.1125, 0.1114, 0.1103, 0.1092, 0.1081, 0.107, 0.1059, 0.10490000000000001, 0.1039, 0.10295, 0.102, 0.10105, 0.1001, 0.099235, 0.09837, 0.09753499999999998, 0.0967, 0.0959, 0.0951, 0.0943, 0.0935, 0.09274999999999999, 0.092, 0.09129, 0.09058, 0.08989000000000001, 0.0892, 0.0885, 0.08779999999999999, 0.08715, 0.08650000000000001, 0.08585000000000001, 0.0852, 0.08460000000000001, 0.084, 0.08344999999999998, 0.08289999999999999, 0.0823, 0.0817, 0.08115, 0.0806, 0.08005000000000001, 0.0795, 0.079, 0.0785, 0.078, 0.0775, 0.077, 0.0765, 0.07602, 0.07554, 0.07507, 0.0746, 0.07415, 0.0737, 0.0733, 0.0729, 0.07245, 0.07200000000000001, 0.0716, 0.0712, 0.0708, 0.0704, 0.07, 0.0696, 0.0692, 0.0688, 0.06845, 0.0681, 0.067755, 0.06741, 0.067055, 0.0667, 0.06634999999999999, 0.066, 0.06570000000000001, 0.0654, 0.06505, 0.0647, 0.0644, 0.0641, 0.0638, 0.0635, 0.0632, 0.0629, 0.0626, 0.0623, 0.062, 0.0617, 0.06145, 0.061200000000000004, 0.060899999999999996, 0.060599999999999994, 0.06035, 0.0601, 0.059849999999999993, 0.0596, 0.059320000000000005, 0.05904, 0.058769999999999996, 0.058499999999999996, 0.05827999999999999, 0.05806, 0.05782999999999999, 0.0576, 0.05734999999999999, 0.0571, 0.05689999999999999, 0.0567, 0.05647, 0.05624, 0.05602, 0.0558, 0.055600000000000004, 0.0554, 0.055150000000000005, 0.054900000000000004, 0.054700000000000006, 0.0545, 0.054314999999999995, 0.054130000000000005, 0.053915000000000005, 0.0537, 0.05355000000000001, 0.053399999999999996, 0.053200000000000004, 0.053, 0.05279999999999999, 0.0526, 0.052450000000000004, 0.052300000000000006, 0.05210000000000001, 0.0519, 0.051750000000000004, 0.0516, 0.05140000000000001, 0.0512, 0.051050000000000005, 0.0509, 0.05074999999999999, 0.0506, 0.05045, 0.050300000000000004, 0.05015000000000001, 0.05, 0.04984999999999999, 0.049699999999999994, 0.049550000000000004, 0.049400000000000006, 0.04925000000000001, 0.04910000000000001, 0.048950000000000014, 0.04880000000000001, 0.04865000000000004, 0.048500000000000015, 0.04835000000000001, 0.04820000000000004, 0.04805000000000003, 0.047900000000000026, 0.04775000000000002, 0.04760000000000005, 0.04745000000000005, 0.047300000000000036, 0.04715000000000003, 0.04700000000000003, 0.04685000000000009, 0.04670000000000009, 0.046550000000000084, 0.04640000000000008, 0.04625000000000007, 0.046100000000000065, 0.04595000000000013, 0.04579999999999998, 0.04565000000000012, 0.04550000000000012, 0.045350000000000106, 0.0452000000000001, 0.0450500000000001, 0.04490000000000009, 0.04475000000000009, 0.04460000000000008, 0.04445000000000007, 0.04430000000000007, 0.044150000000000064, 0.0440000000000002, 0.043850000000000194, 0.04370000000000019, 0.04355000000000018, 0.043400000000000175, 0.04325000000000017, 0.043100000000000166, 0.04295000000000016, 0.04280000000000015, 0.042650000000000146, 0.04250000000000014, 0.042350000000000276, 0.04220000000000013, 0.04205000000000012, 0.04189999999999998, 0.041749999999999975, 0.04160000000000025, 0.04145000000000039, 0.04130000000000024, 0.041150000000000374, 0.04100000000000023, 0.040850000000000365, 0.040700000000000215, 0.04055000000000035, 0.04040000000000021, 0.04025000000000034, 0.04010000000000019, 0.03995000000000033, 0.03980000000000018, 0.03965000000000003, 0.039500000000000174, 0.039350000000000024, 0.03920000000000016, 0.03905000000000001, 0.03890000000000015, 0.03875, 0.038600000000000134, 0.038450000000000276, 0.03830000000000041, 0.03815000000000026, 0.038000000000000395, 0.03785000000000025, 0.037700000000000386, 0.037550000000000236, 0.03740000000000038, 0.03725000000000023, 0.03710000000000036, 0.03695000000000022, 0.03680000000000035, 0.0366500000000002, 0.03650000000000034, 0.036350000000000195, 0.03620000000000033, 0.03605000000000018, 0.03590000000000032, 0.03575000000000017, 0.035600000000000305, 0.03545000000000016, 0.035300000000000296, 0.03515000000000043, 0.03500000000000028, 0.03485000000000042, 0.03470000000000027, 0.03455000000000041]
+            self.x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299]
         elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Aerial' and self.drop_size == 'Medium'):
             self.y = self.pond_aerial_f2m
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+            #self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+            self.nasae = 1
+            self.express_y = [0.1266, 0.1204, 0.1142, 0.1096, 0.105, 0.10128499999999999, 0.09756999999999999, 0.09451999999999999, 0.09147, 0.08885, 0.08622999999999999, 0.08384499999999999, 0.08146, 0.07922000000000001, 0.07698, 0.07484500000000001, 0.07271, 0.07071, 0.06871000000000001, 0.0669, 0.06509000000000001, 0.063485, 0.06188, 0.060434999999999996, 0.05899, 0.05766999999999999, 0.05635, 0.055115, 0.05388, 0.05274, 0.0516, 0.050565, 0.049530000000000005, 0.04859, 0.04765, 0.046795, 0.04594, 0.045155, 0.04437, 0.043640000000000005, 0.042910000000000004, 0.042225, 0.04154, 0.040895, 0.04025, 0.03964, 0.03903, 0.03846, 0.03789, 0.037355, 0.03682, 0.036315, 0.03581, 0.035345, 0.03488, 0.034455, 0.03403, 0.03363, 0.03323, 0.03284, 0.03245, 0.032075, 0.0317, 0.031334999999999995, 0.03097, 0.03062, 0.030270000000000002, 0.029939999999999998, 0.029609999999999997, 0.029295, 0.028980000000000002, 0.028685000000000002, 0.02839, 0.02811, 0.02783, 0.02756, 0.027290000000000002, 0.027030000000000002, 0.026770000000000002, 0.026520000000000002, 0.026269999999999998, 0.026029999999999998, 0.02579, 0.02556, 0.02533, 0.025105, 0.02488, 0.02467, 0.024460000000000003, 0.024255, 0.02405, 0.023855, 0.02366, 0.023475000000000003, 0.02329, 0.023105, 0.02292, 0.02275, 0.02258, 0.022415000000000004, 0.022250000000000002, 0.022090000000000002, 0.02193, 0.021775000000000003, 0.02162, 0.021470000000000003, 0.021320000000000002, 0.021180000000000004, 0.02104, 0.0209, 0.02076, 0.020625, 0.020489999999999998, 0.02036, 0.02023, 0.020104999999999998, 0.01998, 0.01986, 0.01974, 0.01962, 0.0195, 0.01939, 0.01928, 0.019165, 0.01905, 0.018945, 0.01884, 0.018734999999999998, 0.01863, 0.018525, 0.018420000000000002, 0.018325, 0.01823, 0.018135, 0.01804, 0.017945, 0.017849999999999998, 0.017759999999999998, 0.017669999999999998, 0.01758, 0.017490000000000002, 0.017405, 0.01732, 0.017235, 0.017150000000000002, 0.017065, 0.01698, 0.016905, 0.01683, 0.01675, 0.01667, 0.016595, 0.01652, 0.016444999999999998, 0.01637, 0.0163, 0.01623, 0.016155, 0.01608, 0.016015, 0.01595, 0.015880000000000002, 0.01581, 0.015745, 0.01568, 0.015615, 0.01555, 0.015489999999999999, 0.01543, 0.01537, 0.015309999999999999, 0.01525, 0.015189999999999999, 0.01513, 0.015069999999999998, 0.015015, 0.01496, 0.014905, 0.01485, 0.014795, 0.01474, 0.014689999999999998, 0.01464, 0.01459, 0.014539999999999999, 0.014489999999999998, 0.01444, 0.01439, 0.014339999999999999, 0.014295, 0.01425, 0.014205, 0.014159999999999999, 0.014114999999999999, 0.014070000000000001, 0.014025, 0.01398, 0.013935, 0.01389, 0.01385, 0.01381, 0.013769999999999998, 0.01373, 0.013690000000000003, 0.013649999999999997, 0.013609999999999997, 0.013570000000000002, 0.013529999999999997, 0.013490000000000002, 0.013450000000000007, 0.013409999999999993, 0.013369999999999998, 0.013330000000000002, 0.013290000000000007, 0.013249999999999993, 0.013209999999999998, 0.013170000000000001, 0.013130000000000006, 0.013090000000000011, 0.013049999999999997, 0.01301, 0.012970000000000006, 0.012929999999999992, 0.012889999999999997, 0.012850000000000002, 0.012809999999999988, 0.01277000000000001, 0.012729999999999997, 0.012689999999999984, 0.012650000000000005, 0.012609999999999993, 0.012570000000000015, 0.012530000000000001, 0.012489999999999987, 0.01245000000000001, 0.012409999999999997, 0.012370000000000018, 0.012330000000000006, 0.012289999999999992, 0.012250000000000014, 0.01221, 0.012170000000000023, 0.012130000000000009, 0.012089999999999997, 0.012050000000000019, 0.01200999999999997, 0.011969999999999991, 0.011929999999999979, 0.011890000000000001, 0.01184999999999995, 0.011809999999999973, 0.011769999999999996, 0.011730000000000018, 0.01168999999999997, 0.011649999999999992, 0.011610000000000014, 0.011569999999999964, 0.011529999999999986, 0.011490000000000009, 0.01144999999999996, 0.011409999999999983, 0.011370000000000005, 0.011330000000000028, 0.011289999999999977, 0.01125, 0.011210000000000022, 0.011169999999999973, 0.011129999999999996, 0.011090000000000018, 0.011050000000000039, 0.01100999999999999, 0.010970000000000013, 0.010930000000000035, 0.010889999999999986, 0.010850000000000009, 0.010810000000000031, 0.010769999999999981, 0.010730000000000003, 0.010690000000000026, 0.010650000000000048, 0.01061, 0.010570000000000022, 0.010530000000000045, 0.010489999999999994, 0.010450000000000017, 0.010410000000000039, 0.01036999999999999, 0.010330000000000013, 0.010290000000000035, 0.010250000000000058, 0.010210000000000007, 0.010169999999999959, 0.010129999999999981, 0.010090000000000003, 0.010049999999999955, 0.010009999999999906, 0.00997, 0.00992999999999995, 0.0098899999999999, 0.009849999999999994]
+            self.x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299]
+
         elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Aerial' and self.drop_size == 'Coarse'):
             self.y = self.pond_aerial_m2c   
+            self.nasae = 2
+            self.express_y = [0.08918, 0.082835, 0.07649, 0.07204, 0.06759, 0.06431, 0.06103, 0.05848, 0.05593, 0.053864999999999996, 0.0518, 0.050045, 0.04829, 0.046709999999999995, 0.045129999999999997, 0.04365, 0.04217, 0.040755, 0.03934, 0.03802, 0.036699999999999997, 0.035535, 0.03437, 0.03338, 0.03239, 0.031545, 0.030699999999999998, 0.02995, 0.0292, 0.02851, 0.02782, 0.02718, 0.026539999999999998, 0.025945, 0.02535, 0.024805, 0.02426, 0.02375, 0.023239999999999997, 0.02278, 0.022320000000000003, 0.021905, 0.02149, 0.021105, 0.020720000000000002, 0.020365, 0.02001, 0.01967, 0.01933, 0.01901, 0.01869, 0.018385, 0.01808, 0.01779, 0.0175, 0.01723, 0.01696, 0.016705, 0.01645, 0.016215, 0.01598, 0.015754999999999998, 0.015529999999999999, 0.01532, 0.015109999999999998, 0.014910000000000001, 0.01471, 0.014525000000000001, 0.014339999999999999, 0.014165, 0.01399, 0.01382, 0.01365, 0.013495, 0.013340000000000001, 0.01319, 0.013040000000000001, 0.0129, 0.01276, 0.012625000000000003, 0.012490000000000001, 0.012360000000000003, 0.012230000000000001, 0.012105000000000001, 0.01198, 0.011865, 0.01175, 0.011640000000000001, 0.01153, 0.011425000000000001, 0.011319999999999998, 0.011225, 0.01113, 0.011035, 0.01094, 0.01085, 0.01076, 0.010670000000000002, 0.01058, 0.010495, 0.010409999999999999, 0.010335, 0.01026, 0.01018, 0.0101, 0.010028500000000001, 0.009957, 0.0098865, 0.009816, 0.0097485, 0.009681, 0.009616, 0.009550999999999999, 0.009489, 0.009427, 0.009367, 0.009307, 0.009249, 0.009191, 0.009135500000000001, 0.00908, 0.009026000000000001, 0.008972, 0.00892, 0.008868000000000001, 0.008818, 0.008768, 0.0087195, 0.008671, 0.0086245, 0.008578, 0.0085325, 0.008487, 0.008443, 0.008399, 0.008356, 0.008313000000000001, 0.008272, 0.008231, 0.008191, 0.008151, 0.008112000000000001, 0.008073, 0.0080355, 0.007998, 0.007962, 0.007925999999999999, 0.0078905, 0.007855, 0.007821, 0.007787, 0.0077535, 0.00772, 0.007687500000000001, 0.0076549999999999995, 0.007623, 0.007591, 0.00756, 0.007529, 0.0074985, 0.007468, 0.0074385, 0.007409, 0.0073805, 0.007352, 0.007324, 0.007296, 0.007269, 0.007241999999999999, 0.007215, 0.007188, 0.007161999999999999, 0.007136, 0.0071105, 0.007085, 0.0070599999999999994, 0.0070350000000000005, 0.007010499999999999, 0.006986, 0.0069625, 0.006939, 0.0069155, 0.0068920000000000006, 0.0068695, 0.006847, 0.0068245, 0.006802, 0.00678, 0.006757999999999999, 0.006737, 0.006716, 0.0066949999999999996, 0.006674, 0.0066535, 0.006633, 0.006613, 0.006593, 0.0065734999999999995, 0.006554, 0.006535, 0.006515999999999999, 0.006496999999999999, 0.006477999999999999, 0.006459, 0.006439999999999999, 0.006420999999999997, 0.006401999999999999, 0.006383000000000001, 0.006364000000000001, 0.0063449999999999965, 0.006325999999999996, 0.006306999999999996, 0.006287999999999996, 0.006269, 0.00625, 0.0062309999999999996, 0.006212, 0.006193, 0.006174, 0.00615499999999999, 0.00613599999999999, 0.006116999999999999, 0.006097999999999999, 0.0060789999999999985, 0.00605999999999999, 0.006041000000000007, 0.006021999999999999, 0.0060030000000000075, 0.005983999999999998, 0.005965000000000007, 0.005945999999999998, 0.005926999999999989, 0.0059079999999999975, 0.005888999999999989, 0.005869999999999998, 0.005850999999999988, 0.005831999999999997, 0.005812999999999988, 0.005793999999999997, 0.005774999999999988, 0.005755999999999979, 0.005737000000000005, 0.0057179999999999965, 0.005699000000000005, 0.005679999999999996, 0.005661000000000005, 0.005641999999999996, 0.0056229999999999865, 0.005603999999999995, 0.005585000000000022, 0.005565999999999995, 0.005547000000000004, 0.005528000000000013, 0.005509000000000022, 0.005489999999999995, 0.005471000000000004, 0.005452000000000012, 0.005432999999999986, 0.005413999999999994, 0.005395000000000003, 0.005376000000000012, 0.005356999999999985, 0.005337999999999994, 0.0053190000000000025, 0.005299999999999976, 0.0052809999999999845, 0.005261999999999993, 0.005243000000000002, 0.005223999999999975, 0.005204999999999984, 0.005185999999999993, 0.005166999999999966, 0.005147999999999975, 0.005128999999999983, 0.005109999999999992, 0.005090999999999965, 0.005071999999999974, 0.005052999999999983, 0.005033999999999992, 0.005014999999999965, 0.0049959999999999736, 0.004977000000000018, 0.004957999999999991, 0.004939, 0.004920000000000009, 0.004901000000000017, 0.0048819999999999905, 0.004862999999999999, 0.004844000000000008, 0.004824999999999981, 0.00480599999999999, 0.004786999999999999, 0.0047680000000000075, 0.004748999999999981, 0.004729999999999989, 0.004710999999999998, 0.004691999999999971, 0.00467299999999998, 0.0046540000000000244, 0.004635000000000033]
+            self.x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299]
+
         elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Aerial' and self.drop_size == 'Very Coarse'):
             self.y = self.pond_aerial_c2vc      
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+            #self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+            self.nasae = 3
+            self.express_y = [0.06878999999999999, 0.06250499999999999, 0.05622, 0.052035, 0.047850000000000004, 0.044875000000000005, 0.04190000000000001, 0.039685, 0.037469999999999996, 0.03574, 0.03401, 0.03262, 0.03123, 0.03008, 0.028929999999999997, 0.027925, 0.026920000000000003, 0.025985, 0.02505, 0.02418, 0.02331, 0.02253, 0.02175, 0.02109, 0.02043, 0.019865, 0.019299999999999998, 0.018799999999999997, 0.0183, 0.01784, 0.01738, 0.016955, 0.01653, 0.016135, 0.01574, 0.015375000000000002, 0.015009999999999999, 0.014674999999999999, 0.014339999999999999, 0.014034999999999999, 0.01373, 0.013455, 0.01318, 0.012930000000000002, 0.01268, 0.012445, 0.01221, 0.011995, 0.011779999999999999, 0.011575, 0.01137, 0.011179999999999999, 0.01099, 0.010815000000000002, 0.01064, 0.010474999999999998, 0.01031, 0.010154999999999999, 0.01, 0.00986, 0.00972, 0.009588, 0.009455999999999999, 0.009332, 0.009208, 0.0090925, 0.008977, 0.008869, 0.008761, 0.00866, 0.008559, 0.008464000000000001, 0.008369, 0.0082795, 0.00819, 0.008105, 0.008020000000000001, 0.007939, 0.007858, 0.0077815, 0.007705, 0.007632, 0.007559, 0.0074895, 0.0074199999999999995, 0.0073535, 0.007287, 0.0072239999999999995, 0.007161, 0.0070999999999999995, 0.007039, 0.006980999999999999, 0.006923, 0.006867000000000001, 0.006811, 0.006757, 0.006703, 0.006651000000000001, 0.006599000000000001, 0.006548000000000001, 0.006497, 0.006448000000000001, 0.006399, 0.0063514999999999995, 0.006304, 0.0062575, 0.0062109999999999995, 0.0061660000000000005, 0.006121, 0.0060775000000000004, 0.006034, 0.005991, 0.005948, 0.0059065, 0.005865, 0.005824, 0.005783, 0.005743000000000001, 0.005703000000000001, 0.0056645, 0.005626, 0.005587999999999999, 0.00555, 0.0055130000000000005, 0.005476, 0.005439499999999999, 0.005403, 0.005367500000000001, 0.005332, 0.005297499999999999, 0.005263, 0.0052285000000000005, 0.005194, 0.0051605, 0.0051270000000000005, 0.005094499999999999, 0.005062, 0.00503, 0.004998, 0.0049665, 0.004935, 0.0049045, 0.004874, 0.0048445, 0.004815, 0.004785500000000001, 0.004756, 0.0047275, 0.004699, 0.004671, 0.0046429999999999996, 0.004616, 0.004588999999999999, 0.0045625, 0.004536, 0.00451, 0.004484, 0.004459, 0.0044340000000000004, 0.004409, 0.004384, 0.00436, 0.004336, 0.004313, 0.0042899999999999995, 0.004267, 0.004244, 0.004222, 0.0042, 0.0041785, 0.004157, 0.004136, 0.004115, 0.004095, 0.004075, 0.004055, 0.004035, 0.0040160000000000005, 0.003997, 0.0039785, 0.00396, 0.003942, 0.003924, 0.0039065, 0.003889, 0.003872, 0.003855, 0.0038385000000000003, 0.003822, 0.003806, 0.00379, 0.0037745, 0.003759, 0.003744, 0.003729, 0.0037145, 0.0037, 0.0036855, 0.003671, 0.0036575, 0.003644, 0.0036305, 0.0036170000000000004, 0.003603500000000001, 0.00359, 0.0035765000000000016, 0.0035630000000000006, 0.003549499999999999, 0.0035360000000000014, 0.0035225000000000018, 0.003509, 0.003495499999999998, 0.003482000000000003, 0.0034685000000000033, 0.0034549999999999993, 0.0034414999999999997, 0.003428, 0.0034145000000000048, 0.003401000000000005, 0.003387500000000001, 0.0033740000000000016, 0.003360500000000002, 0.0033469999999999975, 0.0033335000000000027, 0.0033199999999999983, 0.0033065000000000034, 0.003293000000000008, 0.003279500000000004, 0.003266, 0.003252500000000005, 0.0032390000000000006, 0.0032255000000000057, 0.0032120000000000013, 0.0031984999999999974, 0.003185000000000002, 0.003171499999999998, 0.003158000000000012, 0.003144500000000008, 0.0031310000000000036, 0.0031175000000000087, 0.0031040000000000043, 0.0030905000000000004, 0.003077000000000005, 0.003063500000000001, 0.003049999999999997, 0.003036499999999993, 0.0030230000000000066, 0.0030095000000000026, 0.0029959999999999987, 0.0029824999999999947, 0.0029689999999999907, 0.002955500000000004, 0.002942000000000018, 0.002928500000000014, 0.0029150000000000096, 0.0029015000000000056, 0.0028880000000000017, 0.0028745000000000155, 0.002861000000000011, 0.002847500000000007, 0.002834000000000003, 0.0028204999999999992, 0.0028070000000000126, 0.0027935000000000086, 0.0027800000000000047, 0.0027665000000000007, 0.0027529999999999968, 0.00273950000000001, 0.002726000000000006, 0.0027125000000000022, 0.0026989999999999983, 0.002685499999999994, 0.0026720000000000077, 0.0026585000000000215, 0.002645000000000017, 0.002631500000000013, 0.002618000000000009, 0.0026045000000000052, 0.0025910000000000186, 0.0025775000000000147, 0.0025640000000000107, 0.0025505000000000068, 0.002537000000000003, 0.002523500000000016, 0.0025100000000000122, 0.0024965000000000083, 0.0024830000000000043, 0.0024695000000000177, 0.002455999999999996, 0.0024425000000000098, 0.002428999999999988, 0.002415500000000037, 0.0024020000000000152, 0.002388500000000029, 0.0023750000000000073, 0.0023615000000000207, 0.002347999999999999, 0.0023345000000000128, 0.002320999999999991, 0.0023075000000000044]
+            self.x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299]
+
         elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Ground' and self.drop_size == 'Fine' and self.boom_height == 'Low'):
             self.y = self.pond_ground_low_vf2f
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+            #self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+            self.nasae = 4
+            self.express_y = [0.02681, 0.021150000000000002, 0.015489999999999999, 0.013995, 0.0125, 0.011685, 0.01087, 0.010335, 0.0098, 0.009403, 0.009006, 0.008693, 0.00838, 0.008122, 0.007864, 0.007645, 0.007426, 0.0072365, 0.007047, 0.0068805, 0.006714, 0.006565499999999999, 0.006417000000000001, 0.0062835, 0.00615, 0.006029, 0.005908, 0.0057975, 0.005687, 0.0055855, 0.005484, 0.005389999999999999, 0.0052959999999999995, 0.005208999999999999, 0.005122, 0.005041, 0.00496, 0.0048845, 0.004809, 0.004738, 0.004667, 0.0046005, 0.004534, 0.004471500000000001, 0.004409, 0.0043495, 0.0042899999999999995, 0.004234, 0.004178, 0.004125, 0.004072, 0.0040215, 0.003971, 0.003922999999999999, 0.003875, 0.0038290000000000004, 0.0037830000000000003, 0.0037395, 0.0036959999999999996, 0.0036544999999999998, 0.003613, 0.0035730000000000002, 0.003533, 0.0034945, 0.0034560000000000003, 0.0034195, 0.0033829999999999997, 0.003348, 0.003313, 0.0032794999999999994, 0.003246, 0.0032135, 0.003181, 0.0031495, 0.003118, 0.003088, 0.003058, 0.003029, 0.003, 0.0029720000000000002, 0.002944, 0.0029169999999999995, 0.0028899999999999998, 0.002864, 0.002838, 0.002813, 0.002788, 0.0027635, 0.0027389999999999997, 0.0027154999999999996, 0.002692, 0.0026690000000000004, 0.002646, 0.0026239999999999996, 0.0026019999999999997, 0.0025805, 0.002559, 0.0025380000000000003, 0.0025169999999999997, 0.0024969999999999997, 0.002477, 0.0024575, 0.002438, 0.002419, 0.0024, 0.0023815, 0.002363, 0.002345, 0.002327, 0.0023095, 0.0022919999999999998, 0.0022749999999999997, 0.002258, 0.0022415, 0.002225, 0.002209, 0.002193, 0.002177, 0.0021609999999999997, 0.0021460000000000003, 0.002131, 0.0021160000000000003, 0.002101, 0.0020865, 0.002072, 0.0020575, 0.002043, 0.0020295, 0.002016, 0.0020025, 0.001989, 0.0019755, 0.001962, 0.0019495, 0.0019370000000000001, 0.0019240000000000001, 0.001911, 0.001899, 0.001887, 0.001875, 0.0018629999999999999, 0.0018509999999999998, 0.0018390000000000001, 0.0018275000000000001, 0.0018160000000000001, 0.001805, 0.001794, 0.001783, 0.001772, 0.0017615, 0.001751, 0.0017404999999999999, 0.0017299999999999998, 0.0017194999999999999, 0.001709, 0.001699, 0.001689, 0.001679, 0.001669, 0.0016595, 0.00165, 0.0016405, 0.0016309999999999999, 0.0016215000000000001, 0.0016120000000000002, 0.001603, 0.001594, 0.0015849999999999998, 0.001576, 0.0015675, 0.001559, 0.0015505000000000002, 0.001542, 0.0015335, 0.0015249999999999999, 0.0015165, 0.0015079999999999998, 0.0015, 0.001492, 0.001484, 0.001476, 0.0014685000000000002, 0.001461, 0.0014529999999999999, 0.0014449999999999999, 0.0014375, 0.0014299999999999998, 0.0014225, 0.0014149999999999998, 0.0014079999999999997, 0.0014010000000000001, 0.001394, 0.001387, 0.0013800000000000002, 0.001373, 0.001366, 0.001359, 0.001352, 0.001345, 0.0013385000000000003, 0.001332, 0.0013255000000000003, 0.001319, 0.0013125, 0.0013060000000000005, 0.0012995, 0.0012930000000000003, 0.0012865000000000003, 0.00128, 0.0012734999999999997, 0.0012670000000000003, 0.001260500000000001, 0.0012540000000000008, 0.0012475000000000003, 0.001241000000000001, 0.0012345000000000006, 0.0012280000000000001, 0.0012214999999999997, 0.0012149999999999995, 0.001208499999999999, 0.0012019999999999986, 0.0011955000000000004, 0.0011890000000000023, 0.001182500000000002, 0.0011760000000000015, 0.001169500000000001, 0.0011630000000000006, 0.0011565000000000004, 0.0011500000000000021, 0.0011434999999999996, 0.0011370000000000013, 0.0011305000000000032, 0.0011240000000000006, 0.0011175000000000024, 0.0011109999999999998, 0.0011045000000000015, 0.001097999999999999, 0.0010915000000000009, 0.0010849999999999983, 0.0010785, 0.0010719999999999974, 0.0010655000000000037, 0.0010590000000000011, 0.0010525000000000029, 0.0010460000000000003, 0.001039500000000002, 0.001033000000000004, 0.0010265000000000014, 0.0010200000000000031, 0.0010135000000000005, 0.0010070000000000023, 0.0010004999999999997, 0.0009940000000000016, 0.000987499999999999, 0.0009810000000000008, 0.0009744999999999982, 0.0009680000000000044, 0.0009615000000000018, 0.0009550000000000036, 0.0009485000000000054, 0.0009419999999999984, 0.0009354999999999958, 0.0009290000000000021, 0.0009224999999999994, 0.0009160000000000057, 0.0009095000000000031, 0.0009030000000000005, 0.0008965000000000068, 0.0008900000000000041, 0.0008835000000000015, 0.0008769999999999989, 0.0008705000000000052, 0.0008640000000000026, 0.0008575, 0.0008509999999999973, 0.0008445000000000036, 0.000838000000000001, 0.0008314999999999984, 0.0008249999999999958, 0.000818500000000002, 0.0008119999999999994, 0.0008055000000000056, 0.000799000000000003, 0.0007925000000000005, 0.0007860000000000067, 0.000779500000000004, 0.0007730000000000014, 0.0007664999999999988, 0.0007600000000000051, 0.0007535000000000025, 0.0007469999999999998, 0.0007404999999999972, 0.0007340000000000035, 0.0007275000000000009, 0.0007210000000000072, 0.0007144999999999957, 0.0007080000000000019, 0.0007015000000000082, 0.0006950000000000056, 0.000688500000000003]
+            self.x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299]
+
         elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Ground' and self.drop_size == 'Medium' and self.boom_height == 'Low'): 
             self.y = self.pond_ground_low_f2m
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+            #self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+            self.nasae = 6
+            self.express_y = [0.0109, 0.008512, 0.006124000000000001, 0.005698000000000001, 0.005272, 0.005023, 0.004774, 0.004598, 0.004422, 0.0042845, 0.0041470000000000005, 0.0040345, 0.003922, 0.003826, 0.00373, 0.0036465000000000004, 0.003563, 0.0034895, 0.003416, 0.00335, 0.0032840000000000005, 0.0032245, 0.003165, 0.0031105, 0.0030559999999999997, 0.003006, 0.002956, 0.0029094999999999998, 0.002863, 0.0028205, 0.002778, 0.002738, 0.002698, 0.0026605, 0.002623, 0.0025880000000000005, 0.002553, 0.00252, 0.002487, 0.002456, 0.002425, 0.0023955, 0.002366, 0.0023385, 0.002311, 0.0022845, 0.002258, 0.0022325, 0.002207, 0.002183, 0.002159, 0.0021360000000000003, 0.002113, 0.002091, 0.002069, 0.002048, 0.0020269999999999997, 0.002007, 0.001987, 0.0019674999999999996, 0.001948, 0.0019295, 0.001911, 0.0018935, 0.0018759999999999998, 0.0018585000000000001, 0.0018410000000000002, 0.0018245, 0.001808, 0.001792, 0.001776, 0.001761, 0.0017460000000000002, 0.0017310000000000001, 0.001716, 0.0017014999999999999, 0.001687, 0.001673, 0.0016589999999999999, 0.001646, 0.001633, 0.0016200000000000001, 0.0016070000000000001, 0.001594, 0.001581, 0.0015689999999999999, 0.001557, 0.001545, 0.0015329999999999999, 0.0015215, 0.00151, 0.0014989999999999997, 0.001488, 0.001477, 0.001466, 0.0014555000000000002, 0.0014449999999999999, 0.0014349999999999999, 0.0014249999999999998, 0.0014150000000000002, 0.0014050000000000002, 0.0013950000000000002, 0.0013850000000000002, 0.0013755, 0.001366, 0.001357, 0.001348, 0.0013390000000000001, 0.00133, 0.001321, 0.001312, 0.0013035000000000002, 0.0012950000000000001, 0.0012870000000000002, 0.0012790000000000002, 0.001271, 0.001263, 0.001255, 0.001247, 0.001239, 0.001231, 0.0012235, 0.001216, 0.0012085, 0.001201, 0.001194, 0.001187, 0.0011799999999999998, 0.001173, 0.0011660000000000002, 0.001159, 0.001152, 0.001145, 0.0011385, 0.001132, 0.0011255, 0.001119, 0.001113, 0.0011070000000000001, 0.0011005000000000001, 0.001094, 0.001088, 0.001082, 0.001076, 0.00107, 0.0010645, 0.001059, 0.0010530000000000001, 0.001047, 0.0010414999999999999, 0.001036, 0.0010305, 0.0010249999999999999, 0.0010195, 0.0010140000000000001, 0.0010090000000000001, 0.0010040000000000001, 0.0009987499999999999, 0.0009935, 0.0009884499999999999, 0.0009834, 0.0009784, 0.0009733999999999999, 0.00096855, 0.0009637, 0.0009589, 0.0009540999999999999, 0.0009494, 0.0009447, 0.00094005, 0.0009354, 0.00093085, 0.0009263, 0.00092185, 0.0009174000000000001, 0.00091305, 0.0009087, 0.0009044000000000001, 0.0009001, 0.00089585, 0.0008916, 0.00088745, 0.0008833000000000001, 0.0008792, 0.0008751000000000001, 0.0008711, 0.0008671, 0.0008631, 0.0008591, 0.0008552499999999999, 0.0008514, 0.00084755, 0.0008437, 0.00083995, 0.0008362, 0.0008324999999999999, 0.0008288, 0.0008251500000000001, 0.0008215, 0.0008179, 0.0008143, 0.0008107, 0.0008071, 0.0008035000000000001, 0.0007999000000000001, 0.0007963000000000001, 0.0007927, 0.0007890999999999998, 0.0007855000000000001, 0.0007819000000000004, 0.0007783000000000001, 0.0007747000000000003, 0.0007711000000000001, 0.0007674999999999998, 0.0007638999999999995, 0.0007603000000000004, 0.0007567000000000001, 0.0007530999999999999, 0.0007495000000000007, 0.0007459000000000004, 0.0007423000000000002, 0.0007386999999999999, 0.0007350999999999996, 0.0007315000000000005, 0.0007279000000000014, 0.0007243, 0.0007207000000000008, 0.0007171000000000017, 0.000713499999999998, 0.0007098999999999989, 0.0007062999999999997, 0.0007027000000000005, 0.0006991000000000014, 0.0006955, 0.0006919000000000008, 0.0006883000000000017, 0.0006847000000000003, 0.0006810999999999989, 0.0006774999999999997, 0.0006739000000000006, 0.0006703000000000015, 0.0006667000000000001, 0.0006631000000000009, 0.0006595000000000018, 0.0006558999999999981, 0.000652299999999999, 0.0006486999999999999, 0.0006451000000000007, 0.0006415000000000016, 0.0006379000000000002, 0.0006343000000000032, 0.0006306999999999974, 0.0006271000000000004, 0.0006234999999999991, 0.0006199000000000021, 0.0006163000000000007, 0.0006126999999999993, 0.0006091000000000024, 0.0006054999999999966, 0.0006018999999999996, 0.0005982999999999982, 0.0005947000000000014, 0.0005911, 0.0005875000000000031, 0.0005839000000000017, 0.0005803000000000003, 0.0005767000000000033, 0.0005730999999999975, 0.0005695000000000006, 0.0005658999999999992, 0.0005623000000000022, 0.0005587000000000008, 0.0005551000000000039, 0.0005515000000000025, 0.0005478999999999967, 0.0005442999999999997, 0.0005406999999999985, 0.0005371000000000015, 0.0005335000000000001, 0.0005299000000000032, 0.0005263000000000018, 0.0005227000000000004, 0.0005191000000000035, 0.0005154999999999976, 0.0005119000000000007, 0.0005082999999999993, 0.0005047000000000023, 0.000501100000000001, 0.0004974999999999996, 0.0004939000000000026, 0.0004902999999999969, 0.0004866999999999999, 0.0004830999999999985, 0.00047950000000000157, 0.00047590000000000024, 0.0004723000000000033, 0.0004687000000000019, 0.00046509999999999607, 0.00046149999999999913, 0.0004579000000000022]
+            self.x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299]
+
         elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Ground' and self.drop_size == 'Fine' and self.boom_height == 'High'):
             self.y = self.pond_ground_high_vf2f
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+            #self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+            self.nasae = 5
+            self.express_y = [0.06164, 0.052074999999999996, 0.042510000000000006, 0.03838, 0.034249999999999996, 0.031805, 0.02936, 0.027715, 0.026070000000000003, 0.024855000000000002, 0.023639999999999998, 0.022685, 0.02173, 0.020949999999999996, 0.02017, 0.019514999999999998, 0.01886, 0.018295, 0.01773, 0.017235, 0.016739999999999998, 0.0163, 0.01586, 0.015470000000000001, 0.01508, 0.014725000000000002, 0.01437, 0.014045, 0.013720000000000001, 0.01343, 0.01314, 0.01287, 0.0126, 0.012349999999999998, 0.0121, 0.011865, 0.01163, 0.011415000000000002, 0.011200000000000002, 0.011000000000000001, 0.0108, 0.01061, 0.01042, 0.010244999999999999, 0.010069999999999999, 0.009904999999999999, 0.00974, 0.0095835, 0.009427, 0.009279500000000001, 0.009132, 0.0089925, 0.008853, 0.008720499999999999, 0.008588, 0.0084625, 0.008337, 0.008218, 0.008099, 0.007984999999999999, 0.007871, 0.007763, 0.0076549999999999995, 0.007552, 0.007449, 0.00735, 0.007251, 0.007157, 0.007063000000000001, 0.0069725, 0.006882, 0.006795500000000001, 0.0067090000000000006, 0.0066265, 0.0065439999999999995, 0.0064645, 0.006384999999999999, 0.006308499999999999, 0.006232, 0.0061585, 0.006085, 0.006014500000000001, 0.0059440000000000005, 0.005876, 0.005808, 0.005742499999999999, 0.005677, 0.005614, 0.005551, 0.00549, 0.005429000000000001, 0.0053705, 0.005312, 0.005255000000000001, 0.005198, 0.0051435000000000005, 0.005089, 0.0050360000000000005, 0.0049830000000000004, 0.0049315, 0.00488, 0.0048305, 0.0047810000000000005, 0.004733, 0.004685, 0.0046385, 0.004592, 0.004547, 0.004502, 0.0044585, 0.004415, 0.004373, 0.004331, 0.0042899999999999995, 0.004249, 0.004209, 0.004169, 0.0041305000000000005, 0.004092, 0.0040545, 0.004017, 0.0039805000000000005, 0.003944, 0.0039085, 0.0038729999999999997, 0.0038385000000000003, 0.003804, 0.0037705, 0.003737, 0.0037045, 0.0036720000000000004, 0.0036404999999999996, 0.003609, 0.003578, 0.0035470000000000002, 0.003517, 0.003487, 0.0034575, 0.003428, 0.0033994999999999997, 0.0033710000000000003, 0.0033435000000000006, 0.003316, 0.003289, 0.0032619999999999997, 0.0032355, 0.003209, 0.003183, 0.0031569999999999997, 0.003132, 0.003107, 0.0030825, 0.003058, 0.0030340000000000002, 0.00301, 0.0029869999999999996, 0.002964, 0.0029410000000000005, 0.002918, 0.0028959999999999997, 0.002874, 0.002852, 0.0028299999999999996, 0.002809, 0.002788, 0.002767, 0.002746, 0.002726, 0.002706, 0.002686, 0.002666, 0.002647, 0.0026279999999999997, 0.002609, 0.0025900000000000003, 0.0025715, 0.002553, 0.0025345000000000003, 0.002516, 0.0024985, 0.0024809999999999997, 0.0024635, 0.0024460000000000003, 0.002429, 0.002412, 0.0023955, 0.002379, 0.002363, 0.002347, 0.002331, 0.0023150000000000002, 0.0022995, 0.002284, 0.0022685, 0.002253, 0.002238, 0.002223, 0.0022085, 0.002194, 0.0021795, 0.002165, 0.0021504999999999996, 0.002136, 0.0021215, 0.0021069999999999995, 0.0020925000000000006, 0.002078, 0.0020634999999999994, 0.0020489999999999996, 0.002034499999999999, 0.0020199999999999997, 0.0020054999999999977, 0.0019910000000000006, 0.0019764999999999987, 0.0019619999999999993, 0.0019474999999999976, 0.001932999999999998, 0.0019185000000000007, 0.001903999999999999, 0.0018894999999999973, 0.001875, 0.0018604999999999982, 0.0018459999999999965, 0.0018314999999999948, 0.0018169999999999974, 0.0018025000000000003, 0.0017879999999999986, 0.0017735000000000012, 0.0017589999999999995, 0.0017444999999999978, 0.001729999999999996, 0.0017154999999999987, 0.001700999999999997, 0.0016864999999999953, 0.001671999999999998, 0.0016575000000000006, 0.0016429999999999988, 0.0016284999999999971, 0.0016139999999999954, 0.0015994999999999937, 0.001585000000000001, 0.0015704999999999992, 0.0015559999999999975, 0.0015414999999999956, 0.0015269999999999939, 0.0015124999999999921, 0.0014979999999999904, 0.0014834999999999976, 0.001468999999999996, 0.0014544999999999942, 0.0014399999999999925, 0.0014254999999999906, 0.0014109999999999978, 0.001396499999999996, 0.0013820000000000032, 0.0013675000000000015, 0.0013529999999999998, 0.0013384999999999981, 0.0013239999999999962, 0.0013094999999999945, 0.0012949999999999928, 0.0012805, 0.0012659999999999982, 0.0012514999999999965, 0.0012369999999999948, 0.0012224999999999931, 0.0012079999999999912, 0.0011934999999999895, 0.0011789999999999967, 0.001164499999999995, 0.0011499999999999933, 0.0011354999999999916, 0.0011209999999999987, 0.001106499999999997, 0.001091999999999995, 0.0010774999999999934, 0.0010629999999999917, 0.00104849999999999, 0.0010339999999999883, 0.0010195000000000043, 0.0010050000000000026, 0.000990500000000001, 0.0009759999999999991, 0.0009614999999999974, 0.0009469999999999956, 0.0009324999999999939, 0.0009179999999999922, 0.0009034999999999905, 0.0008889999999999886, 0.0008744999999999869, 0.0008599999999999852, 0.0008454999999999835, 0.0008309999999999817, 0.0008164999999999978, 0.0008019999999999961, 0.0007874999999999944, 0.0007729999999999926, 0.0007584999999999908, 0.0007439999999999891, 0.0007294999999999874]
+            self.x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299]
         elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Ground' and self.drop_size == 'Medium' and self.boom_height == 'High'): 
             self.y = self.pond_ground_high_f2m
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
-        elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Aerial' and self.drop_size == 'Fine'):
-            self.y = self.terr_aerial_vf2f
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
-        elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Aerial' and self.drop_size == 'Medium'):
-            self.y = self.terr_aerial_f2m
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
-        elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Aerial' and self.drop_size == 'Coarse'):
-            self.y = self.terr_aerial_m2c   
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
-        elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Aerial' and self.drop_size == 'Very Coarse'):
-            self.y = self.terr_aerial_c2vc   
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
-        elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Ground' and self.drop_size == 'Fine'):
-            self.y = self.terr_ground_vf2f
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
-        elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Ground' and self.drop_size == 'Medium'): 
-            self.y = self.terr_ground_f2m  
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
-        elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Normal'):
-            self.y = self.pond_airblast_normal
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
-        elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Dense'):
-            self.y = self.pond_airblast_dense                        
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
-        elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Sparse'):
-            self.y = self.pond_airblast_sparse
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+            #self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+            self.nasae = 7
+            self.express_y = [0.0165, 0.013170999999999999, 0.009842, 0.0091275, 0.008413, 0.0079925, 0.007572, 0.007275, 0.006978, 0.0067465, 0.006515, 0.006325000000000001, 0.006135000000000001, 0.005974, 0.0058130000000000005, 0.005673500000000001, 0.005534, 0.0054105, 0.005286999999999999, 0.005177, 0.005067, 0.0049675000000000006, 0.004868, 0.004777, 0.004686, 0.004603, 0.00452, 0.0044435, 0.004366999999999999, 0.0042959999999999995, 0.004225, 0.0041589999999999995, 0.004093, 0.0040315, 0.0039700000000000004, 0.003912, 0.0038540000000000002, 0.0037995, 0.003745, 0.0036940000000000002, 0.003643, 0.0035945000000000005, 0.003546, 0.0034999999999999996, 0.003454, 0.0034109999999999995, 0.003368, 0.0033265, 0.003285, 0.0032455, 0.003206, 0.0031684999999999994, 0.003131, 0.0030954999999999997, 0.00306, 0.0030255, 0.0029909999999999997, 0.0029585, 0.002926, 0.0028945, 0.002863, 0.002833, 0.002803, 0.002774, 0.002745, 0.002717, 0.0026889999999999996, 0.0026625, 0.002636, 0.00261, 0.0025840000000000004, 0.0025595, 0.002535, 0.0025109999999999998, 0.002487, 0.0024635, 0.00244, 0.002418, 0.002396, 0.0023745, 0.002353, 0.0023320000000000003, 0.002311, 0.0022905, 0.00227, 0.0022505, 0.002231, 0.002212, 0.002193, 0.002175, 0.002157, 0.0021390000000000003, 0.002121, 0.0021035, 0.002086, 0.0020695, 0.002053, 0.0020365, 0.00202, 0.002004, 0.001988, 0.001973, 0.001958, 0.001943, 0.001928, 0.001913, 0.001898, 0.001884, 0.00187, 0.0018559999999999998, 0.001842, 0.0018285, 0.001815, 0.001802, 0.001789, 0.0017765, 0.001764, 0.0017515, 0.001739, 0.0017265, 0.001714, 0.0017020000000000002, 0.00169, 0.0016785, 0.0016669999999999999, 0.001656, 0.001645, 0.0016339999999999998, 0.001623, 0.0016120000000000002, 0.001601, 0.0015905, 0.00158, 0.0015695000000000001, 0.001559, 0.001549, 0.001539, 0.0015295, 0.0015199999999999999, 0.00151, 0.0015, 0.0014905, 0.0014810000000000001, 0.001472, 0.001463, 0.001454, 0.0014449999999999999, 0.001436, 0.0014269999999999999, 0.0014184999999999998, 0.0014099999999999998, 0.0014015, 0.0013930000000000001, 0.0013845, 0.001376, 0.001368, 0.00136, 0.001352, 0.001344, 0.0013365, 0.0013289999999999999, 0.001321, 0.001313, 0.0013055, 0.001298, 0.0012909999999999998, 0.0012839999999999998, 0.0012764999999999999, 0.0012690000000000002, 0.001262, 0.001255, 0.001248, 0.001241, 0.001234, 0.001227, 0.0012205, 0.001214, 0.0012075, 0.001201, 0.0011945, 0.001188, 0.0011815, 0.0011749999999999998, 0.0011690000000000001, 0.001163, 0.001157, 0.001151, 0.001145, 0.001139, 0.001133, 0.001127, 0.001121, 0.001115, 0.0011095, 0.001104, 0.0010985, 0.001093, 0.0010875, 0.001082, 0.0010765, 0.001071, 0.0010655, 0.00106, 0.0010544999999999999, 0.0010490000000000002, 0.0010435, 0.001038, 0.0010324999999999996, 0.0010269999999999995, 0.0010214999999999996, 0.0010160000000000002, 0.0010104999999999997, 0.0010050000000000003, 0.0009994999999999997, 0.0009939999999999992, 0.0009885, 0.0009829999999999995, 0.000977499999999999, 0.0009719999999999996, 0.000966499999999999, 0.0009609999999999985, 0.000955499999999998, 0.0009499999999999998, 0.0009445000000000014, 0.0009390000000000009, 0.0009335000000000004, 0.0009279999999999999, 0.0009224999999999994, 0.000916999999999999, 0.0009115000000000006, 0.0009060000000000001, 0.0009004999999999996, 0.0008949999999999991, 0.0008894999999999986, 0.0008839999999999981, 0.0008784999999999977, 0.0008729999999999993, 0.0008674999999999988, 0.0008619999999999983, 0.0008564999999999978, 0.0008509999999999973, 0.0008454999999999969, 0.0008399999999999963, 0.0008344999999999958, 0.0008289999999999953, 0.0008234999999999993, 0.0008180000000000032, 0.0008125000000000027, 0.0008070000000000022, 0.0008015000000000016, 0.0007960000000000011, 0.0007905000000000006, 0.0007850000000000001, 0.0007794999999999996, 0.0007739999999999991, 0.0007684999999999987, 0.0007629999999999982, 0.0007574999999999977, 0.0007520000000000016, 0.0007465000000000011, 0.0007410000000000006, 0.0007355, 0.0007299999999999995, 0.000724499999999999, 0.0007189999999999985, 0.000713499999999998, 0.0007079999999999975, 0.000702499999999997, 0.0006969999999999966, 0.000691499999999996, 0.0006859999999999955, 0.0006804999999999995, 0.000674999999999999, 0.0006695000000000029, 0.0006639999999999979, 0.0006585000000000019, 0.0006529999999999969, 0.0006475000000000008, 0.0006419999999999959, 0.0006364999999999998, 0.0006309999999999948, 0.0006254999999999989, 0.0006199999999999939, 0.0006144999999999979, 0.0006089999999999929, 0.0006034999999999968, 0.0005979999999999919, 0.0005924999999999958, 0.0005869999999999908, 0.0005814999999999948, 0.0005759999999999987, 0.0005705000000000026, 0.0005649999999999977, 0.0005595000000000016, 0.0005540000000000056, 0.0005485000000000007, 0.0005430000000000046, 0.0005374999999999997, 0.0005320000000000036, 0.0005264999999999986]
+            self.x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299]
+
+        elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Orchard'):
+            self.y = self.pond_airblast_orchard
+            #self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+            self.nasae = 9
+            self.express_y = [0.0218, 0.019110000000000002, 0.01642, 0.014714999999999999, 0.013009999999999999, 0.01184, 0.010669999999999999, 0.009834, 0.008998, 0.008373, 0.0077480000000000005, 0.007266, 0.006784, 0.0064025, 0.0060209999999999994, 0.0057125000000000006, 0.005404, 0.00515, 0.004896, 0.004684, 0.004472, 0.004292000000000001, 0.004112, 0.0039585, 0.0038050000000000002, 0.003672, 0.003539, 0.003423, 0.003307, 0.003205, 0.0031030000000000003, 0.0030125, 0.002922, 0.0028415000000000003, 0.002761, 0.0026890000000000004, 0.002617, 0.002552, 0.002487, 0.002428, 0.002369, 0.0023155, 0.002262, 0.002213, 0.002164, 0.0021195, 0.002075, 0.0020334999999999997, 0.001992, 0.001954, 0.001916, 0.0018809999999999999, 0.0018459999999999998, 0.0018135, 0.001781, 0.0017504999999999999, 0.00172, 0.0016914999999999999, 0.001663, 0.0016365000000000002, 0.00161, 0.0015854999999999999, 0.0015609999999999999, 0.0015375, 0.0015140000000000002, 0.001492, 0.00147, 0.0014495, 0.001429, 0.0014089999999999999, 0.001389, 0.0013705, 0.001352, 0.0013345000000000002, 0.001317, 0.0013005, 0.0012839999999999998, 0.001268, 0.001252, 0.001237, 0.001222, 0.001208, 0.001194, 0.0011799999999999998, 0.001166, 0.001153, 0.00114, 0.0011275, 0.001115, 0.0011035, 0.001092, 0.0010805, 0.0010689999999999999, 0.0010580000000000001, 0.001047, 0.0010364999999999999, 0.001026, 0.0010155, 0.001005, 0.00099555, 0.0009861, 0.0009767500000000002, 0.0009674000000000001, 0.0009583500000000001, 0.0009493, 0.0009406500000000001, 0.0009320000000000001, 0.0009236, 0.0009152, 0.00090715, 0.0008991, 0.0008913, 0.0008835, 0.00087595, 0.0008684, 0.0008611, 0.0008537999999999999, 0.00084675, 0.0008397000000000001, 0.0008329, 0.0008261000000000001, 0.00081945, 0.0008128, 0.0008064000000000001, 0.0008, 0.0007938000000000001, 0.0007876, 0.00078155, 0.0007754999999999999, 0.0007696500000000001, 0.0007638, 0.00075815, 0.0007525, 0.00074695, 0.0007414, 0.00073605, 0.0007306999999999999, 0.00072545, 0.0007202, 0.0007151499999999999, 0.0007101000000000001, 0.00070515, 0.0007002, 0.0006953999999999999, 0.0006906, 0.0006859, 0.0006812, 0.00067665, 0.0006721, 0.0006676500000000001, 0.0006632000000000001, 0.00065885, 0.0006544999999999999, 0.0006503, 0.0006461, 0.0006419500000000001, 0.0006378, 0.00063375, 0.0006297, 0.0006257999999999999, 0.0006219, 0.00061805, 0.0006142000000000001, 0.00061045, 0.0006067000000000001, 0.0006030499999999999, 0.0005994, 0.0005958000000000001, 0.0005922, 0.0005887, 0.0005852, 0.0005818, 0.0005784000000000001, 0.00057505, 0.0005717, 0.0005684, 0.0005651, 0.0005619, 0.0005587000000000001, 0.00055555, 0.0005524, 0.00054935, 0.0005463, 0.0005433, 0.0005403000000000001, 0.00053735, 0.0005344, 0.0005315000000000001, 0.0005286, 0.00052575, 0.0005229000000000001, 0.00052015, 0.0005174, 0.00051465, 0.0005119, 0.0005092499999999999, 0.0005066, 0.000504, 0.0005013999999999999, 0.0004988, 0.0004962, 0.0004936, 0.000491, 0.0004883999999999999, 0.0004858, 0.00048320000000000004, 0.0004805999999999999, 0.00047800000000000007, 0.0004754, 0.0004727999999999999, 0.00047020000000000005, 0.00046760000000000025, 0.00046499999999999986, 0.0004624, 0.0004598000000000002, 0.00045719999999999984, 0.0004546, 0.0004520000000000002, 0.0004493999999999998, 0.00044679999999999996, 0.00044420000000000017, 0.0004415999999999998, 0.0004390000000000005, 0.00043640000000000014, 0.00043379999999999976, 0.00043120000000000045, 0.0004286000000000001, 0.00042599999999999973, 0.0004234000000000004, 0.00042080000000000004, 0.0004181999999999997, 0.0004156000000000004, 0.000413, 0.0004103999999999997, 0.00040780000000000037, 0.0004052, 0.00040259999999999965, 0.00040000000000000034, 0.00039739999999999996, 0.0003947999999999996, 0.0003922000000000003, 0.00038960000000000107, 0.00038699999999999954, 0.0003844000000000003, 0.00038180000000000104, 0.0003791999999999995, 0.00037660000000000026, 0.000374000000000001, 0.0003713999999999995, 0.00036880000000000024, 0.000366200000000001, 0.00036359999999999946, 0.0003610000000000002, 0.00035840000000000096, 0.00035579999999999943, 0.0003532000000000002, 0.00035060000000000093, 0.0003479999999999994, 0.00034540000000000016, 0.0003428000000000009, 0.0003401999999999994, 0.00033760000000000013, 0.0003350000000000009, 0.00033239999999999935, 0.0003298000000000001, 0.0003272000000000008, 0.0003245999999999993, 0.0003220000000000001, 0.00031940000000000077, 0.0003167999999999993, 0.00031420000000000005, 0.00031160000000000074, 0.00030899999999999927, 0.0003064, 0.0003038000000000007, 0.00030119999999999924, 0.0002986, 0.0002960000000000007, 0.0002933999999999992, 0.00029079999999999997, 0.00028820000000000066, 0.0002856000000000014, 0.00028300000000000216, 0.0002803999999999984, 0.00027779999999999916, 0.0002751999999999999, 0.0002726000000000006, 0.00027000000000000136, 0.00026740000000000205, 0.00026479999999999836, 0.0002621999999999991, 0.0002595999999999998, 0.00025700000000000055, 0.0002544000000000013, 0.000251800000000002, 0.0002491999999999983, 0.00024659999999999906, 0.00024399999999999978, 0.0002414000000000005, 0.00023880000000000122]
+            self.x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299]
+
         elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Vineyard'):
             self.y = self.pond_airblast_vineyard            
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
-        elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Orchard'):
-            self.y = pond_airblast_orchard
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
-        elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Normal'):
-            self.y = self.terr_airblast_normal
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,600,700,800,900,997]            
-        elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Dense'):
-            self.y = self.terr_airblast_dense
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,600,700,800,900,997]
-        elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Sparse'):
-            self.y = self.terr_airblast_sparse
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,600,700,800,900,997]
-        elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Vineyard'):
-            self.y = self.terr_airblast_vineyard
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,600,700,800,900,997]
-        elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Orchard'):
-            self.y = self.terr_airblast_orchard
-            self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,600,700,800,900,997]
-            self.z = 4
+            self.express_y = [0.002433, 0.0020455, 0.001658, 0.001466, 0.0012740000000000002, 0.0011565, 0.001039, 0.00096125, 0.0008835, 0.00082735, 0.0007712, 0.0007285999999999999, 0.000686, 0.0006523999999999999, 0.0006188, 0.0005914999999999999, 0.0005641999999999999, 0.0005415, 0.0005188, 0.0004996, 0.00048039999999999997, 0.0004639, 0.00044740000000000003, 0.00043300000000000006, 0.00041860000000000004, 0.00040595, 0.00039329999999999996, 0.00038209999999999996, 0.00037089999999999996, 0.00036085, 0.0003508, 0.00034175, 0.0003327, 0.0003245, 0.0003163, 0.00030885, 0.0003014, 0.00029455000000000003, 0.0002877, 0.00028145, 0.00027519999999999997, 0.0002694, 0.0002636, 0.00025825, 0.0002529, 0.0002479, 0.0002429, 0.00023825, 0.00023359999999999999, 0.0002293, 0.000225, 0.00022095, 0.00021690000000000001, 0.00021310000000000003, 0.00020930000000000002, 0.00020569999999999999, 0.00020209999999999998, 0.00019874999999999998, 0.00019539999999999998, 0.00019224999999999998, 0.0001891, 0.00018610000000000002, 0.0001831, 0.00018025, 0.00017739999999999998, 0.0001747, 0.000172, 0.00016945000000000003, 0.0001669, 0.0001645, 0.00016209999999999998, 0.0001598, 0.0001575, 0.0001553, 0.0001531, 0.000151, 0.00014890000000000001, 0.0001469, 0.0001449, 0.000143, 0.0001411, 0.0001393, 0.0001375, 0.00013575, 0.000134, 0.00013230000000000002, 0.0001306, 0.000129, 0.0001274, 0.00012585, 0.0001243, 0.00012285, 0.0001214, 0.00011994999999999999, 0.0001185, 0.00011715, 0.0001158, 0.0001145, 0.0001132, 0.00011190000000000001, 0.0001106, 0.0001094, 0.0001082, 0.00010704999999999999, 0.0001059, 0.00010475, 0.0001036, 0.00010249999999999998, 0.0001014, 0.00010033999999999999, 9.928e-05, 9.826e-05, 9.724e-05, 9.6255e-05, 9.527e-05, 9.431500000000001e-05, 9.336e-05, 9.244e-05, 9.152e-05, 9.062500000000001e-05, 8.973e-05, 8.8865e-05, 8.800000000000001e-05, 8.716000000000001e-05, 8.632000000000001e-05, 8.551e-05, 8.47e-05, 8.390999999999999e-05, 8.312e-05, 8.236e-05, 8.16e-05, 8.085500000000001e-05, 8.011e-05, 7.939500000000001e-05, 7.868e-05, 7.798e-05, 7.727999999999999e-05, 7.66e-05, 7.591999999999999e-05, 7.526e-05, 7.46e-05, 7.396e-05, 7.332e-05, 7.2695e-05, 7.206999999999999e-05, 7.1465e-05, 7.086000000000001e-05, 7.027e-05, 6.968e-05, 6.9105e-05, 6.853e-05, 6.7975e-05, 6.742e-05, 6.6875e-05, 6.633e-05, 6.58e-05, 6.527e-05, 6.475e-05, 6.423e-05, 6.373e-05, 6.323e-05, 6.2735e-05, 6.224e-05, 6.1765e-05, 6.129e-05, 6.0820000000000004e-05, 6.035e-05, 5.9895e-05, 5.943999999999999e-05, 5.8995e-05, 5.855e-05, 5.811999999999999e-05, 5.769e-05, 5.7265e-05, 5.684e-05, 5.6425e-05, 5.601e-05, 5.561e-05, 5.521e-05, 5.4815e-05, 5.442e-05, 5.4035e-05, 5.365e-05, 5.327e-05, 5.2890000000000004e-05, 5.252e-05, 5.215e-05, 5.179e-05, 5.143e-05, 5.108e-05, 5.0730000000000004e-05, 5.038499999999999e-05, 5.0039999999999995e-05, 4.9705e-05, 4.937e-05, 4.9040000000000005e-05, 4.8710000000000006e-05, 4.8385000000000005e-05, 4.8060000000000004e-05, 4.7745e-05, 4.743e-05, 4.7114999999999985e-05, 4.679999999999999e-05, 4.6485e-05, 4.616999999999998e-05, 4.5854999999999994e-05, 4.553999999999999e-05, 4.5224999999999954e-05, 4.490999999999998e-05, 4.459499999999998e-05, 4.427999999999994e-05, 4.3964999999999976e-05, 4.365000000000001e-05, 4.333499999999997e-05, 4.301999999999993e-05, 4.2704999999999965e-05, 4.2389999999999924e-05, 4.207499999999996e-05, 4.175999999999999e-05, 4.144499999999995e-05, 4.112999999999992e-05, 4.081499999999995e-05, 4.0499999999999914e-05, 4.018499999999994e-05, 3.9869999999999976e-05, 3.955500000000001e-05, 3.923999999999997e-05, 3.892499999999993e-05, 3.8609999999999896e-05, 3.8295e-05, 3.797999999999996e-05, 3.766499999999992e-05, 3.7349999999999885e-05, 3.7034999999999844e-05, 3.671999999999981e-05, 3.640499999999977e-05, 3.609000000000001e-05, 3.5774999999999975e-05, 3.5459999999999935e-05, 3.51449999999999e-05, 3.482999999999986e-05, 3.451499999999982e-05, 3.419999999999992e-05, 3.388499999999989e-05, 3.356999999999985e-05, 3.325499999999981e-05, 3.2939999999999776e-05, 3.262499999999988e-05, 3.230999999999998e-05, 3.199499999999994e-05, 3.16799999999999e-05, 3.1364999999999724e-05, 3.104999999999997e-05, 3.073500000000007e-05, 3.0419999999999892e-05, 3.0104999999999994e-05, 2.9789999999999818e-05, 2.9474999999999917e-05, 2.916000000000002e-05, 2.8844999999999843e-05, 2.8529999999999945e-05, 2.821499999999977e-05, 2.789999999999987e-05, 2.7584999999999693e-05, 2.7269999999999795e-05, 2.6954999999999897e-05, 2.6639999999999718e-05, 2.632499999999982e-05, 2.6009999999999644e-05, 2.5694999999999746e-05, 2.537999999999957e-05, 2.506499999999967e-05, 2.474999999999977e-05, 2.4434999999999874e-05, 2.4119999999999976e-05, 2.38049999999998e-05, 2.34899999999999e-05, 2.3175e-05, 2.2859999999999825e-05, 2.2544999999999927e-05, 2.222999999999975e-05, 2.191499999999985e-05, 2.1599999999999675e-05, 2.1284999999999777e-05, 2.096999999999988e-05, 2.06549999999997e-05, 2.0339999999999802e-05, 2.0024999999999626e-05, 1.9709999999999728e-05, 1.9394999999999553e-05, 1.907999999999965e-05, 1.8764999999999753e-05, 1.8449999999999578e-05, 1.813499999999968e-05, 1.7819999999999504e-05, 1.750499999999988e-05, 1.7189999999999983e-05, 1.6874999999999807e-05, 1.655999999999991e-05, 1.6244999999999734e-05]
+            self.x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299]
+            self.nasae =  8
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Aerial' and self.drop_size == 'Fine'):
+    #         self.y = self.terr_aerial_vf2f
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Aerial' and self.drop_size == 'Medium'):
+    #         self.y = self.terr_aerial_f2m
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Aerial' and self.drop_size == 'Coarse'):
+    #         self.y = self.terr_aerial_m2c   
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Aerial' and self.drop_size == 'Very Coarse'):
+    #         self.y = self.terr_aerial_c2vc   
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Ground' and self.drop_size == 'Fine'):
+    #         self.y = self.terr_ground_vf2f
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Ground' and self.drop_size == 'Medium'): 
+    #         self.y = self.terr_ground_f2m  
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Normal'):
+    #         self.y = self.pond_airblast_normal
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Dense'):
+    #         self.y = self.pond_airblast_dense                        
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+            #     elif (self.ecosystem_type == 'EPA Pond' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Orchard'):
+    #         self.y = pond_airblast_orchard
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,997]
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Normal'):
+    #         self.y = self.terr_airblast_normal
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,600,700,800,900,997]            
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Dense'):
+    #         self.y = self.terr_airblast_dense
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,600,700,800,900,997]
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Sparse'):
+    #         self.y = self.terr_airblast_sparse
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,600,700,800,900,997]
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Vineyard'):
+    #         self.y = self.terr_airblast_vineyard
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,600,700,800,900,997]
+    #     elif (self.ecosystem_type == 'Terrestrial' and self.application_method == 'Orchard/Airblast' and self.orchard_type == 'Orchard'):
+    #         self.y = self.terr_airblast_orchard
+    #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,600,700,800,900,997]
+    #         self.z = 4
         else:
-            #print 2
+             #print 2
             self.y = 3
-        return self.x, self.y
+            #print self.nasae
+    def express_extrapolate_f(self, y, nasae, distance):
+       # XV = np.array([X0, X1, X2, X3, X4, X5, X6, X7, X8, X9])
+        
+        #NASAE1=int(self.nasae)-1
+        #N=max(0,min(9,(self.nasae-1)))
+        # I=max(0,min(99,int(0.5*int(self.distance))+1))
+        I_f=max(1,min(100,int(0.5*int(self.distance))+1))
+        YM=2.0*(I_f-1)
+        YP=2.0*(I_f)
+        I=I_f-1 #to account for python being zero based
 
+        self.init_avg_dep_foa=(0.5*(self.y[I]*(YP-int(self.distance))+self.y[I+1]*(int(self.distance)-YM))) / 100
+        return self.init_avg_dep_foa 
     def extrapolate_from_fig(self, ecosystem_type, distance, bisect_left, x, y): 
         self.distance = int(self.distance)   
         if self.distance in self.x:
@@ -254,27 +549,24 @@ class agdrift(object):
             self.distance = self.x[x_index]    
         else:
             i = min(enumerate(self.y), key=lambda x: abs(x[1]-self.init_avg_dep_foa)) #finds smallest closest value closest to input value
-            #i = bisect_left(self.y, self.init_avg_dep_foa) #find largest foa closest to value
-            #print self.y
-            #print self.init_avg_dep_foa
-            #print i[0]
-            #print i[1]
             i2 = i[0]
             low1 = self.y[i2] #assign nearest lowest x value for interpolation
             high1 = self.y[i2-1] #assign nearest highest x value for interpolation
             low_i = i2    #assign index values to use to find nearest y values for interpolation            
             high_i = i2-1      #assign index values to use to find nearest y values for interpolation
-            print self.y
-            print low1
-            print high1
-            print low_i
-            print high_i
             self.distance = ((self.init_avg_dep_foa - low1) * (self.x[high_i] - self.x[low_i]) / (high1 - low1)) + self.x[low_i]
         return self.distance
+    def deposition_foa_to_gha_f(self, init_avg_dep_foa, application_rate):
+        application_rate = float(application_rate)
+        #self.init_avg_dep_foa = float(init_avg_dep_foa)
+        self.avg_depo_gha = init_avg_dep_foa *100.0 * application_rate  * 10.0
+        return self.avg_depo_gha
 
     def deposition_foa_to_lbac_f(self, init_avg_dep_foa, application_rate):
         self.application_rate = float(self.application_rate)
-        self.avg_depo_lbac = self.init_avg_dep_foa * self.application_rate 
+        #print self.application_rate
+        #print self.init_avg_dep_foa
+        self.avg_depo_lbac = (self.init_avg_dep_foa)  * self.application_rate 
         #print self.avg_depo_lbac
         return self.avg_depo_lbac
 
@@ -286,9 +578,9 @@ class agdrift(object):
     def deposition_gha_to_ngL_f(self, aquatic_type, avg_depo_gha):
         if (self.aquatic_type == '1'):
 
-            self.deposition_ngL = self.avg_depo_gha * 0.05 * 1000
+            self.deposition_ngL = self.avg_depo_gha * 0.05 * 1000.0
         else:
-            self.deposition_ngL = self.avg_depo_gha * 0.05 * 1000 * (6.56 / 0.4921)
+            self.deposition_ngL = self.avg_depo_gha * 0.05 * 1000.0 * (6.56 / 0.4921)
         return self.deposition_ngL
 
     def deposition_gha_to_mgcm_f(self, avg_depo_gha):

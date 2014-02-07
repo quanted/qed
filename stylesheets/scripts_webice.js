@@ -39,6 +39,7 @@ $( document ).ready(function() {
 		$('#DataTable').find('tr').attr({id:'DataRow'});
 		$('#wiForm').attr({action:"webiceSSD_out.html"});
 		$("#wiSSDtemp input[type='hidden']").first().attr({name:'file', id:'file1'}).next().attr({name:'type1', id:'type1'}).next().attr({name:'type2', id:'type2'});
+		$("#SubmitTable").attr({value:'Calculate SSD'});
 		$.getScript('/stylesheets/webice/scripts/iceSSD.js', function() {
 			initPage();
 		});

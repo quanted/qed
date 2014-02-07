@@ -126,11 +126,23 @@ class TREX2BatchRunner():
             tw_mamm = config_properties['tested_mamm_body_weight']
         ## These properties don't exist yet
         seed_crop_v = None
+        if 'seed_crop' in config_properties:
+            seed_crop_v = config_properties['seed_crop']
         r_s = None
+        if 'row_sp' in config_properties:
+            r_s = config_properties['row_sp']
         b_w = None
+        if 'bandwidth' in config_properties:
+            b_w = config_properties['bandwidth']*12
         p_i = None
+        if 'percent_incorporated' in config_properties:
+            p_i = config_properties['percent_incorporated']
         x = None
+        if 'mineau_scaling_factor' in config_properties:
+            x = config_properties['mineau_scaling_factor']
         m_s_r_p = None
+        if 'maximum_seedling_rate_per_use' in config_properties:
+            m_s_r_p = config_properties['maximum_seedling_rate_per_use']
 
         trex2_obj = trex2_model.trex2(True,True, chemical_name, use, formu_name, a_i, Application_type, 
                 seed_treatment_formulation_name, seed_crop, seed_crop_v, r_s, b_w, p_i, den, h_l, n_a, ar_lb, day_out,

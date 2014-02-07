@@ -7,15 +7,15 @@ import os
 from google.appengine.ext.webapp import template
 
 def timestamp(przm5_obj):
-    ts = time.time()
-    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+    # ts = time.time()
+    # st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+    st = datetime.datetime.strptime(przm5_obj.jid, '%Y%m%d%H%M%S%f').strftime('%A %Y-%m-%d %H:%M:%S')
     html="""
     <div class="out_">
         <b>PRZM<br>
-        <b>jid=%s<b><br>
-    """%(przm5_obj.jid)
+    """
     html = html + st
-    html = html + " (UTC)</b>"
+    html = html + " (EST)</b>"
     html = html + """
     </div>"""
     return html

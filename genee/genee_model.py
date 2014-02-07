@@ -1,9 +1,10 @@
+import os
 import keys_Picloud_S3
 import base64
 import urllib
 from google.appengine.api import urlfetch
 import json
-import time
+import time, datetime
 import logging
 logger = logging.getLogger('Geneec Model')
 
@@ -28,6 +29,15 @@ class genee(object):
             self.application_method_label = 'Airblast Spray (Orchard & Vineyard)'
         if application_method == 'd':
             self.application_method_label = 'Granular (Non-spray)'
+
+        if self.application_target == 'a' or 'Short grass':
+            self.application_target_label = 'Short grass'
+        if self.application_target == 'b' or 'Tall grass':
+            self.application_target_label = 'Tall grass'
+        if self.application_target == 'c' or 'Broad-leafed plants/small insects':
+            self.application_target_label = 'Broad-leafed plants/small insects'
+        if self.application_target == 'd' or 'Fruits/pods/seeds/large insects':
+            self.application_target_label = 'Fruits/pods/seeds/large insects'
 
         self.aerial_size_dist = aerial_size_dist
         self.ground_spray_type = ground_spray_type
@@ -69,25 +79,28 @@ class genee(object):
         all_dic = {"APPRAT":APPRAT, "APPNUM":APPNUM, "APSPAC":APSPAC, "KOC":KOC, "METHAF":METHAF, "WETTED":WETTED,
                    "METHOD":METHOD, "AIRFLG":AIRFLG, "YLOCEN":YLOCEN, "GRNFLG":GRNFLG, "GRSIZE":GRSIZE,
                    "ORCFLG":ORCFLG, "INCORP":INCORP, "SOL":SOL, "METHAP":METHAP, "HYDHAP":HYDHAP, "FOTHAP":FOTHAP}
-        logger.info(all_dic)
         data = json.dumps(all_dic)
 
-        import datetime, time
-        ts = time.time()
-        self.jid = datetime.datetime.fromtimestamp(ts).strftime('%Y%m%d%H%M%S%f')
-        url='http://localhost:7777/geneec1/'+self.jid 
-        # url='http://23.20.129.86:7777/geneec1/'+self.jid 
+        ts = datetime.datetime.now()
+        if(time.daylight):
+            ts1 = datetime.timedelta(hours=-4)+ts
+        else:
+            ts1 = datetime.timedelta(hours=-5)+ts
+        self.jid = ts1.strftime('%Y%m%d%H%M%S%f')
+        url=os.environ['UBERTOOL_REST_SERVER'] + '/geneec/' + self.jid 
 
 
-        # if run_type == "individual":
-        start = time.clock()
-        self.response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
-        self.output_val = json.loads(self.response.content)['result']
-        self.jid = json.loads(self.response.content)['jid']
-        self.elapsed = (time.clock() - start)
-        # logger.info(self.jid)
+        if run_type == "single" or "qaqc":
+            response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+            self.output_val = json.loads(response.content)['result']
 
-        # if run_type == "batch":
-        #     start = time.clock()
-        #     self.response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
-        #     self.output_val = json.loads(self.response.content)['result']
+
+        if run_type == "batch":
+            response = ""
+            while response =="":
+                response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+            self.output_val = json.loads(response.content)['result']
+
+
+
+

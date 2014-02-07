@@ -1,5 +1,5 @@
 application: pypest
-version: sprint10
+version: jon
 runtime: python27
 api_version: 1
 
@@ -23,9 +23,11 @@ env_variables:
   UBERTOOL_BATCH_SERVER: 'http://localhost:8081/'
   UBERTOOL_MONGO_SERVER: 'http://localhost:8081'
   UBERTOOL_SECURE_SERVER: 'http://localhost:8081'
-#  UBERTOOL_BATCH_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com/'
-#  UBERTOOL_MONGO_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
-#  UBERTOOL_SECURE_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
+  #  UBERTOOL_BATCH_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com/'
+  #  UBERTOOL_MONGO_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
+  #  UBERTOOL_SECURE_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
+  # UBERTOOL_REST_SERVER: 'http://localhost:7777'
+  UBERTOOL_REST_SERVER: 'http://23.23.190.202:7777'
 
 
 skip_files:
@@ -40,7 +42,12 @@ skip_files:
 - ^(.*/)?\..*
 - ^(.*/)?.*\.gz
 - ^(.*/)?.*\.bak
+- ^(data/.*)
+- ^(data/webice/.*)
+- ^(data/webice/images/.*)
 - ^(geneec/geneec_picloud/.*)
+- ^(data/.*)
+- ^(REST/.*)
 - ^(przm/przm_picloud/.*)
 - ^(pfam/pfam_picloud/.*)
 - ^(generatepdf/generatepdf_picloud/.*)$
@@ -52,6 +59,12 @@ handlers:
   script: landing_pypest.py 
 - url: /admin.html
   script: admin.py
+- url: /http_check_eco.html
+  script: http_check_eco.py
+- url: /http_check_hh.html
+  script: http_check_hh.py
+- url: /http_check_unter.html
+  script: http_check_unter.py
 - url: /eco_index.html
   script: main.py 
 - url: /hh_index.html
@@ -72,7 +85,8 @@ handlers:
   secure: always
 - url: /ajaxtest.html
   script: ajaxtest.py
-
+- url: /history_revisit.html
+  script: history_revisit.py
 # All URLs beginning with /stylesheets are treated as paths to static files in
 # the stylesheets/ directory. Note that static_dir handlers do not use a
 # regular expression for the URL pattern, only a prefix.
@@ -169,6 +183,15 @@ handlers:
   script: webice/webice_SSDoutput.py
 - url: /webiceTNE_out\.html
   script: webice/webice_TNEoutput.py
+- url: /ICETable\.html
+  script: webice/webice_ICETable.py
+# #historyoutput
+# - url: /(.*?)_asdf.html
+#   script: \1/\1_asdf.py
+  #historyoutput
+#historyoutput
+- url: /(.*?)_intermediate.html
+  script: \1/\1_intermediate.py
 
 ##TESTED models##
 #description
@@ -193,13 +216,12 @@ handlers:
 - url: /(.*?)/(.*?)_qaqc_output.html
   script: \1/\2/\2_qaqc_output.py
 
-
 #USER pages
 - url: /user.html
   script: user/user_input.py 
   login: required
   secure: never
-  
+
 - url: /user_output.html
   script: user/user_output.py
   login: required

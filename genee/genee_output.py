@@ -7,14 +7,14 @@ from google.appengine.ext.webapp import template
 import cgi
 import cgitb
 cgitb.enable()
-import json
-from genee import genee_model,genee_tables
+from genee import genee_model, genee_tables
 import sys
 lib_path = os.path.abspath('..')
 sys.path.append(lib_path)
 from uber import uber_lib
-
-#############################################
+import logging
+logger = logging.getLogger('Geneec Model')
+import rest_funcs
 
 class GENEEOutputPage(webapp.RequestHandler):
     def post(self):     
@@ -121,16 +121,7 @@ class GENEEOutputPage(webapp.RequestHandler):
             airblast_type_label='NA'
 ##########################################################################################                                        
 
-        genee_obj = genee_model.genee('individual', chem_name, application_target, application_rate, number_of_applications, interval_between_applications, Koc, aerobic_soil_metabolism, wet_in, application_method, application_method_label, aerial_size_dist, ground_spray_type, airblast_type, spray_quality, no_spray_drift, incorporation_depth, solubility, aerobic_aquatic_metabolism, hydrolysis, photolysis_aquatic_half_life)
-        
-        # application_rate, number_of_applications, interval_between_applications, 
-        #                   Koc, aerobic_soil_metabolism, wet_in, application_method, 
-        #                   aerial_size_dist, no_spray_drift, ground_spray_type, spray_quality, airblast_type,
-        #                   incorporation_depth, solubility, aerobic_aquatic_metabolism, hydrolysis, photolysis_aquatic_half_life
-
-
-        # final_res=get_jid(genee_obj)
-
+        genee_obj = genee_model.genee('single', chem_name, application_target, application_rate, number_of_applications, interval_between_applications, Koc, aerobic_soil_metabolism, wet_in, application_method, application_method_label, aerial_size_dist, ground_spray_type, airblast_type, spray_quality, no_spray_drift, incorporation_depth, solubility, aerobic_aquatic_metabolism, hydrolysis, photolysis_aquatic_half_life)
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie)
@@ -141,10 +132,10 @@ class GENEEOutputPage(webapp.RequestHandler):
                 'model_attributes':'GENEE Output'})
         html = html + genee_tables.timestamp(genee_obj)
         html = html + genee_tables.table_all(genee_obj)
-        # html = html + str(genee_obj.data_a)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.save_dic(html, genee_obj.__dict__, 'geneec', 'single')
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', GENEEOutputPage)], debug=True)

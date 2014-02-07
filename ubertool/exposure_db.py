@@ -15,7 +15,7 @@ import datetime
 
 class ECInp(forms.Form):
     user_exposure_concentrations_configuration = forms.ChoiceField(label="User Saved Exposure Concentrations Configuration Name",required=True)
-    exposure_concentrations_config_name = forms.CharField(label="Exposure Concentrations Configuration Name", initial="exposure-concentrations-config-%s"%datetime.datetime.now())
+    config_name = forms.CharField(label="Exposure Concentrations Configuration Name", initial="exposure-concentrations-config-%s"%datetime.datetime.now())
     interval_between_applications = forms.FloatField(label='Interval between applications (days)')
     column_height = forms.FloatField(label='Column Height (m)')
     spray_drift = forms.FloatField(label='Spray Drift Fraction')

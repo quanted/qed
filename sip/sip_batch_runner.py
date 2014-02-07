@@ -72,6 +72,6 @@ class SIPBatchRunner():
         noaec_o = None
         if 'noaec_o' in config_properties:
             noaec_o = config_properties['noaec_o']
-        sip_obj = sip_model.sip(True,True,chemical_name, b_species, m_species, bw_quail, bw_duck, bwb_other, bw_rat, bwm_other, sol, ld50_a, ld50_m, aw_bird, mineau, aw_mamm, noaec_d, noaec_q, noaec_o, Species_of_the_bird_NOAEC_CHOICES, noael)
+        sip_obj = sip_model.sip(True,True,True,chemical_name, b_species, m_species, bw_quail, bw_duck, bwb_other, bw_rat, bwm_other, sol, ld50_a, ld50_m, aw_bird, mineau, aw_mamm, noaec_d, noaec_q, noaec_o, Species_of_the_bird_NOAEC_CHOICES, noael)
         results_dict['sip'] = vars(sip_obj)
         return results_dict

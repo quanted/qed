@@ -21,9 +21,12 @@ body {
   background: #F4F7ED;
   font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   /*font-family: Verdana, Arial, Helvetica, sans-serif;*/
-  font-size: 11px;
+  font-size: 13px;
   line-height: 18px;
   color: #333333;
+}
+p {
+  font-size: 13px;
 }
 #container_landing {
   width: 680px;
@@ -178,9 +181,10 @@ span {
   cursor: pointer;
 }
 #header_menu_r ul {
+  font-size: 13px;
   padding-left: 0;
   text-align: left;
-  margin-top: 7px;
+  margin-top: 0.4em;
 }
 #header_menu_r li {
   display: inline;
@@ -279,7 +283,7 @@ span {
   display: inline;
   float: left;
   margin: 8px;
-  padding: 1em 1.5em;
+  padding: 12px 16px;
   background: #F7F9F4;
   /*border-bottom: 1px solid #A1A1A1;
   margin-bottom: 5px;*/
@@ -292,7 +296,7 @@ span {
 }
 .articles p {
   margin: 1em 0;
-  font-size: 12px;
+  /*font-size: 12px;*/
 }
 .articles img {
   margin: 0 0 0 1.5em;
@@ -300,27 +304,27 @@ span {
 }
 ul.bullet {
   padding: 0 2em;
-  font-size: 12px;
+  /*font-size*/: 12px;
 }
 ul.nobullet {
   list-style: none;
   padding: 0 2em;
-  font-size: 12px;
+  /*font-size*/: 12px;
 }
 .articles ol {
   padding: 0 2em;
-  font-size: 12px;
+  /*font-size*/: 12px;
 }
 .articles li {
   margin-top: 0.5em;
-  font-size: 12px;
+  /*font-size*/: 12px;
 }
 .articles_input {
   width: 654px;
   display: inline;
   float: left;
   margin: 8px;
-  padding: 1em 1.5em;
+  padding: 12px 16px;
   background: #F7F9F4;
   /*border-bottom: 1px solid #A1A1A1;
   margin-bottom: 5px;*/
@@ -368,7 +372,7 @@ ul.nobullet {
   float: left;
   position: relative;
   margin: 8px 0 8px 8px;
-  padding: 1em 1.5em;
+  padding: 12px 16px;
   background: #F7F9F4;
   border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -398,11 +402,11 @@ ul.nobullet {
 }
 .articles_output ol {
   padding: 0 2em;
-  font-size: 12px;
+  /*font-size*/: 12px;
 }
 .articles_output li {
   margin-top: 0.5em;
-  font-size: 12px;
+  /*font-size*/: 12px;
 }
 .articles_output span {
   cursor: text;
@@ -579,7 +583,7 @@ ul.nobullet {
 .captcha{
   -moz-border-radius:10px;
   -webkit-border-radius:10px;
-  font-size:12px;
+  /*font-size*/:12px;
   color:#BBBBBB;
   text-align: center;
   border-bottom:1px solid #CCC;

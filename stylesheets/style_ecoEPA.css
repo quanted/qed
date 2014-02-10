@@ -79,7 +79,7 @@ a:hover {
   background: #1F262A url(/images/epa_logo_gray.png) no-repeat center;
   float: right;
   color: white;
-  font-size: 12px;
+  /*font-size: 12px;*/
   text-align: justify;
   border-bottom: 2px solid #1F262A;
 }
@@ -106,7 +106,7 @@ a:hover {
   background: #1F262A;
   float: right;
   color: white;
-  font-size: 12px;
+  /*font-size: 12px;*/
   text-align: justify;
   border-bottom: 2px solid #1F262A;
 }
@@ -1123,7 +1123,7 @@ a.logreg:link, a.logreg:visited, a.logreg:active {
   -moz-box-shadow: 3px 3px 15px #CCC;*/
 }
 .headerbar{
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.0625em;
   color: #FFFFFF;
   background: #356697;

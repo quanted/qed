@@ -1,0 +1,335 @@
+! Version: Express     v. 1.03.02    (2007-07-20)
+set outfil(1) = yes
+set outfil(6) = yes
+set outfil(7) = yes
+!
+set kchem = 1
+set prswg = 0
+set mchem = 1
+chem name is      Forchlorfenuron
+set mwt(1)= 2.4800E+02
+set sol(1,1)= 3.9000E+01
+set mp(1)=-9.9000E+01
+set Koc(1)= 3.5260E+03
+set vapr(1)= 3.5000E-10
+! N.B.: This KBACS is a pseudo-first-order rate for USEPA Tier II use only!
+set kbacs(*,1,1)= 1.2779E-04
+set qtbts(*,1,1)= 2.5000E+01
+set qtbas(*,1,1)= 2.0000E+00
+! N.B.: This KBACW is a pseudo-first-order rate for USEPA Tier II use only!
+set kbacw(*,1,1)= 2.4984E-05
+set qtbtw(*,1,1)= 2.5000E+01
+set qtbaw(*,1,1)= 2.0000E+00
+set kdp(1,1)= 2.0197E-04
+set kah(1,1,1)= 0.0000E+00
+set knh(1,1,1)= 0.0000E+00
+set kbh(1,1,1)= 0.0000E+00
+!
+!
+!
+read env IR298.EXV   
+read meteorology W14607.DVF  
+set year1 = 1961
+echo off
+!
+set mchem = 1
+read przm p2e-c1.d61
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+run
+!
+set mchem = 1
+read przm p2e-c1.d62
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d63
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d64
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d65
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d66
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d67
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d68
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d69
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d70
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d71
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d72
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d73
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d74
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d75
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d76
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d77
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d78
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d79
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d80
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d81
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d82
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d83
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d84
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d85
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d86
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d87
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d88
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d89
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+set mchem = 1
+read przm p2e-c1.d90
+! OPP/EFED static hydrology
+set evap(*,*)=0.0
+set rain(*)=0.0
+set npsfl(*,*)=0.0
+set npsed(*,*)=0.0
+set stflo(1,*)= 3.1167E+01
+continue
+!
+quit

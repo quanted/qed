@@ -18,13 +18,11 @@ import keys_Picloud_S3
 import logging
 logger = logging.getLogger('PRZM Batch Model')
 from uber import uber_lib
-
-############Provide the key and connect to the picloud####################
-api_key=keys_Picloud_S3.picloud_api_key
-api_secretkey=keys_Picloud_S3.picloud_api_secretkey
-base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
-http_headers = {'Authorization' : 'Basic %s' % base64string}
-###########################################################################
+from threading import Thread
+import Queue
+# import multiprocessing
+from collections import OrderedDict
+import rest_funcs
 
 chem_name = []
 NOA = []
@@ -39,97 +37,98 @@ depi = []
 ####### Outputs ########
 jid_all = []
 przm_obj_all = []
+jid_batch = []
+all_threads = []
+out_html_all = {}
+job_q = Queue.Queue()
+thread_count = 10
 
-def create_jid(row):
-    chem_name_temp = str(row[0])
-    chem_name.append(chem_name_temp)
-    NOA_temp = str(row[1])
-    NOA.append(NOA_temp)
-    Scenarios_temp = str(row[2])
-    Scenarios.append(Scenarios_temp)
-    Unit_temp = str(row[3])
-    Unit.append(Unit_temp)
-    appdate_temp = str(row[4]).split(',')
-    appdate.append(appdate_temp)
-    apm_temp = str(row[5]).split(',')
-    apm.append(apm_temp)
-    apr_temp = str(row[6]).split(',')
-    apr.append(apr_temp)
-    cam_temp = str(row[7]).split(',')
-    cam.append(cam_temp)
-    depi_temp = str(row[8]).split(',')
-    depi.append(depi_temp)
-    przm_obj = przm_batchmodel.przm_batch(chem_name_temp, NOA_temp, Scenarios_temp, Unit_temp, appdate_temp, apm_temp, apr_temp, cam_temp, depi_temp)
 
-    jid_all.append(przm_obj.jid)
-    przm_obj_all.append(przm_obj)
+def html_table(row_inp_all):
+    while True:
+        row_inp_temp_all = row_inp_all.get()
+        if row_inp_temp_all is None:
+            break
+        else:
+            row = row_inp_temp_all[0]
+            iter = row_inp_temp_all[1]
+            logger.info("iteration: " + str(iter))
+
+            chem_name_temp = str(row[0])
+            chem_name.append(chem_name_temp)
+            NOA_temp = str(row[1])
+            NOA.append(NOA_temp)
+            Scenarios_temp = str(row[2])
+            Scenarios.append(Scenarios_temp)
+            Unit_temp = str(row[3])
+            Unit.append(Unit_temp)
+            appdate_temp = str(row[4]).split(',')
+            appdate.append(appdate_temp)
+            apm_temp = str(row[5]).split(',')
+            apm.append(apm_temp)
+            apr_temp = str(row[6]).split(',')
+            apr.append(apr_temp)
+            cam_temp = str(row[7]).split(',')
+            cam.append(cam_temp)
+            depi_temp = str(row[8]).split(',')
+            depi.append(depi_temp)
+            przm_obj = przm_batchmodel.przm_batch(chem_name_temp, NOA_temp, Scenarios_temp, Unit_temp, appdate_temp, apm_temp, apr_temp, cam_temp, depi_temp)
+            setattr(przm_obj, 'iter_index', iter)
+
+            jid_all.append(przm_obj.jid)
+            przm_obj_all.append(przm_obj)
+            if iter == 0:
+                jid_batch.append(przm_obj.jid)
+
+            batch_header = """
+                <div class="out_">
+                    <br><H3>Batch Calculation of Iteration %s:</H3>
+                </div>
+                """%(iter+1)
+            out_html_temp = batch_header + przm_tables.table_all(przm_obj)
+            out_html_all[iter]=out_html_temp
 
 
 def loop_html(thefile):
     reader = csv.reader(thefile.file.read().splitlines())
     header = reader.next()
 
-    out_html=""
+    i=0
+    iter_html=""
     for row in reader:
-        create_jid(row)
+        job_q.put([row, i])
+        i=i+1
 
-    for jj in range(len(jid_all)):
-        # print jj
-        output_st = ""
-        while output_st!="done":
-            response_st = urlfetch.fetch(url='https://api.picloud.com/job/?jids=%s&field=status' %jid_all[jj], headers=http_headers)
-            output_st = json.loads(response_st.content)['info']['%s' %jid_all[jj]]['status']
+    all_threads = [Thread(target=html_table, args=(job_q, )) for j in range(thread_count)]
+    for x in all_threads:
+        x.start()
+    for x in all_threads:
+        job_q.put(None)
+    for x in all_threads:
+        x.join()
+    html_timestamp = przm_tables.timestamp("", jid_batch[0])
+    out_html_all_sort = OrderedDict(sorted(out_html_all.items()))
 
-        url_val = 'https://api.picloud.com/job/result/?jid='+str(jid_all[jj])
-        response_val = urlfetch.fetch(url=url_val, method=urlfetch.GET, headers=http_headers)
-        output_val = json.loads(response_val.content)['result']
-        # print j
-
-        przm_obj_temp =  przm_obj_all[jj]
-        setattr(przm_obj_temp, 'final_res', output_val)
-        setattr(przm_obj_temp, 'link', output_val[0])
-        setattr(przm_obj_temp, 'iter_index', jj)
-        # print 'przm_obj_temp.iter_index=', przm_obj_temp.iter_index
-        logger.info(vars(przm_obj_temp))
-
-        przm_obj_temp.x_precip=[float(i) for i in przm_obj_temp.final_res[1]]
-        przm_obj_temp.x_runoff=[float(i) for i in przm_obj_temp.final_res[2]]
-        przm_obj_temp.x_et=[float(i) for i in przm_obj_temp.final_res[3]]
-        przm_obj_temp.x_irr=[float(i) for i in przm_obj_temp.final_res[4]]
-        przm_obj_temp.x_leachate=[float(i) for i in przm_obj_temp.final_res[5]]
-        przm_obj_temp.x_pre_irr=[i+j for i,j in zip(przm_obj_temp.x_precip, przm_obj_temp.x_irr)]
-        przm_obj_temp.x_leachate=[i/100000 for i in przm_obj_temp.x_leachate]
-
-
-
-        batch_header = """
-            <div class="out_">
-                <br><H3>Batch Calculation of Iteration %s:</H3>
-            </div>
-            """%(jj+1)
-
-        out_html = out_html + batch_header + przm_tables.table_all(przm_obj_temp)
-    return out_html
+    return html_timestamp + "".join(out_html_all_sort.values())
 
 
 class przmBatchOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()
-        # thefile = form['upfile']
         thefile = form['file-0']
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        # html = template.render(templatepath + '01uberheader.html', 'title')
-        # html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'przm','page':'batchinput'})
-        # html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
+        ChkCookie = self.request.cookies.get("ubercookie")
         html = template.render(templatepath + '04uberoutput_start.html', {
                 'model':'przm',
                 'model_attributes':'PRZM Batch Output'})
-        html = html + przm_tables.timestamp()
+        # html = html + przm_tables.timestamp()
         html = html + iter_html
-        html = html + template.render(templatepath + 'export_fortran.html', {})
+        logger.info(out_html_all)
+        # html = html + template.render(templatepath + 'export_fortran.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         # html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.batch_save_dic(html, [x.__dict__ for x in przm_obj_all], 'przm', 'batch', jid_batch[0], ChkCookie, templatepath)
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', przmBatchOutputPage)], debug=True)

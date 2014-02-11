@@ -1,0 +1,5 @@
+cron:
+- description: check web pages
+  url: /check_pages.py
+  schedule: every day 00:00
+  target: tom

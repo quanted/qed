@@ -1,5 +1,5 @@
 application: pypest
-version: sprint11
+version: tom
 runtime: python27
 api_version: 1
 
@@ -56,6 +56,8 @@ handlers:
   script: landing_pypest.py 
 - url: /admin.html
   script: admin.py
+- url: /check_pages.py
+  script: tasks/check_pages.py 
 - url: /http_check_eco.html
   script: http_check_eco.py
 - url: /http_check_hh.html

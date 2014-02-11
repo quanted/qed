@@ -112,6 +112,20 @@ def vvwm_rest(jid):
 
 ################################# VVWM #############################################
 
+##################################przm##############################################
+@route('/przm/<jid>', method='POST') 
+@auth_basic(check)
+def przm_rest(jid):
+    for k, v in request.json.iteritems():
+        exec '%s = v' % k
+    all_result.setdefault(jid,{}).setdefault('status','none')
+    from przm_rest import PRZM_pi_new
+    result = PRZM_pi_new.PRZM_pi(noa, met, inp, run, MM, DD, YY, CAM_f, DEPI_text, Ar_text, EFF, Drft)
+
+    return {'user_id':'admin', 'result': result, '_id':jid}
+    
+##################################przm##############################################
+
 # ###############File upload####################
 @route('/file_upload', method='POST') 
 @auth_basic(check)

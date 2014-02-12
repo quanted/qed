@@ -38,7 +38,16 @@ skip_files:
 - ^(.*/)?.*/RCS/.*
 - ^(.*/)?\..*
 - ^(.*/)?.*\.gz
+- ^(.*/)?.*\.aux
+- ^(.*/)?.*\.xcf
+- ^(.*/)?.*\.php
 - ^(.*/)?.*\.bak
+- ^(.*/)?.*\.inc
+- ^(.*/)?.*\.dark
+- ^(.*/)?.*\.nofill
+- ^(.*/)?.*\.SDR
+- ^(.*/)?.*\MIT-LICENSE
+- ^(.*/)?.*\LGPL-LICENSE
 - ^(data/.*)
 - ^(data/webice/.*)
 - ^(data/webice/images/.*)
@@ -56,8 +65,8 @@ handlers:
   script: landing_pypest.py 
 - url: /admin.html
   script: admin.py
-- url: /check_pages.py
-  script: tasks/check_pages.py 
+- url: /cron_check_pages.py
+  script: tasks/cron_check.py 
 - url: /http_check_eco.html
   script: http_check_eco.py
 - url: /http_check_hh.html

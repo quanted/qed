@@ -1,10 +1,52 @@
 import httplib
-import http_check_tables
+from tasks import http_check_tables
 from django.utils.safestring import mark_safe
 import datetime
 import time
 
+unter_models = ["exponential", "logistic", "gompertz", "foxsurplus", "maxsus", "yulefurry", "fellerarley", "leslie", "lesliedr", "leslie_probit", 
+            "loons", "webice", "beekhoury", "beepop", "hopomo", "es_mapping"]
+eco_models = ["terrplant", "sip", "stir", "dust", "trex2", "therps", "iec", "agdrift", "earthworm", "rice", "geneec", "kabam", "przm",
+            "przm5", "exams", "pfam", "przm_exams", "vvwm", "swc", "ddm", "superprzm", "sam"]
+hh_models = ["fdadiet", "idream", "ocexposure", "resexposure", "swim", "efast", "wpem", "iaqx", "antimicrobial", "consexpo", "rddr", "hedgas", "benchdose", "qsarhe",
+            "dietexphe", "orehe", "inerts", "qsarreg", "dietexpreg", "orereg"]
+html_page_names = ["_description.html", "_input.html", "_algorithms.html", "_references.html", "_batchinput.html", "_history.html"]
+url = "pypest.appspot.com"
 
+def cron_check_pages():
+    frameworks = [eco_models, hh_models, unter_models]
+    pagenames=html_page_names
+    url_strings = []
+    http_counter = []
+    http_page = []
+    http_status = []
+    http_reason = []
+    fail_list = []
+    for framework in frameworks:
+        models = framework
+        for model in models:
+            for pagename in pagenames:
+                url_strings.append("/" + model + pagename)
+    conn = httplib.HTTPConnection(host=url)
+    counter = 0
+    counter_ok = 0
+    for url_string in url_strings:
+        #conn = httplib.HTTPConnection(host=url)
+        counter = counter + 1
+        conn.request("GET",url_string)
+        r1 = conn.getresponse()
+        #xx = "<p>" + xx + str(counter) + " " + mark_safe("<a href='http://" + url + url_string + "'>" + url_string + "</a>") + " " + str(r1.status) + " " + r1.reason + "<br>"
+        http_counter.append(counter) 
+        #http_page.append(mark_safe("<a href='http://" + url + url_string + "'>" + url_string + "</a>")) 
+        if r1.status != 200: 
+            fail_list.append(url_string)
+        #http_reason.append(r1.reason)
+        if r1.status == 200: counter_ok = counter_ok + 1
+    counter_fail = counter - counter_ok
+    cron_text = str(counter_fail) + '/' + str(counter) + ' pages not serving' + '\n'
+    for fail in fail_list:
+        cron_text = cron_text + url + fail + '\n'
+    return cron_text
 
 def check_pages(framework):
     #url needs to be modified to know what version/branch currently on and to run locally
@@ -16,20 +58,15 @@ def check_pages(framework):
     #print timestamp
     #print version 
     start_date = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-    start_time = time.time()
-
-    url = "pypest.appspot.com"
+    start_time = time.time()   
     if(framework=="unter"):
-        models = ["exponential", "logistic", "gompertz", "foxsurplus", "maxsus", "yulefurry", "fellerarley", "leslie", "lesliedr", "leslie_probit", 
-            "loons", "webice", "beekhoury", "beepop", "hopomo", "es_mapping"]
+        models = unter_models
     elif(framework=="hh"):
-        models = ["fdadiet", "idream", "ocexposure", "resexposure", "swim", "efast", "wpem", "iaqx", "antimicrobial", "consexpo", "rddr", "hedgas", "benchdose", "qsarhe",
-            "dietexphe", "orehe", "inerts", "qsarreg", "dietexpreg", "orereg"]
+        models = hh_models
     elif(framework=="eco"):
-        models = ["terrplant", "sip", "stir", "dust", "trex2", "therps", "iec", "agdrift", "earthworm", "rice", "geneec", "kabam", "przm",
-            "przm5", "exams", "pfam", "przm_exams", "vvwm", "swc", "ddm", "superprzm", "sam"]            
+        models = eco_models         
     #qaqc takes too long and needs to be run separately
-    pagenames=["_description.html", "_input.html", "_algorithms.html", "_references.html", "_batchinput.html", "_history.html"]
+    pagenames=html_page_names
     url_strings = []
     http_counter = []
     http_page = []

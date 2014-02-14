@@ -17,6 +17,9 @@ sys.path.append("../iec")
 from iec import iec_model,iec_tables
 from uber import uber_lib
 import logging
+import Queue
+from collections import OrderedDict
+import rest_funcs
 
 logger = logging.getLogger('IECBatchPage')
 dose_response = []
@@ -34,7 +37,7 @@ def html_table(row_inp,iter):
     LC50.append(float(row_inp[1]))
     threshold.append(float(row_inp[2]))
 
-    iec_obj = iec_model.iec(True,True, dose_response[iter],LC50[iter],threshold[iter])
+    iec_obj = iec_model.iec(True,True, 'qaqc',dose_response[iter],LC50[iter],threshold[iter])
 
     z_score_f_out.append(iec_obj.z_score_f_out)
     F8_f_out.append(iec_obj.F8_f_out)
@@ -76,12 +79,13 @@ class IECBatchOutputPage(webapp.RequestHandler):
         html = template.render(templatepath + '04uberbatch_start.html', {
                 'model':'iec',
                 'model_attributes':'IEC Batch Output'})
-        html = html + iec_tables.timestamp()
+        html = html + iec_tables.timestamp("",jid_batch[0])
         html = html + iter_html
         # html = html + template.render(templatepath + 'sip-batchoutput-jqplot.html', {})
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         # html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.batch_save_dic(html, [x.__dict__ for x in iec_obj_all], 'iec', 'batch', jid_batch[0], ChkCookie, templatepath)
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', IECBatchOutputPage)], debug=True)

@@ -15,6 +15,7 @@ import sys
 sys.path.append("../iec")
 from iec import iec_model,iec_tables
 from uber import uber_lib
+import rest_funcs
 import logging
 
 logger = logging.getLogger('IECQaqcPage')
@@ -106,7 +107,7 @@ class IecQaqcPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'iec',
                 'model_attributes':'IEC QAQC'})
-        html = html + iec_tables.timestamp()
+       # html = html + iec_tables.timestamp()
         html = html + iec_tables.table_all_qaqc(iec_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})

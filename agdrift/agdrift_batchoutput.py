@@ -10,6 +10,7 @@ import cgi
 import cgitb
 cgitb.enable()
 from StringIO import StringIO
+from pprint import pprint
 import csv
 import sys
 sys.path.append("../agdrift")
@@ -18,6 +19,9 @@ from uber import uber_lib
 import unittest
 import cStringIO
 import logging 
+import Queue
+from collections import OrderedDict
+import rest_funcs
 logger=logging.getLogger('agdrift batch')
 
 drop_size = []
@@ -57,7 +61,7 @@ def html_table(row,iter):
                         <br><H3>Batch Calculation of Iteration %s</H3>
                     </div>"""%(iter)
 
-    agdrift_obj_temp = agdrift_model.agdrift(True,True,drop_size[iter-1],ecosystem_type[iter-1], application_method[iter-1],boom_height[iter-1],orchard_type[iter-1],application_rate[iter-1],distance[iter-1],aquatic_type[iter-1],calculation_input[iter-1],)
+    agdrift_obj_temp = agdrift_model.agdrift(True,True,'qaqc',drop_size[iter-1],ecosystem_type[iter-1], application_method[iter-1],boom_height[iter-1],orchard_type[iter-1],application_rate[iter-1],distance[iter-1],aquatic_type[iter-1],calculation_input[iter-1],)
     agdrift_obj_temp.loop_indx = str(iter)
 
     init_avg_dep_foa_out.append(agdrift_obj_temp.init_avg_dep_foa)
@@ -104,12 +108,13 @@ class AgdriftBatchOutputPage(webapp.RequestHandler):
         html = template.render(templatepath + '04uberbatch_start.html', {
                 'model':'agdrift',
                 'model_attributes':'Agdrift Batch Output'})
-        html = html + agdrift_tables.timestamp()
+        html = html + agdrift_tables.timestamp("",jid_batch[0])
         html = html + iter_html
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + 'agdrift-output-jqplot_header.html', {})
 
         # html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.batch_save_dic(html, [x.__dict__ for x in agdrift_obj_all], 'agdrift', 'batch', jid_batch[0], ChkCookie, templatepath)
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', AgdriftBatchOutputPage)], debug=True)

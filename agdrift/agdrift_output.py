@@ -16,6 +16,7 @@ from agdrift import agdrift_model,agdrift_tables
 from uber import uber_lib
 from django.template import Context, Template
 from django.utils import simplejson
+import rest_funcs
 
 class agdriftOutputPage(webapp.RequestHandler):
     def post(self):        
@@ -41,7 +42,7 @@ class agdriftOutputPage(webapp.RequestHandler):
         # y = form.getvalue('y')
         # x = form.getvalue('x')
         # express_y = form.getvalue('express_y')
-        agdrift_obj = agdrift_model.agdrift(True, True, drop_size, ecosystem_type, application_method, boom_height, orchard_type, application_rate, distance, aquatic_type, calculation_input)
+        agdrift_obj = agdrift_model.agdrift(True, True, 'single',drop_size, ecosystem_type, application_method, boom_height, orchard_type, application_rate, distance, aquatic_type, calculation_input, None)
         text_file = open('agdrift/agdrift_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
@@ -53,7 +54,7 @@ class agdriftOutputPage(webapp.RequestHandler):
                 'model':'agdrift', 
                 'model_attributes':'AgDrift Output'})
 
-        html = html + agdrift_tables.timestamp()
+        html = html + agdrift_tables.timestamp(agdrift_obj)
         html = html + agdrift_tables.table_all(agdrift_obj)
         
 
@@ -106,6 +107,7 @@ class agdriftOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.save_dic(html, agdrift_obj.__dict__, "agdrift", "single")
         self.response.out.write(html)
           
 app = webapp.WSGIApplication([('/.*', agdriftOutputPage)], debug=True)

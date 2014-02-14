@@ -6,7 +6,7 @@ import time
 
 unter_models = ["exponential", "logistic", "gompertz", "foxsurplus", "maxsus", "yulefurry", "fellerarley", "leslie", "lesliedr", "leslie_probit", 
             "loons", "webice", "beekhoury", "beepop", "hopomo", "es_mapping"]
-eco_models = ["terrplant", "sip", "stir", "dust", "trex2", "therps", "iec", "agdrift", "earthworm", "rice", "geneec", "kabam", "przm",
+eco_models = ["terrplant", "sip", "stir", "dust", "trex2", "therps", "iec", "agdrift", "agdrift_trex", "earthworm", "rice", "geneec", "kabam", "przm",
             "przm5", "exams", "pfam", "przm_exams", "vvwm", "swc", "ddm", "superprzm", "sam"]
 hh_models = ["fdadiet", "idream", "ocexposure", "resexposure", "swim", "efast", "wpem", "iaqx", "antimicrobial", "consexpo", "rddr", "hedgas", "benchdose", "qsarhe",
             "dietexphe", "orehe", "inerts", "qsarreg", "dietexpreg", "orereg"]
@@ -43,7 +43,7 @@ def cron_check_pages():
         #http_reason.append(r1.reason)
         if r1.status == 200: counter_ok = counter_ok + 1
     counter_fail = counter - counter_ok
-    cron_text = str(counter_fail) + '/' + str(counter) + ' pages not serving' + '\n'
+    cron_text = 'This is an automated email. ' + '\n' + str(counter_fail) + ' of ' + str(counter) + ' pages are not serving correctly:' + '\n'
     for fail in fail_list:
         cron_text = cron_text + url + fail + '\n'
     return cron_text

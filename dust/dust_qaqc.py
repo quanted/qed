@@ -8,6 +8,7 @@ import cgi
 import cgitb
 cgitb.enable()
 from uber import uber_lib
+import rest_funcs
                 
 class dustQaqcPage(webapp.RequestHandler):
     def get(self):

@@ -127,18 +127,21 @@ def table_all(agdrift_obj):
     html_all = html_all + table_2(agdrift_obj)
     html_all = html_all + table_3(agdrift_obj)
     html_all = html_all + template.render(templatepath + 'agdrift-output-jqplot.html', {'chart_num':agdrift_obj.loop_indx})
-
     return html_all
 
-def timestamp():
-    ts = time.time()
-    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+def timestamp(agdrift_obj="", batch_jid=""):
+    #ts = time.time()
+    #st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+    if agdrift_obj:
+        st = datetime.datetime.strptime(agdrift_obj.jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
+    else:
+        st = datetime.datetime.strptime(batch_jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
     html="""
     <div class="out_">
     <b>agdrift Version 0.1 (Beta)<br>
     """
     html = html + st
-    html = html + " (UTC)</b>"
+    html = html + " (EST)</b>"
     html = html + """
     </div>"""
     return html

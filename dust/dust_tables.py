@@ -234,15 +234,19 @@ def table_all(dust_obj):
     html_all = html_all + table8_out['html']
     return html_all, table3_out, table4_out, table5_out, table6_out, table7_out, table8_out
 
-def timestamp():
-    ts = time.time()
-    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+def timestamp(dust_obj="", batch_jid=""):
+    #ts = time.time()
+    #st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+    if dust_obj:
+        st = datetime.datetime.strptime(dust_obj.jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
+    else:
+        st = datetime.datetime.strptime(batch_jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
     html="""
     <div class="out_">
     <b>Dust Version 0.1 (Beta)<br>
     """
     html = html + st
-    html = html + " (UTC)</b>"
+    html = html + " (EST)</b>"
     html = html + """
     </div>"""
     return html

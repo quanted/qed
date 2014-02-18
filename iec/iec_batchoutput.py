@@ -30,6 +30,10 @@ threshold = []
 z_score_f_out = []
 F8_f_out = []
 chance_f_out = []
+jid_all = []
+jid_batch = []
+iec_obj_all = []
+iec_obj_temp = []
 
 def html_table(row_inp,iter):
     logger.info("iteration: " + str(iter))
@@ -37,31 +41,49 @@ def html_table(row_inp,iter):
     LC50.append(float(row_inp[1]))
     threshold.append(float(row_inp[2]))
 
-    iec_obj = iec_model.iec(True,True, 'qaqc',dose_response[iter],LC50[iter],threshold[iter])
+    Input_header="""<div class="out_">
+                        <br><H3>Batch Calculation of Iteration %s</H3>
+                    </div>"""%(iter)
 
-    z_score_f_out.append(iec_obj.z_score_f_out)
-    F8_f_out.append(iec_obj.F8_f_out)
-    chance_f_out.append(iec_obj.chance_f_out)
+    iec_obj_temp = iec_model.iec(True,True, 'batch',dose_response[iter-1],LC50[iter-1],threshold[iter-1])
+    iec_obj_temp.loop_indx = str(iter)
+
+    z_score_f_out.append(iec_obj_temp.z_score_f_out)
+    F8_f_out.append(iec_obj_temp.F8_f_out)
+    chance_f_out.append(iec_obj_temp.chance_f_out)
 
 
-    html = iec_tables.table_all(iec_obj)
+    #html = iec_tables.table_all(iec_obj)
 
-    return html
+    jid_all.append(iec_obj_temp.jid)
+    iec_obj_all.append(iec_obj_temp)    
+    if iter == 1:
+        jid_batch.append(iec_obj_temp.jid)
+    
+    table_all_out = iec_tables.table_all(iec_obj_temp)
+
+    html_table_temp = Input_header + table_all_out + "<br>"
+
+    return html_table_temp
+    #return html
                 
 def loop_html(thefile):
     reader = csv.reader(thefile.file.read().splitlines())
     header = reader.next()
     logger.info(header)
-    i=0
-    iter_html=""
+    i=1
+    #iter_html=""
+    iter_html_temp=""
     for row in reader:
-        iter_html = iter_html +html_table(row,i)
+        #iter_html = iter_html +html_table(row,i)
+        iter_html_temp = iter_html_temp +html_table(row,i)
         i=i+1
 
     sum_html = iec_tables.table_all_sum(dose_response,LC50,threshold,
                     z_score_f_out, F8_f_out, chance_f_out)
+    return sum_html+iter_html_temp
 
-    return sum_html+iter_html
+    #return sum_html+iter_html
     # return iter_html
 
 

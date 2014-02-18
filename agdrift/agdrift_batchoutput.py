@@ -43,7 +43,9 @@ nasae_out = []
 y_out = []
 x_out = []
 express_y_out = []
-
+jid_all = []
+jid_batch = []
+agdrift_obj_all = []
 #data.next()
 
 def html_table(row,iter):
@@ -61,7 +63,7 @@ def html_table(row,iter):
                         <br><H3>Batch Calculation of Iteration %s</H3>
                     </div>"""%(iter)
 
-    agdrift_obj_temp = agdrift_model.agdrift(True,True,'qaqc',drop_size[iter-1],ecosystem_type[iter-1], application_method[iter-1],boom_height[iter-1],orchard_type[iter-1],application_rate[iter-1],distance[iter-1],aquatic_type[iter-1],calculation_input[iter-1],)
+    agdrift_obj_temp = agdrift_model.agdrift(True,True,'batch',drop_size[iter-1],ecosystem_type[iter-1], application_method[iter-1],boom_height[iter-1],orchard_type[iter-1],application_rate[iter-1],distance[iter-1],aquatic_type[iter-1],calculation_input[iter-1],)
     agdrift_obj_temp.loop_indx = str(iter)
 
     init_avg_dep_foa_out.append(agdrift_obj_temp.init_avg_dep_foa)
@@ -74,6 +76,11 @@ def html_table(row,iter):
     x_out.append(agdrift_obj_temp.x)
     express_y_out.append(agdrift_obj_temp.express_y)
 
+    jid_all.append(agdrift_obj_temp.jid)
+    agdrift_obj_all.append(agdrift_obj_temp)    
+    if iter == 1:
+        jid_batch.append(agdrift_obj_temp.jid)
+    
     table_all_out = agdrift_tables.table_all(agdrift_obj_temp)
 
     html_table_temp = Input_header + table_all_out + "<br>"

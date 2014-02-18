@@ -17,6 +17,7 @@ sys.path.append("../kabam")
 from kabam import kabam_model,kabam_tables
 import logging
 from uber import uber_lib
+import rest_funcs
 
 logger = logging.getLogger('KabamQaqcPage')
 
@@ -916,7 +917,7 @@ class kabamQaqcPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'kabam',
                 'model_attributes':'Kabam QAQC'})
-        html = html + kabam_tables.timestamp()
+        #html = html + kabam_tables.timestamp()
         html = html + kabam_tables.table_all_qaqc(kabam_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})

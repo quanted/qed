@@ -14,12 +14,14 @@ import numpy as np
 import cgi
 import cgitb
 import logging
+import sys
 import math
+import time, datetime
 
 logger = logging.getLogger('Kabam Model')
 
 class kabam(object):
-    def __init__(self, set_variables=True,run_methods=True,
+    def __init__(self, set_variables=True,run_methods=True, run_type='single',
             chemical_name='',l_kow=1,k_oc=1,c_wdp=1,water_column_EEC=1,c_wto=1,mineau_scaling_factor=1,x_poc=1,x_doc=1,c_ox=1,w_t=1,c_ss=1,oc=1,k_ow=1,
             Species_of_the_tested_bird='',bw_quail=1,bw_duck=1,bwb_other=1,avian_ld50=1,avian_lc50=1,avian_noaec=1,m_species='',bw_rat=1,bwm_other=1,mammalian_ld50=1,mammalian_lc50=1,mammalian_chronic_endpoint=1,
             lf_p_sediment=1,lf_p_phytoplankton=1,lf_p_zooplankton=1,lf_p_benthic_invertebrates=1,lf_p_filter_feeders=1,lf_p_small_fish=1,lf_p_medium_fish=1,
@@ -41,11 +43,18 @@ class kabam(object):
             # cb_phytoplankton_v=1,cb_zoo_v=1,cb_beninv_v=1,cb_ff_v=1,cb_sf_v=1,cb_mf_v=1,cb_lf_v=1,   ***These were removed from __init__***
 
         # self.set_default_variables()
-
+        ts = datetime.datetime.now()
+        if(time.daylight):
+            ts1 = datetime.timedelta(hours=-4)+ts
+        else:
+            ts1 = datetime.timedelta(hours=-5)+ts
+        self.jid = ts1.strftime('%Y%m%d%H%M%S%f')
+        
         if set_variables:
             if vars_dict != None:
                 self.__dict__.update(vars_dict)
             else:
+                self.run_type = run_type
                 self.chemical_name = chemical_name
                 self.l_kow=l_kow
                 self.k_oc=k_oc

@@ -6,6 +6,8 @@ import time
 import datetime
 from iec import iec_model
 from iec import iec_parameters
+import time
+import datetime
 import logging
 
 logger = logging.getLogger("IecTables")
@@ -65,18 +67,7 @@ def getdjtemplate():
     """
     return dj_template
 
-def timestamp():
-    ts = time.time()
-    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
-    html="""
-    <div class="out_">
-    <b>IEC Version 1.0 (Beta)<br>
-    """
-    html = html + st
-    html = html + " (UTC)</b>"
-    html = html + """
-    </div>"""
-    return html
+
 
 def gett1data(iec_obj):
     data = { 
@@ -163,18 +154,35 @@ def table_all_qaqc(iec_obj):
     html_all = html_all + table_2_qaqc(iec_obj)
     return html_all
 
-def timestamp():
-    ts = time.time()
-    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+def timestamp(iec_obj="", batch_jid=""):
+    #ts = time.time()
+    #st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+    if iec_obj:
+        st = datetime.datetime.strptime(iec_obj.jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
+    else:
+        st = datetime.datetime.strptime(batch_jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
     html="""
     <div class="out_">
-        <b>IEC Version 1.0</a> (Beta)<br>
+    <b>IEC Version 1.0 (Beta)<br>
     """
     html = html + st
-    html = html + " (UTC)</b>"
+    html = html + " (EST)</b>"
     html = html + """
     </div>"""
     return html
+
+# def timestamp():
+#     ts = time.time()
+#     st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+#     html="""
+#     <div class="out_">
+#         <b>IEC Version 1.0</a> (Beta)<br>
+#     """
+#     html = html + st
+#     html = html + " (UTC)</b>"
+#     html = html + """
+#     </div>"""
+#     return html
 
 def table_all_un(LC50_pool, threshold_pool, dose_response_pool, z_score_f_pool, F8_f_pool, chance_f_pool):
     html_all = table_1_un(LC50_pool, F8_f_pool, dose_response_pool)

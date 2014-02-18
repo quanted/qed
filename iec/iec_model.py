@@ -1,15 +1,24 @@
+import numpy as np
 import math
 import logging
 import sys
+import time, datetime
 
 class iec(object):
-    def __init__(self, set_variables=True,run_methods=True,dose_response=1,LC50=1,threshold=1,vars_dict=None):
+    def __init__(self, set_variables=True,run_methods=True,run_type='single',dose_response=1,LC50=1,threshold=1,vars_dict=None):
         self.set_default_variables()
+        ts = datetime.datetime.now()
+        if(time.daylight):
+            ts1 = datetime.timedelta(hours=-4)+ts
+        else:
+            ts1 = datetime.timedelta(hours=-5)+ts
+        self.jid = ts1.strftime('%Y%m%d%H%M%S%f')
+
         if set_variables:
             if vars_dict != None:
                 self.__dict__.update(vars_dict)
             else:
-                self.set_variables(dose_response,LC50,threshold)
+                self.set_variables(run_type,dose_response,LC50,threshold)
             if run_methods:
                 self.run_methods()
 
@@ -19,12 +28,14 @@ class iec(object):
     #     self.threshold = threshold
     #     self.run_methods()
 
-    def set_variables(self, dose_response,LC50,threshold):
+    def set_variables(self, run_type, dose_response,LC50,threshold):
+        self.run_type = run_type
         self.dose_response = dose_response
         self.LC50 = LC50
         self.threshold = threshold
 
     def set_default_variables(self):
+        self.run_type = "single"
         self.dose_response = 1
         self.LC50 = 1
         self.threshold = 1

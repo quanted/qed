@@ -445,15 +445,19 @@ def table_all_qaqc(kabam_obj):
     html_all = html_all + table_7_qaqc(kabam_obj)
     return html_all
 
-def timestamp():
-    ts = time.time()
-    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+def timestamp(kabam_obj="", batch_jid=""):
+    #ts = time.time()
+    #st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+    if kabam_obj:
+        st = datetime.datetime.strptime(kabam_obj.jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
+    else:
+        st = datetime.datetime.strptime(batch_jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
     html="""
     <div class="out_">
         <b>Kabam Version 1.0 (Beta)<br>
     """
     html = html + st
-    html = html + " (UTC)</b>"
+    html = html + " (EST)</b>"
     html = html + """
     </div>"""
     return html

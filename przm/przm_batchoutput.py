@@ -31,8 +31,8 @@ from boto.s3.bucket import Bucket
 import string, random
 
 conn = sqs.connect_to_region("us-east-1",
-                             aws_access_key_id='AKIAJZZHOBNJDUE6CWBQ',
-                             aws_secret_access_key='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')
+                             aws_access_key_id='',
+                             aws_secret_access_key='')
 my_queue = conn.get_queue('uber_batch')
 
 # Generate a random ID for file save

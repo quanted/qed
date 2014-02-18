@@ -136,6 +136,30 @@ def przm_rest(jid):
     
 ##################################przm##############################################
 
+##################################przm_batch##############################################
+result_all=[]
+@route('/przm_batch/<jid>', method='POST') 
+@auth_basic(check)
+def przm_rest(jid):
+    from przm_rest import PRZM_pi_new
+    for k, v in request.json.iteritems():
+        exec '%s = v' % k
+    for przm_obs_temp in przm_objs:
+        # przm_obs_temp = przm_objs[index]
+        result_temp = PRZM_pi_new.PRZM_pi(przm_obs_temp['NOA'], przm_obs_temp['met_o'], przm_obs_temp['inp_o'], przm_obs_temp['run_o'], przm_obs_temp['MM'], przm_obs_temp['DD'], przm_obs_temp['YY'], przm_obs_temp['CAM_f'], przm_obs_temp['DEPI_text'], przm_obs_temp['Ar_text'], przm_obs_temp['EFF'], przm_obs_temp['Drft'])
+        result_all.append(result_temp)
+        
+    # element = {"user_id":"admin", "_id":jid, "run_type":'batch', "output_html": 'output_html', "model_object_dict":result_all}
+    # print element
+
+
+    # from przm_rest import PRZM_batch_control
+    # result = PRZM_pi_new.PRZM_pi(noa, met, inp, run, MM, DD, YY, CAM_f, DEPI_text, Ar_text, EFF, Drft)
+
+    return {'user_id':'admin', 'result': result_all, '_id':jid}
+    
+##################################przm##############################################
+
 ##################File upload####################
 @route('/file_upload', method='POST') 
 @auth_basic(check)

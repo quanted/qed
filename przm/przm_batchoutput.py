@@ -7,131 +7,117 @@ import numpy as np
 import cgi
 import cgitb
 cgitb.enable()
-from StringIO import StringIO
-import csv
 from przm import przm_batchmodel, przm_tables
 import json
 import base64
 import urllib
-from google.appengine.api import urlfetch
-import keys_Picloud_S3
 import logging
 logger = logging.getLogger('PRZM Batch Model')
 from uber import uber_lib
-from threading import Thread
-import Queue
+from datetime import datetime,timedelta
+import time
+
+# from threading import Thread
+# import Queue
 # import multiprocessing
-from collections import OrderedDict
-import rest_funcs
+# from collections import OrderedDict
+# import rest_funcs
 
-chem_name = []
-NOA = []
-Scenarios = []
-Unit = []
-appdate = []
-apm = []
-apr = []
-cam = []
-depi = []
+from boto import sqs
+import keys_Picloud_S3
+from boto.s3.connection import S3Connection
+from boto.s3.key import Key
+from boto.s3.bucket import Bucket
+import string, random
 
-####### Outputs ########
-jid_all = []
-przm_obj_all = []
-jid_batch = []
-all_threads = []
-out_html_all = {}
-job_q = Queue.Queue()
-thread_count = 10
+conn = sqs.connect_to_region("us-east-1",
+                             aws_access_key_id='AKIAJZZHOBNJDUE6CWBQ',
+                             aws_secret_access_key='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')
+my_queue = conn.get_queue('uber_batch')
 
+# Generate a random ID for file save
+def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
+    return ''.join(random.choice(chars) for x in range(size))
 
-def html_table(row_inp_all):
-    while True:
-        row_inp_temp_all = row_inp_all.get()
-        if row_inp_temp_all is None:
-            break
-        else:
-            row = row_inp_temp_all[0]
-            iter = row_inp_temp_all[1]
-            logger.info("iteration: " + str(iter))
+name_temp=id_generator()
 
-            chem_name_temp = str(row[0])
-            chem_name.append(chem_name_temp)
-            NOA_temp = str(row[1])
-            NOA.append(NOA_temp)
-            Scenarios_temp = str(row[2])
-            Scenarios.append(Scenarios_temp)
-            Unit_temp = str(row[3])
-            Unit.append(Unit_temp)
-            appdate_temp = str(row[4]).split(',')
-            appdate.append(appdate_temp)
-            apm_temp = str(row[5]).split(',')
-            apm.append(apm_temp)
-            apr_temp = str(row[6]).split(',')
-            apr.append(apr_temp)
-            cam_temp = str(row[7]).split(',')
-            cam.append(cam_temp)
-            depi_temp = str(row[8]).split(',')
-            depi.append(depi_temp)
-            przm_obj = przm_batchmodel.przm_batch(chem_name_temp, NOA_temp, Scenarios_temp, Unit_temp, appdate_temp, apm_temp, apr_temp, cam_temp, depi_temp)
-            setattr(przm_obj, 'iter_index', iter)
-
-            jid_all.append(przm_obj.jid)
-            przm_obj_all.append(przm_obj)
-            if iter == 0:
-                jid_batch.append(przm_obj.jid)
-
-            batch_header = """
-                <div class="out_">
-                    <br><H3>Batch Calculation of Iteration %s:</H3>
-                </div>
-                """%(iter+1)
-            out_html_temp = batch_header + przm_tables.table_all(przm_obj)
-            out_html_all[iter]=out_html_temp
-
-
-def loop_html(thefile):
-    reader = csv.reader(thefile.file.read().splitlines())
-    header = reader.next()
-
-    i=0
-    iter_html=""
-    for row in reader:
-        job_q.put([row, i])
-        i=i+1
-
-    all_threads = [Thread(target=html_table, args=(job_q, )) for j in range(thread_count)]
-    for x in all_threads:
-        x.start()
-    for x in all_threads:
-        job_q.put(None)
-    for x in all_threads:
-        x.join()
-    html_timestamp = przm_tables.timestamp("", jid_batch[0])
-    out_html_all_sort = OrderedDict(sorted(out_html_all.items()))
-
-    return html_timestamp + "".join(out_html_all_sort.values())
-
+##########################AMAZON KEY###################################################
+key = keys_Picloud_S3.amazon_s3_key
+secretkey = keys_Picloud_S3.amazon_s3_secretkey
+##########################################################################################
+ts = datetime.now()
+if(time.daylight):
+    ts1 = timedelta(hours=-4)+ts
+else:
+    ts1 = timedelta(hours=-5)+ts
+batch_jid = ts1.strftime('%Y%m%d%H%M%S%f')
 
 class przmBatchOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()
         thefile = form['file-0']
-        iter_html=loop_html(thefile)
+        thefile_str = thefile.file.getvalue()
+
+
+
+        # iter_html = przm_batchmodel.loop_html(thefile)
+        # iter_html=loop_html(thefile)
+
+        # q = taskqueue.Queue('pull-queue')
+        # tasks = []
+        # # payload_str = 'hello world'
+        # tasks.append(taskqueue.Task(payload=thefile, method='PULL'))
+        # q.add(tasks)
+        # print q
+
+        conn_S3 = S3Connection(key, secretkey)
+        bucket = Bucket(conn_S3, 'przm_batch')
+        k=Key(bucket)
+        name1='PRZM_batch_'+name_temp+'.csv'
+        k.key=name1
+        k.set_contents_from_string(thefile_str)
+        link='https://s3.amazonaws.com/przm_batch/'+name1
+        k.set_acl('public-read-write')
+
+        m = sqs.message.Message()
+        m.set_body( json.dumps({'link': link, 'batch_jid':batch_jid}))
+        my_queue.write(m)
+
+        # msg = {'properties': {'content_type': 'application/json', 
+        #                       'content_encoding': 'utf-8', 
+        #                       'body_encoding':'base64', 
+        #                       'delivery_tag':None, 
+        #                       'delivery_info': {'exchange':None, 'routing_key':None}},}
+        # body = {'id':'theid',
+        #         'task':'VTOServer.apps.vto.tasks.begin_processing',
+        #         'url':['s3.abc.com']}
+        # msg.update({'body':base64.encodestring(json.dumps(body))})
+        # my_queue.write(my_queue.new_message(json.dumps(msg)))
+
+
+        # Give the job an hour to run, plenty of time to avoid double-runs
+        # pointer = my_queue.read()
+
+        # pointer = my_queue.get_messages(num_messages=10, visibility_timeout=None, attributes=None, wait_time_seconds=3)
+        # # pointer = conn.receive_message('uber_batch', number_messages=10, visibility_timeout=None, attributes=None, wait_time_seconds=None)
+        # print len(pointer)
+        # for i in pointer:
+        #     print i.get_body()
+
+
+
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = template.render(templatepath + '04uberoutput_start.html', {
                 'model':'przm',
                 'model_attributes':'PRZM Batch Output'})
         # html = html + przm_tables.timestamp()
-        html = html + iter_html
-        logger.info(out_html_all)
-        # html = html + template.render(templatepath + 'export_fortran.html', {})
-        html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        # html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
-        rest_funcs.batch_save_dic(html, [x.__dict__ for x in przm_obj_all], 'przm', 'batch', jid_batch[0], ChkCookie, templatepath)
+        # logger.info(iter_html)
+        # html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', przmBatchOutputPage)], debug=True)
+
 
 def main():
     run_wsgi_app(app)

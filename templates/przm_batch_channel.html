@@ -1,0 +1,31 @@
+  <script type="text/javascript" src="/_ah/channel/jsapi"></script>
+
+<script type="text/javascript">
+$( document ).ready(function() {
+
+	function onOpened() {
+      connected = true;
+      window.alert('connected to server');
+    }
+
+    function onClosed() {
+      window.alert('channel connection closed.');
+    }
+
+
+	channel = new goog.appengine.Channel('{{ token }}');
+	// handler = {
+	// 'onopen': onOpened,
+	// 'onclose': function () {alert("channel closed.")}
+	// };
+
+	socket = channel.open();
+	socket.onopen = onOpened;
+	// socket.onmessage = onMessage;
+	socket.onclose = onClosed;
+	// socket.onerror = onError;
+
+})
+
+
+</script>

@@ -16,7 +16,7 @@ import rest_funcs
 
 
 class historyoutputPage(webapp.RequestHandler):
-    def post(self):
+    def get(self):
         form = cgi.FieldStorage() 
         jid = form.getvalue('jid')
         model_name = form.getvalue('model_name')

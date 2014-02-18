@@ -9,6 +9,9 @@ import cgitb
 cgitb.enable()
 from uber import uber_lib
 
+# from google.appengine.api import channel
+# import uuid
+
 class przmBatchInputPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'

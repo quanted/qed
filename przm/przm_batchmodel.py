@@ -9,6 +9,9 @@ import time
 from collections import OrderedDict
 import os
 import logging
+import csv
+
+
 logger = logging.getLogger('PRZM Batch Model')
 
 ############Provide the key and connect to EC2####################
@@ -29,31 +32,28 @@ EMergence_pool={'NC Sweet Potato MLRA-133': '1505', 'ID Potato   MLRA-11B': '010
 MAturation_pool={'NC Sweet Potato MLRA-133': '1509', 'ID Potato   MLRA-11B': '1508', 'NY Grape   MLRA-100/101': '0107', 'CA Citrus   MLRA-17': '0201', 'OR Hops   MLRA-2': '3007', 'FL Sugarcane   MLRA-156A': '0201', 'OR Mint   MLRA-2': '2507', 'FL Citrus   MLRA-156A': '0201', 'CA Almonds MLRA-17': '0208', 'ND Canola   MLRA-55A': '1508', 'MI Asparagus MLRA-96': '2508', 'PR Coffee MLRA-270': '0201', 'FL Avocado MLRA-156A': '1511', 'NC Tobacco   MLRA-133A': '0707', 'CA Grape  MLRA-17': '0103', 'FL Cucumber   MLRA-156A': '0512', 'OH Corn   MLRA-111': '2609', 'NC Apple   MLRA-130': '0305', 'CA Onions MLRA-17': '0106', 'PA Turf  MLRA-148': '1504', 'MI Beans MLRA-99': '2707', 'GA Onions MLRA-153A/133A': '0106', 'LA Sugarcane   MLRA-131': '0201', 'NC Corn - E   MLRA-153A': '2808', 'OR Christmas Trees  MLRA-2': '0201', 'MN Sugarbeet   MLRA-56': '0110', 'FL Turf  MLRA-155': '1502', 'MS Cotton   MLRA-134': '0709', 'MS Soybean   MLRA-134': '0109', 'GA Pecan   MLRA-133A': '2109', 'OR Filberts   MLRA-2': '1504', 'OR Grass Seed   MLRA-2': '1505', 'GA Peach   MLRA-133A': '1505', 'FL Carrots MLRA-156B': '1501', 'NC Cotton   MLRA-133A': '0108', 'CA Lettuce  MLRA-14': '0505', 'FL Tomato   MLRA-155': '2104', 'OR Apple   MLRA-2': '3004', 'ND Wheat   MLRA-56': '2507', 'CA Tomato MLRA-17': '0107', 'PA Corn   MLRA-148': '0407', 'FL Peppers MLRA-156A': '1511', 'MS Corn   MLRA-134': '2208', 'MI Cherry   MLRA-96': '0707', 'IL Corn   MLRA-108': '2109', 'ME Potato   MLRA-146': '0110', 'FL Strawberry   MLRA-155': '1011', 'KS Sorghum   MLRA-112': '2009', 'PA Apple   MLRA-148': '1005', 'CA Cotton   MLRA-17': '2009', 'NC Peanut   MLRA-153A': '0110', 'FL Cabbage   MLRA-155': '0802'}
 HArvest_pool={'NC Sweet Potato MLRA-133': '2209', 'ID Potato   MLRA-11B': '1509', 'NY Grape   MLRA-100/101': '1510', 'CA Citrus   MLRA-17': '3112', 'OR Hops   MLRA-2': '0109', 'FL Sugarcane   MLRA-156A': '3112', 'OR Mint   MLRA-2': '0108', 'FL Citrus   MLRA-156A': '3112', 'CA Almonds MLRA-17': '1309', 'ND Canola   MLRA-55A': '2508', 'MI Asparagus MLRA-96': '1503', 'PR Coffee MLRA-270': '3112', 'FL Avocado MLRA-156A': '3011', 'NC Tobacco   MLRA-133A': '1607', 'CA Grape  MLRA-17': '3108', 'FL Cucumber   MLRA-156A': '1012', 'OH Corn   MLRA-111': '2510', 'NC Apple   MLRA-130': '2510', 'CA Onions MLRA-17': '1506', 'PA Turf  MLRA-148': '0111', 'MI Beans MLRA-99': '0409', 'GA Onions MLRA-153A/133A': '1506', 'LA Sugarcane   MLRA-131': '3112', 'NC Corn - E   MLRA-153A': '1209', 'OR Christmas Trees  MLRA-2': '3112', 'MN Sugarbeet   MLRA-56': '1510', 'FL Turf  MLRA-155': '1512', 'MS Cotton   MLRA-134': '2209', 'MS Soybean   MLRA-134': '1010', 'GA Pecan   MLRA-133A': '0110', 'OR Filberts   MLRA-2': '1011', 'OR Grass Seed   MLRA-2': '3006', 'GA Peach   MLRA-133A': '3108', 'FL Carrots MLRA-156B': '2201', 'NC Cotton   MLRA-133A': '0111', 'CA Lettuce  MLRA-14': '1205', 'FL Tomato   MLRA-155': '1505', 'OR Apple   MLRA-2': '3110', 'ND Wheat   MLRA-56': '0508', 'CA Tomato MLRA-17': '0109', 'PA Corn   MLRA-148': '0110', 'FL Peppers MLRA-156A': '0112', 'MS Corn   MLRA-134': '0209', 'MI Cherry   MLRA-96': '2107', 'IL Corn   MLRA-108': '2010', 'ME Potato   MLRA-146': '0510', 'FL Strawberry   MLRA-155': '1502', 'KS Sorghum   MLRA-112': '0110', 'PA Apple   MLRA-148': '1510', 'CA Cotton   MLRA-17': '1111', 'NC Peanut   MLRA-153A': '1010', 'FL Cabbage   MLRA-155': '1502'}
 
-def get_jid(noa, met, inp, run, MM, DD, YY, CAM_f, DEPI_text, Ar_text, EFF, Drft):
-    all_dic = {"noa": noa,
-               "met": met,
-               "inp": inp,
-               "run": run,
-               "MM": MM,
-               "DD": DD,
-               "YY": YY,
-               "CAM_f": CAM_f,
-               "DEPI_text": DEPI_text,
-               "Ar_text": Ar_text,
-               "EFF": EFF,
-               "Drft": Drft}
-    data = json.dumps(all_dic)
+def get_jid(przm_objs):
+    total_num = len(przm_objs)
     ts = datetime.now()
     if(time.daylight):
         ts1 = timedelta(hours=-4)+ts
     else:
         ts1 = timedelta(hours=-5)+ts
     jid = ts1.strftime('%Y%m%d%H%M%S%f')
-    url=url_part1 + '/przm/' + jid 
 
+    all_dic = {"przm_objs": przm_objs, 
+               "total_num":total_num,
+               "jid":jid}
+
+    data = json.dumps(all_dic)
+
+
+    url=url_part1 + '/przm_batch/' + jid 
     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
-    output_val = json.loads(response.content)['result']
-    return(jid, output_val)
+    # output_val = json.loads(response.content)['result']
+    # return(jid, output_val)
+
+
 
 #########################################################    
 ##########Estimate relevant apply date###################
@@ -168,9 +168,83 @@ def CAM_select(CAM_f, DEPI):
         DEPI=DEPI 
     return CAM_f_p, DEPI, CAM_f
 
-class przm_batch(object):
-     def __init__(self, chem_name, NOA, Scenarios, Unit, appdate, apm, apr, cam, depi):
+
+
+
+
+########################################################
+chem_name = []
+NOA = []
+Scenarios = []
+Unit = []
+appdate = []
+apm = []
+apr = []
+cam = []
+depi = []
+####### Outputs #########################################
+jid_all = []
+przm_obj_all = []
+jid_batch = []
+
+
+def loop_html(file_name):
+    with open(file_name, 'rb') as thefile:
+        reader = csv.reader(thefile.read().splitlines())
+        header = reader.next()
+
+        i=0
+        for row in reader:
+          print i
+          chem_name_temp = str(row[0])
+          chem_name.append(chem_name_temp)
+          NOA_temp = str(row[1])
+          NOA.append(NOA_temp)
+          Scenarios_temp = str(row[2])
+          Scenarios.append(Scenarios_temp)
+          Unit_temp = str(row[3])
+          Unit.append(Unit_temp)
+          appdate_temp = str(row[4]).split(',')
+          appdate.append(appdate_temp)
+          apm_temp = str(row[5]).split(',')
+          apm.append(apm_temp)
+          apr_temp = str(row[6]).split(',')
+          apr.append(apr_temp)
+          cam_temp = str(row[7]).split(',')
+          cam.append(cam_temp)
+          depi_temp = str(row[8]).split(',')
+          depi.append(depi_temp)
+
+          przm_obj_temp = przm_class_creator(i, chem_name_temp, NOA_temp, Scenarios_temp, Unit_temp, appdate_temp, apm_temp, apr_temp, cam_temp, depi_temp)
+          przm_obj_all.append(przm_obj_temp)
+          i=i+1
+          
+        get_jid([x.__dict__ for x in przm_obj_all])
+
+
+        return przm_obj_all
+
+
+    # setattr(przm_obj, 'iter_index', iter)
+
+    # jid_all.append(przm_obj.jid)
+    # przm_obj_all.append(przm_obj)
+    # if iter == 0:
+    #     jid_batch.append(przm_obj.jid)
+
+    # batch_header = """
+    #     <div class="out_">
+    #         <br><H3>Batch Calculation of Iteration %s:</H3>
+    #     </div>
+    #     """%(iter+1)
+    # out_html_temp = batch_header + przm_tables.table_all(przm_obj)
+    # out_html_all[iter]=out_html_temp
+
+
+class przm_class_creator(object):
+     def __init__(self, iter, chem_name, NOA, Scenarios, Unit, appdate, apm, apr, cam, depi):
         self.run_type = "batch"
+        self.iter_index = iter
         self.NOA = int(NOA)
         self.Scenarios = Scenarios
         self.Unit = Unit
@@ -254,16 +328,13 @@ class przm_batch(object):
         self.DEPI_f = [float(i) for i in self.DEPI_p]
         self.DEPI_text=['%.2f' %i for i in self.DEPI_f]
 
-        self.final_res = get_jid(self.NOA, self.met_o, self.inp_o, self.run_o, self.MM, self.DD, self.YY, self.CAM_f, self.DEPI_text, self.Ar_text, self.EFF, self.Drft)
-        self.jid = self.final_res[0]
-        self.link = self.final_res[1][0]
-        self.x_precip=[float(i) for i in self.final_res[1][1]]
-        self.x_runoff=[float(i) for i in self.final_res[1][2]]
-        self.x_et=[float(i) for i in self.final_res[1][3]]
-        self.x_irr=[float(i) for i in self.final_res[1][4]]
-        self.x_leachate=[float(i) for i in self.final_res[1][5]]
-        self.x_pre_irr=[i+j for i,j in zip(self.x_precip, self.x_irr)]
-        self.x_leachate=[i/100000 for i in self.x_leachate]
-
-
-
+        # self.final_res = get_jid(self.NOA, self.met_o, self.inp_o, self.run_o, self.MM, self.DD, self.YY, self.CAM_f, self.DEPI_text, self.Ar_text, self.EFF, self.Drft)
+        # self.jid = self.final_res[0]
+        # self.link = self.final_res[1][0]
+        # self.x_precip=[float(i) for i in self.final_res[1][1]]
+        # self.x_runoff=[float(i) for i in self.final_res[1][2]]
+        # self.x_et=[float(i) for i in self.final_res[1][3]]
+        # self.x_irr=[float(i) for i in self.final_res[1][4]]
+        # self.x_leachate=[float(i) for i in self.final_res[1][5]]
+        # self.x_pre_irr=[i+j for i,j in zip(self.x_precip, self.x_irr)]
+        # self.x_leachate=[i/100000 for i in self.x_leachate]

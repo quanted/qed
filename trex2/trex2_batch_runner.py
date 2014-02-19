@@ -4,7 +4,7 @@ import sys
 sys.path.append("utils")
 import json_utils
 sys.path.append("./trex2")
-import trex_model
+import trex2_model
 logger = logging.getLogger("TREX2BatchRunner")
 
 class TREX2BatchRunner():

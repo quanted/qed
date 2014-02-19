@@ -9,6 +9,11 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import os
 from uber import uber_lib
+import history_tables
+import logging
+logger = logging.getLogger('terrplant Model')
+import rest_funcs
+
 
 class RicehistoryPage(webapp.RequestHandler):
     def get(self):
@@ -23,6 +28,9 @@ class RicehistoryPage(webapp.RequestHandler):
                 'model':'rice', 
                 'model_attributes':'Rice Model User History', 
                 'text_paragraph':x})
+        html = html + template.render (templatepath + 'history_pagination.html', {})                
+        hist_obj = rest_funcs.user_hist('admin', 'rice')
+        html = html + history_tables.table_all(hist_obj)
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

@@ -17,8 +17,9 @@ def fromJSON(json_string):
     return rice_object
 
 class rice(object):
-    def __init__(self, set_variables=True,run_methods=True,chemical_name='', mai=1, dsed=1, a=1, pb=1, dw=1, osed=1, kd=1, vars_dict=None):
+    def __init__(self, set_variables=True,run_methods=True,run_type = "single",chemical_name='', mai=1, dsed=1, a=1, pb=1, dw=1, osed=1, kd=1, vars_dict=None):
         self.set_default_variables()
+        self.jid = ts1.strftime('%Y%m%d%H%M%S%f')
         if set_variables:
             if vars_dict != None:
                 self.__dict__.update(vars_dict)
@@ -31,6 +32,7 @@ class rice(object):
                 self.dw = dw
                 self.osed = osed
                 self.kd = kd
+                self.run_type = run_type
                 logger.info(vars(self))
             if run_methods:
                 self.run_methods()

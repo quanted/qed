@@ -9,9 +9,6 @@ import cgitb
 cgitb.enable()
 from uber import uber_lib
 
-# from google.appengine.api import channel
-# import uuid
-
 class przmBatchInputPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
@@ -20,7 +17,7 @@ class przmBatchInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'przm','page':'batchinput'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberbatchinput.html', {'model':'przm'}) 
-        html = html + template.render(templatepath + '04uberbatchinput_jquery.html', {'model':'przm'}) 
+        html = html + template.render(templatepath + '04uberbatchinput_jquery_przm_batch.html', {'model':'przm'}) 
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)

@@ -1,5 +1,5 @@
 application: pypest
-version: tom
+version: tao
 runtime: python27
 api_version: 1
 
@@ -24,9 +24,8 @@ env_variables:
   UBERTOOL_BATCH_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com/'
   UBERTOOL_MONGO_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
   UBERTOOL_SECURE_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
-  UBERTOOL_REST_SERVER: 'http://localhost:7777'
-  # UBERTOOL_REST_SERVER: 'http://23.23.190.202:7777'
-
+  # UBERTOOL_REST_SERVER: 'http://localhost:7777'
+  UBERTOOL_REST_SERVER: 'http://54.83.18.251:7777'
 skip_files:
 - ^(.*/)?app\.yaml
 - ^(.*/)?app\.yml
@@ -95,8 +94,8 @@ handlers:
   script: ajaxtest.py
 - url: /history_revisit.html
   script: history_revisit.py
-- url: /backend.html
-  script: ubertool/przm/przmBatchOutputPageBackend.py
+- url: /history_revisit_batch.html
+  script: history_revisit_batch.py
 # All URLs beginning with /stylesheets are treated as paths to static files in
 # the stylesheets/ directory. Note that static_dir handlers do not use a
 # regular expression for the URL pattern, only a prefix.

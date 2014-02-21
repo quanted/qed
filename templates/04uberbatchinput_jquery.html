@@ -33,10 +33,6 @@ $(document).ready(function() {
 				    processData: false,
 					success: function(url) {
 						$.unblockUI();
-						// document.open();
-						// document.write(url);
-						// document.close();
-						// $("body").html(url);
 						$("div.articles").replaceWith(url);
 						$("div.right").remove();
 						location.hash = "output";

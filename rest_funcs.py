@@ -5,6 +5,8 @@ import urllib
 import json
 from google.appengine.api import urlfetch
 import numpy as np
+import ast
+import logging
 
 #############################Provide the key and connect to the picloud#####################
 api_key=keys_Picloud_S3.picloud_api_key
@@ -71,6 +73,30 @@ def get_output_html(jid, model_name):
         html_output =""
     return html_output
 
+###########################function to retrive html from MongoDB################################ 
+def create_batchoutput_html(jid, model_name):
+    all_dic = {"jid":jid, "model_name":model_name}
+    data = json.dumps(all_dic)
+    url=os.environ['UBERTOOL_REST_SERVER'] + '/get_przm_batch_output'
+    try:
+        response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+    except:
+        pass
+    if response:
+        result = response.content
+        result_dict = ast.literal_eval(result)['result']
+        result_obj_all = []
+        for i in result_dict:
+            result_obj_temp = Struct(**i)
+            result_obj_all.append(result_obj_temp)
+    else:
+        result_obj_all =[]
+    return result_obj_all
+
+class Struct:
+    def __init__(self, **entries): 
+        self.__dict__.update(entries)
+
 ###########################creat an object to display history runs################################ 
 class user_hist(object):
     def __init__(self, user_id, model_name):
@@ -85,6 +111,7 @@ class user_hist(object):
         self.time_id = []
         self.jid = []
         self.run_type = []
+        self.model_name = model_name
 
         try:
             self.response = urlfetch.fetch(url=self.url, payload=self.data, method=urlfetch.POST, headers=http_headers, deadline=60)

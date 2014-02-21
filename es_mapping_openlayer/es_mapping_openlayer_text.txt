@@ -1,4 +1,8 @@
 <p>
+It is under development to shift from google map API to openlayer/OSM
+</p>
+
+<p>
 This tool, the Endangered Species Mapper, is an übertool component that assists in the integration and automation of essential risk assessment by spatiotemporally visualizing the endangered species distributions, major croplands and pesticide usage in conterminous United States at county level. 
 </p>
 <p>
@@ -6,5 +10,5 @@ Top croplands in terms of coverage were selected to show spatial coverage of agr
 </p>
 
 <p>
-Yearly estimated pesticide use (USGS EPest) of 459 common compounds at county level of the conterminous United States from 1992 to 2009 can be overlaid on crop and species distribution ranges. These spatial coverages can be used together to assist the EPA pesticide registration process and is a part of the endangered species effect assessment process.
+Yearly estimated pesticide use (USGS EPest) of 459 common compounds at county level of the conterminous United States from 1992 to 2011 can be overlaid on crop and species distribution ranges. These spatial coverages can be used together to assist the EPA pesticide registration process and is a part of the endangered species effect assessment process.
 </p>

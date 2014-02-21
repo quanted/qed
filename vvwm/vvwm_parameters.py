@@ -76,11 +76,11 @@ class vvwmInp_waterbody(forms.Form):
     depth_max_Pond = forms.FloatField(required=True,label='Pond Maximum Water Body Depth (m)', initial="2")
     hyd_len_Pond = forms.FloatField(required=True,label='Pond Hydraulic Length (m)', initial="356.8")
     # Reservoir
-    fieldArea_Reservoir = forms.FloatField(required=True,label=mark_safe('Reservoir Field Area (m<sup>2</sup>)'), initial="100000")
-    wbArea_Reservoir = forms.FloatField(required=True,label=mark_safe('Reservoir Water Body Area (m<sup>2</sup>)'), initial="10000")
-    depth_0_Reservoir = forms.FloatField(required=True,label='Reservoir Initial Water Body Depth (m)', initial="2")
-    depth_max_Reservoir = forms.FloatField(required=True,label='Reservoir Maximum Water Body Depth (m)', initial="2")
-    hyd_len_Reservoir = forms.FloatField(required=True,label='Reservoir Hydraulic Length (m)', initial="356.8")
+    fieldArea_Reservoir = forms.FloatField(required=True,label=mark_safe('Reservoir Field Area (m<sup>2</sup>)'), initial="1728000")
+    wbArea_Reservoir = forms.FloatField(required=True,label=mark_safe('Reservoir Water Body Area (m<sup>2</sup>)'), initial="52600")
+    depth_0_Reservoir = forms.FloatField(required=True,label='Reservoir Initial Water Body Depth (m)', initial="2.74")
+    depth_max_Reservoir = forms.FloatField(required=True,label='Reservoir Maximum Water Body Depth (m)', initial="2.74")
+    hyd_len_Reservoir = forms.FloatField(required=True,label='Reservoir Hydraulic Length (m)', initial="600")
     # Custom
     fieldArea_Custom = forms.FloatField(required=True,label=mark_safe('Custom Field Area (m<sup>2</sup>)'), initial="100000")
     wbArea_Custom = forms.FloatField(required=True,label=mark_safe('Custom Water Body Area (m<sup>2</sup>)'), initial="10000")

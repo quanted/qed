@@ -185,6 +185,10 @@ $(document).ready(function() {
       $(".year_not").hide();
     }
   });
+
+  // PRZM5 specific changes
+  $("#id_pond_res_custom").prop('disabled', true);
+
   // Save input page html to browser Local Storage to be retrieved on output page
   $("input[value='Submit']").click(function() {
       var html_input = $("form").html();

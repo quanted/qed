@@ -60,8 +60,7 @@ class przm5Inp_mcf2(forms.Form):
 
 #Application tab
 class przm5Inp_appl(forms.Form):
-    water_body_type_check = forms.CharField(initial='Pond')
-
+    # water_body_type_check = forms.CharField(initial='Pond')
     # Eff = forms.FloatField(required=True, label='Eff.', initial=0.95)
     # spray = forms.FloatField(required=True, label='Drift/T', initial=0.05)
 
@@ -75,7 +74,8 @@ class przm5Inp_appl(forms.Form):
     noa = forms.ChoiceField(required=True,choices=app_nOpt, label='Number of Applications', initial='')
     specifyYearsSel = (('1','Yes'), ('0','No'))
     specifyYears = forms.ChoiceField(label='Specify Years?', choices=specifyYearsSel, initial='0')
-
+    pond_res_customSel = ((1,'Pond'), (2,'Reservoir'), (3,'Custom'))
+    pond_res_custom = forms.ChoiceField(label='Enter Eff. & Drift/T for', choices=pond_res_customSel, initial=1)
 
 #Crop/land tab
 class przm5Inp_cropland(forms.Form):

@@ -9,10 +9,10 @@
 
 $(document).ready(function(){
 
-    var s1 = $.parseJSON($('#x_wc_val_1').text());
-    var s2 = $.parseJSON($('#x_ben_val_1').text());
-    var plot1 = $.jqplot ('chart1', [s1,s2], {
-        title: 'Pond Peak Yearly Concentrations',
+    var s1 = $.parseJSON($('#x_wc_val_{{plotNumber}}').text());
+    var s2 = $.parseJSON($('#x_ben_val_{{plotNumber}}').text());
+    var plot1 = $.jqplot ('chart{{plotNumber}}', [s1,s2], {
+        title: '{{title}} Peak Yearly Concentrations',
         axesDefaults: {
             labelRenderer: $.jqplot.CanvasAxisLabelRenderer
         },

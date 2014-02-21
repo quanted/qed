@@ -77,7 +77,7 @@ def VVWM_pi(working_dir,
 
 # ########Copy files to the tempt folder#############
     print "++++++++++++++++++++++++++"
-    met = "test.dvf"
+    met = "test.dvf"    #This will be changed to allow the user to select a weather file
     if (deg_check == 1):
         przm5_outputChk = "test1"
     elif (deg_check == 2):
@@ -94,7 +94,7 @@ def VVWM_pi(working_dir,
 
     src2=src1+"/vvwm.exe vvwmTransfer.txt"
     # src2="/vvwm.exe vvwmTransfer.txt"
-    print src2
+    # print src2
 
     ##call vvwm.exe w/ transfer file
     os.chdir(src1)

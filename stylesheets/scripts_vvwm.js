@@ -71,9 +71,8 @@ $(document).ready(function() {
         }
     });
 
-
-    // Temp Disable SimType selection:
-    $('#id_SimTypeFlag').prop('readonly', true);
+    // Applications Tab
+    
 
     // Inital & Maximum Water Body Depth
     $("input[name$='_Custom']").closest('tr').hide();
@@ -103,10 +102,9 @@ $(document).ready(function() {
     });
 
     // Temporary Fixes
-    $('#id_water_body_type_check, #id_app_date_type, #upfile1, #upfile2').prop('disabled', true);
+    $('#id_app_date_type, #upfile1, #upfile2').prop('disabled', true);
     $('#id_year_a_0').prop('disabled', true);
-    $('#id_water_body_type_check').closest('tr').hide();
-    // 
+
     // Save input page html to browser Local Storage to be retrieved on output page
     $("input[value='Submit']").click(function() {
         var html_input = $("form").html();

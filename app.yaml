@@ -25,9 +25,7 @@ env_variables:
   UBERTOOL_MONGO_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
   UBERTOOL_SECURE_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
   #UBERTOOL_REST_SERVER: 'http://localhost:7777'
-  UBERTOOL_REST_SERVER: 'http://23.23.190.202:7777'
-
->>>>>>> marcia
+  UBERTOOL_REST_SERVER: 'http://54.83.18.251:7777'
 
 skip_files:
 - ^(.*/)?app\.yaml

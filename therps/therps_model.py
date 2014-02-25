@@ -1,13 +1,24 @@
 # -*- coding: utf-8 -*-
 import numpy as np
-
+import logging
+import sys
+import time, datetime
 #food intake for birds
 class therps(object):
-    def __init__(self, chem_name, use, formu_name, a_i, h_l, n_a, i_a, a_r, avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, 
+    def __init__(self, run_type, chem_name, use, formu_name, a_i, h_l, n_a, i_a, a_r, avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, 
                  Species_of_the_tested_bird_avian_ld50, Species_of_the_tested_bird_avian_lc50, Species_of_the_tested_bird_avian_NOAEC, Species_of_the_tested_bird_avian_NOAEL,
                  bw_avian_ld50, bw_avian_lc50, bw_avian_NOAEC, bw_avian_NOAEL,
                  mineau_scaling_factor, bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md, 
                  wp_herp_a_lg, c_mamm_a, c_herp_a):
+
+        ts = datetime.datetime.now()
+        if(time.daylight):
+            ts1 = datetime.timedelta(hours=-4)+ts
+        else:
+            ts1 = datetime.timedelta(hours=-5)+ts
+        self.jid = ts1.strftime('%Y%m%d%H%M%S%f')
+
+        self.run_type = run_type
         self.chem_name = chem_name
         self.use = use
         self.formu_name = formu_name

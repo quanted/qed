@@ -3,6 +3,7 @@ import numpy
 from django.template import Context, Template
 from django.utils.safestring import mark_safe
 from therps import therps_model
+from therps import therps_parameters
 import time
 import datetime
 
@@ -140,15 +141,19 @@ def getdjtemplate_5():
     """
     return dj_template
 
-def timestamp():
-    ts = time.time()
-    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+def timestamp(therps_obj="", batch_jid=""):
+    #ts = time.time()
+    #st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+    if therps_obj:
+        st = datetime.datetime.strptime(therps_obj.jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
+    else:
+        st = datetime.datetime.strptime(batch_jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
     html="""
     <div class="out_">
     <b>T-Herps <a href="http://www.epa.gov/oppefed1/models/terrestrial/therps/t_herps_user_guide.htm">Version 1.0</a> (Beta)<br>
     """
     html = html + st
-    html = html + " (UTC)</b>"
+    html = html + " (EST)</b>"
     html = html + """
     </div>"""
     return html

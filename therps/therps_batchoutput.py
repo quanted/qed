@@ -16,6 +16,9 @@ import logging
 import csv
 from therps import therps_tables,therps_model
 from uber import uber_lib
+import Queue
+from collections import OrderedDict
+import rest_funcs
 
 chem_name=[]
 use=[]
@@ -135,7 +138,18 @@ EEC_dose_TP_lg_out_mean=[]
 ARQ_dose_TP_md_out_mean=[]
 ARQ_dose_TP_lg_out_mean=[]
 
+jid_all = []
+jid_batch = []
+therps_obj_all = []
+
 def html_table(row_inp,iter):
+    while True:
+        row_inp_temp_all = row_inp_all.get()
+        if row_inp_temp_all is None:
+            break
+        else:
+            row_inp = row_inp_temp_all[0]
+            iter = row_inp_temp_all[1]
 ###Inputs###########
     chem_name_temp=str(row_inp[0])
     chem_name.append(chem_name_temp)
@@ -201,7 +215,7 @@ def html_table(row_inp,iter):
                         <br><H3>Batch Calculation of Iteration %s</H3>
                     </div>"""%(iter)
 
-    therps_obj_temp = therps_model.therps(chem_name_temp, use_temp, formu_name_temp, a_i_temp, h_l_temp, n_a_temp, i_a_temp, a_r_temp, 
+    therps_obj_temp = therps_model.therps("batch",chem_name_temp, use_temp, formu_name_temp, a_i_temp, h_l_temp, n_a_temp, i_a_temp, a_r_temp, 
                                           ld50_bird_temp, lc50_bird_temp, NOAEC_bird_temp, NOAEL_bird_temp, 
                                           Species_of_the_tested_bird_avian_ld50_temp, Species_of_the_tested_bird_avian_lc50_temp, Species_of_the_tested_bird_avian_NOAEC_temp, Species_of_the_tested_bird_avian_NOAEL_temp,
                                           bw_avian_ld50_temp, bw_avian_lc50_temp, bw_avian_NOAEC_temp, bw_avian_NOAEL_temp,
@@ -209,6 +223,7 @@ def html_table(row_inp,iter):
 
     table_all_out = therps_tables.table_all(therps_obj_temp)
     html_table_temp = Input_header + table_all_out[0] + "<br>"
+    out_html_all[iter]=html_table_temp
 
     EEC_diet_herp_BL_temp=table_all_out[3]['EEC_diet_herp_BL']
     EEC_diet_herp_BL_out.append(EEC_diet_herp_BL_temp)
@@ -388,7 +403,10 @@ def html_table(row_inp,iter):
     ARQ_dose_TP_md_out_mean.append(ARQ_dose_TP_md_temp_mean)
     ARQ_dose_TP_lg_temp_mean=table_all_out[4]['ARQ_dose_TP_lg']
     ARQ_dose_TP_lg_out_mean.append(ARQ_dose_TP_lg_temp_mean)
-
+    jid_all.append(therps_obj_temp.jid)
+                therps_obj_all.append(therps_obj_temp)    
+                if iter == 1:
+                    jid_batch.append(therps_obj_temp.jid)
     return html_table_temp  
 
 ######Output###########
@@ -452,11 +470,12 @@ class TherpsBatchOutputPage(webapp.RequestHandler):
         html = template.render(templatepath + '04uberbatch_start.html', {
                 'model':'therps',
                 'model_attributes':'T-Herps Batch Output'})
-        html = html + therps_tables.timestamp()
+        html = html + therps_tables.timestamp("",jid_batch[0])
         html = html + iter_html
-        html = html + template.render(templatepath + 'export.html', {})
+        #html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         # html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.batch_save_dic(html, [x.__dict__ for x in therps_obj_all], 'therps', 'batch', jid_batch[0], ChkCookie, templatepath)
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', TherpsBatchOutputPage)], debug=True)

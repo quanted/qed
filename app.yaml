@@ -27,8 +27,6 @@ env_variables:
   #UBERTOOL_REST_SERVER: 'http://localhost:7777'
   UBERTOOL_REST_SERVER: 'http://23.23.190.202:7777'
 
->>>>>>> marcia
-
 skip_files:
 - ^(.*/)?app\.yaml
 - ^(.*/)?app\.yml

@@ -63,7 +63,7 @@ def makevvwmTransfer(working_dir,
 	else:
 		koc_check = "False"
 	myfile.write(koc_check + "\n")                                          #Line 4  Koc or Kd?
-	print h_hl
+
 	if (deg_check == 1):
 		myfile.write("{0},".format(*Koc) + ",," + "\n")                     #Line 5  Koc value(mg/L)
 		myfile.write("{0},".format(*wc_hl) + ",," + "\n")                   #Line 6  aerobic aquatic halflife(days)
@@ -247,29 +247,21 @@ def makevvwmTransfer(working_dir,
 	if vvwmSimType == "0":
 		with open('vvwmTransfer.txt', 'r') as file:
 			data = file.readlines()
-		print data[56:]
-		print "=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+="
 		data[56] = "3" + "\n"   
 		data[57] = afield[1] + "\n"                                      #Line 58 Field Area ***Reservoir
 		data[58] = area[1] + "\n"                                     #Line 59 Water Body Area ***Reservoir
 		data[59] = depth_0[1] + "\n"                                  #Line 60 Initial Depth ***Reservoir
 		data[60] = depth_max[1] + "\n"                                #Line 61 Max Depth ***Reservoir
-		print localSpray[1]
 		data[61] = ffListGenerator(area[1], totalApp, noofyears, PestAppyRate, localSpray[1]) + "\n"
-		print data[56:]
 		with open('vvwmTransferRes.txt', 'w') as file:
 			file.writelines(data)
 
 # ffList Generator
 def ffListGenerator(area, totalApp, noofyears, PestAppyRate, localSpray):
-	print ("area = "+area)
 	localWaterArea = float(area) / 10000
 	totalAppYears = int(totalApp) * int(noofyears)
 	# Convert list of strings to floats:
 	PestAppyRate = [float(x) for x in PestAppyRate]
-	print "localSpray: "
-	print localSpray
-	print type(localSpray)
 	localSpray = [float(x) for x in localSpray]
 	# Convert lists to numpy arrays:
 	PestAppyRateArray = np.array(PestAppyRate)

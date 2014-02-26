@@ -63,7 +63,7 @@ def makevvwmTransfer(working_dir,
 	else:
 		koc_check = "False"
 	myfile.write(koc_check + "\n")                                          #Line 4  Koc or Kd?
-	print h_hl
+
 	if (deg_check == 1):
 		myfile.write("{0},".format(*Koc) + ",," + "\n")                     #Line 5  Koc value(mg/L)
 		myfile.write("{0},".format(*wc_hl) + ",," + "\n")                   #Line 6  aerobic aquatic halflife(days)
@@ -224,19 +224,41 @@ def makevvwmTransfer(working_dir,
 	##################################################################################################################
 	
 	############################ Convert SWC INPUT "SimType" value to vvwmSimType ####################################
-	if (vvwmSimType == "0" or  vvwmSimType == "5"): # 0=EPA Reservoir & Pond, 5=EPA Pond Only
+	if vvwmSimType == "0" or vvwmSimType == "5": # 0=EPA Reservoir & Pond (writes Pond first, Line 268 writes Reservoir), 5=EPA Pond Only
 		vvwmSimType_new = "2"
+		myfile.write(vvwmSimType_new + "\n")                                        #Line 57 vvwmSimType
 	elif (vvwmSimType == "4" or vvwmSimType == "6"): # 4=EPA Reservoir Only, 6=Reservoir w/ User Avg, 
 		vvwmSimType_new = "3"
+		myfile.write(vvwmSimType_new + "\n")                                        #Line 57 vvwmSimType
 	elif (vvwmSimType == "1" or vvwmSimType == "2" or vvwmSimType == "3"): #1=Varying Volume
 		vvwmSimType_new = "1"
-	myfile.write(vvwmSimType_new + "\n")                                        #Line 57 vvwmSimType
-	myfile.write(afield[0] + "\n")                                          #Line 58 Field Area ***Dependant on vvwmSimType 
-	myfile.write(area[0] + "\n")                                            #Line 59 Water Body Area ***Dependant on vvwmSimType 
-	myfile.write(depth_0[0] + "\n")                                         #Line 60 Initial Depth ***Dependant on vvwmSimType 
-	myfile.write(depth_max[0] + "\n")                                       #Line 61 Max Depth ***Dependant on vvwmSimType 
+		myfile.write(vvwmSimType_new + "\n")                                        #Line 57 vvwmSimType
+
+	myfile.write(afield[0] + "\n")                                          #Line 58 Field Area ***Reservoir
+	myfile.write(area[0] + "\n")                                            #Line 59 Water Body Area ***Reservoir
+	myfile.write(depth_0[0] + "\n")                                         #Line 60 Initial Depth ***Reservoir
+	myfile.write(depth_max[0] + "\n")                                       #Line 61 Max Depth ***Reservoir
 	##################################### ffList Generator ###########################################################
-	localWaterArea = float(area[0]) / 10000
+	myfile.write(ffListGenerator(area[0], totalApp, noofyears, PestAppyRate, localSpray[0]) + "\n")    #Line 62 (Drift/T * Amount(rate) * localWaterArea), where: localWaterArea = Water Body Area (Line 59) / 10000   (Line 955 in Form1.vb)
+	# myfile.write(ffStrings + "\n")                                        
+	##################################################################################################################
+	myfile.write(ReservoirFlowAvgDays + "\n")                             #Line 63 "0", unless User Avg Flow is selected sim type, it is the value in the TextBox
+	myfile.close()
+	if vvwmSimType == "0":
+		with open('vvwmTransfer.txt', 'r') as file:
+			data = file.readlines()
+		data[56] = "3" + "\n"   
+		data[57] = afield[1] + "\n"                                      #Line 58 Field Area ***Reservoir
+		data[58] = area[1] + "\n"                                     #Line 59 Water Body Area ***Reservoir
+		data[59] = depth_0[1] + "\n"                                  #Line 60 Initial Depth ***Reservoir
+		data[60] = depth_max[1] + "\n"                                #Line 61 Max Depth ***Reservoir
+		data[61] = ffListGenerator(area[1], totalApp, noofyears, PestAppyRate, localSpray[1]) + "\n"
+		with open('vvwmTransferRes.txt', 'w') as file:
+			file.writelines(data)
+
+# ffList Generator
+def ffListGenerator(area, totalApp, noofyears, PestAppyRate, localSpray):
+	localWaterArea = float(area) / 10000
 	totalAppYears = int(totalApp) * int(noofyears)
 	# Convert list of strings to floats:
 	PestAppyRate = [float(x) for x in PestAppyRate]
@@ -255,10 +277,7 @@ def makevvwmTransfer(working_dir,
 	ffArrayFinal = np.multiply(ffArrayFinal, localWaterAreaArray)
 	# Convert array of floats to strings
 	ffStrings = ','.join(str(x) for x in ffArrayFinal) + ","
-	myfile.write(ffStrings + "\n")                                       #Line 62 (Drift/T * Amount(rate) * localWaterArea)      where: localWaterArea = Water Body Area (Line 59) / 10000          (Line 955 in Form1.vb)
-	##################################################################################################################
-	myfile.write(ReservoirFlowAvgDays + "\n")                            #Line 63 "0", unless User Avg Flow is selected sim type, it is the value in the TextBox
-	myfile.close()
+	return ffStrings
 
 # Function to check if tuple is empty:
 def is_empty(any_structure):

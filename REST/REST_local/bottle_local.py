@@ -6,6 +6,10 @@ from boto.s3.key import Key
 from boto.s3.bucket import Bucket
 import os
 import json
+#####The folloing two lines could let the REST servers to handle multiple requests##
+########################(not necessary for local dev. env.)#########################
+from gevent import monkey
+monkey.patch_all()
 ##########################################################################################
 #####AMAZON KEY, store output files. You might have to write your own import approach#####
 ##########################################################################################
@@ -191,6 +195,22 @@ def przm_rest(jid):
     
 ##################################przm_batch##############################################
 
+
+##################################exams##############################################
+@route('/exams/<jid>', method='POST') 
+@auth_basic(check)
+def exams_rest(jid):
+    import time
+    for k, v in request.json.iteritems():
+        exec '%s = v' % k
+    all_result.setdefault(jid,{}).setdefault('status','none')
+
+    from exams_rest import exams_pi
+    result = exams_pi.exams_pi(chem_name, scenarios, met, farm, mw, sol, koc, vp, aem, anm, aqp, tmper, n_ph, ph_out, hl_out)
+    return {'user_id':'admin', 'result': result, '_id':jid}
+    
+##################################przm##############################################
+
 ##################File upload####################
 @route('/file_upload', method='POST') 
 @auth_basic(check)
@@ -292,7 +312,7 @@ def get_przm_batch_output():
     return {"result":result}
 
 
-run(host='localhost', port=7777, server_names="gevent", debug=True)
+run(host='localhost', port=7777, server='gevent', debug=True)
 
 
 

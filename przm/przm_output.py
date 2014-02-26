@@ -22,7 +22,7 @@ class PRZMOutputPage(webapp.RequestHandler):
         args["run_type"] = "single"
 
         przm_obj = przm_model.przm(args)
-        logger.info(vars(przm_obj))
+        # logger.info(vars(przm_obj))
 
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")

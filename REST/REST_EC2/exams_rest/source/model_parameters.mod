@@ -1,0 +1,76 @@
+GFORTRAN module version '4' created from modnam.f90 on Fri Jun  7 21:17:50 2013
+MD5:5337aa3d69ea9eddd5807aa100dfde50 -- If you edit this, you'll get what you deserve.
+
+(() () () () () () () () () () () () () () () () () () () () () () () ()
+() () ())
+
+()
+
+()
+
+()
+
+()
+
+()
+
+(2 'comcnt' 'model_parameters' 'comcnt' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 INTEGER ()) 0 0 ()
+(CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '18') () 0 () () () 0 0)
+3 'comvar' 'model_parameters' 'comvar' 1 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN EXPLICIT-SAVE 0 0 DIMENSION) (INTEGER 4 0 0 INTEGER
+()) 0 0 () (1 EXPLICIT (CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '1') (
+CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '18')) 0 () () () 0 0)
+4 'lnmods' 'model_parameters' 'lnmods' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 INTEGER ()) 0 0 ()
+(CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '714') () 0 () () () 0 0)
+5 'model_parameters' 'model_parameters' 'model_parameters' 1 ((MODULE
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) (UNKNOWN 0 0 0 UNKNOWN
+()) 0 0 () () 0 () () () 0 0)
+6 'modlen' 'model_parameters' 'modlen' 1 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN EXPLICIT-SAVE 0 0 DIMENSION) (INTEGER 4 0 0 INTEGER
+()) 0 0 () (1 EXPLICIT (CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '1') (
+CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '134')) 0 () () () 0 0)
+7 'modmin' 'model_parameters' 'modmin' 1 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN EXPLICIT-SAVE 0 0 DIMENSION) (INTEGER 4 0 0 INTEGER
+()) 0 0 () (1 EXPLICIT (CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '1') (
+CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '134')) 0 () () () 0 0)
+8 'mods' 'model_parameters' 'mods' 1 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN EXPLICIT-SAVE 0 0 DIMENSION) (CHARACTER 1 0 0
+CHARACTER ((CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '1'))) 0 0 () (1
+EXPLICIT (CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '1') (CONSTANT (INTEGER
+4 0 0 INTEGER ()) 0 '714')) 0 () () () 0 0)
+9 'nocom' 'model_parameters' 'nocom' 1 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN EXPLICIT-SAVE 0 0) (INTEGER 4 0 0 INTEGER ()) 0 0 ()
+() 0 () () () 0 0)
+10 'nomod' 'model_parameters' 'nomod' 1 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN EXPLICIT-SAVE 0 0) (INTEGER 4 0 0 INTEGER ()) 0 0 ()
+() 0 () () () 0 0)
+11 'parcnt' 'model_parameters' 'parcnt' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 INTEGER ()) 0 0 ()
+(CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '134') () 0 () () () 0 0)
+12 'tcl1' 'model_parameters' 'tcl1' 1 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN EXPLICIT-SAVE 0 0 DIMENSION) (INTEGER 4 0 0 INTEGER
+()) 0 0 () (1 EXPLICIT (CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '1') (
+CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '134')) 0 () () () 0 0)
+13 'tcl2' 'model_parameters' 'tcl2' 1 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN EXPLICIT-SAVE 0 0 DIMENSION) (INTEGER 4 0 0 INTEGER
+()) 0 0 () (1 EXPLICIT (CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '1') (
+CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '134')) 0 () () () 0 0)
+14 'tcl3' 'model_parameters' 'tcl3' 1 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN EXPLICIT-SAVE 0 0 DIMENSION) (INTEGER 4 0 0 INTEGER
+()) 0 0 () (1 EXPLICIT (CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '1') (
+CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '134')) 0 () () () 0 0)
+15 'td' 'model_parameters' 'td' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN EXPLICIT-SAVE 0 0 DIMENSION) (INTEGER 4 0 0 INTEGER ()) 0 0 () (
+1 EXPLICIT (CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '1') (CONSTANT (
+INTEGER 4 0 0 INTEGER ()) 0 '134')) 0 () () () 0 0)
+16 'ts' 'model_parameters' 'ts' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN EXPLICIT-SAVE 0 0 DIMENSION) (INTEGER 4 0 0 INTEGER ()) 0 0 () (
+1 EXPLICIT (CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '1') (CONSTANT (
+INTEGER 4 0 0 INTEGER ()) 0 '134')) 0 () () () 0 0)
+)
+
+('comcnt' 0 2 'comvar' 0 3 'lnmods' 0 4 'model_parameters' 0 5 'modlen'
+0 6 'modmin' 0 7 'mods' 0 8 'nocom' 0 9 'nomod' 0 10 'parcnt' 0 11 'tcl1'
+0 12 'tcl2' 0 13 'tcl3' 0 14 'td' 0 15 'ts' 0 16)

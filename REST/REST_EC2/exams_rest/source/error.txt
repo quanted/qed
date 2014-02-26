@@ -1,0 +1,713 @@
+gfortran -g -Wall  -fno-bounds-check -fbacktrace -o exam.exe adamdata.f90 admess.f90 dsply.f90 f2kcli.f90 floatcmp.f90 geardat2.f90 geardata.f90 gintrp.f90 grsub4.f90 helper.f90 ihelp.f90 imbed.f90 inpout.f90 local1.f90 local2.f90 modnam.f90 ozone.f90 platform.f90 plotx.f90 pondat.f90 prodat.f90 prtmsg.f90 ranksort.f90 shoplo.f90 shovar.f90 size.f90 skale.f90 skale2.f90 skan.f90 soldat.f90 solfct.f90 staopt.f90 statvar.f90 stepdata.f90 stifdata.f90 stmess.f90 trans.f90 typopt.f90 unprec.f90 whtcmd.f90 wrkspace.f90 xbar.f90 xvalue.f90 zonopt.f90 bldout.f90 catlg.f90 datopt.f90 decod1.f90 decod2.f90 decod4.f90 desout.f90 dintpt.f90 dintrp.f90 divdif.f90 doit.f90 echoset.f90 envsiz.f90 erase.f90 gear.f90 getarg.f90 getnum.f90 get_file.f90 globals.f90 help.f90 ifind.f90 inrec.f90 kinet.f90 kinhed.f90 kinlis.f90 kinnum.f90 kinopt.f90 kinplt.f90 kinred.f90 kinsel.f90 list.f90 loadin.f90 loadout.f90 local.f90 local3.f90 m12bar.f90 m2flux.f90 m3flux.f90 match.f90 newnam.f90 outp.f90 paclds.f90 pacpro.f90 pacscr.f90 pak.f90 pakenv.f90 parsum.f90 phox.f90 prchem.f90 pricl.f90 prodin.f90 prprod.f90 prpuls.f90 prtprm.f90 przmin.f90 readsp.f90 recall.f90 reduct.f90 sedadv.f90 setpsw.f90 setvalue.f90 show.f90 singo2.f90 sintrp.f90 solar.f90 station.f90 steady.f90 stfint.f90 store.f90 sumup.f90 sunlys.f90 tabe.f90 tab_var.f90 transp.f90 trprod.f90 unpak.f90 unpbar.f90 unpenv.f90 unplds.f90 unppro.f90 unpscr.f90 volat.f90 watadv.f90 weatherh.f90 writer.f90 zero.f90 announ.f90 audopt.f90 aveout.f90 beer.f90 biolys.f90 chemin.f90 chksub.f90 chmout.f90 ckicm2.f90 ckicm3.f90 ckload.f90 ckpuls.f90 contin.f90 contrl.f90 datack.f90 disper.f90 distrb.f90 driver.f90 drivm1.f90 drivm2.f90 drivm3.f90 endmon.f90 endrskc.f90 endrskr.f90 envin.f90 envout.f90 ex2fgt.f90 exams.f90 fct.f90 fder.f90 firord.f90 flows.f90 flxout.f90 geock.f90 getvar.f90 ghost.f90 grsub0.f90 grsub2.f90 grsub3.f90 hydlys.f90 initl.f90 m2ave.f90 m3ave.f90 prenv.f90 reader.f90 runit.f90 step.f90 stiff.f90 taba.f90 tabb.f90 tabc.f90 tabd.f90 adam.f90 admint.f90  
+f2kcli.f90:20.28:
+
+      SUBROUTINE GET_COMMAND(COMMAND,LENGTH,STATUS)
+                            1
+Warning: 'get_command' declared at (1) may shadow the intrinsic of the same name.  In order to call the intrinsic, explicit INTRINSIC declarations may be required.
+f2kcli.f90:81.6:
+
+      INTEGER FUNCTION COMMAND_ARGUMENT_COUNT()
+      1
+Warning: 'command_argument_count' declared at (1) may shadow the intrinsic of the same name.  In order to call the intrinsic, explicit INTRINSIC declarations may be required.
+f2kcli.f90:102.37:
+
+      SUBROUTINE GET_COMMAND_ARGUMENT(NUMBER,VALUE,LENGTH,STATUS)
+                                     1
+Warning: 'get_command_argument' declared at (1) may shadow the intrinsic of the same name.  In order to call the intrinsic, explicit INTRINSIC declarations may be required.
+plotx.f90:182.11:
+
+      Y1 = (Y(I)-YMIN)/RANGE*MAXY+0.5
+           1
+Warning: Possible change of value in conversion from REAL(4) to INTEGER(4) at (1)
+plotx.f90:325.11:
+
+      Y1 = (Y(I)-YMIN)/RANGE*MAXY+0.5
+           1
+Warning: Possible change of value in conversion from REAL(4) to INTEGER(4) at (1)
+solfct.f90:1.28:
+
+subroutine SOLFCT(TIME,YTEMP,GLOLIT)
+                            1
+Warning: Unused dummy argument 'ytemp' at (1)
+xbar.f90: In function 'xbar':
+xbar.f90:27:0: warning: 'y2' may be used uninitialized in this function [-Wuninitialized]
+decod4.f90:59.11:
+
+      KT = RESULT
+           1
+Warning: Possible change of value in conversion from REAL(4) to INTEGER(4) at (1)
+decod4.f90:62.13:
+
+      IREC = RESULT
+             1
+Warning: Possible change of value in conversion from REAL(4) to INTEGER(4) at (1)
+echoset.f90:7.31:
+
+integer :: EOF,IA,IFIND,ioerror
+                               1
+Warning: Unused variable 'ioerror' declared at (1)
+getarg.f90:5.17:
+
+subroutine GETARG(NARGS,ARGS,IT,ITM1)
+                 1
+Warning: 'getarg' declared at (1) may shadow the intrinsic of the same name.  In order to call the intrinsic, explicit INTRINSIC declarations may be required.
+kinplt.f90:1.48:
+
+subroutine KINPLT(KOUNT,SELECT,NSEL,TABLE,OUTPUT,TYPEG,&
+                                                1
+Warning: Unused dummy argument 'output' at (1)
+kinsel.f90:1.24:
+
+subroutine KINSEL(MAXSEL,KOUNT,NSEL,SELECT)
+                        1
+Warning: Unused dummy argument 'maxsel' at (1)
+list.f90:220.19:
+
+   HOLD(IS) = INPUT
+                   1
+Warning: CHARACTER expression will be truncated in assignment (80/127) at (1)
+m2flux.f90:49.10:
+
+   TEMP = 1.0E-06*abs(Y(J,K2))*EXPOKL(J,K2)
+          1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:71.9:
+
+   VOL = VOLKL(J,K2)*Y(J,K2)
+         1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:74.9:
+
+   CHE = HYDRKL(J,K2)*Y(J,K2)
+         1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:77.9:
+
+   CHE = OXIDKL(J,K2)*Y(J,K2)             ! Oxidation: (mg/L/hr)
+         1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:80.9:
+
+   CHE = PHOTKL(J,K2)*Y(J,K2)             ! Direct photolysis
+         1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:83.9:
+
+   CHE = S1O2KL(J,K2)*Y(J,K2)             ! Singlet oxygen photooxidation
+         1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:86.9:
+
+   CHE = REDKL(J,K2)*Y(J,K2)              ! Reductive transformations
+         1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:92.12:
+
+      BIO = Y(J,K2)*BIOLKL(J,K2)
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:95.12:
+
+      BIO = Y(J,K2)*BIOLKL(J,K2)
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:117.12:
+
+   SOCHYD = SOCHYD*TFACTR
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:118.11:
+
+   SOCOX = SOCOX*TFACTR
+           1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:119.11:
+
+   SOCDP = SOCDP*TFACTR
+           1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:120.12:
+
+   SOCSOX = SOCSOX*TFACTR
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:121.15:
+
+   SOCBIO(1) = SOCBIO(1)*TFACTR
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:122.15:
+
+   SOCBIO(2) = SOCBIO(2)*TFACTR
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:123.12:
+
+   SOCRED = SOCRED*TFACTR
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:124.12:
+
+   SOCVOL = SOCVOL*TFACTR
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:125.12:
+
+   SOCOUT = SOCOUT*TFACTR
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:126.12:
+
+   SOCCHE = SOCCHE*TFACTR
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:127.12:
+
+   GNDOUT = GNDOUT*TFACTR
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:128.12:
+
+   SURWAT = SURWAT*TFACTR
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2flux.f90:129.12:
+
+   TOTFLX = TOTFLX*TFACTR
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m3flux.f90:125.12:
+
+   SOCHYD = SOCHYD*TFACTR
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m3flux.f90:126.11:
+
+   SOCOX = SOCOX*TFACTR
+           1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m3flux.f90:127.11:
+
+   SOCDP = SOCDP*TFACTR
+           1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m3flux.f90:128.12:
+
+   SOCSOX = SOCSOX*TFACTR
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m3flux.f90:129.15:
+
+   SOCBIO(1) = SOCBIO(1)*TFACTR
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m3flux.f90:130.15:
+
+   SOCBIO(2) = SOCBIO(2)*TFACTR
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m3flux.f90:131.12:
+
+   SOCRED = SOCRED*TFACTR
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m3flux.f90:132.12:
+
+   SOCVOL = SOCVOL*TFACTR
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m3flux.f90:133.12:
+
+   SOCOUT = SOCOUT*TFACTR
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m3flux.f90:134.12:
+
+   SOCCHE = SOCCHE*TFACTR
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m3flux.f90:135.12:
+
+   GNDOUT = GNDOUT*TFACTR
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m3flux.f90:136.12:
+
+   TOTFLX = TOTFLX*TFACTR
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m3flux.f90:137.12:
+
+   SURWAT = SURWAT*TFACTR
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+outp.f90:50.8:
+
+TTEMP = TIME
+        1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+outp.f90:52.9:
+
+RTIMER = TIME/TFACTR
+         1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+outp.f90:78.14:
+
+      SATST = ALPHA(3*I+II,J,K)*abs(Y(J,K))
+              1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+outp.f90:104.14:
+
+      YTEMP = dabs(Y(J,K))
+              1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+outp.f90:166.14:
+
+      YTEMP = dabs(Y(J,K))
+              1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+outp.f90:218.23:
+
+        Y_start(J,K) = dabs(Y(J,K))
+                       1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+outp.f90:220.18:
+
+        YSUM(J,K)=YSUM(J,K) +((Y_start(J,K)+dabs(Y(J,K)))/2.0)
+                  1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+outp.f90:221.23:
+
+        Y_start(J,K) = dabs(Y(J,K))
+                       1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+outp.f90:1.25:
+
+subroutine OUTP(TIME,Y,DY,JFLAG,KFLAG)
+                         1
+Warning: Unused dummy argument 'dy' at (1)
+outp.f90:1.37:
+
+subroutine OUTP(TIME,Y,DY,JFLAG,KFLAG)
+                                     1
+Warning: Unused dummy argument 'kflag' at (1)
+setvalue.f90:558.30:
+
+             OutFil(ICL1) = L1
+                              1
+Warning: CHARACTER expression will be truncated in assignment (1/50) at (1)
+setvalue.f90:573.30:
+
+             OutFil(ICL1) = L1
+                              1
+Warning: CHARACTER expression will be truncated in assignment (1/50) at (1)
+setvalue.f90:173.11:
+
+      I2 = VAL; call PUTVAR(Y); if (All_Done) exit Data_put
+           1
+Warning: Possible change of value in conversion from REAL(4) to INTEGER(4) at (1)
+setvalue.f90:195.19:
+
+logical :: Found_It ! to check on existence of files
+                   1
+Warning: Unused variable 'found_it' declared at (1)
+show.f90:184.6:
+
+   230 return
+      1
+Warning: Label 230 at (1) defined but not used
+singo2.f90:74.15:
+
+      ABSLIT = ABSLIT + PHI(LAMKNT)*DOCETA(LAMKNT)*WAVEL(LAMKNT)
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+solar.f90:369.14:
+
+      TIMER = TIMER+TINCRL
+              1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+station.f90:151.23:
+
+   WMOnumber = '70261 '
+                       1
+Warning: CHARACTER expression will be truncated in assignment (5/6) at (1)
+station.f90:2321.23:
+
+   WMOnumber = '72434 '
+                       1
+Warning: CHARACTER expression will be truncated in assignment (5/6) at (1)
+station.f90:5032.31:
+
+   State     = 'United Kingdom'
+                               1
+Warning: CHARACTER expression will be truncated in assignment (10/14) at (1)
+steady.f90:95.20:
+
+            SATST = ALPHA(3*I+II,J,K2)*Y(J,K2)
+                    1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+steady.f90:158.21:
+
+         TRANLD(K) = TRANLD(K)+YIELDL(K,I,J)*Y(J,I)*WATVOL(J)
+                     1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+sumup.f90:102.14:
+
+      HAFLW = 0.69315/(TFACTR*(-alog(Z(5,K2)/QWSAV(K2)))/TENDL)
+              1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+sumup.f90:103.14:
+
+      HAFLS = 0.69315/(TFACTR*(-alog(Z(6,K2)/QSSAV(K2)))/TENDL)
+              1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+sumup.f90:107.12:
+
+   TIMEPR = TENDL/TFACTR
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+sunlys.f90:46.20:
+
+        KDPL(K,J) = KDPL(K,J)+DFACG(J,NDAT)*WAVEL(LAMKNT)*ABSORG(LAMKNT,K,K2)
+                    1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+sunlys.f90:51.52:
+
+      if (KDPG(K,K2) .GreaterThan. 0.0) KDPL(K,J) = KDPG(K,K2)*AVELIT(K)*&
+                                                    1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+watadv.f90:196.15:
+
+   WATOUL(J) = WATOUL(J)*TOTIN*AMAT(J,KOUNT1)
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+watadv.f90:198.19:
+
+      WATFL(I,J) = WATFL(I,J)*TOTIN*AMAT(J,KOUNT1)
+                   1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+aveout.f90:88.19:
+
+      Y_positive = abs(Y(J,KK))
+                   1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+aveout.f90:135.19:
+
+      Y_positive = abs(Y(J,KK))
+                   1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+aveout.f90:196.19:
+
+      Y_positive = abs(Y(J,KK))
+                   1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+aveout.f90:327.22:
+
+         Y_positive = abs(Y(J,KK))
+                      1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+aveout.f90:25.38:
+
+integer :: ICHEK, ISTART, K1, NTAB, M1, M2
+                                      1
+Warning: Unused variable 'm1' declared at (1)
+aveout.f90:25.42:
+
+integer :: ICHEK, ISTART, K1, NTAB, M1, M2
+                                          1
+Warning: Unused variable 'm2' declared at (1)
+beer.f90:178.11:
+
+  TOTAVE = sum(WAVEL(1:25))
+           1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+chemin.f90:13.53:
+
+integer :: I, J, K, KSTART, KSTOP, Eof_check, ioerror
+                                                     1
+Warning: Unused variable 'ioerror' declared at (1)
+ckicm2.f90:41.10:
+
+   YOLD = Y(J,K)  ! Store current value of state variable
+          1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+ckicm2.f90:115.9:
+
+TOTALT = TENDL-T ! Compute length of simulation (TOTAL T) in hours
+         1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+ckicm2.f90:119.12:
+
+   TOTALT = TOTALT/TFACTR  ! Still, why allow the user to feel foolish...
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+ckicm2.f90:144.11:
+
+   TIME1 = TOTALT/12.0/TFACTR
+           1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+ckicm3.f90:32.10:
+
+   YOLD = Y(J,K)  ! Store current value of state variable
+          1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+driver.f90:303.19:
+
+         OUTVAR(1)=TINITG
+                   1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+driver.f90:304.19:
+
+         OUTVAR(2)=TENDG
+                   1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+driver.f90:315.19:
+
+         OUTVAR(1)=TINITG
+                   1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+driver.f90:960.18:
+
+      OUTVAR(2) = TENDG   ! time in the file
+                  1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+drivm2.f90:51.10:
+
+      I = TINITG
+          1
+Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1)
+drivm2.f90:53.10:
+
+      K = TENDG
+          1
+Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1)
+drivm3.f90:106.19:
+
+   ElapsedYearDays=0.0 ! for counting days elapsed as the years progress
+                   1
+Warning: Possible change of value in conversion from REAL(4) to INTEGER(4) at (1)
+ex2fgt.f90:26.28:
+
+         Calc_Vector(:,1) = VOLG(1:KOUNT)*dabs(Y(1:KOUNT,K))
+                            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+ex2fgt.f90:49.25:
+
+        Calc_Vector(:,7)=VOLG(1:KOUNT)*dabs(Y(1:KOUNT,K))
+                         1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+ex2fgt.f90:1.25:
+
+subroutine EX2FGT(Y,JFLAG,RTIMER,ITIMER,CurrentDate)
+                         1
+Warning: Unused dummy argument 'jflag' at (1)
+fct.f90:4.19:
+
+subroutine FCT(TIME,Y,DY)
+                   1
+Warning: Unused dummy argument 'time' at (1)
+flxout.f90:52.13:
+
+      TEMP = 1.0E-06*Y(J,K2)*EXPOKL(J,K2)
+             1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:74.12:
+
+      VOL = VOLKL(J,K2)*Y(J,K2)
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:77.12:
+
+      CHE = HYDRKL(J,K2)*Y(J,K2)
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:80.12:
+
+      CHE = OXIDKL(J,K2)*Y(J,K2) ! 3. Oxidation: (mg/L/hr)
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:83.12:
+
+      CHE = PHOTKL(J,K2)*Y(J,K2) ! 4. Direct photolysis
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:86.12:
+
+      CHE = S1O2KL(J,K2)*Y(J,K2) ! 5. Singlet oxygen photooxidation
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:89.12:
+
+      CHE = REDKL(J,K2)*Y(J,K2) ! 6. Reductive transformations
+            1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:95.15:
+
+         BIO = Y(J,K2)*BIOLKL(J,K2)
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:99.15:
+
+         BIO = Y(J,K2)*BIOLKL(J,K2)
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:144.15:
+
+      SOCHYD = SOCHYD*TFACTR
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:145.14:
+
+      SOCOX = SOCOX*TFACTR
+              1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:146.14:
+
+      SOCDP = SOCDP*TFACTR
+              1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:147.15:
+
+      SOCSOX = SOCSOX*TFACTR
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:148.18:
+
+      SOCBIO(1) = SOCBIO(1)*TFACTR
+                  1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:149.18:
+
+      SOCBIO(2) = SOCBIO(2)*TFACTR
+                  1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:150.15:
+
+      SOCRED = SOCRED*TFACTR
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:151.15:
+
+      SOCVOL = SOCVOL*TFACTR
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:152.15:
+
+      SOCOUT = SOCOUT*TFACTR
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:153.15:
+
+      SOCCHE = SOCCHE*TFACTR
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:154.15:
+
+      SOCACU = SOCACU*TFACTR
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:155.15:
+
+      GNDOUT = GNDOUT*TFACTR
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:156.15:
+
+      SURWAT = SURWAT*TFACTR
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:157.15:
+
+      TOTLOD = TOTLOD*TFACTR
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:158.15:
+
+      ALLOLD = ALLOLD*TFACTR
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:159.15:
+
+      AUTOLD = AUTOLD*TFACTR
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:302.8:
+
+TIME1 = TENDL/12./TFACTR
+        1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:323.15:
+
+   SYSLDL(K) = SYSLDL(K)*TFACTR
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+flxout.f90:324.15:
+
+   TRANLD(K) = TRANLD(K)*TFACTR
+               1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+getvar.f90:34.22:
+
+      case (11); R4 = CINTG
+                      1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+getvar.f90:35.22:
+
+      case (12); R4 = TENDG
+                      1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+getvar.f90:36.22:
+
+      case (13); R4 = TINITG
+                      1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2ave.f90:95.19:
+
+      Y_positive = abs(Y(J,KK))
+                   1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2ave.f90:140.19:
+
+      Y_positive = abs(Y(J,KK))  
+                   1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2ave.f90:204.19:
+
+      Y_positive = abs(Y(J,KK))
+                   1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2ave.f90:332.36:
+
+         OUTDAT = 0.0; Y_positive = abs(Y(J,KK))
+                                    1
+Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
+m2ave.f90:27.27:
+
+integer :: KKNTW, KKNTS, M1, M2
+                           1
+Warning: Unused variable 'm1' declared at (1)
+m2ave.f90:27.31:
+
+integer :: KKNTW, KKNTS, M1, M2
+                               1
+Warning: Unused variable 'm2' declared at (1)
+m3ave.f90:35.66:
+
+integer :: I,ICHEK,ISTART,J,K,K1,KK,IONTES,NNDAT,NTAB,NTABLE,N1,M1,M2
+                                                                  1
+Warning: Unused variable 'm1' declared at (1)
+m3ave.f90:35.69:
+
+integer :: I,ICHEK,ISTART,J,K,K1,KK,IONTES,NNDAT,NTAB,NTABLE,N1,M1,M2
+                                                                     1
+Warning: Unused variable 'm2' declared at (1)
+runit.f90:439.17:
+
+          MAXSEG=0.0; MINSEG=0.0
+                 1
+Warning: Possible change of value in conversion from REAL(4) to INTEGER(4) at (1)
+runit.f90:439.29:
+
+          MAXSEG=0.0; MINSEG=0.0
+                             1
+Warning: Possible change of value in conversion from REAL(4) to INTEGER(4) at (1)

@@ -7,7 +7,8 @@ from boto.s3.bucket import Bucket
 import os
 import boto.utils
 import json
-
+from gevent import monkey
+monkey.patch_all()
 ##########################################################################################
 #####AMAZON KEY, store output files. You might have to write your own import approach#####
 ##########################################################################################
@@ -162,7 +163,7 @@ def przm_rest(jid):
         exec '%s = v' % k
     zz=0
     for przm_obs_temp in przm_objs:
-        print zz
+        # print zz
         # przm_obs_temp = przm_objs[index]
         result_temp = PRZM_pi_new.PRZM_pi(przm_obs_temp['NOA'], przm_obs_temp['met_o'], przm_obs_temp['inp_o'], przm_obs_temp['run_o'], przm_obs_temp['MM'], przm_obs_temp['DD'], przm_obs_temp['YY'], przm_obs_temp['CAM_f'], przm_obs_temp['DEPI_text'], przm_obs_temp['Ar_text'], przm_obs_temp['EFF'], przm_obs_temp['Drft'])
         przm_obs_temp['link'] = result_temp[0]
@@ -181,7 +182,20 @@ def przm_rest(jid):
     
 ##################################przm_batch##############################################
 
-# ###############File upload####################
+##################################exams##############################################
+@route('/exams/<jid>', method='POST') 
+@auth_basic(check)
+def exams_rest(jid):
+    import time
+    for k, v in request.json.iteritems():
+        exec '%s = v' % k
+    all_result.setdefault(jid,{}).setdefault('status','none')
+
+    from exams_rest import exams_pi
+    result = exams_pi.exams_pi(chem_name, scenarios, met, farm, mw, sol, koc, vp, aem, anm, aqp, tmper, n_ph, ph_out, hl_out)
+    return {'user_id':'admin', 'result': result, '_id':jid}
+
+################File upload####################
 @route('/file_upload', method='POST') 
 @auth_basic(check)
 def file_upload():
@@ -269,7 +283,7 @@ def get_przm_batch_output():
         result = i['model_object_dict']
     return {"result":result}
     
-run(host=host_ip, port=7777, debug=True)
+run(host=host_ip, port=7777, server="gevent", debug=True)
 
 
 

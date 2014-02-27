@@ -1,0 +1,40 @@
+! Version: Express     v. 1.03.02    (2007-07-20)
+set outfil(1) = yes
+set outfil(6) = yes
+set outfil(7) = yes
+!
+set kchem = 1
+set prswg = 0
+set mchem = 1
+chem name is           test_chem1
+set mwt(1)= 7.0000E+01
+set sol(1,1)= 7.1000E+01
+set mp(1)=-9.9000E+01
+set Koc(1)= 4.0000E+00
+set vapr(1)= 7.3000E+01
+! N.B.: This KBACS is a pseudo-first-order rate for USEPA Tier II use only!
+set kbacs(*,1,1)= 1.1552E-03
+set qtbts(*,1,1)= 2.5000E+01
+set qtbas(*,1,1)= 2.0000E+00
+! N.B.: This KBACW is a pseudo-first-order rate for USEPA Tier II use only!
+set kbacw(*,1,1)= 1.2034E-03
+set qtbtw(*,1,1)= 2.5000E+01
+set qtbaw(*,1,1)= 2.0000E+00
+set kdp(1,1)= 1.1108E-03
+set kah(1,1,1)= 2.5214E-02
+set knh(1,1,1)= 2.2921E-03
+set kbh(1,1,1)= 0.0000E+00
+!
+!
+!
+read env pond298.exv 
+read meteorology W14751.DVF  
+echo off
+! OPP/EFED static hydrology
+!set evap(*,*)=0.0
+!set rain(*)=0.0
+!set npsfl(*,*)=0.0
+!set npsed(*,*)=0.0
+!set stflo(1,*)=0.0
+RUN
+quit

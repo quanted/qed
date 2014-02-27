@@ -7,16 +7,11 @@ Created on Feb 14 2013
 import os
 os.environ['DJANGO_SETTINGS_MODULE']='settings'
 from django import forms
-from django.db import models
 from django.utils.safestring import mark_safe
-#from google.appengine.api import users
 
 weather_CHOICES=(('','Make a selection'),('wTest','test1'))
 
 class PFAMInp_chem(forms.Form):
-#    user_id = users.get_current_user().user_id()
-#    config_name = forms.CharField(label="Use Configuration Name", initial="use-config-%s"%user_id)        
-#    chemical_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}))
     wat_hl = forms.FloatField(required=True,label='Water Column Half life (days)', initial=30)
     wat_t = forms.FloatField(required=True,label=mark_safe('@Temperature (&#8451)'), initial=20)
     ben_hl = forms.FloatField(required=True,label='Benthic Compartment Half Life (days)', initial=65)

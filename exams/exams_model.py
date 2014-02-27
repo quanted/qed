@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 import keys_Picloud_S3
 import base64
-import urllib
 from google.appengine.api import urlfetch
 import json
-from collections import OrderedDict
 import os
 import logging
 import rest_funcs

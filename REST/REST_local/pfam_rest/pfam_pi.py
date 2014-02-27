@@ -5,7 +5,6 @@ def pfam_pi(wat_hl,wat_t,ben_hl,ben_t,unf_hl,unf_t,aqu_hl,aqu_t,hyd_hl,mw,vp,sol
            zero_height_ref,days_zero_full,days_zero_removal,max_frac_cov,mas_tras_cof,leak,ref_d,ben_d,
            ben_por,dry_bkd,foc_wat,foc_ben,ss,wat_c_doc,chl,dfac,q10,area_app):
     import os
-    import stat
     import shutil
     import subprocess
     import zipfile
@@ -16,11 +15,10 @@ def pfam_pi(wat_hl,wat_t,ben_hl,ben_t,unf_hl,unf_t,aqu_hl,aqu_t,hyd_hl,mw,vp,sol
     import random
     import operator
     import re
-    
-    from ubertool_src import keys_Picloud_S3
+    import keys_Picloud_S3
 
     # Generate a random ID for file save
-    def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
+    def id_generator(size=10, chars=string.ascii_uppercase + string.digits):
         return ''.join(random.choice(chars) for x in range(size))
 
     name_temp=id_generator()
@@ -34,11 +32,9 @@ def pfam_pi(wat_hl,wat_t,ben_hl,ben_t,unf_hl,unf_t,aqu_hl,aqu_t,hyd_hl,mw,vp,sol
 ##################################################################################
 ######Create a folder if it does not existed, where holds calculations' output.#####
 ##################################################################################
-    cwd=os.getcwd()+'/pfam_picloud'
-    print("cwd="+cwd)
-
+    cwd='D:/Dropbox/ubertool_src/REST/REST_local/pfam_rest'
     src=cwd
-    src1=cwd+'/'+name_temp
+    src1=src+'/'+name_temp
     if not os.path.exists(src1):
         os.makedirs(src1)
     else:
@@ -46,35 +42,16 @@ def pfam_pi(wat_hl,wat_t,ben_hl,ben_t,unf_hl,unf_t,aqu_hl,aqu_t,hyd_hl,mw,vp,sol
         os.makedirs(src1)
     ##
     os.chdir(src1)
-    
     met="wTest.dvf"
-    run="run_pfam.bat"
-    run2="run_pfam_post.bat"
     inp="pfam_input.PFA"
-    exe="pfam_pi.exe"
-    exe2="pfam_post.exe"   
-     
-    met_file = met.encode('ascii','ignore')
-    inp_file = inp.encode('ascii','ignore')
-    run_file = run.encode('ascii','ignore')
-    print(run_file)
-    print(met_file)
-    print(inp_file)
+    exe="pfam_pi_win.exe"
+    exe2="pfam_post_win.exe"   
 
 ########Copy files to the tempt folder#############
-    shutil.copy(src+"/"+run,src1)
-    shutil.copy(src+"/"+run2,src1)
     shutil.copy(src+"/"+met,src1)
     shutil.copy(cwd+"/"+exe,src1)
     shutil.copy(cwd+"/"+exe2,src1)    
     shutil.copy(src+"/"+inp,src1)
-#    shutil.copy(cwd+"/test.PFA",src1)
-    
-    print(os.getcwd())
-    print(os.listdir(src1))   #check what files are copied
-    print(os.listdir(cwd))   #check what files are copied
-    src2=src1+"/run_pfam.bat"
-    src3=src1+"/run_pfam_post.bat"
 ##########Modify input files##########################
     def update(file_name, wat_hl,wat_t,ben_hl,ben_t,unf_hl,unf_t,aqu_hl,aqu_t,hyd_hl,mw,vp,sol,koc,hea_h,hea_r_t,
                noa,dd_out,mm_out,ma_out,sr_out,weather, wea_l,nof,date_f1,nod_out,fl_out,wl_out,ml_out,to_out,
@@ -156,41 +133,24 @@ def pfam_pi(wat_hl,wat_t,ben_hl,ben_t,unf_hl,unf_t,aqu_hl,aqu_t,hyd_hl,mw,vp,sol
         out = open(file_name, 'w')
         out.writelines(lines)
         out.close()            
-    
 
     a=update('pfam_input.PFA', wat_hl,wat_t,ben_hl,ben_t,unf_hl,unf_t,aqu_hl,aqu_t,hyd_hl,mw,vp,sol,koc,hea_h,hea_r_t,
                noa,dd_out,mm_out,ma_out,sr_out,weather, wea_l,nof,date_f1,nod_out,fl_out,wl_out,ml_out,to_out,
                zero_height_ref,days_zero_full,days_zero_removal,max_frac_cov,mas_tras_cof,leak,ref_d,ben_d,
                ben_por,dry_bkd,foc_wat,foc_ben,ss,wat_c_doc,chl,dfac,q10,area_app)
 
-    print(a)
-
-
 ##########################################    
     ##call the pfam file
     os.chdir(src1)
-    #print(os.listdir(src1))
-    #text replacement
-
-#    a=subprocess.Popen(src2, shell=1)
-#    print('done')
-#    a.wait()
-#
-#    b=subprocess.Popen(src3, shell=1)
-#    b.wait()
-#    print('done_post')
-    a=subprocess.Popen(src2, shell=1)
+    a=subprocess.Popen(exe+" "+inp, shell=1)
     while (a.poll() != 0):
         a.wait()
-    print('done')
-        
-    b=subprocess.Popen(src3, shell=1)
+
+    b=subprocess.Popen(exe2+" pfam_out.TXT", shell=1)
     while (b.poll() != 0):
         b.wait()
-    print('done_post')
 
 ##########read the post processed file and get water conc.########
-    
     searchfile = open("pfam_out_ProcessedOutput.txt", "r")
     i=0
     for line in searchfile:
@@ -253,13 +213,13 @@ def pfam_pi(wat_hl,wat_t,ben_hl,ben_t,unf_hl,unf_t,aqu_hl,aqu_t,hyd_hl,mw,vp,sol
         except:
             x_re_v_f.append(x_re_v[x_date1.index(i)])
             x_re_c_f.append(x_re_c[x_date1.index(i)])
-    print len(x_re_v_f)
+    # print len(x_re_v_f)
 ########################################################
     fname=os.listdir(src1)
-    zout=zipfile.ZipFile("test.zip","w")
+    zout=zipfile.ZipFile("test.zip","w", zipfile.ZIP_DEFLATED)
     ##zip all the file
     for name in fname:
-        if name !=exe and name !=exe2 and name !=run and name !=run2:
+        if name not in [exe, exe2, met]:
             zout.write(name)
     zout.close()
     
@@ -267,18 +227,13 @@ def pfam_pi(wat_hl,wat_t,ben_hl,ben_t,unf_hl,unf_t,aqu_hl,aqu_t,hyd_hl,mw,vp,sol
     bucket = Bucket(conn, 'pfam')
     k=Key(bucket)
     
-    
-    
     name1='pfam_'+name_temp+'.zip'
     k.key=name1
     k.set_contents_from_filename('test.zip')
     link='https://s3.amazonaws.com/pfam/'+name1
     k.set_acl('public-read-write')
-    
-    print (link)
-
+    # print (link)
     os.chdir(src)
-
-
+    shutil.rmtree(src1)
     return link, x_date1, x_re_v_f, x_re_c_f, x_date2, x_water, x_water_level, x_ben_tot, x_ben_por 
 

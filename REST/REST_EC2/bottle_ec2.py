@@ -182,6 +182,26 @@ def przm_rest(jid):
     
 ##################################przm_batch##############################################
 
+##################################pfam##############################################
+@route('/pfam/<jid>', method='POST') 
+@auth_basic(check)
+
+def pfam_rest(jid):
+    import time
+    for k, v in request.json.iteritems():
+        exec '%s = v' % k
+        # print k,'=',v
+    # all_result.setdefault(jid,{}).setdefault('status','none')
+
+    from pfam_rest import pfam_pi
+    result = pfam_pi.pfam_pi(wat_hl,wat_t,ben_hl,ben_t,unf_hl,unf_t,aqu_hl,aqu_t,hyd_hl,mw,vp,sol,koc,hea_h,hea_r_t,
+           noa,dd_out,mm_out,ma_out,sr_out,weather,wea_l,nof,date_f1,nod_out,fl_out,wl_out,ml_out,to_out,
+           zero_height_ref,days_zero_full,days_zero_removal,max_frac_cov,mas_tras_cof,leak,ref_d,ben_d,
+           ben_por,dry_bkd,foc_wat,foc_ben,ss,wat_c_doc,chl,dfac,q10,area_app)
+    return {'user_id':'admin', 'result': result, '_id':jid}
+    
+##################################pfam##############################################
+
 ##################################exams##############################################
 @route('/exams/<jid>', method='POST') 
 @auth_basic(check)

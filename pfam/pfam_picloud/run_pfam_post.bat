@@ -1,1 +1,0 @@
-./pfam_post.exe pfam_out.TXT

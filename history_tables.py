@@ -2,6 +2,7 @@ import numpy
 from django.template import Context, Template
 from django.utils.safestring import mark_safe
 import datetime
+import logging
 
 def table_all(user_hist_obj):
     table1_out = table_1(user_hist_obj)
@@ -14,7 +15,12 @@ def table_1(user_hist_obj):
                     <tr><th style="display:none">Model</th><th>Index</th><th>User</th><th>Time</th><th style="display:none">jid</th><th>Run Type</th><th>Link</th><tr><tbody id="itemContainer">
                '''
         for i in range(int(user_hist_obj.total_num)):
-            html = html + '''<form method="get" action="history_revisit.html" target="_blank">'''
+            if user_hist_obj.model_name == 'przm' and user_hist_obj.run_type[i]=='batch':
+                history_revisit_link = 'history_revisit_batch.html'
+            else:
+                history_revisit_link = 'history_revisit.html'
+
+            html = html + '''<form method="get" action=%s target="_blank">'''%(history_revisit_link)
             html = html + '''<tr><td style="display:none"><input name="model_name" id="model_name" value=%s type="text"></td>'''%(user_hist_obj.model_name)
             html = html + "<td>%s</td>"%(i+1)
             html = html + "<td>%s</td>"%(user_hist_obj.user_id[i])

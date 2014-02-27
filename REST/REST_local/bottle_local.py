@@ -124,17 +124,43 @@ def vvwm_rest(jid):
 ##################################przm##############################################
 @route('/przm/<jid>', method='POST') 
 @auth_basic(check)
+
 def przm_rest(jid):
+    import time
     for k, v in request.json.iteritems():
         exec '%s = v' % k
     all_result.setdefault(jid,{}).setdefault('status','none')
 
     from przm_rest import PRZM_pi_new
     result = PRZM_pi_new.PRZM_pi(noa, met, inp, run, MM, DD, YY, CAM_f, DEPI_text, Ar_text, EFF, Drft)
-
     return {'user_id':'admin', 'result': result, '_id':jid}
     
 ##################################przm##############################################
+
+# ##################################przm_batch##############################################
+# result_all=[]
+# @route('/przm_batch/<jid>', method='POST') 
+# @auth_basic(check)
+# def przm_rest(jid):
+#     from przm_rest import PRZM_pi_new
+#     for k, v in request.json.iteritems():
+#         exec '%s = v' % k
+#     zz=0
+#     for przm_obs_temp in przm_objs:
+#         print zz
+#         # przm_obs_temp = przm_objs[index]
+#         result_temp = PRZM_pi_new.PRZM_pi(przm_obs_temp['NOA'], przm_obs_temp['met_o'], przm_obs_temp['inp_o'], przm_obs_temp['run_o'], przm_obs_temp['MM'], przm_obs_temp['DD'], przm_obs_temp['YY'], przm_obs_temp['CAM_f'], przm_obs_temp['DEPI_text'], przm_obs_temp['Ar_text'], przm_obs_temp['EFF'], przm_obs_temp['Drft'])
+#         result_all.append(result_temp)
+#         zz=zz+1
+#     # element = {"user_id":"admin", "_id":jid, "run_type":'batch', "output_html": 'output_html', "model_object_dict":result_all}
+#     # print element
+#     # from przm_rest import PRZM_batch_control
+#     # result = PRZM_pi_new.PRZM_pi(noa, met, inp, run, MM, DD, YY, CAM_f, DEPI_text, Ar_text, EFF, Drft)
+
+#     return {"user_id":"admin", "result": result_all, "_id":jid}
+    
+# ##################################przm_batch##############################################
+
 
 ##################################przm_batch##############################################
 result_all=[]
@@ -144,21 +170,26 @@ def przm_rest(jid):
     from przm_rest import PRZM_pi_new
     for k, v in request.json.iteritems():
         exec '%s = v' % k
+    zz=0
     for przm_obs_temp in przm_objs:
+        print zz
         # przm_obs_temp = przm_objs[index]
         result_temp = PRZM_pi_new.PRZM_pi(przm_obs_temp['NOA'], przm_obs_temp['met_o'], przm_obs_temp['inp_o'], przm_obs_temp['run_o'], przm_obs_temp['MM'], przm_obs_temp['DD'], przm_obs_temp['YY'], przm_obs_temp['CAM_f'], przm_obs_temp['DEPI_text'], przm_obs_temp['Ar_text'], przm_obs_temp['EFF'], przm_obs_temp['Drft'])
-        result_all.append(result_temp)
-        
-    # element = {"user_id":"admin", "_id":jid, "run_type":'batch', "output_html": 'output_html', "model_object_dict":result_all}
-    # print element
+        przm_obs_temp['link'] = result_temp[0]
+        przm_obs_temp['x_precip'] = [float(i) for i in result_temp[1]]
+        przm_obs_temp['x_runoff'] = [float(i) for i in result_temp[2]]
+        przm_obs_temp['x_et'] = [float(i) for i in result_temp[3]]
+        przm_obs_temp['x_irr'] = [float(i) for i in result_temp[4]]
+        przm_obs_temp['x_leachate'] = [float(i)/100000 for i in result_temp[5]]
+        przm_obs_temp['x_pre_irr'] = [i+j for i,j in zip(przm_obs_temp['x_precip'], przm_obs_temp['x_irr'])]
+        result_all.append(przm_obs_temp)
+        zz=zz+1
+    element={"user_id":"admin", "_id":jid, "run_type":'batch', "output_html": "", "model_object_dict":result_all}
+    db['przm'].save(element)
 
-
-    # from przm_rest import PRZM_batch_control
-    # result = PRZM_pi_new.PRZM_pi(noa, met, inp, run, MM, DD, YY, CAM_f, DEPI_text, Ar_text, EFF, Drft)
-
-    return {'user_id':'admin', 'result': result_all, '_id':jid}
+    # return {"user_id":"admin", "result": result_all, "_id":jid}
     
-##################################przm##############################################
+##################################przm_batch##############################################
 
 ##################File upload####################
 @route('/file_upload', method='POST') 
@@ -194,6 +225,7 @@ def insert_output_html():
         exec "%s = v" % k
     element={"user_id":"admin", "_id":_id, "run_type":run_type, "output_html": output_html, "model_object_dict":model_object_dict}
     db[model_name].save(element)
+    print _id
 
 @route('/update_html', method='POST') 
 @auth_basic(check)
@@ -248,8 +280,19 @@ def get_html_output():
         html_output = i['output_html']
     return {"html_output":html_output}
 
+@route('/get_przm_batch_output', method='POST')
+@auth_basic(check)
+def get_przm_batch_output():
+    for k, v in request.json.iteritems():
+        exec '%s = v' % k
+    result_output_c = db[model_name].find({"_id" :jid}, {"model_object_dict":1, "_id":0})
+    for i in result_output_c:
+        # print i
+        result = i['model_object_dict']
+    return {"result":result}
 
-run(host='localhost', port=7777, debug=True)
+
+run(host='localhost', port=7777, server_names="gevent", debug=True)
 
 
 

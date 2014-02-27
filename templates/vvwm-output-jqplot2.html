@@ -1,0 +1,36 @@
+<script type='text/javascript'> 
+
+$(document).ready(function(){
+
+    var s1{{plotNumber}} = $.parseJSON($('#x_wc_val_{{plotNumber}}').text());
+    var s2{{plotNumber}} = $.parseJSON($('#x_ben_val_{{plotNumber}}').text());
+    var plot{{plotNumber}} = $.jqplot ('chart{{plotNumber}}', [s1{{plotNumber}},s2{{plotNumber}}], {
+        title: '{{title}} Peak Yearly Concentrations',
+        axesDefaults: {
+            labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+        },
+        axes: {
+            xaxis: {
+                label: 'Year',
+                min: 0,
+                pad: 0
+            },
+            yaxis: {
+                label: 'Concentration (ppb)',
+                min: 0
+            }
+        },
+        series: [
+            {label: 'Water Column'},
+            {label: 'Benthic'}
+        ],
+        legend: {
+            show: true,
+            location: 'ne',
+            xoffset: 2,
+            yoffset: 2
+        }
+    });
+});
+
+</script>

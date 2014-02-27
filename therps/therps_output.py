@@ -11,6 +11,9 @@ import cgitb
 cgitb.enable()
 from therps import therps_model,therps_tables
 from uber import uber_lib
+import rest_funcs
+import logging
+logger = logging.getLogger('trex2 out')
 
 class THerpsOutputPage(webapp.RequestHandler):
     def post(self):        
@@ -76,16 +79,17 @@ class THerpsOutputPage(webapp.RequestHandler):
                 'model':'therps', 
                 'model_attributes':'T-Herps Output'})
 
-        therps_obj = therps_model.therps(chem_name, use, formu_name, a_i, h_l, n_a, i_a, a_r, avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, 
+        therps_obj = therps_model.therps('single',chem_name, use, formu_name, a_i, h_l, n_a, i_a, a_r, avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, 
                                          Species_of_the_tested_bird_avian_ld50, Species_of_the_tested_bird_avian_lc50, Species_of_the_tested_bird_avian_NOAEC, Species_of_the_tested_bird_avian_NOAEL,
                                          bw_avian_ld50, bw_avian_lc50, bw_avian_NOAEC, bw_avian_NOAEL,
                                          mineau_scaling_factor, bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md, 
                                          wp_herp_a_lg, c_mamm_a, c_herp_a)
-        html = html + therps_tables.timestamp()
+        html = html + therps_tables.timestamp(therps_obj)
         html = html + therps_tables.table_all(therps_obj)[0]
         html = html + template.render(templatepath + 'export.html', {})       
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.save_dic(html, therps_obj.__dict__, "therps", "single")
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', THerpsOutputPage)], debug=True)

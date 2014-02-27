@@ -157,6 +157,12 @@ class vvwm(object):
     self.appNumber_year = []
     # Year will be added here when "Specify Years" for Applications is enabled
     self.PestAppyRate = []
+    self.tempEffPondList = []
+    self.tempSprayPondList = []
+    self.tempEffResList = []
+    self.tempSprayResList = []
+    self.tempEffCustomList = []
+    self.tempSprayCustomList = []
     self.localEff = []
     self.localSpray = []
     self.Koc = []
@@ -205,10 +211,18 @@ class vvwm(object):
             self.PestAppyMon.append(v)
         elif k.startswith('rate_a_'):
             self.PestAppyRate.append(v)
-        elif k.startswith('eff_a_'):
-            self.localEff.append(v)
-        elif k.startswith('drift_a_'):
-            self.localSpray.append(v)
+        elif k.startswith('eff_pond_a_'):
+            self.tempEffPondList.append(v)
+        elif k.startswith('drift_pond_a_'):
+            self.tempSprayPondList.append(v)
+        elif k.startswith('eff_res_a_'):
+            self.tempEffResList.append(v)
+        elif k.startswith('drift_res_a_'):
+            self.tempSprayResList.append(v)
+        elif k.startswith('eff_custom_a_'):
+            self.tempEffCustomList.append(v)
+        elif k.startswith('drift_custom_a_'):
+            self.tempSprayCustomList.append(v)
         elif k.startswith('foliarHalfLife_'):
             self.foliarHalfLifeBox.append(float(v))
         elif k.startswith('Koc_'):
@@ -262,24 +276,40 @@ class vvwm(object):
             self.convertAP.append(v)
         elif k.startswith('convertH'):
             self.convertH.append(v)
+    # Fill localEff & localSpray Lists:
+    self.localEff.append(self.tempEffPondList)
+    self.localEff.append(self.tempEffResList)
+    self.localEff.append(self.tempEffCustomList)
+    self.localSpray.append(self.tempSprayPondList)
+    self.localSpray.append(self.tempSprayResList)
+    self.localSpray.append(self.tempSprayCustomList)
     # Define based on SimTypeFlag:
-    if self.SimTypeFlag == '0' or self.SimTypeFlag == '5': #EPA Reservoir & Pond   OR   EPA Pond Only
+    if self.vvwmSimType == '5': #EPA Pond Only
         self.afield.append(self.dictionary['fieldArea_Pond'])
         self.area.append(self.dictionary['wbArea_Pond'])
         self.depth_0.append(self.dictionary['depth_0_Pond'])
         self.depth_max.append(self.dictionary['depth_max_Pond'])
-    if self.SimTypeFlag == '4': #EPA Reservoir Only
+    if self.vvwmSimType == '4': #EPA Reservoir Only
         self.afield.append(self.dictionary['fieldArea_Reservoir'])
         self.area.append(self.dictionary['wbArea_Reservoir'])
         self.depth_0.append(self.dictionary['depth_0_Reservoir'])
         self.depth_max.append(self.dictionary['depth_max_Reservoir'])
-    if self.SimTypeFlag == '6' or self.SimTypeFlag == '1' or self.SimTypeFlag == '2' or self.SimTypeFlag == '3': #Reservoir w/ User Avg, Varying Volume, Constant Volume (w/o Flowthrough), OR Constant Volume (w/ Flowthrough)
+    if self.vvwmSimType == '6' or self.vvwmSimType == '1' or self.vvwmSimType == '2' or self.vvwmSimType == '3': #Reservoir w/ User Avg, Varying Volume, Constant Volume (w/o Flowthrough), OR Constant Volume (w/ Flowthrough)
         self.afield.append(self.dictionary['fieldArea_Custom'])
         self.area.append(self.dictionary['wbArea_Custom'])
         self.depth_0.append(self.dictionary['depth_0_Custom'])
         self.depth_max.append(self.dictionary['depth_max_Custom'])
-    if self.SimTypeFlag == '6': #Reservoir w/ User Avg (only)
+    if self.vvwmSimType == '6': #Reservoir w/ User Avg (only)
         self.ReservoirFlowAvgDays = self.dictionary['resAvgBox_Custom']
+    if self.vvwmSimType == '0': #EPA Reservoir & Pond (this will run the model twice, w/ two separate transfer files)
+        self.afield.append(self.dictionary['fieldArea_Pond'])
+        self.area.append(self.dictionary['wbArea_Pond'])
+        self.depth_0.append(self.dictionary['depth_0_Pond'])
+        self.depth_max.append(self.dictionary['depth_max_Pond'])
+        self.afield.append(self.dictionary['fieldArea_Reservoir'])
+        self.area.append(self.dictionary['wbArea_Reservoir'])
+        self.depth_0.append(self.dictionary['depth_0_Reservoir'])
+        self.depth_max.append(self.dictionary['depth_max_Reservoir'])
 
     self.final_res=get_jid(self.run_type, self.working_dir,
           self.koc_check, self.Koc, self.soilHalfLifeBox, self.soilTempBox1, self.foliarHalfLifeBox,
@@ -320,11 +350,13 @@ class vvwm(object):
     self.RT_runoff = self.final_res[1][22]
     self.RT_erosion = self.final_res[1][23]
     self.RT_drift = self.final_res[1][24]
-    self.peak_li = self.final_res[1][25]
-    self.ben_peak_li = self.final_res[1][26]
+    self.peak_li1 = self.final_res[1][25]
+    self.ben_peak_li1 = self.final_res[1][26]
+    self.peak_li2 = self.final_res[1][27]
+    self.ben_peak_li2 = self.final_res[1][28]
     self.link = self.final_res[1][0]
     self.jid = self.final_res[0]
-    self.src1 = self.final_res[1][27]
-    self.name1 = self.final_res[1][28]
+    self.src1 = self.final_res[1][29]
+    self.name1 = self.final_res[1][30]
 
     get_upload(self.src1, self.name1)

@@ -9,8 +9,7 @@ import time
 from collections import OrderedDict
 import os
 import logging
-import csv
-
+import csv, ast
 
 logger = logging.getLogger('PRZM Batch Model')
 
@@ -32,27 +31,35 @@ EMergence_pool={'NC Sweet Potato MLRA-133': '1505', 'ID Potato   MLRA-11B': '010
 MAturation_pool={'NC Sweet Potato MLRA-133': '1509', 'ID Potato   MLRA-11B': '1508', 'NY Grape   MLRA-100/101': '0107', 'CA Citrus   MLRA-17': '0201', 'OR Hops   MLRA-2': '3007', 'FL Sugarcane   MLRA-156A': '0201', 'OR Mint   MLRA-2': '2507', 'FL Citrus   MLRA-156A': '0201', 'CA Almonds MLRA-17': '0208', 'ND Canola   MLRA-55A': '1508', 'MI Asparagus MLRA-96': '2508', 'PR Coffee MLRA-270': '0201', 'FL Avocado MLRA-156A': '1511', 'NC Tobacco   MLRA-133A': '0707', 'CA Grape  MLRA-17': '0103', 'FL Cucumber   MLRA-156A': '0512', 'OH Corn   MLRA-111': '2609', 'NC Apple   MLRA-130': '0305', 'CA Onions MLRA-17': '0106', 'PA Turf  MLRA-148': '1504', 'MI Beans MLRA-99': '2707', 'GA Onions MLRA-153A/133A': '0106', 'LA Sugarcane   MLRA-131': '0201', 'NC Corn - E   MLRA-153A': '2808', 'OR Christmas Trees  MLRA-2': '0201', 'MN Sugarbeet   MLRA-56': '0110', 'FL Turf  MLRA-155': '1502', 'MS Cotton   MLRA-134': '0709', 'MS Soybean   MLRA-134': '0109', 'GA Pecan   MLRA-133A': '2109', 'OR Filberts   MLRA-2': '1504', 'OR Grass Seed   MLRA-2': '1505', 'GA Peach   MLRA-133A': '1505', 'FL Carrots MLRA-156B': '1501', 'NC Cotton   MLRA-133A': '0108', 'CA Lettuce  MLRA-14': '0505', 'FL Tomato   MLRA-155': '2104', 'OR Apple   MLRA-2': '3004', 'ND Wheat   MLRA-56': '2507', 'CA Tomato MLRA-17': '0107', 'PA Corn   MLRA-148': '0407', 'FL Peppers MLRA-156A': '1511', 'MS Corn   MLRA-134': '2208', 'MI Cherry   MLRA-96': '0707', 'IL Corn   MLRA-108': '2109', 'ME Potato   MLRA-146': '0110', 'FL Strawberry   MLRA-155': '1011', 'KS Sorghum   MLRA-112': '2009', 'PA Apple   MLRA-148': '1005', 'CA Cotton   MLRA-17': '2009', 'NC Peanut   MLRA-153A': '0110', 'FL Cabbage   MLRA-155': '0802'}
 HArvest_pool={'NC Sweet Potato MLRA-133': '2209', 'ID Potato   MLRA-11B': '1509', 'NY Grape   MLRA-100/101': '1510', 'CA Citrus   MLRA-17': '3112', 'OR Hops   MLRA-2': '0109', 'FL Sugarcane   MLRA-156A': '3112', 'OR Mint   MLRA-2': '0108', 'FL Citrus   MLRA-156A': '3112', 'CA Almonds MLRA-17': '1309', 'ND Canola   MLRA-55A': '2508', 'MI Asparagus MLRA-96': '1503', 'PR Coffee MLRA-270': '3112', 'FL Avocado MLRA-156A': '3011', 'NC Tobacco   MLRA-133A': '1607', 'CA Grape  MLRA-17': '3108', 'FL Cucumber   MLRA-156A': '1012', 'OH Corn   MLRA-111': '2510', 'NC Apple   MLRA-130': '2510', 'CA Onions MLRA-17': '1506', 'PA Turf  MLRA-148': '0111', 'MI Beans MLRA-99': '0409', 'GA Onions MLRA-153A/133A': '1506', 'LA Sugarcane   MLRA-131': '3112', 'NC Corn - E   MLRA-153A': '1209', 'OR Christmas Trees  MLRA-2': '3112', 'MN Sugarbeet   MLRA-56': '1510', 'FL Turf  MLRA-155': '1512', 'MS Cotton   MLRA-134': '2209', 'MS Soybean   MLRA-134': '1010', 'GA Pecan   MLRA-133A': '0110', 'OR Filberts   MLRA-2': '1011', 'OR Grass Seed   MLRA-2': '3006', 'GA Peach   MLRA-133A': '3108', 'FL Carrots MLRA-156B': '2201', 'NC Cotton   MLRA-133A': '0111', 'CA Lettuce  MLRA-14': '1205', 'FL Tomato   MLRA-155': '1505', 'OR Apple   MLRA-2': '3110', 'ND Wheat   MLRA-56': '0508', 'CA Tomato MLRA-17': '0109', 'PA Corn   MLRA-148': '0110', 'FL Peppers MLRA-156A': '0112', 'MS Corn   MLRA-134': '0209', 'MI Cherry   MLRA-96': '2107', 'IL Corn   MLRA-108': '2010', 'ME Potato   MLRA-146': '0510', 'FL Strawberry   MLRA-155': '1502', 'KS Sorghum   MLRA-112': '0110', 'PA Apple   MLRA-148': '1510', 'CA Cotton   MLRA-17': '1111', 'NC Peanut   MLRA-153A': '1010', 'FL Cabbage   MLRA-155': '1502'}
 
-def get_jid(przm_objs):
-    total_num = len(przm_objs)
-    ts = datetime.now()
-    if(time.daylight):
-        ts1 = timedelta(hours=-4)+ts
-    else:
-        ts1 = timedelta(hours=-5)+ts
-    jid = ts1.strftime('%Y%m%d%H%M%S%f')
+###########################A class helps dictionary to be converted to JSON when it contains numpy element################################ 
+class NumPyArangeEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.ndarray):
+            return obj.tolist() # or map(int, obj)
+        return json.JSONEncoder.default(self, obj)
 
+###########################function to save a batch run to MongoDB################################ 
+def save_batch_dic(output_html, model_object_dict, model_name, run_type, batch_jid):
+    all_dic = {"model_name":model_name, "_id":batch_jid, "run_type":run_type, "output_html":output_html, "model_object_dict":model_object_dict}
+    data = json.dumps(all_dic, cls=NumPyArangeEncoder)
+    url=url_part1 + '/save_history'
+    try:
+        response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=6000)   
+    except:
+        pass
+
+def get_jid(przm_objs, batch_jid):
+    total_num = len(przm_objs)
     all_dic = {"przm_objs": przm_objs, 
                "total_num":total_num,
-               "jid":jid}
+               "jid":batch_jid}
 
     data = json.dumps(all_dic)
-
-
-    url=url_part1 + '/przm_batch/' + jid 
-    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+    url=url_part1 + '/przm_batch/' + batch_jid 
+    # response = requests.post(url, data=data, headers=http_headers)
+    response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=6000)   
     # output_val = json.loads(response.content)['result']
-    # return(jid, output_val)
-
+    # return ast.literal_eval(response.content)
 
 
 #########################################################    
@@ -169,76 +176,110 @@ def CAM_select(CAM_f, DEPI):
     return CAM_f_p, DEPI, CAM_f
 
 
+# def loop_html(thefile, batch_jid):
+#     ########################################################
+#     chem_name = []
+#     NOA = []
+#     Scenarios = []
+#     Unit = []
+#     appdate = []
+#     apm = []
+#     apr = []
+#     cam = []
+#     depi = []
+#     ####### Outputs #########################################
+#     jid_all = []
+#     przm_obj_all = []
+#     jid_batch = []
 
+#     reader = csv.reader(thefile.file.read().splitlines())
+#     header = reader.next()
 
+#     i=0
+#     for row in reader:
+#       logging.info(i)
+#       chem_name_temp = str(row[0])
+#       chem_name.append(chem_name_temp)
+#       NOA_temp = str(row[1])
+#       NOA.append(NOA_temp)
+#       Scenarios_temp = str(row[2])
+#       Scenarios.append(Scenarios_temp)
+#       Unit_temp = str(row[3])
+#       Unit.append(Unit_temp)
+#       appdate_temp = str(row[4]).split(',')
+#       appdate.append(appdate_temp)
+#       apm_temp = str(row[5]).split(',')
+#       apm.append(apm_temp)
+#       apr_temp = str(row[6]).split(',')
+#       apr.append(apr_temp)
+#       cam_temp = str(row[7]).split(',')
+#       cam.append(cam_temp)
+#       depi_temp = str(row[8]).split(',')
+#       depi.append(depi_temp)
 
-########################################################
-chem_name = []
-NOA = []
-Scenarios = []
-Unit = []
-appdate = []
-apm = []
-apr = []
-cam = []
-depi = []
-####### Outputs #########################################
-jid_all = []
-przm_obj_all = []
-jid_batch = []
+#       przm_obj_temp = przm_class_creator(i, chem_name_temp, NOA_temp, Scenarios_temp, Unit_temp, appdate_temp, apm_temp, apr_temp, cam_temp, depi_temp)
+#       przm_obj_all.append(przm_obj_temp)
+#       i=i+1
+      
+#     all_rest_out = get_jid([x.__dict__ for x in przm_obj_all], batch_jid)
+#     batch_jid = all_rest_out['_id']
+#     all_result = all_rest_out['result']
+    
+#     for kk in range(len(przm_obj_all)):
+#         setattr(przm_obj_all[kk], 'link', all_result[kk][0])
+#         setattr(przm_obj_all[kk], 'x_precip', [float(i) for i in all_result[kk][1]])
+#         setattr(przm_obj_all[kk], 'x_runoff', [float(i) for i in all_result[kk][2]])
+#         setattr(przm_obj_all[kk], 'x_et', [float(i) for i in all_result[kk][3]])
+#         setattr(przm_obj_all[kk], 'x_irr', [float(i) for i in all_result[kk][4]])
+#         setattr(przm_obj_all[kk], 'x_leachate', [float(i)/100000 for i in all_result[kk][5]])
+#         setattr(przm_obj_all[kk], 'x_pre_irr', [i+j for i,j in zip(przm_obj_all[kk].x_precip, przm_obj_all[kk].x_irr)])
 
+#     loop_html_status_code = save_batch_dic("", [x.__dict__ for x in przm_obj_all], 'przm', 'batch', batch_jid)
 
-def loop_html(file_name):
-    with open(file_name, 'rb') as thefile:
-        reader = csv.reader(thefile.read().splitlines())
-        header = reader.next()
+def loop_html(thefile, batch_jid):
+    ########################################################
+    chem_name = []
+    NOA = []
+    Scenarios = []
+    Unit = []
+    appdate = []
+    apm = []
+    apr = []
+    cam = []
+    depi = []
+    ####### Outputs #########################################
+    przm_obj_all = []
 
-        i=0
-        for row in reader:
-          print i
-          chem_name_temp = str(row[0])
-          chem_name.append(chem_name_temp)
-          NOA_temp = str(row[1])
-          NOA.append(NOA_temp)
-          Scenarios_temp = str(row[2])
-          Scenarios.append(Scenarios_temp)
-          Unit_temp = str(row[3])
-          Unit.append(Unit_temp)
-          appdate_temp = str(row[4]).split(',')
-          appdate.append(appdate_temp)
-          apm_temp = str(row[5]).split(',')
-          apm.append(apm_temp)
-          apr_temp = str(row[6]).split(',')
-          apr.append(apr_temp)
-          cam_temp = str(row[7]).split(',')
-          cam.append(cam_temp)
-          depi_temp = str(row[8]).split(',')
-          depi.append(depi_temp)
+    reader = csv.reader(thefile.file.read().splitlines())
+    header = reader.next()
 
-          przm_obj_temp = przm_class_creator(i, chem_name_temp, NOA_temp, Scenarios_temp, Unit_temp, appdate_temp, apm_temp, apr_temp, cam_temp, depi_temp)
-          przm_obj_all.append(przm_obj_temp)
-          i=i+1
-          
-        get_jid([x.__dict__ for x in przm_obj_all])
+    i=0
+    for row in reader:
+      logging.info(i)
+      chem_name_temp = str(row[0])
+      chem_name.append(chem_name_temp)
+      NOA_temp = str(row[1])
+      NOA.append(NOA_temp)
+      Scenarios_temp = str(row[2])
+      Scenarios.append(Scenarios_temp)
+      Unit_temp = str(row[3])
+      Unit.append(Unit_temp)
+      appdate_temp = str(row[4]).split(',')
+      appdate.append(appdate_temp)
+      apm_temp = str(row[5]).split(',')
+      apm.append(apm_temp)
+      apr_temp = str(row[6]).split(',')
+      apr.append(apr_temp)
+      cam_temp = str(row[7]).split(',')
+      cam.append(cam_temp)
+      depi_temp = str(row[8]).split(',')
+      depi.append(depi_temp)
 
-
-        return przm_obj_all
-
-
-    # setattr(przm_obj, 'iter_index', iter)
-
-    # jid_all.append(przm_obj.jid)
-    # przm_obj_all.append(przm_obj)
-    # if iter == 0:
-    #     jid_batch.append(przm_obj.jid)
-
-    # batch_header = """
-    #     <div class="out_">
-    #         <br><H3>Batch Calculation of Iteration %s:</H3>
-    #     </div>
-    #     """%(iter+1)
-    # out_html_temp = batch_header + przm_tables.table_all(przm_obj)
-    # out_html_all[iter]=out_html_temp
+      przm_obj_temp = przm_class_creator(i, chem_name_temp, NOA_temp, Scenarios_temp, Unit_temp, appdate_temp, apm_temp, apr_temp, cam_temp, depi_temp)
+      przm_obj_all.append(przm_obj_temp)
+      i=i+1
+      
+    all_rest_out = get_jid([x.__dict__ for x in przm_obj_all], batch_jid)
 
 
 class przm_class_creator(object):

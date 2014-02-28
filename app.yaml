@@ -24,13 +24,13 @@ env_variables:
   UBERTOOL_BATCH_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com/'
   UBERTOOL_MONGO_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
   UBERTOOL_SECURE_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
-<<<<<<< HEAD
+# <<<<<<< HEAD
   #UBERTOOL_REST_SERVER: 'http://localhost:7777'
   UBERTOOL_REST_SERVER: 'http://23.23.190.202:7777'
-=======
+# =======
   # UBERTOOL_REST_SERVER: 'http://localhost:7777'
-  UBERTOOL_REST_SERVER: 'http://54.83.18.251:7777'
->>>>>>> sprint11
+  # UBERTOOL_REST_SERVER: 'http://54.83.18.251:7777'
+# >>>>>>> sprint11
 
 skip_files:
 - ^(.*/)?app\.yaml

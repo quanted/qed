@@ -16,7 +16,7 @@ License: MIT (see LICENSE for details)
 from __future__ import with_statement
 
 __author__ = 'Marcel Hellkamp'
-__version__ = '0.13-dev'
+__version__ = '0.12.4'
 __license__ = 'MIT'
 
 # The gevent server adapter needs to patch some modules before they are imported
@@ -42,6 +42,8 @@ from datetime import date as datedate, datetime, timedelta
 from tempfile import TemporaryFile
 from traceback import format_exc, print_exc
 from inspect import getargspec
+from unicodedata import normalize
+
 
 try: from simplejson import dumps as json_dumps, loads as json_lds
 except ImportError: # pragma: no cover
@@ -117,13 +119,8 @@ else: # 2.x
 # Some helpers for string/byte handling
 def tob(s, enc='utf8'):
     return s.encode(enc) if isinstance(s, unicode) else bytes(s)
-
 def touni(s, enc='utf8', err='strict'):
-    if isinstance(s, bytes):
-        return s.decode(enc, err)
-    else:
-        return unicode(s or ("" if s is None else s))
-
+    return s.decode(enc, err) if isinstance(s, bytes) else unicode(s)
 tonat = touni if py3k else tob
 
 # 3.2 fixes cgi.FieldStorage to accept bytes (which makes a lot of sense).
@@ -416,7 +413,10 @@ class Router(object):
         verb = environ['REQUEST_METHOD'].upper()
         path = environ['PATH_INFO'] or '/'
         target = None
-        methods = [verb, 'GET', 'ANY'] if verb == 'HEAD' else [verb, 'ANY']
+        if verb == 'HEAD':
+            methods = ['PROXY', verb, 'GET', 'ANY']
+        else:
+            methods = ['PROXY', verb, 'ANY']
 
         for method in methods:
             if method in self.static and path in self.static[method]:
@@ -477,7 +477,13 @@ class Route(object):
         #: Additional keyword arguments passed to the :meth:`Bottle.route`
         #: decorator are stored in this dictionary. Used for route-specific
         #: plugin configuration and meta-data.
-        self.config = ConfigDict().load_dict(config)
+        self.config = ConfigDict().load_dict(config, make_namespaces=True)
+
+    def __call__(self, *a, **ka):
+        depr("Some APIs changed to return Route() instances instead of"\
+             " callables. Make sure to use the Route.call method and not to"\
+             " call Route instances directly.") #0.12
+        return self.call(*a, **ka)
 
     @cached_property
     def call(self):
@@ -493,6 +499,13 @@ class Route(object):
     def prepare(self):
         ''' Do all on-demand work immediately (useful for debugging).'''
         self.call
+
+    @property
+    def _context(self):
+        depr('Switch to Plugin API v2 and access the Route object directly.')  #0.12
+        return dict(rule=self.rule, method=self.method, callback=self.callback,
+                    name=self.name, app=self.app, config=self.config,
+                    apply=self.plugins, skip=self.skiplist)
 
     def all_plugins(self):
         ''' Yield all Plugins affecting this route. '''
@@ -510,7 +523,9 @@ class Route(object):
         for plugin in self.all_plugins():
             try:
                 if hasattr(plugin, 'apply'):
-                    callback = plugin.apply(callback, self)
+                    api = getattr(plugin, 'api', 1)
+                    context = self if api > 1 else self._context
+                    callback = plugin.apply(callback, context)
                 else:
                     callback = plugin(callback)
             except RouteReset: # Try again with changed configuration.
@@ -535,7 +550,7 @@ class Route(object):
             to recover the original function before inspection. '''
         return getargspec(self.get_undecorated_callback())[0]
 
-    def get_config(key, default=None):
+    def get_config(self, key, default=None):
         ''' Lookup a config field and return its value, first checking the
             route.config, then route.app.config.'''
         for conf in (self.config, self.app.conifg):
@@ -644,6 +659,8 @@ class Bottle(object):
 
             All other parameters are passed to the underlying :meth:`route` call.
         '''
+        if isinstance(app, basestring):
+            depr('Parameter order of Bottle.mount() changed.', True) # 0.10
 
         segments = [p for p in prefix.split('/') if p]
         if not segments: raise ValueError('Empty path prefix.')
@@ -670,7 +687,7 @@ class Bottle(object):
                 request.path_shift(-path_depth)
 
         options.setdefault('skip', True)
-        options.setdefault('method', 'ANY')
+        options.setdefault('method', 'PROXY')
         options.setdefault('mountpoint', {'prefix': prefix, 'target': app})
         options['callback'] = mountpoint_wrapper
 
@@ -1120,17 +1137,17 @@ class BaseRequest(object):
                 header += c
                 if not c: raise err
                 if len(header) > bufsize: raise err
-            size, sep, junk = header.partition(sem)
+            size, _, _ = header.partition(sem)
             try:
                 maxread = int(tonat(size.strip()), 16)
             except ValueError:
                 raise err
             if maxread == 0: break
-            buffer = bs
+            buff = bs
             while maxread > 0:
-                if not buffer:
-                    buffer = read(min(maxread, bufsize))
-                part, buffer = buffer[:maxread], buffer[maxread:]
+                if not buff:
+                    buff = read(min(maxread, bufsize))
+                part, buff = buff[:maxread], buff[maxread:]
                 if not part: raise err
                 yield part
                 maxread -= len(part)
@@ -1624,7 +1641,8 @@ class BaseResponse(object):
         return out
 
 
-def _local_property():
+def local_property(name=None):
+    if name: depr('local_property() is deprecated and will be removed.') #0.12
     ls = threading.local()
     def fget(self):
         try: return ls.var
@@ -1637,26 +1655,26 @@ def _local_property():
 
 class LocalRequest(BaseRequest):
     ''' A thread-local subclass of :class:`BaseRequest` with a different
-        set of attribues for each thread. There is usually only one global
+        set of attributes for each thread. There is usually only one global
         instance of this class (:data:`request`). If accessed during a
         request/response cycle, this instance always refers to the *current*
         request (even on a multithreaded server). '''
     bind = BaseRequest.__init__
-    environ = _local_property()
+    environ = local_property()
 
 
 class LocalResponse(BaseResponse):
     ''' A thread-local subclass of :class:`BaseResponse` with a different
-        set of attribues for each thread. There is usually only one global
+        set of attributes for each thread. There is usually only one global
         instance of this class (:data:`response`). Its attributes are used
         to build the HTTP response at the end of the request/response cycle.
     '''
     bind = BaseResponse.__init__
-    _status_line = _local_property()
-    _status_code = _local_property()
-    _cookies     = _local_property()
-    _headers     = _local_property()
-    body         = _local_property()
+    _status_line = local_property()
+    _status_code = local_property()
+    _cookies     = local_property()
+    _headers     = local_property()
+    body         = local_property()
 
 
 Request = BaseRequest
@@ -1755,13 +1773,13 @@ class _ImportRedirect(object):
 
     def find_module(self, fullname, path=None):
         if '.' not in fullname: return
-        packname, modname = fullname.rsplit('.', 1)
+        packname = fullname.rsplit('.', 1)[0]
         if packname != self.name: return
         return self
 
     def load_module(self, fullname):
         if fullname in sys.modules: return sys.modules[fullname]
-        packname, modname = fullname.rsplit('.', 1)
+        modname = fullname.rsplit('.', 1)[1]
         realname = self.impmask % modname
         __import__(realname)
         module = sys.modules[fullname] = sys.modules[realname]
@@ -1976,13 +1994,84 @@ class WSGIHeaderDict(DictMixin):
 class ConfigDict(dict):
     ''' A dict-like configuration storage with additional support for
         namespaces, validators, meta-data, on_change listeners and more.
-    '''
 
+        This storage is optimized for fast read access. Retrieving a key
+        or using non-altering dict methods (e.g. `dict.get()`) has no overhead
+        compared to a native dict.
+    '''
     __slots__ = ('_meta', '_on_change')
 
-    def __init__(self):
+    class Namespace(DictMixin):
+
+        def __init__(self, config, namespace):
+            self._config = config
+            self._prefix = namespace
+
+        def __getitem__(self, key):
+            depr('Accessing namespaces as dicts is discouraged. '
+                 'Only use flat item access: '
+                 'cfg["names"]["pace"]["key"] -> cfg["name.space.key"]') #0.12
+            return self._config[self._prefix + '.' + key]
+
+        def __setitem__(self, key, value):
+            self._config[self._prefix + '.' + key] = value
+
+        def __delitem__(self, key):
+            del self._config[self._prefix + '.' + key]
+
+        def __iter__(self):
+            ns_prefix = self._prefix + '.'
+            for key in self._config:
+                ns, dot, name = key.rpartition('.')
+                if ns == self._prefix and name:
+                    yield name
+
+        def keys(self): return [x for x in self]
+        def __len__(self): return len(self.keys())
+        def __contains__(self, key): return self._prefix + '.' + key in self._config
+        def __repr__(self): return '<Config.Namespace %s.*>' % self._prefix
+        def __str__(self): return '<Config.Namespace %s.*>' % self._prefix
+
+        # Deprecated ConfigDict features
+        def __getattr__(self, key):
+            depr('Attribute access is deprecated.') #0.12
+            if key not in self and key[0].isupper():
+                self[key] = ConfigDict.Namespace(self._config, self._prefix + '.' + key)
+            if key not in self and key.startswith('__'):
+                raise AttributeError(key)
+            return self.get(key)
+
+        def __setattr__(self, key, value):
+            if key in ('_config', '_prefix'):
+                self.__dict__[key] = value
+                return
+            depr('Attribute assignment is deprecated.') #0.12
+            if hasattr(DictMixin, key):
+                raise AttributeError('Read-only attribute.')
+            if key in self and self[key] and isinstance(self[key], self.__class__):
+                raise AttributeError('Non-empty namespace attribute.')
+            self[key] = value
+
+        def __delattr__(self, key):
+            if key in self:
+                val = self.pop(key)
+                if isinstance(val, self.__class__):
+                    prefix = key + '.'
+                    for key in self:
+                        if key.startswith(prefix):
+                            del self[prefix+key]
+
+        def __call__(self, *a, **ka):
+            depr('Calling ConfDict is deprecated. Use the update() method.') #0.12
+            self.update(*a, **ka)
+            return self
+
+    def __init__(self, *a, **ka):
         self._meta = {}
         self._on_change = lambda name, value: None
+        if a or ka:
+            depr('Constructor does no longer accept parameters.') #0.12
+            self.update(*a, **ka)
 
     def load_config(self, filename):
         ''' Load values from an *.ini style config file.
@@ -2000,22 +2089,28 @@ class ConfigDict(dict):
                 self[key] = value
         return self
 
-    def load_dict(self, source, namespace=''):
-        ''' Load values from a dictionary structure. Nesting can be used to
+    def load_dict(self, source, namespace='', make_namespaces=False):
+        ''' Import values from a dictionary structure. Nesting can be used to
             represent namespaces.
             
-            >>> c.load_dict({'some': {'namespace': {'key': 'value'} } })
-            {'some.namespace.key': 'value'}            
+            >>> ConfigDict().load_dict({'name': {'space': {'key': 'value'}}})
+            {'name.space.key': 'value'}
         '''
-        for key, value in source.items():
-            if isinstance(key, str):
-                nskey = (namespace + '.' + key).strip('.')
+        stack = [(namespace, source)]
+        while stack:
+            prefix, source = stack.pop()
+            if not isinstance(source, dict):
+                raise TypeError('Source is not a dict (r)' % type(key))
+            for key, value in source.items():
+                if not isinstance(key, str):
+                    raise TypeError('Key is not a string (%r)' % type(key))
+                full_key = prefix + '.' + key if prefix else key
                 if isinstance(value, dict):
-                    self.load_dict(value, namespace=nskey)
+                    stack.append((full_key, value))
+                    if make_namespaces:
+                        self[full_key] = self.Namespace(self, full_key)
                 else:
-                    self[nskey] = value
-            else:
-                raise TypeError('Key has type %r (not a string)' % type(key))
+                    self[full_key] = value
         return self
 
     def update(self, *a, **ka):
@@ -2032,10 +2127,12 @@ class ConfigDict(dict):
     def setdefault(self, key, value):
         if key not in self:
             self[key] = value
+        return self[key]
 
     def __setitem__(self, key, value):
         if not isinstance(key, str):
             raise TypeError('Key has type %r (not a string)' % type(key))
+
         value = self.meta_get(key, 'filter', lambda x: x)(value)
         if key in self and self[key] is value:
             return
@@ -2043,8 +2140,11 @@ class ConfigDict(dict):
         dict.__setitem__(self, key, value)
 
     def __delitem__(self, key):
-        self._on_change(key, None)
         dict.__delitem__(self, key)
+
+    def clear(self):
+        for key in self:
+            del self[key]
 
     def meta_get(self, key, metafield, default=None):
         ''' Return the value of a meta field for a key. '''
@@ -2060,6 +2160,40 @@ class ConfigDict(dict):
     def meta_list(self, key):
         ''' Return an iterable of meta field names defined for a key. '''
         return self._meta.get(key, {}).keys()
+
+    # Deprecated ConfigDict features
+    def __getattr__(self, key):
+        depr('Attribute access is deprecated.') #0.12
+        if key not in self and key[0].isupper():
+            self[key] = self.Namespace(self, key)
+        if key not in self and key.startswith('__'):
+            raise AttributeError(key)
+        return self.get(key)
+
+    def __setattr__(self, key, value):
+        if key in self.__slots__:
+            return dict.__setattr__(self, key, value)
+        depr('Attribute assignment is deprecated.') #0.12
+        if hasattr(dict, key):
+            raise AttributeError('Read-only attribute.')
+        if key in self and self[key] and isinstance(self[key], self.Namespace):
+            raise AttributeError('Non-empty namespace attribute.')
+        self[key] = value
+
+    def __delattr__(self, key):
+        if key in self:
+            val = self.pop(key)
+            if isinstance(val, self.Namespace):
+                prefix = key + '.'
+                for key in self:
+                    if key.startswith(prefix):
+                        del self[prefix+key]
+
+    def __call__(self, *a, **ka):
+        depr('Calling ConfDict is deprecated. Use the update() method.') #0.12
+        self.update(*a, **ka)
+        return self
+
 
 
 class AppStack(list):
@@ -2213,19 +2347,21 @@ class FileUpload(object):
     @cached_property
     def filename(self):
         ''' Name of the file on the client file system, but normalized to ensure
-            file system compatibility (lowercase, no whitespace, no path
-            separators, no unsafe characters, ASCII only). An empty filename
-            is returned as 'empty'.
+            file system compatibility. An empty filename is returned as 'empty'.
+            
+            Only ASCII letters, digits, dashes, underscores and dots are
+            allowed in the final filename. Accents are removed, if possible.
+            Whitespace is replaced by a single dash. Leading or tailing dots
+            or dashes are removed. The filename is limited to 255 characters.
         '''
-        from unicodedata import normalize #TODO: Module level import?
         fname = self.raw_filename
-        if isinstance(fname, unicode):
-            fname = normalize('NFKD', fname).encode('ASCII', 'ignore')
-        fname = fname.decode('ASCII', 'ignore')
+        if not isinstance(fname, unicode):
+            fname = fname.decode('utf8', 'ignore')
+        fname = normalize('NFKD', fname).encode('ASCII', 'ignore').decode('ASCII')
         fname = os.path.basename(fname.replace('\\', os.path.sep))
-        fname = re.sub(r'[^a-zA-Z0-9-_.\s]', '', fname).strip().lower()
-        fname = re.sub(r'[-\s]+', '-', fname.strip('.').strip())
-        return fname or 'empty'
+        fname = re.sub(r'[^a-zA-Z0-9-_.\s]', '', fname).strip()
+        fname = re.sub(r'[-\s]+', '-', fname).strip('.-')
+        return fname[:255] or 'empty'
 
     def _copy_file(self, fp, chunk_size=2**16):
         read, write, offset = self.file.read, fp.write, self.file.tell()
@@ -2293,7 +2429,7 @@ def _file_iter_range(fp, offset, bytes, maxread=1024*1024):
 
 def static_file(filename, root, mimetype='auto', download=False, charset='UTF-8'):
     """ Open a file in a safe way and return :exc:`HTTPResponse` with status
-        code 200, 305, 401 or 404. The ``Content-Type``, ``Content-Encoding``,
+        code 200, 305, 403 or 404. The ``Content-Type``, ``Content-Encoding``,
         ``Content-Length`` and ``Last-Modified`` headers are set if possible.
         Special support for ``If-Modified-Since``, ``Range`` and ``HEAD``
         requests.
@@ -2471,7 +2607,7 @@ def html_escape(string):
 
 def html_quote(string):
     ''' Escape and quote a string to be used as an HTTP attribute.'''
-    return '"%s"' % html_escape(string).replace('\n','%#10;')\
+    return '"%s"' % html_escape(string).replace('\n','&#10;')\
                     .replace('\r','&#13;').replace('\t','&#9;')
 
 
@@ -3078,11 +3214,11 @@ class BaseTemplate(object):
         """ Search name in all directories specified in lookup.
         First without, then with common extensions. Return first hit. """
         if not lookup:
-            depr('The template lookup path list should not be empty.', True) #0.12
+            depr('The template lookup path list should not be empty.') #0.12
             lookup = ['.']
 
         if os.path.isabs(name) and os.path.isfile(name):
-            depr('Absolute template path names are deprecated.', True) #0.12
+            depr('Absolute template path names are deprecated.') #0.12
             return os.path.abspath(name)
 
         for spath in lookup:
@@ -3162,6 +3298,9 @@ class CheetahTemplate(BaseTemplate):
 class Jinja2Template(BaseTemplate):
     def prepare(self, filters=None, tests=None, globals={}, **kwargs):
         from jinja2 import Environment, FunctionLoader
+        if 'prefix' in kwargs: # TODO: to be removed after a while
+            raise RuntimeError('The keyword argument `prefix` has been removed. '
+                'Use the full jinja2 environment name line_statement_prefix instead.')
         self.env = Environment(loader=FunctionLoader(self.loader), **kwargs)
         if filters: self.env.filters.update(filters)
         if tests: self.env.tests.update(tests)
@@ -3213,9 +3352,15 @@ class SimpleTemplate(BaseTemplate):
         return code
 
     def _rebase(self, _env, _name=None, **kwargs):
+        if _name is None:
+            depr('Rebase function called without arguments.'
+                 ' You were probably looking for {{base}}?', True) #0.12
         _env['_rebase'] = (_name, kwargs)
 
     def _include(self, _env, _name=None, **kwargs):
+        if _name is None:
+            depr('Rebase function called without arguments.'
+                 ' You were probably looking for {{base}}?', True) #0.12
         env = _env.copy()
         env.update(kwargs)
         if _name not in self.cache:
@@ -3272,7 +3417,7 @@ class StplParser(object):
     # 7: And finally, a single newline. The 8th token is 'everything else'
     _re_tok += '|(\\r?\\n)'
     # Match the start tokens of code areas in a template
-    _re_split = '(?m)^[ \t]*(\\\\?)((%(line_start)s)|(%(block_start)s))'
+    _re_split = '(?m)^[ \t]*(\\\\?)((%(line_start)s)|(%(block_start)s))(%%?)'
     # Match inline statements (may contain python strings)
     _re_inl = '%%(inline_start)s((?:%s|[^\'"\n]*?)+)%%(inline_end)s' % _re_inl
 
@@ -3311,7 +3456,13 @@ class StplParser(object):
                 text = self.source[self.offset:self.offset+m.start()]
                 self.text_buffer.append(text)
                 self.offset += m.end()
-                if m.group(1): # Escape syntax
+                if m.group(1): # New escape syntax
+                    line, sep, _ = self.source[self.offset:].partition('\n')
+                    self.text_buffer.append(m.group(2)+m.group(5)+line+sep)
+                    self.offset += len(line+sep)+1
+                    continue
+                elif m.group(5): # Old escape syntax
+                    depr('Escape code lines with a backslash.') #0.12
                     line, sep, _ = self.source[self.offset:].partition('\n')
                     self.text_buffer.append(m.group(2)+line+sep)
                     self.offset += len(line+sep)+1
@@ -3324,7 +3475,7 @@ class StplParser(object):
         return ''.join(self.code_buffer)
 
     def read_code(self, multiline):
-        code_line, comment, start_line = '', '', self.lineno
+        code_line, comment = '', ''
         while True:
             m = self.re_tok.search(self.source[self.offset:])
             if not m:
@@ -3373,6 +3524,7 @@ class StplParser(object):
             prefix = text[pos:]
             lines = prefix.splitlines(True)
             if lines[-1].endswith('\\\\\n'): lines[-1] = lines[-1][:-3]
+            elif lines[-1].endswith('\\\\\r\n'): lines[-1] = lines[-1][:-4]
             parts.append(nl.join(map(repr, lines)))
         code = '_printlist((%s,))' % ', '.join(parts)
         self.lineno += code.count('\n')+1
@@ -3383,9 +3535,27 @@ class StplParser(object):
         return '_escape(%s)' % chunk
 
     def write_code(self, line, comment=''):
+        line, comment = self.fix_backward_compatibility(line, comment)
         code  = '  ' * (self.indent+self.indent_mod)
         code += line.lstrip() + comment + '\n'
         self.code_buffer.append(code)
+
+    def fix_backward_compatibility(self, line, comment):
+        parts = line.strip().split(None, 2)
+        if parts and parts[0] in ('include', 'rebase'):
+            depr('The include and rebase keywords are functions now.') #0.12
+            if len(parts) == 1:   return "_printlist([base])", comment
+            elif len(parts) == 2: return "_=%s(%r)" % tuple(parts), comment
+            else:                 return "_=%s(%r, %s)" % tuple(parts), comment
+        if self.lineno <= 2 and not line.strip() and 'coding' in comment:
+            m = re.match(r"#.*coding[:=]\s*([-\w.]+)", comment)
+            if m:
+                depr('PEP263 encoding strings in templates are deprecated.') #0.12
+                enc = m.group(1)
+                self.source = self.source.encode(self.encoding).decode(enc)
+                self.encoding = enc
+                return line, comment.replace('coding','coding*')
+        return line, comment
 
 
 def template(*args, **kwargs):

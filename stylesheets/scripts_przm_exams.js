@@ -496,9 +496,9 @@ function isDate(txtDate) {
 					}
 					
 					$("#form1").validate({
-						submitHandler:function(form) {
-							SubmittingForm()
-						},
+						// submitHandler:function(form) {
+						// 	form.submit()
+						// },
 						rules: {
 						chemical_name: "required",		// simple rule, converted to {required:true}
 						Scenarios:"required",

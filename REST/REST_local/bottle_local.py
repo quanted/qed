@@ -209,7 +209,7 @@ def exams_rest(jid):
     result = exams_pi.exams_pi(chem_name, scenarios, met, farm, mw, sol, koc, vp, aem, anm, aqp, tmper, n_ph, ph_out, hl_out)
     return {'user_id':'admin', 'result': result, '_id':jid}
     
-##################################przm##############################################
+##################################exams##############################################
 
 ##################################pfam##############################################
 @route('/pfam/<jid>', method='POST') 
@@ -230,6 +230,21 @@ def pfam_rest(jid):
     return {'user_id':'admin', 'result': result, '_id':jid}
     
 ##################################pfam##############################################
+
+##################################przm_exams##############################################
+@route('/przm_exams/<jid>', method='POST') 
+@auth_basic(check)
+def przm_exams_rest(jid):
+    for k, v in request.json.iteritems():
+        exec '%s = v' % k
+        # print k, '=', v
+    # all_result.setdefault(jid,{}).setdefault('status','none')
+
+    from przm_exams_rest import PRZM_EXAMS_pi
+    result = PRZM_EXAMS_pi.PRZM_EXAMS_pi(chem_name, noa, scenarios, unit, met, inp, run, exam, MM, DD, YY, CAM_f, DEPI, Ar, EFF, Drft, 
+                                         farm, mw, sol, koc, vp, aem, anm, aqp, tmper, n_ph, ph_out, hl_out)
+    return {'user_id':'admin', 'result': result, '_id':jid}
+##################################przm_exams##############################################
 
 ##################File upload####################
 @route('/file_upload', method='POST') 

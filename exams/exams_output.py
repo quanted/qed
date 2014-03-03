@@ -40,7 +40,7 @@ class examsOutputPage(webapp.RequestHandler):
             hl_out.append(hl_temp)  
 
         exams_obj = exams_model.exams(chem_name, scenarios, farm, mw, sol, koc, vp, aem, anm, aqp, tmper, n_ph, ph_out, hl_out)
-        logging.info(vars(exams_obj))
+        # logging.info(vars(exams_obj))
 
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
@@ -50,6 +50,7 @@ class examsOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'exams', 
                 'model_attributes':'EXAMS Output'})
+        html = html + exams_tables.timestamp(exams_obj)
         html = html + exams_tables.table_all(exams_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})

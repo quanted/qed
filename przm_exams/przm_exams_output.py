@@ -187,7 +187,6 @@ class PRZMEXAMSOutputPage(webapp.RequestHandler):
                                                      farm, mw, sol, koc, vp, aem, anm, aqp, tmper, n_ph, ph_out, hl_out)
 
 
-
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie)     
@@ -196,49 +195,13 @@ class PRZMEXAMSOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'express', 
                 'model_attributes':'PRZM-EXAMS Output'})
-
+        html = html + przm_exams_tables.timestamp(przm_exams_obj)
         html = html + przm_exams_tables.table_all(przm_exams_obj)
-
-        html = html + """
-        <br><div><table class="results" width="550" border="1">
-                          <tr>
-                            <th scope="col" colspan="3"><div align="center">PRZM-EXAMS Results</div></th>
-                          </tr>
-                          <tr>
-                            <th scope="col"><div align="center">Outputs</div></th>
-                            <th scope="col"><div align="center">Value</div></th>                            
-                          </tr>
-                          <tr>
-                            <td><div align="center">Simulation is finished. Please download your file from here</div></td>
-                            <td><div align="center"><a href=%s>Link</a></div></td>
-                          </tr>
-                          <tr>          
-                            <td id="x_pre_irr_val" data-val='%s' style="display: none"></td>  
-                            <td id="x_leachate_val" data-val='%s' style="display: none"></td>  
-                            <td id="x_et_val" data-val='%s' style="display: none"></td>  
-                            <td id="x_runoff_val" data-val='%s' style="display: none"></td>
-                            <td id="Lim_inst_val" data-val='%s' style="display: none"></td>  
-                            <td id="Lim_24h_val" data-val='%s' style="display: none"></td>  
-                            <td id="Lim_96h_val" data-val='%s' style="display: none"></td>  
-                            <td id="Lim_21d_val" data-val='%s' style="display: none"></td>
-                            <td id="Lim_60d_val" data-val='%s' style="display: none"></td>  
-                            <td id="Lim_90d_val" data-val='%s' style="display: none"></td>  
-                            <td id="Lim_y_val" data-val='%s' style="display: none"></td>  
-                            <td id="Ben_inst_val" data-val='%s' style="display: none"></td>  
-                            <td id="Ben_24h_val" data-val='%s' style="display: none"></td>  
-                            <td id="Ben_96h_val" data-val='%s' style="display: none"></td>  
-                            <td id="Ben_21d_val" data-val='%s' style="display: none"></td>
-                            <td id="Ben_60d_val" data-val='%s' style="display: none"></td>  
-                            <td id="Ben_90d_val" data-val='%s' style="display: none"></td>  
-                            <td id="Ben_y_val" data-val='%s' style="display: none"></td>  
-                          </tr>                               
-        </table><br></div>"""%(przm_exams_obj.link, przm_exams_obj.x_pre_irr, przm_exams_obj.x_leachate, przm_exams_obj.x_et, przm_exams_obj.x_runoff,
-                               przm_exams_obj.Lim_inst, przm_exams_obj.Lim_24h, przm_exams_obj.Lim_96h, przm_exams_obj.Lim_21d, przm_exams_obj.Lim_60d, przm_exams_obj.Lim_90d, przm_exams_obj.Lim_y,  
-                               przm_exams_obj.Ben_inst, przm_exams_obj.Ben_24h, przm_exams_obj.Ben_96h, przm_exams_obj.Ben_21d, przm_exams_obj.Ben_60d, przm_exams_obj.Ben_90d, przm_exams_obj.Ben_y)
-
-        html = html + template.render(templatepath + 'przm_exams_jqplot.html', {})
+        html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.save_dic(html, przm_exams_obj.__dict__, 'przm_exams', 'single')
+
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', PRZMEXAMSOutputPage)], debug=True)

@@ -2,6 +2,7 @@ import numpy
 from django.template import Context, Template
 from django.utils.safestring import mark_safe
 from exams import exams_model
+import datetime
 
 def getheaderpvu():
 	headings = ["Parameter", "Value", "Units"]
@@ -79,6 +80,18 @@ pvuheadings = getheaderpvu()
 pvaheadings = getheaderpva()
 djtemplate = getdjtemplate()
 tmpl = Template(djtemplate)
+
+def timestamp(exams_obj):
+    st = datetime.datetime.strptime(exams_obj.jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
+    html="""
+    <div class="out_">
+        <b>EXAMS<br>
+    """
+    html = html + st
+    html = html + " (EST)</b>"
+    html = html + """
+    </div>"""
+    return html
 
 
 def table_all(exams_obj):

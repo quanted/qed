@@ -47,7 +47,7 @@ def batch_save_dic(output_html, model_object_dict, model_name, run_type, jid_bat
     from uber import uber_lib
     from google.appengine.ext.webapp import template
 
-    html_save = uber_lib.SkinChk(ChkCookie)
+    html_save = uber_lib.SkinChk(ChkCookie, "Batch")
     html_save = html_save + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':model_name,'page':'output'})
     html_save = html_save + template.render (templatepath + '03ubertext_links_left.html', {})                
     html_save = html_save + output_html

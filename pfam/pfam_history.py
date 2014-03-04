@@ -16,7 +16,7 @@ class PFAMhistoryPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
+        html = uber_lib.SkinChk(ChkCookie, "PFAM User History")
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'pfam','page':'history'})
         html = html + template.render(templatepath + '03ubertext_links_left.html', {})                       
         html = html + template.render(templatepath + '04uberalgorithm_start.html', {
@@ -36,4 +36,5 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
+    
+

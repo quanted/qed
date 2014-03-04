@@ -117,7 +117,7 @@ class agdrift_therpsOutputPage(webapp.RequestHandler):
         x1 = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
+        html = uber_lib.SkinChk(ChkCookie, "AgDrift-T-Herps Output")
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'agdrift','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {

@@ -24,7 +24,7 @@ class przm5OutputPage(webapp.RequestHandler):
         logger.info(vars(przm5_obj))
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)    
+        html = uber_lib.SkinChk(ChkCookie, "PRZM 5 Output")    
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html',  {'model':'przm5','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                               
         html = html + template.render(templatepath + '04uberoutput_start.html', {

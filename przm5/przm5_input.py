@@ -17,7 +17,7 @@ class przm5InputPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
+        html = uber_lib.SkinChk(ChkCookie, "PRZM 5 Inputs")
         html = html + template.render (templatepath + 'przm5-jquery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'przm5','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                

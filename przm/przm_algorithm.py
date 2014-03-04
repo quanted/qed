@@ -16,7 +16,7 @@ class PRZMAlgorithmPage(webapp.RequestHandler):
         x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
+        html = uber_lib.SkinChk(ChkCookie, "PRZM Algorithms")
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'przm','page':'algorithm'})
         html = html + template.render(templatepath + '03ubertext_links_left.html', {})                        
         html = html + template.render(templatepath + '04uberalgorithm_start.html', {

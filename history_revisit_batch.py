@@ -38,7 +38,7 @@ class historyoutputPage(webapp.RequestHandler):
         ####Finally, assemble batchout page############ 
         templatepath = os.path.dirname(__file__) + '/templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
+        html = uber_lib.SkinChk(ChkCookie, 'Batch')
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'przm','page':'output'})
 
 

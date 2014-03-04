@@ -17,7 +17,7 @@ class STIRInputPage(webapp.RequestHandler):
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
+        html = uber_lib.SkinChk(ChkCookie, "STIR Inputs")
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'stir','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberinput_start.html', {

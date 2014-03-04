@@ -20,7 +20,7 @@ class trexInputPage(webapp.RequestHandler):
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
+        html = uber_lib.SkinChk(ChkCookie, "TREX 1.5.2 Inputs")
         html = html + template.render (templatepath + 'trex2-jquery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'trex2','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})        

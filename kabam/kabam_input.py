@@ -20,7 +20,7 @@ class KabamInputPage(webapp.RequestHandler):
         text_file = open('kabam/kabam_description.txt','r')
         x = text_file.read()
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
+        html = uber_lib.SkinChk(ChkCookie, "Kabam Inputs")
         html = html + template.render(templatepath + 'kabam-jQuery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'kabam','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})

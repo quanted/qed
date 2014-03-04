@@ -1,48 +1,51 @@
 $(document).ready(function() {
-    
-    var tab_pool = ["tab_Chemical", "tab_Application", "tab_Location", "tab_Floods", "tab_Crop", "tab_Physical", "tab_Output"];
-    var uptab_pool = ["Chemical", "Application", "Location", "Floods", "Crop", "Physical", "Output"];
-    var visible = $(".tab:visible").attr('class').split(" ")[1];
-    var curr_ind = $.inArray(visible, tab_pool);
-    $(".back, .submit, #metaDataToggle, #metaDataText").hide();
+    // Call function to setup tabbed nav
+    uberNavTabs(
+        ["Chemical", "Application", "Location", "Floods", "Crop", "Physical", "Output"],
+        {   "isSubTabs":false  }
+    );
 
-//Input form validation method
-
+    //Input form validation method
     function isSci(txtValue) {
         var currVal = txtValue;
-        if (currVal == '')
+        if (currVal == '') {
            return false;
-      //Declare Regex  
-      var rxNumberPattern = /^-?(?:0|[1-9]\d*)(?:\.\d*)?(?:[eE][+\-]?\d+)?/;
-      var dtArray = currVal.match(rxNumberPattern); // is format OK?
-      if (dtArray == null)
-          return false;
-      return true;
+        }
+        //Declare Regex  
+        var rxNumberPattern = /^-?(?:0|[1-9]\d*)(?:\.\d*)?(?:[eE][+\-]?\d+)?/;
+        var dtArray = currVal.match(rxNumberPattern); // is format OK?
+        if (dtArray == null) {
+            return false;
+        }
+    return true;
     }   
     
     function isDate(txtDate) {
         var currVal = txtDate;
-        if (currVal == '')
+        if (currVal == '') {
            return false;
-      //Declare Regex  
-      var rxDatePattern = /^(\d{1,2})(\/|-)(\d{1,2})$/;
-      var dtArray = currVal.match(rxDatePattern); // is format OK?
-      if (dtArray == null)
+        }
+        //Declare Regex  
+        var rxDatePattern = /^(\d{1,2})(\/|-)(\d{1,2})$/;
+        var dtArray = currVal.match(rxDatePattern); // is format OK?
+        if (dtArray == null) {
           return false;
-       //Checks for dd/mm format.
-       var dtDay = dtArray[3];
-       var dtMonth = dtArray[1];
+        }
+        //Checks for dd/mm format.
+        var dtDay = dtArray[3];
+        var dtMonth = dtArray[1];
         
-        if (dtMonth.length != 2 || dtMonth < 1 || dtMonth > 12) 
+        if (dtMonth.length != 2 || dtMonth < 1 || dtMonth > 12) {
             return false;
-        else if (dtDay.length != 2 || dtDay < 1 || dtDay > 31) 
+        } else if (dtDay.length != 2 || dtDay < 1 || dtDay > 31) {
             return false;
-        else if (dtMonth == 2 && dtDay > 29) 
+        } else if (dtMonth == 2 && dtDay > 29) {
             return false;
-        else if ( (dtMonth == 4 || dtMonth == 6 || dtMonth == 9 || dtMonth == 11) && (dtDay > 30)) 
+        } else if ( (dtMonth == 4 || dtMonth == 6 || dtMonth == 9 || dtMonth == 11) && (dtDay > 30)) {
             return false;
+        }
         return true;
-    }   
+    }
 
     function mmCheck(value) {
         var mmValue = Number(value);
@@ -156,10 +159,7 @@ $(document).ready(function() {
     }, "In an increasing order");
 
     $.validator.messages.required = 'Required';
-
-
-
-                                    
+                  
     var validator = $('form').validate({
         errorElement: "div",
         wrapper: "div",  // a wrapper around the error message
@@ -350,157 +350,16 @@ $(document).ready(function() {
             }
         }
     });
-    
-    $('li.Chemical').click(function(){
-        curr_ind = 0;
-        $(this).addClass('tabSel').removeClass('tabUnsel');
-        $('li.Application, li.Location, li.Floods, li.Crop, li.Physical, li.Output').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_Chemical').show();
-        $(".back").hide();
-        $(".submit, #metaDataToggle, #metaDataText").hide();
-        $(".next").show();
-    });
 
-    $('li.Application').click(function(){
-        curr_ind = 1;
-        $(this).addClass('tabSel').removeClass('tabUnsel');
-        $('li.Chemical, li.Location, li.Floods, li.Crop, li.Physical, li.Output').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_Application').show();
-        $(".back").show();
-        $(".submit, #metaDataToggle, #metaDataText").hide();
-        $(".next").show();
-    });
-
-    $('li.Location').click(function(){
-        curr_ind = 2;
-        $(this).addClass('tabSel').removeClass('tabUnsel');
-        $('li.Chemical, li.Application, li.Floods, li.Crop, li.Physical, li.Output').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_Location').show();
-        $(".back").show();
-        $(".submit, #metaDataToggle, #metaDataText").hide();
-        $(".next").show();
-    });
-
-    $('li.Floods').click(function(){
-        curr_ind = 3;
-        $(this).addClass('tabSel').removeClass('tabUnsel');
-        $('li.Chemical, li.Application, li.Location, li.Crop, li.Physical, li.Output').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_Floods').show();
-        $(".back").show();
-        $(".submit, #metaDataToggle, #metaDataText").hide();
-        $(".next").show();
-    });
-
-    $('li.Crop').click(function(){
-        curr_ind = 4;
-        $(this).addClass('tabSel').removeClass('tabUnsel');
-        $('li.Chemical, li.Application, li.Location, li.Floods, li.Physical, li.Output').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_Crop').show();
-        $(".back").show();
-        $(".submit, #metaDataToggle, #metaDataText").hide();
-        $(".next").show();
-    });
-
-    $('li.Physical').click(function(){
-        curr_ind = 5;
-        $(this).addClass('tabSel').removeClass('tabUnsel');
-        $('li.Chemical, li.Application, li.Location, li.Floods, li.Crop, li.Output').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_Physical').show();
-        $(".back").show();
-        $(".submit, #metaDataToggle, #metaDataText").hide();
-        $(".next").show();
-    });
-
-    $('li.Output').click(function(){
-        curr_ind = 6;
-        $(this).addClass('tabSel').removeClass('tabUnsel');
-        $('li.Chemical, li.Application, li.Location, li.Floods, li.Crop, li.Physical').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible, .next").hide();
-        $(".tab_Output, .back, .submit, #metaDataToggle, #metaDataText").show();
-    });
-
-    $('.next').click(function () {
-        var tab = $(".tab:visible");
-        //console.log(curr_ind)
-        var valid = true;
-        $('input,select', tab).each(function(i, v){
-            valid = validator.element(v) && valid;
-        });
-        if(!valid){
-            return;
-        }
-        
-        if (curr_ind < 6) {
-            if (curr_ind == 1) {
-            $(".tab:visible").hide();
-            $("." + uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel') //unhighlight previous tabs
-            curr_ind = curr_ind + 1;
-            $("." + tab_pool[curr_ind]).show();
-            $("." + uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel'); //highlight current tabs
-            $(".tab_noa1").show();
-            $(".submit").hide();
-            $(".back").show();      
-                }
-                
-            else{   
-            $(".tab:visible").hide();
-            $("." + uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel') //unhighlight previous tabs
-            curr_ind = curr_ind + 1;
-            $("." + tab_pool[curr_ind]).show();
-            $("." + uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel'); //highlight current tabs
-            $(".submit").hide();
-            $(".back").show();
-            }
-        }
-        if (curr_ind == 6) {
-            $(".submit, #metaDataToggle, #metaDataText").show();
-            $(".next").hide();
-        }
-    });
-
-    $('.back').click(function () {
-        if (curr_ind > 0) {
-            if (curr_ind == 1) {
-                $(".tab:visible").hide();
-                $("." + uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel') //unhighlight previous tabs
-                curr_ind = curr_ind - 1;
-                $("." + tab_pool[curr_ind]).show();
-                $("." + uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel'); //highlight current tabs            
-                $(".tab_noa1").show();
-                $(".submit, #metaDataToggle, #metaDataText").hide();
-                $(".next").show();
-            } else {
-                $(".tab:visible").hide();
-                $("." + uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel') //unhighlight previous tabs
-                curr_ind = curr_ind - 1;
-                $("." + tab_pool[curr_ind]).show();
-                $("." + uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel'); //highlight current tabs            
-                $(".submit, #metaDataToggle, #metaDataText").hide();
-                $(".next").show();
-            }
-        }
-        if (curr_ind == 0) {
-            $(".back").hide();
-        }
-    });
-                        
-    var i = 1
+    var i = 1;
     $('.tab_Application').append('<tr id="noa_header" style="display:none"><th width="18%">App#</th><th width="18%">Month</th><th width="18%">Day</th><th width="23%">Mass Applied</th><th width="23%">Slow Release</th></tr><tr id="noa_header" style="display:none"><th width="18%"></th><th width="18%"></th><th width="18%"></th><th width="23%">(kg/hA)</th><th width="23%">(1/day)</th></tr>');
 
-    var j = 1
+    var j = 1;
     $('.tab_Floods').append('<tr id="nof_header" style="display:none"><th width="10%">Event</th><th width="18%">Number of</th><th width="18%">Fill Level</th><th width="18%">Wier Level</th><th width="18%">Min. Level</th><th width="18%">Turn Over</th></tr><tr id="nof_header" style="display:none"><th width="10%"></th><th width="18%">Days</th><th width="18%">(m)</th><th width="18%">(m)</th><th width="18%">(m)</th><th width="18%">(1/day)</th></tr>');
-            
 
-
-//set default values//
+    //set default values//
     $('#id_noa').val(2);
-    $('tr[id*="noa_header"]').show()
+    $('tr[id*="noa_header"]').show();
     while (i <= 2) {
         $('.tab_Application').append('<tr class="tab_noa1"><td><input name="jm' + i + '" type="text" size="5" value="' + i + '" disabled/></td><td><input type="text" size="5" name="mm' + i + '" id="id_mm' + i + '"/></td><td><input type="text" size="5" name="dd' + i + '" id="id_dd' + i + '"/></td><td><input type="text" size="5" name="ma' + i + '" id="id_ma' + i + '"/></td><td><input type="text" size="5" name="sr' + i + '" id="id_sr' + i + '" value="0"/></td></tr>');
         i = i + 1;
@@ -536,18 +395,18 @@ $(document).ready(function() {
         });
     });
 
-    $('[id^="id_mm"]').val(6)
-    $('#id_dd1').val(3)
-    $('#id_dd2').val(8)
+    $('[id^="id_mm"]').val(6);
+    $('#id_dd1').val(3);
+    $('#id_dd2').val(8);
 
-    $('#id_ma1').val(1.12)
-    $('#id_ma2').val(1.12)
+    $('#id_ma1').val(1.12);
+    $('#id_ma2').val(1.12);
 
-    $('#id_weather').val('wTest')
+    $('#id_weather').val('wTest');
 
-    $('#id_nof').val(3)
-    $('#id_date_f1').val('05/01')
-    $('tr[id*="nof_header"]').show()
+    $('#id_nof').val(3);
+    $('#id_date_f1').val('05/01');
+    $('tr[id*="nof_header"]').show();
     while (j <= 3) {
         if (j == 1){
         $('.tab_Floods').append('<tr class="tab_nof1"><td><input type="text" size="5" value="'+j+'" disabled/></td><td><input type="text" size="5" name="nod'+j+'" id="id_nod'+j+'" value="0" disabled/></td><td><input type="text" size="5" name="fl'+j+'" id="id_fl'+j+'"/></td><td><input type="text" size="5" name="wl'+j+'" id="id_wl'+j+'"/></td><td><input type="text" size="5" name="ml'+j+'" id="id_ml'+j+'"/></td><td><input type="text" size="5" name="to'+j+'" id="id_to'+j+'"/></td></tr>');           
@@ -558,25 +417,22 @@ $(document).ready(function() {
         j = j + 1;
     }
 
-    $('#id_nod2').val(20)
-    $('#id_nod3').val(60)
-    $('#id_fl1').val(0.0254)
-    $('#id_fl2').val(0.10)
-    $('#id_fl3').val(0)
-    $('#id_wl1').val(0.12)
-    $('#id_wl2').val(0.12)
-    $('#id_wl3').val(0)
-    $('#id_ml1').val(0)
-    $('#id_ml2').val(0.05)
-    $('#id_ml3').val(0)
-    $('#id_to1').val(0.1)
-    $('#id_to2').val(0)
-    $('#id_to3').val(0)
+    $('#id_nod2').val(20);
+    $('#id_nod3').val(60);
+    $('#id_fl1').val(0.0254);
+    $('#id_fl2').val(0.10);
+    $('#id_fl3').val(0);
+    $('#id_wl1').val(0.12);
+    $('#id_wl2').val(0.12);
+    $('#id_wl3').val(0);
+    $('#id_ml1').val(0);
+    $('#id_ml2').val(0.05);
+    $('#id_ml3').val(0);
+    $('#id_to1').val(0.1);
+    $('#id_to2').val(0);
+    $('#id_to3').val(0);
 
-
-
-
-        $('[name*="nod"]').each(function () {
+    $('[name*="nod"]').each(function () {
         $(this).rules('add', {
             required : true,
             integer: true,
@@ -585,7 +441,7 @@ $(document).ready(function() {
         });
     });
 
-        $('[name*="fl"]').each(function () {
+    $('[name*="fl"]').each(function () {
         $(this).rules('add', {
             required : true,
             sciFormat: true,
@@ -593,7 +449,7 @@ $(document).ready(function() {
         });
     });
 
-        $('[name*="wl"]').each(function () {
+    $('[name*="wl"]').each(function () {
         $(this).rules('add', {
             required : true,
             sciFormat: true,
@@ -602,7 +458,7 @@ $(document).ready(function() {
         });
     });
 
-        $('[name*="ml"]').each(function () {
+    $('[name*="ml"]').each(function () {
         $(this).rules('add', {
             required : true,
             sciFormat: true,
@@ -611,20 +467,18 @@ $(document).ready(function() {
         });
     });
 
-        $('[name*="to"]').each(function () {
+    $('[name*="to"]').each(function () {
         $(this).rules('add', {
             required : true,
             sciFormat: true,
             min: 0
         });
     });
-
-
-//end default setup//
+    //end default setup//
 
     $('#id_noa').change(function () {
-        var total = $(this).val()
-        $('tr[id*="noa_header"]').show()
+        var total = $(this).val();
+        $('tr[id*="noa_header"]').show();
         
         while (i <= total) {
             $('.tab_Application').append('<tr class="tab_noa1"><td><input name="jm' + i + '" type="text" size="5" value="' + i + '" disabled/></td><td><input type="text" size="5" name="mm' + i + '" id="id_mm' + i + '"/></td><td><input type="text" size="5" name="dd' + i + '" id="id_dd' + i + '"/></td><td><input type="text" size="5" name="ma' + i + '" id="id_ma' + i + '"/></td><td><input type="text" size="5" name="sr' + i + '" id="id_sr' + i + '" value="0"/></td></tr>');
@@ -632,52 +486,49 @@ $(document).ready(function() {
         }
         while (i-1 > total) {
             $(".tab_Application tr:last").remove();
-            i=i-1
+            i=i-1;
         }
         $('</table>').appendTo('.tab_Application');
-    //addtion rules for dynamic generated cells
-
-    $('[name*="mm"]').each(function () {
-        $(this).rules('add', {
-            required: true,
-            monthCheck: true,
-            integer:true
-        });
-    });
-
-    $('[name*="dd"]').each(function () {
-        $(this).rules('add', {
-            required: true,
-            dayCheck: true,
-            integer:true            
-        });
-    });
-    
-
-    $('[name*="ma"]').each(function () {
-        $(this).rules('add', {
-            required : true,
-            sciFormat: true,
-            min: 0
-        });
-    });
-
-    $('[name*="sr"]').each(function () {
-        $(this).rules('add', {
-            required : true,
-            sciFormat: true,
-            min: 0
+        //addtion rules for dynamic generated cells
+        $('[name*="mm"]').each(function () {
+            $(this).rules('add', {
+                required: true,
+                monthCheck: true,
+                integer:true
+            });
         });
 
-    });
+        $('[name*="dd"]').each(function () {
+            $(this).rules('add', {
+                required: true,
+                dayCheck: true,
+                integer:true            
+            });
+        });
         
-    })
-    
-    
+
+        $('[name*="ma"]').each(function () {
+            $(this).rules('add', {
+                required : true,
+                sciFormat: true,
+                min: 0
+            });
+        });
+
+        $('[name*="sr"]').each(function () {
+            $(this).rules('add', {
+                required : true,
+                sciFormat: true,
+                min: 0
+            });
+
+        });
+        
+    });
 
     $('#id_nof').change(function () {
-        var total_nof = $(this).val()
-        $('tr[id*="nof_header"]').show()
+        var total_nof = $(this).val();
+        $('tr[id*="nof_header"]').show();
         
         while (j <= total_nof) {
             if (j == 1){
@@ -690,51 +541,51 @@ $(document).ready(function() {
         }
         while (j-1 > total_nof) {
             $(".tab_Floods tr:last").remove();
-            j=j-1
+            j=j-1;
         }
         $('</table>').appendTo('.tab_Floods');
         
         $('[name*="nod"]').each(function () {
-        $(this).rules('add', {
-            required : true,
-            integer: true,
-            min: 0,
-            mtp : true
+            $(this).rules('add', {
+                required : true,
+                integer: true,
+                min: 0,
+                mtp : true
+            });
         });
-    });
 
         $('[name*="fl"]').each(function () {
-        $(this).rules('add', {
-            required : true,
-            sciFormat: true,
-            min: 0
+            $(this).rules('add', {
+                required : true,
+                sciFormat: true,
+                min: 0
+            });
         });
-    });
 
         $('[name*="wl"]').each(function () {
-        $(this).rules('add', {
-            required : true,
-            sciFormat: true,
-            min: 0,
-            wlflCheck: true         
+            $(this).rules('add', {
+                required : true,
+                sciFormat: true,
+                min: 0,
+                wlflCheck: true         
+            });
         });
-    });
 
         $('[name*="ml"]').each(function () {
-        $(this).rules('add', {
-            required : true,
-            sciFormat: true,
-            min: 0,
-            mlflCheck: true
+            $(this).rules('add', {
+                required : true,
+                sciFormat: true,
+                min: 0,
+                mlflCheck: true
+            });
         });
-    });
 
         $('[name*="to"]').each(function () {
-        $(this).rules('add', {
-            required : true,
-            sciFormat: true,
-            min: 0
+            $(this).rules('add', {
+                required : true,
+                sciFormat: true,
+                min: 0
+            });
         });
     });
-    });
-    });
+});

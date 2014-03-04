@@ -1,78 +1,10 @@
 $(document).ready(function() {
-
-    var tab_pool = ["tab_Chemical", "tab_Applications", "tab_CropLand", "tab_WaterBody"];
-    var uptab_pool = ["Chemical", "Applications", "CropLand", "WaterBody"];
-    var visible = $(".tab:visible").attr('class').split(" ")[1];
-    var curr_ind = $.inArray(visible, tab_pool);
-    $(".back, .submit, #metaDataToggle, #metaDataText").hide();
-
-    $('li.Chemical').click(function(){
-        curr_ind = 0;
-        $('li.Chemical').addClass('tabSel').removeClass('tabUnsel');
-        $('li.Applications, li.CropLand, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
-        $('.tab:visible, .back, .submit, #metaDataToggle, #metaDataText').hide();
-        $('.tab_Chemical, .tab_Chemical0, .next').show();
-    });
-
-    $('li.Applications').click(function(){
-        curr_ind = 1;
-        $('li.Applications').addClass('tabSel').removeClass('tabUnsel');
-        $('li.Chemical, li.CropLand, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
-        $('.tab:visible, .submit, #metaDataToggle, #metaDataText').hide();
-        $('.tab_Applications, .back, .next').show();
-    });
-
-    $('li.CropLand').click(function(){
-        curr_ind = 2;
-        $('li.CropLand').addClass('tabSel').removeClass('tabUnsel');
-        $('li.Chemical, li.Applications, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
-        $('.tab:visible, .submit, #metaDataToggle, #metaDataText').hide();
-        $('.tab_CropLand, .back, .next').show();
-    });
-
-    $('li.WaterBody').click(function(){
-        curr_ind = 3;
-        $('li.WaterBody').addClass('tabSel').removeClass('tabUnsel');
-        $('li.Chemical, li.Applications, li.CropLand').addClass('tabUnsel').removeClass('tabSel');
-        $('.tab:visible, .next').hide();
-        $('.tab_WaterBody, .tab_WaterBodyWCparms, .tab_WaterBodyBparms, .back, .submit, #metaDataToggle, #metaDataText').show();
-    });
-
-    $('.next').click(function () {
-        var tab = $(".tab:visible");
-        if (curr_ind < 3) {      
-            $(".tab:visible").hide();
-            $("."+ uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel');
-            curr_ind = curr_ind + 1;
-            $("." + tab_pool[curr_ind]).show();
-            $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
-            $(".submit, #metaDataToggle, #metaDataText").hide();
-            $(".back").show();
-            }
-        if (curr_ind == 3) {
-            $('.submit, .tab_WaterBodyWCparms, .tab_WaterBodyBparms, #metaDataToggle, #metaDataText').show();
-            $(".next").hide();
-        }
-    });
-
-    $('.back').click(function () {
-        if (curr_ind > 0) {
-            $(".tab:visible").hide();
-            $("."+ uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel');
-            curr_ind = curr_ind - 1;
-            $("." + tab_pool[curr_ind]).show();
-            $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
-            $(".submit, #metaDataToggle, #metaDataText").hide();
-            $(".next").show();
-        }
-        if (curr_ind == 0) {
-            $(".back, #metaDataToggle, #metaDataText").hide();
-            $('.tab_Chemical0').show();
-        }
-    });
-
-    // Applications Tab
-    
+    // Call function to setup tabbed nav
+    uberNavTabs(
+        ["Chemical", "Applications", "CropLand", "WaterBody"],
+        {   "isSubTabs":true,
+            "Chemical": [".tab_Chemical0"] }
+    );
 
     // Inital & Maximum Water Body Depth
     $("input[name$='_Custom']").closest('tr').hide();

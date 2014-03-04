@@ -1,127 +1,39 @@
 $(document).ready(function() {
+    // Call function to setup tabbed nav
+    uberNavTabs(
+        ["Agdrift", "Chemical", "Avian", "Herptile"],
+        {   "isSubTabs":false  }
+    );
 
-    var tab_pool = ["tab_Agdrift", "tab_Chemical", "tab_Avian", "tab_Herptile"];
-    var uptab_pool = ["Agdrift", "Chemical", "Avian", "Herptile"];
-    var visible = $(".tab:visible").attr('class').split(" ")[1];
-    var curr_ind = $.inArray(visible, tab_pool);
-    $(".submit").hide();
-    $(".back").hide();
-
-    $('li.Agdrift').click(function(){
-        curr_ind = 0;
-        $('li.Agdrift').addClass('tabSel').removeClass('tabUnsel');
-        $('li.Chemical,li.Avian, li.Herptile').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_Agdrift').show();
-        $(".back").hide();
-        $(".submit").hide();
-        $(".next").show();
-    });
-        
-    $('li.Chemical').click(function(){
-        curr_ind = 1;
-        $('li.Chemical').addClass('tabSel').removeClass('tabUnsel');
-        $('li.Agdrift,li.Avian, li.Herptile').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_Chemical').show();
-        $(".back").hide();
-        $(".submit").hide();
-        $(".next").show();
-    });
-
-    $('li.Avian').click(function(){
-        curr_ind = 2;
-        $('li.Avian').addClass('tabSel').removeClass('tabUnsel');
-        $('li.Agdrift,li.Chemical, li.Herptile').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_Avian').show();
-        $(".back").show();
-        $(".submit").hide();
-        $(".next").show();
-    });
-
-    $('li.Herptile').click(function(){
-        curr_ind = 3;
-        $('li.Herptile').addClass('tabSel').removeClass('tabUnsel');
-        $('li.Agdrift,li.Avian, li.Chemical').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_Herptile').show();
-        $(".back").show();
-        $(".submit").show();
-        $(".next").hide();
-    });
-
-    $('.next').click(function () {
-        var tab = $(".tab:visible");
-        if (curr_ind < 3) {      
-            $(".tab:visible").hide();
-            $("."+ uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel');
-            curr_ind = curr_ind + 1;
-            $("." + tab_pool[curr_ind]).show();
-            $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
-            $(".submit").hide();
-            $(".back").show();
-            }
-        if (curr_ind == 3) {
-            $(".submit").show();
-            $(".next").hide();
-        }
-    });
-
-    $('.back').click(function () {
-        if (curr_ind > 0) {
-            $(".tab:visible").hide();
-            $("."+ uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel');
-            curr_ind = curr_ind - 1;
-            $("." + tab_pool[curr_ind]).show();
-            $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
-            $(".submit").hide();
-            $(".next").show();
-        }
-        if (curr_ind == 0) {
-            $(".back").hide();
-        }
-    });
-
-
-//<script>
-
-//$(document).ready(function () {
     $('#id_boom_height').closest('tr').hide();
     $('#id_orchard_type').closest('tr').hide();
     $('#id_drop_size').closest('tr').hide()
 
 
    
-        $('#id_application_method').change(function () {
-            if ($(this).val() == "Ground") {
-                $('#id_boom_height').closest('tr').show();
-                $('#id_orchard_type').closest('tr').hide();
-                $('#id_drop_size').closest('tr').show();
-                $('#id_drop_size').find('option:eq(3)').detach();
-            // $('#id_drop_size').find('option:eq(4)').hide();
+    $('#id_application_method').change(function () {
+        if ($(this).val() == "Ground") {
+            $('#id_boom_height').closest('tr').show();
+            $('#id_orchard_type').closest('tr').hide();
+            $('#id_drop_size').closest('tr').show();
+            $('#id_drop_size').find('option:eq(3)').detach();
+        // $('#id_drop_size').find('option:eq(4)').hide();
+        }
+        else if ($(this).val() == "Aerial") {
+            $('#id_boom_height').closest('tr').hide();
+            $('#id_orchard_type').closest('tr').hide();
+            $('#id_drop_size').closest('tr').show();
+        }    
+        else if ($(this).val() == "Orchard/Airblast") {
+            $('#id_boom_height').closest('tr').hide();
+            $('#id_drop_size').closest('tr').hide();
+            $('#id_orchard_type').closest('tr').show();
             }
-            else if ($(this).val() == "Aerial") {
-                $('#id_boom_height').closest('tr').hide();
-                $('#id_orchard_type').closest('tr').hide();
-                $('#id_drop_size').closest('tr').show();
-            }    
-            else if ($(this).val() == "Orchard/Airblast") {
-                $('#id_boom_height').closest('tr').hide();
-                $('#id_drop_size').closest('tr').hide();
-                $('#id_orchard_type').closest('tr').show();
-                }
-    
-        });
+    });
 
-        $(window).bind('beforeunload', function () {
-            $(":reset").click();
-        });
-  //  });
-//</script>
-
-
-
+    $(window).bind('beforeunload', function () {
+        $(":reset").click();
+    });
 
 
     $('#id_avian_NOAEL').val($('#id_avian_NOAEC').val()/20);
@@ -212,7 +124,6 @@ $(document).ready(function() {
     });    
 
     var i = 2
-
         var total = $('#id_noa').val()
         $('tr[id*="noa_header"]').show()
 

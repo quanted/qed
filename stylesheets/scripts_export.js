@@ -1,5 +1,7 @@
-$(document).ready(function () {
+var doneDiv = document.getElementById("popup");
 
+$(document).ready(function () {
+// var doneDiv = $('#popup');
 var jq_html = $('<div />').append($("div.articles_output").children('table[class*=out_], div[class*=out_], H3[class*=out_], H4[class*=out_]:not(div#chart1,table:hidden)').clone()).html();
 var n_plot_1 = $('div[id^="chart"]').size();
 var n_plot_2 = $('img[id^="chart"]').size();
@@ -65,17 +67,20 @@ imgData_json = JSON.stringify(imgData)
 	        	$.unblockUI();
 	        });
 		});
-
+        eror_msg = '<div id="popup_link"><img src="/images/export/exit_button.png" class="exit_button"><h2 class="popup_header">Something Went Wrong</h2></div>' 
+		
 		$.ajax({
 			type: "POST",
 			url: "/pdf.html",
 			data: $("#pdf_post").serialize(),
 			dataType: "html",
 		    success: function(data) {
-        		doneDiv.innerHTML = data;
-        		// console.log(data)
-        		// window.location = '/pdf.html';
-			}
+            	doneDiv.innerHTML = data;
+            	console.log(data)
+			},
+			error: function() { 
+            	doneDiv.innerHTML = eror_msg;
+	        }   
 		});
 	});
 

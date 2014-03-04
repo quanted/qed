@@ -319,7 +319,41 @@ def get_przm_batch_output():
         # print i
         result = i['model_object_dict']
     return {"result":result}
-    
+
+@route('/get_pdf', method='POST')
+@auth_basic(check)
+def get_pdf():
+    for k, v in request.json.iteritems():
+        exec '%s = v' % k
+    final_str = pdf_t
+    final_str = final_str + """<br>"""
+    if (int(pdf_nop)>0):
+        for i in range(int(pdf_nop)):
+            final_str = final_str + """<img id="imgChart1" src="%s" />"""%(pdf_p[i])
+            final_str = final_str + """<br>"""
+
+    from generate_doc import generatepdf_pi
+    result=generatepdf_pi.generatepdf_pi(final_str)
+    return {"result":result}
+
+@route('/get_html', method='POST')
+@auth_basic(check)
+def get_html():
+    for k, v in request.json.iteritems():
+        exec '%s = v' % k
+    final_str = pdf_t
+    final_str = final_str + """<br>"""
+    if (int(pdf_nop)>0):
+        for i in range(int(pdf_nop)):
+            final_str = final_str + """<img id="imgChart1" src="%s" />"""%(pdf_p[i])
+            final_str = final_str + """<br>"""
+
+    from generate_doc import generatehtml_pi
+    result=generatehtml_pi.generatehtml_pi(final_str)
+    return {"result":result}
+
+
+
 run(host=host_ip, port=7777, server="gevent", debug=True)
 
 

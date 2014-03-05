@@ -44,12 +44,14 @@ def generatepdf_pi(input_str):
 
     input_css="""
             <style>
-            table {margin-bottom:16px;}
+            table {margin-bottom:16px; border: 1px solid #666666;}
             th {text-align:center; padding:2px; font-size:12px;}
             td {text-align:center; padding:2px; font-size:11px;}
+            h2 {font-size:13px; color:#79973F}
+            h3 {font-size:12px; color:#79973F}
+            h4 {font-size:12px; color:#79973F}
             </style>
             """
-
     input_str = input_css + input_str
     filename = "model.pdf"
     pdf = pisa.CreatePDF(input_str, file(filename, "wb"))

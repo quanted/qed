@@ -14,12 +14,12 @@ def SkinChk(ChkCookie, titleText):
         html = template.render(templatepath + '01uberheader.html', {'title':titleText})
     return html
 
-def SkinChkMain(ChkCookie, titleText):
+def SkinChkMain(ChkCookie):
     templatepath = os.path.dirname(__file__) + '/../templates/'
     if ChkCookie == 'EPA':
-        html = template.render(templatepath + '01uberheader_mainEPA.html', {'title':titleText})
+        html = template.render(templatepath + '01uberheader_mainEPA.html', {})
     else:
-        html = template.render(templatepath + '01uberheader_main.html', {'title':titleText})
+        html = template.render(templatepath + '01uberheader_main.html', {})
     return html
 
 # def inspectTest():

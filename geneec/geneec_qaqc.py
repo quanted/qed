@@ -9,20 +9,9 @@ import cgitb
 cgitb.enable()
 from StringIO import StringIO
 import csv
-from geneec import geneec_model,geneec_tables
+from geneec import geneec_model, geneec_tables
 from uber import uber_lib
-import json
-import base64
-import urllib
-from google.appengine.api import urlfetch
-import keys_Picloud_S3
-############Provide the key and connect to the picloud####################
-api_key=keys_Picloud_S3.picloud_api_key
-api_secretkey=keys_Picloud_S3.picloud_api_secretkey
-base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
-http_headers = {'Authorization' : 'Basic %s' % base64string}
-###########################################################################
-
+import rest_funcs
 
 cwd= os.getcwd()
 data = csv.reader(open(cwd+'/geneec/geneec_qaqc.csv'))
@@ -81,7 +70,7 @@ for row in data:
     GEEC_60avg.append(float(row[22]))
     GEEC_90avg.append(float(row[23]))
 
-geneec_obj = geneec_model.geneec('individual', chem_name[0], application_target[0], application_rate[0], number_of_applications[0], interval_between_applications[0], Koc[0], aerobic_soil_metabolism[0], wet_in[0], application_method[0], application_method_label, aerial_size_dist[0], ground_spray_type[0], airblast_type[0], spray_quality[0], no_spray_drift[0], incorporation_depth[0], solubility[0], aerobic_aquatic_metabolism[0], hydrolysis[0], photolysis_aquatic_half_life[0])
+geneec_obj = geneec_model.geneec("qaqc", chem_name[0], application_target[0], application_rate[0], number_of_applications[0], interval_between_applications[0], Koc[0], aerobic_soil_metabolism[0], wet_in[0], application_method[0], application_method_label, aerial_size_dist[0], ground_spray_type[0], airblast_type[0], spray_quality[0], no_spray_drift[0], incorporation_depth[0], solubility[0], aerobic_aquatic_metabolism[0], hydrolysis[0], photolysis_aquatic_half_life[0])
 geneec_obj.chem_name_exp = chem_name[0]
 geneec_obj.GEEC_peak_exp = GEEC_peak[0]
 geneec_obj.GEEC_4avg_exp = GEEC_4avg[0]
@@ -99,12 +88,13 @@ class geneecQaqcPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'geneec',
-                'model_attributes':'GENEEC QAQC'})
+                'model_attributes':'GENEE QAQC'})
         html = html + geneec_tables.timestamp(geneec_obj)
         html = html + geneec_tables.table_all_qaqc(geneec_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.save_dic(html, geneec_obj.__dict__, 'geneec', 'qaqc')
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', geneecQaqcPage)], debug=True)

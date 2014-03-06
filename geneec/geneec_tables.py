@@ -70,7 +70,7 @@ def gett1dataAerial(geneec_obj):
         "Parameter": [ 'Chemical Name', 'Application target', 'Application rate', 'Number of applications',
                       'Interval between applications', mark_safe('K<sub>OC</sub>'), 'Aerobic soil metabolism half-life', 'Wet in',
                       'Aerial size dist', 'Width of the no-spray zone', 'Solubility', 'Aerobic aquatic metabolism half-life', 'Photolysis, aquatic half-life' ],
-        "Value": [ geneec_obj.chem_name, geneec_obj.application_target, '%s' % geneec_obj.application_rate, '%s' % geneec_obj.number_of_applications,
+        "Value": [ geneec_obj.chem_name, geneec_obj.application_target_label, '%s' % geneec_obj.application_rate, '%s' % geneec_obj.number_of_applications,
                   '%s' % geneec_obj.interval_between_applications, '%s' % geneec_obj.Koc, '%s' % geneec_obj.aerobic_soil_metabolism, '%s' % geneec_obj.wet_in,
                   '%s' % aerial_dist, '%s' % geneec_obj.no_spray_drift, '%s' % geneec_obj.solubility, '%s' % geneec_obj.aerobic_aquatic_metabolism, '%s' % geneec_obj.photolysis_aquatic_half_life ],
         "Units": [ '', '', 'lbs a.i./A', '', 'days', 'mL/g OC', 'days', '', '', 'ft', 'mg/L', 'days', 'days' ]
@@ -181,14 +181,13 @@ def table_all_qaqc(geneec_obj):
     return html_all
 
 def timestamp(geneec_obj):
-    ts = time.time()
-    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+    st = datetime.datetime.strptime(geneec_obj.jid, '%Y%m%d%H%M%S%f').strftime('%A %Y-%m-%d %H:%M:%S')
     html="""
     <div class="out_">
         <b>GENEEC Version 2.0 (Beta)<br>
     """
     html = html + st
-    html = html + " (UTC)</b>"
+    html = html + " (EST)</b>"
     html = html + """
     </div>"""
     return html

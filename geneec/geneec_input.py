@@ -23,6 +23,7 @@ class GENEECInputPage(webapp.RequestHandler):
                 'model':'geneec', 
                 'model_attributes':'GENEEC Inputs'})
         html = html + str(geneec_parameters.GENEECInp())
+        html = html + """<br><table class="tab_input_html" style="display:none">"""
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
@@ -37,3 +38,4 @@ if __name__ == '__main__':
     main()
     
     
+

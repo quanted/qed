@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Example - Import / Export SMILES</title>
+	<link type="text/css" rel="stylesheet" href="../css/doc.css">
+	<link type="text/css" rel="stylesheet" href="../js/lib/rainbow/github.css" />
+	<script src="../js/lib/rainbow/rainbow-custom.min.js"></script>
+	<script src="../js/lib/jquery-1.9.1.min.js"></script>
+	<script src="../js/webservices.js"></script>
+	<script src="../js/util.js"></script>
+	<script>
+
+		var marvinSketcherInstance;
+
+		$(document).ready(function handleDocumentReady (e) {
+			getMarvinPromise("#sketch").done(function (sketcherInstance) {
+				marvinSketcherInstance = sketcherInstance;
+
+				$("#getSmilesButton").on("click", function handleGetSmilesButton () {
+					smilesControl.getSmiles();
+				});
+
+				$("#setSmilesButton").on("click", function handleGetSmilesButton () {
+					smilesControl.setSmiles();
+				});
+
+				$("#resetButton").on("click", function handleGetSmilesButton () {
+					smilesControl.reset();
+				});
+
+			}).fail(function () {
+				alert("Cannot retrieve sketcher instance from iframe");
+			});
+		});
+
+		var errorConsole = (function () {
+			var controlObject = {
+				"reset" : function() {
+					$("#error").children("p").html("");
+				}
+				,"print" : function(txt) {
+					$("#error").children("p").html(txt);
+				}
+				,"isEmpty" : function() {
+					return ($("#error").children("p").html() === "");
+				}
+			};
+
+			return controlObject;
+
+		}());
+
+		var smilesControl = (function () {
+
+			function getMolConvertURL() {
+				var ws = getDefaultServices();
+				return ws['molconvertws'];
+			};
+			
+			function handleRequestError (qXHR, textStatus, errorThrown) {
+				if (qXHR.status == 0) { // UNSENT request
+					var errMsg = "ERROR: MolConvert failed.\nThe request has not been sent.\nThe request may violate the cross domain policy.";
+					errorConsole.print(errMsg);
+				} else {
+					errorConsole.print("ERROR: MolConvert failed (status code "+ qXHR.status + ")\n" + qXHR.responseText);
+				}
+			};
+
+			var controlObject = {
+
+				"getSmiles": function getSmiles () {
+					errorConsole.reset();
+					var s = marvinSketcherInstance.exportAsMrv();
+					var	data = JSON.stringify({
+						"structure" : s,
+						"inputFormat" : "mrv",
+						"parameters" : "smiles"
+					});
+
+					$.ajax({
+						"url": getMolConvertURL()
+						,"type": "POST"
+						,"dataType": "json"
+						,"contentType": "application/json"
+						,"data": data
+					}).done(function (data, textStatus, jqXHR) {
+						$("#smiles").val(data['structure']);
+					}).fail(handleRequestError);
+				}
+
+				,"setSmiles": function setSmiles() {
+					errorConsole.reset();
+					var s = $("#smiles").val();
+					if (s == null || s == "") {
+						marvinSketcherInstance.importAsMrv(null);
+					} else {
+						var data = JSON.stringify({
+							"structure" : s,
+							"inputFormat" : "smiles",
+							"parameters" : "mrv"
+						});
+
+						$.ajax({
+							"url": getMolConvertURL()
+							,"type": "POST"
+							,"dataType": "json"
+							,"contentType": "application/json"
+							,"data": data
+						}).done(function (data, textStatus, jqXHR) {
+							marvinSketcherInstance.importAsMrv(data['structure']);
+						}).fail(handleRequestError);
+					}
+				}
+
+				,"reset": function reset () {
+					$("#smiles").val("");
+					errorConsole.reset();
+				}
+			}
+
+			return controlObject;
+
+		}());
+
+	</script>
+</head>
+<body>
+	<h1>Example - Import / Export SMILES</h1>
+	<p>You can import and export SMILES into / from the sketcher. If the MolConvert web service is not available, error message appears on the page when you attempt to get/set SMILES.</p>
+	<div style="margin-right: 30px;">
+		<input id="getSmilesButton" type="button" value="Get">
+		<input id="setSmilesButton" type="button" value="Set">
+		<input id="resetButton" type="button" value="Reset">
+		<label for="smiles">SMILES</label>
+		<input type="text" id="smiles">
+	</div>
+	<div class="resizable">
+		<iframe src="../editor.html" id="sketch" class="sketcher-frame"></iframe>
+	</div>
+	<div id="error">
+		<p></p>
+	</div>
+	<p>The following JavaScript packages are imported in this example. Since the example uses JQuery, a minimal JQuery package is imported. The <code>webservices.js</code> is
+	required to be able to retrieve the location of MolConvert webservice that is used for SMILES conversion. The <code>util.js</code> JavaScript libary contains the
+	<code>getMarvinPromise</code> helper function to retrieve the sketcher instance from the embedded IFRAME.</p> 
+	<pre>
+		<code data-language="html">
+	&lt;script src=&quot;../js/lib/jquery-1.9.1.min.js&quot;&gt;&lt;/script&gt;
+	&lt;script src=&quot;../js/webservices.js&quot;&gt;&lt;/script&gt;
+	&lt;script src=&quot;../js/util.js&quot;&gt;&lt;/script&gt;
+		</code>
+	</pre>
+	<p>
+	When the document is loaded, we get the reference of the sketcher from the iframe. It is a deferred call. If it is successful, the sketch reference is stored and 
+	click handlers are assigned to the buttons that control SMILES import/export.</p>
+	<pre>
+		<code data-language="html">&lt;iframe src=&quot;../editor.html&quot; id=&quot;sketch&quot; class=&quot;sketcher-frame&quot;&gt;&lt;/iframe&gt;</code>
+	</pre>
+	<pre>
+		<code data-language="javascript">
+		var marvinSketcherInstance;
+
+		$(document).ready(function handleDocumentReady (e) {
+			getMarvinPromise(&quot;#sketch&quot;).done(function (sketcherInstance) {
+				marvinSketcherInstance = sketcherInstance;
+
+				$(&quot;#getSmilesButton&quot;).on(&quot;click&quot;, function handleGetSmilesButton () {
+					smilesControl.getSmiles();
+				});
+
+				$(&quot;#setSmilesButton&quot;).on(&quot;click&quot;, function handleGetSmilesButton () {
+					smilesControl.setSmiles();
+				});
+
+				$(&quot;#resetButton&quot;).on(&quot;click&quot;, function handleGetSmilesButton () {
+					smilesControl.reset();
+				});
+
+			}).fail(function () {
+				alert(&quot;Cannot retrieve sketcher instance from iframe&quot;);
+			});
+		});
+		</code>
+	</pre>
+	The <code>errorConsole</code> object is responsible for displaying error messages (in a div tag below the IFRAME of the sketcher).</code>
+	<pre>
+		<code data-language="javascript">
+		var errorConsole = (function () {
+			var controlObject = {
+				&quot;reset&quot; : function() {
+					$(&quot;#error&quot;).children(&quot;p&quot;).html(&quot;&quot;);
+				}
+				,&quot;print&quot; : function(txt) {
+					$(&quot;#error&quot;).children(&quot;p&quot;).html(txt);
+				}
+				,&quot;isEmpty&quot; : function() {
+					return ($(&quot;#error&quot;).children(&quot;p&quot;).html() === &quot;&quot;);
+				}
+			};
+
+			return controlObject;
+
+		}());
+		</code>
+	</pre>
+	The <code>smilesControl</code> object communicates with the MolConvert webservice and get/set the structure to the editor.
+	<pre>
+		<code data-language="javascript">
+		var smilesControl = (function () {
+
+			function getMolConvertURL() {
+				var ws = getDefaultServices();
+				return ws['molconvertws'];
+			};
+			
+			function handleRequestError (qXHR, textStatus, errorThrown) {
+				if (qXHR.status == 0) { // UNSENT request
+					var errMsg = &quot;ERROR: MolConvert failed.\nThe request has not been sent.\nThe request may violate the cross domain policy.&quot;;
+					errorConsole.print(errMsg);
+				} else {
+					errorConsole.print(&quot;ERROR: MolConvert failed (status code &quot;+ qXHR.status + &quot;)\n&quot; + qXHR.responseText);
+				}
+			};
+
+			var controlObject = {
+
+				&quot;getSmiles&quot;: function getSmiles () {
+					errorConsole.reset();
+					var s = marvinSketcherInstance.exportAsMrv();
+					var	data = JSON.stringify({
+						&quot;structure&quot; : s,
+						&quot;inputFormat&quot; : &quot;mrv&quot;,
+						&quot;parameters&quot; : &quot;smiles&quot;
+					});
+
+					$.ajax({
+						&quot;url&quot;: getMolConvertURL()
+						,&quot;type&quot;: &quot;POST&quot;
+						,&quot;dataType&quot;: &quot;json&quot;
+						,&quot;contentType&quot;: &quot;application/json&quot;
+						,&quot;data&quot;: data
+					}).done(function (data, textStatus, jqXHR) {
+						$(&quot;#smiles&quot;).val(data['structure']);
+					}).fail(handleRequestError);
+				}
+
+				,&quot;setSmiles&quot;: function setSmiles() {
+					errorConsole.reset();
+					var s = $(&quot;#smiles&quot;).val();
+					if (s == null || s == &quot;&quot;) {
+						marvinSketcherInstance.importAsMrv(null);
+					} else {
+						var data = JSON.stringify({
+							&quot;structure&quot; : s,
+							&quot;inputFormat&quot; : &quot;smiles&quot;,
+							&quot;parameters&quot; : &quot;mrv&quot;
+						});
+
+						$.ajax({
+							&quot;url&quot;: getMolConvertURL()
+							,&quot;type&quot;: &quot;POST&quot;
+							,&quot;dataType&quot;: &quot;json&quot;
+							,&quot;contentType&quot;: &quot;application/json&quot;
+							,&quot;data&quot;: data
+						}).done(function (data, textStatus, jqXHR) {
+							marvinSketcherInstance.importAsMrv(data['structure']);
+						}).fail(handleRequestError);
+					}
+				}
+
+				,&quot;reset&quot;: function reset () {
+					$(&quot;#smiles&quot;).val(&quot;&quot;);
+					errorConsole.reset();
+				}
+			}
+
+			return controlObject;
+
+		}());		
+		</code>
+	</pre>
+</body>
+</html>

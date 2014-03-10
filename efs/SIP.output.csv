@@ -1,0 +1,18 @@
+Parameter,Value,Units
+Daily Water Intake Rate for Birds,0.0660513969764,L
+Daily Water Intake Rate for Mammals,0.171803994732,L
+Upper Bound Estimate of Exposure for Birds,0.00343467251679,mg/kg
+Upper Bound Estimate of Exposure for Mammals,0.000893380739837,mg/kg
+Adjusted Toxicity Value for Birds,21.5528580148,mg/kg
+Adjusted Toxicity Value for Mammals,30.5527883236,mg/kg
+Daily Food Intake Rate for Birds,1.16660271993,kg
+Dose-Equivalent Chronic Toxicity Value for Birds,0.131826109577,mg/kg
+Adjusted Chronic Toxicity Values for Mammals,10.3067513086,mg/kg
+Ratio of Upper Bound Dose to Adjusted LD50 Value for Birds,0.000159360420527,
+Are Acute Exposures to Birds a Concern?,Pesticide exposure to birds through drinking water alone is not an exposure route of concern.,
+Ratio of Upper Bound Dose to Adjusted LD50 Value for Mammals,2.9240563263e-05,
+Are Acute Exposures to Mammals a Concern?,Pesticide exposure to mammals through drinking water alone is not an exposure route of concern.,
+Ratio of Upper Bound Dose to Adjusted Chronic Toxicity Value for Birds,0.0260545693703,-
+Are Chronic Exposures to Birds a Concern?,Pesticide exposure to mammals or birds through drinking water by itself is not an exposure route of concern.,
+Ratio of Upper Bound Dose to Adjusted Chronic Toxicity Value for Mammals,8.66791788303e-05,
+Are Chronic Exposures to Mammals a Concern?,Pesticide exposure to mammals or birds through drinking water by itself is not an exposure route of concern.,

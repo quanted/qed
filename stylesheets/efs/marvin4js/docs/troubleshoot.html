@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Marvin for JavaScript - Troubleshoot</title>
+	<link type="text/css" rel="stylesheet" href="../doc.css" />
+
+</head>
+
+<body>
+<h1>Marvin for JavaScript - Troubleshoot</h1>
+
+<h2>Sketch does not appear in the iframe on my page</h2>
+
+<ul>
+<li><p>Please, check whether the reference to <strong>editor.html</strong> or <strong>editorws.html</strong> in the <strong>src</strong> attribute of the <strong>iframe</strong> is correct.</p></li>
+<li><p>Sketch requires HTML5 canvas. Please, check whether your browser support <strong>HTML5 canvas</strong>. It is not available in old browsers like IE8.</p></li>
+</ul>
+
+<h2>Import / Export button does not work on demo example page</h2>
+<p>The initialization of the example failed, the custom JavaScript code does not find the reference to the sketcher.
+Reasons:
+<ul>
+	<li><p>When the iframe is empty the editor is not alive, thus it can not be referred.</p></li>
+	<li><p>Error message on the JavaScript console: <code>Error: Permission denied to access property 'marvin'</code> : The browser blocks accessing of the iframe content from external JavaScript code if it
+	violates the same-origin policy. The browser considers that the hosted page and the iframe content come from the same-origin. If both arrives from the local filesystem (file://...), in most cases they
+	are identified as different origins. See: <a href="https://developer.mozilla.org/en-US/docs/Same-origin_policy_for_file:_URIs">Same-origin policy for file: URIs</a></p></li>
+</ul>
+
+<h2><a name="2dcleanDropsError"></a>2D clean drops error</h2>
+<p>Please, note that 2D coordinate calculation is performed at server side. Marvin4JS posts the structure to the Clean2D web service that generates the new coordinates and sends it back to the editor in an MRV.
+The clean 2D operation can fail if
+<ul>
+	<li>The web service is not available on the expected URL.</li>
+	<li>The browser may block the communication between Marvin4JS and the server since it harms the <a href="http://en.wikipedia.org/wiki/Same_origin_policy">same orgin policy</a> of the browser.</li>
+	<li>Internal server error occurs during performing the calculation.</li> 
+</ul>
+<p>Please, check that web service is available and it is installed properly, see the <a href="installationguide.html">installation guide</a> of Marvin4JS. 
+If it is necessary, consult with the system administrator of the server that hosts the web services.</p>
+</p>
+
+<h2>Stereo calculation drops error</h2>
+<p>It uses Stereo Info web service to calculate stereo info. It may be the same problem than <a href="#2dcleanDropsError">2D clean issue</a>.
+
+<h2>SMILES format does not work in Open and in Save dialog</h2>
+<p>SMILES import/export requires MolConvert web service. If it is configured for the editor but it cannot be accessed, you can get an error message. 
+Conversion can fail in the similar cases than <a href="#2dcleanDropsError">2D clean fails</a>.</p>
+</body>
+</html>

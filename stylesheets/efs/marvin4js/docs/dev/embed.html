@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Marvin for JavaScript - How to embed it</title>
+	<link type="text/css" rel="stylesheet" href="../../doc.css" />
+	<link type="text/css" rel="stylesheet" href="../../js/lib/rainbow/github.css" />
+	<script src="../../js/lib/jquery-1.9.1.min.js"></script>
+
+</head>
+
+<body>
+<h1>Marvin for JavaScript - How to embed it</h1>
+
+
+<h2>How to embed the editor</h2>
+<p>Insert an <strong>iframe</strong> into your page and specify its size. It will determine the dimensions of the editor. Load the <strong>editor.html</strong> file into
+this frame and define an id that helps to refer to it later. The size of the iframe should be set in exact units 
+(e.g. pixels): the minimum values should be 500px * 450px. It's recommended to set its <code>overflow</code> property to <code>hidden</code> and to set a <em>solid</em> border to the iframe element.
+</p>
+<pre>
+&lt;<strong>iframe</strong> <strong>id</strong>=&quot;<em>sketch</em>&quot; <strong>src</strong>=&quot;<em>../editor.html</em>&quot; 
+	style=&quot;overflow: hidden; min-width: 500px; min-height: 450px; border: 1px solid darkgray;&quot;  /&gt;    
+</pre>
+
+<p>If you need default web services and you do not waste your time to setup each one, you can use alternative version of <code>editor.html</code>: <strong>editorws.html</strong>
+</p><p>It presets default web services at startup.</p>
+<pre>
+&lt;<strong>iframe</strong> <strong>id</strong>=&quot;<em>sketch</em>&quot; <strong>src</strong>=&quot;<strong>../editorws.html</strong>&quot; 
+	style=&quot;overflow: hidden; min-width: 500px; min-height: 450px; border: 1px solid darkgray;&quot;  /&gt;    
+</pre>
+<p>Please, note that web services have to be available at the default location, which <strong>webservices.js</strong> defines. You can modify the default location in this file 
+by overwriting these settings. <em>editorws.html</em> refers to this external JavaScript file when it retrieves the default webservice config.
+If you link this file into your code, you can also refer it by the <strong>getDefaultServices()</strong> function.</p>
+
+<h3>Accessing functions of the sketcher</h3>
+<p>There is no guaranty that the editor has been already alive when the loading of the parent page (where its iframe is inserted) finished.<p>
+<p>Because of it, getting the reference to the editor is not trivial.</p>
+<p>The <strong>util.js</strong> JavaScript library provides an interface to control the event when the editor is loaded and helps to get a reference to the editor to be
+able to refer the editor API.</p>
+<p>First of all, insert the following line into header of your web page to import it.</p>
+<pre>&lt;script src="js/util.js"&gt;&lt;/script&gt;</pre>
+
+<p>The <code>util.js</code> defines the <code>getMarvinPromise(<em>iframeID</em>)</code> helper function. Its parameter the ID of the iframe where editor is loaded.
+Its return with a promise object (it provides an interface for accessing editor following the Promise pattern for async calling).
+You can ask the promise object to perform certain functions when the sketcher is loaded or it failed.</p>
+<pre><code data-language="javascript">
+		getMarvinPromise("#sketch").done(function(sketcherInstance) {
+			// code performed when the sketcher loaded successful (sketcherInstance is a reference to the editor object)
+		}).fail(function() {
+			// code performed when the sketcher loading failed
+		});</code></pre>
+
+<p>Below you can see a simple example:</p>
+<pre><code data-language="javascript">
+		var marvinSketch;
+		
+		getMarvinPromise("#sketch").done(function(sketcherInstance) {
+			marvinSketch = sketcherInstance;
+			marvinSketch.importAsMrv(mrvSource);
+		}).fail(function() {
+			alert("Cannot retrieve sketcher instance from iframe");
+		});</code></pre>
+<p>When the editor is loaded, its reference is stored to be able to use it later if it is necessary. A MRV molecule is also imported at startup with the help of
+the importAsMrv function of the sketcher. If promise object could not access the sketcher, an alert window is opened with an error message.</p>
+
+<p>Usage of the promise object is highly recommended. Without it, accessing of the sketcher is more complicated:</p>
+<pre><code data-language="javascript">
+var marvinSketch;
+
+document.getElementById(&quot;sketch&quot;).addEventListener(&quot;load&quot;, function() { // listen when the document in the iframe is loaded
+
+		var eframeWin = document.getElementById(&quot;sketch&quot;).contentWindow;
+		if(typeof eframeWin != 'undefined') { // if the contentWindow property of iframe is available, you can access inner content
+			try {
+				var marvin = eframeWin.marvin; // reference to marvin library in the iframe
+				if(marvin != null) {
+					marvin.onReady(function() { // onReady is performed when loading of the marvin API is ready (hopefully, sketcher is already instantiated)
+						if(typeof marvin.sketch != 'undefined') { // undefined if you have no right to access it or instantiation failed
+							marvinSketch = marvin.sketch;
+							marvinSketch.importAsMrv(s);
+						}
+					});
+				}
+			} catch(e) {
+				alert(e);
+			}
+		}
+		
+});</code></pre> 
+</body>
+
+</html>

@@ -10,9 +10,14 @@ from google.appengine.ext.webapp import template
 
 logger = logging.getLogger("earthwormTables")
 
-def timestamp():
-    ts = time.time()
-    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+def timestamp(earthworm_obj="", batch_jid=""):
+    if earthworm_obj:
+        st = datetime.datetime.strptime(earthworm_obj.jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
+    else:
+        st = datetime.datetime.strptime(batch_jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
+
+    # ts = time.time()
+    # st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
     html="""
     <div class="out_">
         <b>Earthworm Fugacity Modeling<br>
@@ -22,6 +27,7 @@ def timestamp():
     html = html + """
     </div>"""
     return html
+
 
 def getheaderpvu():
     headings = ["Parameter", "Value", "Units"]

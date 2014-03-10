@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Jan 03 13:30:41 2012
-
-@author: jharston
-"""
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import os
 from uber import uber_lib
+import rest_funcs
+import history_tables
 
 class earthwormAlgorithmPage(webapp.RequestHandler):
     def get(self):
@@ -23,6 +20,9 @@ class earthwormAlgorithmPage(webapp.RequestHandler):
                 'model':'earthworm', 
                 'model_attributes':'Earthworm User History', 
                 'text_paragraph':x})
+        html = html + template.render (templatepath + 'history_pagination.html', {})                
+        hist_obj = rest_funcs.user_hist('admin', 'earthworm')
+        html = html + history_tables.table_all(hist_obj)
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

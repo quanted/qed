@@ -5,7 +5,7 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import numpy as np
 import logging
 from django.utils import simplejson
-
+import time, datetime
 logger = logging.getLogger('earthworm Model')
 
 
@@ -22,6 +22,13 @@ def fromJSON(json_string):
 class earthworm(object):
     def __init__(self, set_variables=True,run_methods=True,k_ow=1,l_f_e=1,c_s=1,k_d=1,p_s=1,c_w=1,m_w=1,p_e=1,vars_dict=None):
         self.set_default_variables()
+        ts = datetime.datetime.now()
+        if(time.daylight):
+            ts1 = datetime.timedelta(hours=-4)+ts
+        else:
+            ts1 = datetime.timedelta(hours=-5)+ts
+        self.jid = ts1.strftime('%Y%m%d%H%M%S%f')
+        
         if set_variables:
             if vars_dict != None:
                 self.__dict__.update(vars_dict)

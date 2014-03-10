@@ -8,8 +8,8 @@ import os
 import json
 #####The folloing two lines could let the REST servers to handle multiple requests##
 ########################(not necessary for local dev. env.)#########################
-from gevent import monkey
-monkey.patch_all()
+# from gevent import monkey
+# monkey.patch_all()
 ##########################################################################################
 #####AMAZON KEY, store output files. You might have to write your own import approach#####
 ##########################################################################################
@@ -312,8 +312,9 @@ def get_przm_batch_output():
     return {"result":result}
 
 
-run(host='localhost', port=7777, server='gevent', debug=True)
+run(host='localhost', port=7777, debug=True)
 
+# run(host='localhost', port=7777, server='gevent', debug=True)
 
 
 

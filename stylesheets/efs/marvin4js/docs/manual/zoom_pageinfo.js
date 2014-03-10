@@ -1,0 +1,16 @@
+pageinfo = [[0,0,0,0,null],
+	[0,0,0,0,null],
+	[0,0,0,0,null],
+	[0,0,0,0,null],
+	[0,0,0,0,null],
+	[0,0,0,0,null],
+	[0,0,0,0,null],
+	[0,0,0,0,null]];
+pagedata = [ ["basic_features_of_marvin_for_j.htm","Basic Features of Marvin for JavaScript","Basic Features of Marvin for JavaScript Importing and Saving Structures Importing a Structure Marvin for JavaScript handles MDL Molfiles V2000 (.m...",""],
+["canvas.htm","Canvas","Canvas Navigating on the canvas and modifying the zoom ratio You can navigate on the canvas using the vertical and horizontal scrollbar. The scrol...",""],
+["chemical_features_in_marvin_fo.htm","Chemical Features in Marvin for JavaScript","Chemical Features in Marvin for JavaScript Substructure Groups (S-groups) S-groups or substructure groups represent an integral part of a chemical...",""],
+["layout_of_marvinsketch.htm","Layout of Marvin for JavaScript","Layout of Marvin for JavaScript Main elements of Marvin for JavaScript Graphical User Interface (GUI) are the following: Canvas : you can insert y...",""],
+["marvin_for_javascript.htm","Marvin for JavaScript","Marvin for JavaScript User&#39;s Guide Table of Contents Layout of Marvin for JavaScript o Canvas o Toolbars o Pop-up Menus Basic Features of Marvin f...",""],
+["pop_up_menus.htm","Pop-up Menus","Pop-up Menus The pop-up menus (or context menus) of Marvin for JavaScript can also make chemical structure editing more efficient. The pop-up menu...",""],
+["shortcuts.htm","Shortcuts","Shortcuts General shortcuts Keyboard shortcut Function Esc Closes the dialog boxes; Activates the Selection button if there is not any selection o...",""],
+["toolbars.htm","Toolbars","Toolbars The toolbars provide buttons for accessing the majority of the features offered by Marvin for JavaScript. Hover a cursor over a button to...",""]];

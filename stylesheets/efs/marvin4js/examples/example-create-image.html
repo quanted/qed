@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<title>Marvin for JavaScript Examples - Convert Structure To Image</title>
+	<link type="text/css" rel="stylesheet" href="../css/doc.css" />
+	<link type="text/css" rel="stylesheet" href="../js/lib/rainbow/github.css" />
+	<script src="../js/lib/rainbow/rainbow-custom.min.js"></script>
+	<script src="../js/lib/jquery-1.9.1.min.js"></script>
+	<script src="../gui/gui.nocache.js"></script>
+	<script>
+		var caffeineSource = "\n\n\n"
+				+ " 14 15  0  0  0  0  0  0  0  0999 V2000\n"
+				+ "    0.5089    7.8316    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"
+				+ "    1.2234    6.5941    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"
+				+ "    1.2234    7.4191    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"
+				+ "   -0.2055    6.5941    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"
+				+ "   -0.9200    7.8316    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"
+				+ "    0.5089    5.3566    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"
+				+ "   -0.2055    7.4191    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0\n"
+				+ "    0.5089    6.1816    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0\n"
+				+ "   -0.9200    6.1816    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n"
+				+ "    0.5089    8.6566    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n"
+				+ "    2.4929    7.0066    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"
+				+ "    2.0080    7.6740    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0\n"
+				+ "    2.0080    6.3391    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0\n"
+				+ "    2.2630    8.4586    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"
+				+ "  1  7  1  0  0  0  0\n" + "  8  2  1  0  0  0  0\n"
+				+ "  1  3  1  0  0  0  0\n" + "  2  3  2  0  0  0  0\n"
+				+ "  7  4  1  0  0  0  0\n" + "  4  8  1  0  0  0  0\n"
+				+ "  4  9  2  0  0  0  0\n" + "  7  5  1  0  0  0  0\n"
+				+ "  8  6  1  0  0  0  0\n" + "  1 10  2  0  0  0  0\n"
+				+ "  3 12  1  0  0  0  0\n" + "  2 13  1  0  0  0  0\n"
+				+ " 13 11  2  0  0  0  0\n" + " 12 11  1  0  0  0  0\n"
+				+ " 12 14  1  0  0  0  0\n" + "M  END\n";
+
+		$(document).ready(function handleDocumentReady (e) {
+			$("#text").val(caffeineSource);
+			$("#createButton").on("click", function() {
+				var settings = {
+						'carbonLabelVisible' : $("#chbx-carbonVis").is(':checked'),
+						'cpkColoring' : $("#chbx-coloring").is(':checked'),
+						'implicitHydrogen' : $("#implicittype").val(),
+						'width' : parseInt($("#w").val(), 10),
+						'height' : parseInt($("#h").val(), 10)
+				};
+				var dataUrl = marvin.ImageExporter.molToDataUrl($("#text").val(),"image/png",settings);
+				$("#image").attr("src", dataUrl);
+				$("#imageContainer").css("display", "inherit");
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>Marvin for JavaScript Examples - Convert Structure To Image</h1>
+	<p>You can convert molecule source into an image. Just insert the molecule source in MOL format into the text box and push the <strong>Create Image</strong> button.</p>
+	<noscript>
+		<div>
+			<p>Your web browser must have JavaScript enabled in order for this application to display correctly.</p>
+		</div>
+	</noscript>
+	<div id="convertStructureInputHeader" class="left10">
+		<ul class="horizontalmenu">
+			<li>Carbon labels<input type="checkbox" id="chbx-carbonVis" /></li>
+			<li>CPK coloring<input type="checkbox" id="chbx-coloring" checked="checked" /></li>
+			<li>
+				<select id="implicittype" name="unittype">
+					<option value="ALL">ALL</option>
+					<option value="OFF">OFF</option>
+					<option value="HETERO">HETERO</option>
+					<option value="TERMINAL_AND_HETERO" selected>TERMINAL_AND_HETERO</option>
+				</select>
+			</li>
+		</ul>
+		<ul class="horizontalmenu">
+			<li>Width:<input id="w" type="number" name="quantity" min="1"
+				value="300" /></li>
+			<li>Height:<input id="h" type="number" name="quantity" min="1"
+				value="300" /></li>
+			<li><input id="createButton" type="button" value="Create Image" /></li>
+		</ul>
+		<textarea id="text" rows="16" cols="80"></textarea>
+	</div>
+	<div id="imageContainer" class="left10" style="display: none;">
+		<img id="image" class="bordered" />
+	</div>
+	
+	<div>
+		Create a hidden DIV element with an empty image that will be refreshed as a new image generated.
+		<pre><code data-language="html">&lt;div id=&quot;imageContainer&quot; class=&quot;left10&quot; style=&quot;display: none;&quot;&gt;
+  &lt;img id=&quot;image&quot; class=&quot;bordered&quot; /&gt;
+&lt;/div&gt;</code></pre>
+		Define a click handler for the <strong>Create</strong> button. When a click event is performed, a new image is created.
+		The first parameter of <code>molToDataUrl</code> is the molecule source, the second one is the image type and the third one is a JSON object with 
+		the display settings based on the current value of the input fields.
+		The <code>molToDataUrl</code> function returns with a base64 serialized image (data URI). Since the <code>img</code> tag accepts data URI as image source, you can
+		update the image very easy.
+		<pre>
+			<code data-language="javascript">
+		$(document).ready(function handleDocumentReady (e) {
+			$(&quot;#text&quot;).val(caffeineSource);
+			$(&quot;#createButton&quot;).on(&quot;click&quot;, function() {
+				var settings = {
+						'carbonLabelVisible' : $(&quot;#chbx-carbonVis&quot;).is(':checked'),
+						'cpkColoring' : $(&quot;#chbx-coloring&quot;).is(':checked'),
+						'implicitHydrogen' : $(&quot;#implicittype&quot;).val(),
+						'width' : parseInt($(&quot;#w&quot;).val(), 10),
+						'height' : parseInt($(&quot;#h&quot;).val(), 10)
+				};
+				var dataUrl = marvin.ImageExporter.molToDataUrl($(&quot;#text&quot;).val(),&quot;image/png&quot;,settings);
+				$(&quot;#image&quot;).attr(&quot;src&quot;, dataUrl);
+				$(&quot;#imageContainer&quot;).css(&quot;display&quot;, &quot;inherit&quot;);
+			});
+		});			
+			</code>
+		</pre>
+	</div>
+</body>
+</html>

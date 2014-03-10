@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<title>Marvin for JavaScript Examples - Demo</title>
+	<link type="text/css" rel="stylesheet" href="../css/doc.css" />
+	<link type="text/css" rel="stylesheet" href="../js/lib/rainbow/github.css" />
+	<script src="../js/lib/rainbow/rainbow-custom.min.js"></script>
+	<script src="../js/lib/jquery-1.9.1.min.js"></script>
+	<script src="../js/util.js"></script>
+	<script>
+
+		var marvinController,
+			inputController;
+
+		$(document).ready(function handleDocumentReady (e) {
+			getMarvinPromise("#sketch").done(function (sketcherInstance) {
+
+				marvinController = new MarvinControllerClass(
+					sketcherInstance,
+					$("#chbx-coloring"),
+					$("#chbx-carbonVis")
+				);
+
+				inputController = new InputControllerClass(
+					$("#btn-setMdlmolfile"),
+					$("#btn-paste"),
+					$("#list-inputformat"),
+					$("#btn-clearTxt"),
+					$("#btn-molExport"),
+					$("#btn-mrvExport"),
+					$("#molsource-box")
+				);
+
+			}).fail(function () {
+				alert("Cannot retrieve sketcher instance from iframe");
+			});
+
+			$("#molsource-box").val(caffeineSource);
+		});
+
+		var InputControllerClass = (function () {
+
+			var delay = 5;
+
+			function InputControllerClass (	importButton,
+											pasteButton,
+											formatDropdown,
+											resetButton,
+											molExportButton,
+											mrvExportButton,
+											srcTextBox ) {
+
+				this.importButton		= importButton;
+				this.pasteButton		= pasteButton;
+				this.formatDropdown		= formatDropdown;
+				this.resetButton		= resetButton;
+				this.molExportButton	= molExportButton;
+				this.mrvExportButton 	= mrvExportButton;
+				this.srcTextBox 		= srcTextBox;
+				this.init();
+			}
+
+			InputControllerClass.prototype.init = function init () {
+				this.importButton.on("click", $.proxy(this.handleImportBtnClick, this));
+				this.pasteButton.on("click", $.proxy(this.handlePasteBtnClick, this));
+				this.resetButton.on("click", $.proxy(this.clearTxt, this));
+				this.molExportButton.on("click", $.proxy(this.handleMolExportBtnClick, this));
+				this.mrvExportButton.on("click", $.proxy(this.handleMrvExportBtnClick, this));
+			};
+
+			InputControllerClass.prototype.handleImportBtnClick = function handleImportBtnClick (e) {
+				this.delayCall(importMolAction, [this.getTxt(), this.getFormat()]);
+			};
+
+			InputControllerClass.prototype.handlePasteBtnClick = function handleImportBtnClick (e) {
+				this.delayCall(pasteMolAction, [this.getTxt(), this.getFormat()]);
+			};
+
+			InputControllerClass.prototype.handleMolExportBtnClick = function handleMolExportBtnClick (e) {
+				this.delayCall(exportMolAction, ["mol"]);
+			};
+
+			InputControllerClass.prototype.handleMrvExportBtnClick = function handleMolExportBtnClick (e) {
+				this.delayCall(exportMolAction, ["mrv"]);
+			};
+
+			InputControllerClass.prototype.delayCall = function delayCall (method, args) {
+				setTimeout(function () {
+					method.apply(null, args);
+				}, delay);
+			};
+
+			InputControllerClass.prototype.getTxt = function getTxt () {
+				return this.srcTextBox.val();
+			};
+
+			InputControllerClass.prototype.setTxt = function setTxt (txt) {
+				this.srcTextBox.val(txt);
+			};
+
+			InputControllerClass.prototype.clearTxt = function clearTxt () {
+				this.setTxt("");
+			};
+
+			InputControllerClass.prototype.getFormat = function getFormat (e) {
+				return this.formatDropdown.val();
+			};
+
+			return InputControllerClass;
+
+		}());
+
+		var MarvinControllerClass = (function () {
+
+			function MarvinControllerClass ( sketcherInstance, cpkCheckbox, carbonCheckbox) {
+				this.sketcherInstance 	= sketcherInstance;
+				this.cpkCheckbox 		= cpkCheckbox;
+				this.carbonCheckbox 	= carbonCheckbox;
+				this.init();
+			}
+
+			MarvinControllerClass.prototype.init = function init () {
+				this.carbonCheckbox.on("change", $.proxy(this.handleCarbonCheckBoxChange, this));
+				this.cpkCheckbox.on("change", $.proxy(this.handleCpkCheckBoxChange, this));
+			};
+
+			MarvinControllerClass.prototype.handleCarbonCheckBoxChange = function handleCarbonCheckBoxChange (e) {
+				this.updateDisplaySettings("carbonLabelVisible", this.carbonCheckbox.is(':checked'));
+			};
+
+			MarvinControllerClass.prototype.handleCpkCheckBoxChange = function handleCpkCheckBoxChange (e) {
+				this.updateDisplaySettings("cpkColoring", this.cpkCheckbox.is(':checked'));
+			};
+
+			MarvinControllerClass.prototype.updateDisplaySettings = function updateDisplaySettings (key, value) {
+				var settings = this.sketcherInstance.getDisplaySettings();
+				settings[key] = value;
+				this.sketcherInstance.setDisplaySettings(settings);
+			};
+
+			return MarvinControllerClass;
+
+		}());
+
+		var caffeineSource = 	"\n\n\n"+
+								" 14 15  0  0  0  0  0  0  0  0999 V2000\n"+
+								"    0.5089    7.8316    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"+
+								"    1.2234    6.5941    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"+
+								"    1.2234    7.4191    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"+
+								"   -0.2055    6.5941    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"+
+								"   -0.9200    7.8316    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"+
+								"    0.5089    5.3566    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"+
+								"   -0.2055    7.4191    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0\n"+
+								"    0.5089    6.1816    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0\n"+
+								"   -0.9200    6.1816    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n"+
+								"    0.5089    8.6566    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n"+
+								"    2.4929    7.0066    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"+
+								"    2.0080    7.6740    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0\n"+
+								"    2.0080    6.3391    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0\n"+
+								"    2.2630    8.4586    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"+
+								"  1  7  1  0  0  0  0\n"+
+								"  8  2  1  0  0  0  0\n"+
+								"  1  3  1  0  0  0  0\n"+
+								"  2  3  2  0  0  0  0\n"+
+								"  7  4  1  0  0  0  0\n"+
+								"  4  8  1  0  0  0  0\n"+
+								"  4  9  2  0  0  0  0\n"+
+								"  7  5  1  0  0  0  0\n"+
+								"  8  6  1  0  0  0  0\n"+
+								"  1 10  2  0  0  0  0\n"+
+								"  3 12  1  0  0  0  0\n"+
+								"  2 13  1  0  0  0  0\n"+
+								" 13 11  2  0  0  0  0\n"+
+								" 12 11  1  0  0  0  0\n"+
+								" 12 14  1  0  0  0  0\n"+
+								"M  END\n";
+
+		function pasteMolAction (txt, format) {
+			switch (format)	{
+				case "mrv":
+					marvinController.sketcherInstance.pasteAsMrv(txt);
+				break;
+				case "mol":
+					marvinController.sketcherInstance.pasteAsMol(txt);
+				break;
+				default:
+					alert("Unsupported format: " + format)
+				break;
+			}
+		}
+
+		function importMolAction (txt, format) {
+			switch (format)	{
+				case "mrv":
+					marvinController.sketcherInstance.importAsMrv(txt);
+				break;
+				case "mol":
+					marvinController.sketcherInstance.importAsMol(txt);
+				break;
+				default:
+					alert("Unsupported format: " + format)
+				break;
+			}
+		}
+
+		function exportMolAction (format) {
+			var source = "";
+			switch (format)	{
+				case "mrv":
+					source = marvinController.sketcherInstance.exportAsMrv();
+				break;
+				case "mol":
+					source = marvinController.sketcherInstance.exportAsMol();
+				break;
+				default:
+					alert("Cannot retrieve molecule from the editor in " + format);
+				break;
+			}
+
+			if (source == null) {
+				alert("Cannot retrieve molecule from the editor in " + format);
+			} else {
+				inputController.setTxt(source);
+			}
+		}
+
+	</script>
+</head>
+<body>
+  	<h1>Marvin for JavaScript Examples - Demo</h1>
+    <table>
+    	<tr>
+    		<td>
+    			<div class="resizable">
+    				<iframe src="../editorws.html" id="sketch" class="sketcher-frame"></iframe>
+    			</div>
+    		</td>
+	    	<td>
+				<ul>
+					<li><strong>Display options</strong></li>
+					<li><input type="checkbox" id="chbx-carbonVis" /><label for="chbx-carbonVis">Carbon labels</label></li>
+					<li><input type="checkbox" id="chbx-coloring" checked="checked" /><label for="chbx-coloring">CPK coloring</label></li>
+				</ul>
+				<div class="molecule-div">
+					<ul class="horizontalmenu">
+						<li>
+							<input type="button" id="btn-setMdlmolfile" value="Import"></input>
+							<input type="button" id="btn-paste" value="Paste"></input>
+							<span>text as</span>
+							<select id="list-inputformat">
+								<option value="mol" selected>MDL molfile</option>
+								<option value="mrv">MRV</option>
+							</select>
+						</li>
+						<li>&nbsp;</li>
+						<li><input type="button" id="btn-clearTxt" value="Reset text" /></li>
+						<li><input type="button" id="btn-molExport" value="Molfile Export"></input></li>
+						<li><input type="button" id="btn-mrvExport" value="MRV Export"></input></li>
+					</ul>
+					<form>
+						<textarea cols="80" rows="30" id="molsource-box"></textarea>
+					</form>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+    <p>In this example, you can import a molecule from MDL molfile or MRV format into the editor with the help of the <strong>Import</strong> and <strong>Paste</strong> buttons. While the <code>Import</code> button overwrites the canvas content, submitting of the <code>Paste</code> button preserves the current structure and appends the new one.</p>
+
+    <p>With the <strong>Molfile Export</strong> and <strong>MRV Export</strong> buttons, you can retrieve canvas content in the desired format.</p>
+
+    <p>In this example, you can also control display settings of the editor with the proper checkboxes.</p>
+    
+    <p>You can find the commented code below:</p>
+    <p>The <code>InputControllerClass</code> is responsible for the input form that involves the <em>Import</em>, <em>Paste</em>, <em>Reset</em>, <em>Mol Export</em>, <em>MRV Export</em> buttons, the format selector combo box and the text area for molecule source.
+    It manages the click events of the buttons and provides functions to get/set text from/to the text box.</p>
+     
+	<pre>
+		<code data-language="javascript">
+		var InputControllerClass = (function () {
+
+			var delay = 5;
+
+			function InputControllerClass (	importButton,
+											pasteButton,
+											formatDropdown,
+											resetButton,
+											molExportButton,
+											mrvExportButton,
+											srcTextBox ) {
+
+				this.importButton		= importButton;
+				this.pasteButton		= pasteButton;
+				this.formatDropdown		= formatDropdown;
+				this.resetButton		= resetButton;
+				this.molExportButton	= molExportButton;
+				this.mrvExportButton 	= mrvExportButton;
+				this.srcTextBox 		= srcTextBox;
+				this.init();
+			}
+
+			InputControllerClass.prototype.init = function init () {
+				this.importButton.on(&quot;click&quot;, $.proxy(this.handleImportBtnClick, this));
+				this.pasteButton.on(&quot;click&quot;, $.proxy(this.handlePasteBtnClick, this));
+				this.resetButton.on(&quot;click&quot;, $.proxy(this.clearTxt, this));
+				this.molExportButton.on(&quot;click&quot;, $.proxy(this.handleMolExportBtnClick, this));
+				this.mrvExportButton.on(&quot;click&quot;, $.proxy(this.handleMrvExportBtnClick, this));
+			};
+
+			InputControllerClass.prototype.handleImportBtnClick = function handleImportBtnClick (e) {
+				this.delayCall(importMolAction, [this.getTxt(), this.getFormat()]);
+			};
+
+			InputControllerClass.prototype.handlePasteBtnClick = function handleImportBtnClick (e) {
+				this.delayCall(pasteMolAction, [this.getTxt(), this.getFormat()]);
+			};
+
+			InputControllerClass.prototype.handleMolExportBtnClick = function handleMolExportBtnClick (e) {
+				this.delayCall(exportMolAction, [&quot;mol&quot;]);
+			};
+
+			InputControllerClass.prototype.handleMrvExportBtnClick = function handleMolExportBtnClick (e) {
+				this.delayCall(exportMolAction, [&quot;mrv&quot;]);
+			};
+
+			InputControllerClass.prototype.delayCall = function delayCall (method, args) {
+				setTimeout(function () {
+					method.apply(null, args);
+				}, delay);
+			};
+
+			InputControllerClass.prototype.getTxt = function getTxt () {
+				return this.srcTextBox.val();
+			};
+
+			InputControllerClass.prototype.setTxt = function setTxt (txt) {
+				this.srcTextBox.val(txt);
+			};
+
+			InputControllerClass.prototype.clearTxt = function clearTxt () {
+				this.setTxt(&quot;&quot;);
+			};
+
+			InputControllerClass.prototype.getFormat = function getFormat (e) {
+				return this.formatDropdown.val();
+			};
+
+			return InputControllerClass;
+
+		}());</code></pre>
+		
+	<p>The <code>MarvinControllerClass</code> is responsible for updating display settings if the state of the <em>CPK coloring</em> or <em>Carbon label visibility</em> checkboxes are modified on the current page.
+	The <code>updateDisplaySettings</code> function retrieve the current display settings from the sketcher (<code>getDisplaySettings()</code>), modify the proper field in the given JSON object and set the modified JSON object
+	to the sketcher as the new display settings with the help of the <code>setDisplaySettings</code> method of the sketcher.</p> 
+	<p>The <code>MarvinControllerClass</code> also provides a reference to the sketcher instance. It is necessary to be able to call the molecule import / export function of the sketcher.</p>
+		<pre><code data-language="javascript">
+		var MarvinControllerClass = (function () {
+
+			function MarvinControllerClass ( sketcherInstance, cpkCheckbox, carbonCheckbox) {
+				this.sketcherInstance 	= sketcherInstance;
+				this.cpkCheckbox 		= cpkCheckbox;
+				this.carbonCheckbox 	= carbonCheckbox;
+				this.init();
+			}
+
+			MarvinControllerClass.prototype.init = function init () {
+				this.carbonCheckbox.on(&quot;change&quot;, $.proxy(this.handleCarbonCheckBoxChange, this));
+				this.cpkCheckbox.on(&quot;change&quot;, $.proxy(this.handleCpkCheckBoxChange, this));
+			};
+
+			MarvinControllerClass.prototype.handleCarbonCheckBoxChange = function handleCarbonCheckBoxChange (e) {
+				this.updateDisplaySettings(&quot;carbonLabelVisible&quot;, this.carbonCheckbox.is(':checked'));
+			};
+
+			MarvinControllerClass.prototype.handleCpkCheckBoxChange = function handleCpkCheckBoxChange (e) {
+				this.updateDisplaySettings(&quot;cpkColoring&quot;, this.cpkCheckbox.is(':checked'));
+			};
+
+			MarvinControllerClass.prototype.updateDisplaySettings = function updateDisplaySettings (key, value) {
+				var settings = this.sketcherInstance.getDisplaySettings();
+				settings[key] = value;
+				this.sketcherInstance.setDisplaySettings(settings);
+			};
+
+			return MarvinControllerClass;
+
+		}());</code></pre>
+	<p>Both <code>InputControllerClass</code> and <code>MarvinControllerClass</code> are instantiated when the page is loaded and the sketcher is loaded: <code>getMarvinSketchIntstance(&quot;#sketch&quot;).done(...)</code>. 
+	The initial value of the text box is set after page loading is finised.</p>
+		<pre><code data-language="javascript">
+		$(document).ready(function handleDocumentReady (e) {
+			getMarvinPromise(&quot;#sketch&quot;).done(function (sketcherInstance) {
+
+				marvinController = new MarvinControllerClass(
+					sketcherInstance,
+					$(&quot;#chbx-coloring&quot;),
+					$(&quot;#chbx-carbonVis&quot;)
+				);
+
+				inputController = new InputControllerClass(
+					$(&quot;#btn-setMdlmolfile&quot;),
+					$(&quot;#btn-paste&quot;),
+					$(&quot;#list-inputformat&quot;),
+					$(&quot;#btn-clearTxt&quot;),
+					$(&quot;#btn-molExport&quot;),
+					$(&quot;#btn-mrvExport&quot;),
+					$(&quot;#molsource-box&quot;)
+				);
+
+			}).fail(function () {
+				alert(&quot;Cannot retrieve sketcher instance from iframe&quot;);
+			});
+
+			$(&quot;#molsource-box&quot;).val(caffeineSource);
+		});</code>
+		</pre>
+	<p><code>InputControllerClass</code> calls one of these functions with some delay when <em>Import</em>, <em>Export as Mol</em> or <em>Export As Mrv</em> button is pressed.</p>
+	<pre><code data-language="javascript">		function pasteMolAction (txt, format) {
+			switch (format)	{
+				case &quot;mrv&quot;:
+					marvinController.sketcherInstance.pasteAsMrv(txt);
+				break;
+				case &quot;mol&quot;:
+					marvinController.sketcherInstance.pasteAsMol(txt);
+				break;
+				default:
+					alert(&quot;Unsupported format: &quot; + format)
+				break;
+			}
+		}
+
+		function importMolAction (txt, format) {
+			switch (format)	{
+				case &quot;mrv&quot;:
+					marvinController.sketcherInstance.importAsMrv(txt);
+				break;
+				case &quot;mol&quot;:
+					marvinController.sketcherInstance.importAsMol(txt);
+				break;
+				default:
+					alert(&quot;Unsupported format: &quot; + format)
+				break;
+			}
+		}
+
+		function exportMolAction (format) {
+			var source = &quot;&quot;;
+			switch (format)	{
+				case &quot;mrv&quot;:
+					source = marvinController.sketcherInstance.exportAsMrv();
+				break;
+				case &quot;mol&quot;:
+					source = marvinController.sketcherInstance.exportAsMol();
+				break;
+				default:
+					alert(&quot;Cannot retrieve molecule from the editor in &quot; + format);
+				break;
+			}
+
+			if (source == null) {
+				alert(&quot;Cannot retrieve molecule from the editor in &quot; + format);
+			} else {
+				inputController.setTxt(source);
+			}
+		}</code></pre>
+</body>
+</html>

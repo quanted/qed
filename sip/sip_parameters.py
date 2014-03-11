@@ -14,7 +14,7 @@ Species_of_the_tested_mamm_CHOICES=(('0','Make a selection'),('350','Laboratory 
 
 class SIPInp(forms.Form):
     chemical_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}), initial='Quinoxyfen')
-    solubility = forms.FloatField(required=True, label=mark_safe('Solubility (in water @25&deg;C; mg/L)'), initial=0.128)
+    solubility = forms.FloatField(required=True, label='Solubility', initial=0.128)
 
     ld50_m = forms.FloatField(required=True, label=mark_safe('Mammalian LD<sub>50</sub> (mg/kg-bw)'), initial=5000)
     m_species = forms.ChoiceField(required=True,label='Species of the tested mammal', choices=Species_of_the_tested_mamm_CHOICES, initial='Laboratory rat')
@@ -44,4 +44,5 @@ class SIPInp(forms.Form):
 #  body_weight_of_bird = forms.FloatField(required=True, label='Body weight of bird (kg)', initial='4')
 #  body_weight_of_mammal = forms.FloatField(required=True,label='Body weight of mammal (kg)', initial='5')
 #  body_weight_of_the_assessed_bird = forms.FloatField(required=True, label='Body weight of assessed bird (g)', initial='8')
-#  body_weight_of_the_assessed_mammal = forms.FloatField(required=True, label='Body weight of assessed mammal (kg)', initial='5')
+#  body_weight_of_the_assessed_mammal = forms.FloatField(required=True, label='Body weight of assessed mammal (kg)', initial='5')
+

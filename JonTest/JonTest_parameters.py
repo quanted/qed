@@ -14,12 +14,12 @@ class JonTestChem(forms.Form):
     body_weight_of_bird0 = forms.FloatField(required=True,label='Temp Input 0',initial='0')
 
 class JonTestChem0(forms.Form):
-    chemical_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),initial='Dangerous Chemical Y')
-    body_weight_of_bird0 = forms.FloatField(required=True,label='Temp Input 0.0',initial='0.0')
+    chemical_name0 = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),initial='Dangerous Chemical Y')
+    body_weight_of_bird00 = forms.FloatField(required=True,label='Temp Input 0.0',initial='0.0')
 
 class JonTestChem1(forms.Form):
-    chemical_name = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),initial='Dangerous Chemical Y')
-    body_weight_of_bird0 = forms.FloatField(required=True,label='Temp Input 0.1',initial='0.1')
+    chemical_name1 = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 2}),initial='Dangerous Chemical Y')
+    body_weight_of_bird01 = forms.FloatField(required=True,label='Temp Input 0.1',initial='0.1')
 
 class JonTestApp(forms.Form):
     body_weight_of_bird1 = forms.FloatField(required=True,label='Temp Input 1',initial='1')

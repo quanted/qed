@@ -14,7 +14,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import django
 from django import forms
-from therps import therps_parameters
+from therps import therps_parameters,therps_tooltips
 from uber import uber_lib
 
 class THerpsInputPage(webapp.RequestHandler):
@@ -46,6 +46,12 @@ class THerpsInputPage(webapp.RequestHandler):
         html = html + str(therps_parameters.trexInp_herp())
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + 'therps-jquery.html', {})
+        # Check if tooltips dictionary exists
+        if hasattr(therps_tooltips, 'tooltips'):
+            tooltips = therps_tooltips.tooltips
+        else:
+            tooltips = {}
+        html = html + template.render (templatepath + '05ubertext_tooltips_right.html', {'tooltips':tooltips})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

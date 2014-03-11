@@ -8,7 +8,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import django
 from django import forms
-from JonTest import JonTest_parameters
+from JonTest import JonTest_parameters,JonTest_tooltips
 
 class genericInputPage(webapp.RequestHandler):
     def get(self):
@@ -45,7 +45,12 @@ class genericInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         # html = html + """
         # <script type="text/javascript" src="/stylesheets/style_JonTest.js"></script>"""
-        html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
+        # Check if tooltips dictionary exists
+        if hasattr(JonTest_tooltips, 'tooltips'):
+            tooltips = JonTest_tooltips.tooltips
+        else:
+            tooltips = {}
+        html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {'tooltips':tooltips})
         html = html + template.render(templatepath + '06hh_uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

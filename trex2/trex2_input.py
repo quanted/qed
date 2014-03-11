@@ -10,7 +10,7 @@ cgitb.enable()
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
-from trex2 import trex2_parameters
+from trex2 import trex2_parameters,trex2_tooltips
 from django import forms
 from uber import uber_lib
 
@@ -58,6 +58,12 @@ class trexInputPage(webapp.RequestHandler):
         html = html + """</table><table class="tab tab_Mammal" style="display:none">"""
         html = html + str(trex2_parameters.trexInp_mammal())
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
+        # Check if tooltips dictionary exists
+        if hasattr(trex2_tooltips, 'tooltips'):
+            tooltips = trex2_tooltips.tooltips
+        else:
+            tooltips = {}
+        html = html + template.render (templatepath + '05ubertext_tooltips_right.html', {'tooltips':tooltips})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

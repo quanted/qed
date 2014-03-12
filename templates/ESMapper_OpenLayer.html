@@ -62,50 +62,34 @@ function initialize() {
 	map.addControl(new OpenLayers.Control.ScaleLine());
 	
 
-
-
-
-
-	// map.AddLayer(new OpenLayers.Layer.Vector('NatureServeFish',{
-	// 	protocol: new OpenLayers.Protocol.HTTP({
-	// 		url: "https://s3.amazonaws.com/esmapping_kmz/nsf/"+ '{{ NSF }}' + '/.doc.kml',
-	// 		format: new OpenLayers.Format.KML({
-	// 			extractStyles: true,
-	// 			extractAttributes: true
-	// 		})
-	// 	}),
-	// 	strategies: [new OpenLayers.strategy.Fixed()]
-	// })
-	// 	);
-
-	
 	// Creating overlays for Birds
 
 	var BirdsIUCN = '{{ BirdsIUCN }}';
 	if (!(!BirdsIUCN))
 	{
 		var geourl ="https://s3.amazonaws.com/ES_Mapping_Json/Bird/IUCN_json/"+ BirdsIUCN + '.json'
-		// var geourl = 'https://s3.amazonaws.com/ES_Mapping_Json/Bird/IUCN_json/Accipiter_striatus.json';
-		geojson_layer = new OpenLayers.Layer.Vector("GeoJSON", {
-        strategies: [new OpenLayers.Strategy.Fixed()],
-        protocol: new OpenLayers.Protocol.HTTP({
-        	url:geourl,
-        	format: new OpenLayers.Format.GeoJSON()
-        	})
+  		geojson_layer = new OpenLayers.Layer.Vector("GeoJSON", {
+        	strategies: [new OpenLayers.Strategy.Fixed()],
+        	protocol: new OpenLayers.Protocol.HTTP({
+            url:geourl,
+            format: new OpenLayers.Format.GeoJSON()
+            })
         });
 	}
 
-	// // var BirdsUSFWS = '{{ BirdsUSFWS }}';
-	// var geourl = 'https://s3.amazonaws.com/ES_Mapping_Json/Bird/IUCN_json/Accipiter_striatus.json';
-	// var geojson_layer = new OpenLayers.Layer.Vector("GeoJSON", {
- //    strategies: [new OpenLayers.Strategy.Fixed()],
- //    protocol: new OpenLayers.Protocol.HTTP({
- //        url:geourl,
- //        format: new OpenLayers.Format.GeoJSON()
- //        })
- //    });
+	// var BirdsUSFWS = '{{ BirdsUSFWS }}';
+	// if (!(BirdsUSFWS))
+	// {
+	// 	var geourl = 'https://s3.amazonaws.com/ES_Mapping_Json/Bird/USFWS_json/Accipiter_striatus.json';
+	// 	var geojson_layer = new OpenLayers.Layer.Vector("GeoJSON", {
+ //    		strategies: [new OpenLayers.Strategy.Fixed()],
+ //    		protocol: new OpenLayers.Protocol.HTTP({
+ //        	url:geourl,
+ //        	format: new OpenLayers.Format.GeoJSON()
+ //        	})
+ //    	});
+	// }
 
-    console.log(geojson_layer)
 
 	map.addLayers([
 		wms_layer_map, 

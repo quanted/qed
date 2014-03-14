@@ -4,14 +4,17 @@ Created on Tue Jan 03 13:30:41 2012
 
 @author: jharston
 """
-
+import os
+os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
-import os
 from uber import uber_lib
 import history_tables
+import logging
+logger = logging.getLogger('SIP Model')
 import rest_funcs
+
 
 class SIPHistoryPage(webapp.RequestHandler):
     def get(self):
@@ -37,4 +40,5 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
+    
+

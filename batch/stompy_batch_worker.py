@@ -146,7 +146,7 @@ def run():
         }
         client.subscribe(SUBMISSION_QUEUE, headers, listener=SubscriptionListener(consume))
 
-config = StompConfig('tcp://'+HOST+':'+PORT)
+config = StompConfig('stomp://'+HOST+':'+PORT)
 
 print "stuff might be working"
 

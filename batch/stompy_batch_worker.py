@@ -1,4 +1,9 @@
-from stompy.simple import Client
+from twisted.internet import defer, reactor
+from stompest.config import StompConfig
+from stompest.async import Stomp
+from stompest.async.listener import ReceiptListener,SubscriptionListener
+from stompest.protocol import StompSpec
+
 import sys
 import json
 import pickle
@@ -7,6 +12,26 @@ sys.path.append("terrplant")
 import terrplant_model
 from terrplant_batch_runner import TerrPlantBatchRunner
 terrPlantRunner = TerrPlantBatchRunner()
+sys.path.append("sip")
+import sip_model
+from sip_batch_runner import SIPBatchRunner
+sipRunner = SIPBatchRunner()
+# sys.path.append("stir")
+# import stir_model
+# from stir_batch_runner import StirBatchRunner
+# stirRunner = STIRBatchRunner()
+sys.path.append("dust")
+import dust_model
+from dust_batch_runner import DUSTBatchRunner
+dustRunner = DUSTBatchRunner()
+sys.path.append("trex2")
+import trex2_model
+from trex2_batch_runner import TREX2BatchRunner
+trex2Runner = TREX2BatchRunner()
+SUBMISSION_QUEUE = '/queue/UbertoolBatchSubmissionQueue'
+RESULTS_QUEUE = '/queue/UbertoolBatchResultsQueue'
+HOST = 'localhost'
+PORT = '61613'
 
 logger = logging.getLogger("BatchWorker")
     
@@ -51,36 +76,89 @@ def processUbertoolBatchRunsIntoBatchModelRun(ubertool):
     ubertool_result = terrPlantRunner.runTerrPlantModel(ubertool,ubertool_result)
     logger.info("Ubertool Results:")
     logger.info(ubertool_result)
-    #ubertool_result = sipRunner.runSIPModel(ubertool,ubertool_result)
+    ubertool_result = sipRunner.runSIPModel(ubertool,ubertool_result)
+    logger.info("Ubertool Results:")
+    logger.info(ubertool_result)
+    ubertool_result = stirRunner.runSTIRModel(ubertool,ubertool_result)
+    logger.info("Ubertool Results:")
+    logger.info(ubertool_result)
+    ubertool_result = dustRunner.runDUSTModel(ubertool,ubertool_result)
+    logger.info("Ubertool Results:")
+    logger.info(ubertool_result)
+    ubertool_result = trex2Runner.runTREX2Model(ubertool,ubertool_result)
+    logger.info("Ubertool Results:")
+    logger.info(ubertool_result)
     #perform on all other eco models
     return ubertool_result
     
-def ioloop():
-	while continueRunning:
-		message = stomp.get(block=True)
-		data = json.loads(message.body, object_hook=ascii_encode_dict)
-		messageData = data['message']
-		messageData = convert(messageData)
-		messageData = json.loads(messageData)
-		results_data = None
-		ubertool_config_name = messageData['config_name']
-		if 'batchId' in messageData:
-			batch_id = messageData['batchId']
-			results = processUbertoolBatchRunsIntoBatchModelRun(messageData)
-			results['config_name'] = ubertool_config_name
-			results['batchId'] = batch_id
-	    	print results
-	    	results_data = json.dumps(results)
-	    	stomp.put(results_data,"/queue/UbertoolBatchResultsQueue",persistent=True)
-	    	stomp.ack(message)
+# def ioloop():
+# 	while continueRunning:
+# 		message = stomp.get(block=True)
+#         print "we have a message!"
+#         data = json.loads(message.body, object_hook=ascii_encode_dict)
+#         messageData = data['message']
+#         messageData = convert(messageData)
+#         messageData = json.loads(messageData)
+#         results_data = None
+#         ubertool_config_name = messageData['config_name']
+#         if 'batchId' in messageData:
+#             batch_id = messageData['batchId']
+#             results = processUbertoolBatchRunsIntoBatchModelRun(messageData)
+#             results['config_name'] = ubertool_config_name
+#             results['batchId'] = batch_id
+#             print results
+#             results_data = json.dumps(results)
+#             stomp.put(results_data,"/queue/UbertoolBatchResultsQueue",persistent=True)
+#             stomp.ack(message)
 
-stomp = Client()
-stomp.connect(username="admin",password="admin")
-stomp.subscribe("/queue/UbertoolBatchSubmissionQueue")
-continueRunning = True
+def consume(self, client, frame):
+    """
+    NOTE: you can return a Deferred here
+    """
+    data = json.loads(frame.body)
+    print data
+    messageData = data['message']
+    print messageData
+    # messageData = convert(messageData)
+    # messageData = json.loads(messageData)
+    results_data = None
+    ubertool_config_name = messageData['config_name']
+    if 'batchId' in messageData:
+        batch_id = messageData['batchId']
+        results = processUbertoolBatchRunsIntoBatchModelRun(messageData)
+        results['config_name'] = ubertool_config_name
+        results['batchId'] = batch_id
+        print results
+        results_data = json.dumps(results)
+        # stomp.put(results_data,"/queue/UbertoolBatchResultsQueue",persistent=True)
+        # stomp.ack(message)
 
-try:
-	ioloop()    
-except KeyboardInterrupt:
-    stomp.unsubscribe("/queue/UbertoolBatchSubmissionQueue")
-    stomp.disconnect()
+@defer.inlineCallbacks
+def run():
+    while(True):
+        client = yield Stomp(config).connect()
+        headers = {
+            # client-individual mode is necessary for concurrent processing
+            # (requires ActiveMQ >= 5.2)
+            StompSpec.ACK_HEADER: StompSpec.ACK_CLIENT_INDIVIDUAL,
+            # the maximal number of messages the broker will let you work on at the same time
+            'activemq.prefetchSize': '100',
+        }
+        client.subscribe(SUBMISSION_QUEUE, headers, listener=SubscriptionListener(consume))
+
+config = StompConfig('stomp://'+HOST+':'+PORT)
+
+print "stuff might be working"
+
+run()
+
+# stomp = Client()
+# stomp.connect(username="admin",password="admin")
+# stomp.subscribe("/queue/UbertoolBatchSubmissionQueue")
+# continueRunning = True
+
+# try:
+# 	ioloop()    
+# except KeyboardInterrupt:
+#     stomp.unsubscribe(QUEUE)
+#     stomp.disconnect()

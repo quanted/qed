@@ -19,6 +19,7 @@ sys.path.append("../rice")
 from rice import rice_model,rice_parameters,rice_tables
 import datetime
 from uber import uber_lib
+import rest_funcs
 
 class RiceExecutePage(webapp.RequestHandler):
     def post(self):
@@ -42,7 +43,7 @@ class RiceExecutePage(webapp.RequestHandler):
         dw = form.getvalue('dw')
         osed = form.getvalue('osed')
         kd = form.getvalue('Kd')
-        rice_obj = rice_model.rice(True,True,chemical_name, mai, dsed, a, pb, dw, osed, kd)
+        rice_obj = rice_model.rice(True,True,'single',chemical_name, mai, dsed, a, pb, dw, osed, kd)
 
 
         # rice.put()
@@ -68,6 +69,7 @@ class RiceExecutePage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.save_dic(html, rice_obj.__dict__, "rice", "single")
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', RiceExecutePage)], debug=True)

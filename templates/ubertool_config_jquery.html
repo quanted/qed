@@ -17,15 +17,16 @@ function submitBatchConfigurations()
 
 	saveUbertoolRunProperties(batch_config_props,batch_size);
 
-	var batch_config_name = null
+	var batch_config_name = null;
+	var batch_config_data = JSON.stringify(batch_config_props);
 	if(batch_config_props != null)
 	{
 		$.ajax({
 			url:"{{ubertool_mongo_server}}/batch",
 			async: false,
-			contentType:"application/json; charset=utf-8",
+			contentType:"application/json; charset=UTF-8",
 			type: 'POST',
-			data: JSON.stringify(batch_config_props),
+			data: batch_config_data,
 			success: function(batch_data) {
 				batch_config_name = batch_data;
 			}

@@ -123,7 +123,7 @@ def get_jid(run_type, pfac, snowmelt, evapDepth,
                "convertSoil1": convertSoil1,
                "convert1to3": convert1to3,
                "convert2to3": convert2to3}
-    # logger.info(all_dic)
+    logger.info(all_dic)
     data = json.dumps(all_dic)
     jid = rest_funcs.gen_jid()
     url=url_part1 + '/przm5/' + jid 
@@ -247,9 +247,9 @@ class przm5(object):
                 self.PestAppyMon.append(v)
             elif k.startswith('rate_a_'):
                 self.PestAppyRate.append(v)
-            elif k.startswith('eff_a_'):
+            elif k.startswith('eff_pond_a_'):
                 self.localEff.append(v)
-            elif k.startswith('drift_a_'):
+            elif k.startswith('drift_pond_a_'):
                 self.localSpray.append(v)
             elif k.startswith('foliarHalfLife_'):
                 self.foliarHalfLifeBox.append(float(v))

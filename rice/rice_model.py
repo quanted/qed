@@ -3,6 +3,7 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import numpy as np
 import logging
 from django.utils import simplejson
+import rest_funcs
 
 logger = logging.getLogger('RICE Model')
 
@@ -19,6 +20,7 @@ def fromJSON(json_string):
 class rice(object):
     def __init__(self, set_variables=True,run_methods=True,chemical_name='', mai=1, dsed=1, a=1, pb=1, dw=1, osed=1, kd=1, vars_dict=None):
         self.set_default_variables()
+        self.jid = rest_funcs.gen_jid()
         if set_variables:
             if vars_dict != None:
                 self.__dict__.update(vars_dict)
@@ -235,4 +237,4 @@ class rice(object):
 #     run_wsgi_app(app)
 
 # if __name__ == '__main__':
-#     main()
+#     main()

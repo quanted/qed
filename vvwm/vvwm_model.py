@@ -7,6 +7,7 @@ import json
 from datetime import datetime, timedelta
 import time
 from collections import OrderedDict
+import rest_funcs
 
 import os
 import logging
@@ -95,13 +96,7 @@ def get_jid(run_type, working_dir,
               "ReservoirFlowAvgDays": ReservoirFlowAvgDays}
     logger.info(all_dic)
     data = json.dumps(all_dic)
-
-    ts = datetime.now()
-    if(time.daylight):
-        ts1 = timedelta(hours=-4)+ts
-    else:
-        ts1 = timedelta(hours=-5)+ts
-    jid = ts1.strftime('%Y%m%d%H%M%S%f')
+    jid = rest_funcs.gen_jid()
     url=url_part1+'/vvwm/'+jid 
 
 
@@ -359,4 +354,4 @@ class vvwm(object):
     self.src1 = self.final_res[1][29]
     self.name1 = self.final_res[1][30]
 
-    get_upload(self.src1, self.name1)
+    get_upload(self.src1, self.name1)

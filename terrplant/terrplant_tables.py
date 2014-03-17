@@ -311,8 +311,6 @@ def table_sum_output(sumheadings, tmpl, rundry_out, runsemi_out, spray_out, tota
         return html
 
 def timestamp(terrplant_obj="", batch_jid=""):
-    # ts = time.time()
-    # st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
     if terrplant_obj:
         st = datetime.datetime.strptime(terrplant_obj.jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
     else:

@@ -3,6 +3,7 @@ import logging
 import sys
 import math
 from django.utils import simplejson
+import rest_funcs
 
 def toJSON(stir_object):
     stir_vars = vars(stir_object)
@@ -15,7 +16,6 @@ def fromJSON(json_string):
     return new_stir
 
 class StirModel(object):
-
     def __init__(self,set_variables=True, run_methods=True,
             chemical_name=None,application_rate=None,column_height=None,spray_drift_fraction=None,direct_spray_duration=None, 
             molecular_weight=None,vapor_pressure=None,avian_oral_ld50=None, body_weight_assessed_bird=None, body_weight_tested_bird=None, 
@@ -23,6 +23,7 @@ class StirModel(object):
             body_weight_tested_mammal=None,mammal_oral_ld50=None,
             vars_dict=None):
         self.set_default_variables()
+        self.jid = rest_funcs.gen_jid()
         if set_variables:
             if vars_dict != None:
                 self.__dict__.update(vars_dict)
@@ -403,4 +404,4 @@ def main():
     print vars(new_stir)
 
 if __name__ == '__main__':
-    main()
+    main()

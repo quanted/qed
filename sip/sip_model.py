@@ -1,8 +1,9 @@
 # Screening Imbibiton Program v1.0 (SIP)
 import logging
 from django.utils import simplejson
-import time, datetime
 logger = logging.getLogger('SIP Model')
+import rest_funcs
+
 # Daily water intake rate for birds
 
 def toJSON(sip_object):
@@ -18,12 +19,7 @@ def fromJSON(json_string):
 class sip(object):
     def __init__(self, set_variables=True,run_methods=True,run_type = "single",chemical_name='', b_species='', m_species='', bw_quail=1, bw_duck=1, bwb_other=1, bw_rat=1, bwm_other=1, sol=1, ld50_a=1, ld50_m=1, aw_bird=1, mineau=1, aw_mamm=1, noaec_d=1, noaec_q=1, noaec_o=1, Species_of_the_bird_NOAEC_CHOICES=1, noael=1,vars_dict=None):
         self.set_default_variables()
-        ts = datetime.datetime.now()
-        if(time.daylight):
-            ts1 = datetime.timedelta(hours=-4)+ts
-        else:
-            ts1 = datetime.timedelta(hours=-5)+ts
-        self.jid = ts1.strftime('%Y%m%d%H%M%S%f')
+        self.jid = rest_funcs.gen_jid()
         if set_variables:
             if vars_dict != None:
                 self.__dict__.update(vars_dict)

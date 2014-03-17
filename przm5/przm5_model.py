@@ -10,6 +10,7 @@ from collections import OrderedDict
 import os
 import logging
 logger = logging.getLogger('PRZM5 Model')
+import rest_funcs
 
 ############Provide the key and connect to the picloud####################
 api_key=keys_Picloud_S3.picloud_api_key
@@ -124,13 +125,7 @@ def get_jid(run_type, pfac, snowmelt, evapDepth,
                "convert2to3": convert2to3}
     # logger.info(all_dic)
     data = json.dumps(all_dic)
-
-    ts = datetime.now()
-    if(time.daylight):
-        ts1 = timedelta(hours=-4)+ts
-    else:
-        ts1 = timedelta(hours=-5)+ts
-    jid = ts1.strftime('%Y%m%d%H%M%S%f')
+    jid = rest_funcs.gen_jid()
     url=url_part1 + '/przm5/' + jid 
 
 

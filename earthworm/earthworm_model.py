@@ -118,4 +118,4 @@ class earthworm(object):
                 ('self.p_e=%g is a non-physical value.' % self.p_e)
 
             self.earthworm_fugacity_out = self.k_ow*self.l_f_e*(self.c_s/(self.k_d*self.p_s)+self.c_w)*self.m_w/self.p_e
-        return self.earthworm_fugacity_out
+        return self.earthworm_fugacity_out

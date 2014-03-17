@@ -134,15 +134,17 @@ def table_all_qaqc(rice_obj):
 
     return html_all
 
-def timestamp():
-    ts = time.time()
-    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+def timestamp(rice_obj="", batch_jid=""):
+    if rice_obj:
+        st = datetime.datetime.strptime(rice_obj.jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
+    else:
+        st = datetime.datetime.strptime(batch_jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
     html="""
     <div class="out_">
         <b>Tier 1 Rice Model (Version 1.0)<br>
     """
     html = html + st
-    html = html + " (UTC)</b>"
+    html = html + " (EST)</b>"
     html = html + """
     </div>"""
     return html
@@ -259,4 +261,4 @@ def table_sum_output(sumheadings, tmpl, msed, vw, mai1, cw):
         </div>
         <br>
         """
-        return html
+        return html

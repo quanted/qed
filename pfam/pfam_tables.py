@@ -1,3 +1,4 @@
+import datetime
 
 def table_all(pfam_obj):
     table1_out = table_1(pfam_obj)
@@ -11,6 +12,18 @@ def table_all(pfam_obj):
     table9_out = table_9(pfam_obj)
     html_all = table1_out + table2_out + table3_out + table4_out + table5_out + table6_out + table7_out + table8_out + table9_out
     return html_all
+
+def timestamp(pfam_obj):
+    st = datetime.datetime.strptime(pfam_obj.jid, '%Y%m%d%H%M%S%f').strftime('%A %Y-%m-%d %H:%M:%S')
+    html="""
+    <div class="out_">
+        <b>PFAM<br>
+    """
+    html = html + st
+    html = html + " (EST)</b>"
+    html = html + """
+    </div>"""
+    return html
 
 def table_1(pfam_obj):
     html = """
@@ -356,5 +369,7 @@ def table_9(pfam_obj):
         <div id="chart1" style="margin-top:20px; margin-left:90px; width:650px; height:400px;"></div>
         <div id="chart2" style="margin-top:20px; margin-left:90px; width:650px; height:400px;"></div>
         <div id="chart3" style="margin-top:20px; margin-left:90px; width:650px; height:400px;"></div>        
-        """
-    return html
+        """
+
+    return html
+

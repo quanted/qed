@@ -1,6 +1,5 @@
 from django.utils import simplejson
-import time, datetime
-
+import rest_funcs
 
 def toJSON(terrplant_object):
     terrplant_vars = vars(terrplant_object)
@@ -16,12 +15,7 @@ class terrplant(object):
     def __init__(self, set_variables=True, run_methods=True, version_terrplant='1.2.2', run_type = "single", A=1, I=1, R=1, D=1, nms=1, lms=1, nds=1, lds=1,
             chemical_name='', pc_code='', use='', application_method='', application_form='', solubility=1, vars_dict=None,):
         self.set_default_variables()
-        ts = datetime.datetime.now()
-        if(time.daylight):
-            ts1 = datetime.timedelta(hours=-4)+ts
-        else:
-            ts1 = datetime.timedelta(hours=-5)+ts
-        self.jid = ts1.strftime('%Y%m%d%H%M%S%f')
+        self.jid = rest_funcs.gen_jid()
 
         if set_variables:
             if vars_dict != None:

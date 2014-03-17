@@ -3,7 +3,7 @@ import logging
 import sys
 import math
 from django.utils import simplejson
-import time, datetime
+import rest_funcs
 
 def toJSON(stir_object):
     stir_vars = vars(stir_object)
@@ -37,12 +37,7 @@ class StirModel(object):
 
     def set_default_variables(self):
         #inputs
-        ts = datetime.datetime.now()
-        if(time.daylight):
-            ts1 = datetime.timedelta(hours=-4)+ts
-        else:
-            ts1 = datetime.timedelta(hours=-5)+ts
-        self.jid = ts1.strftime('%Y%m%d%H%M%S%f')
+        self.jid = rest_funcs.gen_jid()
         self.chemical_name = ''
         self.application_rate = 1
         self.column_height = 1

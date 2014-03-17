@@ -4,9 +4,9 @@ import base64
 import urllib
 from google.appengine.api import urlfetch
 import json
-import time, datetime
 import logging
 logger = logging.getLogger('Geneec Model')
+import rest_funcs
 
 
 class geneec(object):
@@ -81,12 +81,8 @@ class geneec(object):
                    "ORCFLG":ORCFLG, "INCORP":INCORP, "SOL":SOL, "METHAP":METHAP, "HYDHAP":HYDHAP, "FOTHAP":FOTHAP}
         data = json.dumps(all_dic)
 
-        ts = datetime.datetime.now()
-        if(time.daylight):
-            ts1 = datetime.timedelta(hours=-4)+ts
-        else:
-            ts1 = datetime.timedelta(hours=-5)+ts
-        self.jid = ts1.strftime('%Y%m%d%H%M%S%f')
+
+        self.jid = rest_funcs.gen_jid()
         url=os.environ['UBERTOOL_REST_SERVER'] + '/geneec/' + self.jid 
 
 

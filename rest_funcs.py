@@ -7,8 +7,8 @@ from google.appengine.api import urlfetch
 import numpy as np
 import ast
 import logging
-from datetime import datetime, timedelta
-import time
+import datetime
+import pytz
 #############################Provide the key and connect to the picloud#####################
 api_key=keys_Picloud_S3.picloud_api_key
 api_secretkey=keys_Picloud_S3.picloud_api_secretkey
@@ -24,12 +24,9 @@ class NumPyArangeEncoder(json.JSONEncoder):
 
 ###########################A function to generate JID################################ 
 def gen_jid():
-    ts = datetime.now()
-    if(time.daylight):
-        ts1 = timedelta(hours=-4)+ts
-    else:
-        ts1 = timedelta(hours=-5)+ts
-    jid = ts1.strftime('%Y%m%d%H%M%S%f')
+    ts = datetime.datetime.now(pytz.UTC)
+    localDatetime = ts.astimezone(pytz.timezone('US/Eastern'))
+    jid = localDatetime.strftime('%Y%m%d%H%M%S%f')
     return jid
 
 ###########################function to save a single run to MongoDB################################ 

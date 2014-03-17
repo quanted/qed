@@ -6,7 +6,7 @@ import logging
 import sys
 import math
 from django.utils import simplejson
-import time, datetime
+import rest_funcs
 
 logger = logging.getLogger('agdrift Model')
 
@@ -24,12 +24,7 @@ def fromJSON(json_string):
 class agdrift(object):
     def __init__(self, set_variables=True, run_methods=True, run_type='single', drop_size = '', ecosystem_type = '', application_method = '', boom_height = '', orchard_type = '', application_rate=1, distance=1,  aquatic_type='', calculation_input='', init_avg_dep_foa = 1, avg_depo_lbac = 1, avg_depo_gha  = 1, deposition_ngL = 1, deposition_mgcm = 1, nasae = 1, y = 1, x = 1, express_y = 1, vars_dict=None):
         self.set_default_variables()
-        ts = datetime.datetime.now()
-        if(time.daylight):
-            ts1 = datetime.timedelta(hours=-4)+ts
-        else:
-            ts1 = datetime.timedelta(hours=-5)+ts
-        self.jid = ts1.strftime('%Y%m%d%H%M%S%f')
+        self.jid = rest_funcs.gen_jid()
         
         if set_variables:
             if vars_dict != None:

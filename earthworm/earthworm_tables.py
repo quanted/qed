@@ -23,7 +23,7 @@ def timestamp(earthworm_obj="", batch_jid=""):
         <b>Earthworm Fugacity Modeling<br>
     """
     html = html + st
-    html = html + " (UTC)</b>"
+    html = html + " (EST)</b>"
     html = html + """
     </div>"""
     return html
@@ -239,4 +239,4 @@ def table_sum_output(sumheadings, tmpl, Ce_out):
         </div>
         <br>
         """
-        return html
+        return html

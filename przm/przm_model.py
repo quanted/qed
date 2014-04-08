@@ -10,6 +10,7 @@ from collections import OrderedDict
 import os
 import logging
 logger = logging.getLogger('PRZM Model')
+import rest_funcs
 
 ############Provide the key and connect to EC2####################
 api_key=keys_Picloud_S3.picloud_api_key
@@ -43,12 +44,7 @@ def get_jid(noa, met, inp, run, MM, DD, YY, CAM_f, DEPI_text, Ar_text, EFF, Drft
                "EFF": EFF,
                "Drft": Drft}
     data = json.dumps(all_dic)
-    ts = datetime.now()
-    if(time.daylight):
-        ts1 = timedelta(hours=-4)+ts
-    else:
-        ts1 = timedelta(hours=-5)+ts
-    jid = ts1.strftime('%Y%m%d%H%M%S%f')
+    jid = rest_funcs.gen_jid()
     url=url_part1 + '/przm/' + jid 
 
     response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   

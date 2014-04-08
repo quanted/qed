@@ -3,8 +3,11 @@ os.environ['DJANGO_SETTINGS_MODULE']='settings'
 import numpy as np
 import logging
 from django.utils import simplejson
+import rest_funcs
 
 logger = logging.getLogger('RICE Model')
+
+
 
 def toJSON(rice_object):
     rice_vars = vars(rice_object)
@@ -17,8 +20,9 @@ def fromJSON(json_string):
     return rice_object
 
 class rice(object):
-    def __init__(self, set_variables=True,run_methods=True,chemical_name='', mai=1, dsed=1, a=1, pb=1, dw=1, osed=1, kd=1, vars_dict=None):
+    def __init__(self, set_variables=True,run_methods=True,run_type = "single",chemical_name='', mai=1, dsed=1, a=1, pb=1, dw=1, osed=1, kd=1, vars_dict=None):
         self.set_default_variables()
+        self.jid = rest_funcs.gen_jid()
         if set_variables:
             if vars_dict != None:
                 self.__dict__.update(vars_dict)
@@ -31,6 +35,7 @@ class rice(object):
                 self.dw = dw
                 self.osed = osed
                 self.kd = kd
+                self.run_type = run_type
                 logger.info(vars(self))
             if run_methods:
                 self.run_methods()
@@ -48,6 +53,7 @@ class rice(object):
         self.vw = -1
         self.mai1 = -1
         self.cw = -1
+        self.run_type = "single"
 
     def run_methods(self):
         self.Calcmsed()
@@ -88,17 +94,6 @@ class rice(object):
             self.msed = self.dsed * self.a * self.pb
         return self.msed
 
-
-
-    # class MsedService(webapp.RequestHandler):
-        
-    #     def get(self):
-    #         data = simplejson.loads(self.request.body)
-    #         data = json_utils.convert(data)
-    #         msed_output = msed(data['dsed'],data['a'],data['pb'])
-    #         msed_json = simplejson.dumps(msed_output)
-    #         self.response.headers['Content-Type'] = 'application/json'
-    #         self.response.out.write(msed_json)
 
 
     # The volume of the water column plus pore water
@@ -226,13 +221,3 @@ class rice(object):
                 ('kd=g% is a non-physical value.' % self.kd)
             self.cw = (self.mai1 / (self.dw + (self.dsed * (self.osed + (self.pb * self.kd*1e-5)))))*100
         return self.cw
-
-
-# app = webapp.WSGIApplication([('/msed', MsedService)],
-#                               debug=True)
-
-# def main():
-#     run_wsgi_app(app)
-
-# if __name__ == '__main__':
-#     main()

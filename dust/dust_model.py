@@ -2,19 +2,14 @@ import numpy as np
 import logging
 import sys
 import math
-import time, datetime
+import rest_funcs
 
 
 class dust(object):
     def __init__(self, set_variables=True, run_methods=True, run_type='single', chemical_name='', label_epa_reg_no='', ar_lb=1, frac_pest_surface=1, dislodge_fol_res=1,  bird_acute_oral_study="", bird_study_add_comm="",
               low_bird_acute_ld50=1, test_bird_bw=1, mineau_scaling_factor=1, mamm_acute_derm_study='', mamm_study_add_comm='',  mam_acute_derm_ld50=1, mam_acute_oral_ld50=1, test_mam_bw=1, vars_dict=None):
         self.set_default_variables()
-        ts = datetime.datetime.now()
-        if(time.daylight):
-            ts1 = datetime.timedelta(hours=-4)+ts
-        else:
-            ts1 = datetime.timedelta(hours=-5)+ts
-        self.jid = ts1.strftime('%Y%m%d%H%M%S%f')
+        self.jid = rest_funcs.gen_jid()
 
         if set_variables:
             if vars_dict != None:

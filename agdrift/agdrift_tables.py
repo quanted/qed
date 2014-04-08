@@ -138,7 +138,7 @@ def timestamp(agdrift_obj="", batch_jid=""):
         st = datetime.datetime.strptime(batch_jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
     html="""
     <div class="out_">
-    <b>agdrift Version 0.1 (Beta)<br>
+    <b>Agdrift Version 0.1 (Beta)<br>
     """
     html = html + st
     html = html + " (EST)</b>"

@@ -69,7 +69,7 @@ function submitConfiguration()
 	}
 	form_data['created'] = getDateTime();
 	var json_form_data = JSON.stringify(form_data)
-	var post_url = "{{ubertool_service_url}}/ubertool/expo/"+$("#id_user_exposure_concentrations_configuration")[0].value;
+	var post_url = "{{ubertool_service_url}}/ubertool/expo/"+$("#id_config_name")[0].value;
 	$.ajax({
 		url: post_url,
 		async: true,

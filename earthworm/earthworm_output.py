@@ -44,7 +44,7 @@ class earthwormOutputPage(webapp.RequestHandler):
                 'model':'earthworm', 
                 'model_attributes':'Earthworm Output'})
         
-        html = html + earthworm_tables.timestamp()
+        html = html + earthworm_tables.timestamp(earthworm_obj)
         html = html + earthworm_tables.table_all(earthworm_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
@@ -62,4 +62,4 @@ if __name__ == '__main__':
 
  
 
-    
+    

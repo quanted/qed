@@ -52,7 +52,7 @@ class agdrift_trexOutputPage(webapp.RequestHandler):
         use = form.getvalue('Use')
         formu_name = form.getvalue('Formulated_product_name')
         a_i = form.getvalue('percent_ai')
-        print a_i
+        # print a_i
         a_i = float(a_i)/100
         Application_type = form.getvalue('Application_type')
         seed_crop = float(form.getvalue('seed_crop'))
@@ -142,7 +142,7 @@ class agdrift_trexOutputPage(webapp.RequestHandler):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie, "AgDrift-TREX Output")
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'agdrift','page':'output'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'agdrift_trex','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'agdrift_trex', 
@@ -212,4 +212,4 @@ def main():
     run_wsgi_app(app)
 
 if __name__ == '__main__':
-    main()
+    main()

@@ -57,6 +57,12 @@ def batchLoadTerrestrialToxicityConfigs(params_matrix,config_index,ubertool_conf
         config_params['bw_duck'] = params_matrix.get("bw_duck")[config_index]  
     if "bwb_other" in params_matrix:
         config_params['bwb_other'] = params_matrix.get("bwb_other")[config_index]  
+    if "noaec_q" in params_matrix:
+        config_params['noaec_q'] = params_matrix.get("noaec_q")[config_index]   
+    if "noaec_d" in params_matrix:
+        config_params['noaec_d'] = params_matrix.get("noaec_d")[config_index]   
+    if "noaec_o" in params_matrix:
+        config_params['noaec_o'] = params_matrix.get("noaec_o")[config_index] 
     if "mineau_scaling_factor" in params_matrix:
         config_params['mineau_scaling_factor'] = params_matrix.get("mineau_scaling_factor")[config_index]  
     if "m_species" in params_matrix:

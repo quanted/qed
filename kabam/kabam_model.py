@@ -16,7 +16,7 @@ import cgitb
 import logging
 import sys
 import math
-import time, datetime
+import rest_funcs
 
 logger = logging.getLogger('Kabam Model')
 
@@ -37,18 +37,12 @@ class kabam(object):
             k1_zoo=1,k2_zoo=1,kd_zoo=1,ke_zoo=1,k1_beninv=1,k2_beninv=1,kd_beninv=1,ke_beninv=1,km_beninv=1,
             k1_ff=1,k2_ff=1,kd_ff=1,ke_ff=1,km_ff=1,k1_sf=1,k2_sf=1,kd_sf=1,ke_sf=1,km_sf=1,k1_mf=1,k2_mf=1,kd_mf=1,ke_mf=1,km_mf=1,k1_lf=1,k2_lf=1,kd_lf=1,ke_lf=1,km_lf=1,
             rate_constants='',s_respire='',phyto_respire='',zoo_respire='',beninv_respire='',ff_respire='',sfish_respire='',mfish_respire='',lfish_respire='',
-            
             vars_dict=None):
 
             # cb_phytoplankton_v=1,cb_zoo_v=1,cb_beninv_v=1,cb_ff_v=1,cb_sf_v=1,cb_mf_v=1,cb_lf_v=1,   ***These were removed from __init__***
 
         # self.set_default_variables()
-        ts = datetime.datetime.now()
-        if(time.daylight):
-            ts1 = datetime.timedelta(hours=-4)+ts
-        else:
-            ts1 = datetime.timedelta(hours=-5)+ts
-        self.jid = ts1.strftime('%Y%m%d%H%M%S%f')
+        self.jid = rest_funcs.gen_jid()
         
         if set_variables:
             if vars_dict != None:
@@ -1645,4 +1639,4 @@ class kabam(object):
 
     def chronic_rq_diet_a_f(self):
         self.chronic_rq_diet_a = self.db5a / self.avian_noaec
-        return self.chronic_rq_diet_a
+        return self.chronic_rq_diet_a

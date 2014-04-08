@@ -15,8 +15,12 @@ import logging
 import sys
 sys.path.append("../rice")
 from rice import rice_model,rice_tables
-import csv
 from uber import uber_lib
+import csv
+from threading import Thread
+import Queue
+from collections import OrderedDict
+import rest_funcs
 
 logger = logging.getLogger("RiceBatchPage")
 
@@ -35,123 +39,87 @@ vw=[]
 mai1=[]
 cw=[]
 
-logger = logging.getLogger("RiceBatchOutput")
+jid_all = []
+jid_batch = []
+rice_all = []
+all_threads = []
+out_html_all = {}
+job_q = Queue.Queue()
+thread_count = 10
 
 
-def html_table(row_inp,iter):
-    logger.info("iteration: " + str(iter))
-    chemical_name.append(str(row_inp[0]))
-    mai.append(float(row_inp[1]))
-    a.append(float(row_inp[2]))  
-    dsed.append(float(row_inp[3]))
-    pb.append(float(row_inp[4]))
-    dw.append(float(row_inp[5]))
-    osed.append(float(row_inp[6]))        
-    kd.append(float(row_inp[7]))    
-    # msed.append(float(row_inp[8]))
-    # vw.append(float(row_inp[9]))
-    # mai1.append(float(row_inp[10]))
-    # cw.append(float(row_inp[11])) 
-    
-    logger.info(chemical_name)
-    logger.info(mai)
-    logger.info(a)
-    logger.info(dsed)
-    logger.info(pb)
-    logger.info(dw)
-    logger.info(osed)
-    logger.info(kd)
-    logger.info(msed)
-    logger.info(vw)
-    logger.info(mai1)
-    logger.info(cw)
+def html_table(row_inp_all):
+    while True:
+    row_inp_temp_all = row_inp_all.get()
+    if row_inp_temp_all is None:
+        break
+    else:
+        row_inp = row_inp_temp_all[0]
+        iter = row_inp_temp_all[1]
 
-    rice_obj = rice_model.rice(True,True,chemical_name[iter], mai[iter], dsed[iter], a[iter], pb[iter], dw[iter], osed[iter], kd[iter])
+        logger.info("iteration: " + str(iter))
 
-    msed.append(rice_obj.msed)
-    vw.append(rice_obj.vw)
-    mai1.append(rice_obj.mai1)
-    cw.append(rice_obj.cw)
+        chemical_name_temp=str(row_inp[0])
+        chemical_name.append(chemical_name_temp)
+        mai_temp=float(row_inp[1])
+        mai.append(mai_temp)
+        a_temp=float(row_inp[2])
+        a.append(a_temp)
+        dsed_temp= float(row_inp[3])
+        dsed.append(dsed_temp)
+        pd_temp=float(row_inp[4])
+        pb.append(pd_temp)
+        dw_temp=float(row_inp[5])
+        dw.append(dw_temp)
+        osed_temp=float(row_inp[6])
+        osed.append(osed_temp)
+        kd_temp=float(row_inp[7])       
+        kd.append(kd_temp) 
 
-    html = rice_tables.table_all(rice_obj)
+        rice_obj = rice_model.rice(True,True,"batch",chemical_name_temp, mai_temp, dsed_temp, a_temp, pb_temp, dw_temp, osed_temp, kd_temp)
+        logger.info("===============")
+        msed.append(rice_obj.msed)
+        vw.append(rice_obj.vw)
+        mai1.append(rice_obj.mai1)
+        cw.append(rice_obj.cw)
 
-    return html
+        jid_all.append(rice_obj.jid)
+        rice_all.append(rice_obj)    
+        if iter == 1:
+            jid_batch.append(rice_obj.jid)
 
+        batch_header = """
+            <div class="out_">
+                <br><H3>Batch Calculation of Iteration %s:</H3>
+            </div>
+            """%(iter)
+            
+        html_temp = rice_tables.table_all(rice_obj)
+        out_html_temp = batch_header + html_temp
+        out_html_all[iter]=out_html_temp
 
-    # Input_header="""<table border="1">
-    #                     <tr><H3>Batch Calculation of Iteration %s</H3></tr><br>
-    #                     <tr>
-    #                         <td><b>Input Name</b></td>
-    #                         <td><b>Input value</b></td>
-    #                         <td><b>Unit</b></td>
-    #                     </tr>"""%(iter)
-    # Input_mai="""<tr>
-    #                 <td>Mass of Applied Ingredient Applied to Paddy</td>
-    #                 <td>%s</td>
-    #                 <td>kg</td>
-    #             </tr>""" %(mai_temp) 
-    # Input_dsed="""<tr>
-    #                 <td>Sediment Depth</td>
-    #                 <td>%s</td>
-    #                 <td>m</td>
-    #             </tr>""" %(dsed_temp)                         
-    # Input_a="""<tr>
-    #                 <td>Area of the Rice Paddy</td>
-    #                 <td>%s</td>
-    #                 <td>m<sup>2</sup></td>
-    #             </tr>""" %(a_temp)                          
-    # Input_pb="""<tr>
-    #                 <td>Bulk Density of Sediment</td>
-    #                 <td>%s</td>
-    #                 <td>kg/m<sup>3</sup></td>
-    #             </tr>""" %(pb_temp)  
-    # Input_dw="""<tr>
-    #                 <td>Water Column Depth</td>
-    #                 <td>%s</td>
-    #                 <td>m</td>
-    #             </tr>""" %(dw_temp) 
-    # Input_osed="""<tr>
-    #                 <td>Porosity of Sediment</td>
-    #                 <td>%s</td>
-    #                 <td>-</td>
-    #             </tr>""" %(osed_temp)                        
-    # Input_kd="""<tr>
-    #                 <td>Water-Sediment Partitioning Coefficient</td>
-    #                 <td>%s</td>
-    #                 <td>L/kg</td>
-    #             </tr></table><br>""" %(kd_temp)  
-
-    # Output_header="""<table border="1">
-    #                     <tr>
-    #                         <td><b>Output Name</b></td>
-    #                         <td><b>Output value</b></td>
-    #                         <td><b>Unit</b></td>
-    #                     </tr>"""
-    # Output_mai1="""<tr>
-    #                 <td>Application Rate</td>
-    #                 <td>%0.2E</td>
-    #                 <td>kg a.i./A</td>
-    #             </tr>""" %(mai1_temp)
-    # Output_cw="""<tr>
-    #                 <td>Peak & Chronic EEC</td>
-    #                 <td>%0.2E</td>
-    #                 <td>&microg/L</td>
-    #             </tr></table><br>""" %(cw_temp)
-                                                                                  
-    # Inout_table = Input_header+Input_mai+Input_dsed+Input_a+Input_pb+Input_dw+Input_osed+Input_kd+Output_header+Output_mai1+Output_cw  
-               
-    # return Inout_table  
                 
 def loop_html(thefile):
+
     reader = csv.reader(thefile.file.read().splitlines())
     header = reader.next()
-    logger.info(header)
-    i=0
-    iter_html=""
+    # logger.info(header)
+    i=1
+    ####Create a job queue and add each row of batch temeplate file as a task into it
     for row in reader:
-        iter_html = iter_html +html_table(row,i)
+        job_q.put([row, i])
         i=i+1
 
+    all_threads = [Thread(target=html_table, args=(job_q, )) for j in range(thread_count)]
+    for x in all_threads:
+        x.start()
+    for x in all_threads:
+        job_q.put(None)
+    for x in all_threads:
+        x.join()
+
+    html_timestamp = rice_tables.timestamp("", jid_batch[0])
+    out_html_all_sort = OrderedDict(sorted(out_html_all.items()))
     sum_output_cw="""<table border="1" style="display: none"><tr>
                     <td id="cw_out_raw" data-val='%s' style="display: none"></td>                                                                              
                     <td>&microg/L</td>
@@ -163,118 +131,8 @@ def loop_html(thefile):
                         <input type="text" id="buckets" value=%s></div><br>
                         <button type="submit" id="calc">Calculate Historgram</button></div><br>
                 <div id="chart1"></div><br>"""%(int(1+3.3*np.log10(len(cw)))) #number of bins coming from Sturgis rule         
-                                     
-
     sum_html = rice_tables.table_sum_all(rice_tables.sumheadings, rice_tables.tmpl, mai, dsed, a, pb, dw, osed, kd, msed, vw, mai1, cw)
-
-    return sum_html+sum_output_cw+sum_fig+iter_html
-
-    # sum_header ="""<table border="1">
-    #                     <tr><H3>Summary Statistics (Iterations=%s)</H3></tr><br>
-    #                     <tr>
-    #                         <td><b>Input Name</b></td>
-    #                         <td><b>Mean</b></td>
-    #                         <td><b>Std.</b></td>
-    #                         <td><b>Min</b></td>
-    #                         <td><b>Max</b></td>                            
-    #                         <td><b>Unit</b></td>
-    #                     </tr>"""%(i-1)
-                        
-    # sum_mai="""<tr>
-    #                 <td>Mass of Applied Ingredient Applied to Paddy</td>
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td>                    
-    #                 <td>kg</td>
-    #             </tr>""" %(numpy.mean(mai), numpy.std(mai), numpy.min(mai), numpy.max(mai)) 
-    # sum_dsed="""<tr>
-    #                 <td>Sediment Depth</td>
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td>   
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td>                                       
-    #                 <td>m</td>
-    #             </tr>""" %(numpy.mean(dsed), numpy.std(dsed), numpy.min(dsed), numpy.max(dsed))                         
-    # sum_a="""<tr>
-    #                 <td>Area of the Rice Paddy</td>
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td> 
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td>                                        
-    #                 <td>m<sup>2</sup></td>
-    #             </tr>""" %(numpy.mean(a), numpy.std(a), numpy.min(a), numpy.max(a))                          
-    # sum_pb="""<tr>
-    #                 <td>Bulk Density of Sediment</td>
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td>                                          
-    #                 <td>kg/m<sup>3</sup></td>
-    #             </tr>""" %(numpy.mean(pb), numpy.std(pb), numpy.min(pb), numpy.max(pb))  
-    # sum_dw="""<tr>
-    #                 <td>Water Column Depth</td>
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td> 
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td>                                     
-    #                 <td>m</td>
-    #             </tr>""" %(numpy.mean(dw), numpy.std(dw), numpy.min(dw), numpy.max(dw)) 
-    # sum_osed="""<tr>
-    #                 <td>Porosity of Sediment</td>
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td>  
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td>                                        
-    #                 <td>-</td>
-    #             </tr>""" %(numpy.mean(osed), numpy.std(osed), numpy.min(osed), numpy.max(osed))                        
-    # sum_kd="""<tr>
-    #                 <td>Water-Sediment Partitioning Coefficient</td>
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td>
-    #                 <td>%5.2f</td>                                          
-    #                 <td>L/kg</td>
-    #             </tr></table><br>""" %(numpy.mean(kd), numpy.std(kd), numpy.min(kd), numpy.max(kd))  
-                
-    # sum_output_header="""<table border="1">
-    #                     <tr>
-    #                         <td><b>Output Name</b></td>
-    #                         <td><b>Mean</b></td>
-    #                         <td><b>Std.</b></td>
-    #                         <td><b>Min</b></td>
-    #                         <td><b>Max</b></td>                             
-    #                         <td><b>Unit</b></td>
-    #                     </tr>"""
-    # sum_output_mai1="""<tr>
-    #                 <td>Application Rate</td>
-    #                 <td>%0.2E</td>
-    #                 <td>%0.2E</td>
-    #                 <td>%0.2E</td>
-    #                 <td>%0.2E</td>                      
-    #                 <td>lbs a.i./A</td>
-    #             </tr>""" %(numpy.mean(mai1_out), numpy.std(mai1_out), numpy.min(mai1_out), numpy.max(mai1_out))
-    # sum_output_cw="""<table border="1" style="display: none"><tr>
-    #                 <td>Peak & Chronic EEC</td>
-    #                 <td>%0.2E</td>
-    #                 <td>%0.2E</td> 
-    #                 <td>%0.2E</td>
-    #                 <td>%0.2E</td>                      
-    #                 <td id="cw_out_raw" data-val='%s' style="display: none"></td>                                                                              
-    #                 <td>&microg/L</td>
-    #             </tr></table><br>""" %(numpy.mean(cw_out), numpy.std(cw_out), numpy.min(cw_out), numpy.max(cw_out), cw_out)             
-    # sum_fig="""<H3>Historgram</H3><br>
-    #            <div id="calculate">
-    #                <div class="block">
-    #                     <label>How many buckets (Default is based on Sturgis rule):</label>
-    #                     <input type="text" id="buckets" value=%s></div><br>
-    #                     <button type="submit" id="calc">Calculate Historgram</button></div><br>
-    #             <div id="chart1"></div><br>"""%(int(1+3.3*np.log10(len(cw_out)))) #number of bins coming from Sturgis rule         
-                                     
-    # sum_html=sum_header+sum_mai+sum_dsed+sum_a+sum_pb+sum_dw+sum_osed+sum_kd+sum_output_header+sum_output_mai1+sum_output_cw+sum_fig    
-    # return sum_html+iter_html
-
-
+    return  html_timestamp + sum_html+sum_output_cw+sum_fig + "".join(out_html_all_sort.values())
 
               
 class RiceBatchOutputPage(webapp.RequestHandler):
@@ -297,6 +155,7 @@ class RiceBatchOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'export.html', {})            
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         # html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.batch_save_dic(html, [x.__dict__ for x in rice_all], 'rice', 'batch', jid_batch[0], ChkCookie, templatepath)
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', RiceBatchOutputPage)], debug=True)

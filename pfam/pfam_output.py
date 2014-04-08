@@ -135,6 +135,7 @@ class PFAMOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'pfam', 
                 'model_attributes':'PFAM Output'})
+        html = html + pfam_tables.timestamp(pfam_obj)
         html = html + pfam_tables.table_all(pfam_obj)
         html = html + template.render(templatepath + 'pfam-output.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})

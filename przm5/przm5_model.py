@@ -10,6 +10,7 @@ from collections import OrderedDict
 import os
 import logging
 logger = logging.getLogger('PRZM5 Model')
+import rest_funcs
 
 ############Provide the key and connect to the picloud####################
 api_key=keys_Picloud_S3.picloud_api_key
@@ -122,15 +123,9 @@ def get_jid(run_type, pfac, snowmelt, evapDepth,
                "convertSoil1": convertSoil1,
                "convert1to3": convert1to3,
                "convert2to3": convert2to3}
-    # logger.info(all_dic)
+    logger.info(all_dic)
     data = json.dumps(all_dic)
-
-    ts = datetime.now()
-    if(time.daylight):
-        ts1 = timedelta(hours=-4)+ts
-    else:
-        ts1 = timedelta(hours=-5)+ts
-    jid = ts1.strftime('%Y%m%d%H%M%S%f')
+    jid = rest_funcs.gen_jid()
     url=url_part1 + '/przm5/' + jid 
 
 
@@ -252,9 +247,9 @@ class przm5(object):
                 self.PestAppyMon.append(v)
             elif k.startswith('rate_a_'):
                 self.PestAppyRate.append(v)
-            elif k.startswith('eff_a_'):
+            elif k.startswith('eff_pond_a_'):
                 self.localEff.append(v)
-            elif k.startswith('drift_a_'):
+            elif k.startswith('drift_pond_a_'):
                 self.localSpray.append(v)
             elif k.startswith('foliarHalfLife_'):
                 self.foliarHalfLifeBox.append(float(v))

@@ -101,7 +101,7 @@ class agdrift_therpsOutputPage(webapp.RequestHandler):
         #print rate_out
         agdrift_obj = agdrift_model.agdrift(True, True, drop_size, ecosystem_type, application_method, boom_height, orchard_type, a_r, distance, aquatic_type, calculation_input)
         #logger.info(type(agdrift_obj.init_avg_dep_foa))
-        therps_obj = therps_model.therps(chem_name, use, formu_name, a_i, h_l, n_a, i_a, a_r, avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, 
+        therps_obj = therps_model.therps("single", chem_name, use, formu_name, a_i, h_l, n_a, i_a, a_r, avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, 
                                          Species_of_the_tested_bird_avian_ld50, Species_of_the_tested_bird_avian_lc50, Species_of_the_tested_bird_avian_NOAEC, Species_of_the_tested_bird_avian_NOAEL,
                                          bw_avian_ld50, bw_avian_lc50, bw_avian_NOAEC, bw_avian_NOAEL,
                                          mineau_scaling_factor, bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md, 
@@ -118,13 +118,13 @@ class agdrift_therpsOutputPage(webapp.RequestHandler):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie, "AgDrift-T-Herps Output")
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'agdrift','page':'output'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'agdrift_therps','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'agdrift_therps', 
                 'model_attributes':'AgDrift-T-Herps Output'})
 
-        #html = html + therps_tables.timestamp(therps_obj, '')
+        html = html + therps_tables.timestamp(therps_obj, '')
         html = html + agdrift_tables.table_all(agdrift_obj)
         # html = html + trex2_tables.timestamp()
         html = html + therps_tables.table_all(therps_obj)[0]
@@ -186,4 +186,4 @@ def main():
     run_wsgi_app(app)
 
 if __name__ == '__main__':
-    main()
+    main()

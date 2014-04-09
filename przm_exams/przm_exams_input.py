@@ -22,14 +22,12 @@ class PRZMEXAMSInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start_tabbed.html', {
                 'model':'przm_exams', 
                 'model_attributes':'PRZM-EXAMS Inputs'})
-        html = html + """
-        <div class="input_nav">
-            <ul>
-                <li class="PRZM tabSel"> PRZM Inputs </li>
-                |<li class="EXAMS tabUnsel"> EXAMS Inputs</li>
-            </ul>
-        </div>
-        """
+        html = html + template.render (templatepath + '04uberinput_tabbed_nav.html', {
+                'nav_dict': {
+                    'class_name': ['PRZM', 'EXAMS'],
+                    'tab_label': ['PRZM Inputs', 'EXAMS Inputs']
+                    }
+                })
         html = html + """<br><table class="tab tab_PRZM">"""
         html = html + str(przm_exams_parameters.PRZMInp())
         html = html + """</table><table class="tab tab_EXAMS" style="display:none">"""

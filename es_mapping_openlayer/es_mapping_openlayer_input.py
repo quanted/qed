@@ -10,17 +10,17 @@ from es_mapping_openlayer import es_mapping_openlayer_parameters
 class esInputPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        html = template.render(templatepath + '01uberheader.html', {'title':'Ubertool'})
+        html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
         html = html + template.render(templatepath + 'mapper_openlayer_jQuery.html', {})
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'es_mapping_openlayer','page':'input'})
-        html = html + template.render (templatepath + '03ubertext_links_left.html', {})        
+        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'es_mapping_openlayer','page':'input'})
+        html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})        
         html = html + template.render (templatepath + '04uberinput_start.html', {
                 'model':'es_mapping_openlayer', 
                 'model_attributes':'Endangered Species Mapper Inputs'})
         html = html + str(es_mapping_openlayer_parameters.esInp())
         html = html + template.render (templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render (templatepath + '05ubertext_tooltips_right.html', {})
-        html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', esInputPage)], debug=True)

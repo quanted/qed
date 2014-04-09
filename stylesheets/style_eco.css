@@ -1155,6 +1155,12 @@ a.logreg:link, a.logreg:visited, a.logreg:active {
   color:#FFFFFF;
   background-color:#FFA500;
 }
+.tabUnsel {
+  color: #333333;
+}
+.tabSel {
+  color: #FFA500;
+}
 
 /* Tables */
 

@@ -20,23 +20,19 @@ class swimInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start_tabbed.html', {
                 'model':'swim', 
                 'model_attributes':'SWIM Inputs'})
-        html = html + """
-        <div class="input_nav">
-            <ul>
-                <li class="chem" style="color:#A31E39; font-weight:bold">Chemical</li>
-                |<li class="ad" style="font-weight:bold"> Adult</li>
-                |<li class="c1" style="font-weight:bold"> Children 6-11</li>
-                |<li class="c2" style="font-weight:bold"> Children 11-16</li>
-            </ul>
-        </div>
-        """
-        html = html + """<br><table class="tab tab_chem" border="0">"""
+        html = html + template.render (templatepath + '04uberinput_tabbed_nav.html', {
+                'nav_dict': {
+                    'class_name': ['chem', 'ad', 'c1', 'c2'],
+                    'tab_label': ['Chemical', 'Adult', 'Children 6-11', 'Children 11-16']
+                    }
+                })
+        html = html + """<br><table class="tab tab_chem">"""
         html = html + str(swim_parameters.swimInp_chem())
-        html = html + """</table><table class="tab tab_ad" border="0" style="display:none">"""
+        html = html + """</table><table class="tab tab_ad" style="display:none">"""
         html = html + str(swim_parameters.swimInp_ad())
-        html = html + """</table><table class="tab tab_c1" border="0" style="display:none">"""
+        html = html + """</table><table class="tab tab_c1" style="display:none">"""
         html = html + str(swim_parameters.swimInp_c1())
-        html = html + """</table><table class="tab tab_c2" border="0" style="display:none">"""
+        html = html + """</table><table class="tab tab_c2" style="display:none">"""
         html = html + str(swim_parameters.swimInp_c2())
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05hh_ubertext_tooltips_right.html', {})

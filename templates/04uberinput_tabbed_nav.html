@@ -1,0 +1,5 @@
+<div class="input_nav">
+	<ul>{% for item_className in nav_dict.class_name %}{% with forloop.counter0 as index_className %}{% for item_tabLabel in nav_dict.tab_label %}{% with forloop.counter0 as index_tabLabel %}{% ifequal index_className index_tabLabel %}{% if index_className == 0 %}
+		<li class="{{ item_className }} tabSel">{{ item_tabLabel }} </li>{% else %}|<li class="{{ item_className }} tabUnsel"> {{ item_tabLabel }} </li>{% endif %}{% endifequal %}{% endwith %}{% endfor %}{% endwith %}{% endfor %}
+	</ul>
+</div>

@@ -361,12 +361,6 @@ ul.nobullet {
   border-color: #F78181;
   color:red;
 }
-.tabUnsel {
-  color: #333333;
-}
-.tabSel {
-  color: #FFA500;
-}
 .articles_output {
   width: 822px;
   display: inline;

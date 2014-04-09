@@ -25,16 +25,15 @@ class ESOutputPage(webapp.RequestHandler):
         logger.info(vars(es_obj))
 
         templatepath = os.path.dirname(__file__) + '/../templates/'
-        ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie, "Endangered Species Mapper Output")    
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'es_mapping','page':'output'})
-        html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
+        html = template.render(templatepath + '01pop_uberheader.html', {'title':'Ubertool'})
+        html = html + template.render(templatepath + '02pop_uberintroblock_wmodellinks.html', {'model':'es_mapping','page':'output'})
+        html = html + template.render (templatepath + '03pop_ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
             'model':'es_mapping', 
             'model_attributes':'Endangered Species Mapper Output'})
         html = html + es_mapping_tables.table_all(es_obj)
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
-        html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        html = html + template.render(templatepath + '06pop_uberfooter.html', {'links': ''})
         self.response.out.write(html)
      
 app = webapp.WSGIApplication([('/.*', ESOutputPage)], debug=True)

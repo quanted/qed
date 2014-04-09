@@ -23,16 +23,12 @@ class vvwmInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start_tabbed.html', {
                 'model':'vvwm', 
                 'model_attributes':'Variable Volume Water Model Inputs'})
-        html = html + """
-        <div class="input_nav">
-            <ul>
-                <li class="Chemical tabSel">Chemical </li>
-                |<li class="Applications tabUnsel"> Applications </li>
-                |<li class="CropLand tabUnsel"> Crop/Land </li>
-                |<li class="WaterBody tabUnsel"> Water Body </li>
-            </ul>
-        </div>
-        """
+        html = html + template.render (templatepath + '04uberinput_tabbed_nav.html', {
+                'nav_dict': {
+                    'class_name': ['Chemical', 'Applications', 'CropLand', 'WaterBody'],
+                    'tab_label': ['Chemical', 'Applications', 'Crop/Land', 'Water Body']
+                    }
+                })
         html = html + """<br><table class="tab tab_Chemical">"""
         html = html + str(przm5_parameters.przm5Inp_chem())
         html = html + str(vvwm_parameters.vvwmInp_chem())

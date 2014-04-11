@@ -12,7 +12,6 @@
 
 		// called when marvin4js loaded
 		function sketchOnLoad() {
-			marvin.Sketch.license("http://pnnl.cloudapp.net");
 			if(marvin.Sketch.isSupported()) {
 				marvin.sketcherInstance = new marvin.Sketch("sketch");
 				marvin.sketcherInstance.setServices(getDefaultServices());

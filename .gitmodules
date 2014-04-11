@@ -7,3 +7,6 @@
 [submodule "ubermq"]
 	path = ubermq
 	url = https://batwalrus76@github.com/batwalrus76/ubermq.git
+[submodule "ubertool_pop"]
+	path = ubertool_pop
+	url = https://github.com/puruckertom/ubertool_pop.git

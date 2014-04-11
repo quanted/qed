@@ -8,6 +8,7 @@ app.yaml
 *.doc
 *.mdb
 *.pptx
+*.py~
 GA2.tif
 .VolumeIcon.icns
 .fseventsd

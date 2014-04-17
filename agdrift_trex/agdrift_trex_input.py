@@ -28,16 +28,12 @@ class agdrift_trexInputPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '04uberinput_start_tabbed.html', {
                 'model':'agdrift_trex', 
                 'model_attributes':'Agdrift and Trex Inputs'})
-        html = html + """
-        <div class="input_nav">
-            <ul>
-                <li class="Agdrift tabSel">Agdrift</li>
-                |<li class="Chemical tabUnsel">Chemical</li>
-                |<li class="Avian tabUnsel"> Avian</li>
-                |<li class="Mammal tabUnsel"> Mammal</li>
-            </ul>
-        </div>
-        """
+        html = html + template.render (templatepath + '04uberinput_tabbed_nav.html', {
+                'nav_dict': {
+                    'class_name': ['Agdrift', 'Chemical', 'Avian', 'Mammal'],
+                    'tab_label': ['Agdrift', 'Chemical', 'Avian', 'Mammal']
+                    }
+                })
         html = html + """<br><table class="tab tab_Agdrift" border="0">"""
         html = html + str(agdrift_trex_parameters.agdriftInp())
         html = html + """<br><table class="tab tab_Chemical" border="0" style="display:none">"""

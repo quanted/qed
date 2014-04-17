@@ -27,24 +27,12 @@ class KabamInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start_tabbed.html', {
                 'model':'kabam', 
                 'model_attributes':'Kabam Inputs'})
-        html = html + """
-        <div class="input_nav">
-          <ul>
-            <li class="Chemical tabSel"> Chemical </li>
-            |<li class="Avian tabUnsel"> Avian </li>
-            |<li class="Mammal tabUnsel"> Mammal </li>
-            |<li class="LargeFish tabUnsel"> Large Fish </li>
-            |<li class="MediumFish tabUnsel"> Medium Fish </li>
-            |<li class="SmallFish tabUnsel"> Small Fish </li>
-            |<li class="Filterfeeders tabUnsel"> Filter feeders </li>
-            |<li class="Invertebrates tabUnsel"> Invertebrates </li>
-            |<li class="Zooplankton tabUnsel"> Zooplankton </li>
-            |<li class="Phytoplankton tabUnsel"> Phytoplankton </li>
-            |<li class="Sediment tabUnsel"> Sediment </li>
-            |<li class="Constants tabUnsel"> Constants</li>
-          </ul>
-        </div>
-        """
+        html = html + template.render (templatepath + '04uberinput_tabbed_nav.html', {
+                'nav_dict': {
+                    'class_name': ['Chemical', 'Avian', 'Mammal', 'LargeFish', 'MediumFish', 'SmallFish', 'Filterfeeders', 'Invertebrates', 'Zooplankton', 'Phytoplankton', 'Sediment', 'Constants'],
+                    'tab_label': ['Chemical', 'Avian', 'Mammal', 'Large Fish', 'Medium Fish', 'Small Fish', 'Filter feeders', 'Invertebrates', 'Zooplankton', 'Phytoplankton', 'Sediment', 'Constants']
+                    }
+                })
         html = html + """<br><table class="tab tab_Chemical" border="0">"""
         html = html + str(kabam_parameters.KabamInp_chem())
         html = html + """</table><table class="tab tab_Avian" border="0" style="display:none">"""

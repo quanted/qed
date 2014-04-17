@@ -24,17 +24,12 @@ class swcInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start_tabbed.html', {
                 'model':'swc', 
                 'model_attributes':'Surface Water Calculator Inputs'})
-        html = html + """
-        <div class="input_nav">
-            <ul>
-                <li class="Chemical tabSel">Chemical </li>
-                |<li class="Applications tabUnsel"> Applications </li>
-                |<li class="CropLand tabUnsel"> Crop/Land </li>
-                |<li class="Runoff tabUnsel"> Runoff </li>
-                |<li class="WaterBody tabUnsel"> Water Body </li>
-            </ul>
-        </div>
-        """
+        html = html + template.render (templatepath + '04uberinput_tabbed_nav.html', {
+                'nav_dict': {
+                    'class_name': ['Chemical', 'Applications', 'CropLand', 'Runoff', 'WaterBody'],
+                    'tab_label': ['Chemical', 'Applications', 'Crop/Land', 'Runoff', 'Water Body']
+                    }
+                })
         html = html + """<br><table class="tab tab_Chemical">"""
         html = html + str(przm5_parameters.przm5Inp_chem())
         html = html + str(vvwm_parameters.vvwmInp_chem())

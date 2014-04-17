@@ -143,7 +143,7 @@ $(document).ready(function() {
     $('#id_DayRe').closest('tr').addClass('app_days');
     //$('#id_CAM_1').closest('tr').addClass('app_days');
     
-    $('<tr class="app_dates"><th><label for="id_Date_apt">Application Date 1 (MM/DD):</label></th><td><input readonly="readonly" type="text" name="Date_apt" value="MM/DD" id="id_Date_apt"/><td></tr>').insertAfter('.table tr:nth-child(5)');
+    $('<tr class="app_dates"><th><label for="id_Date_apt">Application Date 1 (MM/DD):</label></th><td><input readonly="readonly" type="text" name="Date_apt" value="MM/DD" id="id_Date_apt"/></td></tr>').insertAfter('.table tr:nth-child(5)');
 
 //set default values//
     $('#id_Scenarios').val('FL Citrus   MLRA-156A');
@@ -281,7 +281,7 @@ $(document).ready(function() {
         for (var i = 2; i <= total; i++){
             $('<tr class="blank"><th colspan="2" align="center">Application'+i+'</th></tr>').appendTo('.table');
             $('<tr class="app_timing"><th><label for="id_Apt'+i+'">Application timing '+i+':</label></th><td><select name="Apt'+i+'" id="id_Apt'+i+'"><option value="" selected="selected">Select an application timing</option><option value="1">Relative to planting</option><option value="2">Relative to emergence</option><option value="3">Relative to maturity</option><option value="4">Relative to harvest</option><option value="5">Enter your own dates</option></select></td></tr>').appendTo('.table')
-            $('<tr class="app_dates"><th><label for="id_Date_apt">Application Date '+i+' (MM/DD):</label></th><td><input readonly="readonly" type="text" name="Date_apt'+i+'" value="MM/DD" id="id_Date_apt'+i+'"/><td></tr>').appendTo('.table')
+            $('<tr class="app_dates"><th><label for="id_Date_apt">Application Date '+i+' (MM/DD):</label></th><td><input readonly="readonly" type="text" name="Date_apt'+i+'" value="MM/DD" id="id_Date_apt'+i+'"/></td></tr>').appendTo('.table')
             $('<tr class="app_days"><th><label for="id_DayRe'+i+'">Days relevant to the application '+i+':</label></th><td><input type="text" name="DayRe'+i+'" value="0" id="id_DayRe'+i+'" /></td></tr>').appendTo('.table');
             $('<tr class="app_method"><th><label for="id_Ap_m'+i+'">Application method '+i+':</label></th><td><select name="Ap_m'+i+'" id="id_Ap_m'+i+'"><option value="" selected="selected">Select an application method</option><option value="1">Aerial</option><option value="2">Ground Sprayer</option><option value="3">Airblast</option><option value="4">Other equipment</option></select></td></tr>').appendTo('.table');
             $('<tr class="app_rate"><th><label for="id_Ar'+i+'">Application rate '+i+':</label></th><td><input type="text" name="Ar'+i+'" id="id_Ar'+i+'" /></td></tr>').appendTo('.table');

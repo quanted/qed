@@ -29,15 +29,12 @@ class THerpsInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start_tabbed.html', {
                 'model':'therps', 
                 'model_attributes':'T-Herps Inputs'})
-        html = html + """
-        <div class="input_nav">
-            <ul>
-                <li class="Chemical tabSel"> Chemical</li>
-                |<li class="Avian tabUnsel"> Avian</li>
-                |<li class="Herptile tabUnsel"> Herptile</li>
-            </ul>
-        </div>
-        """
+        html = html + template.render (templatepath + '04uberinput_tabbed_nav.html', {
+                'nav_dict': {
+                    'class_name': ['Chemical', 'Avian', 'Herptile'],
+                    'tab_label': ['Chemical', 'Avian', 'Herptile']
+                    }
+                })
         html = html + """<br><table class="tab tab_Chemical" border="0">"""
         html = html + str(therps_parameters.trexInp_chem())
         html = html + """</table><table class="tab tab_Avian" border="0" style="display:none">"""

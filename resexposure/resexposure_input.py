@@ -50,7 +50,6 @@ class resexposureInputPage(webapp.RequestHandler):
             </ul>
         </div>
         """
-        #
         html = html + """<br><table class="tab tab_model" border="0">"""
         html = html + str(resexposure_parameters.resexposureInp_model())
         html = html + """</table><table class="tab tab_hdflr" border="0" style="display:none">"""

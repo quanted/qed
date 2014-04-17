@@ -21,19 +21,12 @@ class PFAMInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start_tabbed.html', {
                 'model':'pfam', 
                 'model_attributes':'PFAM Inputs'})
-        html = html + """
-        <div class="input_nav">
-            <ul>
-                <li class="Chemical tabSel"> Chemical </li>
-                |<li class="Application tabUnsel"> Application </li>
-                |<li class="Location tabUnsel"> Location </li>
-                |<li class="Floods tabUnsel"> Floods </li>
-                |<li class="Crop tabUnsel"> Crop </li>
-                |<li class="Physical tabUnsel"> Physical </li>
-                |<li class="Output tabUnsel"> Output</li>
-            </ul>
-        </div>
-        """
+        html = html + template.render (templatepath + '04uberinput_tabbed_nav.html', {
+                'nav_dict': {
+                    'class_name': ['Chemical', 'Application', 'Location', "Floods", "Crop", "Physical", "Output"],
+                    'tab_label': ['Chemical', 'Application', 'Location', "Floods", "Crop", "Physical", "Output"]
+                    }
+                })
         html = html + """<br><table class="tab tab_Chemical" border="0">"""
         html = html + str(pfam_parameters.PFAMInp_chem())
         html = html + """</table><table class="tab tab_Application" border="0" style="display:none">

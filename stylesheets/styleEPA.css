@@ -360,12 +360,6 @@ ul.nobullet {
   border-color: #F78181;
   color:red;
 }
-.tabUnsel {
-  color: #1F262A;
-}
-.tabSel {
-  color: #4289AA;
-}
 .articles_output {
   width: 822px;
   display: inline;

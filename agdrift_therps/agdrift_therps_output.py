@@ -14,6 +14,7 @@ import utils.json_utils
 sys.path.append("../agdrift")
 sys.path.append("../therps")
 from agdrift import agdrift_model,agdrift_tables
+from agdrift_therps import agdrift_therps_tables
 from therps import therps_model,therps_tables
 from uber import uber_lib
 from django.template import Context, Template
@@ -124,7 +125,7 @@ class agdrift_therpsOutputPage(webapp.RequestHandler):
                 'model':'agdrift_therps', 
                 'model_attributes':'AgDrift-T-Herps Output'})
 
-        html = html + therps_tables.timestamp(therps_obj, '')
+        html = html + agdrift_therps_tables.timestamp(agdrift_obj)
         html = html + agdrift_tables.table_all(agdrift_obj)
         # html = html + trex2_tables.timestamp()
         html = html + therps_tables.table_all(therps_obj)[0]
@@ -186,4 +187,5 @@ def main():
     run_wsgi_app(app)
 
 if __name__ == '__main__':
-    main()
+    main()
+

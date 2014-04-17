@@ -110,9 +110,9 @@ handlers:
   static_dir: pdfs
 - url: /csvs
   static_dir: csvs
-- url: /(.*\.(gif|png|jpg))
-  static_files: static/\1
-  upload: static/(.*\.(gif|png|jpg))
+# - url: /(.*\.(gif|png|jpg))
+#   static_files: static/\1
+#   upload: static/(.*\.(gif|png|jpg))
 - url: /templates/popup.html
   static_files: templates/popup.html
   upload: templates/popup.html

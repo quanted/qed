@@ -14,6 +14,7 @@ import utils.json_utils
 sys.path.append("../agdrift")
 sys.path.append("../trex2")
 from agdrift import agdrift_model,agdrift_tables
+from agdrift_trex import agdrift_trex_tables
 from trex2 import trex2_model,trex2_tables
 from uber import uber_lib
 from django.template import Context, Template
@@ -148,7 +149,7 @@ class agdrift_trexOutputPage(webapp.RequestHandler):
                 'model':'agdrift_trex', 
                 'model_attributes':'AgDrift-T-Rex Output'})
 
-        html = html + trex2_tables.timestamp(trex_obj, '')
+        html = html + agdrift_trex_tables.timestamp(agdrift_obj)
         html = html + agdrift_tables.table_all(agdrift_obj)
         # html = html + trex2_tables.timestamp()
         html = html + trex2_tables.table_all(trex_obj)[0]
@@ -212,4 +213,5 @@ def main():
     run_wsgi_app(app)
 
 if __name__ == '__main__':
-    main()
+    main()
+

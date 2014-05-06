@@ -10,3 +10,6 @@
 [submodule "ubertool_pop"]
 	path = ubertool_pop
 	url = https://github.com/puruckertom/ubertool_pop.git
+[submodule "ubertool_cts"]
+	path = ubertool_cts
+	url = https://github.com/puruckertom/ubertool_cts.git

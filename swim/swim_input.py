@@ -26,13 +26,13 @@ class swimInputPage(webapp.RequestHandler):
                     'tab_label': ['Chemical', 'Adult', 'Children 6-11', 'Children 11-16']
                     }
                 })
-        html = html + """<br><table class="tab tab_chem">"""
+        html = html + """<br><table class="input_table tab tab_chem">"""
         html = html + str(swim_parameters.swimInp_chem())
-        html = html + """</table><table class="tab tab_ad" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_ad" style="display:none">"""
         html = html + str(swim_parameters.swimInp_ad())
-        html = html + """</table><table class="tab tab_c1" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_c1" style="display:none">"""
         html = html + str(swim_parameters.swimInp_c1())
-        html = html + """</table><table class="tab tab_c2" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_c2" style="display:none">"""
         html = html + str(swim_parameters.swimInp_c2())
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05hh_ubertext_tooltips_right.html', {})

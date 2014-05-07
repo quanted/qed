@@ -34,13 +34,13 @@ class agdrift_therpsInputPage(webapp.RequestHandler):
                     'tab_label': ['Agdrift', 'Chemical', 'Avian', 'Herptile']
                     }
                 })
-        html = html + """<br><table class="tab tab_Agdrift" border="0">"""
+        html = html + """<br><table class="input_table tab tab_Agdrift" border="0">"""
         html = html + str(agdrift_therps_parameters.agdriftInp())
-        html = html + """<br><table class="tab tab_Chemical" border="0" style="display:none">"""
+        html = html + """<br><table class="input_table tab tab_Chemical" border="0" style="display:none">"""
         html = html + str(agdrift_therps_parameters.trexInp_chem())
-        html = html + """</table><table class="tab tab_Avian" border="0" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_Avian" border="0" style="display:none">"""
         html = html + str(agdrift_therps_parameters.trexInp_bird())
-        html = html + """</table><table class="tab tab_Herptile" border="0" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_Herptile" border="0" style="display:none">"""
         html = html + str(agdrift_therps_parameters.trexInp_herp())
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

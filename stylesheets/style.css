@@ -303,6 +303,9 @@ ul.nobullet {
   list-style: none;
 }
 .articles_input table {
+  margin-bottom: 12px;
+}
+.input_table {
   width: 90%;
   margin-bottom: 12px;
   border-radius: 4px;

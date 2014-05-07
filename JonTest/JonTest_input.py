@@ -30,17 +30,17 @@ class genericInputPage(webapp.RequestHandler):
             </ul>
         </div>
         """
-        html = html + """<br><table class="tab tab_Chemical">"""
+        html = html + """<br><table class="input_table tab tab_Chemical">"""
         html = html + str(JonTest_parameters.JonTestChem())
-        html = html + """<br><table class="tab tab_Chemical0">"""
+        html = html + """<br><table class="input_table tab tab_Chemical0">"""
         html = html + str(JonTest_parameters.JonTestChem0())
-        html = html + """<br><table class="tab tab_Chemical1">"""
+        html = html + """<br><table class="input_table tab tab_Chemical1">"""
         html = html + str(JonTest_parameters.JonTestChem1())
-        html = html + """</table><table class="tab tab_Applications" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_Applications" style="display:none">"""
         html = html + str(JonTest_parameters.JonTestApp())
-        html = html + """</table><table class="tab tab_CropLand" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_CropLand" style="display:none">"""
         html = html + str(JonTest_parameters.JonTestCL())
-        html = html + """</table><table class="tab tab_WaterBody" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_WaterBody" style="display:none">"""
         html = html + str(JonTest_parameters.JonTestWB())
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         # html = html + """

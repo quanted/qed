@@ -27,9 +27,9 @@ class PFAMInputPage(webapp.RequestHandler):
                     'tab_label': ['Chemical', 'Application', 'Location', "Floods", "Crop", "Physical", "Output"]
                     }
                 })
-        html = html + """<br><table class="tab tab_Chemical" border="0">"""
+        html = html + """<br><table class="input_table tab tab_Chemical" border="0">"""
         html = html + str(pfam_parameters.PFAMInp_chem())
-        html = html + """</table><table class="tab tab_Application" border="0" style="display:none">
+        html = html + """</table><table class="input_table tab tab_Application" border="0" style="display:none">
                                     <tr><th colspan="2" scope="col"><label for="id_noa">Number of Applications:</label></th>
                                         <td colspan="3" scope="col"><select name="noa" id="id_noa">
                                             <option value="">Make a selection</option>
@@ -66,9 +66,9 @@ class PFAMInputPage(webapp.RequestHandler):
                                         </td>
                                     </tr>"""        
                 
-        html = html + """</table><table class="tab tab_Location" border="0" style="display:none">"""    
+        html = html + """</table><table class="input_table tab tab_Location" border="0" style="display:none">"""    
         html = html + str(pfam_parameters.PFAMInp_loc())
-        html = html + """</table><table class="tab tab_Floods" border="0" style="display:none">
+        html = html + """</table><table class="input_table tab tab_Floods" border="0" style="display:none">
                                     <tr><th></th><th colspan="2" scope="col"><label for="id_nof">Number of Floods Events:</label></th>
                                         <td colspan="2" scope="col"><select name="nof" id="id_nof">
                                             <option value="">Make a selection</option>
@@ -88,11 +88,11 @@ class PFAMInputPage(webapp.RequestHandler):
                                         <td colspan="2"><input type="text" name="date_f1" value="MM/DD" id="id_date_f1" /></td>
                                     </tr>"""    
 
-        html = html + """</table><table class="tab tab_Crop" border="0" style="display:none">"""      
+        html = html + """</table><table class="input_table tab tab_Crop" border="0" style="display:none">"""      
         html = html + str(pfam_parameters.PFAMInp_cro())                
-        html = html + """</table><table class="tab tab_Physical" border="0" style="display:none">"""      
+        html = html + """</table><table class="input_table tab tab_Physical" border="0" style="display:none">"""      
         html = html + str(pfam_parameters.PFAMInp_phy())
-        html = html + """</table><table class="tab tab_Output" border="0" style="display:none">"""    
+        html = html + """</table><table class="input_table tab tab_Output" border="0" style="display:none">"""    
         html = html + str(pfam_parameters.PFAMInp_out())     
                 
         html = html + template.render(templatepath + 'pfam-jquery.html', {})

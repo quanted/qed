@@ -12,10 +12,8 @@ from uber import uber_lib
 
 class genericDescriptionPage(webapp.RequestHandler):
     def get(self):
-        text_file1 = open('generic/generic_description.txt','r')
-        x = text_file1.read()
-        text_file2 = open('generic/generic_text.txt','r')
-        xx = text_file2.read()
+        text_file = open('generic/generic_description.txt','r')
+        x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie, "Generic Description")
@@ -24,7 +22,7 @@ class genericDescriptionPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04ubertext_start.html', {
                 'model_page':'#', 
                 'model_attributes':'Generic Overview', 
-                'text_paragraph':xx})
+                'text_paragraph':x})
         html = html + template.render(templatepath + '04ubertext_end.html', {})
         html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

@@ -10,8 +10,8 @@ Specific EPA guidance and the Microsoft Excel version of the model on the Screen
 <p>
 Current github source code:
 </p>
-<ul>
-<li><a href="https://github.com/puruckertom/ubertool_src/tree/master/sip">ubertool_src on github</a>
+<ul class="bullet">
+  <li><a href="https://github.com/puruckertom/ubertool_src/tree/master/sip">ubertool_src on github</a>
 </ul>
 
 <p>

@@ -1,0 +1,4 @@
+<p>The population change rate of logistic model is:</p>
+<img src = "/images/latex/logistic/logistic_1.png" alt="Logistic_1">
+<p>whose solution is:</p>
+<img src = "/images/latex/logistic/logistic_2.png" alt="Logistic_2">

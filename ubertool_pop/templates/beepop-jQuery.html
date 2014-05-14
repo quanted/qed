@@ -1,0 +1,34 @@
+<script>
+$(document).ready(function () {
+    $('#id_stop_lay').closest('tr').hide();
+    $('#id_start_lay').closest('tr').hide();
+    $('#id_lay_maximum').closest('tr').hide();
+    $('#id_swarm_date').closest('tr').hide();
+    $('#id_kill_percent').closest('tr').hide();
+$('#id_swarm').change(function () {
+    if ($('#id_swarm').val() == "No") {
+        $('#id_stop_lay').closest('tr').hide();
+        $('#id_start_lay').closest('tr').hide();
+        $('#id_lay_maximum').closest('tr').hide();
+        $('#id_swarm_date').closest('tr').hide();
+    }
+    else if ($('#id_swarm').val() == "Yes") {
+        $('#id_stop_lay').closest('tr').show();
+        $('#id_start_lay').closest('tr').show();
+        $('#id_lay_maximum').closest('tr').show();
+        $('#id_swarm_date').closest('tr').show();
+        } 
+        });
+$('#id_winter_kill').change(function () {
+    if ($('#id_winter_kill').val() == "No") {
+		$('#id_kill_percent').closest('tr').hide();
+        } 
+    else if ($('#id_winter_kill').val() == "Yes") {
+		$('#id_kill_percent').closest('tr').show();
+		}
+    });
+});
+    $(window).bind('beforeunload', function () {
+        $(":reset").click();
+    });
+</script>

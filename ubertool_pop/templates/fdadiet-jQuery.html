@@ -1,0 +1,42 @@
+<!--<script type="text/javascript" src=" ../stylesheets/jquery.validate.js"></script>
+<link type="text/css" rel="stylesheet" href="http://craigsworks.com/projects/qtip2/packages/nightly/jquery.qtip.css" />
+<script type="text/javascript" src="http://craigsworks.com/projects/qtip2/packages/nightly/jquery.qtip.js"></script>-->
+<script>
+
+$(document).ready(function() {
+    $('#id_vol').closest('tr').hide();
+    $('#id_d').closest('tr').hide();
+    $('#id_h').closest('tr').hide();
+    $('#id_sa').closest('tr').hide();
+    $('#id_intake_avg').closest('tr').hide();
+    $('#id_intake_90th').closest('tr').hide();
+    $('#id_residue').closest('tr').hide();
+    $('#id_worst_case_est').closest('tr').hide();
+    $('.tank_residue').hide()
+
+    $('input:radio[name="run_use"]').change(function(){
+        if ($(this).val() == '1') {
+          $('#id_residue').closest('tr').hide();
+          $('#id_worst_case_est').closest('tr').hide();
+          $('#id_vol').closest('tr').show();
+          $('#id_d').closest('tr').show();
+          $('#id_h').closest('tr').show();
+          $('#id_sa').closest('tr').show();
+          $('#id_intake_avg').closest('tr').show();
+          $('#id_intake_90th').closest('tr').show();
+          $('.tank_residue').show()
+        }
+        else {
+          $('#id_vol').closest('tr').hide();
+          $('#id_d').closest('tr').hide();
+          $('#id_h').closest('tr').hide();
+          $('#id_sa').closest('tr').hide();
+          $('#id_intake_avg').closest('tr').hide();
+          $('#id_intake_90th').closest('tr').hide();
+          $('.tank_residue').hide()
+          $('#id_residue').closest('tr').show();
+          $('#id_worst_case_est').closest('tr').show();
+        }
+    });
+});
+</script>

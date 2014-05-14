@@ -1,0 +1,34 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{endfloat}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage[margin = 1in]{geometry}
+
+
+\begin{document}
+
+\begin{align}
+r_{t} & = r_{0}e^{-\alpha t} \nonumber
+\end{align} 
+
+\begin{align}
+\dfrac{dN_{t}}{dt} & = r_{0}\ln \frac{K}{N_{t}}N_{t} \nonumber \\
+&    \hspace{-1.3in}  \text{separating variables:} \nonumber \\
+&    \hspace{-0.4in} \frac{d \ln N_{t}}{\ln K - \ln N_{t} } = r_{0}dt \nonumber\\
+&    \hspace{-1.3in}  \text{thus the solution is:} \nonumber \\
+N_{t} & =K e^{-\ln \frac{K}{N_{0}}e^{-r_{0}t}} \nonumber\\
+&    \hspace{-1.3in}  \text{where:} \nonumber \\
+N_{0} & = \text{the initial population size} \nonumber \\
+N_{t} & = \text{the population size at time t} \nonumber \\
+r_{0} & = \text{maximum growth rate [1/time step]} \nonumber \\
+K & = \text{carrying capacity} \nonumber
+\end{align} 
+
+
+
+
+\end{document}
+
+

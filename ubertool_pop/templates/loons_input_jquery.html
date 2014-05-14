@@ -1,0 +1,33 @@
+<script>
+$(document).ready(function(){ 
+
+        var pa = $('#id_pa').val()
+        var b = $('#id_b').val()
+        var m = $('#id_m').val()
+        var r = $('#id_r').val()
+        var sj = $('#id_sj').val()
+        var rj = $('#id_rj').val()
+
+        var a11 = (sj*(1-rj)).toFixed(3)
+        var fa = (Math.pow(pa, 10/12)*b*m*r).toFixed(3)
+        var a21 = (sj*rj).toFixed(3)
+        var a22 = (pa*1).toFixed(3)
+
+        $('#l14').text(fa)
+        $('#l21').text(sj)
+        $('#l32').text(sj)
+        $('#l43').text(sj)
+        $('#l44').text(pa)
+
+        // $('#a11').text(a11)
+        // $('#a12').text(fa)
+        // $('#a21').text(a21)
+        // $('#a22').text(a22)
+
+        // console.log(a11)
+        // console.log(sj)
+        // console.log(rj)
+
+});
+</script>
+

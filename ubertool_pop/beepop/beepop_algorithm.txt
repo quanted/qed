@@ -1,0 +1,25 @@
+<p>In the beepop model the bees in each class are tracked on a daily basis. Rate of movement through the classes (larvae, worker bee, forager) is determined by user inputs. Disturbances to the hive can also be simulated by the modeler. For example, when a swarm is simulated the user can specify a percentage of bees that leaves and that percentage is taken evenly from all classes.</p>
+<p>The rate of eggs laid per day by the Queen:</p>
+<img src = "/images/latex/beepop/beepop_image1.png" alt="Bee Pop_1">
+<p>Degree day factor calculation:</p>
+<img src = "/images/latex/beepop/beepop_image2.png" alt="Bee Pop_2">
+<p>Hours of sunlight per day factor calculation:</p>
+<img src = "/images/latex/beepop/beepop_image3.png" alt="Bee Pop_3">
+<p>Foraging population size factor calculation:</p>
+<img src = "/images/latex/beepop/beepop_image4.png" alt="Bee Pop_4">
+<p>The number of eggs the Queen can potentially lay per day:</p>
+<img src = "/images/latex/beepop/beepop_image5.png" alt="Bee Pop_5">
+<p>The total proportion of eggs that are unfertilized each day:</p>
+<img src = "/images/latex/beepop/beepop_image6.png" alt="Bee Pop_6">
+<p>Sperm used factor:</p>
+<img src = "/images/latex/beepop/beepop_image7.png" alt="Bee Pop_7">
+<p>Factor influencing drone production that includes the affect of light and forager population size:</p>
+<img src = "/images/latex/beepop/beepop_image8.png" alt="Bee Pop_8">
+<p>Calculation of light factor:</p>
+<img src = "/images/latex/beepop/beepop_image9.png" alt="Bee Pop_9">
+<p>Calculation of forager population factor:</p>
+<img src = "/images/latex/beepop/beepop_image10.png" alt="Bee Pop_10">
+<p>Daily drone production is estimated by:</p>
+<img src = "/images/latex/beepop/beepop_image11.png" alt="Bee Pop_11">
+<p>Daily  production of workers is estimated by:</p>
+<img src = "/images/latex/beepop/beepop_image12.png" alt="Bee Pop_12">

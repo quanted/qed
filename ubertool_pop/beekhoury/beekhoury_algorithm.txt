@@ -1,0 +1,14 @@
+<p>The model developed by Khoury et al. (2011) was developed to aid in testing hypothesis relating to honey bee colony failure. The model uses compartments to simulate different parts of a honey bee colony, which allow you to assess the impact of forager deaths on overall honey bee colony numbers.</p>
+<p>The equation for the ecclosion rate or the number of eggs hatched in a colony:</p>
+<img src = "/images/latex/beekhoury/beekhoury_image1.png" alt="Bee Khoury_1">
+<p>The rate at which have bees become foragers. The right sight represents the social inhibition and how the number of foragers decreases the rate at which hive bees turn into foragers.:</p>
+<img src = "/images/latex/beekhoury/beekhoury_image2.png" alt="Bee Khoury_2">
+<p>Rate of change of number of bees inside hive:</p>
+<img src = "/images/latex/beekhoury/beekhoury_image3.png" alt="Bee Khoury_3">
+<p>The change in the number of forager bees:</p>
+<img src = "/images/latex/beekhoury/beekhoury_image4.png" alt="Bee Khoury_4">
+<p>Equation used to determine average age of forager:</p>
+<img src = "/images/latex/beekhoury/beekhoury_image5.png" alt="Bee Khoury_5">
+<p>Forager lifespan:</p>
+<img src = "/images/latex/beekhoury/beekhoury_image6.png" alt="Bee Khoury_6">
+

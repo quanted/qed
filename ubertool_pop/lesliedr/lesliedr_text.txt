@@ -1,0 +1,14 @@
+<p>Traditionally, ecological risk assessment of pesticides is based on the risk, between measured environment 
+concentrations and laboratory tested concentrations which cause biological effects. This approach has several drawbacks:</p>
+<ul class="bullet">
+  <li>difficult to relate risk ratios to ecological values (e.g., population size)</li>
+  <li>safety factors used in estimating risk ratios contain great uncertainty which easily cause over or under protection</Li>
+</ul>
+<p>As a solution, adding population models to the ecological risk assessment process can bridge the gap between 
+measurements and protection goals in the following aspects:</p>
+<ul class="bullet">  
+  <Li>reduce uncertainty in extrapolation individual level to population level </Li> 
+  <Li>identify worse scenarios with less effort</Li> 
+  <Li>integrate the effects of multiple stresses</Li>
+  <Li>reduce the use of laboratory animals</li>
+</ul>

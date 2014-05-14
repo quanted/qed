@@ -1,0 +1,13 @@
+<p>
+Exponential model (a.k.a. Malthusian growth model) is associated with the name of 
+<a href="http://en.wikipedia.org/wiki/Thomas_Robert_Malthus">Thomas Robert Malthus</a> (1766-1834), 
+who first realized that any species can potentially increase in numbers according to a geometric series.
+In 'Essay on the Principles of Pupulation', Malthus argued that in the absence of any constraints, human population will grow in a multiplicative
+manner until the depletion of food.
+</p>
+<p>Assumptions of Exponential Model:</p>
+<ul class="bullet">
+  <li>Continuous reproduction (e.g., no seasonality)</li>
+  <li>All organisms are identical (e.g., no age structure)</li>
+  <li>Environment is constant in space and time (e.g., resources are unlimited)</li>
+</ul>

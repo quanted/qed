@@ -1,0 +1,20 @@
+<!--start 04uberinput_end-->
+		<tr><td>&nbsp;</td></tr>
+        </table>
+<!-- End "articles" div -->
+
+  <table align="center">
+    <tr><td><input type="button" onclick="submitBatchConfigurations()" value="{{ sub_title }}">
+	  <input type="reset" value="Reset"></td></tr>
+</form>
+    	<form method="post" id="form1" enctype="multipart/form-data" action=run_ubertool_batchoutput.html>
+    		<tr><td>Batch Ubertool Input via CSV file</td></tr>
+    		<tr><td><a href="/csvs/ubertool_batch_template.csv">Please download, fill, and upload this CSV file for batch calculation. </a></td></tr>
+			<tr><td>File to upload: <input type="file" id="upfile1" name="upfile1" class="required" accept=".csv"/></td></tr>
+			<tr><td><input type="submit" value="Submit"> Upload the file!</td></tr>
+		</form>
+		<tr><td><div id="id_batch_results_table" style="visibility: hidden; height: 0px">
+		</div></td></tr>
+  </table>
+</div> <!-- End "article" div -->
+<!--end 04uberinput_end-->

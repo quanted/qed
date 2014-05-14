@@ -1,0 +1,214 @@
+<script>
+$(document).ready(function () {
+
+    $('#id_NS').attr('id', 'id_a').closest('tr').addClass('method_options').hide();
+    $('#id_IUCN').attr('id', 'id_b').closest('tr').addClass('method_options').hide();
+    $('#id_USFWS_t').attr('id', 'id_c').closest('tr').addClass('method_options').hide();
+
+    $('#id_NSM').attr('id', 'id_a1').closest('tr').addClass('method_options').hide();
+    //$('#id_NSB').attr('id', 'id_a2').closest('tr').addClass('method_options').hide();
+    $('#id_NSF').attr('id', 'id_a3').closest('tr').addClass('method_options').hide();
+    $('#id_NSP').attr('id', 'id_a4').closest('tr').addClass('method_options').hide();
+
+    $('#id_IUCN_Amphibians').attr('id', 'id_b1').closest('tr').addClass('method_options').hide();
+    $('#id_IUCN_Birds').attr('id', 'id_b2').closest('tr').addClass('method_options').hide();
+    $('#id_IUCN_Mammals').attr('id', 'id_b3').closest('tr').addClass('method_options').hide();
+    $('#id_IUCN_Mammals_Marine').attr('id', 'id_b4').closest('tr').addClass('method_options').hide();
+    $('#id_IUCN_Coral').attr('id', 'id_b5').closest('tr').addClass('method_options').hide();
+    $('#id_IUCN_Reptiles').attr('id', 'id_b6').closest('tr').addClass('method_options').hide();
+    $('#id_IUCN_Seagrasses').attr('id', 'id_b7').closest('tr').addClass('method_options').hide();
+    $('#id_IUCN_SeaCucumbers').attr('id', 'id_b8').closest('tr').addClass('method_options').hide();
+    $('#id_IUCN_Mangrove').attr('id', 'id_b9').closest('tr').addClass('method_options').hide();
+    $('#id_IUCN_MarineFish').attr('id', 'id_b10').closest('tr').addClass('method_options').hide();    
+
+    $('#id_USFWS_p').attr('id', 'id_c1').closest('tr').addClass('method_options').hide();
+    $('#id_USFWS_l').attr('id', 'id_c2').closest('tr').addClass('method_options').hide();
+
+
+    $('#id_ES_source').change(function () {
+        $('tr.method_options').hide();
+
+
+        if ($(this).val() == "a") {
+            $('#id_' + $(this).val()).closest('tr').show();
+            $('#id_a').change(function () {
+
+                if ($(this).val() == "a1") {
+
+                    $('#id_' + $(this).val()).closest('tr').show();
+                    //$('#id_a2').closest('tr').hide();
+                    $('#id_a3').closest('tr').hide();
+                    $('#id_a4').closest('tr').hide();
+                }
+                else if ($(this).val() == "a3") {
+                    $('#id_' + $(this).val()).closest('tr').show();
+                    $('#id_a1').closest('tr').hide();
+                    //$('#id_a2').closest('tr').hide();
+                    $('#id_a4').closest('tr').hide();
+                } 
+                else if ($(this).val() == "a4") {
+                    $('#id_' + $(this).val()).closest('tr').show();
+                    $('#id_a1').closest('tr').hide();
+                    //$('#id_a2').closest('tr').hide();
+                    $('#id_a3').closest('tr').hide();
+                }
+
+            });
+        } 
+        else if ($(this).val() == "b") {
+            $('#id_' + $(this).val()).closest('tr').show();
+            $('#id_b').change(function () {
+
+                if ($(this).val() == "b1") {
+                    $('#id_' + $(this).val()).closest('tr').show();
+                    $('#id_b2').closest('tr').hide();
+                    $('#id_b3').closest('tr').hide();
+                    $('#id_b4').closest('tr').hide();
+                    $('#id_b5').closest('tr').hide();
+                    $('#id_b6').closest('tr').hide();
+                    $('#id_b7').closest('tr').hide();
+                    $('#id_b8').closest('tr').hide();
+                    $('#id_b9').closest('tr').hide();
+                    $('#id_b10').closest('tr').hide();                                                             
+                } 
+                else if ($(this).val() == "b2"){
+                    $('#id_' + $(this).val()).closest('tr').show();
+                    $('#id_b1').closest('tr').hide();
+                    $('#id_b3').closest('tr').hide();
+                    $('#id_b4').closest('tr').hide(); 
+                    $('#id_b5').closest('tr').hide();
+                    $('#id_b6').closest('tr').hide();
+                    $('#id_b7').closest('tr').hide();
+                    $('#id_b8').closest('tr').hide();
+                    $('#id_b9').closest('tr').hide();
+                    $('#id_b10').closest('tr').hide();                                                             
+                }
+                else if ($(this).val() == "b3"){
+                    $('#id_' + $(this).val()).closest('tr').show();
+                    $('#id_b1').closest('tr').hide();
+                    $('#id_b2').closest('tr').hide();
+                    $('#id_b4').closest('tr').hide();
+                    $('#id_b5').closest('tr').hide();
+                    $('#id_b6').closest('tr').hide();
+                    $('#id_b7').closest('tr').hide();
+                    $('#id_b8').closest('tr').hide();
+                    $('#id_b9').closest('tr').hide();
+                    $('#id_b10').closest('tr').hide();                                        
+                }
+                else if ($(this).val() == "b4"){
+                    $('#id_' + $(this).val()).closest('tr').show();
+                    $('#id_b1').closest('tr').hide();
+                    $('#id_b2').closest('tr').hide();
+                    $('#id_b3').closest('tr').hide();
+                    $('#id_b5').closest('tr').hide();
+                    $('#id_b6').closest('tr').hide();
+                    $('#id_b7').closest('tr').hide();                                                 
+                    $('#id_b8').closest('tr').hide();
+                    $('#id_b9').closest('tr').hide();
+                    $('#id_b10').closest('tr').hide();                                       
+                }
+                else if ($(this).val() == "b5"){
+                    $('#id_' + $(this).val()).closest('tr').show();
+                    $('#id_b1').closest('tr').hide();
+                    $('#id_b2').closest('tr').hide();
+                    $('#id_b3').closest('tr').hide();
+                    $('#id_b4').closest('tr').hide();
+                    $('#id_b6').closest('tr').hide();
+                    $('#id_b7').closest('tr').hide();                                        
+                    $('#id_b8').closest('tr').hide();
+                    $('#id_b9').closest('tr').hide();
+                    $('#id_b10').closest('tr').hide();                                        
+                }
+                else if ($(this).val() == "b6"){
+                    $('#id_' + $(this).val()).closest('tr').show();
+                    $('#id_b1').closest('tr').hide();
+                    $('#id_b2').closest('tr').hide();
+                    $('#id_b3').closest('tr').hide();
+                    $('#id_b4').closest('tr').hide();
+                    $('#id_b5').closest('tr').hide();
+                    $('#id_b7').closest('tr').hide();
+                    $('#id_b8').closest('tr').hide();
+                    $('#id_b9').closest('tr').hide();
+                    $('#id_b10').closest('tr').hide();                                                                                
+                }
+                else if ($(this).val() == "b7"){
+                    $('#id_' + $(this).val()).closest('tr').show();
+                    $('#id_b1').closest('tr').hide();
+                    $('#id_b2').closest('tr').hide();
+                    $('#id_b3').closest('tr').hide();
+                    $('#id_b4').closest('tr').hide();
+                    $('#id_b5').closest('tr').hide();
+                    $('#id_b6').closest('tr').hide();
+                    $('#id_b8').closest('tr').hide();
+                    $('#id_b9').closest('tr').hide();
+                    $('#id_b10').closest('tr').hide();                                         
+                }                    
+                else if ($(this).val() == "b8"){
+                    $('#id_' + $(this).val()).closest('tr').show();
+                    $('#id_b1').closest('tr').hide();
+                    $('#id_b2').closest('tr').hide();
+                    $('#id_b3').closest('tr').hide();
+                    $('#id_b4').closest('tr').hide();
+                    $('#id_b5').closest('tr').hide();
+                    $('#id_b6').closest('tr').hide();   
+                    $('#id_b7').closest('tr').hide();
+                    $('#id_b9').closest('tr').hide();
+                    $('#id_b10').closest('tr').hide();                                          
+                }
+                else if ($(this).val() == "b9"){
+                    $('#id_' + $(this).val()).closest('tr').show();
+                    $('#id_b1').closest('tr').hide();
+                    $('#id_b2').closest('tr').hide();
+                    $('#id_b3').closest('tr').hide();
+                    $('#id_b4').closest('tr').hide();
+                    $('#id_b5').closest('tr').hide();
+                    $('#id_b6').closest('tr').hide();   
+                    $('#id_b7').closest('tr').hide();
+                    $('#id_b8').closest('tr').hide();
+                    $('#id_b10').closest('tr').hide();                    
+                }
+                else if ($(this).val() == "b10"){
+                    $('#id_' + $(this).val()).closest('tr').show();
+                    $('#id_b1').closest('tr').hide();
+                    $('#id_b2').closest('tr').hide();
+                    $('#id_b3').closest('tr').hide();
+                    $('#id_b4').closest('tr').hide();
+                    $('#id_b5').closest('tr').hide();
+                    $('#id_b6').closest('tr').hide();   
+                    $('#id_b7').closest('tr').hide();
+                    $('#id_b8').closest('tr').hide();
+                    $('#id_b9').closest('tr').hide();
+                }                                                                                          
+            });
+        } 
+        else if ($(this).val() == "c") {
+            $('#id_' + $(this).val()).closest('tr').show();
+            $('#id_c').change(function () {
+
+                if ($(this).val() == "c1") {
+
+                    $('#id_' + $(this).val()).closest('tr').show();
+                    $('#id_c2').closest('tr').hide();
+                } 
+                else if ($(this).val() == "c2") {
+                    $('#id_' + $(this).val()).closest('tr').show();
+                    $('#id_c1').closest('tr').hide();
+                }
+            });
+        }
+    });
+
+    $("input[value='Submit']").click(function (e) {
+    e.preventDefault();
+    var html_input = $("form").html();
+    localStorage.html_input=html_input;
+
+      event.preventDefault();
+      var html_new = $("form").serialize()
+
+    localStorage.html_new=html_new;
+
+    })
+    
+});
+</script>

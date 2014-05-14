@@ -1,0 +1,107 @@
+<link href="/stylesheets/style_webice.css" media="screen" rel="stylesheet" type="text/css" />
+
+<h1 id="PageName">Calculator</h1>
+
+<div id="surrSpecies">
+	<span>Surrogate Species:</span>
+</div>
+
+<div id="predSpecies">
+	<span>Predicted Species:</span>
+</div>
+
+<div id="resultsTable">
+	<table>
+		<tr>
+			<th>Surrogate Acute Toxicity <span id="SurrToxLogText" style=" display: none;">(log value)</span></th>
+			<th align="center" colspan="2">Predicted Acute Toxicity <span id="PredToxLogText" style=" display: none;">(log value)</span></th>
+		</tr>
+		<tr>
+			<td id="inputToxCell">
+				<input id="inputTox" name="inputTox" size="6" type="text"/>
+				<div id="inputToxLog"> </div>
+		<!-- <span id="inputToxUnits">bar</span> mg/kg bw &nbsp; --></td>
+			<td colspan="2" id="predictedTox"> </td>
+		</tr>
+		<tr>
+			<th>Select Confidence Interval:</th>
+			<th align="center">Lower Limit</th>
+			<th align="center">Upper Limit</th>
+		</tr>
+		<tr>
+			<td align="center">
+				<select id="ConfInt">
+					<option value="t99CI">99%</option>
+					<option selected="selected" value="t95CI">95%</option>
+					<option value="t90CI">90%</option>
+				</select>
+			</td>
+			<td id="lowerLimit"> </td>
+			<td id="upperLimit"> </td>
+		</tr>
+		<tr>
+			<td>
+				<input onclick="runCalculation();" type="button" value="Calculate"/>
+			</td>
+			<td class="" colspan="2" id="msgCell"> </td>
+		</tr>
+	</table>
+</div>
+
+<div id="modelData">
+	<table id="modResults">
+		<tr>
+			<th colspan="2">Model Information:</th>
+		</tr>
+		<tr>
+			<th align="left">Intercept:</th>
+			<td id="interceptText"> </td>
+		</tr>
+		<tr>
+			<th align="left">Slope:</th>
+			<td id="slopeText"> </td>
+		</tr>
+		<tr>
+			<th align="left">Degrees of Freedom (N-2):</th>
+			<td id="dfText"> </td>
+		</tr>
+		<tr>
+			<th align="left">R<sup>2</sup>:</th>
+			<td id="r2Text"> </td>
+		</tr>
+		<tr>
+			<th align="left">p-value:</th>
+			<td id="pValText"> </td>
+		</tr>
+		<tr>
+			<th align="left">Average value of surrogate <br>(log value):</th>
+			<td id="xAvgText"> </td>
+		</tr>
+		<tr>
+			<th align="left">Minimum value of surrogate <br>(log value):</th>
+			<td id="xMinText"> </td>
+		</tr>
+		<tr>
+			<th align="left">Maximum value of surrogate <br>(log value):</th>
+			<td id="xMaxText"> </td>
+		</tr>
+		<tr>
+			<th align="left">Mean Square Error (MSE):</th>
+			<td id="MSEText"> </td>
+		</tr>
+		<tr>
+			<th align="left">Sum of Squares (S<sub>xx</sub>):</th>
+			<td id="SxxText"> </td>
+		</tr>
+		<tr>
+			<th align="left">Cross-validation Success (%):</th>
+			<td id="BootText"> </td>
+		</tr>
+		<tr>
+			<th align="left">Taxonomic Distance:</th>
+			<td id="taxDistText"> </td>
+		</tr>
+	</table>
+</div>
+
+<div id="graphImage"> </div>

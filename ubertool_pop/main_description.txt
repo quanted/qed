@@ -1,0 +1,3 @@
+<p>
+This web site is under development.  It is available for the purposes of receiving feedback and quality assurance from personnel in the EPA Office of Chemical Safety and Pollution Prevention and from interested members of the ecological risk assessment community.  Ecological risk calculations contained here should be used for no purpose other than quality assurance and peer review of the presented web applications.
+</p>

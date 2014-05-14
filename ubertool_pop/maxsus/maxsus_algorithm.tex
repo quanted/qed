@@ -1,0 +1,32 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{endfloat}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage[margin = 1in]{geometry}
+
+
+\begin{document}
+
+\begin{align}
+\dfrac{dN_{t}}{dt} & = r_{0} N_{t} (1 - \frac{N_{t}}{K}) -H \nonumber \\
+&    \hspace{-1.3in}  \text{where:} \nonumber \\
+N_{t} & = \text{the population size at time t} \nonumber \\
+r_{0} & = \text{maximum growth rate [1/time step]} \nonumber \\
+K & = \text{carrying capacity} \nonumber\\
+H & = \text{the harvesting rate} \nonumber
+\end{align} 
+
+
+\begin{align}
+\dfrac{dN_{t}}{dt} & = 0 \nonumber \\
+H & = r_{0} N_{t} (1 - \frac{N_{t}}{K}) \nonumber \\
+&    \hspace{-1.3in}  \text{where:} \nonumber \\
+H^{'}_{(N_{t} =\frac{K}{2})} & = 0 \nonumber \\
+H_{max} & = \frac{r_{0}K}{4} \nonumber
+\end{align} 
+
+\end{document}
+
+

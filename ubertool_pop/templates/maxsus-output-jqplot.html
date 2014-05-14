@@ -1,0 +1,82 @@
+<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="/stylesheets/jqplot/excanvas.js"></script><![endif]-->
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/jquery.jqplot.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/jqplot/jquery.jqplot.css" />
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.pointLabels.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.cursor.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+
+<div id="chart1" style="margin-top:20px; margin-left:20px; width:650px; height:400px;"></div>
+
+<script type='text/javascript'> 
+
+$(document).ready(function(){
+        $.jqplot.config.enablePlugins = true;
+    	var x_out = $.parseJSON($('#x_out_val').text());
+    	var H = $.parseJSON($('#H_val').text());
+    	
+		var k = Math.round(x_out.length / 2);  
+		var l = [];
+		var i=0;
+		while(i<(k-1))
+			{
+				l.push("");
+				i++;
+			}
+		l.push('MSY');		
+
+        $.jqplot('chart1', [x_out], {
+			
+			seriesDefaults: { 
+        	showMarker:false,
+         	pointLabels: { show:false } 
+      		},
+         	series: [
+            {
+            pointLabels: {
+                show: true,
+                labels: l
+            }}],
+			
+			axes: {
+      			xaxis: {
+					label :'Population size',
+					pad: 0
+      				},
+      			yaxis: {
+        			label: 'Population growth rate (dN/dt)',
+					labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+					pad: 1.1
+										
+      				}
+    		},
+			 legend: {
+      			show: true,
+      			location: 'ne',
+      			placement: 'inside',
+				fontSize: '11px'
+    		},
+			canvasOverlay: {
+			  show: true,
+			  objects: [
+				{horizontalLine: {
+				  name: 'pebbles',
+				  y: H,
+				  lineWidth: 3,
+				  color: 'rgb(100, 55, 124)',
+				  shadow: true,
+				  show: true,
+				  lineCap: 'butt',
+				  xOffset: 0
+				}}
+			  ]
+			}
+
+        })   
+    })
+</script>
+
+
+

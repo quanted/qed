@@ -47,19 +47,19 @@ class oreheInputPage(webapp.RequestHandler):
         #             'tab_label': ['Chemical', 'Indoor Environment', 'Paints / Preservatives', 'Treated Pets', 'Outdoor Aerosol Space Sprays', 'Outdoor Residential Misting Systems', 'Animal Barn Misting Systems']
         #             }
         #         })
-        html = html + """<br><table class="tab tab_scenario">"""
+        html = html + """<br><table class="input_table tab tab_scenario">"""
         html = html + str(orehe_parameters.oreheInp_cm())
-        html = html + """</table><table class="tab tab_ie" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_ie" style="display:none">"""
         html = html + str(orehe_parameters.oreheInp_gh())
-        html = html + """</table><table class="tab tab_pp" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_pp" style="display:none">"""
         html = html + str(orehe_parameters.oreheInp_pp_ac())
-        html = html + """</table><table class="tab tab_tp" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_tp" style="display:none">"""
         html = html + str(orehe_parameters.oreheInp_tp_dp())
-        html = html + """</table><table class="tab tab_oa" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_oa" style="display:none">"""
         html = html + str(orehe_parameters.oreheInp_oa())
-        html = html + """</table><table class="tab tab_or" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_or" style="display:none">"""
         html = html + str(orehe_parameters.oreheInp_or())
-        html = html + """</table><table class="tab tab_ab" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_ab" style="display:none">"""
         html = html + str(orehe_parameters.oreheInp_ab())
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05hh_ubertext_tooltips_right.html', {})

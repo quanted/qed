@@ -46,6 +46,7 @@ class terrplantExecutePage(webapp.RequestHandler):
         solubility = form.getvalue('solubility')
         # terr.sol = sol
         terr = terrplant_model.terrplant(True,True,version_terrplant,"single",A,I,R,D,nms,lms,nds,lds,chemical_name,pc_code,use,application_method,application_form,solubility)
+
         nmv = form.getvalue('EC25_for_nonlisted_vegetative_vigor_monocot')
         terr.nmv = nmv
         ndv = form.getvalue('EC25_for_nonlisted_vegetative_vigor_dicot')
@@ -54,7 +55,7 @@ class terrplantExecutePage(webapp.RequestHandler):
         terr.lmv = lmv
         ldv = form.getvalue('NOAEC_for_listed_vegetative_vigor_dicot')
         terr.ldv = ldv
-        logger.info(terr.__dict__)
+        # logger.info(terr.__dict__)
 
         text_file = open('terrplant/terrplant_description.txt','r')
         x = text_file.read()

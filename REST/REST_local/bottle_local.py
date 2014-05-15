@@ -31,6 +31,55 @@ def check(user, passwd):
 
 all_result = {}
 
+
+
+##################################terrplant#############################################
+@route('/terrplant/<jid>', method='POST') 
+@auth_basic(check)
+def terrplant_rest(jid):
+    for k, v in request.json.iteritems():
+        exec '%s = v' % k
+        # print k, v
+    all_result.setdefault(jid,{}).setdefault('status','none')
+
+    from terrplant_rest import terrplant_model_rest
+    result = terrplant_model_rest.terrplant(version_terrplant,run_type,A,I,R,D,nms,lms,nds,lds,chemical_name,pc_code,use,application_method,application_form,solubility)
+    # # print request.json
+    # result = gfix.terrplant2(APPRAT,APPNUM,APSPAC,KOC,METHAF,WETTED,METHOD,AIRFLG,YLOCEN,GRNFLG,GRSIZE,ORCFLG,INCORP,SOL,METHAP,HYDHAP,FOTHAP)
+
+    if (result):
+        all_result[jid]['status']='done'
+        all_result[jid]['input']=request.json
+        all_result[jid]['result']=result
+
+    return {'user_id':'admin', 'result': result.__dict__, '_id':jid}
+##################################terrplant#############################################
+
+##################################sip#############################################
+@route('/sip/<jid>', method='POST') 
+@auth_basic(check)
+def sip_rest(jid):
+    for k, v in request.json.iteritems():
+        exec '%s = v' % k
+    all_result.setdefault(jid,{}).setdefault('status','none')
+    from sip_rest import sip_model_rest
+    result = sip_model_rest.sip(chemical_name, bw_bird, bw_quail, bw_duck, bwb_other, bw_rat, bwm_other, b_species, m_species, bw_mamm, sol, ld50_a, ld50_m, aw_bird, mineau, aw_mamm, noaec, noael)
+    if (result):
+        all_result[jid]['status']='done'
+        all_result[jid]['input']=request.json
+        all_result[jid]['result']=result
+    return {'user_id':'admin', 'result': result.__dict__, '_id':jid}
+##################################sip#############################################
+
+
+
+
+
+
+
+
+
+
 ##################################geneec#############################################
 @route('/geneec/<jid>', method='POST') 
 @auth_basic(check)

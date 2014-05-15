@@ -22,6 +22,11 @@ class NumPyArangeEncoder(json.JSONEncoder):
             return obj.tolist() # or map(int, obj)
         return json.JSONEncoder.default(self, obj)
 
+class Struct:
+    def __init__(self, **entries): 
+        self.__dict__.update(entries)
+
+
 ###########################A function to generate JID################################ 
 def gen_jid():
     ts = datetime.datetime.now(pytz.UTC)

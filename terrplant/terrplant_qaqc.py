@@ -123,6 +123,85 @@ for row in data:
     ndsRQspray_results.append(float(row[28]))
     ldsRQspray_results.append(float(row[29]))
 
+class TerrplantQaqcPage(webapp.RequestHandler):
+    def get(self):
+        text_file1 = open('terrplant/terrplant_description.txt','r')
+        x = text_file1.read()
+        templatepath = os.path.dirname(__file__) + '/../templates/'
+        ChkCookie = self.request.cookies.get("ubercookie")
+        logger.info(ChkCookie)
+        html = uber_lib.SkinChk(ChkCookie, "TerrPlant QA/QC")
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'terrplant','page':'qaqc'})
+        html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
+        html = html + template.render(templatepath + '04uberoutput_start.html', {
+                'model':'terrplant',
+                'model_attributes':'TerrPlant QAQC'})
+        terr = terrplant_model.terrplant(True,True,version_terrplant,"qaqc",A[0],I[0],R[0],D[0],nms[0],lms[0],nds[0],lds[0],chemical_name[0],pc_code[0],use[0],application_method[0],application_form[0],solubility[0])
+        terr.chemical_name_expected = chemical_name[0]
+        terr.pc_code_expected = pc_code[0]
+        terr.use_expected = use[0]
+        terr.application_method_expected = application_method[0]
+        terr.application_form_expected = application_form[0]
+        terr.solubility_expected = solubility[0]
+
+        # terr.rundry_results_expected = out_fun_rundry[0]
+        # terr.runsemi_results_expected = out_fun_runsemi[0]
+        # terr.spray_results_expected = out_fun_spray[0]
+        # terr.totaldry_results_expected = out_fun_totaldry[0]
+        # terr.totalsemi_results_expected = out_fun_totalsemi[0]
+
+        terr.nms_expected = nms[0]
+        terr.nds_expected = nds[0]
+        terr.lms_expected = lms[0]
+        terr.lds_expected = lds[0]
+        terr.nmv_expected = nmv[0]
+        terr.ndv_expected = ndv[0]
+        terr.lmv_expected = lmv[0]
+        terr.ldv_expected = ldv[0]
+        terr.nmsRQdry_results_expected = nmsRQdry_results[0]
+        terr.lmsRQdry_results_expected = lmsRQdry_results[0]
+        terr.ndsRQdry_results_expected = ndsRQdry_results[0]
+        terr.ldsRQdry_results_expected = ldsRQdry_results[0]
+        terr.nmsRQsemi_results_expected = nmsRQsemi_results[0]
+        terr.lmsRQsemi_results_expected = lmsRQsemi_results[0]
+        terr.ndsRQsemi_results_expected = ndsRQsemi_results[0]
+        terr.ldsRQsemi_results_expected = ldsRQsemi_results[0]
+        terr.nmsRQspray_results_expected = nmsRQspray_results[0]
+        terr.lmsRQspray_results_expected = lmsRQspray_results[0]
+        terr.ndsRQspray_results_expected = ndsRQspray_results[0]
+        terr.ldsRQspray_results_expected = ldsRQspray_results[0]
+
+        # terr.nmsRQdry_results_expected = out_fun_nmsRQdry[0]
+        # terr.nmsRQsemi_results_expected = out_fun_nmsRQsemi[0]
+        # terr.nmsRQspray_results_expected = out_fun_nmsRQspray[0]
+        # terr.lmsRQdry_results_expected = out_fun_lmsRQdry[0]
+        # terr.lmsRQsemi_results_expected = out_fun_lmsRQsemi[0]
+        # terr.lmsRQspray_results_expected = out_fun_lmsRQspray[0]
+        # terr.ndsRQdry_results_expected = out_fun_ndsRQdry[0]
+        # terr.ndsRQsemi_results_expected = out_fun_ndsRQsemi[0]
+        # terr.ndsRQspray_results_expected = out_fun_ndsRQspray[0]
+        # terr.ldsRQdry_results_expected = out_fun_ldsRQdry[0]
+        # terr.ldsRQsemi_results_expected = out_fun_ldsRQsemi[0]
+        # terr.ldsRQspray_results_expected = out_fun_ldsRQspray[0]
+
+        html = html + terrplant_tables.timestamp(terr)
+        html = html + terrplant_tables.table_all_qaqc(terrplant_tables.pvheadings, terrplant_tables.pvuheadings,terrplant_tables.deheadingsqaqc,
+                                        terrplant_tables.plantec25noaecheadings,terrplant_tables.plantecdrysemisprayheadingsqaqc, 
+                                        terrplant_tables.tmpl, terr)
+        html = html + template.render(templatepath + 'export.html', {})
+        html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
+        html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.save_dic(html, terr.__dict__, 'terrplant', 'qaqc')
+        self.response.out.write(html)
+
+app = webapp.WSGIApplication([('/.*', TerrplantQaqcPage)], debug=True)
+
+def main():
+    run_wsgi_app(app)
+
+if __name__ == '__main__':
+    main()
+
     # rundry_out.append(float(row[4])) 
     # runsemi_out.append(float(row[5]))
     # spray_out.append(float(row[7])) 
@@ -607,81 +686,3 @@ for row in data:
 # test_suite_LOCldssemi_out = suite(TestCase_LOCldssemi_out, terrplant_obj=terrplant_obj, LOCldssemi_out=LOCldssemi_out[0])
 # test_suite_ldsRQspray_out = suite(TestCase_ldsRQspray_out, terrplant_obj=terrplant_obj, ldsRQspray_out=ldsRQspray_out[0])
 # test_suite_LOCldsspray_out = suite(TestCase_LOCldsspray_out, terrplant_obj=terrplant_obj, LOCldsspray_out=LOCldsspray_out[0])
-
-class TerrplantQaqcPage(webapp.RequestHandler):
-    def get(self):
-        text_file1 = open('terrplant/terrplant_description.txt','r')
-        x = text_file1.read()
-        templatepath = os.path.dirname(__file__) + '/../templates/'
-        ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie, "TerrPlant QA/QC")
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'terrplant','page':'qaqc'})
-        html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
-        html = html + template.render(templatepath + '04uberoutput_start.html', {
-                'model':'terrplant',
-                'model_attributes':'TerrPlant QAQC'})
-        terr = terrplant_model.terrplant(True,True,version_terrplant,"qaqc",A[0],I[0],R[0],D[0],nms[0],lms[0],nds[0],lds[0],chemical_name[0],pc_code[0],use[0],application_method[0],application_form[0],solubility[0])
-        terr.chemical_name_expected = chemical_name[0]
-        terr.pc_code_expected = pc_code[0]
-        terr.use_expected = use[0]
-        terr.application_method_expected = application_method[0]
-        terr.application_form_expected = application_form[0]
-        terr.solubility_expected = solubility[0]
-
-        # terr.rundry_results_expected = out_fun_rundry[0]
-        # terr.runsemi_results_expected = out_fun_runsemi[0]
-        # terr.spray_results_expected = out_fun_spray[0]
-        # terr.totaldry_results_expected = out_fun_totaldry[0]
-        # terr.totalsemi_results_expected = out_fun_totalsemi[0]
-
-        terr.nms_expected = nms[0]
-        terr.nds_expected = nds[0]
-        terr.lms_expected = lms[0]
-        terr.lds_expected = lds[0]
-        terr.nmv_expected = nmv[0]
-        terr.ndv_expected = ndv[0]
-        terr.lmv_expected = lmv[0]
-        terr.ldv_expected = ldv[0]
-        terr.nmsRQdry_results_expected = nmsRQdry_results[0]
-        terr.lmsRQdry_results_expected = lmsRQdry_results[0]
-        terr.ndsRQdry_results_expected = ndsRQdry_results[0]
-        terr.ldsRQdry_results_expected = ldsRQdry_results[0]
-        terr.nmsRQsemi_results_expected = nmsRQsemi_results[0]
-        terr.lmsRQsemi_results_expected = lmsRQsemi_results[0]
-        terr.ndsRQsemi_results_expected = ndsRQsemi_results[0]
-        terr.ldsRQsemi_results_expected = ldsRQsemi_results[0]
-        terr.nmsRQspray_results_expected = nmsRQspray_results[0]
-        terr.lmsRQspray_results_expected = lmsRQspray_results[0]
-        terr.ndsRQspray_results_expected = ndsRQspray_results[0]
-        terr.ldsRQspray_results_expected = ldsRQspray_results[0]
-
-        # terr.nmsRQdry_results_expected = out_fun_nmsRQdry[0]
-        # terr.nmsRQsemi_results_expected = out_fun_nmsRQsemi[0]
-        # terr.nmsRQspray_results_expected = out_fun_nmsRQspray[0]
-        # terr.lmsRQdry_results_expected = out_fun_lmsRQdry[0]
-        # terr.lmsRQsemi_results_expected = out_fun_lmsRQsemi[0]
-        # terr.lmsRQspray_results_expected = out_fun_lmsRQspray[0]
-        # terr.ndsRQdry_results_expected = out_fun_ndsRQdry[0]
-        # terr.ndsRQsemi_results_expected = out_fun_ndsRQsemi[0]
-        # terr.ndsRQspray_results_expected = out_fun_ndsRQspray[0]
-        # terr.ldsRQdry_results_expected = out_fun_ldsRQdry[0]
-        # terr.ldsRQsemi_results_expected = out_fun_ldsRQsemi[0]
-        # terr.ldsRQspray_results_expected = out_fun_ldsRQspray[0]
-
-        html = html + terrplant_tables.timestamp(terr)
-        html = html + terrplant_tables.table_all_qaqc(terrplant_tables.pvheadings, terrplant_tables.pvuheadings,terrplant_tables.deheadingsqaqc,
-                                        terrplant_tables.plantec25noaecheadings,terrplant_tables.plantecdrysemisprayheadingsqaqc, 
-                                        terrplant_tables.tmpl, terr)
-        html = html + template.render(templatepath + 'export.html', {})
-        html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
-        rest_funcs.save_dic(html, terr.__dict__, 'terrplant', 'qaqc')
-        self.response.out.write(html)
-
-app = webapp.WSGIApplication([('/.*', TerrplantQaqcPage)], debug=True)
-
-def main():
-    run_wsgi_app(app)
-
-if __name__ == '__main__':
-    main()

@@ -34,7 +34,7 @@ def PRZM_pi(noa, met, inp, run, MM, DD, YY, CAM_f, DEPI_text, Ar_text, EFF, Drft
     key = keys_Picloud_S3.amazon_s3_key
     secretkey = keys_Picloud_S3.amazon_s3_secretkey
 ##################################################################################
-######Create a folder if it does not existed, where holds calculations' output.#####
+######Create a folder if it does not existed, where holds calculations' output.###
 ##################################################################################
     # cwd='/home/picloud/PRZM_lin_test'
     cwd='I:/Dropbox/ubertool_src/REST/REST_local/przm_rest'

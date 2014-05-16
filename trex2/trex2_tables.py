@@ -427,54 +427,54 @@ def gett5data(sa_bird_1_s, sa_bird_2_s, sc_bird_s, sa_mamm_1_s, sa_mamm_2_s, sc_
 def gett6data(EEC_diet_SG, EEC_diet_TG, EEC_diet_BP, EEC_diet_FR, EEC_diet_AR):
     data = { 
         "Application Target": ['Short Grass', 'Tall Grass', 'Broadleaf Plants', 'Fruits/Pods/Seeds', 'Arthropods',],
-        "Value": ['%.2e' % EEC_diet_SG, '%.2e' % EEC_diet_TG, '%.2e' % EEC_diet_BP, '%.2e' % EEC_diet_FR, '%.2e' % EEC_diet_AR],
+        "Value": ['%.2e' % EEC_diet_SG[0], '%.2e' % EEC_diet_TG[0], '%.2e' % EEC_diet_BP[0], '%.2e' % EEC_diet_FR[0], '%.2e' % EEC_diet_AR[0]],
     }
     return data
 
 def gett7data(EEC_dose_bird_SG_sm, EEC_dose_bird_SG_md, EEC_dose_bird_SG_lg, EEC_dose_bird_TG_sm, EEC_dose_bird_TG_md, EEC_dose_bird_TG_lg, EEC_dose_bird_BP_sm, EEC_dose_bird_BP_md, EEC_dose_bird_BP_lg, EEC_dose_bird_FP_sm, EEC_dose_bird_FP_md, EEC_dose_bird_FP_lg, EEC_dose_bird_AR_sm, EEC_dose_bird_AR_md, EEC_dose_bird_AR_lg, EEC_dose_bird_SE_sm, EEC_dose_bird_SE_md, EEC_dose_bird_SE_lg):
     data = { 
         "Application Target": ['Short Grass', 'Tall Grass', 'Broadleaf Plants', 'Fruits/Pods', 'Arthropods', 'Seeds',],
-        "Small": ['%.2e' % EEC_dose_bird_SG_sm, '%.2e' % EEC_dose_bird_TG_sm, '%.2e' % EEC_dose_bird_BP_sm, '%.2e' % EEC_dose_bird_FP_sm, '%.2e' % EEC_dose_bird_AR_sm, '%.2e' % EEC_dose_bird_SE_sm],
-        "Medium": ['%.2e' % EEC_dose_bird_SG_md, '%.2e' % EEC_dose_bird_TG_md, '%.2e' % EEC_dose_bird_BP_md, '%.2e' % EEC_dose_bird_FP_md, '%.2e' % EEC_dose_bird_AR_md, '%.2e' % EEC_dose_bird_SE_md],
-        "Large": ['%.2e' % EEC_dose_bird_SG_lg, '%.2e' % EEC_dose_bird_TG_lg, '%.2e' % EEC_dose_bird_BP_lg, '%.2e' % EEC_dose_bird_FP_lg, '%.2e' % EEC_dose_bird_AR_lg, '%.2e' % EEC_dose_bird_SE_lg],
+        "Small": ['%.2e' % EEC_dose_bird_SG_sm[0], '%.2e' % EEC_dose_bird_TG_sm[0], '%.2e' % EEC_dose_bird_BP_sm[0], '%.2e' % EEC_dose_bird_FP_sm[0], '%.2e' % EEC_dose_bird_AR_sm[0], '%.2e' % EEC_dose_bird_SE_sm[0]],
+        "Medium": ['%.2e' % EEC_dose_bird_SG_md[0], '%.2e' % EEC_dose_bird_TG_md[0], '%.2e' % EEC_dose_bird_BP_md[0], '%.2e' % EEC_dose_bird_FP_md[0], '%.2e' % EEC_dose_bird_AR_md[0], '%.2e' % EEC_dose_bird_SE_md[0]],
+        "Large": ['%.2e' % EEC_dose_bird_SG_lg[0], '%.2e' % EEC_dose_bird_TG_lg[0], '%.2e' % EEC_dose_bird_BP_lg[0], '%.2e' % EEC_dose_bird_FP_lg[0], '%.2e' % EEC_dose_bird_AR_lg[0], '%.2e' % EEC_dose_bird_SE_lg[0]],
     }
     return data
 
 def gett7_add_data(ARQ_bird_SG_sm, ARQ_bird_SG_md, ARQ_bird_SG_lg, ARQ_bird_TG_sm, ARQ_bird_TG_md, ARQ_bird_TG_lg, ARQ_bird_BP_sm, ARQ_bird_BP_md, ARQ_bird_BP_lg, ARQ_bird_FP_sm, ARQ_bird_FP_md, ARQ_bird_FP_lg, ARQ_bird_AR_sm, ARQ_bird_AR_md, ARQ_bird_AR_lg, ARQ_bird_SE_sm, ARQ_bird_SE_md, ARQ_bird_SE_lg):
     data = { 
         "Application Target": ['Short Grass', 'Tall Grass', 'Broadleaf Plants', 'Fruits/Pods', 'Arthropods', 'Seeds',],
-        "Small": ['%.2e' % ARQ_bird_SG_sm, '%.2e' % ARQ_bird_TG_sm, '%.2e' % ARQ_bird_BP_sm, '%.2e' % ARQ_bird_FP_sm, '%.2e' % ARQ_bird_AR_sm, '%.2e' % ARQ_bird_SE_sm],
-        "Medium": ['%.2e' % ARQ_bird_SG_md, '%.2e' % ARQ_bird_TG_md, '%.2e' % ARQ_bird_BP_md, '%.2e' % ARQ_bird_FP_md, '%.2e' % ARQ_bird_AR_md, '%.2e' % ARQ_bird_SE_md],
-        "Large": ['%.2e' % ARQ_bird_SG_lg, '%.2e' % ARQ_bird_TG_lg, '%.2e' % ARQ_bird_BP_lg, '%.2e' % ARQ_bird_FP_lg, '%.2e' % ARQ_bird_AR_lg, '%.2e' % ARQ_bird_SE_lg],
+        "Small": ['%.2e' % ARQ_bird_SG_sm[0], '%.2e' % ARQ_bird_TG_sm[0], '%.2e' % ARQ_bird_BP_sm[0], '%.2e' % ARQ_bird_FP_sm[0], '%.2e' % ARQ_bird_AR_sm[0], '%.2e' % ARQ_bird_SE_sm[0]],
+        "Medium": ['%.2e' % ARQ_bird_SG_md[0], '%.2e' % ARQ_bird_TG_md[0], '%.2e' % ARQ_bird_BP_md[0], '%.2e' % ARQ_bird_FP_md[0], '%.2e' % ARQ_bird_AR_md[0], '%.2e' % ARQ_bird_SE_md[0]],
+        "Large": ['%.2e' % ARQ_bird_SG_lg[0], '%.2e' % ARQ_bird_TG_lg[0], '%.2e' % ARQ_bird_BP_lg[0], '%.2e' % ARQ_bird_FP_lg[0], '%.2e' % ARQ_bird_AR_lg[0], '%.2e' % ARQ_bird_SE_lg[0]],
     }
     return data
 
 def gett8data(ARQ_diet_bird_SG_A, ARQ_diet_bird_SG_C, ARQ_diet_bird_TG_A, ARQ_diet_bird_TG_C, ARQ_diet_bird_BP_A, ARQ_diet_bird_BP_C, ARQ_diet_bird_FP_A, ARQ_diet_bird_FP_C, ARQ_diet_bird_AR_A, ARQ_diet_bird_AR_C):
     data = { 
         "Application Target": ['Short Grass', 'Tall Grass', 'Broadleaf Plants', 'Fruits/Pods', 'Arthropods',],
-        "Acute": ['%.2e' % ARQ_diet_bird_SG_A, '%.2e' % ARQ_diet_bird_TG_A, '%.2e' % ARQ_diet_bird_BP_A, '%.2e' % ARQ_diet_bird_FP_A, '%.2e' % ARQ_diet_bird_AR_A,],
-        "Chronic": ['%.2e' % ARQ_diet_bird_SG_C, '%.2e' % ARQ_diet_bird_TG_C, '%.2e' % ARQ_diet_bird_BP_C, '%.2e' % ARQ_diet_bird_FP_C, '%.2e' % ARQ_diet_bird_AR_C,],
+        "Acute": ['%.2e' % ARQ_diet_bird_SG_A[0], '%.2e' % ARQ_diet_bird_TG_A[0], '%.2e' % ARQ_diet_bird_BP_A[0], '%.2e' % ARQ_diet_bird_FP_A[0], '%.2e' % ARQ_diet_bird_AR_A[0],],
+        "Chronic": ['%.2e' % ARQ_diet_bird_SG_C[0], '%.2e' % ARQ_diet_bird_TG_C[0], '%.2e' % ARQ_diet_bird_BP_C[0], '%.2e' % ARQ_diet_bird_FP_C[0], '%.2e' % ARQ_diet_bird_AR_C[0],],
     }
     return data  
 
 def gett9data(EEC_dose_mamm_SG_sm,EEC_dose_mamm_SG_md,EEC_dose_mamm_SG_lg,EEC_dose_mamm_TG_sm,EEC_dose_mamm_TG_md,EEC_dose_mamm_TG_lg,EEC_dose_mamm_BP_sm,EEC_dose_mamm_BP_md,EEC_dose_mamm_BP_lg,EEC_dose_mamm_FP_sm,EEC_dose_mamm_FP_md,EEC_dose_mamm_FP_lg,EEC_dose_mamm_AR_sm,EEC_dose_mamm_AR_md,EEC_dose_mamm_AR_lg,EEC_dose_mamm_SE_sm,EEC_dose_mamm_SE_md,EEC_dose_mamm_SE_lg):
     data = { 
         "Application Target": ['Short Grass', 'Tall Grass', 'Broadleaf Plants', 'Fruits/Pods', 'Arthropods', 'Seeds',],
-        "Small": ['%.2e' % EEC_dose_mamm_SG_sm, '%.2e' % EEC_dose_mamm_TG_sm, '%.2e' % EEC_dose_mamm_BP_sm, '%.2e' % EEC_dose_mamm_FP_sm, '%.2e' % EEC_dose_mamm_AR_sm, '%.2e' % EEC_dose_mamm_SE_sm],
-        "Medium": ['%.2e' % EEC_dose_mamm_SG_md, '%.2e' % EEC_dose_mamm_TG_md, '%.2e' % EEC_dose_mamm_BP_md, '%.2e' % EEC_dose_mamm_FP_md, '%.2e' % EEC_dose_mamm_AR_md, '%.2e' % EEC_dose_mamm_SE_md],
-        "Large": ['%.2e' % EEC_dose_mamm_SG_lg, '%.2e' % EEC_dose_mamm_TG_lg, '%.2e' % EEC_dose_mamm_BP_lg, '%.2e' % EEC_dose_mamm_FP_lg, '%.2e' % EEC_dose_mamm_AR_lg, '%.2e' % EEC_dose_mamm_SE_lg],
+        "Small": ['%.2e' % EEC_dose_mamm_SG_sm[0], '%.2e' % EEC_dose_mamm_TG_sm[0], '%.2e' % EEC_dose_mamm_BP_sm[0], '%.2e' % EEC_dose_mamm_FP_sm[0], '%.2e' % EEC_dose_mamm_AR_sm[0], '%.2e' % EEC_dose_mamm_SE_sm[0]],
+        "Medium": ['%.2e' % EEC_dose_mamm_SG_md[0], '%.2e' % EEC_dose_mamm_TG_md[0], '%.2e' % EEC_dose_mamm_BP_md[0], '%.2e' % EEC_dose_mamm_FP_md[0], '%.2e' % EEC_dose_mamm_AR_md[0], '%.2e' % EEC_dose_mamm_SE_md[0]],
+        "Large": ['%.2e' % EEC_dose_mamm_SG_lg[0], '%.2e' % EEC_dose_mamm_TG_lg[0], '%.2e' % EEC_dose_mamm_BP_lg[0], '%.2e' % EEC_dose_mamm_FP_lg[0], '%.2e' % EEC_dose_mamm_AR_lg[0], '%.2e' % EEC_dose_mamm_SE_lg[0]],
     }
     return data
 
 def gett10data(ARQ_dose_mamm_SG_sm,CRQ_dose_mamm_SG_sm,ARQ_dose_mamm_SG_md,CRQ_dose_mamm_SG_md,ARQ_dose_mamm_SG_lg,CRQ_dose_mamm_SG_lg,ARQ_dose_mamm_TG_sm,CRQ_dose_mamm_TG_sm,ARQ_dose_mamm_TG_md,CRQ_dose_mamm_TG_md,ARQ_dose_mamm_TG_lg,CRQ_dose_mamm_TG_lg,ARQ_dose_mamm_BP_sm,CRQ_dose_mamm_BP_sm,ARQ_dose_mamm_BP_md,CRQ_dose_mamm_BP_md,ARQ_dose_mamm_BP_lg,CRQ_dose_mamm_BP_lg,ARQ_dose_mamm_FP_sm,CRQ_dose_mamm_FP_sm,ARQ_dose_mamm_FP_md,CRQ_dose_mamm_FP_md,ARQ_dose_mamm_FP_lg,CRQ_dose_mamm_FP_lg,ARQ_dose_mamm_AR_sm,CRQ_dose_mamm_AR_sm,ARQ_dose_mamm_AR_md,CRQ_dose_mamm_AR_md,ARQ_dose_mamm_AR_lg,CRQ_dose_mamm_AR_lg,ARQ_dose_mamm_SE_sm,CRQ_dose_mamm_SE_sm,ARQ_dose_mamm_SE_md,CRQ_dose_mamm_SE_md,ARQ_dose_mamm_SE_lg,CRQ_dose_mamm_SE_lg):
     data = { 
         "Application Target": ['Short Grass', 'Tall Grass', 'Broadleaf Plants', 'Fruits/Pods', 'Arthropods', 'Seeds',],
-        "Acute_sm": ['%.2e' % ARQ_dose_mamm_SG_sm, '%.2e' % ARQ_dose_mamm_TG_sm, '%.2e' % ARQ_dose_mamm_BP_sm, '%.2e' % ARQ_dose_mamm_FP_sm, '%.2e' % ARQ_dose_mamm_AR_sm, '%.2e' % ARQ_dose_mamm_SE_sm],
-        "Chronic_sm": ['%.2e' % CRQ_dose_mamm_SG_sm, '%.2e' % CRQ_dose_mamm_TG_sm, '%.2e' % CRQ_dose_mamm_BP_sm, '%.2e' % CRQ_dose_mamm_FP_sm, '%.2e' % CRQ_dose_mamm_AR_sm, '%.2e' % CRQ_dose_mamm_SE_sm],
-        "Acute_md": ['%.2e' % ARQ_dose_mamm_SG_md, '%.2e' % ARQ_dose_mamm_TG_md, '%.2e' % ARQ_dose_mamm_BP_md, '%.2e' % ARQ_dose_mamm_FP_md, '%.2e' % ARQ_dose_mamm_AR_md, '%.2e' % ARQ_dose_mamm_SE_md],
-        "Chronic_md": ['%.2e' % CRQ_dose_mamm_SG_md, '%.2e' % CRQ_dose_mamm_TG_md, '%.2e' % CRQ_dose_mamm_BP_md, '%.2e' % CRQ_dose_mamm_FP_md, '%.2e' % CRQ_dose_mamm_AR_md, '%.2e' % CRQ_dose_mamm_SE_md],
-        "Acute_lg": ['%.2e' % ARQ_dose_mamm_SG_lg, '%.2e' % ARQ_dose_mamm_TG_lg, '%.2e' % ARQ_dose_mamm_BP_lg, '%.2e' % ARQ_dose_mamm_FP_lg, '%.2e' % ARQ_dose_mamm_AR_lg, '%.2e' % ARQ_dose_mamm_SE_lg],
-        "Chronic_lg": ['%.2e' % CRQ_dose_mamm_SG_lg, '%.2e' % CRQ_dose_mamm_TG_lg, '%.2e' % CRQ_dose_mamm_BP_lg, '%.2e' % CRQ_dose_mamm_FP_lg, '%.2e' % CRQ_dose_mamm_AR_lg, '%.2e' % CRQ_dose_mamm_SE_lg], 
+        "Acute_sm": ['%.2e' % ARQ_dose_mamm_SG_sm[0], '%.2e' % ARQ_dose_mamm_TG_sm[0], '%.2e' % ARQ_dose_mamm_BP_sm[0], '%.2e' % ARQ_dose_mamm_FP_sm[0], '%.2e' % ARQ_dose_mamm_AR_sm[0], '%.2e' % ARQ_dose_mamm_SE_sm[0]],
+        "Chronic_sm": ['%.2e' % CRQ_dose_mamm_SG_sm[0], '%.2e' % CRQ_dose_mamm_TG_sm[0], '%.2e' % CRQ_dose_mamm_BP_sm[0], '%.2e' % CRQ_dose_mamm_FP_sm[0], '%.2e' % CRQ_dose_mamm_AR_sm[0], '%.2e' % CRQ_dose_mamm_SE_sm[0]],
+        "Acute_md": ['%.2e' % ARQ_dose_mamm_SG_md[0], '%.2e' % ARQ_dose_mamm_TG_md[0], '%.2e' % ARQ_dose_mamm_BP_md[0], '%.2e' % ARQ_dose_mamm_FP_md[0], '%.2e' % ARQ_dose_mamm_AR_md[0], '%.2e' % ARQ_dose_mamm_SE_md[0]],
+        "Chronic_md": ['%.2e' % CRQ_dose_mamm_SG_md[0], '%.2e' % CRQ_dose_mamm_TG_md[0], '%.2e' % CRQ_dose_mamm_BP_md[0], '%.2e' % CRQ_dose_mamm_FP_md[0], '%.2e' % CRQ_dose_mamm_AR_md[0], '%.2e' % CRQ_dose_mamm_SE_md[0]],
+        "Acute_lg": ['%.2e' % ARQ_dose_mamm_SG_lg[0], '%.2e' % ARQ_dose_mamm_TG_lg[0], '%.2e' % ARQ_dose_mamm_BP_lg[0], '%.2e' % ARQ_dose_mamm_FP_lg[0], '%.2e' % ARQ_dose_mamm_AR_lg[0], '%.2e' % ARQ_dose_mamm_SE_lg[0]],
+        "Chronic_lg": ['%.2e' % CRQ_dose_mamm_SG_lg[0], '%.2e' % CRQ_dose_mamm_TG_lg[0], '%.2e' % CRQ_dose_mamm_BP_lg[0], '%.2e' % CRQ_dose_mamm_FP_lg[0], '%.2e' % CRQ_dose_mamm_AR_lg[0], '%.2e' % CRQ_dose_mamm_SE_lg[0]], 
     }
     return data
 
@@ -489,8 +489,8 @@ def gett11data(ARQ_diet_mamm_SG,CRQ_diet_bird_SG,ARQ_diet_mamm_TG,CRQ_diet_bird_
 def gett11data_na(ARQ_diet_mamm_SG,CRQ_diet_bird_SG,ARQ_diet_mamm_TG,CRQ_diet_bird_TG,ARQ_diet_mamm_BP,CRQ_diet_bird_BP,ARQ_diet_mamm_FP,CRQ_diet_bird_FP,ARQ_diet_mamm_AR,CRQ_diet_bird_AR):
     data = { 
         "Application Target": ['Short Grass', 'Tall Grass', 'Broadleaf Plants', 'Fruits/Pods/Seeds', 'Arthropods',],
-        "Acute": ['%s' % ARQ_diet_mamm_SG, '%s' % ARQ_diet_mamm_TG, '%s' % ARQ_diet_mamm_BP, '%s' % ARQ_diet_mamm_FP, '%s' % ARQ_diet_mamm_AR],
-        "Chronic": ['%.2e' % CRQ_diet_bird_SG, '%.2e' % CRQ_diet_bird_TG, '%.2e' % CRQ_diet_bird_BP, '%.2e' % CRQ_diet_bird_FP, '%.2e' % CRQ_diet_bird_AR],
+        "Acute": ['%s' % ARQ_diet_mamm_SG[0], '%s' % ARQ_diet_mamm_TG[0], '%s' % ARQ_diet_mamm_BP[0], '%s' % ARQ_diet_mamm_FP[0], '%s' % ARQ_diet_mamm_AR[0]],
+        "Chronic": ['%.2e' % CRQ_diet_bird_SG[0], '%.2e' % CRQ_diet_bird_TG[0], '%.2e' % CRQ_diet_bird_BP[0], '%.2e' % CRQ_diet_bird_FP[0], '%.2e' % CRQ_diet_bird_AR[0]],
     }
     return data 
 
@@ -524,7 +524,7 @@ def gett6data_qaqc(EEC_diet_SG, EEC_diet_TG, EEC_diet_BP, EEC_diet_FR, EEC_diet_
     data = { 
         "Type": ['Calculated Value', 'Expected Value','Calculated Value', 'Expected Value','Calculated Value', 'Expected Value','Calculated Value', 'Expected Value','Calculated Value', 'Expected Value',],
         "Application Target": ['Short Grass', 'Short Grass', 'Tall Grass', 'Tall Grass', 'Broadleaf Plants', 'Broadleaf Plants', 'Fruits/Pods/Seeds', 'Fruits/Pods/Seeds', 'Arthropods', 'Arthropods',],
-        "Value": ['%.2e' % EEC_diet_SG, '%.2e' % EEC_diet_SG_exp, '%.2e' % EEC_diet_TG, '%.2e' % EEC_diet_TG_exp, '%.2e' % EEC_diet_BP, '%.2e' % EEC_diet_BP_exp, '%.2e' % EEC_diet_FR, '%.2e' % EEC_diet_FR_exp, '%.2e' % EEC_diet_AR, '%.2e' % EEC_diet_AR_exp],
+        "Value": ['%.2e' % EEC_diet_SG[0], '%.2e' % EEC_diet_SG_exp, '%.2e' % EEC_diet_TG[0], '%.2e' % EEC_diet_TG_exp, '%.2e' % EEC_diet_BP[0], '%.2e' % EEC_diet_BP_exp, '%.2e' % EEC_diet_FR[0], '%.2e' % EEC_diet_FR_exp, '%.2e' % EEC_diet_AR[0], '%.2e' % EEC_diet_AR_exp],
     }
     return data
 
@@ -533,9 +533,9 @@ def gett7data_qaqc(EEC_dose_bird_SG_sm, EEC_dose_bird_SG_md, EEC_dose_bird_SG_lg
     data = {
         "Type": ['Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value',],
         "Application Target": ['Short Grass', 'Short Grass', 'Tall Grass', 'Tall Grass', 'Broadleaf Plants', 'Broadleaf Plants', 'Fruits/Pods', 'Fruits/Pods', 'Arthropods', 'Arthropods', 'Seeds', 'Seeds',],
-        "Small":  ['%.2e' % EEC_dose_bird_SG_sm, '%.2e' % EEC_dose_bird_SG_sm_exp, '%.2e' % EEC_dose_bird_TG_sm, '%.2e' % EEC_dose_bird_TG_sm_exp, '%.2e' % EEC_dose_bird_BP_sm, '%.2e' % EEC_dose_bird_BP_sm_exp, '%.2e' % EEC_dose_bird_FP_sm, '%.2e' % EEC_dose_bird_FP_sm_exp, '%.2e' % EEC_dose_bird_AR_sm, '%.2e' % EEC_dose_bird_AR_sm_exp, '%.2e' % EEC_dose_bird_SE_sm, '%.2e' % EEC_dose_bird_SE_sm_exp],
-        "Medium": ['%.2e' % EEC_dose_bird_SG_md, '%.2e' % EEC_dose_bird_SG_md_exp, '%.2e' % EEC_dose_bird_TG_md, '%.2e' % EEC_dose_bird_TG_md_exp, '%.2e' % EEC_dose_bird_BP_md, '%.2e' % EEC_dose_bird_BP_md_exp, '%.2e' % EEC_dose_bird_FP_md, '%.2e' % EEC_dose_bird_FP_md_exp, '%.2e' % EEC_dose_bird_AR_md, '%.2e' % EEC_dose_bird_AR_md_exp, '%.2e' % EEC_dose_bird_SE_md, '%.2e' % EEC_dose_bird_SE_md_exp],
-        "Large":  ['%.2e' % EEC_dose_bird_SG_lg, '%.2e' % EEC_dose_bird_SG_lg_exp, '%.2e' % EEC_dose_bird_TG_lg, '%.2e' % EEC_dose_bird_TG_lg_exp, '%.2e' % EEC_dose_bird_BP_lg, '%.2e' % EEC_dose_bird_BP_lg_exp, '%.2e' % EEC_dose_bird_FP_lg, '%.2e' % EEC_dose_bird_FP_lg_exp, '%.2e' % EEC_dose_bird_AR_lg, '%.2e' % EEC_dose_bird_AR_lg_exp, '%.2e' % EEC_dose_bird_SE_lg, '%.2e' % EEC_dose_bird_SE_lg_exp],
+        "Small":  ['%.2e' % EEC_dose_bird_SG_sm[0], '%.2e' % EEC_dose_bird_SG_sm_exp, '%.2e' % EEC_dose_bird_TG_sm[0], '%.2e' % EEC_dose_bird_TG_sm_exp, '%.2e' % EEC_dose_bird_BP_sm[0], '%.2e' % EEC_dose_bird_BP_sm_exp, '%.2e' % EEC_dose_bird_FP_sm[0], '%.2e' % EEC_dose_bird_FP_sm_exp, '%.2e' % EEC_dose_bird_AR_sm[0], '%.2e' % EEC_dose_bird_AR_sm_exp, '%.2e' % EEC_dose_bird_SE_sm[0], '%.2e' % EEC_dose_bird_SE_sm_exp],
+        "Medium": ['%.2e' % EEC_dose_bird_SG_md[0], '%.2e' % EEC_dose_bird_SG_md_exp, '%.2e' % EEC_dose_bird_TG_md[0], '%.2e' % EEC_dose_bird_TG_md_exp, '%.2e' % EEC_dose_bird_BP_md[0], '%.2e' % EEC_dose_bird_BP_md_exp, '%.2e' % EEC_dose_bird_FP_md[0], '%.2e' % EEC_dose_bird_FP_md_exp, '%.2e' % EEC_dose_bird_AR_md[0], '%.2e' % EEC_dose_bird_AR_md_exp, '%.2e' % EEC_dose_bird_SE_md[0], '%.2e' % EEC_dose_bird_SE_md_exp],
+        "Large":  ['%.2e' % EEC_dose_bird_SG_lg[0], '%.2e' % EEC_dose_bird_SG_lg_exp, '%.2e' % EEC_dose_bird_TG_lg[0], '%.2e' % EEC_dose_bird_TG_lg_exp, '%.2e' % EEC_dose_bird_BP_lg[0], '%.2e' % EEC_dose_bird_BP_lg_exp, '%.2e' % EEC_dose_bird_FP_lg[0], '%.2e' % EEC_dose_bird_FP_lg_exp, '%.2e' % EEC_dose_bird_AR_lg[0], '%.2e' % EEC_dose_bird_AR_lg_exp, '%.2e' % EEC_dose_bird_SE_lg[0], '%.2e' % EEC_dose_bird_SE_lg_exp],
     }
     return data
 
@@ -544,9 +544,9 @@ def gett7_add_data_qaqc(ARQ_bird_SG_sm, ARQ_bird_SG_md, ARQ_bird_SG_lg, ARQ_bird
     data = {
         "Type": ['Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value',],
         "Application Target": ['Short Grass', 'Short Grass', 'Tall Grass', 'Tall Grass', 'Broadleaf Plants', 'Broadleaf Plants', 'Fruits/Pods', 'Fruits/Pods', 'Arthropods', 'Arthropods', 'Seeds', 'Seeds',],
-        "Small":  ['%.2e' % ARQ_bird_SG_sm, '%.2e' % ARQ_bird_SG_sm_exp, '%.2e' % ARQ_bird_TG_sm, '%.2e' % ARQ_bird_TG_sm_exp, '%.2e' % ARQ_bird_BP_sm, '%.2e' % ARQ_bird_BP_sm_exp, '%.2e' % ARQ_bird_FP_sm, '%.2e' % ARQ_bird_FP_sm_exp, '%.2e' % ARQ_bird_AR_sm, '%.2e' % ARQ_bird_AR_sm_exp, '%.2e' % ARQ_bird_SE_sm, '%.2e' % ARQ_bird_SE_sm_exp],
-        "Medium": ['%.2e' % ARQ_bird_SG_md, '%.2e' % ARQ_bird_SG_md_exp, '%.2e' % ARQ_bird_TG_md, '%.2e' % ARQ_bird_TG_md_exp, '%.2e' % ARQ_bird_BP_md, '%.2e' % ARQ_bird_BP_md_exp, '%.2e' % ARQ_bird_FP_md, '%.2e' % ARQ_bird_FP_md_exp, '%.2e' % ARQ_bird_AR_md, '%.2e' % ARQ_bird_AR_md_exp, '%.2e' % ARQ_bird_SE_md, '%.2e' % ARQ_bird_SE_md_exp],
-        "Large":  ['%.2e' % ARQ_bird_SG_lg, '%.2e' % ARQ_bird_SG_lg_exp, '%.2e' % ARQ_bird_TG_lg, '%.2e' % ARQ_bird_TG_lg_exp, '%.2e' % ARQ_bird_BP_lg, '%.2e' % ARQ_bird_BP_lg_exp, '%.2e' % ARQ_bird_FP_lg, '%.2e' % ARQ_bird_FP_lg_exp, '%.2e' % ARQ_bird_AR_lg, '%.2e' % ARQ_bird_AR_lg_exp, '%.2e' % ARQ_bird_SE_lg, '%.2e' % ARQ_bird_SE_lg_exp],
+        "Small":  ['%.2e' % ARQ_bird_SG_sm[0], '%.2e' % ARQ_bird_SG_sm_exp, '%.2e' % ARQ_bird_TG_sm[0], '%.2e' % ARQ_bird_TG_sm_exp, '%.2e' % ARQ_bird_BP_sm[0], '%.2e' % ARQ_bird_BP_sm_exp, '%.2e' % ARQ_bird_FP_sm[0], '%.2e' % ARQ_bird_FP_sm_exp, '%.2e' % ARQ_bird_AR_sm[0], '%.2e' % ARQ_bird_AR_sm_exp, '%.2e' % ARQ_bird_SE_sm[0], '%.2e' % ARQ_bird_SE_sm_exp],
+        "Medium": ['%.2e' % ARQ_bird_SG_md[0], '%.2e' % ARQ_bird_SG_md_exp, '%.2e' % ARQ_bird_TG_md[0], '%.2e' % ARQ_bird_TG_md_exp, '%.2e' % ARQ_bird_BP_md[0], '%.2e' % ARQ_bird_BP_md_exp, '%.2e' % ARQ_bird_FP_md[0], '%.2e' % ARQ_bird_FP_md_exp, '%.2e' % ARQ_bird_AR_md[0], '%.2e' % ARQ_bird_AR_md_exp, '%.2e' % ARQ_bird_SE_md[0], '%.2e' % ARQ_bird_SE_md_exp],
+        "Large":  ['%.2e' % ARQ_bird_SG_lg[0], '%.2e' % ARQ_bird_SG_lg_exp, '%.2e' % ARQ_bird_TG_lg[0], '%.2e' % ARQ_bird_TG_lg_exp, '%.2e' % ARQ_bird_BP_lg[0], '%.2e' % ARQ_bird_BP_lg_exp, '%.2e' % ARQ_bird_FP_lg[0], '%.2e' % ARQ_bird_FP_lg_exp, '%.2e' % ARQ_bird_AR_lg[0], '%.2e' % ARQ_bird_AR_lg_exp, '%.2e' % ARQ_bird_SE_lg[0], '%.2e' % ARQ_bird_SE_lg_exp],
     }
     return data
 
@@ -555,8 +555,8 @@ def gett8data_qaqc(ARQ_diet_bird_SG_A, ARQ_diet_bird_SG_C, ARQ_diet_bird_TG_A, A
     data = {
         "Type": ['Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value',],
         "Application Target": ['Short Grass', 'Short Grass', 'Tall Grass', 'Tall Grass', 'Broadleaf Plants', 'Broadleaf Plants', 'Fruits/Pods', 'Fruits/Pods', 'Arthropods', 'Arthropods',],
-        "Acute":   ['%.2e' % ARQ_diet_bird_SG_A, '%.2e' % ARQ_diet_bird_SG_A_exp, '%.2e' % ARQ_diet_bird_TG_A, '%.2e' % ARQ_diet_bird_TG_A_exp, '%.2e' % ARQ_diet_bird_BP_A, '%.2e' % ARQ_diet_bird_BP_A_exp, '%.2e' % ARQ_diet_bird_FP_A, '%.2e' % ARQ_diet_bird_FP_A_exp, '%.2e' % ARQ_diet_bird_AR_A, '%.2e' % ARQ_diet_bird_AR_A_exp,],
-        "Chronic": ['%.2e' % ARQ_diet_bird_SG_C, '%.2e' % ARQ_diet_bird_SG_C_exp, '%.2e' % ARQ_diet_bird_TG_C, '%.2e' % ARQ_diet_bird_TG_C_exp, '%.2e' % ARQ_diet_bird_BP_C, '%.2e' % ARQ_diet_bird_BP_C_exp, '%.2e' % ARQ_diet_bird_FP_C, '%.2e' % ARQ_diet_bird_FP_C_exp, '%.2e' % ARQ_diet_bird_AR_C, '%.2e' % ARQ_diet_bird_AR_C_exp,],
+        "Acute":   ['%.2e' % ARQ_diet_bird_SG_A[0], '%.2e' % ARQ_diet_bird_SG_A_exp, '%.2e' % ARQ_diet_bird_TG_A[0], '%.2e' % ARQ_diet_bird_TG_A_exp, '%.2e' % ARQ_diet_bird_BP_A[0], '%.2e' % ARQ_diet_bird_BP_A_exp, '%.2e' % ARQ_diet_bird_FP_A[0], '%.2e' % ARQ_diet_bird_FP_A_exp, '%.2e' % ARQ_diet_bird_AR_A[0], '%.2e' % ARQ_diet_bird_AR_A_exp,],
+        "Chronic": ['%.2e' % ARQ_diet_bird_SG_C[0], '%.2e' % ARQ_diet_bird_SG_C_exp, '%.2e' % ARQ_diet_bird_TG_C[0], '%.2e' % ARQ_diet_bird_TG_C_exp, '%.2e' % ARQ_diet_bird_BP_C[0], '%.2e' % ARQ_diet_bird_BP_C_exp, '%.2e' % ARQ_diet_bird_FP_C[0], '%.2e' % ARQ_diet_bird_FP_C_exp, '%.2e' % ARQ_diet_bird_AR_C[0], '%.2e' % ARQ_diet_bird_AR_C_exp,],
     }
     return data  
 
@@ -565,9 +565,9 @@ def gett9data_qaqc(EEC_dose_mamm_SG_sm,EEC_dose_mamm_SG_md,EEC_dose_mamm_SG_lg,E
     data = { 
         "Type": ['Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value',],
         "Application Target": ['Short Grass', 'Short Grass', 'Tall Grass', 'Tall Grass', 'Broadleaf Plants', 'Broadleaf Plants', 'Fruits/Pods', 'Fruits/Pods', 'Arthropods', 'Arthropods', 'Seeds', 'Seeds',],
-        "Small":  ['%.2e' % EEC_dose_mamm_SG_sm, '%.2e' % EEC_dose_mamm_SG_sm_exp, '%.2e' % EEC_dose_mamm_TG_sm, '%.2e' % EEC_dose_mamm_TG_sm_exp, '%.2e' % EEC_dose_mamm_BP_sm, '%.2e' % EEC_dose_mamm_BP_sm_exp, '%.2e' % EEC_dose_mamm_FP_sm, '%.2e' % EEC_dose_mamm_FP_sm_exp, '%.2e' % EEC_dose_mamm_AR_sm, '%.2e' % EEC_dose_mamm_AR_sm_exp, '%.2e' % EEC_dose_mamm_SE_sm, '%.2e' % EEC_dose_mamm_SE_sm_exp],
-        "Medium": ['%.2e' % EEC_dose_mamm_SG_md, '%.2e' % EEC_dose_mamm_SG_md_exp, '%.2e' % EEC_dose_mamm_TG_md, '%.2e' % EEC_dose_mamm_TG_md_exp, '%.2e' % EEC_dose_mamm_BP_md, '%.2e' % EEC_dose_mamm_BP_md_exp, '%.2e' % EEC_dose_mamm_FP_md, '%.2e' % EEC_dose_mamm_FP_md_exp, '%.2e' % EEC_dose_mamm_AR_md, '%.2e' % EEC_dose_mamm_AR_md_exp, '%.2e' % EEC_dose_mamm_SE_md, '%.2e' % EEC_dose_mamm_SE_md_exp],
-        "Large":  ['%.2e' % EEC_dose_mamm_SG_lg, '%.2e' % EEC_dose_mamm_SG_lg_exp, '%.2e' % EEC_dose_mamm_TG_lg, '%.2e' % EEC_dose_mamm_TG_lg_exp, '%.2e' % EEC_dose_mamm_BP_lg, '%.2e' % EEC_dose_mamm_BP_lg_exp, '%.2e' % EEC_dose_mamm_FP_lg, '%.2e' % EEC_dose_mamm_FP_lg_exp, '%.2e' % EEC_dose_mamm_AR_lg, '%.2e' % EEC_dose_mamm_AR_lg_exp, '%.2e' % EEC_dose_mamm_SE_lg, '%.2e' % EEC_dose_mamm_SE_lg_exp],
+        "Small":  ['%.2e' % EEC_dose_mamm_SG_sm[0], '%.2e' % EEC_dose_mamm_SG_sm_exp, '%.2e' % EEC_dose_mamm_TG_sm[0], '%.2e' % EEC_dose_mamm_TG_sm_exp, '%.2e' % EEC_dose_mamm_BP_sm[0], '%.2e' % EEC_dose_mamm_BP_sm_exp, '%.2e' % EEC_dose_mamm_FP_sm[0], '%.2e' % EEC_dose_mamm_FP_sm_exp, '%.2e' % EEC_dose_mamm_AR_sm[0], '%.2e' % EEC_dose_mamm_AR_sm_exp, '%.2e' % EEC_dose_mamm_SE_sm[0], '%.2e' % EEC_dose_mamm_SE_sm_exp],
+        "Medium": ['%.2e' % EEC_dose_mamm_SG_md[0], '%.2e' % EEC_dose_mamm_SG_md_exp, '%.2e' % EEC_dose_mamm_TG_md[0], '%.2e' % EEC_dose_mamm_TG_md_exp, '%.2e' % EEC_dose_mamm_BP_md[0], '%.2e' % EEC_dose_mamm_BP_md_exp, '%.2e' % EEC_dose_mamm_FP_md[0], '%.2e' % EEC_dose_mamm_FP_md_exp, '%.2e' % EEC_dose_mamm_AR_md[0], '%.2e' % EEC_dose_mamm_AR_md_exp, '%.2e' % EEC_dose_mamm_SE_md[0], '%.2e' % EEC_dose_mamm_SE_md_exp],
+        "Large":  ['%.2e' % EEC_dose_mamm_SG_lg[0], '%.2e' % EEC_dose_mamm_SG_lg_exp, '%.2e' % EEC_dose_mamm_TG_lg[0], '%.2e' % EEC_dose_mamm_TG_lg_exp, '%.2e' % EEC_dose_mamm_BP_lg[0], '%.2e' % EEC_dose_mamm_BP_lg_exp, '%.2e' % EEC_dose_mamm_FP_lg[0], '%.2e' % EEC_dose_mamm_FP_lg_exp, '%.2e' % EEC_dose_mamm_AR_lg[0], '%.2e' % EEC_dose_mamm_AR_lg_exp, '%.2e' % EEC_dose_mamm_SE_lg[0], '%.2e' % EEC_dose_mamm_SE_lg_exp],
     }
     return data
 
@@ -576,12 +576,12 @@ def gett10data_qaqc(ARQ_dose_mamm_SG_sm,CRQ_dose_mamm_SG_sm,ARQ_dose_mamm_SG_md,
     data = {
         "Type": ['Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value',],
         "Application Target": ['Short Grass', 'Short Grass', 'Tall Grass', 'Tall Grass', 'Broadleaf Plants', 'Broadleaf Plants', 'Fruits/Pods', 'Fruits/Pods', 'Arthropods', 'Arthropods', 'Seeds', 'Seeds',],
-        "Acute_sm":   ['%.2e' % ARQ_dose_mamm_SG_sm, '%.2e' % ARQ_dose_mamm_SG_sm_exp, '%.2e' % ARQ_dose_mamm_TG_sm, '%.2e' % ARQ_dose_mamm_TG_sm_exp, '%.2e' % ARQ_dose_mamm_BP_sm, '%.2e' % ARQ_dose_mamm_BP_sm_exp, '%.2e' % ARQ_dose_mamm_FP_sm, '%.2e' % ARQ_dose_mamm_FP_sm_exp, '%.2e' % ARQ_dose_mamm_AR_sm, '%.2e' % ARQ_dose_mamm_AR_sm_exp, '%.2e' % ARQ_dose_mamm_SE_sm, '%.2e' % ARQ_dose_mamm_SE_sm_exp],
-        "Chronic_sm": ['%.2e' % CRQ_dose_mamm_SG_sm, '%.2e' % CRQ_dose_mamm_SG_sm_exp, '%.2e' % CRQ_dose_mamm_TG_sm, '%.2e' % CRQ_dose_mamm_TG_sm_exp, '%.2e' % CRQ_dose_mamm_BP_sm, '%.2e' % CRQ_dose_mamm_BP_sm_exp, '%.2e' % CRQ_dose_mamm_FP_sm, '%.2e' % CRQ_dose_mamm_FP_sm_exp, '%.2e' % CRQ_dose_mamm_AR_sm, '%.2e' % CRQ_dose_mamm_AR_sm_exp, '%.2e' % CRQ_dose_mamm_SE_sm, '%.2e' % CRQ_dose_mamm_SE_sm_exp],
-        "Acute_md":   ['%.2e' % ARQ_dose_mamm_SG_md, '%.2e' % ARQ_dose_mamm_SG_md_exp, '%.2e' % ARQ_dose_mamm_TG_md, '%.2e' % ARQ_dose_mamm_TG_md_exp, '%.2e' % ARQ_dose_mamm_BP_md, '%.2e' % ARQ_dose_mamm_BP_md_exp, '%.2e' % ARQ_dose_mamm_FP_md, '%.2e' % ARQ_dose_mamm_FP_md_exp, '%.2e' % ARQ_dose_mamm_AR_md, '%.2e' % ARQ_dose_mamm_AR_md_exp, '%.2e' % ARQ_dose_mamm_SE_md, '%.2e' % ARQ_dose_mamm_SE_md_exp],
-        "Chronic_md": ['%.2e' % CRQ_dose_mamm_SG_md, '%.2e' % CRQ_dose_mamm_SG_md_exp, '%.2e' % CRQ_dose_mamm_TG_md, '%.2e' % CRQ_dose_mamm_TG_md_exp, '%.2e' % CRQ_dose_mamm_BP_md, '%.2e' % CRQ_dose_mamm_BP_md_exp, '%.2e' % CRQ_dose_mamm_FP_md, '%.2e' % CRQ_dose_mamm_FP_md_exp, '%.2e' % CRQ_dose_mamm_AR_md, '%.2e' % CRQ_dose_mamm_AR_md_exp, '%.2e' % CRQ_dose_mamm_SE_md, '%.2e' % CRQ_dose_mamm_SE_md_exp],
-        "Acute_lg":   ['%.2e' % ARQ_dose_mamm_SG_lg, '%.2e' % ARQ_dose_mamm_SG_lg_exp, '%.2e' % ARQ_dose_mamm_TG_lg, '%.2e' % ARQ_dose_mamm_TG_lg_exp, '%.2e' % ARQ_dose_mamm_BP_lg, '%.2e' % ARQ_dose_mamm_BP_lg_exp, '%.2e' % ARQ_dose_mamm_FP_lg, '%.2e' % ARQ_dose_mamm_FP_lg_exp, '%.2e' % ARQ_dose_mamm_AR_lg, '%.2e' % ARQ_dose_mamm_AR_lg_exp, '%.2e' % ARQ_dose_mamm_SE_lg, '%.2e' % ARQ_dose_mamm_SE_lg_exp],
-        "Chronic_lg": ['%.2e' % CRQ_dose_mamm_SG_lg, '%.2e' % CRQ_dose_mamm_SG_lg_exp, '%.2e' % CRQ_dose_mamm_TG_lg, '%.2e' % CRQ_dose_mamm_TG_lg_exp, '%.2e' % CRQ_dose_mamm_BP_lg, '%.2e' % CRQ_dose_mamm_BP_lg_exp, '%.2e' % CRQ_dose_mamm_FP_lg, '%.2e' % CRQ_dose_mamm_FP_lg_exp, '%.2e' % CRQ_dose_mamm_AR_lg, '%.2e' % CRQ_dose_mamm_AR_lg_exp, '%.2e' % CRQ_dose_mamm_SE_lg, '%.2e' % CRQ_dose_mamm_SE_lg_exp], 
+        "Acute_sm":   ['%.2e' % ARQ_dose_mamm_SG_sm[0], '%.2e' % ARQ_dose_mamm_SG_sm_exp, '%.2e' % ARQ_dose_mamm_TG_sm[0], '%.2e' % ARQ_dose_mamm_TG_sm_exp, '%.2e' % ARQ_dose_mamm_BP_sm[0], '%.2e' % ARQ_dose_mamm_BP_sm_exp, '%.2e' % ARQ_dose_mamm_FP_sm[0], '%.2e' % ARQ_dose_mamm_FP_sm_exp, '%.2e' % ARQ_dose_mamm_AR_sm[0], '%.2e' % ARQ_dose_mamm_AR_sm_exp, '%.2e' % ARQ_dose_mamm_SE_sm[0], '%.2e' % ARQ_dose_mamm_SE_sm_exp],
+        "Chronic_sm": ['%.2e' % CRQ_dose_mamm_SG_sm[0], '%.2e' % CRQ_dose_mamm_SG_sm_exp, '%.2e' % CRQ_dose_mamm_TG_sm[0], '%.2e' % CRQ_dose_mamm_TG_sm_exp, '%.2e' % CRQ_dose_mamm_BP_sm[0], '%.2e' % CRQ_dose_mamm_BP_sm_exp, '%.2e' % CRQ_dose_mamm_FP_sm[0], '%.2e' % CRQ_dose_mamm_FP_sm_exp, '%.2e' % CRQ_dose_mamm_AR_sm[0], '%.2e' % CRQ_dose_mamm_AR_sm_exp, '%.2e' % CRQ_dose_mamm_SE_sm[0], '%.2e' % CRQ_dose_mamm_SE_sm_exp],
+        "Acute_md":   ['%.2e' % ARQ_dose_mamm_SG_md[0], '%.2e' % ARQ_dose_mamm_SG_md_exp, '%.2e' % ARQ_dose_mamm_TG_md[0], '%.2e' % ARQ_dose_mamm_TG_md_exp, '%.2e' % ARQ_dose_mamm_BP_md[0], '%.2e' % ARQ_dose_mamm_BP_md_exp, '%.2e' % ARQ_dose_mamm_FP_md[0], '%.2e' % ARQ_dose_mamm_FP_md_exp, '%.2e' % ARQ_dose_mamm_AR_md[0], '%.2e' % ARQ_dose_mamm_AR_md_exp, '%.2e' % ARQ_dose_mamm_SE_md[0], '%.2e' % ARQ_dose_mamm_SE_md_exp],
+        "Chronic_md": ['%.2e' % CRQ_dose_mamm_SG_md[0], '%.2e' % CRQ_dose_mamm_SG_md_exp, '%.2e' % CRQ_dose_mamm_TG_md[0], '%.2e' % CRQ_dose_mamm_TG_md_exp, '%.2e' % CRQ_dose_mamm_BP_md[0], '%.2e' % CRQ_dose_mamm_BP_md_exp, '%.2e' % CRQ_dose_mamm_FP_md[0], '%.2e' % CRQ_dose_mamm_FP_md_exp, '%.2e' % CRQ_dose_mamm_AR_md[0], '%.2e' % CRQ_dose_mamm_AR_md_exp, '%.2e' % CRQ_dose_mamm_SE_md[0], '%.2e' % CRQ_dose_mamm_SE_md_exp],
+        "Acute_lg":   ['%.2e' % ARQ_dose_mamm_SG_lg[0], '%.2e' % ARQ_dose_mamm_SG_lg_exp, '%.2e' % ARQ_dose_mamm_TG_lg[0], '%.2e' % ARQ_dose_mamm_TG_lg_exp, '%.2e' % ARQ_dose_mamm_BP_lg[0], '%.2e' % ARQ_dose_mamm_BP_lg_exp, '%.2e' % ARQ_dose_mamm_FP_lg[0], '%.2e' % ARQ_dose_mamm_FP_lg_exp, '%.2e' % ARQ_dose_mamm_AR_lg[0], '%.2e' % ARQ_dose_mamm_AR_lg_exp, '%.2e' % ARQ_dose_mamm_SE_lg[0], '%.2e' % ARQ_dose_mamm_SE_lg_exp],
+        "Chronic_lg": ['%.2e' % CRQ_dose_mamm_SG_lg[0], '%.2e' % CRQ_dose_mamm_SG_lg_exp, '%.2e' % CRQ_dose_mamm_TG_lg[0], '%.2e' % CRQ_dose_mamm_TG_lg_exp, '%.2e' % CRQ_dose_mamm_BP_lg[0], '%.2e' % CRQ_dose_mamm_BP_lg_exp, '%.2e' % CRQ_dose_mamm_FP_lg[0], '%.2e' % CRQ_dose_mamm_FP_lg_exp, '%.2e' % CRQ_dose_mamm_AR_lg[0], '%.2e' % CRQ_dose_mamm_AR_lg_exp, '%.2e' % CRQ_dose_mamm_SE_lg[0], '%.2e' % CRQ_dose_mamm_SE_lg_exp], 
     }
     return data
 
@@ -590,8 +590,8 @@ def gett11data_na_qaqc(ARQ_diet_mamm_SG,CRQ_diet_bird_SG,ARQ_diet_mamm_TG,CRQ_di
     data = {
         "Type": ['Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value', 'Calculated Value', 'Expected Value',],
         "Application Target": ['Short Grass', 'Short Grass', 'Tall Grass', 'Tall Grass', 'Broadleaf Plants', 'Broadleaf Plants', 'Fruits/Pods/Seeds', 'Fruits/Pods/Seeds', 'Arthropods', 'Arthropods'],
-        "Acute": ['%s' % ARQ_diet_mamm_SG, '%s' % ARQ_diet_mamm_SG_exp, '%s' % ARQ_diet_mamm_TG, '%s' % ARQ_diet_mamm_TG_exp, '%s' % ARQ_diet_mamm_BP, '%s' % ARQ_diet_mamm_BP_exp, '%s' % ARQ_diet_mamm_FP, '%s' % ARQ_diet_mamm_FP_exp, '%s' % ARQ_diet_mamm_AR, '%s' % ARQ_diet_mamm_AR_exp],
-        "Chronic": ['%.2e' % CRQ_diet_bird_SG, '%.2e' % CRQ_diet_bird_SG_exp, '%.2e' % CRQ_diet_bird_TG, '%.2e' % CRQ_diet_bird_TG_exp, '%.2e' % CRQ_diet_bird_BP, '%.2e' % CRQ_diet_bird_BP_exp, '%.2e' % CRQ_diet_bird_FP, '%.2e' % CRQ_diet_bird_FP_exp, '%.2e' % CRQ_diet_bird_AR, '%.2e' % CRQ_diet_bird_AR_exp],
+        "Acute": ['%s' % ARQ_diet_mamm_SG[0], '%s' % ARQ_diet_mamm_SG_exp, '%s' % ARQ_diet_mamm_TG[0], '%s' % ARQ_diet_mamm_TG_exp, '%s' % ARQ_diet_mamm_BP[0], '%s' % ARQ_diet_mamm_BP_exp, '%s' % ARQ_diet_mamm_FP[0], '%s' % ARQ_diet_mamm_FP_exp, '%s' % ARQ_diet_mamm_AR[0], '%s' % ARQ_diet_mamm_AR_exp],
+        "Chronic": ['%.2e' % CRQ_diet_bird_SG[0], '%.2e' % CRQ_diet_bird_SG_exp, '%.2e' % CRQ_diet_bird_TG[0], '%.2e' % CRQ_diet_bird_TG_exp, '%.2e' % CRQ_diet_bird_BP[0], '%.2e' % CRQ_diet_bird_BP_exp, '%.2e' % CRQ_diet_bird_FP[0], '%.2e' % CRQ_diet_bird_FP_exp, '%.2e' % CRQ_diet_bird_AR[0], '%.2e' % CRQ_diet_bird_AR_exp],
     }
     return data 
 

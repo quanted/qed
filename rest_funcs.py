@@ -22,6 +22,12 @@ class NumPyArangeEncoder(json.JSONEncoder):
             return obj.tolist() # or map(int, obj)
         return json.JSONEncoder.default(self, obj)
 
+class NumPyDecoder(json.JSONDecoder):
+    def default(self, obj):
+        if isinstance(obj, list):
+            return np.array(obj)
+        return json.JSONDecoder.default(self, obj)
+        
 class Struct:
     def __init__(self, **entries): 
         self.__dict__.update(entries)

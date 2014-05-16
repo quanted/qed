@@ -17,6 +17,7 @@ from stir import stir_model,stir_tables
 from uber import uber_lib
 from django.template import Context, Template
 import logging
+import rest_funcs
 
 logger = logging.getLogger('stirQaqcPage')
 
@@ -395,7 +396,7 @@ class stirQaqcPage(webapp.RequestHandler):
         #     mammal_inhalation_lc50,duration_mammal_inhalation_study,body_weight_assessed_mammal, body_weight_tested_mammal, 
         #     mammal_oral_ld50)
 
-        html = html + stir_tables.timestamp()
+        html = html + stir_tables.timestamp(stir_obj)
         html = html + stir_tables.table_1qaqc(pvuheadings,tmpl,stir_obj)
         html = html + stir_tables.table_2(pvuheadings,tmpl,stir_obj)
         html = html + stir_tables.table_3qaqc(pvuheadingsqaqc,tmpl,stir_obj)

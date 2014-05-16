@@ -17,6 +17,7 @@ sys.path.append("../dust")
 from stir import stir_model,stir_tables
 from uber import uber_lib
 from django.template import Context, Template
+import rest_funcs
 
 class STIRExecutePage(webapp.RequestHandler):
     def post(self):

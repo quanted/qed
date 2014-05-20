@@ -12,24 +12,25 @@ from uber import uber_lib
 import rest_funcs
 import history_tables
 
-class TRexhistoryPage(webapp.RequestHandler):
+class agdrift_trexAlgorithmPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie, "TREX 1.5.2 User History")
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'trex2','page':'history'})
-        html = html + template.render(templatepath + '03ubertext_links_left.html', {})                      
+        html = uber_lib.SkinChk(ChkCookie, "AgDrift-T-Rex User History")
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'agdrift_trex','page':'history'})
+        html = html + template.render(templatepath + '03ubertext_links_left.html', {})                       
         html = html + template.render(templatepath + '04uberalgorithm_start.html', {
-                'model':'trex', 
-                'model_attributes':'TREX 1.5.2 User History'})
+                'model':'agdrift_trex', 
+                'model_attributes':'AgDrift-T-Rex User History'})
         html = html + template.render (templatepath + 'history_pagination.html', {})                
-        hist_obj = rest_funcs.user_hist('admin', 'trex2')
+        hist_obj = rest_funcs.user_hist('admin', 'agdrift_trex')
         html = html + history_tables.table_all(hist_obj)
         html = html + template.render(templatepath + '04ubertext_end.html', {})
+        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
-app = webapp.WSGIApplication([('/.*', TRexhistoryPage)], debug=True)
+app = webapp.WSGIApplication([('/.*', agdrift_trexAlgorithmPage)], debug=True)
 
 def main():
     run_wsgi_app(app)
@@ -37,5 +38,4 @@ def main():
 if __name__ == '__main__':
     main()
     
-    
-    
+

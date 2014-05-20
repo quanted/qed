@@ -20,8 +20,18 @@ from uber import uber_lib
 from django.template import Context, Template
 from django.utils import simplejson
 import logging
+import rest_funcs
 
 logger = logging.getLogger('trex2 Model')
+
+def merge(ob1, ob2):
+    """
+    an object's __dict__ contains all its 
+    attributes, methods, docstrings, etc.
+    """
+    ob1.__dict__.update(ob2.__dict__)
+    return ob1
+# merge the two class instances into one instance
 
 class agdrift_trexOutputPage(webapp.RequestHandler):
     def post(self):        
@@ -141,6 +151,8 @@ class agdrift_trexOutputPage(webapp.RequestHandler):
         # x = text_file.read()
         # text_file = open('trex2/trex2_description.txt','r')
         # x1 = text_file.read()
+        agdrift_trex_obj = merge(agdrift_obj, trex_obj)
+
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie, "AgDrift-TREX Output")
@@ -202,6 +214,7 @@ class agdrift_trexOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.save_dic(html, agdrift_trex_obj.__dict__, "agdrift_trex", "single")
         self.response.out.write(html)
           
 app = webapp.WSGIApplication([('/.*', agdrift_trexOutputPage)], debug=True)

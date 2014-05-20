@@ -373,6 +373,7 @@ for row in data:
     c_ss.append(float(row[10]))
     oc.append(float(row[11]) / 100)
     k_ow.append(10**(float(row[1])))
+    logger.info(type(k_ow[0]))
     Species_of_the_tested_bird.append(row[12])
     bw_quail.append(row[13])
     bw_duck.append(row[14])
@@ -691,7 +692,7 @@ for row in data:
 
 
 kabam_obj = kabam_model.kabam(
-            True,True,chemical_name[0],l_kow[0],k_oc[0],c_wdp[0],water_column_EEC[0],c_wto[0],mineau_scaling_factor[0],x_poc[0],x_doc[0],c_ox[0],w_t[0],c_ss[0],oc[0],k_ow[0],
+            True,True,'qaqc',chemical_name[0],l_kow[0],k_oc[0],c_wdp[0],water_column_EEC[0],c_wto[0],mineau_scaling_factor[0],x_poc[0],x_doc[0],c_ox[0],w_t[0],c_ss[0],oc[0],k_ow[0],
             Species_of_the_tested_bird[0],bw_quail[0],bw_duck[0],bwb_other[0],avian_ld50[0],avian_lc50[0],avian_noaec[0],m_species[0],bw_rat[0],bwm_other[0],mammalian_ld50[0],mammalian_lc50[0],mammalian_chronic_endpoint[0],
             lf_p_sediment[0],lf_p_phytoplankton[0],lf_p_zooplankton[0],lf_p_benthic_invertebrates[0],lf_p_filter_feeders[0],lf_p_small_fish[0],lf_p_medium_fish[0],
             mf_p_sediment[0],mf_p_phytoplankton[0],mf_p_zooplankton[0],mf_p_benthic_invertebrates[0],mf_p_filter_feeders[0],mf_p_small_fish[0],
@@ -917,11 +918,12 @@ class kabamQaqcPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'kabam',
                 'model_attributes':'Kabam QAQC'})
-        #html = html + kabam_tables.timestamp()
+        html = html + kabam_tables.timestamp(kabam_obj,"")
         html = html + kabam_tables.table_all_qaqc(kabam_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.save_dic(html, kabam_obj.__dict__, "kabam", "qaqc")
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', kabamQaqcPage)], debug=True)

@@ -470,7 +470,7 @@ class trex2(object):
     #new in trex1.5.1
         if n_a == 1:
             C_temp = C_0(a_r[0], a_i, para)
-            return C_temp
+            return np.array([C_temp])
         else:
             C_temp = np.ones((371,1)) #empty array to hold the concentrations over days       
             a_p_temp = 0  #application period temp  

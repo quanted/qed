@@ -21,6 +21,7 @@ from uber import uber_lib
 from django.template import Context, Template
 from django.utils import simplejson
 import rest_funcs
+import logging
 
 class KabamOutputPage(webapp.RequestHandler):
     def post(self):        
@@ -307,8 +308,7 @@ class KabamOutputPage(webapp.RequestHandler):
             k1_phytoplankton,k2_phytoplankton,
             k1_zoo,k2_zoo,kd_zoo,ke_zoo,k1_beninv,k2_beninv,kd_beninv,ke_beninv,km_beninv,
             k1_ff,k2_ff,kd_ff,ke_ff,km_ff,k1_sf,k2_sf,kd_sf,ke_sf,km_sf,k1_mf,k2_mf,kd_mf,ke_mf,km_mf,k1_lf,k2_lf,kd_lf,ke_lf,km_lf,
-            rate_constants,s_respire,phyto_respire,zoo_respire,beninv_respire,ff_respire,sfish_respire,mfish_respire,lfish_respire, None
-            )
+            rate_constants,s_respire,phyto_respire,zoo_respire,beninv_respire,ff_respire,sfish_respire,mfish_respire,lfish_respire, None)
 
             # cb_phytoplankton_v,cb_zoo_v,cb_beninv_v,cb_ff_v,cb_sf_v,cb_mf_v,cb_lf_v   ***Removed from kabam_obj above***
         templatepath = os.path.dirname(__file__) + '/../templates/'

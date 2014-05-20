@@ -119,40 +119,41 @@ tmpl = Template(djtemplate)
 
 
 def table_all(earthworm_obj):
-    table1_out = table_1()
+    table1_out = table_1batch(pvuheadings, tmpl, earthworm_obj)
     table2_out = table_2(earthworm_obj)
     templatepath = os.path.dirname(__file__) + '/../templates/'
     html_all = table1_out + table2_out 
     return html_all
 
-def table_1():
-    html = """<H3 class="out_3 collapsible" id="section1"><span></span>User Inputs</H3>
-                <div class="out_input_table out_">
-                </div>
+# def table_1():
+#     html = """<H3 class="out_3 collapsible" id="section1"><span></span>User Inputs</H3>
+#                 <div class="out_input_table out_">
+#                 </div>
                 
-                <script type="text/javascript">
-                    $(document).ready(function(){
+#                 <script type="text/javascript">
+#                     $(document).ready(function(){
 
-                    // Initialize output page//
+#                     // Initialize output page//
 
-                    //$('#export_menu').hide()
+#                     //$('#export_menu').hide()
 
-                    $(".out_input_table").append(localStorage.html_input);
-                    $(".out_input_table :input").attr('disabled', true);
+#                     $(".out_input_table").append(localStorage.html_input);
+#                     $(".out_input_table :input").attr('disabled', true);
 
-                    element_all = localStorage.html_new.split("&")
-                    // console.log(element_all)
-                    element1 = localStorage.html_new.split("&")[0].split("=")
-                    // console.log(element_all.length)
-                    for (i=0; i<element_all.length; i++) {
-                        element_name_t = element_all[i].split("=")[0]
-                        element_val_t = element_all[i].split("=")[1]
-                        $('[name="'+element_name_t+'"]').val(element_val_t)
-                    }
-                    $(".input_button").hide()
-                    })
-                </script>"""
-    return html
+#                     element_all = localStorage.html_new.split("&")
+#                     // console.log(element_all)
+#                     element1 = localStorage.html_new.split("&")[0].split("=")
+#                     // console.log(element_all.length)
+#                     for (i=0; i<element_all.length; i++) {
+#                         element_name_t = element_all[i].split("=")[0]
+#                         element_val_t = element_all[i].split("=")[1]
+#                         $('[name="'+element_name_t+'"]').val(element_val_t)
+#                     }
+#                     $(".input_button").hide()
+#                     })
+#                 </script>"""
+#     return html
+
 
 def table_2(earthworm_obj):
         html = """
@@ -239,4 +240,5 @@ def table_sum_output(sumheadings, tmpl, Ce_out):
         </div>
         <br>
         """
-        return html
+        return html
+

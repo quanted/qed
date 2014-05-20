@@ -16,6 +16,7 @@ sys.path.append("../therps")
 from therps import therps_model,therps_tables
 from uber import uber_lib
 import logging
+import rest_funcs
 
 logger = logging.getLogger('TherpsQaqcPage')
 
@@ -260,7 +261,7 @@ for row in data:
     EEC_CRQ_herp_IM_exp_mean.append(float(row[108]))
     EEC_CRQ_herp_TP_exp_mean.append(float(row[109]))
 
-    therps_obj = therps_model.therps(chem_name[0], use[0], formu_name[0], a_i[0], h_l[0], n_a[0], i_a[0], a_r[0], ld50_bird[0], lc50_bird[0], NOAEC_bird[0], NOAEL_bird[0], 
+    therps_obj = therps_model.therps('qaqc', chem_name[0], use[0], formu_name[0], a_i[0], h_l[0], n_a[0], i_a[0], a_r[0], ld50_bird[0], lc50_bird[0], NOAEC_bird[0], NOAEL_bird[0], 
                                      Species_of_the_tested_bird_avian_ld50[0], Species_of_the_tested_bird_avian_lc50[0], Species_of_the_tested_bird_avian_NOAEC[0], Species_of_the_tested_bird_avian_NOAEL[0],
                                      bw_avian_ld50[0], bw_avian_lc50[0], bw_avian_NOAEC[0], bw_avian_NOAEL[0],
                                      x[0], bw_herp_a_sm[0], bw_herp_a_md[0], bw_herp_a_lg[0], wp_herp_a_sm[0], wp_herp_a_md[0], 
@@ -364,11 +365,12 @@ class TherpsQaqcPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'therps',
                 'model_attributes':'T-Herps QAQC'})
-        html = html + therps_tables.timestamp()
+        html = html + therps_tables.timestamp(therps_obj)
         html = html + therps_tables.table_all_qaqc(therps_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.save_dic(html, therps_obj.__dict__, 'therps', 'qaqc')
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', TherpsQaqcPage)], debug=True)

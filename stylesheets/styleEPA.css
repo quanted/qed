@@ -349,6 +349,9 @@ ul.nobullet {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
 }
+.input_table ul {
+  list-style: none;
+}
 .input_nav ul {
   text-align: center;
 }

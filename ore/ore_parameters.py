@@ -86,7 +86,7 @@ def form():
 	
 	# Dermal Intermediate Term
 	form_ToxInpDermal_NC_it = ore_ToxInpDermal_NC_it()
-	html = html + tmpl_ToxInp.render(Context(dict(form=ore_ToxInpDermal_NC_it, tab_name="tab_tox_it", header="Intermdiate-Term", expMethod="Dermal", label="Non-Cancer", noOfItems="4")))
+	html = html + tmpl_ToxInp.render(Context(dict(form=ore_ToxInpDermal_NC_it, tab_name="tab_tox_it", header="Intermediate-Term", expMethod="Dermal", label="Non-Cancer", noOfItems="4")))
 	form_ToxInpDermal_abs_it = ore_ToxInpDermal_abs_it()
 	html = html + tmpl_ToxInp.render(Context(dict(form=ore_ToxInpDermal_abs_it, label="Absorption", noOfItems="2")))
 	# Inhalation Intermediate Term
@@ -123,7 +123,7 @@ class ore_ChemicalInp(forms.Form):
 	activeIngredient = forms.CharField(widget=forms.Textarea (attrs={'cols': 20, 'rows': 1}), label='Active Ingredient')
 	# expDuration_CHOICES=((0,'Short-Term'),(1,'Intermediate-Term'),(2,'Long-Term'))
 	# expDuration = forms.ChoiceField(required=True, label='Exposure Duration', choices=expDuration_CHOICES, initial='Intermediate-Term')
-	expDuration_CHOICES = (('st','Short-Term'), ('it','Intermdiate-Term'), ('lt','Long-Term'))
+	expDuration_CHOICES = (('st','Short-Term'), ('it','Intermediate-Term'), ('lt','Long-Term'))
 	expDurationType = forms.MultipleChoiceField(label='Exposure Duration', choices=expDuration_CHOICES, widget=forms.CheckboxSelectMultiple())
 
 # These ChoiceField Options are used across multiple classes

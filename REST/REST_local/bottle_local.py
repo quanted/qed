@@ -6,10 +6,13 @@ from boto.s3.key import Key
 from boto.s3.bucket import Bucket
 import os
 import json
+
+
 #####The folloing two lines could let the REST servers to handle multiple requests##
 ########################(not necessary for local dev. env.)#########################
 # from gevent import monkey
 # monkey.patch_all()
+
 ##########################################################################################
 #####AMAZON KEY, store output files. You might have to write your own import approach#####
 ##########################################################################################
@@ -19,6 +22,13 @@ rest_key = keys_Picloud_S3.picloud_api_key
 rest_secretkey = keys_Picloud_S3.picloud_api_secretkey
 ###########################################################################################
 bottle.BaseRequest.MEMFILE_MAX = 1024 * 1024 # (or whatever you want)
+
+class NumPyArangeEncoder(json.JSONEncoder):
+    def default(self, obj):
+        import numpy as np
+        if isinstance(obj, np.ndarray):
+            return obj.tolist() # or map(int, obj)
+        return json.JSONEncoder.default(self, obj)
 
 import pymongo
 client = pymongo.MongoClient('localhost', 27017)
@@ -30,6 +40,111 @@ def check(user, passwd):
     return False
 
 all_result = {}
+
+
+
+##################################terrplant#############################################
+@route('/terrplant/<jid>', method='POST') 
+@auth_basic(check)
+def terrplant_rest(jid):
+    for k, v in request.json.iteritems():
+        exec '%s = v' % k
+        # print k, v
+    all_result.setdefault(jid,{}).setdefault('status','none')
+
+    from terrplant_rest import terrplant_model_rest
+    result = terrplant_model_rest.terrplant(version_terrplant,run_type,A,I,R,D,nms,lms,nds,lds,chemical_name,pc_code,use,application_method,application_form,solubility)
+    # # print request.json
+    # result = gfix.terrplant2(APPRAT,APPNUM,APSPAC,KOC,METHAF,WETTED,METHOD,AIRFLG,YLOCEN,GRNFLG,GRSIZE,ORCFLG,INCORP,SOL,METHAP,HYDHAP,FOTHAP)
+
+    if (result):
+        all_result[jid]['status']='done'
+        all_result[jid]['input']=request.json
+        all_result[jid]['result']=result
+
+    return {'user_id':'admin', 'result': result.__dict__, '_id':jid}
+##################################terrplant#############################################
+
+##################################sip#############################################
+@route('/sip/<jid>', method='POST') 
+@auth_basic(check)
+def sip_rest(jid):
+    for k, v in request.json.iteritems():
+        exec '%s = v' % k
+    all_result.setdefault(jid,{}).setdefault('status','none')
+    from sip_rest import sip_model_rest
+    result = sip_model_rest.sip(chemical_name, bw_bird, bw_quail, bw_duck, bwb_other, bw_rat, bwm_other, b_species, m_species, bw_mamm, sol, ld50_a, ld50_m, aw_bird, mineau, aw_mamm, noaec, noael)
+    if (result):
+        all_result[jid]['status']='done'
+        all_result[jid]['input']=request.json
+        all_result[jid]['result']=result
+    return {'user_id':'admin', 'result': result.__dict__, '_id':jid}
+##################################sip#############################################
+
+##################################stir#############################################
+@route('/stir/<jid>', method='POST') 
+@auth_basic(check)
+def stir_rest(jid):
+    for k, v in request.json.iteritems():
+        exec '%s = v' % k
+    all_result.setdefault(jid,{}).setdefault('status','none')
+    from stir_rest import stir_model_rest
+    result = stir_model_rest.stir(run_type,chemical_name,application_rate,column_height,spray_drift_fraction,direct_spray_duration, 
+                                  molecular_weight,vapor_pressure,avian_oral_ld50,body_weight_assessed_bird,body_weight_tested_bird,mineau_scaling_factor, 
+                                  mammal_inhalation_lc50,duration_mammal_inhalation_study,body_weight_assessed_mammal,body_weight_tested_mammal, 
+                                  mammal_oral_ld50)
+    if (result):
+        all_result[jid]['status']='done'
+        all_result[jid]['input']=request.json
+        all_result[jid]['result']=result
+    return {'user_id':'admin', 'result': result.__dict__, '_id':jid}
+##################################sip#############################################
+
+##################################dust#############################################
+@route('/dust/<jid>', method='POST') 
+@auth_basic(check)
+def dust_rest(jid):
+    for k, v in request.json.iteritems():
+        exec '%s = v' % k
+    all_result.setdefault(jid,{}).setdefault('status','none')
+    from dust_rest import dust_model_rest
+    result = dust_model_rest.dust(chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res, bird_acute_oral_study, bird_study_add_comm,
+                                  low_bird_acute_ld50, test_bird_bw, mineau_scaling_factor, mamm_acute_derm_study, mamm_study_add_comm, mam_acute_derm_ld50, mam_acute_oral_ld50, test_mam_bw)
+    if (result):
+        all_result[jid]['status']='done'
+        all_result[jid]['input']=request.json
+        all_result[jid]['result']=result
+    return {'user_id':'admin', 'result': result.__dict__, '_id':jid}
+##################################sip#############################################
+
+##################################trex2#############################################
+@route('/trex2/<jid>', method='POST') 
+@auth_basic(check)
+def trex2_rest(jid):
+    for k, v in request.json.iteritems():
+        exec '%s = v' % k
+    all_result.setdefault(jid,{}).setdefault('status','none')
+    from trex2_rest import trex2_model_rest
+    result = trex2_model_rest.trex2(chem_name, use, formu_name, a_i, Application_type, seed_treatment_formulation_name, seed_crop, seed_crop_v, r_s, b_w, p_i, den, h_l, n_a, ar_lb, day_out,
+                                    ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, aw_bird_md, aw_bird_lg, 
+                                    Species_of_the_tested_bird_avian_ld50, Species_of_the_tested_bird_avian_lc50, Species_of_the_tested_bird_avian_NOAEC, Species_of_the_tested_bird_avian_NOAEL, 
+                                    tw_bird_ld50, tw_bird_lc50, tw_bird_NOAEC, tw_bird_NOAEL, x, ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, aw_mamm_lg, tw_mamm,
+                                    m_s_r_p)
+    if (result):
+        result_json = json.dumps(result.__dict__, cls=NumPyArangeEncoder)
+        all_result[jid]['status']='done'
+        all_result[jid]['input']=request.json
+        all_result[jid]['result']=result
+    return {'user_id':'admin', 'result':result_json, '_id':jid}
+##################################sip#############################################
+
+
+
+
+
+
+
+
 
 ##################################geneec#############################################
 @route('/geneec/<jid>', method='POST') 

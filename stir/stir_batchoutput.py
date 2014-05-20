@@ -16,6 +16,9 @@ from stir import stir_model,stir_tables
 from uber import uber_lib
 import logging
 import rest_funcs
+from threading import Thread
+import Queue
+from collections import OrderedDict
 
 logger = logging.getLogger('stirBatchPage')
 
@@ -81,12 +84,11 @@ def html_table(row_inp_all):
         if row_inp_temp_all is None:
             break
         else:
-            row_inp = row_inp_temp_all[0]
+            row = row_inp_temp_all[0]
             iter = row_inp_temp_all[1]
 
             logger.info("iteration: " + str(iter))
-
-            chemical_name_temp=str(row_inp[0])
+            chemical_name_temp=str(row[0])
             chemical_name.append(chemical_name_temp)
             application_rate_temp=float(row[1])
             application_rate.append(application_rate_temp)
@@ -118,7 +120,6 @@ def html_table(row_inp_all):
             body_weight_tested_mammal.append(body_weight_tested_mammal_temp)
             mammal_oral_ld50_temp=float(row[15])
             mammal_oral_ld50.append(mammal_oral_ld50_temp)
-
 
             Input_header="""<div class="out_">
                                 <br><H3>Batch Calculation of Iteration %s</H3>
@@ -197,8 +198,6 @@ def loop_html(thefile):
     sum_5=stir_tables.table_sum_5(ratio_vid_avian_out, ratio_sid_avian_out, ratio_vid_mammal_out, ratio_sid_mammal_out)   
     return html_timestamp + sum_1+sum_2+sum_3+sum_4+sum_5+"".join(out_html_all_sort.values())
 
-
-              
 class stirBatchOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()
@@ -207,17 +206,12 @@ class stirBatchOutputPage(webapp.RequestHandler):
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        # html = uber_lib.SkinChk(ChkCookie)
-        # html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'stir','page':'batchinput'})
-        # html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = template.render(templatepath + '04uberbatch_start.html', {
                 'model':'stir',
                 'model_attributes':'STIR Batch Output'})
-        html = html + stir_tables.timestamp()
         html = html + iter_html
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
-        # html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         rest_funcs.batch_save_dic(html, [x.__dict__ for x in stir_all], 'stir', 'batch', jid_batch[0], ChkCookie, templatepath)
         self.response.out.write(html)
 

@@ -14,6 +14,9 @@ from es_mapping_openlayer import es_mapping_openlayer_model, es_mapping_openlaye
 import logging
 logger = logging.getLogger('ES Model')
 
+
+
+
 class ESOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()   
@@ -26,7 +29,7 @@ class ESOutputPage(webapp.RequestHandler):
 
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)    
+        html = uber_lib.SkinChk(ChkCookie, "Endangered Species Mapper Output")    
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'es_mapping_openlayer','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
@@ -35,8 +38,12 @@ class ESOutputPage(webapp.RequestHandler):
         html = html + es_mapping_openlayer_tables.table_all(es_obj)
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        self.response.headers.add_header("Access-Control-Allow-Origin", "*")
+
+        # self.response.headers['Content-Type'] = 'application/x-javascript'
         self.response.out.write(html)
-     
+
+
 app = webapp.WSGIApplication([('/.*', ESOutputPage)], debug=True)
         
 

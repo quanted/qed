@@ -1,0 +1,198 @@
+*** Record 1: (A78), TITLE - label for simulation title
+Express     v. 1.03.02    (2007-07-20)
+*** PRcoffee; 11/23/2005 Title of input file  Develope
+***____________
+*** Record 2: (A78), HTITLE - Hydrology Information Title
+Mucara soils with coffee production (west to central Pue
+***____________
+*** Record 3: (2F8.0,I8,F8.0,2I8,5I4) PFAC,SFAC,IPEIND,ANETD,INICRP,ISCOND
+***PFAC SFAC    IPEIND  ANETD   INICRP  ISCOND     (WDM data sets not used)
+7.70E-010.00E+00       01.00E+01       1       2
+***____________
+*** Record 6: (I8) ERFLAG: Flag to calculate erosion
+       4
+***____________
+*** Record 7: (4F8.0,8X,I8,2F8.0) USLEK,USLELS,USLEP,AFIELD,IREG,SLP,HL
+***USLEKUSLELS  USLEP   AFIELD          IREG    SLP     HL
+1.00E-014.36E+015.00E-011.73E+02               3   50.00  600.00
+***____________
+*** Record 8: (I8) NDC - Number of different crops simulated; FLITNUM
+       1 0
+***____________
+*** Record 9 for Crop 1: (I8,3F8.0,I8,3(1X,I3),2F8.0) ICNCN,CINTCP,AMXDR,COVMAX,ICNAH,(3)CN,WFMAX,HTMAX
+***ICNCNCINTCP  AMXDR   COVMAX  ICNAH    CN1 CN2 CN3WFMAX   HTMAX
+       12.50E-018.10E+011.00E+02       2  87  85  860.00E+004.11E+02
+***____________
+*** Record 9A (2I8): CROPNO,NUSLEC - Crop, Number of USLE C (cover management) factors
+       1      25
+*** Record 9B: (16(I2,I2,1X) GDUSLEC,GMUSLEC for each USLEC
+***M DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM
+0101 1601 0102 1602 0103 1603 0104 1604 0105 1605 0106 1606 0107 1607 0108 1608
+*** Record 9C: (16(F4.0,1X)) - USLEC (USLE Cover management factors)
+.025 .025 .025 .025 .025 .025 .025 .025 .025 .025 .025 .025 .025 .025 .025 .025
+*** Record 9D: (16(F4.0,1X)) - MNGN - Manning's N for each USLEC
+.014 .014 .014 .014 .014 .014 .014 .014 .014 .014 .014 .014 .014 .014 .014 .014
+*** Record 9E: (16(I4,1X)) - CN(II) for each USLEC
+  85   85   85   85   85   85   85   85   85   85   85   85   85   85   85   85
+***____________
+*** Continuation of Records 9B,9C,9D,9E for USLEC 17-25
+***M DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM
+0109 1609 0110 1610 0111 1611 0112 1612 3112
+.025 .025 .025 .025 .025 .025 .025 .025 .025
+.014 .014 .014 .014 .014 .014 .014 .014 .014
+  85   85   85   85   85   85   85   85   85
+***____________
+*** Record 10: (I8) NCPDS - number of cropping periods
+      30
+***____________
+*** Record(s) 11: (2X,3I2,2X,3I2,3X,3I2,I8) - dates of crop EMergence, MAturation, and HArvest
+*** EMD,EMM,IYREM,MAD,MAM,IYRMAT,HAD,HAM,IYRHAR,INCROP
+***EMerge MAture  HArvest
+***DMMYY  DDMMYY  DDMMYY   Crop No.
+  010161  020161  311261       1
+  010162  020162  311262       1
+  010163  020163  311263       1
+  010164  020164  311264       1
+  010165  020165  311265       1
+  010166  020166  311266       1
+  010167  020167  311267       1
+  010168  020168  311268       1
+  010169  020169  311269       1
+  010170  020170  311270       1
+  010171  020171  311271       1
+  010172  020172  311272       1
+  010173  020173  311273       1
+  010174  020174  311274       1
+  010175  020175  311275       1
+  010176  020176  311276       1
+  010177  020177  311277       1
+  010178  020178  311278       1
+  010179  020179  311279       1
+  010180  020180  311280       1
+  010181  020181  311281       1
+  010182  020182  311282       1
+  010183  020183  311283       1
+  010184  020184  311284       1
+  010185  020185  311285       1
+  010186  020186  311286       1
+  010187  020187  311287       1
+  010188  020188  311288       1
+  010189  020189  311289       1
+  010190  020190  311290       1
+***____________
+*** Record 12: (A78) PTITLE - Label for pesticide
+Chemical Input Data:                                                          
+***____________
+*** Record 13: (4I8) NAPS,NCHEM,FRMFLG,DK2FLG
+*** NAPS   NCHEM  FRMFLG  DK2FLG
+      30       1       0       0
+***____________
+*** Record 15: (3A20) Name(s) of pesticides for output titles
+Forchlorfenuron     
+***____________
+*** Record(s) 16: (2X,3I2,I3,3(I2,F5.0,F6.0,F5.0,F5.0)) - application data
+***   including the application date (APD,APM,IAPYR), WINDAY, and (1)(CAM,DEPI,TAPP,APPEFF,DRFT)
+***DMMYYWinCmDepi Tapp  Eff  Drft CmDepi Tapp  Eff  Drft CmDepi Tapp  Eff  Drft
+  311261  0 2 4.000.0000.9500.1600
+  311262  0 2 4.000.0000.9500.1600
+  311263  0 2 4.000.0000.9500.1600
+  311264  0 2 4.000.0000.9500.1600
+  311265  0 2 4.000.0000.9500.1600
+  311266  0 2 4.000.0000.9500.1600
+  311267  0 2 4.000.0000.9500.1600
+  311268  0 2 4.000.0000.9500.1600
+  311269  0 2 4.000.0000.9500.1600
+  311270  0 2 4.000.0000.9500.1600
+  311271  0 2 4.000.0000.9500.1600
+  311272  0 2 4.000.0000.9500.1600
+  311273  0 2 4.000.0000.9500.1600
+  311274  0 2 4.000.0000.9500.1600
+  311275  0 2 4.000.0000.9500.1600
+  311276  0 2 4.000.0000.9500.1600
+  311277  0 2 4.000.0000.9500.1600
+  311278  0 2 4.000.0000.9500.1600
+  311279  0 2 4.000.0000.9500.1600
+  311280  0 2 4.000.0000.9500.1600
+  311281  0 2 4.000.0000.9500.1600
+  311282  0 2 4.000.0000.9500.1600
+  311283  0 2 4.000.0000.9500.1600
+  311284  0 2 4.000.0000.9500.1600
+  311285  0 2 4.000.0000.9500.1600
+  311286  0 2 4.000.0000.9500.1600
+  311287  0 2 4.000.0000.9500.1600
+  311288  0 2 4.000.0000.9500.1600
+  311289  0 2 4.000.0000.9500.1600
+  311290  0 2 4.000.0000.9500.1600
+***____________
+*** Record 17: (includes data for each chemical) (F8.0,3(I8,F8.0)) FILTRA, (1)(IPSCND,UPTKF)
+***FILT IPSCND1 UPTKF1  IPSCND2 UPTKF2  IPSCND3 UPTKF3
+0.00E+00       10.00E+00
+***____________
+*** Record 18: (3F8.0) PLVKRT,PLDKRT,FEXTRC for Chemical 1
+0.00E+000.00E+005.00E-01
+***____________
+*** Record 19: (A78) STITLE - label for soil properties
+"Mucara clay, hydrologic group D"   Brief description of                      
+***____________
+*** Record 20: (F8.0,8X,9I4) CORED,BDFLAG,THFLAG,KDFLAG,HSWZT,MOC,IRFLAG,ITFLAG,IDFLAG,BIOFLG
+***CORED (cm)     BD  TH  KD  HS MOC  IR  IT  ID BIO
+8.10E+01           0   0   0   0   0   0   0   0   0
+***____________
+*** Record 26: (9F8.0) (1)DAIR, (1)HENRYK, (1)ENPY
+4.30E+031.20E-102.00E+01
+***____________
+*** Record 33:  (I8) NHORIZ (total number of soil horizons)
+       4
+***____________
+*** Record 34 for Horizon 1: (I8,8F8.0) HORIZN,THKNS,BD,THET0,AD,(1)DISP,ADL
+       17.00E+009.60E-014.94E-010.00E+000.00E+000.00E+00
+***____________
+*** Record 36 for Horizon 1: (8X,9F8.0)  (1)DWRATE,(1)DSRATE,(1)DGRATE
+        1.20E-031.20E-030.00E+00
+***____________
+*** Record 37 for Horizon 1: (8X,7F8.0) DPN,THEFC,THEWP,OC,(1)KDs
+        1.00E-014.94E-013.69E-012.30E+004.05E+01
+***____________
+*** Record 34 for Horizon 2: (I8,8F8.0) HORIZN,THKNS,BD,THET0,AD,(1)DISP,ADL
+       26.00E+009.60E-014.94E-010.00E+000.00E+000.00E+00
+***____________
+*** Record 36 for Horizon 2: (8X,9F8.0)  (1)DWRATE,(1)DSRATE,(1)DGRATE
+        1.20E-031.20E-030.00E+00
+***____________
+*** Record 37 for Horizon 2: (8X,7F8.0) DPN,THEFC,THEWP,OC,(1)KDs
+        1.00E+004.94E-013.69E-012.30E+004.05E+01
+***____________
+*** Record 34 for Horizon 3: (I8,8F8.0) HORIZN,THKNS,BD,THET0,AD,(1)DISP,ADL
+       33.30E+011.11E+003.83E-010.00E+000.00E+000.00E+00
+***____________
+*** Record 36 for Horizon 3: (8X,9F8.0)  (1)DWRATE,(1)DSRATE,(1)DGRATE
+        1.20E-031.20E-030.00E+00
+***____________
+*** Record 37 for Horizon 3: (8X,7F8.0) DPN,THEFC,THEWP,OC,(1)KDs
+        3.00E+003.83E-011.93E-011.20E+002.12E+01
+***____________
+*** Record 34 for Horizon 4: (I8,8F8.0) HORIZN,THKNS,BD,THET0,AD,(1)DISP,ADL
+       43.50E+011.28E+003.43E-010.00E+000.00E+000.00E+00
+***____________
+*** Record 36 for Horizon 4: (8X,9F8.0)  (1)DWRATE,(1)DSRATE,(1)DGRATE
+        1.20E-031.20E-030.00E+00
+***____________
+*** Record 37 for Horizon 4: (8X,7F8.0) DPN,THEFC,THEWP,OC,(1)KDs
+        5.00E+003.43E-013.38E-016.00E-011.06E+01
+***____________
+*** Record 40: (2I8) ILP; CFLAG (blank if ILP=0)
+       0
+***____________
+*** Record 42: (3(4X,A4,4X,A4,I8),I4) ITEM1,STEP1,LFREQ1,ITEM2,STEP2,LFREQ2,ITEM3,STEP3,LFREQ3,EXMFLG
+    WATR    YEAR      10    PEST    YEAR      10    CONC    YEAR      10   1
+***____________
+*** Record 43: (I8) EXMENV
+      99
+***____________
+*** Record 44 for Chemical 1: EXMCHM,CAS Number,NPROC,RFORM,YIELD
+       1    CASSNO: -999       1       10.00E+00
+***____________
+*** Record 45: NPLOTS (number of time series variables,STEP4
+       0    YEAR
+***____________
+*** Records 46: Plotting variables

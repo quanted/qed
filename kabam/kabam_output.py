@@ -18,11 +18,13 @@ import sys
 sys.path.append("../kabam")
 from kabam import kabam_model,kabam_tables
 from uber import uber_lib
+from django.template import Context, Template
+from django.utils import simplejson
+import rest_funcs
 
 class KabamOutputPage(webapp.RequestHandler):
     def post(self):        
         form = cgi.FieldStorage()   
-
         chemical_name = form.getvalue('name')
         l_kow = float(form.getvalue('lkow'))
         k_oc = float(form.getvalue('Koc'))
@@ -291,7 +293,7 @@ class KabamOutputPage(webapp.RequestHandler):
 
 
         kabam_obj = kabam_model.kabam(
-            True,True,chemical_name,l_kow,k_oc,c_wdp,water_column_EEC,c_wto,mineau_scaling_factor,x_poc,x_doc,c_ox,w_t,c_ss,oc,k_ow,
+            True,True,'single',chemical_name,l_kow,k_oc,c_wdp,water_column_EEC,c_wto,mineau_scaling_factor,x_poc,x_doc,c_ox,w_t,c_ss,oc,k_ow,
             Species_of_the_tested_bird,bw_quail,bw_duck,bwb_other,avian_ld50,avian_lc50,avian_noaec,m_species,bw_rat,bwm_other,mammalian_ld50,mammalian_lc50,mammalian_chronic_endpoint,
             lf_p_sediment,lf_p_phytoplankton,lf_p_zooplankton,lf_p_benthic_invertebrates,lf_p_filter_feeders,lf_p_small_fish,lf_p_medium_fish,
             mf_p_sediment,mf_p_phytoplankton,mf_p_zooplankton,mf_p_benthic_invertebrates,mf_p_filter_feeders,mf_p_small_fish,
@@ -305,26 +307,26 @@ class KabamOutputPage(webapp.RequestHandler):
             k1_phytoplankton,k2_phytoplankton,
             k1_zoo,k2_zoo,kd_zoo,ke_zoo,k1_beninv,k2_beninv,kd_beninv,ke_beninv,km_beninv,
             k1_ff,k2_ff,kd_ff,ke_ff,km_ff,k1_sf,k2_sf,kd_sf,ke_sf,km_sf,k1_mf,k2_mf,kd_mf,ke_mf,km_mf,k1_lf,k2_lf,kd_lf,ke_lf,km_lf,
-            rate_constants,s_respire,phyto_respire,zoo_respire,beninv_respire,ff_respire,sfish_respire,mfish_respire,lfish_respire
+            rate_constants,s_respire,phyto_respire,zoo_respire,beninv_respire,ff_respire,sfish_respire,mfish_respire,lfish_respire, None
             )
 
             # cb_phytoplankton_v,cb_zoo_v,cb_beninv_v,cb_ff_v,cb_sf_v,cb_mf_v,cb_lf_v   ***Removed from kabam_obj above***
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
+        html = uber_lib.SkinChk(ChkCookie, "Kabam Output")
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'kabam','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'kabam',
                 'model_attributes':'Kabam Output'})
-        html = html + kabam_tables.timestamp()
+        html = html + kabam_tables.timestamp(kabam_obj,"")
         html = html + kabam_tables.table_all(kabam_obj)
         html = html + kabam_tables.bar_f(kabam_obj)
-        
         html = html + template.render(templatepath + 'kabam_output_jqplot.html', {})
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.save_dic(html, kabam_obj.__dict__, "kabam", "single")
         self.response.out.write(html)
         
 app = webapp.WSGIApplication([('/.*', KabamOutputPage)], debug=True)

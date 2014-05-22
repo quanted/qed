@@ -8,14 +8,14 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import django
 from django import forms
-from pfam import PFAMdb
+from pfam import pfam_parameters
 from uber import uber_lib
 
 class PFAMInputPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
+        html = uber_lib.SkinChk(ChkCookie, "PFAM Inputs")
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'pfam','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberinput_start_tabbed.html', {
@@ -35,7 +35,7 @@ class PFAMInputPage(webapp.RequestHandler):
         </div>
         """
         html = html + """<br><table class="tab tab_Chemical" border="0">"""
-        html = html + str(PFAMdb.PFAMInp_chem())
+        html = html + str(pfam_parameters.PFAMInp_chem())
         html = html + """</table><table class="tab tab_Application" border="0" style="display:none">
                                     <tr><th colspan="2" scope="col"><label for="id_noa">Number of Applications:</label></th>
                                         <td colspan="3" scope="col"><select name="noa" id="id_noa">
@@ -74,7 +74,7 @@ class PFAMInputPage(webapp.RequestHandler):
                                     </tr>"""        
                 
         html = html + """</table><table class="tab tab_Location" border="0" style="display:none">"""    
-        html = html + str(PFAMdb.PFAMInp_loc())
+        html = html + str(pfam_parameters.PFAMInp_loc())
         html = html + """</table><table class="tab tab_Floods" border="0" style="display:none">
                                     <tr><th></th><th colspan="2" scope="col"><label for="id_nof">Number of Floods Events:</label></th>
                                         <td colspan="2" scope="col"><select name="nof" id="id_nof">
@@ -96,11 +96,11 @@ class PFAMInputPage(webapp.RequestHandler):
                                     </tr>"""    
 
         html = html + """</table><table class="tab tab_Crop" border="0" style="display:none">"""      
-        html = html + str(PFAMdb.PFAMInp_cro())                
+        html = html + str(pfam_parameters.PFAMInp_cro())                
         html = html + """</table><table class="tab tab_Physical" border="0" style="display:none">"""      
-        html = html + str(PFAMdb.PFAMInp_phy())
+        html = html + str(pfam_parameters.PFAMInp_phy())
         html = html + """</table><table class="tab tab_Output" border="0" style="display:none">"""    
-        html = html + str(PFAMdb.PFAMInp_out())     
+        html = html + str(pfam_parameters.PFAMInp_out())     
                 
         html = html + template.render(templatepath + 'pfam-jquery.html', {})
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})

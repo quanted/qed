@@ -9,6 +9,8 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import os
 from uber import uber_lib
+import history_tables
+import rest_funcs
 
 class THerpshistoryPage(webapp.RequestHandler):
     def get(self):
@@ -16,7 +18,7 @@ class THerpshistoryPage(webapp.RequestHandler):
         x = text_file1.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
+        html = uber_lib.SkinChk(ChkCookie, "T-Herps User History")
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'therps','page':'history'})
         html = html + template.render(templatepath + '03ubertext_links_left.html', {})                       
         html = html + template.render(templatepath + '04uberalgorithm_start.html', {

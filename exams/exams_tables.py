@@ -2,6 +2,7 @@ import numpy
 from django.template import Context, Template
 from django.utils.safestring import mark_safe
 from exams import exams_model
+import datetime
 
 def getheaderpvu():
 	headings = ["Parameter", "Value", "Units"]
@@ -80,11 +81,24 @@ pvaheadings = getheaderpva()
 djtemplate = getdjtemplate()
 tmpl = Template(djtemplate)
 
+def timestamp(exams_obj):
+    st = datetime.datetime.strptime(exams_obj.jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
+    html="""
+    <div class="out_">
+        <b>EXAMS<br>
+    """
+    html = html + st
+    html = html + " (EST)</b>"
+    html = html + """
+    </div>"""
+    return html
+
 
 def table_all(exams_obj):
     table1_out = table_1(exams_obj)
     table2_out = table_2(exams_obj)
-    html_all = table1_out + table2_out
+    table3_out = table_3(exams_obj)
+    html_all = table1_out + table2_out + table3_out
 
     return html_all
 
@@ -126,3 +140,21 @@ def table_2(exams_obj):
                 </div>
         """
         return html
+
+def table_3(exams_obj):
+        html = """
+        <br><div><table class="results" width="550" border="1">
+                          <tr>
+                            <th scope="col" colspan="3"><div align="center">EXAMS Results</div></th>
+                          </tr>
+                          <tr>
+                            <th scope="col"><div align="center">Outputs</div></th>
+                            <th scope="col"><div align="center">Value</div></th>                            
+                          </tr>
+                          <tr>
+                            <td><div align="center">Simulation is finished. Please download your file from here</div></td>
+                            <td><div align="center"><a href=%s>Link</a></div></td>
+                          </tr>
+        </table><br></div></div>"""%(exams_obj.link)
+        return html
+

@@ -14,12 +14,14 @@ import numpy as np
 import cgi
 import cgitb
 import logging
+import sys
 import math
+import rest_funcs
 
 logger = logging.getLogger('Kabam Model')
 
 class kabam(object):
-    def __init__(self, set_variables=True,run_methods=True,
+    def __init__(self, set_variables=True,run_methods=True, run_type='single',
             chemical_name='',l_kow=1,k_oc=1,c_wdp=1,water_column_EEC=1,c_wto=1,mineau_scaling_factor=1,x_poc=1,x_doc=1,c_ox=1,w_t=1,c_ss=1,oc=1,k_ow=1,
             Species_of_the_tested_bird='',bw_quail=1,bw_duck=1,bwb_other=1,avian_ld50=1,avian_lc50=1,avian_noaec=1,m_species='',bw_rat=1,bwm_other=1,mammalian_ld50=1,mammalian_lc50=1,mammalian_chronic_endpoint=1,
             lf_p_sediment=1,lf_p_phytoplankton=1,lf_p_zooplankton=1,lf_p_benthic_invertebrates=1,lf_p_filter_feeders=1,lf_p_small_fish=1,lf_p_medium_fish=1,
@@ -35,17 +37,18 @@ class kabam(object):
             k1_zoo=1,k2_zoo=1,kd_zoo=1,ke_zoo=1,k1_beninv=1,k2_beninv=1,kd_beninv=1,ke_beninv=1,km_beninv=1,
             k1_ff=1,k2_ff=1,kd_ff=1,ke_ff=1,km_ff=1,k1_sf=1,k2_sf=1,kd_sf=1,ke_sf=1,km_sf=1,k1_mf=1,k2_mf=1,kd_mf=1,ke_mf=1,km_mf=1,k1_lf=1,k2_lf=1,kd_lf=1,ke_lf=1,km_lf=1,
             rate_constants='',s_respire='',phyto_respire='',zoo_respire='',beninv_respire='',ff_respire='',sfish_respire='',mfish_respire='',lfish_respire='',
-            
             vars_dict=None):
 
             # cb_phytoplankton_v=1,cb_zoo_v=1,cb_beninv_v=1,cb_ff_v=1,cb_sf_v=1,cb_mf_v=1,cb_lf_v=1,   ***These were removed from __init__***
 
         # self.set_default_variables()
-
+        self.jid = rest_funcs.gen_jid()
+        
         if set_variables:
             if vars_dict != None:
                 self.__dict__.update(vars_dict)
             else:
+                self.run_type = run_type
                 self.chemical_name = chemical_name
                 self.l_kow=l_kow
                 self.k_oc=k_oc
@@ -1636,4 +1639,4 @@ class kabam(object):
 
     def chronic_rq_diet_a_f(self):
         self.chronic_rq_diet_a = self.db5a / self.avian_noaec
-        return self.chronic_rq_diet_a
+        return self.chronic_rq_diet_a

@@ -15,7 +15,7 @@ class GENEECInputPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
+        html = uber_lib.SkinChk(ChkCookie, "GENEEC Inputs")
         html = html + template.render(templatepath + 'geneec-jQuery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'geneec','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
@@ -23,6 +23,7 @@ class GENEECInputPage(webapp.RequestHandler):
                 'model':'geneec', 
                 'model_attributes':'GENEEC Inputs'})
         html = html + str(geneec_parameters.GENEECInp())
+        html = html + """<br><table class="tab_input_html" style="display:none">"""
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
@@ -37,3 +38,4 @@ if __name__ == '__main__':
     main()
     
     
+

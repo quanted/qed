@@ -1,0 +1,106 @@
+<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="/stylesheets/jqplot/excanvas.js"></script><![endif]-->
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/jquery.jqplot.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/jqplot/jquery.jqplot.css" />
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+
+
+<script type='text/javascript'> 
+
+$(document).ready(function(){
+
+    var s1 = $.parseJSON($('#x_wc_val_{{plotNumber}}').text());
+    var s2 = $.parseJSON($('#x_ben_val_{{plotNumber}}').text());
+    var plot1 = $.jqplot ('chart{{plotNumber}}', [s1,s2], {
+        title: '{{title}} Peak Yearly Concentrations',
+        axesDefaults: {
+            labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+        },
+        axes: {
+            xaxis: {
+                label: 'Year',
+                min: 0,
+                pad: 0
+            },
+            yaxis: {
+                label: 'Concentration (ppb)',
+                min: 0
+            }
+        },
+        series: [
+            {label: 'Water Column'},
+            {label: 'Benthic'}
+        ],
+        legend: {
+            show: true,
+            location: 'ne',
+            xoffset: 2,
+            yoffset: 2
+        }
+    });
+
+    // Output page input table layout jquery
+
+    if(document.URL.indexOf('out') != -1 ){   
+        $(".out_input_table").append(localStorage.html_input);
+    }
+    $(".out_input_table :input").attr('disabled', true);
+    element_all = localStorage.html_new.split("&");
+    // console.log(element_all)
+    element1 = localStorage.html_new.split("&")[0].split("=");
+    // console.log(element_all.length)
+    for (i=0; i<element_all.length; i++) {
+        element_name_t = element_all[i].split("=")[0];
+        element_val_t = element_all[i].split("=")[1];
+        $('[name="'+element_name_t+'"]').val(element_val_t);
+    }
+    $(".input_button, #metaDataText, #metaDataToggle").hide();
+
+    $('li.Chemical').click(function(){
+        var degCheck = $("#id_deg_check").val();
+        curr_ind = 0;
+        $('li.Chemical').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Applications, li.CropLand, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
+        $('.tab:visible, #metaDataToggle, #metaDataText').hide();
+        $('.tab_Chemical, .tab_Chemical0').show();
+        if (degCheck == '1') {
+            $('.tab_Chemical1, .tab_Chemical_MCF1').show();
+        }
+        if (degCheck == '2') {
+            $('.tab_Chemical1, .tab_Chemical_MCF1, .tab_Chemical2, .tab_Chemical_MCF2').show();
+        }
+    });
+
+    $('li.Applications').click(function(){
+        curr_ind = 1;
+        $('li.Applications').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.CropLand, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
+        $('.tab:visible, #metaDataToggle, #metaDataText').hide();
+        $('.tab_Applications').show();
+    });
+
+    $('li.CropLand').click(function(){
+        curr_ind = 2;
+        $('li.CropLand').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Applications, li.WaterBody').addClass('tabUnsel').removeClass('tabSel');
+        $('.tab:visible, #metaDataToggle, #metaDataText').hide();
+        $('.tab_CropLand').show();
+    });
+
+    $('li.WaterBody').click(function(){
+        curr_ind = 3;
+        $('li.WaterBody').addClass('tabSel').removeClass('tabUnsel');
+        $('li.Chemical, li.Applications, li.CropLand').addClass('tabUnsel').removeClass('tabSel');
+        $('.tab:visible').hide();
+        $('.tab_WaterBody, .tab_WaterBodyWCparms, .tab_WaterBodyBparms, #metaDataToggle, #metaDataText').show();
+    });
+});
+
+</script>
+
+<style>
+.tab {
+margin-bottom: 12px;
+}
+
+</style>

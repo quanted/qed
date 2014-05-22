@@ -26,7 +26,6 @@ def PRZM5_pi(pfac, snowmelt, evapDepth,
     import shutil
     import subprocess
     import zipfile
-    import cloud
     from boto.s3.connection import S3Connection
     from boto.s3.key import Key
     from boto.s3.bucket import Bucket
@@ -52,7 +51,8 @@ def PRZM5_pi(pfac, snowmelt, evapDepth,
 ##################################################################################
 ######Create a folder if it does not existed, where holds calculations' output.#####
 ##################################################################################
-    cwd = 'D:/Dropbox/REST/przm5_rest/'
+    cwd = 'D:/Dropbox/ubertool_src/REST/REST_local/przm5_rest/'   # Tao
+    # cwd = 'C:/Users/Jon/Documents/GitHub/ubertool_src/REST/REST_local/przm5_rest/'    # Jon
     # cwd='/home/picloud/PRZM5/'
     print("cwd="+cwd)
 
@@ -97,7 +97,7 @@ def PRZM5_pi(pfac, snowmelt, evapDepth,
     met = "test.dvf"
     # print(os.listdir(src1))   #check what files are copied
 
-    shutil.copy(src+"przm5.exe",src1)
+    shutil.copy(src+"przm5.exe", src1)
     shutil.copy(src+met,src1)
     print(os.getcwd())
     print(os.listdir(src1))   #check what files are copied
@@ -162,21 +162,29 @@ def PRZM5_pi(pfac, snowmelt, evapDepth,
 
 
     ##zip all the file
-    zout=zipfile.ZipFile("test.zip","w")
+    zout=zipfile.ZipFile("test.zip", "w", zipfile.ZIP_DEFLATED)
     for name in fname:
         if name !='przm5.exe' and name !='test.dvf':
             zout.write(name)
     zout.close()
 
+    ##try tar
+    # import tarfile
+    # zout = tarfile.open("test.tar.gz", "w:gz")
+    # for name in fname:
+    #     if name !='przm5.exe' and name !='test.dvf':
+    #         zout.add(name)
+    # zout.close()
+
     ##upload file to S3
-    conn = S3Connection(key, secretkey)
-    bucket = Bucket(conn, 'przm5')
-    k=Key(bucket)
+    # conn = S3Connection(key, secretkey)
+    # bucket = Bucket(conn, 'przm5')
+    # k=Key(bucket)
 
     name1='PRZM5_'+name_temp+'.zip'
-    k.key=name1
+    # k.key=name1
     link='https://s3.amazonaws.com/przm5/'+name1
-    print link
+    # print link
 
     return link, PRCP_IRRG_sum, RUNF_sum, CEVP_TETD_sum, src1, name1
 

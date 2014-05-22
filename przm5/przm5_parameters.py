@@ -18,7 +18,8 @@ class przm5Inp_chem(forms.Form):
     koc_check = forms.ChoiceField(required=True, label='Sorption Coefficient Type', choices=koc_check_choice, initial='Koc')
     Koc_0 = forms.FloatField(required=True, label='Sorption Coefficient (mL/g)', initial=200)
     soilHalfLife_0 = forms.FloatField(required=True, label='Soil Halflife (day)', initial=100)
-    soilHalfLife_ref = forms.FloatField(required=True,label=mark_safe('Soil Reference Temp (&deg;C)'),initial=25)
+    # Below was changed by Jon F. (soilHalfLife_ref  -> soilHalfLifeRef)
+    soilHalfLifeRef_0 = forms.FloatField(required=True,label=mark_safe('Soil Reference Temp (&deg;C)'),initial=25)
     foliarHalfLife_0 = forms.FloatField(required=True, label='Foliar Halflife (day)', initial=44)
 
 class przm5Inp_chem0(forms.Form):
@@ -31,7 +32,7 @@ class przm5Inp_chem1(forms.Form):
     # unit_1 = ((1,'Koc'),(0,'Kd'))
     # sorp_K_unit_1 = forms.ChoiceField(required=True,label='Sorption Coefficient Type',choices=unit_1)
     soilHalfLife_1 = forms.FloatField(required=True,label='Soil Halflife (day)', initial=100)
-    soilHalfLife_ref_1 = forms.FloatField(required=True,label=mark_safe('Soil Reference Temp (&deg;C)'), initial=25)
+    soilHalfLifeRef_1 = forms.FloatField(required=True,label=mark_safe('Soil Reference Temp (&deg;C)'), initial=25)
     foliarHalfLife_1 = forms.FloatField(required=True,label='Foliar Halflife (day)', initial=44)
 
 class przm5Inp_mcf1(forms.Form):
@@ -45,21 +46,21 @@ class przm5Inp_chem2(forms.Form):
     # unit_2 = ((1,'Koc'),(0,'Kd'))
     # sorp_K_unit_2 = forms.ChoiceField(required=True,label='Sorption Coefficient Type',choices=unit_2)
     soilHalfLife_2 = forms.FloatField(required=True,label='Soil Halflife (day)', initial=100)
-    soilHalfLife_ref_2 = forms.FloatField(required=True,label=mark_safe('Soil Reference Temp (&deg;C)'), initial=25)
+    soilHalfLifeRef_2 = forms.FloatField(required=True,label=mark_safe('Soil Reference Temp (&deg;C)'), initial=25)
     foliarHalfLife_2 = forms.FloatField(required=True,label='Foliar Halflife (day)', initial=44)
 
 class przm5Inp_mcf2(forms.Form):
     # Molar Conversion Factors 2
+
+    # Removed because this isn't in the SWC anymore
     deg2_srcSel = ((1,'Degradate 1'),(0,'Parent'))
     deg2_source = forms.ChoiceField(required=True, choices=deg2_srcSel, label='Source of Degradate 2', initial=1)
     convertSoil2 = forms.FloatField(required=True,label='Soil', initial=0.80)
-    # NOT IN TAO's VERSION
-    # convert_Foliar2 = forms.FloatField(required=True,label='Foliar')
+    convert_Foliar2 = forms.FloatField(required=True,label='Foliar')
 
 #Application tab
 class przm5Inp_appl(forms.Form):
-    water_body_type_check = forms.CharField(initial='Pond')
-
+    # water_body_type_check = forms.CharField(initial='Pond')
     # Eff = forms.FloatField(required=True, label='Eff.', initial=0.95)
     # spray = forms.FloatField(required=True, label='Drift/T', initial=0.05)
 
@@ -73,7 +74,8 @@ class przm5Inp_appl(forms.Form):
     noa = forms.ChoiceField(required=True,choices=app_nOpt, label='Number of Applications', initial='')
     specifyYearsSel = (('1','Yes'), ('0','No'))
     specifyYears = forms.ChoiceField(label='Specify Years?', choices=specifyYearsSel, initial='0')
-
+    pond_res_customSel = ((1,'Pond'), (2,'Reservoir'), (3,'Custom'))
+    pond_res_custom = forms.ChoiceField(label='Enter Eff. & Drift/T for', choices=pond_res_customSel, initial=1)
 
 #Crop/land tab
 class przm5Inp_cropland(forms.Form):

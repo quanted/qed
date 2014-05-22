@@ -1,6 +1,15 @@
 <!--start 05hh_ubertext_tooltips_right-->
+<script type="text/javascript" src="../stylesheets/scripts_tooltips.js"></script>
+
 <div class="right_tt">
-  
-</div>	
+	<div class="right_tt_placeholder" style="display: none;">
+		{% for key, value in tooltips.items %}
+			<div id= "{{ key }}">
+				<p> {{ value|safe }} </p>
+			</div>
+		{% endfor %}
+	</div>
+	<div class="tooltips" style="display: none;"></div>
+</div>
 
 <!--end 05hh_ubertext_tooltips_right-->

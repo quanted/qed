@@ -1,0 +1,47 @@
+Master Project File Created: 2012-05-22 at 15:28:55
+Express     v. 1.03.02    (2007-07-20)                        
+Parent Compound: Forchlorfenuron     
+         Scenario Group File:   1  1STDEFED.GRP
+               Scenario Type:  3
+          PRZM Crop Selector: 00000000000001000100110011000001000000010000111011
+          PRZM Crop Selector: 10010001000110000110000001110011010101101000111010
+          PRZM Crop Selector: 01010011010100000001000100000100000010011100000000
+          PRZM Crop Selector: 10101010111000001000000000000000000000000000000000
+Chemical Input Data Controls:  1 1 0 1 0
+    Express Operational Mode: OPP
+Chemical Name(s):  Forchlorfenuron     | 
+            Molecular Weight:   248.0    
+         Plant Uptake Factor:   0.000    
+Partition Coefficient Method:           1          1
+ Partition Coefficient Value:   1763.      3526.    
+              Vapor Pressure:  0.3500E-09
+              Solubility    :   39.00    
+  Soil Degradation Half-Life:   578.0    
+          % Degradate formed:   0.000      0.000      0.000    
+            Foliar Half-Life:   0.000    
+  Foliar Washoff Coefficient:  0.5000    
+   Air Diffusion Coefficient:   4300.    
+    Enthalpy of Vaporization:   20.00    
+ Application DataSets Number:  1
+      Application Parameters:   1  1  2  2  1  0  0   100.00  0
+  Days Relative/Absolute    :       -   1
+               Month        :           0
+               CAM          :           2
+               Depi (cm)    :   4.000    
+               Rate         :   0.000    
+          Drift Farm Pond % :   5.000    
+    Drift Index Reservoir % :   16.00    
+               Efficiency % :   95.00    
+  Product chem./hydr. status:  1 1 1
+ Aerobic Dissipation (days) :   1156.    
+       Q10 Base Temperature :   25.00    
+       Q10 Limnetic         :   2.000    
+ Anaerobic Dissipation(days):   226.0    
+        Q10 Base temperature:   25.00    
+        Q10 Benthic         :   2.000    
+ Photolysis Half-Life (days):   143.0    
+   Number of Hydrolysis Obs.:           3
+     Hydrolysis Temperatures:   25.00    
+  Hydrolysis C1:  0.000E+00 0.000E+00 0.000E+00
+  pH Hydrol. C1:       5.00      7.00      9.00
+               Melting Point:  -99.00    

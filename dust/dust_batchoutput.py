@@ -10,6 +10,7 @@ import cgi
 import cgitb
 cgitb.enable()
 from StringIO import StringIO
+from pprint import pprint
 import csv
 import sys
 sys.path.append("../dust")
@@ -18,6 +19,9 @@ from uber import uber_lib
 import unittest
 import cStringIO
 import logging 
+import Queue
+from collections import OrderedDict
+import rest_funcs
 logger=logging.getLogger('dust batch')
 
 chemical_name = []
@@ -76,7 +80,9 @@ ratio_bgs_amp_out=[]
 LOC_bgs_amp_out=[]
 ratio_bgs_mam_out=[]
 LOC_bgs_mam_out=[]
-
+jid_all=[]
+jid_batch=[]
+dust_obj_all=[]
 #data.next()
 
 def html_table(row,iter):
@@ -101,7 +107,7 @@ def html_table(row,iter):
                         <br><H3>Batch Calculation of Iteration %s</H3>
                     </div>"""%(iter)
 
-    dust_obj_temp = dust_model.dust(True,True,chemical_name[iter-1],label_epa_reg_no[iter-1],ar_lb[iter-1],frac_pest_surface[iter-1],
+    dust_obj_temp = dust_model.dust(True,True, 'qaqc', chemical_name[iter-1],label_epa_reg_no[iter-1],ar_lb[iter-1],frac_pest_surface[iter-1],
     dislodge_fol_res[iter-1],bird_acute_oral_study[iter-1],bird_study_add_comm[iter-1],low_bird_acute_ld50[iter-1],test_bird_bw[iter-1],mineau_scaling_factor[iter-1],mamm_acute_derm_study[iter-1],mamm_study_add_comm[iter-1],mam_acute_derm_ld50[iter-1],mam_acute_oral_ld50[iter-1],test_mam_bw[iter-1],)
 
     ar_mg_out.append(dust_obj_temp.ar_mg)
@@ -143,6 +149,10 @@ def html_table(row,iter):
     ratio_bgs_mam_out.append(dust_obj_temp.ratio_bgs_mam)
     LOC_bgs_mam_out.append(dust_obj_temp.LOC_bgs_mam)
 
+    jid_all.append(dust_obj_temp.jid)
+    dust_obj_all.append(dust_obj_temp)    
+    if iter == 1:
+        jid_batch.append(dust_obj_temp.jid)
 
     table_all_out = dust_tables.table_all(dust_obj_temp)
         # html = html + dust_tables.table_all(dust_obj)[0]
@@ -235,10 +245,11 @@ class DustBatchOutputPage(webapp.RequestHandler):
         html = template.render(templatepath + '04uberbatch_start.html', {
                 'model':'dust',
                 'model_attributes':'DUST Batch Output'})
-        html = html + dust_tables.timestamp()
+        html = html + dust_tables.timestamp("",jid_batch[0])
         html = html + iter_html
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         # html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.batch_save_dic(html, [x.__dict__ for x in dust_obj_all], 'dust', 'batch', jid_batch[0], ChkCookie, templatepath)
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', DustBatchOutputPage)], debug=True)

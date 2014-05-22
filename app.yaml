@@ -18,12 +18,14 @@ libraries:
   version: latest
 - name: matplotlib
   version: latest
-
+- name: ssl
+  version: "latest" 
 env_variables:
   UBERTOOL_BATCH_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com/'
   UBERTOOL_MONGO_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
   UBERTOOL_SECURE_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
-
+  # UBERTOOL_REST_SERVER: 'http://localhost:7777'
+  UBERTOOL_REST_SERVER: 'http://54.83.18.251:7777'
 
 skip_files:
 - ^(.*/)?app\.yaml
@@ -36,7 +38,16 @@ skip_files:
 - ^(.*/)?.*/RCS/.*
 - ^(.*/)?\..*
 - ^(.*/)?.*\.gz
+- ^(.*/)?.*\.aux
+- ^(.*/)?.*\.xcf
+- ^(.*/)?.*\.php
 - ^(.*/)?.*\.bak
+- ^(.*/)?.*\.inc
+- ^(.*/)?.*\.dark
+- ^(.*/)?.*\.nofill
+- ^(.*/)?.*\.SDR
+- ^(.*/)?.*\MIT-LICENSE
+- ^(.*/)?.*\LGPL-LICENSE
 - ^(data/.*)
 - ^(data/webice/.*)
 - ^(data/webice/images/.*)
@@ -54,6 +65,14 @@ handlers:
   script: landing_pypest.py 
 - url: /admin.html
   script: admin.py
+- url: /cron_check_pages.py
+  script: tasks/cron_check.py 
+- url: /http_check_eco.html
+  script: http_check_eco.py
+- url: /http_check_hh.html
+  script: http_check_hh.py
+- url: /http_check_unter.html
+  script: http_check_unter.py
 - url: /eco_index.html
   script: main.py 
 - url: /hh_index.html
@@ -74,7 +93,10 @@ handlers:
   secure: always
 - url: /ajaxtest.html
   script: ajaxtest.py
-
+- url: /history_revisit.html
+  script: history_revisit.py
+- url: /history_revisit_batch.html
+  script: history_revisit_batch.py
 # All URLs beginning with /stylesheets are treated as paths to static files in
 # the stylesheets/ directory. Note that static_dir handlers do not use a
 # regular expression for the URL pattern, only a prefix.
@@ -94,6 +116,8 @@ handlers:
 - url: /templates/popup.html
   static_files: templates/popup.html
   upload: templates/popup.html
+- url: /data
+  static_dir: data
 
 ##UBERTOOL INPUT PAGES##
 #output
@@ -169,9 +193,15 @@ handlers:
   script: webice/webice_SSDoutput.py
 - url: /webiceTNE_out\.html
   script: webice/webice_TNEoutput.py
+- url: /ICETable\.html
+  script: webice/webice_ICETable.py
+# #historyoutput
+# - url: /(.*?)_asdf.html
+#   script: \1/\1_asdf.py
+  #historyoutput
 #historyoutput
-- url: /(.*?)_asdf.html
-  script: \1/\1_asdf.py
+- url: /(.*?)_intermediate.html
+  script: \1/\1_intermediate.py
 
 ##TESTED models##
 #description

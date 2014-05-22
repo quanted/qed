@@ -12,8 +12,8 @@ ubertool_config_service_base_url = os.environ['UBERTOOL_MONGO_SERVER']
 def batchLoadExposureConcentrationsConfigs(params_matrix,config_index,ubertool_configuration_properties):
     config_params = {}
     config_name = None
-    if "exposure_concentrations_config_name" in params_matrix:
-        config_name = params_matrix.get("exposure_concentrations_config_name")[config_index]
+    if "config_name" in params_matrix:
+        config_name = params_matrix.get("config_name")[config_index]
     if "interval_between_applications" in params_matrix:
         config_params['interval_between_applications'] = params_matrix.get("interval_between_applications")[config_index]
     if "column_height" in params_matrix:

@@ -1,85 +1,88 @@
 $(document).ready(function() {
+    // Call function to setup tabbed nav
+    uberNavTabs(
+        ["PRZM", "EXAMS"],
+        {   "isSubTabs":false  }
+    );
 
-    var tab_pool = ["tab_PRZM", "tab_EXAMS"];
-    var uptab_pool = ["PRZM", "EXAMS"];
-    var visible = $(".tab:visible").attr('class').split(" ")[1];
-    var curr_ind = $.inArray(visible, tab_pool);
-    $(".submit").hide();
-    $(".back").hide();
+    // var tab_pool = ["tab_PRZM", "tab_EXAMS"];
+    // var uptab_pool = ["PRZM", "EXAMS"];
+    // var visible = $(".tab:visible").attr('class').split(" ")[1];
+    // var curr_ind = $.inArray(visible, tab_pool);
+    // $(".back, .submit, #metaDataToggle, #metaDataText").hide();
 
-    $('li.PRZM').click(function(){
-        curr_ind = 0;
-        $('li.PRZM').addClass('tabSel').removeClass('tabUnsel');
-        $('li.EXAMS').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_PRZM').show();
-        $(".back").hide();
-        $(".submit").hide();
-        $(".next").show();
-    });
+    // $('li.PRZM').click(function(){
+    //     curr_ind = 0;
+    //     $('li.PRZM').addClass('tabSel').removeClass('tabUnsel');
+    //     $('li.EXAMS').addClass('tabUnsel').removeClass('tabSel');
+    //     $(".tab:visible").hide();
+    //     $('.tab_PRZM').show();
+    //     $(".back").hide();
+    //     $(".submit, #metaDataToggle, #metaDataText").hide();
+    //     $(".next").show();
+    // });
 
-    $('li.EXAMS').click(function(){
-        curr_ind = 1;
-        $('li.EXAMS').addClass('tabSel').removeClass('tabUnsel');
-        $('li.PRZM').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_EXAMS').show();
-        $(".back").show();
-        $(".submit").show();
-        $(".next").hide();
-    });
+    // $('li.EXAMS').click(function(){
+    //     curr_ind = 1;
+    //     $('li.EXAMS').addClass('tabSel').removeClass('tabUnsel');
+    //     $('li.PRZM').addClass('tabUnsel').removeClass('tabSel');
+    //     $(".tab:visible").hide();
+    //     $('.tab_EXAMS').show();
+    //     $(".back").show();
+    //     $(".submit, #metaDataToggle, #metaDataText").show();
+    //     $(".next").hide();
+    // });
 
-    $('.next').click(function () {
-        var tab = $(".tab:visible");
-        if (curr_ind < 1) {      
-            $(".tab:visible").hide();
-            $("."+ uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel');
-            curr_ind = curr_ind + 1;
-            $("." + tab_pool[curr_ind]).show();
-            $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
-            $(".submit").hide();
-            $(".back").show();
-            }
-        if (curr_ind == 1) {
-            $(".submit").show();
-            $(".next").hide();
-        }
-    });
+    // $('.next').click(function () {
+    //     var tab = $(".tab:visible");
+    //     if (curr_ind < 1) {      
+    //         $(".tab:visible").hide();
+    //         $("."+ uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel');
+    //         curr_ind = curr_ind + 1;
+    //         $("." + tab_pool[curr_ind]).show();
+    //         $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
+    //         $(".submit, #metaDataToggle, #metaDataText").hide();
+    //         $(".back").show();
+    //         }
+    //     if (curr_ind == 1) {
+    //         $(".submit, #metaDataToggle, #metaDataText").show();
+    //         $(".next").hide();
+    //     }
+    // });
 
-    $('.back').click(function () {
-        if (curr_ind > 0) {
-            $(".tab:visible").hide();
-            $("."+ uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel');
-            curr_ind = curr_ind - 1;
-            $("." + tab_pool[curr_ind]).show();
-            $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
-            $(".submit").hide();
-            $(".next").show();
-        }
-        if (curr_ind == 0) {
-            $(".back").hide();
-        }
-    });
-
+    // $('.back').click(function () {
+    //     if (curr_ind > 0) {
+    //         $(".tab:visible").hide();
+    //         $("."+ uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel');
+    //         curr_ind = curr_ind - 1;
+    //         $("." + tab_pool[curr_ind]).show();
+    //         $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
+    //         $(".submit, #metaDataToggle, #metaDataText").hide();
+    //         $(".next").show();
+    //     }
+    //     if (curr_ind == 0) {
+    //         $(".back").hide();
+    //     }
+    // });
 
 /////////////////////EXAM Inputs/////////////////
-    $('#id_chemical_name').val('Forchlorfenuron')
-    $('#id_scenarios').val('PA Turf  MLRA-148')
-    $('#id_molecular_weight').val(248)
-    $('#id_solubility').val(39)
-    $('#id_Koc').val(3526)
+    $('#id_chemical_name').val('Forchlorfenuron');
+    $('#id_scenarios').val('PA Turf  MLRA-148');
+    $('#id_molecular_weight').val(248);
+    $('#id_solubility').val(39);
+    $('#id_Koc').val(3526);
 
-    $('#id_vapor_pressure').val(3.50e-10)
-    $('#id_aerobic_aquatic_metabolism').val(1156)
-    $('#id_anaerobic_aquatic_metabolism').val(226)
-    $('#id_aquatic_direct_photolysis').val(143)
-    $('#id_temperature').val(25)
+    $('#id_vapor_pressure').val(3.50e-10);
+    $('#id_aerobic_aquatic_metabolism').val(1156);
+    $('#id_anaerobic_aquatic_metabolism').val(226);
+    $('#id_aquatic_direct_photolysis').val(143);
+    $('#id_temperature').val(25);
 
-    var i1 = 1
+    var i1 = 1;
     $('.n_ph').append('<tr id="n_ph_header" style="display:none"><th>pH</th><th>Half-life (days)</th></tr>');
 
-    $('#n_ph').val(3)
-    $('tr[id*="n_ph_header"]').show()
+    $('#n_ph').val(3);
+    $('tr[id*="n_ph_header"]').show();
     while (i1 <= 3) {
             $('.n_ph').append('<tr class="tab_n_ph"><td><input type="text" size="5" name="ph' + i1 + '" id="id_ph' + i1 + '"/></td><td><input type="text" size="5" name="hl' + i1 + '" id="id_hl' + i1 + '"/></td></tr>');
         i1 = i1 + 1;
@@ -90,26 +93,26 @@ $(document).ready(function() {
     }
     $('</table>').appendTo('.n_ph');
 
-    $('#id_ph1').val(5)
-    $('#id_ph2').val(7)
-    $('#id_ph3').val(9)
-    $('#id_hl1').val(0)
-    $('#id_hl2').val(0)
-    $('#id_hl3').val(0)
+    $('#id_ph1').val(5);
+    $('#id_ph2').val(7);
+    $('#id_ph3').val(9);
+    $('#id_hl1').val(0);
+    $('#id_hl2').val(0);
+    $('#id_hl3').val(0);
 
     $('#n_ph').change(function () {
-    	var total = $(this).val()
-    	$('tr[id*="n_ph_header"]').show()
+    	var total = $(this).val();
+    	$('tr[id*="n_ph_header"]').show();
     	while (i1 <= total) {
                 $('.n_ph').append('<tr class="tab_n_ph"><td><input type="text" size="5" name="ph' + i1 + '" id="id_ph' + i1 + '"/></td><td><input type="text" size="5" name="hl' + i1 + '" id="id_hl' + i1 + '"/></td></tr>');
     		i1 = i1 + 1;
     	}
     	while (i1-1 > total) {
     		$(".n_ph tr:last").remove();
-    		i1=i1-1
+    		i1=i1-1;
     	}
     	$('</table>').appendTo('.n_ph');
-    })
+    });
 /////////////////////EXAM Inputs End/////////////////
 
 
@@ -117,14 +120,14 @@ $(document).ready(function() {
 
 /////////////////////PRZM Inputs Start/////////////////
 
-	var Planting_pool={'NC Sweet Potato MLRA-133': '0805', 'ID Potato   MLRA-11B': '2505', 'NY Grape   MLRA-100/101': '2505', 'CA Citrus   MLRA-17': '2512', 'OR Hops   MLRA-2': '2503', 'FL Sugarcane   MLRA-156A': '2512', 'OR Mint   MLRA-2': '0804', 'FL Citrus   MLRA-156A': '2512', 'CA Almonds MLRA-17': '0901', 'ND Canola   MLRA-55A': '0905', 'MI Asparagus MLRA-96': '0906', 'PR Coffee MLRA-270': '2512', 'FL Avocado MLRA-156A': '2202', 'NC Tobacco   MLRA-133A': '0904', 'CA Grape  MLRA-17': '2501', 'FL Cucumber   MLRA-156A': '0910', 'OH Corn   MLRA-111': '2404', 'NC Apple   MLRA-130': '2503', 'CA Onions MLRA-17': '0901', 'PA Turf  MLRA-148': '2503', 'MI Beans MLRA-99': '2505', 'GA Onions MLRA-153A/133A': '0809', 'LA Sugarcane   MLRA-131': '2512', 'NC Corn - E   MLRA-153A': '0804', 'OR Christmas Trees  MLRA-2': '2512', 'MN Sugarbeet   MLRA-56': '0905', 'FL Turf  MLRA-155': '2501', 'MS Cotton   MLRA-134': '2404', 'MS Soybean   MLRA-134': '0904', 'GA Pecan   MLRA-133A': '0904', 'OR Filberts   MLRA-2': '2202', 'OR Grass Seed   MLRA-2': '0909', 'GA Peach   MLRA-133A': '2202', 'FL Carrots MLRA-156B': '0910', 'NC Cotton   MLRA-133A': '2505', 'CA Lettuce  MLRA-14': '0902', 'FL Tomato   MLRA-155': '2501', 'OR Apple   MLRA-2': '2503', 'ND Wheat   MLRA-56': '0905', 'CA Tomato MLRA-17': '2202', 'PA Corn   MLRA-148': '0904', 'FL Peppers MLRA-156A': '2508', 'MS Corn   MLRA-134': '0304', 'MI Cherry   MLRA-96': '2404', 'IL Corn   MLRA-108': '2404', 'ME Potato   MLRA-146': '2505', 'FL Strawberry   MLRA-155': '2409', 'KS Sorghum   MLRA-112': '1305', 'PA Apple   MLRA-148': '0904', 'CA Cotton   MLRA-17': '2404', 'NC Peanut   MLRA-153A': '0905', 'FL Cabbage   MLRA-155': '0910'}
-	var EMergence_pool={'NC Sweet Potato MLRA-133': '1505', 'ID Potato   MLRA-11B': '0106', 'NY Grape   MLRA-100/101': '0106', 'CA Citrus   MLRA-17': '0101', 'OR Hops   MLRA-2': '0104', 'FL Sugarcane   MLRA-156A': '0101', 'OR Mint   MLRA-2': '1504', 'FL Citrus   MLRA-156A': '0101', 'CA Almonds MLRA-17': '1601', 'ND Canola   MLRA-55A': '1605', 'MI Asparagus MLRA-96': '1606', 'PR Coffee MLRA-270': '0101', 'FL Avocado MLRA-156A': '0103', 'NC Tobacco   MLRA-133A': '1604', 'CA Grape  MLRA-17': '0102', 'FL Cucumber   MLRA-156A': '1610', 'OH Corn   MLRA-111': '0105', 'NC Apple   MLRA-130': '0104', 'CA Onions MLRA-17': '1601', 'PA Turf  MLRA-148': '0104', 'MI Beans MLRA-99': '0106', 'GA Onions MLRA-153A/133A': '1509', 'LA Sugarcane   MLRA-131': '0101', 'NC Corn - E   MLRA-153A': '1504', 'OR Christmas Trees  MLRA-2': '0101', 'MN Sugarbeet   MLRA-56': '1605', 'FL Turf  MLRA-155': '0102', 'MS Cotton   MLRA-134': '0105', 'MS Soybean   MLRA-134': '1604', 'GA Pecan   MLRA-133A': '1604', 'OR Filberts   MLRA-2': '0103', 'OR Grass Seed   MLRA-2': '1609', 'GA Peach   MLRA-133A': '0103', 'FL Carrots MLRA-156B': '1610', 'NC Cotton   MLRA-133A': '0106', 'CA Lettuce  MLRA-14': '1602', 'FL Tomato   MLRA-155': '0102', 'OR Apple   MLRA-2': '0104', 'ND Wheat   MLRA-56': '1605', 'CA Tomato MLRA-17': '0103', 'PA Corn   MLRA-148': '1604', 'FL Peppers MLRA-156A': '0109', 'MS Corn   MLRA-134': '1004', 'MI Cherry   MLRA-96': '0105', 'IL Corn   MLRA-108': '0105', 'ME Potato   MLRA-146': '0106', 'FL Strawberry   MLRA-155': '0110', 'KS Sorghum   MLRA-112': '2005', 'PA Apple   MLRA-148': '1604', 'CA Cotton   MLRA-17': '0105', 'NC Peanut   MLRA-153A': '1605', 'FL Cabbage   MLRA-155': '1610'}
-	var MAturation_pool={'NC Sweet Potato MLRA-133': '1509', 'ID Potato   MLRA-11B': '1508', 'NY Grape   MLRA-100/101': '0107', 'CA Citrus   MLRA-17': '0201', 'OR Hops   MLRA-2': '3007', 'FL Sugarcane   MLRA-156A': '0201', 'OR Mint   MLRA-2': '2507', 'FL Citrus   MLRA-156A': '0201', 'CA Almonds MLRA-17': '0208', 'ND Canola   MLRA-55A': '1508', 'MI Asparagus MLRA-96': '2508', 'PR Coffee MLRA-270': '0201', 'FL Avocado MLRA-156A': '1511', 'NC Tobacco   MLRA-133A': '0707', 'CA Grape  MLRA-17': '0103', 'FL Cucumber   MLRA-156A': '0512', 'OH Corn   MLRA-111': '2609', 'NC Apple   MLRA-130': '0305', 'CA Onions MLRA-17': '0106', 'PA Turf  MLRA-148': '1504', 'MI Beans MLRA-99': '2707', 'GA Onions MLRA-153A/133A': '0106', 'LA Sugarcane   MLRA-131': '0201', 'NC Corn - E   MLRA-153A': '2808', 'OR Christmas Trees  MLRA-2': '0201', 'MN Sugarbeet   MLRA-56': '0110', 'FL Turf  MLRA-155': '1502', 'MS Cotton   MLRA-134': '0709', 'MS Soybean   MLRA-134': '0109', 'GA Pecan   MLRA-133A': '2109', 'OR Filberts   MLRA-2': '1504', 'OR Grass Seed   MLRA-2': '1505', 'GA Peach   MLRA-133A': '1505', 'FL Carrots MLRA-156B': '1501', 'NC Cotton   MLRA-133A': '0108', 'CA Lettuce  MLRA-14': '0505', 'FL Tomato   MLRA-155': '2104', 'OR Apple   MLRA-2': '3004', 'ND Wheat   MLRA-56': '2507', 'CA Tomato MLRA-17': '0107', 'PA Corn   MLRA-148': '0407', 'FL Peppers MLRA-156A': '1511', 'MS Corn   MLRA-134': '2208', 'MI Cherry   MLRA-96': '0707', 'IL Corn   MLRA-108': '2109', 'ME Potato   MLRA-146': '0110', 'FL Strawberry   MLRA-155': '1011', 'KS Sorghum   MLRA-112': '2009', 'PA Apple   MLRA-148': '1005', 'CA Cotton   MLRA-17': '2009', 'NC Peanut   MLRA-153A': '0110', 'FL Cabbage   MLRA-155': '0802'}
-	var HArvest_pool={'NC Sweet Potato MLRA-133': '2209', 'ID Potato   MLRA-11B': '1509', 'NY Grape   MLRA-100/101': '1510', 'CA Citrus   MLRA-17': '3112', 'OR Hops   MLRA-2': '0109', 'FL Sugarcane   MLRA-156A': '3112', 'OR Mint   MLRA-2': '0108', 'FL Citrus   MLRA-156A': '3112', 'CA Almonds MLRA-17': '1309', 'ND Canola   MLRA-55A': '2508', 'MI Asparagus MLRA-96': '1503', 'PR Coffee MLRA-270': '3112', 'FL Avocado MLRA-156A': '3011', 'NC Tobacco   MLRA-133A': '1607', 'CA Grape  MLRA-17': '3108', 'FL Cucumber   MLRA-156A': '1012', 'OH Corn   MLRA-111': '2510', 'NC Apple   MLRA-130': '2510', 'CA Onions MLRA-17': '1506', 'PA Turf  MLRA-148': '0111', 'MI Beans MLRA-99': '0409', 'GA Onions MLRA-153A/133A': '1506', 'LA Sugarcane   MLRA-131': '3112', 'NC Corn - E   MLRA-153A': '1209', 'OR Christmas Trees  MLRA-2': '3112', 'MN Sugarbeet   MLRA-56': '1510', 'FL Turf  MLRA-155': '1512', 'MS Cotton   MLRA-134': '2209', 'MS Soybean   MLRA-134': '1010', 'GA Pecan   MLRA-133A': '0110', 'OR Filberts   MLRA-2': '1011', 'OR Grass Seed   MLRA-2': '3006', 'GA Peach   MLRA-133A': '3108', 'FL Carrots MLRA-156B': '2201', 'NC Cotton   MLRA-133A': '0111', 'CA Lettuce  MLRA-14': '1205', 'FL Tomato   MLRA-155': '1505', 'OR Apple   MLRA-2': '3110', 'ND Wheat   MLRA-56': '0508', 'CA Tomato MLRA-17': '0109', 'PA Corn   MLRA-148': '0110', 'FL Peppers MLRA-156A': '0112', 'MS Corn   MLRA-134': '0209', 'MI Cherry   MLRA-96': '2107', 'IL Corn   MLRA-108': '2010', 'ME Potato   MLRA-146': '0510', 'FL Strawberry   MLRA-155': '1502', 'KS Sorghum   MLRA-112': '0110', 'PA Apple   MLRA-148': '1510', 'CA Cotton   MLRA-17': '1111', 'NC Peanut   MLRA-153A': '1010', 'FL Cabbage   MLRA-155': '1502'}
+	var Planting_pool={'NC Sweet Potato MLRA-133': '0805', 'ID Potato   MLRA-11B': '2505', 'NY Grape   MLRA-100/101': '2505', 'CA Citrus   MLRA-17': '2512', 'OR Hops   MLRA-2': '2503', 'FL Sugarcane   MLRA-156A': '2512', 'OR Mint   MLRA-2': '0804', 'FL Citrus   MLRA-156A': '2512', 'CA Almonds MLRA-17': '0901', 'ND Canola   MLRA-55A': '0905', 'MI Asparagus MLRA-96': '0906', 'PR Coffee MLRA-270': '2512', 'FL Avocado MLRA-156A': '2202', 'NC Tobacco   MLRA-133A': '0904', 'CA Grape  MLRA-17': '2501', 'FL Cucumber   MLRA-156A': '0910', 'OH Corn   MLRA-111': '2404', 'NC Apple   MLRA-130': '2503', 'CA Onions MLRA-17': '0901', 'PA Turf  MLRA-148': '2503', 'MI Beans MLRA-99': '2505', 'GA Onions MLRA-153A/133A': '0809', 'LA Sugarcane   MLRA-131': '2512', 'NC Corn - E   MLRA-153A': '0804', 'OR Christmas Trees  MLRA-2': '2512', 'MN Sugarbeet   MLRA-56': '0905', 'FL Turf  MLRA-155': '2501', 'MS Cotton   MLRA-134': '2404', 'MS Soybean   MLRA-134': '0904', 'GA Pecan   MLRA-133A': '0904', 'OR Filberts   MLRA-2': '2202', 'OR Grass Seed   MLRA-2': '0909', 'GA Peach   MLRA-133A': '2202', 'FL Carrots MLRA-156B': '0910', 'NC Cotton   MLRA-133A': '2505', 'CA Lettuce  MLRA-14': '0902', 'FL Tomato   MLRA-155': '2501', 'OR Apple   MLRA-2': '2503', 'ND Wheat   MLRA-56': '0905', 'CA Tomato MLRA-17': '2202', 'PA Corn   MLRA-148': '0904', 'FL Peppers MLRA-156A': '2508', 'MS Corn   MLRA-134': '0304', 'MI Cherry   MLRA-96': '2404', 'IL Corn   MLRA-108': '2404', 'ME Potato   MLRA-146': '2505', 'FL Strawberry   MLRA-155': '2409', 'KS Sorghum   MLRA-112': '1305', 'PA Apple   MLRA-148': '0904', 'CA Cotton   MLRA-17': '2404', 'NC Peanut   MLRA-153A': '0905', 'FL Cabbage   MLRA-155': '0910'};
+	var EMergence_pool={'NC Sweet Potato MLRA-133': '1505', 'ID Potato   MLRA-11B': '0106', 'NY Grape   MLRA-100/101': '0106', 'CA Citrus   MLRA-17': '0101', 'OR Hops   MLRA-2': '0104', 'FL Sugarcane   MLRA-156A': '0101', 'OR Mint   MLRA-2': '1504', 'FL Citrus   MLRA-156A': '0101', 'CA Almonds MLRA-17': '1601', 'ND Canola   MLRA-55A': '1605', 'MI Asparagus MLRA-96': '1606', 'PR Coffee MLRA-270': '0101', 'FL Avocado MLRA-156A': '0103', 'NC Tobacco   MLRA-133A': '1604', 'CA Grape  MLRA-17': '0102', 'FL Cucumber   MLRA-156A': '1610', 'OH Corn   MLRA-111': '0105', 'NC Apple   MLRA-130': '0104', 'CA Onions MLRA-17': '1601', 'PA Turf  MLRA-148': '0104', 'MI Beans MLRA-99': '0106', 'GA Onions MLRA-153A/133A': '1509', 'LA Sugarcane   MLRA-131': '0101', 'NC Corn - E   MLRA-153A': '1504', 'OR Christmas Trees  MLRA-2': '0101', 'MN Sugarbeet   MLRA-56': '1605', 'FL Turf  MLRA-155': '0102', 'MS Cotton   MLRA-134': '0105', 'MS Soybean   MLRA-134': '1604', 'GA Pecan   MLRA-133A': '1604', 'OR Filberts   MLRA-2': '0103', 'OR Grass Seed   MLRA-2': '1609', 'GA Peach   MLRA-133A': '0103', 'FL Carrots MLRA-156B': '1610', 'NC Cotton   MLRA-133A': '0106', 'CA Lettuce  MLRA-14': '1602', 'FL Tomato   MLRA-155': '0102', 'OR Apple   MLRA-2': '0104', 'ND Wheat   MLRA-56': '1605', 'CA Tomato MLRA-17': '0103', 'PA Corn   MLRA-148': '1604', 'FL Peppers MLRA-156A': '0109', 'MS Corn   MLRA-134': '1004', 'MI Cherry   MLRA-96': '0105', 'IL Corn   MLRA-108': '0105', 'ME Potato   MLRA-146': '0106', 'FL Strawberry   MLRA-155': '0110', 'KS Sorghum   MLRA-112': '2005', 'PA Apple   MLRA-148': '1604', 'CA Cotton   MLRA-17': '0105', 'NC Peanut   MLRA-153A': '1605', 'FL Cabbage   MLRA-155': '1610'};
+	var MAturation_pool={'NC Sweet Potato MLRA-133': '1509', 'ID Potato   MLRA-11B': '1508', 'NY Grape   MLRA-100/101': '0107', 'CA Citrus   MLRA-17': '0201', 'OR Hops   MLRA-2': '3007', 'FL Sugarcane   MLRA-156A': '0201', 'OR Mint   MLRA-2': '2507', 'FL Citrus   MLRA-156A': '0201', 'CA Almonds MLRA-17': '0208', 'ND Canola   MLRA-55A': '1508', 'MI Asparagus MLRA-96': '2508', 'PR Coffee MLRA-270': '0201', 'FL Avocado MLRA-156A': '1511', 'NC Tobacco   MLRA-133A': '0707', 'CA Grape  MLRA-17': '0103', 'FL Cucumber   MLRA-156A': '0512', 'OH Corn   MLRA-111': '2609', 'NC Apple   MLRA-130': '0305', 'CA Onions MLRA-17': '0106', 'PA Turf  MLRA-148': '1504', 'MI Beans MLRA-99': '2707', 'GA Onions MLRA-153A/133A': '0106', 'LA Sugarcane   MLRA-131': '0201', 'NC Corn - E   MLRA-153A': '2808', 'OR Christmas Trees  MLRA-2': '0201', 'MN Sugarbeet   MLRA-56': '0110', 'FL Turf  MLRA-155': '1502', 'MS Cotton   MLRA-134': '0709', 'MS Soybean   MLRA-134': '0109', 'GA Pecan   MLRA-133A': '2109', 'OR Filberts   MLRA-2': '1504', 'OR Grass Seed   MLRA-2': '1505', 'GA Peach   MLRA-133A': '1505', 'FL Carrots MLRA-156B': '1501', 'NC Cotton   MLRA-133A': '0108', 'CA Lettuce  MLRA-14': '0505', 'FL Tomato   MLRA-155': '2104', 'OR Apple   MLRA-2': '3004', 'ND Wheat   MLRA-56': '2507', 'CA Tomato MLRA-17': '0107', 'PA Corn   MLRA-148': '0407', 'FL Peppers MLRA-156A': '1511', 'MS Corn   MLRA-134': '2208', 'MI Cherry   MLRA-96': '0707', 'IL Corn   MLRA-108': '2109', 'ME Potato   MLRA-146': '0110', 'FL Strawberry   MLRA-155': '1011', 'KS Sorghum   MLRA-112': '2009', 'PA Apple   MLRA-148': '1005', 'CA Cotton   MLRA-17': '2009', 'NC Peanut   MLRA-153A': '0110', 'FL Cabbage   MLRA-155': '0802'};
+	var HArvest_pool={'NC Sweet Potato MLRA-133': '2209', 'ID Potato   MLRA-11B': '1509', 'NY Grape   MLRA-100/101': '1510', 'CA Citrus   MLRA-17': '3112', 'OR Hops   MLRA-2': '0109', 'FL Sugarcane   MLRA-156A': '3112', 'OR Mint   MLRA-2': '0108', 'FL Citrus   MLRA-156A': '3112', 'CA Almonds MLRA-17': '1309', 'ND Canola   MLRA-55A': '2508', 'MI Asparagus MLRA-96': '1503', 'PR Coffee MLRA-270': '3112', 'FL Avocado MLRA-156A': '3011', 'NC Tobacco   MLRA-133A': '1607', 'CA Grape  MLRA-17': '3108', 'FL Cucumber   MLRA-156A': '1012', 'OH Corn   MLRA-111': '2510', 'NC Apple   MLRA-130': '2510', 'CA Onions MLRA-17': '1506', 'PA Turf  MLRA-148': '0111', 'MI Beans MLRA-99': '0409', 'GA Onions MLRA-153A/133A': '1506', 'LA Sugarcane   MLRA-131': '3112', 'NC Corn - E   MLRA-153A': '1209', 'OR Christmas Trees  MLRA-2': '3112', 'MN Sugarbeet   MLRA-56': '1510', 'FL Turf  MLRA-155': '1512', 'MS Cotton   MLRA-134': '2209', 'MS Soybean   MLRA-134': '1010', 'GA Pecan   MLRA-133A': '0110', 'OR Filberts   MLRA-2': '1011', 'OR Grass Seed   MLRA-2': '3006', 'GA Peach   MLRA-133A': '3108', 'FL Carrots MLRA-156B': '2201', 'NC Cotton   MLRA-133A': '0111', 'CA Lettuce  MLRA-14': '1205', 'FL Tomato   MLRA-155': '1505', 'OR Apple   MLRA-2': '3110', 'ND Wheat   MLRA-56': '0508', 'CA Tomato MLRA-17': '0109', 'PA Corn   MLRA-148': '0110', 'FL Peppers MLRA-156A': '0112', 'MS Corn   MLRA-134': '0209', 'MI Cherry   MLRA-96': '2107', 'IL Corn   MLRA-108': '2010', 'ME Potato   MLRA-146': '0510', 'FL Strawberry   MLRA-155': '1502', 'KS Sorghum   MLRA-112': '0110', 'PA Apple   MLRA-148': '1510', 'CA Cotton   MLRA-17': '1111', 'NC Peanut   MLRA-153A': '1010', 'FL Cabbage   MLRA-155': '1502'};
 
 //alert (HArvest_select['NC Sweet Potato MLRA-133'])
 
-    var ss=$('form').attr('id', 'form1')
+    var ss=$('form').attr('id', 'form1');
 
     $('#id_CAM_1').attr('id', 'id_1').closest('tr').addClass('method_options').hide();
     $('#id_CAM_2').attr('id', 'id_2').closest('tr').addClass('method_options').hide();
@@ -143,15 +146,15 @@ $(document).ready(function() {
     $('<tr class="app_dates"><th><label for="id_Date_apt">Application Date 1 (MM/DD):</label></th><td><input readonly="readonly" type="text" name="Date_apt" value="MM/DD" id="id_Date_apt"/><td></tr>').insertAfter('.table tr:nth-child(5)');
 
 //set default values//
-    $('#id_Scenarios').val('FL Citrus   MLRA-156A')
+    $('#id_Scenarios').val('FL Citrus   MLRA-156A');
 
-    $('#id_NOA').val(1)
+    $('#id_NOA').val(1);
     $('#id_Unit_0').attr('checked', true);
     $('#id_Apt').val(1);
     if ($('#id_Apt').val()=='1') {
-        $('#id_Apt').closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly')
-        $('#id_Apt').closest('.app_timing').nextAll('.app_days:first').show()
-        $('#id_Apt').closest('.app_timing').nextAll('.app_dates:first').find('input').val(Planting_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+Planting_pool[$('#id_Scenarios').val()].slice(0,2))
+        $('#id_Apt').closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly');
+        $('#id_Apt').closest('.app_timing').nextAll('.app_days:first').show();
+        $('#id_Apt').closest('.app_timing').nextAll('.app_dates:first').find('input').val(Planting_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+Planting_pool[$('#id_Scenarios').val()].slice(0,2));
     }
 
     $('#id_Ap_m').val(1);
@@ -216,30 +219,30 @@ $(document).ready(function() {
             $('.app_days').find('input').val( $('.app_days').find('input').prop('defaultValue') );
             $('.app_timing').find('select').bind('change', function() {
                 if ($(this).val()=='1') {
-                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly')
-                    $(this).closest('.app_timing').nextAll('.app_days:first').show()
-                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(Planting_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+Planting_pool[$('#id_Scenarios').val()].slice(0,2))
+                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly');
+                    $(this).closest('.app_timing').nextAll('.app_days:first').show();
+                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(Planting_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+Planting_pool[$('#id_Scenarios').val()].slice(0,2));
                 }
                 else if ($(this).val()=='2') {
-                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly')
-                    $(this).closest('.app_timing').nextAll('.app_days:first').show()
-                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(EMergence_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+EMergence_pool[$('#id_Scenarios').val()].slice(0,2))
+                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly');
+                    $(this).closest('.app_timing').nextAll('.app_days:first').show();
+                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(EMergence_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+EMergence_pool[$('#id_Scenarios').val()].slice(0,2));
                 }           
                 else if ($(this).val()=='3') {
-                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly')
-                    $(this).closest('.app_timing').nextAll('.app_days:first').show()
-                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(MAturation_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+MAturation_pool[$('#id_Scenarios').val()].slice(0,2))
+                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly');
+                    $(this).closest('.app_timing').nextAll('.app_days:first').show();
+                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(MAturation_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+MAturation_pool[$('#id_Scenarios').val()].slice(0,2));
                 }               
                 else if ($(this).val()=='4') {
-                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly')
-                    $(this).closest('.app_timing').nextAll('.app_days:first').show()
-                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(HArvest_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+HArvest_pool[$('#id_Scenarios').val()].slice(0,2))
+                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly');
+                    $(this).closest('.app_timing').nextAll('.app_days:first').show();
+                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(HArvest_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+HArvest_pool[$('#id_Scenarios').val()].slice(0,2));
                 }               
                 else if ($(this).val()=='5') {
-                        $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').attr('readonly',false)
-                                                                                                .val('MM/DD')
-                        $(this).closest('.app_timing').nextAll('.app_days:first').find('input').val(0)
-                        $(this).closest('.app_timing').nextAll('.app_days:first').hide()
+                        $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').attr('readonly',false);
+                                                                                                // .val('MM/DD')
+                        $(this).closest('.app_timing').nextAll('.app_days:first').find('input').val(0);
+                        $(this).closest('.app_timing').nextAll('.app_days:first').hide();
                 }
                 //alert($('#id_Date_apt2').val().slice(3,5))                    
             })
@@ -247,7 +250,7 @@ $(document).ready(function() {
 
     // $('#id_Scenarios').attr("disabled", true);
 
-//Number of applications//
+    //Number of applications//
     $('#id_NOA').change(function() {
         var total = $(this).val();
         //remove all
@@ -290,30 +293,30 @@ $(document).ready(function() {
 
             $('.app_timing').find('select').bind('change', function() {
                 if ($(this).val()=='1') {
-                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly')
-                    $(this).closest('.app_timing').nextAll('.app_days:first').show()
-                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(Planting_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+Planting_pool[$('#id_Scenarios').val()].slice(0,2))
+                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly');
+                    $(this).closest('.app_timing').nextAll('.app_days:first').show();
+                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(Planting_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+Planting_pool[$('#id_Scenarios').val()].slice(0,2));
                 }
                 else if ($(this).val()=='2') {
-                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly')
-                    $(this).closest('.app_timing').nextAll('.app_days:first').show()
-                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(EMergence_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+EMergence_pool[$('#id_Scenarios').val()].slice(0,2))
+                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly');
+                    $(this).closest('.app_timing').nextAll('.app_days:first').show();
+                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(EMergence_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+EMergence_pool[$('#id_Scenarios').val()].slice(0,2));
                 }           
                 else if ($(this).val()=='3') {
-                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly')
-                    $(this).closest('.app_timing').nextAll('.app_days:first').show()
-                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(MAturation_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+MAturation_pool[$('#id_Scenarios').val()].slice(0,2))
+                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly');
+                    $(this).closest('.app_timing').nextAll('.app_days:first').show();
+                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(MAturation_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+MAturation_pool[$('#id_Scenarios').val()].slice(0,2));
                 }               
                 else if ($(this).val()=='4') {
-                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly')
-                    $(this).closest('.app_timing').nextAll('.app_days:first').show()
-                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(HArvest_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+HArvest_pool[$('#id_Scenarios').val()].slice(0,2))
+                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly');
+                    $(this).closest('.app_timing').nextAll('.app_days:first').show();
+                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(HArvest_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+HArvest_pool[$('#id_Scenarios').val()].slice(0,2));
                 }               
                 else if ($(this).val()=='5') {
-                        $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').attr('readonly',false)
-                                                                                                .val('MM/DD')
-                        $(this).closest('.app_timing').nextAll('.app_days:first').find('input').val(0)
-                        $(this).closest('.app_timing').nextAll('.app_days:first').hide()
+                        $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').attr('readonly',false);
+                                                                                                // .val('MM/DD')
+                        $(this).closest('.app_timing').nextAll('.app_days:first').find('input').val(0);
+                        $(this).closest('.app_timing').nextAll('.app_days:first').hide();
                 }
             })
 
@@ -323,30 +326,30 @@ $(document).ready(function() {
             $('.app_days').find('input').val( $('.app_days').find('input').prop('defaultValue') );
             $('.app_timing').find('select').bind('change', function() {
                 if ($(this).val()=='1') {
-                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly')
-                    $(this).closest('.app_timing').nextAll('.app_days:first').show()
-                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(Planting_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+Planting_pool[$('#id_Scenarios').val()].slice(0,2))
+                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly');
+                    $(this).closest('.app_timing').nextAll('.app_days:first').show();
+                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(Planting_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+Planting_pool[$('#id_Scenarios').val()].slice(0,2));
                 }
                 else if ($(this).val()=='2') {
-                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly')
-                    $(this).closest('.app_timing').nextAll('.app_days:first').show()
-                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(EMergence_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+EMergence_pool[$('#id_Scenarios').val()].slice(0,2))
+                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly');
+                    $(this).closest('.app_timing').nextAll('.app_days:first').show();
+                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(EMergence_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+EMergence_pool[$('#id_Scenarios').val()].slice(0,2));
                 }           
                 else if ($(this).val()=='3') {
-                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly')
-                    $(this).closest('.app_timing').nextAll('.app_days:first').show()
-                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(MAturation_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+MAturation_pool[$('#id_Scenarios').val()].slice(0,2))
+                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly');
+                    $(this).closest('.app_timing').nextAll('.app_days:first').show();
+                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(MAturation_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+MAturation_pool[$('#id_Scenarios').val()].slice(0,2));
                 }               
                 else if ($(this).val()=='4') {
-                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly')
-                    $(this).closest('.app_timing').nextAll('.app_days:first').show()
-                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(HArvest_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+HArvest_pool[$('#id_Scenarios').val()].slice(0,2))
+                    $(this).closest('.app_timing').nextAll('.app_days:first').prop('value', 'readonly');
+                    $(this).closest('.app_timing').nextAll('.app_days:first').show();
+                    $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').val(HArvest_pool[$('#id_Scenarios').val()].slice(2,4)+'/'+HArvest_pool[$('#id_Scenarios').val()].slice(0,2));
                 }               
                 else if ($(this).val()=='5') {
-                        $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').attr('readonly',false)
-                                                                                                .val('MM/DD')
-                        $(this).closest('.app_timing').nextAll('.app_days:first').find('input').val(0)
-                        $(this).closest('.app_timing').nextAll('.app_days:first').hide()
+                        $(this).closest('.app_timing').nextAll('.app_dates:first').find('input').attr('readonly',false);
+                                                                                                // .val('MM/DD')
+                        $(this).closest('.app_timing').nextAll('.app_days:first').find('input').val(0);
+                        $(this).closest('.app_timing').nextAll('.app_days:first').hide();
                 }
                 //alert($('#id_Date_apt2').val().slice(3,5))                    
             })
@@ -398,160 +401,159 @@ $(document).ready(function() {
     } //  endcreate new ones//
     }); 
 
-title_app_timing='The application dates should be in sequential.'
-$('.app_timing').find('th').attr('title', title_app_timing)
-$('.app_timing th').qtip();
+    title_app_timing='The application dates should be in sequential.';
+    $('.app_timing').find('th').attr('title', title_app_timing);
+    $('.app_timing th').qtip();
 
-title_chemical='Forchlorfenuron comes from EXPRESS standard scenarios. More scenarios are coming!'
-$("label[for='id_chemical_name']").attr({'title': title_chemical, 'id':'id_chemical_name_title'})
-$('#id_chemical_name_title').qtip();		
+    title_chemical='Forchlorfenuron comes from EXPRESS standard scenarios. More scenarios are coming!';
+    $("label[for='id_chemical_name']").attr({'title': title_chemical, 'id':'id_chemical_name_title'});
+    $('#id_chemical_name_title').qtip();		
 
 
-//begin the form validation process////////////////////////////
-$.validator.addMethod(
-	"apptiming",
-	function(value, element) {
-		if (element.value == "")
-		{
-			return false;
+    //begin the form validation process////////////////////////////
+    $.validator.addMethod(
+    	"apptiming",
+    	function(value, element) {
+    		if (element.value == "")
+    		{
+    			return false;
+    		}
+    		else return true;
+    	},
+    	"Please choose a application timing."
+    	)
+
+    $.validator.addMethod(
+    	"dateFormat",
+    	function (value, element) {
+    		return isDate(value)
+    	},
+    	"Please enter a date in the format MM/DD"
+    	);
+
+    $.validator.addMethod(
+    	"dateSeq",
+    	function (value, element) {
+    		return dateS(value, element)
+    	},
+    	"Application Date should be later than its previous one"
+    	);
+
+    $.validator.addMethod(
+    	"dateRange",
+    	function (value, element) {
+    		return dateRange(value, element)
+    	},
+    	"Application Date should between Jan 1st and Dec 31th"
+    	);
+
+    function isDate(txtDate) {
+    	var currVal = txtDate;
+    	if (currVal == '')
+    		return false;
+    	  //Declare Regex  
+    	  var rxDatePattern = /^(\d{1,2})(\/|-)(\d{1,2})$/;
+    	  var dtArray = currVal.match(rxDatePattern); // is format OK?
+    	  if (dtArray == null)
+    	  	return false;
+    	   //Checks for dd/mm format.
+    	   var dtDay = dtArray[3];
+    	   var dtMonth = dtArray[1];
+
+    	   if (dtMonth.length !=2 ||dtMonth < 1 || dtMonth > 12)
+    	   	return false;
+    	   else if (dtDay.length !=2 || dtDay < 1 || dtDay > 31)
+    	   	return false;
+    	   return true;
+	}				
+
+	function dateS(value, element) {
+
+		var date1_m = parseFloat($(element).val().slice(0, 2));
+		var date1_d = parseFloat($(element).val().slice(3, 5));
+		var dayR1 = parseFloat($(element).closest("tr").nextAll('.app_days:first').find('input').val());
+		var date2_m = parseFloat($(element).closest("tr").prevAll('.app_dates:first').find('input').val().slice(0, 2));
+		var date2_d = parseFloat($(element).closest("tr").prevAll('.app_dates:first').find('input').val().slice(3, 5));
+		var dayR2 = parseFloat($(element).closest("tr").prevAll('.app_days:first').find('input').val());
+		var date1_full = new Date(1960, date1_m - 01, date1_d+dayR1);
+		var date2_full = new Date(1960, date2_m - 01, date2_d+dayR2);
+
+		if (date1_full <= date2_full) {
+			return false
 		}
-		else return true;
-	},
-	"Please choose a application timing."
-	)
+		else {
+			return true
+		}
+	}
 
-$.validator.addMethod(
-	"dateFormat",
-	function (value, element) {
-		return isDate(value)
-	},
-	"Please enter a date in the format MM/DD"
-	);
-
-$.validator.addMethod(
-	"dateSeq",
-	function (value, element) {
-		return dateS(value, element)
-	},
-	"Application Date should be later than its previous one"
-	);
-
-$.validator.addMethod(
-	"dateRange",
-	function (value, element) {
-		return dateRange(value, element)
-	},
-	"Application Date should between Jan 1st and Dec 31th"
-	);
-
-function isDate(txtDate) {
-	var currVal = txtDate;
-	if (currVal == '')
-		return false;
-					  //Declare Regex  
-					  var rxDatePattern = /^(\d{1,2})(\/|-)(\d{1,2})$/;
-					  var dtArray = currVal.match(rxDatePattern); // is format OK?
-					  if (dtArray == null)
-					  	return false;
-					   //Checks for dd/mm format.
-					   var dtDay = dtArray[3];
-					   var dtMonth = dtArray[1];
-
-					   if (dtMonth.length !=2 ||dtMonth < 1 || dtMonth > 12)
-					   	return false;
-					   else if (dtDay.length !=2 || dtDay < 1 || dtDay > 31)
-					   	return false;
-					   return true;
-					}					
-
-					function dateS(value, element) {
-
-						var date1_m = parseFloat($(element).val().slice(0, 2))
-						var date1_d = parseFloat($(element).val().slice(3, 5))
-						var dayR1 = parseFloat($(element).closest("tr").nextAll('.app_days:first').find('input').val())	
-						var date2_m = parseFloat($(element).closest("tr").prevAll('.app_dates:first').find('input').val().slice(0, 2))
-						var date2_d = parseFloat($(element).closest("tr").prevAll('.app_dates:first').find('input').val().slice(3, 5))
-						var dayR2 = parseFloat($(element).closest("tr").prevAll('.app_days:first').find('input').val())	
-						var date1_full = new Date(1960, date1_m - 01, date1_d+dayR1)
-						var date2_full = new Date(1960, date2_m - 01, date2_d+dayR2)
-
-						if (date1_full <= date2_full) {
-							return false
-						}
-						else {
-							return true
-						}
-					}
-
-					function dateRange(value, element) {
-						var date1_m = parseFloat($(element).val().slice(0, 2))
-						var date1_d = parseFloat($(element).val().slice(3, 5))
-						var dayR1 = parseFloat($(element).closest("tr").nextAll('.app_days:first').find('input').val())	
-						var date1_full = new Date(1960, date1_m - 01, date1_d+dayR1)
-						if (date1_full <= new Date(1960, 11, 31) && date1_full >= new Date(1960, 00, 01) ) {
-							return true
-						}
-						else {
-							return false
-						}
-					}
-					
-					$("#form1").validate({
-						submitHandler:function(form) {
-							SubmittingForm()
-						},
-						rules: {
-						chemical_name: "required",		// simple rule, converted to {required:true}
-						Scenarios:"required",
-						NOA:"required",
-						Unit:"required",
-						Apt:{apptiming:true
-						},
-						DayRe:"required",
-						Ap_m:"required",
-						Ar:"required",
-						Date_apt:{dateFormat:true,
-							dateRange:true
-						},
-					//2 application
-					Apt2:{apptiming:true
-					},
-					DayRe2:"required",
-					Ap_m2: {required:true,
-						equalTo: "#id_Ap_m"
-					},
-					Ar2:"required",
-					Date_apt2:{dateFormat:true,
-						dateRange:true,
-						dateSeq:true
-					},						
-					//3 application
-					Apt3:"required",
-					DayRe3:"required",
-					Ap_m3: {required:true,
-						equalTo: "#id_Ap_m2" 
-					},
-					Ar3:"required",
-					Date_apt3:{dateFormat:true,
-						dateRange:true,
-						dateSeq:true
-					},							
-					//4 application
-					Apt4:"required",
-					DayRe4:"required",
-					Ap_m4: {required:true,
-						equalTo: "#id_Ap_m3" 
-					},
-					Ar4:"required",
-					Date_apt4:{dateFormat:true,
-						dateRange:true,
-						dateSeq:true
-					}						
-				},
-				messages: {
-					Scenarios: "Please choose a scenario.",					
-					Unit: "Please choose a unit."
-				}
-			})
-})
-
+	function dateRange(value, element) {
+		var date1_m = parseFloat($(element).val().slice(0, 2));
+		var date1_d = parseFloat($(element).val().slice(3, 5));
+		var dayR1 = parseFloat($(element).closest("tr").nextAll('.app_days:first').find('input').val());
+		var date1_full = new Date(1960, date1_m - 01, date1_d+dayR1);
+		if (date1_full <= new Date(1960, 11, 31) && date1_full >= new Date(1960, 00, 01) ) {
+			return true
+		}
+		else {
+			return false
+		}
+	}
+	
+	$("#form1").validate({
+		// submitHandler:function(form) {
+		// 	form.submit()
+		// },
+		rules: {
+		chemical_name: "required",		// simple rule, converted to {required:true}
+		Scenarios:"required",
+		NOA:"required",
+		Unit:"required",
+		Apt:{apptiming:true
+		},
+		DayRe:"required",
+		Ap_m:"required",
+		Ar:"required",
+		Date_apt:{dateFormat:true,
+			dateRange:true
+		},
+		//2 application
+		Apt2:{apptiming:true
+		},
+		DayRe2:"required",
+		Ap_m2: {required:true,
+			equalTo: "#id_Ap_m"
+		},
+		Ar2:"required",
+		Date_apt2:{dateFormat:true,
+			dateRange:true,
+			dateSeq:true
+		},						
+		//3 application
+		Apt3:"required",
+		DayRe3:"required",
+		Ap_m3: {required:true,
+			equalTo: "#id_Ap_m2" 
+		},
+		Ar3:"required",
+		Date_apt3:{dateFormat:true,
+			dateRange:true,
+			dateSeq:true
+		},							
+		//4 application
+		Apt4:"required",
+		DayRe4:"required",
+		Ap_m4: {required:true,
+			equalTo: "#id_Ap_m3" 
+		},
+		Ar4:"required",
+		Date_apt4:{dateFormat:true,
+			dateRange:true,
+			dateSeq:true
+		}						
+        },
+		messages: {
+			Scenarios: "Please choose a scenario.",					
+			Unit: "Please choose a unit."
+		}
+	});
+});

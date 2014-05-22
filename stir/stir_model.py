@@ -3,6 +3,7 @@ import logging
 import sys
 import math
 from django.utils import simplejson
+import rest_funcs
 
 def toJSON(stir_object):
     stir_vars = vars(stir_object)
@@ -16,7 +17,7 @@ def fromJSON(json_string):
 
 class StirModel(object):
 
-    def __init__(self,set_variables=True, run_methods=True,
+    def __init__(self,set_variables=True, run_methods=True, run_type = "single",
             chemical_name=None,application_rate=None,column_height=None,spray_drift_fraction=None,direct_spray_duration=None, 
             molecular_weight=None,vapor_pressure=None,avian_oral_ld50=None, body_weight_assessed_bird=None, body_weight_tested_bird=None, 
             mineau_scaling_factor=None,mammal_inhalation_lc50=None,duration_mammal_inhalation_study=None,body_weight_assessed_mammal=None, 
@@ -27,7 +28,7 @@ class StirModel(object):
             if vars_dict != None:
                 self.__dict__.update(vars_dict)
             else:
-                self.set_variables(chemical_name,application_rate,column_height,spray_drift_fraction,direct_spray_duration, 
+                self.set_variables(run_type,chemical_name,application_rate,column_height,spray_drift_fraction,direct_spray_duration, 
                     molecular_weight,vapor_pressure,avian_oral_ld50, body_weight_assessed_bird, body_weight_tested_bird, mineau_scaling_factor, 
                     mammal_inhalation_lc50,duration_mammal_inhalation_study,body_weight_assessed_mammal, body_weight_tested_mammal, 
                     mammal_oral_ld50)
@@ -36,6 +37,7 @@ class StirModel(object):
 
     def set_default_variables(self):
         #inputs
+        self.jid = rest_funcs.gen_jid()
         self.chemical_name = ''
         self.application_rate = 1
         self.column_height = 1
@@ -52,6 +54,7 @@ class StirModel(object):
         self.body_weight_assessed_mammal = 1
         self.body_weight_tested_mammal = 1
         self.mammal_oral_ld50 = 1
+        self.run_type = "single"
 
         #outputs
         self.sat_air_conc = -1
@@ -122,10 +125,11 @@ class StirModel(object):
 
         return string_rep
 
-    def set_variables(self,chemical_name,application_rate,column_height,spray_drift_fraction,direct_spray_duration, 
+    def set_variables(self,run_type,chemical_name,application_rate,column_height,spray_drift_fraction,direct_spray_duration, 
             molecular_weight,vapor_pressure,avian_oral_ld50,body_weight_assessed_bird,body_weight_tested_bird,mineau_scaling_factor, 
             mammal_inhalation_lc50,duration_mammal_inhalation_study,body_weight_assessed_mammal,body_weight_tested_mammal, 
             mammal_oral_ld50):
+        self.run_type = run_type
         self.chemical_name = chemical_name
         self.application_rate = application_rate
         self.column_height = column_height

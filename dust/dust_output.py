@@ -18,7 +18,7 @@ from dust import dust_tables,dust_model
 from uber import uber_lib
 from django.template import Context, Template
 from django.utils import simplejson
-
+import rest_funcs
 
 class DUSTExecutePage(webapp.RequestHandler):
     def post(self):
@@ -39,9 +39,9 @@ class DUSTExecutePage(webapp.RequestHandler):
         mam_acute_oral_ld50 = form.getvalue('mam_acute_oral_ld50')
         test_mam_bw = form.getvalue('tested_mamm_body_weight')
         mineau_scaling_factor = float(form.getvalue('mineau_scaling_factor'))
-        dust_obj = dust_model.dust(True, False, chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res, bird_acute_oral_study, bird_study_add_comm,
+        dust_obj = dust_model.dust(True, False, 'single',chemical_name, label_epa_reg_no, ar_lb, frac_pest_surface, dislodge_fol_res, bird_acute_oral_study, bird_study_add_comm,
               low_bird_acute_ld50, test_bird_bw, mineau_scaling_factor, mamm_acute_derm_study, mamm_study_add_comm, mam_acute_derm_ld50, mam_acute_oral_ld50, test_mam_bw, None)
-        print vars(dust_obj)
+        #print vars(dust_obj)
 
         # client = pymongo.MongoClient()
         # # print client
@@ -60,17 +60,18 @@ class DUSTExecutePage(webapp.RequestHandler):
             
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
+        html = uber_lib.SkinChk(ChkCookie, "DUST Output")
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'dust','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'dust', 
                 'model_attributes':'DUST Output'})
-        html = html + dust_tables.timestamp()
+        html = html + dust_tables.timestamp(dust_obj)
         html = html + dust_tables.table_all(dust_obj)[0]
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.save_dic(html, dust_obj.__dict__, "dust", "single")
         self.response.out.write(html)
 
 

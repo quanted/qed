@@ -305,7 +305,7 @@ function popHeader()
 	var commonPredicted= chosenPredicted.split("(")[0];
 	// document.title= commonSurrogate +'-' + commonPredicted + ' | ' + document.title;
 
-	// document.getElementById('PageName').appendChild(document.createTextNode(' - '+fType));
+	document.getElementById('PageName').appendChild(document.createTextNode(' - '+fType));
 
 	document.getElementById('surrSpecies').appendChild(document.createTextNode(" "+chosenSurrogate));
 	document.getElementById('predSpecies').appendChild(document.createTextNode(" "+chosenPredicted));

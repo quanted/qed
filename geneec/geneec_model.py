@@ -1,11 +1,13 @@
+import os
 import keys_Picloud_S3
 import base64
 import urllib
 from google.appengine.api import urlfetch
 import json
-import time
 import logging
 logger = logging.getLogger('Geneec Model')
+import rest_funcs
+
 
 class geneec(object):
     def __init__(self, run_type, chem_name, application_target, application_rate, number_of_applications, interval_between_applications, Koc, aerobic_soil_metabolism, wet_in, application_method, application_method_label, aerial_size_dist, ground_spray_type, airblast_type, spray_quality, no_spray_drift, incorporation_depth, solubility, aerobic_aquatic_metabolism, hydrolysis, photolysis_aquatic_half_life):
@@ -28,6 +30,15 @@ class geneec(object):
         if application_method == 'd':
             self.application_method_label = 'Granular (Non-spray)'
 
+        if self.application_target == 'a' or 'Short grass':
+            self.application_target_label = 'Short grass'
+        if self.application_target == 'b' or 'Tall grass':
+            self.application_target_label = 'Tall grass'
+        if self.application_target == 'c' or 'Broad-leafed plants/small insects':
+            self.application_target_label = 'Broad-leafed plants/small insects'
+        if self.application_target == 'd' or 'Fruits/pods/seeds/large insects':
+            self.application_target_label = 'Fruits/pods/seeds/large insects'
+
         self.aerial_size_dist = aerial_size_dist
         self.ground_spray_type = ground_spray_type
         self.airblast_type = airblast_type
@@ -43,68 +54,49 @@ class geneec(object):
         api_key=keys_Picloud_S3.picloud_api_key
         api_secretkey=keys_Picloud_S3.picloud_api_secretkey
         base64string = base64.encodestring('%s:%s' % (api_key, api_secretkey))[:-1]
-        http_headers = {'Authorization' : 'Basic %s' % base64string}
-        ###########################################################################
-
+        http_headers = {'Authorization' : 'Basic %s' % base64string, 'Content-Type' : 'application/json'}
         ########call the function################# 
-        url='https://api.picloud.com/r/3303/geneec_fortran_s1' 
 
         APPRAT = self.application_rate
         APPNUM = self.number_of_applications
         APSPAC = self.interval_between_applications
         KOC = self.Koc
         METHAF = self.aerobic_soil_metabolism
-        WETTED = json.dumps(self.wet_in)
-        METHOD = json.dumps(self.application_method)
-        AIRFLG = json.dumps(self.aerial_size_dist)
+        WETTED = self.wet_in
+        METHOD = self.application_method
+        AIRFLG = self.aerial_size_dist
         YLOCEN = self.no_spray_drift
-        GRNFLG = json.dumps(self.ground_spray_type)
-        GRSIZE = json.dumps(self.spray_quality)
-        ORCFLG = json.dumps(self.airblast_type)
+        GRNFLG = self.ground_spray_type
+        GRSIZE = self.spray_quality
+        ORCFLG = self.airblast_type
         INCORP = self.incorporation_depth
         SOL = self.solubility
         METHAP = self.aerobic_aquatic_metabolism
         HYDHAP = self.hydrolysis
         FOTHAP = self.photolysis_aquatic_half_life
 
-        data = urllib.urlencode({"APPRAT":APPRAT, "APPNUM":APPNUM, "APSPAC":APSPAC, "KOC":KOC, "METHAF":METHAF, "WETTED":WETTED,
-                                 "METHOD":METHOD, "AIRFLG":AIRFLG, "YLOCEN":YLOCEN, "GRNFLG":GRNFLG, "GRSIZE":GRSIZE,
-                                 "ORCFLG":ORCFLG, "INCORP":INCORP, "SOL":SOL, "METHAP":METHAP, "HYDHAP":HYDHAP, "FOTHAP":FOTHAP})
-        
-        logger.info({"APPRAT":APPRAT, "APPNUM":APPNUM, "APSPAC":APSPAC, "KOC":KOC, "METHAF":METHAF, "WETTED":WETTED,
-                     "METHOD":METHOD, "AIRFLG":AIRFLG, "YLOCEN":YLOCEN, "GRNFLG":GRNFLG, "GRSIZE":GRSIZE,
-                     "ORCFLG":ORCFLG, "INCORP":INCORP, "SOL":SOL, "METHAP":METHAP, "HYDHAP":HYDHAP, "FOTHAP":FOTHAP})
-        
-        # start = time.clock()
-        if run_type == "individual":
-            start = time.clock()
-            response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers)    
-            self.jid= json.loads(response.content)['jid']
-            self.output_st = ''
-            
-            while self.output_st!="done":
-                self.response_st = urlfetch.fetch(url='https://api.picloud.com/job/?jids=%s&field=status' %self.jid, headers=http_headers)
-                self.output_st = json.loads(self.response_st.content)['info']['%s' %self.jid]['status']
 
-            self.url_val = 'https://api.picloud.com/job/result/?jid='+str(self.jid)
-            self.response_val = urlfetch.fetch(url=self.url_val, method=urlfetch.GET, headers=http_headers)
-            self.output_val = json.loads(self.response_val.content)['result']
-            self.elapsed = (time.clock() - start)
+        all_dic = {"APPRAT":APPRAT, "APPNUM":APPNUM, "APSPAC":APSPAC, "KOC":KOC, "METHAF":METHAF, "WETTED":WETTED,
+                   "METHOD":METHOD, "AIRFLG":AIRFLG, "YLOCEN":YLOCEN, "GRNFLG":GRNFLG, "GRSIZE":GRSIZE,
+                   "ORCFLG":ORCFLG, "INCORP":INCORP, "SOL":SOL, "METHAP":METHAP, "HYDHAP":HYDHAP, "FOTHAP":FOTHAP}
+        data = json.dumps(all_dic)
+
+
+        self.jid = rest_funcs.gen_jid()
+        url=os.environ['UBERTOOL_REST_SERVER'] + '/geneec/' + self.jid 
+
+
+        if run_type == "single" or "qaqc":
+            response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+            self.output_val = json.loads(response.content)['result']
 
 
         if run_type == "batch":
-            response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers)    
-            self.jid= json.loads(response.content)['jid']
-            self.output_st = ''
+            response = ""
+            while response =="":
+                response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+            self.output_val = json.loads(response.content)['result']
 
-        # elapsed = (time.clock() - start)
-        # logger.info([elapsed, elapsed1, elapsed2])
 
-            # while self.output_st!="done":
-            #     self.response_st = urlfetch.fetch(url='https://api.picloud.com/job/?jids=%s&field=status' %self.jid, headers=http_headers)
-            #     self.output_st = json.loads(self.response_st.content)['info']['%s' %self.jid]['status']
 
-            # self.url_val = 'https://api.picloud.com/job/result/?jid='+str(self.jid)
-            # self.response_val = urlfetch.fetch(url=self.url_val, method=urlfetch.GET, headers=http_headers)
-            # self.output_val = json.loads(self.response_val.content)['result']
 

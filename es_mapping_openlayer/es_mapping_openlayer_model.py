@@ -9,6 +9,12 @@ logger = logging.getLogger('es_mapping_openlayer')
 class es_mapping_openlayer(object):
      def __init__(self, dictionary):
         self.ES_source = ''
+        self.Birds = ''
+        self.BirdsAll = ''
+        self.BirdsIUCN = ''
+        self.BirdsUSFWS = ''
+
+
         self.NSF = ''
         self.NSP = ''
         self.NSM = ''

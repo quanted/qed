@@ -17,6 +17,9 @@ sys.path.append("../kabam")
 from kabam import kabam_model,kabam_tables
 import logging
 from uber import uber_lib
+import Queue
+from collections import OrderedDict
+import rest_funcs
 
 logger = logging.getLogger('kabamBatchPage')
 
@@ -214,7 +217,10 @@ cbsafl_ff=[]
 cbsafl_sf=[]
 cbsafl_mf=[]
 cbsafl_lf=[]
-
+jid_all = []
+jid_batch = []
+kabam_obj =[]
+kabam_obj_all =[]
 
 logger = logging.getLogger("kabamBatchOutput")
 
@@ -346,7 +352,7 @@ def html_table(row_inp,iter):
 
 
     kabam_obj = kabam_model.kabam(
-            True,True,chemical_name[iter],l_kow[iter],k_oc[iter],c_wdp[iter],water_column_EEC[iter],c_wto[iter],mineau[iter],x_poc[iter],x_doc[iter],c_ox[iter],w_t[iter],c_ss[iter],oc[iter],k_ow[iter],
+            True,True,'batch', chemical_name[iter],l_kow[iter],k_oc[iter],c_wdp[iter],water_column_EEC[iter],c_wto[iter],mineau[iter],x_poc[iter],x_doc[iter],c_ox[iter],w_t[iter],c_ss[iter],oc[iter],k_ow[iter],
             b_species[iter],bw_quail[iter],bw_duck[iter],bwb_other[iter],avian_ld50[iter],avian_lc50[iter],avian_noaec[iter],m_species[iter],bw_rat[iter],bwm_other[iter],mammalian_ld50[iter],mammalian_lc50[iter],mammalian_chronic_endpoint[iter],
             lf_p_sediment[iter],lf_p_phytoplankton[iter],lf_p_zooplankton[iter],lf_p_benthic_invertebrates[iter],lf_p_filter_feeders[iter],lf_p_small_fish[iter],lf_p_medium_fish[iter],
             mf_p_sediment[iter],mf_p_phytoplankton[iter],mf_p_zooplankton[iter],mf_p_benthic_invertebrates[iter],mf_p_filter_feeders[iter],mf_p_small_fish[iter],
@@ -362,6 +368,25 @@ def html_table(row_inp,iter):
             k1_ff[iter],k2_ff[iter],kd_ff[iter],ke_ff[iter],km_ff[iter],k1_sf[iter],k2_sf[iter],kd_sf[iter],ke_sf[iter],km_sf[iter],k1_mf[iter],k2_mf[iter],kd_mf[iter],ke_mf[iter],km_mf[iter],k1_lf[iter],k2_lf[iter],kd_lf[iter],ke_lf[iter],km_lf[iter],
             rate_constants[iter]
             )
+
+    # kabam_obj = kabam_model.kabam(
+    #         True,True,'batch', chemical_name[iter-1],l_kow[iter-1],k_oc[iter-1],c_wdp[iter-1],water_column_EEC[iter-1],c_wto[iter-1],mineau[iter-1],x_poc[iter-1],x_doc[iter-1],c_ox[iter-1],w_t[iter-1],c_ss[iter-1],oc[iter-1],k_ow[iter-1],
+    #         b_species[iter-1],bw_quail[iter-1],bw_duck[iter-1],bwb_other[iter-1],avian_ld50[iter-1],avian_lc50[iter-1],avian_noaec[iter-1],m_species[iter-1],bw_rat[iter-1],bwm_other[iter-1],mammalian_ld50[iter-1],mammalian_lc50[iter-1],mammalian_chronic_endpoint[iter-1],
+    #         lf_p_sediment[iter-1],lf_p_phytoplankton[iter-1],lf_p_zooplankton[iter-1],lf_p_benthic_invertebrates[iter-1],lf_p_filter_feeders[iter-1],lf_p_small_fish[iter-1],lf_p_medium_fish[iter-1],
+    #         mf_p_sediment[iter-1],mf_p_phytoplankton[iter-1],mf_p_zooplankton[iter-1],mf_p_benthic_invertebrates[iter-1],mf_p_filter_feeders[iter-1],mf_p_small_fish[iter-1],
+    #         sf_p_sediment[iter-1],sf_p_phytoplankton[iter-1],sf_p_zooplankton[iter-1],sf_p_benthic_invertebrates[iter-1],sf_p_filter_feeders[iter-1],
+    #         ff_p_sediment[iter-1],ff_p_phytoplankton[iter-1],ff_p_zooplankton[iter-1],ff_p_benthic_invertebrates[iter-1],
+    #         beninv_p_sediment[iter-1],beninv_p_phytoplankton[iter-1],beninv_p_zooplankton[iter-1],
+    #         zoo_p_sediment[iter-1],zoo_p_phyto[iter-1],
+    #         s_lipid[iter-1],s_NLOM[iter-1],s_water[iter-1],
+    #         v_lb_phytoplankton[iter-1],v_nb_phytoplankton[iter-1],v_wb_phytoplankton[iter-1],wb_zoo[iter-1],v_lb_zoo[iter-1],v_nb_zoo[iter-1],v_wb_zoo[iter-1],wb_beninv[iter-1],v_lb_beninv[iter-1],v_nb_beninv[iter-1],v_wb_beninv[iter-1],wb_ff[iter-1],v_lb_ff[iter-1],v_nb_ff[iter-1],v_wb_ff[iter-1],wb_sf[iter-1],v_lb_sf[iter-1],v_nb_sf[iter-1],v_wb_sf[iter-1],wb_mf[iter-1],v_lb_mf[iter-1],v_nb_mf[iter-1],v_wb_mf[iter-1],wb_lf[iter-1],v_lb_lf[iter-1],v_nb_lf[iter-1],v_wb_lf[iter-1],
+    #         kg_phytoplankton[iter-1],kd_phytoplankton[iter-1],ke_phytoplankton[iter-1],mo_phytoplankton[iter-1],mp_phytoplankton[iter-1],km_phytoplankton[iter-1],km_zoo[iter-1],
+    #         k1_phytoplankton[iter-1],k2_phytoplankton[iter-1],
+    #         k1_zoo[iter-1],k2_zoo[iter-1],kd_zoo[iter-1],ke_zoo[iter-1],k1_beninv[iter-1],k2_beninv[iter-1],kd_beninv[iter-1],ke_beninv[iter-1],km_beninv[iter-1],
+    #         k1_ff[iter-1],k2_ff[iter-1],kd_ff[iter-1],ke_ff[iter-1],km_ff[iter-1],k1_sf[iter-1],k2_sf[iter-1],kd_sf[iter-1],ke_sf[iter-1],km_sf[iter-1],k1_mf[iter-1],k2_mf[iter-1],kd_mf[iter-1],ke_mf[iter-1],km_mf[iter-1],k1_lf[iter-1],k2_lf[iter-1],kd_lf[iter-1],ke_lf[iter-1],km_lf[iter-1],
+    #         rate_constants[iter-1]
+    #         )
+
 
     cb_phytoplankton.append(kabam_obj.cb_phytoplankton)
     cb_zoo.append(kabam_obj.cb_zoo)
@@ -466,9 +491,16 @@ def html_table(row_inp,iter):
         <div class="out_">
             <br><H3>Batch Calculation of Iteration %s:</H3>
         </div>
-        """%(iter + 1)
+        """%(iter)
 
+    kabam_obj.loop_indx = str(iter)
+
+    jid_all.append(kabam_obj.jid)
+    kabam_obj_all.append(kabam_obj)    
+    if iter == 0:
+        jid_batch.append(kabam_obj.jid)
     html = batch_header + kabam_tables.table_all(kabam_obj)
+    
     return html
 
 def loop_html(thefile):
@@ -501,12 +533,13 @@ class kabamBatchOutputPage(webapp.RequestHandler):
         html = template.render(templatepath + '04uberbatch_start.html', {
                 'model':'kabam',
                 'model_attributes':'Kabam Batch Output'})
-        html = html + kabam_tables.timestamp()
+        html = html + kabam_tables.timestamp("",jid_batch[0])
         html = html + iter_html
         # html = html + template.render(templatepath + 'kabam-batchoutput-jqplot.html', {})
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         # html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.batch_save_dic(html, [x.__dict__ for x in kabam_obj], 'kabam', 'batch', jid_batch[0], ChkCookie, templatepath)
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', kabamBatchOutputPage)], debug=True)

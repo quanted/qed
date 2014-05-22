@@ -10,7 +10,7 @@ class swcOutputPage(webapp.RequestHandler):
     def post(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
+        html = uber_lib.SkinChk(ChkCookie, "SWC Output")
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html',  {'model':'swc','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                               
         html = html + template.render(templatepath + '04uberoutput_start.html', {

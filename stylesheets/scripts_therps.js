@@ -1,80 +1,9 @@
 $(document).ready(function() {
-
-    var tab_pool = ["tab_Chemical", "tab_Avian", "tab_Herptile"];
-    var uptab_pool = ["Chemical", "Avian", "Herptile"];
-    var visible = $(".tab:visible").attr('class').split(" ")[1];
-    var curr_ind = $.inArray(visible, tab_pool);
-    $(".submit").hide();
-    $(".back").hide();
-
-    $('li.Chemical').click(function(){
-        curr_ind = 0;
-        $('li.Chemical').addClass('tabSel').removeClass('tabUnsel');
-        $('li.Avian, li.Herptile').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_Chemical').show();
-        $(".back").hide();
-        $(".submit").hide();
-        $(".next").show();
-    });
-
-    $('li.Avian').click(function(){
-        curr_ind = 1;
-        $('li.Avian').addClass('tabSel').removeClass('tabUnsel');
-        $('li.Chemical, li.Herptile').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_Avian').show();
-        $(".back").show();
-        $(".submit").hide();
-        $(".next").show();
-    });
-
-    $('li.Herptile').click(function(){
-        curr_ind = 2;
-        $('li.Herptile').addClass('tabSel').removeClass('tabUnsel');
-        $('li.Avian, li.Chemical').addClass('tabUnsel').removeClass('tabSel');
-        $(".tab:visible").hide();
-        $('.tab_Herptile').show();
-        $(".back").show();
-        $(".submit").show();
-        $(".next").hide();
-    });
-
-    $('.next').click(function () {
-        var tab = $(".tab:visible");
-        
-        if (curr_ind < 2) {      
-            $(".tab:visible").hide();
-            $("."+ uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel');
-            curr_ind = curr_ind + 1;
-            $("." + tab_pool[curr_ind]).show();
-            $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
-            $(".submit").hide();
-            $(".back").show();
-            }
-        
-        if (curr_ind == 2) {
-            $(".submit").show();
-            $(".next").hide();
-        }
-    });
-
-    $('.back').click(function () {
-        if (curr_ind > 0) {
-                
-            $(".tab:visible").hide();
-            $("."+ uptab_pool[curr_ind]).addClass('tabUnsel').removeClass('tabSel');
-            curr_ind = curr_ind - 1;
-            $("." + tab_pool[curr_ind]).show();
-            $("."+ uptab_pool[curr_ind]).addClass('tabSel').removeClass('tabUnsel');
-            $(".submit").hide();
-            $(".next").show();
-           
-        }
-        if (curr_ind == 0) {
-            $(".back").hide();
-        }
-    });
+    // Call function to setup tabbed nav
+    uberNavTabs(
+        ["Chemical", "Avian", "Herptile"],
+        {   "isSubTabs":false  }
+    );
 
     $('#id_Species_of_the_tested_bird_avian_ld50').change(function() { 
         if ($(this).val() == "Bobwhite quail"){

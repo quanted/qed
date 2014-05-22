@@ -10,8 +10,8 @@ from django import forms
 from django.db import models
 from django.utils.safestring import mark_safe
 
-applicationtarget_CHOICES=(('Short grass','Short grass'),('Tall grass','Tall grass'),('Broad-leafed plants/small insects','Broad-leafed plants/small insects'),
-                           ('Fruits/pods/seeds/large insects','Fruits/pods/seeds/large insects')) 
+applicationtarget_CHOICES=(('a','Short grass'),('b','Tall grass'),('c','Broad-leafed plants/small insects'),
+                           ('d','Fruits/pods/seeds/large insects')) 
 
 wet_in_CHOICES=(('Yes','Yes'),('No','No'))
 
@@ -60,27 +60,3 @@ class GENEECInp(forms.Form):
     hydrolysis = forms.FloatField(required=True,label='Hydrolysis: pH=7/neutral half-life (days)',initial=10)
     photolysis_aquatic_half_life = forms.FloatField(required=True,label='Photolysis, aquatic half-life (days)',initial=11)
         
-#APPRAT,APPNUM,APSPAC,KOC,METHAF,WETTED,METHOD,
-#     AIRFLG,YLOCEN,GRNFLG,GRSIZE,ORCFLG,INCORP,SOL,METHAP,HYDHAP,
-#     FOTHAP
-     
-#                 #1  2,  3, 4 ,5,  6,   7,   8,   9,  10,  11,  12, 13, 14, 15, 16,17)
-#a=geneec1.geneec2(4, 10, 5, 10, 3, 'n', 'a', 'd', 10, 'a', 'b', 'b', 1, 0.01, 2, 2, 20)
-
-#1.APPRAT,  APPLICATION RATE
-#2.APPNUM,  MAXIMUM NUMBER OF APPLICATION PERMITTED ON LABEL
-#3.APSPAC,  INTERVAL IN DAYS BETWEEN PESTICIDE APPLICATIONS
-#4.KOC,     ORGANIC CARBON PARTITION COEFFICIENT
-#5.METHAF,  AEROBIC METABOLIC SOIL HALFLIFE
-#6.WETTED,  FLAG TO INDICATE THE PESTICIDE IS WETTED-IN AND RUNOFF
-#7.METHOD,  Application approach
-#8.AIRFLG,  FLAG TO INDICATE AERIAL DROPLET SIZE DISTRIBUTION
-#9.YLOCEN,  DISTANCE FROM EDGE OF DOWNWIND SWATH TO NEAR EDGE OF POND IN ENGLISH UNITS (FEET)
-#10.GRNFLG, FLAG TO INDICATE GROUND SPRAYER TYPE
-#11.GRSIZE, SPRAY QUALITY (DROPLET SIZE DISTRIBUTION)
-#12.ORCFLG, FLAG TO INDICATE TYPE OF ORCHARD AIRBLAST APPLICATION
-#13.INCORP, DEPTH OF INCORPORATION
-#14.SOL,    SOLUBILITY
-#15.METHAP, AEROBIC METABOLIC HALFLIFE IN THE POND
-#16.HYDHAP, HYDROLYSIS HALFLIFE IN THE POND
-#17.FOTHAP, PHOTOLYSIS HALFLIFE IN THE POND = NOMINAL HALF-LIFE / 124      

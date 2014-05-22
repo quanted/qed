@@ -10,7 +10,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 import django
 from django import forms
-from dust import dust_parameters
+from dust import dust_parameters,dust_tooltips
 from uber import uber_lib
 
 class DustInputPage(webapp.RequestHandler):
@@ -19,7 +19,7 @@ class DustInputPage(webapp.RequestHandler):
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
+        html = uber_lib.SkinChk(ChkCookie, "DUST Inputs")
         html = html + template.render (templatepath + 'dust-jquery.html', {})
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'dust','page':'input'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
@@ -28,7 +28,12 @@ class DustInputPage(webapp.RequestHandler):
                 'model_attributes':'DUST Inputs'})
         html = html + str(dust_parameters.DustInp())
         html = html + template.render (templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render (templatepath + '05ubertext_tooltips_right.html', {})
+        # Check if tooltips dictionary exists
+        if hasattr(dust_tooltips, 'tooltips'):
+            tooltips = dust_tooltips.tooltips
+        else:
+            tooltips = {}
+        html = html + template.render (templatepath + '05ubertext_tooltips_right.html', {'tooltips':tooltips})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 

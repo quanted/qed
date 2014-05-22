@@ -1,7 +1,8 @@
-import numpy
 from django.template import Context, Template
-from django.utils.safestring import mark_safe
 from przm_exams import przm_exams_model
+import os
+from google.appengine.ext.webapp import template
+import datetime
 
 def getheaderpvu_1():
 	headings = ["Parameter", "Value"]
@@ -114,14 +115,28 @@ pvaheadings = getheaderpva()
 djtemplate = getdjtemplate()
 tmpl = Template(djtemplate)
 
+def timestamp(przm_exams_obj):
+    st = datetime.datetime.strptime(przm_exams_obj.jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
+    html="""
+    <div class="out_">
+        <b>PRZM-EXAMS<br>
+    """
+    html = html + st
+    html = html + " (EST)</b>"
+    html = html + """
+    </div>"""
+    return html
 
 def table_all(przm_exams_obj):
+    templatepath = os.path.dirname(__file__) + '/../templates/'
     table1_out = table_1(przm_exams_obj)
     table2_out = table_2(przm_exams_obj)
-
     table3_out = table_3(przm_exams_obj)
     table4_out = table_4(przm_exams_obj)
-    html_all = table1_out+table2_out+table3_out+table4_out
+    table5_out = table_5(przm_exams_obj)
+    table6_out = template.render(templatepath + 'przm_exams_jqplot.html', {})
+
+    html_all = table1_out+table2_out+table3_out+table4_out+table5_out+table6_out+"</div></div>"
 
     return html_all
 
@@ -174,15 +189,6 @@ def table_2(przm_exams_obj):
         """
         return html
 
-# Apt_p_j, DayRe_j, Ap_mp_j, Ar_j, Unit_p_j, CAM_f_p_j, EFF_p_j, Drft_p_j, DEPI_p_j
-# Apt_p, DayRe, Ap_mp, Ar, CAM_f_p, EFF_p, Drft_p, DEPI_f,
-# [('n_ph', 3.0), ('CAM_f', ['1', '1']), ('unit_p', 'kg/ha'), ('Ap_mp', ['Ground Sprayer', 'Ground Sprayer'])
-# ('anm', '28'), ('DD', ['01', '03']), ('sol', '24'), ('YY', '61'), ('tmper', '30'), ('unit', '1')
-# ('DEPI_text', ['4.00', '4.00']), ('koc', '25'), ('scenarios', 'FL Citrus MLRA-156A')
-# ('ph_out', [5.0, 7.0, 9.0]), ('run_o', 'FL1Cit-P.RUN'), ('chem_name', 'Forchlorfenuron')
-# ('aqp', '29'), ('hl_out', [12.0, 13.0, 14.0]), ('farm', 'Yes'), ('Drft_p', ['0.0100', '0.0100'])
-# ('noa', 2), ('CAM_f_p', ['1-Soil applied (4cm incorporation, linearly decreasing with depth)', '1-Soil applied (4cm incorporation, linearly decreasing with depth)'])
-
 def table_3(przm_exams_obj):
         #pre-table 3
         html = """
@@ -220,3 +226,43 @@ def table_4(przm_exams_obj):
                 </div>
         """
         return html
+
+def table_5(przm_exams_obj):
+        html = """
+                <br><div><table class="results" width="550" border="1">
+                          <tr>
+                            <th scope="col" colspan="3"><div align="center">PRZM-EXAMS Results</div></th>
+                          </tr>
+                          <tr>
+                            <th scope="col"><div align="center">Outputs</div></th>
+                            <th scope="col"><div align="center">Value</div></th>                            
+                          </tr>
+                          <tr>
+                            <td><div align="center">Simulation is finished. Please download your file from here</div></td>
+                            <td><div align="center"><a href=%s>Link</a></div></td>
+                          </tr>
+                          <tr>          
+                            <td id="x_pre_irr_val" data-val='%s' style="display: none"></td>  
+                            <td id="x_leachate_val" data-val='%s' style="display: none"></td>  
+                            <td id="x_et_val" data-val='%s' style="display: none"></td>  
+                            <td id="x_runoff_val" data-val='%s' style="display: none"></td>
+                            <td id="Lim_inst_val" data-val='%s' style="display: none"></td>  
+                            <td id="Lim_24h_val" data-val='%s' style="display: none"></td>  
+                            <td id="Lim_96h_val" data-val='%s' style="display: none"></td>  
+                            <td id="Lim_21d_val" data-val='%s' style="display: none"></td>
+                            <td id="Lim_60d_val" data-val='%s' style="display: none"></td>  
+                            <td id="Lim_90d_val" data-val='%s' style="display: none"></td>  
+                            <td id="Lim_y_val" data-val='%s' style="display: none"></td>  
+                            <td id="Ben_inst_val" data-val='%s' style="display: none"></td>  
+                            <td id="Ben_24h_val" data-val='%s' style="display: none"></td>  
+                            <td id="Ben_96h_val" data-val='%s' style="display: none"></td>  
+                            <td id="Ben_21d_val" data-val='%s' style="display: none"></td>
+                            <td id="Ben_60d_val" data-val='%s' style="display: none"></td>  
+                            <td id="Ben_90d_val" data-val='%s' style="display: none"></td>  
+                            <td id="Ben_y_val" data-val='%s' style="display: none"></td>  
+                          </tr>                               
+                </table><br></div>"""%(przm_exams_obj.link, przm_exams_obj.x_pre_irr, przm_exams_obj.x_leachate, przm_exams_obj.x_et, przm_exams_obj.x_runoff,
+                                       przm_exams_obj.Lim_inst, przm_exams_obj.Lim_24h, przm_exams_obj.Lim_96h, przm_exams_obj.Lim_21d, przm_exams_obj.Lim_60d, przm_exams_obj.Lim_90d, przm_exams_obj.Lim_y,  
+                                       przm_exams_obj.Ben_inst, przm_exams_obj.Ben_24h, przm_exams_obj.Ben_96h, przm_exams_obj.Ben_21d, przm_exams_obj.Ben_60d, przm_exams_obj.Ben_90d, przm_exams_obj.Ben_y)
+        return html
+

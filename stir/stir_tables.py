@@ -69,15 +69,17 @@ def getdjtemplate():
     """
     return dj_template
 
-def timestamp():
-    ts = time.time()
-    st = datetime.datetime.fromtimestamp(ts).strftime('%A, %Y-%B-%d %H:%M:%S')
+def timestamp(stir_obj="", batch_jid=""):
+    if stir_obj:
+        st = datetime.datetime.strptime(stir_obj.jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
+    else:
+        st = datetime.datetime.strptime(batch_jid, '%Y%m%d%H%M%S%f').strftime('%A, %Y-%B-%d %H:%M:%S')
     html="""
     <div class="out_">
         <b>STIR <a href="http://www.epa.gov/oppefed1/models/terrestrial/stir/stir_user_guide.html">Version 1.0</a> (Beta)<br>
     """
     html = html + st
-    html = html + " (UTC)</b>"
+    html = html + " (EST)</b>"
     html = html + """
     </div>"""
     return html
@@ -512,4 +514,4 @@ def table_all_batch(sm):
     html = html + table_3(pvuheadings,tmpl,sm)['html']
     html = html + table_4(pvuheadings,tmpl,sm)['html']
     html = html + table_5(pvrheadings,tmpl,sm)['html']
-    return html
+    return html

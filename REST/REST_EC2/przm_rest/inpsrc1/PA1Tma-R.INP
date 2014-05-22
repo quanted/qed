@@ -1,0 +1,207 @@
+*** Record 1: (A78), TITLE - label for simulation title
+Express     v. 1.03.02    (2007-07-20)
+*** PA TomatTitle of input file               Develope
+***____________
+*** Record 2: (A78), HTITLE - Hydrology Information Title
+"South Central PA (Adams and Lancaster Counties) MLRA148
+***____________
+*** Record 3: (2F8.0,I8,F8.0,2I8,5I4) PFAC,SFAC,IPEIND,ANETD,INICRP,ISCOND
+***PFAC SFAC    IPEIND  ANETD   INICRP  ISCOND     (WDM data sets not used)
+7.50E-013.60E-01       01.75E+01       1       1
+***____________
+*** Record 6: (I8) ERFLAG: Flag to calculate erosion
+       4
+***____________
+*** Record 7: (4F8.0,8X,I8,2F8.0) USLEK,USLELS,USLEP,AFIELD,IREG,SLP,HL
+***USLEKUSLELS  USLEP   AFIELD          IREG    SLP     HL
+3.20E-011.34E+001.00E+001.73E+02               3    6.00  600.00
+***____________
+*** Record 8: (I8) NDC - Number of different crops simulated; FLITNUM
+       1 0
+***____________
+*** Record 9 for Crop 1: (I8,3F8.0,I8,3(1X,I3),2F8.0) ICNCN,CINTCP,AMXDR,COVMAX,ICNAH,(3)CN,WFMAX,HTMAX
+***ICNCNCINTCP  AMXDR   COVMAX  ICNAH    CN1 CN2 CN3WFMAX   HTMAX
+       11.00E-012.00E+018.00E+01       3  87  83  850.00E+001.50E+02
+***____________
+*** Record 9A (2I8): CROPNO,NUSLEC - Crop, Number of USLE C (cover management) factors
+       1      27
+*** Record 9B: (16(I2,I2,1X) GDUSLEC,GMUSLEC for each USLEC
+***M DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM
+1604 0105 1605 2505 0106 1606 0107 1607 0108 1608 0109 1609 0110 1010 1510 1610
+*** Record 9C: (16(F4.0,1X)) - USLEC (USLE Cover management factors)
+.209 .226 .334 .389 .394 .289 .153 .101 .097 .152 .211 .272 .358 .570 .570 .634
+*** Record 9D: (16(F4.0,1X)) - MNGN - Manning's N for each USLEC
+.011 .011 .011 .011 .011 .011 .011 .011 .011 .011 .011 .011 .011 .011 .011 .011
+*** Record 9E: (16(I4,1X)) - CN(II) for each USLEC
+  83   83   83   83   83   83   83   83   83   83   83   83   83   83   83   87
+***____________
+*** Continuation of Records 9B,9C,9D,9E for USLEC 17-27
+***M DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM
+0111 1611 0112 1612 0101 1601 0102 1602 0103 1603 0104
+.544 .406 .347 .347 .158 .162 .166 .170 .175 .184 .195
+.011 .011 .011 .011 .011 .011 .011 .011 .011 .011 .011
+  87   87   87   87   87   87   87   87   87   87   87
+***____________
+*** Record 10: (I8) NCPDS - number of cropping periods
+      30
+***____________
+*** Record(s) 11: (2X,3I2,2X,3I2,3X,3I2,I8) - dates of crop EMergence, MAturation, and HArvest
+*** EMD,EMM,IYREM,MAD,MAM,IYRMAT,HAD,HAM,IYRHAR,INCROP
+***EMerge MAture  HArvest
+***DMMYY  DDMMYY  DDMMYY   Crop No.
+  160461  300661  151061       1
+  160462  300662  151062       1
+  160463  300663  151063       1
+  160464  300664  151064       1
+  160465  300665  151065       1
+  160466  300666  151066       1
+  160467  300667  151067       1
+  160468  300668  151068       1
+  160469  300669  151069       1
+  160470  300670  151070       1
+  160471  300671  151071       1
+  160472  300672  151072       1
+  160473  300673  151073       1
+  160474  300674  151074       1
+  160475  300675  151075       1
+  160476  300676  151076       1
+  160477  300677  151077       1
+  160478  300678  151078       1
+  160479  300679  151079       1
+  160480  300680  151080       1
+  160481  300681  151081       1
+  160482  300682  151082       1
+  160483  300683  151083       1
+  160484  300684  151084       1
+  160485  300685  151085       1
+  160486  300686  151086       1
+  160487  300687  151087       1
+  160488  300688  151088       1
+  160489  300689  151089       1
+  160490  300690  151090       1
+***____________
+*** Record 12: (A78) PTITLE - Label for pesticide
+Chemical Input Data:                                                          
+***____________
+*** Record 13: (4I8) NAPS,NCHEM,FRMFLG,DK2FLG
+*** NAPS   NCHEM  FRMFLG  DK2FLG
+      30       1       0       0
+***____________
+*** Record 15: (3A20) Name(s) of pesticides for output titles
+Forchlorfenuron     
+***____________
+*** Record(s) 16: (2X,3I2,I3,3(I2,F5.0,F6.0,F5.0,F5.0)) - application data
+***   including the application date (APD,APM,IAPYR), WINDAY, and (1)(CAM,DEPI,TAPP,APPEFF,DRFT)
+***DMMYYWinCmDepi Tapp  Eff  Drft CmDepi Tapp  Eff  Drft CmDepi Tapp  Eff  Drft
+  150461  0 2 4.000.0000.9500.1600
+  150462  0 2 4.000.0000.9500.1600
+  150463  0 2 4.000.0000.9500.1600
+  150464  0 2 4.000.0000.9500.1600
+  150465  0 2 4.000.0000.9500.1600
+  150466  0 2 4.000.0000.9500.1600
+  150467  0 2 4.000.0000.9500.1600
+  150468  0 2 4.000.0000.9500.1600
+  150469  0 2 4.000.0000.9500.1600
+  150470  0 2 4.000.0000.9500.1600
+  150471  0 2 4.000.0000.9500.1600
+  150472  0 2 4.000.0000.9500.1600
+  150473  0 2 4.000.0000.9500.1600
+  150474  0 2 4.000.0000.9500.1600
+  150475  0 2 4.000.0000.9500.1600
+  150476  0 2 4.000.0000.9500.1600
+  150477  0 2 4.000.0000.9500.1600
+  150478  0 2 4.000.0000.9500.1600
+  150479  0 2 4.000.0000.9500.1600
+  150480  0 2 4.000.0000.9500.1600
+  150481  0 2 4.000.0000.9500.1600
+  150482  0 2 4.000.0000.9500.1600
+  150483  0 2 4.000.0000.9500.1600
+  150484  0 2 4.000.0000.9500.1600
+  150485  0 2 4.000.0000.9500.1600
+  150486  0 2 4.000.0000.9500.1600
+  150487  0 2 4.000.0000.9500.1600
+  150488  0 2 4.000.0000.9500.1600
+  150489  0 2 4.000.0000.9500.1600
+  150490  0 2 4.000.0000.9500.1600
+***____________
+*** Record 17: (includes data for each chemical) (F8.0,3(I8,F8.0)) FILTRA, (1)(IPSCND,UPTKF)
+***FILT IPSCND1 UPTKF1  IPSCND2 UPTKF2  IPSCND3 UPTKF3
+0.00E+00       10.00E+00
+***____________
+*** Record 18: (3F8.0) PLVKRT,PLDKRT,FEXTRC for Chemical 1
+0.00E+000.00E+005.00E-01
+***____________
+*** Record 19: (A78) STITLE - label for soil properties
+"Glenville silt loam, 3 to 8 percent slopes (MapUnit), G                      
+***____________
+*** Record 20: (F8.0,8X,9I4) CORED,BDFLAG,THFLAG,KDFLAG,HSWZT,MOC,IRFLAG,ITFLAG,IDFLAG,BIOFLG
+***CORED (cm)     BD  TH  KD  HS MOC  IR  IT  ID BIO
+1.57E+02           0   0   0   0   0   0   0   0   0
+***____________
+*** Record 26: (9F8.0) (1)DAIR, (1)HENRYK, (1)ENPY
+4.30E+031.20E-102.00E+01
+***____________
+*** Record 33:  (I8) NHORIZ (total number of soil horizons)
+       5
+***____________
+*** Record 34 for Horizon 1: (I8,8F8.0) HORIZN,THKNS,BD,THET0,AD,(1)DISP,ADL
+       11.00E+011.30E+003.30E-010.00E+000.00E+000.00E+00
+***____________
+*** Record 36 for Horizon 1: (8X,9F8.0)  (1)DWRATE,(1)DSRATE,(1)DGRATE
+        1.20E-031.20E-030.00E+00
+***____________
+*** Record 37 for Horizon 1: (8X,7F8.0) DPN,THEFC,THEWP,OC,(1)KDs
+        1.00E-013.30E-011.50E-011.74E+003.07E+01
+***____________
+*** Record 34 for Horizon 2: (I8,8F8.0) HORIZN,THKNS,BD,THET0,AD,(1)DISP,ADL
+       21.30E+011.30E+003.30E-010.00E+000.00E+000.00E+00
+***____________
+*** Record 36 for Horizon 2: (8X,9F8.0)  (1)DWRATE,(1)DSRATE,(1)DGRATE
+        1.20E-031.20E-030.00E+00
+***____________
+*** Record 37 for Horizon 2: (8X,7F8.0) DPN,THEFC,THEWP,OC,(1)KDs
+        1.00E+003.30E-011.50E-011.74E+003.07E+01
+***____________
+*** Record 34 for Horizon 3: (I8,8F8.0) HORIZN,THKNS,BD,THET0,AD,(1)DISP,ADL
+       31.50E+011.50E+003.10E-010.00E+000.00E+000.00E+00
+***____________
+*** Record 36 for Horizon 3: (8X,9F8.0)  (1)DWRATE,(1)DSRATE,(1)DGRATE
+        1.20E-031.20E-030.00E+00
+***____________
+*** Record 37 for Horizon 3: (8X,7F8.0) DPN,THEFC,THEWP,OC,(1)KDs
+        5.00E+003.10E-011.70E-012.00E-013.53E+00
+***____________
+*** Record 34 for Horizon 4: (I8,8F8.0) HORIZN,THKNS,BD,THET0,AD,(1)DISP,ADL
+       45.80E+011.70E+002.40E-010.00E+000.00E+000.00E+00
+***____________
+*** Record 36 for Horizon 4: (8X,9F8.0)  (1)DWRATE,(1)DSRATE,(1)DGRATE
+        1.20E-031.20E-030.00E+00
+***____________
+*** Record 37 for Horizon 4: (8X,7F8.0) DPN,THEFC,THEWP,OC,(1)KDs
+        2.00E+002.40E-011.20E-011.70E-013.00E+00
+***____________
+*** Record 34 for Horizon 5: (I8,8F8.0) HORIZN,THKNS,BD,THET0,AD,(1)DISP,ADL
+       56.10E+011.50E+001.70E-010.00E+000.00E+000.00E+00
+***____________
+*** Record 36 for Horizon 5: (8X,9F8.0)  (1)DWRATE,(1)DSRATE,(1)DGRATE
+        1.20E-031.20E-030.00E+00
+***____________
+*** Record 37 for Horizon 5: (8X,7F8.0) DPN,THEFC,THEWP,OC,(1)KDs
+        1.00E+001.70E-011.00E-010.00E+000.00E+00
+***____________
+*** Record 40: (2I8) ILP; CFLAG (blank if ILP=0)
+       0
+***____________
+*** Record 42: (3(4X,A4,4X,A4,I8),I4) ITEM1,STEP1,LFREQ1,ITEM2,STEP2,LFREQ2,ITEM3,STEP3,LFREQ3,EXMFLG
+    WATR    YEAR      10    PEST    YEAR      10    CONC    YEAR      10   1
+***____________
+*** Record 43: (I8) EXMENV
+      99
+***____________
+*** Record 44 for Chemical 1: EXMCHM,CAS Number,NPROC,RFORM,YIELD
+       1    CASSNO: -999       1       10.00E+00
+***____________
+*** Record 45: NPLOTS (number of time series variables,STEP4
+       0    YEAR
+***____________
+*** Records 46: Plotting variables

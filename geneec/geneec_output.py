@@ -7,16 +7,14 @@ from google.appengine.ext.webapp import template
 import cgi
 import cgitb
 cgitb.enable()
-import json
-from geneec import geneec_model,geneec_tables
+from geneec import geneec_model, geneec_tables
 import sys
 lib_path = os.path.abspath('..')
 sys.path.append(lib_path)
 from uber import uber_lib
 import logging
-logger = logging.getLogger('Geneec')
-
-#############################################
+logger = logging.getLogger('Geneec Model')
+import rest_funcs
 
 class GENEECOutputPage(webapp.RequestHandler):
     def post(self):     
@@ -123,19 +121,10 @@ class GENEECOutputPage(webapp.RequestHandler):
             airblast_type_label='NA'
 ##########################################################################################                                        
 
-        geneec_obj = geneec_model.geneec('individual', chem_name, application_target, application_rate, number_of_applications, interval_between_applications, Koc, aerobic_soil_metabolism, wet_in, application_method, application_method_label, aerial_size_dist, ground_spray_type, airblast_type, spray_quality, no_spray_drift, incorporation_depth, solubility, aerobic_aquatic_metabolism, hydrolysis, photolysis_aquatic_half_life)
-        
-        # application_rate, number_of_applications, interval_between_applications, 
-        #                   Koc, aerobic_soil_metabolism, wet_in, application_method, 
-        #                   aerial_size_dist, no_spray_drift, ground_spray_type, spray_quality, airblast_type,
-        #                   incorporation_depth, solubility, aerobic_aquatic_metabolism, hydrolysis, photolysis_aquatic_half_life
-
-        logger.info(vars(geneec_obj))
-        # final_res=get_jid(geneec_obj)
-
+        geneec_obj = geneec_model.geneec('single', chem_name, application_target, application_rate, number_of_applications, interval_between_applications, Koc, aerobic_soil_metabolism, wet_in, application_method, application_method_label, aerial_size_dist, ground_spray_type, airblast_type, spray_quality, no_spray_drift, incorporation_depth, solubility, aerobic_aquatic_metabolism, hydrolysis, photolysis_aquatic_half_life)
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
+        html = uber_lib.SkinChk(ChkCookie, "GENEEC Output")
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'geneec','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
@@ -146,6 +135,7 @@ class GENEECOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.save_dic(html, geneec_obj.__dict__, 'geneec', 'single')
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', GENEECOutputPage)], debug=True)

@@ -320,7 +320,7 @@ def suite(TestCaseName, **kwargs):
     test_out=stream.read()
     return test_out
 
-stir_obj = stir_model.StirModel(True,True,'',application_rate[0],column_height[0],spray_drift_fraction[0],direct_spray_duration[0],molecular_weight[0],vapor_pressure[0],avian_oral_ld50[0], body_weight_assessed_bird[0], body_weight_tested_bird[0],mineau_scaling_factor[0],mammal_inhalation_lc50[0],duration_mammal_inhalation_study[0],body_weight_assessed_mammal[0],body_weight_tested_mammal[0],mammal_oral_ld50[0])
+stir_obj = stir_model.StirModel(True,True,'qaqc','',application_rate[0],column_height[0],spray_drift_fraction[0],direct_spray_duration[0],molecular_weight[0],vapor_pressure[0],avian_oral_ld50[0], body_weight_assessed_bird[0], body_weight_tested_bird[0],mineau_scaling_factor[0],mammal_inhalation_lc50[0],duration_mammal_inhalation_study[0],body_weight_assessed_mammal[0],body_weight_tested_mammal[0],mammal_oral_ld50[0])
 stir_obj.set_unit_testing_variables()
 
 stir_obj.chemical_name_expected = chemical_name[0]
@@ -375,7 +375,7 @@ class stirQaqcPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
+        html = uber_lib.SkinChk(ChkCookie, "STIR QA/QC")
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'stir','page':'qaqc'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
@@ -405,6 +405,7 @@ class stirQaqcPage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.save_dic(html, stir_obj.__dict__, 'stir', 'qaqc')
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', stirQaqcPage)], debug=True)

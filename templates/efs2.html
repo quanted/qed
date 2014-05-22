@@ -1,0 +1,50 @@
+<div class="efsHide" id="mtabs-1" >
+    <form NAME="SmilesForm">
+    <table>
+      <tr>
+        <td>
+          &nbsp;&nbsp;<input type=button value="Draw a chemical structure and click here" onClick="importMolFromCanvas(null)">
+          <!-- begin Marvin4JS -->
+          <div id="content" class="resizable">
+		 <iframe id="sketch" src="stylesheets/efs/marvin4js/editorws.html" class="sketcher-frame" style="overflow: hidden; min-width: 500px; min-height: 450px; border: 1px solid darkgray;"></iframe> 
+          </div>
+          <!-- end Marvin4JS -->
+        </td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>
+          <table>
+          <tr>
+            <td colspan="2"><input type=button value="Enter a SMILES, IUPAC or CAS# and click here" onClick="importMol(null)"></td>
+          </tr>
+          <tr>
+            <td colspan="2"><textarea name="MolTxt" row=1 cols=53>2,4-dinitroanisole</textarea></td>
+          </tr>
+          <tr>
+            <td colspan="2"><br /><br /><br /><br /><br /><br /></td>
+          </tr>
+          <tr>
+            <td id="results" colspan="2">Results</td>
+          </tr>
+          <tr>
+            <td class="label">SMILES:</td>
+            <td><textarea id="molecule" NAME="smiles" rows=2 cols=45 ></textarea></td>
+          </tr>
+          <tr>
+            <td class="label">IUPAC:</td>
+            <td><textarea id="IUPAC" NAME="name" rows=2 cols=45 ></textarea></td>
+          </tr>
+          <tr>
+            <td class="label">Formula:</td>
+            <td><textarea NAME="formula" rows=1 cols=45 ></textarea></td>
+          </tr>
+          <tr>
+            <td class="label">Weight:</td>
+            <td><textarea NAME="mass" rows=1 cols=45 ></textarea></td>
+          </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    </form>
+  </div>
+

@@ -126,7 +126,6 @@ def batchLoadAquaticToxicityConfigs(params_matrix,config_index,ubertool_configur
     config_params['kg_phytoplankton'] = params_matrix.get("kg_phytoplankton")[config_index]
     config_params['mp_phytoplankton'] = params_matrix.get("mp_phytoplankton")[config_index]
     config_params['mo_phytoplankton'] = params_matrix.get("mo_phytoplankton")[config_index]
->>>>>>> chance
     config_params['aquatic_configuration'] = config_name
     ubertool_configuration_properties.update(config_params)
     config_params['config_name'] = config_name

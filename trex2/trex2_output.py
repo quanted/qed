@@ -10,8 +10,11 @@ import numpy as np
 import cgi
 import cgitb
 cgitb.enable()
-from trex2 import trex2_model,trex2_tables
+from trex2 import trex2_model, trex2_tables
 from uber import uber_lib
+import rest_funcs
+import logging
+logger = logging.getLogger('trex2 out')
 
 class TRexOutputPage(webapp.RequestHandler):
     def post(self):        
@@ -98,24 +101,26 @@ class TRexOutputPage(webapp.RequestHandler):
         x1 = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
-        html = uber_lib.SkinChk(ChkCookie)
+        html = uber_lib.SkinChk(ChkCookie, "TREX 1.5.2 Output")
         html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html',  {'model':'trex2','page':'output'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                               
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'trex2', 
                 'model_attributes':'T-Rex 1.5.2 Output'})
 
-        trex_obj = trex2_model.trex2(chem_name, use, formu_name, a_i, Application_type, seed_treatment_formulation_name, seed_crop, seed_crop_v, r_s, b_w, p_i, den, h_l, n_a, rate_out, day_out,
+        trex2_obj = trex2_model.trex2("single", chem_name, use, formu_name, a_i, Application_type, seed_treatment_formulation_name, seed_crop, seed_crop_v, r_s, b_w, p_i, den, h_l, n_a, rate_out, day_out,
                       ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, aw_bird_md, aw_bird_lg, 
                       Species_of_the_tested_bird_avian_ld50, Species_of_the_tested_bird_avian_lc50, Species_of_the_tested_bird_avian_NOAEC, Species_of_the_tested_bird_avian_NOAEL,
                       tw_bird_ld50, tw_bird_lc50, tw_bird_NOAEC, tw_bird_NOAEL, x, ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, aw_mamm_lg, tw_mamm,
                       m_s_r_p)
 
-        html = html + trex2_tables.timestamp()
-        html = html + trex2_tables.table_all(trex_obj)[0]
+        html = html + trex2_tables.timestamp(trex2_obj)
+        html = html + trex2_tables.table_all(trex2_obj)[0]
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        # logger.info(trex2_obj.__dict__)
+        rest_funcs.save_dic(html, trex2_obj.__dict__, "trex2", "single")
         self.response.out.write(html)
 
 app = webapp.WSGIApplication([('/.*', TRexOutputPage)], debug=True)
@@ -129,3 +134,4 @@ if __name__ == '__main__':
  
 
     
+

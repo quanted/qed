@@ -22,19 +22,17 @@ class PRZMEXAMSInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start_tabbed.html', {
                 'model':'przm_exams', 
                 'model_attributes':'PRZM-EXAMS Inputs'})
-        html = html + """
-        <div class="input_nav">
-            <ul>
-                <li class="PRZM tabSel"> PRZM Inputs </li>
-                |<li class="EXAMS tabUnsel"> EXAMS Inputs</li>
-            </ul>
-        </div>
-        """
-        html = html + """<br><table class="tab tab_PRZM">"""
+        html = html + template.render (templatepath + '04uberinput_tabbed_nav.html', {
+                'nav_dict': {
+                    'class_name': ['PRZM', 'EXAMS'],
+                    'tab_label': ['PRZM Inputs', 'EXAMS Inputs']
+                    }
+                })
+        html = html + """<br><table class="input_table tab tab_PRZM">"""
         html = html + str(przm_exams_parameters.PRZMInp())
-        html = html + """</table><table class="tab tab_EXAMS" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_EXAMS" style="display:none">"""
         html = html + str(przm_exams_parameters.EXAMSInp())
-        html = html + """</table><table class="tab tab_EXAMS n_ph" style="display:none">
+        html = html + """</table><table class="input_table tab tab_EXAMS n_ph" style="display:none">
                                     <tr><th><label for="n_ph">Number of Different pH:</label></th>
                                         <td><select name="n_ph" id="n_ph">
                                                 <option value="">Make a selection</option>

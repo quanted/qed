@@ -50,30 +50,29 @@ class resexposureInputPage(webapp.RequestHandler):
             </ul>
         </div>
         """
-        #
-        html = html + """<br><table class="tab tab_model" border="0">"""
+        html = html + """<br><table class="input_table tab tab_model" border="0">"""
         html = html + str(resexposure_parameters.resexposureInp_model())
-        html = html + """</table><table class="tab tab_hdflr" border="0" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_hdflr" border="0" style="display:none">"""
         html = html + str(resexposure_parameters.resexposureInp_hdflr())
-        html = html + """</table><table class="tab tab_vlflr" border="0" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_vlflr" border="0" style="display:none">"""
         html = html + str(resexposure_parameters.resexposureInp_vlflr())
-        html = html + """</table><table class="tab tab_cpcln" border="0" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_cpcln" border="0" style="display:none">"""
         html = html + str(resexposure_parameters.resexposureInp_cpcln())
-        html = html + """</table><table class="tab tab_ipcap" border="0" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_ipcap" border="0" style="display:none">"""
         html = html + str(resexposure_parameters.resexposureInp_ipcap())
-        html = html + """</table><table class="tab tab_mactk" border="0" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_mactk" border="0" style="display:none">"""
         html = html + str(resexposure_parameters.resexposureInp_mactk())
-        html = html + """</table><table class="tab tab_ccpst" border="0" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_ccpst" border="0" style="display:none">"""
         html = html + str(resexposure_parameters.resexposureInp_ccpst())
-        html = html + """</table><table class="tab tab_ldtpr" border="0" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_ldtpr" border="0" style="display:none">"""
         html = html + str(resexposure_parameters.resexposureInp_ldtpr())
-        html = html + """</table><table class="tab tab_clopr" border="0" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_clopr" border="0" style="display:none">"""
         html = html + str(resexposure_parameters.resexposureInp_clopr())
-        html = html + """</table><table class="tab tab_impdp" border="0" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_impdp" border="0" style="display:none">"""
         html = html + str(resexposure_parameters.resexposureInp_impdp())
-        html = html + """</table><table class="tab tab_cldst" border="0" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_cldst" border="0" style="display:none">"""
         html = html + str(resexposure_parameters.resexposureInp_cldst())
-        html = html + """</table><table class="tab tab_impty" border="0" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_impty" border="0" style="display:none">"""
         html = html + str(resexposure_parameters.resexposureInp_impty())
 
         html = html + template.render(templatepath + '04uberinput_tabbed_end_resexposure.html', {'sub_title': 'Submit'})

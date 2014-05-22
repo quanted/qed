@@ -31,7 +31,7 @@ class earthwormOutputPage(webapp.RequestHandler):
         p_e = float(form.getvalue('p_e'))
         
         earthworm_obj = earthworm_model.earthworm(True,True,k_ow,l_f_e,c_s,k_d,p_s,c_w,m_w,p_e)
-        logger.info(vars(earthworm_obj))
+        # logger.info(vars(earthworm_obj))
         
         text_file = open('earthworm/earthworm_description.txt','r')
         x = text_file.read()
@@ -62,4 +62,5 @@ if __name__ == '__main__':
 
  
 
-    
+    
+

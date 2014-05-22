@@ -2,8 +2,10 @@
 var name = 'ubercookie';
 var days = 7;
 var mouseOn, mouseOff;
-// Enable/Disable Stylesheets
-function SetStyle (value)
+getCookie('ubercookie');
+
+// Enable/Disable Stylesheets      <--- NOT USED ANYMORE
+function SetStyle(value)
 {
   var i, link_tag;
   for (i = 0, link_tag = document.getElementsByTagName("link");
@@ -17,7 +19,7 @@ function SetStyle (value)
       }
     }
     if (value == "EPA") {
-      mouseOff = '#dee7ef';
+      mouseOff = '#4289AA';
       mouseOn = '#356697';
     } else {
       mouseOff = '#79973F';
@@ -36,7 +38,7 @@ function setCookie(name,value,days) {
   else var expires = "";
   document.cookie = name+"="+value+expires+"; path=/";
 }
-// Get EPA Skin Cookie Value
+// Get EPA Skin Cookie Value      <--- NOT USED ANYMORE
 function getCookie(name) {
   var c_value = document.cookie;
   var c_start = c_value.indexOf(" " + name + "=");
@@ -55,13 +57,23 @@ function getCookie(name) {
   }
   c_value = unescape(c_value.substring(c_start,c_end));
   }
+  // Setup initial link text hover values
+  if (c_value == "EPA") {
+    mouseOff = '#4289AA';
+    mouseOn = '#356697';
+  } else {
+    mouseOff = '#79973F';
+    mouseOn = '#FFA500';
+  }
   return c_value;
 }
-// Delete Cookie
+// Delete Cookie       <--- NOT USED ANYMORE
 function delCookie(name) {
   setCookie(name,"default",7);
 }
+//
 // jQuery
+//
 $(document).ready(function() {
   // Home
   $('#home').hover(
@@ -99,8 +111,8 @@ $(document).ready(function() {
     $('.ssMain').attr({href:"/stylesheets/styleEPA.css"});
     $('.ssSkin').attr({href:"/stylesheets/style_ecoEPA.css"});
     $('.fadeMenu').css( {backgroundColor:'#dee7ef', 'color':'#1F262A'} );
-    $('.articles a:link, .articles_input a:link, articles_output a:link').css( {'color':'#4289AA'} );
-    mouseOff = '#dee7ef';
+    $('.articles a:link, .articles_input a:link, articles_output a:link').css( {'color':'#356697'} );
+    mouseOff = '#4289AA';
     mouseOn = '#356697';
   });
   // Default Skin Set

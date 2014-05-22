@@ -261,4 +261,5 @@ def table_sum_output(sumheadings, tmpl, msed, vw, mai1, cw):
         </div>
         <br>
         """
-        return html
+        return html
+

@@ -1143,6 +1143,12 @@ a:hover {
   color: #FFFFFF;
   background-color: #A31E39;
 }
+.tabUnsel {
+  color: #333333;
+}
+.tabSel {
+  color: #A31E39;
+}
 
 /* Tables */
 

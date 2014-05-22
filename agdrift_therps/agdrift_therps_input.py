@@ -28,23 +28,19 @@ class agdrift_therpsInputPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '04uberinput_start_tabbed.html', {
                 'model':'agdrift_therps', 
                 'model_attributes':'Agdrift and Therps Inputs'})
-        html = html + """
-        <div class="input_nav">
-            <ul>
-                <li class="Agdrift tabSel">Agdrift</li>
-                |<li class="Chemical tabUnsel">Chemical</li>
-                |<li class="Avian tabUnsel"> Avian</li>
-                |<li class="Herptile tabUnsel"> Herptile</li>
-            </ul>
-        </div>
-        """
-        html = html + """<br><table class="tab tab_Agdrift" border="0">"""
+        html = html + template.render (templatepath + '04uberinput_tabbed_nav.html', {
+                'nav_dict': {
+                    'class_name': ['Agdrift', 'Chemical', 'Avian', 'Herptile'],
+                    'tab_label': ['Agdrift', 'Chemical', 'Avian', 'Herptile']
+                    }
+                })
+        html = html + """<br><table class="input_table tab tab_Agdrift" border="0">"""
         html = html + str(agdrift_therps_parameters.agdriftInp())
-        html = html + """<br><table class="tab tab_Chemical" border="0" style="display:none">"""
+        html = html + """<br><table class="input_table tab tab_Chemical" border="0" style="display:none">"""
         html = html + str(agdrift_therps_parameters.trexInp_chem())
-        html = html + """</table><table class="tab tab_Avian" border="0" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_Avian" border="0" style="display:none">"""
         html = html + str(agdrift_therps_parameters.trexInp_bird())
-        html = html + """</table><table class="tab tab_Herptile" border="0" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_Herptile" border="0" style="display:none">"""
         html = html + str(agdrift_therps_parameters.trexInp_herp())
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

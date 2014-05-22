@@ -14,13 +14,23 @@ import utils.json_utils
 sys.path.append("../agdrift")
 sys.path.append("../therps")
 from agdrift import agdrift_model,agdrift_tables
+from agdrift_therps import agdrift_therps_tables
 from therps import therps_model,therps_tables
 from uber import uber_lib
 from django.template import Context, Template
 from django.utils import simplejson
 import logging
+import rest_funcs
 
 #logger = logging.getLogger('trex2 Model')
+def merge(ob1, ob2):
+    """
+    an object's __dict__ contains all its 
+    attributes, methods, docstrings, etc.
+    """
+    ob1.__dict__.update(ob2.__dict__)
+    return ob1
+# merge the two class instances into one instance
 
 class agdrift_therpsOutputPage(webapp.RequestHandler):
     def post(self):        
@@ -111,6 +121,8 @@ class agdrift_therpsOutputPage(webapp.RequestHandler):
         #               Species_of_the_tested_bird_avian_ld50, Species_of_the_tested_bird_avian_lc50, Species_of_the_tested_bird_avian_NOAEC, Species_of_the_tested_bird_avian_NOAEL,
         #               tw_bird_ld50, tw_bird_lc50, tw_bird_NOAEC, tw_bird_NOAEL, x, ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, aw_mamm_lg, tw_mamm,
         #               m_s_r_p)
+        agdrift_therps_obj = merge(agdrift_obj, therps_obj)
+
         text_file = open('agdrift/agdrift_description.txt','r')
         x = text_file.read()
         text_file = open('therps/therps_description.txt','r')
@@ -124,7 +136,7 @@ class agdrift_therpsOutputPage(webapp.RequestHandler):
                 'model':'agdrift_therps', 
                 'model_attributes':'AgDrift-T-Herps Output'})
 
-        html = html + therps_tables.timestamp(therps_obj, '')
+        html = html + agdrift_therps_tables.timestamp(agdrift_obj)
         html = html + agdrift_tables.table_all(agdrift_obj)
         # html = html + trex2_tables.timestamp()
         html = html + therps_tables.table_all(therps_obj)[0]
@@ -178,6 +190,7 @@ class agdrift_therpsOutputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.save_dic(html, agdrift_therps_obj.__dict__, "agdrift_therps", "single")
         self.response.out.write(html)
           
 app = webapp.WSGIApplication([('/.*', agdrift_therpsOutputPage)], debug=True)
@@ -186,4 +199,5 @@ def main():
     run_wsgi_app(app)
 
 if __name__ == '__main__':
-    main()
+    main()
+

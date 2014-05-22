@@ -340,6 +340,9 @@ ul.nobullet {
   list-style: none;
 }
 .articles_input table {
+  margin-bottom: 12px;
+}
+.input_table {
   width: 90%;
   margin-bottom: 12px;
   border-radius: 4px;
@@ -359,12 +362,6 @@ ul.nobullet {
 .error{
   border-color: #F78181;
   color:red;
-}
-.tabUnsel {
-  color: #1F262A;
-}
-.tabSel {
-  color: #4289AA;
 }
 .articles_output {
   width: 822px;

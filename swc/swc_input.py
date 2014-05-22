@@ -24,39 +24,34 @@ class swcInputPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberinput_start_tabbed.html', {
                 'model':'swc', 
                 'model_attributes':'Surface Water Calculator Inputs'})
-        html = html + """
-        <div class="input_nav">
-            <ul>
-                <li class="Chemical tabSel">Chemical </li>
-                |<li class="Applications tabUnsel"> Applications </li>
-                |<li class="CropLand tabUnsel"> Crop/Land </li>
-                |<li class="Runoff tabUnsel"> Runoff </li>
-                |<li class="WaterBody tabUnsel"> Water Body </li>
-            </ul>
-        </div>
-        """
-        html = html + """<br><table class="tab tab_Chemical">"""
+        html = html + template.render (templatepath + '04uberinput_tabbed_nav.html', {
+                'nav_dict': {
+                    'class_name': ['Chemical', 'Applications', 'CropLand', 'Runoff', 'WaterBody'],
+                    'tab_label': ['Chemical', 'Applications', 'Crop/Land', 'Runoff', 'Water Body']
+                    }
+                })
+        html = html + """<br><table class="input_table tab tab_Chemical">"""
         html = html + str(przm5_parameters.przm5Inp_chem())
         html = html + str(vvwm_parameters.vvwmInp_chem())
-        html = html + """</table><table class="tab tab_Chemical0">"""
+        html = html + """</table><table class="input_table tab tab_Chemical0">"""
         html = html + str(przm5_parameters.przm5Inp_chem0())
-        html = html + """</table><table class="tab tab_Chemical1" style="display:none">
+        html = html + """</table><table class="input_table tab tab_Chemical1" style="display:none">
                             <tr><th colspan="2">Degradate 1</th></tr>
                             """
         html = html + str(przm5_parameters.przm5Inp_chem1())
-        html = html + """</table><table class="tab tab_Chemical_MCF1" style="display:none">
+        html = html + """</table><table class="input_table tab tab_Chemical_MCF1" style="display:none">
                             <tr><th colspan="2">Molar Conversion Factors (Degradate 1)</th></tr>
                             """
         html = html + str(przm5_parameters.przm5Inp_mcf1())
-        html = html + """</table><table class="tab tab_Chemical2" style="display:none">
+        html = html + """</table><table class="input_table tab tab_Chemical2" style="display:none">
                             <tr><th colspan="2">Degradate 2</th></tr>
                             """
         html = html + str(przm5_parameters.przm5Inp_chem2())
-        html = html + """</table><table class="tab tab_Chemical_MCF2" style="display:none">
+        html = html + """</table><table class="input_table tab tab_Chemical_MCF2" style="display:none">
                             <tr><th colspan="2">Molar Conversion Factors (Degradate 2)</th></tr>
                             """
         html = html + str(przm5_parameters.przm5Inp_mcf2())
-        html = html + """</table><table class="tab tab_Applications" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_Applications" style="display:none">"""
         html = html + str(przm5_parameters.przm5Inp_appl())
         html = html + """
                         <tr>
@@ -72,12 +67,12 @@ class swcInputPage(webapp.RequestHandler):
                         
                         """
         # html = html + template.render (templatepath + 'vvwm_weatherfile.html', {})
-        html = html + """</table><table class="tab tab_CropLand" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_CropLand" style="display:none">"""
         html = html + str(vvwm_parameters.vvwmInp_cropland())
         html = html + str(przm5_parameters.przm5Inp_cropland())
-        html = html + """</table><table class="tab tab_Runoff" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_Runoff" style="display:none">"""
         html = html + str(przm5_parameters.przm5Inp_runoff())
-        html = html + """</table><table class="tab tab_WaterBody" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_WaterBody" style="display:none">"""
         html = html + str(przm5_parameters.przm5Inp_waterbody())
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})

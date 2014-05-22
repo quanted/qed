@@ -28,21 +28,17 @@ class agdrift_trexInputPage(webapp.RequestHandler):
         html = html + template.render (templatepath + '04uberinput_start_tabbed.html', {
                 'model':'agdrift_trex', 
                 'model_attributes':'Agdrift and Trex Inputs'})
-        html = html + """
-        <div class="input_nav">
-            <ul>
-                <li class="Agdrift tabSel">Agdrift</li>
-                |<li class="Chemical tabUnsel">Chemical</li>
-                |<li class="Avian tabUnsel"> Avian</li>
-                |<li class="Mammal tabUnsel"> Mammal</li>
-            </ul>
-        </div>
-        """
-        html = html + """<br><table class="tab tab_Agdrift" border="0">"""
+        html = html + template.render (templatepath + '04uberinput_tabbed_nav.html', {
+                'nav_dict': {
+                    'class_name': ['Agdrift', 'Chemical', 'Avian', 'Mammal'],
+                    'tab_label': ['Agdrift', 'Chemical', 'Avian', 'Mammal']
+                    }
+                })
+        html = html + """<br><table class="input_table tab tab_Agdrift" border="0">"""
         html = html + str(agdrift_trex_parameters.agdriftInp())
-        html = html + """<br><table class="tab tab_Chemical" border="0" style="display:none">"""
+        html = html + """<br><table class="input_table tab tab_Chemical" border="0" style="display:none">"""
         html = html + str(trex2_parameters.trexInp_chem())
-        html = html + """</table><table class="tab tab_Application tab_Chemical" border="0" style="display:none">
+        html = html + """</table><table class="input_table tab tab_Application tab_Chemical" border="0" style="display:none">
                                     <tr><th colspan="2" scope="col"><label for="id_noa">Number of Applications:</label></th>
                                         <td colspan="3" scope="col"><select name="noa" id="id_noa">
                                             <option value="1"  selected>1</option></select>
@@ -56,9 +52,9 @@ class agdrift_trexInputPage(webapp.RequestHandler):
                                                          <td><input type="text" size="5" name="rate1" id="id_rate1" value="4"/></td>
                                                          <td><input type="text" size="5" name="day1" id="id_day1" value="0" disabled/></td>
                                     </tr>""" 
-        html = html + """</table><table class="tab tab_Avian" border="0" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_Avian" border="0" style="display:none">"""
         html = html + str(trex2_parameters.trexInp_bird())
-        html = html + """</table><table class="tab tab_Mammal" border="0" style="display:none">"""
+        html = html + """</table><table class="input_table tab tab_Mammal" border="0" style="display:none">"""
         html = html + str(trex2_parameters.trexInp_mammal())
         html = html + template.render(templatepath + '04uberinput_tabbed_end.html', {'sub_title': 'Submit'})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

@@ -26,7 +26,8 @@ class RiceInputPage(webapp.RequestHandler):
         html = html + template.render (templatepath + 'rice_ubertool_config_input.html', {})
         html = html + str(rice_parameters.RiceInp())
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': 'Submit'})
-        html = html + template.render (templatepath + 'rice_ubertool_config.html', {'ubertool_service_url':mongo_service_url})
+        # html = html + template.render (templatepath + 'rice_ubertool_config.html', {'ubertool_service_url':mongo_service_url})
+        html = html + template.render (templatepath + 'rice_ubertool_config.html', {'ubertool_service_url':{}})
         html = html + template.render(templatepath + '05ubertext_tooltips_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
@@ -39,4 +40,4 @@ def main():
 if __name__ == '__main__':
     main()
     
-    
+    

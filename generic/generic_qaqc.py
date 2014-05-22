@@ -9,22 +9,22 @@ import cgitb
 cgitb.enable()
 from uber import uber_lib
 
-class earthwormQaqcPage(webapp.RequestHandler):
+class genericQaqcPage(webapp.RequestHandler):
     def get(self):
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie, "Generic QA/QC")
-        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'earthworm','page':'qaqc'})
+        html = html + template.render(templatepath + '02uberintroblock_wmodellinks.html', {'model':'generic','page':'qaqc'})
         html = html + template.render (templatepath + '03ubertext_links_left.html', {})                
         html = html + template.render(templatepath + '04uberoutput_start.html', {
-                'model':'earthworm',
-                'model_attributes':'earthworm QAQC'})
+                'model':'generic',
+                'model_attributes':'generic QAQC'})
 #        html = html =
         html = html + template.render(templatepath + '04uberinput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
-app = webapp.WSGIApplication([('/.*', earthwormQaqcPage)], debug=True)
+app = webapp.WSGIApplication([('/.*', genericQaqcPage)], debug=True)
 
 def main():
     run_wsgi_app(app)

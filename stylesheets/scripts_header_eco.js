@@ -14,25 +14,30 @@ $(document).ready(function() {
   // BlockUI on QAQC
   $("a[class^='fadeQAQC']").click(function (e) {
     e.preventDefault();
-    $(document).ajaxStart(function(http_method){
-      $.blockUI({
-        css:{ "top":""+wintop+"", "left":""+winleft+"", "padding": "30px 20px", "width": "400px", "height": "60px", "border": "0 none", "border-radius": "4px", "-webkit-border-radius": "4px", "-moz-border-radius": "4px", "box-shadow": "3px 3px 15px #333", "-webkit-box-shadow": "3px 3px 15px #333", "-moz-box-shadow": "3px 3px 15px #333" },
-        message: '<h2 class="popup_header">Processing QA/QC...</h2><br/><img src="/images/loader.gif" style="margin-top:-16px">'
-      });
-    });
-      $.ajax({
-          cache: false,
-          type: "get",
-          url: model+"_qaqc.html",
-          success: function() {
-            window.location.href = model+"_qaqc.html";
-          },
-          error: function() {
-            $.unblockUI();
-            alert('There is a problem about your submission.')
-          }
+    cur_url = window.location.href
+    if(cur_url.indexOf('qaqc') == -1){
+      $(document).ajaxStart(function(http_method){
+        $.blockUI({
+          css:{ "top":""+wintop+"", "left":""+winleft+"", "padding": "30px 20px", "width": "400px", "height": "60px", "border": "0 none", "border-radius": "4px", "-webkit-border-radius": "4px", "-moz-border-radius": "4px", "box-shadow": "3px 3px 15px #333", "-webkit-box-shadow": "3px 3px 15px #333", "-moz-box-shadow": "3px 3px 15px #333" },
+          message: '<h2 class="popup_header">Processing QA/QC...</h2><br/><img src="/images/loader.gif" style="margin-top:-16px">',
+          fadeIn:  500
         });
-  });
+      });
+        $.ajax({
+            cache: false,
+            type: "get",
+            success: function() {
+              window.location.href = model+"_qaqc.html";
+            },
+            error: function() {
+              $.unblockUI();
+              alert('There is a problem about your submission.')
+            }
+          });
+    });
+    else{}
+  }
+
   // BlockUI on Form Submit
   $("input[value='Submit']").click(function (e) {
     e.preventDefault();
@@ -40,7 +45,8 @@ $(document).ready(function() {
     if (typeof ($("form").valid) == 'undefined'){
         $.blockUI({
           css:{ "top":""+wintop+"", "left":""+winleft+"", "padding": "30px 20px", "width": "400px", "height": "60px", "border": "0 none", "border-radius": "4px", "-webkit-border-radius": "4px", "-moz-border-radius": "4px", "box-shadow": "3px 3px 15px #333", "-webkit-box-shadow": "3px 3px 15px #333", "-moz-box-shadow": "3px 3px 15px #333" },
-          message: '<h2 class="popup_header">Processing Model Submission...</h2><br/><img src="/images/loader.gif" style="margin-top:-16px">'
+          message: '<h2 class="popup_header">Processing Model Submission...</h2><br/><img src="/images/loader.gif" style="margin-top:-16px">',
+          fadeIn:  500
         });
         setTimeout(function() {$('form').submit();}, 500);
     }
@@ -49,7 +55,8 @@ $(document).ready(function() {
         e.preventDefault();
         $.blockUI({
           css:{ "top":""+wintop+"", "left":""+winleft+"", "padding": "30px 20px", "width": "400px", "height": "60px", "border": "0 none", "border-radius": "4px", "-webkit-border-radius": "4px", "-moz-border-radius": "4px", "box-shadow": "3px 3px 15px #333", "-webkit-box-shadow": "3px 3px 15px #333", "-moz-box-shadow": "3px 3px 15px #333" },
-          message: '<h2 class="popup_header">Processing Model Submission...</h2><br/><img src="/images/loader.gif" style="margin-top:-16px">'
+          message: '<h2 class="popup_header">Processing Model Submission...</h2><br/><img src="/images/loader.gif" style="margin-top:-16px">',
+          fadeIn:  500
         });
         setTimeout(function() {$('form').submit();}, 500);
     }

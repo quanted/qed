@@ -15,6 +15,7 @@ from rice import rice_model,rice_tables
 import csv
 import logging
 from uber import uber_lib
+import rest_funcs
 
 logger = logging.getLogger('RICEQaqcPage')
 
@@ -74,7 +75,7 @@ class RiceQaqcPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '04uberoutput_start.html', {
                 'model':'rice',
                 'model_attributes':'Rice Model QAQC'})
-        html = html + rice_tables.timestamp()
+        html = html + rice_tables.timestamp(rice_obj)
         html = html + rice_tables.table_all_qaqc(rice_obj)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})

@@ -14,8 +14,6 @@ import history_tables
 
 class TRexhistoryPage(webapp.RequestHandler):
     def get(self):
-        text_file1 = open('trex/trex_history.txt','r')
-        x = text_file1.read()        
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie, "TREX 1.5.2 User History")
@@ -23,8 +21,8 @@ class TRexhistoryPage(webapp.RequestHandler):
         html = html + template.render(templatepath + '03ubertext_links_left.html', {})                      
         html = html + template.render(templatepath + '04uberalgorithm_start.html', {
                 'model':'trex', 
-                'model_attributes':'TREX 1.5.2 User History', 
-                'text_paragraph':x})
+                'model_attributes':'TREX 1.5.2 User History'})
+        html = html + template.render (templatepath + 'history_pagination.html', {})                
         hist_obj = rest_funcs.user_hist('admin', 'trex2')
         html = html + history_tables.table_all(hist_obj)
         html = html + template.render(templatepath + '04ubertext_end.html', {})

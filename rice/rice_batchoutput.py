@@ -50,57 +50,56 @@ thread_count = 10
 
 def html_table(row_inp_all):
     while True:
-    row_inp_temp_all = row_inp_all.get()
-    if row_inp_temp_all is None:
-        break
-    else:
-        row_inp = row_inp_temp_all[0]
-        iter = row_inp_temp_all[1]
+        row_inp_temp_all = row_inp_all.get()
+        if row_inp_temp_all is None:
+            break
+        else:
+            row_inp = row_inp_temp_all[0]
+            iter = row_inp_temp_all[1]
 
-        logger.info("iteration: " + str(iter))
+            logger.info("iteration: " + str(iter))
 
-        chemical_name_temp=str(row_inp[0])
-        chemical_name.append(chemical_name_temp)
-        mai_temp=float(row_inp[1])
-        mai.append(mai_temp)
-        a_temp=float(row_inp[2])
-        a.append(a_temp)
-        dsed_temp= float(row_inp[3])
-        dsed.append(dsed_temp)
-        pd_temp=float(row_inp[4])
-        pb.append(pd_temp)
-        dw_temp=float(row_inp[5])
-        dw.append(dw_temp)
-        osed_temp=float(row_inp[6])
-        osed.append(osed_temp)
-        kd_temp=float(row_inp[7])       
-        kd.append(kd_temp) 
+            chemical_name_temp=str(row_inp[0])
+            chemical_name.append(chemical_name_temp)
+            mai_temp=float(row_inp[1])
+            mai.append(mai_temp)
+            a_temp=float(row_inp[2])
+            a.append(a_temp)
+            dsed_temp= float(row_inp[3])
+            dsed.append(dsed_temp)
+            pb_temp=float(row_inp[4])
+            pb.append(pb_temp)
+            dw_temp=float(row_inp[5])
+            dw.append(dw_temp)
+            osed_temp=float(row_inp[6])
+            osed.append(osed_temp)
+            kd_temp=float(row_inp[7])       
+            kd.append(kd_temp) 
 
-        rice_obj = rice_model.rice(True,True,"batch",chemical_name_temp, mai_temp, dsed_temp, a_temp, pb_temp, dw_temp, osed_temp, kd_temp)
-        logger.info("===============")
-        msed.append(rice_obj.msed)
-        vw.append(rice_obj.vw)
-        mai1.append(rice_obj.mai1)
-        cw.append(rice_obj.cw)
+            rice_obj = rice_model.rice(True,True,"batch",chemical_name_temp, mai_temp, dsed_temp, a_temp, pb_temp, dw_temp, osed_temp, kd_temp)
+            logger.info("===============")
+            msed.append(rice_obj.msed)
+            vw.append(rice_obj.vw)
+            mai1.append(rice_obj.mai1)
+            cw.append(rice_obj.cw)
 
-        jid_all.append(rice_obj.jid)
-        rice_all.append(rice_obj)    
-        if iter == 1:
-            jid_batch.append(rice_obj.jid)
+            jid_all.append(rice_obj.jid)
+            rice_all.append(rice_obj)    
+            if iter == 1:
+                jid_batch.append(rice_obj.jid)
 
-        batch_header = """
-            <div class="out_">
-                <br><H3>Batch Calculation of Iteration %s:</H3>
-            </div>
-            """%(iter)
-            
-        html_temp = rice_tables.table_all(rice_obj)
-        out_html_temp = batch_header + html_temp
-        out_html_all[iter]=out_html_temp
+            batch_header = """
+                <div class="out_">
+                    <br><H3>Batch Calculation of Iteration %s:</H3>
+                </div>
+                """%(iter)
+                
+            html_temp = rice_tables.table_all(rice_obj)
+            out_html_temp = batch_header + html_temp
+            out_html_all[iter]=out_html_temp
 
                 
 def loop_html(thefile):
-
     reader = csv.reader(thefile.file.read().splitlines())
     header = reader.next()
     # logger.info(header)
@@ -149,7 +148,6 @@ class RiceBatchOutputPage(webapp.RequestHandler):
         html = template.render(templatepath + '04uberbatch_start.html', {
                 'model':'rice',
                 'model_attributes':'Rice Model Batch Output'})
-        html = html + rice_tables.timestamp()
         html = html + iter_html
         html = html + template.render(templatepath + 'rice-batchoutput-jqplot.html', {})
         html = html + template.render(templatepath + 'export.html', {})            

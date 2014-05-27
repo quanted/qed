@@ -20,8 +20,18 @@ from uber import uber_lib
 from django.template import Context, Template
 from django.utils import simplejson
 import logging
+import rest_funcs
 
 logger = logging.getLogger('trex2 Model')
+
+def merge(ob1, ob2):
+    """
+    an object's __dict__ contains all its 
+    attributes, methods, docstrings, etc.
+    """
+    ob1.__dict__.update(ob2.__dict__)
+    return ob1
+# merge the two class instances into one instance
 
 class agdrift_trexOutputPage(webapp.RequestHandler):
     def post(self):        
@@ -132,14 +142,17 @@ class agdrift_trexOutputPage(webapp.RequestHandler):
         #logger.info(type(agdrift_obj.init_avg_dep_foa))
 
         trex_obj = trex2_model.trex2('single', chem_name, use, formu_name, a_i, Application_type, seed_treatment_formulation_name, seed_crop, seed_crop_v, r_s, b_w, p_i, den, h_l, n_a, [agdrift_obj.init_avg_dep_foa*i for i in rate_out], day_out,
-                      ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, aw_bird_md, aw_bird_lg, 
-                      Species_of_the_tested_bird_avian_ld50, Species_of_the_tested_bird_avian_lc50, Species_of_the_tested_bird_avian_NOAEC, Species_of_the_tested_bird_avian_NOAEL,
-                      tw_bird_ld50, tw_bird_lc50, tw_bird_NOAEC, tw_bird_NOAEL, x, ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, aw_mamm_lg, tw_mamm,
-                      m_s_r_p)
-        text_file = open('agdrift/agdrift_description.txt','r')
-        x = text_file.read()
-        text_file = open('trex2/trex2_description.txt','r')
-        x1 = text_file.read()
+                                     ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, aw_bird_md, aw_bird_lg, 
+                                     Species_of_the_tested_bird_avian_ld50, Species_of_the_tested_bird_avian_lc50, Species_of_the_tested_bird_avian_NOAEC, Species_of_the_tested_bird_avian_NOAEL,
+                                     tw_bird_ld50, tw_bird_lc50, tw_bird_NOAEC, tw_bird_NOAEL, x, ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, aw_mamm_lg, tw_mamm,
+                                     m_s_r_p)
+        # logger.info(vars(trex_obj))
+        # text_file = open('agdrift/agdrift_description.txt','r')
+        # x = text_file.read()
+        # text_file = open('trex2/trex2_description.txt','r')
+        # x1 = text_file.read()
+        agdrift_trex_obj = merge(agdrift_obj, trex_obj)
+
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie, "AgDrift-TREX Output")
@@ -151,7 +164,6 @@ class agdrift_trexOutputPage(webapp.RequestHandler):
 
         html = html + agdrift_trex_tables.timestamp(agdrift_obj)
         html = html + agdrift_tables.table_all(agdrift_obj)
-        # html = html + trex2_tables.timestamp()
         html = html + trex2_tables.table_all(trex_obj)[0]
         
         
@@ -198,13 +210,11 @@ class agdrift_trexOutputPage(webapp.RequestHandler):
        # """%(results[0], results[1])
 
         html = html + template.render(templatepath + 'agdrift-output-jqplot_header.html', {})
-
-        html = html +  """
-        </div>
-        """
+        # html = html +  """</div>"""
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+        rest_funcs.save_dic(html, agdrift_trex_obj.__dict__, "agdrift_trex", "single")
         self.response.out.write(html)
           
 app = webapp.WSGIApplication([('/.*', agdrift_trexOutputPage)], debug=True)

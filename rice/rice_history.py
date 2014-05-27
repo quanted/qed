@@ -32,7 +32,6 @@ class RicehistoryPage(webapp.RequestHandler):
         hist_obj = rest_funcs.user_hist('admin', 'rice')
         html = html + history_tables.table_all(hist_obj)
         html = html + template.render(templatepath + '04ubertext_end.html', {})
-        html = html + template.render(templatepath + '05ubertext_links_right.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
         self.response.out.write(html)
 
@@ -43,4 +42,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
+    

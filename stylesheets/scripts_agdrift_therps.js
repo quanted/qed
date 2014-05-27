@@ -9,7 +9,12 @@ $(document).ready(function() {
     $('#id_orchard_type').closest('tr').hide();
     $('#id_drop_size').closest('tr').hide()
 
-
+    $("#id_ecosystem_type option[value='Terrestrial']").prop('disabled',true);
+    $("#id_calculation_input option[value='Fraction']").prop('disabled',true);
+    $("#id_calculation_input option[value*='Initial Average']").prop('disabled',true);
+    $("#id_orchard_type option[value='Normal']").prop('disabled',true);
+    $("#id_orchard_type option[value='Dense']").prop('disabled',true);
+    $("#id_orchard_type option[value='Sparse']").prop('disabled',true);
    
     $('#id_application_method').change(function () {
         if ($(this).val() == "Ground") {

@@ -99,11 +99,8 @@ class agdriftOutputPage(webapp.RequestHandler):
         #<div>
        # """%(results[0], results[1])
 
-        html = html + template.render(templatepath + 'agdrift-output-jqplot_header.html', {})
+        # html = html + template.render(templatepath + 'agdrift-output-jqplot_header.html', {})
 
-        html = html +  """
-        </div>
-        """
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
@@ -116,4 +113,4 @@ def main():
     run_wsgi_app(app)
 
 if __name__ == '__main__':
-    main()
+    main()

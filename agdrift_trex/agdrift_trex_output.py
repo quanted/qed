@@ -152,7 +152,7 @@ class agdrift_trexOutputPage(webapp.RequestHandler):
         # text_file = open('trex2/trex2_description.txt','r')
         # x1 = text_file.read()
         agdrift_trex_obj = merge(agdrift_obj, trex_obj)
-
+        logger.info(vars(agdrift_trex_obj))
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie, "AgDrift-TREX Output")

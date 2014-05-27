@@ -175,7 +175,7 @@ def table_2(agdrift_obj):
             </div>
         """
         return html        
-
+ # 
 def table_3(agdrift_obj):
         html = """
         <table style="display:none;">
@@ -191,8 +191,10 @@ def table_3(agdrift_obj):
         <br>
         <h3 class="out_2 collapsible" id="section2"><span></span>Results</h3>
             <H4 class="out_2 collapsible" id="section3"><span></span>Plot of spray drift</H4>
-                <div class="out_">
+                <div class="out_"></div>
         """%(agdrift_obj.loop_indx, agdrift_obj.x, agdrift_obj.loop_indx, agdrift_obj.express_y)
+# %(agdrift_obj.loop_indx, [0], agdrift_obj.loop_indx, [0.1266])
+
         # t2data = gett2data(agdrift_obj)
         # t2rows = gethtmlrowsfromcols(t2data,pvrheadings)
         # html = html + tmpl.render(Context(dict(data=t2rows, headings=pvuheadings)))

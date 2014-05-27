@@ -1,9 +1,9 @@
 import os
 import keys_Picloud_S3
 import base64
-import urllib
 import json
-from google.appengine.api import urlfetch
+# from google.appengine.api import urlfetch
+import requests
 import numpy as np
 import ast
 import logging
@@ -46,7 +46,8 @@ def save_dic(output_html, model_object_dict, model_name, run_type):
     data = json.dumps(all_dic, cls=NumPyArangeEncoder)
     url=os.environ['UBERTOOL_REST_SERVER'] + '/save_history'
     try:
-        response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+        # response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)
+        response = requests.post(url, data=data, headers=http_headers, timeout=60)   
     except:
         pass
 
@@ -65,7 +66,8 @@ def batch_save_dic(output_html, model_object_dict, model_name, run_type, jid_bat
     data = json.dumps(all_dic, cls=NumPyArangeEncoder)
     url=os.environ['UBERTOOL_REST_SERVER'] + '/save_history'
     try:
-        response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+        # response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+        response = requests.post(url, data=data, headers=http_headers, timeout=60)   
     except:
         pass
 ###########################function to update html saved in MongoDB################################ 
@@ -74,7 +76,8 @@ def update_html(output_html, jid, model_name):
     data = json.dumps(all_dic)
     url=os.environ['UBERTOOL_REST_SERVER'] + '/update_html'
     try:
-        response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+        # response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+        response = requests.post(url, data=data, headers=http_headers, timeout=60)   
     except:
         pass
 ###########################function to retrive html from MongoDB################################ 
@@ -83,7 +86,8 @@ def get_output_html(jid, model_name):
     data = json.dumps(all_dic)
     url=os.environ['UBERTOOL_REST_SERVER'] + '/get_html_output'
     try:
-        response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+        # response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+        response = requests.post(url, data=data, headers=http_headers, timeout=60)   
     except:
         pass
     if response:
@@ -98,7 +102,8 @@ def create_batchoutput_html(jid, model_name):
     data = json.dumps(all_dic)
     url=os.environ['UBERTOOL_REST_SERVER'] + '/get_przm_batch_output'
     try:
-        response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+        # response = urlfetch.fetch(url=url, payload=data, method=urlfetch.POST, headers=http_headers, deadline=60)   
+        response = requests.post(url, data=data, headers=http_headers, timeout=60)   
     except:
         pass
     if response:
@@ -133,7 +138,8 @@ class user_hist(object):
         self.model_name = model_name
 
         try:
-            self.response = urlfetch.fetch(url=self.url, payload=self.data, method=urlfetch.POST, headers=http_headers, deadline=60)
+            # self.response = urlfetch.fetch(url=self.url, payload=self.data, method=urlfetch.POST, headers=http_headers, deadline=60)
+            self.response = requests.post(self.url, data=self.data, headers=http_headers, timeout=60)   
         # logger.info(self.response.content)
         except:
             self.response = None

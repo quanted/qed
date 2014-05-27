@@ -517,7 +517,7 @@ $( document ).ready(function() {
 
 // var pathArray = window.location.pathname.split('/');
 var pathArray = document.URL.split('/');
-var pathDoamin = pathArray[2];
+var pathDomain = pathArray[2];
 var pathLink = pathArray[3];
 var pathSlice = pathLink.slice(0, -5);
 var pathPage = pathSlice.split('_')[1];
@@ -545,4 +545,5 @@ var model = pathSlice.slice(0, -5).split('_')[0];
 // Remove query string from 'pathSlice' var
 if (pathPage.indexOf("?")) {
 	pathPage = pathPage.split('.html?')[0];
-}
+}
+

@@ -191,8 +191,11 @@ def loop_html(thefile):
 class SIPBatchOutputPage(webapp.RequestHandler):
     def post(self):
         form = cgi.FieldStorage()
+        logger.info('================= form ====================') 
         logger.info(form) 
         thefile = form['file-0']
+        logger.info('================ thefile ===================') 
+        logger.info(thefile) 
         iter_html=loop_html(thefile)
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")

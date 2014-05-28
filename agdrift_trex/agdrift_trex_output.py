@@ -49,6 +49,7 @@ class agdrift_trexOutputPage(webapp.RequestHandler):
         aquatic_type = form.getvalue('aquatic_type')
         distance = form.getvalue('distance')
         calculation_input = form.getvalue('calculation_input')
+
         # init_avg_dep_foa = form.getvalue('init_avg_dep_foa')
         # avg_depo_gha = form.getvalue('avg_depo_gha')
         # avg_depo_lbac = form.getvalue('avg_depo_lbac')
@@ -93,7 +94,6 @@ class agdrift_trexOutputPage(webapp.RequestHandler):
            rate_out.append(float(rate_temp))
            # day_temp = float(form.getvalue('day'+str(j)))
            # day_out.append(day_temp)  
-
         h_l = form.getvalue('Foliar_dissipation_half_life')
         ld50_bird = form.getvalue('avian_ld50')
         lc50_bird = form.getvalue('avian_lc50')
@@ -137,22 +137,15 @@ class agdrift_trexOutputPage(webapp.RequestHandler):
         aw_mamm_lg = float(aw_mamm_lg)               
         tw_mamm = form.getvalue('body_weight_of_the_tested_mammal')
         tw_mamm = float(tw_mamm) 
-        #print rate_out
-        agdrift_obj = agdrift_model.agdrift(True, True, drop_size, ecosystem_type, application_method, boom_height, orchard_type, rate_out[0], distance, aquatic_type, calculation_input)
-        #logger.info(type(agdrift_obj.init_avg_dep_foa))
 
+        agdrift_obj = agdrift_model.agdrift(True, True, 'single', drop_size, ecosystem_type, application_method, boom_height, orchard_type, rate_out[0], distance, aquatic_type, calculation_input, None)
+        x_agdrif=agdrift_obj.x
         trex_obj = trex2_model.trex2('single', chem_name, use, formu_name, a_i, Application_type, seed_treatment_formulation_name, seed_crop, seed_crop_v, r_s, b_w, p_i, den, h_l, n_a, [agdrift_obj.init_avg_dep_foa*i for i in rate_out], day_out,
                                      ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, aw_bird_md, aw_bird_lg, 
                                      Species_of_the_tested_bird_avian_ld50, Species_of_the_tested_bird_avian_lc50, Species_of_the_tested_bird_avian_NOAEC, Species_of_the_tested_bird_avian_NOAEL,
                                      tw_bird_ld50, tw_bird_lc50, tw_bird_NOAEC, tw_bird_NOAEL, x, ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, aw_mamm_lg, tw_mamm,
                                      m_s_r_p)
-        # logger.info(vars(trex_obj))
-        # text_file = open('agdrift/agdrift_description.txt','r')
-        # x = text_file.read()
-        # text_file = open('trex2/trex2_description.txt','r')
-        # x1 = text_file.read()
-        agdrift_trex_obj = merge(agdrift_obj, trex_obj)
-        logger.info(vars(agdrift_trex_obj))
+
         templatepath = os.path.dirname(__file__) + '/../templates/'
         ChkCookie = self.request.cookies.get("ubercookie")
         html = uber_lib.SkinChk(ChkCookie, "AgDrift-TREX Output")
@@ -165,55 +158,18 @@ class agdrift_trexOutputPage(webapp.RequestHandler):
         html = html + agdrift_trex_tables.timestamp(agdrift_obj)
         html = html + agdrift_tables.table_all(agdrift_obj)
         html = html + trex2_tables.table_all(trex_obj)[0]
-        
-        
-
-        # <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs</H3>
-        # <div class="out_">
-        #     <table class="out_">
-        #         <tr>
-        #             <th colspan="2">Inputs: Chemical Identity</th>
-        #         </tr>
-        #         <tr>
-        #             <td>Application method</td>
-        #             <td id="app_method_val">%s</td>
-        #         </tr>
-        #         <tr id="Orc_type">
-        #             <td>Orchard type</td>
-        #             <td>%s</td>
-        #         </tr>
-        #         <tr>
-        #             <td>Drop size</td>
-        #             <td>%s</td>
-        #         </tr>
-        #         <tr>
-        #             <td>Ecosystem type</td>
-        #             <td>%s</td>
-        #         </tr>
-        #     </table>
-        # </div>
-        # """ % (application_method, orchard_type, drop_size, ecosystem_type)
-        # html = html +  """
-        # <table style="display:none;">
-        #     <tr>
-        #         <td>distance</td>
-        #         <td id="distance">%s</td>
-        #     </tr>
-        #     <tr>
-        #         <td>deposition</td>
-        #         <td id="deposition">%s</td>
-        #     </tr>
-        # </table>
-        # <br>
-        # <h3 class="out_2 collapsible" id="section2"><span></span>Results</h3>
-        #<div>
-       # """%(results[0], results[1])
-
         html = html + template.render(templatepath + 'agdrift-output-jqplot_header.html', {})
-        # html = html +  """</div>"""
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+
+        #Note: If you need to rebuild the output page based on saved class, 
+        #variables named x_agdrif and x_trex in the class agdrift_trex_obj
+        #are x in their own instance (agdrift_obj.x, trex_obj.x).
+        agdrift_trex_obj = merge(agdrift_obj, trex_obj)
+        agdrift_trex_obj.x_agdrif=x_agdrif
+        agdrift_trex_obj.x_trex=trex_obj.x
+        logging.info(vars(agdrift_trex_obj))
         rest_funcs.save_dic(html, agdrift_trex_obj.__dict__, "agdrift_trex", "single")
         self.response.out.write(html)
           

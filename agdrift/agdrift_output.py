@@ -42,7 +42,7 @@ class agdriftOutputPage(webapp.RequestHandler):
         # y = form.getvalue('y')
         # x = form.getvalue('x')
         # express_y = form.getvalue('express_y')
-        agdrift_obj = agdrift_model.agdrift(True, True, 'single',drop_size, ecosystem_type, application_method, boom_height, orchard_type, application_rate, distance, aquatic_type, calculation_input, None)
+        agdrift_obj = agdrift_model.agdrift(True, True, 'single', drop_size, ecosystem_type, application_method, boom_height, orchard_type, application_rate, distance, aquatic_type, calculation_input, None)
         text_file = open('agdrift/agdrift_description.txt','r')
         x = text_file.read()
         templatepath = os.path.dirname(__file__) + '/../templates/'
@@ -113,4 +113,5 @@ def main():
     run_wsgi_app(app)
 
 if __name__ == '__main__':
-    main()
+    main()
+

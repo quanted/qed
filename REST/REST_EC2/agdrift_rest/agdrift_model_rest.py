@@ -446,9 +446,8 @@ class agdrift(object):
     #         self.x = [0,1,5,10,25,50,100,150,200,250,300,350,400,450,500,600,700,800,900,997]
     #         self.z = 4
         else:
-             #print 2
             self.y = 3
-            #print self.nasae
+            
     def express_extrapolate_f(self, y, nasae, distance):
        # XV = np.array([X0, X1, X2, X3, X4, X5, X6, X7, X8, X9])
         

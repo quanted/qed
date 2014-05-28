@@ -236,20 +236,20 @@ sumheadings = getheadersum()
 djtemplate = getdjtemplate()
 tmpl = Template(djtemplate)
 
-def table_all(pvheadings, pvuheadings, deheadings, plantec25noaecheadings, plantecdrysemisprayheadings, sumheadings, tmpl,terrplant_obj):
-    html_all = table_1(pvheadings, tmpl, terrplant_obj)
-    html_all = html_all + table_2(pvuheadings, tmpl, terrplant_obj)
-    html_all = html_all + table_3(deheadings, tmpl, terrplant_obj)
-    html_all = html_all + table_4(plantec25noaecheadings, tmpl, terrplant_obj)
-    html_all = html_all + table_5(plantecdrysemisprayheadings, tmpl, terrplant_obj)
+def table_all(terrplant_obj):
+    html_all = table_1(terrplant_obj)
+    html_all = html_all + table_2(terrplant_obj)
+    html_all = html_all + table_3(terrplant_obj)
+    html_all = html_all + table_4(terrplant_obj)
+    html_all = html_all + table_5(terrplant_obj)
     return html_all
 
-def table_all_qaqc(pvheadings, pvuheadings, deheadingsqaqc, plantec25noaecheadingsqaqc, plantecdrysemisprayheadingsqaqc, tmpl,terrplant_obj):
-    html_all = table_1_qaqc(pvheadings, tmpl, terrplant_obj)
-    html_all = html_all + table_2(pvuheadings, tmpl, terrplant_obj)
-    html_all = html_all + table_3_qaqc(deheadings, tmpl, terrplant_obj)
-    html_all = html_all + table_4_qaqc(plantec25noaecheadings, tmpl, terrplant_obj)
-    html_all = html_all + table_5_qaqc(plantecdrysemisprayheadingsqaqc, tmpl, terrplant_obj)
+def table_all_qaqc(terrplant_obj):
+    html_all = table_1_qaqc(terrplant_obj)
+    html_all = html_all + table_2(terrplant_obj)
+    html_all = html_all + table_3_qaqc(terrplant_obj)
+    html_all = html_all + table_4_qaqc(terrplant_obj)
+    html_all = html_all + table_5_qaqc(terrplant_obj)
     return html_all
 
 def table_all_sum(sumheadings, tmpl, A, I, R, D, nms, lms, nds, lds, 
@@ -325,7 +325,7 @@ def timestamp(terrplant_obj="", batch_jid=""):
     </div>"""
     return html
 
-def table_1(pvheadings, tmpl, terrplant_obj):
+def table_1(terrplant_obj):
         #pre-table 1
         html = """
         <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs</H3>
@@ -342,7 +342,7 @@ def table_1(pvheadings, tmpl, terrplant_obj):
         """
         return html
 
-def table_1_qaqc(pvheadings, tmpl, terrplant_obj):
+def table_1_qaqc(terrplant_obj):
         #pre-table 1
         html = """
         <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs</H3>
@@ -359,7 +359,7 @@ def table_1_qaqc(pvheadings, tmpl, terrplant_obj):
         """
         return html
 
-def table_2(pvuheadings, tmpl, terrplant_obj):
+def table_2(terrplant_obj):
         # #pre-table 2
         html = """
             <H4 class="out_2 collapsible" id="section3"><span></span>Input parameters used to derive EECs</H4>
@@ -375,7 +375,7 @@ def table_2(pvuheadings, tmpl, terrplant_obj):
         """
         return html
 
-def table_3(deheadings, tmpl, terrplant_obj):
+def table_3(terrplant_obj):
         #pre-table 3
         html = """
         <br>
@@ -394,7 +394,7 @@ def table_3(deheadings, tmpl, terrplant_obj):
         return html
 
 
-def table_3_qaqc(deheadings, tmpl, terrplant_obj):
+def table_3_qaqc(terrplant_obj):
         #pre-table 3
         html = """
         <br>
@@ -412,7 +412,7 @@ def table_3_qaqc(deheadings, tmpl, terrplant_obj):
         """
         return html
 
-def table_4(plantec25noaecheadings, tmpl, terrplant_obj):
+def table_4(terrplant_obj):
         #pre-table 4
         html = """     
             <H4 class="out_4 collapsible" id="section6"><span></span>Plant survival and growth data used for RQ derivation</H4>
@@ -427,7 +427,7 @@ def table_4(plantec25noaecheadings, tmpl, terrplant_obj):
         """
         return html
 
-def table_4_qaqc(plantec25noaecheadings, tmpl, terrplant_obj):
+def table_4_qaqc(terrplant_obj):
         #pre-table 4
         html = """     
             <H4 class="out_4 collapsible" id="section6"><span></span>Plant survival and growth data used for RQ derivation</H4>
@@ -442,7 +442,7 @@ def table_4_qaqc(plantec25noaecheadings, tmpl, terrplant_obj):
         """
         return html
 
-def table_5(plantecdrysemisprayheadings, tmpl, terrplant_obj):
+def table_5(terrplant_obj):
         #pre-table 5
         html = """         
             <H4 class="out_5 collapsible" id="section7"><span></span>RQ values for plants in dry and semi-aquatic areas exposed to %s through runoff and/or spray drift*</H4>
@@ -459,7 +459,7 @@ def table_5(plantecdrysemisprayheadings, tmpl, terrplant_obj):
         """
         return html
 
-def table_5_qaqc(plantecdrysemisprayheadings, tmpl, terrplant_obj):
+def table_5_qaqc(terrplant_obj):
         #pre-table 5
         html = """         
             <H4 class="out_5 collapsible" id="section7"><span></span>RQ values for plants in dry and semi-aquatic areas exposed to %s through runoff and/or spray drift*</H4>

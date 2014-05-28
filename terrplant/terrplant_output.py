@@ -68,9 +68,7 @@ class terrplantExecutePage(webapp.RequestHandler):
                 'model':'terrplant',
                 'model_attributes':'TerrPlant Output'})
         html = html + terrplant_tables.timestamp(terr)
-        html = html + terrplant_tables.table_all(terrplant_tables.pvheadings, terrplant_tables.pvuheadings,terrplant_tables.deheadings,
-                                        terrplant_tables.plantec25noaecheadings,terrplant_tables.plantecdrysemisprayheadings, 
-                                        terrplant_tables.sumheadings, terrplant_tables.tmpl, terr)
+        html = html + terrplant_tables.table_all(terr)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

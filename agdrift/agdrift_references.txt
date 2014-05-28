@@ -11,8 +11,8 @@ The web page for the Spray Drift Task Force, specific EPA guidance and the execu
 <p>
 Current github source code:
 </p>
-<ul>
-<li><a href="https://github.com/puruckertom/ubertool_src/tree/master/agdrift">ubertool_src on github</a>
+<ul class="bullet">
+  <li><a href="https://github.com/puruckertom/ubertool_src/tree/master/agdrift">ubertool_src on GitHub</a></li>
 </ul>
 
 <p>

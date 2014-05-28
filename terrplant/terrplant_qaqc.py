@@ -185,9 +185,7 @@ class TerrplantQaqcPage(webapp.RequestHandler):
         # terr.ldsRQspray_results_expected = out_fun_ldsRQspray[0]
 
         html = html + terrplant_tables.timestamp(terr)
-        html = html + terrplant_tables.table_all_qaqc(terrplant_tables.pvheadings, terrplant_tables.pvuheadings,terrplant_tables.deheadingsqaqc,
-                                        terrplant_tables.plantec25noaecheadings,terrplant_tables.plantecdrysemisprayheadingsqaqc, 
-                                        terrplant_tables.tmpl, terr)
+        html = html + terrplant_tables.table_all_qaqc(terr)
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {'sub_title': ''})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})

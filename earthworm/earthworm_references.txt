@@ -1,8 +1,8 @@
 <p>
 Current github source code:
 </p>
-<ul>
-<li><a href="https://github.com/puruckertom/ubertool_src/tree/master/earthworm">ubertool_src on github</a>
+<ul class="bullet">
+  <li><a href="https://github.com/puruckertom/ubertool_src/tree/master/earthworm">ubertool_src on GitHub</a></li>
 </ul>
 
 <p>

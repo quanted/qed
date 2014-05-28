@@ -13,8 +13,8 @@ Specific EPA guidance and source code for the EXAMS model can be found here:
 <p>
 Current github source code:
 </p>
-<ul>
-<li><a href="https://github.com/puruckertom/ubertool_src/tree/master/exams">ubertool_src on github</a>
+<ul class="bullet">
+  <li><a href="https://github.com/puruckertom/ubertool_src/tree/master/exams">ubertool_src on GitHub</a></li>
 </ul>
 
 <p>

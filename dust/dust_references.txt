@@ -11,8 +11,8 @@ The DUST program is under development and has not been officially released, here
 <p>
 Current github source code:
 </p>
-<ul>
-<li><a href="https://github.com/puruckertom/ubertool_src/tree/master/dust">ubertool_src on github</a>
+<ul class="bullet">
+  <li><a href="https://github.com/puruckertom/ubertool_src/tree/master/dust">ubertool_src on GitHub</a></li>
 </ul>
 
 <p>

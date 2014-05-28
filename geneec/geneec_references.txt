@@ -13,8 +13,8 @@ Specific EPA guidance and the Fortran source code for the GENEEC model can be fo
 <p>
 Current github source code:
 </p>
-<ul>
-<li><a href="https://github.com/puruckertom/ubertool_src/tree/master/geneec">ubertool_src on github</a>
+<ul class="bullet">
+  <li><a href="https://github.com/puruckertom/ubertool_src/tree/master/geneec">ubertool_src on GitHub</a></li>
 </ul>
 
 <p>

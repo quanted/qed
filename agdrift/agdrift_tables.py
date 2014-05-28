@@ -193,7 +193,6 @@ def table_3(agdrift_obj):
             <H4 class="out_2 collapsible" id="section3"><span></span>Plot of spray drift</H4>
                 <div class="out_"></div>
         """%(agdrift_obj.loop_indx, agdrift_obj.x, agdrift_obj.loop_indx, agdrift_obj.express_y)
-# %(agdrift_obj.loop_indx, [0], agdrift_obj.loop_indx, [0.1266])
 
         # t2data = gett2data(agdrift_obj)
         # t2rows = gethtmlrowsfromcols(t2data,pvrheadings)

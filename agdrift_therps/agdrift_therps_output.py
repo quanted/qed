@@ -109,19 +109,13 @@ class agdrift_therpsOutputPage(webapp.RequestHandler):
         wp_herp_a_lg = float(wp_herp_a_lg)/100   
         
         #print rate_out
-        agdrift_obj = agdrift_model.agdrift(True, True, drop_size, ecosystem_type, application_method, boom_height, orchard_type, a_r, distance, aquatic_type, calculation_input)
-        #logger.info(type(agdrift_obj.init_avg_dep_foa))
+        agdrift_obj = agdrift_model.agdrift(True, True, 'single', drop_size, ecosystem_type, application_method, boom_height, orchard_type, a_r, distance, aquatic_type, calculation_input)
+        agdrift_x=agdrift_obj.x
         therps_obj = therps_model.therps("single", chem_name, use, formu_name, a_i, h_l, n_a, i_a, a_r, avian_ld50, avian_lc50, avian_NOAEC, avian_NOAEL, 
                                          Species_of_the_tested_bird_avian_ld50, Species_of_the_tested_bird_avian_lc50, Species_of_the_tested_bird_avian_NOAEC, Species_of_the_tested_bird_avian_NOAEL,
                                          bw_avian_ld50, bw_avian_lc50, bw_avian_NOAEC, bw_avian_NOAEL,
                                          mineau_scaling_factor, bw_herp_a_sm, bw_herp_a_md, bw_herp_a_lg, wp_herp_a_sm, wp_herp_a_md, 
                                          wp_herp_a_lg, c_mamm_a, c_herp_a)
-        # trex_obj = trex2_model.trex2('single', chem_name, use, formu_name, a_i, Application_type, seed_treatment_formulation_name, seed_crop, seed_crop_v, r_s, b_w, p_i, den, h_l, n_a, [agdrift_obj.init_avg_dep_foa*i for i in rate_out], day_out,
-        #               ld50_bird, lc50_bird, NOAEC_bird, NOAEL_bird, aw_bird_sm, aw_bird_md, aw_bird_lg, 
-        #               Species_of_the_tested_bird_avian_ld50, Species_of_the_tested_bird_avian_lc50, Species_of_the_tested_bird_avian_NOAEC, Species_of_the_tested_bird_avian_NOAEL,
-        #               tw_bird_ld50, tw_bird_lc50, tw_bird_NOAEC, tw_bird_NOAEL, x, ld50_mamm, lc50_mamm, NOAEC_mamm, NOAEL_mamm, aw_mamm_sm, aw_mamm_md, aw_mamm_lg, tw_mamm,
-        #               m_s_r_p)
-        agdrift_therps_obj = merge(agdrift_obj, therps_obj)
 
         text_file = open('agdrift/agdrift_description.txt','r')
         x = text_file.read()
@@ -140,56 +134,15 @@ class agdrift_therpsOutputPage(webapp.RequestHandler):
         html = html + agdrift_tables.table_all(agdrift_obj)
         # html = html + trex2_tables.timestamp()
         html = html + therps_tables.table_all(therps_obj)[0]
-        
-
-        # <H3 class="out_1 collapsible" id="section1"><span></span>User Inputs</H3>
-        # <div class="out_">
-        #     <table class="out_">
-        #         <tr>
-        #             <th colspan="2">Inputs: Chemical Identity</th>
-        #         </tr>
-        #         <tr>
-        #             <td>Application method</td>
-        #             <td id="app_method_val">%s</td>
-        #         </tr>
-        #         <tr id="Orc_type">
-        #             <td>Orchard type</td>
-        #             <td>%s</td>
-        #         </tr>
-        #         <tr>
-        #             <td>Drop size</td>
-        #             <td>%s</td>
-        #         </tr>
-        #         <tr>
-        #             <td>Ecosystem type</td>
-        #             <td>%s</td>
-        #         </tr>
-        #     </table>
-        # </div>
-        # """ % (application_method, orchard_type, drop_size, ecosystem_type)
-        # html = html +  """
-        # <table style="display:none;">
-        #     <tr>
-        #         <td>distance</td>
-        #         <td id="distance">%s</td>
-        #     </tr>
-        #     <tr>
-        #         <td>deposition</td>
-        #         <td id="deposition">%s</td>
-        #     </tr>
-        # </table>
-        # <br>
-        # <h3 class="out_2 collapsible" id="section2"><span></span>Results</h3>
-        #<div>
-       # """%(results[0], results[1])
-
         html = html + template.render(templatepath + 'agdrift-output-jqplot_header.html', {})
-        html = html +  """
-        </div>
-        """
+        # html = html +  """
+        # </div>
+        # """
         html = html + template.render(templatepath + 'export.html', {})
         html = html + template.render(templatepath + '04uberoutput_end.html', {})
         html = html + template.render(templatepath + '06uberfooter.html', {'links': ''})
+
+        agdrift_therps_obj = merge(agdrift_obj, therps_obj)
         rest_funcs.save_dic(html, agdrift_therps_obj.__dict__, "agdrift_therps", "single")
         self.response.out.write(html)
           

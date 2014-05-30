@@ -43,7 +43,7 @@ def VVWM_pi(working_dir,
 ##################################################################################
 ######Create a folder if it does not existed, where holds calculations' output.#####
 ##################################################################################
-    cwd = 'C:/Users/Jon/Documents/GitHub/ubertool_src/REST/REST_local/vvwm_rest/'
+    cwd = os.path.dirname(os.path.realpath(__file__))
     # cwd='/home/picloud/vvwm/'
     print("cwd="+cwd)
 

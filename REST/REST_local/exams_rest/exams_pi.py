@@ -14,7 +14,7 @@ from boto.s3.bucket import Bucket
 import string
 import random
 import operator
-import simplejson
+# import simplejson
 import keys_Picloud_S3
 
 
@@ -27,7 +27,7 @@ def exams_pi(chem_name, scenarios, met, farm, mw, sol, koc, vp, aem, anm, aqp, t
     ##################################################################################
     ######Create a folder if it does not existed, where holds calculations' output.#####
     ##################################################################################
-    cwd='D:/Dropbox/ubertool_src/REST/REST_local/exams_rest'
+    cwd = os.path.dirname(os.path.realpath(__file__))
     src=cwd
     src1=cwd+'/'+name_temp
     if not os.path.exists(src1):
@@ -159,9 +159,9 @@ def exams_pi(chem_name, scenarios, met, farm, mw, sol, koc, vp, aem, anm, aqp, t
 
     name1='EXAMS_'+name_temp+'.zip'
     k.key=name1
-    k.set_contents_from_filename('exams_all.zip')
+    # k.set_contents_from_filename('exams_all.zip')
     link='https://s3.amazonaws.com/epa_exams/'+name1
-    k.set_acl('public-read-write')
+    # k.set_acl('public-read-write')
     src1_up=os.path.abspath(os.path.join(src1, '..'))
     os.chdir(src1_up)
     shutil.rmtree(src1)

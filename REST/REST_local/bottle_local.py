@@ -600,7 +600,7 @@ def get_html():
     result=generatehtml_pi.generatehtml_pi(final_str)
     return {"result":result}
 
-run(host='localhost', port=7777, debug=True)
+run(host='localhost', port=80, debug=True)
 
 # run(host='localhost', port=7777, server='gevent', debug=True)
 

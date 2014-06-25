@@ -16,3 +16,6 @@
 [submodule "ubertool_eco"]
 	path = ubertool_eco
 	url = https://github.com/puruckertom/ubertool_eco.git
+[submodule "ubertool_orca"]
+	path = ubertool_orca
+	url = https://github.com/puruckertom/ubertool_orca.git

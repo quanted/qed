@@ -1,5 +1,0 @@
-<script type="text/javascript" src="/stylesheets/style_JonTest.js"></script>
-
-<p>
-<h3><a href="#" id="ajaxTest">Clickity Click Click Click</a></h3>
-</p>

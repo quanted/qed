@@ -1,3 +1,0 @@
-
-      INTEGER MXPRT
-      PARAMETER (MXPRT=10)

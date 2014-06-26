@@ -1,0 +1,193 @@
+*** Record 1: (A78), TITLE - label for simulation title
+Express     v. 1.03.02    (2007-07-20)
+*** CAalmond -- California almonds and other nuts Titl
+***____________
+*** Record 2: (A78), HTITLE - Hydrology Information Title
+"Central valley, CA, nominally San Joaquin county (MLRA1
+***____________
+*** Record 3: (2F8.0,I8,F8.0,2I8,5I4) PFAC,SFAC,IPEIND,ANETD,INICRP,ISCOND
+***PFAC SFAC    IPEIND  ANETD   INICRP  ISCOND     (WDM data sets not used)
+7.30E-010.00E+00       01.75E+01       1       1
+***____________
+*** Record 6: (I8) ERFLAG: Flag to calculate erosion
+       4
+***____________
+*** Record 7: (4F8.0,8X,I8,2F8.0) USLEK,USLELS,USLEP,AFIELD,IREG,SLP,HL
+***USLEKUSLELS  USLEP   AFIELD          IREG    SLP     HL
+2.80E-013.00E-011.00E+001.73E+02               1    2.00  600.00
+***____________
+*** Record 8: (I8) NDC - Number of different crops simulated; FLITNUM
+       1 0
+***____________
+*** Record 9 for Crop 1: (I8,3F8.0,I8,3(1X,I3),2F8.0) ICNCN,CINTCP,AMXDR,COVMAX,ICNAH,(3)CN,WFMAX,HTMAX
+***ICNCNCINTCP  AMXDR   COVMAX  ICNAH    CN1 CN2 CN3WFMAX   HTMAX
+       12.50E-011.20E+029.00E+01       2  84  79  820.00E+007.50E+02
+***____________
+*** Record 9A (2I8): CROPNO,NUSLEC - Crop, Number of USLE C (cover management) factors
+       1      25
+*** Record 9B: (16(I2,I2,1X) GDUSLEC,GMUSLEC for each USLEC
+***M DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM
+1601 0102 1602 0103 1603 0104 1604 0105 1605 0106 1606 0107 1607 0108 1608 0109
+*** Record 9C: (16(F4.0,1X)) - USLEC (USLE Cover management factors)
+.074 .095 .107 .157 .191 .210 .221 .213 .195 .176 .159 .140 .124 .114 .109 .109
+*** Record 9D: (16(F4.0,1X)) - MNGN - Manning's N for each USLEC
+.023 .023 .023 .023 .023 .023 .023 .023 .023 .023 .023 .023 .023 .023 .023 .023
+*** Record 9E: (16(I4,1X)) - CN(II) for each USLEC
+  79   79   79   79   79   79   79   79   79   79   79   79   79   79   79   79
+***____________
+*** Continuation of Records 9B,9C,9D,9E for USLEC 17-25
+***M DDMM DDMM DDMM DDMM DDMM DDMM DDMM DDMM
+1309 1609 0110 1610 0111 1611 0112 1612 0101
+.109 .110 .112 .117 .034 .040 .046 .052 .064
+.023 .023 .023 .023 .023 .023 .023 .023 .023
+  79   84   84   84   84   84   84   84   84
+***____________
+*** Record 10: (I8) NCPDS - number of cropping periods
+      30
+***____________
+*** Record(s) 11: (2X,3I2,2X,3I2,3X,3I2,I8) - dates of crop EMergence, MAturation, and HArvest
+*** EMD,EMM,IYREM,MAD,MAM,IYRMAT,HAD,HAM,IYRHAR,INCROP
+***EMerge MAture  HArvest
+***DMMYY  DDMMYY  DDMMYY   Crop No.
+  160161  020861  130961       1
+  160162  020862  130962       1
+  160163  020863  130963       1
+  160164  020864  130964       1
+  160165  020865  130965       1
+  160166  020866  130966       1
+  160167  020867  130967       1
+  160168  020868  130968       1
+  160169  020869  130969       1
+  160170  020870  130970       1
+  160171  020871  130971       1
+  160172  020872  130972       1
+  160173  020873  130973       1
+  160174  020874  130974       1
+  160175  020875  130975       1
+  160176  020876  130976       1
+  160177  020877  130977       1
+  160178  020878  130978       1
+  160179  020879  130979       1
+  160180  020880  130980       1
+  160181  020881  130981       1
+  160182  020882  130982       1
+  160183  020883  130983       1
+  160184  020884  130984       1
+  160185  020885  130985       1
+  160186  020886  130986       1
+  160187  020887  130987       1
+  160188  020888  130988       1
+  160189  020889  130989       1
+  160190  020890  130990       1
+***____________
+*** Record 12: (A78) PTITLE - Label for pesticide
+Chemical Input Data:                                                          
+***____________
+*** Record 13: (4I8) NAPS,NCHEM,FRMFLG,DK2FLG
+*** NAPS   NCHEM  FRMFLG  DK2FLG
+      30       1       0       0
+***____________
+*** Record 15: (3A20) Name(s) of pesticides for output titles
+Forchlorfenuron     
+***____________
+*** Record(s) 16: (2X,3I2,I3,3(I2,F5.0,F6.0,F5.0,F5.0)) - application data
+***   including the application date (APD,APM,IAPYR), WINDAY, and (1)(CAM,DEPI,TAPP,APPEFF,DRFT)
+***DMMYYWinCmDepi Tapp  Eff  Drft CmDepi Tapp  Eff  Drft CmDepi Tapp  Eff  Drft
+  150161  0 2 4.000.0000.9500.1600
+  150162  0 2 4.000.0000.9500.1600
+  150163  0 2 4.000.0000.9500.1600
+  150164  0 2 4.000.0000.9500.1600
+  150165  0 2 4.000.0000.9500.1600
+  150166  0 2 4.000.0000.9500.1600
+  150167  0 2 4.000.0000.9500.1600
+  150168  0 2 4.000.0000.9500.1600
+  150169  0 2 4.000.0000.9500.1600
+  150170  0 2 4.000.0000.9500.1600
+  150171  0 2 4.000.0000.9500.1600
+  150172  0 2 4.000.0000.9500.1600
+  150173  0 2 4.000.0000.9500.1600
+  150174  0 2 4.000.0000.9500.1600
+  150175  0 2 4.000.0000.9500.1600
+  150176  0 2 4.000.0000.9500.1600
+  150177  0 2 4.000.0000.9500.1600
+  150178  0 2 4.000.0000.9500.1600
+  150179  0 2 4.000.0000.9500.1600
+  150180  0 2 4.000.0000.9500.1600
+  150181  0 2 4.000.0000.9500.1600
+  150182  0 2 4.000.0000.9500.1600
+  150183  0 2 4.000.0000.9500.1600
+  150184  0 2 4.000.0000.9500.1600
+  150185  0 2 4.000.0000.9500.1600
+  150186  0 2 4.000.0000.9500.1600
+  150187  0 2 4.000.0000.9500.1600
+  150188  0 2 4.000.0000.9500.1600
+  150189  0 2 4.000.0000.9500.1600
+  150190  0 2 4.000.0000.9500.1600
+***____________
+*** Record 17: (includes data for each chemical) (F8.0,3(I8,F8.0)) FILTRA, (1)(IPSCND,UPTKF)
+***FILT IPSCND1 UPTKF1  IPSCND2 UPTKF2  IPSCND3 UPTKF3
+0.00E+00       10.00E+00
+***____________
+*** Record 18: (3F8.0) PLVKRT,PLDKRT,FEXTRC for Chemical 1
+0.00E+000.00E+005.00E-01
+***____________
+*** Record 19: (A78) STITLE - label for soil properties
+"Manteca fine sandy loam, hyd grp C"   Brief description                      
+***____________
+*** Record 20: (F8.0,8X,9I4) CORED,BDFLAG,THFLAG,KDFLAG,HSWZT,MOC,IRFLAG,ITFLAG,IDFLAG,BIOFLG
+***CORED (cm)     BD  TH  KD  HS MOC  IR  IT  ID BIO
+3.17E+02           0   0   0   0   0   2   0   0   0
+***____________
+*** Record 26: (9F8.0) (1)DAIR, (1)HENRYK, (1)ENPY
+4.30E+031.20E-102.00E+01
+***____________
+*** Record 27 (I8,3F8.0) IRTYP,FLEACH,PCDEPL,RATEAP - irrigation specifications
+***IRTYPFLEACH  PCDEPL  RATEAP
+       41.00E-015.50E-011.21E-01
+***____________
+*** Record 33:  (I8) NHORIZ (total number of soil horizons)
+       3
+***____________
+*** Record 34 for Horizon 1: (I8,8F8.0) HORIZN,THKNS,BD,THET0,AD,(1)DISP,ADL
+       11.00E+011.55E+002.20E-010.00E+000.00E+000.00E+00
+***____________
+*** Record 36 for Horizon 1: (8X,9F8.0)  (1)DWRATE,(1)DSRATE,(1)DGRATE
+        1.20E-031.20E-030.00E+00
+***____________
+*** Record 37 for Horizon 1: (8X,7F8.0) DPN,THEFC,THEWP,OC,(1)KDs
+        1.00E-012.20E-011.00E-018.10E-011.43E+01
+***____________
+*** Record 34 for Horizon 2: (I8,8F8.0) HORIZN,THKNS,BD,THET0,AD,(1)DISP,ADL
+       27.00E+001.55E+002.20E-010.00E+000.00E+000.00E+00
+***____________
+*** Record 36 for Horizon 2: (8X,9F8.0)  (1)DWRATE,(1)DSRATE,(1)DGRATE
+        1.20E-031.20E-030.00E+00
+***____________
+*** Record 37 for Horizon 2: (8X,7F8.0) DPN,THEFC,THEWP,OC,(1)KDs
+        1.00E+002.20E-011.00E-018.10E-011.43E+01
+***____________
+*** Record 34 for Horizon 3: (I8,8F8.0) HORIZN,THKNS,BD,THET0,AD,(1)DISP,ADL
+       33.00E+021.60E+002.30E-010.00E+000.00E+000.00E+00
+***____________
+*** Record 36 for Horizon 3: (8X,9F8.0)  (1)DWRATE,(1)DSRATE,(1)DGRATE
+        1.20E-031.20E-030.00E+00
+***____________
+*** Record 37 for Horizon 3: (8X,7F8.0) DPN,THEFC,THEWP,OC,(1)KDs
+        5.00E+002.30E-019.50E-021.80E-013.17E+00
+***____________
+*** Record 40: (2I8) ILP; CFLAG (blank if ILP=0)
+       0
+***____________
+*** Record 42: (3(4X,A4,4X,A4,I8),I4) ITEM1,STEP1,LFREQ1,ITEM2,STEP2,LFREQ2,ITEM3,STEP3,LFREQ3,EXMFLG
+    WATR    YEAR      10    PEST    YEAR      10    CONC    YEAR      10   1
+***____________
+*** Record 43: (I8) EXMENV
+      99
+***____________
+*** Record 44 for Chemical 1: EXMCHM,CAS Number,NPROC,RFORM,YIELD
+       1    CASSNO: -999       1       10.00E+00
+***____________
+*** Record 45: NPLOTS (number of time series variables,STEP4
+       0    YEAR
+***____________
+*** Records 46: Plotting variables

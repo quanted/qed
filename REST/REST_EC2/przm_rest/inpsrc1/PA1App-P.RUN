@@ -1,0 +1,30 @@
+PRZM                    ON
+VADOFT                  OFF
+MONTE CARLO             OFF
+TRANSPORT               ON
+***
+*** Express PRZM 3.12.2 Zones
+PRZM ZONES              1
+ENDRUN
+***
+*** Input files
+  METEOROLOGY       1   W14751.DVF  
+  PRZM INPUT        1   PA1App-P.INP
+***
+*** Output files
+  TIME SERIES       1   PA1App-P.ZTS
+  PRZM OUTPUT       1   PA1App-P.OUT
+***
+*** Scratch files
+  PRZM RESTART          RESTART.PRZ
+ENDFILES
+***
+*** Global records
+  START DATE            010161
+  END DATE              311290
+NUMBER OF CHEMICALS     1
+ENDDATA
+***
+*** Display records
+ECHO                    6
+TRACE                   OFF

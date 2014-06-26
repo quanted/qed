@@ -1,0 +1,1 @@
+gfortran -o pfam_post.exe Utilities_pp1.F90 PFAMpp1.f90

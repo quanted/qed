@@ -1,0 +1,65 @@
+QUITONERROR
+
+FILES=*.f90
+
+# bass_program.f90 and bass_files.90 compile and link instructions
+#
+# Compile options are:
+#
+# -c          compile only
+# -chk        check substring and array subscripts for out of range
+# -ml winapi  option for calls to mixed language codes or LF95 DLLs
+# -g          generate expanded symbol table for debugging
+# -pca        protect constant arguements
+# -stchk      generate code for stack overflow checking
+# -trace      generate call traceback with procedure names and line numbers with runtime errors
+# -w          output complier warnings
+# %fi         place maker for expanding all compiled files to their full name
+
+# COMPILE=@lf95 -c -chk -ml winapi -g -pca -stchk -trace -w %fi -mod .;"%%winter%%\lib.l95\"
+  COMPILE=@lf95 -c -nchk -ml winapi -g -pca -stchk -trace -w %fi -mod .
+
+# non-FRAMES link instructions are:
+#
+# Environmentals include: DISLIN == c:\dislin
+#                         WINTER == c:\wint
+# Path additions: c:\dislin\win;c:\wint\bin;...
+#
+# LINK=@lf95 @%rf -g -exe %ex -lib "%%DISLIN%%\dislf95","%%DISLIN%%\disdll",f2kcli,%%winter%%\lib.l9m\winter
+  LINK=@lf95 @%rf -g -exe %ex -lib "%%DISLIN%%\dislf95","%%DISLIN%%\disdll",f2kcli
+
+# FRAMES link instructions are:
+#
+# Environmentals include: DISLIN == c:\dislin
+#                         FRAMESV2 == "c:\Program files\FramesV2"
+#                         WINTER == c:\wint
+# PATH additions: c:\Program files\FramesV2;c:\dislin\win;c:\wint\bin;...
+#
+# LINK=@lf95 @%rf -g -exe %ex -lib "%%DISLIN%%\dislf95","%%DISLIN%%\disdll",%%FRAMESV2%%\Developer\lf90_F2ModuleDev,%%FRAMESV2%%\Developer\lf90_F2Error,f2kcli,%%winter%%\lib.l9m\winter
+# LINK=@lf95 @%rf -g -exe %ex -lib "%%DISLIN%%\dislf95","%%DISLIN%%\disdll",%%FRAMESV2%%\Developer\lf90_F2ModuleDev,%%FRAMESV2%%\Developer\lf90_F2Error,f2kcli
+
+# bass_db.f90 compile and link instructions
+#
+# due to problems with NL2SOL execution the following complier options were required
+#
+# -c          compile only
+# -nap        (DEFAULT)
+# -nchk       do not check substring and array subscripts for out of range (DEFAULT)
+# -ml winapi  option for calls to mixed language codes or LF95 DLLs
+# -ncover     do not generate information for coverage tool (DEFAULT)
+# -ng         do not generate expanded symbol table for debugging (DEFAULT)
+# -o1         optimize object code (DEFAULT)
+# -pca        protect constant arguements
+# -stchk      generate code for stack overflow checking (DEFAULT)
+# -nsav       do not save local variables  (DEFAULT)
+# -trace      generate call traceback with procedure names and line numbers with runtime errors  (DEFAULT)
+# -w          output complier warnings (DEFAULT)
+# %fi         place maker for expanding all compiled files to their full name
+#
+# COMPILE=@lf95 -c -nap -nchk -ncover -ng -ml winapi -o1 -pca -trace -nsav -stchk -w %fi -mod .;"%%winter%%\lib.l95\"
+# COMPILE=@lf95 -c -nap -nchk -ncover -ng -ml winapi -o1 -pca -trace -nsav -stchk -w %fi -mod .
+
+# LINK=@lf95 @%rf -exe %ex -lib "%%DISLIN%%\dislf95","%%DISLIN%%\disdll",f2kcli -lib%%winter%%\lib.l9m\winter.lib comdlg32.lib winmm.lib winspool.lib shell32.lib opengl32.lib glu32.lib gdi32.lib
+# LINK=@lf95 @%rf -exe %ex -lib "%%DISLIN%%\dislf95","%%DISLIN%%\disdll",f2kcli
+
+TARGET=EXAMS.EXE

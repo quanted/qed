@@ -1,0 +1,28 @@
+PRZM                    ON
+VADOFT                  OFF
+MONTE CARLO             OFF
+TRANSPORT               ON
+*** zone records
+PRZM ZONES              1
+ENDRUN
+*** input file records
+  PATH                  ./
+  METEOROLOGY       1   W03940.DVF  
+  PATH                  ./
+  PRZM INPUT        1   MS1CTT-R.INP
+*** output file records
+  PATH                  ./
+  TIME SERIES       1   MS1CTT-R.ZTS
+  PRZM OUTPUT       1   MS1CTT-R.OUT
+*** scratch file records
+  PATH                  ./
+  PRZM RESTART          RESTART.PRZ
+ENDFILES
+*** global records
+  START DATE            010161
+  END DATE              311290
+NUMBER OF CHEMICALS     1
+ENDDATA
+*** display records
+ECHO                    6
+TRACE                   OFF

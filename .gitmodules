@@ -19,3 +19,6 @@
 [submodule "ubertool_orca"]
 	path = ubertool_orca
 	url = https://github.com/puruckertom/ubertool_orca.git
+[submodule "ubertool_esm"]
+	path = ubertool_esm
+	url = https://github.com/funkswing/ubertool_esm.git

@@ -11,9 +11,6 @@ from google.appengine.ext.webapp import template
 
 class defaultPage(webapp.RequestHandler):
     def get(self):
-        #print os.getcwd()
-        text_file1 = open('main_description.txt','r')
-        x = text_file1.read()
         text_file2 = open('landing_text.txt','r')
         xx = text_file2.read()
         templatepath = os.path.dirname(__file__) + '/templates/'                     

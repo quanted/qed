@@ -28,11 +28,12 @@ def pfam_pi(wat_hl,wat_t,ben_hl,ben_t,unf_hl,unf_t,aqu_hl,aqu_t,hyd_hl,mw,vp,sol
 ##########################################################################################
     key = keys_Picloud_S3.amazon_s3_key
     secretkey = keys_Picloud_S3.amazon_s3_secretkey
+    print key, secretkey
 
 ##################################################################################
 ######Create a folder if it does not existed, where holds calculations' output.#####
 ##################################################################################
-    cwd='D:/Dropbox/ubertool_src/REST/REST_local/pfam_rest'
+    cwd = os.path.dirname(os.path.realpath(__file__))
     src=cwd
     src1=src+'/'+name_temp
     if not os.path.exists(src1):
@@ -224,6 +225,7 @@ def pfam_pi(wat_hl,wat_t,ben_hl,ben_t,unf_hl,unf_t,aqu_hl,aqu_t,hyd_hl,mw,vp,sol
     zout.close()
     
     conn = S3Connection(key, secretkey)
+    print conn
     bucket = Bucket(conn, 'pfam')
     k=Key(bucket)
     

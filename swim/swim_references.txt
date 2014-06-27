@@ -1,7 +1,0 @@
-<p>
-Specific EPA guidance can be found here:
-</p>
-<ul class="bullet">
-  <li><a href="http://www.epa.gov/oppad001/swimodelusersguide.pdf">User's Guide</a></li>
-</ul>
-<p>

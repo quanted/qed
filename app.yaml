@@ -1,5 +1,5 @@
-application: pypest
-version: sprint12
+application: ubertool-src
+version: master
 runtime: python27
 api_version: 1
 
@@ -8,15 +8,11 @@ default_expiration: "5d 12h"
 threadsafe: false
 
 libraries:
-- name: numpy
-  version: latest
 - name: webapp2
   version: latest
 - name: django
   version: "latest"
 - name: PIL
-  version: latest
-- name: matplotlib
   version: latest
 - name: ssl
   version: "latest" 
@@ -59,6 +55,9 @@ skip_files:
 - ^(generatepdf/generatepdf_picloud/.*)$
 - ^(ubertool_pop/.*)    #Igonore the submodules that are there own GAE apps
 - ^(ubertool_cts/.*)
+- ^(ubertool_dfem/.*)
+- ^(ubertool_orca/.*)
+- ^(ubertool_eco/.*)
 
 handlers:
 - url: /

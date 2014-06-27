@@ -28,3 +28,6 @@
 [submodule "ubertool_d4em"]
 	path = ubertool_d4em
 	url = https://github.com/puruckertom/ubertool_d4em.git
+[submodule "ubertool_unter"]
+	path = ubertool_unter
+	url = https://github.com/puruckertom/ubertool_unter.git

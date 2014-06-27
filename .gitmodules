@@ -16,3 +16,6 @@
 [submodule "ubertool_eco"]
 	path = ubertool_eco
 	url = https://github.com/puruckertom/ubertool_eco.git
+[submodule "ubertool_d4em"]
+	path = ubertool_d4em
+	url = https://github.com/puruckertom/ubertool_d4em.git

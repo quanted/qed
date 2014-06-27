@@ -1,3 +1,0 @@
-<p>Dietary risk assessment module incorporates both exposure and toxicity of a given pesticide.  For acute and chronic assessments, the risk is expressed as a percentage of a maximum acceptable dose (i.e., the dose which HED has concluded will result in no unreasonable adverse health effects).  This dose is referred to as the population adjusted dose (PAD).  The PAD is equivalent to point of departure (POD, NOAEL, LOAEL, e.g.) divided by the required uncertainty or safety factors.</p>
-
-<p>For acute and non-cancer chronic exposures, HED is concerned when estimated dietary risk exceeds 100% of the PAD.  HED is generally concerned when estimated cancer risk exceeds one in one million.</p>

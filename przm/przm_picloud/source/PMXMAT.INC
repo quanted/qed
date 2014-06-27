@@ -1,3 +1,0 @@
-
-      INTEGER MXMAT
-      PARAMETER (MXMAT=5)

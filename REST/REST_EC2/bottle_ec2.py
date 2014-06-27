@@ -570,7 +570,7 @@ def get_html():
 
 
 
-run(host=host_ip, port=7777, server="gevent", debug=True)
+run(host=host_ip, port=80, server="gevent", debug=True)
 
 
 

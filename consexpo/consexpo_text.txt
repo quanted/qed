@@ -1,5 +1,0 @@
-<p>Consumer Exposure (CONS-EXPO) model has been used from companies that have overseas operations.  It is widely used in Europe to evaluate chemicals for the REACH regulation.  U.S. EPA has included it in its Tox21 program.</p>
-
-<p>A potentially important exposure pathway of humans to environmental chemicals forms the use of consumer products containing chemicals as ingredients or residues. CONS-EXPO is to assist in the exposure assessment of chemicals in consumer products, which implements a wide range of generally applicable mathematical models describing the exposure processes via inhalation, dermal contact and oral ingestion. </p>
-
-<p>The results of the exposure assessment can be investigated in a number of ways. With a sensitivity analysis it is possible to analyses how sensitive exposure and uptake estimates are to variations in the value of a single parameter. Furthermore, the software also accepts stochastic distributions as input for exposure parameters and can perform a distributed exposure assessment by means of first dimensional Monte Carlo analysis.</p>

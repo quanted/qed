@@ -1,3 +1,0 @@
-The purpose of this model is to provide an upper bound estimate of exposure of birds and mammals to pesticides through the dermal contact pathway alone. This model is 
-intended for use in problem formulation to determine whether or not dermal contact exposure alone is a potential pathway of concern. This does not 
-aggregate dermal contact exposure with other exposure routes (i.e., diet, inhalation, ingestion).

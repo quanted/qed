@@ -1,3 +1,0 @@
-
-      INTEGER MXNLAY
-      PARAMETER (MXNLAY=20)

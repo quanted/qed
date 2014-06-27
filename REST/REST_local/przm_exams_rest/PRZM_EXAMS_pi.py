@@ -28,7 +28,7 @@ def PRZM_EXAMS_pi(chem_name, noa, scenarios, unit, met, inp, run, exam, MM, DD, 
 ##################################################################################
 ######Create a folder if it does not existed, where holds calculations' output.###
 ##################################################################################
-    cwd='D:/Dropbox/ubertool_src/REST/REST_local/przm_exams_rest'
+    cwd = os.path.dirname(os.path.realpath(__file__))
     # print("cwd1="+cwd)
 
     src=cwd

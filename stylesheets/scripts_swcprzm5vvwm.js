@@ -12,9 +12,9 @@ $(document).ready(function() {
     $("input[id^='id_depth_a']").prop('readonly', true).css({ 'background-color':'#EBEBE4', 'color':'#EBEBE4' });
     // Specify Years?
     if ($('#id_specifyYears').val() == '0') {
-      $("input[id^='id_year']").prop('disabled', true);
+      $("input[id^='id_year_a']").prop('disabled', true);
     } else {
-      $("input[id^='id_year']").prop('disabled', false);
+      $("input[id^='id_year_a']").prop('disabled', false);
     }
     while (i_a > total_a) {
       $(".tab_Applications tr:last").remove();
@@ -24,9 +24,9 @@ $(document).ready(function() {
   // Specify Years?
   $("#id_specifyYears").change(function() {
     if ($(this).val() == '0') {
-      $("input[id^='id_year']").prop('disabled', true);
+      $("input[id^='id_year_a']").prop('disabled', true);
     } else {
-      $("input[id^='id_year']").prop('disabled', false);
+      $("input[id^='id_year_a']").prop('disabled', false);
     }
   });
   // Enter Eff. & Drift/T for:
@@ -94,4 +94,4 @@ $(document).ready(function() {
   }
   // Add conditional logic for "id_SimTypeFlag" = 6 to show $('#id_resAvgBox')
 
-});
+});

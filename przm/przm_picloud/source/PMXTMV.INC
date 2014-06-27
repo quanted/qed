@@ -1,3 +1,0 @@
-
-      INTEGER MXTMV
-      PARAMETER (MXTMV=31)

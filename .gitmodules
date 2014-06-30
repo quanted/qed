@@ -31,3 +31,6 @@
 [submodule "ubertool_unter"]
 	path = ubertool_unter
 	url = https://github.com/puruckertom/ubertool_unter.git
+[submodule "ubertool_ecorest"]
+	path = ubertool_ecorest
+	url = https://github.com/puruckertom/ubertool_ecorest.git

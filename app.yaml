@@ -1,5 +1,5 @@
 application: ubertool-src
-version: master
+version: jon
 runtime: python27
 api_version: 1
 
@@ -11,7 +11,7 @@ libraries:
 - name: webapp2
   version: latest
 - name: django
-  version: "latest"
+  version: "1.5"
 - name: PIL
   version: latest
 - name: ssl
@@ -20,8 +20,8 @@ env_variables:
   UBERTOOL_BATCH_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com/'
   UBERTOOL_MONGO_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
   UBERTOOL_SECURE_SERVER: 'http://uberrest-topknotmeadows.rhcloud.com'
-  UBERTOOL_REST_SERVER: 'http://localhost:80'
-  # UBERTOOL_REST_SERVER: 'http://54.83.18.251:80'
+  # UBERTOOL_REST_SERVER: 'http://localhost:80'
+  UBERTOOL_REST_SERVER: 'http://54.83.18.251:80'
 
 skip_files:
 - ^(.*/)?app\.yaml
@@ -44,20 +44,22 @@ skip_files:
 - ^(.*/)?.*\.SDR
 - ^(.*/)?.*\MIT-LICENSE
 - ^(.*/)?.*\LGPL-LICENSE
-- ^(data/.*)
-- ^(data/webice/.*)
-- ^(data/webice/images/.*)
-- ^(geneec/geneec_picloud/.*)
-- ^(data/.*)
-- ^(REST/.*)
-- ^(przm/przm_picloud/.*)
-- ^(pfam/pfam_picloud/.*)
-- ^(generatepdf/generatepdf_picloud/.*)$
-- ^(ubertool_pop/.*)    #Igonore the submodules that are there own GAE apps
+# Igonore the submodules that are there own GAE apps
 - ^(ubertool_cts/.*)
 - ^(ubertool_dfem/.*)
-- ^(ubertool_orca/.*)
 - ^(ubertool_eco/.*)
+- ^(ubertool_ecorest/.*)
+- ^(ubertool_esm/.*)
+- ^(ubertool_orca/.*)
+- ^(ubertool_pop/.*)
+- ^(ubertool_unter/.*)
+- ^(ubertool_webice/.*)
+# Ignore temporary folders
+- ^(chance/.*)
+- ^(ubermq/.*)
+- ^(uberrest/.*)
+- ^(uberworker/.*)
+
 
 handlers:
 - url: /

@@ -2,12 +2,13 @@ $( document ).ready(function() {
 	// Call function to setup tabbed nav
     uberNavTabs(
         ['ToxInp', 'CropTargetSel', 'OccHandler'],
-        {   "isSubTabs":false	}
+        {   "isSubTabs":true,
+            "ToxInp": [".tab_tox_st", ".tab_tox_it", ".tab_tox_lt"] }
     );
 
 	// Inital setup
 	$('.tab_tox_st').show();
-	$('.tab_tox_it, .tab_tox_lt, .tab_CropTargetSel').hide();
+	$('.tab_tox_it, .tab_tox_lt, .tab_CropTargetSel, .tab_OccHandler').hide();
 	$('#id_expDurationType_0').prop("checked",true);
 
 	// Checkboxes
@@ -44,6 +45,20 @@ $( document ).ready(function() {
 			}
 		}
 
+	});
+
+	// NOT FINISHED
+	$('.ToxInp').click(function() {
+		if ( $.inArray('id_expDurationType_0', selectedArray) !== -1 ) {
+			$('.tab_tox_it, .tab_tox_lt').hide();
+			$('.tab_tox_st').show();
+		} else if ( $.inArray('id_expDurationType_1', selectedArray) !== -1 ) {
+			$('.tab_tox_st, .tab_tox_lt').hide();
+			$('.tab_tox_it').show();
+		} else if ( $.inArray('id_expDurationType_2', selectedArray) !== -1 ) {
+			$('.tab_tox_st, .tab_tox_it').hide();
+			$('.tab_tox_lt').show();
+		}
 	});
 
 });

@@ -1,6 +1,0 @@
-C
-      COMMON /CPLTB/ FRPOS,BUFPOS,YX
-      INTEGER    BUFPOS(2,TSMAX), FRPOS
-      REAL       YX(BUFMAX)
-C
-      SAVE   /CPLTB/

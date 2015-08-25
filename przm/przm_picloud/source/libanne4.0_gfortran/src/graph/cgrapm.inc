@@ -1,6 +1,0 @@
-C
-      COMMON /CGRAPM/ TPAGE,TMODE
-      INTEGER         TPAGE,TMODE
-C
-      SAVE   /CGRAPM/
-C

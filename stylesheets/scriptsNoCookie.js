@@ -517,7 +517,7 @@ $( document ).ready(function() {
 
 // var pathArray = window.location.pathname.split('/');
 var pathArray = document.URL.split('/');
-var pathDoamin = pathArray[2];
+var pathDomain = pathArray[2];
 var pathLink = pathArray[3];
 var pathSlice = pathLink.slice(0, -5);
 var pathPage = pathSlice.split('_')[1];

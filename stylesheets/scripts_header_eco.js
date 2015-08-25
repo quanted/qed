@@ -34,9 +34,9 @@ $(document).ready(function() {
               alert('There is a problem about your submission.')
             }
           });
-    });
+    }
     else{}
-  }
+  });
 
   // BlockUI on Form Submit
   $("input[value='Submit']").click(function (e) {

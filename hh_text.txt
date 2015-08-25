@@ -1,6 +1,0 @@
-<p>
-This web site is under development.  It is being developed to migrate USEPA public domain legacy and spreadsheet models to web applications.  This will assist in the integration and automation of essential risk assessment functions.  
-The site is available for the purposes of receiving feedback and quality assurance from personnel in the EPA Office of Chemical Safety and Pollution Prevention and from interested members of the human health risk assessment community.  Human health exposure and effect calculations contained here should be used for no purpose other than quality assurance and peer review of the presented web applications.
-</p>
-<p>This version of the human health prototype provides web application access for a number of the science algorithms that are used for evaluating screening, testing, exposure, and sustainability information relevant to pesticidal actives, inerts, and antimicrobials. This site provides access to six human health models that are in the set of models used by OPP’s Antimicrobial Division, Health Effects Division, and Registration Division. The currently implemented web applications include IDREAM, Residential Exposure Model, SWIMODEL, FDA Dietary Exposure Model, HED Gas Calculator, and the HED ORE model.  These models are currently operational for evaluation purposes only.
-</p>

@@ -1,4 +1,5 @@
 ubertool_src
 ============
-This contains the source files for www.ubertool.org
-test
+This contains the source files for https://qed.epa.gov/
+username: betatester
+password: ubertool

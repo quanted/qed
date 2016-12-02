@@ -34,3 +34,6 @@
 [submodule "ubertool_ecorest"]
 	path = ubertool_ecorest
 	url = https://github.com/puruckertom/ubertool_ecorest.git
+[submodule "nginx"]
+	path = nginx
+	url = https://github.com/funkswing/nginx-uwsgi-qed.git

@@ -10,7 +10,7 @@
     volumes:
     - collected_static:/src/collected_static
     environment:
-    - UBERTOOL_REST_SERVER="/"
+    - UBERTOOL_REST_SERVER=http://nginx:7777
 
   # ubertool_ecorest Flask back-end
   ecorest:

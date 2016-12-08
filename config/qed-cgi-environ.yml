@@ -4,7 +4,7 @@
 #     ansible-playbook -k -u cgifadmin qed-cgi-environ.yml
 
 
-- include: "docker-rhel.yml"
+
 
 - hosts: cgi3  # Executes play on all hosts, this can explicitly name specific hosts if needed
   remote_user: cgifadmin  # User you wish to SSH into remote with
@@ -12,3 +12,4 @@
   tasks:
   - name: update system packages  # yum update -y
     yum: name=update
+  - include: "docker-rhel.yml"

@@ -1,8 +1,7 @@
 ---
 # Ansible Playbook to install Docker on RHEL7
 # Uses the OFFICIAL Docker repo (not RHEL Extras repo)
-
-# - include: "os/{{ ansible_os_family }}.yml"
+# 
 
 - name: ensure repo is present
   copy:

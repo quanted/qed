@@ -1,0 +1,13 @@
+---
+# Ansible Playbook to deploy QED CGI environment
+
+- hosts: cgi3  # Executes play on all hosts, this can explicitly name specific hosts if needed
+  remote_user: cgifadmin  # User you wish to SSH into remote with
+  become: yes  # Become root user
+  tasks:
+  - name: update system packages  # yum update -y
+    yum: name=update
+  - name: install docker  # Human readable description of task
+    yum: name=docker state=latest  # yum install docker, ensuring its the latest version
+  # - name: pip install docker-py  # Needed for Ansible to execute Docker commands
+  #   pip: name=docker-py

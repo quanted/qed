@@ -6,9 +6,9 @@
 
 
 
-- hosts: cgi3  # Executes play on all hosts, this can explicitly name specific hosts if needed
+- hosts: {{host}}  # Executes play on all hosts, this can explicitly name specific hosts if needed
   remote_user: cgifadmin  # User you wish to SSH into remote with
-#  become: yes  # Become root user
+  become: yes  # Become root user
   tasks:
   - redhat_subscription:
     state: present
@@ -17,7 +17,8 @@
     autosubscribe: true
   - include: "epel-repo-rhel7.yml"  # Install EPEL repo
   - name: update system packages  # yum update -y
-    yum: name=*
-    state: latest
+    yum:
+      name: '*'
+      state: latest
   - include: "docker-rhel7.yml"
 

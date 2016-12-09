@@ -4,12 +4,6 @@
 # Adopted from: https://github.com/bobbyrenwick/ansible-pip
 
 
-# Define default vars
-vars:
-  python: python
-  pip_download_dest: ~/tmp
-  
-
 - name: Check to see if pip is already installed.
   command: "{{ pip }} --version"
   ignore_errors: true

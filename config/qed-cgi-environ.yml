@@ -4,11 +4,11 @@
 #     ansible-playbook -k -u cgifadmin qed-cgi-environ.yml
 
 
-
-
 - hosts: "{{host}}"  # Executes play on all hosts, this can explicitly name specific hosts if needed
   remote_user: cgifadmin  # User you wish to SSH into remote with
   become: yes  # Become root user
+  vars_files:
+    - /files/default_vars.yml
   vars_prompt:
     - name: "rhel_username"
       prompt: "Enter RHEL username: "

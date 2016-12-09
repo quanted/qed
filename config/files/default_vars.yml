@@ -1,0 +1,6 @@
+---
+
+# QED Default vars
+
+python: python
+pip_download_dest: ~/tmp

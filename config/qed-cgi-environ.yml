@@ -9,6 +9,8 @@
   become: yes  # Become root user
   vars_files:
     - files/default_vars.yml
+  handlers:
+    - include: "handlers/docker.yml"
   vars_prompt:
     - name: "rhel_username"
       prompt: "Enter RHEL username: "
@@ -31,5 +33,3 @@
     poll: 5    # Check if done every 5 secs
   - include: "tasks/ensure-pip.yml"
   - include: "tasks/docker-rhel7.yml"
-  handlers:
-    include: "handlers/docker.yml"

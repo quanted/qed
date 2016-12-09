@@ -15,20 +15,28 @@
 
 ######################################################
 
-- name: ensure config folder is present
+- name: Ensure Docker config dir exists
   file:
     path: /etc/docker
     state: directory
 
-- name: ensure docker-py module is installed
+- name: Ensure `docker-py` module is installed
   pip:
     name: docker-py
     version: 1.9.0
 
-- name: ensure unit file folder is present
+- name: Ensure `docker-data` dir exists
   file:
     path: /var/www/docker-data
     state: directory
+
+- name: Ensure `/etc/systemd/system/docker.service.d` dir exists
+  file:
+    path: /etc/systemd/system/docker.service.d
+    state: directory
+  # stat: 
+  #   path: /var/www/docker-data
+  # register: docker_data
 
 # Sets Docker data folder to be "/var/www/docker-data/"
 - name: Copy Docker service drop-in file

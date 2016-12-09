@@ -53,3 +53,7 @@
   service:
     name: docker
     enabled: yes
+
+- name: Docker Compose install
+  pip:
+    name: docker-compose

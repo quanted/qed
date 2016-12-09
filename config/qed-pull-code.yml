@@ -17,6 +17,7 @@
       private: yes
   tasks:
   - name: Ensure `/var/www/qed` dir exists
+    become: yes
     file:
       path: /var/www/qed
       state: directory
@@ -29,7 +30,18 @@
       recursive: no  # Do not try to get submodules
         # This is unintuitive, but private repos as submodules
         # cause Ansible to hang...:-(
-      
+      force: yes
       # username: "{{git_username}}"
       # password: "{{git_passwd}}"
+
+    # Needed to fix bug in Ansible 2.2
+    # https://github.com/ansible/ansible-modules-core/issues/5504
+    register: git_deploy
+    until: git_deploy|succeeded
+  - name: Update submodules
+    # This is a workaround to `recursive: no` in the `git` command above
+    command: git submodule update --init --recursive ubertool_eco ubertool_ecorest
+    async: 300  # Timeout after 5 mins
+    poll: 5     # Check if finished every 5 secs
+
       

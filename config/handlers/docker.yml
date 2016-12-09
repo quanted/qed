@@ -1,8 +1,11 @@
 ---
-- name: Flush changes
+
+# Flush changes
+- name: reload unit
   command: systemctl daemon-reload
 
-- name: Restart Docker daemon
+# Restart Docker daemon
+- name: restart docker
   become: yes
   service:
     name: docker

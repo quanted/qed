@@ -8,7 +8,7 @@
   remote_user: cgifadmin  # User you wish to SSH into remote with
   become: yes  # Become root user
   vars_files:
-    - /files/default_vars.yml
+    - files/default_vars.yml
   vars_prompt:
     - name: "rhel_username"
       prompt: "Enter RHEL username: "

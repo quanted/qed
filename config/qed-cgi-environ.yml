@@ -31,3 +31,5 @@
     poll: 5    # Check if done every 5 secs
   - include: "tasks/ensure-pip.yml"
   - include: "tasks/docker-rhel7.yml"
+  handlers:
+    include: "handlers/docker.yml"

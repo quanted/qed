@@ -10,15 +10,24 @@
   remote_user: cgifadmin  # User you wish to SSH into remote with
   become: yes  # Become root user
   tasks:
+  vars_prompt:
+    - name: "rhel_username"
+      prompt: "Enter RHEL username: "
+      private: no
+    - name: "rhel_passwd"
+      prompt: "Enter RHEL password: "
+      private: yes
   - redhat_subscription:
-    state: present
-    username: "{{rhel_username}}"
-    password: "{{rhel_passwd}}"
-    autosubscribe: true
+      state: present
+      username: "{{rhel_username}}"
+      password: "{{rhel_passwd}}"
+      autosubscribe: true
   - include: "epel-repo-rhel7.yml"  # Install EPEL repo
   - name: update system packages  # yum update -y
     yum:
       name: '*'
       state: latest
+    async: 900 # Timeout after 15 minutes
+    poll: 30   # Check if done every 30 secs
   - include: "docker-rhel7.yml"
 

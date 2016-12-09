@@ -1,0 +1,35 @@
+---
+# Ansible Playbook to pull QED CGI environment
+# To run this playbook:
+#     ansible-playbook -k -u cgifadmin qed-pull-code.yml
+
+
+- hosts: "{{host}}"  # Executes play on all hosts, this can explicitly name specific hosts if needed
+  remote_user: cgifadmin  # User you wish to SSH into remote with
+  vars:
+    branch: HEAD
+  vars_prompt:
+    - name: "git_username"
+      prompt: "Enter GitHub username: "
+      private: no
+    - name: "git_passwd"
+      prompt: "Enter GitHub password: "
+      private: yes
+  tasks:
+  - name: Ensure `/var/www/qed` dir exists
+    file:
+      path: /var/www/qed
+      state: directory
+      mode: 0775
+  - git:
+      repo: https://github.com/puruckertom/qed.git
+      clone: yes
+      dest: /var/www/qed
+      version: "{{branch}}"  # Branch to checkout
+      recursive: no  # Do not try to get submodules
+        # This is unintuitive, but private repos as submodules
+        # cause Ansible to hang...:-(
+      
+      # username: "{{git_username}}"
+      # password: "{{git_passwd}}"
+      

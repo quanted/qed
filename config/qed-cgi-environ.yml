@@ -9,7 +9,6 @@
 - hosts: "{{host}}"  # Executes play on all hosts, this can explicitly name specific hosts if needed
   remote_user: cgifadmin  # User you wish to SSH into remote with
   become: yes  # Become root user
-  tasks:
   vars_prompt:
     - name: "rhel_username"
       prompt: "Enter RHEL username: "
@@ -17,6 +16,7 @@
     - name: "rhel_passwd"
       prompt: "Enter RHEL password: "
       private: yes
+  tasks:
   - redhat_subscription:
       state: present
       username: "{{rhel_username}}"
@@ -29,5 +29,5 @@
       state: latest
     async: 900 # Timeout after 15 minutes
     poll: 30   # Check if done every 30 secs
+  - include: "ensure-pip.yml"
   - include: "docker-rhel7.yml"
-

@@ -25,7 +25,6 @@
   pip:
     name: docker-py
     version: 1.9.0
-  when: dockerpy
 
 # - name: ensure daemon config file is present
 #   template:

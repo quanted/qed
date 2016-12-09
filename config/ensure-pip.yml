@@ -1,0 +1,31 @@
+---
+
+# Enures pip is installed
+# Adopted from: https://github.com/bobbyrenwick/ansible-pip
+
+
+# Define default vars
+vars:
+  python: python
+  pip_download_dest: ~/tmp
+  
+
+- name: Check to see if pip is already installed.
+  command: "{{ pip }} --version"
+  ignore_errors: true
+  changed_when: false # read-only task
+  always_run: true # for check mode
+  register: pip_is_installed
+
+- name: Download pip.
+  get_url: url=https://bootstrap.pypa.io/get-pip.py dest={{ pip_download_dest }}
+  when: pip_is_installed.rc != 0
+
+- name: Install pip.
+  command: "{{ python }} {{ pip_download_dest }}/get-pip.py"
+  become: yes
+  when: pip_is_installed.rc != 0
+
+- name: Delete get-pip.py.
+  file: state=absent path={{ pip_download_dest }}/get-pip.py
+  when: pip_is_installed.rc != 0

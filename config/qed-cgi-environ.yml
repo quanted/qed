@@ -28,6 +28,6 @@
       name: '*'
       state: latest
     async: 900 # Timeout after 15 minutes
-    poll: 30   # Check if done every 30 secs
+    poll: 5    # Check if done every 5 secs
   - include: "ensure-pip.yml"
   - include: "docker-rhel7.yml"

@@ -13,7 +13,6 @@
     name: docker-engine
     state: present
 
-
 ######################################################
 
 - name: ensure config folder is present
@@ -26,22 +25,16 @@
     name: docker-py
     version: 1.9.0
 
-# - name: ensure daemon config file is present
-#   template:
-#     src: daemon.j2.json
-#     dest: /etc/docker/daemon.json
-#   notify:
-#     - restart docker
-
 - name: ensure unit file folder is present
   file:
-    path: /usr/lib/systemd/system
+    path: /var/www/docker-data
     state: directory
 
-- name: ensure unit file is present & up to date
+# Sets Docker data folder to be "/var/www/docker-data/"
+- name: Copy Docker service drop-in file
   copy:
-    src: files/docker.service
-    dest: /usr/lib/systemd/system/docker.service
+    src: files/docker-data.conf
+    dest: /etc/systemd/system/docker.service.d/docker-data.conf
   notify:
     - reload unit
     - restart docker

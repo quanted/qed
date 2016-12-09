@@ -3,4 +3,5 @@
 # QED Default vars
 
 python: python
-pip_download_dest: ~/tmp
+pip: pip
+pip_download_dest: /tmp

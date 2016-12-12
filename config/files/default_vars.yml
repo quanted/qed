@@ -1,7 +1,0 @@
----
-
-# QED Default vars
-
-python: python
-pip: pip
-pip_download_dest: /tmp

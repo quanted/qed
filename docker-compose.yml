@@ -30,6 +30,6 @@
     - eco_django:uwsgi_django  # Nginx.conf can reference "eco_django" service with the hostname 'uwsgi_django' or 'eco_django'
     - ecorest:uwsgi_flask      # Nginx.conf can reference "ecorest" service with the hostname 'uwsgi_flask' or 'ecorest'
     volumes:
-    - /var/www/nginx/certs:/etc/ssl/certs
+    - /var/www/nginx/certs:/etc/nginx/qed
     volumes_from:
     - eco_django:ro  # Mount all volumes from "eco_django" to NGINX, so it can access the collected static files (ro = read-only)

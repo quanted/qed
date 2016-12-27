@@ -71,7 +71,7 @@
 
   # # Celery worker - EPI Suite calc
   worker_epi:
-    build: ./cts_celery
+    build: ./ubertool_cts/cts_celery
     image: cts-celery:latest
     # image: cts-celery:epi
     command: celery worker -A tasks -Q epi -l info -n epi_worker -c 1
@@ -84,7 +84,7 @@
 
   # # Celery worker - TEST calc
   worker_test:
-    build: ./cts_celery
+    build: ./ubertool_cts/cts_celery
     image: cts-celery:latest
     # image: cts-celery:test
     command: celery worker -A tasks -Q test -l info -n test_worker -c 1
@@ -95,7 +95,7 @@
 
   # # Celery worker - SPARC calc
   worker_sparc:
-    build: ./cts_celery
+    build: ./ubertool_cts/cts_celery
     image: cts-celery:latest
     # image: cts-celery:sparc
     command: celery worker -A tasks -Q sparc -l info -n sparc_worker -c 1
@@ -106,7 +106,7 @@
 
   # # Celery worker - Measured (EPI) calc
   worker_measured:
-    build: ./cts_celery
+    build: ./ubertool_cts/cts_celery
     image: cts-celery:latest
     # image: cts-celery:measured
     command: celery worker -A tasks -Q measured -l info -n measured_worker -c 1

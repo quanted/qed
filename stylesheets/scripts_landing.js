@@ -1,23 +1,33 @@
 $( document ).ready(function() { 
-	$("#row1 div").hover(function() {
-		$(this).stop().animate({ top: "38px" }, 350, function() {
-			$(this).animate({ top: "42px" }, 350);
-		});
-	},function(){
-		$(this).stop().animate({ top: "52px" }, 250, function() {
-			$(this).animate({ top: "48px" }, 250);
-		});
-	});
+	// $("#row1 div").hover(function() {
+	// 	$(this).stop().animate({ top: "38px" }, 350, function() {
+	// 		$(this).animate({ top: "42px" }, 350);
+	// 	});
+	// },function(){
+	// 	$(this).stop().animate({ top: "52px" }, 250, function() {
+	// 		$(this).animate({ top: "48px" }, 250);
+	// 	});
+	// });
 
-	$("#row2 div").hover(function() {
-		$(this).stop().animate({ top: "390px" }, 350, function() {
-			$(this).animate({ top: "394px" }, 350);
-		});
-	},function(){
-		$(this).stop().animate({ top: "404px" }, 250, function() {
-			$(this).animate({ top: "400px" }, 250);
-		});
-	});
+	// $("#row2 div").hover(function() {
+	// 	$(this).stop().animate({ top: "390px" }, 350, function() {
+	// 		$(this).animate({ top: "394px" }, 350);
+	// 	});
+	// },function(){
+	// 	$(this).stop().animate({ top: "404px" }, 250, function() {
+	// 		$(this).animate({ top: "400px" }, 250);
+	// 	});
+	// });
+
+	// $("img").hover(function() {
+	// 	$(this).stop().animate({ marginTop: "5px" }, 350, function() {   // up 10px
+	// 		$(this).animate({ marginTop: "9px" }, 350);                  // up 6px
+	// 	});
+	// },function(){
+	// 	$(this).stop().animate({ marginTop: "19px" }, 250, function() {  // down 4px
+	// 		$(this).animate({ marginTop: "15px" }, 250);                 // back to default
+	// 	});
+	// });
 	
 	$("#eco, #hh, #d4em, #cts").mousedown(function() {
 		$(this).css( "box-shadow","inset 0 0 30px #CCC");

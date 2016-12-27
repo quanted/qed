@@ -1,0 +1,38 @@
+Nursery (ornamentals, vegetables, trees, container stock)
+Orchard/Vineyard
+Sod
+Field crop, typical
+Mosquitocide/larvacide/vector control (aquatic areas)
+Aquatic areas, non-flowing water (e.g., ponds, lakes, fountains)
+Fertilizer, dry bulk, impregnated
+Rights-of-way (e.g., utilities, railroad, roadways)
+Animal (direct), livestock
+Field crop, high-acreage
+Forestry
+Mosquitocide/larvacide/vector control (terrestrial areas)
+Nursery (ornamentals, vegetables, trees, container stock)
+Greenhouse (ornamentals, roses, cut flowers, container stock, vegetables)
+Golf course (tees and greens only)
+Golf course (fairways, tees, greens)
+Field-grown ornamental crops
+Aquatic areas, flowing water (e.g., tributaries, canals)
+Mushroom house
+Food handling establishment
+Poultry/livestock house/horse barn/feed lot
+Landscaping, trees/shrubs/bushes
+Residential backyards/Parks/Restaurants
+Warehouse
+Wildlife management
+Christmas Tree farm
+Landscaping, plants/flowers
+Industrial/commercial (tires, rail yards, junk yards, etc.)
+Foundations/perimeter
+Mounds/nests
+Residential Living Spaces (homes, apartments)
+Childcare center/schools/institutions
+Structural (e.g., bridges, shipyards, home decks, foundations)
+Animal (direct), veterinary/groomer
+Interior landscaping
+Landscaping, turf (lawns, athletic fields, parks, etc.)
+Structural (termiticide)
+Structural (e.g., warehouses, FHE, home bathrooms)

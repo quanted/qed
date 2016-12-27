@@ -1,0 +1,6 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=
+
+# Declare files that will always have LF (Unix) line endings on checkout.
+*.sh text eol=lf
+Dockerfile text eol=lf

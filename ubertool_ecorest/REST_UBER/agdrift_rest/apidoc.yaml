@@ -1,0 +1,22 @@
+summary: AgDrift Model
+
+description: |
+  The primary function of AgDRIFT is to calculate the downward drift and deposition of pesticides
+  and the magnitude of buffer zones needed to protect sensitive aquatic and terrestrial habitats.
+  The Tier I model methodology uses different application type and drop size distributions to
+  yield a conservative exposure estimate.
+
+consumes:
+  - application/json
+
+produces:
+  - application/json
+
+parameters:
+  -
+    description: Input JSON for AgDrift model run
+    required: true
+
+responses:
+  200:
+    description: Successful Operation

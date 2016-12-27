@@ -1,0 +1,25 @@
+summary: Rice Model
+
+description: |
+  The Tier I Rice Model (Version 1.0) is designed to estimate surface water exposure from the use
+  f pesticide in rice paddies. It is a screening level model that is based on the Interim Rice
+  Model, which has been used by the Environmental Fate and Effects Division for multiple years.
+  The model calculates a single, screening-level concentration that represents both short and
+  long term surface water exposures. The screening-level concentraion can be used for both
+  aquatic ecological risk assessments and drinking water exposure assessments for human health
+  risk assessment.
+
+consumes:
+  - application/json
+
+produces:
+  - application/json
+
+parameters:
+  -
+    description: Input JSON for Rice model run
+    required: true
+
+responses:
+  200:
+    description: Successful Operation

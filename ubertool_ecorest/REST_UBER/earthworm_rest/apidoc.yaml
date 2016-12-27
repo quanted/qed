@@ -1,0 +1,22 @@
+summary: Earthworm Model
+
+description: |
+  Earthworm Fugacity Modeling is a simple fugacity approach was employed to estimate pesticides
+  concentrations in earthworms. Fugacity is most often regarded as the "escaping tendency" of a
+  chemical from a particular phase. Fugacity has units of presure, generally pascals (Pa), and
+  can be related to phase concentratons.
+
+consumes:
+  - application/json
+
+produces:
+  - application/json
+
+parameters:
+  -
+    description: Input JSON for Earthworm model run
+    required: true
+
+responses:
+  200:
+    description: Successful Operation

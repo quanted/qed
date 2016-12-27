@@ -1,0 +1,19 @@
+summary: SIP Model
+
+description: |
+  The SIP model is designed to estimate chemical exposure from drinking water alone in birds and mammals
+
+consumes:
+  - application/json
+
+produces:
+  - application/json
+
+parameters:
+  -
+    description: Input JSON for SIP model run
+    required: true
+
+responses:
+  200:
+    description: Successful Operation

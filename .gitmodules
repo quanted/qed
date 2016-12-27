@@ -22,9 +22,6 @@
 [submodule "ubertool_esm"]
 	path = ubertool_esm
 	url = https://github.com/puruckertom/ubertool_esm.git
-[submodule "ubertool_webice"]
-	path = ubertool_webice
-	url = https://github.com/puruckertom/ubertool_webice.git
 [submodule "ubertool_d4em"]
 	path = ubertool_d4em
 	url = https://github.com/puruckertom/ubertool_d4em.git

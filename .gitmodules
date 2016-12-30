@@ -1,24 +1,3 @@
-[submodule "uberrest"]
-	path = uberrest
-	url = https://github.com/batwalrus76/uberrest.git
-[submodule "uberworker"]
-	path = uberworker
-	url = https://github.com/batwalrus76/uberworker.git
-[submodule "ubermq"]
-	path = ubermq
-	url = https://github.com/batwalrus76/ubermq.git
-[submodule "ubertool_pop"]
-	path = ubertool_pop
-	url = https://github.com/puruckertom/ubertool_pop.git
-[submodule "ubertool_eco"]
-	path = ubertool_eco
-	url = https://github.com/puruckertom/ubertool_eco.git
-[submodule "ubertool_orca"]
-	path = ubertool_orca
-	url = https://github.com/puruckertom/ubertool_orca.git
-[submodule "ubertool_esm"]
-	path = ubertool_esm
-	url = https://github.com/puruckertom/ubertool_esm.git
 [submodule "ubertool_webice"]
 	path = ubertool_webice
 	url = https://github.com/puruckertom/ubertool_webice.git

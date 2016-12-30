@@ -37,3 +37,6 @@
 [submodule "nginx"]
 	path = nginx
 	url = https://github.com/funkswing/nginx-uwsgi-qed.git
+[submodule "splash_app"]
+	path = splash_app
+	url = https://github.com/quanted/splash_app

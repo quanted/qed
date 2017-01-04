@@ -16,7 +16,7 @@
 
   # ubertool_cts Django front-end
   cts_django:
-    build: ./ubertool_cts
+    build: ./qed_cts
     image: cts-uwsgi-django:latest
     expose:
     - "8081"

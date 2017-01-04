@@ -25,3 +25,6 @@
 [submodule "qed_cts"]
 	path = qed_cts
 	url = https://github.com/quanted/qed_cts.git
+[submodule "ubertool_ecorest"]
+	path = ubertool_ecorest
+	url = https://github.com/puruckertom/ubertool_ecorest.git

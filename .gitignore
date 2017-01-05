@@ -1,3 +1,4 @@
+secret_key_django_dropbox.txt
 .idea/*
 .DS_Store
 *.pyc

@@ -16,7 +16,7 @@
 
   # ubertool_cts Django front-end
   cts_django:
-    build: ./ubertool_cts
+    build: ./qed_cts
     image: cts-uwsgi-django:latest
     expose:
     - "8081"
@@ -39,7 +39,7 @@
 
   # ubertool_cts nodejs submodule
   cts_nodejs:
-    build: ./ubertool_cts/cts_nodejs
+    build: ./qed_cts/cts_nodejs
     image: cts-nodejs:latest
     expose:
       - "4000"
@@ -59,7 +59,7 @@
 
   # # Celery worker - ChemAxon calc
   worker_chemaxon:
-    build: ./ubertool_cts/cts_celery
+    build: ./qed_cts/cts_celery
     image: cts-celery:latest
     command: celery worker -A tasks -Q chemaxon -l info -n chemaxon_worker -c 2
     # command: bash -c "sleep 3 && celery -A tasks worker -Q chemaxon --loglevel=info --concurrency=1 -n chemaxon_worker"
@@ -71,7 +71,7 @@
 
   # # Celery worker - EPI Suite calc
   worker_epi:
-    build: ./cts_celery
+    build: ./qed_cts/cts_celery
     image: cts-celery:latest
     # image: cts-celery:epi
     command: celery worker -A tasks -Q epi -l info -n epi_worker -c 1
@@ -84,7 +84,7 @@
 
   # # Celery worker - TEST calc
   worker_test:
-    build: ./cts_celery
+    build: ./qed_cts/cts_celery
     image: cts-celery:latest
     # image: cts-celery:test
     command: celery worker -A tasks -Q test -l info -n test_worker -c 1
@@ -95,7 +95,7 @@
 
   # # Celery worker - SPARC calc
   worker_sparc:
-    build: ./cts_celery
+    build: ./qed_cts/cts_celery
     image: cts-celery:latest
     # image: cts-celery:sparc
     command: celery worker -A tasks -Q sparc -l info -n sparc_worker -c 1
@@ -106,7 +106,7 @@
 
   # # Celery worker - Measured (EPI) calc
   worker_measured:
-    build: ./cts_celery
+    build: ./qed_cts/cts_celery
     image: cts-celery:latest
     # image: cts-celery:measured
     command: celery worker -A tasks -Q measured -l info -n measured_worker -c 1

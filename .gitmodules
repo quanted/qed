@@ -1,15 +1,15 @@
-[submodule "ubertool_webice"]
-	path = ubertool_webice
-	url = https://github.com/puruckertom/ubertool_webice.git
-[submodule "ubertool_unter"]
-	path = ubertool_unter
-	url = https://github.com/puruckertom/ubertool_unter.git
+[submodule "qed_cts"]
+	path = qed_cts
+	url = https://github.com/quanted/qed_cts.git
+	branch = master
 [submodule "nginx"]
 	path = nginx
 	url = https://github.com/funkswing/nginx-uwsgi-qed.git
+	branch = master
 [submodule "splash_app"]
 	path = splash_app
 	url = https://github.com/quanted/splash_app
+	branch = master
 [submodule "templates_qed"]
 	path = templates_qed
 	url = https://github.com/quanted/templates_qed.git

@@ -8,7 +8,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
-
 import os
 import sys
 
@@ -18,36 +17,26 @@ print('settings.py')
 MACHINE_ID = "developer"
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+#BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+TEMPLATE_ROOT = os.path.join(PROJECT_ROOT, 'templates_qed/') #.replace('\\','/'))
+#STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static_qed')
+#os.path.join(PROJECT_ROOT, 'templates_qed')
 
-print(PROJECT_ROOT)
-print(os.path.join(PROJECT_ROOT, 'templates_qed').replace('\\','/'))
-# Define ENVIRONMENTAL VARIABLES for project (replaces the app.yaml)
+# Define ENVIRONMENTAL VARIABLES
 os.environ.update({
     'PROJECT_PATH': PROJECT_ROOT,
     'SITE_SKIN': 'EPA',                          # Leave empty ('') for default skin, 'EPA' for EPA skin
     'CONTACT_URL': 'https://www.epa.gov/research/forms/contact-us-about-epa-research',
 })
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
-
-# SECURITY WARNING: keep the secret key used in production secret!  <-- We do not use this for anything
-# try:
-#     import secret
-#     SECRET_KEY = secret.SECRET_KEY
-# except ImportError:
-#     SECRET_KEY = "ShhhDontTellAnyone"
-
-# SECURITY WARNING: keep the secret key used in production secret!
-with open('splash_app/secret_key_django_dropbox.txt') as f:
+# SECURITY WARNING: we keep the secret key in a shared dropbox directory
+with open('secret_key_django_dropbox.txt') as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#DEBUG = False
 
 TEMPLATE_DEBUG = False
 
@@ -57,7 +46,8 @@ ALLOWED_HOSTS = [
 ]
 
 ADMINS = (
-    ('Ubertool Dev Team', 'ubertool-dev@googlegroups.com')
+    ('Tom Purucker', 'purucker.tom@epa.gov'),
+    ('Kurt Wolfe', 'wolfe.kurt@epa.gov')
 )
 
 APPEND_SLASH = True
@@ -65,7 +55,8 @@ APPEND_SLASH = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(PROJECT_ROOT, 'templates_qed/splash')],
+        'DIRS': [os.path.join(TEMPLATE_ROOT, 'splash'),
+                 os.path.join(TEMPLATE_ROOT, 'drupal_2017')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,8 +71,8 @@ TEMPLATES = [
 ]
 
 # Application definition
-
 INSTALLED_APPS = (
+    'splash_app',
     # 'django.contrib.admin',
     # 'django.contrib.auth',
     #'django.contrib.contenttypes',
@@ -105,7 +96,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'urls'
 
 WSGI_APPLICATION = 'wsgi_local.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
@@ -167,14 +157,15 @@ STATICFILES_FINDERS = (
 
 STATIC_URL = '/static_qed/'
 
-# print 'BASE_DIR = %s' %BASE_DIR
-# print 'PROJECT_ROOT = %s' %PROJECT_ROOT
+#print('BASE_DIR = %s' %BASE_DIR)
+print('PROJECT_ROOT = %s' %PROJECT_ROOT)
+print('TEMPLATE_ROOT = %s' %TEMPLATE_ROOT)
+#print('STATIC_ROOT = %s' %STATIC_ROOT)
 
 # Path to Sphinx HTML Docs
 # http://django-docs.readthedocs.org/en/latest/
 
 DOCS_ROOT = os.path.join(PROJECT_ROOT, 'docs', '_build', 'html')
-
 DOCS_ACCESS = 'public'
 
 # Log to console in Debug mode

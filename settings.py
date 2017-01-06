@@ -28,6 +28,7 @@ NICK_LOCAL = False
 
 # Define ENVIRONMENTAL VARIABLES
 os.environ.update({
+    'REST_SERVER_8': 'http://134.67.114.8',  # 'http://localhost:64399'
     'PROJECT_PATH': PROJECT_ROOT,
     'SITE_SKIN': 'EPA',                          # Leave empty ('') for default skin, 'EPA' for EPA skin
     'CONTACT_URL': 'https://www.epa.gov/research/forms/contact-us-about-epa-research',
@@ -39,6 +40,10 @@ os.environ.update({
 # http://n2626ugath802:8080/sparc-integration/rest/calc/multiProperty
     'CTS_VERSION': '1.5.0'
 })
+
+if not os.environ.get('UBERTOOL_REST_SERVER'):
+    os.environ.update({'UBERTOOL_REST_SERVER': 'http://localhost:7777'})  # Local REST server
+    print("REST backend = http://localhost:7777")
 
 # SECURITY WARNING: we keep the secret key in a shared dropbox directory
 with open('secret_key_django_dropbox.txt') as f:
@@ -66,7 +71,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(TEMPLATE_ROOT, 'splash'),
-                 os.path.join(TEMPLATE_ROOT, 'drupal_2017')],
+                 os.path.join(TEMPLATE_ROOT, 'drupal_2017'),
+                 os.path.join(TEMPLATE_ROOT, 'drupal_2014'),
+                 os.path.join(TEMPLATE_ROOT, 'uber2011')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -18,3 +18,7 @@
 	path = static_qed
 	url = https://github.com/quanted/static_qed.git
 	branch = master
+[submodule "ubertool_app"]
+	path = ubertool_app
+	url = https://github.com/quanted/ubertool_app.git
+	branch = master

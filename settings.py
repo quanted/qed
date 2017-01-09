@@ -23,19 +23,29 @@ TEMPLATE_ROOT = os.path.join(PROJECT_ROOT, 'templates_qed/') #.replace('\\','/')
 #STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static_qed')
 #os.path.join(PROJECT_ROOT, 'templates_qed')
 
+# CTS- Boolean for if it's on Nick's local machine or not..
+NICK_LOCAL = False
+
 # Define ENVIRONMENTAL VARIABLES
 os.environ.update({
+    'REST_SERVER_8': 'http://134.67.114.8',  # 'http://localhost:64399'
     'PROJECT_PATH': PROJECT_ROOT,
     'SITE_SKIN': 'EPA',                          # Leave empty ('') for default skin, 'EPA' for EPA skin
     'CONTACT_URL': 'https://www.epa.gov/research/forms/contact-us-about-epa-research',
 
-    # cts_api addition:
-    'CTS_EPI_SERVER': 'http://172.20.100.18',
-    'CTS_EFS_SERVER': 'http://172.20.100.12',
-    'CTS_JCHEM_SERVER': 'http://172.20.100.12',
+    'CTS_TEST_SERVER': 'http://134.67.114.6:8080',
+    'CTS_EPI_SERVER': 'http://134.67.114.8',
+    'CTS_JCHEM_SERVER': 'http://134.67.114.2',
+    'CTS_EFS_SERVER': 'http://134.67.114.2',
     'CTS_SPARC_SERVER': 'http://204.46.160.69:8080',
-    'CTS_TEST_SERVER': 'http://172.20.100.16:8080'
+# http://n2626ugath802:8080/sparc-integration/rest/calc/multiProperty
+    'CTS_VERSION': '1.5.0'
+
 })
+
+if not os.environ.get('UBERTOOL_REST_SERVER'):
+    os.environ.update({'UBERTOOL_REST_SERVER': 'http://localhost:7777'})  # Local REST server
+    print("REST backend = http://localhost:7777")
 
 # SECURITY WARNING: we keep the secret key in a shared dropbox directory
 with open('secret_key_django_dropbox.txt') as f:
@@ -65,7 +75,14 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(TEMPLATE_ROOT, 'splash'),
                  os.path.join(TEMPLATE_ROOT, 'drupal_2017'),
+<<<<<<< HEAD
                  os.path.join(TEMPLATE_ROOT, 'cts')],
+=======
+                 os.path.join(TEMPLATE_ROOT, 'drupal_2014'),
+                 os.path.join(TEMPLATE_ROOT, 'uber2017'),
+                 os.path.join(TEMPLATE_ROOT, 'uber2011'),
+                 ],
+>>>>>>> django
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,6 +99,9 @@ TEMPLATES = [
 # Application definition
 INSTALLED_APPS = (
     'splash_app',
+    'qed_cts',
+    #'cts_api',
+    #'cts_testing',
     # 'django.contrib.admin',
     # 'django.contrib.auth',
     #'django.contrib.contenttypes',
@@ -94,6 +114,9 @@ INSTALLED_APPS = (
     'cts_app',  # cts django app
     'cts_app.filters',  # cts filters for pchem table
 )
+
+# This breaks the pattern of a "pluggable" TEST_CTS django app, but it also makes it convenient to describe the server hosting the TEST API.
+TEST_CTS_PROXY_URL = "http://10.0.2.2:7080/"
 
 MIDDLEWARE_CLASSES = (
     # 'django.contrib.sessions.middleware.SessionMiddleware',
@@ -178,6 +201,9 @@ print('TEMPLATE_ROOT = %s' %TEMPLATE_ROOT)
 
 DOCS_ROOT = os.path.join(PROJECT_ROOT, 'docs', '_build', 'html')
 DOCS_ACCESS = 'public'
+
+NODEJS_HOST = '134.67.114.1'
+NODEJS_PORT = None
 
 # Log to console in Debug mode
 if DEBUG:

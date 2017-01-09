@@ -28,6 +28,13 @@ os.environ.update({
     'PROJECT_PATH': PROJECT_ROOT,
     'SITE_SKIN': 'EPA',                          # Leave empty ('') for default skin, 'EPA' for EPA skin
     'CONTACT_URL': 'https://www.epa.gov/research/forms/contact-us-about-epa-research',
+
+    # cts_api addition:
+    'CTS_EPI_SERVER': 'http://172.20.100.18',
+    'CTS_EFS_SERVER': 'http://172.20.100.12',
+    'CTS_JCHEM_SERVER': 'http://172.20.100.12',
+    'CTS_SPARC_SERVER': 'http://204.46.160.69:8080',
+    'CTS_TEST_SERVER': 'http://172.20.100.16:8080'
 })
 
 # SECURITY WARNING: we keep the secret key in a shared dropbox directory
@@ -47,7 +54,8 @@ ALLOWED_HOSTS = [
 
 ADMINS = (
     ('Tom Purucker', 'purucker.tom@epa.gov'),
-    ('Kurt Wolfe', 'wolfe.kurt@epa.gov')
+    ('Kurt Wolfe', 'wolfe.kurt@epa.gov'),
+    ('Nick Pope', 'i.nickpope@gmail.com'),  # non-epa email ok?
 )
 
 APPEND_SLASH = True
@@ -56,7 +64,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(TEMPLATE_ROOT, 'splash'),
-                 os.path.join(TEMPLATE_ROOT, 'drupal_2017')],
+                 os.path.join(TEMPLATE_ROOT, 'drupal_2017'),
+                 os.path.join(TEMPLATE_ROOT, 'cts')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,7 +90,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     #'mod_wsgi.server',  # Only needed for mod_wsgi express (Python driver for Apache) e.g. on the production server
     # 'docs',
-    # 'rest_framework_swagger'
+    # 'rest_framework_swagger',
+    'cts_app',  # cts django app
+    'cts_app.filters',  # cts filters for pchem table
 )
 
 MIDDLEWARE_CLASSES = (
@@ -175,3 +186,10 @@ if DEBUG:
         level = logging.DEBUG,
         format = '%(asctime)s %(levelname)s %(message)s',
     )
+
+try:
+    import settings_local
+    print("Importing additional local settings")
+except ImportError:
+    print("No local settings")
+    pass

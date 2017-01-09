@@ -38,7 +38,6 @@ os.environ.update({
     'CTS_JCHEM_SERVER': 'http://134.67.114.2',
     'CTS_EFS_SERVER': 'http://134.67.114.2',
     'CTS_SPARC_SERVER': 'http://204.46.160.69:8080',
-# http://n2626ugath802:8080/sparc-integration/rest/calc/multiProperty
     'CTS_VERSION': '1.5.0'
 
 })
@@ -75,14 +74,11 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(TEMPLATE_ROOT, 'splash'),
                  os.path.join(TEMPLATE_ROOT, 'drupal_2017'),
-<<<<<<< HEAD
                  os.path.join(TEMPLATE_ROOT, 'cts')],
-=======
                  os.path.join(TEMPLATE_ROOT, 'drupal_2014'),
                  os.path.join(TEMPLATE_ROOT, 'uber2017'),
                  os.path.join(TEMPLATE_ROOT, 'uber2011'),
                  ],
->>>>>>> django
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

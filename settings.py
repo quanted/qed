@@ -74,7 +74,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(TEMPLATE_ROOT, 'splash'),
                  os.path.join(TEMPLATE_ROOT, 'drupal_2017'),
-                 os.path.join(TEMPLATE_ROOT, 'cts')],
+                 os.path.join(TEMPLATE_ROOT, 'cts'),
                  os.path.join(TEMPLATE_ROOT, 'drupal_2014'),
                  os.path.join(TEMPLATE_ROOT, 'uber2017'),
                  os.path.join(TEMPLATE_ROOT, 'uber2011'),

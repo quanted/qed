@@ -95,7 +95,6 @@ TEMPLATES = [
 # Application definition
 INSTALLED_APPS = (
     'splash_app',
-    'qed_cts',
     #'cts_api',
     #'cts_testing',
     # 'django.contrib.admin',

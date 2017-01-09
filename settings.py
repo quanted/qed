@@ -73,7 +73,9 @@ TEMPLATES = [
         'DIRS': [os.path.join(TEMPLATE_ROOT, 'splash'),
                  os.path.join(TEMPLATE_ROOT, 'drupal_2017'),
                  os.path.join(TEMPLATE_ROOT, 'drupal_2014'),
-                 os.path.join(TEMPLATE_ROOT, 'uber2011')],
+                 os.path.join(TEMPLATE_ROOT, 'uber2017'),
+                 os.path.join(TEMPLATE_ROOT, 'uber2011'),
+                 ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

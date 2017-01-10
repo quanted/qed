@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 import os
 import socket
+import sys
 
 
 # Get machine IP address
@@ -18,23 +19,27 @@ MACHINE_ID = socket.gethostname()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+TEMPLATE_ROOT = os.path.join(PROJECT_ROOT, 'templates_qed/') #.replace('\\','/'))
 
 # Define ENVIRONMENTAL VARIABLES for project (replaces the app.yaml)
 os.environ.update({
-    'UBERTOOL_BATCH_SERVER': 'http://uberrest-topknotmeadows.rhcloud.com/',
-    'UBERTOOL_MONGO_SERVER': 'http://uberrest-topknotmeadows.rhcloud.com',
-    'UBERTOOL_SECURE_SERVER': 'http://uberrest-topknotmeadows.rhcloud.com',
     'REST_SERVER_8': 'http://172.20.100.18',
     'PROJECT_PATH': PROJECT_ROOT,
     'SITE_SKIN': 'EPA',                          # Leave empty ('') for default skin, 'EPA' for EPA skin
     'CONTACT_URL': 'https://www.epa.gov/research/forms/contact-us-about-epa-research',
 
     # cts_api addition:
-    'CTS_EPI_SERVER': 'http://172.20.100.18',
-    'CTS_EFS_SERVER': 'http://172.20.100.12',
-    'CTS_JCHEM_SERVER': 'http://172.20.100.12',
+    #'CTS_EPI_SERVER': 'http://172.20.100.18',
+    #'CTS_EFS_SERVER': 'http://172.20.100.12',
+    #'CTS_JCHEM_SERVER': 'http://172.20.100.12',
+    #'CTS_SPARC_SERVER': 'http://204.46.160.69:8080',
+    #'CTS_TEST_SERVER': 'http://172.20.100.16:8080'
+    'CTS_TEST_SERVER': 'http://134.67.114.6:8080',
+    'CTS_EPI_SERVER': 'http://134.67.114.8',
+    'CTS_JCHEM_SERVER': 'http://134.67.114.2',
+    'CTS_EFS_SERVER': 'http://134.67.114.2',
     'CTS_SPARC_SERVER': 'http://204.46.160.69:8080',
-    'CTS_TEST_SERVER': 'http://172.20.100.16:8080'
+    'CTS_VERSION': '1.5.0'
 })
 if not os.environ.get('UBERTOOL_REST_SERVER'):
     os.environ.update({'UBERTOOL_REST_SERVER': 'http://nginx:7777'})  # Docker network
@@ -101,27 +106,25 @@ TEMPLATES = [
 # Application definition
 
 INSTALLED_APPS = (
+    'splash_app',
+    'ubertool_app',
+    #'cts_api',
+    #'cts_testing',
     # 'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
+    # 'django.contrib.auth',
+    #'django.contrib.contenttypes',
+    # 'django.contrib.sessions',
     # 'django.contrib.messages',
     'django.contrib.staticfiles',
-    'docs',
-    'api',
-    'models.terrplant',
-    'models.sip',
-    'models.stir',
-    'models.trex',
-    'models.therps',
-    'models.iec',
-    'models.earthworm',
-    'models.rice',
-    'models.kabam',
-    'models.ore',
-    'models.hwbi',
-    'cts_api'
+    #'mod_wsgi.server',  # Only needed for mod_wsgi express (Python driver for Apache) e.g. on the production server
+    # 'docs',
+    # 'rest_framework_swagger',
+    'cts_app',  # cts django app
+    'cts_app.filters',  # cts filters for pchem table
 )
+
+# This breaks the pattern of a "pluggable" TEST_CTS django app, but it also makes it convenient to describe the server hosting the TEST API.
+TEST_CTS_PROXY_URL = "http://10.0.2.2:7080/"
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -153,7 +156,7 @@ LOGIN_URL = '/ubertool/login'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Setups databse-less test runner (Only needed for running test)
-TEST_RUNNER = 'testing.DatabaselessTestRunner'
+#TEST_RUNNER = 'testing.DatabaselessTestRunner'
 
 # CACHE Setup - required to run Django "sessions" without a database
 
@@ -186,7 +189,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
+    os.path.join(PROJECT_ROOT, 'static_qed'),
 )
 
 STATICFILES_FINDERS = (
@@ -195,15 +198,19 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static_qed/'
 STATIC_ROOT = '/src/collected_static/'
 
-# print 'BASE_DIR = %s' %BASE_DIR
-# print 'PROJECT_ROOT = %s' %PROJECT_ROOT
+#print('BASE_DIR = %s' %BASE_DIR)
+print('PROJECT_ROOT = %s' %PROJECT_ROOT)
+print('TEMPLATE_ROOT = %s' %TEMPLATE_ROOT)
+#print('STATIC_ROOT = %s' %STATIC_ROOT)
 
 # Path to Sphinx HTML Docs
 # http://django-docs.readthedocs.org/en/latest/
 
 DOCS_ROOT = os.path.join(PROJECT_ROOT, 'docs', '_build', 'html')
-
 DOCS_ACCESS = 'public'
+
+NODEJS_HOST = '134.67.114.1'
+NODEJS_PORT = None

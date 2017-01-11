@@ -57,8 +57,8 @@ if not os.environ.get('UBERTOOL_REST_SERVER'):
     
 # SECURITY WARNING: keep the secret key used in production secret!
 #http://stackoverflow.com/questions/15170637/effects-of-changing-djangos-secret-key
-#with open('splash_app/secret_key_django_dropbox.txt') as f:
-#    SECRET_KEY = f.read().strip()
+with open('./secret_key_django_dropbox.txt') as f:
+    SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False

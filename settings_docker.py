@@ -112,13 +112,13 @@ INSTALLED_APPS = (
     #'cts_api',
     #'cts_testing',
     # 'django.contrib.admin',
-    # 'django.contrib.auth',
+    'django.contrib.auth',
     'django.contrib.contenttypes',
-    # 'django.contrib.sessions',
+    'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #'mod_wsgi.server',  # Only needed for mod_wsgi express (Python driver for Apache) e.g. on the production server
-    # 'docs',
+    #'docs',
     # 'rest_framework_swagger',
     #'cts_app',  # cts django app
     #'cts_app.filters',  # cts filters for pchem table

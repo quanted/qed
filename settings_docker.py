@@ -69,7 +69,7 @@ ALLOWED_HOSTS = []
 if MACHINE_ID == "ord-uber-vm001":
     ALLOWED_HOSTS.append('134.67.114.1')
     ALLOWED_HOSTS.append('qedinternal.epa.gov')
-elif MACHINE_ID == "ord-uber-vm003":
+elif MACHINE_ID == "7e27eaf81b19":
     ALLOWED_HOSTS.append('134.67.114.3')
     ALLOWED_HOSTS.append('qed.epa.gov')
 else:
@@ -90,7 +90,7 @@ APPEND_SLASH = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(PROJECT_ROOT, 'templates')],
+        'DIRS': [os.path.join(PROJECT_ROOT, 'templates_qed')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,8 +120,8 @@ INSTALLED_APPS = (
     #'mod_wsgi.server',  # Only needed for mod_wsgi express (Python driver for Apache) e.g. on the production server
     #'docs',
     # 'rest_framework_swagger',
-    #'cts_app',  # cts django app
-    #'cts_app.filters',  # cts filters for pchem table
+    'cts_app',  # cts django app
+    'cts_app.filters',  # cts filters for pchem table
 )
 
 # This breaks the pattern of a "pluggable" TEST_CTS django app, but it also makes it convenient to describe the server hosting the TEST API.

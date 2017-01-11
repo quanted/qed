@@ -9,17 +9,24 @@
     - "8080"
     volumes:
     - collected_static:/src/collected_static
+    environment:
+    - UBERTOOL_REST_SERVER=http://qed_nginx:7777
 
   # NGINX web server
-  nginx:
+  qed_nginx:
 #    restart: always
     build: ./qed_nginx
     image: qed_nginx
     ports:
     - "80:80"
     - "443:443"
-    links:  # Same as depends_on eco_django, but also sets the hostname at which this service can reach the linked service
-    - eco_django:uwsgi_django  # Nginx.conf can reference "eco_django" service with the hostname 'uwsgi' or 'eco_django'
+    - "7777:7777"
+    links:  # Same as depends_on eco_django, 
+            #but also sets the hostname at which this service can reach the linked service
+    - eco_django:uwsgi_django  # Nginx.conf can reference "eco_django" 
+                               #service with the hostname 'uwsgi' or 'eco_django'
+    volumes:
+    - /var/www/nginx/certs:/etc/nginx/qed
     volumes_from:
     - eco_django:ro  # Mount all volumes from "eco_django" to NGINX, so it can access the collected static files
 

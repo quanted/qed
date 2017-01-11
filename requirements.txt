@@ -1,3 +1,11 @@
+celery
 Django
+django-parsley
+enum34
+flower
+html5lib
+pytz
 redis
+reportlab
 requests
+xhtml2pdf

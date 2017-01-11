@@ -13,11 +13,12 @@
   # NGINX web server
   nginx:
 #    restart: always
-    image: funkswing/nginx-uwsgi-django
+    build: ./qed_nginx
+    image: qed_nginx
     ports:
     - "80:80"
     - "443:443"
     links:  # Same as depends_on eco_django, but also sets the hostname at which this service can reach the linked service
-    - eco_django:uwsgi  # Nginx.conf can reference "eco_django" service with the hostname 'uwsgi' or 'eco_django'
+    - eco_django:uwsgi_django  # Nginx.conf can reference "eco_django" service with the hostname 'uwsgi' or 'eco_django'
     volumes_from:
     - eco_django:ro  # Mount all volumes from "eco_django" to NGINX, so it can access the collected static files

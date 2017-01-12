@@ -47,8 +47,13 @@ if not os.environ.get('UBERTOOL_REST_SERVER'):
     print("REST backend = http://localhost:7777")
 
 # SECURITY WARNING: we keep the secret key in a shared dropbox directory
-with open('secret_key_django_dropbox.txt') as f:
-    SECRET_KEY = f.read().strip()
+try:
+    with open('secret_key_django_dropbox.txt') as f:
+        SECRET_KEY = f.read().strip()
+except IOError as e:
+    print "Could not find secret file"
+    SECRET_KEY = 'Shhhhhhhhhhhhhhh'
+    pass
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -64,7 +69,7 @@ ALLOWED_HOSTS = [
 ADMINS = (
     ('Tom Purucker', 'purucker.tom@epa.gov'),
     ('Kurt Wolfe', 'wolfe.kurt@epa.gov'),
-    ('Nick Pope', 'i.nickpope@gmail.com'),  # non-epa email ok?
+    ('Nick Pope', 'i.nickpope@gmail.com'),
 )
 
 APPEND_SLASH = True
@@ -98,11 +103,11 @@ INSTALLED_APPS = (
     'ubertool_app',
     #'cts_api',
     #'cts_testing',
-    # 'django.contrib.admin',
-    # 'django.contrib.auth',
-    #'django.contrib.contenttypes',
-    # 'django.contrib.sessions',
-    # 'django.contrib.messages',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    #'django.contrib.messages',
     'django.contrib.staticfiles',
     #'mod_wsgi.server',  # Only needed for mod_wsgi express (Python driver for Apache) e.g. on the production server
     # 'docs',

@@ -21,3 +21,6 @@
 	path = ubertool_app
 	url = https://github.com/quanted/ubertool_app.git
 	branch = master
+[submodule "ubertool_ecorest"]
+	path = ubertool_ecorest
+	url = https://github.com/quanted/ubertool_ecorest.git

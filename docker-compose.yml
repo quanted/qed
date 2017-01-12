@@ -105,15 +105,16 @@
     environment:
     - REDIS_HOSTNAME=redis
 
-  cts_nginx:
+  qed_nginx:
     restart: always
-    build: ./cts_app/cts_nginx
+    build: ./cts_app/qed_nginx
     ports:
       - "80:80"
       - "443:443"
     links:
       - qed_django:uwsgi  # Nginx.conf can reference "qed_django" service with the hostname 'uwsgi' or 'qed_django'
       - cts_nodejs:cts_nodejs
+      - eco_rest:uwsgi_flask
     volumes:
       - /var/www/nginx/certs:/etc/nginx/qed
     volumes_from:

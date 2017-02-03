@@ -48,8 +48,8 @@ NODEJS_PORT = 80
 # todo: look into ws w/ django 1.10
 
 if not os.environ.get('UBERTOOL_REST_SERVER'):
-    os.environ.update({'UBERTOOL_REST_SERVER': 'http://nginx:7777'})  # Docker network
-    print("REST backend = http://nginx:7777")
+    os.environ.update({'UBERTOOL_REST_SERVER': 'http://cts_nginx:7777'})  # Docker network
+    print("REST backend = http://cts_nginx:7777")
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #http://stackoverflow.com/questions/15170637/effects-of-changing-djangos-secret-key

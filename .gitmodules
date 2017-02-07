@@ -38,3 +38,6 @@
 [submodule "sam_app"]
 	path = sam_app
 	url = https://github.com/quanted/sam_app.git
+[submodule "hem_app"]
+	path = hem_app
+	url = https://github.com/quanted/hem_app.git

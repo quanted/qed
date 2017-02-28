@@ -12,11 +12,16 @@ from settings import *
 import os
 import socket
 import sys
+import logging
+
 
 print('settings_docker.py')
 
 # Get machine IP address
 MACHINE_ID = socket.gethostname()
+
+for key, val in os.environ.items():
+    logging.info("QED DJANGO ENV VAR: {}: {}".format(key, val))
 
 # Define ENVIRONMENTAL VARIABLES for project (replaces the app.yaml)
 os.environ.update({
@@ -24,22 +29,20 @@ os.environ.update({
     'PROJECT_PATH': PROJECT_ROOT,
     'SITE_SKIN': 'EPA',                          # Leave empty ('') for default skin, 'EPA' for EPA skin
     'CONTACT_URL': 'https://www.epa.gov/research/forms/contact-us-about-epa-research',
-
-    # cts_api addition:
-    'CTS_EPI_SERVER': 'http://172.20.100.18',
-    'CTS_EFS_SERVER': 'http://172.20.100.12',
-    'CTS_JCHEM_SERVER': 'http://172.20.100.12',
-    'CTS_SPARC_SERVER': 'http://204.46.160.69:8080',
-    'CTS_TEST_SERVER': 'http://172.20.100.16:8080',
-    # 'CTS_VERSION': '1.8'  # Now set at settings.py
+    # # # cts_api addition:
+    # 'CTS_EPI_SERVER': 'http://172.20.100.18',
+    # 'CTS_EFS_SERVER': 'http://172.20.100.12',
+    # 'CTS_JCHEM_SERVER': 'http://172.20.100.12',
+    # 'CTS_SPARC_SERVER': 'http://204.46.160.69:8080',
+    # 'CTS_TEST_SERVER': 'http://172.20.100.16:8080',
+    # 'CTS_REST_SERVER': 'http://172.20.100.11', #using qedinternal as proxy for rest server
+    # # 'CTS_VERSION': '1.8'  # Now set at settings.py
 })
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = False
-
-
 
 if not os.environ.get('UBERTOOL_REST_SERVER'):
     os.environ.update({'UBERTOOL_REST_SERVER': 'http://qed_nginx:7777'})  # Docker network
@@ -47,7 +50,7 @@ if not os.environ.get('UBERTOOL_REST_SERVER'):
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
+    
 # SECURITY WARNING: keep the secret key used in production secret!
 try:
 #    SECRET_KEY= os.environ.get('DOCKER_SECRET_KEY')
@@ -80,18 +83,22 @@ TEMPLATE_DEBUG = False
 ALLOWED_HOSTS = []
 if HOSTNAME == "ord-uber-vm001":
     ALLOWED_HOSTS.append('134.67.114.1')
+    ALLOWED_HOSTS.append('172.20.100.11')
     ALLOWED_HOSTS.append('qedinternal.epa.gov')
     IS_PUBLIC = False
 elif HOSTNAME == "ord-uber-vm003":
     ALLOWED_HOSTS.append('134.67.114.3')
+    ALLOWED_HOSTS.append('172.20.100.13')
     ALLOWED_HOSTS.append('qed.epa.gov')
     IS_PUBLIC = True
 else:
     ALLOWED_HOSTS.append('192.168.99.100')  # Docker Machine IP (generally, when using VirtualBox VM)
-    #ALLOWED_HOSTS.append('134.67.114.3')    # CGI NAT address (mapped to 'qed.epa.gov')
+    ALLOWED_HOSTS.append('134.67.114.3')    # CGI NAT address (mapped to 'qed.epa.gov')
     ALLOWED_HOSTS.append('134.67.114.1')
+    ALLOWED_HOSTS.append('172.20.100.11')
+    ALLOWED_HOSTS.append('172.20.100.13')    
     ALLOWED_HOSTS.append('qedinternal.epa.gov')
-    #ALLOWED_HOSTS.append('qed.epa.gov')
+    ALLOWED_HOSTS.append('qed.epa.gov')
     IS_PUBLIC = False
 
 print("MACHINE_ID = {}").format(MACHINE_ID)

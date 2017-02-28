@@ -80,13 +80,13 @@ INSTALLED_APPS = (
     'cts_app.filters',  # cts filters for pchem table
     'cts_app.cts_api',
     'cts_app.cts_testing',
-    'cyan_app',  # cyan django app
-    'hem_app',  # hem django app
-    'hms_app',  # hms django app
+    #'cyan_app',  # cyan django app
+    #'hem_app',  # hem django app
+    #'hms_app',  # hms django app
     'hwbi_app',  # hwbi django app
-    'pisces_app',  # pisces django app
-    'pop_app',  # pop django app
-    'sam_app',  # sam django app
+    #'pisces_app',  # pisces django app
+    #'pop_app',  # pop django app
+    #'sam_app',  # sam django app
     'splash_app',  # splash django app
     'ubertool_app',  # ubertool django app
 )
@@ -173,3 +173,4 @@ print('TEMPLATE_ROOT = %s' %TEMPLATE_ROOT)
 
 DOCS_ROOT = os.path.join(PROJECT_ROOT, 'docs', '_build', 'html')
 DOCS_ACCESS = 'public'
+

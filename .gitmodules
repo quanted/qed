@@ -41,3 +41,12 @@
 [submodule "hem_app"]
 	path = hem_app
 	url = https://github.com/quanted/hem_app.git
+[submodule "temp_config"]
+	path = temp_config
+	url = https://github.com/popenc/temp_config.git
+[submodule "cts_celery"]
+	path = cts_celery
+	url = https://github.com/popenc/cts_celery.git
+[submodule "cts_nodejs"]
+	path = cts_nodejs
+	url = https://github.com/popenc/cts_nodejs.git

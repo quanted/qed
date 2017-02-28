@@ -12,7 +12,13 @@ from django.core.wsgi import get_wsgi_application
 
 print('wsgi_local.py')
 # Settings.py declaration
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
+# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
+
+if os.environ.get('DJANGO_SETTINGS_FILE'):
+	os.environ.setdefault("DJANGO_SETTINGS_MODULE", os.environ.get('DJANGO_SETTINGS_FILE'))
+else:
+	os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings_local")
+
 
 # entry point
 app = django.core.handlers.wsgi.WSGIHandler()

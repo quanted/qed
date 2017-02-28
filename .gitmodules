@@ -41,3 +41,6 @@
 [submodule "hem_app"]
 	path = hem_app
 	url = https://github.com/quanted/hem_app.git
+[submodule "temp_config"]
+	path = temp_config
+	url = https://github.com/popenc/temp_config.git

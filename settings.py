@@ -81,7 +81,7 @@ INSTALLED_APPS = (
     'cts_app.cts_api',
     'cts_app.cts_testing',
     #'cyan_app',  # cyan django app
-    #'hem_app',  # hem django app
+    'hem_app',  # hem django app
     #'hms_app',  # hms django app
     'hwbi_app',  # hwbi django app
     #'pisces_app',  # pisces django app

@@ -50,3 +50,6 @@
 [submodule "cts_nodejs"]
 	path = cts_nodejs
 	url = https://github.com/popenc/cts_nodejs.git
+[submodule "qed_nginx"]
+	path = qed_nginx
+	url = https://github.com/puruckertom/qed_nginx.git

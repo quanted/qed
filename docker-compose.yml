@@ -8,18 +8,23 @@
     build: .
     image: qed-uwsgi-django:latest
     expose:
-    - "8080"
+      - "8080"
     volumes:
-    - collected_static:/src/collected_static
-    - .:/src  # map qed/ to container's /src for updating w/out rebuilding images
+      - collected_static:/src/collected_static
+      - .:/src  # map qed/ to container's /src for updating w/out rebuilding images
+    # command: . config/set_env_vars.sh ${QED_CONFIG}  # negates running env var script before docker-compose up
     environment:
-    - REDIS_HOSTNAME=redis
-    #these echo in the environmental variable to the running docker container
-    #so that is can be picked up by the django settings 
-    - DOCKER_HOSTNAME=${HOSTNAME}
-    #- DOCKER_SECRET_KEY=${SECRET_KEY}
+      - REDIS_HOSTNAME=redis
+      #these echo in the environmental variable to the running docker container
+      #so that is can be picked up by the django settings 
+      - DOCKER_HOSTNAME=${HOSTNAME}
+      #- DOCKER_SECRET_KEY=${SECRET_KEY}
     links:
-    - redis
+      - redis
+    # command: [python, ./temp_config/set_environment.py, "python"]
+    # command: [sh, ./config/set_env_vars.sh, '']  # still have to point to env file somehow
+    # env_file:
+    #   - ./${QED_CONFIG} # path to config/.env file, container env vars, set with ./config/ bash or batch
 
   # Redis (message broker)
   redis:
@@ -30,7 +35,7 @@
 
   # ubertool_cts nodejs submodule
   cts_nodejs:
-    build: ./cts_app/cts_nodejs
+    build: ./cts_nodejs
     image: cts-nodejs:latest
     expose:
       - "4000"
@@ -38,7 +43,6 @@
       - NODEJS_HOST=cts_nodejs
       - NODEJS_PORT=4000
       - REDIS_HOSTNAME=redis
-      - REDIS_HOST=redis
       - REDIS_PORT=6379
     links:
       - redis
@@ -50,60 +54,76 @@
 
   # # Celery worker - ChemAxon calc
   worker_chemaxon:
-    build: ./cts_app/cts_celery
+    build: ./cts_celery
     image: cts-celery:latest
     command: celery worker -A tasks -Q chemaxon -l info -n chemaxon_worker -c 2
     # command: bash -c "sleep 3 && celery -A tasks worker -Q chemaxon --loglevel=info --concurrency=1 -n chemaxon_worker"
     links:
-    - redis
+      - redis
+      - qed_django
     environment:
-    - REDIS_HOSTNAME=redis
+      - REDIS_HOSTNAME=redis
+      - DOCKER_HOSTNAME=${HOSTNAME}
+    # env_file:
+    #   - ./${QED_CONFIG}
 
 
   # # Celery worker - EPI Suite calc
   worker_epi:
-    build: ./cts_app/cts_celery
+    build: ./cts_celery
     image: cts-celery:latest
     command: celery worker -A tasks -Q epi -l info -n epi_worker -c 1
     links:
-    - redis
+      - redis
     environment:
-    - REDIS_HOSTNAME=redis
+      - REDIS_HOSTNAME=redis
+      - DOCKER_HOSTNAME=${HOSTNAME}
+    # env_file:
+    #   - ./${QED_CONFIG}
 
 
   # # Celery worker - TEST calc
   worker_test:
-    build: ./cts_app/cts_celery
+    build: ./cts_celery
     image: cts-celery:latest
     command: celery worker -A tasks -Q test -l info -n test_worker -c 1
     links:
-    - redis
+      - redis
     environment:
-    - REDIS_HOSTNAME=redis
+      - REDIS_HOSTNAME=redis
+      - DOCKER_HOSTNAME=${HOSTNAME}
+    # env_file:
+    #   - ./${QED_CONFIG}
 
   # # Celery worker - SPARC calc
   worker_sparc:
-    build: ./cts_app/cts_celery
+    build: ./cts_celery
     image: cts-celery:latest
     command: celery worker -A tasks -Q sparc -l info -n sparc_worker -c 1
     links:
-    - redis
+      - redis
     environment:
-    - REDIS_HOSTNAME=redis
+      - REDIS_HOSTNAME=redis
+      - DOCKER_HOSTNAME=${HOSTNAME}
+    # env_file:
+    #   - ./${QED_CONFIG}
 
   # # Celery worker - Measured (EPI) calc
   worker_measured:
-    build: ./cts_app/cts_celery
+    build: ./cts_celery
     image: cts-celery:latest
     command: celery worker -A tasks -Q measured -l info -n measured_worker -c 1
     links:
-    - redis
+      - redis
     environment:
-    - REDIS_HOSTNAME=redis
+      - REDIS_HOSTNAME=redis
+      - DOCKER_HOSTNAME=${HOSTNAME}
+    # env_file:
+    #   - ./${QED_CONFIG}
 
   qed_nginx:
     restart: always
-    #build: ./cts_app/cts_nginx
+    # build: ../cts_nginx
     build: ./qed_nginx
     ports:
       - "80:80"
@@ -122,4 +142,4 @@
   ecorest:
     build: ./ubertool_ecorest
     expose:
-    - "7777"
+      - "7777"

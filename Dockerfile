@@ -4,7 +4,7 @@
 FROM puruckertom/qed_py27
 
 # Install Python Dependencies
-#COPY requirements.txt /tmp/
+# COPY requirements.txt /tmp/
 COPY . /src/
 RUN pip install --requirement /src/requirements.txt
 #RUN for file in *_app/requirements.txt; do pip install --requirement /src/$file; done
@@ -29,6 +29,5 @@ ENV DJANGO_SETTINGS_MODULE="settings_docker"
 # Add project root to PYTHONPATH (needed to import custom Django settings)
 ENV PYTHONPATH="/src"
 
+# ENTRYPOINT ["sh /src/docker_start.sh"]
 CMD ["sh", "/src/docker_start.sh"]
-#ENTRYPOINT ["/src/docker_start.sh"]
-#CMD ["uwsgi", "/etc/uwsgi/uwsgi.ini"]  # ["python", "manage.py", "runserver", "0.0.0.0:8080"]

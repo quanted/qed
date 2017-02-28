@@ -27,6 +27,7 @@ NODEJS_PORT = 80  # default nodejs port
 # todo: look into ws w/ django 1.10
 
 IS_PUBLIC = False
+IS_DEVELOPMENT = True
 
 ADMINS = (
     ('Tom Purucker', 'purucker.tom@epa.gov'),
@@ -39,13 +40,15 @@ APPEND_SLASH = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(TEMPLATE_ROOT, 'splash'),
-                 os.path.join(TEMPLATE_ROOT, 'drupal_2017'),
-                 os.path.join(TEMPLATE_ROOT, 'cts'),
-                 os.path.join(TEMPLATE_ROOT, 'drupal_2014'),
-                 os.path.join(TEMPLATE_ROOT, 'uber2017'),
-                 os.path.join(TEMPLATE_ROOT, 'uber2011'),
-                 os.path.join(TEMPLATE_ROOT, 'hwbi'),
+        'DIRS': [
+            os.path.join(TEMPLATE_ROOT, 'cts'),
+            os.path.join(TEMPLATE_ROOT, 'drupal_2014'),
+            os.path.join(TEMPLATE_ROOT, 'drupal_2017'),
+            os.path.join(TEMPLATE_ROOT, 'hem'),
+            os.path.join(TEMPLATE_ROOT, 'hwbi'),
+            os.path.join(TEMPLATE_ROOT, 'splash'),
+            os.path.join(TEMPLATE_ROOT, 'uber2017'),
+            os.path.join(TEMPLATE_ROOT, 'uber2011'),
                  ],
         'APP_DIRS': True,
         'OPTIONS': {

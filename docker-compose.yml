@@ -143,3 +143,8 @@
     build: ./ubertool_ecorest
     expose:
       - "7777"
+  
+  hwbi_rest:
+    build: ../hwbi_rest/src/hwbi_rest
+     expose:
+      - "8888"     

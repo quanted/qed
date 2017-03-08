@@ -32,13 +32,14 @@ os.environ.update({
     'PROJECT_PATH': PROJECT_ROOT,
     'SITE_SKIN': 'EPA',                          # Leave empty ('') for default skin, 'EPA' for EPA skin
     'CONTACT_URL': 'https://www.epa.gov/research/forms/contact-us-about-epa-research',
+
     'CTS_TEST_SERVER': 'http://134.67.114.6:8080',
     'CTS_EPI_SERVER': 'http://134.67.114.8',
     'CTS_JCHEM_SERVER': 'http://134.67.114.2',
     'CTS_EFS_SERVER': 'http://134.67.114.2',
     'CTS_SPARC_SERVER': 'http://204.46.160.69:8080',
-# http://n2626ugath802:8080/sparc-integration/rest/calc/multiProperty
     'CTS_VERSION': '1.5.0'
+
 })
 
 if not os.environ.get('UBERTOOL_REST_SERVER'):
@@ -62,7 +63,8 @@ ALLOWED_HOSTS = [
 
 ADMINS = (
     ('Tom Purucker', 'purucker.tom@epa.gov'),
-    ('Kurt Wolfe', 'wolfe.kurt@epa.gov')
+    ('Kurt Wolfe', 'wolfe.kurt@epa.gov'),
+    ('Nick Pope', 'i.nickpope@gmail.com'),  # non-epa email ok?
 )
 
 APPEND_SLASH = True
@@ -72,6 +74,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(TEMPLATE_ROOT, 'splash'),
                  os.path.join(TEMPLATE_ROOT, 'drupal_2017'),
+                 os.path.join(TEMPLATE_ROOT, 'cts'),
                  os.path.join(TEMPLATE_ROOT, 'drupal_2014'),
                  os.path.join(TEMPLATE_ROOT, 'uber2017'),
                  os.path.join(TEMPLATE_ROOT, 'uber2011'),
@@ -92,7 +95,6 @@ TEMPLATES = [
 # Application definition
 INSTALLED_APPS = (
     'splash_app',
-    'qed_cts',
     #'cts_api',
     #'cts_testing',
     # 'django.contrib.admin',
@@ -103,7 +105,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     #'mod_wsgi.server',  # Only needed for mod_wsgi express (Python driver for Apache) e.g. on the production server
     # 'docs',
-    # 'rest_framework_swagger'
+    # 'rest_framework_swagger',
+    'cts_app',  # cts django app
+    'cts_app.filters',  # cts filters for pchem table
 )
 
 # This breaks the pattern of a "pluggable" TEST_CTS django app, but it also makes it convenient to describe the server hosting the TEST API.
@@ -203,3 +207,10 @@ if DEBUG:
         level = logging.DEBUG,
         format = '%(asctime)s %(levelname)s %(message)s',
     )
+
+try:
+    import settings_local
+    print("Importing additional local settings")
+except ImportError:
+    print("No local settings")
+    pass

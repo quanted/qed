@@ -23,4 +23,4 @@ keys_Picloud_S3.py
 Thumbs.db
 /venv
 *.sqlite3
-static/
+

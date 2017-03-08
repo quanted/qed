@@ -49,3 +49,6 @@
 [submodule "qed_nginx"]
 	path = qed_nginx
 	url = https://github.com/puruckertom/qed_nginx.git
+[submodule "static_qed"]
+	path = static_qed
+	url = https://github.com/quanted/static_qed.git

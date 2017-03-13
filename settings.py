@@ -71,8 +71,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    # 'django.contrib.sessions',
-    # 'django.contrib.messages',
+    'django.contrib.sessions',
+    'django.contrib.messages',
     'django.contrib.staticfiles',
     #'mod_wsgi.server',  # Only needed for mod_wsgi express (Python driver for Apache) e.g. on the production server
     # 'docs',
@@ -81,11 +81,11 @@ INSTALLED_APPS = (
     'cts_app.filters',  # cts filters for pchem table
     'cts_app.cts_api',
     'cts_app.cts_testing',
-    #'cyan_app',  # cyan django app
+    'cyan_app',  # cyan django app
     'hem_app',  # hem django app
     #'hms_app',  # hms django app
     'hwbi_app',  # hwbi django app
-    #'pisces_app',  # pisces django app
+    'pisces_app',  # pisces django app
     #'pop_app',  # pop django app
     #'sam_app',  # sam django app
     'splash_app',  # splash django app
@@ -98,9 +98,9 @@ TEST_CTS_PROXY_URL = "http://10.0.2.2:7080/"
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # 'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
@@ -115,9 +115,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(PROJECT_ROOT, 'db.sqlite3'),
-    }
+    },
+    'hem_db': {
+       'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(PROJECT_ROOT, 'hem_app/hem_db.sqlite3'),
+   }
 }
 
+DATABASE_ROUTERS = {'routers.HemRouter'}
 
 # Setups databse-less test runner (Only needed for running test)
 #TEST_RUNNER = 'testing.DatabaselessTestRunner'

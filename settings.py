@@ -165,8 +165,8 @@ STATICFILES_FINDERS = (
 STATIC_URL = '/static_qed/'
 
 #print('BASE_DIR = %s' %BASE_DIR)
-print('PROJECT_ROOT = %s' %PROJECT_ROOT)
-print('TEMPLATE_ROOT = %s' %TEMPLATE_ROOT)
+print('PROJECT_ROOT = {0!s}'.format(PROJECT_ROOT))
+print('TEMPLATE_ROOT = {0!s}'.format(TEMPLATE_ROOT))
 #print('STATIC_ROOT = %s' %STATIC_ROOT)
 
 # Path to Sphinx HTML Docs

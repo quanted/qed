@@ -1,0 +1,50 @@
+#requires python 2.7
+# install python 2.7.x via anaconda at https://www.continuum.io/downloads
+# default location on windows @ C:\Users\lan___id\AppData\Local\Continuum\Anaconda
+# default location on mac @ ~/anaconda/bin/python
+
+#windows command line git commands install git-scm
+#https://git-scm.com/downloads
+
+#clone from git from parent of where you want to have source
+#you may want to use your elevated privileges to create a git directory on
+#the root drive of your machine, for example c:\git
+git clone https://github.com/quanted/qed.git
+git checkout current_dev_branch
+
+#open project in pycharm
+
+#select python 2.7 in pycharm (cygwin python interpreters not supported)
+#setup requires pip and sone_env? which are preinstalled with python 2.7+
+#interpreter to see pycharm choices
+#with Project:ubertool_eco selected; Files-> (Default) Settings ->Project Interpretor
+
+#create virtualenv if you do not have one (optional with anaconda)
+#also can be done from pycharm
+#with Project:ubertool_eco selected; Files-> (Default) Settings ->Project Interpretor
+#click gear and then create conda env or virtualenv
+#name: env; dir ~/git/qed/ubetool_eco (where you cloned the repo)
+# python version 2.7
+#this directory is already git ignored in the repo
+
+#if you need to run a configuration addition for conda env
+#for a conda env you may have to use the command line and
+#activate the virtual environment from the repo directory
+./env/Scripts/activate
+#and then
+pip install whatever_package_conda_didnt_install
+
+#you may already have a django run configuration in the upper right
+#run from pycharm by clicking the green arrow in the title bar nest
+#to the ubertool_eco icon
+#or you may have to configure by selecting Edit Configurations in the title bar
+#and associating python with manage.py
+
+#run from the command line
+python manage.py
+
+#you can then visit your browser in (for example):
+http://127.0.0.1:5000/
+
+#master is now a protected branch, you must commit to a dev/sprint/feature branch
+#then make a pull request to someone else for review

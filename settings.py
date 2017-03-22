@@ -117,9 +117,13 @@ DATABASES = {
         'NAME': os.path.join(PROJECT_ROOT, 'db.sqlite3'),
     },
     'hem_db': {
-       'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(PROJECT_ROOT, 'hem_app/hem_db.sqlite3'),
-   }
+    },
+    'hwbi_db': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(PROJECT_ROOT, 'hwbi_app/models/hwbi_db.sqlite3'),
+    }
 }
 
 DATABASE_ROUTERS = {'routers.HemRouter'}

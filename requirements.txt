@@ -17,6 +17,7 @@ nose-cov
 numpy
 pandas
 pillow
+pylint
 pypdf2
 python-coveralls
 python-dotenv
@@ -24,6 +25,7 @@ pytz
 redis
 reportlab
 requests
+scipy
 selenium
 six
 Sphinx

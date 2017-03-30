@@ -122,7 +122,7 @@ DATABASES = {
     },
     'hwbi_db': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(PROJECT_ROOT, 'hwbi_app/models/hwbi_db.sqlite3'),
+        'NAME': os.path.join(PROJECT_ROOT, 'hwbi_app/hwbi_db.sqlite3'),
     }
 }
 

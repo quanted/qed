@@ -46,6 +46,7 @@ TEMPLATES = [
             os.path.join(TEMPLATE_ROOT, 'drupal_2014'),
             os.path.join(TEMPLATE_ROOT, 'drupal_2017'),
             os.path.join(TEMPLATE_ROOT, 'hem'),
+            os.path.join(TEMPLATE_ROOT, 'hms'),
             os.path.join(TEMPLATE_ROOT, 'hwbi'),
             os.path.join(TEMPLATE_ROOT, 'pisces'),
             os.path.join(TEMPLATE_ROOT, 'splash'),
@@ -85,7 +86,7 @@ INSTALLED_APPS = (
     'cts_app.cts_testing',
     'cyan_app',  # cyan django app
     'hem_app',  # hem django app
-    #'hms_app',  # hms django app
+    'hms_app',  # hms django app
     'hwbi_app',  # hwbi django app
     'pisces_app',  # pisces django app
     #'pop_app',  # pop django app

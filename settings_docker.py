@@ -39,7 +39,7 @@ os.environ.update({
     # # 'CTS_VERSION': '1.8'  # Now set at settings.py
 })
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# SECURITY WARNING: don't run with debug turned on in production! (unless you are desperate)
 # DEBUG = False
 DEBUG = True
 TEMPLATE_DEBUG = False
@@ -75,10 +75,7 @@ except:
 #    print "No IP address given"
 #    IP_ADDRESS = '0.0.0.0'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
 
-TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = []
 if HOSTNAME == "ord-uber-vm001":

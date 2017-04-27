@@ -18,7 +18,7 @@ COPY uwsgi.ini /etc/uwsgi/
 # Copy the project code
 #COPY . /src/
 WORKDIR /src
-EXPOSE 8080
+EXPOSE 8081
 
 # Ensure "docker_start" is executable
 RUN chmod 755 /src/docker_start.sh

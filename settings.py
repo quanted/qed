@@ -30,6 +30,7 @@ IS_PUBLIC = False
 IS_DEVELOPMENT = True
 
 ADMINS = (
+    ('Dave Lyons', 'lyons.david@epa.gov'),
     ('Tom Purucker', 'purucker.tom@epa.gov'),
     ('Kurt Wolfe', 'wolfe.kurt@epa.gov'),
     ('Nick Pope', 'i.nickpope@gmail.com'),  # non-epa email ok?
@@ -71,6 +72,7 @@ TEMPLATES = [
 INSTALLED_APPS = (
     #'cts_api',
     #'cts_testing',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -90,10 +92,13 @@ INSTALLED_APPS = (
     'hwbi_app',  # hwbi django app
     'pisces_app',  # pisces django app
     #'pop_app',  # pop django app
+    'rest_framework',
     #'sam_app',  # sam django app
     'splash_app',  # splash django app
     'ubertool_app',  # ubertool django app
 )
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # This breaks the pattern of a "pluggable" TEST_CTS django app, but it also makes it convenient to describe the server hosting the TEST API.
 TEST_CTS_PROXY_URL = "http://10.0.2.2:7080/"

@@ -3,12 +3,14 @@ celery
 codecov
 coverage
 coveralls
-Django
+django
+django-crispy-forms
 django-parsley
 django-rest-swagger
 dotenv
 enum
 enum34
+factory_boy
 flower
 html5lib==0.99
 mechanize

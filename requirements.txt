@@ -4,7 +4,7 @@ codecov
 coverage
 coveralls
 django
-django-crispy-forms
+#django-crispy-forms
 django-parsley
 django-rest-swagger
 dotenv

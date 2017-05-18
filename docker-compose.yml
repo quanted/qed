@@ -51,6 +51,7 @@ services:
       - worker_test
       - worker_sparc
       - worker_measured
+      - worker_metabolizer
 
   # # Celery worker - ChemAxon calc
   worker_chemaxon:
@@ -113,6 +114,19 @@ services:
     build: ./cts_celery
     image: cts-celery:latest
     command: celery worker -A tasks -Q measured -l info -n measured_worker -c 1
+    links:
+      - redis
+    environment:
+      - REDIS_HOSTNAME=redis
+      - DOCKER_HOSTNAME=${HOSTNAME}
+    # env_file:
+    #   - ./${QED_CONFIG}
+
+  # # Celery worker - Metabolizer calc
+  worker_metabolizer:
+    build: ./cts_celery
+    image: cts-celery:latest
+    command: celery worker -A tasks -Q metabolizer -l info -n metabolizer_worker -c 1
     links:
       - redis
     environment:

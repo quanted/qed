@@ -18,7 +18,7 @@ else:
         #url(r'^admin/', include('admin.site.urls')),
         url(r'^cts/', include('cts_app.urls')),
         url(r'^cyan/', include('cyan_app.urls')),
-        url(r'^hem/', include('hem_app.urls')),
+        #url(r'^hem/', include('hem_app.urls')),
         url(r'^hms/', include('hms_app.urls')),
         url(r'^hwbi/', include('hwbi_app.urls')),
         url(r'^pisces/', include('pisces_app.urls')),

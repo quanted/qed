@@ -129,11 +129,16 @@ DATABASES = {
     'hwbi_db': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(PROJECT_ROOT, 'hwbi_app/hwbi_db.sqlite3'),
+    },
+    'pisces_db': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(PROJECT_ROOT, 'pisces_app/pisces_db.sqlite3')
     }
 }
 
 DATABASE_ROUTERS = {'routers.HemRouter',
-                    'routers.HwbiRouter'}
+                    'routers.HwbiRouter',
+                    'routers.PiscesRouter'}
 
 # Setups databse-less test runner (Only needed for running test)
 #TEST_RUNNER = 'testing.DatabaselessTestRunner'

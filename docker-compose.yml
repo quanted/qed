@@ -172,7 +172,7 @@ services:
       - qed_django:uwsgi_django  # Nginx.conf can reference "qed_django" service with the hostname 'uwsgi' or 'qed_django'
       - cts_nodejs:cts_nodejs
       - ecorest:uwsgi_flask
-      - hwbi_rest
+    #  - hwbi_rest
     volumes:
       - /var/www/nginx/certs:/etc/nginx/qed # this points to the keys directory
     volumes_from:
@@ -185,7 +185,7 @@ services:
     expose:
       - "7777"
 
-  hwbi_rest:
-    build: ../hwbi_rest/src/hwbi_rest
-    expose:
-      - "8888"
+  #hwbi_rest:
+  #  build: ../hwbi_rest/src/hwbi_rest
+  #  expose:
+  #    - "8888"

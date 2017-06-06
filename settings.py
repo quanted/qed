@@ -79,6 +79,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
     #'mod_wsgi.server',  # Only needed for mod_wsgi express (Python driver for Apache) e.g. on the production server
     # 'docs',
     # 'rest_framework_swagger',
@@ -131,8 +132,12 @@ DATABASES = {
         'NAME': os.path.join(PROJECT_ROOT, 'hwbi_app/hwbi_db.sqlite3'),
     },
     'pisces_db': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(PROJECT_ROOT, 'pisces_app/pisces_db.sqlite3')
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'pisces',
+        'USER': 'cgifadmin',
+        'PASSWORD': 'Ptfocns17!cgi5',
+        'HOST': '172.20.100.15',
+        'PORT': '5432'
     }
 }
 

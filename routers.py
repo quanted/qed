@@ -88,7 +88,7 @@ class PiscesRouter(object):
 
     def db_for_read(self, model, **hints):
         """
-        Attempts to read hem models go to pisces_db.
+        Attempts to read pisces models go to pisces_db.
         """
         if model._meta.app_label == 'pisces_app':
             return 'pisces_db'
@@ -113,7 +113,7 @@ class PiscesRouter(object):
 
     def allow_migrate(self, db, app_label, model_name=None, **hints):
         """
-        Make sure the hem app only appears in the 'pisces_db'
+        Make sure the pisces app only appears in the 'pisces_db'
         database.
         """
         if app_label == 'pisces_app':

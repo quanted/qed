@@ -129,6 +129,14 @@ DATABASES = {
     'hwbi_db': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(PROJECT_ROOT, 'hwbi_app/hwbi_db.sqlite3'),
+    'pisces_db': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'pisces',
+        'USER': 'cgifadmin',
+        'PASSWORD': 'Ptfocns17!cgi5',
+        'HOST': '172.20.100.15',
+        'PORT': '5432',
+    }
     }
 }
 

@@ -32,5 +32,5 @@ selenium==3.4.3
 six==1.10.0
 Sphinx==1.6.2
 tabulate==0.7.7
-xhtml2pdf==0.1b2
+xhtml2pdf==0.2b1
 xlsxwriter

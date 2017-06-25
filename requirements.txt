@@ -1,6 +1,6 @@
 beautifulsoup4==4.6.0
 celery==4.0.2
-codecov
+codecov==2.0.9
 coverage
 coveralls
 django

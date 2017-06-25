@@ -7,7 +7,7 @@ django==1.11.2
 #django-crispy-forms
 django-parsley==0.6
 django-rest-swagger==2.1.2
-dotenv
+dotenv==0.0.5
 enum
 enum34
 factory_boy

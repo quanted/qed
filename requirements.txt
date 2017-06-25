@@ -30,7 +30,7 @@ requests==2.18.1
 scipy==0.19.1
 selenium==3.4.3
 six==1.10.0
-Sphinx
+Sphinx==1.6.2
 tabulate
 xhtml2pdf==0.1b2
 xlsxwriter

@@ -1,7 +1,7 @@
 beautifulsoup4==4.6.0
 celery==4.0.2
 codecov==2.0.9
-coverage
+coverage==4.4.1
 coveralls
 django
 #django-crispy-forms

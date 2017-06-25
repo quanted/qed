@@ -3,7 +3,7 @@ celery==4.0.2
 codecov==2.0.9
 coverage==4.4.1
 coveralls==1.1
-django
+django==1.11.2
 #django-crispy-forms
 django-parsley
 django-rest-swagger

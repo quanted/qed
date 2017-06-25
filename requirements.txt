@@ -10,7 +10,7 @@ django-rest-swagger==2.1.2
 dotenv==0.0.5
 enum==0.4.6
 enum34==1.1.6
-factory_boy
+factory-boy==2.8.1
 flower
 html5lib==0.99
 mechanize

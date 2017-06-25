@@ -12,7 +12,7 @@ enum==0.4.6
 enum34==1.1.6
 factory-boy==2.8.1
 flower==0.9.2
-html5lib==0.99
+html5lib==0.999999999
 mechanize
 nose
 nose-cov

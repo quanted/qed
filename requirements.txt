@@ -1,5 +1,5 @@
 beautifulsoup4==4.6.0
-celery
+celery==4.0.2
 codecov
 coverage
 coveralls

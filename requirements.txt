@@ -28,7 +28,7 @@ redis==2.10.5
 reportlab==3.4.0
 requests==2.18.1
 scipy==0.19.1
-selenium
+selenium==3.4.3
 six
 Sphinx
 tabulate

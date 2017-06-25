@@ -24,7 +24,7 @@ pypdf2==1.26.0
 python-coveralls==2.9.1
 python-dotenv==0.6.4
 pytz==2017.2
-redis
+redis==2.10.5
 reportlab
 requests
 scipy

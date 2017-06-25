@@ -29,7 +29,7 @@ reportlab==3.4.0
 requests==2.18.1
 scipy==0.19.1
 selenium==3.4.3
-six
+six==1.10.0
 Sphinx
 tabulate
 xhtml2pdf==0.1b2

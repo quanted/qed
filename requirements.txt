@@ -29,4 +29,4 @@ selenium==3.4.3
 Sphinx==1.6.2
 tabulate==0.7.7
 xhtml2pdf==0.2b1
-xlsxwriter==0.9.7
+xlsxwriter==0.9.8

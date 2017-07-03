@@ -98,9 +98,9 @@ else:
     ALLOWED_HOSTS.append('qed.epa.gov')
     IS_PUBLIC = False
 
-print("MACHINE_ID = {}").format(MACHINE_ID)
-print("HOSTNAME = {}").format(HOSTNAME)
-print("IS_PUBLIC = {}").format(IS_PUBLIC)
+print(("MACHINE_ID = {}").format(MACHINE_ID))
+print(("HOSTNAME = {}").format(HOSTNAME))
+print(("IS_PUBLIC = {}").format(IS_PUBLIC))
 
 # Disable this because Django wants to email errors and there is no email server set up
 # ADMINS = (

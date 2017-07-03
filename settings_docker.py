@@ -57,7 +57,7 @@ try:
     with open('secret_key_django_dropbox.txt') as f:
         SECRET_KEY = f.read().strip()
 except:
-    print "Secret file not set as env variable"
+    print("Secret file not set as env variable")
     #SECRET_KEY = 'Shhhhhhhhhhhhhhh'
 
 try:
@@ -65,14 +65,14 @@ try:
 #    with open('secret_key_django_dropbox.txt') as f:
 #        SECRET_KEY = f.read().strip()
 except:
-    print "HOSTNAME address not set as env variable"
+    print("HOSTNAME address not set as env variable")
     HOSTNAME = 'unknown'
 
 #try:
 #    with open('my_ip_address.txt') as f:
 #	IP_ADDRESS = f.read().strip()
 #except IOError as e:
-#    print "No IP address given"
+#    print("No IP address given")
 #    IP_ADDRESS = '0.0.0.0'
 
 
@@ -98,9 +98,9 @@ else:
     ALLOWED_HOSTS.append('qed.epa.gov')
     IS_PUBLIC = False
 
-print("MACHINE_ID = {}").format(MACHINE_ID)
-print("HOSTNAME = {}").format(HOSTNAME)
-print("IS_PUBLIC = {}").format(IS_PUBLIC)
+print(("MACHINE_ID = {}").format(MACHINE_ID))
+print(("HOSTNAME = {}").format(HOSTNAME))
+print(("IS_PUBLIC = {}").format(IS_PUBLIC))
 
 # Disable this because Django wants to email errors and there is no email server set up
 # ADMINS = (

@@ -22,8 +22,6 @@ else:
         url(r'^hms/', include('hms_app.urls')),
         url(r'^hwbi/', include('hwbi_app.urls')),
         url(r'^pisces/', include('pisces_app.urls')),
-        url(r'^pop/', include('pop_app.urls')),
-        url(r'^sam/', include('sam_app.urls')),
         url(r'^ubertool/', include('ubertool_app.urls')),
     ]
 

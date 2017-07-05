@@ -92,7 +92,7 @@ INSTALLED_APPS = (
     'hwbi_app',  # hwbi django app
     'pisces_app',  # pisces django app
     #'pop_app',  # pop django app
-    'rest_framework',
+    #'rest_framework',
     #'sam_app',  # sam django app
     'splash_app',  # splash django app
     'ubertool_app',  # ubertool django app

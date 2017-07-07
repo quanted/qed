@@ -2,7 +2,7 @@ from django.core.management import execute_from_command_line
 import os
 import sys
 # from set_environment import DeployEnv
-from .temp_config.set_environment import DeployEnv
+from temp_config.set_environment import DeployEnv
 
 
 #this needs to be added so that the stting in the subdirectory django app can be found

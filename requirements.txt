@@ -12,7 +12,7 @@ flower==0.9.2
 html5lib==0.999999999
 nose2==0.6.5
 nose-cov==1.6
-numpy==1.13.0
+numpy==1.13.1
 pandas==0.20.2
 pillow==4.1.1
 psycopg2

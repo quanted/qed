@@ -8,8 +8,7 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 """
 import os
 from django.core.wsgi import get_wsgi_application
-
-from temp_config.set_environment import DeployEnv
+from .temp_config.set_environment import DeployEnv
 
 # Determine env vars to use:
 runtime_env = DeployEnv()

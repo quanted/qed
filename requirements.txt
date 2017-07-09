@@ -16,7 +16,7 @@ nose2==0.6.5
 nose-cov==1.6
 numpy==1.13.1
 pandas==0.20.3
-pillow==4.1.1
+pillow==4.2.1
 psycopg2
 pylint==1.7.2
 pypdf2==1.26.0

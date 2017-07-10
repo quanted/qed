@@ -42,6 +42,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+            os.path.join(TEMPLATE_ROOT, 'api'),
             os.path.join(TEMPLATE_ROOT, 'cts'),
             os.path.join(TEMPLATE_ROOT, 'cyan'),
             os.path.join(TEMPLATE_ROOT, 'drupal_2014'),

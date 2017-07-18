@@ -1,0 +1,241 @@
+<!-- Google Maps API V3 Key, v = 3.13 -->
+<script type="text/javascript"
+	src="https://maps.googleapis.com/maps/api/js?v=3.13&key=AIzaSyB-zLc7tlB-UbVrQPL6MXJQ1IDEFE-2cWA&sensor=false">
+</script>
+
+<!-- <div>Endangered Species Mapper</div>
+<div id="map"></div> -->
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+// Initialize output page//
+
+$('#export_menu').hide()
+
+$(".out_input_table").append(localStorage.html_input);
+$(".out_input_table :input").attr('disabled', true);
+
+element_all = localStorage.html_new.split("&")
+// console.log(element_all)
+element1 = localStorage.html_new.split("&")[0].split("=")
+// console.log(element_all.length)
+for (i=0; i<element_all.length; i++) {
+    element_name_t = element_all[i].split("=")[0]
+    element_val_t = element_all[i].split("=")[1]
+    $('[name="'+element_name_t+'"]').val(element_val_t)
+}
+$(".input_button").hide()
+
+
+// Enable the visual refresh
+google.maps.visualRefresh = true;
+
+function initialize() {
+	var mapDiv = document.getElementById('map');
+	// // Crating a MapOptions object with properties
+	var options = {
+		center: new google.maps.LatLng(37.09, -95.71),
+		zoom: 4,
+		mapTypedId: google.maps.MapTypeId.ROADMAP,
+		scaleControl: true
+	};
+	// Creating the map
+	var map = new google.maps.Map(mapDiv,options);
+
+	// Creating an InfoWindow with content text
+	var infowindow = new google.maps.InfoWindow({
+		content : 'test!!!'
+	});
+	
+
+	//Creating overlays for USDACropScape
+	var crop = '{{ Crop }}'
+	var crop_link = "https://s3.amazonaws.com/esmapping_kmz/USDACropScape2011/"+ crop + '.kmz'
+	//var cropLayer = new google.maps.KmlLayer(crop_link,{suppressInfoWindows: true},{preserveViewport:true}) 
+	var cropLayer = new google.maps.KmlLayer(crop_link,{suppressInfoWindows: true}) 
+	cropLayer.setMap(map);
+
+	// Creating overlays for NatureServeFish: NSF
+	var nsf = '{{ NSF }}'
+	if (!(!nsf))
+	{
+		var nsf_link ="https://s3.amazonaws.com/esmapping_kmz/nsf/"+ nsf + '.kmz'
+		// KML overlay
+		var nsfLayer = new google.maps.KmlLayer(nsf_link, {suppressInfoWindows: true}) 
+		nsfLayer.setMap(map);
+		// Adding the click event to the overlay
+		//google.maps.event.addListener(nsfLayer,'click',function(){
+		//	infowindow.open(map,nsfLayer);	
+		//});
+	}
+
+	// Creating overlays for NatureServePollinator: NSP
+	var nsp = '{{ NSP }}' 
+	if (!(!nsp))
+	{
+		var nsp_link ="https://s3.amazonaws.com/esmapping_kmz/nsp/"+ nsp + '.kmz'
+		// KML overlay
+		var nspLayer = new google.maps.KmlLayer(nsp_link,{suppressInfoWindows: true}) 
+		nspLayer.setMap(map);
+	}	
+
+
+	// Creating overlays for NatureServeMammals: NSM
+	var nsm = '{{ NSM }}' 
+	if (!(!nsm))
+	{
+		var nsm_link = "https://s3.amazonaws.com/esmapping_kmz/nsm/"+ nsm + '.kmz'
+		var nsmLayer = new google.maps.KmlLayer(nsm_link,{suppressInfoWindows: true}) 
+		nsmLayer.setMap(map);
+	}	
+
+	//Creating overlays for IUCN Amphibians
+	var IUCN_Amphibians = '{{ IUCN_Amphibians }}'
+	if (!(!IUCN_Amphibians))
+	{
+		var IUCN_Amphibians_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Amphibians/"+ IUCN_Amphibians  + '.kmz'
+		var IUCN_AmphibiansLayer = new google.maps.KmlLayer(IUCN_Amphibians_link,{suppressInfoWindows: true}) 
+		IUCN_AmphibiansLayer.setMap(map);		
+	}	
+
+
+	//Creating overlays for IUCN Birds
+	var IUCN_Birds = '{{ IUCN_Birds }}'
+	if (!(!IUCN_Birds))
+	{
+		var IUCN_Birds_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Bird/"+ IUCN_Birds + '.kmz'
+		//console.log(IUCN_Birds_link)
+		var IUCN_BirdsLayer = new google.maps.KmlLayer(IUCN_Birds_link,{suppressInfoWindows: true})
+		IUCN_BirdsLayer.setMap(map);	
+	}
+
+
+	//Creating overlays for IUCN Terrestrial Mammals
+	var IUCN_Mammals = '{{ IUCN_Mammals }}' 
+	if (!(!IUCN_Mammals))
+	{
+		var IUCN_Mammals_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Mammals/"+ IUCN_Mammals + '.kmz'
+		var IUCN_MammalsLayer = new google.maps.KmlLayer(IUCN_Mammals_link,{suppressInfoWindows: true})
+		IUCN_MammalsLayer.setMap(map);	
+	}
+
+	// Creating overlays for IUCN Marine Mammals
+	var IUCN_Mammals_Marine = '{{ IUCN_Mammals_Marine }}' 
+	if (!(!IUCN_Mammals_Marine))
+	{
+		var IUCN_Mammals_Marine_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Mammals_Marine/"+ IUCN_Mammals_Marine + '.kmz';
+		var IUCN_Mammals_MarineLayer = new google.maps.KmlLayer(IUCN_Mammals_Marine_link,{suppressInfoWindows: true})
+		IUCN_Mammals_MarineLayer.setMap(map);		
+	}
+
+	// Creating overlays for IUCN Coral
+	var IUCN_Coral = '{{ IUCN_Coral }}' 
+	if (!(!IUCN_Coral))
+	{
+		var IUCN_Coral_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Coral/"+ IUCN_Coral + '.kmz'
+		var IUCN_CoralLayer = new google.maps.KmlLayer(IUCN_Coral_link,{suppressInfoWindows: true})
+		IUCN_CoralLayer.setMap(map);		
+	}
+
+
+	// Creating overlays for IUCN Reptiles
+	var IUCN_Reptiles = '{{ IUCN_Reptiles }}' 
+	if (!(!IUCN_Reptiles))
+	{
+		var IUCN_Reptiles_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Reptiles/"+ IUCN_Reptiles + '.kmz'
+		var IUCN_ReptileLayer = new google.maps.KmlLayer(IUCN_Reptiles_link,{suppressInfoWindows: true})
+		IUCN_ReptileLayer.setMap(map);		
+	}
+
+
+	// Creating overlays for IUCN Seagrasses
+	var IUCN_Seagrasses = '{{ IUCN_Seagrasses }}' 
+	if (!(!IUCN_Seagrasses))
+	{
+		var IUCN_Seagrasses_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Seagrasses/"+ IUCN_Seagrasses + '.kmz'
+		var IUCN_SeagrassesLayer = new google.maps.KmlLayer(IUCN_Seagrasses_link,{suppressInfoWindows: true})
+		IUCN_SeagrassesLayer.setMap(map);	
+	}
+
+
+	// Creating overlays for IUCN SeaCucumbers
+	var IUCN_SeaCucumbers = '{{ IUCN_SeaCucumbers }}'
+	if (!(!IUCN_SeaCucumbers))
+	{
+		var IUCN_SeaCucumbers_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_SeaCucumbers/"+ IUCN_SeaCucumbers + '.kmz'
+		var IUCN_SeaCucumbersLayer = new google.maps.KmlLayer(IUCN_SeaCucumbers_link,{suppressInfoWindows: true})
+		IUCN_SeaCucumbersLayer.setMap(map);			
+	}
+
+
+	// Creating overlays for IUCN Mangrove
+	var IUCN_Mangrove = '{{ IUCN_Mangrove }}'
+	if (!(!IUCN_Mangrove))
+	{
+		var IUCN_Mangrove_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_Mangroves/"+ IUCN_Mangrove + '.kmz'
+		var IUCN_MangroveLayer = new google.maps.KmlLayer(IUCN_Mangrove_link,{suppressInfoWindows: true})
+		IUCN_MangroveLayer.setMap(map);			
+	}
+
+
+	// Creating overlays for IUCN Marine Fish
+	var IUCN_MarineFish = '{{ IUCN_MarineFish }}'
+	if (!(!IUCN_MarineFish))
+	{
+		var IUCN_MarineFish_link = "https://s3.amazonaws.com/esmapping_kmz/IUCN_MarineFish/"+ IUCN_MarineFish + '.kmz'
+		var IUCN_MarineFishLayer = new google.maps.KmlLayer(IUCN_MarineFish_link,{suppressInfoWindows: true})
+		IUCN_MarineFishLayer.setMap(map);
+	}
+
+
+	// Creating overlays for USWFS Polygon
+	var USFWS_p = '{{ USFWS_p }}' 
+	if (!(!USFWS_p))
+	{
+		var USFWS_p_link = "https://s3.amazonaws.com/esmapping_kmz/USFWS_p/"+ USFWS_p + '.kmz'
+		var USFWS_pLayer = new google.maps.KmlLayer(USFWS_p_link,{suppressInfoWindows: true})
+		USFWS_pLayer.setMap(map);			
+	}
+
+
+	// Creating overlays for USFWS Line
+	var USFWS_l = '{{ USFWS_l }}'
+	if (!(!USFWS_l))
+	{
+		var USFWS_l_link = "https://s3.amazonaws.com/esmapping_kmz/USFWS_l/"+ USFWS_l + '.kmz';
+		var USFWS_lLayer = new google.maps.KmlLayer(USFWS_l_link,{suppressInfoWindows: true})
+		USFWS_lLayer.setMap(map);
+	}
+
+	//EPestHigh -- six layers
+	var EPestH = '{{ Pesticide }}'
+	var EPestH_link = "https://s3.amazonaws.com/esmapping_kmz/EPestHigh/" + EPestH + '/'
+	var EPest_R1 = new google.maps.KmlLayer(EPestH_link + "m_R1.kmz")
+	EPest_R1.setMap(map);
+	var EPest_R2 = new google.maps.KmlLayer(EPestH_link + "m_R2.kmz")
+	EPest_R2.setMap(map);
+	var EPest_R3 = new google.maps.KmlLayer(EPestH_link + "m_R3.kmz")
+	EPest_R3.setMap(map);
+	var EPest_R4 = new google.maps.KmlLayer(EPestH_link + "m_R4.kmz")
+	EPest_R4.setMap(map);
+	var EPest_R5 = new google.maps.KmlLayer(EPestH_link + "m_R5.kmz")
+	EPest_R5.setMap(map);
+	var EPest_R6 = new google.maps.KmlLayer(EPestH_link + "m_R6.kmz")
+	EPest_R6.setMap(map);
+
+};
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+})
+
+</script>
+<!-- CSS to control the layout of the map -->
+<style type="text/css">
+	#map {width:700px; height:500px;}
+	#map div { font-weight:bold;}
+	#map #iwsw p { font-weight:normal !important;}
+</style>
+<!-- end CSS -->
+

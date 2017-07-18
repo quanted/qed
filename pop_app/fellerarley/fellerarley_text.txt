@@ -1,0 +1,15 @@
+<p>
+Feller-Arley Markov process is also known as the birth-death process, which assumes:</p>
+<ul class="bullet">
+  <li>no internal population structure, each individual can give birth and death</li>
+  <li>the birth rate and death rate are constant</li>
+</ul>
+<p>As a Markov procees, the future population size is only related to its neighbor state. 
+In the below figure, when a birth occurs, the process goes from state n to n + 1. 
+When a death occurs, the process goes from state n to state n-1. The possibility of "moving"
+to another state is governed by the birth and death rates.</p>
+<img src = "/images/latex/fellerarley/BD-proces.png" alt="Feller-Arley Markov Process">
+
+
+
+

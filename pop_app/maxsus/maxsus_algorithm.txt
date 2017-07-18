@@ -1,0 +1,4 @@
+<p>The population change rate is:</p>
+<img src = "/images/latex/maxsus/maxsus_1.png" alt="Maxsus_1">
+<p>At equilibrium:</p>
+<img src = "/images/latex/maxsus/maxsus_2.png" alt="Maxsus_2">

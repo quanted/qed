@@ -1,0 +1,92 @@
+<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="/stylesheets/jqplot/excanvas.js"></script><![endif]-->
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/jquery.jqplot.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/jqplot/jquery.jqplot.css" />
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.pointLabels.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.cursor.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+
+<div id="chart1" style="margin-top:20px; margin-left:20px; width:650px; height:400px;"></div>
+
+<script type='text/javascript'> 
+
+$(document).ready(function(){   
+    	var ms = $.parseJSON($('#MS').text());
+    	var s1 = $.parseJSON($('#final').text());
+    	var lm = $.parseJSON($('#LM').text());
+    	var ii = $.parseJSON($('#IN').text());
+
+		$('<tr><th colspan='+ms+'><div align="center">Leslie Matrix</div></th></tr>').appendTo('.lm');	
+		$('<tr><th><div align="center">Initial Individuals</div></th></tr>').appendTo('.ii');	
+		
+		i=0
+		while (i < ms){
+		$('<tr>').appendTo('.lm')
+		
+		var j=0
+			while (j < ms) {	
+			$('<td width=50><div align="center">'+lm[i][j]+'</div></td>').appendTo('.lm tr:last')
+  			j=j+1
+			}
+			
+		$('</tr>').appendTo('.lm')
+		i=i+1			
+		}
+		$('</table>').appendTo('.lm')
+		$('<p>&nbsp;</p>').insertAfter('.lm')
+		
+		q=0
+
+		while (q < ms){
+			$('<tr><td><div align="center">'+ii[q]+'</div></td></tr>').appendTo('.ii')
+			q=q+1
+			}
+		$('</table>').appendTo('.ii')
+
+		
+
+//Generate the figure
+		$.jqplot.config.enablePlugins = true;
+		L=[{label:'Stage 1'}];
+		
+		var i=2
+		while(i<=ms)
+			{
+				L.push({label:'Stage'+i});
+				i++;
+			}	
+$.jqplot('chart1', s1, {
+
+    seriesDefaults: {
+        showMarker: false,
+        pointLabels: {
+            show: false
+        }
+    },
+
+    series: L,
+    axes: {
+        xaxis: {
+            label: 'Time units',
+            pad: 0
+        },
+        yaxis: {
+            label: 'Number of individuals',
+            labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+            pad: 0
+        }
+    },
+    legend: {
+        show: true,
+        location: 'nw',
+        placement: 'inside',
+        fontSize: '11px'
+    }
+})
+})
+</script>
+
+
+

@@ -1,0 +1,57 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{endfloat}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage[margin = 1in]{geometry}
+
+
+\begin{document}
+
+\begin{align}
+P_{N} \left( t + \Delta t \right) & = P_{N} \left( t \right) \times Prob \left[ \text{no birth in } \left( t, t + \Delta t \right) \right]+ \nonumber \\
+& \hspace{ 0.2 in} P_{N-1}(t) \times Prob \left[ \text{no birth in } (t, t+\Delta t) \right] \nonumber \\
+&    \hspace{-1.3in}  \text{where:} \nonumber \\
+P_{N}\left( t \right) & = Prob \left[ \text{population size is N at time t} \right] \nonumber
+\end{align} 
+
+\begin{align}
+\dfrac{dN_{t}}{dt} & = \frac{N(t+ \Delta t) - N(t)}{\Delta t} \nonumber \\
+\nonumber \\
+& = \frac{r N(t) \Delta t}{\Delta t} \nonumber \\
+\nonumber \\ 
+&    \hspace{-1.3in}  \text{thus the solution is:} \nonumber \\
+\nonumber \\ 
+N_{t} & = N_{0}e^{rt} \nonumber \\
+\nonumber \\ 
+&    \hspace{-1.3in}  \text{where:} \nonumber \\
+N_{0} & = \text{the initial population size} \nonumber \\
+N_{t} & = \text{the population size at time t} \nonumber \\
+r & = \text{birth rate[1/time step]} \nonumber
+\end{align} 
+
+
+\begin{align}
+P_{N} \left( t + \Delta t \right) & = P_{N} \left( t \right) \times Prob \left[ \text{no birth in } \left( t, t + \Delta t \right) \right]+ \nonumber \\
+& \hspace{ 0.2 in}  P_{N-1}(t) \times Prob \left[ \text{1 birth in } (t, t+\Delta t) \right] \nonumber \\
+& = P_{N} \left( t \right) \left( 1-rN \Delta t +o(\Delta t) \right)+P_{N-1} \left( t \right) \left( r \left( N-1  \right) \Delta t +o(\Delta t) \right) \nonumber \\
+\nonumber \\
+&    \hspace{-1.3in}  \text{thus:} \nonumber \\
+\dfrac{dP_{N}}{dt} &= \dfrac{P_{N} \left( t+\Delta t \right) - P_{N} \left( t \right)}{\Delta t} \nonumber \\
+& = -r N P_{N} \left( t \right) + P_{N-1} \left( t \right) r \left( N-1  \right) \nonumber \\
+&    \hspace{-1.3in}  \text{whose solution is:} \nonumber \\
+P_{N}(t) &=\begin{pmatrix} N-1\\N_{t}-N_{0} \end{pmatrix} e^{-r N_{0} t} (1-e^{-rt})^{N_{t}-N_{0}} \nonumber \\
+&    \hspace{-1.3in}  \text{where:} \nonumber \\
+P_{N}\left( t \right) & = P \{N_{t}=n \} = Prob \left[ \text{population size is N at time t} \right] \nonumber \\
+o(\Delta t) & = Prob \left[ \text{more than 1 birth in }(t, t+ \Delta t) \right] \nonumber \\
+r & = \text{birth rate[1/time step]} \nonumber
+\end{align}
+
+
+
+
+
+\end{document}
+
+

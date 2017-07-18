@@ -1,0 +1,41 @@
+<!--start 02pop_uberintroblock_wmodellinks-->
+
+<!-- "Click" Menus -->
+<script type="text/javascript">
+$( document ).ready(function() {
+	$('a#{{model}}').removeClass('fadeMenu').addClass('aSelected');
+	$('#output_tab').css('display', (pathPage == 'output' || 'out') ? 'inline' : 'none');
+    // fadeMenu
+	if ($('a#{{model}}').hasClass('aSelected')) {
+		$('.fadeMenu').hover(function(){
+			$(this).stop().animate({ backgroundColor:'rgb(54, 74, 86)', color:'#FFFFFF'},500);
+		}, function(){
+			$(this).stop().animate({ backgroundColor:'rgb(224, 219, 201)', color:'#34322D'},500);
+		});
+	}
+});
+</script>
+
+<!-- Header Nav Bar -->
+<div id="header_menu_nav">
+  <ul>
+	<li><a class="fadeDesc_{{page}}" href="{{model}}_description.html"><span></span></a></li>
+	<li><a class="fadeInp_{{page}}" href="{{model}}_input.html"><span></span></a></li>
+	<li id="output_tab"><a class="fadeOut_{{page}}" href=#><span></span></a></li>
+	<li><a class="fadeAlg_{{page}}" href="{{model}}_algorithms.html"><span></span></a></li>
+	<li><a class="fadeRef_{{page}}" href="{{model}}_references.html"><span></span></a></li>
+	<li><a class="fadeQAQC_{{page}}" href="{{model}}_qaqc.html"><span></span></a></li>
+	<li><a class="fadeBat_{{page}}" href="{{model}}_batchinput.html"><span></span></a></li>
+	<li><a class="fadeHist_{{page}}" href="{{model}}_history.html"><span></span></a></li>
+  </ul>
+</div>
+   
+<div id="header_menu_r">
+  <ul>
+    <li><a href="http://ubertool.github.com/" target="_blank">Blog</a></li>
+	<li>|</li>
+	<li><a href="contactus_pop_input.html">Contact Us</a></li>
+  </ul>
+</div>
+
+<!--end 02pop_uberintroblock_wmodellinks-->

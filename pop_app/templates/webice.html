@@ -1,0 +1,213 @@
+<table class="webice webiceSel">
+  <tr>
+    <th colspan="2" class="mainLabels">Web-ICE Modules</th>
+  </tr>
+  <tr>
+  	<th class="Labels">ICE Aquatic</th>
+  	<th class="Labels">ICE Wildlife</th>
+  </tr>
+  <tr>
+  	<th class="subLabels">Aquatic vertebrates / invertebrates</th>
+  	<th class="subLabels">Terrestrial Birds / Mammals</th>
+  </tr>
+  <tr>
+  	<td><a href="#?file=as" id="asTaxa">Species</a></td>
+  	<td><a href="#?file=ws" id="wsTaxa">Species</a></td>
+  </tr>
+  <tr>
+  	<td><a href="#?file=ag" id="agTaxa">Genus</a></td>
+  	<td><a href="#?file=wf" id="wfTaxa">Family</a></td>
+  </tr>
+  <tr>
+  	<td><a href="#?file=af" id="afTaxa">Family</a></td>
+    <td></td>
+  </tr>
+  <tr>
+  	<th class="subLabels">Algae</th>
+    <th></th>
+  </tr>
+  <tr>
+  	<td><a href="#?file=ls" id="lsTaxa">Species</a></td>
+    <td></td>
+  </tr>
+  <tr>
+  	<td><a href="#?file=lg" id="lgTaxa">Genus</a></td>
+    <td></td>
+  </tr>
+</table>
+<table class="webice webiceSel">
+  <tr>
+    <th colspan="2" class="mainLabels">Species Sensitivity Distribution Module</th>
+  </tr>
+  <tr>
+  	<td><a href="#?filename=as" id="asSSD">ICE Aquatic</a></td>
+  	<td><a href="#?filename=ws" id="wsSSD">ICE Wildlife</a></td>
+  </tr>
+</table>
+<table class="webice webiceSel">
+  <tr>
+    <th colspan="2" class="mainLabels">Endangered Species Module</th>
+  </tr>
+  <tr>
+  	<td><a href="#?filename=tneAs" id="tneAs">ICE Aquatic</a></td>
+  	<td><a href="#?filename=tneWs" id="tneWs">ICE Wildlife</a></td>
+  </tr>
+</table>
+
+<form id="wiForm" method='get' action='webice_output.html'>
+
+<div id="wiTaxatemp" style="display:none">
+  <h1> </h1>
+  <div> </div>
+  <table class="webice">
+    <tr>
+      <th>Surrogate:</th>
+      <th>Predicted:</th>
+    </tr>
+    <tr>
+      <td>
+        <select onchange="loadSurrogate();">
+          <option> </option>
+        </select>
+      </td>
+      <td>
+        <select onchange="loadPredicted();">
+          <option> </option>
+        </select>
+      </td>
+    </tr>
+    <tr id="sortRow">
+      <td>Sort By: 
+        <select onchange="nameReload();">
+          <option>Common Name</option>
+          <option>Scientific Name</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+  <input type="hidden" id="" name="" />
+</div>
+
+<div id="wiSSDtemp" style="display:none">
+  <h1>Species Sensitivity Distributions</h1>
+  <h3>Multiple Surrogate SSD</h3>
+  <table class="webice">
+    <tr>
+      <th id="primaryType"> </th>
+    </tr>
+    <tr id="SurrogateHeaderRow">
+      <td>
+        <select>
+        <option></option>
+      </td>
+      <td>
+        <button id="addButton" onclick="addSpecies('Surrogate');" type="button">Add</button> <span id="limitText" style=" display: none; color: red;">No more than 25 species may be chosen for one calculation.</span>
+      </td>
+      <td><span style="margin-left:25px;">
+        Sort By: 
+        <select onchange="nameReload();cleanList();">
+        <option>Common Name</option>
+        <option>Scientific Name</option>
+        </select>
+        </span>
+      </td>
+    </tr>
+    <tr id="AlgaeHeaderRow">
+      <th>Algae:</th>
+    </tr>
+    <tr id="AlgaeFormRow">
+      <td id="AlgaeCell">
+        <select id="Algae" name="Algae" onchange="">
+        <option></option>
+      </td>
+      <td>
+        <button id="addButton" onclick="addSpecies('Algae');" type="button">Add</button> <span id="limitText" style=" display: none; color: red;">No more than 25 species may be chosen for one calculation.</span>
+      </td>
+    </tr>
+  </table>
+  <table class="webice" style="display:none">
+    <tr>
+      <td>Species</td>
+      <td>Toxicity (<span id="tneUnits">μg/L</span>)</td>
+    </tr>
+  </table>
+  <input type="hidden" id="" name="" />
+  <input type="hidden" id="" name="" />
+  <input type="hidden" id="" name="" />
+</div>
+
+<div id="ICEContent" style="display:none;"> 
+  <h1>Endangered Species Module</h1>
+  <div id="Taxa">
+    <h3>Step 1: select Taxa of Interest</h3> 
+    <table class="webice">
+      <tr>
+        <td colspan="2" id="groupCell">
+          <input type="radio" name="group" id="AllGroups" value="" checked=true onclick="getGroupOptions('All');" /> All Species 
+        </td>
+      </tr>
+      <tr>
+        <td>Species:</td>
+      </tr>
+      <tr>
+        <td> 
+          <select name="species" id="species" onchange="changeSpecies(this.options[this.selectedIndex].value,this.selectedIndex);">
+          <option></option><option>______________________</option><option></option>
+          </select>
+        </td>
+        <td>
+          <!-- <button type="button" onclick="addSpecies('species');" id="addButton">Add</button>
+          <span id="limitText" style="display:none;color:red;">No more than 25 species may be chosen for one calculation.</span> -->
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <br/>
+          Sort By: 
+          <select id="specSortBy" onchange="speciesReload();cleanList('species');">
+            <option>Common Name</option>
+            <option>Scientific Name</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <h3>Step 2: select Surrogate(s)</h3> 
+  <table class="webice">
+    <tr>
+      <th>Surrogate(s):</th>
+    </tr>
+    <tr>
+      <td> 
+        <select name="Surrogate" id="Surrogate" onchange="">
+          <option></option><option>______________________</option><option></option>
+        </select>
+      </td>
+      <td>
+        <button type="button" onclick="addSpecies('Surrogate');" id="addButton">Add</button>
+        <span id="limitText" style="display:none;color:red;">No more than 25 species may be chosen for one calculation.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <br/>
+        Sort By: 
+        <select id="sortBy" onchange="importSurrogate(this.form.species.options[this.form.species.selectedIndex].value);cleanList('Surrogate');">
+          <option>Common Name</option>
+          <option>Scientific Name</option>
+        </select>
+      </td>
+    </tr>
+  </table class="webice">
+  <table class="webice" style="display:none">
+    <tr>
+      <td>Species</td>
+      <td>Toxicity (<span id="tneUnits">&#956;g/L</span>)</td>
+    </tr>
+  </table>
+  <!-- <input type="submit" value="Calculate" id="SubmitTable" style="display:none;" /> -->
+  <!-- <button type="button" onclick="location.href=document.URL;">Reset this Form</button> -->
+  <input type="hidden" id="" name="" />
+  <input type="hidden" id="" name="" />
+  <input type="hidden" id="" name="" />
+</div>

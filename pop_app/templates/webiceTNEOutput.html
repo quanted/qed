@@ -1,0 +1,78 @@
+<link href="/stylesheets/style_webice.css" media="screen" rel="stylesheet" type="text/css" />
+
+<h1 id="PageName">Endangered Species</h1>
+<div>
+  <div class="centeredData">
+    <span class="title">Surrogate Species:</span>
+    <span id="speciesIn"> </span>
+  </div>
+  <div class="centeredData">
+    <span class="title">Input Toxicity:</span>
+    <span id="toxValIn"> </span>
+  </div>
+</div>
+<div>
+  <table id="filtertable">
+    <tr>
+      <th colspan="6">
+        Data Filters (Upper and Lower Limits)
+        <button type="button" onclick="filterData();">Filter</button>
+      </th>
+    </tr>
+    <tr>
+      <td></td><td>Lower</td><td>Upper</td>
+      <td></td><td>Lower</td><td>Upper</td>
+    <tr>
+      <td>Degrees of Freedom (N-2)</td>
+      <td><input type="text" size="1" id="dofLL"></td>
+      <td><input type="text" size="1" id="dofUL"></td>
+      <td>Cross-validation Success (%)</td>
+      <td><input type="text" size="1" id="cvsLL"></td>
+      <td><input type="text" size="1" id="cvsUL"></td>
+    </tr>
+    <tr>
+      <td>R2</td>
+      <td><input type="text" size="1" id="r2LL"></td>
+      <td><input type="text" size="1" id="r2UL"></td>
+      <td>Taxonomic Distance</td>
+      <td><input type="text" size="1" id="tdLL"></td>
+      <td><input type="text" size="1" id="tdUL"></td>
+    </tr>
+    <tr>
+      <td>p-value</td>
+      <td><input type="text" size="1" id="pvLL"></td>
+      <td><input type="text" size="1" id="pvUL"></td>
+      <td>Slope</td>
+      <td><input type="text" size="1" id="sLL"></td>
+      <td><input type="text" size="1" id="sUL"></td>
+    </tr>
+    <tr>
+      <td>Mean Square Error (MSE)</td>
+      <td><input type="text" size="1" id="mseLL"></td>
+      <td><input type="text" size="1" id="mseUL"></td>
+      <td>Intercept</td>
+      <td><input type="text" size="1" id="intLL"></td>
+      <td><input type="text" size="1" id="intUL"></td>
+    </tr>
+  </table>
+</div>
+<button type="button" onclick="createExcelSheet(1);">Provide Copy-friendly Output</button>
+<div id="tneResultsContainer">
+  <table id="tneResults">
+    <tr>
+      <th id="Col0">Predicted Taxa</th>
+      <th id="Col1">Model Level</th>
+      <th id="Col2">Surrogate</th>
+      <th id="Col3">Estimated Toxicity</th>
+      <th id="Col4">95% Confidence Intervals</th>
+      <th id="Col5" nowrap="nowrap">df (N-2)</th>
+      <th id="Col6">R2</th>
+      <th id="Col7" nowrap="nowrap">p-value</th>
+      <th id="Col8">Mean Square Error (MSE)</th>
+      <th id="Col9">Cross-validation Success (%)</th>
+      <th id="Col10">Tax. Dist.</th>
+      <th id="Col11">Slope</th>
+      <th id="Col12">Intercept</th>
+    </tr>
+  </table>
+</div>

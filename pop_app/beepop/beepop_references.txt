@@ -1,0 +1,7 @@
+<ul class="bullet">
+  <li>Bromenshenk, J. J., J. Doskocil, et al. (1991). "PC BEEPOP, an ecotoxicological simulation model for honey bee populations." Environmental Toxicology and Chemistry 10(4): 547-558.</li>
+  <li>DeGrandi-Hoffman, G., S. A. Roth, et al. (1990). "BEEAMATE: A honeybee colony genetics models." Ecological Modelling 51(3–4): 299-314.</li>
+  <li>Schmickl, T. and K. Crailsheim (2007). "HoPoMo: A model of honeybee intracolonial population dynamics and resource management." Ecological Modelling 204(1–2): 219-245.</li>
+  <li>Makela, M. E., G. A. Rowell, et al. (1993). "An object-oriented intracolonial and population level model of honey bees based on behaviors of European and Africanized subspecies." Ecological Modelling 67(2–4): 259-284.</li>
+  <li>DeGrandi-Hoffman, G., S. A. Roth, et al. (1989). "BEEPOP: a honeybee population dynamics simulation model." Ecological Modelling 45:133-150.</li>
+</ul>

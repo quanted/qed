@@ -1,0 +1,13 @@
+<p>To build a Leslie model, one need to know the following inputs:</p>
+<img src = "/images/latex/leslie/leslie_1.png" alt="Leslie Matrix_1">
+<p>The fecundiy can be viewed as the number of offspring produced at the next age class</p>
+<p><i>B<sub>k+1</sub></i>weighted by the probability of reaching the next age class.</p>
+<img src = "/images/latex/leslie/leslie_2.png" alt="Leslie Matrix_2">
+<p>The Leslie model is described by the following two equations:</p>
+<img src = "/images/latex/leslie/leslie_3.png" alt="Leslie Matrix_3">
+<p>where the first equation estimates the number of offspring produced by each age class,</p>
+<p>and the second equation estimates the number of individuals survived from age class k-1</p>
+<p>to k. Thus we can present Leslie model in terms of system of equations as:</p>
+<img src = "/images/latex/leslie/leslie_4.png" alt="Leslie Matrix_4">
+<p>more compactly:</p>
+<img src = "/images/latex/leslie/leslie_5.png" alt="Leslie Matrix_5">

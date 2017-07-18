@@ -1,0 +1,20 @@
+<p>
+  <ul>
+    <li><a href="http://epa.gov/ceampubl/fchain/webice/" target="_blank">Web-ICE Webpage</a></li>
+    <li><a href="http://www.epa.gov/ceampubl/fchain/webice/iceManual.html" target="_blank">Web-ICE User Manual</a></li>
+    <li><a href="http://www.epa.gov/ceampubl/fchain/webice/iceBibliography.html" target="_blank">Web-ICE Bibliography</a></li>
+    <li><a href="http://www.epa.gov/ceampubl/fchain/webice/iceSSD.html" target="_blank">Web-ICE Species Sensitivity Distributions</a></li>
+    <li><a href="http://www.epa.gov/ceampubl/fchain/webice/iceDownloads.html" target="_blank">Web-ICE Model Data Downloads</a></li>
+  </ul>
+</p>
+<p>
+Peer-reviewed journal articles and manuscripts on the use of the Web-ICE model:
+</p>
+<ul>
+  <li><a href="http://pubs.acs.org/doi/abs/10.1021/es702861u">
+	Awkerman, J. A., Raimondo, S., & Barron, M. G. (2008). Development of species sensitivity distributions for wildlife using interspecies toxicity correlation models. Environmental science & technology, 42(9), 3447-3452</a></li>
+  <li><a href="http://pubs.acs.org/doi/abs/10.1021/es101630b">
+	Raimondo, S., Jackson, C. R., & Barron, M. G. (2010). Influence of taxonomic relatedness and chemical mode of action in acute interspecies estimation models for aquatic species. Environmental science & technology, 44(19), 7711-7716.</a></li>
+  <li><a href="http://pubs.acs.org/doi/abs/10.1021/es070359o">
+	Raimondo, S., Mineau, P., & Barron, M. G. (2007). Estimation of chemical toxicity to wildlife species using interspecies correlation models. Environmental science & technology, 41(16), 5888-5894.</a></li>
+</ul>

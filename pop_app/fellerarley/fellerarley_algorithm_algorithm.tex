@@ -1,0 +1,64 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{endfloat}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage[margin = 1in]{geometry}
+
+
+\begin{document}
+
+\begin{align}
+\dfrac{dN_{t}}{dt} & = \frac{N(t+ \Delta t) - N(t)}{\Delta t} \nonumber \\
+\nonumber \\
+& = r N(t)-\mu N(t) \nonumber \\
+\nonumber \\ 
+&    \hspace{-1.3in}  \text{thus the solution is:} \nonumber \\
+\nonumber \\ 
+N_{t} & = N_{0}e^{\left( r - \mu \right)t} \nonumber \\
+\nonumber \\ 
+&    \hspace{-1.3in}  \text{where:} \nonumber \\
+N_{0} & = \text{the initial population size} \nonumber \\
+N_{t} & = \text{the population size at time t} \nonumber \\
+r & = \text{birth rate[1/time step]} \nonumber \\
+\mu & = \text{death rate[1/time step]} \nonumber
+\end{align} 
+
+
+\begin{align}
+\text{Probability: } & r (N-1) \Delta t P_{N-1}(t)  \nonumber
+\end{align} 
+
+\begin{align}
+\text{Probability: } & \mu (N+1) \Delta t P_{N+1}(t)  \nonumber
+\end{align} 
+
+\begin{align}
+\text{Probability: } & \left[ 1- \mu - r \right]N \Delta tP_{N}(t) \nonumber
+\end{align} 
+
+\begin{align}
+P_{N}(t+ \Delta t) & = r (N-1) \Delta t P_{N-1}(t) + \mu (N+1) \Delta t P_{N+1}(t)+ \left[ 1- \mu - r \right]N \Delta tP_{N}(t) \nonumber
+\end{align} 
+
+\begin{align}
+\frac{P_{N}(t)}{dt}  & = -N(r+\mu)P_{N}(t)+r(N-1)P_{N-1}(t)+\mu (N+1)P_{N+1}(t) \nonumber \\\nonumber \\
+&    \hspace{-1.6in}  \text{whose solution is:} \nonumber \\
+P_{N}(t) &= \sum_{j=0}^{min(N_{0}, N)} \begin{pmatrix} N_{0}\\j \end{pmatrix}
+\begin{pmatrix} N_{0}+N-j-1\\N_{0}-1 \end{pmatrix} \alpha ^{N_{0}-j} \beta^{N-j} (1- \alpha - \beta)^j \nonumber \\
+&    \hspace{-1.6in}  \text{where:} \nonumber \\
+\alpha &= \frac{\mu \left( e^{(r-\mu)t} -1 \right)}{re^{(r-\mu)t} -\mu} \nonumber \\
+\beta &= \frac{r \left( e^{(r-\mu)t} -1 \right)}{re^{(r-\mu)t} -\mu} \nonumber
+\end{align} 
+
+
+
+
+
+
+
+
+\end{document}
+
+

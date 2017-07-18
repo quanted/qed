@@ -1,0 +1,5 @@
+<p>The population change rate is:</p>
+<img src = "/images/latex/yulefurry/yulefurry_1.png" alt="Yule-Furry_1">
+<p>In terms of probability:</p>
+<img src = "/images/latex/yulefurry/yulefurry_2.png" alt="Yule-Furry_2">
+<img src = "/images/latex/yulefurry/yulefurry_3.png" alt="Yule-Furry_3">

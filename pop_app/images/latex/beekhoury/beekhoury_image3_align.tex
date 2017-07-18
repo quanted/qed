@@ -1,0 +1,28 @@
+\documentclass[fleqn, oneside, 11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[active, tightpage]{preview}
+
+\setlength\PreviewBorder{1pt}%
+
+\begin{document}
+
+\begin{preview}
+\begin{align*}
+%\begin{fleqn}
+\frac{dH}{dt} & = E - HR\nonumber \\
+E & =  \text{Ecclosion rate} \nonumber \\
+H & =  \text{Number of hive worker bees} \nonumber \\
+R & =  \text{Number of bees recruited to forager class} \nonumber \\
+%\end{fleqn}
+\end{align*} 
+\end{preview}
+
+\end{document}
+
+% to convert at commandline- add the pdf file produced by this tex file at the end, and replace e.g., dust_equation25
+gs -sDEVICE=png16m -dTextAlphaBits=4 -r300 -dGraphicsAlphaBits=4 -dSAFER -q -dNOPAUSE -sOutputFile=dust_equation25.png image2_template_standalone.pdf
+
+% then type quit to exit ghostscript
+%using imageMagick
+convert -transparent-color white dust_equation25.png dust_equation25.gif

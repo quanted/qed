@@ -1,0 +1,16 @@
+<h4>Release April 2013</h4>
+<p>
+The Web-based Interspecies Correlation Estimation (Web-ICE) application estimates acute toxicity to aquatic and terrestrial organisms for use in risk assessment. Please refer to the <a href="http://epa.gov/ceampubl/fchain/webice/iceManual.html" target="_blank">User Manual</a> for detailed instructions on using Web-ICE.
+</p>
+<p>
+Web-ICE estimates acute toxicity (LC50/LD50) of a chemical to a species, genus, or family from the known toxicity of the chemical to a surrogate species. Web-ICE has modules to predict acute toxicity to aquatic (fish and invertebrates) and wildlife (birds and mammals) taxa for use in ecological risk assessments, and also contains modules that generate Species Sensitivity Distributions (SSDs) from Web-ICE generated data. Detailed information on model data, development, validation, and application can be found in the User Manual. Reference Web-ICE as:
+</p>
+<p>
+Raimondo, S., C. R. Jackson, and M.G. Barron. 2013. Web-based Interspecies Correlation Estimation (Web-ICE) for Acute Toxicity: User Manual. Version 3.1. EPA/600/R-12/603. Office of Research and Development, U. S. Environmental Protection Agency. Gulf Breeze, FL.
+</p>
+<p>
+The information on this site has been reviewed in accordance with U.S. Environmental Protection Agency policy and approved for publication. Approval does not signify that the content reflects the views of the Agency, nor does mention of trade names or products constitute endorsement or recommendation for use.
+</p>
+<p>
+Web-ICE models may vary among versions as model data are updated and quality criteria refined. Please refer to the user manual available with each version for database descriptions.
+</p>

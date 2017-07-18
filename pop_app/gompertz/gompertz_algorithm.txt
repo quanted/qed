@@ -1,0 +1,2 @@
+<p>The population change rate is:</p>
+<img src = "/images/latex/gompertz/gompertz_1.png" alt="Gompertz_1">

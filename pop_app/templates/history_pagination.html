@@ -1,0 +1,19 @@
+<script src="/stylesheets/smartpaginator.js" type="text/javascript"></script>
+<link href="/stylesheets/smartpaginator.css" rel="stylesheet" type="text/css" />
+
+<script>
+$(document).ready(function() {
+$('#holder_pagination').smartpaginator({ 
+	totalrecords: $("#total_num").html(), 
+	recordsperpage: 20, 
+	datacontainer: 'itemContainer', 
+	dataelement: 'tr', 
+	initval: 0, 
+	next: 'Next', 
+	prev: 'Prev', 
+	first: 'First', 
+	last: 'Last', 
+	theme: 'green' });
+});
+
+</script>

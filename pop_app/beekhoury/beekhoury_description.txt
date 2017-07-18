@@ -1,0 +1,2 @@
+<p>Khoury et al. (2012) published this model to aid in evaluating potential causes of bee colony collapses. The model simulates honey bee colony population dynamics to test the impact of changing death rates of forager bees on overall colony growth and survival. In the model the division of labor among the bees is dependent on the age of the bee but is also sensitive to the hive population dynamics (e.g. if a large quantity of foraging bees die inside worker bees will become foragers at an earlier age).</p>
+

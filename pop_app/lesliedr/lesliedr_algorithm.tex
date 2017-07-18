@@ -1,0 +1,96 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{endfloat}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage[margin = 1in]{geometry}
+
+
+\begin{document}
+
+
+\begin{align}
+\begin{bmatrix}
+n_{0} 
+\\n_{1} 
+\\\vdots
+\\n_{k}  
+\end{bmatrix}_{t+1}
+=
+\begin{bmatrix}
+ F_{0} & F_{1} & \dots & F_{k} \\ 
+ S_{0} & 0 & \dots & 0 \\ 
+ 0 & \ddots & \dots & 0 \\ 
+ 0 & 0 & S_{k-1} & 0 \\ 
+\end{bmatrix}
+\begin{bmatrix}
+n_{0} 
+\\n_{1} 
+\\\vdots
+\\n_{k}  
+\end{bmatrix}_{t} \nonumber \\
+&    \hspace{-4.0in}  \text{where:} \nonumber \\
+& \hspace{-2.5in}  \textit{n}_{k, t+1} = \text{number of organisms in age class k at time t+1} \nonumber \\
+& \hspace{-2.3in} F_{k} = \text{fecundity, the per capita average number of female} \nonumber \\
+& \hspace{-1.9in} \text{offspring born from mother of the age class k} \nonumber \\
+& \hspace{-2.3in} S_{k} = \text{the fraction of individuals that survives from} \nonumber \\
+& \hspace{-1.9in} \text{age class t to age class t+1} \nonumber
+\end{align} 
+
+\begin{align}
+F^{\prime}_{x} &=F_{x}e^{-\gamma N} \nonumber \\
+&    \hspace{-1.3in}  \text{where:} \nonumber \\
+F^{\prime}_{x} &= \text{adjusted fertility rate for age class x }\nonumber \\
+F_{x} &= \text{maximum fertility rate of age class x} \nonumber \\
+\gamma &= \text{constant describing the decay of fertility} \nonumber \\
+N &= \text{total population size} \nonumber
+\end{align} 
+
+\begin{align}
+S_{tox, x} &=S_{x}(1-M_{48}) \nonumber \\
+&    \hspace{-1.3in}  \text{where:} \nonumber \\
+S_{tox, x} &= \text{survival rate after toxic for age class x }\nonumber \\
+S_{x} &= \text{maximum survival rate of age class x} \nonumber \\
+M_{48} &= \text{48h mortality rate based on logistic dose response model}\nonumber
+\end{align}
+ 
+\begin{align}
+&    \hspace{-1.3in}  \text{} \nonumber \\
+M_{48} &= \frac{1}{1+e^{-\alpha \times \ln C_{0}(\frac{1}{2}^{\frac{t}{HL}}) - \beta}} \nonumber \\
+&    \hspace{-1.3in}  \text{where:} \nonumber \\
+\alpha, \beta &= \text{coefficients of logistic dose response function}\nonumber \\
+C_{0} &= \text{chemical initial concentration} \nonumber \\
+HL &= \text{chemical half life}\nonumber \\
+t &= \text{simulation duration}\nonumber
+\end{align} 
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

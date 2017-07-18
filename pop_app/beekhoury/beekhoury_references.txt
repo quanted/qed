@@ -1,0 +1,10 @@
+<ul class="bullet">
+  <li>Khoury DS, Myerscough MR, and Barron AB. 2011. A quantitative model of honey bee colony population dynamics. PloS One 6, e18491.</li>
+  <li>Henry M, Beguin M, Requier F, Rollin O, Odoux J-F, Aupinel P, Aptel J, Tchamitchian S, and Decourtye A. 2012. A common pesticide decreases foraging success and survival in honey bees. Science 336:348-350.</li>
+  <li>Henry, Mickaël, et al. 2012. Response to Comment on "A Common Pesticide Decreases Foraging Success and Survival in Honey Bees". Science 337(6101):1453-1453.</li>
+  <li>Sgolastra, Fabio, et al. 2012. Effects of neonicotinoid dust from maize seed-dressing on honey bees. Bulletin of Insectology 65(2): 273-280.</li>
+  <li>Higes, Mariano, et al. 2013. Nosema ceranae (Microsporidia), a controversial 21st century honey bee pathogen. Environmental Microbiology Reports.</li>
+  <li>Henry, Mickaël, et al. 2012. Response to Comment on “A Common Pesticide Decreases Foraging Success and Survival in Honey Bees”. Science 337(6101):1453-1453.</li>
+  <li>Core, Andrew, et al. 2012. A new threat to honey bees, the parasitic phorid fly apocephalus borealis. PloS one 7.1, e29639.</li>
+  <li>Cresswell, James E., and Helen M. Thompson. 2012.  Comment on “A Common Pesticide Decreases Foraging Success and Survival in Honey Bees”. Science 337(6101):1453-1453.</li>
+</ul>

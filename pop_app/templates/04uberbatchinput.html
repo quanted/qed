@@ -1,0 +1,21 @@
+<!--start 04uberbatchinput-->
+	<div class="articles">
+		<h2 class="model_header">{{ model_attributes }}</h2>
+		<ul class="nobullet">
+			<li><a href="/csvs/{{model}}_batch.csv">Please download, fill, and upload this CSV file for batch calculation. </a></li>
+		</ul>
+		<ul class="nobullet">
+		<li>
+			<form method="post" id="form1">
+			File to upload: <input type="file" id="upfile1" name="upfile" class="required input_button" accept=".csv" />
+		</li>
+		<li>
+			<input class="submit_button" type="button" value="Submit Batch" /> Upload the file!
+			</form>
+		</li>	
+		</ul>
+                   
+<!-- End "popup" div -->
+<!-- enctype="multipart/form-data" action={{model}}_batchoutput.html -->
+
+<!--end 04uberbatchinput-->

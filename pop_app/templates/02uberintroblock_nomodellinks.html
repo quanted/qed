@@ -1,0 +1,41 @@
+<!--start 02uberintroblock_nomodellinks-->
+
+<!-- "Click" Menus -->
+<script type="text/javascript">
+$( document ).ready(function() {
+	var SkinChk;
+	$('.fadeMenu').hover(function(){
+		SkinChk = getCookie('ubercookie');
+		if (SkinChk == 'EPA') {
+			// EPA Skin
+			$(this).stop().animate({ backgroundColor:'#356697', color:'#F7F9F4'},500);
+		} else {
+			// Default Skin
+			$(this).stop().animate({ backgroundColor:'rgb(255,165,0)', color:'#FFFFFF'},500);
+		}
+	}, function(){
+		SkinChk = getCookie('ubercookie');
+		if (SkinChk == 'EPA') {
+			// EPA Skin
+			$(this).stop().animate({ backgroundColor:'#dee7ef', color:'#1F262A'},500);
+		} else {
+			// Default Skin
+			$(this).stop().animate({ backgroundColor:'rgb(201,224,179)', color:'#333333'},500);
+		}
+	});
+});
+</script>
+
+<!-- Header Menu Bar -->
+<div id="header_menu_nav">
+  <ul></ul>
+</div>      
+<div id="header_menu_r">
+  <ul>
+    <li><a href="blog_main.html" target="_blank">Blog</a></li>
+	<li>|</li>
+    <li><a href="contactus_eco_input.html">Contact Us</a></li>
+  </ul>
+</div>
+
+<!--end 02uberintroblock_nomodellinks-->

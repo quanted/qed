@@ -1,0 +1,79 @@
+<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="/stylesheets/jqplot/excanvas.js"></script><![endif]-->
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/jquery.jqplot.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/jqplot/jquery.jqplot.css" />
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.pointLabels.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.cursor.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/stylesheets/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<div id="chart1" style="margin-top:20px; margin-left:20px; width:650px; height:400px;"></div>
+
+<script type='text/javascript'> 
+
+$(document).ready(function(){
+	var kk = $.parseJSON($('#ita').text());
+
+    $.jqplot.postDrawHooks.push(function() {
+        var swatches = $('table.jqplot-table-legend tr td.jqplot-table-legend-swatch');
+        var labels = $('table.jqplot-table-legend tr td.jqplot-table-legend-label');
+        //var kk = $.parseJSON($('#ita').text());
+        
+        $(swatches).hide();
+        $(labels).hide();	
+        $(swatches[0]).show();
+        $(labels[0]).show(); 		
+        $(swatches[1]).show();
+        $(labels[1]).show();         
+
+    });
+		
+        $.jqplot.config.enablePlugins = true;
+    	var s1 = $.parseJSON($('#x').text());
+    	var s2 = $.parseJSON($('#x_mu').text());
+		s1.unshift(s2);	
+		s1.push(s2);
+		
+		L=[{label:'Expoential Process', color:'blue'},{label:'Feller-Arley Process', color:'red'}];
+		
+		var i=1
+		while(i<kk)
+			{
+				L.push({label:'Feller-Arley Process', color:'red'});
+				i++;
+			}
+		L.push({label:'Expoential Process', color:'blue'})	
+		
+        $.jqplot('chart1', s1, {
+			
+			seriesDefaults: { 		
+        	showMarker:false,
+         	pointLabels: { show:false } 
+      		},
+			
+			series:L,
+			
+			axes: {
+      			xaxis: {
+					label :'Time units',
+					pad: 0
+      				},
+      			yaxis: {
+        			label: 'Number of individuals',
+					labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+					pad: 0
+      				}
+    		},
+			 legend: {
+      			show: true,
+      			location: 'nw',
+      			placement: 'inside',
+				fontSize: '11px'
+    		}
+	
+        })   
+    })
+</script>
+
+
+

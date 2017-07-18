@@ -1,0 +1,66 @@
+<script>
+$(document).ready(function() {
+	
+    $('#id_S').change(function() {
+		$('.leslie1').remove();
+		$('.no1').remove();
+		var total = $(this).val()
+		$('<tr class="leslie1"><th colspan='+total+'>Leslie Matrix:</th></tr>').appendTo('.leslie');	
+			
+		i=0
+		while (i < total){
+		$('<tr class="leslie1">').appendTo('.leslie')
+
+		var j=0
+			while (j < total) {	
+			$('<td><input type="text" size="5" name="a'+i+''+j+'" value="0" id="id_a'+i+''+j+'"/></td>').appendTo('.leslie tr:last')
+  			j=j+1
+			}
+			
+		$('</tr>').appendTo('.leslie')
+		i=i+1			
+		}
+		$('</table>').appendTo('.leslie');	
+		
+		
+		$('<tr class="no1"><th width="5">Initial Number:</th></tr>').appendTo('.no');			
+
+		q=0
+		while (q < total){
+		$('<tr class="no1"><td><input type="text" size="5" name="no'+q+'" value="0" id="id_a'+q+'"/></td></tr>').appendTo('.no')
+		q=q+1			
+		}
+		$('</table>').appendTo('.no');	
+	
+})
+})
+
+//old approach
+//	$(".articles").find('table').addClass('table');
+//	
+//    $('#id_S').change(function() {
+//		$('.leslie').remove();
+//		$('.no').remove();
+//		var total = $(this).val()
+//
+//		//$('<table class="leslie" border="0" align="center"><tr><th width="5" colspan='+total+'>Lesile Matrix:</th></tr>').appendTo('.table td:last');			
+//		$('<table class="leslie" border="0" align="center"><tr><th class="no">Initial Number:</th><th width="5" colspan='+total+'>Lesile Matrix:</th></tr>').appendTo('.table td:last');	
+//		
+//		i=0
+//		while (i < total){
+//		$('<tr><td><input type="text" size="5" name="no'+i+'" value="0" id="id_a'+i+'"/></td>').appendTo('.leslie')
+//
+//		var j=0
+//			while (j < total) {	
+//			$('<td><input type="text" size="5" name="a'+i+''+j+'" value="0" id="id_a'+i+''+j+'"/></td>').appendTo('.leslie tr:last')
+//  			j=j+1
+//			}
+//			
+//		$('</tr>').appendTo('.leslie')
+//		i=i+1			
+//		}
+//		$('</table>').appendTo('.leslie');	
+
+
+</script>
+

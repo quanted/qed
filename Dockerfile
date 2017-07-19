@@ -10,7 +10,7 @@ RUN pip install --requirement /src/requirements.txt
 #RUN for file in *_app/requirements.txt; do pip install --requirement /src/$file; done
 
 # Install uWSGI
-RUN pip install uwsgi
+# RUN pip install uwsgi added to requirements.txt
 
 # Overwrite the uWSGI config
 COPY uwsgi.ini /etc/uwsgi/

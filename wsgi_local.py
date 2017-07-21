@@ -15,9 +15,9 @@ print('wsgi_local.py')
 # os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 
 if os.environ.get('DJANGO_SETTINGS_FILE'):
-	os.environ.setdefault("DJANGO_SETTINGS_MODULE", os.environ.get('DJANGO_SETTINGS_FILE'))
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", os.environ.get('DJANGO_SETTINGS_FILE'))
 else:
-	os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings_local")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings_local")
 
 
 # entry point

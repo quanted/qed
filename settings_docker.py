@@ -8,12 +8,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
-from settings import *
-import os
-import socket
-import sys
 import logging
-
+import socket
+from settings import *
 
 print('settings_docker.py')
 
@@ -27,7 +24,7 @@ for key, val in os.environ.items():
 os.environ.update({
     'REST_SERVER_8': 'http://172.20.100.18',
     'PROJECT_PATH': PROJECT_ROOT,
-    'SITE_SKIN': 'EPA',                          # Leave empty ('') for default skin, 'EPA' for EPA skin
+    'SITE_SKIN': 'EPA',  # Leave empty ('') for default skin, 'EPA' for EPA skin
     'CONTACT_URL': 'https://www.epa.gov/research/forms/contact-us-about-epa-research',
     # # # cts_api addition:
     # 'CTS_EPI_SERVER': 'http://172.20.100.18',
@@ -50,28 +47,27 @@ if not os.environ.get('UBERTOOL_REST_SERVER'):
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-    
 # SECURITY WARNING: keep the secret key used in production secret!
 try:
-#    SECRET_KEY= os.environ.get('DOCKER_SECRET_KEY')
+    #    SECRET_KEY= os.environ.get('DOCKER_SECRET_KEY')
     with open('secret_key_django_dropbox.txt') as f:
         SECRET_KEY = f.read().strip()
 except:
     print("Secret file not set as env variable")
-    #SECRET_KEY = 'Shhhhhhhhhhhhhhh'
+    # SECRET_KEY = 'Shhhhhhhhhhhhhhh'
 
 try:
-    HOSTNAME= os.environ.get('DOCKER_HOSTNAME')
-#    with open('secret_key_django_dropbox.txt') as f:
+    HOSTNAME = os.environ.get('DOCKER_HOSTNAME')
+# with open('secret_key_django_dropbox.txt') as f:
 #        SECRET_KEY = f.read().strip()
 except:
     print("HOSTNAME address not set as env variable")
     HOSTNAME = 'unknown'
 
-#try:
+# try:
 #    with open('my_ip_address.txt') as f:
 #	IP_ADDRESS = f.read().strip()
-#except IOError as e:
+# except IOError as e:
 #    print("No IP address given")
 #    IP_ADDRESS = '0.0.0.0'
 
@@ -90,17 +86,17 @@ elif HOSTNAME == "ord-uber-vm003":
     IS_PUBLIC = True
 else:
     ALLOWED_HOSTS.append('192.168.99.100')  # Docker Machine IP (generally, when using VirtualBox VM)
-    ALLOWED_HOSTS.append('134.67.114.3')    # CGI NAT address (mapped to 'qed.epa.gov')
+    ALLOWED_HOSTS.append('134.67.114.3')  # CGI NAT address (mapped to 'qed.epa.gov')
     ALLOWED_HOSTS.append('134.67.114.1')
     ALLOWED_HOSTS.append('172.20.100.11')
-    ALLOWED_HOSTS.append('172.20.100.13')    
+    ALLOWED_HOSTS.append('172.20.100.13')
     ALLOWED_HOSTS.append('qedinternal.epa.gov')
     ALLOWED_HOSTS.append('qed.epa.gov')
     IS_PUBLIC = False
 
-print(("MACHINE_ID = {}").format(MACHINE_ID))
-print(("HOSTNAME = {}").format(HOSTNAME))
-print(("IS_PUBLIC = {}").format(IS_PUBLIC))
+print("MACHINE_ID = {}".format(MACHINE_ID))
+print("HOSTNAME = {}".format(HOSTNAME))
+print("IS_PUBLIC = {}".format(IS_PUBLIC))
 
 # Disable this because Django wants to email errors and there is no email server set up
 # ADMINS = (
@@ -121,7 +117,6 @@ ROOT_URLCONF = 'urls'
 
 WSGI_APPLICATION = 'wsgi_docker.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
@@ -129,8 +124,6 @@ WSGI_APPLICATION = 'wsgi_docker.application'
 AUTH = True
 LOGIN_URL = '/ubertool/login'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -145,13 +138,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 STATIC_ROOT = '/src/collected_static/'
 
 # Log to console in Debug mode
 if DEBUG:
     import logging
+
     logging.basicConfig(
-        level = logging.DEBUG,
-        format = '%(asctime)s %(levelname)s %(message)s',
+        level=logging.DEBUG,
+        format='%(asctime)s %(levelname)s %(message)s',
     )

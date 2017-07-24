@@ -22,7 +22,7 @@ nose-htmloutput==0.6.0
 numpy==1.13.1
 pandas==0.20.3
 pillow==4.2.1
-psycopg2==2.7.1
+psycopg2==2.7.2
 pylint==1.7.2
 pymongo==3.4.0
 pypdf2==1.26.0

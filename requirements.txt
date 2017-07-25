@@ -7,7 +7,7 @@ django==1.11.3
 django-crispy-forms==1.6.1
 django-parsley==0.6 #problematic for django 1.9+
 django-rest-swagger==2.1.2
-earthengine-api==0.1.117
+earthengine-api==0.1.119
 factory-boy==2.8.1
 flake8==3.3.0
 flask==0.12.2
@@ -23,7 +23,7 @@ numba
 numpy==1.13.1
 pandas==0.20.3
 pillow==4.2.1
-psycopg2==2.7.1
+psycopg2==2.7.2
 pylint==1.7.2
 pymongo==3.4.0
 pypdf2==1.26.0

@@ -42,7 +42,8 @@ DEBUG = True
 TEMPLATE_DEBUG = False
 
 if not os.environ.get('UBERTOOL_REST_SERVER'):
-    os.environ.update({'UBERTOOL_REST_SERVER': 'http://qed_nginx:7777'})  # Docker network
+    # Docker network
+    os.environ.update({'UBERTOOL_REST_SERVER': 'http://qed_nginx:7777'})
     print("REST backend = http://qed_nginx:7777")
 
 # Quick-start development settings - unsuitable for production
@@ -74,16 +75,18 @@ except:
 
 
 ALLOWED_HOSTS = []
+if HOSTNAME == "ord-uber-vm003":
+    IS_PUBLIC = True
+else:
+    IS_PUBLIC = False
 if HOSTNAME == "ord-uber-vm001":
+    ALLOWED_HOSTS.append('qedinternal.epa.gov')
     ALLOWED_HOSTS.append('134.67.114.1')
     ALLOWED_HOSTS.append('172.20.100.11')
-    ALLOWED_HOSTS.append('qedinternal.epa.gov')
-    IS_PUBLIC = False
 elif HOSTNAME == "ord-uber-vm003":
     ALLOWED_HOSTS.append('134.67.114.3')
     ALLOWED_HOSTS.append('172.20.100.13')
     ALLOWED_HOSTS.append('qed.epa.gov')
-    IS_PUBLIC = True
 else:
     ALLOWED_HOSTS.append('192.168.99.100')  # Docker Machine IP (generally, when using VirtualBox VM)
     ALLOWED_HOSTS.append('134.67.114.3')  # CGI NAT address (mapped to 'qed.epa.gov')
@@ -92,7 +95,6 @@ else:
     ALLOWED_HOSTS.append('172.20.100.13')
     ALLOWED_HOSTS.append('qedinternal.epa.gov')
     ALLOWED_HOSTS.append('qed.epa.gov')
-    IS_PUBLIC = False
 
 print("MACHINE_ID = {}".format(MACHINE_ID))
 print("HOSTNAME = {}".format(HOSTNAME))

@@ -43,7 +43,8 @@ DEBUG = True
 TEMPLATE_DEBUG = False
 
 if not os.environ.get('UBERTOOL_REST_SERVER'):
-    os.environ.update({'UBERTOOL_REST_SERVER': 'http://localhost:7777'})  # Local REST server
+    # Local REST server within epa intranet
+    os.environ.update({'UBERTOOL_REST_SERVER': 'http://localhost:7777'})
     print("REST backend = http://localhost:7777")
 
     # SECURITY WARNING: we keep the secret key in a shared dropbox directory

@@ -1,7 +1,6 @@
 class HemRouter(object):
     """
-    A router to control all database operations on models in the
-    hem application.
+    Controls database operations for the hem application.
     """
     def db_for_read(self, model, **hints):
         """
@@ -40,8 +39,7 @@ class HemRouter(object):
 #Class for hwbi_db routing
 class HwbiRouter(object):
     """
-    A router to control all database operations on models in the
-    hwbi application.
+    Controls database operations for the hwbi application.
     """
 
     def db_for_read(self, model, **hints):
@@ -81,8 +79,7 @@ class HwbiRouter(object):
 #Class for pisces_db routing
 class PiscesRouter(object):
     """
-    A router to control all database operations on models in the
-    pisces application.
+    Controls database operations for the pisces application.
     """
 
     def db_for_read(self, model, **hints):

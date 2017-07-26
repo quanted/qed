@@ -52,15 +52,16 @@ try:
     #    SECRET_KEY= os.environ.get('DOCKER_SECRET_KEY')
     with open('secret_key_django_dropbox.txt') as f:
         SECRET_KEY = f.read().strip()
-except:
+except IOError as e:
     print("Secret file not set as env variable")
-    # SECRET_KEY = 'Shhhhhhhhhhhhhhh'
+    # down_low = 'Shhhhhhhhhhhhhhh'
+    # SECRET_KEY = down_low
 
 try:
     HOSTNAME = os.environ.get('DOCKER_HOSTNAME')
-# with open('secret_key_django_dropbox.txt') as f:
-#        SECRET_KEY = f.read().strip()
-except:
+    # with open('secret_key_django_dropbox.txt') as f:
+    #        SECRET_KEY = f.read().strip()
+except IOError as e:
     print("HOSTNAME address not set as env variable")
     HOSTNAME = 'unknown'
 
@@ -142,8 +143,6 @@ STATIC_ROOT = '/src/collected_static/'
 
 # Log to console in Debug mode
 if DEBUG:
-    import logging
-
     logging.basicConfig(
         level=logging.DEBUG,
         format='%(asctime)s %(levelname)s %(message)s',

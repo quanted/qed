@@ -9,7 +9,7 @@ django-parsley==0.6 #problematic for django 1.9+
 django-rest-swagger==2.1.2
 earthengine-api==0.1.119
 factory-boy==2.8.1
-flake8==3.3.0
+flake8==3.4.1
 flask==0.12.2
 flask-restful==0.3.6
 flask-swagger==0.2.13

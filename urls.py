@@ -11,6 +11,7 @@ print('qed.urls')
 if settings.IS_PUBLIC:
     urlpatterns = [
         url(r'^$', include('splash_app.urls'),name='home'),
+        url(r'^cyan/', include('cyan_app.urls')),
     ]
 else:
     urlpatterns = [

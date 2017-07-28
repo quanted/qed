@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
 import logging
+import os
 import socket
-from settings import *
+from . import settings
 
 print('settings_docker.py')
 
@@ -23,7 +24,7 @@ for key, val in os.environ.items():
 # Define ENVIRONMENTAL VARIABLES for project (replaces the app.yaml)
 os.environ.update({
     'REST_SERVER_8': 'http://172.20.100.18',
-    'PROJECT_PATH': PROJECT_ROOT,
+    'PROJECT_PATH': settings.PROJECT_ROOT,
     'SITE_SKIN': 'EPA',  # Leave empty ('') for default skin, 'EPA' for EPA skin
     'CONTACT_URL': 'https://www.epa.gov/research/forms/contact-us-about-epa-research',
     # # # cts_api addition:
@@ -53,15 +54,16 @@ try:
     #    SECRET_KEY= os.environ.get('DOCKER_SECRET_KEY')
     with open('secret_key_django_dropbox.txt') as f:
         SECRET_KEY = f.read().strip()
-except:
+except IOError as e:
     print("Secret file not set as env variable")
-    # SECRET_KEY = 'Shhhhhhhhhhhhhhh'
+    # down_low = 'Shhhhhhhhhhhhhhh'
+    # SECRET_KEY = down_low
 
 try:
     HOSTNAME = os.environ.get('DOCKER_HOSTNAME')
-# with open('secret_key_django_dropbox.txt') as f:
-#        SECRET_KEY = f.read().strip()
-except:
+    # with open('secret_key_django_dropbox.txt') as f:
+    #        SECRET_KEY = f.read().strip()
+except IOError as e:
     print("HOSTNAME address not set as env variable")
     HOSTNAME = 'unknown'
 
@@ -144,8 +146,6 @@ STATIC_ROOT = '/src/collected_static/'
 
 # Log to console in Debug mode
 if DEBUG:
-    import logging
-
     logging.basicConfig(
         level=logging.DEBUG,
         format='%(asctime)s %(levelname)s %(message)s',

@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-import sys
 
 print('settings.py')
 
@@ -51,6 +50,7 @@ TEMPLATES = [
             os.path.join(TEMPLATE_ROOT, 'hms'),
             os.path.join(TEMPLATE_ROOT, 'hwbi'),
             os.path.join(TEMPLATE_ROOT, 'pisces'),
+            os.path.join(TEMPLATE_ROOT, 'pop'),
             os.path.join(TEMPLATE_ROOT, 'sam'),
             os.path.join(TEMPLATE_ROOT, 'splash'),
             os.path.join(TEMPLATE_ROOT, 'uber2017'),

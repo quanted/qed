@@ -22,9 +22,8 @@ class HemRouter(object):
         """
         Allow relations if a model in the hem app is involved.
         """
-        if obj1._meta.app_label == 'hem_app' or \
-           obj2._meta.app_label == 'hem_app':
-           return True
+        if obj1._meta.app_label == 'hem_app' or obj2._meta.app_label == 'hem_app':
+            return True
         return None
 
     def allow_migrate(self, db, app_label, model_name=None, **hints):

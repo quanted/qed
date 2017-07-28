@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 from settings import *
 import os
-import sys
 
 print('settings_local.py')
 
@@ -54,12 +53,13 @@ try:
         SECRET_KEY = f.read().strip()
 except IOError as e:
     print("Could not find secret file")
-    SECRET_KEY = 'Shhhhhhhhhhhhhhh'
+    down_low = 'Shhhhhhhhhhhhhhh'
+    SECRET_KEY = down_low
 
     ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1'
-]
+        'localhost',
+        '127.0.0.1'
+    ]
 
 #IS_PUBLIC = True
 IS_PUBLIC = False

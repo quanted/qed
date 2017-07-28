@@ -1,5 +1,5 @@
 beautifulsoup4==4.6.0
-celery==4.0.2
+celery==4.1.0
 codecov==2.0.9
 coverage==4.4.1
 coveralls==1.1
@@ -7,7 +7,7 @@ django==1.11.3
 django-crispy-forms==1.6.1
 django-parsley==0.6 #problematic for django 1.9+
 django-rest-swagger==2.1.2
-earthengine-api==0.1.117
+earthengine-api==0.1.119
 factory-boy==2.8.1
 flake8==3.3.0
 flask==0.12.2
@@ -19,11 +19,11 @@ html5lib==0.999999999
 nose2==0.6.5
 nose-cov==1.6
 nose-htmloutput==0.6.0
-numba
+numba==0.34.0
 numpy==1.13.1
 pandas==0.20.3
 pillow==4.2.1
-psycopg2==2.7.1
+psycopg2==2.7.3
 pylint==1.7.2
 pymongo==3.4.0
 pypdf2==1.26.0
@@ -34,7 +34,7 @@ python-dotenv==0.6.4
 pytz==2017.2
 redis==2.10.5 #pip not conda
 reportlab==3.4.0
-requests==2.18.1
+requests==2.18.2
 scipy==0.19.1
 selenium==3.4.3
 Sphinx==1.6.3

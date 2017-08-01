@@ -117,7 +117,8 @@ MIDDLEWARE_CLASSES = (
 
 ROLLBAR = {
     'access_token': 'b626ac6c59744e5ba7ddd088a0075893',
-    'environment': 'development', # if DEBUG else 'production',
+    # 'environment': 'development', # if DEBUG else 'production',
+    'environment': 'production',
     'branch': 'master',
     'root': '/var/www/qed',
 }

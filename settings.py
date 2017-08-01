@@ -111,8 +111,8 @@ MIDDLEWARE_CLASSES = (
     #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     #'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+    #'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 )
 
 ROLLBAR = {

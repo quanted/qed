@@ -111,15 +111,15 @@ print("IS_PUBLIC = {}".format(IS_PUBLIC))
 # )
 
 
-MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware', #rollbar
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware', #rollbar
-    # 'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
+# MIDDLEWARE_CLASSES = (
+#     'django.contrib.sessions.middleware.SessionMiddleware',
+#     'django.middleware.common.CommonMiddleware',
+#     'django.middleware.csrf.CsrfViewMiddleware', #rollbar
+#     'django.contrib.auth.middleware.AuthenticationMiddleware',
+#     'django.middleware.clickjacking.XFrameOptionsMiddleware', #rollbar
+#     # 'django.contrib.messages.middleware.MessageMiddleware',
+#     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+# )
 
 ROOT_URLCONF=__name__, #rollbar
 

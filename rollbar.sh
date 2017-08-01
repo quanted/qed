@@ -1,8 +1,5 @@
 #!/bin/bash
 
-django-admin.py collectstatic --noinput       # "Collect" static files (--noinput executes the command w/o user interaction)
-exec uwsgi /etc/uwsgi/uwsgi.ini               # Start uWSGI (HTTP router that binds Python WSGI to a web server, e.g. NGINX)
-
 ACCESS_TOKEN=b626ac6c59744e5ba7ddd088a0075893
 ENVIRONMENT=production
 LOCAL_USERNAME=`puruckertom`

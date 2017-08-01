@@ -112,7 +112,15 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     #'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 )
+
+ROLLBAR = {
+    'access_token': 'b626ac6c59744e5ba7ddd088a0075893',
+    'environment': 'development', # if DEBUG else 'production',
+    'branch': 'master',
+    'root': '/var/www/qed',
+}
 
 ROOT_URLCONF = 'urls'
 

@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import logging
 import os
 import socket
-from . import settings
+from settings import *
+# import settings
+# from . import settings
 
 print('settings_docker.py')
 
@@ -24,7 +26,7 @@ for key, val in os.environ.items():
 # Define ENVIRONMENTAL VARIABLES for project (replaces the app.yaml)
 os.environ.update({
     'REST_SERVER_8': 'http://172.20.100.18',
-    'PROJECT_PATH': settings.PROJECT_ROOT,
+    'PROJECT_PATH': PROJECT_ROOT,
     'SITE_SKIN': 'EPA',  # Leave empty ('') for default skin, 'EPA' for EPA skin
     'CONTACT_URL': 'https://www.epa.gov/research/forms/contact-us-about-epa-research',
     # # # cts_api addition:

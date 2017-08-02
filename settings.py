@@ -115,15 +115,24 @@ MIDDLEWARE_CLASSES = (
     'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 )
 #
+
+
+ROOT_URLCONF = 'urls'
+
 ROLLBAR = {
     'access_token': 'b626ac6c59744e5ba7ddd088a0075893',
     # 'environment': 'development', # if DEBUG else 'production',
-    'environment': 'production',
+    'environment': 'development',
     'branch': 'master',
     'root': '/var/www/qed',
 }
 
-ROOT_URLCONF = 'urls'
+ROLLBAR = {
+    'access_token': 'POST_SERVER_ITEM_ACCESS_TOKEN',
+    'environment': 'development',
+    'branch': 'master',
+    'root': os.getcwd()
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases

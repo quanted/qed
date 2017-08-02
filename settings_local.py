@@ -41,6 +41,7 @@ os.environ.update({
 # DEBUG = False
 DEBUG = True
 TEMPLATE_DEBUG = False
+CSRF_USE_SESSIONS = False
 
 if not os.environ.get('UBERTOOL_REST_SERVER'):
     # Local REST server within epa intranet

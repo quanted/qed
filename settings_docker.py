@@ -12,6 +12,7 @@ import logging
 import os
 import socket
 from settings import *
+from django.conf import settings
 # import settings
 # from . import settings
 
@@ -113,11 +114,50 @@ print("IS_PUBLIC = {}".format(IS_PUBLIC))
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware', #rollbar
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware', #rollbar
     # 'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+ROOT_URLCONF=__name__, #rollbar
+
+ROLLBAR = {
+    'access_token': 'b626ac6c59744e5ba7ddd088a0075893',
+    # 'environment': 'development', # if DEBUG else 'production',
+    'environment': 'production',
+    'branch': 'master',
+    'root': '/var/www/qed',
+}
+
+ROLLBAR = {
+    'access_token': 'POST_SERVER_ITEM_ACCESS_TOKEN',
+    'environment': 'production',
+    'branch': 'master',
+    'root': os.getcwd()
+}
+
+## rollbar integration
+#settings.configure(
+#    DEBUG=True,
+#    SECRET_KEY='thisisthesecretkey',
+#    ROOT_URLCONF=__name__,
+#    ROLLBAR = {
+#        'access_token': 'POST_SERVER_ITEM_ACCESS_TOKEN',
+#        'environment': 'development',
+#        'branch': 'master',
+#        'root': os.getcwd()
+#    },
+#    MIDDLEWARE_CLASSES=(
+#        'django.middleware.common.CommonMiddleware',
+#        'django.middleware.csrf.CsrfViewMiddleware',
+#        'django.middleware.clickjacking.XFrameOptionsMiddleware',###
+#
+#        # Rollbar middleware
+#        'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+#    ),
+#)
 
 ROOT_URLCONF = 'urls'
 

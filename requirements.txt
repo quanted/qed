@@ -42,4 +42,4 @@ Sphinx==1.6.3
 tabulate==0.7.7
 uwsgi==2.0.15
 xhtml2pdf==0.2b1 #beta version has python 3 support, pip only atm
-xlsxwriter==0.9.8
+xlsxwriter==1.0.0

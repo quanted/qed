@@ -24,7 +24,7 @@ numpy==1.13.3
 pandas==0.20.3
 pillow==4.2.1
 psycopg2==2.7.3.1
-pylint==1.7.2
+pylint==1.7.4
 pymongo==3.5.1
 pypdf2==1.26.0
 pytest==3.2.2

@@ -30,14 +30,6 @@ os.environ.update({
     'PROJECT_PATH': PROJECT_ROOT,
     'SITE_SKIN': 'EPA',                          # Leave empty ('') for default skin, 'EPA' for EPA skin
     'CONTACT_URL': 'https://www.epa.gov/research/forms/contact-us-about-epa-research',
-
-    # # CTS additions #
-    # 'CTS_EPI_SERVER': 'http://localhost:55342',  # port??
-    # 'CTS_EFS_SERVER': 'http://ca-test-1.cloudapp.net',
-    # 'CTS_JCHEM_SERVER': 'http://ca-test-1.cloudapp.net',
-    # 'CTS_SPARC_SERVER': 'http://204.46.160.69:8080',
-    # 'CTS_TEST_SERVER': '',
-    # # 'CTS_VERSION': '1.7'  # now at settings.py
 })
 DEBUG = True
 

@@ -7,7 +7,7 @@ django==1.11.6
 django-crispy-forms==1.7.0
 django-parsley==0.6 #problematic for django 1.9+
 django-rest-swagger==2.1.2
-earthengine-api==0.1.125
+earthengine-api==0.1.126
 factory-boy==2.9.2
 flake8==3.4.1
 flask==0.12.2

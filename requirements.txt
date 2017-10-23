@@ -4,12 +4,12 @@ codecov==2.0.9
 coverage==4.4.1
 coveralls==1.2.0
 django==1.11.6
-django-crispy-forms==1.6.1
+django-crispy-forms==1.7.0
 django-parsley==0.6 #problematic for django 1.9+
 django-rest-swagger==2.1.2
-earthengine-api==0.1.125
+earthengine-api==0.1.126
 factory-boy==2.9.2
-flake8==3.4.1
+flake8==3.5.0
 flask==0.12.2
 flask-restful==0.3.6
 flask-swagger==0.2.13
@@ -35,10 +35,10 @@ pytz==2017.2
 redis==2.10.6 #pip not conda
 reportlab==3.4.0
 requests==2.18.4
-rollbar==0.13.13
+rollbar==0.13.16
 scipy==0.19.1
 selenium==3.6.0
-Sphinx==1.6.4
+Sphinx==1.6.5
 tabulate==0.8.1
 uwsgi==2.0.15
 xhtml2pdf==0.2b1 #beta version has python 3 support, pip only atm

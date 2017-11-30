@@ -184,6 +184,10 @@ services:
     build: ./ubertool_ecorest
     expose:
       - "7777"
+    links:
+      - redis
+    environment:
+      - REDIS_HOSTNAME=redis
 
   #hwbi_rest:
   #  build: ../hwbi_rest/src/hwbi_rest

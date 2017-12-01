@@ -161,6 +161,19 @@ services:
     # env_file:
     #   - ./${QED_CONFIG}
 
+  # Update for Celery: celery_worker and redis
+  # rename to worker_flask
+  celery_worker:
+    build: ./ubertool_ecorest/celery_qed
+    image: stack-celery
+    command: celery worker -A tasks -Q testing -l info
+    links:
+      - redis
+      - ecorest
+    environment:
+      - REDIS_HOSTNAME=redis
+      - DOCKER_HOSTNAME=${HOSTNAME}
+
   qed_nginx:
     restart: always
     # build: ../cts_nginx

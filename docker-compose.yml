@@ -165,7 +165,7 @@ services:
   # rename to worker_flask
   celery_worker:
     build: ./ubertool_ecorest/celery_qed
-    image: stack-celery
+    image: cts-celery:latest
     command: celery worker -A tasks -Q testing -l info
     links:
       - redis

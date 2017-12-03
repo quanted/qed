@@ -163,16 +163,16 @@ services:
 
   # Update for Celery: celery_worker and redis
   # rename to worker_flask
-  celery_worker:
-    build: ./ubertool_ecorest/celery_qed
-    image: stack-celery
-    command: celery worker -A tasks -Q testing -l info
-    links:
-      - redis
-      - ecorest
-    environment:
-      - REDIS_HOSTNAME=redis
-      - DOCKER_HOSTNAME=${HOSTNAME}
+#  celery_worker:
+#    build: ./celery_qed
+#    image: stack-celery
+#    command: celery worker -A tasks -Q testing -l info
+#    links:
+#      - redis
+#      - ecorest
+#    environment:
+#      - REDIS_HOSTNAME=redis
+#      - DOCKER_HOSTNAME=${HOSTNAME}
 
   qed_nginx:
     restart: always
@@ -201,6 +201,8 @@ services:
       - redis
     environment:
       - REDIS_HOSTNAME=redis
+    depends_on:
+      - "redis"
 
   #hwbi_rest:
   #  build: ../hwbi_rest/src/hwbi_rest

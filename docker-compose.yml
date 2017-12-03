@@ -202,8 +202,8 @@ services:
       - redis
     environment:
       - REDIS_HOSTNAME=redis
-    #command: celery worker -A tasks -Q manager -l info -n manager_worker -c 1
-    command: celery worker -A tasks -Q sam -c 1 --loglevel=DEBUG -n sam_worker
+    # command: celery worker -A tasks -Q manager -l info -n manager_worker -c 1
+    # command: celery worker -A tasks -Q sam -c 1 --loglevel=DEBUG -n sam_worker
     #depends_on:
     # - "redis"
 

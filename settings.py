@@ -48,6 +48,7 @@ TEMPLATES = [
             os.path.join(TEMPLATE_ROOT, 'hem'),
             os.path.join(TEMPLATE_ROOT, 'hms'),
             os.path.join(TEMPLATE_ROOT, 'hwbi'),
+            os.path.join(TEMPLATE_ROOT, 'misc'),
             os.path.join(TEMPLATE_ROOT, 'pisces'),
             os.path.join(TEMPLATE_ROOT, 'pop'),
             os.path.join(TEMPLATE_ROOT, 'sam'),

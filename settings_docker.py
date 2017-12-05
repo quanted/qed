@@ -120,8 +120,11 @@ MIDDLEWARE_CLASSES = (
     # 'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    'login_middleware.RequireLoginMiddleware',
+    # 'login_middleware.RequireLoginMiddleware',
 )
+if os.environ.get('IS_PUBLIC') == "True":
+    MIDDLEWARE_CLASSES += ('login_middleware.RequireLoginMiddleware',)
+
 
 ROOT_URLCONF=__name__, #rollbar
 
@@ -172,6 +175,7 @@ WSGI_APPLICATION = 'wsgi_docker.application'
 AUTH = False
 # Note: env vars in os.environ always strings..
 if os.environ.get('IS_PUBLIC') == "True":
+    logging.warning("IS_PUBLIC set to true..")
     AUTH = True
 
 # LOGIN_URL = '/ubertool/login'

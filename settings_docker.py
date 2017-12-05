@@ -177,6 +177,7 @@ AUTH = False
 if os.environ.get('IS_PUBLIC') == "True":
     logging.warning("IS_PUBLIC set to true..")
     AUTH = True
+    DEBUG = False
 
 # LOGIN_URL = '/ubertool/login'
 REQUIRE_LOGIN_PATH = '/login'

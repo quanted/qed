@@ -37,6 +37,11 @@ class RequireLoginMiddleware(object):
 
 	def process_request(self, request):
 
+		# _already_authenticated == ''
+
+		if request.user.is_authenticated:
+			return  # user already authenticated, move along (todo: what about > 1 logged in as qeduser????)
+
 		if request.POST:
 			return self.login_auth(request)
 

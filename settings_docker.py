@@ -119,6 +119,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware', #rollbar
     # 'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'login_middleware.RequireLoginMiddleware',
 )
 
 ROOT_URLCONF=__name__, #rollbar
@@ -167,8 +169,13 @@ WSGI_APPLICATION = 'wsgi_docker.application'
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 # Authentication
-AUTH = True
-LOGIN_URL = '/ubertool/login'
+AUTH = False
+# Note: env vars in os.environ always strings..
+if os.environ.get('IS_PUBLIC') == "True":
+    AUTH = True
+
+# LOGIN_URL = '/ubertool/login'
+REQUIRE_LOGIN_PATH = '/login'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Internationalization

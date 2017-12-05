@@ -93,6 +93,7 @@ ENV/
 
 # QED settings
 secret_key_django_dropbox.txt
+secret_key_login.txt
 
 # DB stuff
 *.sqlite3

@@ -50,6 +50,10 @@ class RequireLoginMiddleware(object):
 		password = request.POST.get('password')
 		next_page = request.POST.get('next')
 
+		# redirect if hashed pw unable to be set, or user didn't enter password:
+		if not self.hashed_pass or not password:
+			return redirect('/login?next={}'.format(next_page))
+
 		# check if username is correct:
 		if username != self.username:
 			logging.warning("username {} incorrect..".format(username))

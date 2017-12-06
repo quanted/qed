@@ -1,0 +1,503 @@
+Attaching to qed_qed_nginx_1, qed_cts_nodejs_1, qed_worker_chemaxon_1, qed_worker_measured_1, qed_worker_epi_1, qed_sam_worker_1, qed_qed_django_1, qed_worker_metabolizer_1, qed_worker_test_1, qed_worker_cheminfo_1, qed_ecorest_1, qed_worker_sparc_1, qed_worker_manager_1, qed_redis_1
+[36mqed_nginx_1           |[0m 204.46.77.47 - - [06/Dec/2017:18:03:04 +0000] "GET /socket.io/?EIO=3&transport=polling&t=M0j0rFZ HTTP/1.1" 200 104 "https://qedinternal.epa.gov/cts/pchemprop/batchoutput" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36" "-"
+[36mqed_nginx_1           |[0m 204.46.77.47 - - [06/Dec/2017:18:03:04 +0000] "GET /socket.io/?EIO=3&transport=polling&t=M0j0rLw&sid=9r12FBu6a2EkObE1AAAA HTTP/1.1" 200 3 "https://qedinternal.epa.gov/cts/pchemprop/batchoutput" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36" "-"
+[36mqed_nginx_1           |[0m 204.46.77.168 - - [06/Dec/2017:18:05:02 +0000] "POST /cts/rest/molecule HTTP/1.1" 200 2805 "https://qedinternal.epa.gov/cts/gentrans/input" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36" "-"
+[33mcts_nodejs_1          |[0m envs: [object Object]
+[33mcts_nodejs_1          |[0m redis url redis://redis:6379/0
+[33mcts_nodejs_1          |[0m cts_nodejs running at cts_nodejs, port 4000
+[33mcts_nodejs_1          |[0m cts_nodejs test at /test
+[33mcts_nodejs_1          |[0m session id: 9r12FBu6a2EkObE1AAAA
+[32mworker_chemaxon_1     |[0m WARNING:root:set_environment.py
+[32mworker_chemaxon_1     |[0m WARNING:root:DOCKER_HOSTNAME: ord-uber-vm001
+[32mworker_chemaxon_1     |[0m WARNING:root:HOSTNAME: ea67bc4ab1eb
+[32mworker_chemaxon_1     |[0m WARNING:root:Deploying on prod server...
+[32mworker_chemaxon_1     |[0m WARNING:root:loading env vars from: docker_prod.env
+[32mworker_chemaxon_1     |[0m WARNING:root:env file: docker_prod.env
+[32mworker_chemaxon_1     |[0m INFO:root:REDIS_HOSTNAME: redis
+[32mworker_chemaxon_1     |[0m INFO:root:REDIS_PORT: 6379
+[32mworker_chemaxon_1     |[0m /usr/local/lib/python3.6/site-packages/celery/platforms.py:795: RuntimeWarning: You're running the worker with superuser privileges: this is
+[32mworker_chemaxon_1     |[0m absolutely not recommended!
+[32mworker_chemaxon_1     |[0m 
+[32mworker_chemaxon_1     |[0m Please specify a different user using the -u option.
+[32mworker_chemaxon_1     |[0m 
+[32mworker_chemaxon_1     |[0m User information: uid=0 euid=0 gid=0 egid=0
+[32mworker_chemaxon_1     |[0m 
+[32mworker_chemaxon_1     |[0m   uid=uid, euid=euid, gid=gid, egid=egid,
+[32mworker_chemaxon_1     |[0m [2017-12-06 18:03:01,241: INFO/MainProcess] Connected to redis://redis:6379/0
+[32mworker_chemaxon_1     |[0m [2017-12-06 18:03:01,263: INFO/MainProcess] mingle: searching for neighbors
+[32mworker_chemaxon_1     |[0m [2017-12-06 18:03:02,304: INFO/MainProcess] mingle: sync with 6 nodes
+[32mworker_chemaxon_1     |[0m [2017-12-06 18:03:02,305: INFO/MainProcess] mingle: sync complete
+[35mworker_measured_1     |[0m WARNING:root:set_environment.py
+[32mworker_chemaxon_1     |[0m [2017-12-06 18:03:02,316: INFO/MainProcess] celery@chemaxon_worker ready.
+[35mworker_measured_1     |[0m WARNING:root:DOCKER_HOSTNAME: ord-uber-vm001
+[35mworker_measured_1     |[0m WARNING:root:HOSTNAME: 2ccd5182769c
+[35mworker_measured_1     |[0m WARNING:root:Deploying on prod server...
+[35mworker_measured_1     |[0m WARNING:root:loading env vars from: docker_prod.env
+[35mworker_measured_1     |[0m WARNING:root:env file: docker_prod.env
+[35mworker_measured_1     |[0m INFO:root:REDIS_HOSTNAME: redis
+[35mworker_measured_1     |[0m INFO:root:REDIS_PORT: 6379
+[35mworker_measured_1     |[0m /usr/local/lib/python3.6/site-packages/celery/platforms.py:795: RuntimeWarning: You're running the worker with superuser privileges: this is
+[35mworker_measured_1     |[0m absolutely not recommended!
+[35mworker_measured_1     |[0m 
+[35mworker_measured_1     |[0m Please specify a different user using the -u option.
+[35mworker_measured_1     |[0m 
+[35mworker_measured_1     |[0m User information: uid=0 euid=0 gid=0 egid=0
+[35mworker_measured_1     |[0m 
+[35mworker_measured_1     |[0m   uid=uid, euid=euid, gid=gid, egid=egid,
+[35mworker_measured_1     |[0m [2017-12-06 18:03:00,943: INFO/MainProcess] Connected to redis://redis:6379/0
+[35mworker_measured_1     |[0m [2017-12-06 18:03:00,955: INFO/MainProcess] mingle: searching for neighbors
+[35mworker_measured_1     |[0m [2017-12-06 18:03:01,983: INFO/MainProcess] mingle: sync with 4 nodes
+[35mworker_measured_1     |[0m [2017-12-06 18:03:01,985: INFO/MainProcess] mingle: sync complete
+[35mworker_measured_1     |[0m [2017-12-06 18:03:02,003: INFO/MainProcess] celery@measured_worker ready.
+[31mworker_epi_1          |[0m WARNING:root:set_environment.py
+[31mworker_epi_1          |[0m WARNING:root:DOCKER_HOSTNAME: ord-uber-vm001
+[31mworker_epi_1          |[0m WARNING:root:HOSTNAME: 0fc863abe09b
+[31mworker_epi_1          |[0m WARNING:root:Deploying on prod server...
+[31mworker_epi_1          |[0m WARNING:root:loading env vars from: docker_prod.env
+[31mworker_epi_1          |[0m WARNING:root:env file: docker_prod.env
+[31mworker_epi_1          |[0m INFO:root:REDIS_HOSTNAME: redis
+[31mworker_epi_1          |[0m INFO:root:REDIS_PORT: 6379
+[31mworker_epi_1          |[0m /usr/local/lib/python3.6/site-packages/celery/platforms.py:795: RuntimeWarning: You're running the worker with superuser privileges: this is
+[31mworker_epi_1          |[0m absolutely not recommended!
+[31mworker_epi_1          |[0m 
+[31mworker_epi_1          |[0m Please specify a different user using the -u option.
+[31mworker_epi_1          |[0m 
+[31mworker_epi_1          |[0m User information: uid=0 euid=0 gid=0 egid=0
+[31mworker_epi_1          |[0m 
+[31mworker_epi_1          |[0m   uid=uid, euid=euid, gid=gid, egid=egid,
+[31mworker_epi_1          |[0m [2017-12-06 18:02:59,564: INFO/MainProcess] Connected to redis://redis:6379/0
+[31mworker_epi_1          |[0m [2017-12-06 18:02:59,612: INFO/MainProcess] mingle: searching for neighbors
+[31mworker_epi_1          |[0m [2017-12-06 18:03:00,679: INFO/MainProcess] mingle: sync with 3 nodes
+[31mworker_epi_1          |[0m [2017-12-06 18:03:00,680: INFO/MainProcess] mingle: sync complete
+[31mworker_epi_1          |[0m [2017-12-06 18:03:00,713: INFO/MainProcess] celery@epi_worker ready.
+[31mworker_epi_1          |[0m [2017-12-06 18:03:00,976: INFO/MainProcess] sync with celery@measured_worker
+[31mworker_epi_1          |[0m [2017-12-06 18:03:01,295: INFO/MainProcess] sync with celery@chemaxon_worker
+[34msam_worker_1          |[0m WARNING:root:set_environment.py
+[34msam_worker_1          |[0m WARNING:root:DOCKER_HOSTNAME: ord-uber-vm001
+[34msam_worker_1          |[0m WARNING:root:HOSTNAME: 4e9ce52ae1cf
+[34msam_worker_1          |[0m WARNING:root:Deploying on prod server...
+[34msam_worker_1          |[0m WARNING:root:loading env vars from: docker_prod.env
+[34msam_worker_1          |[0m WARNING:root:env file: docker_prod.env
+[34msam_worker_1          |[0m INFO:root:REDIS_HOSTNAME: redis
+[34msam_worker_1          |[0m INFO:root:REDIS_PORT: 6379
+[34msam_worker_1          |[0m /usr/local/lib/python3.6/site-packages/celery/platforms.py:795: RuntimeWarning: You're running the worker with superuser privileges: this is
+[34msam_worker_1          |[0m absolutely not recommended!
+[34msam_worker_1          |[0m 
+[34msam_worker_1          |[0m Please specify a different user using the -u option.
+[34msam_worker_1          |[0m 
+[34msam_worker_1          |[0m User information: uid=0 euid=0 gid=0 egid=0
+[34msam_worker_1          |[0m 
+[34msam_worker_1          |[0m   uid=uid, euid=euid, gid=gid, egid=egid,
+[34msam_worker_1          |[0m [2017-12-06 18:03:00,013: DEBUG/MainProcess] | Worker: Preparing bootsteps.
+[34msam_worker_1          |[0m [2017-12-06 18:03:00,015: DEBUG/MainProcess] | Worker: Building graph...
+[32;1mworker_test_1         |[0m WARNING:root:set_environment.py
+[34msam_worker_1          |[0m [2017-12-06 18:03:00,015: DEBUG/MainProcess] | Worker: New boot order: {Beat, StateDB, Timer, Hub, Pool, Autoscaler, Consumer}
+[34msam_worker_1          |[0m [2017-12-06 18:03:00,055: DEBUG/MainProcess] | Consumer: Preparing bootsteps.
+[32;1mworker_test_1         |[0m WARNING:root:DOCKER_HOSTNAME: ord-uber-vm001
+[32;1mworker_test_1         |[0m WARNING:root:HOSTNAME: dcaaafff317d
+[32;1mworker_test_1         |[0m WARNING:root:Deploying on prod server...
+[32;1mworker_test_1         |[0m WARNING:root:loading env vars from: docker_prod.env
+[32;1mworker_test_1         |[0m WARNING:root:env file: docker_prod.env
+[32;1mworker_test_1         |[0m INFO:root:REDIS_HOSTNAME: redis
+[32;1mworker_test_1         |[0m INFO:root:REDIS_PORT: 6379
+[32;1mworker_test_1         |[0m /usr/local/lib/python3.6/site-packages/celery/platforms.py:795: RuntimeWarning: You're running the worker with superuser privileges: this is
+[32;1mworker_test_1         |[0m absolutely not recommended!
+[32;1mworker_test_1         |[0m 
+[32;1mworker_test_1         |[0m Please specify a different user using the -u option.
+[34msam_worker_1          |[0m [2017-12-06 18:03:00,055: DEBUG/MainProcess] | Consumer: Building graph...
+[33;1mworker_metabolizer_1  |[0m WARNING:root:set_environment.py
+[32;1mworker_test_1         |[0m 
+[34msam_worker_1          |[0m [2017-12-06 18:03:00,094: DEBUG/MainProcess] | Consumer: New boot order: {Connection, Agent, Events, Mingle, Tasks, Control, Gossip, Heart, event loop}
+[33;1mworker_metabolizer_1  |[0m WARNING:root:DOCKER_HOSTNAME: ord-uber-vm001
+[36;1mqed_django_1          |[0m settings.py
+[32;1mworker_test_1         |[0m User information: uid=0 euid=0 gid=0 egid=0
+[34msam_worker_1          |[0m [2017-12-06 18:03:00,107: DEBUG/MainProcess] | Worker: Starting Hub
+[33;1mworker_metabolizer_1  |[0m WARNING:root:HOSTNAME: 346b49710113
+[36;1mqed_django_1          |[0m PROJECT_ROOT = /src
+[32;1mworker_test_1         |[0m 
+[34;1mworker_sparc_1        |[0m WARNING:root:set_environment.py
+[34;1mworker_sparc_1        |[0m WARNING:root:DOCKER_HOSTNAME: ord-uber-vm001
+[33;1mworker_metabolizer_1  |[0m WARNING:root:Deploying on prod server...
+[34msam_worker_1          |[0m [2017-12-06 18:03:00,108: DEBUG/MainProcess] ^-- substep ok
+[36;1mqed_django_1          |[0m TEMPLATE_ROOT = /src/templates_qed/
+[32;1mworker_test_1         |[0m   uid=uid, euid=euid, gid=gid, egid=egid,
+[34;1mworker_sparc_1        |[0m WARNING:root:HOSTNAME: 61eb6843e2c6
+[33;1mworker_metabolizer_1  |[0m WARNING:root:loading env vars from: docker_prod.env
+[34msam_worker_1          |[0m [2017-12-06 18:03:00,108: DEBUG/MainProcess] | Worker: Starting Pool
+[36;1mqed_django_1          |[0m settings_docker.py
+[31;1mecorest_1             |[0m [uWSGI] getting INI configuration from /etc/uwsgi/uwsgi.ini
+[32;1mworker_test_1         |[0m [2017-12-06 18:02:57,016: INFO/MainProcess] Connected to redis://redis:6379/0
+[32;1mworker_test_1         |[0m [2017-12-06 18:02:57,067: INFO/MainProcess] mingle: searching for neighbors
+[32;1mworker_test_1         |[0m [2017-12-06 18:02:58,123: INFO/MainProcess] mingle: all alone
+[36;1mqed_django_1          |[0m REST backend = http://qed_nginx:7777
+[34msam_worker_1          |[0m [2017-12-06 18:03:00,156: DEBUG/MainProcess] ^-- substep ok
+[31;1mecorest_1             |[0m *** Starting uWSGI 2.0.15 (64bit) on [Wed Dec  6 18:02:55 2017] ***
+[33;1mworker_metabolizer_1  |[0m WARNING:root:env file: docker_prod.env
+[33;1mworker_metabolizer_1  |[0m INFO:root:REDIS_HOSTNAME: redis
+[33;1mworker_metabolizer_1  |[0m INFO:root:REDIS_PORT: 6379
+[33;1mworker_metabolizer_1  |[0m /usr/local/lib/python3.6/site-packages/celery/platforms.py:795: RuntimeWarning: You're running the worker with superuser privileges: this is
+[36;1mqed_django_1          |[0m MACHINE_ID = 40276c34c9b4
+[36mworker_manager_1      |[0m WARNING:root:set_environment.py
+[34msam_worker_1          |[0m [2017-12-06 18:03:00,156: DEBUG/MainProcess] | Worker: Starting Consumer
+[31;1mecorest_1             |[0m compiled with version: 4.9.2 on 05 December 2017 15:32:02
+[33;1mworker_metabolizer_1  |[0m absolutely not recommended!
+[33;1mworker_metabolizer_1  |[0m 
+[33;1mworker_metabolizer_1  |[0m Please specify a different user using the -u option.
+[33;1mworker_metabolizer_1  |[0m 
+[33mredis_1               |[0m 1:C 06 Dec 18:02:54.567 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[36;1mqed_django_1          |[0m HOSTNAME = ord-uber-vm001
+[36mworker_manager_1      |[0m WARNING:root:DOCKER_HOSTNAME: ord-uber-vm001
+[34msam_worker_1          |[0m [2017-12-06 18:03:00,157: DEBUG/MainProcess] | Consumer: Starting Connection
+[31;1mecorest_1             |[0m os: Linux-3.10.0-327.28.2.el7.x86_64 #1 SMP Mon Jun 27 14:48:28 EDT 2016
+[33;1mworker_metabolizer_1  |[0m User information: uid=0 euid=0 gid=0 egid=0
+[33;1mworker_metabolizer_1  |[0m 
+[33;1mworker_metabolizer_1  |[0m   uid=uid, euid=euid, gid=gid, egid=egid,
+[33;1mworker_metabolizer_1  |[0m [2017-12-06 18:03:00,289: INFO/MainProcess] Connected to redis://redis:6379/0
+[33mredis_1               |[0m                 _._                                                  
+[36;1mqed_django_1          |[0m IS_PUBLIC = False
+[36mworker_manager_1      |[0m WARNING:root:HOSTNAME: 82a922d95fe2
+[34msam_worker_1          |[0m [2017-12-06 18:03:00,179: INFO/MainProcess] Connected to redis://redis:6379/0
+[31;1mecorest_1             |[0m nodename: 8305afe27d2c
+[33mredis_1               |[0m            _.-``__ ''-._                                             
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/css/base.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36mworker_manager_1      |[0m WARNING:root:Deploying on prod server...
+[34msam_worker_1          |[0m [2017-12-06 18:03:00,179: DEBUG/MainProcess] ^-- substep ok
+[31;1mecorest_1             |[0m machine: x86_64
+[35;1mworker_cheminfo_1     |[0m WARNING:root:set_environment.py
+[35;1mworker_cheminfo_1     |[0m WARNING:root:DOCKER_HOSTNAME: ord-uber-vm001
+[35;1mworker_cheminfo_1     |[0m WARNING:root:HOSTNAME: 344b10d5912d
+[35;1mworker_cheminfo_1     |[0m WARNING:root:Deploying on prod server...
+[33mredis_1               |[0m       _.-``    `.  `_.  ''-._           Redis 3.2.9 (00000000/0) 64 bit
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/css/changelists.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36mworker_manager_1      |[0m WARNING:root:loading env vars from: docker_prod.env
+[34msam_worker_1          |[0m [2017-12-06 18:03:00,180: DEBUG/MainProcess] | Consumer: Starting Events
+[31;1mecorest_1             |[0m clock source: unix
+[35;1mworker_cheminfo_1     |[0m WARNING:root:loading env vars from: docker_prod.env
+[35;1mworker_cheminfo_1     |[0m WARNING:root:env file: docker_prod.env
+[35;1mworker_cheminfo_1     |[0m INFO:root:REDIS_HOSTNAME: redis
+[35;1mworker_cheminfo_1     |[0m INFO:root:REDIS_PORT: 6379
+[33mredis_1               |[0m   .-`` .-```.  ```\/    _.,_ ''-._                                   
+[33mredis_1               |[0m  (    '      ,       .-`  | `,    )     Running in standalone mode
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/css/dashboard.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[34msam_worker_1          |[0m [2017-12-06 18:03:00,191: DEBUG/MainProcess] ^-- substep ok
+[31;1mecorest_1             |[0m pcre jit disabled
+[35;1mworker_cheminfo_1     |[0m /usr/local/lib/python3.6/site-packages/celery/platforms.py:795: RuntimeWarning: You're running the worker with superuser privileges: this is
+[35;1mworker_cheminfo_1     |[0m absolutely not recommended!
+[35;1mworker_cheminfo_1     |[0m 
+[35;1mworker_cheminfo_1     |[0m Please specify a different user using the -u option.
+[33mredis_1               |[0m  |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+[33mredis_1               |[0m  |    `-._   `._    /     _.-'    |     PID: 1
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/css/fonts.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[34msam_worker_1          |[0m [2017-12-06 18:03:00,192: DEBUG/MainProcess] | Consumer: Starting Mingle
+[34msam_worker_1          |[0m [2017-12-06 18:03:00,192: INFO/MainProcess] mingle: searching for neighbors
+[35;1mworker_cheminfo_1     |[0m 
+[35;1mworker_cheminfo_1     |[0m User information: uid=0 euid=0 gid=0 egid=0
+[35;1mworker_cheminfo_1     |[0m 
+[35;1mworker_cheminfo_1     |[0m   uid=uid, euid=euid, gid=gid, egid=egid,
+[33mredis_1               |[0m   `-._    `-._  `-./  _.-'    _.-'                                   
+[33mredis_1               |[0m  |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/css/forms.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,255: INFO/MainProcess] mingle: sync with 3 nodes
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,257: DEBUG/MainProcess] mingle: processing reply from celery@manager_worker
+[33mredis_1               |[0m  |    `-._`-._        _.-'_.-'    |           http://redis.io        
+[33mredis_1               |[0m   `-._    `-._`-.__.-'_.-'    _.-'                                   
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/css/login.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,257: DEBUG/MainProcess] mingle: processing reply from celery@test_worker
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,257: DEBUG/MainProcess] mingle: processing reply from celery@sparc_worker
+[33;1mworker_metabolizer_1  |[0m [2017-12-06 18:03:00,327: INFO/MainProcess] mingle: searching for neighbors
+[33;1mworker_metabolizer_1  |[0m [2017-12-06 18:03:01,379: INFO/MainProcess] mingle: sync with 3 nodes
+[34;1mworker_sparc_1        |[0m WARNING:root:Deploying on prod server...
+[32;1mworker_test_1         |[0m [2017-12-06 18:02:58,154: INFO/MainProcess] celery@test_worker ready.
+[36mworker_manager_1      |[0m WARNING:root:env file: docker_prod.env
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/css/rtl.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[33mredis_1               |[0m  |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,257: INFO/MainProcess] mingle: sync complete
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,257: DEBUG/MainProcess] ^-- substep ok
+[33;1mworker_metabolizer_1  |[0m [2017-12-06 18:03:01,380: INFO/MainProcess] mingle: sync complete
+[33;1mworker_metabolizer_1  |[0m [2017-12-06 18:03:01,395: INFO/MainProcess] celery@metabolizer_worker ready.
+[34;1mworker_sparc_1        |[0m WARNING:root:loading env vars from: docker_prod.env
+[32;1mworker_test_1         |[0m [2017-12-06 18:02:58,325: INFO/MainProcess] sync with celery@sparc_worker
+[36mworker_manager_1      |[0m INFO:root:REDIS_HOSTNAME: redis
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/css/widgets.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[33mredis_1               |[0m  |    `-._`-._        _.-'_.-'    |                                  
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,258: DEBUG/MainProcess] | Consumer: Starting Tasks
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,264: DEBUG/MainProcess] ^-- substep ok
+[35;1mworker_cheminfo_1     |[0m [2017-12-06 18:03:00,047: INFO/MainProcess] Connected to redis://redis:6379/0
+[34;1mworker_sparc_1        |[0m WARNING:root:env file: docker_prod.env
+[32;1mworker_test_1         |[0m [2017-12-06 18:02:59,669: INFO/MainProcess] sync with celery@epi_worker
+[36mworker_manager_1      |[0m INFO:root:REDIS_PORT: 6379
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/fonts/LICENSE.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[33mredis_1               |[0m   `-._    `-._`-.__.-'_.-'    _.-'                                   
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,264: DEBUG/MainProcess] | Consumer: Starting Control
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,269: DEBUG/MainProcess] ^-- substep ok
+[35;1mworker_cheminfo_1     |[0m [2017-12-06 18:03:00,074: INFO/MainProcess] mingle: searching for neighbors
+[34;1mworker_sparc_1        |[0m INFO:root:REDIS_HOSTNAME: redis
+[32;1mworker_test_1         |[0m [2017-12-06 18:03:00,134: INFO/MainProcess] sync with celery@cheminfo_worker
+[36mworker_manager_1      |[0m /usr/local/lib/python3.6/site-packages/celery/platforms.py:795: RuntimeWarning: You're running the worker with superuser privileges: this is
+[33mredis_1               |[0m       `-._    `-.__.-'    _.-'                                       
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/fonts/README.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,269: DEBUG/MainProcess] | Consumer: Starting Gossip
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,272: DEBUG/MainProcess] ^-- substep ok
+[35;1mworker_cheminfo_1     |[0m [2017-12-06 18:03:01,161: INFO/MainProcess] mingle: sync with 3 nodes
+[34;1mworker_sparc_1        |[0m INFO:root:REDIS_PORT: 6379
+[32;1mworker_test_1         |[0m [2017-12-06 18:03:00,235: INFO/MainProcess] sync with celery@sam_worker
+[36mworker_manager_1      |[0m absolutely not recommended!
+[36mworker_manager_1      |[0m 
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/fonts/Roboto-Bold-webfont.woff'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,272: DEBUG/MainProcess] | Consumer: Starting Heart
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,276: DEBUG/MainProcess] ^-- substep ok
+[35;1mworker_cheminfo_1     |[0m [2017-12-06 18:03:01,162: INFO/MainProcess] mingle: sync complete
+[35;1mworker_cheminfo_1     |[0m [2017-12-06 18:03:01,174: INFO/MainProcess] celery@cheminfo_worker ready.
+[34;1mworker_sparc_1        |[0m /usr/local/lib/python3.6/site-packages/celery/platforms.py:795: RuntimeWarning: You're running the worker with superuser privileges: this is
+[36mworker_manager_1      |[0m Please specify a different user using the -u option.
+[33mredis_1               |[0m           `-._        _.-'                                           
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/fonts/Roboto-Light-webfont.woff'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,276: DEBUG/MainProcess] | Consumer: Starting event loop
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,276: DEBUG/MainProcess] | Worker: Hub.register Pool...
+[35;1mworker_cheminfo_1     |[0m [2017-12-06 18:03:01,296: INFO/MainProcess] sync with celery@chemaxon_worker
+[34;1mworker_sparc_1        |[0m absolutely not recommended!
+[36mworker_manager_1      |[0m 
+[33mredis_1               |[0m               `-.__.-'                                               
+[33mredis_1               |[0m 
+[31;1mecorest_1             |[0m detected number of CPU cores: 4
+[32;1mworker_test_1         |[0m [2017-12-06 18:03:00,371: INFO/MainProcess] sync with celery@metabolizer_worker
+[34;1mworker_sparc_1        |[0m 
+[36mworker_manager_1      |[0m User information: uid=0 euid=0 gid=0 egid=0
+[36mworker_manager_1      |[0m 
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/fonts/Roboto-Regular-webfont.woff'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/LICENSE'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[31;1mecorest_1             |[0m current working directory: /src
+[32;1mworker_test_1         |[0m [2017-12-06 18:03:00,976: INFO/MainProcess] sync with celery@measured_worker
+[34;1mworker_sparc_1        |[0m Please specify a different user using the -u option.
+[36mworker_manager_1      |[0m   uid=uid, euid=euid, gid=gid, egid=egid,
+[36mworker_manager_1      |[0m [2017-12-06 18:02:57,721: INFO/MainProcess] Connected to redis://redis:6379/0
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/README.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/calendar-icons.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[31;1mecorest_1             |[0m detected binary path: /usr/local/bin/uwsgi
+[34;1mworker_sparc_1        |[0m 
+[36mworker_manager_1      |[0m [2017-12-06 18:02:57,755: INFO/MainProcess] mingle: searching for neighbors
+[36mworker_manager_1      |[0m [2017-12-06 18:02:58,810: INFO/MainProcess] mingle: all alone
+[33mredis_1               |[0m 1:M 06 Dec 18:02:54.569 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+[31;1mecorest_1             |[0m chdir() to /src
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-addlink.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[32;1mworker_test_1         |[0m [2017-12-06 18:03:01,297: INFO/MainProcess] sync with celery@chemaxon_worker
+[34;1mworker_sparc_1        |[0m User information: uid=0 euid=0 gid=0 egid=0
+[36mworker_manager_1      |[0m [2017-12-06 18:02:58,848: INFO/MainProcess] celery@manager_worker ready.
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,277: INFO/MainProcess] celery@sam_worker ready.
+[33mredis_1               |[0m 1:M 06 Dec 18:02:54.569 # Server started, Redis version 3.2.9
+[31;1mecorest_1             |[0m your memory page size is 4096 bytes
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-alert.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[34;1mworker_sparc_1        |[0m 
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,277: DEBUG/MainProcess] basic.qos: prefetch_count->4
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,298: DEBUG/MainProcess] pidbox received method hello(from_node='celery@chemaxon_worker', revoked={}) [reply_to:{'exchange': 'reply.celery.pidbox', 'routing_key': '13cdf7bf-43e5-31c0-a80b-0a2b6f8e8cb8'} ticket:24ea0915-b926-4ff2-8bfe-85d0a36bb931]
+[33mredis_1               |[0m 1:M 06 Dec 18:02:54.569 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[31;1mecorest_1             |[0m detected max file descriptor number: 65536
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-calendar.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-changelink.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,298: INFO/MainProcess] sync with celery@chemaxon_worker
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,395: DEBUG/MainProcess] celery@metabolizer_worker joined the party
+[33mredis_1               |[0m 1:M 06 Dec 18:02:54.570 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+[31;1mecorest_1             |[0m lock engine: pthread robust mutexes
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-clock.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-deletelink.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,615: DEBUG/MainProcess] celery@epi_worker joined the party
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,761: DEBUG/MainProcess] celery@manager_worker joined the party
+[31;1mecorest_1             |[0m thunder lock: enabled
+[33mredis_1               |[0m 1:M 06 Dec 18:02:54.570 * The server is now ready to accept connections on port 6379
+[34msam_worker_1          |[0m [2017-12-06 18:03:01,998: DEBUG/MainProcess] celery@measured_worker joined the party
+[34msam_worker_1          |[0m [2017-12-06 18:03:02,077: DEBUG/MainProcess] celery@cheminfo_worker joined the party
+[34;1mworker_sparc_1        |[0m   uid=uid, euid=euid, gid=gid, egid=egid,
+[31;1mecorest_1             |[0m uwsgi socket 0 bound to TCP address :8080 fd 3
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-no.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[34msam_worker_1          |[0m [2017-12-06 18:03:02,150: DEBUG/MainProcess] celery@test_worker joined the party
+[34msam_worker_1          |[0m [2017-12-06 18:03:02,247: DEBUG/MainProcess] celery@sparc_worker joined the party
+[34;1mworker_sparc_1        |[0m [2017-12-06 18:02:58,178: INFO/MainProcess] Connected to redis://redis:6379/0
+[31;1mecorest_1             |[0m uWSGI running as root, you can use --uid/--gid/--chroot options
+[34msam_worker_1          |[0m [2017-12-06 18:03:03,266: DEBUG/MainProcess] celery@chemaxon_worker joined the party
+[34;1mworker_sparc_1        |[0m [2017-12-06 18:02:58,239: INFO/MainProcess] mingle: searching for neighbors
+[31;1mecorest_1             |[0m *** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-unknown-alt.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36mworker_manager_1      |[0m [2017-12-06 18:02:59,668: INFO/MainProcess] sync with celery@epi_worker
+[34;1mworker_sparc_1        |[0m [2017-12-06 18:02:59,358: INFO/MainProcess] mingle: sync with 1 nodes
+[31;1mecorest_1             |[0m Python version: 3.6.3 (default, Nov  4 2017, 22:17:09)  [GCC 4.9.2]
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-unknown.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36mworker_manager_1      |[0m [2017-12-06 18:03:00,132: INFO/MainProcess] sync with celery@cheminfo_worker
+[34;1mworker_sparc_1        |[0m [2017-12-06 18:02:59,359: INFO/MainProcess] mingle: sync complete
+[31;1mecorest_1             |[0m Python main interpreter initialized at 0x11b6470
+[36mworker_manager_1      |[0m [2017-12-06 18:03:00,234: INFO/MainProcess] sync with celery@sam_worker
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-yes.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[34;1mworker_sparc_1        |[0m [2017-12-06 18:02:59,402: INFO/MainProcess] celery@sparc_worker ready.
+[31;1mecorest_1             |[0m python threads support enabled
+[36mworker_manager_1      |[0m [2017-12-06 18:03:00,370: INFO/MainProcess] sync with celery@metabolizer_worker
+[34;1mworker_sparc_1        |[0m [2017-12-06 18:02:59,666: INFO/MainProcess] sync with celery@epi_worker
+[31;1mecorest_1             |[0m your server socket listen backlog is limited to 100 connections
+[36mworker_manager_1      |[0m [2017-12-06 18:03:00,977: INFO/MainProcess] sync with celery@measured_worker
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/inline-delete.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[34;1mworker_sparc_1        |[0m [2017-12-06 18:03:00,131: INFO/MainProcess] sync with celery@cheminfo_worker
+[31;1mecorest_1             |[0m your mercy for graceful operations on workers is 60 seconds
+[36mworker_manager_1      |[0m [2017-12-06 18:03:01,295: INFO/MainProcess] sync with celery@chemaxon_worker
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/search.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[34;1mworker_sparc_1        |[0m [2017-12-06 18:03:00,233: INFO/MainProcess] sync with celery@sam_worker
+[31;1mecorest_1             |[0m mapped 1237056 bytes (1208 KB) for 16 cores
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/selector-icons.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[34;1mworker_sparc_1        |[0m [2017-12-06 18:03:00,368: INFO/MainProcess] sync with celery@metabolizer_worker
+[31;1mecorest_1             |[0m *** Operational MODE: preforking ***
+[34;1mworker_sparc_1        |[0m [2017-12-06 18:03:00,976: INFO/MainProcess] sync with celery@measured_worker
+[31;1mecorest_1             |[0m WSGI Current working directory: /src
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/sorting-icons.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[34;1mworker_sparc_1        |[0m [2017-12-06 18:03:01,294: INFO/MainProcess] sync with celery@chemaxon_worker
+[31;1mecorest_1             |[0m ['/src', '.', '', '/usr/local/lib/python36.zip', '/usr/local/lib/python3.6', '/usr/local/lib/python3.6/lib-dynload', '/usr/local/lib/python3.6/site-packages']
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/tooltag-add.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/tooltag-arrowright.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/gis/move_vertex_off.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[31;1mecorest_1             |[0m Traceback (most recent call last):
+[31;1mecorest_1             |[0m   File "/src/wsgi_flask.py", line 14, in <module>
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/gis/move_vertex_on.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[31;1mecorest_1             |[0m     import flask_cgi
+[31;1mecorest_1             |[0m   File "/src/flask_cgi.py", line 9, in <module>
+[31;1mecorest_1             |[0m     from . import tasks
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/SelectBox.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[31;1mecorest_1             |[0m ImportError: attempted relative import with no known parent package
+[31;1mecorest_1             |[0m unable to load app 0 (mountpoint='') (callable not found or import error)
+[31;1mecorest_1             |[0m *** no app loaded. going in full dynamic mode ***
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/SelectFilter2.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[31;1mecorest_1             |[0m *** uWSGI is running in multiple interpreter mode ***
+[31;1mecorest_1             |[0m spawned uWSGI master process (pid: 1)
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/actions.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[31;1mecorest_1             |[0m spawned uWSGI worker 1 (pid: 14, cores: 1)
+[31;1mecorest_1             |[0m spawned uWSGI worker 2 (pid: 15, cores: 1)
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/actions.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/calendar.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/cancel.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/change_form.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/collapse.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/collapse.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/core.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/inlines.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/inlines.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/jquery.init.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/popup_response.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/prepopulate.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/prepopulate.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/prepopulate_init.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/timeparse.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/urlify.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/admin/DateTimeShortcuts.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/admin/RelatedObjectLookups.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/vendor/jquery/LICENSE-JQUERY.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/vendor/jquery/jquery.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/vendor/jquery/jquery.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/vendor/xregexp/LICENSE-XREGEXP.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/vendor/xregexp/xregexp.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/vendor/xregexp/xregexp.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m 
+[36;1mqed_django_1          |[0m 0 static files copied to '/src/collected_static', 9049 unmodified.
+[36;1mqed_django_1          |[0m WARNING:root:project root /src/cts_app/cts_api
+[36;1mqed_django_1          |[0m settings.py
+[36;1mqed_django_1          |[0m PROJECT_ROOT = /src
+[36;1mqed_django_1          |[0m TEMPLATE_ROOT = /src/templates_qed/
+[36;1mqed_django_1          |[0m settings_docker.py
+[36;1mqed_django_1          |[0m REST backend = http://qed_nginx:7777
+[36;1mqed_django_1          |[0m MACHINE_ID = 40276c34c9b4
+[36;1mqed_django_1          |[0m HOSTNAME = ord-uber-vm001
+[36;1mqed_django_1          |[0m IS_PUBLIC = False
+[36;1mqed_django_1          |[0m qed.urls
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.description
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.input
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.output
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.algorithms
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.references
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.qaqc
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.batch
+[36;1mqed_django_1          |[0m qed.ubertool_app.urls
+[36;1mqed_django_1          |[0m Operations to perform:
+[36;1mqed_django_1          |[0m   Apply all migrations: auth
+[36;1mqed_django_1          |[0m Running migrations:
+[36;1mqed_django_1          |[0m   No migrations to apply.
+[36;1mqed_django_1          |[0m   Your models have changes that are not yet reflected in a migration, and so won't be applied.
+[36;1mqed_django_1          |[0m   Run 'manage.py makemigrations' to make new migrations, and then re-run 'manage.py migrate' to apply them.
+[36;1mqed_django_1          |[0m WARNING:root:project root /src/cts_app/cts_api
+[36;1mqed_django_1          |[0m settings.py
+[36;1mqed_django_1          |[0m PROJECT_ROOT = /src
+[36;1mqed_django_1          |[0m TEMPLATE_ROOT = /src/templates_qed/
+[36;1mqed_django_1          |[0m settings_docker.py
+[36;1mqed_django_1          |[0m REST backend = http://qed_nginx:7777
+[36;1mqed_django_1          |[0m MACHINE_ID = 40276c34c9b4
+[36;1mqed_django_1          |[0m HOSTNAME = ord-uber-vm001
+[36;1mqed_django_1          |[0m IS_PUBLIC = False
+[36;1mqed_django_1          |[0m qed.urls
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.description
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.input
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.output
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.algorithms
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.references
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.qaqc
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.batch
+[36;1mqed_django_1          |[0m qed.ubertool_app.urls
+[36;1mqed_django_1          |[0m Operations to perform:
+[36;1mqed_django_1          |[0m   Apply all migrations: sessions
+[36;1mqed_django_1          |[0m Running migrations:
+[36;1mqed_django_1          |[0m   No migrations to apply.
+[36;1mqed_django_1          |[0m   Your models have changes that are not yet reflected in a migration, and so won't be applied.
+[36;1mqed_django_1          |[0m   Run 'manage.py makemigrations' to make new migrations, and then re-run 'manage.py migrate' to apply them.
+[36;1mqed_django_1          |[0m [uWSGI] getting INI configuration from /etc/uwsgi/uwsgi.ini
+[36;1mqed_django_1          |[0m *** Starting uWSGI 2.0.15 (64bit) on [Wed Dec  6 18:03:05 2017] ***
+[36;1mqed_django_1          |[0m compiled with version: 4.9.2 on 05 December 2017 15:32:02
+[36;1mqed_django_1          |[0m os: Linux-3.10.0-327.28.2.el7.x86_64 #1 SMP Mon Jun 27 14:48:28 EDT 2016
+[36;1mqed_django_1          |[0m nodename: 40276c34c9b4
+[36;1mqed_django_1          |[0m machine: x86_64
+[36;1mqed_django_1          |[0m clock source: unix
+[36;1mqed_django_1          |[0m pcre jit disabled
+[36;1mqed_django_1          |[0m detected number of CPU cores: 4
+[36;1mqed_django_1          |[0m current working directory: /src
+[36;1mqed_django_1          |[0m detected binary path: /usr/local/bin/uwsgi
+[36;1mqed_django_1          |[0m chdir() to /src
+[36;1mqed_django_1          |[0m your memory page size is 4096 bytes
+[36;1mqed_django_1          |[0m detected max file descriptor number: 65536
+[36;1mqed_django_1          |[0m lock engine: pthread robust mutexes
+[36;1mqed_django_1          |[0m thunder lock: enabled
+[36;1mqed_django_1          |[0m uwsgi socket 0 bound to TCP address :8080 fd 3
+[36;1mqed_django_1          |[0m uWSGI running as root, you can use --uid/--gid/--chroot options
+[36;1mqed_django_1          |[0m *** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+[36;1mqed_django_1          |[0m Python version: 3.6.3 (default, Nov  4 2017, 22:17:09)  [GCC 4.9.2]
+[36;1mqed_django_1          |[0m Python main interpreter initialized at 0xa08550
+[36;1mqed_django_1          |[0m python threads support enabled
+[36;1mqed_django_1          |[0m your server socket listen backlog is limited to 100 connections
+[36;1mqed_django_1          |[0m your mercy for graceful operations on workers is 60 seconds
+[36;1mqed_django_1          |[0m mapped 1237056 bytes (1208 KB) for 16 cores
+[36;1mqed_django_1          |[0m *** Operational MODE: preforking ***
+[36;1mqed_django_1          |[0m WARNING:root:set_environment.py
+[36;1mqed_django_1          |[0m WARNING:root:DOCKER_HOSTNAME: ord-uber-vm001
+[36;1mqed_django_1          |[0m WARNING:root:HOSTNAME: 40276c34c9b4
+[36;1mqed_django_1          |[0m WARNING:root:Deploying on prod server...
+[36;1mqed_django_1          |[0m WARNING:root:loading env vars from: docker_prod.env
+[36;1mqed_django_1          |[0m WARNING:root:env file: docker_prod.env
+[36;1mqed_django_1          |[0m settings.py
+[36;1mqed_django_1          |[0m PROJECT_ROOT = /src
+[36;1mqed_django_1          |[0m TEMPLATE_ROOT = /src/templates_qed/
+[36;1mqed_django_1          |[0m settings_docker.py
+[36;1mqed_django_1          |[0m REST backend = http://qed_nginx:7777
+[36;1mqed_django_1          |[0m MACHINE_ID = 40276c34c9b4
+[36;1mqed_django_1          |[0m HOSTNAME = ord-uber-vm001
+[36;1mqed_django_1          |[0m IS_PUBLIC = False
+[36;1mqed_django_1          |[0m WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0xa08550 pid: 1 (default app)
+[36;1mqed_django_1          |[0m *** uWSGI is running in multiple interpreter mode ***
+[36;1mqed_django_1          |[0m spawned uWSGI master process (pid: 1)
+[36;1mqed_django_1          |[0m spawned uWSGI worker 1 (pid: 28, cores: 1)
+[36;1mqed_django_1          |[0m spawned uWSGI worker 2 (pid: 29, cores: 1)
+[36;1mqed_django_1          |[0m qed.urls
+[36;1mqed_django_1          |[0m WARNING:root:project root /src/cts_app/cts_api
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.description
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.input
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.output
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.algorithms
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.references
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.qaqc
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.batch
+[36;1mqed_django_1          |[0m qed.ubertool_app.urls
+[36;1mqed_django_1          |[0m WARNING:root:CHEM TYPE RESULTS: {'type': 'name', 'properties': {'type': 'CAS#'}}
+[36;1mqed_django_1          |[0m WARNING:root:DSSTOX RESULTS: {'DataList': {'list': [{'casrn': '1623-05-8', 'gsid': 61826, 'dsstoxSubstanceId': 'DTXSID0061826', 'preferredName': 'Propane, 1,1,1,2,2,3,3-heptafluoro-3-[(trifluoroethenyl)oxy]-', 'casType': 'Single Compound', 'qcLevel': 'Public_High', 'qcNotes': 'SRS/ChemID matched; SRS trust index 3', 'qcNotes2': None, 'qcNotes3': None, 'source': 'SRS', 'chemnoteDeprecated': None, 'inchiKey': 'KHXKESCWFMPTFT-UHFFFAOYSA-N', 'inchi': 'InChI=1S/C5F10O/c6-1(7)2(8)16-5(14,15)3(9,10)4(11,12)13\nAuxInfo=1/0/N:5,4,1,11,2,6,7,8,15,16,12,13,14,9,10,3/E:(6,7)(9,10)(11,12,13)(14,15)/rA:16CCOCCFFFFFCFFFFF/rB:s1;s2;s3;d4;s5;s5;s4;s2;s2;s1;s11;s11;s11;s1;s1;/rC:.77,4.001,0;1.54,2.6673,0;2.31,1.3337,0;1.54,0,0;;-.77,-1.3337,0;-.77,1.3337,0;2.31,-1.3337,0;2.8737,3.4373,0;.2063,1.8973,0;0,5.3347,0;-.77,6.6685,0;1.3337,6.1047,0;-1.3337,4.5647,0;2.1037,4.771,0;-.5637,3.231,0;\n', 'smiles': 'FC(F)=C(F)OC(F)(F)C(F)(F)C(F)(F)F', 'iupac': '1,1,1,2,2,3,3-heptafluoro-3-(1,2,2-trifluoroethenoxy)propane', 'molFormula': 'C5F10O', 'molWeight': '266.0379943847656'}], 'count': 1}}
+[36;1mqed_django_1          |[0m WARNING:root:RESPONSE: <Response [200]>
+[36;1mqed_django_1          |[0m WARNING:root:FINAL FITERED SMILES: FC(F)=C(F)OC(F)(F)C(F)(F)C(F)(F)F
+[36;1mqed_django_1          |[0m WARNING:root:Returning Chemical Info: {"status": true, "data": {"chemical": "1623-05-8", "orig_smiles": "FC(F)=C(F)OC(F)(F)C(F)(F)C(F)(F)F", "smiles": "FC(F)=C(F)OC(F)(F)C(F)(F)C(F)(F)F", "formula": "C5F10O", "iupac": "1,1,1,2,2,3,3-heptafluoro-3-[(trifluoroethenyl)oxy]propane", "cas": "1623-05-8", "mass": 266.038, "structureData": {"structure": "<?xml version=\"1.0\" encoding=\"windows-1252\"?><cml xmlns=\"http://www.chemaxon.com\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.chemaxon.com/marvin/schema/mrvSchema_14_12_01.xsd\" version=\"ChemAxon file format v14.12.01, generated by v15.3.16.0\">\n<MDocument><MChemicalStruct><molecule molID=\"m1\"><atomArray atomID=\"a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16\" elementType=\"F C F C F O C F F C F F C F F F\" x2=\"2.3099999999999996 1.54 2.3100000000000005 0.0 -0.7699999999999997 -0.7699999999999997 8.881784197001252E-16 -1.3336791218280344 1.3336791218280362 0.7700000000000016 -0.5636791218280337 2.1036791218280366 1.5400000000000025 2.310000000000003 0.2063208781719672 2.8736791218280375\" y2=\"1.3336791218280357 0.0 -1.3336791218280353 0.0 1.3336791218280357 -1.3336791218280357 -2.6673582436560705 -3.437358243656071 -1.8973582436560696 -4.001037365484105 -4.771037365484107 -3.2310373654841045 -5.334716487312141 -6.668395609140177 -6.104716487312142 -4.564716487312141\"></atomArray><bondArray><bond id=\"b1\" atomRefs2=\"a1 a2\" order=\"1\"></bond><bond id=\"b2\" atomRefs2=\"a2 a3\" order=\"1\"></bond><bond id=\"b3\" atomRefs2=\"a2 a4\" order=\"2\"></bond><bond id=\"b4\" atomRefs2=\"a4 a5\" order=\"1\"></bond><bond id=\"b5\" atomRefs2=\"a4 a6\" order=\"1\"></bond><bond id=\"b6\" atomRefs2=\"a6 a7\" order=\"1\"></bond><bond id=\"b7\" atomRefs2=\"a7 a8\" order=\"1\"></bond><bond id=\"b8\" atomRefs2=\"a7 a9\" order=\"1\"></bond><bond id=\"b9\" atomRefs2=\"a7 a10\" order=\"1\"></bond><bond id=\"b10\" atomRefs2=\"a10 a11\" order=\"1\"></bond><bond id=\"b11\" atomRefs2=\"a10 a12\" order=\"1\"></bond><bond id=\"b12\" atomRefs2=\"a10 a13\" order=\"1\"></bond><bond id=\"b13\" atomRefs2=\"a13 a14\" order=\"1\"></bond><bond id=\"b14\" atomRefs2=\"a13 a15\" order=\"1\"></bond><bond id=\"b15\" atomRefs2=\"a13 a16\" order=\"1\"></bond></bondArray></molecule></MChemicalStruct></MDocument>\n</cml>", "format": "mrv", "contentUrl": "http://172.20.100.12/webservices/rest-v0/util/export/struc_dc7d9cec54205990959d2ec7fb1683b1?format=mrv&contentName=structure", "contentBaseUrl": "http://172.20.100.12/webservices/rest-v0/util/export/struc_dc7d9cec54205990959d2ec7fb1683b1"}, "exactMass": 265.97894625, "preferredName": "Propane, 1,1,1,2,2,3,3-heptafluoro-3-[(trifluoroethenyl)oxy]-", "casrn": "1623-05-8", "dsstoxSubstanceId": "DTXSID0061826"}, "request_post": {"chemical": "1623-05-8", "get_structure_data": "true"}}
+[36;1mqed_django_1          |[0m {address space usage: 559235072 bytes/533MB} {rss usage: 82456576 bytes/78MB} [pid: 28|app: 0|req: 1/1] 204.46.77.168 () {54 vars in 1965 bytes} [Wed Dec  6 13:04:59 2017] POST /cts/rest/molecule => generated 2805 bytes in 3159 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 0)

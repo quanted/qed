@@ -164,7 +164,7 @@ services:
   # # Celery worker - sam_worker
   sam_worker:
     build: ./ubertool_ecorest
-    image: cts-celery:latest
+    #image: cts-celery:latest
     command: celery worker -A tasks -Q sam -c 1 --loglevel=DEBUG -n sam_worker
     links:
       - redis

@@ -37,6 +37,11 @@ class RequireLoginMiddleware(object):
 
 	def process_request(self, request):
 
+		# _already_authenticated == ''
+
+		if request.user.is_authenticated:
+			return  # user already authenticated
+
 		if request.POST:
 			return self.login_auth(request)
 
@@ -112,9 +117,9 @@ def login(request):
 
 	html += render_to_string('login_prompt.html', {'next': next_page}, request=request)
 
-	#scripts and footer
+	# scripts and footer
 	html += render_to_string('09epa_drupal_ubertool_css.html', {})
-	#html += render_to_string('09epa_drupal_ubertool_scripts.html', {})
+	# html += render_to_string('09epa_drupal_ubertool_scripts.html', {})
 	html += render_to_string('10epa_drupal_footer.html', {})
 
 	response = HttpResponse()

@@ -23,6 +23,7 @@ if os.environ.get('IS_PUBLIC') == "True":
         url(r'^login/?$', login_middleware.login),
         url(r'^cts/', include('cts_app.urls')),
         url(r'^cyan/', include('cyan_app.urls')),
+        url(r'^ubertool/', include('ubertool_app.urls')),
     ]
 else:
     urlpatterns = [

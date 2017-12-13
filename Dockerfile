@@ -21,7 +21,7 @@ WORKDIR /src
 EXPOSE 8080
 
 # Ensure "docker_start" is executable
-RUN chmod 755 /src/docker_start.sh
+RUN sudo chmod 755 /src/docker_start.sh
 
 # Specific Docker-specific Django settings file (needed for collectstatic)
 ENV DJANGO_SETTINGS_MODULE="settings_docker"

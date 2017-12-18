@@ -215,7 +215,7 @@ services:
       - "7777"
     links:
       - redis
-      - sam_worker
+    # - sam_worker
     environment:
       - REDIS_HOSTNAME=redis
     # command: celery worker -A tasks -Q manager -l info -n manager_worker -c 1

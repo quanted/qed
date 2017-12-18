@@ -202,10 +202,10 @@ services:
       - cts_nodejs:cts_nodejs
       - ecorest:uwsgi_flask
     #  - hwbi_rest
-   volumes:
-     - /var/www/nginx/certs:/etc/nginx/qed # this points to the keys directory
-   volumes_from:
-     - qed_django:ro  # Mount all volumes from "qed_django" to NGINX, so it can access the collected static files
+    volumes:
+      - /var/www/nginx/certs:/etc/nginx/qed # this points to the keys directory
+    volumes_from:
+      - qed_django:ro  # Mount all volumes from "qed_django" to NGINX, so it can access the collected static files
 
 
   # ubertool_ecorest Flask back-end

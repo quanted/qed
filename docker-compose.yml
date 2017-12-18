@@ -165,7 +165,7 @@ services:
   sam_worker:
     build: ./ubertool_ecorest
     #image: cts-celery:latest
-    command: celery worker -A ubertool_ecorest.tasks -c 1 -Q sam --loglevel=DEBUG -n sam_worker
+    command: celery worker -A tasks -c 1 -Q sam --loglevel=DEBUG -n sam_worker
 #    volumes:
 #      - '.:/ubertool_ecorest'
     links:
@@ -219,7 +219,7 @@ services:
     environment:
       - REDIS_HOSTNAME=redis
     # command: celery worker -A tasks -Q manager -l info -n manager_worker -c 1
-    # command: celery worker -A tasks -Q sam -c 1 --loglevel=DEBUG -n sam_worker
+    # command: celery worker -A tasks -c 1 -Q sam --loglevel=DEBUG -n sam_worker
     #depends_on:
     #  - "redis"
 

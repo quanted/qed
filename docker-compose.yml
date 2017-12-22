@@ -167,7 +167,7 @@ services:
     #image: cts-celery:latest
     command: celery worker -A tasks -c 1 -Q sam --loglevel=DEBUG -n sam_worker
     volumes:
-      - ./ubertool_ecorest:/src/ubertool_ecorest/
+      - ./ubertool_ecorest/ubertool/ubertool/sam/bin:/src/ubertool/ubertool/sam/bin
     links:
       - redis
     environment:

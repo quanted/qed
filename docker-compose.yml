@@ -166,13 +166,15 @@ services:
     build: ./ubertool_ecorest
     #image: cts-celery:latest
     command: celery worker -A tasks -c 1 -Q sam --loglevel=DEBUG -n sam_worker
+    volumes:
+      - ./ubertool_ecorest/ubertool/ubertool/sam/bin:/src/ubertool/ubertool/sam/bin
     links:
       - redis
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
-    # env_file:
-    #   - ./${QED_CONFIG}
+#    env_file:
+#      - ./${QED_CONFIG}
 
   # Update for Celery: celery_worker and redis
   # rename to worker_flask
@@ -216,8 +218,11 @@ services:
       - sam_worker
     environment:
       - REDIS_HOSTNAME=redis
+      - DOCKER_HOSTNAME=${HOSTNAME}
+    volumes:
+      - ./ubertool_ecorest/ubertool/ubertool/sam/bin:/src/ubertool/ubertool/sam/bin
     # command: celery worker -A tasks -Q manager -l info -n manager_worker -c 1
-    # command: celery worker -A tasks -Q sam -c 1 --loglevel=DEBUG -n sam_worker
+    # command: celery worker -A tasks -c 1 -Q sam --loglevel=DEBUG -n sam_worker
     #depends_on:
     #  - "redis"
 

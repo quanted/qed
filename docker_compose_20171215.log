@@ -1,0 +1,505 @@
+Attaching to qed_redis_1, qed_worker_epi_1, qed_worker_metabolizer_1, qed_worker_measured_1, qed_sam_worker_1, qed_worker_cheminfo_1, qed_qed_django_1, qed_worker_sparc_1, qed_worker_manager_1, qed_worker_test_1, qed_worker_chemaxon_1, qed_ecorest_1, qed_cts_nodejs_1, qed_qed_nginx_1
+[36mredis_1               |[0m 1:C 15 Dec 22:48:50.638 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[36mredis_1               |[0m                 _._                                                  
+[36mredis_1               |[0m            _.-``__ ''-._                                             
+[36mredis_1               |[0m       _.-``    `.  `_.  ''-._           Redis 3.2.9 (00000000/0) 64 bit
+[36mredis_1               |[0m   .-`` .-```.  ```\/    _.,_ ''-._                                   
+[36mredis_1               |[0m  (    '      ,       .-`  | `,    )     Running in standalone mode
+[36mredis_1               |[0m  |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+[36mredis_1               |[0m  |    `-._   `._    /     _.-'    |     PID: 1
+[36mredis_1               |[0m   `-._    `-._  `-./  _.-'    _.-'                                   
+[36mredis_1               |[0m  |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+[36mredis_1               |[0m  |    `-._`-._        _.-'_.-'    |           http://redis.io        
+[36mredis_1               |[0m   `-._    `-._`-.__.-'_.-'    _.-'                                   
+[36mredis_1               |[0m  |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+[36mredis_1               |[0m  |    `-._`-._        _.-'_.-'    |                                  
+[36mredis_1               |[0m   `-._    `-._`-.__.-'_.-'    _.-'                                   
+[36mredis_1               |[0m       `-._    `-.__.-'    _.-'                                       
+[36mredis_1               |[0m           `-._        _.-'                                           
+[36mredis_1               |[0m               `-.__.-'                                               
+[36mredis_1               |[0m 
+[36mredis_1               |[0m 1:M 15 Dec 22:48:50.640 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+[36mredis_1               |[0m 1:M 15 Dec 22:48:50.640 # Server started, Redis version 3.2.9
+[36mredis_1               |[0m 1:M 15 Dec 22:48:50.640 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[36mredis_1               |[0m 1:M 15 Dec 22:48:50.641 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+[36mredis_1               |[0m 1:M 15 Dec 22:48:50.641 * The server is now ready to accept connections on port 6379
+[32mworker_metabolizer_1  |[0m WARNING:root:set_environment.py
+[32mworker_metabolizer_1  |[0m WARNING:root:DOCKER_HOSTNAME: ord-uber-vm001
+[32mworker_metabolizer_1  |[0m WARNING:root:HOSTNAME: b260a54f9b25
+[32mworker_metabolizer_1  |[0m WARNING:root:Deploying on prod server...
+[32mworker_metabolizer_1  |[0m WARNING:root:loading env vars from: docker_prod.env
+[32mworker_metabolizer_1  |[0m WARNING:root:env file: docker_prod.env
+[32mworker_metabolizer_1  |[0m INFO:root:REDIS_HOSTNAME: redis
+[32mworker_metabolizer_1  |[0m INFO:root:REDIS_PORT: 6379
+[32mworker_metabolizer_1  |[0m /usr/local/lib/python3.6/site-packages/celery/platforms.py:795: RuntimeWarning: You're running the worker with superuser privileges: this is
+[32mworker_metabolizer_1  |[0m absolutely not recommended!
+[32mworker_metabolizer_1  |[0m 
+[32mworker_metabolizer_1  |[0m Please specify a different user using the -u option.
+[32mworker_metabolizer_1  |[0m 
+[32mworker_metabolizer_1  |[0m User information: uid=0 euid=0 gid=0 egid=0
+[32mworker_metabolizer_1  |[0m 
+[32mworker_metabolizer_1  |[0m   uid=uid, euid=euid, gid=gid, egid=egid,
+[32mworker_metabolizer_1  |[0m [2017-12-15 22:48:53,059: INFO/MainProcess] Connected to redis://redis:6379/0
+[32mworker_metabolizer_1  |[0m [2017-12-15 22:48:53,070: INFO/MainProcess] mingle: searching for neighbors
+[32mworker_metabolizer_1  |[0m [2017-12-15 22:48:54,100: INFO/MainProcess] mingle: all alone
+[32mworker_metabolizer_1  |[0m [2017-12-15 22:48:54,126: INFO/MainProcess] celery@metabolizer_worker ready.
+[32mworker_metabolizer_1  |[0m [2017-12-15 22:48:54,753: INFO/MainProcess] sync with celery@measured_worker
+[32mworker_metabolizer_1  |[0m [2017-12-15 22:48:56,153: INFO/MainProcess] sync with celery@manager_worker
+[32mworker_metabolizer_1  |[0m [2017-12-15 22:48:56,356: INFO/MainProcess] sync with celery@cheminfo_worker
+[32mworker_metabolizer_1  |[0m [2017-12-15 22:48:56,406: INFO/MainProcess] sync with celery@sparc_worker
+[32mworker_metabolizer_1  |[0m [2017-12-15 22:48:57,184: INFO/MainProcess] sync with celery@test_worker
+[33mworker_epi_1          |[0m WARNING:root:set_environment.py
+[33mworker_epi_1          |[0m WARNING:root:DOCKER_HOSTNAME: ord-uber-vm001
+[33mworker_epi_1          |[0m WARNING:root:HOSTNAME: 03c1547408c9
+[33mworker_epi_1          |[0m WARNING:root:Deploying on prod server...
+[33mworker_epi_1          |[0m WARNING:root:loading env vars from: docker_prod.env
+[33mworker_epi_1          |[0m WARNING:root:env file: docker_prod.env
+[33mworker_epi_1          |[0m INFO:root:REDIS_HOSTNAME: redis
+[33mworker_epi_1          |[0m INFO:root:REDIS_PORT: 6379
+[33mworker_epi_1          |[0m /usr/local/lib/python3.6/site-packages/celery/platforms.py:795: RuntimeWarning: You're running the worker with superuser privileges: this is
+[33mworker_epi_1          |[0m absolutely not recommended!
+[33mworker_epi_1          |[0m 
+[33mworker_epi_1          |[0m Please specify a different user using the -u option.
+[33mworker_epi_1          |[0m 
+[33mworker_epi_1          |[0m User information: uid=0 euid=0 gid=0 egid=0
+[33mworker_epi_1          |[0m 
+[33mworker_epi_1          |[0m   uid=uid, euid=euid, gid=gid, egid=egid,
+[33mworker_epi_1          |[0m [2017-12-15 22:48:52,843: INFO/MainProcess] Connected to redis://redis:6379/0
+[33mworker_epi_1          |[0m [2017-12-15 22:48:52,862: INFO/MainProcess] mingle: searching for neighbors
+[33mworker_epi_1          |[0m [2017-12-15 22:48:53,927: INFO/MainProcess] mingle: all alone
+[33mworker_epi_1          |[0m [2017-12-15 22:48:53,940: INFO/MainProcess] celery@epi_worker ready.
+[33mworker_epi_1          |[0m [2017-12-15 22:48:54,755: INFO/MainProcess] sync with celery@measured_worker
+[33mworker_epi_1          |[0m [2017-12-15 22:48:56,154: INFO/MainProcess] sync with celery@manager_worker
+[33mworker_epi_1          |[0m [2017-12-15 22:48:56,357: INFO/MainProcess] sync with celery@cheminfo_worker
+[33mworker_epi_1          |[0m [2017-12-15 22:48:56,407: INFO/MainProcess] sync with celery@sparc_worker
+[33mworker_epi_1          |[0m [2017-12-15 22:48:57,186: INFO/MainProcess] sync with celery@test_worker
+[35mworker_measured_1     |[0m WARNING:root:set_environment.py
+[35mworker_measured_1     |[0m WARNING:root:DOCKER_HOSTNAME: ord-uber-vm001
+[35mworker_measured_1     |[0m WARNING:root:HOSTNAME: 01b4a56470a6
+[35mworker_measured_1     |[0m WARNING:root:Deploying on prod server...
+[35mworker_measured_1     |[0m WARNING:root:loading env vars from: docker_prod.env
+[35mworker_measured_1     |[0m WARNING:root:env file: docker_prod.env
+[35mworker_measured_1     |[0m INFO:root:REDIS_HOSTNAME: redis
+[35mworker_measured_1     |[0m INFO:root:REDIS_PORT: 6379
+[35mworker_measured_1     |[0m /usr/local/lib/python3.6/site-packages/celery/platforms.py:795: RuntimeWarning: You're running the worker with superuser privileges: this is
+[35mworker_measured_1     |[0m absolutely not recommended!
+[35mworker_measured_1     |[0m 
+[35mworker_measured_1     |[0m Please specify a different user using the -u option.
+[35mworker_measured_1     |[0m 
+[35mworker_measured_1     |[0m User information: uid=0 euid=0 gid=0 egid=0
+[35mworker_measured_1     |[0m 
+[35mworker_measured_1     |[0m   uid=uid, euid=euid, gid=gid, egid=egid,
+[35mworker_measured_1     |[0m [2017-12-15 22:48:54,662: INFO/MainProcess] Connected to redis://redis:6379/0
+[35mworker_measured_1     |[0m [2017-12-15 22:48:54,690: INFO/MainProcess] mingle: searching for neighbors
+[35mworker_measured_1     |[0m [2017-12-15 22:48:55,762: INFO/MainProcess] mingle: sync with 2 nodes
+[35mworker_measured_1     |[0m [2017-12-15 22:48:55,763: INFO/MainProcess] mingle: sync complete
+[35mworker_measured_1     |[0m [2017-12-15 22:48:55,789: INFO/MainProcess] celery@measured_worker ready.
+[35mworker_measured_1     |[0m [2017-12-15 22:48:56,152: INFO/MainProcess] sync with celery@manager_worker
+[35mworker_measured_1     |[0m [2017-12-15 22:48:56,355: INFO/MainProcess] sync with celery@cheminfo_worker
+[35mworker_measured_1     |[0m [2017-12-15 22:48:56,405: INFO/MainProcess] sync with celery@sparc_worker
+[35mworker_measured_1     |[0m [2017-12-15 22:48:57,183: INFO/MainProcess] sync with celery@test_worker
+[34mworker_cheminfo_1     |[0m WARNING:root:set_environment.py
+[34mworker_cheminfo_1     |[0m WARNING:root:DOCKER_HOSTNAME: ord-uber-vm001
+[34mworker_cheminfo_1     |[0m WARNING:root:HOSTNAME: 0f9a774ca4a3
+[34mworker_cheminfo_1     |[0m WARNING:root:Deploying on prod server...
+[34mworker_cheminfo_1     |[0m WARNING:root:loading env vars from: docker_prod.env
+[34mworker_cheminfo_1     |[0m WARNING:root:env file: docker_prod.env
+[34mworker_cheminfo_1     |[0m INFO:root:REDIS_HOSTNAME: redis
+[34mworker_cheminfo_1     |[0m INFO:root:REDIS_PORT: 6379
+[34mworker_cheminfo_1     |[0m /usr/local/lib/python3.6/site-packages/celery/platforms.py:795: RuntimeWarning: You're running the worker with superuser privileges: this is
+[34mworker_cheminfo_1     |[0m absolutely not recommended!
+[34mworker_cheminfo_1     |[0m 
+[34mworker_cheminfo_1     |[0m Please specify a different user using the -u option.
+[34mworker_cheminfo_1     |[0m 
+[34mworker_cheminfo_1     |[0m User information: uid=0 euid=0 gid=0 egid=0
+[34mworker_cheminfo_1     |[0m 
+[34mworker_cheminfo_1     |[0m   uid=uid, euid=euid, gid=gid, egid=egid,
+[34mworker_cheminfo_1     |[0m [2017-12-15 22:48:56,262: INFO/MainProcess] Connected to redis://redis:6379/0
+[34mworker_cheminfo_1     |[0m [2017-12-15 22:48:56,295: INFO/MainProcess] mingle: searching for neighbors
+[34mworker_cheminfo_1     |[0m [2017-12-15 22:48:57,365: INFO/MainProcess] mingle: sync with 3 nodes
+[34mworker_cheminfo_1     |[0m [2017-12-15 22:48:57,366: INFO/MainProcess] mingle: sync complete
+[34mworker_cheminfo_1     |[0m [2017-12-15 22:48:57,387: INFO/MainProcess] celery@cheminfo_worker ready.
+[33;1mworker_sparc_1        |[0m WARNING:root:set_environment.py
+[33;1mworker_sparc_1        |[0m WARNING:root:DOCKER_HOSTNAME: ord-uber-vm001
+[33;1mworker_sparc_1        |[0m WARNING:root:HOSTNAME: 26468644afb1
+[33;1mworker_sparc_1        |[0m WARNING:root:Deploying on prod server...
+[33;1mworker_sparc_1        |[0m WARNING:root:loading env vars from: docker_prod.env
+[33;1mworker_sparc_1        |[0m WARNING:root:env file: docker_prod.env
+[33;1mworker_sparc_1        |[0m INFO:root:REDIS_HOSTNAME: redis
+[33;1mworker_sparc_1        |[0m INFO:root:REDIS_PORT: 6379
+[33;1mworker_sparc_1        |[0m /usr/local/lib/python3.6/site-packages/celery/platforms.py:795: RuntimeWarning: You're running the worker with superuser privileges: this is
+[33;1mworker_sparc_1        |[0m absolutely not recommended!
+[33;1mworker_sparc_1        |[0m 
+[33;1mworker_sparc_1        |[0m Please specify a different user using the -u option.
+[33;1mworker_sparc_1        |[0m 
+[33;1mworker_sparc_1        |[0m User information: uid=0 euid=0 gid=0 egid=0
+[33;1mworker_sparc_1        |[0m 
+[33;1mworker_sparc_1        |[0m   uid=uid, euid=euid, gid=gid, egid=egid,
+[33;1mworker_sparc_1        |[0m [2017-12-15 22:48:56,367: INFO/MainProcess] Connected to redis://redis:6379/0
+[33;1mworker_sparc_1        |[0m [2017-12-15 22:48:56,383: INFO/MainProcess] mingle: searching for neighbors
+[33;1mworker_sparc_1        |[0m [2017-12-15 22:48:57,415: INFO/MainProcess] mingle: sync with 3 nodes
+[33;1mworker_sparc_1        |[0m [2017-12-15 22:48:57,416: INFO/MainProcess] mingle: sync complete
+[33;1mworker_sparc_1        |[0m [2017-12-15 22:48:57,431: INFO/MainProcess] celery@sparc_worker ready.
+[31msam_worker_1          |[0m INFO:root:REDIS HOSTNAME: redis
+[31msam_worker_1          |[0m /usr/local/lib/python3.6/site-packages/celery/platforms.py:795: RuntimeWarning: You're running the worker with superuser privileges: this is
+[31msam_worker_1          |[0m absolutely not recommended!
+[31msam_worker_1          |[0m 
+[31msam_worker_1          |[0m Please specify a different user using the -u option.
+[31msam_worker_1          |[0m 
+[31msam_worker_1          |[0m User information: uid=0 euid=0 gid=0 egid=0
+[31msam_worker_1          |[0m 
+[31msam_worker_1          |[0m   uid=uid, euid=euid, gid=gid, egid=egid,
+[31msam_worker_1          |[0m [2017-12-15 22:48:55,051: DEBUG/MainProcess] | Worker: Preparing bootsteps.
+[31msam_worker_1          |[0m [2017-12-15 22:48:55,053: DEBUG/MainProcess] | Worker: Building graph...
+[31msam_worker_1          |[0m [2017-12-15 22:48:55,054: DEBUG/MainProcess] | Worker: New boot order: {Beat, Timer, Hub, Pool, Autoscaler, StateDB, Consumer}
+[31msam_worker_1          |[0m [2017-12-15 22:48:55,080: DEBUG/MainProcess] | Consumer: Preparing bootsteps.
+[31msam_worker_1          |[0m [2017-12-15 22:48:55,080: DEBUG/MainProcess] | Consumer: Building graph...
+[31msam_worker_1          |[0m [2017-12-15 22:48:55,100: DEBUG/MainProcess] | Consumer: New boot order: {Connection, Events, Mingle, Gossip, Heart, Tasks, Control, Agent, event loop}
+[31msam_worker_1          |[0m [2017-12-15 22:48:55,112: DEBUG/MainProcess] | Worker: Starting Hub
+[31msam_worker_1          |[0m [2017-12-15 22:48:55,112: DEBUG/MainProcess] ^-- substep ok
+[31msam_worker_1          |[0m [2017-12-15 22:48:55,113: DEBUG/MainProcess] | Worker: Starting Pool
+[31msam_worker_1          |[0m [2017-12-15 22:48:55,145: DEBUG/MainProcess] ^-- substep ok
+[31msam_worker_1          |[0m [2017-12-15 22:48:55,146: DEBUG/MainProcess] | Worker: Starting Consumer
+[31msam_worker_1          |[0m [2017-12-15 22:48:55,146: DEBUG/MainProcess] | Consumer: Starting Connection
+[31msam_worker_1          |[0m [2017-12-15 22:48:55,160: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 101 connecting to localhost:6379. Network is unreachable..
+[31msam_worker_1          |[0m Trying again in 2.00 seconds...
+[31msam_worker_1          |[0m 
+[31msam_worker_1          |[0m [2017-12-15 22:48:57,167: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 101 connecting to localhost:6379. Network is unreachable..
+[31msam_worker_1          |[0m Trying again in 4.00 seconds...
+[31msam_worker_1          |[0m 
+[32;1mworker_manager_1      |[0m WARNING:root:set_environment.py
+[32;1mworker_manager_1      |[0m WARNING:root:DOCKER_HOSTNAME: ord-uber-vm001
+[32;1mworker_manager_1      |[0m WARNING:root:HOSTNAME: ca875f130b67
+[32;1mworker_manager_1      |[0m WARNING:root:Deploying on prod server...
+[32;1mworker_manager_1      |[0m WARNING:root:loading env vars from: docker_prod.env
+[32;1mworker_manager_1      |[0m WARNING:root:env file: docker_prod.env
+[32;1mworker_manager_1      |[0m INFO:root:REDIS_HOSTNAME: redis
+[32;1mworker_manager_1      |[0m INFO:root:REDIS_PORT: 6379
+[32;1mworker_manager_1      |[0m /usr/local/lib/python3.6/site-packages/celery/platforms.py:795: RuntimeWarning: You're running the worker with superuser privileges: this is
+[32;1mworker_manager_1      |[0m absolutely not recommended!
+[32;1mworker_manager_1      |[0m 
+[32;1mworker_manager_1      |[0m Please specify a different user using the -u option.
+[32;1mworker_manager_1      |[0m 
+[32;1mworker_manager_1      |[0m User information: uid=0 euid=0 gid=0 egid=0
+[32;1mworker_manager_1      |[0m 
+[32;1mworker_manager_1      |[0m   uid=uid, euid=euid, gid=gid, egid=egid,
+[32;1mworker_manager_1      |[0m [2017-12-15 22:48:56,005: INFO/MainProcess] Connected to redis://redis:6379/0
+[32;1mworker_manager_1      |[0m [2017-12-15 22:48:56,040: INFO/MainProcess] mingle: searching for neighbors
+[32;1mworker_manager_1      |[0m [2017-12-15 22:48:57,164: INFO/MainProcess] mingle: sync with 3 nodes
+[32;1mworker_manager_1      |[0m [2017-12-15 22:48:57,165: INFO/MainProcess] mingle: sync complete
+[32;1mworker_manager_1      |[0m [2017-12-15 22:48:57,180: INFO/MainProcess] celery@manager_worker ready.
+[32;1mworker_manager_1      |[0m [2017-12-15 22:48:57,189: INFO/MainProcess] sync with celery@test_worker
+[35;1mworker_test_1         |[0m WARNING:root:set_environment.py
+[35;1mworker_test_1         |[0m WARNING:root:DOCKER_HOSTNAME: ord-uber-vm001
+[35;1mworker_test_1         |[0m WARNING:root:HOSTNAME: b7399e000733
+[35;1mworker_test_1         |[0m WARNING:root:Deploying on prod server...
+[35;1mworker_test_1         |[0m WARNING:root:loading env vars from: docker_prod.env
+[35;1mworker_test_1         |[0m WARNING:root:env file: docker_prod.env
+[35;1mworker_test_1         |[0m INFO:root:REDIS_HOSTNAME: redis
+[35;1mworker_test_1         |[0m INFO:root:REDIS_PORT: 6379
+[35;1mworker_test_1         |[0m /usr/local/lib/python3.6/site-packages/celery/platforms.py:795: RuntimeWarning: You're running the worker with superuser privileges: this is
+[35;1mworker_test_1         |[0m absolutely not recommended!
+[35;1mworker_test_1         |[0m 
+[35;1mworker_test_1         |[0m Please specify a different user using the -u option.
+[35;1mworker_test_1         |[0m 
+[35;1mworker_test_1         |[0m User information: uid=0 euid=0 gid=0 egid=0
+[35;1mworker_test_1         |[0m 
+[35;1mworker_test_1         |[0m   uid=uid, euid=euid, gid=gid, egid=egid,
+[35;1mworker_test_1         |[0m [2017-12-15 22:48:57,122: INFO/MainProcess] Connected to redis://redis:6379/0
+[35;1mworker_test_1         |[0m [2017-12-15 22:48:57,141: INFO/MainProcess] mingle: searching for neighbors
+[31;1mworker_chemaxon_1     |[0m WARNING:root:set_environment.py
+[31;1mworker_chemaxon_1     |[0m WARNING:root:DOCKER_HOSTNAME: ord-uber-vm001
+[31;1mworker_chemaxon_1     |[0m WARNING:root:HOSTNAME: 249b8e81e7f3
+[31;1mworker_chemaxon_1     |[0m WARNING:root:Deploying on prod server...
+[31;1mworker_chemaxon_1     |[0m WARNING:root:loading env vars from: docker_prod.env
+[31;1mworker_chemaxon_1     |[0m WARNING:root:env file: docker_prod.env
+[31;1mworker_chemaxon_1     |[0m INFO:root:REDIS_HOSTNAME: redis
+[31;1mworker_chemaxon_1     |[0m INFO:root:REDIS_PORT: 6379
+[34;1mecorest_1             |[0m [uWSGI] getting INI configuration from /etc/uwsgi/uwsgi.ini
+[34;1mecorest_1             |[0m *** Starting uWSGI 2.0.15 (64bit) on [Fri Dec 15 22:48:55 2017] ***
+[34;1mecorest_1             |[0m compiled with version: 4.9.2 on 05 December 2017 15:32:02
+[34;1mecorest_1             |[0m os: Linux-3.10.0-327.28.2.el7.x86_64 #1 SMP Mon Jun 27 14:48:28 EDT 2016
+[34;1mecorest_1             |[0m nodename: 05578fa8522c
+[34;1mecorest_1             |[0m machine: x86_64
+[34;1mecorest_1             |[0m clock source: unix
+[34;1mecorest_1             |[0m pcre jit disabled
+[34;1mecorest_1             |[0m detected number of CPU cores: 4
+[34;1mecorest_1             |[0m current working directory: /src
+[34;1mecorest_1             |[0m detected binary path: /usr/local/bin/uwsgi
+[34;1mecorest_1             |[0m chdir() to /src
+[34;1mecorest_1             |[0m your memory page size is 4096 bytes
+[34;1mecorest_1             |[0m detected max file descriptor number: 65536
+[34;1mecorest_1             |[0m lock engine: pthread robust mutexes
+[34;1mecorest_1             |[0m thunder lock: enabled
+[34;1mecorest_1             |[0m uwsgi socket 0 bound to TCP address :8080 fd 3
+[34;1mecorest_1             |[0m uWSGI running as root, you can use --uid/--gid/--chroot options
+[34;1mecorest_1             |[0m *** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+[34;1mecorest_1             |[0m Python version: 3.6.3 (default, Nov  4 2017, 22:17:09)  [GCC 4.9.2]
+[34;1mecorest_1             |[0m Python main interpreter initialized at 0x20c7470
+[34;1mecorest_1             |[0m python threads support enabled
+[34;1mecorest_1             |[0m your server socket listen backlog is limited to 100 connections
+[34;1mecorest_1             |[0m your mercy for graceful operations on workers is 60 seconds
+[34;1mecorest_1             |[0m mapped 1237056 bytes (1208 KB) for 16 cores
+[34;1mecorest_1             |[0m *** Operational MODE: preforking ***
+[34;1mecorest_1             |[0m WSGI Current working directory: /src
+[34;1mecorest_1             |[0m ['/src', '.', '', '/usr/local/lib/python36.zip', '/usr/local/lib/python3.6', '/usr/local/lib/python3.6/lib-dynload', '/usr/local/lib/python3.6/site-packages']
+[36mcts_nodejs_1          |[0m envs: [object Object]
+[36mcts_nodejs_1          |[0m redis url redis://redis:6379/0
+[36mcts_nodejs_1          |[0m cts_nodejs running at cts_nodejs, port 4000
+[36mcts_nodejs_1          |[0m cts_nodejs test at /test
+[33mqed_nginx_1           |[0m 2017/12/15 22:48:57 [emerg] 1#1: BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[33mqed_nginx_1           |[0m nginx: [emerg] BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[31;1mworker_chemaxon_1     |[0m /usr/local/lib/python3.6/site-packages/celery/platforms.py:795: RuntimeWarning: You're running the worker with superuser privileges: this is
+[31;1mworker_chemaxon_1     |[0m absolutely not recommended!
+[31;1mworker_chemaxon_1     |[0m 
+[31;1mworker_chemaxon_1     |[0m Please specify a different user using the -u option.
+[31;1mworker_chemaxon_1     |[0m 
+[31;1mworker_chemaxon_1     |[0m User information: uid=0 euid=0 gid=0 egid=0
+[31;1mworker_chemaxon_1     |[0m 
+[31;1mworker_chemaxon_1     |[0m   uid=uid, euid=euid, gid=gid, egid=egid,
+[31;1mworker_chemaxon_1     |[0m [2017-12-15 22:48:57,856: INFO/MainProcess] Connected to redis://redis:6379/0
+[31;1mworker_chemaxon_1     |[0m [2017-12-15 22:48:57,870: INFO/MainProcess] mingle: searching for neighbors
+[34mworker_cheminfo_1     |[0m [2017-12-15 22:48:57,898: INFO/MainProcess] sync with celery@chemaxon_worker
+[32mworker_metabolizer_1  |[0m [2017-12-15 22:48:57,902: INFO/MainProcess] sync with celery@chemaxon_worker
+[32;1mworker_manager_1      |[0m [2017-12-15 22:48:57,899: INFO/MainProcess] sync with celery@chemaxon_worker
+[33;1mworker_sparc_1        |[0m [2017-12-15 22:48:57,897: INFO/MainProcess] sync with celery@chemaxon_worker
+[33mworker_epi_1          |[0m [2017-12-15 22:48:57,903: INFO/MainProcess] sync with celery@chemaxon_worker
+[35mworker_measured_1     |[0m [2017-12-15 22:48:57,901: INFO/MainProcess] sync with celery@chemaxon_worker
+[34;1mecorest_1             |[0m Added to PYTHONPATH: /src/ubertool/ubertool
+[34;1mecorest_1             |[0m INFO:root:REDIS HOSTNAME: redis
+[34;1mecorest_1             |[0m DEBUG:root:CORS not enabled
+[35;1mworker_test_1         |[0m [2017-12-15 22:48:58,200: INFO/MainProcess] mingle: sync with 4 nodes
+[35;1mworker_test_1         |[0m [2017-12-15 22:48:58,202: INFO/MainProcess] mingle: sync complete
+[35;1mworker_test_1         |[0m [2017-12-15 22:48:58,223: INFO/MainProcess] celery@test_worker ready.
+[36;1mqed_django_1          |[0m settings.py
+[36;1mqed_django_1          |[0m PROJECT_ROOT = /src
+[36;1mqed_django_1          |[0m TEMPLATE_ROOT = /src/templates_qed/
+[36;1mqed_django_1          |[0m settings_docker.py
+[36;1mqed_django_1          |[0m REST backend = http://qed_nginx:7777
+[36;1mqed_django_1          |[0m MACHINE_ID = f87686021064
+[36;1mqed_django_1          |[0m HOSTNAME = ord-uber-vm001
+[36;1mqed_django_1          |[0m IS_PUBLIC = False
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/css/base.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/css/changelists.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/css/dashboard.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/css/fonts.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/css/forms.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/css/login.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/css/rtl.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/css/widgets.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/fonts/LICENSE.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/fonts/README.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/fonts/Roboto-Bold-webfont.woff'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/fonts/Roboto-Light-webfont.woff'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/fonts/Roboto-Regular-webfont.woff'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/LICENSE'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/README.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/calendar-icons.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-addlink.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-alert.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-calendar.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-changelink.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-clock.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-deletelink.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-no.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-unknown-alt.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-unknown.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/icon-yes.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/inline-delete.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/search.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/selector-icons.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/sorting-icons.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/tooltag-add.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/tooltag-arrowright.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/gis/move_vertex_off.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/img/gis/move_vertex_on.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/SelectBox.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/SelectFilter2.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/actions.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/actions.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/calendar.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/cancel.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/change_form.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/collapse.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/collapse.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/core.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/inlines.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/inlines.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/jquery.init.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/popup_response.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/prepopulate.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/prepopulate.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/prepopulate_init.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/timeparse.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/urlify.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/admin/DateTimeShortcuts.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/admin/RelatedObjectLookups.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/vendor/jquery/LICENSE-JQUERY.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/vendor/jquery/jquery.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/vendor/jquery/jquery.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/vendor/xregexp/LICENSE-XREGEXP.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/vendor/xregexp/xregexp.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m Found another file with the destination path 'admin/js/vendor/xregexp/xregexp.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+[36;1mqed_django_1          |[0m 
+[36;1mqed_django_1          |[0m 0 static files copied to '/src/collected_static', 9049 unmodified.
+[33mqed_qed_nginx_1 exited with code 1
+[0m[34;1mecorest_1             |[0m http://localhost:7777/api/ubertool/
+[34;1mecorest_1             |[0m http://localhost:7777/api/ubertool/spec/
+[34;1mecorest_1             |[0m http://localhost:7777/rest/ubertool/agdrift/
+[34;1mecorest_1             |[0m http://localhost:7777/rest/ubertool/beerex/
+[34;1mecorest_1             |[0m http://localhost:7777/rest/ubertool/earthworm/
+[34;1mecorest_1             |[0m http://localhost:7777/rest/ubertool/exponential/
+[34;1mecorest_1             |[0m http://localhost:7777/rest/ubertool/iec/
+[34;1mecorest_1             |[0m http://localhost:7777/rest/ubertool/kabam/
+[34;1mecorest_1             |[0m http://localhost:7777/rest/ubertool/leslie_probit/
+[34;1mecorest_1             |[0m http://localhost:7777/rest/ubertool/rice/
+[34;1mecorest_1             |[0m http://localhost:7777/rest/ubertool/sam/
+[34;1mecorest_1             |[0m http://localhost:7777/rest/ubertool/sip/
+[34;1mecorest_1             |[0m http://localhost:7777/rest/ubertool/stir/
+[34;1mecorest_1             |[0m http://localhost:7777/rest/ubertool/terrplant/
+[34;1mecorest_1             |[0m http://localhost:7777/rest/ubertool/therps/
+[34;1mecorest_1             |[0m http://localhost:7777/rest/ubertool/trex/
+[34;1mecorest_1             |[0m WSGI app 0 (mountpoint='') ready in 3 seconds on interpreter 0x20c7470 pid: 1 (default app)
+[34;1mecorest_1             |[0m *** uWSGI is running in multiple interpreter mode ***
+[34;1mecorest_1             |[0m spawned uWSGI master process (pid: 1)
+[34;1mecorest_1             |[0m spawned uWSGI worker 1 (pid: 13, cores: 1)
+[34;1mecorest_1             |[0m spawned uWSGI worker 2 (pid: 14, cores: 1)
+[32mqed_nginx_1           |[0m 2017/12/15 22:48:57 [emerg] 1#1: BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[32mqed_nginx_1           |[0m nginx: [emerg] BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[32mqed_nginx_1           |[0m 2017/12/15 22:48:58 [emerg] 1#1: BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[32mqed_nginx_1           |[0m nginx: [emerg] BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[32mqed_nginx_1           |[0m 2017/12/15 22:48:58 [emerg] 1#1: BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[32mqed_nginx_1           |[0m nginx: [emerg] BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[31;1mworker_chemaxon_1     |[0m [2017-12-15 22:48:58,909: INFO/MainProcess] mingle: sync with 6 nodes
+[31;1mworker_chemaxon_1     |[0m [2017-12-15 22:48:58,910: INFO/MainProcess] mingle: sync complete
+[31;1mworker_chemaxon_1     |[0m [2017-12-15 22:48:58,924: INFO/MainProcess] celery@chemaxon_worker ready.
+[36;1mqed_django_1          |[0m WARNING:root:project root /src/cts_app/cts_api
+[32mqed_qed_nginx_1 exited with code 1
+[0m[36;1mqed_django_1          |[0m settings.py
+[36;1mqed_django_1          |[0m PROJECT_ROOT = /src
+[36;1mqed_django_1          |[0m TEMPLATE_ROOT = /src/templates_qed/
+[36;1mqed_django_1          |[0m settings_docker.py
+[36;1mqed_django_1          |[0m REST backend = http://qed_nginx:7777
+[36;1mqed_django_1          |[0m MACHINE_ID = f87686021064
+[36;1mqed_django_1          |[0m HOSTNAME = ord-uber-vm001
+[36;1mqed_django_1          |[0m IS_PUBLIC = False
+[36;1mqed_django_1          |[0m qed.urls
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.description
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.input
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.output
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.algorithms
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.references
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.qaqc
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.batch
+[36;1mqed_django_1          |[0m qed.ubertool_app.urls
+[36;1mqed_django_1          |[0m Operations to perform:
+[36;1mqed_django_1          |[0m   Apply all migrations: auth
+[36;1mqed_django_1          |[0m Running migrations:
+[36;1mqed_django_1          |[0m   No migrations to apply.
+[36;1mqed_django_1          |[0m   Your models have changes that are not yet reflected in a migration, and so won't be applied.
+[36;1mqed_django_1          |[0m   Run 'manage.py makemigrations' to make new migrations, and then re-run 'manage.py migrate' to apply them.
+[35mqed_nginx_1           |[0m 2017/12/15 22:48:57 [emerg] 1#1: BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[35mqed_nginx_1           |[0m nginx: [emerg] BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[35mqed_nginx_1           |[0m 2017/12/15 22:48:58 [emerg] 1#1: BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[35mqed_nginx_1           |[0m nginx: [emerg] BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[35mqed_nginx_1           |[0m 2017/12/15 22:48:58 [emerg] 1#1: BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[35mqed_nginx_1           |[0m nginx: [emerg] BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[35mqed_nginx_1           |[0m 2017/12/15 22:48:59 [emerg] 1#1: BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[35mqed_nginx_1           |[0m nginx: [emerg] BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[35mqed_nginx_1           |[0m 2017/12/15 22:49:00 [emerg] 1#1: BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[35mqed_nginx_1           |[0m nginx: [emerg] BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[31msam_worker_1          |[0m [2017-12-15 22:49:01,176: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 101 connecting to localhost:6379. Network is unreachable..
+[31msam_worker_1          |[0m Trying again in 6.00 seconds...
+[31msam_worker_1          |[0m 
+[36;1mqed_django_1          |[0m WARNING:root:project root /src/cts_app/cts_api
+[36;1mqed_django_1          |[0m settings.py
+[36;1mqed_django_1          |[0m PROJECT_ROOT = /src
+[36;1mqed_django_1          |[0m TEMPLATE_ROOT = /src/templates_qed/
+[36;1mqed_django_1          |[0m settings_docker.py
+[36;1mqed_django_1          |[0m REST backend = http://qed_nginx:7777
+[36;1mqed_django_1          |[0m MACHINE_ID = f87686021064
+[36;1mqed_django_1          |[0m HOSTNAME = ord-uber-vm001
+[36;1mqed_django_1          |[0m IS_PUBLIC = False
+[36;1mqed_django_1          |[0m qed.urls
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.description
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.input
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.output
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.algorithms
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.references
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.qaqc
+[36;1mqed_django_1          |[0m qed.ubertool_app.views.batch
+[36;1mqed_django_1          |[0m qed.ubertool_app.urls
+[36;1mqed_django_1          |[0m Operations to perform:
+[36;1mqed_django_1          |[0m   Apply all migrations: sessions
+[36;1mqed_django_1          |[0m Running migrations:
+[36;1mqed_django_1          |[0m   No migrations to apply.
+[36;1mqed_django_1          |[0m   Your models have changes that are not yet reflected in a migration, and so won't be applied.
+[36;1mqed_django_1          |[0m   Run 'manage.py makemigrations' to make new migrations, and then re-run 'manage.py migrate' to apply them.
+[36;1mqed_django_1          |[0m [uWSGI] getting INI configuration from /etc/uwsgi/uwsgi.ini
+[36;1mqed_django_1          |[0m *** Starting uWSGI 2.0.15 (64bit) on [Fri Dec 15 22:49:01 2017] ***
+[36;1mqed_django_1          |[0m compiled with version: 4.9.2 on 05 December 2017 15:32:02
+[36;1mqed_django_1          |[0m os: Linux-3.10.0-327.28.2.el7.x86_64 #1 SMP Mon Jun 27 14:48:28 EDT 2016
+[36;1mqed_django_1          |[0m nodename: f87686021064
+[36;1mqed_django_1          |[0m machine: x86_64
+[36;1mqed_django_1          |[0m clock source: unix
+[36;1mqed_django_1          |[0m pcre jit disabled
+[36;1mqed_django_1          |[0m detected number of CPU cores: 4
+[36;1mqed_django_1          |[0m current working directory: /src
+[36;1mqed_django_1          |[0m detected binary path: /usr/local/bin/uwsgi
+[36;1mqed_django_1          |[0m chdir() to /src
+[36;1mqed_django_1          |[0m your memory page size is 4096 bytes
+[36;1mqed_django_1          |[0m detected max file descriptor number: 65536
+[36;1mqed_django_1          |[0m lock engine: pthread robust mutexes
+[36;1mqed_django_1          |[0m thunder lock: enabled
+[36;1mqed_django_1          |[0m uwsgi socket 0 bound to TCP address :8080 fd 3
+[36;1mqed_django_1          |[0m uWSGI running as root, you can use --uid/--gid/--chroot options
+[36;1mqed_django_1          |[0m *** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+[36;1mqed_django_1          |[0m Python version: 3.6.3 (default, Nov  4 2017, 22:17:09)  [GCC 4.9.2]
+[36;1mqed_django_1          |[0m Python main interpreter initialized at 0xa91550
+[36;1mqed_django_1          |[0m python threads support enabled
+[36;1mqed_django_1          |[0m your server socket listen backlog is limited to 100 connections
+[36;1mqed_django_1          |[0m your mercy for graceful operations on workers is 60 seconds
+[36;1mqed_django_1          |[0m mapped 1237056 bytes (1208 KB) for 16 cores
+[36;1mqed_django_1          |[0m *** Operational MODE: preforking ***
+[35mqed_qed_nginx_1 exited with code 1
+[0m[36;1mqed_django_1          |[0m WARNING:root:set_environment.py
+[36;1mqed_django_1          |[0m WARNING:root:DOCKER_HOSTNAME: ord-uber-vm001
+[36;1mqed_django_1          |[0m WARNING:root:HOSTNAME: f87686021064
+[36;1mqed_django_1          |[0m WARNING:root:Deploying on prod server...
+[36;1mqed_django_1          |[0m WARNING:root:loading env vars from: docker_prod.env
+[36;1mqed_django_1          |[0m WARNING:root:env file: docker_prod.env
+[36;1mqed_django_1          |[0m settings.py
+[36;1mqed_django_1          |[0m PROJECT_ROOT = /src
+[36;1mqed_django_1          |[0m TEMPLATE_ROOT = /src/templates_qed/
+[36;1mqed_django_1          |[0m settings_docker.py
+[36;1mqed_django_1          |[0m REST backend = http://qed_nginx:7777
+[36;1mqed_django_1          |[0m MACHINE_ID = f87686021064
+[36;1mqed_django_1          |[0m HOSTNAME = ord-uber-vm001
+[36;1mqed_django_1          |[0m IS_PUBLIC = False
+[36;1mqed_django_1          |[0m WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0xa91550 pid: 1 (default app)
+[36;1mqed_django_1          |[0m *** uWSGI is running in multiple interpreter mode ***
+[36;1mqed_django_1          |[0m spawned uWSGI master process (pid: 1)
+[36;1mqed_django_1          |[0m spawned uWSGI worker 1 (pid: 28, cores: 1)
+[36;1mqed_django_1          |[0m spawned uWSGI worker 2 (pid: 29, cores: 1)
+[31mqed_nginx_1           |[0m 2017/12/15 22:48:57 [emerg] 1#1: BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[31mqed_nginx_1           |[0m nginx: [emerg] BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[31mqed_nginx_1           |[0m 2017/12/15 22:48:58 [emerg] 1#1: BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[31mqed_nginx_1           |[0m nginx: [emerg] BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[31mqed_nginx_1           |[0m 2017/12/15 22:48:58 [emerg] 1#1: BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[31mqed_nginx_1           |[0m nginx: [emerg] BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[31mqed_nginx_1           |[0m 2017/12/15 22:48:59 [emerg] 1#1: BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[31mqed_nginx_1           |[0m nginx: [emerg] BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[31mqed_nginx_1           |[0m 2017/12/15 22:49:00 [emerg] 1#1: BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[31mqed_nginx_1           |[0m nginx: [emerg] BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[31mqed_nginx_1           |[0m 2017/12/15 22:49:02 [emerg] 1#1: BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[31mqed_nginx_1           |[0m nginx: [emerg] BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[31mqed_nginx_1           |[0m 2017/12/15 22:49:06 [emerg] 1#1: BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[31mqed_nginx_1           |[0m nginx: [emerg] BIO_new_file("/etc/nginx/qed/qed.epa.gov.chained.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/qed/qed.epa.gov.chained.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+[31msam_worker_1          |[0m [2017-12-15 22:49:07,185: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 101 connecting to localhost:6379. Network is unreachable..
+[31msam_worker_1          |[0m Trying again in 8.00 seconds...
+[31msam_worker_1          |[0m 
+[31mqed_qed_nginx_1 exited with code 1
+[0m[31msam_worker_1          |[0m [2017-12-15 22:49:15,195: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 101 connecting to localhost:6379. Network is unreachable..
+[31msam_worker_1          |[0m Trying again in 10.00 seconds...
+[31msam_worker_1          |[0m 
+Gracefully stopping... (press Ctrl+C again to force)

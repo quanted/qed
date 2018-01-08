@@ -6,7 +6,7 @@ coveralls==1.2.0
 django-crispy-forms==1.7.0
 django-parsley==0.7
 django-rest-swagger==2.1.2
-django==1.11.7 # after django-parsley
+django==2.0.1 # after django-parsley
 earthengine-api==0.1.127
 factory-boy==2.9.2
 flake8==3.5.0

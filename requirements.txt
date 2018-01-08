@@ -37,7 +37,7 @@ reportlab==3.4.0
 requests==2.18.4
 rollbar==0.13.17
 scipy==1.0.0
-selenium==3.7.0
+selenium==3.8.1
 Sphinx==1.6.5
 tabulate==0.8.1
 uwsgi==2.0.15

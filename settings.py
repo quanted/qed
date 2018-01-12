@@ -105,17 +105,18 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 # This breaks the pattern of a "pluggable" TEST_CTS django app, but it also makes it convenient to describe the server hosting the TEST API.
 TEST_CTS_PROXY_URL = "http://10.0.2.2:7080/"
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     #'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 )
-#
 
+MIDDLEWARE_CLASSES = [
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+]
 
 ROOT_URLCONF = 'urls'
 

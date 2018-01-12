@@ -46,3 +46,6 @@
 [submodule "static_qed"]
 	path = static_qed
 	url = https://github.com/quanted/static_qed.git
+[submodule "requirements_qed"]
+	path = requirements_qed
+	url = https://github.com/quanted/requirements_qed.git

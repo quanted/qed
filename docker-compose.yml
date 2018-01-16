@@ -5,7 +5,9 @@ services:
 
   # QED Django front-end
   qed_django:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
       args:
         version: latest
     image: qed-uwsgi-django:latest

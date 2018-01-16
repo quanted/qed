@@ -1,9 +1,8 @@
 ARG version
-RUN echo "Pulling quanted/qed_py3:${version} for qed_django"
 
 # Hosts django project w/ uwsgi
 #FROM python:3
-FROM quanted/qed_py3:${version}
+FROM quanted/qed_py3:$version
 
 # Install Python Dependencies
 # COPY requirements.txt /tmp/

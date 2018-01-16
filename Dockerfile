@@ -1,7 +1,7 @@
 # Hosts django project w/ uwsgi
 
 #FROM python:3
-FROM quanted/qed_py3:dev
+FROM quanted/qed_py3s
 
 # Install Python Dependencies
 # COPY requirements.txt /tmp/

@@ -1,7 +1,9 @@
-# Hosts django project w/ uwsgi
+ARG version
+RUN echo "Pulling quanted/qed_py3:${version} for qed_django"
 
+# Hosts django project w/ uwsgi
 #FROM python:3
-FROM quanted/qed_py3
+FROM quanted/qed_py3:${version}
 
 # Install Python Dependencies
 # COPY requirements.txt /tmp/
@@ -22,7 +24,6 @@ EXPOSE 8080
 
 # Ensure "docker_start" is executable
 RUN chmod 755 /src/docker_start.sh
-s
 RUN pip freeze | grep Django
 
 # Specific Docker-specific Django settings file (needed for collectstatic)

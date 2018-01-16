@@ -6,6 +6,8 @@ services:
   # QED Django front-end
   qed_django:
     build: .
+      args:
+        version: latest
     image: qed-uwsgi-django:latest
     expose:
       - "8080"
@@ -25,6 +27,7 @@ services:
     # command: [sh, ./config/set_env_vars.sh, '']  # still have to point to env file somehow
     # env_file:
     #   - ./${QED_CONFIG} # path to config/.env file, container env vars, set with ./config/ bash or batch
+
 
   # Redis (message broker)
   redis:

@@ -102,9 +102,6 @@ INSTALLED_APPS = (
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-# This breaks the pattern of a "pluggable" TEST_CTS django app, but it also makes it convenient to describe the server hosting the TEST API.
-TEST_CTS_PROXY_URL = "http://10.0.2.2:7080/"
-
 MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -137,6 +134,12 @@ ROLLBAR = {
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
+try:
+    with open('secrets/secret_key_database.txt') as f:
+        DB_PASS = f.read().strip()
+except IOError as e:
+    print("secrets/secret_key_database.txt not found!")
+    DB_PASS = None
 
 DATABASES = {
     'default': {
@@ -155,7 +158,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'pisces',
         'USER': 'cgifadmin',
-        'PASSWORD': 'Ptfocns17!cgi5',
+        'PASSWORD': DB_PASS,
         'HOST': '172.20.100.15',
         'PORT': '5432',
     }

@@ -1,23 +1,16 @@
-ARG version
+# Use 'version' ARG for grabbing correct qed_py3 base image.
+# Defaults to 'latest' if not set.
+ARG version=latest
 
-# Hosts django project w/ uwsgi
-#FROM python:3
 FROM quanted/qed_py3:$version
 
 # Install Python Dependencies
-# COPY requirements.txt /tmp/
 COPY . /src/
-#RUN pip install --requirement /src/requirements.txt
-#RUN for file in *_app/requirements.txt; do pip install --requirement /src/$file; done
-
-# Install uWSGI
-# RUN pip install uwsgi added to requirements.txt
 
 # Overwrite the uWSGI config
 COPY uwsgi.ini /etc/uwsgi/
 
 # Copy the project code
-#COPY . /src/
 WORKDIR /src
 EXPOSE 8080
 

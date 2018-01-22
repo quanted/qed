@@ -55,7 +55,7 @@ if not os.environ.get('UBERTOOL_REST_SERVER'):
 # SECURITY WARNING: keep the secret key used in production secret!
 try:
     #    SECRET_KEY= os.environ.get('DOCKER_SECRET_KEY')
-    with open('secret_key_django_dropbox.txt') as f:
+    with open('secrets/secret_key_django_dropbox.txt') as f:
         SECRET_KEY = f.read().strip()
 except IOError as e:
     print("Secret file not set as env variable")

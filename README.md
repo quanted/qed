@@ -1,7 +1,6 @@
 qed
 ============
-This contains the main django project that serves a number of EPA apps for the public site https://qed.epa.gov/
- (qeduser; Quandom#pubserv3) and the EPA internal site https://qedinternal.epa.gov/. Click the wiki link above for more information.
+This contains the main django project that serves a number of EPA apps for the public site https://qed.epa.gov/ and the EPA internal site https://qedinternal.epa.gov/. Click the wiki link above for more information.
 
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8da2b7009c0b4e3db24473c813b56005)](https://www.codacy.com/app/puruckertom/qed?utm_source=github.com&utm_medium=referral&utm_content=quanted/qed&utm_campaign=badger)

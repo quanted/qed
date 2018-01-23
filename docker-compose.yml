@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 volumes:
   collected_static: {}
 services:
@@ -9,8 +9,8 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        version: ${VERSION}  # passing VERSION env var to Dockerfile as ARG
-    image: quanted/qed:${VERSION}
+        version: ${VERSION:-latest}  # passing VERSION env var to Dockerfile as ARG, default = latest
+    image: quanted/qed:${VERSION:-latest}  # use qed image w/ tag = VERSION, default = latest
     expose:
       - "8080"
     volumes:
@@ -35,7 +35,7 @@ services:
   # ubertool_cts nodejs submodule
   cts_nodejs:
     build: ./cts_nodejs
-    image: cts-nodejs:${VERSION}
+    image: cts-nodejs
     expose:
       - "4000"
     environment:
@@ -55,7 +55,7 @@ services:
   # # Celery worker - ChemAxon calc
   worker_chemaxon:
     build: ./cts_celery
-    image: cts-celery:${VERSION}
+    image: cts-celery
     command: celery worker -A tasks -Q chemaxon -l info -n chemaxon_worker -c 1
     links:
       - redis
@@ -70,7 +70,7 @@ services:
   # # Celery worker - EPI Suite calc
   worker_epi:
     build: ./cts_celery
-    image: cts-celery:${VERSION}
+    image: cts-celery
     command: celery worker -A tasks -Q epi -l info -n epi_worker -c 1
     links:
       - redis
@@ -84,7 +84,7 @@ services:
   # # Celery worker - TEST calc
   worker_test:
     build: ./cts_celery
-    image: cts-celery:${VERSION}
+    image: cts-celery
     command: celery worker -A tasks -Q test -l info -n test_worker -c 1
     links:
       - redis
@@ -97,7 +97,7 @@ services:
   # # Celery worker - SPARC calc
   worker_sparc:
     build: ./cts_celery
-    image: cts-celery:${VERSION}
+    image: cts-celery
     command: celery worker -A tasks -Q sparc -l info -n sparc_worker -c 1
     links:
       - redis
@@ -110,7 +110,7 @@ services:
   # # Celery worker - Measured (EPI) calc
   worker_measured:
     build: ./cts_celery
-    image: cts-celery:${VERSION}
+    image: cts-celery
     command: celery worker -A tasks -Q measured -l info -n measured_worker -c 1
     links:
       - redis
@@ -123,7 +123,7 @@ services:
   # # Celery worker - Metabolizer calc
   worker_metabolizer:
     build: ./cts_celery
-    image: cts-celery:${VERSION}
+    image: cts-celery
     command: celery worker -A tasks -Q metabolizer -l info -n metabolizer_worker -c 1
     links:
       - redis
@@ -136,7 +136,7 @@ services:
   # # Celery worker - cheminfo calc
   worker_cheminfo:
     build: ./cts_celery
-    image: cts-celery:${VERSION}
+    image: cts-celery
     command: celery worker -A tasks -Q cheminfo -l info -n cheminfo_worker -c 1
     links:
       - redis
@@ -149,7 +149,7 @@ services:
   # # Celery worker - manager calc
   worker_manager:
     build: ./cts_celery
-    image: cts-celery:${VERSION}
+    image: cts-celery
     command: celery worker -A tasks -Q manager -l info -n manager_worker -c 1
     links:
       - redis
@@ -162,7 +162,7 @@ services:
   # # Celery worker - sam_worker
   sam_worker:
     build: ./ubertool_ecorest
-    #image: cts-celery:${VERSION}
+    #image: cts-celery:latest
     command: celery worker -A tasks -c 1 -Q sam --loglevel=DEBUG -n sam_worker
     volumes:
       - ./ubertool_ecorest/ubertool/ubertool/sam/bin:/src/ubertool/ubertool/sam/bin

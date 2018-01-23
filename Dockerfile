@@ -1,4 +1,4 @@
-ARG version
+ARG version=latest
 
 # Hosts django project w/ uwsgi
 #FROM python:3

@@ -43,7 +43,7 @@ if not os.environ.get('UBERTOOL_REST_SERVER'):
 
     # SECURITY WARNING: we keep the secret key in a shared dropbox directory
 try:
-    with open('secret_key_django_dropbox.txt') as f:
+    with open('secrets/secret_key_django_dropbox.txt') as f:
         SECRET_KEY = f.read().strip()
 except IOError as e:
     print("Could not find secret file")

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Executes at build-time at dockerhub, and is triggered when a 
+# commit is pushed to github.
+
+echo "Git branch: $SOURCE_BRANCH"
+echo "Docker tag: $DOCKER_TAG"
+
+# Adds "dev" as build-arg for qed Dockerfile, but only if git branch is "dev":
+if [ "$SOURCE_BRANCH" = 'dev' ]
+then
+	echo "Using build-arg version=$SOURCE_BRANCH, and docker tag = $SOURCE_BRANCH"
+	docker build --build-arg version=$SOURCE_BRANCH -t quanted/qed:$SOURCE_BRANCH .
+else
+	echo "Not dev branch, assuming 'latest' tag and no build-arg.."
+	docker build -t quanted/qed:$DOCKER_TAG .
+fi

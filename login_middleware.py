@@ -28,7 +28,7 @@ class RequireLoginMiddleware(object):
 
 		# # good place to read in hashed password from file??
 		try:
-			_hash_pass = open('secret_key_login.txt', 'r')  # read in hashed password from file
+			_hash_pass = open('secrets/secret_key_login.txt', 'r')  # read in hashed password from file
 			self.hashed_pass = _hash_pass.read().encode('utf-8')  # encode for bcrypt
 		except Exception as e:
 			logging.warning("Exception reading hashed password from file..")

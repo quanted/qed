@@ -89,7 +89,7 @@ INSTALLED_APPS = (
     'cts_app.cts_api',
     'cts_app.cts_testing',
     'cyan_app',  # cyan django app
-    #'hem_app',  # hem django app
+    # 'hem_app',  # hem django app
     'hms_app',  # hms django app
     'hwbi_app',  # hwbi django app
     'pisces_app',  # pisces django app
@@ -152,7 +152,7 @@ DATABASES = {
     },
     'hwbi_db': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(PROJECT_ROOT, 'hwbi_app/hwbi_db.sqlite3'),
+        'NAME': os.path.join(PROJECT_ROOT, 'hwbi_app/hwbi_db_v2.sqlite3'),
     },
     'pisces_db': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',

@@ -21,11 +21,12 @@ if os.environ.get('IS_PUBLIC') == "True":
     urlpatterns = [
         # url(r'^login/auth/?$', login_middleware.login_auth),
         # url(r'^login*', login_middleware.login),
-        url(r'^$', include('splash_app.urls'), name='home'),
-        url(r'^login/?$', login_middleware.login),
-        url(r'^cts/', include('cts_app.urls')),
-        url(r'^cyan/', include('cyan_app.urls')),
-        url(r'^ubertool/', include('ubertool_app.urls')),
+        path('', include('splash_app.urls')),
+        path('cts/', include('cts_app.urls')),
+        path('cyan/', include('cyan_app.urls')),
+        path('login/', include('login_middleware.login')),
+        path('pisces/', include('pisces_app.urls')),
+        path('ubertool/', include('ubertool_app.urls')),
     ]
 else:
     urlpatterns = [

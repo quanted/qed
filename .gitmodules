@@ -49,3 +49,6 @@
 [submodule "requirements_qed"]
 	path = requirements_qed
 	url = https://github.com/quanted/requirements_qed.git
+[submodule "flask_qed"]
+	path = flask_qed
+	url = https://github.com/quanted/flask_qed.git

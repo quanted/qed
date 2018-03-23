@@ -93,6 +93,7 @@ INSTALLED_APPS = (
     'hms_app',  # hms django app
     'hwbi_app',  # hwbi django app
     'pisces_app',  # pisces django app
+    'pram_app',  # pram django app
     #'pop_app',  # pop django app
     #'rest_framework',
     #'sam_app',  # sam django app

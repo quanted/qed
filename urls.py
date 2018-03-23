@@ -26,6 +26,7 @@ if os.environ.get('IS_PUBLIC') == "True":
         path('cyan/', include('cyan_app.urls')),
         path('login/', include('login_middleware.login')),
         path('pisces/', include('pisces_app.urls')),
+        path('pram/', include('pram_app.urls')),
         path('ubertool/', include('ubertool_app.urls')),
     ]
 else:
@@ -47,6 +48,7 @@ else:
         # path('hem/', include('hem_app.urls')),
         path('hwbi/', include('hwbi_app.urls')),
         path('pisces/', include('pisces_app.urls')),
+        path('pram/', include('pram_app.urls')),
         path('ubertool/', include('ubertool_app.urls')),
     ]
 

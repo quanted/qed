@@ -89,10 +89,11 @@ INSTALLED_APPS = (
     'cts_app.cts_api',
     'cts_app.cts_testing',
     'cyan_app',  # cyan django app
-    #'hem_app',  # hem django app
+    # 'hem_app',  # hem django app
     'hms_app',  # hms django app
     'hwbi_app',  # hwbi django app
     'pisces_app',  # pisces django app
+    'pram_app',  # pram django app
     #'pop_app',  # pop django app
     #'rest_framework',
     #'sam_app',  # sam django app
@@ -102,20 +103,18 @@ INSTALLED_APPS = (
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-# This breaks the pattern of a "pluggable" TEST_CTS django app, but it also makes it convenient to describe the server hosting the TEST API.
-TEST_CTS_PROXY_URL = "http://10.0.2.2:7080/"
-
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     #'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 )
-#
 
+MIDDLEWARE_CLASSES = [
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+]
 
 ROOT_URLCONF = 'urls'
 
@@ -136,6 +135,12 @@ ROLLBAR = {
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
+try:
+    with open('secrets/secret_key_database.txt') as f:
+        DB_PASS = f.read().strip()
+except IOError as e:
+    print("secrets/secret_key_database.txt not found!")
+    DB_PASS = None
 
 DATABASES = {
     'default': {
@@ -148,13 +153,13 @@ DATABASES = {
     },
     'hwbi_db': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(PROJECT_ROOT, 'hwbi_app/hwbi_db.sqlite3'),
+        'NAME': os.path.join(PROJECT_ROOT, 'hwbi_app/hwbi_db_v2.sqlite3'),
     },
     'pisces_db': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'pisces',
         'USER': 'cgifadmin',
-        'PASSWORD': 'Ptfocns17!cgi5',
+        'PASSWORD': DB_PASS,
         'HOST': '172.20.100.15',
         'PORT': '5432',
     }

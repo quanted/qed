@@ -51,6 +51,7 @@ TEMPLATES = [
             os.path.join(TEMPLATE_ROOT, 'misc'),
             os.path.join(TEMPLATE_ROOT, 'pisces'),
             os.path.join(TEMPLATE_ROOT, 'pop'),
+            os.path.join(TEMPLATE_ROOT, 'pram_qaqc_reports'),
             os.path.join(TEMPLATE_ROOT, 'sam'),
             os.path.join(TEMPLATE_ROOT, 'splash'),
             os.path.join(TEMPLATE_ROOT, 'uber2017'),

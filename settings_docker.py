@@ -111,7 +111,7 @@ print("IS_PUBLIC = {}".format(IS_PUBLIC))
 # )
 
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware', #rollbar
@@ -121,9 +121,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     # 'login_middleware.RequireLoginMiddleware',
-)
+]
 if os.environ.get('IS_PUBLIC') == "True":
-    MIDDLEWARE_CLASSES += ('login_middleware.RequireLoginMiddleware',)
+    MIDDLEWARE_CLASSES += ['login_middleware.RequireLoginMiddleware',]
 
 
 ROOT_URLCONF=__name__, #rollbar

@@ -231,10 +231,10 @@ services:
   #    - "8888"
 
   # GIS Flask container
-  gis_qed:
-    build: ./gis_qed
-    expose:
-      - "7888"
-    links:
-      - redis
+#  gis_qed:
+#    build: ./gis_qed
+#    expose:
+#      - "7888"
+#    links:
+#      - redis
       # future celery worker container

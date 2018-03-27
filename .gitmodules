@@ -55,3 +55,6 @@
 [submodule "pram_app"]
 	path = pram_app
 	url = https://github.com/quanted/pram_app.git
+[submodule "gis_qed"]
+	path = gis_qed
+	url = https://github.com/quanted/gis_qed.git

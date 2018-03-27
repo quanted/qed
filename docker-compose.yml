@@ -199,6 +199,7 @@ services:
       - qed_django:uwsgi_django  # Nginx.conf can reference "qed_django" service with the hostname 'uwsgi' or 'qed_django'
       - cts_nodejs:cts_nodejs
       - ecorest:uwsgi_flask
+      - gis_qed:uwsgi_gis_flask
     #  - hwbi_rest
     volumes:
       - /var/www/nginx/certs:/etc/nginx/qed # this points to the keys directory
@@ -228,3 +229,12 @@ services:
   #  build: ../hwbi_rest/src/hwbi_rest
   #  expose:
   #    - "8888"
+
+  # GIS Flask container
+  gis_qed:
+    build: ./gis_qed
+    expose:
+      - "7888"
+    links:
+      - redis
+      # future celery worker container

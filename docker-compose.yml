@@ -161,11 +161,11 @@ services:
 
   # # Celery worker - sam_worker
   sam_worker:
-    build: ./ubertool_ecorest
+    build: ./flask_qed
     #image: cts-celery:latest
     command: celery worker -A tasks -c 1 -Q sam --loglevel=DEBUG -n sam_worker
     volumes:
-      - ./ubertool_ecorest/ubertool/ubertool/sam/bin:/src/ubertool/ubertool/sam/bin
+      - ./flask_qed/ubertool/ubertool/sam/bin:/src/ubertool/ubertool/sam/bin
     links:
       - redis
     environment:
@@ -198,7 +198,7 @@ services:
     links:
       - qed_django:uwsgi_django  # Nginx.conf can reference "qed_django" service with the hostname 'uwsgi' or 'qed_django'
       - cts_nodejs:cts_nodejs
-      - ecorest:uwsgi_flask
+      - qed_flask:uwsgi_flask
     #  - gis_qed:uwsgi_gis_flask
     #  - hwbi_rest
     volumes:
@@ -226,7 +226,7 @@ services:
     #  - "redis"
 
   # flask_qed Flask back-end
-  ecorest:
+  qed_flask:
     build: ./flask_qed
     expose:
       - "7777"

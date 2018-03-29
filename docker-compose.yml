@@ -161,11 +161,11 @@ services:
 
   # # Celery worker - sam_worker
   sam_worker:
-    build: ./ubertool_ecorest
+    build: ./flask_qed
     #image: cts-celery:latest
     command: celery worker -A tasks -c 1 -Q sam --loglevel=DEBUG -n sam_worker
     volumes:
-      - ./ubertool_ecorest/ubertool/ubertool/sam/bin:/src/ubertool/ubertool/sam/bin
+      - ./flask_qed/ubertool/ubertool/sam/bin:/src/ubertool/ubertool/sam/bin
     links:
       - redis
     environment:

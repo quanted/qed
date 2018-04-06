@@ -66,7 +66,6 @@ services:
     # env_file:
     #   - ./${QED_CONFIG}
 
-
   # # Celery worker - EPI Suite calc
   worker_epi:
     build: ./cts_celery
@@ -208,26 +207,8 @@ services:
 
 
   # ubertool_ecorest Flask back-end
-#  ecorest:
-#    build: ./ubertool_ecorest
-#    expose:
-#      - "7777"
-#    links:
-#      - redis
-#      - sam_worker
-#    environment:
-#      - REDIS_HOSTNAME=redis
-#      - DOCKER_HOSTNAME=${HOSTNAME}
-#    volumes:
-#      - ./ubertool_ecorest/ubertool/ubertool/sam/bin:/src/ubertool/ubertool/sam/bin
-    # command: celery worker -A tasks -Q manager -l info -n manager_worker -c 1
-    # command: celery worker -A tasks -c 1 -Q sam --loglevel=DEBUG -n sam_worker
-    #depends_on:
-    #  - "redis"
-
-  # flask_qed Flask back-end
-  qed_flask:
-    build: ./flask_qed
+  ecorest:
+    build: ./ubertool_ecorest
     expose:
       - "7777"
     links:
@@ -237,7 +218,25 @@ services:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
     volumes:
-      - ./flask_qed/ubertool/ubertool/sam/bin:/src/ubertool/ubertool/sam/bin
+      - ./ubertool_ecorest/ubertool/ubertool/sam/bin:/src/ubertool/ubertool/sam/bin
+    # command: celery worker -A tasks -Q manager -l info -n manager_worker -c 1
+    # command: celery worker -A tasks -c 1 -Q sam --loglevel=DEBUG -n sam_worker
+    #depends_on:
+    #  - "redis"
+
+  # flask_qed Flask back-end
+#  qed_flask:
+#    build: ./flask_qed
+#    expose:
+#      - "7777"
+#    links:
+#      - redis
+#      - sam_worker
+#    environment:
+#      - REDIS_HOSTNAME=redis
+#      - DOCKER_HOSTNAME=${HOSTNAME}
+#    volumes:
+#      - ./flask_qed/ubertool/ubertool/sam/bin:/src/ubertool/ubertool/sam/bin
 
   #hwbi_rest:
   #  build: ../hwbi_rest/src/hwbi_rest

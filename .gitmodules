@@ -9,13 +9,6 @@
 [submodule "cts_app"]
 	path = cts_app
 	url = https://github.com/quanted/cts_app.git
-[submodule "ubertool_app"]
-	path = ubertool_app
-	url = https://github.com/quanted/ubertool_app.git
-	branch = master
-[submodule "ubertool_ecorest"]
-	path = ubertool_ecorest
-	url = https://github.com/quanted/ubertool_ecorest.git
 [submodule "hwbi_app"]
 	path = hwbi_app
 	url = https://github.com/quanted/hwbi_app.git
@@ -55,6 +48,3 @@
 [submodule "pram_app"]
 	path = pram_app
 	url = https://github.com/quanted/pram_app.git
-[submodule "gis_qed"]
-	path = gis_qed
-	url = https://github.com/quanted/gis_qed.git

@@ -7,13 +7,14 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
+import re
 import os
 import logging
 import bcrypt
 
 
 
-class RequireLoginMiddleware(object):
+class RequireLoginMiddleware:
 	"""
 	Require Login middleware. If enabled, each Django-powered page will
 	require authentication.
@@ -21,8 +22,10 @@ class RequireLoginMiddleware(object):
 	If an anonymous user requests a page, he/she is redirected to the login
 	page set by REQUIRE_LOGIN_PATH or /accounts/login/ by default.
 	"""
-	def __init__(self):
-		self.require_login_path = getattr(settings, 'REQUIRE_LOGIN_PATH', '/login')
+	def __init__(self, get_response):
+		self.get_response = get_response
+		# self.require_login_path = getattr(settings, 'REQUIRE_LOGIN_PATH', '/login')
+		self.login_url = re.compile(settings.REQUIRE_LOGIN_PATH)
 		self.username = "qeduser"
 		self.hashed_pass = None
 
@@ -35,18 +38,39 @@ class RequireLoginMiddleware(object):
 			self.hashed_pass = None
 	
 
-	def process_request(self, request):
+	def __call__(self, request):
 
-		# _already_authenticated == ''
+		response = self.get_response(request)
+		return response
 
-		if request.user.is_authenticated:
-			return  # user already authenticated
 
-		if request.POST:
-			return self.login_auth(request)
+	def process_view(self, request, view_func, view_args, view_kwargs):
 
-		elif request.path != self.require_login_path and request.user.is_anonymous():
-			return HttpResponseRedirect('{}?next={}'.format(self.require_login_path, request.path))
+		assert hasattr(request, 'user')
+
+		path = request.path
+
+		if not request.user.is_authenticated:
+			
+			if not self.login_url.match(path):
+				return redirect('{}?next={}'.format(settings.REQUIRE_LOGIN_PATH, path))
+
+			if request.POST and self.login_url.match(path):
+				return self.login_auth(request)
+
+
+	# def process_request(self, request):
+
+	# 	# _already_authenticated == ''
+
+	# 	if request.user.is_authenticated:
+	# 		return  # user already authenticated
+
+	# 	if request.POST:
+	# 		return self.login_auth(request)
+
+	# 	elif request.path != self.require_login_path and request.user.is_anonymous():
+	# 		return HttpResponseRedirect('{}?next={}'.format(self.require_login_path, request.path))
 
 
 	def login_auth(self, request):

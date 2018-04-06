@@ -122,8 +122,8 @@ MIDDLEWARE_CLASSES = [
 
     # 'login_middleware.RequireLoginMiddleware',
 ]
-if os.environ.get('IS_PUBLIC') == "True":
-    MIDDLEWARE_CLASSES += ['login_middleware.RequireLoginMiddleware',]
+# if os.environ.get('IS_PUBLIC') == "True":
+#     MIDDLEWARE_CLASSES += ['login_middleware.RequireLoginMiddleware',]
 
 
 ROOT_URLCONF=__name__, #rollbar
@@ -174,13 +174,14 @@ WSGI_APPLICATION = 'wsgi_docker.application'
 # Authentication
 AUTH = False
 # Note: env vars in os.environ always strings..
-if os.environ.get('IS_PUBLIC') == "True":
+# if os.environ.get('IS_PUBLIC') == "True":
+if IS_PUBLIC:
     logging.warning("IS_PUBLIC set to true..")
+    MIDDLEWARE += ['login_middleware.RequireLoginMiddleware',]
     AUTH = True
     DEBUG = False
 
-# LOGIN_URL = '/ubertool/login'
-REQUIRE_LOGIN_PATH = '/login'
+REQUIRE_LOGIN_PATH = '/login/'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Internationalization

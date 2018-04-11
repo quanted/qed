@@ -188,7 +188,7 @@ services:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
     volumes:
-      - ./flask_qed/ubertool/ubertool/sam/bin:/src/ubertool/ubertool/sam/bin
+      - ./flask_qed/pram_flask/ubertool/ubertool/sam/bin:/src/pram_flask/ubertool/ubertool/sam/bin
 
   # mongoDB database container
   mongodb:
@@ -202,7 +202,7 @@ services:
   qed_celery:
     build: ./flask_qed
     volumes:
-      - ./flask_qed/ubertool/ubertool/sam/bin:/src/ubertool/ubertool/sam/bin
+      - ./flask_qed/pram_flask/ubertool/ubertool/sam/bin:/src/pram_flask/ubertool/ubertool/sam/bin
     links:
       - redis
       - mongodb

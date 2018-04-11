@@ -202,15 +202,14 @@ services:
   qed_celery:
     build: ./flask_qed
     volumes:
-      - ./flask_qed/pram_flask/ubertool/ubertool/sam/bin:/src/pram_flask/ubertool/ubertool/sam/bin
+      - ./flask_qed/pram_flask/ubertool/ubertool/sam/bin:/flask_qed/pram_flask/ubertool/ubertool/sam/bin
     links:
       - redis
       - mongodb
-    depends_on:
-      - redis
-      - mongodb
-    entrypoint: celery
-    command: worker -A flask_qed.celery_cgi -Q qed --loglevel=INFO -n qed_worker
+    #depends_on:
+    #  - redis
+    #  - mongodb
+    command: celery worker -A celery_cgi -Q qed --loglevel=DEBUG -n qed_worker
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}

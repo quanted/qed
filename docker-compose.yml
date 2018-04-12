@@ -189,6 +189,8 @@ services:
       - DOCKER_HOSTNAME=${HOSTNAME}
     volumes:
       - ./flask_qed/pram_flask/ubertool/ubertool/sam/bin:/src/pram_flask/ubertool/ubertool/sam/bin
+    depends_on:
+      - mongodb
 
   # mongoDB database container
   mongodb:
@@ -206,11 +208,10 @@ services:
     links:
       - redis
       - mongodb
-    depends_on:
-      - redis
-      - mongodb
-    entrypoint: celery
-    command: worker -A flask_qed.celery_cgi -Q qed --loglevel=INFO -n qed_worker
+#    depends_on:
+#      - redis
+#      - mongodb
+    command: celery worker -A celery_cgi -Q qed --loglevel=INFO -n qed_worker
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
@@ -221,6 +222,6 @@ services:
     ports:
       - "5555:5555"
     entrypoint: flower
-    command: -A flask_qed.celery_cgi --url_prefix=flower --port=5555 --broker=redis://redis:6379/0
+    command: -A celery_cgi --url_prefix=flower --port=5555 --broker=redis://redis:6379/0
     depends_on:
       - redis

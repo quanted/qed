@@ -188,7 +188,7 @@ services:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
     volumes:
-      - ./flask_qed/pram_flask/ubertool/ubertool/sam/bin:/src/pram_flask/ubertool/ubertool/sam/bin
+      - ./flask_qed/pram_flask/ubertool/ubertool/sam/bin/Preprocessed:/var/www/sampreprocessed
     depends_on:
       - mongodb
 
@@ -197,20 +197,17 @@ services:
     image: mongo:latest
     volumes:
       - ./data/mongodb:/data/monogodb
-    ports:
-      - "27017:27017"
+    expose:
+      - "27017"
 
   # Celery container for async task execution
   qed_celery:
     build: ./flask_qed
     volumes:
-      - ./flask_qed/pram_flask/ubertool/ubertool/sam/bin:/src/pram_flask/ubertool/ubertool/sam/bin
+      - ./flask_qed/pram_flask/ubertool/ubertool/sam/bin/Preprocessed:/var/www/sampreprocessed
     links:
       - redis
       - mongodb
-#    depends_on:
-#      - redis
-#      - mongodb
     command: celery worker -A celery_cgi -Q qed --loglevel=INFO -n qed_worker
     environment:
       - REDIS_HOSTNAME=redis

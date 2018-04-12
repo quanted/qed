@@ -188,7 +188,7 @@ services:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
     volumes:
-      - ./flask_qed/pram_flask/ubertool/ubertool/sam/bin/Preprocessed:/var/www/sampreprocessed
+      - /var/www/sampreprocessed:/src/pram_flask/ubertool/ubertool/sam/bin/Preprocessed
     depends_on:
       - mongodb
 
@@ -204,7 +204,7 @@ services:
   qed_celery:
     build: ./flask_qed
     volumes:
-      - ./flask_qed/pram_flask/ubertool/ubertool/sam/bin/Preprocessed:/var/www/sampreprocessed
+      - /var/www/sampreprocessed:/src/pram_flask/ubertool/ubertool/sam/bin/Preprocessed
     links:
       - redis
       - mongodb

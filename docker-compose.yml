@@ -214,11 +214,11 @@ services:
       - DOCKER_HOSTNAME=${HOSTNAME}
 
   # Flower container for monitoring celery tasks
-  qed_flower:
-    build: ./flask_qed
-    ports:
-      - "5555:5555"
-    entrypoint: flower
-    command: -A celery_cgi --url_prefix=flower --port=5555 --broker=redis://redis:6379/0
-    depends_on:
-      - redis
+#  qed_flower:
+#    build: ./flask_qed
+#    ports:
+#      - "5555:5555"
+#    entrypoint: flower
+#    command: -A celery_cgi --url_prefix=flower --port=5555 --broker=redis://redis:6379/0
+#    depends_on:
+#      - redis

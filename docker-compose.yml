@@ -189,6 +189,7 @@ services:
       - DOCKER_HOSTNAME=${HOSTNAME}
     volumes:
       - /var/www/sampreprocessed:/src/pram_flask/ubertool/ubertool/sam/bin/Preprocessed
+      - /var/www/samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results
     depends_on:
       - mongodb
 

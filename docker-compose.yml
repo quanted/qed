@@ -205,6 +205,7 @@ services:
     build: ./flask_qed
     volumes:
       - /var/www/sampreprocessed:/src/pram_flask/ubertool/ubertool/sam/bin/Preprocessed
+      - /var/www/samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results
     links:
       - redis
       - mongodb

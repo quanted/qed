@@ -167,7 +167,7 @@ services:
       - "443:443"
     links:
       - qed_django:uwsgi_django  # Nginx.conf can reference "qed_django" service with the hostname 'uwsgi' or 'qed_django'
-      - cts_nodejs:cts_nodejs
+#      - cts_nodejs:cts_nodejs
       - qed_flask:uwsgi_flask
 #      - qed_flower:uwsgi_flower
     volumes:

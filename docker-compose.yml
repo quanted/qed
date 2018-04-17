@@ -192,6 +192,10 @@ services:
       - /var/www/samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results
     depends_on:
       - mongodb
+    logging:
+      options:
+        max-size: "200k"
+        max-file: "10"
 
   # mongoDB database container
   mongodb:
@@ -214,6 +218,10 @@ services:
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
+    logging:
+      options:
+        max-size: "200k"
+        max-file: "10"
 
   # Flower container for monitoring celery tasks
 #  qed_flower:

@@ -202,7 +202,7 @@ services:
   mongodb:
     image: mongo:latest
     volumes:
-      - ./data/mongodb:/data/monogodb
+      - /var/www/mongodb:/data/monogodb
     expose:
       - "27017"
 

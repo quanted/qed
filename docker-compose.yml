@@ -190,6 +190,7 @@ services:
     volumes:
       - /var/www/sampreprocessed:/src/pram_flask/ubertool/ubertool/sam/bin/Preprocessed
       - /var/www/samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results
+      - /var/www/qed-basins:/src/hms_flask/data/qed-basins
     depends_on:
       - mongodb
     logging:
@@ -211,6 +212,7 @@ services:
     volumes:
       - /var/www/sampreprocessed:/src/pram_flask/ubertool/ubertool/sam/bin/Preprocessed
       - /var/www/samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results
+      - /var/www/qed-basins:/src/hms_flask/data/qed-basins
     links:
       - redis
       - mongodb

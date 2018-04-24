@@ -76,3 +76,4 @@ if DEBUG:
         level = logging.DEBUG,
         format = '%(asctime)s %(levelname)s %(message)s',
     )
+    logging.getLogger().setLevel(logging.INFO)

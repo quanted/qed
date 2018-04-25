@@ -48,3 +48,6 @@
 [submodule "pram_app"]
 	path = pram_app
 	url = https://github.com/quanted/pram_app.git
+[submodule "qed_py3"]
+	path = qed_py3
+	url = https://github.com/quanted/qed_py3.git

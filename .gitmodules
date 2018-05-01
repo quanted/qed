@@ -53,3 +53,12 @@
 [submodule "qed_smoketests"]
 	path = qed_smoketests
 	url = https://github.com/quanted/qed_smoketests.git
+[submodule "windows/hms"]
+	path = windows/hms
+	url = https://github.com/quanted/hms.git
+[submodule "windows/VarroaPopServer"]
+	path = windows/VarroaPopServer
+	url = https://github.com/quanted/VarroaPopServer.git
+[submodule "windows/ctsws"]
+	path = windows/ctsws
+	url = https://github.com/quanted/ctsws.git

@@ -50,3 +50,6 @@
 	path = templates_qed
 	url = https://github.com/quanted/templates_qed.git
 
+[submodule "qed_smoketests"]
+	path = qed_smoketests
+	url = https://github.com/quanted/qed_smoketests.git

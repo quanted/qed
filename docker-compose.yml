@@ -169,7 +169,7 @@ services:
       - qed_django:uwsgi_django  # Nginx.conf can reference "qed_django" service with the hostname 'uwsgi' or 'qed_django'
       - cts_nodejs:cts_nodejs
       - qed_flask:uwsgi_flask
-      - qed_flower:uwsgi_flower
+#      - qed_flower:uwsgi_flower
     volumes:
       - /var/www/nginx/certs:/etc/nginx/qed # this points to the keys directory
     volumes_from:
@@ -189,14 +189,20 @@ services:
       - DOCKER_HOSTNAME=${HOSTNAME}
     volumes:
       - /var/www/sampreprocessed:/src/pram_flask/ubertool/ubertool/sam/bin/Preprocessed
+      - /var/www/samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results
+      - /var/www/qed-basins:/src/hms_flask/data/qed-basins
     depends_on:
       - mongodb
+    logging:
+      options:
+        max-size: "200k"
+        max-file: "10"
 
   # mongoDB database container
   mongodb:
     image: mongo:latest
     volumes:
-      - ./data/mongodb:/data/monogodb
+      - /var/www/mongodb:/data/monogodb
     expose:
       - "27017"
 
@@ -205,20 +211,26 @@ services:
     build: ./flask_qed
     volumes:
       - /var/www/sampreprocessed:/src/pram_flask/ubertool/ubertool/sam/bin/Preprocessed
+      - /var/www/samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results
+      - /var/www/qed-basins:/src/hms_flask/data/qed-basins
     links:
       - redis
       - mongodb
-    command: celery worker -A celery_cgi -Q qed --loglevel=INFO -n qed_worker
+    command: celery worker -A celery_cgi -Q qed --loglevel=INFO -c 1 -n qed_worker
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
+    logging:
+      options:
+        max-size: "200k"
+        max-file: "10"
 
   # Flower container for monitoring celery tasks
-  qed_flower:
-    build: ./flask_qed
-    ports:
-      - "5555:5555"
-    entrypoint: flower
-    command: -A celery_cgi --url_prefix=flower --port=5555 --broker=redis://redis:6379/0
-    depends_on:
-      - redis
+#  qed_flower:
+#    build: ./flask_qed
+#    ports:
+#      - "5555:5555"
+#    entrypoint: flower
+#    command: -A celery_cgi --url_prefix=flower --port=5555 --broker=redis://redis:6379/0
+#    depends_on:
+#      - redis

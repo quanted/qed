@@ -202,7 +202,7 @@ services:
   mongodb:
     image: mongo:latest
     volumes:
-      - /var/www/mongodb:/data/monogodb
+      - /var/www/mongodb:/data/db
     expose:
       - "27017"
 
@@ -216,7 +216,7 @@ services:
     links:
       - redis
       - mongodb
-    command: celery worker -A celery_cgi -Q qed --loglevel=INFO -c 1 -n qed_worker
+    command: celery worker -A celery_cgi -Q qed --loglevel=INFO -c 2 -n qed_worker
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}

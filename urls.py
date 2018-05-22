@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.conf.urls import include, url
-from django.urls import path
+from django.urls import path, re_path
+from splash_app.views import landing
 import login_middleware
 from django.contrib.auth.decorators import login_required
 import os
@@ -26,6 +27,7 @@ if os.environ.get('IS_PUBLIC') == "True":
         path('pisces/', include('pisces_app.urls')),
         path('pram/', include('pram_app.urls')),
         # path('ubertool/', include('ubertool_app.urls')),
+        re_path(r'^(?s).*', landing.page_404)
     ]
 else:
     urlpatterns = [
@@ -39,6 +41,8 @@ else:
         path('pisces/', include('pisces_app.urls')),
         path('pram/', include('pram_app.urls')),
         # path('ubertool/', include('ubertool_app.urls')),
+        # re_path(r'^(?s).*', landing.file_not_found, )
+        re_path(r'^(?s).*', landing.page_404)
     ]
 
 if settings.IS_PUBLIC:

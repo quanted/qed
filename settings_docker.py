@@ -42,7 +42,14 @@ os.environ.update({
 
 # SECURITY WARNING: don't run with debug turned on in production! (unless you are desperate)
 # DEBUG = False
-DEBUG = True
+if not os.environ.get('IS_PUBLIC'):
+    DEBUG = True
+else:
+    if os.environ.get('IS_PUBLIC') == "True":
+        DEBUG = False
+    else:
+        DEBUG = True
+print("DEBUG: " + str(DEBUG))
 TEMPLATE_DEBUG = False
 
 if not os.environ.get('UBERTOOL_REST_SERVER'):

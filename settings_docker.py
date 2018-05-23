@@ -103,8 +103,10 @@ else:
     ALLOWED_HOSTS.append('192.168.99.100')  # Docker Machine IP (generally, when using VirtualBox VM)
     ALLOWED_HOSTS.append('134.67.114.3')  # CGI NAT address (mapped to 'qed.epa.gov')
     ALLOWED_HOSTS.append('134.67.114.1')
+    ALLOWED_HOSTS.append('134.67.114.5')
     ALLOWED_HOSTS.append('172.20.100.11')
     ALLOWED_HOSTS.append('172.20.100.13')
+    ALLOWED_HOSTS.append('172.20.100.15')
     ALLOWED_HOSTS.append('qedinternal.epa.gov')
     ALLOWED_HOSTS.append('qed.epa.gov')
 

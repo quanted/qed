@@ -24,6 +24,14 @@ NODEJS_HOST = 'nginx'  # default nodejs hostname
 NODEJS_PORT = 80  # default nodejs port
 # todo: look into ws w/ django 1.10
 
+if not os.environ.get('IS_PUBLIC'):
+    DEBUG = True
+else:
+    if os.environ.get('IS_PUBLIC') == "True":
+        DEBUG = False
+    else:
+        DEBUG = True
+print("DEBUG: " + str(DEBUG))
 IS_PUBLIC = False
 IS_DEVELOPMENT = True
 

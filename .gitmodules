@@ -62,3 +62,6 @@
 [submodule "windows/ctsws"]
 	path = windows/ctsws
 	url = https://github.com/quanted/ctsws.git
+[submodule "wqt_app"]
+	path = wqt_app
+	url = https://github.com/quanted/wqt_app.git

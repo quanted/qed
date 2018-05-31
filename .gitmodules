@@ -65,3 +65,6 @@
 [submodule "wqt_app"]
 	path = wqt_app
 	url = https://github.com/quanted/wqt_app.git
+[submodule "windows/VarroaPopWrapper"]
+	path = windows/VarroaPopWrapper
+	url = https://github.com/quanted/VarroaPopWrapper.git

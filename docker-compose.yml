@@ -234,3 +234,10 @@ services:
 #    command: -A celery_cgi --url_prefix=flower --port=5555 --broker=redis://redis:6379/0
 #    depends_on:
 #      - redis
+
+  hms_dotnetcore:
+    build:
+      context: ./windows/hms
+      dockerfile: Web.Services/Dockerfile
+    expose:
+     - 7778

@@ -239,5 +239,5 @@ services:
     build:
       context: ./windows/hms
       dockerfile: Web.Services/Dockerfile
-    expose:
-     - 7778
+    ports:
+     - "7778:80"

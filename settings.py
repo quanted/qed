@@ -65,6 +65,7 @@ TEMPLATES = [
             os.path.join(TEMPLATE_ROOT, 'uber2017'),
             os.path.join(TEMPLATE_ROOT, 'uber2011'),
             os.path.join(TEMPLATE_ROOT, 'uberqaqc'),
+            os.path.join("/src", "collected_static")
                  ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -108,7 +109,7 @@ INSTALLED_APPS = (
     #'sam_app',  # sam django app
     'splash_app',  # splash django app
     # 'ubertool_app',  # ubertool django app
-    'wqt_app',  # ubertool django app
+    # 'wqt_app',  # ubertool django app
 )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'

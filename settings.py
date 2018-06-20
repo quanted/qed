@@ -108,6 +108,7 @@ INSTALLED_APPS = (
     #'sam_app',  # sam django app
     'splash_app',  # splash django app
     # 'ubertool_app',  # ubertool django app
+    'wqt_app',  # ubertool django app
 )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'

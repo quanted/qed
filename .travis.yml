@@ -6,9 +6,9 @@ notifications:
   slack: qed-epa:FnRva7RtXZLlczmpxShtokg
 
 before_install:
- - ls
- - ls qed_smoketests/tests
- - openssl aes-256-cbc -K $encrypted_0a6446eb3ae3_key -iv $encrypted_0a6446eb3ae3_iv -in qed_smoketests/tests/smoketest_secrets.py.enc -out qed_smoketests/tests/smoketest_secrets.py -d
+ - cd qed_smoketests/tests
+ - openssl aes-256-cbc -K $encrypted_0a6446eb3ae3_key -iv $encrypted_0a6446eb3ae3_iv -in smoketest_secrets.py.enc -out smoketest_secrets.py -d
+ - cd ../..
  - chmod +x travis_build.sh
  - chmod +x flask_qed/run_pytests.sh
 

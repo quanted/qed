@@ -1,12 +1,18 @@
 language: python
-language: python
 python:
-  - "3.5"
-  - "3.5-dev" # 3.5 development branch
   - "3.6"
-  - "3.6-dev" # 3.6 development branch
-  - "3.7-dev" # 3.7 development branch
-# command to install dependencies
-install: "pip install -r requirements.txt"
-# command to run tests
-script: pytest
+
+notifications:
+  slack: qed-epa:FnRva7RtXZLlczmpxShtokg
+
+before_install:
+ - openssl aes-256-cbc -K $encrypted_0a6446eb3ae3_key -iv $encrypted_0a6446eb3ae3_iv -in qed_smoketests/tests/smoketest_secrets.py.enc -out qed_smoketests/tests/smoketest_secrets.py -d
+ - chmod +x travis_build.sh
+ - chmod +x flask_qed/run_pytests.sh
+
+install: ./travis_build.sh
+
+script:
+ - ./flask_qed/run_pytests.sh
+ - pytest qed_smoketests/tests
+# Add HMS tests

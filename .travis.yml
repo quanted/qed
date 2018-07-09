@@ -1,20 +1,15 @@
 language: python
 python:
-  - "3.6"
-
+- '3.6'
 notifications:
   slack: qed-epa:FnRva7RtXZLlczmpxShtokg
-
 before_install:
- - pwd
- - ls qed_smoketests/tests/
- - openssl aes-256-cbc -K $encrypted_ceb76764cecb_key -iv $encrypted_ceb76764cecb_iv -in qed_smoketests/tests/smoketest_secrets.py.enc -out qed_smoketests/tests/smoketest_secrets.py -d
- - chmod +x travis_build.sh
- - chmod +x flask_qed/run_pytests.sh
-
-install: ./travis_build.sh
-
+- openssl aes-256-cbc -K $encrypted_d1ba364ca4e3_key -iv $encrypted_d1ba364ca4e3_iv
+  -in qed_smoketests/tests/smoketest_secrets.py.enc -out qed_smoketests/tests/smoketest_secrets.py
+  -d
+- chmod +x travis_build.sh
+- chmod +x flask_qed/run_pytests.sh
+install: "./travis_build.sh"
 script:
- - ./flask_qed/run_pytests.sh
- - pytest qed_smoketests/tests
-# Add HMS tests
+- "./flask_qed/run_pytests.sh"
+- pytest qed_smoketests/tests

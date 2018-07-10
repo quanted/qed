@@ -1,8 +1,11 @@
 language: python
+
 python:
 - '3.6'
+
 notifications:
   slack: qed-epa:FnRva7RtXZLlczmpxShtokg
+
 before_install:
 - openssl aes-256-cbc -K $encrypted_47198b22a71b_key -iv $encrypted_47198b22a71b_iv
   -in qed_smoketests/tests/smoketest_secrets.py.enc -out qed_smoketests/tests/smoketest_secrets.py
@@ -10,7 +13,10 @@ before_install:
 - pip install mechanicalsoup
 - chmod +x travis_build.sh
 - chmod +x flask_qed/run_pytests.sh
+
 install: "./travis_build.sh"
+
 script:
 - "./flask_qed/run_pytests.sh"
 - pytest qed_smoketests/tests
+# Add smoketests and pytest unit tests for hms

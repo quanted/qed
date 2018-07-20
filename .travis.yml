@@ -11,10 +11,10 @@ before_install:
   -in qed_smoketests/tests/smoketest_secrets.py.enc -out qed_smoketests/tests/smoketest_secrets.py
   -d
 - pip install mechanicalsoup
-- chmod +x travis_build.sh
+- chmod +x travis_build_new.sh
 - chmod +x flask_qed/run_pytests.sh
 
-install: "./travis_build.sh"
+install: "./travis_build_new.sh"
 
 script:
 - "./flask_qed/run_pytests.sh"

@@ -14,6 +14,6 @@ conda config --set always_yes yes --set changeps1 no
 conda update -q conda
 conda info -a
 
-conda create -q -n travis-env python=3.6 --yes --file requirements_qed/requirements.txt
+conda create -q -n travis-env python=3.6
 source activate travis-env
 pip install -f requirements_qed/requirements.txt

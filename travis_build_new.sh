@@ -16,5 +16,5 @@ conda info -a
 
 conda create -q --n travis-env python=3.6
 source activate travis-env
-cp requirements_qed/requirements.txt ./requirements.txt
-pip install -r requirements.txt
+conda install --file requirements_qed/requirements.txt
+pip install -r requirements_qed/requirements.txt

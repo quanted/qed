@@ -14,7 +14,8 @@ conda config --set always_yes yes --set changeps1 no
 conda update -q conda
 conda info -a
 
-conda create -q -n travis-env python=3.6
-source activate travis-env
+#conda create -q -n travis-env python=3.6
+#source activate travis-env
 conda install --file requirements_qed/requirements.txt
 pip install -r requirements_qed/requirements.txt
+pip install mechanicalsoup

@@ -19,4 +19,4 @@ conda info -a
 conda install --file requirements_qed/requirements.txt
 pip install -r requirements_qed/requirements.txt
 pip install mechanicalsoup
-pip install pytest-html
+pytest --version

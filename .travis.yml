@@ -15,7 +15,7 @@ before_install:
 
 script:
 - "./travis_build_new.sh"
-- pip list
+- echo $PATH
 - "./flask_qed/run_pytests.sh"
 - pytest qed_smoketests/tests
 # Add smoketests and pytest unit tests for hms

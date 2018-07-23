@@ -13,7 +13,9 @@ before_install:
 - chmod +x travis_build_new.sh
 - chmod +x flask_qed/run_pytests.sh
 
-install: "./travis_build_new.sh"
+install:
+- source activate travis-env
+- "./travis_build_new.sh"
 
 script:
 - "./flask_qed/run_pytests.sh"

@@ -14,7 +14,7 @@ before_install:
 - chmod +x flask_qed/run_pytests.sh
 
 before_script:
-- export PATH="$HOME/miniconda/bin:$PATH"
+# - export PATH="$HOME/miniconda/bin:$PATH"
 - "./travis_build_new.sh"
 
 script:

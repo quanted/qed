@@ -15,6 +15,7 @@ before_install:
 
 install:
 - source activate travis-env
+- pip list
 - "./travis_build_new.sh"
 
 script:

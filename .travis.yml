@@ -13,10 +13,8 @@ before_install:
 - chmod +x travis_build_new.sh
 - chmod +x flask_qed/run_pytests.sh
 
-install:
-- "./travis_build_new.sh"
-
 script:
+- "./travis_build_new.sh"
 - pip list
 - "./flask_qed/run_pytests.sh"
 - pytest qed_smoketests/tests

@@ -14,10 +14,10 @@ before_install:
 - chmod +x flask_qed/run_pytests.sh
 
 install:
-- pip list
 - "./travis_build_new.sh"
 
 script:
+- pip list
 - "./flask_qed/run_pytests.sh"
 - pytest qed_smoketests/tests
 # Add smoketests and pytest unit tests for hms

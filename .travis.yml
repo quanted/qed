@@ -21,5 +21,5 @@ script:
 - cd flask_qed/
 - "./run_pytests.sh"
 - cd ..
-- pytest qed_smoketests/tests
+- python -m pytest qed_smoketests/tests/test_host_qed.py -k "pub"
 # Add smoketests and pytest unit tests for hms

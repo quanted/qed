@@ -24,6 +24,7 @@ services:
       #- DOCKER_SECRET_KEY=${SECRET_KEY}
     links:
       - redis
+      - mongodb
 
   # Redis (message broker)
   redis:

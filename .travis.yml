@@ -1,25 +1,22 @@
 language: python
-
 python:
 - '3.6'
-
 notifications:
   slack: qed-epa:FnRva7RtXZLlczmpxShtokg
-
 before_install:
+#- openssl aes-256-cbc -K $encrypted_d1ba364ca4e3_key -iv $encrypted_d1ba364ca4e3_iv
+#  -in qed_smoketests/tests/smoketest_secrets.py.enc -out qed_smoketests/tests/smoketest_secrets.py
+#  -d
 - openssl aes-256-cbc -K $encrypted_47198b22a71b_key -iv $encrypted_47198b22a71b_iv
   -in qed_smoketests/tests/smoketest_secrets.py.enc -out qed_smoketests/tests/smoketest_secrets.py
   -d
 - chmod +x travis_build_new.sh
 - chmod +x flask_qed/run_pytests.sh
-
 before_script:
 - export PATH="$HOME/miniconda/bin:$PATH"
 - "./travis_build_new.sh"
-
 script:
 - cd flask_qed/
 - "./run_pytests.sh"
 - cd ..
 - python -m pytest qed_smoketests/tests/test_host_qed.py -k "pub"
-# Add smoketests and pytest unit tests for hms

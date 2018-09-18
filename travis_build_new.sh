@@ -10,6 +10,7 @@ bash miniconda.sh -b -p $HOME/miniconda
 hash -r
 conda config --set always_yes yes --set changeps1 no
 conda update -q conda
+conda install python 3.6
 conda info -a
 
 conda install --file requirements_qed/requirements.txt

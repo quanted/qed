@@ -46,118 +46,152 @@ services:
       - REDIS_PORT=6379
     links:
       - redis
-      - worker_chemaxon
-      - worker_epi
-      - worker_test
-      - worker_sparc
-      - worker_measured
-      - worker_metabolizer
+      # - worker_chemaxon
+      # - worker_epi
+      # - worker_test
+      # - worker_sparc
+      # - worker_measured
+      # - worker_metabolizer
+
+    # # Celery worker - manager calc
+  worker_manager:
+    build:
+      context: ./cts_celery
+      dockerfile: Dockerfile
+      args:
+        version: ${VERSION:-latest}
+    # build: ./cts_celery
+    image: cts-celery
+    command: celery worker -A tasks -Q manager_queue -l info -n manager_worker -c 1
+    links:
+      - redis
+    environment:
+      - REDIS_HOSTNAME=redis
+      - DOCKER_HOSTNAME=${HOSTNAME}
 
   # # Celery worker - ChemAxon calc
-  worker_chemaxon:
-    build: ./cts_celery
+  worker_cts:
+    build:
+      context: ./cts_celery
+      dockerfile: Dockerfile
+      args:
+        version: ${VERSION:-latest}
+    # build: ./cts_celery
     image: cts-celery
-    command: celery worker -A tasks -Q chemaxon -l info -n chemaxon_worker -c 1
+    command: celery worker -A tasks -Q cts_queue -l info -n cts_worker -c 2
     links:
       - redis
       - qed_django
+      - cts-tomcat
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
-    # env_file:
-    #   - ./${QED_CONFIG}
 
-  # # Celery worker - EPI Suite calc
-  worker_epi:
-    build: ./cts_celery
-    image: cts-celery
-    command: celery worker -A tasks -Q epi -l info -n epi_worker -c 1
-    links:
-      - redis
-    environment:
-      - REDIS_HOSTNAME=redis
-      - DOCKER_HOSTNAME=${HOSTNAME}
-    # env_file:
-    #   - ./${QED_CONFIG}
+  # # # Celery worker - ChemAxon calc
+  # worker_chemaxon:
+  #   build: ./cts_celery
+  #   image: cts-celery
+  #   command: celery worker -A tasks -Q chemaxon -l info -n chemaxon_worker -c 1
+  #   links:
+  #     - redis
+  #     - qed_django
+  #   environment:
+  #     - REDIS_HOSTNAME=redis
+  #     - DOCKER_HOSTNAME=${HOSTNAME}
+  #   # env_file:
+  #   #   - ./${QED_CONFIG}
+
+  # # # Celery worker - EPI Suite calc
+  # worker_epi:
+  #   build: ./cts_celery
+  #   image: cts-celery
+  #   command: celery worker -A tasks -Q epi -l info -n epi_worker -c 1
+  #   links:
+  #     - redis
+  #   environment:
+  #     - REDIS_HOSTNAME=redis
+  #     - DOCKER_HOSTNAME=${HOSTNAME}
+  #   # env_file:
+  #   #   - ./${QED_CONFIG}
 
 
-  # # Celery worker - TEST calc
-  worker_test:
-    build: ./cts_celery
-    image: cts-celery
-    command: celery worker -A tasks -Q test -l info -n test_worker -c 1
-    links:
-      - redis
-    environment:
-      - REDIS_HOSTNAME=redis
-      - DOCKER_HOSTNAME=${HOSTNAME}
-    # env_file:
-    #   - ./${QED_CONFIG}
+  # # # Celery worker - TEST calc
+  # worker_test:
+  #   build: ./cts_celery
+  #   image: cts-celery
+  #   command: celery worker -A tasks -Q test -l info -n test_worker -c 1
+  #   links:
+  #     - redis
+  #   environment:
+  #     - REDIS_HOSTNAME=redis
+  #     - DOCKER_HOSTNAME=${HOSTNAME}
+  #   # env_file:
+  #   #   - ./${QED_CONFIG}
 
-  # # Celery worker - SPARC calc
-  worker_sparc:
-    build: ./cts_celery
-    image: cts-celery
-    command: celery worker -A tasks -Q sparc -l info -n sparc_worker -c 1
-    links:
-      - redis
-    environment:
-      - REDIS_HOSTNAME=redis
-      - DOCKER_HOSTNAME=${HOSTNAME}
-    # env_file:
-    #   - ./${QED_CONFIG}
+  # # # Celery worker - SPARC calc
+  # worker_sparc:
+  #   build: ./cts_celery
+  #   image: cts-celery
+  #   command: celery worker -A tasks -Q sparc -l info -n sparc_worker -c 1
+  #   links:
+  #     - redis
+  #   environment:
+  #     - REDIS_HOSTNAME=redis
+  #     - DOCKER_HOSTNAME=${HOSTNAME}
+  #   # env_file:
+  #   #   - ./${QED_CONFIG}
 
-  # # Celery worker - Measured (EPI) calc
-  worker_measured:
-    build: ./cts_celery
-    image: cts-celery
-    command: celery worker -A tasks -Q measured -l info -n measured_worker -c 1
-    links:
-      - redis
-    environment:
-      - REDIS_HOSTNAME=redis
-      - DOCKER_HOSTNAME=${HOSTNAME}
-    # env_file:
-    #   - ./${QED_CONFIG}
+  # # # Celery worker - Measured (EPI) calc
+  # worker_measured:
+  #   build: ./cts_celery
+  #   image: cts-celery
+  #   command: celery worker -A tasks -Q measured -l info -n measured_worker -c 1
+  #   links:
+  #     - redis
+  #   environment:
+  #     - REDIS_HOSTNAME=redis
+  #     - DOCKER_HOSTNAME=${HOSTNAME}
+  #   # env_file:
+  #   #   - ./${QED_CONFIG}
 
-  # # Celery worker - Metabolizer calc
-  worker_metabolizer:
-    build: ./cts_celery
-    image: cts-celery
-    command: celery worker -A tasks -Q metabolizer -l info -n metabolizer_worker -c 1
-    links:
-      - redis
-    environment:
-      - REDIS_HOSTNAME=redis
-      - DOCKER_HOSTNAME=${HOSTNAME}
-    # env_file:
-    #   - ./${QED_CONFIG}
+  # # # Celery worker - Metabolizer calc
+  # worker_metabolizer:
+  #   build: ./cts_celery
+  #   image: cts-celery
+  #   command: celery worker -A tasks -Q metabolizer -l info -n metabolizer_worker -c 1
+  #   links:
+  #     - redis
+  #   environment:
+  #     - REDIS_HOSTNAME=redis
+  #     - DOCKER_HOSTNAME=${HOSTNAME}
+  #   # env_file:
+  #   #   - ./${QED_CONFIG}
 
-  # # Celery worker - cheminfo calc
-  worker_cheminfo:
-    build: ./cts_celery
-    image: cts-celery
-    command: celery worker -A tasks -Q cheminfo -l info -n cheminfo_worker -c 1
-    links:
-      - redis
-    environment:
-      - REDIS_HOSTNAME=redis
-      - DOCKER_HOSTNAME=${HOSTNAME}
-    # env_file:
-    #   - ./${QED_CONFIG}
+  # # # Celery worker - cheminfo calc
+  # worker_cheminfo:
+  #   build: ./cts_celery
+  #   image: cts-celery
+  #   command: celery worker -A tasks -Q cheminfo -l info -n cheminfo_worker -c 1
+  #   links:
+  #     - redis
+  #   environment:
+  #     - REDIS_HOSTNAME=redis
+  #     - DOCKER_HOSTNAME=${HOSTNAME}
+  #   # env_file:
+  #   #   - ./${QED_CONFIG}
 
-  # # Celery worker - manager calc
-  worker_manager:
-    build: ./cts_celery
-    image: cts-celery
-    command: celery worker -A tasks -Q manager -l info -n manager_worker -c 1
-    links:
-      - redis
-    environment:
-      - REDIS_HOSTNAME=redis
-      - DOCKER_HOSTNAME=${HOSTNAME}
-    # env_file:
-    #   - ./${QED_CONFIG}
+  # # # Celery worker - manager calc
+  # worker_manager:
+  #   build: ./cts_celery
+  #   image: cts-celery
+  #   command: celery worker -A tasks -Q manager -l info -n manager_worker -c 1
+  #   links:
+  #     - redis
+  #   environment:
+  #     - REDIS_HOSTNAME=redis
+  #     - DOCKER_HOSTNAME=${HOSTNAME}
+  #   # env_file:
+  #   #   - ./${QED_CONFIG}
 
   qed_nginx:
     restart: always

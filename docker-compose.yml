@@ -76,7 +76,7 @@ services:
     links:
       - redis
       - qed_django
-      - cts-tomcat
+      # - cts-tomcat
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}

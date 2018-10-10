@@ -155,3 +155,5 @@ services:
       dockerfile: Web.Services/Dockerfile
     ports:
      - "7778:80"
+    volumes:
+      - "./windows/hms/Web.Services/App_Data:/app/App_Data"

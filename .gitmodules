@@ -68,3 +68,6 @@
 [submodule "windows/VarroaPopWrapper"]
 	path = windows/VarroaPopWrapper
 	url = https://github.com/quanted/VarroaPopWrapper.git
+[submodule "nta_app"]
+	path = nta_app
+	url = https://github.com/quanted/nta_app.git

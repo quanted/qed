@@ -40,6 +40,7 @@ else:
         path('hwbi/', include('hwbi_app.urls')),
         path('pisces/', include('pisces_app.urls')),
         path('pram/', include('pram_app.urls')),
+        path('nta/', include('nta_app.urls'))
         # path('ubertool/', include('ubertool_app.urls')),
         # re_path(r'^(?s).*', landing.file_not_found, )
         # re_path(r'^(?s).*', landing.page_404)

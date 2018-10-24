@@ -134,8 +134,8 @@ services:
     build: ./flask_qed
     volumes:
       - /var/www/sampreprocessed:/src/pram_flask/ubertool/ubertool/sam/bin/Preprocessed
-      - /var/www/samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results
-      - /var/www/qed-basins:/src/hms_flask/data/qed-basins
+      - "../samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results"
+      - "../qed-basins:/src/hms_flask/data/qed-basins"
       - collected_static:/src/collected_static
     links:
       - redis

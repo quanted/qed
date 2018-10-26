@@ -1,0 +1,7 @@
+FROM daskdev/dask
+
+RUN apt-get update -qqy && apt-get -qqy --no-install-recommends install firefox
+
+RUN pip install selenium matplotlib pymongo distributed bokeh==0.13
+
+CMD ["dask-worker", "dask_scheduler:8786"]

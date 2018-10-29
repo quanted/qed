@@ -157,3 +157,26 @@ services:
      - "7778:80"
     volumes:
       - "./windows/hms/Web.Services/App_Data:/app/App_Data"
+
+  # Dask Containers  
+  dask_scheduler:
+    image: daskdev/dask
+    hostname: dask-scheduler
+    expose:
+     - 8786
+     - 8787
+    command: ["dask-scheduler"]
+
+  dask_worker:
+    build:
+      context: .
+      dockerfile: Dask_Dockerfile      
+    #image: daskdev/dask
+    hostname: dask-worker
+    environment:
+      PYTHONPATH: '/src:/src/qed'
+      IN_DOCKER: "True"
+    #command: ["dask-worker", "dask_scheduler:8786"]
+    volumes:
+       - "../qed:/src/qed"
+

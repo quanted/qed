@@ -19,6 +19,10 @@ EXPOSE 8080
 RUN chmod 755 /src/docker_start.sh
 RUN pip freeze | grep Django
 
+# TESTING INSTALLS
+RUN pip install distributed
+RUN pip install bokeh==0.13
+
 # Specific Docker-specific Django settings file (needed for collectstatic)
 ENV DJANGO_SETTINGS_MODULE="settings_docker"
 

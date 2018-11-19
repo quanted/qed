@@ -1,5 +1,4 @@
 from django.conf import settings
-#from django.contrib.auth.views import login as login_views
 from django.contrib.auth import login as django_login
 from django.http import HttpResponseRedirect
 from django.template.loader import render_to_string

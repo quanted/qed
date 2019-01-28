@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Test Report</title>
+    <style>body {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	min-width: 1200px;
+	color: #999;
+}
+
+h1 {
+	font-size: 24px;
+	color: black;
+}
+
+h2 {
+	font-size: 16px;
+	color: black;
+}
+
+p {
+    color: black;
+}
+
+a {
+	color: #999;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+/******************************
+ * SUMMARY INFORMATION
+ ******************************/
+
+#environment td {
+	padding: 5px;
+	border: 1px solid #E6E6E6;
+}
+
+#environment tr:nth-child(odd) {
+	background-color: #f6f6f6;
+}
+
+/******************************
+ * TEST RESULT COLORS
+ ******************************/
+span.passed, .passed .col-result {
+	color: green;
+}
+span.skipped, span.xfailed, span.rerun, .skipped .col-result, .xfailed .col-result, .rerun .col-result {
+	color: orange;
+}
+span.error, span.failed, span.xpassed, .error .col-result, .failed .col-result, .xpassed .col-result  {
+	color: red;
+}
+
+
+/******************************
+ * RESULTS TABLE
+ *
+ * 1. Table Layout
+ * 2. Extra
+ * 3. Sorting items
+ *
+ ******************************/
+
+/*------------------
+ * 1. Table Layout
+ *------------------*/
+
+#results-table {
+	border: 1px solid #e6e6e6;
+	color: #999;
+	font-size: 12px;
+	width: 100%
+}
+
+#results-table th, #results-table td {
+	padding: 5px;
+	border: 1px solid #E6E6E6;
+	text-align: left
+}
+#results-table th {
+	font-weight: bold
+}
+
+/*------------------
+ * 2. Extra
+ *------------------*/
+
+.log:only-child {
+	height: inherit
+}
+.log {
+	background-color: #e6e6e6;
+	border: 1px solid #e6e6e6;
+	color: black;
+	display: block;
+	font-family: "Courier New", Courier, monospace;
+	height: 230px;
+	overflow-y: scroll;
+	padding: 5px;
+	white-space: pre-wrap
+}
+div.image {
+	border: 1px solid #e6e6e6;
+	float: right;
+	height: 240px;
+	margin-left: 5px;
+	overflow: hidden;
+	width: 320px
+}
+div.image img {
+	width: 320px
+}
+.collapsed {
+	display: none;
+}
+.expander::after {
+	content: " (show details)";
+	color: #BBB;
+	font-style: italic;
+	cursor: pointer;
+}
+.collapser::after {
+	content: " (hide details)";
+	color: #BBB;
+	font-style: italic;
+	cursor: pointer;
+}
+
+/*------------------
+ * 3. Sorting items
+ *------------------*/
+.sortable {
+	cursor: pointer;
+}
+
+.sort-icon {
+	font-size: 0px;
+	float: left;
+	margin-right: 5px;
+	margin-top: 5px;
+	/*triangle*/
+	width: 0;
+	height: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+}
+
+.inactive .sort-icon {
+	/*finish triangle*/
+	border-top: 8px solid #E6E6E6;
+}
+
+.asc.active .sort-icon {
+	/*finish triangle*/
+	border-bottom: 8px solid #999;
+}
+
+.desc.active .sort-icon {
+	/*finish triangle*/
+	border-top: 8px solid #999;
+}
+</style></head>
+  <body onLoad="init()">
+    <script>/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+
+function toArray(iter) {
+    if (iter === null) {
+        return null;
+    }
+    return Array.prototype.slice.call(iter);
+}
+
+function find(selector, elem) {
+    if (!elem) {
+        elem = document;
+    }
+    return elem.querySelector(selector);
+}
+
+function find_all(selector, elem) {
+    if (!elem) {
+        elem = document;
+    }
+    return toArray(elem.querySelectorAll(selector));
+}
+
+function sort_column(elem) {
+    toggle_sort_states(elem);
+    var colIndex = toArray(elem.parentNode.childNodes).indexOf(elem);
+    var key;
+    if (elem.classList.contains('numeric')) {
+        key = key_num;
+    } else if (elem.classList.contains('result')) {
+        key = key_result;
+    } else {
+        key = key_alpha;
+    }
+    sort_table(elem, key(colIndex));
+}
+
+function show_all_extras() {
+    find_all('.col-result').forEach(show_extras);
+}
+
+function hide_all_extras() {
+    find_all('.col-result').forEach(hide_extras);
+}
+
+function show_extras(colresult_elem) {
+    var extras = colresult_elem.parentNode.nextElementSibling;
+    var expandcollapse = colresult_elem.firstElementChild;
+    extras.classList.remove("collapsed");
+    expandcollapse.classList.remove("expander");
+    expandcollapse.classList.add("collapser");
+}
+
+function hide_extras(colresult_elem) {
+    var extras = colresult_elem.parentNode.nextElementSibling;
+    var expandcollapse = colresult_elem.firstElementChild;
+    extras.classList.add("collapsed");
+    expandcollapse.classList.remove("collapser");
+    expandcollapse.classList.add("expander");
+}
+
+function show_filters() {
+    var filter_items = document.getElementsByClassName('filter');
+    for (var i = 0; i < filter_items.length; i++)
+        filter_items[i].hidden = false;
+}
+
+function add_collapse() {
+    // Add links for show/hide all
+    var resulttable = find('table#results-table');
+    var showhideall = document.createElement("p");
+    showhideall.innerHTML = '<a href="javascript:show_all_extras()">Show all details</a> / ' +
+                            '<a href="javascript:hide_all_extras()">Hide all details</a>';
+    resulttable.parentElement.insertBefore(showhideall, resulttable);
+
+    // Add show/hide link to each result
+    find_all('.col-result').forEach(function(elem) {
+        var collapsed = get_query_parameter('collapsed') || 'Passed';
+        var extras = elem.parentNode.nextElementSibling;
+        var expandcollapse = document.createElement("span");
+        if (collapsed.includes(elem.innerHTML)) {
+            extras.classList.add("collapsed");
+            expandcollapse.classList.add("expander");
+        } else {
+            expandcollapse.classList.add("collapser");
+        }
+        elem.appendChild(expandcollapse);
+
+        elem.addEventListener("click", function(event) {
+            if (event.currentTarget.parentNode.nextElementSibling.classList.contains("collapsed")) {
+                show_extras(event.currentTarget);
+            } else {
+                hide_extras(event.currentTarget);
+            }
+        });
+    })
+}
+
+function get_query_parameter(name) {
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+function init () {
+    reset_sort_headers();
+
+    add_collapse();
+
+    show_filters();
+
+    toggle_sort_states(find('.initial-sort'));
+
+    find_all('.sortable').forEach(function(elem) {
+        elem.addEventListener("click",
+                              function(event) {
+                                  sort_column(elem);
+                              }, false)
+    });
+
+};
+
+function sort_table(clicked, key_func) {
+    var rows = find_all('.results-table-row');
+    var reversed = !clicked.classList.contains('asc');
+    var sorted_rows = sort(rows, key_func, reversed);
+    /* Whole table is removed here because browsers acts much slower
+     * when appending existing elements.
+     */
+    var thead = document.getElementById("results-table-head");
+    document.getElementById('results-table').remove();
+    var parent = document.createElement("table");
+    parent.id = "results-table";
+    parent.appendChild(thead);
+    sorted_rows.forEach(function(elem) {
+        parent.appendChild(elem);
+    });
+    document.getElementsByTagName("BODY")[0].appendChild(parent);
+}
+
+function sort(items, key_func, reversed) {
+    var sort_array = items.map(function(item, i) {
+        return [key_func(item), i];
+    });
+    var multiplier = reversed ? -1 : 1;
+
+    sort_array.sort(function(a, b) {
+        var key_a = a[0];
+        var key_b = b[0];
+        return multiplier * (key_a >= key_b ? 1 : -1);
+    });
+
+    return sort_array.map(function(item) {
+        var index = item[1];
+        return items[index];
+    });
+}
+
+function key_alpha(col_index) {
+    return function(elem) {
+        return elem.childNodes[1].childNodes[col_index].firstChild.data.toLowerCase();
+    };
+}
+
+function key_num(col_index) {
+    return function(elem) {
+        return parseFloat(elem.childNodes[1].childNodes[col_index].firstChild.data);
+    };
+}
+
+function key_result(col_index) {
+    return function(elem) {
+        var strings = ['Error', 'Failed', 'Rerun', 'XFailed', 'XPassed',
+                       'Skipped', 'Passed'];
+        return strings.indexOf(elem.childNodes[1].childNodes[col_index].firstChild.data);
+    };
+}
+
+function reset_sort_headers() {
+    find_all('.sort-icon').forEach(function(elem) {
+        elem.parentNode.removeChild(elem);
+    });
+    find_all('.sortable').forEach(function(elem) {
+        var icon = document.createElement("div");
+        icon.className = "sort-icon";
+        icon.textContent = "vvv";
+        elem.insertBefore(icon, elem.firstChild);
+        elem.classList.remove("desc", "active");
+        elem.classList.add("asc", "inactive");
+    });
+}
+
+function toggle_sort_states(elem) {
+    //if active, toggle between asc and desc
+    if (elem.classList.contains('active')) {
+        elem.classList.toggle('asc');
+        elem.classList.toggle('desc');
+    }
+
+    //if inactive, reset all other functions and add ascending active
+    if (elem.classList.contains('inactive')) {
+        reset_sort_headers();
+        elem.classList.remove('inactive');
+        elem.classList.add('active');
+    }
+}
+
+function is_all_rows_hidden(value) {
+  return value.hidden == false;
+}
+
+function filter_table(elem) {
+    var outcome_att = "data-test-result";
+    var outcome = elem.getAttribute(outcome_att);
+    class_outcome = outcome + " results-table-row";
+    var outcome_rows = document.getElementsByClassName(class_outcome);
+
+    for(var i = 0; i < outcome_rows.length; i++){
+        outcome_rows[i].hidden = !elem.checked;
+    }
+
+    var rows = find_all('.results-table-row').filter(is_all_rows_hidden);
+    var all_rows_hidden = rows.length == 0 ? true : false;
+    var not_found_message = document.getElementById("not-found-message");
+    not_found_message.hidden = !all_rows_hidden;
+}
+</script>
+    <h1>iec.html</h1>
+    <p>Report generated on 23-Jul-2018 at 14:50:21 by<a href="https://pypi.python.org/pypi/pytest-html"> pytest-html</a> v1.19.0</p>
+    <h2>Environment</h2>
+    <table id="environment">
+      <tr>
+        <td>Packages</td>
+        <td>{&apos;pytest&apos;: &apos;3.3.2&apos;, &apos;py&apos;: &apos;1.5.2&apos;, &apos;pluggy&apos;: &apos;0.6.0&apos;}</td></tr>
+      <tr>
+        <td>Platform</td>
+        <td>Windows-10-10.0.14393-SP0</td></tr>
+      <tr>
+        <td>Plugins</td>
+        <td>{&apos;metadata&apos;: &apos;1.7.0&apos;, &apos;html&apos;: &apos;1.19.0&apos;, &apos;django&apos;: &apos;3.1.2&apos;}</td></tr>
+      <tr>
+        <td>Python</td>
+        <td>3.6.2</td></tr></table>
+    <h2>Summary</h2>
+    <p>0 tests ran in 52.97 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">0 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">15 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <h2>Results</h2>
+    <table id="results-table">
+      <thead id="results-table-head">
+        <tr>
+          <th class="sortable result initial-sort" col="result">Result</th>
+          <th class="sortable" col="name">Test</th>
+          <th class="sortable numeric" col="duration">Duration</th>
+          <th>Links</th></tr>
+        <tr hidden="true" id="not-found-message">
+          <th colspan="4">No results found. Try to check the filters</th></tr></thead>
+      <tbody class="error results-table-row">
+        <tr>
+          <td class="col-result">Error</td>
+          <td class="col-name">flask_qed/pram_flask/tests/flask_test.py</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">ImportError while importing test module &#x27;C:\git\qed\flask_qed\pram_flask\tests\flask_test.py&#x27;.<br/>Hint: make sure your test modules/packages have valid Python names.<br/>Traceback:<br/>flask_qed\pram_flask\tests\flask_test.py:4: in &lt;module&gt;<br/>    from flask_cgi import app<br/><span class="error">E   ModuleNotFoundError: No module named &#x27;flask_cgi&#x27;</span><br/><br/>During handling of the above exception, another exception occurred:<br/>flask_qed\pram_flask\tests\flask_test.py:6: in &lt;module&gt;<br/>    from flask_qed.flask_cgi import app<br/>flask_qed\flask_cgi.py:6: in &lt;module&gt;<br/>    import pram_flask.flask_pram as pram<br/><span class="error">E   ModuleNotFoundError: No module named &#x27;pram_flask.flask_pram&#x27;</span><br/></div></td></tr></tbody>
+      <tbody class="error results-table-row">
+        <tr>
+          <td class="col-result">Error</td>
+          <td class="col-name">flask_qed/pram_flask/ubertool/ubertool/agdrift/tests/test_agdrift_integration.py</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">ImportError while importing test module &#x27;C:\git\qed\flask_qed\pram_flask\ubertool\ubertool\agdrift\tests\test_agdrift_integration.py&#x27;.<br/>Hint: make sure your test modules/packages have valid Python names.<br/>Traceback:<br/>flask_qed\pram_flask\ubertool\ubertool\agdrift\tests\test_agdrift_integration.py:76: in &lt;module&gt;<br/>    agdrift_calc.execute_model()<br/>flask_qed\pram_flask\ubertool\ubertool\agdrift\agdrift_exe.py:95: in execute_model<br/>    self.populate_inputs(self.pd_obj)<br/>flask_qed\pram_flask\ubertool\ubertool\base\uber_model.py:101: in populate_inputs<br/>    module = importlib.import_module(mod_name)<br/>C:\Users\dsmith\.conda\envs\qed_main\lib\importlib\__init__.py:126: in import_module<br/>    return _bootstrap._gcd_import(name[level:], package, level)<br/><span class="error">E   ModuleNotFoundError: No module named &#x27;pram_flask.ubertool&#x27;</span><br/>------------------------------- Captured stdout --------------------------------<br/>Added to PYTHONPATH: C:\git\qed\flask_qed\pram_flask\ubertool\ubertool
+[&#x27;C:\\git&#x27;, &#x27;C:\\git\\qed&#x27;, &#x27;&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\python36.zip&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\DLLs&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\win32&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\win32\\lib&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\Pythonwin&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool&#x27;]
+</div></td></tr></tbody>
+      <tbody class="error results-table-row">
+        <tr>
+          <td class="col-result">Error</td>
+          <td class="col-name">flask_qed/pram_flask/ubertool/ubertool/beerex/tests/test_beerex_integration.py</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">ImportError while importing test module &#x27;C:\git\qed\flask_qed\pram_flask\ubertool\ubertool\beerex\tests\test_beerex_integration.py&#x27;.<br/>Hint: make sure your test modules/packages have valid Python names.<br/>Traceback:<br/>flask_qed\pram_flask\ubertool\ubertool\beerex\tests\test_beerex_integration.py:71: in &lt;module&gt;<br/>    beerex_calc.execute_model()<br/>flask_qed\pram_flask\ubertool\ubertool\beerex\beerex_exe.py:163: in execute_model<br/>    self.populate_inputs(self.pd_obj)<br/>flask_qed\pram_flask\ubertool\ubertool\base\uber_model.py:101: in populate_inputs<br/>    module = importlib.import_module(mod_name)<br/>C:\Users\dsmith\.conda\envs\qed_main\lib\importlib\__init__.py:126: in import_module<br/>    return _bootstrap._gcd_import(name[level:], package, level)<br/><span class="error">E   ModuleNotFoundError: No module named &#x27;pram_flask.ubertool&#x27;</span><br/>------------------------------- Captured stdout --------------------------------<br/>parent_dir
+C:\git\qed\flask_qed\pram_flask\ubertool\ubertool\beerex
+sys.path
+[&#x27;C:\\git&#x27;, &#x27;C:\\git\\qed&#x27;, &#x27;&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\python36.zip&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\DLLs&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\win32&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\win32\\lib&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\Pythonwin&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool\\beerex&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool&#x27;]
+execute_model start ============================
+populate inputs
+</div></td></tr></tbody>
+      <tbody class="error results-table-row">
+        <tr>
+          <td class="col-result">Error</td>
+          <td class="col-name">flask_qed/pram_flask/ubertool/ubertool/earthworm/tests/test_earthworm_integration.py</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">ImportError while importing test module &#x27;C:\git\qed\flask_qed\pram_flask\ubertool\ubertool\earthworm\tests\test_earthworm_integration.py&#x27;.<br/>Hint: make sure your test modules/packages have valid Python names.<br/>Traceback:<br/>flask_qed\pram_flask\ubertool\ubertool\earthworm\tests\test_earthworm_integration.py:73: in &lt;module&gt;<br/>    earthworm_calc.execute_model()<br/>flask_qed\pram_flask\ubertool\ubertool\earthworm\earthworm_exe.py:58: in execute_model<br/>    self.populate_inputs(self.pd_obj)<br/>flask_qed\pram_flask\ubertool\ubertool\base\uber_model.py:101: in populate_inputs<br/>    module = importlib.import_module(mod_name)<br/>C:\Users\dsmith\.conda\envs\qed_main\lib\importlib\__init__.py:126: in import_module<br/>    return _bootstrap._gcd_import(name[level:], package, level)<br/><span class="error">E   ModuleNotFoundError: No module named &#x27;pram_flask.ubertool&#x27;</span><br/>------------------------------- Captured stdout --------------------------------<br/>[&#x27;C:\\git&#x27;, &#x27;C:\\git\\qed&#x27;, &#x27;&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\python36.zip&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\DLLs&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\win32&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\win32\\lib&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\Pythonwin&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool\\beerex&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool\\beerex&#x27;]
+</div></td></tr></tbody>
+      <tbody class="error results-table-row">
+        <tr>
+          <td class="col-result">Error</td>
+          <td class="col-name">flask_qed/pram_flask/ubertool/ubertool/iec/tests/test_iec_integration.py</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">ImportError while importing test module &#x27;C:\git\qed\flask_qed\pram_flask\ubertool\ubertool\iec\tests\test_iec_integration.py&#x27;.<br/>Hint: make sure your test modules/packages have valid Python names.<br/>Traceback:<br/>flask_qed\pram_flask\ubertool\ubertool\iec\tests\test_iec_integration.py:75: in &lt;module&gt;<br/>    iec_calc.execute_model()<br/>flask_qed\pram_flask\ubertool\ubertool\iec\iec_exe.py:53: in execute_model<br/>    self.populate_inputs(self.pd_obj)<br/>flask_qed\pram_flask\ubertool\ubertool\base\uber_model.py:101: in populate_inputs<br/>    module = importlib.import_module(mod_name)<br/>C:\Users\dsmith\.conda\envs\qed_main\lib\importlib\__init__.py:126: in import_module<br/>    return _bootstrap._gcd_import(name[level:], package, level)<br/><span class="error">E   ModuleNotFoundError: No module named &#x27;pram_flask.ubertool&#x27;</span><br/>------------------------------- Captured stdout --------------------------------<br/>C:\git\qed\flask_qed\pram_flask\ubertool\ubertool\iec\tests\iec_qaqc_in_transpose.csv
+</div></td></tr></tbody>
+      <tbody class="error results-table-row">
+        <tr>
+          <td class="col-result">Error</td>
+          <td class="col-name">flask_qed/pram_flask/ubertool/ubertool/kabam/tests/test_kabam_integration.py</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">ImportError while importing test module &#x27;C:\git\qed\flask_qed\pram_flask\ubertool\ubertool\kabam\tests\test_kabam_integration.py&#x27;.<br/>Hint: make sure your test modules/packages have valid Python names.<br/>Traceback:<br/>flask_qed\pram_flask\ubertool\ubertool\kabam\tests\test_kabam_integration.py:72: in &lt;module&gt;<br/>    kabam_calc.execute_model()<br/>flask_qed\pram_flask\ubertool\ubertool\kabam\kabam_exe.py:428: in execute_model<br/>    self.populate_inputs(self.pd_obj)<br/>flask_qed\pram_flask\ubertool\ubertool\base\uber_model.py:101: in populate_inputs<br/>    module = importlib.import_module(mod_name)<br/>C:\Users\dsmith\.conda\envs\qed_main\lib\importlib\__init__.py:126: in import_module<br/>    return _bootstrap._gcd_import(name[level:], package, level)<br/><span class="error">E   ModuleNotFoundError: No module named &#x27;pram_flask.ubertool&#x27;</span><br/>------------------------------- Captured stdout --------------------------------<br/>sys.path
+[&#x27;C:\\git&#x27;, &#x27;C:\\git\\qed&#x27;, &#x27;&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\python36.zip&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\DLLs&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\win32&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\win32\\lib&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\Pythonwin&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool\\beerex&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool\\beerex&#x27;]
+</div></td></tr></tbody>
+      <tbody class="error results-table-row">
+        <tr>
+          <td class="col-result">Error</td>
+          <td class="col-name">flask_qed/pram_flask/ubertool/ubertool/rice/tests/test_rice_integration.py</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">ImportError while importing test module &#x27;C:\git\qed\flask_qed\pram_flask\ubertool\ubertool\rice\tests\test_rice_integration.py&#x27;.<br/>Hint: make sure your test modules/packages have valid Python names.<br/>Traceback:<br/>flask_qed\pram_flask\ubertool\ubertool\rice\tests\test_rice_integration.py:71: in &lt;module&gt;<br/>    rice_calc.execute_model()<br/>flask_qed\pram_flask\ubertool\ubertool\rice\rice_exe.py:56: in execute_model<br/>    self.populate_inputs(self.pd_obj)<br/>flask_qed\pram_flask\ubertool\ubertool\base\uber_model.py:101: in populate_inputs<br/>    module = importlib.import_module(mod_name)<br/>C:\Users\dsmith\.conda\envs\qed_main\lib\importlib\__init__.py:126: in import_module<br/>    return _bootstrap._gcd_import(name[level:], package, level)<br/><span class="error">E   ModuleNotFoundError: No module named &#x27;pram_flask.ubertool&#x27;</span><br/></div></td></tr></tbody>
+      <tbody class="error results-table-row">
+        <tr>
+          <td class="col-result">Error</td>
+          <td class="col-name">flask_qed/pram_flask/ubertool/ubertool/screenip/tests/test_screenip_integration.py</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">ImportError while importing test module &#x27;C:\git\qed\flask_qed\pram_flask\ubertool\ubertool\screenip\tests\test_screenip_integration.py&#x27;.<br/>Hint: make sure your test modules/packages have valid Python names.<br/>Traceback:<br/>flask_qed\pram_flask\ubertool\ubertool\screenip\tests\test_screenip_integration.py:65: in &lt;module&gt;<br/>    screenip_calc.execute_model()<br/>flask_qed\pram_flask\ubertool\ubertool\screenip\screenip_exe.py:86: in execute_model<br/>    self.populate_inputs(self.pd_obj)<br/>flask_qed\pram_flask\ubertool\ubertool\base\uber_model.py:101: in populate_inputs<br/>    module = importlib.import_module(mod_name)<br/>C:\Users\dsmith\.conda\envs\qed_main\lib\importlib\__init__.py:126: in import_module<br/>    return _bootstrap._gcd_import(name[level:], package, level)<br/><span class="error">E   ModuleNotFoundError: No module named &#x27;pram_flask.ubertool&#x27;</span><br/></div></td></tr></tbody>
+      <tbody class="error results-table-row">
+        <tr>
+          <td class="col-result">Error</td>
+          <td class="col-name">flask_qed/pram_flask/ubertool/ubertool/stir/tests/test_stir_integration.py</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">ImportError while importing test module &#x27;C:\git\qed\flask_qed\pram_flask\ubertool\ubertool\stir\tests\test_stir_integration.py&#x27;.<br/>Hint: make sure your test modules/packages have valid Python names.<br/>Traceback:<br/>flask_qed\pram_flask\ubertool\ubertool\stir\tests\test_stir_integration.py:74: in &lt;module&gt;<br/>    stir_calc.execute_model()<br/>flask_qed\pram_flask\ubertool\ubertool\stir\stir_exe.py:91: in execute_model<br/>    self.populate_inputs(self.pd_obj)<br/>flask_qed\pram_flask\ubertool\ubertool\base\uber_model.py:101: in populate_inputs<br/>    module = importlib.import_module(mod_name)<br/>C:\Users\dsmith\.conda\envs\qed_main\lib\importlib\__init__.py:126: in import_module<br/>    return _bootstrap._gcd_import(name[level:], package, level)<br/><span class="error">E   ModuleNotFoundError: No module named &#x27;pram_flask.ubertool&#x27;</span><br/></div></td></tr></tbody>
+      <tbody class="error results-table-row">
+        <tr>
+          <td class="col-result">Error</td>
+          <td class="col-name">flask_qed/pram_flask/ubertool/ubertool/ted/tests/test_ted_integration.py</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">ImportError while importing test module &#x27;C:\git\qed\flask_qed\pram_flask\ubertool\ubertool\ted\tests\test_ted_integration.py&#x27;.<br/>Hint: make sure your test modules/packages have valid Python names.<br/>Traceback:<br/>flask_qed\pram_flask\ubertool\ubertool\ted\tests\test_ted_integration.py:61: in &lt;module&gt;<br/>    ted_calc.execute_model()<br/>flask_qed\pram_flask\ubertool\ubertool\ted\ted_exe.py:357: in execute_model<br/>    self.populate_inputs(self.pd_obj)<br/>flask_qed\pram_flask\ubertool\ubertool\base\uber_model.py:101: in populate_inputs<br/>    module = importlib.import_module(mod_name)<br/>C:\Users\dsmith\.conda\envs\qed_main\lib\importlib\__init__.py:126: in import_module<br/>    return _bootstrap._gcd_import(name[level:], package, level)<br/><span class="error">E   ModuleNotFoundError: No module named &#x27;pram_flask.ubertool&#x27;</span><br/>------------------------------- Captured stdout --------------------------------<br/>sys.path
+[&#x27;C:\\git&#x27;, &#x27;C:\\git\\qed&#x27;, &#x27;&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\python36.zip&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\DLLs&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\win32&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\win32\\lib&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\Pythonwin&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool\\beerex&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool\\beerex&#x27;]
+</div></td></tr></tbody>
+      <tbody class="error results-table-row">
+        <tr>
+          <td class="col-result">Error</td>
+          <td class="col-name">flask_qed/pram_flask/ubertool/ubertool/terrplant/tests/test_terrplant_integration.py</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">ImportError while importing test module &#x27;C:\git\qed\flask_qed\pram_flask\ubertool\ubertool\terrplant\tests\test_terrplant_integration.py&#x27;.<br/>Hint: make sure your test modules/packages have valid Python names.<br/>Traceback:<br/>flask_qed\pram_flask\ubertool\ubertool\terrplant\tests\test_terrplant_integration.py:71: in &lt;module&gt;<br/>    terrplant_calc.execute_model()<br/>flask_qed\pram_flask\ubertool\ubertool\terrplant\terrplant_exe.py:96: in execute_model<br/>    self.populate_inputs(self.pd_obj)<br/>flask_qed\pram_flask\ubertool\ubertool\base\uber_model.py:101: in populate_inputs<br/>    module = importlib.import_module(mod_name)<br/>C:\Users\dsmith\.conda\envs\qed_main\lib\importlib\__init__.py:126: in import_module<br/>    return _bootstrap._gcd_import(name[level:], package, level)<br/><span class="error">E   ModuleNotFoundError: No module named &#x27;pram_flask.ubertool&#x27;</span><br/></div></td></tr></tbody>
+      <tbody class="error results-table-row">
+        <tr>
+          <td class="col-result">Error</td>
+          <td class="col-name">flask_qed/pram_flask/ubertool/ubertool/therps/tests/test_therps_integration.py</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">ImportError while importing test module &#x27;C:\git\qed\flask_qed\pram_flask\ubertool\ubertool\therps\tests\test_therps_integration.py&#x27;.<br/>Hint: make sure your test modules/packages have valid Python names.<br/>Traceback:<br/>flask_qed\pram_flask\ubertool\ubertool\therps\tests\test_therps_integration.py:74: in &lt;module&gt;<br/>    therps_calc.execute_model()<br/>flask_qed\pram_flask\ubertool\ubertool\therps\therps_exe.py:282: in execute_model<br/>    self.populate_inputs(self.pd_obj)<br/>flask_qed\pram_flask\ubertool\ubertool\base\uber_model.py:101: in populate_inputs<br/>    module = importlib.import_module(mod_name)<br/>C:\Users\dsmith\.conda\envs\qed_main\lib\importlib\__init__.py:126: in import_module<br/>    return _bootstrap._gcd_import(name[level:], package, level)<br/><span class="error">E   ModuleNotFoundError: No module named &#x27;pram_flask.ubertool&#x27;</span><br/>------------------------------- Captured stdout --------------------------------<br/>sys.path
+[&#x27;C:\\git&#x27;, &#x27;C:\\git\\qed&#x27;, &#x27;&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\python36.zip&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\DLLs&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\win32&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\win32\\lib&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\Pythonwin&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool\\beerex&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool\\beerex&#x27;]
+</div></td></tr></tbody>
+      <tbody class="error results-table-row">
+        <tr>
+          <td class="col-result">Error</td>
+          <td class="col-name">flask_qed/pram_flask/ubertool/ubertool/trex/tests/test_trex_integration.py</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">ImportError while importing test module &#x27;C:\git\qed\flask_qed\pram_flask\ubertool\ubertool\trex\tests\test_trex_integration.py&#x27;.<br/>Hint: make sure your test modules/packages have valid Python names.<br/>Traceback:<br/>flask_qed\pram_flask\ubertool\ubertool\trex\tests\test_trex_integration.py:74: in &lt;module&gt;<br/>    trex_calc.execute_model()<br/>flask_qed\pram_flask\ubertool\ubertool\trex\trex_exe.py:318: in execute_model<br/>    self.populate_inputs(self.pd_obj)<br/>flask_qed\pram_flask\ubertool\ubertool\base\uber_model.py:101: in populate_inputs<br/>    module = importlib.import_module(mod_name)<br/>C:\Users\dsmith\.conda\envs\qed_main\lib\importlib\__init__.py:126: in import_module<br/>    return _bootstrap._gcd_import(name[level:], package, level)<br/><span class="error">E   ModuleNotFoundError: No module named &#x27;pram_flask.ubertool&#x27;</span><br/>------------------------------- Captured stdout --------------------------------<br/>sys.path
+[&#x27;C:\\git&#x27;, &#x27;C:\\git\\qed&#x27;, &#x27;&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\python36.zip&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\DLLs&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\win32&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\win32\\lib&#x27;, &#x27;C:\\Users\\dsmith\\.conda\\envs\\qed_main\\lib\\site-packages\\Pythonwin&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool\\beerex&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool&#x27;, &#x27;C:\\git\\qed\\flask_qed\\pram_flask\\ubertool\\ubertool\\beerex&#x27;]
+</div></td></tr></tbody>
+      <tbody class="error results-table-row">
+        <tr>
+          <td class="col-result">Error</td>
+          <td class="col-name">hem_app/tests/test_forms.py</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">hem_app\tests\test_forms.py:2: in &lt;module&gt;<br/>    from hem_app.forms import HemForm<br/>hem_app\forms.py:3: in &lt;module&gt;<br/>    from hem_app.models import RunHistory, Chemical, Dose, RunParams, Product<br/>hem_app\models\__init__.py:1: in &lt;module&gt;<br/>    from .assignment import Assignment<br/>hem_app\models\assignment.py:4: in &lt;module&gt;<br/>    class Assignment(models.Model):<br/>C:\Users\dsmith\.conda\envs\qed_main\lib\site-packages\django\db\models\base.py:100: in __new__<br/>    app_config = apps.get_containing_app_config(module)<br/>C:\Users\dsmith\.conda\envs\qed_main\lib\site-packages\django\apps\registry.py:244: in get_containing_app_config<br/>    self.check_apps_ready()<br/>C:\Users\dsmith\.conda\envs\qed_main\lib\site-packages\django\apps\registry.py:127: in check_apps_ready<br/>    raise AppRegistryNotReady(&quot;Apps aren&#x27;t loaded yet.&quot;)<br/><span class="error">E   django.core.exceptions.AppRegistryNotReady: Apps aren&#x27;t loaded yet.</span><br/></div></td></tr></tbody>
+      <tbody class="error results-table-row">
+        <tr>
+          <td class="col-result">Error</td>
+          <td class="col-name">hem_app/tests/test_models.py</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">hem_app\tests\test_models.py:3: in &lt;module&gt;<br/>    from hem_app.models import Product, Category, Assignment, RunHistory, RunParams<br/>hem_app\models\__init__.py:1: in &lt;module&gt;<br/>    from .assignment import Assignment<br/>hem_app\models\assignment.py:4: in &lt;module&gt;<br/>    class Assignment(models.Model):<br/>C:\Users\dsmith\.conda\envs\qed_main\lib\site-packages\django\db\models\base.py:100: in __new__<br/>    app_config = apps.get_containing_app_config(module)<br/>C:\Users\dsmith\.conda\envs\qed_main\lib\site-packages\django\apps\registry.py:244: in get_containing_app_config<br/>    self.check_apps_ready()<br/>C:\Users\dsmith\.conda\envs\qed_main\lib\site-packages\django\apps\registry.py:127: in check_apps_ready<br/>    raise AppRegistryNotReady(&quot;Apps aren&#x27;t loaded yet.&quot;)<br/><span class="error">E   django.core.exceptions.AppRegistryNotReady: Apps aren&#x27;t loaded yet.</span><br/></div></td></tr></tbody></table></body></html>

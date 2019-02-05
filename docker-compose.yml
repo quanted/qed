@@ -170,7 +170,7 @@ services:
   dask_worker:
     build:
       context: .
-      dockerfile: Dask_Dockerfile      
+      dockerfile: Dask_Dockerfile
     #image: daskdev/dask
     hostname: dask-worker
     environment:
@@ -180,3 +180,18 @@ services:
     volumes:
        - "../qed:/src/qed"
 
+  # Apache Tomcat container
+  qed-tomcat:
+    build:
+      # context: ./qed_tomcat
+      context: .
+      dockerfile: Dockerfile_Tomcat
+    image: qed_tomcat:${VERSION:-latest}
+    expose:
+      - "8080"
+    environment:
+      - JAVA_OPTS=-Xmx512m
+    volumes:
+      - ./secrets/tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+      - ./secrets/tomcat/webapps:/usr/local/tomcat/webapps
+      - ./secrets/tomcat/chemaxon/licenses:/home/tomcat/.chemaxon/licenses

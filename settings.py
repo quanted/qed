@@ -111,19 +111,23 @@ INSTALLED_APPS = (
     'splash_app',  # splash django app
     # 'ubertool_app',  # ubertool django app
     # 'wqt_app',  # ubertool django app
-    'nta_app'
+    'nta_app',
+    'corsheaders'
 )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     #'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 MIDDLEWARE_CLASSES = [
     'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
@@ -175,6 +179,10 @@ DATABASES = {
         'PASSWORD': DB_PASS,
         'HOST': '172.20.100.15',
         'PORT': '5432',
+    },
+    'cyan_db': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(PROJECT_ROOT, 'cyan_app/cyan_web_app_db.sqlite3')
     }
 }
 
@@ -215,8 +223,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
+CYAN_ANGULAR_APP_DIR = "static_qed/cyan/webapp"
+
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static_qed'),
+    os.path.join(PROJECT_ROOT, CYAN_ANGULAR_APP_DIR)
 )
 
 STATICFILES_FINDERS = (
@@ -226,11 +237,11 @@ STATICFILES_FINDERS = (
 )
 
 STATIC_URL = '/static_qed/'
-
+# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static_qed')
 #print('BASE_DIR = %s' %BASE_DIR)
 print('PROJECT_ROOT = {0!s}'.format(PROJECT_ROOT))
 print('TEMPLATE_ROOT = {0!s}'.format(TEMPLATE_ROOT))
-#print('STATIC_ROOT = %s' %STATIC_ROOT)
+# print('STATIC_ROOT = %s' %STATIC_ROOT)
 
 # Path to Sphinx HTML Docs
 # http://django-docs.readthedocs.org/en/latest/

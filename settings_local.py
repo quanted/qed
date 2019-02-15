@@ -13,11 +13,31 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 from settings import *
 import os
+import socket
 
 print('settings_local.py')
 
 # Get machine IP address
 MACHINE_ID = "developer"
+
+
+# Get local machine IP
+def get_machine_ip():
+    try:
+        _MACHINE_ID = socket.gethostname()
+        _MACHINE_INFO = socket.gethostbyname_ex(_MACHINE_ID)
+        print("Development machine INFO: {}".format(_MACHINE_INFO))
+    except:
+        print("Unable to get machine IP")
+        return None
+    _MACHINE_IP = ""
+    for ip in _MACHINE_INFO[2]:
+        if '192' in ip:
+            _MACHINE_IP = ip
+    return _MACHINE_IP
+
+
+MACHINE_IP = get_machine_ip()
 
 # CTS- Boolean for if it's on Nick's local machine or not..
 NICK_LOCAL = False
@@ -50,8 +70,10 @@ except IOError as e:
 
     ALLOWED_HOSTS = [
         'localhost',
-        '127.0.0.1'
+        '127.0.0.1',
+        str(MACHINE_IP)
     ]
+    print("ALLOWED_HOSTS: {}".format(str(ALLOWED_HOSTS)))
 
 #IS_PUBLIC = True
 IS_PUBLIC = False

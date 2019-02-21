@@ -9,6 +9,11 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+from temp_config.set_environment import DeployEnv
+
+# Determine env vars to use:
+runtime_env = DeployEnv()
+runtime_env.load_deployment_environment()
 
 print('settings.py')
 

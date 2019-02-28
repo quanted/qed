@@ -23,6 +23,7 @@ RUN pip freeze | grep Django
 #RUN pip install distributed
 #RUN pip install bokeh==0.13
 #RUN pip install matplotlib
+RUN pip install django-cors-headers
 
 # Specific Docker-specific Django settings file (needed for collectstatic)
 ENV DJANGO_SETTINGS_MODULE="settings_docker"

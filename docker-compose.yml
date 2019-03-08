@@ -25,6 +25,7 @@ services:
     links:
       - redis
       - mongodb
+      - hms-dotnetcore
 
   # Redis (message broker)
   redis:
@@ -106,6 +107,7 @@ services:
       - redis
       - mongodb
       - qed_celery
+      - hms-dotnetcore
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
@@ -153,8 +155,8 @@ services:
     build:
       context: ./windows/hms
       dockerfile: Web.Services/Dockerfile
-    ports:
-     - "7778:80"
+    expose:
+     - "80"
     volumes:
       - "./windows/hms/Web.Services/App_Data:/app/App_Data"
 

@@ -25,7 +25,6 @@ services:
     links:
       - redis
       - mongodb
-      - hms-dotnetcore
 
   # Redis (message broker)
   redis:
@@ -107,7 +106,6 @@ services:
       - redis
       - mongodb
       - qed_celery
-      - hms-dotnetcore
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}

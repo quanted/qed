@@ -94,6 +94,7 @@ services:
       - qed_flask:uwsgi_flask
     volumes:
       - /var/www/nginx/certs:/etc/nginx/qed # this points to the keys directory
+      - /etc/letsencrypt:/etc/nginx/azure  # certs for azure (used certbot)
     volumes_from:
       - qed_django:ro  # Mount all volumes from "qed_django" to NGINX, so it can access the collected static files
 

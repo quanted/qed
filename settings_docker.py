@@ -30,14 +30,6 @@ os.environ.update({
     'PROJECT_PATH': PROJECT_ROOT,
     'SITE_SKIN': 'EPA',  # Leave empty ('') for default skin, 'EPA' for EPA skin
     'CONTACT_URL': 'https://www.epa.gov/research/forms/contact-us-about-epa-research',
-    # # # cts_api addition:
-    # 'CTS_EPI_SERVER': 'http://172.20.100.18',
-    # 'CTS_EFS_SERVER': 'http://172.20.100.12',
-    # 'CTS_JCHEM_SERVER': 'http://172.20.100.12',
-    # 'CTS_SPARC_SERVER': 'http://204.46.160.69:8080',
-    # 'CTS_TEST_SERVER': 'http://172.20.100.16:8080',
-    # 'CTS_REST_SERVER': 'http://172.20.100.11', #using qedinternal as proxy for rest server
-    # # 'CTS_VERSION': '1.8'  # Now set at settings.py
 })
 
 # SECURITY WARNING: don't run with debug turned on in production! (unless you are desperate)
@@ -132,11 +124,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware', #rollbar
     # 'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    # 'login_middleware.RequireLoginMiddleware',
 ]
-# if os.environ.get('IS_PUBLIC') == "True":
-#     MIDDLEWARE_CLASSES += ['login_middleware.RequireLoginMiddleware',]
 
 
 ROOT_URLCONF=__name__, #rollbar
@@ -187,12 +175,11 @@ WSGI_APPLICATION = 'wsgi_docker.application'
 # Authentication
 AUTH = False
 # Note: env vars in os.environ always strings..
-# if os.environ.get('IS_PUBLIC') == "True":
-if IS_PUBLIC:
+if os.environ.get('IS_PUBLIC') == "True":
     logging.warning("IS_PUBLIC set to true..")
     MIDDLEWARE += ['login_middleware.RequireLoginMiddleware',]
     AUTH = True
-    DEBUG = False
+    # DEBUG = False
 
 REQUIRE_LOGIN_PATH = '/login/'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True

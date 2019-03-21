@@ -88,6 +88,7 @@ TEMPLATES = [
 
 # Application definition
 INSTALLED_APPS = (
+    'corsheaders',
     #'cts_api',
     #'cts_testing',
     #'crispy_forms',
@@ -108,6 +109,7 @@ INSTALLED_APPS = (
     # 'hem_app',  # hem django app
     'hms_app',  # hms django app
     'hwbi_app',  # hwbi django app
+    'nta_app',
     'pisces_app',  # pisces django app
     'pram_app',  # pram django app
     #'pop_app',  # pop django app
@@ -116,8 +118,6 @@ INSTALLED_APPS = (
     'splash_app',  # splash django app
     # 'ubertool_app',  # ubertool django app
     # 'wqt_app',  # ubertool django app
-    'nta_app',
-    'corsheaders'
 )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'

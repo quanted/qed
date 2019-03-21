@@ -13,7 +13,7 @@ import os
 import socket
 from settings import *
 from django.conf import settings
-# import settings
+# import settingsdjango
 # from . import settings
 
 print('settings_docker.py')
@@ -71,6 +71,7 @@ except IOError as e:
 
 try:
     HOSTNAME = os.environ.get('DOCKER_HOSTNAME')
+    IS_PUBLIC = os.environ.get('IS_PUBLIC')
     # with open('secret_key_django_dropbox.txt') as f:
     #        SECRET_KEY = f.read().strip()
 except IOError as e:
@@ -85,21 +86,9 @@ except IOError as e:
 #    IP_ADDRESS = '0.0.0.0'
 
 
-
 ALLOWED_HOSTS = []
-if HOSTNAME == "ord-uber-vm003":
-    IS_PUBLIC = True
-else:
-    IS_PUBLIC = False
-if HOSTNAME == "ord-uber-vm001":
-    ALLOWED_HOSTS.append('qedinternal.epa.gov')
-    ALLOWED_HOSTS.append('134.67.114.1')
-    ALLOWED_HOSTS.append('172.20.100.11')
-elif HOSTNAME == "ord-uber-vm003":
-    ALLOWED_HOSTS.append('134.67.114.3')
-    ALLOWED_HOSTS.append('172.20.100.13')
-    ALLOWED_HOSTS.append('qed.epa.gov')
-elif HOSTNAME == "UberTool-Dev":
+
+if HOSTNAME == "UberTool-Dev":
     ALLOWED_HOSTS.append('172.16.0.4')
     ALLOWED_HOSTS.append('qed.epacdx.net')
 else:
@@ -113,6 +102,8 @@ else:
     ALLOWED_HOSTS.append('172.20.100.15')
     ALLOWED_HOSTS.append('qedinternal.epa.gov')
     ALLOWED_HOSTS.append('qed.epa.gov')
+    ALLOWED_HOSTS.append('qedinternalblue.edap-cluster.com')
+    ALLOWED_HOSTS.append('qedinternalgreen.edap-cluster.com')
 
 print("MACHINE_ID = {}".format(MACHINE_ID))
 print("HOSTNAME = {}".format(HOSTNAME))

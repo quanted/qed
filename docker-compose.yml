@@ -196,3 +196,12 @@ services:
       - ./secrets/tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
       - ./secrets/tomcat/webapps:/usr/local/tomcat/webapps
       - ./secrets/tomcat/chemaxon/licenses:/home/tomcat/.chemaxon/licenses
+
+  pisces-db:
+    build:
+      context: .
+      dockerfile: Dockerfile_Pisces
+    expose:
+      - "5432"
+    volumes:
+      - /var/www/pisces:/docker-entrypoint-initdb.d

@@ -1,3 +1,0 @@
-FROM mdillon/postgis
-
-ENTRYPOINT ["psql", "-U", "cgifadmin", "-f", "/var/www/pisces/pisces_backup.sql"]

@@ -198,9 +198,7 @@ services:
       - ./secrets/tomcat/chemaxon/licenses:/home/tomcat/.chemaxon/licenses
 
   pisces-db:
-    build:
-      context: .
-      dockerfile: Dockerfile_Pisces
+    image: mdillon/postgis
     expose:
       - "5432"
     volumes:

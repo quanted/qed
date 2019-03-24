@@ -179,10 +179,10 @@ DATABASES = {
     },
     'pisces_db': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pisces',
-        'USER': 'cgifadmin',
+        'NAME': str(os.environ.get('PISCES_DB_NAME')),
+        'USER': str(os.environ.get('PISCES_DB_USER')),
         'PASSWORD': DB_PASS,
-        'HOST': '172.20.100.15',
+        'HOST': str(os.environ.get('PISCES_DB_HOST')),
         'PORT': '5432',
     },
     'cyan_db': {

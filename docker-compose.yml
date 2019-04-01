@@ -154,6 +154,8 @@ services:
     build:
       context: ./windows/hms
       dockerfile: Web.Services/Dockerfile
+    environment:
+      - FLASK_SERVER=http:\\qed-nginx:7777
     expose:
      - "80"
     volumes:

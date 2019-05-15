@@ -22,7 +22,7 @@ if os.environ.get('IS_PUBLIC') == "True":
     urlpatterns = [
         path('', include('splash_app.urls')),
         path('cts/', include('cts_app.urls')),
-        path('cyan/', include('cyan_app.urls')),
+        # path('cyan/', include('cyan_app.urls')),
         path('login/', login_middleware.login),
         path('pisces/', include('pisces_app.urls')),
         path('pram/', include('pram_app.urls')),
@@ -33,7 +33,6 @@ if os.environ.get('IS_PUBLIC') == "True":
     ]
 else:
     urlpatterns = [
-
         path('', include('splash_app.urls')),
         path('cts/', include('cts_app.urls')),
         path('cyan/', include('cyan_app.urls')),

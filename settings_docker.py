@@ -175,6 +175,9 @@ if os.environ.get('IS_PUBLIC') == "True":
 REQUIRE_LOGIN_PATH = '/login/'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
+# Public apps on Azure:
+AZURE_APPS = ['cts', 'hms', 'pram']
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 

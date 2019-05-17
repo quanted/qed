@@ -26,7 +26,7 @@ class RequireLoginMiddleware:
 		self.login_url = re.compile(settings.REQUIRE_LOGIN_PATH)
 		self.username = "qeduser"
 		self.hashed_pass = None
-		self.apps_with_password = ["cts"]
+		self.apps_with_password = ["", "cts"]
 		try:
 			_hash_pass = open('secrets/secret_key_login.txt', 'r')  # read in hashed password from file
 			self.hashed_pass = _hash_pass.read().encode('utf-8')  # encode for bcrypt

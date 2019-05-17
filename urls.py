@@ -6,19 +6,12 @@ import login_middleware
 from django.contrib.auth.decorators import login_required
 import os
 
-#regular expressions
-# the r in r'^cts/index.html$' indicates that what is inside the quotes is a regular expression
-# the ^ in r'^cts/index.html$' indicates that we are looking to extend from the root dir from this part of the string
-# the $ in r'^cts/index.html$' indicates that we are looking to extend end the mathing part exactly here
-
 print('qed.urls')
 print("IS_PUBLIC: " + str(os.environ.get('IS_PUBLIC')))
 
-# appends to the list of url patterns to check against
-# if settings.IS_PUBLIC:
-# if _is_public:
 # Storing env vars in os.environ are strings only...
-if os.environ.get('IS_PUBLIC') == "True":
+if bool(os.environ.get('IS_PUBLIC')) and not bool(os.environ.get('UNDER_REVIEW')):
+    # publicly available (no password)
     urlpatterns = [
         path('', include('splash_app.urls')),
         path('cts/', include('cts_app.urls')),
@@ -31,7 +24,17 @@ if os.environ.get('IS_PUBLIC') == "True":
         # path('ubertool/', include('ubertool_app.urls')),
         # re_path(r'^(?s).*', landing.page_404)
     ]
+elif bool(os.environ.get('IS_PUBLIC')) and bool(os.environ.get('UNDER_REVIEW')):
+    # publicly available but under review (password protected)
+    urlpatterns = [
+        path('', include('splash_app.urls')),
+        path('cts/', include('cts_app.urls')),
+        path('login/', login_middleware.login),
+        path('pram/', include('pram_app.urls')),
+        path('hms/', include('hms_app.urls'))
+    ]
 else:
+    # not public, no password protection (dev, staging, etc.)
     urlpatterns = [
         path('', include('splash_app.urls')),
         path('cts/', include('cts_app.urls')),
@@ -42,9 +45,6 @@ else:
         path('pisces/', include('pisces_app.urls')),
         path('pram/', include('pram_app.urls')),
         path('nta/', include('nta_app.urls'))
-        # path('ubertool/', include('ubertool_app.urls')),
-        # re_path(r'^(?s).*', landing.file_not_found, )
-        # re_path(r'^(?s).*', landing.page_404)
     ]
 
 if settings.IS_PUBLIC:

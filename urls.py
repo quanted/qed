@@ -10,28 +10,19 @@ print('qed.urls')
 print("IS_PUBLIC: " + str(os.environ.get('IS_PUBLIC')))
 
 # Storing env vars in os.environ are strings only...
-if bool(os.environ.get('IS_PUBLIC')) and not bool(os.environ.get('UNDER_REVIEW')):
-    # publicly available (no password)
+# if bool(os.environ.get('IS_PUBLIC')) and not bool(os.environ.get('UNDER_REVIEW')):
+if bool(os.environ.get('IS_PUBLIC')):
     urlpatterns = [
         path('', include('splash_app.urls')),
         path('cts/', include('cts_app.urls')),
         # path('cyan/', include('cyan_app.urls')),
         path('login/', login_middleware.login),
-        path('pisces/', include('pisces_app.urls')),
+        # path('pisces/', include('pisces_app.urls')),
         path('pram/', include('pram_app.urls')),
-        path('nta/', include('nta_app.urls')),
+        # path('nta/', include('nta_app.urls')),
         path('hms/', include('hms_app.urls'))
         # path('ubertool/', include('ubertool_app.urls')),
         # re_path(r'^(?s).*', landing.page_404)
-    ]
-elif bool(os.environ.get('IS_PUBLIC')) and bool(os.environ.get('UNDER_REVIEW')):
-    # publicly available but under review (password protected)
-    urlpatterns = [
-        path('', include('splash_app.urls')),
-        path('cts/', include('cts_app.urls')),
-        path('login/', login_middleware.login),
-        path('pram/', include('pram_app.urls')),
-        path('hms/', include('hms_app.urls'))
     ]
 else:
     # not public, no password protection (dev, staging, etc.)

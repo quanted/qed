@@ -24,6 +24,8 @@ TEMPLATE_ROOT = os.path.join(PROJECT_ROOT, 'templates_qed/') #.replace('\\','/')
 #STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static_qed')
 #os.path.join(PROJECT_ROOT, 'templates_qed')
 
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760
+
 # cts_api addition:
 NODEJS_HOST = 'nginx'  # default nodejs hostname
 NODEJS_PORT = 80  # default nodejs port

@@ -95,7 +95,11 @@ else:
     ALLOWED_HOSTS.append('qedinternal.epa.gov')
     ALLOWED_HOSTS.append('qed.epa.gov')
     ALLOWED_HOSTS.append('qedinternalblue.edap-cluster.com')
-    ALLOWED_HOSTS.append('qedinternalgreen.edap-cluster.com')
+    ALLOWED_HOSTS.append('qedinternal.edap-cluster.com')
+    ALLOWED_HOSTS.append('qed.edap-cluster.com')
+    ALLOWED_HOSTS.append('qedblue.edap-cluster.com')
+
+
 
 print("MACHINE_ID = {}".format(MACHINE_ID))
 print("HOSTNAME = {}".format(HOSTNAME))

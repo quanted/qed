@@ -19,7 +19,7 @@ if bool(os.environ.get('IS_PUBLIC')):
         path('login/', login_middleware.login),
         # path('pisces/', include('pisces_app.urls')),
         path('pram/', include('pram_app.urls')),
-        # path('nta/', include('nta_app.urls')),
+        path('nta/', include('nta_app.urls')),
         path('hms/', include('hms_app.urls'))
         # path('ubertool/', include('ubertool_app.urls')),
         # re_path(r'^(?s).*', landing.page_404)

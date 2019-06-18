@@ -32,16 +32,7 @@ os.environ.update({
     'CONTACT_URL': 'https://www.epa.gov/research/forms/contact-us-about-epa-research',
 })
 
-# SECURITY WARNING: don't run with debug turned on in production! (unless you are desperate)
-# DEBUG = False
-if not os.environ.get('IS_PUBLIC'):
-    DEBUG = True
-else:
-    if os.environ.get('IS_PUBLIC') == "True":
-        DEBUG = False
-    else:
-        DEBUG = True
-print("DEBUG: " + str(DEBUG))
+
 TEMPLATE_DEBUG = False
 
 if not os.environ.get('UBERTOOL_REST_SERVER'):
@@ -63,7 +54,7 @@ except IOError as e:
 
 try:
     HOSTNAME = os.environ.get('DOCKER_HOSTNAME')
-    IS_PUBLIC = os.environ.get('IS_PUBLIC')
+    #IS_PUBLIC = (os.environ.get('IS_PUBLIC') == "True")
     # with open('secret_key_django_dropbox.txt') as f:
     #        SECRET_KEY = f.read().strip()
 except IOError as e:
@@ -170,8 +161,8 @@ WSGI_APPLICATION = 'wsgi_docker.application'
 # Authentication
 AUTH = False
 # Note: env vars in os.environ always strings..
-if os.environ.get('IS_PUBLIC') == "True":
-    logging.warning("IS_PUBLIC set to true..")
+if (os.environ.get('IS_PUBLIC') == "True") & (os.environ.get('AWS_COLOR') != "blue"):
+    logging.warning("Password protection enabled")
     MIDDLEWARE += ['login_middleware.RequireLoginMiddleware',]
     AUTH = True
     # DEBUG = False

@@ -16,39 +16,29 @@ if os.environ.get('IS_PUBLIC') == "True":
         path('', include('splash_app.urls')),
         path('cts/', include('cts_app.urls')),
         # path('cyan/', include('cyan_app.urls')),
+        path('hms/', include('hms_app.urls')),
+        # path('hwbi/', include('hwbi_app.urls')),
         path('login/', login_middleware.login),
-        # path('pisces/', include('pisces_app.urls')),
-        path('pram/', include('pram_app.urls')),
         path('nta/', include('nta_app.urls')),
-        path('hms/', include('hms_app.urls'))
-        # path('ubertool/', include('ubertool_app.urls')),
-        # re_path(r'^(?s).*', landing.page_404)
+        path('pisces/', include('pisces_app.urls')),
+        path('pram/', include('pram_app.urls')),
     ]
 else:
-    # not public, no password protection (dev, staging, etc.)
+    # not public (dev, staging, etc.)
     urlpatterns = [
         path('', include('splash_app.urls')),
         path('cts/', include('cts_app.urls')),
         path('cyan/', include('cyan_app.urls')),
         path('hms/', include('hms_app.urls')),
-        # path('hem/', include('hem_app.urls')),
         path('hwbi/', include('hwbi_app.urls')),
+        path('nta/', include('nta_app.urls')),
         path('pisces/', include('pisces_app.urls')),
         path('pram/', include('pram_app.urls')),
-        path('nta/', include('nta_app.urls'))
     ]
 
-if settings.IS_PUBLIC:
-    # 404 Error view (file not found)
-    handler404 = 'splash_app.views.landing.page_404'
-    # 500 Error view (server error)
-    handler500 = 'splash_app.views.landing.page_404'
-    # 403 Error view (forbidden)
-    handler403 = 'splash_app.views.landing.page_404'
-else: # the same for now
-    # 404 Error view (file not found)
-    handler404 = 'splash_app.views.landing.page_404'
-    # 500 Error view (server error)
-    handler500 = 'splash_app.views.landing.page_404'
-    # 403 Error view (forbidden)
-    handler403 = 'splash_app.views.landing.page_404'
+# 404 Error view (file not found)
+handler404 = 'splash_app.views.landing.page_404'
+# 500 Error view (server error)
+handler500 = 'splash_app.views.landing.page_404'
+# 403 Error view (forbidden)
+handler403 = 'splash_app.views.landing.page_404'

@@ -76,7 +76,7 @@ except IOError as e:
     print("ALLOWED_HOSTS: {}".format(str(ALLOWED_HOSTS)))
 
 #IS_PUBLIC = True
-IS_PUBLIC = False
+#IS_PUBLIC = False
 
 WSGI_APPLICATION = 'wsgi_local.application'
 

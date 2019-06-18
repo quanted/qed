@@ -31,16 +31,20 @@ NODEJS_HOST = 'nginx'  # default nodejs hostname
 NODEJS_PORT = 80  # default nodejs port
 # todo: look into ws w/ django 1.10
 
-if not os.environ.get('IS_PUBLIC'):
-    DEBUG = True
+# set debug based on env
+if (os.environ.get('IS_PUBLIC') == "True") & (os.environ.get('IS_AWS') == 'False'):
+    DEBUG = False
 else:
-    if os.environ.get('IS_PUBLIC') == "True":
-        DEBUG = False
-    else:
-        DEBUG = True
+    DEBUG = True
 print("DEBUG: " + str(DEBUG))
-IS_PUBLIC = False
-IS_DEVELOPMENT = True
+
+# set IS_PUBLIC based on env
+if os.environ.get('IS_PUBLIC') == "True":
+    IS_PUBLIC = True  # Default to False, check in settings_docker if it is True
+    IS_DEVELOPMENT = False
+else:
+    IS_PUBLIC = False  # Default to False, check in settings_docker if it is True
+    IS_DEVELOPMENT = True
 
 ADMINS = (
     ('Dave Lyons', 'lyons.david@epa.gov'),

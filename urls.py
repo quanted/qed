@@ -11,7 +11,7 @@ print("IS_PUBLIC: " + str(os.environ.get('IS_PUBLIC')))
 
 # Storing env vars in os.environ are strings only...
 # if bool(os.environ.get('IS_PUBLIC')) and not bool(os.environ.get('UNDER_REVIEW')):
-if bool(os.environ.get('IS_PUBLIC')):
+if os.environ.get('IS_PUBLIC') == "True":
     urlpatterns = [
         path('', include('splash_app.urls')),
         path('cts/', include('cts_app.urls')),

@@ -155,6 +155,7 @@ services:
       context: ./windows/hms
       dockerfile: Web.Services/Dockerfile
     environment:
+      - MONGODB=mongodb
       - FLASK_SERVER=http://qed-nginx:7777
     expose:
      - "80"

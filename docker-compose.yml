@@ -30,6 +30,9 @@ services:
   redis:
     image: redis:latest
     hostname: redis
+    command: redis-server /usr/local/etc/redis/redis.conf
+    volumes:
+      - ./redis.config:/usr/local/etc/redis/redis.conf
     expose:
       - "6379"
 

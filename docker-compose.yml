@@ -163,7 +163,8 @@ services:
     expose:
      - "80"
     volumes:
-      - "./windows/hms/Web.Services/App_Data:/app/App_Data"
+      #- "./windows/hms/Web.Services/App_Data:/app/App_Data"
+      - /var/www/app_data/hms:/app/App_Data
 
   # Dask Containers
   dask_scheduler:

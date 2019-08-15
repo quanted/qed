@@ -161,7 +161,7 @@ WSGI_APPLICATION = 'wsgi_docker.application'
 # Authentication
 AUTH = False
 # Note: env vars in os.environ always strings..
-if (os.environ.get('IS_PUBLIC') == "True") & (os.environ.get('AWS_COLOR') != "blue"):
+if os.environ.get('PASSWORD_REQUIRED') == "True":
     logging.warning("Password protection enabled")
     MIDDLEWARE += ['login_middleware.RequireLoginMiddleware',]
     AUTH = True

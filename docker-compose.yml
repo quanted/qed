@@ -198,7 +198,7 @@ services:
     expose:
       - "8080"
     environment:
-      - JAVA_OPTS=-Xmx512m
+      - JAVA_OPTS=-Xmx1g
     volumes:
       - ./secrets/tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
       - ./secrets/tomcat/webapps:/usr/local/tomcat/webapps

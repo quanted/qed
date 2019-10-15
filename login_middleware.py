@@ -162,10 +162,15 @@ class RequireLoginMiddleware:
 def login(request):
 	next_page = request.GET.get('next')
 
-	login_text = "Enter QED credentials to continue"
+	login_text = "<h3>Enter QED credentials to continue</h3>"
+	additional_text = ""  # e.g., directions for access
 
 	if hms_endpoint in next_page:
-		login_text = "Enter HMS credentials to access precipitation comparison workflow"
+		login_text = """
+		<h3>Enter HMS credentials to access precipitation comparison workflow.</h3>
+		<p>Visit the CEAM contacts page to request access credentials:
+		<a href="https://www.epa.gov/ceam/forms/contact-us-about-environmental-modeling-community-practice" target="_blank">link</a></p>
+		"""
 
 	html = render_to_string('01epa_drupal_header.html', {
 		'SITE_SKIN': os.environ['SITE_SKIN'],

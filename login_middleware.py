@@ -30,12 +30,11 @@ class RequireLoginMiddleware:
 	def __init__(self, get_response):
 		self.get_response = get_response
 		self.login_url = re.compile(settings.REQUIRE_LOGIN_PATH)
-		self.username = "qeduser"
+		self.qed_username = "qeduser"
 		self.hms_username = "hmsuser"
 		self.hashed_pass = None  # qed-wide login pass
 		self.hashed_pass_hms = None  # hms-specific pass for precip compare workflow
 		self.apps_with_password = ["hms", "pram", "cts/biotrans", "cts/stress", "hms/workflow/precip_compare"]
-		# self.hms_endpoint = "hms/workflow/precip_compare"
 		self.hashed_pass = self.get_hashed_password("secret_key_login.txt")
 		self.hashed_pass_hms = self.get_hashed_password("secret_key_hms.txt")
 
@@ -53,34 +52,58 @@ class RequireLoginMiddleware:
 			return _hash_pass.read().encode('utf-8')  # encode for bcrypt
 		except Exception as e:
 			logging.warning("Exception reading hashed password from file..")
-			return None		
+			return None
+
+	def check_authentication(self, request, access_type="qed"):
+		"""
+		Checks access based on username and requested url.
+		"""
+		current_user = request.user  # current user object
+
+		if access_type == "qed":
+			if not current_user.username == self.qed_username:
+				return False
+			if not current_user.is_authenticated:
+				return False
+			return True
+
+		elif access_type == "hms":
+			if not current_user.username == self.hms_username:
+				return False
+			if not current_user.is_authenticated:
+				return False
+			return True
+
+		return False
 
 	def process_view(self, request, view_func, view_args, view_kwargs):
 		assert hasattr(request, 'user')
 		path = request.path
 		redirect_path = request.POST.get('next', "")
 		user = request.POST.get('user')
+		has_access = False
 
-		if not self.needs_password(path + redirect_path):
+		if not self.needs_qed_password(path + redirect_path):
 			return
 
-		if not request.user.is_authenticated:
-			if not self.login_url.match(path):
-				return redirect('{}?next={}'.format(settings.REQUIRE_LOGIN_PATH, path))
-			if request.POST and self.login_url.match(path):
-				return self.login_auth(request)
+		# Check that user is autheniticated for the page its trying to access
+		if hms_endpoint in (path + redirect_path):
+			has_access = self.check_authentication(request, "hms")
+		else:
+			has_access = self.check_authentication(request, "qed")
 
-		if request.user.username == self.hms_username and request.user.is_authenticated:
+		if has_access:
 			return
 
-		if hms_endpoint in path or hms_endpoint in redirect_path:
-			# Makes sure hmsuser is authenticated (not just qeduser):
-			if not self.login_url.match(path):
-				return redirect('{}?next={}'.format(settings.REQUIRE_LOGIN_PATH, path))
-			if request.POST and self.login_url.match(path):
-				return self.login_auth(request)
+		if not self.login_url.match(path):
+			# Returns login page:
+			return redirect('{}?next={}'.format(settings.REQUIRE_LOGIN_PATH, path))
 
-	def needs_password(self, path):
+		if request.POST and self.login_url.match(path):
+			# Checks login attempt:
+			return self.login_auth(request)
+
+	def needs_qed_password(self, path):
 		"""
 		Checks requested path against apps that need a
 		password wall. Returns True if path has app name
@@ -93,7 +116,7 @@ class RequireLoginMiddleware:
 
 	def handle_site_wide_login(self, username, password, next_page):
 		# check if username is correct:
-		if username != self.username:
+		if username != self.qed_username:
 			logging.warning("username {} incorrect..".format(username))
 			return True
 		# check if password is correct:

@@ -16,6 +16,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 from settings import *
 import os
+import logging
 
 print('settings_outside.py')
 
@@ -68,6 +69,14 @@ WSGI_APPLICATION = 'wsgi_local.application'
 AUTH = False
 LOGIN_URL = '/login/'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# if os.environ.get('PASSWORD_REQUIRED') == "True":
+#     logging.warning("Password protection enabled")
+#     MIDDLEWARE += ['login_middleware.RequireLoginMiddleware','django.contrib.messages.middleware.MessageMiddleware',]
+#     AUTH = True
+#     DEBUG = False
+
+REQUIRE_LOGIN_PATH = '/login/'
 
 # Log to console in Debug mode
 if DEBUG:

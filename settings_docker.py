@@ -75,6 +75,7 @@ if HOSTNAME == "UberTool-Dev":
     ALLOWED_HOSTS.append('172.16.0.4')
     ALLOWED_HOSTS.append('qed.epacdx.net')
 else:
+    ALLOWED_HOSTS.append('localhost')
     ALLOWED_HOSTS.append('127.0.0.1')
     ALLOWED_HOSTS.append('192.168.99.100')  # Docker Machine IP (generally, when using VirtualBox VM)
     ALLOWED_HOSTS.append('134.67.114.3')  # CGI NAT address (mapped to 'qed.epa.gov')
@@ -163,7 +164,7 @@ AUTH = False
 # Note: env vars in os.environ always strings..
 if os.environ.get('PASSWORD_REQUIRED') == "True":
     logging.warning("Password protection enabled")
-    MIDDLEWARE += ['login_middleware.RequireLoginMiddleware',]
+    MIDDLEWARE += ['login_middleware.RequireLoginMiddleware','django.contrib.messages.middleware.MessageMiddleware',]
     AUTH = True
     # DEBUG = False
 

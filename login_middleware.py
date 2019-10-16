@@ -16,6 +16,7 @@ import bcrypt
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 hms_endpoint = "hms/workflow/precip_compare"
+hms_endpoints = ["hms/workflow/precip_compare", "hms/meteorology/precipitation"]
 
 
 
@@ -87,8 +88,10 @@ class RequireLoginMiddleware:
 			return
 
 		# Check that user is autheniticated for the page its trying to access
-		if hms_endpoint in (path + redirect_path):
-			has_access = self.check_authentication(request, "hms")
+		for hms_endpoint in hms_endpoints:
+			if hms_endpoint in (path + redirect_path):
+				has_access = self.check_authentication(request, "hms")
+				break
 		else:
 			has_access = self.check_authentication(request, "qed")
 
@@ -147,14 +150,16 @@ class RequireLoginMiddleware:
 			return redirect('/login?next={}'.format(next_page))
 
 		# Checks if username and password is correct:
-		if hms_endpoint in next_page:
-			# Adds hms-specific password to endpoint:
-			perform_redirect = self.handle_hms_endpoint_login(username, password, next_page)
+		for hms_endpoint in hms_endpoints:
+			if hms_endpoint in next_page:
+				# Adds hms-specific password to endpoint:
+				show_login = self.handle_hms_endpoint_login(username, password, next_page)
+				break
 		else:
 			# Assumes other endpoints are for qed-wide password
-			perform_redirect = self.handle_site_wide_login(username, password, next_page)
+			show_login = self.handle_site_wide_login(username, password, next_page)
 
-		if perform_redirect == True:
+		if show_login == True:
 			return redirect('/login?next={}'.format(next_page))
 
 		# Add user to django db if not already there:
@@ -188,12 +193,13 @@ def login(request):
 	login_text = "<h3>Enter QED credentials to continue</h3>"
 	additional_text = ""  # e.g., directions for access
 
-	if hms_endpoint in next_page:
-		login_text = """
-		<h3>Enter HMS credentials to access precipitation comparison workflow.</h3>
-		<p>Visit the CEAM contacts page to request access credentials:
-		<a href="https://www.epa.gov/ceam/forms/contact-us-about-environmental-modeling-community-practice" target="_blank">link</a></p>
-		"""
+	for hms_endpoint in hms_endpoints:
+		if hms_endpoint in next_page:
+			login_text = """
+			<h3>Click <a href="https://www.epa.gov/ceam/forms/contact-us-about-environmental-modeling-community-practice" target="_blank">here</a>
+			to request user ID and password.</h3>
+			"""
+			break
 
 	html = render_to_string('01epa_drupal_header.html', {
 		'SITE_SKIN': os.environ['SITE_SKIN'],

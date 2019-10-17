@@ -197,7 +197,7 @@ def login(request):
 		if hms_endpoint in next_page:
 			login_text = """
 			<h3>Click <a href="https://www.epa.gov/ceam/forms/contact-hms-helpdesk" target="_blank">here</a>
-			to request user ID and password.</h3>
+			to request user ID and password (request may take up to a day to process).</h3>
 			"""
 			break
 

@@ -196,7 +196,7 @@ def login(request):
 	for hms_endpoint in hms_endpoints:
 		if hms_endpoint in next_page:
 			login_text = """
-			<h3>Click <a href="https://www.epa.gov/ceam/forms/contact-us-about-environmental-modeling-community-practice" target="_blank">here</a>
+			<h3>Click <a href="https://www.epa.gov/ceam/forms/contact-hms-helpdesk" target="_blank">here</a>
 			to request user ID and password.</h3>
 			"""
 			break

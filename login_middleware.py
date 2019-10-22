@@ -12,13 +12,15 @@ import logging
 import bcrypt
 
 
-
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
-hms_endpoint = "hms/workflow/precip_compare"
-hms_endpoints = ["hms/workflow/precip_compare", "hms/meteorology/precipitation"]
-
-
+hms_protected = ["hydrology", "workflow", "meteorology"]
+hms_public = [
+	"workflow/precip_data_extraction/",
+	"workflow/precip_compare",
+	"meteorology/precipitation",
+	"hydrology/evapotranspiration/"
+]
 
 class RequireLoginMiddleware:
 	"""
@@ -32,16 +34,36 @@ class RequireLoginMiddleware:
 		self.get_response = get_response
 		self.login_url = re.compile(settings.REQUIRE_LOGIN_PATH)
 		self.qed_username = "qeduser"
+		self.hms_admin = "hmsadmin"
 		self.hms_username = "hmsuser"
-		self.hashed_pass = None  # qed-wide login pass
-		self.hashed_pass_hms = None  # hms-specific pass for precip compare workflow
-		self.apps_with_password = ["hms", "pram", "cts/biotrans", "cts/stress", "hms/workflow/precip_compare"]
-		self.hashed_pass = self.get_hashed_password("secret_key_login.txt")
-		self.hashed_pass_hms = self.get_hashed_password("secret_key_hms.txt")
+		self.hashed_pass = {}		# dictionary of user:passwords
+		self.apps_with_password = ["hms", "pram", "cts/biotrans", "cts/stress"]
+		self.hms_protected = ["hydrology", "workflow", "meteorology"]
+		self.hms_public = [
+			"workflow/precip_data_extraction/",
+			"workflow/precip_compare",
+			"meteorology/precipitation",
+			"hydrology/evapotranspiration/"
+		]
+		self.load_passwords()
 
 	def __call__(self, request):
 		response = self.get_response(request)
 		return response
+
+	def load_passwords(self):
+		"""
+		Loads passwords for each user from the secrets file.
+		:return:
+		"""
+		for a in self.apps_with_password:
+			if "hms" in a:
+				self.hashed_pass["hms_public"] = self.get_hashed_password("secret_key_hms.txt")
+				self.hashed_pass["hms_private"] = self.get_hashed_password("secret_key_hms_private.txt")
+			elif "pram" in a:
+				self.hashed_pass["qed"] = self.get_hashed_password("secret_key_login.txt")
+			elif "cts" in a:
+				self.hashed_pass["qed"] = self.get_hashed_password("secret_key_login.txt")
 
 	def get_hashed_password(self, filename):
 		"""
@@ -68,8 +90,15 @@ class RequireLoginMiddleware:
 				return False
 			return True
 
-		elif access_type == "hms":
+		elif access_type == "hms_public":
 			if not current_user.username == self.hms_username:
+				return False
+			if not current_user.is_authenticated:
+				return False
+			return True
+
+		elif access_type == "hms_private":
+			if not current_user.username == self.hms_admin:
 				return False
 			if not current_user.is_authenticated:
 				return False
@@ -88,12 +117,13 @@ class RequireLoginMiddleware:
 			return
 
 		# Check that user is autheniticated for the page its trying to access
-		for hms_endpoint in hms_endpoints:
-			if hms_endpoint in (path + redirect_path):
-				has_access = self.check_authentication(request, "hms")
-				break
-		else:
-			has_access = self.check_authentication(request, "qed")
+		if any(endpoint in (path + redirect_path) for endpoint in self.hms_public):
+			has_access = self.check_authentication(request, "hms_public")
+		if has_access is False:
+			if any(endpoint in (path + redirect_path) for endpoint in self.hms_protected):
+				has_access = self.check_authentication(request, "hms_private")
+			else:
+				has_access = self.check_authentication(request, "qed")
 
 		if has_access:
 			return
@@ -113,7 +143,10 @@ class RequireLoginMiddleware:
 		in it that needs password protected.
 		"""
 		for app in self.apps_with_password:
-			if app in path:
+			if app in path and "hms" in app:
+				if any(hms_app in path for hms_app in self.hms_protected):
+					return True
+			elif app in path:
 				return True
 		return False
 
@@ -123,18 +156,29 @@ class RequireLoginMiddleware:
 			logging.warning("username {} incorrect..".format(username))
 			return True
 		# check if password is correct:
-		if not bcrypt.checkpw(password.encode('utf-8'), self.hashed_pass):
+		if not bcrypt.checkpw(password.encode('utf-8'), self.hashed_pass["qed"]):
 			logging.warning("password incorrect for user: {}".format(username))
 			return True
 		return False
 
 	def handle_hms_endpoint_login(self, username, password, next_page):
 		# check if username is correct:
+		if username != self.hms_admin:
+			logging.warning("username {} incorrect..".format(username))
+			return True
+		# check if password is correct:
+		if not bcrypt.checkpw(password.encode('utf-8'), self.hashed_pass["hms_private"]):
+			logging.warning("password incorrect for user: {}".format(username))
+			return True
+		return False
+
+	def handle_public_hms_endpoint_login(self, username, password, next_page):
+		# check if username is correct:
 		if username != self.hms_username:
 			logging.warning("username {} incorrect..".format(username))
 			return True
 		# check if password is correct:
-		if not bcrypt.checkpw(password.encode('utf-8'), self.hashed_pass_hms):
+		if not bcrypt.checkpw(password.encode('utf-8'), self.hashed_pass["hms_public"]):
 			logging.warning("password incorrect for user: {}".format(username))
 			return True
 		return False
@@ -148,16 +192,17 @@ class RequireLoginMiddleware:
 		# redirect if hashed pw unable to be set, or user didn't enter password:
 		if not self.hashed_pass or not password:
 			return redirect('/login?next={}'.format(next_page))
-
+		show_login = False
 		# Checks if username and password is correct:
-		for hms_endpoint in hms_endpoints:
-			if hms_endpoint in next_page:
+		if any(endpoint in next_page for endpoint in self.hms_public):
+			show_login = self.handle_public_hms_endpoint_login(username, password, next_page)
+		if show_login is True:
+			if any(endpoint in next_page for endpoint in self.hms_protected):
 				# Adds hms-specific password to endpoint:
 				show_login = self.handle_hms_endpoint_login(username, password, next_page)
-				break
-		else:
-			# Assumes other endpoints are for qed-wide password
-			show_login = self.handle_site_wide_login(username, password, next_page)
+			else:
+				# Assumes other endpoints are for qed-wide password
+				show_login = self.handle_site_wide_login(username, password, next_page)
 
 		if show_login == True:
 			return redirect('/login?next={}'.format(next_page))
@@ -193,7 +238,7 @@ def login(request):
 	login_text = "<h3>Enter QED credentials to continue</h3>"
 	additional_text = ""  # e.g., directions for access
 
-	for hms_endpoint in hms_endpoints:
+	for hms_endpoint in hms_protected:
 		if hms_endpoint in next_page:
 			login_text = """
 			<h3>Click <a href="https://www.epa.gov/ceam/forms/contact-hms-helpdesk" target="_blank">here</a>

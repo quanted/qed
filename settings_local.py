@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 from settings import *
 import os
 import socket
+import logging
 
 print('settings_local.py')
 
@@ -80,10 +81,7 @@ except IOError as e:
 
 WSGI_APPLICATION = 'wsgi_local.application'
 
-# Authentication
-AUTH = False
-LOGIN_URL = '/ubertool/login'
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+DEBUG = True
 
 # Log to console in Debug mode
 if DEBUG:
@@ -92,3 +90,15 @@ if DEBUG:
         level = logging.DEBUG,
         format = '%(asctime)s %(levelname)s %(message)s',
     )
+
+# Authentication
+if os.environ.get('PASSWORD_REQUIRED') == "True":
+    logging.warning("Password protection enabled")
+    MIDDLEWARE += [
+        'login_middleware.RequireLoginMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+    ]
+    AUTH = True
+
+REQUIRE_LOGIN_PATH = '/login/'
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

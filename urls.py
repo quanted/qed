@@ -34,6 +34,7 @@ else:
         path('nta/', include('nta_app.urls')),
         path('pisces/', include('pisces_app.urls')),
         path('pram/', include('pram_app.urls')),
+        path('login/', login_middleware.login),
     ]
 
 # 404 Error view (file not found)

@@ -120,7 +120,7 @@ class RequireLoginMiddleware:
         # Check that user is autheniticated for the page its trying to access
         if any(endpoint in (path + redirect_path) for endpoint in self.hms_public):
             # Add check for rest API
-            if "v3" in path or "v2" in path:
+            if ("v3" in path or "v2" in path) or "rest/api/" not in path:
                 has_access = self.check_authentication(request, "hms_public")
             else:
                 has_access = True

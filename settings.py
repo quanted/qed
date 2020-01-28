@@ -62,6 +62,7 @@ TEMPLATES = [
             os.path.join(TEMPLATE_ROOT, 'api'),
             os.path.join(TEMPLATE_ROOT, 'cts'),
             os.path.join(TEMPLATE_ROOT, 'cyan'),
+            os.path.join(TEMPLATE_ROOT, 'epa-cyano-web'),
             os.path.join(TEMPLATE_ROOT, 'drupal_2014'),
             os.path.join(TEMPLATE_ROOT, 'drupal_2017'),
             os.path.join(TEMPLATE_ROOT, 'hem'),
@@ -235,10 +236,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 CYAN_ANGULAR_APP_DIR = "static_qed/cyan/webapp"
+CYANWEB_ANGULAR_APP_DIR = "static_qed/epa-cyano-web"
 
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static_qed'),
-    os.path.join(PROJECT_ROOT, CYAN_ANGULAR_APP_DIR)
+    os.path.join(PROJECT_ROOT, CYAN_ANGULAR_APP_DIR),
+    os.path.join(PROJECT_ROOT, CYANWEB_ANGULAR_APP_DIR)
 )
 
 STATICFILES_FINDERS = (

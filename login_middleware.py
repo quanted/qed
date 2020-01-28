@@ -37,7 +37,7 @@ class RequireLoginMiddleware:
 		self.hms_admin = "hmsadmin"
 		self.hms_username = "hmsuser"
 		self.hashed_pass = {}		# dictionary of user:passwords
-		self.apps_with_password = ["hms", "pram", "cts/biotrans", "cts/stress"]
+		self.apps_with_password = ["hms", "pram", "cts/biotrans", "cts/stress", "cyanweb"]
 		self.hms_protected = ["hydrology", "workflow", "meteorology"]
 		self.hms_public = [
 			"workflow/precip_data_extraction/",

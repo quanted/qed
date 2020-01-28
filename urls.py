@@ -2,12 +2,17 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.urls import path, re_path
 from splash_app.views import landing
+import importlib
 import login_middleware
 from django.contrib.auth.decorators import login_required
 import os
 
 print('qed.urls')
 print("IS_PUBLIC: " + str(os.environ.get('IS_PUBLIC')))
+
+# Workaround import of cyano urls due to dashes in repo name:
+cyano = importlib.import_module(".urls", "EPA-Cyano-Web.cyan_django")
+cyano_urls = getattr(cyano, 'urlpatterns')
 
 # Storing env vars in os.environ are strings only...
 # if bool(os.environ.get('IS_PUBLIC')) and not bool(os.environ.get('UNDER_REVIEW')):
@@ -22,6 +27,7 @@ if os.environ.get('IS_PUBLIC') == "True":
         path('nta/', include('nta_app.urls')),
         path('pisces/', include('pisces_app.urls')),
         path('pram/', include('pram_app.urls')),
+        path('cyanweb/', include(cyano_urls)),
     ]
 else:
     # not public (dev, staging, etc.)
@@ -35,6 +41,7 @@ else:
         path('pisces/', include('pisces_app.urls')),
         path('pram/', include('pram_app.urls')),
         path('login/', login_middleware.login),
+        path('cyanweb/', include(cyano_urls)),
     ]
 
 # 404 Error view (file not found)

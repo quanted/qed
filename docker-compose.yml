@@ -95,6 +95,7 @@ services:
       - qed_django:uwsgi_django  # Nginx.conf can reference "qed_django" service with the hostname 'uwsgi' or 'qed_django'
       - cts_nodejs:cts_nodejs
       - qed_flask:uwsgi_flask
+      - cyan-api:uwsgi_flask
     volumes:
       - /var/www/nginx/certs:/etc/nginx/qed # this points to the keys directory
       - /etc/letsencrypt:/etc/nginx/azure  # certs for azure (used certbot)

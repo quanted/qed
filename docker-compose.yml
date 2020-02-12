@@ -161,6 +161,7 @@ services:
     environment:
       - MONGODB=mongodb
       - FLASK_SERVER=http://qed_nginx:7777
+      - GOOGLE_API_KEY
     expose:
      - "80"
     volumes:

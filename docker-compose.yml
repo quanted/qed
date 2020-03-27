@@ -220,6 +220,7 @@ services:
     volumes:
       # NOTE: Optional volume for existing DB dump, defaults to blank dummy file if no dump
       - ${SQL_DUMP:-./EPA-Cyano-Web/cyan_mysql/no_dump.txt}:/tmp/dump.sql  # use optional dump file to build container DB
+      - /var/www/app_data/cyano:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-""}
     env_file:

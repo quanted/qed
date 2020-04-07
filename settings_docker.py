@@ -156,6 +156,8 @@ ROOT_URLCONF = 'urls'
 
 WSGI_APPLICATION = 'wsgi_docker.application'
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 

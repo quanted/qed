@@ -134,9 +134,15 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # 'django.contrib.auth.middleware.RemoteUserMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# AUTHENTICATION_BACKENDS = [
+#     'django.contrib.auth.backends.RemoteUserBackend',
+#     'django.contrib.auth.backends.ModelBackend'
+# ]
 
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -259,4 +265,3 @@ print('TEMPLATE_ROOT = {0!s}'.format(TEMPLATE_ROOT))
 
 DOCS_ROOT = os.path.join(PROJECT_ROOT, 'docs', '_build', 'html')
 DOCS_ACCESS = 'public'
-

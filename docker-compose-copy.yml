@@ -30,9 +30,6 @@ services:
   redis:
     image: redis:latest
     hostname: redis
-    command: redis-server /usr/local/etc/redis/redis.conf
-    volumes:
-      - ./redis.config:/usr/local/etc/redis/redis.conf
     expose:
       - "6379"
 
@@ -94,11 +91,9 @@ services:
     links:
       - qed_django:uwsgi_django  # Nginx.conf can reference "qed_django" service with the hostname 'uwsgi' or 'qed_django'
       - cts_nodejs:cts_nodejs
-      - qed_flask:qed_flask
-      - cyan-api:uwsgi_flask
+      - qed_flask:uwsgi_flask
     volumes:
       - /var/www/nginx/certs:/etc/nginx/qed # this points to the keys directory
-      - /etc/letsencrypt:/etc/nginx/azure  # certs for azure (used certbot)
     volumes_from:
       - qed_django:ro  # Mount all volumes from "qed_django" to NGINX, so it can access the collected static files
 
@@ -158,85 +153,24 @@ services:
     build:
       context: ./windows/hms
       dockerfile: Web.Services/Dockerfile
-    environment:
-      - MONGODB=mongodb
-      - FLASK_SERVER=http://qed_nginx:7777
-      - GOOGLE_API_KEY
-    expose:
-     - "80"
+    ports:
+     - "7778:80"
     volumes:
-      #- "./windows/hms/Web.Services/App_Data:/app/App_Data"
-      - /var/www/app_data/hms:/app/App_Data
+      - "./windows/hms/Web.Services/App_Data:/app/App_Data"
 
-  # Dask Containers
+  # Dask Containers  
   dask_scheduler:
     image: daskdev/dask
     hostname: dask-scheduler
-    expose:
-     - 8786
-     - 8787
+    ports:
+     - "8786:8786"
+     - "8787:8787"
     command: ["dask-scheduler"]
 
   dask_worker:
-    build:
-      context: .
-      dockerfile: Dask_Dockerfile
-    #image: daskdev/dask
+    image: daskdev/dask
     hostname: dask-worker
-    environment:
-      PYTHONPATH: '/src:/src/qed'
-      IN_DOCKER: "True"
-    #command: ["dask-worker", "dask_scheduler:8786"]
+    command: ["dask-worker", "dask_scheduler:8786"]
     volumes:
-       - "../qed:/src/qed"
+     - "../qed"
 
-  # Apache Tomcat container
-  qed-tomcat:
-    build:
-      # context: ./qed_tomcat
-      context: .
-      dockerfile: Dockerfile_Tomcat
-    image: qed_tomcat:${VERSION:-latest}
-    expose:
-      - "8080"
-    environment:
-      - JAVA_OPTS=-Xmx1g
-    volumes:
-      - ./secrets/tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
-      - ./secrets/tomcat/webapps:/usr/local/tomcat/webapps
-      - ./secrets/tomcat/chemaxon/licenses:/home/tomcat/.chemaxon/licenses
-
-  pisces-db:
-    image: mdillon/postgis
-    expose:
-      - "5432"
-    volumes:
-      - /var/www/pisces:/docker-entrypoint-initdb.d
-
-  cyan-db:
-    build:
-      context: ./EPA-Cyano-Web
-      dockerfile: Dockerfile_Database
-    volumes:
-      # NOTE: Optional volume for existing DB dump, defaults to blank dummy file if no dump
-      - ${SQL_DUMP:-./EPA-Cyano-Web/cyan_mysql/no_dump.txt}:/tmp/dump.sql  # use optional dump file to build container DB
-      - /var/www/app_data/cyano:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-""}
-    env_file:
-      - ${CYANO_ENV:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
-
-  cyan-api:
-    build:
-      context: ./EPA-Cyano-Web
-      dockerfile: Dockerfile_API
-    expose:
-      - "5001"
-    depends_on:
-      - cyan-db
-    environment:
-      - DOCKER_HOSTNAME=${HOSTNAME}
-    env_file:
-      - ${CYANO_ENV:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
-    links:
-      - cyan-db

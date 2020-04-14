@@ -1,0 +1,11 @@
+[
+  "qed_smoketests/tests/test_host_qed.py::TestQEDHost::test_internal_s1_200",
+  "qed_smoketests/tests/test_host_qed.py::TestQEDHost::test_interval_s5_200",
+  "qed_smoketests/tests/test_host_qed.py::TestQEDHost::test_pub_server_200",
+  "qed_smoketests/tests/test_page_links_qed.py::TestPageLinks::test_qed_bannerlinks",
+  "qed_smoketests/tests/test_page_links_qed.py::TestPageLinks::test_qed_headerrgtlinks",
+  "qed_smoketests/tests/test_page_links_qed.py::TestPageLinks::test_qed_leftlinks",
+  "qed_smoketests/tests/test_page_links_qed.py::TestPageLinks::test_qed_mainpagelinks",
+  "qed_smoketests/tests/test_page_links_qed.py::TestPageLinks::test_qed_rightlinks",
+  "qed_smoketests/tests/test_tab_links_qed.py::TestTabLinks::test_qed_mainpagelinks"
+]

@@ -1,0 +1,68 @@
+awscli==1.15.40
+bcrypt==3.1.4
+beautifulsoup4==4.6.0
+bokeh==0.12.16
+boto==2.48.0
+boto3==1.7.40
+#celery==4.2.0  # moved to static_requirements.txt at 4.1.1 (issues #4907 and #4908)
+codecov==2.0.15
+cov-core==1.15.0 #nose2 coverage, not in conda, pip install
+coverage==4.5.1
+coveralls==1.3.0
+dask
+django==2.0.6 
+django-crispy-forms==1.7.2
+django-parsley==0.7 #problematic for django 1.9+
+django-rest-swagger==2.2.0
+earthengine-api==0.1.141
+factory-boy==2.11.1
+fiona==1.7.12
+flake8==3.5.0
+flask==1.0.2
+flask-restful==0.3.6
+flask-swagger==0.2.13
+flower==0.9.2
+#geopandas==0.3.0
+#google-api-python-client==1.7.3
+html5lib==1.0.1
+Jinja2==2.10
+matplotlib
+mechanicalsoup
+#mechanize==0.3.6  # build error: "mechanize" only works on python 2.x"
+nose==1.3.7 #pycharm cant currently run nose2
+nose2==0.7.4
+nose-cov==1.6
+nose2-html-report==0.6.0
+nose-htmloutput==0.6.0
+numba==0.38.1
+numpy==1.14.5
+pandas==0.23.1
+pillow==5.1.0
+#psutil==5.4.6
+psycopg2==2.7.5
+pylint==1.9.2
+pymongo==3.6.1
+pypdf2==1.26.0
+#pyshp==1.2.12
+pytest==3.6.1
+pytest-django==3.3.0
+pytest-html==1.19.0
+python-coveralls==2.9.1 #not in conda, pip install
+python-dotenv==0.8.2
+pytz==2018.4
+redis==2.10.6 #pip not conda
+reportlab==3.4.0
+requests==2.19.1
+rollbar==0.14.0
+scipy==1.1.0
+#snakefood==1.4 #not in conda, pip install (failed when pip installing: SyntaxError)
+selenium==3.12.0
+#Shapely==1.6.4.post1
+Sphinx==1.7.5
+sqlalchemy==1.2.8
+# sqlalchemy-utils==0.32.14
+tabulate==0.8.2
+twine==1.11.0 #not in conda, pip install
+#uwsgi==2.0.17
+xhtml2pdf==0.2.2 #beta version has python 3 support, pip only atm
+xlsxwriter==1.0.5

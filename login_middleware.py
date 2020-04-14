@@ -1,5 +1,4 @@
 from django.conf import settings
-from django.contrib.auth.views import login as login_views
 from django.contrib.auth import login as django_login
 from django.http import HttpResponseRedirect
 from django.template.loader import render_to_string
@@ -13,6 +12,15 @@ import logging
 import bcrypt
 
 
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+
+hms_protected = ["hydrology", "workflow", "meteorology"]
+hms_public = [
+	"workflow/precip_data_extraction/",
+	"workflow/precip_compare",
+	"meteorology/precipitation",
+	"hydrology/evapotranspiration/"
+]
 
 class RequireLoginMiddleware:
 	"""
@@ -24,54 +32,156 @@ class RequireLoginMiddleware:
 	"""
 	def __init__(self, get_response):
 		self.get_response = get_response
-		# self.require_login_path = getattr(settings, 'REQUIRE_LOGIN_PATH', '/login')
 		self.login_url = re.compile(settings.REQUIRE_LOGIN_PATH)
-		self.username = "qeduser"
-		self.hashed_pass = None
-
-		# # good place to read in hashed password from file??
-		try:
-			_hash_pass = open('secrets/secret_key_login.txt', 'r')  # read in hashed password from file
-			self.hashed_pass = _hash_pass.read().encode('utf-8')  # encode for bcrypt
-		except Exception as e:
-			logging.warning("Exception reading hashed password from file..")
-			self.hashed_pass = None
-	
+		self.qed_username = "qeduser"
+		self.hms_admin = "hmsadmin"
+		self.hms_username = "hmsuser"
+		self.hashed_pass = {}		# dictionary of user:passwords
+		self.apps_with_password = ["hms", "pram", "cts/biotrans", "cts/stress", "cyanweb"]
+		self.hms_protected = ["hydrology", "workflow", "meteorology"]
+		self.hms_public = [
+			"workflow/precip_data_extraction/",
+			"workflow/precip_compare",
+			"meteorology/precipitation",
+			"hydrology/evapotranspiration/"
+		]
+		self.load_passwords()
 
 	def __call__(self, request):
-
 		response = self.get_response(request)
 		return response
 
+	def load_passwords(self):
+		"""
+		Loads passwords for each user from the secrets file.
+		:return:
+		"""
+		for a in self.apps_with_password:
+			if "hms" in a:
+				self.hashed_pass["hms_public"] = self.get_hashed_password("secret_key_hms.txt")
+				self.hashed_pass["hms_private"] = self.get_hashed_password("secret_key_hms_private.txt")
+			elif "pram" in a:
+				self.hashed_pass["qed"] = self.get_hashed_password("secret_key_login.txt")
+			elif "cts" in a:
+				self.hashed_pass["qed"] = self.get_hashed_password("secret_key_login.txt")
+
+	def get_hashed_password(self, filename):
+		"""
+		Reads file where hashed pass is stored (.gitignored).
+		filename - name of hased pass file, with extension (e.g., secret_key.txt).
+		"""
+		try:
+			_hash_pass = open(os.path.join(PROJECT_ROOT, 'secrets', filename), 'r')  # read in hashed password from file
+			return _hash_pass.read().encode('utf-8')  # encode for bcrypt
+		except Exception as e:
+			logging.warning("Exception reading hashed password from file..")
+			return None
+
+	def check_authentication(self, request, access_type="qed"):
+		"""
+		Checks access based on username and requested url.
+		"""
+		current_user = request.user  # current user object
+
+		if access_type == "qed":
+			if not current_user.username == self.qed_username:
+				return False
+			if not current_user.is_authenticated:
+				return False
+			return True
+
+		elif access_type == "hms_public":
+			if not current_user.username == self.hms_username:
+				return False
+			if not current_user.is_authenticated:
+				return False
+			return True
+
+		elif access_type == "hms_private":
+			if not current_user.username == self.hms_admin:
+				return False
+			if not current_user.is_authenticated:
+				return False
+			return True
+
+		return False
 
 	def process_view(self, request, view_func, view_args, view_kwargs):
-
 		assert hasattr(request, 'user')
-
 		path = request.path
+		redirect_path = request.POST.get('next', "")
+		user = request.POST.get('user')
+		has_access = False
 
-		if not request.user.is_authenticated:
-			
-			if not self.login_url.match(path):
-				return redirect('{}?next={}'.format(settings.REQUIRE_LOGIN_PATH, path))
+		if not self.needs_qed_password(path + redirect_path):
+			return
 
-			if request.POST and self.login_url.match(path):
-				return self.login_auth(request)
+		# Check that user is autheniticated for the page its trying to access
+		if any(endpoint in (path + redirect_path) for endpoint in self.hms_public):
+			has_access = self.check_authentication(request, "hms_public")
+		if has_access is False:
+			if any(endpoint in (path + redirect_path) for endpoint in self.hms_protected):
+				has_access = self.check_authentication(request, "hms_private")
+			else:
+				has_access = self.check_authentication(request, "qed")
 
+		if has_access:
+			return
 
-	# def process_request(self, request):
+		if not self.login_url.match(path):
+			# Returns login page:
+			return redirect('{}?next={}'.format(settings.REQUIRE_LOGIN_PATH, path))
 
-	# 	# _already_authenticated == ''
+		if request.POST and self.login_url.match(path):
+			# Checks login attempt:
+			return self.login_auth(request)
 
-	# 	if request.user.is_authenticated:
-	# 		return  # user already authenticated
+	def needs_qed_password(self, path):
+		"""
+		Checks requested path against apps that need a
+		password wall. Returns True if path has app name
+		in it that needs password protected.
+		"""
+		for app in self.apps_with_password:
+			if app in path and "hms" in app:
+				if any(hms_app in path for hms_app in self.hms_protected):
+					return True
+			elif app in path:
+				return True
+		return False
 
-	# 	if request.POST:
-	# 		return self.login_auth(request)
+	def handle_site_wide_login(self, username, password, next_page):
+		# check if username is correct:
+		if username != self.qed_username:
+			logging.warning("username {} incorrect..".format(username))
+			return True
+		# check if password is correct:
+		if not bcrypt.checkpw(password.encode('utf-8'), self.hashed_pass["qed"]):
+			logging.warning("password incorrect for user: {}".format(username))
+			return True
+		return False
 
-	# 	elif request.path != self.require_login_path and request.user.is_anonymous():
-	# 		return HttpResponseRedirect('{}?next={}'.format(self.require_login_path, request.path))
+	def handle_hms_endpoint_login(self, username, password, next_page):
+		# check if username is correct:
+		if username != self.hms_admin:
+			logging.warning("username {} incorrect..".format(username))
+			return True
+		# check if password is correct:
+		if not bcrypt.checkpw(password.encode('utf-8'), self.hashed_pass["hms_private"]):
+			logging.warning("password incorrect for user: {}".format(username))
+			return True
+		return False
 
+	def handle_public_hms_endpoint_login(self, username, password, next_page):
+		# check if username is correct:
+		if username != self.hms_username:
+			logging.warning("username {} incorrect..".format(username))
+			return True
+		# check if password is correct:
+		if not bcrypt.checkpw(password.encode('utf-8'), self.hashed_pass["hms_public"]):
+			logging.warning("password incorrect for user: {}".format(username))
+			return True
+		return False
 
 	def login_auth(self, request):
 
@@ -82,15 +192,19 @@ class RequireLoginMiddleware:
 		# redirect if hashed pw unable to be set, or user didn't enter password:
 		if not self.hashed_pass or not password:
 			return redirect('/login?next={}'.format(next_page))
+		show_login = False
+		# Checks if username and password is correct:
+		if any(endpoint in next_page for endpoint in self.hms_public):
+			show_login = self.handle_public_hms_endpoint_login(username, password, next_page)
+		if show_login is True:
+			if any(endpoint in next_page for endpoint in self.hms_protected):
+				# Adds hms-specific password to endpoint:
+				show_login = self.handle_hms_endpoint_login(username, password, next_page)
+			else:
+				# Assumes other endpoints are for qed-wide password
+				show_login = self.handle_site_wide_login(username, password, next_page)
 
-		# check if username is correct:
-		if username != self.username:
-			logging.warning("username {} incorrect..".format(username))
-			return redirect('/login?next={}'.format(next_page))
-
-		# check if password is correct:
-		if not bcrypt.checkpw(password.encode('utf-8'), self.hashed_pass):
-			logging.warning("password incorrect for user: {}".format(username))
+		if show_login == True:
 			return redirect('/login?next={}'.format(next_page))
 
 		# Add user to django db if not already there:
@@ -114,16 +228,23 @@ class RequireLoginMiddleware:
 
 
 
-
-
-
 #######################################################################################
 ################################ User Login Pages #####################################
 #######################################################################################
 
 def login(request):
-
 	next_page = request.GET.get('next')
+
+	login_text = "<h3>Enter QED credentials to continue</h3>"
+	additional_text = ""  # e.g., directions for access
+
+	for hms_endpoint in hms_protected:
+		if hms_endpoint in next_page:
+			login_text = """
+			<h3>Click <a href="https://www.epa.gov/ceam/forms/contact-hms-helpdesk" target="_blank">here</a>
+			to request user ID and password (request may take up to a day to process).</h3>
+			"""
+			break
 
 	html = render_to_string('01epa_drupal_header.html', {
 		'SITE_SKIN': os.environ['SITE_SKIN'],
@@ -131,22 +252,14 @@ def login(request):
 	})
 	html += render_to_string('02epa_drupal_header_bluestripe_onesidebar.html', {})
 	html += render_to_string('03epa_drupal_section_title_splash.html', {})
-
 	html += render_to_string('06ubertext_start_index_drupal.html', {
 		'TITLE': 'User Login',
 		'TEXT_PARAGRAPH': ""
 	})
 	html += render_to_string('07ubertext_end_drupal.html', {})
-	# html += links_left.ordered_list()  # fills out 05ubertext_links_left_drupal.html
-
-	html += render_to_string('login_prompt.html', {'next': next_page}, request=request)
-
-	# scripts and footer
+	html += render_to_string('login_prompt.html', {'next': next_page, 'text': login_text}, request=request)
 	html += render_to_string('09epa_drupal_ubertool_css.html', {})
-	# html += render_to_string('09epa_drupal_ubertool_scripts.html', {})
 	html += render_to_string('10epa_drupal_footer.html', {})
-
 	response = HttpResponse()
 	response.write(html)
-
 	return response

@@ -9,6 +9,11 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+from temp_config.set_environment import DeployEnv
+
+# Determine env vars to use:
+runtime_env = DeployEnv()
+runtime_env.load_deployment_environment()
 
 print('settings.py')
 
@@ -19,21 +24,27 @@ TEMPLATE_ROOT = os.path.join(PROJECT_ROOT, 'templates_qed/') #.replace('\\','/')
 #STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static_qed')
 #os.path.join(PROJECT_ROOT, 'templates_qed')
 
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760
+
 # cts_api addition:
 NODEJS_HOST = 'nginx'  # default nodejs hostname
 NODEJS_PORT = 80  # default nodejs port
 # todo: look into ws w/ django 1.10
 
-if not os.environ.get('IS_PUBLIC'):
-    DEBUG = True
+# set debug based on env
+if (os.environ.get('IS_PUBLIC') == "True") & (os.environ.get('IS_AWS') == 'False'):
+    DEBUG = False
 else:
-    if os.environ.get('IS_PUBLIC') == "True":
-        DEBUG = False
-    else:
-        DEBUG = True
+    DEBUG = True
 print("DEBUG: " + str(DEBUG))
-IS_PUBLIC = False
-IS_DEVELOPMENT = True
+
+# set IS_PUBLIC based on env
+if os.environ.get('IS_PUBLIC') == "True":
+    IS_PUBLIC = True  # Default to False, check in settings_docker if it is True
+    IS_DEVELOPMENT = False
+else:
+    IS_PUBLIC = False  # Default to False, check in settings_docker if it is True
+    IS_DEVELOPMENT = True
 
 ADMINS = (
     ('Dave Lyons', 'lyons.david@epa.gov'),
@@ -51,6 +62,7 @@ TEMPLATES = [
             os.path.join(TEMPLATE_ROOT, 'api'),
             os.path.join(TEMPLATE_ROOT, 'cts'),
             os.path.join(TEMPLATE_ROOT, 'cyan'),
+            os.path.join(TEMPLATE_ROOT, 'epa-cyano-web'),
             os.path.join(TEMPLATE_ROOT, 'drupal_2014'),
             os.path.join(TEMPLATE_ROOT, 'drupal_2017'),
             os.path.join(TEMPLATE_ROOT, 'hem'),
@@ -83,6 +95,7 @@ TEMPLATES = [
 
 # Application definition
 INSTALLED_APPS = (
+    'corsheaders',
     #'cts_api',
     #'cts_testing',
     #'crispy_forms',
@@ -103,6 +116,7 @@ INSTALLED_APPS = (
     # 'hem_app',  # hem django app
     'hms_app',  # hms django app
     'hwbi_app',  # hwbi django app
+    'nta_app',
     'pisces_app',  # pisces django app
     'pram_app',  # pram django app
     #'pop_app',  # pop django app
@@ -111,19 +125,21 @@ INSTALLED_APPS = (
     'splash_app',  # splash django app
     # 'ubertool_app',  # ubertool django app
     # 'wqt_app',  # ubertool django app
-    'nta_app'
 )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    #'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 MIDDLEWARE_CLASSES = [
     'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
@@ -170,11 +186,15 @@ DATABASES = {
     },
     'pisces_db': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pisces',
-        'USER': 'cgifadmin',
+        'NAME': str(os.environ.get('PISCES_DB_NAME')),
+        'USER': str(os.environ.get('PISCES_DB_USER')),
         'PASSWORD': DB_PASS,
-        'HOST': '172.20.100.15',
+        'HOST': str(os.environ.get('PISCES_DB_HOST')),
         'PORT': '5432',
+    },
+    'cyan_db': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(PROJECT_ROOT, 'cyan_app/cyan_web_app_db.sqlite3')
     }
 }
 
@@ -215,8 +235,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
+CYAN_ANGULAR_APP_DIR = "static_qed/cyan/webapp"
+CYANWEB_ANGULAR_APP_DIR = "static_qed/epa-cyano-web"
+
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static_qed'),
+    os.path.join(PROJECT_ROOT, CYAN_ANGULAR_APP_DIR),
+    os.path.join(PROJECT_ROOT, CYANWEB_ANGULAR_APP_DIR)
 )
 
 STATICFILES_FINDERS = (
@@ -226,11 +251,11 @@ STATICFILES_FINDERS = (
 )
 
 STATIC_URL = '/static_qed/'
-
+# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static_qed')
 #print('BASE_DIR = %s' %BASE_DIR)
 print('PROJECT_ROOT = {0!s}'.format(PROJECT_ROOT))
 print('TEMPLATE_ROOT = {0!s}'.format(TEMPLATE_ROOT))
-#print('STATIC_ROOT = %s' %STATIC_ROOT)
+# print('STATIC_ROOT = %s' %STATIC_ROOT)
 
 # Path to Sphinx HTML Docs
 # http://django-docs.readthedocs.org/en/latest/

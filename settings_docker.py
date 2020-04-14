@@ -13,7 +13,7 @@ import os
 import socket
 from settings import *
 from django.conf import settings
-# import settings
+# import settingsdjango
 # from . import settings
 
 print('settings_docker.py')
@@ -30,26 +30,9 @@ os.environ.update({
     'PROJECT_PATH': PROJECT_ROOT,
     'SITE_SKIN': 'EPA',  # Leave empty ('') for default skin, 'EPA' for EPA skin
     'CONTACT_URL': 'https://www.epa.gov/research/forms/contact-us-about-epa-research',
-    # # # cts_api addition:
-    # 'CTS_EPI_SERVER': 'http://172.20.100.18',
-    # 'CTS_EFS_SERVER': 'http://172.20.100.12',
-    # 'CTS_JCHEM_SERVER': 'http://172.20.100.12',
-    # 'CTS_SPARC_SERVER': 'http://204.46.160.69:8080',
-    # 'CTS_TEST_SERVER': 'http://172.20.100.16:8080',
-    # 'CTS_REST_SERVER': 'http://172.20.100.11', #using qedinternal as proxy for rest server
-    # # 'CTS_VERSION': '1.8'  # Now set at settings.py
 })
 
-# SECURITY WARNING: don't run with debug turned on in production! (unless you are desperate)
-# DEBUG = False
-if not os.environ.get('IS_PUBLIC'):
-    DEBUG = True
-else:
-    if os.environ.get('IS_PUBLIC') == "True":
-        DEBUG = False
-    else:
-        DEBUG = True
-print("DEBUG: " + str(DEBUG))
+
 TEMPLATE_DEBUG = False
 
 if not os.environ.get('UBERTOOL_REST_SERVER'):
@@ -71,6 +54,7 @@ except IOError as e:
 
 try:
     HOSTNAME = os.environ.get('DOCKER_HOSTNAME')
+    #IS_PUBLIC = (os.environ.get('IS_PUBLIC') == "True")
     # with open('secret_key_django_dropbox.txt') as f:
     #        SECRET_KEY = f.read().strip()
 except IOError as e:
@@ -85,21 +69,14 @@ except IOError as e:
 #    IP_ADDRESS = '0.0.0.0'
 
 
-
 ALLOWED_HOSTS = []
-if HOSTNAME == "ord-uber-vm003":
-    IS_PUBLIC = True
+
+if HOSTNAME == "UberTool-Dev":
+    ALLOWED_HOSTS.append('172.16.0.4')
+    ALLOWED_HOSTS.append('qed.epacdx.net')
 else:
-    IS_PUBLIC = False
-if HOSTNAME == "ord-uber-vm001":
-    ALLOWED_HOSTS.append('qedinternal.epa.gov')
-    ALLOWED_HOSTS.append('134.67.114.1')
-    ALLOWED_HOSTS.append('172.20.100.11')
-elif HOSTNAME == "ord-uber-vm003":
-    ALLOWED_HOSTS.append('134.67.114.3')
-    ALLOWED_HOSTS.append('172.20.100.13')
-    ALLOWED_HOSTS.append('qed.epa.gov')
-else:
+    ALLOWED_HOSTS.append('localhost')
+    ALLOWED_HOSTS.append('127.0.0.1')
     ALLOWED_HOSTS.append('192.168.99.100')  # Docker Machine IP (generally, when using VirtualBox VM)
     ALLOWED_HOSTS.append('134.67.114.3')  # CGI NAT address (mapped to 'qed.epa.gov')
     ALLOWED_HOSTS.append('134.67.114.1')
@@ -109,6 +86,14 @@ else:
     ALLOWED_HOSTS.append('172.20.100.15')
     ALLOWED_HOSTS.append('qedinternal.epa.gov')
     ALLOWED_HOSTS.append('qed.epa.gov')
+    ALLOWED_HOSTS.append('qedinternalblue.edap-cluster.com')
+    ALLOWED_HOSTS.append('qedinternal.edap-cluster.com')
+    ALLOWED_HOSTS.append('qed.edap-cluster.com')
+    ALLOWED_HOSTS.append('qedblue.edap-cluster.com')
+    ALLOWED_HOSTS.append('174.129.104.40')
+    ALLOWED_HOSTS.append('3.80.239.49')
+
+
 
 print("MACHINE_ID = {}".format(MACHINE_ID))
 print("HOSTNAME = {}".format(HOSTNAME))
@@ -128,11 +113,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware', #rollbar
     # 'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    # 'login_middleware.RequireLoginMiddleware',
 ]
-# if os.environ.get('IS_PUBLIC') == "True":
-#     MIDDLEWARE_CLASSES += ['login_middleware.RequireLoginMiddleware',]
 
 
 ROOT_URLCONF=__name__, #rollbar
@@ -183,15 +164,17 @@ WSGI_APPLICATION = 'wsgi_docker.application'
 # Authentication
 AUTH = False
 # Note: env vars in os.environ always strings..
-# if os.environ.get('IS_PUBLIC') == "True":
-if IS_PUBLIC:
-    logging.warning("IS_PUBLIC set to true..")
-    MIDDLEWARE += ['login_middleware.RequireLoginMiddleware',]
+if os.environ.get('PASSWORD_REQUIRED') == "True":
+    logging.warning("Password protection enabled")
+    MIDDLEWARE += ['login_middleware.RequireLoginMiddleware','django.contrib.messages.middleware.MessageMiddleware',]
     AUTH = True
-    DEBUG = False
+    # DEBUG = False
 
 REQUIRE_LOGIN_PATH = '/login/'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# Public apps:
+PUBLIC_APPS = ['cts', 'hms', 'pram']
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/

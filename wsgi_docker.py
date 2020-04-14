@@ -8,12 +8,7 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 """
 import os
 from django.core.wsgi import get_wsgi_application
-from temp_config.set_environment import DeployEnv
 # from qed_cts.temp_config.set_environment import DeployEnv
-
-# Determine env vars to use:
-runtime_env = DeployEnv()
-runtime_env.load_deployment_environment()
 
 if os.environ.get('DJANGO_SETTINGS_FILE'):
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", os.environ.get('DJANGO_SETTINGS_FILE'))

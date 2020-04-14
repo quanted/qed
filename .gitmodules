@@ -71,3 +71,6 @@
 [submodule "nta_app"]
 	path = nta_app
 	url = https://github.com/quanted/nta_app.git
+[submodule "EPA-Cyano-Web"]
+	path = EPA-Cyano-Web
+	url = https://github.com/USEPA/EPA-Cyano-Web

@@ -112,6 +112,7 @@ class RequireLoginMiddleware:
 		redirect_path = request.POST.get('next', "")
 		user = request.POST.get('user')
 		has_access = False
+		token = request.GET.get('token')  # potential 'token' query for cyano-web password reset
 
 		if not self.needs_qed_password(path + redirect_path):
 			return
@@ -130,6 +131,8 @@ class RequireLoginMiddleware:
 
 		if not self.login_url.match(path):
 			# Returns login page:
+			if token:
+				return redirect('{}?next={}?token={}'.format(settings.REQUIRE_LOGIN_PATH, path, token))
 			return redirect('{}?next={}'.format(settings.REQUIRE_LOGIN_PATH, path))
 
 		if request.POST and self.login_url.match(path):

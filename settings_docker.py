@@ -92,6 +92,8 @@ else:
     ALLOWED_HOSTS.append('qedblue.edap-cluster.com')
     ALLOWED_HOSTS.append('ceamdev.ddns.net')
     ALLOWED_HOSTS.append('ceamstg.ddns.net')
+    ALLOWED_HOSTS.append('ceamdev.ceeopdev.net')
+    ALLOWED_HOSTS.append('ceamstg.ceeopdev.net')
 
 
 

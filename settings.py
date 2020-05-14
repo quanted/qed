@@ -235,12 +235,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-CYAN_ANGULAR_APP_DIR = "static_qed/cyan/webapp"
+# CYAN_ANGULAR_APP_DIR = "static_qed/cyan/webapp"
 CYANWEB_ANGULAR_APP_DIR = "static_qed/epa-cyano-web"
 
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static_qed'),
-    os.path.join(PROJECT_ROOT, CYAN_ANGULAR_APP_DIR),
+    # os.path.join(PROJECT_ROOT, CYAN_ANGULAR_APP_DIR),
     os.path.join(PROJECT_ROOT, CYANWEB_ANGULAR_APP_DIR)
 )
 

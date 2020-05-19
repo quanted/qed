@@ -45,6 +45,7 @@ class RequireLoginMiddleware:
 			"meteorology/precipitation",
 			"hydrology/evapotranspiration/"
 		]
+		self.set_password_via_config()
 		self.load_passwords()
 
 	def __call__(self, request):
@@ -64,6 +65,17 @@ class RequireLoginMiddleware:
 				self.hashed_pass["qed"] = self.get_hashed_password("secret_key_login.txt")
 			elif "cts" in a:
 				self.hashed_pass["qed"] = self.get_hashed_password("secret_key_login.txt")
+
+	def set_password_via_config(self):
+		"""
+		Modifies apps_with_password list based on deployment environment.
+		Used for fine-tuning passwords on apps on a server-by-server basis.
+		"""
+		env_name = os.environ.get('ENV_NAME')
+		if not env_name:
+			return
+		if env_name == 'gdit_aws_dev':
+			self.apps_with_password.append("cts")  # adds password for all of cts on gdit aws dev server
 
 	def get_hashed_password(self, filename):
 		"""

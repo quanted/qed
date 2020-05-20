@@ -98,7 +98,7 @@ services:
       - cyan-api:uwsgi_flask
     volumes:
       - /var/www/nginx/certs:/etc/nginx/qed # this points to the keys directory
-      - /etc/letsencrypt:/etc/nginx/azure  # certs for azure (used certbot)
+      - /etc/letsencrypt:/etc/letsencrypt  # certs from letsencrypt (uses certbot)
     volumes_from:
       - qed_django:ro  # Mount all volumes from "qed_django" to NGINX, so it can access the collected static files
 
@@ -234,8 +234,11 @@ services:
       - "5001"
     depends_on:
       - cyan-db
+    volumes:
+      - ./EPA-Cyano-Web/config:/config
     environment:
       - DOCKER_HOSTNAME=${HOSTNAME}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-""}
     env_file:
       - ${CYANO_ENV:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
     links:

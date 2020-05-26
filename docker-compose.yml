@@ -223,8 +223,6 @@ services:
       - /var/www/app_data/cyano:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-""}
-    env_file:
-      - ${CYANO_ENV:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
 
   cyan-api:
     build:
@@ -239,7 +237,5 @@ services:
     environment:
       - DOCKER_HOSTNAME=${HOSTNAME}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-""}
-    env_file:
-      - ${CYANO_ENV:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
     links:
       - cyan-db

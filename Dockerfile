@@ -2,11 +2,13 @@
 # updated with all needed qed python dependencies
 # Use 'version' ARG for grabbing correct qed_py3 base image.
 # Defaults to 'latest' if not set.
-ARG version=dev
+ARG version=gdal_update
 FROM quanted/qed_py3:$version
 
 # Install Python Dependencies
-COPY . /src/
+# COPY . /src/
+RUN mkdir /src
+COPY docker_start.sh /src/docker_start.sh
 
 # Overwrite the uWSGI config
 COPY uwsgi.ini /etc/uwsgi/
@@ -31,5 +33,4 @@ ENV DJANGO_SETTINGS_MODULE="settings_docker"
 # Add project root to PYTHONPATH (needed to import custom Django settings)
 ENV PYTHONPATH="/src"
 
-# ENTRYPOINT ["sh /src/docker_start.sh"]
 CMD ["sh", "/src/docker_start.sh"]

@@ -8,8 +8,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        version: ${VERSION:-latest}  # passing VERSION env var to Dockerfile as ARG, default = latest
     #image: quanted/qed:${VERSION:-latest}  # use qed image w/ tag = VERSION, default = latest
     expose:
       - "8080"
@@ -89,8 +87,8 @@ services:
     # build: ../cts_nginx
     build: ./qed_nginx
     ports:
-      - "80:80"
-      - "443:443"
+      - "8081:80"
+      - "8082:443"
     links:
       - qed_django:uwsgi_django  # Nginx.conf can reference "qed_django" service with the hostname 'uwsgi' or 'qed_django'
       - cts_nodejs:cts_nodejs

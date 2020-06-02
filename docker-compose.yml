@@ -6,6 +6,7 @@ services:
   # QED Django front-end
   qed_django:
     build:
+      context: .
       dockerfile: Dockerfile
     #image: quanted/qed:${VERSION:-latest}  # use qed image w/ tag = VERSION, default = latest
     expose:

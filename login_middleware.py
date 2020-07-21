@@ -68,6 +68,8 @@ class RequireLoginMiddleware:
 				self.hashed_pass["qed"] = self.get_hashed_password("secret_key_login.txt")
 			elif "cts" in a:
 				self.hashed_pass["qed"] = self.get_hashed_password("secret_key_login.txt")
+			elif "cyanweb" in a:
+				self.hashed_pass["qed"] = self.get_hashed_password("secret_key_login.txt")
 
 	def set_password_via_config(self):
 		"""

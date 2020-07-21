@@ -78,7 +78,8 @@ class RequireLoginMiddleware:
 		if not env_name:
 			return
 		if env_name == 'gdit_aws_dev':
-			self.apps_with_password.append("cts")  # adds password for all of cts on gdit aws dev server
+			if "cts" not in self.apps_with_password:
+				self.apps_with_password.append("cts")  # adds password for all of cts on gdit aws dev server
 
 	def get_hashed_password(self, filename):
 		"""
@@ -209,6 +210,10 @@ class RequireLoginMiddleware:
 		password = request.POST.get('password')
 		next_page = request.POST.get('next')
 
+		if self.hashed_pass is None:
+			self.set_password_via_config()
+			self.load_passwords()
+			
 		# redirect if hashed pw unable to be set, or user didn't enter password:
 		if not self.hashed_pass or not password:
 			return redirect('/login?next={}'.format(next_page))

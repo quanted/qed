@@ -168,7 +168,11 @@ AUTH = False
 # Note: env vars in os.environ always strings..
 if os.environ.get('PASSWORD_REQUIRED') == "True":
     logging.warning("Password protection enabled")
-    MIDDLEWARE += ['login_middleware.RequireLoginMiddleware','django.contrib.messages.middleware.MessageMiddleware',]
+    MIDDLEWARE += [
+        'login_middleware.RequireLoginMiddleware',
+        'login_middleware.Http403Middleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+    ]
     AUTH = True
     # DEBUG = False
 

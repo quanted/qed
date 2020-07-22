@@ -7,6 +7,8 @@ FROM quanted/qed_py3:$version
 
 # Install Python Dependencies
 COPY . /src/
+#RUN mkdir /src
+#COPY docker_start.sh /src/docker_start.sh
 
 # Overwrite the uWSGI config
 COPY uwsgi.ini /etc/uwsgi/

@@ -45,6 +45,9 @@ class RequireLoginMiddleware:
 			"meteorology/precipitation",
 			"hydrology/evapotranspiration/"
 		]
+		self.open_endpoints = [
+			"rest/api/"
+		]
 		self.set_password_via_config()
 		self.load_passwords()
 
@@ -65,6 +68,8 @@ class RequireLoginMiddleware:
 				self.hashed_pass["qed"] = self.get_hashed_password("secret_key_login.txt")
 			elif "cts" in a:
 				self.hashed_pass["qed"] = self.get_hashed_password("secret_key_login.txt")
+			elif "cyanweb" in a:
+				self.hashed_pass["qed"] = self.get_hashed_password("secret_key_login.txt")
 
 	def set_password_via_config(self):
 		"""
@@ -75,7 +80,8 @@ class RequireLoginMiddleware:
 		if not env_name:
 			return
 		if env_name == 'gdit_aws_dev':
-			self.apps_with_password.append("cts")  # adds password for all of cts on gdit aws dev server
+			if "cts" not in self.apps_with_password:
+				self.apps_with_password.append("cts")  # adds password for all of cts on gdit aws dev server
 
 	def get_hashed_password(self, filename):
 		"""
@@ -157,6 +163,8 @@ class RequireLoginMiddleware:
 		password wall. Returns True if path has app name
 		in it that needs password protected.
 		"""
+		if any(p in path for p in self.open_endpoints):
+			return False
 		for app in self.apps_with_password:
 			if app in path and "hms" in app:
 				if any(hms_app in path for hms_app in self.hms_protected):
@@ -204,6 +212,10 @@ class RequireLoginMiddleware:
 		password = request.POST.get('password')
 		next_page = request.POST.get('next')
 
+		if self.hashed_pass is None:
+			self.set_password_via_config()
+			self.load_passwords()
+			
 		# redirect if hashed pw unable to be set, or user didn't enter password:
 		if not self.hashed_pass or not password:
 			return redirect('/login?next={}'.format(next_page))

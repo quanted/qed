@@ -8,8 +8,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        version: ${VERSION:-latest}  # passing VERSION env var to Dockerfile as ARG, default = latest
     #image: quanted/qed:${VERSION:-latest}  # use qed image w/ tag = VERSION, default = latest
     expose:
       - "8080"

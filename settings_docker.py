@@ -94,6 +94,7 @@ else:
     ALLOWED_HOSTS.append('ceamstg.ddns.net')
     ALLOWED_HOSTS.append('ceamdev.ceeopdev.net')
     ALLOWED_HOSTS.append('ceamstg.ceeopdev.net')
+    ALLOWED_HOSTS.append('qedlinux1dev.aws.epa.gov')
 
 
 

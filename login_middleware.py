@@ -21,7 +21,7 @@ hms_public = [
     "meteorology/precipitation",
     "hydrology/evapotranspiration/"
 ]
-hms_pass = ["hms/rest/api/"]
+hms_pass = ["hms/rest/api/", "/hms/api_doc/swagger/"]
 
 
 class Http403Middleware(object):

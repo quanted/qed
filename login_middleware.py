@@ -21,7 +21,7 @@ hms_public = [
     "meteorology/precipitation",
     "hydrology/evapotranspiration/"
 ]
-hms_pass = ["hms/rest/api/"]
+hms_pass = ["hms/rest/api/", "/hms/api_doc/swagger/"]
 
 
 class Http403Middleware(object):
@@ -130,7 +130,7 @@ class RequireLoginMiddleware:
             return True
 
         elif access_type == "hms_private":
-            if not current_user.username == self.hms_admin:
+            if not (current_user.username == self.hms_admin or current_user.username == self.hms_username):
                 return False
             if not current_user.is_authenticated:
                 return False
@@ -152,9 +152,13 @@ class RequireLoginMiddleware:
         # Check that user is autheniticated for the page its trying to access
         # if any(endpoint in (path + redirect_path) for endpoint in self.hms_public):
         #     has_access = self.check_authentication(request, "hms_public")
+        ispublic = bool(os.getenv("HMS_RELEASE", 0))
         if has_access is False:
-            if not any(endpoint in path or redirect_path for endpoint in hms_pass) and ('hms' in redirect_path or 'hms' in path):
-                has_access = self.check_authentication(request, "hms_private")
+            if 'hms' in redirect_path or 'hms' in path:
+                if ispublic:
+                    has_access = True
+                elif not any(endpoint in path or redirect_path for endpoint in hms_pass):
+                    has_access = self.check_authentication(request, "hms_private")
             else:
                 has_access = self.check_authentication(request, "qed")
 

@@ -161,41 +161,41 @@ services:
         max-size: "200k"
         max-file: "10"
 
-  # hms_dotnetcore:
-  #   build:
-  #     context: ./windows/hms
-  #     dockerfile: Web.Services/Dockerfile
-  #   environment:
-  #     - MONGODB=mongodb
-  #     - FLASK_SERVER=http://qed_nginx:7777
-  #     - GOOGLE_API_KEY
-  #   expose:
-  #    - "80"
-  #   volumes:
-  #     #- "./windows/hms/Web.Services/App_Data:/app/App_Data"
-  #     - /var/www/app_data/hms:/app/App_Data
+  hms_dotnetcore:
+    build:
+      context: ./windows/hms
+      dockerfile: Web.Services/Dockerfile
+    environment:
+      - MONGODB=mongodb
+      - FLASK_SERVER=http://qed_nginx:7777
+      - GOOGLE_API_KEY
+    expose:
+     - "80"
+    volumes:
+      #- "./windows/hms/Web.Services/App_Data:/app/App_Data"
+      - /var/www/app_data/hms:/app/App_Data
 
-  # # Dask Containers
-  # dask_scheduler:
-  #   image: daskdev/dask
-  #   hostname: dask-scheduler
-  #   expose:
-  #    - 8786
-  #    - 8787
-  #   command: ["dask-scheduler"]
+  # Dask Containers
+  dask_scheduler:
+    image: daskdev/dask
+    hostname: dask-scheduler
+    expose:
+     - 8786
+     - 8787
+    command: ["dask-scheduler"]
 
-  # dask_worker:
-  #   build:
-  #     context: .
-  #     dockerfile: Dask_Dockerfile
-  #   #image: daskdev/dask
-  #   hostname: dask-worker
-  #   environment:
-  #     PYTHONPATH: '/src:/src/qed'
-  #     IN_DOCKER: "True"
-  #   #command: ["dask-worker", "dask_scheduler:8786"]
-  #   volumes:
-  #      - "../qed:/src/qed"
+  dask_worker:
+    build:
+      context: .
+      dockerfile: Dask_Dockerfile
+    #image: daskdev/dask
+    hostname: dask-worker
+    environment:
+      PYTHONPATH: '/src:/src/qed'
+      IN_DOCKER: "True"
+    #command: ["dask-worker", "dask_scheduler:8786"]
+    volumes:
+       - "../qed:/src/qed"
 
   # Apache Tomcat container
   qed-tomcat:

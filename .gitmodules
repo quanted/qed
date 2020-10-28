@@ -31,9 +31,6 @@
 [submodule "qed_nginx"]
 	path = qed_nginx
 	url = https://github.com/quanted/qed_nginx.git
-[submodule "qed_py3"]
-	path = qed_py3
-	url = https://github.com/quanted/qed_py3.git
 [submodule "requirements_qed"]
 	path = requirements_qed
 	url = https://github.com/quanted/requirements_qed.git
@@ -74,3 +71,7 @@
 [submodule "EPA-Cyano-Web"]
 	path = EPA-Cyano-Web
 	url = https://github.com/USEPA/EPA-Cyano-Web
+[submodule "qed_py3"]
+	path = qed_py3
+	url = https://github.com/quanted/qed_py3
+	branch = dev

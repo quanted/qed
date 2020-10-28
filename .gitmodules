@@ -31,9 +31,6 @@
 [submodule "qed_nginx"]
 	path = qed_nginx
 	url = https://github.com/quanted/qed_nginx.git
-[submodule "requirements_qed"]
-	path = requirements_qed
-	url = https://github.com/quanted/requirements_qed.git
 [submodule "splash_app"]
 	path = splash_app
 	url = https://github.com/quanted/splash_app
@@ -74,4 +71,8 @@
 [submodule "qed_py3"]
 	path = qed_py3
 	url = https://github.com/quanted/qed_py3
+	branch = dev
+[submodule "requirements_qed"]
+	path = requirements_qed
+	url = https://github.com/quanted/requirements_qed
 	branch = dev

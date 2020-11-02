@@ -165,7 +165,7 @@ services:
 
   # Dask Containers
   dask_scheduler:
-    image: daskdev/dask
+    image: quanted/qed-dask:latest
     hostname: dask-scheduler
     expose:
      - 8786
@@ -173,15 +173,12 @@ services:
     command: ["dask-scheduler"]
 
   dask_worker:
-    build:
-      context: .
-      dockerfile: Dask_Dockerfile
-    #image: daskdev/dask
+    image: quanted/qed-dask:latest
     hostname: dask-worker
     environment:
       PYTHONPATH: '/src:/src/qed'
       IN_DOCKER: "True"
-    #command: ["dask-worker", "dask_scheduler:8786"]
+#    command: ["dask-worker", "dask_scheduler:8786"]
     volumes:
        - "../qed:/src/qed"
 
@@ -208,35 +205,35 @@ services:
     volumes:
       - /var/www/pisces:/docker-entrypoint-initdb.d
 
-#  cyan-api:
-#    build:
-#      context: ./EPA-Cyano-Web
-#      dockerfile: Dockerfile_API
-#    expose:
-#      - "5001"
-#    depends_on:
-#      - cyan-db
-#    volumes:
-#      - ./EPA-Cyano-Web/config:/config
-#    environment:
-#      # Does environment overwrite env_file, or vice versa?
-#      - DOCKER_HOSTNAME=${HOSTNAME}
-#      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-tempsecret123!}
-#    links:
-#      - cyan-db
-#    env_file:
-      # Would set_enviornment.py overwrite env vars in default below (hope so).
-      #- ${CYAN_CONFIG:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
+  cyan-api:
+    build:
+      context: ./EPA-Cyano-Web
+      dockerfile: Dockerfile_API
+    expose:
+      - "5001"
+    depends_on:
+      - cyan-db
+    volumes:
+      - ./EPA-Cyano-Web/config:/config
+    environment:
+      # Does environment overwrite env_file, or vice versa?
+      - DOCKER_HOSTNAME=${HOSTNAME}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-tempsecret123!}
+    links:
+      - cyan-db
+    env_file:
+       Would set_enviornment.py overwrite env vars in default below (hope so).
+      - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
 
-#  cyan-db:
-#    build:
-#      context: ./EPA-Cyano-Web
-#      dockerfile: Dockerfile_Database
-#    volumes:
-#      # NOTE: Optional volume for existing DB dump, defaults to blank dummy file if no dump
-#      - ${SQL_DUMP:-./EPA-Cyano-Web/cyan_mysql/no_dump.txt}:/tmp/dump.sql  # use optional dump file to build container DB
-#      - /var/www/app_data/cyano:/var/lib/mysql
-#    environment:
-#      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-tempsecret123!}
-#    env_file:
-#      - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
+  cyan-db:
+    build:
+      context: ./EPA-Cyano-Web
+      dockerfile: Dockerfile_Database
+    volumes:
+      # NOTE: Optional volume for existing DB dump, defaults to blank dummy file if no dump
+      - ${SQL_DUMP:-./EPA-Cyano-Web/cyan_mysql/no_dump.txt}:/tmp/dump.sql  # use optional dump file to build container DB
+      - /var/www/app_data/cyano:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-tempsecret123!}
+    env_file:
+      - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}

@@ -90,7 +90,7 @@ services:
       - qed_django:uwsgi_django  # Nginx.conf can reference "qed_django" service with the hostname 'uwsgi' or 'qed_django'
       - cts_nodejs:cts_nodejs
       - qed_flask:qed_flask
-#      - cyan-api:uwsgi_flask
+      - cyan-api:uwsgi_flask
     volumes:
       - /var/www/nginx/certs:/etc/nginx/qed # this points to the keys directory
       - /etc/letsencrypt:/etc/letsencrypt  # certs from letsencrypt (uses certbot)
@@ -222,7 +222,7 @@ services:
     links:
       - cyan-db
     env_file:
-       Would set_enviornment.py overwrite env vars in default below (hope so).
+      # Would set_enviornment.py overwrite env vars in default below (hope so).
       - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
 
   cyan-db:

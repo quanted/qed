@@ -11,6 +11,7 @@ services:
     volumes:
       - collected_static:/src/collected_static
       - .:/src  # map qed/ to container's /src for updating w/out rebuilding images
+      - /var/www/app_data:/src/app_data
     environment:
       - REDIS_HOSTNAME=redis
       #these echo in the environmental variable to the running docker container

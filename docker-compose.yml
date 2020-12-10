@@ -5,10 +5,7 @@ services:
 
   # QED Django front-end
   qed_django:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    #image: quanted/qed:${VERSION:-latest}  # use qed image w/ tag = VERSION, default = latest
+    image: quanted/qed-django:lite  # use qed image w/ tag = VERSION, default = latest
     expose:
       - "8080"
     volumes:
@@ -102,7 +99,7 @@ services:
 
   # flask_qed Flask back-end
   qed_flask:
-    build: ./flask_qed
+    image: quanted/flask_qed:lite  # use qed image w/ tag = VERSION, default = latest
     expose:
       - "7777"
     links:
@@ -113,10 +110,12 @@ services:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
     volumes:
+      - ./flask_qed:/src
       - /var/www/sampreprocessed:/src/pram_flask/ubertool/ubertool/sam/bin/Preprocessed
       - /var/www/samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results
       - /var/www/qed-basins:/src/hms_flask/data/qed-basins
       - collected_static:/src/collected_static
+      - /var/www/app_data/hms:/src/hms-data
     depends_on:
       - mongodb
     logging:
@@ -134,8 +133,9 @@ services:
 
   # Celery container for async task execution
   qed_celery:
-    build: ./flask_qed
+    image: quanted/flask_qed:lite
     volumes:
+      - ./flask_qed:/src
       - /var/www/sampreprocessed:/src/pram_flask/ubertool/ubertool/sam/bin/Preprocessed
       - "../samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results"
       - "../qed-basins:/src/hms_flask/data/qed-basins"
@@ -153,9 +153,7 @@ services:
         max-file: "10"
 
   hms_dotnetcore:
-    build:
-      context: ./windows/hms
-      dockerfile: Web.Services/Dockerfile
+    image: quanted/hms-dotnetcore
     environment:
       - MONGODB=mongodb
       - FLASK_SERVER=http://qed_nginx:7777
@@ -168,7 +166,7 @@ services:
 
   # Dask Containers
   dask_scheduler:
-    image: daskdev/dask
+    image: quanted/qed-dask:latest
     hostname: dask-scheduler
     expose:
      - 8786
@@ -176,15 +174,12 @@ services:
     command: ["dask-scheduler"]
 
   dask_worker:
-    build:
-      context: .
-      dockerfile: Dask_Dockerfile
-    #image: daskdev/dask
+    image: quanted/qed-dask:latest
     hostname: dask-worker
     environment:
       PYTHONPATH: '/src:/src/qed'
       IN_DOCKER: "True"
-    #command: ["dask-worker", "dask_scheduler:8786"]
+#    command: ["dask-worker", "dask_scheduler:8786"]
     volumes:
        - "../qed:/src/qed"
 

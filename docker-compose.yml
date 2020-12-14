@@ -190,7 +190,7 @@ services:
       # context: ./qed_tomcat
       context: .
       dockerfile: Dockerfile_Tomcat
-    image: qed_tomcat:${VERSION:-latest}
+    image: cts_tomcat:${VERSION:-latest}
     expose:
       - "8080"
     environment:

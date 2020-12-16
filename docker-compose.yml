@@ -35,7 +35,8 @@ services:
   # ubertool_cts nodejs submodule
   cts_nodejs:
     build: ./cts_nodejs
-    image: cts-nodejs
+    # image: cts-nodejs
+    image: quanted/cts_nodejs
     expose:
       - "4000"
     environment:
@@ -45,40 +46,43 @@ services:
       - REDIS_PORT=6379
     links:
       - redis
+    volumes:
+      - ./cts_nodejs:/src
 
   # # Celery worker - manager calc
   worker_manager:
     build:
       context: ./cts_celery
       dockerfile: Dockerfile
-      args:
-        version: ${VERSION:-latest}
-    # build: ./cts_celery
-    image: cts-celery
-    command: celery worker -A tasks -Q manager_queue -l info -n manager_worker -c 1
+    # image: cts-celery
+    image: quanted/cts_celery
+    # command: celery worker -A tasks -Q manager_queue -l info -n manager_worker -c 1
+    command: celery -A tasks worker -Q manager_queue -l info -n manager_worker -c 1
     links:
       - redis
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
+    volumes:
+      - ./cts_celery:/src
 
   # # Celery worker - cts calc
   worker_cts:
     build:
       context: ./cts_celery
       dockerfile: Dockerfile
-      args:
-        version: ${VERSION:-latest}
-    # build: ./cts_celery
-    image: cts-celery
-    command: celery worker -A tasks -Q cts_queue -l info -n cts_worker -c 2
+    # image: cts-celery
+    image: quanted/cts_celery
+    # command: celery worker -A tasks -Q cts_queue -l info -n cts_worker -c 2
+    command: celery -A tasks worker -Q cts_queue -l info -n cts_worker -c 2
     links:
       - redis
       - qed_django
-      # - cts-tomcat
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
+    volumes:
+      - ./cts_celery:/src
 
   qed_nginx:
     restart: always
@@ -190,7 +194,8 @@ services:
       # context: ./qed_tomcat
       context: .
       dockerfile: Dockerfile_Tomcat
-    image: cts_tomcat:${VERSION:-latest}
+    # image: cts_tomcat:${VERSION:-latest}
+    image: quanted/qed-tomcat
     expose:
       - "8080"
     environment:
@@ -207,6 +212,7 @@ services:
     volumes:
       - /var/www/pisces:/docker-entrypoint-initdb.d
 
+  # Cyanweb Flask API
   cyan-api:
     build:
       context: ./EPA-Cyano-Web
@@ -227,6 +233,7 @@ services:
       # Would set_enviornment.py overwrite env vars in default below (hope so).
       - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
 
+  # Cyanweb MySQL DB
   cyan-db:
     build:
       context: ./EPA-Cyano-Web

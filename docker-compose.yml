@@ -46,8 +46,8 @@ services:
       - REDIS_PORT=6379
     links:
       - redis
-    volumes:
-      - ./cts_nodejs:/src
+    # volumes:
+    #   - ./cts_nodejs:/src
 
   # # Celery worker - manager calc
   worker_manager:

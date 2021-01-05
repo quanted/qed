@@ -215,7 +215,7 @@ services:
   # Cyanweb Flask API
   cyan-api:
     build:
-      context: ./EPA-Cyano-Web/flask
+      context: ./EPA-Cyano-Web/docker/flask
       dockerfile: Dockerfile
     expose:
       - "5001"
@@ -236,7 +236,7 @@ services:
   # Cyanweb MySQL DB
   cyan-db:
     build:
-      context: ./EPA-Cyano-Web/mysql
+      context: ./EPA-Cyano-Web/docker/mysql
       dockerfile: Dockerfile
     volumes:
       # NOTE: Optional volume for existing DB dump, defaults to blank dummy file if no dump

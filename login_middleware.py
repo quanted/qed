@@ -12,6 +12,10 @@ import os
 import logging
 import bcrypt
 
+
+logger = logging.getLogger("QED-Login-Logger")
+logger.setLevel(logging.INFO)
+
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 hms_protected = ["hydrology", "workflow", "meteorology"]
@@ -31,6 +35,7 @@ class Http403Middleware(object):
     def __call__(self, request):
         response = self.get_response(request)
         if HttpResponseForbidden.status_code == response.status_code:
+            logger.info("User login session token timed out")
             return login(request, "<span style='color:red;'>Your session has timed out, please log back in to refresh your session.</span>")
         else:
             return response
@@ -106,7 +111,7 @@ class RequireLoginMiddleware:
             _hash_pass = open(os.path.join(PROJECT_ROOT, 'secrets', filename), 'r')  # read in hashed password from file
             return _hash_pass.read().encode('utf-8')  # encode for bcrypt
         except Exception as e:
-            logging.warning("Exception reading hashed password from file..")
+            logger.warning("Exception reading hashed password from file..")
             return None
 
     def check_authentication(self, request, access_type="qed"):
@@ -114,29 +119,18 @@ class RequireLoginMiddleware:
         Checks access based on username and requested url.
         """
         current_user = request.user  # current user object
-
+        has_access = False
         if access_type == "qed":
-            if not current_user.username == self.qed_username:
-                return False
-            if not current_user.is_authenticated:
-                return False
-            return True
-
+            if current_user.username == self.qed_username and current_user.is_authenticated:
+                has_access = True
         elif access_type == "hms_public":
-            if not current_user.username == self.hms_username:
-                return False
-            if not current_user.is_authenticated:
-                return False
-            return True
-
+            if current_user.username == self.hms_username and current_user.is_authenticated:
+                has_access = True
         elif access_type == "hms_private":
-            if not (current_user.username == self.hms_admin or current_user.username == self.hms_username):
-                return False
-            if not current_user.is_authenticated:
-                return False
-            return True
-
-        return False
+            if (current_user.username == self.hms_admin or current_user.username == self.hms_username) and current_user.is_authenticated:
+                has_access = True
+        logger.info("Check authentication, user: {}, has_access: {}".format(current_user, has_access))
+        return has_access
 
     def process_view(self, request, view_func, view_args, view_kwargs):
         assert hasattr(request, 'user')
@@ -145,13 +139,13 @@ class RequireLoginMiddleware:
         user = request.POST.get('user')
         has_access = False
         token = request.GET.get('token')  # potential 'token' query for cyano-web password reset
+        logger.info("process_view 1, user: {}, next: {}, token: {}".format(user, redirect_path, token))
 
         if not self.needs_qed_password(path + redirect_path):
+            logger.info("Path: {} does not need password.".format(path + redirect_path))
             return
 
         # Check that user is autheniticated for the page its trying to access
-        # if any(endpoint in (path + redirect_path) for endpoint in self.hms_public):
-        #     has_access = self.check_authentication(request, "hms_public")
         ispublic = bool(os.getenv("HMS_RELEASE", 0))
         if has_access is False:
             if 'hms' in redirect_path or 'hms' in path:
@@ -159,20 +153,26 @@ class RequireLoginMiddleware:
                     has_access = True
                 elif not any(endpoint in path or redirect_path for endpoint in hms_pass):
                     has_access = self.check_authentication(request, "hms_private")
+                logger.info("HMS auth check 2, path: {}, redirect_path: {}, has_access: {}, is public: {}".format(path, redirect_path, has_access, ispublic))
             else:
                 has_access = self.check_authentication(request, "qed")
+                logger.info("QED auth check 2, path: {}, redirect_path: {}, has_access: {}".format(path, redirect_path, has_access))
 
         if has_access:
+            logger.info("process_view 3, user has access.")
             return
 
         if not self.login_url.match(path):
             # Returns login page:
             if token:
+                logger.info("process_view 3, user does not have access. Redirecting to login page with current token.")
                 return redirect('{}?next={}?token={}'.format(settings.REQUIRE_LOGIN_PATH, path, token))
+            logger.info("process_view 3, user does not have access. Redirecting to login page with new token.")
             return redirect('{}?next={}'.format(settings.REQUIRE_LOGIN_PATH, path))
 
         if request.POST and self.login_url.match(path):
             # Checks login attempt:
+            logger.info("process_view 4, checking login authentication.")
             return self.login_auth(request)
 
     def needs_qed_password(self, path):
@@ -196,34 +196,34 @@ class RequireLoginMiddleware:
     def handle_site_wide_login(self, username, password, next_page):
         # check if username is correct:
         if username != self.qed_username:
-            logging.warning("username {} incorrect..".format(username))
+            logger.info("username {} incorrect..".format(username))
             return True
         # check if password is correct:
         if not bcrypt.checkpw(password.encode('utf-8'), self.hashed_pass["qed"]):
-            logging.warning("password incorrect for user: {}".format(username))
+            logger.info("password incorrect for user: {}".format(username))
             return True
         return False
 
     def handle_hms_endpoint_login(self, username, password, next_page):
         # check if username is correct:
         if username != self.hms_admin or username != self.hms_username:
-            logging.warning("username {} incorrect..".format(username))
+            logger.info("username {} incorrect..".format(username))
             return True
         # check if password is correct:
         if not bcrypt.checkpw(password.encode('utf-8'), self.hashed_pass["hms_private"]) or \
                 not bcrypt.checkpw(password.encode('utf-8'), self.hashed_pass["hms_public"]):
-            logging.warning("password incorrect for user: {}".format(username))
+            logger.info("password incorrect for user: {}".format(username))
             return True
         return False
 
     def handle_public_hms_endpoint_login(self, username, password, next_page):
         # check if username is correct:
         if username != self.hms_username:
-            logging.warning("username {} incorrect..".format(username))
+            logger.info("username {} incorrect..".format(username))
             return True
         # check if password is correct:
         if not bcrypt.checkpw(password.encode('utf-8'), self.hashed_pass["hms_public"]):
-            logging.warning("password incorrect for user: {}".format(username))
+            logger.info("password incorrect for user: {}".format(username))
             return True
         return False
 
@@ -239,6 +239,7 @@ class RequireLoginMiddleware:
 
         # redirect if hashed pw unable to be set, or user didn't enter password:
         if not self.hashed_pass or not password:
+            logger.info("login_auth 1, no password or hashed_pass is not set. Redirecting to login page.")
             return redirect('/login?next={}'.format(next_page))
         show_login = False
         # Checks if username and password is correct:
@@ -248,8 +249,10 @@ class RequireLoginMiddleware:
                 show_login = self.handle_hms_endpoint_login(username, password, next_page)
             if show_login:
                 show_login = self.handle_site_wide_login(username, password, next_page)
+        logger.info("login_auth 1, username: {}, next_page: {}, show_login: {}".format(username, next_page, show_login))
 
         if show_login:
+            logger.info("login_auth 2, redirecting to login page.")
             return redirect('/login?next={}'.format(next_page))
 
         # Add user to django db if not already there:
@@ -261,15 +264,18 @@ class RequireLoginMiddleware:
 
         if user is not None:
             if user.is_active:
+                logger.info("login_auth 3, user is active, redirecting to next_page: {}".format(next_page))
                 # Redirect to a success page.
                 request.session.set_expiry(86400)   # one day
                 django_login(request, user)  # is this needed?? (todo: logout if inactive for some time)
                 return redirect(next_page)
             else:
                 # Return a 'disabled account' error message
+                logger.info("login_auth 3, user is not active, redirecting to login page")
                 return redirect('/login?next={}'.format(next_page))
         else:
             # Return an 'invalid login' error message.
+            logger.info("login_auth 3, user is not set, redirecting to login page")
             return redirect('/login?next={}'.format(next_page))
 
 

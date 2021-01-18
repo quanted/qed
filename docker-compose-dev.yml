@@ -1,17 +1,27 @@
-version: '2.1'
+version: '3.4'  # upgrade to v3?
+
 volumes:
   collected_static: {}
+  cyano_data:
+    name: cyano-data
+  epabackend_db:
+    name: epabackend-db
+  admin_media:
+    name: admin-media
+
 services:
 
   # QED Django front-end
   qed_django:
-    image: quanted/qed-django:lite  # use qed image w/ tag = VERSION, default = latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #image: quanted/qed:${VERSION:-latest}  # use qed image w/ tag = VERSION, default = latest
     expose:
       - "8080"
     volumes:
       - collected_static:/src/collected_static
       - .:/src  # map qed/ to container's /src for updating w/out rebuilding images
-      - /var/www/app_data:/src/app-data
     environment:
       - REDIS_HOSTNAME=redis
       #these echo in the environmental variable to the running docker container
@@ -35,8 +45,7 @@ services:
   # ubertool_cts nodejs submodule
   cts_nodejs:
     build: ./cts_nodejs
-    # image: cts-nodejs
-    image: quanted/cts_nodejs
+    image: cts-nodejs
     expose:
       - "4000"
     environment:
@@ -46,43 +55,40 @@ services:
       - REDIS_PORT=6379
     links:
       - redis
-    # volumes:
-    #   - ./cts_nodejs:/src
 
   # # Celery worker - manager calc
   worker_manager:
     build:
       context: ./cts_celery
       dockerfile: Dockerfile
-    # image: cts-celery
-    image: quanted/cts_celery
-    # command: celery worker -A tasks -Q manager_queue -l info -n manager_worker -c 1
-    command: celery -A tasks worker -Q manager_queue -l info -n manager_worker -c 1
+      args:
+        version: ${VERSION:-latest}
+    # build: ./cts_celery
+    image: cts-celery
+    command: celery worker -A tasks -Q manager_queue -l info -n manager_worker -c 1
     links:
       - redis
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
-    volumes:
-      - ./cts_celery:/src
 
   # # Celery worker - cts calc
   worker_cts:
     build:
       context: ./cts_celery
       dockerfile: Dockerfile
-    # image: cts-celery
-    image: quanted/cts_celery
-    # command: celery worker -A tasks -Q cts_queue -l info -n cts_worker -c 2
-    command: celery -A tasks worker -Q cts_queue -l info -n cts_worker -c 2
+      args:
+        version: ${VERSION:-latest}
+    # build: ./cts_celery
+    image: cts-celery
+    command: celery worker -A tasks -Q cts_queue -l info -n cts_worker -c 2
     links:
       - redis
       - qed_django
+      # - cts-tomcat
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
-    volumes:
-      - ./cts_celery:/src
 
   qed_nginx:
     restart: always
@@ -91,6 +97,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
+      - "8081:8081"  # cyano admintool
     links:
       - qed_django:uwsgi_django  # Nginx.conf can reference "qed_django" service with the hostname 'uwsgi' or 'qed_django'
       - cts_nodejs:cts_nodejs
@@ -104,7 +111,7 @@ services:
 
   # flask_qed Flask back-end
   qed_flask:
-    image: quanted/flask_qed:lite  # use qed image w/ tag = VERSION, default = latest
+    build: ./flask_qed
     expose:
       - "7777"
     links:
@@ -115,12 +122,10 @@ services:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
     volumes:
-      - ./flask_qed:/src
       - /var/www/sampreprocessed:/src/pram_flask/ubertool/ubertool/sam/bin/Preprocessed
       - /var/www/samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results
       - /var/www/qed-basins:/src/hms_flask/data/qed-basins
       - collected_static:/src/collected_static
-      - /var/www/app_data/hms:/src/hms-data
     depends_on:
       - mongodb
     logging:
@@ -138,9 +143,8 @@ services:
 
   # Celery container for async task execution
   qed_celery:
-    image: quanted/flask_qed:lite
+    build: ./flask_qed
     volumes:
-      - ./flask_qed:/src
       - /var/www/sampreprocessed:/src/pram_flask/ubertool/ubertool/sam/bin/Preprocessed
       - "../samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results"
       - "../qed-basins:/src/hms_flask/data/qed-basins"
@@ -158,7 +162,9 @@ services:
         max-file: "10"
 
   hms_dotnetcore:
-    image: quanted/hms-dotnetcore
+    build:
+      context: ./windows/hms
+      dockerfile: Web.Services/Dockerfile
     environment:
       - MONGODB=mongodb
       - FLASK_SERVER=http://qed_nginx:7777
@@ -171,7 +177,7 @@ services:
 
   # Dask Containers
   dask_scheduler:
-    image: quanted/qed-dask:latest
+    image: daskdev/dask
     hostname: dask-scheduler
     expose:
      - 8786
@@ -179,12 +185,15 @@ services:
     command: ["dask-scheduler"]
 
   dask_worker:
-    image: quanted/qed-dask:latest
+    build:
+      context: .
+      dockerfile: Dask_Dockerfile
+    #image: daskdev/dask
     hostname: dask-worker
     environment:
       PYTHONPATH: '/src:/src/qed'
       IN_DOCKER: "True"
-#    command: ["dask-worker", "dask_scheduler:8786"]
+    #command: ["dask-worker", "dask_scheduler:8786"]
     volumes:
        - "../qed:/src/qed"
 
@@ -194,8 +203,7 @@ services:
       # context: ./qed_tomcat
       context: .
       dockerfile: Dockerfile_Tomcat
-    # image: cts_tomcat:${VERSION:-latest}
-    image: quanted/qed-tomcat
+    image: qed_tomcat:${VERSION:-latest}
     expose:
       - "8080"
     environment:
@@ -212,11 +220,10 @@ services:
     volumes:
       - /var/www/pisces:/docker-entrypoint-initdb.d
 
-  # Cyanweb Flask API
   cyan-api:
     build:
       context: ./EPA-Cyano-Web
-      dockerfile: docker/flask/Dockerfile
+      dockerfile: Dockerfile_API
     expose:
       - "5001"
     depends_on:
@@ -233,11 +240,10 @@ services:
       # Would set_enviornment.py overwrite env vars in default below (hope so).
       - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
 
-  # Cyanweb MySQL DB
   cyan-db:
     build:
       context: ./EPA-Cyano-Web
-      dockerfile: docker/mysql/Dockerfile
+      dockerfile: Dockerfile_Database
     volumes:
       # NOTE: Optional volume for existing DB dump, defaults to blank dummy file if no dump
       - ${SQL_DUMP:-./EPA-Cyano-Web/cyan_mysql/no_dump.txt}:/tmp/dump.sql  # use optional dump file to build container DB
@@ -246,3 +252,72 @@ services:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-tempsecret123!}
     env_file:
       - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
+
+  biotransformer:
+    build:
+      context: ../bt_api
+      dockerfile: Dockerfile
+    expose:
+      - "5002"
+
+  ###########################
+  # EPA-Cyano Services      #
+  ###########################
+  build:
+      image: cyan_build
+      container_name: build
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    restart: always
+    # ports:
+    #   - "3306:3306"
+    expose:
+      - "3306"
+    volumes:
+      - ../EPA-Cyano/docker/mysql/epabackend.sql:/docker-entrypoint-initdb.d/epabackend.sql
+      - epabackend_db:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: ${SQL_DATABASE:-epabackend}
+      MYSQL_ROOT_PASSWORD: ${SQL_ROOT_PASSWORD:-}
+      MYSQL_USER: ${SQL_USER:-cyan}
+      MYSQL_PASSWORD: ${SQL_PASSWORD:-}
+
+  tomcat:
+    image: cyan_tomcat
+    container_name: tomcat
+    restart: always
+    volumes:
+      - cyano_data:/public/data/EPA-Cyano
+      - admin_media:/public/data/admin-media
+    environment:
+      base_path: /public/data/EPA-Cyano/
+      jenkins_job_url: ${jenkins_job_url}
+      admin_tool_url: ${admin_tool_url}
+      ENABLE_CYANO_SWAGGER: ${ENABLE_CYANO_SWAGGER:-false}
+    env_file:
+      - ${CYAN_CONFIG:-../EPA-Cyano/docker/.env}
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+      - build
+
+  apache:
+    image: cyan_apache
+    container_name: apache
+    restart: always
+    volumes:
+      - admin_media:/srv/AdminTool/src/media/
+    environment:
+      LOGIN_URL: ${LOGIN_URL:-/admintool/login/}
+      FORCE_SCRIPT_NAME: ${FORCE_SCRIPT_NAME:-/admintool}
+      MEDIA_URL: ${MEDIA_URL:-/admintool/media/}
+    env_file:
+      - ${CYAN_CONFIG:-../EPA-Cyano/docker/.env}
+    ports:
+      - "8000:80"
+    depends_on:
+      - mysql
+      - build

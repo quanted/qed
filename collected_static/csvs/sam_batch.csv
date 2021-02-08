@@ -1,6 +1,0 @@
-chemical_name,koc,coefficient,soil_metabolism_hl,crop,crop_number,apps_per_year,application_method,application_rate,sim_date_1stapp,refine,refine_time_window1,refine_percent_applied1,refine_time_window2,refine_percent_applied2,region,sim_type,sim_date_start,sim_date_end
-,,,,,,,,,,,,,,,,,,
-,mL/g,,days,,,,,kg/ha,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-Atrazine,100,1,123,,0,1,,1.3,4/20/1984,uniform_step,7,50,43,50,Ohio River Valley,,1/1/1984,12/31/2013

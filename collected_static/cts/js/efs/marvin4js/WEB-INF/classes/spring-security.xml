@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<bean id="logger" class="org.slf4j.LoggerFactory" factory-method="getLogger" >
+		<constructor-arg value="chemaxon.security.config" />
+	</bean>
+	
+	<bean id="logger.info" abstract="true" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean"
+		p:targetObject-ref="logger" p:targetMethod="info"/>
+
+	<!-- Deactivate security if no security source is configured -->
+	<beans profile="!security-source-embedded">
+		<beans profile="!security-source-jdbc">
+			<beans profile="!security-source-ldap">
+				<beans profile="!security-source-external">
+					<bean parent="logger.info" p:arguments="-- [ Security is OFF ] --" />
+					<import resource="spring-security-off.xml"/>
+				</beans>
+			</beans>
+		</beans>
+	</beans>
+	 
+	<!-- Security source profiles -->
+	<beans profile="security-source-embedded">
+		<bean parent="logger.info" p:arguments="-- [ Security source: embedded ] --" />
+		<import resource="spring-security-source-embedded.xml"/>
+	</beans>
+	<beans profile="security-source-jdbc">
+		<bean parent="logger.info" p:arguments="-- [ Security source: JDBC ] --" />
+		<import resource="spring-security-source-jdbc.xml"/>
+	</beans>
+	<beans profile="security-source-ldap">
+		<bean parent="logger.info" p:arguments="-- [ Security source: LDAP ] --" />
+		<import resource="spring-security-source-ldap.xml"/>
+	</beans>
+	<beans profile="security-source-external">
+		<bean parent="logger.info" p:arguments="-- [ Security source: external from #{systemProperties['security.source.location']} ] --" />
+		<import resource="${security.source.location}"/>
+	</beans>
+	
+	
+	<!-- HTTP security profiles (activated only if source is defined) -->
+	<beans profile="security-source-embedded
+					security-source-jdbc
+					security-source-ldap
+					security-source-external">
+					
+		<import resource="spring-security-method.xml"/>
+				
+		<!-- HTTP basic is default (activated when specified directly or no other activated) -->
+		<beans profile="security-http-basic
+						!security-http-loginservice">
+			<beans profile="security-http-basic
+							!security-http-basic-digest">
+				<beans profile="security-http-basic
+								!security-http-basic-ro">
+					<beans profile="security-http-basic
+									!security-http-basic-marvin4js">
+						<beans profile="security-http-basic
+										!security-http-external">
+							<bean parent="logger.info" p:arguments="-- [ Security profile: http-basic ] --" />
+							<import resource="spring-security-http-basic.xml"/>
+						</beans>
+					</beans>
+				</beans>
+			</beans>
+		</beans>
+		
+		<beans profile="security-http-loginservice">
+			<bean parent="logger.info" p:arguments="-- [ Security profile: http-loginservice ] --" />
+			<import resource="spring-security-http-loginservice.xml"/>
+		</beans>
+		<beans profile="security-http-basic-digest">
+			<bean parent="logger.info" p:arguments="-- [ Security profile: http-basic-digest ] --" />
+			<import resource="spring-security-http-basic-digest.xml"/>
+		</beans>
+		<beans profile="security-http-basic-ro">
+			<bean parent="logger.info" p:arguments="-- [ Security profile: http-basic (READ-ONLY) ] --" />
+			<import resource="spring-security-http-basic-ro.xml"/>
+		</beans>
+		<beans profile="security-http-basic-marvin4js">
+			<bean parent="logger.info" p:arguments="-- [ Security profile: http-basic MarvinJs ] --" />
+			<import resource="spring-security-http-basic-marvin4js.xml"/>
+		</beans>
+		<beans profile="security-http-external">
+			<bean parent="logger.info" p:arguments="-- [ Security profile: external from #{systemProperties['security.http.location']} ] --" />
+			<import resource="${security.http.location}"/>
+		</beans>
+	</beans>
+	
+</beans>

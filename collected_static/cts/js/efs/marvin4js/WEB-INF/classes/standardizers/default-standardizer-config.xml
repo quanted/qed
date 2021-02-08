@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--This file is created with ChemAxon's Configuration Builder-->
+<!--This is a configuration file for ChemAxon's Standardizer-->
+<StandardizerConfiguration>
+  <Actions>
+    <RemoveExplicitH ID="RemoveExplicitH"/>
+    <Aromatize ID="Aromatize" Type="general"/>
+    <Transformation ID="Transform Aromatic N-Oxide" Structure="[n:1]=[O:2]&gt;&gt;[N+:1][#8-:2] |(-6.74,.67,;-6.02,2,;4.15,.61,;4.92,1.95,)|"/>
+    <Transformation ID="Transform Azide" Structure="[N;X2-:1][N;X2+:2]#[N;X1:3]&gt;&gt;[N:1]=[N+:2]=[#7-:3] |(-8.22,1.5,;-6.68,1.45,;-5.14,1.45,;3.35,1.62,;4.89,1.62,;6.43,1.62,)|"/>
+    <Transformation ID="Transform Diazo" Structure="[#6;X3-:1][N;X2+:2]#[N;X1:3]&gt;&gt;[C:1]=[N+:2]=[#7-:3] |(-8.07,.81,;-6.53,.81,;-4.99,.81,;1.87,.75,;3.41,.75,;4.95,.75,)|"/>
+    <Transformation ID="Transform Diazonium" Structure="[#6][N:1]=[N+:2]&gt;&gt;[#6][N+:1]#[N:2] |(-7.49,.75,;-5.95,.75,;-4.41,.75,;1.92,1.01,;3.46,1.01,;5,1.01,)|"/>
+    <Transformation ID="Transform Iminium" Structure="[#6;X3+:1]-[#7;X3:2]&gt;&gt;[C:1]=[N+:2] |(-6.24,1.52,;-4.72,1.52,;3.73,1.63,;5.27,1.63,)|"/>
+    <Transformation ID="Transform Isocyanate" Structure="[N+:1][C-:2]=[O:3]&gt;&gt;[N:1]=[C:2]=[O:3] |(-8.86,1.68,;-7.32,1.63,;-5.78,1.63,;2.14,1.54,;3.68,1.54,;5.22,1.54,)|"/>
+    <Transformation ID="Transform Nitrilium" Structure="[C;X2+:1]=[N;X2:2]&gt;&gt;[C:1]#[N+:2] |(-6.3,1.52,;-4.72,1.56,;2.34,1.67,;3.86,1.67,)|"/>
+    <Transformation ID="Transform Nitro" Structure="[O:3]=[N:1]=[O:2]&gt;&gt;[#8-:2][N+:1]=[O:3] |(-5.89,.26,;-4.35,.26,;-2.81,.26,;5.5,.45,;4.17,-.33,;2.83,.45,)|"/>
+    <Transformation ID="Transform Nitrone Nitronate" Structure="C=[N:1]=[O:2]&gt;&gt;[#8-:2][N+:1]=C |(-7,.74,;-5.41,.74,;-4.69,2.07,;4.41,1.99,;3.64,.65,;2.1,.65,)|"/>
+    <Transformation ID="Transform Nitroso" Structure="[#6][N;X2+:1][O;X1-:2]&gt;&gt;[#6][N:1]=[O:2] |(-7.95,.49,;-6.41,.49,;-5.64,1.83,;3.01,.26,;4.6,.26,;5.32,1.59,)|"/>
+    <Transformation ID="Transform Phosphonic" Structure="[#6][P+:1]([O;X2])([O;X2])[#8-:2]&gt;&gt;[#6][P:1](O)(O)=[O:2] |(-10.47,2.71,;-8.93,2.71,;-8.93,4.25,;-8.93,1.17,;-7.39,2.71,;-1.05,2.83,;.49,2.83,;.49,4.37,;.49,1.29,;2.03,2.83,)|"/>
+    <Transformation ID="Transform Phosphonium Ylide" Structure="[#6][P-:1]([#6])([#6])[C+:2]&gt;&gt;[#6][P:1]([#6])([#6])=[C:2] |(-10.17,1.96,;-8.63,1.96,;-8.63,3.5,;-8.63,.42,;-7.09,1.96,;-.86,1.95,;.68,1.95,;.68,3.49,;.68,.41,;2.22,1.95,)|"/>
+    <Transformation ID="Transform Selenite" Structure="[O;X2][Se+:1]([O;X2])[#8-:2]&gt;&gt;O[Se:1](O)=[O:2] |(-12.69,3.77,;-11.92,2.44,;-12.69,1.11,;-10.38,2.44,;-4.2,3.46,;-3.43,2.12,;-4.2,.79,;-1.89,2.12,)|"/>
+    <Transformation ID="Transform Silicate" Structure="[O;X2][Si+:1]([O;X2])[#8-:2]&gt;&gt;O[Si:1](O)=[O:2] |(-12.69,3.77,;-11.92,2.44,;-12.69,1.11,;-10.38,2.44,;-4.2,3.46,;-3.43,2.12,;-4.2,.79,;-1.89,2.12,)|"/>
+    <Transformation ID="Transform Sulfine" Structure="[#6]C([#6])=[S+:1][#8-:2]&gt;&gt;[#6]C([#6])=[S:1]=[O:2] |(-9.97,-2.12,;-9.2,-.78,;-9.97,.55,;-7.66,-.78,;-6.12,-.78,;1.9,.63,;2.67,-.71,;1.9,-2.04,;4.21,-.71,;5.75,-.71,)|"/>
+    <Transformation ID="Transform Sulfon" Structure="[#6][S;X3+:1]([#6])[#8-:2]&gt;&gt;[#6][S:1]([#6])=[O:2] |(-9.33,1.22,;-8.93,2.71,;-9.7,4.04,;-7.39,2.71,;-.28,4.16,;.49,2.83,;.09,1.34,;2.03,2.83,)|"/>
+    <Transformation ID="Transform Sulfonium Ylide" Structure="[#6][S-:1]([#6])[C+:2]&gt;&gt;[#6][S:1]([#6])=[C:2] |(-7.86,.41,;-7.09,-.92,;-7.86,-2.25,;-5.55,-.92,;2.03,-2.05,;2.8,-.71,;2.03,.62,;4.34,-.71,)|"/>
+    <Transformation ID="Transform Sulfoxide" Structure="[#6][S+:1]([#6])([#8-:2])=O&gt;&gt;[#6][S:1]([#6])(=[O:2])=O |(-8.93,4.25,;-8.93,2.71,;-8.93,1.17,;-7.39,2.71,;-10.47,2.71,;.49,4.37,;.49,2.83,;.49,1.29,;2.03,2.83,;-1.05,2.83,)|"/>
+    <Transformation ID="Transform Sulfoxonium Ylide" Structure="[#6][S+:1]([#6])([#8-:2])=C&gt;&gt;[#6][S:1]([#6])(=C)=[O:2] |(-8.93,4.25,;-8.93,2.71,;-8.93,1.17,;-7.39,2.71,;-10.47,2.71,;.49,4.37,;.49,2.83,;.49,1.29,;-1.05,2.83,;2.03,2.83,)|"/>
+    <Transformation ID="Transform Tertiary N-Oxide" Structure="[#6]-[#7;X4:1]=[O:2]&gt;&gt;[#6][N+:1][O-:2] |(-7.85,.58,;-6.31,.58,;-5.54,1.91,;2.04,.56,;3.58,.56,;4.35,1.9,)|"/>
+  </Actions>
+</StandardizerConfiguration>

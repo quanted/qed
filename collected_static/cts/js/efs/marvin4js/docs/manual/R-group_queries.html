@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>R-group queries</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+    <meta content="Scroll HTML Exporter" name="generator"/>
+
+    <link type="text/css" rel="stylesheet" href="css/blueprint/liquid.css" media="screen, projection"/>
+    <link type="text/css" rel="stylesheet" href="css/blueprint/print.css" media="print"/>
+    <!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"/><![endif]-->
+
+    <link type="text/css" rel="stylesheet" href="css/content-style.css" media="screen, projection, print"/>
+    <link type="text/css" rel="stylesheet" href="css/screen.css" media="screen, projection"/>
+    <link type="text/css" rel="stylesheet" href="css/print.css" media="print"/>
+</head>
+<body>
+    <div class="container" style="min-width: 760px;">
+        <div class="header block">
+            <div class="header-left column span-6">
+                <img src="spacelogo.png" />
+            </div>
+            <div class="column span-18 header-right last">
+                <h4>Marvin JS User's Guide</h4>
+            </div>
+        </div>
+
+        <div class="block">
+            <div class="toc column span-6 prepend-top">
+                <h3>Table of Contents
+                                        <span class="small">(<a href="Marvin_JS_User&apos;s_Guide.html">Start</a>)</span>
+                                    </h3>
+                
+<ul class="toc">
+                <li><p><a href="Marvin_JS_Graphical_User_Interface.html">Marvin JS Graphical User Interface</a></p>
+                    <ul>
+                                <li><p><a href="General.html">General</a></p>
+            </li>
+                                <li><p><a href="Canvas.html">Canvas</a></p>
+            </li>
+                                <li><p><a href="Context_Menus.html">Context Menus</a></p>
+            </li>
+                                <li><p><a href="Toolbars.html">Toolbars</a></p>
+            </li>
+                        </ul>
+            </li>
+                <li><p><a href="Basic_Features_of_Marvin_JS.html">Basic Features of Marvin JS</a></p>
+                    <ul>
+                                <li><p><a href="Display_Options.html">Display Options</a></p>
+            </li>
+                                <li><p><a href="Editing.html">Editing</a></p>
+            </li>
+                                <li><p><a href="Import_and_Export.html">Import and Export</a></p>
+            </li>
+                                <li><p><a href="Drawing_Chemical_Structures.html">Drawing Chemical Structures</a></p>
+            </li>
+                                <li><p><a href="Drawing_Graphical_Objects.html">Drawing Graphical Objects</a></p>
+            </li>
+                                <li><p><a href="Properties.html">Properties</a></p>
+            </li>
+                                <li><p><a href="Transformations.html">Transformations</a></p>
+            </li>
+                        </ul>
+            </li>
+                <li><p><a href="Chemical_Features_in_Marvin_JS.html">Chemical Features in Marvin JS</a></p>
+                    <ul>
+                                <li><p><a href="Reactions.html">Reactions</a></p>
+                    <ul>
+                                <li><p><a href="Reaction_Mechanisms.html">Reaction Mechanisms</a></p>
+            </li>
+                        </ul>
+            </li>
+                                <li><p><a href="Substructure_Groups.html">Substructure Groups</a></p>
+            </li>
+                                <li><p><a href="Structure_Cleaning_and_Validation.html">Structure Cleaning and Validation</a></p>
+            </li>
+                                <li><p><a href="Stereochemistry.html">Stereochemistry</a></p>
+            </li>
+                                <li><p><a href="Query_Structures.html">Query Structures</a></p>
+                    <ul>
+                                <li><p><a href="R-group_queries.html">R-group queries</a></p>
+            </li>
+                        </ul>
+            </li>
+                        </ul>
+            </li>
+                <li><p><a href="Keyboard_Shortcuts.html">Keyboard Shortcuts</a></p>
+            </li>
+    </ul>
+
+            </div>
+            <div id="26705945" class="content column span-18 last">
+                <h1>R-group queries</h1>
+    <p>
+A query with an R-group represents substitution variation on the same root structure.The molecule containing an R-group is the so called scaffold. An R-group query can involve several derivatives which differ in one or more substituents (fragments).    </p>
+    <div class="confbox admonition admonition-info">
+        
+    <p>
+You can also watch a video tutorial <a href="https://www.youtube.com/watch?v=PjP5ApgrjSM">here</a>, or you can meet the Smart R-group tool <a href="https://docs.chemaxon.com/display/marvinjs/Video+Tutorials#VideoTutorials-smartRGroup">here</a>.    </p>
+    </div>
+    
+    <div class="section section-2"  id="26705945_R-groupqueries-CreatingR-groups"  >
+        <h2 class="heading "><span>Creating R-groups</span></h2>
+    <p>
+You can add R-groups to your root structure in three ways.    </p>
+<ol class=" "><li class=" ">    <p>
+<strong class=" ">Smart R-group tool</strong><br/>Helps you to create many R-groups by just clicking on the right place in the molecule (sprout drawing is also possible). In this case, the default set is that the auto numbering is active, which means that R1, R2, ...etc. groups will automatically appear in the place of the clicking in the right order.<br/>There is an option to add or change R-groups to the required number by clicking on an R-group (when the Smart R-group tool is active). Clicking on an existing R-group opens the R-group dialog window, here you can turn off the auto numbering by unchecking the box and set the number of the R-group. When you check the auto numbering box again, numbering will carry on from the first number that is not yet represented on the canvas.    </p>
+</li><li class=" ">    <p>
+<strong class=" "><tt class=" ">R+Space</tt> keyboard shortcut</strong><br/>Opens the R-group dialog window, where you can set the number of the R-group (or you can leave the field empty to get an R-group without any number).<br/>After closing the window, the chosen R-group will appear on the tip of the mouse pointer and this can be added to the root structure in the same way as atoms are inserted.    </p>
+</li><li class=" ">    <p>
+<strong class=" ">Atom Properties menu</strong><br/>Existing atoms can be replaced by R-group labels using the <a href="Properties.html#17236088_Properties-atomProperties">Atom properties</a> dialog as well, where the 'R-group' type should be chosen instead of 'Element'. In this case you can set the number, alias or map to the R-group.    </p>
+</li></ol>    <p>
+            <img src="images/download/attachments/26705945/rgroup_create_1.png" alt="images/download/attachments/26705945/rgroup_create_1.png" class="confluence-embedded-image" />
+            </p>
+    </div>
+    <div class="section section-2"  id="26705945_R-groupqueries-ManagingR-groupdefinitions"  >
+        <h2 class="heading "><span>Managing R-group definitions</span></h2>
+    <div class="section section-3"  id="26705945_R-groupqueries-Creation"  >
+        <h3 class="heading "><span>Creation</span></h3>
+    <p>
+In order to create the definition for an R-group, draw the substituents from which the R-group should stand for, then you can choose from two options.    </p>
+<ol class=" "><li class=" ">    <p>
+<strong class=" ">Smart R-group tool</strong><br/>Selecting with the Smart R-group tool results that the R-group label will be given to the fragment (or fragments), which appears on the canvas. When there is more than one R-group in the scaffold, the label of the fragment will get the smallest R-group number, which hasn't got a definition yet.    </p>
+</li><li class=" ">    <p>
+<strong class=" "><tt class=" ">R+Space</tt></strong> keyboard shortcut<br/>Select the substituent(s) by one of the Selection tools, and then type R+Space shortcut. The R-group dialog opens, and you can set the relevant R-label.    </p>
+</li></ol>    </div>
+    <div class="section section-3"  id="26705945_R-groupqueries-Adding%2FRemovingelementsto%2Ffromthedefinition"  >
+        <h3 class="heading "><span>Adding/Removing elements to/from the definition</span></h3>
+    </div>
+    <div class="section section-3"  id="26705945_R-groupqueries-Add"  >
+        <h3 class="heading "><span>Add</span></h3>
+<ol class=" "><li class=" ">    <p>
+<strong class=" ">Smart R-group tool</strong><br/>Selecting the substituents together with the Smart R-group tool results that the same R-group label will be given to the fragments.    </p>
+</li><li class=" ">    <p>
+<strong class=" ">Context menu</strong><br/>If you want to add one or more fragments to an R-group definition, select these fragments (with the Selection tool), right-click on the relevant R-group label, then choose the <strong class=" ">&quot;</strong><strong class=" ">Add to this group&quot;</strong> option.    </p>
+</li></ol>    </div>
+    <div class="section section-3"  id="26705945_R-groupqueries-Remove"  >
+        <h3 class="heading "><span>Remove</span></h3>
+<ol class=" "><li class=" ">    <p>
+<strong class=" ">Smart R-group tool</strong><br/>You can remove fragments from the definition by selecting it with the Smart R-group tool. In this case, the selected element will get a new label.    </p>
+</li><li class=" ">    <p>
+<strong class=" ">Context menu</strong><br/>In order to remove a fragment from a group, select this fragment, right-click on the R-label of the group and select <strong class=" ">&quot;Remove from this group&quot;</strong> option.    </p>
+</li></ol>    </div>
+    <div class="section section-3"  id="26705945_R-groupqueries-UngrouporDelete"  >
+        <h3 class="heading "><span>Ungroup or Delete</span></h3>
+    <p>
+If you do not wish to have an R-group definition any longer, you have some options to get rid of them.    </p>
+    <p>
+Ungrouping the definition results that the fragments will not be erased, but they will not belong to an R-group definition any longer. You can do it this way: right-click on the R-group label, and use the <strong class=" ">&quot;Ungroup&quot;</strong> option in the pop-up menu.    </p>
+    <p>
+In that case, the definition and all of its contents will be erased from the canvas. Deleting the definition can happen as with any other objects, by the Delete tool, or by the Delete keyboard button.    </p>
+    <p>
+    </p>
+    <p>
+The <a href="Context_Menus.html#17236082_ContextMenus-RlabelPopup">contextual menu items of the R-label</a> offer options for managing R-group definitions: you can ungroup or add fragments to a definition list, or remove fragments from a definition.    </p>
+    <p>
+            <img src="images/download/attachments/26705945/rgroup_create_2.png" alt="images/download/attachments/26705945/rgroup_create_2.png" class="confluence-embedded-image" />
+            </p>
+    <p>
+    </p>
+    </div>
+    </div>
+    <div class="section section-2"  id="26705945_R-groupqueries-AddingAttachmentpoints"  >
+        <h2 class="heading "><span>Adding Attachment points</span></h2>
+    <p>
+You can add attachment points to the fragments in an R-group definition by using the    <span style="color: #0000ff;">
+     </span>
+<a href="Toolbars.html#17236081_Toolbars-Rattachment">R-group attachment point</a> button on the <strong class=" ">Atoms</strong> toolbar and clicking on an atom in a definition list, or from the context menu. The attachment points on every separate fragment are automatically numbered beginning with &quot;1&quot;.    </p>
+    <p>
+            <img src="images/download/attachments/26705945/rgroup_create_3.png" alt="images/download/attachments/26705945/rgroup_create_3.png" class="confluence-embedded-image" />
+        </p>
+    <p>
+The bond type of the R-group attachment points can be changed using either the R-group attachment point tool or any of the bond tools.    </p>
+    <div class="confbox admonition admonition-info">
+        
+    <p>
+R-group definition import and export are supported only in ChemAxon Marvin Document (MRV) format in Marvin JS; besides, you can choose other formats if the relevant web service is available.    </p>
+    </div>
+    
+    </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Created with <a href="http://k15t.com/display/en/Scroll-Wiki-HTML-Exporter-for-Confluence-Overview">Scroll HTML Exporter for Confluence</a>.
+        </div>
+    </div>
+</body>
+</html>

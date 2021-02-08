@@ -1,0 +1,13 @@
+\documentclass[varwidth=true, border=2pt, convert -shell -escape -density=400]{standalone}
+\usepackage{blindtext}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\begin{document}
+\begin{align*}
+C_{B} & = \frac{k_{1} * (m_{o}*\phi*C_{wto} +m_{p}*C_{wdp})+k_{D}*\sum(P_{i}C_{Di})}{k_{2}+k_{E}+k_{G}+k_{M}} \nonumber \\
+k_{1} & =  \text{pesticide uptake rate constant through respiratory area} \nonumber \\
+\end{align*} 
+\end{document}
+
+%use ImageMagick to convert pdf to transparent png in terminal window
+% e.g. convert -density 400 inputlatex.pdf -resize 25% output.png

@@ -1,0 +1,1338 @@
+.model_header {
+  color: #4289AA;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  font-weight: bold;
+  display: inline-block;
+}
+.input_header {
+  color: #000;
+  margin-bottom: 1em;
+  font-size: 1.2em;
+  display: inline;
+}
+.popup_header {
+  color: #000;
+  margin-bottom: 1em;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* Defining Hyperlink Colors */
+
+a:link,
+a:visited,
+a:hover {
+  color: #4289AA;
+  text-decoration: none;
+}
+a.linkHover:link,
+a.linkHover:visited,
+a.linkHover:hover {
+  color: #356697;
+  text-decoration: none;
+}
+
+/* 01uberheader.html */
+
+#banner {
+  width: 1024px;
+  /*background: #356697 url(/static/images/epa_logo.png) no-repeat;*/
+  background: #356697;
+  /*min-height: 70px;*/
+  min-height: 30px;
+  font-size: 1.6em;
+  border-bottom: 2px solid #1F262A;
+  border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  /*box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;*/
+}
+#banner_l {
+  color: #fff;
+  float: left;
+  /*padding: 46px 0 4px 13px;*/
+  padding: 5px 0 0 0.4em;
+}
+#banner_r {
+  float: right;
+}
+#banner_r a {
+  color: #F9FBF6;
+}
+.textshadow {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+#topheader_pic {
+  background: #356697 url(/static/images/species/waterfrog_crop.png);
+  width: 720px;
+  height: 120px;
+  float: left;
+  border-right: 4px solid #1F262A;
+  border-bottom: 2px solid #1F262A;
+}
+#topheader_p {
+  width: 300px;
+  height: 120px;
+  background: #1F262A url(/static/images/epa_logo_gray.png) no-repeat center;
+  float: right;
+  color: white;
+  /*font-size: 12px;*/
+  text-align: justify;
+  border-bottom: 2px solid #1F262A;
+}
+#topheader_p p {
+  margin-left: auto;
+  margin-right: auto;
+  width: 240px;
+  padding-top: 20%; /* Text Positioning */
+}
+#epaSkin {
+  display: none;
+}
+#topheader_pic_main {
+  background: #356697 url(/static/images/species/waterfrog_crop.png);
+  width: 720px;
+  height: 240px;
+  float: left;
+  border-right: 4px solid #1F262A;
+  border-bottom: 2px solid #1F262A;
+}
+#topheader_p_main {
+  width: 300px;
+  height: 240px;
+  background: #1F262A;
+  float: right;
+  color: white;
+  /*font-size: 12px;*/
+  text-align: justify;
+  border-bottom: 2px solid #1F262A;
+}
+#topheader_p_main p {
+  margin-left: auto;
+  margin-right: auto;
+  width: 240px;
+  padding-top: 20%; /* Text Positioning */
+}
+a.logreg:link, a.logreg:visited, a.logreg:active {
+  color: #F9FBF6;
+  font-size: 18px;
+  margin-left: 10px;
+  float: right;
+}
+
+/* 02uberintroblock_wmodellinks.html */
+/* Eco Header Menu Nav Bar */
+
+#header_menu_nav {
+  width: 864px;
+  height: 30px;
+  background: #356697;
+  float: left;
+  border-radius: 0 0 0 4px;
+  -webkit-border-radius: 0 0 0 4px;
+  -moz-border-radius: 0 0 0 4px;
+  /*box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;*/
+}
+.fadeDesc_description {
+  display:inline-block;
+  height: 30px;
+  width: 117px;
+  background: url(/static/images/tabs/epa/sprites/description.gif);
+  background-position: 0 0;
+}
+.fadeDesc_description * {
+  display: none;
+}
+.fadeDesc_description span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 117px;
+  background: url(/static/images/tabs/epa/sprites/description.gif);
+  background-position: 0 -30px;
+}
+.fadeInp_description {
+  display:inline-block;
+  height: 30px;
+  width: 68px;
+  background: url(/static/images/tabs/epa/sprites/description.gif);
+  background-position: -117px 0;
+}
+.fadeInp_description * {
+  display: none;
+}
+.fadeInp_description span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 68px;
+  background-image: url(/static/images/tabs/epa/sprites/description.gif);
+  background-position: -117px -30px;
+}
+.fadeAlg_description {
+  display:inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/description.gif);
+  background-position: -185px 0;
+}
+.fadeAlg_description * {
+  display: none;
+}
+.fadeAlg_description span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/description.gif);
+  background-position: -185px -30px;
+}
+.fadeRef_description {
+  display:inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/description.gif);
+  background-position: -285px 0;
+}
+.fadeRef_description * {
+  display: none;
+}
+.fadeRef_description span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/description.gif);
+  background-position: -285px -30px;
+}
+.fadeQAQC_description {
+  display:inline-block;
+  height: 30px;
+  width: 72px;
+  background-image: url(/static/images/tabs/epa/sprites/description.gif);
+  background-position: -385px 0;
+}
+.fadeQAQC_description * {
+  display: none;
+}
+.fadeQAQC_description span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 72px;
+  background-image: url(/static/images/tabs/epa/sprites/description.gif);
+  background-position: -385px -30px;
+}
+.fadeBat_description {
+  display:inline-block;
+  height: 30px;
+  width: 64px;
+  background-image: url(/static/images/tabs/epa/sprites/description.gif);
+  background-position: -457px 0;
+}
+.fadeBat_description * {
+  display: none;
+}
+.fadeBat_description span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 64px;
+  background-image: url(/static/images/tabs/epa/sprites/description.gif);
+  background-position: -457px -30px;
+}
+.fadeHist_description {
+  display:inline-block;
+  height: 30px;
+  width: 80px;
+  background-image: url(/static/images/tabs/epa/sprites/description.gif);
+  background-position: -521px 0;
+}
+.fadeHist_description * {
+  display: none;
+}
+.fadeHist_description span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 80px;
+  background-image: url(/static/images/tabs/epa/sprites/description.gif);
+  background-position: -521px -30px;
+}
+.fadeDesc_input {
+  display:inline-block;
+  height: 30px;
+  width: 117px;
+  background: url(/static/images/tabs/epa/sprites/input.gif);
+  background-position: 0 0;
+}
+.fadeDesc_input * {
+  display: none;
+}
+.fadeDesc_input span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 117px;
+  background: url(/static/images/tabs/epa/sprites/input.gif);
+  background-position: 0 -30px;
+}
+.fadeInp_input {
+  display:inline-block;
+  height: 30px;
+  width: 68px;
+  background: url(/static/images/tabs/epa/sprites/input.gif);
+  background-position: -117px 0;
+}
+.fadeInp_input * {
+  display: none;
+}
+.fadeInp_input span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 68px;
+  background-image: url(/static/images/tabs/epa/sprites/input.gif);
+  background-position: -117px -30px;
+}
+.fadeAlg_input {
+  display:inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/input.gif);
+  background-position: -185px 0;
+}
+.fadeAlg_input * {
+  display: none;
+}
+.fadeAlg_input span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/input.gif);
+  background-position: -185px -30px;
+}
+.fadeRef_input {
+  display:inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/input.gif);
+  background-position: -285px 0;
+}
+.fadeRef_input * {
+  display: none;
+}
+.fadeRef_input span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/input.gif);
+  background-position: -285px -30px;
+}
+.fadeQAQC_input {
+  display:inline-block;
+  height: 30px;
+  width: 72px;
+  background-image: url(/static/images/tabs/epa/sprites/input.gif);
+  background-position: -385px 0;
+}
+.fadeQAQC_input * {
+  display: none;
+}
+.fadeQAQC_input span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 72px;
+  background-image: url(/static/images/tabs/epa/sprites/input.gif);
+  background-position: -385px -30px;
+}
+.fadeBat_input {
+  display:inline-block;
+  height: 30px;
+  width: 64px;
+  background-image: url(/static/images/tabs/epa/sprites/input.gif);
+  background-position: -457px 0;
+}
+.fadeBat_input * {
+  display: none;
+}
+.fadeBat_input span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 64px;
+  background-image: url(/static/images/tabs/epa/sprites/input.gif);
+  background-position: -457px -30px;
+}
+.fadeHist_input {
+  display:inline-block;
+  height: 30px;
+  width: 80px;
+  background-image: url(/static/images/tabs/epa/sprites/input.gif);
+  background-position: -521px 0;
+}
+.fadeHist_input * {
+  display: none;
+}
+.fadeHist_input span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 80px;
+  background-image: url(/static/images/tabs/epa/sprites/input.gif);
+  background-position: -521px -30px;
+}
+.fadeDesc_algorithm {
+  display:inline-block;
+  height: 30px;
+  width: 117px;
+  background: url(/static/images/tabs/epa/sprites/algorithm.gif);
+  background-position: 0 0;
+}
+.fadeDesc_algorithm * {
+  display: none;
+}
+.fadeDesc_algorithm span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 117px;
+  background: url(/static/images/tabs/epa/sprites/algorithm.gif);
+  background-position: 0 -30px;
+}
+.fadeInp_algorithm {
+  display:inline-block;
+  height: 30px;
+  width: 68px;
+  background: url(/static/images/tabs/epa/sprites/algorithm.gif);
+  background-position: -117px 0;
+}
+.fadeInp_algorithm * {
+  display: none;
+}
+.fadeInp_algorithm span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 68px;
+  background-image: url(/static/images/tabs/epa/sprites/algorithm.gif);
+  background-position: -117px -30px;
+}
+.fadeAlg_algorithm {
+  display:inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/algorithm.gif);
+  background-position: -185px 0;
+}
+.fadeAlg_algorithm * {
+  display: none;
+}
+.fadeAlg_algorithm span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/algorithm.gif);
+  background-position: -185px -30px;
+}
+.fadeRef_algorithm {
+  display:inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/algorithm.gif);
+  background-position: -285px 0;
+}
+.fadeRef_algorithm * {
+  display: none;
+}
+.fadeRef_algorithm span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/algorithm.gif);
+  background-position: -285px -30px;
+}
+.fadeQAQC_algorithm {
+  display:inline-block;
+  height: 30px;
+  width: 72px;
+  background-image: url(/static/images/tabs/epa/sprites/algorithm.gif);
+  background-position: -385px 0;
+}
+.fadeQAQC_algorithm * {
+  display: none;
+}
+.fadeQAQC_algorithm span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 72px;
+  background-image: url(/static/images/tabs/epa/sprites/algorithm.gif);
+  background-position: -385px -30px;
+}
+.fadeBat_algorithm {
+  display:inline-block;
+  height: 30px;
+  width: 64px;
+  background-image: url(/static/images/tabs/epa/sprites/algorithm.gif);
+  background-position: -457px 0;
+}
+.fadeBat_algorithm * {
+  display: none;
+}
+.fadeBat_algorithm span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 64px;
+  background-image: url(/static/images/tabs/epa/sprites/algorithm.gif);
+  background-position: -457px -30px;
+}
+.fadeHist_algorithm {
+  display:inline-block;
+  height: 30px;
+  width: 80px;
+  background-image: url(/static/images/tabs/epa/sprites/algorithm.gif);
+  background-position: -521px 0;
+}
+.fadeHist_algorithm * {
+  display: none;
+}
+.fadeHist_algorithm span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 80px;
+  background-image: url(/static/images/tabs/epa/sprites/algorithm.gif);
+  background-position: -521px -30px;
+}
+.fadeDesc_references {
+  display:inline-block;
+  height: 30px;
+  width: 117px;
+  background: url(/static/images/tabs/epa/sprites/references.gif);
+  background-position: 0 0;
+}
+.fadeDesc_references * {
+  display: none;
+}
+.fadeDesc_references span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 117px;
+  background: url(/static/images/tabs/epa/sprites/references.gif);
+  background-position: 0 -30px;
+}
+.fadeInp_references {
+  display:inline-block;
+  height: 30px;
+  width: 68px;
+  background: url(/static/images/tabs/epa/sprites/references.gif);
+  background-position: -117px 0;
+}
+.fadeInp_references * {
+  display: none;
+}
+.fadeInp_references span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 68px;
+  background-image: url(/static/images/tabs/epa/sprites/references.gif);
+  background-position: -117px -30px;
+}
+.fadeAlg_references {
+  display:inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/references.gif);
+  background-position: -185px 0;
+}
+.fadeAlg_references * {
+  display: none;
+}
+.fadeAlg_references span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/references.gif);
+  background-position: -185px -30px;
+}
+.fadeRef_references {
+  display:inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/references.gif);
+  background-position: -285px 0;
+}
+.fadeRef_references * {
+  display: none;
+}
+.fadeRef_references span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/references.gif);
+  background-position: -285px -30px;
+}
+.fadeQAQC_references {
+  display:inline-block;
+  height: 30px;
+  width: 72px;
+  background-image: url(/static/images/tabs/epa/sprites/references.gif);
+  background-position: -385px 0;
+}
+.fadeQAQC_references * {
+  display: none;
+}
+.fadeQAQC_references span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 72px;
+  background-image: url(/static/images/tabs/epa/sprites/references.gif);
+  background-position: -385px -30px;
+}
+.fadeBat_references {
+  display:inline-block;
+  height: 30px;
+  width: 64px;
+  background-image: url(/static/images/tabs/epa/sprites/references.gif);
+  background-position: -457px 0;
+}
+.fadeBat_references * {
+  display: none;
+}
+.fadeBat_references span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 64px;
+  background-image: url(/static/images/tabs/epa/sprites/references.gif);
+  background-position: -457px -30px;
+}
+.fadeHist_references {
+  display:inline-block;
+  height: 30px;
+  width: 80px;
+  background-image: url(/static/images/tabs/epa/sprites/references.gif);
+  background-position: -521px 0;
+}
+.fadeHist_references * {
+  display: none;
+}
+.fadeHist_references span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 80px;
+  background-image: url(/static/images/tabs/epa/sprites/references.gif);
+  background-position: -521px -30px;
+}
+.fadeDesc_qaqc {
+  display:inline-block;
+  height: 30px;
+  width: 117px;
+  background: url(/static/images/tabs/epa/sprites/qaqc.gif);
+  background-position: 0 0;
+}
+.fadeDesc_qaqc * {
+  display: none;
+}
+.fadeDesc_qaqc span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 117px;
+  background: url(/static/images/tabs/epa/sprites/qaqc.gif);
+  background-position: 0 -30px;
+}
+.fadeInp_qaqc {
+  display:inline-block;
+  height: 30px;
+  width: 68px;
+  background: url(/static/images/tabs/epa/sprites/qaqc.gif);
+  background-position: -117px 0;
+}
+.fadeInp_qaqc * {
+  display: none;
+}
+.fadeInp_qaqc span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 68px;
+  background-image: url(/static/images/tabs/epa/sprites/qaqc.gif);
+  background-position: -117px -30px;
+}
+.fadeAlg_qaqc {
+  display:inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/qaqc.gif);
+  background-position: -185px 0;
+}
+.fadeAlg_qaqc * {
+  display: none;
+}
+.fadeAlg_qaqc span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/qaqc.gif);
+  background-position: -185px -30px;
+}
+.fadeRef_qaqc {
+  display:inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/qaqc.gif);
+  background-position: -285px 0;
+}
+.fadeRef_qaqc * {
+  display: none;
+}
+.fadeRef_qaqc span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/qaqc.gif);
+  background-position: -285px -30px;
+}
+.fadeQAQC_qaqc {
+  display:inline-block;
+  height: 30px;
+  width: 72px;
+  background-image: url(/static/images/tabs/epa/sprites/qaqc.gif);
+  background-position: -385px 0;
+}
+.fadeQAQC_qaqc * {
+  display: none;
+}
+.fadeQAQC_qaqc span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 72px;
+  background-image: url(/static/images/tabs/epa/sprites/qaqc.gif);
+  background-position: -385px -30px;
+}
+.fadeBat_qaqc {
+  display:inline-block;
+  height: 30px;
+  width: 64px;
+  background-image: url(/static/images/tabs/epa/sprites/qaqc.gif);
+  background-position: -457px 0;
+}
+.fadeBat_qaqc * {
+  display: none;
+}
+.fadeBat_qaqc span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 64px;
+  background-image: url(/static/images/tabs/epa/sprites/qaqc.gif);
+  background-position: -457px -30px;
+}
+.fadeHist_qaqc {
+  display:inline-block;
+  height: 30px;
+  width: 80px;
+  background-image: url(/static/images/tabs/epa/sprites/qaqc.gif);
+  background-position: -521px 0;
+}
+.fadeHist_qaqc * {
+  display: none;
+}
+.fadeHist_qaqc span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 80px;
+  background-image: url(/static/images/tabs/epa/sprites/qaqc.gif);
+  background-position: -521px -30px;
+}
+.fadeDesc_batchinput {
+  display:inline-block;
+  height: 30px;
+  width: 117px;
+  background: url(/static/images/tabs/epa/sprites/batchinput.gif);
+  background-position: 0 0;
+}
+.fadeDesc_batchinput * {
+  display: none;
+}
+.fadeDesc_batchinput span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 117px;
+  background: url(/static/images/tabs/epa/sprites/batchinput.gif);
+  background-position: 0 -30px;
+}
+.fadeInp_batchinput {
+  display:inline-block;
+  height: 30px;
+  width: 68px;
+  background: url(/static/images/tabs/epa/sprites/batchinput.gif);
+  background-position: -117px 0;
+}
+.fadeInp_batchinput * {
+  display: none;
+}
+.fadeInp_batchinput span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 68px;
+  background-image: url(/static/images/tabs/epa/sprites/batchinput.gif);
+  background-position: -117px -30px;
+}
+.fadeAlg_batchinput {
+  display:inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/batchinput.gif);
+  background-position: -185px 0;
+}
+.fadeAlg_batchinput * {
+  display: none;
+}
+.fadeAlg_batchinput span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/batchinput.gif);
+  background-position: -185px -30px;
+}
+.fadeRef_batchinput {
+  display:inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/batchinput.gif);
+  background-position: -285px 0;
+}
+.fadeRef_batchinput * {
+  display: none;
+}
+.fadeRef_batchinput span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/batchinput.gif);
+  background-position: -285px -30px;
+}
+.fadeQAQC_batchinput {
+  display:inline-block;
+  height: 30px;
+  width: 72px;
+  background-image: url(/static/images/tabs/epa/sprites/batchinput.gif);
+  background-position: -385px 0;
+}
+.fadeQAQC_batchinput * {
+  display: none;
+}
+.fadeQAQC_batchinput span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 72px;
+  background-image: url(/static/images/tabs/epa/sprites/batchinput.gif);
+  background-position: -385px -30px;
+}
+.fadeBat_batchinput {
+  display:inline-block;
+  height: 30px;
+  width: 64px;
+  background-image: url(/static/images/tabs/epa/sprites/batchinput.gif);
+  background-position: -457px 0;
+}
+.fadeBat_batchinput * {
+  display: none;
+}
+.fadeBat_batchinput span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 64px;
+  background-image: url(/static/images/tabs/epa/sprites/batchinput.gif);
+  background-position: -457px -30px;
+}
+.fadeHist_batchinput {
+  display:inline-block;
+  height: 30px;
+  width: 80px;
+  background-image: url(/static/images/tabs/epa/sprites/batchinput.gif);
+  background-position: -521px 0;
+}
+.fadeHist_batchinput * {
+  display: none;
+}
+.fadeHist_batchinput span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 80px;
+  background-image: url(/static/images/tabs/epa/sprites/batchinput.gif);
+  background-position: -521px -30px;
+}
+.fadeDesc_history {
+  display:inline-block;
+  height: 30px;
+  width: 117px;
+  background: url(/static/images/tabs/epa/sprites/history.gif);
+  background-position: 0 0;
+}
+.fadeDesc_history * {
+  display: none;
+}
+.fadeDesc_history span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 117px;
+  background: url(/static/images/tabs/epa/sprites/history.gif);
+  background-position: 0 -30px;
+}
+.fadeInp_history {
+  display:inline-block;
+  height: 30px;
+  width: 68px;
+  background: url(/static/images/tabs/epa/sprites/history.gif);
+  background-position: -117px 0;
+}
+.fadeInp_history * {
+  display: none;
+}
+.fadeInp_history span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 68px;
+  background-image: url(/static/images/tabs/epa/sprites/history.gif);
+  background-position: -117px -30px;
+}
+.fadeAlg_history {
+  display:inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/history.gif);
+  background-position: -185px 0;
+}
+.fadeAlg_history * {
+  display: none;
+}
+.fadeAlg_history span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/history.gif);
+  background-position: -185px -30px;
+}
+.fadeRef_history {
+  display:inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/history.gif);
+  background-position: -285px 0;
+}
+.fadeRef_history * {
+  display: none;
+}
+.fadeRef_history span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/history.gif);
+  background-position: -285px -30px;
+}
+.fadeQAQC_history {
+  display:inline-block;
+  height: 30px;
+  width: 72px;
+  background-image: url(/static/images/tabs/epa/sprites/history.gif);
+  background-position: -385px 0;
+}
+.fadeQAQC_history * {
+  display: none;
+}
+.fadeQAQC_history span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 72px;
+  background-image: url(/static/images/tabs/epa/sprites/history.gif);
+  background-position: -385px -30px;
+}
+.fadeBat_history {
+  display:inline-block;
+  height: 30px;
+  width: 64px;
+  background-image: url(/static/images/tabs/epa/sprites/history.gif);
+  background-position: -457px 0;
+}
+.fadeBat_history * {
+  display: none;
+}
+.fadeBat_history span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 64px;
+  background-image: url(/static/images/tabs/epa/sprites/history.gif);
+  background-position: -457px -30px;
+}
+.fadeHist_history {
+  display:inline-block;
+  height: 30px;
+  width: 80px;
+  background-image: url(/static/images/tabs/epa/sprites/history.gif);
+  background-position: -521px 0;
+}
+.fadeHist_history * {
+  display: none;
+}
+.fadeHist_history span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 80px;
+  background-image: url(/static/images/tabs/epa/sprites/history.gif);
+  background-position: -521px -30px;
+}
+.fadeDesc_output {
+  display:inline-block;
+  height: 30px;
+  width: 117px;
+  background: url(/static/images/tabs/epa/sprites/output.gif);
+  background-position: 0 0;
+}
+.fadeDesc_output * {
+  display: none;
+}
+.fadeDesc_output span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 117px;
+  background: url(/static/images/tabs/epa/sprites/output.gif);
+  background-position: 0 -30px;
+}
+.fadeInp_output {
+  display:inline-block;
+  height: 30px;
+  width: 68px;
+  background: url(/static/images/tabs/epa/sprites/output.gif);
+  background-position: -117px 0;
+}
+.fadeInp_output * {
+  display: none;
+}
+.fadeInp_output span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 68px;
+  background-image: url(/static/images/tabs/epa/sprites/output.gif);
+  background-position: -117px -30px;
+}
+.fadeOut_output {
+  display:inline-block;
+  height: 30px;
+  width: 72px;
+  background: url(/static/images/tabs/epa/sprites/output.gif);
+  background-position: -185px 0;
+}
+.fadeOut_output * {
+  display: none;
+}
+.fadeOut_output span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 72px;
+  background-image: url(/static/images/tabs/epa/sprites/output.gif);
+  background-position: -185px -30px;
+}
+.fadeAlg_output {
+  display:inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/output.gif);
+  background-position: -257px 0;
+}
+.fadeAlg_output * {
+  display: none;
+}
+.fadeAlg_output span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/output.gif);
+  background-position: -257px -30px;
+}
+.fadeRef_output {
+  display:inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/output.gif);
+  background-position: -357px 0;
+}
+.fadeRef_output * {
+  display: none;
+}
+.fadeRef_output span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 100px;
+  background-image: url(/static/images/tabs/epa/sprites/output.gif);
+  background-position: -357px -30px;
+}
+.fadeQAQC_output {
+  display:inline-block;
+  height: 30px;
+  width: 72px;
+  background-image: url(/static/images/tabs/epa/sprites/output.gif);
+  background-position: -457px 0;
+}
+.fadeQAQC_output * {
+  display: none;
+}
+.fadeQAQC_output span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 72px;
+  background-image: url(/static/images/tabs/epa/sprites/output.gif);
+  background-position: -457px -30px;
+}
+.fadeBat_output {
+  display:inline-block;
+  height: 30px;
+  width: 64px;
+  background-image: url(/static/images/tabs/epa/sprites/output.gif);
+  background-position: -529px 0;
+}
+.fadeBat_output * {
+  display: none;
+}
+.fadeBat_output span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 64px;
+  background-image: url(/static/images/tabs/epa/sprites/output.gif);
+  background-position: -529px -30px;
+}
+.fadeHist_output {
+  display:inline-block;
+  height: 30px;
+  width: 80px;
+  background-image: url(/static/images/tabs/epa/sprites/output.gif);
+  background-position: -593px 0;
+}
+.fadeHist_output * {
+  display: none;
+}
+.fadeHist_output span.hover {
+  display: inline-block;
+  height: 30px;
+  width: 80px;
+  background-image: url(/static/images/tabs/epa/sprites/output.gif);
+  background-position: -593px -30px;
+}
+
+/* Eco Header Right Side */
+
+#header_menu_r {
+  width: 160px;
+  height: 30px;
+  background: #356697;
+  float: left;
+  border-radius: 0 0 4px 0;
+  -webkit-border-radius: 0 0 4px 0;
+  -moz-border-radius: 0 0 4px 0;
+  /*box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;*/
+}
+.headerbar{
+  font-size: 13px;
+  letter-spacing: 0.0625em;
+  color: #FFFFFF;
+  background: #356697;
+  margin: 0;
+  /*text-transform: uppercase;*/
+  padding: 5px 0 5px 8px;
+  border-bottom: 2px solid #1F262A;
+  /*border-right: 2px solid #599DBD;*/
+  /*border-left: 2px solid #599DBD;*/
+  border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  /*box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;
+*/}
+.urbangreymenu a:visited {
+  color: #333333;
+}
+.urbangreymenu a:link {
+  color: #333333;
+}
+.urbangreymenu a:hover {
+  color: #333333;
+}
+.fadeMenu {
+  color: #333333;
+  background: #dee7ef;
+}
+.urbangreymenu a.aSelected {
+  display:block;
+  text-decoration:none;
+  color:#FFFFFF;
+  background-color:#356697;
+}
+.tabUnsel {
+  color: #1F262A;
+}
+.tabSel {
+  color: #4289AA;
+}
+
+/* Tables */
+
+table,td
+{
+  border: 1px solid black;
+  border-width: 1px;
+  border-spacing: 2px;
+  border-style: outset;
+  border-color: white;
+  border-collapse: separate;
+  background-color: #E7EADC;
+}
+table
+{
+  background-color: #EEF0E6;
+  padding: 1px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+th {
+  background-color: #E7EADC;
+  border: none;
+  text-align: center;
+  padding: 1px 4px;
+}
+
+/* 06uberfooter.html */
+
+#footer {
+  clear: both;
+  background: #1F262A url(/static/images/epa_footer.png) no-repeat;
+  width: 1024px;
+  height: 175px;
+  /*padding: 4px;*/
+  /*text-align: center;*/
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  box-shadow: 0 3px 15px -7px #000;
+  -webkit-box-shadow: 0 3px 15px -7px #000;
+  -moz-box-shadow: 0 3px 15px -7px #000;
+}
+#footer li {
+  display: none;
+}
+
+/* Contact Us */
+
+#sortable li {
+	margin: 3px 3px 3px 0;
+	padding: 1px;
+	float: left;
+	width: 35px;
+	height: 35px;
+	font-size: 20px;
+	text-align: center;
+	line-height:35px;
+	cursor:pointer;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	background:#FFA500;
+	color:#fff;
+	font-weight:normal;
+}
+
+/* Form Validation */
+
+form label.error {
+  width: 200px;
+  display: block;
+  float: right;
+  color: red;
+  padding-left: 10px;
+}
+form ul.errorlist li{
+  color: #dd0d0d;
+  padding-left: 4px;
+  font-weight: 700;
+}
+
+/* Date Picker */
+
+div.ui-datepicker-header {
+  background: #F9FBF6;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  border-radius: 2px 2px 0 0;
+  -webkit-border-radius: 2px 2px 0 0;
+  -moz-border-radius: 2px 2px 0 0;
+  box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;
+}
+.ui-datepicker-title {
+  font-weight: 700;
+  font-size: 1.2em;
+  padding: 4px;
+}
+.ui-datepicker-prev {
+  float:left;
+  padding: 4px;
+}
+.ui-datepicker-next {
+  float:right;
+  padding: 4px;
+}
+.ui-datepicker-prev.ui-state-hover,
+.ui-datepicker-next.ui-state-hover {
+  color: #333333;
+  border: none;
+  padding: 4px;
+  text-decoration: underline;
+}
+table.ui-datepicker-calendar {
+  padding: 4px;
+  border-radius: 0 0 2px 2px;
+  -webkit-border-radius: 0 0 2px 2px;
+  -moz-border-radius: 0 0 2px 2px;
+  box-shadow: 3px 3px 15px #CCC;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+  -moz-box-shadow: 3px 3px 15px #CCC;
+}
+.ui-datepicker-calendar a:link, a:visited {
+  color: #333333;
+}
+.ui-state-hover, .ui-state-active {
+  border: 1px solid #333;
+  padding: 1px;
+  background: #F4F7ED;
+}
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited {
+  color: #F9FBF6;
+}
+.ui-datepicker-calendar td {
+  border: 0;
+  padding: 1px;
+  min-height: 22px;
+  min-width: 22px;
+}
+
+/* History Pagination */
+.smartpagination
+{
+    background-color: #356697;
+}
+.smartpagination.normal
+{
+    background-color: #356697;
+    color: #f7f9f4;
+    border: solid 1px #406f97;
+}
+.smartpagination.active
+{
+    background-color: #344C00;
+    color: #f7f9f4;
+    border: solid 1px #406f97;
+}
+.pager.smartpagination .btn
+{
+    background-color: #356697;
+    color: #f7f9f4;
+    border: solid 1px #406f97;
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <bean id="appDbDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="org.apache.derby.jdbc.EmbeddedDriver" />
+		<property name="jdbcUrl" value="jdbc:derby:#{T(chemaxon.util.DotfileUtil).getDotDir().getAbsolutePath()}#{T(System).getProperty('file.separator')}app_db;create=true" />
+		<property name="user" value="" />
+		<property name="password" value="" />
+        <property name="testConnectionOnCheckout" value="true" />
+        <property name="maxPoolSize" value="30" />
+	</bean>
+    
+	<bean id="appDbBuilder" class="chemaxon.jchem.webservice2.EmbeddedDBBuilder" >
+        <property name="publicDbConfigName" value="_appDb" />
+		<property name="dataSource" ref="appDbDataSource" />
+		<property name="autoRecalculate" value="true" />
+	</bean>
+
+</beans>

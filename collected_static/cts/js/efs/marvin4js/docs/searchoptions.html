@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	
+	<title>JChem Web Services Search Options</title>
+	
+	<link rel="stylesheet" href="style/style.css" type="text/css" >
+	<link rel="shortcut icon" href="style/favicon.ico">
+
+</head>
+<body>
+<table>
+   <thead>
+      <tr>
+         <th>Option</th>
+         <th>Type</th>
+         <th>Description</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>queryStructure</td>
+         <td>STRING</td>
+         <td> </td>
+      </tr>
+      <tr>
+         <td>queryStructureFormat</td>
+         <td>STRING</td>
+         <td> </td>
+      </tr>
+      <tr>
+         <td>queryFeatures</td>
+         <td>OPTION GROUP</td>
+         <td>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Option</th>
+                     <th>Type</th>
+                     <th>Description</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>bridgingRLigand</td>
+                     <td>BOOLEAN</td>
+                     <td>default: <b>false</b>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>rLigandEqalityCheck</td>
+                     <td>BOOLEAN</td>
+                     <td>default: <b>false</b>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>attachedDataPrefixes</td>
+                     <td>STRING</td>
+                     <td> </td>
+                  </tr>
+                  <tr>
+                     <td>undefinedRAtom</td>
+                     <td>STRING</td>
+                     <td>
+                        default: <b>GROUP</b>
+                        <ul>
+                           <li>
+                              <b>GROUP</b>
+                              : Group is default, undefined R-atom in query matches a group of one or more connected atoms, including at least one heavy atom<br />
+                           </li>
+                           <li>
+                              <i>GROUP_H</i>
+                              : Undefined R-atom in query matches a group of one or more connected atoms, which can also be a single H atom<br />
+                           </li>
+                           <li>
+                              <i>GROUP_H_EMPTY</i>
+                              : Same as GROUP_H plus the target atoms can be the empty set (empty set match is allowed for isolated or one-attachment R-atoms only)<br />
+                           </li>
+                           <li>
+                              <i>ANY</i>
+                              : Undefined R-atom matches any single atom in target<br />
+                           </li>
+                           <li>
+                              <i>UNDEFINED</i>
+                              : Undefined R-atom matches only an undefined R atom in target<br />
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>implicitHMatching</td>
+                     <td>STRING</td>
+                     <td>
+                        default: <b>DEFAULT</b>
+                        <ul>
+                           <li>
+                              <b>DEFAULT</b>
+                              : Default enables matching in most cases, but in case of duplicate search the default value is disabled<br />
+                           </li>
+                           <li>
+                              <i>ENABLED</i>
+                              : The number of implicit hydrogens is checked<br />
+                           </li>
+                           <li>
+                              <i>DISABLED</i>
+                              : The number of implicit hydrogens is not checked<br />
+                           </li>
+                           <li>
+                              <i>IGNORE</i>
+                              : Implicit hydrogens are ignored during searching<br />
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>exactQueryAtomMatching</td>
+                     <td>BOOLEAN</td>
+                     <td>default: <b>false</b>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>attachedDataMatch</td>
+                     <td>STRING</td>
+                     <td>
+                        default: <b>IGNORE</b>
+                        <ul>
+                           <li>
+                              <b>IGNORE</b>
+                              : Ignore is default, attached data is ignored in search<br />
+                           </li>
+                           <li>
+                              <i>GENERAL</i>
+                              : If there is attached data defined in query, attached data fields in the query and target with the same name are compared<br />
+                           </li>
+                           <li>
+                              <i>EXACT</i>
+                              : In exact mode both operators and values must match (an attached data existing only in target prevents matching)<br />
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+      <tr>
+         <td>polymersAndBrackets</td>
+         <td>OPTION GROUP</td>
+         <td>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Option</th>
+                     <th>Type</th>
+                     <th>Description</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>copolymerMatching</td>
+                     <td>BOOLEAN</td>
+                     <td>default: <b>false</b>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>monomerTransform</td>
+                     <td>BOOLEAN</td>
+                     <td>default: <b>true</b>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>endgroupMatching</td>
+                     <td>BOOLEAN</td>
+                     <td>default: <b>true</b>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>mixSgroupMatching</td>
+                     <td>BOOLEAN</td>
+                     <td>default: <b>false</b>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>phaseShiftedMatching</td>
+                     <td>BOOLEAN</td>
+                     <td>default: <b>true</b>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>considerPolymerBrackets</td>
+                     <td>BOOLEAN</td>
+                     <td>default: <b>false</b>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+      <tr>
+         <td>similarity</td>
+         <td>OPTION GROUP</td>
+         <td>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Option</th>
+                     <th>Type</th>
+                     <th>Description</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>descriptor</td>
+                     <td>STRING</td>
+                     <td>
+                        default: <b>CFP</b>
+                        <ul>
+                           <li>
+                              <b>CFP</b>
+                              : CFP is default, chemical hashed fingerprints<br /><a href="http://www.chemaxon.com/jchem/doc/user/fingerprint.html">Detailed description</a>
+                           </li>
+                           <li>
+                              <i>ECFP</i>
+                              : Extended-connectivity fingerprints (circular topological fingerprints)<br /><a href="http://www.chemaxon.com/jchem/doc/user/ECFP.html">Detailed description</a>
+                           </li>
+                           <li>
+                              <i>FCFP</i>
+                              : Functional-class fingerprints (generalizations that have focus on the functional roles of the atoms instead of full specificity)<br /><a href="http://www.chemaxon.com/jchem/doc/user/ECFP.html#fcfp">Detailed description</a>
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>threshold</td>
+                     <td>DOUBLE</td>
+                     <td>default: <b>0.8</b>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+      <tr>
+         <td>tautomers</td>
+         <td>OPTION GROUP</td>
+         <td>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Option</th>
+                     <th>Type</th>
+                     <th>Description</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>tautomerSearch</td>
+                     <td>STRING</td>
+                     <td>
+                        <ul>
+                           <li>
+                              <i>ON</i>
+                              : Tautomers of the query and the target are taken into account<br />
+                           </li>
+                           <li>
+                              <i>OFF</i>
+                              : Tautomers of the query and the target are not taken into account<br />
+                           </li>
+                           <li>
+                              <i>DEFAULT</i>
+                              : Default bahavior is tautomer search is off except in case of duplicate search in a database table created with
+                              "Duplicate search uses tautomers" option<br />
+                           </li>
+                           <li>
+                              <i>ON_IGNORE_TAUTOMERSTEREO</i>
+                              : Switching tautomer searching on without considering stereochemistry in tautomer regions<br /><a href="https://www.chemaxon.com/jchem/doc/user/query_searchoptions.html#tautomer">Examples</a>
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+      <tr>
+         <td>stereoChemistry</td>
+         <td>OPTION GROUP</td>
+         <td>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Option</th>
+                     <th>Type</th>
+                     <th>Description</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>alleneStereo</td>
+                     <td>BOOLEAN</td>
+                     <td> </td>
+                  </tr>
+                  <tr>
+                     <td>doubleBondStereo</td>
+                     <td>BOOLEAN</td>
+                     <td> </td>
+                  </tr>
+                  <tr>
+                     <td>doubleBondStereoMatchingMode</td>
+                     <td>STRING</td>
+                     <td>
+                        default: <b>MARKED</b>
+                        <ul>
+                           <li>
+                              <i>NONE</i>
+                              : No double bond cis/trans is considered<br />
+                           </li>
+                           <li>
+                              <b>MARKED</b>
+                              : Marked is default, double bond cis/trans stereo is checked for double bonds designated by the stereo search flag only<br />
+                           </li>
+                           <li>
+                              <i>ALL</i>
+                              : All double bonds are checked for cis/trans stereo matching<br /><a href="https://www.chemaxon.com/jchem/doc/user/query_stereo_searchoptions.html#doublebondstereo">Examples</a>
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>stereoModel</td>
+                     <td>STRING</td>
+                     <td>
+                        default: <b>AUTO</b>
+                        <ul>
+                           <li>
+                              <b>AUTO</b>
+                              : Auto is default, for substructure search or query tables it is stereo model local, otherwise it is stereo model global<br />
+                           </li>
+                           <li>
+                              <i>LOCAL</i>
+                              : When a symmetric atom/bond in the query is specified, this method only matches target atoms/bonds with specified stereochemistry<br />
+                           </li>
+                           <li>
+                              <i>COMPREHENSIVE</i>
+                              : Similar to the local stereo model, except when the target is symmetrical. 
+                              In the symmetrical target case the matching is accepted, regardless of stereo information<br />
+                           </li>
+                           <li>
+                              <i>GLOBAL</i>
+                              : The full stereospecific environment is always available for both the query and target structures (therefore a symmetrical atom/bond with stereo 
+                              configuration may match to an unspecified strereo atom/bond)<br /><a href="https://www.chemaxon.com/jchem/doc/user/query_stereochemistry.html#stereomodels">Examples</a>
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>stereoSearchType</td>
+                     <td>STRING</td>
+                     <td>
+                        <ul>
+                           <li>
+                              <i>EXACT</i>
+                              : Equality is needed in stereochemistry<br />
+                           </li>
+                           <li>
+                              <i>OFF</i>
+                              : Stereo information is not considered during searching<br />
+                           </li>
+                           <li>
+                              <i>ON</i>
+                              : When a specific stereochemistry in the query is specified, this method only matches target atoms/bonds 
+                              with specified stereochemistry, nonspecified query matches all<br />
+                           </li>
+                           <li>
+                              <i>DIASTEREOMER</i>
+                              : The diastereomer targets of a given query structure are also matched<br />
+                           </li>
+                           <li>
+                              <i>ENANTIOMER</i>
+                              : The enantiomer targets of a given query structure are also matched<br />
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>tetrahedralStereo</td>
+                     <td>BOOLEAN</td>
+                     <td> </td>
+                  </tr>
+                  <tr>
+                     <td>absoluteStereo</td>
+                     <td>STRING</td>
+                     <td>
+                        <ul>
+                           <li>
+                              <i>ALWAYS_ON</i>
+                              : Always treats chiral centers as absolute configuration<br />
+                           </li>
+                           <li>
+                              <i>CHIRAL_FLAG</i>
+                              : Chiral flag in molecule determines absolute configuration when absolute stereo is switched off<br /><a href="http://www.chemaxon.com/jchem/doc/user/query_stereochemistry.html#relative_stereo">See</a>
+                           </li>
+                           <li>
+                              <i>TABLE_OPTION</i>
+                              : Gets stereo setting from property table<br />
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>axialStereo</td>
+                     <td>BOOLEAN</td>
+                     <td> </td>
+                  </tr>
+                  <tr>
+                     <td>synAntiStereo</td>
+                     <td>BOOLEAN</td>
+                     <td> </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+      <tr>
+         <td>bonds</td>
+         <td>OPTION GROUP</td>
+         <td>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Option</th>
+                     <th>Type</th>
+                     <th>Description</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>vagueBondLevel</td>
+                     <td>STRING</td>
+                     <td>
+                        default: <b>AMBIGUOUS</b>
+                        <ul>
+                           <li>
+                              <b>AMBIGUOUS</b>
+                              : Vague bond options are only used when exactBondMatching is false. Default is ambiguous, which handles 
+                              -5-membered rings with ambiguous aromaticity<br /><a href="https://www.chemaxon.com/jchem/doc/user/query_searchoptions.html#bridging">Example</a>
+                           </li>
+                           <li>
+                              <i>RING_OR_AROMATIC</i>
+                              : Caution: the following options should be used carefully, because they make fingerprint screening inefficient
+                              In the query all single ring bonds are replaced by "single or aromatic" 
+                              And all double ring bonds are replaced by "double or aromatic" prior to search<br />
+                           </li>
+                           <li>
+                              <i>ALL_OR_AROMATIC</i>
+                              : In the query all single bonds are replaced by "single or aromatic" 
+                              and all double bonds are replaced by "double or aromatic" prior to search<br />
+                           </li>
+                           <li>
+                              <i>IGNORE_BOND_TYPES</i>
+                              : All bond types are ignored (all bonds are replaced by "any" bonds prior to search)<br />
+                           </li>
+                           <li>
+                              <i>OFF</i>
+                              : Does not perform vague bond matching<br /><a href="https://www.chemaxon.com/jchem/doc/user/query_searchoptions.html#vaguelevels">Examples</a> where RING_OR_AROMATIC corresponds to level2, ALL_OR_AROMATIC to level 3 and IGNORE_BOND_TYPES to level 4
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>exactBondMatching</td>
+                     <td>BOOLEAN</td>
+                     <td>default: <b>false</b>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+      <tr>
+         <td>markush</td>
+         <td>OPTION GROUP</td>
+         <td>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Option</th>
+                     <th>Type</th>
+                     <th>Description</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>homologyBroadTranslation</td>
+                     <td>STRING</td>
+                     <td>
+                        default: <b>ALL</b>
+                        <ul>
+                           <li>
+                              <b>ALL</b>
+                           </li>
+                           <li>
+                              <i>MARKED</i>
+                           </li>
+                           <li>
+                              <i>NONE</i>
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+      <tr>
+         <td>searchType</td>
+         <td>STRING</td>
+         <td>
+            default: <b>SUBSTRUCTURE</b>
+            <ul>
+               <li>
+                  <b>SUBSTRUCTURE</b>
+                  : Default<br />
+               </li>
+               <li>
+                  <i>SIMILARITY</i>
+               </li>
+               <li>
+                  <i>FULL</i>
+               </li>
+               <li>
+                  <i>DUPLICATE</i>
+               </li>
+               <li>
+                  <i>SUPERSTRUCTURE</i>
+               </li>
+               <li>
+                  <i>FULL_FRAGMENT</i>
+               </li>
+               <li>
+                  <i>NO_ABAS</i>
+               </li>
+               <li>
+                  <i>NO_SCREEN</i>
+               </li>
+            </ul>
+         </td>
+      </tr>
+      <tr>
+         <td>atomMatching</td>
+         <td>OPTION GROUP</td>
+         <td>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Option</th>
+                     <th>Type</th>
+                     <th>Description</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>chargeMatching</td>
+                     <td>STRING</td>
+                     <td>
+                        default: <b>ON</b>
+                        <ul>
+                           <li>
+                              <b>ON</b>
+                              : On is default, noncharged (lack of charge information) query atoms match all target, 
+                              but charged query matches only exactly same charged target<br />
+                           </li>
+                           <li>
+                              <i>EXACT</i>
+                              : Noncharged query only matches noncharged target, and charged query matches only exactly same charged<br />
+                           </li>
+                           <li>
+                              <i>IGNORE</i>
+                              : Charge information is ignored during searching<br /><a href="http://www.chemaxon.com/jchem/doc/user/query_features.html#iso_charge_rad">See examples</a>
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>radicalMatching</td>
+                     <td>STRING</td>
+                     <td>
+                        default: <b>ON</b>
+                        <ul>
+                           <li>
+                              <b>ON</b>
+                              : On is default, nonradical query matches all, radical query matches only radical target<br />
+                           </li>
+                           <li>
+                              <i>EXACT</i>
+                              : Radical query matches only radical target, nonradical query only matches nonradical<br />
+                           </li>
+                           <li>
+                              <i>IGNORE</i>
+                              : Radical information is ignored during searching<br /><a href="http://www.chemaxon.com/jchem/doc/user/query_features.html#iso_charge_rad">See examples</a>
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>valenceMatching</td>
+                     <td>BOOLEAN</td>
+                     <td>default: <b>true</b>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>checkSpHyb</td>
+                     <td>BOOLEAN</td>
+                     <td>default: <b>false</b>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>isotopeMatching</td>
+                     <td>STRING</td>
+                     <td>
+                        default: <b>ON</b>
+                        <ul>
+                           <li>
+                              <b>ON</b>
+                              : On is default, nonisotope query matches all, isotope query matches only isotope target<br />
+                           </li>
+                           <li>
+                              <i>EXACT</i>
+                              : Isotope query matches only isotope target, nonisotope query only matches nonisotope<br />
+                           </li>
+                           <li>
+                              <i>IGNORE</i>
+                              : Isotope information is ignored during searching<br /><a href="http://www.chemaxon.com/jchem/doc/user/query_features.html#iso_charge_rad">See examples</a>
+                           </li>
+                        </ul>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+      <tr>
+         <td>general</td>
+         <td>OPTION GROUP</td>
+         <td>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Option</th>
+                     <th>Type</th>
+                     <th>Description</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>returnNonHits</td>
+                     <td>BOOLEAN</td>
+                     <td>default: <b>false</b>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>maxResultCount</td>
+                     <td>INTEGER</td>
+                     <td> </td>
+                  </tr>
+                  <tr>
+                     <td>timeoutLimitMilliseconds</td>
+                     <td>INTEGER</td>
+                     <td> </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+   </tbody>
+</table>
+
+</body>
+</html>

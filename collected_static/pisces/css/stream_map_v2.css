@@ -1,0 +1,736 @@
+#map {
+    width: 100%;
+    height: 650px;
+}
+
+#mapDiv {
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#streamData {
+    padding: 10px;
+    width: 100%;
+}
+
+th {
+    font-size: 12px;
+    border: none !important;
+    text-align: center !important;
+}
+
+td {
+    font-size: 11px;
+}
+
+.table {
+    border-bottom: 0 !important;
+}
+
+.region-highlighted {
+    margin: 0 0 0 0 !important;
+}
+
+table.dataTable.display tbody tr.odd {
+    background-color: lightgray;
+}
+
+table.dataTable.display tbody tr.odd > .sorting_1 {
+    background-color: lightgray;
+}
+
+#fishTable {
+    table-layout: fixed;
+}
+
+.select-checkbox {
+    line-height: normal !important;
+}
+
+#fishTable tr *, td * {
+    border: 0 !important;
+    height: 15px !important;
+    padding: 4px !important;
+    text-align: center !important;
+    font-size: 12px;
+    line-height: 0px !important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#fishTable th * {
+    border: 0 !important;
+    border-bottom: solid;
+    border-bottom-width: 1px;
+}
+
+#fishTable > tbody > tr:hover {
+    cursor: default;
+    background-color: rgba(160, 160, 160, 1.0) !important;
+}
+
+#fishTable > tbody > tr:hover > td {
+    background-color: rgba(160, 160, 160, 1.0) !important;
+}
+
+#filteredFishTable tr *, td * {
+    border: 0 !important;
+    height: 15px !important;
+    padding: 4px !important;
+    text-align: center !important;
+    font-size: 12px;
+    line-height: 0px !important;
+}
+
+#filteredFishTable th * {
+    border: 0 !important;
+    border-bottom: solid;
+    border-bottom-width: 1px;
+}
+
+#filteredFishTable > tbody > tr:hover {
+    cursor: default;
+    background-color: rgba(160, 160, 160, 1.0) !important;
+}
+
+#filteredFishTable > tbody > tr:hover > td {
+    background-color: rgba(160, 160, 160, 1.0) !important;
+}
+
+#calc_table {
+    float: left;
+    margin: 0 3px;
+    table-layout: auto;
+    width: 100%;
+}
+
+#calc_table tr *, td * {
+    border: 0 !important;
+    height: 15px !important;
+    padding: 4px !important;
+    text-align: center !important;
+    font-size: 12px;
+    line-height: 0px !important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#calc_table th * {
+    border: 0 !important;
+    border-bottom: solid;
+    border-bottom-width: 1px;
+}
+
+#calc_table_wrapper {
+    display: inline-block;
+    width: 65%;
+    float: left;
+    margin-top: 0;
+}
+
+.box > .pane-content {
+    border-bottom-width: 1px !important;
+}
+
+/*remove all EPA css transitions for leaflet map*/
+div.mapNoTransition * {
+    -o-transition-property: none !important;
+    -moz-transition-property: none !important;
+    -ms-transition-property: none !important;
+    -webkit-transition-property: none !important;
+    transition-property: none !important;
+    transition: none !important;
+}
+
+.stream_info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+#stream_info h5 {
+    margin: 0 0 5px;
+    color: #777;
+}
+
+#stream_info_table table {
+    width: 100%;
+}
+
+#stream_info_table td {
+    font-size: 9px;
+    border: none !important;
+    background: rgba(255, 255, 255, 0.0);
+    padding: 2px 3px !important;
+}
+
+/*Filter Buttons*/
+.filterButton {
+    width: 100% !important;
+    height: 25px !important;
+    color: black;
+    text-align: center !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    font-size: 12px !important;
+    border-radius: 5px !important;
+    margin: 5px 0 !important;
+    white-space: nowrap !important;
+    padding: 0 !important;
+    box-shadow: inset 0px 1px 0px #2ab7ec, 0px 1px 0px 0px #07526e, 0px 4px 4px #999 !important;
+    vertical-align: bottom !important;
+}
+
+.filterButton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.filterApplyButton {
+    box-shadow: 0px 2px 2px black !important;
+    background-color: #EEEEEE !important;
+    color: black !important;
+    vertical-align: middle !important;
+}
+
+.filterApplyButton:hover {
+    background-color: #D6D6D6 !important;
+}
+
+.s_parameter {
+    border-radius: 4px;
+    padding: 2px 4px 4px 4px;
+    background-color: transparent;
+    width: 12%;
+    margin: 1px 1px;
+    display: inline-block;
+    font-size: 14px;
+}
+.s_parameter input {
+    max-width: 50%;
+    text-align: center;
+}
+
+#update_fishtable {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.fish_filter_apply {
+    width: 8%;
+    margin: 1px 1px;
+    display: inline-block;
+}
+
+#filter_field {
+    font-size: 10px;
+    text-align: center;
+}
+
+.p_title {
+    font-weight: bold;
+}
+
+#filter_field_left {
+    width: 50%;
+    float: left;
+    font-size: 10px;
+}
+
+#filter_field_right {
+    width: 50%;
+    float: right;
+    font-size: 10px;
+}
+
+tr.filteredInFishTable td {
+    background-color: #86C1FF !important;
+}
+
+/*Accordion css*/
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 10px 18px;
+    width: 100%;
+    border: none;
+    outline: none;
+    margin: 0 !important;
+    text-align: center;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #86C1FF;
+}
+
+div.filterTitle {
+    /*background-color: #86C1FF;*/
+    color: black;
+    font-weight: bold;
+    width: 100%;
+    border: none;
+    outline: none;
+    margin: 0 !important;
+    text-align: center;
+    height: 35px;
+    padding-top: 4px;
+}
+
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+    margin-bottom: 75px;
+}
+
+button.accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+button.accordion.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+td.details-control {
+    background: url('/static_qed/pisces/images/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background: url('/static_qed/pisces/images/details_close.png') no-repeat center center;
+}
+
+div.filtering {
+    background-color: #86C1FF;
+}
+
+input[type="checkbox"]:checked + label::before {
+    display: none;
+}
+
+input[type="checkbox"] + label::before {
+    display: none;
+}
+
+.huc_calc_toggle {
+    position: absolute;
+    left: 46%;
+    height: 24px;
+    float: left;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.huc_calc_toggle-checkbox, .huc_calc_toggle-checkbox {
+    display: none;
+}
+
+.huc_calc_toggle-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 6px;
+    width: 120px;
+    box-shadow: 0px 2px 2px black;
+    margin-left: 10px;
+}
+
+.huc_calc_toggle-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+
+.huc_calc_toggle-inner:before, .huc_calc_toggle-inner:after {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 24px;
+    padding: 0;
+    line-height: 24px;
+    font-size: 12px;
+    color: white;
+    font-family: Trebuchet, Arial, sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.huc_calc_toggle-inner:before {
+    content: "Display Calculator";
+    background-color: #EEEEEE;
+    text-align: center;
+    color: black;
+}
+
+.huc_calc_toggle-inner:after {
+    content: "Hide Calculator";
+    background-color: #86C1FF;
+    text-align: center;
+    color: black;
+}
+
+.huc_calc_toggle-switch {
+    display: block;
+    width: 13px;
+    margin: 5.5px;
+    background: #FFFFFF;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 72px;
+    border: 2px solid #75A6D9;
+    border-radius: 6px;
+    transition: all 0.3s ease-in 0s;
+}
+
+.huc_calc_toggle-checkbox:checked + .huc_calc_toggle-label .huc_calc_toggle-inner {
+    margin-left: 0;
+}
+
+.huc_calc_toggle-checkbox:checked + .huc_calc_toggle-label .huc_calc_toggle-switch {
+    right: 0px;
+}
+
+div.ui-slider-horizontal {
+    height: 0.3em !important;
+}
+
+span.ui-slider-handle {
+    width: 0.8em !important;
+    height: 0.8em !important;
+}
+
+div #hucFish {
+    width: 45%;
+    margin: 0 0px 0 5%;
+    display: inline-block;
+    float: left;
+}
+
+#fishTable input {
+    display: inline-block !important;
+    vertical-align: super !important;
+}
+
+div #abundance_calc {
+    width: 45%;
+    margin: 0 5% 0 0px;
+    display: inline-block;
+    float: right;
+}
+
+input.biomass_button {
+    margin-top: 45px !important;
+    padding: 8px 16px !important;
+    font-size: 14px;
+    box-shadow: 0px 2px 2px black !important;
+    background-color: #EEEEEE !important;
+    color: black !important;
+}
+
+input.biomass_button:hover, input.biomass_reset_button:hover, input.save_to_csv_button:hover {
+    background-color: #D6D6D6 !important;
+}
+
+input.biomass_reset_button {
+    padding: 8px 16px !important;
+    font-size: 14px;
+    box-shadow: 0px 2px 2px black !important;
+    background-color: #EEEEEE !important;
+    color: black !important;
+}
+
+input.save_to_csv_button {
+    font-size: 12px;
+    box-shadow: 0px 2px 2px black !important;
+    background-color: #EEEEEE !important;
+    color: black;
+    margin: 15px 0;
+}
+
+/*Loader*/
+#loader {
+    position: sticky;
+    top: 50%;
+    z-index: 9999;
+    margin: -100px auto 0 auto;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 100px;
+    height: 100px;
+    -webkit-animation: spin 1s linear infinite;
+    -moz-animation: spin 1s linear infinite;
+    -o-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    transition: 0.5s ease-in-out;
+}
+
+#loader_background {
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 9998;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#calc_table input {
+    padding: 0;
+    font: inherit;
+    width: 75%;
+    display: inline;
+    background: #98DED9;
+}
+
+#filteredFishTable_wrapper * {
+    overflow-x: hidden !important;
+}
+
+.dataTables_scrollHeadInner div {
+    width: 100% !important;
+}
+
+div.dataTables_scrollBody {
+    overflow-x: hidden !important;
+}
+
+.select-checkbox > input {
+    left: 0 !important;
+    position: relative !important;
+}
+
+.removed_fish * {
+    background-color: rgba(100, 100, 100, 0.8) !important;
+}
+
+.cell-edited {
+    background-color: rgba(11, 144, 225, 0.5);
+}
+
+/*HUC/Stream search toggle*/
+.streamSearch {
+    position: relative;
+    float: right;
+    margin: 10px 10px 0 10px;
+    display: inline-flex;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.streamSearch-checkbox {
+    display: none;
+}
+
+.streamSearch-label {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #E3E3E3;
+    border-radius: 36px;
+    width: 135px;
+    height: 30px;
+    margin: 7px 8px 0 0;
+}
+
+.streamSearch-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+
+.streamSearch-inner:before, .streamSearch-inner:after {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 36px;
+    padding: 0;
+    line-height: 26px;
+    font-size: 12px;
+    color: white;
+    font-family: Trebuchet, Arial, sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.streamSearch-inner:before {
+    content: "Search HUCs";
+    padding-left: 10px;
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.streamSearch-inner:after {
+    content: "Stream Lat/Lon";
+    padding-right: 10px;
+    background-color: #FFFFFF;
+    color: #000000;
+    text-align: right;
+}
+
+.streamSearch-switch {
+    display: block;
+    width: 20px;
+    margin: 4px;
+    background: #A1A1A1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 102px;
+    border: 2px solid #E3E3E3;
+    border-radius: 36px;
+    transition: all 0.3s ease-in 0s;
+}
+
+.streamSearch-checkbox:checked + .streamSearch-label .streamSearch-inner {
+    margin-left: 0;
+}
+
+.streamSearch-checkbox:checked + .streamSearch-label .streamSearch-switch {
+    right: 0px;
+    background-color: #27A1CA;
+}
+
+.streamSearchForm {
+    display: inline-block;
+    float: right;
+    margin: 1px 1px;
+    max-height: 620px;
+    position: relative;
+}
+
+.streamSearchValue {
+    font-size: 12px;
+    float: left;
+    display: inline-block;
+    width: 75%;
+    height: 22px;
+    padding-left: 5px;
+    margin-top: 10px
+}
+
+input.fishSearchButton {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB2aWV3Qm94PSIwIDAgMjg5LjEyMjIyIDI4OC4yOTYwOCIgaGVpZ2h0PSIxMnB4IiB3aWR0aD0iMTJweCI+DQo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjYzLjQzMTIsLTM4OS42MzEyNCkiPg0KPHBhdGggc3Ryb2tlLXdpZHRoPSI5Ljc1NjE3MzEzIiBmaWxsPSIjRkZGIiBkPSJNMjk1LjkzODk5LDQyMi4wODZjLTQzLjI3Mjk5LDQzLjI3Mi00My4zNzg5OSwxMTQuMTU5LTAuMTA1OTgsMTU3LjQzMjAxLDM2LjY2Mjk5LDM2LjY2MzAyLDkzLjIwMTk5LDQyLjI1LDEzNS45MjA5OSwxNi43NjU5OWw3Ni4zNDM5OSw3NC4yMzQ5OGMxMC41MDY5OSwxMC4xOTgsMjcuMDg0OTksOS44MjEwNSwzNy4xMTY5Ny0wLjg0Mzk5LDEwLjAzMzAyLTEwLjY2NDk4LDkuNzcwMDItMjcuNDQ1OTktMC43Mzc5Ny0zNy42NDM5OGwtNzUuMTgyOTgtNzIuODY0MDJjMjYuMzYwOTktNDIuODQ2OTgsMjEuMDA3OTktMTAwLjA0NDk4LTE2LjAyODAyLTEzNy4wODA5OS00My4yNzI5OC00My4yNzMwMS0xMTQuMDU0OTktNDMuMjczMDEtMTU3LjMyNywwem0zMS43Mzg5OSwzMS43MzkwMWMyNi4xMDIwMi0yNi4xMDIwMiw2Ny43NDYwMy0yNi4xMDIwMiw5My44NDgwMiwwLDI2LjEwMTk5LDI2LjEwMTk5LDI2LjEwMTk5LDY3Ljc0NTk4LDAsOTMuODQ3OTYtMjYuMTAxOTksMjYuMTAyMDYtNjcuNzQ2LDI2LjEwMjA2LTkzLjg0ODAyLDAtMjYuMTAxOTktMjYuMTAxOTktMjYuMTAxOTktNjcuNzQ1OTcsMC05My44NDc5NnoiLz4NCjwvZz4NCjwvc3ZnPg==");
+    background-color: #02bfe7;
+    background-repeat: no-repeat;
+    background-size: 10px 10px;
+    background-position: 50%;
+    border-color: #02bfe7;
+    float: left;
+    display: inline-block;
+    width: 10px;
+    height: 22px;
+    margin-left: 0 !important;
+    border-radius: 0 3px 3px 0 !important;
+    margin-top: 10px;
+}
+
+#searchError {
+    font-weight: bold;
+    font-size: 12px;
+    color: red;
+    position: absolute;
+    margin: 40px 0 0;
+    padding: 0 0 0 150px;
+}
+
+.leaflet-bar {
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65) !important;
+    border-radius: 0px !important;
+    border-bottom-left-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+}
+
+.box > .pane-content > :last-child {
+    padding: 5px;
+}
+
+#rarity_value {
+    border: 0;
+    color: black;
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+    background-color: transparent;
+    height: 10px;
+    vertical-align: super;
+}
+
+#rarity_range {
+    width: 75%;
+    margin: -7px 0 3px 15%;
+}
+
+#biomass_weight_field {
+    font-size: 12px;
+    margin-bottom: 5px;
+    margin-left: 3px;
+}
+
+#biomass_count_field {
+    font-size: 12px;
+    margin-left: 3px;
+}
+
+#fish_assemblage_estimator {
+    width: 45%;
+    margin: 0px 5% 0px 0px;
+    display: none;
+    float: right;
+    left: 0;
+}
+
+#filteredFishTable {
+    padding: 0 2px;
+    margin: 0 2px;
+    table-layout: fixed;
+}
+
+#error_msg {
+    margin-left: 50px;
+    font-weight: bold;
+    color: red;
+}
+
+.streamChem {
+    background-color: #08520F !important;
+    box-shadow: inset 0px 1px 0px #067D33, 0px 1px 0px 0px #0A6612, 0px 4px 4px #999 !important;
+}
+
+.fishRarity {
+    background-color: #663E21 !important;
+    box-shadow: inset 0px 1px 0px #875C24, 0px 1px 0px 0px #704424, 0px 4px 4px #999 !important;
+}

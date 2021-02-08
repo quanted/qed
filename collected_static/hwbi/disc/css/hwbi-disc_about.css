@@ -1,0 +1,149 @@
+/*Contact Us*/
+
+#block-pane-epa-web-area-connect {
+    float: right;
+}
+
+/*HWBI Intro*/
+.hwbi_intro {
+    border-top: 3px #183E62 solid;
+    font-size: 26px;
+    padding: 25px 20px 50px;
+}
+
+
+/*Quick Menu*/
+#hwbi_quick_menu{
+    display: table;
+    width: 101%;
+    table-layout: fixed;
+    padding: 0 4px 0 0;
+}
+
+#hwbi_quick_menu ul {
+    display: table-row;
+    margin: 0;
+    padding: 0;
+}
+
+#hwbi_quick_menu ul li {
+    list-style: none;
+    display: table-cell;
+    text-align: center;
+    background-color: #235A8E;
+}
+
+#hwbi_quick_menu ul li:hover {
+    background-color: #183E62;
+}
+
+.menu_tab_link:visited {
+    color: white;
+}
+
+.menu_tab_link {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 25px 40px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.menu_border_focus {
+    border: 3px;
+    border-color: white;
+    border-style: solid;
+    border-radius: 15px 15px 0 0;
+    background-clip: content-box;
+}
+
+.menu_border_right {
+    border: 3px;
+    border-color: white;
+    border-style: solid;
+    border-radius: 0 15px 0 0;
+    background-clip: content-box;
+}
+
+.menu_border_left {
+    border: 3px;
+    border-color: white;
+    border-style: solid;
+    border-radius: 15px 0 0 0;
+    background-clip: content-box;
+}
+
+/*About Body*/
+#community_search {
+    margin: 0 3px;
+    padding: 10px;
+    display: table;
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+    height: 250px;
+    background-color: #7DAED3;
+}
+
+#community_search_form {
+    padding-top: 50px;
+    position: absolute;
+    width: 100%;
+    display: table;
+}
+
+#community_search_field {
+    width: 80%;
+    line-height: 2;
+    border: 4px #44546A solid;
+    border-radius: 10px;
+    height: 0;
+    padding: 18px 0 18px 10px;
+    vertical-align: middle;
+    font-size: 18px;
+    font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+    display: table-cell;
+    position: relative;
+}
+
+#community_search_field:focus {
+    outline-width: 0;
+}
+
+#community_search_label {
+    float: left;
+    padding-left: 10%;
+    font-size: 26px;
+}
+
+#community_search_button {
+    width: 0;
+    margin: 0 0 0 -39.5px;
+    height: 0;
+    border-radius: 0 6px 6px 0;
+    position: relative;
+    line-height: 2;
+    vertical-align: middle;
+    padding: 18px 26px 17px;
+}
+
+/*Quote Body*/
+.quote {
+    display: none;
+    color: white;
+    transition: none;
+    -webkit-transition: none;
+}
+
+#quote_body {
+    background-color: #183E62;
+    margin: 3px 3px 0 3px;
+    padding: 10px 10px 10px 25px;
+    display: table;
+    text-align: left;
+    width: 100%;
+    max-width: 100%;
+    height: 250px;
+    font-size: 28px;
+}

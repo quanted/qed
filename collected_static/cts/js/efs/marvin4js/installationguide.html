@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+	<script src="js/jquery-1.8.2.min.js"></script>
+	<script src="js/scripts.js"></script>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" href="style/favicon.ico">
+
+	<title>Installation Guide</title>
+	<script type="text/javascript">
+		serviceConfig = {
+			"contextPath": "${baseUrl}",
+			"serviceLocation": "/rest-v0",
+		};
+	</script>
+</head>
+<body>
+
+    <p>JChem Web Services REST API provides an easy way to store, search and calculate molecule properties through web services. This quick start guide shows you how to install and start working with our web services.</p>
+
+
+    <h1>1. Installing the WAR File</h1>
+    
+    <p>Web Services are shipped in the form of a <a href="http://www.chemaxon.com/download/jchem-web-services/">WAR</a> file. You can install it into an Apache Tomcat or Eclipse Jetty container.</p>
+    <p>This product is tested with:</p>
+    <ul>
+    	<li>JVM 1.6.0_30 (64bit)</li>
+    	<li>Apache Derby 10.9.1.0 - (1344872)</li>
+    	<li>Microsoft SQL Server 10.00.2531</li>
+    	<li>MySQL 5.5.29</li>
+    </ul>
+    <p>The JVM parameters which we recommend are: <code>-Xmx1500m -XX:MaxPermSize=210m</code></p>
+
+    <h2>1.1. Deploying the WAR into a Jetty Container</h2>
+
+    <p>Jetty 9 can be downloaded from <a href="http://download.eclipse.org/jetty/">download.eclipse.org</a>. After downloading and installing Jetty:</p>
+    <ul>
+    	<li>on Windows system create the <code>%HOMEPATH%/chemaxon</code> directory with write permissions</li>
+        <li>on Linux/Mac systems create a <code>~/.chemaxon</code> directory with write permissions</li>
+    	<li>copy your <code>license.cxl</code> file to this directory</li>
+    	<li>copy the WAR file into Jetty's <code>webapps</code> directory</li>
+    	<li>set <code>JAVA_OPTS=-Xmx1500m -XX:MaxPermSize=210m</code></li>
+    	<li>start the container with: <code>java -jar start.jar</code></li>
+    </ul>
+
+    <h2>1.2. Deploying the WAR into a Tomcat Container</h2>
+    <p>Tomcat 7 can be downloaded from <a href="http://tomcat.apache.org/download-70.cgi">tomcat.apache.org</a>. After downloading and installing Tomcat:</p>
+    <ul>
+    	<li>on Windows system create the <code>%HOMEPATH%/chemaxon</code> directory with write permissions</li>
+    	<li>on Linux/Mac systems create a <code>~/.chemaxon</code> directory with write permissions</li>
+    	<li>copy the <code>license.cxl</code> file to this directory as well</li>
+    	<li>edit the <code>webapps\manager\WEB-INF\web.xml</code> file and increase the WAR file restriction from 50MB to 500MB (search for the <code>&lt;multipart-config&gt;</code> tag) and multiply the <code>&lt;max-file-size&gt;</code> and the <code>&lt;max-request-size&gt;</code> tags by 10, too</li>
+    	<li>connect to the Tomcat server (by default: <code>http://localhost:8080/</code>)</li>
+    	<li>log in to Tomcat's Manager app using the credentials specified in <code>tomcat-users.xml</code></li>
+    	<li>set <code>JAVA_OPTS=-Xmx1500m -XX:MaxPermSize=210m</code></li>
+    	<li>upload the WAR file by selecting Deploy/War file to deploy</li>
+    </ul>
+    
+	<h2 id="detailedinstallwin">1.3. Detailed installation guide for Windows 7 and Tomcat 7.0</h2> 
+	<p>You must have an installed Oracle 64-bit Java JRE or JDK.</p>
+	
+	<ol>
+		<li>Download the JChem Web Services from <a href="https://www.chemaxon.com/download/jchem-web-services/">chemaxon.com</a>, unzip the downloaded archive to get the <code>webservices.war</code> file.</li>
+
+		<li>Download and install <code>Tomcat 7.0.42</code> from <a href="http://tomcat.apache.org/download-70.cgi">tomcat.apache.org</a>. Choose the <code>32-bit/64-bit Windows Service Installer</code> from Binary Distribution<br>
+		After downloading and installing Tomcat (with default settings) it is running in the background. You can stop and start again Tomcat by opening the "Monitor Tomcat" program selecting the "General” tab, Start/Stop options are in the bottom line.</li>
+
+		<li>Increase the initial memory size that will be allocated during startup of the JVM. If you installed Tomcat with installer you can set the options by opening the "Monitor Tomcat" program selecting the "Java" tab:<br>
+			<ul>
+				<li>Add <code>-XX:MaxPermSize=210m</code> to the end of the <code>"Java Options"</code></li>
+				<li>In the <code>"Maximum Memory Pool"</code> box write <code>1500</code></li>
+				<li>Finally, stop and start Tomcat.</li>
+			</ul>
+		</li>
+
+		<li>After installing Tomcat create a "chemaxon" directory in the system folder with write permissions and copy your ChemAxon license file here:<br>
+			<ul>
+				<li>Create the <code>C:\Windows\config\systemprofile\chemaxon</code> folder</li>
+				<li>Set write permissions if not already set by choosing "Properties" from the right clicking menu and selecting the "Security" tab.</li>
+				<li>Copy your <code>license.cxl</code> file to this directory.</li>
+			</ul>
+			<small>If you don't see your hidden config folder, pressing F10 the menu bar appears where open "Tools", select "Folder options", select the "View" and find "Advanced settings" and select "Show hidden files and folders" option.</small>
+		</li>
+
+		<li>The JChem Web Services WAR file is larger than permitted by default (50MB), so editing <code>web.xml</code> is necessary to increase the WAR file restriction. By default <code>web.xml</code> file is located in the <code>C:\Program Files\Apache Software Foundation\Tomcat 7.0\webapps\manager\WEB-INF</code> folder.<br>
+			<ul>
+				<li>Search for &lt;multipart-config&gt; section</li>
+				<li>Increase the &lt;max-file-size&gt; to 500MB, by changing its value to 524288000.</li>    
+				<li>Increase the &lt;max-request-size&gt; to 500MB, by changing its value to 524288000 as well.</li>
+				<li>Finally, restart tomcat.</li>
+			</ul>
+		</li>
+
+		<li>Create a manager user in <code>tomcat-users.xml</code>, by default located in <code>C:\Program Files\Apache Software Foundation\Tomcat 7.0\conf</code> directory.</br>
+		A "manager-gui" role is required in order to use the Manager app, so you must define a user with this role, the username and password are arbitrary.<br>
+		(e.g. Add this line in the <code>&lt;tomcat-users&gt;</code> section: <code>&lt;user username="admin" password="admin" roles="manager-gui"/&gt;</code>)<br>
+		Finally, stop and start tomcat.</li>
+
+		<li>Connect to the Tomcat server, by default at <code>http://localhost:8080/manager/html/</code> and log in to Tomcat's Manager app using the username and password specified in the previous step in <code>tomcat-users.xml</code>.</li>
+
+		<li>After logging in to Tomcat's Manager app, find the "WAR file to deploy" section, select the extracted "webservices.war" file and push "Deploy".<br>
+		After uploading the page reloads with "Message: OK".<br>
+		Now you can access JChem Web Services at <code>http://localhost:8080/webservices/rest-v0</code> and you should see on the screen a JSON object containing "welcomeMessage": "You connected to the JChem REST Web Services".</li>
+
+	</ol>
+	
+	<h2 id="detailedinstallcentos">1.4. Detailed installation guide for CentOS 6.4</h2>
+	<p>For the installation you need 5 files:
+	<ul>
+		<li>jdk-6u45-linux-x64-rpm.bin </li>
+		(Can be downloaded from <a href="http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase6-419409.html#jdk-6u45-oth-JPR">oracle.com</a>)
+		<li>Apache-tomcat-7.0.41.tar.gz </li>
+		(Tomcat 7 can be downloaded from <a href="http://tomcat.apache.org/download-70.cgi">apache.org</a>.)
+		<li>Download webservices-6.0.2.zip from <a href="https://www.chemaxon.com/download/jchem-web-services/">ChemAxon website</a>.</li>
+		<li>license.cxl (your license key obtained from ChemAxon)</li>
+		<li>tomcat (included for this example)</li>
+	</ul>
+	</p>
+	<p>After you logged in you to the host system (use ssh/putty), you must change to root user ("su" command).
+	<br>We assume that these files are downloaded into you directory on the host system (You can download directly with wget from the system console or uploaded with scp/winscp programs).<p>
+	
+	<h4>1. Install the jdk</h4>
+	<code>chmod a+x jdk-6u45-linux-x64-rpm.bin</code>
+    <br><code>./jdk-6u45-linux-x64-rpm.bin</code>
+	<br>You can verify the installation by <code>java -version</code>
+	<br>You must see the same message:
+	<code>
+	<br>java version "1.6.0_45"
+	<br>Java(TM) SE Runtime Environment (build 1.6.0_45-b06)
+	<br>Java HotSpot(TM) 64-Bit Server VM (build 20.45-b01, mixed mode)</code></p>
+	
+	<h4>2. Install tomcat</h4>
+	<ul>
+		<li>Create a user called tomcat:
+		<code>useradd -r -m tomcat</code></li>
+		<li>Extract the tomcat installation package:
+		<code>tar xzf apache-tomcat-7.0.41.tar.gz</code></li>
+		<li>Move the extracted software to its place:
+		<code>mv apache-tomcat-7.0.41 /usr/local/apache-tomcat7</code></li>
+		<li>Modify the access right appropriately:
+		<code>chown -R tomcat.tomcat /usr/local/apache-tomcat7</code></li>
+		<li>Copy the startup script:
+		<code>cp tomcat /etc/init.d/tomcat</code></li>
+		<li>Modify the access right appropriately:
+		<code>chmod 755 /etc/init.d/tomcat</code></li>
+		<li>Add the startup script to the system config:
+		<code>chkconfig -add tomcat</code></li>
+		<li>Modify the Tomcat's upload limit
+		<code>vi /usr/local/apache-tomcat7/webapps/manager/WEB-INF/web.xml</code>
+		<br>Scroll to the line after <code>"< !-- 50MB max -- >"</code> press "i" to enter edit mode. 
+		Add an extra "0" to both of the specified numbers (524288000 is the new value), then press "ESC" and type ":wq" to save your changes.</li>
+		<li>Add a valid manager user (use a proper password instead the "adminpass" in the example):
+		<code>vi /usr/local/apache-tomcat7/conf/tomcat-users.xml</code>
+			<br>Scroll to the line after <code>"< tomcat-users >"</code> and press "i" to enter edit mode. Add the:
+			<code>"< role rolename="manager-gui"/>
+			<br>< user username="admin" password="adminpass" roles="manager-gui"/ >"</code>
+			<br>Then press "ESC" and type ":wq" to save your changes.</li>
+		<li>Start the service:
+		<code>service tomcat start</code></li>
+		<li>You can verify the installation by opening the machine port of "ipaddress:8080" from a web browser. 
+		<br>You can use ifconfig to list the IP address (eth0/inet addr: ...). 
+		<br>If nothing loads, most probably the firewall blocks the connection:
+		<code>system-config-firewall</code>
+		<br>Leave everything unchanged (Customize/Forward...), except adding the <code>8080(port)/tcp(protocol)</code> in the <code>"Other Ports"</code> dialog.
+		<br>Finally the browser must display: <code>"Apache Tomcat/7.0.41"</code></li>
+	</ul>
+	
+	<h4>3. Install chemaxon software</h4>
+	<ul>
+		<li>Crate a directory for the chemaxon config:
+		<code>mkdir /home/tomcat/.chemaxon</code></li>
+		<li>Copy your license file to the chemaxon confing dir:
+		<code>cp license.cxl /home/tomcat/.chemaxon/</code></li>
+		<li>You have to unzip the webservices-6.0.1.zip. In the we browser open the <code>"yourip:8080/manager/html"</code>; use "admin" / the password you specified earlier to log in.
+		Find the <code>"WAR file to deploy"</code> section, select the extracted "webservices.war" file and push <code>"Deploy"</code>. After some minutes tomcat reload the page with <code>"Message: OK"</code>.</li>
+		<li>Now you can find type to the browser that <code>"yourip:8080/webservices/rest-v0"</code> and you must see on the screen a message contains:
+		<br><code>"welcomeMessage": "You connected to the JChem REST Web Services"</code>.</li>	
+	</ul>
+	
+	<h1>2. Database handling</h1>
+    <h2>2.1. Setting up your databases</h2>
+    <p>Web Services are shipped with a preconfigured sample database. This database is extracted to the user home directory on first start. The created resources are:</p>
+    <ul>
+        <li>on Windows <code>%HOMEPATH%/chemaxon/ws-config.xml</code> (c:\Windows\config\systemprofile\chemaxon on 64-Bit Windows) and <code>%HOMEPATH%/chemaxon/ws-db/</code></li>
+        <li>on Linux/Mac <code>~/.chemaxon/ws-config.xml</code> and <code>~/.chemaxon/ws-db/</code></li>
+    </ul>
+    <small>If the <code>ws-config.xml</code> file exists during start, the sample database won't be extracted.</small>
+
+    <p>This <code>ws-config.xml</code> holds the database configurations available for the application. By default its content is:</p>
+    <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;ch:configs xmlns:ch=&quot;http://generated.ws2common.jchem.chemaxon&quot;&gt;
+    &lt;config name=&quot;sample&quot; type=&quot;JCHEM&quot;&gt;
+        &lt;url&gt;jdbc:derby:$chemaxon_db_dir$&lt;/url&gt;
+        &lt;driver&gt;org.apache.derby.jdbc.EmbeddedDriver&lt;/driver&gt;
+        &lt;userName&gt;&lt;/userName&gt;
+        &lt;password&gt;&lt;/password&gt;
+        &lt;propertyTable&gt;JChemProperties&lt;/propertyTable&gt;
+        &lt;metaDataTable&gt;JCHEMMETADATATABLE&lt;/metaDataTable&gt;
+    &lt;/config&gt;
+&lt;/ch:configs&gt;</code></pre>
+
+    <small>Note: <code>$chemaxon_db_dir$</code> is automatically resolved during deploy as <code>%HOMEPATH%/chemaxon/ws-db/</code> or <code>~/.chemaxon/ws-db/</code>.</small>
+
+    <p>To add additional database configurations, simple add new <code>&lt;config&gt;</code> nodes matching this template:</p>
+    <textarea rows="8" cols="80" readonly>&lt;config name=&quot;&quot; type=&quot;JCHEM&quot;&gt;
+    &lt;url&gt;&lt;/url&gt;
+    &lt;driver&gt;&lt;/driver&gt;
+    &lt;userName&gt;&lt;/userName&gt;
+    &lt;password&gt;&lt;/password&gt;
+    &lt;propertyTable&gt;JChemProperties&lt;/propertyTable&gt;
+    &lt;metaDataTable&gt;JCHEMMETADATATABLE&lt;/metaDataTable&gt;
+&lt;/config&gt;</textarea>
+
+    <h4>Parameters</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th><th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>name</td><td>an identifier for this database configuration, used throughout the application</td>
+            </tr>
+            <tr>
+                <td>url</td><td>JDBC url for the database</td>
+            </tr>
+            <tr>
+                <td>driver</td><td>JDBC driver for the database. <a href="http://www.chemaxon.com/jchem/doc/admin/JChemBaseFAQ.html#dburl">Common driver classnames</a></td>
+            </tr>
+            <tr>
+                <td>userName</td><td>database username</td>
+            </tr>
+            <tr>
+                <td>password</td><td>database password</td>
+            </tr>
+            <tr>
+                <td>propertyTable</td><td>JChem structure tables' metadata storage. <a href="http://www.chemaxon.com/jchem/doc/dev/dbconcepts/#JChemProperties">Further material</a></td>
+            </tr>
+            <tr>
+                <td>metaDataTable</td><td>JChem Web Services metadata table name. Read below in Database maintenance</td>
+            </tr>
+        </tbody>
+    </table>
+
+	<small>Note: As the speed and latency of the connection between the database and web service havily affect performance, please consider to locate the database server close to the web service server.</small>
+
+    <h2>2.2. Database maintenance</h2>
+
+    <p>JChem Web Services requires metadata tables to store installation specific details for each database configuration. In case of an empty database, you have to create the metadata table before using the database through the REST API. This is accomplished by an empty POST request to the init service.</p>
+    <p>In case of upgrading your JChem Web Services version, the regenerate service must be called, as new version may require schema changes and recalculation of fingerprints, hashes. You can upgrade your table by sending an a GET request to the regenerate service.</p>
+
+    <table>
+        <thead>
+            <tr><th>Description</th><th>HTTP Request</th><th>Content&#8209;Type</th><th>Response&#8209;Type</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>initialize</td><td><code>POST /rest-v0/data/<i>{db config name}</i>/init</code></td><td>application/json</td><td>application/json</td></tr>
+            <tr><td>regenerate</td><td><code>POST /rest-v0/data/<i>{db config name}</i>/table/<i>{table name}</i>/regenerate</code></td><td>-</td><td>application/json</td></tr>
+             <tr><td>regenerate (with monitor)</td><td><code>POST /rest-v0/data/<i>{db config name}</i>/table/<i>{table name}</i>/regenerate?monitorId=<i>{monitor id}</i></code></td><td>-</td><td>application/json</td></tr>
+        </tbody>
+    </table>
+    
+    <h1>3. Security configuration</h1>
+    <p>For enabling authentication some VM arguments must be provided for the servlet container (they can be added at the same place where the memory releated settings were done). 
+	The configuration contains the setting of two profiles: one is the type of authentication, another one is the source of the credentials. By specifing the type you can select one of 
+	the pre-configured templates or reference to an external one. Source configures the location of credentials (typically username and password pairs). 
+	The included credential templates can be only used for testing (as they contains default passwords)! Please, always specify an external configuration file to prevent accidental overwriting of the file during updates!</p>
+    <p><code>-Dspring.profiles.active={comma separated list of active profiles}</code></p>
+	<p><code>-Dsecurity.source.location=file:~user/spring-security-source.xml</code></p>
+	<p><code>-Dsecurity.http.location=file:~user/spring-security-http.xml</code></p>
+    
+    <h2>3.1. Choosing HTTP authentication type</h2>
+    <p>The REST api currently supports 3 types of http authentication. Authentication details are stored in the user session on the server and session tracking is done with cookies so the client must support handling of cookies.</p>
+    <table>
+    	<tr><th>Type</th><th>profile name</th></tr>
+        <tbody>
+            <tr><td><a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP Basic</a></td><td><code>security-http-basic</code></td></tr>
+            <tr><td><a href="http://en.wikipedia.org/wiki/Digest_access_authentication">HTTP Digest</a></td><td><code>security-http-basic-digest</code></td></tr>
+            <tr><td>Login service</td><td><code>security-http-loginservice</code></td></tr>
+            <tr><td>Read only access for all table without authentication, basic authentication for other services</td><td><code>security-http-basic-ro</code></td></tr>
+            <tr><td>Utility services needed by Marvin4JS can be accessed without authentication, basic authentication for other services</td><td><code>security-http-basic-marvin4js</code></td></tr>
+            
+        </tbody>
+    </table>
+    <h3>3.1.1 Usage of Login service</h3>
+     <table>
+        <thead>
+            <tr><th>Description</th><th>HTTP Request</th><th>Content&#8209;Type</th><th>Response&#8209;Type</th><th>Sample request</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>login</td><td><code>POST /rest-v0/login</code></td><td>application/json</td><td>application/json</td><td><code>{"username": "username", "password": "password"}</code></td></tr>
+        </tbody>
+    </table>
+    
+    <h2>3.2. Setting up authentication source</h2>
+    <p>The source of the authentication can be configured by activating <code>security-source-external</code> profile and providing VM argument:</p>
+    <p><code>-Dsecurity.source.location=file:{path to the xml file, containing authentication source details}</code></p>
+    
+	<h3>3.2.1 Sample xml for plain text user details</h3>
+	<code>&lt;?xml&nbsp;version=&quot;1.0&quot;&nbsp;encoding=&quot;UTF-8&quot;?&gt;<br/>&lt;beans&nbsp;xmlns=&quot;http://www.springframework.org/schema/beans&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&nbsp;xmlns:context=&quot;http://www.springframework.org/schema/context&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;xmlns:p=&quot;http://www.springframework.org/schema/p&quot;&nbsp;xmlns:util=&quot;http://www.springframework.org/schema/util&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;&nbsp;xmlns:security=&quot;http://www.springframework.org/schema/security&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;xsi:schemaLocation=&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/beans<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/beans/spring-beans.xsd<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/context<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/context/spring-context.xsd<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/util<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/util/spring-util.xsd<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/aop<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/aop/spring-aop.xsd<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/security<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/security/spring-security-3.1.xsd&quot;&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;security:authentication-manager&nbsp;alias=&quot;authenticationManager&quot;&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;security:authentication-provider&nbsp;user-service-ref=&quot;userService&quot;&nbsp;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/security:authentication-manager&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;security:user-service&nbsp;id=&quot;userService&quot;&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;security:user&nbsp;name=&quot;admin&quot;&nbsp;password=&quot;admin&quot;&nbsp;authorities=&quot;ROLE_USER,ROLE_ADMIN&quot;&nbsp;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;security:user&nbsp;name=&quot;user&quot;&nbsp;password=&quot;user&quot;&nbsp;authorities=&quot;ROLE_USER&quot;&nbsp;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/security:user-service&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;bean&nbsp;id=&quot;rememberMeUserDetailsService&quot;&nbsp;class=&quot;chemaxon.jchem.webservice2.security.DelegatingUserDetailsService&quot;&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;constructor-arg&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;list&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;bean=&quot;userService&quot;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/list&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/constructor-arg&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/bean&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;bean&nbsp;id=&quot;authenticationMessage&quot;&nbsp;class=&quot;java.lang.String&quot;&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;constructor-arg&nbsp;value=&quot;Embedded&nbsp;authentication&nbsp;profile&nbsp;is&nbsp;active.&nbsp;Please&nbsp;contact&nbsp;your&nbsp;administartor&nbsp;for&nbsp;credentials!&quot;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/bean&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;<br/>&lt;/beans&gt;</code>
+	<h3>3.2.2 Sample xml for plain text user details with hashed password</h3>
+	<code>&lt;?xml&nbsp;version=&quot;1.0&quot;&nbsp;encoding=&quot;UTF-8&quot;?&gt;<br/>&lt;beans&nbsp;xmlns=&quot;http://www.springframework.org/schema/beans&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&nbsp;xmlns:context=&quot;http://www.springframework.org/schema/context&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;xmlns:p=&quot;http://www.springframework.org/schema/p&quot;&nbsp;xmlns:util=&quot;http://www.springframework.org/schema/util&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;&nbsp;xmlns:security=&quot;http://www.springframework.org/schema/security&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;xsi:schemaLocation=&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/beans<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/beans/spring-beans.xsd<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/context<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/context/spring-context.xsd<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/util<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/util/spring-util.xsd<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/aop<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/aop/spring-aop.xsd<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/security<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/security/spring-security-3.1.xsd&quot;&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;security:authentication-manager&nbsp;alias=&quot;authenticationManager&quot;&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;security:authentication-provider&nbsp;user-service-ref=&quot;userServiceHashed&quot;&nbsp;&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;security:password-encoder&nbsp;hash=&quot;sha-256&quot;&nbsp;base64=&quot;false&quot;&nbsp;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/security:authentication-provider&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/security:authentication-manager&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;security:user-service&nbsp;id=&quot;userServiceHashed&quot;&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;security:user&nbsp;name=&quot;admin2&quot;&nbsp;password=&quot;2257fff554f4090e9a407ac4f7059d52f50895be9adf43487ba0ba29b77d165b&quot;&nbsp;authorities=&quot;ROLE_USER,ROLE_ADMIN&quot;&nbsp;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;security:user&nbsp;name=&quot;user2&quot;&nbsp;password=&quot;2257fff554f4090e9a407ac4f7059d52f50895be9adf43487ba0ba29b77d165b&quot;&nbsp;authorities=&quot;ROLE_USER&quot;&nbsp;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/security:user-service&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;bean&nbsp;id=&quot;rememberMeUserDetailsService&quot;&nbsp;class=&quot;chemaxon.jchem.webservice2.security.DelegatingUserDetailsService&quot;&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;constructor-arg&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;list&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;bean=&quot;userServiceHashed&quot;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/list&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/constructor-arg&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/bean&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;bean&nbsp;id=&quot;authenticationMessage&quot;&nbsp;class=&quot;java.lang.String&quot;&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;constructor-arg&nbsp;value=&quot;Embedded&nbsp;authentication&nbsp;profile&nbsp;is&nbsp;active.&nbsp;Please&nbsp;contact&nbsp;your&nbsp;administartor&nbsp;for&nbsp;credentials!&quot;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/bean&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;<br/>&lt;/beans&gt;</code>
+	<p>More details of setting up hashed passwords can be find <a href="http://docs.spring.io/autorepo/docs/spring-security/3.1.x/reference/springsecurity-single.html#nsa-password-encoder">here</a></p>
+	<h3>3.2.3 Sample xml for JDBC based user details</h3>
+	<p>For using a JDBC authentication the database must be prepared as described <a href="http://docs.spring.io/autorepo/docs/spring-security/3.1.x/reference/springsecurity-single.html#appendix-schema">here</a></p>
+	<code>&lt;?xml&nbsp;version=&quot;1.0&quot;&nbsp;encoding=&quot;UTF-8&quot;?&gt;<br/>&lt;beans&nbsp;xmlns=&quot;http://www.springframework.org/schema/beans&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;xmlns:security=&quot;http://www.springframework.org/schema/security&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;xsi:schemaLocation=&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/beans<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/beans/spring-beans.xsd<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/security<br/>&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/security/spring-security-3.1.xsd&quot;&gt;<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;security:authentication-manager&nbsp;alias=&quot;authenticationManager&quot;&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;security:authentication-provider&nbsp;user-service-ref=&quot;userService&quot;&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;security:password-encoder&nbsp;ref=&quot;passwordEncoder&quot;&nbsp;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/security:authentication-provider&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/security:authentication-manager&gt;<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;bean&nbsp;id=&quot;passwordEncoder&quot;&nbsp;class=&quot;org.springframework.security.authentication.encoding.Md5PasswordEncoder&quot;&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property&nbsp;name=&quot;iterations&quot;&nbsp;value=&quot;100000&quot;&nbsp;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property&nbsp;name=&quot;encodeHashAsBase64&quot;&nbsp;value=&quot;false&quot;&nbsp;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/bean&gt;<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;bean&nbsp;id=&quot;authDataSource&quot;&nbsp;class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&nbsp;destroy-method=&quot;close&quot;&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property&nbsp;name=&quot;driverClass&quot;&nbsp;value=&quot;com.mysql.jdbc.Driver&quot;&nbsp;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property&nbsp;name=&quot;jdbcUrl&quot;&nbsp;value=&quot;jdbc:database://host/schema&quot;&nbsp;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property&nbsp;name=&quot;user&quot;&nbsp;value=&quot;user&quot;&nbsp;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property&nbsp;name=&quot;password&quot;&nbsp;value=&quot;password&quot;&nbsp;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/bean&gt;<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;security:jdbc-user-service&nbsp;id=&quot;userService&quot;&nbsp;data-source-ref=&quot;authDataSource&quot;&nbsp;role-prefix=&quot;ROLE_&quot;&nbsp;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;bean&nbsp;id=&quot;authenticationMessage&quot;&nbsp;class=&quot;java.lang.String&quot;&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;constructor-arg&nbsp;value=&quot;Embedded&nbsp;authentication&nbsp;profile&nbsp;is&nbsp;active.&nbsp;Please&nbsp;contact&nbsp;your&nbsp;administartor&nbsp;for&nbsp;credentials!&quot;/&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/bean&gt;<br/><br/>&lt;/beans&gt;</code>
+	<p>More details of setting up JDBC authentication source can be find <a href="http://docs.spring.io/autorepo/docs/spring-security/3.1.x/reference/springsecurity-single.html#core-services-jdbc-user-service">here</a></p>
+	
+	<h2>3.3. Sample VM arguments</h2>
+	<p>activating external source xml with HTTP Basic:</p>
+	<code>-Dspring.profiles.active=security-source-external,security-http-basic</code>
+	<p>configure location of the external security source definition file:</p>
+	<code>-Dsecurity.source.location=file:~user/spring-security-source.xml</code>
+
+    <h1>4. Configure reaction library</h1>
+    <p>The reaction based enumeration already contains reaction schemas designed by ChemAxon. To hide these schemas use <code>cxn-reaction-library-excluded</code> spring bean at active profile list.</p>
+    <p>e.g. <code>-Dspring.profiles.active=security-http-basic,cxn-reaction-library-excluded</code></p>
+	
+</body>
+</html>

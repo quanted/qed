@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECFPConfiguration Version="0.1">
+
+    <Parameters Length="1024" Diameter="4" Counts="no"/>
+
+    <IdentifierConfiguration>
+        <!-- Default atom properties (switched on by Value=1) -->
+        <Property Name="AtomicNumber" Value="1"/>
+        <Property Name="HeavyNeighborCount" Value="1"/>
+        <Property Name="HCount" Value="1"/>
+        <Property Name="FormalCharge" Value="1"/>
+        <Property Name="IsRingAtom" Value="1"/>
+
+        <!-- Other built-in atom properties (switched off by Value=0) -->
+        <Property Name="ConnectionCount" Value="0"/>
+        <Property Name="Valence" Value="0"/>
+        <Property Name="Mass" Value="0"/>
+        <Property Name="MassNumber" Value="0"/>
+        <Property Name="HasAromaticBond" Value="0"/>
+        <Property Name="IsTerminalAtom" Value="0"/>
+        <Property Name="IsStereoAtom" Value="0"/>
+    </IdentifierConfiguration>
+
+    <StandardizerConfiguration Version="0.1">
+        <Actions>
+            <Action ID="aromatize" Act="aromatize"/>
+            <RemoveExplicitH ID="RemoveExplicitH" Groups="target"/>
+        </Actions>
+    </StandardizerConfiguration>
+
+    <ScreeningConfiguration>
+        <ParametrizedMetrics>
+            <ParametrizedMetric Name="Tanimoto" ActiveFamily="Generic" Metric="Tanimoto" Threshold="0.5"/>
+            <ParametrizedMetric Name="Euclidean" ActiveFamily="Generic" Metric="Euclidean" Threshold="10"/>
+        </ParametrizedMetrics>
+    </ScreeningConfiguration>
+
+</ECFPConfiguration>

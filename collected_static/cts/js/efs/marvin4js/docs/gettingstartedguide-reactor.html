@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	
+	<title>ChemAxon Reactor Web Services</title>
+	
+	<!-- ${endOfComment}
+	<script src="${contextPath}/docs/js/jquery-1.8.2.min.js"></script>
+	<script src="${contextPath}/docs/js/jquery-ui-1.10.3.custom.min.js"></script>
+	<script src="${contextPath}/docs/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+	<script src="${contextPath}/docs/js/scripts.js"></script>
+	<link rel="stylesheet" href="${contextPath}/docs/style/redmond/jquery-ui-1.10.3.custom.min.css" type="text/css">
+	<link rel="stylesheet" type="text/css" href="${contextPath}/docs/style/style.css">
+	<link rel="shortcut icon" href="${contextPath}/docs/style/favicon.ico">
+	${startOfComment} -->
+	
+	<object style="display: none;">${startOfComment}</object>
+
+	<script src="js/jquery-1.8.2.min.js"></script>
+	<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+	<script src="js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/scripts.js"></script>
+	<link rel="stylesheet" href="style/redmond/jquery-ui-1.10.3.custom.min.css" type="text/css">
+	<link rel="stylesheet" href="style/style.css" type="text/css" >
+	<link rel="shortcut icon" href="style/favicon.ico">
+
+	<object style="display: none;">${endOfComment}</object>
+	
+		<script type="text/javascript">
+		var authenticated=false,
+		serviceConfig = {
+			"contextPath": "${contextPath}",
+			"serviceLocation": "/rest-v0",
+		};
+	</script>
+	
+</head>
+<body>
+<table class="title_header">
+	<tbody>
+		<tr><td class="title_header title_text">ChemAxon Reactor Web Services Getting Started Guide</td></tr>
+	</tbody>
+</table>
+
+<h1>URL Reference</h1>
+<table>
+	<thead>
+		<tr><th>Description</th><th>HTTP Request</th><th>Content&#8209;Type</th><th>Response&#8209;Type</th></tr>
+	</thead>
+	<tbody>
+		<tr><td colspan="4"><a href="#library"><b>1. Reaction library</b></a></td></tr>
+		<tr>
+			<td><a href="#list">1.1. List all the stored reactions</a></td>
+			<td><code>GET rest-v0/util/reaction/library</code></td>
+			<td></td>
+			<td>application/json</td>
+		</tr>
+		<tr>
+			<td><a href="#source">1.1.1 List reactions from the given source</a></td>
+			<td><code>GET rest-v0/util/reaction/library/{source}</code></td>
+			<td></td>
+			<td>application/json</td>
+		</tr>
+		<tr>
+			<td><a href="#details">1.2. Get details of a reaction</a></td>
+			<td><code>GET rest-v0/util/reaction/library/{source}/{id}</code></td>
+			<td></td>
+			<td>application/json</td></tr>
+		<tr>
+			<td><a href="#hierarchy">1.3. Get information about the available reaction types</a></td>
+			<td><code>GET rest-v0/util/reaction/library/hierarchy</code></td>
+			<td></td>
+			<td>application/json</td></tr>
+		<tr>
+			<td><a href="#modify">1.4. Manipulation of the reaction library</a></td>
+			<td><code>POST rest-v0/util/reaction/library/operation</code></td>
+			<td>application/json</td>
+			<td>application/json</td></tr>
+		<tr><td colspan="4"><a href="#reactor"><b>2. Reactor</b></a></td></tr>
+		<tr>
+			<td><a href="#enumerate">2.1. Run reaction enumeration</a></td>
+			<td><code>POST rest-v0/util/reaction/enumerate</code></td>
+			<td></td>
+			<td>application/json</td></tr>
+		<tr>
+			<td><a href="#preview">2.2. Request reaction enumeration preview</a></td>
+			<td><code>POST rest-v0/util/reaction/preview</code></td>
+			<td></td>
+			<td>application/json</td></tr>
+	</tbody>
+</table>
+
+<h1 id="library">1. Reaction library </h1>
+<form id="formURL">
+	<p>We assume the default installation URL is:</p>
+	<input id="baseurl" type="text" value="http://localhost:8080/webservices/rest-v0" size="80" />
+</form>
+<small>If you installed with a different host/port/appname setting, please adjust the URLs in the example.</small>
+
+<h2 id="list">1.1. List all the stored reactions </h2>
+<form id="form11" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/util/reaction/library" size="80"/>
+	<input class="GET" type="button" value="GET" />
+<label>response:</label>
+<div class="output_div" style="min-height:530px;">
+[
+    {
+        "id": 158,
+        "source": "cxn",
+        "name": "1,2,4-Oxadiazole formation",
+        "schemaString": ...,
+        "categories": [
+            "condensation",
+            "heterocycles"
+        ],
+        "mechanisms": [
+            "condensation",
+            "heterocycles"
+        ],
+        "functionalGroups": []
+    },
+    {
+        "id": 159,
+        "source": "cxn",
+        "name": "1,2,4-Triazole formation from nitrile and hydrazide",
+        "schemaString": ...,
+        "categories": [
+            "elimination",
+            "heterocycles"
+        ],
+        "mechanisms": [
+            "elimination",
+            "heterocycles"
+        ],
+        "functionalGroups": []
+    },
+    ...
+]
+</div>
+</form>
+<p>This request provides basic information about the stored reactions.</p>
+<p>Search options:
+<table>
+	<thead>
+		<tr>
+			<th>Option</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>name</td><td>string</td><td>The reaction name should fit to this fragment.</td>
+		</tr>
+		<tr>
+			<td>tag</td><td>string</td><td>Any mechanism or functional group should fit to this fragment.</td>
+		</tr>
+	</tbody>
+</table>
+If both options are set the result will be the union of the hits.
+</p>
+
+<h3 id="source">1.1.1 List reactions from the given source</h3>
+<form id="form11" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/util/reaction/library/cxn" size="80"/>
+	<input class="GET" type="button" value="GET" />
+<label>response:</label>
+<div class="output_div" style="min-height:530px;">
+[
+    {
+        "id": 158,
+        "source": "cxn",
+        "name": "1,2,4-Oxadiazole formation",
+        "schemaString": ...,
+        "categories": [
+            "condensation",
+            "heterocycles"
+        ],
+        "mechanisms": [
+            "condensation",
+            "heterocycles"
+        ],
+        "functionalGroups": []
+    },
+    {
+        "id": 159,
+        "source": "cxn",
+        "name": "1,2,4-Triazole formation from nitrile and hydrazide",
+        "schemaString": ...,
+        "categories": [
+            "elimination",
+            "heterocycles"
+        ],
+        "mechanisms": [
+            "elimination",
+            "heterocycles"
+        ],
+        "functionalGroups": []
+    },
+    ...
+]
+</div>
+</form>
+<p>This request provides basic information about the stored reactions.</p>
+
+<h2 id="details">1.2. Get details of a reaction </h2>
+<form id="form12" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/util/reaction/library/cxn/6" size="80"/>
+	<input class="GET" type="button" value="GET" />
+<label>response:</label>
+<div class="output_div" style="min-height:370px;">
+{
+    "description": "Nucleophilic substitution reaction of alcohols with hydrogen halides to generate an alkyl halide and water.",
+    "temperature": "25-120",
+    "yield": "73-93",
+    "environmentHazard": "HAZARDOUS",
+    "safety": "LOW",
+    "imageURL": "http://localhost:8080/webservices/rest-v0/util/display/struc_c867f822f60f4ecc903b456dff4f9563_520x200.svg",
+    "id": 6,
+    "source": "cxn",
+    "name": "Halogenation of alcohols with hydrogen halides",
+    "categories": [
+        "substitution",
+        "alcohols"
+    ],
+    "mechanisms": [
+        "substitution"
+    ],
+    "functionalGroups": [
+        "alcohols"
+    ]
+}
+</div>
+</form>
+<p>This request provides detailed information about the requested reaction.</p>
+
+<h2 id="hierarchy">1.3. Get information about the available reaction types </h2>
+<form id="form13" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/util/reaction/library/hierarchy" size="80"/>
+	<input class="GET" type="button" value="GET" />
+<label>response:</label>
+<div class="output_div" style="min-height:230px;">
+{
+    "mechanisms": [
+        "organic redox reaction",
+        "condensation",
+        "rearrangement reaction",
+		...
+    ],
+    "functionalGroups": [
+        "alkanes",
+        "ethers",
+        "amines",
+		...
+    ]
+}
+</div>
+</form>
+<p>This request provides detailed information about the requested reaction.</p>
+
+<h2 id="modify">1.4. Manipulation of the reaction library</h2>
+
+<h3 id="save">1.4.1 Save new reaction schema</h3>
+<form id="form14" action="#">
+	<p class="warning">This request modifies the content of the underlying database!</p>
+	<input class="url" type="text" data-baseurl="true" value="/util/reaction/library/operation" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">{
+	"operation": "INSERT",
+	"functionalGroups" : [
+    	"oxocompounds",
+    	"nitrocompounds"
+	],
+	"mechanisms": [
+		"addition"
+	],
+	"name": "Simple oxo-addition",
+	"schemaString": "[NH:1]1[CH:2]=[CH:3][CH:4]=[CH:5]1>>[O:6]=[C:5]1[CH2:4][CH:3]=[CH:2][NH:1]1"
+}</div>
+<label>response:</label>
+<div class="output_div">{
+{
+    "id": 24,
+    "source": "reaction_library",
+    "name": "Simple oxo-addition",
+    "categories": [
+        "addition",
+        "oxocompounds",
+        "nitrocompounds"
+    ],
+    "mechanisms": [
+        "addition"
+    ],
+    "functionalGroups": [
+        "oxocompounds",
+        "nitrocompounds"
+    ]
+}</div>
+</form>
+<p>The response shows the base information of the saved schema.</p>
+
+<h3 id="edit">1.4.2 Edit existing reaction schema</h3>
+<form id="form15" action="#">
+	<p class="warning">This request modifies the content of the underlying database!</p>
+	<input class="url" type="text" data-baseurl="true" value="/util/reaction/library/operation" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">{
+	"operation": "UPDATE",
+	"id": 22,
+	"functionalGroups" : [
+    	"oxocompounds",
+    	"nitrocompounds"
+	],
+	"mechanisms": [
+		"addition",
+		"dearomatization"
+	],
+	"name": "Simple oxo-addition",
+	"schemaString": "[NH:1]1[CH:2]=[CH:3][CH:4]=[CH:5]1>>[O:6]=[C:5]1[CH2:4][CH:3]=[CH:2][NH:1]1"
+}</div>
+<label>response:</label>
+<div class="output_div">{
+{
+    "id": 22,
+    "source": "reaction_library",
+    "name": "Simple oxo-addition",
+    "categories": [
+        "addition",
+		"dearomatization",
+        "oxocompounds",
+        "nitrocompounds"
+    ],
+    "mechanisms": [
+        "addition",
+		"dearomatization"
+    ],
+    "functionalGroups": [
+        "oxocompounds",
+        "nitrocompounds"
+    ]
+}</div>
+</form>
+<p>The response shows the base information of the edited schema.</p>
+
+<h3 id="delete">1.4.3 Delete reaction schema</h3>
+<form id="form16" action="#">
+	<p class="warning">This request modifies the content of the underlying database!</p>
+	<input class="url" type="text" data-baseurl="true" value="/util/reaction/library/operation" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">{
+	"operation": "DELETE",
+	"id": 22
+}</div>
+<label>response:</label>
+<div class="output_div"></div>
+</form>
+
+<h1 id="reactor">2. Reactor</h1>
+
+<h2 id="enumerate">2.1. Run reaction enumeration </h2>
+<form id="form21" action="#">
+	<p class="warning">This request modifies the content of the underlying database!</p>
+	<input class="url" type="text" data-baseurl="true" value="/util/reaction/enumerate" size="80"/>
+	<input class="POST" type="button" value="POST" />
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+	<div class="params_div">
+	{
+		"reaction": {
+			"structure": "[H:5][CH2:1][C:2]([OH:3])=[O:4]>>[OH:3][C:2](=[O:4])[CH2:1][Br:6]",
+			"format": "smiles"
+		},
+		"inputConfig": {
+			"structures": ["CC(O)=O", "CCCC(O)=O", "CC(C)CC(O)=O"],
+			"format": "smiles"
+		},
+		"outputConfig":{
+			"dbConfigName":"sample",
+			"tableName":"products"
+		}
+	}
+</div>
+<label>response:</label>
+<div class="output_div" style="min-height:510px;">
+</div>
+</form>
+<p>The response provides data about the result table.</p>
+<p>The enumeration request json can contain the following data:
+<table>
+	<thead>
+		<tr>
+			<th>Option</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan = "3"><B>reaction</B></td>
+		</tr>
+		<tr>
+			<td>id</td><td>integer</td><td>The reaction id in the stored library.</td>
+		</tr>
+		<tr>
+			<td>source</td><td>String</td><td>The reaction source in the stored library.</td>
+		</tr>
+		<tr>
+			<td colspan="3">OR</td>
+		</tr>
+		<tr>
+			<td>structure</td><td>String</td><td>A reaction schema structure in any molecule format.</td>
+		</tr>
+		<tr>
+			<td>format</td><td>String</td><td>The format of the sent structure.</td>
+		</tr>
+		<tr>
+			<td colspan = "3"><B>inputConfig</B></td>
+		</tr>
+		<tr>
+			<td>dbConfigName</td><td>String</td><td>Database name.</td>
+		</tr>
+		<tr>
+			<td>tableName</td><td>String</td><td>Table name.</td>
+		</tr>
+		<tr>
+			<td colspan="3">OR</td>
+		</tr>
+		<tr>
+			<td>structures</td><td>String</td><td>A reaction input list in any molecule format.</td>
+		</tr>
+		<tr>
+			<td>format</td><td>String</td><td>The format of the sent structure.</td>
+		</tr>
+		<tr>
+			<td colspan = "3"><B>outputConfig</B></td>
+		</tr>
+		<tr>
+			<td>dbConfigName</td><td>String</td><td>Database name.</td>
+		</tr>
+		<tr>
+			<td>tableName</td><td>String</td><td>Table name.</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<h2 id="preview">2.2. Request reaction enumeration preview </h2>
+<form id="form22" action="#">
+	<p class="warning">This request modifies the content of the underlying database!</p>
+	<input class="url" type="text" data-baseurl="true" value="/util/reaction/preview" size="80"/>
+	<input class="POST" type="button" value="POST" />
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+	<div class="params_div">
+	{
+		"reaction": {
+			"structure": "[H:5][CH2:1][C:2]([OH:3])=[O:4]>>[OH:3][C:2](=[O:4])[CH2:1][Br:6]",
+			"format": "smiles"
+		},
+		"inputConfig": {
+			"structures": ["CC(O)=O", "CCCC(O)=O", "CC(C)CC(O)=O"],
+			"format": "smiles",
+			"subsetIds":[]
+		},
+		"outputConfig": {
+			"imageParameters": {
+				"type":"png",
+				"width":500,
+				"height":200
+			},
+			"limit":3
+		},
+		"timeout":200000
+	}
+</div>
+<label>response:</label>
+<div class="output_div" style="min-height:150px;">
+[
+    "http://localhost:8080/webservices/rest-v0/util/display/struc_8d5a0558e56a6156c7bdae5ec85e5dea_500x200.png",
+    "http://localhost:8080/webservices/rest-v0/util/display/struc_7936deca04cb554255fec50591f8341d_500x200.png",
+    "http://localhost:8080/webservices/rest-v0/util/display/struc_2865c56181e6c681c866d7d5c4989d90_500x200.png"
+]
+</div>
+</form>
+<p>The response contains an array of image links about an enumeration sample. The reaction and inputConfig fields can contain the same optional data as the enumeration request.</p>
+
+<script>
+
+$( ".output_div,.params_div" ).each(function( index ) {
+    var editor = ace.edit(this);
+    //editor.setTheme("ace/theme/github");
+
+    editor.setFontSize('13px');
+
+    //hide print margin
+    editor.setShowPrintMargin(false);
+
+    //set output read-only
+    if($(this).is(".output_div")){
+        editor.setReadOnly(true);
+    }
+
+    editor.getSession().setUseWorker(false);
+
+    editor.getSession().setUseWrapMode(true);
+
+    var code = editor.getSession().getValue();
+    if($(this).is(".text")){
+        editor.getSession().setMode("ace/mode/xml");
+        editor.getSession().setValue(formatXml($.trim(code)));
+    }else{
+        editor.getSession().setMode("ace/mode/json");
+        editor.getSession().setValue($.trim(code));
+    }
+
+    var height = 15.8*editor.getSession().getScreenLength();
+    if(height > 200)
+        height = 200;
+    if(height < 20)
+        height = 100;
+    $(this).css("height",height + "px");
+    editor.resize();
+});
+</script>
+</body>
+

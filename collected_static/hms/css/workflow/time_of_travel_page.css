@@ -1,0 +1,163 @@
+#map {
+    display: block;
+    float: left;
+    width: 100%;
+    max-width: 100%;
+    height: 500px;
+}
+* {
+    -o-transition-property: none !important;
+    -moz-transition-property: none !important;
+    -ms-transition-property: none !important;
+    -webkit-transition-property: none !important;
+    transition-property: none !important;
+}
+#basemaps-wrapper {
+    float:left;
+    box-shadow: none;
+}
+.stream_info {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0.85;
+}
+.stream_info h5 {
+    margin: 0 0 5px;
+    color: #777;
+    font-size: 14px;
+}
+
+#stream_info_table table {
+    width: 100%;
+}
+
+#stream_info_table td {
+    font-size: 11px;
+    border: none !important;
+    background: rgba(255, 255, 255, 0.0);
+    padding: 2px 3px !important;
+}
+.inputs_block {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+}
+#map_loader {
+    width: 100%;
+    height: 750px;
+    position: absolute;
+    z-index: 1000;
+    display: none;
+}
+.map_loader {
+    background: white;
+    width: 100%;
+    height: 750px;
+    position: absolute;
+    opacity: 0.5;
+    z-index: 10000;
+}
+.map_spinner {
+    border: 16px solid white;
+    border-top: 16px solid #0071bc;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 1s linear infinite;
+    z-index: 10001;
+    position: absolute;
+    margin: 25% 0 0 35%;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#error_block {
+    text-align: center;
+    margin: 0 auto;
+    color: red;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.startCOMID_color {
+    color: #00D827 !important;
+    font-weight: bold;
+}
+
+.endCOMID_color {
+    color: #D80000 !important;
+    font-weight: bold;
+}
+.deleteCOMID {
+    display: inline-block;
+    padding-left: 10px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.deleteCOMID:hover {
+    color: red;
+}
+
+.input_table {
+    border: none;
+}
+.input_table div {
+    border: none;
+}
+#open_table_button {
+    margin: 5px;
+    text-align: center;
+    font-weight: 300;
+    font-size: 16px;
+    color: white;
+    background: #0071bc;
+    box-shadow: none;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 0;
+}
+
+#open_table_button:hover {
+    cursor: pointer;
+    opacity: .8;
+    background-color: #205493;
+}
+
+#backdrop {
+    background: white;
+    z-index: 100000;
+    display: none;
+    position: relative;
+    height: 54%;
+    width: 100%;
+    margin-top: -40px;
+}
+#backdrop_exit {
+    width: 25px;
+    height: 25px;
+    display: block;
+    margin: 10px 0;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+}
+#backdrop_exit:hover {
+    color: red;
+    cursor: pointer;
+}
+#backdrop_table_div {
+    display: block;
+    width: 90%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    margin: 35px;
+}
+
+

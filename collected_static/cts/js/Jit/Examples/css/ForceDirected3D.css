@@ -1,0 +1,12 @@
+#right-cont {
+  display: none;
+}
+
+#center-cont {
+  width:800px;
+  background: #efefef;
+}
+
+#infovis {
+  width:800px;
+}

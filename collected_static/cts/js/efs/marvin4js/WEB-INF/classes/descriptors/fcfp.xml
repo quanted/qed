@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ECFPConfiguration Version="0.1" schemaLocation="">
+
+    <Parameters Length="1024" Diameter="4" Counts="no"/>
+
+    <StandardizerConfiguration Version="0.1">
+        <Actions>
+            <Action ID="aromatize" Act="aromatize"/>
+            <RemoveExplicitH ID="RemoveExplicitH" Groups="target"/>
+        </Actions>
+    </StandardizerConfiguration>
+
+    <IdentifierConfiguration>
+        <!-- Functional properties defined by Chemical Terms -->
+        <Property Name="HydrogenBondAcceptor" Value="1">acceptor()</Property>
+        <Property Name="HydrogenBondDonor" Value="1">donor()</Property>
+        <Property Name="Aromatic" Value="1">arom()</Property>
+    </IdentifierConfiguration>
+
+    <ScreeningConfiguration>
+        <ParametrizedMetrics>
+            <ParametrizedMetric Name="Tanimoto" ActiveFamily="Generic" Metric="Tanimoto" Threshold="0.5"/>
+            <ParametrizedMetric Name="Euclidean" ActiveFamily="Generic" Metric="Euclidean" Threshold="10"/>
+        </ParametrizedMetrics>
+    </ScreeningConfiguration>
+
+</ECFPConfiguration>

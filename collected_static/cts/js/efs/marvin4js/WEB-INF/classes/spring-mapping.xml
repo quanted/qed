@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<context:component-scan base-package="chemaxon.jchem.ws2base.util.license" />
+
+	<import resource="spring-configStore.xml"/>
+	<import resource="spring-cache.xml"/>
+	
+	<import resource="spring-executors.xml"/>
+	
+	<bean class="chemaxon.jchem.webservice2.content.JchemDbImageLinkGenerator" />
+	<bean class="chemaxon.jchem.webservice2.content.JchemDbStructureLinkGenerator" />
+	
+	<bean id="wsFieldCalculatorFactory" class="chemaxon.jchem.webservice2.mapping.WsFieldCalculatorFactory" >
+		<property name="maxCacheSize" value="100000"/>
+		<property name="cacheExpireMinutes" value="60"/>
+	</bean>
+	
+	<bean id="fieldMapping" class="chemaxon.jchem.ws2base.mapping.calculatorset.ConfigStoreFieldMapping">
+		<property name="configStoreScope" value="field_mappings"/>
+	</bean>
+
+	<bean id="abstractFieldCalculatorSet" class="chemaxon.jchem.ws2base.mapping.calculatorset.FieldCalculatorSet" abstract="true">
+		<property name="calculatorFactory" ref="fieldCalculatorFactory" />
+		<property name="mapping" ref="fieldMapping" />
+	</bean>
+
+	<bean id="fieldCalculatorContextFactory" class="chemaxon.jchem.ws2base.mapping.FieldCalculatorContextFactoryImpl">
+		<property name="calculatorFactory" ref="fieldCalculatorFactory" />
+		<property name="tempCalcExpireMinutes" value="30"/>
+		<property name="calculatorSets">
+			<map>
+			   <entry key="table">
+			   	 <bean class="chemaxon.jchem.ws2base.mapping.calculatorset.FieldCalculatorSet" parent="abstractFieldCalculatorSet">
+			   	 	<property name="fieldOrderPropName" value="field_order_search"/>
+			   	 	<property name="publicView" value="true"/>
+			   	 </bean>
+			   </entry>
+			   <entry key="search">
+			   	 <bean class="chemaxon.jchem.ws2base.mapping.calculatorset.FieldCalculatorSet" parent="abstractFieldCalculatorSet">
+			   	 	<property name="fieldOrderPropName" value="field_order_search"/>
+			   	 	<property name="publicView" value="true"/>
+			   	 </bean>
+			   </entry>
+			   <entry key="detail">
+			  	 <bean class="chemaxon.jchem.ws2base.mapping.calculatorset.FieldCalculatorSet" parent="abstractFieldCalculatorSet">
+			  	 	<property name="fieldOrderPropName" value="field_order_detail"/>
+			   	 	<property name="publicView" value="true"/>
+			   	 	<property name="groupDBFields" value="true"/>
+			   	 </bean>
+			   </entry>
+			   
+			   <entry key="detailPrimary">
+			  	 <bean class="chemaxon.jchem.ws2base.mapping.calculatorset.FieldCalculatorSet" parent="abstractFieldCalculatorSet">
+			  	 	<property name="fieldOrderPropName" value="field_order_detailPrimary"/>
+			   	 </bean>
+			   </entry>
+			   <entry key="detailPrimary3D">
+			  	 <bean class="chemaxon.jchem.ws2base.mapping.calculatorset.FieldCalculatorSet" parent="abstractFieldCalculatorSet">
+			  	 	<property name="fieldOrderPropName" value="field_order_detailPrimary3D"/>
+			   	 </bean>
+			   </entry>
+			   <entry key="detailPrimaryStereoisomer">
+			  	 <bean class="chemaxon.jchem.ws2base.mapping.calculatorset.FieldCalculatorSet" parent="abstractFieldCalculatorSet">
+			  	 	<property name="fieldOrderPropName" value="field_order_detailPrimaryStereoisomer"/>
+			   	 </bean>
+			   </entry>
+			   <entry key="detailSecondary">
+			  	 <bean class="chemaxon.jchem.ws2base.mapping.calculatorset.FieldCalculatorSet" parent="abstractFieldCalculatorSet">
+			  	 	<property name="fieldOrderPropName" value="field_order_detailSecondary"/>
+			   	 </bean>
+			   </entry>
+			   <entry key="structure">
+			  	 <bean class="chemaxon.jchem.ws2base.mapping.calculatorset.FieldCalculatorSet" parent="abstractFieldCalculatorSet">
+			  	 	<property name="fieldOrderPropName" value="field_order_structure"/>
+			   	 </bean>
+			   </entry>
+			   
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="molConverterFactory" class="chemaxon.jchem.ws2base.mapping.converters.base.BaseMolConverterFactory" />
+
+	<bean id="fieldCalculatorFactory" class="chemaxon.jchem.ws2base.mapping.AggregatedFieldCalculatorFactory" autowire-candidate="false"/>
+
+	<bean id="fieldMapper" class="chemaxon.jchem.ws2base.mapping.FieldMapperImpl" >
+		<property name="calculatorFactory" ref="fieldCalculatorFactory" />
+	</bean>
+
+</beans>

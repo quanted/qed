@@ -1,0 +1,397 @@
+#block-pane-epa-web-area-connect {
+    float: right;
+}
+
+#block-og-menu-og-single-menu-block {
+    border-right: solid #c5c5c5 1px !important;
+    padding: 10px;
+}
+
+.headerbar {
+    background: transparent none !important;
+    color: black !important;
+}
+
+.menu-item {
+    border-top: none !important;
+}
+
+.menu-item-last {
+    border-bottom: none !important;
+}
+
+.region-sidebar {
+    float: left;
+    /*position: absolute;*/
+}
+
+.input_nav ul li {
+    background: transparent !important;
+}
+
+.main-column {
+    width: 75% !important;
+    float: right;
+    padding: 10px;
+}
+
+.menu-item-home {
+    border-left: none;
+    padding: 1px 0 1px 1px;
+}
+
+.menu-item-home a {
+    padding: 5px !important;
+}
+
+.menu-item-home a h3 {
+    padding: 0 !important;
+}
+
+.region-highlighted {
+    margin: 0 -1em 1.5em !important;
+}
+
+.disclaimer-banner {
+    font-size: 70.5882%;
+    margin: 0 auto;
+    padding: .5em 6.5em .5em 3.66667em;
+    position: relative;
+    text-align: center;
+    background: red;
+    color: white;
+    font-weight: bold;
+}
+.disclaimer-block {
+    padding-bottom: 0;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+.input_table {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.input_nav {
+    width: 80%;
+    margin: 5px auto;
+}
+
+.input_left {
+    float: left;
+}
+
+.input_right {
+    float: right;
+}
+
+.input_left ul {
+    padding-left: 1em;
+}
+
+.input_left ul li {
+    float: left;
+    margin-left: 0 !important;
+    margin-right: 5px !important;
+}
+
+.input_right ul {
+    padding-right: 1em;
+}
+
+#block-ds-extras-web-area-highlighted {
+    float: left;
+    width: 100%;
+    display: flex;
+}
+
+#component_tabs {
+    border: none !important;
+    text-align: center;
+}
+
+#component_tabs ul {
+    background: none !important;
+    list-style: none;
+    padding: 0;
+    margin: auto 0 0 0;
+    display: contents;
+}
+
+#component_tabs ul li.ui-tabs-active {
+    border: none;
+    background: #007fff;
+}
+
+#component_tabs ul li {
+    background: none;
+    margin: 1px 2px 0 2px;
+    padding: 0.5em 0.5em;
+    list-style: none;
+    float: none;
+    display: inline-block;
+}
+
+#component_tabs ul li.ui-tabs-active a {
+    cursor: pointer;
+}
+
+#component_tabs ul li a {
+    line-height: 1.5em;
+    font-weight: bold;
+    display: block;
+    font-size: small;
+}
+
+#component_tabs ul li:hover {
+    cursor: pointer;
+    background: #007fff;
+    opacity: 0.7;
+}
+
+#component_tabs ul li a:focus {
+    box-shadow: none;
+}
+
+.input_table {
+    display: table;
+    /*border-left: solid #c5c5c5 1px;*/
+    /*border-right: solid #c5c5c5 1px;*/
+    /*border-bottom: solid #c5c5c5 1px;*/
+}
+
+.table_header {
+    font-weight: bold;
+    background: #f1f1f1;
+}
+
+.table_header div{
+    font-size: small;
+}
+
+.input_table_row {
+    display: table-row;
+    width: 100%;
+}
+
+.input_table_key {
+    display: table-cell;
+    width: 25%;
+    float: left;
+    padding: 4px 2px 4px 10px;
+    font-size: small;
+    text-align: left;
+}
+
+.input_table_value {
+    display: table-cell;
+    width: 65%;
+    float: left;
+    padding: 4px 2px 4px 10px;
+    font-size: small;
+    text-align: left;
+}
+
+.input_table_comment {
+    display: table-cell;
+    width: 40%;
+    float: left;
+    padding: 4px 2px 4px 10px;
+    font-size: x-small;
+    text-align: left;
+}
+
+.input_table_value input {
+    padding-left: 4px;
+    width: 75%;
+}
+
+.input_button {
+    padding: 0.5em !important;
+    font-size: smaller !important;
+}
+
+/*#output_data_block {*/
+    /*margin: 25px 0;*/
+    /*width: 100%;*/
+/*}*/
+
+/*#output_data_block_table {*/
+    /*width: 100%;*/
+    /*margin-top: 25px;*/
+/*}*/
+
+#output_data {
+    margin: 0 auto;
+    /*width: 500px;*/
+    /*height: 300px;*/
+    /*width: 100%;*/
+    /*height: 500px;*/
+    /*float: left;*/
+}
+
+#output_data div {
+    /*width: 500px !important;*/
+    /*height: 300px !important;*/
+    /*height: 320px;*/
+    /*width: 100% !important;*/
+}
+
+#output_loading {
+    display: none;
+    width: 110%;
+    height: 100%;
+    margin: 0 -45px;
+    background: white;
+    opacity: 0.95;
+    z-index: 9999999;
+    position: absolute;
+}
+
+#stats_block {
+   padding-top: 15px;
+}
+
+.loading_icon {
+    border: 7px solid #c5c5c5;
+    border-top: 7px solid #007fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin .8s linear infinite;
+    float: left;
+}
+
+#load_message {
+    color: red;
+    text-align: center;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+#output_data_save_block {
+    padding: 0 25px;
+    text-align: center;
+    height: 50px;
+    display: none;
+}
+
+#output_data_save_json{
+    width: 50%;
+    float: left;
+    padding-right: 10px;
+}
+
+#output_data_save_json a {
+    padding: 4px 7px;
+    background: #007fff;
+    color: white;
+    border-radius: 3px;
+    vertical-align: middle;
+    float: right;
+}
+
+#output_data_save_json a:hover {
+    cursor: pointer;
+    background: #007fff;
+    opacity: 0.7;
+}
+
+#output_data_save_csv {
+    width: 50%;
+    float: left;
+    padding-left: 10px;
+}
+
+#output_data_save_csv a {
+    padding: 4px 7px;
+    background: #007fff;
+    color: white;
+    border-radius: 3px;
+    vertical-align: middle;
+    float: left;
+}
+
+#output_data_save_csv a:hover {
+    cursor: pointer;
+    background: #007fff;
+    opacity: 0.7;
+}
+
+#load_page {
+    width: 100%;
+    background: white;
+    z-index: 99999;
+    height: 100%;
+    position: absolute;
+}
+
+#overview_tab p {
+    /*text-align: left;*/
+}
+
+.google-visualization-table * {
+    text-align: center;
+}
+
+.google-visualization-table-td.google-visualization-table-type-number {
+    text-align: center;
+}
+
+#overview_block div {
+    border: none !important;
+}
+
+#overview_block p, h4, ol, li{
+    text-align: left;
+}
+
+.overview_subblock table{
+    font-size: 14px;
+    width: 100%;
+}
+
+.github_link {
+    text-align: center !important;
+}
+
+#data_tab_task_id * {
+    text-align: center !important;
+}
+
+#data_tab_task_id label {
+    display: inline-block !important;
+}
+
+#previous_tasks * {
+    text-align: center !important;
+}
+
+#previous_tasks_list {
+    display: block !important;
+}
+#previous_tasks_list * {
+    width: fit-content;
+    margin: 0 auto !important;
+    display: block !important;
+}
+
+.input_disclaimer {
+    font-size: small;
+    text-align: center;
+    margin: 10px 0;
+    color: #0071bc;
+    font-weight: 600;
+}

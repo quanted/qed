@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Query Structures</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+    <meta content="Scroll HTML Exporter" name="generator"/>
+
+    <link type="text/css" rel="stylesheet" href="css/blueprint/liquid.css" media="screen, projection"/>
+    <link type="text/css" rel="stylesheet" href="css/blueprint/print.css" media="print"/>
+    <!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"/><![endif]-->
+
+    <link type="text/css" rel="stylesheet" href="css/content-style.css" media="screen, projection, print"/>
+    <link type="text/css" rel="stylesheet" href="css/screen.css" media="screen, projection"/>
+    <link type="text/css" rel="stylesheet" href="css/print.css" media="print"/>
+</head>
+<body>
+    <div class="container" style="min-width: 760px;">
+        <div class="header block">
+            <div class="header-left column span-6">
+                <img src="spacelogo.png" />
+            </div>
+            <div class="column span-18 header-right last">
+                <h4>Marvin JS User's Guide</h4>
+            </div>
+        </div>
+
+        <div class="block">
+            <div class="toc column span-6 prepend-top">
+                <h3>Table of Contents
+                                        <span class="small">(<a href="Marvin_JS_User&apos;s_Guide.html">Start</a>)</span>
+                                    </h3>
+                
+<ul class="toc">
+                <li><p><a href="Marvin_JS_Graphical_User_Interface.html">Marvin JS Graphical User Interface</a></p>
+                    <ul>
+                                <li><p><a href="General.html">General</a></p>
+            </li>
+                                <li><p><a href="Canvas.html">Canvas</a></p>
+            </li>
+                                <li><p><a href="Context_Menus.html">Context Menus</a></p>
+            </li>
+                                <li><p><a href="Toolbars.html">Toolbars</a></p>
+            </li>
+                        </ul>
+            </li>
+                <li><p><a href="Basic_Features_of_Marvin_JS.html">Basic Features of Marvin JS</a></p>
+                    <ul>
+                                <li><p><a href="Display_Options.html">Display Options</a></p>
+            </li>
+                                <li><p><a href="Editing.html">Editing</a></p>
+            </li>
+                                <li><p><a href="Import_and_Export.html">Import and Export</a></p>
+            </li>
+                                <li><p><a href="Drawing_Chemical_Structures.html">Drawing Chemical Structures</a></p>
+            </li>
+                                <li><p><a href="Drawing_Graphical_Objects.html">Drawing Graphical Objects</a></p>
+            </li>
+                                <li><p><a href="Properties.html">Properties</a></p>
+            </li>
+                                <li><p><a href="Transformations.html">Transformations</a></p>
+            </li>
+                        </ul>
+            </li>
+                <li><p><a href="Chemical_Features_in_Marvin_JS.html">Chemical Features in Marvin JS</a></p>
+                    <ul>
+                                <li><p><a href="Reactions.html">Reactions</a></p>
+                    <ul>
+                                <li><p><a href="Reaction_Mechanisms.html">Reaction Mechanisms</a></p>
+            </li>
+                        </ul>
+            </li>
+                                <li><p><a href="Substructure_Groups.html">Substructure Groups</a></p>
+            </li>
+                                <li><p><a href="Structure_Cleaning_and_Validation.html">Structure Cleaning and Validation</a></p>
+            </li>
+                                <li><p><a href="Stereochemistry.html">Stereochemistry</a></p>
+            </li>
+                                <li><p><a href="Query_Structures.html">Query Structures</a></p>
+                    <ul>
+                                <li><p><a href="R-group_queries.html">R-group queries</a></p>
+            </li>
+                        </ul>
+            </li>
+                        </ul>
+            </li>
+                <li><p><a href="Keyboard_Shortcuts.html">Keyboard Shortcuts</a></p>
+            </li>
+    </ul>
+
+            </div>
+            <div id="17236093" class="content column span-18 last">
+                <h1>Query Structures</h1>
+    <p>
+Query structures are generalized structures representing a group of similar molecules which differ only in some structural elements. For example, all of the molecules possess the same skeleton with a halogen atom as substituent, but it is not crucial to know which halogen exactly. See more about query structures in <strong class=" "><a href="https://docs.chemaxon.com/display/jchembase/Query+Guide">JChem Query Guide</a></strong>. Using <strong class=" "><a href="Toolbars.html#17236081_Toolbars-queryAtoms">query atoms</a></strong> and <strong class=" "><a href="Toolbars.html#17236081_Toolbars-bonds">bonds</a></strong> offered in Marvin JS different query structures can be designed. Note that atom properties (e.g., atomic charge) can be modified for the query atoms, too. The query atoms are available on the Atoms toolbar, under a &quot;combo&quot; button.<br/>    <span id="17236093_QueryStructures-pseudo"><a name="17236093_QueryStructures-pseudo"></a></span>
+You can define pseudo atoms in your molecules. Replacing an atom with a pseudo will change it to an &quot;Any&quot; type query atom. Some atom properties can also be associated with a pseudo atom on the<strong class=" "> <a href="https://confluence.chemaxon.com/display/MFJ/Basic+Features+of+Marvin+for+JavaScript#BasicFeaturesofMarvinforJavaScript-topic_Basic_Features_of_Marvin_for_JAtom">Atom properties</a></strong> dialog.    </p>
+    <div class="section section-2"  id="17236093_QueryStructures-atomList"  >
+        <h2 class="heading "><span></span></h2>
+    </div>
+    <div class="section section-2"  id="17236093_QueryStructures-AtomListsandNOTLists"  >
+        <h2 class="heading "><span>Atom Lists and NOT Lists</span></h2>
+    <p>
+You can add an &quot;Atom List&quot; query atom to your molecule, which covers a set of atoms. The created structure produces a hit if any of the atoms in the list is found in the target. Similarly, you can use &quot;NOT List&quot; query atoms, too. A NOT List query atom can represent any atom that is not part of the list.<br/>Atom Lists and NOT Lists can be defined using the <strong class=" "><a href="Toolbars.html#17236081_Toolbars-periodicTable">Periodic Table</a></strong>. Pressing the appropriate button on the dialog then clicking on the atoms one after the other prepares the list. Close the Periodic Table when you are ready: the list of atoms is on the cursor. Furthermore, you can replace an atom with a new list or modify an already existing list in the <a href="https://confluence.chemaxon.com/display/MFJ/Toolbars#Toolbars-topic_ToolbarsPeriodicTable2"></a><strong class=" "><a href="Properties.html#17236088_Properties-atomDialog">Atom properties</a></strong> dialog, by selecting 'List/NOT list' at the top of the dialog.    </p>
+    </div>
+    <div class="section section-2"  id="17236093_QueryStructures-homologyGroupsHomologygroups"  >
+        <h2 class="heading "><span>Homology groups</span></h2>
+    <p>
+Built-in homology groups of Marvin JS represent series of chemical compounds with the same specific structural properties. Among these groups there are homologous series groups such as alkyl, alkenyl, alkynyl, carboalicyclyl and other generalized chemical names, like alkali and transition metal <i class=" ">etc</i>. Please, follow this <a href="https://docs.chemaxon.com/display/jchembase/Homology+Groups+and+Markush+Structures#HomologyGroupsandMarkushStructures-list">link</a> for the complete list of built-in homology groups as well as their aliases (shortened names).<br/>Homology groups are available from the <strong class=" "><a href="Properties.html#17236088_Properties-atomDialo">Atom properties</a></strong>    <span style="color: #0000ff;">
+    <span style="color: #0000ff;">
+     </span>
+    </span>
+dialog after a right-click on an atom. At the top of the dialog, change to 'Homology Groups' instead of 'Element' then select the appropriate group from the list and choose either its full name or its alias at the 'Display' option.    </p>
+    </div>
+    <div class="section section-2"  id="17236093_QueryStructures-RgroupsR-groupqueries"  >
+        <h2 class="heading "><span>R-group queries</span></h2>
+    <p>
+You can create R-groups, manage R-group definitions and add attachment points in Marvin JS to your structures.    </p>
+    <p>
+<a href="R-group_queries.html">Here you can read a detailed description about R-group queries in Marvin JS.</a>    </p>
+    </div>
+    <div class="section section-2"  id="17236093_QueryStructures-absoluteStereoAbsolutestereoinformation"  >
+        <h2 class="heading "><span>Absolute stereo information</span></h2>
+    <p>
+The &quot;Absolute&quot; chiral flag on a molecule indicates that every chiral center marked with wedge bonds has a known absolute configuration, that is to say, the structure represents a single, well-defined stereoisomer. This chiral flag can be added to a molecule through the <strong class=" "><a href="Context_Menus.html#17236082_ContextMenus-editPopup">pop-up menu</a></strong> and its display can be turned on/off in the <strong class=" "><a href="Display_Options.html#17236089_DisplayOptions-structureDisplay">View Settings</a></strong>    <span style="color: #0000ff;">
+    <span style="color: #0000ff;">
+     </span>
+    </span>
+dialog window.<br/>Depending on the file format, a molecule which has wedge bonds without a chiral flag has either of the following meanings:    </p>
+<ul class=" "><li class=" ">    <p>
+In MDL file types (MOL, SDF, ...): wedge bonds describe the relative configuration of chiral centers; the structure is a racemic mixture of two enantiomers.    </p>
+</li><li class=" ">    <p>
+In Daylight file types (SMILES, SMARTS): wedge bonds describe the absolute configuration of chiral centers; the structure represents a single enantiomer.    </p>
+</li></ul>    </div>
+    <div class="section section-2"  id="17236093_QueryStructures-enhancedStereoEnhancedstereospecifications"  >
+        <h2 class="heading "><span>Enhanced stereo specifications</span></h2>
+    <p>
+Marvin JS supports the MDL enhanced stereo representation. Enhanced stereo specifications enable us to refer to several stereoisomers of a molecule by drawing only one structure. Attaching these notations to chiral centers makes it possible to represent stereochemical information: whether we know the absolute configuration of a stereogenic center or we have information only about the relative configuration of two or more chiral atoms. The advantage of enhanced stereo representation is the most palpable when the molecule contains several chiral centers. Illustrating all or even just a few of the molecules stereoisomers can be really demanding in a case like this, but with the help of enhanced stereo specifications only one molecular structure can be enough to represent every diastereomer.<br/>Marvin JS applies four identifiers, which help us to create groups from the stereocenters. Each group label consists of an identifier, and &ndash; in some cases &ndash; of a number. Each and every stereocenter belongs only to one stereogenic group. The following identifiers can be attached to stereogenic centers:    </p>
+<ul class=" "><li class=" ">    <p>
+<strong class=" ">Off:</strong> We have no information about the configuration of the chiral atom;    </p>
+</li><li class=" ">    <p>
+<strong class=" ">Abs:</strong> We know the absolute configuration of the chiral center;    </p>
+</li><li class=" ">    <p>
+<strong class=" ">Or:</strong> Attaching the &bdquo;Or&quot; identifier to a stereogenic center means that we only know the configuration of the atom relative to another chiral center, but we do not have information about the absolute configuration. For a molecule with two chiral centers it either refers to the structure as drawn (<i class=" ">e.g.</i>, <strong class=" ">1<i class=" ">R</i></strong><i class=" ">,</i><strong class=" ">2<i class=" ">R</i></strong> configuration) or to its enantiomer, which has opposite configuration on its chiral atoms (<strong class=" ">1<i class=" ">S</i></strong><i class=" ">,</i><strong class=" ">2<i class=" ">S</i></strong>);    </p>
+</li><li class=" ">    <p>
+<strong class=" ">And:</strong> We use the &bdquo;And&quot; notation if we want to represent a mixture of stereoisomers which can contain specified enantiomers/diastereomers or even every optical isomer.    </p>
+</li></ul>    <p>
+You can find a more detailed description of enhanced stereo representation along with a set of examples in the <a href="https://docs.chemaxon.com/display/jchembase/Stereochemistry#Stereochemistry-mdl_enhanced_stereo">JChem Query Guide</a><a href="http://www.chemaxon.com/jchem/doc/user/query_stereochemistry.html#mdl_enhanced_stereo">.<br/>Please note that import and export of enhanced stereo notations are not possible in MDL Molfile V2000 format, only in the extended MDL Molfile (V3000) format (provided that the relevant webservice is available). </a>    </p>
+    </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Created with <a href="http://k15t.com/display/en/Scroll-Wiki-HTML-Exporter-for-Confluence-Overview">Scroll HTML Exporter for Confluence</a>.
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+chemical_name,use,formu_name,percent_act_ing,application_rate,num_apps,app_interval,foliar_diss_hlife,ld50_bird,species_of_the_tested_bird_avian_ld50,tw_bird_ld50,lc50_bird,species_of_the_tested_bird_avian_lc50,tw_bird_lc50,noaec_bird,species_of_the_tested_bird_avian_noaec,tw_bird_noaec,noael_bird,species_of_the_tested_bird_avian_noael,tw_bird_noael,mineau_sca_fact,bw_frog_prey_mamm,bw_frog_prey_herp,aw_herp_sm,awc_herp_sm,aw_herp_md,awc_herp_md,aw_herp_lg,awc_herp_lg
+Fluxapyroxad,Dried shelled beans (except soybeans),NA,100,0.18,2,7,35,2000,Bobwhite quail,178,2457,Bobwhite quail,178,100,Bobwhite quail,178,7.8,Bobwhite quail,178,1.15,15,15,2,85,20,85,200,85
+Chlorpyrifos,Ornamentals,Chemisco Fungicide Concentrate (EC),100,4,1,1,18,10,House Sparrow,28,136,Mallard duck,1580,25,Bobwhite quail,178,,,,1,35,2.3,1.4,69,37,85,238,85
+Chlorpyrifos,sorghum,Chemisco Fungicide Concentrate (EC),100,1,3,14,5,10,House Sparrow,28,136,Mallard duck,1580,25,Bobwhite quail,178,,,,1,35,2.3,1.4,69,37,85,238,85
+Chlorpyrifos,strawberry,Chemisco Fungicide Concentrate (EC),100,2,1,1,18,10,House Sparrow,28,136,Mallard duck,1580,25,Bobwhite quail,178,,,,1,35,2.3,1.4,69,37,85,238,85
+Chlorpyrifos,sugarbeet,Chemisco Fungicide Concentrate (EC),100,1,3,10,18,10,House Sparrow,28,136,Mallard duck,1580,25,Bobwhite quail,178,,,,1,35,2.3,1.4,69,37,85,238,85
+Chlorpyrifos,sunflower,Chemisco Fungicide Concentrate (EC),100,1.5,3,10,5,10,House Sparrow,28,136,Mallard duck,1580,25,Bobwhite quail,178,,,,1,35,2.3,1.4,69,37,85,238,85

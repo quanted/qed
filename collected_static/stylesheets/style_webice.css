@@ -1,0 +1,131 @@
+/* Web-ICE */
+
+th {
+  font-size: 1.4em;
+}
+td {
+  font-size: 1.3em;
+}
+.mainLabels {
+  height: 36px;
+  border-bottom: 2px solid #F1F2F3;
+}
+.Labels {
+  height: 28px;
+  border-bottom: none;
+  text-decoration: underline;
+}
+.subLabels {
+  height: 28px;
+  border-top: 2px solid #F1F2F3;
+  border-bottom: 2px solid #F1F2F3;
+  font-size: 1.2em;
+  color: #364A56;
+}
+button, input {
+  padding: 2px 4px;
+}
+.webice {
+  width: 763px;
+  margin: 8px 0 12px 0;
+}
+.webice td {
+  border: none;
+  text-align: center;
+  padding: 4px;
+}
+.webice th {
+  padding: 8px;
+}
+#SurrogateCell, #PredictedCell {
+  width: 50%;
+}
+#surrSpecies, #predSpecies {
+  font-size: 1.5em;
+  margin: 12px;
+}
+#surrSpecies span, #predSpecies span, .title {
+  font-weight: 700;
+}
+.centeredData {
+  margin: 12px;
+}
+.centeredData span {
+  font-size: 1.5em;
+}
+#speciesIn {
+  font-size: 1.5em;
+}
+#resultsTable {
+  margin-top: 36px;
+}
+#resultsTable th {
+  max-width: 222px;
+  padding: 4px;
+}
+#inputToxLog {
+  padding: 3px 8px 0 0;
+  float: right;
+}
+#modelData {
+  margin-top: 36px;
+  float: left;
+}
+#graphImage {
+  margin-top: 36px;
+  float: right;
+}
+#fileType {
+  text-align: center;
+  margin-bottom: 12px;
+  min-height: 232px;
+}
+#PageName {
+  font-weight: 700;
+  font-size: 2em;
+  margin-bottom: 24px;
+  min-height: 18px;
+}
+.ssdResultsContainer, .ssdResultsContainerTopScroll, #tneResultsContainer {
+  width: 824px;
+  overflow-x: scroll;
+}
+/*.scroll-div1 {
+  overflow-x: scroll;
+}*/
+/*.scroll-div2 {
+  width: 1000px;
+}*/
+#modResults, #ssdResults, #tneResults {
+  margin-left: 0;
+}
+#modResults th {
+  font-size: 1.2em;
+  max-width: 260px;
+  padding: 4px 8px;
+}
+#modResults td {
+  font-size: 1.2em;
+  max-width: 120px;
+}
+.outsideRange {
+  color: #FF0000;
+}
+.greyedOut {
+  color: #AAAAAA;
+}
+.greyedOut td.outsideRange {
+  color: #AAAAAA;
+}
+#filtertable {
+  margin: 20px 0;
+}
+#ssdResults, #tneResults {
+  margin: 20px 0;
+}
+/*#ssdResults, #tneResults th {
+  padding: 0 4px;
+}*/
+.articles_output img {
+  margin-left: 4px;
+}

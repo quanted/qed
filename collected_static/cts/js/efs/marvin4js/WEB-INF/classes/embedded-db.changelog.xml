@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet author="Plajko (generated)" id="1353922456950-14">
+		<createTable tableName="JChemProperties">
+			<column name="prop_name" type="VARCHAR(200)">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="prop_value" type="VARCHAR(200)" />
+			<column name="prop_value_ext" type="BLOB" />
+		</createTable>
+	</changeSet>
+	<changeSet author="Plajko (generated)" id="1353922456950-15">
+		<createTable tableName="JChemProperties_CR">
+			<column name="cache_id" type="VARCHAR(32)">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="registration_time" type="VARCHAR(30)">
+				<constraints nullable="false" />
+			</column>
+			<column defaultValueNumeric="0" name="is_protected" type="SMALLINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Plajko" id="loadData">
+		<loadData tableName="JChemProperties" file="JChemProperties.csv" quotchar='+'>
+			<column name="prop_name" type="STRING" />
+			<column name="prop_value" type="STRING" />
+			<column name="prop_value_ext" type="BLOB" />
+		</loadData>
+	</changeSet>
+</databaseChangeLog>

@@ -222,7 +222,7 @@ services:
     links:
       - cyan-db
     env_file:
-       Would set_enviornment.py overwrite env vars in default below (hope so).
+      # Would set_enviornment.py overwrite env vars in default below (hope so).
       - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
 
   cyan-db:

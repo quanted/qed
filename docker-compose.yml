@@ -90,7 +90,7 @@ services:
       - qed_django:uwsgi_django  # Nginx.conf can reference "qed_django" service with the hostname 'uwsgi' or 'qed_django'
       - cts_nodejs:cts_nodejs
       - qed_flask:qed_flask
-#      - cyan-api:uwsgi_flask
+      - cyan-api:uwsgi_flask
     volumes:
       - /var/www/nginx/certs:/etc/nginx/qed # this points to the keys directory
       - /etc/letsencrypt:/etc/letsencrypt  # certs from letsencrypt (uses certbot)
@@ -115,6 +115,7 @@ services:
       - /var/www/samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results
       - /var/www/qed-basins:/src/hms_flask/data/qed-basins
       - collected_static:/src/collected_static
+      - /var/www/app_data/hms:/src/hms-data
     depends_on:
       - mongodb
     logging:

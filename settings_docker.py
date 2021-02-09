@@ -205,12 +205,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 STATIC_URL = '/static_qed/'
-# if IN_PROD:
-#     STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static_qed')
-#     STATICFILES_DIRS = (
-#         os.path.join(PROJECT_ROOT, 'collected_static'),
-#     )
-
 
 # Log to console in Debug mode
 if DEBUG:

@@ -19,7 +19,7 @@ print('settings_docker.py')
 IN_PROD = bool(os.getenv("IN_PROD", 0))
 print("Production Deployment: {}".format(IN_PROD))
 if IN_PROD:
-    DEBUG = True
+    DEBUG = False
     IS_PUBLIC = True
     CORS_ORIGIN_ALLOW_ALL = False
     PUBLIC_APPS = ['cts', 'hms', 'pisces']

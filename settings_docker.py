@@ -13,7 +13,11 @@ import os
 import socket
 from settings import *
 from django.conf import settings
+from temp_config.set_environment import DeployEnv
 
+# Determine env vars to use:
+runtime_env = DeployEnv()
+runtime_env.load_deployment_environment()
 
 print('settings_docker.py')
 IN_PROD = bool(os.getenv("IN_PROD", 0))

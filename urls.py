@@ -17,7 +17,7 @@ cyano_urls = getattr(cyano, 'urlpatterns')
 
 # Storing env vars in os.environ are strings only...
 # if bool(os.environ.get('IS_PUBLIC')) and not bool(os.environ.get('UNDER_REVIEW')):
-if settings.IS_PROD:
+if settings.IN_PROD:
     urlpatterns = [
         path('', include('splash_app.urls')),
         path('cts/', include('cts_app.urls')),

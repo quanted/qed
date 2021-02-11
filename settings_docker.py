@@ -20,12 +20,14 @@ IN_PROD = bool(os.getenv("IN_PROD", 0))
 print("Production Deployment: {}".format(IN_PROD))
 if IN_PROD:
     DEBUG = True
+    IS_PUBLIC = True
     CORS_ORIGIN_ALLOW_ALL = False
     PUBLIC_APPS = ['cts', 'hms', 'pisces']
     PASSWORD_REQUIRED = False
     os.environ.update({'HMS_RELEASE': 'True'})
 else:
     DEBUG = True
+    IS_PUBLIC = False
     CORS_ORIGIN_ALLOW_ALL = True
     PUBLIC_APPS = ['cts', 'hms', 'pisces', 'cyan', 'pram']
 
@@ -127,6 +129,46 @@ else:
 print("MACHINE_ID = {}".format(MACHINE_ID))
 print("HOSTNAME = {}".format(HOSTNAME))
 print("IS_PUBLIC = {}".format(IS_PUBLIC))
+
+# Application definition
+if IN_PROD:
+    INSTALLED_APPS = (
+        'corsheaders',
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'cts_app',  # cts django app
+        'cts_app.filters',  # cts filters for pchem table
+        'cts_app.cts_api',
+        'cts_app.cts_testing',
+        'hms_app',  # hms django app
+        'pisces_app',  # pisces django app
+        'splash_app',  # splash django app
+    )
+else:
+    INSTALLED_APPS = (
+        'corsheaders',
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'cts_app',  # cts django app
+        'cts_app.filters',  # cts filters for pchem table
+        'cts_app.cts_api',
+        'cts_app.cts_testing',
+        'cyan_app',  # cyan django app
+        'hms_app',  # hms django app
+        'hwbi_app',  # hwbi django app
+        'nta_app',
+        'pisces_app',  # pisces django app
+        'pram_app',  # pram django app
+        'splash_app',  # splash django app
+    )
 
 # Disable this because Django wants to email errors and there is no email server set up
 # ADMINS = (

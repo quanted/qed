@@ -13,10 +13,27 @@ import os
 import socket
 from settings import *
 from django.conf import settings
-# import settingsdjango
-# from . import settings
+from temp_config.set_environment import DeployEnv
+
+# Determine env vars to use:
+runtime_env = DeployEnv()
+runtime_env.load_deployment_environment()
 
 print('settings_docker.py')
+IN_PROD = bool(os.getenv("IN_PROD", 0))
+print("Production Deployment: {}".format(IN_PROD))
+if IN_PROD:
+    DEBUG = False
+    IS_PUBLIC = True
+    CORS_ORIGIN_ALLOW_ALL = False
+    PUBLIC_APPS = ['cts', 'hms', 'pisces']
+    PASSWORD_REQUIRED = False
+    os.environ.update({'HMS_RELEASE': 'True'})
+else:
+    DEBUG = True
+    IS_PUBLIC = False
+    CORS_ORIGIN_ALLOW_ALL = True
+    PUBLIC_APPS = ['cts', 'hms', 'pisces', 'cyan', 'pram']
 
 # Get machine IP address
 MACHINE_ID = socket.gethostname()
@@ -31,7 +48,6 @@ os.environ.update({
     'SITE_SKIN': 'EPA',  # Leave empty ('') for default skin, 'EPA' for EPA skin
     'CONTACT_URL': 'https://www.epa.gov/research/forms/contact-us-about-epa-research',
 })
-
 
 TEMPLATE_DEBUG = False
 
@@ -71,7 +87,23 @@ except IOError as e:
 
 ALLOWED_HOSTS = []
 
-if HOSTNAME == "UberTool-Dev":
+if IS_PROD:
+    ALLOWED_HOSTS.append('134.67.114.3')  # CGI NAT address (mapped to 'qed.epa.gov')
+    ALLOWED_HOSTS.append('134.67.114.1')
+    ALLOWED_HOSTS.append('134.67.114.5')
+    ALLOWED_HOSTS.append('172.20.100.11')
+    ALLOWED_HOSTS.append('172.20.100.13')
+    ALLOWED_HOSTS.append('172.20.100.15')
+    ALLOWED_HOSTS.append('qed.epa.gov')
+    ALLOWED_HOSTS.append('qed.edap-cluster.com')
+    ALLOWED_HOSTS.append('ceamdev.ddns.net')
+    ALLOWED_HOSTS.append('ceamstg.ddns.net')
+    ALLOWED_HOSTS.append('ceamdev.ceeopdev.net')
+    ALLOWED_HOSTS.append('ceamstg.ceeopdev.net')
+    ALLOWED_HOSTS.append('qedlinux1dev.aws.epa.gov')
+    ALLOWED_HOSTS.append('qedlinux1stg.aws.epa.gov')
+    ALLOWED_HOSTS.append('awqedlinprd.aws.epa.gov')
+elif HOSTNAME == "UberTool-Dev":
     ALLOWED_HOSTS.append('172.16.0.4')
     ALLOWED_HOSTS.append('qed.epacdx.net')
 else:
@@ -98,17 +130,54 @@ else:
     ALLOWED_HOSTS.append('qedlinux1stg.aws.epa.gov')
     ALLOWED_HOSTS.append('awqedlinprd.aws.epa.gov')
 
-
-
 print("MACHINE_ID = {}".format(MACHINE_ID))
 print("HOSTNAME = {}".format(HOSTNAME))
 print("IS_PUBLIC = {}".format(IS_PUBLIC))
+
+# Application definition
+if IN_PROD:
+    INSTALLED_APPS = (
+        'corsheaders',
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'cts_app',  # cts django app
+        'cts_app.filters',  # cts filters for pchem table
+        'cts_app.cts_api',
+        'cts_app.cts_testing',
+        'hms_app',  # hms django app
+        'pisces_app',  # pisces django app
+        'splash_app',  # splash django app
+    )
+else:
+    INSTALLED_APPS = (
+        'corsheaders',
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'cts_app',  # cts django app
+        'cts_app.filters',  # cts filters for pchem table
+        'cts_app.cts_api',
+        'cts_app.cts_testing',
+        'cyan_app',  # cyan django app
+        'hms_app',  # hms django app
+        'hwbi_app',  # hwbi django app
+        'nta_app',
+        'pisces_app',  # pisces django app
+        'pram_app',  # pram django app
+        'splash_app',  # splash django app
+    )
 
 # Disable this because Django wants to email errors and there is no email server set up
 # ADMINS = (
 #     ('Ubertool Dev Team', 'ubertool-dev@googlegroups.com')
 # )
-
 
 MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -116,10 +185,8 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.csrf.CsrfViewMiddleware', #rollbar
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware', #rollbar
-    # 'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 
 ROOT_URLCONF=__name__, #rollbar
 
@@ -138,27 +205,6 @@ ROLLBAR = {
     'root': os.getcwd()
 }
 
-## rollbar integration
-#settings.configure(
-#    DEBUG=True,
-#    SECRET_KEY='thisisthesecretkey',
-#    ROOT_URLCONF=__name__,
-#    ROLLBAR = {
-#        'access_token': 'POST_SERVER_ITEM_ACCESS_TOKEN',
-#        'environment': 'development',
-#        'branch': 'master',
-#        'root': os.getcwd()
-#    },
-#    MIDDLEWARE_CLASSES=(
-#        'django.middleware.common.CommonMiddleware',
-#        'django.middleware.csrf.CsrfViewMiddleware',
-#        'django.middleware.clickjacking.XFrameOptionsMiddleware',###
-#
-#        # Rollbar middleware
-#        'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
-#    ),
-#)
-
 ROOT_URLCONF = 'urls'
 
 WSGI_APPLICATION = 'wsgi_docker.application'
@@ -169,7 +215,7 @@ WSGI_APPLICATION = 'wsgi_docker.application'
 # Authentication
 AUTH = False
 # Note: env vars in os.environ always strings..
-if os.environ.get('PASSWORD_REQUIRED') == "True":
+if bool(os.getenv('PASSWORD_REQUIRED', 0)):
     logging.warning("Password protection enabled")
     MIDDLEWARE += [
         'login_middleware.RequireLoginMiddleware',
@@ -181,9 +227,6 @@ if os.environ.get('PASSWORD_REQUIRED') == "True":
 
 REQUIRE_LOGIN_PATH = '/login/'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-
-# Public apps:
-PUBLIC_APPS = ['cts', 'hms', 'pram']
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -198,7 +241,16 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_ROOT = '/src/collected_static/'
+# STATIC_ROOT = os.path.join('src', 'collected_static')
+STATIC_ROOT = os.path.join('collected_static')
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static_qed'),
+)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+STATIC_URL = '/static_qed/'
 
 # Log to console in Debug mode
 if DEBUG:

@@ -20,7 +20,7 @@ runtime_env = DeployEnv()
 runtime_env.load_deployment_environment()
 
 print('settings_docker.py')
-IN_PROD = bool(os.getenv("IN_PROD", 0))
+IN_PROD = (os.getenv("IN_PROD") == "1")
 print("Production Deployment: {}".format(IN_PROD))
 if IN_PROD:
     DEBUG = False
@@ -215,7 +215,7 @@ WSGI_APPLICATION = 'wsgi_docker.application'
 # Authentication
 AUTH = False
 # Note: env vars in os.environ always strings..
-if bool(os.getenv('PASSWORD_REQUIRED', 0)):
+if os.getenv('PASSWORD_REQUIRED') == "True":
     logging.warning("Password protection enabled")
     MIDDLEWARE += [
         'login_middleware.RequireLoginMiddleware',

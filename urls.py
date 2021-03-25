@@ -2,6 +2,7 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.urls import path, re_path
 from splash_app.views import landing
+from django.conf.urls.static import static
 import importlib
 import login_middleware
 from django.contrib.auth.decorators import login_required
@@ -16,7 +17,14 @@ cyano_urls = getattr(cyano, 'urlpatterns')
 
 # Storing env vars in os.environ are strings only...
 # if bool(os.environ.get('IS_PUBLIC')) and not bool(os.environ.get('UNDER_REVIEW')):
-if os.environ.get('IS_PUBLIC') == "True":
+if settings.IN_PROD:
+    urlpatterns = [
+        path('', include('splash_app.urls')),
+        path('cts/', include('cts_app.urls')),
+        path('hms/', include('hms_app.urls')),
+        path('pisces/', include('pisces_app.urls')),
+    ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+elif os.environ.get('IS_PUBLIC') == "True":
     urlpatterns = [
         path('', include('splash_app.urls')),
         path('cts/', include('cts_app.urls')),

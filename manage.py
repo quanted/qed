@@ -19,16 +19,11 @@ if __name__ == "__main__":
 	runtime_env = DeployEnv()
 	runtime_env.load_deployment_environment()
 
-	# if os.path.abspath(__file__) == os.path.join('/', 'var', 'www', 'ubertool', 'ubertool_eco', 'manage.py'):
-	#     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "splash_app.settings_apache")
-	# else:
-		# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "splash_app.settings")
 	if os.environ.get('DJANGO_SETTINGS_FILE'):
 		os.environ.setdefault("DJANGO_SETTINGS_MODULE", os.environ.get('DJANGO_SETTINGS_FILE'))
 	else:
 		os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
-	# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
-    # os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings_apache")
+
 	print(sys.argv)
 	# wsgi needs to know about where the settings file is
 	execute_from_command_line(sys.argv)

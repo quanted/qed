@@ -18,6 +18,7 @@ services:
       #so that is can be picked up by the django settings 
       - DOCKER_HOSTNAME=${HOSTNAME}
       #- DOCKER_SECRET_KEY=${SECRET_KEY}
+      - HMS_RELEASE=${HMS_RELASE:-0}
     links:
       - redis
       - mongodb

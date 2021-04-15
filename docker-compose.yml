@@ -19,6 +19,7 @@ services:
       - DOCKER_HOSTNAME=${HOSTNAME}
       #- DOCKER_SECRET_KEY=${SECRET_KEY}
       - HMS_RELEASE=${HMS_RELASE:-0}
+      - IN_PROD=${IN_PROD:-0}
     links:
       - redis
       - mongodb

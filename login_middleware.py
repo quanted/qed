@@ -56,7 +56,7 @@ class RequireLoginMiddleware:
         self.hms_admin = "hmsadmin"
         self.hms_username = "hmsuser"
         self.hashed_pass = {}  # dictionary of user:passwords
-        self.apps_with_password = ["hms", "pram", "cts/biotrans", "cts/stress", "cyanweb"]
+        self.apps_with_password = ["hms", "pram", "cts/biotrans", "cts/stress"]
         self.hms_protected = ["hydrology", "workflow", "meteorology"]
         self.hms_public = [
             "workflow/precip_data_extraction/",
@@ -67,7 +67,7 @@ class RequireLoginMiddleware:
         self.open_endpoints = [
             "rest/api/"
         ]
-        self.set_password_via_config()
+        self.set_password_via_env()
         self.load_passwords()
 
     def __call__(self, request):
@@ -90,7 +90,7 @@ class RequireLoginMiddleware:
             elif "cyanweb" in a:
                 self.hashed_pass["qed"] = self.get_hashed_password("secret_key_login.txt")
 
-    def set_password_via_config(self):
+    def set_password_via_env(self):
         """
         Modifies apps_with_password list based on deployment environment.
         Used for fine-tuning passwords on apps on a server-by-server basis.
@@ -99,8 +99,14 @@ class RequireLoginMiddleware:
         if not env_name:
             return
         if env_name == 'gdit_aws_dev':
-            if "cts" not in self.apps_with_password:
-                self.apps_with_password.append("cts")  # adds password for all of cts on gdit aws dev server
+            self.add_to_password_list("cts")
+            self.add_to_password_list("cyanweb")
+        elif env_name == 'gdit_aws_stg':
+            self.add_to_password_list("cyanweb")
+
+    def add_to_password_list(self, app_name):
+        if app_name not in self.apps_with_password:
+                self.apps_with_password.append(app_name)  # adds password for cyanweb on gdit aws dev server        
 
     def get_hashed_password(self, filename):
         """
@@ -234,7 +240,7 @@ class RequireLoginMiddleware:
         next_page = request.POST.get('next')
 
         if self.hashed_pass is None:
-            self.set_password_via_config()
+            self.set_password_via_env()
             self.load_passwords()
 
         # redirect if hashed pw unable to be set, or user didn't enter password:

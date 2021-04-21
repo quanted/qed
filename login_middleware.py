@@ -152,7 +152,7 @@ class RequireLoginMiddleware:
             return
 
         # Check that user is autheniticated for the page its trying to access
-        ispublic = bool(os.getenv("HMS_RELEASE", 0))
+        ispublic = (os.getenv("HMS_RELEASE") == "1")
         if has_access is False:
             if 'hms' in redirect_path or 'hms' in path:
                 if ispublic:

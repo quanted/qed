@@ -228,7 +228,6 @@ services:
     environment:
       # Does environment overwrite env_file, or vice versa?
       - DOCKER_HOSTNAME=${HOSTNAME}
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-tempsecret123!}
     links:
       - cyan-db
     env_file:
@@ -264,6 +263,6 @@ services:
       - ${SQL_DUMP:-./EPA-Cyano-Web/cyan_mysql/no_dump.txt}:/tmp/dump.sql  # use optional dump file to build container DB
       - /var/www/app_data/cyano:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-tempsecret123!}
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
     env_file:
       - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}

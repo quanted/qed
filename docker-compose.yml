@@ -18,6 +18,8 @@ services:
       #so that is can be picked up by the django settings 
       - DOCKER_HOSTNAME=${HOSTNAME}
       #- DOCKER_SECRET_KEY=${SECRET_KEY}
+      - HMS_RELEASE=${HMS_RELASE:-0}
+      - IN_PROD=${IN_PROD:-0}
     links:
       - redis
       - mongodb
@@ -162,7 +164,7 @@ services:
     environment:
       - MONGODB=mongodb
       - FLASK_SERVER=http://qed_nginx:7777
-      - GOOGLE_API_KEY
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
     expose:
      - "80"
     volumes:
@@ -226,11 +228,29 @@ services:
     environment:
       # Does environment overwrite env_file, or vice versa?
       - DOCKER_HOSTNAME=${HOSTNAME}
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-tempsecret123!}
     links:
       - cyan-db
     env_file:
       # Would set_enviornment.py overwrite env vars in default below (hope so).
+      - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
+
+  # Cyanweb Celery Worker
+  cyan-celery:
+    build:
+      context: ./EPA-Cyano-Web
+      dockerfile: docker/flask/Dockerfile
+    image: cyan-celery
+    container_name: cyan-celery
+    command: celery -A celery_worker.celery worker --loglevel=INFO -c 1
+    depends_on:
+      - cyan-db
+      - redis
+    volumes:
+      - ./EPA-Cyano-Web/config:/config
+      - ./EPA-Cyano-Web/cyan_flask/:/cyan_flask
+    environment:
+      - DOCKER_HOSTNAME=${HOSTNAME}
+    env_file:
       - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
 
   # Cyanweb MySQL DB
@@ -243,6 +263,6 @@ services:
       - ${SQL_DUMP:-./EPA-Cyano-Web/cyan_mysql/no_dump.txt}:/tmp/dump.sql  # use optional dump file to build container DB
       - /var/www/app_data/cyano:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-tempsecret123!}
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
     env_file:
       - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}

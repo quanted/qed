@@ -23,6 +23,7 @@ if settings.IN_PROD:
         path('cts/', include('cts_app.urls')),
         path('hms/', include('hms_app.urls')),
         path('pisces/', include('pisces_app.urls')),
+        path('cyanweb/', include(cyano_urls)),
     ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 elif os.environ.get('IS_PUBLIC') == "True":
     urlpatterns = [

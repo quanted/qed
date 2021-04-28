@@ -26,7 +26,7 @@ if IN_PROD:
     DEBUG = False
     IS_PUBLIC = True
     CORS_ORIGIN_ALLOW_ALL = False
-    PUBLIC_APPS = ['cts', 'hms', 'pisces']
+    PUBLIC_APPS = ['cts', 'hms', 'pisces', 'cyanweb']
     PASSWORD_REQUIRED = False
     os.environ.update({'HMS_RELEASE': 'True'})
 else:
@@ -109,6 +109,7 @@ elif HOSTNAME == "UberTool-Dev":
 else:
     ALLOWED_HOSTS.append('localhost')
     ALLOWED_HOSTS.append('127.0.0.1')
+    ALLOWED_HOSTS.append('host.docker.internal')
     ALLOWED_HOSTS.append('192.168.99.100')  # Docker Machine IP (generally, when using VirtualBox VM)
     ALLOWED_HOSTS.append('134.67.114.3')  # CGI NAT address (mapped to 'qed.epa.gov')
     ALLOWED_HOSTS.append('134.67.114.1')

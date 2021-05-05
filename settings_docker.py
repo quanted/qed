@@ -33,6 +33,7 @@ else:
     DEBUG = True
     IS_PUBLIC = False
     CORS_ORIGIN_ALLOW_ALL = True
+    PASSWORD_REQUIRED = True
     PUBLIC_APPS = ['cts', 'hms', 'pisces', 'cyan', 'pram']
 
 # Get machine IP address
@@ -216,7 +217,7 @@ WSGI_APPLICATION = 'wsgi_docker.application'
 # Authentication
 AUTH = False
 # Note: env vars in os.environ always strings..
-if os.getenv('PASSWORD_REQUIRED') == "True":
+if PASSWORD_REQUIRED:
     logging.warning("Password protection enabled")
     MIDDLEWARE += [
         'login_middleware.RequireLoginMiddleware',

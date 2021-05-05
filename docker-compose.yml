@@ -5,6 +5,7 @@ services:
 
   # QED Django front-end
   qed_django:
+    restart: unless-stopped
     image: quanted/qed-django:lite  # use qed image w/ tag = VERSION, default = latest
     expose:
       - "8080"
@@ -26,6 +27,7 @@ services:
 
   # Redis (message broker)
   redis:
+    restart: unless-stopped
     image: redis:latest
     hostname: redis
     command: redis-server /usr/local/etc/redis/redis.conf
@@ -36,6 +38,7 @@ services:
 
   # ubertool_cts nodejs submodule
   cts_nodejs:
+    restart: unless-stopped
     build: ./cts_nodejs
     # image: cts-nodejs
     image: quanted/cts_nodejs
@@ -53,6 +56,7 @@ services:
 
   # # Celery worker - manager calc
   worker_manager:
+    restart: unless-stopped
     build:
       context: ./cts_celery
       dockerfile: Dockerfile
@@ -70,6 +74,7 @@ services:
 
   # # Celery worker - cts calc
   worker_cts:
+    restart: unless-stopped
     build:
       context: ./cts_celery
       dockerfile: Dockerfile
@@ -87,7 +92,7 @@ services:
       - ./cts_celery:/src
 
   qed_nginx:
-    restart: always
+    restart: unless-stopped
     # build: ../cts_nginx
     build: ./qed_nginx
     ports:
@@ -106,6 +111,7 @@ services:
 
   # flask_qed Flask back-end
   qed_flask:
+    restart: unless-stopped
     image: quanted/flask_qed:lite  # use qed image w/ tag = VERSION, default = latest
     expose:
       - "7777"
@@ -132,6 +138,7 @@ services:
 
   # mongoDB database container
   mongodb:
+    restart: unless-stopped
     image: mongo:latest
     volumes:
       - /var/www/mongodb:/data/db
@@ -140,6 +147,7 @@ services:
 
   # Celery container for async task execution
   qed_celery:
+    restart: unless-stopped
     image: quanted/flask_qed:lite
     volumes:
       - ./flask_qed:/src
@@ -160,6 +168,7 @@ services:
         max-file: "10"
 
   hms_dotnetcore:
+    restart: unless-stopped
     image: quanted/hms-dotnetcore
     environment:
       - MONGODB=mongodb
@@ -173,6 +182,7 @@ services:
 
   # Dask Containers
   dask_scheduler:
+    restart: unless-stopped
     image: quanted/qed-dask:latest
     hostname: dask-scheduler
     expose:
@@ -181,6 +191,7 @@ services:
     command: ["dask-scheduler"]
 
   dask_worker:
+    restart: unless-stopped
     image: quanted/qed-dask:latest
     hostname: dask-worker
     environment:
@@ -192,6 +203,7 @@ services:
 
   # Apache Tomcat container
   qed-tomcat:
+    restart: unless-stopped
     build:
       # context: ./qed_tomcat
       context: .
@@ -208,6 +220,7 @@ services:
       - ./secrets/tomcat/chemaxon/licenses:/home/tomcat/.chemaxon/licenses
 
   pisces-db:
+    restart: unless-stopped
     image: mdillon/postgis
     expose:
       - "5432"
@@ -216,6 +229,7 @@ services:
 
   # Cyanweb Flask API
   cyan-api:
+    restart: unless-stopped
     build:
       context: ./EPA-Cyano-Web
       dockerfile: docker/flask/Dockerfile
@@ -236,6 +250,7 @@ services:
 
   # Cyanweb Celery Worker
   cyan-celery:
+    restart: unless-stopped
     build:
       context: ./EPA-Cyano-Web
       dockerfile: docker/flask/Dockerfile
@@ -255,6 +270,7 @@ services:
 
   # Cyanweb MySQL DB
   cyan-db:
+    restart: unless-stopped
     build:
       context: ./EPA-Cyano-Web
       dockerfile: docker/mysql/Dockerfile

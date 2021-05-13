@@ -158,7 +158,7 @@ services:
     links:
       - redis
       - mongodb
-    command: celery worker -A celery_cgi -Q qed --loglevel=INFO -c 2 -n qed_worker
+    command: celery -A celery_cgi worker -Q qed --loglevel=INFO -c 2 -n qed_worker
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}

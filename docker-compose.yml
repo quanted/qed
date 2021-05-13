@@ -162,6 +162,7 @@ services:
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
+      - DASK_SCHEDULER=http://dask_scheduler:8786
     logging:
       options:
         max-size: "200k"

@@ -1,0 +1,28 @@
+\documentclass[fleqn, oneside, 11pt]{article}%allows pdfs to be cropped and fleqn left justifies
+\usepackage{amssymb}
+\usepackage{amsmath}%sets math environment
+\usepackage[active, tightpage]{preview}%crops pdf to border of equations
+\DeclareMathSizes{10}{1}{1}{1}
+\setlength\PreviewBorder{1pt}%sets size of border
+
+\begin{document}
+\begin{preview}
+\begin{align*}%sets up equation environment so you can specify alignment with ampersands
+d_{1} & = d_{0}+P-L-E-D+R \;\;\;\;\;\;\;\;   for \;\; 0<d_{1}<d_{weir} \\ 
+\text{where} \nonumber \\
+d_{1} & =  \text{the current aqueous depth for the day (m)} \nonumber \\
+d_{0} & =  \text{the water depth of the previous day (m)} \nonumber \\
+d_{weir} & =  \text{weir level (m)} \nonumber \\
+P & =  \text{daily direct precipitation on water body (m)} \nonumber \\
+L & =  \text{leakage through sediment (m)} \nonumber \\
+E & =  \text{daily evaporation of runoff (m)} \nonumber \\
+D & =  \text{drainage due to weir height changes (m)} \nonumber \\
+R & =  \text{engineered flow into water body (m)} \nonumber \\
+\end{align*} 
+\end{preview}
+\end{document}
+
+% convert pdf to png using imagemagick
+% convert -density 400 pfam_image1.pdf pfam_image1.png
+
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<!-- !!! Digest Authentication will NOT work if you are using encoded passwords in your DAO -->
+
+	<bean id="digestAuthenticationFilter" class="org.springframework.security.web.authentication.www.DigestAuthenticationFilter" 
+		p:authenticationEntryPoint-ref="digestAuthenticationEntryPoint" 
+		p:userDetailsService-ref="userService" 
+	/>
+	
+	<bean id="digestAuthenticationEntryPoint" class="org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint" 
+		p:realmName="#{authenticationMessage}" 
+		p:nonceValiditySeconds="10" 
+		p:key="acegi"
+	/>
+	
+	<security:http request-matcher="ant" use-expressions="true" entry-point-ref="digestAuthenticationEntryPoint">
+<!-- 		<security:intercept-url pattern="/rest-v0/login" access="permitAll"/> -->
+		<security:intercept-url pattern="/rest-v0/**" access="isAuthenticated()"/>
+		<security:custom-filter ref="digestAuthenticationFilter" position="BASIC_AUTH_FILTER" />
+	</security:http>
+	
+</beans>

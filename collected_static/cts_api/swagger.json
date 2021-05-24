@@ -1,0 +1,1293 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "CTS REST API",
+        "description": "Endpoints for p-chem, speciation, and transformation data.",
+        "version": "1.0.0"
+    },
+    "schemes": [
+        "https",
+        "http"
+    ],
+    "basePath": "/cts/rest",
+    "produces": [
+        "application/json",
+        "application/x-www-form-urlencoded"
+    ],
+    "consumes": [
+        "application/json",
+        "text/html"
+    ],
+    "paths": {  
+        "/cts": {
+            "get": {
+                "summary": "CTS REST enpoints.",
+                "description": "This enpoint returns a list of all\ncalculator endpoints.\n",
+                "tags": [
+                    "cts"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "CTS REST endpoints",
+                        "schema": {
+                            "$ref": "#/definitions/CTS"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/chemaxon": {
+            "get": {
+                "summary": "ChemAxon REST endpoints.",
+                "description": "This endoint returns the inputs used\nfor getting p-chem data from chemaxon.\n",
+                "tags": [
+                    "chemaxon"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "chemaxon REST endpoints",
+                        "schema": {
+                            "$ref": "#/definitions/Chemaxon"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/chemaxon/inputs": {
+            "post": {
+                "summary": "ChemAxon input schema",
+                "description": "This endpoint returns the inputs used to\nget estimated values from ChemAxon.\n",
+                "tags": [
+                    "chemaxon"
+                ],
+                "parameters": [
+                    {
+                        "name": "inputs",
+                        "in": "body",
+                        "description": "Inputs for ChemAxon p-chem property request.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CalcInputs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "chemaxon input schema",
+                        "schema": {
+                            "$ref": "#/definitions/ChemaxonInputsResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/chemaxon/run": {
+            "post": {
+                "summary": "Run chemaxon calculator for p-chem data.",
+                "description": "This endpoint runs chemaxon and returns p-chem data\nfrom requested p-chem property.\n",
+                "tags": [
+                    "chemaxon"
+                ],
+                "parameters": [
+                    {
+                        "name": "inputs",
+                        "in": "body",
+                        "description": "Outputs for ChemAxon p-chem property request.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RunChemaxonInputs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Run chemaxon calculator for p-chem data.",
+                        "schema": {
+                            "$ref": "#/definitions/CalcOutputs"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/chemaxon/outputs": {
+            "post": {
+                "summary": "ChemAxon output schema",
+                "description": "This endpoint returns the outputs used to\nget estimated values from ChemAxon.\n",
+                "tags": [
+                    "chemaxon"
+                ],
+                "parameters": [
+                    {
+                        "name": "outputs",
+                        "in": "body",
+                        "description": "Outputs for ChemAxon p-chem property request.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CalcOutputs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "chemaxon output schema",
+                        "schema": {
+                            "$ref": "#/definitions/CalcOutputs"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/epi": {
+            "get": {
+                "summary": "EPI Suite REST endpoints",
+                "description": "Returns endpoints for EPI Suite calculator.\n",
+                "tags": [
+                    "epi"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "EPI Suite REST endpoints",
+                        "schema": {
+                            "$ref": "#/definitions/EPI"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/epi/inputs": {
+            "post": {
+                "summary": "EPI Suite input schema",
+                "description": "This endpoint returns the inputs used to\nget estimated values from EPI Suite.\n",
+                "tags": [
+                    "epi"
+                ],
+                "parameters": [
+                    {
+                        "name": "inputs",
+                        "in": "body",
+                        "description": "Inputs for EPI Suite p-chem property request.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CalcInputs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "epi input schema",
+                        "schema": {
+                            "$ref": "#/definitions/EPIInputsResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/epi/run": {
+            "post": {
+                "summary": "Run epi calculator for p-chem data.",
+                "description": "This endpoint runs epi and returns p-chem data\nfrom requested p-chem property.\n",
+                "tags": [
+                    "epi"
+                ],
+                "parameters": [
+                    {
+                        "name": "inputs",
+                        "in": "body",
+                        "description": "Outputs for EPI Suite p-chem property request.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RunEpiInputs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Run epi calculator for p-chem data.",
+                        "schema": {
+                            "$ref": "#/definitions/CalcOutputs"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/test": {
+            "get": {
+                "summary": "TEST REST endpoints",
+                "description": "Returns endpoints for TEST calculator.\n",
+                "tags": [
+                    "test"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "TEST REST endpoints",
+                        "schema": {
+                            "$ref": "#/definitions/TEST"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/test/inputs": {
+            "post": {
+                "summary": "TEST input schema",
+                "description": "This endpoint returns the inputs used to\nget estimated values from TEST.\n",
+                "tags": [
+                    "test"
+                ],
+                "parameters": [
+                    {
+                        "name": "inputs",
+                        "in": "body",
+                        "description": "Inputs for TEST p-chem property request.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CalcInputs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "test input schema",
+                        "schema": {
+                            "$ref": "#/definitions/TESTInputsResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/test/run": {
+            "post": {
+                "summary": "Run test calculator for p-chem data.",
+                "description": "This endpoint runs test and returns p-chem data\nfrom requested p-chem property.\n",
+                "tags": [
+                    "test"
+                ],
+                "parameters": [
+                    {
+                        "name": "inputs",
+                        "in": "body",
+                        "description": "Outputs for TEST p-chem property request.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RunTestInputs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Run test calculator for p-chem data.",
+                        "schema": {
+                            "$ref": "#/definitions/CalcOutputs"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/testws": {
+            "get": {
+                "summary": "TESTWS REST endpoints",
+                "description": "Returns endpoints for TESTWS calculator.\n",
+                "tags": [
+                    "test"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "TESTWS REST endpoints",
+                        "schema": {
+                            "$ref": "#/definitions/TESTWS"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/testws/inputs": {
+            "post": {
+                "summary": "TESTWS input schema",
+                "description": "This endpoint returns the inputs used to\nget estimated values from TESTWS.\n",
+                "tags": [
+                    "test"
+                ],
+                "parameters": [
+                    {
+                        "name": "inputs",
+                        "in": "body",
+                        "description": "Inputs for TESTWS p-chem property request.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CalcInputs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "test input schema",
+                        "schema": {
+                            "$ref": "#/definitions/TESTWSInputsResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/testws/run": {
+            "post": {
+                "summary": "Run test calculator for p-chem data.",
+                "description": "This endpoint runs test and returns p-chem data\nfrom requested p-chem property.\n",
+                "tags": [
+                    "test"
+                ],
+                "parameters": [
+                    {
+                        "name": "inputs",
+                        "in": "body",
+                        "description": "Outputs for TESTWS p-chem property request.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RunTestInputs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Run test calculator for p-chem data.",
+                        "schema": {
+                            "$ref": "#/definitions/CalcOutputs"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/opera": {
+            "get": {
+                "summary": "OPERA REST endpoints",
+                "description": "Returns endpoints for OPERA calculator.\n",
+                "tags": [
+                    "opera"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OPERA REST endpoints",
+                        "schema": {
+                            "$ref": "#/definitions/OPERA"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/opera/inputs": {
+            "post": {
+                "summary": "opera input schema",
+                "description": "This endpoint returns the inputs used to\nget estimated values from opera.\n",
+                "tags": [
+                    "opera"
+                ],
+                "parameters": [
+                    {
+                        "name": "inputs",
+                        "in": "body",
+                        "description": "Inputs for opera p-chem property request.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CalcInputs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "opera input schema",
+                        "schema": {
+                            "$ref": "#/definitions/OPERAInputsResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/opera/run": {
+            "post": {
+                "summary": "Run opera calculator for p-chem data.",
+                "description": "This endpoint runs opera and returns p-chem data\nfrom requested p-chem property.\n",
+                "tags": [
+                    "opera"
+                ],
+                "parameters": [
+                    {
+                        "name": "inputs",
+                        "in": "body",
+                        "description": "Outputs for opera p-chem property request.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RunOperaInputs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Run opera calculator for p-chem data.",
+                        "schema": {
+                            "$ref": "#/definitions/CalcOutputs"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/measured": {
+            "get": {
+                "summary": "Measured REST endpoints",
+                "description": "Returns endpoints for Measured calculator.\n",
+                "tags": [
+                    "measured"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Measured REST endpoints",
+                        "schema": {
+                            "$ref": "#/definitions/Measured"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/measured/inputs": {
+            "post": {
+                "summary": "Measured input schema",
+                "description": "This endpoint returns the inputs used to\nget estimated values from Measured.\n",
+                "tags": [
+                    "measured"
+                ],
+                "parameters": [
+                    {
+                        "name": "inputs",
+                        "in": "body",
+                        "description": "Inputs for Measured p-chem property request.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CalcInputs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "measured input schema",
+                        "schema": {
+                            "$ref": "#/definitions/MeasuredInputsResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/measured/run": {
+            "post": {
+                "summary": "Run measured calculator for p-chem data.",
+                "description": "This endpoint runs measured and returns p-chem data\nfrom requested p-chem property.\n",
+                "tags": [
+                    "measured"
+                ],
+                "parameters": [
+                    {
+                        "name": "inputs",
+                        "in": "body",
+                        "description": "Outputs for Measured p-chem property request.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RunMeasuredInputs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Run measured calculator for p-chem data.",
+                        "schema": {
+                            "$ref": "#/definitions/CalcOutputs"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/metabolizer": {
+            "get": {
+                "summary": "Transformation pathways predictions.",
+                "description": "This endpoint makes transformation pathways predictions and is a ChemAxon metabolizer library wrapper.\n",
+                "tags": [
+                    "metabolizer"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Metabolizer REST endpoints.",
+                        "schema": {
+                            "$ref": "#/definitions/MetabolizerInputs"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/metabolizer/inputs": {
+            "post": {
+                "summary": "Metabolizer input schema",
+                "description": "This endpoint returns the inputs used to\nget estimated values from Metabolizer.\n",
+                "tags": [
+                    "metabolizer"
+                ],
+                "parameters": [
+                    {
+                        "name": "inputs",
+                        "in": "body",
+                        "description": "Inputs for Metabolizer p-chem property request.",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "chemical": {
+                                    "type": "string",
+                                    "default": "CCCC"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "metabolizer input schema",
+                        "schema": {
+                            "$ref": "#/definitions/MetabolizerInputsResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/metabolizer/run": {
+            "post": {
+                "summary": "Run metabolizer calculator for p-chem data.",
+                "description": "This endpoint runs metabolizer and returns p-chem data\nfrom requested p-chem property.\n",
+                "tags": [
+                    "metabolizer"
+                ],
+                "parameters": [
+                    {
+                        "name": "inputs",
+                        "in": "body",
+                        "description": "Outputs for Metabolizer p-chem property request.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/MetabolizerInputs"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Run metabolizer calculator for p-chem data.",
+                        "schema": {
+                            "$ref": "#/definitions/MetabolizerOutput"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "CTS": {
+            "type": "object",
+            "properties": {
+                "metaInfo": {
+                    "type": "object",
+                    "properties": {
+                        "model": {
+                            "type": "string"
+                        },
+                        "collection": {
+                            "type": "string"
+                        },
+                        "modelVersion": {
+                            "type": "string"
+                        },
+                        "timestamp": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "endpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CalcEndpoints"
+                    }
+                }
+            }
+        },
+        "Chemaxon": {
+            "type": "object",
+            "properties": {
+                "metaInfo": {
+                    "$ref": "#/definitions/MetaInfo"
+                },
+                "links": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CalcEndpoints"
+                    }
+                },
+                "calc": {
+                    "type": "string",
+                    "default": "chemaxon"
+                }
+            }
+        },
+        "EPI": {
+            "type": "object",
+            "properties": {
+                "metaInfo": {
+                    "$ref": "#/definitions/MetaInfo"
+                },
+                "links": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CalcEndpoints"
+                    }
+                },
+                "calc": {
+                    "type": "string",
+                    "default": "epi"
+                }
+            }
+        },
+        "TEST": {
+            "type": "object",
+            "properties": {
+                "metaInfo": {
+                    "$ref": "#/definitions/MetaInfo"
+                },
+                "links": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CalcEndpoints"
+                    }
+                },
+                "calc": {
+                    "type": "string",
+                    "default": "test"
+                }
+            }
+        },
+        "OPERA": {
+            "type": "object",
+            "properties": {
+                "metaInfo": {
+                    "$ref": "#/definitions/MetaInfo"
+                },
+                "links": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CalcEndpoints"
+                    }
+                },
+                "calc": {
+                    "type": "string",
+                    "default": "opera"
+                }
+            }
+        },
+        "Measured": {
+            "type": "object",
+            "properties": {
+                "metaInfo": {
+                    "$ref": "#/definitions/MetaInfo"
+                },
+                "links": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CalcEndpoints"
+                    }
+                },
+                "calc": {
+                    "type": "string",
+                    "default": "measured"
+                }
+            }
+        },
+        "CalcInputs": {
+            "type": "object",
+            "properties": {
+                "chemical": {
+                    "type": "object",
+                    "default": "CCCC",
+                    "description": "Chemical to get p-chem data for, can be in smiles, iupac, formula, or name (e.g., aspirin) format"
+                },
+                "prop": {
+                    "type": "string",
+                    "default": "water_sol",
+                    "description": "An available p-chem property."
+                }
+            }
+        },
+        "MetabolizerInputs": {
+            "type": "object",
+            "properties": {
+                "structure": {
+                    "type": "string",
+                    "default": "CCCC",
+                    "description": "Chemical for metabolizer in smiles format."
+                },
+                "generationLimit": {
+                    "type": "integer",
+                    "default": 1,
+                    "description": "Number of generations for structure's transformation products."
+                },
+                "transformationLibraries": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "hydrolysis",
+                        "abiotic_reduction",
+                        "human_biotransformation"
+                    ]
+                }
+            }
+        },
+        "ChemaxonInputsResponse": {
+            "type": "object",
+            "properties": {
+                "inputs": {
+                    "type": "object",
+                    "properties": {
+                        "chemical": {
+                            "type": "string",
+                            "default": "CCC"
+                        },
+                        "run_type": {
+                            "type": "string",
+                            "default": "rest"
+                        },
+                        "calc": {
+                            "type": "string",
+                            "default": "chemaxon"
+                        },
+                        "prop": {
+                            "type": "string",
+                            "default": "water_sol"
+                        }
+                    }
+                },
+                "metaInfo": {
+                    "$ref": "#/definitions/MetaInfo"
+                }
+            }
+        },
+        "EPIInputsResponse": {
+            "type": "object",
+            "properties": {
+                "inputs": {
+                    "type": "object",
+                    "properties": {
+                        "chemical": {
+                            "type": "string",
+                            "default": "CCC"
+                        },
+                        "run_type": {
+                            "type": "string",
+                            "default": "rest"
+                        },
+                        "calc": {
+                            "type": "string",
+                            "default": "epi"
+                        },
+                        "prop": {
+                            "type": "string",
+                            "default": "water_sol"
+                        }
+                    }
+                },
+                "metaInfo": {
+                    "$ref": "#/definitions/MetaInfo"
+                }
+            }
+        },
+        "TESTInputsResponse": {
+            "type": "object",
+            "properties": {
+                "inputs": {
+                    "type": "object",
+                    "properties": {
+                        "chemical": {
+                            "type": "string",
+                            "default": "CCC"
+                        },
+                        "run_type": {
+                            "type": "string",
+                            "default": "rest"
+                        },
+                        "calc": {
+                            "type": "string",
+                            "default": "test"
+                        },
+                        "prop": {
+                            "type": "string",
+                            "default": "water_sol"
+                        }
+                    }
+                },
+                "metaInfo": {
+                    "$ref": "#/definitions/MetaInfo"
+                }
+            }
+        },
+        "OPERAInputsResponse": {
+            "type": "object",
+            "properties": {
+                "inputs": {
+                    "type": "object",
+                    "properties": {
+                        "chemical": {
+                            "type": "string",
+                            "default": "CCC"
+                        },
+                        "run_type": {
+                            "type": "string",
+                            "default": "rest"
+                        },
+                        "calc": {
+                            "type": "string",
+                            "default": "opera"
+                        },
+                        "prop": {
+                            "type": "string",
+                            "default": "water_sol"
+                        }
+                    }
+                },
+                "metaInfo": {
+                    "$ref": "#/definitions/MetaInfo"
+                }
+            }
+        },
+        "MeasuredInputsResponse": {
+            "type": "object",
+            "properties": {
+                "inputs": {
+                    "type": "object",
+                    "properties": {
+                        "chemical": {
+                            "type": "string",
+                            "default": "CCC"
+                        },
+                        "run_type": {
+                            "type": "string",
+                            "default": "rest"
+                        },
+                        "calc": {
+                            "type": "string",
+                            "default": "measured"
+                        },
+                        "prop": {
+                            "type": "string",
+                            "default": "water_sol"
+                        }
+                    }
+                },
+                "metaInfo": {
+                    "$ref": "#/definitions/MetaInfo"
+                }
+            }
+        },
+        "MetabolizerInputsResponse": {
+            "type": "object",
+            "properties": {
+                "inputs": {
+                    "$ref": "#/definitions/MetabolizerInputs"
+                },
+                "metaInfo": {
+                    "$ref": "#/definitions/MetaInfo"
+                }
+            }
+        },
+        "CalcOutputs": {
+            "type": "object",
+            "properties": {
+                "metaInfo": {
+                    "$ref": "#/definitions/MetaInfo"
+                },
+                "outputs": {
+                    "type": "object",
+                    "properties": {
+                        "chemical": {
+                            "type": "string"
+                        },
+                        "calc": {
+                            "type": "string"
+                        },
+                        "prop": {
+                            "type": "string"
+                        },
+                        "ph": {
+                            "type": "number",
+                            "description": "pH for pH-dependent p-chem properties, like KOW"
+                        },
+                        "run_type": {
+                            "type": "string",
+                            "default": "rest"
+                        },
+                        "node": {
+                            "$ref": "#/definitions/Molecule"
+                        }
+                    }
+                }
+            }
+        },
+        "MetabolizerOutput": {
+            "type": "object",
+            "properties": {
+                "metaInfo": {
+                    "$ref": "#/definitions/MetaInfo"
+                },
+                "outputs": {
+                    "type": "object",
+                    "properties": {
+                        "chemical": {
+                            "type": "string"
+                        },
+                        "tree": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "RunChemaxonInputs": {
+            "type": "object",
+            "properties": {
+                "chemical": {
+                    "type": "object",
+                    "default": "CCC"
+                },
+                "calc": {
+                    "type": "string",
+                    "default": "chemaxon",
+                    "description": "chemaxon, epi, test, sparc, or measured p-chem calculators."
+                },
+                "prop": {
+                    "type": "string",
+                    "default": "water_sol"
+                }
+            }
+        },
+        "RunOperaInputs": {
+            "type": "object",
+            "properties": {
+                "chemical": {
+                    "type": "string",
+                    "default": "CCC"
+                },
+                "calc": {
+                    "type": "string",
+                    "default": "opera",
+                    "description": "chemaxon, epi, test, opera, or measured p-chem calculators."
+                },
+                "prop": {
+                    "type": "string",
+                    "default": "water_sol"
+                }
+            }
+        },
+        "RunTestInputs": {
+            "type": "object",
+            "properties": {
+                "chemical": {
+                    "type": "string",
+                    "default": "CCC"
+                },
+                "calc": {
+                    "type": "string",
+                    "default": "test",
+                    "description": "chemaxon, epi, test, sparc, or measured p-chem calculators."
+                },
+                "prop": {
+                    "type": "string",
+                    "default": "water_sol"
+                }
+            }
+        },
+        "RunTestWsInputs": {
+            "type": "object",
+            "properties": {
+                "chemical": {
+                    "type": "string",
+                    "default": "CCC"
+                },
+                "calc": {
+                    "type": "string",
+                    "default": "testws",
+                    "description": "chemaxon, epi, test, sparc, or measured p-chem calculators."
+                },
+                "prop": {
+                    "type": "string",
+                    "default": "water_sol"
+                }
+            }
+        },
+        "RunMeasuredInputs": {
+            "type": "object",
+            "properties": {
+                "chemical": {
+                    "type": "string",
+                    "default": "CCC"
+                },
+                "calc": {
+                    "type": "string",
+                    "default": "measured",
+                    "description": "chemaxon, epi, test, sparc, or measured p-chem calculators."
+                },
+                "prop": {
+                    "type": "string",
+                    "default": "water_sol"
+                }
+            }
+        },
+        "RunEpiInputs": {
+            "type": "object",
+            "properties": {
+                "chemical": {
+                    "type": "string",
+                    "default": "CCC"
+                },
+                "calc": {
+                    "type": "string",
+                    "default": "epi",
+                    "description": "chemaxon, epi, test, sparc, or measured p-chem calculators."
+                },
+                "prop": {
+                    "type": "string",
+                    "default": "water_sol"
+                }
+            }
+        },
+        "CalcEndpoints": {
+            "type": "object",
+            "properties": {
+                "metaInfo": {
+                    "$ref": "#/definitions/MetaInfo"
+                },
+                "links": {
+                    "type": "object",
+                    "properties": {
+                        "rel": {
+                            "type": "string"
+                        },
+                        "type": {
+                            "type": "string"
+                        },
+                        "href": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "url": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "MetaInfo": {
+            "type": "object",
+            "properties": {
+                "model": {
+                    "type": "string"
+                },
+                "collection": {
+                    "type": "string",
+                    "default": "qed"
+                },
+                "modelVersion": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "props": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "Molecule": {
+            "type": "object",
+            "properties": {
+                "formula": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "iupac": {
+                    "type": "string"
+                },
+                "mass": {
+                    "type": "number"
+                },
+                "smiles": {
+                    "type": "string"
+                },
+                "orig_smiles": {
+                    "type": "string"
+                }
+            }
+        },
+        "Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

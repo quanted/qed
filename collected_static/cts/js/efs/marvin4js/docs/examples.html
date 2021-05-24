@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+	<script src="js/jquery-1.8.2.min.js"></script>
+	<script src="js/examples.js"></script>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" href="style/favicon.ico">
+
+	<title>JChem Web Services Examples</title>
+</head>
+<body>
+
+<h3>JChem Web Services REST API examples</h3>
+
+<input id="baseurl" type="hidden" value="http://localhost:8080/webservices2/rest-v0" size="80" />
+
+<h1>Image generation</h1>
+
+<p>The following examples showcase how images can be generated using JChem Web Services to display search results, calculation results or simply by taking the structure in the database.</p>
+
+
+<h2>1. Getting a molecule from the database</h2>
+
+<form id="example1" action="#">
+	<h4>Request</h4>
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/Drugbank_all/detail/9/image" size="80"/>
+	<input class="GET" type="button" value="SHOW" />
+
+	<h4>Response</h4>
+	<textarea class="output" rows="8" cols="80">{
+    "width": 400,
+    "height": 220,
+    "type": "png",
+    "image": "iVBORw0KG...VORK5CYII\u003d",
+    "imageLink": "http://localhost:8080/webservices2/rest-v0/data/sample/table/Drugbank_all/display/9_400x0.png"
+}</textarea>
+
+	<h4>Result</h4>
+	<div class="result"></div>
+
+	<h4>The code</h4>
+	<code><pre>$.ajax({
+	url: '/rest-v0/data/sample/table/Drugbank_all/detail/9/image',
+	type: 'GET',
+	contentType: 'application/json'
+}).done(function(response) {
+	$('.result').css({
+		width: response.width,
+		height: response.height,
+		'background-image': 'url(data:image/png;base64,' + response.image + ')'
+	});
+});</pre></code>
+</form>
+
+
+<h2>2. Display a search result</h2>
+
+<form id="example2" action="#">
+	<h4>Request</h4>
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/search" size="80"/>
+	<input class="POST" type="button" value="SHOW" />
+	<textarea class="params" rows="13" cols="80">{
+    "paging": {
+        "offset": 0,
+        "limit": 1
+    },
+    "display": {
+        "include": ["cd_id", "image"]
+    },
+    "searchOptions": {
+        "queryStructure": "C1CCC=CC1",
+        "searchType": "SUBSTRUCTURE"
+    }
+}</textarea>
+
+	<h4>Response</h4>
+	<textarea class="output" rows="10" cols="80"></textarea>
+
+	<h4>Result</h4>
+	<div class="result"></div>
+
+	<h4>The code</h4>
+	<code><pre>$.ajax({
+	url: '/rest-v0/data/sample/table/ChEBI_lite_3star/search',
+	type: 'POST',
+	contentType: 'application/json',
+	<b>data: JSON.stringify(params)</b>
+}).done(function(response) {
+
+	<b>var image = response.data[0].image;</b>
+	$('.result').css({
+		width: image.width,
+		height: image.height,
+		'background-image': 'url(data:image/png;base64,' + image.image + ')'
+	});
+
+});</pre></code>
+</form>
+
+
+<h2>3. Displaying calculation results</h2>
+
+<form id="example3" action="#">
+	<h4>Request</h4>
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/detail/2668" size="80"/>
+	<input class="POST" type="button" value="SHOW" />
+	<textarea class="params" rows="18" cols="80">{
+    "include": ["pKa"],
+    "parameters": {
+        "pKa": {
+            "result-display": {
+                "parameters": {
+                    "image": {
+                        "type": "auto",
+                        "width": 350,
+                        "height": 0
+                    }
+                }
+            },
+            "temperature": 320,
+            "considerTautomerization": true
+        }
+    }
+}</textarea>
+	<small>This example uses SVG image type and uses automatic height calculation - as noted by height: 0. Automatic height calculation renders the molecule at a comfortable size where text features match the font size of most printed text, 12pt.</small>
+
+	<h4>Response</h4>
+	<textarea class="output" rows="10" cols="80"></textarea>
+
+	<h4>Result</h4>
+	<div class="result"></div>
+
+	<h4>The code</h4>
+	<code><pre>$.ajax({
+	url: '/rest-v0/data/sample/table/ChEBI_lite_3star/detail/2668',
+	type: 'POST',
+	contentType: 'application/json',
+	data: JSON.stringify(params)
+}).done(function(response) {
+
+	<b>var image = response.pKa.result.image;</b>
+	$('.result').css({
+		width: image.width,
+		height: image.height,
+	<b>}).html(image.image);</b>
+
+});</pre></code>
+</form>
+
+
+<h1>4. Structure table</h1>
+
+<p>This example performs a simple similarty search request against the Drugbank database and displays the first 10 results in a table.</p>
+
+<form id="example4" action="#">
+	<h4>Request</h4>
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/search" size="80"/>
+	<input class="POST" type="button" value="SHOW" />
+	<textarea class="params" rows="27" cols="80">{
+    "paging": {
+        "offset": 0,
+        "limit": 10
+    },
+    "display": {
+        "include": ["cd_id", "image", "similarity", "cd_formula", "cd_molweight", "c_chebi_id", "c_star", "c_chebi_name"],
+        "parameters": {
+            "image": {
+                "type": "auto",
+                "width": 200,
+                "height": 60
+            }
+        }
+    },
+    "searchOptions": {
+        "queryStructure": "CCCCC",
+        "searchType": "SIMILARITY",
+        "similarity": {
+            "similarityThreshold": 0.55
+        }
+    },
+    "filter": {
+        "orderBy": "-similarity"
+    }
+}</textarea>
+	<small>This example uses the <code>auto</code> image type, which generates SVG or PNG depending on the molecule's size and the requested dimensions. If the structural features would be too small, PNG is used for network and browser performance reasons.</small>
+
+	<h4>Response</h4>
+	<textarea class="output" rows="10" cols="80"></textarea>
+
+	<h4>Result</h4>
+	<div class="result"></div>
+
+	<h4>The code</h4>
+	<code><pre>$.ajax({
+	url: '/rest-v0/data/sample/table/ChEBI_lite_3star/search',
+	type: 'POST',
+	contentType: 'application/json',
+	data: JSON.stringify(params)
+}).done(function(searchresults) {
+
+	<b>searchresults.data.forEach(formatresults);</b>
+
+});
+
+function formatresult(row, i) {
+
+	if (i == 0) {
+		//add table head
+	}
+
+	//add table body
+}</pre></code>
+</form>
+
+
+</body>
+</html>

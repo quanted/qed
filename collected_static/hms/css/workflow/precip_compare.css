@@ -1,0 +1,56 @@
+
+/*Correlation matrix graph*/
+.axis text {
+    font: 10px sans-serif;
+}
+
+.axis line, .axis path {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+#matrix_container {
+    margin: 0 auto;
+}
+#matrix_block {
+    margin: 25px 0 10px 0;
+    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+    padding-top: 10px;
+}
+#matrix_block div {
+    display: inline-block;
+}
+#statistics_container{
+    margin: 10px auto;
+}
+#output_metadata {
+    margin: 10px;
+}
+#output_metadata_block {
+    border-bottom: 1px solid lightgray;
+}
+.blue_notification {
+    float:left;
+    color: blue;
+}
+.input_location_block {
+    display: inline-block;
+}
+.temporal_location_block {
+    display: inline-block;
+}
+.source_location_block {
+    display: inline-block;
+}
+.input_nav {
+    display: inline-block;
+}
+.temporal_location_agg_block {
+    margin: 10px 15px;
+}
+#location_input_comid_ncdc_block {
+    float: left;
+    display: none;
+}

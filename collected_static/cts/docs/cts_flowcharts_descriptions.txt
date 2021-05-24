@@ -1,0 +1,5 @@
+<p><b><a href="/cts/flowcharts/cheminfo">CTS Chemical Information Routine:</a></b> A flowchart showing how CTS collects chemical information from various web services.</p>
+
+<p><b><a href="/cts/flowcharts/standardization">CTS Standardization Routine:</a></b> A flowchart showing how CTS standardizes chemicals before making speciation, reaction pathway, and physicochemical property requests.</p>
+
+<p><b><a href="/cts/flowcharts/meltingpoint">CTS Melting Point Routine:</a></b> A flowchart showing how CTS uses melting point for some physicochemical property requests.</p>

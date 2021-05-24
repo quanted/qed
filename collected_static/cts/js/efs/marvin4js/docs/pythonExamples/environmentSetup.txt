@@ -1,0 +1,11 @@
+Python download and pip packages sites (for Windows):
+
+ http://python.org/
+ http://www.lfd.uci.edu/~gohlke/pythonlibs/#distribute
+ http://www.lfd.uci.edu/~gohlke/pythonlibs/#pip
+
+Installation of the necessary 3rd party packages (default pip location is: C:\Python33\Scripts)
+
+ pip install requests
+
+

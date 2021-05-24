@@ -1,0 +1,41 @@
+* {
+    font-family: "Roboto", Corbel, Avenir, "Lucida Grande", "Lucida Sans", sans-serif;
+}
+
+.body_div {
+    background: #0071f1;
+}
+
+.login_div {
+    display: block;
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px black solid;
+    border-radius: 10px;
+    padding: 5px 25px 25px 25px;
+}
+
+.login_title {
+    text-align: center;
+}
+
+.login_description {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.input_button_div {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.input_button:hover {
+    color: #0071f1;
+}
+
+.input_message {
+    color: red;
+    font-weight: bold;
+}

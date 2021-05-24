@@ -1,0 +1,6 @@
+PROP_NAME,PROP_VALUE,PROP_VALUE_EXT
+cache.registration_table,JChemProperties_CR,NULL
+cache.validity_timestamp,2012-11-26 14:57:01.771,NULL
+option.commitInterval,50,NULL
+option.structureCompressionDisabled,true,NULL
+propertytable.identifier,PT_ID_507fcb7697df4775b48bcfe94e8cfc5f,NULL

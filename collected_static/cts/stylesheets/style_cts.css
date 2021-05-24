@@ -1,0 +1,840 @@
+/*************************************************
+CTS-specific styles for overriding shared style.css
+**************************************************/
+
+/* Defining Hyperlink Colors */
+
+a:link {
+  color: #4289AA;
+  text-decoration: none;
+}
+a:visited {
+  color: #4289AA;
+  text-decoration: none;
+}
+a:hover {
+  color: #4289AA;
+  text-decoration: none;
+}
+
+a.microsite-link:link {
+  color: #212121;
+  text-decoration: none;
+}
+
+a.microsite-link:visited {
+  color: #212121;
+  text-decoration: none;
+}
+
+a.microsite-link:hover {
+  color: #4289AA;
+  text-decoration: none;
+}
+
+
+input[type="checkbox"], input[type="radio"] {
+  /*position: relative;*/
+  position: inherit;
+  float: left;
+  left: 1em;
+  /*height: 1.5em;*/
+  /*width: 1.5em;*/
+  /*height: 2.2em;*/
+  /*width: 2.2em;*/
+  min-height: 18px;
+  min-width: 18px;
+  /*transform: scale(1.2);*/
+}
+
+input.calc_checkbox {
+  float: none;
+}
+
+.tabUnsel {
+  color: #4289AA;
+}
+.tabSel {
+  color: #1F262A;
+}
+
+/* Tables */
+
+table,td
+{
+  border: 1px solid black;
+  border-width: 1px;
+  border-spacing: 2px;
+  border-style: outset;
+  border-color: white;
+  border-collapse: separate;
+  background-color: #E7EADC;
+  font-size: 1.3em;
+}
+table
+{
+  background-color: #EEF0E6;
+  padding: 1px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+th {
+  background-color: #E7EADC;
+  border: none;
+  text-align: center;
+  padding: 1px 4px;
+  font-size: 1.5em;
+}
+
+/* CTS Inputs */
+
+#nav_text {
+  float: right;
+}
+#nav_text ul {
+  list-style: none;
+}
+#nav_text ul li {
+  display: table-cell;
+  vertical-align: middle;
+  list-style: none;
+}
+#nav_text ul li a {
+  font-size: 1.2em;
+}
+#nav_text img {
+  margin-left: 6px;
+}
+#chemEdit_div {
+  margin: 12px 0;
+  text-align: center;
+}
+#chemEdit_div ul {
+  list-style: none;
+}
+#chemEdit_div li {
+  display: inline;
+}
+#chemEditDraw_button {
+
+}
+#chemEditLookup_button {
+
+}
+/*#chemEditDraw, #chemEditLookup {
+  text-align: center;
+  margin-bottom: 20px;
+}*/
+#chemEditDraw table, #chemEditLookup table, #chemEditResults table {
+  margin-left: auto;
+  margin-bottom: 24px;
+  min-width: 622px;
+}
+#chemEditDraw table textarea, #chemEditLookup table textarea, #chemEditResults table textarea {
+  width: 100%;
+}
+/*#chemEditDraw table td {
+  vertical-align: bottom;
+}*/
+#chemEditDraw span, #chemEditLookup span, #chemEditResults span {
+  display: inline-block;
+  margin: 5px 0 5px 5px;
+  font-weight: 700;
+  font-size: 1.5em;
+}
+#getSmilesButton, #setSmilesButton {
+  float: right;
+  padding: 4px;
+  height: 2.0em;
+}
+#MolTxt {
+  width: 100%;
+}
+#export_menu {
+  top: 8px;
+  right: 8px;
+  padding-left: 3px;
+  /*position: absolute;*/
+  position: fixed;
+  z-index: 999;
+}
+#export_menu ul li{
+  display: inline;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#export_menu span {
+  cursor: pointer;
+}
+#fadeExport_pdf {
+  display: inline-block;
+  height: 38px;
+  width: 34px;
+  background: url(/static_qed/cts/images/export/export_sprite_small_new.fw.png) no-repeat;
+  background-position: 0 0;
+}
+#fadeExport_pdf * {
+  display: none;
+}
+#fadeExport_pdf span.hover {
+  display: inline-block;
+  height: 38px;
+  width: 34px;
+  background: url(/static_qed/cts/images/export/export_sprite_small_new.fw.png) no-repeat;
+  background-position: 0 -38px;
+}
+#fadeExport_html {
+  display: inline-block;
+  height: 38px;
+  width: 34px;
+  background: url(/static_qed/cts/images/export/export_sprite_small_new.fw.png) no-repeat;
+  background-position: -34px 0;
+}
+#fadeExport_html * {
+  display: none;
+}
+#fadeExport_html span.hover {
+  display: inline-block;
+  height: 38px;
+  width: 34px;
+  background: url(/static_qed/cts/images/export/export_sprite_small_new.fw.png) no-repeat;
+  background-position: -34px -38px;
+}
+#fadeExport_csv {
+  display: inline-block;
+  height: 38px;
+  width: 34px;
+  background: url(/static_qed/cts/images/export/export_sprite_small_new.fw.png) no-repeat;
+  background-position: -68px 0;
+}
+#fadeExport_csv * {
+  display: none;
+}
+#fadeExport_csv span.hover {
+  display: inline-block;
+  height: 38px;
+  width: 34px;
+  background: url(/static_qed/cts/images/export/export_sprite_small_new.fw.png) no-repeat;
+  background-position: -68px -38px;
+}
+.label {
+  min-width: 40%;
+}
+.tab_Speciation, .tab_ChemCalcs {
+  min-width: 622px;
+}
+input.tab_ChemCalcs, span.tab_ChemCalcs {
+  float: left;
+  margin-right: 6px;
+}
+.tab_ChemCalcs td {
+  min-width: 60px;
+  text-align: center;
+}
+.input_nav {
+  max-width: 684px;
+  margin-top: 12px;
+}
+.ctsInputHeader {
+  padding: 6px;
+  font-size: 1.1em;
+}
+.ChemCalcs_available {
+  background-color: #356697;
+  color: #F7F9F4;
+}
+.ChemCalcs_unavailable {
+  background-color: #bc2f2f;
+  color: #F7F9F4;
+}
+.tab_Transform ul {
+  list-style: none;
+}
+
+.pchem_checked_col {
+  background:#FFFFFF;
+  color:#FFFFFF;
+}
+
+.pchem_unchecked_col {
+  background:#000000;
+  color:#000000;
+}
+
+#no_border table, th, tr, td {
+  border:0px none;
+}
+
+.alignChkbox {
+  float:left;
+  position: relative;
+  left: 1em;
+}
+
+/* Text in chemspec output*/
+.shiftRight {
+  margin-left: 36px;
+  font-size:12px;
+}
+
+/* Error list from django validation */
+.errorlist {
+  list-style: none;
+  color: red;
+}
+
+.redFont {
+  color: #FF4D4D;
+}
+
+/* Input table structures for model inputs */
+.input_table {
+  font-size:0.8em;
+  /*font-size: 1.0em;*/
+  margin-top: 12px;
+}
+
+#alignLibAndOptions {
+  display: table;
+  margin: 0 auto;
+}
+
+#alignLibAndOptions table {
+  /*display: inline-block;*/
+  margin-left: 8px;
+}
+
+.hideData {
+  display:none;
+}
+
+.showData {
+  display: inline;
+}
+
+/* Image of molecule wrapped in 
+table for ChemSpec output */
+.wrapped_molecule, .chemspec_molecule {
+  /*background-color: transparent;*/
+  background-color: #F4F7ED;
+  font-size: 11px;
+  margin: 0px;
+}
+
+div.wrapped_molecule {
+  display: inline-block;
+  /*position: absolute;*/
+}
+
+/*any child <img> of parent with class wrapped_molecule*/
+.wrapped_molecule img, .chemspec_molecule img {
+  border: 1px solid #1a1a1a;
+  background-color: white;
+  margin: 0px;
+}
+/* img.wrapped_molecule - selects <img> with class wrapped_molecule */
+/*img.wrapped_molecule {
+  position: center;
+}*/
+
+.wrapped_molecule td {
+  /*background-color: transparent;*/
+  background-color: #F4F7ED;
+  /*width: 150px;*/
+}
+
+/*popup molecule image*/
+.metabolite {
+  background-color: white;
+  border: 1px solid #1a1a1a;
+  margin: 4px 4px 4px 4px;
+}
+
+.metabolite img {
+  margin: 4px 4px 4px 4px;
+}
+
+/* metabolite images black and white! */
+/*img.metabolite {
+  -webkit-filter: grayscale(100%);
+  z-index: -9999999999999999999999999px;
+}
+*/
+
+/* qtip2 stuff */
+.tooltiptext {
+  /* This class is for molecule popups */
+  display: none;
+}
+.pchem-popup-tooltiptext {
+  /* This class if for pchem table popups */
+  display: none;
+  max-width: 250px;
+  /*max-height: 150px;*/
+  /*font-size: 12px;*/
+  font-size: 1.2em;
+}
+/* end qtip2 stuff */
+
+
+body.wait *, body.wait
+{
+    cursor: progress !important;
+}
+
+#pchemprop_table table {
+  width: 100%;
+  /*font-size: 1.0em;*/
+}
+
+#pchemprop_table td, #pchemprop_table th {
+  text-align: left;
+  font-size: 1.0em;
+}
+
+#pchemprop_table th:not(.chemprop) {
+  text-align: left;
+  width: 1%;
+}
+
+#pchemprop_table th:not(.chemprop) input {
+  /*float: left;*/
+}
+
+#pchemprop_table th:not(.chemprop) p {
+  float: left;
+}
+
+#pchemprop_table th span {
+  /*float: left;*/
+}
+
+#pchemprop_table th.chemprop {
+  /*text-align: left;*/
+  width: 5%;
+/*  float: left;*/
+}
+
+
+
+
+
+/* p-chem table settings, cells as checkboxes */
+/*#pchemprop_table th.chemprop:hover,
+#pchemprop_table th.calc-header:hover,
+#pchemprop_table th#pchem-select-all:hover {
+  background-color: #4289AA;
+  cursor: pointer;
+}*/
+
+
+
+
+
+
+
+/*jqplot divs*/
+.plot {
+  /*width: 650px;
+  height: 275px;*/
+  width: 300px;
+  /*width: 500px;*/
+  /*height: 500px;*/
+  width: 25em;
+  height: 30em;
+  margin: 0px;
+}
+
+/*isoelectric point plot*/
+#isoelectric-point {
+  margin-left: 30px;
+}
+
+#microspecies-distribution {
+  /*margin-left: 30px;*/
+  vertical-align: top;
+  margin: 0px;
+  border: none;
+}
+
+.alignLeft {
+  text-align: left;
+}
+
+/* inputs table for chemspec output */
+#chemspecInputs, #chemspecInputs td, #chemspecInputs th {
+  font-size: 11px;
+  border-spacing: 0px;
+  /*background-color: transparent;*/
+  background-color: #F4F7ED;
+}
+
+/*#chemspecInputs {
+  border-color: #333333;
+  
+}*/
+
+/*#chemspecInputs th {
+  font-size: 12px;
+  background-color: #E7EADC;
+  /*border-bottom: 1px solid #333333;*/
+/*}*/
+
+.ctsTableStylin, .ctsTableStylin td, .ctsTableStylin th {
+  /*font-size: 11px;*/
+  font-size: 0.9em;
+  border-spacing: 0px;
+  background-color: #F7F9F4;
+}
+
+.ctsTableStylin td {
+    word-wrap: break-word;
+    /*word-break: break-all;*/
+    max-width: 600px;
+}
+
+#userInputs {
+    table-layout: fixed;
+    max-width: 450px;
+}
+
+.ctsTableStylin {
+  max-width: 450px;
+}
+
+.ctsTableStylin th {
+  /*font-size: 12px;*/
+  font-size: 1.0em;
+  background-color: #E7EADC;
+  font-weight: bold;
+}
+
+.ctsTableStylin td {
+  text-align: left;
+}
+
+#msMain table {
+  max-width: 792px;
+  margin: 0px;
+}
+
+#msMain td {
+  vertical-align: center;
+  /*border: 0px;*/
+}
+
+/* style for pchemprop output table data cell */
+.pchemCell, .pchemCell td {
+  /*background-color: transparent;*/
+  background-color: #F4F7ED;
+  border: 1px solid #EEF0E6;
+  padding: 4px;
+  /*display: inline-block;*/
+  /*width: 33.3%;*/
+}
+
+/* div style for pchemprop output table data cell */
+.pchemCell td {
+  text-align: left;
+  /*display: inline-block;*/
+}
+
+/* wrapper for pchempropDataCell */
+div.pchemCellWrap {
+  float: left;
+  text-align: center;
+  width:33.3%;
+}
+
+/* main pchemprop output table (cts_pchemprop_outputTable.html) */
+#pchempropOutputTable td {
+  padding: 0px;
+  font-size: 12px;
+  text-align: left;
+}
+
+/* dropdown menu for node mouseover event */
+.gentransDrop {
+  /*position: absolute;*/
+}
+
+/* suggested metabolite styling for node with dropdown menu */
+div.protoMetabolite {
+  width: 100%;
+  text-align: center;
+    /*width: 50%;
+    margin: 0 auto;*/
+}
+
+.protoMetabolite div {
+  
+  display: inline-block;
+  /*display: inline-block;*/
+}
+
+.protoMetabolite select {
+  width: 100px;
+  margin: 1px;
+  background-color: #dee7ef;
+  /*margin: 1px 1px 1px 1px;*/
+  /*display: inline-block;*/
+}
+
+/* button for getting pchem props 
+for nodes on gentrans output */
+
+.btn-pchem {
+  float: right;
+  /*padding: 4px;*/
+  margin-left: 4px;
+}
+
+#btn-pchem-getdata.btn-pchem {
+  margin-left: 20px;
+}
+
+/*toggleClass for metaboliteInfo div*/
+.hide {
+  display: none;
+}
+
+/* error messages for popup metabolite navigation div */
+.gentransError, .selectNodeForData, .pchemSelectError {
+  color:red; 
+  text-align:right; 
+  margin-right:0px;
+  display:none;
+}
+
+/* errors on input forms */
+.formError {
+  border: 1px solid #FF4D4D;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  box-shadow: 3px 3px 5px #CCC;
+  -webkit-box-shadow: 3px 3px 5px #CCC;
+  -moz-box-shadow: 3px 3px 5px #CCC;
+
+  color: #FF4D4D;
+  padding: 1px;
+}
+
+/* styling for number input fields */
+.numberInput {
+  /*width: 40px;*/
+  width: 3em;
+}
+
+/* opacity of speciation input tables */
+.darken {
+  opacity: 0.7;
+}
+
+/* highlights checkboxes on chemical speciation tab */
+.brightBorders {
+  box-shadow: 0px 0px 15px 2px #4289AA;
+  /*border-radius: 10px;*/
+}
+
+.darkBorders {
+  box-shadow: 0px 0px 15px 2px #356697;
+  /*border-radius: 10px;*/
+}
+
+/* main workflow links div */
+div#l_menu {
+  transition: all 1.2s ease;
+
+}
+#l_menu h3 {
+  background-color: #00d02f;
+}
+
+/* metatolite info / P-Chem data div on gentrans output */
+#metaboliteInfo {
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 4px;
+  z-index: 10; /*for when it floated*/
+  width: 750px;
+  margin-bottom: 8px;
+  border: 1px outset;
+  background-color: #F4F7ED;
+}
+
+#spacetree-nav {
+    margin-bottom: 16px;
+    margin-left: 2px;
+}
+
+#mol-info-wrapper {
+    display: none;
+}
+
+#mol-info-wrapper, #pchemprop-wrapper {
+    overflow: auto;
+    padding: 4px;
+    margin: 4px;
+}
+
+#mol-info-wrapper div, #mol-info-wrapper table {
+    float: left;
+}
+
+#metaboliteInfo table, #metaboliteInfo p {
+    margin: 2px;
+}
+
+/* div within metaboliteInfo */
+#pchemprop-wrapper table {
+    text-align: left;
+}
+
+/* ajax call wait spinnerz */
+#spinner {
+  height: 20px;
+  width: 20px;
+  color: black;
+}
+
+/* styling for pdfs */
+.libPDF {
+  height: 700px;
+  width: 650px;
+  -webkit-border-radius: 0 0 4px 4px;
+  -webkit-box-shadow: 3px 3px 15px #CCC;
+}
+
+/* styling for chemspec output, pKa labels ("parent", "microspecies");
+   basically unstyling H4 */
+h4.unstyle {
+  margin: 0;
+  /*font-style: normal;*/
+  font-weight: normal;
+  vertical-align: top;
+}
+
+/* border color for metabolites with pchemprops */
+.hasPchemProps {
+    border: 4px solid #356697;
+}
+
+/* inner-div a metaboliteInfo */
+div.pka-wrapper {
+    padding: 0;
+}
+
+/* tinting a selected metabolite */
+.tint {
+    box-shadow: rgba(0,255,255,0.5);
+}
+
+/* parsley field errors list */
+.parsley-errors-list li {
+  color: #FF3232;
+  
+}
+
+/* gentrans inputs rework */
+.gentrans-radio-group {
+  /*display: inline-block;*/
+}
+
+#reactsim-libs input {
+  width: 50px;
+}
+#reactsim-libs {
+  border: black 1px solid;
+}
+
+/* pchem metabolite data blocking window */
+div#pchem_wait {
+  height: 300px;
+}
+#pchem_wait {
+  margin: 6px;
+}
+#pchem_wait input {
+  /*margin: 0 auto;*/
+  float: right;
+  height: 36px;
+  width: 96px;
+  /*margin-bottom: 6px;*/
+}
+
+/* run type dropdown */
+div.run_type {
+  /*padding-left: 8px;*/
+}
+
+.pchem_label {
+  background-color: #EEF0E6;
+}
+
+#pchem_parent_wrap {
+  width: 250px;
+  display: inline-block;
+  margin-left: 30px;
+  /*vertical-align: middle;*/
+  /*display: table-cell;*/
+}
+
+div.info_image_wrap {
+  /*display: table;*/
+}
+
+
+dd.dom-taut {
+  /*float; left;*/
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+/* output div width to fit content within */
+.articles_output {
+  display: inline-block;
+}
+
+ul.bullet_indent {
+  /*padding-left: 15px;*/
+  margin-left: 15px;
+}
+
+
+
+/* CSV download button dropdown for gentrans */
+.csv-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.csv-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  z-index: 1;
+  margin-right: 50px;
+}
+.csv-dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+/* Change color of dropdown links on hover */
+.csv-dropdown-content a:hover {
+  background-color: #ddd;
+}
+/* Show the dropdown menu on hover */
+.csv-dropdown:hover .csv-dropdown-content {display: block;}
+/* Change the background color of the dropdown button when the dropdown content is shown */
+/*.csv-dropdown:hover .dropbtn {background-color: #3e8e41;}*/
+
+/* Landing page image */
+#landing-page-pic {
+  width: 100%;
+  max-height: 275px;
+  vertical-align: top;
+}

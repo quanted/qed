@@ -1,0 +1,23 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.5
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Compound Query', 'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.glassfish.jersey.core:jersey-client:2.4.1'
+    compile 'org.glassfish.jersey.media:jersey-media-multipart:2.4.1'
+	compile 'org.glassfish.jersey.connectors:jersey-apache-connector:2.4.1'
+	compile 'com.google.code.gson:gson:2.2.4'
+    testCompile 'junit:junit:4.+'
+}
+

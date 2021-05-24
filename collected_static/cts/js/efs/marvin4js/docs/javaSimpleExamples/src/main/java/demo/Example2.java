@@ -1,0 +1,35 @@
+package demo;
+
+import gui.DemoPaneQuery;
+import gui.DemoPaneSimple;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+
+import service.ServiceImportImpl;
+import service.ServiceTableListImpl;
+import service.TableServiceImpl;
+import service.Service;
+
+public class Example2 {
+
+	public static void main(String[] args) {
+		Example2 cq=new Example2();
+		cq.run();
+
+	}
+
+	private void run() {
+		JFrame frame = new JFrame("Import");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Service serv=new ServiceTableListImpl();
+
+        frame.add(new DemoPaneSimple(serv), BorderLayout.CENTER);
+
+        frame.pack();
+        frame.setVisible(true);
+		
+	}
+
+}

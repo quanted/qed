@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Import and Export</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+    <meta content="Scroll HTML Exporter" name="generator"/>
+
+    <link type="text/css" rel="stylesheet" href="css/blueprint/liquid.css" media="screen, projection"/>
+    <link type="text/css" rel="stylesheet" href="css/blueprint/print.css" media="print"/>
+    <!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"/><![endif]-->
+
+    <link type="text/css" rel="stylesheet" href="css/content-style.css" media="screen, projection, print"/>
+    <link type="text/css" rel="stylesheet" href="css/screen.css" media="screen, projection"/>
+    <link type="text/css" rel="stylesheet" href="css/print.css" media="print"/>
+</head>
+<body>
+    <div class="container" style="min-width: 760px;">
+        <div class="header block">
+            <div class="header-left column span-6">
+                <img src="spacelogo.png" />
+            </div>
+            <div class="column span-18 header-right last">
+                <h4>Marvin JS User's Guide</h4>
+            </div>
+        </div>
+
+        <div class="block">
+            <div class="toc column span-6 prepend-top">
+                <h3>Table of Contents
+                                        <span class="small">(<a href="Marvin_JS_User&apos;s_Guide.html">Start</a>)</span>
+                                    </h3>
+                
+<ul class="toc">
+                <li><p><a href="Marvin_JS_Graphical_User_Interface.html">Marvin JS Graphical User Interface</a></p>
+                    <ul>
+                                <li><p><a href="General.html">General</a></p>
+            </li>
+                                <li><p><a href="Canvas.html">Canvas</a></p>
+            </li>
+                                <li><p><a href="Context_Menus.html">Context Menus</a></p>
+            </li>
+                                <li><p><a href="Toolbars.html">Toolbars</a></p>
+            </li>
+                        </ul>
+            </li>
+                <li><p><a href="Basic_Features_of_Marvin_JS.html">Basic Features of Marvin JS</a></p>
+                    <ul>
+                                <li><p><a href="Display_Options.html">Display Options</a></p>
+            </li>
+                                <li><p><a href="Editing.html">Editing</a></p>
+            </li>
+                                <li><p><a href="Import_and_Export.html">Import and Export</a></p>
+            </li>
+                                <li><p><a href="Drawing_Chemical_Structures.html">Drawing Chemical Structures</a></p>
+            </li>
+                                <li><p><a href="Drawing_Graphical_Objects.html">Drawing Graphical Objects</a></p>
+            </li>
+                                <li><p><a href="Properties.html">Properties</a></p>
+            </li>
+                                <li><p><a href="Transformations.html">Transformations</a></p>
+            </li>
+                        </ul>
+            </li>
+                <li><p><a href="Chemical_Features_in_Marvin_JS.html">Chemical Features in Marvin JS</a></p>
+                    <ul>
+                                <li><p><a href="Reactions.html">Reactions</a></p>
+                    <ul>
+                                <li><p><a href="Reaction_Mechanisms.html">Reaction Mechanisms</a></p>
+            </li>
+                        </ul>
+            </li>
+                                <li><p><a href="Substructure_Groups.html">Substructure Groups</a></p>
+            </li>
+                                <li><p><a href="Structure_Cleaning_and_Validation.html">Structure Cleaning and Validation</a></p>
+            </li>
+                                <li><p><a href="Stereochemistry.html">Stereochemistry</a></p>
+            </li>
+                                <li><p><a href="Query_Structures.html">Query Structures</a></p>
+                    <ul>
+                                <li><p><a href="R-group_queries.html">R-group queries</a></p>
+            </li>
+                        </ul>
+            </li>
+                        </ul>
+            </li>
+                <li><p><a href="Keyboard_Shortcuts.html">Keyboard Shortcuts</a></p>
+            </li>
+    </ul>
+
+            </div>
+            <div id="17236084" class="content column span-18 last">
+                <h1>Import and Export</h1>
+    <div class="section section-2"  id="17236084_ImportandExport-importImportingaStructure"  >
+        <h2 class="heading "><span>Importing a Structure</span></h2>
+    <p>
+Marvin JS handles MDL Molfiles V2000 (.mol extension) and ChemAxon Marvin Documents (.mrv extension) as input files. However, other file types (SMILES, ChemAxon Extended SMILES, SMARTS, ChemAxon Extended SMARTS, InChi, Name, CML, MDL Molfile V3000, MDL SDfile, ChemAxon Compressed Molfile, ChemAxon Compressed SDfile, and XYZ) can also be imported if the appropriate webservice is available.    </p>
+    <p>
+In Marvin JS you can Import your file in several ways.    </p>
+    <p>
+<strong class=" ">Drag &amp;Drop</strong>    </p>
+    <p>
+You can open your file by choosing a molecule file in your file system, and dragging it over and drop it onto the Marvin JS canvas.    </p>
+    <p>
+<strong class=" ">Import Menu</strong><br/>When you press the <strong class=" "><a href="Toolbars.html#17236081_Toolbars-import">Import</a></strong>    <span style="color: #0000ff;">
+     </span>
+ button on the <strong class=" ">General</strong> toolbar to open the <strong class=" ">Import</strong> pop-up window. (The dialog can be opened by pressing the &quot;<strong class=" ">Ctrl+O</strong>&quot; keyboard shortcut, too.)    </p>
+    <p>
+You can import your file from your file system by pushing the <strong class=" ">Choose File</strong> button or by pasting its source into the <strong class=" ">Paste source</strong> text field.    </p>
+    <div class="confbox panel">
+            <div class="title">Technical details</div>
+        <p>
+Import by <strong class=" ">Paste source</strong> function:    </p>
+    <p>
+Open the structure file with a text editor (<i class=" ">e.g.</i>, Notepad), select all, and copy the file contents to the clipboard then paste it into the input area. Above the text field you can select the appropriate file format from a drop-down list, or you can choose the <strong class=" ">auto recognize </strong>option. Finally, pressing the &quot;Import&quot; button loads the structure on the canvas.    </p>
+    </div>
+    <p>
+            <img src="images/download/attachments/17236084/import.png" alt="images/download/attachments/17236084/import.png" class="confluence-embedded-image" width="465" />
+            </p>
+    </div>
+    <div class="section section-2"  id="17236084_ImportandExport-exportExport"  >
+        <h2 class="heading "><span>Export</span></h2>
+    <div class="section section-3"  id="17236084_ImportandExport-ExportaStructure"  >
+        <h3 class="heading "><span>Export a Structure</span></h3>
+    <p>
+A structure can be saved either in ChemAxon Marvin Document format or in MDL Molfile V2000 format. In order to export in other file formats (SMILES, ChemAxon Extended SMILES, SMARTS, ChemAxon Extended SMARTS, InChi, InChiKey, Name, CML, MDL Molfile V3000, MDL SDfile, ChemAxon Compressed Molfile, ChemAxon Compressed SDfile, XYZ, CDX, and SKC) the appropriate webservice has to be available.<br/>To save the structures on the canvas, click on the <strong class=" "><a href="Toolbars.html#17236081_Toolbars-export">Export</a></strong> button on the <strong class=" ">General</strong> toolbar which opens the <strong class=" ">Save</strong> dialog window. Alternatively, you can use the &quot;<strong class=" ">Ctrl+S</strong>&quot; keyboard shortcut as well. In this window you can see the canvas contents in the default ChemAxon Marvin Document format. The structure file format can be changed by selecting an option from the drop-down list of supported file formats. To save that to a file, push the <strong class=" ">Download</strong> button at the bottom of the dialog window, click on the created link, and save the file with the preferred name and route. Alternatively, you can paste the structure source into a text editor and save it from there. In case of CDX and SKC file formats, only the first option can be carried out.<br/>            <img src="images/download/attachments/17236084/export.png" alt="images/download/attachments/17236084/export.png" class="confluence-embedded-image" />
+            </p>
+    </div>
+    <div class="section section-3"  id="17236084_ImportandExport-saveAsImageSavingasImage"  >
+        <h3 class="heading "><span>Saving as Image</span></h3>
+    <p>
+In order to save an image of the structure in Marvin JS, select Image Tab in the <strong class=" ">Export</strong> dialog. The supported image formats are PNG and JPEG. You can also set display options, detailed <a href="Display_Options.html">here</a>    <span style="color: #000000;">
+,    </span>
+ determine the color of the image background (transparent or white), and set the width and height of the image.    <span style="color: #077179;">
+     </span>
+    </p>
+    </div>
+    </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Created with <a href="http://k15t.com/display/en/Scroll-Wiki-HTML-Exporter-for-Confluence-Overview">Scroll HTML Exporter for Confluence</a>.
+        </div>
+    </div>
+</body>
+</html>

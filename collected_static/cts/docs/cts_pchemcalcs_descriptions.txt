@@ -1,0 +1,24 @@
+<!--External links to each of the physicochemical calculators are given below to provide additional information for the individual calculators.<br><br>-->
+
+<p><i>This page provides links to non-EPA web sites that provide additional information about this topic. You will leave the EPA.gov domain, and EPA cannot attest to the accuracy of information on that non-EPA page. Providing links to a non-EPA Web site is not an endorsement of the other site or the information it contains by EPA or any of its employees. Also, be aware that the privacy protection provided on the EPA.gov domain (see <a href="https://www.epa.gov/home/privacy-and-security-notice">Privacy and Security Notice</a>) may not be available at the external link.</i></p>
+
+<br>
+
+<b>EPI Suite<sup>TM</sup> (Estimation Program Interface)</b> - EPI Suite is a Windows-based suite of physical/chemical property and environmental fate estimation programs developed by EPA and SRC, formerly Syracuse Research Corporation.<br><br>
+
+<!--<a href="http://www.archemcalc.com/sparc.html" target="_blank" class="fadeMenu">SPARC Performs Automated Reasoning in Chemistry</a> -- SPARC is a physicochemical calculator  that uses computational algorithms based on fundamental chemical structure theory to estimate a wide variety of reactivity parameters strictly from molecular structure. <br><br>-->
+
+<b>ChemAxon</b> - ChemAxon provides cheminformatics software platforms, applications and services to optimize the value of chemistry information in life science and other research and development.<br><br>
+
+<b>Toxicity Estimation Software Tool (TEST)</b> - TEST was developed by EPA to allow users to easily estimate the toxicity of chemicals using Quantitative Structure Activity Relationships (QSARs) methodologies. The software also contains QSAR models for a number of physicochemical properties.<br><br>
+
+<b>OPERA</b> - OPEn structure-activity/property Relationship App (OPERA) is a QSAR tool for predicting physicochemical and environmental fate properties.<br><br>
+
+<br>
+
+<ul style="margin-left:10px;">
+<li><a href="http://www2.epa.gov/tsca-screening-tools/epi-suitetm-estimation-program-interface" target="_blank" class="fadeMenu">EPI Suite</a></li>
+<li><a href="https://www.chemaxon.com/products/calculator-plugins/property-predictors/" target="_blank" class="fadeMenu">ChemAxon</a><a class="exit-disclaimer" href="https://www.epa.gov/home/exit-epa" title="EPA's External Link Disclaimer">Exit</a></li>
+<li><a href="http://www2.epa.gov/chemical-research/toxicity-estimation-software-tool-test" target="_blank" class="fadeMenu">TEST</a></li>
+<li><a href="https://doi.org/10.1186/s13321-018-0263-1" target="_blank" class="fadeMenu">OPERA</a><a class="exit-disclaimer" href="https://www.epa.gov/home/exit-epa" title="EPA's External Link Disclaimer">Exit</a></li>
+</ul>

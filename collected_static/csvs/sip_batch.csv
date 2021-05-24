@@ -1,0 +1,12 @@
+chemical_name,pc_code,solubility,ld50_mammal_water,ld50_species_tested_mammal,ld50_bodyweight_tested_mammal_other,noael_mammal_water,noael_species_tested_mammal,noael_bodyweight_tested_mammal_other,ld50_avian_water,ld50_species_tested_bird,ld50_bodyweight_tested_bird_other,mineau_scaling_factor,noaec_duck,noaec_quail,noaec_bird_other_1,noaec_bodyweight_bird_other_1,noaec_bird_other_2,noaec_bodyweight_bird_other_2
+Atrazine,80803,35,1869,laboratory rat,,10,laboratory rat,,4237,bobwhite quail,,1.15,225,225,,,,
+Chlorothalonil,81901,0.81,5000,laboratory rat,,3,laboratory rat,,2000,mallard duck,,2,10000,153,,,,
+Chlorpyriphos,59101,1.05,64,laboratory rat,,1,laboratory rat,,13.3,bobwhite quail,,2,25,25,,,,
+Diazinon,57801,60,1139,laboratory rat,,5,laboratory rat,,1.44,mallard duck,,1.15,8.3,32,,,,
+Endosulfan a,79401,0.32,38,laboratory rat,,0.75,laboratory rat,,111,bobwhite quail,,1.15,30,64,,,,
+EPTC,41401,370,916,laboratory rat,,16.3,laboratory rat,,1000,bobwhite quail,,2,242,591,,,,
+Ethoprop,41101,1300,32.9,laboratory rat,,0.1,laboratory rat,,6.04,mallard duck,,1.15,40,0.952,,,,
+Malathion,57701,148,1778,laboratory rat,,34.4,laboratory rat,,359,bobwhite quail,,1.15,1200,110,,,,
+Methamidiphos,101201,200000,30,laboratory rat,,0.1,laboratory rat,,10,mallard duck,,2,15,3,,,,
+Methyl Parathion,53501,55,3,laboratory rat,,0.1,laboratory rat,,1044,bobwhite quail,,2,14.7,6.27,,,,
+Methyl Parathion,53501,55,3,other,350,0.1,other,350,1044,other,178,2,14.7,6.27,14.7,178,14.7,1580

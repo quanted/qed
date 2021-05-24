@@ -1,0 +1,147 @@
+<script src="/stylesheets/jquery-1.9.1.min.js" type="text/javascript"></script>
+<!-- Import jQueryUI library -->
+<script src="/stylesheets/jquery-ui.js" type="text/javascript"></script>
+<script src="https://raw.github.com/malsup/blockui/master/jquery.blockUI.js" type="text/javascript"></script>
+
+<script>
+$(document).ready(function () {
+var jq_html = $('<div />').append($("div.articles_output").children('table[class*=out_]:not(div#chart1,table:hidden)').clone()).html();
+var n_plot=$('div[id^="chart"]').size();
+
+i=1;
+var imgData = [];
+while(i <= n_plot){
+    imgData.push($('#chart'+i).jqplotToImageStr({}));
+    i=i+1    
+}
+imgData_json = JSON.stringify(imgData);
+
+// var jq_html = ($("div.articles_output").clone()).html();
+
+
+// console.log(jq_html)
+// console.log(n_plot)
+
+
+	$('<tr style="display:none"><td><input type="hidden" name="pdf_t"></td></tr>')
+    .appendTo('.getpdf')
+    .find('input')
+    .val(jq_html);
+
+	$('<tr style="display:none"><td><input type="hidden" name="pdf_nop"></td></tr>')
+    .appendTo('.getpdf')
+    .find('input')
+    .val(n_plot);
+
+	$('<tr style="display:none"><td><input type="hidden" name="pdf_p"></td></tr>')
+    .appendTo('.getpdf')
+    .find('input')
+    .val(imgData_json);
+
+	/*$('.getpdf').append('<tr><td><input type="submit" value="Generate PDF"/></td></tr>');*/
+
+var browserWidth = $(window).width();
+var browserHeight = $(window).height();
+var winleft = (browserWidth / 2) - 225;
+var wintop = (browserHeight / 2) - 150;
+
+    $('#pdfExport').click(function () {
+        // window.open('/images/popup.html', 'PDF_Export', 'width=450,height=300,status=yes,resizable=yes,scrollbars=yes,left='+ winleft +',top='+ wintop +'');
+
+        // $.blockUI({ 
+        //     message: '<h1>Loading!</h1>', 
+        //     timeout: 2000
+            // css: { 
+
+            //     backgroundColor: '#000', 
+
+            //     opacity: .6, 
+            //     color: '#fff' 
+            // } 
+
+        // }); 
+
+		// $('#pdf_post').submit();
+
+		$(document).ajaxStart(function(){ 
+
+		  // alert('Please Wait'); 
+        	$.blockUI(); 
+		});
+
+        $(document).ajaxStop(function(){ 
+	        $.unblockUI(); 
+		});
+
+		// $(document).ajaxStop(function(){ 
+		//   alert('Done');
+		// });
+
+		$.ajax({
+
+				type: "post",
+				url: "/pdf.html",
+				data: $("#pdf_post").serialize(),
+				dataType: "html",
+
+		       // beforeSend: alert('Please Wait'),
+
+
+			   success: function(data) {
+			   	    // var win = window.open();
+			   	    var win = window.open('/images/popup.html', 'PDF_Export', 'width=450,height=300,status=yes,resizable=yes,scrollbars=yes,left='+ winleft +',top='+ wintop +'');
+            		win.document.write(data);
+				}
+
+			});
+
+
+
+
+
+	});
+
+/*
+	$('.popup').click(function(event) {
+		var url = $(this).attr("href");
+		window.open(url, "popUp", "width=300, height=300")
+		event.preventDefault();
+	});
+
+	$('#fadeExport_pdf').append('<span class="hover"></span>').each(function () {
+		var $span = $('> span.hover', this).css('opacity', 0);
+		$(this).hover(function () {
+			$span.stop().fadeTo(500, 1);
+		}, function () {
+			$span.stop().fadeTo(500, 0);
+		});
+	});
+	
+	$('#fadeExport_html').append('<span class="hover"></span>').each(function () {
+		var $span = $('> span.hover', this).css('opacity', 0);
+		$(this).hover(function () {
+			$span.stop().fadeTo(500, 1);
+		}, function () {
+			$span.stop().fadeTo(500, 0);
+		});
+	});
+	
+	$('#fadeExport_doc').append('<span class="hover"></span>').each(function () {
+		var $span = $('> span.hover', this).css('opacity', 0);
+		$(this).hover(function () {
+			$span.stop().fadeTo(500, 1);
+		}, function () {
+			$span.stop().fadeTo(500, 0);
+		});
+	});
+*/
+});
+</script>
+
+
+
+<!-- <form id="pdf_post" method="post" action="pdf.html" target="PDF_Export"> -->
+
+<form id="pdf_post" method="post">
+	<table align="center" class="getpdf popup"></table>
+</form>

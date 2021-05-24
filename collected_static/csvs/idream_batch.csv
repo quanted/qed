@@ -1,0 +1,5 @@
+Tier,Subject active ingredient,Product residue (mg/cm3),In-use active concentration (%),Liquid residue transfer efficiency (%),Fruit residue transfer efficiency (%),Bread residue transfer efficiency (%),Cheese residue transfer efficiency (%),Vegetable residue transfer efficiency (%),Meat residue transfer efficiency (%),Purees residue transfer efficiency (%),Pieces residue transfer efficiency (%),Powders residue transfer efficiency (%)
+Tier 2,Test 1,1,0.1,,,,,,,,,
+Tier 2,Test 2,2,0.15,,,,,,,,,
+Tier 3,Test 1,1,0.1,100,70,20,55,70,80,100,55,20
+Tier 3,Test 2,2,0.15,100,65,18,55,65,80,100,55,18

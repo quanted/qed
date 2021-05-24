@@ -1,0 +1,10 @@
+<h3>CTS 1.0</h3>
+<p>The first version of CTS contains the following features:</p>
+<ul>
+<li>Three workflows for predicting speciation, physicochemical properties, and transformation pathways of organic chemicals. Each workflow has a single or batch mode, where the former is a more graphically-oriented method for getting information for a given chemical, while batch mode is able to run a list of up to 10 chemicals at a time.</li>
+<li>Four modules that are used within the above workflows: Chemical Editor (CE), Chemical Speciation (CS), Physicochemical Properties (PCP), and Reaction Pathway Simulator (RPS).</li>
+<li>Four physicochemical property calculators, which are EPI Suite, ChemAxon, TEST, and OPERA</li>
+<li>Three reaction pathways used for predicting transformation pathways: Abiotic Hydrolysis (version 1.7), Abiotic Reduction (version 1.4), and Human Phase 1 Metabolism library.</li>
+<li>CSV, PDF, and HTML file downloads for chemical data for all workflows in the single mode, and CSV file downloads for batch mode.</li>
+<li>A set of API endpoints and documentation for other apps/developers to be able to access CTS features programmatically.</li>
+</ul>

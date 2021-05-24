@@ -1,0 +1,19 @@
+\documentclass[fleqn, oneside, 11pt]{article}%allows pdfs to be cropped and fleqn left justifies
+\usepackage{amssymb}
+\usepackage{amsmath}%sets math environment
+\usepackage[active, tightpage]{preview}%crops pdf to border of equations
+\usepackage{fixltx2e}
+\setlength\PreviewBorder{1pt}%sets size of border
+
+\begin{document}
+\begin{preview}
+\begin{align*}%sets up equation environment so you can specify alignment with ampersands
+LD_{50est} & = \frac{LD_{50ao}*LD_{50ri}}{3.5*LD_{50ro}}\nonumber \\
+LD_{50est} & =  \text{Estimated avian inhalation LD\textsubscript{50}} \nonumber \\
+LD_{50ao} & =  \text{Avian oral LD\textsubscript{50}} \nonumber \\
+LD_{50ri} & =  \text{Rat inhalation LD\textsubscript{50}} \nonumber \\
+LD_{50ro} & =  \text{Rat oral LD\textsubscript{50}} \nonumber \\
+3.5 & =  \text{Unitless adjustment factor} \nonumber \\
+\end{align*} 
+\end{preview}
+\end{document}

@@ -1,0 +1,29 @@
+<p>The reaction libraries are composed of generalized reaction schemes that compose a reaction library for a given transformation process (e.g., abiotic hydrolysis, abiotic reduction, and mammalian metabolism) that are based on specific examples published in the peer-reviewed literature. Reaction libraries that allows us to &quot;encode&quot; the known process science published in the peer-reviewed literature. The reactions libraries are considered to be comprehensive based on the review of the current literature; however, updates will be made as additional studies are published. The encoding of process science is accomplished using Chemical Terms Language and Smart Reaction Smile string through cheminformatics applications. The execution of these reaction libraries provides dominant transformation pathways and products for the chemical of interest as a function of environmental conditions.</p>
+
+<br><br>
+
+<h3>Abiotic Hydrolysis Reaction Library</h3>
+<p>The current version of the Abiotic Hydrolysis Reaction Library contains 25 reaction schemes.  Left click a reaction scheme to view the generalized reaction scheme, supporting reaction rules for reactivity, selectivity and exclusion, as well as example transformation pathways based on the execution of the reaction scheme.  References to process science on which the reaction scheme was developed are also provided.</p>
+
+<h4><a href="/static_qed/cts/docs/Hydrolysis Lib HTML/HydrolysisRxnLib_ver1-7-copy.htm" target="_blank">Abiotic Hydrolysis Reaction Library</a> (last updated August 19, 2016)</h4>
+
+<br><br>
+
+<h3>Abiotic Reduction Reaction Library</h3>
+<p>The current version of the Abiotic Reduction Reaction Library contains eight reaction schemes.   Left click a reaction scheme to view the generalized reaction scheme, supporting reaction rules for reactivity, selectivity and exclusion, as well as example transformation pathways based on the execution of the reaction scheme.  References to process science on which the reaction scheme was developed are also provided.</p>
+
+<h4><a href="/static_qed/cts/docs/Reduction HTML/AbioticReductionRxnLib_vers1-4.htm" target="_blank">Abiotic Reduction Reaction Library</a> (last updated April 4, 2015)</h4>
+
+<br><br>
+
+<h3>Human Phase 1 Metabolism Reaction Library</h3>
+<p>The Human Phase 1 Metabolism Reaction Library contains 156 reaction schemes based on cytochrome P450 (CYP450) phase one biotransformations.  This reaction library was developed by Chemaxon.  The reaction library is proprietary, so details of the reactions schemes cannot be viewed.</p>
+
+<br><br>
+
+<h3>Direct Photolysis Reaction Library</h3>
+<p>The current version of the Direct Photolysis Reaction Library contains 155 reaction schemes. This library is currently unranked and should not be run with other libraries. Left click a reaction scheme to view the generalized reaction scheme, supporting reaction rules for reactivity, selectivity and exclusion, as well as example transformation pathways based on the execution of the reaction scheme. References to process science on which the reaction scheme was developed are also provided.</p>
+
+<h4><a href="/static_qed/cts/docs/Direct Photolysis HTML/DirectPhotolysisRxnLib_ver1-0_051920.htm" target="_blank">Direct Photolysis Reaction Library</a> (last updated May 19, 2020)</h4>
+
+<br><br>

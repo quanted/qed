@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+    
+    <changeSet id="1" author="plajko">
+        <createTable tableName="CACHE_DB">
+            <column name="ENTRY_ID" type="number" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CACHE_ID" type="varchar(100)"/>
+            <column name="CD_ID" type="int"/>
+            <column name="CD_FORMULA" type="varchar(50)"/>
+            <column name="CD_SMILES" type="varchar(10000)"/>
+            <column name="CD_MOLWEIGHT" type="double"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

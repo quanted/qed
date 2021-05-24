@@ -1,0 +1,4988 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	
+	<title>JChem Web Services Getting Started Guide</title>
+	
+	<!-- ${endOfComment}
+	<script src="${contextPath}/docs/js/jquery-1.8.2.min.js"></script>
+	<script src="${contextPath}/docs/js/jquery-ui-1.10.3.custom.min.js"></script>
+	<script src="${contextPath}/docs/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+	<script src="${contextPath}/docs/js/scripts.js"></script>
+	<link rel="stylesheet" href="${contextPath}/docs/style/redmond/jquery-ui-1.10.3.custom.min.css" type="text/css">
+	<link rel="stylesheet" type="text/css" href="${contextPath}/docs/style/style.css">
+	<link rel="shortcut icon" href="${contextPath}/docs/style/favicon.ico">
+	${startOfComment} -->
+	
+	<object style="display: none;">${startOfComment}</object>
+
+	<script src="js/jquery-1.8.2.min.js"></script>
+	<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+	<script src="js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/scripts.js"></script>
+	<link rel="stylesheet" href="style/redmond/jquery-ui-1.10.3.custom.min.css" type="text/css">
+	<link rel="stylesheet" href="style/style.css" type="text/css" >
+	<link rel="shortcut icon" href="style/favicon.ico">
+
+	<object style="display: none;">${endOfComment}</object>
+	
+	<script type="text/javascript">
+		var authenticated=false,
+		serviceConfig = {
+			"contextPath": "${contextPath}",
+			"serviceLocation": "/rest-v0",
+		};
+		$(function(){
+		      $(".includedContent").each(function() {
+		    	  $(this).load("${contextPath}/gendocs/generateEmbedded?className=" + $(this).attr("javaClass"));
+		      });
+		    });
+	</script>
+	
+</head>
+<body>
+
+<!-- <div class="includedContent" javaClass="chemaxon.jchem.ws2common.dto.DisplayOptions"></div> -->
+<!-- <jsp:include page="/gendocs/generateEmbedded?className=chemaxon.jchem.ws2common.dto.DisplayOptions" /> -->
+
+<table class="title_header">
+	<tbody>
+		<tr><td class="title_header title_text">JChem Web Services Getting Started Guide</td><td class="title_header login_info">You are not authenticated</td></tr>
+	</tbody>
+</table>
+
+<p>JChem Web Services REST API provides an easy way to store, search and calculate molecule properties through web services. This quick start guide shows you how to install and start working with our web services.</p>
+
+
+<h1>Resource Concepts</h1>
+
+<p>RESTful web services are organized around addressable resources. Main resource concepts in JChem Web Services's REST API are:</p>
+<table>
+	<thead>
+		<tr><th>Resource</th><th>Description</th><th>Example URL</th></tr>
+	</thead>
+	<tbody>
+		<tr><td>list</td><td>listing available database configurations</td><td><code>GET /rest-v0/data</code></td></tr>
+        <tr><td>database</td><td>selecting a database configuration</td><td><code>GET /rest-v0/data/sample</code></td></tr>        
+		<tr><td>table</td><td>selecting a table in the database</td><td><code>GET /rest-v0/data/sample/table/ChEBI_lite_3star</code></td></tr>
+		<tr><td>detail</td><td>details of the molecule in the table with specific row id</td><td><code>GET /rest-v0/data/sample/table/ChEBI_lite_3star/detail/42</code></td></tr>
+	</tbody>
+</table>
+<small>In this REST API we worked around some of the limitations of the REST concept:</small>
+<ul>
+    <li><small>Length of GET request is limited: most requests can be sent as a POST request</small></li>
+    <li><small>Proxy and firewall support of UPDATE, PUT, DELETE requests is limited: every CRUD operation is mapped to a POST request as well</small></li>
+    <li><small>Long transactions: monitoring service is available for long duration tasks</small></li>
+</ul>
+
+
+<h1>URL Reference</h1>
+<table>
+	<thead>
+		<tr><th>Description</th><th>HTTP Request</th><th>Content&#8209;Type</th><th>Response&#8209;Type</th></tr>
+	</thead>
+	<tbody>
+		<tr><td colspan="4"><a href="#database"><b>1. Database Structural Information</b></a></td></tr>
+		<tr><td><a href="#serverinfo">1.1. Server Information</a></td><td><code>GET /rest-v0</code></td><td></td><td>application/json</td></tr>
+		<tr><td><a href="#listdbconfigs">1.2. List DB Configurations</a></td><td><code>GET /rest-v0/data</code></td><td></td><td>application/json</td></tr>
+		<tr><td><a href="#dbconfiginfo">1.3. DB Configuration Details</a></td><td><code>GET /rest-v0/data/<i>{dbConfigName}</i></code></td><td></td><td>application/json</td></tr>
+		<tr><td><a href="#listtables">1.4. List Tables</a></td><td><code>GET /rest-v0/data/<i>{dbConfigName}</i>/table</code></td><td></td><td>application/json</td></tr>
+		<tr><td><a href="#tableinfo">1.5 .Table Details</a></td><td><code>GET /rest-v0/data/<i>{dbConfigName}</i>/table/<i>{tableName}</i></code></td><td></td><td>application/json</td></tr>
+		<tr><td><a href="#tablecolumns">1.6. Table Columns</a></td><td><code>GET /rest-v0/data/<i>{dbConfigName}</i>/table/<i>{tableName}</i><i>/headers/table</i></code></td><td></td><td>application/json</td></tr>
+		<tr><td><a href="#columnstatistics">1.7. Column Statistics</a></td><td><code>GET /rest-v0/data/<i>{dbConfigName}</i>/table/<i>{tableName}</i><i>/column/</i><i>{columnName}</i></code></td><td></td><td>application/json</td></tr>
+		<tr><td colspan="4"><a href="#search"><b>2. Search Options</b></a></td></tr>
+		<tr><td><a href="#simplesearch">2.1. Simple Search</a></td><td><code>GET /rest-v0/data/<i>{dbConfigName}</i>/table/<i>{tableName}</i>/search?<i>{paramName}</i>=<i>{paramValue}</i></code></td><td></td><td>application/json</td></tr>
+		<tr><td><a href="#advancedsearch">2.2. Advanced Search</a></td><td><code>POST /rest-v0/data/<i>{dbConfigName}</i>/table/<i>{tableName}</i>/search</code></td><td></td><td>application/json</td></tr>
+		<tr><td colspan="4"><a href="#export"><b>3. Export Data</b></a></td></tr>
+		<tr><td><a href="#simpleexport">3.1. Simple Data Export</a></td><td><code>GET /rest-v0/data/<i>{dbConfigName}</i>/table/<i>{tableName}</i>/export?<i>{paramName}</i>=<i>{paramValue}</i></code></td><td></td><td>application/json</td></tr>
+		<tr><td><a href="#advancedexport">3.2. Advanced Data Export</a></td><td><code>POST /rest-v0/data/<i>{dbConfigName}</i>/table/<i>{tableName}</i>/export</code></td><td></td><td>application/json</td></tr>
+		<tr><td><a href="#exporturlgen">3.3. Export URL Generator For Download</a></td><td><code>POST /rest-v0/data/<i>{dbConfigName}</i>/table/<i>{tableName}</i>/exportUrlGen</code></td><td></td><td>application/json</td></tr>
+		<tr><td colspan="4"><a href="#properties"><b>4. View Properties</b></a></td></tr>	
+		<tr><td><a href="#simpledetails">4.1. Simple Properties View (from table)</a></td><td><code>GET /rest-v0/data/<i>{dbConfigName}</i>/table/<i>{tableName}</i>/detail/<i>{cd_id}</i></code></td><td></td><td>application/json</td></tr>
+		<tr><td><a href="#advanceddetails">4.2. Advanced Properties View (from table)</a></td><td><code>POST /rest-v0/data/<i>{dbConfigName}</i>/table/<i>{tableName}</i>/detail/<i>{cd_id}</i></code></td><td></td><td>application/json</td></tr>
+		<tr><td><a href="#postdetails">4.3. View Properties Without Storing (upload molecules as JSON format)</a></td><td><code>POST /rest-v0/util/detail</code></td><td></td><td>application/json</td></tr>
+		<tr><td colspan="4"><a href="#manipulate"><b>5. Manipulate Data in the Database</b></a></td></tr>	
+		<tr><td><a href="#import">5.1. Import to Existing Table</a></td><td><code>POST /rest-v0/data/<i>{dbConfigName}</i>/table/<i>{tableName}</i></code></td><td>multipart</td><td>application/json</td></tr>
+		<tr><td><a href="#importnewtable">5.2. Import to New Table</a></td><td><code>POST /rest-v0/data/<i>{dbConfigName}</i></code></td><td>multipart</td><td>application/json</td></tr>
+		<tr><td><a href="#moleculeupdate">5.3. Update a Single Molecule</a></td><td><code>POST /rest-v0/data/<i>{dbConfigName}</i>/table/<i>{tableName}</i><i>/operation</i></code></td><td>application/json</td><td>application/json</td></tr>
+		<tr><td><a href="#moleculedelete">5.4. Delete a Single Molecule</a></td><td><code>POST /rest-v0/data/<i>{dbConfigName}</i>/table/<i>{tableName}</i><i>/operation</i></code></td><td>application/json</td><td>application/json</td></tr>
+		<tr><td><a href="#moleculeinsert">5.5. Insert a Single Molecule</a></td><td><code>POST /rest-v0/data/<i>{dbConfigName}</i>/table/<i>{tableName}</i><i>/operation</i></code></td><td>application/json</td><td>application/json</td></tr>
+		<tr><td colspan="4"><a href="#monitoring"><b>6. Monitoring</b></a></td></tr>	
+		<tr><td><a href="#createmonitor">6.1. Create a New Monitor</a></td><td><code>POST /rest-v0/monitor</code></td><td>application/json</td><td>application/json</td></tr>
+		<tr><td><a href="#listmonitors">6.2. List Active Monitors</a></td><td><code>POST /rest-v0/monitor</code></td><td>application/json</td><td>application/json</td></tr>
+		<tr><td><a href="#querymonitor">6.3. Query a Monitor's Status</a></td><td><code>GET /rest-v0/monitor/<i>{monitorId}</i></code></td><td></td><td>application/json</td></tr>
+		<tr><td><a href="#usemonitor">6.4. Use a Monitor During Import</a></td><td><code>POST /rest-v0/monitor</code></td><td>application/json</td><td>application/json</td></tr>
+		<tr><td colspan="4"><a href="#configuration"><b>7. Configuration storage</b></a></td></tr>	
+		<tr><td><a href="#storeconfig">7.1. Store/List Configs</a></td><td><code>POST /rest-v0/config/store/<i>{scope}</i></code></td><td>application/json</td><td>application/json</td></tr>
+		<tr><td><a href="#clearconfig">7.2. Clear Configs</a></td><td><code>POST /rest-v0/config/clear/<i>{scope}</i></code></td><td>application/json</td><td>application/json</td></tr>
+		<tr><td colspan="4"><a href="#furtheroptions"><b>8. Further Options and Functionalities</b></a></td></tr>	
+		<tr><td><a href="#stringMolExport">8.1. Simple Format Conversion</a></td><td><code>POST /rest-v0/util/calculate/stringMolExport</code></td><td>application/json</td><td>text/plain</td></tr>
+		<tr><td><a href="#molExport">8.2. Format Conversion</a></td><td><code>POST /rest-v0/util/calculate/molExport</code></td><td>application/json</td><td>application/json</td></tr>
+		<tr><td><a href="#cipStereoInfo">8.3. CIP Stereo Info</a></td><td><code>POST /rest-v0/util/calculate/cipStereoInfo</code></td><td>application/json</td><td>application/json</td></tr>
+		<tr><td><a href="#structureChecker">8.4. Structure Checker</a></td><td><code>POST /rest-v0/util/calculate/structureChecker</code></td><td>application/json</td><td>application/json</td></tr>
+		<tr><td><a href="#formatAnalyzer">8.5. Format Analyzer</a></td><td><code>POST /rest-v0/util/analyze</code></td><td>*/*</td><td>application/json</td></tr>
+		<tr><td><a href="#clean">8.6. Clean Structure</a></td><td><code>POST /rest-v0/util/convert/clean</code></td><td>application/json</td><td>text/plain</td></tr>
+		<tr><td><a href="#hydrogenizer">8.7. Hydrogenize/Dehydrogenize Structure</a></td><td><code>POST /rest-v0/util/convert/hydrogenize</code></td><td>application/json</td><td>text/plain</td></tr>
+		<tr><td><a href="#standardizer">8.8. Standardizer</a></td><td><code>POST /rest-v0/util/convert/standardizer</code></td><td>application/json</td><td>text/plain</td></tr>
+		<tr><td><a href="#reactionconverter">8.9. Reaction converter, automapper</a></td><td><code>POST /rest-v0/util/convert/hydrogenize</code></td><td>application/json</td><td>text/plain</td></tr>
+		<tr><td><a href="#filterChains">8.10. Filter Chains</a></td><td>can be used on all molecule requests</td><td></td><td></td></tr>
+		<tr><td colspan="4"><a href="#markush"><b>9. Markush enumeration</b></a></td></tr>
+		<tr><td><a href="#markushAnalysis">9.1 Markush Analysis</a></td><td><code>POST /rest-v0/util/markush/analyze</code></td><td>application/json</td><td>application/json</td></tr>
+		<tr><td><a href="#markushAnalysisDb">9.2 Markush Analysis From Database</a></td><td><code>POST /rest-v0/data/<i>{dbConfigName}</i>/table/<i>{tableName}</i>/markush/<i>{cd_id}</i>/analyze</code></td><td>application/json</td><td>application/json</td></tr>
+		<tr><td><a href="#markushEnumeration">9.3 Markush Enumeration</a></td><td><code>POST /rest-v0/util/markush/enumerate</code></td><td>application/json</td><td>application/json</td></tr>
+		<tr><td><a href="#markushEnumerationDb">9.4 Markush Enumeration From Database</a></td><td><code>POST /rest-v0/data/<i>{dbConfigName}</i>/table/<i>{tableName}</i>/markush/<i>{cd_id}</i>/enumerate</code></td><td>application/json</td><td>application/json</td></tr>
+		<tr><td colspan="4"><a href="#library"><b>10. Reaction library</b></a></td></tr>
+		<tr>
+			<td><a href="./reactor#list">10.1. List all the stored reactions</a></td>
+			<td><code>GET rest-v0/util/reaction/library</code></td>
+			<td></td>
+			<td>application/json</td>
+		</tr>
+		<tr>
+			<td><a href="./reactor#source">10.1.1 List reactions from the given source</a></td>
+			<td><code>GET rest-v0/util/reaction/library/{source}</code></td>
+			<td></td>
+			<td>application/json</td>
+		</tr>
+		<tr>
+			<td><a href="./reactor#details">10.2. Get details of a reaction</a></td>
+			<td><code>GET rest-v0/util/reaction/library/{source}/{id}</code></td>
+			<td></td>
+			<td>application/json</td></tr>
+		<tr>
+			<td><a href="./reactor#hierarchy">10.3. Get information about the available reaction types</a></td>
+			<td><code>GET rest-v0/util/reaction/library/hierarchy</code></td>
+			<td></td>
+			<td>application/json</td></tr>
+		<tr>
+			<td><a href="./reactor#modify">10.4. Manipulation of the reaction library</a></td>
+			<td><code>POST rest-v0/util/reaction/library/operation</code></td>
+			<td>application/json</td>
+			<td>application/json</td></tr>
+		<tr><td colspan="4"><a href="./reactor#reactor"><b>11. Reactor</b></a></td></tr>
+		<tr>
+			<td><a href="./reactor#enumerate">11.1. Run reaction enumeration</a></td>
+			<td><code>POST rest-v0/util/reaction/enumerate</code></td>
+			<td></td>
+			<td>application/json</td></tr>
+		<tr>
+			<td><a href="./reactor#preview">11.2. Request reaction enumeration preview</a></td>
+			<td><code>POST rest-v0/util/reaction/preview</code></td>
+			<td></td>
+			<td>application/json</td>
+		</tr>		
+		<tr><td colspan="4"><a href="#thirdparty"><b>12. Bundled Third-party Databases</b></a></td></tr>	
+		
+<!-- 		<tr><td><a href="#names">Names and identifiers</a></td><td><code>POST /rest-v0/util/calculate/names</code></td><td>application/json</td><td>application/json</td></tr> -->
+<!-- 		<tr><td><a href="#jsonImage">Molecule Image</a></td><td><code>POST /rest-v0/util/calculate/jsonImage</code></td><td>application/json</td><td>application/json</td></tr> -->
+<!-- 		<tr><td><a href="#pKa">pKa</a></td><td><code>POST /rest-v0/util/calculate/pKa</code></td><td>application/json</td><td>application/json</td></tr> -->
+<!-- 		<tr><td><a href="#isoelectricPoint">Isoelectric Point</a></td><td><code>POST /rest-v0/util/calculate/isoelectricPoint</code></td><td>application/json</td><td>application/json</td></tr> -->
+<!-- 		<tr><td><a href="#logP">logP</a></td><td><code>POST /rest-v0/util/calculate/logP</code></td><td>application/json</td><td>application/json</td></tr> -->
+<!-- 		<tr><td><a href="#logD">logD</a></td><td><code>POST /rest-v0/util/calculate/logD</code></td><td>application/json</td><td>application/json</td></tr> -->
+<!-- 		<tr><td><a href="#elementalAnalysis">Elemental Anaysis</a></td><td><code>POST /rest-v0/util/calculate/elementalAnalysis</code></td><td>application/json</td><td>application/json</td></tr> -->
+<!-- 		<tr><td><a href="#topologyAnalysis">Topology Analysis</a></td><td><code>POST /rest-v0/util/calculate/topologyAnalysis</code></td><td>application/json</td><td>application/json</td></tr> -->
+<!-- 		<tr><td><a href="#polarSurfaceArea">Polar Surface Area</a></td><td><code>POST /rest-v0/util/calculate/polarSurfaceArea</code></td><td>application/json</td><td>application/json</td></tr> -->
+<!-- 		<tr><td><a href="#charge">Charge</a></td><td><code>POST /rest-v0/util/calculate/charge</code></td><td>application/json</td><td>application/json</td></tr> -->
+<!-- 		<tr><td><a href="#majorMicrospecies">Major Microspecies</a></td><td><code>POST /rest-v0/util/calculate/majorMicrospecies</code></td><td>application/json</td><td>application/json</td></tr> -->
+<!-- 		<tr><td><a href="#polarizability">Polarizability</a></td><td><code>POST /rest-v0/util/calculate/polarizability</code></td><td>application/json</td><td>application/json</td></tr> -->
+<!-- 		<tr><td><a href="#hbda">H-bond Donor/Acceptor</a></td><td><code>POST /rest-v0/util/calculate/hbda</code></td><td>application/json</td><td>application/json</td></tr> -->
+<!-- 		<tr><td><a href="#tautomerization">Tautomerization</a></td><td><code>POST /rest-v0/util/calculate/tautomerization</code></td><td>application/json</td><td>application/json</td></tr> -->
+<!-- 		<tr><td><a href="#stereoisomer">Stereoisomers</a></td><td><code>POST /rest-v0/util/calculate/stereoisomer</code></td><td>application/json</td><td>application/json</td></tr> -->
+<!-- 		<tr><td><a href="#geometry">Geometry</a></td><td><code>POST /rest-v0/util/calculate/geometry</code></td><td>application/json</td><td>application/json</td></tr> -->
+		
+	</tbody>
+</table>
+
+<h1 id="database">Database Structural Information</h1>
+<p>Web Services are shipped with a preconfigured sample database. We will first show how to retrieve the database meta data (configuration, database, table information) and perform queries in this database.</p>
+<form id="formURL">
+	<p>We assume the default installation URL is:</p>
+	<input id="baseurl" type="text" value="http://localhost:8080/rest-v0" size="80" />
+</form>
+<small>If you installed with a different host/port/appname setting, please adjust the URLs in the example.</small>
+
+<h2 id="serverinfo">1.1. Server Information</h2>
+	<p>To check whether the JChem Web Services REST functions are working, open the following URL:</p>
+<form id="form31" action="#">
+	<input class="url" type="text" data-baseurl="true" value="" size="80"/>
+	<input class="GET" type="button" value="GET" />
+<label>response:</label>
+<div class="output_div" style="height:510px;">
+{
+    "welcomeMessage": "You connected to the JChem REST Web Services",
+    "availableServices": [
+        "JChem Simple Web Services"
+    ],
+    "version": "6.0.1",
+    "jchemVersion": "6.0.1_b88",
+    "javaVersion": "1.7.0_17",
+    "osVersion": "Windows 7",
+    "servletVersion": "jetty/6.1.25",
+    "configDir": "...",
+    "availableLicenses": {
+        "ECFP/FCFP": {
+            "state": "valid",
+            "expirationDate": "2013-09-25"
+        },
+        "Structural Frameworks Plugin": {
+            "state": "valid",
+            "expirationDate": "2013-09-25"
+        },
+        "JChem Cartridge": {
+            "state": "valid",
+            "expirationDate": "2013-09-25"
+        },
+        "3D Screen": {
+            "state": "valid",
+            "expirationDate": "2013-09-25"
+        },
+        "Marvin Applets": {
+            "state": "valid",
+            "expirationDate": "2013-09-25"
+        }
+    }
+}
+</div>
+</form>
+<p>This request returns a general system information, a welcome JSON message including version and license information. Please make sure the active licenses match your expectations.</p>
+<small>If no licenses are listed, you haven&#39;t set up the environment variables correctly or you placed the license file into an incorrect path. Further material on license installation can be found in the <a href="http://www.chemaxon.com/marvin/help/licensedoc/install.html">license documentation</a>.</small>
+
+<h2 id="listdbconfigs">1.2. List DB Configurations</h2>
+<p>The available database configurations can be listed by entering this URL:</p>
+<form id="form32" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data" size="80"/>
+	<input class="GET" type="button" value="GET" />
+<label>response:</label>
+<div class="output_div">
+[
+    {
+        "name": "sample",
+        "type": "JCHEM",
+        "propertyTable": "jchempropertytable",
+        "url": "jdbc:derby:/etc/dbpath"
+    }
+]
+</div>
+</form>
+<p>This request returns an array of available database configurations. Each configuration has a unique name,
+a database URL, and a type (currently <code>JCHEM</code> type supported only); JChem configurations have a property table name in addition.</p>
+<p>You can change these settings in the <code>ws-config.xml</code>, located in the <code>chemaxon</code> and <code>.chemaxon</code> directory in
+the user home directory on Windows and other systems, respectively. The file is always read from this location,
+if it does not exist, it will be created automatically with the default settings and content.<p>
+
+<h2 id="dbconfiginfo">1.3. Database Configuration Details</h2>
+<p>Further database driver information specific for a given connection can be collected from this URL:</p>
+<form id="form33" action="#">
+	<p>To check the general system configuration, open this URL:</p>
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/" size="80"/>
+	<input class="GET" type="button" value="GET" />
+<label>response:</label>
+<div class="output_div">
+{
+    "productName": "Apache Derby",
+    "productVersion": "10.9.1.0 - (1344872)",
+    "driverName": "Apache Derby Embedded JDBC Driver",
+    "driverVersion": "10.9.1.0 - (1344872)",
+    "initialized": true
+}
+</div>
+</form>
+
+<h2 id="listtables">1.4. List Tables</h2>
+<p>Tables in the specified database configuration can be listed by opening this URL:</p>
+<form id="form34" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table" size="80"/>
+	<input class="GET" type="button" value="GET" />
+<label>response:</label>
+<div class="output_div">
+[
+    {
+        "tableName": "ChEBI_lite_3star",
+        "meta": {
+            "name": "ChEBI_lite_3star",
+            "label": "ChEBI_lite_3star",
+            "state": "READY"
+        },
+        "dbTable": {
+            "dbSchemaName": "APP",
+            "dbTableName": "C_CHEBI_LITE_3STAR"
+        },
+        "type": "ANY_STRUCTURES",
+        "properties": {
+            "MD.ecfp.UpdateOnInsert": "true",
+            "tautomerDuplicateFiltering": "false",
+            "switchOffAllProtections": "false",
+            "MD.ecfp.Comment": "",
+            "fingerprint.numberOfBits": "512",
+            "fingerprint.numberOfOnes": "2",
+            "absoluteStereo": "true",
+            "JChemVersion": "6.0.0",
+            "validityTimestamp": "2013-04-15 10:40:03.858",
+            "version": "6000000",
+            "fingerprint.numberOfEdges": "6",
+            "duplicateFiltering": "false",
+            "MD.ecfp.Type": "ECFP",
+            "fingerprint.numberOfStrucFPCols": "0",
+            "tableType": "2",
+            "creationTime": "2013-03-29 23:35:52.054",
+            "ctVersion": "5120000",
+            "mdVersion": "5120000"
+        }
+    }
+]
+</div>
+</form>
+<p>This request returns a map of database structure table names and the basic JChem table information.</p>
+
+<h2 id="tableinfo">1.5. Table Details</h2>
+<p>Further information about the tables, such as the list of columns and column meta-data can be obtained by opening this URL:</p>
+<form id="form35" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star" size="80"/>
+	<input class="GET" type="button" value="GET" />
+<label>response:</label>
+<div class="output_div">
+{
+    "tableName": "ChEBI_lite_3star",
+    "meta": {
+        "name": "ChEBI_lite_3star",
+        "label": "ChEBI_lite_3star",
+        "state": "READY"
+    },
+    "dbTable": {
+        "dbSchemaName": "APP",
+        "dbTableName": "C_CHEBI_LITE_3STAR"
+    },
+    "type": "ANY_STRUCTURES",
+    "properties": {
+        "MD.ecfp.UpdateOnInsert": "true",
+        "tautomerDuplicateFiltering": "false",
+        "switchOffAllProtections": "false",
+        "MD.ecfp.Comment": "",
+        "fingerprint.numberOfBits": "512",
+        "fingerprint.numberOfOnes": "2",
+        "absoluteStereo": "true",
+        "JChemVersion": "6.0.0",
+        "validityTimestamp": "2013-04-15 10:40:03.858",
+        "version": "6000000",
+        "fingerprint.numberOfEdges": "6",
+        "duplicateFiltering": "false",
+        "MD.ecfp.Type": "ECFP",
+        "fingerprint.numberOfStrucFPCols": "0",
+        "tableType": "2",
+        "creationTime": "2013-03-29 23:35:52.054",
+        "ctVersion": "5120000",
+        "mdVersion": "5120000"
+    }
+}
+</div>
+</form>
+<small>Column prefixes: JChem mandatory and JChem WS imporeted columns are prefixed with <code>cd</code> and <code>c</code>, respectively.</small>
+
+<h2 id="tablecolumns">1.6. Table Columns</h2>
+<p>The list of the available table columns and their detailed description can be obtained by opening this URL:</p>
+<form id="form36" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/headers/table" size="80"/>
+	<input class="GET" type="button" value="GET" />
+<label>response:</label>
+<div class="output_div">
+    {
+        "name": "cd_id",
+        "type": "ID",
+        "source": "DATABASE_JCHEM",
+        "canSort": true,
+        "canFilter": true
+    },
+    {
+        "name": "cd_structure",
+        "label": "JChem Structure",
+        "state": "UNKNOWN",
+        "type": "MOLECULE",
+        "source": "DATABASE_JCHEM",
+        "dbColumnName": "CD_STRUCTURE"
+    },
+    {
+        "name": "similarity",
+        "type": "DOUBLE",
+        "source": "PROCESS",
+        "canSort": true
+    },
+    {
+        "name": "cd_formula",
+        "label": "JChem Formula",
+        "state": "UNKNOWN",
+        "type": "TEXT",
+        "source": "DATABASE_JCHEM",
+        "dbColumnName": "CD_FORMULA",
+        "canSort": true,
+        "canFilter": true
+    },
+    {
+        "name": "cd_molweight",
+        "label": "JChem Molecular weight",
+        "state": "UNKNOWN",
+        "type": "DOUBLE",
+        "source": "DATABASE_JCHEM",
+        "dbColumnName": "CD_MOLWEIGHT",
+        "canSort": true,
+        "canFilter": true
+    },
+    {
+        "name": "cd_timestamp",
+        "label": "JChem Last modified",
+        "state": "UNKNOWN",
+        "type": "DATETIME",
+        "source": "DATABASE_JCHEM",
+        "dbColumnName": "CD_TIMESTAMP",
+        "canSort": true,
+        "canFilter": true
+    },
+    {
+        "name": "c_chebi_id",
+        "label": "ChEBI ID",
+        "state": "READY",
+        "type": "TEXT",
+        "source": "DATABASE_USER",
+        "dbColumnName": "C_CHEBI_ID",
+        "canSort": true,
+        "canFilter": true,
+        "canEdit": true
+    },
+    {
+        "name": "c_star",
+        "label": "Star",
+        "state": "READY",
+        "type": "INTEGER",
+        "source": "DATABASE_USER",
+        "dbColumnName": "C_STAR",
+        "canSort": true,
+        "canFilter": true,
+        "canEdit": true
+    },
+    {
+        "name": "c_chebi_name",
+        "label": "ChEBI Name",
+        "state": "READY",
+        "type": "TEXT",
+        "source": "DATABASE_USER",
+        "dbColumnName": "C_CHEBI_NAME",
+        "canSort": true,
+        "canFilter": true,
+        "canEdit": true
+    }
+</div>
+</form>
+
+<h4>Column properties</h4>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>name</td><td>string</td><td>...</td>
+		</tr>
+		<tr>
+			<td>label</td><td>string</td><td>...</td>
+		</tr>
+		<tr>
+			<td>state.type</td><td>string</td><td>...</td>
+		</tr>
+		<tr>
+			<td>state.values</td><td>string</td><td>UNKNOWN, LOCKED or READY</td>
+		</tr>
+		<tr>
+			<td>type.type</td><td>string</td><td>...</td>
+		</tr>
+		<tr>
+			<td>type.values</td><td>string</td><td>...</td>
+		</tr>
+		<tr>
+			<td>source.type</td><td>string</td><td>...</td>
+		</tr>
+		<tr>
+			<td>source.values</td><td>string</td><td>...</td>
+		</tr>
+		<tr>
+			<td>dbColumnName</td><td>string</td><td>...</td>
+		</tr>
+		<tr>
+			<td>canSort</td><td>boolean</td><td>...</td>
+		</tr>
+		<tr>
+			<td>canFilter</td><td>boolean</td><td>...</td>
+		</tr>
+		<tr>
+			<td>canEdit</td><td>boolean</td><td>...</td>
+		</tr>
+		<tr>
+			<td>list</td><td>boolean</td><td>...</td>
+		</tr>
+		<tr>
+			<td>chemicalTerms</td><td>string</td><td>...</td>
+		</tr>
+		<tr>
+			<td>references</td><td>unknown</td><td>...</td>
+		</tr>
+		<tr>
+			<td>referencedBy</td><td>unknown</td><td>...</td>
+		</tr>							
+		
+</tbody>
+</table>
+
+<h2 id="columnstatistics">1.7. Column Statistics</h2>
+<p> Select a name from column properties. Minimum and maximum value of the selected column can be obtained by opening this URL:</p>
+<form id="form37" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/column/cd_id" size="80"/>
+	<input class="GET" type="button" value="GET" />
+<label>response:</label>
+<div class="output_div">
+  {
+    "column": {
+        "columnName": "cd_id",
+        "dbColumn": {
+            "dbColumnName": "CD_ID",
+            "typeName": "INT",
+            "sqlDataType": 4,
+            "size": 10
+        },
+        "meta": {
+            "name": "cd_id",
+            "label": "JChem Id",
+            "state": "UNKNOWN"
+        }
+    },
+    "min": 1,
+    "max": 23670
+}
+</div>
+</form>
+
+<h1 id="search">Search Options</h1>
+<h2 id="simplesearch">2.1. Simple Search</h2>
+Simple search means you can define only restricted criteria in the query. Define these search parameters in the URL after <code>search?</code> as <code>Option=selected_value</code> and separate them by <code>&</code> character
+
+<h4>The URL can contain the following criteria</h4>
+<table>
+	<thead>
+		<tr>
+			<th>Option</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>queryStructure</td><td>string</td><td>Define the query structure as SMILES string for substructure search</td>
+		</tr>
+		<tr>
+			<td>offset</td><td>int</td><td>Define the first displayed result</td>
+		</tr>
+		<tr>
+			<td>limit</td><td>int</td><td>Define the number of the returned hits</td>
+		</tr>
+		<tr>
+			<td>searchType</td>
+			<td>enum</td>
+			<td>Define the search type
+				<ul>
+					<li>SUBSTRUCTURE (default)</li>
+					<li>SIMILARITY</li>
+					<li>FULL</li>
+					<li>DUPLICATE</li>
+					<li>SUPERSTRUCTURE</li>
+					<li>FULL_FRAGMENT</li>
+					<li>NO_ABAS</li>
+					<li>NO_SCREEN</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td>chargeMatching</td>
+			<td>enum</td>
+			<td>
+				<ul>
+					<li>ON (default)</li>
+					<li>EXACT</li>
+					<li>IGNORE</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td>stereoSearchType</td>
+			<td>enum</td>
+			<td>
+				<ul>
+					<li>EXACT</li>
+					<li>OFF</li>
+					<li>ON</li>
+					<li>DIASTEREOMER</li>
+					<li>ENANTIOMER</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td>doubleBondStereoMatchingMode</td>
+			<td>enum</td>
+			<td>
+				<ul>
+					<li>NONE</li>
+					<li>MARKED (default)</li>
+					<li>ALL</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td>tautomerSearch</td>
+			<td>enum</td>
+			<td>
+				<ul>
+					<li>ON</li>
+					<li>OFF</li>
+					<li>DEFAULT</li>
+					<li>ON_IGNORE_TAUTOMERSTEREO</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td>threshold</td>
+			<td>float</td>
+			<td>Define the similarity threshold</td>
+		</tr>
+		<tr>
+			<td>descriptor</td>
+			<td>enum</td>
+			<td>Define the similarity descriptor
+				<ul>
+					<li>CFP (default): Chemical hashed fingerprints. <a href="http://www.chemaxon.com/jchem/doc/user/fingerprint.html">Detailed description</a></li>
+					<li>ECFP: Extended-connectivity fingerprints. <a href="http://www.chemaxon.com/jchem/doc/user/ECFP.html">Detailed description</a></li>
+					<li>FCFP: Functional-class fingerprints. <a href="http://www.chemaxon.com/jchem/doc/user/ECFP.html#fcfp">Detailed description</a></li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td>returnNonHits</td>
+			<td>boolean</td>
+			<td>Setting it to TRUE returns non-matches instead of matches to the query</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+
+<p>The content of a table &quot;ChEBI_lite_3star&quot; in the configuration &quot;sample&quot; can be searched by the URL:</p>
+<form id="form38" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/search?limit=2&offset=10" size="80"/>
+	<input class="GET" type="button" value="GET" />
+<label>response:</label>
+<div class="output_div">
+{
+    "data": [
+        {
+            "cd_id": 11,
+            "cd_structure": {
+                "structureData": {
+                    "structure": "...",
+                    "format": "mrv",
+                    "contentUrl": "http://localhost:8080/rest-v0/data/sample/table/ChEBI_lite_3star/export/11?format=mrv&amp;contentName=structure",
+                    "contentBaseUrl": "http://localhost:8080/rest-v0/data/sample/table/ChEBI_lite_3star/export/11"
+                },
+                "cachekey": "struc_sample/ChEBI_lite_3star/11",
+                "image": {
+                    "width": 300,
+                    "height": 152,
+                    "type": "png",
+                    "image": "...",
+                    "imageUrl": "http://localhost:8080/rest-v0/data/sample/table/ChEBI_lite_3star/display/11_300x152.png"
+                },
+                "headers": {
+                    "structureData": {
+                        "name": "structureData",
+                        "type": "STRUCTUREDATA",
+                        "source": "GENERATED"
+                    },
+                    "cachekey": {
+                        "name": "cachekey",
+                        "type": "TEXT",
+                        "source": "PROCESS"
+                    },
+                    "image": {
+                        "name": "image",
+                        "type": "IMAGE",
+                        "source": "GENERATED"
+                    }
+                }
+            },
+            "cd_formula": "C47H73NO17",
+            "cd_molweight": 924.079,
+            "cd_timestamp": "2013-04-15T10:39:06.054+02:00",
+            "c_chebi_id": "CHEBI:2682",
+            "c_star": 3,
+            "c_chebi_name": "amphotericin B"
+        },
+        {
+            "cd_id": 12,
+            "cd_structure": {
+                "structureData": {
+                    "structure": "...",
+                    "format": "mrv",
+                    "contentUrl": "http://localhost:8080/rest-v0/data/sample/table/ChEBI_lite_3star/export/12?format=mrv&amp;contentName=structure",
+                    "contentBaseUrl": "http://localhost:8080/rest-v0/data/sample/table/ChEBI_lite_3star/export/12"
+                },
+                "cachekey": "struc_sample/ChEBI_lite_3star/12",
+                "image": {
+                    "width": 300,
+                    "height": 243,
+                    "type": "png",
+                    "image": "...",
+                    "imageUrl": "http://localhost:8080/rest-v0/data/sample/table/ChEBI_lite_3star/display/12_300x243.png"
+                },
+                "headers": {
+                    "structureData": {
+                        "name": "structureData",
+                        "type": "STRUCTUREDATA",
+                        "source": "GENERATED"
+                    },
+                    "cachekey": {
+                        "name": "cachekey",
+                        "type": "TEXT",
+                        "source": "PROCESS"
+                    },
+                    "image": {
+                        "name": "image",
+                        "type": "IMAGE",
+                        "source": "GENERATED"
+                    }
+                }
+            },
+            "cd_formula": "C21H41N5O11",
+            "cd_molweight": 539.5771,
+            "cd_timestamp": "2013-04-15T10:39:04.717+02:00",
+            "c_chebi_id": "CHEBI:2790",
+            "c_star": 3,
+            "c_chebi_name": "apramycin"
+        }
+    ],
+    "headers": {
+        "cd_id": {
+            "name": "cd_id",
+            "type": "ID",
+            "source": "DATABASE_JCHEM",
+            "canSort": true,
+            "canFilter": true
+        },
+        "cd_structure": {
+            "name": "cd_structure",
+            "label": "JChem Structure",
+            "state": "UNKNOWN",
+            "type": "MOLECULE",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_STRUCTURE"
+        },
+        "cd_formula": {
+            "name": "cd_formula",
+            "label": "JChem Formula",
+            "state": "UNKNOWN",
+            "type": "TEXT",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_FORMULA",
+            "canSort": true,
+            "canFilter": true
+        },
+        "cd_molweight": {
+            "name": "cd_molweight",
+            "label": "JChem Molecular weight",
+            "state": "UNKNOWN",
+            "type": "DOUBLE",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_MOLWEIGHT",
+            "canSort": true,
+            "canFilter": true
+        },
+        "cd_timestamp": {
+            "name": "cd_timestamp",
+            "label": "JChem Last modified",
+            "state": "UNKNOWN",
+            "type": "DATETIME",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_TIMESTAMP",
+            "canSort": true,
+            "canFilter": true
+        },
+        "c_chebi_id": {
+            "name": "c_chebi_id",
+            "label": "ChEBI ID",
+            "state": "READY",
+            "type": "TEXT",
+            "source": "DATABASE_USER",
+            "dbColumnName": "C_CHEBI_ID",
+            "canSort": true,
+            "canFilter": true,
+            "canEdit": true
+        },
+        "c_star": {
+            "name": "c_star",
+            "label": "Star",
+            "state": "READY",
+            "type": "INTEGER",
+            "source": "DATABASE_USER",
+            "dbColumnName": "C_STAR",
+            "canSort": true,
+            "canFilter": true,
+            "canEdit": true
+        },
+        "c_chebi_name": {
+            "name": "c_chebi_name",
+            "label": "ChEBI Name",
+            "state": "READY",
+            "type": "TEXT",
+            "source": "DATABASE_USER",
+            "dbColumnName": "C_CHEBI_NAME",
+            "canSort": true,
+            "canFilter": true,
+            "canEdit": true
+        },
+        "key2": {
+            "name": "key2",
+            "label": "key2",
+            "state": "READY",
+            "type": "INTEGER",
+            "source": "DATABASE_USER",
+            "dbColumnName": "C_KEY2",
+            "canSort": true,
+            "canFilter": true,
+            "canEdit": true
+        },
+        "key1": {
+            "name": "key1",
+            "label": "key1",
+            "state": "READY",
+            "type": "TEXT",
+            "source": "DATABASE_USER",
+            "dbColumnName": "C_KEY1",
+            "canSort": true,
+            "canFilter": true,
+            "canEdit": true
+        }
+    },
+    "request": {
+        "paging": {
+            "offset": 10,
+            "limit": 2
+        }
+    },
+    "hasMore": true,
+    "total": 23682,
+    "currentSize": 2,
+    "currentOffset": 10
+}
+</div>
+</form>
+<p>The result of this request displays the 11th and the 12th molecule in the table. 
+
+<h2 id="advancedsearch">2.2. Advanced Search</h2>
+
+If more complex query parameters are needed or the query URL does not fit in the standard URL length, the complex query can be used in which the parameters are posted as JSON message.</p>
+
+<form id="form39" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/search" size="80" />
+	<input class="POST" type="button" value="POST" />
+<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">{
+	"searchOptions": {
+		"queryStructure": "CCCCCC",
+		"searchType": "SIMILARITY",
+		"similarity": {
+		  "descriptor": "CFP",
+		  "threshold": 0.01
+		}
+	},
+	"filter": {
+		"conditions": {
+            "cd_id":{"$lt":1560},
+            "$or":[
+                {"cd_molweight":{"$between":[390,400]}},
+                {"cd_molweight":{"$between":[580,600]}}
+                ]
+            },
+		"orderBy": "-cd_id"
+	},
+	"paging": {
+		"offset": 0,
+		"limit": 10
+	},
+	"display": {
+
+		"include": ["cd_id", "cd_molweight"],
+
+		"additionalFields": {
+	        "logp": "chemicalTerms(logp)"
+		}
+	}
+}</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "data": [
+        {
+            "cd_id": 1557,
+            "cd_molweight": 398.4953,
+            "similarity": 0.023715436,
+            "logp": 2.360508191
+        },
+        {
+            "cd_id": 1556,
+            "cd_molweight": 587.3258,
+            "similarity": 0.021352291,
+            "logp": -3.833478005264744
+        },
+        {
+            "cd_id": 1538,
+            "cd_molweight": 396.6484,
+            "similarity": 0.08333331,
+            "logp": 6.632406989000003
+        },
+        {
+            "cd_id": 1448,
+            "cd_molweight": 395.339,
+            "similarity": 0.02803737,
+            "logp": {
+                "error": {
+                    "errorCode": 0,
+                    "errorMessage": "Error while evaluating expression:\nlogp\r\n    Calculation result is not defined for query molecules.",
+                    "rootCause": "chemaxon.nfunk.jep.ParseException"
+                }
+            }
+        },
+        {
+            "cd_id": 1426,
+            "cd_molweight": 584.6621,
+            "similarity": 0.020477831,
+            "logp": 0.629440565880877
+        },
+        {
+            "cd_id": 1424,
+            "cd_molweight": 599.4166,
+            "similarity": 0.021505356,
+            "logp": {
+                "error": {
+                    "errorCode": 0,
+                    "errorMessage": "Error while evaluating expression:\nlogp\r\n    Calculation result is not defined for query molecules.",
+                    "rootCause": "chemaxon.nfunk.jep.ParseException"
+                }
+            }
+        },
+        {
+            "cd_id": 1415,
+            "cd_molweight": 596.7126,
+            "similarity": 0.029411793,
+            "logp": 5.71713997719757
+        },
+        {
+            "cd_id": 1397,
+            "cd_molweight": 392.572,
+            "similarity": 0.13043475,
+            "logp": 3.7133055236666674
+        },
+        {
+            "cd_id": 1305,
+            "cd_molweight": 594.5181,
+            "similarity": 0.025210083,
+            "logp": -1.821467417
+        },
+        {
+            "cd_id": 1283,
+            "cd_molweight": 599.4933,
+            "similarity": 0.03821659,
+            "logp": {
+                "error": {
+                    "errorCode": 0,
+                    "errorMessage": "Error while evaluating expression:\nlogp\r\n    Calculation result is not defined for query molecules.",
+                    "rootCause": "chemaxon.nfunk.jep.ParseException"
+                }
+            }
+        }
+    ],
+    "headers": {
+        "cd_id": {
+            "name": "cd_id",
+            "label": "JChem Id",
+            "state": "UNKNOWN",
+            "type": "ID",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_ID",
+            "canSort": true,
+            "canFilter": true
+        },
+        "cd_molweight": {
+            "name": "cd_molweight",
+            "label": "JChem Molecular weight",
+            "state": "UNKNOWN",
+            "type": "DOUBLE",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_MOLWEIGHT",
+            "canSort": true,
+            "canFilter": true
+        },
+        "similarity": {
+            "name": "similarity",
+            "type": "DOUBLE",
+            "source": "PROCESS",
+            "canSort": true
+        },
+        "logp": {
+            "name": "logp",
+            "type": "COMPLEX",
+            "source": "CALCULATOR"
+        }
+    },
+    "request": {
+        "searchOptions": {
+            "searchType": "SIMILARITY",
+            "similarity": {
+                "threshold": 0.01
+            },
+            "queryStructure": "CCCCCC"
+        },
+        "filter": {
+            "conditions": {
+                "cd_id": {
+                    "$lt": 1560
+                },
+                "$or": [
+                    {
+                        "cd_molweight": {
+                            "$between": [
+                                390,
+                                400
+                            ]
+                        }
+                    },
+                    {
+                        "cd_molweight": {
+                            "$between": [
+                                580,
+                                600
+                            ]
+                        }
+                    }
+                ]
+            },
+            "orderBy": "-cd_id"
+        },
+        "display": {
+            "include": [
+                "cd_id",
+                "cd_molweight"
+            ],
+            "additionalFields": {
+                "logp": "chemicalTerms(logp)"
+            }
+        },
+        "paging": {
+            "offset": 0,
+            "limit": 10
+        }
+    },
+    "hasMore": true,
+    "total": 36,
+    "currentSize": 10,
+    "currentOffset": 0
+}
+</div>
+</form>
+<p>The result contains the requested parameters and the total number of hits after the data section.</p>
+
+<h3>Available Advanced Search Options (<code>searchOptions</code>)</h3>
+<div class="includedContent" javaClass="chemaxon.jchem.ws2common.dto.MolSearchOptions">Generated documentation is not available in static mode.</div>
+
+<h3>Display Options (<code>display</code>)</h3>
+<div class="includedContent" javaClass="chemaxon.jchem.ws2common.dto.DisplayOptions">Generated documentation is not available in static mode.</div>
+
+<h3>Advanced Filter Conditions (<code>filter.conditions</code>)</h3>
+<p>The following criteria types supported for the sortable fileds (<code>"sortable": true</code>):</p>
+<table>
+	<thead>
+		<tr>
+			<th>Operator</th><th>Usage</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>$and</td><td><code>{"$and":[{CRIT1},{CRIT2},...]}</code></td><td>Joins the conditions and returns rows matching all of the criterias</td>
+		</tr>
+		<tr>
+			<td>$or</td><td><code>{"$or":[{CRIT1},{CRIT2},...]}</code></td><td>Joins the conditions and returns rows matching of either the criterias</td>
+		</tr>
+		<tr>
+			<td>$not</td><td><code>{"$not":{CRIT}}</code></td><td>Inverts the provided criteria and returns rows <b>do NOT</b> match</td>
+		</tr>
+		<tr>
+			<td>$in</td><td><code>{"field":{"$in":[value1,value2,...]}}</code></td><td>Matches any of the values that exist in an array specified in the criteria</td>
+		</tr>
+		<tr>
+			<td>$nin</td><td><code>{"field":{"$nin":[value1,value2,...]}}</code></td><td>Matches values that <b>do NOT</b> exist in an array specified to the criteria</td>
+		</tr>
+		<tr>
+			<td>$between</td><td><code>{"field":{"$between":[value1,value2]}}</code></td><td>Matches values that are between the 2 values specified in the criteria</td>
+		</tr>
+		<tr>
+			<td>$eq</td><td><code>{"field":{"$eq":value}}</code></td><td>Matches values that are <b>equal</b> the value specified in the criteria</td>
+		</tr>
+		<tr>
+			<td>$lt</td><td><code>{"field":{"$lt":value}}</code></td><td>Matches values that are <b>less than</b> the value specified in the criteria</td>
+		</tr>
+		<tr>
+			<td>$le,$lte</td><td><code>{"field":{"$le":value}}</code></td><td>Matches values that are <b>less than or equal</b> the value specified in the criteria</td>
+		</tr>
+		<tr>
+			<td>$ge</td><td><code>{"field":{"$ge":value}}</code></td><td>Matches values that are <b>greater than</b> the value specified in the criteria</td>
+		</tr>
+		<tr>
+			<td>$gt,$gte</td><td><code>{"field":{"$gt":value}}</code></td><td>Matches values that are <b>greater than or equal</b> the value specified in the criteria</td>
+		</tr>
+		<tr>
+			<td>$startsWith</td><td><code>{"field":{"$startsWith":value}}</code></td><td>Matches values that <b>start with</b> the value specified in the criteria</td>
+		</tr>
+		<tr>
+			<td>$endsWith</td><td><code>{"field":{"$endsWith":value}}</code></td><td>Matches values that <b>end with</b> the value specified in the criteria</td>
+		</tr>
+		<tr>
+			<td>$contains</td><td><code>{"field":{"$contains":value}}</code></td><td>Matches values that <b>contain</b> the value specified in the criteria</td>
+		</tr>
+	</tbody>
+</table>
+
+<h1 id="export">3. Export Data</h1>
+<h2 id="simpleexport">3.1. Simple Data Export</h2>
+
+<p>Simple data export means you can define only restricted criteria for export. Define export parameters in the URL similar way as in <a href="#simplesearch">Simple Search</a>, and define the data format similarly.</p>
+
+Data export is supported in the following formats: 
+<table>
+	<thead>
+		<tr>
+			<th>Format</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><code>sdf</code></td><td>SD file format contains structures plus data fields for those structures, this format is recommended for most transfers</td>
+		</tr>
+		<tr>
+			<td><code>smiles</code></td><td>Contains structures as a text (SMILES) string</td>
+		</tr>
+		<tr>
+			<td><code>tsv</code> and <code>csv</code></td><td>Contains structures as SMILES string, and tab (tsv) or comma (csv) separated properties</td>
+		</tr>
+		<tr>
+			<td><code>mrv</code></td><td>ChemAxon's XML based Marvin file format that contains structures plus data fields for those structures</td>
+		</tr>
+		<tr>
+			<td><code>xlsx</code></td><td>Microsoft Excel workbook</td>
+		</tr>
+		<tr>
+			<td><code>xlsx:jchem</code></td><td>JChem for Excel workbook</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>The content of a table &quot;ChEBI_lite_3star&quot; in the configuration &quot;sample&quot; can be exported by the URL:</p>
+<small>NOTE: xlsx format is not supported by JSON, the response window below will not display the results</small>
+<form id="form38" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/export?limit=2&offset=10&format=sdf" size="80"/>
+	<input class="GET" type="button" value="GET" />
+<label>response (<code>Content-type: application/octet-stream</code>):</label>
+<div class="output_div text">
+[H][C@]12C[C@@H](O[C@@H]3O[C@H](C)[C@@H](O)[C@H](N)[C@@H]3O)\C=C\C=C\C=C\C=C\C=C\C=C\C=C\[C@H](C)[C@@H](O)[C@@H](C)[C@H](C)OC(=O)C[C@H](O)C[C@H](O)CC[C@@H](O)[C@H](O)C[C@H](O)C[C@](O)(C[C@H](O)[C@H]1C(O)=O)O2
+[H][C@]12C[C@@H](N)[C@@H](O[C@@H]3[C@@H](N)C[C@@H](N)[C@H](O)[C@H]3O)O[C@]1([H])[C@H](O)[C@H](NC)[C@@H](O[C@H]1O[C@H](CO)[C@@H](N)[C@H](O)[C@H]1O)O2
+</div>
+</form>
+<p>The result of this request exports the 11th and 12th molecule in the table.<br />
+
+<h2 id="advancedexport">3.2. Advanced Data Export</h2>
+
+If more complex export parameters are needed or the query URL does not fit in the standard URL length, parameters are posted as JSON message.
+<p>Setting export format in POST request:  {"format": "<code>selected_format</code>"}
+<br><small>NOTE: xlsx format is not supported by JSON, the response window below will not display the results</small></p>
+<form id="form39" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/export" size="80" />
+	<input class="POST" type="button" value="POST" />
+<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">{
+	"searchOptions": {
+		"queryStructure": "CCCCCC",
+		"dissimilarityThreshold": 0.5,
+		"searchMode": "SUBSTRUCTURE"
+	},
+	"filter": {
+		"simpleConditions": "cd_id;lt;200",
+		"orderBy": "-cd_id"
+	},
+	"paging": {
+		"offset": 0,
+		"limit": 10
+	},
+	"format": "smiles"
+}</div>
+<label>response (<code>Content-type: application/octet-stream</code>):</label>
+<div class="output_div text">
+CC(=O)O[C@@H]1O[C@H](CO)[C@@H](O[C@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)[C@H](O)[C@H]1O
+[H][C@@](COC([*])=O)(COP(O)(=O)O[C@@H]1[C@H](O)[C@H](O)[C@@H](O)[C@H](O)[C@H]1O[C@H]1O[C@H](CO)[C@@H](O)[C@H](O)[C@H]1NC(C)=O)OC([*])=O
+[H][C@@]1(CC[C@@]2([H])[C@]3([H])[C@H](O)C[C@]4([H])C[C@H](O)CC[C@]4(C)[C@@]3([H])CC(=O)[C@]12C)[C@H](C)CCC([O-])=O
+CC(=O)N[C@@H]1[C@@H](O)[C@H](O)[C@@H](CO)O[C@H]1O[C@H]1[C@H](O)[C@H](O[C@@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2NC(C)=O)[C@@H](O[C@@H]2[C@H](O)[C@H](-*)O[C@H](CO)[C@H]2O)O[C@@H]1CO
+OCC(=O)[C@@H](O)[C@H](O)C(=O)C([O-])=O
+[H][C@@]12C[C@@H](OC(C)=O)[C@@](C)([C@@]11CO1)[C@@]1(C)CCC(C)=C[C@@]1([H])O2
+[H][C@@]1(OC(=O)C(\C)=C/C)[C@@H](OC(=O)CCCCCCC)[C@@]2([H])C(=C1C)[C@]1([H])OC(=O)[C@@](C)(O)[C@@]1(O)[C@H](C[C@]2(C)OC(C)=O)OC(=O)CCC
+[H][C@@]1(CC[C@@]2([H])[C@]3([H])[C@H](O)C[C@]4([H])C[C@H](O)CC[C@]4(C)[C@@]3([H])CC[C@]12C)[C@H](C)CCC(=O)NCCS([O-])(=O)=O
+CCCN(CC)CC1COC2(CCC(CC2)C(C)(C)C)O1
+[H][C@@]1(C[C@@H](C)[C@]2([H])CC(=O)[C@H](C)\C=C(C)\[C@@H](O)[C@@H](OC)C(=O)[C@H](C)C[C@H](C)\C=C\C=C\C=C(C)\[C@H](C[C@]3([H])CC[C@@H](C)[C@@](O)(O3)C(=O)C(=O)N3CCCC[C@@]3([H])C(=O)O2)OC)CC[C@@H](O)[C@@H](C1)OC
+</div>
+</form>
+
+<h2 id="exporturlgen">3.3. Export URL Generator For Download</h2>
+<p>Send a POST request to generate a download URL for export data with complex query parameters:</p>
+<form id="form39" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/exportUrlGen" size="80" />
+	<input class="POST" type="button" value="POST" />
+<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">{
+	"searchOptions": {
+		"queryStructure": "CCCCCC",
+		"dissimilarityThreshold": 0.5,
+		"searchMode": "SUBSTRUCTURE"
+	},
+	"filter": {
+		"simpleConditions": "cd_id;lt;200",
+		"orderBy": "-cd_id"
+	},
+	"paging": {
+		"offset": 0,
+		"limit": 10
+	},
+	"format": "sdf"
+}</div>
+<label>response:</label>
+<div class="output_div">
+"http://restdemo.chemaxon.com/rest-v0/data/sample/table/ChEBI_lite_3star/export/c9ce1514-39be-44eb-989b-e63b0c217dda"
+</div>
+</form>
+<h1 id="properties">4. View Properties</h1>
+<h2 id="simpledetails">4.1. Simple Properties View (from table)</h2>
+<p>The structure, name and calculated property related details of a molecule can be retrived through the detail URL.</p>
+<p>Specify the table name and the chosen molecule <code>CD_ID</code> and the GET command returns all the available properties.</p>
+<form id="form310" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/detail/4" size="80"/>
+	<input class="GET" type="button" value="GET" />
+<label>response:</label>
+<div class="output_div">
+{
+    "mrv": "...",
+    "image": {
+        "width": 400,
+        "height": 196,
+        "type": "png",
+        "image": "...",
+        "imageLink": "http://localhost:8080/rest-v0/data/sample/table/ChEBI_lite_3star/display/192_400x0.png"
+    },
+    "format": {
+        "headers": {
+            "common": {
+                "name": "common",
+                "type": "TEXT",
+                "source": "CALCULATOR",
+                "list": true
+            },
+            "iupac": {
+                "name": "iupac",
+                "type": "TEXT",
+                "source": "CALCULATOR"
+            },
+            "smiles": {
+                "name": "smiles",
+                "type": "TEXT",
+                "source": "CALCULATOR"
+            },
+            "inchi": {
+                "name": "inchi",
+                "type": "TEXT",
+                "source": "CALCULATOR"
+            }
+        },
+        "common": [
+            "HSCoA",
+            "coenzym A"
+        ],
+        "iupac": "{[(2R,3S,4R,5R)-5-(6-amino-9H-purin-9-yl)-4-hydroxy-2-({[hydroxy({hydroxy[(3R)-3-hydroxy-2,2-dimethyl-3-({2-[(2-sulfanylethyl)carbamoyl]ethyl}carbamoyl)propoxy]phosphoryl}oxy)phosphoryl]oxy}methyl)oxolan-3-yl]oxy}phosphonic acid",
+        "smiles": "CC(C)(COP(O)(\u003dO)OP(O)(\u003dO)OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(O)(O)\u003dO)N1C\u003dNC2\u003dC1N\u003dCN\u003dC2N)[C@@H](O)C(\u003dO)NCCC(\u003dO)NCCS",
+        "inchi": "InChI\u003d1S/C21H36N7O16P3S/c1-21(2,16(31)19(32)24-4-3-12(29)23-5-6-48)8-41-47(38,39)44-46(36,37)40-7-11-15(43-45(33,34)35)14(30)20(42-11)28-10-27-13-17(22)25-9-26-18(13)28/h9-11,14-16,20,30-31,48H,3-8H2,1-2H3,(H,23,29)(H,24,32)(H,36,37)(H,38,39)(H2,22,25,26)(H2,33,34,35)/t11-,14-,15-,16+,20-/m1/s1"
+    }
+}
+
+	</div>
+</form>
+<h2 id="advanceddetails">4.2. Advanced Properties View (from table)</h2>
+<p>Advanced options for setting property calculation parameters through the POST request.</p>
+<table>
+	<thead>
+		<tr><th>Properties</th></tr>
+	</thead>
+	<tbody>
+		<tr><td><a href="#pka">4.2.1. pKa</a></td></tr>
+		<tr><td><a href="#logp">4.2.2. logP</a></td></tr>
+		<tr><td><a href="#logd">4.2.3. logD</a></td></tr>
+		<tr><td><a href="#isoe">4.2.4. Isoelectric point</a></td></tr>
+		<tr><td><a href="#majormicro">4.2.5. Major microspecies</a></td></tr>
+		<tr><td><a href="#charge">4.2.6. Charge</a></td></tr>
+		<tr><td><a href="#polar">4.2.7. Polarizability</a></td></tr>
+		<tr><td><a href="#surface">4.2.8. Polar surface area</a></td></tr>
+		<tr><td><a href="#geometry">4.2.9. Geometry</a></td></tr>
+		<tr><td><a href="#stereo">4.2.10. Stereoisomer</a></td></tr>
+		<tr><td><a href="#tautomer">4.2.11. Tautomer</a></td></tr>
+		<tr><td><a href="#hbda">4.2.12. HBDA</a></td></tr>
+		<tr><td><a href="#elemental">4.2.13. Elemental analysis</a></td></tr>
+		<tr><td><a href="#nameformat">4.2.14. Chemical format</a></td></tr>
+		<tr><td><a href="#topology">4.2.15. Topology analysis</a></td></tr>	
+		<tr><td><a href="#solubility">4.2.16. Solubility</a></td></tr>	
+	</tbody>
+</table>
+
+<h2 id="pka">4.2.1. List of pKa parameters</h2>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>pHLower</td><td>double</td><td>The following options set the range of displaying the microspecies 
+				<br />The results can be visualized in a table format and a chart <a href="http://www.chemaxon.com/marvin/help/calculations/protonation.html#displayoptions">display example</a>
+				<br />pH lower defines the lower end of the pH window in which pKa is calculated, default value is 0</td>
+		</tr>
+		<tr>
+			<td>pHUpper</td><td>double</td><td>pHUpper defines the upper end of the pH window in which pKa is calculated, default value is 14 </td>
+		</tr>
+		<tr>
+			<td>pHStep</td><td>double</td><td>It defines the pH step size by which pKa calculation is incremented (pH values start from the lower limit), default value is 0.1</td>
+		</tr>
+		<tr>
+			<td>temperature</td><td>double</td><td>It sets the temperature in Kelvin, default is 298 </td>
+		</tr>
+		<tr>
+			<td>micro</td><td>boolean</td><td>Micro pKa is for multiprotic compounds, the value of micro is true if micro acidic dissociation constant calculation is required for all microspecies. 
+		<br />Default is false <a href="https://www.chemaxon.com/marvin/help/calculations/pKa.html#MultiProtic">see description of micro pKa</a></td>
+		</tr>
+		<tr>
+			<td>considerTautomerization</td><td>boolean</td><td>Used in case of tautomer structures
+ 				<br />If set to true, all dominant tautomers are considered to be subject of the pKa calculation. 
+ 				Default value is false</td>
+		</tr>
+		<tr>
+			<td>pKaLowerLimit</td><td>double</td><td>Option which enables to widen the pKa calculation range because weak bases may have lower pKa values than the default -10</td>
+		</tr>
+		<tr>
+			<td>pKaUpperLimit</td><td>double</td><td>Option which enables to widen the pKa calculation range because weak acids may have higher pKa values than the default 20</td>
+		</tr>
+		<tr>
+			<td>prefix</td>
+			<td>string</td>
+			<td>
+				<ul>
+					<li> STATIC submitted ionic forms are converted to their neutral forms (adding or removing protons) when their pKa is calculated</li>
+					<li> DYNAMIC during the process of the pKa calculation, the submitted ionic forms are not converted to their neutral forms, dynamic is default</li>
+				</ul>
+			</td>
+		</tr>
+		
+	</tbody>
+</table>
+
+
+<p>POST request example with default pKa parameters:</p>
+<form id="form3112" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/detail/4" size="80" />
+	<input class="POST" type="button" value="POST" />
+<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+	"include": ["cd_id","pKa"],
+	"parameters":{
+		"pKa": {
+			"pHLower": 0.0,
+			"pHUpper": 14.0,
+			"pHStep": 0.1,
+			"temperature": 298.0,
+			"micro": false,
+			"considerTautomerization": true,
+			"pKaLowerLimit": -20.0,
+			"pKaUpperLimit": 10.0,
+			"prefix": "DYNAMIC"
+		}
+	}
+}
+</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "pKa": {
+        "headers": {
+            "result": {
+                "name": "result",
+                "type": "MOLECULE",
+                "source": "CALCULATOR"
+            },
+            "hasFurtherMicrospecies": {
+                "name": "hasFurtherMicrospecies",
+                "type": "BOOLEAN",
+                "source": "CALCULATOR"
+            },
+            "microspecies": {
+                "name": "microspecies",
+                "type": "MOLECULE",
+                "source": "CALCULATOR",
+                "list": true
+            },
+            "chartData": {
+                "name": "chartData",
+                "type": "CHART",
+                "source": "CALCULATOR",
+                "list": true
+            }
+        },
+        "result": {
+            "headers": {
+                "structureData": {
+                    "name": "structureData",
+                    "type": "STRUCTUREDATA",
+                    "source": "GENERATED"
+                },
+                "cachekey": {
+                    "name": "cachekey",
+                    "type": "TEXT",
+                    "source": "PROCESS"
+                },
+                "image": {
+                    "name": "image",
+                    "type": "IMAGE",
+                    "source": "GENERATED"
+                }
+            },
+            "structureData": {
+            	"structure": "xml file..."
+                "format": "mrv",
+                "contentUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_3657dfc7d12687628bbe806b2e78bb52?format=mrv&contentName=structure",
+                "contentBaseUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_3657dfc7d12687628bbe806b2e78bb52"
+            },
+            "cachekey": "struc_3657dfc7d12687628bbe806b2e78bb52",
+            "image": {
+                "width": 300,
+                "height": 133,
+                "type": "png",
+                "image": "..."
+                "imageUrl": "http://restdemo.chemaxon.com/rest-v0/util/display/struc_3657dfc7d12687628bbe806b2e78bb52_300x133.png"
+            }
+        },
+        "hasFurtherMicrospecies": true,
+        "microspecies": [
+            {
+                "headers": {
+                    "structureData": {
+                        "name": "structureData",
+                        "type": "STRUCTUREDATA",
+                        "source": "GENERATED"
+                    },
+                    "cachekey": {
+                        "name": "cachekey",
+                        "type": "TEXT",
+                        "source": "PROCESS"
+                    },
+                    "image": {
+                        "name": "image",
+                        "type": "IMAGE",
+                        "source": "GENERATED"
+                    },
+                    "key": {
+                        "name": "key",
+                        "type": "TEXT",
+                        "source": "CALCULATOR"
+                    }
+                },
+                "structureData": {
+                	"structure": "xml file..."
+                    "format": "mrv",
+                    "contentUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_9c380bee21454966278e1ada1c299b03?format=mrv&contentName=structure",
+                    "contentBaseUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_9c380bee21454966278e1ada1c299b03"
+                },
+                "cachekey": "struc_9c380bee21454966278e1ada1c299b03",
+                "image": {
+                    "width": 300,
+                    "height": 36,
+                    "type": "png",
+                    "image": "..."
+                    "imageUrl": "http://restdemo.chemaxon.com/rest-v0/util/display/struc_9c380bee21454966278e1ada1c299b03_300x36.png"
+                },
+                "key": "microspecies1"
+            }      
+        ],
+        "chartData": [
+            {
+                "key": "microspecies1",
+                "xAxis": "pH",
+                "yAxis": "concentration",
+                "yMin": 0.000001,
+                "yMax": 1,
+                "values": [
+                    {
+                        "pH": 0,
+                        "concentration": 1
+                    },
+                    {
+                        "pH": 0.1,
+                        "concentration": 1
+                    },
+                    ........................
+                    {
+                        "pH": 14,
+                        "concentration": 0.000001
+                    }
+                ]
+            }       
+        ]
+    },
+    "cd_id": 4,
+    "headers": {
+        "pKa": {
+            "name": "pKa",
+            "type": "COMPLEX",
+            "source": "CALCULATOR"
+        },
+        "cd_id": {
+            "name": "cd_id",
+            "label": "JChem Id",
+            "state": "UNKNOWN",
+            "type": "ID",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_ID",
+            "canSort": true,
+            "canFilter": true
+        }
+    }
+}
+</div>
+</form>
+<p><a href="#advanceddetails">Back to Properties list</a></p>
+
+<h2 id="logp">4.2.2. List of logP parameters</h2>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>	
+			<td>method</td>
+			<td>enum</td>
+			<td>
+				<ul>
+					<li>KLOP logP data from Klopman's paper is applied (Klopman et al: J.Chem.Inf.Comput.Sci., 1994, 34, 752)</li>
+					<li>PHYS logP data from PHYSPROP© database is used</li>
+					<li>VG The calculation method described by Viswanadhan and Ghose is applied (Viswanadhan et al: J. Chem. Inf. Comput. Sci., 1989, 29, 163-172)</li>
+					<li>WEIGHTED The use of the above described methods can be melted by the user by setting the proportion of the methods used in the calculations
+						<br />(selecting weighted turns the Method weights section active)
+						<br />The three methods are equally weighted (1/3) by the default setting. The calculated logP in this way will be the arithmetic average of the three methods.
+						<br />The weighted method usually provides more reliable logP value than any one of the three separate methods.
+						<br /><a href="http://www.chemaxon.com/marvin/help/calculations/protonation.html#displayoptions">Learn more about calculation methods</a>
+					</li>
+				</ul>
+			</td>
+				
+		</tr>
+		<tr>
+			<td>wVG</td><td>double</td><td>The proportion of VG method can be set when weighted method is chosen, default value is 1</td>
+		</tr>
+		<tr>
+			<td>wKLOP</td><td>double</td><td>The proportion of KLOP method can be set when weighted method is chosen, default value is 1</td>
+		</tr>
+		<tr>
+			<td>wPHYS</td><td>double</td><td>The proportion of PHYS method can be set when weighted method is chosen, default value is 1</td>
+		</tr>
+		<tr>
+			<td>Cl</td><td>boolean</td><td>Cl- concentration can be set between 0.1 and 0.25 mol/L, default value is 0.1</td>
+		</tr>
+		<tr>
+			<td>NaK</td><td>double</td><td>Na+Cl- concentration can be set between 0.1 and 0.25 mol/L, default value is 0.1</td>
+		</tr>
+		<tr>
+			<td>considerTautomerization</td><td>boolean</td><td>Used in case of tautomer structures
+			<br />If set to true, all dominant tautomers are taken into account during the logP calculation. Default value is false
+			</td>
+		</tr>
+		
+	</tbody>
+</table>
+
+
+<p>POST request example with default logP parameters:</p>
+<form id="form3112" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/detail/4" size="80" />
+	<input class="POST" type="button" value="POST" />
+<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+	"include": ["cd_id","logP"],
+	"parameters":{
+		"logP": {
+			"method": "WEIGHTED",
+			"wVG": 1.0,
+			"wKLOP": 1.0,
+			"wPHYS": 1.0,
+			"Cl": 0.1,
+			"NaK": 0.1,
+			"considerTautomerization": false
+		}
+	}
+}
+</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "logP": {
+        "headers": {
+            "logpnonionic": {
+                "name": "logpnonionic",
+                "type": "DOUBLE",
+                "source": "CALCULATOR"
+            },
+            "logdpi": {
+                "name": "logdpi",
+                "type": "DOUBLE",
+                "source": "CALCULATOR"
+            },
+            "result": {
+                "name": "result",
+                "type": "MOLECULE",
+                "source": "CALCULATOR"
+            }
+        },
+        "logpnonionic": 14.712682097,
+        "logdpi": {
+            "isNaN": true
+        },
+        "result": {
+            "headers": {
+                "structureData": {
+                    "name": "structureData",
+                    "type": "STRUCTUREDATA",
+                    "source": "GENERATED"
+                },
+                "cachekey": {
+                    "name": "cachekey",
+                    "type": "TEXT",
+                    "source": "PROCESS"
+                },
+                "image": {
+                    "name": "image",
+                    "type": "IMAGE",
+                    "source": "GENERATED"
+                }
+            },
+            "structureData": {
+            	"structure": "xml format..."
+                "format": "mrv",
+                "contentUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_9ab96f4e4337ca060f8b6ead1ea44622?format=mrv&contentName=structure",
+                "contentBaseUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_9ab96f4e4337ca060f8b6ead1ea44622"
+            },
+            "cachekey": "struc_9ab96f4e4337ca060f8b6ead1ea44622",
+            "image": {
+                "width": 300,
+                "height": 139,
+                "type": "png",
+                "image": "..."
+                "imageUrl": "http://restdemo.chemaxon.com/rest-v0/util/display/struc_9ab96f4e4337ca060f8b6ead1ea44622_300x139.png"
+            }
+        }
+    },
+    "cd_id": 4,
+    "headers": {
+        "logP": {
+            "name": "logP",
+            "type": "COMPLEX",
+            "source": "CALCULATOR"
+        },
+        "cd_id": {
+            "name": "cd_id",
+            "label": "JChem Id",
+            "state": "UNKNOWN",
+            "type": "ID",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_ID",
+            "canSort": true,
+            "canFilter": true
+        }
+    }
+}
+</div>
+</form>
+<p><a href="#advanceddetails">Back to Properties list</a></p>
+
+<h2 id="logd">4.2.3. List of logD parameters</h2>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>pHLower</td><td>double</td><td>Defines the lower limit of the pH window in which the logD is calculated, default value is 0</td>
+		</tr>
+		<tr>
+			<td>pHUpper</td><td>double</td><td>Defines the upper limit of the pH window in which the logD is calculated, default value is 14</td>
+		</tr>
+		<tr>
+			<td>pHStep</td><td>double</td><td>Defines the pH step size by which the logD calculation is incremented (pH values start from the lower limit), default value is 0.1
+			<br /><a href="https://www.chemaxon.com/marvin/help/calculations/logPlogD.html#Examples">Display examle for logD calculation</a>
+			</td>
+		</tr>
+		<tr>	
+		
+			
+			<td>method</td>
+			<td>enum</td>
+			<td>
+				<ul>
+					<li>KLOP logP data from Klopman's paper is applied (Klopman et al: J.Chem.Inf.Comput.Sci., 1994, 34, 752)</li>
+					<li>PHYS logP data from PHYSPROP© database is used</li>
+					<li>VG The calculation method described by Viswanadhan and Ghose is applied (Viswanadhan et al: J. Chem. Inf. Comput. Sci., 1989, 29, 163-172)</li>
+					<li>WEIGHTED The use of the above described methods can be melted by the user by setting the proportion of the methods used in the calculations
+						<br />(selecting weighted turns the Method weights section active)
+						<br />The three methods are equally weighted (1/3) by the default setting. The calculated logP in this way will be the arithmetic average of the three methods.
+						<br />The weighted method usually provides more reliable logP value than any one of the three separate methods.
+						<br /><a href="http://www.chemaxon.com/marvin/help/calculations/protonation.html#displayoptions">Learn more about calculation methods</a>
+					</li>
+				</ul>
+			</td>
+				
+		</tr>
+		<tr>
+			<td>wVG</td><td>double</td><td>The proportion of VG method can be set when weighted method is chosen, default value is 1</td>
+		</tr>
+		<tr>
+			<td>wKLOP</td><td>double</td><td>The proportion of KLOP method can be set when weighted method is chosen, default value is 1</td>
+		</tr>
+		<tr>
+			<td>wPHYS</td><td>double</td><td>The proportion of PHYS method can be set when weighted method is chosen, default value is 1</td>
+		</tr>
+		<tr>
+			<td>Cl</td><td>boolean</td><td>Cl- concentration can be set between 0.1 and 0.25 mol/L, default value is 0.1</td>
+		</tr>
+		<tr>
+			<td>NaK</td><td>double</td><td>Na+Cl- concentration can be set between 0.1 and 0.25 mol/L, default value is 0.1</td>
+		</tr>	
+		<tr>
+			<td>considerTautomerization</td><td>boolean</td><td>Used in case of tautomer structures
+ 				<br />If set to true, all dominant tautomers at given pH are taken into account during the logD calculation. Default value is false</td>
+		</tr>
+		
+	</tbody>
+</table>
+
+
+<p>POST request example with default logD parameters:</p>
+<form id="form3113" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/detail/4" size="80" />
+	<input class="POST" type="button" value="POST" />
+<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+	"include": ["cd_id","logD"],
+	"parameters":{
+		"logD": {
+			"pHLower": 0.0,
+			"pHUpper": 14.0,
+			"pHStep": 0.1,
+			"method": "WEIGHTED",
+			"wVG": 1.0,
+			"wKLOP": 1.0,
+			"wPHYS": 1.0,
+			"Cl": 0.1,
+			"NaK": 0.1,
+			"considerTautomerization": false
+		}
+	}
+}
+</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "logD": {
+        "headers": {
+            "logD": {
+                "name": "logD",
+                "type": "DOUBLE",
+                "source": "CALCULATOR"
+            },
+            "chartData": {
+                "name": "chartData",
+                "type": "CHART",
+                "source": "CALCULATOR"
+            }
+        },
+        "logD": 14.71268209673166,
+        "chartData": {
+            "key": "logD",
+            "xAxis": "pH",
+            "yAxis": "logD",
+            "yMin": 11.2349,
+            "yMax": 14.7127,
+            "values": [
+                {
+                    "pH": 0,
+                    "logD": 14.7127
+                },
+                {
+                    "pH": 0.1,
+                    "logD": 14.7127
+                },
+               ...........................
+                {
+                    "pH": 14,
+                    "logD": 11.2349
+                }
+            ]
+        }
+    },
+    "cd_id": 4,
+    "headers": {
+        "logD": {
+            "name": "logD",
+            "type": "COMPLEX",
+            "source": "CALCULATOR"
+        },
+        "cd_id": {
+            "name": "cd_id",
+            "label": "JChem Id",
+            "state": "UNKNOWN",
+            "type": "ID",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_ID",
+            "canSort": true,
+            "canFilter": true
+        }
+    }
+}
+</div>
+</form>
+<p><a href="#advanceddetails">Back to Properties list</a></p>
+
+<h2 id="isoe">4.2.4. List of isoelectricPoint parameters</h2>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>pHStep</td><td>double</td><td>Isoelectric point plugin calculates gross charge distribution of a molecule as function of pH.
+			<br />Net charge of an ionizable molecule is zero at a certain pH, this pH is called the isoelectric point.
+			<br />It sets the pH step size of the calculation, default is 0.1
+			</td>
+		</tr>
+		<tr>
+			<td>doublePrecision</td><td>int</td><td>Sets the number of decimal places with which the result value is given, default is 2</td>
+		</tr>
+		
+		
+	</tbody>
+</table>
+
+
+<p>POST request example with default isoelectricPoint parameters:</p>
+<form id="form3114" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/detail/4" size="80" />
+	<input class="POST" type="button" value="POST" />
+<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+	"include": ["cd_id","isoelectricPoint"],
+	"parameters":{
+		"isoelectricPoint": {
+			"pHStep": 0.1,
+			"doublePrecision": 2
+		}
+	}
+}
+</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "isoelectricPoint": {
+        "headers": {
+            "hasIsoelectricPoint": {
+                "name": "hasIsoelectricPoint",
+                "type": "BOOLEAN",
+                "source": "CALCULATOR"
+            }
+        },
+        "hasIsoelectricPoint": false
+    },
+    "cd_id": 4,
+    "headers": {
+        "isoelectricPoint": {
+            "name": "isoelectricPoint",
+            "type": "COMPLEX",
+            "source": "CALCULATOR"
+        },
+        "cd_id": {
+            "name": "cd_id",
+            "label": "JChem Id",
+            "state": "UNKNOWN",
+            "type": "ID",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_ID",
+            "canSort": true,
+            "canFilter": true
+        }
+    }
+}
+</div>
+</form>
+<p><a href="#advanceddetails">Back to Properties list</a></p>
+
+<h2 id="majormicro">4.2.5. List of majorMicrospecies parameters</h2>
+
+<h3>3.14.5. List of majorMicrospecies parameters</h3>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>pH</td><td>double</td><td>Major microspecies determines the major protonation form at a specified pH. It sets the pH, default is 7.4</td>
+		</tr>
+		<tr>
+			<td>takeMajorTautomericForm</td><td>boolean</td><td>If tautomeric forms are more likely to occur, tha major tautomer is used to calculate the major microspecies. Default is set to false</td>
+		</tr>	
+	</tbody>
+</table>
+
+
+<p>POST request example with default majorMicrospecies parameters:</p>
+<form id="form3115" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/detail/4" size="80" />
+	<input class="POST" type="button" value="POST" />
+<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+	"include": ["cd_id","majorMicrospecies"],
+	"parameters":{
+		"majorMicrospecies": {
+			"pH": 7.4,
+			"takeMajorTautomericForm": false
+		}
+	}
+}
+</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "majorMicrospecies": {
+        "headers": {
+            "result": {
+                "name": "result",
+                "type": "MOLECULE",
+                "source": "CALCULATOR"
+            }
+        },
+        "result": {
+            "headers": {
+                "structureData": {
+                    "name": "structureData",
+                    "type": "STRUCTUREDATA",
+                    "source": "GENERATED"
+                },
+                "cachekey": {
+                    "name": "cachekey",
+                    "type": "TEXT",
+                    "source": "PROCESS"
+                },
+                "image": {
+                    "name": "image",
+                    "type": "IMAGE",
+                    "source": "GENERATED"
+                }
+            },
+            "structureData": {
+            	"structure": "xml file..."
+                "format": "mrv",
+                "contentUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_4545754838bb243173ee5eec4816e9b1?format=mrv&contentName=structure",
+                "contentBaseUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_4545754838bb243173ee5eec4816e9b1"
+            },
+            "cachekey": "struc_4545754838bb243173ee5eec4816e9b1",
+            "image": {
+                "width": 300,
+                "height": 36,
+                "type": "png",
+                "image": "...",
+                "imageUrl": "http://restdemo.chemaxon.com/rest-v0/util/display/struc_4545754838bb243173ee5eec4816e9b1_300x36.png"
+            }
+        }
+    },
+    "cd_id": 4,
+    "headers": {
+        "majorMicrospecies": {
+            "name": "majorMicrospecies",
+            "type": "COMPLEX",
+            "source": "CALCULATOR"
+        },
+        "cd_id": {
+            "name": "cd_id",
+            "label": "JChem Id",
+            "state": "UNKNOWN",
+            "type": "ID",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_ID",
+            "canSort": true,
+            "canFilter": true
+        }
+    }
+}
+</div>
+</form>
+<p><a href="#advanceddetails">Back to Properties list</a></p>
+	
+<h2 id="charge">4.2.6. List of charge parameters</h2>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>			
+		<td>type</td>
+		<td>enum</td>
+		<td>Charge computes the partial charge value of each atom
+			<ul>
+				<li>TOTAL Total charge is calculated from sigma and pi charge components, total is default </li>
+				<li>SIGMA Set to sigma charge calculation PI Set to pi charge calculation</li>
+		</ul></td>
+		</tr>
+		<tr>
+			<td>implicitHydrogens</td><td>boolean</td><td>Shows in detail the increments of the charge by the implicit hydrogens, default is true</td>
+		</tr>
+		<tr>
+			<td>takeResonantStructures</td><td>boolean</td><td>If set to true (default), the average of the charge of the resonant srtuctures will be calculated</td>
+		</tr>
+		<tr>
+			<td>takeMicrospecies</td><td>boolean</td><td>If set to true, the charge of the major microspecies at the given pH will be presented. Default is false</td>
+		</tr>
+		<tr>
+			<td>pH</td><td>double</td><td>If takeMicrospecies is set to true, it determines the pH at which it is displayed, default value is 7.4 </td>
+		</tr>	
+	</tbody>
+</table>
+
+
+<p>POST request example with default charge parameters:</p>
+<form id="form3116" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/detail/4" size="80" />
+	<input class="POST" type="button" value="POST" />
+<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+	"include": ["cd_id","charge"],
+	"parameters":{
+		"charge": {
+			"type": "TOTAL",
+			"implicitHydrogens": true,	
+			"takeResonantStructures": true,
+			"takeMicrospecies": false
+		}
+	}
+}
+</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "charge": {
+        "headers": {
+            "result": {
+                "name": "result",
+                "type": "MOLECULE",
+                "source": "CALCULATOR"
+            }
+        },
+        "result": {
+            "headers": {
+                "structureData": {
+                    "name": "structureData",
+                    "type": "STRUCTUREDATA",
+                    "source": "GENERATED"
+                },
+                "cachekey": {
+                    "name": "cachekey",
+                    "type": "TEXT",
+                    "source": "PROCESS"
+                },
+                "image": {
+                    "name": "image",
+                    "type": "IMAGE",
+                    "source": "GENERATED"
+                }
+            },
+            "structureData": {
+            	"structure":"xml file..."
+                "format": "mrv",
+                "contentUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_4cab59d8c75b78a21505091836739373?format=mrv&contentName=structure",
+                "contentBaseUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_4cab59d8c75b78a21505091836739373"
+            },
+            "cachekey": "struc_4cab59d8c75b78a21505091836739373",
+            "image": {
+                "width": 300,
+                "height": 135,
+                "type": "png",
+                "image": "..."
+                "imageUrl": "http://restdemo.chemaxon.com/rest-v0/util/display/struc_4cab59d8c75b78a21505091836739373_300x135.png"
+            }
+        }
+    },
+    "cd_id": 4,
+    "headers": {
+        "charge": {
+            "name": "charge",
+            "type": "COMPLEX",
+            "source": "CALCULATOR"
+        },
+        "cd_id": {
+            "name": "cd_id",
+            "label": "JChem Id",
+            "state": "UNKNOWN",
+            "type": "ID",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_ID",
+            "canSort": true,
+            "canFilter": true
+        }
+    }
+}
+</div>
+</form>
+<p><a href="#advanceddetails">Back to Properties list</a></p>
+
+<h2 id="polar">4.2.7. List of polarizability parameters</h2>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>geom3D</td><td>boolean</td><td>If set to true, it calculates the polarization tensor values in 3D. Default is false</td>
+		</tr>
+		<tr>
+			<td>takeMajorMicrospecies</td><td>boolean</td><td>If set to true, the polarizability of major microspecies at the given pH is calculated. Default (false) calculates polarizability of the neutral form</td>
+		</tr>
+		<tr>
+			<td>pH</td><td>double</td><td>If takeMajorMicrospecies is set to true, it determines the pH at which it is displayed, default value is 7.4</td>
+		</tr>	
+	</tbody>
+</table>
+
+
+<p>POST request example with default polarizability parameters:</p>
+<form id="form3117" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/detail/4" size="80" />
+	<input class="POST" type="button" value="POST" />
+<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+	"include": ["cd_id","polarizability"],
+	"parameters":{
+		"polarizability": {
+			"geom3D": false,
+			"takeMajorMicrospecies": false	
+		}
+	}
+}
+</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "polarizability": {
+        "headers": {
+            "molecularPolarizability": {
+                "name": "molecularPolarizability",
+                "type": "DOUBLE",
+                "source": "CALCULATOR"
+            },
+            "result": {
+                "name": "result",
+                "type": "MOLECULE",
+                "source": "CALCULATOR"
+            }
+        },
+        "molecularPolarizability": 83.50760136670209,
+        "result": {
+            "headers": {
+                "structureData": {
+                    "name": "structureData",
+                    "type": "STRUCTUREDATA",
+                    "source": "GENERATED"
+                },
+                "cachekey": {
+                    "name": "cachekey",
+                    "type": "TEXT",
+                    "source": "PROCESS"
+                },
+                "image": {
+                    "name": "image",
+                    "type": "IMAGE",
+                    "source": "GENERATED"
+                }
+            },
+            "structureData": {
+            	"structure":"..."
+                "format": "mrv",
+                "contentUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_ef5373bd38135c1e72fd46e9be0100e3?format=mrv&contentName=structure",
+                "contentBaseUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_ef5373bd38135c1e72fd46e9be0100e3"
+            },
+            "cachekey": "struc_ef5373bd38135c1e72fd46e9be0100e3",
+            "image": {
+                "width": 300,
+                "height": 137,
+                "type": "png",
+                "image": "..."
+                "imageUrl": "http://restdemo.chemaxon.com/rest-v0/util/display/struc_ef5373bd38135c1e72fd46e9be0100e3_300x137.png"
+            }
+        }
+    },
+    "cd_id": 4,
+    "headers": {
+        "polarizability": {
+            "name": "polarizability",
+            "type": "COMPLEX",
+            "source": "CALCULATOR"
+        },
+        "cd_id": {
+            "name": "cd_id",
+            "label": "JChem Id",
+            "state": "UNKNOWN",
+            "type": "ID",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_ID",
+            "canSort": true,
+            "canFilter": true
+        }
+    }
+}
+</div>
+</form>
+<p><a href="#advanceddetails">Back to Properties list</a></p>
+
+<h2 id="surface">4.2.8. List of polarSurfaceArea parameters</h2>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>excludePhosphorus</td><td>boolean</td><td>Polar surface area (PSA) is formed by the polar atoms of the molecule.
+			<br />It is a descriptor that shows good correlation with passive molecular transport through membranes.
+			<br />The TPSA value can be calculated both for the neutral form and the major microspecies.
+			<br />If set to true (default), it excludes phosphorus atoms from calculation
+			</td>
+		</tr>
+		<tr>
+			<td>excludeSulfur</td><td>boolean</td><td>If set to true (default), it excludes sulfur atoms from calculation</td>
+		</tr>
+		<tr>
+			<td>takeMajorMicrospecies</td><td>boolean</td><td>If set to true, the structure of the major form at the given pH is displayed. Default value is false
+			</td>
+		</tr>	
+		<tr>
+			<td>pH</td><td>double</td><td>If takeMajorMicrospecies is set to true, it determines the pH at which it is displayed, default value is 7.4</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<p>POST request example with default polarSurfaceArea parameters:</p>
+<form id="form3118" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/detail/4" size="80" />
+	<input class="POST" type="button" value="POST" />
+<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+	"include": ["cd_id","polarSurfaceArea"],
+	"parameters":{
+		"polarSurfaceArea": {
+			"excludePhosphorus": true,
+			"excludeSulfur": true,
+			"takeMajorMicrospecies": false	
+		}
+	}
+}
+</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "polarSurfaceArea": {
+        "headers": {
+            "polarSurfaceArea": {
+                "name": "polarSurfaceArea",
+                "type": "DOUBLE",
+                "source": "CALCULATOR"
+            }
+        },
+        "polarSurfaceArea": 40.46
+    },
+    "cd_id": 4,
+    "headers": {
+        "polarSurfaceArea": {
+            "name": "polarSurfaceArea",
+            "type": "COMPLEX",
+            "source": "CALCULATOR"
+        },
+        "cd_id": {
+            "name": "cd_id",
+            "label": "JChem Id",
+            "state": "UNKNOWN",
+            "type": "ID",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_ID",
+            "canSort": true,
+            "canFilter": true
+        }
+    }
+}
+</div>
+</form>
+<p><a href="#advanceddetails">Back to Properties list</a></p>
+
+<h2 id="geometry">4.2.9. List of geometry parameters</h2>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+
+	<tr>			
+		<td>unit</td>
+		<td>string</td>
+		<td><ul>
+				<li>KCAL_PER_MOL gives energy values in kcal/mol</li>
+				<li>KJ_PER_MOL gives energy values in kJ/mol, default</li>
+		</ul></td>
+		</tr>
+		<tr>
+			<td>radiusScaleFactor</td><td>double</td><td>Atom radii from the periodic system are multiplied by this number. Default value is 1</td>
+		</tr>
+		<tr>
+			<td>MMFF94Optimization</td><td>boolean</td><td>If set to true, the structure is optimized before MMFF94 energy calculation, default is false 
+			<br />(MMFF94 energy calculates the energy related to the 3D structure conformation of the molecule using MMFF94 force field)
+			</td>
+		</tr>
+		<tr>
+			<td>projectionOptimization</td><td>boolean</td><td>If set to true, the structure is optimized before projection area and projection radius calculation(s). Default is false</td>
+		</tr>	
+		<tr>			
+		<td>lowestEnergyConformerType</td>
+		<td>string</td>
+		<td>Sets the condition for lowest energy conformer calculation before geometry calculations are processed
+			<ul>
+				<li>IF2D the lowest energy conformer of the 2D molecule is generated, and its parameters calculated, default</li>
+				<li>NEVER  the input molecule is used for calculation</li>
+				<li>ALWAYS always calculate with the lowest energy conformer</li>
+		</ul></td>
+		</tr>
+		<tr>			
+		<td>optimizationLimit</td>
+		<td>string</td>
+		<td>       
+			<ul>
+				<li>VERY_LOOSE</li>
+				<li>NORMAL Default</li>
+				<li>STRICT</li>
+				<li>VERY_STRICT</li>
+			</ul></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<p>POST request example with default geometry parameters:</p>
+<form id="form3119" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/detail/4" size="80" />
+	<input class="POST" type="button" value="POST" />
+<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+	"include": ["cd_id","geometry"],
+	"parameters":{
+		"geometry": {
+			"unit": "KJ_PER_MOL",
+			"radiusScaleFactor": 1.0,	
+			"MMFF94Optimization": false,
+			"projectionOptimization": false,	
+			"lowestEnergyConformerType": "IF2D",
+			"optimizationLimit": "NORMAL"	
+		}
+	}
+}
+</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "geometry": {
+        "headers": {
+            "dreidingEnergy": {
+                "name": "dreidingEnergy",
+                "type": "DOUBLE",
+                "source": "CALCULATOR"
+            },
+            "MMFF94Energy": {
+                "name": "MMFF94Energy",
+                "type": "DOUBLE",
+                "source": "CALCULATOR"
+            },
+            "minimalProjectionArea": {
+                "name": "minimalProjectionArea",
+                "type": "DOUBLE",
+                "source": "CALCULATOR"
+            },
+            "maximalProjectionArea": {
+                "name": "maximalProjectionArea",
+                "type": "DOUBLE",
+                "source": "CALCULATOR"
+            },
+            "minimalProjectionRadius": {
+                "name": "minimalProjectionRadius",
+                "type": "DOUBLE",
+                "source": "CALCULATOR"
+            },
+            "maximalProjectionRadius": {
+                "name": "maximalProjectionRadius",
+                "type": "DOUBLE",
+                "source": "CALCULATOR"
+            },
+            "volume": {
+                "name": "volume",
+                "type": "DOUBLE",
+                "source": "CALCULATOR"
+            },
+            "minZLength": {
+                "name": "minZLength",
+                "type": "DOUBLE",
+                "source": "CALCULATOR"
+            },
+            "maxZLength": {
+                "name": "maxZLength",
+                "type": "DOUBLE",
+                "source": "CALCULATOR"
+            },
+            "result": {
+                "name": "result",
+                "type": "MOLECULE",
+                "source": "CALCULATOR"
+            }
+        },
+        "dreidingEnergy": 171.8,
+        "MMFF94Energy": 230.62142348490246,
+        "minimalProjectionArea": 90.23513155009645,
+        "maximalProjectionArea": 206.59596288583637,
+        "minimalProjectionRadius": 6.28786818520873,
+        "maximalProjectionRadius": 18.745325567202084,
+        "volume": 717.6484801021651,
+        "minZLength": 37.592143401747606,
+        "maxZLength": 12.13769968583451,
+        "result": {
+            "headers": {
+                "structureData": {
+                    "name": "structureData",
+                    "type": "STRUCTUREDATA",
+                    "source": "GENERATED"
+                },
+                "cachekey": {
+                    "name": "cachekey",
+                    "type": "TEXT",
+                    "source": "PROCESS"
+                },
+                "image": {
+                    "name": "image",
+                    "type": "IMAGE",
+                    "source": "GENERATED"
+                }
+            },
+            "structureData": {
+            	"structure": "xml file..."
+            	"format": "mrv",
+                "contentUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_4ada4b28e2aeedf8d1aef4a380f9af81?format=mrv&contentName=structure",
+                "contentBaseUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_4ada4b28e2aeedf8d1aef4a380f9af81"
+            },
+            "cachekey": "struc_4ada4b28e2aeedf8d1aef4a380f9af81",
+            "image": {
+                "width": 300,
+                "height": 243,
+                "type": "png",
+                "image": "..."
+                "imageUrl": "http://restdemo.chemaxon.com/rest-v0/util/display/struc_4ada4b28e2aeedf8d1aef4a380f9af81_300x243_3D.png"
+            }
+        }
+    },
+    "cd_id": 4,
+    "headers": {
+        "geometry": {
+            "name": "geometry",
+            "type": "COMPLEX",
+            "source": "CALCULATOR"
+        },
+        "cd_id": {
+            "name": "cd_id",
+            "label": "JChem Id",
+            "state": "UNKNOWN",
+            "type": "ID",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_ID",
+            "canSort": true,
+            "canFilter": true
+        }
+    }
+}
+</div>
+</form>
+<p><a href="#advanceddetails">Back to Properties list</a></p>
+
+<h2 id="stereo">4.2.10. List of stereoisomer parameters</h2>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>			
+			<td>stereoisomerismType</td>
+			<td>string</td>
+			<td><ul>
+				<li>TETRAHEDRAL only the R/S isomers are generated, default</li>
+				<li>DOUBLE_BOND only E/Z isomers are generated</li>
+				<li>BOTH both R/S and E/Z isomers are generated</li>
+			</ul></td>
+		</tr>
+		<tr>
+			<td>maxNumberOfStereoisomers</td><td>int</td><td>Only the given number of structures are generated, default value is 1000</td>
+		</tr>
+		<tr>
+			<td>protectDoubleBondStereo</td><td>boolean</td><td>If set to true, all double bonds with preset stereo information remain intact, default is false</td>
+		</tr>
+		<tr>
+			<td>protectTetrahedralStereo</td><td>boolean</td><td>If set to true, preset stereocenters are not included in the stereoisomer generation, default is false
+			</td>
+		</tr>	
+		<tr>
+			<td>filterInvalid3DStructures</td><td>boolean</td><td>If set to true, sterically restricted isomers are discarded, default is false</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<p>POST request example with default stereoisomer parameters:</p>
+<form id="form31110" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/detail/4" size="80" />
+	<input class="POST" type="button" value="POST" />
+<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+	"include": ["cd_id","stereoisomer"],
+	"parameters":{
+		"stereoisomer": {
+			"stereoisomerismType": "TETRAHEDRAL",
+			"maxNumberOfStereoisomers": 1000,
+			"protectDoubleBondStereo": false,
+			"protectTetrahedralStereo": false,
+			"filterInvalid3DStructures": false	
+		}
+	}
+}
+</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "stereoisomer": {
+        "headers": {
+            "stereoisomerCount": {
+                "name": "stereoisomerCount",
+                "type": "INTEGER",
+                "source": "CALCULATOR"
+            },
+            "result": {
+                "name": "result",
+                "type": "MOLECULE",
+                "source": "CALCULATOR"
+            }
+        },
+        "stereoisomerCount": 1,
+        "result": {
+            "headers": {
+                "structureData": {
+                    "name": "structureData",
+                    "type": "STRUCTUREDATA",
+                    "source": "GENERATED"
+                },
+                "cachekey": {
+                    "name": "cachekey",
+                    "type": "TEXT",
+                    "source": "PROCESS"
+                },
+                "image": {
+                    "name": "image",
+                    "type": "IMAGE",
+                    "source": "GENERATED"
+                }
+            },
+            "structureData": {
+            	"structure": "xml file..."
+                "format": "mrv",
+                "contentUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_604cb32ab2d0be87da86a2c5ed2c2b99?format=mrv&contentName=structure",
+                "contentBaseUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_604cb32ab2d0be87da86a2c5ed2c2b99"
+            },
+            "cachekey": "struc_604cb32ab2d0be87da86a2c5ed2c2b99",
+            "image": {
+                "width": 300,
+                "height": 36,
+                "type": "png",
+                "image":"..."
+                "imageUrl": "http://restdemo.chemaxon.com/rest-v0/util/display/struc_604cb32ab2d0be87da86a2c5ed2c2b99_300x36_chiral_all.png"
+            }
+        }
+    },
+    "cd_id": 4,
+    "headers": {
+        "stereoisomer": {
+            "name": "stereoisomer",
+            "type": "COMPLEX",
+            "source": "CALCULATOR"
+        },
+        "cd_id": {
+            "name": "cd_id",
+            "label": "JChem Id",
+            "state": "UNKNOWN",
+            "type": "ID",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_ID",
+            "canSort": true,
+            "canFilter": true
+        }
+    }
+}
+</div>
+</form>
+<p><a href="#advanceddetails">Back to Properties list</a></p>
+
+<h2 id="tautomer">4.2.11. List of tautomerization parameters</h2>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>calculationType</td><td>string</td><td>
+				<ul>
+					<li>DOMINANT displays the percentage of different tautomers present at the given pH, dominant is default </li>
+					<li>CANONICAL calculates only the canonical tautomer of the structure
+						<br /><a href="https://www.chemaxon.com/marvin/help/calculations/tautomers.html#rational">Example</a></li>
+					<li>GENERIC used for the identification of tautomers in JChem databases
+						<br /><a href="https://www.chemaxon.com/marvin/help/calculations/isomers.html#tautomer">Calculated according to these rules</a></li>
+					<li>MAJOR gives the first species from the dominant tautomer distribution</li>
+					<li>ALL calculates all possible tautomers. If any deuterium or tritium is involved in the tautomerization, it moves during enumeration. 
+						<br />Rational tautomer generation mode can be activated</li>
+				</ul>	
+			</td>
+		</tr>
+		<tr>
+			<td>maxStructureCount</td><td>int</td><td>Maximize the number of structures to display, default value is 1000</td>
+		</tr>
+		<tr>
+			<td>considerPH</td><td>boolean</td><td>Takes into account the protonation states at given pH, false is default</td>
+		</tr>
+		<tr><td>pH</td><td>double</td><td>If pH value is taken into account, it sets its value, default is 7.4</td>		
+		</tr>
+
+		<tr>
+			<td>enableMaxPathLength</td><td>boolean</td><td>If set to true (default), it enables the possibility to set max. allowed length of the tautomerization path
+			<br /> (the number of bonds which are considered by displacing a double bond)</td>
+		</tr>
+		<tr>
+			<td>maxPathLength</td><td>int</td><td>Sets maximum allowed length of the tautomerization path, default is 4</td>
+		</tr>
+		<tr>
+			<td>rationalTautomerGenerationMode</td><td>boolean</td><td>
+			<br />Rational tautomer generation narrows down the possible tautomerization paths and leads to chemically more feasible products.
+			<br />It classifies isomers according to structural similarities: isomers in a group can convert into each other by simple low energy transformations, 
+			<br />while transformation between the isomers of two different groups requires higher energy steps.
+			<br />Default value is false<a href="https://www.chemaxon.com/marvin/help/calculations/tautomers.html#rational"> Example</a>
+			</td>
+		</tr>
+		<tr>
+			<td>singleFragmentMode</td><td>boolean</td><td>If set to false, the calculation handles unlinked molecules together and results are in the same window.
+			<br />If set to true (default), the results are displayed in separate windows</td>
+		</tr>
+		<tr>
+			<td>protectAromaticity</td><td>boolean</td><td>If set to true (default), the aromaticity will be maintained</td>
+		</tr>	
+		<tr>
+			<td>protectCharge</td><td>boolean</td><td>If set to true (default), defined charged atoms maintain their charge during calculation</td>
+		</tr>
+		<tr>
+			<td>excludeAntiAromaticCompounds</td><td>boolean</td><td>If set to true (default), any tautomer structure having an antiaromatic ring system will be discarded</td>
+		</tr>
+			<tr>
+				<td>protectDoubleBondStereo</td><td>boolean</td><td>If set to true, all double bonds with stereo information remain intact.
+          			<br />If set to false (default), tautomer regions will lose the double bond stereo information, any other stereo information in the molecule is kept intact.</td>
+		</tr>
+		<tr>
+			<td>protectAllTetrahedralStereoCenters</td><td>boolean</td><td>If set to true, stereocenters are not included in the tautomerization. 
+				<br />If set to false (default), tautomer regions will lose the tetrahedral stereo information, any other stereo information in the molecule is kept intact.</td>
+		</tr>
+		<tr>
+			<td>protectLabeledTetrahedralStereoCenters</td><td>boolean</td><td>If set to true, stereocenters labeled with chiral flag or MDL Enhanced Stereo Representation flags 
+			<br />will not be included in tautomerization, other stereocenters will. Default is false</td>
+		</tr>
+		<tr>
+			<td>protectEsterGroups</td><td>boolean</td><td>If set to true (default), ester groups are not taking part in tautomerization.</td>
+		</tr>
+		<tr>
+			<td>ringChainTautomerizationAllowed</td><td>boolean</td><td>This option is active when "All tautomers" function is selected. 
+			<br />If set to true, tautomer generation will take into account the possibility of ring closure, default is false</td>
+		</tr>		
+	</tbody>
+</table>
+
+
+<p>POST request example with default tautomerization parameters:</p>
+<form id="form31111" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/detail/4" size="80" />
+	<input class="POST" type="button" value="POST" />
+<label>POST request (<code>Content-type: application/json</code>):</label>
+ <div class="params_div">
+{
+	"include": ["cd_id","tautomerization"],
+	"parameters":{
+		"tautomerization": {
+			"calculationType": "DOMINANT",
+			"maxStructureCount": 1000,
+			"considerPH": false,
+			"enableMaxPathLength": true,
+			"maxPathLength": 4,
+			"rationalTautomerGenerationMode": false,
+			"singleFragmentMode": true,
+			"protectAromaticity": true,
+		    "protectCharge": true,
+			"excludeAntiAromaticCompounds": true,
+			"protectDoubleBondStereo": false,
+			"protectAllTetrahedralStereoCenters": false,
+			"protectLabeledTetrahedralStereoCenters": false,
+			"protectEsterGroups": true,
+			"ringChainTautomerizationAllowed": false
+		}
+	}
+}
+</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "tautomerization": {
+        "headers": {
+            "result": {
+                "name": "result",
+                "type": "MOLECULE",
+                "source": "CALCULATOR",
+                "list": true
+            }
+        },
+        "result": [
+            {
+                "headers": {
+                    "structureData": {
+                        "name": "structureData",
+                        "type": "STRUCTUREDATA",
+                        "source": "GENERATED"
+                    },
+                    "cachekey": {
+                        "name": "cachekey",
+                        "type": "TEXT",
+                        "source": "PROCESS"
+                    },
+                    "image": {
+                        "name": "image",
+                        "type": "IMAGE",
+                        "source": "GENERATED"
+                    },
+                    "dominantTautomerDistribution": {
+                        "name": "dominantTautomerDistribution",
+                        "type": "DOUBLE",
+                        "source": "CALCULATOR"
+                    }
+                },
+                "structureData": {
+                	"structure": "xml file...",
+                    "format": "mrv",
+                    "contentUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_537d3e5da1885b267dd48533f10ab9c3?format=mrv&contentName=structure",
+                    "contentBaseUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_537d3e5da1885b267dd48533f10ab9c3"
+                },
+                "cachekey": "struc_537d3e5da1885b267dd48533f10ab9c3",
+                "image": {
+                    "width": 300,
+                    "height": 138,
+                    "type": "png",
+                    "image": "...",
+                    "imageUrl": "http://restdemo.chemaxon.com/rest-v0/util/display/struc_537d3e5da1885b267dd48533f10ab9c3_300x138.png"
+                },
+                "dominantTautomerDistribution": 1
+            }
+        ]
+    },
+    "cd_id": 4,
+    "headers": {
+        "tautomerization": {
+            "name": "tautomerization",
+            "type": "COMPLEX",
+            "source": "CALCULATOR"
+        },
+        "cd_id": {
+            "name": "cd_id",
+            "label": "JChem Id",
+            "state": "UNKNOWN",
+            "type": "ID",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_ID",
+            "canSort": true,
+            "canFilter": true
+        }
+    }
+}
+</div>
+</form>
+<p><a href="#advanceddetails">Back to Properties list</a></p>
+
+<h2 id="hbda">4.2.12. List of hbda parameters</h2>
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>			
+		<td>pHLower</td>
+		<td>double</td>
+		<td>HBDA: the weighted average hydrogen bond donor and acceptor multiplicities taken over the microspecies and the proportions of their occurrences are calculated for different pHs
+		<br />Defines the lower end of the pH window in which HBDA is calculated, default value is 0</td>
+		</tr>
+		<tr>
+			<td>pHUpper</td><td>double</td><td>Defines the upper end of the pH window in which HBDA is calculated, default value is 14</td>
+		</tr>
+		<tr>
+			<td>pHStep</td><td>double</td><td>Defines the pH step size by which HBDA calculation is incremented (pH values start from the lower limit), default value is 0.1</td>
+		</tr>
+		<tr>
+			<td>excludeSulfur</td><td>boolean</td><td>If set to true (default), it excludes sulfur atoms from acceptors</td>
+		</tr>
+		<tr>
+			<td>excludeHalogens</td><td>boolean</td><td>If set to true (default), it excludes halogen atoms from acceptors</td>
+		</tr>
+		<tr>
+			<td>displayMajorMicrospecies</td><td>boolean</td><td>HBDA parameters can be calculated both for the neutral form and the major microspecies.
+			<br />If set to true, the structure of the major form at the given pH is displayed. Default is false</td>
+		</tr>	
+		<tr>
+			<td>pH</td><td>double</td><td>If display major microspecies is set to true, it determines the pH at which it is displayed, default value is 7.4</td>
+		</tr>		
+	</tbody>
+</table>
+
+
+<p>POST request example with default hbda parameters:</p>
+<form id="form31112" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/detail/4" size="80" />
+	<input class="POST" type="button" value="POST" />
+<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+	"include": ["cd_id","hbda"],
+	"parameters":{
+		"hbda": {
+			"pHLower": 0,
+			"pHUpper": 14,	
+			"pHStep": 0.1,
+			"excludeSulfur": true,
+			"excludeHalogens": true,
+			"displayMajorMicrospecies": false
+		}
+	}
+}
+
+</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "hbda": {
+        "headers": {
+            "acceptorCount": {
+                "name": "acceptorCount",
+                "type": "INTEGER",
+                "source": "CALCULATOR"
+            },
+            "acceptorAtomCount": {
+                "name": "acceptorAtomCount",
+                "type": "INTEGER",
+                "source": "CALCULATOR"
+            },
+            "donorCount": {
+                "name": "donorCount",
+                "type": "INTEGER",
+                "source": "CALCULATOR"
+            },
+            "donorAtomCount": {
+                "name": "donorAtomCount",
+                "type": "INTEGER",
+                "source": "CALCULATOR"
+            },
+            "result": {
+                "name": "result",
+                "type": "MOLECULE",
+                "source": "CALCULATOR"
+            },
+            "chartData": {
+                "name": "chartData",
+                "type": "CHART",
+                "source": "CALCULATOR",
+                "list": true
+            }
+        },
+        "acceptorCount": 4,
+        "acceptorAtomCount": 2,
+        "donorCount": 2,
+        "donorAtomCount": 2,
+        "result": {
+            "headers": {
+                "structureData": {
+                    "name": "structureData",
+                    "type": "STRUCTUREDATA",
+                    "source": "GENERATED"
+                },
+                "cachekey": {
+                    "name": "cachekey",
+                    "type": "TEXT",
+                    "source": "PROCESS"
+                },
+                "image": {
+                    "name": "image",
+                    "type": "IMAGE",
+                    "source": "GENERATED"
+                }
+            },
+            "structureData": {
+            	"structure":"xml file...",
+                "format": "mrv",
+                "contentUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_0e9c55bec33471974a7f386b17cdf8cd?format=mrv&contentName=structure",
+                "contentBaseUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_0e9c55bec33471974a7f386b17cdf8cd"
+            },
+            "cachekey": "struc_0e9c55bec33471974a7f386b17cdf8cd",
+            "image": {
+                "width": 300,
+                "height": 133,
+                "type": "png",
+                "image": "...",
+                "imageUrl": "http://restdemo.chemaxon.com/rest-v0/util/display/struc_0e9c55bec33471974a7f386b17cdf8cd_300x133.png"
+            }
+        },
+        "chartData": [
+            {
+                "key": "avgAcceptorCount",
+                "xAxis": "pH",
+                "yAxis": "avgAcceptorCount",
+                "yMin": 4,
+                "yMax": 5.9559,
+                "values": [
+                    {
+                        "pH": 0,
+                        "avgAcceptorCount": 4
+                    },
+                    {
+                        "pH": 0.1,
+                        "avgAcceptorCount": 4
+                    },
+               ...........................
+                    {
+                        "pH": 14,
+                        "avgAcceptorCount": 5.9559
+                    }
+                ]
+            },
+            {
+                "key": "avgDonorCount",
+                "xAxis": "pH",
+                "yAxis": "avgDonorCount",
+                "yMin": 0.0441,
+                "yMax": 2,
+                "values": [
+                    {
+                        "pH": 0,
+                        "avgDonorCount": 2
+                    },
+                    {
+                        "pH": 0.1,
+                        "avgDonorCount": 2
+                    },
+                 ........................
+                    {
+                        "pH": 14,
+                        "avgDonorCount": 0.0441
+                    }
+                ]
+            }
+        ]
+    },
+    "cd_id": 4,
+    "headers": {
+        "hbda": {
+            "name": "hbda",
+            "type": "COMPLEX",
+            "source": "CALCULATOR"
+        },
+        "cd_id": {
+            "name": "cd_id",
+            "label": "JChem Id",
+            "state": "UNKNOWN",
+            "type": "ID",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_ID",
+            "canSort": true,
+            "canFilter": true
+        }
+    }
+}
+</div>
+</form>
+<p><a href="#advanceddetails">Back to Properties list</a></p>
+
+<h2 id="elemental">4.2.13. List of elementalAnalysis parameters</h2>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>			
+			<td>singleFragmentMode</td>
+			<td>boolean</td>
+			<td>The following molecular values related to the elemental composition of the molecule are calculated by the elemental analysis plugin:
+				<ul>
+					<li>Mass: average molecular mass calculated from the standard atomic weights</li>
+					<li>Exact mass: monoisotopic mass calculated from the weights of the most abundant natural isotopes of the elements</li>
+					<li>Formula: chemical formula of the molecule according to the Hill system 3: the number of carbon atoms is indicated first
+						<br />the number of hydrogen atoms next, and then the number of all other chemical elements subsequently in alphabetical order.
+						<br />Isotopes (like Deuterium and Tritium) are not listed separately but counted together
+						<br />Note: For polymer structures, mass, composition, and atom count calculations are not available and will return NaN, N/A, and -1, respectively.<br/></li>
+					<li>Isotope formula: chemical formula of the molecule listing isotopes separately</li>
+					<li>Composition: elemental composition given in weight percentage (w/w %) calculated from the atomic masses</li>
+					<li>Isotope composition: elemental composition listing isotopes separately (w/w %)</li>	
+				</ul>
+				<br />If single fragment mode is set to false, the calculation handles unlinked molecules together (e.g. salt molecules), summing up the masses of each component,
+				<br />If true (default), the results are displayed in a scroll window, and it handles two more options:
+				<ul>
+					<li>Dot-disconnected formula: chemical formula of the molecule(s) separating fragment formulas by dots (e.g. salts, counterions, solvent molecules etc. are present)</li>
+					<li>Dot-disconnected isotope formula: chemical formula of the molecule separating fragment formulas by dots and listing isotopes separately</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td>symbolD</td><td>boolean</td><td>If set to false, isotopes of hydrogen are displayed in formulas as 2H and 3H, if true, D and T symbols are used, default is true</td>
+		</tr>		
+	</tbody>
+</table>
+
+
+<p>POST request example with default elementalAnalysis parameters:</p>
+<form id="form31113" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/detail/4" size="80" />
+	<input class="POST" type="button" value="POST" />
+<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+	"include": ["cd_id","elementalAnalysis"],
+	"parameters":{
+		"elementalAnalysis": {
+			"singleFragmentMode": true,
+			"symbolID": true	
+		}
+	}
+}
+</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "elementalAnalysis": {
+        "headers": {
+            "formula": {
+                "name": "formula",
+                "type": "TEXT",
+                "source": "CALCULATOR"
+            },
+            "isotope_formula": {
+                "name": "isotope_formula",
+                "type": "TEXT",
+                "source": "CALCULATOR"
+            },
+            "composition": {
+                "name": "composition",
+                "type": "TEXT",
+                "source": "CALCULATOR",
+                "list": true
+            },
+            "isotope_composition": {
+                "name": "isotope_composition",
+                "type": "TEXT",
+                "source": "CALCULATOR",
+                "list": true
+            },
+            "mass": {
+                "name": "mass",
+                "type": "DOUBLE_FIXED",
+                "source": "CALCULATOR"
+            },
+            "exact_mass": {
+                "name": "exact_mass",
+                "type": "DOUBLE_FIXED",
+                "source": "CALCULATOR"
+            }
+        },
+        "formula": "C46H70O2",
+        "isotope_formula": "C46H70O2",
+        "composition": [
+            "C (84.34%)",
+            "H (10.77%)",
+            "O (4.88%)"
+        ],
+        "isotope_composition": [
+            "C (84.34%)",
+            "H (10.77%)",
+            "O (4.88%)"
+        ],
+        "mass": 655.0468,
+        "exact_mass": 654.537581484
+    },
+    "cd_id": 4,
+    "headers": {
+        "elementalAnalysis": {
+            "name": "elementalAnalysis",
+            "type": "COMPLEX",
+            "source": "CALCULATOR"
+        },
+        "cd_id": {
+            "name": "cd_id",
+            "label": "JChem Id",
+            "state": "UNKNOWN",
+            "type": "ID",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_ID",
+            "canSort": true,
+            "canFilter": true
+        }
+    }
+}
+</div>
+</form>
+<p><a href="#advanceddetails">Back to Properties list</a></p>
+
+<h2 id="nameformat">4.2.14. List of chemical format parameters</h2>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>			
+			<td>inchiAux</td>
+			<td>boolean</td>
+			<td>It displays names in following formats:
+				<ul>
+				<li>Common names</li>
+				<li>IUPAC name</li>
+				<li>SMILES</li>
+				<li>InChI</li>
+				</ul>
+		If set to true, inChi auxiliary information is displayed, default is false
+			</td>
+		</tr>
+		<tr>
+			<td>uniqueSmiles</td><td>boolean</td><td>The molecule graph is always canonicalized, but it is not guaranteed to give absolute SMILES for all isomeric structures.
+			<br />If set to true, the unique SMILES generation uses an approximation to make the SMILES string as absolute (unique for isomeric structures) as possible. 
+			<br />Default is false. Note: use this option if you want unique smiles export.
+			<br /><a href="http://www.mdpi.org/molecules/papers/61100915/61100915.htm">See more about the algorithm which produces unique smiles</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<p>POST request example with default format parameters:</p>
+<form id="form31114" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/detail/4" size="80" />
+	<input class="POST" type="button" value="POST" />
+<label>POST request (<code>Content-type: application/json</code>):</label>
+ 
+<div class="params_div">
+{
+	"include": ["cd_id","format"],
+	"parameters":{
+		"format": {
+			" inchiAux": false,
+			"uniqueSmiles": false			
+		}
+	}
+}
+</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "format": {
+        "headers": {
+            "common": {
+                "name": "common",
+                "type": "TEXT",
+                "source": "CALCULATOR",
+                "list": true
+            },
+            "iupac": {
+                "name": "iupac",
+                "type": "TEXT",
+                "source": "CALCULATOR"
+            },
+            "smiles": {
+                "name": "smiles",
+                "type": "TEXT",
+                "source": "CALCULATOR"
+            },
+            "inchi": {
+                "name": "inchi",
+                "type": "TEXT",
+                "source": "CALCULATOR"
+            }
+        },
+        "common": [
+            "2-octaprenyl-6-hydroxyphenol",
+            "6-hydroxy-2-octaprenylphenol"
+        ],
+        "iupac": "3-[(2E,6E,10E,14E,18E,22E,26E)-3,7,11,15,19,23,27,31-octamethyldotriaconta-2,6,10,14,18,22,26,30-octaen-1-yl]benzene-1,2-diol",
+        "smiles": "[H]C\\C(C)=C\\CC\\C(C)=C\\CC\\C(C)=C\\CC\\C(C)=C\\CC\\C(C)=C\\CC\\C(C)=C\\CC\\C(C)=C\\CC\\C(C)=C\\CC1=C(O)C(O)=CC=C1",
+        "inchi": "InChI=1S/C46H70O2/c1-36(2)18-10-19-37(3)20-11-21-38(4)22-12-23-39(5)24-13-25-40(6)26-14-27-41(7)28-15-29-42(8)30-16-31-43(9)34-35-44-32-17-33-45(47)46(44)48/h17-18,20,22,24,26,28,30,32-34,47-48H,10-16,19,21,23,25,27,29,31,35H2,1-9H3/b37-20+,38-22+,39-24+,40-26+,41-28+,42-30+,43-34+"
+    },
+    "cd_id": 4,
+    "headers": {
+        "format": {
+            "name": "format",
+            "type": "COMPLEX",
+            "source": "GENERATED"
+        },
+        "cd_id": {
+            "name": "cd_id",
+            "label": "JChem Id",
+            "state": "UNKNOWN",
+            "type": "ID",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_ID",
+            "canSort": true,
+            "canFilter": true
+        }
+    }
+}
+</div>
+</form>
+<p><a href="#advanceddetails">Back to Properties list</a></p>
+
+<h2 id="topology">4.2.15. List of topologyAnalysis parameters</h2>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>singleFragmentMode</td><td>boolean</td><td>Topology analysis plugin provides characteristic values related to the topological structure of the molecule.
+			<br />If single fragment mode is set to false, the calculation handles unlinked molecules together (e.g. salt molecules). 
+			<br />If true, the results are displayed in a scroll window, default is false
+			<br /><a href="http://www.chemaxon.com/marvin/help/calculations/geometrygroup.html#topolanal">See detailed description of displayed topology parameters</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<p>POST request example with default topologyAnalysis parameters:</p>
+<form id="form31115" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/detail/4" size="80" />
+	<input class="POST" type="button" value="POST" />
+<label>POST request (<code>Content-type: application/json</code>):</label>
+ 
+<div class="params_div">
+{
+	"include": ["cd_id","topologyAnalysis"],
+	"parameters":{
+	"topologyAnalysis": {
+	"singleFragmentMode": false		
+		}
+	}
+}
+</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "topologyAnalysis": {
+        "headers": {
+            "distanceDegree": {
+                "name": "distanceDegree",
+                "type": "MOLECULE",
+                "source": "CALCULATOR"
+            },
+            "eccentricity": {
+                "name": "eccentricity",
+                "type": "MOLECULE",
+                "source": "CALCULATOR"
+            },
+            "stericEffect": {
+                "name": "stericEffect",
+                "type": "MOLECULE",
+                "source": "CALCULATOR"
+            },
+            "atomBond": {
+                "name": "atomBond",
+                "type": "COMPLEX",
+                "source": "CALCULATOR"
+            },
+            "ring": {
+                "name": "ring",
+                "type": "COMPLEX",
+                "source": "CALCULATOR"
+            },
+            "pathAndDistance": {
+                "name": "pathAndDistance",
+                "type": "COMPLEX",
+                "source": "CALCULATOR"
+            }
+        },
+        "distanceDegree": {
+            "headers": {
+                "structureData": {
+                    "name": "structureData",
+                    "type": "STRUCTUREDATA",
+                    "source": "GENERATED"
+                },
+                "cachekey": {
+                    "name": "cachekey",
+                    "type": "TEXT",
+                    "source": "PROCESS"
+                },
+                "image": {
+                    "name": "image",
+                    "type": "IMAGE",
+                    "source": "GENERATED"
+                }
+            },
+            "structureData": {
+           		"structure":"xml file...",
+                "format": "mrv",
+                "contentUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_b400cf0c41f1a559e42400a3dd5e3fb6?format=mrv&contentName=structure",
+                "contentBaseUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_b400cf0c41f1a559e42400a3dd5e3fb6"
+            },
+            "cachekey": "struc_b400cf0c41f1a559e42400a3dd5e3fb6",
+            "image": {
+                "width": 300,
+                "height": 132,
+                "type": "png",
+                "image": "...",
+                "imageUrl": "http://restdemo.chemaxon.com/rest-v0/util/display/struc_b400cf0c41f1a559e42400a3dd5e3fb6_300x132.png"
+            }
+        },
+        "eccentricity":"...",
+        "stericEffect": "...",
+        "atomBond": {
+            "headers": {
+                "aliphaticAtomCount": {
+                    "name": "aliphaticAtomCount",
+                    "type": "INTEGER",
+                    "source": "CALCULATOR"
+                },
+                ...............
+            },
+            "aliphaticAtomCount": 42,
+            "aliphaticBondCount": 42,
+            "aromaticAtomCount": 6,
+            "aromaticBondCount": 6,
+            "asymmetricAtomCount": 0,
+            "atomCount": 49,
+            "bondCount": 118,
+            "chainAtomCount": 42,
+            "chainBondCount": 42,
+            "chiralCenterCount": 0,
+            "cyclomaticNumber": 1,
+            "ringAtomCount": 6,
+            "ringBondCount": 6,
+            "rotatableBondCount": 23,
+            "stereoDoubleBondCount": 7,
+            "fsp3": 0.5217391304347826
+        },
+        "ring": {
+            "headers": {
+                "aliphaticRingCount": {
+                    "name": "aliphaticRingCount",
+                    "type": "INTEGER",
+                    "source": "CALCULATOR"
+                },
+                ................
+            },
+            "aliphaticRingCount": 0,
+            "aromaticRingCount": 1,
+            "carboRingCount": 1,
+            "carboaliphaticRingCount": 0,
+            "carboaromaticRingCount": 1,
+            "fusedAliphaticRingCount": 0,
+            "fusedAromaticRingCount": 0,
+            "fusedRingCount": 0,
+            "heteroRingCount": 0,
+            "heteroaliphaticRingCount": 0,
+            "heteroaromaticRingCount": 0,
+            "largestRingSize": 6,
+            "largestRingSystemSize": 1,
+            "ringCount": 1,
+            "ringSystemCount": 1,
+            "smallestRingSize": 6,
+            "smallestRingSystemSize": 1
+        },
+        "pathAndDistance": {
+            "headers": {
+                "balabanIndex": {
+                    "name": "balabanIndex",
+                    "type": "DOUBLE",
+                    "source": "CALCULATOR"
+                },
+                .................
+            },
+            "balabanIndex": 1.962068158185346,
+            "fragmentCount": 1,
+            "hararyIndex": 186.96741505146042,
+            "hyperWienerIndex": 147958,
+            "plattIndex": 120,
+            "randicIndex": 23.403993658562875,
+            "szegedIndex": 15346,
+            "wienerIndex": 14820,
+            "wienerPolarity": 58
+        }
+    },
+    "cd_id": 4,
+    "headers": {
+        "topologyAnalysis": {
+            "name": "topologyAnalysis",
+            "type": "COMPLEX",
+            "source": "CALCULATOR"
+        },
+        "cd_id": {
+            "name": "cd_id",
+            "label": "JChem Id",
+            "state": "UNKNOWN",
+            "type": "ID",
+            "source": "DATABASE_JCHEM",
+            "dbColumnName": "CD_ID",
+            "canSort": true,
+            "canFilter": true
+        }
+    }
+}
+</div>
+</form>	
+
+<h2 id="solubility">4.2.16. List of solubility parameters</h2>
+<table>
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>pHLower</td>
+        <td>DOUBLE</td>
+        <td>default: <b>0.0</b></td>
+      </tr>
+      <tr>
+        <td>pHUpper</td>
+        <td>DOUBLE</td>
+        <td>default: <b>14.0</b></td>
+      </tr>
+      <tr>
+        <td>pHStep</td>
+        <td>DOUBLE</td>
+        <td>default: <b>0.1</b></td>
+      </tr>
+      <tr>
+        <td>unit</td>
+        <td>STRING</td>
+        <td>
+          default: <b>LOGS</b>
+          <ul>
+            <li><b>LOGS</b></li>
+            <li><i>MGPERML</i></li>
+            <li><i>MOLPERL</i></li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+</table>
+
+<p>POST request example with default solubility parameters:</p>
+<form id="form31116" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/detail/4" size="80" />
+	<input class="POST" type="button" value="POST" />
+<label>POST request (<code>Content-type: application/json</code>):</label>
+ 
+<div class="params_div">
+{
+	"include": ["cd_id","solubility"],
+	"parameters":{
+		"solubility": {
+			"pHLower": 0.0,
+			"pHUpper": 14.0,
+			"pHStep": 0.1,
+			"unit": "LOGS"
+		}
+	}
+}
+</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "solubility": {
+        "intrinsicSolubility": -3.2090126816785602,
+        "pHDependentSolubility": {
+            "key": "pHDependentSolubility",
+            "xAxis": "pH",
+            "yAxis": "solubility",
+            "yMin": -3.209,
+            "yMax": -3.209,
+            "values": [
+                {
+                    "pH": 0,
+                    "solubility": -3.209
+                },
+                {
+                    "pH": 0.1,
+                    "solubility": -3.209
+                },
+                {
+                    "pH": 0.2,
+                    "solubility": -3.209
+                },
+                {
+                    "pH": 0.3,
+                    "solubility": -3.209
+                }
+            ]
+        },
+        "category": "HIGH",
+        "unit": "LOGS"
+    },
+    "headers": {
+        "solubility": {
+            "name": "solubility",
+            "type": "COMPLEX",
+            "source": "CALCULATOR"
+        }
+    }
+}
+</div>
+</form>
+
+
+<p><a href="#advanceddetails">Back to Properties list</a></p>
+	
+<h2 id="postdetails">4.3. View Properties Without Storing (upload molecules as JSON format)</h2>
+<p>You can view molecule properties without storing, just post the structures as a JSON message:</p>
+<form id="form312" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/util/detail" size="80" />
+	<input class="POST" type="button" value="POST" />
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">{
+	"structures": [
+        {"structure": "aspirin"},
+        {"structure": "benzylpenicillin"}
+    ],
+	"display":  {
+		"include": ["structureData", "image"],
+        "parameters": {
+            "structureData": "cdx",
+            "image": {"width": 100}
+        }
+	}
+}</div><label>response:</label>
+<div class="output_div">{
+    "data": [
+        {
+            "structureData": {
+                "binaryStructure": "...",
+                "format": "cdx",
+                "contentUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_455c6cddd97d9d1c468934d1b357009b?format=cdx&amp;contentName=structure",
+                "contentBaseUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_455c6cddd97d9d1c468934d1b357009b"
+            },
+            "image": {
+                "width": 100,
+                "height": 112,
+                "type": "png",
+                "image": "...",
+                "imageUrl": "http://restdemo.chemaxon.com/rest-v0/util/display/struc_455c6cddd97d9d1c468934d1b357009b_100x112.png"
+            }
+        },
+        {
+            "structureData": {
+                "binaryStructure": "...",
+                "format": "cdx",
+                "contentUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_a7134d8156bb6b7df6c0d152ee493dfe?format=cdx&amp;contentName=structure",
+                "contentBaseUrl": "http://restdemo.chemaxon.com/rest-v0/util/export/struc_a7134d8156bb6b7df6c0d152ee493dfe"
+            },
+            "image": {
+                "width": 100,
+                "height": 57,
+                "type": "png",
+                "image": "...",
+                "imageUrl": "http://restdemo.chemaxon.com/rest-v0/util/display/struc_a7134d8156bb6b7df6c0d152ee493dfe_100x57.png"
+            }
+        }
+    ],
+    "headers": {
+        "structureData": {
+            "name": "structureData",
+            "type": "STRUCTUREDATA",
+            "source": "GENERATED"
+        },
+        "image": {
+            "name": "image",
+            "type": "IMAGE",
+            "source": "GENERATED"
+        }
+    }
+}</div>
+</form>
+
+
+<h1 id="manipulate">5. Manipulate Data in the Database</h1>
+<p>The content of the database can be modified through these services.</p>
+
+<h2 id="import">5.1. Import to Existing Table</h2>
+<form id="form41" action="#">
+	<p class="warning">This request modifies the content of the underlying database!</p>
+	<p>Structures can be imported into an existing table: you have to specify the table and optionally the monitor-id <a href="#usemonitor">see Monitoring</a></p>
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">{
+    "monitorId": "", 
+    "data": [
+        {
+            "structure": "c1ccccc1", 
+            "additionalData": {
+                "key1": "a", 
+                "key2": "1"
+            }
+        }, 
+        {
+            "structure": "CCC", 
+            "additionalData": {
+                "key1": "b", 
+                "key2": "2"
+            }
+        }
+    ]
+}</div>
+<label>response:</label>
+<div class="output_div">{
+    "dbConfigName": "sample",
+    "table": {
+        "tableName": "test1-2",
+        "meta": {
+            "name": "test1-2",
+            "label": "test1 (2)",
+            "state": "READY"
+        },
+        "dbTable": {
+            "dbTableName": "C_TEST12"
+        },
+        "type": "ANY_STRUCTURES",
+        "properties": {
+            "tautomerDuplicateFiltering": "false",
+            "switchOffAllProtections": "false",
+            "fingerprint.numberOfBits": "512",
+            "fingerprint.numberOfOnes": "2",
+            "absoluteStereo": "true",
+            "JChemVersion": "5.12.2",
+            "validityTimestamp": "2013-04-09 10:14:01.559",
+            "version": "5120000",
+            "fingerprint.numberOfEdges": "6",
+            "duplicateFiltering": "false",
+            "fingerprint.numberOfStrucFPCols": "0",
+            "tableType": "2",
+            "creationTime": "2013-04-09 10:14:01.548",
+            "ctVersion": "5120000",
+            "mdVersion": "5120000"
+        }
+    },
+    "monitorId": ""
+}</div>
+</form>
+<p>The process reports the number of the sucessufully imported molecules and their IDs.</p>
+
+<h2 id="importnewtable">5.2. Import to New Table</h2>
+<p class="warning">This request modifies the content of the underlying database!</p>
+<p>A file can be imported as multipart form (<code>tableName  </code> and <code> monitorId </code> fields must located first, then the file itself.)</p>
+Importing in a JSON message: send a similar POST request as for <a href="#import">Import to Existing Table</a> to <code>http://localhost:8080/rest-v0/data/sample</code>
+<br>But define the table name in the <code>"tableName":"my_table_name"</code> field before <code>"monitorId"</code> field.
+<br>NOTE: If you import to an URL of an existing table, the tableName will be ignored.
+
+<h2 id="moleculeupdate">5.3. Update a Single Molecule</h2>
+<form id="form42" action="#">
+	<p class="warning">This request modifies the content of the underlying database!</p>
+	<p>A molecule can be modified by sending a POST request to the table's URL with the JSON message below:</p>
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/operation" size="80" />
+	<input class="POST" type="button" value="POST" />
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">{
+	"operationType": "UPDATE",
+	"cd_id": 100,
+	"structure": "CCCCC"
+}</div>
+<label>response:</label>
+<div class="output_div">{
+    "cd_id": 100,
+    "message": "updated successfully"
+}</div>
+</form>
+<p>The <code>operationType</code> attribute must be <code>UPDATE</code>, the <code>cd_id</code> is the id of the chosen structure and the <code>structure</code> field contains the new structure.</p>
+
+<h2 id="moleculedelete">5.4. Delete a Single Molecule</h2>    
+<form id="form43" action="#">
+	<p class="warning">This request modifies the content of the underlying database!</p>
+	<p>A molecule can be deleted by sending a POST request to the table's URL with the JSON message below:</p>
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/operation" size="80" />
+	<input class="POST" type="button" value="POST" />
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">{
+	"operationType": "DELETE",
+		"cd_id": 100
+}</div>
+<label>response:</label>
+<div class="output_div">{
+    "cd_id": 100,
+    "message": "deleted successfully"
+}</div>
+</form>
+<p>The <code>operationType</code> attribute must be <code>DELETE</code>, the <code>cd_id</code> is the id of the chosen molecule.</p>
+
+
+<h2 id="moleculeinsert">5.5. Insert a Single Molecule</h2>
+<form id="form44" action="#">
+	<p class="warning">This request modifies the content of the underlying database!</p>
+	<p>A molecule can be inserted by sending a POST request to the table's URL with the JSON message below:</p>
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/ChEBI_lite_3star/operation" size="80" />
+	<input class="POST" type="button" value="POST" />
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">{
+  	"operationType": "INSERT",
+      "structure": "CCCCC"
+}
+</div>
+<label>response:</label>
+<div class="output_div">{
+    "cd_id": 23704,
+    "message": "inserted successfully"
+}</div>
+</form>
+<p>The <code>operationType</code> attribute must be <code>INSERT</code>, <code>structure</code> field contains the new structure.
+<br>The response defines the <code>cd_id</code> of the inserted molecule.</p>
+
+<h1>5. Additional functions</h1>
+
+<h1 id="monitoring">6. Monitoring </h1>
+<p>Monitoring collects information about the status of a longer process. Currently long queries, imports and database recalcualtions can be monitored.</p>
+
+<h2 id="createmonitor">6.1. Create a New Monitor</h2>
+<form id="form512" action="#">
+	<p>Monitors have to be created in advance to follow a long process. To create a monitor send a POST request opening this URL:</p>
+	<input class="url" type="text" data-baseurl="true" value="/monitor" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>response:</label>
+<div class="output_div">"7fab98b4-df1a-4f86-88f3-3f19cf30c1c4"</div>
+</form>
+<p>This request returns an id which must be passed to the monitored process.</p>
+
+<h2 id="listmonitors">6.2. List Active Monitors</h2>
+
+<form id="form511" action="#">
+	<p>To list the active monitors send a GET request to the same URL:</p>
+	<input class="url" type="text" data-baseurl="true" value="/monitor" size="80">
+	<input class="GET" type="button" value="GET">
+	<label>response:</label>
+<div class="output_div">{}</div>
+</form>
+<p>The result contains an array of all available monitors; each monitor entry contains a status (typically: <code>CREATED</code>, <code>STARTED</code>, <code>RUNNING</code>, <code>FINISHED</code>)</p>
+
+
+
+<h2 id="querymonitor">6.3. Query a Monitor's Status</h2>
+<form id="form513" action="#">
+	<p>To check the monitor's status send a GET request to this URL:</p>
+	<input class="url" type="text" data-baseurl="true" value="/monitor/7fab98b4-df1a-4f86-88f3-3f19cf30c1c4" size="80"/>
+	<input class="GET" type="button" value="GET" />
+<label>response:</label>
+<div class="output_div">{
+    "state": "CREATED",
+    "monitorId": "7fab98b4-df1a-4f86-88f3-3f19cf30c1c4"
+}
+</div>
+</form>
+<p>Retrieves the status of the monitor with the specified id.</p>
+
+<h2 id="usemonitor">6.4. Use a Monitor During Import</h2>
+<p>Use the monitor during import to see an example for the monitoring process in action.</p>
+1. Create a new monitor <a href="#createmonitor">here</a>
+<br>2. Check the monitor status <a href="#querymonitor">here</a>
+<br>3. Use the created monitor in the POST request (in the <code>"monitorId"</code> field) <a href="#import">here</a>
+<br>4. Finally, check the <a href="#querymonitor">monitor status again</a> and notice how it changed 
+
+<p>To see how a monitor works, import a large file and pass the monitor value you just created. Then you can modify the request to read its status</p>
+
+<h1 id="configuration">7. Configuration Storage</h1>
+
+<p class="warning">This is temporary storage - all data will be LOST if the server stops/restarts, which can be used by the client application to store the application&#39;s state.<br />
+It functions like a property store and currently it is a global store. We are going to extend this property store to be user specific. (I.e. to contain user specific information.) </p>
+
+<h2 id="storeconfig">7.1. Store/List Configs</h2>
+<form id="form521" action="#">
+	<p>If empty data is sent, that will return the value of the specified key; otherwise it will overwrite its content with the specified data. The expected JSON data format is a map (key-value pairs).</p>
+	<input class="url" type="text" data-baseurl="true" value="/config/store/test" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+	<div class="params_div">{"testKey":"testValue"}</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "testKey": "testValue"
+}
+</div>
+</form>
+
+<h2 id="clearconfig">7.2. Clear Configs</h2>
+<form id="form522" action="#">
+	<p>If empty data is sent, that will return the value of the specified key; otherwise it will overwrite its content with the specified data.</p>
+	<input class="url" type="text" data-baseurl="true" value="/config/clear/test" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+	<div class="params_div"></div>
+	<label>response:</label>
+<div class="output_div"></div>
+</form>
+
+<h1 id="furtheroptions">8. Further Options and Functionalities</h1>
+<p>These functions are mainly used by Marvin for JavaScript.</p>
+
+
+<h2 id="stringMolExport">8.1. Simple Format Conversion</h2>
+<form id="form532" action="#">
+	<p>This function convers a structure to an another format (the fomat can be only a text based type).</p>
+	<input class="url" type="text" data-baseurl="true" value="/util/calculate/stringMolExport" size="80" />
+	<input class="POST" type="button" value="POST" />
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+    "structure": "CCCCC",
+    "parameters": "mrv"
+}</div>
+<label>response:</label>
+<div class="output_div text">&lt;?xml version="1.0" encoding="windows-1250"?&gt;&lt;cml version="ChemAxon file format v5.10.0, generated by vunknown"&gt;
+&lt;MDocument&gt;&lt;MChemicalStruct&gt;&lt;molecule molID="m1"&gt;&lt;atomArray atomID="a1 a2 a3 a4 a5" elementType="C C C C C" x2="4.619999999999999 3.8499999999999996 2.3099999999999996 1.54 0.0" y2="-2.6673582436560714 -1.333679121828036 -1.3336791218280357 0.0 0.0"&gt;&lt;/atomArray&gt;&lt;bondArray&gt;&lt;bond atomRefs2="a1 a2" order="1"&gt;&lt;/bond&gt;&lt;bond atomRefs2="a2 a3" order="1"&gt;&lt;/bond&gt;&lt;bond atomRefs2="a3 a4" order="1"&gt;&lt;/bond&gt;&lt;bond atomRefs2="a4 a5" order="1"&gt;&lt;/bond&gt;&lt;/bondArray&gt;&lt;/molecule&gt;&lt;/MChemicalStruct&gt;&lt;/MDocument&gt;
+&lt;/cml&gt;
+</div>
+</form>
+
+<h4>Parameters</h4>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>structure</td><td>Molecule</td><td>molecule in any format that is recognized by Marvin</td>
+		</tr>
+		<tr>
+			<td>parameters</td><td>string</td><td>format string for the exporter</td>
+		</tr>
+	</tbody>
+</table>
+<p>The result (<code>Content-Type: text/plain</code>) contains the converted structure in the given format.</p>
+
+
+<h2 id="molExport">8.2. Format Conversion</h2>
+<form id="form533" action="#">
+	<p>This function convers a structure to an another format (the fomat can be image format as well)</p>
+	<input class="url" type="text" data-baseurl="true" value="/util/calculate/molExport" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+    "structure": "aspirin",
+    "parameters": "mrv"
+}</div>
+<label>response:</label>
+<div class="output_div">{
+    "structure": "...",
+    "format": "mrv",
+    "contentUrl": "http://localhost:8080/rest-v0/util/export/struc_455c6cddd97d9d1c468934d1b357009b?format=mrv&amp;contentName=structure",
+    "contentBaseUrl": "http://localhost:8080/rest-v0/util/export/struc_455c6cddd97d9d1c468934d1b357009b"
+}
+</div>
+</form>
+<h4>Parameters</h4>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>structure</td><td>Molecule</td><td>molecule in any format that is recognized by Marvin</td>
+		</tr>
+		<tr>
+			<td>inputFormat</td><td>string</td><td>format string, hint for the input structure (optional)</td>
+		</tr>
+		<tr>
+			<td>parameters</td><td>string</td><td>format string for the exporter</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>The result (<code>Content-Type: application/json</code>) contains the converted structure in the given format, and direct download link for the converted structure. (<code>contentUrl</code>)</p>
+
+<h2 id="cipStereoInfo">8.3. CIP Stereo Info</h2>
+<form id="form534" action="#">
+	<p>This function provides R/S and E/Z stereo info according to Cahn–Ingold–Prelog priority rules for the input structure's atoms and bonds</p>
+	<input class="url" type="text" data-baseurl="true" value="/util/calculate/cipStereoInfo" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+    "structure": "cis-1,2-dichlorocyclohexane"
+}</div>
+<label>response:</label>
+<div class="output_div">{
+    "tetraHedral": [
+        {
+            "atomIndex": 0,
+            "chirality": "R"
+        },
+        {
+            "atomIndex": 1,
+            "chirality": "S"
+        }
+    ],
+    "doubleBond": []
+}
+</div>
+</form>
+<h4>Parameters</h4>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>structure</td><td>Molecule</td><td>molecule in any format that is recognized by Marvin</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>The result (<code>Content-Type: application/json</code>) contains the stereo information for the intput structure.</p>
+
+
+<h2 id="structureChecker">8.4. Structure Checker</h2>
+<form id="form535" action="#">
+	<p>Service for running structure checkers and fixers on the input.</p>
+	<input class="url" type="text" data-baseurl="true" value="/util/calculate/structureChecker" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+    "structure": "&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;windows-1252\&quot;?&gt;&lt;cml version=\&quot;ChemAxon file format v6.0, generated by v6.0.0\&quot;&gt;\n&lt;MDocument&gt;&lt;MChemicalStruct&gt;&lt;molecule molID=\&quot;m1\&quot;&gt;&lt;atomArray atomID=\&quot;a1 a2 a3 a4 a5 a6 a7 a8 a9 a10\&quot; elementType=\&quot;C C C C C C C C C C\&quot; x2=\&quot;7.260000228881836 5.926360228881836 4.592566228881836 4.592566228881836 5.926360228881836 7.260000228881836 8.593640228881835 9.927434228881836 10.917434953674316 8.593640228881835\&quot; y2=\&quot;-6.545000057220459 -5.775000057220459 -6.545000057220459 -8.085000057220459 -8.855000057220458 -8.085000057220459 -8.855000057220458 -8.085000057220459 -4.950000267028809 -5.775000057220459\&quot;&gt;&lt;/atomArray&gt;&lt;bondArray&gt;&lt;bond atomRefs2=\&quot;a1 a2\&quot; order=\&quot;1\&quot;&gt;&lt;/bond&gt;&lt;bond atomRefs2=\&quot;a1 a6\&quot; order=\&quot;2\&quot;&gt;&lt;/bond&gt;&lt;bond atomRefs2=\&quot;a1 a10\&quot; order=\&quot;1\&quot;&gt;&lt;/bond&gt;&lt;bond atomRefs2=\&quot;a2 a3\&quot; order=\&quot;2\&quot;&gt;&lt;/bond&gt;&lt;bond atomRefs2=\&quot;a3 a4\&quot; order=\&quot;1\&quot;&gt;&lt;/bond&gt;&lt;bond atomRefs2=\&quot;a4 a5\&quot; order=\&quot;2\&quot;&gt;&lt;/bond&gt;&lt;bond atomRefs2=\&quot;a5 a6\&quot; order=\&quot;1\&quot;&gt;&lt;/bond&gt;&lt;bond atomRefs2=\&quot;a6 a7\&quot; order=\&quot;1\&quot;&gt;&lt;/bond&gt;&lt;bond atomRefs2=\&quot;a7 a8\&quot; order=\&quot;2\&quot;&gt;&lt;/bond&gt;&lt;bond atomRefs2=\&quot;a8 a9\&quot; order=\&quot;1\&quot;&gt;&lt;/bond&gt;&lt;bond atomRefs2=\&quot;a9 a10\&quot; order=\&quot;2\&quot;&gt;&lt;/bond&gt;&lt;/bondArray&gt;&lt;/molecule&gt;&lt;/MChemicalStruct&gt;&lt;/MDocument&gt;\n&lt;/cml&gt;",
+    "parameters": {
+    "checkers": [
+		    {
+			    "checkerId":"abbrevgroup",
+			    "fixerId":"contractgroup",
+			    "parameters":{
+			    	"excluded": {
+			    		"abbreviations":[]
+			    	}
+			    }
+		    },
+		    {
+			    "checkerId":"bondlength",
+			    "fixerId":"clean"
+		    }
+	    ]
+	}
+}</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "headers": {
+        "bondlength": {
+            "name": "bondlength",
+            "type": "COMPLEX",
+            "source": "CALCULATOR"
+        },
+        "result": {
+            "name": "result",
+            "type": "MOLECULE",
+            "source": "CALCULATOR"
+        }
+    },
+    "bondlength": {
+        "checkerName": "Bond Length Checker",
+        "description": "2 bonds found with wrong length",
+        "errors": {
+            "atoms": [],
+            "bonds": [
+                {
+                    "bondIndex": 9,
+                    "atom1Index": 7,
+                    "atom2Index": 8
+                },
+                {
+                    "bondIndex": 10,
+                    "atom1Index": 8,
+                    "atom2Index": 9
+                }
+            ]
+        }
+    },
+    "result": {
+        "headers": {
+            "structureData": {
+                "name": "structureData",
+                "type": "STRUCTUREDATA",
+                "source": "GENERATED"
+            },
+            "cachekey": {
+                "name": "cachekey",
+                "type": "TEXT",
+                "source": "PROCESS"
+            },
+            "image": {
+                "name": "image",
+                "type": "IMAGE",
+                "source": "GENERATED"
+            }
+        },
+        "structureData": {
+            "structure": "...",
+            "format": "mrv",
+            "contentUrl": "http://localhost:8080/webservices2/rest-v0/util/export/struc_9cf3895dcbc912905c2371072a001d68?format=mrv&contentName=structure",
+            "contentBaseUrl": "http://localhost:8080/webservices2/rest-v0/util/export/struc_9cf3895dcbc912905c2371072a001d68"
+        },
+        "cachekey": "struc_9cf3895dcbc912905c2371072a001d68",
+        "image": {
+            "width": 300,
+            "height": 82,
+            "type": "png",
+            "image": "...",
+            "imageUrl": "http://localhost:8080/webservices2/rest-v0/util/display/struc_9cf3895dcbc912905c2371072a001d68_300x82.png"
+        }
+    }
+}
+</div>
+</form>
+
+<p>The result (<code>Content-Type: application/json</code>) contains the determined errors and the fixed molecule</p>
+
+<h2 id="checkerList">Listing available structure checkers</h2>
+<a href="http://www.chemaxon.com/marvin/help/structurechecker/checkerlist.html">See description of available Structure Checkers</a>
+<p>Returns a list of available structure checkers, matching fixers and list of parameters</p>
+<form id="form5351" action="#">
+	<input class="url" type="text" data-baseurl="true" value="/util/checkers" size="80"/>
+	<input class="GET" type="button" value="GET" />
+<label>response:</label>
+<div class="output_div" style="height:510px;">
+[
+    {
+        "checkerIds": [
+            "abbrevgroup"
+        ],
+        "checkerName": "Abbreviated Group Checker",
+        "description": "Detects abbreviated groups",
+        "errorType": "ABBREVIATED_GROUP",
+        "severity": "WARNING",
+        "availableFixers": [
+            {
+                "fixerIds": [
+                    "contractgroup"
+                ],
+                "fixerName": "Contract Group",
+                "description": "Contracts abbreviated groups.",
+                "fixerClass": "chemaxon.fixers.ContractGroupFixer",
+                "priority": 50
+            },
+            {
+                "fixerIds": [
+                    "expandgroup"
+                ],
+                "fixerName": "Expand Group",
+                "description": "Expands abbreviated groups.",
+                "fixerClass": "chemaxon.fixers.ExpandGroupFixer",
+                "priority": 50
+            },
+            {
+                "fixerIds": [
+                    "ungroup"
+                ],
+                "fixerName": "Ungroup",
+                "description": "Ungroups abbreviated groups.",
+                "fixerClass": "chemaxon.fixers.UngroupFixer",
+                "priority": 50
+            }
+        ],
+        "parameters": {
+            "searchContracted": {
+                "type": "BOOLEAN",
+                "defaultValue": true
+            },
+            "searchExpanded": {
+                "type": "BOOLEAN",
+                "defaultValue": true
+            },
+            "excluded": {
+                "abbreviations": {
+                    "jsonArray": true,
+                    "elementType": {
+                        "type": "STRING"
+                    }
+                }
+            }
+        }
+    }
+]
+</div>
+</form>
+<p>This request returns the list of available structure checkers</p>
+
+
+<h2 id="formatAnalyzer">8.5. Format Analyzer</h2>
+<form id="form536" action="#">
+	<p>This function returns the format and properties of the input structure.</p>
+	<input class="url" type="text" data-baseurl="true" value="/util/analyze" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>POST request (<code>Content-type: */*</code>):</label>
+<div class="params_div any">
+c1ccccc1
+</div>
+<label>response:</label>
+<div class="output_div">{
+    "type": "mrv",
+    "properties": {
+        "prop2": "val2",
+        "prop1": "val1"
+    }
+}
+</div>
+</form>
+
+<p>The input is a molecule in any format that is recognized by Marvin. The result (<code>Content-Type: application/json</code>) contains the format and properties.</p>
+
+<h2>Filtering/transforming molecules</h2>
+<p>Molecule filters are functions that has a structure object as input and has a somehow modified structure as output, like clean or standardize.</p>
+<p>All available filters can be used as individual services, returning the structure in plain/text mrv format. More interesting way of filter usage is when they are defined for other calculator services as a filter chain, samples are shown below.</p>
+
+
+<h2 id="clean">8.6. Clean Structure</h2>
+<form id="form531" action="#">
+	<p>This function calculates a chemically reliable layout of the specified molecule.</p>
+	<input class="url" type="text" data-baseurl="true" value="/util/convert/clean" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+    "structure": "CCCCC",
+    "parameters": {
+        "dim": 2,
+        "fixed": [
+            1
+        ],
+        "opts": "t5000"
+    }
+}</div>
+<label>response:</label>
+<div class="output_div text">
+&lt;?xml version="1.0" encoding="windows-1250"?&gt;&lt;cml version="ChemAxon file format v5.10.0, generated by vunknown"&gt;
+&lt;MDocument&gt;&lt;MChemicalStruct&gt;&lt;molecule molID="m1"&gt;&lt;atomArray atomID="a1 a2 a3 a4 a5" elementType="C C C C C" x2="8.469999999999999 7.699999999999999 6.159999999999999 5.39 3.8499999999999996" y2="-4.001037365484107 -2.667358243656072 -2.6673582436560714 -1.333679121828036 -1.333679121828036"&gt;&lt;/atomArray&gt;&lt;bondArray&gt;&lt;bond atomRefs2="a1 a2" order="1"&gt;&lt;/bond&gt;&lt;bond atomRefs2="a2 a3" order="1"&gt;&lt;/bond&gt;&lt;bond atomRefs2="a3 a4" order="1"&gt;&lt;/bond&gt;&lt;bond atomRefs2="a4 a5" order="1"&gt;&lt;/bond&gt;&lt;/bondArray&gt;&lt;/molecule&gt;&lt;/MChemicalStruct&gt;&lt;/MDocument&gt;
+&lt;/cml&gt;
+</div>
+</form>
+<h4>Parameters</h4>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>structure</td><td>Molecule</td><td>molecule in any format that is recognized by Marvin</td>
+		</tr>
+		<tr>
+			<td>parameters.dim</td><td>integer</td><td>dimensions to clean to. 2 or 3</td>
+		</tr>
+		<tr>
+			<td>parameters.fixed</td><td>array of integers</td><td>array of fixed atom indices</td>
+		</tr>
+		<tr>
+			<td>parameters.opts</td><td>string</td><td>other options of the cleaner</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>The result will contain the cleaned structure in mrv format (<code>Content-Type: text/plain</code>).</p>
+
+
+<h2 id="hydrogenizer">8.7. Hydrogenize/Dehydrogenize Structure</h2>
+<form id="form531" action="#">
+	<p>Addition and removal of explicit hydrogens or lone pairs.</p>
+	<input class="url" type="text" data-baseurl="true" value="/util/convert/hydrogenizer" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+    "structure": "CCCCC",
+    "parameters": {
+        "method": "HYDROGENIZE",
+        "atoms": [
+            1
+        ]
+    }
+}</div>
+<label>response:</label>
+<div class="output_div text">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;windows-1250&quot;?&gt;
+	&lt;cml xmlns=&quot;http://www.chemaxon.com&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.chemaxon.com/marvin/help/formats/schema/mrvSchema_6_2_0.xsd&quot; version=&quot;ChemAxon file format v6.2, generated by v6.3.0&quot;&gt;
+		&lt;MDocument&gt;
+			&lt;MChemicalStruct&gt;
+				&lt;molecule molID=&quot;m1&quot;&gt;
+					&lt;atomArray atomID=&quot;a1 a2 a3 a4 a5 a6 a7&quot; elementType=&quot;C C C C C H H&quot;&gt;&lt;/atomArray&gt;
+					&lt;bondArray&gt;
+						&lt;bond id=&quot;b1&quot; atomRefs2=&quot;a1 a2&quot; order=&quot;1&quot;&gt;&lt;/bond&gt;
+						&lt;bond id=&quot;b2&quot; atomRefs2=&quot;a2 a3&quot; order=&quot;1&quot;&gt;&lt;/bond&gt;
+						&lt;bond id=&quot;b3&quot; atomRefs2=&quot;a3 a4&quot; order=&quot;1&quot;&gt;&lt;/bond&gt;
+						&lt;bond id=&quot;b4&quot; atomRefs2=&quot;a4 a5&quot; order=&quot;1&quot;&gt;&lt;/bond&gt;
+						&lt;bond id=&quot;b5&quot; atomRefs2=&quot;a2 a6&quot; order=&quot;1&quot;&gt;&lt;/bond&gt;
+						&lt;bond id=&quot;b6&quot; atomRefs2=&quot;a2 a7&quot; order=&quot;1&quot;&gt;&lt;/bond&gt;
+					&lt;/bondArray&gt;
+				&lt;/molecule&gt;
+			&lt;/MChemicalStruct&gt;
+		&lt;/MDocument&gt;
+	&lt;/cml&gt;
+</div>
+</form>
+<h4>Parameters</h4>
+<table>
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>method</td>
+        <td>STRING</td>
+        <td>
+          default: <b>DEHYDROGENIZE</b>
+          <ul>
+            <li><b>DEHYDROGENIZE</b></li>
+            <li><i>HYDROGENIZE</i></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>atoms</td>
+        <td>ARRAY OF INTEGER</td>
+        <td>The subset of atom indexes to include or null for all<br /></td>
+      </tr>
+    </tbody>
+</table>
+
+<p>The result will contain the converted structure in mrv format (<code>Content-Type: text/plain</code>).</p>
+
+<h2 id="standardizer">8.8. Standardizer</h2>
+<form id="form534" action="#">
+	<p>This function is for standardizing a structure with the provided standardizer configuration.</p>
+	<input class="url" type="text" data-baseurl="true" value="/util/convert/standardizer" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+    "structure": "aspirin",
+    "parameters": {
+        "standardizerDefinition": "&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;&lt;StandardizerConfiguration&gt;&lt;Actions&gt;&lt;RemoveExplicitH ID=\&quot;RemoveExplicitH\&quot;/&gt;&lt;\/Actions&gt;&lt;\/StandardizerConfiguration&gt;"
+    }
+}
+</div>
+<label>response:</label>
+<div class="output_div text">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;windows-1250&quot;?&gt;
+<br>&lt;cml xmlns=&quot;http://www.chemaxon.com&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+<br>    xsi:schemaLocation=&quot;http://www.chemaxon.com/marvin/help/formats/schema/mrvSchema_14_7_14.xsd&quot;
+<br>    version=&quot;ChemAxon file format v14.7.14, generated by v14.7.21.0&quot;&gt;
+<br>    &lt;MDocument&gt;
+<br>        &lt;MChemicalStruct&gt;
+<br>            &lt;reaction&gt;
+<br>                &lt;arrow type=&quot;DEFAULT&quot; x1=&quot;-0.856201456760437&quot; y1=&quot;0.08057679288955857&quot;
+<br>                    x2=&quot;3.5231366655054117&quot; y2=&quot;0.08057679288955857&quot;/&gt;
+<br>                &lt;reactantList&gt;
+<br>                    &lt;molecule molID=&quot;m1&quot;&gt;
+<br>                        &lt;atomArray atomID=&quot;a1 a2 a3 a4 a5&quot; elementType=&quot;C C C C N&quot;
+<br>                            mrvMap=&quot;1 2 3 4 5&quot; x2=&quot;-11.33 -11.33 -11.33 -9.79 -12.870000000000001&quot;
+<br>                            y2=&quot;-1.5400000000000003 -1.8432548351129281E-16 1.5399999999999998 -3.7292109057998523E-16 -1.8432548351129281E-16&quot;/&gt;
+<br>                        &lt;bondArray&gt;
+<br>                            &lt;bond id=&quot;b1&quot; atomRefs2=&quot;a1 a2&quot; order=&quot;1&quot;/&gt;
+<br>                            &lt;bond id=&quot;b2&quot; atomRefs2=&quot;a2 a3&quot; order=&quot;1&quot;/&gt;
+<br>                            &lt;bond id=&quot;b3&quot; atomRefs2=&quot;a2 a4&quot; order=&quot;1&quot;/&gt;
+<br>                            &lt;bond id=&quot;b4&quot; atomRefs2=&quot;a2 a5&quot; order=&quot;1&quot;/&gt;
+<br>                        &lt;/bondArray&gt;
+<br>                    &lt;/molecule&gt;
+<br>                    &lt;molecule molID=&quot;m2&quot;&gt;
+<br>                        &lt;atomArray atomID=&quot;a1 a2 a3 a4 a5 a6 a7&quot; elementType=&quot;C C O O C C O&quot;
+<br>                            mrvMap=&quot;6 7 8 9 10 11 12&quot;
+<br>                            x2=&quot;-3.080000000000002 -3.8500000000000014 -5.3900000000000015 -3.08 -3.8499999999999996 -3.08 -5.390000000000001&quot;
+<br>                            y2=&quot;2.6673582436560714 1.333679121828035 1.333679121828035 -2.220446049250313E-16 -1.333679121828036 -2.6673582436560714 -1.333679121828036&quot;/&gt;
+<br>                        &lt;bondArray&gt;
+<br>                            &lt;bond id=&quot;b1&quot; atomRefs2=&quot;a1 a2&quot; order=&quot;1&quot;/&gt;
+<br>                            &lt;bond id=&quot;b2&quot; atomRefs2=&quot;a2 a3&quot; order=&quot;2&quot;/&gt;
+<br>                            &lt;bond id=&quot;b3&quot; atomRefs2=&quot;a2 a4&quot; order=&quot;1&quot;/&gt;
+<br>                            &lt;bond id=&quot;b4&quot; atomRefs2=&quot;a4 a5&quot; order=&quot;1&quot;/&gt;
+<br>                            &lt;bond id=&quot;b5&quot; atomRefs2=&quot;a5 a6&quot; order=&quot;1&quot;/&gt;
+<br>                            &lt;bond id=&quot;b6&quot; atomRefs2=&quot;a5 a7&quot; order=&quot;2&quot;/&gt;
+<br>                        &lt;/bondArray&gt;
+<br>                    &lt;/molecule&gt;
+<br>                &lt;/reactantList&gt;
+<br>                &lt;productList&gt;
+<br>                    &lt;molecule molID=&quot;m3&quot;&gt;
+<br>                        &lt;atomArray atomID=&quot;a1 a2 a3 a4 a5 a6 a7 a8&quot; elementType=&quot;C C O N C C C C&quot;
+<br>                            mrvMap=&quot;6 7 8 5 2 1 4 3&quot;
+<br>                            x2=&quot;7.0536791218280355 7.0536791218280355 5.72 8.38735824365607 8.38735824365607 8.387358243656072 9.927358243656071 6.847358243656071&quot;
+<br>                            y2=&quot;-2.695 -1.1549999999999998 -0.3849999999999999 -0.38500000000000034 1.1549999999999998 2.695 1.1549999999999994 1.1549999999999998&quot;/&gt;
+<br>                        &lt;bondArray&gt;
+<br>                            &lt;bond id=&quot;b1&quot; atomRefs2=&quot;a1 a2&quot; order=&quot;1&quot;/&gt;
+<br>                            &lt;bond id=&quot;b2&quot; atomRefs2=&quot;a2 a3&quot; order=&quot;2&quot;/&gt;
+<br>                            &lt;bond id=&quot;b3&quot; atomRefs2=&quot;a2 a4&quot; order=&quot;1&quot;/&gt;
+<br>                            &lt;bond id=&quot;b4&quot; atomRefs2=&quot;a4 a5&quot; order=&quot;1&quot;/&gt;
+<br>                            &lt;bond id=&quot;b5&quot; atomRefs2=&quot;a5 a6&quot; order=&quot;1&quot;/&gt;
+<br>                            &lt;bond id=&quot;b6&quot; atomRefs2=&quot;a5 a7&quot; order=&quot;1&quot;/&gt;
+<br>                            &lt;bond id=&quot;b7&quot; atomRefs2=&quot;a5 a8&quot; order=&quot;1&quot;/&gt;
+<br>                        &lt;/bondArray&gt;
+<br>                    &lt;/molecule&gt;
+<br>                &lt;/productList&gt;
+<br>            &lt;/reaction&gt;
+<br>        &lt;/MChemicalStruct&gt;
+<br>    &lt;/MDocument&gt;
+<br>&lt;/cml&gt;
+</div>
+</form>
+<h4>Parameters</h4>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Type</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>structure</td><td>Molecule</td><td>molecule in any format that is recognized by Marvin</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>The result is the standardized molecule in <code>plain/text</code> mrv format.</p>
+
+<h2 id="reactionconverter">8.9. Reaction converter, automapper</h2>
+<form id="form534" action="#">
+	<p>This function is for converting to reaction format and doing automapping of reactions.</p>
+	<input class="url" type="text" data-baseurl="true" value="/util/convert/reactionConverter" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+    &quot;structure&quot;: &quot;[#6]C([#6])([#6])[#7].[#6]-[#6](=O)-[#8]-[#6](-[#6])=O&gt;&gt;[#6]-[#6](=O)-[#7]C([#6])([#6])[#6]&quot;,
+    &quot;parameters&quot;: {
+        &quot;autoMappingStyle&quot;: &quot;COMPLETE&quot;
+    }
+}
+</div>
+<label>response:</label>
+<div class="output_div text">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;windows-1250&quot;?&gt;<br/>&lt;cml xmlns=&quot;http://www.chemaxon.com&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;<br/>    xsi:schemaLocation=&quot;http://www.chemaxon.com/marvin/help/formats/schema/mrvSchema_14_7_14.xsd&quot;<br/>    version=&quot;ChemAxon file format v14.7.14, generated by v14.7.21.0&quot;&gt;<br/>    &lt;MDocument&gt;<br/>        &lt;MChemicalStruct&gt;<br/>            &lt;reaction&gt;<br/>                &lt;arrow type=&quot;DEFAULT&quot; x1=&quot;-0.856201456760437&quot; y1=&quot;0.08057679288955857&quot;<br/>                    x2=&quot;3.5231366655054117&quot; y2=&quot;0.08057679288955857&quot;/&gt;<br/>                &lt;reactantList&gt;<br/>                    &lt;molecule molID=&quot;m1&quot;&gt;<br/>                        &lt;atomArray atomID=&quot;a1 a2 a3 a4 a5&quot; elementType=&quot;C C C C N&quot;<br/>                            mrvMap=&quot;1 2 3 4 5&quot; x2=&quot;-11.33 -11.33 -11.33 -9.79 -12.870000000000001&quot;<br/>                            y2=&quot;-1.5400000000000003 -1.8432548351129281E-16 1.5399999999999998 -3.7292109057998523E-16 -1.8432548351129281E-16&quot;/&gt;<br/>                        &lt;bondArray&gt;<br/>                            &lt;bond id=&quot;b1&quot; atomRefs2=&quot;a1 a2&quot; order=&quot;1&quot;/&gt;<br/>                            &lt;bond id=&quot;b2&quot; atomRefs2=&quot;a2 a3&quot; order=&quot;1&quot;/&gt;<br/>                            &lt;bond id=&quot;b3&quot; atomRefs2=&quot;a2 a4&quot; order=&quot;1&quot;/&gt;<br/>                            &lt;bond id=&quot;b4&quot; atomRefs2=&quot;a2 a5&quot; order=&quot;1&quot;/&gt;<br/>                        &lt;/bondArray&gt;<br/>                    &lt;/molecule&gt;<br/>                    &lt;molecule molID=&quot;m2&quot;&gt;<br/>                        &lt;atomArray atomID=&quot;a1 a2 a3 a4 a5 a6 a7&quot; elementType=&quot;C C O O C C O&quot;<br/>                            mrvMap=&quot;6 7 8 9 10 11 12&quot;<br/>                            x2=&quot;-3.080000000000002 -3.8500000000000014 -5.3900000000000015 -3.08 -3.8499999999999996 -3.08 -5.390000000000001&quot;<br/>                            y2=&quot;2.6673582436560714 1.333679121828035 1.333679121828035 -2.220446049250313E-16 -1.333679121828036 -2.6673582436560714 -1.333679121828036&quot;/&gt;<br/>                        &lt;bondArray&gt;<br/>                            &lt;bond id=&quot;b1&quot; atomRefs2=&quot;a1 a2&quot; order=&quot;1&quot;/&gt;<br/>                            &lt;bond id=&quot;b2&quot; atomRefs2=&quot;a2 a3&quot; order=&quot;2&quot;/&gt;<br/>                            &lt;bond id=&quot;b3&quot; atomRefs2=&quot;a2 a4&quot; order=&quot;1&quot;/&gt;<br/>                            &lt;bond id=&quot;b4&quot; atomRefs2=&quot;a4 a5&quot; order=&quot;1&quot;/&gt;<br/>                            &lt;bond id=&quot;b5&quot; atomRefs2=&quot;a5 a6&quot; order=&quot;1&quot;/&gt;<br/>                            &lt;bond id=&quot;b6&quot; atomRefs2=&quot;a5 a7&quot; order=&quot;2&quot;/&gt;<br/>                        &lt;/bondArray&gt;<br/>                    &lt;/molecule&gt;<br/>                &lt;/reactantList&gt;<br/>                &lt;productList&gt;<br/>                    &lt;molecule molID=&quot;m3&quot;&gt;<br/>                        &lt;atomArray atomID=&quot;a1 a2 a3 a4 a5 a6 a7 a8&quot; elementType=&quot;C C O N C C C C&quot;<br/>                            mrvMap=&quot;6 7 8 5 2 1 4 3&quot;<br/>                            x2=&quot;7.0536791218280355 7.0536791218280355 5.72 8.38735824365607 8.38735824365607 8.387358243656072 9.927358243656071 6.847358243656071&quot;<br/>                            y2=&quot;-2.695 -1.1549999999999998 -0.3849999999999999 -0.38500000000000034 1.1549999999999998 2.695 1.1549999999999994 1.1549999999999998&quot;/&gt;<br/>                        &lt;bondArray&gt;<br/>                            &lt;bond id=&quot;b1&quot; atomRefs2=&quot;a1 a2&quot; order=&quot;1&quot;/&gt;<br/>                            &lt;bond id=&quot;b2&quot; atomRefs2=&quot;a2 a3&quot; order=&quot;2&quot;/&gt;<br/>                            &lt;bond id=&quot;b3&quot; atomRefs2=&quot;a2 a4&quot; order=&quot;1&quot;/&gt;<br/>                            &lt;bond id=&quot;b4&quot; atomRefs2=&quot;a4 a5&quot; order=&quot;1&quot;/&gt;<br/>                            &lt;bond id=&quot;b5&quot; atomRefs2=&quot;a5 a6&quot; order=&quot;1&quot;/&gt;<br/>                            &lt;bond id=&quot;b6&quot; atomRefs2=&quot;a5 a7&quot; order=&quot;1&quot;/&gt;<br/>                            &lt;bond id=&quot;b7&quot; atomRefs2=&quot;a5 a8&quot; order=&quot;1&quot;/&gt;<br/>                        &lt;/bondArray&gt;<br/>                    &lt;/molecule&gt;<br/>                &lt;/productList&gt;<br/>            &lt;/reaction&gt;<br/>        &lt;/MChemicalStruct&gt;<br/>    &lt;/MDocument&gt;<br/>&lt;/cml&gt;<br/>
+</div>
+</form>
+<h4>Parameters</h4>
+<table>
+   <thead>
+      <tr>
+         <th>Option</th>
+         <th>Type</th>
+         <th>Description</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>autoMappingStyle</td>
+         <td>STRING</td>
+         <td>
+            default: <b>OFF</b>
+            <ul>
+               <li>
+                  <b>OFF</b>
+               </li>
+               <li>
+                  <i>CHANGING</i>
+               </li>
+               <li>
+                  <i>COMPLETE</i>
+               </li>
+               <li>
+                  <i>MATCHING</i>
+               </li>
+            </ul>
+         </td>
+      </tr>
+   </tbody>
+</table>
+
+<p>The result is the converted reaction in <code>plain/text</code> mrv format.</p>
+
+<h2 id="filterChains">8.10. Filter Chains</h2>
+<p>Using filters as a filter chain (sample for format conversion service)</p>
+<form id="form533" action="#">
+	<p>Converting a structure to mrv format with using the clean and standardizer filters on it first.</p>
+	<input class="url" type="text" data-baseurl="true" value="/util/calculate/molExport" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+    "structure": "aspirin",
+    "parameters": "mrv",
+    "filterChain": [
+    	{
+			"filter": "clean",
+	    	"parameters": {
+		        "dim": 2
+		    }
+    	},
+    	{
+			"filter": "standardizer",
+	    	"parameters": {
+		        "standardizerDefinition": "&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;&lt;StandardizerConfiguration&gt;&lt;Actions&gt;&lt;RemoveExplicitH ID=\&quot;RemoveExplicitH\&quot;/&gt;&lt;\/Actions&gt;&lt;\/StandardizerConfiguration&gt;"
+		    }
+    	}
+    ]
+}</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "structure": "...",
+    "format": "mrv",
+    "contentUrl": "http://localhost:8080/webservices2/rest-v0/util/export/struc_3fa079049564df17bedcae9bc6885608?format=mrv&amp;contentName=structure",
+    "contentBaseUrl": "http://localhost:8080/webservices2/rest-v0/util/export/struc_3fa079049564df17bedcae9bc6885608"
+}
+</div>
+</form>
+
+<p>The result is now containing the calculated values for the filtered molecule(s)</p>
+
+
+<h1 id="markush">9. Markush enumeration</h1>
+
+<h2 id="markushAnalysis">9.1 Markush Analysis</h2>
+<form id="form91" action="#">
+	<p>This function is for analyzing a markush structure. Calculating library size, exporting the scaffold and R-groups ("exploded" structure), generating preview of the enumeration result.</p>
+	<input class="url" type="text" data-baseurl="true" value="/util/markush/analyze" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+    "rgMolecule": {
+        "scaffold": "[$([#1,*])]-[#6]-1=[#6]-[#6]=[#6](-[$([#1,*])])-[#6]=[#6]-1-[#6]-[$([#1,*])] |$_R1;;;;;_R3;;;;_R2$,c:6,t:1,3|",
+        "rGroups": [
+            {
+                "groupId": 1,
+                "structures": [
+                    "*-[#6]-1-[#6]-[#6]-[#6]-2=[#6]-1-[#7]=[#6]-[#6]=[#6]-2 |$_AP1;;;;;;;;;$,c:4,7,9|",
+                    "*[H] |$_AP1;$|",
+                    "[#6]-[#8]-* |$;;_AP1$|",
+                    "[#8]-* |$;_AP1$|"
+                ]
+            },
+            {
+                "groupId": 2,
+                "structures": [
+                    "[#6]-[#6@@H](-*)-[#6](-[#8])=O |$;;_AP1;;;$|",
+                    "[#6]-[#7]-[#6](=O)-[#6]-* |$;;;;;_AP1$|"
+                ]
+            },
+            {
+                "groupId": 3,
+                "structures": [
+                    "[#6]-[#8]-* |$;;_AP1$|"
+                ]
+            }
+        ]
+    },
+    "parameters": {
+        "detailPrimary-display": {"parameters": {"image": {
+            "type": "svg",
+            "width": 400,
+            "height": 400
+        }}},
+        "detailSecondary-display": {"parameters": {"image": {
+            "type": "png",
+            "width": 200,
+            "height": 200
+        }}},
+        "preview-display": {"parameters": {"image": {
+            "type": "svg",
+            "width": 100,
+            "height": 100
+        }}}
+    }
+}
+</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "librarySize": "819",
+    "libraryMagnitude": 3,
+    "scaffold": {
+        "structureData": {
+            "structure": "...",
+            "format": "mrv"
+        },
+        "image": {
+            "width": 96,
+            "height": 96,
+            "type": "svg",
+            "image": "..."
+        }
+    },
+    "rGroups": [
+        {
+            "groupId": 1,
+            "structures": [
+                {
+                    "structureData": {
+                        "structure": "...",
+                        "format": "mrv"
+                    },
+                    "image": {
+                        "width": 96,
+                        "height": 96,
+                        "type": "svg",
+                        "image": "..."
+                    }
+                },
+                {
+                    "structureData": {
+                        "structure": "...",
+                        "format": "mrv"
+                    },
+                    "image": {
+                        "width": 96,
+                        "height": 96,
+                        "type": "svg",
+                        "image": "..."
+                    }
+                }
+            ]
+        },
+        {
+            "groupId": 2,
+            "structures": [
+                {
+                    "structureData": {
+                        "structure": "...",
+                        "format": "mrv"
+                    },
+                    "image": {
+                        "width": 96,
+                        "height": 96,
+                        "type": "svg",
+                        "image": "..."
+                    }
+                },
+                {
+                    "structureData": {
+                        "structure": "...",
+                        "format": "mrv"
+                    },
+                    "image": {
+                        "width": 96,
+                        "height": 96,
+                        "type": "svg",
+                        "image": "..."
+                    }
+                }
+            ]
+        }
+    ],
+    "preview": [
+        {
+            "structureData": {
+                "structure": "...",
+                "format": "mrv"
+            },
+            "image": {
+                "width": 96,
+                "height": 96,
+                "type": "svg",
+                "image": "..."
+            }
+        },
+        {
+            "structureData": {
+                "structure": "...",
+                "format": "mrv"
+            },
+            "image": {
+                "width": 96,
+                "height": 96,
+                "type": "svg",
+                "image": "..."
+            }
+        }
+    ]
+}
+</div>
+</form>
+
+
+<h2 id="markushAnalysisDb">9.2 Markush Analysis From Database</h2>
+<form id="form91" action="#">
+	<p>This function is for analyzing a markush structure. Calculating library size, exporting the scaffold and R-groups ("exploded" structure), generating preview of the enumeration result.</p>
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/Markush_library_examples/markush/1/analyze" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+    "parameters": {
+        "detailPrimary-display": {"parameters": //scaffold parameters
+        {"image": { 
+            "type": "svg",
+            "width": 400,
+            "height": 400
+        }}},
+        "detailSecondary-display": {"parameters": //R-group parameters
+        {"image": {
+            "type": "png",
+            "width": 200,
+            "height": 200
+        }}},
+        "preview-display": {"parameters": //preview parameters
+        {"image": {
+            "type": "svg",
+            "width": 100,
+            "height": 100
+        }}}
+    }
+}
+</div>
+<label>response:</label>
+<div class="output_div">
+{
+    "librarySize": "819",
+    "libraryMagnitude": 3,
+    "scaffold": {
+        "structureData": {
+            "structure": "...",
+            "format": "mrv"
+        },
+        "image": {
+            "width": 96,
+            "height": 96,
+            "type": "svg",
+            "image": "..."
+        }
+    },
+    "rGroups": [
+        {
+            "groupId": 1,
+            "structures": [
+                {
+                    "structureData": {
+                        "structure": "...",
+                        "format": "mrv"
+                    },
+                    "image": {
+                        "width": 96,
+                        "height": 96,
+                        "type": "svg",
+                        "image": "..."
+                    }
+                },
+                {
+                    "structureData": {
+                        "structure": "...",
+                        "format": "mrv"
+                    },
+                    "image": {
+                        "width": 96,
+                        "height": 96,
+                        "type": "svg",
+                        "image": "..."
+                    }
+                }
+            ]
+        },
+        {
+            "groupId": 2,
+            "structures": [
+                {
+                    "structureData": {
+                        "structure": "...",
+                        "format": "mrv"
+                    },
+                    "image": {
+                        "width": 96,
+                        "height": 96,
+                        "type": "svg",
+                        "image": "..."
+                    }
+                },
+                {
+                    "structureData": {
+                        "structure": "...",
+                        "format": "mrv"
+                    },
+                    "image": {
+                        "width": 96,
+                        "height": 96,
+                        "type": "svg",
+                        "image": "..."
+                    }
+                }
+            ]
+        }
+    ],
+    "preview": [
+        {
+            "structureData": {
+                "structure": "...",
+                "format": "mrv"
+            },
+            "image": {
+                "width": 96,
+                "height": 96,
+                "type": "svg",
+                "image": "..."
+            }
+        },
+        {
+            "structureData": {
+                "structure": "...",
+                "format": "mrv"
+            },
+            "image": {
+                "width": 96,
+                "height": 96,
+                "type": "svg",
+                "image": "..."
+            }
+        }
+    ]
+}
+</div>
+</form>
+
+<h2 id="markushEnumeration">9.4 Markush Enumeration</h2>
+<form id="form91" action="#">
+	<p>This function is for analyzing a markush structure. Calculating library size, exporting the scaffold and R-groups ("exploded" structure), generating preview of the enumeration result.</p>
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/Markush_library_examples/markush/1/enumerate" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+     "rgMolecule": {
+     "scaffold": "[$([#1,*])]-[#6]-1=[#6]-[#6]=[#6](-[$([#1,*])])-[#6]=[#6]-1-[#6]-[$([#1,*])] |$_R1;;;;;_R3;;;;_R2$,c:6,t:1,3|",
+     "rGroups": [
+            {
+                "groupId": 1,
+                "structures": [
+                    "*-[#6]-1-[#6]-[#6]-[#6]-2=[#6]-1-[#7]=[#6]-[#6]=[#6]-2 |$_AP1;;;;;;;;;$,c:4,7,9|",
+                    "*[H] |$_AP1;$|",
+                    "[#6]-[#8]-* |$;;_AP1$|",
+                    "[#8]-* |$;_AP1$|"
+                ]
+            },
+            {
+                "groupId": 2,
+                "structures": [
+                    "[#6]-[#6@@H](-*)-[#6](-[#8])=O |$;;_AP1;;;$|",
+                    "[#6]-[#7]-[#6](=O)-[#6]-* |$;;;;;_AP1$|"
+                ]
+            },
+            {
+                "groupId": 3,
+                "structures": [
+                    "[#6]-[#8]-* |$;;_AP1$|"
+                ]
+            }
+        ]
+    },
+    "dbConfigName": "sample", //target of enumeration
+    "tableName": "markushTest", //table name for enumeration result
+    "monitorId": "e97a42fa-c31c-433d-9ec0-776cc62cc194",
+    "parameters": {
+        "enumerationType": "SEQUENTIAL",
+        "maxStructureCount": 100,
+        "enumerateHomology": false,
+        "handleValenceErrors": true,
+        "duplicateFiltering": true,
+        "filterCT": ""
+    }
+}
+</div>
+<label>response contains information about the created table, progress could be monitored with the provided monitorId:</label>
+<div class="output_div">
+</div>
+</form>
+
+
+<h2 id="markushEnumerationDb">9.4 Markush Enumeration From Database</h2>
+<form id="form91" action="#">
+	<p>This function is for analyzing a markush structure. Calculating library size, exporting the scaffold and R-groups ("exploded" structure), generating preview of the enumeration result.</p>
+	<input class="url" type="text" data-baseurl="true" value="/data/sample/table/Markush_library_examples/markush/1/enumerate" size="80">
+	<input class="POST" type="button" value="POST">
+	<label>POST request (<code>Content-type: application/json</code>):</label>
+<div class="params_div">
+{
+    "dbConfigName": "sample", //target of enumeration
+    "tableName": "markushTest", //table name for enumeration result
+    "monitorId": "e97a42fa-c31c-433d-9ec0-776cc62cc194",
+    "parameters": {
+        "enumerationType": "SEQUENTIAL",
+        "maxStructureCount": 100,
+        "enumerateHomology": false,
+        "handleValenceErrors": true,
+        "duplicateFiltering": true,
+        "filterCT": ""
+    }
+}
+</div>
+<label>response contains information about the created table, progress could be monitored with the provided monitorId:</label>
+<div class="output_div">
+</div>
+</form>
+
+<h1 id="thirdparty">10. Reaction library</h1>
+<p><a href="./reactor#library">Details can be found here</a></p>
+<h1 id="thirdparty">11. Reactor</h1>
+<p><a href="./reactor#reactor">Details can be found here</a></p>
+<h1 id="thirdparty">12. Bundled Third-party Databases</h1>
+
+<p>JChem Web Services includes a <code>Drugbank_all</code> structure table containing Drugbank's All drugs database. Permission to redistribute this database has been granted by the <a href="http://www.drugbank.ca/">Drugbank Project</a>. <cite>DrugBank 3.0: a comprehensive resource for 'omics' research on drugs. Knox C, Law V, Jewison T, Liu P, Ly S, Frolkis A, Pon A, Banco K, Mak C, Neveu V, Djoumbou Y, Eisner R, Guo AC, Wishart DS. Nucleic Acids Res. 2011 Jan;39(Database issue):D1035-41. PMID: 21059682</cite> <a href="http://dx.doi.org/10.1093/nar/gkq1126">DOI 10.1093/nar/gkq1126</a></p>
+<p>This product also includes a <code>ChEBI_lite_3star</code> structure table containing ChEBI's chemical structure, ChEBI identifier and ChEBI Name data. Permission to redistribute this database has been granted by the <a href="http://www.ebi.ac.uk/chebi/downloadsForward.do">The database and ontology of Chemical Entities of Biological Interest</a>. </p>
+
+
+<script>
+$( ".output_div,.params_div" ).each(function( index ) {
+    var editor = ace.edit(this);
+    //editor.setTheme("ace/theme/github");
+
+    editor.setFontSize('13px');
+
+    //hide print margin
+    editor.setShowPrintMargin(false);
+
+    //set output read-only
+    if($(this).is(".output_div")){
+        editor.setReadOnly(true);
+    }
+
+    editor.getSession().setUseWorker(false);
+
+    editor.getSession().setUseWrapMode(true);
+
+    var code = editor.getSession().getValue();
+    if($(this).is(".text")){
+        editor.getSession().setMode("ace/mode/xml");
+        editor.getSession().setValue(formatXml($.trim(code)));
+    }else{
+        editor.getSession().setMode("ace/mode/json");
+        editor.getSession().setValue($.trim(code));
+    }
+
+    var height = 15.8*editor.getSession().getScreenLength();
+    if(height > 200)
+        height = 200;
+    if(height < 20)
+        height = 100;
+    $(this).css("height",height + "px");
+    editor.resize();
+});
+</script>
+
+<div id="dialog-form" title="Login">
+  <form>
+  <p id="dialog-message">Login required!</p>
+  <fieldset>
+    <label for="username">User name</label>
+    <input type="text" name="username" id="username" class="text ui-widget-content ui-corner-all">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all">
+  </fieldset>
+  </form>
+</div>
+
+
+</body>
+</html>

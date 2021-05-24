@@ -1,0 +1,127 @@
+
+.hidden {
+    display: none;
+}
+
+.deg_min_sec {
+    width: 30%;
+}
+
+.input_type {
+    text-align: center;
+}
+
+div.input_type button {
+    background-color: darkgray;
+}
+
+div.input_type button:hover {
+    background-color: dimgray;
+}
+
+th.form_titles {
+    width: 30%;
+}
+
+div.model_inputs {
+    padding-top: 0;
+}
+
+.json_input_data {
+    width: 25em;
+    height: 25em;
+}
+
+#error_p {
+    font-size: 14px;
+    display: initial;
+    margin-left: 30px;
+    color: red;
+}
+
+td.wlTableHeader {
+    font-size: 10px;
+    width: 33%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.wavelengthTable > tbody > tr > td {
+    text-align: center;
+    font-size: 10px;
+}
+
+/*wavelength add button*/
+#add_button {
+    border-top: 1px solid #6F8899;
+    background: #687F8F;
+    padding: 3px 6px 4px 6px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    color: white;
+    font-size: 14px;
+    font-family: Georgia, serif;
+    text-decoration: none;
+    vertical-align: middle;
+    margin: 0 0 0 10px;
+}
+
+#add_button:hover {
+    border-top-color: #687F8F;
+    background: #556875;
+    color: #ccc;
+}
+
+/*wavelength remove button*/
+.remove_button {
+    border-top: 1px solid #6F8899;
+    background: #687F8F;
+    padding: 0px 6px 4px 6px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    color: white;
+    font-size: 14px;
+    font-family: Georgia, serif;
+    text-decoration: none;
+    vertical-align: middle;
+    margin: 0 0 0 0;
+}
+
+.remove_button:hover {
+    border-top-color: #687F8F;
+    background: #556875;
+    color: #ccc;
+}
+
+#wavelength_input {
+    position: sticky;
+    right: 50%;
+    top: 50%;
+    width: 500px;
+    height: 150px;
+    background: white;
+    border: black 1px;
+    z-index: 99;
+    margin-left: 40%;
+}
+
+.addWavelengthSelect {
+    float: right;
+}
+
+.addWavelengthSelect label {
+    float: left;
+    padding-right: 5px;
+    padding-top: 6px;
+}
+
+#selected_wavelength {
+    margin-right: 25px;
+}
+
+#add_wavelength {
+    margin: 0;
+}
+

@@ -1,0 +1,7 @@
+<p>
+The CTS is designed to predict transformation pathways and calculate physicochemical properties for organic chemicals.  The initial version of CTS is designed for users with expertise regarding the environmental processes controlling the degradation of organic chemicals and the use of physicochemical properties in environmental fate modeling.  Currently, organometallics, non-dissociating salts of organic chemicals, and polymers are not recognized by the CTS.  To provide CTS users with a rich user experience we take advantage of features specified in the HTML 5 standards.  Internet Explorer does not fully implement support for HTML 5 standards.  As a result, CTS functionality will be limited when using the Internet Explorer web browser.  We recommend using the latest version of Google Chrome or Mozilla Firefox.
+</p>
+
+<a href="/cts/about/acronyms">CTS Acronyms</a><br>
+<a href="/cts/about/flowcharts">CTS Flowcharts</a><br>
+<a href="/cts/about/errors">CTS Errors</a><br>

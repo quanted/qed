@@ -5,7 +5,8 @@ services:
 
   # QED Django front-end
   qed_django:
-    image: quanted/qed-django:lite  # use qed image w/ tag = VERSION, default = latest
+    restart: unless-stopped
+    image: quanted/qed-django:dev  # use qed image w/ tag = VERSION, default = latest
     expose:
       - "8080"
     volumes:
@@ -26,6 +27,7 @@ services:
 
   # Redis (message broker)
   redis:
+    restart: unless-stopped
     image: redis:latest
     hostname: redis
     command: redis-server /usr/local/etc/redis/redis.conf
@@ -36,6 +38,7 @@ services:
 
   # ubertool_cts nodejs submodule
   cts_nodejs:
+    restart: unless-stopped
     build: ./cts_nodejs
     # image: cts-nodejs
     image: quanted/cts_nodejs
@@ -53,6 +56,7 @@ services:
 
   # # Celery worker - manager calc
   worker_manager:
+    restart: unless-stopped
     build:
       context: ./cts_celery
       dockerfile: Dockerfile
@@ -70,6 +74,7 @@ services:
 
   # # Celery worker - cts calc
   worker_cts:
+    restart: unless-stopped
     build:
       context: ./cts_celery
       dockerfile: Dockerfile
@@ -87,7 +92,7 @@ services:
       - ./cts_celery:/src
 
   qed_nginx:
-    restart: always
+    restart: unless-stopped
     # build: ../cts_nginx
     build: ./qed_nginx
     ports:
@@ -106,7 +111,8 @@ services:
 
   # flask_qed Flask back-end
   qed_flask:
-    image: quanted/flask_qed:lite  # use qed image w/ tag = VERSION, default = latest
+    restart: unless-stopped
+    image: quanted/flask_qed:dev  # use qed image w/ tag = VERSION, default = latest
     expose:
       - "7777"
     links:
@@ -132,6 +138,7 @@ services:
 
   # mongoDB database container
   mongodb:
+    restart: unless-stopped
     image: mongo:latest
     volumes:
       - /var/www/mongodb:/data/db
@@ -140,7 +147,8 @@ services:
 
   # Celery container for async task execution
   qed_celery:
-    image: quanted/flask_qed:lite
+    restart: unless-stopped
+    image: quanted/flask_qed:dev
     volumes:
       - ./flask_qed:/src
       - /var/www/sampreprocessed:/src/pram_flask/ubertool/ubertool/sam/bin/Preprocessed
@@ -150,16 +158,18 @@ services:
     links:
       - redis
       - mongodb
-    command: celery worker -A celery_cgi -Q qed --loglevel=INFO -c 2 -n qed_worker
+    command: celery -A celery_cgi worker -Q qed --loglevel=INFO -c 2 -n qed_worker
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
+      - DASK_SCHEDULER=dask_scheduler:8786
     logging:
       options:
         max-size: "200k"
         max-file: "10"
 
   hms_dotnetcore:
+    restart: unless-stopped
     image: quanted/hms-dotnetcore
     environment:
       - MONGODB=mongodb
@@ -173,6 +183,7 @@ services:
 
   # Dask Containers
   dask_scheduler:
+    restart: unless-stopped
     image: quanted/qed-dask:latest
     hostname: dask-scheduler
     expose:
@@ -181,10 +192,11 @@ services:
     command: ["dask-scheduler"]
 
   dask_worker:
+    restart: unless-stopped
     image: quanted/qed-dask:latest
     hostname: dask-worker
     environment:
-      PYTHONPATH: '/src:/src/qed'
+      PYTHONPATH: '/src:/src/qed:/src/qed/flask_qed'
       IN_DOCKER: "True"
 #    command: ["dask-worker", "dask_scheduler:8786"]
     volumes:
@@ -192,6 +204,7 @@ services:
 
   # Apache Tomcat container
   qed-tomcat:
+    restart: unless-stopped
     build:
       context: .
       dockerfile: Dockerfile_Tomcat
@@ -206,6 +219,7 @@ services:
       - ./secrets/tomcat/chemaxon/licenses:/home/tomcat/.chemaxon/licenses
 
   pisces-db:
+    restart: unless-stopped
     image: mdillon/postgis
     expose:
       - "5432"
@@ -214,6 +228,7 @@ services:
 
   # Cyanweb Flask API
   cyan-api:
+    restart: unless-stopped
     build:
       context: ./EPA-Cyano-Web
       dockerfile: docker/flask/Dockerfile
@@ -235,6 +250,7 @@ services:
 
   # Cyanweb Celery Worker
   cyan-celery:
+    restart: unless-stopped
     build:
       context: ./EPA-Cyano-Web
       dockerfile: docker/flask/Dockerfile
@@ -254,6 +270,7 @@ services:
 
   # Cyanweb MySQL DB
   cyan-db:
+    restart: unless-stopped
     build:
       context: ./EPA-Cyano-Web
       dockerfile: docker/mysql/Dockerfile

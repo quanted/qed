@@ -193,10 +193,8 @@ services:
   # Apache Tomcat container
   qed-tomcat:
     build:
-      # context: ./qed_tomcat
       context: .
       dockerfile: Dockerfile_Tomcat
-    # image: cts_tomcat:${VERSION:-latest}
     image: quanted/qed-tomcat
     expose:
       - "8080"
@@ -225,6 +223,7 @@ services:
       - cyan-db
     volumes:
       - ./EPA-Cyano-Web/config:/config
+      - ./EPA-Cyano-Web/cyan_flask/:/cyan_flask
     environment:
       # Does environment overwrite env_file, or vice versa?
       - DOCKER_HOSTNAME=${HOSTNAME}
@@ -232,7 +231,7 @@ services:
       - cyan-db
     env_file:
       # Would set_enviornment.py overwrite env vars in default below (hope so).
-      - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
+      - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/.env}
 
   # Cyanweb Celery Worker
   cyan-celery:
@@ -251,7 +250,7 @@ services:
     environment:
       - DOCKER_HOSTNAME=${HOSTNAME}
     env_file:
-      - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
+      - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/.env}
 
   # Cyanweb MySQL DB
   cyan-db:
@@ -265,4 +264,4 @@ services:
     environment:
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
     env_file:
-      - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
+      - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/.env}

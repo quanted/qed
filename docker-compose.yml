@@ -198,7 +198,7 @@ services:
     environment:
       PYTHONPATH: '/src:/src/qed:/src/qed/flask_qed'
       IN_DOCKER: "True"
-#    command: ["dask-worker", "dask_scheduler:8786"]
+      HMS_BACKEND_SERVER_INTERNAL: "http://hms_dotnetcore:80/"
     volumes:
        - "../qed:/src/qed"
 
@@ -267,6 +267,26 @@ services:
       - DOCKER_HOSTNAME=${HOSTNAME}
     env_file:
       - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/.env}
+
+  # Cyanweb Celery Worker
+  cyan-celery:
+    restart: unless-stopped
+    build:
+      context: ./EPA-Cyano-Web
+      dockerfile: docker/flask/Dockerfile
+    image: cyan-celery
+    container_name: cyan-celery
+    command: celery -A celery_worker.celery worker --loglevel=INFO -c 1
+    depends_on:
+      - cyan-db
+      - redis
+    volumes:
+      - ./EPA-Cyano-Web/config:/config
+      - ./EPA-Cyano-Web/cyan_flask/:/cyan_flask
+    environment:
+      - DOCKER_HOSTNAME=${HOSTNAME}
+    env_file:
+      - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
 
   # Cyanweb MySQL DB
   cyan-db:

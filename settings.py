@@ -10,6 +10,11 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 from temp_config.set_environment import DeployEnv
+import mimetypes
+
+mimetypes.add_type("text/css", ".css", True)
+mimetypes.add_type("text/javascript", ".js", True)
+
 
 # Determine env vars to use:
 runtime_env = DeployEnv()
@@ -238,11 +243,13 @@ USE_TZ = True
 
 # CYAN_ANGULAR_APP_DIR = "static_qed/cyan/webapp"
 CYANWEB_ANGULAR_APP_DIR = "static_qed/epa-cyano-web"
+HMS_ANGULAR_APP_DIR = "static_qed/hms/webapp"
 
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static_qed'),
     # os.path.join(PROJECT_ROOT, CYAN_ANGULAR_APP_DIR),
-    os.path.join(PROJECT_ROOT, CYANWEB_ANGULAR_APP_DIR)
+    os.path.join(PROJECT_ROOT, CYANWEB_ANGULAR_APP_DIR),
+    os.path.join(PROJECT_ROOT, HMS_ANGULAR_APP_DIR)
 )
 
 STATICFILES_FINDERS = (

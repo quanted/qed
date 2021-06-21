@@ -162,7 +162,7 @@ services:
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
-      - DASK_SCHEDULER=http://dask_scheduler:8786
+      - DASK_SCHEDULER=dask_scheduler:8786
     logging:
       options:
         max-size: "200k"
@@ -196,9 +196,9 @@ services:
     image: quanted/qed-dask:latest
     hostname: dask-worker
     environment:
-      PYTHONPATH: '/src:/src/qed'
+      PYTHONPATH: '/src:/src/qed:/src/qed/flask_qed'
       IN_DOCKER: "True"
-#    command: ["dask-worker", "dask_scheduler:8786"]
+      HMS_BACKEND_SERVER_INTERNAL: "http://hms_dotnetcore:80/"
     volumes:
        - "../qed:/src/qed"
 

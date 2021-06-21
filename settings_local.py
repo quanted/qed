@@ -20,7 +20,7 @@ print('settings_local.py')
 
 # Get machine IP address
 MACHINE_ID = "developer"
-
+IN_PROD = False
 
 # Get local machine IP
 def get_machine_ip():

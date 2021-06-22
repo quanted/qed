@@ -162,12 +162,12 @@ services:
     links:
       - redis
       - mongodb
-    command: celery -A celery_cgi worker -Q qed --loglevel=INFO -c 2 -n qed_worker
+    command: celery -A celery_cgi worker -Q qed --loglevel=INFO -c 2 -n qed_worker --uid=daemon
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=docker
       - DASK_SCHEDULER=dask_scheduler:8786
-      - C_FORCE_ROOT=true
+#      - C_FORCE_ROOT=TRUE
     logging:
       options:
         max-size: "200k"

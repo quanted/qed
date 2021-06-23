@@ -131,7 +131,7 @@ services:
 #      - /var/www/sampreprocessed:/src/pram_flask/ubertool/ubertool/sam/bin/Preprocessed
 #      - /var/www/samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results
 #      - /var/www/qed-basins:/src/hms_flask/data/qed-basins
-      - collected_static:/src/collected_static
+#      - collected_static:/src/collected_static
 #      - /var/www/app_data/hms:/src/hms-data
     depends_on:
       - mongodb
@@ -156,9 +156,9 @@ services:
     volumes:
       - ./flask_qed:/src
 #      - /var/www/sampreprocessed:/src/pram_flask/ubertool/ubertool/sam/bin/Preprocessed
-      - "../samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results"
-      - "../qed-basins:/src/hms_flask/data/qed-basins"
-      - collected_static:/src/collected_static
+#      - "../samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results"
+#      - "../qed-basins:/src/hms_flask/data/qed-basins"
+#      - collected_static:/src/collected_static
     links:
       - redis
       - mongodb

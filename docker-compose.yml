@@ -286,7 +286,7 @@ services:
     environment:
       - DOCKER_HOSTNAME=${HOSTNAME}
     env_file:
-      - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/environments/local_docker_dev.env}
+      - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/.env}
 
   # Cyanweb MySQL DB
   cyan-db:

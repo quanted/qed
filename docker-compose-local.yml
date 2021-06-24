@@ -131,14 +131,14 @@ services:
 #      - /var/www/sampreprocessed:/src/pram_flask/ubertool/ubertool/sam/bin/Preprocessed
 #      - /var/www/samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results
 #      - /var/www/qed-basins:/src/hms_flask/data/qed-basins
-#      - collected_static:/src/collected_static
+      - collected_static:/src/collected_static
 #      - /var/www/app_data/hms:/src/hms-data
     depends_on:
       - mongodb
-    logging:
-      options:
-        max-size: "200k"
-        max-file: "10"
+#    logging:
+#      options:
+#        max-size: "200k"
+#        max-file: "10"
 
   # mongoDB database container
   mongodb:
@@ -168,10 +168,10 @@ services:
       - DOCKER_HOSTNAME=docker
       - DASK_SCHEDULER=dask_scheduler:8786
 #      - C_FORCE_ROOT=TRUE
-    logging:
-      options:
-        max-size: "200k"
-        max-file: "10"
+#    logging:
+#      options:
+#        max-size: "200k"
+#        max-file: "10"
 
   hms_dotnetcore:
     restart: unless-stopped

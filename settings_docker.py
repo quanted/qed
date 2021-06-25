@@ -243,17 +243,17 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_ROOT = os.path.join('src', 'collected_static')
-# STATIC_ROOT = os.path.join('collected_static')
+# STATIC_ROOT = os.path.join('src', 'collected_static')
+STATIC_ROOT = os.path.join('collected_static')
 HMS_ANGULAR_APP_DIR = "/src/static_qed/hms/webapp"
 HMS_ANGULAR_APP_ASSETS_DIR = "/src/static_qed/hms/webapp/assets"
-CYANWEB_ANGULAR_APP_DIR = "/src/static_qed/epa-cyano-web"
+# CYANWEB_ANGULAR_APP_DIR = "/src/static_qed/epa-cyano-web"
 
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static_qed'),
     # os.path.join(PROJECT_ROOT, 'collected_static'),
     HMS_ANGULAR_APP_DIR,
-    CYANWEB_ANGULAR_APP_DIR
+    # CYANWEB_ANGULAR_APP_DIR
 )
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',

@@ -1,6 +1,6 @@
 version: '2.1'
 volumes:
-  collected_static: {}
+  collected_static:
 services:
 
   # QED Django front-end
@@ -246,26 +246,6 @@ services:
       - cyan-db
     env_file:
       # Would set_enviornment.py overwrite env vars in default below (hope so).
-      - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/.env}
-
-  # Cyanweb Celery Worker
-  cyan-celery:
-    restart: unless-stopped
-    build:
-      context: ./EPA-Cyano-Web
-      dockerfile: docker/flask/Dockerfile
-    image: cyan-celery
-    container_name: cyan-celery
-    command: celery -A celery_worker.celery worker --loglevel=INFO -c 1
-    depends_on:
-      - cyan-db
-      - redis
-    volumes:
-      - ./EPA-Cyano-Web/config:/config
-      - ./EPA-Cyano-Web/cyan_flask/:/cyan_flask
-    environment:
-      - DOCKER_HOSTNAME=${HOSTNAME}
-    env_file:
       - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/.env}
 
   # Cyanweb Celery Worker

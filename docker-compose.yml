@@ -254,8 +254,6 @@ services:
     build:
       context: ./EPA-Cyano-Web
       dockerfile: docker/flask/Dockerfile
-    image: cyan-celery
-    container_name: cyan-celery
     command: celery -A celery_worker.celery worker --loglevel=INFO -c 1
     depends_on:
       - cyan-db

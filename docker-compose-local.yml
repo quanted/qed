@@ -148,6 +148,8 @@ services:
       - /var/www/mongodb:/data/db
     expose:
       - "27017"
+    ports:
+      - "27017:27017"
 
   # Celery container for async task execution
   qed_celery:
@@ -162,7 +164,7 @@ services:
     links:
       - redis
       - mongodb
-    command: celery -A celery_cgi worker -Q qed --loglevel=INFO -c 2 -n qed_worker --uid=daemon
+    command: conda run -n pyenv --no-capture-output celery -A celery_cgi worker -Q qed --loglevel=INFO -n qed_worker --uid=daemon
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=docker

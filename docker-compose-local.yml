@@ -195,7 +195,7 @@ services:
     expose:
      - 8786
      - 8787
-    command: ["dask-scheduler"]
+    command: ["conda", "run", "-n", "pyenv", "--no-capture-output", "dask-scheduler"]
 
   dask_worker:
     restart: unless-stopped

@@ -6,7 +6,7 @@ services:
   # QED Django front-end
   qed_django:
     restart: unless-stopped
-    image: quanted/qed-django:dev  # use qed image w/ tag = VERSION, default = latest
+    image: dbsmith88/qed_django  # use qed image w/ tag = VERSION, default = latest
     expose:
       - "8080"
     command: ["/bin/bash", "/src/docker_start_local.sh"]
@@ -116,7 +116,7 @@ services:
   # flask_qed Flask back-end
   qed_flask:
     restart: unless-stopped
-    image: quanted/flask_qed:dev  # use qed image w/ tag = VERSION, default = latest
+    image: dbsmith88/flask_qed  # use qed image w/ tag = VERSION, default = latest
     expose:
       - "7777"
     links:
@@ -154,7 +154,7 @@ services:
   # Celery container for async task execution
   qed_celery:
     restart: unless-stopped
-    image: quanted/flask_qed:dev
+    image: dbsmith88/flask_qed
     volumes:
       - ./flask_qed:/src
 #      - /var/www/sampreprocessed:/src/pram_flask/ubertool/ubertool/sam/bin/Preprocessed
@@ -177,7 +177,7 @@ services:
 
   hms_dotnetcore:
     restart: unless-stopped
-    image: quanted/hms-dotnetcore
+    image: dbsmith88/hms_dotnetcore
     environment:
       - MONGODB=mongodb
       - FLASK_SERVER=http://qed_nginx:7777
@@ -190,7 +190,7 @@ services:
   # Dask Containers
   dask_scheduler:
     restart: unless-stopped
-    image: quanted/qed-dask:latest
+    image: dbsmith88/qed-dask
     hostname: dask-scheduler
     expose:
      - 8786
@@ -199,7 +199,7 @@ services:
 
   dask_worker:
     restart: unless-stopped
-    image: quanted/qed-dask:latest
+    image: dbsmith88/qed-dask
     hostname: dask-worker
     environment:
       PYTHONPATH: '/src:/src/qed:/src/qed/flask_qed'

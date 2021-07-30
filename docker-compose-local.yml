@@ -177,7 +177,11 @@ services:
 
   hms_dotnetcore:
     restart: unless-stopped
+#    image: qed_hms_dotnetcore
     image: dbsmith88/hms_dotnetcore
+#    build:
+#      context: ./windows/hms
+#      dockerfile: ./Web.Services/Dockerfile
     environment:
       - MONGODB=mongodb
       - FLASK_SERVER=http://qed_nginx:7777
@@ -201,6 +205,7 @@ services:
     restart: unless-stopped
     image: dbsmith88/qed-dask
     hostname: dask-worker
+#    command: ["conda", "run", "-n", "pyenv", "--no-capture-output", "dask-worker", "dask-scheduler:8786", "--nprocs", "1", "--nthreads","2"]
     environment:
       PYTHONPATH: '/src:/src/qed:/src/qed/flask_qed'
       IN_DOCKER: "True"

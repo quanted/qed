@@ -158,7 +158,7 @@ services:
     links:
       - redis
       - mongodb
-    command: celery -A celery_cgi worker -Q qed --loglevel=INFO -c 2 -n qed_worker
+    command: conda run -n pyenv --no-capture-output celery -A celery_cgi worker -Q qed --loglevel=INFO -n qed_worker --uid=daemon
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
@@ -184,7 +184,7 @@ services:
   # Dask Containers
   dask_scheduler:
     restart: unless-stopped
-    image: dbsmith88/qed-dask
+    image: dbsmith88/qed-dask:dev-np
     hostname: dask-scheduler
     expose:
      - 8786
@@ -193,7 +193,7 @@ services:
 
   dask_worker:
     restart: unless-stopped
-    image: dbsmith88/qed-dask
+    image: dbsmith88/qed-dask:dev-np
     hostname: dask-worker
     environment:
       PYTHONPATH: '/src:/src/qed:/src/qed/flask_qed'

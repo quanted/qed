@@ -112,7 +112,7 @@ services:
   # flask_qed Flask back-end
   qed_flask:
     restart: unless-stopped
-    image: dbsmith88/flask_qed  # use qed image w/ tag = VERSION, default = latest
+    image: dbsmith88/flask_qed:latest  # use qed image w/ tag = VERSION, default = latest
     expose:
       - "7777"
     links:
@@ -148,7 +148,7 @@ services:
   # Celery container for async task execution
   qed_celery:
     restart: unless-stopped
-    image: dbsmith88/flask_qed
+    image: dbsmith88/flask_qed:latest
     volumes:
       - ./flask_qed:/src
       - /var/www/sampreprocessed:/src/pram_flask/ubertool/ubertool/sam/bin/Preprocessed
@@ -189,7 +189,7 @@ services:
     expose:
      - 8786
      - 8787
-    command: ["dask-scheduler"]
+    command: ["conda", "run", "-n", "pyenv", "--no-capture-output", "dask-scheduler"]
 
   dask_worker:
     restart: unless-stopped
@@ -199,6 +199,7 @@ services:
       PYTHONPATH: '/src:/src/qed:/src/qed/flask_qed'
       IN_DOCKER: "True"
       HMS_BACKEND_SERVER_INTERNAL: "http://hms_dotnetcore:80/"
+      HMS_WORKFLOW_BACKEND: "https://ceamstg.ceeopdev.net/hms/rest/"
     volumes:
        - "../qed:/src/qed"
 

@@ -12,7 +12,6 @@ services:
     command: ["/bin/bash", "/src/docker_start_local.sh"]
     volumes:
       - .:/src  # map qed/ to container's /src for updating w/out rebuilding images
-#      - /var/www/app_data:/src/app-data
       - ./static_qed:/src/collected_static
     environment:
       - REDIS_HOSTNAME=redis

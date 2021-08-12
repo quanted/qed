@@ -195,6 +195,7 @@ services:
     restart: unless-stopped
     image: dbsmith88/qed-dask:dev-np
     hostname: dask-worker
+    command: ["conda", "run", "-n", "pyenv", "--no-capture-output", "dask-worker", "dask_scheduler:8786"]
     environment:
       PYTHONPATH: '/src:/src/qed:/src/qed/flask_qed'
       IN_DOCKER: "True"

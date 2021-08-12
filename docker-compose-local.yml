@@ -206,7 +206,7 @@ services:
     image: dbsmith88/qed-dask:dev-np
 #    image: qed-dask-local
     hostname: dask-worker
-#    command: ["conda", "run", "-n", "pyenv", "--no-capture-output", "dask-worker", "dask-scheduler:8786", "--nprocs", "1", "--nthreads","2"]
+    command: ["conda", "run", "-n", "pyenv", "--no-capture-output", "dask-worker", "dask_scheduler:8786"]
     environment:
       PYTHONPATH: '/src:/src/qed:/src/qed/flask_qed'
       IN_DOCKER: "True"

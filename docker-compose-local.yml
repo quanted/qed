@@ -20,7 +20,7 @@ services:
       - DOCKER_HOSTNAME=docker
       #- DOCKER_SECRET_KEY=${SECRET_KEY}
       - HMS_RELEASE=${HMS_RELASE:-0}
-      - IN_PROD=${IN_PROD:-0}
+      - IN_PROD=${IN_PROD:-1}
       - IN_DOCKER=True
     links:
       - redis

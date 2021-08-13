@@ -27,6 +27,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+src/collected_static/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -107,3 +108,5 @@ secret_key_database.txt
 # pycharm stuff
 .idea
 
+# Visual Studio Code
+.vscode/

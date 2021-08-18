@@ -255,8 +255,8 @@ CYANWEB_ANGULAR_APP_DIR = "/src/EPA-Cyano-Web/cyan_django/static"
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static_qed'),
     # os.path.join(PROJECT_ROOT, 'collected_static'),
-    HMS_ANGULAR_APP_DIR,
-    CYANWEB_ANGULAR_APP_DIR
+    # HMS_ANGULAR_APP_DIR,
+    # CYANWEB_ANGULAR_APP_DIR
 )
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',

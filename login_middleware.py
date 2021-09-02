@@ -69,6 +69,7 @@ class RequireLoginMiddleware:
         ]
         self.set_password_via_env()
         self.load_passwords()
+        self.save_users()
 
     def __call__(self, request):
         response = self.get_response(request)
@@ -89,6 +90,13 @@ class RequireLoginMiddleware:
                 self.hashed_pass["qed"] = self.get_hashed_password("secret_key_login.txt")
             elif "cyanweb" in a:
                 self.hashed_pass["qed"] = self.get_hashed_password("secret_key_login.txt")
+
+    def save_users(self):
+        users = {self.qed_username: self.hashed_pass["qed"], self.hms_admin: self.hashed_pass["hms_private"], self.hms_username: self.hashed_pass["hms_public"]}
+        for username, password in users.items():
+            if not User.objects.filter(username=username).exists():
+                _user = User.objects.create_user(username, 'email@address.com', password)
+                _user.save()
 
     def set_password_via_env(self):
         """

@@ -15,6 +15,7 @@ from settings import *
 from django.conf import settings
 from temp_config.set_environment import DeployEnv
 
+
 # Determine env vars to use:
 runtime_env = DeployEnv()
 runtime_env.load_deployment_environment()
@@ -153,6 +154,7 @@ if IN_PROD:
         'hms_app',  # hms django app
         'pisces_app',  # pisces django app
         'splash_app',  # splash django app
+        'EPA-Cyano-Web.cyan_django'
     )
 else:
     INSTALLED_APPS = (
@@ -174,6 +176,7 @@ else:
         'pisces_app',  # pisces django app
         'pram_app',  # pram django app
         'splash_app',  # splash django app
+        'EPA-Cyano-Web.cyan_django'
     )
 
 # Disable this because Django wants to email errors and there is no email server set up
@@ -247,7 +250,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join('collected_static')
 HMS_ANGULAR_APP_DIR = "/src/static_qed/hms/webapp"
 HMS_ANGULAR_APP_ASSETS_DIR = "/src/static_qed/hms/webapp/assets"
-CYANWEB_ANGULAR_APP_DIR = "/src/static_qed/epa-cyano-web"
+CYANWEB_ANGULAR_APP_DIR = "/src/EPA-Cyano-Web/cyan_django/static"
 
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static_qed'),

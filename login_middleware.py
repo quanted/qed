@@ -212,12 +212,11 @@ class RequireLoginMiddleware:
 
     def handle_hms_endpoint_login(self, username, password, next_page):
         # check if username is correct:
-        if username != self.hms_admin or username != self.hms_username:
+        if username != self.hms_admin:
             logger.info("username {} incorrect..".format(username))
             return True
         # check if password is correct:
-        if not bcrypt.checkpw(password.encode('utf-8'), self.hashed_pass["hms_private"]) or \
-                not bcrypt.checkpw(password.encode('utf-8'), self.hashed_pass["hms_public"]):
+        if not bcrypt.checkpw(password.encode('utf-8'), self.hashed_pass["hms_private"]):
             logger.info("password incorrect for user: {}".format(username))
             return True
         return False
@@ -247,12 +246,14 @@ class RequireLoginMiddleware:
         if not self.hashed_pass or not password:
             logger.info("login_auth 1, no password or hashed_pass is not set. Redirecting to login page.")
             return redirect('/login?next={}'.format(next_page))
-        show_login = False
+
+        show_login = True
         # Checks if username and password is correct:
         if not any(endpoint in next_page for endpoint in hms_pass):
-            # show_login = self.handle_public_hms_endpoint_login(username, password, next_page)
             if show_login:
                 show_login = self.handle_hms_endpoint_login(username, password, next_page)
+                if show_login:
+                    show_login = self.handle_public_hms_endpoint_login(username, password, next_page)
             if show_login:
                 show_login = self.handle_site_wide_login(username, password, next_page)
         logger.info("login_auth 1, username: {}, next_page: {}, show_login: {}".format(username, next_page, show_login))
@@ -267,7 +268,6 @@ class RequireLoginMiddleware:
             _user.save()  # save username and plain pass to django db
 
         user = authenticate(request, username=username, password=password)  # auths, then returns user obj (too redundant)
-
         if user is not None:
             if user.is_active:
                 logger.info("login_auth 3, user is active, redirecting to next_page: {}".format(next_page))

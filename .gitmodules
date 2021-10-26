@@ -7,9 +7,6 @@
 [submodule "cts_nodejs"]
 	path = cts_nodejs
 	url = https://github.com/quanted/cts_nodejs.git
-[submodule "cyan_app"]
-	path = cyan_app
-	url = https://github.com/quanted/cyan_app.git
 [submodule "flask_qed"]
 	path = flask_qed
 	url = https://github.com/quanted/flask_qed.git

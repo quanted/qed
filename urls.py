@@ -43,7 +43,7 @@ else:
     urlpatterns = [
         path('', include('splash_app.urls')),
         path('cts/', include('cts_app.urls')),
-        path('cyan/', include('cyan_app.urls')),
+        # path('cyan/', include('cyan_app.urls')),
         path('hms/', include('hms_app.urls')),
         path('hwbi/', include('hwbi_app.urls')),
         path('nta/', include('nta_app.urls')),

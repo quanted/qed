@@ -169,7 +169,7 @@ else:
         'cts_app.filters',  # cts filters for pchem table
         'cts_app.cts_api',
         'cts_app.cts_testing',
-        'cyan_app',  # cyan django app
+        # 'cyan_app',  # cyan django app
         'hms_app',  # hms django app
         'hwbi_app',  # hwbi django app
         'nta_app',

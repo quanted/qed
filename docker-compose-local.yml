@@ -22,6 +22,7 @@ services:
       - HMS_RELEASE=${HMS_RELASE:-0}
       - IN_PROD=${IN_PROD:-1}
       - IN_DOCKER=True
+      - HMS_AQUATOX_WEBAPP=True
     links:
       - redis
       - mongodb

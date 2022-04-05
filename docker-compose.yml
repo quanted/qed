@@ -200,8 +200,9 @@ services:
     environment:
       PYTHONPATH: '/src:/src/qed:/src/qed/flask_qed'
       IN_DOCKER: "True"
-      HMS_BACKEND_SERVER_INTERNAL: "http://hms_dotnetcore:80/"
+      HMS_BACKEND_SERVER_INTERNAL: "http://hms_dotnetcore:8080/"
       HMS_WORKFLOW_BACKEND: "https://ceamstg.ceeopdev.net/hms/rest/"
+      HMS_BACKEND: "http://hms_dotnetcore:8080/"
     volumes:
        - "../qed:/src/qed"
 

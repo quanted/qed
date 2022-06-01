@@ -156,6 +156,7 @@ services:
       - "../samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results"
       - "../qed-basins:/src/hms_flask/data/qed-basins"
       - collected_static:/src/collected_static
+      - /var/www/app_data/hms:/src/hms-data
     links:
       - redis
       - mongodb

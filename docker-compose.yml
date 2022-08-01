@@ -6,7 +6,7 @@ services:
   # QED Django front-end
   qed_django:
     restart: unless-stopped
-    image: dbsmith88/qed_django  # use qed image w/ tag = VERSION, default = latest
+    image: dbsmith88/qed_django:dev  # use qed image w/ tag = VERSION, default = latest
     expose:
       - "8080"
     volumes:
@@ -21,6 +21,7 @@ services:
       #- DOCKER_SECRET_KEY=${SECRET_KEY}
       - HMS_RELEASE=${HMS_RELASE:-0}
       - IN_PROD=${IN_PROD:-0}
+      - HMS_AQUATOX_WEBAPP=False
     links:
       - redis
       - mongodb
@@ -149,6 +150,7 @@ services:
       - "../samresults:/src/pram_flask/ubertool/ubertool/sam/bin/Results"
       - "../qed-basins:/src/hms_flask/data/qed-basins"
       - collected_static:/src/collected_static
+      - /var/www/app_data/hms:/src/hms-data
     links:
       - redis
       - mongodb
@@ -164,7 +166,7 @@ services:
 
   hms_dotnetcore:
     restart: unless-stopped
-    image: dbsmith88/hms_dotnetcore
+    image: ghcr.io/quanted/hms:dev
     environment:
       - MONGODB=mongodb
       - FLASK_SERVER=http://qed_nginx:7777
@@ -193,8 +195,9 @@ services:
     environment:
       PYTHONPATH: '/src:/src/qed:/src/qed/flask_qed'
       IN_DOCKER: "True"
-      HMS_BACKEND_SERVER_INTERNAL: "http://hms_dotnetcore:80/"
+      HMS_BACKEND_SERVER_INTERNAL: "http://hms_dotnetcore:8080/"
       HMS_WORKFLOW_BACKEND: "https://ceamstg.ceeopdev.net/hms/rest/"
+      HMS_BACKEND: "http://hms_dotnetcore:8080/"
     volumes:
        - "../qed:/src/qed"
 

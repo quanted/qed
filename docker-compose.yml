@@ -11,7 +11,7 @@ services:
       - "8080"
     volumes:
       - collected_static:/src/collected_static
-      - .:/src  # map qed/ to container's /src for updating w/out rebuilding images
+      - .:/src
       - /var/www/app_data:/src/app-data
     environment:
       - REDIS_HOSTNAME=redis
@@ -40,7 +40,6 @@ services:
   cts_nodejs:
     restart: unless-stopped
     build: ./cts_nodejs
-    # image: cts-nodejs
     image: quanted/cts_nodejs
     expose:
       - "4000"
@@ -60,17 +59,15 @@ services:
     build:
       context: ./cts_celery
       dockerfile: Dockerfile
-    # image: cts-celery
     image: quanted/cts_celery
-    # command: celery worker -A tasks -Q manager_queue -l info -n manager_worker -c 1
     command: celery -A tasks worker -Q manager_queue -l info -n manager_worker -c 1
     links:
       - redis
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
-    volumes:
-      - ./cts_celery:/src
+    # volumes:
+    #   - ./cts_celery:/src
 
   # # Celery worker - cts calc
   worker_cts:
@@ -78,9 +75,7 @@ services:
     build:
       context: ./cts_celery
       dockerfile: Dockerfile
-    # image: cts-celery
     image: quanted/cts_celery
-    # command: celery worker -A tasks -Q cts_queue -l info -n cts_worker -c 2
     command: celery -A tasks worker -Q cts_queue -l info -n cts_worker -c 2
     links:
       - redis
@@ -88,12 +83,11 @@ services:
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
-    volumes:
-      - ./cts_celery:/src
+    # volumes:
+    #   - ./cts_celery:/src
 
   qed_nginx:
     restart: unless-stopped
-    # build: ../cts_nginx
     build: ./qed_nginx
     ports:
       - "80:80"
@@ -215,6 +209,7 @@ services:
       - "8080"
     environment:
       - JAVA_OPTS=-Xmx1g
+      - LOG4J_FORMAT_MSG_NO_LOOKUPS=true
     volumes:
       - ./secrets/tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
       - ./secrets/tomcat/webapps:/usr/local/tomcat/webapps

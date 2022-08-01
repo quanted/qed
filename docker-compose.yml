@@ -41,7 +41,8 @@ services:
   cts_nodejs:
     restart: unless-stopped
     build: ./cts_nodejs
-    image: quanted/cts_nodejs
+    # image: quanted/cts_nodejs
+    image: ghcr.io/quanted/cts-nodejs:dev
     expose:
       - "4000"
     environment:
@@ -60,7 +61,8 @@ services:
     build:
       context: ./cts_celery
       dockerfile: Dockerfile
-    image: quanted/cts_celery
+    # image: quanted/cts_celery
+    image: ghcr.io/quanted/cts-celery:dev
     command: celery -A tasks worker -Q manager_queue -l info -n manager_worker -c 1
     links:
       - redis
@@ -76,7 +78,8 @@ services:
     build:
       context: ./cts_celery
       dockerfile: Dockerfile
-    image: quanted/cts_celery
+    # image: quanted/cts_celery
+    image: ghcr.io/quanted/cts-celery:dev
     command: celery -A tasks worker -Q cts_queue -l info -n cts_worker -c 2
     links:
       - redis

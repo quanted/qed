@@ -52,8 +52,8 @@ services:
       - REDIS_PORT=6379
     links:
       - redis
-    # volumes:
-    #   - ./cts_nodejs:/src
+    volumes:
+      - ./cts_nodejs:/src
 
   # # Celery worker - manager calc
   worker_manager:
@@ -87,8 +87,8 @@ services:
     environment:
       - REDIS_HOSTNAME=redis
       - DOCKER_HOSTNAME=${HOSTNAME}
-    # volumes:
-    #   - ./cts_celery:/src
+    volumes:
+      - ./cts_celery:/src
 
   qed_nginx:
     restart: unless-stopped
@@ -105,7 +105,7 @@ services:
       - /var/www/nginx/certs:/etc/nginx/qed # this points to the keys directory
       - /etc/letsencrypt:/etc/letsencrypt  # certs from letsencrypt (uses certbot)
     volumes_from:
-      - qed_django:ro  # Mount all volumes from "qed_django" to NGINX, so it can access the collected static files
+      - qed_django  # Mount all volumes from "qed_django" to NGINX, so it can access the collected static files
 
   # flask_qed Flask back-end
   qed_flask:
@@ -232,38 +232,30 @@ services:
   # Cyanweb Flask API
   cyan-api:
     restart: unless-stopped
-    build:
-      context: ./EPA-Cyano-Web
-      dockerfile: docker/flask/Dockerfile
+    image: ghcr.io/usepa/cyanweb-api:dev
     expose:
       - "5001"
     depends_on:
       - cyan-db
     volumes:
-      - ./EPA-Cyano-Web/config:/config
-      - ./EPA-Cyano-Web/cyan_flask/:/cyan_flask
+      - ./EPA-Cyano-Web/config/secrets:/config/secrets
     environment:
-      # Does environment overwrite env_file, or vice versa?
       - DOCKER_HOSTNAME=${HOSTNAME}
     links:
       - cyan-db
     env_file:
-      # Would set_enviornment.py overwrite env vars in default below (hope so).
       - ${CYAN_CONFIG:-./EPA-Cyano-Web/config/.env}
 
   # Cyanweb Celery Worker
   cyan-celery:
     restart: unless-stopped
-    build:
-      context: ./EPA-Cyano-Web
-      dockerfile: docker/flask/Dockerfile
+    image: ghcr.io/usepa/cyanweb-api:dev
     command: celery -A celery_worker.celery worker --loglevel=INFO -c 1
     depends_on:
       - cyan-db
       - redis
     volumes:
-      - ./EPA-Cyano-Web/config:/config
-      - ./EPA-Cyano-Web/cyan_flask/:/cyan_flask
+      - ./EPA-Cyano-Web/config/secrets:/config/secrets
     environment:
       - DOCKER_HOSTNAME=${HOSTNAME}
     env_file:
@@ -272,12 +264,8 @@ services:
   # Cyanweb MySQL DB
   cyan-db:
     restart: unless-stopped
-    build:
-      context: ./EPA-Cyano-Web
-      dockerfile: docker/mysql/Dockerfile
+    image: ghcr.io/usepa/cyanweb-db:dev
     volumes:
-      # NOTE: Optional volume for existing DB dump, defaults to blank dummy file if no dump
-      - ${SQL_DUMP:-./EPA-Cyano-Web/cyan_mysql/no_dump.txt}:/tmp/dump.sql  # use optional dump file to build container DB
       - /var/www/app_data/cyano:/var/lib/mysql
     environment:
       - MYSQL_RANDOM_ROOT_PASSWORD=yes

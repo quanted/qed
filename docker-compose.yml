@@ -21,7 +21,7 @@ services:
       #- DOCKER_SECRET_KEY=${SECRET_KEY}
       - HMS_RELEASE=${HMS_RELASE:-0}
       - IN_PROD=${IN_PROD:-0}
-      - HMS_AQUATOX_WEBAPP=False
+      - HMS_AQUATOX_WEBAPP=${HMS_AQUATOX_WEBAPP:-False}
     links:
       - redis
       - mongodb

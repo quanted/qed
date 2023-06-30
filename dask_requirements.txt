@@ -42,7 +42,7 @@ pillow==5.1.0
 psycopg2==2.7.5
 pylint==1.9.2
 pymongo==3.6.1
-pypdf2==1.26.0
+pypdf2==1.27.9
 #pyshp==1.2.12
 pytest==3.6.1
 pytest-django==3.3.0

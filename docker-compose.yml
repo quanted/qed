@@ -21,7 +21,7 @@ services:
       #- DOCKER_SECRET_KEY=${SECRET_KEY}
       - HMS_RELEASE=${HMS_RELASE:-0}
       - IN_PROD=${IN_PROD:-0}
-      - HMS_AQUATOX_WEBAPP=False
+      - HMS_AQUATOX_WEBAPP=${HMS_AQUATOX_WEBAPP:-False}
     links:
       - redis
       - mongodb
@@ -204,22 +204,35 @@ services:
     volumes:
        - "../qed:/src/qed"
 
-  # Apache Tomcat container
-  qed-tomcat:
+  # CTSWS Apache Tomcat container
+  ctsws:
     restart: unless-stopped
-    build:
-      context: .
-      dockerfile: Dockerfile_Tomcat
-    image: quanted/qed-tomcat
+    image: ${CTSWS_IMAGE:-ghcr.io/quanted/ctsws:docker-28b9ed15dc6f4724f56c71c1c5f77a246e70a5e4}
     expose:
       - "8080"
+#     ports:
+#       - "8087:8080"
     environment:
       - JAVA_OPTS=-Xmx1g
       - LOG4J_FORMAT_MSG_NO_LOOKUPS=true
+      - CTSWS_SERVER_USERNAME=${CTSWS_SERVER_USERNAME}
+      - CTSWS_SERVER_PASSWORD=${CTSWS_SERVER_PASSWORD}
     volumes:
-      - ./secrets/tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
-      - ./secrets/tomcat/webapps:/usr/local/tomcat/webapps
-      - ./secrets/tomcat/chemaxon/licenses:/home/tomcat/.chemaxon/licenses
+      - ./secrets/tomcat/chemaxon/licenses/license.cxl:/root/.chemaxon/licenses/license.cxl
+
+  # Jchem Webservices (legacy)
+  jchemws:
+    restart: unless-stopped
+    image: ${JCHEMWS_IMAGE:-ghcr.io/quanted/jchemws:main-6ae2e9561c201bb83350c8091171ed74ae9f4ed0}
+    expose:
+      - "8080"
+#     ports:
+#       - "8086:8080"
+    environment:
+      - JAVA_OPTS=-Xmx1500m -Djava.awt.headless=true
+      - LOG4J_FORMAT_MSG_NO_LOOKUPS=true
+    volumes:
+      - ./secrets/tomcat/chemaxon/licenses/license.cxl:/home/tomcat/.chemaxon/licenses/license.cxl
 
   pisces-db:
     restart: unless-stopped

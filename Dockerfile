@@ -27,6 +27,8 @@ RUN pip freeze | grep Django
 #RUN pip install matplotlib
 RUN pip install django-cors-headers
 
+RUN pip install rdkit
+
 # Specific Docker-specific Django settings file (needed for collectstatic)
 ENV DJANGO_SETTINGS_MODULE="settings_docker"
 

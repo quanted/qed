@@ -25,7 +25,7 @@ flower==0.9.2
 #geopandas==0.3.0
 #google-api-python-client==1.7.3
 html5lib==1.0.1
-Jinja2==2.10
+Jinja2==2.11.3
 matplotlib
 mechanicalsoup
 #mechanize==0.3.6  # build error: "mechanize" only works on python 2.x"

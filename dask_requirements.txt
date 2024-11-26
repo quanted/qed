@@ -35,7 +35,7 @@ nose-cov==1.6
 nose2-html-report==0.6.0
 nose-htmloutput==0.6.0
 numba==0.38.1
-numpy==1.14.5
+numpy==1.22.0
 pandas==0.23.1
 pillow==5.1.0
 #psutil==5.4.6
